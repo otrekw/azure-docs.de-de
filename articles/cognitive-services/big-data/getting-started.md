@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: marhamil
-ms.openlocfilehash: 444b76a594e768face892462da12a1cbb35a5106
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37239f9c7857a8e72bb293cfa3caeb429962a542
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324684"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363339"
 ---
 # <a name="getting-started"></a>Erste Schritte
 
@@ -31,7 +31,7 @@ Um das Cognitive Services für Big Data verwenden zu können, müssen wir zuerst
 
 ### <a name="cloud-services"></a>Clouddienste
 
-Cloudbasierte Cognitive Services-Instanzen sind intelligente Algorithmen, die in Azure gehostet werden. Diese Dienste sind ohne Training einsatzbereit. Sie benötigen lediglich eine Internetverbindung. Sie können [eine Cognitive Service-Instanz im Azure-Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account?tabs=multiservice%2Cwindows) oder mit der [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli?tabs=windows) erstellen.
+Cloudbasierte Cognitive Services-Instanzen sind intelligente Algorithmen, die in Azure gehostet werden. Diese Dienste sind ohne Training einsatzbereit. Sie benötigen lediglich eine Internetverbindung. Sie können [eine Cognitive Service-Instanz im Azure-Portal](../cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows) oder mit der [Azure CLI](../cognitive-services-apis-create-account-cli.md?tabs=windows) erstellen.
 
 ### <a name="containerized-services-optional"></a>Dienste in Containern (optional)
 
@@ -45,7 +45,7 @@ Wenn für Ihre Anwendung oder Workload große Datasets verwendet werden, private
 
 * **Hohe Skalierbarkeit** : Für Dienste in Containern gibt es keine Begrenzung der Datenübertragungsrate, und sie werden auf von Benutzern verwalteten Computern ausgeführt. Daher können Sie Cognitive Services ohne Ende skalieren, um weitaus größere Workloads zu verarbeiten.
 
-Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-container-support?tabs=luis), um eine Cognitive Service-Instanz in einem Container zu erstellen.
+Befolgen Sie [diese Anleitung](../cognitive-services-container-support.md?tabs=luis), um eine Cognitive Service-Instanz in einem Container zu erstellen.
 
 ## <a name="create-an-apache-spark-cluster"></a>Erstellen eines Apache Spark-Clusters
 
@@ -55,8 +55,8 @@ Befolgen Sie [diese Anleitung](https://docs.microsoft.com/azure/cognitive-servic
 
 Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die mit nur einem Klick eingerichtet werden kann und optimierte Workflows sowie einen interaktiven Arbeitsbereich bietet. Sie wird häufig für die Zusammenarbeit zwischen Datenanalysten, Technikern und Wirtschaftsanalytikern verwendet. Führen Sie die folgenden Schritte aus, um Cognitive Services für Big Data in Azure Databricks zu verwenden:
 
-1. [Erstellen eines Azure Databricks-Arbeitsbereichs](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
-1. [Erstellen eines Spark-Clusters in Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
+1. [Erstellen eines Azure Databricks-Arbeitsbereichs](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-an-azure-databricks-workspace)
+1. [Erstellen eines Spark-Clusters in Databricks](/azure/databricks/scenarios/quickstart-create-databricks-workspace-portal#create-a-spark-cluster-in-databricks)
 1. Installieren von Cognitive Services für Big Data
     * Erstellen einer neuen Bibliothek in Ihrem Databricks-Arbeitsbereich  
        <img src="media/create-library.png" alt="Create library" width="50%"/>
@@ -69,8 +69,8 @@ Azure Databricks ist eine Apache Spark-basierte Analyseplattform, die mit nur ei
 
 Optional können Sie Synapse Analytics zum Erstellen eines Spark-Clusters verwenden. Azure Synapse vereint Data Warehousing für Unternehmen mit Big Data-Analysen. Er ermöglicht flexible Datenabfragen nach Ihren Vorstellungen, indem serverlose On-Demand-Ressourcen oder bereitgestellten Ressourcen im gewünschten Umfang verwendet werden. Für erste Schritte mit Synapse Analytics gehen Sie folgendermaßen vor:
 
-1. [Erstellen Sie einen Synapse-Arbeitsbereich (Vorschau)](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-workspace).
-1. [Erstellen Sie einen neuen serverlosen Apache Spark-Pool über das Azure-Portal](https://docs.microsoft.com/azure/synapse-analytics/quickstart-create-apache-spark-pool-portal).
+1. [Erstellen Sie einen Synapse-Arbeitsbereich (Vorschau)](../../synapse-analytics/quickstart-create-workspace.md).
+1. [Erstellen Sie einen neuen serverlosen Apache Spark-Pool über das Azure-Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 
 In Synapse Analytics wird Big Data für Cognitive Services standardmäßig installiert.
 
@@ -80,9 +80,9 @@ Wenn Sie Cognitive Services in Containern verwenden, ist eine beliebte Option f�
 
 Führen Sie zum Einstieg in den Azure Kubernetes-Dienst die folgenden Schritte aus:
 
-1. [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](https://docs.microsoft.com/azure/aks/kubernetes-walkthrough-portal)
+1. [Schnellstart: Bereitstellen eines AKS-Clusters (Azure Kubernetes Service) über das Azure-Portal](../../aks/kubernetes-walkthrough-portal.md)
 1. [Installieren des Apache Spark 2.4.0-Helm-Charts](https://hub.helm.sh/charts/microsoft/spark)
-1. [Installieren eines Cognitive Service-Containers mithilfe von Helm](https://docs.microsoft.com/azure/cognitive-services/computer-vision/deploy-computer-vision-on-premises)
+1. [Installieren eines Cognitive Service-Containers mithilfe von Helm](../computer-vision/deploy-computer-vision-on-premises.md)
 
 ## <a name="try-a-sample"></a>Beispiel ausprobieren
 

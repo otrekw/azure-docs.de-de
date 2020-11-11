@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: f6f816f6fb4d422a97c98994996967e71f6a1e07
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 59f2edd30bd47f5da63cbbe79af1142eaf86a747
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084900"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367912"
 ---
 # <a name="what-is-bing-entity-search-api"></a>Was ist die Bing-Entitätssuche-API?
 
@@ -36,7 +36,7 @@ Die Bing-Entitätssuche-API sendet eine Suchabfrage an Bing und erhält Ergebnis
 
 Die Bing-Entitätssuche-API ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann. Der Dienst kann entweder über die REST-API oder über das SDK verwendet werden.
 
-1. Erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/free/cognitive-services/).
+1. Erstellen Sie ein [Cognitive Services-API-Konto](../cognitive-services-apis-create-account.md) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/free/cognitive-services/).
 2. Senden Sie eine Anforderung mit einer gültigen Suchabfrage an die API.
 3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 
@@ -44,6 +44,6 @@ Die Bing-Entitätssuche-API ist ein RESTful-Webdienst und kann somit problemlos 
 
 * Testen Sie die [interaktive Demo](https://azure.microsoft.com/services/cognitive-services/bing-entity-search-api/) für die Bing-Entitätssuche-API. 
 * Ein [Schnellstart](quickstarts/csharp.md) ermöglicht einen schnellen Einstieg in die Verwendung Ihrer ersten Anforderung.
-* Der Abschnitt mit der Referenz zur [Bing-Entitätssuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
-* In den [Verwendungs- und Anzeigeanforderungen für Bing](./use-display-requirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
-* Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.
+* Der Abschnitt mit der Referenz zur [Bing-Entitätssuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* In den [Verwendungs- und Anzeigeanforderungen für Bing](../bing-web-search/use-display-requirements.md) erfahren Sie, wie Inhalte und Informationen verwendet werden dürfen, die über die Bing-Suche-APIs gefunden wurden.
+* Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/overview.md), um die anderen verfügbaren APIs zu untersuchen.

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: e1a0cd42407963acd0d631777ad95a7b35845f89
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fdb5d5825310de66d45e77a9904b273c656b500d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101849"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367773"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-nodejs"></a>Schnellstart: Vorschlagen von Suchabfragen mit der Bing-Vorschlagssuche-REST-API und Node.js
 
@@ -43,7 +43,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie die Bing-Vorschlagssuche-A
     let https = require ('https');
     ```
 
-2. Erstellen Sie Variablen für Ihren den Host und Pfad Ihres API-Endpunkts, Ihren Abonnementschlüssel, Ihren [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Verwenden Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
+2. Erstellen Sie Variablen für Ihren den Host und Pfad Ihres API-Endpunkts, Ihren Abonnementschlüssel, Ihren [Marktcode](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#market-codes) und eine Suchabfrage. Verwenden Sie den globalen Endpunkt im folgenden Code oder den Endpunkt der [benutzerdefinierten Unterdomäne](../../../cognitive-services/cognitive-services-custom-subdomains.md), der im Azure-Portal für Ihre Ressource angezeigt wird.
 
     ```javascript
     // Replace the subscriptionKey string value with your valid subscription key.
@@ -198,4 +198,4 @@ A successful response is returned in JSON, as shown in the following example:
 > [Erstellen einer Single-Page-Web-App](../tutorials/autosuggest.md)
 
 - [Worum handelt es sich bei der Bing-Vorschlagssuche?](../get-suggested-search-terms.md)
-- [Referenz für die Bing-Vorschlagssuche-API V7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)
+- [Referenz für die Bing-Vorschlagssuche-API V7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference)

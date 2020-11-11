@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: f8eae6381a438f6820f525a4d66cb5dc388eefb0
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280390"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360070"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -32,7 +32,7 @@ In diesem Artikel wird die Verwaltung digitaler Zwillinge beschrieben. Informati
 Wenn Sie einen Zwilling erstellen möchten, verwenden Sie die `CreateOrReplaceDigitalTwinAsync()`-Methode auf dem Serviceclient wie folgt:
 
 ```csharp
-await client.CreateOrReplaceDigitalTwinAsync("myTwinId", initData);
+await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>("myTwinId", initData);
 ```
 
 Zum Erstellen eines digitalen Zwillings müssen Sie Folgendes angeben:
@@ -55,12 +55,7 @@ Sie können die Eigenschaften eines Zwillings zum Zeitpunkt der Erstellung des Z
 
 Die Zwillingserstellungs-API akzeptiert ein Objekt, das in eine gültige JSON-Beschreibung der Zwillingseigenschaften serialisiert wird. Unter [*Konzepte: digitale Zwillinge und das Zwillingsdiagramm*](concepts-twins-graph.md) finden Sie eine Beschreibung des JSON-Formats für einen Zwilling. 
 
-Zunächst können Sie wie in diesem Beispiel ein Datenobjekt erstellen, das den Zwilling und seine Eigenschaftsdaten darstellt:
-
-```csharp
-await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(srcId, twin);
-```
-Sie können ein Parameterobjekt entweder manuell oder mithilfe einer bereitgestellten Hilfsklasse erstellen. Im Folgenden finden Sie Beispiele für beides.
+Zunächst können Sie ein Datenobjekt erstellen, das den Zwilling und seine Eigenschaftsdaten darstellt. Sie können ein Parameterobjekt entweder manuell oder mithilfe einer bereitgestellten Hilfsklasse erstellen. Im Folgenden finden Sie Beispiele für beides.
 
 #### <a name="create-twins-using-manually-created-data"></a>Erstellen von Zwillingen mithilfe manuell erstellter Daten
 

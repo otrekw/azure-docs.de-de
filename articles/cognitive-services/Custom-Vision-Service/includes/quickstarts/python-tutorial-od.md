@@ -3,12 +3,12 @@ author: PatrickFarley
 ms.author: pafarley
 ms.service: cognitive-services
 ms.date: 10/25/2020
-ms.openlocfilehash: 7ef19e72b519d16da66306e4bf64f70f5c708927
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0072f0ae862e6484649179626a34e6b28da7d3bd
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678223"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94341095"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Custom Vision-Clientbibliothek für Python. Führen Sie diese Schritte aus, um das Paket zu installieren und den Beispielcode zum Erstellen eines Objekterkennungsmodells auszuprobieren. Sie erstellen ein Projekt, fügen Tags hinzu, trainieren das Projekt und verwenden die Vorhersageendpunkt-URL des Projekts, um es programmgesteuert zu testen. Verwenden Sie dieses Beispiel als Vorlage für die Erstellung Ihrer eigenen Bilderkennungsanwendung.
 
@@ -51,7 +51,7 @@ Erstellen Sie eine neue Python-Datei, und importieren Sie die folgenden Biblioth
 [!code-python[](~/cognitive-services-quickstart-code/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py?name=snippet_imports)]
 
 > [!TIP]
-> Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
+> Möchten Sie sich sofort die gesamte Codedatei für die Schnellstartanleitung ansehen? Die Datei steht [auf GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py) zur Verfügung. Dort finden Sie die Codebeispiele aus dieser Schnellstartanleitung.
 
 Erstellen Sie Variablen für den Azure-Endpunkt und die Abonnementschlüssel Ihrer Ressource.
 
@@ -171,5 +171,5 @@ Sie haben jetzt die einzelnen Schritte des Objekterkennungsprozesses im Code aus
 > [Testen und erneutes Trainieren eines Modells mit Custom Vision Service](../../test-your-model.md)
 
 * [Was ist Custom Vision?](../../overview.md)
-* Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.cs).
+* Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/CustomVision/ObjectDetection/CustomVisionQuickstart.py).
 * [SDK-Referenzdokumentation](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customvision?view=azure-python)

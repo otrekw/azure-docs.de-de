@@ -10,17 +10,17 @@ ms.subservice: text-analytics
 ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3b922dca46b575abc428aa6e76fb920ffc13d6b0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 06f37404db1c07a97aa1bb2d6b7ca88485dc31a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "86028005"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365180"
 ---
 # <a name="quickstart-using-go-to-call-the-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Go zum Aufrufen der Textanalyse von Cognitive Services 
 <a name="HOLTop"></a>
 
-Dieser Artikel veranschaulicht, wie Sie mithilfe der  [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit Go eine [Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction) und [verknüpfte Entitäten erkennen](#Entities).
+Dieser Artikel veranschaulicht, wie Sie mithilfe der [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit Go [eine Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction)und [verknüpfte Entitäten erkennen](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -442,7 +442,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="identify-entities"></a>Identifizieren von Entitäten
 
-Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entitäten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
+Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entitäten](../how-tos/text-analytics-how-to-entity-linking.md) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
 1. Erstellen Sie ein neues Go-Projekt in Ihrem bevorzugten Code-Editor.
 1. Fügen Sie den unten stehenden Code hinzu.

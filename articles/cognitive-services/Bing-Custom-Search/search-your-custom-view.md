@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
-ms.openlocfilehash: 38191c55afb87151b238069a75a6c86acd8904df
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a27f252f401d0fcf863391a0d45538b01b1141e9
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100540"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367283"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>Aufrufen Ihrer Instanz der benutzerdefinierten Bing-Suche über das Portal
 
@@ -31,7 +31,7 @@ Nachdem Sie Ihre benutzerdefinierte Suche konfiguriert haben, können Sie sie im
 
 Wählen Sie nach der Anmeldung beim [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche Ihre Suchinstanz aus, und klicken Sie auf die Registerkarte **Produktion**. Wählen Sie unter **Endpunkte** einen API-Endpunkt aus (etwa die Web-API). Welche Endpunkte angezeigt werden, hängt von Ihrem Abonnement ab.
 
-Geben Sie zum Erstellen einer Suchabfrage die Parameterwerte für Ihren Endpunkt ein. Beachten Sie, dass die im Portal angezeigten Parameter je nach gewähltem Endpunkt variieren können. Weitere Informationen finden Sie in der [Referenz zur API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters). Um das von Ihrer Suchinstanz verwendete Abonnement zu ändern, fügen Sie den entsprechenden Abonnementschlüssel hinzu, und aktualisieren Sie die entsprechenden Parameter für den Markt und/oder die Sprache.
+Geben Sie zum Erstellen einer Suchabfrage die Parameterwerte für Ihren Endpunkt ein. Beachten Sie, dass die im Portal angezeigten Parameter je nach gewähltem Endpunkt variieren können. Weitere Informationen finden Sie in der [Referenz zur API für die benutzerdefinierte Suche](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters). Um das von Ihrer Suchinstanz verwendete Abonnement zu ändern, fügen Sie den entsprechenden Abonnementschlüssel hinzu, und aktualisieren Sie die entsprechenden Parameter für den Markt und/oder die Sprache.
 
 Im Anschluss finden Sie einige wichtige Parameter:
 
@@ -65,4 +65,4 @@ Sie können das Abonnement ändern, das Ihrer benutzerdefinierten Bing-Suchinsta
 - [Aufrufen der benutzerdefinierten Ansicht mit NodeJs](./call-endpoint-nodejs.md)
 - [Aufrufen der benutzerdefinierten Ansicht mit Python](./call-endpoint-python.md)
 
-- [Aufrufen der benutzerdefinierten Ansicht mit dem C# SDK](./sdk-csharp-quick-start.md)
+- [Aufrufen der benutzerdefinierten Ansicht mit dem C# SDK](./quickstarts/client-libraries.md?pivots=programming-language-csharp%253fpivots%253dprogramming-language-csharp)

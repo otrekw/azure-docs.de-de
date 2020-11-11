@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: aahi
-ms.openlocfilehash: e17f2015ed4428cfd3c1a6c8a7bc4f92854a6b71
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43ee7272066dbd89e7c0053d51ba039b83fb494f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91710599"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363815"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -44,8 +44,8 @@ Sie können derzeit dieselben Dokumenten für alle Textanalysevorgänge senden: 
 | Element | Gültige Werte | Erforderlich? | Verwendung |
 |---------|--------------|-----------|-------|
 |`id` |Der Datentyp ist „Zeichenfolge“ (string), aber in der Praxis sind Dokument-IDs eher ganze Zahlen (integer). | Erforderlich | Das System verwendet die IDs, die Sie angeben, um die Ausgabe zu strukturieren. Sprachcodes, Schlüsselbegriffe und Stimmungspunktzahlen werden für jede ID in der Anforderung generiert.|
-|`text` | Unstrukturierter, unformatierter Text mit bis zu 5.120 Zeichen. | Erforderlich | Für die Erkennung der Sprache kann der Text in einer beliebigen Sprache ausgedrückt werden. Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsidentifikation muss der Text in einer [unterstützten Sprache](../text-analytics-supported-languages.md) sein. |
-|`language` | Aus 2 Zeichen bestehender [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)-Code für eine [unterstützte Sprache](../text-analytics-supported-languages.md) | Varies | Erforderlich für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsverknüpfung, optional für die Sprachenerkennung. Es gibt keinen Fehler, wenn Sie sie ausschließen, aber die Analyse wird ohne geschwächt. Der Sprachcode sollte dem von Ihnen bereitgestellten `text` entsprechen. |
+|`text` | Unstrukturierter, unformatierter Text mit bis zu 5.120 Zeichen. | Erforderlich | Für die Erkennung der Sprache kann der Text in einer beliebigen Sprache ausgedrückt werden. Für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsidentifikation muss der Text in einer [unterstützten Sprache](../language-support.md) sein. |
+|`language` | Aus 2 Zeichen bestehender [ISO 639-1](https://en.wikipedia.org/wiki/List_of_ISO_639-1_codes)-Code für eine [unterstützte Sprache](../language-support.md) | Varies | Erforderlich für die Standpunktanalyse, Schlüsselbegriffserkennung und Entitätsverknüpfung, optional für die Sprachenerkennung. Es gibt keinen Fehler, wenn Sie sie ausschließen, aber die Analyse wird ohne geschwächt. Der Sprachcode sollte dem von Ihnen bereitgestellten `text` entsprechen. |
 
 Weitere Informationen zu Limits finden Sie unter [Übersicht der Textanalyse > Datenlimits](../overview.md#data-limits). 
 
@@ -96,11 +96,11 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
    + `Content-Type`: application/json.
    + `Accept`: application/json.
 
-   Ihre Anforderung sollte in etwa wie im folgenden Screenshot aussehen, wobei eine **/keyPhrases**-Ressource angenommen wird.
+   Ihre Anforderung sollte in etwa wie im folgenden Screenshot aussehen, wobei eine **/keyPhrases** -Ressource angenommen wird.
 
    ![Screenshot der Anforderung mit Endpunkt und Headern](../media/postman-request-keyphrase-1.png)
 
-4. Klicken Sie auf **Body**, und wählen Sie **raw** als Format aus.
+4. Klicken Sie auf **Body** , und wählen Sie **raw** als Format aus.
 
    ![Screenshot der Anforderung mit Textkörpereinstellungen (body)](../media/postman-request-body-raw.png)
 
@@ -112,7 +112,7 @@ Der Dienst akzeptiert Anforderungen mit einer Größe von bis zu 1 MB. Wenn Sie 
   + [Entitätserkennung](text-analytics-how-to-entity-linking.md)  
 
 
-6. Klicken Sie auf **Send**, um die Anforderung zu senden. Weitere Informationen zur Anzahl an Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
+6. Klicken Sie auf **Send** , um die Anforderung zu senden. Weitere Informationen zur Anzahl an Anforderungen, die Sie pro Minute und Sekunde senden können, finden Sie in der Übersicht im Abschnitt [Datengrenzwerte](../overview.md#data-limits).
 
    In Postman wird die Antwort im nächsten Fenster nach unten als einzelnes JSON-Dokument angezeigt, das für jede in der Anforderung angegebene Dokument-ID ein Element enthält.
 

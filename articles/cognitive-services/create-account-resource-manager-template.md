@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
-ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91348218"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363390"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
@@ -45,7 +45,7 @@ Die in dieser Schnellstartanleitung verwendete Vorlage stammt von der Seite mit 
 :::code language="json" source="~/quickstart-templates/101-cognitive-services-universalkey/azuredeploy.json":::
 
 In der Vorlage ist eine einzelne Azure-Ressource definiert:
-* [Microsoft.CognitiveServices/accounts](https://docs.microsoft.com/azure/templates/microsoft.cognitiveservices/accounts): erstellt eine Cognitive Services-Ressource.
+* [Microsoft.CognitiveServices/accounts](/azure/templates/microsoft.cognitiveservices/accounts): erstellt eine Cognitive Services-Ressource.
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
@@ -73,9 +73,9 @@ In der Vorlage ist eine einzelne Azure-Ressource definiert:
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/CLI)
 
 > [!NOTE]
-> Zum Erstellen von `az deployment group` ist Azure CLI, Version 2.6 oder höher, erforderlich. Verwenden Sie den Befehl `az --version`, um den Versionstyp anzuzeigen. Weitere Informationen finden Sie in der [Dokumentation](https://docs.microsoft.com/cli/azure/deployment/group).
+> Zum Erstellen von `az deployment group` ist Azure CLI, Version 2.6 oder höher, erforderlich. Verwenden Sie den Befehl `az --version`, um den Versionstyp anzuzeigen. Weitere Informationen finden Sie in der [Dokumentation](/cli/azure/deployment/group).
 
-Führen Sie das folgende Skript an der Azure-Befehlszeilenschnittstelle (CLI) [auf dem lokalen Computer](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) oder in einem Browser über die Schaltfläche **Ausprobieren** aus. Geben Sie einen Namen und einen Speicherort (beispielsweise `centralus`) für eine neue Ressourcengruppe ein, dann wird die ARM-Vorlage verwendet, um darin eine Cognitive Services-Ressource bereitzustellen. Merken Sie sich den verwendeten Namen. Sie benötigen ihn später, um die Bereitstellung zu überprüfen.
+Führen Sie das folgende Skript an der Azure-Befehlszeilenschnittstelle (CLI) [auf dem lokalen Computer](/cli/azure/install-azure-cli?view=azure-cli-latest) oder in einem Browser über die Schaltfläche **Ausprobieren** aus. Geben Sie einen Namen und einen Speicherort (beispielsweise `centralus`) für eine neue Ressourcengruppe ein, dann wird die ARM-Vorlage verwendet, um darin eine Cognitive Services-Ressource bereitzustellen. Merken Sie sich den verwendeten Namen. Sie benötigen ihn später, um die Bereitstellung zu überprüfen.
 
 
 ```azurecli-interactive
@@ -121,9 +121,9 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen**, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen** , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die Ressourcengruppe, die die zu löschende Ressource enthält.
-3. Klicken Sie mit der rechten Maustaste auf die Ressourcengruppenauflistung. Klicken Sie auf **Ressourcengruppe löschen**, und bestätigen Sie den Vorgang.
+3. Klicken Sie mit der rechten Maustaste auf die Ressourcengruppenauflistung. Klicken Sie auf **Ressourcengruppe löschen** , und bestätigen Sie den Vorgang.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/CLI)
 
@@ -140,6 +140,6 @@ az group delete --name $resourceGroupName
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Authentifizieren von Anforderungen an Azure Cognitive Services](authentication.md)
-* [Was ist Azure Cognitive Services?](Welcome.md)
+* [Was ist Azure Cognitive Services?](./what-are-cognitive-services.md)
 * [Unterstützung für natürliche Sprachen in Azure Cognitive Services](language-support.md)
 * [Containerunterstützung in Azure Cognitive Services](cognitive-services-container-support.md)

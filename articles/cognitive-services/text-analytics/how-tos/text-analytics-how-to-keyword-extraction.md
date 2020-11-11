@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 05/13/2020
 ms.author: aahi
-ms.openlocfilehash: e4a652b146286965c68154bd362525861158ecb2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 44e81286ffa5930b802df3b3bfe657091175f391
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91704377"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363632"
 ---
 # <a name="example-how-to-extract-key-phrases-using-text-analytics"></a>Beispiel: Erkennen von Schlüsselbegriffen mithilfe der Textanalyse
 
@@ -23,7 +23,7 @@ Die [Schlüsselbegriffserkennungs-API](https://westus2.dev.cognitive.microsoft.c
 
 Diese Funktion ist nützlich, wenn Sie die wichtigsten Punkte in einer Sammlung von Dokumenten schnell identifizieren müssen. Wenn der eingegebene Text beispielsweise „Das Essen war köstlich, und es gab hervorragendes Personal“ lautet, gibt der Dienst die Kernpunkte „Essen“ und „hervorragendes Personal“ zurück.
 
-Weitere Informationen finden Sie unter [Unterstützte Sprachen](../text-analytics-supported-languages.md).
+Weitere Informationen finden Sie unter [Unterstützte Sprachen](../language-support.md).
 
 > [!TIP]
 > Die Textanalyse bietet darüber hinaus ein Linux-basiertes Docker-Containerimage für die Schlüsselbegriffserkennung, damit Sie [den Textanalysecontainer nah bei Ihren Daten installieren und ausführen können](text-analytics-how-to-install-containers.md).

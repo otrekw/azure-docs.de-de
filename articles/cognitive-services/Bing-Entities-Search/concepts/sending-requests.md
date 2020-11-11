@@ -10,12 +10,12 @@ ms.subservice: bing-entity-search
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 25750f690129439f0f614724a2bb62b596f322ea
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b290539bf6424895a9685c1e4cdb53d8fb8cfb41
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084985"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365906"
 ---
 # <a name="sending-search-requests-to-the-bing-entity-search-api"></a>Senden von Suchanforderungen an die Bing-Entitätssuche-API
 
@@ -40,18 +40,18 @@ Alle Anforderungen sollten von einem Server stammen. Das Verteilen eines Schlüs
 
 ## <a name="specifying-query-parameters-and-headers"></a>Angeben von Abfrageparametern und Header
 
-Die Anforderung muss den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) angeben, der den Suchbegriff des Benutzers enthält. Die Anforderung muss auch den [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt)-Abfrageparameter angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter. Alle Abfrageparameter müssen URL-codiert sein.  
+Die Anforderung muss den Abfrageparameter [q](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query) angeben, der den Suchbegriff des Benutzers enthält. Die Anforderung muss auch den [mkt](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#mkt)-Abfrageparameter angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter. Alle Abfrageparameter müssen URL-codiert sein.  
   
-Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben:  
+Die Anforderung muss den [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
--   [X-MSEdge-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientid)  
+-   [X-MSEdge-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#location)  
 
 Die Client-IP- und Adressheader sind für die Rückgabe von standortorientiertem Inhalt wichtig.  
 
-Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers).
+Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#headers).
 
 ## <a name="the-request"></a>Die Anforderung.
 
@@ -71,7 +71,7 @@ Wenn Sie zuvor noch keine der Bing-APIs aufgerufen haben, lassen Sie den Client-
 
 ## <a name="the-response"></a>Die Antwort
 
-Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Im Beispiel sind auch die Bing-spezifischen Antwortheader aufgeführt. Informationen über das Antwortobjekt finden Sie unter [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse).
+Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Im Beispiel sind auch die Bing-spezifischen Antwortheader aufgeführt. Informationen über das Antwortobjekt finden Sie unter [SearchResponse](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference#searchresponse).
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -140,4 +140,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Suche nach Entitäten mit der Bing-Entitäts-API](search-for-entities.md)
-* [Verwendung der Bing-API und Anzeigen von Anforderungen](../use-display-requirements.md)
+* [Verwendung der Bing-API und Anzeigen von Anforderungen](../../bing-web-search/use-display-requirements.md)

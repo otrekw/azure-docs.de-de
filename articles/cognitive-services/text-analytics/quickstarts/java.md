@@ -11,17 +11,17 @@ ms.topic: quickstart
 ms.date: 07/06/2020
 ms.author: aahi
 ms.custom: seo-java-july2019, seo-java-august2019, devx-track-java
-ms.openlocfilehash: 6c3c613f8733c8f786d121ab33b09afab244b09e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 26ddbf4cf97f5b9161be8b6b4ac3c31f801e82a3
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90532272"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365158"
 ---
 # <a name="quickstart-use-java-to-call-the-azure-text-analytics-cognitive-service"></a>Schnellstart: Verwenden von Java zum Aufrufen der Textanalyse von Azure Cognitive Services
 <a name="HOLTop"></a>
 
-Dieser Artikel veranschaulicht, wie Sie mithilfe der  [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit Java eine [Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction) und [verknüpfte Entitäten erkennen](#Entities).
+Dieser Artikel veranschaulicht, wie Sie mithilfe der [Textanalyse-APIs](//go.microsoft.com/fwlink/?LinkID=759711) mit Java [eine Sprache erkennen](#Detect), [Stimmungen analysieren](#SentimentAnalysis), [Schlüsselbegriffe extrahieren](#KeyPhraseExtraction)und [verknüpfte Entitäten erkennen](#Entities).
 
 [!INCLUDE [text-analytics-api-references](../includes/text-analytics-api-references.md)]
 
@@ -35,7 +35,7 @@ Außerdem benötigen Sie den [Endpunkt und den Zugriffsschlüssel](../../cogniti
 
 ## <a name="detect-language"></a>Sprache erkennen
 
-Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der  [Sprachenerkennungsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
+Die Sprachenerkennungs-API erfasst die Sprache eines Textdokuments mithilfe der [Sprachenerkennungsmethode](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v2-1/operations/56f30ceeeda5650db055a3c7).
 
 1. Erstellen Sie in Ihrer bevorzugten IDE (oder einem neuen Ordner auf dem Desktop) ein neues Java-Projekt. Erstellen Sie eine Klasse namens `DetectLanguage.java`.
 1. Fügen Sie Ihrer Klasse den unten stehenden Code hinzu.
@@ -553,7 +553,7 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 
 ## <a name="identify-entities"></a>Identifizieren von Entitäten
 
-Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entitäten](https://docs.microsoft.com/azure/cognitive-services/text-analytics/how-tos/text-analytics-how-to-entity-linking) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
+Die Entitäts-API erkennt bekannte Entitäten in einem Textdokument mithilfe der [Entitätsmethode](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/operations/5ac4251d5b4ccd1554da7634). [Entitäten](../how-tos/text-analytics-how-to-entity-linking.md) extrahieren Wörter aus Text, z. B. „Vereinigte Staaten“, und geben Ihnen dann den Typ und/oder den Wikipedia-Link für diese Wörter zurück. Der Typ von „Vereinigte Staaten“ ist `location`, während der Link zu Wikipedia `https://en.wikipedia.org/wiki/United_States` lautet.  Im folgenden Beispiel werden Entitäten für englische Dokumente erkannt.
 
 1. Erstellen Sie in Ihrer bevorzugten IDE (oder einem neuen Ordner auf dem Desktop) ein neues Java-Projekt. Erstellen Sie darin eine Klasse mit dem Namen `GetEntities.java`.
 1. Fügen Sie Ihrer Klasse den unten stehenden Code hinzu.

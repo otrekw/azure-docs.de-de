@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.author: aahi
-ms.openlocfilehash: d9517eef8976e79db21fbe552861d0d59923e8ba
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: e3e0ae444e2b3b6ac195a83653baf4b71bac6644
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173955"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363866"
 ---
 # <a name="how-to-use-text-analytics-for-health-preview"></a>Gewusst wie: Verwenden von Text Analytics for Health (Vorschauversion)
 
@@ -84,7 +84,7 @@ Füllen Sie das [Formular zum Anfordern von Cognitive Services-Containern](http
 Es gibt mehrere Möglichkeiten zum Installieren und Ausführen des Containers. 
 
 - Verwenden Sie das [Azure-Portal](text-analytics-how-to-install-containers.md?tabs=healthcare), um eine Ressource für die Textanalyse zu erstellen, und Docker, um Ihren Container abzurufen.
-- Verwenden Sie die folgenden PowerShell- und [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)-Skripts, um die Containerkonfiguration bei der Ressourcenbereitstellung zu automatisieren.
+- Verwenden Sie die folgenden PowerShell- und [Azure CLI](/cli/azure/?view=azure-cli-latest)-Skripts, um die Containerkonfiguration bei der Ressourcenbereitstellung zu automatisieren.
 
 ### <a name="install-the-container-using-azure-web-app-for-containers"></a>Installieren des Containers mithilfe von Azure Web App für Container
 
@@ -124,7 +124,7 @@ az webapp config appsettings set -g $resource_group_name -n $appservice_name --s
 Sie können auch eine Azure-Containerinstanz (ACI) verwenden, um die Bereitstellung zu vereinfachen. ACI ist eine Ressource, die Ihnen das Ausführen von Docker-Containern nach Bedarf in einer verwalteten, serverlosen Azure-Umgebung ermöglicht. 
 
 Schritte zum Bereitstellen einer ACI-Ressource mithilfe des Azure-Portals finden Sie unter [Verwenden von Azure Container Instances](text-analytics-how-to-use-container-instances.md). Alternativ können Sie das unten dargestellte PowerShell-Skript an der Azure CLI verwenden, das eine ACI in Ihrem Abonnement erstellt und dazu das Containerimage verwendet.  Warten Sie, bis das Skript abgeschlossen wurde (ungefähr 25–30 Minuten), bevor Sie die erste Anforderung absenden.  Wählen Sie wegen des Limits für die Maximalanzahl von CPUs pro ACI-Ressource diese Option nicht aus, wenn Sie davon ausgehen, dass Sie mehr als 5 große Dokumente (jeweils ca. 5000 Zeichen) pro Anforderung übermitteln werden.
-Informationen zur Verfügbarkeit finden Sie im Artikel [Regionale ACI-Unterstützung](https://docs.microsoft.com/azure/container-instances/container-instances-region-availability). 
+Informationen zur Verfügbarkeit finden Sie im Artikel [Regionale ACI-Unterstützung](../../../container-instances/container-instances-region-availability.md). 
 
 > [!NOTE] 
 > Azure Container Instances beinhalten keine HTTPS-Unterstützung für die integrierten Domänen. Wenn Sie HTTPS benötigen, müssen Sie es manuell konfigurieren. Dazu gehört auch das Erstellen eines Zertifikats und das Registrieren einer Domäne. Anweisungen für die Ausführung mit NGINX finden Sie unten.
@@ -399,7 +399,7 @@ Bei Verwendung der Negationserkennung kann sich in manchen Fällen ein einzelner
 
 ### <a name="relation-extraction-output"></a>Ausgabe der Beziehungsextraktion
 
-Die Ausgabe der Beziehungsextraktion enthält URI-Verweise auf die *Quelle* der Beziehung und deren *Ziel* . Entitäten mit der Beziehungsrolle `ENTITY` werden dem `target`-Feld zugewiesen. Entitäten mit der Beziehungsrolle `ATTRIBUTE` werden dem `source`-Feld zugewiesen. Abkürzungsbeziehungen enthalten bidirektionale `source`- und `target`-Felder, und `bidirectional` wird auf `true` festgelegt. 
+Die Ausgabe der Beziehungsextraktion enthält URI-Verweise auf die *Quelle* der Beziehung und deren *Ziel*. Entitäten mit der Beziehungsrolle `ENTITY` werden dem `target`-Feld zugewiesen. Entitäten mit der Beziehungsrolle `ATTRIBUTE` werden dem `source`-Feld zugewiesen. Abkürzungsbeziehungen enthalten bidirektionale `source`- und `target`-Felder, und `bidirectional` wird auf `true` festgelegt. 
 
 ```json
 "relations": [

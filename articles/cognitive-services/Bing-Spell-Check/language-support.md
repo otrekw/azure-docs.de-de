@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: 2b4e4eb84cecf2f68c50f0a40630cc2e6f34554f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 38bf38f47e4430c847e54bd89f6bf3cd7be50527
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084205"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367079"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>Sprach- und Regionsunterstützung für die Bing-Rechtschreibprüfungs-API
 
@@ -26,7 +26,7 @@ ms.locfileid: "93084205"
 
 Die folgenden Sprachen werden von der Bing-Rechtschreibprüfungs-API unterstützt (nur im `spell`-Modus).
 
-Beachten Sie, dass zum Arbeiten mit einer anderen Sprache als `en-US`, `mkt` festgelegt werden sollte und entweder `Accept-Language` oder `setLang` so festgelegt werden sollte, wie es in der [Referenz für Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference) beschrieben ist.
+Beachten Sie, dass zum Arbeiten mit einer anderen Sprache als `en-US`, `mkt` festgelegt werden sollte und entweder `Accept-Language` oder `setLang` so festgelegt werden sollte, wie es in der [Referenz für Rechtschreibprüfungs-API v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference) beschrieben ist.
 
 | Sprache    | Sprachcode |
 |:----------- |:-------------:|
@@ -73,5 +73,5 @@ Beachten Sie, dass zum Arbeiten mit einer anderen Sprache als `en-US`, `mkt` fes
 
 ## <a name="see-also"></a>Weitere Informationen
 
-- [Dokumentationsseite zu Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Dokumentationsseite zu Cognitive Services](../index.yml)
 - [Produktseite zu Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

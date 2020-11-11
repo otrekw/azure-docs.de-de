@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 08/14/2020
 ms.author: aahi
 ms.reviewer: chtufts
-ms.openlocfilehash: 068c2dc698e9f0b6d6f2f6486dff863c1343b178
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 905dde6932afb440c34bcccb563bfda98f23eb7c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88258270"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363832"
 ---
 # <a name="data-and-rate-limits-for-the-text-analytics-api"></a>Datengrenzwerte und Ratenbegrenzungen für die Textanalyse-API
 <a name="data-limits"></a>
@@ -31,7 +31,7 @@ In diesem Artikel finden Sie die Grenzwerte für die Datengröße und -rate, die
 
 | Begrenzung | Wert |
 |------------------------|---------------|
-| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (gemessen von [StringInfo.LengthInTextElements](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt ebenfalls für die Textanalyse für Integritätscontainer. |
+| Maximale Größe eines einzelnen Dokuments | 5\.120 Zeichen (gemessen von [StringInfo.LengthInTextElements](/dotnet/api/system.globalization.stringinfo.lengthintextelements)). Gilt ebenfalls für die Textanalyse für Integritätscontainer. |
 | Maximale Größe der gesamte Anforderung | 1 MB. Gilt ebenfalls für die Textanalyse für Integritätscontainer. |
 
 Die maximale Anzahl von Dokumenten, die Sie in einer einzelnen Anforderung senden können, hängt von der API-Version und -Funktion ab, die Sie verwenden.

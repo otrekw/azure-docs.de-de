@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: d84867dbe51b9c6689ecdac2bc80585a88da66b4
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 6ebc1831b990b540bcb9a3856c380c28142af536
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496131"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357112"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>Installieren und Ausführen des Containers für räumliche Analyse (Vorschau)
 
@@ -289,7 +289,7 @@ sudo apt-get update
 Installieren Sie das Release 1.0.9:
 
 ```bash
-sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.8*
+sudo apt-get install iotedge=1.0.9* libiothsm-std=1.0.9*
 ```
 
 Registrieren Sie den Hostcomputer als Nächstes als IoT Edge-Gerät auf Ihrer IoT Hub-Instanz, indem Sie eine [Verbindungszeichenfolge](https://docs.microsoft.com/azure/iot-edge/how-to-register-device#register-in-the-azure-portal) verwenden.

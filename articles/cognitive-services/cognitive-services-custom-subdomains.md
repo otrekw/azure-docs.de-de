@@ -9,16 +9,16 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
-ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95f3de0fe26678f6b4bcd97a78c06e92b72a7135
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83590637"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368813"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Benutzerdefinierte Unterdomänennamen für Cognitive Services
 
-Azure Cognitive Services verwenden benutzerdefinierte Unterdomänennamen für jede Ressource, die über das [Azure-Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) oder die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) erstellt wurde. Anders als bei regionalen Endpunkten, die für alle Kunden in einer bestimmten Azure-Region üblich waren, sind benutzerdefinierte Unterdomänennamen für die Ressource eindeutig. Benutzerdefinierte Unterdomänennamen sind erforderlich, um Funktionen wie Azure Active Directory (Azure AD) für die Authentifizierung zu aktivieren.
+Azure Cognitive Services verwenden benutzerdefinierte Unterdomänennamen für jede Ressource, die über das [Azure-Portal](https://portal.azure.com), [Azure Cloud Shell](https://azure.microsoft.com/features/cloud-shell/) oder die [Azure CLI](/cli/azure/install-azure-cli) erstellt wurde. Anders als bei regionalen Endpunkten, die für alle Kunden in einer bestimmten Azure-Region üblich waren, sind benutzerdefinierte Unterdomänennamen für die Ressource eindeutig. Benutzerdefinierte Unterdomänennamen sind erforderlich, um Funktionen wie Azure Active Directory (Azure AD) für die Authentifizierung zu aktivieren.
 
 ## <a name="how-does-this-impact-existing-resources"></a>Wie wirkt sich dies auf vorhandene Ressourcen aus?
 
@@ -98,5 +98,5 @@ Ja. Dies ist eine Liste der regionalen Endpunkte, die Sie mit Azure Cognitive Se
 
 ## <a name="see-also"></a>Weitere Informationen
 
-* [Was ist Cognitive Services?](Welcome.md)
+* [Was ist Cognitive Services?](./what-are-cognitive-services.md)
 * [Authentifizierung](authentication.md)

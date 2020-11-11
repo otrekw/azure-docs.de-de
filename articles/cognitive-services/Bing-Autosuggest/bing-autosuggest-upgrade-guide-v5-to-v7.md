@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: scottwhi
-ms.openlocfilehash: c4b02ef7bc833a7f5ab41e0203836637613244e0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 9e887d8f7579a90e7d4e8d54dcf28e1256269063
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101985"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368456"
 ---
 # <a name="autosuggest-api-upgrade-guide"></a>Upgradeleitfaden für die Vorschlagssuche-API
 
@@ -76,4 +76,4 @@ Blockiert|InvalidRequest.Blocked
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwenden und Anzeigen von Anforderungen](./UseAndDisplayRequirements.md)
+> [Verwenden und Anzeigen von Anforderungen](../bing-web-search/use-display-requirements.md)

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: 0e31563b6a6e397f679042e441fd60348445de51
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe448fff6a8b1e56969b67e6f94237eb889db2e7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084832"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365770"
 ---
 # <a name="quickstart-send-a-search-request-to-the-bing-entity-search-rest-api-using-java"></a>Schnellstart: Senden einer Suchanforderung an die Bing-Entitätssuche-REST-API mithilfe von Java
 
@@ -227,4 +227,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Einzelseiten-Web-App](../tutorial-bing-entities-search-single-page-app.md)
 
 * [Was ist die Bing-Entitätssuche-API?](../overview.md)
-* [Referenz zur Bing-Entitätssuche-API](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).
+* [Referenz zur Bing-Entitätssuche-API](/rest/api/cognitiveservices-bingsearch/bing-entities-api-v7-reference).

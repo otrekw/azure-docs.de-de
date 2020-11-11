@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 0033f4919e4e4e5e56e4057e00c393ae7be1ca44
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: d5caa9b4168307bb27022b59415e43b37f30bf67
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090561"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367385"
 ---
 # <a name="configure-your-hosted-ui-experience"></a>Konfigurieren der gehosteten Benutzeroberfläche
 
@@ -54,7 +54,7 @@ Gehen Sie folgendermaßen vor, um eine gehostete Benutzeroberfläche für Ihre W
 
 6. Geben Sie unter **Zusätzliche Konfigurationen** entsprechende Werte für Ihre App an. Diese Einstellungen sind optional. Die Auswirkungen der angewendeten oder entfernten Einstellungen sehen Sie im Vorschaubereich auf der rechten Seite. Folgende Konfigurationsoptionen stehen zur Verfügung:  
 
-7. Geben Sie den Abonnementschlüssel für die Suche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Weitere Informationen finden Sie unter [Create a Cognitive Services APIs account in the Azure portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) (Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal).  
+7. Geben Sie den Abonnementschlüssel für die Suche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Weitere Informationen finden Sie unter [Create a Cognitive Services APIs account in the Azure portal](../cognitive-services-apis-create-account.md) (Erstellen eines Cognitive Services-APIs-Kontos im Azure-Portal).  
 
 8. Wenn Sie die Vorschlagssuche aktiviert haben, geben Sie den Abonnementschlüssel für die Vorschlagssuche ein, oder wählen Sie einen in der Dropdownliste aus. Die Dropdownliste enthält Schlüssel aus den Abonnements Ihres Azure-Kontos. Für die benutzerdefinierte Vorschlagssuche muss ein bestimmter Abonnementtarif verwendet werden. Weitere Informationen finden Sie unter [Preise](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/).
 
@@ -82,7 +82,7 @@ Die gehostete Benutzeroberfläche kann auf zwei Arten genutzt werden:
   `https://ui.customsearch.ai/hosted?customConfig=YOUR-CUSTOM-CONFIG-ID`  
   
   > [!NOTE]
-  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters).
+  > Fügen Sie nach Bedarf der URL die folgenden Abfrageparameter hinzu. Weitere Informationen zu diesen Parametern finden Sie in der Referenz zur [API für die benutzerdefinierte Suche](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters).
   >
   > - q
   > - mkt
@@ -153,4 +153,4 @@ Die folgenden Konfigurationen gelten nur, wenn Sie die gehostete Benutzeroberfl�
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
-- [Einteilen von Webseiten](./page-webpages.md)
+- [Einteilen von Webseiten](../bing-web-search/paging-search-results.md)

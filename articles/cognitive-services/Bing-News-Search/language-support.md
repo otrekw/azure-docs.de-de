@@ -10,12 +10,12 @@ ms.subservice: bing-news-search
 ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
-ms.openlocfilehash: bc28cdbca7d2566318a3158399c1d44fd8d2ccd9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ef3f7cde226d7246b1de3ae23cd9b4340b012b33
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101720"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366365"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>Sprach- und Regionsunterstützung für die Bing-News-Suche-API
 
@@ -167,4 +167,4 @@ Die folgenden Länder-/Regionscodes können Sie im `cc`-Abfrageparameter angeben
 |USA|US|
 
 ## <a name="next-steps"></a>Nächste Schritte
-Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [API v7-Referenz zur News-Suche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).
+Weitere Informationen zu den Endpunkten der Bing-News-Suche finden Sie unter [API v7-Referenz zur News-Suche](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference).

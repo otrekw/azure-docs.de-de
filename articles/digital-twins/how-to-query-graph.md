@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 7bb38824f2071e2575877940795f9b90a2a384b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 57b6bac49f0142b008a21accfffb614453cc6aec
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325776"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358149"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Abfragen des Zwillingsdiagramms von Azure Digital Twins
 
@@ -154,21 +154,19 @@ AND T.Temperature = 70
 Sie können Zwillinge auch auf der Grundlage abrufen, **ob eine bestimmte Eigenschaft definiert ist**. Hier folgt eine Abfrage, die Zwillinge abruft, die eine definierte *Location* -Eigenschaft aufweisen:
 
 ```sql
-SELECT *
-FROM DIGITALTWINS WHERE IS_DEFINED(Location)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(Location)
 ```
 
 Dies kann Ihnen helfen, Zwillinge anhand ihrer *Tageigenschaften* abzurufen, wie unter [Hinzufügen von Tags zu digitalen Zwillingen](how-to-use-tags.md) beschrieben. Hier folgt eine Abfrage, bei der alle Zwillinge *rot* markiert werden:
 
 ```sql
-select * from digitaltwins where is_defined(tags.red)
+SELECT * FROM DIGITALTWINS WHERE IS_DEFINED(tags.red)
 ```
 
 Sie können Zwillinge auch auf der Grundlage des **Typs einer Eigenschaft** abrufen. Hier folgt eine Abfrage, die Zwillinge abruft, deren *Temperature* -Eigenschaft eine Zahl ist:
 
 ```sql
-SELECT * FROM DIGITALTWINS T
-WHERE IS_NUMBER(T.Temperature)
+SELECT * FROM DIGITALTWINS T WHERE IS_NUMBER(T.Temperature)
 ```
 
 ### <a name="query-by-model"></a>Abfrage nach Modell

@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.custom: devx-track-java
 ms.author: aahi
-ms.openlocfilehash: a0a973b7981c97aaf0b13feaecd03158ab6ac284
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e74954e33be1b2d24219ca61762dd43941415306
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084016"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366977"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-java"></a>Schnellstart: Überprüfen der Rechtschreibung mit der Bing-Rechtschreibprüfungs-REST-API und Java
 
@@ -205,4 +205,4 @@ Es wird eine erfolgreiche Antwort im JSON-Format zurückgegeben, wie im folgende
 > [Erstellen einer Single-Page-Web-App](../tutorials/spellcheck.md)
 
 - [Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?](../overview.md)
-- [Referenz zur Bing-Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referenz zur Bing-Rechtschreibprüfungs-API v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

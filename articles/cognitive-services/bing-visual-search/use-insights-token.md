@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 4/26/2019
 ms.author: scottwhi
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
-ms.openlocfilehash: 6f4068ece2b08937188397317844a126a9699aee
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ed2c8b4b6dae8713d3ce1c6755c559cda9a9dfb8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102104"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368881"
 ---
 # <a name="use-an-insights-token-to-get-insights-for-an-image"></a>Verwenden eines Erkenntnistokens zum Gewinnen von Erkenntnissen zu einem Bild
 
@@ -262,7 +262,7 @@ namespace VisualSearchInsightsToken
 
 * Azure-Abonnement: [Kostenloses Azure-Konto](https://azure.microsoft.com/free/cognitive-services/)
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7"  title="Erstellen einer Ressource für die Bing-Suche"  target="_blank"> im Azure-Portal eine Ressource für die Bing-Suche <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
-* [JDK 7 oder 8](https://aka.ms/azure-jdks) zum Kompilieren und Ausführen des Codes. Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
+* [JDK 7 oder 8](/azure/developer/java/fundamentals/java-jdk-long-term-support) zum Kompilieren und Ausführen des Codes. Sie können auch eine Java-Entwicklungsumgebung verwenden, ein Text-Editor ist jedoch ausreichend.
 
 
 ## <a name="run-the-java-application"></a>Ausführen der Java-Anwendung
@@ -536,4 +536,4 @@ if __name__ == '__main__':
 [Erstellen einer Single-Page-Web-App für die Visuelle Suche](tutorial-bing-visual-search-single-page-app.md)  
 [Was ist die API für die Visuelle Bing-Suche?](overview.md)  
 [Ausprobieren von Cognitive Services](https://aka.ms/bingvisualsearchtryforfree)  
-[Bilder: visuelle Suche](https://aka.ms/bingvisualsearchreferencedoc)
+[Bilder: visuelle Suche](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch)

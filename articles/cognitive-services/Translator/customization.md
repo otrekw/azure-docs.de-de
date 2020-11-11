@@ -10,18 +10,18 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 8d49d9b9d29116d95173c1daf5133622c3694de6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86523994"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368932"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
 Benutzerdefinierter Translator ist ein Feature des Translator-Diensts, mit dem Sie die erweiterte neuronale maschinelle Übersetzung von Microsoft Translator anpassen können, wenn Sie Translator (nur Version 3) zum Übersetzen verwenden.
 
-Das Feature kann mit [Cognitive Services Speech](https://docs.microsoft.com/azure/cognitive-services/speech-service/) auch zum Anpassen der Sprachübersetzung verwendet werden.
+Das Feature kann mit [Cognitive Services Speech](../speech-service/index.yml) auch zum Anpassen der Sprachübersetzung verwendet werden.
 
 ## <a name="custom-translator"></a>Benutzerdefinierter Translator
 
@@ -37,7 +37,7 @@ Das benutzerdefinierte System ist dann über einen regulären Aufruf von Transla
 
 Mit dem entsprechenden Typ und der Menge von Trainingsdaten ist es nicht ungewöhnlich, unter Verwendung des benutzerdefinierten Translators Gewinne von fünf bis zehn oder sogar mehr BLEU-Punkten für die Übersetzungsqualität zu erwarten.
 
-Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf verfügbaren Daten finden Sie im [Benutzerleitfaden für den benutzerdefinierten Translator](https://aka.ms/CustomTranslatorDocs).
+Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf verfügbaren Daten finden Sie im [Benutzerleitfaden für den benutzerdefinierten Translator](./custom-translator/overview.md).
 
 
 ## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
@@ -64,4 +64,4 @@ Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf ver
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](https://aka.ms/CustomTranslatorDocs)
+> [Set up a customized language system using Custom Translator (Einrichten eines angepassten Sprachsystems mit dem benutzerdefinierten Translator)](./custom-translator/overview.md)

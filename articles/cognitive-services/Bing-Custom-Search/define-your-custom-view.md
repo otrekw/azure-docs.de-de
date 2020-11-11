@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 57edc16f4396e0fe71380d4f51fa9e0dcca1ef03
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93090816"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367555"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -79,16 +79,16 @@ Nach dem Hinzufügen von Websegmenten zur Liste **Aktiv** werden im Portal für 
 
 ## <a name="search-for-images-and-videos"></a>Suchen nach Bildern und Videos
 
-Sie können nach Bildern und Videos auf ähnliche Weise wie nach Webinhalten suchen, indem Sie die [API für die benutzerdefinierte Bing-Bildersuche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) bzw. die [API für die benutzerdefinierte Bing-Videosuche](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) verwenden. Sie können diese Ergebnisse mit der [gehosteten Benutzeroberfläche](hosted-ui.md) oder den APIs anzeigen. 
+Sie können nach Bildern und Videos auf ähnliche Weise wie nach Webinhalten suchen, indem Sie die [API für die benutzerdefinierte Bing-Bildersuche](/rest/api/cognitiveservices-bingsearch/bing-custom-images-api-v7-reference) bzw. die [API für die benutzerdefinierte Bing-Videosuche](/rest/api/cognitiveservices-bingsearch/bing-custom-videos-api-v7-reference) verwenden. Sie können diese Ergebnisse mit der [gehosteten Benutzeroberfläche](hosted-ui.md) oder den APIs anzeigen. 
 
-Diese APIs ähneln den APIs für die nicht benutzerdefinierte [Bing-Bildersuche](../Bing-Image-Search/overview.md) und [Bing-Videosuche](../Bing-Video-Search/search-the-web.md). Es wird aber das gesamte Web durchsucht, und der Abfrageparameter `customConfig` ist nicht erforderlich. In diesen Dokumentationssätzen finden Sie auch weitere Informationen zur Arbeit mit Bildern und Videos. 
+Diese APIs ähneln den APIs für die nicht benutzerdefinierte [Bing-Bildersuche](../Bing-Image-Search/overview.md) und [Bing-Videosuche](../bing-video-search/overview.md). Es wird aber das gesamte Web durchsucht, und der Abfrageparameter `customConfig` ist nicht erforderlich. In diesen Dokumentationssätzen finden Sie auch weitere Informationen zur Arbeit mit Bildern und Videos. 
 
 ## <a name="test-your-search-instance-with-the-preview-pane"></a>Testen Ihrer Suchinstanz mit dem Bereich „Vorschau“
 
 Sie können Ihre Suchinstanz im Vorschaubereich auf der rechten Seite testen, um Suchabfragen zu übermitteln und die Ergebnisse anzuzeigen. 
 
 1. Wählen Sie unterhalb des Suchfelds die Option **Meine Instanz**. Sie können die Ergebnisse Ihrer Suchbenutzeroberfläche mit Bing vergleichen, indem Sie die Option **Bing** wählen. 
-2. Wählen Sie einen sicheren Suchfilter und den zu durchsuchenden Markt aus (siehe [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
+2. Wählen Sie einen sicheren Suchfilter und den zu durchsuchenden Markt aus (siehe [Abfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
 3. Geben Sie eine Abfrage ein, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Suchsymbol, um die Ergebnisse aus der aktuellen Konfiguration anzuzeigen. Sie können den Typ der von Ihnen durchgeführten Suche ändern, indem Sie auf **Web** , **Bild** oder **Video** klicken, um die entsprechenden Ergebnisse abzurufen. 
 
 <a name="adjustrank"></a>
@@ -165,4 +165,4 @@ Wenn Sie die benutzerdefinierte Suche auf der entsprechenden Ebene abonniert hab
 - [Aufrufen der benutzerdefinierten Suche](./search-your-custom-view.md)
 - [Konfigurieren der gehosteten Benutzeroberfläche](./hosted-ui.md)
 - [Verwenden von Dekorationsmarkierungen zum Hervorheben von Text](../bing-web-search/hit-highlighting.md)
-- [Einteilen von Webseiten](./page-webpages.md)
+- [Einteilen von Webseiten](../bing-web-search/paging-search-results.md)

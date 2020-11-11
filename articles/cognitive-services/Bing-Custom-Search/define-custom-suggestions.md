@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
-ms.openlocfilehash: 02baea817f2647f056131aa654afb129549a1e4e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: aba990914ea193a7246a24b1502522f6144a0a9c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93080973"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367589"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurieren der benutzerdefinierten Vorschlagssuche
 
@@ -93,6 +93,6 @@ Wenn der Benutzer in der Dropdownliste eine vorgeschlagene Abfragezeichenfolge a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Abrufen von benutzerdefinierten Vorschlägen](./get-custom-suggestions.md)
+- [Abrufen von benutzerdefinierten Vorschlägen]()
 - [Suchen der benutzerdefinierten Instanz](./search-your-custom-view.md)
 - [Konfigurieren und Verwenden der benutzerdefinierten gehosteten Benutzeroberfläche](./hosted-ui.md)

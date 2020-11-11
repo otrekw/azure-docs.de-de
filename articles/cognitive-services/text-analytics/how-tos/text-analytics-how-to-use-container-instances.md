@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: f7dbb79e2d9009b00b21d4c12663d8e6c855a4c0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: be43d04672dcefe368eb4052b4d1a929e25327ab
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88243750"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366858"
 ---
 # <a name="deploy-a-text-analytics-container-to-azure-container-instances"></a>Bereitstellen eines Textanalysecontainers in Azure Container Instances
 
@@ -50,7 +50,7 @@ Hier erfahren Sie, wie Sie die Cognitive Services-Container für die [Textanaly
 ## <a name="next-steps"></a>Nächste Schritte 
 
 * Verwenden weiterer [Cognitive Services-Container](../../cognitive-services-container-support.md)
-* Verwenden des [Text Analytics Connected Service](../vs-text-connected-service.md)
+* Verwenden des [Text Analytics Connected Service](../index.yml)
 
 [install-and-run-containers]: ./text-analytics-how-to-install-containers.md
 [container-instances]: https://docs.microsoft.com/azure/container-instances

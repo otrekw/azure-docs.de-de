@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: cb507df53778e1b432370daa050041625a45e06e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: cdbbd6afeedc1c8808e02aefa268be4fe0de5f9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101968"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94363373"
 ---
 # <a name="suggesting-query-terms"></a>Vorschlagen von Abfrageausdrücken
 
@@ -28,7 +28,7 @@ In der Regel rufen Sie die Bing-Vorschlagssuche-API jedes Mal auf, wenn ein Benu
 
 ## <a name="example-request"></a>Beispielanforderung
 
-Im folgenden Beispiel wird eine Anforderung gezeigt, die die vorgeschlagene Abfragezeichenfolgen für *sail* zurückgibt. Denken Sie daran, für den Teilabfragebegriff des Benutzers eine URL-Codierung durchzuführen, wenn Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) festlegen. Wenn der Benutzer also beispielsweise *sailing les* eingibt, legen Sie `q` auf `sailing+les` oder `sailing%20les` fest.
+Im folgenden Beispiel wird eine Anforderung gezeigt, die die vorgeschlagene Abfragezeichenfolgen für *sail* zurückgibt. Denken Sie daran, für den Teilabfragebegriff des Benutzers eine URL-Codierung durchzuführen, wenn Sie den Abfrageparameter [q](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#query) festlegen. Wenn der Benutzer also beispielsweise *sailing les* eingibt, legen Sie `q` auf `sailing+les` oder `sailing%20les` fest.
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/suggestions?q=sail&mkt=en-us HTTP/1.1
@@ -39,7 +39,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Die folgende Antwort enthält eine Liste mit [SearchAction](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction)-Objekten, in denen die vorgeschlagenen Abfragebegriffe enthalten sind.
+Die folgende Antwort enthält eine Liste mit [SearchAction](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference#searchaction)-Objekten, in denen die vorgeschlagenen Abfragebegriffe enthalten sind.
 
 ```json
 {
@@ -58,7 +58,7 @@ Das folgende Beispiel zeigt ein Dropdownsuchfeld mit vorgeschlagenen Suchbegriff
 
 ![Dropdownliste des Suchfelds der Vorschlagssuche](../media/cognitive-services-bing-autosuggest-api/bing-autosuggest-drop-down-list.PNG)
 
-Wenn der Benutzer eine vorgeschlagene Abfrage aus der Dropdownliste auswählt, können Sie den Abfragebegriff im `query`-Feld verwenden, um die [Bing-Websuche-API](../../bing-web-search/search-the-web.md) aufzurufen und die Ergebnisse selbst anzuzeigen. Alternativ könnten Sie die URL im `url`-Feld verwenden, um den Benutzer zur Seite mit den Bing-Suchergebnissen weiterzuleiten.
+Wenn der Benutzer eine vorgeschlagene Abfrage aus der Dropdownliste auswählt, können Sie den Abfragebegriff im `query`-Feld verwenden, um die [Bing-Websuche-API](../../bing-web-search/overview.md) aufzurufen und die Ergebnisse selbst anzuzeigen. Alternativ könnten Sie die URL im `url`-Feld verwenden, um den Benutzer zur Seite mit den Bing-Suchergebnissen weiterzuleiten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

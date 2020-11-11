@@ -12,18 +12,18 @@ ms.date: 11/02/2020
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: d58c501af3d90fec1eea43d13fa2383c8e847f18
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289695"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94365294"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
 Die Textanalyse-API ist ein cloudbasierter Dienst für Features zur Verarbeitung natürlicher Sprache, z. B. Textmining und -analyse, einschließlich Stimmungsanalysen, Opinion Mining, Schlüsselbegriffserkennung, Spracherkennung und Erkennung benannter Entitäten.
 
-Die API ist ein Teil von [Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/text-analytics-sdk.md) verwenden.
+Die API ist ein Teil von [Azure Cognitive Services](../index.yml), einer Sammlung von Algorithmen für maschinelles Lernen und künstliche Intelligenz (KI) in der Cloud, die Sie für Ihre Entwicklungsprojekte verwenden können. Sie können diese Features mit der [REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1/) oder der [Clientbibliothek ](quickstarts/text-analytics-sdk.md) verwenden.
 
 > [!VIDEO https://channel9.msdn.com/Shows/AI-Show/Understanding-Text-using-Cognitive-Services/player]
 
@@ -73,18 +73,18 @@ Sie können mit der Verwendung der Textanalyse-API in Ihren Prozessen beginnen, 
 
 * Minimaler Programmieraufwand:
     * [Extrahieren von Informationen aus Excel mithilfe von Textanalyse und Power Automate](tutorials/extract-excel-information.md)
-    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](https://docs.microsoft.com/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Verwenden der Textanalyse-API und von MS Flow zum Ermitteln der Stimmung in Kommentaren in einer Yammer-Gruppe](/Yammer/integrate-yammer-with-other-apps/sentiment-analysis-flow-azure?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
     * [Integrieren von Power BI mit der Textanalyse-API zur Analyse von Kundenfeedback](tutorials/tutorial-power-bi-key-phrases.md)
 * Programmiererfahrung empfohlen:
-    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
-    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](https://docs.microsoft.com/azure/cognitive-services/translator/tutorial-build-flask-app-translation-synthesis?toc=%2F%2Fazure%2Fcognitive-services%2Ftext-analytics%2Ftoc.json&bc=%2F%2Fazure%2Fbread%2Ftoc.json)
+    * [Standpunktanalyse für Streamingdaten mit Azure Databricks](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
+    * [Erstellen einer Flask-App zum Übersetzen von Text, Analysieren der Stimmung und Synthetisieren von Sprache](../translator/tutorial-build-flask-app-translation-synthesis.md?bc=%252f%252fazure%252fbread%252ftoc.json&toc=%252f%252fazure%252fcognitive-services%252ftext-analytics%252ftoc.json)
 
 
 <a name="supported-languages"></a>
 
 ## <a name="supported-languages"></a>Unterstützte Sprachen
 
-Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artikel verschoben. Diesen Inhalt finden Sie unter [Supported languages in the Text Analytics API](text-analytics-supported-languages.md) (Unterstützte Sprachen in der Textanalyse-API).
+Für eine bessere Auffindbarkeit wurde dieser Abschnitt in einen separaten Artikel verschoben. Diesen Inhalt finden Sie unter [Supported languages in the Text Analytics API](./language-support.md) (Unterstützte Sprachen in der Textanalyse-API).
 
 <a name="data-limits"></a>
 
@@ -94,7 +94,7 @@ Alle Endpunkte der Textanalyse-API akzeptieren unformatierte Textdaten. Weitere 
 
 ## <a name="unicode-encoding"></a>Unicode-Codierung
 
-Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie [`StringInfo.LengthInTextElements`](https://docs.microsoft.com/dotnet/api/system.globalization.stringinfo.lengthintextelements) verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
+Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die Berechnung der Zeichenanzahl. Anforderungen können in UTF-8 und UTF-16 übermittelt werden, dabei gibt es keine messbaren Unterschiede bei der Zeichenanzahl. Unicode-Codepunkte werden als Heuristik für die Zeichenlänge verwendet und werden für die Grenzwerte der Textanalysedaten als äquivalent betrachtet. Wenn Sie [`StringInfo.LengthInTextElements`](/dotnet/api/system.globalization.stringinfo.lengthintextelements) verwenden, um die Zeichenanzahl abzurufen, verwenden Sie die gleiche Methode wie wir, um die Datengröße zu ermitteln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -104,6 +104,6 @@ Die Textanalyse-API verwendet Unicode-Codierung für die Textdarstellung und die
 
 + Informationen zu neuen Releases und Features finden Sie unter [What's new in the Text Analytics API?](whats-new.md) (Neuigkeiten bei der Textanalyse-API).
 
-+ In [diesem Tutorial zur Standpunktanalyse](https://docs.microsoft.com/azure/azure-databricks/databricks-sentiment-analysis-cognitive-services) mit Azure Databricks erhalten Sie ausführlichere Informationen.
++ In [diesem Tutorial zur Standpunktanalyse](/azure/databricks/scenarios/databricks-sentiment-analysis-cognitive-services) mit Azure Databricks erhalten Sie ausführlichere Informationen.
 
 + Eine Liste von Blogbeiträgen und Videos, in denen die Verwendung der Textanalyse-API mit anderen Tools und Technologien veranschaulicht wird, finden Sie auf der Seite [Externe Inhalte und Community-Inhalte für die Textanalyse in Cognitive Service](text-analytics-resource-external-community.md).

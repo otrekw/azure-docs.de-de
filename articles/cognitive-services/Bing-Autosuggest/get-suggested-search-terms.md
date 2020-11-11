@@ -10,12 +10,12 @@ ms.subservice: bing-autosuggest
 ms.topic: overview
 ms.date: 12/18/2019
 ms.author: scottwhi
-ms.openlocfilehash: d55ff4ed8717a449628e94a940c0896d31818da2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0187a5d2be6b2f93897fc358e26ad095e5a70f7
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101934"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364580"
 ---
 # <a name="what-is-bing-autosuggest"></a>Worum handelt es sich bei der Bing-Vorschlagssuche?
 
@@ -36,7 +36,7 @@ Wenn Ihre Anwendung Abfragen an eine der Bing-Suche-APIs senden, können Sie die
 
 Die Bing-Vorschlagssuche-API ist ein RESTful-Webdienst und kann somit problemlos in jeder Programmiersprache aufgerufen werden, die HTTP-Anforderungen beherrscht und JSON analysieren kann.
 
-1. Erstellen Sie ein [Cognitive Services-API-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/free/cognitive-services/).
+1. Erstellen Sie ein [Cognitive Services-API-Konto](../cognitive-services-apis-create-account.md) mit Zugriff auf die Bing-Suche-APIs. Falls Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses [Konto erstellen](https://azure.microsoft.com/free/cognitive-services/).
 2. Senden Sie jedes Mal eine Anforderung an diese API, wenn ein Benutzer ein neues Zeichen in das Suchfeld Ihrer Anwendung eingibt.
 3. Analysieren Sie die zurückgegebene JSON-Nachricht, um die API-Antwort zu verarbeiten.
 
@@ -52,11 +52,11 @@ Wenn ein Benutzer einen Vorschlag aus der Dropdownliste auswählt, können Sie d
 
 Der Artikel [Erstellen Ihrer ersten Anforderung](quickstarts/csharp.md) ermöglicht einen schnellen Einstieg in die Verwendung Ihrer ersten Abfrage.
 
-Machen Sie sich mit der Referenz für die [Bing-Vorschlagssuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) vertraut. Die Referenz enthält die Liste mit den Endpunkten, Headern und Abfrageparametern, die Sie zum Anfordern von vorgeschlagenen Abfragebegriffen verwenden können, sowie die Definitionen der Antwortobjekte.
+Machen Sie sich mit der Referenz für die [Bing-Vorschlagssuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-autosuggest-api-v7-reference) vertraut. Die Referenz enthält die Liste mit den Endpunkten, Headern und Abfrageparametern, die Sie zum Anfordern von vorgeschlagenen Abfragebegriffen verwenden können, sowie die Definitionen der Antwortobjekte.
 
-Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/search-the-web.md), um die anderen verfügbaren APIs zu untersuchen.
+Besuchen Sie die Seite [Was ist die Bing-Websuche-API?](../bing-web-search/overview.md), um die anderen verfügbaren APIs zu untersuchen.
 
 
-Hier erfahren Sie, wie Sie das Internet unter Verwendung der [Bing-Websuche-API](../bing-web-search/search-the-web.md) durchsuchen und die anderen [Bing-Suche-APIs](../bing-web-search/index.yml) kennenlernen:
+Hier erfahren Sie, wie Sie das Internet unter Verwendung der [Bing-Websuche-API](../bing-web-search/overview.md) durchsuchen und die anderen [Bing-Suche-APIs](../bing-web-search/index.yml) kennenlernen:
 
-Machen Sie sich vorher unbedingt mit den [Verwendungs- und Anzeigeanforderungen von Bing](./useanddisplayrequirements.md) vertraut, um nicht gegen die Regeln für die Verwendung der Suchergebnisse zu verstoßen.
+Machen Sie sich vorher unbedingt mit den [Verwendungs- und Anzeigeanforderungen von Bing](../bing-web-search/use-display-requirements.md) vertraut, um nicht gegen die Regeln für die Verwendung der Suchergebnisse zu verstoßen.

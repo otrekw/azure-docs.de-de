@@ -10,18 +10,18 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 06/27/2019
 ms.author: aahi
-ms.openlocfilehash: 205adf8cb173c9df30e9907b5fe9de6d5d5ab343
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e7207a1d675298779c3523ee93a8169ac0a26e4a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098313"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94367113"
 ---
 # <a name="sending-requests-to-the-bing-spell-check-api"></a>Senden von Anforderungen an die Bing-Rechtschreibprüfungs-API
 
 > [!WARNING]
 > Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
-> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang oder bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
+> APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
 > Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
 Um eine Textzeichenfolge auf Rechtschreib- und Grammatikfehler zu überprüfen, senden Sie eine GET-Anforderung an den folgenden Endpunkt:  
@@ -34,16 +34,16 @@ Die Anforderung muss das HTTPS-Protokoll verwenden.
 
 Alle Anforderungen sollten von einem Server stammen. Das Verteilen eines Schlüssels als Teil einer Clientanwendung birgt ein größeres Risiko, dass eine böswillige dritte Partei darauf zugreift. Ein Server stellt zudem einen einzelnen Upgradepunkt für zukünftige Versionen der API dar.
 
-Die Anforderung muss den [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text)-Abfrageparameter angeben, der die zu korrigierende Textzeichenfolge enthält. Obwohl er optional ist, sollte die Anforderung auch den [mkt](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt)-Abfrageparameter angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter wie `mode`. Alle Abfrageparameterwerte müssen URL-codiert sein.  
+Die Anforderung muss den [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#text)-Abfrageparameter angeben, der die zu korrigierende Textzeichenfolge enthält. Obwohl er optional ist, sollte die Anforderung auch den [mkt](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#mkt)-Abfrageparameter angeben, wodurch der Markt identifiziert wird, von dem die Ergebnisse stammen sollen. Unter [Abfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#query-parameters) finden Sie eine Liste optionaler Abfrageparameter wie `mode`. Alle Abfrageparameterwerte müssen URL-codiert sein.  
   
-Die Anforderung muss den [Ocp-Apim-Subscription-Key](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben. Mit diesen Headern kann die Bing-Rechtschreibprüfungs-API genauere Ergebnisse zurückgeben:  
+Die Anforderung muss den [Ocp-Apim-Subscription-Key](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#subscriptionkey)-Header angeben. Auch wenn dies optional ist, sollten Sie die folgenden Header ebenfalls angeben. Mit diesen Headern kann die Bing-Rechtschreibprüfungs-API genauere Ergebnisse zurückgeben:  
   
--   [User-Agent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
--   [X-MSEdge-ClientID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
--   [X-Search-ClientIP](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
--   [X-Search-Location](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
+-   [User-Agent](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#useragent)  
+-   [X-MSEdge-ClientID](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientid)  
+-   [X-Search-ClientIP](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#clientip)  
+-   [X-Search-Location](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#location)  
 
-Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
+Eine Liste aller Anforderungs- und Antwortheader finden Sie unter [Header](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v5-reference#headers).
 
 Beim Aufrufen der Bing-Rechtschreibprüfungs-API über JavaScript verhindern jedoch die Sicherheitsfunktionen Ihres Browsers möglicherweise den Zugriff auf die Werte dieser Header.
 
@@ -132,4 +132,4 @@ BingAPIs-Market: en-US
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?](../overview.md)
-- [Referenz zur Bing-Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referenz zur Bing-Rechtschreibprüfungs-API v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
