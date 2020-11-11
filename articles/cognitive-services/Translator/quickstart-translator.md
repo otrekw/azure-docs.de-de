@@ -12,12 +12,12 @@ ms.date: 09/14/2020
 ms.author: erhopf
 ms.custom: cog-serv-seo-aug-2020
 keywords: Textübersetzung, Übersetzerdienst, Text übersetzen, Text transkribieren, Sprachenerkennung
-ms.openlocfilehash: 8250141c2baa92478c5929a300ec7b17b8ed7131
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68bbb31ae87ebbb84cda752c2f4a7c1bd1116dda
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322515"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369527"
 ---
 # <a name="quickstart-get-started-with-translator"></a>Schnellstart: Erste Schritte mit der Textübersetzung
 
@@ -105,7 +105,7 @@ Beim Aufrufen des Textübersetzungsdiensts über REST müssen Sie sicherstellen,
   <th>BESCHREIBUNG</th>
   <tr>
     <td>Authentifizierungsheader</td>
-    <td><em>Erforderlicher Anforderungsheader</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>Erforderlicher Anforderungsheader bei Verwendung einer Cognitive Services-Ressource. Optional, wenn eine Textübersetzungsressource verwendet wird.</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Weitere Informationen finden Sie in den <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
+    <td><em>Erforderlicher Anforderungsheader</em>.<br/><code>Ocp-Apim-Subscription-Key</code><br/><br/><em>Erforderlicher Anforderungsheader bei Verwendung einer Cognitive Services-Ressource. Optional, wenn eine Textübersetzungsressource verwendet wird.</em>.<br/><code>Ocp-Apim-Subscription-Region</code><br/><br/>Weitere Informationen finden Sie in den <a href="/azure/cognitive-services/translator/reference/v3-0-reference#authentication">verfügbaren Optionen für die Authentifizierung</a>.</td>
   </tr>
   <tr>
     <td>Content-Type</td>
@@ -123,7 +123,7 @@ Beim Aufrufen des Textübersetzungsdiensts über REST müssen Sie sicherstellen,
 
 ## <a name="keys-and-endpoints"></a>Keys and endpoints (Schlüssel und Endpunkte)
 
-In den Beispielen auf dieser Seite werden aus Gründen der Einfachheit hartcodierte Schlüssel und Endpunkte verwendet. Denken Sie daran, **den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind** , und ihn **niemals zu veröffentlichen**. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security).
+In den Beispielen auf dieser Seite werden aus Gründen der Einfachheit hartcodierte Schlüssel und Endpunkte verwendet. Denken Sie daran, **den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind** , und ihn **niemals zu veröffentlichen**. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../cognitive-services-security.md).
 
 ## <a name="translate-text"></a>Text übersetzen 
 
@@ -686,7 +686,7 @@ Nach einem erfolgreichen Aufruf sollten Sie die folgende Antwort sehen:
 
 ### <a name="detect-source-language-without-translation"></a>Erkennen der Quellsprache ohne Übersetzung
 
-Es ist möglich, den Textübersetzungsdienst zum Erkennen der Sprache von Quelltext zu verwenden, ohne eine Übersetzung durchzuführen. Zu diesem Zweck verwenden Sie den [`/detect`](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-detect)-Endpunkt. 
+Es ist möglich, den Textübersetzungsdienst zum Erkennen der Sprache von Quelltext zu verwenden, ohne eine Übersetzung durchzuführen. Zu diesem Zweck verwenden Sie den [`/detect`](./reference/v3-0-detect.md)-Endpunkt. 
 
 # <a name="c"></a>[C#](#tab/csharp)
 

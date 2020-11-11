@@ -100,7 +100,7 @@
   items:
     - name: Problembehandlung
       items:
-        - name: Hilfe bei Bereitstellungsfehlern
+        - name: Öffnen einer Supportanfrage für Bereitstellungsfehler
           href: fix-deployment-provisioning-failures.md
     - name: Häufig gestellte Fragen
       href: faq.md

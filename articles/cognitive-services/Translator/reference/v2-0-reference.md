@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
-ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fd0dbe5912b7c4df3c666c648dbf9a92d5398cf1
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83588614"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369510"
 ---
 # <a name="translator-v20"></a>Translator v2.0
 
@@ -25,7 +25,7 @@ ms.locfileid: "83588614"
 Version 2 von Translator kann nahtlos in Ihre Apps, Websites, Tools oder andere Lösungen integriert werden, damit Benutzererlebnisse in mehreren Sprachen zur Verfügung stehen. Sie können sie auf jeder Hardwareplattform und mit jedem Betriebssystem verwenden, um Sprachübersetzungen und andere sprachbezogene Vorgänge wie Textsprachenerkennung oder Sprachsynthese nach Industriestandards durchzuführen. Weitere Informationen finden Sie unter [Was ist Translator?](../translator-info-overview.md).
 
 ## <a name="getting-started"></a>Erste Schritte
-Für den Zugriff auf Translator müssen Sie sich bei [Microsoft Azure registrieren](../translator-text-how-to-signup.md).
+Für den Zugriff auf Translator müssen Sie sich bei [Microsoft Azure registrieren](../translator-how-to-signup.md).
 
 ## <a name="authentication"></a>Authentifizierung 
 Alle Aufrufe von Translator erfordern einen Abonnementschlüssel für die Authentifizierung. Die API unterstützt drei Authentifizierungsmethoden:
@@ -607,11 +607,11 @@ Das `TranslateOptions`-Objekt enthält die Werte in der folgenden Liste. Diese s
 
 * `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.
 * `ContentType`: Es wird nur die Option `text/plain` unterstützt, und dies ist auch die Standardeinstellung.
-* `IncludeMultipleMTAlternatives`: Ein boolesches Flag, das bestimmt, ob mehrere Alternativen von der MT-Engine zurückgegeben werden sollen. Die gültigen Werte lauten `true` und `false` (mit Berücksichtigung der Groß-/Kleinschreibung). Der Standardwert ist `false`. Dieser gibt nur eine Alternative zurück. Durch das Festlegen des Flags auf `true` wird die Erstellung künstlicher Alternativen ermöglicht, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature ermöglicht, dass Alternativen für Sätze zurückgegeben werden, die keine Übersetzungen im CTF aufweisen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der *n*-besten Liste des Decoders.
+* `IncludeMultipleMTAlternatives`: Ein boolesches Flag, das bestimmt, ob mehrere Alternativen von der MT-Engine zurückgegeben werden sollen. Die gültigen Werte lauten `true` und `false` (mit Berücksichtigung der Groß-/Kleinschreibung). Der Standardwert ist `false`. Dieser gibt nur eine Alternative zurück. Durch das Festlegen des Flags auf `true` wird die Erstellung künstlicher Alternativen ermöglicht, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature ermöglicht, dass Alternativen für Sätze zurückgegeben werden, die keine Übersetzungen im CTF aufweisen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der *n* -besten Liste des Decoders.
     - Bewertungen. Die Bewertungen werden wie folgt angewendet: 
          - Die beste automatische Übersetzung erhält die Bewertung 5.
        - Die Alternativen des CTF spiegeln die Autorität des Reviewers wider. Die Werte liegen im Bereich von -10 bis +10.
-       - Die automatisch generierten (*n*-besten) Übersetzungsalternativen haben eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
+       - Die automatisch generierten ( *n* -besten) Übersetzungsalternativen haben eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
     - Anzahl von Alternativen. Die Anzahl der zurückgegebenen Alternativen kann dem in `maxTranslations` angegebenen Wert entsprechen, jedoch auch niedriger sein.
     - Sprachenpaare. Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch (in beide Richtungen) nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachenpaare verfügbar.
 * `State`: Der Benutzerstatus, mit dem die Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
@@ -719,11 +719,11 @@ Der Anforderungstext hat das folgende Format:
 * `Options`: Optional. Ein `Options`-Objekt, das die folgenden Werte enthält. Diese sind alle optional und entsprechen den Standardwerten für die häufigsten Einstellungen. Angegebene Element müssen in alphabetischer Reihenfolge aufgelistet werden.
     - `Category`: Eine Zeichenfolge, die die Kategorie (Domäne) der Übersetzung enthält. Der Standardwert lautet `general`.
     - `ContentType`: Es wird nur die Option `text/plain` unterstützt, und dies ist auch die Standardeinstellung.
-    - `IncludeMultipleMTAlternatives`: Ein boolesches Flag, das bestimmt, ob mehrere Alternativen von der MT-Engine zurückgegeben werden sollen. Die gültigen Werte lauten `true` und `false` (mit Berücksichtigung der Groß-/Kleinschreibung). Der Standardwert ist `false`. Dieser gibt nur eine Alternative zurück. Durch das Festlegen des Flags auf `true` wird die Generierung künstlicher Alternativen in der Übersetzung ermöglicht, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature ermöglicht, dass Alternativen für Sätze zurückgegeben werden, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der *n*-besten Liste des Decoders.
+    - `IncludeMultipleMTAlternatives`: Ein boolesches Flag, das bestimmt, ob mehrere Alternativen von der MT-Engine zurückgegeben werden sollen. Die gültigen Werte lauten `true` und `false` (mit Berücksichtigung der Groß-/Kleinschreibung). Der Standardwert ist `false`. Dieser gibt nur eine Alternative zurück. Durch das Festlegen des Flags auf `true` wird die Generierung künstlicher Alternativen in der Übersetzung ermöglicht, die vollständig in das Framework für kollaborative Übersetzungen (Collaborative Translations Framework, CTF) integriert sind. Das Feature ermöglicht, dass Alternativen für Sätze zurückgegeben werden, die keine Alternativen im CTF besitzen. Dies geschieht durch Hinzufügen künstlicher Alternativen aus der *n* -besten Liste des Decoders.
         - Bewertungen: Die Bewertungen werden wie folgt angewendet:
           - Die beste automatische Übersetzung erhält die Bewertung 5.
           - Die Alternativen des CTF spiegeln die Autorität des Reviewers wider. Die Werte liegen im Bereich von -10 bis +10.
-          - Die automatisch generierten (*n*-besten) Übersetzungsalternativen haben eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
+          - Die automatisch generierten ( *n* -besten) Übersetzungsalternativen haben eine Bewertung von 0 und einen Übereinstimmungsgrad von 100.
         - Anzahl von Alternativen. Die Anzahl der zurückgegebenen Alternativen kann dem in `maxTranslations` angegebenen Wert entsprechen, jedoch auch niedriger sein.
         - Sprachenpaare. Diese Funktion ist für Übersetzungen zwischen einfachem und traditionellem Chinesisch (in beide Richtungen) nicht verfügbar. Sie ist für alle anderen von Microsoft Translator unterstützten Sprachenpaare verfügbar.
 * `State`: Der Benutzerstatus, mit dem die Anforderung und Antwort korreliert werden können. Die gleichen Inhalte werden in der Antwort zurückgegeben.
@@ -804,5 +804,3 @@ Antwortinhaltstyp: application/xml
 
 > [!div class="nextstepaction"]
 > [Migrieren zu Version 3 von Translator](../migrate-to-v3.md)
-
-

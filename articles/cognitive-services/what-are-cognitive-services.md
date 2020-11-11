@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 10/22/2020
 ms.author: nitinme
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 82531466c80917087ca007900ca79b3485f38a21
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: d134532e7f285f391b6791a9fc73d5e3251ddac8
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546261"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369408"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Was ist Azure Cognitive Services?
 
@@ -39,59 +39,59 @@ In den folgenden Abschnitten dieses Artikels werden die zugehörigen Dienste die
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Maschinelles Sehen")|Über den Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte kognitive Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen.|
-|[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|Mit dem Custom Vision Service können Sie benutzerdefinierte Bildklassifizierungen erstellen.|
-|[Gesichtserkennung](https://docs.microsoft.com/azure/cognitive-services/face/ "Gesicht")| Der Gesichtserkennungsdienst ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird.|
-|[Formularerkennung](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Formularerkennung")|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen.|
-|[Freihanderkennung](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Freihanderkennung") (wird eingestellt)|Die Freihanderkennung ermöglicht das Erkennen und Analysieren von Daten, Formen und handschriftlichen Inhalten aus Freihandeingaben sowie die Ausgabe einer Dokumentstruktur mit allen erkannten Entitäten.|
-|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren.|
+|[Maschinelles Sehen](./computer-vision/index.yml "Maschinelles Sehen")|Über den Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte kognitive Algorithmen für die Bildverarbeitung und die Rückgabe von Informationen.|
+|[Custom Vision Service](./custom-vision-service/overview.md "Custom Vision Service")|Mit dem Custom Vision Service können Sie benutzerdefinierte Bildklassifizierungen erstellen.|
+|[Gesichtserkennung](./face/index.yml "Gesicht")| Der Gesichtserkennungsdienst ermöglicht den Zugriff auf erweiterte Algorithmen zur Gesichtserkennung, wodurch die Ermittlung von Gesichtsmerkmalen sowie die Gesichtserkennung ermöglicht wird.|
+|[Formularerkennung](./form-recognizer/index.yml "Formularerkennung")|Die Formularerkennung identifiziert und extrahiert Schlüssel-Wert-Paare und Tabellendaten aus Formulardokumenten und gibt dann strukturierte Daten aus, die auch die Beziehungen in der ursprünglichen Datei umfassen.|
+|[Freihanderkennung](./ink-recognizer/index.yml "Freihanderkennung") (wird eingestellt)|Die Freihanderkennung ermöglicht das Erkennen und Analysieren von Daten, Formen und handschriftlichen Inhalten aus Freihandeingaben sowie die Ausgabe einer Dokumentstruktur mit allen erkannten Entitäten.|
+|[Video Indexer](../media-services/video-indexer/video-indexer-overview.md "Video Indexer")|Video Indexer ermöglicht es Ihnen, Erkenntnisse aus Ihrem Video zu extrahieren.|
 
 ## <a name="speech-apis"></a>Spracherkennungs-APIs
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Speech-Dienst](https://docs.microsoft.com/azure/cognitive-services/speech-service/ "Speech-Dienst")|Der Spracherkennungsdienst erweitert Anwendungen um sprachaktivierte Features. Der Speech-Dienst umfasst verschiedene Funktionen wie Spracherkennung, Sprachsynthese, Sprachübersetzung und vieles mehr.|
+|[Speech-Dienst](./speech-service/index.yml "Speech-Dienst")|Der Spracherkennungsdienst erweitert Anwendungen um sprachaktivierte Features. Der Speech-Dienst umfasst verschiedene Funktionen wie Spracherkennung, Sprachsynthese, Sprachübersetzung und vieles mehr.|
 <!--
-|[Speaker Recognition API](https://docs.microsoft.com/azure/cognitive-services/speaker-recognition/home "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
-|[Bing Speech](https://docs.microsoft.com/azure/cognitive-services/speech/home "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
-|[Translator Speech](https://docs.microsoft.com/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
+|[Speaker Recognition API](./speech-service/speaker-recognition-overview.md "Speaker Recognition API") (Preview)|The Speaker Recognition API provides algorithms for speaker identification and verification.|
+|[Bing Speech](./speech-service/how-to-migrate-from-bing-speech.md "Bing Speech") (Retiring)|The Bing Speech API provides you with an easy way to create speech-enabled features in your applications.|
+|[Translator Speech](/azure/cognitive-services/translator-speech/ "Translator Speech") (Retiring)|Translator Speech is a machine translation service.|
 -->
 ## <a name="language-apis"></a>Sprache-APIs
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Language Understanding (LUIS)](https://docs.microsoft.com/azure/cognitive-services/luis/ "Language Understanding")|Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.|
-|[QnA Maker](https://docs.microsoft.com/azure/cognitive-services/qnamaker/index "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen.|
-|[Textanalyse](https://docs.microsoft.com/azure/cognitive-services/text-analytics/ "Textanalyse")| Die Textanalyse bietet die Verarbeitung von natürlicher Sprache für unformatierten Text für die Standpunktanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung.|
-|[Translator](https://docs.microsoft.com/azure/cognitive-services/translator/ "Übersetzer")|Translator ermöglicht eine maschinenbasierte Textübersetzung in Quasi-Echtzeit.|
-| [Plastischer Reader](https://docs.microsoft.com/azure/cognitive-services/immersive-reader/ "Plastischer Reader") | Plastischer Reader erweitert Ihre Anwendungen um Sprachausgabe sowie um Funktionen zum besseren Verständnis. |
+|[Language Understanding (LUIS)](./luis/index.yml "Language Understanding")|Mit dem Dienst „Language Understanding“ (LUIS) kann Ihre Anwendung es verstehen, wenn eine Person Wünsche in ihrer eigenen Sprache äußert.|
+|[QnA Maker](./qnamaker/index.yml "QnA Maker")|QnA Maker ermöglicht es Ihnen, aus Ihren teilstrukturierten Inhalten einen Frage- und Antwortdienst zu erstellen.|
+|[Textanalyse](./text-analytics/index.yml "Textanalyse")| Die Textanalyse bietet die Verarbeitung von natürlicher Sprache für unformatierten Text für die Standpunktanalyse, die Schlüsselbegriffserkennung und die Sprachenerkennung.|
+|[Translator](./translator/index.yml "Übersetzer")|Translator ermöglicht eine maschinenbasierte Textübersetzung in Quasi-Echtzeit.|
+| [Plastischer Reader](./immersive-reader/index.yml "Plastischer Reader") | Plastischer Reader erweitert Ihre Anwendungen um Sprachausgabe sowie um Funktionen zum besseren Verständnis. |
 
 ## <a name="decision-apis"></a>Entscheidungs-APIs
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Anomalieerkennung](https://docs.microsoft.com/azure/cognitive-services/anomaly-detector/ "Anomalieerkennung") |Die Anomalieerkennung bietet Ihnen die Möglichkeit, Abweichungen in Ihren Zeitreihendaten zu überwachen und zu erkennen.|
-|[Content Moderator](https://docs.microsoft.com/azure/cognitive-services/content-moderator/overview "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte.|
-|[Metrics Advisor](https://docs.microsoft.com/azure/cognitive-services/metrics-advisor) (Vorschauversion) | Metrics Advisor bietet eine anpassbare Anomalieerkennung für multivariate Zeitreihendaten sowie ein umfassendes Webportal, das Sie bei der Verwendung des Diensts unterstützt.|
-|[Personalisierung](https://docs.microsoft.com/azure/cognitive-services/personalizer/ "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
+|[Anomalieerkennung](./anomaly-detector/index.yml "Anomalieerkennung") |Die Anomalieerkennung bietet Ihnen die Möglichkeit, Abweichungen in Ihren Zeitreihendaten zu überwachen und zu erkennen.|
+|[Content Moderator](./content-moderator/overview.md "Content Moderator")|Der Content Moderator bietet die Überwachung auf möglicherweise anstößige, unerwünschte und risikobehaftete Inhalte.|
+|[Metrics Advisor](./metrics-advisor/index.yml) (Vorschauversion) | Metrics Advisor bietet eine anpassbare Anomalieerkennung für multivariate Zeitreihendaten sowie ein umfassendes Webportal, das Sie bei der Verwendung des Diensts unterstützt.|
+|[Personalisierung](./personalizer/index.yml "Personalisierung")|Mit der Personalisierung können Sie die beste Benutzeroberfläche für Ihre Benutzer auswählen und dabei in Echtzeit von deren Verhalten lernen.|
 
 ## <a name="search-apis"></a>Such-APIs
 
 > [!NOTE]
-> Suchen Sie [Azure Cognitive Search](https://docs.microsoft.com/azure/search/)? Cognitive Services wird zwar für einige Aufgaben verwendet, doch handelt es sich dabei um eine andere Suchtechnologie, die andere Szenarien unterstützt.
+> Suchen Sie [Azure Cognitive Search](../search/index.yml)? Cognitive Services wird zwar für einige Aufgaben verwendet, doch handelt es sich dabei um eine andere Suchtechnologie, die andere Szenarien unterstützt.
 
 |Service Name|Dienstbeschreibung|
 |:-----------|:------------------|
-|[Bing-News-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-news-search/ "Bing News-Suche")|Die Bing-News-Suche gibt eine Liste von Nachrichtenartikeln zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
-|[Bing-Videosuche](https://docs.microsoft.com/azure/cognitive-services/Bing-Video-Search/ "Bing-Videosuche")|Die Bing-Videosuche gibt eine Liste von Videos zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
-|[Bing-Websuche](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/ "Bing-Websuche")|Die Bing-Websuche gibt eine Liste von Suchergebnissen zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
-|[Bing-Vorschlagssuche](https://docs.microsoft.com/azure/cognitive-services/Bing-Autosuggest "Bing-Vorschlagssuche")|Mit der Bing-Vorschlagssuche können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Abfragen.|
-|[Benutzerdefinierte Bing-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search "Benutzerdefinierte Bing-Suche")|Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren.|
-|[Bing-Entitätssuche](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/ "Bing-Entitätssuche")|Die Bing-Entitätssuche gibt Informationen zu Entitäten zurück, die nach Einschätzung von Bing für eine Abfrage des Benutzers relevant sind.|
-|[Bing-Bildersuche](https://docs.microsoft.com/azure/cognitive-services/bing-image-search "Bing-Bildersuche")|Die Bing-Bildersuche gibt eine Liste von Bildern zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
-|[Visuelle Bing-Suche](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search "Visuelle Bing-Suche")|Die visuelle Bing-Suche gibt Informationen zu einem Bild zurück, z. B. visuell ähnliche Bilder, Einkaufsquellen für abgebildete Elemente und verwandte Suchvorgänge.|
-|[Bing-Suche für ortsansässige Unternehmen](https://docs.microsoft.com/azure/cognitive-services/bing-local-business-search/ "Bing-Suche für ortsansässige Unternehmen")| Mit der Bing-API für die Suche nach ortsansässigen Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen.|
-|[Bing-Rechtschreibprüfung](https://docs.microsoft.com/azure/cognitive-services/bing-spell-check/ "Bing-Rechtschreibprüfung")|Die Bing-Rechtschreibprüfung ermöglicht es Ihnen, kontextbezogene Grammatik- und Rechtschreibprüfungen durchzuführen.|
+|[Bing-News-Suche](/azure/cognitive-services/bing-news-search/ "Bing News-Suche")|Die Bing-News-Suche gibt eine Liste von Nachrichtenartikeln zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
+|[Bing-Videosuche](/azure/cognitive-services/Bing-Video-Search/ "Bing-Videosuche")|Die Bing-Videosuche gibt eine Liste von Videos zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
+|[Bing-Websuche](./bing-web-search/index.yml "Bing-Websuche")|Die Bing-Websuche gibt eine Liste von Suchergebnissen zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
+|[Bing-Vorschlagssuche](/azure/cognitive-services/Bing-Autosuggest "Bing-Vorschlagssuche")|Mit der Bing-Vorschlagssuche können Sie einen Teil eines Suchbegriffs an Bing senden und erhalten dann eine Liste mit vorgeschlagenen Abfragen.|
+|[Benutzerdefinierte Bing-Suche](/azure/cognitive-services/bing-custom-search "Benutzerdefinierte Bing-Suche")|Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren.|
+|[Bing-Entitätssuche](/azure/cognitive-services/bing-entities-search/ "Bing-Entitätssuche")|Die Bing-Entitätssuche gibt Informationen zu Entitäten zurück, die nach Einschätzung von Bing für eine Abfrage des Benutzers relevant sind.|
+|[Bing-Bildersuche](/azure/cognitive-services/bing-image-search "Bing-Bildersuche")|Die Bing-Bildersuche gibt eine Liste von Bildern zurück, die für die Abfrage des Benutzers als relevant eingestuft wurden.|
+|[Visuelle Bing-Suche](/azure/cognitive-services/bing-visual-search "Visuelle Bing-Suche")|Die visuelle Bing-Suche gibt Informationen zu einem Bild zurück, z. B. visuell ähnliche Bilder, Einkaufsquellen für abgebildete Elemente und verwandte Suchvorgänge.|
+|[Bing-Suche für ortsansässige Unternehmen](/azure/cognitive-services/bing-local-business-search/ "Bing-Suche für ortsansässige Unternehmen")| Mit der Bing-API für die Suche nach ortsansässigen Unternehmen können Ihre Anwendungen basierend auf Suchabfragen Kontakt- und Standortdaten von Unternehmen in der näheren Umgebung suchen.|
+|[Bing-Rechtschreibprüfung](/azure/cognitive-services/bing-spell-check/ "Bing-Rechtschreibprüfung")|Die Bing-Rechtschreibprüfung ermöglicht es Ihnen, kontextbezogene Grammatik- und Rechtschreibprüfungen durchzuführen.|
 
 ## <a name="development-options"></a>Entwicklungsoptionen 
 
@@ -111,7 +111,7 @@ Machen Sie sich anhand von praktischen Schnellstartanleitungen mit der Erstellun
 * [Azure portal](cognitive-services-apis-create-account.md?tabs=multiservice%2Cwindows "Azure-Portal")
 * [Azure-Befehlszeilenschnittstelle](cognitive-services-apis-create-account-cli.md?tabs=windows "Azure CLI")
 * [Azure SDK-Clientbibliotheken](cognitive-services-apis-create-account-cli.md?tabs=windows "cognitive-services-apis-create-account-client-library?pivots=programming-language-csharp")
-* [Azure Resource Manager-Vorlagen](resource-manager-template.md?tabs=portal "Azure Resource Manager-Vorlagen")
+* [Azure Resource Manager-Vorlagen](./create-account-resource-manager-template.md?tabs=portal "Azure Resource Manager-Vorlagen")
 
 <!--
 ## Subscription management

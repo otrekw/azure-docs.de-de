@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: aahi
-ms.openlocfilehash: e7613f4b6bb301c603ae5ded98f271f3cb98b340
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1a52471240ca80335690568faed7849eabc30baf
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074096"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381064"
 ---
 # <a name="how-to-page-through-results-from-the-bing-search-apis"></a>Durchblättern der Suchergebnisse der Bing-Suche-APIs
 
@@ -73,15 +73,15 @@ Host: api.cognitive.microsoft.com
 Wenn Sie die Bing-Bildersuche- und Bing-Videosuche-APIs verwenden, können Sie mit dem Wert `nextOffset` doppelte Suchergebnisse vermeiden. Rufen Sie den Wert aus den Antwortobjekten `Images` oder `Videos` ab, und verwenden Sie ihn in Ihren Anforderungen mit dem `offset`-Parameter.  
 
 > [!NOTE]
-> Die Bing-Websuche-API gibt Suchergebnisse zurück, die Webseiten, Bilder, Videos und Nachrichten enthalten können. Wenn Sie durch die Suchergebnisse aus dem Bing-Websuche-API blättern, werden nur [Webseiten](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) angezeigt, keine anderen Antworttypen, wie etwa Bilder oder Nachrichten. Suchergebnisse in `WebPage`-Objekten enthalten möglicherweise Ergebnisse, die auch in anderen Antworttypen angezeigt werden.
+> Die Bing-Websuche-API gibt Suchergebnisse zurück, die Webseiten, Bilder, Videos und Nachrichten enthalten können. Wenn Sie durch die Suchergebnisse aus dem Bing-Websuche-API blättern, werden nur [Webseiten](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#webpage) angezeigt, keine anderen Antworttypen, wie etwa Bilder oder Nachrichten. Suchergebnisse in `WebPage`-Objekten enthalten möglicherweise Ergebnisse, die auch in anderen Antworttypen angezeigt werden.
 >
 > Wenn Sie den `responseFilter`-Abfrageparameter ohne Angabe von Filterwerten verwenden, verwenden Sie die Parameter `count` und `offset` nicht. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Was sind die Bing-Websuche-APIs?](bing-api-comparison.md)
-* [Referenz zur Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
-* [Bing-API v7 für die benutzerdefinierte Suche – Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
-* [Bing-API v7 für die Nachrichtensuche – Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
-* [Bing-API v7 für die Videosuche – Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
-* [Bing-API v7 für die Bildsuche – Referenz](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Referenz zur Bing-Websuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference)
+* [Bing-API v7 für die benutzerdefinierte Suche – Referenz](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference)
+* [Bing-API v7 für die Nachrichtensuche – Referenz](/rest/api/cognitiveservices-bingsearch/bing-news-api-v7-reference)
+* [Bing-API v7 für die Videosuche – Referenz](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference)
+* [Bing-API v7 für die Bildsuche – Referenz](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

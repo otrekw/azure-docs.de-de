@@ -111,7 +111,7 @@
       items:
         - name: Anzeigen von Metriken in Azure Monitor
           href: troubleshoot-metrics.md
-        - name: Aktivieren von Diagnoseprotokollen
+        - name: Aktivieren und Abfragen von Diagnoseprotokollen
           href: troubleshoot-diagnostics.md
         - name: Aktivieren von Warnungen
           href: troubleshoot-alerts.md

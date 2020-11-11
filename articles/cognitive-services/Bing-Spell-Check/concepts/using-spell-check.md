@@ -10,12 +10,12 @@ ms.subservice: bing-spell-check
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
-ms.openlocfilehash: ece9d191460323a917579c5a32cff429f52139fa
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a02d5217cb051516e11d17730f31869618a2cfb0
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098228"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369391"
 ---
 # <a name="using-the-bing-spell-check-api"></a>Verwenden der Bing-Rechtschreibprüfungs-API
 
@@ -49,14 +49,14 @@ Der Standardmodus ist `Proof`. Der Rechtschreibmodus `Proof` bietet die umfangre
 
 ## <a name="market-setting"></a>Markteinstellung
 
-Ein [Marktcode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) muss mit dem `mkt`-Abfrageparameter in Ihrer Anforderung angegeben werden. Andernfalls verwendet die API einen Standardmarkt basierend auf der IP-Adresse der Anforderung.
+Ein [Marktcode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#market-codes) muss mit dem `mkt`-Abfrageparameter in Ihrer Anforderung angegeben werden. Andernfalls verwendet die API einen Standardmarkt basierend auf der IP-Adresse der Anforderung.
 
 
 ## <a name="http-post-and-get-support"></a>Unterstützung von HTTP POST und GET
 
 Die API unterstützt HTTP POST oder HTTP GET. Welche dieser Optionen Sie verwenden, hängt von der Länge des zu prüfenden Texts ab. Wenn die Zeichenfolgen immer weniger als 1.500 Zeichen umfassen, verwenden Sie GET. Für Zeichenfolgen mit einer Länge von bis zu 10.000 Zeichen muss dagegen POST verwendet werden. Die Textzeichenfolge kann beliebige gültige UTF-8-Zeichen enthalten.
 
-Das folgende Beispiel zeigt eine POST-Anforderung für die Überprüfung der Rechtschreibung und Grammatik einer Textzeichenfolge. Der Vollständigkeit halber enthält das Beispiel auch den Abfrageparameter [mode](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode). Dieser ist hier aber nicht unbedingt notwendig, da `mode` standardmäßig „Proof“ verwendet. Der Abfrageparameter [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) enthält die zu prüfende Zeichenfolge.
+Das folgende Beispiel zeigt eine POST-Anforderung für die Überprüfung der Rechtschreibung und Grammatik einer Textzeichenfolge. Der Vollständigkeit halber enthält das Beispiel auch den Abfrageparameter [mode](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#mode). Dieser ist hier aber nicht unbedingt notwendig, da `mode` standardmäßig „Proof“ verwendet. Der Abfrageparameter [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) enthält die zu prüfende Zeichenfolge.
   
 ```  
 POST https://api.cognitive.microsoft.com/bing/v7.0/spellcheck?mode=proof&mkt=en-us HTTP/1.1  
@@ -73,7 +73,7 @@ text=when+its+your+turn+turn,+john,+come+runing
 
 Bei Verwendung von HTTP GET muss der Abfrageparameter `text` in die Abfragezeichenfolge der URL eingefügt werden.
   
-Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwort enthält ein Objekt vom Typ [SpellCheck](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck). 
+Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwort enthält ein Objekt vom Typ [SpellCheck](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#spellcheck). 
   
 ```json
 {  
@@ -117,7 +117,7 @@ Das folgende Beispiel zeigt die Antwort auf die vorherige Anforderung. Die Antwo
 }  
 ```  
   
-Im Feld [flaggedTokens](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) werden die Rechtschreib- und Grammatikfehler aufgeführt, die die API in der Zeichenfolge [text](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) gefunden hat. Das Feld `token` enthält das zu ersetzende Wort. Der nullbasierte Offset im Feld `offset` ermöglicht es, das Token in der Zeichenfolge `text` zu finden. Anschließend wird das Wort an dieser Position durch das Wort im Feld `suggestion` ersetzt. 
+Im Feld [flaggedTokens](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#flaggedtokens) werden die Rechtschreib- und Grammatikfehler aufgeführt, die die API in der Zeichenfolge [text](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference#text) gefunden hat. Das Feld `token` enthält das zu ersetzende Wort. Der nullbasierte Offset im Feld `offset` ermöglicht es, das Token in der Zeichenfolge `text` zu finden. Anschließend wird das Wort an dieser Position durch das Wort im Feld `suggestion` ersetzt. 
 
 Ist das Feld `type` auf „RepeatedToken“ festgelegt, wird das Token weiterhin durch `suggestion` ersetzt, dabei muss aber wahrscheinlich auch das nachfolgende Leerzeichen entfernt werden.
 
@@ -128,4 +128,4 @@ Ist das Feld `type` auf „RepeatedToken“ festgelegt, wird das Token weiterhin
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Worum handelt es sich bei der Bing-Rechtschreibprüfungs-API?](../overview.md)
-- [Referenz zur Bing-Rechtschreibprüfungs-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+- [Referenz zur Bing-Rechtschreibprüfungs-API v7](/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)

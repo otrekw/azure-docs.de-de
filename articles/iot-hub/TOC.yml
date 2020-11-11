@@ -66,7 +66,7 @@
               href: tutorial-routing.md
             - name: Azure RM-Vorlage
               href: tutorial-routing-config-message-routing-RM-template.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-routing-config-message-routing-CLI.md
             - name: PowerShell
               href: tutorial-routing-config-message-routing-PowerShell.md
@@ -426,7 +426,7 @@
               href: iot-hub-troubleshoot-error-504101-gatewaytimeout.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
     - name: Azure PowerShell
       href: /powershell/module/az.iothub#iothub
@@ -471,7 +471,7 @@
       items:
         - name: Vorgangsüberwachung
           href: iot-hub-operations-monitoring.md
-        - name: Migrieren zu Diagnoseeinstellungen
+        - name: Migrieren zu Azure Monitor
           href: iot-hub-migrate-to-diagnostics-settings.md
         - name: Einstellung von TLS 1.0 und 1.1
           href: iot-hub-tls-deprecating-1-0-and-1-1.md

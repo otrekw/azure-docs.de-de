@@ -11,12 +11,12 @@ ms.subservice: bing-web-search
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
-ms.openlocfilehash: ea9cd9cf064b9c07016bc5e166cc4ec4c041b146
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 5c0bed04fccfba1ac06a54d5ddba9033ef05761b
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078542"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380707"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>Verwenden von Dekorationsmarkierungen zum Markieren von Text
 
@@ -39,7 +39,7 @@ Bevor das Ergebnis auf Ihrer Benutzeroberfläche angezeigt wird, sollten Sie die
 
 ## <a name="marker-formatting"></a>Markerformatierung
 
-In Bing haben Sie die Möglichkeit, Unicode-Zeichen oder HTML-Tags als Marker bereitzustellen. Fügen Sie den Abfrageparameter [textFormat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) ein, um anzugeben, welche Marker verwendet werden sollen. 
+In Bing haben Sie die Möglichkeit, Unicode-Zeichen oder HTML-Tags als Marker bereitzustellen. Fügen Sie den Abfrageparameter [textFormat](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#textformat) ein, um anzugeben, welche Marker verwendet werden sollen. 
 
 | Wert             | Marker                       |
 |-------------------|------------------------------|

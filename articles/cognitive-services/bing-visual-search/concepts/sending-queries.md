@@ -10,12 +10,12 @@ ms.subservice: bing-visual-search
 ms.topic: conceptual
 ms.date: 01/08/2019
 ms.author: aahi
-ms.openlocfilehash: 331b2ffde8d034ba94f5b1adcae5efa223f57594
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e8a8b843345d21d38c11789b09003a4b82f768f5
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095117"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369493"
 ---
 # <a name="sending-search-queries-to-the-bing-visual-search-api"></a>Senden von Suchabfragen an die API für die visuelle Bing-Suche
 
@@ -28,7 +28,7 @@ In diesem Artikel werden die Parameter und Attribute von Anforderungen beschrieb
 
 Erkenntnisse zu Bildern können auf drei Arten gewonnen werden:
 
-- Verwenden des Auswertungstokens zu einem Bild aus einem früheren Aufruf eines der Endpunkte der [Bing-Bildersuche-API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+- Verwenden des Auswertungstokens zu einem Bild aus einem früheren Aufruf eines der Endpunkte der [Bing-Bildersuche-API](/rest/api/cognitiveservices/bing-images-api-v7-reference)
 - Senden der URL eines Bilds
 - Hochladen eines Bilds (im Binärformat)
 

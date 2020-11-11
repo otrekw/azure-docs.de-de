@@ -12,6 +12,8 @@
   items:
     - name: Erstellen eines SCIM-Endpunkts und Konfigurieren der Bereitstellung
       href: use-scim-to-provision-users-and-groups.md
+    - name: Anpassen von Attributzuordnungen
+      href: customize-application-attributes.md
     - name: App-spezifische Bereitstellungstutorials
       href: /azure/active-directory/saas-apps
 - name: Konzepte
@@ -30,8 +32,6 @@
   items:
     - name: Konfigurieren der Bereitstellung für eine Katalog-App
       href: configure-automatic-user-provisioning-portal.md
-    - name: Anpassen von Attributzuordnungen
-      href: customize-application-attributes.md
     - name: Einschließen oder Ausschließen von Benutzern und Gruppen aus dem Bereich
       items:
         - name: Definieren des Benutzer- oder Gruppenbereichs für die Bereitstellung
