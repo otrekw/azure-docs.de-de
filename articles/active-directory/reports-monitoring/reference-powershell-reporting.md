@@ -18,12 +18,12 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4353ed5413f76b13425a59d31bb6108542e3bd23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 25f3402864e2ba873ce63acb6cedcd3f2ea018f7
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89231128"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123131"
 ---
 # <a name="azure-ad-powershell-cmdlets-for-reporting"></a>Azure AD PowerShell-Cmdlets für die Berichterstellung
 
@@ -59,7 +59,7 @@ Sie erhalten mit dem Cmdlet „Get-AzureADAuditDirectoryLogs“ Zugriff auf die 
 
 Die folgende Abbildung zeigt ein Beispiel für diesen Befehl. 
 
-![Die Schaltfläche für die Datenzusammenfassung](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
+![Screenshot: Ergebnis des Befehls „Get-AzureADAuditDirectoryLogs“](./media/reference-powershell-reporting/get-azureadauditdirectorylogs.png)
 
 
 
@@ -81,7 +81,7 @@ Sie erhalten mit dem Cmdlet „Get-AzureADAuditSignInLogs“ Zugriff auf die Anm
 
 Die folgende Abbildung zeigt ein Beispiel für diesen Befehl. 
 
-![Die Schaltfläche für die Datenzusammenfassung](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
+![Screenshot: Ergebnis des Befehls „Get-AzureADAuditSignInLogs“](./media/reference-powershell-reporting/get-azureadauditsigninlogs.png)
 
 
 

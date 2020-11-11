@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 09/23/2020
-ms.openlocfilehash: b54076413d3a6cabf2e3ef0b06e8e17875efbf97
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e823322803958f092cee3b6d77e6a0ca7bc6e3f2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746401"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93074249"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Schutz von Daten in Azure Stream Analytics 
 
@@ -61,7 +61,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen** . 
+1. Klicken Sie im Azure-Portal links oben auf **Ressource erstellen**. 
 
 1. Wählen Sie in der Ergebnisliste **Analytics** > **Stream Analytics-Auftrag** aus. 
 
@@ -73,6 +73,27 @@ Führen Sie die folgenden Schritte aus, um Ihr Speicherkonto für private Datenr
 
    ![Einstellungen des Speicherkontos für private Daten](./media/data-protection/storage-account-create.png)
 
+## <a name="private-data-assets-that-are-stored"></a>Gespeicherte private Datenressourcen
+
+Alle privaten Daten, die von Stream Analytics dauerhaft aufbewahrt werden müssen, werden unter Ihrem Speicherkonto gespeichert. Beispiele für private Datenressourcen: 
+
+* Von Ihnen erstellte Abfragen und zugehörige Konfigurationen  
+
+* Benutzerdefinierte Funktionen 
+
+* Von der Stream Analytics-Runtime benötigte Prüfpunkte
+
+* Momentaufnahmen von Verweisdaten 
+
+Verbindungsdetails Ihrer Ressourcen, die von Ihrem Stream Analytics-Auftrag genutzt werden, werden ebenfalls gespeichert. Verschlüsseln Sie Ihr Speicherkonto, um Ihre gesamten Daten zu schützen. 
+
+Sie können sich weiter über die [Complianceangebote von Microsoft](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) informieren, um Ihre Konformitätsverpflichtungen für regulierte Branchen oder Umgebungen zu erfüllen. 
+
+## <a name="enables-data-residency"></a>Ermöglicht Data Residency 
+Sie können dieses Feature verwenden, um Ihre Data Residency-Anforderungen durchzusetzen, indem Sie ein entsprechendes Speicherkonto bereitstellen.
+
+## <a name="known-issues"></a>Bekannte Probleme
+Es gibt ein bekanntes Problem, bei dem ein Auftrag, bei dem ein vom Kunden verwalteter Schlüssel verwendet wird, zu Fehlern führt, wenn die verwaltete Identität zur Authentifizierung bei Ein- oder Ausgaben verwendet wird. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

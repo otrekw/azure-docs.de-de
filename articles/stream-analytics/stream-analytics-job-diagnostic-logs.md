@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.custom: contperfq1
 ms.date: 06/18/2020
-ms.openlocfilehash: ed5c7eee1e8261c65decba4748e1d9c6a4d7212b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e7777cba93706baea815521757b495209431ce6
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91459811"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124016"
 ---
 # <a name="troubleshoot-azure-stream-analytics-by-using-resource-logs"></a>Problembehandlung von Azure Stream Analytics mit Ressourcenprotokollen
 
@@ -48,7 +48,7 @@ Aktivitätsprotokolle sind standardmäßig aktiviert und geben allgemeine Einbli
 
    ![Vorgangszusammenfassung im Stream Analytics-Aktivitätsprotokoll](./media/stream-analytics-job-diagnostic-logs/operation-summary.png)
 
-4. Scrollen Sie nach unten zum JSON-Abschnitt **Eigenschaften**, der Details zum Fehler bereitstellt, der den fehlerhaften Vorgang verursacht hat. In diesem Beispiel war der Fehler auf einen Runtimefehler aufgrund außerhalb des zulässigen Bereichs liegender Breitengradwerte zurückzuführen. Abweichungen in den Daten, die von einem Stream Analytics-Auftrag verarbeitet werden, bewirken einen Datenfehler. Es stehen Informationen zu verschiedenen [Fehlern bei der Eingabe und Ausgabe von Daten sowie zu den Gründen für deren Auftreten](https://docs.microsoft.com/azure/stream-analytics/data-errors) bereit.
+4. Scrollen Sie nach unten zum JSON-Abschnitt **Eigenschaften** , der Details zum Fehler bereitstellt, der den fehlerhaften Vorgang verursacht hat. In diesem Beispiel war der Fehler auf einen Runtimefehler aufgrund außerhalb des zulässigen Bereichs liegender Breitengradwerte zurückzuführen. Abweichungen in den Daten, die von einem Stream Analytics-Auftrag verarbeitet werden, bewirken einen Datenfehler. Es stehen Informationen zu verschiedenen [Fehlern bei der Eingabe und Ausgabe von Daten sowie zu den Gründen für deren Auftreten](./data-errors.md) bereit.
 
    ![JSON-Fehlerdetails](./media/stream-analytics-job-diagnostic-logs/error-details.png)
 
@@ -66,25 +66,25 @@ Sie sollten unbedingt Ressourcenprotokolle aktivieren und an Azure Monitor-Proto
 
     ![Blattnavigation zu Ressourcenprotokollen](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs-monitoring.png)  
 
-2.  Geben Sie einen **Namen** in **Diagnoseeinstellungen: Name** ein, und aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **log** sowie **AllMetrics** unter **metric**. Aktivieren Sie dann **An Log Analytics senden**, und wählen Sie Ihren Arbeitsbereich aus. Klicken Sie auf **Speichern**.
+2.  Geben Sie einen **Namen** in **Diagnoseeinstellungen: Name** ein, und aktivieren Sie die Kontrollkästchen für **Ausführung** und **Erstellung** unter **log** sowie **AllMetrics** unter **metric**. Aktivieren Sie dann **An Log Analytics senden** , und wählen Sie Ihren Arbeitsbereich aus. Klicken Sie auf **Speichern**.
 
     ![Einstellungen für Ressourcenprotokolle](./media/stream-analytics-job-diagnostic-logs/logs-setup.png)
 
 3. Wenn Ihr Stream Analytics-Auftrag gestartet wird, werden Ressourcenprotokolle an Ihren Log Analytics-Arbeitsbereich weitergeleitet. Wenn Sie Ressourcenprotokolle für Ihren Auftrag anzeigen möchten, wählen Sie die Option **Protokolle** im Abschnitt **Überwachung** aus.
 
-   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
+   ![Screenshot: Menü „Allgemein“ mit ausgewählter Option „Protokolle“.](./media/stream-analytics-job-diagnostic-logs/diagnostic-logs.png)
 
 4. Stream Analytics bietet vordefinierte Abfragen, mit denen Sie problemlos nach den für Sie interessanten Protokollen suchen können. Sie können alle vordefinierten Abfragen im linken Bereich auswählen und dann **Ausführen** auswählen. Ihnen werden die Abfrageergebnisse im unteren Bereich angezeigt. 
 
-   ![Ressourcenprotokolle unter „Überwachung“](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
+   ![Der Screenshot zeigt Protokolle für einen Stream Analytics-Auftrag an.](./media/stream-analytics-job-diagnostic-logs/logs-example.png)
 
 ## <a name="resource-log-categories"></a>Ressourcenprotokollkategorien
 
 Azure Stream Analytics erfasst zwei Kategorien von Ressourcenprotokollen:
 
-* **Erstellung**: Erfasst Protokollereignisse zu Auftragserstellungsvorgängen wie Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage sowie Starten und Beenden des Auftrags.
+* **Erstellung** : Erfasst Protokollereignisse zu Auftragserstellungsvorgängen wie Erstellen von Aufträgen, Hinzufügen und Löschen von Eingaben und Ausgaben, Hinzufügen und Aktualisieren der Abfrage sowie Starten und Beenden des Auftrags.
 
-* **Ausführung**: Erfasst Ereignisse, die während der Ausführung eines Auftrags auftreten.
+* **Ausführung** : Erfasst Ereignisse, die während der Ausführung eines Auftrags auftreten.
     * Verbindungsfehler
     * Datenverarbeitungsfehler wie Folgende:
         * Ereignisse, die nicht mit der Abfragedefinition übereinstimmen (nicht übereinstimmende Feldtypen und Werte, fehlende Felder usw.)
@@ -102,7 +102,7 @@ resourceId | ID der Ressource, über die der Vorgang stattfand, in Großbuchstab
 category | Protokollkategorie: **Ausführung** oder **Erstellung**.
 operationName | Der Name des protokollierten Vorgangs. Beispielsweise **Ereignisse senden: Fehler beim Schreiben der SQL-Ausgabe nach mysqloutput**.
 status | Der Status des Vorgangs. Beispiele: **Fehlgeschlagen** oder **Erfolgreich**.
-level | Protokollebene. Beispiele: **Fehler**, **Warnung** oder **Information**.
+level | Protokollebene. Beispiele: **Fehler** , **Warnung** oder **Information**.
 properties | Spezifisches Detail des Protokolleintrags; als JSON-Zeichenfolge serialisiert. Weitere Informationen finden Sie in den folgenden Abschnitten dieses Artikels.
 
 ### <a name="execution-log-properties-schema"></a>Eigenschaftsschema der Ausführungsprotokolle
@@ -111,22 +111,22 @@ Ausführungsprotokolle enthalten Informationen zu Ereignissen, die während der 
 
 ### <a name="data-errors"></a>Datenfehler
 
-Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von Protokollen verarbeitet. Diese Protokolle werden am häufigsten bei Lese-, Serialisierungs- und Schreibvorgängen von Daten erstellt. Diese Protokolle enthalten keine Verbindungsfehler. Verbindungsfehler werden als generische Ereignisse behandelt. Weitere Informationen zu den Gründen für verschiedene Fehler bei der Ein- und Ausgabe von Daten finden Sie im Artikel [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors).
+Alle Fehler, die auftreten, während der Auftrag Daten in dieser Kategorie von Protokollen verarbeitet. Diese Protokolle werden am häufigsten bei Lese-, Serialisierungs- und Schreibvorgängen von Daten erstellt. Diese Protokolle enthalten keine Verbindungsfehler. Verbindungsfehler werden als generische Ereignisse behandelt. Weitere Informationen zu den Gründen für verschiedene Fehler bei der Ein- und Ausgabe von Daten finden Sie im Artikel [Datenfehler in Azure Stream Analytics](./data-errors.md).
 
 Name | BESCHREIBUNG
 ------- | -------
 `Source` | Name der Auftragseingabe oder -ausgabe, bei der der Fehler aufgetreten ist.
 `Message` | Mit dem Fehler verknüpfte Meldung.
-type | Fehlertyp. Beispiele: **DataConversionError**, **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
+type | Fehlertyp. Beispiele: **DataConversionError** , **CsvParserError** oder **ServiceBusPropertyColumnMissingError**.
 Daten | Enthält Daten, die hilfreich sind, um die Ursache des Fehlers genau zu lokalisieren. Unterliegt je nach Größe Kürzungen.
 
 Je nach dem Wert für **operationName** entsprechen Datenfehler folgendem Schema:
 
 * **Die Serialisierung von Ereignissen** tritt bei Lesevorgängen von Ereignissen auf. Sie treten auf, wenn die Daten bei der Eingabe aus einem der folgenden Gründen nicht das Abfrageschema erfüllen:
 
-   * *Typenkonflikt während des (De)serialisierens von Ereignissen*: Identifiziert das Feld, das den Fehler verursacht.
+   * *Typenkonflikt während des (De)serialisierens von Ereignissen* : Identifiziert das Feld, das den Fehler verursacht.
 
-   * *Ein Ereignis kann nicht gelesen werden, ungültige Serialisierung*: Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
+   * *Ein Ereignis kann nicht gelesen werden, ungültige Serialisierung* : Enthält Informationen über die Stelle in den Eingabedaten, an der der Fehler aufgetreten ist. Enthält den Blobnamen für die Eingabe mit formlosen Objekten, Offset und eine Stichprobe der Daten.
 
 * **Das Senden von Ereignissen** tritt bei Schreibvorgängen auf. Diese identifizieren das Streamingereignis, das den Fehler verursacht hat.
 
@@ -143,5 +143,5 @@ Korrelations-ID | GUID, die die Auftragsausführung eindeutig identifiziert. All
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Datenfehler in Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/data-errors)
-* [Referenz zur Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Datenfehler in Azure Stream Analytics](./data-errors.md)
+* [Referenz zur Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference)

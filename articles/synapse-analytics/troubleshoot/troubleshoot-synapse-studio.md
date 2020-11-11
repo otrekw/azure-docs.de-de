@@ -8,28 +8,28 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 33022d005deca5d1350278218fb6f1fca1a35ca1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fe31f83ccc0dcbd2d61a7c70d40a64da08d13a1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91287746"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321029"
 ---
 # <a name="azure-synapse-studio-preview-troubleshooting"></a>Azure Synapse Studio (Vorschauversion): Problembehandlung
 
 Dieser Leitfaden zur Problembehandlung enthält Anweisungen dazu, welche Informationen beim Öffnen eines Supporttickets zu Netzwerkkonnektivitätsproblemen bereitgestellt werden müssen. Mit den richtigen Informationen können wir das Problem möglicherweise schneller beheben.
 
-## <a name="sql-on-demand-preview-service-connectivity-issue"></a>Dienstkonnektivitätsproblem bei SQL On-Demand (Vorschauversion)
+## <a name="serverless-sql-pool-preview-service-connectivity-issue"></a>Dienstkonnektivitätsproblem bei serverlosem SQL-Pool (Vorschau)
 
 ### <a name="symptom-1"></a>Symptom 1
 
-Die Option „SQL On-Demand“ ist in der Dropdownliste „Verbinden mit“ abgeblendet dargestellt.
+Die Option „Serverloser SQL-Pool“ ist in der Dropdownliste „Verbinden mit“ abgeblendet dargestellt.
 
 ![symptom1](media/troubleshooting-synapse-studio/symptom1v2.png)
 
 ### <a name="symptom-2"></a>Symptom 2
 
-Wenn Sie die Abfrage mit „SQL On-Demand“ ausführen, erhalten Sie die Fehlermeldung „Fehler beim Herstellen einer Verbindung zum Server“.
+Wenn Sie die Abfrage mit „Serverloser SQL-Pool“ ausführen, erhalten Sie die Fehlermeldung „Fehler beim Herstellen einer Verbindung zum Server“.
 
 ![Symptom 2](media/troubleshooting-synapse-studio/symptom2.png)
  
@@ -45,7 +45,7 @@ Wenn Sie die Abfrage mit „SQL On-Demand“ ausführen, erhalten Sie die Fehler
 
 Wiederholen Sie den Vorgang, den Sie in Azure Synapse Studio ausgeführt haben, um die Problembehandlung zu beginnen.
 
-- Wählen Sie für Symptom 1 die Schaltfläche „Aktualisieren“ rechts neben dem Dropdownmenü „Datenbank verwenden“ auf der Registerkarte „SQL-Skript“ aus, und prüfen Sie, ob „SQL On-Demand“ angezeigt wird.
+- Wählen Sie für Symptom 1 die Schaltfläche „Aktualisieren“ rechts neben dem Dropdownmenü „Datenbank verwenden“ auf der Registerkarte „SQL-Skript“ aus, und prüfen Sie, ob „Serverloser SQL-Pool“ angezeigt wird.
 - Versuchen Sie bei Symptom 2, die Abfrage erneut auszuführen, um zu prüfen, ob sie erfolgreich ausgeführt wird.
 
 Wenn das Problem weiterhin besteht, drücken Sie F12 in Ihrem Browser, um „Entwicklertools“ (DevTools) zu öffnen.
@@ -61,7 +61,7 @@ Suchen Sie das Element, dessen URL-Spalte mit dem folgenden Muster übereinstimm
 
 `https://[*A*]-ondemand.database.windows.net:1443/databases/[*B*]/query?api-version=2018-08-01-preview&application=ArcadiaSqlOnDemandExplorer`
 
-Dabei ist [*A*] Ihr Arbeitsbereichsname und „-ondemand“ könnte „-sqlod“ sein, während [*B*] ein Datenbankname wie „master“ sein sollte. Es sollten höchstens zwei Elemente mit dem gleichen URL-Wert, aber unterschiedlichen Methodenwerten vorhanden sein: OPTIONS und POST. Überprüfen Sie, ob diese beiden Elemente in der Spalte „Status“ den Wert „200“ oder „20x“ aufweisen, wobei „x“ eine beliebige einzelne Ziffer sein könnte.
+Dabei ist [ *A* ] Ihr Arbeitsbereichsname und „-ondemand“ könnte „-sqlod“ sein, während [ *B* ] ein Datenbankname wie „master“ sein sollte. Es sollten höchstens zwei Elemente mit dem gleichen URL-Wert, aber unterschiedlichen Methodenwerten vorhanden sein: OPTIONS und POST. Überprüfen Sie, ob diese beiden Elemente in der Spalte „Status“ den Wert „200“ oder „20x“ aufweisen, wobei „x“ eine beliebige einzelne Ziffer sein könnte.
 
 Wenn eines der Elemente etwas anderes als „20x“ aufweist und:
 
@@ -71,7 +71,7 @@ Wenn eines der Elemente etwas anderes als „20x“ aufweist und:
 
     - Wenn ERR_NAME_NOT_RESOLVED angezeigt wird und Sie Ihren Arbeitsbereich innerhalb von 10 Minuten erstellt haben, warten Sie 10 Minuten und versuchen Sie erneut zu prüfen, ob das Problem immer noch besteht.
     - Wenn ERR_INTERNET_DISCONNECTED oder ERR_NETWORK_CHANGED angezeigt wird, deutet dies möglicherweise darauf hin, dass Ihre PC-Netzwerkverbindung Probleme hat. Überprüfen Sie Ihre Netzwerkverbindung, und wiederholen Sie den Vorgang.
-    - Wenn ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR oder andere Fehlercodes angezeigt werden, die „SSL“ enthalten, deutet dies möglicherweise darauf hin, dass Ihre lokale SSL-Konfiguration Probleme hat oder dass Ihr Netzwerkadministrator den Zugriff auf den SQL On-Demand-Server blockiert hat. Öffnen Sie ein Supportticket, und fügen Sie den Fehlercode in der Beschreibung ein.
+    - Wenn ERR_CONNECTION_RESET, ERR_SSL_PROTOCOL_ERROR oder andere Fehlercodes angezeigt werden, die „SSL“ enthalten, deutet dies möglicherweise darauf hin, dass Ihre lokale SSL-Konfiguration Probleme hat oder dass Ihr Netzwerkadministrator den Zugriff auf den serverlosen SQL-Poolserver blockiert hat. Öffnen Sie ein Supportticket, und fügen Sie den Fehlercode in der Beschreibung ein.
     - Wenn ERR_NETWORK_ACCESS_DENIED angezeigt wird, müssen Sie möglicherweise mit dem Administrator prüfen, ob Ihre lokale Firewallrichtlinie den Zugriff entweder auf die Domäne „*.database.windows.net“ oder den Remoteport 1443 blockiert hat.
     - Versuchen Sie optional, den gleichen Vorgang direkt auf einem anderen Computer und/oder in einer Netzwerkumgebung auszuführen, um ein Problem mit der Netzwerkkonfiguration auf Ihrem PC auszuschließen.
 

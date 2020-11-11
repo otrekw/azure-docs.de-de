@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2c706de8a7638c16f3778d0d5295069c13b79d98
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90838b0b613c043ae41a71c76b5e9023d21df3a6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87387267"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93025849"
 ---
 # <a name="saml-single-sign-on-for-on-premises-applications-with-application-proxy"></a>SAML-SSO (Single Sign-On, einmaliges Anmelden) für lokale Anwendungen mit dem Anwendungsproxy
 
@@ -33,13 +33,13 @@ SAML-SSO mit dem Anwendungsproxy kann auch mit dem Feature SAML-Tokenverschlüss
 
 In den Protokolldiagrammen unten sind die SSO-Sequenzen für einen vom Dienstanbieter initiierten (SP-initiiert) und einen vom Identitätsanbieter initiierten Datenfluss (IdP-initiiert) beschrieben. Der Anwendungsproxy funktioniert mit SAML-SSO, indem die SAML-Anforderung und -Antwort für die lokale Anwendung zwischengespeichert wird.
 
-  ![SAML-SP-Datenfluss](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
+  ![Das Diagramm zeigt die Interaktionen von Anwendung, Anwendungsproxy, Client und Azure AD beim SP-initiierten einmaligen Anmelden.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-sp-initiated-flow.png)
 
-  ![SAML-SP-Datenfluss](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
+  ![Das Diagramm zeigt die Interaktionen von Anwendung, Anwendungsproxy, Client und Azure AD beim IDP-initiierten einmaligen Anmelden.](./media/application-proxy-configure-single-sign-on-on-premises-apps/saml-idp-initiated-flow.png)
 
 ## <a name="create-an-application-and-set-up-saml-sso"></a>Erstellen einer Anwendung und Einrichten von SAML-SSO
 
-1. Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen**, und wählen Sie die Option **Neue Anwendung**.
+1. Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen** , und wählen Sie die Option **Neue Anwendung**.
 
 2. Geben Sie den Anzeigenamen für die neue Anwendung ein, wählen Sie **Beliebige andere, nicht im Katalog zu findende Anwendung integrieren** und dann **Erstellen** aus.
 
@@ -72,14 +72,14 @@ Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anw
 
 1. Wählen Sie bei geöffneter Anwendung im Azure-Portal die Option **Einmaliges Anmelden**. 
 
-2. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration**, und wählen Sie das Symbol **Bearbeiten** (Stift). Stellen Sie sicher, dass die **Externe URL**, die Sie im Anwendungsproxy konfiguriert haben, in die Felder **Bezeichner**, **Antwort-URL** und **Abmelde-URL** eingetragen wird. Diese URLs sind erforderlich, damit der Anwendungsproxy richtig funktioniert. 
+2. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** zur Überschrift **Grundlegende SAML-Konfiguration** , und wählen Sie das Symbol **Bearbeiten** (Stift). Stellen Sie sicher, dass die **Externe URL** , die Sie im Anwendungsproxy konfiguriert haben, in die Felder **Bezeichner** , **Antwort-URL** und **Abmelde-URL** eingetragen wird. Diese URLs sind erforderlich, damit der Anwendungsproxy richtig funktioniert. 
 
-3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL**, damit die zugehörige Domäne im Internet über den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL**`https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren.
+3. Bearbeiten Sie die zuvor konfigurierte **Antwort-URL** , damit die zugehörige Domäne im Internet über den Anwendungsproxy erreichbar ist. Wenn beispielsweise Ihre **externe URL**`https://contosotravel-f128.msappproxy.net` lautet und `https://contosotravel.com/acs` die ursprüngliche **Antwort-URL** war, müssen Sie die ursprüngliche **Antwort-URL** auf `https://contosotravel-f128.msappproxy.net/acs` aktualisieren.
 
     ![Eingabe der SAML-Basiskonfigurationsdaten](./media/application-proxy-configure-single-sign-on-on-premises-apps/basic-saml-configuration.png)
 
 
-4. Aktualisieren Sie das Kontrollkästchen neben der aktualisierten **Antwort-URL**, um sie als Standardwert zu kennzeichnen.
+4. Aktualisieren Sie das Kontrollkästchen neben der aktualisierten **Antwort-URL** , um sie als Standardwert zu kennzeichnen.
 
    * Nachdem Sie die erforderliche **Antwort-URL** als Standard markiert haben, können Sie auch die zuvor konfigurierte **Antwort-URL** löschen, welche die interne URL verwendet hat.
 
@@ -92,7 +92,7 @@ Bevor Sie SSO für lokale Anwendungen bereitstellen können, müssen Sie den Anw
 
 Nachdem Sie alle Schritte abgeschlossen haben, sollte Ihre App betriebsbereit sein. So testen Sie die App:
 
-1. Öffnen Sie einen Browser, und navigieren Sie zur **externen URL**, die Sie beim Veröffentlichen der App erstellt haben. 
+1. Öffnen Sie einen Browser, und navigieren Sie zur **externen URL** , die Sie beim Veröffentlichen der App erstellt haben. 
 1. Melden Sie sich mit dem Testkonto an, das Sie der App zugewiesen haben. Es sollte möglich sein, dass Sie die Anwendung laden und sich per einmaligem Anmelden bei der Anwendung anmelden.
 
 ## <a name="next-steps"></a>Nächste Schritte

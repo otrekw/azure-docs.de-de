@@ -8,16 +8,16 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: 506336ad80c1f30b937bc71724ca39cee24bb2fd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968921"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92928041"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
-Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, Proofs of Concept, kleine Datenbanken sowie Entwicklungsbuildumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, wobei die VM-Instanz Guthaben bildet, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
+Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierlich die volle Leistung der CPU benötigen. Hierzu zählen beispielsweise Webserver, Proofs of Concept, kleine Datenbanken sowie Entwicklungsbuildumgebungen. Diese Workloads haben in der Regel kurzfristige Leistungsanforderungen. Mit der B-Serie können Sie eine VM-Größe mit einer Grundleistung erwerben, die Guthaben erstellen kann, wenn sie weniger als die Grundleistung beansprucht. Wenn für den virtuellen Computer Guthaben gebildet wurde, kann Leistung genutzt werden, die über die Grundleistung hinausgeht. Dabei können bis zu 100 % der vCPU verwendet werden, wenn Ihre Anwendung mehr CPU-Leistung benötigt.
 
 Die B-Serie ist in den folgenden VM-Größen erhältlich:
 
@@ -93,17 +93,16 @@ Bei einer D16s_v3 mit 16 vCPUs und 64 GiB Arbeitsspeicher beträgt der Stundens
 
 ## <a name="q--a"></a>Fragen und Antworten
 
-### <a name="q-what-happens-if-the-credits-run-out"></a>F: Was geschieht, wenn kein Guthaben mehr verfügbar ist?
+### <a name="q-what-happens-when-my-credits-run-out"></a>F: Was passiert, wenn mein Guthaben erschöpft ist?
 **A:** Wenn das Guthaben erschöpft ist, wird die VM auf die Baselineleistung zurückgestuft.
 
 ### <a name="q-how-do-you-get-135-baseline-performance-from-a-vm"></a>F: Wie erhalte ich einen virtuellen Computer mit einer Grundleistung von 135 Prozent?
 
 **A:** Die 135 Prozent verteilen sich auf die acht vCPUs, die der VM-Größe zugrunde liegen. Wenn Ihre Anwendung also beispielsweise vier der acht Kerne für die Batchverarbeitung nutzt und jede dieser vier vCPUs zu 30 Prozent ausgelastet ist, beläuft sich die CPU-Leistung des virtuellen Computers auf insgesamt 120 Prozent.  Das bedeutet, dass der virtuelle Computer ein Zeitguthaben auf der Grundlage des 15-prozentigen Deltas (im Vergleich zu Ihrer Grundleistung) bildet.  Es bedeutet aber auch Folgendes: Wenn Sie über Guthaben verfügen, kann der gleiche virtuelle Computer 100 Prozent aller acht vCPUs nutzen, wodurch sich eine maximale CPU-Leistung von 800 Prozent ergibt.
 
-
 ### <a name="q-how-can-i-monitor-my-credit-balance-and-consumption"></a>F: Wie kann ich mein Guthaben und den Verbrauch überwachen?
 
-**A:** In den kommenden Wochen werden zwei neue Metriken eingeführt. Die Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer gebildet hat, und die Metrik **ConsumedCredit** zeigt, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
+**A:** Mit der Metrik **Credit** gibt Aufschluss darüber, wie viel Guthaben Ihr virtueller Computer verdient hat, und die Metrik **ConsumedCredit** zeigt an, wie viel CPU-Guthaben Ihr virtueller Computer aus dem Vorrat verbraucht hat.    Diese Metriken können Sie im Metrikbereich des Portals oder programmgesteuert über die Azure Monitor-APIs anzeigen.
 
 Weitere Informationen zum Zugreifen auf die Metrikdaten für Azure finden Sie in der [Übersicht über Metriken in Microsoft Azure](../azure-monitor/platform/data-platform.md).
 
@@ -133,11 +132,11 @@ In der obigen Instanz ist Ihre Baseline z. B. 20 %. Wenn Sie 10 % der CPU nut
 
 ### <a name="q-why-is-my-remaining-credit-set-to-0-after-a-redeploy-or-a-stopstart"></a>F: Warum wird mein Restguthaben nach dem erneuten Bereitstellen oder Beenden bzw. Starten auf 0 gesetzt?
 
-**A:** Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms sind dies 240 Minuten.
+**A:** Wenn eine VM „ERNEUT BEREITGESTELLT“ ist und die VM auf einen anderen Knoten verschoben wird, geht das gesammelte Guthaben verloren. Wenn die VM beendet/gestartet wird, aber auf dem gleichen Knoten verbleibt, behält die VM das gesammelte Guthaben. Immer wenn die VM auf einem Knoten neu startet, erhält sie ein Anfangsguthaben. Bei Standard_B8ms beträgt dieser Wert 240.
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Was geschieht, wenn ein nicht unterstütztes Betriebssystemimage auf B1ls bereitgestellt wird?
 
-**A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
+**A** : B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
 
 ## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 

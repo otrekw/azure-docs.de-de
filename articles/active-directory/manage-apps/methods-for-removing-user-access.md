@@ -1,26 +1,21 @@
 ---
-title: Aufheben des Zugriffs eines Benutzers auf eine Anwendung | Microsoft-Dokumentation
-description: Informationen zum Aufheben des Zugriffs eines Benutzers auf eine Anwendung
+title: Entfernen des Zugriffs eines Benutzers auf eine Anwendung in Azure Active Directory
+description: Hier wird erläutert, wie Sie den Zugriff eines Benutzers auf eine Anwendung in Azure Active Directory entfernen
 services: active-directory
-documentationcenter: ''
 author: kenwith
 manager: celestedg
-ms.assetid: ''
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: how-to
-ms.date: 10/17/2018
+ms.date: 11/02/2020
 ms.author: kenwith
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6f9626c256755e2fce81b593d95b8680f4bb55ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8544c35d77dfc32ece9b21a602f301ab15c22439
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763158"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288311"
 ---
 # <a name="how-to-remove-a-users-access-to-an-application"></a>Aufheben des Zugriffs eines Benutzers auf eine Anwendung
 
@@ -36,29 +31,13 @@ Um alle Benutzeranmeldungen bei einer Anwendung zu deaktivieren, führen Sie die
 
 ## <a name="i-want-to-delete-an-application-entirely"></a>Ich möchte eine Anwendung vollständig löschen.
 
-Befolgen Sie die nachstehenden Anweisungen, um **eine Anwendung zu löschen**:
-
-1. Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Administrator** an.
-
-2. Öffnen Sie die **Azure Active Directory-Erweiterung**, indem Sie oben im Hauptnavigationsmenü auf der linken Seite auf **Alle Dienste** klicken.
-
-3. Geben Sie im Filtersuchfeld **Azure Active Directory** ein, und wählen Sie das Element **Azure Active Directory** aus.
-
-4. Klicken Sie im linken Azure Active Directory-Navigationsmenü auf **Unternehmensanwendungen**.
-
-5. Klicken Sie auf **Alle Anwendungen**, um eine Liste aller Anwendungen anzuzeigen.
-
-   * Wenn die gewünschte Anwendung nicht angezeigt wird, verwenden Sie das Steuerelement **Filter** oberhalb der Liste **Alle Anwendungen**, und legen Sie die Option **Anzeigen** auf **Alle Anwendungen** fest.
-
-6. Wählen Sie die Anwendung aus, die Sie löschen möchten.
-
-7. Nachdem die Anwendung geladen wurde, klicken Sie im Bereich **Übersicht** der Anwendung auf das Symbol **Löschen**.
+Die [Schnellstartreihe zur Anwendungsverwaltung](delete-application-portal.md) enthält Anleitungen zum Löschen einer Anwendung aus Ihrem Azure Active Directory-Mandanten.
 
 ## <a name="i-want-to-disable-all-future-user-consent-operations-to-any-application"></a>Ich möchte alle zukünftigen Vorgänge für die Benutzerzustimmung für jede Anwendung deaktivieren.
 
 Die Deaktivierung der Benutzerzustimmung für das gesamte Verzeichnis führt dazu, dass Endbenutzer keiner Anwendung zustimmen können. Administratoren können weiterhin im Namen von Benutzern zustimmen. Weitere Informationen zur Einwilligung zu Anwendungen sowie Gründen für oder gegen Ihre Einwilligung finden Sie unter [Grundlegendes zur Benutzer- und Administratoreinwilligung](../develop/howto-convert-app-to-be-multi-tenant.md#understand-user-and-admin-consent). Siehe auch [Berechtigungen und Einwilligung](../develop/v2-permissions-and-consent.md).
 
-Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren**:
+Befolgen Sie die nachstehenden Anweisungen, um **alle zukünftigen Vorgänge der Benutzerzustimmung in Ihrem gesamten Verzeichnis zu deaktivieren** :
 
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** an.
 

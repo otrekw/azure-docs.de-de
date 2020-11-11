@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: 11fde4480f4e2ed9feda00fa2af0e5937a77b9ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90986877"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127177"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Installieren von Micro Focus Enterprise Server 5.0 und Enterprise Developer 5.0 in Azure
 
@@ -63,7 +63,7 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 6.  Wenn die virtuellen Computer erstellt wurden, öffnen Sie die eingehenden Ports **9003, 86** und **80** für HTTP, **3389** für Remote Desktop Protocol (RDP) auf dem Enterprise Server-Computer sowie **3389** auf dem Developer-Computer.
 
-7.  Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+7.  Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Abschnitt **Übersicht** , und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
 8.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien. Da Sie Windows verwenden, können Sie die Dateien per Drag & Drop in die RDP-Sitzung ziehen:
 
@@ -73,11 +73,11 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 9.  Doppelklicken Sie auf die Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu.
 
-    ![Micro Focus Enterprise Server-Setupbildschirm](media/install-image-1.png)
+    ![Der Screenshot zeigt das Dialogfeld „Micro Focus Enterprise Server“, in dem Sie die Installation starten können.](media/install-image-1.png)
 
     Wenn das Setup abgeschlossen ist, wird die folgende Nachricht angezeigt:
 
-    ![Micro Focus Enterprise Server-Setupbildschirm](media/install-image-2.png)
+    ![Der Screenshot zeigt eine Erfolgsmeldung im Dialogfeld „Micro Focus Enterprise Server“.](media/install-image-2.png)
 
  ### <a name="check-for-updates"></a>Suchen nach Updates
 
@@ -89,7 +89,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 2.  Wählen Sie **Start** \> **Micro Focus-Lizenz-Manager** \> **Lizenzverwaltung** aus, und klicken Sie dann auf die Registerkarte **Installieren**. Wählen Sie den Typ des hochzuladenden Lizenzformats aus: eine Lizenzdatei oder ein 16-stelliger Lizenzcode. Navigieren Sie beispielsweise für eine Datei unter **Lizenzdatei** zu der Datei „*`mflic`, die Sie zuvor in die VM hochgeladen haben, und wählen Sie **Lizenzen installieren** aus.
 
-    ![Micro Fokus-Lizenzverwaltung (Dialogfeld)](media/install-image-3.png)
+    ![Der Screenshot zeigt das Dialogfeld für die Micro Focus-Lizenzverwaltung, in dem Sie „Lizenzen installieren“ auswählen können.](media/install-image-3.png)
 
 3.  Überprüfen Sie, ob Enterprise Server geladen wird. Versuchen Sie, die Enterprise Server Administration-Website in einem Browser zu starten, indem Sie diese URL verwenden: `http://localhost:86/`. Die Enterprise Server Administration-Seite wird wie dargestellt angezeigt.
 
@@ -97,9 +97,9 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Installieren von Enterprise Developer auf dem Entwicklercomputer
 
-1.  Wählen Sie die zuvor erstellte Ressourcengruppe (beispielsweise **RGMicroFocusEntServer**) und dann das Entwicklerimage aus.
+1.  Wählen Sie die zuvor erstellte Ressourcengruppe (beispielsweise **RGMicroFocusEntServer** ) und dann das Entwicklerimage aus.
 
-2.  Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus. Durch diese Anmeldung wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+2.  Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Abschnitt **Übersicht** , und wählen Sie **Verbinden** aus. Durch diese Anmeldung wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
 3.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien (per Drag & Drop, wenn Sie möchten):
 
@@ -107,7 +107,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
     -   `mflic`, die entsprechende Lizenzdatei (Enterprise Developer lädt ohne sie nicht).
 
-4.  Doppelklicken Sie auf die **edvs2017.exe**-Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu. Wenn gewünscht, wählen Sie **Rumba 9.5 installieren** aus, um diesen Terminalemulator zu installieren, den Sie wahrscheinlich benötigen.
+4.  Doppelklicken Sie auf die **edvs2017.exe** -Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu. Wenn gewünscht, wählen Sie **Rumba 9.5 installieren** aus, um diesen Terminalemulator zu installieren, den Sie wahrscheinlich benötigen.
 
     ![Micro Focus Enterprise Developer für Visual Studio 2017-Setupdialogfeld](media/install-image-5.png)
 

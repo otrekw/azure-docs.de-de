@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c3107be1c36f1c15a1bcb27c5e0dcf851cfb946
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
+ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145535"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93233796"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -60,7 +60,7 @@ In diesem Abschnitt wird erläutert, wie eine Richtlinie für bedingten Zugriff 
 
 Die folgenden Optionen gelten als ältere Authentifizierungsprotokolle.
 
-- Authentifiziertes SMTP: wird von POP- und IMAP-Clients zum Senden von E-Mails verwendet
+- Authentifiziertes SMTP: wird von POP- und IMAP-Clients zum Senden von E-Mail-Nachrichten verwendet
 - AutoErmittlung: wird von Outlook und EAS-Clients verwendet, um Postfächer in Exchange Online zu suchen und diese zu verbinden
 - Exchange ActiveSync (EAS): wird zum Herstellen einer Verbindung mit Postfächern in Exchange Online verwendet
 - Exchange Online PowerShell: wird zum Herstellen einer Verbindung mit Exchange Online über Remote-PowerShell verwendet Wenn Sie die Standardauthentifizierung für Exchange Online PowerShell blockieren, müssen Sie das Exchange Online PowerShell-Modul verwenden, um eine Verbindung herzustellen. Anweisungen finden Sie unter [Herstellen einer Verbindung mit Exchange Online PowerShell mithilfe der mehrstufigen Authentifizierung](/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell).
@@ -80,7 +80,7 @@ Weitere Informationen zu diesen Authentifizierungsprotokollen und -diensten find
 
 Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, müssen Sie zuerst wissen, ob Ihre Benutzer über Apps verfügen, die die Legacyauthentifizierung verwenden, und wie sich dies auf Ihr gesamtes Verzeichnis auswirkt. Sie können Azure AD-Anmeldungsprotokolle verwenden, um herauszufinden, ob Sie die Legacyauthentifizierung verwenden.
 
-1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen** .
+1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf **Spalten** > **Client-App** hinzu.
 1. Klicken Sie auf **Filter hinzufügen** > **Client-App** , und wählen Sie alle älteren Authentifizierungsprotokolle aus. Klicken Sie auf eine Stelle außerhalb des Filterdialogfelds, um die Auswahl anzuwenden und das Dialogfeld zu schließen.
 

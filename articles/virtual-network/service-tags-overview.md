@@ -13,19 +13,19 @@ ms.workload: infrastructure-services
 ms.date: 07/18/2020
 ms.author: kumud
 ms.reviewer: kumud
-ms.openlocfilehash: 863ab9b600b81006cdeb670811c61ed961e8c623
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 8aae75aca585c30c0678c88247a8ecfe8a0b801d
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170249"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93340259"
 ---
 # <a name="virtual-network-service-tags"></a>Diensttags in virtuellen Netzwerken
 <a name="network-service-tags"></a>
 
-Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen aus einem bestimmten Azure-Dienst. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert.
+Ein Diensttag steht für eine Gruppe von IP-Adresspräfixen eines bestimmten Azure-Diensts. Microsoft verwaltet die Adresspräfixe, für die das Diensttag gilt, und aktualisiert das Tag automatisch, wenn sich die Adressen ändern. Auf diese Weise wird die Komplexität häufiger Updates an Netzwerksicherheitsregeln minimiert.
 
-Sie können mithilfe von Diensttags Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules)  oder  [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Wenn Sie den Diensttagnamen (z. B. **ApiManagement** ) im entsprechenden Feld *Quelle*  oder  *Ziel*  einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
+Sie können Diensttags verwenden, um Netzwerkzugriffssteuerungen in [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/security-overview#security-rules) oder in der [Azure Firewall](https://docs.microsoft.com/azure/firewall/service-tags) zu definieren. Verwenden Sie Diensttags anstelle von spezifischen IP-Adressen, wenn Sie Sicherheitsregeln erstellen. Indem Sie den Diensttagnamen (z. B. **ApiManagement** ) im entsprechenden Feld *Quelle* oder *Ziel* einer Regel angeben, können Sie den Datenverkehr für den entsprechenden Dienst zulassen oder verweigern.
 
 Mithilfe von Diensttags können Sie Netzwerkisolation erreichen und Ihre Azure-Ressourcen vor dem allgemeinen Internet schützen, während Sie auf Azure-Dienste mit öffentlichen Endpunkten zugreifen. Erstellen Sie Regeln für eingehende/ausgehende Netzwerksicherheitsgruppen, um Datenverkehr in das **Internet** und aus diesem zu verweigern und Datenverkehr in die **Azure-Cloud** oder andere [verfügbare Diensttags](#available-service-tags) von bestimmten Azure-Diensten und aus diesen zuzulassen.
 
@@ -54,7 +54,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureBackup** |Azure Backup.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit vom Tag **Storage** und **AzureActiveDirectory** auf. | Ausgehend | Nein | Ja |
 | **AzureBotService** | Azure Bot Service | Ausgehend | Nein | Nein |
 | **AzureCloud** | Alle [öffentlichen IP-Adressen im Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=56519). | Ausgehend | Ja | Ja |
-| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um Indexern einen sicheren Zugriff auf Datenquellen zu gewähren. Weitere Informationen finden Sie in der [Dokumentation zur Indexerverbindung](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors). <br/><br/> *Hinweis* : Die IP-Adresse des Suchdiensts ist nicht in der Liste der IP-Adressbereiche für dieses Diensttag enthalten, und **es muss außerdem der IP-Firewall der Datenquellen hinzugefügt werden** . | Eingehend | Nein | Nein |
+| **AzureCognitiveSearch** | Azure Cognitive Search. <br/><br/>Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um Indexern einen sicheren Zugriff auf Datenquellen zu gewähren. Weitere Informationen finden Sie in der [Dokumentation zur Indexerverbindung](https://docs.microsoft.com/azure/search/search-indexer-troubleshooting#connection-errors). <br/><br/> *Hinweis* : Die IP-Adresse des Suchdiensts ist nicht in der Liste der IP-Adressbereiche für dieses Diensttag enthalten, und **es muss außerdem der IP-Firewall der Datenquellen hinzugefügt werden**. | Eingehend | Nein | Nein |
 | **AzureConnectors** | Azure Logic Apps-Connectors für Test- oder Back-End-Verbindungen. | Eingehend | Ja | Ja |
 | **AzureContainerRegistry** | Azure Container Registry. | Ausgehend | Ja | Ja |
 | **AzureCosmosDB** | Azure Cosmos DB. | Ausgehend | Ja | Ja |
@@ -62,6 +62,7 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **AzureDataExplorerManagement** | Azure Data Explorer-Verwaltung | Eingehend | Nein | Nein |
 | **AzureDataLake** | Azure Data Lake Storage Gen1. | Ausgehend | Nein | Ja |
 | **AzureDevSpaces** | Azure Dev Spaces | Ausgehend | Nein | Nein |
+| **AzureDigitalTwins** | Azure Digital Twins.<br/><br/>*Hinweis:* Dieses Tag oder die von diesem Tag abgedeckten IP-Adressen können verwendet werden, um den Zugriff auf Endpunkte einzuschränken, die für Ereignisrouten konfiguriert sind. *Dieses Tag ist derzeit nicht über das Azure-Portal konfigurierbar.* | Eingehend | Nein | Ja |
 | **AzureEventGrid** | Azure Event Grid: | Beide | Nein | Nein |
 | **AzureFrontDoor.Frontend** <br/> **AzureFrontDoor.Backend** <br/> **AzureFrontDoor.FirstParty**  | Azure Front Door | Beide | Nein | Nein |
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Hinweis:* Dieses Tag weist eine Abhängigkeit von den Tags **AzureActiveDirectory** , **AzureFrontDoor.Frontend** und **AzureFrontDoor.FirstParty** auf. | Ausgehend | Nein | Nein |
@@ -83,7 +84,6 @@ Standardmäßig spiegeln Diensttags die Bereiche für die gesamte Cloud wider. E
 | **DataFactory**  | Azure Data Factory | Beide | Nein | Nein |
 | **DataFactoryManagement** | Verwaltungsdatenverkehr für Azure Data Factory | Ausgehend | Nein | Nein |
 | **Dynamics365ForMarketingEmail** | Die Adressbereiche für den Marketing-E-Mail-Dienst von Dynamics 365. | Ausgehend | Ja | Nein |
-| **ElasticAFD** | Azure Front Door (elastisch) | Beide | Nein | Nein |
 | **EventHub** | Azure Event Hubs. | Ausgehend | Ja | Ja |
 | **GatewayManager** | Verwaltungsdatenverkehr für dedizierte Azure VPN Gateway- und Application Gateway-Bereitstellungen. | Eingehend | Nein | Nein |
 | **GuestAndHybridManagement** | Azure Automation und Gastkonfiguration | Ausgehend | Nein | Ja |

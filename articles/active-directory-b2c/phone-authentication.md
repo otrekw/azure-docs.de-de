@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 4a429314d4a992ea93f4c068203371cda769a4ff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90029149"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93122723"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -35,7 +35,7 @@ Einmalkennwörter werden mithilfe von SMS-Textnachrichten an Ihre Benutzer gesen
 > [!NOTE]
 > Wir empfehlen Ihnen dringend, bei der Anmeldung und Registrierung Zustimmungsinformationen ähnlich wie im Beispieltext unten anzugeben. Dieser Beispieltext dient nur zu Informationszwecken. Lesen Sie das Short Code Monitoring Handbook auf der [CTIA-Website](https://www.ctia.org/programs), und wenden Sie sich an Ihre eigenen Rechts- oder Complianceexperten, um eine Anleitung für die Formulierung Ihres endgültigen Texts und für die Featurekonfiguration zur Erfüllung Ihrer eigenen Complianceanforderungen zu erhalten:
 >
-> *Durch die Angabe Ihrer Telefonnummer erklären Sie sich damit einverstanden, eine Einmalkennung per SMS zu erhalten, mit der Sie sich bei *&lt;einfügen: Name Ihrer Anwendung&gt;* anmelden können. Möglicherweise gelten Standardnachrichten- und -datentarife.*
+> *Durch die Angabe Ihrer Telefonnummer erklären Sie sich damit einverstanden, eine Einmalkennung per SMS zu erhalten, mit der Sie sich bei *&lt;Name Ihrer Anwendung einfügen&gt;* anmelden können. Möglicherweise gelten Standardnachrichten- und -datentarife.*
 >
 > *&lt;Einfügen: Link zu Ihrer Datenschutzerklärung&gt;*<br/>*&lt;Einfügen: Link zu Ihren Vertragsbedingungen&gt;*
 
@@ -108,7 +108,7 @@ In den folgenden Schritten wird davon ausgegangen, dass Sie die [Voraussetzungen
 
 1. Ersetzen Sie in jeder Datei die Zeichenfolge `yourtenant` durch den Namen Ihres Azure AD B2C-Mandanten. Wenn der Name des B2C-Mandanten z.B. *contosob2c* lautet, werden alle Instanzen von `yourtenant.onmicrosoft.com` zu `contosob2c.onmicrosoft.com`.
 
-1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/`**`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework* .
+1. Führen Sie die Schritte im Abschnitt [Hinzufügen von Anwendungs-IDs zur benutzerdefinierten Richtlinie](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) von [Erste Schritte mit benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-get-started.md) aus. Aktualisieren Sie in diesem Fall `/phone-number-passwordless/`**`Phone_Email_Base.xml`** mit den **Anwendungs-IDs (Client-IDs)** der beiden Anwendungen, die Sie beim Abschließen der Voraussetzungen registriert haben: *IdentityExperienceFramework* und *ProxyIdentityExperienceFramework*.
 
 ## <a name="upload-the-policy-files"></a>Hochladen der Richtliniendateien
 

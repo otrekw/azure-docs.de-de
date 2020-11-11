@@ -1,5 +1,5 @@
 ---
-title: Veröffentlichen Ihrer App im Azure AD-App-Katalog
+title: Veröffentlichen Ihrer App im App-Katalog von Azure Active Directory
 description: Erfahren Sie, wie Sie eine Anwendung, die einmaliges Anmelden unterstützt, im Azure Active Directory-App-Katalog listen.
 services: active-directory
 author: kenwith
@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/19/2020
+ms.date: 11/03/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 5ade98e04853ae8293f762f237b3b3154c876f7e
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275672"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339432"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -60,11 +60,28 @@ Folgende Schritte müssen Sie zum Veröffentlichen Ihrer App im Azure AD-App-Ka
 5. Übermitteln Sie Ihre App.
 6. Werden Sie Mitglied im Microsoft Partner Network.
 
+## <a name="what-is-the-azure-ad-application-gallery"></a>Was ist der Azure AD-Anwendungskatalog?
+
+- Kunden finden so die bestmögliche Umgebung für einmaliges Anmelden.
+- Die Konfiguration der Anwendung ist einfach und in wenigen Schritten erledigt.
+- Eine schnelle Suche findet Ihre Anwendung im Katalog.
+- Azure AD-Kunden mit den Tarifen Free, Basic und Premium können diese Integration nutzen.
+- Gemeinsame Kunden erhalten ausführliche Tutorials zur Konfiguration.
+- Kunden, die das System für die domänenübergreifende Identitätsverwaltung (System for Cross-domain Identity Management, [SCIM](https://techcommunity.microsoft.com/t5/Identity-Standards-Blog/Provisioning-with-SCIM-getting-started/ba-p/880010)) verwenden, können die Bereitstellung für dieselbe App nutzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern.
 
+- Bei Verbundanwendungen (OpenID und SAML/WS-Fed) muss die Anwendung das Software-as-a-Service-Modell (SaaS-Modell) für die Aufnahme in den Azure AD-App-Katalog unterstützen. Die Unternehmenskataloganwendungen müssen mehrere Kundenkonfigurationen und nicht einen bestimmten Kunden unterstützen.
+- Für OpenID Connect muss die Anwendung mehrinstanzenfähig sein, und das [Azure AD-Zustimmungsframework](../develop/consent-framework.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) muss für die Anwendung ordnungsgemäß implementiert werden. Der Benutzer kann die Anmeldeanforderung an einen gemeinsamen Endpunkt senden, damit jeder Kunde der Anwendung zustimmen kann. Sie können den Benutzerzugriff anhand der Mandanten-ID und des im Token erhaltenen UPN des Benutzers steuern.
+- Für SAML 2.0/WS-Fed muss Ihre Anwendung über eine Funktion zur SAML-/WS-Fed-SSO-Integration im SP- oder IDP-Modus verfügen. Stellen Sie sicher, dass diese Funktion ordnungsgemäß funktioniert, bevor Sie die Anforderung senden.
+- Stellen Sie beim Kennwort-SSO sicher, dass Ihre Anwendung die Formularauthentifizierung unterstützt, sodass Kennworttresore verwendet werden können, damit einmaliges Anmelden wie erwartet funktioniert.
+- Für Tests benötigen Sie ein dauerhaftes Konto mit mindestens zwei registrierten Benutzern.
+
+**Wie erhalte ich Azure AD für Entwickler?**
+
+Sie können ein kostenloses Testkonto mit allen Premium-Features von Azure AD erhalten. Dieses ist 90 Tage lang kostenlos mit einer Verlängerungsmöglichkeit, solange Sie Entwicklungsaufgaben ausführen: https://docs.microsoft.com/office/developer-program/office-365-developer-program
 
 ## <a name="step-1---choose-the-right-single-sign-on-standard-for-your-app"></a>Schritt 1: Auswählen des richtigen Standards für einmaliges Anmelden für Ihre App
 
@@ -256,6 +273,16 @@ Im [Microsoft Application Network-Portal](https://microsoft.sharepoint.com/teams
 
 > [!NOTE]
 > Wenn Sie Probleme mit dem Zugriff haben, lesen Sie den vorherigen Abschnitt zum Erstellen Ihres Kontos. Wenn dies nicht funktioniert, wenden Sie sich an das [Azure AD-SSO-Integrationsteam](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+### <a name="list-requests-by-customers"></a>Auflisten von Anforderungen nach Kunden
+
+Kunden können eine Anforderung zum Auflisten einer Anwendung senden, indem sie **App-Anforderungen nach Kunden** > **Neue Anforderung übermitteln** auswählen.
+
+![Zeigt die Kachel für die von Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-submit-request.png)
+
+Nachstehend ist der Flow für die vom Kunden angeforderten Anwendungen dargestellt.
+
+![Zeigt den Flow für die vom Kunden angeforderten Apps](./media/howto-app-gallery-listing/customer-request-2.png)
 
 
 ### <a name="timelines"></a>Zeitpläne

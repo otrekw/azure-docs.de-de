@@ -3,12 +3,12 @@ title: Bereitstellen von Horizon in Azure VMware Solution
 description: Es wird beschrieben, wie Sie VMware Horizon in Azure VMware Solution bereitstellen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 6a466aea5cbdf4452a2c46b455932042d920c3b9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369011"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321353"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Bereitstellen von Horizon in Azure VMware Solution 
 
@@ -211,3 +211,6 @@ Basierend auf der Standardarchitektur für die Bereitstellung bestehen VMs der H
 | Windows-Dateifreigabe               | D4sv3          |         | *Optional*                               |
 
 Die Kosten für die VMs der Infrastruktur belaufen sich bei der Bereitstellung von 2.000 Desktops wie im obigen Beispiel auf 0,36 US-Dollar pro Benutzer pro Monat. In diesem Beispiel werden die Preise für eine Azure-Instanz in der Region „USA, Osten“ vom Juni 2020 verwendet. Die für Sie geltenden Preise können je nach Region, gewählten Optionen und Zeitpunkt variieren.
+
+## <a name="next-steps"></a>Nächste Schritte
+Weitere Informationen zu VMware Horizon in Azure VMware Solution finden Sie in den [Häufig gestellten Fragen zu VMware Horizon](https://www.vmware.com/content/dam/digitalmarketing/vmware/en/pdf/products/horizon/vmw-horizon-on-microsoft-azure-vmware-solution-faq.pdf).
