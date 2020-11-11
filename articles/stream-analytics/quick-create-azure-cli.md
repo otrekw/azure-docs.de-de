@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 37cbd1b05249c694aaaa4ff5196a3b6328ccda7f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126242"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348779"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI
 
@@ -77,7 +77,7 @@ Bei den folgenden Azure CLI-Codeblöcken handelt es sich um Befehle, mit denen d
     az iot hub create --name "MyASAIoTHub" --resource-group streamanalyticsrg --sku S1
     ```
 
-    Nachdem der IoT-Hub erstellt wurde, rufen Sie die IoT Hub-Verbindungszeichenfolge mit dem Befehl [az iot hub show-connection-string](/cli/azure/iot/hub?view=azure-cli-latest) ab. Kopieren Sie die komplette Verbindungszeichenfolge, und speichern Sie sie (Sie benötigen sie, wenn Sie die IoT Hub-Instanz als Eingabe für den Stream Analytics-Auftrag hinzufügen).
+    Nachdem der IoT-Hub erstellt wurde, rufen Sie die IoT Hub-Verbindungszeichenfolge mit dem Befehl [az iot hub show-connection-string](/cli/azure/iot/hub) ab. Kopieren Sie die komplette Verbindungszeichenfolge, und speichern Sie sie (Sie benötigen sie, wenn Sie die IoT Hub-Instanz als Eingabe für den Stream Analytics-Auftrag hinzufügen).
 
     ```azurecli
     az iot hub show-connection-string --hub-name "MyASAIoTHub"
@@ -138,7 +138,7 @@ Mit den folgenden Azure CLI-Codeblöcken wird ein Blobspeicherkonto erstellt, da
 
 Mit den folgenden Azure CLI-Codeblöcken wird ein Stream Analytics-Auftrag erstellt. Sehen Sie sich die Abschnitte an, um den Code zu verstehen.
 
-1. Erstellen Sie einen Stream Analytics-Auftrag, indem Sie den Befehl [az stream-analytics job create](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-create) verwenden.
+1. Erstellen Sie einen Stream Analytics-Auftrag, indem Sie den Befehl [az stream-analytics job create](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-create) verwenden.
 
 ```azurecli
 az stream-analytics job create \
@@ -154,7 +154,7 @@ az stream-analytics job create \
 
 ## <a name="configure-input-to-the-job"></a>Konfigurieren einer Eingabe für den Auftrag
 
-Fügen Sie Ihrem Auftrag eine Eingabe hinzu, indem Sie das Cmdlet [az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-input-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragseingabenamen, den Ressourcengruppennamen und die Auftragseingabedefinition als Parameter. Bei der Auftragseingabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Eingabe eines Auftrags erforderlich sind. In diesem Beispiel erstellen Sie eine IoT Hub-Instanz als Eingabe.
+Fügen Sie Ihrem Auftrag eine Eingabe hinzu, indem Sie das Cmdlet [az stream-analytics input](/cli/azure/ext/stream-analytics/stream-analytics/input#ext-stream-analytics-az-stream-analytics-input-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragseingabenamen, den Ressourcengruppennamen und die Auftragseingabedefinition als Parameter. Bei der Auftragseingabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Eingabe eines Auftrags erforderlich sind. In diesem Beispiel erstellen Sie eine IoT Hub-Instanz als Eingabe.
 
 Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `datasource.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Ersetzen Sie den Wert für `sharedAccessPolicyKey` durch den `SharedAccessKey`-Teil der IoT Hub-Verbindungszeichenfolge, die Sie zuvor gespeichert haben.
 
@@ -196,7 +196,7 @@ az stream-analytics input create
 
 ## <a name="configure-output-to-the-job"></a>Konfigurieren einer Ausgabe für den Auftrag
 
-Fügen Sie Ihrem Auftrag eine Ausgabe hinzu, indem Sie das Cmdlet [az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-output-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragsausgabenamen, den Ressourcengruppennamen und die Auftragsausgabedefinition als Parameter. Bei der Auftragsausgabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Ausgabe eines Auftrags erforderlich sind. In diesem Beispiel wird der Blobspeicher als Ausgabe verwendet.
+Fügen Sie Ihrem Auftrag eine Ausgabe hinzu, indem Sie das Cmdlet [az stream-analytics output create](/cli/azure/ext/stream-analytics/stream-analytics/output#ext-stream-analytics-az-stream-analytics-output-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragsausgabenamen, den Ressourcengruppennamen und die Auftragsausgabedefinition als Parameter. Bei der Auftragsausgabedefinition handelt es sich um eine JSON-Datei mit den Eigenschaften, die zum Konfigurieren der Ausgabe eines Auftrags erforderlich sind. In diesem Beispiel wird der Blobspeicher als Ausgabe verwendet.
 
 Erstellen Sie auf Ihrem lokalen Computer eine Datei mit dem Namen `datasink.json`, und fügen Sie ihr die folgenden JSON-Daten hinzu. Ersetzen Sie den Wert für `accountKey` durch den Zugriffsschlüssel Ihres Speicherkontos. Dieser Wert ist in „$storageAccountKey“ gespeichert.
 
@@ -231,7 +231,7 @@ az stream-analytics output create
 
 ## <a name="define-the-transformation-query"></a>Definieren der Transformationsabfrage
 
-Fügen Sie Ihrem Auftrag eine Transformation hinzu, indem Sie das Cmdlet [az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-transformation-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragstransformationsnamen, den Ressourcengruppennamen und die Auftragstransformationsdefinition als Parameter. 
+Fügen Sie Ihrem Auftrag eine Transformation hinzu, indem Sie das Cmdlet [az stream-analytics transformation create](/cli/azure/ext/stream-analytics/stream-analytics/transformation#ext-stream-analytics-az-stream-analytics-transformation-create) verwenden. Dieses Cmdlet übernimmt den Auftragsnamen, den Auftragstransformationsnamen, den Ressourcengruppennamen und die Auftragstransformationsdefinition als Parameter. 
 
 Führen Sie das `az stream-analytics transformation create`-Cmdlet aus.
 
@@ -255,7 +255,7 @@ az stream-analytics transformation create
 
 ## <a name="start-the-stream-analytics-job-and-check-the-output"></a>Starten des Stream Analytics-Auftrags und Überprüfen der Ausgabe
 
-Starten Sie den Auftrag mit dem Cmdlet [az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job?view=azure-cli-latest#ext-stream-analytics-az-stream-analytics-job-start). Dieses Cmdlet übernimmt den Auftragsnamen, den Ressourcengruppennamen, den Ausgabestartmodus und die Startzeit als Parameter. `OutputStartMode` akzeptiert die Werte `JobStartTime`, `CustomTime` und `LastOutputEventTime`.
+Starten Sie den Auftrag mit dem Cmdlet [az stream-analytics job start](/cli/azure/ext/stream-analytics/stream-analytics/job#ext-stream-analytics-az-stream-analytics-job-start). Dieses Cmdlet übernimmt den Auftragsnamen, den Ressourcengruppennamen, den Ausgabestartmodus und die Startzeit als Parameter. `OutputStartMode` akzeptiert die Werte `JobStartTime`, `CustomTime` und `LastOutputEventTime`.
 
 Nach der Ausführung des folgenden Cmdlets wird als Ausgabe `True` zurückgegeben, wenn der Auftrag gestartet wird. Im Speichercontainer wird ein Ausgabeordner mit den transformierten Daten erstellt.
 

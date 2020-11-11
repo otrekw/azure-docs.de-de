@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: cfe1b66662d73c18934ef9ecc884adee79493eb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92640986"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335246"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
@@ -46,9 +46,9 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > 1. Geben Sie auf der daraufhin angezeigten Seite **Anwendung registrieren** einen Namen für Ihre Anwendung ein.
 > 1. Wählen Sie unter **Unterstützte Kontotypen** **Konten in allen Organisationsverzeichnissen und persönliche Microsoft-Konten** aus.
 > 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/redirect` fest.
-> 1. Wählen Sie **Registrieren** . 
+> 1. Wählen Sie **Registrieren**. 
 > 1. Notieren Sie sich für die spätere Verwendung auf der Seite **Übersicht** den Wert von **Anwendungs-ID (Client)** .
-> 1. Wählen Sie unter **Zertifikate und Geheimnisse** die Option **Neuer geheimer Clientschlüssel** aus.  Lassen Sie die Beschreibung und den Standardablauf leer, und klicken Sie auf **Hinzufügen** .
+> 1. Wählen Sie unter **Zertifikate und Geheimnisse** die Option **Neuer geheimer Clientschlüssel** aus.  Lassen Sie die Beschreibung und den Standardablauf leer, und klicken Sie auf **Hinzufügen**.
 > 1. Notieren Sie sich den **Wert** des **geheimen Clientschlüssels** zur späteren Verwendung.
 
 #### <a name="step-2-download-the-project"></a>Schritt 2: Herunterladen des Projekts
@@ -65,7 +65,7 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > [!div renderon="docs"]
 > #### <a name="step-3-configure-your-node-app"></a>Schritt 3: Konfigurieren Ihrer Node-App
 >
-> Extrahieren Sie das Projekt, öffnen Sie den Ordner *ms-identity-node-main* und dann die Datei *index.js* .
+> Extrahieren Sie das Projekt, öffnen Sie den Ordner *ms-identity-node-main* und dann die Datei *index.js*.
 > Legen Sie die `clientID` mit der **Anwendungs-ID (Client)** fest.
 > Legen Sie den `clientSecret` mit dem **Wert** des **geheimen Clientschlüssels** fest.
 >
@@ -141,4 +141,4 @@ npm install @azure/msal-node
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Auth zu einer vorhandenen Web-App – GitHub-Codebeispiel >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code/readme.md)
+> [Hinzufügen von Auth zu einer vorhandenen Web-App – GitHub-Codebeispiel >](https://github.com/AzureAD/microsoft-authentication-library-for-js/tree/dev/samples/msal-node-samples/standalone-samples/auth-code)

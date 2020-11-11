@@ -6,15 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
+ms.subservice: general
 ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 78f228a5e188bc930a9e7484f4c982ba746331dd
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91296836"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357775"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Übersicht über Schlüssel, Geheimnisse und Zertifikate in Azure Key Vault
 
@@ -47,7 +48,7 @@ Speicherkontoschlüssel|/storageaccount|Unterstützt|Nicht unterstützt
 |||
 - **Kryptografische Schlüssel:** Unterstützt mehrere Schlüsseltypen und Algorithmen und ermöglicht die Verwendung von softwaregeschützten und durch HSM geschützten Schlüsseln. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Schlüsseln](../keys/about-keys.md).
 - **Geheimnisse:** Bieten einen sicheren Speicher für Geheimnisse wie Kennwörter und Datenbank-Verbindungszeichenfolgen. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](../secrets/about-secrets.md).
-- **Zertifikate**: Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
+- **Zertifikate** : Unterstützen Zertifikate, die auf Schlüsseln und Geheimnissen aufbauen, und fügt ein Feature für die automatisierte Verlängerung hinzu. Weitere Informationen finden Sie unter [Informationen zu Azure Key Vault-Zertifikaten](../certificates/about-certificates.md).
 - **Azure-Speicherkontenschlüssel:** Kann die Schlüssel eines Azure Storage-Kontos für Sie verwalten. Intern kann Key Vault Schlüssel für ein Azure Storage-Konto auflisten (synchronisieren) und die Schlüssel in regelmäßigen Abständen erneut generieren (rotieren). Weitere Informationen finden Sie unter [Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle](../secrets/overview-storage-keys.md).
 
 Weitere allgemeine Informationen zu Key Vault finden Sie unter [Informationen zu Azure Key Vault](overview.md). Weitere Informationen zu Pools verwalteter HSMs finden Sie unter [Was ist verwaltetes HSM von Azure Key Vault?](../managed-hsm/overview.md).
@@ -57,16 +58,16 @@ Weitere allgemeine Informationen zu Key Vault finden Sie unter [Informationen zu
 
 In den JOSE-Spezifikationen finden Sie relevante Datentypen für Schlüssel, Verschlüsselung und Signatur.  
 
--   **algorithm**: ein unterstützter Algorithmus für einen Schlüsselvorgang, z.B. RSA1_5.  
--   **ciphertext-value**: Verschlüsselungstextoktette, codiert mit Base64URL.  
--   **digest-value**: die Ausgabe eines Hashalgorithmus, codiert mit Base64URL.  
--   **key-type**: einer der unterstützten Schlüsseltypen, z.B. RSA (Rivest-Shamir-Adleman).  
--   **plaintext-value**: Klartextoktette, codiert mit Base64URL.  
--   **signature-value**: die Ausgabe eines Signaturalgorithmus, codiert mit Base64URL.  
--   **base64URL**: ein mit Base64URL [RFC4648] codierter Binärwert.  
--   **boolean**: entweder TRUE oder FALSE.  
--   **Identity**: eine Identität in Azure Active Directory (AAD).  
--   **IntDate**: ein dezimaler JSON-Wert, der die Anzahl von Sekunden von 1970-01-01T0:0:0Z UTC bis zum angegebenen UTC-Datum / zur angegebenen UTC-Uhrzeit darstellt. Details in Bezug auf Datum/Uhrzeit im Allgemeinen und UTC im Besonderen finden Sie der Dokumentation zu RFC 3339.  
+-   **algorithm** : ein unterstützter Algorithmus für einen Schlüsselvorgang, z.B. RSA1_5.  
+-   **ciphertext-value** : Verschlüsselungstextoktette, codiert mit Base64URL.  
+-   **digest-value** : die Ausgabe eines Hashalgorithmus, codiert mit Base64URL.  
+-   **key-type** : einer der unterstützten Schlüsseltypen, z.B. RSA (Rivest-Shamir-Adleman).  
+-   **plaintext-value** : Klartextoktette, codiert mit Base64URL.  
+-   **signature-value** : die Ausgabe eines Signaturalgorithmus, codiert mit Base64URL.  
+-   **base64URL** : ein mit Base64URL [RFC4648] codierter Binärwert.  
+-   **boolean** : entweder TRUE oder FALSE.  
+-   **Identity** : eine Identität in Azure Active Directory (AAD).  
+-   **IntDate** : ein dezimaler JSON-Wert, der die Anzahl von Sekunden von 1970-01-01T0:0:0Z UTC bis zum angegebenen UTC-Datum / zur angegebenen UTC-Uhrzeit darstellt. Details in Bezug auf Datum/Uhrzeit im Allgemeinen und UTC im Besonderen finden Sie der Dokumentation zu RFC 3339.  
 
 ## <a name="objects-identifiers-and-versioning"></a>Objekte, Bezeichner und Versionsverwaltung
 

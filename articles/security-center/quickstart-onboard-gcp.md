@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: bbaa44fb64becee85b29cd44bee44e593ec55bf6
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91448987"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372641"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>Verbinden Ihrer GCP-Konten mit Azure Security Center
 
@@ -36,7 +36,7 @@ Im nachstehenden Screenshot sehen Sie GCP-Projekte, die auf dem Übersichtsdashb
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau|
+|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Preise:|Erfordert [Azure Defender für Server](defender-for-servers-introduction.md)|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Mitwirkender** für das entsprechende Azure-Abonnement|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
@@ -60,7 +60,7 @@ Wenn Sie Security Health Analytics erstmalig aktivieren, kann es mehrere Stunden
 ### <a name="step-2-enable-gcp-security-command-center-api"></a>Schritt 2: Aktivieren der GCP Security Command Center-API
 
 1. Wählen Sie in der **Cloud Console-API-Bibliothek** von Google das Projekt aus, das Sie mit Azure Security Center verbinden möchten.
-1. Suchen Sie in der API-Bibliothek nach **Security Command Center API**, und wählen Sie diesen Eintrag aus.
+1. Suchen Sie in der API-Bibliothek nach **Security Command Center API** , und wählen Sie diesen Eintrag aus.
 1. Wählen Sie auf der Seite der API **ENABLE** (Aktivieren) aus.
 
 Erfahren Sie mehr über die [Security Command Center-API](https://cloud.google.com/security-command-center/docs/reference/rest/).
@@ -68,19 +68,19 @@ Erfahren Sie mehr über die [Security Command Center-API](https://cloud.google.c
 
 ### <a name="step-3-create-a-dedicated-service-account-for-the-security-configuration-integration"></a>Schritt 3: Erstellen eines dedizierten Dienstkontos für die Integration der Sicherheitskonfiguration
 
-1. Wählen Sie in der**GCP-Konsole** das Projekt aus, das Sie mit Security Center verbinden möchten.
+1. Wählen Sie in der **GCP-Konsole** das Projekt aus, das Sie mit Security Center verbinden möchten.
 1. Wählen Sie im **Navigationsmenü** unter **IAM & admin** die Option **Service accounts** (Dienstkonten) aus.
 1. Wählen Sie **CREATE SERVICE ACCOUNT** (Dienstkonto erstellen) aus.
 1. Geben Sie einen Kontonamen ein, und wählen Sie **Create** (Erstellen) aus.
 1. Geben Sie für **Role** (Rolle) **Security Center Admin Viewer** an, und wählen Sie **Continue** (Weiter) aus.
-1. Der Abschnitt **Grant users access to this service account** (Benutzern Zugriff auf dieses Dienstkonto gewähren) ist optional. Wählen Sie **Fertig**aus.
+1. Der Abschnitt **Grant users access to this service account** (Benutzern Zugriff auf dieses Dienstkonto gewähren) ist optional. Wählen Sie **Fertig** aus.
 1. Kopieren Sie den Wert **E-Mail** des erstellten Dienstkontos, und speichern Sie ihn für die spätere Verwendung.
 1. Wählen Sie im **Navigationsmenü** unter **IAM & admin** die Option **IAM** aus.
     1. Wechseln Sie zur Organisationsebene.
     1. Wählen Sie **ADD** (Hinzufügen) aus.
     1. Fügen Sie im Feld **New members** (Neue Mitglieder) den Wert von **E-Mail** ein, den Sie zuvor kopiert haben.
     1. Geben Sie als Rolle **Security Center Admin Viewer** an, und wählen Sie „Save“ (Speichern) aus.
-        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind":::
+        :::image type="content" source="./media/quickstart-onboard-gcp/iam-settings-gcp-permissions-admin-viewer.png" alt-text="Festlegen der relevanten GCP-Berechtigungen":::
 
 
 ### <a name="step-4-create-a-private-key-for-the-dedicated-service-account"></a>Schritt 4: Erstellen eines privaten Schlüssels für das dedizierte Dienstkonto
@@ -107,7 +107,7 @@ Erfahren Sie mehr über die [Security Command Center-API](https://cloud.google.c
 Wenn der Connector erstellt und GCP Security Command Center ordnungsgemäß konfiguriert wurde:
 
 - Der GCP-CIS-Standard wird auf dem Dashboard zur Einhaltung gesetzlicher Bestimmungen von Security Center angezeigt.
-- 5–10 Minuten nach Abschluss des Onboardings werden Sicherheitsempfehlungen für Ihre GCP-Ressourcen im Security Center-Portal und im Dashboard zur Einhaltung gesetzlicher Bestimmungen angezeigt:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind":::
+- 5–10 Minuten nach Abschluss des Onboardings werden Sicherheitsempfehlungen für Ihre GCP-Ressourcen im Security Center-Portal und im Dashboard zur Einhaltung gesetzlicher Bestimmungen angezeigt:   :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resources-in-recommendations.png" alt-text="GCP-Ressourcen und Empfehlungen auf der Empfehlungsseite in Security Center":::
 
 
 ## <a name="monitoring-your-gcp-resources"></a>Überwachen Ihrer GCP-Ressourcen
@@ -116,7 +116,7 @@ Wie oben dargestellt, werden auf der Seite mit Sicherheitsempfehlungen in Azure 
 
 Zum Anzeigen aller aktiven Empfehlungen für Ihre Ressourcen nach Ressourcentyp verwenden Sie die Ressourcenbestandsseite von Security Center, und filtern Sie nach dem gewünschten GCP-Ressourcentyp:
 
-:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 GCP-Projekte, die auf dem Übersichtsdashboard von Security Center aufgeführt sind"::: 
+:::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="Ressourcentypfilter der Seite für den Ressourcenbestand mit den GCP-Optionen"::: 
 
 
 ## <a name="next-steps"></a>Nächste Schritte

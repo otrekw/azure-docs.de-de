@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7ec4515d5f1d096cfb83f06c398da4c1254279f6
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099146"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337456"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Logic Apps-Workflows – Azure-Portal
 
@@ -112,7 +112,7 @@ Ihre Logik-App befindet sich jetzt im Livemodus, aber vorerst wird nur der RSS-F
 
 ## <a name="add-the-send-email-action"></a>Hinzufügen der Aktion „E-Mail senden“
 
-Nachdem Sie [einen Trigger für Ihre Logik-App hinzugefügt haben](#add-rss-trigger), müssen Sie eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzufügen. Mit dieser Aktion wird bestimmt, welche Reaktion erfolgt, wenn der RSS-Feed von Ihrer Logik-App überprüft und ein neues Element angezeigt wird. Sie können auch Logik-Apps mit deutlich komplexeren Aktionen erstellen, z. B. im Tutorial für die [Verarbeitung von E-Mails mit Logic Apps, Azure Functions und Azure Storage](/tutorial-process-email-attachments-workflow.md).
+Nachdem Sie [einen Trigger für Ihre Logik-App hinzugefügt haben](#add-rss-trigger), müssen Sie eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzufügen. Mit dieser Aktion wird bestimmt, welche Reaktion erfolgt, wenn der RSS-Feed von Ihrer Logik-App überprüft und ein neues Element angezeigt wird. Sie können auch Logik-Apps mit deutlich komplexeren Aktionen erstellen, z. B. im Tutorial für die [Verarbeitung von E-Mails mit Logic Apps, Azure Functions und Azure Storage](/azure/logic-apps/tutorial-process-email-attachments-workflow).
 
 > [!NOTE]
 > In diesem Beispiel wird Office 365 Outlook als E-Mail-Dienst verwendet. Wenn Sie einen anderen unterstützten E-Mail-Dienst in Ihrer Logik-App verwenden, sieht die Benutzeroberfläche ggf. anders aus. Die grundlegenden Konzepte für das Herstellen einer Verbindung mit einem anderen E-Mail-Dienst bleiben aber unverändert.
