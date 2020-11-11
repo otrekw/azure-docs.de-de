@@ -6,14 +6,15 @@ ms.reviewer: baolcsva
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.topic: conceptual
-ms.date: 09/03/2020
+ms.date: 10/05/2020
 ms.author: banders
-ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.custom: contperfq1
+ms.openlocfilehash: 3222c934998febe79c36121ca816f949b78d374e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371897"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411557"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-Übertragungen
 
@@ -93,21 +94,25 @@ Die Azure-Vorauszahlung ist zwischen Registrierungen übertragbar. Salden in Bez
 
 Während der Konto- oder Registrierungsübertragung entstehen keine Ausfallzeiten. Sie kann am Tag Ihrer Anforderung abgeschlossen werden, wenn alle erforderlichen Informationen bereitgestellt werden.
 
+## <a name="transfer-an-enterprise-subscription-to-a-pay-as-you-go-subscription"></a>Übertragen eines Enterprise-Abonnements auf ein Abonnement mit nutzungsbasierter Bezahlung
+
+Wenn Sie ein Enterprise-Abonnement auf ein einzelnes Abonnement mit nutzungsbasierter Bezahlung übertragen möchten, müssen Sie im Azure Enterprise Portal eine neue Supportanfrage erstellen. Klicken Sie zum Erstellen einer Supportanfrage im Bereich **Hilfe und Support** auf **+ Neue Supportanfrage**.
+
 ## <a name="change-account-owner"></a>Ändern des Kontobesitzers
 
-Das Azure EA-Portal kann Abonnements von einem Kontobesitzer auf einen anderen übertragen. Weitere Informationen finden Sie unter [Ändern des Kontobesitzers](ea-portal-get-started.md#change-account-owner).
+Das Azure EA-Portal kann Abonnements von einem Kontobesitzer auf einen anderen übertragen. Weitere Informationen finden Sie unter [Ändern des Kontobesitzers](ea-portal-administration.md#change-account-owner).
 
 ## <a name="subscription-transfer-effects"></a>Auswirkungen der Abonnementübertragung
 
 Wenn ein Azure-Abonnement an ein Konto desselben Azure Active Directory-Mandanten übertragen wird, behalten alle Benutzer, Gruppen und Dienstprinzipale, die über die [rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten, ihre Zugriffsberechtigung.
 
-So zeigen Sie Benutzer mit Azure RBAC-Zugriff auf das Abonnement an:
+So zeigen Sie Benutzer mit RBAC-Zugriff auf das Abonnement an:
 
 1. Öffnen Sie im Azure-Portal **Abonnements**.
 2. Wählen Sie das anzuzeigende Abonnement und dann **Zugriffssteuerung (IAM)** aus.
-3. Wählen Sie **Rollenzuweisungen** aus. Auf der Seite „Rollenzuweisungen“ werden alle Benutzer mit Azure RBAC-Zugriff auf das Abonnement aufgelistet.
+3. Wählen Sie **Rollenzuweisungen** aus. Auf der Seite „Rollenzuweisungen“ werden alle Benutzer mit RBAC-Zugriff auf das Abonnement aufgelistet.
 
-Wenn das Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen wird, _verlieren_ alle Benutzer, Gruppen und Dienstprinzipale ihren Zugriff, die über [Azure RBAC](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten. Auch wenn kein Azure RBAC-Zugriff vorhanden ist, ist der Zugriff auf das Abonnement unter Umständen über Sicherheitsmechanismen verfügbar, z. B.:
+Wenn das Abonnement an ein Konto in einem anderen Azure AD-Mandanten übertragen wird, _verlieren_ alle Benutzer, Gruppen und Dienstprinzipale ihren Zugriff, die über die [rollenbasierte Zugriffssteuerung (RBAC)](../../role-based-access-control/overview.md) Zugriff zum Verwalten von Ressourcen hatten. Auch wenn kein RBAC-Zugriff vorhanden ist, ist der Zugriff auf das Abonnement unter Umständen über Sicherheitsmechanismen verfügbar, z. B.:
 
 - Verwaltungszertifikate, die dem Benutzer Administratorrechte auf Abonnementressourcen gewähren. Weitere Informationen finden Sie unter [Erstellen und Hochladen eines Verwaltungszertifikats für Azure](../../cloud-services/cloud-services-certs-create.md).
 - Tastenkombinationen für Dienste wie Storage. Weitere Informationen finden Sie unter [Azure-Speicherkonto – Übersicht](../../storage/common/storage-account-overview.md).

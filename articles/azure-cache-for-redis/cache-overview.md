@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: overview
 ms.date: 05/12/2020
-ms.openlocfilehash: 3bea474ae61ba4a0213d880934d9536d6ad71796
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 1b8b95ea318dd7a82d9512908838209bc5cc2995
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131631"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93349102"
 ---
 # <a name="azure-cache-for-redis"></a>Azure Cache for Redis
 Azure Cache for Redis bietet einen auf der Software [Redis](https://redis.io/) basierenden In-Memory-Datenspeicher. Redis verbessert die Leistung und Skalierbarkeit einer Anwendung, die intensiven Gebrauch von Back-End-Datenspeichern macht. Mit Redis können große Mengen von Anwendungsanforderungen verarbeitet werden, indem häufig verwendete Daten im Arbeitsspeicher des Servers behalten werden, um schnelle Schreib- und Lesevorgänge zu ermöglichen. Redis stellt eine kritische Datenspeicherlösung mit geringer Wartezeit und hohem Durchsatz für moderne Anwendungen bereit.
@@ -35,9 +35,6 @@ Azure Cache for Redis verbessert die Anwendungsleistung durch die Unterstützung
 
 Azure Cache for Redis unterstützt OSS Redis Version 4.x sowie Version 6.0 als Vorschau. Wir haben uns entschieden, Redis 5.0 zu überspringen, um Ihnen die neueste Version zu bieten. Zuvor hat Azure Cache for Redis nur eine einzelne Redis-Version bereitgestellt. Es wird ein neueres Hauptreleaseupgrade und mindestens eine ältere stabile Version bereitgestellt. Sie können [auswählen, welche Version](cache-how-to-version.md) am besten für Ihre Anwendung geeignet ist.
 
-> [!NOTE]
-> Redis 6.0 befindet sich zurzeit in der Vorschau. [Wenden Sie sich an uns](mailto:azurecache@microsoft.com), wenn Sie daran interessiert sind. Diese Vorschau wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
->
 
 ## <a name="service-tiers"></a>Dienstebenen
 Azure Cache for Redis ist in folgenden Tarifen verfügbar:
