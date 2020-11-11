@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: mayg
-ms.openlocfilehash: 1790ac666d77f14ccadfde56f7b86e05b2c563dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e1008f7acbfe0685b7a171176c7dc54592d1491
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90604681"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146471"
 ---
 # <a name="install-a-linux-master-target-server-for-failback"></a>Installieren eines Linux-Masterzielservers für Failbacks
 Nach dem Failover Ihrer virtuellen Computer zu Azure können Sie für die virtuellen Computer ein Failback zum lokalen Standort durchführen. Für ein Failback müssen Sie den virtuellen Computer von Azure zum lokalen Standort erneut schützen. Für diesen Prozess benötigen Sie einen lokalen Masterzielserver, der den Datenverkehr empfängt. 
@@ -44,11 +44,11 @@ Kommentare oder Fragen können Sie am Ende dieses Artikels oder auf der [Microso
 ## <a name="sizing-guidelines-for-creating-master-target-server"></a>Größenrichtlinien für das Erstellen von Masterzielservern
 
 Erstellen Sie das Masterziel gemäß den folgenden Richtlinien zum Festlegen der Größe:
-- **RAM**: 6 GB oder mehr
-- **Größe des Betriebssystemdatenträgers**: 100 GB oder mehr (für die Betriebssysteminstallation)
-- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk**: 1 TB
-- **CPU-Kerne**: 4 Kerne oder mehr
-- **Kernel**: 4.16.*
+- **RAM** : 6 GB oder mehr
+- **Größe des Betriebssystemdatenträgers** : 100 GB oder mehr (für die Betriebssysteminstallation)
+- **Zusätzliche Datenträgergröße für Aufbewahrungslaufwerk** : 1 TB
+- **CPU-Kerne** : 4 Kerne oder mehr
+- **Kernel** : 4.16.*
 
 ## <a name="deploy-the-master-target-server"></a>Bereitstellen des Masterzielservers
 
@@ -62,7 +62,7 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 1.  Wählen Sie **English** als bevorzugte Sprache aus, und drücken Sie die **EINGABETASTE**.
     
     ![Sprache auswählen](./media/vmware-azure-install-linux-master-target/image1.png)
-1. Wählen Sie **Install Ubuntu Server**, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie **Install Ubuntu Server** , und drücken Sie die **EINGABETASTE**.
 
     ![„Ubuntu Server installieren“ auswählen](./media/vmware-azure-install-linux-master-target/image2.png)
 
@@ -97,7 +97,7 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 
 1. Wenn die richtige Zeitzone angezeigt wird, wählen Sie **Yes** (Standardoption) aus, und drücken Sie dann die **EINGABETASTE**. Wenn Sie die Zeitzone ändern möchten, wählen Sie **Nein** aus.
 
-1. Wählen Sie aus den Optionen zum Partitionierungsverfahren **Guided – use entire disk**, und drücken Sie die **EINGABETASTE**.
+1. Wählen Sie aus den Optionen zum Partitionierungsverfahren **Guided – use entire disk** , und drücken Sie die **EINGABETASTE**.
 
      ![Option für Partitionierungsverfahren auswählen](./media/vmware-azure-install-linux-master-target/image14.png)
 
@@ -105,15 +105,15 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
 
     ![Datenträger auswählen](./media/vmware-azure-install-linux-master-target/image15.png)
 
-1.  Wählen Sie **Yes**, um die Änderungen auf den Datenträger zu schreiben, und drücken Sie die **EINGABETASTE**.
+1.  Wählen Sie **Yes** , um die Änderungen auf den Datenträger zu schreiben, und drücken Sie die **EINGABETASTE**.
 
     ![Standardoption auswählen](./media/vmware-azure-install-linux-master-target/image16-ubuntu.png)
 
-1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue**, und drücken Sie die **EINGABETASTE**.
+1.  Wählen Sie in der Auswahl für die Proxykonfiguration die Standardoption, und wählen Sie dann **Continue** , und drücken Sie die **EINGABETASTE**.
      
-     ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
+     ![Screenshot: Auswählen von „Continue“ und Drücken der EINGABETASTE](./media/vmware-azure-install-linux-master-target/image17-ubuntu.png)
 
-1.  Wählen Sie in der Auswahl zur Verwaltung von Upgrades auf Ihrem System die Option **No automatic updates**, und drücken Sie die **EINGABETASTE**.
+1.  Wählen Sie in der Auswahl zur Verwaltung von Upgrades auf Ihrem System die Option **No automatic updates** , und drücken Sie die **EINGABETASTE**.
 
      ![Option zum Verwalten von Upgrades auswählen](./media/vmware-azure-install-linux-master-target/image18-ubuntu.png)
 
@@ -129,11 +129,11 @@ Legen Sie den Datenträger mit dem ISO-Image für Ubuntu 16.04.2 minimal 64 Bit 
     ![GRUB-Startinstallationsprogramm](./media/vmware-azure-install-linux-master-target/image20.png)
 
 
-1. Wählen Sie das entsprechende Gerät für die Installation des Startladeprogramms (vorzugsweise **/dev/sda**) aus, und drücken Sie dann die **EINGABETASTE**.
+1. Wählen Sie das entsprechende Gerät für die Installation des Startladeprogramms (vorzugsweise **/dev/sda** ) aus, und drücken Sie dann die **EINGABETASTE**.
      
     ![Auswählen des entsprechenden Geräts](./media/vmware-azure-install-linux-master-target/image21.png)
 
-1. Wählen Sie **Continue**, und drücken Sie die **EINGABETASTE**, um die Installation abzuschließen.
+1. Wählen Sie **Continue** , und drücken Sie die **EINGABETASTE** , um die Installation abzuschließen.
 
     ![Installation abschließen](./media/vmware-azure-install-linux-master-target/image22.png)
 
@@ -249,15 +249,15 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     mount /dev/mapper/<Retention disk's multipath id> /mnt/retention
     ```
 
-5. Erstellen Sie den **fstab**-Eintrag, um den Aufbewahrungsdatenträger bei jedem Systemstart bereitzustellen.
+5. Erstellen Sie den **fstab** -Eintrag, um den Aufbewahrungsdatenträger bei jedem Systemstart bereitzustellen.
     
     `vi /etc/fstab`
     
-    Drücken Sie **EINFG**, um mit der Bearbeitung der Datei zu beginnen. Erstellen Sie eine neue Zeile, und fügen Sie den folgenden Text ein. Bearbeiten Sie die Multipfad-ID des Datenträgers auf Basis der hervorgehobenen Multipfad-ID aus dem vorherigen Befehl.
+    Drücken Sie **EINFG** , um mit der Bearbeitung der Datei zu beginnen. Erstellen Sie eine neue Zeile, und fügen Sie den folgenden Text ein. Bearbeiten Sie die Multipfad-ID des Datenträgers auf Basis der hervorgehobenen Multipfad-ID aus dem vorherigen Befehl.
 
     **/dev/mapper/\<Retention disks multipath id> /mnt/retention ext4 rw 0 0**
 
-    Drücken Sie **ESC**, und geben Sie **:wq** (Schreiben und Beenden) ein, um das Editor-Fenster zu schließen.
+    Drücken Sie **ESC** , und geben Sie **:wq** (Schreiben und Beenden) ein, um das Editor-Fenster zu schließen.
 
 ### <a name="install-the-master-target"></a>Installieren des Masterziels
 
@@ -274,7 +274,7 @@ Führen Sie die folgenden Schritte aus, um einen Aufbewahrungsdatenträger zu er
     ./install -q -d /usr/local/ASR -r MT -v VmWare
     ```
 
-2. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt**, indem Sie den folgenden Befehl ausführen:
+2. Kopieren Sie die Passphrase unter **C:\ProgramData\Microsoft Azure Site Recovery\private\connection.passphrase** auf dem Konfigurationsserver. Speichern Sie diese dann im gleichen Verzeichnis als **passphrase.txt** , indem Sie den folgenden Befehl ausführen:
 
     `echo <passphrase> >passphrase.txt`
 
@@ -306,7 +306,7 @@ Warten Sie, bis das Skript abgeschlossen wurde. Wenn das Masterziel erfolgreich 
     ./install
     ```
 
-2. Wählen Sie den Standardspeicherort für die Installation, und drücken Sie die **EINGABETASTE**, um fortzufahren.
+2. Wählen Sie den Standardspeicherort für die Installation, und drücken Sie die **EINGABETASTE** , um fortzufahren.
 
     ![Ein Standardverzeichnis für die Installation des Masterziels auswählen](./media/vmware-azure-install-linux-master-target/image17.png)
 

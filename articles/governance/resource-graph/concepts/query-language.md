@@ -1,14 +1,14 @@
 ---
 title: Grundlegendes zur Abfragesprache
 description: Beschreibt Resource Graph-Tabellen und die verfügbaren Kusto-Datentypen, -Operatoren und -Funktionen, die mit Azure Resource Graph verwendet werden können.
-ms.date: 09/30/2020
+ms.date: 10/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: ef588bd3fd8afcf1f1139f97d5df2d48a14b4dd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c3ad55a0f1af623211852c02aabd37560c00bc6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578528"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926086"
 ---
 # <a name="understanding-the-azure-resource-graph-query-language"></a>Grundlegendes zur Azure Resource Graph-Abfragesprache
 
@@ -33,9 +33,10 @@ Resource Graph umfasst mehrere Tabellen für die Daten, die in Bezug auf Azure R
 |AdvisorResources |Umfasst Ressourcen, die mit `Microsoft.Advisor`_in Zusammenhang stehen_. |
 |AlertsManagementResources |Umfasst Ressourcen, die mit `Microsoft.AlertsManagement`_in Zusammenhang stehen_. |
 |GuestConfigurationResources |Umfasst Ressourcen, die mit `Microsoft.GuestConfiguration`_in Zusammenhang stehen_. |
-|HealthResources |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth`_in Zusammenhang stehen_. |
 |MaintenanceResources |Umfasst Ressourcen, die mit `Microsoft.Maintenance`_in Zusammenhang stehen_. |
+|PolicyResources |Umfasst Ressourcen, die mit `Microsoft.PolicyInsights`_in Zusammenhang stehen_. ( **Vorschau** )|
 |SecurityResources |Umfasst Ressourcen, die mit `Microsoft.Security`_in Zusammenhang stehen_. |
+|ServiceHealthResources |Umfasst Ressourcen, die mit `Microsoft.ResourceHealth`_in Zusammenhang stehen_. |
 
 Eine komplette Liste, einschließlich Ressourcentypen, finden Sie unter [ Azure Resource Graph-Tabelle und Ressourcentypreferenz](../reference/supported-tables-resources.md).
 
@@ -44,7 +45,7 @@ Eine komplette Liste, einschließlich Ressourcentypen, finden Sie unter [ Azure 
 
 Verwenden Sie den Resource Graph-Explorer im Portal, um zu ermitteln, welche Ressourcentypen in den einzelnen Tabellen verfügbar sind. Sie können auch eine Abfrage verwenden (z.B. `<tableName> | distinct type`), um eine Liste von Ressourcentypen zu erhalten, die von der angegebenen Resource Graph-Tabelle unterstützt werden und in Ihrer Umgebung vorhanden sind.
 
-Die folgende Abfrage zeigt eine einfache Verwendung von `join`. Im Abfrageergebnis sind die Spalten kombiniert, und an alle doppelten Spaltennamen aus der verknüpften Tabelle (_ResourceContainers_ in diesem Beispiel) wird **1** angehängt. Da die Tabelle _ResourceContainers_ Typen für Abonnements und Ressourcengruppen enthält, können beide Typen zum Verknüpfen der Ressource aus der Tabelle _Resources_ verwendet werden.
+Die folgende Abfrage zeigt eine einfache Verwendung von `join`. Im Abfrageergebnis sind die Spalten kombiniert, und an alle doppelten Spaltennamen aus der verknüpften Tabelle ( _ResourceContainers_ in diesem Beispiel) wird **1** angehängt. Da die Tabelle _ResourceContainers_ Typen für Abonnements und Ressourcengruppen enthält, können beide Typen zum Verknüpfen der Ressource aus der Tabelle _Resources_ verwendet werden.
 
 ```kusto
 Resources
@@ -63,11 +64,11 @@ Resources
 ```
 
 > [!NOTE]
-> Wenn Sie die Ergebnisse von `join` mit `project` einschränken, muss die Eigenschaft, die von `join` zum Verknüpfen der beiden Tabellen verwendet wird (_subscriptionId_ im obigen Beispiel), in `project` enthalten sein.
+> Wenn Sie die Ergebnisse von `join` mit `project` einschränken, muss die Eigenschaft, die von `join` zum Verknüpfen der beiden Tabellen verwendet wird ( _subscriptionId_ im obigen Beispiel), in `project` enthalten sein.
 
 ## <a name="extended-properties-preview"></a><a name="extended-properties"></a>Erweiterte Eigenschaften (Vorschau)
 
-Als _Previewfunktion_ verfügen einige der Ressourcentypen in Resource Graph über zusätzliche typbezogene Eigenschaften, die über die von Azure Resource Manager bereitgestellten Eigenschaften hinaus abgefragt werden können. Dieser Satz von Werten, bekannt als _erweiterte Eigenschaften_, existiert auf einem unterstützten Ressourcentyp in `properties.extended`. Verwenden Sie die folgende Abfrage, um zu ermitteln, welche Ressourcentypen über _erweiterte Eigenschaften_ verfügen:
+Als _Previewfunktion_ verfügen einige der Ressourcentypen in Resource Graph über zusätzliche typbezogene Eigenschaften, die über die von Azure Resource Manager bereitgestellten Eigenschaften hinaus abgefragt werden können. Dieser Satz von Werten, bekannt als _erweiterte Eigenschaften_ , existiert auf einem unterstützten Ressourcentyp in `properties.extended`. Verwenden Sie die folgende Abfrage, um zu ermitteln, welche Ressourcentypen über _erweiterte Eigenschaften_ verfügen:
 
 ```kusto
 Resources

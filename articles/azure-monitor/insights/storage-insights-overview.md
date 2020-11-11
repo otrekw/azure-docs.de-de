@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/11/2020
-ms.openlocfilehash: c030c1548a931bc749ad799a5aa88813c35d19cd
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 250a06d81f929d0e3d3befa1e7494db13044fc97
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91997020"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101271"
 ---
 # <a name="monitoring-your-storage-service-with-azure-monitor-for-storage"></a>Überwachen Ihres Speicherdiensts mit Azure Monitor für Storage
 
@@ -64,10 +64,10 @@ In der Arbeitsmappe **Übersicht** für das ausgewählte Abonnement werden in de
 
 Die Zählerkachel unter den Dropdownlisten führt ein Rollup der Gesamtanzahl der Speicherkonten im Abonnement durch und gibt an, wie viele davon ausgewählt sind. Für Spalten in der Arbeitsmappe, die Transaktionsmetriken oder-Fehler melden, gibt es eine bedingte Farbcodierung oder Wärmebilder. Die dunkelste Farbe hat den höchsten Wert, und eine hellere Farbe basiert auf den niedrigsten Werten. Der Wert für die fehlerbasierten Spalten ist „rot“, und für die metrikbasierten Spalten ist er „blau“.
 
-Wählen Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
+Wählen Sie einen Wert in den Spalten **Verfügbarkeit** , **E2E-Latenz** , **Serverlatenz** und **Transaktionsfehlertyp/Fehler** aus. Dann werden Sie zu einem Bericht weitergeleitet, der auf den spezifischen Typ von Speichermetriken zugeschnitten ist, die mit der für dieses Speicherkonto ausgewählten Spalte übereinstimmen. Weitere Informationen zu den Arbeitsmappen für die einzelnen Kategorien finden Sie weiter unten im Abschnitt [Detaillierte Speicherarbeitsmappen](#detailed-storage-workbooks). 
 
 >[!NOTE]
->Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError**, **ClientOtherError**, **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
+>Ausführliche Informationen dazu, welche Fehler im Bericht angezeigt werden können, finden Sie unter [Response Type schema](../../storage/blobs/monitor-blob-storage-reference.md#metrics-dimensions) (Schema der Antworttypen). Suchen Sie dort nach Antworttypen wie **ServerOtherError** , **ClientOtherError** , **ClientThrottlingError**. Abhängig von den ausgewählten Speicherkonten werden alle anderen Fehler unter der Kategorie **Andere** dargestellt, wenn mehr als drei Arten von Fehlern gemeldet werden.
 
 Der Standardschwellenwert für **Verfügbarkeit** lautet:
 
@@ -94,9 +94,9 @@ Gehen Sie wie folgt vor, um direkt über ein Speicherkonto auf Azure Monitor fü
 
 2. Wählen Sie in der Liste ein Speicherkonto aus. Wählen Sie im Abschnitt „Überwachung“ die Option „Insights“ aus.
 
-    ![Seite „Übersicht“ für das ausgewählte Speicherkonto](./media/storage-insights-overview/storage-account-direct-overview-01.png)
+    ![Screenshot der Arbeitsmappenseite „Übersicht“ für das Speicherkonto](./media/storage-insights-overview/storage-account-direct-overview-01.png)
 
-In der Arbeitsmappe**Übersicht** für das Speicherkonto werden mehrere Leistungsmetriken für die Speicherung angezeigt, anhand derer Sie schnell Folgendes bewerten können:
+In der Arbeitsmappe **Übersicht** für das Speicherkonto werden mehrere Leistungsmetriken für die Speicherung angezeigt, anhand derer Sie schnell Folgendes bewerten können:
 
 * Integrität des Speicherdiensts, um sofort festzustellen, ob ein Problem außerhalb ihrer Kontrolle den Speicherdienst in der Region beeinträchtigt, in der er bereitgestellt wird. Dies wird in der Spalte **Zusammenfassung** angegeben.
 
@@ -104,13 +104,13 @@ In der Arbeitsmappe**Übersicht** für das Speicherkonto werden mehrere Leistung
 
 * Metriken und Statuskacheln mit hervorgehobener Dienstverfügbarkeit, Gesamtzahl der Transaktionen für den Speicherdienst, E2E-Latenz und Serverlatenz.
 
-Wenn Sie eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** auswählen, wird die jeweilige Arbeitsmappe geöffnet. 
+Wenn Sie eine der Schaltflächen für **Fehler** , **Leistung** , **Verfügbarkeit** und **Kapazität** auswählen, wird die jeweilige Arbeitsmappe geöffnet. 
 
 ![Seite „Übersicht“ für das ausgewählte Speicherkonto](./media/storage-insights-overview/storage-account-capacity-01.png)
 
 ## <a name="detailed-storage-workbooks"></a>Detaillierte Speicherarbeitsmappen
 
-Abhängig davon, ob Sie einen Wert in den Spalten **Verfügbarkeit**, **E2E-Latenz**, **Serverlatenz** und **Transaktionsfehlertyp/Fehler** in der Arbeitsmappe **Übersicht** für mehrere Speicherkonten ausgewählt haben oder eine der Schaltflächen für **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** in der Arbeitsmappe **Übersicht** eines bestimmten Speicherkontos auswählen, liefert jede dieser Möglichkeiten eine Reihe von interaktiven speicherbezogenen Informationen, die auf die jeweilige Kategorie zugeschnitten sind.  
+Abhängig davon, ob Sie einen Wert in den Spalten **Verfügbarkeit** , **E2E-Latenz** , **Serverlatenz** und **Transaktionsfehlertyp/Fehler** in der Arbeitsmappe **Übersicht** für mehrere Speicherkonten ausgewählt haben oder eine der Schaltflächen für **Fehler** , **Leistung** , **Verfügbarkeit** und **Kapazität** in der Arbeitsmappe **Übersicht** eines bestimmten Speicherkontos auswählen, liefert jede dieser Möglichkeiten eine Reihe von interaktiven speicherbezogenen Informationen, die auf die jeweilige Kategorie zugeschnitten sind.  
 
 * **Verfügbarkeit** öffnet die Arbeitsmappe **Verfügbarkeit**. Sie zeigt den aktuellen Integritätsstatus des Azure Storage-Diensts, eine Tabelle mit dem verfügbaren Integritätsstatus jedes Objekts – kategorisiert nach dem im Speicherkonto definierten Datendienst – mit einer Trendlinie, die den ausgewählten Zeitbereich darstellt, und einem Verfügbarkeitstrenddiagramm für die einzelnen Datendienste im Konto.  
 
@@ -147,7 +147,7 @@ In diesem Abschnitt werden gängige Szenarien für die Bearbeitung der Arbeitsma
 * Ändern des Verfügbarkeitsschwellenwerts
 * Ändern des Farbrendering
 
-Die Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu verhindern, dass die Standardkonfiguration in unserer veröffentlichten Arbeitsmappe überschrieben wird. Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte**, der für alle Benutzer mit Zugriff auf die Ressourcengruppe zugänglich ist. Nachdem Sie die benutzerdefinierte Arbeitsmappe gespeichert haben, müssen Sie zum Arbeitsmappenkatalog wechseln, um die Mappe zu starten.
+Die Anpassungen werden in einer benutzerdefinierten Arbeitsmappe gespeichert, um zu verhindern, dass die Standardkonfiguration in unserer veröffentlichten Arbeitsmappe überschrieben wird. Arbeitsmappen werden in einer Ressourcengruppe gespeichert, und zwar entweder im für Sie privaten Abschnitt **Meine Berichte** oder im Abschnitt **Freigegebene Berichte** , der für alle Benutzer mit Zugriff auf die Ressourcengruppe zugänglich ist. Nachdem Sie die benutzerdefinierte Arbeitsmappe gespeichert haben, müssen Sie zum Arbeitsmappenkatalog wechseln, um die Mappe zu starten.
 
 ![Starten des Arbeitsmappenkatalogs über die Befehlsleiste](./media/storage-insights-overview/workbook-command-bar-gallery.png)
 
@@ -163,7 +163,7 @@ Sie können die Arbeitsmappen **Übersicht** oder **Kapazität** für Mehrfachab
 
 4. Wählen Sie in der Dropdownliste **Speicherkonten** mindestens ein Konto aus, das standardmäßig ausgewählt werden soll. Beachten Sie, dass die Arbeitsmappe die Auswahl von bis zu insgesamt 200 Speicherkonten unterstützt. 
 
-5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.  
+5. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen** , um zum Lesemodus zurückzukehren.  
 
 ### <a name="modify-metrics-and-colors-in-the-workbook"></a>Ändern von Metriken und Farben in der Arbeitsmappe
 
@@ -174,7 +174,7 @@ In unserem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ für Mehr
 * Entfernen einer Metrik
 * Ändern des Farbrendering
 
-Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler**, **Leistung**, **Verfügbarkeit** und **Kapazität** dieselben Änderungen ausführen.
+Sie können bei jeder der vordefinierten Arbeitsmappen **Fehler** , **Leistung** , **Verfügbarkeit** und **Kapazität** dieselben Änderungen ausführen.
 
 1. Wählen Sie im Portal **Überwachen** und dann im linken Bereich **Speicherkonten** aus.
 
@@ -202,7 +202,7 @@ Nun ändern wir das Farbdesign für die Kapazitätsmetriken im Bericht so, dass 
 
 3. Wählen Sie **Speichern und schließen** aus, um Ihre Änderung zu committen.
 
-4. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.  
+4. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen** , um zum Lesemodus zurückzukehren.  
 
 ### <a name="modify-the-availability-threshold"></a>Ändern des Verfügbarkeitsschwellenwerts
 
@@ -224,7 +224,7 @@ In diesem Beispiel arbeiten wir mit der Arbeitsmappe „Kapazität“ des Speich
 
     ![Den Verfügbarkeitsschwellenwert für den Status „Kritisch“ ändern](./media/storage-insights-overview/edit-column-settings-capacity-workbook-01.png)
 
-7. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen**, um zum Lesemodus zurückzukehren.
+7. Wählen Sie in der Befehlsleiste den Befehl **Speichern unter** aus, um eine Kopie der Arbeitsmappe mit Ihren Anpassungen zu speichern. Klicken Sie dann auf **Bearbeitung abgeschlossen** , um zum Lesemodus zurückzukehren.
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

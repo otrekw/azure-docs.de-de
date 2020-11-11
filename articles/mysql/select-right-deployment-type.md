@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: e89a7d9bc71d48be1b7d7ea40246b2394c95e84b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 000de084cf9375347704cc4d3905ca36bdd77ff8
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543779"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926188"
 ---
 # <a name="choose-the-right-mysql-server-option-in-azure"></a>Auswählen der richtigen MySQL Server-Option in Azure
 
@@ -55,7 +55,7 @@ Die Hauptunterschiede zwischen diesen Optionen werden in der folgenden Tabelle a
 | Hochverfügbarkeit | Integrierte Hochverfügbarkeit in einer einzelnen Verfügbarkeitszone| Integrierte Hochverfügbarkeit in Verfügbarkeitszonen und verfügbarkeitszonenübergreifend | Benutzerdefinierte Verwaltung, unter anderem mithilfe von Clustering und Replikation|
 | Zonenredundanz | Nicht unterstützt | Unterstützt | Unterstützt|
 | Hybridszenario | Unterstützt mit [Datenreplikation](./concepts-data-in-replication.md)| Nicht in der Vorschau verfügbar | Von Endbenutzern verwaltet |
-| Lesereplikate | Unterstützt| Unterstützt | Von Endbenutzern verwaltet |
+| Lesereplikate | Unterstützt (bis zu 5 Replikate)| Unterstützt (bis zu 10 Replikate)| Von Endbenutzern verwaltet |
 | Backup | Automatisiert mit Aufbewahrungsdauer von 7 bis 35 Tagen | Automatisiert mit Aufbewahrungsdauer von 1 bis 35 Tagen | Von Endbenutzern verwaltet |
 | Überwachen von Datenbankvorgängen | Unterstützt | Unterstützt | Von Endbenutzern verwaltet |
 | Notfallwiederherstellung | Unterstützt mit georedundantem Sicherungsspeicher und regionsübergreifenden Lesereplikaten | In der Vorschauversion nicht unterstützt| Benutzerdefinierte Verwaltung mit Replikationstechnologien |

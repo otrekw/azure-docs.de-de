@@ -12,12 +12,12 @@ ms.date: 10/26/2020
 ms.author: kenwith
 ms.reviewer: hpsin
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ce96eb5e91ccc4cb9f69711f9e6fd8fd59ce65bc
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d69755c36bf37dd591e81bea7983e25905798d4d
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92669942"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286205"
 ---
 # <a name="use-tenant-restrictions-to-manage-access-to-saas-cloud-applications"></a>Verwalten des Zugriffs auf SaaS-Cloudanwendungen mithilfe von Mandanteneinschränkungen
 
@@ -33,7 +33,7 @@ In diesem Artikel konzentrieren wir uns auf Mandanteneinschränkungen für Micro
 
 Die Lösung umfasst folgende Komponenten:
 
-1. **Azure AD** : Wenn `Restrict-Access-To-Tenants: <permitted tenant list>` vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus.
+1. **Azure AD** : Wenn der `Restrict-Access-To-Tenants: <permitted tenant list>`-Header vorhanden ist, stellt Azure AD nur Sicherheitstoken für die zugelassenen Mandanten aus.
 
 2. **Lokale Proxyserver-Infrastruktur** : Bei dieser Infrastruktur handelt es sich um ein Proxygerät, das zur TLS-Überprüfung (Transport Layer Security) geeignet ist. Sie müssen den Proxy so konfigurieren, dass er den Header mit der Liste der zulässigen Mandanten in den für Azure AD bestimmten Datenverkehr einfügt.
 
@@ -63,7 +63,7 @@ Die folgende Konfiguration ist erforderlich, um Mandanteneinschränkungen über 
 
 - Clients müssen der Zertifikatkette vertrauen, die vom Proxy für die TLS-Kommunikation präsentiert wird. Wenn also z. B. Zertifikate einer internen [PKI (Public Key-Infrastruktur)](/windows/desktop/seccertenroll/public-key-infrastructure) verwendet werden, muss dem Zertifikat der internen ausstellenden Stammzertifizierungsstelle vertraut werden.
 
-- In Microsoft 365-Abonnements ist dieses Feature bereits enthalten. Wenn Sie mit Mandanteneinschränkungen allerdings den Zugriff auf andere SaaS-Apps steuern möchten, benötigen Sie Azure AD Premium 1-Lizenzen.
+- Zur Verwendung von Mandanteneinschränkungen sind Azure AD Premium 1-Lizenzen erforderlich. 
 
 #### <a name="configuration"></a>Konfiguration
 

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 07/08/2020
 ms.reviewer: mahender
 ms.custom: seodec18, fasttrack-edit, has-adal-ref
-ms.openlocfilehash: e984332e6e93fc9a42123d06f320a66073585bff
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 09460e4e38ea1842d58ecf3a9b3cd00a072c271e
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89596038"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286904"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service-and-azure-functions"></a>Authentifizierung und Autorisierung in Azure App Service und Azure Functions
 
@@ -146,6 +146,9 @@ Mit dieser Option müssen Sie in Ihrer App keinen Authentifizierungscode schreib
 
 > [!CAUTION]
 > Das Einschränken des Zugriffs auf diese Weise gilt für alle Aufrufe Ihrer App, was für Apps, die eine öffentlich verfügbare Startseite wünschen, eventuell nicht wünschenswert ist, wie bei vielen Single-Page-Anwendungen.
+
+> [!NOTE]
+> Standardmäßig kann jeder Benutzer in Ihrem Azure AD-Mandanten ein Token für Ihre Anwendung aus Azure AD anfordern. Sie können die [Anwendung in Azure AD konfigurieren](../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md), wenn Sie den Zugriff auf die Anwendung auf eine bestimmte Gruppe von Benutzern beschränken möchten.
 
 ## <a name="more-resources"></a>Weitere Ressourcen
 

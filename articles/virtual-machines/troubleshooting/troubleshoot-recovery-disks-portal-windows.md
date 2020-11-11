@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 08/19/2018
 ms.author: genli
-ms.openlocfilehash: 9b51205fe67bfe5be46491b0238e987fc14f6737
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5b7fc4a120f5a4b513e1852fc6e2cf5ab68e9631
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87074354"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93101254"
 ---
 # <a name="troubleshoot-a-windows-vm-by-attaching-the-os-disk-to-a-recovery-vm-using-the-azure-portal"></a>Beheben von Problemen einer Windows-VM durch Hinzufügen des Betriebssystemdatenträgers zu einer Wiederherstellungs-VM mit dem Azure-Portal
 Wenn für Ihren virtuellen Windows-Computer in Azure ein Start- oder Datenträgerfehler auftritt, müssen Sie unter Umständen Schritte zur Problembehebung auf der virtuellen Festplatte selbst ausführen. Ein gängiges Beispiel wäre ein ungültiges Anwendungsupdate, das den erfolgreichen Start der VM verhindert. In diesem Artikel wird erläutert, wie das Azure-Portal die Verbindung zwischen Ihrer virtuellen Festplatte und einer anderen Windows-VM herstellt, um alle Fehler zu beheben und dann Ihre ursprüngliche VM neu zu erstellen. 
@@ -40,9 +40,9 @@ Der Problembehebungsprozess sieht wie folgt aus:
 Eine Momentaufnahme ist eine vollständige, schreibgeschützte Kopie einer virtuellen Festplatte (Virtual Hard Drive, VHD). Es empfiehlt sich, den virtuellen Computer vor dem Erstellen einer Momentaufnahme ordnungsgemäß herunterzufahren, um alle Prozesse, die ausgeführt werden, ordnungsgemäß abzuschließen. Gehen Sie folgendermaßen vor, um eine Momentaufnahme eines Betriebssystemdatenträgers zu erstellen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com). Wählen Sie **Virtuelle Computer** auf der Seitenleiste aus, und wählen Sie dann den virtuellen Computer aus, auf dem es ein Problem gibt.
-1. Klicken Sie im linken Bereich auf **Datenträger**, und wählen Sie dann den Namen des Betriebssystemdatenträgers aus.
+1. Klicken Sie im linken Bereich auf **Datenträger** , und wählen Sie dann den Namen des Betriebssystemdatenträgers aus.
     ![Abbildung mit dem Namen des Betriebssystemdatenträgers](./media/troubleshoot-recovery-disks-portal-windows/select-osdisk.png)
-1. Wählen Sie auf der **Übersicht**-Seite des Betriebssystemdatenträgers die Option **Momentaufnahme erstellen** aus.
+1. Wählen Sie auf der **Übersicht** -Seite des Betriebssystemdatenträgers die Option **Momentaufnahme erstellen** aus.
 1. Erstellen Sie eine Momentaufnahme in dem Standort, in dem sich auch der Betriebssystemdatenträger befindet.
 
 ## <a name="create-a-disk-from-the-snapshot"></a>Erstellen eines Datenträgers aus der Momentaufnahme
@@ -86,17 +86,17 @@ Um einen Datenträger aus der Momentaufnahme zu erstellen, führen Sie die folge
 ## <a name="attach-the-disk-to-another-vm"></a>Zuordnen des Datenträgers zu einem anderen virtuellen Computer
 Verwenden Sie eine andere Problembehebungs-VM für die nächsten Schritte. Nachdem Sie den Datenträger der Problembehebungs-VM zugeordnet haben, können Sie den Inhalt des Datenträgers durchsuchen und bearbeiten. Durch diesen Prozess können Sie alle Konfigurationsfehler beheben oder zusätzliche Anwendungs- oder Systemprotokolldateien überprüfen. Führen Sie die folgenden Schritte aus, um den Datenträger einem andere virtuellen Computer zuzuordnen:
 
-1. Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihre Problembehebungs-VM aus. Wählen Sie **Datenträger** und **Bearbeiten** aus, und klicken Sie dann auf **Datenträger hinzufügen**:
+1. Wählen Sie im Portal Ihre Ressourcengruppe und dann Ihre Problembehebungs-VM aus. Wählen Sie **Datenträger** und **Bearbeiten** aus, und klicken Sie dann auf **Datenträger hinzufügen** :
 
     ![Hinzufügen des vorhandenen Datenträgers im Portal](./media/troubleshoot-recovery-disks-portal-windows/attach-existing-disk.png)
 
 2. Wählen Sie in der Liste **Datenträger** den Betriebssystemdatenträger der VM aus, die Sie identifiziert haben. Wenn der Betriebssystemdatenträger nicht angezeigt wird, stellen Sie sicher, dass sich die fehlerhafte VM und die Betriebssystemdatenträger in derselben Region (am selben Standort) befinden. 
-3. Klicken Sie auf **Speichern**, um die Änderungen zu übernehmen.
+3. Klicken Sie auf **Speichern** , um die Änderungen zu übernehmen.
 
 ## <a name="mount-the-attached-data-disk-to-the-vm"></a>Bereitstellen des zugeordneten Datenträgers für die VM
 
 1. Öffnen Sie eine Remotedesktopverbindung mit der Problembehebungs-VM. 
-2. Öffnen Sie in der Problembehebungs-VM den **Server-Manager**, und wählen Sie dann **Datei- und Speicherdienste** aus. 
+2. Öffnen Sie in der Problembehebungs-VM den **Server-Manager** , und wählen Sie dann **Datei- und Speicherdienste** aus. 
 
     ![Auswählen von Datei- und Speicherdiensten im Server-Manager](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
@@ -110,20 +110,20 @@ Nun, da die vorhandene virtuelle Festplatte bereitgestellt ist, können Sie jetz
 ## <a name="unmount-and-detach-original-virtual-hard-disk"></a>Aufheben der Bereitstellung und Trennen der ursprünglichen virtuellen Festplatte
 Sobald Ihre Fehler behoben sind, trennen Sie die vorhandene virtuelle Festplatte von Ihrer Problembehebungs-VM. Sie können Ihre virtuelle Festplatte nicht mit einer anderen VM nutzen, bis die Lease freigegeben wird, die die virtuelle Festplatte zur Problembehebungs-VM hinzufügt.
 
-1. Öffnen Sie in der RDP-Sitzung für Ihre VM den **Server-Manager**, und wählen Sie anschließend die Option **Datei- und Speicherdienste**:
+1. Öffnen Sie in der RDP-Sitzung für Ihre VM den **Server-Manager** , und wählen Sie anschließend die Option **Datei- und Speicherdienste** :
 
     ![Auswählen von Datei- und Speicherdiensten im Server-Manager](./media/troubleshoot-recovery-disks-portal-windows/server-manager-select-storage.png)
 
-2. Wählen Sie die Option **Datenträger**, und wählen Sie dann Ihren Datenträger aus. Klicken Sie mit der rechten Maustaste auf Ihren Datenträger, und wählen Sie die Option **Take Offline** (Offline schalten):
+2. Wählen Sie die Option **Datenträger** , und wählen Sie dann Ihren Datenträger aus. Klicken Sie mit der rechten Maustaste auf Ihren Datenträger, und wählen Sie die Option **Take Offline** (Offline schalten):
 
     ![Festlegen des Offlinezustands für den Datenträger in Server-Manager](./media/troubleshoot-recovery-disks-portal-windows/server-manager-set-disk-offline.png)
 
 3. Trennen Sie die virtuelle Festplatte von der VM. Wählen Sie Ihre VM im Azure-Portal aus, und klicken Sie auf **Datenträger**. 
-4. Klicken Sie auf **Bearbeiten**, wählen Sie den angefügten Betriebssystemdatenträger aus, und klicken Sie dann auf **Trennen**:
+4. Klicken Sie auf **Bearbeiten** , wählen Sie den angefügten Betriebssystemdatenträger aus, und klicken Sie dann auf **Löschen** :
 
     ![Trennen einer vorhandenen virtuellen Festplatte](./media/troubleshoot-recovery-disks-portal-windows/detach-disk.png)
 
-    Warten Sie, bis die VM den Datenträger erfolgreich getrennt hat, bevor Sie fortfahren.
+    Warten Sie, bis die VM den Datenträger erfolgreich gelöscht, also getrennt hat, bevor Sie fortfahren.
 
 ## <a name="swap-the-os-disk-for-the-vm"></a>Austauschen des Betriebssystemdatenträgers für den virtuellen Computer
 

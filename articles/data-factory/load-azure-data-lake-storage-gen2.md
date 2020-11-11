@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/08/2020
-ms.openlocfilehash: 8f8cfef5ed98682a1d03f7d36caa2008f4ff03b6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 424d5a7ade04c2b72a0bc8ec379a6fad09216f39
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84660470"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042690"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen2-with-azure-data-factory"></a>Laden von Daten in Azure Data Lake Storage Gen2 mit Azure Data Factory
 
@@ -48,11 +48,11 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 2. Geben Sie auf der Seite **Neue Data Factory** Werte für folgende Felder an:
  
-    * **Name**: Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen *YourDataFactoryName* ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
-    * **Abonnement**: Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
-    * **Ressourcengruppe**: Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
-    * **Version**: Wählen Sie **V2** aus.
-    * **Standort**: Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. 
+    * **Name** : Geben Sie einen global eindeutigen Namen für die Azure Data Factory ein. Wenn die Fehlermeldung „Data Factory mit dem Namen *YourDataFactoryName* ist nicht verfügbar“ angezeigt wird, geben Sie einen anderen Namen für die Data Factory ein. Sie können beispielsweise den Namen _**IhrName**_**ADFTutorialDataFactory** verwenden. Versuchen Sie erneut, die Data Factory zu erstellen. Benennungsregeln für Data Factory-Artefakte finden Sie im Thema [Data Factory – Benennungsregeln](naming-rules.md).
+    * **Abonnement** : Wählen Sie Ihr Azure-Abonnement aus, in dem die Data Factory erstellt werden soll. 
+    * **Ressourcengruppe** : Wählen Sie eine vorhandene Ressourcengruppe aus der Dropdownliste aus, oder wählen Sie die Option **Neu erstellen** aus, und geben Sie dann den Namen einer Ressourcengruppe ein. Weitere Informationen über Ressourcengruppen finden Sie unter [Verwenden von Ressourcengruppen zum Verwalten von Azure-Ressourcen](../azure-resource-manager/management/overview.md).  
+    * **Version** : Wählen Sie **V2** aus.
+    * **Standort** : Wählen Sie den Standort für die Data Factory aus. In der Dropdownliste werden nur unterstützte Standorte angezeigt. Die von der Data Factory verwendeten Datenspeicher können sich an anderen Standorten bzw. in anderen Regionen befinden. 
 
 3. Klicken Sie auf **Erstellen**.
 
@@ -77,7 +77,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
    1. Geben Sie den Wert für die **Zugriffsschlüssel-ID** an.
    2. Geben Sie den Wert für den **geheimen Zugriffsschlüssel** an.
-   3. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
+   3. Klicken Sie auf **Verbindung testen** , um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
 
       ![Angeben des Amazon S3-Kontos](./media/load-azure-data-lake-storage-gen2/specify-amazon-s3-account.png)
    4. Eine neue AmazonS3-Verbindung wird erstellt. Wählen Sie **Weiter** aus. 
@@ -88,24 +88,24 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 6. Geben Sie das Kopierverhalten an, indem Sie die Optionen **Rekursiv** und **Binärkopie** aktivieren. Wählen Sie **Weiter** aus.
 
-    ![Angeben des Ausgabeordners](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
+    ![Screenshot der Seite „Eingabedatei oder -ordner auswählen“ mit den auswählbaren Optionen „Binärkopie“ und „Rekursiv“](./media/load-azure-data-lake-storage-gen2/specify-binary-copy.png)
     
-7. Klicken Sie auf der Seite **Zieldatenspeicher** auf **+ Neue Verbindung erstellen**, und wählen Sie anschließend **Azure Data Lake Storage Gen2** und dann **Weiter** aus.
+7. Klicken Sie auf der Seite **Zieldatenspeicher** auf **+ Neue Verbindung erstellen** , und wählen Sie anschließend **Azure Data Lake Storage Gen2** und dann **Weiter** aus.
 
     ![Seite „Zieldatenspeicher“](./media/load-azure-data-lake-storage-gen2/destination-data-storage-page.png)
 
 8. Führen Sie auf der Seite **Neuer verknüpfter Dienst (Azure Data Lake Storage Gen2)** die folgenden Schritte aus:
 
    1. wählen Sie in der Dropdownliste „Speicherkontoname“ das Data Lake Storage Gen2-fähige Konto aus.
-   2. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. Wählen Sie **Weiter**aus.   
+   2. Wählen Sie **Erstellen** aus, um die Verbindung zu erstellen. Wählen Sie **Weiter** aus.   
 
         ![Angeben eines Azure Data Lake Storage Gen2-Kontos](./media/load-azure-data-lake-storage-gen2/specify-azure-data-lake-storage.png)
 
 9. Geben Sie auf der Seite **Choose the output file or folder** (Ausgabedatei oder -ordner auswählen) die Zeichenfolge **copyfroms3** als Name für den Ausgabeordner ein, und klicken Sie dann auf **Weiter**. Die ADF erstellt das entsprechende ADLS Gen2-Dateisystem und die Unterordner während des Kopierens, wenn diese noch nicht existieren.
 
-    ![Angeben des Ausgabeordners](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
+    ![Screenshot des eingegebenen Ordnerpfads](./media/load-azure-data-lake-storage-gen2/specify-adls-path.png)
 
-10. Klicken Sie auf der Seite **Einstellungen** auf **Weiter**, um die Standardeinstellungen zu verwenden.
+10. Klicken Sie auf der Seite **Einstellungen** auf **Weiter** , um die Standardeinstellungen zu verwenden.
 
     ![Seite "Einstellungen"](./media/load-azure-data-lake-storage-gen2/copy-settings.png)
 
@@ -113,7 +113,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
     ![Seite „Zusammenfassung“](./media/load-azure-data-lake-storage-gen2/copy-summary.png)
 
-12. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen**, um die Pipeline (Task) zu überwachen. 
+12. Klicken Sie auf der Seite **Bereitstellung** auf **Überwachen** , um die Pipeline (Task) zu überwachen. 
  
 13. Wenn die Pipelineausführung erfolgreich abgeschlossen ist, sehen Sie eine Pipelineausführung, die durch einen manuellen Trigger ausgelöst wird. Über die Links unter der Spalte **PIPELINENAME** können Sie Aktivitätsdetails anzeigen und die Pipeline erneut ausführen.
 

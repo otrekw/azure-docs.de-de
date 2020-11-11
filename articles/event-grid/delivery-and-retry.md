@@ -2,13 +2,13 @@
 title: Azure Event Grid – Übermittlung und Wiederholung
 description: Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden.
 ms.topic: conceptual
-ms.date: 07/07/2020
-ms.openlocfilehash: 924abaa1e5c12c4477bddf888541e7414b7bdbec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/29/2020
+ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324092"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042952"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
@@ -33,8 +33,8 @@ Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehl
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Wenn Sie ein Ereignisabonnement erstellen, verwenden Sie die folgenden Parameter: 
 
-- **max-events-per-batch**: maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
-- **preferred-batch-size-in-kilobytes**: bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
+- **max-events-per-batch** : maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
+- **preferred-batch-size-in-kilobytes** : bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
 
 ```azurecli
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -80,12 +80,14 @@ Der funktionale Zweck der verzögerten Übermittlung besteht darin, sowohl fehle
 ## <a name="dead-letter-events"></a>„Unzustellbare Nachrichten“-Ereignisse
 Wenn ein Ereignis innerhalb eines bestimmten Zeitraums oder nach einer bestimmten Anzahl von Übermittlungsversuchen nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung **unzustellbarer Nachrichten** bezeichnet. Von Event Grid werden unzustellbare Nachrichten gespeichert, wenn **eine der folgenden** Bedingungen erfüllt ist. 
 
-- Das Ereignis wird nicht innerhalb der Gültigkeitsdauer übermittelt.
-- Die Anzahl der Übermittlungsversuche hat den Grenzwert überschritten.
+- Das Ereignis wird nicht innerhalb der **Gültigkeitsdauer** übermittelt. 
+- Die **Anzahl der Versuche** hat den Grenzwert überschritten.
 
 Wenn eine der Bedingungen erfüllt ist, wird das Ereignis gelöscht oder als unzustellbare Nachricht gespeichert.  Die Speicherung unzustellbarer Nachrichten ist standardmäßig nicht aktiviert. Wenn Sie das Feature aktivieren möchten, müssen Sie bei der Erstellung des Ereignisabonnements ein Speicherkonto zum Speichern nicht übermittelter Ereignisse angeben. Ereignisse werden aus diesem Speicherkonto gepullt, um Übermittlungsprobleme zu beheben.
 
 Event Grid sendet ein Ereignis an den Speicherort für unzustellbare Nachrichten, wenn alle Wiederholungsversuche ausgeführt wurden. Wenn Event Grid den Antwortcode 400 (Ungültige Anforderung) oder 413 (Anforderungsentität zu groß) erhält, sendet der Dienst das Ereignis sofort an den Endpunkt für unzustellbare Nachrichten. Diese Antwortcodes geben an, dass die Übermittlung des Ereignisses nie erfolgreich ausgeführt wird.
+
+Der Ablauf der Gültigkeitsdauer wird ERST beim nächsten geplanten Übermittlungsversuch geprüft. Aus diesem Grund gilt Folgendes: Auch wenn die Gültigkeitsdauer vor dem nächsten geplanten Übermittlungsversuch abläuft, wird der Ablauf eines Ereignisses erst zum Zeitpunkt der nächsten Übermittlung überprüft. Anschließend wird das Ereignis als unzustellbar markiert. 
 
 Es gibt eine fünfminütige Verzögerung zwischen dem letzten Versuch, ein Ereignis zu übermitteln, und der Übermittlung an den Speicherort für unzustellbare Nachrichten. Diese Verzögerung dient dazu, die Anzahl der Blob Storage-Vorgänge zu reduzieren. Wenn der Speicherort für unzustellbare Nachrichten vier Stunden lang nicht verfügbar ist, wird das Ereignis gelöscht.
 

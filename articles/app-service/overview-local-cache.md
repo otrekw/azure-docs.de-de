@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b3c8f6015b4627d86a0665865fba2f3fdd39589d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88080710"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286835"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -45,7 +45,11 @@ Der lokale Cache von Azure App Service bietet eine Webrollenansicht Ihrer Inhalt
 * Bei der App-Bereitstellung über eine unterstützte Methode erfolgt die Veröffentlichung direkt im permanenten freigegebenen Inhaltsspeicher. Zum Aktualisieren der Ordner _D:\home\site_ und _D:\home\siteextensions_ im lokalen Cache muss die App neu gestartet werden. Informationen zu einem nahtlosen Lebenszyklus finden Sie weiter unten in diesem Artikel.
 * Die standardmäßige Inhaltsansicht der SCM-Site ist weiterhin die des freigegebenen Inhaltsspeichers.
 
-## <a name="enable-local-cache-in-app-service"></a>Aktivieren des lokalen Caches in App Service
+## <a name="enable-local-cache-in-app-service"></a>Aktivieren des lokalen Caches in App Service 
+
+> [!NOTE]
+> Der lokale Cache wird in den Tarifen **F1** oder **D1** nicht unterstützt. 
+
 Der lokale Cache wird mithilfe einer Kombination aus reservierten App-Einstellungen konfiguriert. Diese App-Einstellungen können über die folgenden Methoden konfiguriert werden:
 
 * [Azure portal](#Configure-Local-Cache-Portal)
@@ -89,7 +93,7 @@ Standardmäßig ist der lokale Cache **1 GB** groß. Dies schließt die Ordner 
 Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebungen](../app-service/deploy-staging-slots.md) zu verwenden.
 
 * Fügen Sie die *persistente* App-Einstellung `WEBSITE_LOCAL_CACHE_OPTION` mit dem Wert `Always` zu Ihrem **Produktionsslot** hinzu. Wenn Sie `WEBSITE_LOCAL_CACHE_SIZEINMB`verwenden, fügen Sie diese Einstellung ebenfalls als persistente Einstellung zu Ihrem Produktionsslot hinzu.
-* Erstellen Sie einen **Stagingslot**, und führen Sie eine Veröffentlichung in Ihrem Stagingslot durch. Für den Stagingslot wird üblicherweise nicht die Verwendung des lokalen Caches festgelegt. So wird ein nahtloser Lebenszyklus für das Erstellen/Bereitstellen/Testen für das Staging ermöglicht, während die Vorteile des lokalen Caches für den Produktionsslot genutzt werden.
+* Erstellen Sie einen **Stagingslot** , und führen Sie eine Veröffentlichung in Ihrem Stagingslot durch. Für den Stagingslot wird üblicherweise nicht die Verwendung des lokalen Caches festgelegt. So wird ein nahtloser Lebenszyklus für das Erstellen/Bereitstellen/Testen für das Staging ermöglicht, während die Vorteile des lokalen Caches für den Produktionsslot genutzt werden.
 * Testen Sie Ihre Site mit dem Stagingslot.  
 * Wenn Sie bereit dazu sind, wechseln Sie über einen [swap-Vorgang](../app-service/deploy-staging-slots.md#Swap) zwischen Ihrem Staging- und Ihrem Produktionsslot.  
 * Persistente Einstellungen umfassen einen Namen und gelten dauerhaft für einen Slot. Wenn also der Stagingslot auf den Produktionsslot umgeschaltet wird, erbt dieser die App-Einstellungen für den lokalen Cache. Der neue Produktionsslot wird nach ein paar Minuten mit dem lokalen Cache ausgeführt und im Rahmen der Slotaufwärmung nach dem Wechsel aufgewärmt. Wenn der Slotwechsel abgeschlossen ist, wird Ihr Produktionsslot mit dem lokalen Cache ausgeführt.

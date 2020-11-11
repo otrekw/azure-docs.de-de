@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: fa6f569a1a857c09f1e7d1173a5948b1747c05ed
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 2d5a6949c5dbe1e4c3c668dcb9eae6e51e5806f7
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92124360"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926035"
 ---
 # <a name="key-vault-virtual-machine-extension-for-linux"></a>Key Vault-VM-Erweiterung für Linux
 
@@ -62,7 +62,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
           "linkOnRenewal": <Not available on Linux e.g.: false>,
           "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
           "requireInitialSync": <initial synchronization of certificates e..g: true>,
-          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"]>
         },
         "authenticationSettings": {
                 "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
@@ -96,7 +96,7 @@ Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung dargeste
 | linkOnRenewal | false | boolean |
 | certificateStoreLocation  | /var/lib/waagent/Microsoft.Azure.KeyVault | Zeichenfolge |
 | requiredInitialSync | true | boolean |
-| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate"] | Zeichenfolgenarray
+| observedCertificates  | ["https://myvault.vault.azure.net/secrets/mycertificate", "https://myvault.vault.azure.net/secrets/mycertificate2"] | Zeichenfolgenarray
 | msiEndpoint | http://169.254.169.254/metadata/identity | Zeichenfolge |
 | msiClientId | c7373ae5-91c2-4165-8ab6-7381d6e75619 | Zeichenfolge |
 
@@ -152,7 +152,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName =  "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -172,7 +172,7 @@ Azure PowerShell kann verwendet werden, um die Key Vault-VM-Erweiterung auf eine
         { "pollingIntervalInS": "' + <pollingInterval> + 
         '", "certificateStoreName": "' + <certStoreName> + 
         '", "certificateStoreLocation": "' + <certStoreLoc> + 
-        '", "observedCertificates": ["' + <observedCerts> + '"] } }'
+        '", "observedCertificates": ["' + <observedCert1> + '","' + <observedCert2> + '"] } }'
         $extName = "KeyVaultForLinux"
         $extPublisher = "Microsoft.Azure.KeyVault"
         $extType = "KeyVaultForLinux"
@@ -198,7 +198,7 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
          --publisher Microsoft.Azure.KeyVault `
          -g "<resourcegroup>" `
          --vm-name "<vmName>" `
-         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+         --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 
 * So stellen Sie die Erweiterung in einer VM-Skalierungsgruppe bereit:
@@ -209,40 +209,47 @@ Die Azure-Befehlszeilenschnittstelle kann verwendet werden, um die Key Vault-VM
         --publisher Microsoft.Azure.KeyVault `
         -g "<resourcegroup>" `
         --vm-name "<vmName>" `
-        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCerts> \"] }}'
+        --settings '{\"secretsManagementSettings\": { \"pollingIntervalInS\": \"<pollingInterval>\", \"certificateStoreName\": \"<certStoreName>\", \"certificateStoreLocation\": \"<certStoreLoc>\", \"observedCertificates\": [\" <observedCert1> \", \" <observedCert2> \"] }}'
     ```
 Beachten Sie hierbei die folgenden Einschränkungen bzw. Anforderungen:
 - Key Vault-Einschränkungen:
   - Muss zum Zeitpunkt der Bereitstellung vorhanden sein. 
   - Die Key Vault-Zugriffsrichtlinie muss für die VM/VMSS-Identität mithilfe einer verwalteten Identität festgelegt werden. Weitere Informationen finden Sie unter [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md) und [Zuweisen einer Key Vault-Zugriffsrichtlinie](../../key-vault/general/assign-access-policy-cli.md).
 
-## <a name="troubleshoot-and-support"></a>Problembehandlung und Support
+### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+* Gibt es einen Grenzwert für die Anzahl von „observedCertificates“, die Sie einrichten können?
+  Nein, die Key Vault-VM-Erweiterung weist keinen Grenzwert für die Anzahl von „observedCertificates“ auf.
+
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
 Daten zum Status von Erweiterungsbereitstellungen können über das Azure-Portal und mithilfe von Azure PowerShell abgerufen werden. Führen Sie über Azure PowerShell den folgenden Befehl aus, um den Bereitstellungsstatus von Erweiterungen für eine bestimmte VM anzuzeigen.
 
-### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
-
-* Gibt es einen Grenzwert für die Anzahl von „observedCertificates“, die Sie einrichten können?
-  Nein, die Key Vault-VM-Erweiterung weist keinen Grenzwert für die Anzahl von „observedCertificates“ auf.
-  
-## <a name="azure-powershell"></a>Azure PowerShell
+**Azure PowerShell**
 ```powershell
 Get-AzVMExtension -VMName <vmName> -ResourceGroupname <resource group name>
 ```
 
-## <a name="azure-cli"></a>Azure CLI
+**Azure-Befehlszeilenschnittstelle**
 ```azurecli
  az vm get-instance-view --resource-group <resource group name> --name  <vmName> --query "instanceView.extensions"
 ```
-### <a name="logs-and-configuration"></a>Protokolle und Konfiguration
+#### <a name="logs-and-configuration"></a>Protokolle und Konfiguration
 
 ```
 /var/log/waagent.log
 /var/log/azure/Microsoft.Azure.KeyVault.KeyVaultForLinux/*
 /var/lib/waagent/Microsoft.Azure.KeyVault.KeyVaultForLinux-<most recent version>/config/*
 ```
+### <a name="using-symlink"></a>Verwenden von Symlink
+
+Symbolische Verknüpfungen, auch als Symlinks bezeichnet, sind erweiterte Verknüpfungen. Damit Sie den Ordner nicht überwachen müssen und automatisch das neueste Zertifikat erhalten, können Sie den Symlink `([VaultName].[CertificateName])` verwenden, um die neueste Version des Zertifikats unter Linux abzurufen.
+
+### <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
+
+* Gibt es einen Grenzwert für die Anzahl von „observedCertificates“, die Sie einrichten können?
+  Nein, die Key Vault-VM-Erweiterung weist keinen Grenzwert für die Anzahl von „observedCertificates“ auf.
 
 ### <a name="support"></a>Support
 

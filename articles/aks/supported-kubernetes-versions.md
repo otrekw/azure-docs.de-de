@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
-ms.openlocfilehash: a10340d4c2bd2811204af41fba5b32cbe9c4e905
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 649f02097a18a141d186434a91539563c64e72ba
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735068"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042125"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Unterstützte Kubernetes-Versionen in Azure Kubernetes Service (AKS)
 
@@ -131,7 +131,7 @@ az aks get-versions --location eastus --output table
 
 ## <a name="aks-kubernetes-release-calendar"></a>Releasekalender für AKS Kubernetes
 
-Den Verlauf der letzten Versionen finden Sie [hier](https://en.wikipedia.org/wiki/Kubernetes#History).
+Den Verlauf der letzten Versionen finden Sie unter [Kubernetes](https://en.wikipedia.org/wiki/Kubernetes#History).
 
 |  Kubernetes-Version | Upstreamrelease  | AKS – Vorschau  | AKS – allgemeine Verfügbarkeit (GA)  | Ende der Lebensdauer |
 |--------------|-------------------|--------------|---------|-------------|
@@ -139,8 +139,10 @@ Den Verlauf der letzten Versionen finden Sie [hier](https://en.wikipedia.org/wik
 | 1.17  | 09. Dezember 2019  | Januar 2019   | Juli 2020  | 1.20 GA | 
 | 1.18  | 23. März 2020  | Mai 2020   | August 2020  | 1.21 GA | 
 | 1.19  | 04. August 2020  | Sep 2020   | November 2020  | 1.22 GA | 
-| 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA | 
-\* Aufgrund der Weihnachtszeit verlängert AKS die Lebensdauer von Version 1.16 von November 2020 bis Januar 2021. Weitere Informationen finden Sie [hier](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+| 1.20  | Dec-08-20  | Jan 2021   | März 2021  | 1.23 GA |
+
+\* Aufgrund der Weihnachtszeit verlängert AKS die Lebensdauer von Version 1.16 von November 2020 bis Januar 2021. [Weitere Informationen](https://github.com/Azure/AKS/releases/tag/2020-10-12).
+
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 

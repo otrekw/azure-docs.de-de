@@ -11,12 +11,12 @@ ms.topic: troubleshooting
 ms.date: 04/23/2019
 ms.author: kenwith
 ms.reviewer: asteen, japere
-ms.openlocfilehash: 3ca3df010426347846b29734426edfad4536516b
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: b18eb0f8d57c06e82d243c10bf038a861bcf88d1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91568728"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042710"
 ---
 # <a name="troubleshoot-kerberos-constrained-delegation-configurations-for-application-proxy"></a>Problembehandlung von Konfigurationen der eingeschränkten Kerberos-Delegierung für den Anwendungsproxy
 
@@ -51,7 +51,7 @@ Ein Connector sollte am besten so nah wie möglich beim Ziel positioniert werden
 
 Wodurch lässt sich ein Problem bei der KCD erkennen? Es gibt einige häufige Anzeichen dafür, dass ein Fehler beim einmaligen Anmelden der KCD vorliegt. Die ersten Anzeichen eines Problems treten im Browser auf.
 
-![Beispiel: Fehler durch falsche KCD-Konfiguration](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
+![Screenshot: Beispiel einer fehlerhaften KCD-Konfiguration mit hervorgehobenem Fehler durch eine falsche eingeschränkte Kerberos-Delegierung.](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic1.png)
 
 ![Beispiel: Fehler bei der Autorisierung aufgrund fehlender Berechtigungen](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic2.png)
 
@@ -87,7 +87,7 @@ Die entsprechenden Einträge im Ereignisprotokoll weisen dann die Ereignis-IDs 1
 
 ![Ereignis 12027 aus dem Ereignisprotokoll des Anwendungsproxys](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic5.png)
 
-1. Verwenden Sie für die Adresse der Anwendung einen **A**-Datensatz in Ihrem internen DNS und keinen **CNAME**-Datensatz.
+1. Verwenden Sie für die Adresse der Anwendung einen **A** -Datensatz in Ihrem internen DNS und keinen **CNAME** -Datensatz.
 1. Vergewissern Sie sich erneut, dass dem Connectorhost die Rechte zum Delegieren an den Dienstprinzipalnamen (Service Principal Name, SPN) des festgelegten Zielkontos erteilt wurden. Stellen Sie außerdem erneut sicher, dass die Option **Beliebiges Authentifizierungsprotokoll verwenden** aktiviert ist. Weitere Informationen finden Sie im [Artikel zur SSO-Konfiguration](application-proxy-configure-single-sign-on-with-kcd.md).
 1. Stellen Sie sicher, dass nur eine Instanz des SPN in Azure AD vorhanden ist. Geben Sie `setspn -x` über eine Eingabeaufforderung auf einem beliebigen Host aus, der Mitglied einer Domäne ist.
 1. Stellen Sie sicher, dass eine Domänenrichtlinie erzwungen wird, die die [Maximalgröße ausgestellter Kerberos-Token](https://blogs.technet.microsoft.com/askds/2012/09/12/maxtokensize-and-windows-8-and-windows-server-2012/) begrenzt. Diese Richtlinie verhindert, dass der Connector ein Token abruft, falls dieser als überflüssig befunden wird.
@@ -102,9 +102,9 @@ Der Consumer des Kerberos-Tickets, das vom Connector bereitgestellt wurde. In di
 
 1. Überprüfen Sie mithilfe der internen URL der Anwendung, die im Portal definiert ist, dass direkt über den Browser auf dem Connectorhost auf die Anwendung zugegriffen werden kann. Dann können Sie sich erfolgreich anmelden. Details finden Sie auf der Seite des Connectors zur **Problembehandlung**.
 1. Vergewissern Sie sich, während Sie sich weiterhin auf dem Connectorhost befinden, dass die Authentifizierung zwischen dem Browser und der Anwendung Kerberos verwendet. Führen Sie eine der folgenden Maßnahmen durch:
-1. Führen Sie die Entwicklertools (**F12**) im Internet Explorer aus, oder verwenden Sie [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) auf dem Connectorhost. Wechseln Sie mithilfe der internen URL zur Anwendung. Überprüfen Sie die angebotenen WWW-Autorisierungsheader, die in der Antwort der Anwendung zurückgegeben wurden, um sicherzustellen, dass entweder eine Aushandlung oder Kerberos vorhanden ist.
+1. Führen Sie die Entwicklertools ( **F12** ) im Internet Explorer aus, oder verwenden Sie [Fiddler](https://blogs.msdn.microsoft.com/crminthefield/2012/10/10/using-fiddler-to-check-for-kerberos-auth/) auf dem Connectorhost. Wechseln Sie mithilfe der internen URL zur Anwendung. Überprüfen Sie die angebotenen WWW-Autorisierungsheader, die in der Antwort der Anwendung zurückgegeben wurden, um sicherzustellen, dass entweder eine Aushandlung oder Kerberos vorhanden ist.
 
-   - Das nächste Kerberos-Blob, das in der Antwort vom Browser an die Anwendung zurückgegeben wird, beginnt mit **YII**. Diese Buchstaben geben an, dass Kerberos ausgeführt wird. Der Microsoft NT LAN Manager (NTLM) beginnt hingegen immer mit **TlRMTVNTUAAB**, das NTLM Security Support Provider (NTLMSSP) lautet, wenn die Decodierung aus Base64 erfolgt ist. Wenn zu Beginn des Blobs **TlRMTVNTUAAB** angezeigt wird, ist Kerberos nicht verfügbar. Wenn **TlRMTVNTUAAB** nicht angezeigt wird, ist Kerberos voraussichtlich verfügbar.
+   - Das nächste Kerberos-Blob, das in der Antwort vom Browser an die Anwendung zurückgegeben wird, beginnt mit **YII**. Diese Buchstaben geben an, dass Kerberos ausgeführt wird. Der Microsoft NT LAN Manager (NTLM) beginnt hingegen immer mit **TlRMTVNTUAAB** , das NTLM Security Support Provider (NTLMSSP) lautet, wenn die Decodierung aus Base64 erfolgt ist. Wenn zu Beginn des Blobs **TlRMTVNTUAAB** angezeigt wird, ist Kerberos nicht verfügbar. Wenn **TlRMTVNTUAAB** nicht angezeigt wird, ist Kerberos voraussichtlich verfügbar.
 
       > [!NOTE]
       > Bei der Verwendung von Fiddler würde diese Methode die vorübergehende Deaktivierung des erweiterten Schutzes für die Konfiguration der Anwendung in den IIS erfordern.
@@ -115,7 +115,7 @@ Der Consumer des Kerberos-Tickets, das vom Connector bereitgestellt wurde. In di
 
 1. Entfernen Sie NTLM vorübergehend aus der Anbieterliste auf der IIS-Website. Rufen Sie die App direkt über den Internet Explorer auf dem Connectorhost auf. NTLM ist nicht mehr in der Anbieterliste enthalten. Sie können nur mithilfe von Kerberos auf die Anwendung zugreifen. Wenn beim Zugriff ein Fehler auftritt, liegt möglicherweise ein Problem mit der Konfiguration der Anwendung vor. Die Kerberos-Authentifizierung funktioniert nicht.
 
-   - Wenn Kerberos nicht verfügbar ist, überprüfen Sie die Authentifizierungseinstellungen der Anwendung in den IIS. Stellen Sie sicher, dass im oberen Bereich **Aushandeln** und direkt darunter „NTLM“ aufgeführt wird. Wenn dort **Nicht aushandeln**, **Kerberos oder aushandeln** oder **PKU2U** angezeigt wird, fahren Sie nur fort, wenn Kerberos funktioniert.
+   - Wenn Kerberos nicht verfügbar ist, überprüfen Sie die Authentifizierungseinstellungen der Anwendung in den IIS. Stellen Sie sicher, dass im oberen Bereich **Aushandeln** und direkt darunter „NTLM“ aufgeführt wird. Wenn dort **Nicht aushandeln** , **Kerberos oder aushandeln** oder **PKU2U** angezeigt wird, fahren Sie nur fort, wenn Kerberos funktioniert.
 
      ![Windows-Authentifizierungsanbieter](./media/application-proxy-back-end-kerberos-constrained-delegation-how-to/graphic7.png)
 

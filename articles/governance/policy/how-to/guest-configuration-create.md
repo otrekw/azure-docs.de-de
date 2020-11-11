@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 563b178b9ba92125967c779b59a78a8e105ec744
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542861"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348881"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -23,8 +23,12 @@ Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nu
 Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprüfen des Zustands eines Azure- oder Nicht-Azure-Computers zu erstellen.
 
 > [!IMPORTANT]
+> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China“ handelt es sich um eine Previewfunktion.
+>
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich.
 > Weisen Sie die folgenden Richtliniendefinitionen zu, um die Erweiterung auf allen Windows-Computern im gewünschten Umfang bereitzustellen: `Deploy prerequisites to enable Guest Configuration Policy on Windows VMs`
+> 
+> Verwenden Sie in Paketen mit benutzerdefiniertem Inhalt keine Geheimnisse oder vertraulichen Informationen.
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
@@ -487,9 +491,13 @@ New-GuestConfigurationPackage `
 
 ## <a name="policy-lifecycle"></a>Lebenszyklus von Richtlinien
 
-Wenn Sie eine Aktualisierung der Richtliniendefinition freigeben möchten, sind zwei Felder zu beachten.
+Wenn Sie ein Update der Richtliniendefinition veröffentlichen möchten, sind drei Felder zu beachten.
 
-- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist. Die Eigenschaft aktualisiert die Version der Gastkonfigurationszuweisung, damit der Agent das aktualisierte Paket erkennt.
+> [!NOTE]
+> Die Eigenschaft `version` der Gastkonfigurationszuweisung betrifft nur Pakete, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
+
+- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
+- **contentUri** : Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.
 - **contentHash** : Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.

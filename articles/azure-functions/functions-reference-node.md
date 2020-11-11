@@ -5,12 +5,12 @@ ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 86a512ea0e07f5eb2ce00ff27427139c5221d229
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 758e11a9c043fbd1238d1e3533a2d83804ec0b73
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164821"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043118"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>JavaScript-Entwicklerhandbuch für Azure Functions
 
@@ -358,7 +358,7 @@ Verwenden Sie die Eigenschaft `tracing.consoleLevel` in der Datei „host.json�
 }  
 ```
 
-Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_ . Weitere Informationen finden Sie in der [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
+Die Werte von **consoleLevel** entsprechen den Namen der `context.log`-Methoden. Um die gesamte Ablaufverfolgungsprotokollierung in der Konsole zu deaktivieren, setzen Sie **consoleLevel** auf _off_. Weitere Informationen finden Sie in der [host.json-Referenz für Azure Functions 1.x](functions-host-json-v1.md).
 
 ---
 
@@ -545,7 +545,7 @@ Es gibt zwei Möglichkeiten zum Installieren von Paketen für Ihre Funktions-App
 ### <a name="using-kudu"></a>Verwenden von Kudu
 1. Gehe zu `https://<function_app_name>.scm.azurewebsites.net`.
 
-2. Klicken Sie auf **Debugkonsole** > **CMD** .
+2. Klicken Sie auf **Debugkonsole** > **CMD**.
 
 3. Gehen Sie zu `D:\home\site\wwwroot`, und ziehen Sie dann die Datei „package.json“ auf den **wwwroot** -Ordner in der oberen Hälfte der Seite.  
     Es gibt auch andere Möglichkeiten, Dateien in Ihre Funktionen-App hochzuladen. Weitere Informationen finden Sie unter [Aktualisieren von Funktionen-App-Dateien](functions-reference.md#fileupdate). 

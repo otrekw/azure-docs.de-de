@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57d66c844b7e73f1e3326d628f854a9811ca96fd
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: a07130e55339ed689b65b48e6fd83e65f36d155e
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91802700"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280545"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -86,7 +86,7 @@ Aktualisieren Sie die Konfiguration, um mit der Testinstanz der App auf Ihre Azu
 
 Aktualisieren Sie die Konfiguration Ihrer Produktionsanwendung so, dass sie auf Ihren Azure-Produktionsmandanten verweist.
 
-![Migrationsphase 1 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
+![Migrationsphase 4 ](media/migrate-adfs-apps-to-azure/stage4.jpg)
 
  Apps, die sich mit AD FS authentifizieren, können Active Directory-Gruppen für Berechtigungen verwenden. Verwenden Sie die [Azure AD Connect-Synchronisierung](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-whatis), um Identitätsdaten zwischen Ihrer lokalen Umgebung und Azure AD vor der Migration zu synchronisieren. Überprüfen Sie diese Gruppen und Mitgliedschaften vor der Migration, damit Sie denselben Benutzern Zugriff gewähren können, wenn die Anwendung migriert wird.
 
@@ -147,7 +147,7 @@ Zu den Apps, die nach aktuellem Stand problemlos verschoben werden können, zäh
 
 * Surname
 
-* Alternatives Attribut als SAML-**NameID**, z.B. Azure AD-E-Mail-Attribut, E-Mail-Präfix, Mitarbeiter-ID, Erweiterungsattribute 1 - 15 oder lokales **SamAccountName**-Attribut. Weitere Informationen finden Sie im Artikel zum [Bearbeiten des NameIdentifier-Anspruchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
+* Alternatives Attribut als SAML- **NameID** , z.B. Azure AD-E-Mail-Attribut, E-Mail-Präfix, Mitarbeiter-ID, Erweiterungsattribute 1 - 15 oder lokales **SamAccountName** -Attribut. Weitere Informationen finden Sie im Artikel zum [Bearbeiten des NameIdentifier-Anspruchs](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization).
 
 * Benutzerdefinierte Ansprüche.
 
@@ -201,10 +201,10 @@ In der folgenden Tabelle werden einige der gängigsten Zuordnungen von Einstellu
 | **App sign-on URL** (Anmelde-URL der App) <p>Dies ist die URL für die Anmeldung des Benutzers bei der App in einem vom Dienstanbieter initiierten SAML-Flow.| –| Öffnen Sie die grundlegende SAML-Konfiguration der SAML-basierten Anmeldung.| – |
 | **App reply URL** (Antwort-URL der App) <p>Dies ist die URL der App aus der Perspektive des Identitätsanbieters (IdP). Der Benutzer und das Token werden vom Identitätsanbieter hierher gesendet, nachdem sich der Benutzer beim Identitätsanbieter angemeldet hat.  Dies wird auch als **Consumerendpunkt der SAML-Assertion** bezeichnet.| Klicken Sie auf die Registerkarte **Endpunkte**.| Öffnen Sie die grundlegende SAML-Konfiguration der SAML-basierten Anmeldung.| Dies ist das Zielelement im SAML-Token. Beispielwert: `https://contoso.my.salesforce.com` |
 | **App sign-out URL** (Abmelde-URL für App) <p>Dies ist die URL, an die Anforderungen für die Abmeldebereinigung gesendet werden, wenn sich ein Benutzer von einer App abmeldet. Der Identitätsanbieter sendet die Anforderung zum Abmelden des Benutzers auch von allen anderen Apps.| Klicken Sie auf die Registerkarte **Endpunkte**.| Öffnen Sie die grundlegende SAML-Konfiguration der SAML-basierten Anmeldung.| – |
-| **App identifier** (App-Bezeichner) <p>Dies ist der App-Bezeichner aus der Perspektive des Identitätsanbieters. Der Wert für die Anmelde-URL wird häufig für den Bezeichner verwendet (aber nicht immer).  Dies wird von der App in einigen Fällen auch als „Entitäts-ID“ bezeichnet.| Klicken Sie auf die Registerkarte **Bezeichner**.|Öffnen Sie die grundlegende SAML-Konfiguration der SAML-basierten Anmeldung.| Er wird dem **Audience**-Element im SAML-Token zugeordnet. |
+| **App identifier** (App-Bezeichner) <p>Dies ist der App-Bezeichner aus der Perspektive des Identitätsanbieters. Der Wert für die Anmelde-URL wird häufig für den Bezeichner verwendet (aber nicht immer).  Dies wird von der App in einigen Fällen auch als „Entitäts-ID“ bezeichnet.| Klicken Sie auf die Registerkarte **Bezeichner**.|Öffnen Sie die grundlegende SAML-Konfiguration der SAML-basierten Anmeldung.| Er wird dem **Audience** -Element im SAML-Token zugeordnet. |
 | **App federation metadata** (App-Verbundmetadaten) <p>Dies ist der Speicherort der Verbundmetadaten der App. Der IdP verwendet ihn zum automatischen Aktualisieren von bestimmten Konfigurationseinstellungen, z.B. Endpunkten oder Verschlüsselungszertifikaten.| Klicken Sie auf die Registerkarte **Überwachung**.| N/V. Für Azure AD wird die direkte Nutzung von Anwendungsverbundmetadaten nicht unterstützt. Sie können die Verbundmetadaten manuell importieren.| – |
-| **Benutzerbezeichner/Namens-ID** <p>Attribut zum eindeutigen Angeben der Benutzeridentität von Azure AD oder AD FS für Ihre App.  Dieses Attribut ist normalerweise entweder der Benutzerprinzipalname (UPN) oder die E-Mail-Adresse des Benutzers.| Anspruchsregeln: In den meisten Fällen stellt die Anspruchsregel einen Anspruch mit einem Typ aus, der mit dem „NameIdentifier“ endet.| Sie finden den Bezeichner unter dem Header **Benutzerattribute und Ansprüche**. Standardmäßig wird der Benutzerprinzipalname verwendet.| Er wird dem **NameID**-Element im SAML-Token zugeordnet. |
-| **Andere Ansprüche** <p>Beispiele für andere Anspruchsinformationen, die häufig vom Identitätsanbieter an die App gesendet werden, sind der Vorname, der Nachname, die E-Mail-Adresse und die Gruppenmitgliedschaft.| In AD FS ist dies unter den anderen Anspruchsregeln der vertrauenden Seite enthalten.| Sie finden den Bezeichner unter dem Header **Benutzerattribute und Ansprüche**. Wählen Sie **Ansicht**, und bearbeiten Sie alle weiteren Benutzerattribute.| – |
+| **Benutzerbezeichner/Namens-ID** <p>Attribut zum eindeutigen Angeben der Benutzeridentität von Azure AD oder AD FS für Ihre App.  Dieses Attribut ist normalerweise entweder der Benutzerprinzipalname (UPN) oder die E-Mail-Adresse des Benutzers.| Anspruchsregeln: In den meisten Fällen stellt die Anspruchsregel einen Anspruch mit einem Typ aus, der mit dem „NameIdentifier“ endet.| Sie finden den Bezeichner unter dem Header **Benutzerattribute und Ansprüche**. Standardmäßig wird der Benutzerprinzipalname verwendet.| Er wird dem **NameID** -Element im SAML-Token zugeordnet. |
+| **Andere Ansprüche** <p>Beispiele für andere Anspruchsinformationen, die häufig vom Identitätsanbieter an die App gesendet werden, sind der Vorname, der Nachname, die E-Mail-Adresse und die Gruppenmitgliedschaft.| In AD FS ist dies unter den anderen Anspruchsregeln der vertrauenden Seite enthalten.| Sie finden den Bezeichner unter dem Header **Benutzerattribute und Ansprüche**. Wählen Sie **Ansicht** , und bearbeiten Sie alle weiteren Benutzerattribute.| – |
 
 
 ### <a name="map-identity-provider-idp-settings"></a>Zuordnen von Einstellungen für Identitätsanbieter
@@ -257,7 +257,7 @@ Im Folgenden finden Sie Beispiele für Typen von Autorisierungsregeln in AD FS u
 
 Option zum Gewähren des Zugriffs für alle Benutzer in AD FS:
 
-![Migrationsphase 1 ](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
+![Screenshot der Dialogfelds „Einmaliges Anmelden (SSO) mit SAML einrichten“](media/migrate-adfs-apps-to-azure/sso-saml-user-attributes-claims.png)
 
 
 Dies entspricht Azure AD auf eine der folgenden Arten:
@@ -279,7 +279,7 @@ Sie müssen [dynamischen Gruppen](https://docs.microsoft.com/azure/active-direct
 Explizite Gruppenautorisierung in AD FS:
 
 
-![Ausstellungsautorisierungsregeln ](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
+![Screenshot des Dialogfelds „Regel bearbeiten“ für die Anspruchsregel „Domänenadministratoren zulassen“](media/migrate-adfs-apps-to-azure/allow-a-group-explicitly-1.png)
 
 
 So wird die Regel Azure AD zugeordnet:
@@ -293,7 +293,7 @@ Erstellen Sie im [Azure-Portal](https://portal.azure.com/) zunächst [eine Benut
 
 Explizite Benutzerautorisierung in AD FS:
 
-![Ausstellungsautorisierungsregeln ](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
+![Screenshot des Dialogfelds „Regel bearbeiten“ für die Anspruchsregel „Domänenadministratoren zulassen“ mit eingehenden Anspruchstyp „primäre SID“](media/migrate-adfs-apps-to-azure/authorize-a-specific-user-1.png)
 
 So wird die Regel Azure AD zugeordnet:
 
@@ -310,7 +310,7 @@ Im Folgenden finden Sie Beispiele für Typen von MFA-Regeln in AD FS und deren Z
 
 MFA-Regeleinstellungen in AD FS:
 
-![MFA-Einstellungen in Azure AD](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Screenshot der Bedingungen für Azure AD im Azure-Portal](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
 
 #### <a name="example-1-enforce-mfa-based-on-usersgroups"></a>Beispiel 1: Erzwingen der MFA basierend auf Benutzern/Gruppen
@@ -324,9 +324,9 @@ Angeben von MFA-Regeln für einen Benutzer oder eine Gruppe in Azure AD:
 
 2. Klicken Sie auf **Zuweisungen**. Fügen Sie die Benutzer oder Gruppen hinzu, für die Sie die MFA erzwingen möchten.
 
-3. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung**: ‎
+3. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung** : ‎
 
-![MFA-Einstellungen in AAD](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
+![Screenshot des Bereichs „Gewähren“, in dem Sie Zugriff gewähren](media/migrate-adfs-apps-to-azure/mfa-usersorgroups.png)
 
 
  #### <a name="example-2-enforce-mfa-for-unregistered-devices"></a>Beispiel 2: Erzwingen der MFA für nicht registrierte Geräte
@@ -337,9 +337,9 @@ Angeben der MFA-Regeln für nicht registrierte Geräte in Azure AD:
 
 2. Legen Sie die **Zuweisungen** auf **Alle Benutzer** fest.
 
-3. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung**: ‎
+3. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung** : ‎
 
-![MFA-Einstellungen in AAD](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
+![Screenshot des Bereichs „Gewähren“, in dem Sie Zugriff gewähren und andere Einschränkungen angeben](media/migrate-adfs-apps-to-azure/mfa-unregistered-devices.png)
 
 
 Wenn Sie für „Eine der ausgewählten Steuerungen anfordern“ die Option „Für mehrere Steuerelemente“ festlegen, bedeutet das, dass der Zugriff auf Ihre App gewährt wird, wenn eine der im Kontrollkästchen angegebenen Bedingungen vom Benutzer erfüllt wird.
@@ -354,11 +354,11 @@ Angeben von MFA-Regeln basierend auf dem Standort eines Benutzers in Azure AD:
 
 1. [Konfigurieren Sie benannte Standorte in Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-named-locations). Andernfalls wird der Verbund innerhalb Ihres Unternehmensnetzwerks als vertrauenswürdig eingestuft.
 
-1. Konfigurieren Sie die Regeln für die **Bedingungen**, um die Standorte anzugeben, für die Sie die MFA erzwingen möchten.
+1. Konfigurieren Sie die Regeln für die **Bedingungen** , um die Standorte anzugeben, für die Sie die MFA erzwingen möchten.
 
-![MFA-Einstellungen in Azure AD](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
+![Screenshot des Bereichs „Standorte“ für Bedingungsregeln](media/migrate-adfs-apps-to-azure/mfa-location-1.png)
 
-5. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung**:
+5. Konfigurieren Sie wie unten gezeigt die Optionen für die **Zugriffssteuerung** :
 
 
 ![Zuordnen von Zugriffssteuerungsrichtlinien](media/migrate-adfs-apps-to-azure/mfa-location-2.png)
@@ -368,14 +368,14 @@ Angeben von MFA-Regeln basierend auf dem Standort eines Benutzers in Azure AD:
 
 Im Folgenden finden Sie ein Beispiel für das Zuordnen von Attributen in AD FS:
 
-![MFA-Einstellungen in Azure AD](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
+![Screenshot des Dialogfelds „Regel bearbeiten“ zum Ausgeben von Attributen als Ansprüche](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-1.png)
 
 
 So wird die Regel Azure AD zugeordnet:
 
-Klicken Sie im [Azure-Portal](https://portal.azure.com/) zunächst auf **Unternehmensanwendungen** und dann auf **Einmaliges Anmelden**, und fügen Sie wie unten dargestellt **SAML-Tokenattribute** hinzu:
+Klicken Sie im [Azure-Portal](https://portal.azure.com/) zunächst auf **Unternehmensanwendungen** und dann auf **Einmaliges Anmelden** , und fügen Sie wie unten dargestellt **SAML-Tokenattribute** hinzu:
 
-![MFA-Einstellungen in Azure AD](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
+![Screenshot der Seite „Einmaliges Anmelden“ für Ihre Enterprise-Anwendung](media/migrate-adfs-apps-to-azure/map-emit-attributes-as-claimsrule-2.png)
 
 
 
@@ -397,8 +397,8 @@ In dieser Tabelle sind einige nützliche Optionen für „Permit“ („Zulassen
 
 | Option | Konfigurieren der „Permit“-Option („Zulassen“) in Azure AD| Konfigurieren der „Except“-Option („außer“) in Azure AD |
 | - | - | - |
-| In bestimmten Netzwerken| Die Option wird einem [benannten Standort](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in Azure AD zugeordnet.| Verwenden Sie für [vertrauenswürdige Standorte](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) die **Exclude**-Option („außer“). |
-| In bestimmten Gruppen| [Legen Sie eine Benutzer-/Gruppenzuweisung fest.](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Verwenden Sie in „Benutzer und Gruppen“ die **Exclude**-Option („außer“). |
+| In bestimmten Netzwerken| Die Option wird einem [benannten Standort](https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-configure-named-locations) in Azure AD zugeordnet.| Verwenden Sie für [vertrauenswürdige Standorte](https://docs.microsoft.com/azure/active-directory/conditional-access/location-condition) die **Exclude** -Option („außer“). |
+| In bestimmten Gruppen| [Legen Sie eine Benutzer-/Gruppenzuweisung fest.](https://docs.microsoft.com/azure/active-directory/manage-apps/assign-user-or-group-access-portal)| Verwenden Sie in „Benutzer und Gruppen“ die **Exclude** -Option („außer“). |
 | Auf Geräten mit bestimmter Vertrauensebene| Legen Sie diese Einstellung im Steuerelement „Gerätestatus“ unter „Zuweisungen“ > „Bedingungen“ fest.| Verwenden Sie die Option zum **Ausschließen** unter „Gerätestatus“ > „Bedingung“, und klicken Sie auf **Alle Geräte**. |
 | Mit bestimmten Ansprüchen in der Anforderung| Diese Einstellung kann nicht migriert werden.| Diese Einstellung kann nicht migriert werden. |
 
@@ -444,9 +444,9 @@ Unabhängig davon, wie vorhandene externe Benutzer konfiguriert sind, verfügen 
 Befolgen Sie den in diesem Artikel beschriebenen Migrationsvorgang.
 
 Wechseln Sie dann zum [Azure-Portal](https://aad.portal.azure.com/), um zu testen, ob die Migration erfolgreich war. Befolgen Sie die nachstehenden Anweisungen:
-1. Klicken Sie auf **Unternehmensanwendungen** > **Alle Anwendungen**, und suchen Sie die App in der Liste.
+1. Klicken Sie auf **Unternehmensanwendungen** > **Alle Anwendungen** , und suchen Sie die App in der Liste.
 
-1. Klicken Sie auf **Verwalten** > **Benutzer und Gruppen**, um der App mindestens einen Benutzer oder eine Gruppe zuzuweisen.
+1. Klicken Sie auf **Verwalten** > **Benutzer und Gruppen** , um der App mindestens einen Benutzer oder eine Gruppe zuzuweisen.
 
 1. Klicken Sie auf **Verwalten** > **Bedingter Zugriff**. Überprüfen Sie die Liste der Richtlinien, und stellen Sie sicher, dass Sie den Zugriff auf die Anwendung nicht mit einer [Richtlinie für bedingten Zugriff](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) blockieren.
 
@@ -454,7 +454,7 @@ Vergewissern Sie sich, dass das einmalige Anmelden je nach Konfiguration Ihrer A
 
 | Authentifizierungsart| Testen |
 | - | - |
-| OAuth und OpenID Connect| Klicken Sie auf **Unternehmensanwendungen > Berechtigungen**, und stellen Sie sicher, dass Sie in den Benutzereinstellungen für Ihre App zugestimmt haben, dass die Anwendung in Ihrer Organisation verwendet werden darf.
+| OAuth und OpenID Connect| Klicken Sie auf **Unternehmensanwendungen > Berechtigungen** , und stellen Sie sicher, dass Sie in den Benutzereinstellungen für Ihre App zugestimmt haben, dass die Anwendung in Ihrer Organisation verwendet werden darf.
 ‎ |
 | SAML-basiertes SSO| Verwenden Sie die Schaltfläche [SAML-Einstellungen testen](https://docs.microsoft.com/azure/active-directory/develop/howto-v1-debug-saml-sso-issues) unter **Einmaliges Anmelden**.
 ‎ |
@@ -489,5 +489,8 @@ Nachdem die Bereitstellung abgeschlossen ist, können Sie die Benutzer über die
 Kommunikation mit externen Benutzern: Probleme haben die größten Auswirkungen auf diese Benutzergruppe. Dies trifft vor allem dann zu, wenn Ihr Sicherheitsstatus andere Regeln für den bedingten Zugriff oder für Risikoprofile für externe Partner festlegt. Stellen Sie sicher, dass externe Partner den Zeitplan für die Cloudmigration kennen und genügend Zeit für die Teilnahme an einer Pilotbereitstellung haben, mit der alle Flows für die Zusammenarbeit mit externe Benutzern getestet werden. Stellen Sie schließlich sicher, dass Ihre Partner im Falle von Problemen auf den Helpdesk zugreifen können.
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Lesen des Whitepapers zum [Migrieren der Anwendungsauthentifizierung zu Azure AD](https://aka.ms/migrateapps/whitepaper)<p>
 Einrichten des [bedingten Zugriffs](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) und der [mehrstufige Authentifizierung (MFA)](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)
+
+Codebeispiel mit Einzelschritten: [AD FS to Azure AD application migration playbook for developers](https://aka.ms/adfsplaybook) (Playbook für Entwickler zur Migration von Anwendungen in AD FS zu Azure AD)

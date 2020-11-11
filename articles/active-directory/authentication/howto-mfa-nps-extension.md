@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 5095df51fe430990e200b7bc7c3ca03feb0799d5
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 20ae53805d25614e18f17a7d20acd884d31ab7d6
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964280"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925712"
 ---
 # <a name="integrate-your-existing-network-policy-server-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrieren Ihrer vorhandenen NPS-Infrastruktur in Azure Multi-Factor Authentication
 
@@ -125,7 +125,7 @@ Vor der Installation der NPS-Erweiterung müssen Sie Ihre Umgebung für die Vera
 
 Der NPS-Server stellt eine Verbindung mit Azure AD her und authentifiziert die MFA-Anforderungen. Wählen Sie einen Server für diese Rolle aus. Sie sollten einen Server auswählen, der keine Anforderungen von anderen Diensten verarbeitet, da die NPS-Erweiterung für alle Anforderungen Fehler auslöst, die keine RADIUS-Anforderungen sind. Der NPS-Server muss als primärer und sekundärer Authentifizierungsserver für Ihre Umgebung eingerichtet werden. Eine Proxyweiterleitung von RADIUS-Anforderungen an einen anderen Server ist nicht möglich.
 
-1. Öffnen Sie auf Ihrem Server den **Server-Manager** . Wählen Sie aus dem Menü *Schnellstart* die Option **Assistent zum Hinzufügen von Rollen und Features** aus.
+1. Öffnen Sie auf Ihrem Server den **Server-Manager**. Wählen Sie aus dem Menü *Schnellstart* die Option **Assistent zum Hinzufügen von Rollen und Features** aus.
 2. Wählen Sie als Installationstyp **Rollenbasierte oder featurebasierte Installation** aus.
 3. Wählen Sie die Serverrolle **Netzwerkrichtlinien- und Zugriffsdienste** aus. Es wird möglicherweise ein Fenster angezeigt, in dem Sie über weitere erforderliche Features für die Ausführung dieser Rolle informiert werden.
 4. Gehen Sie den Assistenten bis zur Seite *Bestätigung* durch. Klicken Sie auf **Installieren** , wenn Sie so weit sind.
@@ -150,16 +150,16 @@ Wenn Sie einen neuen Synchronisierungslauf starten möchten, gehen Sie anhand de
 
 Zwei Faktoren haben Einfluss darauf, welche Authentifizierungsmethoden mit der Bereitstellung einer NPS-Erweiterung verfügbar sind:
 
-1. Der Kennwortverschlüsselungsalgorithmus wird zwischen dem RADIUS-Client (VPN, NetScaler-Server oder andere) und den NPS-Servern verwendet.
+* Der Kennwortverschlüsselungsalgorithmus wird zwischen dem RADIUS-Client (VPN, NetScaler-Server oder andere) und den NPS-Servern verwendet.
    - **PAP** unterstützt alle Authentifizierungsmethoden von Azure Multi-Factor Authentication in der Cloud: Telefonanruf, unidirektionale Textnachricht, Benachrichtigung über eine mobile App, OATH-Hardwaretoken und Überprüfungscode in einer mobilen App.
    - **CHAPV2** und **EAP** unterstützt Telefonanruf und Benachrichtigung über eine mobile App.
 
-      > [!NOTE]
-      > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
-      >
-      > Die Authentifizierung kann darüber hinaus erfolgreich sein, wenn die Benutzeroberfläche Ihres VPN-Clients Eingabefelder unterstützt und Sie eine Netzwerkzugriffsrichtlinie konfiguriert haben. Allerdings wird keins der in der Netzwerkrichtlinie konfigurierten RADIUS-Attribute auf das Netzwerkzugriffsgerät (z. B. den RRAS-Server) oder den VPN-Client angewendet. Folglich hat der VPN-Client möglicherweise mehr oder weniger Zugriff als gewünscht oder gar keinen Zugriff.
+    > [!NOTE]
+    > Verwenden Sie bei der Bereitstellung der NPS-Erweiterung diese Faktoren, um auszuwerten, welche Methoden für Benutzer verfügbar sind. Wenn Ihr RADIUS-Client PAP unterstützt, der Client UX jedoch über kein Eingabefeld für einen Überprüfungscode verfügt, sind der Telefonanruf und die Benachrichtigung über eine mobile App die zwei unterstützten Optionen.
+    >
+    > Unabhängig vom verwendeten Authentifizierungsprotokoll (PAP, CHAP oder EAP) wird die Authentifizierung möglicherweise erfolgreich durchgeführt, wenn Ihre MFA-Methode textbasiert ist (SMS, Verifizierungscode in einer mobilen App oder OATH-Hardwaretoken) und erfordert, dass der Benutzer einen Code oder Text in das Eingabefeld der Benutzeroberfläche des VPN-Clients eingibt. *Allerdings* werden RADIUS-Attribute, die in der Richtlinie für den Netzwerkzugriff konfiguriert sind, *nicht* an den RADIUS-Client (also das Netzwerkzugriffsgerät, z. B. das VPN-Gateway) weitergeleitet. Folglich hat der VPN-Client möglicherweise mehr oder weniger Zugriff als gewünscht oder gar keinen Zugriff.
 
-2. Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
+* Die Eingabemethoden, die von der Clientanwendung (VPN, NetScaler-Server oder andere) verarbeitet werden kann. Beispiel: Verfügt der VPN-Client über Mittel, die es dem Benutzer erlauben, einen Überprüfungscode aus einem Text oder einer mobilen App einzugeben?
 
 Sie können [nicht unterstützte Authentifizierungsmethoden](howto-mfa-mfasettings.md#verification-methods) in Azure deaktivieren.
 
@@ -301,7 +301,7 @@ Verweisen Sie RADIUS-Clients, die MFA zum Senden von Anforderungen auffordern so
 
 ### <a name="prepare-for-users-that-arent-enrolled-for-mfa"></a>Vorbereiten von Benutzern, die nicht für MFA registriert sind
 
-Wenn es Benutzer gibt, die nicht für MFA registriert sind, können Sie bestimmen, was geschieht, wenn sie versuchen, sie zu authentifizieren. Um dieses Verhalten zu steuern, verwenden Sie die Einstellung *REQUIRE_USER_MATCH* im Registrierungspfad *HKLM\Software\Microsoft\AzureMFA* . Diese Einstellung hat eine einzelne Konfigurationsoption:
+Wenn es Benutzer gibt, die nicht für MFA registriert sind, können Sie bestimmen, was geschieht, wenn sie versuchen, sie zu authentifizieren. Um dieses Verhalten zu steuern, verwenden Sie die Einstellung *REQUIRE_USER_MATCH* im Registrierungspfad *HKLM\Software\Microsoft\AzureMFA*. Diese Einstellung hat eine einzelne Konfigurationsoption:
 
 | Schlüssel | Wert | Standard |
 | --- | ----- | ------- |
@@ -323,7 +323,7 @@ Zum Ausführen der Schritte der grundlegenden Integritätsprüfung bei der Probl
 
 ### <a name="how-do-i-verify-that-the-client-cert-is-installed-as-expected"></a>Wie überprüfe ich, ob das Clientzertifikat wie erwartet installiert ist?
 
-Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im Zertifikatspeicher, und prüfen Sie, ob der private Schlüssel dem Benutzer *NETZWERKDIENST* Berechtigungen erteilt. Das Zertifikat hat den Antragstellernamen **CN \<tenantid\>, OU = Microsoft NPS Extension** .
+Suchen Sie das vom Installationsprogramm erstellte selbstsignierte Zertifikat im Zertifikatspeicher, und prüfen Sie, ob der private Schlüssel dem Benutzer *NETZWERKDIENST* Berechtigungen erteilt. Das Zertifikat hat den Antragstellernamen **CN \<tenantid\>, OU = Microsoft NPS Extension**.
 
 Selbstsignierte Zertifikate, die durch das Skript `AzureMfaNpsExtnConfigSetup.ps1` generiert werden, haben eine Gültigkeitsdauer von zwei Jahren. Wenn Sie überprüfen, ob das Zertifikat installiert ist, sollten Sie auch überprüfen, ob es nicht abgelaufen ist.
 

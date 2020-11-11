@@ -15,12 +15,12 @@ ms.workload: infrastructure
 ms.date: 07/15/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d81a8b3a1596e8a447f7a2434e52df8c89b416b7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 887adb3e8b0a5f0410fc9a7732e2220049b7ba6c
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87085264"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927191"
 ---
 # <a name="azure-hana-large-instances-control-through-azure-portal"></a>Steuerung von HANA in Azure (große Instanzen) über das Azure-Portal
 Dieses Dokument beschreibt, wie [HANA (große Instanzen)](./hana-overview-architecture.md) im [Azure-Portal](https://portal.azure.com) dargestellt wird und welche Aktivitäten Sie über das Azure-Portal mit den für Sie bereitgestellten Einheiten von HANA (große Instanzen) ausführen können. Die Sichtbarkeit von HANA (große Instanzen) im Azure-Portal wird über einen Azure-Ressourcenanbieter für HANA (große Instanzen) bereitgestellt. Diese Funktion befindet sich derzeit in der öffentlichen Vorschau.
@@ -54,13 +54,13 @@ Bei der ersten Bereitstellung von HANA (große Instanzen) wird eine neue [Azure-
 
 Um die neue Azure-Ressourcengruppe zu finden, listen Sie die Ressourcengruppe in Ihrem Abonnement auf, indem Sie im linken Navigationsbereich des Azure-Portals navigieren.
 
-![Navigationsbereich im Azure-Portal](./media/hana-li-portal/portal-resource-group.png)
+![Screenshot, auf dem die Option „Ressourcengruppe“ hervorgehoben ist](./media/hana-li-portal/portal-resource-group.png)
 
 In der von Ihnen angezeigten Liste der Ressourcengruppen können Sie nach dem Abonnement filtern, das Sie zur Bereitstellung von HANA (große Instanzen) verwendet haben.
 
 ![Filtern von Ressourcengruppen im Azure-Portal](./media/hana-li-portal/portal-filtering-subscription.png)
 
-Nach dem Filtern nach dem richtigen Abonnement verbleibt möglicherweise noch eine lange Liste von Ressourcengruppen. Suchen Sie nach einer mit dem Postfix **-Txxx**, wobei „xxx“ drei Ziffern sind, z.B. **-T050**. 
+Nach dem Filtern nach dem richtigen Abonnement verbleibt möglicherweise noch eine lange Liste von Ressourcengruppen. Suchen Sie nach einer mit dem Postfix **-Txxx** , wobei „xxx“ drei Ziffern sind, z.B. **-T050**. 
 
 Wenn Sie die Ressourcengruppe gefunden haben, zeigen Sie deren Details an. Die Liste, die Sie daraufhin erhalten, sieht in etwa folgendermaßen aus:
 

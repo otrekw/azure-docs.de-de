@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a249d5f3c47e8e8789f91f355c791cc50341ab01
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: ec45ce7634b7bc0a8f38f354112cdc2e172f1e17
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827900"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288367"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -28,23 +28,18 @@ ms.locfileid: "91827900"
 
 Derzeit verursacht ein bekanntes Problem Wartezeit beim Ablauf des Schließvorgangs für Benutzerrisiken. Wenn Sie eine „Benutzerrisiko-Richtlinie“ haben, wird diese Richtlinie innerhalb von Minuten, nachdem auf „Benutzerrisiko ignorieren“ geklickt wurde, nicht mehr auf verworfene Benutzer angewendet. Allerdings gibt es bekannte Verzögerungen beim Aktualisieren des „Risikozustands“ von verworfenen Benutzern in der Benutzerumgebung. Aktualisieren Sie als Problemumgehung die Seite im Browser, um den aktuellen „Risikozustand“ eines Benutzers anzuzeigen.
 
-## <a name="risky-users-report-known-issues"></a>Bericht „Riskante Benutzer“ – Bekannte Probleme
-
-Bei Abfragen für das Feld **Benutzername** wird die Groß-/Kleinschreibung beachtet, bei Abfragen für das Feld **Name** hingegen nicht.
-
-Durch Umschalten von **Datum anzeigen als** wird die Spalte **LETZTE AKTUALISIERUNG DES RISIKOS** ausgeblendet. Um die Spalte zu lesen, klicken Sie oben auf dem Blatt „Riskante Benutzer“ auf **Spalten**.
-
-Über **Alle Ereignisse schließen** im klassischen Identity Protection wird der Status der Risikoerkennungen auf **Geschlossen (gelöst)** festgelegt.
-
-## <a name="risky-sign-ins-report-known-issues"></a>Bericht „Riskante Anmeldungen“ – Bekannte Probleme
-
-Bei einer Risikoerkennung führt **Auflösen** dazu, dass der Status auf **Der Benutzer hat die durch eine risikobasierte Richtlinie ausgelöste MFA erfolgreich durchgeführt** festgelegt wird.
 
 ## <a name="frequently-asked-questions"></a>Häufig gestellte Fragen
 
 ### <a name="why-is-a-user-is-at-risk"></a>Warum ist ein Benutzer risikobehaftet?
 
 Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht [Riskante Benutzer](howto-identity-protection-investigate-risk.md#risky-users), und klicken Sie auf einen risikobehafteten Benutzer. In der Taskleiste am unteren Rand wird die Registerkarte „Risikoverlauf“ angezeigt. Sie enthält alle Ereignisse, die zu einer Änderung des Benutzerrisikos geführt haben. Um alle risikobehafteten Anmeldungen für den Benutzer anzuzeigen, klicken Sie auf „Riskante Anmeldungen“ des Benutzers. Klicken Sie auf „Risikoerkennungen“, um alle Risikoerkennungen für den Benutzer anzuzeigen.
+
+## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Warum wurde meine Anmeldung blockiert, ohne dass Identity Protection eine Risikoerkennung generiert?
+Anmeldungen können aus verschiedenen Gründen blockiert werden. Hierbei ist Folgendes wichtig: Identity Protection generiert nur dann eine Risikoerkennung, wenn bei der Authentifizierungsanforderung korrekte Anmeldeinformationen verwendet werden. Wenn ein Benutzer falsche Anmeldeinformationen verwendet, wird dies von Identity Protection nicht gekennzeichnet, da kein Risiko einer Kompromittierung von Anmeldeinformationen besteht. Ein solches entsteht nur, wenn ein böswilliger Akteur die richtigen Informationen verwendet. Im Folgenden finden Sie einige Gründe, aus denen die Anmeldung eines Benutzers blockiert werden kann, ohne dass Identity Protection eine Erkennung generiert:
+* Eine **IP-Adresse kann blockiert werden** , wenn schädliche Aktivitäten von dieser Adresse erkannt werden. In der Meldung zur Blockierung der IP-Adresse wird nicht unterschieden, ob die Anmeldeinformationen richtig waren oder nicht. Wenn eine IP-Adresse blockiert ist und keine richtigen Anmeldeinformationen verwendet werden, wird keine Identity Protection-Erkennung generiert.
+* **[Smart Lockout](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
+* Es kann eine **Richtlinie für bedingten Zugriff** in Kraft sein, die andere Bedingungen als Risikostufen verwendet, um eine Authentifizierungsanforderung zu blockieren.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Wie kann ich einen Bericht mit Erkennungen eines bestimmten Typs abrufen?
 
@@ -81,7 +76,7 @@ Alle Risikoerkennungen sind im Artikel [Was bedeutet Risiko?](concept-identity-p
 - Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern.
 
     > [!NOTE]
-    > Wenn für den Benutzer bereits eine Bereinigung durchgeführt wurde, klicken Sie nicht auf **Gefährdung bestätigen**, weil dadurch der Anmelde- und Benutzerrisikostatus auf **Als gefährdet bestätigt** und die Risikostufe auf **Hoch** festgelegt wird.
+    > Wenn für den Benutzer bereits eine Bereinigung durchgeführt wurde, klicken Sie nicht auf **Gefährdung bestätigen** , weil dadurch der Anmelde- und Benutzerrisikostatus auf **Als gefährdet bestätigt** und die Risikostufe auf **Hoch** festgelegt wird.
 
 **Sicherheit bestätigen** (bei Anmeldung): Informiert Azure AD Identity Protection darüber, dass die Anmeldung vom Identitätsinhaber durchgeführt wurde und keine Gefährdung vorliegt.
 

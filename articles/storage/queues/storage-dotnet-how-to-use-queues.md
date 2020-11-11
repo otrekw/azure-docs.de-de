@@ -9,12 +9,12 @@ ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: bb53181355e292a885e8ffc2ac7c8a3aa48adaae
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b59c7d2af33efd82f27af9e13fc9c1f36ca788ee
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787464"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348592"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Erste Schritte mit Azure Queue Storage mit .NET
 
@@ -47,7 +47,7 @@ Richten Sie als Nächstes Ihre Entwicklungsumgebung in Visual Studio ein, damit 
 
 Erstellen Sie in Visual Studio eine neue Windows-Konsolenanwendung. In den folgenden Schritten wird veranschaulicht, wie Sie eine Konsolenanwendung in Visual Studio 2019 erstellen. Die Schritte sind in anderen Versionen von Visual Studio ähnlich.
 
-1. Wählen Sie **Datei** > **Neu** > **Projekt** .
+1. Wählen Sie **Datei** > **Neu** > **Projekt**.
 2. Wählen Sie **Plattform** > **Windows** aus.
 3. Wählen Sie **Konsolen-App (.NET Framework)** .
 4. Wählen Sie **Weiter** aus.
@@ -65,14 +65,14 @@ Sie können die Azure Storage-Clientbibliotheken in jeder Art von .NET-Anwendung
 Sie müssen in Ihrem Projekt auf die folgenden vier Pakete verweisen, um dieses Tutorial abzuschließen:
 
 - [Azure Core-Bibliothek für .NET](https://www.nuget.org/packages/Azure.Core/): Dieses Paket bietet freigegebene primitive Typen, Abstraktionen und Hilfsprogramme für moderne .NET Azure SDK-Clientbibliotheken.
-- [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Common/): Dieses Paket stellt die Infrastruktur bereit, die von anderen Azure Storage-Clientbibliotheken gemeinsam genutzt wird.
+- [Allgemeine Azure Storage-Clientbibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Common/): Dieses Paket stellt die Infrastruktur bereit, die von den anderen Azure Storage-Clientbibliotheken gemeinsam genutzt wird.
 - [Azure Storage Queue-Bibliothek für .NET](https://www.nuget.org/packages/Azure.Storage.Queues/): Dieses Paket ermöglicht das Arbeiten mit dem Azure Queue Storage-Dienst zum Speichern von Nachrichten, auf die ein Client möglicherweise zugreift.
 - [Configuration Manager-Bibliothek für .NET](https://www.nuget.org/packages/System.Configuration.ConfigurationManager/): Dieses Paket bietet Zugriff auf Konfigurationsdateien für Clientanwendungen.
 
 Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** .
-1. Wählen Sie **Durchsuchen** .
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
+1. Wählen Sie **Durchsuchen**.
 1. Suchen Sie online nach „Azure.Storage.Queues“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und die zugehörigen Abhängigkeiten zu installieren. Dadurch werden auch die Bibliotheken Azure.Storage.Common und Azure.Core installiert, die Abhängigkeiten der Warteschlangenbibliothek sind.
 1. Suchen Sie online nach „System.Configuration.ConfigurationManager“, und wählen Sie **Installieren** aus, um Configuration Manager zu installieren.
 
@@ -86,8 +86,8 @@ Sie müssen in Ihrem Projekt auf die folgenden drei Pakete verweisen, um dieses 
 
 Sie können diese Pakete über NuGet abrufen. Folgen Sie diesen Schritten:
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** .
-1. Wählen Sie **Durchsuchen** .
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten**.
+1. Wählen Sie **Durchsuchen**.
 1. Suchen Sie online nach „Microsoft.Azure.Storage.Queue“, und wählen Sie **Installieren** aus, um die Storage-Clientbibliothek und dazugehörigen Abhängigkeiten zu installieren. Dabei wird auch die Bibliothek „Microsoft.Azure.Storage.Common“ installiert, die eine Abhängigkeit der Warteschlangenbibliothek ist.
 1. Suchen Sie online nach „Microsoft.Azure.ConfigurationManager“, und wählen Sie **Installieren** aus, um Azure Configuration Manager zu installieren.
 
@@ -113,7 +113,7 @@ Der Beispielcode muss den Zugriff auf Ihr Speicherkonto autorisieren. Zur Autori
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
 2. Suchen Sie nach Ihrem Speicherkonto.
-3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel** . Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
+3. Wählen Sie im Abschnitt **Einstellungen** der Speicherkontoübersicht die Option **Zugriffsschlüssel**. Daraufhin werden Ihre Zugriffsschlüssel zusammen mit der jeweiligen vollständigen Verbindungszeichenfolge angezeigt.
 4. Suchen Sie unter **key1** nach dem Wert für die **Verbindungszeichenfolge** , und klicken Sie dann auf die Schaltfläche **Kopieren** , um die Verbindungszeichenfolge zu kopieren. Der Wert der Verbindungszeichenfolge wird in einem späteren Schritt einer Umgebungsvariablen hinzugefügt.
 
     ![Screenshot: Kopieren einer Verbindungszeichenfolge aus dem Azure-Portal](media/storage-dotnet-how-to-use-queues/portal-connection-string.png)
@@ -123,7 +123,7 @@ Weitere Informationen zu Verbindungszeichenfolgen finden Sie unter [Konfiguriere
 > [!NOTE]
 > Ihr Speicherkontoschlüssel ähnelt dem Stammkennwort für das Speicherkonto. Achten Sie darauf, den Speicherkontoschlüssel immer gut zu schützen. Geben Sie ihn nicht an andere Benutzer weiter, vermeiden Sie das Hartcodieren, und speichern Sie ihn nicht in einer Klartextdatei, auf die andere Benutzer zugreifen können. Generieren Sie Ihren Schlüssel mithilfe des Azure-Portals neu, wenn Sie der Meinung sind, dass er nicht mehr sicher ist.
 
-Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten. Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei *app.config* . Fügen Sie den Inhalt des `\<appSettings\>` -Elements hinzu (wie unten dargestellt). Ersetzen Sie *connection-string* durch den Wert, den Sie aus Ihrem Speicherkonto im Portal kopiert haben:
+Am einfachsten lässt sich die Speicherverbindungszeichenfolge in einer Konfigurationsdatei verwalten. Öffnen Sie zum Konfigurieren der Verbindungszeichenfolge in Visual Studio im Projektmappen-Explorer die Datei *app.config*. Fügen Sie den Inhalt des `\<appSettings\>` -Elements hinzu (wie unten dargestellt). Ersetzen Sie *connection-string* durch den Wert, den Sie aus Ihrem Speicherkonto im Portal kopiert haben:
 
 ```xml
 <configuration>

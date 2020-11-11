@@ -4,12 +4,12 @@ description: Hier finden Sie Anweisungen zum Verschieben eines Recovery Services
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: bd1870e803f5051e2a65a6cddbb72406421d4fc3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 5a73963970b5fad7b3992d501d9aac5cc7229622
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171614"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92926681"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Verschieben eines Recovery Services-Tresors zwischen Azure-Abonnements und Ressourcengruppen
 
@@ -17,11 +17,7 @@ In diesem Artikel wird das Verschieben eines für Azure Backup konfigurierten Re
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
-Das Verschieben von Ressourcen für den Recovery Services-Tresor wird derzeit unterstützt in „Australien, Osten“, „Australien, Südosten“, „Kanada, Mitte“, „Kanada, Osten“, „Asien, Südosten“, „Asien, Osten“, „USA, Mitte“, „USA, Norden-Mitte“, „USA, Osten“, „USA, Osten 2“, „USA, Süden-Mitte“, „USA, Westen-Mitte“, „USA, Westen-Mitte 2“, „USA, Westen“, „USA, Westen 2“, „Brasilien, Süden“, „Indien, Mitte“, „Indien, Süden“, „Japan, Osten“, „Japan, Westen“, „Südkorea, Mitte“, „Südkorea, Süden“, „Europa, Norden“, „Europa, Westen“, „Südafrika, Norden“, „Südafrika, Westen“, „Vereinigtes Königreich, Süden“ und „Vereinigtes Königreich, Westen“.
-
-## <a name="unsupported-regions"></a>Nicht unterstützte Regionen
-
-Frankreich, Mitte; Frankreich, Süden; Deutschland, Nordosten; Deutschland, Mitte; US Gov Iowa; China, Norden; China, Norden2; China, Osten; China, Osten2
+Alle öffentlichen und souveränen Regionen werden unterstützt, mit Ausnahme von „Frankreich, Mitte“, „Frankreich, Süden“, „Deutschland, Nordosten“, „Deutschland, Mitte“, „China, Norden“, „China, Norden2“, „China, Osten“ und „China, Osten2“.
 
 ## <a name="prerequisites-for-moving-recovery-services-vault"></a>Voraussetzungen für das Verschieben eines Recovery Services-Tresors
 
@@ -57,7 +53,7 @@ So verschieben Sie einen Recovery Services-Tresor und seine zugeordneten Ressour
 
    ![Recovery Services-Tresor öffnen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-   Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+   Wählen Sie das Dropdownsymbol aus, falls die **Essentials** -Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
    ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 
@@ -73,7 +69,7 @@ So verschieben Sie einen Recovery Services-Tresor und seine zugeordneten Ressour
 
    ![Resource erstellen](./media/backup-azure-move-recovery-services/create-a-new-resource.png)
 
-6. Bestätigen Sie nach dem Hinzufügen der Ressourcengruppe mit der Option **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs und Namespacereferenzen aktualisiere**, und wählen Sie dann **OK** aus, um das Verschieben des Tresors abzuschließen.
+6. Bestätigen Sie nach dem Hinzufügen der Ressourcengruppe mit der Option **Mir ist bewusst, dass Tools und Skripts, die den verschobenen Ressourcen zugeordnet sind, erst funktionieren, wenn ich sie auf die Verwendung neuer Ressourcen-IDs und Namespacereferenzen aktualisiere** , und wählen Sie dann **OK** aus, um das Verschieben des Tresors abzuschließen.
 
    ![Bestätigungsmeldung](./media/backup-azure-move-recovery-services/confirmation-message.png)
 
@@ -86,7 +82,7 @@ Sie können einen Recovery Services-Tresor und die zugehörigen Ressourcen in ei
 
     ![Recovery Services-Tresor öffnen](./media/backup-azure-move-recovery-services/open-recover-service-vault.png)
 
-    Wählen Sie das Dropdownsymbol aus, falls die **Essentials**-Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
+    Wählen Sie das Dropdownsymbol aus, falls die **Essentials** -Informationen für Ihren Tresor nicht angezeigt werden. Jetzt sollten die Essentials-Informationen für Ihren Tresor angezeigt werden.
 
     ![Registerkarte „Essentials“-Informationen](./media/backup-azure-move-recovery-services/essentials-information-tab.png)
 

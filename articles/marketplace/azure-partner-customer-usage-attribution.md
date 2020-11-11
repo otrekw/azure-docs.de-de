@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 09/01/2020
+ms.date: 10/30/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 167c2f091d4d8a7d7d5c32009b484125d7275796
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92282352"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348337"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -33,15 +33,18 @@ Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden
 >- Die Zuordnung der Nutzung durch Kunden gilt für neue Bereitstellungen und unterstützt NICHT das Tagging vorhandener, bereits bereitgestellter Ressourcen.
 >
 >- Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](./partner-center-portal/create-new-azure-apps-offer.md) erforderlich, die in Azure Marketplace veröffentlicht werden.
+>
+>- Nicht alle Azure-Dienste sind mit der Zuordnung der Nutzung durch Kunden kompatibel. Bei Azure Kubernetes Services (AKS) und VM Scale Sets sind zum jetzigen Zeitpunkt Probleme bekannt, die zu einer unzureichenden Meldung der Nutzung führen.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="create-guids"></a>Erstellen von GUIDs
 
-Eine GUID ist eine eindeutige Verweis-ID mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden. Das Azure Storage-Team hat ein [Formular für den GUID-Generator](https://aka.ms/StoragePartners) erstellt, über das Sie per E-Mail eine GUID im richtigen Format erhalten. Dieses Formular kann für verschiedene Nachverfolgungssysteme wiederverwendet werden.
+Eine GUID ist eine eindeutige Verweis-ID mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden, beispielsweise über PowerShell.
 
-> [!NOTE]
-> Es wird dringend empfohlen, das [GUID-Generatorformular von Azure Storage](https://aka.ms/StoragePartners) zu verwenden, um Ihre GUID zu erstellen. Weitere Informationen finden Sie in den [häufig gestellten Fragen](#faq).
+```powershell
+[guid]::NewGuid()]
+```
 
 Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll.
 
@@ -67,7 +70,7 @@ Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die 
 
 1. Registrieren Sie sich als [kommerzieller Marketplace-Herausgeber](https://aka.ms/JoinMarketplace).
 
-   * Partner müssen [über ein Profil im Partner Center verfügen](become-publisher.md). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
+   * Partner müssen [über ein Profil im Partner Center verfügen](./partner-center-portal/create-account.md). Wir empfehlen Ihnen, das Angebot im Azure Marketplace oder in AppSource aufzulisten.
    * Partner können mehrere GUIDs registrieren.
    * Partner können auch GUIDs für nicht im Marketplace verfügbare Lösungsvorlagen und Angebote registrieren.
 
@@ -97,7 +100,7 @@ Um einen global eindeutigen Bezeichner (GUID) hinzuzufügen, nehmen Sie an der H
 
 1. Öffnen Sie die Resource Manager-Vorlage.
 
-1. Fügen Sie eine neue Ressource vom Typ [Microsoft.Resources/deployments](https://docs.microsoft.com/azure/templates/microsoft.resources/deployments) in der Hauptvorlagendatei hinzu. Die Ressource darf sich nur in der Datei **mainTemplate.json** oder **azuredeploy.json** befinden, nicht in geschachtelten oder verknüpften Vorlagen.
+1. Fügen Sie eine neue Ressource vom Typ [Microsoft.Resources/deployments](/azure/templates/microsoft.resources/deployments) in der Hauptvorlagendatei hinzu. Die Ressource darf sich nur in der Datei **mainTemplate.json** oder **azuredeploy.json** befinden, nicht in geschachtelten oder verknüpften Vorlagen.
 
 1. Geben Sie den GUID-Wert nach dem Präfix `pid-` als Namen der Ressource ein. Wenn die GUID z. B. eb7927c8-dd66-43e1-b0cf-c346a422063 lautet, ist der Ressourcenname _pid-eb7927c8-dd66-43e1-b0cf-c346a422063_.
 
@@ -132,7 +135,7 @@ Die Ressource muss nur in der Datei **mainTemplate.json** oder **azuredeploy.jso
 
 ## <a name="use-the-resource-manager-apis"></a>Verwenden der Resource Manager-APIs
 
-In einigen Fällen bevorzugen Sie möglicherweise zum Bereitstellen von Azure-Diensten direkte Aufrufe an die Resource Manager-REST-APIs. [Azure unterstützt mehrere SDKs](https://docs.microsoft.com/azure/?pivot=sdkstools), um diese Aufrufe zu ermöglichen. Sie können eines der SDKs verwenden oder die REST-APIs direkt aufrufen, um Ressourcen bereitzustellen.
+In einigen Fällen bevorzugen Sie möglicherweise zum Bereitstellen von Azure-Diensten direkte Aufrufe an die Resource Manager-REST-APIs. [Azure unterstützt mehrere SDKs](../index.yml?pivot=sdkstools), um diese Aufrufe zu ermöglichen. Sie können eines der SDKs verwenden oder die REST-APIs direkt aufrufen, um Ressourcen bereitzustellen.
 
 Wenn Sie eine Azure Resource Manager-Vorlage verwenden, sollten Sie Ihre Lösung mithilfe der zuvor beschriebenen Anweisungen markieren. Wenn Sie keine Resource Manager-Vorlage verwenden und direkte API-Aufrufe vornehmen, können Sie dennoch die Bereitstellung markieren, um die Nutzung von Azure-Ressourcen zuzuordnen.
 
@@ -156,7 +159,7 @@ Bei Python wird das Attribut **config** verwendet. Sie können das Attribut nur 
 
 #### <a name="example-the-net-sdk"></a>Beispiel: .NET SDK
 
-Stellen Sie für .NET sicher, dass Sie den Benutzer-Agent festlegen. Die [Microsoft.Azure.Management.Fluent](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.fluent?view=azure-dotnet)-Bibliothek kann verwendet werden, um den Benutzer-Agent mit folgendem Code (Beispiel in C#) festzulegen:
+Stellen Sie für .NET sicher, dass Sie den Benutzer-Agent festlegen. Die [Microsoft.Azure.Management.Fluent](/dotnet/api/microsoft.azure.management.fluent)-Bibliothek kann verwendet werden, um den Benutzer-Agent mit folgendem Code (Beispiel in C#) festzulegen:
 
 ```csharp
 
@@ -183,7 +186,7 @@ Wenn Sie Ihre GUID mithilfe der Azure CLI anfügen, legen Sie die Umgebungsvaria
 ```
 export AZURE_HTTP_USER_AGENT='pid-eb7927c8-dd66-43e1-b0cf-c346a422063'
 ```
-Weitere Informationen finden Sie unter [Azure SDK für Go](https://docs.microsoft.com/azure/developer/go/).
+Weitere Informationen finden Sie unter [Azure SDK für Go](/azure/developer/go/).
 
 ## <a name="use-terraform"></a>Einsatz von Terraform
 

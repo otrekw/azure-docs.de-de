@@ -10,12 +10,12 @@ ms.author: tamram
 ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: add94fe05eecd2fb77ba0d6d79fe6765afe3baaa
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 5558a57812414f6f1bb1be053a089af98533155a
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091014"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93288340"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Übersicht über Azure-Seitenblobs
 
@@ -24,6 +24,10 @@ Azure Storage bietet drei Typen von Blobs: Blockblobs, Seitenblobs und Anfügebl
 Seitenblobs sind eine Sammlung von 512-Byte-Seiten, die Lese-/Schreibzugriff auf beliebige Bytebereiche ermöglichen. Dadurch eignen sich Seitenblobs perfekt zum Speichern indexbasierter und platzsparender Datenstrukturen wie Betriebssystemdatenträger und sonstiger Datenträger für VMs und Datenbanken. Azure SQL-Datenbank verwendet Seitenblobs beispielsweise als zugrunde liegenden permanenten Speicher für seine Datenbanken. Darüber hinaus werden Seitenblobs auch häufig für Dateien mit bereichsbasierten Updates verwendet.  
 
 Schlüsselfeatures von Azure-Seitenblobs sind die REST-Schnittstelle, die Dauerhaftigkeit des zugrunde liegenden Speichers und die Fähigkeit zur nahtlosen Migration zu Azure. Diese Features werden im nächsten Abschnitt ausführlicher besprochen. Darüber hinaus werden Azure-Seitenblobs derzeit von zwei Speichertypen unterstützt: Storage Premium und Storage Standard. Storage Premium wurde speziell für Workloads konzipiert, die konsistent hohe Leistung und geringe Wartezeit erfordern, sodass Premium-Seitenblobs für Hochleistungsspeicher-Szenarien ideal sind. Standardspeicherkonten sind kostengünstiger zur Ausführung von Workloads, bei denen Wartezeiten eine untergeordnete Rolle spielen.
+
+## <a name="restrictions"></a>Beschränkungen
+
+Seitenblobs können nur die **heiße Zugriffsebene** verwenden. Die Verwendung der **kalten Ebene** oder der **Archivebene** ist nicht möglich. Weitere Informationen zu Zugriffsebenen finden Sie unter [Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md).
 
 ## <a name="sample-use-cases"></a>Beispiele für Anwendungsfälle
 
@@ -59,7 +63,7 @@ Rufen Sie zunächst einen Verweis auf einen Container ab. Um ein Seitenblob zu e
 
 # <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
 
-Zur Erstellung eines Seitenblobs erstellen wir zunächst ein **CloudBlobClient**-Objekt mit dem Basis-URI für den Zugriff auf den Blobspeicher für Ihr Speicherkonto (*pbaccount* in Abbildung 1) sowie das **StorageCredentialsAccountAndKey**-Objekt, wie im folgenden Beispiel zu sehen. Das Beispiel zeigt anschließend das Erstellen eines Verweises auf ein **CloudBlobContainer**-Objekt und dann das Erstellen des Containers (*testvhds*), wenn dieser nicht bereits vorhanden ist. Dann können Sie mit dem **CloudBlobContainer**-Objekt durch Angabe des Namens des Seitenblobs („os4.vhd“), auf das Sie zugreifen möchten, einen Verweis auf ein **CloudPageBlob**-Objekt erstellen. Zum Erstellen des Seitenblobs rufen Sie [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) auf und übergeben die maximale Größe für das Blob, das Sie erstellen möchten. Der Wert von *blobSize* muss ein Vielfaches von 512 Byte sein.
+Zur Erstellung eines Seitenblobs erstellen wir zunächst ein **CloudBlobClient** -Objekt mit dem Basis-URI für den Zugriff auf den Blobspeicher für Ihr Speicherkonto ( *pbaccount* in Abbildung 1) sowie das **StorageCredentialsAccountAndKey** -Objekt, wie im folgenden Beispiel zu sehen. Das Beispiel zeigt anschließend das Erstellen eines Verweises auf ein **CloudBlobContainer** -Objekt und dann das Erstellen des Containers ( *testvhds* ), wenn dieser nicht bereits vorhanden ist. Dann können Sie mit dem **CloudBlobContainer** -Objekt durch Angabe des Namens des Seitenblobs („os4.vhd“), auf das Sie zugreifen möchten, einen Verweis auf ein **CloudPageBlob** -Objekt erstellen. Zum Erstellen des Seitenblobs rufen Sie [CloudPageBlob.Create](/dotnet/api/microsoft.azure.storage.blob.cloudpageblob.create) auf und übergeben die maximale Größe für das Blob, das Sie erstellen möchten. Der Wert von *blobSize* muss ein Vielfaches von 512 Byte sein.
 
 ```csharp
 using Microsoft.Azure;

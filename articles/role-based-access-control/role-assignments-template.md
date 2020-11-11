@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/29/2020
+ms.date: 11/02/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 400f0b1b55136f133c9ad01fd0ba4b5dbc5e6bcb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d65b2db9c69d006476ae1d08a1af3e60efe48930
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91612743"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280554"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -305,7 +305,9 @@ Das folgende Beispiel veranschaulicht die Zuweisung der Rolle „Mitwirkender“
 
 ### <a name="new-service-principal"></a>Neuer Dienstprinzipal
 
-Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen. Wenn Sie z. B. eine neue verwaltete Identität erstellen und dann versuchen, in derselben Azure Resource Manager-Vorlage dem Dienstprinzipal eine Rolle zuzuweisen, kann die Rollenzuweisung fehlschlagen. Der Grund für diesen Fehler ist wahrscheinlich eine Replikationsverzögerung. Der Dienstprinzipal wird in einer Region erstellt, die Rollenzuweisung kann aber in einer anderen Region stattfinden, in die der Dienstprinzipal noch nicht repliziert wurde. Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung die `principalType`-Eigenschaft auf `ServicePrincipal` festlegen.
+Wenn Sie einen neuen Dienstprinzipal erstellen und sofort versuchen, diesem eine Rolle zuzuweisen, kann die Rollenzuweisung in einigen Fällen fehlschlagen. Wenn Sie z. B. eine neue verwaltete Identität erstellen und dann versuchen, in derselben Azure Resource Manager-Vorlage dem Dienstprinzipal eine Rolle zuzuweisen, kann die Rollenzuweisung fehlschlagen. Der Grund für diesen Fehler ist wahrscheinlich eine Replikationsverzögerung. Der Dienstprinzipal wird in einer Region erstellt, die Rollenzuweisung kann aber in einer anderen Region stattfinden, in die der Dienstprinzipal noch nicht repliziert wurde.
+
+Um dieses Szenario zu beheben, sollten Sie beim Erstellen der Rollenzuweisung die `principalType`-Eigenschaft auf `ServicePrincipal` festlegen. Sie müssen auch die `apiVersion` der Rollenzuweisung auf Version `2018-09-01-preview` oder höher festlegen.
 
 Die folgende Vorlage veranschaulicht Folgendes:
 
