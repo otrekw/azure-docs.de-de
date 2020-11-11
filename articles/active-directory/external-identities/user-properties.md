@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1052ad06400eb70fe41617421b54978bddd9e50
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cd0a2b44fd54eb716b5e1b8f9eabc923ccd7977f
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441367"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93285846"
 ---
 # <a name="properties-of-an-azure-active-directory-b2b-collaboration-user"></a>Eigenschaften eines Azure Active Directory B2B-Zusammenarbeitsbenutzers
 
@@ -70,6 +70,8 @@ Diese Eigenschaft gibt die Beziehung des Benutzers zum Hostmandanten an. Diese E
 
   > [!NOTE]
   > Die Eigenschaft „UserType“ steht in keinem Zusammenhang damit, wie sich der Benutzer anmeldet, welche Verzeichnisrolle er hat usw. Die Eigenschaft gibt einfach nur die Beziehung des Benutzers zur Hostorganisation an und ermöglicht der Organisation, Richtlinien basierend auf dieser Eigenschaft zu erzwingen.
+
+Ausführliche Informationen zu Preisen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory).
 
 ### <a name="source"></a>`Source`
 Diese Eigenschaft gibt an, wie sich der Benutzer anmeldet.

@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: b46c72730922a977dd754d8422d07db479a62b6c
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a1357f263c450605025b6f1e9b7bdea47d0d4f58
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370541"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289224"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
 
@@ -31,7 +31,7 @@ Wenn der Scanner Sicherheitsrisiken an Security Center meldet, stellt Security C
 |Unterstützte Registrierungen und Images:|Linux-Images in ACR-Registrierungen, auf die mit Shellzugriff über das öffentliche Internet zugegriffen werden kann|
 |Nicht unterstützte Registrierungen und Images:|Windows-Images<br>„Private“ Registrierungen<br>Registrierungen, deren Zugriff durch eine Firewall, einen Dienstendpunkt oder private Endpunkte wie Azure Private Link beschränkt ist<br>Extrem minimalistische Images wie [Docker-Scratch](https://hub.docker.com/_/scratch/)-Images oder Images ohne Distribution, die nur eine Anwendung und deren Laufzeitabhängigkeiten ohne Paket-Manager, Shell oder Betriebssystem enthalten|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter** und [Azure Container Registry-Leser](../container-registry/container-registry-roles.md)|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Nein](./media/icons/no-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov – Derzeit wird nur das Feature zur Überprüfung bei Pushvorgang unterstützt. Weitere Informationen finden Sie unter [Wann werden Images überprüft?](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Nein](./media/icons/no-icon.png) China Gov, andere Gov|
 |||
 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.date: 02/07/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4
-ms.openlocfilehash: 2e3544bee5158a855467f8cb142f176df2187ef5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 64f1c83a570e936759d674f40db201fb2f2cd0e5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318295"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146261"
 ---
 # <a name="trigger-a-run-of-a-machine-learning-pipeline-from-a-logic-app"></a>Auslösen der Ausführung einer Machine Learning-Pipeline aus einer Logik-App
 
@@ -94,6 +94,9 @@ Führen Sie nach der Bereitstellung Ihrer Logik-App die folgenden Schritte aus, 
     > ![HTTP-Einstellungen](media/how-to-trigger-published-pipeline/http-settings.png)
 
 1. Wählen Sie **Speichern** aus. Der Zeitplan ist nun bereit.
+
+> [!IMPORTANT]
+> Wenn mit der rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) den Zugriff auf Ihre Pipeline verwalten, [legen Sie die Berechtigungen für Ihr Pipelineszenario fest (Training oder Bewertung).](how-to-assign-roles.md#q-what-are-the-permissions-needed-to-perform-some-common-scenarios-in-the-azure-machine-learning-service)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

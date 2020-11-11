@@ -8,22 +8,21 @@ ms.author: chalton
 ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: 6a4dcec2b50a13a256c82e4a5ec54c9b22aa973f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/02/2020
+ms.openlocfilehash: f0295c27f1d193b0dcd7829a11b4aabe0edb659b
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791986"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286340"
 ---
 # <a name="how-to-index-encrypted-blobs-using-blob-indexers-and-skillsets-in-azure-cognitive-search"></a>Indizieren verschlüsselter Blobs mithilfe von Blobindexern und Skillsets in Azure Cognitive Search
 
-In diesem Artikel wird beschrieben, wie mit [Azure Cognitive Search](search-what-is-azure-search.md) Dokumente indiziert werden, die zuvor in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) mithilfe von [Azure Key Vault](../key-vault/general/overview.md) verschlüsselt wurden. Ein Indexer kann normalerweise keine Inhalte aus verschlüsselten Dateien extrahieren, da er keinen Zugriff auf den Verschlüsselungsschlüssel hat. Wenn Sie jedoch den benutzerdefinierten Skill [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) und anschließend den Skill [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) verwenden, können Sie einen kontrollierten Zugriff auf den Schlüssel zum Entschlüsseln der Dateien ermöglichen und den Inhalt extrahieren lassen. Dadurch haben Sie die Möglichkeit, diese Dokumente zu indizieren, ohne sich Gedanken darum machen zu müssen, dass Ihre ruhenden Daten unverschlüsselt gespeichert werden.
+In diesem Artikel wird beschrieben, wie mit [Azure Cognitive Search](search-what-is-azure-search.md) Dokumente indiziert werden, die zuvor in [Azure Blob Storage](../storage/blobs/storage-blobs-introduction.md) mithilfe von [Azure Key Vault](../key-vault/general/overview.md) verschlüsselt wurden. Ein Indexer kann normalerweise keine Inhalte aus verschlüsselten Dateien extrahieren, da er keinen Zugriff auf den Verschlüsselungsschlüssel hat. Wenn Sie jedoch den benutzerdefinierten Skill [DecryptBlobFile](https://github.com/Azure-Samples/azure-search-power-skills/blob/master/Utils/DecryptBlobFile) und anschließend den Skill [DocumentExtractionSkill](cognitive-search-skill-document-extraction.md) verwenden, können Sie einen kontrollierten Zugriff auf den Schlüssel zum Entschlüsseln der Dateien ermöglichen und den Inhalt extrahieren lassen. Dadurch erhalten Sie die Möglichkeit, diese Dokumente zu indizieren, ohne den Verschlüsselungsstatus Ihrer gespeicherten Dokumente zu kompromittieren.
 
-In dieser Anleitung werden Postman und die Azure Cognitive Search-REST-APIs verwendet, um folgende Aufgaben durchzuführen:
+Ausgehend von zuvor verschlüsselten ganzen Dokumenten (unstrukturierter Text) wie PDF, HTML, DOCX und PPTX in Azure Blob Storage werden in diesem Leitfaden Postman und die REST-APIs von Search verwendet, um die folgenden Aufgaben auszuführen:
 
 > [!div class="checklist"]
-> * Beginnen Sie mit vollständigen Dokumenten (unstrukturierter Text, beispielsweise im PDF-, HTML-, DOCX- oder PPTX-Format) in Azure Blob Storage, die mit Azure Key Vault verschlüsselt wurden.
 > * Definieren Sie eine Pipeline, mit der die Dokumente entschlüsselt und Text aus den Dokumenten extrahiert wird.
 > * Definieren Sie einen Index zum Speichern der Ausgabe.
 > * Führen Sie die Pipeline aus, um den Index zu erstellen und zu laden.
@@ -36,13 +35,10 @@ Sollten Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses 
 Bei diesem Beispiel wird vorausgesetzt, dass Sie Ihre Dateien bereits in Azure Blob Storage hochgeladen und verschlüsselt haben. Eine Anleitung zum ersten Hochladen und Verschlüsseln von Dateien finden Sie in [diesem Tutorial](../storage/blobs/storage-encrypt-decrypt-blobs-key-vault.md).
 
 + [Azure Storage (in englischer Sprache)](https://azure.microsoft.com/services/storage/)
-+ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)
++ [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) im selben Abonnement wie Azure Cognitive Search. **Vorläufiges Löschen** und **Löschschutz** müssen für den Schlüsseltresor aktiviert sein.
++ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tiers) (mindestens Basic in einer beliebigen Region)
 + [Azure-Funktion](https://azure.microsoft.com/services/functions/)
 + [Postman-Desktop-App](https://www.getpostman.com/)
-+ [Neuer](search-create-service-portal.md) oder [bereits vorhandener](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) Suchdienst 
-
-> [!Note]
-> Im Rahmen dieser Anleitung können Sie den kostenlosen Dienst verwenden. Der kostenlose Suchdienst ist auf drei Indizes, drei Indexer, drei Datenquellen und drei Skillsets beschränkt. Im Rahmen dieser Anleitung wird je eine der Komponenten erstellt. Vergewissern Sie sich zunächst, dass Ihr Dienst über genügend freie Kapazität für die neuen Ressourcen verfügt.
 
 ## <a name="1---create-services-and-collect-credentials"></a>1\. Erstellen von Diensten und Erfassen von Anmeldeinformationen
 
@@ -64,7 +60,7 @@ Der Skill „DecryptBlobFile“ verwendet die URL und das SAS-Token für die ein
 
 1. Navigieren Sie im Portal zu Ihrer Azure Key Vault-Instanz. [Erstellen Sie in Azure Key Vault eine Zugriffsrichtlinie](../key-vault/general/assign-access-policy-portal.md), mit der dem benutzerdefinierten Skill Schlüsselzugriff erteilt wird.
  
-    1. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen** .
+    1. Wählen Sie unter **Einstellungen** die Option **Zugriffsrichtlinien** und dann **Zugriffsrichtlinie hinzufügen**.
      
        ![Hinzufügen einer Zugriffsrichtlinie in Key Vault](media/indexing-encrypted-blob-files/keyvault-access-policies.jpg "Zugriffsrichtlinien in Key Vault")
 
@@ -141,11 +137,11 @@ Rufen Sie den Wert für `admin-key` ab, indem Sie den zuvor notierten Azure Cogn
 | `storage-container-name` | Der Name des Blobcontainers, der die verschlüsselten Dateien enthält, die indiziert werden sollen. | 
 | `function-uri` |  In der Azure-Funktion unter **Zusammenfassung** auf der Hauptseite | 
 | `function-code` | In der Azure-Funktion, indem Sie zu **App-Schlüssel** navigieren, klicken, um den **Standardschlüssel** anzuzeigen, und den Wert kopieren | 
-| `api-version` | Übernehmen Sie **2020-06-30** . |
-| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds** . | 
-| `index-name` | Übernehmen Sie **encrypted-blobs-idx** . | 
-| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss** . | 
-| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr** . | 
+| `api-version` | Übernehmen Sie **2020-06-30**. |
+| `datasource-name` | Übernehmen Sie **encrypted-blobs-ds**. | 
+| `index-name` | Übernehmen Sie **encrypted-blobs-idx**. | 
+| `skillset-name` | Übernehmen Sie **encrypted-blobs-ss**. | 
+| `indexer-name` | Übernehmen Sie **encrypted-blobs-ixr**. | 
 
 ### <a name="review-the-request-collection-in-postman"></a>Überprüfen der Auflistung von Anforderungen in Postman
 
@@ -160,7 +156,7 @@ Der [Quellcode](https://github.com/Azure-Samples/azure-search-postman-samples/bl
 
 ## <a name="3---monitor-indexing"></a>3\. Überwachen der Indizierung
 
-Indizierung und Anreicherung beginnen, sobald Sie die Anforderung für die Indexererstellung übermitteln. Die Indizierung kann je nach der Anzahl der Dokumente in Ihrem Speicherkonto einige Zeit in Anspruch nehmen. Wenn Sie feststellen möchten, ob der Indexer noch ausgeführt wird, verwenden Sie die im Rahmen der Postman-Sammlung bereitgestellte Anforderung **Indexerstatus abrufen** . Anhand der Antwort können Sie erkennen, ob der Indexer ausgeführt wird, oder Sie können Fehler- und Warnungsinformationen anzeigen.  
+Indizierung und Anreicherung beginnen, sobald Sie die Anforderung für die Indexererstellung übermitteln. Die Indizierung kann je nach der Anzahl der Dokumente in Ihrem Speicherkonto einige Zeit in Anspruch nehmen. Wenn Sie feststellen möchten, ob der Indexer noch ausgeführt wird, verwenden Sie die im Rahmen der Postman-Sammlung bereitgestellte Anforderung **Indexerstatus abrufen**. Anhand der Antwort können Sie erkennen, ob der Indexer ausgeführt wird, oder Sie können Fehler- und Warnungsinformationen anzeigen.  
 
 Wenn Sie den Free-Tarif verwenden, sollte folgende Meldung angezeigt werden: `"Could not extract content or metadata from your document. Truncated extracted text to '32768' characters"`. Diese Meldung wird angezeigt, da die Blobindizierung im Free-Tarif [auf 32.000 extrahierbare Zeichen beschränkt](search-limits-quotas-capacity.md#indexer-limits) ist. Bei höheren Tarifen wird diese Meldung für das Dataset nicht angezeigt. 
 

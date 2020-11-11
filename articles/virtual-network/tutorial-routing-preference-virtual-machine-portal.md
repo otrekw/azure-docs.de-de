@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: af3d9e9fcf0dad6a5e51a3db87b63567d701970e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84687989"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042822"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe des Azure-Portals
 
@@ -43,7 +43,7 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016-VM** oder ein anderes Betriebssystem Ihrer Wahl aus.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK** :
 
     |Einstellung|Wert|
     |---|---|
@@ -56,7 +56,7 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Klicken Sie unter der Registerkarte **Netzwerk** auf **Neu erstellen** für **Öffentliche IP-Adresse**.
-6. Geben Sie *myPublicIpAddress* ein, wählen Sie „sku“ als **Standard** und dann die Routingpräferenz vom Typ **Internet** aus, und drücken Sie dann **OK**, wie in der folgenden Abbildung gezeigt:
+6. Geben Sie *myPublicIpAddress* ein, wählen Sie „sku“ als **Standard** und dann die Routingpräferenz vom Typ **Internet** aus, und drücken Sie dann **OK** , wie in der folgenden Abbildung gezeigt:
 
    ![Auswählen der Option „Statisch“](./media/tutorial-routing-preference-virtual-machine-portal/routing-preference-internet-new.png)
 
@@ -69,10 +69,11 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 9. Nachdem der virtuelle Computer bereitgestellt wurde, geben Sie in das Suchfeld am oberen Rand des Portals *myPublicIpAddress* ein. Wenn **myPublicIpAddress** in den Suchergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 10. Die zugewiesene öffentliche IP-Adresse und die Adresse, die dem virtuellen Computer **myVM** zugewiesen ist, werden angezeigt, wie in der folgenden Abbildung gezeigt wird:
 
-    ![Anzeigen einer öffentlichen IP-Adresse](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
+    ![Screenshot der öffentlichen IP-Adresse der NIC für die Netzwerkschnittstelle mynic.](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
 
-11. Wählen Sie **Netzwerk** aus, klicken Sie dann auf die NIC **mynic**, und wählen Sie dann die öffentliche IP-Adresse aus, um zu bestätigen, dass die Routingpräferenz vom Typ **Internet** zugewiesen ist.
-    ![Anzeigen einer öffentlichen IP-Adresse](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
+11. Wählen Sie **Netzwerk** aus, klicken Sie dann auf die NIC **mynic** , und wählen Sie dann die öffentliche IP-Adresse aus, um zu bestätigen, dass die Routingpräferenz vom Typ **Internet** zugewiesen ist.
+
+    ![Screenshot der öffentlichen IP-Adresse und Routingeinstellung für eine öffentliche IP-Adresse.](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

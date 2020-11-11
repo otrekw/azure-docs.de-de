@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e4871af354d68a8d6dcaf3170271959146f57cba
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cde5afe01c90b68567f411bcf26063f02ca5a34a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84763617"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027243"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
 
@@ -44,10 +44,10 @@ So aktivieren Sie den Workflow für die Administratoreinwilligung und wählen Pr
  
 6. Konfigurieren Sie die folgenden Einstellungen:
 
-   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen**: Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören.
-   * **Die ausgewählten Benutzer erhalten E-Mail-Benachrichtigungen zu Anforderungen**: Aktivieren oder deaktivieren Sie Benachrichtigungen an die Prüfer, wenn eine Anforderung gesendet wird.  
-   * **Die ausgewählten Benutzer erhalten Erinnerungen zum Ablauf von Anforderungen**: Aktivieren oder deaktivieren Sie Erinnerungs-E-Mail-Benachrichtigungen an die Prüfer, wenn eine Anforderung bald abläuft.  
-   * **Einwilligungsanforderung läuft nach (Tagen) ab**: Geben Sie an, wie lange Anforderungen gültig bleiben.
+   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen** : Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören.
+   * **Die ausgewählten Benutzer erhalten E-Mail-Benachrichtigungen zu Anforderungen** : Aktivieren oder deaktivieren Sie Benachrichtigungen an die Prüfer, wenn eine Anforderung gesendet wird.  
+   * **Die ausgewählten Benutzer erhalten Erinnerungen zum Ablauf von Anforderungen** : Aktivieren oder deaktivieren Sie Erinnerungs-E-Mail-Benachrichtigungen an die Prüfer, wenn eine Anforderung bald abläuft.  
+   * **Einwilligungsanforderung läuft nach (Tagen) ab** : Geben Sie an, wie lange Anforderungen gültig bleiben.
 
 7. Wählen Sie **Speichern** aus. Die Aktivierung der Funktion kann bis zu einer Stunde dauern.
 
@@ -62,11 +62,11 @@ Nachdem der Workflow für die Administratoreinwilligung aktiviert wurde, können
 
 2. Die Meldung **Genehmigung erforderlich** wird angezeigt. Der Benutzer gibt ein, warum er Zugriff auf die App benötigt und klickt anschließend auf **Genehmigung anfordern**.
 
-   ![Benutzeranforderung zur Administratoreinwilligung und Begründung](media/configure-admin-consent-workflow/end-user-justification.png)
+   ![Screenshot: Dialogfeld „Genehmigung erforderlich“, in dem Sie eine Genehmigung anfordern können](media/configure-admin-consent-workflow/end-user-justification.png)
 
 3. In einer Meldung **Anforderung gesendet** wird bestätigt, dass die Anforderung an den Administrator gesendet wurde. Wenn der Benutzer mehrere Anforderungen sendet, wird nur die erste Anforderung an den Administrator übermittelt.
 
-   ![Benutzeranforderung zur Administratoreinwilligung und Begründung](media/configure-admin-consent-workflow/end-user-sent-request.png)
+   ![Screenshot: Sendebestätigung für die Anforderung](media/configure-admin-consent-workflow/end-user-sent-request.png)
 
  4. Der Benutzer erhält eine E-Mail-Benachrichtigung, wenn die Anforderung genehmigt, abgelehnt oder blockiert wurde. 
 

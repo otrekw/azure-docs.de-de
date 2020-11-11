@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 031ec44cec473d9f2b2f05669aa3fc18084985f2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91704727"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322991"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Planen und Verwalten von Kosten für Azure Machine Learning
 
@@ -53,15 +53,17 @@ Weitere Informationen finden Sie unter [Azure Machine Learning – Preise](https
 
 ## <a name="get-cost-alerts"></a>Abrufen von Kostenwarnungen
 
-Erstellen Sie [Budgets](../cost-management/tutorial-acm-create-budgets.md), um Kosten zu verwalten, und erstellen Sie [Warnungen](../cost-management/cost-mgt-alerts-monitor-usage-spending.md), die die Projektbeteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. Unter Umständen weisen Budgets und Warnungen aber eine eingeschränkte Funktionalität für die Verwaltung der Kosten einzelner Azure-Dienste auf, weil diese Funktionen für die Nachverfolgung von Kosten auf höherer Ebene ausgelegt sind.
+Erstellen Sie [Budgets](../cost-management-billing/costs/tutorial-acm-create-budgets.md), um Kosten zu verwalten, und erstellen Sie [Warnungen](../cost-management-billing/costs/cost-mgt-alerts-monitor-usage-spending.md), die die Projektbeteiligten automatisch über Ausgabenanomalien und Überschreitungsrisiken informieren. Warnungen basieren auf Ausgaben im Vergleich zum Budget und zu Kostenschwellenwerten. Budgets und Warnungen werden für Azure-Abonnements und -Ressourcengruppen erstellt und sind daher im Rahmen einer umfassenden Strategie zur Kostenüberwachung hilfreich. Unter Umständen weisen Budgets und Warnungen aber eine eingeschränkte Funktionalität für die Verwaltung der Kosten einzelner Azure-Dienste auf, weil diese Funktionen für die Nachverfolgung von Kosten auf höherer Ebene ausgelegt sind.
 
 ## <a name="monitor-costs"></a>Überwachen der Kosten
 
-Wenn Sie Ressourcen mit Azure Machine Learning verwenden, fallen Kosten an. Die Kosten pro Azure-Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Nutzung von Anforderungseinheiten. Kosten fallen an, sobald die Nutzung von Azure Machine Learning beginnt. Zeigen Sie diese Kosten im Bereich [Kostenanalyse](../cost-management/quick-acm-cost-analysis.md) im Azure-Portal an.
+Wenn Sie Ressourcen mit Azure Machine Learning verwenden, fallen Kosten an. Die Kosten pro Azure-Ressourcennutzungseinheit variieren nach dem Zeitintervall (Sekunden, Minuten, Stunden und Tage) oder der Nutzung von Anforderungseinheiten. Kosten fallen an, sobald die Nutzung von Azure Machine Learning beginnt. Zeigen Sie diese Kosten im Bereich [Kostenanalyse](../cost-management-billing/costs/quick-acm-cost-analysis.md) im Azure-Portal an.
 
 Sie können die Kosten in Diagrammen und Tabellen für verschiedene Zeitintervalle anzeigen. Außerdem können Sie Kosten nach Budgets und vorhergesagten Kosten anzeigen. Wenn Sie im Laufe der Zeit auf längere Zeiträume umstellen, können Sie Ausgabentrends ermitteln und erkennen, wo das Budget ggf. überschritten wurde. Wenn Sie Budgets erstellt haben, sehen Sie, wo diese überschritten wurden.  
 
-Es wird kein separater Dienstbereich für Machine Learning angezeigt.  Stattdessen sehen Sie die verschiedenen Ressourcen, die Sie Ihren Machine Learning-Arbeitsbereichen hinzugefügt haben.
+Es wird kein separater Dienstbereich für Machine Learning angezeigt.  Stattdessen sehen Sie die verschiedenen Ressourcen, die Sie Ihren Machine Learning-Arbeitsbereichen hinzugefügt haben. 
+
+Beachten Sie, dass für den Machine Learning-Arbeitsbereich selbst keine direkten Kosten anfallen, Ihnen jedoch verwaltete Computeressourcen in Rechnung gestellt werden. Wenn Sie also den Arbeitsbereichen Tags hinzugefügt haben, wird dies in der Kostenanalyse entsprechend berücksichtigt, da dafür keine direkten Kosten anfallen. Für eine genaue Kostenverwaltung über Tags müssen Sie die zugeordneten Computeressourcen mit Tags versehen.  
 
 ## <a name="use-azure-machine-learning-compute-cluster-amlcompute"></a>Verwenden des Azure Machine Learning Compute-Clusters (AmlCompute)
 
@@ -84,7 +86,7 @@ Sie können auch festlegen, wie lange sich der Knoten im Leerlauf befindet, bevo
 + Wenn Sie weniger iterative Experimente ausführen, setzen Sie diese Zeit herab, um Kosten zu sparen.
 + Wenn Sie hochgradig iterative Dev/Test-Experimente ausführen, müssen Sie die Zeit möglicherweise erhöhen, damit Sie nicht für ständiges Hoch- und Herunterskalieren nach jeder Änderung Ihres Trainingsskripts oder Ihrer Umgebung zahlen müssen.
 
-AmlCompute-Cluster können im Azure-Portal für Ihre wechselnden Workloadanforderungen konfiguriert werden, mithilfe der [AmlCompute SDK-Klasse](https://docs.microsoft.com/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?view=azure-ml-py&preserve-view=true), des [AmlCompute-CLIs](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/computetarget/create?view=azure-cli-latest&preserve-view=true#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) und mit den [REST-APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
+AmlCompute-Cluster können im Azure-Portal für Ihre wechselnden Workloadanforderungen konfiguriert werden, mithilfe der [AmlCompute SDK-Klasse](/python/api/azureml-core/azureml.core.compute.amlcompute.amlcompute?preserve-view=true&view=azure-ml-py), des [AmlCompute-CLIs](/cli/azure/ext/azure-cli-ml/ml/computetarget/create?preserve-view=true&view=azure-cli-latest#ext-azure-cli-ml-az-ml-computetarget-create-amlcompute) und mit den [REST-APIs](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/machinelearningservices/resource-manager/Microsoft.MachineLearningServices/stable).
 
 ```azurecli
 az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 --min-nodes 0 --max-nodes 5 --idle-seconds-before-scaledown 300
@@ -94,7 +96,7 @@ az ml computetarget create amlcompute --name testcluster --vm-size Standard_NC6 
 
 AmlCompute bietet eine [Konfiguration für Kontingente (Limits)](how-to-manage-quotas.md#azure-machine-learning-compute). Dieses Kontingent ist für die VM-Familie spezifisch (z. B. Dv2-Serie, NCv3-Serie) und variiert für die einzelnen Abonnements nach Region. Abonnements beginnen mit kleinen Standardwerten für den Einstieg, aber mit dieser Einstellung können Sie die Menge der Amlcompute-Ressourcen bestimmen, die für das Hochfahren in Ihrem Abonnement verfügbar sind. 
 
-Konfigurieren Sie außerdem für jeden Arbeitsbereich innerhalb eines Abonnements das [Kontingent auf Arbeitsbereichsebene pro VM-Familie](how-to-manage-quotas.md#workspace-level-quota). Diese ermöglicht Ihnen eine präzisere Kontrolle der Kosten, die für die einzelnen Arbeitsbereiche anfallen können, und eine Einschränkung bestimmter VM-Familien. 
+Konfigurieren Sie außerdem für jeden Arbeitsbereich innerhalb eines Abonnements das [Kontingent auf Arbeitsbereichsebene pro VM-Familie](how-to-manage-quotas.md#workspace-level-quotas). Diese ermöglicht Ihnen eine präzisere Kontrolle der Kosten, die für die einzelnen Arbeitsbereiche anfallen können, und eine Einschränkung bestimmter VM-Familien. 
 
 Beginnen Sie das Festlegen von Kontingenten auf Arbeitsbereichsebene im [Azure-Portal](https://portal.azure.com).  Wählen Sie einen beliebigen Arbeitsbereich in Ihrem Abonnement aus, und wählen Sie im linken Bereich **Nutzung + Kontingente** aus. Wählen Sie anschließend die Registerkarte **Kontingente konfigurieren** aus, um die Kontingente anzuzeigen. Sie benötigen Berechtigungen auf Abonnementebene, um dieses Kontingent festzulegen, da diese Einstellung mehrere Arbeitsbereiche betrifft.
 

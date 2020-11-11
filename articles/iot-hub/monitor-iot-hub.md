@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 5e2f5e067f0a1d5c13179b3d6175b3aebf6a43fd
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548423"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128878"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Überwachen von Azure IoT Hub
 
@@ -23,7 +23,9 @@ Die Seite **Übersicht** im Azure-Portal für jeden IoT-Hub enthält Diagramme, 
 
 :::image type="content" source="media/monitor-iot-hub/overview-portal.png" alt-text="Standardmetrikdiagramme auf der IoT Hub-Seite „Übersicht“.":::
 
-Diese Informationen sind nützlich, stellen aber nur eine kleine Menge der Überwachungsdaten dar, die für einen IoT-Hub verfügbar sind. Einige Überwachungsdaten werden automatisch erfasst und sind zur Analyse verfügbar, sobald Sie Ihren IoT-Hub erstellen. Mit einigen Konfigurationsschritten können Sie zusätzliche Typen von Datensammlungen aktivieren.
+Hinweis: Der Wert für die Nachrichtenanzahl kann um eine Minute verzögert sein und beim Aktualisieren manchmal zwischen höheren und niedrigeren Werten schwanken. Dies hängt mit der Infrastruktur des IoT Hub-Diensts zusammen. Dieser Zähler sollte nur bei Werten aus der letzten Minute inkorrekt sein.
+
+Die Informationen im Übersichtsbereich sind zwar praktisch, stellen aber nur einen kleinen Teil der Überwachungsdaten dar, die für einen IoT-Hub verfügbar sind. Einige Überwachungsdaten werden automatisch erfasst und sind zur Analyse verfügbar, sobald Sie Ihren IoT-Hub erstellen. Mit einigen Konfigurationsschritten können Sie zusätzliche Typen von Datensammlungen aktivieren.
 
 ## <a name="what-is-azure-monitor"></a>Was ist Azure Monitor?
 
@@ -50,15 +52,18 @@ Ausführliche Informationen zu den Metriken und Protokollen, die von Azure IoT H
 
 ## <a name="collection-and-routing"></a>Sammlung und Routing
 
-Plattformmetriken und das Aktivitätsprotokoll werden automatisch gesammelt und gespeichert, können aber mithilfe einer Diagnoseeinstellung an andere Speicherorte weitergeleitet werden.
+Plattformmetriken und das Aktivitätsprotokoll werden automatisch erfasst und gespeichert, können jedoch mithilfe einer Diagnoseeinstellung an andere Speicherorte weitergeleitet werden.
 
-Ressourcenprotokolle werden erst dann gesammelt und gespeichert, wenn Sie eine Diagnoseeinstellung erstellt und die Protokolle an einen oder mehrere Speicherorte weitergeleitet haben.
+Ressourcenprotokolle werden erst dann gesammelt und gespeichert, wenn Sie eine Diagnoseeinstellung erstellt und die Protokolle an mindestens einen Speicherort weitergeleitet haben.
 
-Metriken und Protokolle können an folgende Speicherorte weitergeleitet werden: an einen Log Analytics-Arbeitsbereich, in dem sie mithilfe von Azure Monitor-Protokollen analysiert werden können; an Azure Storage zur Archivierung und Offlineanalyse; oder an einen Event Hubs-Endpunkt, wo sie von externen Anwendungen, z. B. SIEM (Security Information & Event Management)-Tools von Drittanbietern, gelesen werden können.
+Metriken und Protokolle können an verschiedene Speicherorte weitergeleitet werden. Hierzu zählen unter anderem folgende:
+- Der Azure Monitor-Protokollspeicher über einen zugeordneten Log Analytics-Arbeitsbereich. Dort können sie mithilfe von Log Analytics analysiert werden.
+- Azure Storage zur Archivierung und Offlineanalyse 
+- Ein Event Hubs-Endpunkt, an dem sie von externen Anwendungen (beispielsweise SIEM-Tools von Drittanbietern) gelesen werden können.
 
 Im Azure-Portal können Sie im linken Bereich Ihres IoT-Hubs unter **Überwachung** die Option **Diagnoseeinstellungen** und dann **Diagnoseeinstellung hinzufügen** auswählen, um Diagnoseeinstellungen zu erstellen, die auf die von Ihrem IoT-Hub ausgegebenen Protokolle und Plattformmetriken ausgelegt sind.
 
-Der folgende Screenshot zeigt eine Diagnoseeinstellung für das Routing von Verbindungsvorgängen in Ressourcenprotokollen und allen Plattformmetriken an einen Log Analytics-Arbeitsbereich.
+Der folgende Screenshot zeigt eine Diagnoseeinstellung für die Weiterleitung des Ressourcenprotokolltyps *Verbindungsvorgänge* und aller Plattformmetriken an einen Log Analytics-Arbeitsbereich:
 
 :::image type="content" source="media/monitor-iot-hub/diagnostic-setting-portal.png" alt-text="Bereich „Diagnoseeinstellungen“ für einen IoT-Hub.":::
 
@@ -82,11 +87,11 @@ Eine Liste der Plattformmetriken, die für Azure IoT Hub gesammelt werden, finde
 
 Bei IoT Hub-Plattformmetriken, die in Anzahlen von Einheiten gesammelt werden, sind einige Aggregationen möglicherweise nicht verfügbar oder können nicht verwendet werden. Weitere Informationen finden Sie in der [Referenz zu Azure IoT Hub-Überwachungsdaten im Abschnitt „Unterstützte Aggregationen“](monitor-iot-hub-reference.md#supported-aggregations).
 
-Einige IoT Hub-Metriken, z. B. [Routingmetriken](monitor-iot-hub-reference.md#routing-metrics), sind mehrdimensional. Bei diesen Metriken können Sie [Filter](/azure-monitor/platform/metrics-charts#apply-filters-to-charts) anwenden und auf der Grundlage einer Dimension auf Ihre Diagramme [aufteilen](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart).
+Einige IoT Hub-Metriken, z. B. [Routingmetriken](monitor-iot-hub-reference.md#routing-metrics), sind mehrdimensional. Bei diesen Metriken können Sie [Filter](/azure/azure-monitor/platform/metrics-charts#apply-filters-to-charts) anwenden und auf der Grundlage einer Dimension auf Ihre Diagramme [aufteilen](/azure/azure-monitor/platform/metrics-charts#apply-splitting-to-a-chart).
 
 ## <a name="analyzing-logs"></a>Analysieren von Protokollen
 
-Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz an eindeutigen Eigenschaften hat. Weitere Informationen zu Azure Monitor-Protokollen finden Sie in der Azure Monitor-Dokumentation unter [Übersicht über Azure Monitor-Protokolle](/azure/azure-monitor/platform/data-platform-logs). 
+Daten in Azure Monitor-Protokollen werden in Tabellen gespeichert, wobei jede Tabelle ihren eigenen Satz an eindeutigen Eigenschaften hat. Die Daten in diesen Tabellen sind einem Log Analytics-Arbeitsbereich zugeordnet und können in Log Analytics abgefragt werden. Weitere Informationen zu Azure Monitor-Protokollen finden Sie in der Azure Monitor-Dokumentation unter [Übersicht über Azure Monitor-Protokolle](/azure/azure-monitor/platform/data-platform-logs). 
 
 Zum Weiterleiten von Daten an Azure Monitor-Protokolle müssen Sie eine Diagnoseeinstellung erstellen, um Ressourcenprotokolle oder Plattformmetriken an einen Log Analytics-Arbeitsbereich zu senden. Weitere Informationen finden Sie unter [Sammlung und Routing](#collection-and-routing).
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 0ed8533b093c5af0d8aefdcd5175bed63f37a76c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57cd9b55f529bde3f6bcb0a25a95c70333f6d8dd
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85507669"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130951"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-log-a-support-request-for-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts, um eine Supportanfrage für StorSimple Virtual Array zu erstellen
 
@@ -33,27 +33,27 @@ Je nach [Supportplan](https://azure.microsoft.com/support/plans/) können Sie Su
 
 #### <a name="to-log-a-new-request"></a>So erstellen Sie eine neue Anfrage
 
-1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Wechseln Sie auf dem Dienstübersichtsblatt in den Abschnitt **Support + Problembehandlung**, und klicken Sie anschließend auf **Neue Supportanfrage**.
+1. Wechseln Sie zu Ihrem StorSimple-Geräte-Manager-Dienst. Wechseln Sie auf dem Dienstübersichtsblatt in den Abschnitt **Support + Problembehandlung** , und klicken Sie anschließend auf **Neue Supportanfrage**.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
+    ![Screenshot: Bereich „Grundeinstellungen“ für eine neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket1.png)
 
 2. Gehen Sie auf dem Blatt **Grundeinstellungen** wie folgt vor:
 
     1. Wählen Sie aus der Dropdownliste **Problemtyp** den Eintrag **Technisch** aus. 
     
-    2. Das aktuelle **Abonnement**, der aktuelle **Dienst** und die **Ressource** (StorSimple-Geräte-Manager-Dienst) werden automatisch ausgewählt. 
+    2. Das aktuelle **Abonnement** , der aktuelle **Dienst** und die **Ressource** (StorSimple-Geräte-Manager-Dienst) werden automatisch ausgewählt. 
 
     3. Geben Sie ein oder mehrere bei Ihrem Dienst registrierte Geräte an, bei denen Probleme auftreten.
 
-    4. Wählen Sie einen geeigneten **Supportplan**, wenn Sie über mehrere Pläne verfügen, die Ihrem Abonnement zugeordnet ist. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
+    4. Wählen Sie einen geeigneten **Supportplan** , wenn Sie über mehrere Pläne verfügen, die Ihrem Abonnement zugeordnet ist. Sie benötigen einen kostenpflichtigen Supportplan, um technischen Support zu erhalten.
 
-3. Wählen Sie in **Schritt 2** den **Schweregrad**, und geben Sie an, ob das Problem das Array oder den StorSimple-Geräte-Manager-Dienst betrifft. Wählen Sie außerdem eine **Kategorie** für das Problem, und geben Sie weitere **Details** dazu an.
+3. Wählen Sie in **Schritt 2** den **Schweregrad** , und geben Sie an, ob das Problem das Array oder den StorSimple-Geräte-Manager-Dienst betrifft. Wählen Sie außerdem eine **Kategorie** für das Problem, und geben Sie weitere **Details** dazu an.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
+    ![Screenshot: Bereich „Problem“, in dem Sie den Problemtyp, die Kategorie und die Details für Ihre Supportanfrage eingeben können](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket2.png)
 
 4. Geben Sie in **Schritt 3** Ihre Kontaktinformationen an. Microsoft Support verwendet diese Informationen, um Ihnen weitere Informationen, Diagnosen und Problemlösungen zur Verfügung zu stellen.
    
-    ![Neue Supportanfrage](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
+    ![Screenshot: Bereich „Kontaktinformationen“](./media/storsimple-virtual-array-log-support-ticket/log-support-ticket3.png)
 
 ## <a name="manage-a-support-request"></a>Erstellen einer Supportanfrage
 

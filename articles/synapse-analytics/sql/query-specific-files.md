@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: c03051e2c8fddc21e4399375faeff6a40fb4d0d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3b4755d1d2e14b8ce3b05cfef6d30d7f6102905d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91288102"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93318815"
 ---
-# <a name="use-file-metadata-in-queries"></a>Verwenden von Dateimetadaten in Abfragen
+# <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Verwenden von Dateimetadaten in Abfragen eines serverlosen SQL-Pools
 
-SQL On-Demand kann mehrere Dateien und Ordner behandeln, wie im Artikel [Abfrageordner und mehrere Dateien](query-folders-multiple-csv-files.md) beschrieben. In diesem Artikel erfahren Sie, wie Sie Metadateninformationen zu Datei- und Ordnernamen in den Abfragen verwenden können.
+Ein serverloser SQL-Pool kann mehrere Dateien und Ordner behandeln, wie im Artikel [Abfrageordner und mehrere Dateien](query-folders-multiple-csv-files.md) beschrieben. In diesem Artikel erfahren Sie, wie Sie Metadateninformationen zu Datei- und Ordnernamen in den Abfragen verwenden können.
 
 Gelegentlich müssen Sie möglicherweise wissen, welche Datei- oder Ordnerquelle mit einer bestimmten Zeile im Resultset korreliert.
 

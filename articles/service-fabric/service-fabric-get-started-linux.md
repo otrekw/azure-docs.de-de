@@ -4,12 +4,12 @@ description: Installieren Sie die Laufzeit und das SDK, und erstellen Sie einen 
 ms.topic: conceptual
 ms.date: 10/16/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 39ed4a394a54112c03145c0d481e5459ecbf6d8b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 14b8a278605a908b4182c724831b2e42de54a753
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675283"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93086889"
 ---
 # <a name="prepare-your-development-environment-on-linux"></a>Vorbereiten Ihrer Entwicklungsumgebung unter Linux
 > [!div class="op_single_selector"]
@@ -175,7 +175,7 @@ Die Service Fabric-Runtime aus der SDK-Installation enthält die Pakete in der f
 
 # <a name="container-based-local-cluster"></a>[Containerbasierter lokaler Cluster](#tab/localclusteroneboxcontainer)
 
-Starten Sie einen containerbasierten [Service Fabric-OneBox-Cluster](https://hub.docker.com/r/microsoft/service-fabric-onebox/).
+Starten Sie einen containerbasierten Cluster vom Typ [Service Fabric Onebox](https://hub.docker.com/_/microsoft-service-fabric-onebox).
 
 1. Installieren Sie Moby, damit Sie Docker-Container bereitstellen können.
     ```bash
@@ -298,17 +298,17 @@ Das Eclipse-Plug-In für Service Fabric können Sie über die Eclipse-IDE für J
 > 
 > Unter Ubuntu sollten Sie die Installation direkt über die Eclipse-Website ausführen, anstatt ein Paketinstallationsprogramm (`apt` oder `apt-get`) zu verwenden. Dadurch wird sichergestellt, dass Sie die neueste Version von Eclipse erhalten. Die Eclipse-IDE kann für Java-Entwickler oder für Java EE-Entwickler installiert werden.
 
-1. Vergewissern Sie sich in Eclipse, dass bei Ihnen mindestens Eclipse Neon und mindestens die Buildship-Version 2.2.1 installiert sind. Ermitteln Sie die Version der installierten Komponenten unter **Hilfe** > **Über Eclipse** > **Installationsdetails** . Anweisungen zum Aktualisieren von Buildship finden Sie unter [Eclipse Buildship: Eclipse-Plug-Ins für Gradle][buildship-update].
+1. Vergewissern Sie sich in Eclipse, dass bei Ihnen mindestens Eclipse Neon und mindestens die Buildship-Version 2.2.1 installiert sind. Ermitteln Sie die Version der installierten Komponenten unter **Hilfe** > **Über Eclipse** > **Installationsdetails**. Anweisungen zum Aktualisieren von Buildship finden Sie unter [Eclipse Buildship: Eclipse-Plug-Ins für Gradle][buildship-update].
 
 2. Wählen Sie zum Installieren des Service Fabric-Plug-Ins **Hilfe** > **Neue Software installieren...** aus.
 
 3. Geben Sie im Feld **Verwenden von** die URL **https:\//dl.microsoft.com/eclipse** ein.
 
-4. Wählen Sie **Hinzufügen** .
+4. Wählen Sie **Hinzufügen**.
 
     ![Seite „Verfügbare Software“][sf-eclipse-plugin]
 
-5. Wählen Sie das Plug-In **ServiceFabric** aus, und klicken Sie auf **Weiter** .
+5. Wählen Sie das Plug-In **ServiceFabric** aus, und klicken Sie auf **Weiter**.
 
 6. Führen Sie die Installationsschritte aus. Akzeptieren Sie anschließend den Endbenutzer-Lizenzvertrag.
 

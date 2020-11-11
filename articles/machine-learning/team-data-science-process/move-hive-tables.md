@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86080736"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130866"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -34,7 +34,7 @@ Wenn Sie einen virtuellen Azure-Computer mithilfe der Anweisungen in [Einrichten
 
 Es wird davon ausgegangen, dass die Daten für die Hive-Tabellen in einem **unkomprimierten** Tabellenformat vorliegen und dass die Daten in den Standardcontainer (oder einen zusätzlichen Container) des Speicherkontos hochgeladen wurden, das vom Hadoop-Cluster verwendet wird.
 
-Wenn Sie mit den **NYC Taxi Trip-Daten**üben möchten, gehen Sie so vor:
+Wenn Sie mit den **NYC Taxi Trip-Daten** üben möchten, gehen Sie so vor:
 
 * **Laden** Sie die 24 [NYC Taxi Trip Data](https://www.andresmh.com/nyctaxitrips) -Dateien (12 Fahrtendateien und 12 Fahrpreisdateien) herunter.
 * **Entpacken** Sie alle Dateien als CSV-Dateien
@@ -101,7 +101,7 @@ hive -e "<hive query>" > <local path in the head node>
 
 Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in die Datei `hivequeryoutput.txt` im Verzeichnis `C:\apps\temp` geschrieben.
 
-![Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/output-hive-results-1.png)
+![Screenshot: Ausgabe der Hive-Abfrage in einem Hadoop-Befehlszeilenfenster](./media/move-hive-tables/output-hive-results-1.png)
 
 **Ausgeben der Hive-Abfrageergebnisse in ein Azure-Blob**
 
@@ -113,7 +113,7 @@ insert overwrite directory wasb:///<directory within the default container> <sel
 
 Im folgenden Beispiel wird die Ausgabe der Hive-Abfrage in das Blob-Verzeichnis `queryoutputdir` innerhalb des Standardcontainer des Hadoop-Cluster geschrieben. Hier müssen Sie nur den Namen des Verzeichnisses ohne den Namen des Blobs angeben. Es wird ein Fehler ausgelöst, wenn Sie sowohl den Verzeichnis- als auch den Blobnamen angeben, wie z. B. `wasb:///queryoutputdir/queryoutput.txt`.
 
-![Ausgabe aus der Hive-Abfrage](./media/move-hive-tables/output-hive-results-2.png)
+![Screenshot: Vorheriger Befehl im Hadoop-Befehlszeilenfenster](./media/move-hive-tables/output-hive-results-2.png)
 
 Wenn Sie den Standardcontainer des Hadoop-Clusters mit Tools wie Azure Storage-Explorer öffnen, wird die Ausgabe der Hive-Abfrage wie in der folgenden Abbildung angezeigt. Sie können Filter (markiert durch den roten Kasten) anwenden, um nur das Blob mit den angegebenen Buchstaben im Namen abzurufen.
 
@@ -152,7 +152,7 @@ Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung un
 * **\<field separator\>** : Das Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
 * **\<line separator\>** : Das Trennzeichen für die Zeilen in der Datendatei.
 * **\<storage location\>** : Der Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION \<storage location\>* nicht angeben, werden die Datenbank und die Tabellen standardmäßig im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///\<directory 1>/'* oder *'wasb:///\<directory 1>/\<directory 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
-* **TBLPROPERTIES("skip.header.line.count"="1")** : Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table*-Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
+* **TBLPROPERTIES("skip.header.line.count"="1")** : Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table* -Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Laden von Daten in Hive-Tabellen
 Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.

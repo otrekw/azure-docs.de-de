@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 6/12/2020
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 41fb34055b9992b83a11bc3e4d47e3a389147860
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 14a532e7809db3359d90a03c169c27a19cf89a9a
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164226"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92911629"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Problembehandlung für Azure-Dateisynchronisierung
 Mit der Azure-Dateisynchronisierung können Sie die Dateifreigaben Ihrer Organisation in Azure Files zentralisieren, ohne auf die Flexibilität, Leistung und Kompatibilität eines lokalen Dateiservers verzichten zu müssen. Mit der Azure-Dateisynchronisierung werden Ihre Windows Server-Computer zu einem schnellen Cache für Ihre Azure-Dateifreigabe. Sie können ein beliebiges Protokoll verwenden, das unter Windows Server verfügbar ist, um lokal auf Ihre Daten zuzugreifen, z.B. SMB, NFS und FTPS. Sie können weltweit so viele Caches wie nötig nutzen.
@@ -21,7 +21,7 @@ Dieser Artikel enthält Informationen zur Behebung von Fehlern und Lösung von P
 
 1. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](https://docs.microsoft.com/answers/products/azure?product=storage)
 2. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files)
-3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage** .
+3. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 
 ## <a name="im-having-an-issue-with-azure-file-sync-on-my-server-sync-cloud-tiering-etc-should-i-remove-and-recreate-my-server-endpoint"></a>Es besteht ein Problem mit der Azure-Dateisynchronisierung auf dem Server (Synchronisierung, Cloudtiering usw.). Soll der Serverendpunkt entfernt und neu erstellt werden?
 [!INCLUDE [storage-sync-files-remove-server-endpoint](../../../includes/storage-sync-files-remove-server-endpoint.md)]
@@ -102,6 +102,9 @@ Wenn ein Server für einen Speichersynchronisierungsdienst nicht unter **Registr
 3. Führen Sie „ServerRegistration.exe“ aus, und schließen Sie den Assistenten ab, um den Server bei einem Storage-Synchronisierungsdienst zu registrieren.
 
 ## <a name="sync-group-management"></a>Verwaltung von Synchronisierungsgruppen
+
+### <a name="cloud-endpoint-creation-errors"></a>Fehler beim Erstellen von Cloudendpunkten
+
 <a id="cloud-endpoint-using-share"></a>**Fehler beim Erstellen des Cloudendpunkts: „The specified Azure FileShare is already in use by a different CloudEndpoint“ (Die angegebene Azure-Dateifreigabe wird bereits von einem anderen Cloudendpunkt verwendet)**  
 Dieser Fehler tritt auf, wenn die Azure-Dateifreigabe bereits von einem anderen Cloudendpunkt verwendet wird. 
 
@@ -130,11 +133,13 @@ Die folgenden integrierten Rollen verfügen über die erforderlichen Microsoft-A
 So bestimmen Sie, ob Ihr Benutzerkonto über die erforderlichen Berechtigungen verfügt:  
 1. Wählen Sie im Azure-Portal **Ressourcengruppen** aus.
 2. Wählen Sie die Ressourcengruppe aus, in der sich das Speicherkonto befindet, und wählen Sie dann **Zugriffssteuerung (IAM)** aus.
-3. Klicken Sie auf die Registerkarte **Rollenzuweisungen** .
+3. Klicken Sie auf die Registerkarte **Rollenzuweisungen**.
 4. Wählen Sie die **Rolle** (z.B. Besitzer oder Mitwirkender) für Ihr Benutzerkonto aus.
 5. Wählen Sie in der Liste **Ressourcenanbieter** die Option **Microsoft-Autorisierung** aus. 
     * **Rollenzuweisung** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
     * **Rollendefinition** muss die Berechtigungen **Lesen** und **Schreiben** aufweisen.
+
+### <a name="server-endpoint-creation-and-deletion-errors"></a>Fehler beim Erstellen und Löschen von Serverendpunkten
 
 <a id="-2134375898"></a>**Fehler beim Erstellen des Serverendpunkts: „MgmtServerJobFailed“ (Fehlercode: -2134375898 oder 0x80c80226)**  
 Dieser Fehler tritt auf, wenn sich der Serverendpunktpfad auf dem Systemvolume befindet und Cloudtiering aktiviert ist. Das Cloudtiering wird auf dem Systemvolume nicht unterstützt. Um einen Serverendpunkt auf dem Systemvolume zu erstellen, deaktivieren Sie Cloudtiering, wenn Sie den Serverendpunkt erstellen.
@@ -165,6 +170,8 @@ Dieser Fehler tritt auf, wenn der Pfad zum Serverendpunkt verwaiste mehrstufige 
 
 <a id="-2134347757"></a>**Fehler beim Löschen des Serverendpunkts: „MgmtServerJobExpired“ (Fehlercode: -2134347757 oder 0x80c87013)**  
 Dieser Fehler tritt auf, wenn der Server offline ist oder keine Netzwerkkonnektivität aufweist. Ist der Server nicht mehr verfügbar, heben Sie die Registrierung des Servers im Portal auf, wodurch die Serverendpunkte gelöscht werden. Um die Serverendpunkte zu löschen, führen Sie die Schritte aus, die unter [Aufheben der Registrierung eines Servers mit der Azure-Dateisynchronisierung](storage-sync-files-server-registration.md#unregister-the-server-with-storage-sync-service) beschrieben sind.
+
+### <a name="server-endpoint-health"></a>Integrität der Serverendpunkte
 
 <a id="server-endpoint-provisioningfailed"></a>**Die Seite „Eigenschaften des Serverendpunkts“ kann nicht geöffnet werden, oder die Cloudtiering-Richtlinie kann nicht aktualisiert werden.**  
 Dieses Problem kann auftreten, wenn bei einem Verwaltungsvorgang auf dem Serverendpunkt ein Fehler auftritt. Wenn die Seite „Eigenschaften des Serverendpunkts“ nicht im Azure-Portal geöffnet wird, kann ein Aktualisieren des Serverendpunkts mithilfe von PowerShell-Befehlen auf dem Server dieses Problem beheben. 
@@ -338,7 +345,9 @@ Um diese Fehler anzuzeigen, führen Sie das PowerShell-Skript **FileSyncErrorsRe
 | 0x80c80200 | -2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | Die Datei kann nicht synchronisiert werden, da die maximale Anzahl von Konfliktdateien erreicht wurde. Die Azure-Dateisynchronisierung unterstützt 100 Konfliktdateien pro Datei. Weitere Informationen zu Dateikonflikten finden Sie unter den [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution) zur Azure-Dateisynchronisierung. | Um dieses Problem zu beheben, reduzieren Sie die Anzahl der Konfliktdateien. Die Datei wird synchronisiert, sobald die Anzahl der Konfliktdateien weniger als 100 beträgt. |
 
 #### <a name="handling-unsupported-characters"></a>Behandlung von nicht unterstützten Zeichen
-Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Synchronisierungsfehler pro Element aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b oder 0x80c80255) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren. Wenn das Dataset mehrere Dateien mit ungültigen Zeichen enthält, verwenden Sie das Skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars), um Dateien umzubenennen, die nicht unterstützte Zeichen enthalten.
+Wenn das PowerShell-Skript **FileSyncErrorsReport.ps1** Synchronisierungsfehler pro Element aufgrund von nicht unterstützten Zeichen (Fehlercode 0x8007007b oder 0x80c80255) anzeigt, sollten Sie diese Zeichen aus den entsprechenden Dateinamen entfernen oder darin ändern. PowerShell gibt diese Zeichen wahrscheinlich als Fragezeichen oder leere Rechtecke aus, da die meisten dieser Zeichen keine standardisierte visuelle Codierung aufweisen. 
+> [!Note]  
+> Mit dem [Auswertungstool](storage-sync-files-planning.md#evaluation-cmdlet) können Sie nicht unterstützte Zeichen identifizieren. Wenn das Dataset mehrere Dateien mit ungültigen Zeichen enthält, verwenden Sie das Skript [ScanUnsupportedChars](https://github.com/Azure-Samples/azure-files-samples/tree/master/ScanUnsupportedChars), um Dateien umzubenennen, die nicht unterstützte Zeichen enthalten.
 
 Die folgende Tabelle enthält alle Unicode-Zeichen, die die Azure-Dateisynchronisierung noch nicht unterstützt.
 
@@ -844,7 +853,7 @@ Führen Sie die folgenden Schritte aus, um das Problem zu beheben:
 
 1. Laden Sie das [Psexec](https://docs.microsoft.com/sysinternals/downloads/psexec)-Tool herunter.
 2. Führen Sie den folgenden Befehl an einer Eingabeaufforderung mit erhöhten Rechten aus, um eine Eingabeaufforderung unter Verwendung des Systemkontos zu starten: **PsExec.exe -i -s -d cmd** 
-3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C** .
+3. Führen Sie an der Eingabeaufforderung unter dem Systemkonto den folgenden Befehl aus, um zu bestätigen, dass das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /C**.
 4. Wenn das Konto „NT AUTHORITY\SYSTEM“ keinen Zugriff auf den Ordner „Systemvolumeinformationen“ hat, führen Sie den folgenden Befehl aus: **cacls „Laufwerkbuchstabe:\Systemvolumeinformationen“ /T /E /G „NT AUTHORITY\SYSTEM:F“** .
     - Wenn Schritt 4 aufgrund von verweigertem Zugriff fehlschlägt, führen Sie den folgenden Befehl aus, um den Besitz des Ordners „Systemvolumeinformationen“ zu übernehmen: **takeown /A /R /F „Laufwerkbuchstabe:\Systemvolumeinformationen“** . Wiederholen Sie dann Schritt 4.
 
@@ -1002,9 +1011,9 @@ if ($fileShare -eq $null) {
 
     Wird **Microsoft.StorageSync** oder **Hybrid File Sync Service** (Hybrid-Dateisynchronisierungsdienst) nicht in der Liste angezeigt, führen Sie die folgenden Schritte aus:
 
-    - Klicken Sie auf **Hinzufügen** .
+    - Klicken Sie auf **Hinzufügen**.
     - Wählen Sie im Feld **Rolle** die Option **Lese- und Datenzugriff** aus.
-    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Microsoft.StorageSync** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern** .
+    - Geben Sie im Feld **Auswählen** die Zeichenfolge **Microsoft.StorageSync** ein, wählen Sie die Rolle aus, und klicken Sie auf **Speichern**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 ```powershell    
@@ -1271,7 +1280,7 @@ Um AFSDiag auszuführen, befolgen Sie die nachstehenden Schritte:
 
 3. Geben Sie für die Kernelmodus-Ablaufverfolgungsebene der Azure-Dateisynchronisierung **1** ein (sofern nicht anders angegeben, um ausführlichere Ablaufverfolgungen zu erstellen), und drücken Sie die EINGABETASTE.
 4. Geben Sie für die Benutzermodus-Ablaufverfolgungsebene der Azure-Dateisynchronisierung **1** ein (sofern nicht anders angegeben, um ausführlichere Ablaufverfolgungen zu erstellen), und drücken Sie die EINGABETASTE.
-5. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D** .
+5. Reproduzieren Sie das Problem. Klicken Sie abschließend auf **D**.
 6. Eine ZIP-Datei, die Protokolle und Ablaufverfolgungsdateien enthält, wird im angegebenen Ausgabeverzeichnis gespeichert.
 
 ## <a name="see-also"></a>Weitere Informationen

@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/05/2020
-ms.openlocfilehash: dc6d083efd1d39d96f9df995fe5e7e4bcc95abff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 10/30/2020
+ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675311"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131359"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -50,7 +50,7 @@ Die Sicherungsspeicherredundanz für eine SQL-Datenbank-Instanz kann entweder be
 > Zonenredundanter Speicher steht zurzeit nur in [bestimmten Regionen](../../storage/common/storage-redundancy.md#zone-redundant-storage) zur Verfügung. 
 
 > [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz für Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Asien, Südosten“ allgemein verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
+> Die konfigurierbare Sicherungsspeicherredundanz für Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Brasilien, Süden“ als Public Preview und in der Region „Asien, Südosten“ allgemein verfügbar. Für die Hyperscale-Ebene ist dieses Feature noch nicht verfügbar. 
 
 ### <a name="backup-usage"></a>Sicherungsverwendung
 
@@ -190,7 +190,7 @@ Weitere Informationen zu den Preisen für Sicherungsspeicher finden Sie auf der 
 
 ### <a name="monitor-costs"></a>Überwachen der Kosten
 
-Um die Kosten für Sicherungsspeicher zu verstehen, wechseln Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung** . Wählen Sie **Kostenverwaltung** und dann **Kostenanalyse** aus. Wählen Sie das gewünschte Abonnement als **Bereich** aus, und filtern Sie dann nach dem gewünschten Zeitraum und Dienst.
+Um die Kosten für Sicherungsspeicher zu verstehen, wechseln Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung**. Wählen Sie **Kostenverwaltung** und dann **Kostenanalyse** aus. Wählen Sie das gewünschte Abonnement als **Bereich** aus, und filtern Sie dann nach dem gewünschten Zeitraum und Dienst.
 
 Fügen Sie einen Filter für **Dienstname** hinzu, und wählen Sie dann in der Dropdownliste **SQL-Datenbank** aus. Verwenden Sie den Filter **Unterkategorie der Verbrauchseinheit** , um den Abrechnungszähler für Ihren Dienst auszuwählen. Wählen Sie für eine einzelne Datenbank oder einen Pool für elastische Datenbanken den **PITR-Sicherungsspeicher für eine einzelne Datenbank/einen Pool für elastische Datenbanken** aus. Wählen Sie für eine verwaltete Instanz **MI-PITR-Sicherungsspeicher** aus. Die Unterkategorien **Speicher** und **Compute** können für Sie auch von Interesse sein, obwohl sie nicht im Zusammenhang mit den Sicherungsspeicherkosten stehen.
 
@@ -371,7 +371,7 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 ## <a name="configure-backup-storage-redundancy"></a>Konfigurieren der Redundanz für Sicherungsspeicher
 
 > [!NOTE]
-> Konfigurierbare Speicherredundanz für Sicherungen steht nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern. Für SQL-Datenbank ist die öffentliche Vorschau dieses Features aktuell nur in der Azure-Region „Asien, Südosten“ verfügbar. 
+> Konfigurierbare Speicherredundanz für Sicherungen steht nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern. Für SQL-Datenbank ist die Public Preview dieses Features aktuell nur in „Brasilien, Süden“ und die allgemein verfügbare Version nur in der Azure-Region „Asien, Südosten“ verfügbar. 
 
 Eine Redundanz für Sicherungsspeicher für eine verwaltete Instanz kann nur während der Instanzerstellung festgelegt werden. Für eine SQL-Datenbank-Instanz kann sie beim Erstellen der Datenbank festgelegt oder für eine vorhandene Datenbank aktualisiert werden. Der Standardwert ist „georedundanter Speicher (RA-GRS)“. Unterschiede bei den Preisen zwischen lokal redundantem (LRS), zonenredundantem (ZRS) und georedundantem Sicherungsspeicher (RA-GRS) finden Sie auf der [Seite mit der Preisübersicht für verwaltete Instanzen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
@@ -384,7 +384,7 @@ Im Azure-Portal können Sie die Sicherungsspeicherredundanz auf dem Blatt **SQL-
 
 #### <a name="sql-managed-instance"></a>[SQL Managed Instance](#tab/managed-instance)
 
-Im Azure-Portal befindet sich die Option zum Ändern der Redundanz für Sicherungsspeicher auf dem Blatt **Compute + Speicher** . Sie können darauf beim Erstellen Ihrer SQL Managed Instance über die Option **Verwaltete Instanz konfigurieren** auf der Registerkarte **Grundlagen** zugreifen.
+Im Azure-Portal befindet sich die Option zum Ändern der Redundanz für Sicherungsspeicher auf dem Blatt **Compute + Speicher**. Sie können darauf beim Erstellen Ihrer SQL Managed Instance über die Option **Verwaltete Instanz konfigurieren** auf der Registerkarte **Grundlagen** zugreifen.
 ![Öffnen Sie das Konfigurationsblatt „Compute + Speicher“](./media/automated-backups-overview/open-configuration-blade-managedinstance.png).
 
 Suchen Sie auf dem Blatt **Compute + Speicher** die Option zum Auswählen von Redundanz für Sicherungsspeicher.

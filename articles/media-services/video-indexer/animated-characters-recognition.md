@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
-ms.openlocfilehash: 9d304767cf28c0e9230c93d5b9e7504b03ed25d4
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 1ac27f8fe0c6c608bfc261e9ac2d96651c94b341
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018881"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040081"
 ---
 # <a name="animated-character-detection-preview"></a>Erkennung animierter Figuren (Vorschauversion)
 
@@ -77,7 +77,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 1. Wechseln Sie zu [Video Indexer](https://vi.microsoft.com/), und melden Sie sich an.
 1. Klicken Sie oben rechts auf der Seite auf das Fragezeichen, und wählen Sie **API-Referenz** aus.
 1. Stellen Sie sicher, dass Sie API Management abonniert haben, indem Sie auf die Registerkarte **Produkte** klicken. Wenn Sie über eine verbundene API verfügen, können Sie mit dem nächsten Schritt fortfahren, andernfalls abonnieren Sie eine. 
-1. Klicken Sie im Entwicklerportal auf **Vollständige API-Referenz**, und navigieren Sie zu **Vorgänge**.  
+1. Klicken Sie im Entwicklerportal auf **Vollständige API-Referenz** , und navigieren Sie zu **Vorgänge**.  
 1. Wählen Sie **Custom Vision-Konto verbinden (PREVIEW)** aus, und klicken Sie auf **Testen**.
 1. Füllen Sie die erforderlichen Felder sowie das Zugriffstoken aus, und klicken Sie auf **Senden**. 
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 1. Navigieren Sie zur [Video Indexer](https://vi.microsoft.com/)-Website, und melden Sie sich an.
 1. Klicken Sie in der oberen rechten Ecke der Seite auf die Schaltfläche „Anpassung des Inhaltsmodells“.
 
-    ![Anpassung des Inhaltsmodells](./media/animated-characters-recognition/content-model-customization.png)
+    ![Screenshot: Seite „Video Indexer“ mit ausgewählter Schaltfläche für die Anpassung des Inhaltsmodells in der rechten oberen Ecke](./media/animated-characters-recognition/content-model-customization.png)
 1. Navigieren Sie im Abschnitt für die Modellanpassung zur Registerkarte **Animated characters** (Animierte Figuren).
 1. Klicken Sie auf **Modell hinzufügen**.
 1. Benennen Sie das Modell, und drücken Sie die EINGABETASTE, um den Namen zu speichern.
@@ -122,12 +122,12 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 1. Taggen und trainieren Sie das Modell.
 
     1. Taggen Sie die erkannte Figur, indem Sie ihren Namen bearbeiten. Sobald das Modell mit einer Figur trainiert wurde, wird sie im nächsten Video erkannt, das mit diesem Modell indiziert wird. 
-    1. Um eine animierte Figur in Ihrem Video zu taggen, navigieren Sie zur Registerkarte **Erkenntnisse**, und klicken Sie rechts oben im Fenster auf die Schaltfläche **Bearbeiten**.
+    1. Um eine animierte Figur in Ihrem Video zu taggen, navigieren Sie zur Registerkarte **Erkenntnisse** , und klicken Sie rechts oben im Fenster auf die Schaltfläche **Bearbeiten**.
     1. Klicken Sie im Bereich **Erkenntnisse** auf eine der erkannten animierten Figuren, und ändern Sie ihren Namen von „Unknown #X“ (Unbekannt #X) bzw. dem Namen, der der Figur zuvor zugewiesen wurde, in einen anderen Namen.
     1. Nachdem Sie den neuen Namen eingegeben haben, klicken Sie neben dem neuen Namen auf das Prüfsymbol. Dadurch wird der neue Name in dem Modell in Video Indexer gespeichert.
     1. Nachdem Sie alle gewünschten Namen bearbeitet haben, müssen Sie das Modell trainieren.
 
-        Öffnen Sie die Anpassungsseite, klicken Sie auf die Registerkarte für **animierte Figuren**, und klicken Sie anschließend auf die Schaltfläche **Trainieren**, um Ihr Modell zu trainieren.
+        Öffnen Sie die Anpassungsseite, klicken Sie auf die Registerkarte für **animierte Figuren** , und klicken Sie anschließend auf die Schaltfläche **Trainieren** , um Ihr Modell zu trainieren.
          
         Wenn Sie über ein kostenpflichtiges Konto verfügen, können Sie auf den Link **Verwalten von Modellen in Customer Vision** klicken (wie unten gezeigt). Daraufhin werden Sie zur Seite des Modells in **Custom Vision** weitergeleitet.
  
@@ -138,7 +138,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 
 1. Löschen Sie eine animierte Figur.
 
-    1. Um eine animierte Figur aus Ihren Videoerkenntnissen zu löschen, navigieren Sie zur Registerkarte **Erkenntnisse**, und klicken Sie rechts oben im Fenster auf die Schaltfläche **Bearbeiten**.
+    1. Um eine animierte Figur aus Ihren Videoerkenntnissen zu löschen, navigieren Sie zur Registerkarte **Erkenntnisse** , und klicken Sie rechts oben im Fenster auf die Schaltfläche **Bearbeiten**.
     1. Wählen Sie die animierte Figur aus, und klicken Sie anschließend unter ihrem Namen auf die Schaltfläche **Löschen**.
 
     > [!NOTE]
@@ -146,7 +146,7 @@ Führen Sie die folgenden Schritte aus, um Ihr Custom Vision-Konto mit Video Ind
 
 1. Löschen Sie ein Modell.
 
-    1. Klicken Sie im oberen Menü auf die Schaltfläche **Anpassung des Inhaltsmodells**, und navigieren Sie zur Registerkarte **Animated characters** (Animierte Figuren).
+    1. Klicken Sie im oberen Menü auf die Schaltfläche **Anpassung des Inhaltsmodells** , und navigieren Sie zur Registerkarte **Animated characters** (Animierte Figuren).
     1. Klicken Sie rechts neben dem Modell, das Sie löschen möchten, auf die Auslassungspunkte und anschließend auf die Schaltfläche „Löschen“.
     
     * Kostenpflichtiges Konto: Die Verbindung zwischen Modell und Video Indexer wird getrennt und kann nicht wiederhergestellt werden.

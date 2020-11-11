@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612157"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127636"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testen eines Azure Stream Analytics-Auftrags im Portal
 
@@ -33,15 +33,15 @@ Azure Stream Analytics ruft automatisch Ereignisse aus Ihrer Streamingeingabe ab
 
    a. Der Serialisierungstyp für Ihre Daten wird automatisch erkannt, wenn es sich um JSON oder CSV handelt. Sie können ihn manuell in JSON, CSV oder AVRO ändern, indem Sie die Option im Dropdownmenü ändern.
     
-   b. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen**- oder **Roh**format anzuzeigen.
+   b. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen** - oder **Roh** format anzuzeigen.
     
    c. Wenn die angezeigten Daten nicht aktuell sind, wählen Sie **Aktualisieren** aus, um die neuesten Ereignisse anzuzeigen.
 
-   Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat**:
+   Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat** :
 
    ![Azure Stream Analytics: Beispieleingabe im Tabellenformat](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   Die folgende Tabelle ist ein Beispiel für Daten im **Rohformat**:
+   Die folgende Tabelle ist ein Beispiel für Daten im **Rohformat** :
 
    ![Azure Stream Analytics: Beispieleingabe im Rohformat](./media/stream-analytics-test-query/asa-sample-raw.png)
 
@@ -79,11 +79,11 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
 
 4. Um Ihre Abfrage mit einer lokalen Datei zu testen, wählen Sie auf der Registerkarte **Eingabevorschau** die Option **Beispieleingabe hochladen** aus. 
 
-   ![Azure Stream Analytics: Beispieldatei hochladen](./media/stream-analytics-test-query/asa-upload-sample-file.png)
+   ![Screenshot: Option „Beispieleingabe hochladen“](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
 5. Laden Sie Ihre lokale Datei hoch, um die Abfrage zu testen. Sie können nur Dateien mit den Formaten JSON, CSV oder AVRO hochladen. Klicken Sie auf **OK**.
 
-   ![Azure Stream Analytics: Beispieldatei hochladen](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
+   ![Screenshot: Dialogfeld „Beispieldaten hochladen“, in dem Sie eine Datei auswählen können](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 
 6. Sobald Sie die Datei hochladen, können Sie auch den Inhalt der Datei im Formular als Tabelle oder im Rohformat sehen. Wenn Sie **Zurücksetzen** auswählen, kehren die Beispieldaten zu den eingehenden Eingabedaten zurück, die im vorherigen Abschnitt erläutert wurden. Sie können jede beliebige andere Datei hochladen, um die Abfrage jederzeit zu testen.
 
@@ -113,9 +113,9 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
 5.  Maschinelles Lernen wird nicht unterstützt.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Erstellen einer IoT-Lösung mithilfe von Stream Analytics:](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-build-an-iot-solution-using-stream-analytics) In diesem Tutorial wird erläutert, wie Sie eine End-to-End-Lösung mit einem Datengenerator erstellen, die den Datenverkehr an einer Mautstation simuliert.
+* [Erstellen einer IoT-Lösung mithilfe von Stream Analytics:](./stream-analytics-build-an-iot-solution-using-stream-analytics.md) In diesem Tutorial wird erläutert, wie Sie eine End-to-End-Lösung mit einem Datengenerator erstellen, die den Datenverkehr an einer Mautstation simuliert.
 
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
 
 * [Abfragebeispiele für gängige Stream Analytics-Verwendungsmuster](stream-analytics-stream-analytics-query-patterns.md)
 

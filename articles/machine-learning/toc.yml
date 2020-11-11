@@ -160,6 +160,8 @@
         - name: Übersicht über Unternehmenssicherheit
           displayName: authorization authentication encryption aad azure active directory
           href: concept-enterprise-security.md
+        - name: Datenverschlüsselung
+          href: concept-data-encryption.md
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Verantwortungsvolles maschinelles Lernen
@@ -182,14 +184,17 @@
       items:
         - name: Identitäts- und Zugriffsverwaltung
           items:
-            - name: Einrichten der Authentifizierung
+            - name: Arbeitsbereichsauthentifizierung
               displayName: 'authentication, auth, oauth'
               href: how-to-setup-authentication.md
-            - name: Verwalten von Benutzern und Rollen
+            - name: Webdienstauthentifizierung
+              displayName: 'authentication, model, web service'
+              href: how-to-authenticate-web-service.md
+            - name: Verwalten des Zugriffs (Autorisierung)
               href: how-to-assign-roles.md
-            - name: Verwenden verwalteter Identitäten für die Zugriffssteuerung
+            - name: Verwaltete Identitäten für die Zugriffssteuerung
               href: how-to-use-managed-identities.md
-            - name: "Verwenden der Azure\_AD-Identität in AKS-Bereitstellungen"
+            - name: "Azure\_AD-Identität in AKS-Bereitstellungen"
               href: how-to-use-azure-ad-identity.md
         - name: Netzwerksicherheit
           items:

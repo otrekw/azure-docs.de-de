@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: e22908dc5d445f105c199e594443cd051eb4be41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 82763842e6145b3883c46bcb9ddb45b7836c3cf2
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89051354"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241819"
 ---
 # <a name="load-balancer-health-probes"></a>Lastenausgleichs-Integritätstests
 
@@ -44,7 +44,7 @@ Integritätstests unterstützen mehrere Protokolle. Die Verfügbarkeit eines bes
 
 ## <a name="probe-configuration"></a><a name="probes"></a>Testkonfiguration
 
-Die Integritätstestkonfiguration besteht aus den folgenden Elementen:
+Die Integritätstestkonfiguration umfasst folgende Elemente:
 
 - Dauer des Intervalls zwischen einzelnen Tests
 - Anzahl der Testantworten, die beobachtet werden müssen, bevor der Test in einen anderen Zustand übergeht.
@@ -239,7 +239,7 @@ Verwenden Sie für einen Integritätstest der Instanz, die den Integritätstest 
 
 Wenn Sie die [IP-Quelladresse](#probesource) des Tests in Ihren Firewallrichtlinien nicht zulassen, tritt ein Fehler beim Integritätstest auf, da Ihre Instanz nicht erreicht werden kann.  Daraufhin kennzeichnet das Lastenausgleichsmodul Ihre Instanz als offline, da beim Integritätstest ein Fehler aufgetreten ist.  Diese Fehlkonfiguration kann dazu führen, dass Ihr Szenario mit Lastenausgleich fehlschlägt.
 
-Damit der Load Balancer-Integritätstest Ihre Instanz als online markieren kann, **müssen** Sie diese IP-Adresse in allen Azure-[Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) und lokalen Firewallrichtlinien zulassen.  Standardmäßig enthält jede Netzwerksicherheitsgruppe das [Diensttag](../virtual-network/security-overview.md#service-tags) „AzureLoadBalancer“, um Datenverkehr im Rahmen von Integritätstests zulassen.
+Damit der Load Balancer-Integritätstest Ihre Instanz als online markieren kann, **müssen** Sie diese IP-Adresse in allen Azure- [Netzwerksicherheitsgruppen](../virtual-network/security-overview.md) und lokalen Firewallrichtlinien zulassen.  Standardmäßig enthält jede Netzwerksicherheitsgruppe das [Diensttag](../virtual-network/security-overview.md#service-tags) „AzureLoadBalancer“, um Datenverkehr im Rahmen von Integritätstests zulassen.
 
 Wenn Sie einen Integritätstestfehler überprüfen oder eine einzelne Instanz abgrenzen möchten, können Sie eine [Netzwerksicherheitsgruppe](../virtual-network/security-overview.md) verwenden, um den Integritätstest explizit zu blockieren (Zielport oder [IP-Quelladresse](#probesource)), und den Fehler für einen Test simulieren.
 

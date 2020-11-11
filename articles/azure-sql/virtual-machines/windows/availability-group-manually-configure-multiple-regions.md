@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f6d5a9da238c520e2e0ec70ac312dd112aad2fe8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 335cc707cb1192d3dbf08f51e78d4e82441dd05a
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789980"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094454"
 ---
 # <a name="configure-a-sql-server-always-on-availability-group-across-different-azure-regions"></a>Konfigurieren einer SQL Server Always On-Verfügbarkeitsgruppe in verschiedenen Azure-Regionen
 
@@ -31,7 +31,7 @@ Dieser Artikel gilt für Azure Virtual Machines im Resource Manager-Modus.
 
 Die folgende Abbildung zeigt eine typische Bereitstellung einer Verfügbarkeitsgruppe für virtuelle Azure-Computer:
 
-   ![Verfügbarkeitsgruppe](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
+   ![Diagramm: Azure-Lastenausgleich und Verfügbarkeitsgruppe mit Windows Server-Failovercluster und Always On-Verfügbarkeitsgruppen](./media/availability-group-manually-configure-multiple-regions/00-availability-group-basic.png)
 
 In dieser Bereitstellung befinden sich alle virtuellen Computer in einer einzelnen Azure-Region. Die Verfügbarkeitsgruppenreplikate können über synchrone Commits mit automatischem Failover an SQL-1 und SQL-2 verfügen. Informationen zum Erstellen dieser Architektur finden Sie unter [Einführung in SQL Server Always On-Verfügbarkeitsgruppen auf virtuellen Azure-Computern](availability-group-overview.md).
 
@@ -53,7 +53,7 @@ Wenn sich Verfügbarkeitsgruppenreplikate auf virtuellen Azure-Computern in vers
 
 Das folgende Diagramm zeigt die Netzwerkkommunikation zwischen Rechenzentren:
 
-   ![Verfügbarkeitsgruppe](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
+   ![Diagramm: Zwei virtuelle Netzwerke in verschiedenen Azure-Regionen, die mithilfe von VPN-Gateways kommunizieren](./media/availability-group-manually-configure-multiple-regions/01-vpngateway-example.png)
 
 >[!IMPORTANT]
 >Bei dieser Architektur fallen Gebühren für ausgehende Daten an, die zwischen Azure-Regionen repliziert werden. Weitere Informationen finden Sie unter [Preisübersicht Bandbreite](https://azure.microsoft.com/pricing/details/bandwidth/).  
@@ -98,7 +98,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
 
    Die IP-Adressressource kann im Failovercluster-Manager erstellt werden. Wählen Sie den Namen des Clusters aus, klicken Sie mit der rechten Maustaste unter **Hauptressourcen des Clusters** auf den Clusternamen, und wählen Sie dann **Eigenschaften** aus: 
 
-   ![Clustereigenschaften](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
+   ![Screenshot: Failovercluster-Manager, in dem ein Clustername, „Servername“ und „Eigenschaften“ ausgewählt ist](./media/availability-group-manually-configure-multiple-regions/cluster-name-properties.png)
 
    Wählen Sie im Dialogfeld **Eigenschaften** die Option **Hinzufügen** unter **IP-Adresse** aus, und fügen Sie dann die IP-Adresse des Clusternamens aus der Remotenetzwerkregion hinzu. Klicken Sie im Dialogfeld **IP-Adresse** auf **OK** , und wählen Sie dann im Dialogfeld **Clustereigenschaften** erneut **OK** aus, um die neue IP-Adresse zu speichern. 
 
@@ -129,7 +129,7 @@ Gehen Sie wie folgt vor, um ein Replikat in einem Remoterechenzentrum zu erstell
    ![Verfügbarkeitsgruppe](./media/availability-group-manually-configure-multiple-regions/50-configure-dependency-multiple-ip.png)
 
    >[!IMPORTANT]
-   >Die Clusterressourcengruppe enthält beide IP-Adressen. Bei beiden IP-Adressen handelt es sich um Abhängigkeiten für den Listener-Clientzugriffspunkt. Verwenden Sie in der Clusterabhängigkeitskonfiguration den Operator **ODER** .
+   >Die Clusterressourcengruppe enthält beide IP-Adressen. Bei beiden IP-Adressen handelt es sich um Abhängigkeiten für den Listener-Clientzugriffspunkt. Verwenden Sie in der Clusterabhängigkeitskonfiguration den Operator **ODER**.
 
 1. [Legen Sie die Clusterparameter in PowerShell fest](availability-group-manually-configure-tutorial.md#setparam).
 
@@ -171,7 +171,7 @@ Sie können ein Failover des Replikats auf die Remoteregion durchführen, um die
 
 1. Stellen Sie im **Objekt-Explorer** eine Verbindung mit der Instanz von SQL Server her, die als Host für das primäre Replikat fungiert.
 1. Klicken Sie unter **AlwaysOn-Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppen** mit der rechten Maustaste auf Ihre Verfügbarkeitsgruppe, und wählen **Eigenschaften** aus.
-1. Konfigurieren Sie auf der Seite **Allgemein** unter **Verfügbarkeitsreplikate** das sekundäre Replikat am Notfallwiederherstellungsstandort mit dem Verfügbarkeitsmodus **Synchroner Commit** und dem Failovermodus **Automatisch** .
+1. Konfigurieren Sie auf der Seite **Allgemein** unter **Verfügbarkeitsreplikate** das sekundäre Replikat am Notfallwiederherstellungsstandort mit dem Verfügbarkeitsmodus **Synchroner Commit** und dem Failovermodus **Automatisch**.
 1. Wenn Sie zur Erzielung von Hochverfügbarkeit über ein sekundäres Replikat verfügen, das sich am gleichen Standort befindet wie Ihr primäres Replikat, legen Sie dieses Replikat auf **Asynchroner Commit** und **Manuell** fest.
 1. Wählen Sie „OK“ aus.
 1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf die Verfügbarkeitsgruppe, und wählen Sie anschließend **Dashboard anzeigen** aus.

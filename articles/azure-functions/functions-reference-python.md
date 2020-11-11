@@ -4,18 +4,22 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 0de25cc804844b5aa414e521fa641761d9a4b4f4
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 3d459f4249c65f2d09f9d8df6e7958adf852a2ea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108421"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346314"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
 Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions mithilfe von Python. Der folgende Inhalt geht davon aus, dass Sie das [Azure Functions: Entwicklerhandbuch](functions-reference.md) bereits gelesen haben.
 
-Informationen zu eigenständigen Functions-Beispielprojekten in Python finden Sie in den [Functions-Beispielen für Python](/samples/browse/?products=azure-functions&languages=python).
+Für Python-Entwickler sind möglicherweise auch folgende Artikel interessant:
+
+| Erste Schritte | Konzepte| Szenarien/Beispiele |
+| -- | -- | -- | 
+| <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programmiermodell
 
@@ -44,7 +48,7 @@ def main(req: azure.functions.HttpRequest) -> str:
     return f'Hello, {user}!'
 ```
 
-Verwenden Sie die Python-Anmerkungen im Paket [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python), um Eingaben und Ausgaben an Ihre Methoden zu binden.
+Verwenden Sie die Python-Anmerkungen im Paket [azure.functions.*](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true), um Eingaben und Ausgaben an Ihre Methoden zu binden.
 
 ## <a name="alternate-entry-point"></a>Alternativer Einstiegspunkt
 
@@ -194,7 +198,7 @@ Ausgaben können sowohl im Rückgabewert als auch in Ausgabeparametern angegeben
 
 Um den Rückgabewert einer Funktion als Wert für eine Ausgabebindung zu verwenden, sollte die `name`-Eigenschaft der Bindung in `function.json` auf `$return` festgelegt werden.
 
-Um mehrere Ausgaben zu erzeugen, verwenden Sie die `set()`-Methode, die von der [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python)-Schnittstelle bereitgestellt wird, um der Bindung einen Wert zuzuweisen. Die folgende Funktion kann z. B. mithilfe von Push eine Nachricht an eine Warteschlange übertragen und auch eine HTTP-Antwort zurückgeben.
+Um mehrere Ausgaben zu erzeugen, verwenden Sie die `set()`-Methode, die von der [`azure.functions.Out`](/python/api/azure-functions/azure.functions.out?view=azure-python&preserve-view=true)-Schnittstelle bereitgestellt wird, um der Bindung einen Wert zuzuweisen. Die folgende Funktion kann z. B. mithilfe von Push eine Nachricht an eine Warteschlange übertragen und auch eine HTTP-Antwort zurückgeben.
 
 ```json
 {
@@ -310,7 +314,7 @@ Zur Verbesserung der Leistung müssen Sie zunächst verstehen, wie Ihre App Ress
 
 Die Standardkonfigurationen sind für die meisten Azure Functions-Anwendungen geeignet. Allerdings können Sie die Leistung des Durchsatzes Ihrer Anwendungen verbessern, indem Sie Konfigurationen einsetzen, die zu Ihrem Workloadprofil passen. Daher besteht der erste Schritt darin, zu verstehen, was für ein Typ von Workload ausgeführt wird.
 
-|| E/A-gebundene Workload | CPU-gebundene Workload |
+|&nbsp;| E/A-gebundene Workload | CPU-gebundene Workload |
 |--| -- | -- |
 |Merkmale der Funktions-App| <ul><li>Die App muss viele gleichzeitige Aufrufe verarbeiten.</li> <li> Die App verarbeitet eine große Anzahl von E/A-Ereignissen, wie z. B. Netzwerkaufrufe und Lese-/Schreibvorgänge auf Datenträgern.</li> </ul>| <ul><li>Die App führt Langzeitberechnungen durch, wie z. B. die Größenänderung von Bildern.</li> <li>Die App führt Datentransformationen durch.</li> </ul> |
 |Beispiele| <ul><li>Web-APIs</li><ul> | <ul><li>Datenverarbeitung</li><li> Machine Learning-Rückschluss</li><ul>|
@@ -359,7 +363,7 @@ def main():
     some_blocking_socket_io()
 ```
 
-Um den vollen Nutzen aus der asynchronen Ausführung von Funktionen zu ziehen, muss der E/A-Vorgang bzw. die Bibliothek, die in Ihrem Code verwendet wird, ebenfalls asynchron implementiert sein. Die Verwendung synchroner E/A-Vorgänge in Funktionen, die als asynchron definiert sind, **kann die Gesamtleistung beeinträchtigen** .
+Um den vollen Nutzen aus der asynchronen Ausführung von Funktionen zu ziehen, muss der E/A-Vorgang bzw. die Bibliothek, die in Ihrem Code verwendet wird, ebenfalls asynchron implementiert sein. Die Verwendung synchroner E/A-Vorgänge in Funktionen, die als asynchron definiert sind, **kann die Gesamtleistung beeinträchtigen**.
 
 Hier sind einige Beispiele von Clientbibliotheken, die asynchrone Muster implementiert haben:
 - [aiohttp](https://pypi.org/project/aiohttp/): HTTP-Client/-Server für asyncio 
@@ -381,7 +385,7 @@ Die FUNCTIONS_WORKER_PROCESS_COUNT gilt für jeden Host, der von Functions erste
 
 ## <a name="context"></a>Kontext
 
-Um den Aufrufkontext einer Funktion während der Ausführung abzurufen, nehmen Sie das [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python)-Argument in ihre Signatur auf.
+Um den Aufrufkontext einer Funktion während der Ausführung abzurufen, nehmen Sie das [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true)-Argument in ihre Signatur auf.
 
 Beispiel:
 
@@ -394,7 +398,7 @@ def main(req: azure.functions.HttpRequest,
     return f'{context.invocation_id}'
 ```
 
-Die [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python)-Klasse weist die folgenden Zeichenfolgenattribute auf:
+Die [**Context**](/python/api/azure-functions/azure.functions.context?view=azure-python&preserve-view=true)-Klasse weist die folgenden Zeichenfolgenattribute auf:
 
 `function_directory`: Das Verzeichnis, in dem die Funktion ausgeführt wird.
 
@@ -746,7 +750,7 @@ Alle bekannten Probleme und Funktionsanfragen werden mithilfe der [GitHub-Proble
 
 Weitere Informationen finden Sie in den folgenden Ressourcen:
 
-* [Dokumentation zur Azure Functions-Paket-API](/python/api/azure-functions/azure.functions?view=azure-python)
+* [Dokumentation zur Azure Functions-Paket-API](/python/api/azure-functions/azure.functions?view=azure-python&preserve-view=true)
 * [Bewährte Methoden für Azure Functions](functions-best-practices.md)
 * [Trigger und Bindungen in Azure Functions](functions-triggers-bindings.md)
 * [Blobspeicherbindungen](functions-bindings-storage-blob.md)
@@ -755,5 +759,5 @@ Weitere Informationen finden Sie in den folgenden Ressourcen:
 * [Trigger mit Timer](functions-bindings-timer.md)
 
 
-[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python
-[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python
+[HttpRequest]: /python/api/azure-functions/azure.functions.httprequest?view=azure-python&preserve-view=true
+[HttpResponse]: /python/api/azure-functions/azure.functions.httpresponse?view=azure-python&preserve-view=true

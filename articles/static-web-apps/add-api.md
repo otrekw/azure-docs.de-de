@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
-ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e90c023fa74711246c2e6e69eb576695e86a457
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91250146"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93128503"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>Hinzufügen einer API zu Azure Static Web Apps (Vorschau) mit Azure Functions
 
@@ -40,10 +40,10 @@ Die folgenden Schritte veranschaulichen, wie Sie ein neues Repository erstellen 
 
 Sobald Ihr Projekt erstellt ist, kopieren Sie die URL in Ihrem Browser für das neue Repository. Sie verwenden diese URL in Visual Studio Code, um das Git-Repository zu klonen.
 
-1. Drücken Sie **F1**, um den Befehl in der Befehlspalette zu öffnen.
+1. Drücken Sie **F1** , um den Befehl in der Befehlspalette zu öffnen.
 1. Fügen Sie die URL in die Aufforderung von _Git: Clone_ ein, und drücken Sie die **EINGABETASTE**.
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Klonen eines GitHub-Projekts mit Visual Studio Code":::
 
     Folgen Sie den Eingabeaufforderungen, um einen Speicherort für das Repository zum Klonen des Projekts auszuwählen.
 
@@ -52,18 +52,18 @@ Sobald Ihr Projekt erstellt ist, kopieren Sie die URL in Ihrem Browser für das 
 Als nächstes erstellen Sie ein Azure Functions-Projekt als API der Anwendung. 
 
 1. Erstellen Sie im Projekt _my-vanilla-api_ einen Unterordner mit dem Namen **api**.
-1. Drücken Sie **F1**, um die Befehlspalette zu öffnen.
+1. Drücken Sie **F1** , um die Befehlspalette zu öffnen.
 1. Geben Sie **Azure Functions: Neues Projekt erstellen...** ein.
 1. Drücken Sie die **EINGABETASTE**.
 1. Wählen Sie **Durchsuchen** aus.
 1. Wählen Sie den Ordner **api** als Verzeichnis für Ihren Projektarbeitsbereich aus.
 1. Wählen Sie **Auswählen** aus.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Screenshot: API-Ordner und Schaltfläche „Auswählen“":::
 
 1. Geben Sie nach entsprechender Aufforderung Folgendes ein:
 
-    - _Sprache auswählen_: Wählen Sie **JavaScript** aus.
+    - _Sprache auswählen_ : Wählen Sie **JavaScript** aus.
     - _Select a template for your project's first function_ (Wählen Sie die Vorlage für die erste Funktion Ihres Projekts aus.): Wählen Sie **HTTP-Trigger** aus.
     - _Provide a function name_ (Geben Sie einen Funktionsnamen an.): Geben Sie **GetMessage** ein.
     - _Autorisierungsstufe:_ Wählen Sie **Anonym** aus, damit Ihr Funktionsendpunkt von jedem Benutzer aufgerufen werden kann.
@@ -145,15 +145,15 @@ Dank der Integration zwischen Visual Studio Code und [Azure Functions Core Tools
 
     Die Core Tools zeigen die Ausgabe der aktiven Anwendung im Bereich _Terminal_ an. In der Ausgabe wird der lokal ausgeführte URL-Endpunkt Ihrer per HTTP ausgelösten Funktion angezeigt.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Screenshot: Registerkarte „TERMINAL“ mit angezeigter URL":::
 
 1. Wenn die Core Tools ausgeführt werden, navigieren Sie zu der folgenden URL, um zu überprüfen, ob die API ordnungsgemäß ausgeführt wird: `http://localhost:7071/api/message`.
 
    Die Antwort im Browser sollte ähnlich wie im folgenden Beispiel aussehen:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Screenshot: Textantwort in einem Browser":::
 
-1. Drücken Sie **UMSCHALT+F5**, um die Debugsitzung zu beenden.
+1. Drücken Sie **UMSCHALT+F5** , um die Debugsitzung zu beenden.
 
 ### <a name="call-the-api-from-the-application"></a>Aufrufen der API aus der Anwendung
 
@@ -193,24 +193,24 @@ Bei der Bereitstellung in Azure werden Anforderungen an die API automatisch an d
    </html>
    ```
 
-1. Drücken Sie **F5**, um das API-Projekt zu starten.
+1. Drücken Sie **F5** , um das API-Projekt zu starten.
 
-1. Drücken Sie **F1**, und wählen Sie **Live Server: Mit Live-Server öffnen** aus.
+1. Drücken Sie **F1** , und wählen Sie **Live Server: Mit Live-Server öffnen** aus.
 
     Die API-Meldung sollte jetzt auf der Webseite angezeigt werden.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Screenshot: API-Meldung in einem Browser":::
 
    > [!NOTE]
    > Sie können auch andere HTTP-Server oder -Proxys verwenden, um die Datei `index.html` bereitzustellen. Der Zugriff auf `index.html` über `file:///` funktioniert nicht.
 
-1. Drücken Sie **UMSCHALT+F5**, um das API-Projekt zu beenden.
+1. Drücken Sie **UMSCHALT+F5** , um das API-Projekt zu beenden.
 
 ### <a name="commit-and-push-your-changes-to-github"></a>Committen und Pushen Ihrer Änderungen für GitHub
 
 Verwenden Sie Visual Studio Code, um für Ihre Änderungen das Committen und Pushen zum Git-Remoterepository durchzuführen.
 
-1. Drücken Sie **F1**, um die Befehlspalette zu öffnen.
+1. Drücken Sie **F1** , um die Befehlspalette zu öffnen.
 1. Geben Sie **Git: Commit für alle** ein.
 1. Fügen Sie eine Commitnachricht hinzu, und drücken Sie die **EINGABETASTE**.
 1. Drücken Sie **F1**.
@@ -231,7 +231,7 @@ Fügen Sie als nächstes die App-spezifischen Einstellungen hinzu.
 1. Geben Sie der App den Namen **my-vanilla-api**.
 1. Wählen Sie eine _Region_ aus, die in Ihrer Nähe liegt.
 1. Wählen Sie für _SKU_ die Option **Free** aus.
-1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden**, und führen Sie die Authentifizierung mit GitHub durch.
+1. Klicken Sie auf die Schaltfläche **Mit GitHub anmelden** , und führen Sie die Authentifizierung mit GitHub durch.
 1. Wählen Sie Ihre bevorzugte _Organisation_ aus.
 1. Wählen Sie in der Dropdownliste _Repository_ die Option **my-vanilla-api** aus.
 1. Wählen Sie in der Dropdownliste _Branch_ den Eintrag **master** aus.
@@ -241,21 +241,21 @@ Fügen Sie als Nächstes die folgenden Builddetails hinzu.
 
 1. Geben Sie **/** für den _App-Speicherort_ ein.
 1. Geben Sie im Feld _API-Speicherort_ den Speicherort **api** ein.
-1. Löschen Sie den Standardwert aus _Speicherort für App-Artefakte_, und lassen Sie das Feld leer.
+1. Löschen Sie den Standardwert aus _Speicherort für App-Artefakte_ , und lassen Sie das Feld leer.
 1. Klicken Sie auf **Überprüfen + erstellen**.
 1. Klicken Sie auf die Schaltfläche **Erstellen**.
 
     Sobald Sie auf die Schaltfläche _Erstellen_ klicken, führt Azure zwei Schritte aus. Zunächst werden die zugrunde liegenden Clouddienste erstellt, um die App zu unterstützen. Anschließend beginnt ein Hintergrundprozess mit der Erstellung und Bereitstellung der Anwendung.
 
-1. Klicken Sie auf die Schaltfläche **Zu Ressource wechseln**, um zur Seite _Übersicht_ der Web-App zu gelangen.
+1. Klicken Sie auf die Schaltfläche **Zu Ressource wechseln** , um zur Seite _Übersicht_ der Web-App zu gelangen.
 
     Während die App im Hintergrund erstellt wird, können Sie auf das Banner mit dem Link klicken, um den Buildstatus anzuzeigen.
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub-Workflow":::
 
-1. Sobald die Bereitstellung abgeschlossen ist, können Sie zu der Web-App navigieren, indem Sie auf den _URL_-Link klicken, der auf der Seite _Übersicht_ angezeigt wird.
+1. Sobald die Bereitstellung abgeschlossen ist, können Sie zu der Web-App navigieren, indem Sie auf den _URL_ -Link klicken, der auf der Seite _Übersicht_ angezeigt wird.
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Erstellen eines neuen Repositorys aus „vanilla-basic“":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Zugreifen auf die URL der statischen App über das Azure-Portal":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

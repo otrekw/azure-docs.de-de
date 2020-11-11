@@ -16,16 +16,16 @@ ms.custom:
 - 'Role: Operations'
 - devx-track-js
 - devx-track-csharp
-ms.openlocfilehash: dbe277c7451b02887ec5657b1a183fcd001d134e
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 93b692574588396f776c4d62bd24072382ae8471
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148285"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912139"
 ---
 # <a name="control-access-to-iot-hub"></a>Verwalten des Zugriffs auf IoT Hub
 
-In diesem Artikel werden die Optionen zum Sichern Ihres IoT Hubs beschrieben. IoT Hub verwendet *Berechtigungen*, um Zugriff auf den Endpunkt jedes IoT Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
+In diesem Artikel werden die Optionen zum Sichern Ihres IoT Hubs beschrieben. IoT Hub verwendet *Berechtigungen* , um Zugriff auf den Endpunkt jedes IoT Hubs zu gewähren. Berechtigungen beschränkten den Zugriff auf einen IoT Hub basierend auf der Funktionalität.
 
 Dieser Artikel bietet eine Einführung zu Folgendem:
 
@@ -43,17 +43,17 @@ Sie müssen über Berechtigungen für den Zugriff auf IoT Hub-Endpunkte verfüge
 
 Sie können [Berechtigungen](#iot-hub-permissions) auf folgende Weise gewähren:
 
-* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal](https://portal.azure.com) programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs](/rest/api/iothub/iothubresource) oder mit dem CLI-Befehl [az iot hub policy](/cli/azure/iot/hub/policy?view=azure-cli-latest) definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
+* **Richtlinien für den gemeinsamen Zugriff auf IoT Hub-Ebene**. SAS-Richtlinien können eine beliebige Kombination von [Berechtigungen](#iot-hub-permissions) gewähren. Sie können Richtlinien im [Azure-Portal](https://portal.azure.com) programmgesteuert mithilfe von [IoT Hub-Ressourcenanbieter-REST-APIs](/rest/api/iothub/iothubresource) oder mit dem CLI-Befehl [az iot hub policy](/cli/azure/iot/hub/policy) definieren. Ein neu erstellter IoT Hub verfügt über die folgenden Standardrichtlinien:
   
   | SAS-Richtlinie | Berechtigungen |
   | -------------------- | ----------- |
   | iothubowner | Alle Berechtigungen |
-  | Dienst | **ServiceConnect**-Berechtigung |
-  | device | **DeviceConnect**-Berechtigung |
-  | registryRead | **RegistryRead**-Berechtigung |
-  | registryReadWrite | **RegistryReadWrite**- und **RegistryWrite**-Berechtigungen |
+  | Dienst | **ServiceConnect** -Berechtigung |
+  | device | **DeviceConnect** -Berechtigung |
+  | registryRead | **RegistryRead** -Berechtigung |
+  | registryReadWrite | **RegistryReadWrite** - und **RegistryWrite** -Berechtigungen |
 
-* **Sicherheitsanmeldeinformationen auf Gerätebasis**. Jeder IoT Hub enthält eine [Identitätsregistrierung](iot-hub-devguide-identity-registry.md). Sie können für jedes Gerät in dieser Identitätsregistrierung Sicherheitsanmeldeinformationen konfigurieren, die **DeviceConnect**-Berechtigungen erteilen, deren Gültigkeitsbereich auf die entsprechenden Geräteendpunkte festgelegt ist.
+* **Sicherheitsanmeldeinformationen auf Gerätebasis**. Jeder IoT Hub enthält eine [Identitätsregistrierung](iot-hub-devguide-identity-registry.md). Sie können für jedes Gerät in dieser Identitätsregistrierung Sicherheitsanmeldeinformationen konfigurieren, die **DeviceConnect** -Berechtigungen erteilen, deren Gültigkeitsbereich auf die entsprechenden Geräteendpunkte festgelegt ist.
 
 Beispielsweise In einer normalen IoT-Lösung:
 
@@ -99,7 +99,7 @@ HTTPS implementiert die Authentifizierung, indem ein gültiges Token in den Anfo
 
 Benutzername (bei der Geräte-ID wird Groß-/Kleinschreibung berücksichtigt): `iothubname.azure-devices.net/DeviceId`
 
-Kennwort (Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren):
+Kennwort (Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren):
 
 `SharedAccessSignature sr=iothubname.azure-devices.net%2fdevices%2fDeviceId&sig=kPszxZZZZZZZZZZZZZZZZZAhLT%2bV7o%3d&se=1487709501`
 
@@ -116,7 +116,7 @@ Bei Verwendung von SASL PLAIN mit AMQP kann ein Client, der eine Verbindung mit 
 
 ## <a name="scope-iot-hub-level-credentials"></a>Gültigkeitsbereich für Anmeldeinformationen auf IoT Hub-Ebene
 
-Sie können den Bereich für Sicherheitsrichtlinien auf IoT Hub-Ebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise ist der Endpunkt zum Senden von Gerät-zu-Cloud-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine SAS-Richtlinie auf IoT Hub-Ebene mit **DeviceConnect**-Berechtigungen auch verwenden, um ein Token zu signieren, dessen resourceURI-Element **/devices/{deviceId}** ist. Bei diesem Ansatz wird ein Token erstellt, das nur zum Senden von Nachrichten im Namen der des Geräts **deviceId** verwendet werden kann.
+Sie können den Bereich für Sicherheitsrichtlinien auf IoT Hub-Ebene festlegen, indem Sie Token mit eingeschränktem Ressourcen-URI erstellen. Beispielsweise ist der Endpunkt zum Senden von Gerät-zu-Cloud-Nachrichten von einem Gerät **/devices/{deviceId}/messages/events**. Sie können eine SAS-Richtlinie auf IoT Hub-Ebene mit **DeviceConnect** -Berechtigungen auch verwenden, um ein Token zu signieren, dessen resourceURI-Element **/devices/{deviceId}** ist. Bei diesem Ansatz wird ein Token erstellt, das nur zum Senden von Nachrichten im Namen der des Geräts **deviceId** verwendet werden kann.
 
 Dieser Mechanismus ist mit einer [Event Hubs-Herausgeberrichtlinie](https://code.msdn.microsoft.com/Service-Bus-Event-Hub-99ce67ab) vergleichbar und ermöglicht die Implementierung von benutzerdefinierten Authentifizierungsmethoden.
 
@@ -144,15 +144,15 @@ Hier sind die erwarteten Werte:
 
 | Wert | BESCHREIBUNG |
 | --- | --- |
-| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig**: Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
+| {signature} |Eine HMAC-SHA256-Signaturzeichenfolge in folgendem Format: `{URL-encoded-resourceURI} + "\n" + expiry`. **Wichtig** : Der Schlüssel wird aus Base64 decodiert und als Schlüssel für die HMAC-SHA256-Berechnung verwendet. |
 | {resourceURI} |Das URI-Präfix (nach Segment) der Endpunkte, auf die mit diesem Token zugegriffen werden kann – beginnend mit dem Hostnamen des IoT Hubs (kein Protokoll). Zum Beispiel, `myHub.azure-devices.net/devices/device1` |
 | {expiry} |UTF8-Zeichenfolge, dargestellt als die Anzahl von Sekunden seit dem 1. Januar 1970 um 00:00:00 UTC. |
 | {URL-encoded-resourceURI} |URL-Codierung des Ressourcen-URI (beides in Kleinbuchstaben) |
 | {policyName} |Der Name der gemeinsam genutzten Zugriffsrichtlinie, auf die dieses Token verweist. Nicht vorhanden, wenn das Token auf Geräteregistrierungs-Anmeldeinformationen verweist. |
 
-**Hinweis zum Präfix**: Das URI-Präfix wird nach Segment, nicht nach Zeichen berechnet. Beispielsweise ist `/a/b` ein Präfix für `/a/b/c`, aber nicht für `/a/bc`.
+**Hinweis zum Präfix** : Das URI-Präfix wird nach Segment, nicht nach Zeichen berechnet. Beispielsweise ist `/a/b` ein Präfix für `/a/b/c`, aber nicht für `/a/bc`.
 
-Der folgende „Node.js“-Codeausschnitt zeigt eine Funktion namens **GenerateSasToken**, die das Token aus den Eingaben `resourceUri, signingKey, policyName, expiresInMins` berechnet. In den nächsten Abschnitten wird erläutert, wie die verschiedenen Eingaben für die verschiedenen Anwendungsfälle für Token initialisiert werden.
+Der folgende „Node.js“-Codeausschnitt zeigt eine Funktion namens **GenerateSasToken** , die das Token aus den Eingaben `resourceUri, signingKey, policyName, expiresInMins` berechnet. In den nächsten Abschnitten wird erläutert, wie die verschiedenen Eingaben für die verschiedenen Anwendungsfälle für Token initialisiert werden.
 
 ```javascript
 var generateSasToken = function(resourceUri, signingKey, policyName, expiresInMins) {
@@ -264,7 +264,7 @@ Java:
 
 ### <a name="use-sas-tokens-in-a-device-app"></a>Verwenden von SAS-Token in einer Geräte-App
 
-Es gibt zwei Methoden zum Abrufen von **DeviceConnect**-Berechtigungen mit IoT Hub über Sicherheitstoken: mit einem [symmetrischen Identitätsschlüssel aus der Identitätsregistrierung](#use-a-symmetric-key-in-the-identity-registry) oder mit einem [Schlüssel für den gemeinsamen Zugriff](#use-a-shared-access-policy).
+Es gibt zwei Methoden zum Abrufen von **DeviceConnect** -Berechtigungen mit IoT Hub über Sicherheitstoken: mit einem [symmetrischen Identitätsschlüssel aus der Identitätsregistrierung](#use-a-symmetric-key-in-the-identity-registry) oder mit einem [Schlüssel für den gemeinsamen Zugriff](#use-a-shared-access-policy).
 
 Denken Sie daran, dass alle Funktionen, auf die auf Geräten zugegriffen werden kann, für Endpunkte mit dem Präfix `/devices/{deviceId}` absichtlich verfügbar gemacht werden.
 
@@ -303,7 +303,7 @@ Das Ergebnis, das Zugriff auf alle Funktionen für „device1“ gewährt wird, 
 `SharedAccessSignature sr=myhub.azure-devices.net%2fdevices%2fdevice1&sig=13y8ejUk2z7PLmvtwR5RqlGBOVwiq7rQR3WZ5xZX3N4%3D&se=1456971697`
 
 > [!NOTE]
-> Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub?view=azure-cli-latest#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren.
+> Sie können ein SAS-Token mit dem CLI-Erweiterungsbefehl [az iot hub generate-sas-token](/cli/azure/ext/azure-iot/iot/hub#ext-azure-iot-az-iot-hub-generate-sas-token) oder den [Azure IoT Tools für Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) generieren.
 
 ### <a name="use-a-shared-access-policy"></a>Verwenden einer SAS-Richtlinie
 
@@ -381,9 +381,9 @@ Unterstützte Zertifikate:
 
 * **Ein von einer Zertifizierungsstelle signiertes X.509-Zertifikat**. Sie können auch ein von einer Zertifizierungsstelle generiertes und signiertes X.509-Zertifikat verwenden, um ein Gerät zu identifizieren und bei IoT Hub zu authentifizieren. Diese Option ist sowohl für die Authentifizierung per Fingerabdruck als auch für die Authentifizierung per Zertifizierungsstelle geeignet.
 
-* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL](https://www.openssl.org/) und das Windows-Hilfsprogramm [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden. Diese Option kann nur für die Authentifizierung per Fingerabdruck verwendet werden. 
+* **Ein selbst generiertes und selbstsigniertes X.509-Zertifikat**. Ein Gerätehersteller oder interner Bereitsteller kann diese Zertifikate generieren und den entsprechenden privaten Schlüssel (und das Zertifikat) auf dem Gerät speichern. Sie können dafür Tools wie etwa [OpenSSL](https://www.openssl.org/) und das Windows-Hilfsprogramm [SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate) verwenden. Diese Option kann nur für die Authentifizierung per Fingerabdruck verwendet werden.
 
-Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides.
+Ein Gerät verwendet entweder ein X.509-Zertifikat oder ein Sicherheitstoken für die Authentifizierung, aber nicht beides. Stellen Sie bei der X.509-Zertifikatsauthentifizierung sicher, dass Sie über eine Strategie zur Handhabung des Rollovers von Zertifikaten verfügen, wenn ein vorhandenes Zertifikat abläuft.
 
 Die folgenden Funktionen werden bei Geräten, die die Authentifizierung per X.509-Zertifizierungsstelle verwenden, nicht unterstützt:
 
@@ -396,11 +396,11 @@ Weitere Informationen zur Authentifizierung per Zertifizierungsstelle finden Sie
 
 Das [Azure IoT-Dienst-SDK für C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/service) (mindestens Version 1.0.8) unterstützt die Registrierung von Geräten, die ein X.509-Zertifikat für die Authentifizierung verwenden. Andere APIs wie beispielsweise für den Import/Export von Geräten unterstützen ebenfalls X.509-Zertifikate.
 
-Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity?view=azure-cli-latest) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
+Sie können auch den CLI-Erweiterungsbefehl [az iot hub device-identity](/cli/azure/ext/azure-iot/iot/hub/device-identity) verwenden, um X.509-Zertifikate für Geräte zu konfigurieren.
 
 ### <a name="c-support"></a>C\#-Unterstützung
 
-Die **RegistryManager** -Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen Ihnen die Registrierung und Aktualisierung eines Geräts in der IoT Hub-Identitätsregistrierung. Diese beiden Methoden nutzen eine **Device** -Instanz als Eingabe. Die **Device**-Klasse enthält eine **Authentication**-Eigenschaft, die Ihnen die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA256-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Sie haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarien mit Zertifikat-Rollover zu behandeln.
+Die **RegistryManager** -Klasse stellt eine programmgesteuerte Methode zum Registrieren eines Geräts bereit. Insbesondere die Methoden **AddDeviceAsync** und **UpdateDeviceAsync** ermöglichen Ihnen die Registrierung und Aktualisierung eines Geräts in der IoT Hub-Identitätsregistrierung. Diese beiden Methoden nutzen eine **Device** -Instanz als Eingabe. Die **Device** -Klasse enthält eine **Authentication** -Eigenschaft, die Ihnen die Angabe primärer und sekundärer X.509-Zertifikatfingerabdrücke ermöglicht. Der Fingerabdruck stellt einen SHA256-Hash des X.509-Zertifikats dar (gespeichert mithilfe binärer DER-Codierung). Sie haben die Möglichkeit, einen primären Fingerabdruck oder einen sekundären Fingerabdruck oder beides anzugeben. Primäre und sekundäre Fingerabdrücke werden unterstützt, um Szenarien mit Zertifikat-Rollover zu behandeln.
 
 Hier sehen Sie einen C\#-Beispielcodeausschnitt für die Registrierung eines Geräts mithilfe eines X.509-Zertifikatfingerabdrucks:
 
@@ -425,7 +425,7 @@ Das [Azure IoT-Geräte-SDK für .NET](https://github.com/Azure/azure-iot-sdk-csh
 
 ### <a name="c-support"></a>C\#-Unterstützung
 
-Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von **DeviceClient**-Instanzen mithilfe eines X.509-Zertifikats. Das X.509-Zertifikat muss im PFX-Format (auch als „PKCS #12“ bezeichnet) vorliegen, das den privaten Schlüssel enthält.
+Die Klasse **DeviceAuthenticationWithX509Certificate** unterstützt die Erstellung von **DeviceClient** -Instanzen mithilfe eines X.509-Zertifikats. Das X.509-Zertifikat muss im PFX-Format (auch als „PKCS #12“ bezeichnet) vorliegen, das den privaten Schlüssel enthält.
 
 Hier sehen Sie ein Beispiel für einen Codeausschnitt:
 
@@ -439,13 +439,13 @@ var deviceClient = DeviceClient.Create("<IotHub DNS HostName>", authMethod);
 
 Mit der [Identitätsregistrierung](iot-hub-devguide-identity-registry.md) von IoT Hub können Sie Sicherheitsanmeldeinformationen und die Zugriffssteuerung pro Gerät/Modul mithilfe von [Token](iot-hub-devguide-security.md#security-tokens) konfigurieren. Wenn eine IoT-Lösung bereits über eine benutzerdefinierte Identitätsregistrierung und/oder über ein Authentifizierungsschema verfügt, können Sie diese Infrastruktur durch Erstellen eines *Tokendiensts* in IoT Hub integrieren. Auf diese Weise können Sie andere IoT-Features in der Lösung nutzen.
 
-Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit **DeviceConnect**- oder **ModuleConnect**-Berechtigungen, um Token mit *Gerätebereich* bzw. *Modulbereich* zu erstellen. Mit diesen Token kann ein Gerät oder ein Modul eine Verbindung mit Ihrer IoT Hub-Instanz herstellen.
+Ein Tokendienst ist ein benutzerdefinierter Clouddienst. Er verwendet eine *SAS-Richtlinie* von IoT Hub mit **DeviceConnect** - oder **ModuleConnect** -Berechtigungen, um Token mit *Gerätebereich* bzw. *Modulbereich* zu erstellen. Mit diesen Token kann ein Gerät oder ein Modul eine Verbindung mit Ihrer IoT Hub-Instanz herstellen.
 
 ![Schritte des Tokendienstmusters](./media/iot-hub-devguide-security/tokenservice.png)
 
 Hier sind die wichtigsten Schritte des Tokendienstmusters:
 
-1. Erstellen Sie eine IoT Hub-SAS-Richtlinie mit **DeviceConnect**- oder **ModuleConnect**-Berechtigungen für Ihre IoT Hub-Instanz. Sie können diese Richtlinie im [Azure-Portal](https://portal.azure.com) oder programmgesteuert erstellen. Diese Richtlinie wird vom Tokendienst zum Signieren der von ihm erstellten Token verwendet.
+1. Erstellen Sie eine IoT Hub-SAS-Richtlinie mit **DeviceConnect** - oder **ModuleConnect** -Berechtigungen für Ihre IoT Hub-Instanz. Sie können diese Richtlinie im [Azure-Portal](https://portal.azure.com) oder programmgesteuert erstellen. Diese Richtlinie wird vom Tokendienst zum Signieren der von ihm erstellten Token verwendet.
 
 2. Wenn ein Gerät/Modul auf IoT Hub zugreifen muss, fordert es von Ihrem Tokendienst ein signiertes Token an. Das Gerät kann mit Ihrer benutzerdefinierten Identitätsregistrierung bzw. mit dem Authentifizierungsschema authentifiziert werden, um die Geräte- oder Modulidentität zu ermitteln, die der Tokendienst zum Erstellen des Tokens verwendet.
 

@@ -11,12 +11,12 @@ ms.date: 09/06/2018
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 4d66a1174b1b4adc94b24c6aecd55b2b8679f2f7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa5025e0a2bd260adeb23b4ab7c4d5f8bd83a43a
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85211883"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026801"
 ---
 # <a name="how-to-monitor-the-gen2-cache"></a>Überwachen des Gen2-Cache
 
@@ -26,15 +26,15 @@ In der Gen2-Speicherarchitektur werden die am häufigsten abgefragten Columnstor
  
 ## <a name="troubleshoot-using-the-azure-portal"></a>Behandeln von Problemen über das Azure-Portal
 
-Mithilfe von Azure Monitor können Sie Metriken des Gen2-Cache anzeigen, um Probleme mit der Abfrageleistung zu beheben. Wechseln Sie zunächst zum Azure-Portal, und klicken Sie auf **Monitor**, **Metriken** und **+ Bereich auswählen**:
+Mithilfe von Azure Monitor können Sie Metriken des Gen2-Cache anzeigen, um Probleme mit der Abfrageleistung zu beheben. Wechseln Sie zunächst zum Azure-Portal, und klicken Sie auf **Monitor** , **Metriken** und **+ Bereich auswählen** :
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
+![Screenshot: Metriken im Azure-Portal mit ausgewählter Option „Bereich auswählen“](./media/sql-data-warehouse-how-to-monitor-cache/cache-0.png)
 
 Verwenden Sie die Such- und Dropdownleisten zum Suchen nach Ihrem Data Warehouse. Wählen Sie dann „Übernehmen“ aus.
 
-![Azure Monitor](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
+![Screenshot: Bereich „Bereich auswählen“, in dem Sie Ihr Data Warehouse auswählen können](./media/sql-data-warehouse-how-to-monitor-cache/cache-1.png)
 
-Die wesentlichen Metriken für die Problembehandlung des Gen2-Cache sind **Prozentsatz der Cachetreffer** und **Cacheverwendung in Prozent**. Wählen Sie **Prozentsatz der Cachetreffer** aus, und klicken Sie auf die Schaltfläche **Metrik hinzufügen**, um **Cacheverwendung in Prozent** hinzuzufügen. 
+Die wesentlichen Metriken für die Problembehandlung des Gen2-Cache sind **Prozentsatz der Cachetreffer** und **Cacheverwendung in Prozent**. Wählen Sie **Prozentsatz der Cachetreffer** aus, und klicken Sie auf die Schaltfläche **Metrik hinzufügen** , um **Cacheverwendung in Prozent** hinzuzufügen. 
 
 ![Cachemetriken](./media/sql-data-warehouse-how-to-monitor-cache/cache-2.png)
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a59939fc7988e1a94bdfb9fac2d77011422e4983
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b763a1cda91886946bba211f589c37940e7c3ae1
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87274679"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042805"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -70,7 +70,7 @@ Bei Verwendung des [OAuth-Gerätecodeflows](../develop/v2-oauth2-device-code.md)
 
 Organisationen können festlegen, dass ein versuchter Zugriff auf die ausgewählten Cloud-Apps über eine genehmigte Client-App erfolgen muss. Diese genehmigten Client-Apps unterstützen [Intune-App-Schutzrichtlinien](/intune/app-protection-policy) unabhängig von jeglicher MDM-Lösung (Mobile-Device Management, Verwaltung mobiler Geräte).
 
-Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff das Gerät in Azure Active Directory registriert sein. Dafür ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS oder das Microsoft-Unternehmensportal für Android-Geräte sein. Wenn der Benutzer versucht, sich zu authentifizieren, und auf dem Gerät keine Broker-App installiert ist, wird er zum App Store umgeleitet, um die Broker-App zu installieren.
+Um dieses Gewährungssteuerelement zu nutzen, muss für den bedingten Zugriff das Gerät in Azure Active Directory registriert sein. Dafür ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS, Microsoft Authenticator oder das Microsoft-Unternehmensportal für Android-Geräte sein. Wenn der Benutzer versucht, sich zu authentifizieren, und auf dem Gerät keine Broker-App installiert ist, wird er zum entsprechenden App/Play Store umgeleitet, um die erforderliche Broker-App zu installieren.
 
 Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 
@@ -106,7 +106,7 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 **Anmerkungen**
 
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
-- Anforderung **Genehmigte Client-App erforderlich**:
+- Anforderung **Genehmigte Client-App erforderlich** :
    - Unterstützt als Geräteplattformbedingung nur iOS und Android.
    - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
 - Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
@@ -142,7 +142,7 @@ Diese Einstellung gilt für die folgenden Client-Apps:
 **Anmerkungen**
 
 - Apps für die App-Schutzrichtlinie unterstützen die mobile Anwendungsverwaltung mit Intune mit Richtlinienschutz.
-- Die Voraussetzung **App-Schutzrichtlinie erforderlich**:
+- Die Voraussetzung **App-Schutzrichtlinie erforderlich** :
     - Unterstützt als Geräteplattformbedingung nur iOS und Android.
     - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
 

@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: f7bac49a79d32af3a0e533f4c4e3431c62b82172
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148451"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348898"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -56,7 +56,7 @@ Verwandte Links:
 
 ### <a name="specify-correct-registry-name"></a>Angeben des richtigen Registrierungsnamens
 
-Wenn Sie `docker login` verwenden, geben Sie den vollständigen Anmeldeservernamen der Registrierung an, z. B. *myregistry.azurecr.io* . Stellen Sie sicher, dass Sie nur Kleinbuchstaben verwenden. Beispiel:
+Wenn Sie `docker login` verwenden, geben Sie den vollständigen Anmeldeservernamen der Registrierung an, z. B. *myregistry.azurecr.io*. Stellen Sie sicher, dass Sie nur Kleinbuchstaben verwenden. Beispiel:
 
 ```console
 docker login myregistry.azurecr.io
@@ -81,6 +81,7 @@ Verwandte Links:
   * Password (Kennwort): Kennwort des Dienstprinzipals (auch als *geheimer Clientschlüssel* bezeichnet)
 * Wenn Sie einen Azure-Dienst wie Azure Kubernetes Service oder Azure DevOps für den Zugriff auf die Registrierung verwenden, bestätigen Sie die Registrierungskonfiguration für Ihren Dienst.
 * Wenn Sie `az acr login` mit der `--expose-token`-Option ausgeführt haben, die die Registrierungsanmeldung ohne den Docker-Daemon ermöglicht, stellen Sie sicher, dass Sie sich mit dem Benutzernamen `00000000-0000-0000-0000-000000000000` authentifizieren.
+* Wenn Ihre Registrierung für [anonymen Pullzugriff](container-registry-faq.md#how-do-i-enable-anonymous-pull-access) konfiguriert ist, können vorhandene Docker-Anmeldeinformationen, die von einer früheren Docker-Anmeldung gespeichert wurden, den anonymen Zugriff verhindern. Führen Sie `docker logout` aus, bevor Sie einen anonymen Pullvorgang auf die Registrierung anwenden.
 
 Verwandte Links:
 

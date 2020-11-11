@@ -7,12 +7,12 @@ ms.reviewer: estfan, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 10/22/2020
 tags: connectors
-ms.openlocfilehash: 674d496485f89bee1904e3588a0fb81c6140945b
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: ce7679fff86d2c96588cf2b704d44238535963b3
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426612"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130934"
 ---
 # <a name="automate-workflows-for-a-sql-database-by-using-azure-logic-apps"></a>Automatisieren von Workflows für eine SQL-Datenbank mithilfe von Azure Logic Apps
 
@@ -67,7 +67,7 @@ Fahren Sie nun mit diesen Schritten fort:
 
 ### <a name="connect-to-azure-sql-database-or-managed-instance"></a>Herstellen einer Verbindung mit Azure SQL-Datenbank oder einer verwalteten Instanz
 
-Wenn Sie ohne das lokale Datengateway oder die Integrationsdienstumgebung auf Azure SQL Managed Instance zugreifen möchten, müssen Sie den [öffentlichen Endpunkt für Azure SQL Managed Instance einrichten](../azure-sql/managed-instance/public-endpoint-configure.md). Der öffentliche Endpunkt verwendet Port 3342. Stellen Sie daher sicher, dass Sie diese Portnummer angeben, wenn Sie die Verbindung über Ihre Logik-App herstellen.
+Wenn Sie ohne das lokale Datengateway oder die Integrationsdienstumgebung auf eine Azure SQL Managed Instance-Instanz zugreifen möchten, müssen Sie den [öffentlichen Endpunkt für Azure SQL Managed Instance einrichten](../azure-sql/managed-instance/public-endpoint-configure.md). Der öffentliche Endpunkt verwendet Port 3342. Stellen Sie daher sicher, dass Sie diese Portnummer angeben, wenn Sie die Verbindung über Ihre Logik-App herstellen.
 
 
 Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine [SQL-Aktion](#add-sql-action) hinzufügen und zuvor keine Verbindung mit Ihrer Datenbank hergestellt haben, werden Sie aufgefordert, diese Schritte auszuführen:
@@ -96,9 +96,14 @@ Wenn Sie zum ersten Mal entweder einen [SQL-Trigger](#add-sql-trigger) oder eine
    ||||
 
    > [!TIP]
-   > Sie finden diese Informationen in der Verbindungszeichenfolge Ihrer Datenbank. Suchen Sie z. B Ihre Datenbank im Azure-Portal, und öffnen Sie sie. Wählen Sie im Menü „Datenbank“ entweder **Verbindungszeichenfolgen** oder **Eigenschaften** aus, wo Sie diese Zeichenfolge finden:
+   > Zur Angabe Ihrer Datenbank- und Tabelleninformationen stehen folgende Optionen zur Verfügung:
+   > 
+   > * Ermitteln Sie diese Informationen in der Verbindungszeichenfolge Ihrer Datenbank. Suchen Sie z. B Ihre Datenbank im Azure-Portal, und öffnen Sie sie. Wählen Sie im Datenbankmenü entweder **Verbindungszeichenfolgen** oder **Eigenschaften** aus. Dort finden Sie die folgende Zeichenfolge:
    >
-   > `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >   `Server=tcp:{your-server-address}.database.windows.net,1433;Initial Catalog={your-database-name};Persist Security Info=False;User ID={your-user-name};Password={your-password};MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;`
+   >
+   > * Standardmäßig werden Tabellen in Systemdatenbanken herausgefiltert, sodass sie möglicherweise nicht automatisch angezeigt werden, wenn Sie eine Systemdatenbank auswählen. Alternativ können Sie den Tabellennamen manuell eingeben, nachdem Sie in der Datenbankliste die Option **Benutzerdefinierten Wert eingeben** ausgewählt haben.
+   >
 
    Dieses Beispiel zeigt, wie diese Werte aussehen können:
 
@@ -210,6 +215,8 @@ In diesem Beispiel beginnt die Logik-App mit dem [Wiederholungstrigger](../conne
 
    Durch diesen Schritt wird Ihre Logik-App in Azure automatisch aktiviert und live veröffentlicht.
 
+<a name="handle-bulk-data"></a>
+
 ## <a name="handle-bulk-data"></a>Verarbeiten von Massendaten
 
 Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Connector nicht alle Ergebnisse gleichzeitig zurückgibt. Oder Sie wünschen sich eine bessere Kontrolle über die Größe und Struktur Ihrer Resultsets. Hier sind einige Möglichkeiten, wie Sie derartig große Resultsets verarbeiten können:
@@ -223,7 +230,9 @@ Gelegentlich müssen Sie mit Resultsets arbeiten, die so groß sind, dass der Co
   Um die Ergebnisse in der von Ihnen gewünschten Weise zu organisieren, können Sie eine gespeicherte Prozedur erstellen, die in Ihrer SQL-Instanz ausgeführt wird und die **SELECT - ORDER BY** -Anweisung verwendet. Diese Lösung bietet Ihnen mehr Kontrolle über die Größe und Struktur Ihrer Ergebnisse. Ihre Logik-App ruft die gespeicherte Prozedur mithilfe der Aktion **Gespeicherte Prozedur ausführen** des SQL Server-Connectors auf. Weitere Informationen finden Sie unter [SELECT – ORDER BY-Klausel](/sql/t-sql/queries/select-order-by-clause-transact-sql).
 
   > [!NOTE]
-  > Mit diesem Connector ist die Ausführung einer gespeicherten Prozedur auf einen [Timeoutwert von unter zwei Minuten beschränkt](/connectors/sql/#known-issues-and-limitations). Die Verarbeitung einiger gespeicherter Prozeduren kann bis zu ihrem Abschluss länger als dieses Limit dauern, wodurch ein `504 TIMEOUT`-Fehler generiert wird. Tatsächlich sind zu diesem Zweck einige Prozesse mit langer Ausführungsdauer explizit als gespeicherte Prozeduren programmiert. Wenn Sie diese Prozeduren aus Azure Logic Apps aufrufen, können aufgrund dieses Timeoutlimits Probleme entstehen. Obwohl der SQL-Connector nativ keinen asynchronen Modus unterstützt, können Sie diesen Modus mithilfe eines SQL-Abschlussauslösers, einer nativen SQL-Pass-Through-Abfrage, einer Zustandstabelle und serverseitiger Aufträge simulieren, indem Sie den [Azure-Agent für elastische Aufträge](../azure-sql/database/elastic-jobs-overview.md) verwenden.
+  > Beim SQL-Connector gilt für gespeicherte Prozeduren ein Timeoutlimit von [unter zwei Minuten](/connectors/sql/#known-issues-and-limitations). Einige gespeicherte Prozeduren dauern möglicherweise länger, was einen Fehler vom Typ `504 Timeout` zur Folge hat. Sie können dieses Problem umgehen, indem Sie einen SQL-Abschlussauslöser, eine native SQL-Pass-Through-Abfrage, eine Zustandstabelle und serverseitiger Aufträge verwenden.
+  > 
+  > Für diese Aufgabe können Sie den [Azure-Agent für elastische Aufträge](../azure-sql/database/elastic-jobs-overview.md) für [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md) nutzen. Für [lokale SQL Server-Instanzen](/sql/sql-server/sql-server-technical-documentation) und [Azure SQL Managed Instance](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md) können Sie den [SQL Server-Agent](/sql/ssms/agent/sql-server-agent) verwenden. Weitere Informationen finden Sie unter [Behandeln von Timeouts bei gespeicherten Prozeduren im SQL-Connector für Azure Logic Apps](../logic-apps/handle-long-running-stored-procedures-sql-connector.md).
 
 ### <a name="handle-dynamic-bulk-data"></a>Behandeln dynamischer Massendaten
 
@@ -237,7 +246,7 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 1. Suchen Sie unter **Aktion auswählen** nach der Aktion [**JSON analysieren**](../logic-apps/logic-apps-perform-data-operations.md#parse-json-action), und wählen Sie sie aus.
 
-1. Wählen Sie in der Aktion **Parse JSON** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden** .
+1. Wählen Sie in der Aktion **Parse JSON** die Option **Beispielnutzlast zum Generieren eines Schemas verwenden**.
 
 1. Fügen Sie in das Feld **Geben oder fügen Sie eine JSON-Beispielnutzlast ein** Ihre Beispielnutzlast ein, und wählen Sie dann **Fertig** aus.
 
@@ -250,7 +259,7 @@ Wenn Sie eine gespeicherte Prozedur mit dem SQL Server-Connector aufzurufen, ist
 
 ## <a name="troubleshoot-problems"></a>Behandeln von Problemen
 
-* Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Im Folgenden finden Sie einige Beispiele:
+* Verbindungsprobleme können häufig auftreten. Informationen zur Behebung dieser Probleme finden Sie unter [Beheben von Fehlern bei der Konnektivität mit SQL Server](https://support.microsoft.com/help/4009936/solving-connectivity-errors-to-sql-server). Hier einige Beispiele:
 
   * `A network-related or instance-specific error occurred while establishing a connection to SQL Server. The server was not found or was not accessible. Verify that the instance name is correct and that SQL Server is configured to allow remote connections.`
 

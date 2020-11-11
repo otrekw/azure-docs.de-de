@@ -13,34 +13,34 @@ ms.workload: iaas-sql-server
 ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: b83a44db98907f505c7bf0d8302470cf3031a967
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0d6900d0fdf656fa8309b18971691bb35587f7f4
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91761259"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286069"
 ---
 # <a name="register-multiple-sql-virtual-machines-in-azure-with-the-sql-vm-resource-provider"></a>Registrierung mehrerer SQL-VMs in Azure beim SQL-VM-Ressourcenanbieter
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-In diesem Artikel wird beschrieben, wie Sie in Azure mehrere SQL Server-VMs auf einmal mit dem PowerShell-Cmdlet `Register-SqlVMs` beim SQL-VM-Ressourcenanbieter registrieren.
+In diesem Artikel wird beschrieben, wie Sie in Azure mehrere SQL Server-VMs auf einmal mit dem PowerShell-Cmdlet `Register-SqlVMs` beim SQL-VM-Ressourcenanbieter registrieren. Bei der Registrierung beim SQL-VM-Ressourcenanbieter wird die [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) installiert.
 
 In diesem Artikel erfahren Sie, wie Sie SQL Server-VMs in einer Massenregistrierung registrieren. Alternativ können Sie [alle SQL Server-VMs automatisch](sql-vm-resource-provider-automatic-registration.md) oder [einzelne SQL Server-VMs](sql-vm-resource-provider-register.md) registrieren. 
 
 ## <a name="overview"></a>Übersicht
 
-Mit dem Cmdlet `Register-SqlVMs` können alle virtuellen Computer in einer bestimmten Liste von Abonnements, Ressourcengruppen oder einer Liste mit bestimmten virtuellen Computern registriert werden. Mit dem Cmdlet werden die virtuellen Computer im _Lightweight_-Verwaltungsmodus registriert sowie anschließend [ein Bericht und eine Protokolldatei](#output-description) erstellt. 
+Mit dem Cmdlet `Register-SqlVMs` können alle virtuellen Computer in einer bestimmten Liste von Abonnements, Ressourcengruppen oder einer Liste mit bestimmten virtuellen Computern registriert werden. Mit dem Cmdlet werden die virtuellen Computer im _Lightweight_ -Verwaltungsmodus registriert sowie anschließend [ein Bericht und eine Protokolldatei](#output-description) erstellt. 
 
 Der Registrierungsprozess birgt kein Risiko, weist keine Ausfallzeiten auf und startet SQL Server oder den virtuellen Computer nicht neu. 
 
-Weitere Informationen zum Ressourcenanbieter finden Sie unter [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md). 
+Weitere Informationen finden Sie unter [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Registrieren der SQL Server-VM beim Ressourcenanbieter benötigen Sie Folgendes: 
 
 - Ein [Azure-Abonnement](https://azure.microsoft.com/free/), das [beim Ressourcenanbieter registriert](sql-vm-resource-provider-register.md#register-subscription-with-rp) wurde und nicht registrierte SQL Server-VMs enthält. 
-- Die zum Registrieren der virtuellen Computer verwendeten Clientanmeldeinformationen sind in einer der folgenden Azure-Rollen vorhanden: **Mitwirkender von virtuellen Computern**, **Mitwirkender** oder **Besitzer**. 
+- Die zum Registrieren der virtuellen Computer verwendeten Clientanmeldeinformationen sind in einer der folgenden Azure-Rollen vorhanden: **Mitwirkender von virtuellen Computern** , **Mitwirkender** oder **Besitzer**. 
 - Die neueste Version von [Az PowerShell](/powershell/azure/new-azureps-module-az). 
 - Die neueste Version von [Az.SqlVirtualMachine](https://www.powershellgallery.com/packages/Az.SqlVirtualMachine/0.1.0).
 
@@ -227,7 +227,7 @@ Fehler werden in der Protokolldatei `VMsNotRegisteredDueToError<Timestamp>.log` 
 
 Wenn Sie SQL Server-VMs mithilfe des bereitgestellten Skripts beim Ressourcenanbieter registrieren, müssen Sie Folgendes beachten:
 
-- Für die Registrierung beim Ressourcenanbieter muss ein Gast-Agent auf der SQL Server-VM ausgeführt werden. Windows Server 2008-Images verfügen über keinen Gast-Agent, sodass diese virtuellen Computer fehlschlagen und manuell im [NoAgent-Verwaltungsmodus](sql-vm-resource-provider-register.md#management-modes) registriert werden müssen.
+- Für die Registrierung beim Ressourcenanbieter muss ein Gast-Agent auf der SQL Server-VM ausgeführt werden. Windows Server 2008-Images verfügen über keinen Gast-Agent, sodass diese virtuellen Computer fehlschlagen und manuell im [NoAgent-Verwaltungsmodus](sql-server-iaas-agent-extension-automate-management.md#management-modes) registriert werden müssen.
 - Es ist eine integrierte Wiederholungslogik vorhanden, um offensichtliche Fehler zu überwinden. Wenn die virtuelle Maschine erfolgreich registriert wurde, ist dies ein schneller Vorgang. Wenn die Registrierung jedoch fehlschlägt, wird jeder virtuelle Computer erneut geprüft.  Daher sollten Sie eine ausreichende Zeit für die Durchführung des Registrierungsprozesses zulassen. Die tatsächlich erforderliche Zeit hängt jedoch vom Typ und von der Anzahl der Fehler ab. 
 
 ## <a name="full-script"></a>Vollständiges Skript

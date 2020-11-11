@@ -7,12 +7,12 @@ ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 02/19/2020
 ms.author: lcozzens
-ms.openlocfilehash: 99c74547d5f48f57af56af69f47190d80d9cd350
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 5d74b17bdd9c264a983bfdd2e374001dd4a0e2c0
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074956"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93242108"
 ---
 # <a name="azure-app-configuration-faq"></a>Häufig gestellte Fragen zu Azure App Configuration
 
@@ -86,16 +86,16 @@ Beide App Configuration-Tarife bieten Kernfunktionen inklusive Konfigurationsein
 
 Nachfolgend sind verschiedene Aspekte aufgeführt, die Ihnen bei der Auswahl eines Tarifs helfen können.
 
-- **Ressourcen pro Abonnement**: Eine Ressource besteht aus einem einzelnen Konfigurationsspeicher. Jedes Abonnement ist auf einen Konfigurationsspeicher im Free-Tarif beschränkt. Abonnements können über eine unbegrenzte Anzahl von Konfigurationsspeichern im Standard-Tarif verfügen.
-- **Speicher pro Ressource**: Im Free-Tarif ist jeder Konfigurationsspeicher auf 10 MB Speicherplatz beschränkt. Im Standard-Tarif kann jeder Konfigurationsspeicher bis zu 1 GB Speicherplatz verwenden.
-- **Schlüsselverlauf**: App Configuration speichert den Verlauf aller an den Schlüsseln vorgenommenen Änderungen. Im Free-Tarif wird dieser Verlauf sieben Tage lang gespeichert. Im Standard-Tarif wird dieser Verlauf 30 Tage lang gespeichert.
-- **Anforderungen pro Tag**: Speicher im Free-Tarif sind auf 1.000 Anforderungen pro Tag beschränkt. Sobald ein Speicher 1.000 Anforderungen erreicht, wird bis Mitternacht (UTC) für alle Anforderungen der HTTP-Statuscode 429 zurückgegeben.
+- **Ressourcen pro Abonnement** : Eine Ressource besteht aus einem einzelnen Konfigurationsspeicher. Jedes Abonnement ist auf einen Konfigurationsspeicher im Free-Tarif beschränkt. Abonnements können über eine unbegrenzte Anzahl von Konfigurationsspeichern im Standard-Tarif verfügen.
+- **Speicher pro Ressource** : Im Free-Tarif ist jeder Konfigurationsspeicher auf 10 MB Speicherplatz beschränkt. Im Standard-Tarif kann jeder Konfigurationsspeicher bis zu 1 GB Speicherplatz verwenden.
+- **Revisionsverlauf:** App Configuration speichert den Verlauf aller an den Schlüsseln vorgenommenen Änderungen. Im Free-Tarif wird dieser Verlauf sieben Tage lang gespeichert. Im Standard-Tarif wird dieser Verlauf 30 Tage lang gespeichert.
+- **Anforderungskontingent:** Speicher im Free-Tarif sind auf 1.000 Anforderungen pro Tag beschränkt. Wenn ein Speicher 1.000 Anforderungen erreicht, wird bis Mitternacht (UTC) für alle Anforderungen der HTTP-Statuscode 429 zurückgegeben.
 
-    Für Speicher im Standard-Tarif sind die ersten 200.000 Anforderungen täglich in der täglichen Gebühr enthalten. Zusätzliche Anforderungen werden als Überschreitung abgerechnet.
+    Speicher im Standard-Tarif sind auf 20.000 Anforderungen pro Stunde beschränkt. Nach Ausschöpfen des Kontingents wird bis zum Ende der Stunde für alle Anforderungen der HTTP-Statuscode 429 zurückgegeben.
 
-- **Vereinbarung zum Servicelevel**: Die SLA des Standard-Tarifs sichert eine Verfügbarkeit von 99,9 % zu. Für den Free-Tarif gibt es keine SLA.
-- **Sicherheitsfeatures**: Beide Tarife beinhalten grundlegende Sicherheitsfunktionen einschließlich Verschlüsselung mit von Microsoft verwalteten Schlüsseln, Authentifizierung über HMAC oder Azure Active Directory, Azure RBAC-Unterstützung und verwaltete Identität. Der Standard-Tarif bietet fortgeschrittenere Sicherheitsfunktionen einschließlich Private Link-Unterstützung und Verschlüsselung mit vom Kunden verwalteten Schlüsseln.
-- **Kosten**: Für Speicher im Standard-Tarif fällt eine tägliche Nutzungsgebühr an. Es gibt auch eine Überschreitungsgebühr für Anforderungen, die über die tägliche Zuordnung hinausgehen. Es fallen keine Kosten für die Nutzung eines Speichers im Free-Tarif an.
+- **Vereinbarung zum Servicelevel** : Die SLA des Standard-Tarifs sichert eine Verfügbarkeit von 99,9 % zu. Für den Free-Tarif gibt es keine SLA.
+- **Sicherheitsfeatures** : Beide Tarife beinhalten grundlegende Sicherheitsfunktionen einschließlich Verschlüsselung mit von Microsoft verwalteten Schlüsseln, Authentifizierung über HMAC oder Azure Active Directory, Azure RBAC-Unterstützung, verwaltete Identität und Diensttags. Der Standard-Tarif bietet fortgeschrittenere Sicherheitsfunktionen einschließlich Private Link-Unterstützung und Verschlüsselung mit vom Kunden verwalteten Schlüsseln.
+- **Kosten** : Für Speicher im Standard-Tarif fällt eine tägliche Nutzungsgebühr an. Die ersten 200.000 Anforderungen täglich sind in der täglichen Gebühr enthalten. Es gibt auch eine Überschreitungsgebühr für Anforderungen, die über die tägliche Zuordnung hinausgehen. Es fallen keine Kosten für die Nutzung eines Speichers im Free-Tarif an.
 
 ## <a name="can-i-upgrade-a-store-from-the-free-tier-to-the-standard-tier-can-i-downgrade-a-store-from-the-standard-tier-to-the-free-tier"></a>Kann ich einen Speicher vom Free-Tarif in den Standard-Tarif upgraden? Kann ich einen Speicher vom Standard-Tarif in den Free-Tarif herabstufen?
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 10/12/2020
-ms.openlocfilehash: 7dd23f481409eb3498893c1c7f9c0fd8311b9af2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a06bbeb4946f03b9cb6e5b1400521a0abffdd7f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901608"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913533"
 ---
 # <a name="copy-and-transform-data-in-azure-synapse-analytics-formerly-sql-data-warehouse-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Azure Synapse Analytics (ehemals SQL Data Warehouse) mithilfe von Azure Data Factory
 
@@ -42,7 +42,7 @@ Für die Kopieraktivität unterstützt dieser Connector von Azure Synapse Analyt
 
 - Kopieren von Daten mit SQL-Authentifizierung und Azure Active Directory-Anwendungstokenauthentifizierung (Azure AD) mit einem Dienstprinzipal oder verwalteten Identitäten für Azure-Ressourcen.
 - Als Quelle das Abrufen von Daten mithilfe einer SQL-Abfrage oder gespeicherten Prozedur Sie können sich auch für das parallele Kopieren aus einer Azure Synapse Analytics-Quelle entscheiden. Weitere Informationen hierzu finden Sie im Abschnitt [Paralleles Kopieren aus Synapse Analytics](#parallel-copy-from-synapse-analytics).
-- Als Senke das Laden von Daten mithilfe von [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics), einer [COPY-Anweisung](#use-copy-statement) (Vorschau) oder BULK INSERT. Wir empfehlen PolyBase oder die COPY-Anweisung (Vorschau) für eine bessere Kopierleistung. Der Connector unterstützt auch das automatische Erstellen einer Zieltabelle auf Basis des Quellschemas, wenn keine vorhanden ist.
+- Als Senke das Laden von Daten mithilfe von [PolyBase](#use-polybase-to-load-data-into-azure-synapse-analytics), einer [COPY-Anweisung](#use-copy-statement) oder BULK INSERT. Wir empfehlen PolyBase oder die COPY-Anweisung für eine bessere Kopierleistung. Der Connector unterstützt auch das automatische Erstellen einer Zieltabelle auf Basis des Quellschemas, wenn keine vorhanden ist.
 
 > [!IMPORTANT]
 > Wenn Sie Daten mithilfe der Azure Data Factory Integration Runtime kopieren, konfigurieren Sie eine [Firewallregel auf Serverebene](../azure-sql/database/firewall-configure.md), damit Azure-Dienste Zugriff auf den [logischen SQL-Server](../azure-sql/database/logical-servers.md) erhalten.
@@ -51,7 +51,7 @@ Für die Kopieraktivität unterstützt dieser Connector von Azure Synapse Analyt
 ## <a name="get-started"></a>Erste Schritte
 
 > [!TIP]
-> Das beste Ergebnis erzielen Sie, indem Sie Daten mithilfe von PolyBase in Azure Synapse Analytics laden. Weitere Informationen finden Sie im Abschnitt [Laden der Daten unter Verwendung von PolyBase in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](load-azure-sql-data-warehouse.md).
+> Das beste Ergebnis erzielen Sie, indem Sie Daten mithilfe von PolyBase oder der COPY-Anweisung in Azure Synapse Analytics laden. Details finden Sie in den Abschnitten [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](#use-polybase-to-load-data-into-azure-synapse-analytics) und [Verwenden der COPY-Anweisung zum Laden von Daten in Azure Synapse Analytics (Vorschau)](#use-copy-statement). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](load-azure-sql-data-warehouse.md).
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -478,7 +478,7 @@ Mit [PolyBase](/sql/relational-databases/polybase/polybase-guide) lassen sich gr
 - Wenn der Speicher und das Format der Quelldaten von PolyBase ursprünglich nicht unterstützt werden, können Sie stattdessen das Feature **[Gestaffeltes Kopieren mit PolyBase](#staged-copy-by-using-polybase)** verwenden. Das gestaffelte Kopieren bietet auch einen höheren Durchsatz. Es konvertiert die Daten automatisch in ein mit PolyBase kompatibles Format, speichert die Daten in Azure Blob Storage und ruft dann PolyBase auf, um die Daten in Azure Synapse Analytics zu laden.
 
 > [!TIP]
-> Weitere Informationen finden Sie unter [Bewährte Methoden für die Verwendung von PolyBase](#best-practices-for-using-polybase). Bei Verwendung von PolyBase mit Azure Integration Runtime sind die effektiven Datenintegrationseinheiten (DIUs) immer auf 2 festgelegt. Die Optimierung der DIU wirkt sich nicht auf die Leistung aus, da das Laden von Daten aus dem Speicher durch die Synapse-Engine erfolgt.
+> Weitere Informationen finden Sie unter [Bewährte Methoden für die Verwendung von PolyBase](#best-practices-for-using-polybase). Bei Verwendung von PolyBase mit Azure Integration Runtime sind die effektiven [Datenintegrationseinheiten (DIUs)](copy-activity-performance-features.md#data-integration-units) für direkten oder gestaffelten Speicher in Synapse immer auf 2 festgelegt. Die Optimierung der DIU wirkt sich nicht auf die Leistung aus, da das Laden von Daten aus dem Speicher durch die Synapse-Engine erfolgt.
 
 Die folgenden PolyBase-Eigenschaften werden unter `polyBaseSettings` in der Kopieraktivität unterstützt:
 
@@ -507,7 +507,8 @@ Falls die Anforderungen nicht erfüllt werden, überprüft Azure Data Factory di
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | Kontoschlüsselauthentifizierung, Authentifizierung mit einer verwalteten Identität |
 
     >[!IMPORTANT]
-    >Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Informationen zu den erforderlichen Konfigurationen in Data Factory finden Sie im Abschnitt zum Thema [Azure-Blob: Authentifizierung per verwalteter Identität](connector-azure-blob-storage.md#managed-identity) bzw. [Azure Data Lake Storage Gen2: Authentifizierung per verwalteter Identität](connector-azure-data-lake-storage.md#managed-identity).
+    >- Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
+    >- Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. Das **Quelldatenformat** lautet **Parquet** , **ORC** oder **Durch Trennzeichen getrennter Text**  – mit den folgenden Konfigurationen:
 
@@ -567,7 +568,8 @@ Wenn Ihre Quelldaten nicht nativ mit PolyBase kompatibel sind, können Sie die D
 Um dieses Feature verwenden zu können, erstellen Sie einen [mit Azure Blob Storage verknüpften Dienst](connector-azure-blob-storage.md#linked-service-properties) oder einen [mit Azure Data Lake Storage Gen2 verknüpften Dienst](connector-azure-data-lake-storage.md#linked-service-properties) mit **Authentifizierung per Kontoschlüssel oder verwalteter Identität** , der auf das Azure Storage-Konto als Zwischenspeicher verweist.
 
 >[!IMPORTANT]
->Wenn Ihre Azure Storage-Staginginstanz mit VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Informationen zu den erforderlichen Konfigurationen in Data Factory finden Sie unter dem Thema [Azure-Blob: Authentifizierung per verwalteter Identität](connector-azure-blob-storage.md#managed-identity) bzw. [Azure Data Lake Storage Gen2: Authentifizierung per verwalteter Identität](connector-azure-data-lake-storage.md#managed-identity).
+>- Wenn Sie die Authentifizierung per verwalteter Identität für den verknüpften Stagingdienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
+>- Wenn Ihre Azure Storage-Staginginstanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). 
 
 ```json
 "activities":[
@@ -673,7 +675,7 @@ Die [COPY-Anweisung](/sql/t-sql/statements/copy-into-transact-sql) (Vorschau) vo
 >Derzeit unterstützt Data Factory nur das Kopieren aus nachfolgend aufgeführten Quellen, die mit der COPY-Anweisung kompatibel sind.
 
 >[!TIP]
->Bei Verwendung der COPY-Anweisung mit Azure Integration Runtime sind die effektiven Datenintegrationseinheiten (DIUs) immer auf 2 festgelegt. Die Optimierung der DIU wirkt sich nicht auf die Leistung aus, da das Laden von Daten aus dem Speicher durch die Synapse-Engine erfolgt.
+>Bei Verwendung der COPY-Anweisung mit Azure Integration Runtime sind die effektiven [Datenintegrationseinheiten (DIUs)](copy-activity-performance-features.md#data-integration-units) immer auf 2 festgelegt. Die Optimierung der DIU wirkt sich nicht auf die Leistung aus, da das Laden von Daten aus dem Speicher durch die Synapse-Engine erfolgt.
 
 Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
 
@@ -687,7 +689,8 @@ Das Verwenden der COPY-Anweisung unterstützt die folgende Konfiguration:
     | [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) | [Text mit Trennzeichen](format-delimited-text.md)<br/>[Parquet](format-parquet.md)<br/>[ORC](format-orc.md) | Kontoschlüsselauthentifizierung, Dienstprinzipalauthentifizierung, Authentifizierung der verwalteten Identität |
 
     >[!IMPORTANT]
-    >Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage). Informationen zu den erforderlichen Konfigurationen in Data Factory finden Sie im Abschnitt zum Thema [Azure-Blob: Authentifizierung per verwalteter Identität](connector-azure-blob-storage.md#managed-identity) bzw. [Azure Data Lake Storage Gen2: Authentifizierung per verwalteter Identität](connector-azure-data-lake-storage.md#managed-identity).
+    >- Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
+    >- Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 2. Die Formateinstellungen lauten folgendermaßen:
 
@@ -769,7 +772,10 @@ Spezifische Einstellungen für Azure Synapse Analytics sind auf der Registerkart
 
 **Eingabe** : Wählen Sie aus, ob Sie Ihre Quelle auf eine Tabelle verweisen (Äquivalent von ```Select * from <table-name>```) oder eine benutzerdefinierte SQL-Abfrage eingeben.
 
-**Staging aktivieren** : Es wird dringend empfohlen, diese Option für Produktionsworkloads mit Synapse DW-Quellen zu verwenden. Wenn Sie eine Datenflussaktivität mit Synapase-Quellen aus einer Pipeline ausführen, fordert ADF Sie zur Eingabe eines Speicherkontos am Stagingort auf und verwendet dieses für das gestaffelte Laden von Daten. Es ist der schnellste Mechanismus zum Laden von Daten aus Synapse DW.
+**Staging aktivieren** : Es wird dringend empfohlen, diese Option für Produktionsworkloads mit Azure Synapse Analytics-Quellen zu verwenden. Wenn Sie eine [Datenflussaktivität](control-flow-execute-data-flow-activity.md) mit Azure Synapse Analytics-Quellen aus einer Pipeline ausführen, fordert ADF Sie zur Eingabe eines Speicherkontos am Stagingort auf und verwendet dieses für das gestaffelte Laden von Daten. Es ist der schnellste Mechanismus zum Laden von Daten aus Azure Synapse Analytics.
+
+- Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
+- Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Query** (Abfrage): Wenn Sie im Eingabefeld „Abfrage“ auswählen, geben Sie eine SQL-Abfrage für die Quelle ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben. **Order By** -Klauseln werden hier nicht unterstützt. Sie können aber eine vollständige SELECT FROM-Anweisung festlegen. Sie können auch benutzerdefinierte Tabellenfunktionen verwenden. **select * from udfGetData()** ist eine benutzerdefinierte Funktion in SQL, die eine Tabelle zurückgibt. Diese Abfrage generiert eine Quelltabelle, die Sie in Ihrem Datenfluss verwenden können. Die Verwendung von Abfragen stellt auch eine gute Möglichkeit dar, um die Zeilen für Tests oder Suchvorgänge zu verringern.
 
@@ -798,7 +804,10 @@ Spezifische Einstellungen für Azure Synapse Analytics sind auf der Registerkart
 - Neu erstellen: Die Tabelle wird gelöscht und neu erstellt. Erforderlich, wenn eine neue Tabelle dynamisch erstellt wird.
 - Abschneiden: Alle Zeilen werden aus der Zieltabelle entfernt.
 
-**Enable staging:** (Staging aktivieren:) Ermittelt, ob [PolyBase](/sql/relational-databases/polybase/polybase-guide) beim Schreiben in Azure Synapse Analytics verwendet werden soll.
+**Enable staging:** (Staging aktivieren:) Ermittelt, ob [PolyBase](/sql/relational-databases/polybase/polybase-guide) beim Schreiben in Azure Synapse Analytics verwendet werden soll. Der Stagingspeicher wird unter [Datenflussaktivität in Azure Data Factory](control-flow-execute-data-flow-activity.md) konfiguriert. 
+
+- Wenn Sie die Authentifizierung per verwalteter Identität für den mit dem Speicher verknüpften Dienst verwenden, machen Sie sich jeweils mit den erforderlichen Konfigurationen für [Azure Blob](connector-azure-blob-storage.md#managed-identity) und [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#managed-identity) vertraut.
+- Wenn Ihre Azure Storage-Instanz mit einem VNET-Dienstendpunkt konfiguriert ist, müssen Sie die Authentifizierung per verwalteter Identität mit für das Speicherkonto aktivierter Option „Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben“ verwenden. Informationen hierzu finden Sie unter [Auswirkungen der Verwendung von VNET-Dienstendpunkten mit Azure Storage](../azure-sql/database/vnet-service-endpoint-rule-overview.md#impact-of-using-vnet-service-endpoints-with-azure-storage).
 
 **Batchgröße** : Steuert, wie viele Zeilen in die einzelnen Buckets geschrieben werden. Durch größere Batches werden zwar Komprimierung und Arbeitsspeicheroptimierung verbessert, beim Zwischenspeichern von Daten besteht aber die Gefahr, dass Ausnahmen wegen unzureichenden Arbeitsspeichers auftreten.
 

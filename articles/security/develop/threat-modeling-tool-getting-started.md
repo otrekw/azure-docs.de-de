@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: 6ddb2ecef3a70ed6a56b404e64cef5b78b7abd13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980479"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913023"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
@@ -101,7 +101,7 @@ Erstens wird die Interaktion zwischen den beiden Schablonen verbessert.
 
 Zweitens werden weitere Informationen zur Bedrohung im Fenster „Bedrohungseigenschaften“ hinzugefügt.
 
-![Interaktionsinformationen](./media/threat-modeling-tool-getting-started/interactioninfo.png)
+![Screenshot des Fensters „Bedrohungseigenschaften“, das Titel, Kategorie, Beschreibung, Interaktion und Priorität enthält.](./media/threat-modeling-tool-getting-started/interactioninfo.png)
 
 Die generierte Bedrohung hilft ihm, potenzielle Schwächen im Entwurf zu verstehen. Die STRIDE-Kategorisierung bietet ihm eine Vorstellung potenzieller Angriffsvektoren, während ihn die zusätzliche Beschreibung informiert, was genau falsch ist und welche potenziellen Entschärfungsmöglichkeiten es gibt. Er kann in den editierbaren Felder Notizen in die Begründungsdetails eingeben oder die Prioritätsstufen abhängig von der Fehlerleiste seiner Organisation ändern.
 
@@ -118,7 +118,7 @@ Bedrohungen, die für den Entwurf aufgrund vorhandener Entschärfungen oder Sich
 
 Nachdem Ricardo die Liste mit Cristina durchlaufen und wichtige Notizen, Entschärfungen/Begründungen, eine Priorität und Statusänderungen hinzugefügt hat, wählt er „Berichte -> Vollständigen Bericht erstellen -> Bericht speichern“. Den ausgegebenen Bericht geht er mit Kollegen durch, um sicherzustellen, dass die Sicherheitsmaßnahmen ordnungsgemäß umgesetzt wurden.
 
-![Interaktionsinformationen](./media/threat-modeling-tool-feature-overview/report.png)
+![Screenshot mit einem repräsentativen Bericht zur Bedrohungsmodellierung.](./media/threat-modeling-tool-feature-overview/report.png)
 
 Wenn Ricardo stattdessen die Datei freigeben möchte, kann er sie dazu mühelos im OneDrive-Konto der Organisation speichern. Im Anschluss kann er den Dokumentlink kopieren und für seine Kollegen freigeben. 
 

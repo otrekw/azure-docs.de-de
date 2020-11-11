@@ -1,6 +1,6 @@
 ---
-title: T-SQL-Sprachelemente
-description: Links zur Dokumentation für die in Synapse SQL-Pools unterstützten T-SQL-Sprachelemente.
+title: T-SQL-Sprachelemente für dedizierten SQL-Pool
+description: Links zur Dokumentation für T-SQL-Sprachelemente, die für einen dedizierten SQL-Pool in Azure Synapse Analytics unterstützt werden.
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 06/13/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: bccbe67c1ea4b93a7a1938fbab6b6f3d06cb5da3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 966df3be13eda4450608d42890fcfe2240ac61a9
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91289496"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324639"
 ---
-# <a name="t-sql-language-elements-supported-in-synapse-sql-pool"></a>In Synapse SQL-Pools unterstützte T-SQL-Sprachelemente
+# <a name="t-sql-language-elements-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>T-SQL-Sprachelemente für dedizierten SQL-Pool in Azure Synapse Analytics 
 
-Links zur Dokumentation für die in Synapse SQL-Pools unterstützten T-SQL-Sprachelemente.
+Links zur Dokumentation für die in dedizierten SQL-Pools unterstützten T-SQL-Sprachelemente.
 
 ## <a name="core-elements"></a>Kernelemente
 
@@ -290,4 +290,4 @@ Links zur Dokumentation für die in Synapse SQL-Pools unterstützten T-SQL-Sprac
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Referenzinformationen finden Sie unter [T-SQL-Anweisungen in Synapse SQL-Pools](sql-data-warehouse-reference-tsql-statements.md) und [Systemsichten in Synapse SQL-Pools](../sql/reference-tsql-system-views.md).
+Weitere Referenzinformationen finden Sie unter [T-SQL-Sprachelemente im dedizierten SQL-Pool](sql-data-warehouse-reference-tsql-statements.md) und [Systemsichten im dedizierten SQL-Pool](../sql/reference-tsql-system-views.md).

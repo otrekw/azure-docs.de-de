@@ -1,7 +1,7 @@
 ---
 title: Modellbereitstellung mit hoher Leistung mit Triton (Vorschau)
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie ein Modell mit Triton Inference Server in Azure Machine Learning bereitstellen.
+description: Hier erfahren Sie, wie Sie Ihr Modell mit NVIDIA Triton Inference Server in Azure Machine Learning bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.date: 09/23/2020
 ms.topic: conceptual
 ms.reviewer: larryfr
 ms.custom: deploy
-ms.openlocfilehash: 3a3600c4065d331ca1cfc129cd55dd56add21424
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: afa1d958e054a769ea0f19b82afdf55a94c3d0cf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92428351"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309703"
 ---
 # <a name="high-performance-serving-with-triton-inference-server-preview"></a>Bereitstellung mit hoher Leistung mit Triton Inference Server (Vorschau) 
 
@@ -27,16 +27,16 @@ Eine der Möglichkeiten, ein Modell für Rückschlüsse bereitzustellen, ist als
 Triton ist ein Framework, das für *Rückschlüsse* optimiert ist. Es ermöglicht eine bessere Auslastung der GPUs und kostengünstigere Rückschlüsse. Auf der Serverseite fasst es eingehende Anforderungen in Batches zusammen und übermittelt diese Batches für Rückschlüsse. Die Batchverarbeitung lastet die GPU-Ressourcen besser aus und ist ein wesentlicher Bestandteil der Leistung von Triton.
 
 > [!IMPORTANT]
-> Die Verwendung von Triton für die Bereitstellung von Azure Machine Learning befindet sich derzeit in der __Vorschau__ . Vorschaufunktionen werden möglicherweise nicht vom Kundensupport behandelt. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Die Verwendung von Triton für die Bereitstellung von Azure Machine Learning befindet sich derzeit in der __Vorschau__. Vorschaufunktionen werden möglicherweise nicht vom Kundensupport behandelt. Weitere Informationen finden Sie in den [zusätzlichen Nutzungsbedingungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 > [!TIP]
 > Die Codeausschnitte in diesem Dokument dienen der Veranschaulichung und zeigen möglicherweise keine vollständige Lösung. Funktionierenden Beispielcode finden Sie in den [End-to-End-Beispielen von Triton in Azure Machine Learning](https://github.com/Azure/azureml-examples/tree/main/tutorials).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein **Azure-Abonnement** . Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
+* Ein **Azure-Abonnement**. Wenn Sie keins besitzen, probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) aus.
 * Vertrautheit mit der Vorgehensweise, [wie und wo ein Modell mit Azure Machine Learning bereitgestellt werden soll](how-to-deploy-and-where.md).
-* Das [Azure Machine Learning SDK für Python](https://docs.microsoft.com/python/api/overview/azure/ml/?view=azure-ml-py) **oder** die [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) und die [Machine Learning-Erweiterung](reference-azure-machine-learning-cli.md).
+* Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/?view=azure-ml-py) **oder** die [Azure CLI](/cli/azure/?view=azure-cli-latest) und die [Machine Learning-Erweiterung](reference-azure-machine-learning-cli.md).
 * Eine funktionierende Installation von Docker für lokale Tests. Weitere Informationen zum Installieren und Überprüfen von Docker finden Sie unter [Orientation and setup](https://docs.docker.com/get-started/) (Ausrichtung und Setup) in der Docker-Dokumentation.
 
 ## <a name="architectural-overview"></a>Übersicht über die Architektur
@@ -47,7 +47,7 @@ Bevor Sie versuchen, Triton für Ihr eigenes Modell zu verwenden, ist es wichtig
 
 * Es werden mehrere [Gunicorn](https://gunicorn.org/)-Worker gestartet, um eingehende Anforderungen parallel zu bearbeiten.
 * Diese Worker übernehmen die Vorverarbeitung, den Aufruf des Modells und die Nachbearbeitung. 
-* Rückschlussanforderungen verwenden den __Bewertungs-URI__ . Beispiel: `https://myserevice.azureml.net/score`.
+* Rückschlussanforderungen verwenden den __Bewertungs-URI__. Beispiel: `https://myserevice.azureml.net/score`.
 
 :::image type="content" source="./media/how-to-deploy-with-triton/normal-deploy.png" alt-text="Diagramm zur normalen Bereitstellungsarchitektur ohne Triton":::
 
@@ -58,7 +58,7 @@ Bevor Sie versuchen, Triton für Ihr eigenes Modell zu verwenden, ist es wichtig
 * Triton verarbeitet Anforderungen in Batches, um die GPU-Auslastung zu maximieren.
 * Der Client verwendet den __Bewertungs-URI__ , um Anforderungen zu stellen. Beispiel: `https://myserevice.azureml.net/score`.
 
-:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Diagramm zur normalen Bereitstellungsarchitektur ohne Triton":::
+:::image type="content" source="./media/how-to-deploy-with-triton/inferenceconfig-deploy.png" alt-text="Rückschlusskonfigurationsbereitstellung mit Triton":::
 
 Der Workflow für die Verwendung von Triton für Ihre Modellimplementierung lautet:
 
@@ -228,7 +228,7 @@ Eine Rückschlusskonfiguration gestattet Ihnen die Verwendung eines Einstiegsskr
 > [!IMPORTANT]
 > Sie müssen die kuratierte `AzureML-Triton`-[Umgebung](./resource-curated-environments.md) angeben.
 >
-> Das Python-Codebeispiel klont `AzureML-Triton` in eine andere Umgebung namens `My-Triton`. Der Azure CLI-Code verwendet ebenfalls diese Umgebung. Weitere Informationen zum Klonen einer Umgebung finden Sie in der [Environment.Clone()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.environment.environment?view=azure-ml-py&preserve-view=true#clone-new-name-)-Referenz.
+> Das Python-Codebeispiel klont `AzureML-Triton` in eine andere Umgebung namens `My-Triton`. Der Azure CLI-Code verwendet ebenfalls diese Umgebung. Weitere Informationen zum Klonen einer Umgebung finden Sie in der [Environment.Clone()](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py#clone-new-name-)-Referenz.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -283,7 +283,7 @@ az ml model deploy -n triton-densenet-onnx \
 
 ---
 
-Nachdem die Bereitstellung abgeschlossen ist, wird der Bewertungs-URI angezeigt. Für diese lokale Bereitstellung ist dies `http://localhost:6789/score`. Bei der Bereitstellung in der Cloud können Sie den CLI-Befehl [az ml service show](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) zum Abrufen des Bewertungs-URIs verwenden.
+Nachdem die Bereitstellung abgeschlossen ist, wird der Bewertungs-URI angezeigt. Für diese lokale Bereitstellung ist dies `http://localhost:6789/score`. Bei der Bereitstellung in der Cloud können Sie den CLI-Befehl [az ml service show](/cli/azure/ext/azure-cli-ml/ml/service?view=azure-cli-latest#ext_azure_cli_ml_az_ml_service_show) zum Abrufen des Bewertungs-URIs verwenden.
 
 Informationen zum Erstellen eines Clients, der Rückschlussanforderungen an den Bewertungs-URI sendet, finden Sie unter [Nutzen eines als Webdienst bereitgestellten Modells](how-to-consume-web-service.md).
 

@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 6b072a615cfc31f250d1a605a20e1628d601bb25
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676642"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346875"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -24,7 +24,11 @@ Die [Azure Policy-Gastkonfiguration](../concepts/guest-configuration.md) kann nu
 Verwenden Sie die folgenden Aktionen, um Ihre eigene Konfiguration zum Überprüfen des Zustands eines Azure- oder Nicht-Azure-Computers zu erstellen.
 
 > [!IMPORTANT]
+> Bei benutzerdefinierten Richtliniendefinitionen mit Gastkonfiguration in den Umgebungen „Azure Government“ und „Azure China“ handelt es sich um eine Previewfunktion.
+>
 > Die Gastkonfigurationserweiterung ist zum Durchführen von Überprüfungen in virtuellen Azure-Computern erforderlich. Weisen Sie die folgende Richtliniendefinition zu, um die Erweiterung auf allen Linux-Computern im gewünschten Umfang bereitzustellen: `Deploy prerequisites to enable Guest Configuration Policy on Linux VMs`
+> 
+> Verwenden Sie in Paketen mit benutzerdefiniertem Inhalt keine Geheimnisse oder vertraulichen Informationen.
 
 ## <a name="install-the-powershell-module"></a>Installieren des PowerShell-Moduls
 
@@ -49,7 +53,9 @@ Betriebssysteme, unter denen das Modul installiert werden kann:
 - Windows
 
 > [!NOTE]
-> Das Cmdlet „Test-GuestConfigurationPackage“ erfordert die OpenSSL-Version 1.0, da eine Abhängigkeit von OMI besteht. Dies führt zu einem Fehler in Umgebungen mit OpenSSL 1.1 oder höher.
+> Für das Cmdlet `Test-GuestConfigurationPackage` ist die OpenSSL-Version 1.0 erforderlich, da eine Abhängigkeit von OMI besteht. Dies führt zu einem Fehler in Umgebungen mit OpenSSL 1.1 oder höher.
+>
+> Das Ausführen des Cmdlets `Test-GuestConfigurationPackage` wird nur unter Windows für die Version 2.1.0 des Gastkonfigurationsmoduls unterstützt.
 
 Für das Ressourcenmodul für Gastkonfigurationen wird die folgende Software benötigt:
 
@@ -160,7 +166,7 @@ Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Paramete
 - **Name** : Name des Pakets mit der Gastkonfiguration.
 - **Konfiguration:** Vollständiger Pfad für das kompilierte Konfigurationsdokument.
 - **Pfad** : Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
-- **ChefProfilePath** : Vollständiger Pfad zum InSpec-Profil. Dieser Parameter wird nur unterstützt, wenn Inhalt für die Linux-Überprüfung erstellt wird.
+- **ChefInspecProfilePath** : Vollständiger Pfad zum InSpec-Profil. Dieser Parameter wird nur unterstützt, wenn Inhalt für die Linux-Überprüfung erstellt wird.
 
 Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt angegebenen Konfiguration zu erstellen:
 
@@ -191,7 +197,7 @@ Test-GuestConfigurationPackage `
 Das Cmdlet unterstützt auch Eingaben aus der PowerShell-Pipeline. Fügen Sie die Ausgabe des Cmdlets `New-GuestConfigurationPackage` per Pipezeichen an das Cmdlet `Test-GuestConfigurationPackage` an.
 
 ```azurepowershell-interactive
-New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefProfilePath './' | Test-GuestConfigurationPackage
+New-GuestConfigurationPackage -Name AuditFilePathExists -Configuration ./Config/AuditFilePathExists.mof -ChefInspecProfilePath './' | Test-GuestConfigurationPackage
 ```
 
 Im nächsten Schritt wird die Datei in Azure Blob Storage veröffentlicht.  Für den Befehl `Publish-GuestConfigurationPackage` ist das `Az.Storage`-Modul erforderlich.
@@ -319,13 +325,16 @@ Configuration AuditFilePathExists
 
 ## <a name="policy-lifecycle"></a>Lebenszyklus von Richtlinien
 
-Zum Freigeben einer Aktualisierung der Richtliniendefinition sind zwei Felder zu beachten.
+Wenn Sie eine Aktualisierung für die Richtliniendefinition veröffentlichen möchten, sind drei Felder von Bedeutung.
 
-- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist. Die Eigenschaft aktualisiert die Version der Gastkonfigurationszuweisung, damit der Agent das aktualisierte Paket erkennt.
+> [!NOTE]
+> Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Im Zusammenhang mit der Versionsverwaltung für benutzerdefinierte Inhalte empfiehlt es sich, die Version in den Dateinamen aufzunehmen.
+
+- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
+- **contentUri** : Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI für den Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft bei jedem Release ändert.
 - **contentHash** : Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
-
 
 ### <a name="filtering-guest-configuration-policies-using-tags"></a>Filtern von Richtlinien der Gastkonfiguration mit Tags
 

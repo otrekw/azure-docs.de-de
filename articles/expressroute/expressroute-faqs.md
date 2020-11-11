@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
-ms.openlocfilehash: f4bddf1746a9d680897428f1aa0afdb35d93e470
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b8ef1c14089744defaf6de5b3cf9e72d281452b6
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631273"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027107"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – FAQ
 
@@ -35,6 +35,10 @@ Sie können einen regionalen Netzbetreiber auswählen und Ethernetverbindungen m
 ### <a name="how-much-does-expressroute-cost"></a>Wie viel kostet ExpressRoute?
 
 Preisinformationen finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/expressroute/) .
+
+### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-do-i-have-this-bandwidth-allocated-for-ingress-and-egress-traffic-separately"></a>Wenn ich für eine ExpressRoute-Leitung mit einer bestimmten Bandbreite bezahle, wird mir diese Bandbreite für eingehenden und ausgehenden Datenverkehr separat zugeordnet?
+
+Ja, die Bandbreite für die ExpressRoute-Leitung gilt für beide Richtungen. Beispiel: Wenn Sie eine ExpressRoute-Leitung mit 200 MBit/s erwerben, erhalten Sie 200 MBit/s für eingehenden und 200 MBit/s für ausgehenden Datenverkehr.
 
 ### <a name="if-i-pay-for-an-expressroute-circuit-of-a-given-bandwidth-does-the-vpn-connection-i-purchase-from-my-network-service-provider-have-to-be-the-same-speed"></a>Wenn ich für eine ExpressRoute-Verbindung mit einer bestimmten Bandbreite bezahle, muss die VPN-Verbindung, die ich von meinem Netzwerkdienstanbieter erworben habe, die gleiche Geschwindigkeit haben?
 

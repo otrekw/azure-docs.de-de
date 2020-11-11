@@ -3,12 +3,12 @@ title: Bewährte Methoden
 description: Erhalten Sie Informationen über bewährte Methoden und nützliche Tipps für das Entwickeln Ihrer Azure Batch-Lösung.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0663d1910e2b67b8302e41a96509bdd84cd1a3a0
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: dff6668050e45d9179cd985aa10670b56afe5377
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102777"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913227"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch: bewährte Methoden
 
@@ -20,7 +20,7 @@ In diesem Artikel werden bewährte Methoden für die effektive und effiziente Ve
 
 ### <a name="pool-configuration-and-naming"></a>Poolkonfiguration und Benennung
 
-- **Poolzuordnungsmodus**: Beim Erstellen eines Batch-Kontos können Sie zwischen zwei Modi der Poolzuordnung wählen: **Batch-Dienst** und **Benutzerabonnement**. In den meisten Fällen sollten Sie den standardmäßigen Batchdienstmodus wählen, in dem Pools im Hintergrund von Batch verwalteten Abonnements zugeordnet werden. Im alternativen Benutzerabonnementmodus werden virtuelle Batchcomputer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Benutzerabonnementkonten werden hauptsächlich zum Ermöglichen einer wichtigen, aber kleinen Teilmenge von Szenarien verwendet. Weitere Informationen zum Benutzerabonnementmodus finden Sie unter [Zusätzliche Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
+- **Poolzuordnungsmodus** : Beim Erstellen eines Batch-Kontos können Sie zwischen zwei Modi der Poolzuordnung wählen: **Batch-Dienst** und **Benutzerabonnement**. In den meisten Fällen sollten Sie den standardmäßigen Batchdienstmodus wählen, in dem Pools im Hintergrund von Batch verwalteten Abonnements zugeordnet werden. Im alternativen Benutzerabonnementmodus werden virtuelle Batchcomputer und andere Ressourcen direkt in Ihrem Abonnement erstellt, wenn ein Pool erstellt wird. Benutzerabonnementkonten werden hauptsächlich zum Ermöglichen einer wichtigen, aber kleinen Teilmenge von Szenarien verwendet. Weitere Informationen zum Benutzerabonnementmodus finden Sie unter [Zusätzliche Konfiguration für den Benutzerabonnementmodus](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode).
 
 - **Berücksichtigen Sie die Ausführungszeit von Aufträgen und Aufgaben beim Festlegen der Zuordnung von Aufträgen zum Pool.**
     Wenn Sie Aufträge haben, die hauptsächlich aus kurzen Aufgaben bestehen, und wenn die erwartete Gesamtzahl der Aufgaben gering ist, sodass auch die insgesamt zu erwartende Ausführungszeit des Auftrags nicht lang ist, sollten Sie nicht für jeden Auftrag einen neuen Pool zuordnen. Die Zuordnungszeit der Knoten verringert die Laufzeit des Auftrags.
@@ -34,18 +34,18 @@ In diesem Artikel werden bewährte Methoden für die effektive und effiziente Ve
 - **Kontinuität während Wartung und Ausfall von Pools.**
     Es ist optimal, wenn Ihre Aufträge Pools dynamisch verwenden. Wenn Ihre Aufträge denselben Pool für alles verwenden, besteht die Möglichkeit, dass Ihre Aufträge nicht ausgeführt werden, wenn ein Problem mit dem Pool auftritt. Dies ist besonders wichtig für zeitkritische Workloads. Um dieses Problem zu beheben, wählen oder erstellen Sie einen Pool dynamisch, wenn Sie die einzelnen Aufträge planen, oder implementieren Sie eine Methode, um den Poolnamen außer Kraft zu setzen, sodass fehlerhafte Pools umgangen werden können.
 
-- **Geschäftskontinuität während Poolverwaltung und -ausfall**: Es gibt viele mögliche Ursachen, die möglicherweise verhindern, dass ein Pool auf die gewünschte Größe anwächst, z. B. interne Fehler, Kapazitätseinschränkungen usw. Aus diesem Grund sollten Sie bereit sein, Aufträge nötigenfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
+- **Geschäftskontinuität während Poolverwaltung und -ausfall** : Es gibt viele mögliche Ursachen, die möglicherweise verhindern, dass ein Pool auf die gewünschte Größe anwächst, z. B. interne Fehler, Kapazitätseinschränkungen usw. Aus diesem Grund sollten Sie bereit sein, Aufträge nötigenfalls einem anderen Pool zuzuweisen (möglicherweise mit einer anderen VM-Größe; Batch unterstützt dies mittels [UpdateJob](/dotnet/api/microsoft.azure.batch.protocol.joboperationsextensions.update)). Vermeiden Sie die Verwendung einer statischen Pool-ID mit der Erwartung, dass Sie nie gelöscht und nie geändert wird.
 
 ### <a name="pool-lifetime-and-billing"></a>Lebensdauer und Abrechnung für Pools
 
 Die Poollebensdauer kann abhängig von der Zuordnungsmethode und den auf die Poolkonfiguration angewendeten Optionen variieren. Pools können eine beliebige Lebensdauer sowie eine jederzeit variable Anzahl von Computeknoten im Pool besitzen. Es liegt in ihrer Verantwortung, die Computeknoten im Pool entweder explizit oder durch vom Dienst bereitgestellte Funktionen (Autoskalierung oder AutoPool) zu verwalten.
 
 - **Pools aktuell halten.**
-    Sie sollten die Größe Ihrer Pools alle paar Monate auf Null setzen, um sicherzustellen, dass Sie die neuesten Updates und Fehlerbehebungen für den Knoten-Agent erhalten. Ihr Pool empfängt keine Updates für den Knoten-Agent, es sei denn, er wird neu erstellt oder seine Größe auf 0 Computeknoten geändert. Vor dem erneuten Erstellen oder Ändern der Größe Ihres Pools wird empfohlen, alle Knoten-Agent-Protokolle zu Debuggingzwecken herunterzuladen, wie im Abschnitt [Knoten](#nodes) erläutert.
+    Sie sollten die Größe Ihrer Pools alle paar Monate auf null zurücksetzen, um sicherzustellen, dass Sie die [neuesten Updates und Fehlerbehebungen](https://github.com/Azure/Batch/blob/master/changelogs/nodeagent/CHANGELOG.md) für den Knoten-Agent erhalten. Ihr Pool empfängt keine Updates für den Knoten-Agent, es sei denn, er wird neu erstellt oder seine Größe auf 0 Computeknoten geändert. Vor dem erneuten Erstellen oder Ändern der Größe Ihres Pools wird empfohlen, alle Knoten-Agent-Protokolle zu Debuggingzwecken herunterzuladen, wie im Abschnitt [Knoten](#nodes) erläutert.
 
-- **Erneutes Erstellen eines Pools**: In ähnlicher Weise ist es nicht empfehlenswert, Ihre Pools täglich zu löschen und neu zu erstellen. Erstellen Sie stattdessen einen neuen Pool, und aktualisieren Sie die vorhandenen Aufträge so, dass Sie auf den neuen Pool verweisen. Nachdem alle Aufgaben in den neuen Pool verschoben wurden, löschen Sie den alten Pool.
+- **Erneutes Erstellen eines Pools** : In ähnlicher Weise ist es nicht empfehlenswert, Ihre Pools täglich zu löschen und neu zu erstellen. Erstellen Sie stattdessen einen neuen Pool, und aktualisieren Sie die vorhandenen Aufträge so, dass Sie auf den neuen Pool verweisen. Nachdem alle Aufgaben in den neuen Pool verschoben wurden, löschen Sie den alten Pool.
 
-- **Pooleffizienz und -abrechnung**: Für Batch selbst fallen keine zusätzlichen Gebühren an, aber es fallen Gebühren für die verwendeten Computeressourcen an. Ihnen wird jeder Computeknoten im Pool in Rechnung gestellt, unabhängig davon, in welchem Zustand er sich befindet. Dies schließt alle Gebühren ein, die für die Ausführung des Knotens erforderlich sind, z. B. Speicher- und Netzwerkkosten. Weitere Informationen zu bewährten Methoden finden Sie unter [Kostenanalyse und Budget für Azure Batch](budget.md).
+- **Pooleffizienz und -abrechnung** : Für Batch selbst fallen keine zusätzlichen Gebühren an, aber es fallen Gebühren für die verwendeten Computeressourcen an. Ihnen wird jeder Computeknoten im Pool in Rechnung gestellt, unabhängig davon, in welchem Zustand er sich befindet. Dies schließt alle Gebühren ein, die für die Ausführung des Knotens erforderlich sind, z. B. Speicher- und Netzwerkkosten. Weitere Informationen zu bewährten Methoden finden Sie unter [Kostenanalyse und Budget für Azure Batch](budget.md).
 
 ### <a name="pool-allocation-failures"></a>Fehler bei der Poolzuordnung
 

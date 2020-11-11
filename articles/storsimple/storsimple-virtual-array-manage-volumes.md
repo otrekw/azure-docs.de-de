@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2016
 ms.author: manuaery
-ms.openlocfilehash: 734dc55cbcd9c7b5eaf6455d63bcb773b7d85367
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 79e3ce8c1605e5d68ff44901f53854d2f5f10abc
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85513994"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93129948"
 ---
 # <a name="use-storsimple-device-manager-service-to-manage-volumes-on-the-storsimple-virtual-array"></a>Verwenden des StorSimple-Geräte-Manager-Diensts zum Verwalten von Volumes auf dem StorSimple Virtual Array
 
@@ -55,7 +55,7 @@ Ein Volume umfasst eine Reihe von Attributen:
 
 * **Volumename** : Ein beschreibender Name, der eindeutig sein muss und das Volume identifiziert.
 * **Status** – online oder offline. Offline-Volumes sind für die Initiatoren (Server), die über Zugriff für die Verwendung des Volumes verfügen, nicht sichtbar.
-* **Typ**: Gibt an, ob das Volume **mehrstufig** (Standard) oder **lokal** ist.
+* **Typ** : Gibt an, ob das Volume **mehrstufig** (Standard) oder **lokal** ist.
 * **Kapazität** – Gibt die Menge der verwendeten Daten an im Vergleich mit der Gesamtmenge der Daten, die vom Initiator (Server) gespeichert werden können
 * **Backup** – Im Fall des StorSimple Virtual Array sind alle Volumes automatisch für das Backup aktiviert.
 * **Verbundene Hosts** – Gibt die Initiatoren (Server) an, die Zugriff auf dieses Volume haben
@@ -73,18 +73,18 @@ Verwenden Sie die Anweisungen in diesem Tutorial, um die folgenden Aufgaben ausz
 
 1. Klicken Sie auf dem StorSimple-Dienstübersichtsblatt in der Befehlsleiste auf **+ Volume hinzufügen**. Daraufhin öffnet sich das Blatt **Volume hinzufügen**.
    
-    ![Volume hinzufügen](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
+    ![Screenshot: Schaltfläche und Bereich „Volume hinzufügen“](./media/storsimple-virtual-array-manage-volumes/add-volume.png)
 2. Gehen Sie auf dem Blatt **Volume hinzufügen** wie folgt vor:
    
    * Geben Sie im Feld **Volumename** einen eindeutigen Namen für Ihr Volume ein. Der Name muss eine Zeichenfolge mit einer Länge von 3 bis 127 Zeichen sein.
    * Geben Sie in der Dropdownliste **Typ** an, ob das von Ihnen erstellte Volume **Mehrstufig** oder **Lokal** sein soll. Für Workloads, die lokale Garantien, niedrige Latenzzeiten und höhere Leistung benötigen, wählen Sie **Lokales Volume** aus. Wählen Sie für alle anderen Daten **Mehrstufiges Volume** aus.
    * Geben Sie im Feld **Kapazität** die Größe des Volumes an. Ein mehrstufiges Volume muss zwischen 500 GB und 5 TB groß sein und ein lokales Volume zwischen 50 GB und 500 GB.
-   * * Klicken Sie auf **Verbundene Hosts**, wählen Sie einen Access Control-Datensatz (ACR) aus, der dem iSCSI-Initiator entspricht, den Sie mit diesem Volume verbinden möchten, und klicken Sie anschließend auf **Auswählen**.
-3. Klicken Sie zum Hinzufügen eines neuen verbundenen Hosts auf **Neu hinzufügen**, geben Sie einen Namen für den Host und seinen IQN-Namen (qualifizierter iSCSI-Name) ein, und klicken Sie anschließend auf **Hinzufügen**.
+   * * Klicken Sie auf **Verbundene Hosts** , wählen Sie einen Access Control-Datensatz (ACR) aus, der dem iSCSI-Initiator entspricht, den Sie mit diesem Volume verbinden möchten, und klicken Sie anschließend auf **Auswählen**.
+3. Klicken Sie zum Hinzufügen eines neuen verbundenen Hosts auf **Neu hinzufügen** , geben Sie einen Namen für den Host und seinen IQN-Namen (qualifizierter iSCSI-Name) ein, und klicken Sie anschließend auf **Hinzufügen**.
    
-    ![Volume hinzufügen](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
+    ![Screenshot: Bereich „Verbundene Hosts“ mit der Option „Neu hinzufügen“](./media/storsimple-virtual-array-manage-volumes/volume-add-acr.png)
 4. Wenn Sie die Konfiguration Ihres Volume abgeschlossen haben, klicken Sie auf **Erstellen**. Ein Volume wird mit den angegebenen Einstellungen erstellt, und Sie erhalten eine Benachrichtigung über die erfolgreiche Erstellung. Standardmäßig wird für das Volume die Sicherungsfunktion aktiviert.
-5. Wechseln Sie zum Blatt **Volumes**, um sicherzustellen, dass das Volume erfolgreich erstellt wurde. Das Volume sollte hier aufgeführt werden.
+5. Wechseln Sie zum Blatt **Volumes** , um sicherzustellen, dass das Volume erfolgreich erstellt wurde. Das Volume sollte hier aufgeführt werden.
    
     ![Erfolgreiches Erstellen des Volume](./media/storsimple-virtual-array-manage-volumes/volume-success.png)
 
@@ -95,7 +95,7 @@ Zum Ändern eines Volumes müssen Sie die Hosts ändern, die auf das Volume zugr
 #### <a name="to-modify-a-volume"></a>So ändern Sie ein Volume
 
 1. Wählen Sie auf dem StorSimple-Dienstübersichtsblatt aus den Einstellungen **Volumes** das virtuelle Array aus, auf dem sich das Volume befindet, das Sie ändern möchten.
-2. **Wählen Sie** das Volume aus, und klicken Sie auf **Verbundene Hosts**, um den derzeit verbundenen Server anzuzeigen und auf einen anderen Server zu ändern.
+2. **Wählen Sie** das Volume aus, und klicken Sie auf **Verbundene Hosts** , um den derzeit verbundenen Server anzuzeigen und auf einen anderen Server zu ändern.
    
     ![Bearbeiten eines Volume](./media/storsimple-virtual-array-manage-volumes/volume-edit-acr.png)
 3. Speichern Sie die Änderungen, indem Sie in der Befehlsleiste auf **Speichern** klicken. Die angegebenen Einstellungen werden angewendet, und Sie erhalten eine Benachrichtigung.
@@ -115,7 +115,7 @@ Möglicherweise müssen Sie ein Volume offline schalten, wenn Sie dieses ändern
      
         ![Offline-Volume](./media/storsimple-virtual-array-manage-volumes/volume-offline.png)
    * Überprüfen Sie die Informationen auf dem Blatt **Take offline** (Offline schalten), und bestätigen Sie den Vorgang. Klicken Sie auf **Take offline** (Offline schalten), um das Volume offline zu schalten. Sie erhalten eine Benachrichtigung, dass der Vorgang in Bearbeitung ist.
-   * Wechseln Sie zum Blatt **Volumes**, um sicherzustellen, dass das Volume erfolgreich offline geschaltet wurde. Der Status des Volume sollte als offline angezeigt werden.
+   * Wechseln Sie zum Blatt **Volumes** , um sicherzustellen, dass das Volume erfolgreich offline geschaltet wurde. Der Status des Volume sollte als offline angezeigt werden.
      
        ![Bestätigung über Offline-Volume](./media/storsimple-virtual-array-manage-volumes/volume-offline-confirm.png)
 

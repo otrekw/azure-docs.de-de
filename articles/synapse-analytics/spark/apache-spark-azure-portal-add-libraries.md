@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: euang
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 31201bb7168910915ee33d4361bf944e7669db66
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737964"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93313528"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
-Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie eine Bibliothek in einem ihrer Spark-Pools (Vorschau) installieren. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
+Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie eine Bibliothek in einem Ihrer serverlosen Apache Spark-Pools (Vorschau) installieren. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
 
 ## <a name="default-installation"></a>Standardinstallation
 Apache Spark in Azure Synapse Analytics verfügt über eine vollständige Anacondas-Installation und zusätzliche Bibliotheken. Die vollständige Liste der Bibliotheken finden Sie unter [Apache Spark-Versionsunterstützung](apache-spark-version-support.md). 
@@ -68,7 +68,7 @@ So aktualisieren Sie Bibliotheken oder fügen diese einem Spark-Pool (Vorschau) 
    
 2.  Starten Sie Ihren Azure Synapse Analytics-Arbeitsbereich über das Azure-Portal.
 
-3.  Wählen Sie im Hauptnavigationsbereich **Verwalten** aus und dann **Apache Spark-Pools** .
+3.  Wählen Sie im Hauptnavigationsbereich **Verwalten** aus und dann **Apache Spark-Pools**.
    
 4. Wählen Sie einen einzelnen Spark-Pool aus, und laden Sie die Umgebungskonfigurationsdatei mithilfe der Dateiauswahl im Abschnitt **Pakete** der Seite hoch.
 

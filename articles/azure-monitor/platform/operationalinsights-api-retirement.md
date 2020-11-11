@@ -5,20 +5,20 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/02/2020
-ms.openlocfilehash: ad3287651716580aaf6ab8c5e819fd92a70e695d
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.date: 10/29/2020
+ms.openlocfilehash: 7ddfb3221c73c740a339dd8d9d4f60cca46c6425
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92144107"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93026767"
 ---
 # <a name="operationalinsights-api-version-retirement"></a>Deaktivierung der OperationalInsights-API-Version
-Wenn Microsoft eine API deaktiviert, werden Sie mindestens 12 Monate vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Wir haben eine neue Version (2020-08-01) für **OperationalInsights** -Ressourcenanbieter-APIs veröffentlicht. Alle früheren API-Versionen werden am 31. Oktober 2023 deaktiviert.
+Wenn Microsoft eine API deaktiviert, werden Sie mindestens 12 Monate vorher benachrichtigt, um einen reibungslosen Übergang zu einer neueren/unterstützten Version zu gewährleisten. Wir haben eine neue Version (2020-08-01) für Ressourcenanbieter-APIs vom Typ **OperationalInsights** veröffentlicht. Alle älteren API-Versionen werden am 29. Februar 2024 eingestellt.
 
 Es wird empfohlen, ab sofort die Version 2020-08-01 zu verwenden, um von neuen Funktionen wie [dediziertem Cluster](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters), [kundenseitig verwalteten Schlüsseln](https://docs.microsoft.com/azure/azure-monitor/platform/customer-managed-keys), [Private Link](https://docs.microsoft.com/azure/azure-monitor/platform/private-link-security) und [Datenexport](https://docs.microsoft.com/azure/azure-monitor/platform/logs-data-export) zu profitieren. Außerdem werden neue Features, Funktionen und Optimierungen werden nur der aktuellen API hinzugefügt.
 
-Nach dem 31. Oktober 2023 werden frühere API-Versionen als 2020-08-01 nicht mehr von Azure Monitor unterstützt. Wenn Sie kein Upgrade durchführen möchten, werden von früheren Versionen gesendete Anforderungen bis zum 31. Oktober 2023 weiterhin vom Azure Monitor-Dienst bedient.
+Nach dem 29. Februar 2024 werden ältere API-Versionen als 2020-08-01 nicht mehr von Azure Monitor unterstützt. Wenn Sie kein Upgrade durchführen möchten, werden von älteren Versionen gesendete Anforderungen bis zum 29. Februar 2024 weiterhin vom Azure Monitor-Dienst verarbeitet.
 
 ## <a name="migration-steps"></a>Schritte bei der Migration
 Je nach verwendeter Konfigurationsmethode sollten Sie die neue Version in **REST** -Anforderungen und **Resource Manager-Vorlagen** aktualisieren. Verwenden Sie zum Aktualisieren der API-Version die folgenden Beispiele:

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: joflore
-ms.openlocfilehash: e914c273adc632449ed31915127fe6d261a8d56c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 32ec3eface215330aba9e40b46e45b97b5c07091
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960948"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041104"
 ---
 # <a name="create-an-azure-active-directory-domain-services-resource-forest-and-outbound-forest-trust-to-an-on-premises-domain-using-azure-powershell"></a>Erstellen einer Azure Active Directory Domain Services-Ressourcengesamtstruktur und einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne mithilfe von Azure PowerShell
 
@@ -74,12 +74,12 @@ Bevor Sie beginnen, vergewissern Sie sich, dass Ihnen die [Überlegungen zum Net
 
 Azure AD DS erfordert, dass ein Dienstprinzipal die Daten von Azure AD synchronisiert. Dieser Prinzipal muss in Ihrem Azure AD-Mandanten erstellt werden, bevor Sie die Ressourcengesamtstruktur der verwalteten Domäne erstellen.
 
-Erstellen Sie einen Azure AD-Dienstprinzipal für Azure AD DS für die Kommunikation und Authentifizierung. Es wird eine bestimmte Anwendungs-ID namens *Domänen Controller Services* mit der ID *2565bd9d-DA50-47d4-8B85-4c97f669dc36* verwendet. Ändern Sie diese Anwendungs-ID nicht.
+Erstellen Sie einen Azure AD-Dienstprinzipal für Azure AD DS für die Kommunikation und Authentifizierung. Es wird eine bestimmte Anwendungs-ID namens *Domain Controller Services* mit der ID *6ba9a5d4-8456-4118-b521-9c5ca10cdf84* verwendet. Ändern Sie diese Anwendungs-ID nicht.
 
 Erstellen Sie mit dem Cmdlet [New-AzureADServicePrincipal][New-AzureADServicePrincipal] einen Azure AD-Dienstprinzipal:
 
 ```powershell
-New-AzureADServicePrincipal -AppId "2565bd9d-da50-47d4-8b85-4c97f669dc36"
+New-AzureADServicePrincipal -AppId "6ba9a5d4-8456-4118-b521-9c5ca10cdf84"
 ```
 
 ## <a name="create-a-managed-domain-resource-forest"></a>Erstellen einer Ressourcengesamtstruktur der verwalteten Domäne
@@ -100,7 +100,7 @@ Zum Erstellen einer Ressourcengesamtstruktur der verwalteten Domäne verwenden S
     Install-Script -Name New-AaddsResourceForestTrust
     ```
 
-1. Überprüfen Sie die folgenden Parameter, die für das Skript `New-AzureAaddsForest` erforderlich sind. Stellen Sie sicher, dass Sie auch über die erforderlichen **Azure PowerShell**- und **Azure AD PowerShell**-Module verfügen. Vergewissern Sie sich, dass Sie die Anforderungen für das virtuelle Netzwerk zur Bereitstellung von Anwendungs- und lokaler Konnektivität geplant haben.
+1. Überprüfen Sie die folgenden Parameter, die für das Skript `New-AzureAaddsForest` erforderlich sind. Stellen Sie sicher, dass Sie auch über die erforderlichen **Azure PowerShell** - und **Azure AD PowerShell** -Module verfügen. Vergewissern Sie sich, dass Sie die Anforderungen für das virtuelle Netzwerk zur Bereitstellung von Anwendungs- und lokaler Konnektivität geplant haben.
 
     | Name                         | Skriptparameter          | BESCHREIBUNG |
     |:-----------------------------|---------------------------|:------------|
@@ -116,9 +116,9 @@ Zum Erstellen einer Ressourcengesamtstruktur der verwalteten Domäne verwenden S
     |:----------------------------------|:----------------------------------|:------------|
     | Name des virtuellen Netzwerks              | *-aaddsVnetName*                  | Der Name des virtuellen Netzwerks für die verwaltete Domäne.|
     | Adressraum                     | *-aaddsVnetCIDRAddressSpace*      | Der Adressbereich des virtuellen Netzwerks in CIDR-Notation (wenn das virtuelle Netzwerk erstellt wird).|
-    | Azure AD DS-Subnetzname           | *-aaddsSubnetName*                | Der Name des Subnetzes des virtuellen Netzwerks *aaddsVnetName*, das die verwaltete Domäne hostet. Stellen Sie in diesem Subnetz nicht Ihre eigenen VMs und Workloads bereit. |
+    | Azure AD DS-Subnetzname           | *-aaddsSubnetName*                | Der Name des Subnetzes des virtuellen Netzwerks *aaddsVnetName* , das die verwaltete Domäne hostet. Stellen Sie in diesem Subnetz nicht Ihre eigenen VMs und Workloads bereit. |
     | Azure AD DS-Adressbereich         | *-aaddsSubnetCIDRAddressRange*    | Der Subnetzadressbereich in CIDR-Notation für die AAD DS-Instanz, z. B. *192.168.1.0/24*. Der Adressbereich muss im Adressbereich des virtuellen Netzwerks enthalten sein und sich von anderen Subnetzen unterscheiden. |
-    | Name des Workloadsubnetzes (optional)   | *-workloadSubnetName*             | Der optionale Name eines Subnetzes im virtuellen Netzwerk *aaddsVnetName*, das für Ihre eigenen Anwendungsworkloads erstellt werden soll. VMs und Anwendungen können stattdessen auch mit einem virtuellen Azure-Netzwerk mit Peering verbunden werden. |
+    | Name des Workloadsubnetzes (optional)   | *-workloadSubnetName*             | Der optionale Name eines Subnetzes im virtuellen Netzwerk *aaddsVnetName* , das für Ihre eigenen Anwendungsworkloads erstellt werden soll. VMs und Anwendungen können stattdessen auch mit einem virtuellen Azure-Netzwerk mit Peering verbunden werden. |
     | Adressbereich der Workload (optional) | *-workloadSubnetCIDRAddressRange* | Der optionale Subnetzadressbereich in CIDR-Notation für eine Anwendungsworkload, z. B. *192.168.2.0/24*. Der Adressbereich muss im Adressbereich des virtuellen Netzwerks enthalten sein und sich von anderen Subnetzen unterscheiden.|
 
 1. Erstellen Sie nun eine Ressourcengesamtstruktur der verwalteten Domäne mit dem Skript `New-AzureAaaddsForest`. Im folgenden Beispiel werden eine Gesamtstruktur mit dem Namen *addscontoso.com* und ein Workloadsubnetz erstellt. Geben Sie Ihre eigenen Parameternamen und IP-Adressbereiche oder vorhandene virtuelle Netzwerke an.
@@ -163,7 +163,7 @@ Bevor Sie beginnen, vergewissern Sie sich, dass Ihnen die [Überlegungen zum Net
     * Vergewissern Sie sich, dass Ihr lokaler Domänencontroller beispielsweise über `ping` oder Remotedesktop eine Verbindung mit der verwalteten VM herstellen kann.
     * Stellen Sie sicher, dass Ihre Verwaltungs-VM eine Verbindung mit den lokalen Domänencontrollern herstellen kann. Verwenden Sie auch dazu ein Hilfsprogramm wie `ping`.
 
-1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services**, und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com*, und warten Sie, bis der Status **Wird ausgeführt** gemeldet wird.
+1. Suchen Sie im Azure-Portal nach dem Eintrag **Azure AD Domain Services** , und wählen Sie ihn aus. Wählen Sie Ihre verwaltete Domäne aus, z. B. *aaddscontoso.com* , und warten Sie, bis der Status **Wird ausgeführt** gemeldet wird.
 
     Während der Ausführung [aktualisieren Sie DNS-Einstellungen für das virtuelle Azure-Netzwerk](tutorial-create-instance.md#update-dns-settings-for-the-azure-virtual-network), und dann [aktivieren Sie Benutzerkonten für Azure AD DS](tutorial-create-instance.md#enable-user-accounts-for-azure-ad-ds), um die Konfigurationen für Ihre Ressourcengesamtstruktur der verwalteten Domäne abzuschließen.
 
@@ -221,7 +221,7 @@ Add-AaddsResourceForestTrust `
 Um die verwaltete Domäne ordnungsgemäß aus der lokalen Umgebung aufzulösen, müssen Sie möglicherweise Weiterleitungen zu den vorhandenen DNS-Servern hinzufügen. Wenn Sie die lokale Umgebung nicht für die Kommunikation mit der verwalteten Domäne konfiguriert haben, führen Sie auf einer Verwaltungsarbeitsstation die folgenden Schritte für die lokale AD DS-Domäne aus:
 
 1. Wählen Sie **Start | Verwaltung | DNS** aus.
-1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, z. B. *meinAD01*, und wählen Sie **Eigenschaften** aus.
+1. Klicken Sie mit der rechten Maustaste auf den DNS-Server, z. B. *meinAD01* , und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie **Weiterleitungen** und dann **Bearbeiten** aus, um weitere Weiterleitungen hinzuzufügen.
 1. Fügen Sie die IP-Adressen der verwalteten Domäne hinzu, z. B. *10.0.1.4* und *10.0.1.5*.
 1. Überprüfen Sie an einer lokalen Eingabeaufforderung die Namensauflösung mithilfe von **nslookup** für den Domänennamen der Ressourcengesamtstruktur der verwalteten Domäne. `Nslookup aaddscontoso.com` sollte beispielsweise die zwei IP-Adressen für die Ressourcengesamtstruktur der verwalteten Domäne zurückgeben.
@@ -233,10 +233,10 @@ Für die lokale AD DS-Domäne ist eine eingehende Gesamtstruktur-Vertrauensstel
 Um die eingehende Vertrauensstellung in der lokalen AD DS-Domäne zu konfigurieren, führen Sie für die lokale AD DS-Domäne die folgenden Schritte auf einer Verwaltungsarbeitsstation aus:
 
 1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
-1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com*, und wählen Sie **Eigenschaften** aus.
+1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com* , und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Vertrauensstellungen** aus, und wählen Sie dann **Neue Vertrauensstellung** aus.
-1. Geben Sie den Namen der verwalteten Domäne ein, z. B. *aaddscontoso.com*, und wählen Sie anschließend **Weiter** aus.
-1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend**-Vertrauensstellung aus.
+1. Geben Sie den Namen der verwalteten Domäne ein, z. B. *aaddscontoso.com* , und wählen Sie anschließend **Weiter** aus.
+1. Wählen Sie die Option zum Erstellen einer **Gesamtstruktur-Vertrauenswürdigkeit** und dann die Option zum Erstellen einer **Unidirektional: eingehend** -Vertrauensstellung aus.
 1. Wählen Sie die Option aus, mit der die Vertrauensstellung **Nur für diese Domäne** erstellt wird. Im nächsten Schritt erstellen Sie die Vertrauensstellung im Azure-Portal für die verwaltete Domäne.
 1. Wählen Sie die Option zum Verwenden von **Gesamtstrukturweite Authentifizierung** aus, und geben Sie dann ein Vertrauensstellungskennwort ein. Dasselbe Kennwort wird auch im Azure-Portal im nächsten Abschnitt eingegeben.
 1. Durchlaufen Sie die nächsten Fenster mit Standardoptionen, und aktivieren Sie dann die Option **Nein, ausgehende Vertrauensstellung nicht bestätigen**. Die Vertrauensstellung kann nicht überprüft werden, da das delegierte Administratorkonto zur Ressourcengesamtstruktur der verwalteten Domäne nicht über die erforderlichen Berechtigungen verfügt. Dieses Verhalten ist beabsichtigt.
@@ -288,7 +288,7 @@ Mit der Windows Server-VM, die mit der Ressourcengesamtstruktur der verwalteten 
     > [!TIP]
     > Um sicher eine Verbindung mit Ihren virtuellen Computern herzustellen, die mit Azure AD Domain Services verknüpft sind, können Sie den [Azure Bastion-Hostdienst](../bastion/bastion-overview.md) in unterstützten Azure-Regionen verwenden.
 
-1. Öffnen Sie **Windows-Einstellungen**, suchen Sie nach **Netzwerk- und Freigabecenter**, und wählen Sie diese Option aus.
+1. Öffnen Sie **Windows-Einstellungen** , suchen Sie nach **Netzwerk- und Freigabecenter** , und wählen Sie diese Option aus.
 1. Wählen Sie die Option **Erweiterte Freigabeeinstellungen ändern** aus.
 1. Wählen Sie unter **Domänenprofil** die Option **Datei- und Druckerfreigabe aktivieren** aus, und wählen Sie dann **Änderungen speichern** aus.
 1. Schließen Sie **Netzwerk- und Freigabecenter**.
@@ -301,7 +301,7 @@ Mit der Windows Server-VM, die mit der Ressourcengesamtstruktur der verwalteten 
 1. Klicken Sie im Navigationsbereich mit der rechten Maustaste auf **LokaleObjekte**. Wählen Sie **Neu** und dann **Gruppe** aus.
 1. Geben Sie *Dateiserverzugriff* in das Feld **Gruppenname** ein. Wählen Sie für **Gruppenbereich** die Option **Lokal (in Domäne)** aus, und wählen Sie dann **OK** aus.
 1. Doppelklicken Sie im Inhaltsbereich auf **Dateiserverzugriff**. Wählen Sie **Mitglieder** aus, wählen Sie **Hinzufügen** aus, und wählen Sie dann **Standorte** aus.
-1. Wählen Sie Ihr lokales Active Directory in der **Standort**-Ansicht aus, und wählen Sie dann **OK** aus.
+1. Wählen Sie Ihr lokales Active Directory in der **Standort** -Ansicht aus, und wählen Sie dann **OK** aus.
 1. Geben Sie *Domänenbenutzer* in das Feld **Geben Sie die zu verwendenden Objektnamen ein** ein. Wählen Sie **Namen überprüfen** aus, geben Sie die Anmeldeinformationen für das lokale Active Directory an, und wählen Sie dann **OK** aus.
 
     > [!NOTE]
@@ -388,7 +388,7 @@ Wenn die unidirektionale ausgehende Gesamtstruktur-Vertrauensstellung von der ve
 Zum Entfernen der unidirektionalen eingehenden Vertrauensstellung von der lokalen AD DS-Gesamtstruktur stellen Sie eine Verbindung mit einem Verwaltungscomputer mit Zugriff auf die lokale AD DS-Gesamtstruktur her, und führen Sie die folgenden Schritte aus:
 
 1. Wählen Sie **Start | Verwaltung | Active Directory-Domänen und -Vertrauensstellungen** aus.
-1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com*, und wählen Sie **Eigenschaften** aus.
+1. Wählen Sie mit der rechten Maustaste eine Domäne aus, z. B. *onprem.contoso.com* , und wählen Sie **Eigenschaften** aus.
 1. Wählen Sie die Registerkarte **Vertrauensstellungen** aus, und wählen Sie dann die vorhandene eingehende Vertrauensstellung von Ihrer Gesamtstruktur der verwalteten Domäne aus.
 1. Wählen Sie **Entfernen** aus, und bestätigen Sie dann, dass Sie die eingehende Vertrauensstellung entfernen möchten.
 

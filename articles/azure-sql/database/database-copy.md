@@ -10,13 +10,13 @@ ms.topic: how-to
 author: stevestein
 ms.author: sashan
 ms.reviewer: ''
-ms.date: 07/29/2020
-ms.openlocfilehash: 7a80f6ef918ac42f43eee2ccc8acae09c5008129
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 10/30/2020
+ms.openlocfilehash: 53e62d790514bd3fb5bef93788fa78944db28c2c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748896"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127738"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-a-database-in-azure-sql-database"></a>Kopieren einer transaktionskonsistenten Kopie einer Datenbank in Azure SQL-Datenbank
 
@@ -29,7 +29,7 @@ Azure SQL-Datenbank bietet verschiedene Methoden, um eine Kopie einer vorhandene
 Bei einer Datenbankkopie handelt es sich um eine im Hinblick auf Transaktionen konsistente Momentaufnahme der Quelldatenbank zu einem Zeitpunkt, nachdem die Kopieranforderung initiiert wurde. Sie können denselben Server oder einen anderen Server für die Kopie auswählen. Außerdem können Sie die Sicherungsredundanz, die Dienstebene und die Computegröße der Quelldatenbank beibehalten oder eine andere Sicherungsspeicherredundanz und/oder Computegröße innerhalb derselben oder einer anderen Dienstebene verwenden. Nachdem der Kopiervorgang abgeschlossen ist, wird die Kopie zu einer voll funktionsfähigen, unabhängigen Datenbank. Die Anmeldungen, Benutzer und Berechtigungen in der kopierten Datenbank werden unabhängig von der Quelldatenbank verwaltet. Die Kopie wird mithilfe der Georeplikationstechnik erstellt. Sobald das Replikat-Seeding abgeschlossen ist, wird der Georeplikationslink automatisch beendet. Alle Anforderungen zur Nutzung der Georeplikation gelten für den Datenbank-Kopiervorgang. Weitere Informationen finden Sie unter [Aktive Georeplikation – Übersicht](active-geo-replication-overview.md).
 
 > [!NOTE]
-> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, wird in der Vorschauversion das Kopieren einer Datenbank auf einen Server in einer anderen Azure-Region nicht unterstützt. 
+> Die konfigurierbare Sicherungsspeicherredundanz von Azure SQL-Datenbank ist zurzeit nur in der Azure-Region „Brasilien, Süden“ als Public Preview und in der Region „Asien, Südosten“ allgemein verfügbar. Wird die Quelldatenbank mit lokal redundanter oder zonenredundanter Sicherungsspeicherredundanz erstellt, wird in der Vorschauversion das Kopieren einer Datenbank auf einen Server in einer anderen Azure-Region nicht unterstützt. 
 
 ## <a name="logins-in-the-database-copy"></a>Anmeldungen in der Datenbankkopie
 
@@ -43,7 +43,7 @@ Wenn Sie Anmeldungen auf Serverebene für den Datenzugriff verwenden und die Dat
 
 ## <a name="copy-using-the-azure-portal"></a>Kopieren mithilfe des Azure-Portals
 
-Um eine Datenbank über das Azure-Portal zu kopieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf **Kopieren** .
+Um eine Datenbank über das Azure-Portal zu kopieren, öffnen Sie die Seite für Ihre Datenbank, und klicken Sie auf **Kopieren**.
 
    ![Datenbankkopie](./media/database-copy/database-copy.png)
 

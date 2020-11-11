@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 90cd9605a166a00412ed77caf3727ffb3ad3e1fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89262110"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913635"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
@@ -49,15 +49,15 @@ Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariabl
 
 Bei der in diesem Artikel definierte Funktion wird davon ausgegangen, dass Sie die folgenden Umgebungsvariablen in den App-Einstellungen definiert haben:
 
-**AMSAADTenantDomain**: Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
+**AMSAADTenantDomain** : Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
 
-**AMSRESTAPIEndpoint**: URI, der den REST-API-Endpunkt darstellt. 
+**AMSRESTAPIEndpoint** : URI, der den REST-API-Endpunkt darstellt. 
 
-**AMSClientId**: Client-ID der Azure AD-Anwendung.
+**AMSClientId** : Client-ID der Azure AD-Anwendung.
 
 **AMSClientSecret** – geheimer Clientschlüssel der Azure AD-Anwendung
 
-**StorageConnection**: Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
+**StorageConnection** : Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
@@ -65,13 +65,13 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
 1. Wählen Sie Ihre Funktionen-App aus, und klicken Sie auf **Neue Funktion**.
 2. Wählen Sie die Sprache **C#** und das Szenario **Datenverarbeitung** aus.
-3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input**-Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
+3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input** -Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions004.png)
+    ![Screenshot: Dialogfeld „Vorlage auswählen“ mit ausgewählter Option „BlobTrigger“](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
 4. Nachdem Sie **BlobTrigger** ausgewählt haben, werden auf der Seite einige weitere Steuerelemente angezeigt.
 
-    ![files](./media/media-services-azure-functions/media-services-azure-functions005.png)
+    ![Screenshot: Dialogfeld „Funktion benennen“](./media/media-services-azure-functions/media-services-azure-functions005.png)
 
 4. Klicken Sie auf **Erstellen**. 
 
@@ -79,14 +79,14 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
 Ihre Azure-Funktion ist Codedateien und anderen Dateien zugeordnet, die in diesem Abschnitt beschrieben werden. Bei Verwendung des Azure-Portals zum Erstellen einer Funktion werden **function.json** und **run.csx** für Sie erstellt. Sie müssen die Datei **project.json** hinzufügen oder hochladen. Der restliche Teil dieses Abschnitts enthält eine kurze Erläuterung der einzelnen Dateien und zeigt ihre Definitionen.
 
-![files](./media/media-services-azure-functions/media-services-azure-functions003.png)
+![Screenshot: Die JSON-Dateien in Ihrem Projekt](./media/media-services-azure-functions/media-services-azure-functions003.png)
 
 ### <a name="functionjson"></a>function.json
 
 Die Datei „function.json“ definiert die Funktionsbindungen und weitere Konfigurationseinstellungen. Die Laufzeit verwendet diese Datei, um zu ermitteln, welche Ereignisse überwacht werden sollen und wie Daten in die Funktionsausführung übergeben und aus dieser zurückgegeben werden. Weitere Informationen finden Sie unter [HTTP- und Webhookbindungen in Azure Functions](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->Legen Sie die **disabled**-Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern. 
+>Legen Sie die **disabled** -Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern. 
 
 Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folgenden Code:
 
@@ -107,7 +107,7 @@ Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folg
 
 ### <a name="projectjson"></a>project.json
 
-Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json**, das die erforderlichen .NET Azure Media Services-Pakete aus Nuget enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt. 
+Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json** , das die erforderlichen .NET Azure Media Services-Pakete aus Nuget enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt. 
 
 Fügen Sie die folgende Definition der Datei „project.json“ hinzu. 
 
@@ -333,7 +333,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="test-your-function"></a>Testen der Funktion
 
-Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
+Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input** -Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
 
 1. Wählen Sie das Speicherkonto, das Sie in der Umgebungsvariablen **StorageConnection** angegeben haben.
 2. Klicken Sie auf **Blobs**.

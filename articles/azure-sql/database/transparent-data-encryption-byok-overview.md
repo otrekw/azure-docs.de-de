@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 5cfd76d6b2f6bb9429a7605ac05adb23d87a80d3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790881"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308342"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -156,7 +156,7 @@ Es kann vorkommen, dass ein Benutzer mit ausreichenden Zugriffsrechten für den 
 
 - Löschen der verwalteten Identität des Servers in Azure Active Directory
 
-Erfahren Sie mehr über [häufige Ursachen für Zugriffsprobleme bei Datenbanken](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current#common-errors-causing-databases-to-become-inaccessible).
+Erfahren Sie mehr über [häufige Ursachen für Zugriffsprobleme bei Datenbanken](/sql/relational-databases/security/encryption/troubleshoot-tde?view=azuresqldb-current&preserve-view=true#common-errors-causing-databases-to-become-inaccessible).
 
 ## <a name="monitoring-of-the-customer-managed-tde"></a>Überwachen der kundenseitig verwalteten TDE
 
@@ -179,7 +179,7 @@ Wenn der für die Wiederherstellung einer Sicherung erforderliche Schlüssel nic
 
 Gehen Sie bei der Problembehandlung wie folgt vor: Führen Sie das Cmdlet [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) für den Zielserver oder das Cmdlet [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) für die verwaltete Zielinstanz aus, um die Liste der verfügbaren Schlüssel zurückzugeben und die fehlenden Schlüssel zu ermitteln. Um sicherzustellen, dass alle Sicherungen wiederhergestellt werden können, vergewissern Sie sich, dass der Zielserver für die Wiederherstellung auf alle erforderlichen Schlüssel zugreifen kann. Diese Schlüssel müssen nicht als TDE-Schutzvorrichtung gekennzeichnet sein.
 
-Weitere Informationen zur Sicherungswiederherstellung in SQL-Datenbank finden Sie unter [Wiederherstellung mit automatisierten Datenbanksicherungen – Azure SQL-Datenbank & SQL Managed Instance](recovery-using-backups.md). Weitere Informationen zur Sicherungswiederherstellung für SQL-Pools finden Sie unter [Wiederherstellen eines SQL-Pools](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Informationen zur nativen Sicherung/Wiederherstellung von SQL Server mit SQL Managed Instance finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md).
+Weitere Informationen zur Sicherungswiederherstellung in SQL-Datenbank finden Sie unter [Wiederherstellung mit automatisierten Datenbanksicherungen – Azure SQL-Datenbank & SQL Managed Instance](recovery-using-backups.md). Weitere Informationen zur Sicherungswiederherstellung für dedizierte SQL-Pools in Azure Synapse Analytics finden Sie unter [Sichern und Wiederherstellen in einem Azure Synapse-SQL-Pool](../../synapse-analytics/sql-data-warehouse/backup-and-restore.md). Informationen zur nativen Sicherung/Wiederherstellung von SQL Server mit SQL Managed Instance finden Sie unter [Schnellstart: Wiederherstellen einer Datenbank in SQL Managed Instance](../managed-instance/restore-sample-database-quickstart.md).
 
 Ein weiterer zu berücksichtigender Aspekt für Protokolldateien: Gesicherte Protokolldateien bleiben auch dann mit der ursprünglichen TDE-Schutzvorrichtung verschlüsselt, wenn diese rotiert wurde und die Datenbank jetzt eine neue TDE-Schutzvorrichtung verwendet.  Zur Wiederherstellungszeit werden beide Schlüssel benötigt, um die Datenbank wiederherzustellen.  Wenn die Protokolldatei eine in Azure Key Vault gespeicherte TDE-Schutzvorrichtung verwendet, wird dieser Schlüssel zur Wiederherstellungszeit auch dann benötigt, wenn die Datenbank geändert wurde und mittlerweile die dienstseitig verwaltete TDE verwendet.
 

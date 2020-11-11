@@ -3,12 +3,12 @@ title: Häufig gestellte Fragen (FAQ) – Azure Event Hubs | Microsoft-Dokumenta
 description: Dieser Artikel enthält eine Liste häufig gestellter Fragen (FAQ) zu Azure Event Hubs sowie die zugehörigen Antworten.
 ms.topic: article
 ms.date: 10/27/2020
-ms.openlocfilehash: 051122c2030683eb2f3c57191dbbfa3bfd2bf6b7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3b55521c9f90192891b450e3e161607a334c3a00
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789368"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909708"
 ---
 # <a name="event-hubs-frequently-asked-questions"></a>Häufig gestellte Fragen zu Event Hubs
 
@@ -119,6 +119,9 @@ Aktivieren Sie dann Diagnoseprotokolle für [Event Hubs-Verbindungsereignisse f�
     "Category": "EventHubVNetConnectionEvent"
 }
 ```
+
+> [!IMPORTANT]
+> Protokolle virtueller Netzwerke werden nur dann generiert, wenn der Namespace Zugriff über **spezifische IP-Adressen** (IP-Filterregeln) erlaubt. Wenn Sie den Zugriff auf Ihren Namespace mit diesen Features nicht einschränken möchten und dennoch Protokolle virtueller Netzwerke erhalten möchten, um IP-Adressen von Clients zu verfolgen, die sich mit dem Event Hubs-Namespace verbinden, können Sie die folgende Umgehungslösung verwenden: Aktivieren Sie die IP-Filterung, und fügen Sie den gesamten adressierbaren IPv4-Bereich (1.0.0.0/1 bis 255.0.0.0/1) hinzu. Event Hubs unterstützt keine IPv6-Adressbereiche. 
 
 ## <a name="apache-kafka-integration"></a>Apache Kafka-Integration
 

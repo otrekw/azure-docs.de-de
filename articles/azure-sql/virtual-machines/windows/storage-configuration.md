@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: ebeee228d8c936732465359dfa264d822cbecb1e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3a4b7d68d7cd21ccb4b7eb8b97e0d331fb236e96
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793074"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146721"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>Speicherkonfiguration für SQL Server-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -44,7 +44,7 @@ In den folgenden Abschnitten wird beschrieben, wie Speicher für neue virtuelle 
 
 Wenn Sie eine Azure-VM mithilfe eines SQL Server-Katalogimages bereitstellen, wählen Sie **Konfiguration ändern** auf der Registerkarte **SQL Server-Einstellungen** aus, um die Seite „Leistungsoptimierte Speicherkonfiguration“ zu öffnen. Sie können die Standardeinstellungen der Werte übernehmen oder den Typ der Datenträgerkonfiguration ändern, der den Anforderungen für Ihre Workload am besten entspricht. 
 
-![SQL Server-VM-Speicherkonfiguration während der Bereitstellung](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
+![Screenshot mit Hervorhebung der Registerkarte „SQL Server-Einstellungen“ und der Option „Konfiguration ändern“.](./media/storage-configuration/sql-vm-storage-configuration-provisioning.png)
 
 Wählen Sie unter **Speicheroptimierung** den Typ der Workload aus, für den Sie SQL Server bereitstellen. Mit der Optimierungsoption **Allgemein** verfügen Sie standardmäßig über einen Datenträger mit maximal 5.000 IOPS, und Sie verwenden dasselbe Laufwerk für Ihre Daten, das Transaktionsprotokoll und den TempDB-Speicher. Wenn Sie entweder **Transaktionale Verarbeitung** (OLTP) oder **Data Warehousing** auswählen, wird ein separater Datenträger für Daten, ein separater Datenträger für das Transaktionsprotokoll und eine lokale SSD für TempDB erstellt. Es gibt keine Speicherunterschiede zwischen **Transaktionale Verarbeitung** und **Datenlagerung** , aber die jeweilige Option ändert Ihre [Stripesetkonfiguration und Ablaufverfolgungsflags](#workload-optimization-settings). Wenn Sie Storage Premium auswählen, wird die Zwischenspeicherung auf *Schreibgeschützt* für das Datenlaufwerk und *Keine* für das Protokolllaufwerk festgelegt, wie unter [Bewährte Methoden für die SQL Server-VM-Leistung](performance-guidelines-best-practices.md) beschrieben. 
 
@@ -103,7 +103,7 @@ Für vorhandene SQL Server-VMs können Sie im Azure-Portal einige Speichereinste
 
 Wählen Sie zum Ändern der Speichereinstellungen **Konfigurieren** unter **Einstellungen** aus. 
 
-![Konfigurieren von Speicher für vorhandene SQL Server-VM](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
+![Screenshot mit Hervorhebung der Option „Konfigurieren“ und des Abschnitts „Speichernutzung“.](./media/storage-configuration/sql-vm-storage-configuration-existing.png)
 
 Sie können die Datenträgereinstellungen für die Laufwerke ändern, die während des Erstellungsprozesses der SQL Server-VM konfiguriert wurden. Durch die Auswahl von **Laufwerk erweitern** wird die Seite zur Änderung des Laufwerks geöffnet, auf der Sie den Datenträgertyp ändern und zusätzliche Datenträger hinzufügen können. 
 

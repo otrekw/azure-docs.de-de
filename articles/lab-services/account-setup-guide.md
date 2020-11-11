@@ -3,12 +3,12 @@ title: Leitfaden für beschleunigte Lab-Konto-Einrichtung für Azure Lab Service
 description: Dieser Leitfaden unterstützt Administratoren beim schnellen Einrichten eines Lab-Kontos für die Verwendung innerhalb ihrer Bildungseinrichtung.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0855e59aced37e50c088cfe89ffeb3d0af9fcdca
+ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85445422"
+ms.lasthandoff: 11/02/2020
+ms.locfileid: "93148282"
 ---
 # <a name="lab-account-setup-guide"></a>Einrichtungsleitfaden für Lab-Konten
 
@@ -29,6 +29,10 @@ Erstellen Sie für einen schnellen Einstieg ein einzelnes Lab-Konto, und legen S
 ### <a name="who-should-be-owners-and-contributors-of-the-lab-account"></a>Wer sollte Besitzer und Mitwirkender für das Lab-Konto sein?
 
 Ihre Administratoren sind in der Regel Besitzer und Mitwirkende für ein Lab-Konto. Sie sind dafür verantwortlich, die Richtlinien zu verwalten, die für alle Labs im Lab-Konto gelten. Die Person, die das Lab-Konto erstellt, ist automatisch Besitzer des Kontos. Sie können weitere Besitzer und Mitwirkende hinzufügen, im Allgemeinen aus dem Azure Active Directory (Azure AD)-Mandanten, der mit Ihrem Abonnement verknüpft ist. Dies kann beim Verwalten eines Lab-Kontos hilfreich sein, indem Sie entweder die Rolle „Besitzer“ oder „Mitwirkender“ auf der Lab-Kontoebene zuweisen.
+
+[!INCLUDE [Select a tenant](./includes/multi-tenant-support.md)]
+
+Lab-Benutzern wird innerhalb von Azure Lab Services nur eine einzelne Liste der virtuellen Computer angezeigt, auf die sie mandantenübergreifend Zugriff haben.
 
 ### <a name="who-will-be-allowed-to-create-and-manage-labs"></a>Wer ist berechtigt, Labs zu erstellen und zu verwalten?
 

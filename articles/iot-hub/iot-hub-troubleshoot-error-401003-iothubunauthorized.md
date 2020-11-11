@@ -11,12 +11,12 @@ ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: 4979405c7675b5eff9f6940cd34e0c974ebad217
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538271"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909640"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -52,7 +52,7 @@ Bei MQTT verlassen sich einige SDKs darauf, dass IoT Hub beim Ablauf des Tokens 
 
 ### <a name="cause-2"></a>Ursache 2
 
-IoT Hub konnte den Autorisierungsheader, die Regel oder den Schlüssel nicht authentifizieren.
+IoT Hub konnte den Autorisierungsheader, die Regel oder den Schlüssel nicht authentifizieren. Dies kann auf einen der in den Symptomen genannten Gründe zurückzuführen sein.
 
 ## <a name="solution"></a>Lösung
 
@@ -66,10 +66,13 @@ Wenn die Fehlermenge ein Problem darstellt, wechseln Sie zum C SDK, von dem das
 
 Im Allgemeinen sollte in der angezeigten Fehlermeldung erläutert werden, wie der Fehler behoben werden kann. Wenn Sie aus irgendeinem Grund auf die Details der Fehlermeldung nicht zugreifen können, stellen Sie Folgendes sicher:
 
-- Die SAS (Shared Access Signature) oder ein anderes verwendetes Sicherheitstoken ist nicht abgelaufen. 
-- Die Autorisierungsanmeldeinformationen sind für das verwendete Protokoll richtig formatiert. Weitere Informationen finden Sie unter [IoT Hub-Zugriffssteuerung](iot-hub-devguide-security.md).
+- Die SAS (Shared Access Signature) oder ein anderes verwendetes Sicherheitstoken ist nicht abgelaufen.
+- Bei der X.509-Zertifikatsauthentifizierung ist das mit dem Gerät verbundene Geräte- oder Zertifizierungsstellenzertifikat nicht abgelaufen. Wie Sie X.509-Zertifizierungsstellenzertifikate bei IoT Hub registrieren können, erfahren Sie unter [Einrichten der X.509-Sicherheit in Ihrem Azure IoT Hub](iot-hub-security-x509-get-started.md).
+- Bei der X.509-Authentifizierung per Fingerabdruck wird der Fingerabdruck des Gerätezertifikats bei IoT Hub registriert.
+- Die Autorisierungsanmeldeinformationen sind für das verwendete Protokoll richtig formatiert. Weitere Informationen finden Sie unter [Steuern des Zugriffs auf IoT Hub](iot-hub-devguide-security.md).
 - Die verwendete Autorisierungsregel verfügt über die Berechtigung für den angeforderten Vorgang.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Zur Vereinfachung der Authentifizierung bei IoT Hub empfehlen wir, [Azure IoT SDKs](iot-hub-devguide-sdks.md) zu verwenden.
+- Zur Vereinfachung der Authentifizierung bei IoT Hub empfehlen wir, [Azure IoT SDKs](iot-hub-devguide-sdks.md) zu verwenden.
+- Details zur Authentifizierung bei IoT Hub finden Sie unter [Verwalten des Zugriffs auf IoT Hub](iot-hub-devguide-security.md).

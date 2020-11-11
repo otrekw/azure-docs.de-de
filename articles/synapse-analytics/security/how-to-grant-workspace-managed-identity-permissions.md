@@ -8,27 +8,27 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08ead12c99ae4919a2daf523065cfe332c644df1
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487193"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312374"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie der verwalteten Identität in einem Azure Synapse-Arbeitsbereich Berechtigungen gewähren. Berechtigungen ermöglichen wiederum den Zugriff auf SQL-Pools im Arbeitsbereich und im ADLS Gen2-Speicherkonto über das Azure-Portal.
+In diesem Artikel erfahren Sie, wie Sie der verwalteten Identität in einem Azure Synapse-Arbeitsbereich Berechtigungen gewähren. Berechtigungen ermöglichen wiederum den Zugriff auf dedizierte SQL-Pools im Arbeitsbereich und im ADLS Gen2-Speicherkonto über das Azure-Portal.
 
 >[!NOTE]
 >Diese verwaltete Identität für den Arbeitsbereich wird im Rest dieses Dokuments als „verwaltete Identität“ bezeichnet.
 
-## <a name="grant-managed-identity-permissions-to-the-sql-pool"></a>Gewähren von Berechtigungen für die verwaltete Identität für den SQL-Pool
+## <a name="grant-managed-identity-permissions-to-the-dedicated-sql-pool"></a>Gewähren von Berechtigungen für die verwaltete Identität für den dedizierten SQL-Pool
 
-Die verwaltete Identität gewährt Berechtigungen für die SQL-Pools im Arbeitsbereich. Mit gewährten Berechtigungen können Sie Pipelines orchestrieren, die auf SQL-Pools bezogene Aktivitäten ausführen. Wenn Sie über das Azure-Portal einen Azure Synapse-Arbeitsbereich erstellen, können Sie der verwalteten Identität CONTROL-Berechtigungen für SQL-Pools erteilen.
+Die verwaltete Identität gewährt Berechtigungen für die dedizierten SQL-Pools im Arbeitsbereich. Mit gewährten Berechtigungen können Sie Pipelines orchestrieren, die auf dedizierte SQL-Pools bezogene Aktivitäten ausführen. Wenn Sie über das Azure-Portal einen Azure Synapse-Arbeitsbereich erstellen, können Sie der verwalteten Identität CONTROL-Berechtigungen für dedizierte SQL-Pools erteilen.
 
-Wählen Sie beim Erstellen Ihres Azure Synapse-Arbeitsbereichs **Sicherheit + Netzwerk** aus. Wählen Sie dann **Der verwalteten Identität des Arbeitsbereichs die CONTROL-Berechtigung für SQL-Pools erteilen** aus.
+Wählen Sie beim Erstellen Ihres Azure Synapse-Arbeitsbereichs **Sicherheit** aus. Aktivieren Sie dann **Pipelines (die als systemseitig zugewiesene Identität eines Arbeitsbereichs ausgeführt werden) den Zugriff auf SQL-Pools gestatten**.
 
-![CONTROL-Berechtigung für SQL-Pools](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
+![CONTROL-Berechtigung für dedizierte SQL-Pools](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-16.png)
 
 ## <a name="grant-the-managed-identity-permissions-to-adls-gen2-storage-account"></a>Gewähren von Berechtigungen für die verwaltete Identität für das ADLS Gen2-Speicherkonto
 

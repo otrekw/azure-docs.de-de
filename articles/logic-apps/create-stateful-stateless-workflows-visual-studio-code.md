@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.openlocfilehash: 3b8bf89bc43781fdf6c1a640992f15e21691cd63
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676423"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322053"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code mit der Azure Logic Apps (Vorschau)-Erweiterung
 
@@ -106,7 +106,7 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
 
 * Verwenden Sie den [integrierten Anforderungs-, HTTP-, Event Hubs- oder Service Bus-Trigger](../connectors/apis-list.md), der nativ in der Logic Apps-Runtime ausgeführt wird, um Ihren Workflow zu starten. Derzeit werden [Unternehmensconnectors](../connectors/apis-list.md#enterprise-connectors), [lokale Datengatewaytrigger](../connectors/apis-list.md#on-premises-connectors), webhook-basierte Trigger, „Gleitendes Fenster“-Trigger, [benutzerdefinierte Connectors](../connectors/apis-list.md#custom-apis-and-connectors), Integrationskonten, ihre Artefakte und [ihre Connectors](../connectors/apis-list.md#integration-account-connectors) in dieser Vorschauversion nicht unterstützt. Da die Funktionalität „Aufrufen einer Azure-Funktion“ nicht verfügbar ist, verwenden Sie vorerst die HTTP- *Aktion* , um die Anforderungs-URL für die Azure-Funktion aufzurufen.
 
-  Mit Ausnahme der zuvor angegebenen Trigger können *zustandsbehaftete* Workflows sowohl Trigger als auch Aktionen für [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) verwenden, die in Azure bereitgestellt wurden. *Zustandslose* Workflows unterstützen derzeit nur *Aktionen* für verwaltete Connectors, keine für Trigger. Obwohl Sie die Möglichkeit haben, Connectors in Azure für zustandslose Workflows zu aktivieren, zeigt der Designer keine verwalteten Connectortrigger an, die Sie auswählen können.
+  Mit Ausnahme der zuvor angegebenen Trigger können *zustandsbehaftete* Workflows im Gegensatz zu integrierten Triggern und Aktionen, die nativ mit der Logic Apps-Laufzeit ausgeführt werden, sowohl Trigger als auch Aktionen für [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) verwenden, die in Azure bereitgestellt werden. *Zustandslose* Workflows unterstützen derzeit nur *Aktionen* für verwaltete Connectors, keine für Trigger. Obwohl Sie Connectors in Azure für zustandslose Workflows aktivieren können, zeigt der Designer keine verwalteten Connectortrigger an, die Sie auswählen können.
 
 * Sie können den neuen **Logik-App** -Ressourcentyp (Vorschau) nur für einen [Premium- oder App Service-Hostingplan in Azure](#publish-azure) oder einen [Docker-Container](#deploy-docker) bereitstellen, nicht für [Integrationsdienstumgebungen (Integration Service Environment, ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Hostingpläne für den **Verbrauch** werden weder unterstützt, noch stehen sie zur Bereitstellung dieses Ressourcentyps zur Verfügung.
 

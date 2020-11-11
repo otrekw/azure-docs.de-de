@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
-ms.openlocfilehash: 7cc9e8a1cf51d57bf10523174179b5a9f2ef6e97
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 010e2a206ef08677651572c274cfc38fd516ecc9
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92363690"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93041113"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Planen einer automatischen Benutzerbereitstellung
 
@@ -99,7 +99,7 @@ In diesem Beispiel werden Benutzer und/oder Gruppen in einer mit einem lokalen V
 
 In diesem Beispiel erfolgt die Benutzererstellung in Azure AD, und der Azure AD-Bereitstellungsdienst verwaltet die automatische Benutzerbereitstellung für die SaaS-Zielanwendungen.
 
-![Abbildung 2](./media/plan-auto-user-provisioning/cloudprovisioning.png)
+![Diagramm: Benutzer-/Gruppenerstellungsprozess einer lokalen Personalanwendung über den Azure-Bereitstellungsdienst für die SaaS-Zielanwendungen](./media/plan-auto-user-provisioning/cloudprovisioning.png)
 
 **Beschreibung des Workflows:**
 

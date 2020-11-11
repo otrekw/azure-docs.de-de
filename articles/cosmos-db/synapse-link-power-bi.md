@@ -1,21 +1,22 @@
 ---
-title: Power BI und serverloser Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link
-description: Hier erfahren Sie, wie Sie eine serverlose Synapse SQL-Pooldatenbank und Sichten zu Synapse Link für Azure Cosmos DB erstellen, die Azure Cosmos-Container abfragen und dann mit Power BI ein Modell für diese Sichten erstellen.
+title: Power BI und serverloser SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link
+description: Hier erfahren Sie, wie Sie eine serverlose Synapse SQL-Datenbank und Sichten zu Synapse Link für Azure Cosmos DB erstellen, die Azure Cosmos-Container abfragen und dann mit Power BI ein Modell für diese Sichten erstellen.
 author: ArnoMicrosoft
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
-ms.openlocfilehash: 6e77746d21d63cf1460b9e460e470a3bd12ce656
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 55a73ada39f4f48aeb22c5482bd85d1092d54c35
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480036"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93342248"
 ---
 # <a name="use-power-bi-and-serverless-synapse-sql-pool-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>Verwenden von Power BI und serverlosem Synapse SQL-Pool zum Analysieren von Azure Cosmos DB-Daten mit Synapse Link (Vorschau) 
+[!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
 
-In diesem Artikel erfahren Sie, wie Sie eine serverlose Synapse SQL-Pooldatenbank (die zuvor als „ **SQL On-Demand** -Datenbank“ bezeichnet wurde) und Sichten zu Synapse Link für Azure Cosmos DB erstellen. Sie werden die Azure Cosmos-Container abfragen und dann ein Modell mit Power BI für diese Sichten erstellen, um die betreffende Abfrage anzuzeigen.
+In diesem Artikel erfahren Sie, wie Sie eine Datenbank im serverlosen SQL-Pool und Sichten zu Synapse Link für Azure Cosmos DB erstellen. Sie werden die Azure Cosmos DB-Container abfragen und dann ein Modell mit Power BI für diese Sichten erstellen, um die betreffende Abfrage anzuzeigen.
 
 In diesem Szenario verwenden Sie simulierte Daten zu Surface-Produktverkäufen in einem Partner-Einzelhandelsgeschäft. Sie werden den Umsatz pro Geschäft – basierend auf der Nähe zu großen Haushalten und der Auswirkung von Werbung – für eine bestimmte Woche analysieren. In diesem Artikel erstellen Sie die zwei Sichten **RetailSales** und **StoreDemographics** sowie eine Abfrage zwischen beiden. Sie können die Beispielproduktdaten aus diesem [GitHub](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/Retail/RetailData)-Repository abrufen.
 
@@ -41,7 +42,7 @@ Wechseln Sie im Synapse-Arbeitsbereich zur Registerkarte **Entwickeln** , wähle
 
 :::image type="content" source="./media/synapse-link-power-bi/add-sql-script.png" alt-text="Hinzufügen eines SQL-Skripts zum Synapse Analytics-Arbeitsbereich":::
 
-Jeder Arbeitsbereich enthält einen serverlosen SQL-Endpunkt. Nachdem Sie ein SQL-Skript erstellt haben, stellen Sie über die Symbolleiste oben eine Verbindung mit **SQL On-Demand** her.
+Jeder Arbeitsbereich enthält einen serverlosen SQL-Endpunkt. Nachdem Sie ein SQL-Skript erstellt haben, stellen Sie über die Symbolleiste oben eine Verbindung mit **Integriert** her.
 
 :::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Aktivieren des SQL-Skripts zur Verwendung des serverlosen SQL-Endpunkts im Arbeitsbereich":::
 
@@ -144,4 +145,4 @@ Nachdem Sie diese Optionen ausgewählt haben, sollte ein Diagramm wie der folgen
 
 [Verwenden von T-SQL zum Abfragen von Azure Cosmos DB-Daten mithilfe von Azure Synapse Link](../synapse-analytics/sql/query-cosmos-db-analytical-store.md)
 
-Verwenden Sie den serverlosen Synapse SQL-Pool zum [Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio](../synapse-analytics/sql/tutorial-data-analyst.md).
+Verwenden Sie den serverlosen SQL-Pool zum [Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio](../synapse-analytics/sql/tutorial-data-analyst.md).

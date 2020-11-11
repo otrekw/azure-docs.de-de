@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 8b59bcf3f25921a348e9c5f25e83619d8596ebd5
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92489862"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92909912"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -41,13 +41,13 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 4. Die Seite **Regel erstellen** wird geöffnet, wie unten gezeigt. Füllen Sie die erforderlichen Informationen aus:
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/4-add-rule-form.png" alt-text="Formular „Metrikwarnung hinzufügen“":::
 
 5. Wählen Sie im Abschnitt **Bedingung** die Option **Hinzufügen** aus.
 
 6. Wählen Sie eine Metrik aus der Liste der Signale aus, bei denen eine Warnung erfolgen soll. Wählen Sie in diesem Beispiel „Speicher in Prozent“ aus.
    
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/6-configure-signal-logic.png" alt-text="Screenshot mit der Seite „Signallogik konfigurieren“, auf der Sie mehrere Signale anzeigen können.":::
 
 7. Konfigurieren Sie die Warnungslogik:
 
@@ -58,25 +58,25 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
    
    Wählen Sie anschließend **Fertig** aus.
 
-   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-hyperscale-alert-on-metric/7-set-threshold-time.png" alt-text="Screenshot des Bereichs, in dem Sie die Warnungslogik konfigurieren können.":::
 
 8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
 9. Tragen Sie in das Formular „Aktionsgruppe hinzufügen“ einen Namen, Kurznamen, ein Abonnement und eine Ressourcengruppe ein.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="„Warnungsregeln“ auswählen":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/9-add-action-group.png" alt-text="Screenshot des Formulars „Aktionsgruppe hinzufügen“, in das Sie die beschriebenen Werte eingeben können.":::
 
-10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf** .
+10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
     
     Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Benachrichtigungen an Besitzer, Mitwirkende und Leser des Abonnements zu senden.
    
     Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="„Warnungsregeln“ auswählen":::
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/10-action-group-type.png" alt-text="Screenshot des Bereichs „E-Mail/SMS/Push/Sprachanruf“.":::
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="„Warnungsregeln“ auswählen"::: 
+    :::image type="content" source="./media/howto-hyperscale-alert-on-metric/11-name-description-severity.png" alt-text="Screenshot der Seite „Warnungsdetails“."::: 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
@@ -87,7 +87,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende Aktionen ausführen:
 
 * Ein Diagramm anzeigen, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt, die für diese Warnung relevant sind.
-* Die Warnungsregel **bearbeiten** oder **löschen** .
+* Die Warnungsregel **bearbeiten** oder **löschen**.
 * Die Warnung **deaktivieren** oder **aktivieren** , wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
 
 ## <a name="suggested-alerts"></a>Warnungsvorschläge

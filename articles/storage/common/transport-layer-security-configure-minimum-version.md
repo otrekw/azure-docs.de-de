@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 07f506ac46b8aa503138cec33918534ea309defc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785798"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312015"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto
 
@@ -44,7 +44,7 @@ Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Klicken Sie im Abschnitt „Überwachung“ auf **Diagnoseeinstellungen (Vorschau)** .
 1. Wählen Sie den Azure Storage-Dienst aus, für den Sie Anforderungen protokollieren möchten. Wählen Sie beispielsweise **Blob** aus, um Anforderungen an den Blobspeicher zu protokollieren.
-1. Klicken Sie auf **Diagnoseeinstellung hinzufügen** .
+1. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 1. Geben Sie einen Namen für die Diagnoseeinstellung an.
 1. Wählen Sie unter **Kategoriedetails** im Abschnitt **Protokoll** aus, welche Typen von Anforderungen protokolliert werden sollen. Sie können Lese-, Schreib- und Löschanforderungen protokollieren. Wenn Sie z. B. **StorageRead** und **StorageWrite** auswählen, werden Lese- und Schreibanforderungen an den ausgewählten Dienst protokolliert.
 1. Wählen Sie unter **Zieldetails** die Option **An Log Analytics senden** aus. Wählen Sie Ihr Abonnement und den zuvor erstellten Log Analytics-Arbeitsbereich aus, wie in der folgenden Abbildung zu sehen:
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 Die Ergebnisse zeigen die Anzahl der Anforderungen, die über die einzelnen TLS-Versionen gesendet wurden:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Screenshot der Ergebnisse der Log Analytics-Abfrage zur Rückgabe der TLS-Version":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Abfragen protokollierter Anforderungen nach IP-Adresse des Aufrufers und Benutzer-Agent-Header
 
@@ -91,6 +91,8 @@ Wenn Sie sicher sind, dass der Datenverkehr von Clients, die ältere Versionen v
 
 Legen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto die **MinimumTlsVersion** -Version für das Konto fest. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
 
+Die Eigenschaft **MinimumTlsVersion** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, nachdem Sie sie explizit festgelegt haben.  Wenn der Eigenschaftswert **NULL** ist, lässt das Speicherkonto Anforderungen zu, die mit TLS Version 1.0 oder höher gesendet werden.
+
 # <a name="portal"></a>[Portal](#tab/portal)
 
 Wenn Sie ein Speicherkonto über das Azure-Portal erstellen, wird standardmäßig die TLS-Mindestversion auf 1.2 festgelegt.
@@ -101,13 +103,11 @@ Führen Sie die folgenden Schritte aus, um die TLS-Mindestversion für ein beste
 1. Wählen Sie die Einstellung **Konfiguration** aus.
 1. Wählen Sie unter **TLS-Mindestversion** in der Dropdownliste die erforderliche TLS-Mindestversion für den Zugriff auf Daten in diesem Speicherkonto aus, wie in der folgenden Abbildung dargestellt.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="Screenshot zur Konfiguration der TLS-Mindestversion im Azure-Portal":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
 Installieren Sie [Azure PowerShell Version 4.4.0](https://www.powershellgallery.com/packages/Az/4.4.0) oder höher, um die TLS-Mindestversion für ein Speicherkonto mit PowerShell zu konfigurieren. Konfigurieren Sie als nächstes die Eigenschaft **MinimumTLSVersion** für ein neues oder vorhandenes Speicherkonto. Gültige Werte für **MinimumTlsVersion** sind `TLS1_0`, `TLS1_1` und `TLS1_2`.
-
-Die **MinimumTlsVersion** -Eigenschaft wird nicht standardmäßig festgelegt, wenn Sie ein Speicherkonto mit PowerShell erstellen. Diese Eigenschaft gibt erst dann einen Wert zurück, wenn Sie sie explizit festlegen. Das Senden von Anforderungen mit TLS-Version 1.0 oder höher wird vom Speicherkonto gestattet, wenn der Eigenschaftswert **NULL** ist.
 
 Das folgende Beispiel erstellt ein Speicherkonto und legt **MinimumTLSVersion** auf TLS 1.1 fest, aktualisiert dann das Konto und setzt **MinimumTLSVersion** auf TLS 1.2. Das Beispiel ruft auch den jeweiligen Eigenschaftswert ab. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -138,8 +138,6 @@ Set-AzStorageAccount -ResourceGroupName $rgName `
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 Installieren Sie die Azure-Befehlszeilenschnittstelle, Version 2.9.0 oder höher, um die TLS-Mindestversion für ein Speicherkonto mit der Azure-Befehlszeilenschnittstelle zu konfigurieren. Weitere Informationen finden Sie unter [Installieren der Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli). Konfigurieren Sie als nächstes die Eigenschaft **minimumTlsVersion** für ein neues oder vorhandenes Speicherkonto. Gültige Werte für **minimumTlsVersion** sind `TLS1_0`, `TLS1_1` und `TLS1_2`.
-
-Die **MinimumTlsVersion** -Eigenschaft wird nicht standardmäßig festgelegt, wenn Sie ein Speicherkonto mit der Azure-Befehlszeilenschnittstelle erstellen. Diese Eigenschaft gibt erst dann einen Wert zurück, wenn Sie sie explizit festlegen. Das Senden von Anforderungen mit TLS-Version 1.0 oder höher wird vom Speicherkonto gestattet, wenn der Eigenschaftswert **NULL** ist.
 
 Im folgenden Beispiel wird ein Speicherkonto erstellt und **minimaleTLSVersion** auf TLS 1.1 festgelegt. Anschließend wird das Konto aktualisiert und die Eigenschaft **minimumTLSVersion** auf TLS 1.2 festgelegt. Das Beispiel ruft auch den jeweiligen Eigenschaftswert ab. Denken Sie daran, die Platzhalterwerte in Klammern durch Ihre eigenen Werte zu ersetzen:
 
@@ -173,8 +171,8 @@ az storage account show \
 
 Erstellen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto mit einer Vorlage eine Vorlage mit der Eigenschaft **MinimumTLSVersion** , die auf `TLS1_0`, `TLS1_1` oder `TLS1_2` festgelegt ist. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** .
-1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE** .
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
+1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
 1. Wählen Sie **Vorlagenbereitstellung (Bereitstellen mit benutzerdefinierten Vorlagen) (Vorschau)** , dann **Erstellen** und anschließend die Option **Eigene Vorlage im Editor erstellen** aus.
 1. Fügen Sie im Vorlagen-Editor den folgenden JSON-Code ein, um ein neues Konto zu erstellen, und legen Sie die TLS-Mindestversion auf TLS 1.2 fest. Denken Sie daran, die Platzhalter in eckigen Klammern durch Ihre eigenen Werte zu ersetzen.
 
@@ -289,7 +287,7 @@ Führen Sie die folgenden Schritte aus, um die Richtlinie dem Azure-Portal zuzuw
 1. Wählen Sie für das Feld **Richtliniendefinition** die Schaltfläche **Mehr** und dann die im vorherigen Abschnitt definierte Richtlinie aus der Liste aus.
 1. Geben Sie einen Namen für die Richtlinienzuweisung an. Die Angabe einer Beschreibung ist optional.
 1. Behalten Sie für **Richtlinienerzwingung** die Einstellung *Aktiviert* bei. Diese Einstellung hat keine Auswirkung auf die Überwachungsrichtlinie.
-1. Klicken Sie zum Erstellen der Zuweisung auf **Überprüfen + erstellen** .
+1. Klicken Sie zum Erstellen der Zuweisung auf **Überprüfen + erstellen**.
 
 ### <a name="view-compliance-report"></a>Anzeigen des Konformitätsberichts
 
@@ -304,7 +302,7 @@ Führen Sie die folgenden Schritte aus, um den Konformitätsbericht im Azure-Por
 1. Filtern Sie die Ergebnisse nach dem Namen der Richtlinienzuweisung, die Sie im vorherigen Schritt erstellt haben. Der Bericht zeigt, wie viele Ressourcen nicht mit der Richtlinie konform sind.
 1. Sie können einen Drilldown in den Bericht ausführen, um weitere Details anzuzeigen, einschließlich einer Liste von Speicherkonten, die nicht konform sind.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="Screenshot mit Konformitätsbericht für Überwachungsrichtlinien für TLS-Mindestversion":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Erzwingen der TLS-Mindestversion mit Azure Policy
 
@@ -340,7 +338,7 @@ Nachdem Sie die Richtlinie mit der Auswirkung „Deny“ erstellt und einem Bere
 
 Die folgende Abbildung zeigt den Fehler, der beim Erstellen eines Speicherkontos mit der TLS-Mindestversion von TLS 1.0 (dem Standard für ein neues Konto) auftritt, wenn eine Richtlinie mit der Auswirkung „Deny“ erfordert, dass die TLS-Mindestversion auf TLS 1.2 festgelegt wird.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Screenshot: Erstellen einer Diagnoseeinstellung für die Protokollierung von Anforderungen":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="Screenshot mit dem Fehler, der beim Erstellen eines Speicherkontos bei einem Verstoß gegen die Richtlinie auftritt":::
 
 ## <a name="network-considerations"></a>Überlegungen zu Netzwerken
 

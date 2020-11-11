@@ -1,23 +1,25 @@
 ---
-title: Verwenden der Funktion „öffentliche IP-Adresse“ in Virtual WAN
+title: Verwenden der Funktionalität öffentlicher IP-Adressen in Azure VMware Solution
 description: In diesem Artikel wird erläutert, wie Sie die Funktion „öffentliche IP-Adresse“ in Azure Virtual WAN verwenden.
 ms.topic: how-to
-ms.date: 10/30/2020
-ms.openlocfilehash: 61ed6487bc000a35fd25cabde2b562b6eb08da46
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.date: 10/28/2020
+ms.openlocfilehash: f51f00a9adc1fd122e723909ecaa6193c152d496
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048303"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92912666"
 ---
-# <a name="how-to-use-the-public-ip-functionality-in-azure-virtual-wan"></a>Verwenden der Funktion „öffentliche IP-Adresse“ in Azure Virtual WAN
+# <a name="how-to-use-the-public-ip-functionality-in-azure-vmware-solution"></a>Verwenden der Funktionalität öffentlicher IP-Adressen in Azure VMware Solution
 
-Die öffentliche IP-Adresse ist eine neue Funktion in der Azure VMware Solution-Konnektivität, und Kunden können den öffentlichen Internetzugang auf zwei Arten aktivieren. 
+„Öffentliche IP-Adresse“ ist ein neues Feature bei der Azure VMware Solution-Konnektivität. Dadurch können Ressourcen wie Webserver, virtuelle Computer (VMs) und Hosts über ein öffentliches Netzwerk zugänglich gemacht werden. 
+
+Der öffentliche Zugriff auf das Internet wird auf zwei Arten ermöglicht. 
 
 - Anwendungen können unter dem Application Gateway-Lastenausgleich für HTTP-/HTTPS-Datenverkehr gehostet und veröffentlicht werden.
 - Sie können über Funktionen für öffentliche IP-Adressen in Azure Virtual WAN veröffentlicht werden.
 
-Als Teil der privaten Cloud-Bereitstellung von Azure VMware Solution werden bei Aktivierung der Funktion „öffentliche IP-Adresse“ die erforderlichen Komponenten mit Automatisierung automatisch erstellt und aktiviert:
+Als Teil der Bereitstellung der privaten Cloud von Azure VMware Solution werden bei Aktivierung der Funktion „öffentliche IP-Adresse“ die erforderlichen Komponenten automatisch erstellt und aktiviert:
 
 -  Virtual WAN
 
@@ -25,7 +27,7 @@ Als Teil der privaten Cloud-Bereitstellung von Azure VMware Solution werden bei 
 
 -  Azure Firewall-Dienste mit öffentlicher IP-Adresse
 
-In diesem Artikel wird ausführlich beschrieben, wie Sie die Funktion „öffentliche IP-Adresse“ in Virtual WAN verwenden können, um Ressourcen wie Webserver, virtuelle Computer (VMs) und Hosts über ein öffentliches Netzwerk zugänglich zu machen.
+In diesem Artikel wird erläutert, wie Sie die Funktionalität öffentlicher IP-Adressen in Virtual WAN verwenden können.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -48,19 +50,19 @@ In diesem Szenario müssen Sie den IIS-Webserver im Internet veröffentlichen. V
 
 ## <a name="deploy-virtual-wan"></a>Bereitstellen von Virtual WAN
 
-1. Melden Sie sich beim Azure-Portal an, suchen Sie nach **Azure VMware Solution**, und wählen Sie diese Option aus.
+1. Melden Sie sich beim Azure-Portal an, suchen Sie nach **Azure VMware Solution** , und wählen Sie diese Option aus.
 
 1. Wählen Sie die private Azure VMware Solution-Cloud aus.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-resource.png" alt-text="Wählen Sie die private Azure VMware Solution-Cloud aus." border="true" lightbox="media/public-ip-usage/avs-private-cloud-resource.png":::
 
 1. Wählen Sie unter **Verwalten** die Option **Konnektivität** aus.
 
-   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
+   :::image type="content" source="media/public-ip-usage/avs-private-cloud-manage-menu.png" alt-text="Wählen Sie unter „Verwalten“ die Option „Konnektivität“ aus." border="true" lightbox="media/public-ip-usage/avs-private-cloud-manage-menu.png":::
 
 1. Wählen Sie die Registerkarte **Öffentliche IP-Adresse** aus, und wählen Sie dann **Konfigurieren** aus.
 
-   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
+   :::image type="content" source="media/public-ip-usage/connectivity-public-ip-tab.png" alt-text="Wählen Sie die Registerkarte „Öffentliche IP-Adresse“ aus, und wählen Sie dann „Konfigurieren“ aus." border="true" lightbox="media/public-ip-usage/connectivity-public-ip-tab.png":::
 
 1. Übernehmen Sie die Standardwerte, oder ändern sie diese, und wählen Sie dann **Erstellen** aus.
 
@@ -81,38 +83,38 @@ Die Bereitstellung sämtlicher Komponenten dauert ungefähr eine Stunde. Diese B
 
 Sie können weitere öffentliche IP-Adressen überprüfen und hinzufügen, indem Sie die folgenden Schritte ausführen.
 
-1. Suchen Sie im Azure-Portal nach der **Firewall**, und wählen Sie diese aus.
+1. Suchen Sie im Azure-Portal nach der **Firewall** , und wählen Sie diese aus.
 
 1. Wählen Sie eine bereitgestellte Firewall aus, und wählen Sie dann **Azure Firewall Manager zum Konfigurieren und Verwalten dieser Firewall besuchen** aus.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Wählen Sie eine bereitgestellte Firewall aus." border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. Wählen Sie **Geschützte virtuelle Hubs** aus, und wählen Sie einen virtuellen Hub aus der Liste aus.
 
-   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" lightbox="media/public-ip-usage/select-virtual-hub.png":::
+   :::image type="content" source="media/public-ip-usage/select-virtual-hub.png" alt-text="Wählen Sie „Geschützte virtuelle Hubs“ aus, und wählen Sie dann einen virtuellen Hub aus der Liste aus." lightbox="media/public-ip-usage/select-virtual-hub.png":::
 
 1. Wählen Sie auf der Seite „Virtueller Hub“ die Option **Öffentliche IP-Konfiguration** aus, und wählen Sie zum Hinzufügen weiterer öffentlicher IP-Adressen die Option **Hinzufügen** aus. 
 
-   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
+   :::image type="content" source="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png" alt-text="Wählen Sie auf der Seite „Virtueller Hub“ die Option „Öffentliche IP-Konfiguration“ aus." border="true" lightbox="media/public-ip-usage/virtual-hub-page-public-ip-configuration.png":::
 
 1. Geben Sie die Anzahl der benötigten IP-Adressen an, und wählen Sie **Hinzufügen** aus.
 
-   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true":::
+   :::image type="content" source="media/public-ip-usage/add-number-of-ip-addresses-required.png" alt-text="Wählen Sie „Hinzufügen“ aus, geben Sie die Anzahl der benötigten IP-Adressen an, und wählen Sie „Hinzufügen“ aus." border="true":::
 
 
 ## <a name="create-firewall-policies"></a>Erstellen von Firewallrichtlinien
 
 Nachdem alle Komponenten bereitgestellt wurden, können Sie diese in der hinzugefügten Ressourcengruppe sehen. Der nächste Schritt besteht darin, eine Firewallrichtlinie hinzuzufügen.
 
-1. Suchen Sie im Azure-Portal nach der **Firewall**, und wählen Sie diese aus.
+1. Suchen Sie im Azure-Portal nach der **Firewall** , und wählen Sie diese aus.
 
 1. Wählen Sie eine bereitgestellte Firewall aus, und wählen Sie dann **Azure Firewall Manager zum Konfigurieren und Verwalten dieser Firewall besuchen** aus.
 
-   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
+   :::image type="content" source="media/public-ip-usage/configure-manage-deployed-firewall.png" alt-text="Wählen Sie eine bereitgestellte Firewall aus." border="true" lightbox="media/public-ip-usage/configure-manage-deployed-firewall.png":::
 
 1. Wählen Sie **Azure-Firewallrichtlinien** aus, und wählen Sie dann **Azure-Firewallrichtlinie erstellen** aus.
 
-   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/create-firewall-policy.png" alt-text="Wählen Sie „Azure-Firewallrichtlinien“ aus, und wählen Sie dann „Azure-Firewallrichtlinie erstellen“ aus." border="true" lightbox="media/public-ip-usage/create-firewall-policy.png":::
 
 1. Geben Sie auf der Registerkarte **Grundlagen** die erforderlichen Details ein, und wählen Sie **Weiter: DNS-Einstellungen** aus. 
 
@@ -126,8 +128,8 @@ Nachdem alle Komponenten bereitgestellt wurden, können Sie diese in der hinzuge
    -  Regelsammlungsaktion – Zulassen
    -  Name der Regel
    -  Quelltyp – **IPaddress**
-   -  Quelle – **\***
-   -  Protokoll – **TCP**
+   -  Quelle – * *\** _
+   -  Protokoll – *TCP**
    -  Zielport – **80**
    -  Zieltyp – **IP-Adresse**
    -  Ziel – **öffentliche IP-Adresse**
@@ -138,11 +140,11 @@ Nachdem alle Komponenten bereitgestellt wurden, können Sie diese in der hinzuge
 
 1. Wählen Sie **Virtuellen Hub zuordnen** aus.
 
-   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
+   :::image type="content" source="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png" alt-text="Wählen Sie auf der Registerkarte „Hubs“ die Option „Virtuellen Hub zuordnen“ aus." border="true" lightbox="media/public-ip-usage/associate-virtual-hubs-azure-firewall-policy.png":::
 
 1. Wählen Sie einen Hub aus der Liste aus, und wählen Sie **Hinzufügen** aus.
 
-   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Diagramm der Architektur öffentlicher IP-Adressen" border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
+   :::image type="content" source="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png" alt-text="Wählen Sie einen Hub aus der Liste aus, und wählen Sie „Hinzufügen“ aus." border="true" lightbox="media/public-ip-usage/secure-hubs-with-azure-firewall-polcy.png":::
 
 1. Wählen Sie **Weiter: Tags**. 
 

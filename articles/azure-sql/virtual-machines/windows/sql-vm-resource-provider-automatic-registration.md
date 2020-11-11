@@ -9,39 +9,42 @@ ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 09/21/2020
-ms.openlocfilehash: b986832e5febbb2a0f88b65213f9acf0dd4c5ab5
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: d4a2d9e43dadc53008c04b44ea1dda9cb337da99
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996890"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93308349"
 ---
 # <a name="automatic-registration-with-sql-vm-resource-provider"></a>Automatische Registrierung beim SQL-VM-Ressourcenanbieter
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Aktivieren Sie die automatische Registrierungsfunktion im Azure-Portal, um alle aktuellen und zukünftigen SQL Server auf Azure-VMs automatisch beim SQL-VM-Ressourcenanbieter im Modus „Lightweight“ zu registrieren.
+Aktivieren Sie die automatische Registrierungsfunktion im Azure-Portal, um alle aktuellen und zukünftigen SQL Server-Instanzen auf virtuellen Azure-Computern (virtual machines, VMs) automatisch im einfachen Modus beim SQL-VM-Ressourcenanbieter zu registrieren. Im Zuge der Registrierung beim SQL-VM-Ressourcenanbieter wird die [SQL-IaaS-Agent-Erweiterung](sql-server-iaas-agent-extension-automate-management.md) installiert.
 
 In diesem Artikel erfahren Sie, wie Sie die automatische Registrierungsfunktion aktivieren. Alternativ können Sie [eine einzelne VM](sql-vm-resource-provider-register.md) oder [mehrere Ihrer VMs](sql-vm-resource-provider-bulk-register.md) beim SQL-VM-Ressourcenanbieter registrieren. 
 
 ## <a name="overview"></a>Übersicht
 
-Mit dem [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md#overview) können Sie Ihre SQL Server-VMs über das Azure-Portal verwalten. Zusätzlich bietet der Ressourcenanbieter einen robusten Funktionssatz, wozu [automatisiertes Patchen](automated-patching.md) und [automatisierte Sicherung](automated-backup.md) sowie Überwachungs- und Verwaltungsfunktionen gehören. Außerdem erhalten Sie mehr Flexibilität bei der [Lizenzierung](licensing-model-azure-hybrid-benefit-ahb-change.md) und bei der Auswahl der [Edition](change-sql-server-edition.md). Zuvor waren diese Funktionen nur für SQL Server-VM-Images verfügbar, die aus dem Azure Marketplace bereitgestellt wurden. 
+Durch die Registrierung Ihres virtuellen SQL Server-Computers beim SQL-VM-Ressourcenanbieter wird die [Erweiterung für den SQL-IaaS-Agent](sql-server-iaas-agent-extension-automate-management.md) installiert. 
 
-Die automatische Registrierungsfunktion versetzt Kunden in die Lage, alle aktuellen und zukünftigen SQL Server in ihren Azure-Abonnements beim SQL-VM-Ressourcenanbieter automatisch zu registrieren. Dies unterscheidet sich von der manuellen Registrierung, bei es nur um die aktuellen SQL Server-VMs geht. 
+Wenn die automatische Registrierung aktiviert ist, wird täglich ein Auftrag ausgeführt, um zu ermitteln, ob SQL Server auf allen nicht registrierten virtuellen Computern im Abonnement installiert ist. Hierzu werden die Binärdateien der Erweiterung für den SQL-IaaS-Agent auf den virtuellen Computer kopiert. Anschließend wird einmalig ein Hilfsprogramm ausgeführt, um nach der SQL Server-Registrierungsstruktur zu suchen. Wird die SQL Server-Registrierungsstruktur erkannt, wird der virtuelle Computer im einfachen Modus beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registriert. Ist in der Registrierung keine SQL Server-Struktur vorhanden, werden die Binärdateien entfernt.
 
-Bei der automatischen Registrierung werden Ihre SQL Server-VMs im Modus „Lightweight“ registriert. Sie müssen weiterhin [manuell auf den Modus „Vollständige Verwaltbarkeit“ aktualisieren](sql-vm-resource-provider-register.md#upgrade-to-full), um den vollständigen Fuktionssatz nutzen zu können. 
+Nach Aktivierung der automatischen Registrierung für ein Abonnement werden alle aktuellen und zukünftigen virtuellen Computer, auf denen SQL Server installiert ist, im einfachen Modus beim SQL-VM-Ressourcenanbieter registriert. Sie müssen weiterhin [manuell auf den Modus „Vollständige Verwaltbarkeit“ aktualisieren](sql-vm-resource-provider-register.md#upgrade-to-full), um den vollständigen Fuktionssatz nutzen zu können. 
+
+> [!IMPORTANT]
+> Die Erweiterung für den SQL-IaaS-Agent sammelt Daten ausschließlich, um Kunden bei der Verwendung von SQL Server in Azure Virtual Machines optionale Vorteile zu bieten. Microsoft verwendet diese Daten ohne vorherige Zustimmung des Kunden nicht für Lizenzierungsüberprüfungen. Weitere Informationen finden Sie unter [Ergänzende Datenschutzbestimmungen zu SQL Server](/sql/sql-server/sql-server-privacy#non-personal-data).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Zum Registrieren der SQL Server-VM beim Ressourcenanbieter benötigen Sie: 
 
-- Ein [Azure-Abonnement](https://azure.microsoft.com/free/).
-- Ein in der öffentlichen Cloud oder Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell vom Typ [Windows-VM](../../../virtual-machines/windows/quick-create-portal.md) mit [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads). 
+- Ein [Azure-Abonnement](https://azure.microsoft.com/free/) und mindestens Berechtigungen der [Rolle „Mitwirkender“](../../../role-based-access-control/built-in-roles.md#all).
+- Ein in der öffentlichen Cloud oder in der Azure Government-Cloud bereitgestelltes Azure-Ressourcenmodell vom Typ [Virtueller Computer mit Windows Server 2008 R2 (oder höher)](../../../virtual-machines/windows/quick-create-portal.md) mit [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads). Windows Server 2008 wird nicht unterstützt. 
 
 
 ## <a name="enable"></a>Aktivieren
 
-Führen Sie die folgenden Schritte aus, um im Azure-Portal die automatische Registrierung Ihrer SQL Server-VMs zu aktivieren:
+Führen Sie die folgenden Schritte aus, um im Azure-Portal die automatische Registrierung Ihrer virtuellen SQL Server-Computer zu aktivieren:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Navigieren Sie zur Ressourcenseite [**Virtuelle SQL-Computer**](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.SqlVirtualMachine%2FSqlVirtualMachines). 
@@ -67,7 +70,7 @@ Führen Sie den folgenden Befehl aus, um die automatische Registrierung mit Azur
 az feature unregister --namespace Microsoft.SqlVirtualMachine --name BulkRegistration
 ```
 
-# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+# <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 Führen Sie den folgenden Befehl aus, um die automatische Registrierung mit Azure PowerShell zu deaktivieren: 
 

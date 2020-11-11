@@ -1,7 +1,11 @@
 - name: "Azure\_SQL-Dokumentation"
   href: index.yml
-- name: "Was ist Azure\_SQL?"
-  href: azure-sql-iaas-vs-paas-what-is-overview.md
+- name: Azure SQL
+  items:
+    - name: "Was ist Azure\_SQL?"
+      href: azure-sql-iaas-vs-paas-what-is-overview.md
+    - name: Migrieren zu Azure SQL
+      href: migration-guides/index.yml
 - name: "Dokumentation zu freigegebenen SQL-Datenbank- und SQL\_MI-Instanzen"
   items:
     - name: Kaufmodelle
@@ -301,6 +305,16 @@
               href: database/sql-data-sync-sql-server-configure.md
             - name: Migrieren von SQLite zu serverlosen Ressourcen
               href: database/migrate-sqlite-db-to-azure-sql-serverless-offline-tutorial.md
+    - name: Migrationsleitfäden
+      items:
+        - name: Aus DB2
+          href: migration-guides/database/db2-to-sql-database-guide.md
+        - name: Aus SQL Server
+          items:
+            - name: Übersicht
+              href: migration-guides/database/sql-server-to-sql-database-overview.md
+            - name: Migrate
+              href: migration-guides/database/sql-server-to-sql-database-guide.md
     - name: Konzepte
       items:
         - name: Verbindungsarchitektur
@@ -625,7 +639,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -696,6 +710,18 @@
               href: managed-instance/replication-between-two-instances-configure-tutorial.md
             - name: 'MI pub, MI dist, SQL sub'
               href: managed-instance/replication-two-instances-and-sql-server-configure-tutorial.md
+    - name: Migrationsleitfäden
+      items:
+        - name: Aus DB2
+          href: migration-guides/managed-instance/db2-to-managed-instance-guide.md
+        - name: Aus SQL Server
+          items:
+            - name: Übersicht
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-overview.md
+            - name: Migrate
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-guide.md
+            - name: Leistungsbaseline
+              href: migration-guides/managed-instance/sql-server-to-managed-instance-performance-baseline.md
     - name: Konzepte
       items:
         - name: Ressourceneinschränkungen
@@ -938,7 +964,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1110,7 +1136,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
               href: /sql/t-sql/language-reference
@@ -1171,11 +1197,19 @@
               href: 'https://azure.microsoft.com/roadmap/?category=compute'
             - name: Stack Overflow
               href: 'https://stackoverflow.com/search?q=%5Bazure-virtual-machine%5D+sql+server'
+    - name: Migrationsleitfäden
+      items:
+        - name: Übersicht
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-migration-overview.md
+        - name: Aus SQL Server
+          href: migration-guides/virtual-machines/sql-server-to-sql-on-azure-vm-individual-databases-guide.md
+        - name: Aus DB2
+          href: migration-guides/virtual-machines/db2-to-sql-on-azure-vm-guide.md
 - name: Verweis
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

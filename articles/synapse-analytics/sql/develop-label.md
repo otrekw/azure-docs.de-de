@@ -11,21 +11,23 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: e8f78d6031e57da42e1d69587aedca0763c9fec2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0b2c03c5c7ea8c65cb1cde3cbdb73b6bb838dc06
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91289071"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324467"
 ---
 # <a name="use-query-labels-in-synapse-sql"></a>Verwenden von Abfragebezeichnungen in Synapse SQL
+
 In diesem Artikel finden Sie wichtige Tipps zur Verwendung von Abfragebezeichnungen in Synapse SQL.
 
 > [!NOTE]
-> SQL On-Demand (Vorschauversion) unterstützt keine Bezeichnungsabfragen.
+> Serverloser SQL-Pool (Vorschau) unterstützt keine Bezeichnungsabfragen.
 
 ## <a name="what-are-query-labels"></a>Was sind Abfragebezeichnungen?
-Für den SQL-Pool wird das Konzept der „Abfragebezeichnungen“ unterstützt. Bevor wir darauf näher eingehen, sehen wir uns ein Beispiel an:
+
+Für dedizierte SQL-Pools wird das Konzept der „Abfragebezeichnungen“ unterstützt. Bevor wir darauf näher eingehen, sehen wir uns ein Beispiel an:
 
 ```sql
 SELECT *

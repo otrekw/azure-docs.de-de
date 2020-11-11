@@ -12,12 +12,12 @@ ms.date: 10/27/2020
 ms.author: curtand
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.openlocfilehash: a8e3b6cfce9bff76ec3989273cadadebb23d6d40
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 1af7f2918af7071320244dd35882a8de9717654f
+ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92794993"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92913244"
 ---
 # <a name="switching-organizations-in-a-portal"></a>Wechseln von Organisationen in einem Portal
 
@@ -34,7 +34,7 @@ Das Wechseln von Organisationen ist nicht für **Meine Anmeldungen** , **Sicherh
 
 ## <a name="switch-organizations"></a>Wechseln von Organisationen
 
-Hier sehen Sie, wie Sie zu einer anderen Organisation wechseln. In diesem Beispiel wird das Portal **Mein Konto** verwendet, aber das Wechselsymbol und die Platzierung sind auch in anderen Portalen ähnlich.
+Hier sehen Sie, wie Sie zu einer anderen Organisation wechseln. In diesem Beispiel wird das Portal **Mein Konto** verwendet, aber das Umschaltsymbol und die Platzierung sind auch in anderen Portalen ähnlich.
 
 1. Melden Sie sich bei Ihrem Geschäfts-, Schul- oder Unikonto an, und öffnen Sie dann die Seite [Mein Konto](https://myaccount.microsoft.com).
 1. Klicken Sie oben auf der Seite neben Ihrem Profilbild auf das Symbol für einen Organisationswechsel :::image type="content" source="media/cross-tenant-switcher/switcher-icon.png" alt-text="Symbol für Organisationswechsel":::.

@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/21/2020
 ms.author: memildin
-ms.openlocfilehash: 920f6cc7eaef6d25fa700e2f8ca8277efee671d1
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 55a4e50e3a85eccb9517cf682b67268e633abecc
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425383"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93081228"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -162,6 +162,14 @@ Eine andere Möglichkeit, Ihre Bewertung zu verbessern und sicherzustellen, dass
 
 In der folgenden Tabelle sind die Sicherheitskontrollen in Azure Security Center aufgelistet. Für jede Sicherheitskontrolle ist die maximale Anzahl von Punkten angegeben, die Ihrer Sicherheitsbewertung hinzugefügt wird, wenn Sie *alle* in der Sicherheitskontrolle aufgeführten Empfehlungen für *alle* Ihre Ressourcen umsetzen. 
 
+Die Sicherheitsempfehlungen, die mit Security Center bereitgestellt werden, sind auf die verfügbaren Ressourcen in der Umgebung der jeweiligen Organisation zugeschnitten. Die Empfehlungen können durch [Deaktivieren von Richtlinien](tutorial-security-policy.md#disable-security-policies-and-disable-recommendations) und [Ausnehmen bestimmter Ressourcen von einer Empfehlung](exempt-resource.md) weiter angepasst werden. 
+ 
+Die zugewiesenen Azure Policy-Initiativen sollten von jeder Organisation sorgfältig geprüft werden. 
+
+> [!TIP]
+> Ausführliche Informationen zur Überprüfung und Bearbeitung von Initiativen finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md). 
+
+Die Standardsicherheitsinitiative von Security Center basiert zwar auf branchenüblichen bewährten Methoden und Standards, es gibt jedoch Szenarien, in denen die unten aufgeführten integrierten Empfehlungen möglicherweise nicht uneingeschränkt für Ihre Organisation geeignet sind. Daher ist es manchmal erforderlich, die Standardinitiative anzupassen (ohne die Sicherheit zu beeinträchtigen). Dadurch wird sichergestellt, dass sie mit den Richtlinien Ihrer Organisation sowie mit Branchenstandards, gesetzlichen Vorgaben und Benchmarks in Einklang steht, die Sie erfüllen müssen.<br><br>
 <div class="foo">
 
 <style type="text/css"> .tg  {border-collapse:collapse;border-spacing:0;} .tg td{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:14px; overflow:hidden;padding:10px 5px;word-break:normal;} .tg th{border-color:black;border-style:solid;border-width:1px;font-family:Arial, sans-serif;font-size:18px; font-weight:normal;overflow:hidden;padding:10px 5px;word-break:normal;} .tg .tg-cly1{text-align:left;vertical-align:middle} .tg .tg-lboi{border-color:inherit;text-align:left;vertical-align:middle} </style>
@@ -182,7 +190,7 @@ In der folgenden Tabelle sind die Sicherheitskontrollen in Azure Security Center
     <td class="tg-lboi"; width=55%>- Verwaltungsports virtueller Computer müssen mit der Just-In-Time-Netzwerkzugriffssteuerung geschützt werden<br>- Virtuelle Computer sollten einer NSG zugeordnet werden.<br>- Verwaltungsports sollten auf Ihren virtuellen Computern geschlossen werden.</td>
   </tr>
   <tr>
-    <td class="tg-lboi"><strong><p style="font-size: 16px">Systemupdates anwenden (max. Bewertung: 6)</p></strong>Systemupdates bieten Organisationen die Möglichkeit, betriebliche Effizienz aufrechtzuerhalten, Sicherheitsrisiken zu verringern und eine stabilere Umgebung für Endbenutzer bereitzustellen. Werden Updates versäumt, bleiben Sicherheitsrisiken ungepatcht, und die Umgebungen werden anfällig für Angriffe. Diese Sicherheitslücken können ausgenutzt werden und zu Datenverlusten, Datenexfiltration, Ransomware und Ressourcenmissbrauch führen. Für das Bereitstellen von Systemupdates können Sie die <a href="/azure/automation/automation-update-management">Updateverwaltungslösung verwenden, um Patches und Updates für Ihre virtuellen Computer zu verwalten</a>. Die Updateverwaltung ist der Vorgang, der die Bereitstellung und Wartung von Softwarereleases steuert.</td>
+    <td class="tg-lboi"><strong><p style="font-size: 16px">Systemupdates anwenden (max. Bewertung: 6)</p></strong>Systemupdates bieten Organisationen die Möglichkeit, betriebliche Effizienz aufrechtzuerhalten, Sicherheitsrisiken zu verringern und eine stabilere Umgebung für Endbenutzer bereitzustellen. Werden Updates versäumt, bleiben Sicherheitsrisiken ungepatcht, und die Umgebungen werden anfällig für Angriffe. Diese Sicherheitslücken können ausgenutzt werden und zu Datenverlusten, Datenexfiltration, Ransomware und Ressourcenmissbrauch führen. Für das Bereitstellen von Systemupdates können Sie die <a href="/azure/automation/update-management/overview">Updateverwaltungslösung verwenden, um Patches und Updates für Ihre virtuellen Computer zu verwalten</a>. Die Updateverwaltung ist der Vorgang, der die Bereitstellung und Wartung von Softwarereleases steuert.</td>
     <td class="tg-lboi"; width=55%>- Integritätsprobleme im Überwachungs-Agent sollten auf Ihren Computern behoben werden.<br>- Der Überwachungs-Agent sollte in VM-Skalierungsgruppen installiert werden.<br>- Der Überwachungs-Agent sollte auf Ihren Computern installiert werden.<br>- Die Betriebssystemversion sollte für Ihre Clouddienstrollen aktualisiert werden.<br>- Systemupdates für VM-Skalierungsgruppen sollten installiert werden.<br>- Systemupdates sollten auf Ihren Computern installiert werden.<br>- Ihre Computer sollten neu gestartet werden, damit Systemupdates wirksam werden.<br>- Kubernetes-Dienste sollten auf eine Kubernetes-Version ohne Sicherheitsrisiko upgegradet werden.<br>- Der Überwachungs-Agent sollte auf Ihren virtuellen Computern installiert werden.<br>- Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein (Vorschau)<br>- Log Analytics-Agent muss auf Ihren Linux-basierten Azure Arc-Computern installiert sein (Vorschau)</td>
   </tr>
   <tr>

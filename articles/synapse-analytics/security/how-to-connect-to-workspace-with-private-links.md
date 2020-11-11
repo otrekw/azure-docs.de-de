@@ -8,26 +8,29 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ea791e4fc1031c0a5c041119c409f8623ce7aee9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91260375"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312263"
 ---
 # <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Herstellen einer Verbindung mit Ihrem Azure Synapse-Arbeitsbereich mit privaten Links (Vorschau)
 
-In diesem Artikel erfahren Sie, wie Sie einen private Endpunkt in Ihrem Azure Synapse-Arbeitsbereich erstellen. Weitere Informationen finden Sie unter [private Links und private Endpunkte](https://docs.microsoft.com/azure/private-link/).
+In diesem Artikel erfahren Sie, wie Sie in Ihrem Azure Synapse-Arbeitsbereich einen privaten Endpunkt erstellen. Weitere Informationen finden Sie unter [private Links und private Endpunkte](https://docs.microsoft.com/azure/private-link/).
 
 ## <a name="step-1-register-network-resource-provider"></a>Schritt 1: Registrieren des Netzwerkressourcenanbieters
 
 Registrieren Sie den Netzwerkressourcenanbieter, falls dies noch nicht geschehen ist. Durch Registrieren eines Ressourcenanbieters wird Ihr Abonnement für die Verwendung mit dem Ressourcenanbieter konfiguriert. Wählen Sie in der Liste der Ressourcenanbieter *Microsoft.Network* aus, wenn Sie die [Registrierung durchführen](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-providers-and-types). Wenn der Netzwerkressourcenanbieter bereits registriert ist, fahren Sie mit Schritt 2 fort.
 
-
 ## <a name="step-2-open-your-azure-synapse-workspace-in-azure-portal"></a>Schritt 2: Öffnen Ihres Azure Synapse-Arbeitsbereichs im Azure-Portal
 
-Wählen Sie **Private Endpunktverbindungen** unter **Sicherheit** aus und dann **+ Privater Endpunkt**.
+Wählen Sie unter **Sicherheit** die Option **Verbindung mit privatem Endpunkt** aus. 
 ![Öffnen eines Azure Synapse-Arbeitsbereichs im Azure-Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1.png)
+
+Wählen Sie auf dem nächsten Bildschirm **+ Privater Endpunkt** aus.
+
+![Aktivieren von „Privater Endpunkt“ im Azure-Portal](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-1a.png)
 
 ## <a name="step-3-select-your-subscription-and-region-details"></a>Schritt 3: Auswählen Ihres Abonnements und der Regionsdetails
 
@@ -40,7 +43,7 @@ Private Endpunkte werden in einem Subnetz erstellt. Durch die Auswahl des Abonne
 
 Wählen Sie auf der Registerkarte **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus. Wählen Sie das **Abonnement** aus, das Ihren Azure Synapse-Arbeitsbereich enthält. Der **Ressourcentyp** zum Erstellen privater Endpunkte in einem Azure Synapse-Arbeitsbereich ist *Microsoft.synapse/workspaces*.
 
-Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen**, für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
+Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen** , für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
 
 Klicken Sie auf **Weiter: Konfiguration>** , um mit dem nächsten Teil der Einrichtung fortzufahren.
 ![Auswählen von Abonnement und Regionsdetails 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)

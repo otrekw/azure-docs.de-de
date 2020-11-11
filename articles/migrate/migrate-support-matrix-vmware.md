@@ -3,12 +3,12 @@ title: Unterstützung der VMware-Bewertung in Azure Migrate
 description: Informationen zur Unterstützung der Bewertung von VMware-VMs mit der Azure Migrate-Serverbewertung
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: 0fd884a7d95edaf6586e7eecd644400c05c15e5a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 8b119b56e7e4c7fac74c57cc5c48fb44f91a7ee6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92315794"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345430"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>Unterstützungsmatrix für die VMware-Bewertung 
 
@@ -66,14 +66,13 @@ Mit der Serverbewertung können nicht nur Computer, sondern auch die auf Compute
 
 **Unterstützung** | **Details**
 --- | ---
-**Unterstützte Computer** | Die App-Ermittlung wird derzeit nur für VMware-VMs unterstützt.
+**Unterstützte Computer** | Die App-Ermittlung wird derzeit nur für VMware-VMs unterstützt. Sie können installierte Apps auf bis zu 10.000 VMware-VMs von jeder Azure Migrate-Appliance ermitteln.
+**Betriebssysteme** | Die App-Ermittlung wird für virtuelle Computer mit beliebigen Windows- und Linux-Versionen unterstützt.
+**VM-Anforderungen** | Auf virtuellen Computern, auf denen Sie Apps ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden. <br/><br/> Die Version von VMware Tools muss höher als 10.2.0 sein.<br/><br/> Auf den VMs muss PowerShell, Version 2.0 oder höher, installiert sein.
 **Ermittlung** | Die App-Ermittlung erfolgt ohne Agent. Dabei werden Gastanmeldeinformationen der Computer verwendet, wobei mithilfe von WMI- und SSH-Aufrufen remote auf die Computer zugegriffen wird.
-**VM-Support** | Die App-Ermittlung wird für virtuelle Computer mit beliebigen Windows- und Linux-Versionen unterstützt.
 **vCenter** | Das für die Bewertung verwendete schreibgeschützte vCenter Server-Konto benötigt für **Virtuelle Computer** > **Gastvorgänge** aktivierte Berechtigungen, um mit der VM für die Anwendungsermittlung interagieren zu können.
 **VM-Zugriff** | Die App-Ermittlung erfordert ein lokales Benutzerkonto auf dem virtuellen Computer für die Anwendungsermittlung.<br/><br/> Azure Migrate unterstützt derzeit die Verwendung von Anmeldeinformationen für alle Windows-Server sowie einen Satz Anmeldeinformationen für alle Linux-Server.<br/><br/> Sie erstellen ein Gastbenutzerkonto für Windows-VMs und ein normales Benutzerkonto (ohne sudo-Zugriff) für alle Linux-VMs.
-**VMware Tools** | Auf virtuellen Computern, die Sie ermitteln möchten, müssen VMware-Tools installiert sein und ausgeführt werden. <br/><br/> Die Version von VMware Tools muss höher als 10.2.0 sein.
-**PowerShell** | Auf den VMs muss PowerShell, Version 2.0 oder höher, installiert sein.
-**Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, die Sie ermitteln möchten, muss die Azure Migrate Appliance eine Verbindung mit dem TCP-Port 443 herstellen können.
+**Portzugriff** | Auf ESXi-Hosts, auf denen virtuelle Computer ausgeführt werden, auf denen Sie Apps ermitteln möchten, muss die Azure Migrate-Appliance eine Verbindung mit dem TCP-Port 443 herstellen können. vCenter Server gibt eine ESXI-Hostverbindung zurück, um die Datei mit den App-Informationen herunterzuladen.
 **Einschränkungen** | Bei der App-Ermittlung können Sie auf jeder Azure Migrate-Appliance bis zu 10.000 virtuelle Computer ermitteln.
 
 

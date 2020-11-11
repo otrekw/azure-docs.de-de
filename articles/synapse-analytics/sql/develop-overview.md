@@ -10,22 +10,22 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: f4c61b43855e4a845956a937d9d9cfe738d6f47a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2a24a61e26bdfaba0619e3965e95b1828380a1c8
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032944"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322101"
 ---
 # <a name="design-decisions-and-coding-techniques-for-synapse-sql-features-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für Synapse SQL-Features in Azure Synapse Analytics
-In diesem Artikel finden Sie eine Liste von Ressourcen für SQL-Pool- und SQL On-Demand-Funktionen (Vorschauversion) von Synapse SQL. Die empfohlenen Artikel sind in zwei Abschnitte unterteilt: Wesentliche Entwurfsentscheidungen und Entwicklungs- und Programmiertechniken.
+Dieser Artikel enthält eine Liste mit Ressourcen zu Funktionen für dedizierte SQL-Pools und serverlose SQL-Pools (Vorschauversion) von Synapse SQL. Die empfohlenen Artikel sind in zwei Abschnitte unterteilt: Wesentliche Entwurfsentscheidungen und Entwicklungs- und Programmiertechniken.
 
 Das Ziel dieser Artikel ist es, Ihnen bei der Entwicklung des optimalen technischen Ansatzes für die Synapse SQL-Komponenten innerhalb von Synapse Analytics zu helfen.
 
 ## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
 Die folgenden Artikel heben Konzepte und Entwurfsentscheidungen für die Synapse SQL-Entwicklung hervor:
 
-| Artikel | SQL-Pool | SQL On-Demand |
+| Artikel | Dedizierter SQL-Pool | Serverloser SQL-Pool |
 | ------- | -------- | ------------- |
 | [Verbindungen](connect-overview.md)                    | Ja | Ja |
 | [Ressourcenklassen und Parallelität](../sql-data-warehouse/resource-classes-for-workload-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) | Ja    | Nein |
@@ -44,7 +44,7 @@ Die folgenden Artikel heben Konzepte und Entwurfsentscheidungen für die Synapse
 
 Im Folgenden finden Sie wichtige Artikel, die bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung hervorheben:
 
-| Artikel | SQL-Pool | SQL On-Demand |
+| Artikel | Dedizierter SQL-Pool | Serverloser SQL-Pool |
 | ------- | -------- | ------------- |
 | [Gespeicherten Prozeduren](develop-stored-procedures.md)  | Ja                | Nein                      |
 | [Bezeichnungen](develop-label.md)                           | Ja                | Nein                      |

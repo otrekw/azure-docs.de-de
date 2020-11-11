@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 422f8106ac52c85f0680d54e420d0f1b4d326910
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 185bb47677e978a3098f39024995da6399f90658
+ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017691"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93241768"
 ---
 # <a name="outbound-proxy-azure-load-balancer"></a>Azure Load Balancer als Proxy für ausgehenden Datenverkehr
 
@@ -62,13 +62,13 @@ Stellen Sie sich vor, dass mehrere Browser https://www.microsoft.com verwenden:
 
 Ohne unterschiedliche Zielports für den Rückgabedatenverkehr (der SNAT-Port, der zum Herstellen der Verbindung verwendet wird) hat der Client keine Möglichkeit, ein Abfrageergebnis von einem anderen zu trennen.
 
-Für ausgehende Verbindungen kann ein Burst auftreten. Einer Back-End-Instanz können nicht genügend Ports zugeordnet werden. Wenn **Wiederverwendung von Verbindungen** nicht aktiviert ist, wird das Risiko von SNAT-**Porterschöpfung** gesteigert.
+Für ausgehende Verbindungen kann ein Burst auftreten. Einer Back-End-Instanz können nicht genügend Ports zugeordnet werden. Wenn **Wiederverwendung von Verbindungen** nicht aktiviert ist, wird das Risiko von SNAT- **Porterschöpfung** gesteigert.
 
 Neue ausgehende Verbindungen mit einer IP-Zieladresse schlagen fehl, wenn Porterschöpfung auftritt. Verbindungen werden erfolgreich hergestellt, wenn ein Port verfügbar wird. Diese Erschöpfung tritt auf, wenn die 64.000 Ports von einer IP-Adresse dünn über viele Back-End-Instanzen verteilt sind. Anleitungen zur Entschärfung von SNAT-Porterschöpfung finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection).  
 
 Bei TCP-Verbindungen verwendet der Load Balancer einen einzelnen SNAT-Port für jede Ziel-IP und jeden -Port. Diese Mehrfachnutzung ermöglicht mehrere Verbindungen mit derselben IP-Zieladresse und demselben SNAT-Port. Diese Mehrfachnutzung ist eingeschränkt, wenn die Verbindung nicht mit verschiedenen Zielports erfolgt.
 
-Für UDP-Verbindungen verwendet der Load Balancer einen **porteingeschränkten Cone NAT**-Algorithmus, der einen SNAT-Port pro IP-Zieladresse für den Zielport verwendet. 
+Für UDP-Verbindungen verwendet der Load Balancer einen **porteingeschränkten Cone NAT** -Algorithmus, der einen SNAT-Port pro IP-Zieladresse für den Zielport verwendet. 
 
 Ein Port wird für eine unbegrenzte Anzahl von Verbindungen wiederverwendet. Der Port wird nur wiederverwendet, wenn die IP-Zieladresse oder der -port unterschiedlich ist.
 
@@ -92,7 +92,7 @@ In der folgenden <a name="snatporttable"></a>-Tabelle werden die SNAT-Port-Vorab
 | 801-1.000 | 32 | 
 
 >[!NOTE]
-> Wenn Sie über einen Back-End-Pool mit einer maximalen Größe von 6 verfügen, kann jede Instanz 64.000/10 = 6.400 Ports aufweisen, wenn Sie eine explizite Ausgangsregel definieren. Gemäß der Tabelle oben verfügt jede Instanz nur über 1.024 Ports, wenn Sie automatische Zuordnung auswählen.
+> Wenn Sie über einen Back-End-Pool mit einer maximalen Größe von 10 verfügen, kann jede Instanz 64.000/10 = 6.400 Ports aufweisen, wenn Sie eine explizite Ausgangsregel definieren. Gemäß der Tabelle oben verfügt jede Instanz nur über 1.024 Ports, wenn Sie automatische Zuordnung auswählen.
 
 ## <a name="outbound-rules-and-virtual-network-nat"></a><a name="outboundrules"></a> Ausgangsregeln und Virtual Network NAT
 

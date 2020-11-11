@@ -7,12 +7,12 @@ ms.date: 10/03/2020
 ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: github-actions-azure
-ms.openlocfilehash: f3bc407791b25e4dc1dddd61b60b3cefe0195919
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 068fc9dcb9a4f4a62c2dd879bf8144097452f1e0
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203193"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099027"
 ---
 # <a name="deploy-a-custom-container-to-app-service-using-github-actions"></a>Bereitstellen eines benutzerdefinierten Containers in App Service mithilfe von GitHub-Aktionen
 
@@ -47,7 +47,10 @@ Ein Veröffentlichungsprofil stellt Anmeldeinformationen auf App-Ebene dar. Rich
 
 1. Wechseln Sie im Azure-Portal zu Ihrem App Service. 
 
-1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen** .
+1. Wählen Sie auf der Seite **Übersicht** die Option **Veröffentlichungsprofil abrufen**.
+
+    > [!NOTE]
+    > Ab Oktober 2020 muss für Linux-Web-Apps die App-Einstellung `WEBSITE_WEBDEPLOY_USE_SCM` auf `true` festgelegt werden, **ehe die Datei heruntergeladen wird**. Diese Anforderung wird künftig entfallen.
 
 1. Speichern Sie die heruntergeladene Datei. Zum Erstellen eines GitHub-Geheimnisses verwenden Sie den Inhalt der Datei.
 
@@ -100,7 +103,7 @@ Navigieren Sie in [GitHub](https://github.com/) zu Ihrem Repository, und wählen
 
 Um [Anmeldeinformationen auf App-Ebene](#generate-deployment-credentials) zu verwenden, fügen Sie den Inhalt der heruntergeladenen Veröffentlichungsprofildatei in das Wertfeld des Geheimnisses ein. Geben Sie dem Geheimnis den Namen `AZURE_WEBAPP_PUBLISH_PROFILE`.
 
-Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLISH_PROFILE` in der Bereitstellungsaktion für die Azure-Web-App. Zum Beispiel:
+Wenn Sie Ihren GitHub-Workflow konfigurieren, verwenden Sie `AZURE_WEBAPP_PUBLISH_PROFILE` in der Bereitstellungsaktion für die Azure-Web-App. Beispiel:
     
 ```yaml
 - uses: azure/webapps-deploy@v2

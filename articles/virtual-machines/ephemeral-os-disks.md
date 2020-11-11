@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: a79a030c4f57c3dabdd14c01aa2062cab7026cd3
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611519"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927922"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -42,7 +42,8 @@ Die Hauptunterschiede zwischen permanenten und kurzlebigen Betriebssystem-Datent
 | **Status „Zuordnung aufgehoben“**      | Die Zuordnung von VMs und Skalierungsgruppeninstanzen kann aufgehoben und sie können aus diesem Zustand neu gestartet werden. | Die Zuordnung für VMS und Skalierungsgruppeninstanzen kann nicht aufgehoben werden.                                  |
 | **Unterstützung der spezialisierte Betriebssystem-Datenträger** | Ja                                                                                          | Nein                                                                                 |
 | **Änderung der Betriebssystem-Datenträgergröße**              | Wird während der VM-Erstellung und nach dem Aufheben der VM-Zuordnung unterstützt.                                | Wird nur während der VM-Erstellung unterstützt.                                                  |
-| **Ändern der Größe in eine neue VM-Größe**   | Daten des Betriebssystem-Datenträgers werden beibehalten.                                                                    | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt                                      |
+| **Ändern der Größe in eine neue VM-Größe**   | Daten des Betriebssystem-Datenträgers werden beibehalten.                                                                    | Daten auf dem Betriebssystem-Datenträger werden gelöscht, Betriebssystem wird erneut bereitgestellt       
+| **Platzierung der Auslagerungsdatei**   | Unter Windows ist die Auslagerungsdatei auf dem Ressourcendatenträger gespeichert                                              | Unter Windows ist die Auslagerungsdatei auf dem Betriebssystemdatenträger gespeichert   |
 
 ## <a name="size-requirements"></a>Größenanforderungen
 

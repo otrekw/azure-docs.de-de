@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f3aee10c0682feeea7c74133f908452d1c5595f
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968598"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93077726"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -125,7 +125,7 @@ Die folgenden Anforderungen gelten für den Azure AD-Kennwortschutz-Proxydienst
     * .NET 4.7 sollte bereits auf einem vollständig aktualisierten Windows-Server installiert sein. Laden Sie bei Bedarf das Installationsprogramm unter [.NET Framework 4.7-Offlineinstallationsprogramm für Windows](https://support.microsoft.com/help/3186497/the-net-framework-4-7-offline-installer-for-windows) herunter, und führen Sie es aus.
 * Alle Computer, auf denen der Proxydienst für den Azure AD-Kennwortschutz gehostet wird, müssen so konfiguriert werden, dass Domänencontrollern die Anmeldung beim Proxydienst ermöglicht wird. Dies wird über die Zuweisung der Berechtigung „Auf diesen Computer vom Netzwerk aus zugreifen“ gesteuert.
 * Alle Computer, die den Proxydienst für den Azure AD-Kennwortschutz hosten, müssen so konfiguriert sein, dass sie ausgehenden HTTP-Datenverkehr mit TLS 1.2 zulassen.
-* Ein *globales Administratorkonto* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
+* Ein Konto vom Typ *Globaler Administrator* oder *Sicherheitsadministrator* zum Registrieren des Azure AD-Kennwortschutz-Proxydiensts und der Gesamtstruktur bei Azure AD.
 * Außerdem müssen Sie Netzwerkzugriff für die Ports und URLs aktivieren, die im Artikel [Setupprozeduren für die Anwendungsproxyumgebung](../manage-apps/application-proxy-add-on-premises-application.md#prepare-your-on-premises-environment) angegeben sind.
 
 ### <a name="microsoft-azure-ad-connect-agent-updater-prerequisites"></a>Voraussetzungen für Microsoft Azure AD Connect Agent Updater
@@ -142,8 +142,8 @@ Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure
 
 Es gibt zwei erforderliche Installationsprogramme für lokale Bereitstellungen des Azure AD-Kennwortschutzes:
 
-* Azure AD-Kennwortschutz-DC-Agent (*AzureADPasswordProtectionDCAgentSetup.msi*)
-* Azure AD-Kennwortschutz-Proxy (*AzureADPasswordProtectionProxySetup.exe*)
+* Azure AD-Kennwortschutz-DC-Agent ( *AzureADPasswordProtectionDCAgentSetup.msi* )
+* Azure AD-Kennwortschutz-Proxy ( *AzureADPasswordProtectionProxySetup.exe* )
 
 Laden Sie beide Installationsprogramme vom [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) herunter.
 
@@ -155,9 +155,11 @@ Im nächsten Abschnitt installieren Sie die Azure AD-Kennwortschutz-DC-Agents a
 
 Wählen Sie mindestens einen Server für das Hosten des Azure AD-Kennwortschutz-Proxydiensts aus. Die folgenden Überlegungen gelten für diese Server:
 
-* Jeder dieser Dienste kann nur Kennwortrichtlinien für eine einzelne Gesamtstruktur bereitstellen. Der Hostcomputer muss einer Domäne in dieser Gesamtstruktur angehören. Stamm- und untergeordnete Domänen werden unterstützt. Sie benötigen eine Netzwerkverbindung zwischen mindestens einem Domänencontroller in jeder Domäne der Gesamtstruktur und dem Kennwortschutzcomputer.
+* Jeder dieser Dienste kann nur Kennwortrichtlinien für eine einzelne Gesamtstruktur bereitstellen. Der Hostcomputer muss einer Domäne in dieser Gesamtstruktur angehören.
+* Die Installation des Proxydiensts in Stammdomänen oder untergeordneten Domänen bzw. in einer Kombination dieser Domänen wird unterstützt.
+* Sie benötigen eine Netzwerkverbindung zwischen mindestens einem Domänencontroller in jeder Domäne der Gesamtstruktur und einem Kennwortschutz-Proxyserver.
 * Sie haben die Möglichkeit, den Azure AD-Kennwortschutz-Proxydienst zu Testzwecken auf einem Domänencontroller auszuführen. Für den Domänencontroller ist dann aber eine Internetverbindung erforderlich. Diese Konnektivität kann ein Sicherheitsproblem darstellen. Es wird empfohlen, diese Konfiguration nur zu Testzwecken zu verwenden.
-* Es wird empfohlen, aus Redundanzgründen mindestens zwei Azure AD-Kennwortschutz-Proxyserver zu verwenden, wie im vorherigen Abschnitt mit [Überlegungen zur Hochverfügbarkeit](#high-availability-considerations) beschrieben.
+* Es wird empfohlen, aus Redundanzgründen mindestens zwei Azure AD-Kennwortschutz-Proxyserver pro Gesamtstruktur zu verwenden, wie im vorherigen Abschnitt mit [Überlegungen zur Hochverfügbarkeit](#high-availability-considerations) beschrieben.
 * Das Ausführen des Proxydiensts für den Azure AD-Kennwortschutz auf einem schreibgeschützten Domänencontroller wird nicht unterstützt.
 
 Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folgenden Schritte:
@@ -195,7 +197,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
 
 1. Der Proxydienst wird auf dem Computer ausgeführt, verfügt aber nicht über die Anmeldeinformationen für die Kommunikation mit Azure AD. Registrieren Sie den Azure AD-Kennwortschutz-Proxyserver mithilfe des Cmdlets `Register-AzureADPasswordProtectionProxy` bei Azure AD.
 
-    Dieses Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie benötigen außerdem ein Konto mit lokalen Active Directory-Domänenadministratorberechtigungen in der Stammdomäne der Gesamtstruktur. Dieses Cmdlet muss außerdem mit einem Konto mit lokalen Administratorrechten ausgeführt werden:
+    Dieses Cmdlet erfordert die Anmeldeinformationen des *globalen Administrators* oder des *Sicherheitsadministrators* für Ihren Azure-Mandanten. Dieses Cmdlet muss außerdem mit einem Konto mit lokalen Administratorrechten ausgeführt werden.
 
     Nachdem dieser Befehl einmal für einen Azure AD-Kennwortschutz-Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
 
@@ -233,7 +235,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
         >
         > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieser Anforderung können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdiensts vorübergehend lockern.
         >
-        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
+        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
         >
         > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
@@ -246,7 +248,9 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
     > [!NOTE]
     > Wenn mehrere Azure AD-Kennwortschutz-Proxyserver in Ihrer Umgebung installiert sind, spielt es keine Rolle, welcher Proxyserver zum Registrieren der Gesamtstruktur verwendet wird.
 
-    Das Cmdlet erfordert die Anmeldeinformationen des globalen Administrators für Ihren Azure AD-Mandanten. Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
+    Das Cmdlet erfordert die Anmeldeinformationen des *globalen Administrators* oder des *Sicherheitsadministrators* für Ihren Azure-Mandanten. Es benötigt außerdem lokale Active Directory-Unternehmensadministratorrechte. Sie müssen dieses Cmdlet auch mit einem Konto mit lokalen Administratorrechten ausführen. Das Azure-Konto, das zum Registrieren der Gesamtstruktur verwendet wird, unterscheidet sich möglicherweise vom lokalen Active Directory-Konto.
+    
+    Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
     Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht.
 
@@ -282,7 +286,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
         >
         > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieser Anforderung können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdiensts vorübergehend lockern.
         >
-        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
+        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
         >
         > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
@@ -309,7 +313,7 @@ Erstellen Sie die Datei *AzureADPasswordProtectionProxy.exe.config* im Ordner `%
    </configuration>
    ```
 
-Wenn Ihr HTTP-Proxy Authentifizierung erfordert, fügen Sie das *useDefaultCredentials*-Tag hinzu:
+Wenn Ihr HTTP-Proxy Authentifizierung erfordert, fügen Sie das *useDefaultCredentials* -Tag hinzu:
 
    ```xml
    <configuration>

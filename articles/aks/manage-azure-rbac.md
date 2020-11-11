@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 15bd917a16c250807d6848f7bc0ffbdba06b4019
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3f878389f22f3928bc1fc8c89b04353583326da6
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91329090"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346042"
 ---
 # <a name="use-azure-rbac-for-kubernetes-authorization-preview"></a>Verwenden von Azure RBAC für Kubernetes-Autorisierung (Vorschau)
 
@@ -49,7 +49,7 @@ az feature register --namespace "Microsoft.ContainerService" --name "EnableAzure
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableAzureRBACPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des *Microsoft.ContainerService*-Ressourcenanbieters:
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register][az-provider-register] die Registrierung des *Microsoft.ContainerService* -Ressourcenanbieters:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -57,7 +57,7 @@ az provider register --namespace Microsoft.ContainerService
 
 #### <a name="install-aks-preview-cli-extension"></a>Installieren der CLI-Erweiterung „aks-preview“
 
-Sie benötigen die *aks-preview*-CLI-Erweiterung, Version 0.4.55 oder höher, um einen AKS-Cluster zu erstellen, der Azure RBAC verwendet. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], oder installieren Sie mit dem Befehl [az extension update][az-extension-update] alle verfügbaren Updates:
+Sie benötigen die *aks-preview* -CLI-Erweiterung, Version 0.4.55 oder höher, um einen AKS-Cluster zu erstellen, der Azure RBAC verwendet. Installieren Sie die Azure CLI-Erweiterung *aks-preview* mit dem Befehl [az extension add][az-extension-add], oder installieren Sie mit dem Befehl [az extension update][az-extension-update] alle verfügbaren Updates:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -72,9 +72,9 @@ az extension update --name aks-preview
 - Erfordert eine [verwaltete Integration in Azure AD](managed-aad.md).
 - Sie können Azure RBAC für Kubernetes-Autorisierung während der Vorschau nicht in vorhandene Cluster integrieren. Bei allgemeiner Verfügbarkeit (GA) wird dies jedoch möglich sein.
 - Verwenden Sie [kubectl v1.18.3 oder höher][az-aks-install-cli].
-- Während der Vorschauphase können Sie über die Azure CLI nur Berechtigungen auf *Namespaceebene* hinzufügen.
 - Wenn Sie CRDs verwenden und benutzerdefinierte Rollendefinitionen erstellen, besteht zurzeit die einzige Möglichkeit zum Abdecken von CRDs darin, `Microsoft.ContainerService/managedClusters/*/read` bereitzustellen. AKS arbeitet an der Bereitstellung differenziererer Berechtigungen für CRDs. Für die restlichen Objekte können Sie die spezifischen API-Gruppen verwenden, z. B. `Microsoft.ContainerService/apps/deployments/read`.
 - Es kann bis zu 5 Minuten dauern, bis neue Rollenzuweisungen verteilt und vom Autorisierungsserver aktualisiert werden.
+- Der für die Authentifizierung konfigurierte Azure AD-Mandant muss der Mandant für das Abonnement sein, das den AKS-Cluster enthält. 
 
 ## <a name="create-a-new-cluster-using-azure-rbac-and-managed-azure-ad-integration"></a>Erstellen eines neuen Clusters mit Azure RBAC und verwalteter Azure AD-Integration
 

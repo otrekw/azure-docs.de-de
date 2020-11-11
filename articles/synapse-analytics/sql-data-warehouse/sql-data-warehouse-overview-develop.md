@@ -1,6 +1,6 @@
 ---
-title: Ressourcen für die Entwicklung eines Synapse SQL-Pools in Azure Synapse Analytics
-description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für Azure Synapse Analytics.
+title: Ressourcen für die Entwicklung eines dedizierten SQL-Pools in Azure Synapse Analytics
+description: Entwicklungskonzepte, Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für einen dedizierten SQL-Pool in Azure Synapse Analytics
 services: synapse-analytics
 author: XiaoyuMSFT
 manager: craigg
@@ -10,18 +10,20 @@ ms.subservice: sql-dw
 ms.date: 08/29/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.openlocfilehash: 95f712f196c37650b52220c9e34f6cb6b50bff23
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f158655cd7aeba647480325966c7f0cfcf65b13c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460608"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322140"
 ---
-# <a name="design-decisions-and-coding-techniques-for-a-synapse-sql-pool-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse Analytics 
- In diesem Artikel finden Sie weitere Ressourcen, die Ihnen helfen, wichtige Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für einen Synapse SQL-Pool in Azure Synapse besser zu verstehen.
+# <a name="design-decisions-and-coding-techniques-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Entwurfsentscheidungen und Programmiertechniken für einen dedizierten SQL-Pool in Azure Synapse Analytics 
+
+ In diesem Artikel finden Sie weitere Ressourcen, die Ihnen helfen, wichtige Entwurfsentscheidungen, Empfehlungen und Programmiertechniken für einen dedizierten SQL-Pool in Azure Synapse besser zu verstehen.
 
 ## <a name="key-design-decisions"></a>Wesentliche Entwurfsentscheidungen
-In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die Entwicklung eines verteilten Data Warehouse mit SQL-Poolfunktionen in Azure Synapse vorgestellt:
+
+In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die Entwicklung eines verteilten Data Warehouse mithilfe der Funktionen für dedizierte SQL-Pools in Azure Synapse vorgestellt:
 
 * [connections](../sql/connect-overview.md)
 * [concurrency](resource-classes-for-workload-management.md)
@@ -34,7 +36,8 @@ In den folgenden Artikeln werden Konzepte und Entwurfsentscheidungen für die En
 * [Statistiken](sql-data-warehouse-tables-statistics.md)
 
 ## <a name="development-recommendations-and-coding-techniques"></a>Entwicklungsempfehlungen und Programmiertechniken
-In den folgenden Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung eines SQL-Pools behandelt:
+
+In den folgenden Artikeln werden bestimmte Programmiertechniken, Tipps und Empfehlungen für die Entwicklung eines dedizierten SQL-Pools behandelt:
 
 * [Gespeicherte Prozeduren](sql-data-warehouse-develop-stored-procedures.md)
 * [Bezeichnungen](sql-data-warehouse-develop-label.md)
@@ -46,4 +49,5 @@ In den folgenden Artikeln werden bestimmte Programmiertechniken, Tipps und Empfe
 * [Variablenzuweisung](sql-data-warehouse-develop-variable-assignment.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Referenzinformationen finden Sie unter [T-SQL-Anweisungen](sql-data-warehouse-reference-tsql-statements.md).

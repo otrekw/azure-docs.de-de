@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 07/09/2020
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 4ddafd9fbeda1752a782085244597aea3ccbdd2d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 12ba0900f2499965f7843672183310dfecfbab2b
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91271901"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146670"
 ---
 # <a name="migrate-log-disk-to-ultra-disk"></a>Migrieren eines Protokolldatenträgers zu einem Ultra-Datenträger
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -50,7 +50,7 @@ Gehen Sie zum Aktivieren der Kompatibilität wie folgt vor:
 
 1. Wählen Sie für **Ultra-Datenträgerkompatibilität aktivieren** die Option **Ja** aus. 
 
-   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Auswählen zusätzlicher Einstellungen für Datenträger unter „Einstellungen“ im Azure-Portal":::
+   :::image type="content" source="../../../virtual-machines/media/virtual-machines-disks-getting-started-ultra-ssd/ultra-options-yes-enable.png" alt-text="Screenshot mit der Option „Ja“.":::
 
 1. Wählen Sie **Speichern** aus. 
 
@@ -83,7 +83,7 @@ Konfigurieren Sie SQL Server für die Verwendung des neuen Protokolllaufwerks. 
 1. Überprüfen Sie das von SQL Server verwendete Dienstkonto. Hierzu können Sie den SQL Server-Konfigurations-Manager oder „Services.msc“ verwenden.
 1. Navigieren Sie zu Ihrem neuen Datenträger. 
 1. Erstellen Sie einen oder mehrere Ordner für Ihre Protokolldatei. 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner, und wählen Sie **Eigenschaften**aus.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner, und wählen Sie **Eigenschaften** aus.
 1. Erteilen Sie dem SQL Server-Dienstkonto auf der Registerkarte **Sicherheit** Vollzugriff. 
 1. Wählen Sie **OK** aus, um Ihre Einstellungen zu speichern. 
 1. Wiederholen Sie diese Vorgehensweise für jeden Ordner auf der Stammebene, der SQL-Daten enthalten soll. 
@@ -143,14 +143,14 @@ Die Datenbank wird daraufhin mit dem Protokoll am neuen Speicherort online gesch
 Verwenden Sie SSMS, um die vorhandenen Dateien an einen neuen Speicherort zu verschieben:
 
 1. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit Ihrer Datenbank her. 
-1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Eigenschaften** > **Dateien** aus. 
+1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Eigenschaften**  > **Dateien** aus. 
 1. Notieren Sie sich den Pfad der vorhandenen Dateien. 
 1. Wählen Sie **OK** aus, um das Dialogfeld zu schließen. 
 1. Klicken Sie mit der rechten Maustaste auf die Datenbank, und wählen Sie **Aufgaben** > **Trennen** aus. 
 1. Befolgen Sie die Anweisungen des Assistenten, um die Datenbank zu trennen. 
 1. Verschieben Sie die Protokolldatei mithilfe des Datei-Explorers manuell an den neuen Speicherort.
 1. Fügen Sie die Datenbank in SQL Server Management Studio an:
-   1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken**, und wählen Sie **Datenbank anfügen** aus. 
+   1. Klicken Sie im **Objekt-Explorer** mit der rechten Maustaste auf **Datenbanken** , und wählen Sie **Datenbank anfügen** aus. 
    1. Fügen Sie im Dialogfeld die einzelnen Dateien (einschließlich der Protokolldatei) ihrem neuen Speicherort hinzu. 
    1. Wählen Sie **OK** aus, um die Datenbank anzufügen. 
 

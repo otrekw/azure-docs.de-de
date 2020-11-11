@@ -8,21 +8,21 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/21/2020
+ms.date: 10/28/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 466e590ba22efe1c2fbb457c15bc7f979f8a172e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39b61815c33f933e0cdf08bd46382e74eea2f806
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91259635"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040454"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Informationen zu Anspruchskonfliktlösern in benutzerdefinierten Azure Active Directory B2C-Richtlinien
 
 Anspruchskonfliktlöser in [benutzerdefinierten Richtlinien](custom-policy-overview.md) von Azure Active Directory B2C (Azure AD B2C) bieten Kontextinformationen über eine Autorisierungsanforderung, z. B. den Namen der Richtlinie, die Korrelations-ID der Anforderung, die Sprache der Benutzeroberfläche und mehr.
 
-Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden, definieren Sie eine Zeichenfolge **ClaimType**unter dem [ClaimsSchema](claimsschema.md)-Element, und dann Sie legen Sie den **DefaultValue** auf den Anspruchskonfliktlöser in dem Ein- oder Ausgabeanspruchselement fest. Azure AD B2C liest den Wert des Anspruchskonfliktlösers und verwendet den Wert in dem technischen Profil.
+Um einen Anspruchskonfliktlöser in einem Ein- oder Ausgabeanspruch zu verwenden, definieren Sie eine Zeichenfolge **ClaimType** unter dem [ClaimsSchema](claimsschema.md)-Element, und dann Sie legen Sie den **DefaultValue** auf den Anspruchskonfliktlöser in dem Ein- oder Ausgabeanspruchselement fest. Azure AD B2C liest den Wert des Anspruchskonfliktlösers und verwendet den Wert in dem technischen Profil.
 
 Im folgenden Beispiel, wird ein Anspruchstyp namens `correlationId` definiert mit einem **DataType** von `string`.
 
@@ -127,6 +127,7 @@ Jeder Parametername, der als Bestandteil einer OIDC- oder OAuth2-Anforderung ein
 | {SAML:ForceAuthn} | Der Wert des `ForceAuthN`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung. | True |
 | {SAML:ProviderName} | Der Wert des `ProviderName`-Attributs aus dem `AuthnRequest`-Element der SAML-Anforderung.| Contoso.com |
 | {SAML:RelayState} | Der Abfragezeichenfolgen-Parameter `RelayState`.| 
+| {SAML:Subject} | Der Antragsteller (`Subject`) aus dem Element „NameId“ der SAML-AuthN-Anforderung.| 
 
 ## <a name="using-claim-resolvers"></a>Verwenden von Anspruchskonfliktlösern
 
@@ -186,7 +187,7 @@ Bei der Verwendung von Anspruchskonfliktlösern können Sie den Anmeldenamen auf
 
 Mit Azure AD B2C können Sie Abfragezeichenfolgen-Parameter an Ihre HTML-Inhaltsdefinitions-Endpunkte übergeben, um den Seiteninhalt dynamisch zu rendern. Mit diesem Feature können Sie z. B. das Hintergrundbild auf der Azure AD B2C-Registrierungs- oder Anmeldeseite auf der Basis eines benutzerdefinierten Parameters ändern, den Sie von der Web- oder Mobilanwendung übergeben. Weitere Informationen finden Sie unter [Dynamisches Konfigurieren der Benutzeroberfläche mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-ui-customization.md#configure-dynamic-custom-page-content-uri). Sie können Ihre HTML-Seite auch auf Grundlage eines Sprachparameters lokalisieren, oder Sie können den Inhalt basierend auf der Client-ID ändern.
 
-Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language**-Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
+Im folgenden Beispiel wird in der Abfragezeichenfolge ein Parameter namens **campaignId** mit einem Wert von `Hawaii`, einem **language** -Code (Sprache) von `en-US` und **app** für die Client-ID übergeben:
 
 ```xml
 <UserJourneyBehaviors>
