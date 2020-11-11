@@ -9,12 +9,12 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 10/01/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 45cad20a2e32640cabf4c57ce6411fcd5ab67da3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 93c2f847678292a1d38eff540a813b591c255ef0
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748229"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043207"
 ---
 # <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
@@ -58,7 +58,7 @@ Sollte sich dieses Datum ändern, wird das neue Widerrufsdatum bekanntgegeben.
 
 ## <a name="will-this-change-affect-me"></a>Betrifft mich diese Änderung? 
 
-Wir gehen davon aus, dass **die meisten Azure-Kunden nicht betroffen sein werden** .  Ihre Anwendung kann jedoch betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird. Dies wird als Anheften von Zertifikaten bezeichnet.
+Wir gehen davon aus, dass **die meisten Azure-Kunden nicht betroffen sein werden**.  Ihre Anwendung kann jedoch betroffen sein, wenn darin explizit eine Liste zulässiger Zertifizierungsstellen angegeben wird. Dies wird als Anheften von Zertifikaten bezeichnet.
 
 Im Anschluss finden Sie verschiedene Methoden, mit denen Sie ermitteln können, ob Ihre Anwendung betroffen ist:
 
@@ -83,6 +83,7 @@ Im Anschluss finden Sie verschiedene Methoden, mit denen Sie ermitteln können, 
     - http://crl&#46;microsoft&#46;com
     - http://oneocsp&#46;microsoft&#46;com
     - http://ocsp&#46;msocsp&#46;com
+    - http://www&#46;microsoft&#46;com/pkiops
 
 ## <a name="next-steps"></a>Nächste Schritte
 

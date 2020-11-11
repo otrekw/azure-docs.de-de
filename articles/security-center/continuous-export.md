@@ -8,18 +8,18 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: memildin
-ms.openlocfilehash: cd4f2198721e0d92abe22b1b6d95dceda2dc874d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789181"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289230"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
 Azure Security Center generiert detaillierte Sicherheitswarnungen und -empfehlungen. Sie können diese im Portal oder über programmgesteuerte Tools anzeigen. Möglicherweise müssen Sie diese Informationen auch ganz oder teilweise für die Nachverfolgung mit anderen Überwachungstools in Ihrer Umgebung exportieren. 
 
-Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportiert wird und *wohin* . Sie können z. B. die folgenden Konfigurationen vornehmen:
+Mit dem **fortlaufenden Export** können Sie umfassend anpassen, *was* exportiert wird und *wohin*. Sie können z. B. die folgenden Konfigurationen vornehmen:
 
 - Alle Warnungen mit einem hohen Schweregrad werden an eine Azure Event Hub-Instanz gesendet.
 - Alle Ergebnisse mit einem mittleren oder höheren Schweregrad bei Überprüfungen der Sicherheitsrisikobewertung Ihrer SQL Server-Instanzen werden an einen bestimmten Log Analytics-Arbeitsbereich gesendet.
@@ -41,7 +41,7 @@ In diesem Artikel wird erläutert, wie Sie den fortlaufenden Export in Log Analy
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|<ul><li>**Sicherheitsadministrator** oder **Besitzer** für die Ressourcengruppe</li><li>Schreibberechtigungen für die Zielressource</li><li>Wenn Sie die unten beschriebenen „DeployIfNotExist“-Richtlinien von Azure Policy verwenden, benötigen Sie auch die Berechtigungen zum Zuweisen von Richtlinien.</li></ul>|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Ja](./media/icons/yes-icon.png) China Gov (zu Event Hub), andere Gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov, andere Gov<br>![Ja](./media/icons/yes-icon.png) China Gov (an Event Hub)|
 |||
 
 
@@ -124,11 +124,11 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
     > [!TIP]
     > Sie können auch in Azure Policy nach diesen Richtlinien suchen:
     > 1. Öffnen Sie Azure Policy.
-    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export":::
+    > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Zugreifen auf Azure Policy":::
     > 2. Klicken Sie im Azure Policy-Menü auf **Definitionen** , und suchen Sie nach dem Namen der gewünschten Richtlinie. 
 
-1. Klicken Sie auf der entsprechenden Azure Policy-Seite auf **Zuweisen** .
-    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export":::
+1. Klicken Sie auf der entsprechenden Azure Policy-Seite auf **Zuweisen**.
+    :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Zuweisen der Azure-Richtlinie":::
 
 1. Öffnen Sie alle Registerkarten, und legen Sie die Parameter wie gewünscht fest:
     1. Legen Sie auf der Registerkarte **Grundeinstellungen** den Bereich für die Richtlinie fest. Weisen Sie die Richtlinie für eine zentrale Verwaltung der Verwaltungsgruppe mit den Abonnements zu, die die Konfiguration für den fortlaufenden Export verwenden sollen. 
@@ -137,9 +137,9 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
         > Jeder Parameter verfügt über eine QuickInfo, in der die verfügbaren Optionen erläutert werden.
         >
         > Die Registerkarte „Parameter“ in Azure Policy (1) bietet ähnliche Konfigurationsoptionen wie die Seite „Fortlaufender Export“ in Security Center (2).
-        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Umschalter „Include security findings“ (Sicherheitsergebnisse einschließen) in der Konfiguration für den fortlaufenden Export" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
+        > :::image type="content" source="./media/continuous-export/azure-policy-next-to-continuous-export.png" alt-text="Vergleich der Parameter auf der Seite „Fortlaufender Export“ mit Azure Policy" lightbox="./media/continuous-export/azure-policy-next-to-continuous-export.png":::
     1. Wenn Sie diese Zuweisung auf vorhandene Abonnements anwenden möchten, können Sie die Registerkarte **Wartung** öffnen und die Option zum Erstellen eines Wartungstasks auswählen.
-1. Überprüfen Sie die Seite „Zusammenfassung“, und klicken Sie auf **Erstellen** .
+1. Überprüfen Sie die Seite „Zusammenfassung“, und klicken Sie auf **Erstellen**.
 
 --- 
 

@@ -9,23 +9,23 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2018
-ms.openlocfilehash: f3bbab14152f16515c93972e6b41ef34693e1143
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2f16ed3c455067ff2fa185bff023a6993ccda58c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91367953"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311980"
 ---
 # <a name="guide-to-net-neural-network-specification-language-for-machine-learning-studio-classic"></a>Leitfaden zur Net#-Spezifikationssprache für neuronale Netzwerke für Machine Learning Studio (Classic)
 
-**GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../compare-azure-ml-to-studio-classic.md)
+**GILT FÜR:**  ![Gilt für ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Gilt nicht für ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 Net# ist eine von Microsoft entwickelte Sprache, mit der komplexe Architekturen neuronaler Netze wie Deep Neural Networks oder Faltungen beliebiger Dimensionen definiert werden. Sie können komplexe Strukturen verwenden, um das Lernen aus Bild-, Video- oder Audiodaten zu verbessern.
 
 Sie können eine Net#-Architekturspezifikation in den folgenden Kontexten verwenden:
 
-+ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio (klassisch): [Mehrklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/neural-network-regression)
-+ Funktionen neuronaler Netze in Microsoft ML Server: [NeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](https://docs.microsoft.com/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](https://docs.microsoft.com/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
++ Alle neuronalen Netzwerke in Microsoft Azure Machine Learning Studio (klassisch): [Mehrklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/multiclass-neural-network), [Zweiklassiges neuronales Netzwerk](/azure/machine-learning/studio-module-reference/two-class-neural-network) und [Regression mit neuralen Netzwerken](/azure/machine-learning/studio-module-reference/neural-network-regression)
++ Funktionen neuronaler Netze in Microsoft ML Server: [NeuralNet](/machine-learning-server/r-reference/microsoftml/neuralnet) und [rxNeuralNet](/machine-learning-server/r-reference/microsoftml/rxneuralnet) für die Sprache R und [rx_neural_network](/machine-learning-server/python-reference/microsoftml/rx-neural-network) für Python
 
 
 In diesem Artikel werden die grundlegenden Konzepte und die Syntax beschrieben, die zum Entwickeln eines benutzerdefinierten neuronalen Netzwerks mit Net# benötigt werden:
@@ -44,7 +44,7 @@ Jede **trainierbare Schicht** (eine verdeckte Schicht oder eine Ausgabeschicht) 
 
 Net# unterstützt verschiedene Arten von Verbindungsbündeln, sodass Sie anpassen können, wie Eingaben verdeckten Schichten und Ausgaben zugeordnet werden.
 
-Das Standardbündel ist ein **vollständiges Bündel**, bei dem jeder Knoten in der Quellschicht mit jedem Knoten in der Zielschicht verbunden ist.
+Das Standardbündel ist ein **vollständiges Bündel** , bei dem jeder Knoten in der Quellschicht mit jedem Knoten in der Zielschicht verbunden ist.
 
 Darüber hinaus unterstützt Net# die folgenden vier Arten erweiterter Verbindungsbündel:
 
@@ -80,7 +80,7 @@ Beispiele für die Definition neuronaler Netzwerke für einige gängige Aufgaben
 
 ## <a name="structure-specifications"></a>Strukturspezifikation
 
-Die Strukturspezifikation eines neuronalen Netzwerks besteht aus drei Abschnitten: der **Konstantendeklaration**, der **Schichtdeklaration** und der **Verbindungsdeklaration**. Es gibt auch einen optionalen Abschnitt für eine **Deklaration der gemeinsamen Nutzung**. Die Abschnitte können in beliebiger Reihenfolge angegeben werden.
+Die Strukturspezifikation eines neuronalen Netzwerks besteht aus drei Abschnitten: der **Konstantendeklaration** , der **Schichtdeklaration** und der **Verbindungsdeklaration**. Es gibt auch einen optionalen Abschnitt für eine **Deklaration der gemeinsamen Nutzung**. Die Abschnitte können in beliebiger Reihenfolge angegeben werden.
 
 ## <a name="constant-declaration"></a>Konstantendeklaration
 
@@ -140,7 +140,7 @@ Die folgenden Ausgabefunktionen werden unterstützt:
 + tanh
 + brlinear
 
-Die folgende Deklaration verwendet beispielsweise die Funktion **softmax**:
+Die folgende Deklaration verwendet beispielsweise die Funktion **softmax** :
 
 `output Result [100] softmax from Hidden all;`
 
@@ -152,9 +152,9 @@ Derzeit werden fünf Arten von Verbindungsbündeln unterstützt:
 
 + **Vollständige** Bündel; diese werden mit dem Schlüsselwort `all` angegeben.
 + **Gefilterte** Bündel; diese werden mit dem Schlüsselwort `where` gefolgt von einem Prädikatausdruck angegeben.
-+ **Konvolutionsbündel**; diese werden mit dem Schlüsselwort `convolve` gefolgt von den Konvolutionsattributen angegeben.
-+ **Poolingbündel**; diese werden mit dem Schlüsselwort **max pool** oder **mean pool** angegeben.
-+ **Antwortnormalisierungsbündel**; diese werden mit dem Schlüsselwort **response norm** angegeben.
++ **Konvolutionsbündel** ; diese werden mit dem Schlüsselwort `convolve` gefolgt von den Konvolutionsattributen angegeben.
++ **Poolingbündel** ; diese werden mit dem Schlüsselwort **max pool** oder **mean pool** angegeben.
++ **Antwortnormalisierungsbündel** ; diese werden mit dem Schlüsselwort **response norm** angegeben.
 
 ## <a name="full-bundles"></a>Vollständige Bündel
 
@@ -186,13 +186,13 @@ Es ist möglich, Gewichtungen direkt als Konstantenwerte anzugeben. Falls die Ge
 
 Wenn die Trainingsdaten eine homogene Struktur aufweisen, werden Konvolutionsverbindungen üblicherweise eingesetzt, um übergeordnete Merkmale der Daten zu ermitteln. So kann beispielsweise in Bild-, Audio- oder Videodaten die räumliche oder zeitliche Dimensionalität ziemlich einheitlich sein.
 
-Konvolutionsbündel verwenden rechteckige **Kernel**, die durch die Dimensionen geschoben werden. Im Wesentlichen definiert jeder Kernel einen Satz von Gewichtungen, die in lokalen Umgebungen angewendet werden. Diese werden als **Kernelanwendungen** bezeichnet. Jede Kernelanwendung entspricht einem Knoten in der Quellschicht, der als **zentraler Knoten** bezeichnet wird. Die Gewichtungen eines Kernels werden von vielen Verbindungen gemeinsam verwendet. In einem Konvolutionsbündel ist jeder Kernel rechteckig, und alle Kernelanwendungen sind gleich groß.
+Konvolutionsbündel verwenden rechteckige **Kernel** , die durch die Dimensionen geschoben werden. Im Wesentlichen definiert jeder Kernel einen Satz von Gewichtungen, die in lokalen Umgebungen angewendet werden. Diese werden als **Kernelanwendungen** bezeichnet. Jede Kernelanwendung entspricht einem Knoten in der Quellschicht, der als **zentraler Knoten** bezeichnet wird. Die Gewichtungen eines Kernels werden von vielen Verbindungen gemeinsam verwendet. In einem Konvolutionsbündel ist jeder Kernel rechteckig, und alle Kernelanwendungen sind gleich groß.
 
 Konvolutionsbündel unterstützen die folgenden Attribute:
 
 **InputShape** definiert die Dimensionalität der Quellschicht für die Zwecke dieses Konvolutionsbündels. Der Wert muss ein Tupel positiver ganzer Zahlen sein. Das Produkt der ganzen Zahlen muss gleich der Anzahl der Knoten in der Quellschicht sein, eine weitergehende Übereinstimmung mit der für die Quellschicht deklarierten Dimensionalität ist jedoch nicht erforderlich. Die Länge dieses Tupels stellt den Wert für die **Arität** des Konvolutionsbündels dar. Arität bezieht sich in der Regel auf die Anzahl von Argumenten oder Operanden, die eine Funktion enthalten kann.
 
-Die Form und Positionen der Kernel können mit den Attributen **KernelShape**, **Stride**, **Padding**, **LowerPad** und **UpperPad** definiert werden:
+Die Form und Positionen der Kernel können mit den Attributen **KernelShape** , **Stride** , **Padding** , **LowerPad** und **UpperPad** definiert werden:
 
 + **KernelShape** (erforderlich): Definiert die Dimensionalität jedes Kernels für das Konvolutionsbündel. Der Wert muss ein Tupel positiver ganzer Zahlen sein, dessen Länge der Arität des Bündels entspricht. Jede Komponente dieses Tupels darf nicht größer als die entsprechende Komponente von **InputShape** sein.
 
@@ -214,14 +214,14 @@ Es gibt zwei Gruppen von Eigenschaften zum Steuern der Auffüllung, die sich geg
 
     Wenn der Wert einer Dimension "False" ist, werden die Kernel so definiert, dass die Anzahl der ausgelassenen Knoten auf jeder Seite gleich ist (bis zu einer Differenz von 1). Der Standardwert dieses Attributs ist ein Tupel, in dem alle Komponenten "False" sind.
 
-+ **UpperPad** und **LowerPad** (optional): Ermöglichen eine bessere Steuerung des zu verwendenden Umfangs der Auffüllung. **Wichtig:** Diese Attribute können nur dann definiert werden, wenn die oben genannte **Padding**-Eigenschaft ***nicht*** definiert wurde. Die Werte sollten Tupel ganzer Zahlen sein, deren Längen der Arität des Bündels entsprechen. Wenn diese Attribute angegeben werden, werden am unteren und oberen Ende jeder Dimension der Eingabeschicht „Dummy“-Knoten hinzugefügt. Die Anzahl der Knoten, die dem unteren und oberen Ende der Dimension hinzugefügt werden, wird durch **LowerPad**[i] bzw. **UpperPad**[i] festgelegt.
++ **UpperPad** und **LowerPad** (optional): Ermöglichen eine bessere Steuerung des zu verwendenden Umfangs der Auffüllung. **Wichtig:** Diese Attribute können nur dann definiert werden, wenn die oben genannte **Padding** -Eigenschaft **_nicht_ *_ definiert wurde. Die Werte sollten Tupel ganzer Zahlen sein, deren Längen der Arität des Bündels entsprechen. Wenn diese Attribute angegeben werden, werden am unteren und oberen Ende jeder Dimension der Eingabeschicht „Dummy“-Knoten hinzugefügt. Die Anzahl der Knoten, die dem unteren und oberen Ende der Dimension hinzugefügt werden, wird durch _* LowerPad** [i] bzw. **UpperPad** [i] festgelegt.
 
     Um sicherzustellen, dass Kernel nur "realen" Knoten und nicht "Dummy"-Knoten entsprechen, müssen die folgenden Bedingungen erfüllt sein:
   - Jede Komponente von **LowerPad** muss kleiner als (aber nicht gleich) `KernelShape[d]/2` sein.
   - Jede Komponente von **UpperPad** darf nicht größer als `KernelShape[d]/2` sein.
   - Der Standardwert dieser Attribute ist ein Tupel, in dem alle Komponenten gleich 0 sind.
 
-    Die Einstellung **Padding** = „true“ lässt so viel Auffüllung wie nötig zu, um das „Zentrum“ des Kernels innerhalb der „tatsächlichen“ Eingabe zu halten. Dadurch wird die Formel für die Berechnung der Ausgabegröße etwas geändert. In der Regel wird die Ausgabegröße *D* als `D = (I - K) / S + 1` berechnet, wobei `I` die Eingabegröße, `K` die Kernelgröße, `S` „STRIDE“ und `/` die Division ganzer Zahlen (Runden in Richtung Null) ist. Wenn Sie UpperPad = [1, 1] festlegen, ist die Eingabegröße `I` tatsächlich 29, weshalb `D = (29 - 5) / 2 + 1 = 13` gilt. Aber wenn **Padding** „true“ ist, wird `I` tatsächlich durch `K - 1` erhöht. Daher gilt `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Durch Angeben von Werten für **UpperPad** und **LowerPad** erhalten Sie wesentlich mehr Kontrolle über die Auffüllung, als wenn nur „**Padding** = true“ festgelegt wird.
+    Die Einstellung **Padding** = „true“ lässt so viel Auffüllung wie nötig zu, um das „Zentrum“ des Kernels innerhalb der „tatsächlichen“ Eingabe zu halten. Dadurch wird die Formel für die Berechnung der Ausgabegröße etwas geändert. In der Regel wird die Ausgabegröße *D* als `D = (I - K) / S + 1` berechnet, wobei `I` die Eingabegröße, `K` die Kernelgröße, `S` „STRIDE“ und `/` die Division ganzer Zahlen (Runden in Richtung Null) ist. Wenn Sie UpperPad = [1, 1] festlegen, ist die Eingabegröße `I` tatsächlich 29, weshalb `D = (29 - 5) / 2 + 1 = 13` gilt. Aber wenn **Padding** „true“ ist, wird `I` tatsächlich durch `K - 1` erhöht. Daher gilt `D = ((28 + 4) - 5) / 2 + 1 = 27 / 2 + 1 = 13 + 1 = 14`. Durch Angeben von Werten für **UpperPad** und **LowerPad** erhalten Sie wesentlich mehr Kontrolle über die Auffüllung, als wenn nur „ **Padding** = true“ festgelegt wird.
 
 Weitere Informationen zu Konvolutionsnetzwerken und ihren Anwendungsmöglichkeiten finden Sie in den folgenden Artikeln (in englischer Sprache):
 
@@ -230,7 +230,7 @@ Weitere Informationen zu Konvolutionsnetzwerken und ihren Anwendungsmöglichkeit
 
 ## <a name="pooling-bundles"></a>Poolingbündel
 
-Ein **Poolingbündel** wendet Geometrie ähnlich wie Konvolutionskonnektivität an, verwendet aber vordefinierte Funktionen für Quellknotenwerte, um die Zielknotenwerte abzuleiten. Daher haben Poolingbündel keinen trainierbaren Zustand (Gewichtungen oder Biase). Poolingbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing**, **MapCount** und **Weights**.
+Ein **Poolingbündel** wendet Geometrie ähnlich wie Konvolutionskonnektivität an, verwendet aber vordefinierte Funktionen für Quellknotenwerte, um die Zielknotenwerte abzuleiten. Daher haben Poolingbündel keinen trainierbaren Zustand (Gewichtungen oder Biase). Poolingbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing** , **MapCount** und **Weights**.
 
 Normalerweise überlappen sich die Kernel, die von nebeneinander liegenden Poolingeinheiten zusammengefasst werden, nicht. Wenn Stride[d] in jeder Dimension gleich KernelShape[d] ist, entsteht die herkömmliche lokale Poolingschicht, die üblicherweise in neuronalen Konvolutionsnetzwerken verwendet wird. Jeder Zielknoten berechnet das Maximum oder den Mittelwert der Aktivitäten seines Kernels in der Quellschicht.
 
@@ -260,15 +260,15 @@ Weitere Informationen zu Poolingschichten finden Sie in den folgenden Artikeln (
 
 **Antwortnormalisierung** ist ein lokales Normalisierungsschema, das von Geoffrey Hinton, et al, in diesem Dokument [ImageNet Classiﬁcation with Deep Convolutional Neural Networks](https://www.cs.toronto.edu/~hinton/absps/imagenet.pdf) (ImageNet-Klassifizierung mit umfassenden neuronalen Faltungsnetzen) eingeführt wurde.
 
-Die Antwortnormalisierung unterstützt die Generalisierung in neuronalen Netzwerken. Wenn ein Neuron auf einem sehr hohen Aktivierungsniveau auslöst, unterdrückt eine lokale Antwortnormalisierungsschicht das Aktivierungsniveau der umgebenden Neuronen. Hierfür werden drei Parameter (`α`, `β` und `k`) und eine Konvolutionsstruktur (oder „Nachbarschaftsform“) verwendet. Jedes Neuron in der Zielschicht **y** entspricht einem Neuron **x** in der Quellschicht. Das Aktivierungsniveau **y** wird durch die folgende Formel angegeben, wobei `f` das Aktivierungsniveau eines Neurons und `Nx` der Kernel (bzw. der Satz mit den Neuronen in der Umgebung von **x**) ist. Dies wird durch die folgende Konvolutionsstruktur definiert:
+Die Antwortnormalisierung unterstützt die Generalisierung in neuronalen Netzwerken. Wenn ein Neuron auf einem sehr hohen Aktivierungsniveau auslöst, unterdrückt eine lokale Antwortnormalisierungsschicht das Aktivierungsniveau der umgebenden Neuronen. Hierfür werden drei Parameter (`α`, `β` und `k`) und eine Konvolutionsstruktur (oder „Nachbarschaftsform“) verwendet. Jedes Neuron in der Zielschicht **y** entspricht einem Neuron **x** in der Quellschicht. Das Aktivierungsniveau **y** wird durch die folgende Formel angegeben, wobei `f` das Aktivierungsniveau eines Neurons und `Nx` der Kernel (bzw. der Satz mit den Neuronen in der Umgebung von **x** ) ist. Dies wird durch die folgende Konvolutionsstruktur definiert:
 
 ![Formel für Konvolutionsstruktur](./media/azure-ml-netsharp-reference-guide/formula_large.png)
 
-Antwortnormalisierungsbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing**, **MapCount** und **Weights**.
+Antwortnormalisierungsbündel unterstützen alle Konvolutionsattribute mit Ausnahme von **Sharing** , **MapCount** und **Weights**.
 
-+ Wenn der Kernel Neuronen in derselben Zuordnung wie ***x*** enthält, wird das Normalisierungsschema als **zuordnungsinterne Normalisierung** bezeichnet. Um diese Art von Normalisierung zu definieren, muss die erste Koordinate in **InputShape** den Wert 1 haben.
++ Wenn der Kernel Neuronen in derselben Zuordnung wie **_x_ *_ enthält, wird das Normalisierungsschema als _* zuordnungsinterne Normalisierung** bezeichnet. Um diese Art von Normalisierung zu definieren, muss die erste Koordinate in **InputShape** den Wert 1 haben.
 
-+ Wenn der Kernel Neuronen an derselben räumlichen Position wie ***x*** enthält, die Neuronen sich aber in anderen Zuordnungen befinden, wird das Normalisierungsschema als **zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.
++ Wenn der Kernel Neuronen an derselben räumlichen Position wie **_x_ *_ enthält, die Neuronen sich aber in anderen Zuordnungen befinden, wird das Normalisierungsschema als _* zuordnungsübergreifende Normalisierung** bezeichnet. Diese Art der Antwortnormalisierung implementiert eine Form von lateraler Hemmung, inspiriert durch den in echten Neuronen gefundenen Typ; dies sorgt für einen Wettbewerb um hohe Aktivierungsniveaus zwischen den in unterschiedlichen Zuordnungen berechneten Neuronenausgaben. Um eine zuordnungsübergreifende Normalisierung zu definieren, muss die erste Koordinate eine ganze Zahl größer als eins und nicht größer als die Anzahl der Zuordnungen sein; der Rest der Koordinaten muss den Wert 1 haben.
 
 Da Antwortnormalisierungsbündel zur Bestimmung des Zielknotenwerts eine vordefinierte Funktion auf Quellknotenwerte anwenden, haben sie keinen trainierbaren Zustand (Gewichtungen oder Biase).
 
@@ -463,4 +463,4 @@ output Digit [10] from Hid3 all;
 
 ## <a name="acknowledgements"></a>Danksagung
 
-Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neuronale Netze in Azure Machine Learning Studio – Einführung in Net#](https://blogs.technet.com/b/machinelearning/archive/2015/02/16/neural-nets-in-azure-ml-introduction-to-net.aspx).
+Die Net#-Sprache zum Anpassen der Architektur von neuronalen Netzwerken wurde bei Microsoft von Shon Katzenberger (Architect, Machine Learning) und Alexey Kamenev (Software Engineer, Microsoft Research) entwickelt. Sie wird für interne Machine Learning-Projekte und -Anwendungen verwendet, die von der Bilderkennung bis zur Textanalyse reichen. Weitere Informationen finden Sie unter [Neuronale Netze in Azure Machine Learning Studio – Einführung in Net#](/archive/blogs/machinelearning/neural-nets-in-azure-ml-introduction-to-net).

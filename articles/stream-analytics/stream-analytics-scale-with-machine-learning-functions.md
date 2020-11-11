@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
-ms.openlocfilehash: d2fe8445d41f88852c6c9d4db84f4e1b03183a2e
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015531"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124406"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
@@ -40,7 +40,7 @@ Ermitteln Sie die *Latenztoleranz* für Ihren Stream Analytics-Auftrag. Durch ei
 
 Eine höhere Batchgröße ermöglicht es dem Stream Analytics-Auftrag, **mehr Ereignisse** mit **derselben Anzahl** von Webdienstanforderungen von Studio (klassisch) zu verarbeiten. Die höhere Wartezeit des Webdiensts von Studio (klassisch) verhält sich in der Regel sublinear zum Anstieg der Batchgröße. 
 
-Es ist wichtig, in der jeweiligen Situation immer die kostengünstigste Batchgröße für einen Webdienst von Studio (klassisch) zu ermitteln. Die Standardbatchgröße für Webdienstanforderungen beträgt 1.000 Ereignisse. Sie können die Standardgröße mit der [Stream Analytics-REST-API](https://docs.microsoft.com/previous-versions/azure/mt653706(v=azure.100) "Stream Analytics-REST-API") oder dem [PowerShell-Client für Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md) ändern.
+Es ist wichtig, in der jeweiligen Situation immer die kostengünstigste Batchgröße für einen Webdienst von Studio (klassisch) zu ermitteln. Die Standardbatchgröße für Webdienstanforderungen beträgt 1.000 Ereignisse. Sie können die Standardgröße mit der [Stream Analytics-REST-API](/previous-versions/azure/mt653706(v=azure.100) "Stream Analytics-REST-API") oder dem [PowerShell-Client für Stream Analytics](stream-analytics-monitor-and-manage-jobs-use-powershell.md) ändern.
 
 Nachdem Sie sich für eine Batchgröße entschieden haben, können Sie die Anzahl von Streamingeinheiten (SUs) basierend auf der Anzahl von Ereignissen festlegen, die von der Funktion pro Sekunde verarbeitet werden müssen. Weitere Informationen zu Streamingeinheiten finden Sie unter [Stream Analytics-Skalierungsaufträge](stream-analytics-scale-jobs.md).
 
@@ -52,7 +52,7 @@ Zum Verarbeiten von 200.000 Ereignissen pro Sekunde benötigt der Stream Analyti
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen")
 
-Wenn ***B*** die Batchgröße und ***L*** die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit ***N*** SUs:
+Wenn * *_B_* _ die Batchgröße und _*_L_*_ die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit _*_N_*_ SUs:
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel")
 
@@ -63,7 +63,7 @@ Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierun
 ## <a name="example--sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Studio-Funktion (klassisch) für die Stimmungsanalyse, die im [Tutorial zur Integration von Machine Learning Studio (klassisch) für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md) beschrieben ist.
 
-Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion **sentiment** , wie im folgenden Beispiel dargestellt:
+Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion _ *sentiment* *, wie im folgenden Beispiel dargestellt:
 
 ```SQL
     WITH subquery AS (
@@ -140,12 +140,12 @@ Beim Skalieren eines Stream Analytics-Auftrags mit Studio-Funktionen (klassisch
 2. Die tolerierte Wartezeit für den ausgeführten Stream Analytics-Auftrag (und somit die Batchgröße der Webdienstanforderungen von Studio (klassisch))
 3. Die bereitgestellten Stream Analytics-Streamingeinheiten (SUs) und die Anzahl der Webdienstanforderungen von Studio (klassisch) (zusätzliche funktionsbezogene Kosten)
 
-Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, ist die [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](https://docs.microsoft.com/answers/topics/azure-stream-analytics.html) eine hervorragende Ressource, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
+Als Beispiel wurde eine vollständig partitionierte Stream Analytics-Abfrage verwendet. Falls Sie eine komplexere Abfrage benötigen, ist die [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Stream Analytics](/answers/topics/azure-stream-analytics.html) eine hervorragende Ressource, um vom Stream Analytics-Team weitere Hilfe zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Stream Analytics finden Sie unter:
 
 * [Erste Schritte mit Azure Stream Analytics](stream-analytics-real-time-fraud-detection.md)
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](https://msdn.microsoft.com/library/azure/dn835031.aspx)
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)
+* [Referenz zur Azure Stream Analytics-Verwaltungs-REST-API](/rest/api/streamanalytics/)

@@ -1,7 +1,7 @@
 ---
 title: Bereitstellen von ML-Modellen in Azure App Service (Vorschauversion)
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Machine Learning ein Modell in einer Web-App in Azure App Service bereitstellen.
+description: Erfahren Sie, wie Sie mithilfe von Azure Machine Learning ein trainiertes ML-Modell in einer Web-App mit Azure App Service bereitstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 31c9f203a8602b6c078fe2e9c672c539140f9990
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: bea3270821888334ed876bb827dab56b4c206b6a
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744435"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325235"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
@@ -28,11 +28,11 @@ Hier erfahren Sie, wie Sie ein Modell in Azure Machine Learning als Web-App in A
 
 Mit Azure Machine Learning können Sie Docker-Images auf der Grundlage trainierter Machine Learning-Modelle erstellen. Dieses Image enthält einen Webdienst, der Daten empfängt und an das Modell übermittelt und anschließend die Antwort zurückgibt. Azure App Service kann zum Bereitstellen des Images verwendet werden und bietet die folgenden Features:
 
-* Erweiterte [Authentifizierung](/azure/app-service/configure-authentication-provider-aad) für höhere Sicherheit. Zu den Authentifizierungsmethoden zählen Azure Active Directory und mehrstufige Authentifizierung.
-* [Autoskalierung](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json) ohne erneute Bereitstellung
-* [TLS-Unterstützung](/azure/app-service/configure-ssl-certificate-in-code) für die sichere Kommunikation zwischen Clients und dem Dienst
+* Erweiterte [Authentifizierung](../app-service/configure-authentication-provider-aad.md) für höhere Sicherheit. Zu den Authentifizierungsmethoden zählen Azure Active Directory und mehrstufige Authentifizierung.
+* [Autoskalierung](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json) ohne erneute Bereitstellung
+* [TLS-Unterstützung](../app-service/configure-ssl-certificate-in-code.md) für die sichere Kommunikation zwischen Clients und dem Dienst
 
-Weitere Informationen zu den Features von Azure App Service finden Sie unter [App Service: Übersicht](/azure/app-service/overview).
+Weitere Informationen zu den Features von Azure App Service finden Sie unter [App Service: Übersicht](../app-service/overview.md).
 
 > [!IMPORTANT]
 > Wenn die mit dem bereitgestellten Modell verwendeten Bewertungsdaten oder die Ergebnisse der Bewertung protokolliert werden sollen, sollten Sie die Bereitstellung stattdessen in Azure Kubernetes Service durchführen. Weitere Informationen finden Sie unter [Sammeln von Daten zu Ihren Produktionsmodellen](how-to-enable-data-collection.md).
@@ -40,7 +40,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 ## <a name="prerequisites"></a>Voraussetzungen
 
 * Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie im Artikel [Erstellen eines Arbeitsbereichs](how-to-manage-workspace.md).
-* Die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
+* Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * Ein in Ihrem Arbeitsbereich registriertes trainiertes Machine Learning-Modell. Falls Sie kein Modell besitzen, können Sie anhand der Informationen unter [Tutorial: Trainieren von Bildklassifikationsmodellen mit MNIST-Daten und Scikit-learn mithilfe von Azure Machine Learning](tutorial-train-models-with-aml.md) ein Modell trainieren und registrieren.
 
     > [!IMPORTANT]
@@ -56,7 +56,7 @@ Weitere Informationen zu den Features von Azure App Service finden Sie unter [Ap
 
 Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen des Modells als Webdienst erforderlich sind. Die folgende Liste beschreibt die wesentlichen für eine Bereitstellung erforderlichen Elemente:
 
-* Ein __Eingabeskript__ . Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
+* Ein __Eingabeskript__. Dieses Skript akzeptiert Anforderungen, bewertet die Anforderung mithilfe des Modells und gibt die Ergebnisse zurück.
 
     > [!IMPORTANT]
     > Das Eingabeskript ist spezifisch für Ihr Modell. Es muss das Format der Daten der eingehenden Anforderung, das Format der im Modell erwarteten Daten und das Format der an Clients zurückgegebenen Daten erkennen.
@@ -66,7 +66,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
     > [!IMPORTANT]
     > Das Azure Machine Learning SDK bietet keine Möglichkeit des Zugriffs auf Ihren Datenspeicher oder Ihre Datasets durch den Webdienst. Wenn das bereitgestellte Modell auf Daten zugreifen muss, die außerhalb der Bereitstellung gespeichert sind – wie z.B. in einem Azure Storage-Konto –, müssen Sie mit dem entsprechenden SDK eine benutzerdefinierte Codelösung entwickeln. Ein Beispiel hierfür ist das [Azure Storage SDK für Python](https://github.com/Azure/azure-storage-python).
     >
-    > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](how-to-use-parallel-run-step.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
+    > Eine andere Alternative, die in Ihrem Szenario funktionieren könnte, ist die [Batchvorhersage](./tutorial-pipeline-batch-scoring-classification.md), die beim Erstellen von Bewertungen Zugriff auf Datenspeicher bietet.
 
     Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
@@ -75,7 +75,7 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
 > [!IMPORTANT]
-> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](https://docs.microsoft.com//python/api/azureml-core/azureml.core.environment%28class%29?view=azure-ml-py&preserve-view=true)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
+> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](//python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 
 ## <a name="create-the-image"></a>Erstellen des Images
 
-Verwenden Sie [Model.package](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py&preserve-view=true#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
+Verwenden Sie [Model.package](//python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
 > Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
@@ -146,7 +146,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     }
     ```
 
-    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__ .
+    Speichern Sie die Werte für __Benutzername__ und eines der __Kennwörter__.
 
 1. Wenn Sie noch nicht über eine Ressourcengruppe oder einen App Service-Plan für die Bereitstellung des Diensts verfügen, veranschaulichen die folgenden Befehle das Erstellen dieser beiden Elemente:
 
@@ -271,7 +271,7 @@ print(response.json())
 ## <a name="next-steps"></a>Nächste Schritte
 
 * In der Dokumentation zu [App Service für Linux](/azure/app-service/containers/) erfahren Sie, wie Sie Ihre Web-App konfigurieren.
-* Weitere Informationen zur Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](/azure/azure-monitor/platform/autoscale-get-started?toc=%2fazure%2fapp-service%2ftoc.json).
-* [Verwenden eines TLS/SSL-Zertifikats in Ihrem Code in Azure App Service](/azure/app-service/configure-ssl-certificate-in-code)
-* [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](/azure/app-service/configure-authentication-provider-aad)
+* Weitere Informationen zur Skalierung finden Sie unter [Erste Schritte mit der automatischen Skalierung in Azure](../azure-monitor/platform/autoscale-get-started.md?toc=%252fazure%252fapp-service%252ftoc.json).
+* [Verwenden eines TLS/SSL-Zertifikats in Ihrem Code in Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
+* [Konfigurieren Ihrer App Service-App zur Verwendung der Azure Active Directory-Anmeldung](../app-service/configure-authentication-provider-aad.md)
 * [Consume a ML Model deployed as a web service (Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells)](how-to-consume-web-service.md).

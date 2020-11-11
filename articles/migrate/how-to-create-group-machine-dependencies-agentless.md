@@ -3,12 +3,12 @@ title: Einrichten der Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serv
 description: Hier erfahren Sie, wie Sie die Abhängigkeitsanalyse ohne Agent in der Azure Migrate-Serverbewertung einrichten.
 ms.topic: how-to
 ms.date: 6/08/2020
-ms.openlocfilehash: 57e5add810cf4fac232bce08fc7ca96df0a7c3a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8893b0f41bb7a06c02a6c2aa28002980144b582a
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91667468"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337692"
 ---
 # <a name="analyze-machine-dependencies-agentless"></a>Analysieren von Computerabhängigkeiten (ohne Agent)
 
@@ -25,7 +25,7 @@ In diesem Artikel wird das Einrichten der Abhängigkeitsanalyse ohne Agent in de
 
 - In der Abhängigkeitsanalyseansicht können Sie zurzeit keine Server zu einer Gruppe hinzufügen oder daraus entfernen.
 - Eine Abhängigkeitszuordnung für eine Gruppe von Servern ist derzeit nicht verfügbar.
-- Die Sammlung von Abhängigkeitsdaten kann gleichzeitig für 1.000 Server eingerichtet werden. Sie können eine höhere Anzahl von Servern analysieren, indem Sie eine Reihe von Batches mit jeweils 1.000 Servern erstellen.
+- In einem Azure Migrate-Projekt kann die Sammlung von Abhängigkeitsdaten gleichzeitig für 1.000 Server eingerichtet werden. Sie können eine höhere Anzahl von Servern analysieren, indem Sie eine Reihe von Batches mit jeweils 1.000 Servern erstellen.
 
 ## <a name="before-you-start"></a>Vorbereitung
 
@@ -76,8 +76,8 @@ Ungefähr sechs Stunden nach dem Start der Abhängigkeitsermittlung können Sie 
 2. Suchen Sie nach dem Computer, den Sie anzeigen möchten.
 3. Klicken Sie in der Spalte **Abhängigkeiten** auf **Abhängigkeiten anzeigen**.
 4. Ändern Sie den Zeitraum, für den Sie die Zuordnung anzeigen möchten, über die Dropdown-Liste **Zeitdauer**.
-5. Erweitern Sie die Gruppe **Client**, um die Computer aufzulisten, die eine Abhängigkeit zum ausgewählten Computer aufweisen.
-6. Erweitern Sie die Gruppe **Port**, um die Computer aufzulisten, die eine Abhängigkeit vom ausgewählten Computer aufweisen.
+5. Erweitern Sie die Gruppe **Client** , um die Computer aufzulisten, die eine Abhängigkeit zum ausgewählten Computer aufweisen.
+6. Erweitern Sie die Gruppe **Port** , um die Computer aufzulisten, die eine Abhängigkeit vom ausgewählten Computer aufweisen.
 7. Wenn Sie zur Zuordnungsansicht eines abhängigen Computers navigieren möchten, klicken Sie auf den Computernamen und dann auf **Serverzuordnung laden**.
 
     ![Erweitern der Portgruppe des Servers und Laden der Serverzuordnung](./media/how-to-create-group-machine-dependencies-agentless/load-server-map.png)

@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: b576b5e15461f34468bd7c2d512ac7a636b73ac9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332728"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925644"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -88,7 +88,7 @@ Für Sicherungen von virtuellen Linux-Azure-Computern unterstützt Azure Backup 
 **Einstellung** | **Einschränkungen**
 --- | ---
 Maximale Wiederherstellungspunkte pro geschützter Instanz (Computer/Workload) | 9999
-Maximale Ablaufzeit für einen Wiederherstellungspunkt | Keine Begrenzung
+Maximale Ablaufzeit für einen Wiederherstellungspunkt | Keine Beschränkung (99 Jahre)
 Maximale Sicherungshäufigkeit für Tresor (Azure-VM-Erweiterung) | Einmal täglich
 Maximale Sicherungshäufigkeit für Tresor (MARS-Agent) | Drei Sicherungen pro Tag
 Maximale Sicherungshäufigkeit für DPM/MABS | Alle 15 Minuten für SQL Server<br/><br/> Stündlich für andere Workloads
@@ -130,7 +130,7 @@ Wiederherstellen eines virtuellen Computers direkt in einer Verfügbarkeitsgrupp
 Wiederherstellen einer Sicherung von nicht verwalteten VMs nach dem Upgrade auf verwaltete VMs| Unterstützt.<br/><br/> Sie können Datenträger wiederherstellen und dann einen verwalteten virtuellen Computer erstellen.
 Wiederherstellen eines virtuellen Computers an einem Wiederherstellungspunkt vor der Migration des virtuellen Computers zu verwalteten Datenträgern | Unterstützt.<br/><br/> Sie führen die Wiederherstellung auf nicht verwalteten Datenträgern durch (Standardeinstellung), konvertieren die wiederhergestellten Datenträger in verwaltete Datenträger und erstellen einen virtuellen Computer mit den verwalteten Datenträgern.
 Wiederherstellen eines gelöschten virtuellen Computers | Unterstützt.<br/><br/> Sie können den virtuellen Computer aus einem Wiederherstellungspunkt wiederherstellen.
-Wiederherstellen eines virtuellen Domänencontrollercomputers, der Teil einer Konfiguration mit mehreren Domänencontrollern ist, über das Portal | Wird unterstützt, wenn Sie unter Verwendung von PowerShell den Datenträger wiederherstellen und eine VM erstellen.
+Wiederherstellen einer Domänencontroller-VM  | Unterstützt. Einzelheiten finden Sie unter [Wiederherstellen von Domänencontroller-VMs](backup-azure-arm-restore-vms.md#restore-domain-controller-vms).
 Wiederherstellen einer VM in einem anderen virtuellen Netzwerk |Unterstützt.<br/><br/> Das virtuelle Netzwerk muss sich im selben Abonnement und derselben Region befinden.
 
 ## <a name="vm-compute-support"></a>Unterstützung für VM-Compute
@@ -160,12 +160,13 @@ Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und m
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung (Write Accelerator, WA) bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen. <br><br> **Wichtiger Hinweis**: Virtuelle Computer mit WA-Datenträgern benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
+Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung (Write Accelerator, WA) bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen. <br><br> **Wichtiger Hinweis** : Virtuelle Computer mit WA-Datenträgern benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt die Deduplizierung nicht. Weitere Informationen finden Sie in [diesem Artikel](./backup-support-matrix.md#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wiederhergestellt werden, da der Tresor das Format nicht verarbeiten kann. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.
 Freigegebener Speicher| Das Sichern von VMs mit freigegebenem Clustervolume (Cluster Shared Volume, CSV) oder Dateiservern mit horizontaler Skalierung wird nicht unterstützt. Bei CSV-Schreibern treten während der Sicherung voraussichtlich Fehler auf. Bei der Wiederherstellung werden Datenträger, die CSV-Volumes enthalten, möglicherweise nicht hochgefahren.
 [Freigegebene Datenträger](../virtual-machines/disks-shared-enable.md) | Wird nicht unterstützt.
+SSD Ultra-Datenträger | Wird nicht unterstützt. Weitere Einzelheiten finden Sie unter diesen [Einschränkungen](selective-disk-backup-restore.md#limitations).
 
 ## <a name="vm-network-support"></a>Netzwerkunterstützung bei virtuellen Computern
 
@@ -222,7 +223,7 @@ Azure Backup unterstützt die Komprimierung des Sicherungsdatenverkehrs. In der 
 **Computer** | **Komprimierung für MABS/DPM (TCP)** | **Komprimierung für Tresor (HTTPS)**
 --- | --- | ---
 Lokale Windows-Computer ohne DPM/MABS | Nicht verfügbar | ![Ja][green]
-Virtuelle Azure-Computer | N/V | Nicht verfügbar
+Virtuelle Azure-Computer | Nicht verfügbar | Nicht verfügbar
 Lokal/Azure-VMs mit DPM | ![Ja][green] | ![Ja][green]
 Lokal/Azure-VMs mit MABS | ![Ja][green] | ![Ja][green]
 

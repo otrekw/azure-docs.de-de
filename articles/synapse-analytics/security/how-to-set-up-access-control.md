@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: d2f5b87fe313f7d152a80a35671bc7e0da3bb7c7
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341548"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312040"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau) 
 
@@ -51,8 +51,6 @@ Erstellen Sie drei Sicherheitsgruppen für Ihren Arbeitsbereich, und füllen Sie
 - **WS1\_WSAdmins** : für Benutzer, die vollständige Kontrolle über den Arbeitsbereich benötigen.
 - **WS1\_SparkAdmins** : für Benutzer, die vollständige Kontrolle über die Spark-Aspekte des Arbeitsbereichs benötigen.
 - **WS1\_SQLAdmins** : für Benutzer, die vollständige Kontrolle über die SQL-Aspekte des Arbeitsbereichs benötigen.
-- Hinzufügen von **WS1\_WSAdmins** zu **WS1\_SQLAdmins**
-- Hinzufügen von **WS1\_WSAdmins** zu **WS1\_SparkAdmins**
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>SCHRITT 2: Vorbereiten Ihres Data Lake Storage Gen2-Kontos
 
@@ -94,7 +92,7 @@ Der Synapse-Arbeitsbereich benötigt Zugriff auf STG1 und CNT1, damit er Pipelin
   - Wenn die Zuweisung nicht angezeigt wird, nehmen Sie die Zuweisung vor.
   - Der MSI trägt denselben Namen wie der Arbeitsbereich. In diesem Fall wäre dies &quot;WS1&quot;.
 
-## <a name="step-5-configure-admin-access-for-sql-pools"></a>SCHRITT 5: Konfigurieren des Administratorzugriffs für SQL-Pools
+## <a name="step-5-configure-admin-access-for-synapse-sql"></a>SCHRITT 5: Konfigurieren des Administratorzugriffs für Synapse SQL
 
 - Öffnen Sie das Azure-Portal.
 - Navigieren Sie zu WS1.
@@ -116,11 +114,11 @@ Benutzer in den einzelnen Rollen müssen die folgenden Schritte durchführen:
 | Number | Schritt | Arbeitsbereichsadministratoren | Spark-Administratoren | SQL-Administratoren |
 | --- | --- | --- | --- | --- |
 | 1 | Hochladen einer Parquet-Datei in CNT1 | YES | YES | YES |
-| 2 | Lesen der Parquet-Datei mithilfe von SQL On-Demand | YES | Nein | YES |
-| 3 | Erstellen eines Spark-Pools | JA [1] | JA [1] | Nein  |
+| 2 | Lesen der Parquet-Datei mithilfe eines serverlosen SQL-Pools | YES | Nein | YES |
+| 3 | Erstellen eines serverlosen Apache Spark-Pools | JA [1] | JA [1] | Nein  |
 | 4 | Lesen der Parquet-Datei mit einem Notebook | YES | YES | Nein |
 | 5 | Erstellen einer Pipeline aus dem Notebook und sofortiges Auslösen der Ausführung der Pipeline | YES | Nein | Nein |
-| 6 | Erstellen eines SQL-Pools und Ausführen eines SQL-Skripts wie &quot;SELECT 1&quot; | JA [1] | Nein | JA[1] |
+| 6 | Erstellen eines dedizierten SQL-Pools und Ausführen eines SQL-Skripts wie &quot;SELECT 1&quot; | JA [1] | Nein | JA[1] |
 
 > [!NOTE]
 > [1] Um SQL- oder Spark-Pools zu erstellen, muss der Benutzer mindestens über die Rolle „Mitwirkender“ für den Synapse-Arbeitsbereich verfügen.
@@ -150,8 +148,8 @@ Synapse Studio verhält sich in Abhängigkeit von der jeweiligen Benutzerrolle a
 | Datenhub/Anzeigen verknüpfter ADLS Gen2-Konten und -Container | JA [1] | JA[1] | JA[1] |
 | Datenhub/Anzeigen von Datenbanken | YES | YES | YES |
 | Datenhub/Anzeigen von Objekten in Datenbanken | YES | YES | YES |
-| Datenhub/Zugreifen auf Daten in SQL-Pooldatenbanken | YES   | Nein   | YES   |
-| Datenhub/Zugreifen auf Daten in SQL-on-Demand-Datenbanken | JA [2]  | Nein  | JA [2]  |
+| Datenhub/Zugreifen auf Daten in Synapse SQL-Datenbanken | YES   | Nein   | YES   |
+| Datenhub/Zugreifen auf Daten in serverlosen SQL-Pooldatenbanken | JA [2]  | Nein  | JA [2]  |
 | Datenhub/Zugreifen auf Daten in Spark-Datenbanken | JA [2] | JA [2] | JA [2] |
 | Verwenden des Entwicklungshubs | YES | YES | YES |
 | Entwicklungshub/Verfassen von SQL-Skripts | YES | Nein | YES |
@@ -161,7 +159,7 @@ Synapse Studio verhält sich in Abhängigkeit von der jeweiligen Benutzerrolle a
 | Verwenden des Orchestratorhubs | YES | YES | YES |
 | Orchestratorhub/Verwenden von Pipelines | YES | Nein | Nein |
 | Verwenden des Verwaltungshubs | YES | YES | YES |
-| Verwaltungshub/SQL-Pools | YES | Nein | YES |
+| Verwaltungshub/Synapse SQL | YES | Nein | YES |
 | Verwaltungshub/Spark-Pools | YES | YES | Nein |
 | Verwaltungshub/Trigger | YES | Nein | Nein |
 | Verwaltungshub/Verknüpfte Dienste | YES | YES | YES |

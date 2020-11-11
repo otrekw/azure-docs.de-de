@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: dcbfed4fc83b980b3e54a808406b8d27e1e6c919
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92074412"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93286763"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -96,7 +96,7 @@ Der Grund für die Warnungen ist, dass für den Cluster RBAC aktiviert und der Z
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ich kann Protokolle nicht mithilfe von kubectl-Protokollen abrufen, oder ich kann keine Verbindung mit dem API-Server herstellen. Ich erhalte „Fehler vom Server: Fehler beim Anwählen des Back-Ends: Wählen Sie tcp…“. Wie sollte ich vorgehen?
 
-Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
+Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system* -Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
 ## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
 
@@ -154,10 +154,10 @@ Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus,
 Benennungseinschränkungen werden sowohl von der Azure-Plattform als auch AKS implementiert. Verletzt ein Ressourcenname oder Parameter eine dieser Einschränkungen, wird ein Fehler zurückgegeben, der Sie auffordert, eine andere Eingabe zu machen. Es gelten die folgenden allgemeinen Benennungsrichtlinien:
 
 * Clusternamen müssen zwischen 1 und 63 Zeichen lang sein. Die einzigen zulässigen Zeichen sind Buchstaben, Ziffern, Bindestriche und Unterstriche. Das erste und das letzte Zeichen müssen ein Buchstabe oder eine Zahl sein.
-* Der Name der AKS-Knoten-/*MC_* -Ressourcengruppe ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen. Sie können auch [den Namen der Knotenressourcengruppe anpassen](cluster-configuration.md#custom-resource-group-name).
+* Der Name der AKS-Knoten-/ *MC_* -Ressourcengruppe ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen. Sie können auch [den Namen der Knotenressourcengruppe anpassen](cluster-configuration.md#custom-resource-group-name).
 * Das *dnsPrefix* muss mit alphanumerischen Werten beginnen und enden und zwischen 1 und 54 Zeichen lang sein. Gültige Zeichen sind alphanumerische Werte und Bindestriche (-). Das *dnsPrefix* darf keine Sonderzeichen wie z.B. einen Punkt (.) enthalten.
 * AKS-Knotenpoolnamen müssen aus Kleinbuchstaben bestehen und für Linux-Knotenpools und 1-11 Zeichen und für Windows-Knotenpools 1-6 Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen, und die einzigen zulässigen Zeichen sind Buchstaben und Ziffern.
-* Der *admin-username*, der den Administratorbenutzernamen für Linux-Knoten festlegt, muss mit einem Buchstaben beginnen, darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten und maximal 64 Zeichen lang sein.
+* Der *admin-username* , der den Administratorbenutzernamen für Linux-Knoten festlegt, muss mit einem Buchstaben beginnen, darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten und maximal 64 Zeichen lang sein.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Wenn ich versuche, einen Cluster zu erstellen, zu aktualisieren, zu skalieren, zu löschen oder zu aktualisieren, erhalte ich die Fehlermeldung, dass dieser Vorgang nicht erlaubt ist, da ein anderer Vorgang ausgeführt wird.
 
@@ -167,7 +167,7 @@ Clustervorgänge sind nur eingeschränkt möglich, wenn ein vorheriger Vorgang n
 
 Basierend auf der Ausgabe des Status des Clusters:
 
-* Wenn sich der Cluster in einem anderen Bereitstellungsstatus als *Erfolgreich* oder *Fehler* befindet, warten Sie, bis der Vorgang (*Upgrade/Aktualisieren/Erstellen/Skalieren/Löschen/Migrieren*) abgeschlossen ist. Sobald der vorherige Vorgang abgeschlossen ist, wiederholen Sie Ihren letzten Clustervorgang.
+* Wenn sich der Cluster in einem anderen Bereitstellungsstatus als *Erfolgreich* oder *Fehler* befindet, warten Sie, bis der Vorgang ( *Upgrade/Aktualisieren/Erstellen/Skalieren/Löschen/Migrieren* ) abgeschlossen ist. Sobald der vorherige Vorgang abgeschlossen ist, wiederholen Sie Ihren letzten Clustervorgang.
 
 * Wenn im Cluster ein fehlerhaftes Upgrade erfolgt, befolgen Sie die Anweisungen unter [Ich erhalte Fehler, dass sich mein Cluster in einem fehlerhaften Zustand befindet und ein Upgrade oder eine Skalierung nicht funktioniert, bis der Fehler behoben wurde](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -198,7 +198,7 @@ Wenn Sie von einem AKS-Cluster ausgehenden Datenverkehr einschränken, gibt es f
 
 Stellen Sie sicher, dass Ihre Einstellungen nicht mit den erforderlichen oder optionalen empfohlenen Regeln für ausgehende Ports/das Netzwerk sowie für den FQDN/die Anwendung in Konflikt stehen.
 
-## <a name="im-receiving-429---too-many-requests-errors"></a>Ich erhalte Fehlermeldungen „429 – zu viele Anforderungen“. 
+## <a name="im-receiving-429---too-many-requests-errors"></a>Ich erhalte Fehlermeldungen „429 – zu viele Anforderungen“.
 
 Wenn ein Kubernetes-Cluster in Azure (AKS oder nicht) häufig zentral hoch- oder herunterskaliert wird oder die automatische Clusterskalierung verwendet, können diese Vorgänge zu einer großen Anzahl von HTTP-Aufrufen führen, die wiederum das zugewiesene Abonnement Kontingent überschreiten, was zu einem Fehler führt. Die Fehler sehen aus wie
 
@@ -213,6 +213,12 @@ Die Empfehlung des AKS-Engineering-Teams lautet, dass Sie sicherstellen müssen,
 Angenommen, diese Drosselungsfehler werden auf Abonnementsebene gemessen, dann können sie auch noch weiterhin auftreten, wenn:
 - Drittanbieteranwendungen vorhanden sind, die GET-Anforderungen tätigen (z. B. Überwachung von Anwendungen usw.). Es wird empfohlen, die Häufigkeit dieser Aufrufe zu verringern.
 - Viele AKS-Cluster/Knotenpools in VMSS vorhanden sind. Die übliche Empfehlung besteht darin, weniger als 20–30 Cluster in einem bestimmten Abonnement zu haben.
+
+## <a name="my-clusters-provisioning-status-changed-from-ready-to-failed-with-or-without-me-performing-an-operation-what-should-i-do"></a>Der Bereitstellungsstatus meines Clusters wurde unabhängig davon, ob ich einen Vorgang ausgeführt habe, von „Bereit“ in „Fehlerhaft“ geändert.   Wie sollte ich vorgehen?
+
+Wenn der Bereitstellungsstatus Ihres Clusters unabhängig davon, ob Sie einen Vorgang ausführen, von *Bereit* in *Fehlerhaft* geändert wird, die Anwendungen im Cluster jedoch weiterhin ausgeführt werden, wird dieses Problem möglicherweise automatisch vom Dienst aufgelöst, und Ihre Anwendungen sollten nicht beeinträchtigt werden.
+
+Wenn der Bereitstellungsstatus Ihres Clusters weiterhin *Fehlerhaft* lautet oder wenn die Anwendungen in Ihrem Cluster nicht mehr funktionieren, [erstellen Sie eine Supportanfrage](https://azure.microsoft.com/support/options/#submit).
 
 
 ## <a name="azure-storage-and-aks-troubleshooting"></a>Problembehandlung für Azure Storage und AKS
@@ -379,7 +385,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Einige zusätzliche nützliche *mountOptions*-Einstellungen:
+Einige zusätzliche nützliche *mountOptions* -Einstellungen:
 
 * *mfsymlinks* aktiviert Unterstützung bei der Einbindung symbolischer Links (CIFS) in Azure Files.
 * *nobrl* verhindert das Senden von Anforderungen für Byte-Bereichssperrungen an den Server. Diese Einstellung ist für bestimmte Anwendungen erforderlich, die obligatorische Byte-Bereichssperren im CIFS-Stil verletzen. Die meisten CIFS-Server unterstützen noch keine Anforderung von Byte-Bereichssperrenempfehlungen. Wenn Sie *nobrl* nicht verwenden, verursachen Anwendungen, die obligatorische Byte-Bereichssperren im CIFS-Stil verletzen, möglicherweise ähnliche Fehlermeldungen wie diese:
@@ -415,7 +421,7 @@ Wenn Sie *Zugriff aus ausgewähltem Netzwerk zulassen* für ein Speicherkonto ak
 persistentvolume-controller (combined from similar events): Failed to provision volume with StorageClass "azurefile": failed to create share kubernetes-dynamic-pvc-xxx in account xxx: failed to create file share, err: storage: service returned error: StatusCode=403, ErrorCode=AuthorizationFailure, ErrorMessage=This request is not authorized to perform this operation.
 ```
 
-Dieser Fehler ist darauf zurückzuführen, dass sich der *persistentvolume-controller*von Kubernetes nicht im ausgewählten Netzwerk befindet, wenn*Zugriff aus ausgewähltem Netzwerk zulassen* festgelegt wird.
+Dieser Fehler ist darauf zurückzuführen, dass sich der *persistentvolume-controller *von Kubernetes nicht im ausgewählten Netzwerk befindet, wenn* Zugriff aus ausgewähltem Netzwerk zulassen* festgelegt wird.
 
 Sie können das Problem minimieren, indem Sie [statische Bereitstellung mit Azure Files ](azure-files-volume.md) verwenden.
 
@@ -472,9 +478,6 @@ Dieser Fehler ist auf eine Upstream-Racebedingung der automatischen Clusterskali
 
 In Kubernetes-Versionen **vor 1.15.0** erhalten Sie möglicherweise eine Fehlermeldung wie diese: **Error WaitForAttach Cannot find Lun for disk** (Fehler: WaitForAttach: LUN für Datenträger wurde nicht gefunden.).  Warten Sie zur Umgehung dieses Problems etwa 15 Minuten, und wiederholen Sie dann den Vorgang.
 
-<!-- LINKS - internal -->
-[view-master-logs]: view-master-logs.md
-[cluster-autoscaler]: cluster-autoscaler.md
 
 ### <a name="why-do-upgrades-to-kubernetes-116-fail-when-using-node-labels-with-a-kubernetesio-prefix"></a>Warum tritt bei Upgrades auf Kubernetes 1.16 ein Fehler auf, wenn Knotenbezeichnungen mit dem Präfix „kubernetes.io“verwendet werden?
 
@@ -487,3 +490,9 @@ Daher können Sie zum Vermeiden dieses Problems eine der folgenden Maßnahmen du
 3. Löschen des älteren Knotenpools
 
 Es wird untersucht, ob aktive Bezeichnungen in einem Knotenpool mutiert werden können, um das Problem zu mindern.
+
+
+
+<!-- LINKS - internal -->
+[view-master-logs]: view-master-logs.md
+[cluster-autoscaler]: cluster-autoscaler.md

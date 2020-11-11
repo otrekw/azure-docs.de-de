@@ -5,22 +5,23 @@ services: container-service
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 21bbe15a37e95df297f580064beb63ebd5debe57
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 9becd6341baad54a74f10ae2f38cf9ccf1fd3037
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899895"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347895"
 ---
 # <a name="create-and-configure-an-azure-kubernetes-services-aks-cluster-to-use-virtual-nodes-in-the-azure-portal"></a>Erstellen und Konfigurieren eines AKS-Clusters zur Verwendung von virtuellen Knoten im Azure-Portal
 
-Um Anwendungsworkloads in einem AKS-Cluster (Azure Kubernetes Service) schnell bereitzustellen, können Sie virtuelle Knoten verwenden. Mit virtuellen Knoten lassen sich Pods schnell bereitstellen, und Sie zahlen für die Ausführungsdauer nur auf Sekundenbasis. In einem Skalierungsszenario müssen Sie nicht warten, bis die Autoskalierung des Kubernetes-Clusters VM-Computeknoten bereitstellt, um die zusätzlichen Pods auszuführen. Virtuelle Knoten werden nur mit Linux-Pods und -Knoten unterstützt.
+Dieser Artikel zeigt, wie Sie im Azure-Portal die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
 
-Dieser Artikel zeigt, wie Sie die virtuellen Netzwerkressourcen und einen AKS-Cluster mit aktivierten virtuellen Knoten erstellen und konfigurieren.
+> [!NOTE]
+> In [diesem Artikel](virtual-nodes.md) erhalten Sie eine Übersicht über die regionale Verfügbarkeit und die Einschränkungen bei der Verwendung virtueller Knoten.
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-Die virtuellen Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in Azure Container Instances (ACI) und dem AKS-Cluster ausgeführt werden. Um diese Kommunikation bereitzustellen, wird ein virtuelles Subnetz erstellt, und delegierte Berechtigungen werden zugewiesen. Virtuelle Knoten funktionieren nur in AKS-Clustern, die mit *erweiterten* Netzwerkfunktionen erstellt wurden. Standardmäßig werden AKS-Cluster mit *grundlegenden* Netzwerkfunktionen erstellt. Dieser Artikel zeigt, wie Sie ein virtuelles Netzwerk und virtuelle Subnetze erstellen und dann einen AKS-Cluster bereitstellen, der erweiterte Netzwerkfunktionen verwendet.
+Die virtuellen Knoten ermöglichen die Netzwerkkommunikation zwischen Pods, die in Azure Container Instances (ACI) und dem AKS-Cluster ausgeführt werden. Um diese Kommunikation bereitzustellen, wird ein virtuelles Subnetz erstellt, und delegierte Berechtigungen werden zugewiesen. Virtuelle Knoten funktionieren nur in AKS-Clustern, die mit *erweiterten* Netzwerkfunktionen (Azure CNI) erstellt wurden. Standardmäßig werden AKS-Cluster mit *grundlegenden* Netzwerkfunktionen (kubenet) erstellt. Dieser Artikel zeigt, wie Sie ein virtuelles Netzwerk und virtuelle Subnetze erstellen und dann einen AKS-Cluster bereitstellen, der erweiterte Netzwerkfunktionen verwendet.
 
 Wenn Sie ACI noch nicht genutzt haben, registrieren Sie den Dienstanbieter mit Ihrem Abonnement. Sie können den Status der ACI-Anbieterregistrierung mit dem Befehl [az provider list][az-provider-list] überprüfen, wie im folgenden Beispiel gezeigt:
 
@@ -42,50 +43,22 @@ Wenn der Anbieter als *Nicht registriert* angezeigt wird, registrieren Sie den A
 az provider register --namespace Microsoft.ContainerInstance
 ```
 
-## <a name="regional-availability"></a>Regionale Verfügbarkeit
-
-Für Bereitstellungen von virtuellen Knoten werden die folgenden Regionen unterstützt:
-
-* Australien, Osten (australiaeast)
-* USA, Mitte (centralus)
-* USA, Osten (eastus)
-* USA, Osten 2 (eastus2)
-* Japan, Osten (japaneast)
-* Europa, Norden (northeurope)
-* Asien, Südosten (southeastasia)
-* USA, Westen-Mitte (westcentralus)
-* Europa, Westen (westeurope)
-* USA, Westen (westus)
-* USA, Westen 2 (westus2)
-
-## <a name="known-limitations"></a>Bekannte Einschränkungen
-Die Funktionalität der virtuellen Knoten ist stark abhängig von den ACI-Features. Neben den [Kontingenten und Limits für Azure Container Instances](../container-instances/container-instances-quotas.md) werden die folgenden Szenarien für virtuelle Knoten noch nicht unterstützt:
-
-* Verwenden des Dienstprinzipals zur Übertragung von ACR-Images mithilfe von Pull. Eine [Problemumgehung](https://github.com/virtual-kubelet/azure-aci/blob/master/README.md#private-registry) ist mithilfe von [Kubernetes-Geheimnissen](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/#create-a-secret-by-providing-credentials-on-the-command-line) möglich.
-* [Einschränkungen für virtuelle Netzwerke](../container-instances/container-instances-virtual-network-concepts.md), darunter für VNET-Peering, für Kubernetes-Netzwerkrichtlinien und für ausgehenden Internetdatenverkehr im Zusammenhang mit Netzwerksicherheitsgruppen.
-* Initialisierungscontainer.
-* [Hostaliase](https://kubernetes.io/docs/concepts/services-networking/add-entries-to-pod-etc-hosts-with-host-aliases/).
-* [Argumente](../container-instances/container-instances-exec.md#restrictions) für „exec“ in ACI.
-* [DaemonSets](concepts-clusters-workloads.md#statefulsets-and-daemonsets) stellen keine Pods auf dem virtuellen Knoten bereit.
-* Virtuelle Knoten unterstützen die Planung von Linux-Pods. Sie können den Open-Source-ACI-Anbieter [Virtual Kubelet](https://github.com/virtual-kubelet/azure-aci) manuell installieren, um Windows Server-Container für ACI zu planen.
-* Virtuelle Knoten erfordern AKS-Cluster mit Azure CNI-Netzwerk
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich unter https://portal.azure.com beim Azure-Portal an.
 
 ## <a name="create-an-aks-cluster"></a>Erstellen eines AKS-Clusters
 
-Klicken Sie im Azure-Portal oben links auf **Ressource erstellen** > **Kubernetes Service** .
+Klicken Sie im Azure-Portal oben links auf **Ressource erstellen** > **Kubernetes Service**.
 
 Konfigurieren Sie auf der Seite **Grundlagen** die folgenden Optionen:
 
-- *PROJEKTDETAILS* : Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, z.B. *myResourceGroup* . Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster* .
+- *PROJEKTDETAILS* : Wählen Sie ein Azure-Abonnement und dann eine Azure-Ressourcengruppe aus, bzw. erstellen Sie eine Ressourcengruppe, z.B. *myResourceGroup*. Geben Sie unter **Kubernetes cluster name** (Name des Kubernetes-Clusters) einen Namen ein, etwa *myAKSCluster*.
 - *CLUSTERDETAILS* : Wählen Sie eine Region, eine Kubernetes-Version und ein DNS-Namenspräfix für den AKS-Cluster aus.
 - *PRIMÄRER KNOTENPOOL:* Wählen Sie eine VM-Größe für die AKS-Knoten aus. Die VM-Größe kann **nicht** geändert werden, sobald ein AKS-Cluster bereitgestellt wurde.
      - Wählen Sie die Anzahl von Knoten für die Bereitstellung im Cluster aus. Legen Sie für diesen Artikel **Knotenanzahl** auf *1* fest. Die Knotenanzahl **kann** nach der Clusterbereitstellung angepasst werden.
 
-Klicken Sie auf **Weiter: Skalieren** .
+Klicken Sie auf **Weiter: Skalieren**.
 
 Wählen Sie auf der Seite **Skalieren** unter **Virtuelle Knoten** die Option *Aktiviert* aus.
 
@@ -95,7 +68,7 @@ Standardmäßig wird ein Azure Active Directory-Dienstprinzipal erstellt. Dieser
 
 Der Cluster ist auch für den erweiterten Netzwerkbetrieb konfiguriert. Die virtuellen Knoten sind so konfiguriert, dass sie ihr eigenes virtuelles Azure-Netzwerksubnetz verwenden. Dieses Subnetz verfügt über delegierte Berechtigungen, um Azure-Ressourcen zwischen dem AKS-Cluster zu verbinden. Wenn Sie noch kein Subnetz delegiert haben, erstellt und konfiguriert das Azure-Portal das virtuelle Netzwerk und Subnetz von Azure für die Verwendung mit den virtuellen Knoten.
 
-Klicken Sie auf **Überprüfen + erstellen** . Wählen Sie nach Abschluss der Validierung **Erstellen** aus.
+Klicken Sie auf **Überprüfen + erstellen**. Wählen Sie nach Abschluss der Validierung **Erstellen** aus.
 
 Es dauert einige Minuten, bis der AKS-Clusters erstellt wurde und für die Verwendung bereit ist.
 
@@ -241,5 +214,5 @@ Virtuelle Knoten sind eine Komponente einer Skalierungslösung in AKS. Weitere I
 [aks-hpa]: tutorial-kubernetes-scale.md
 [aks-cluster-autoscaler]: cluster-autoscaler.md
 [aks-basic-ingress]: ingress-basic.md
-[az-provider-list]: /cli/azure/provider#az-provider-list
-[az-provider-register]: /cli/azure/provider?view=azure-cli-latest#az-provider-register
+[az-provider-list]: /cli/azure/provider&preserve-view=true#az-provider-list
+[az-provider-register]: /cli/azure/provider?view=azure-cli-latest&preserve-view=true#az-provider-register

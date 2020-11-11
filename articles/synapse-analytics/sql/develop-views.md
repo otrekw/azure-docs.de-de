@@ -1,6 +1,6 @@
 ---
-title: T-SQL-Sichten mit Synapse SQL
-description: Tipps für das Verwenden von T-SQL-Sichten und das Entwickeln von Lösungen mit Synapse SQL.
+title: T-SQL-Sichten mit SQL-Pools
+description: Dieser Artikel enthält Tipps für das Verwenden von T-SQL-Sichten und das Entwickeln von Lösungen mit einem dedizierten SQL-Pool und einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,15 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: fafa0c2e1b02cc49bfb852ed7770b0927b0e9334
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e416974d1326415e9a459e39d7bdea8e3fd8a84c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90032723"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323812"
 ---
-# <a name="t-sql-views-using-synapse-sql"></a>T-SQL-Sichten mit Synapse SQL
-In diesem Artikel finden Sie Tipps zur Verwendung von T-SQL-Sichten und zur Entwicklung von Lösungen mit Synapse SQL. 
+# <a name="t-sql-views-with-dedicated-sql-pool-and-serverless-sql-pool-preview--in-azure-synapse-analytics"></a>T-SQL-Sichten mit dediziertem SQL-Pool und serverlosem SQL-Pool (Vorschau) in Azure Synapse Analytics
+
+In diese Artikel finden Sie Tipps für das Verwenden von T-SQL-Sichten und das Entwickeln von Lösungen mit einem dedizierten SQL-Pool und einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics.
 
 ## <a name="why-use-views"></a>Gründe für die Verwendung von Sichten
 
@@ -26,12 +27,7 @@ Sichten können auf verschiedene Weisen zur Verbesserung der Qualität Ihrer Lö
 ### <a name="sql-pool---create-view"></a>SQL-Pool: Sicht erstellen
 
 > [!NOTE]
-> **SQL-Pool**: Die Syntax für CREATE VIEW wird in diesem Artikel nicht erörtert. Weitere Informationen finden Sie in der Dokumentation zu [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
-
-### <a name="sql-on-demand-preview---create-view"></a>SQL On-Demand (Vorschauversion): Sicht erstellen
-
-> [!NOTE]
-> **SQL On-Demand**: Die Syntax für CREATE VIEW wird in diesem Artikel nicht erörtert. Weitere Informationen finden Sie in der Dokumentation zu [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
+> Die Syntax für CREATE VIEW wird in diesem Artikel nicht erörtert. Weitere Informationen finden Sie in der Dokumentation zu [CREATE VIEW](/sql/t-sql/statements/create-view-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ## <a name="architectural-abstraction"></a>Architekturabstraktion
 
@@ -54,7 +50,6 @@ FROM   dbo.DimDate_stg AS stg
 
 RENAME OBJECT DimDate TO DimDate_Old;
 RENAME OBJECT DimDate_New TO DimDate;
-
 ```
 
 Beachten Sie, dass dieser Ansatz aber auch dazu führen kann, dass Tabellen in der Sicht eines Benutzers ein- und ausgeblendet und Fehlermeldungen der Art „Tabelle nicht vorhanden“ angezeigt werden. Sichten können verwendet werden, um eine konsistente Darstellungsschicht für Benutzer bereitzustellen, während die zugrunde liegenden Objekte umbenannt werden.

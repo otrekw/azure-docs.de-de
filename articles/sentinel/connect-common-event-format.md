@@ -1,6 +1,6 @@
 ---
 title: Verknüpfen von CEF-Daten mit der Vorschauversion von Azure Sentinel | Microsoft-Dokumentation
-description: Stellen Sie eine Verbindung mit einer externen Lösung her, die CEF-Nachrichten (Common Event Format) unter Verwendung eines Linux-Computers als Proxy an Azure Sentinel sendet.
+description: Stellen Sie eine Verbindung mit einer externen Lösung her, die CEF-Nachrichten (Common Event Format) unter Verwendung eines Linux-Computers für die Protokollweiterleitung an Azure Sentinel sendet.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: dae8ce6cbad1ae08898ae439c1f621bef185b5df
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e8d1704b7f6048c14528b784f22d60b01592b54f
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747901"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347606"
 ---
 # <a name="connect-your-external-solution-using-common-event-format"></a>Verbinden der externen Lösung mithilfe von Common Event Format
 
@@ -50,40 +50,49 @@ Wenn Sie die TLS-Kommunikation zwischen der Syslog-Lösung und Syslog Forwarder 
  
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Stellen Sie sicher, dass auf dem Linux-Computer, den Sie als Proxy verwenden, eines der folgenden Betriebssysteme ausgeführt wird:
+Vergewissern Sie sich, dass auf dem Linux-Computer, den Sie für die Protokollweiterleitung verwenden, eines der folgenden Betriebssysteme ausgeführt wird:
 
 - 64 Bit
-  - CentOS 7 und Unterversionen sowie höhere Versionen (Version 6 ausgenommen)
+  - CentOS 7 und 8, einschließlich Unterversionen (ausgenommen Version 6)
   - Amazon Linux 2017.09
   - Oracle Linux 7
-  - RHEL-Server 7 (Red Hat Enterprise Linux) und Unterversionen sowie höhere Versionen (Version 6 ausgenommen)
+  - RHEL Server 7 und 8 (Red Hat Enterprise Linux), einschließlich Unterversionen (ausgenommen Version 6)
   - Debian GNU/Linux 8 und 9
   - Ubuntu Linux 14.04 LTS, 16.04 LTS und 18.04 LTS
-  - SUSE Linux Enterprise Server 12
+  - SUSE Linux Enterprise Server 12, 15
+
 - 32 Bit
-   - CentOS 7:
-   - Oracle Linux 7
-   - Red Hat Enterprise Linux Server 7
-   - Debian GNU/Linux 8 und 9
-   - Ubuntu Linux 14.04 LTS und 16.04 LTS
+  - CentOS 7 und 8, einschließlich Unterversionen (ausgenommen Version 6)
+  - Oracle Linux 7
+  - RHEL Server 7 und 8 (Red Hat Enterprise Linux), einschließlich Unterversionen (ausgenommen Version 6)
+  - Debian GNU/Linux 8 und 9
+  - Ubuntu Linux 14.04 LTS und 16.04 LTS
  
- - Daemonversionen
-   - Syslog-ng: 2.1 bis 3.22.1
-   - Rsyslog: v8
+- Daemonversionen
+  - Syslog-ng: 2.1 bis 3.22.1
+  - Rsyslog: v8
   
- - Unterstützte Syslog-RFCs
-   - Syslog RFC 3164
-   - Syslog RFC 5424
+- Unterstützte Syslog-RFCs
+  - Syslog RFC 3164
+  - Syslog RFC 5424
  
 Stellen Sie sicher, dass Ihr Computer auch die folgenden Anforderungen erfüllt: 
+
 - Berechtigungen
-    - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 
+  - Sie müssen über erhöhte Berechtigungen (sudo) auf dem Computer verfügen. 
+
 - Softwareanforderungen
-    - Stellen Sie sicher, dass Python 2.7 auf dem Computer ausgeführt wird.
+  - Stellen Sie sicher, dass Python 2.7 auf dem Computer ausgeführt wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel haben Sie gelernt, wie Sie CEF-Appliances mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Dokument haben Sie erfahren, wie Azure Sentinel CEF-Protokolle von Sicherheitslösungen und -appliances sammelt. Informationen zum Herstellen einer Verbindung zwischen Ihrer Lösung und Azure Sentinel finden Sie in den folgenden Artikeln:
+
+- SCHRITT 1: [Herstellen einer Verbindung mit CEF durch Bereitstellen einer Syslog-/CEF-Weiterleitung](connect-cef-agent.md)
+- SCHRITT 2: [Ausführen lösungsspezifischer Schritte](connect-cef-solution-config.md)
+- SCHRITT 3: [Überprüfen der Konnektivität](connect-cef-verify.md)
+
+Weitere Informationen zu Aktivitäten, die Sie mit den in Azure Sentinel gesammelten Daten ausführen können, finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
 - Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
 

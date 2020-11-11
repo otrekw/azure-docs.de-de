@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
-ms.openlocfilehash: 9ddee5991efd5bde3bd139257ad154f02f5d0371
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 41a97c639d9148f2bff3e4f530363ea05a65a7b8
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071301"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095950"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Automatisches Skalieren einer Azure API Management-Instanz  
 
@@ -52,7 +52,7 @@ Vor dem Konfigurieren des Verhaltens der automatischen Skalierung müssen bestim
 
 Führen Sie zum Konfigurieren der automatischen Skalierung für einen Azure API Management-Dienst die folgenden Schritte aus:
 
-1. Navigieren Sie im Azure-Portal zu der **Monitor**-Instanz.
+1. Navigieren Sie im Azure-Portal zu der **Monitor** -Instanz.
 
     ![Azure Monitor](media/api-management-howto-autoscale/01.png)
 
@@ -125,7 +125,7 @@ Führen Sie zum Konfigurieren der automatischen Skalierung für einen Azure API 
     > [!NOTE]
     > In Azure API Management ist die Anzahl der Einheiten, um die eine Instanz aufskaliert werden kann, beschränkt. Das Limit hängt von der jeweiligen Dienstebene ab.
 
-    ![Azure Monitor, Regel zum Abskalieren](media/api-management-howto-autoscale/07.png)
+    ![Screenshot mit Hervorhebung, wo Sie die maximale Anzahl von Azure API Management-Einheiten festlegen](media/api-management-howto-autoscale/07.png)
 
 13. Klicken Sie auf **Speichern**. Die automatische Skalierung wurde damit konfiguriert.
 

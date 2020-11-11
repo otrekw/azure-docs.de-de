@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: d4934d784e871988b5bc30f7b7cf8c09651576e2
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330364"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323754"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -61,7 +61,7 @@ if spec is None:
 > Das Modul vom Typ „Excute Python Script“ unterstützt nicht die Installation von Paketen, die von zusätzlichen nativen Bibliotheken mit Befehlen wie „apt-get“ abhängen, z. B. Java, PyODBC usw. Dies liegt daran, dass dieses Modul in einer einfachen Umgebung ausgeführt wird, in der Python nur vorinstalliert ist und keine Administratorrechte besitzt.  
 
 ## <a name="upload-files"></a>Hochladen von Dateien
-„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true#upload-file-name--path-or-stream-).
+„Execute Python Script“ (Python-Skript ausführen) unterstützt das Hochladen von Dateien mit dem [Python-SDK für Azure Machine Learning](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py#upload-file-name--path-or-stream-).
 
 Das folgende Beispiel zeigt, wie eine Bilddatei im Modul „Execute Python Script“ (Python-Skript ausführen) hochgeladen wird:
 
@@ -110,11 +110,11 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
 
 1. Fügen Sie Ihrer Pipeline das Modul **Python-Skript ausführen** hinzu.
 
-2. Fügen Sie in **Dataset1** alle Datasets aus dem Designer hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1** .
+2. Fügen Sie in **Dataset1** alle Datasets aus dem Designer hinzu, die Sie als Eingabe verwenden möchten. Verweisen Sie auf dieses Dataset in Ihrem Python-Skript als **DataFrame1**.
 
     Die Verwendung eines Datasets ist optional. Verwenden Sie ein Dataset, wenn Sie Daten mit Python generieren oder Python-Code zum direkten Importieren der Daten in das Modul verwenden möchten.
 
-    Dieses Modul unterstützt das Hinzufügen eines zweiten Datasets in **Dataset2** . Verweisen Sie auf das zweite Dataset in Ihrem Python-Skript als **DataFrame2** .
+    Dieses Modul unterstützt das Hinzufügen eines zweiten Datasets in **Dataset2**. Verweisen Sie auf das zweite Dataset in Ihrem Python-Skript als **DataFrame2**.
 
     In Azure Machine Learning gespeicherte Datasets werden automatisch in Pandas-Datenrahmen konvertiert, wenn sie mit diesem Modul geladen werden.
 
@@ -129,7 +129,10 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
     1. Verbinden Sie das Dataset mit dem **Script Bundle** -Port des **Execute R Script** -Moduls.
     
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten.
-    
+ 
+    > [!WARNING]
+    > Verwenden Sie **nicht** **app** als Namen des Ordners oder Ihres Skripts, da **app** ein reserviertes Wort für integrierte Dienste ist. Sie können jedoch andere Namespaces wie `app123` verwenden.
+   
     Im Folgenden finden Sie ein Beispiel für ein Skriptbundle, das eine Python-Skriptdatei und eine TXT-Datei enthält:
       
     > [!div class="mx-imgBorder"]
@@ -312,4 +315,4 @@ Dies sind die vorinstallierten Pakete:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an. 
+Sehen Sie sich den [Satz der verfügbaren Module](module-reference.md) für Azure Machine Learning an.

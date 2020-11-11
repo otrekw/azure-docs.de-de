@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: e4b85c609c53c46cfab71f37b8427eb1cee29f1a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518006"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92927718"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -227,6 +227,9 @@ Ja. Sie können ein [virtuelles Netzwerkgerät für eine Firewall](https://azure
 
 ### <a name="is-there-information-available-about-securing-vnets"></a>Sind Informationen zum Schützen von VNets verfügbar?
 Ja. Ausführliche Informationen finden Sie im Artikel [Die Netzwerksicherheit in Azure im Überblick](../security/fundamentals/network-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+
+### <a name="do-virtual-networks-store-customer-data"></a>Werden in virtuellen Netzwerken Kundendaten gespeichert?
+Nein. In virtuellen Netzwerken werden keine Kundendaten gespeichert. 
 
 ## <a name="apis-schemas-and-tools"></a>APIs, Schemas und Tools
 

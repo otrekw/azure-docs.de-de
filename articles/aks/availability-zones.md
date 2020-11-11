@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 7d91491a2f521d974f15878791739a70a31c1bbe
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745817"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93043023"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
@@ -52,7 +52,7 @@ Die folgenden Einschränkungen gelten, wenn Sie einen AKS-Cluster mit Verfügbar
 
 Volumes, die von Azure verwaltete Datenträger verwenden, sind derzeit keine zonenredundanten Ressourcen. Volumes können nicht Zonen übergreifend angefügt werden und müssen in derselben Zone wie ein bestimmter Knoten zusammengestellt werden, der den Zielpod hostet.
 
-Wenn Sie zustandsbehaftete Workloads ausführen müssen, verwenden Sie Knotenpooltaints und -toleranzen in Podspezifikationen, um die Podplanung in der gleichen Zone wie Ihre Datenträger zu gruppieren. Alternativ können Sie auch netzwerkbasierten Speicher wie Azure Files verwenden, der sich an Pods anhängen kann, da sie zwischen den Zonen geplant sind.
+Kubernetes kennt Azure-Verfügbarkeitszonen seit Version 1.12. Wenn Sie ein PersistentVolumeClaim-Objekt bereitstellen, das auf einen verwalteten Azure-Datenträger in einem AKS-Cluster mit mehreren Zonen verweist, [kümmert sich Kubernetes um die Planung](https://kubernetes.io/docs/setup/best-practices/multiple-zones/#storage-access-for-zones) aller Pods, die diesen PVC in der richtigen Verfügbarkeitszone beanspruchen.
 
 ## <a name="overview-of-availability-zones-for-aks-clusters"></a>Übersicht über Verfügbarkeitszonen für AKS-Cluster
 
@@ -120,7 +120,20 @@ Name:       aks-nodepool1-28993262-vmss000002
 
 Wenn Sie einem Agentpool zusätzliche Knoten hinzufügen, verteilt die Azure-Plattform die zugrunde liegenden VMs automatisch auf die angegebenen Verfügbarkeitszonen.
 
-Beachten Sie, dass in neueren Kubernetes-Versionen (ab 1.17.0) in AKS `topology.kubernetes.io/zone`zusätzlich zur veralteten Bezeichnung`failure-domain.beta.kubernetes.io/zone` die neuere Bezeichnung verwendet wird.
+Beachten Sie, dass in neueren Kubernetes-Versionen (ab 1.17.0) in AKS `topology.kubernetes.io/zone`zusätzlich zur veralteten Bezeichnung`failure-domain.beta.kubernetes.io/zone` die neuere Bezeichnung verwendet wird. Sie können dasselbe Ergebnis wie oben auch durch Ausführen des folgenden Skripts erreichen:
+
+```console
+kubectl get nodes -o custom-columns=NAME:'{.metadata.name}',REGION:'{.metadata.labels.topology\.kubernetes\.io/region}',ZONE:'{metadata.labels.topology\.kubernetes\.io/zone}'
+```
+
+Dabei erhalten Sie eine kompaktere Ausgabe:
+
+```console
+NAME                                REGION   ZONE
+aks-nodepool1-34917322-vmss000000   eastus   eastus-1
+aks-nodepool1-34917322-vmss000001   eastus   eastus-2
+aks-nodepool1-34917322-vmss000002   eastus   eastus-3
+```
 
 ## <a name="verify-pod-distribution-across-zones"></a>Überprüfen der Verteilung der Pods auf die Zonen
 

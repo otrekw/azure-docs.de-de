@@ -1,7 +1,7 @@
 ---
 title: Überwachen und Verwalten der Richtlinienkonformität
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit Azure Policy integrierte Richtlinien für Azure Machine Learning verwenden.
+description: Erfahren Sie, wie Sie mithilfe von Azure Policy integrierte Richtlinien für Azure Machine Learning erstellen können, um sicherzustellen, dass Ihre Arbeitsbereiche Ihren Anforderungen entsprechen.
 author: jhirono
 ms.author: jhirono
 ms.date: 09/15/2020
@@ -10,25 +10,25 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: d371ea077b479ad2256e782dadd5d037f53004f2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900137"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93325503"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Überwachen und Verwalten von Azure Machine Learning mit Azure Policy
 
-[Azure Policy](/azure/governance/policy) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
+[Azure Policy](../governance/policy/index.yml) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
 * **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
 * **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
-Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](/azure/governance/policy/overview).
+Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
 
 ## <a name="built-in-policies"></a>Integrierte Richtlinien
 
-Azure Machine Learning stellt eine Reihe von Richtlinien bereit, die Sie für gängige Szenarien mit Azure Machine Learning verwenden können. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine vollständige Liste der integrierten Richtlinien für Azure Machine Learning finden Sie unter [Integrierte Richtlinien für Azure Machine Learning](/azure/governance/policy/samples/built-in-policies#machine-learning).
+Azure Machine Learning stellt eine Reihe von Richtlinien bereit, die Sie für gängige Szenarien mit Azure Machine Learning verwenden können. Sie können diese Richtliniendefinitionen Ihrem vorhandenen Abonnement zuweisen oder sie als Grundlage verwenden, um eigene benutzerdefinierte Definitionen zu erstellen. Eine vollständige Liste der integrierten Richtlinien für Azure Machine Learning finden Sie unter [Integrierte Richtlinien für Azure Machine Learning](../governance/policy/samples/built-in-policies.md#machine-learning).
 
 Um die integrierten Richtliniendefinitionen im Zusammenhang mit Azure Machine Learning anzuzeigen, führen Sie die folgenden Schritte aus:
 
@@ -36,9 +36,9 @@ Um die integrierten Richtliniendefinitionen im Zusammenhang mit Azure Machine Le
 1. Wählen Sie __Definitionen__ aus.
 1. Wählen Sie als __Typ__ die Option _Integriert_ und als __Kategorie__ die Option __Machine Learning__ aus.
 
-Von hier aus können Sie Richtliniendefinitionen auswählen, um sie anzuzeigen. Beim Anzeigen einer Definition können Sie den Link __Zuweisen__ verwenden, um die Richtlinie einem bestimmten Bereich zuzuweisen und die Parameter für die Richtlinie zu konfigurieren. Weitere Informationen finden Sie unter [Zuweisen einer Richtlinie: Portal](/azure/governance/policy/assign-policy-portal).
+Von hier aus können Sie Richtliniendefinitionen auswählen, um sie anzuzeigen. Beim Anzeigen einer Definition können Sie den Link __Zuweisen__ verwenden, um die Richtlinie einem bestimmten Bereich zuzuweisen und die Parameter für die Richtlinie zu konfigurieren. Weitere Informationen finden Sie unter [Zuweisen einer Richtlinie: Portal](../governance/policy/assign-policy-portal.md).
 
-Sie können Richtlinien auch mit [Azure PowerShell](/azure/governance/policy/assign-policy-powershell), der [Azure CLI](https://docs.microsoft.com/azure/governance/policy/assign-policy-azurecli) und [Vorlagen](/azure/governance/policy/assign-policy-template) zuweisen.
+Sie können Richtlinien auch mit [Azure PowerShell](../governance/policy/assign-policy-powershell.md), der [Azure CLI](../governance/policy/assign-policy-azurecli.md) und [Vorlagen](../governance/policy/assign-policy-template.md) zuweisen.
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Arbeitsbereichverschlüsselung mit kundenseitig verwaltetem Schlüssel
 
@@ -56,6 +56,6 @@ Um diese Richtlinie zu konfigurieren, legen Sie den Effektparameter auf __audit_
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Dokumentation zu Azure Policy](/azure/governance/policy/overview)
+* [Dokumentation zu Azure Policy](../governance/policy/overview.md)
 * [Integrierte Richtlinien für Azure Machine Learning](policy-reference.md)
-* [Arbeiten mit Sicherheitsrichtlinien mit Azure Security Center](/azure/security-center/tutorial-security-policy)
+* [Arbeiten mit Sicherheitsrichtlinien mit Azure Security Center](../security-center/tutorial-security-policy.md)

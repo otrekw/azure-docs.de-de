@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: aebe1d995f3cb6da4663876b8d39d36a1a8b16c9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a21d2f0debb2ade8e46b0cdb5b3fa5b51f0a180c
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90030166"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323865"
 ---
 # <a name="user-defined-schemas-within-synapse-sql"></a>Benutzerdefinierte Schemas in Synapse SQL
 
@@ -27,7 +27,7 @@ Herkömmliche Analysearchitektur verwendet häufig separate Datenbanken, um Anwe
 Stattdessen führt Synapse SQL die gesamte Workload für die Analyse innerhalb einer Datenbank aus. Datenbankübergreifende Verknüpfungen sind nicht zulässig. Synapse SQL erwartet, dass alle vom Warehouse verwendeten Tabellen innerhalb der einen Datenbank gespeichert werden.
 
 > [!NOTE]
-> In SQL-Pools werden keine datenbankübergreifenden Abfragen unterstützt. Analyseimplementierungen, die dieses Muster nutzen, müssen daher überarbeitet werden. SQL On-Demand (Vorschauversion) unterstützt datenbankübergreifende Abfragen.
+> In dedizierten SQL-Pools werden keine datenbankübergreifenden Abfragen unterstützt. Analyseimplementierungen, die dieses Muster nutzen, müssen daher überarbeitet werden. Serverlose SQL-Pools (Vorschau) unterstützen datenbankübergreifende Abfragen.
 
 ## <a name="user-defined-schema-recommendations"></a>Empfehlungen für benutzerdefinierte Schemas
 

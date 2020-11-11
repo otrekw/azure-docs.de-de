@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 06/08/2020
-ms.openlocfilehash: ffda2b1d096b3c84e3f1df10e37c44922bab16ef
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 10/30/2020
+ms.openlocfilehash: dcf3db33818448116da53d8a01d0c62aca7bc1af
+ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632412"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93280165"
 ---
 # <a name="load-data-into-azure-synapse-analytics-by-using-azure-data-factory"></a>Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory
 
@@ -42,7 +42,7 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
 
 * Azure-Abonnement: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 * Azure Synapse Analytics: Dieses Data Warehouse enthält die Daten, die aus der SQL-Datenbank kopiert werden. Wenn Sie keine Azure Synapse Analytics-Instanz besitzen, finden Sie unter [Erstellen einer Azure Synapse Analytics-Instanz](../synapse-analytics/sql-data-warehouse/load-data-from-azure-blob-storage-using-copy.md) die entsprechenden Anweisungen.
-* Azure SQL-Datenbank: In diesem Tutorial werden Daten aus einem Beispieldataset von Adventure Works LT nach Azure SQL-Datenbank kopiert. Sie können diese Beispieldatenbank in SQL-Datenbank erstellen, indem Sie den Anweisungen unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](../azure-sql/database/single-database-create-quickstart.md) folgen.
+* Azure SQL-Datenbank: In diesem Tutorial werden Daten aus einem Beispieldataset von Adventure Works LT nach Azure SQL-Datenbank kopiert. Sie können diese Beispieldatenbank in SQL-Datenbank erstellen, indem Sie den Anweisungen unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](../azure-sql/database/single-database-create-quickstart.md) folgen.
 * Azure-Speicherkonto: Azure Storage wird im Massenkopiervorgang als _Staging_ blob verwendet. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie Anweisungen dazu unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
 
 ## <a name="create-a-data-factory"></a>Erstellen einer Data Factory
@@ -113,9 +113,6 @@ In diesem Artikel erfahren Sie, wie Sie das Tool zum Kopieren von Daten in Data 
     d. Wählen Sie den neu erstellten verknüpften Dienst als Senke aus, und klicken Sie auf **Weiter**.
 
 7. Überprüfen Sie den Inhalt der Seite **Tabellenmapping** , und klicken Sie dann auf **Weiter**. Eine intelligente Tabellenzuordnung wird angezeigt. Die Quelltabellen werden den Zieltabellen auf Grundlage der Tabellennamen zugeordnet. Wenn eine Quelltabelle im Ziel nicht vorhanden ist, wird von Azure Data Factory standardmäßig eine Zieltabelle mit dem gleichen Namen erstellt. Sie können eine Quelltabelle auch einer vorhandenen Zieltabelle zuordnen.
-
-   > [!NOTE]
-   > Das automatische Erstellen der Tabelle für die Azure Synapse Analytics-Senke tritt auf, wenn SQL Server oder Azure SQL-Datenbank als Quelle verwendet werden. Wenn Sie Daten aus einem anderen Quelldatenspeicher kopieren, müssen Sie das Schema vorab in der Azure Synapse Analytics-Senke erstellen, bevor Sie den Datenkopiervorgang ausführen.
 
    ![Seite „Tabellenmapping“](./media/load-azure-sql-data-warehouse/table-mapping.png)
 

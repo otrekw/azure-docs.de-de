@@ -7,14 +7,14 @@ author: NatiNimni
 ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/26/2020
+ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: fdc0ae3fef2fb70b7372ab4fb28497ea6a6400a4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: dfea03270dfea3699f7c3508b9f5275a2dd26372
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635451"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287156"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
@@ -43,13 +43,11 @@ Wenn Sie eine andere Region oder einen Dienst verwenden, der vor dem 1. August 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Beispiel werden die folgenden Tools und Dienste verwendet. 
+In diesem Szenario werden die folgenden Tools und Dienste verwendet.
 
-+ [Erstellen Sie einen Cognitive Search-Dienst](search-create-service-portal.md), oder [suchen Sie einen vorhandenen Dienst](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices). 
-
-+ [Erstellen Sie eine Azure Key Vault-Ressource](../key-vault/secrets/quick-create-portal.md#create-a-vault), oder suchen Sie eine vorhandene Ressource. Sowohl Key Vault als auch Cognitive Search müssen sich im selben Abonnement befinden. **Vorläufiges Löschen** und **Löschschutz** müssen für den Schlüsseltresor aktiviert sein.
-
-+ Sie benötigen [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md), um eine Anwendung zu registrieren und eine Geheimniszeichenfolge zu erstellen, die von Ihrer Anwendung für die Authentifizierung verwendet wird. Falls Sie nicht über eine solche Instanz verfügen, [richten Sie einen neuen Mandanten ein](../active-directory/develop/quickstart-create-new-tenant.md).
++ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tiers) (mindestens Basic in einer beliebigen Region)
++ [Azure Key Vault](../key-vault/secrets/quick-create-portal.md#create-a-vault) im selben Abonnement wie Azure Cognitive Search **Vorläufiges Löschen** und **Löschschutz** müssen für den Schlüsseltresor aktiviert sein.
++ [Azure Active Directory:](../active-directory/fundamentals/active-directory-whatis.md) Falls Sie nicht über eine solche Instanz verfügen, [richten Sie einen neuen Mandanten ein](../active-directory/develop/quickstart-create-new-tenant.md).
 
 Sie sollten über eine Suchanwendung verfügen, mit der das verschlüsselte Objekt erstellt werden kann. In diesem Code verweisen Sie auf einen Key Vault-Schlüssel und Active Directory-Registrierungsinformationen. Bei diesem Code kann es sich um eine funktionierende App oder einen Prototypcode wie das [C#-Codebeispiel „DotNetHowToEncryptionUsingCMK“](https://github.com/Azure-Samples/search-dotnet-getting-started/tree/master/DotNetHowToEncryptionUsingCMK) handeln.
 

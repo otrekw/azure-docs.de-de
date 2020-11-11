@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 25eaca08202bd01ad4777fdb73eb75abff458c29
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: f065b1bc98eab86542ecff73e1471e4d90cd4182
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677909"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93339532"
 ---
 # <a name="vm-certification-troubleshooting"></a>Behandeln von Problemen bei der VM-Zertifizierung
 
@@ -81,6 +81,45 @@ Bereitstellungsprobleme können auf folgende Fehler zurückzuführen sein:
 > Weitere Informationen zur VM-Generalisierung finden Sie in den folgenden Ressourcen:
 > - [Generalisieren des Images](azure-vm-create-using-approved-base.md#generalize-the-image)
 > - [Generalisieren der Windows-VM mithilfe von Sysprep](../virtual-machines/windows/capture-image-resource.md#generalize-the-windows-vm-using-sysprep)
+
+
+## <a name="vhd-specifications"></a>VHD-Spezifikationen
+
+### <a name="conectix-cookie-and-other-vhd-specifications"></a>Conectix-Cookie und andere VHD-Spezifikationen
+Die conectix-Zeichenfolge ist Teil der VHD-Spezifikation und wird in der unten angegebenen VHD-Fußzeile als 8-Byte-Cookie definiert, das den Ersteller der Datei identifiziert. Alle von Microsoft erstellten VHD-Dateien verfügen über dieses Cookie. 
+
+Ein im VHD-Format formatiertes Blob sollte eine 512-Byte-Fußzeile aufweisen. Hier das Format der VHD-Fußzeile:
+
+|Felder in Festplatten-Fußzeilen|Größe (Byte)|
+|---|---|
+Cookie|8
+Features|4
+Dateiformatversion|4
+Datenoffset|8
+Zeitstempel|4
+Anwendung des Erstellers|4
+Version des Erstellers|4
+Hostbetriebssystem des Erstellers|4
+Ursprüngliche Größe|8
+Aktuelle Größe|8
+Datenträgergeometrie|4
+Datenträgertyp|4
+Checksum|4
+Eindeutige ID|16
+Gespeicherter Zustand|1
+Reserviert|427
+
+
+### <a name="vhd-specifications"></a>VHD-Spezifikationen
+Um eine reibungslose Veröffentlichung zu gewährleisten, stellen Sie sicher, dass die **VHD die folgenden Kriterien erfüllt** :
+* Das Cookie muss die Zeichenfolge „conectix“ enthalten.
+* Der Datenträgertyp muss „Fixed“ lauten.
+* Die virtuelle Größe der VHD beträgt mindestens 20 MB.
+* Die VHD ist ausgerichtet. (Das heißt, dass die virtuelle Größe ein Vielfaches von 1 MB sein muss.)
+* VHD-Bloblänge = virtuelle Größe + VHD-Fußzeilenlänge (512)
+
+Sie können die VHD-Spezifikation hier [herunterladen](https://www.microsoft.com/download/details.aspx?id=23850).
+
 
 ## <a name="software-compliance-for-windows"></a>Softwarekompatibilität für Windows
 

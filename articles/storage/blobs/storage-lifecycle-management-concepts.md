@@ -1,24 +1,24 @@
 ---
-title: Verwalten des Azure Storage-Lebenszyklus
-description: Erfahren Sie, wie Sie Regeln für Lebenszyklusrichtlinien erstellen, um alternde Daten von heißen zu kalten und zu Archivebenen zu übertragen.
+title: Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
+description: Erstellen Sie automatisierte Regeln zum Verschieben von Daten zwischen den Ebenen „heiß“, „kalt“ und „Archiv“.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/15/2020
+ms.date: 10/29/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
 ms.custom: devx-track-azurepowershell, references_regions
-ms.openlocfilehash: ee04ad28d6b52e63becd2991d77b453cd411f683
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: a4a338a4d13715ba1ff7cb30c011757d5050ba05
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92309794"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93100068"
 ---
-# <a name="manage-the-azure-blob-storage-lifecycle"></a>Verwalten des Azure Blob Storage-Lebenszyklus
+# <a name="optimize-costs-by-automating-azure-blob-storage-access-tiers"></a>Optimieren der Kosten durch Automatisieren der Azure Blob Storage-Zugriffsebenen
 
-Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer häufig auf einige Daten zu. Aber der Zugriffsbedarf sinkt mit zunehmendem Alter der Daten drastisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung bietet eine umfassende, regelbasierte Richtlinie für GPv2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen.
+Datasets haben eindeutige Lebenszyklen. Früh im Lebenszyklus greifen Benutzer häufig auf einige Daten zu. Aber der Zugriffsbedarf sinkt mit zunehmendem Alter der Daten drastisch. Außerdem gibt es Daten, die in der Cloud lediglich vorgehalten werden und auf die nach der Speicherung nur selten zugegriffen wird. Einige Daten laufen Tage oder Monate nach der Erstellung ab, während andere Daten im Verlauf ihres gesamten Lebens aktiv gelesen und geändert werden. Die Azure Blob Storage-Lebenszyklusverwaltung verfügt über eine umfassende, regelbasierte Richtlinie für GPv2- und Blob Storage-Konten. Verwenden Sie die Richtlinie, um Ihre Daten in die entsprechenden Zugriffsebenen zu übertragen oder am Ende des Lebenszyklus der Daten ablaufen zu lassen.
 
 Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Aufgaben ausführen:
 
@@ -31,12 +31,13 @@ Mit der Richtlinie für die Lebenszyklusverwaltung können Sie die folgenden Auf
 Stellen Sie sich ein Szenario vor, bei dem in den frühen Phasen des Lebenszyklus häufig auf Daten zugegriffen wird, nach zwei Wochen aber nur noch gelegentlich. Nach dem ersten Monat wird auf das Dataset nur noch selten zugegriffen. In diesem Szenario empfiehlt sich in den frühen Phasen heißer Speicher. Die kalte Speicherebene eignet sich am besten für den gelegentlichen Zugriff. Die Archivspeicherebene ist die beste Option, wenn die Daten mehr als einen Monat alt sind. Durch Anpassen der Speicherebenen im Hinblick auf das Alter der Daten können Sie die kostengünstigsten Speicheroptionen für Ihre Anforderungen entwerfen. Für diesen Übergang stehen Richtlinienregeln für die Lebenszyklusverwaltung zur Verfügung, um alternde Daten in kühlere Ebenen zu verschieben.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+
 >[!NOTE]
 >Wenn Daten lesbar bleiben müssen, z. B. wenn sie von StorSimple verwendet werden, legen Sie keine Richtlinie fest, um Blobs in die Archivebene zu verschieben.
 
 ## <a name="availability-and-pricing"></a>Verfügbarkeit und Preismodell
 
-Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob-Speicherkonten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
+Das Feature zur Lebenszyklusverwaltung ist in allen Azure-Regionen für GPv2-Konten (Universell v2), Blob Storage-Konten, Premium-Blockblob-Speicherkonten und Azure Data Lake Storage Gen2-Konten verfügbar. Für ein vorhandenes GPv1-Konto (Universell V1) kann in einem einfachen Prozess im Azure-Portal ein Upgrade auf ein GPv2-Konto erfolgen. Weitere Informationen zu Speicherkonten finden Sie unter [Azure-Speicherkonto – Übersicht](../common/storage-account-overview.md).
 
 Die Funktion zur Lebenszyklusverwaltung ist kostenlos. Kunden werden die regulären Betriebskosten für die [Set Blob Tier](https://docs.microsoft.com/rest/api/storageservices/set-blob-tier)-API-Aufrufe in Rechnung gestellt. Löschvorgänge sind kostenlos. Weitere Informationen zu den Preisen finden Sie unter [Preise für Blockblobs](https://azure.microsoft.com/pricing/details/storage/blobs/).
 
@@ -79,7 +80,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Wählen Sie **Basisblobs** aus, um die Bedingungen für Ihre Regel festzulegen. Im nachstehenden Beispiel werden Blobs in den kalten Speicher verschoben, wenn sie während 30 Tagen nicht geändert wurden.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-base-blobs.png" alt-text="Seite mit Basisblobs in der Lebenszyklusverwaltung im Azure-Portal":::
 
    Die Option **Letzter Zugriff** ist in der Vorschau in den folgenden Regionen verfügbar:
 
@@ -94,7 +95,7 @@ Es gibt zwei Möglichkeiten zum Hinzufügen einer Richtlinie über das Azure-Por
 
 1. Wenn Sie auf der Seite **Details** die Option **Limit blobs with filters** (Blobs mit Filtern einschränken) ausgewählt haben, wählen Sie **Filtersatz** aus, um einen optionalen Filter hinzuzufügen. Im folgenden Beispiel werden im Container *mylifecyclecontainer* Blobs gefiltert, die mit „log“ beginnen.
 
-   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Seite mit Details zum Hinzufügen einer Regel in der Lebenszyklusverwaltung im Azure-Portal":::
+   :::image type="content" source="media/storage-lifecycle-management-concepts/lifecycle-management-filter-set.png" alt-text="Seite mit dem Filtersatz für Lebenszyklusverwaltung im Azure-Portal":::
 
 1. Wählen Sie **Hinzufügen** aus, um die neue Richtlinie hinzuzufügen.
 
@@ -539,7 +540,7 @@ Einige Daten sollten nur ablaufen, wenn sie explizit zur Löschung gekennzeichne
 
 ### <a name="manage-versions"></a>Verwalten von Versionen
 
-Für Daten, die während ihrer gesamten Lebensdauer regelmäßig geändert werden und auf die regelmäßig zugegriffen wird, können Sie die Blobspeicher-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu pflegen. Sie können eine Richtlinie erstellen, um frühere Versionen Ebenen zuzuordnen oder zu löschen. Das Alter der Version wird durch Auswertung der Erstellungszeit der Version bestimmt. Entsprechend dieser Richtlinienregel werden frühere Versionen innerhalb des Containers `activedata`, die 90 Tage oder älter sind (nach der Versionserstellung), der Ebene „kalt“ zugeordnet und frühere Versionen, die 365 Tage oder älter sind, gelöscht.
+Für Daten, die während ihrer gesamten Lebensdauer regelmäßig geändert werden und auf die regelmäßig zugegriffen wird, können Sie die Blob Storage-Versionsverwaltung aktivieren, um frühere Versionen eines Objekts automatisch zu verwalten. Sie können eine Richtlinie erstellen, um frühere Versionen Ebenen zuzuordnen oder zu löschen. Das Alter der Version wird durch Auswertung der Erstellungszeit der Version bestimmt. Entsprechend dieser Richtlinienregel werden frühere Versionen innerhalb des Containers `activedata`, die 90 Tage oder älter sind (nach der Versionserstellung), der Ebene „kalt“ zugeordnet und frühere Versionen, die 365 Tage oder älter sind, gelöscht.
 
 ```json
 {

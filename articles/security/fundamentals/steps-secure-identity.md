@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 18e04350260258b74d746a2796a56d7d3ba46346
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 43974258008e3813a368ab31891251db15060aff
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364115"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93127058"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -145,7 +145,7 @@ Azure Active Directory verfügt über eine Vielzahl von Funktionen, die Angriffe
 
 Das Benutzerrisiko bezeichnet die Wahrscheinlichkeit, dass die Identität eines Benutzers gefährdet ist, und wird anhand der [Benutzerrisikoerkennungen](../../active-directory/identity-protection/overview.md) berechnet, die der Identität eines Benutzers zugeordnet sind. Bei einer Benutzerrisikorichtlinie handelt es sich um eine Richtlinie für bedingten Zugriff, die die Risikostufe eines bestimmten Benutzers oder einer bestimmten Gruppe auswertet. Basierend auf den Risikostufen „Niedrig“, „Mittel“ oder „Hoch“ kann eine Richtlinie so konfiguriert werden, dass sie den Zugriff blockiert oder eine sichere Kennwortänderung über die mehrstufige Authentifizierung erfordert. Microsoft empfiehlt, bei Benutzern mit hohem Risiko eine sichere Kennwortänderung anzufordern.
 
-![Benutzer mit Risikokennzeichnung](./media/steps-secure-identity/azure-ad-sec-steps1.png)
+![Der Screenshot zeigt nach Risikotyp gekennzeichnete Benutzer, wobei ein Benutzer ausgewählt ist.](./media/steps-secure-identity/azure-ad-sec-steps1.png)
 
 ### <a name="implement-sign-in-risk-policy-using-azure-ad-identity-protection"></a>Implementieren einer Richtlinie in Bezug auf das Anmelderisiko mithilfe von Azure AD Identity Protection
 
@@ -175,7 +175,7 @@ Azure AD Identity Protection bietet zwei wichtige Berichte, die Sie täglich üb
 1. Berichte zu riskanten Anmeldungen behandeln Benutzeranmeldeaktivitäten, denen Sie nachgehen sollten, weil die Anmeldung möglicherweise nicht durch den rechtmäßigen Besitzer erfolgt ist.
 2. In Berichten zu riskanten Benutzern werden Benutzerkonten ermittelt, die möglicherweise kompromittiert sind. Dies kann etwa Ereignisse betreffen, bei denen offengelegte Anmeldeinformationen erkannt wurden oder bei denen sich der Benutzer von verschiedenen Standorten aus angemeldet hat, bei denen ein Ortswechsel durch einen Benutzer unmöglich erscheint.
 
-![Benutzer mit Risikokennzeichnung](./media/steps-secure-identity/azure-ad-sec-steps3.png)
+![Der Screenshot zeigt den Bereich Azure AD Identity Protection mit Benutzern und deren Risikostufen.](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Überwachen von Apps und Berechtigungen, denen zugestimmt wurde
 

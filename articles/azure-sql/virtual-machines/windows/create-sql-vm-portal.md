@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6658dcd54c7290bbbad0c24c1cc0debd5ead8b18
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789861"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93146227"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Bereitstellen einer Windows-VM mit SQL Server im Azure-Portal
 
@@ -56,7 +56,7 @@ Beim Erstellen eines virtuellen SQL Server-Computers können Sie eines von zahlr
    > Weitere Informationen zu diesen Optionen finden Sie unter [Pricing guidance for SQL Server Azure VMs](pricing-guidance.md) (Preisinformationen für virtuelle Azure-Computer unter SQL Server).
 
 
-1. Klicken Sie auf **Erstellen** .
+1. Klicken Sie auf **Erstellen**.
 
 
 ## <a name="1-configure-basic-settings"></a>1. Grundeinstellungen konfigurieren
@@ -76,7 +76,7 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
 
     1. Geben Sie einen eindeutigen **Namen** für den virtuellen Computer ein.  
     1. Wählen Sie unter **Region** einen Standort aus. 
-    1. Übernehmen Sie für diese Anleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_ . Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/availability.md). 
+    1. Übernehmen Sie für diese Anleitung für **Verfügbarkeitsoptionen** die Einstellung _Keine Infrastrukturredundanz erforderlich_. Weitere Informationen zu Verfügbarkeitsoptionen finden Sie unter [Verfügbarkeit](../../../virtual-machines/availability.md). 
     1. Wählen Sie in der Liste unter **Image** die Option _Free SQL Server License: SQL Server 2017 Developer on Windows Server 2016_ aus.  
     1. Wählen Sie unter **Größe** die Option **Größe ändern** aus, um die Größe des virtuellen Computers anzupassen, und wählen Sie das Angebot **Basic A2** aus. Bereinigen Sie unbedingt die Ressourcen, wenn Sie fertig sind, um unerwartete Gebühren zu vermeiden. Informationen zu Produktionsworkloads finden Sie in den Empfehlungen für die Computergröße und -konfiguration unter [Optimale Verfahren für die Leistung für SQL Server auf virtuellen Computern in Azure](performance-guidelines-best-practices.md).
 
@@ -149,7 +149,7 @@ Konfigurieren Sie auf der Registerkarte **SQL Server-Einstellungen** die speziel
 Geben Sie unter **SQL-Konnektivität** den Zugriffstyp an, den Sie für die SQL Server-Instanz auf dieser VM verwenden möchten. Wählen Sie für diese exemplarische Vorgehensweise die Option **Öffentlich (Internet)** aus, um für Computer oder Dienste im Internet Verbindungen mit SQL Server zuzulassen. Wenn diese Option aktiviert ist, konfiguriert Azure die Firewall und die Netzwerksicherheitsgruppe automatisch, um Datenverkehr über den ausgewählten Port zuzulassen.
 
 > [!TIP]
-> Standardmäßig lauscht SQL Server am bekannten Port **1433** . Ändern Sie den Port im vorherigen Dialogfeld, sodass an einem nicht standardmäßigen Port (beispielsweise 1401) gelauscht wird, um die Sicherheit zu erhöhen. Wenn Sie den Port ändern, muss die Verbindung in allen Clienttools (etwa SQL Server Management Studio) über diesen Port hergestellt werden.
+> Standardmäßig lauscht SQL Server am bekannten Port **1433**. Ändern Sie den Port im vorherigen Dialogfeld, sodass an einem nicht standardmäßigen Port (beispielsweise 1401) gelauscht wird, um die Sicherheit zu erhöhen. Wenn Sie den Port ändern, muss die Verbindung in allen Clienttools (etwa SQL Server Management Studio) über diesen Port hergestellt werden.
 
 ![SQL-VM-Sicherheit](./media/create-sql-vm-portal/azure-sqlvm-security.png)
 
@@ -171,13 +171,13 @@ Wenn Sie SQL Server-Authentifizierung benötigen, wählen Sie auf der Registerka
 > [!NOTE]
 > Wenn Sie über das Internet auf SQL Server zugreifen möchten (Konnektivitätsoption „Öffentlich“), müssen Sie die SQL Server-Authentifizierung hier aktivieren. Für den öffentlichen Zugriff auf SQL Server muss die SQL Server-Authentifizierung verwendet werden.
 
-Geben Sie beim Aktivieren der SQL Server-Authentifizierung **Anmeldename** und **Kennwort** an. Dieser Anmeldename ist als Anmeldung für die SQL Server-Authentifizierung konfiguriert und Mitglied der festen Serverrolle **sysadmin** . Weitere Informationen zu Authentifizierungsmodi finden Sie unter [Auswählen eines Authentifizierungsmodus](/sql/relational-databases/security/choose-an-authentication-mode).
+Geben Sie beim Aktivieren der SQL Server-Authentifizierung **Anmeldename** und **Kennwort** an. Dieser Anmeldename ist als Anmeldung für die SQL Server-Authentifizierung konfiguriert und Mitglied der festen Serverrolle **sysadmin**. Weitere Informationen zu Authentifizierungsmodi finden Sie unter [Auswählen eines Authentifizierungsmodus](/sql/relational-databases/security/choose-an-authentication-mode).
 
 Wenn Sie die SQL Server-Authentifizierung nicht aktivieren möchten, können Sie das lokale Administratorkonto auf der VM verwenden, um die Verbindung mit der SQL Server-Instanz herzustellen.
 
 ### <a name="azure-key-vault-integration"></a>Azure-Schlüsseltresor-Integration
 
-Um Sicherheitsgeheimnisse in Azure zur Verschlüsselung zu speichern, wählen Sie **SQL-Servereinstellungen** aus, und scrollen Sie nach unten zu **Azure Key Vault-Integration** . Wählen Sie **Aktivieren** aus, und geben Sie die angeforderten Informationen an. 
+Um Sicherheitsgeheimnisse in Azure zur Verschlüsselung zu speichern, wählen Sie **SQL-Servereinstellungen** aus, und scrollen Sie nach unten zu **Azure Key Vault-Integration**. Wählen Sie **Aktivieren** aus, und geben Sie die angeforderten Informationen an. 
 
 ![Azure-Schlüsseltresor-Integration](./media/create-sql-vm-portal/azure-sqlvm-akv.png)
 
@@ -196,7 +196,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor
 
 Wählen Sie auf der Registerkarte **SQL Server-Einstellungen** unter **Speicherkonfiguration** die Option **Konfiguration ändern** aus, um die Seite „Leistungsoptimierte Speicherkonfiguration“ zu öffnen und die Speicheranforderungen anzugeben.
 
-![SQL-VM-Speicherkonfiguration](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
+![Screenshot mit hervorgehobenen Optionen zum Ändern der Speicherkonfiguration](./media/create-sql-vm-portal/sql-vm-storage-configuration-provisioning.png)
 
 Wählen Sie unter **Speicher optimiert für** eine der folgenden Optionen:
 
@@ -224,7 +224,7 @@ Weitere Informationen finden Sie unter [Automatisches Patchen für SQL Server au
 
 ### <a name="automated-backup"></a>Automatisierte Sicherung
 
-Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte Sicherung** . Die automatisierte Sicherung ist standardmäßig deaktiviert.
+Aktivieren Sie automatische Datenbanksicherungen für alle Datenbanken unter **Automatisierte Sicherung**. Die automatisierte Sicherung ist standardmäßig deaktiviert.
 
 Wenn Sie die automatisierte SQL-Sicherung aktivieren, können Sie folgende Einstellungen konfigurieren:
 

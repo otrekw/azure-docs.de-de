@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 09/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7f1f1f004fb8c9c4d67f409072ce061c6047569
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: fa05f8a8b05a0acddae906a93c90c42424466969
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127010"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93322597"
 ---
 # <a name="azure-synapse-link-preview-for-azure-cosmos-db-supported-features"></a>Von Azure Synapse Link (Vorschau) unterstützte Features für Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Sie können keine Verbindung mit einem Azure Cosmos DB-Container herstellen, ohn
 | **Schreiben**   | Kann die Azure Synapse-Runtime verwendet werden, um Daten in einen Azure Cosmos DB-Container zu schreiben? | Ja | Nein |
 
 * Wenn Sie Daten aus Spark in einen Azure Cosmos DB-Container schreiben, erfolgt dieser Vorgang über den Transaktionsspeicher von Azure Cosmos DB. Dieser Vorgang wirkt sich durch den Verbrauch von Anforderungseinheiten auf die Transaktionsleistung von Azure Cosmos DB aus.
-* Die Integration von SQL-Pools über externe Tabellen wird derzeit nicht unterstützt.
+* Die Integration mit dedizierten SQL-Pools über externe Tabellen wird derzeit nicht unterstützt.
  
 ## <a name="supported-code-generated-actions-for-spark"></a>Unterstützte, durch Code generierte Aktionen für Spark
 
@@ -64,4 +64,4 @@ Sie können keine Verbindung mit einem Azure Cosmos DB-Container herstellen, ohn
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Informationen zum Herstellen einer Verbindung mit Synapse Link für Azure Cosmos DB](../quickstart-connect-synapse-link-cosmos-db.md)
-* [Informationen zum Abfragen des Analysespeichers mit Spark](how-to-query-analytical-store-spark.md)
+* [Informationen zum Abfragen des Analysespeichers von Cosmos DB mit Spark](how-to-query-analytical-store-spark.md)

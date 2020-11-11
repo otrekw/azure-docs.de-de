@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: rarayudu, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 159f4b2ea0cafb0b2c883cde76ddce7ddd3f1fc6
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 10/29/2020
+ms.openlocfilehash: dc03f2276af7c5f6121966a52d50e9c1b208d8cb
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317573"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93094709"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Schützen des Zugriffs und der Daten in Azure Logic Apps
 
@@ -137,7 +137,7 @@ Bevor Sie Azure AD OAuth aktivieren, berücksichtigen Sie die folgenden Überleg
 
 * Eine Autorisierungsrichtlinie muss mindestens den Anspruch **Aussteller** enthalten, der einen Wert als Azure AD-Aussteller-ID hat, der entweder mit `https://sts.windows.net/` oder mit `https://login.microsoftonline.com/` (OAuth V2) beginnt.
 
-  Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Zielgruppe** und **Aussteller** . Dieser [Beispielpayloadabschnitt](../active-directory/develop/access-tokens.md#payload-claims) für ein decodiertes Zugriffstoken umfasst beide Anspruchstypen, wobei `aud` der Wert **Zielgruppe** und `iss` der Wert **Aussteller** ist:
+  Angenommen, Ihre Logik-App verfügt über eine Autorisierungsrichtlinie, die zwei Anspruchstypen erfordert, **Zielgruppe** und **Aussteller**. Dieser [Beispielpayloadabschnitt](../active-directory/develop/access-tokens.md#payload-claims) für ein decodiertes Zugriffstoken umfasst beide Anspruchstypen, wobei `aud` der Wert **Zielgruppe** und `iss` der Wert **Aussteller** ist:
 
   ```json
   {
@@ -199,7 +199,7 @@ Um Azure AD OAuth für Ihre Logik-App im Azure-Portal zu aktivieren, führen Sie
    | Eigenschaft | Erforderlich | BESCHREIBUNG |
    |----------|----------|-------------|
    | **Richtlinienname** | Ja | Der Name, den Sie für die Autorisierungsinstanz verwenden möchten |
-   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste der **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
+   | **Ansprüche** | Ja | Die Anspruchstypen und -werte, die ihre Logik-App von eingehenden Aufrufen akzeptiert. Der Anspruchswert darf maximal 80 Zeichen lang sein. Im Folgenden finden Sie die verfügbaren Anspruchstypen: <p><p>- **Aussteller** <br>- **Zielgruppe** <br>- **Betreff** <br>- **JWT-ID** (JSON Web Token-ID) <p><p>Die Liste der **Ansprüche** muss mindestens den Anspruch **Aussteller** enthalten, dem als Azure AD-Aussteller-ID ein Wert zugeordnet ist, der mit `https://sts.windows.net/` oder `https://login.microsoftonline.com/` beginnt. Weitere Informationen zu diesen Anspruchstypen finden Sie unter [Ansprüche in Sicherheitstoken von Azure AD](../active-directory/azuread-dev/v1-authentication-scenarios.md#claims-in-azure-ad-security-tokens). Sie können auch Ihren eigenen Anspruchstyp und -wert angeben. |
    |||
 
 1. Zum Hinzufügen eines weiteren Anspruchs wählen Sie eine der folgenden Optionen aus:
@@ -316,7 +316,7 @@ Zusätzlich zur Shared Access Signature (SAS) empfiehlt es sich, spezifisch die 
 
 1. Wählen Sie unter **Konfiguration der Zugriffssteuerung** > **Zulässige eingehende IP-Adressen** die Option **Spezifische IP-Bereiche** aus.
 
-1. Wenn das Feld **IP-Bereiche für Trigger** angezeigt wird, geben Sie die IP-Adressbereiche an, die der Trigger akzeptiert. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* .
+1. Wenn das Feld **IP-Bereiche für Trigger** angezeigt wird, geben Sie die IP-Adressbereiche an, die der Trigger akzeptiert. Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
 
    Wenn Sie beispielsweise festlegen möchten, dass Ihre Logik-App nur als geschachtelte Logik-App über die HTTP-Aktion aufgerufen werden kann, verwenden Sie die Option **Spezifische IP-Bereiche** (nicht die Option **Nur andere Logik-Apps** ), und geben Sie die [ausgehenden IP-Adressen](../logic-apps/logic-apps-limits-and-config.md#outbound) der übergeordneten Logik-App ein.
 
@@ -418,7 +418,7 @@ Sie können den Zugriff auf die Ein- und Ausgaben im Ausführungsverlauf Ihrer L
 
 1. Geben Sie unter **IP-Bereiche für Inhalte** die IP-Adressbereiche an, die auf Inhalte von Eingaben und Ausgaben zugreifen können.
 
-   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x* .
+   Gültige IP-Adressbereiche verwenden die Formate *x.x.x.x/x* oder *x.x.x.x-x.x.x.x*.
 
 #### <a name="restrict-ip-ranges-in-azure-resource-manager-template"></a>Einschränken von IP-Adressbereichen in einer Azure Resource Manager-Vorlage
 
@@ -546,7 +546,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
   ![Sichere Ausgaben als Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow.png)
 
-  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus* .
+  Die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ weisen nur die Einstellung **Sichere Eingaben** auf. Wenn diese aktiviert wird, blendet diese Einstellung auch die Ausgaben dieser Aktionen aus. Wenn diese Aktionen explizit die sicheren Upstreamausgaben als Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen aus, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** dieser Aktionen. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
 
   ![Sichere Ausgaben als Eingaben mit nachgeschalteten Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-outputs-as-inputs-flow-special.png)
 
@@ -556,7 +556,7 @@ Wenn Sie diese Einstellungen verwenden, um entsprechende Daten zu schützen, mü
 
   ![Sichere Eingaben und nachgeschaltete Auswirkungen auf die meisten Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-impact-on-downstream.png)
 
-  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus* .
+  Wenn die Aktionen „Erstellen“, „JSON analysieren“ und „Antwort“ explizit die sichtbaren Ausgaben des Triggers oder der Aktion mit den sicheren Eingaben verwenden, blendet Logic Apps die Ein- und Ausgaben dieser Aktionen, *aktiviert aber nicht* die Einstellung **Sichere Eingaben** der jeweiligen Aktion. Wenn eine nachfolgende Aktion explizit die ausgeblendeten Ausgaben der Aktionen „Erstellen“, „JSON analysieren“ oder „Antwort“ als Eingaben verwendet, *blendet Logic Apps die Ein- oder Ausgaben dieser nachfolgenden Aktion nicht aus*.
 
   ![Sichere Eingaben und nachgeschaltete Auswirkungen auf bestimmte Aktionen](./media/logic-apps-securing-a-logic-app/secure-inputs-flow-special.png)
 
@@ -838,7 +838,7 @@ Im Folgenden finden Sie weitere Möglichkeiten, wie Sie Endpunkte, die Aufrufe v
 
 ### <a name="add-authentication-to-outbound-calls"></a>Hinzufügen der Authentifizierung zu ausgehenden Aufrufen
 
-HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung** . Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie **Authentifizierung** aus.
+HTTP- und HTTP-Endpunkte unterstützen verschiedene Arten der Authentifizierung. Bei einigen Triggern und Aktionen, die Sie zum Senden ausgehender Aufrufe oder Anforderungen an diese Endpunkte verwenden, können Sie einen Authentifizierungstyp angeben. Im Logik-App-Designer besitzen Trigger und Aktionen, die die Auswahl eines Authentifizierungstyps unterstützen, eine Eigenschaft **Authentifizierung**. Diese Eigenschaft wird jedoch möglicherweise nicht immer standardmäßig angezeigt. In diesen Fällen öffnen Sie für den Trigger oder die Aktion die Liste **Neuen Parameter hinzufügen** , und wählen Sie **Authentifizierung** aus.
 
 > [!IMPORTANT]
 > Um vertrauliche Informationen, die Ihre Logik-App verarbeitet, zu schützen, verwenden Sie abgesicherte Parameter, und verschlüsseln Sie Daten nach Bedarf.

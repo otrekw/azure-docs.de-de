@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: f58eefd636b2bd59d6b3656bf162f7d601f7ff85
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 0b6fbe2553541b6260697584fa7066cdcb1fe122
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92167649"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93284499"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -116,6 +116,11 @@ In der folgenden Beispieldatei *host.json* für Version 2.x und höher sind all
     },
     "managedDependency": {
         "enabled": true
+    },
+    "retry": {
+      "strategy": "fixedDelay",
+      "maxRetryCount": 5,
+      "delayInterval": "00:00:05"
     },
     "singleton": {
       "lockPeriod": "00:00:15",
@@ -349,6 +354,28 @@ Verwaltete Abhängigkeit ist ein Vorschaufeature, das derzeit nur mit PowerShell
 ## <a name="queues"></a>queues
 
 Die Konfigurationseinstellungen finden Sie in [Trigger und Bindungen der Speicherwarteschlange](functions-bindings-storage-queue-output.md#host-json).  
+
+## <a name="retry"></a>retry
+
+Steuert die Optionen der [Wiederholungsrichtlinie](./functions-bindings-error-pages.md#retry-policies) für alle Ausführungen in der App.
+
+```json
+{
+    "retry": {
+        "strategy": "fixedDelay",
+        "maxRetryCount": 2,
+        "delayInterval": "00:00:03"  
+    }
+}
+```
+
+|Eigenschaft  |Standard | Beschreibung |
+|---------|---------|---------| 
+|strategy|NULL|Erforderlich. Die Wiederholungsstrategie, die verwendet werden soll. Gültige Werte sind `fixedDelay` und `exponentialBackoff`.|
+|maxRetryCount|NULL|Erforderlich. Die maximale Anzahl zulässiger Wiederholungen pro Funktionsausführung. `-1` bedeutet unbegrenzte Wiederholungen.|
+|delayInterval|NULL|Die Verzögerung zwischen Wiederholungsversuchen mit der Strategie `fixedDelay`.|
+|MinimumIntervall|NULL|Die geringste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`.|
+|Maximumintervall|NULL|Die höchste Wiederholungsverzögerung bei Verwendung der Strategie `exponentialBackoff`.| 
 
 ## <a name="sendgrid"></a>sendGrid
 

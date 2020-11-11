@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: cb310861edc2ba1ee183bc6f996cb1593457e3c7
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91972032"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289347"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 
@@ -31,7 +31,7 @@ Verwaltete Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Hier
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Einfache und skalierbare VM-Bereitstellung
 
-Mit verwalteten Datenträgern können Sie für ein Abonnement pro Region bis zu 50.000VM-**Datenträger** eines Typs erstellen – Sie können also Tausende von **VMs** in einem einzigen Abonnement erstellen. Außerdem wird mit diesem Feature die Skalierbarkeit von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) weiter erhöht, sodass Sie mit einem Marketplace-Image bis zu 1.000VMs in einer VM-Skalierungsgruppe erstellen können.
+Mit verwalteten Datenträgern können Sie für ein Abonnement pro Region bis zu 50.000VM- **Datenträger** eines Typs erstellen – Sie können also Tausende von **VMs** in einem einzigen Abonnement erstellen. Außerdem wird mit diesem Feature die Skalierbarkeit von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) weiter erhöht, sodass Sie mit einem Marketplace-Image bis zu 1.000VMs in einer VM-Skalierungsgruppe erstellen können.
 
 ### <a name="integration-with-availability-sets"></a>Integration in Verfügbarkeitsgruppen
 
@@ -59,7 +59,7 @@ Informationen zur Übertragung Ihrer VHD in Azure finden Sie im Artikel zur [CLI
 
 ### <a name="private-links"></a>Private Links
 
-Die Private Link-Unterstützung für verwaltete Datenträger befindet sich derzeit in der Vorschauphase. Der Dienst kann zum Importieren und Exportieren eines verwalteten Datenträgers innerhalb Ihres Netzwerks verwendet werden. Mit privaten Links können Sie einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Jetzt können Sie [Private Links](../private-link/private-link-overview.md) verwenden, um den Export und Import von verwalteten Datenträgern einzuschränken, sodass er nur innerhalb Ihres virtuellen Azure-Netzwerks erfolgen kann. Mit privaten Links können Sie sicherstellen, dass Ihre Daten nur innerhalb des sicheren Microsoft-Backbone-Netzwerks übertragen werden.
+Die Private Link-Unterstützung für verwaltete Datenträger kann zum Importieren und Exportieren eines verwalteten Datenträgers innerhalb Ihres Netzwerks verwendet werden. Mit privaten Links können Sie einen zeitgebundenen SAS-URI (Shared Access Signature) für nicht angefügte verwaltete Datenträger und Momentaufnahmen generieren, um die Daten zur regionalen Erweiterung, zur Notfallwiederherstellung und für die forensische Analyse in eine andere Region zu exportieren. Sie können den SAS-URI auch verwenden, um eine VHD aus der lokalen Umgebung direkt auf einen leeren Datenträger hochzuladen. Jetzt können Sie [Private Links](../private-link/private-link-overview.md) verwenden, um den Export und Import von verwalteten Datenträgern einzuschränken, sodass er nur innerhalb Ihres virtuellen Azure-Netzwerks erfolgen kann. Mit privaten Links können Sie sicherstellen, dass Ihre Daten nur innerhalb des sicheren Microsoft-Backbone-Netzwerks übertragen werden.
 
 Wie Sie private Links zum Importieren oder Exportieren eines verwalteten Datenträgers aktivieren können, erfahren Sie in den Artikeln zur [CLI](linux/disks-export-import-private-links-cli.md) oder zum [Portal](disks-enable-private-links-for-import-export-portal.md).
 

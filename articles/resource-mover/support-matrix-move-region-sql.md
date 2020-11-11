@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: conceptual
 ms.date: 09/07/2020
 ms.author: raynew
-ms.openlocfilehash: 4925f6ffd2383c21f8ff9b0e3196d44fc15bb657
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fda41a22c9bd9c66dd691b283ece10ac044db3ed
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89652620"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93324584"
 ---
 # <a name="support-for-moving-azure-sql-resources-between-azure-regions"></a>Unterstützung beim Verschieben von Azure SQL-Ressourcen zwischen Azure-Regionen
 
@@ -38,7 +38,7 @@ Die Anforderungen werden in der folgenden Tabelle zusammengefasst.
 **Automatische Optimierung** | Wird nicht unterstützt. | Problemumgehung: Legen Sie nach dem Verschieben Einstellungen für die automatische Optimierung fest. [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning-enable)
 **Datenbankwarnungen** | Wird nicht unterstützt. | Problemumgehung: Richten Sie nach dem Verschieben Warnungen ein. [Weitere Informationen](https://docs.microsoft.com/azure/sql-database/sql-database-insights-alerts-portal)
 **Azure SQL Server Stretch Database** | Nicht unterstützt | SQL Server Stretch Database-Instanzen können nicht mit Resource Mover verschoben werden.
-**Azure Synapse Analytics** | Nicht unterstützt | Synapse Analytics (ehemals Azure SQL Data Warehouse) kann nicht mit Resource Mover verschoben werden.
+**Azure Synapse Analytics** | Nicht unterstützt | Synapse Analytics (ehemals SQL Data Warehouse) kann nicht mit Resource Mover verschoben werden.
 ## <a name="next-steps"></a>Nächste Schritte
 
 Versuchen Sie, [Azure SQL-Ressourcen](tutorial-move-region-sql.md) mit Resource Mover in eine andere Region zu verschieben.

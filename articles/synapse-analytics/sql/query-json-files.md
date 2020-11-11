@@ -1,6 +1,6 @@
 ---
-title: Abfragen von JSON-Dateien mit SQL On-Demand (Vorschauversion)
-description: In diesem Abschnitt wird erläutert, wie JSON-Dateien mithilfe von SQL On-Demand in Azure Synapse Analytics gelesen werden.
+title: Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau)
+description: In diesem Abschnitt wird erläutert, wie JSON-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics gelesen werden.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 86ed3f005788627166c65b30398279f04388546c
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 5dbad07401d77a15cd860a8ae492560c5fced819
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91930848"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93310620"
 ---
-# <a name="query-json-files-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
+# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können. Das Ziel der Abfrage ist das Lesen von JSON-Dateien mithilfe von [OPENROWSET](develop-openrowset.md). 
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics schreiben können. Das Ziel der Abfrage ist das Lesen von JSON-Dateien mithilfe von [OPENROWSET](develop-openrowset.md). 
 - JSON-Standarddateien, in denen mehrere JSON-Dokumente als JSON-Array gespeichert sind.
 - Durch Zeilen getrennte JSON-Dateien, in denen JSON-Dokumente durch Zeilenumbruchzeichen getrennt sind. Gängige Erweiterungen für diese Dateitypen sind `jsonl`, `ldjson`und `ndjson`.
 
@@ -105,7 +105,7 @@ Die Abfragen in den vorherigen Beispielen geben jedes JSON-Dokument als einzelne
 
 ### <a name="sample-json-document"></a>JSON-Beispieldokument
 
-Die Abfragebeispiele lesen *JSON*-Dateien, die Dokumente mit der folgenden Struktur enthalten:
+Die Abfragebeispiele lesen *JSON* -Dateien, die Dokumente mit der folgenden Struktur enthalten:
 
 ```json
 {

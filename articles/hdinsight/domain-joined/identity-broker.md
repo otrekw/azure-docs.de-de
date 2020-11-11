@@ -1,20 +1,20 @@
 ---
-title: Verwenden des Identitätsbrokers (Vorschauversion) für die Verwaltung von Anmeldeinformationen – Azure HDInsight
+title: Azure HDInsight-Identitätsbroker (HIB)
 description: Erfahren Sie etwas über den Azure HDInsight-Identitätsbroker zur Vereinfachung der Authentifizierung für in Domänen eingebundene Apache Hadoop-Cluster.
 ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
-ms.date: 09/23/2020
-ms.openlocfilehash: 99ea17dad4f99cdab3fb44b8031e60e6cf69879c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.date: 11/03/2020
+ms.openlocfilehash: df4faf367951402914abb03285498e0da6f3105f
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543150"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93337675"
 ---
-# <a name="azure-hdinsight-id-broker-preview"></a>Azure HDInsight-Identitätsbroker (Vorschauversion)
+# <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight-Identitätsbroker (HIB)
 
 In diesem Artikel wird beschrieben, wie Sie das Feature „Azure HDInsight-Identitätsbroker“ einrichten und verwenden. Sie können dieses Feature verwenden, um die moderne OAuth-Authentifizierung in Apache Ambari zu erhalten, während Sie über die Erzwingung der mehrstufigen Authentifizierung verfügen, ohne Legacy-Kennworthashes in Azure Active Directory Domain Services (Azure AD DS) zu benötigen.
 
@@ -45,7 +45,7 @@ Möglicherweise gibt es noch viele Legacyanwendungen, die nur die Standardauthen
 
 Das folgende Diagramm zeigt den Ablauf der Standardauthentifizierung für Verbundbenutzer. Zunächst versucht das Gateway, die Authentifizierung mithilfe des [ROPC-Flows](../../active-directory/develop/v2-oauth-ropc.md) abzuschließen. Falls keine Kennworthashes mit Azure AD synchronisiert sind, greift es auf die Ermittlung des AD FS-Endpunkts zurück und schließt die Authentifizierung durch Zugriff auf den AD FS-Endpunkt ab.
 
-:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagramm zum Authentifizierungsablauf mit HDInsight-Identitätsbroker.":::
+:::image type="content" source="media/identity-broker/basic-authentication.png" alt-text="Diagramm, das eine Architektur mit Standardauthentifizierung anzeigt.":::
 
 
 ## <a name="enable-hdinsight-id-broker"></a>Aktivieren des HDInsight-Identitätsbrokers
@@ -83,7 +83,7 @@ Wenn Sie dem Computeprofil Ihrer Vorlage eine neue Rolle namens `idbrokernode` m
         {
             "autoscale": null,
             "name": "idbrokernode",
-            "targetInstanceCount": 1,
+            "targetInstanceCount": 2,
             "hardwareProfile": {
                 "vmSize": "Standard_A2_V2"
             },
@@ -100,6 +100,9 @@ Wenn Sie dem Computeprofil Ihrer Vorlage eine neue Rolle namens `idbrokernode` m
 .
 .
 ```
+
+Ein vollständiges Beispiel einer ARM-Vorlage finden Sie in der [hier](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/ESP-HIB-PL-Template) veröffentlichten Vorlage.
+
 
 ## <a name="tool-integration"></a>Toolintegration
 
@@ -132,6 +135,8 @@ Nachdem Sie das OAuth-Token abgerufen haben, verwenden Sie es im Autorisierungsh
 ```bash
 curl -k -v -H "Authorization: Bearer Access_TOKEN" -H "Content-Type: application/json" -X POST -d '{ "file":"wasbs://mycontainer@mystorageaccount.blob.core.windows.net/data/SparkSimpleTest.jar", "className":"com.microsoft.spark.test.SimpleFile" }' "https://<clustername>-int.azurehdinsight.net/livy/batches" -H "X-Requested-By:<username@domain.com>"
 ``` 
+
+Für die Verwendung von Beeline und Livy können Sie auch die [hier](https://github.com/Azure-Samples/hdinsight-enterprise-security/tree/main/HIB/HIBSamples) angegebenen Codebeispiele verwenden, um Ihren Client so einzurichten, dass er OAuth verwendet und eine Verbindung mit dem Cluster herstellt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

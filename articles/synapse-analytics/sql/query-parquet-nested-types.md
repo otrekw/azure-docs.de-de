@@ -1,6 +1,6 @@
 ---
-title: Abfragen von geschachtelten Parquet-Typen mit SQL On-Demand (Vorschauversion)
-description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen mit SQL On-Demand abfragen können (Vorschauversion).
+title: Abfragen von geschachtelten Parquet-Typen mit einem serverlosen SQL-Pool (Vorschau)
+description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen mit einem serverlosen SQL-Pool (Vorschau) abfragen können.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,22 +9,22 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 08502704515c791bf63f4803b7446a0471c0a869
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3463e4dfc423a3f12ce7a42cb0def36574bcb2d3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91288255"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93312003"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-sql-on-demand-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit SQL On-Demand (Vorschauversion) in Azure Synapse Analytics schreiben können. Die Abfrage liest geschachtelte Parquet-Typen.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics schreiben können. Die Abfrage liest geschachtelte Parquet-Typen.
 Bei geschachtelten Typen handelt es sich um komplexe Strukturen zur Darstellung von Objekten oder Arrays. Geschachtelte Typen können in folgenden Formaten gespeichert werden: 
 - In [Parquet](query-parquet-files.md). Dabei können mehrere komplexe Spalten mit Arrays und Objekten vorhanden sein.
 - In hierarchischen [JSON-Dateien](query-json-files.md). Dabei können komplexe JSON-Dokumente als einzelne Spalte gelesen werden.
 - In Azure Cosmos DB-Sammlungen (aktuell in der geschlossenen öffentlichen Vorschau verfügbar). Dabei kann jedes Dokument komplexe geschachtelte Eigenschaften enthalten.
 
-Azure Synapse SQL On-Demand formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Somit können Sie [komplexe Objekte mithilfe von JSON-Funktionen extrahieren oder ändern](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) bzw. [JSON-Daten mithilfe der OPENJSON-Funktion analysieren](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
+Der serverlose SQL-Pool formatiert alle geschachtelten Typen als JSON-Objekte und -Arrays. Somit können Sie [komplexe Objekte mithilfe von JSON-Funktionen extrahieren oder ändern](https://docs.microsoft.com/sql/relational-databases/json/validate-query-and-change-json-data-with-built-in-functions-sql-server) bzw. [JSON-Daten mithilfe der OPENJSON-Funktion analysieren](https://docs.microsoft.com/sql/relational-databases/json/convert-json-data-to-rows-and-columns-with-openjson-sql-server). 
 
 Hier folgt ein Beispiel für eine Abfrage, die Skalar- und Objektwerte aus der JSON-Datei [COVID-19 Open Research Dataset](https://azure.microsoft.com/services/open-datasets/catalog/covid-19-open-research/) extrahiert, die geschachtelte Objekte enthält: 
 

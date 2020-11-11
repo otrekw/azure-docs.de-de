@@ -5,17 +5,18 @@ author: bwren
 services: cosmos-db
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/17/2020
+ms.date: 10/28/2020
 ms.author: bwren
 ms.custom: subject-monitoring
-ms.openlocfilehash: 43a059354c70c792592ba46aa3d5b63677bda4eb
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: eb06fda43590198f1b2643c8362f774a031eaef9
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488349"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93096277"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Überwachen von Daten in Azure Cosmos DB – Referenz
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Dieser Artikel enthält eine Referenz von Protokoll- und Metrikdaten, die gesammelt werden, um die Leistung und Verfügbarkeit von Azure Cosmos DB zu analysieren. Informationen zum Erfassen und Analysieren von Überwachungsdaten für Azure Cosmos DB finden Sie unter [Überwachen von Azure Cosmos DB](monitor-cosmos-db.md).
 
@@ -27,7 +28,7 @@ In der folgenden Tabelle sind die Eigenschaften der Ressourcenprotokolle in Azur
 | --- | --- | --- |
 | **time** | **TimeGenerated** | Datum und Uhrzeit (UTC), zu denen der Vorgang aufgetreten ist. |
 | **Ressourcen-ID** | **Ressource** | Das Azure Cosmos DB-Konto, für das Protokolle aktiviert sind.|
-| **category** | **Kategorie** | Die verfügbaren Protokolltypen bei Azure Cosmos DB sind: **DataPlaneRequests** , **MongoRequests** , **QueryRuntimeStatistics** , **PartitionKeyStatistics** , **PartitionKeyRUConsumption** und **ControlPlaneRequests** . |
+| **category** | **Kategorie** | Die verfügbaren Protokolltypen bei Azure Cosmos DB sind: **DataPlaneRequests** , **MongoRequests** , **QueryRuntimeStatistics** , **PartitionKeyStatistics** , **PartitionKeyRUConsumption** und **ControlPlaneRequests**. |
 | **operationName** | **OperationName** | Name des Vorgangs. Der Vorgangsname kann `Create`, `Update`, `Read`, `ReadFeed`, `Delete`, `Replace`, `Execute`, `SqlQuery`, `Query`, `JSQuery`, `Head`, `HeadFeed` oder `Upsert` sein.   |
 | **properties** | – | Die Inhalte dieser Felder werden in den folgenden Zeilen beschrieben. |
 | **activityId** | **activityId_g** | Die eindeutige GUID für den protokollierten Vorgang. |
@@ -41,6 +42,8 @@ In der folgenden Tabelle sind die Eigenschaften der Ressourcenprotokolle in Azur
 | **duration** | **duration_d** | Die Dauer des Vorgangs in Millisekunden. |
 | **requestLength** | **requestLength_s** | Die Länge der Anforderung in Bytes. |
 | **responseLength** | **responseLength_s** | Die Länge der Antwort in Bytes.|
+| **resourceTokenPermissionId** | **resourceTokenPermissionId_s** | Diese Eigenschaft gibt die festgelegte Ressourcentokenberechtigungs-ID an. Weitere Informationen zu Berechtigungen finden Sie im Artikel [Schützen des Zugriffs auf Ihre Daten](./secure-access-to-data.md#permissions). |
+| **resourceTokenPermissionMode** | **resourceTokenPermissionMode_s** | Diese Eigenschaft gibt den Berechtigungsmodus an, den Sie beim Erstellen des Ressourcentokens festgelegt haben. Der Berechtigungsmodus kann Werte wie „Alle“ oder „Lesen“ aufweisen. Weitere Informationen zu Berechtigungen finden Sie im Artikel [Schützen des Zugriffs auf Ihre Daten](./secure-access-to-data.md#permissions). |
 | **resourceTokenUserRid** | **resourceTokenUserRid_s** | Dieser Wert ist nicht leer, wenn [Ressourcentoken](./secure-access-to-data.md#resource-tokens) für die Authentifizierung verwendet werden. Der Wert verweist auf die Ressourcen-ID des Benutzers. |
 | **responseLength** | **responseLength_s** | Die Länge der Antwort in Bytes.|
 

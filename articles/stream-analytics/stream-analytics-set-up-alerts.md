@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.custom: contperfq1
 ms.date: 06/21/2019
-ms.openlocfilehash: 271cae3504601ffa42c077029541cef8c7726053
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6353fe988b9b94c27ab777741bf63d3869579d9e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461035"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124440"
 ---
 # <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Einrichten von Warnungen für Azure Stream Analytics-Aufträge
 
@@ -34,7 +34,7 @@ Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingeric
 
    ![Konfigurieren von Stream Analytics-Warnungen im Azure-Portal](./media/stream-analytics-set-up-alerts/stream-analytics-set-up-alerts.png)  
 
-4. Der Name des Stream Analytics-Auftrags sollte automatisch unter **RESSOURCE** angezeigt werden. Klicken Sie auf **Bedingung hinzufügen**, und wählen Sie **All Administrative operations** (Alle Verwaltungsvorgänge) unter **Signallogik konfigurieren** aus.
+4. Der Name des Stream Analytics-Auftrags sollte automatisch unter **RESSOURCE** angezeigt werden. Klicken Sie auf **Bedingung hinzufügen** , und wählen Sie **All Administrative operations** (Alle Verwaltungsvorgänge) unter **Signallogik konfigurieren** aus.
 
    ![Auswählen eines Signalnamens für die Stream Analytics-Warnung](./media/stream-analytics-set-up-alerts/stream-analytics-condition-signal.png)  
 
@@ -46,13 +46,13 @@ Im folgenden Beispiel wird veranschaulicht, wie Warnungen für den Fall eingeric
 
    ![Einrichten einer Warnung für einen Azure Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-add-group-email-action.png)
 
-7. Unter **RESSOURCE**, **BEDINGUNG** und **AKTIONSGRUPPEN** sollte jeweils ein Eintrag angezeigt werden. Beachten Sie, dass Warnungen nur ausgelöst werden können, wenn die definierten Bedingungen erfüllt sind. Sie können beispielsweise für eine Metrik alle fünf Minuten den Durchschnittswert der letzten 15 Minuten messen.
+7. Unter **RESSOURCE** , **BEDINGUNG** und **AKTIONSGRUPPEN** sollte jeweils ein Eintrag angezeigt werden. Beachten Sie, dass Warnungen nur ausgelöst werden können, wenn die definierten Bedingungen erfüllt sind. Sie können beispielsweise für eine Metrik alle fünf Minuten den Durchschnittswert der letzten 15 Minuten messen.
 
-   ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
+   ![Der Screenshot zeigt das Dialogfeld „Regel erstellen“ mit RESSOURCE, BEDINGUNG und AKTIONSGRUPPE.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule-2.png)
 
-   Fügen Sie unter **WARNUNGSDETAILS** den **Namen der Warnungsregel**, eine **Beschreibung** und Ihre **Ressourcengruppe** hinzu, und klicken Sie auf **Warnungsregel erstellen**, um die Regel für den Stream Analytics-Auftrag zu erstellen.
+   Fügen Sie unter **WARNUNGSDETAILS** den **Namen der Warnungsregel** , eine **Beschreibung** und Ihre **Ressourcengruppe** hinzu, und klicken Sie auf **Warnungsregel erstellen** , um die Regel für den Stream Analytics-Auftrag zu erstellen.
 
-   ![Erstellen einer Regel für den Stream Analytics-Auftrag](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
+   ![Der Screenshot zeigt das Dialogfeld „Regel erstellen“ mit WARNUNGSDETAILS.](./media/stream-analytics-set-up-alerts/stream-analytics-create-alert-rule.png)
    
 ## <a name="scenarios-to-monitor"></a>Szenarien für die Überwachung
 
@@ -68,5 +68,4 @@ Zur Überwachung der Leistung des Stream Analytics-Auftrags werden die folgenden
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Skalieren von Azure Stream Analytics-Aufträgen](stream-analytics-scale-jobs.md)
-* [Stream Analytics Query Language Reference (in englischer Sprache)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)
-
+* [Stream Analytics Query Language Reference (in englischer Sprache)](/stream-analytics-query/stream-analytics-query-language-reference)

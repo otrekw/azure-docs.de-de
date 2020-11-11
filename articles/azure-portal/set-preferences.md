@@ -9,12 +9,12 @@ ms.date: 08/05/2020
 ms.topic: how-to
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 34750bcc2e9913b23daa3682d4fdea736f9c7a9a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367430"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145938"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
@@ -33,7 +33,7 @@ Sie können das Abonnement ändern, das bei der Anmeldung beim Azure-Portal stan
 
 1. Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen. 
 
-    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Filtern Sie die Ressourcenliste nach dem Abonnement."::: 
+    :::image type="content" source="media/set-preferences/default-directory-subscription-filter.png" alt-text="Wählen Sie die Abonnements aus, die beim Starten des Portals als Standardabonnements ausgewählt werden sollen."::: 
 
 
 ## <a name="choose-your-default-view"></a>Auswählen der Standardansicht 
@@ -50,7 +50,7 @@ Sie können die Seite ändern, die bei der Anmeldung beim Azure-Portal standardm
 
 Der Standardmodus für das Portalmenü steuert, wie viel Platz das Portalmenü auf der Seite einnimmt.
 
-![Screenshot mit Azure-Portaleinstellungen mit hervorgehobenen Designs](./media/set-preferences/menu-mode.png)
+![Screenshot der Festlegung des Standardmodus für das Portalmenü](./media/set-preferences/menu-mode.png)
 
 - Wenn sich das Portalmenü im **Flyoutmodus** befindet, wird es ausgeblendet, bis Sie es benötigen. Wählen Sie das Menüsymbol aus, um das Menü zu öffnen oder zu schließen.
 
@@ -108,7 +108,7 @@ Wenn Sie ein globaler Administrator sind und eine Einstellung für das Leerlauft
 
 1. Geben Sie als Nächstes die **Stunden** und die **Minuten** für die maximale Zeit ein, die sich ein Benutzer im Leerlauf befinden darf, bevor die Sitzung automatisch abgemeldet wird.
 
-1. Wählen Sie **Übernehmen** .
+1. Wählen Sie **Übernehmen**.
 
     ![Screenshot der Seite zum Festlegen des Inaktivitätstimeouts auf Verzeichnisebene](./media/set-preferences/configure.png)
 

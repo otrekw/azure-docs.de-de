@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7bc7b0ce521522e677e0dc53809c8c33e0743f0d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91327917"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93042618"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -24,11 +24,14 @@ Risikoerkennungen in Azure AD Identity Protection umfassen alle identifizierten 
 
 Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen, um diese verdächtigen Aktionen zu erkennen und schnell darauf zu reagieren. 
 
+>**Hinweis:** Identity Protection generiert Risikoerkennungen nur, wenn die richtigen Anmeldeinformationen verwendet werden. Wenn bei der Anmeldung falsche Anmeldeinformationen verwendet werden, stellt dies kein Risiko durch eine Gefährdung der Anmeldeinformationen dar.
+
 ![Sicherheitsübersicht riskanter Benutzer und Anmeldungen](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
+
 
 ## <a name="risk-types-and-detection"></a>Risikotypen und Erkennung
 
-Es gibt zwei Arten von Risiken (**Benutzerrisiken** und **Anmelderisiken**) und zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
+Es gibt zwei Arten von Risiken ( **Benutzerrisiken** und **Anmelderisiken** ) und zwei Arten der Erkennung oder Berechnung ( **Echtzeit** und **Offline** ).
 
 Erkennungen in Echtzeit werden bei der Berichterstellung möglicherweise 5-10 Minuten nicht angezeigt. Offlineerkennungen werden bei der Berichterstellung möglicherweise 2 bis 24 Stunden nicht angezeigt.
 

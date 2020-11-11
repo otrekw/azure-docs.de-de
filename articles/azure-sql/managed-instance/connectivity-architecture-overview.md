@@ -12,12 +12,12 @@ author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 10/22/2020
-ms.openlocfilehash: 88849e6b915128394546c01698ecee34d6206043
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 5ebe0bcf1e491166c5fc61597904056307f9679c
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461718"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098007"
 ---
 # <a name="connectivity-architecture-for-azure-sql-managed-instance"></a>Konnektivitätsarchitektur für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -104,7 +104,7 @@ Stellen Sie SQL Managed Instance in einem dedizierten Subnetz im virtuellen Netz
 - **Subnetzdelegierung:** Das Subnetz von SQL Managed Instance muss an den Ressourcenanbieter `Microsoft.Sql/managedInstances` delegiert werden.
 - **Netzwerksicherheitsgruppe (NSG)** : Eine NSG muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können eine NSG verwenden, um den Zugriff auf den Datenendpunkt von SQL Managed Instance zu steuern, indem Sie Datenverkehr an Port 1433 und die Ports 11000 bis 11999 filtern, wenn SQL Managed Instance für Verbindungsumleitungen konfiguriert ist. Der Dienst stellt automatisch die [Regeln](#mandatory-inbound-security-rules-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
 - **Benutzerdefinierte Routingtabelle (User Defined Route, UDR):** Eine UDR-Tabelle muss dem Subnetz von SQL Managed Instance zugeordnet werden. Sie können der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über das virtuelle Netzwerkgateway oder das virtuelle Netzwerkgerät (Network Appliance, NVA) zu leiten. Der Dienst stellt automatisch die [Einträge](#user-defined-routes-with-service-aided-subnet-configuration) zur Verfügung, die erforderlich sind, um einen ununterbrochenen Fluss des Verwaltungsdatenverkehrs zu ermöglichen, und hält sie auf dem neuesten Stand.
-- **Ausreichende IP-Adressen** : Das Subnetz von SQL Managed Instance muss mindestens 16 IP-Adressen umfassen. Der empfohlene Mindestwert sind 32 IP-Adressen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für SQL Managed Instance](vnet-subnet-determine-size.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](vnet-existing-add-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für SQL Managed Instance](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](virtual-network-subnet-create-arm-template.md).
+- **Ausreichende IP-Adressen** : Das Subnetz von SQL Managed Instance muss mindestens 32 IP-Adressen umfassen. Weitere Informationen finden Sie unter [Ermitteln der Größe des Subnetzes für SQL Managed Instance](vnet-subnet-determine-size.md). Sie können verwaltete Instanzen im [vorhandenen Netzwerk](vnet-existing-add-subnet.md) bereitstellen, nachdem Sie dieses entsprechend den [Netzwerkanforderungen für SQL Managed Instance](#network-requirements) konfiguriert haben. Erstellen Sie andernfalls ein [neues Netzwerk und Subnetz](virtual-network-subnet-create-arm-template.md).
 
 > [!IMPORTANT]
 > Wenn Sie eine verwaltete Instanz erstellen, wird eine Netzwerkzielrichtlinie auf das Subnetz angewendet, um nicht konforme Änderungen am Netzwerksetup zu verhindern. Nachdem die letzte Instanz aus dem Subnetz entfernt wurde, wird auch die Netzwerkzielrichtlinie entfernt.
@@ -300,6 +300,8 @@ Stellen Sie SQL Managed Instance in einem dedizierten Subnetz im virtuellen Netz
 ||||
 
 \* MI-SUBNETZ bezieht sich auf den IP-Adressbereich für das Subnetz in der Form „x.x.x.x/y“. Diese Informationen finden Sie im Azure-Portal in den Subnetzeigenschaften.
+
+\** Wenn die Zieladresse die Adresse von einem der Azure-Dienste ist, leitet Azure den Datenverkehr über das Azure-Backbonenetzwerk direkt an den Dienst weiter, und nicht über das Internet. Der Datenverkehr zwischen Azure-Diensten wird nicht über das Internet übertragen. Dies gilt unabhängig davon, in welcher Azure-Region das virtuelle Netzwerk vorhanden ist oder in welcher Azure-Region eine Instanz des Azure-Diensts bereitgestellt wird. Weitere Informationen finden Sie auf der [UDR-Dokumentationsseite](../../virtual-network/virtual-networks-udr-overview.md).
 
 Darüber hinaus können Sie der Routingtabelle Einträge hinzufügen, um Datenverkehr mit lokalen privaten IP-Bereichen als Ziel über ein virtuelles Netzwerkgateway oder ein virtuelles Netzwerkgerät (Network Appliance, NVA) zu leiten.
 

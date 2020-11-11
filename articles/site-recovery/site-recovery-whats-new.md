@@ -3,12 +3,12 @@ title: Neuerungen in Azure Site Recovery
 description: Enthält eine Übersicht über die neuen Features und die neuesten Updates im Azure Site Recovery-Dienst.
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c35c8e041e47f02d53c680b5812b10d25d75a67
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 2e85ee19012f6ae13c18e26b3aa0b5ae28bcaade
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425703"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341347"
 ---
 # <a name="whats-new-in-site-recovery"></a>Neuerungen in Site Recovery
 
@@ -31,6 +31,7 @@ Für Site Recovery-Komponenten werden N-4 Versionen unterstützt, wobei N die zu
 
 [Weitere Informationen](service-updates-how-to.md) zur Updateinstallation und -unterstützung
 
+## <a name="updates-october-2020"></a>Updates (Oktober 2020)
 
 ### <a name="update-rollup-51"></a>Updaterollup 51
 
@@ -41,7 +42,9 @@ Das [Updaterollup 51](https://support.microsoft.com/help/4590304/update-rollup-
 **Anbieter und Agents** | Updates für Site Recovery-Agents und -Anbieter (wie im Rollup beschrieben).
 **Problemkorrekturen/Verbesserungen** | Im Rollup sind verschiedene Fixes und Verbesserungen beschrieben, darunter auch die neue Linux-Unterstützung für den Mobilitätsdienst.
 
-## <a name="update-september-2020"></a>Update (September 2020)
+## <a name="updates-september-2020"></a>Updates (September 2020)
+
+### <a name="update-rollup-50"></a>Updaterollup 50
 
 Das [Updaterollup 50](https://support.microsoft.com/help/4582666/update-rollup-50-for-azure-site-recovery) umfasst folgende Updates:
 

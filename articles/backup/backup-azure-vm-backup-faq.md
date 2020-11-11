@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: f318d785fdfa5b72050bdd805ecfe801d307b9a7
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
+ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172837"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "92925576"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -76,6 +76,10 @@ Ja. Sie können den Sicherungsauftrag im Status **Momentaufnahme wird erstellt**
 Wenn Sie die vom Azure Backup-Dienst erstellte Ressourcengruppe sperren, treten bei Sicherungen Fehler auf, da ein Limit von 18 Wiederherstellungspunkten besteht.
 
 Entfernen Sie die Sperre, und löschen Sie die Wiederherstellungspunktsammlung aus dieser Ressourcengruppe, damit zukünftige Sicherungen erfolgreich ausgeführt werden. [Führen Sie diese Schritte aus](backup-azure-troubleshoot-vm-backup-fails-snapshot-timeout.md#clean-up-restore-point-collection-from-azure-portal), um die Wiederherstellungspunktsammlung zu entfernen.
+
+### <a name="i-have-a-lock-at-the-resource-group-level-that-contains-all-the-resources-related-to-my-virtual-machine-will-my-backup-work"></a>Ich verfüge über eine Sperre auf Ressourcengruppenebene, die alle Ressourcen meines virtuellen Computers umfasst. Funktioniert meine Sicherung?
+
+Azure Backup erstellt eine separate Ressourcengruppe im Format `AzureBackupRG_<geo>_<number>`, um ResourcePointCollections-Objekte zu speichern. Da sich diese Ressourcengruppe im Besitz des Diensts befindet, führt das Sperren bei Sicherungen zu einem Fehler. Sperren können nur auf von Kunden erstellte Ressourcengruppen angewandt werden.
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
 
@@ -209,4 +213,4 @@ Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherung
 
 Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie den Link zu ihrer Sicherungsrichtlinie auswählen, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
 
-Sie können auch den [Sicherungs-Explorer](./monitor-azure-backup-with-backup-explorer.md) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.
+Sie können auch den [Sicherungs-Explorer](./monitor-azure-backup-with-backup-explorer.md) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente** , und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.

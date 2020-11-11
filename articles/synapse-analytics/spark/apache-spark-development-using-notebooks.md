@@ -10,12 +10,12 @@ ms.date: 10/19/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 02f304af10ae1907326d3f77f318a058155a4c21
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ea765ae5ff93625cc6a0ed36776a8925e5fce836
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738747"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93311134"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>Erstellen, Entwickeln und Verwalten von Synapse Studio-Notebooks (Vorschauversion) in Azure Synapse Analytics
 
@@ -86,7 +86,7 @@ Die folgende Abbildung zeigt ein Beispiel dafür, wie Sie eine PySpark-Abfrage m
 
 Sie können nicht direkt auf Daten oder Variablen in verschiedenen Sprachen einem Synapse Studio-Notebook verweisen. In Spark kann auf eine temporäre Tabelle in verschiedenen Sprachen verwiesen werden. Im Folgenden finden Sie ein Beispiel, wie Sie einen `Scala`-Datenrahmen in `PySpark` und `SparkSQL` mittels einer temporären Spark-Tabelle als Problemumgehung lesen können.
 
-1. In Zelle 1 lesen Sie einen Datenrahmen aus dem SQL-Poolconnector mithilfe von Scala, und erstellen Sie eine temporäre Tabelle.
+1. Lesen Sie in Zelle 1 einen Datenrahmen von einem SQL-Poolconnector mithilfe von Scala, und erstellen Sie eine temporäre Tabelle.
 
    ```scala
    %%scala
@@ -203,7 +203,7 @@ Unterhalb der Zelle wird ein schrittweiser Zellenausführungsstatus angezeigt, d
 
 ### <a name="spark-progress-indicator"></a>Spark-Statusanzeige
 
-Ein Azure Synapse Studio-Notebook ist vollständig Spark-basiert. Codezellen werden remote im Spark-Pool ausgeführt. Eine Spark-Auftragsstatusanzeige wird mit einem Statusbalken in Echtzeit angezeigt, um Ihnen den Status der Auftragsausführung zu verdeutlichen.
+Ein Azure Synapse Studio-Notebook ist vollständig Spark-basiert. Codezellen werden im serverlosen Apache Spark-Pool remote ausgeführt. Eine Spark-Auftragsstatusanzeige wird mit einem Statusbalken in Echtzeit angezeigt, um Ihnen den Status der Auftragsausführung zu verdeutlichen.
 Anhand der Anzahl der Aufgaben pro Auftrag oder Phase können Sie die parallele Ebene Ihres Spark-Auftrags identifizieren. Sie können außerdem die Spark-Benutzeroberfläche eines spezifischen Auftrags (oder einer Phase) erweitern, indem Sie den Link im Auftragsnamen (oder Phasennamen) auswählen.
 
 
@@ -277,7 +277,7 @@ Sie können auf Daten im primären Speicherkonto direkt zugreifen. Es besteht ke
 
 Eine tabellarische Ergebnisansicht wird zusammen mit der Möglichkeit zum Erstellen eines Balkendiagramms, eines Liniendiagramms, eines Kreisdiagramms, eines Punktdiagramms und eines Flächendiagramms bereitgestellt. Sie können Ihre Daten visualisieren, ohne Code schreiben zu müssen. Die Diagramme lassen sich in den **Diagrammoptionen** anpassen. 
 
-Die Ausgabe der **%%sql** -Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können <code>display(df)</code> für Spark-Datenrahmen, Pandas-Datenrahmen, Listen oder die Funktion „Resilient Distributed Datasets“ (RDD) aufrufen, um die gerenderte Tabellenansicht zu erzeugen.
+Die Ausgabe der **%%sql** -Magic-Befehle wird standardmäßig in der gerenderten Tabellenansicht angezeigt. Sie können <code>display(df)</code> für Spark-Datenrahmen, Pandas-Datenrahmen, Listen oder die Funktion „Resilient Distributed Datasets“ (RDD) aufrufen, um die gerenderte Tabellensicht zu erzeugen.
 
    [![integrierte-Diagramme](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png)](./media/apache-spark-development-using-notebooks/synapse-builtin-charts.png#lightbox)
 

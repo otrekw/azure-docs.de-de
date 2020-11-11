@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 4baafe9f3356e3134626c819c47939b96ab48a79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e72a98ddd5219662c8850326b4f43b25e545177
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595838"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348150"
 ---
 # <a name="create-an-application-gateway-that-hosts-multiple-web-sites-using-the-azure-cli"></a>Erstellen eines Anwendungsgateways als Host für mehrere Websites mit der Azure-Befehlszeilenschnittstelle
 
@@ -97,11 +97,11 @@ az network application-gateway create \
 
 Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
-- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
-- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
-- *appGatewayFrontendIP*: Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
-- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
+- *appGatewayBackendPool* : Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings* : Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener* : Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP* : Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
+- *rule1* :Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
 ### <a name="add-the-backend-pools"></a>Hinzufügen der Back-End-Pools
 
@@ -124,7 +124,7 @@ Fügen Sie mit [az network application-gateway http-listener create](/cli/azure/
 
 >[!NOTE]
 > Mit der SKU für Application Gateway oder WAF v2 können Sie auch bis zu fünf Hostnamen pro Listener konfigurieren und Platzhalterzeichen im Hostnamen verwenden. Weitere Informationen finden Sie unter [Hostnamen mit Platzhalterzeichen im Listener](multiple-site-overview.md#wildcard-host-names-in-listener-preview).
->Um in der Azure CLI mehrere Hostnamen und Platzhalterzeichen in einem Listener zu verwenden, müssen Sie `--host-names` statt `--host-name` verwenden. Sie können bis zu fünf Hostnamen als durch Trennzeichen getrennte Werte angeben. Zum Beispiel, `--host-names "*.contoso.com,*.fabrikam.com"`
+>Um in der Azure CLI mehrere Hostnamen und Platzhalterzeichen in einem Listener zu verwenden, müssen Sie `--host-names` statt `--host-name` verwenden. Sie können bis zu fünf Hostnamen als durch Leerzeichen getrennte Werte angeben. Zum Beispiel, `--host-names "*.contoso.com *.fabrikam.com"`
 
 ```azurecli-interactive
 az network application-gateway http-listener create \
@@ -175,7 +175,7 @@ az network application-gateway rule delete \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei Back-End-Pools im Anwendungsgateway unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren.
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei Back-End-Pools im Anwendungsgateway unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1* , *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie IIS installieren.
 
 ```azurecli-interactive
 for i in `seq 1 2`; do
@@ -225,7 +225,7 @@ done
 
 ## <a name="create-a-cname-record-in-your-domain"></a>Erstellen eines CNAME-Eintrags in Ihrer Domäne
 
-Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn*-Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
+Nachdem das Anwendungsgateway mit der zugehörigen öffentlichen IP-Adresse erstellt wurde, können Sie die DNS-Adresse abrufen und zum Erstellen eines CNAME-Eintrags in Ihrer Domäne verwenden. Sie können [az network public-ip show](/cli/azure/network/public-ip#az-network-public-ip-show) verwenden, um die DNS-Adresse des Anwendungsgateways abzurufen. Kopieren Sie den *fqdn* -Wert der DNSSettings, und verwenden Sie ihn als Wert für den erstellten CNAME-Eintrag. 
 
 ```azurecli-interactive
 az network public-ip show \

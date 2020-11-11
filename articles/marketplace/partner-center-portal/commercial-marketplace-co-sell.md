@@ -1,22 +1,22 @@
 ---
 title: Co-Selling-Option im Partner Center | Azure Marketplace
-description: Die von Ihnen auf der Registerkarte „Co-Selling“ Ihres Angebots angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten.
+description: Die auf der Registerkarte „Co-Selling“ Ihres Angebots angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: palanis-MSFT
 ms.author: palanis
-ms.date: 10/19/2020
-ms.openlocfilehash: ec076567d06a8237db2a708a5276a358f64a8388
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.date: 10/28/2020
+ms.openlocfilehash: 2a648b4f4c614fc64fa7817102215720e51abe7f
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204910"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93095599"
 ---
 # <a name="co-sell-option-in-partner-center"></a>Co-Selling-Option im Partner Center
 
-Die Bereitstellung von Informationen auf der Registerkarte „Co-Selling“ ist völlig optional. Es ist erforderlich, um den Status „Bereit für Co-Selling“ (Co-sell Ready) und „Bereit für IP-Co-Selling“ (IP Co-sell Ready) zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihre Lösung zu erfahren, wenn sie deren Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Über Microsoft verkaufen](https://partner.microsoft.com/membership/sell-with-microsoft).
+Die Bereitstellung von Informationen auf der Registerkarte „Co-Selling“ ist völlig optional. Sie sind erforderlich, um die Status „Co-sell Ready“ und „IP Co-sell Incentivized“ zu erreichen. Die von Ihnen angegebenen Informationen werden von den Microsoft-Vertriebsteams verwendet, um mehr über Ihr Angebot zu erfahren, wenn sie dessen Eignung für die Anforderungen Ihrer Kunden auswerten. Sie sind nicht direkt für Kunden verfügbar. Weitere Informationen finden Sie unter [Über Microsoft verkaufen](https://partner.microsoft.com/membership/sell-with-microsoft).
 
 Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen verfügbar. Die Unterstützung wird mit der Zeit auf zusätzliche Angebotstypen ausgeweitet.
 
@@ -36,7 +36,7 @@ Die Co-Selling-Option im Partner Center ist zurzeit für einige Angebotstypen ve
 
 ## <a name="listing"></a>Auflisten
 
-Mithilfe von Co-Selling-Listings können Microsoft-Vertriebsteams Ihre Lösung für eine größere Zielgruppe vermarkten. *(Alle Felder erforderlich)*
+Mithilfe von Co-Selling-Listings können Microsoft-Vertriebsteams Ihr Angebot für eine größere Zielgruppe vermarkten. *(Alle Felder erforderlich)*
 
 - Wählen Sie die Microsoft-Plattformen aus, für die Ihr Angebot erstellt wurde, durch die es erweitert wird oder in die es integriert werden kann.
 - Wählen Sie Zielmarktsegmente für Ihr Angebot aus.
@@ -67,13 +67,13 @@ Sie haben die Möglichkeit, Begleitdokumente bereitzustellen, die Microsoft verw
 | **Dokumente**    | **Beschreibung**  |
 | :------------------- | :-------------------|
 | *Einseitiges Dokument des Kunden (erforderlich)* | Kundenspezifische Beschreibung Ihres Angebots. Microsoft-Vertriebsteams können diese Informationen an Kunden weitergeben, um festzustellen, ob Ihr Angebot gut zu ihnen passt und um sicherzustellen, dass es kundengerecht ist. <br> <br> Verwenden Sie eine der relevanten Vorlagen, die im Partner Center zur Verfügung stehen: <br> <ul> <li> Einseitige Microsoft Azure-Vorlage </li> <li> Einseitige Microsoft Dynamics 365-Vorlage </li> <li> Einseitige Microsoft 365-Vorlage </li> <li> Einseitige Windows 10-Vorlage </li> </ul> |
-| *Kundenpräsentation (erforderlich)* | Präsentation zum Vorstellen Ihrer Lösung und deren Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für den Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit den Kunden teilen, um den Nutzen zu vermitteln, den beide Unternehmen bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihre Lösung leistet, auf welche Weise sie Kunden helfen kann, in welchen Branchen die Lösung eingesetzt wird und wie sie sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
-| *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft diese Lösung in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
-| *Überprüfbare Kundengewinne* | Konkrete Beispiele für den Erfolg von Kunden nach dem Einsatz Ihrer Lösung. |
-| *Kanalpräsentation* | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihre Lösung zu erfahren und ihre Vertriebsteams darauf vorzubereiten, Ihr Angebot zu verkaufen. Dazu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, Dokumentationen und Supportinformationen. |
-| *Referenzarchitekturdiagramme* | Ein Dokument mit dem Modell, das das vom Partner erstellte IP zusammen mit seiner Beziehung zu Microsoft Cloud Services darstellt und wie es die technischen Anforderungen des IP-Co-Selling-Programms erfüllt. |
-| *Weitere Dokumente* | Optional können Sie bis zu fünf zusätzliche Dokumente oder Videos hochladen, um Microsoft-Vertriebsteams und Vertriebspartnern zu helfen, mehr über Ihre Lösung, Ihr Unternehmen und/oder Ihre Unterscheidungsmerkmale zu erfahren. |
-| *URL für externen Verweis* | Der Link zur Website Ihres Produkts, auf der Microsoft-Vertriebsteams und Vertriebspartner mehr über Ihre Lösung erfahren können. |
+| *Kundenpräsentation (erforderlich)* | Präsentation zum Vorstellen Ihres Angebots und dessen Leistungsversprechen. Nachdem Sie sichergestellt haben, dass Ihr Angebot für Kunden bereit ist, können die Microsoft-Vertriebsteams die Präsentation mit Kunden teilen, um den Nutzen zu vermitteln, den Ihr Unternehmen und Microsoft bei der Bereitstellung einer gemeinsamen Lösung einbringen. Die Präsentation sollte darlegen, was Ihr Angebot leistet, auf welche Weise es Kunden helfen kann, in welchen Branchen es eingesetzt wird und wodurch es sich im Vergleich zu konkurrierenden Lösungen auszeichnet. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage.|
+| *Kundenfallstudie* | Diese Informationen zeigen einem potenziellen Kunden, wie Sie und Microsoft dieses Angebot in früheren Fällen erfolgreich bereitgestellt haben. <br> <br> Verwenden Sie die im Partner Center verfügbare Vorlage. |
+| *Überprüfbare Kundengewinne* | Konkrete Beispiele für den Erfolg von Kunden nach der Bereitstellung Ihres Angebots. |
+| *Kanalpräsentation* | Eine Präsentation mit Informationen, die Vertriebspartnern helfen, mehr über Ihr Angebot zu erfahren und ihre Vertriebsteams darauf vorzubereiten, es zu verkaufen. Dazu gehören in der Regel eine Kurzpräsentation, Informationen zu den Zielkunden, Fragen an die Kunden, Diskussionspunkte und Links zu Videos, zur Dokumentation und zu Supportinformationen. |
+| *Diagramm zur Referenzarchitektur* | Ein Diagramm mit dem Modell, das Ihr Angebot zusammen mit seiner Beziehung zu Microsoft Cloud Services darstellt und zeigt, wie es die technischen Anforderungen des IP-Co-Selling-Programms erfüllt. [Erfahren Sie hier mehr über das Diagramm zur Referenzarchitektur.](#reference-architecture-diagram) |
+| *Weitere Dokumente* | Optional können Sie bis zu fünf zusätzliche Dokumente oder Videos hochladen, um Microsoft-Vertriebsteams und Vertriebspartnern zu helfen, mehr über Ihr Angebot, Ihr Unternehmen und/oder Ihre Unterscheidungsmerkmale zu erfahren. |
+| *URL für externen Verweis* | Der Link zur Website Ihres Produkts, auf der Microsoft-Vertriebsteams und Vertriebspartner mehr über Ihr Angebot erfahren können. |
 
 ## <a name="contacts"></a>Kontakte
 
@@ -90,16 +90,38 @@ Sie können auch Ihre bestehende Kontaktliste für ein Angebot exportieren und d
 
     | **Rolle**    | **Beschreibung**  |
     | :------------------- | :-------------------|
-    | *:::no-loc text="Partner marketing":::* | Diese Rolle konzentriert sich auf die Vermarktung Ihrer Lösung und die Zusammenarbeit bei Marketingaktivitäten mit Microsoft-Vertriebsteams und Vertriebspartnern. Der Hauptansprechpartner für Marketingaktivitäten und Angebotsinhalte wie Produktbeschreibungen, Bilder und Videos. |
-    | *:::no-loc text="Partner sales":::* | Diese Rolle konzentriert sich auf den Vertrieb Ihrer Lösung und die Zusammenarbeit beim Vertrieb mit Microsoft-Vertriebsteams und Vertriebspartnern. Geben Sie bei Co-Selling-Lösungen mindestens einen Partnervertriebskontakt pro Region an, in der Sie für das Co-Selling bereit sein möchten. Derselbe Partnervertriebskontakt kann mehrere Regionen abdecken. |
+    | *:::no-loc text="Partner marketing":::* | Diese Rolle konzentriert sich auf die Vermarktung Ihres Angebots und die Zusammenarbeit bei Marketingaktivitäten mit Microsoft-Vertriebsteams und Vertriebspartnern. Der Hauptansprechpartner für Marketingaktivitäten und Angebotsinhalte wie Produktbeschreibungen, Bilder und Videos. |
+    | *:::no-loc text="Partner sales":::* | Diese Rolle konzentriert sich auf den Vertrieb Ihres Angebots und die Zusammenarbeit beim Vertrieb mit Microsoft-Vertriebsteams und Vertriebspartnern. Geben Sie mindestens einen Partnervertriebskontakt pro Region an, in der Sie Ihr Angebot durch Co-Selling vermarkten möchten. Derselbe Partnervertriebskontakt kann mehrere Regionen abdecken. |
     | *:::no-loc text="Partner technical sales":::* | Unterstützt technische Überlegungen zur Architektur und Bereitstellung während des Vertriebszyklus, der Integration nach dem Verkauf und der Bereitstellungszeiträume. |
-    | *:::no-loc text="Partner customer success manager":::* | Unterstützt in der Regel Kunden nach der Bereitstellung, um ihnen zu helfen, Ihre Lösung optimal zu nutzen und ihre Präsenz im Unternehmen des Kunden auszuweiten. |
+    | *:::no-loc text="Partner customer success manager":::* | Unterstützt in der Regel Kunden nach der Bereitstellung, um ihnen zu helfen, Ihr Angebot optimal zu nutzen und ihre Präsenz im Unternehmen des Kunden auszuweiten. |
 
 * *Länder/Regionen (erforderlich):*  Verwenden Sie beim Ausfüllen der Vorlage die [zweistelligen Länder-/Regionscodes wie aufgeführt](./commercial-marketplace-co-sell-countries.md). Wenn der Kontakt alle Länder/Regionen abdeckt, verwenden Sie den dreistelligen Code „OOO“. Wenn ein Kontakt mehr als ein Land bzw. eine Region umfasst, geben Sie jeden der zweistelligen Codes durch ein Komma getrennt ein (geben Sie z. B. „US, CA, FR“ ohne Anführungszeichen in die Vorlage ein).
 
     Die Länder/Regionen sollten das Gebiet der einzelnen Kontakte widerspiegeln. Microsoft-Vertriebsteams und Vertriebspartner verwenden diese Informationen für die Anforderung von Informationen oder die Zusammenarbeit bei Verkäufen innerhalb des jeweiligen Landes bzw. innerhalb der jeweiligen Region.
 
 * *Bundesländer/Kantone (optional):*  Verwenden Sie beim Ausfüllen der Vorlage das XX-XX-Format, wie in der Tabelle [Bundesländer/Kantone](./commercial-marketplace-co-sell-states.md) aufgeführt.
+
+## <a name="reference-architecture-diagram"></a>Diagramm zur Referenzarchitektur
+
+### <a name="what-is-a-reference-architecture--diagram"></a>Was ist ein Diagramm zur Referenzarchitektur?
+Das Diagramm zur Referenzarchitektur ist ein Modell, das die Infrastruktur darstellt, auf der Ihr Angebot basiert. Außerdem zeigt es, wie Ihr Angebot unsere Clouddienste gemäß den technischen Anforderungen des IP-Co-Selling-Programms nutzt. Es ist nicht darauf ausgelegt, die Qualität der Architektur zu bewerten, sondern die Nutzung der unterschiedlichen Dienste zu veranschaulichen.
+
+Das Dokument kann mit verschiedenen Tools erstellt werden. Microsoft Visio wird empfohlen, da es mehrere Schablonen für Azure-Architekturmodelle enthält.
+
+Einen hilfreichen Ausgangspunkt zum Entwickeln eines Diagramms zur Referenzarchitektur bieten die [Azure-Architekturmodelle](https://docs.microsoft.com/azure/architecture/browse/).
+
+### <a name="typical-components-of-a-reference-architecture-diagram"></a>Typische Komponenten eines Diagramms zur Referenzarchitektur
+- Clouddienste, die Ihr Angebot hosten und mit ihm interagieren, einschließlich derjenigen, die Azure-Verbrauch generieren
+- Die von Ihrem Angebot genutzten Datenverbindungen, Datenschichten und Datendienste
+- Clouddienste zum Steuern von Sicherheit, Authentifizierung und Benutzern des Angebots
+- Benutzeroberflächen und andere Dienste, über die Endbenutzer das Angebot einsetzen
+- Hybridkonnektivität und/oder lokale Konnektivität sowie Integrationen 
+
+### <a name="example-reference-architecture-diagram"></a>Beispieldiagramm zur Referenzarchitektur
+
+:::image type="content" source="media/co-sell-arch-diagram.png" alt-text="Dieses Bild ist ein Beispieldiagramm für eine Co-Selling-Architektur.":::
+
+(Das obige Beispieldiagramm zur Referenzarchitektur stellt einen Chatbot für eine vertikale Branche dar, der in Intranetwebsites integriert werden kann. Dies hilft dabei, Bedarfsszenarien über einen Algorithmus für maschinelles Lernen vorherzusagen, der Planungsdaten von Lieferketten und aus der Fertigung aus verschiedenen ERP-Systemen einbezieht. Der Bot soll z. B. die Frage beantworten, wann ein Vertriebsmitarbeiter mögliche Liefertermine für eine Bestellung committen kann.)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

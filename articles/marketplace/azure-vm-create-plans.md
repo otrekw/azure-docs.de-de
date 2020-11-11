@@ -7,12 +7,12 @@ ms.topic: how-to
 author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: 922f4a2785a0b7260bcd0aae19c0172a2fa7a782
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: bc5e98484560fcc15e0ea3e289069c84687f158c
+ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283208"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93040557"
 ---
 # <a name="how-to-create-plans-for-a-virtual-machine-offer"></a>Erstellen von Plänen für ein VM-Angebot
 
@@ -44,7 +44,7 @@ Erstellen Sie im Feld **Plan-ID** für jeden Plan im Angebot eine eindeutige Pla
 
 Geben Sie im Feld **Planname** einen Namen für diesen Plan ein. Kunden sehen diesen Namen, wenn sie sich für einen der Pläne in Ihrem Angebot interessieren. Erstellen Sie einen eindeutigen Namen, der die Unterschiede der einzelnen Pläne deutlich macht. Beispielsweise könnten Sie **Windows Server** mit den Plänen *Nutzungsbasierte Bezahlung* , *BYOL* , *Erweitert* und *Enterprise* verwenden.
 
-Klicken Sie auf **Erstellen** .
+Klicken Sie auf **Erstellen**.
 
 ## <a name="plan-setup"></a>Plansetup
 
@@ -184,6 +184,30 @@ Wählen Sie unter **Disk deployment option** (Datenträgerbereitstellungs-Option
 ### <a name="properties"></a>Eigenschaften
 
 Wählen Sie unter **Support Accelerated Networking** (Beschleunigten Netzwerkbetrieb unterstützen) aus, ob Ihre VM den [beschleunigten Netzwerkbetrieb](https://go.microsoft.com/fwlink/?linkid=2124513) unterstützt.
+
+### <a name="generations"></a>Generationen
+
+Beim Erstellen einer VM wird die verwendete virtuelle Hardware definiert. Basierend auf den Anforderungen Ihres Kunden können Sie VMs der Generation 1, der Generation 2 oder beider Generationen veröffentlichen.
+
+1. Wenn Sie ein neues Angebot erstellen, wählen Sie einen **Generationstyp** aus und geben Details zum angeforderten Image ein:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-image-details.png" alt-text="Ansicht des Dropdownfelds „Generation“":::
+
+2. Wenn Sie dem Plan eine weitere Generation hinzufügen möchten, wählen Sie **Generation hinzufügen** aus:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-add.png" alt-text="Ansicht des Links „Generation hinzufügen“":::
+
+    Geben Sie anschließend Details zur Generation ein:
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-details.png" alt-text="Ansicht des Fensters mit Details zur Generation":::
+
+    Die ausgewählte **Generations-ID** wird den Kunden z. B. in Produkt-URLs und ARM-Vorlagen (falls zutreffend) angezeigt. Verwenden Sie nur Kleinbuchstaben, alphanumerische Zeichen, Bindestriche und Unterstriche. Nach der Veröffentlichung ist keine Änderung mehr möglich.
+
+3. Wenn Sie eine vorhandene VM, die bereits mit Generation 1 veröffentlicht wurde, aktualisieren möchten, bearbeiten Sie einfach die Details auf der Seite **Technische Konfiguration** :
+
+    :::image type="content" source="./media/create-vm/azure-vm-generations-updating.png" alt-text="Ansicht der Seite „Technische Konfiguration“ für den Plan":::
+
+Weitere Informationen zu den Unterschieden zwischen den Funktionen von Generation 1 und Generation 2 finden Sie unter [Unterstützung für VMs der Generation 2 in Azure](../virtual-machines/generation-2.md).
 
 ### <a name="vm-images"></a>VM-Images
 

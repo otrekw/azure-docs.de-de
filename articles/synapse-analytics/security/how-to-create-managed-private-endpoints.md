@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: fae958542f1bc391f285104d80d1e19131470abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 919b8fb89e9189df7cb1964cbe0149dc6945ad2d
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87065477"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93323164"
 ---
 # <a name="create-a-managed-private-endpoint-to-your-data-source-preview"></a>Erstellen eines verwalteten privaten Endpunkts zu Ihrer Datenquelle (Vorschau)
 
@@ -21,12 +21,11 @@ In diesem Artikel erfahren Sie, wie Sie einen verwalteten privaten Endpunkt zu I
 
 ## <a name="step-1-open-your-azure-synapse-workspace-in-azure-portal"></a>Schritt 1: Öffnen Ihres Azure Synapse-Arbeitsbereichs im Azure-Portal
 
-Sie können einen verwalteten privaten Endpunkt zu Ihrer Datenquelle aus Azure Synapse Studio erstellen. Wählen Sie im Azure-Portal die Registerkarte **Übersicht** aus, und wählen Sie **Synapse Studio starten** aus.
-![Starten von Azure Synapse Studio](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-1.png)
+Sie können einen verwalteten privaten Endpunkt zu Ihrer Datenquelle aus Azure Synapse Studio erstellen. Wählen Sie im Azure-Portal die Registerkarte **Übersicht** und dann im Abschnitt „Erste Schritte“ auf der Karte „Synapse Studio öffnen“ die Option **Öffnen** aus.
 
 ## <a name="step-2-navigate-to-the-managed-virtual-networks-tab-in-synapse-studio"></a>Schritt 2: Navigieren zur Registerkarte „Verwaltete virtuelle Netzwerke“ in Synapse Studio
 
-Wählen Sie in Azure Synapse Studio im linken Navigationsbereich die Registerkarte **Verwalten** aus. Wählen Sie **Verwaltete virtuelle Netzwerke** und dann **+ Neu** aus.
+Wählen Sie in Azure Synapse Studio im linken Navigationsbereich die Registerkarte **Verwalten** aus. Wählen Sie **Verwaltete private Endpunkte** und dann **+ Neu** aus.
 ![Erstellen eines neuen verwalteten privaten Endpunkts](./media/how-to-create-managed-private-endpoints/managed-private-endpoint-2.png)
 
 ## <a name="step-3-select-the-data-source-type"></a>Schritt 3: Auswählen des Datenquellentyps

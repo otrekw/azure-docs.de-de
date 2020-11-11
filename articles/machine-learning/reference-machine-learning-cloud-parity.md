@@ -1,7 +1,7 @@
 ---
 title: Parität zwischen öffentlichen und unabhängigen Regionen
 titleSuffix: Azure Machine Learning
-description: Einige Features von Azure Machine Learning (beispielsweise Features der öffentlichen Vorschau) stehen möglicherweise nur in öffentlichen Cloudregionen zur Verfügung. In diesem Artikel erfahren Sie, welche Features auch in den Regionen „Azure Government“, „Azure Deutschland“ und „Azure China 21Vianet“ verfügbar sind.
+description: In diesem Artikel wird die Featureparität zwischen der öffentlichen Cloud und Azure Government-, Azure Deutschland- und Azure China 21Vianet-Regionen aufgeführt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: andzha
 author: Anurzeuii
 ms.date: 08/24/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddfe1344b235500f0f1ea69b6e3d8c537f96b855
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 0300dab1fa7d0ef0d20c4236cc452135b3ade20e
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426525"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305757"
 ---
 # <a name="azure-machine-learning-sovereign-cloud-parity"></a>Sovereign Cloud-Parität für Azure Machine Learning
 

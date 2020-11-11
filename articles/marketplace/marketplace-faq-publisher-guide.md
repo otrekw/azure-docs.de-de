@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: keferna
 ms.author: keferna
 ms.date: 09/11/2020
-ms.openlocfilehash: a706ced5c65b9de3cb3bfdb623d810bb1ea43623
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: a5c5d7ae4dbf1126d171c78bbd4e353f11402260
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91707981"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93126718"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -46,7 +46,7 @@ Weitere Informationen finden Sie im [Hub für den kommerziellen Microsoft-Market
 
 ### <a name="is-there-a-listing-fee-for-the-microsoft-commercial-marketplace"></a>Gibt es eine Gebühr für die Auflistung im kommerziellen Microsoft-Marketplace?
 
-Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](https://docs.microsoft.com/azure/marketplace/marketplace-co-sell)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
+Nein, es fallen keine Kosten für die Veröffentlichung von Angeboten in unserem kommerziellen Marketplace an. Wir behalten einen geringen Prozentsatz des Umsatzes als Transaktionsgebühr ein und investieren ihn in das Marketplace-Prämienprogramm, in die Plattforminnovation und den Betrieb des kommerziellen Marketplace. Diese Transaktionsgebühr wird für [Azure-IP-Co-Selling](./marketplace-co-sell.md)-Incentive-Angebote und für kostenpflichtige SaaS-Angebote in AppSource reduziert, die einer Microsoft Teams-App oder mindestens zwei Microsoft 365-Add-Ins (Excel, PowerPoint, Word, Outlook und SharePoint) zugeordnet sind.
 
 ### <a name="how-do-i-sign-up-to-be-a-publisher-in-the-microsoft-commercial-marketplace"></a>Wie registriere ich mich als Herausgeber im kommerziellen Microsoft-Marketplace?
 
@@ -99,14 +99,14 @@ Ja, der Azure Government Marketplace ist in Azure Government-Regionen verfügbar
 
 Es gibt vier relevante Rollen, die den Zugriff auf das Partner Center steuern.
 
-- *Manager*: Bietet Berechtigungen zum Verwalten von Partner Center-Benutzern im Verzeichnis sowie zum Erstellen und Aktualisieren von Angeboten.
-- *Entwickler*: Ermöglicht einem Benutzer das Erstellen und Aktualisieren von Angeboten.
-- *Mitwirkender im Finanzbereich*: Bietet Berechtigungen zum Anzeigen von Auszahlungsberichten.
+- *Manager* : Bietet Berechtigungen zum Verwalten von Partner Center-Benutzern im Verzeichnis sowie zum Erstellen und Aktualisieren von Angeboten.
+- *Entwickler* : Ermöglicht einem Benutzer das Erstellen und Aktualisieren von Angeboten.
+- *Mitwirkender im Finanzbereich* : Bietet Berechtigungen zum Anzeigen von Auszahlungsberichten.
 - *Besitzer:* Kann das Auszahlungskonto und das Steuerprofil einrichten. Der Benutzer, der die Herausgebervereinbarung akzeptiert hat, wird standardmäßig der Besitzer.
 
 Zum Erstellen neuer Benutzerkonten oder zum Einladen von Gastkonten im zugrunde liegenden Verzeichnis sind *globale Administratorberechtigungen* für Azure Active Directory (Azure AD) erforderlich. Partner Center wendet Azure AD auf das Identitätsmodell an, und die Azure AD-Instanz einer Organisation wird häufig von IT- oder Sicherheitsteams der Organisation verwaltet und gesteuert.
 
-Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](https://docs.microsoft.com/partner-center/permissions-overview).
+Weitere Informationen finden Sie unter [Zuweisen von Rollen und Berechtigungen zu Benutzern](/partner-center/permissions-overview).
 
 ### <a name="do-customers-need-a-subscription-for-microsoft-azure-cloud-services"></a>Brauchen Kunden ein Abonnement für Microsoft Azure Cloud Services?
 
@@ -195,7 +195,7 @@ Obwohl nicht alle Angebotstypen transaktionsfähig sind, können Sie dennoch Mil
 Ja, und es gibt sogar mehrere Möglichkeiten, kostenlose Testversionen anzubieten:
 
 - Die bevorzugte Methode ist das Hinzufügen eines kostenlosen Zeitraums zu Beginn eines kostenpflichtigen SaaS-Angebots (ein Monat) oder VM-Image-Angebots (ein oder drei Monate). Den Kunden werden Kosten von 0,00 (null) USD berechnet, und nach Ende des Testzeitraums wird das Abonnement automatisch in ein kostenpflichtiges Abonnement umgewandelt. Die Vertragslaufzeit beginnt dann an diesem Punkt.
-- Sie können eine SaaS-Angebotsliste erstellen, über die der Kunde zu einer Webadresse Ihrer Wahl geführt wird, um eine Testversion außerhalb des kommerziellen Marketplace zu starten. Einige Angebotstypen unterstützen eine *Testversion*, mit der Sie dem Kunden eine Demo zur Verfügung stellen können.
+- Sie können eine SaaS-Angebotsliste erstellen, über die der Kunde zu einer Webadresse Ihrer Wahl geführt wird, um eine Testversion außerhalb des kommerziellen Marketplace zu starten. Einige Angebotstypen unterstützen eine *Testversion* , mit der Sie dem Kunden eine Demo zur Verfügung stellen können.
 
 ### <a name="who-pays-for-the-underlying-azure-consumption"></a>Wer zahlt für die zugrunde liegende Azure-Nutzung?
 
@@ -303,7 +303,7 @@ Weitere Informationen finden Sie unter [Einrichten von Auszahlungskonten und Ste
 
 ### <a name="are-returns-and-refunds-supported-with-the-commercial-marketplace"></a>Werden Rückgaben und Rückerstattungen im kommerziellen Marketplace unterstützt?
 
-Um Rückerstattungen zu erhalten, können Kunden Abonnements innerhalb eines festgelegten Zeitraums kündigen. Bei monatlichen Abonnements beträgt die Frist 24 Stunden und bei Jahresabonnements 14 Tage. Angebote, die nach Verbrauch abgerechnet werden, sind nach Verwendung der Lösung nicht erstattungsfähig.
+Kunden können unter bestimmten Bedingungen und für bestimmte Gebühren Rückerstattungen erhalten. Rückerstattungen von wiederkehrenden, monatlich abgerechneten Gebühren müssen innerhalb von 24 Stunden nach dem Kauf oder einer Verlängerung beantragt werden. Auf dieselbe Weise müssen Rückerstattungen von wiederkehrenden, jährlich abgerechneten Gebühren innerhalb von 14 Tagen nach dem Kauf oder einer Verlängerung beantragt werden. Diese Art der Rückerstattung gilt nicht für Nutzungsgebühren (die sich aus Angeboten für virtuelle Computer oder einer getakteten Abrechnung ergeben).
 
 ## <a name="resources"></a>Ressourcen
 

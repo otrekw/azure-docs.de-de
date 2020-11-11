@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: ripohane
-ms.openlocfilehash: de504cc4209aea19925c4c3e2385c7feabceedeb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 2ad975840a2eab0ca51dd0a219e5d86c1bd1835c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92781616"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348864"
 ---
 # <a name="azure-queue-storage-reference"></a>Azure Queue Storage-Referenz
 
@@ -89,7 +89,7 @@ Die folgende Tabelle enthält die Referenz- und Beispieldokumentation zu REST-AP
 
 ### <a name="other-rest-reference"></a>Sonstige REST-Referenz
 
-- Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Dateien in und aus dem Blobspeicher importieren und exportieren.
+- Mit der [REST-API für den Azure Storage-Import/-Export](/rest/api/storageimportexport/) können Sie Aufträge zum Übertragen von Daten in und aus Blob Storage importieren und exportieren.
 
 ## <a name="other-languages-and-platforms"></a>Andere Sprachen und Plattformen
 

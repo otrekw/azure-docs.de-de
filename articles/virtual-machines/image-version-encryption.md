@@ -6,14 +6,14 @@ ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/3/2020
 ms.author: cynthn
-ms.openlocfilehash: 73a7090afe771eef82523753c4067399d9f5dd5e
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: e0534fa6eaccbfb9318369e0a4224d84fa8de7c8
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92048082"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93347708"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Vorschau: Verwenden von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von Images
 
@@ -25,7 +25,7 @@ Die serverseitige Verschlüsselung mit kundenseitig verwalteten Schlüsseln verw
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz für Ihr Image verfügen.
+In diesem Artikel wird vorausgesetzt, dass Sie bereits über einen Datenträgerverschlüsselungssatz verfügen, auf den Sie Ihr Image replizieren möchten.
 
 - Wenn Sie nur einen kundenseitig verwalteten Schlüssel verwenden möchten, lesen Sie **Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung** – [Azure-Portal](./disks-enable-customer-managed-keys-portal.md) oder [PowerShell](./windows/disks-enable-customer-managed-keys-powershell.md#set-up-your-azure-key-vault-and-diskencryptionset).
 
@@ -134,7 +134,7 @@ Bei Datenträgern für Daten müssen Sie den Parameter `-DiskEncryptionSetId $se
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI) 
 
-Für die öffentliche Vorschau müssen Sie das Feature zuerst registrieren.
+In der Public Preview müssen Sie das Feature zuerst registrieren. Die Registrierung dauert ca. 30 Minuten.
 
 ```azurecli-interactive
 az feature register --namespace Microsoft.Compute --name SIGEncryption

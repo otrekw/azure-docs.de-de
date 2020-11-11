@@ -5,12 +5,12 @@ author: georgewallace
 ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f236292fff0d0e806e6eec32e1e058cbf67545c
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91840063"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93144476"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Packen einer vorhandenen .NET-App in einen Container für Service Fabric Mesh
 
@@ -19,7 +19,7 @@ In diesem Artikel erfahren Sie, wie Sie eine vorhandene .NET-App mit Service Fab
 In Visual Studio 2017 können Sie ASP.NET- und Konsolenprojekte, die das vollständige .NET Framework verwenden, mit Containerisierungsunterstützung versehen.
 
 > [!NOTE]
-> .NET **Core**-Projekte werden derzeit nicht unterstützt.
+> .NET **Core** -Projekte werden derzeit nicht unterstützt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -45,19 +45,25 @@ git clone https://github.com/MikkelHegn/ContainersSFLab.git
  
 Gehen Sie wie folgt vor, um ein vorhandenes ASP.NET- oder Konsolenprojekt mithilfe von Service Fabric Mesh-Tools mit Containerorchestrierungsunterstützung zu versehen:
 
-Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf den Projektnamen (in diesem Beispiel: **eShopLegacyWebForms**), und wählen Sie anschließend **Hinzufügen** > **Unterstützung für Containerorchestrator** aus.
+Klicken Sie im Projektmappen-Explorer von Visual Studio mit der rechten Maustaste auf den Projektnamen (in diesem Beispiel: **eShopLegacyWebForms** ), und wählen Sie anschließend **Hinzufügen** > **Unterstützung für Containerorchestrator** aus.
 Das Dialogfeld **Unterstützung für Containerorchestrator hinzufügen** wird angezeigt.
 
 ![Visual Studio-Dialogfeld zum Hinzufügen des Containerorchestrators](./media/service-fabric-mesh-howto-containerize-vs/add-container-orchestration-support.png)
 
 Wählen Sie in der Dropdownliste die Option **Service Fabric Mesh** aus, und klicken Sie anschließend auf **OK**.
 
+
+>[!NOTE]
+> Ab dem 2. November 2020 [gelten die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit/) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse erzwungen. Ausführlichere Informationen finden Sie unter [Authentifizieren mit Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
+>
+> Um Ratenlimits zu vermeiden, ersetzen Sie den Standardwert `FROM microsoft/aspnet:4.7.2-windowsservercore-1803 AS base` in Ihrem Dockerfile durch `FROM mcr.microsoft.com/dotnet/framework/aspnet:4.7.2-windowsservercore-1803 AS base`.
+
 Das Tool überprüft daraufhin, ob Docker installiert ist, fügt Ihrem Projekt ein Dockerfile hinzu und ruft ein Docker-Image für Ihr Projekt ab.  
-Ihrer Projektmappe wird ein Service Fabric Mesh-Anwendungsprojekt hinzugefügt. Es enthält Ihre Mesh-Veröffentlichungsprofile und Konfigurationsdateien. Das Projekt hat den gleichen Namen wie Ihr Projekt, am Ende wird allerdings noch „Application“ angehängt (Beispiel: **eShopLegacyWebFormsApplication**). 
+Ihrer Projektmappe wird ein Service Fabric Mesh-Anwendungsprojekt hinzugefügt. Es enthält Ihre Mesh-Veröffentlichungsprofile und Konfigurationsdateien. Das Projekt hat den gleichen Namen wie Ihr Projekt, am Ende wird allerdings noch „Application“ angehängt (Beispiel: **eShopLegacyWebFormsApplication** ). 
 
 In dem neuen Mesh-Projekt sind zwei Ordner interessant:
-- **App Resources**: Enthält YAML-Dateien, die zusätzliche Mesh-Ressourcen wie etwa das Netzwerk beschreiben.
-- **Service Resources**: Enthält die Datei „service.yaml“, die beschreibt, wie Ihre App nach der Bereitstellung ausgeführt werden soll.
+- **App Resources** : Enthält YAML-Dateien, die zusätzliche Mesh-Ressourcen wie etwa das Netzwerk beschreiben.
+- **Service Resources** : Enthält die Datei „service.yaml“, die beschreibt, wie Ihre App nach der Bereitstellung ausgeführt werden soll.
 
 Nachdem Ihrer App die Containerorchestrierungsunterstützung hinzugefügt wurde, können Sie **F5** drücken, um Ihre .NET-App in Ihrem lokalen Service Fabric Mesh-Cluster zu debuggen. Die folgende Abbildung zeigt die in einem Service Fabric Mesh-Cluster ausgeführte ASP.NET-App „eShop“: 
 

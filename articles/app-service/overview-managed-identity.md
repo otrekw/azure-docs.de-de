@@ -7,12 +7,12 @@ ms.date: 05/27/2020
 ms.author: mahender
 ms.reviewer: yevbronsh
 ms.custom: devx-track-csharp, devx-track-python, devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: 82cb8da1a83e5b1e5430ebecf40f5152c824f6aa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 73b09c006b11e7f57dd3833191dd381b7f42a709
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742497"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145836"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Verwenden verwalteter Identitäten für App Service und Azure Functions
 
@@ -33,13 +33,13 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie wie gewohnt zu
 
 1. Erstellen Sie wie gewohnt eine App im Portal. Navigieren Sie im Portal zu dieser App.
 
-2. Wenn Sie eine Funktionen-App verwenden, navigieren Sie zu **Plattformfeatures** . Scrollen Sie bei anderen App-Typen in der linken Navigationsleiste nach unten zur Gruppe **Einstellungen** .
+2. Wenn Sie eine Funktionen-App verwenden, navigieren Sie zu **Plattformfeatures**. Scrollen Sie bei anderen App-Typen in der linken Navigationsleiste nach unten zur Gruppe **Einstellungen**.
 
 3. Wählen Sie **Identität** aus.
 
-4. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein** . Klicken Sie auf **Speichern** .
+4. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**. Klicken Sie auf **Speichern**.
 
-    ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
+    ![Screenshot, der zeigt, wo Sie den Status in „Ein“ ändern und „Speichern“ auswählen](media/app-service-managed-service-identity/system-assigned-managed-identity-in-azure-portal.png)
 
 
 > [!NOTE] 
@@ -198,13 +198,13 @@ Zunächst müssen Sie eine Ressource für eine benutzerseitig zugewiesene Identi
 
 2. Erstellen Sie wie gewohnt eine App im Portal. Navigieren Sie im Portal zu dieser App.
 
-3. Wenn Sie eine Funktionen-App verwenden, navigieren Sie zu **Plattformfeatures** . Scrollen Sie bei anderen App-Typen in der linken Navigationsleiste nach unten zur Gruppe **Einstellungen** .
+3. Wenn Sie eine Funktionen-App verwenden, navigieren Sie zu **Plattformfeatures**. Scrollen Sie bei anderen App-Typen in der linken Navigationsleiste nach unten zur Gruppe **Einstellungen**.
 
 4. Wählen Sie **Identität** aus.
 
-5. Klicken Sie auf der Registerkarte **Benutzerseitig zugewiesen** auf **Hinzufügen** .
+5. Klicken Sie auf der Registerkarte **Benutzerseitig zugewiesen** auf **Hinzufügen**.
 
-6. Suchen Sie nach der zuvor erstellten Identität, und wählen Sie sie aus. Klicken Sie auf **Hinzufügen** .
+6. Suchen Sie nach der zuvor erstellten Identität, und wählen Sie sie aus. Klicken Sie auf **Hinzufügen**.
 
     ![Verwaltete Identität in App Service](media/app-service-managed-service-identity/user-assigned-managed-identity-in-azure-portal.png)
 
