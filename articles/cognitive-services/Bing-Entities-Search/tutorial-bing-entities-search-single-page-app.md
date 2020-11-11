@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 7fa09ee40ca646be6ee104c7b2d4428c92934337
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: f725a4095103a7dcfc3dcdbdcefdc84d16501632
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084628"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366532"
 ---
 # <a name="tutorial-single-page-web-app"></a>Tutorial: Einzelseiten-Web-App
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Mit der Bing-Entitätssuche-API können Sie das Web nach Informationen zu *Entitäten* und *Orten* durchsuchen. Sie können in einer Abfrage einen oder auch beide Ergebnistypen anfordern. Orte und Entitäten sind wie folgt definiert:
 
@@ -57,7 +57,7 @@ In dieser Tutorial-App wird Folgendes veranschaulicht:
 
 Die Tutorialseite ist unabhängig von anderen Komponenten und verwendet keine externen Frameworks oder Stylesheets. Auch Bilddateien kommen nicht zum Einsatz. Die Seite greift nur auf die am häufigsten unterstützten Features für JavaScript zurück und kann in aktuellen Versionen aller gängigen Webbrowser ausgeführt werden.
 
-In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite](tutorial-bing-entities-search-single-page-app-source.md) verfügbar. Kopieren Sie diesen Code, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
+In diesem Tutorial werden nur ausgewählte Teile des Quellcodes erläutert. Der vollständige Quellcode ist [auf einer separaten Seite]() verfügbar. Kopieren Sie diesen Code, fügen Sie ihn in einen Text-Editor ein, und speichern Sie die Datei als `bing.html`.
 
 > [!NOTE]
 > Dieses Tutorial ähnelt dem [Tutorial zum Verwenden der Bing-Websuche-API in Single-Page-Apps](../Bing-Web-Search/tutorial-bing-web-search-single-page-app.md) sehr stark, befasst sich aber nur mit Entitätssuchergebnissen.
@@ -405,7 +405,7 @@ Fehler werden behandelt, indem `renderErrorMessage()` zusammen mit allen bekannt
 
 ## <a name="displaying-search-results"></a>Anzeigen der Suchergebnisse
 
-Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Sammlung in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
+Die Bing-Entitätssuche-API setzt voraus, dass Sie sich die Ergebnisse in einer [festgelegten Reihenfolge anzeigen lassen](../bing-web-search/use-display-requirements.md). Da die API zwei Antworttypen zurückgegeben kann, ist zur Anzeige der Ergebnisse mehr erforderlich als das Durchlaufen der übergeordneten `Entities`- oder `Places`-Sammlung in der JSON-Antwort. Wenn Sie nur ein Ergebnistyp empfangen möchten, können Sie den `responseFilter`-Abfrageparameter verwenden.
 
 In diesem Tutorial wird allerdings die `rankingResponse`-Collection verwendet, um die Reihenfolge der Suchergebnisse festzulegen und diese anzuzeigen. Dieses Objekt verweist auf Elemente in der Sammlung `Entitiess` bzw. `Places`.
 

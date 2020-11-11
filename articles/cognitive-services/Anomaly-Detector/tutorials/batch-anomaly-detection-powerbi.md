@@ -10,12 +10,12 @@ ms.subservice: anomaly-detector
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: mbullwin
-ms.openlocfilehash: 887e7432151569eb07e3c9256c7f126e7f884d54
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: a17301e0807877662ae1bf34ade48e90a1d30c0c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92017623"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368643"
 ---
 # <a name="tutorial-visualize-anomalies-using-batch-detection-and-power-bi"></a>Tutorial: Visualisieren von Anomalien mithilfe von Batcherkennung und Power BI
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 > [!NOTE]
 > Power BI kann Daten aus einer Vielzahl von Quellen verarbeiten, beispielsweise u.a. CSV-Dateien, SQL-Datenbanken und Azure Blob Storage.  
 
-Klicken Sie im Hauptfenster von Power BI Desktop auf das Menüband **Start**. Öffnen Sie in der Gruppe **Externe Daten** des Menübands das Dropdownmenü **Daten abrufen**, und klicken Sie auf **Excel**.
+Klicken Sie im Hauptfenster von Power BI Desktop auf das Menüband **Start**. Öffnen Sie in der Gruppe **Externe Daten** des Menübands das Dropdownmenü **Daten abrufen** , und klicken Sie auf **Excel**.
 
 ![Abbildung der Schaltfläche „Daten abrufen“ in Power BI](../media/tutorials/power-bi-get-data-button.png)
 
@@ -62,7 +62,7 @@ Wenn Sie einen Hinweis zum Ändern des Spaltentyps erhalten, klicken Sie auf **A
 
 ## <a name="create-a-function-to-send-the-data-and-format-the-response"></a>Erstellen einer Funktion zum Senden der Daten und Formatieren der Antwort
 
-Zum Formatieren und Senden der Datendatei an die Anomalieerkennungs-API können Sie eine Abfrage für die oben erstellte Tabelle aufrufen. Öffnen Sie im Power Query-Editor auf dem Menüband **Start** das Dropdownmenü **Neue Quelle**, und klicken Sie auf **Leere Abfrage**.
+Zum Formatieren und Senden der Datendatei an die Anomalieerkennungs-API können Sie eine Abfrage für die oben erstellte Tabelle aufrufen. Öffnen Sie im Power Query-Editor auf dem Menüband **Start** das Dropdownmenü **Neue Quelle** , und klicken Sie auf **Leere Abfrage**.
 
 Stellen Sie sicher, dass Ihre neue Abfrage ausgewählt ist, und klicken Sie dann auf **Erweiterter Editor**.
 
@@ -119,7 +119,7 @@ Rufen Sie die Abfrage auf dem Datenblatt durch Auswahl von `Sheet1` unter **Para
 ## <a name="data-source-privacy-and-authentication"></a>Datenschutz und Authentifizierung für die Datenquelle
 
 > [!NOTE]
-> Beachten Sie die Richtlinien Ihres Unternehmens für den Schutz von Daten und den Zugriff darauf. Weitere Informationen finden Sie unter [Power BI Desktop – Datenschutzebenen](https://docs.microsoft.com/power-bi/desktop-privacy-levels).
+> Beachten Sie die Richtlinien Ihres Unternehmens für den Schutz von Daten und den Zugriff darauf. Weitere Informationen finden Sie unter [Power BI Desktop – Datenschutzebenen](/power-bi/desktop-privacy-levels).
 
 Sie erhalten möglicherweise eine Warnmeldung, wenn Sie versuchen, die Abfrage auszuführen, da sie eine externe Datenquelle verwendet.
 
@@ -133,7 +133,7 @@ Außerdem erhalten Sie möglicherweise eine Meldung, in der Sie aufgefordert wer
 
 Als Reaktion darauf klicken Sie in der Meldung auf **Anmeldeinformationen bearbeiten**. Wählen Sie im eingeblendeten Dialogfeld **Anonym** aus, um mit der API eine anonyme Verbindung herzustellen. Klicken Sie auf **Verbinden**.
 
-Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen**, um die Änderungen zu übernehmen.
+Klicken Sie anschließend auf dem Menüband **Start** auf **Schließen und übernehmen** , um die Änderungen zu übernehmen.
 
 ## <a name="visualize-the-anomaly-detector-api-response"></a>Visualisieren der Antwort der Anomalieerkennungs-API
 

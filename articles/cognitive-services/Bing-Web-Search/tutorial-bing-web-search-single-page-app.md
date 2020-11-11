@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: 010b65a170d05fb0d2cc55e7519fd27df8b751e1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095440"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381285"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
@@ -36,7 +36,7 @@ Diese Beispiel-App kann:
 > * Abonnementschlüssel verwalten
 > * Fehlerbehandlung
 
-Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) mit Bing-Suche-APIs benötigt.
+Zum Verwenden dieser App wird ein [Azure Cognitive Services-Konto](../cognitive-services-apis-create-account.md) mit Bing-Suche-APIs benötigt.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -86,7 +86,7 @@ Dieses Tutorial konzentriert sich auf `scripts.js` und die erforderliche Logik, 
 
 ## <a name="query-options"></a>Abfrageoptionen
 
-Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
+Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters) zugeordnet sind. Diese Tabelle zeigt eine Aufschlüsselung, wie Benutzer Suchergebnisse mithilfe der Beispiel-App filtern können:
 
 | Parameter | BESCHREIBUNG |
 |-----------|-------------|
@@ -99,7 +99,7 @@ Das HTML-Formular enthält Optionen, die Abfrageparametern in der [Bing-Websuche
 | `offset` | Verborgenes Feld. Der Offset für das erste Suchergebnis der Anforderung. Dieser wird zur Unterteilung der Suchergebnisse in mehrere Seiten verwendet. Der Offset wird für jede neue Anforderung auf `0` zurückgesetzt. |
 
 > [!NOTE]
-> Die Bing-Websuche-API bietet zusätzliche Abfrageparameter, mit denen Sie die Suchergebnisse verfeinern können. Dieses Beispiel verwendet nur einige davon. Eine vollständige Liste der verfügbaren Parameter finden Sie in der [Referenz für die Bing-Websuche-API v7](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
+> Die Bing-Websuche-API bietet zusätzliche Abfrageparameter, mit denen Sie die Suchergebnisse verfeinern können. Dieses Beispiel verwendet nur einige davon. Eine vollständige Liste der verfügbaren Parameter finden Sie in der [Referenz für die Bing-Websuche-API v7](/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#query-parameters).
 
 Die Funktion `bingSearchOptions()` konvertiert diese Optionen in das für die Bing-Suche-API erforderliche Format.
 
@@ -303,7 +303,7 @@ Fehler werden durch Aufrufen von `renderErrorMessage()` verarbeitet. Wenn die An
 
 ## <a name="display-search-results"></a>Anzeigen von Suchergebnissen
 
-Es gibt [Verwendungs- und Anzeigeanforderungen](useanddisplayrequirements.md) für Ergebnisse, die von der Bing-Websuche-API zurückgegeben werden. Da eine Antwort verschiedene Ergebnistypen beinhalten kann, reicht es nicht aus, die `WebPages`-Auflistung auf der obersten Ebene zu durchlaufen. Die Beispiel-App verwendet stattdessen `RankingResponse` zum Sortieren der anzugebenden Ergebnisse.
+Es gibt [Verwendungs- und Anzeigeanforderungen](./use-display-requirements.md) für Ergebnisse, die von der Bing-Websuche-API zurückgegeben werden. Da eine Antwort verschiedene Ergebnistypen beinhalten kann, reicht es nicht aus, die `WebPages`-Auflistung auf der obersten Ebene zu durchlaufen. Die Beispiel-App verwendet stattdessen `RankingResponse` zum Sortieren der anzugebenden Ergebnisse.
 
 > [!NOTE]
 > Wenn Sie nur einen einzigen Ergebnistyp wünschen, verwenden Sie den Abfrageparameter `responseFilter` oder einen anderen Endpunkt für die Bing-Suche, z.B. die Bing-Bildersuche.

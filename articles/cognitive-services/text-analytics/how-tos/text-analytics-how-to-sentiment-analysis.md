@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: sample
 ms.date: 10/16/2020
 ms.author: aahi
-ms.openlocfilehash: 2b13ac02a8a276b2ef46c8ffd5f13846e394d938
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166929"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366756"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -23,7 +23,7 @@ Die Standpunktanalysefunktion der Textanalyse-API wertet Text aus und gibt für 
 
 Nachdem eine Anforderung zur Stimmungsanalyse gesendet wurde, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück.
 
-Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befinden sich in der Vorschau. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../text-analytics-supported-languages.md).
+Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befinden sich in der Vorschau. Weitere Informationen finden Sie unter [Unterstützte Sprachen](../language-support.md).
 
 ## <a name="sentiment-analysis-versions-and-features"></a>Versionen und Features der Standpunktanalyse
 
@@ -40,7 +40,7 @@ Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befind
 
 In Version 3 wendet die Standpunktanalyse Stimmungsbezeichnungen auf Texte an, die auf Satz- und Dokumentebene zurückgegeben werden, jeweils begleitet von einer Zuverlässigkeitsbewertung. 
 
-Die Bezeichnungen sind *positiv*, *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
+Die Bezeichnungen sind *positiv* , *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
 
 | Stimmung von Sätzen                                                                            | Zurückgegebene Dokumentbezeichnung |
 |-----------------------------------------------------------------------------------------------|-------------------------|

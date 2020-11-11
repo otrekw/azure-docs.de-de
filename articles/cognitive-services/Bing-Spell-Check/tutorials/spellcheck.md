@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a8fa86ef33fe7b0d9e97aebca96b3aa5465f24a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 7abd67ef072303b7f8156a18c2e3ac34758c03dd
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099860"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364733"
 ---
 # <a name="tutorial-build-a-web-page-spell-check-client"></a>Tutorial: Erstellen einer Webseite mit dem Rechtschreibprüfungsclient
 
@@ -332,4 +332,4 @@ Speichern Sie die Datei .
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Verwenden und Anzeigen von Anforderungen](../UseAndDisplayRequirements.md)
+> [Verwenden und Anzeigen von Anforderungen](../../bing-web-search/use-display-requirements.md)

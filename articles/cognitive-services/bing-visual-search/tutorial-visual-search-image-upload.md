@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
-ms.openlocfilehash: 8ecea9dce3509e064d9244a8b725add21747a03e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a0afee57eaaa0708ebde2a2aeaced76f008ebd9f
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102203"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366127"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Tutorial: Hochladen von Bildern in die API für die visuelle Bing-Suche
 
@@ -477,7 +477,7 @@ function addDivContent(div, tag, json) {
 
 ## <a name="display-insights-for-different-actions"></a>Anzeigen von Erkenntnissen für verschiedene Aktionen
 
-Die folgenden Funktionen zeigen Erkenntnisse für verschiedene Aktionen an. Die Funktionen stellen entweder ein klickbares Bild oder einen klickbaren Link bereit, mit dem Sie zu einer Webseite mit weiteren Informationen geleitet werden. Diese Seite wird entweder auf Bing.com oder der ursprünglichen Website des Bilds gehostet. Es werden nicht alle Daten im Zusammenhang mit den Erkenntnissen in dieser Anwendung angezeigt. Informationen zum Anzeigen aller verfügbaren Felder für Erkenntnisse finden Sie in der [Referenz zur visuellen Suche](https://aka.ms/bingvisualsearchreferencedoc).
+Die folgenden Funktionen zeigen Erkenntnisse für verschiedene Aktionen an. Die Funktionen stellen entweder ein klickbares Bild oder einen klickbaren Link bereit, mit dem Sie zu einer Webseite mit weiteren Informationen geleitet werden. Diese Seite wird entweder auf Bing.com oder der ursprünglichen Website des Bilds gehostet. Es werden nicht alle Daten im Zusammenhang mit den Erkenntnissen in dieser Anwendung angezeigt. Informationen zum Anzeigen aller verfügbaren Felder für Erkenntnisse finden Sie in der [Referenz zur visuellen Suche](/rest/api/cognitiveservices/bingvisualsearch/images/visualsearch).
 
 > [!NOTE]
 > Es gibt eine Mindestmenge an Informationen im Zusammenhang mit Erkenntnissen, die Sie auf der Seite anzeigen müssen. Weitere Informationen finden Sie unter [Anforderungen für die Verwendung und Anzeige der Bing-Suche-API](../bing-web-search/use-display-requirements.md).
