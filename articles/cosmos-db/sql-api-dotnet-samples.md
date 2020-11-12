@@ -8,14 +8,15 @@ ms.topic: sample
 ms.date: 07/23/2019
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: cbf2893896b7258115ed3f59224caef9cf843b1f
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a9badc6548f1c5e5e4cadeaccb02381bd3c80d12
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92481515"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93098687"
 ---
 # <a name="azure-cosmos-db-net-examples-for-the-sql-api"></a>Azure Cosmos DB: .NET-Beispiele für die SQL-API
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET V2 SDK-Beispiele](sql-api-dotnet-samples.md)
@@ -38,7 +39,7 @@ Codebeispiele für die Version 3.0 des .NET SDK (Vorschauversion) finden Sie in
 ## <a name="prerequisites"></a>Voraussetzungen
 
 Installation von Visual Studio 2019 mit dem Workflow für die Azure-Entwicklung
-- Sie können die **kostenlose** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung** . 
+- Sie können die **kostenlose** [Visual Studio 2019 Community Edition](https://www.visualstudio.com/downloads/) herunterladen und verwenden. Aktivieren Sie beim Setup von Visual Studio die Option **Azure-Entwicklung**. 
 
 [NuGet-Paket „Microsoft.Azure.DocumentDB“](https://www.nuget.org/packages/Microsoft.Azure.DocumentDB/) 
 

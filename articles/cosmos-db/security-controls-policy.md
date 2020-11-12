@@ -7,16 +7,17 @@ author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: cfa5be6ed7cc933513b4c42a05a7ccdd40e8c13f
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 1461667c9ba36a7834d78ee91c15b291d455e841
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314361"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097294"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-cosmos-db"></a>Kontrollen zur Einhaltung gesetzlicher Bestimmungen in Azure Policy für Azure Cosmos DB
+[!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-[Die Einhaltung gesetzlicher Bestimmungen in Azure Policy](../governance/policy/concepts/regulatory-compliance.md) bietet von Microsoft erstellte und verwaltete Initiativendefinitionen (als _integriert_ bezeichnet) für die **Compliancedomänen** und **Sicherheitskontrollen**, die mit unterschiedlichen Compliancestandards zusammenhängen. Auf dieser Seite werden die **Compliancedomänen** und **Sicherheitskontrollen** für Azure Cosmos DB aufgeführt. Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard kompatibel zu machen.
+[Die Einhaltung gesetzlicher Bestimmungen in Azure Policy](../governance/policy/concepts/regulatory-compliance.md) bietet von Microsoft erstellte und verwaltete Initiativendefinitionen (als _integriert_ bezeichnet) für die **Compliancedomänen** und **Sicherheitskontrollen** , die mit unterschiedlichen Compliancestandards zusammenhängen. Auf dieser Seite werden die **Compliancedomänen** und **Sicherheitskontrollen** für Azure Cosmos DB aufgeführt. Sie können die integrierten Elemente für eine **Sicherheitskontrolle** einzeln zuweisen, um Ihre Azure-Ressourcen mit dem jeweiligen Standard kompatibel zu machen.
 
 [!INCLUDE [azure-policy-compliancecontrols-introwarning](../../includes/policy/standards/intro-warning.md)]
 

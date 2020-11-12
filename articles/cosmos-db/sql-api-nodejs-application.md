@@ -9,14 +9,15 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: fb8d1cd2e3b481969059883919b9dc888955307e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92478115"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93097276"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
@@ -103,9 +104,9 @@ Die Datei **package.json** ist eine der im Stammverzeichnis des Projekts erstell
 Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als Nächstes Code, der von der To-Do-Anwendung für die Kommunikation mit Azure Cosmos DB benötigt wird.
 
 ### <a name="create-the-model"></a>Erstellen des Modells
-1. Erstellen Sie im Stamm des Projektverzeichnisses ein neues Verzeichnis namens **models** .  
+1. Erstellen Sie im Stamm des Projektverzeichnisses ein neues Verzeichnis namens **models**.  
 
-2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js** . Diese Datei enthält den erforderlichen Code zum Erstellen der Datenbank und des Containers. Sie definiert auch Methoden zum Lesen, Aktualisieren, Erstellen und Finden von Aufgaben in Azure Cosmos DB. 
+2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js**. Diese Datei enthält den erforderlichen Code zum Erstellen der Datenbank und des Containers. Sie definiert auch Methoden zum Lesen, Aktualisieren, Erstellen und Finden von Aufgaben in Azure Cosmos DB. 
 
 3. Kopieren Sie den folgenden Code in die Datei **taskDao.js** :
 
@@ -188,7 +189,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 ### <a name="create-the-controller"></a>Erstellen des Controllers
 
-1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js** .  
+1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js**.  
 
 2. Fügen Sie **tasklist.js** den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList** , die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
    
@@ -249,7 +250,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 ### <a name="add-configjs"></a>Fügen Sie config.js hinzu.
 
-1. Erstellen Sie im Stamm des Projektverzeichnisses eine neue Datei namens **config.js** . 
+1. Erstellen Sie im Stamm des Projektverzeichnisses eine neue Datei namens **config.js**. 
 
 2. Fügen Sie der Datei **config.cs** den folgenden Code hinzu. Mit diesem Code werden die für Ihre Anwendung erforderlichen Konfigurationseinstellungen und Werte definiert.
    
@@ -355,7 +356,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
     module.exports = app
    ```
 
-3. Speichern und schließen Sie abschließend die Datei **app.js** .
+3. Speichern und schließen Sie abschließend die Datei **app.js**.
 
 ## <a name="build-a-user-interface"></a><a name="_Toc395783181"></a>Erstellen einer Benutzeroberfläche
 
@@ -381,7 +382,7 @@ Als Nächstes erstellen wir die Benutzeroberfläche, damit Benutzer mit der Anwe
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Dieser Code weist die **Jade-Engine** an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content** , in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade** .
+    Dieser Code weist die **Jade-Engine** an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content** , in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade**.
 
 3. Öffnen Sie nun die Datei **index.jade** (die Ansicht, die von der Anwendung verwendet wird), und ersetzen Sie den Inhalt der Datei durch den folgenden Code:
 
@@ -439,7 +440,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie lokal ausführen, inde
 
 1. Nun können Sie die Anwendung auf Ihrem lokalen Computer testen. Führen Sie dazu im Terminal `npm start` aus, um Ihre Anwendung zu starten, und aktualisieren Sie anschließend die Browserseite `http://localhost:3000`. Die Seite sollte wie im folgenden Screenshot aussehen:
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Kennenlernen von Node.js – Screenshot der „Hello World“-Anwendung in einem Browserfenster":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-localhost.png" alt-text="Screenshot der Anwendung „Meine Aufgabenliste“ in einem Browserfenster":::
 
     > [!TIP]
     > Sollte eine Fehlermeldung mit einem Hinweis auf den Einzug in der Datei „layout.jade“ oder „index.jade“ ausgegeben werden, vergewissern Sie sich, dass die ersten beiden Zeilen der beiden Dateien ohne Leerzeichen linksbündig ausgerichtet sind. Sollten sich vor den ersten beiden Zeilen Leerzeichen befinden, entfernen Sie sie, speichern Sie beide Dateien, und aktualisieren Sie anschließend Ihr Browserfenster. 
@@ -448,7 +449,7 @@ Nachdem Sie die Anwendung erstellt haben, können Sie sie lokal ausführen, inde
 
 3. Die Seite sollte nun das neu erstellte Element in der Aufgabenliste anzeigen.
    
-    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Kennenlernen von Node.js – Screenshot der „Hello World“-Anwendung in einem Browserfenster":::
+    :::image type="content" source="./media/sql-api-nodejs-application/cosmos-db-node-js-added-task.png" alt-text="Screenshot der Anwendung mit einem neuen Element in der Aufgabenliste":::
 
 4. Um eine Aufgabe abzuschließen, aktivieren Sie das Kontrollkästchen in der Spalte „Abschließen“, und wählen Sie anschließend **Aufgaben aktualisieren** aus. Dadurch wird das bereits erstellte Dokument aktualisiert und aus der Ansicht entfernt.
 

@@ -3,17 +3,17 @@ title: Senden von Pushbenachrichtigungen an iOS mit Azure Notification Hubs und 
 description: In diesem Tutorial erfahren Sie, wie Sie mithilfe von Azure Notification Hubs und dem Apple Push Notification Service Pushbenachrichtigungen an iOS-Geräte senden.
 author: sethmanheim
 ms.author: sethm
-ms.date: 08/10/2020
+ms.date: 10/30/2020
 ms.topic: tutorial
 ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
-ms.openlocfilehash: 3ec96ff0fdebc0ac862af00c699ec489567a7144
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: c920c9b3b28df7f5bf3bf169ef88ab967f23649e
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426773"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93085376"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs
 
@@ -60,13 +60,13 @@ Erstellen Sie die Zertifikatsignieranforderungsdatei (CSR-Datei), die von Apple 
 
 3. Wählen Sie Ihre **E-Mail-Adresse des Benutzers** aus, und geben Sie den Wert für **Allgemeiner Name** ein. Vergewissern Sie sich, dass **Saved to disk** (Auf Datenträger gespeichert) aktiviert ist, und wählen Sie dann **Weiter** aus. Lassen Sie das Feld **CA Email Address** (E-Mail der Zertifizierungsstelle) leer, da dieser Wert nicht erforderlich ist.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Erforderliche Zertifikatinformationen":::
 
 4. Geben Sie im Feld **Speichern unter** einen Namen für die CSR-Datei ein, und wählen Sie unter **Where** (Ort) den Speicherort und anschließend **Speichern** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Auswählen eines Dateinamens":::
 
-   Dadurch wird die CSR-Datei am ausgewählten Speicherort gespeichert. Der Standardspeicherort lautet **Desktop** . Merken Sie sich den für diese Datei festgelegten Speicherort.
+   Dadurch wird die CSR-Datei am ausgewählten Speicherort gespeichert. Der Standardspeicherort lautet **Desktop**. Merken Sie sich den für diese Datei festgelegten Speicherort.
 
 Registrieren Sie als Nächstes Ihre App bei Apple, aktivieren Sie Pushbenachrichtigungen, und laden Sie die exportierte CSR-Datei hoch, um ein Pushzertifikat zu erstellen.
 
@@ -76,26 +76,26 @@ Zum Senden von Pushbenachrichtigungen an eine iOS-App registrieren Sie Ihre Anwe
 
 1. Falls Sie Ihre App noch nicht registriert haben, navigieren Sie im Apple Developer Center zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456). Melden Sie sich mit Ihrer Apple-ID beim Portal an, und wählen Sie **Bezeichner** aus. Wählen Sie dann **+** aus, um eine neue App zu registrieren.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Seite mit App-IDs":::
 
-2. Aktivieren Sie auf dem Bildschirm zum **Registrieren eines neuen Bezeichners** das Optionsfeld **App-IDs** . Klicken Sie anschließend auf **Weiter** .
+2. Aktivieren Sie auf dem Bildschirm zum **Registrieren eines neuen Bezeichners** das Optionsfeld **App-IDs**. Klicken Sie anschließend auf **Weiter**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Seite zum Registrieren einer neuen ID":::
 
 3. Aktualisieren Sie die folgenden drei Werte für Ihre neue App, und wählen Sie dann **Weiter** aus:
 
    - **Beschreibung** : Geben Sie einen aussagekräftigen Namen für Ihre App ein.
    - **Paket-ID** : Geben Sie eine Paket-ID im Format **Organisationsbezeichner.Produktname** ein, wie im [Leitfaden zur App-Verteilung](https://help.apple.com/xcode/mac/current/#/dev91fe7130a) erwähnt. Die unter **Organization Identifier** (Organisationskennung) und **Product Name** (Produktname) eingegebenen Werte müssen der Organisationskennung und dem Produktnamen entsprechen, die Sie beim Erstellen des Xcode-Projekts verwenden. Im folgenden Screenshot wird der Wert **NotificationHubs** als Organisationskennung und **GetStarted** als Produktname verwendet. Stellen Sie sicher, dass der Wert für den **Paketbezeichner** mit dem Wert in Ihrem Xcode-Projekt übereinstimmt, sodass Xcode das richtige Veröffentlichungsprofil verwendet.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Registrieren der App-ID":::
 
-   - **Push Notifications** (Pushbenachrichtigungen): Aktivieren Sie die Option **Pushbenachrichtigungen** im Bereich **Funktionen** .
+   - **Push Notifications** (Pushbenachrichtigungen): Aktivieren Sie die Option **Pushbenachrichtigungen** im Bereich **Funktionen**.
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Registrieren einer neuen App-ID":::
 
       Hierdurch wird Ihre App-ID generiert, und Sie werden zur Bestätigung der Daten aufgefordert. Wählen Sie **Weiter** und dann **Registrieren** aus, um die neue App-ID zu bestätigen.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Bestätigen der neuen App-ID":::
 
       Nachdem Sie **Registrieren** ausgewählt haben, wird die neue App-ID als Position auf der Seite **Zertifikate, Bezeichner und Profile** angezeigt.
 
@@ -118,40 +118,40 @@ Die zweite Option bietet eine Reihe von Vorteilen gegenüber der Verwendung von 
 
 1. Scrollen Sie nach unten zur aktivierten Option **Pushbenachrichtigungen** , und wählen Sie dann **Konfigurieren** aus, um das Zertifikat zu erstellen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="App-ID":::
 
 2. Das Fenster für die **SSL-Zertifikate von Apple Push Notification Service** wird angezeigt. Wählen Sie im Abschnitt **SSL-Zertifikat für die Entwicklung** die Schaltfläche **Zertifikat erstellen** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Erstellen eines Zertifikats":::
 
    Der Bildschirm **Ein neues Zertifikat erstellen** wird angezeigt.
 
    > [!NOTE]
    > In diesem Lernprogramm wird ein Entwicklungszertifikat verwendet. Derselbe Prozess wird auch zum Registrieren eines Produktionszertifikats durchgeführt. Achten Sie darauf, dass Sie denselben Zertifikattyp beim Senden von Benachrichtigungen verwenden.
 
-3. Klicken Sie auf **Datei auswählen** , wechseln Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei, und doppelklicken Sie dann auf den Namen des Zertifikats, um es zu laden. Klicken Sie anschließend auf **Weiter** .
+3. Klicken Sie auf **Datei auswählen** , wechseln Sie zum Speicherort der in der ersten Aufgabe erstellten CSR-Datei, und doppelklicken Sie dann auf den Namen des Zertifikats, um es zu laden. Klicken Sie anschließend auf **Weiter**.
 
 4. Wählen Sie nach der Erstellung des Zertifikats im Portal die Schaltfläche **Herunterladen** aus. Speichern Sie das Zertifikat, und merken Sie sich den Speicherort.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Herunterladen des Zertifikats":::
 
    Das Zertifikat wird heruntergeladen und im Ordner **Downloads** gespeichert.
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Suchen der Zertifikatdatei":::
 
-   Standardmäßig heißt das heruntergeladene Entwicklungszertifikat **aps_development.cer** .
+   Standardmäßig heißt das heruntergeladene Entwicklungszertifikat **aps_development.cer**.
 
-5. Doppelklicken Sie auf das heruntergeladene Pushzertifikat **aps\_development.cer** . Das neue Zertifikat wird im Schlüsselbund installiert, wie in der folgenden Abbildung gezeigt:
+5. Doppelklicken Sie auf das heruntergeladene Pushzertifikat **aps\_development.cer**. Das neue Zertifikat wird im Schlüsselbund installiert, wie in der folgenden Abbildung gezeigt:
 
-   :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image13.png" alt-text="Schlüsselbundverwaltung":::
 
    Der Name in Ihrem Zertifikat kann anders lauten, ihm wird jedoch **Apple Development iOS Push Services** vorangestellt.
 
-6. Klicken Sie in der Kategorie **Zertifikate** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Wählen Sie die Option **Exportieren** , benennen Sie die Datei, wählen Sie das Format **.p12** aus, und wählen Sie dann die Option **Speichern** .
+6. Klicken Sie in der Kategorie **Zertifikate** in der Schlüsselbundverwaltung mit der rechten Maustaste auf das neu erstellte Pushzertifikat. Wählen Sie die Option **Exportieren** , benennen Sie die Datei, wählen Sie das Format **.p12** aus, und wählen Sie dann die Option **Speichern**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Exportieren eines Zertifikats":::
 
-   Sie können das Zertifikat mit einem Kennwort schützen, aber dies ist optional. Wenn Sie die Kennworterstellung umgehen möchten, klicken Sie auf **OK** . Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats, Sie werden zum Aktivieren der Authentifizierung mit APNS verwendet.
+   Sie können das Zertifikat mit einem Kennwort schützen, aber dies ist optional. Wenn Sie die Kennworterstellung umgehen möchten, klicken Sie auf **OK**. Notieren Sie sich den Dateinamen und den Speicherort des exportierten P12-Zertifikats, Sie werden zum Aktivieren der Authentifizierung mit APNS verwendet.
 
    > [!NOTE]
    > Dateiname und Speicherort Ihrer P12-Datei können sich von den in diesem Tutorial abgebildeten Informationen unterscheiden.
@@ -163,20 +163,20 @@ Die zweite Option bietet eine Reihe von Vorteilen gegenüber der Verwendung von 
    - **App-ID-Präfix** (dies ist eine **Team-ID** )
    - **Paket-ID**
 
-2. Klicken Sie in **Zertifikate, Bezeichner und Profile** auf **Schlüssel** . Wenn Sie bereits einen Schlüssel für **APNS** konfiguriert haben, können Sie das P8-Zertifikat wiederverwenden, das Sie direkt nach der Erstellung heruntergeladen haben. In diesem Fall können Sie die Schritte 3 bis 5 überspringen.
+2. Klicken Sie in **Zertifikate, Bezeichner und Profile** auf **Schlüssel**. Wenn Sie bereits einen Schlüssel für **APNS** konfiguriert haben, können Sie das P8-Zertifikat wiederverwenden, das Sie direkt nach der Erstellung heruntergeladen haben. In diesem Fall können Sie die Schritte 3 bis 5 überspringen.
 
 3. Klicken Sie auf die Schaltfläche **+** (oder die Schaltfläche **Schlüssel erstellen** ), um einen neuen Schlüssel zu erstellen.
 
-4. Geben Sie einen geeigneten Wert für den **Schlüsselnamen** an, aktivieren Sie die Option **Apple Push Notification Service (APNS)** , und klicken Sie dann auf **Weiter** und auf dem nächsten Bildschirm auf **Registrieren** .
+4. Geben Sie einen geeigneten Wert für den **Schlüsselnamen** an, aktivieren Sie die Option **Apple Push Notification Service (APNS)** , und klicken Sie dann auf **Weiter** und auf dem nächsten Bildschirm auf **Registrieren**.
 
-5. Klicken Sie auf **Herunterladen** , und verschieben Sie die **P8** -Datei (mit dem Präfix `AuthKey_` ) in ein sicheres lokales Verzeichnis. Klicken Sie dann auf **Fertig** .
+5. Klicken Sie auf **Herunterladen** , und verschieben Sie die **P8** -Datei (mit dem Präfix `AuthKey_` ) in ein sicheres lokales Verzeichnis. Klicken Sie dann auf **Fertig**.
 
    > [!IMPORTANT]
    > Bewahren Sie die P8-Datei an einem sicheren Ort auf (und speichern Sie eine Sicherungskopie). Nach dem Herunterladen kann der Schlüssel nicht erneut heruntergeladen werden, da die Kopie auf dem Server gelöscht wird.
 
 6. Klicken Sie unter **Schlüssel** auf den gerade erstellten Schlüssel (oder auf einen vorhandenen Schlüssel, falls Sie stattdessen einen solchen verwenden möchten).
 
-7. Notieren Sie sich den Wert der **Schlüssel-ID** .
+7. Notieren Sie sich den Wert der **Schlüssel-ID**.
 
 8. Öffnen Sie das P8-Zertifikat in einer geeigneten Anwendung wie z. B. [Visual Studio Code](https://code.visualstudio.com/), und notieren Sie sich den Schlüsselwert. Dies ist der Wert zwischen **-----BEGIN PRIVATE KEY-----** und **-----END PRIVATE KEY-----** .
 
@@ -199,32 +199,32 @@ Nach Abschluss dieser Schritte verfügen Sie über folgende Informationen, die S
 
 1. Wechseln Sie zurück zum [iOS-Bereitstellungsportal](https://go.microsoft.com/fwlink/p/?LinkId=272456), wählen Sie **Zertifikate, Bezeichner und Profile** aus, wählen Sie im Menü auf der linken Seite **Profile** und dann **+** aus, um ein neues Profil zu erstellen. Der Bildschirm zum **Registrieren eines neuen Bereitstellungsprofils** wird angezeigt.
 
-2. Wählen Sie unter **Entwicklung** , die Option **iOS-App-Entwicklung** als Bereitstellungsprofiltyp aus, und wählen Sie anschließend **Weiter** .
+2. Wählen Sie unter **Entwicklung** , die Option **iOS-App-Entwicklung** als Bereitstellungsprofiltyp aus, und wählen Sie anschließend **Weiter**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Bereitstellungsprofilliste":::
 
 3. Wählen Sie anschließend die von Ihnen erstellte App-ID in der Dropdownliste **App ID** (App-ID) und dann **Weiter** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Auswählen der App-ID":::
 
 4. Wählen Sie im Fenster **Select certificates** (Zertifikate auswählen) das Entwicklungszertifikat aus, das Sie für die Codesignierung verwenden, und wählen Sie dann **Continue** (Weiter). Dabei handelt es sich nicht um das erstellte Pushzertifikat. Wenn keines vorhanden ist, müssen Sie es erstellen. Wenn ein Zertifikat vorhanden ist, fahren Sie mit dem nächsten Schritt fort. Erstellen eines Entwicklungszertifikat, wenn noch keines vorhanden ist:
 
    1. Wenn **No Certificates are available** (Keine Zertifikate verfügbar) angezeigt wird, wählen Sie **Create Certificate** (Zertifikat erstellen) aus.
-   2. Wählen Sie im Abschnitt **Software** die Option **Apple Development** (Apple-Entwicklung) aus. Klicken Sie anschließend auf **Weiter** .
-   3. Wählen Sie auf dem Bildschirm **Neues Zertifikat erstellen** die Option **Datei auswählen** .
+   2. Wählen Sie im Abschnitt **Software** die Option **Apple Development** (Apple-Entwicklung) aus. Klicken Sie anschließend auf **Weiter**.
+   3. Wählen Sie auf dem Bildschirm **Neues Zertifikat erstellen** die Option **Datei auswählen**.
    4. Navigieren Sie zum Zertifikat **Zertifikatsignieranforderung** , das Sie zuvor erstellt haben, wählen Sie es aus, und wählen Sie dann **Öffnen** aus.
-   5. Wählen Sie **Weiter** .
+   5. Wählen Sie **Weiter**.
    6. Laden Sie das Entwicklungszertifikat herunter, und merken Sie sich den Speicherort.
 
 5. Wechseln Sie zurück zur Seite **Zertifikate, Bezeichner und Profile** , wählen Sie im Menü auf der linken Seite **Profile** und dann **+** aus, um ein neues Profil zu erstellen. Der Bildschirm zum **Registrieren eines neuen Bereitstellungsprofils** wird angezeigt.
 
-6. Wählen Sie im Fenster **Select certificates** (Zertifikate auswählen) das soeben erstellte Entwicklungszertifikat aus. Klicken Sie anschließend auf **Weiter** .
+6. Wählen Sie im Fenster **Select certificates** (Zertifikate auswählen) das soeben erstellte Entwicklungszertifikat aus. Klicken Sie anschließend auf **Weiter**.
 
 7. Wählen Sie nun die Geräte aus, die zum Testen verwendet werden sollen, und wählen Sie dann **Weiter** aus.
 
 8. Wählen Sie schließlich im Feld **Provisioning Profile Name** (Name des Bereitstellungsprofils) einen Namen für das Profil aus, und wählen Sie **Generate** (Generieren) aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Auswählen eines Bereitstellungsprofilnamens":::
 
 9. Nachdem das neue Bereitstellungsprofil erstellt wurde, wählen Sie **Herunterladen** aus. Merken Sie sich den Speicherort des Profils.
 
@@ -238,11 +238,11 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
 
 2. Wählen Sie im Menü auf der linken Seite die Option **Alle Dienste** und dann im Abschnitt **Mobil** die Option **Notification Hubs** aus. Wählen Sie das Sternsymbol neben dem Dienstnamen aus, um den Dienst im linken Menü zum Abschnitt **FAVORITEN** hinzuzufügen. Nachdem Sie **Notification Hubs** unter **FAVORITEN** hinzugefügt haben, wählen Sie diesen Eintrag aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure-Portal":::
 
-3. Wählen Sie auf der Seite **Notification Hubs** in der Symbolleiste die Option **Hinzufügen** .
+3. Wählen Sie auf der Seite **Notification Hubs** in der Symbolleiste die Option **Hinzufügen**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Symbolleistenschaltfläche „Hinzufügen“":::
 
 4. Führen Sie auf der Seite **Notification Hub** die folgenden Schritte aus:
 
@@ -250,20 +250,20 @@ In diesem Abschnitt erstellen Sie einen Notification Hub und konfigurieren die A
    2. Geben Sie ins Feld **Neuen Namespace erstellen** einen Namen ein. Ein Namespace enthält mindestens einen Notification Hub.
    3. Wählen Sie im Dropdown-Listenfeld **Standort** einen Wert aus. Dieser Wert gibt den Standort an, an dem der Notification Hub erstellt werden soll.
    4. Wählen Sie unter **Ressourcengruppe** eine vorhandene Ressourcengruppe aus, oder erstellen Sie eine neue Ressourcengruppe.
-   5. Klicken Sie auf **Erstellen** .
+   5. Klicken Sie auf **Erstellen**.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Festlegen von Eigenschaften":::
 
 5. Wählen Sie **Benachrichtigungen** (Glockensymbol) und dann **Zu Ressource wechseln** aus. Sie können auch die Liste auf der Seite **Notification Hubs** aktualisieren und Ihren Hub auswählen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Portalbenachrichtigungen":::
 
 6. Wählen Sie in der Liste die Option **Zugriffsrichtlinien** aus. Notieren Sie sich die beiden Verbindungszeichenfolgen, die für Sie verfügbar sind. Sie werden später für die Behandlung von Pushbenachrichtigungen benötigt.
 
    > [!IMPORTANT]
-   > Verwenden Sie in Ihrer Anwendung nicht die Richtlinie **DefaultFullSharedAccessSignature** . Diese ist nur für die Verwendung in Ihrem Back-End vorgesehen.
+   > Verwenden Sie in Ihrer Anwendung nicht die Richtlinie **DefaultFullSharedAccessSignature**. Diese ist nur für die Verwendung in Ihrem Back-End vorgesehen.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Verbindungszeichenfolgen":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Konfigurieren Ihres Notification Hubs mit APNs-Informationen
 
@@ -278,13 +278,13 @@ Wählen Sie unter **Benachrichtigungsdienste** die Option **Apple (APNs)** aus, 
 
 2. Wählen Sie das Dateisymbol aus.
 
-3. Wählen Sie die zuvor exportierte P12-Datei aus, und wählen Sie dann **Öffnen** .
+3. Wählen Sie die zuvor exportierte P12-Datei aus, und wählen Sie dann **Öffnen**.
 
 4. Geben Sie bei Bedarf das richtige Kennwort an.
 
 5. Wählen Sie den Modus **Sandbox** aus.
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Screenshot, in der die Menüoption „Zertifikat von einer Zertifizierungsstelle anfordern“ hervorgehoben ist.":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Konfigurieren":::
 
 6. Wählen Sie **Speichern** aus.
 
@@ -309,4 +309,4 @@ Sie haben Ihren Notification Hub mit APNS-Informationen konfiguriert. Sie verfü
 
 In diesem Tutorial haben Sie einen Notification Hub in Azure erstellt und so konfiguriert, dass Benachrichtigungen über Apple Push Notification Service (APNS) an Ihre Anwendung gesendet werden können. Als Nächstes erstellen Sie eine iOS-Beispielanwendung und integrieren das Azure Notification Hubs SDK, damit es Pushbenachrichtigungen empfangen kann, die über das Azure-Portal gesendet werden. Fahren Sie mit dem folgenden Tutorial für die von Ihnen bevorzugte Sprache fort:
 
-- [Tutorial: Integrieren in eine iOS-App mit Swift]()
+- [Tutorial: Senden von Pushbenachrichtigungen an iOS-Apps mit Azure Notification Hubs](ios-sdk-300.md)

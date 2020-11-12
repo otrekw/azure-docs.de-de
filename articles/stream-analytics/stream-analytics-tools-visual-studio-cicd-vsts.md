@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 18ab9a4108d6d9effaa25fe69ce42a18ca4ba0dc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2e87432ad4437f41e70d988e7e2b3cd82aa3bd82
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90903849"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93123386"
 ---
 # <a name="tutorial-deploy-an-azure-stream-analytics-job-with-cicd-using-azure-pipelines"></a>Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure Pipelines
 In diesem Tutorial wird beschrieben, wie Continuous Integration und Continuous Deployment für einen Azure Stream Analytics-Auftrag mithilfe von Azure-Pipelines eingerichtet werden. 
@@ -35,7 +35,7 @@ Stellen Sie zunächst sicher, dass Sie folgende Schritte ausgeführt haben:
 
 * Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
 * Installieren Sie [Visual Studio](stream-analytics-tools-for-visual-studio-install.md) und die Workload **Azure-Entwicklung** oder **Datenspeicherung und -verarbeitung**.
-* Erstellen Sie ein [Stream Analytics-Projekt in Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-vs).
+* Erstellen Sie ein [Stream Analytics-Projekt in Visual Studio](./stream-analytics-quick-create-vs.md).
 * Erstellen Sie eine [Azure DevOps-Organisation](https://visualstudio.microsoft.com/team-services/).
 
 ## <a name="configure-nuget-package-dependency"></a>Konfigurieren der NuGet-Paketabhängigkeit
@@ -64,12 +64,12 @@ Teilen Sie Ihre Anwendungsquelldateien für ein Projekt in Azure DevOps, damit S
 
    ![Git-Repository mit Push übertragen, „Repository veröffentlichen“, Schaltfläche](./media/stream-analytics-tools-visual-studio-cicd-vsts/publish-repository-devops.png)
 
-    Durch das Veröffentlichen des Repositorys wird in Ihrer Organisation ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert**, und wählen Sie ein Projekt aus. Sie können den Code im Browser anzeigen, indem Sie **Im Web anzeigen** auswählen.
+    Durch das Veröffentlichen des Repositorys wird in Ihrer Organisation ein neues Projekt mit dem gleichen Namen wie das lokale Repository erstellt. Um das Repository in einem vorhandenen Projekt zu erstellen, klicken Sie neben **Repositoryname** auf **Erweitert** , und wählen Sie ein Projekt aus. Sie können den Code im Browser anzeigen, indem Sie **Im Web anzeigen** auswählen.
  
 ## <a name="configure-continuous-delivery-with-azure-devops"></a>Konfigurieren von Continuous Delivery mit Azure DevOps
-Eine Azure Pipelines-Buildpipeline beschreibt einen Workflow, der aus Buildschritten besteht, die nacheinander ausgeführt werden. Erfahren Sie mehr über [Azure Pipelines-Buildpipelines](https://docs.microsoft.com/azure/devops/pipelines/get-started-designer?view=vsts&tabs=new-nav&preserve-view=true).
+Eine Azure Pipelines-Buildpipeline beschreibt einen Workflow, der aus Buildschritten besteht, die nacheinander ausgeführt werden. Erfahren Sie mehr über [Azure Pipelines-Buildpipelines](/azure/devops/pipelines/get-started-designer?preserve-view=true&tabs=new-nav&view=vsts).
 
-Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Buildpipeline und Releasepipeline den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr über [Azure Pipelines-Releasepipelines](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts&preserve-view=true).
+Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendungspaket in einem Cluster bereitstellt. Bei gemeinsamer Verwendung führen die Buildpipeline und Releasepipeline den gesamten Workflow aus, und zwar beginnend mit den Quelldateien und endend mit einer im Cluster ausgeführten Anwendung. Erfahren Sie mehr über [Azure Pipelines-Releasepipelines](/azure/devops/pipelines/release/define-multistage-release-process?preserve-view=true&view=vsts).
 
 ### <a name="create-a-build-pipeline"></a>Erstellen einer Buildpipeline
 Öffnen Sie einen Webbrowser, und navigieren Sie zu dem Projekt, das Sie gerade in [Azure DevOps](https://app.vsaex.visualstudio.com/) erstellt haben. 
@@ -78,11 +78,11 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     
     ![Auswählen der DevOps-Git-Quelle in Azure DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-source-devops.png)
 
-2. Klicken Sie unter **Vorlage auswählen** auf **Leerer Prozess**, um mit einer leeren Pipeline zu beginnen.
+2. Klicken Sie unter **Vorlage auswählen** auf **Leerer Prozess** , um mit einer leeren Pipeline zu beginnen.
     
     ![Auswählen des leeren Prozesses aus Vorlagenoptionen in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-select-template-empty-process.png)
 
-3. Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie den Triggerstatus **Continuous Integration aktivieren** auswählen.  Klicken Sie auf **Speichern und in Warteschlange einreihen**, um manuell einen Buildvorgang zu starten. 
+3. Aktivieren Sie unter **Trigger** Continuous Integration, indem Sie den Triggerstatus **Continuous Integration aktivieren** auswählen.  Klicken Sie auf **Speichern und in Warteschlange einreihen** , um manuell einen Buildvorgang zu starten. 
     
     ![Aktivieren des Continuous Integration-Triggerstatus für Jenkins](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-trigger-status-ci.png)
 
@@ -92,15 +92,15 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     
     ![Auswählen der Agent-Warteschlange im Menü „Aufgaben“](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-agent-queue-task.png) 
 
-6. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **NuGet** hinzu.
+6. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **NuGet** hinzu.
     
     ![Hinzufügen einer NuGet-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-nuget-task.png)
 
-7. Erweitern Sie den Bereich **Erweitert**, und fügen Sie `$(Build.SourcesDirectory)\packages` zu **Zielverzeichnis** hinzu. Behalten Sie die übrigen Standardwerte für die NuGet-Konfiguration bei.
+7. Erweitern Sie den Bereich **Erweitert** , und fügen Sie `$(Build.SourcesDirectory)\packages` zu **Zielverzeichnis** hinzu. Behalten Sie die übrigen Standardwerte für die NuGet-Konfiguration bei.
 
    ![Konfigurieren der NuGet-Wiederherstellungsaufgabe](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-nuget-restore-config.png)
 
-8. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **MSBuild** hinzu.
+8. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **MSBuild** hinzu.
 
    ![Hinzufügen einer MSBuild-Aufgabe zur Agent-Warteschlange](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-msbuild-task.png)
 
@@ -112,11 +112,11 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
 
    ![Konfigurieren der MSBuild-Aufgabe in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-config-msbuild-task.png)
 
-10. Klicken Sie im Abschnitt **Phase 1** auf **+**, und fügen Sie eine Aufgabe vom Typ **Bereitstellung einer Azure-Ressourcengruppe** hinzu. 
+10. Klicken Sie im Abschnitt **Phase 1** auf **+** , und fügen Sie eine Aufgabe vom Typ **Bereitstellung einer Azure-Ressourcengruppe** hinzu. 
     
     ![Aufgabe „Bereitstellung einer Azure-Ressourcengruppe“ hinzufügen](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-add-resource-group-deployment.png)
 
-11. Erweitern Sie **Azure-Details**, und tragen Sie Folgendes in die Konfiguration ein:
+11. Erweitern Sie **Azure-Details** , und tragen Sie Folgendes in die Konfiguration ein:
     
     |**Einstellung**  |**Empfohlener Wert**  |
     |---------|---------|
@@ -129,7 +129,7 @@ Eine Azure Pipelines-Releasepipeline beschreibt einen Workflow, der ein Anwendun
     
     ![Festlegen der Eigenschaften für die Bereitstellung einer Azure-Ressourcengruppe](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-deployment-properties.png)
 
-12. Klicken Sie auf **Speichern und in Warteschlange einreihen**, um die Buildpipeline zu testen.
+12. Klicken Sie auf **Speichern und in Warteschlange einreihen** , um die Buildpipeline zu testen.
     
     ![Speichern und Erstellen einer Warteschlange in DevOps](./media/stream-analytics-tools-visual-studio-cicd-vsts/build-save-and-queue-build.png)
 
@@ -157,8 +157,8 @@ Durch das Pushen der Änderungen nach Azure DevOps wird automatisch ein Build au
 
 Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie ihn beenden und später bei Bedarf neu starten. Wenn Sie diesen Auftrag nicht mehr verwenden möchten, löschen Sie alle Ressourcen, die im Rahmen dieses Tutorials erstellt wurden, mithilfe der folgenden Schritte:
 
-1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen**, und klicken Sie auf den Namen der erstellten Ressource.  
-2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen**, geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
+1. Klicken Sie im Azure-Portal im Menü auf der linken Seite auf **Ressourcengruppen** , und klicken Sie auf den Namen der erstellten Ressource.  
+2. Klicken Sie auf der Seite mit Ihrer Ressourcengruppe auf **Löschen** , geben Sie im Textfeld den Namen der zu löschenden Ressource ein, und klicken Sie dann auf **Löschen**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

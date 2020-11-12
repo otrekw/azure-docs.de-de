@@ -9,14 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 902980d7c145d5150214b7d4f4433e5da344e30b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
+ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91570055"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93099877"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Tutorial: Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB durch die Verwendung einer Java-Anwendung zum Speichern von Schlüssel/Wert-Daten
+[!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
 
 Als Entwickler besitzen Sie möglicherweise Anwendungen, die Schlüssel/Wert-Paare verwenden. Sie können ein Cassandra-API-Konto in Azure Cosmos DB zum Speichern der Schlüssel/Wert-Daten verwenden. In diesem Tutorial wird beschrieben, wie mithilfe einer Java-Anwendung ein Cassandra-API-Konto in Azure Cosmos DB erstellt und eine Datenbank (auch als „Keyspace“ bezeichnet) sowie eine Tabelle hinzugefügt wird. Die Java-Anwendung verwendet den [Java-Treiber](https://github.com/datastax/java-driver), um eine Benutzerdatenbank zu erstellen, die Details wie Benutzer-ID, Benutzernamen und Stadt des Benutzers enthält.  
 
@@ -66,7 +67,7 @@ Rufen Sie die Informationen der Verbindungszeichenfolge über das Azure-Portal a
 
 2. Öffnen Sie den Bereich **Verbindungszeichenfolge**.  
 
-3. Kopieren Sie die Werte von **KONTAKTPUNKT**, **PORT**, **BENUTZERNAME**, und **PRIMÄRES KENNWORT**. Diese werden Sie in den nächsten Schritten benötigen.
+3. Kopieren Sie die Werte von **KONTAKTPUNKT** , **PORT** , **BENUTZERNAME** , und **PRIMÄRES KENNWORT**. Diese werden Sie in den nächsten Schritten benötigen.
 
 ## <a name="create-the-project-and-the-dependencies"></a>Erstellen des Projekts und der Abhängigkeiten 
 
@@ -219,7 +220,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Datenbank (Keyspace) und eine
 
    Im Terminalfenster werden Benachrichtigungen angezeigt, dass der Keyspace und die Tabelle erstellt wurden. 
    
-2. Öffnen Sie im Azure-Portal nun den **Daten-Explorer**, um sicherzustellen, dass der Keyspace und die Tabelle erstellt wurden.
+2. Öffnen Sie im Azure-Portal nun den **Daten-Explorer** , um sicherzustellen, dass der Keyspace und die Tabelle erstellt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

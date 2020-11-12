@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91317717"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124780"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Benutzerdefinierte JavaScript-Funktionen in Azure Stream Analytics
  
-Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String**-, **RegExp**-, **Math**-, **Array**- und **Date**-Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
+Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String** -, **RegExp** -, **Math** -, **Array** - und **Date** -Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -55,7 +55,7 @@ Anschließend müssen Sie die folgenden Eigenschaften angeben und **Speichern** 
 
 ## <a name="test-and-troubleshoot-javascript-udfs"></a>Tests und Problembehandlung für JavaScript-UDFs 
 
-Sie können Ihre JavaScript-UDF-Logik in einem beliebigen Browser testen und debuggen. Das Debuggen und Testen der Logik dieser benutzerdefinierten Funktionen wird im Stream Analytics-Portal derzeit nicht unterstützt. Sobald die Funktion wie gewünscht funktioniert, können Sie sie wie oben beschrieben dem Stream Analytics-Auftrag hinzufügen und dann direkt über Ihre Abfrage aufrufen. Sie können Ihre Abfragelogik mit der JavaScript-UDF auch mithilfe von [Stream Analytics-Tools für Visual Studio](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-tools-for-visual-studio-install) testen.
+Sie können Ihre JavaScript-UDF-Logik in einem beliebigen Browser testen und debuggen. Das Debuggen und Testen der Logik dieser benutzerdefinierten Funktionen wird im Stream Analytics-Portal derzeit nicht unterstützt. Sobald die Funktion wie gewünscht funktioniert, können Sie sie wie oben beschrieben dem Stream Analytics-Auftrag hinzufügen und dann direkt über Ihre Abfrage aufrufen. Sie können Ihre Abfragelogik mit der JavaScript-UDF auch mithilfe von [Stream Analytics-Tools für Visual Studio](./stream-analytics-tools-for-visual-studio-install.md) testen.
 
 JavaScript-Laufzeitfehler werden als schwerwiegend angesehen und im Aktivitätsprotokoll aufgezeichnet. Navigieren Sie im Azure-Portal zu Ihrem Auftrag, und wählen Sie **Aktivitätsprotokoll** aus, um das Protokoll abzurufen.
 
@@ -188,5 +188,5 @@ FROM
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Machine Learning-UDF](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
-* [C#-UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)
+* [Machine Learning-UDF](./machine-learning-udf.md)
+* [C#-UDF](./stream-analytics-edge-csharp-udf-methods.md)
