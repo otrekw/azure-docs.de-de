@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b88e618da3f8a23c0517aaeb251e54bf559fc468
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91848958"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358472"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dialpad für die automatische Benutzerbereitstellung
 
@@ -58,9 +58,9 @@ Bevor Sie Dialpad für die automatische Benutzerbereitstellung mit Azure AD konf
 
 2. Generieren Sie einen neuen Schlüssel, indem Sie auf **Add a key** (Schlüssel hinzufügen) klicken und die Eigenschaften des geheimen Tokens konfigurieren.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Screenshot der Seite „API keys“ (API-Schlüssel) in der Dialpad-Verwaltungskonsole. „Add a key“ (Schlüssel hinzufügen) ist hervorgehoben." border="false":::
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Screenshot der Seite „Edit API keys“ (API-Schlüssel bearbeiten) in der Dialpad-Verwaltungskonsole. Die Schaltfläche „Speichern“ ist hervorgehoben." border="false":::
 
 3. Klicken Sie für den soeben erstellten API-Schlüssel auf die Schaltfläche **Click to show value** (Klicken, um Wert anzuzeigen), und kopieren Sie den angezeigten Wert. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Dialpad-Anwendung in das Feld **Geheimes Token** eingegeben. 
 
@@ -76,11 +76,11 @@ Sie müssen Dialpad aus dem Azure AD-Anwendungskatalog Ihrer Liste mit den verwa
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -89,19 +89,19 @@ Sie müssen Dialpad aus dem Azure AD-Anwendungskatalog Ihrer Liste mit den verwa
 
 5. Navigieren Sie in einem separaten Browserfenster zu der unten hervorgehobenen **URL**. 
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Screenshot einer Seite mit Informationen zur Dialpad-App. Unter „URL“ ist eine Adresse aufgeführt und hervorgehoben." border="false":::
 
 6. Klicken Sie in der oberen rechten Ecke auf **Anmelden > Use Dialpad online** (Dialpad online verwenden).
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Screenshot der Dialpad-Website. „Log in“ (Anmelden) ist hervorgehoben, und die Registerkarte „Log in“ ist geöffnet. „Use Dialpad online“ (Dialpad online verwenden) ist ebenfalls hervorgehoben." border="false":::
 
 7. Da Dialpad eine OpenIDConnect-App ist, können Sie sich mit Ihrem Microsoft-Geschäftskonto bei Dialpad anmelden.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Screenshot der Seite „Start making calls“ (Anrufe beginnen) auf der Dialpad-Website. Die Schaltfläche „Log in with Office 365“ (Mit Office 365 anmelden) ist hervorgehoben." border="false":::
 
 8. Akzeptieren Sie nach der erfolgreichen Authentifizierung auf der Zustimmungsseite die Zustimmungsaufforderung. Die Anwendung wird dann automatisch Ihrem Mandanten hinzugefügt, und Sie werden zu Ihrem Dialpad-Konto umgeleitet.
 
-    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Screenshot der Dialpad-Verwaltungskonsole mit hervorgehobenem Symbol „Einstellungen“ sowie „My Company“, „Authentication“ und API-Schlüsseln. „My Company“ ist ausgewählt." border="false":::
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Screenshot einer Microsoft-Authentifizierungsseite, auf der angezeigt wird, dass die Dialpad-App Zugriff auf einige Daten angefordert hat. Die Schaltfläche „Accept“ (Annehmen) ist hervorgehoben." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Konfigurieren der automatischen Benutzerbereitstellung in Dialpad
 
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://dialpad.com/scim` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Dialpad abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Dialpad herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Dialpad-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://dialpad.com/scim` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Dialpad abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Dialpad herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Dialpad-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -139,13 +139,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Benutzerzuordnungen in Dialpad](media/dialpad-provisioning-tutorial/dialpad-user-mappings-new.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Dialpad synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Dialpad für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Dialpad synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Dialpad für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
     ![Dialpad-Benutzerattribute](media/dialpad-provisioning-tutorial/dialpad07.png)
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**, um den Azure AD-Bereitstellungsdienst für Dialpad zu aktivieren.
+11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** , um den Azure AD-Bereitstellungsdienst für Dialpad zu aktivieren.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

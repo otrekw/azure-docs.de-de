@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: e306c65735d8a5682cd90a1ce28fceec7d045c4d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519757"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359560"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung
 
@@ -47,7 +47,7 @@ Führen Sie zum Hinzufügen von Zscaler One aus dem Azure Marketplace die folgen
 
     ![Azure Active Directory-Symbol](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -88,7 +88,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
     ![Zscaler One-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot: Bereitstellung von Zscaler One](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
@@ -98,7 +98,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** und **Geheimes Token** die entsprechenden Einstellungen für Ihr Zscaler One-Konto ein, wie in Schritt 6 beschrieben.
 
-6. Navigieren Sie zum Abrufen der Mandanten-URL und des geheimen Tokens auf der Benutzeroberfläche im Zscaler One-Portal zu **Verwaltung** > **Authentifizierungseinstellungen** . Wählen Sie unter **Authentifizierungstyp** die Option **SAML** aus.
+6. Navigieren Sie zum Abrufen der Mandanten-URL und des geheimen Tokens auf der Benutzeroberfläche im Zscaler One-Portal zu **Verwaltung** > **Authentifizierungseinstellungen**. Wählen Sie unter **Authentifizierungstyp** die Option **SAML** aus.
 
     ![Zscaler One-Authentifizierungseinstellungen](./media/zscaler-one-provisioning-tutorial/secret-token-1.png)
 
@@ -112,7 +112,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
     ![Zscaler One-Testverbindung](./media/zscaler-one-provisioning-tutorial/test-connection.png)
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll. Aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Zscaler One-Benachrichtigungs-E-Mail](./media/zscaler-one-provisioning-tutorial/notification.png)
 
@@ -136,7 +136,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren des Azure AD-Be
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, befolgen Sie die Anleitung unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Um den Azure AD-Bereitstellungsdienst für Zscaler One zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+15. Um den Azure AD-Bereitstellungsdienst für Zscaler One zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Zscaler One-Bereitstellungsstatus](./media/zscaler-one-provisioning-tutorial/provisioning-status.png)
 

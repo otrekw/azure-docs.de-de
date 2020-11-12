@@ -4,15 +4,14 @@ description: Erfahren Sie, welche Ports und Adressen zur Steuerung des ausgehend
 services: container-service
 ms.topic: article
 ms.author: jpalma
-ms.date: 06/29/2020
-ms.custom: fasttrack-edit, devx-track-azurecli
+ms.date: 11/09/2020
 author: palma21
-ms.openlocfilehash: dcc015b9ff4cb9b980c7163f526eafbe5cd36119
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e3b755ca3ca5338acfc1918bd2085d9fba18b8ac
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900481"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380210"
 ---
 # <a name="control-egress-traffic-for-cluster-nodes-in-azure-kubernetes-service-aks"></a>Steuern des ausgehenden Datenverkehrs für Clusterknoten in Azure Kubernetes Service (AKS)
 
@@ -63,7 +62,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 |----------------------------------|-----------------|----------|
 | **`*.hcp.<location>.azmk8s.io`** | **`HTTPS:443`** | Erforderlich für die Kommunikation zwischen Knoten und API-Server. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wird. |
 | **`mcr.microsoft.com`**          | **`HTTPS:443`** | Erforderlich für den Zugriff auf Images in Microsoft Container Registry (MCR). Diese Registrierung enthält Images/Diagramme von Erstanbietern (beispielsweise coreDNS usw.). Diese Images sind für die korrekte Erstellung und Funktionsweise des Clusters erforderlich (unter anderem für Skalierungs- und Upgradevorgänge).  |
-| **`*.cdn.mscr.io`**              | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`*.data.mcr.microsoft.com`**   | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.azure.com`**       | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.microsoftonline.com`**  | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |
@@ -92,7 +90,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 | **`*.hcp.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Erforderlich für die Kommunikation zwischen Knoten und API-Server. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wird. |
 | **`*.tun.<location>.cx.prod.service.azk8s.cn`**| **`HTTPS:443`** | Erforderlich für die Kommunikation zwischen Knoten und API-Server. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wird. |
 | **`mcr.microsoft.com`**                        | **`HTTPS:443`** | Erforderlich für den Zugriff auf Images in Microsoft Container Registry (MCR). Diese Registrierung enthält Images/Diagramme von Erstanbietern (beispielsweise coreDNS usw.). Diese Images sind für die korrekte Erstellung und Funktionsweise des Clusters erforderlich (unter anderem für Skalierungs- und Upgradevorgänge). |
-| **`*.cdn.mscr.io`**                            | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`.data.mcr.microsoft.com`**                  | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.chinacloudapi.cn`**              | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.chinacloudapi.cn`**                   | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |
@@ -119,7 +116,6 @@ Die folgenden vollqualifizierten Domänennamen und Anwendungsregeln sind erforde
 |---------------------------------------------------------|-----------------|----------|
 | **`*.hcp.<location>.cx.aks.containerservice.azure.us`** | **`HTTPS:443`** | Erforderlich für die Kommunikation zwischen Knoten und API-Server. Ersetzen Sie *\<location\>* durch die Region, in der Ihr AKS-Cluster bereitgestellt wird.|
 | **`mcr.microsoft.com`**                                 | **`HTTPS:443`** | Erforderlich für den Zugriff auf Images in Microsoft Container Registry (MCR). Diese Registrierung enthält Images/Diagramme von Erstanbietern (beispielsweise coreDNS usw.). Diese Images sind für die korrekte Erstellung und Funktionsweise des Clusters erforderlich (unter anderem für Skalierungs- und Upgradevorgänge). |
-| **`*.cdn.mscr.io`**                                     | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`*.data.mcr.microsoft.com`**                          | **`HTTPS:443`** | Erforderlich für den auf Azure Content Delivery Network (CDN) basierenden MCR-Speicher. |
 | **`management.usgovcloudapi.net`**                      | **`HTTPS:443`** | Erforderlich für Kubernetes-Vorgänge für die Azure-API. |
 | **`login.microsoftonline.us`**                          | **`HTTPS:443`** | Erforderlich für die Azure Active Directory-Authentifizierung. |

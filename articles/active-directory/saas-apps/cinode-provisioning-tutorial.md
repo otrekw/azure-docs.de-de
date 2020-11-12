@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/28/2020
 ms.author: Zhchia
-ms.openlocfilehash: f60d73766d2f992faddd7d944436d9179ef18e19
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 43b20f2b286bdadbee33555abc1a19845092c64b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92456135"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357503"
 ---
 # <a name="tutorial-configure-cinode-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cinode für die automatische Benutzerbereitstellung
 
@@ -49,19 +49,19 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-cinode-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Cinode für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich bei Cinode mit einem Benutzerkonto an, das über Administratorrechte verfügt. Navigieren Sie zu **Verwaltung** .
+1. Melden Sie sich bei Cinode mit einem Benutzerkonto an, das über Administratorrechte verfügt. Navigieren Sie zu **Verwaltung**.
 
-2. Navigieren Sie zu **Integrationen** .
+2. Navigieren Sie zu **Integrationen**.
 
 3. Navigieren Sie zu **Token** , und erstellen Sie ein neues Token.
 
 4. Geben Sie einen eindeutigen Namen ein, wählen Sie **'https://api.cinode.app/scim/v2 '** als Zielgruppe aus, und legen Sie ein entsprechendes Ablaufdatum fest.
 
-5. Klicken Sie auf **Token erstellen** .
+5. Klicken Sie auf **Token erstellen**.
 
 ![Erstellen eines Tokens](media/cinode-provisioning-tutorial/token.png)
 
-6. Kopieren Sie **Mandanten-URL** und **Token** . Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Cinode-Anwendung eingegeben.
+6. Kopieren Sie **Mandanten-URL** und **Token**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Cinode-Anwendung eingegeben.
 
 ## <a name="step-3-add-cinode-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von Cinode aus dem Azure AD-Anwendungskatalog
 
@@ -82,7 +82,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-cinode-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für Cinode in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -90,7 +90,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Cinode-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Cinode zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Cinode zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -142,7 +142,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

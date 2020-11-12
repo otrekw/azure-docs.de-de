@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
-ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a26228b33a7d90df558de2ecdf4686910e606a54
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80811084"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413291"
 ---
 # <a name="azure-network-security-overview"></a>Übersicht über die Netzwerksicherheit in Azure
 
@@ -63,7 +63,7 @@ Azure unterstützt verschiedene Typen von Netzwerkzugriffssteuerungen. Diese umf
 Jede sichere Bereitstellung erfordert ein gewisses Maß an Netzwerkzugriffssteuerung. Das Ziel der Netzwerkzugriffssteuerung ist die Einschränkung der Kommunikation virtueller Computer auf die erforderlichen Systeme. Andere Verbindungsversuche werden blockiert.
 
 > [!NOTE]
-> Storage-Firewalls werden im Artikel [Übersicht über die Sicherheit von Azure Storage](storage-overview.md) behandelt.
+> Storage-Firewalls werden im Artikel [Übersicht über die Sicherheit von Azure Storage](../../storage/blobs/security-recommendations.md) behandelt.
 
 #### <a name="network-security-rules-nsgs"></a>Netzwerksicherheitsgruppen (NSGs)
 
@@ -77,11 +77,11 @@ NSGs bieten weder eine Inspektion auf Anwendungsebene noch authentifizierte Zugr
 
 Weitere Informationen:
 
-* [Netzwerksicherheitsgruppen](../../virtual-network/security-overview.md)
+* [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md)
 
 #### <a name="asc-just-in-time-vm-access"></a>Just-in-Time-VM-Zugriff in ASC
 
-In [Azure Security Center](../../security-center/security-center-intro.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [RBAC](/azure/role-based-access-control/overview)-Berechtigungen (rollenbasierte Zugriffssteuerung) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
+In [Azure Security Center](../../security-center/security-center-introduction.md) können die Netzwerksicherheitsgruppen auf virtuellen Computern verwaltet und der Zugriff auf die virtuellen Computer gesperrt werden, bis ein Benutzer mit den entsprechenden [RBAC](../../role-based-access-control/overview.md)-Berechtigungen (rollenbasierte Zugriffssteuerung) den Zugriff anfordert. Nachdem der Benutzer erfolgreich autorisiert wurde, nimmt ASC Änderungen an den Netzwerksicherheitsgruppen vor, um den Zugriff auf ausgewählte Ports für den angegebenen Zeitraum zu ermöglichen. Nach Ablauf des Zeitraums werden die NSGs auf ihren vorherigen gesicherten Status zurückgesetzt.
 
 Weitere Informationen:
 
@@ -141,7 +141,7 @@ Azure Firewall ist ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, de
 
 Weitere Informationen:
 
-* [Übersicht über Azure Firewall](/azure/firewall/overview)
+* [Übersicht über Azure Firewall](../../firewall/overview.md)
 
 ## <a name="secure-remote-access-and-cross-premises-connectivity"></a>Ein sicherer Remotezugriff und standortübergreifende Konnektivität
 
@@ -202,7 +202,7 @@ Es ist möglich, viele virtuelle Netzwerke für Ihre Bereitstellungen zu verwend
 
 Sie erreichen dies z.B., indem die Dienste in einem virtuellen Netzwerk über ein Internet-Loopback eine Verbindung mit Diensten in einem anderen virtuellen Netzwerk herstellen. Die Verbindung beginnt in einem virtuellen Netzwerk, durchläuft das Internet und endet wieder im virtuellen Zielnetzwerk. Bei Verwendung dieser Option wird die Verbindung den für internetbasierte Kommunikation typischen Sicherheitsproblemen ausgesetzt.
 
-Eine bessere Option ist möglicherweise die Erstellung eines Site-to-Site-VPN, das eine Verbindung zwischen zwei virtuellen Netzwerken herstellt. Bei dieser Methode wird das gleiche [IPsec-Protokoll im Tunnelmodus](https://technet.microsoft.com/library/cc786385.aspx) wie bei der zuvor erwähnten standortübergreifenden Site-to-Site-VPN-Verbindung verwendet.
+Eine bessere Option ist möglicherweise die Erstellung eines Site-to-Site-VPN, das eine Verbindung zwischen zwei virtuellen Netzwerken herstellt. Bei dieser Methode wird das gleiche [IPsec-Protokoll im Tunnelmodus](/previous-versions/windows/it-pro/windows-server-2003/cc786385(v=ws.10)) wie bei der zuvor erwähnten standortübergreifenden Site-to-Site-VPN-Verbindung verwendet.
 
 Der Vorteil dieses Ansatzes besteht darin, dass die VPN-Verbindung über das Azure-Netzwerkfabric anstatt über das Internet erstellt wird. Dadurch erhalten Sie im Vergleich zu Site-to-Site-VPNs, die Verbindungen über das Internet herstellen, eine zusätzliche Sicherheitsebene.
 
@@ -237,7 +237,7 @@ Azure Application Gateway umfasst den HTTP-basierten Lastenausgleich für Ihre w
 
 Weitere Informationen:
 
-* [Übersicht über Application Gateway](/azure/application-gateway/application-gateway-introduction)
+* [Übersicht über Application Gateway](../../application-gateway/overview.md)
 
 ### <a name="network-level-load-balancing"></a>Lastenausgleich auf Netzwerkebene
 
@@ -252,8 +252,8 @@ Mit Azure Load Balancer können Sie die Vorteile des Lastenausgleichs auf Netzwe
 
 Weitere Informationen:
 
-* [Internetlastenausgleich zwischen mehreren virtuellen Computern oder Diensten](/azure/load-balancer/load-balancer-internet-overview)
-* [Interner Lastenausgleich (Übersicht)](/azure/load-balancer/load-balancer-internal-overview)
+* [Internetlastenausgleich zwischen mehreren virtuellen Computern oder Diensten](../../load-balancer/load-balancer-overview.md)
+* [Interner Lastenausgleich (Übersicht)](../../load-balancer/load-balancer-overview.md)
 
 ### <a name="global-load-balancing"></a>Globaler Lastenausgleich
 
@@ -320,14 +320,14 @@ Microsoft bietet DDoS Protection **Basic** als Bestandteil der Azure-Plattform. 
 * **Native Plattformintegration:** Nativ in Azure integriert. Umfasst die Konfiguration über das Azure-Portal. DDoS Protection Standard erkennt Ihre Ressourcen und die Ressourcenkonfiguration.
 * **Sofort einsetzbarer Schutz:** Dank vereinfachter Konfiguration sind alle Ressourcen in einem virtuellen Netzwerk sofort geschützt, sobald DDoS Protection Standard aktiviert wird. Es sind weder Benutzereingriffe noch Benutzerdefinitionen erforderlich. DDoS Protection Standard wehrt einen Angriff sofort automatisch ab, sobald er entdeckt wurde.
 * **Stets verfügbare Überwachung des Datenverkehrs:** Die Datenverkehrsmuster Ihrer Anwendungen werden 24 Stunden am Tag und 7 Tage die Woche nach Anzeichen für DDoS-Angriffe überwacht. Abwehrmaßnahmen werden bei Überschreitung der Schutzrichtlinien ausgeführt.
-* **Berichte zur Risikominderung nach Angriffen**: Diese Berichte verwenden aggregierte Flowdaten aus dem Netzwerk, um detaillierte Informationen zu Angriffen auf Ihre Ressourcen bereitzustellen.
-* **Flowprotokolle zur Risikominderung nach Angriffen**: Mit diesen Protokollen können Sie während eines aktiven DDoS-Angriffs den verworfenen Datenverkehr, den weitergeleiteten Datenverkehr und andere Daten in Zusammenhang mit dem Angriff in Echtzeit prüfen.
+* **Berichte zur Risikominderung nach Angriffen** : Diese Berichte verwenden aggregierte Flowdaten aus dem Netzwerk, um detaillierte Informationen zu Angriffen auf Ihre Ressourcen bereitzustellen.
+* **Flowprotokolle zur Risikominderung nach Angriffen** : Mit diesen Protokollen können Sie während eines aktiven DDoS-Angriffs den verworfenen Datenverkehr, den weitergeleiteten Datenverkehr und andere Daten in Zusammenhang mit dem Angriff in Echtzeit prüfen.
 * **Adaptive Optimierung:** Dank einer intelligenten Profilerstellung lernt die Funktion den Datenverkehr Ihrer Anwendung kontinuierlich besser kennen. Auf dieser Basis wird das Profil ausgewählt und aktualisiert, das am besten zu Ihrem Dienst passt. Das Profil passt sich den Veränderungen des Datenverkehrs mit der Zeit an. Schutz für Ebene 3 bis Ebene 7: Bietet vollständigen DDoS-Stapelschutz bei Verwendung mit einer Web Application Firewall.
 * **Umfangreiche Angriffsabwehr:** Über 60 verschiedene Angriffstypen können mit einer weltweiten Kapazität zum Schutz vor den größten bekannten DDoS-Angriffen abgewehrt werden.
 * **Angriffsmetriken:** Mit Azure Monitor kann auf eine Zusammenfassung der Metriken für jeden Angriff zugegriffen werden.
 * **Angriffswarnungen:** Mit integrierten Angriffsmetriken können Warnungen am Anfang und Ende eines Angriffs sowie währenddessen konfiguriert werden. Warnungen werden in Ihre Betriebssoftware wie Microsoft Azure Monitor-Protokolle, Splunk, Azure Storage, E-Mail und das Azure-Portal integriert.
 * **Kostengarantie:**  Dienstguthaben für Datenübertragung und horizontale Anwendungsskalierung bei dokumentierten DDoS-Angriffen.
-* **Schnelle Reaktion bei DDoS-Angriffen**: Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
+* **Schnelle Reaktion bei DDoS-Angriffen** : Kunden von DDoS Protection Standard haben jetzt während eines aktiven Angriffs Zugang zum Rapid Response-Team. Rapid Response hilft bei der Untersuchung von Angriffen, beim Durchführen von kundenspezifischen Maßnahmen während eines Angriffs sowie bei der Analyse nach einem Angriff.
 
 
 Weitere Informationen:
@@ -381,7 +381,7 @@ Mit Security Center können Sie die Netzwerksicherheit wie folgt optimieren und 
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](../../security-center/security-center-intro.md)
+* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
 
 ### <a name="virtual-network-tap"></a>TAP eines virtuellen Netzwerks
 

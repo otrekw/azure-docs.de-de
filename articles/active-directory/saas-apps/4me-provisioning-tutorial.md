@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c0c428997cfba8871a29d9bfe0df0a6920a1d22f
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91851287"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357588"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 4me für die automatische Benutzerbereitstellung
 
@@ -45,21 +45,21 @@ Bevor Sie 4me für die automatische Benutzerbereitstellung mit Azure AD konfigu
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **4me** ein, wählen Sie im Ergebnisbereich **4me** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **4me** ein, wählen Sie im Ergebnisbereich **4me** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![4me in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="assigning-users-to-4me"></a>Zuweisen von Benutzern zu 4me
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf 4me benötigen. Anschließend können Sie diese Benutzer bzw. Gruppen 4me wie folgt zuweisen:
 
@@ -106,11 +106,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![4me-Apps](media/4me-provisioning-tutorial/4me02.png)
 
-    Öffnen Sie die Dropdownliste **SCIM**, um das geheime Token und den SCIM-Endpunkt abzurufen.
+    Öffnen Sie die Dropdownliste **SCIM** , um das geheime Token und den SCIM-Endpunkt abzurufen.
 
     ![„SCIM“ in 4me](media/4me-provisioning-tutorial/4me03.png)
 
-7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sich zu vergewissern, dass Azure AD eine Verbindung mit 4me herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 4me-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sich zu vergewissern, dass Azure AD eine Verbindung mit 4me herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 4me-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -124,15 +124,15 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Screenshot der Seite „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit 4me synchronisieren“ hervorgehoben." border="false":::
     
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 4me synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 4me für Updatevorgänge verwendet. Stellen Sie sicher, dass [4me das Filtern für das ausgewählte Attribut unterstützt](https://developer.4me.com/v1/scim/users/). Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 4me synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 4me für Updatevorgänge verwendet. Stellen Sie sicher, dass [4me das Filtern für das ausgewählte Attribut unterstützt](https://developer.4me.com/v1/scim/users/). Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Screenshot der Seite „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit 4me synchronisieren“ hervorgehoben." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Screenshot der Seite „Attributzuordnungen“. In einer Tabelle werden Azure Active Directory-Attribute, die entsprechenden 4me-Attribute und der Abgleichsstatus aufgeführt." border="false":::
     
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit 4me synchronisieren**.
 
-    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Screenshot der Seite „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit 4me synchronisieren“ hervorgehoben." border="false":::
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Screenshot der Seite „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Gruppen mit 4me synchronisieren“ hervorgehoben." border="false":::
     
-13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit 4me synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Gruppen in 4me für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit 4me synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Gruppen in 4me für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
     ![Gruppenzuordnungen in 4me](media/4me-provisioning-tutorial/4me-group-attribute.png)
 
@@ -158,7 +158,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 * 4me verfügt über verschiedene SCIM-Endpunkt-URLs für Test- und Produktionsumgebungen. Die erste endet mit **.qa** und die zweite mit **.com**.
 * Von 4me generierte geheime Token weisen ein Ablaufdatum von einem Monat ab Generierung auf.
-* 4me unterstützt keine **DELETE**-Vorgänge
+* 4me unterstützt keine **DELETE** -Vorgänge
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 

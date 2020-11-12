@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/2/2019
 ms.author: terrylan
-ms.openlocfilehash: d2862d5ab2c42ebdd1787022dc86119bc4e0f596
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d22ce3941b00903be8532caaa36a9ce55e2f2c6f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86229362"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409789"
 ---
 # <a name="azure-virtual-machines-security-overview"></a>Virtuelle Azure-Computer – Sicherheitsübersicht
 Dieser Artikel bietet eine Übersicht über die wichtigsten Sicherheitsfunktionen von Azure, die mit virtuellen Computern verwendet werden können.
@@ -51,11 +51,11 @@ Erfahren Sie mehr über [Microsoft Antimalware für Azure](antimalware.md) und d
 Weitere Informationen zu Antischadsoftware zum Schutz Ihrer virtuellen Computer:
 
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
-* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-trend)
-* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-symantec)
+* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](../../virtual-machines/extensions/trend.md)
+* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../../virtual-machines/extensions/symantec.md)
 * [Willkommen im Azure Marketplace](https://azure.microsoft.com/marketplace/?term=security)
 
-Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advanced Threat Protection](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). Windows Defender ATP bietet:
+Für einen noch leistungsfähigeren Schutz verwenden Sie [Windows Defender Advanced Threat Protection](/windows/security/threat-protection/windows-defender-atp/windows-defender-advanced-threat-protection). Windows Defender ATP bietet:
 
 * [Reduzierung der Angriffsfläche](/windows/security/threat-protection/windows-defender-atp/overview-attack-surface-reduction)  
 * [Schutz der nächsten Generation](/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10)  
@@ -75,22 +75,22 @@ Weitere Informationen:
 
 Verschlüsselungs- und Authentifizierungsschutzmaßnahmen können durch eine höhere Sicherheit verbessert werden. Sie können die Verwaltung und Sicherheit Ihrer geschäftskritischen geheimen Daten und Schlüssel vereinfachen, indem Sie diese in Azure Key Vault speichern.
 
-Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](https://msdn.microsoft.com/library/bb934049.aspx) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
+Mit Key Vault können Sie Ihre Schlüssel in Hardwaresicherheitsmodulen (Hardware Security Modules, HSMs) speichern, die gemäß FIPS 140-2 Level 2-Standards zertifiziert sind. Sie können Ihre SQL Server-Verschlüsselungsschlüssel für Sicherungen oder [transparente Datenverschlüsselung](/sql/relational-databases/security/encryption/transparent-data-encryption) gemeinsam mit den Schlüsseln oder geheimen Daten Ihrer Anwendungen in Key Vault speichern. Der Zugriff auf diese geschützten Elemente sowie die zugehörigen Berechtigungen werden über [Azure Active Directory](https://azure.microsoft.com/documentation/services/active-directory/)verwaltet.
 
 Weitere Informationen:
 
-* [Was ist der Azure-Schlüsseltresor?](/azure/key-vault/key-vault-overview)
-* [Azure Key Vault-Blog](https://blogs.technet.microsoft.com/kv/)
+* [Was ist der Azure-Schlüsseltresor?](../../key-vault/general/overview.md)
+* [Azure Key Vault-Blog](/archive/blogs/kv/)
 
 ## <a name="virtual-machine-disk-encryption"></a>Verschlüsselung der Datenträger virtueller Computer
 
-Azure Disk Encryption ist eine neue Funktion zur Verschlüsselung der Datenträger virtueller Windows- und Linux-Computer. Azure Disk Encryption verwendet das Branchenstandardfeature [BitLocker](https://technet.microsoft.com/library/cc732774.aspx) von Windows und das Feature [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
+Azure Disk Encryption ist eine neue Funktion zur Verschlüsselung der Datenträger virtueller Windows- und Linux-Computer. Azure Disk Encryption verwendet das Branchenstandardfeature [BitLocker](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)) von Windows und das Feature [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt) von Linux, um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 Die Lösung ist in Azure Key Vault integriert, damit Sie die Verschlüsselungsschlüssel und Geheimnisse für die Datenträgerverschlüsselung in Ihrem Key Vault-Abonnement steuern und verwalten können. Sie stellt außerdem sicher, dass alle ruhenden Daten auf den Datenträgern der virtuellen Computer in Azure Storage verschlüsselt sind.
 
 Weitere Informationen:
 
-* [Azure Disk Encryption für virtuelle IaaS-Computer](/azure/security/azure-security-disk-encryption-overview)
+* [Azure Disk Encryption für virtuelle IaaS-Computer](./azure-disk-encryption-vms-vmss.md)
 * [Schnellstart: Verschlüsseln eines virtuellen Windows-IaaS-Computers mit Azure PowerShell](../../virtual-machines/linux/disk-encryption-powershell-quickstart.md)
 
 ## <a name="virtual-machine-backup"></a>Sicherung virtueller Computer
@@ -99,8 +99,8 @@ Azure Backup ist eine skalierbare Lösung, die Ihre Anwendungsdaten schützt –
 
 Weitere Informationen:
 
-* [Was ist Azure Backup?](/azure/backup/backup-introduction-to-azure-backup)
-* [Azure Backup-Dienst – Häufig gestellte Fragen](/azure/backup/backup-azure-backup-faq)
+* [Was ist Azure Backup?](../../backup/backup-overview.md)
+* [Azure Backup-Dienst – Häufig gestellte Fragen](../../backup/backup-azure-backup-faq.md)
 
 ## <a name="azure-site-recovery"></a>Azure Site Recovery
 
@@ -108,17 +108,17 @@ Ein wichtiger Teil der BCDR-Strategie Ihrer Organisation ist die Ermittlung, wie
 
 Site Recovery:
 
-* **Vereinfachung Ihrer BCDR-Strategie**: Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
-* **Ermöglicht flexible Replikation**: Mithilfe von Site Recovery können Sie Workloads auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows-/Linux-Servern replizieren.
-* **Einfaches Failover und leichte Wiederherstellung werden unterstützt**: Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
-* **Beseitigung sekundärer Datencenter**: Sie können Daten an einem sekundären lokalen Standort oder in Azure replizieren. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
-* **Integration in vorhandene BCDR-Technologien**: Site Recovery wird zusammen mit den BCDR-Features anderer Anwendungen eingesetzt. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
+* **Vereinfachung Ihrer BCDR-Strategie** : Site Recovery vereinfacht die Replikation, das Failover und die Wiederherstellung mehrerer Geschäftsworkloads und -Apps von einem einzelnen Standort. Site Recovery orchestriert die Replikation und das Failover, aber das Tool fängt keine Anwendungsdaten ab und besitzt auch keinerlei Informationen hierzu.
+* **Ermöglicht flexible Replikation** : Mithilfe von Site Recovery können Sie Workloads auf virtuellen Hyper-V-Computern, virtuellen VMware-Computern und physischen Windows-/Linux-Servern replizieren.
+* **Einfaches Failover und leichte Wiederherstellung werden unterstützt** : Site Recovery verfügt über Testfailover, mit denen Übungen zur Notfallwiederherstellung unterstützt werden, ohne dass sich dies auf Produktionsumgebungen auswirkt. Außerdem können Sie geplante Failover ohne Datenverlust für erwartete Ausfälle oder ungeplante Failover mit minimalem Datenverlust (je nach Replikationsfrequenz) für unerwartete Notfälle ausführen. Nach dem Failover können Sie ein Failback zu Ihren primären Standorten durchführen. Site Recovery verfügt über Wiederherstellungspläne, die Skripts und Azure Automation-Arbeitsmappen enthalten können, sodass Sie das Failover und die Wiederherstellung von Anwendungen mit mehreren Ebenen anpassen können.
+* **Beseitigung sekundärer Datencenter** : Sie können Daten an einem sekundären lokalen Standort oder in Azure replizieren. Wenn Sie Azure als Ziel für die Notfallwiederherstellung nutzen, vermeiden Sie die Kosten und Komplexität, die mit der Verwaltung eines sekundären Standorts verbunden sind. Replizierte Daten werden in Azure Storage gespeichert.
+* **Integration in vorhandene BCDR-Technologien** : Site Recovery wird zusammen mit den BCDR-Features anderer Anwendungen eingesetzt. Beispielsweise können Sie Site Recovery verwenden, um das SQL Server-Back-End von geschäftlichen Workloads zu schützen. Dies umfasst auch die native Unterstützung für SQL Server Always On zum Verwalten des Failovers von Verfügbarkeitsgruppen.
 
 Weitere Informationen:
 
-* [Was ist Azure Site Recovery?](/azure/site-recovery/site-recovery-overview)
-* [Wie funktioniert Azure Site Recovery?](/azure/site-recovery/site-recovery-components)
-* [Welche Workloads werden durch Azure Site Recovery geschützt?](/azure/site-recovery/site-recovery-workload)
+* [Was ist Azure Site Recovery?](../../site-recovery/site-recovery-overview.md)
+* [Wie funktioniert Azure Site Recovery?](/azure/security/fundamentals/azure-to-azure-architecture)
+* [Welche Workloads werden durch Azure Site Recovery geschützt?](../../site-recovery/site-recovery-workload.md)
 
 ## <a name="virtual-networking"></a>Virtuelle Netzwerke
 
@@ -129,7 +129,7 @@ Ein virtuelles Azure-Netzwerk ist ein logisches Konstrukt, das auf dem physische
 Weitere Informationen:
 
 * [Die Netzwerksicherheit in Azure in der Übersicht](network-overview.md)
-* [Virtuelle Netzwerke im Überblick](/azure/virtual-network/virtual-networks-overview)
+* [Virtuelle Netzwerke im Überblick](../../virtual-network/virtual-networks-overview.md)
 * [Netzwerkfeatures und Partnerschaften für Enterpriseszenarien](https://azure.microsoft.com/blog/networking-enterprise/)
 
 ## <a name="security-policy-management-and-reporting"></a>Verwaltung von Sicherheitsrichtlinien und Berichtserstellung
@@ -138,14 +138,14 @@ Mit Azure Security Center können Sie Bedrohungen verhindern, erkennen und beheb
 
 Mit Security Center können Sie die Sicherheit Ihrer virtuellen Computer durch folgende Aktionen optimieren und überwachen:
 
-* Bereitstellen von [Sicherheitsempfehlungen](/azure/security-center/security-center-recommendations) für die virtuellen Computer. Empfehlungen beziehen sich beispielsweise auf das Anwenden von Systemupdates, das Konfigurieren von ACL-Endpunkten, das Aktivieren von Antischadsoftware, das Aktivieren von Netzwerksicherheitsgruppen und das Anwenden der Datenträgerverschlüsselung.
+* Bereitstellen von [Sicherheitsempfehlungen](../../security-center/security-center-recommendations.md) für die virtuellen Computer. Empfehlungen beziehen sich beispielsweise auf das Anwenden von Systemupdates, das Konfigurieren von ACL-Endpunkten, das Aktivieren von Antischadsoftware, das Aktivieren von Netzwerksicherheitsgruppen und das Anwenden der Datenträgerverschlüsselung.
 * Überwachen des Status Ihrer virtuellen Computer.
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](/azure/security-center/security-center-intro)
-* [Azure Security Center – Häufig gestellte Fragen](/azure/security-center/security-center-faq)
-* [Planungs- und Betriebshandbuch für Azure Security Center](/azure/security-center/security-center-planning-and-operations-guide)
+* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
+* [Azure Security Center – Häufig gestellte Fragen](../../security-center/faq-general.md)
+* [Planungs- und Betriebshandbuch für Azure Security Center](../../security-center/security-center-planning-and-operations-guide.md)
 
 ## <a name="compliance"></a>Compliance
 

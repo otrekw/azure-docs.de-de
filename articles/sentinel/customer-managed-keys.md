@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: bc3da6f0d82adab2d21d4dbd91dee8654145b896
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91951484"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427053"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
 
@@ -36,7 +36,7 @@ Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren 
 
 Die Azure Sentinel-Lösung nutzt eine Reihe von Speicherressourcen für die Protokollerfassung und Features, einschließlich Log Analytics und anderer Ressourcen. Im Rahmen der Azure Sentinel-CMK-Konfiguration müssen auch die CMK-Einstellungen für die zugehörigen Speicherressourcen konfiguriert werden. In Log Analytics-fremden Speicherressourcen gespeicherte Daten werden ebenfalls verschlüsselt.
 
-Weitere Informationen über [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview).
+Weitere Informationen über [CMK](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview).
 
 > [!NOTE]
 > Wenn Sie CMK in Azure Sentinel aktivieren, werden Public Preview-Features ohne CMK-Unterstützung nicht aktiviert.
@@ -114,7 +114,7 @@ Die Kontolöschung ist der einzige Vorgang, der nach dem Widerruf des Verschlüs
 
 Wird der Zugriff nach dem Widerruf wiederhergestellt, stellt Azure Sentinel den Zugriff auf die Daten binnen einer Stunde wieder her.
 
-Weitere Informationen zur Funktionsweise in Azure Monitor finden Sie unter [CMK-Widerruf (KEK)](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-revocation).
+Weitere Informationen zur Funktionsweise in Azure Monitor finden Sie unter [CMK-Widerruf (KEK)](../azure-monitor/platform/customer-managed-keys.md#key-revocation).
 
 ## <a name="key-encryption-key-rotation"></a>Rotation des Schlüsselverschlüsselungsschlüssels
 
@@ -127,7 +127,7 @@ In Key Vault können Sie zur Schlüsselrotation eine neue Version des Schlüssel
 
 Sie können die vorherige Version des Schlüssels nach 24 Stunden deaktivieren oder nachdem in den Azure Key Vault-Überwachungsprotokollen keine Aktivität mit der alten Version mehr vorkommen.
 
-Wenn Sie in Azure Sentinel und Log Analytics den gleichen Schlüssel verwenden, muss die Clusterressource in Log Analytics für die Schlüsselrotation explizit mit der neuen Azure Key Vault-Schlüsselversion aktualisiert werden. Weitere Informationen finden Sie unter [CMK-Rotation (KEK)](../azure-monitor/platform/customer-managed-keys.md#cmk-kek-rotation).
+Wenn Sie in Azure Sentinel und Log Analytics den gleichen Schlüssel verwenden, muss die Clusterressource in Log Analytics für die Schlüsselrotation explizit mit der neuen Azure Key Vault-Schlüsselversion aktualisiert werden. Weitere Informationen finden Sie unter [CMK-Rotation (KEK)](../azure-monitor/platform/customer-managed-keys.md#key-rotation).
 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie Sie einen kundenseitig verwalteten Schlüssel in Azure Sentinel einrichten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:

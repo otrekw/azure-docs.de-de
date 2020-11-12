@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
-ms.openlocfilehash: 52c71e06b33ef29c2ef0628d651c7f72e41b87ff
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671887"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358812"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD in SAP SuccessFactors
 In diesem Tutorial werden die Schritte zum Rückschreiben von Attributen aus Azure AD in SuccessFactors Employee Central beschrieben. 
@@ -81,7 +81,7 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
    > [!div class="mx-imgBorder"]
    > ![Lese-/Schreibberechtigungen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
 
-1. Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern** .
+1. Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Erstellen einer Berechtigungsgruppe für den API-Benutzer
 
@@ -121,11 +121,11 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
    > [!div class="mx-imgBorder"]
    > ![Details zu Berechtigungsrolle und -gruppe](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
 
-1. Klicken Sie auf **Änderungen speichern** .
+1. Klicken Sie auf **Änderungen speichern**.
 
 ## <a name="preparing-for-successfactors-writeback"></a>Vorbereitungen für SuccessFactors Writeback
 
-Die Bereitstellungs-App SuccessFactors Writeback verwendet bestimmte *Codewerte* für das Festlegen von E-Mail-Adressen und Telefonnummern in Employee Central. Diese *Codewerte* werden in der Attributzuordnungstabelle als konstante Werte festgelegt und sind für jede SuccessFactors-Instanz anders. Dieser Abschnitt enthält die Schritte zum Erfassen dieser *Codewerte* .
+Die Bereitstellungs-App SuccessFactors Writeback verwendet bestimmte *Codewerte* für das Festlegen von E-Mail-Adressen und Telefonnummern in Employee Central. Diese *Codewerte* werden in der Attributzuordnungstabelle als konstante Werte festgelegt und sind für jede SuccessFactors-Instanz anders. Dieser Abschnitt enthält die Schritte zum Erfassen dieser *Codewerte*.
 
    > [!NOTE]
    > Wenden Sie sich an Ihren SuccessFactors-Administrator, um die Schritte in diesem Abschnitt auszuführen. 
@@ -134,34 +134,34 @@ Die Bereitstellungs-App SuccessFactors Writeback verwendet bestimmte *Codewerte*
 
 In SAP SuccessFactors umfasst eine *Auswahlliste* konfigurierbare Optionen, aus denen Benutzer eine Auswahl treffen können. Die unterschiedlichen Typen von E-Mail-Adressen und Telefonnummern (z. B. geschäftlich, privat usw.) werden mithilfe einer Auswahlliste dargestellt. In diesem Schritt identifizieren Sie die Auswahllisten, die in Ihrem SuccessFactors-Mandanten für die Speicherung von Werten für E-Mail-Adressen und Telefonnummern konfiguriert sind. 
  
-1. Suchen Sie im SuccessFactors Admin Center nach *Manage business configuration* . 
+1. Suchen Sie im SuccessFactors Admin Center nach *Manage business configuration*. 
 
    > [!div class="mx-imgBorder"]
    > ![Manage business configuration](./media/sap-successfactors-inbound-provisioning/manage-business-config.png)
 
-1. Wählen Sie unter **HRIS Elements** die Option **emailInfo** aus, und klicken Sie neben dem Feld **email-type** auf *Details* .
+1. Wählen Sie unter **HRIS Elements** die Option **emailInfo** aus, und klicken Sie neben dem Feld **email-type** auf *Details*.
 
    > [!div class="mx-imgBorder"]
    > ![Abrufen von E-Mail-Informationen](./media/sap-successfactors-inbound-provisioning/get-email-info.png)
 
-1. Notieren Sie sich auf der Detailseite **email-type** den Namen der Auswahlliste, die diesem Feld zugeordnet ist. Standardmäßig ist dies **ecEmailType** . Dies kann jedoch in Ihrem Mandanten anders sein. 
+1. Notieren Sie sich auf der Detailseite **email-type** den Namen der Auswahlliste, die diesem Feld zugeordnet ist. Standardmäßig ist dies **ecEmailType**. Dies kann jedoch in Ihrem Mandanten anders sein. 
 
    > [!div class="mx-imgBorder"]
    > ![Ermitteln der E-Mail-Auswahlliste](./media/sap-successfactors-inbound-provisioning/identify-email-picklist.png)
 
-1. Wählen Sie unter **HRIS Elements** die Option **phoneInfo** aus, und klicken Sie neben dem Feld **phone-type** auf *Details* .
+1. Wählen Sie unter **HRIS Elements** die Option **phoneInfo** aus, und klicken Sie neben dem Feld **phone-type** auf *Details*.
 
    > [!div class="mx-imgBorder"]
    > ![Abrufen von Telefoninformationen](./media/sap-successfactors-inbound-provisioning/get-phone-info.png)
 
-1. Notieren Sie sich auf der Detailseite **phone-type** den Namen der Auswahlliste, die diesem Feld zugeordnet ist. Standardmäßig ist dies **ecPhoneType** . Dies kann jedoch in Ihrem Mandanten anders sein. 
+1. Notieren Sie sich auf der Detailseite **phone-type** den Namen der Auswahlliste, die diesem Feld zugeordnet ist. Standardmäßig ist dies **ecPhoneType**. Dies kann jedoch in Ihrem Mandanten anders sein. 
 
    > [!div class="mx-imgBorder"]
    > ![Ermitteln der Telefonauswahlliste](./media/sap-successfactors-inbound-provisioning/identify-phone-picklist.png)
 
 ### <a name="retrieve-constant-value-for-emailtype"></a>Abrufen des konstanten Werts für „emailType“
 
-1. Suchen und öffnen Sie im SuccessFactors Admin Center das *Picklist Center* . 
+1. Suchen und öffnen Sie im SuccessFactors Admin Center das *Picklist Center*. 
 1. Verwenden Sie den Namen der im vorherigen Abschnitt notierten E-Mail-Auswahlliste (z. B. ecEmailType), um die E-Mail-Auswahlliste zu finden. 
 
    > [!div class="mx-imgBorder"]
@@ -172,7 +172,7 @@ In SAP SuccessFactors umfasst eine *Auswahlliste* konfigurierbare Optionen, aus 
    > [!div class="mx-imgBorder"]
    > ![Öffnen der aktiven E-Mail-Typ-Auswahlliste](./media/sap-successfactors-inbound-provisioning/open-active-email-type-picklist.png)
 
-1. Wählen Sie auf der Seite der Auswahlliste für den E-Mail-Typ den Typ *Business* .
+1. Wählen Sie auf der Seite der Auswahlliste für den E-Mail-Typ den Typ *Business*.
 
    > [!div class="mx-imgBorder"]
    > ![Auswählen des E-Mail-Typs „Business“](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
@@ -187,7 +187,7 @@ In SAP SuccessFactors umfasst eine *Auswahlliste* konfigurierbare Optionen, aus 
 
 ### <a name="retrieve-constant-value-for-phonetype"></a>Abrufen des konstanten Werts für „phoneType“
 
-1. Suchen und öffnen Sie im SuccessFactors Admin Center das *Picklist Center* . 
+1. Suchen und öffnen Sie im SuccessFactors Admin Center das *Picklist Center*. 
 1. Verwenden Sie den Namen der im vorherigen Abschnitt notierten Telefonauswahlliste, um die Telefonauswahlliste zu finden. 
 
    > [!div class="mx-imgBorder"]
@@ -233,7 +233,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 
-3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen** .
+3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
 4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
 
@@ -241,11 +241,11 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Modus** **Bereitstellung** in **Automatisch** .
+7. Ändern Sie den **Modus** **Bereitstellung** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID** .
+   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
 
    * **Administratorkennwort** : Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
 
@@ -255,7 +255,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
     > [!NOTE]
     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
-   * Klicken Sie auf die Schaltfläche **Verbindung testen** . Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern** . Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
+   * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
     >[!div class="mx-imgBorder"]
     >![Azure portal](./media/sap-successfactors-inbound-provisioning/sfwb-provisioning-creds.png)
 
@@ -265,7 +265,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFactors in Active Directory.
 
-1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Azure Active Directory-Benutzer bereitstellen** .
+1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Azure Active Directory-Benutzer bereitstellen**.
 
 1. Im Feld **Quellobjektbereich** können Sie auswählen, für welche Benutzergruppen in Azure AD das Rückschreiben durchgeführt werden soll, indem Sie verschiedene attributbasierte Filter definieren. Die Standardoption ist „Alle Benutzer in Azure AD“. 
    > [!TIP]
@@ -302,7 +302,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
     >[!div class="mx-imgBorder"]
     >![Erweiterte Optionen anzeigen](./media/sap-successfactors-inbound-provisioning/show-advanced-options.png)
 
-1. Klicken Sie auf **Attributliste für SuccessFactors bearbeiten** . 
+1. Klicken Sie auf **Attributliste für SuccessFactors bearbeiten**. 
 
    > [!NOTE] 
    > Wenn die Option **Attributliste für SuccessFactors bearbeiten** im Azure-Portal nicht angezeigt wird, können Sie über die URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* auf die Seite zugreifen. 
@@ -334,7 +334,7 @@ Nachdem die Konfiguration der SuccessFactors-Bereitstellungs-App abgeschlossen i
    > [!NOTE]
    > Die Bereitstellungs-App für das SuccessFactors-Rückschreiben unterstützt keine „Gruppenzuweisung“. Nur die „Benutzerzuweisung“ wird unterstützt. 
 
-1. Klicken Sie auf **Speichern** .
+1. Klicken Sie auf **Speichern**.
 
 1. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl von Benutzern im Azure AD-Mandanten und vom für den Vorgang definierten Bereich mehrere Stunden dauern kann. Sie können die Statusanzeige überprüfen, um den Fortschritt des Synchronisierungszyklus zu verfolgen. 
 

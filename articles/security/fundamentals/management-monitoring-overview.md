@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: c5525fc43f23ecd1760c5a869d8171aee0e9415d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91395769"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410333"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
@@ -48,8 +48,8 @@ Weitere Informationen:
 
 * [Deploying Antimalware Solutions on Azure Virtual Machines (Bereitstellen von Antischadsoftware-Lösungen auf virtuellen Azure-Computern, in englischer Sprache)](https://azure.microsoft.com/blog/deploying-antimalware-solutions-on-azure-virtual-machines/)
 * [Microsoft Antimalware für Azure Cloud Services und Virtual Machines](antimalware.md)
-* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-trend)
-* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](/azure/virtual-machines/windows/classic/install-symantec)
+* [Installieren und Konfigurieren von Trend Micro Deep Security als Dienst auf einem virtuellen Windows-Computer](../../virtual-machines/extensions/trend.md)
+* [Installieren und Konfigurieren von Symantec Endpoint Protection auf einem virtuellen Windows-Computer](../../virtual-machines/extensions/symantec.md)
 * [New Antimalware Options for Protecting Azure Virtual Machines](https://azure.microsoft.com/blog/new-antimalware-options-for-protecting-azure-virtual-machines/) (Neue Antimalware-Optionen zum Schützen von Azure Virtual Machines)
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
@@ -61,7 +61,7 @@ Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendu
 Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Was ist Azure Multi-Factor Authentication?](/azure/active-directory/authentication/multi-factor-authentication)
+* [Was ist Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
 * [Funktionsweise von Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
@@ -112,7 +112,7 @@ Indem Benachrichtigungen gesendet und Abhilfemaßnahmen empfohlen werden, trägt
 
 Weitere Informationen:
 
-* [Azure Active Directory Identity Protection](/azure/active-directory/active-directory-identityprotection)
+* [Azure Active Directory Identity Protection](../../active-directory/identity-protection/overview-identity-protection.md)
 * [Channel 9: Azure AD and Identity Show: Identity Protection Preview (Channel 9: Azure AD- und Identity-Show: Vorschau von Identity Protection)](https://channel9.msdn.com/Series/Azure-AD-Identity/Azure-AD-and-Identity-Show-Identity-Protection-Preview)
 
 ## <a name="security-center"></a>Security Center
@@ -129,8 +129,8 @@ Mit Security Center können Sie die Sicherheit Ihrer Azure-Ressourcen wie folgt 
 
 Weitere Informationen:
 
-* [Einführung in Azure Security Center](../../security-center/security-center-intro.md)
-* [Verbessern des Secure Score in Azure Security Center](../../security-center/security-center-secure-score.md)
+* [Einführung in Azure Security Center](../../security-center/security-center-introduction.md)
+* [Verbessern des Secure Score in Azure Security Center](../../security-center/secure-score-security-controls.md)
 
 ## <a name="intelligent-security-graph"></a>Intelligent Security Graph
 

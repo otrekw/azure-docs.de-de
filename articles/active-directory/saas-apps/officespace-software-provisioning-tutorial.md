@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/02/2019
 ms.author: Zhchia
-ms.openlocfilehash: fe48cef0fb235d217f95012e81d7daf501928300
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fc67d649e3a7cd094eb2c3d633244077abcab308
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518567"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359921"
 ---
 # <a name="tutorial-configure-officespace-software-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von OfficeSpace Software für die automatische Benutzerbereitstellung
 
@@ -50,15 +50,15 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="set-up-officespace-software-for-provisioning"></a>Einrichten von OfficeSpace Software für die Bereitstellung
 
-1. Melden Sie sich bei Ihrer [OfficeSpace Software-Verwaltungskonsole](https://support.officespacesoftware.com/hc) an. Navigieren Sie zu **Einstellungen > Connectors** .
+1. Melden Sie sich bei Ihrer [OfficeSpace Software-Verwaltungskonsole](https://support.officespacesoftware.com/hc) an. Navigieren Sie zu **Einstellungen > Connectors**.
 
     ![OfficeSpace Software-Verwaltungskonsole](media/officespace-software-provisioning-tutorial/settings.png)
 
-2.  Navigieren Sie zu **Verzeichnissynchronisierung > SCIM** .
+2.  Navigieren Sie zu **Verzeichnissynchronisierung > SCIM**.
 
     ![OfficeSpace Software: SCIM hinzufügen](media/officespace-software-provisioning-tutorial/scim.png)
 
-3.  Kopieren Sie das **SCIM-Authentifizierungstoken** . Dieser Wert wird auf der Registerkarte „Bereitstellung“ für Ihre OfficeSpace Software-Anwendung im Azure-Portal in das Feld „Geheimes Token“ eingegeben.
+3.  Kopieren Sie das **SCIM-Authentifizierungstoken**. Dieser Wert wird auf der Registerkarte „Bereitstellung“ für Ihre OfficeSpace Software-Anwendung im Azure-Portal in das Feld „Geheimes Token“ eingegeben.
 
     ![OfficeSpace Software: Token erstellen](media/officespace-software-provisioning-tutorial/token.png)
 
@@ -72,7 +72,7 @@ Bevor Sie OfficeSpace Software für die automatische Benutzerbereitstellung mit 
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -93,7 +93,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-officespace-software-in-azure-ad"></a>So konfigurieren Sie OfficeSpace Software für die automatische Benutzerbereitstellung in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![OfficeSpace Software-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -113,11 +113,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit OfficeSpace Software synchronisieren** aus.
 
@@ -129,7 +129,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-12. Um den Azure AD-Bereitstellungsdienst für OfficeSpace Software zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+12. Um den Azure AD-Bereitstellungsdienst für OfficeSpace Software zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-14. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+14. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

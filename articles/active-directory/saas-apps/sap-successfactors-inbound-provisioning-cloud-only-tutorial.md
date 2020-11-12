@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 08/05/2020
 ms.author: chmutali
-ms.openlocfilehash: 317fef0381222cc7bd9f86fce13a809aa3c787ea
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a62943c1a808424ded1a5e46ed115cda332bf7d5
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92676581"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358727"
 ---
 # <a name="tutorial-configure-sap-successfactors-to-azure-ad-user-provisioning"></a>Tutorial: Konfigurieren der Benutzerbereitstellung von SAP SuccessFactors zu Azure AD
 In diesem Tutorial werden die Schritte vorgestellt, die Sie zum Bereitstellen von Mitarbeiterdaten aus SuccessFactors Employee Central in Azure Active Directory ausführen müssen, wobei einige E-Mail-Adressen optional in SuccessFactors zurückgeschrieben werden. 
@@ -106,7 +106,7 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
 * Scrollen Sie in demselben Feld nach unten, und wählen Sie **Employee Central API** aus. Fügen Sie wie unten gezeigt Berechtigungen für das Lesen und Bearbeiten über die OData-API hinzu. Wählen Sie die Bearbeitungsoption aus, wenn Sie dasselbe Konto für das Rückschreiben in ein SuccessFactors-Szenario verwenden möchten. 
   > [!div class="mx-imgBorder"]
   > ![Lese-/Schreibberechtigungen](./media/sap-successfactors-inbound-provisioning/odata-read-write-perm.png)
-* Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern** .
+* Klicken Sie auf **Done** (Fertig). Klicken Sie auf **Änderungen speichern**.
 
 ### <a name="create-a-permission-group-for-the-api-user"></a>Erstellen einer Berechtigungsgruppe für den API-Benutzer
 
@@ -135,7 +135,7 @@ Wenden Sie sich an das Administratorteam von SuccessFactors oder Ihren Implement
 * Überprüfen Sie die erteilte Berechtigungsrolle für die Berechtigungsgruppe. 
   > [!div class="mx-imgBorder"]
   > ![Details zu Berechtigungsrolle und -gruppe](./media/sap-successfactors-inbound-provisioning/permission-role-group.png)
-* Klicken Sie auf **Änderungen speichern** .
+* Klicken Sie auf **Änderungen speichern**.
 
 ## <a name="configuring-user-provisioning-from-successfactors-to-azure-ad"></a>Konfigurieren der Benutzerbereitstellung aus SuccessFactors in Azure AD
 
@@ -153,7 +153,7 @@ In diesem Abschnitt werden die Schritte für die Bereitstellung von Benutzerkont
 
 2. Wählen Sie auf der linken Navigationsleiste **Azure Active Directory** aus.
 
-3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen** .
+3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
 4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
 
@@ -161,21 +161,21 @@ In diesem Abschnitt werden die Schritte für die Bereitstellung von Benutzerkont
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Modus** **Bereitstellung** in **Automatisch** .
+7. Ändern Sie den **Modus** **Bereitstellung** in **Automatisch**.
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID** .
+   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
 
    * **Administratorkennwort** : Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
 
-   * **Mandanten-URL** : Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte das folgende Format aufweisen: **API-Servername.successfactors.com** .
+   * **Mandanten-URL** : Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte das folgende Format aufweisen: **API-Servername.successfactors.com**.
 
    * **Benachrichtigungs-E-Mail** : Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
     > [!NOTE]
     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
-   * Klicken Sie auf die Schaltfläche **Verbindung testen** . Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern** . Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
+   * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Falls nicht, sollten Sie überprüfen, ob die SuccessFactors-Anmeldeinformationen und die URL gültig sind.
     >[!div class="mx-imgBorder"]
     >![Azure portal](./media/sap-successfactors-inbound-provisioning/sf2aad-provisioning-creds.png)
 
@@ -185,7 +185,7 @@ In diesem Abschnitt werden die Schritte für die Bereitstellung von Benutzerkont
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFactors in Active Directory.
 
-1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **SuccessFactors-Benutzer in Azure Active Directory synchronisieren** .
+1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **SuccessFactors-Benutzer in Azure Active Directory synchronisieren**.
 
 1. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in SuccessFactors für die Bereitstellung in Azure AD auswählen, indem Sie verschiedene attributbasierte Filter definieren. Der Standardbereich ist „Alle Benutzer in SuccessFactors“. Beispielfilter:
 
@@ -257,7 +257,7 @@ Nachdem die Konfiguration der SuccessFactors-Bereitstellungs-App abgeschlossen i
 
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
-2. Klicken Sie auf **Speichern** .
+2. Klicken Sie auf **Speichern**.
 
 3. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl von Benutzern im SuccessFactors-Mandanten mehrere Stunden dauern kann. Sie können die Statusanzeige überprüfen, um den Fortschritt des Synchronisierungszyklus zu verfolgen. 
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: ebbcb8dd8c895c61858952fbd4498bd57e06d36b
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92448655"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359645"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -91,7 +91,7 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
     e. Wiederholen Sie die obigen Schritte für alle weiteren Domänen, die Sie G Suite hinzufügen möchten.
 
-5. Bestimmen Sie als Nächstes, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung in G Suite verwenden möchten. Navigieren Sie zur Registerkarte **Administratorrollen** .
+5. Bestimmen Sie als Nächstes, welches Administratorkonto Sie zum Verwalten der Benutzerbereitstellung in G Suite verwenden möchten. Navigieren Sie zur Registerkarte **Administratorrollen**.
 
     ![G Suite, Administrator](./media/google-apps-provisioning-tutorial/gapps-admin.png)
 
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-g-suite-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für G Suite in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** . Benutzer müssen sich unter „portal.azure.com“ anmelden und können nicht „aad.portal.azure.com“ verwenden.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**. Benutzer müssen sich unter „portal.azure.com“ anmelden und können nicht „aad.portal.azure.com“ verwenden.
 
     ![Blatt „Unternehmensanwendungen“](./media/google-apps-provisioning-tutorial/enterprise-applications.png)
 
@@ -131,7 +131,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![G Suite-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** . Klicken Sie auf **Erste Schritte** .
+3. Wählen Sie die Registerkarte **Bereitstellung**. Klicken Sie auf **Erste Schritte**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -141,7 +141,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren** . In einem neuen Browserfenster werden Sie zum Dialogfeld für die Google-Autorisierung geleitet.
+5. Klicken Sie im Abschnitt **Administratoranmeldeinformationen** auf **Autorisieren**. In einem neuen Browserfenster werden Sie zum Dialogfeld für die Google-Autorisierung geleitet.
 
       ![G Suite, Autorisierung](./media/google-apps-provisioning-tutorial/authorize-1.png)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 7. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit G Suite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr G Suite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -251,7 +251,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für G Suite zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -259,7 +259,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

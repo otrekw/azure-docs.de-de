@@ -13,12 +13,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed23ffa9971bf4c97b784f230053aed4b1acf0a4
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f717e14e5abe62aafffdeef841889ea2458fa8b
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369793"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413444"
 ---
 # <a name="how-azure-ad-delivers-cloud-governed-management-for-on-premises-workloads"></a>So stellt Azure AD die über die Cloud gesteuerte Verwaltung für lokale Workloads bereit
 
@@ -77,7 +77,7 @@ Die geschäftliche Zusammenarbeit zwischen Unternehmen (B2B) erfordert zunehmend
 
 Azure AD kann nach Bedarf [automatisch Konten für Gastbenutzer in AD erstellen](../external-identities/hybrid-cloud-to-on-premises.md), und so Gästen des Unternehmens den Zugriff auf lokale, AD-integrierte Anwendungen gewähren, ohne dass ein weiteres Kennwort erforderlich wäre. Organisationen können [Richtlinien für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) für Gastbenutzer](../external-identities/conditional-access.md) einrichten, damit während der Anwendungsproxyauthentifizierung MFA-Prüfungen durchgeführt werden. Außerdem gelten alle [Zugriffsüberprüfungen](../governance/manage-guest-access-with-access-reviews.md), die für Cloud-B2B-Benutzer durchgeführt werden, auch für lokale Benutzer. Wenn der Cloudbenutzer beispielsweise durch Richtlinien für die Lebenszyklusverwaltung gelöscht wird, wird der lokale Benutzer ebenfalls gelöscht.
 
-**Verwaltung von Anmeldeinformationen für Active Directory-Konten** Die Self-Service-Kennwortzurücksetzung von Azure AD erlaubt Benutzern, die ihre Kennwörter vergessen haben, eine erneute Authentifizierung sowie das Zurücksetzen ihrer Kennwörter, wobei die geänderten Kennwörter [in das lokale Active Directory geschrieben werden](../authentication/concept-sspr-writeback.md). Der Prozess zum Zurücksetzen des Kennworts kann auch die lokalen Active Directory-Kennwortrichtlinien verwenden: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Der [Bereitstellungsplan](https://aka.ms/deploymentplans/sspr) für die Self-Service-Kennwortzurücksetzung legt bewährte Methoden für die Einführung der Self-Service-Kennwortzurücksetzung für Benutzer über Web- und Windows-integrierte Erfahrungen dar.
+**Verwaltung von Anmeldeinformationen für Active Directory-Konten** Die Self-Service-Kennwortzurücksetzung von Azure AD erlaubt Benutzern, die ihre Kennwörter vergessen haben, eine erneute Authentifizierung sowie das Zurücksetzen ihrer Kennwörter, wobei die geänderten Kennwörter [in das lokale Active Directory geschrieben werden](../authentication/concept-sspr-writeback.md). Der Prozess zum Zurücksetzen des Kennworts kann auch die lokalen Active Directory-Kennwortrichtlinien verwenden: Wenn ein Benutzer sein Kennwort zurücksetzt, wird es überprüft, um sicherzustellen, dass es die lokalen Active Directory-Richtlinien erfüllt, bevor es für dieses Verzeichnis übernommen wird. Der [Bereitstellungsplan](../authentication/howto-sspr-deployment.md) für die Self-Service-Kennwortzurücksetzung legt bewährte Methoden für die Einführung der Self-Service-Kennwortzurücksetzung für Benutzer über Web- und Windows-integrierte Erfahrungen dar.
 
 ![Azure AD-SSPR-Architektur](media/cloud-governed-management-for-on-premises/image3.png)
 
@@ -97,7 +97,7 @@ Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als 
 
 * Das Whitepaper [Migrieren Ihrer Anwendungen zu Azure Active Directory](https://aka.ms/migrateapps/whitepaper), in dem die Vorteile der Migration vorgestellt und beschrieben wird, wie sich die Migration in vier klar dargestellten Phasen planen lässt: Ermittlung, Klassifizierung, Migration und laufende Verwaltung. Sie werden durch den Prozess geführt und erfahren, wie Sie das Projekt in einfach umzusetzende Teilschritte aufteilen. Im gesamten Dokument finden Sie Links zu wichtigen Ressourcen, die Ihnen im Verlauf des Prozesses helfen.
 
-* Das Lösungshandbuch [Migrieren der Anwendungsauthentifizierung von den Active Directory-Verbunddiensten (AD FS) zu Azure Active Directory](https://aka.ms/migrateapps/adfssolutionguide) untersucht dieselben vier Phasen der Planung und Ausführung eines Anwendungsmigrationsprojekts in größerem Detail. In dieser Anleitung erfahren Sie, wie Sie diese Phasen auf das spezifisches Ziel des Verschiebens einer Anwendung aus den Azure Directory-Verbunddiensten (AD FS) in Azure AD anwenden.
+* Das Lösungshandbuch [Migrieren der Anwendungsauthentifizierung von den Active Directory-Verbunddiensten (AD FS) zu Azure Active Directory](../manage-apps/migrate-adfs-apps-to-azure.md) untersucht dieselben vier Phasen der Planung und Ausführung eines Anwendungsmigrationsprojekts in größerem Detail. In dieser Anleitung erfahren Sie, wie Sie diese Phasen auf das spezifisches Ziel des Verschiebens einer Anwendung aus den Azure Directory-Verbunddiensten (AD FS) in Azure AD anwenden.
 
 * Das [Migrationsbereitschaftsskript für Active Directory-Verbunddienste (AD FS)](https://aka.ms/migrateapps/adfstools) kann auf Ihrem lokalen AD FS-Server (Active Directory-Verbunddienste) ausgeführt werden, um die Bereitschaft von Anwendungen für die Migration zu Azure AD zu bestimmen.
 

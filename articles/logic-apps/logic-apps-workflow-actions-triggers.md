@@ -7,12 +7,12 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: b0cd8245b6d8298ae1d99e2dbe1e8457a40dc7d6
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 3dbfcacb6ea5922a01d52dfe39189f09f48d4b4a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330409"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94368745"
 ---
 # <a name="schema-reference-guide-for-trigger-and-action-types-in-azure-logic-apps"></a>Schemareferenzhandbuch zu Trigger- und Aktionstypen für Azure Logic Apps
 
@@ -74,7 +74,7 @@ Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über Eingaben, 
 
 | Triggertyp | BESCHREIBUNG | 
 |--------------|-------------| 
-| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab* . Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (`202`) oder durch Rückgabe eines Arrays. | 
+| [**HTTP**](#http-trigger) | Überprüft alle Endpunkte bzw. *fragt diese ab*. Der Endpunkt muss einem bestimmten Triggervertrag entsprechen, und zwar durch Verwendung eines asynchronen Musters (`202`) oder durch Rückgabe eines Arrays. | 
 | [**HTTPWebhook**](#http-webhook-trigger) | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App, aber ruft die angegebene URL auf, um die Registrierung bzw. die Aufhebung der Registrierung durchzuführen. |
 | [**Recurrence**](#recurrence-trigger) | Wird auf der Grundlage eines definierten Zeitplans ausgelöst. Sie können ein Datum und eine Uhrzeit in der Zukunft festlegen, um diesen Trigger auszulösen. Je nach Häufigkeit können Sie auch Zeiten und Tage für die Ausführung Ihres Workflows angeben. | 
 | [**Request**](#request-trigger)  | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App und wird auch als „manueller“ Trigger bezeichnet. Weitere Informationen finden Sie unter [Aufrufen, Auslösen oder Schachteln von Workflows mit HTTP-Endpunkten](../logic-apps/logic-apps-http-endpoint.md). | 
@@ -84,7 +84,7 @@ Jeder Triggertyp verfügt über eine andere Schnittstelle sowie über Eingaben, 
 
 | Triggertyp | BESCHREIBUNG | 
 |--------------|-------------| 
-| [**ApiConnection**](#apiconnection-trigger) | Überprüft einen Endpunkt mithilfe der [von Microsoft verwalteten APIs](../connectors/apis-list.md) bzw. *fragt diesen ab* . | 
+| [**ApiConnection**](#apiconnection-trigger) | Überprüft einen Endpunkt mithilfe der [von Microsoft verwalteten APIs](../connectors/apis-list.md) bzw. *fragt diesen ab*. | 
 | [**ApiConnectionWebhook**](#apiconnectionwebhook-trigger) | Erstellt einen aufrufbaren Endpunkt für Ihre Logik-App, indem [von Microsoft verwaltete APIs](../connectors/apis-list.md) aufgerufen werden, um das Abonnieren bzw. das Kündigen des Abonnements durchzuführen. | 
 ||| 
 
@@ -2401,7 +2401,6 @@ Sie können das Standardverhalten für Trigger und Aktionen mit der `operationOp
 |------------------|------|-------------|-------------------| 
 | `DisableAsyncPattern` | String | Dient zum synchronen Ausführen von HTTP-basierten Aktionen (anstatt asynchron). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Synchrones Ausführen von Aktionen](#disable-asynchronous-pattern). | Aktionen: <p>[ApiConnection](#apiconnection-action), <br>[HTTP](#http-action), <br>[Antwort](#response-action) | 
 | `IncludeAuthorizationHeadersInOutputs` | String | Schließen Sie für Logik-Apps, die [Azure Active Directory Open Authentication (Azure AD OAuth) aktivieren](../logic-apps/logic-apps-securing-a-logic-app.md#enable-oauth), um den Zugriff für eingehende Aufrufe an einen anforderungsbasierten Triggerendpunkt zu autorisieren, den `Authorization`-Header aus dem OAuth-Zugriffstoken in die Triggerausgaben ein. Weitere Informationen finden Sie unter [Einschließen des „Authorization“-Headers in Anforderungstriggerausgaben](../logic-apps/logic-apps-securing-a-logic-app.md#include-auth-header). | Trigger: <p>[Anforderung](#request-trigger), <br>[HTTP Webhook](#http-webhook-trigger) | 
-| `OptimizedForHighThroughput` | String | Dient zum Ändern des [Standardlimits](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) für die Anzahl von Aktionsausführungen in einem Zeitraum von fünf Minuten in das [maximale Limit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode). | Alle Aktionen | 
 | `Sequential` | String | Dient zum einzelnen Ausführen der Iterationen von „for each“-Schleifen, anstatt alle auf einmal parallel. <p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.repetitions`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p><p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Ausführen von „for each“-Schleifen](#sequential-for-each).| Aktion: <p>[Foreach](#foreach-action) | 
 | `SingleInstance` | String | Dient zum sequenziellen Ausführen des Triggers für jede Logik-App-Instanz. Es wird gewartet, bis die zuvor aktive Ausführung beendet ist, bevor die nächste Logik-App-Instanz ausgelöst wird. <p><p>Diese Option funktioniert genauso wie das Festlegen der `runtimeConfiguration.concurrency.runs`-Eigenschaft auf `1`. Sie können jeweils eine Eigenschaft festlegen, aber nicht beide. <p>Informationen zum Festlegen dieser Option finden Sie unter [Sequenzielles Auslösen von Instanzen](#sequential-trigger). | Alle Trigger | 
 ||||
@@ -2422,7 +2421,7 @@ Hier finden Sie einige Erwägungen für den Fall, dass Sie die Parallelität auf
 
 * Wenn Parallelität aktiviert ist, könnte eine Logik-App-Instanz mit langer Ausführungszeit dazu führen, dass neue Logik-App-Instanzen in den Wartezustand wechseln. Dieser Zustand verhindert, dass Azure Logic Apps neue Instanzen erstellt, und er tritt auch dann ein, wenn die Anzahl gleichzeitiger Ausführungen kleiner als die angegebene maximale Anzahl gleichzeitiger Ausführungen ist.
 
-  * Um diesen Zustand zu unterbrechen, brechen Sie die frühesten Instanzen ab, die *noch ausgeführt werden* .
+  * Um diesen Zustand zu unterbrechen, brechen Sie die frühesten Instanzen ab, die *noch ausgeführt werden*.
 
     1. Wählen Sie im Menü Ihrer Logik-App die Option **Übersicht** aus.
 
@@ -2478,7 +2477,7 @@ Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfi
 
 1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Grenzwert** auf **Ein** fest. 
 
-1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1** .
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-for-each-concurrency"></a>
 
@@ -2519,7 +2518,7 @@ Weitere Informationen finden Sie unter den [Einstellungen für die Laufzeitkonfi
 
 1. Legen Sie unter **Gleichzeitigkeitssteuerung** die Option **Gleichzeitigkeitssteuerung** auf **Ein** fest.
 
-1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1** .
+1. Ziehen Sie den Schieberegler **Parallelitätsgrad** auf den gewünschten Wert. Um Ihre Logik-App sequenziell auszuführen, ziehen Sie den Schieberegler auf **1**.
 
 <a name="change-waiting-runs"></a>
 
@@ -2662,11 +2661,11 @@ Weitere Informationen finden Sie unter [Einstellungen für die Laufzeitkonfigura
 
 Standardmäßig folgen die HTTP-Aktion und die APIConnection-Aktionen in Azure Logic Apps dem standardmäßigen [*asynchronen Vorgangsmuster*](/azure/architecture/patterns/async-request-reply), während die Response-Aktion (Antwort) dem *synchronen Vorgangsmuster* folgt. Das asynchrone Muster gibt an, dass der Empfänger, nachdem eine Aktion eine Anforderung aufgerufen oder an den Endpunkt, Dienst, das System oder die API gesendet hat, sofort eine [„202 ACCEPTED“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.3)-Antwort zurückgibt. Dieser Code bestätigt, dass der Empfänger die Anforderung akzeptiert, aber die Verarbeitung noch nicht abgeschlossen hat. Die Antwort kann einen `location`-Header enthalten, in dem die URL und eine Aktualisierungs-ID angegeben sind, die der Aufrufer zum fortlaufenden Abrufen oder Überprüfen des Status der asynchronen Anforderung verwenden kann, bis der Empfänger die Verarbeitung beendet und eine [„200 OK“](https://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html#sec10.2.1)-Erfolgsantwort oder eine andere Nicht-202-Antwort zurückgibt. Weitere Informationen finden Sie unter [Asynchrone Microservice-Integration erzwingt Microservice-Autonomie](/azure/architecture/microservices/design/interservice-communication#synchronous-versus-asynchronous-messaging).
 
-* Im Logik-App-Designer verfügen die HTTP-Aktion, die APIConnection-Aktionen und die Response-Aktion über die Einstellung **Asynchrones Muster** . Wenn diese Einstellung aktiviert ist, gibt sie an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor mit der nächsten Aktion fortfährt. Führen Sie die folgenden Schritte aus, um diese Einstellung zu suchen:
+* Im Logik-App-Designer verfügen die HTTP-Aktion, die APIConnection-Aktionen und die Response-Aktion über die Einstellung **Asynchrones Muster**. Wenn diese Einstellung aktiviert ist, gibt sie an, dass der Aufrufer nicht auf den Abschluss der Verarbeitung wartet, sondern mit der nächsten Aktion fortfahren kann, dass er aber weiterhin den Status überprüft, bis die Verarbeitung beendet wird. Wenn diese Einstellung deaktiviert ist, gibt sie an, dass der Aufrufer auf den Abschluss der Verarbeitung wartet, bevor mit der nächsten Aktion fortfährt. Führen Sie die folgenden Schritte aus, um diese Einstellung zu suchen:
 
   1. Wählen Sie auf der Titelleiste der HTTP-Aktion die Schaltfläche mit den Auslassungspunkten ( **...** ) aus, woraufhin die Einstellungen der Aktion geöffnet werden.
 
-  1. Suchen Sie die Einstellung **Asynchrones Muster** .
+  1. Suchen Sie die Einstellung **Asynchrones Muster**.
 
      ![Einstellung „Asynchrones Muster“](./media/logic-apps-workflow-actions-triggers/asynchronous-pattern-setting.png)
 
@@ -2708,24 +2707,6 @@ Fügen Sie in der JSON-Definition, die der Aktion zugrunde liegt, die Eigenschaf
    "type": "Http",
    "inputs": { "<action-inputs>" },
    "operationOptions": "DisableAsyncPattern",
-   "runAfter": {}
-}
-```
-
-<a name="run-high-throughput-mode"></a>
-
-### <a name="run-in-high-throughput-mode"></a>Ausführen im Modus mit hohem Durchsatz
-
-Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Legen Sie die `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` fest, um dieses Limit auf den [Maximalwert](../logic-apps/logic-apps-limits-and-config.md#throughput-limits) zu erhöhen. Mit dieser Einstellung wird Ihre Logik-App in den Modus für „hohen Durchsatz“ versetzt.
-
-> [!NOTE]
-> Dieser Modus für hohen Durchsatz befindet sich in der Vorschauphase. Sie können eine Workload bei Bedarf auch auf mehr als eine Logik-App verteilen.
-
-```json
-"<action-name>": {
-   "type": "<action-type>",
-   "inputs": { "<action-inputs>" },
-   "operationOptions": "OptimizedForHighThroughput",
    "runAfter": {}
 }
 ```

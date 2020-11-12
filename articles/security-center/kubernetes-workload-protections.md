@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: how-to
 ms.date: 09/12/2020
 ms.author: memildin
-ms.openlocfilehash: 38c5df6a05d327e0b057501846e70d1f3c6c4896
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ed9c3c86336a7b0a2fe989cbe9bd0dd825c5575b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92091150"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372624"
 ---
 # <a name="protect-your-kubernetes-workloads"></a>Schützen Ihrer Kubernetes-Workloads
 
@@ -35,7 +35,7 @@ Security Center bietet noch weitere Features für die Containersicherheit, wenn 
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau|
+|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Preise:|Kostenlos|
 |Erforderliche Rollen und Berechtigungen:|**Besitzer** oder **Sicherheitsadministrator** zum Bearbeiten einer Zuweisung<br>**Leser** zum Anzeigen der Empfehlungen|
 |Unterstützte Cluster:|Kubernetes Version 1.14 oder höher ist erforderlich.<br>Keine PodSecurityPolicy-Ressource (altes PSP-Modell) in den Clustern<br>Windows-Knoten werden nicht unterstützt.|
@@ -49,7 +49,7 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 
 1. Zum Konfigurieren der Empfehlungen müssen Sie zuerst das Add-On installieren:
 
-    1. Suchen Sie auf der Seite „Empfehlungen“ nach der Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein** .
+    1. Suchen Sie auf der Seite „Empfehlungen“ nach der Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**.
 
         :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes.png" alt-text="Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**":::
 
@@ -58,7 +58,7 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 
     1. Wählen Sie die Empfehlung in einer der Sicherheitskontrollen aus, um die Ressourcen anzuzeigen, auf denen Sie das Add-On installieren können, und wählen Sie **Korrigieren** aus. 
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/recommendation-to-install-policy-add-on-for-kubernetes-details.png" alt-text="Detailseite der Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**":::
 
 1. Ungefähr 30 Minuten nach Abschluss der Installation des Add-Ons zeigt Security Center den Integritätsstatus der Cluster für die folgenden Empfehlungen an (jeweils in der relevanten Sicherheitskontrolle):
 
@@ -91,7 +91,7 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
     1. Wählen Sie im Abschnitt **Security Center-Standardrichtlinie** die Option **Effektive Richtlinie anzeigen** aus.
     1. Wählen Sie „ASC-Standard“ aus.
     1. Öffnen Sie die Registerkarte **Parameter** , und ändern Sie die Werte nach Bedarf.
-    1. Klicken Sie auf **Überprüfen + speichern** .
+    1. Klicken Sie auf **Überprüfen + speichern**.
     1. Wählen Sie **Speichern** aus.
 
 
@@ -99,7 +99,7 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 
     1. Öffnen Sie die Seite mit den Details zur Empfehlung, und wählen Sie **Ablehnen** aus:
 
-        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**":::
+        :::image type="content" source="./media/defender-for-kubernetes-usage/enforce-workload-protection-example.png" alt-text="Option „Ablehnen“ für Azure Policy-Parameter":::
 
         Dadurch wird das Fenster geöffnet, in dem Sie den Bereich festlegen. 
 
@@ -107,13 +107,13 @@ Azure Security Center enthält einige Empfehlungen, die verfügbar sind, wenn Si
 
 1. So zeigen Sie die für Ihre Cluster geltenden Empfehlungen an
 
-    1. Öffnen Sie die Seite [Ressourcenbestand](asset-inventory.md) von Security Center, und verwenden Sie den Ressourcentypfilter für **Kubernetes-Dienste** .
+    1. Öffnen Sie die Seite [Ressourcenbestand](asset-inventory.md) von Security Center, und verwenden Sie den Ressourcentypfilter für **Kubernetes-Dienste**.
 
     1. Wählen Sie einen Cluster aus, um die für diesen verfügbaren Empfehlungen zu untersuchen und zu überprüfen. 
 
 1. Wenn Sie eine Empfehlung für den Workloadschutz anzeigen, sehen Sie neben dem Cluster auch die Anzahl der betroffenen Pods („Kubernetes-Komponenten“). Wählen Sie den Cluster und dann **Aktion ausführen** aus, um eine Liste mit den jeweiligen Pods auszuwählen.
 
-    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Empfehlung **Azure Policy-Add-On für Kubernetes muss auf Ihren Clustern installiert und aktiviert sein**"::: 
+    :::image type="content" source="./media/defender-for-kubernetes-usage/view-affected-pods-for-recommendation.gif" alt-text="Anzeigen der betroffenen Pods für eine K8s-Empfehlung"::: 
 
 1. Um die Erzwingung zu testen, verwenden Sie die folgenden beiden Kubernetes-Bereitstellungen:
 

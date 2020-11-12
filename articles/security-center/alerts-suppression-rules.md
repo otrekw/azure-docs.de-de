@@ -8,12 +8,12 @@ ms.author: memildin
 ms.date: 09/10/2020
 ms.service: security-center
 ms.topic: how-to
-ms.openlocfilehash: 50426e0b0920e89cf83dc5a81c515b06c06c09c5
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: b954d6ed29074aa9261611f0d1bb79b5917d03f2
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92342092"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372658"
 ---
 # <a name="suppress-alerts-from-azure-defender"></a>Unterdrücken von Warnungen von Azure Defender
 
@@ -23,7 +23,7 @@ Auf dieser Seite wird erläutert, wie Sie mithilfe von Unterdrückungsregeln fü
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|Vorschau|
+|Status des Release:|Vorschau<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Preise:|Kostenlos<br>(Die meisten Sicherheitswarnungen sind nur in Azure Defender verfügbar.)|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** und **Besitzer** können Regeln erstellen und löschen.<br>**Sicherheitsleseberechtigter** und **Leser** können Regeln anzeigen.|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
@@ -127,9 +127,9 @@ Sie können Unterdrückungsregeln für Warnungen über die Security Center-REST-
 
 Die relevanten HTTP-Methoden für Unterdrückungsregeln in der REST-API lauten wie folgt:
 
-- **PUT**: Erstellen oder Aktualisieren einer Unterdrückungsregel in einem angegebenen Abonnement
+- **PUT** : Erstellen oder Aktualisieren einer Unterdrückungsregel in einem angegebenen Abonnement
 
-- **GET**:
+- **GET** :
 
     - Auflisten aller Regeln, die für ein bestimmtes Abonnement konfiguriert sind. Diese Methode gibt ein Array der anwendbaren Regeln zurück.
 
@@ -137,7 +137,7 @@ Die relevanten HTTP-Methoden für Unterdrückungsregeln in der REST-API lauten w
 
     - Simulieren der Auswirkung einer Unterdrückungsregel in der Entwurfsphase. Mit diesem Aufruf ermitteln Sie, welche der vorhandenen Warnungen verworfen werden, wenn die Regel aktiv ist.
 
-- **DELETE**: Löschen einer vorhandenen Regel (der Status der durch die Regel bereits verworfenen Warnungen wird jedoch nicht geändert).
+- **DELETE** : Löschen einer vorhandenen Regel (der Status der durch die Regel bereits verworfenen Warnungen wird jedoch nicht geändert).
 
 Ausführliche Informationen und Verwendungsbeispiele finden Sie in der [API-Dokumentation](/rest/api/securitycenter/). 
 

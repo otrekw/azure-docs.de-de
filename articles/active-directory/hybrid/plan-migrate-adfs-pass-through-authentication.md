@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0ee8661ca985e1882cff54d2fc2cdc5e9ad0a22
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e0edda2a01d6b17aebba3fbe4dbf039bf1d2f2c5
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91335968"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411115"
 ---
 # <a name="migrate-from-federation-to-pass-through-authentication-for-azure-active-directory"></a>Migrieren vom Verbund zur Passthrough-Authentifizierung für Azure Active Directory
 
@@ -52,14 +52,14 @@ Für die meisten Kunden reichen zwei oder drei Authentifizierungs-Agents aus, um
 
 Sie können zwischen zwei Methoden wählen, um die Migration von der Verbundidentitätsverwaltung zur Passthrough-Authentifizierung und zum einmaligen Anmelden (Single Sign-On, SSO) durchzuführen. Welche Methode Sie verwenden, hängt davon ab, wie Ihre AD FS-Instanz ursprünglich konfiguriert wurde.
 
-* **Azure AD Connect**: Wenn Sie AD FS ursprünglich mit Azure AD Connect konfiguriert haben, *müssen* Sie zur Passthrough-Authentifizierung wechseln, indem Sie den Azure AD Connect-Assistenten verwenden.
+* **Azure AD Connect** : Wenn Sie AD FS ursprünglich mit Azure AD Connect konfiguriert haben, *müssen* Sie zur Passthrough-Authentifizierung wechseln, indem Sie den Azure AD Connect-Assistenten verwenden.
 
    ‎Azure AD Connect führt automatisch das Cmdlet **Set-MsolDomainAuthentication** aus, wenn Sie die Anmeldemethode für Benutzer ändern. Azure AD Connect hebt den Verbund aller verifizierten Verbunddomänen Ihres Azure AD-Mandanten automatisch auf.
 
    > [!NOTE]
    > Falls Sie ursprünglich Azure AD Connect zum Konfigurieren von AD FS genutzt haben, können Sie es derzeit nicht vermeiden, dass alle Domänen Ihres Mandanten aus dem Verbund entfernt werden, wenn Sie die Benutzeranmeldung auf Passthrough-Authentifizierung umstellen.
 ‎
-* **Azure AD Connect mit PowerShell**: Sie können diese Methode nur verwenden, wenn Sie für die ursprüngliche Konfiguration von AD FS nicht Azure AD Connect verwendet haben. Bei dieser Option müssen Sie noch so vorgehen, dass Sie die Methode für die Benutzeranmeldung über den Azure AD Connect-Assistenten ändern. Der Hauptunterschied bei dieser Option ist, dass der Assistent das Cmdlet **Set-MsolDomainAuthentication** nicht automatisch ausführt. Sie haben bei dieser Option die volle Kontrolle darüber, welche Domänen konvertiert werden und in welcher Reihenfolge dies durchgeführt wird.
+* **Azure AD Connect mit PowerShell** : Sie können diese Methode nur verwenden, wenn Sie für die ursprüngliche Konfiguration von AD FS nicht Azure AD Connect verwendet haben. Bei dieser Option müssen Sie noch so vorgehen, dass Sie die Methode für die Benutzeranmeldung über den Azure AD Connect-Assistenten ändern. Der Hauptunterschied bei dieser Option ist, dass der Assistent das Cmdlet **Set-MsolDomainAuthentication** nicht automatisch ausführt. Sie haben bei dieser Option die volle Kontrolle darüber, welche Domänen konvertiert werden und in welcher Reihenfolge dies durchgeführt wird.
 
 Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu informieren, welche Methode Sie verwenden sollten.
 
@@ -75,7 +75,7 @@ Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu i
 
 #### <a name="verify-how-federation-was-configured"></a>Überprüfen der Konfiguration des Verbunds
 
-1. Öffnen Sie auf Ihrem Azure AD Connect-Server die Anwendung Azure AD Connect. Wählen Sie **Konfigurieren**aus.
+1. Öffnen Sie auf Ihrem Azure AD Connect-Server die Anwendung Azure AD Connect. Wählen Sie **Konfigurieren** aus.
 2. Wählen Sie auf der Seite **Weitere Aufgaben** die Option **Aktuelle Konfiguration anzeigen** und anschließend **Weiter**.<br />
  
    ![Screenshot: Option „Aktuelle Konfiguration anzeigen“ auf der Seite „Weitere Aufgaben“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image2.png)<br />
@@ -86,7 +86,7 @@ Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu i
 
 ### <a name="document-current-federation-settings"></a>Dokumentieren der aktuellen Verbundeinstellungen
 
-Führen Sie das Cmdlet**Get-MsolDomainFederationSettings** aus, um nach Ihren aktuellen Verbundeinstellungen zu suchen:
+Führen Sie das Cmdlet **Get-MsolDomainFederationSettings** aus, um nach Ihren aktuellen Verbundeinstellungen zu suchen:
 
 ``` PowerShell
 Get-MsolDomainFederationSettings -DomainName YourDomain.extention | fl *
@@ -98,7 +98,7 @@ Beispiel:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Überprüfen Sie alle Einstellungen, die für Ihren Verbundentwurf ggf. angepasst wurden, und die Bereitstellungsdokumentation. Suchen Sie vor allem nach Anpassungen in **PreferredAuthenticationProtocol**, **SupportsMfa** und **PromptLoginBehavior**.
+Überprüfen Sie alle Einstellungen, die für Ihren Verbundentwurf ggf. angepasst wurden, und die Bereitstellungsdokumentation. Suchen Sie vor allem nach Anpassungen in **PreferredAuthenticationProtocol** , **SupportsMfa** und **PromptLoginBehavior**.
 
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
@@ -132,9 +132,9 @@ Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität
 |-|-|
 | Sie planen, AD FS weiterhin für andere Anwendungen (als Azure AD und Microsoft 365) zu verwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen wie Microsoft 365 erhält) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
-| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](../conditional-access/concept-conditional-access-conditions.md) und [Clientzugriffsregeln in Exchange Online](https://aka.ms/EXOCAR) verwenden. |
+| Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](../conditional-access/concept-conditional-access-conditions.md) und [Clientzugriffsregeln in Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules) verwenden. |
 | Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst „Azure Multi-Factor Authentication“ aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
-| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Microsoft 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](https://aka.ms/EXOCAR) zu ersetzen.|
+| Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Microsoft 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules) zu ersetzen.|
 
 ### <a name="common-ad-fs-customizations"></a>Häufige AD FS-Anpassungen
 
@@ -259,7 +259,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
    > 2. Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird auf sichere Weise für Azure AD freigegeben.
    > 3. Es werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
-6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.<br />
+6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** , dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.<br />
 
    ![Screenshot: Seite „Bereit zur Konfiguration“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image8.png)<br />
 7. Wählen Sie im Azure AD-Portal die Option **Azure Active Directory** und dann **Azure AD Connect**.
@@ -272,7 +272,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
 
 Stellen Sie als Nächstes zusätzliche Authentifizierungsmethoden bereit:
 
-1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Azure AD Connect**, und wählen Sie dann die Option **Passthrough-Authentifizierung**.
+1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Azure AD Connect** , und wählen Sie dann die Option **Passthrough-Authentifizierung**.
 2. Wählen Sie auf der Seite **Passthrough-Authentifizierung** die Schaltfläche **Herunterladen**.
 3. Wählen Sie auf der Seite **Agent herunterladen** die Option **Bedingungen akzeptieren > Herunterladen**.
 
@@ -313,7 +313,7 @@ Aktivieren Sie zunächst die Passthrough-Authentifizierung:
    > 2. Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird auf sichere Weise für Azure AD freigegeben.
    > 3. Es werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
-6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.<br />
+6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** , dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.<br />
 
    ![Screenshot: Schaltfläche „Konfigurieren“ auf der Seite „Bereit zur Konfiguration“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image18.png)<br />
    Wenn Sie die Option **Konfigurieren** wählen, werden die folgenden Schritte ausgeführt:
@@ -328,13 +328,13 @@ Aktivieren Sie zunächst die Passthrough-Authentifizierung:
    * **Passthrough-Authentifizierung** ist auf **Aktiviert** festgelegt.
    
    ![Screenshot: Zu überprüfende Einstellungen im Abschnitt „Benutzeranmeldung“](media/plan-migrate-adfs-pass-through-authentication/migrating-adfs-to-pta_image19.png)
-8. Klicken Sie auf **Passthrough-Authentifizierung**, und überprüfen Sie, ob der Status **Aktiv** lautet.<br />
+8. Klicken Sie auf **Passthrough-Authentifizierung** , und überprüfen Sie, ob der Status **Aktiv** lautet.<br />
    
    Wenn der Authentifizierungs-Agent nicht aktiv ist, sollten Sie einige [Problembehandlungsschritte](./tshoot-connect-pass-through-authentication.md) ausführen, bevor Sie im nächsten Schritt mit dem Prozess zum Konvertieren der Domäne fortfahren. Sie riskieren einen Ausfall der Authentifizierung, wenn Sie Ihre Domänen konvertieren, bevor Sie überprüft haben, ob Ihre Agents für die Passthrough-Authentifizierung erfolgreich installiert wurden und ob ihr Status im Azure-Portal **Aktiv** lautet.
 
 Stellen Sie als Nächstes zusätzliche Authentifizierungs-Agents bereit:
 
-1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Azure AD Connect**, und wählen Sie dann die Option **Passthrough-Authentifizierung**.
+1. Navigieren Sie im Azure-Portal zu **Azure Active Directory** > **Azure AD Connect** , und wählen Sie dann die Option **Passthrough-Authentifizierung**.
 2. Wählen Sie auf der Seite **Passthrough-Authentifizierung** die Schaltfläche **Herunterladen**. 
 3. Wählen Sie auf der Seite **Agent herunterladen** die Option **Bedingungen akzeptieren > Herunterladen**.
  
@@ -430,7 +430,7 @@ Wenn ein größeres Problem besteht, das nicht schnell behoben werden kann, kön
 
 ### <a name="sync-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates
 
-Updates des Attributs **UserPrincipalName**, für das der Synchronisierungsdienst aus der lokalen Umgebung verwendet wird, werden generell blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt sind:
+Updates des Attributs **UserPrincipalName** , für das der Synchronisierungsdienst aus der lokalen Umgebung verwendet wird, werden generell blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt sind:
 
 * Der Benutzer befindet sich in einer Domäne mit verwalteter Identität (kein Verbund).
 * Dem Benutzer wurde keine Lizenz zugewiesen.

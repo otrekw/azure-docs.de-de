@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81461649"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410010"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -83,7 +83,7 @@ Viele Aspekte des [Service Fabric-Anwendungslebenszyklus](../../service-fabric/s
 ## <a name="use-x509-certificates"></a>Verwenden von X.509-Zertifikaten
 Cluster sollten immer mit X.509-Zertifikaten oder Windows-Sicherheit geschützt werden. Die Sicherheit wird nur zum Zeitpunkt der Clustererstellung konfiguriert. Es ist nicht möglich, die Sicherheit nach dem Erstellen eines Clusters zu aktivieren.
 
-Wenn Sie ein [Clusterzertifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md) angeben, legen Sie den Wert der **ClusterCredentialType**-Eigenschaft auf „X509“ fest. Wenn Sie ein Serverzertifikat für externe Verbindungen angeben, legen Sie die **ServerCredentialType**-Eigenschaft auf „X509“ fest.
+Wenn Sie ein [Clusterzertifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md) angeben, legen Sie den Wert der **ClusterCredentialType** -Eigenschaft auf „X509“ fest. Wenn Sie ein Serverzertifikat für externe Verbindungen angeben, legen Sie die **ServerCredentialType** -Eigenschaft auf „X509“ fest.
 
 Wenden Sie darüber hinaus diese empfohlenen Methoden an:
 -   Erstellen Sie die Zertifikate für Produktionscluster mit einem ordnungsgemäß konfigurierten Windows Server-Zertifikatdienst. Sie können die Zertifikate auch von einer genehmigten Zertifizierungsstelle (CA) abrufen.
@@ -99,7 +99,7 @@ Service Fabric schützt auch Ressourcen, die von Anwendungen verwendet werden. R
 
 -   Verwenden einer Active Directory-Domänengruppe oder eines Active Directory-Benutzers: Führen Sie den Dienst mit den Anmeldeinformationen für einen Active Directory-Benutzer oder ein Active Directory-Gruppenkonto aus. Verwenden Sie unbedingt eine lokale Active Directory-Instanz in Ihrer Domäne, nicht Azure Active Directory. Auf andere Ressourcen in der Domäne greifen Sie über einen Domänenbenutzer oder eine Domänengruppe zu, für den bzw. die Berechtigungen gewährt wurden. Zu solchen Ressourcen gehören z.B. Dateifreigaben.
 
--   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte: Geben Sie die **SecurityAccessPolicy**-Eigenschaft an, um eine **RunAs**-Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
+-   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte: Geben Sie die **SecurityAccessPolicy** -Eigenschaft an, um eine **RunAs** -Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
 
 Weitere Informationen zum Verwenden von Sicherheitsrichtlinien in Service Fabric-Clustern finden Sie unter [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](../../service-fabric/service-fabric-application-runas-security.md).
 
@@ -178,6 +178,6 @@ Azure Service Fabric unterstützt zwei Zugriffssteuerungstypen für Clients, die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Checkliste für die Service Fabric-Sicherheit](service-fabric-checklist.md)
+- [Checkliste für die Service Fabric-Sicherheit](../../service-fabric/service-fabric-best-practices-security.md)
 - Richten Sie Ihre Service Fabric-[Entwicklungsumgebung](../../service-fabric/service-fabric-get-started.md) ein.
 - Informieren Sie sich über [Service Fabric-Supportoptionen](../../service-fabric/service-fabric-support.md).

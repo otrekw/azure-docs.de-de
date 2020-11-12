@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: eaf54b7f7336619d03ce0fb6ea7fa032d0fcdff7
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 528ab93d1cf47d64338ef186a120695681f48e55
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319170"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357214"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 15Five für die automatische Benutzerbereitstellung
 
@@ -58,15 +58,15 @@ Bevor Sie 15Five für die automatische Benutzerbereitstellung mit Azure AD konf
 
 2.  Klicken Sie auf **SCIM 2.0**.
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Screenshot der Seite „Integrations“ in der 15Five-Verwaltungskonsole. Unter „Tool“ ist SCIM 2.0 hervorgehoben." border="false":::
 
 3.  Navigieren Sie zu **SCIM integration > Generate OAuth token** (SCIM-Integration > OAuth-Token generieren).
 
-    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Screenshot der Seite „SCIM integration“ in der 15Five-Verwaltungskonsole. „Generate OAuth token“ (OAuth-Token generieren) ist hervorgehoben." border="false":::
 
 4.  Kopieren Sie die Werte für **SCIM 2.0 base URL** (SCIM 2.0-Basis-URL) und **Access Token** (Zugriffstoken). Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer 15Five-Anwendung in die Felder **Mandanten-URL** und **Geheimes Token** eingegeben.
     
-    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Screenshot der 15Five-Verwaltungskonsole. Unter „Features“ wird in einem Menü „Integrations“ angezeigt, und „Features“ und „Integrations“ sind hervorgehoben." border="false":::
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Screenshot der Seite „SCIM integrations“. In der Tabelle „Token“ sind die Werte neben „SCIM 2.0 base URL“ (SCIM 2.0-Basis-URL) und „Access token“ (Zugriffstoken) hervorgehoben." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von 15Five aus dem Azure AD-Anwendungskatalog
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5.  Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **„SCIM 2.0 base URL“ und „Permanent Token“** („SCIM 2.0-Basis-URL“ und „Permanentes Token“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit 15Five herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 15Five-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5.  Geben Sie im Abschnitt „Administratoranmeldeinformationen“ die zuvor abgerufenen Werte für **„SCIM 2.0 base URL“ und „Permanent Token“** („SCIM 2.0-Basis-URL“ und „Permanentes Token“) in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit 15Five herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 15Five-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit 15Five synchronisieren**.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 15Five synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in 15Five für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 15Five synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in 15Five für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
 
    |attribute|type|
@@ -133,7 +133,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit 15Five synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit 15Five synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in 15Five für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit 15Five synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in 15Five für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

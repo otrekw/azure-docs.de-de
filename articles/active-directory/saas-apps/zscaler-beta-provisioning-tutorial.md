@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 001d139e7fc140f41fa94ea0c6f32d0b08036a9a
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: de42230639351c0dc1e7986156a33b178386d1a4
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519775"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357741"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Beta für die automatische Benutzerbereitstellung
 
@@ -44,7 +44,7 @@ Bevor Sie Zscaler Beta für die automatische Benutzerbereitstellung mit Azure AD
 
 **Führen Sie die folgenden Schritte aus, um Zscaler Beta aus dem Azure AD-Anwendungskatalog hinzuzufügen:**
 
-1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory** .
+1. Klicken Sie im linken Navigationsbereich des **[Azure-Portals](https://portal.azure.com)** auf das Symbol für **Azure Active Directory**.
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
@@ -91,7 +91,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zscaler Beta-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
@@ -109,17 +109,17 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
-    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren) aus, um die **Basis-URL** und das **Bearertoken** abzurufen, und speichern Sie anschließend die Einstellungen. Kopieren Sie im Azure-Portal die **Basis-URL** in das Feld **Mandanten-URL** und das **Bearertoken** in das Feld **Geheimes Token** .
+    Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren) aus, um die **Basis-URL** und das **Bearertoken** abzurufen, und speichern Sie anschließend die Einstellungen. Kopieren Sie im Azure-Portal die **Basis-URL** in das Feld **Mandanten-URL** und das **Bearertoken** in das Feld **Geheimes Token**.
 
 7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Beta herstellen kann. Falls beim Verbindungsaufbau ein Fehler auftritt, stellen Sie sicher, dass Ihr Zscaler Beta-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
-8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
-9. Klicken Sie auf **Speichern** .
+9. Klicken Sie auf **Speichern**.
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to Zscaler Beta** (Azure Active Directory-Benutzer mit Zscaler Beta synchronisieren) aus.
 
@@ -147,7 +147,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
-17. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+17. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 

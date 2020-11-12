@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 11/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5e71566ea7cd2e8953c84d58128e3380a782ba40
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 46766a7439185714648572f3f1b9d51ef96abba6
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516714"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357469"
 ---
 # <a name="tutorial-configure-netskope-user-authentication-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Netskope User Authentication für die automatische Benutzerbereitstellung
 
@@ -50,23 +50,23 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="set-up-netskope-user-authentication-for-provisioning"></a>Einrichten von Netskope User Authentication für die Bereitstellung
 
-1. Melden Sie sich bei der [Netskope User Authentication-Verwaltungskonsole](https://netskope.goskope.com/) an. Navigieren Sie zu **Startseite > Einstellungen** .
+1. Melden Sie sich bei der [Netskope User Authentication-Verwaltungskonsole](https://netskope.goskope.com/) an. Navigieren Sie zu **Startseite > Einstellungen**.
 
     ![Netskope User Authentication-Verwaltungskonsole](media/netskope-administrator-console-provisioning-tutorial/admin.png)
 
-2.  Navigieren Sie zu **Tools** . Navigieren Sie unter dem Menü **Tools** zu **Verzeichnistools > SCIM-INTEGRATION** .
+2.  Navigieren Sie zu **Tools**. Navigieren Sie unter dem Menü **Tools** zu **Verzeichnistools > SCIM-INTEGRATION**.
 
     ![Netskope User Authentication: Tools](media/netskope-administrator-console-provisioning-tutorial/tools.png)
 
     ![Netskope User Authentication: SCIM hinzufügen](media/netskope-administrator-console-provisioning-tutorial/directory.png)
 
-3. Scrollen Sie nach unten, und klicken Sie auf die Schaltfläche **Token hinzufügen** . Geben Sie im Dialogfeld **OAuth-Clientname hinzufügen** einen **Clientnamen** an, und klicken Sie auf die Schaltfläche **Speichern** .
+3. Scrollen Sie nach unten, und klicken Sie auf die Schaltfläche **Token hinzufügen**. Geben Sie im Dialogfeld **OAuth-Clientname hinzufügen** einen **Clientnamen** an, und klicken Sie auf die Schaltfläche **Speichern**.
 
     ![Netskope User Authentication: Token hinzufügen](media/netskope-administrator-console-provisioning-tutorial/add.png)
 
     ![Netskope User Authentication: Clientname](media/netskope-administrator-console-provisioning-tutorial/clientname.png)
 
-3.  Kopieren Sie die Werte für **SCIM Server URL** und **TOKEN** . Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ der Netskope User Authentication-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
+3.  Kopieren Sie die Werte für **SCIM Server URL** und **TOKEN**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ der Netskope User Authentication-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
 
     ![Netskope User Authentication: Token erstellen](media/netskope-administrator-console-provisioning-tutorial/token.png)
 
@@ -80,7 +80,7 @@ Vor dem Konfigurieren von Netskope User Authentication für die automatische Ben
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 ### <a name="to-configure-automatic-user-provisioning-for-netskope-user-authentication-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Netskope User Authentication in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -112,7 +112,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Netskope User Authentication-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -124,11 +124,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Netskope User Authentication synchronisieren** aus.
 
@@ -148,7 +148,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Netskope User Authentication zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Netskope User Authentication zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -156,7 +156,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

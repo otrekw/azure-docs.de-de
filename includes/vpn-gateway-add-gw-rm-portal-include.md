@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/19/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: fe95481e977d2e35c2f652b6c99b9e69ae89e2f8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 6bc8b6cc18f4a4bc41cabf7f8fefe78a5aaf7827
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92479574"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427846"
 ---
 1. Geben Sie im [Azure-Portal](https://portal.azure.com) unter **Nach Ressourcen, Diensten und Dokumenten suchen (G+/)** als Suchbegriff **VNET-Gateway** ein. Suchen Sie in den Suchergebnissen nach **VNET-Gateway** , und wählen Sie diesen Eintrag aus.
 
@@ -21,12 +21,12 @@ ms.locfileid: "92479574"
 
 1. Wählen Sie auf der Seite **VNET-Gateway** die Option **+ Hinzufügen** aus. Die Seite **Gateway für virtuelle Netzwerke erstellen** wird geöffnet.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Suchen (Feld)":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/add.png" alt-text="Seite „VNET-Gateway“":::
 1. Geben Sie auf der Registerkarte **Grundlagen** die Werte für Ihr Gateway für virtuelle Netzwerke an.
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Suchen (Feld)":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway.png" alt-text="Gatewayfelder":::
 
-   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Suchen (Feld)":::
+   :::image type="content" source="./media/vpn-gateway-add-gw-rm-portal-include/gateway-vnet.png" alt-text="Weitere Gatewayfelder":::
 
    * **Abonnement** : Wählen Sie in der Dropdownliste das zu verwendende Abonnement aus.
    * **Ressourcengruppe** : Diese Einstellung wird automatisch angegeben, wenn Sie auf dieser Seite Ihr virtuelles Netzwerk auswählen.
@@ -49,9 +49,9 @@ ms.locfileid: "92479574"
      * **Öffentliche IP-Adresse:** Lassen Sie **Neu erstellen** aktiviert.
      * **Öffentliche IP-Adresse** : Geben Sie im Textfeld einen Namen für die öffentliche IP-Adressinstanz ein.
      * **Zuweisung** : VPN Gateway unterstützt nur die dynamische Zuweisung.
-     * **Aktiv/Aktiv-Modus aktivieren** : Aktivieren Sie **Aktiv/Aktiv-Modus aktivieren** nur, wenn Sie eine Aktiv/Aktiv-Gatewaykonfiguration erstellen. Lassen Sie diese Einstellung andernfalls **deaktiviert** .
+     * **Aktiv/Aktiv-Modus aktivieren** : Aktivieren Sie **Aktiv/Aktiv-Modus aktivieren** nur, wenn Sie eine Aktiv/Aktiv-Gatewaykonfiguration erstellen. Lassen Sie diese Einstellung andernfalls **deaktiviert**.
      * Belassen Sie für **BGP konfigurieren** den Wert **Deaktiviert** , es sei denn, Ihre Konfiguration erfordert diese Einstellung ausdrücklich. Sollte diese Einstellung erforderlich sein, lautet die Standard-ASN 65515. (Dieser Wert kann jedoch geändert werden.)
 1. Wählen Sie zum Ausführen der Validierung **Bewerten + erstellen** aus.
-1. Wählen Sie nach Abschluss der Validierung **Erstellen** aus, um das VPN-Gateway bereitzustellen. Die gesamte Erstellung und Bereitstellung eines Gateways kann bis zu 45 Minuten dauern. Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt.
+1. Wählen Sie nach Abschluss der Validierung **Erstellen** aus, um das VPN-Gateway bereitzustellen.
 
-Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.
+Die gesamte Erstellung und Bereitstellung eines Gateways kann bis zu 45 Minuten dauern. Der Bereitstellungsstatus wird auf der Übersichtsseite für Ihr Gateway angezeigt. Nach der Erstellung des Gateways können Sie die zugewiesene IP-Adresse unter dem Virtual Network im Portal anzeigen. Das Gateway wird als verbundenes Gerät angezeigt.

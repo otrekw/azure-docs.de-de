@@ -6,16 +6,16 @@ author: cmmdesai
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
-ms.openlocfilehash: e22252ea3e132aee39075d986d7f5a979e14c0a3
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520233"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359868"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -46,7 +46,7 @@ In diesem Abschnitt werden die neuesten Verbesserungen in Bezug auf die Workday-
 
 * **April 2020: Unterstützung der aktuellen Version der Workday Web Services-API (WWS):** Zweimal pro Jahr (im März und September) werden von Workday Updates mit vielen Features bereitgestellt, die Ihnen dabei helfen, Ihre Geschäftsziele zu erreichen und die sich ändernden Anforderungen in Bezug auf die Mitarbeiterzahl zu erfüllen. Damit Sie bei den neuen Features von Workday auf dem Laufenden bleiben, können Sie jetzt direkt die WWS-API-Version angeben, die Sie in der Verbindungs-URL nutzen möchten. Ausführliche Informationen zum Angeben der Workday-API-Version finden Sie im Abschnitt zur [Konfiguration der Workday-Konnektivität](#part-3-in-the-provisioning-app-configure-connectivity-to-workday-and-active-directory). 
 
-* **Januar 2020: Festlegen des AD-Attributs „accountExpires“:** Mit der Funktion [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) können Sie nun Workday-Datumsfelder zuordnen, z. B. *EndContractDate* oder *StatusTerminationDate* . 
+* **Januar 2020: Festlegen des AD-Attributs „accountExpires“:** Mit der Funktion [NumFromDate](../app-provisioning/functions-for-customizing-application-data.md#numfromdate) können Sie nun Workday-Datumsfelder zuordnen, z. B. *EndContractDate* oder *StatusTerminationDate*. 
 
 ### <a name="who-is-this-user-provisioning-solution-best-suited-for"></a>Für wen ist diese Benutzerbereitstellungslösung am besten geeignet?
 
@@ -126,7 +126,7 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
 
 **So erstellen Sie eine Sicherheitsgruppe**
 
-1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen** .
+1. Geben Sie „Sicherheitsgruppe erstellen“ in das Suchfeld ein, und klicken Sie dann auf **Sicherheitsgruppe erstellen**.
 
    > [!div class="mx-imgBorder"]
    > ![Der Screenshot zeigt „Sicherheitsgruppe erstellen“, eingegeben im Suchfeld, und die in den Suchergebnissen angezeigte Aufgabe „Sicherheitsgruppe erstellen“.](./media/workday-inbound-tutorial/wd_isu_03.png)
@@ -136,7 +136,7 @@ In diesem Schritt erstellen Sie eine uneingeschränkte oder eingeschränkte Sich
      * **Uneingeschränkt:** Alle Mitglieder der Sicherheitsgruppe können auf alle Dateninstanzen zugreifen, die durch die Sicherheitsgruppe gesichert sind.
      * **Eingeschränkt:** Alle Mitglieder der Sicherheitsgruppe haben kontextbezogene Zugriff auf eine Teilmenge der Dateninstanzen (Zeilen), auf die die Sicherheitsgruppe zugreifen kann.
    * Bitte wenden Sie sich an Ihren Workday-Integrationspartner, um den geeigneten Sicherheitsgruppentyp für die Integration auszuwählen.
-   * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe** .
+   * Sobald Sie den Gruppentyp kennen, wählen Sie **Integrationssystem-Sicherheitsgruppe (Uneingeschränkt)** oder **Integrationssystem-Sicherheitsgruppe (Eingeschränkt)** aus der Dropdownliste **Typ der Mandantensicherheitsgruppe**.
 
      > [!div class="mx-imgBorder"]
      >![Sicherheitsgruppe erstellen](./media/workday-inbound-tutorial/wd_isu_04.png "Sicherheitsgruppe erstellen")
@@ -171,7 +171,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe die Berechtigungen der Dom
      >[!div class="mx-imgBorder"]
      >![Der Screenshot zeigt den Bericht „Domain Security Configuration“ mit einer Liste von ausgewählten Domänen.](./media/workday-inbound-tutorial/wd_isu_08.png "Domänensicherheitsrichtlinien") 
 
-     Klicken Sie auf **OK** .
+     Klicken Sie auf **OK**.
 
 3. Wählen Sie im angezeigten Bericht die Auslassungspunkte (...) neben **External Account Provisioning** (Externe Kontobereitstellung) aus, und klicken Sie auf die Menüoption **Domain -> Edit Security Policy Permissions** (Domäne > Berechtigungen für Sicherheitsrichtlinie bearbeiten).
    >[!div class="mx-imgBorder"]
@@ -212,7 +212,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
    >[!div class="mx-imgBorder"]
    >![Der Screenshot zeigt „Business Process Policy“ im Suchfeld und die ausgewählte Aufgabe „Edit Business Process Security Policy“.](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
-2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen* , wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK** .
+2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen* , wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK**.
 
    >[!div class="mx-imgBorder"]
    >![Der Screenshot zeigt die Seite „Edit Business Process Security Policy“ und „Mitarbeiterkontaktinformationen ändern“, ausgewählt im Menü „Geschäftsprozesstyp“.](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
@@ -231,11 +231,11 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
 
 **So aktivieren Sie Sicherheitsrichtlinienänderungen**
 
-1. Geben Sie „aktivieren“ in das Suchfeld ein, und klicken Sie dann auf den Link **Ausstehende Sicherheitsrichtlinienänderungen aktivieren** .
+1. Geben Sie „aktivieren“ in das Suchfeld ein, und klicken Sie dann auf den Link **Ausstehende Sicherheitsrichtlinienänderungen aktivieren**.
    >[!div class="mx-imgBorder"]
    >![Aktivieren](./media/workday-inbound-tutorial/wd_isu_16.png "Aktivieren")
 
-1. Geben Sie zum Ausführen der Aufgabe „Ausstehende Sicherheitsrichtlinienänderungen aktivieren“ zunächst einen Kommentar für Überwachungszwecke ein, und klicken Sie dann auf die Schaltfläche **OK** .
+1. Geben Sie zum Ausführen der Aufgabe „Ausstehende Sicherheitsrichtlinienänderungen aktivieren“ zunächst einen Kommentar für Überwachungszwecke ein, und klicken Sie dann auf die Schaltfläche **OK**.
 1. Führen Sie die Aufgabe auf dem nächsten Bildschirm aus, indem Sie das Kontrollkästchen **Bestätigen** aktivieren und auf **OK** klicken.
 
    >[!div class="mx-imgBorder"]
@@ -250,15 +250,15 @@ Melden Sie sich nach der Ermittlung der Windows Server-Instanz, auf dem der Bere
 
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>Erforderliche Berechtigungen zum Konfigurieren des Bereitstellungs-Agent-Diensts
 Führen Sie die unten angegebenen Schritte aus, um ein Dienstkonto einzurichten, das für Vorgänge des Bereitstellungs-Agents verwendet werden kann. 
-1.  Öffnen Sie auf Ihrem AD-Domänencontroller das Snap-In *Active Directory-Benutzer und -Computer* . 
+1.  Öffnen Sie auf Ihrem AD-Domänencontroller das Snap-In *Active Directory-Benutzer und -Computer*. 
 2.  Erstellen eines neuen Domänenbenutzers (Beispiel: *provAgentAdmin* )  
 3.  Klicken Sie mit der rechten Maustaste auf die Organisationseinheit oder den Domänennamen, und wählen Sie *Objektverwaltung zuweisen* aus, um den *Assistenten zum Zuweisen der Objektverwaltung* zu öffnen. 
 
 > [!NOTE] 
 > Wenn Sie den Bereitstellungs-Agent zu Testzwecken auf das Erstellen und Lesen von Benutzern einer bestimmten Organisationseinheit (OE) beschränken möchten, empfehlen wir Ihnen, bei Testläufen die Objektverwaltung auf der entsprechenden OE-Ebene zuzuweisen.
 
-4. Klicken Sie auf dem Begrüßungsbildschirm auf **Weiter** . 
-5. Fügen Sie auf dem Bildschirm **Benutzer oder Gruppen auswählen** den Domänenbenutzer hinzu, den Sie in Schritt 2 erstellt haben. Klicken Sie auf **Weiter** .
+4. Klicken Sie auf dem Begrüßungsbildschirm auf **Weiter**. 
+5. Fügen Sie auf dem Bildschirm **Benutzer oder Gruppen auswählen** den Domänenbenutzer hinzu, den Sie in Schritt 2 erstellt haben. Klicken Sie auf **Weiter**.
    >[!div class="mx-imgBorder"]
    >![Bildschirm „Hinzufügen“](./media/workday-inbound-tutorial/delegation-wizard-01.png "Bildschirm „Hinzufügen“")
 
@@ -290,7 +290,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 2. Suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie es aus.
 
-3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen** .
+3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
 4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
 
@@ -298,7 +298,7 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
-7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch** .
+7. Ändern Sie den **Bereitstellungsmodus** in **Automatisch**.
 
 8. Klicken Sie auf das angezeigte Informationsbanner, um den Bereitstellungs-Agent herunterzuladen. 
 
@@ -318,7 +318,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
 
 1. Melden Sie sich bei dem Windows Server an, auf dem Sie den neuen Agent installieren möchten.
 
-1. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren** .
+1. Starten Sie den Installer für den Bereitstellungs-Agent, akzeptieren Sie die Bedingungen, und klicken Sie auf die Schaltfläche **Installieren**.
 
    >[!div class="mx-imgBorder"]
    >![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
@@ -336,7 +336,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
    > [!NOTE]
    > Die Azure AD-Administratoranmeldeinformationen dienen nur zur Herstellung einer Verbindung mit Ihrem Azure AD-Mandanten. Der Agent speichert die Anmeldeinformationen nicht lokal auf dem Server.
 
-1. Nach der erfolgreichen Authentifizierung mit Azure AD wird der Bildschirm **Active Directory verbinden** angezeigt. In diesem Schritt geben Sie Ihren AD-Domänennamen an und klicken auf die Schaltfläche **Verzeichnis hinzufügen** .
+1. Nach der erfolgreichen Authentifizierung mit Azure AD wird der Bildschirm **Active Directory verbinden** angezeigt. In diesem Schritt geben Sie Ihren AD-Domänennamen an und klicken auf die Schaltfläche **Verzeichnis hinzufügen**.
 
    >[!div class="mx-imgBorder"]
    >![Verzeichnis hinzufügen](./media/workday-inbound-tutorial/pa_install_screen_4.png "Verzeichnis hinzufügen")
@@ -412,7 +412,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
      > [!NOTE]
      > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
-   * Klicken Sie auf die Schaltfläche **Verbindung testen** . Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern** . Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
+   * Klicken Sie auf die Schaltfläche **Verbindung testen**. Wenn der Verbindungstest erfolgreich ist, klicken Sie oben auf die Schaltfläche **Speichern**. Überprüfen Sie bei einem Fehler, ob die Workday-Anmeldeinformationen und die AD-Anmeldeinformationen, die beim Einrichten des Agents angegeben wurden, gültig sind.
 
      >[!div class="mx-imgBorder"]
      >![Der Screenshot zeigt die Seite „Bereitstellung“ mit eingegebenen Anmeldeinformationen.](./media/workday-inbound-tutorial/wd_1.png)
@@ -423,7 +423,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
 
 In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in Active Directory.
 
-1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Workday-Worker in lokalem Active Directory synchronisieren** .
+1. Klicken Sie auf der Registerkarte „Bereitstellung“ unter **Zuordnungen** auf **Workday-Worker in lokalem Active Directory synchronisieren**.
 
 1. Im Feld **Quellobjektbereich** können Sie die Benutzergruppen in Workday für die Bereitstellung in Active Directory auswählen, indem Sie verschiedene attributbasierte Filter definieren. Der Standardbereich ist „Alle Benutzer in Workday“. Beispielfilter:
 
@@ -528,7 +528,7 @@ Nachdem die Konfiguration der Workday-Bereitstellungs-App abgeschlossen ist, kö
 
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
-2. Klicken Sie auf **Speichern** .
+2. Klicken Sie auf **Speichern**.
 
 3. Dieser Vorgang startet die erste Synchronisierung, die abhängig von der Anzahl der Benutzer im Workday-Mandanten eine variable Anzahl von Stunden dauern kann. 
 
@@ -642,8 +642,8 @@ Unter [Azure AD Connect-Bereitstellungs-Agent: Verlauf der Versionsveröffentlic
 #### <a name="how-do-i-know-the-version-of-my-provisioning-agent"></a>Wie kann ich die Version meines Bereitstellungs-Agents ermitteln?
 
 * Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
-* Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms** .
-* Suchen Sie nach der Version für den Eintrag **Microsoft Azure AD Connect-Bereitstellungs-Agent** .
+* Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
+* Suchen Sie nach der Version für den Eintrag **Microsoft Azure AD Connect-Bereitstellungs-Agent**.
 
   >[!div class="mx-imgBorder"]
   >![Azure portal](./media/workday-inbound-tutorial/pa_version.png)
@@ -711,7 +711,7 @@ Ja, ein Bereitstellungs-Agent kann konfiguriert werden, um mehrere AD-Domänen z
 #### <a name="how-do-i-uninstall-the-provisioning-agent"></a>Wie deinstalliere ich den Bereitstellungs-Agent?
 
 * Melden Sie sich bei dem Windows Server an, auf dem der Bereitstellungs-Agent installiert ist.
-* Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms** .
+* Wechseln Sie zu **Systemsteuerung** -> **Deinstallieren oder Ändern eines Programms**.
 * Deinstallieren Sie die folgenden Programme:
   * Microsoft Azure AD Connect-Bereitstellungs-Agent
   * Microsoft Azure AD Connect Agent Updater
@@ -729,7 +729,7 @@ Die Lösung unterstützt benutzerdefinierte Workday- und Active Directory-Attrib
 
 ![Attributliste bearbeiten](./media/workday-inbound-tutorial/wd_edit_attr_list.png)
 
-Um Ihre benutzerdefinierten Workday-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für Workday bearbeiten* , und um Ihre benutzerdefinierten AD-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für lokales Active Directory bearbeiten* .
+Um Ihre benutzerdefinierten Workday-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für Workday bearbeiten* , und um Ihre benutzerdefinierten AD-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für lokales Active Directory bearbeiten*.
 
 Weitere Informationen:
 
@@ -752,7 +752,7 @@ Die Lösung unterstützt derzeit keine Einstellung von binären Attributen wie *
 * Wechseln Sie zum Blatt „Bereitstellung“ Ihrer Workday-Bereitstellungs-App.
 * Klicken Sie auf die Attributzuordnungen. 
 * Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren** ).
-* Scrollen Sie auf der Seite „Attributzuordnungen“ nach unten und aktivieren Sie das Kontrollkästchen „Erweiterte Optionen anzeigen“.  Klicken Sie auf **Attributliste für Workday bearbeiten** .
+* Scrollen Sie auf der Seite „Attributzuordnungen“ nach unten und aktivieren Sie das Kontrollkästchen „Erweiterte Optionen anzeigen“.  Klicken Sie auf **Attributliste für Workday bearbeiten**.
 * Suchen Sie auf dem Blatt, das geöffnet wird, das Attribut „Mobile“, und klicken Sie auf die Zeile, sodass Sie den **API-Ausdruck** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png) bearbeiten können.
 
 * Ersetzen Sie den **API-Ausdruck** durch den folgenden neuen Ausdruck. Damit wird die Arbeitsmobilfunknummer nur dann abgerufen, wenn „Public Usage Flag“ auf „True“ festgelegt ist.
@@ -771,7 +771,7 @@ Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigu
 
 So können Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land/Region aufzunehmen.
 
-* Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName* , *PreferredLastName* , *Company* und *SupervisoryOrganization* .
+* Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName* , *PreferredLastName* , *Company* und *SupervisoryOrganization*.
 
      | Workday-Attribut | API-XPATH-Ausdruck |
      | ----------------- | -------------------- |
@@ -796,7 +796,7 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
 
   Vergewissern Sie sich bei Ihrem Workday-Team, dass die obigen API-Ausdrücke für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, den Nachnamen, das Land bzw. die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName* , *PreferredLastName* , *CountryReferenceTwoLetter* und *SupervisoryOrganization* . Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
+* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, den Nachnamen, das Land bzw. die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName* , *PreferredLastName* , *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -859,8 +859,8 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung
 ### <a name="setting-up-windows-event-viewer-for-agent-troubleshooting"></a>Einrichten der Windows-Ereignisanzeige für die Problembehandlung bei Agents
 
 * Melden Sie sich beim Windows Server-Computer an, auf dem der Bereitstellungs-Agent bereitgestellt ist.
-* Öffnen Sie die Desktop-App **Windows Server-Ereignisanzeige** .
-* Klicken Sie auf **Windows-Protokolle > Anwendung** .
+* Öffnen Sie die Desktop-App **Windows Server-Ereignisanzeige**.
+* Klicken Sie auf **Windows-Protokolle > Anwendung**.
 * Verwenden Sie die Option **Aktuelles Protokoll filtern...** , um alle Ereignisse anzuzeigen, die unter der Quelle **AAD.Connect.ProvisioningAgent** protokolliert sind, anzuzeigen, und schließen Sie Ereignisse mit der Ereignis-ID „5“ aus, indem Sie den Filter „5“ angeben, wie unten dargestellt.
 
   ![Windows-Ereignisanzeige](media/workday-inbound-tutorial/wd_event_viewer_01.png))
@@ -946,7 +946,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
   Unmittelbar nach dem obigen Ereignis sollte es ein weiteres Ereignis geben, das die Antwort des AD-Kontoerstellungsvorgangs erfasst. Dieses Ereignis gibt die neue „objectGuid“ zurück, die in AD erstellt wurde, und es wird als TargetAnchor-Attribut im Bereitstellungsdienst festgelegt.
 
-  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="Der Screenshot zeigt den Datensatz „HTTP POST“ im Protokoll „Bereitstellungs-Agent“." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
+  :::image type="content" source="media/workday-inbound-tutorial/wd_event_viewer_06.png" alt-text="Der Screenshot zeigt das Protokoll „Bereitstellungs-Agent“, in dem die in Azure AD erstellte „objectGuid“ hervorgehoben ist." lightbox="media/workday-inbound-tutorial/wd_event_viewer_06.png":::
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Grundlegendes zu Protokollen für Aktualisierungsvorgänge für Manager
 
@@ -984,8 +984,8 @@ Dieser Abschnitt behandelt häufig auftretende Fehler bei der Bereitstellung von
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
 |1.| Fehler bei der Installation des Bereitstellungs-Agent mit Fehlermeldung:  *Dienst „Microsoft Azure AD Connect Provisioning Agent“ (AADConnectProvisioningAgent) konnte nicht gestartet werden. Überprüfen Sie, ob Sie über ausreichend Rechte verfügen, um das System zu starten.* | Dieser Fehler tritt normalerweise auf, wenn Sie versuchen, den Bereitstellungs-Agent auf einem Domänencontroller zu installieren, und die Gruppenrichtlinie verhindert, dass der Dienst gestartet wird.  Es wird auch angezeigt, ob Sie eine frühere Version des Agent ausführen und ihn nicht deinstalliert haben, bevor Sie eine neue Installation starten.| Installieren Sie den Bereitstellungs-Agent auf einem Nicht-DC-Server. Stellen Sie sicher, dass frühere Versionen des Agents deinstalliert werden, bevor Sie den neuen Agent installieren.|
-|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt* . | Im Rahmen der Installation erstellt der Agent-Assistent ein lokales Konto ( **NT Service\\AADConnectProvisioningAgent** ) auf dem Server. Dies ist das Anmeldekonto, das zum Starten des Diensts verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole* . Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect-Bereitstellungs-Agent“, und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
-|3.| Wenn Sie den Bereitstellungs-Agent mit Ihrer AD-Domäne im Schritt *Active Directory verbinden* konfigurieren, dauert es lange, bis der Assistent versucht, das AD-Schema zu laden und schließlich abbricht. | Dieser Fehler wird in der Regel angezeigt, wenn der Assistent aufgrund von Firewallproblemen den Server des AD-Domänencontrollers nicht kontaktieren kann. | Auf dem Assistentenbildschirm *Active Directory verbinden* gibt es beim Bereitstellen der Anmeldeinformationen für Ihre AD-Domäne eine Option namens *Domänencontrollerpriorität auswählen* . Verwenden Sie diese Option, um einen Domänencontroller auszuwählen, der sich auf der gleichen Site wie der Agent-Server befindet, und stellen Sie sicher, dass es keine Firewallregeln gibt, die die Kommunikation blockieren. |
+|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt*. | Im Rahmen der Installation erstellt der Agent-Assistent ein lokales Konto ( **NT Service\\AADConnectProvisioningAgent** ) auf dem Server. Dies ist das Anmeldekonto, das zum Starten des Diensts verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole*. Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect-Bereitstellungs-Agent“, und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
+|3.| Wenn Sie den Bereitstellungs-Agent mit Ihrer AD-Domäne im Schritt *Active Directory verbinden* konfigurieren, dauert es lange, bis der Assistent versucht, das AD-Schema zu laden und schließlich abbricht. | Dieser Fehler wird in der Regel angezeigt, wenn der Assistent aufgrund von Firewallproblemen den Server des AD-Domänencontrollers nicht kontaktieren kann. | Auf dem Assistentenbildschirm *Active Directory verbinden* gibt es beim Bereitstellen der Anmeldeinformationen für Ihre AD-Domäne eine Option namens *Domänencontrollerpriorität auswählen*. Verwenden Sie diese Option, um einen Domänencontroller auszuwählen, der sich auf der gleichen Site wie der Agent-Server befindet, und stellen Sie sicher, dass es keine Firewallregeln gibt, die die Kommunikation blockieren. |
 
 #### <a name="connectivity-errors"></a>Verbindungsfehler
 
@@ -1002,7 +1002,7 @@ Wenn der Bereitstellungsdienst keine Verbindung zu Workday oder Active Directory
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
 |1.| Fehler beim Exportvorgang im Überwachungsprotokoll mit der Meldung *Fehler: OperationsError-SvcErr: Es ist ein Vorgangsfehler aufgetreten. Im Verzeichnisdienst wurde kein übergeordneter Verweis konfiguriert. Der Verzeichnisdienst kann daher keine Verweise auf Objekte außerhalb dieser Gesamtstruktur ausgeben.* | Dieser Fehler tritt in der Regel auf, wenn die Organisationseinheit *Active Directory-Container* nicht korrekt eingestellt ist oder wenn es Probleme mit der für *parentDistinguishedName* verwendeten Ausdruckszuordnung gibt. | Überprüfen Sie den Parameter der Organisationseinheit *Active Directory-Container* auf Tippfehler. Wenn Sie *parentDistinguishedName* in der Attributzuordnung verwenden, müssen Sie sicherstellen, das die Auswertung immer hinsichtlich eines bekannten Containers innerhalb der AD-Domäne ausgeführt wird. Überprüfen Sie im Ereignis *Export* des Überwachungsprotokolls den generierten Wert. |
-|2.| Fehler beim Exportvorgang im Überwachungsprotokoll mit dem Fehlercode: *SystemForCrossDomainIdentityManagementBadResponse* und der Meldung *Fehler: ConstraintViolation-AtrErr: Ein Wert in der Anforderung ist ungültig. Ein Wert für das Attribut befindet sich nicht im zulässigen Wertebereich. \nFehlerdetails: CONSTRAINT_ATT_TYPE - company* . | Dieser Fehler wird zwar meist spezifisch für das Attribut *company* angezeigt, kann aber auch bei Attributen wie *CN* auftreten. Dieser Fehler tritt aufgrund von AD erzwungenen Schemaeinschränkungen auf. Standardmäßig gibt es für die Attribute wie *company* und *CN* in AD eine Obergrenze von 64 Zeichen. Wenn der aus Workday stammende Wert mehr als 64 Zeichen enthält, wird diese Fehlermeldung angezeigt. | Überprüfen Sie das Ereignis *Export* in den Überwachungsprotokollen, um den Wert für das in der Fehlermeldung gemeldete Attribut anzuzeigen. Sie sollten in Betracht ziehen, den aus Workday kommenden Wert mit der Funktion [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) zu kürzen oder die Zuordnungen in ein AD-Attribut zu ändern, das keine ähnlichen Längenbeschränkungen hat.  |
+|2.| Fehler beim Exportvorgang im Überwachungsprotokoll mit dem Fehlercode: *SystemForCrossDomainIdentityManagementBadResponse* und der Meldung *Fehler: ConstraintViolation-AtrErr: Ein Wert in der Anforderung ist ungültig. Ein Wert für das Attribut befindet sich nicht im zulässigen Wertebereich. \nFehlerdetails: CONSTRAINT_ATT_TYPE - company*. | Dieser Fehler wird zwar meist spezifisch für das Attribut *company* angezeigt, kann aber auch bei Attributen wie *CN* auftreten. Dieser Fehler tritt aufgrund von AD erzwungenen Schemaeinschränkungen auf. Standardmäßig gibt es für die Attribute wie *company* und *CN* in AD eine Obergrenze von 64 Zeichen. Wenn der aus Workday stammende Wert mehr als 64 Zeichen enthält, wird diese Fehlermeldung angezeigt. | Überprüfen Sie das Ereignis *Export* in den Überwachungsprotokollen, um den Wert für das in der Fehlermeldung gemeldete Attribut anzuzeigen. Sie sollten in Betracht ziehen, den aus Workday kommenden Wert mit der Funktion [Mid](../app-provisioning/functions-for-customizing-application-data.md#mid) zu kürzen oder die Zuordnungen in ein AD-Attribut zu ändern, das keine ähnlichen Längenbeschränkungen hat.  |
 
 #### <a name="ad-user-account-update-errors"></a>Fehler bei der Aktualisierung des AD-Benutzerkontos
 
@@ -1010,7 +1010,7 @@ Während des Aktualisierungsprozesses des AD-Benutzerkontos liest der Bereitstel
 
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
-|1.| Fehler bei der Synchronisationsregelaktion im Überwachungsprotokoll mit der Meldung *EventName = EntrySynchronizationError and ErrorCode = EndpointUnavailable* . | Dieser Fehler wird angezeigt, wenn der Bereitstellungsdienst aufgrund eines Verarbeitungsfehlers beim lokalen Bereitstellungs-Agent nicht in der Lage ist, Benutzerprofildaten aus Active Directory abzurufen. | Überprüfen Sie die Protokolle der Ereignisanzeige des Bereitstellungs-Agent auf Fehlerereignisse, die auf Probleme mit dem Lesevorgang hinweisen (Filter nach Ereignis-ID #2). |
+|1.| Fehler bei der Synchronisationsregelaktion im Überwachungsprotokoll mit der Meldung *EventName = EntrySynchronizationError and ErrorCode = EndpointUnavailable*. | Dieser Fehler wird angezeigt, wenn der Bereitstellungsdienst aufgrund eines Verarbeitungsfehlers beim lokalen Bereitstellungs-Agent nicht in der Lage ist, Benutzerprofildaten aus Active Directory abzurufen. | Überprüfen Sie die Protokolle der Ereignisanzeige des Bereitstellungs-Agent auf Fehlerereignisse, die auf Probleme mit dem Lesevorgang hinweisen (Filter nach Ereignis-ID #2). |
 |2.| Das Manager-Attribut in AD wird für bestimmte Benutzer in AD nicht aktualisiert. | Dieser Fehler tritt am häufigsten auf, wenn Sie Bereichsregeln verwenden und der Manager des Benutzers nicht Teil des Bereichs ist. Dieses Problem kann auch dann auftreten, wenn das übereinstimmende ID-Attribut des Managers (z.B. EmployeeID) nicht in der AD-Zieldomäne gefunden oder nicht auf den richtigen Wert gesetzt wurde. | Überprüfen Sie den Bereichsfilter, und fügen Sie im Bereich den Managerbenutzer hinzu. Überprüfen Sie das Profil des Managers in AD, um sicherzustellen, dass es einen Wert für das übereinstimmende ID-Attribut gibt. |
 
 ## <a name="managing-your-configuration"></a>Verwalten Ihrer Konfiguration
@@ -1049,7 +1049,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 8.    Klicken Sie auf den **configure** -Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung** , und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
    ![Der Screenshot zeigt die Registerkarte „Sicherheit“ mit Eingaben in „Benutzername“ und „Kennwort“ sowie ausgewählter Option „WS-Security Username Token“.](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. Klicken Sie auf **OK** .
+9. Klicken Sie auf **OK**.
 
 10. Fügen Sie im Bereich **Anforderung** den folgenden XML-Code ein. Legen Sie **Employee_ID** auf die Mitarbeiter-ID eines realen Benutzers in Ihrem Workday-Mandanten fest. Legen Sie **wd:version** auf die WWS-Version fest, die Sie verwenden möchten. Wählen Sie einen Benutzer aus, für den das Attribut aufgefüllt ist, das Sie extrahieren möchten.
 
@@ -1104,7 +1104,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 1. Starten Sie das [Azure-Portal](https://portal.azure.com), und navigieren Sie zum Bereitstellungsbereich Ihrer Workday-Bereitstellungsanwendung, wie oben in diesem Tutorial beschrieben.
 
-2. Legen Sie den **Bereitstellungsstatus** auf **Aus** fest, und klicken Sie dann auf **Speichern** . Mit diesem Schritt können Sie sicherstellen, dass Ihre Änderungen erst dann wirksam werden, wenn Sie bereit sind.
+2. Legen Sie den **Bereitstellungsstatus** auf **Aus** fest, und klicken Sie dann auf **Speichern**. Mit diesem Schritt können Sie sicherstellen, dass Ihre Änderungen erst dann wirksam werden, wenn Sie bereit sind.
 
 3. Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren** ).
 
@@ -1126,7 +1126,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
     ![Workday Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Wählen Sie oben **Speichern** aus, und klicken Sie im angezeigten Dialogfeld auf **Ja** . Schließen Sie den Bildschirm „Attributzuordnung“, falls dieser noch geöffnet ist.
+11. Wählen Sie oben **Speichern** aus, und klicken Sie im angezeigten Dialogfeld auf **Ja**. Schließen Sie den Bildschirm „Attributzuordnung“, falls dieser noch geöffnet ist.
 
 12. Wählen Sie auf der Registerkarte **Bereitstellung** erneut die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Worker mit Azure AD synchronisieren** ).
 

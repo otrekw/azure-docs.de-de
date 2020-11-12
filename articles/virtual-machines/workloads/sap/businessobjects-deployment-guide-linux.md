@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 7253e257f9d721c09f2e041c1473a9d81d09a321
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094148"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427461"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -84,7 +84,7 @@ In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Vir
 
 3. Richten Sie entsprechend den Anweisungen in [Einrichten eines Kapazitätspools](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) einen Azure NetApp Files-Kapazitätspool ein.
 
-   - Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene *Premium* . Für SAP BI File Repository Server in Azure empfehlen wir die Verwendung einer Azure NetApp Files- [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ *Premium* oder *Ultra* .
+   - Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene *Premium*. Für SAP BI File Repository Server in Azure empfehlen wir die Verwendung einer Azure NetApp Files- [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ *Premium* oder *Ultra*.
 
 4. Delegieren Sie ein Subnetz an Azure NetApp Files, wie in den Anweisungen in [Delegieren eines Subnetzes an Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) beschrieben.
 
@@ -210,7 +210,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
    > [!Important]
    >
-   > Stellen Sie sicher, dass die NFS-Domäne in „/etc/idmapd.conf“ auf der VM so festgelegt ist, dass sie mit der Standarddomänenkonfiguration für Azure NetApp Files übereinstimmt: **defaultv4iddomain.com** . Im Fall eines Konflikts zwischen der Domänenkonfiguration auf dem NFS-Client (also der VM) und dem NFS-Server (also der Azure NetApp-Konfiguration) werden die Berechtigungen für Dateien auf Azure NetApp Files-Volumes, die auf den VMs eingebunden sind, als „nobody“ angezeigt.
+   > Stellen Sie sicher, dass die NFS-Domäne in „/etc/idmapd.conf“ auf der VM so festgelegt ist, dass sie mit der Standarddomänenkonfiguration für Azure NetApp Files übereinstimmt: **defaultv4iddomain.com**. Im Fall eines Konflikts zwischen der Domänenkonfiguration auf dem NFS-Client (also der VM) und dem NFS-Server (also der Azure NetApp-Konfiguration) werden die Berechtigungen für Dateien auf Azure NetApp Files-Volumes, die auf den VMs eingebunden sind, als „nobody“ angezeigt.
 
    Überprüfen von `nfs4_disable_idmapping` Diese Angabe sollte auf **Y** (Ja) festgelegt sein. Führen Sie den Einbindungsbefehl aus, um bei `nfs4_disable_idmapping` die Verzeichnisstruktur zu erstellen. Sie können das Verzeichnis unter „/sys/modules“ nicht manuell erstellen, da der Zugriff für den Kernel bzw. die Treiber reserviert ist.
 
@@ -274,7 +274,7 @@ Die Anweisungen gelten nur, wenn Sie Azure Database for MySQL verwenden. Inform
 
 ### <a name="create-an-azure-database-for-mysql"></a>Erstellen einer Azure Database for MySQL-Datenbank
 
-Melden Sie sich im Azure-Portal an, und befolgen Sie die in dieser [Schnellstartanleitung für Azure Database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md#create-an-azure-database-for-mysql-server) aufgeführten Schritte. Beim Bereitstellen von Azure Database for MySQL sind einige Punkte zu beachten:
+Melden Sie sich im Azure-Portal an, und befolgen Sie die in dieser [Schnellstartanleitung für Azure Database for MySQL](../../../mysql/quickstart-create-mysql-server-database-using-azure-portal.md) aufgeführten Schritte. Beim Bereitstellen von Azure Database for MySQL sind einige Punkte zu beachten:
 
 1. Wählen Sie für Azure Database for MySQL dieselbe Region aus, in der Ihre Anwendungsserver der SAP BI-Plattform ausgeführt werden.
 
@@ -296,7 +296,7 @@ Melden Sie sich im Azure-Portal an, und befolgen Sie die in dieser [Schnellstart
 Der erstellte Server wird standardmäßig durch eine Firewall geschützt und ist nicht öffentlich zugänglich. Führen Sie die folgenden Schritte aus, um Zugriff auf das virtuelle Netzwerk bereitzustellen, in dem die Anwendungsserver der SAP BI-Plattform ausgeführt werden:  
 
 1. Navigieren Sie im Azure-Portal zu den Serverressourcen, und wählen Sie im Menü auf der linken Seite die Option **Verbindungssicherheit** für Ihre Serverressource aus.
-2. Wählen Sie **Ja** aus, um den **Zugriff auf Azure-Dienste zuzulassen** .
+2. Wählen Sie **Ja** aus, um den **Zugriff auf Azure-Dienste zuzulassen**.
 3. Wählen Sie unter den VNET-Regeln die Option **Vorhandenes virtuelles Netzwerk wird hinzugefügt** aus. Wählen Sie das virtuelle Netzwerk und Subnetz des Anwendungsservers der SAP BI-Plattform aus. Außerdem müssen Sie Zugriff auf Jumpbox oder andere Server bereitstellen, von denen aus Sie eine Verbindung von [MySQL Workbench](../../../mysql/connect-workbench.md) mit Azure Database for MySQL herstellen können. MySQL Workbench wird verwendet, um die CMS- und Überwachungsdatenbank zu erstellen.
 4. Nachdem die virtuellen Netzwerke hinzugefügt wurden, wählen Sie **Speichern** aus.
 

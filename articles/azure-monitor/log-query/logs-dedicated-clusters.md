@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: 845336385fe7490d4c62df41af873c237ae34871
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 293a3fc10920a29cd41e4bdb946e5bb06762eb52
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996329"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427495"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
@@ -116,14 +116,14 @@ Content-type: application/json
 
 Es dauert eine Weile, bis die Bereitstellung des Log Analytics-Clusters abgeschlossen ist. Sie können den Bereitstellungsstatus auf verschiedene Weise überprüfen:
 
-- Führen Sie den PowerShell-Befehl „Get-AzOperationalInsightsCluster“ mit dem Ressourcengruppennamen aus, und überprüfen Sie die Eigenschaft „ProvisioningState“. Während der Bereitstellung lautet dieser Wert *ProvisioningAccount* , und nach Abschluss des Vorgangs lautet er *Succeeded* .
+- Führen Sie den PowerShell-Befehl „Get-AzOperationalInsightsCluster“ mit dem Ressourcengruppennamen aus, und überprüfen Sie die Eigenschaft „ProvisioningState“. Während der Bereitstellung lautet dieser Wert *ProvisioningAccount* , und nach Abschluss des Vorgangs lautet er *Succeeded*.
   ```powershell
   New-AzOperationalInsightsCluster -ResourceGroupName {resource-group-name} 
   ```
 
 - Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die Überprüfung des Status asynchroner Vorgänge.
 
-- Senden Sie eine GET-Anforderung für die *Clusterressource* , und überprüfen Sie den Wert für *provisioningState* . Während der Bereitstellung lautet dieser Wert *ProvisioningAccount* , und nach Abschluss des Vorgangs lautet er *Succeeded* .
+- Senden Sie eine GET-Anforderung für die *Clusterressource* , und überprüfen Sie den Wert für *provisioningState*. Während der Bereitstellung lautet dieser Wert *ProvisioningAccount* , und nach Abschluss des Vorgangs lautet er *Succeeded*.
 
    ```rst
    GET https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-03-01-preview
@@ -162,7 +162,7 @@ Die GUID *principalId* wird vom verwalteten Identitätsdienst für die *Clusterr
 
 Nachdem Sie Ihre *Clusterressource* erstellt und vollständig bereitgestellt haben, können Sie zusätzliche Eigenschaften auf Clusterebene mithilfe von PowerShell oder der REST-API bearbeiten. Abgesehen von den Eigenschaften, die während der Clustererstellung verfügbar sind, können zusätzliche Eigenschaften erst festgelegt werden, nachdem der Cluster bereitgestellt wurde:
 
-- **keyVaultProperties** : Dient zum Konfigurieren von Azure Key Vault, der zum Bereitstellen eines [kundenseitig verwalteten Azure Monitor-Schlüssels](../platform/customer-managed-keys.md#cmk-provisioning-procedure) verwendet wird. Sie enthält die folgenden Parameter:  *KeyVaultUri* , *KeyName* , *KeyVersion* . 
+- **keyVaultProperties** : Dient zum Konfigurieren von Azure Key Vault, der zum Bereitstellen eines [kundenseitig verwalteten Azure Monitor-Schlüssels](../platform/customer-managed-keys.md#customer-managed-key-provisioning-procedure) verwendet wird. Sie enthält die folgenden Parameter:  *KeyVaultUri* , *KeyName* , *KeyVersion*. 
 - **billingType** : Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für die *Clusterressource* und deren Daten:
   - **Cluster** (Standard): Die Kapazitätsreservierungskosten für Ihren Cluster werden der *Clusterressource* zugeordnet.
   - **Arbeitsbereiche** : Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet. Wenn die Gesamtmenge der erfassten Daten unter der Kapazitätsreservierung liegt, wird ein Teil des Verbrauchs über die *Clusterressource* abgerechnet. Weitere Informationen zum Clusterpreismodell finden Sie unter [Dedizierte Log Analytics-Cluster](../platform/manage-cost-storage.md#log-analytics-dedicated-clusters). 
@@ -222,7 +222,7 @@ Die Weitergabe des Schlüsselbezeichners dauert einige Minuten. Sie können den 
 
    OR
 
-- Senden Sie eine GET-Anforderung für die *Clusterressource* , und überprüfen Sie die Eigenschaften *KeyVaultProperties* . Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
+- Senden Sie eine GET-Anforderung für die *Clusterressource* , und überprüfen Sie die Eigenschaften *KeyVaultProperties*. Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
 
    Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte die Antwort auf die GET-Anforderung für die *Clusterressource* wie folgt aussehen:
 

@@ -2,13 +2,13 @@
 title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: 675f7bb11ed98dd17e8f4ee4a0197d05128af851
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.date: 11/06/2020
+ms.openlocfilehash: 5b71c991136533096604c8a35af7989a227b6d2a
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627107"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94364228"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -792,7 +792,6 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | Ressourcentyp | Resource group | Subscription |
 > | ------------- | ----------- | ---------- |
 > | datafactories | Ja | Ja |
-> | datafactoryschema | Nein | Nein |
 > | factories | Ja | Ja |
 
 ## <a name="microsoftdatalake"></a>Microsoft.DataLake
@@ -1433,7 +1432,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | privatednszones/virtualnetworklinks | Ja | Ja |
 > | privatednszonesinternal | Nein | Nein |
 > | privateendpointredirectmaps | Nein | Nein |
-> | privateendpoints | Ja | Ja |
+> | privateendpoints | Nein | Nein |
 > | privatelinkservices | Nein | Nein |
 > | publicipaddresses | Ja: Basic-SKU<br>Ja: Standard-SKU | Ja: Basic-SKU<br>Nein: Standard-SKU |
 > | publicipprefixes | Ja | Ja |

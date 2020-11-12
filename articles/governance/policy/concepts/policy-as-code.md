@@ -3,12 +3,12 @@ title: Entwerfen von Workflows für Azure Policy-as-Code
 description: Erfahren Sie, wie Sie Workflows entwerfen, um Ihre Azure Policy-Definitionen als Code bereitzustellen und Ressourcen automatisch zu überprüfen.
 ms.date: 10/20/2020
 ms.topic: conceptual
-ms.openlocfilehash: 2be6c0770098d50abbb9695e04b3f53c073de9ae
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 74d2097e4db4442e6e65f30541864fb554f7379d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320615"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359679"
 ---
 # <a name="design-azure-policy-as-code-workflows"></a>Entwerfen von Workflows für Azure Policy-as-Code
 
@@ -38,8 +38,6 @@ Beispiele für diese Dateiformate sind im [Azure Policy-GitHub-Repository](https
 
 - Richtliniendefinition: [Tag zu Ressourcen hinzufügen](https://github.com/Azure/azure-policy/tree/master/samples/Tags/add-tag)
 - Initiativdefinition: [Abrechnung von Tags](https://github.com/Azure/azure-policy/tree/master/samples/PolicyInitiatives/multiple-billing-tags)
-
-Lesen Sie außerdem [Exportieren von Azure Policy-Ressourcen](../how-to/export-resources.md), um Ihre vorhandenen Definitionen und Zuweisungen in die Verwaltungsumgebung des Quellcodes, [GitHub](https://www.github.com), zu übertragen.
 
 ## <a name="workflow-overview"></a>Übersicht über Workflow
 
@@ -74,6 +72,8 @@ Die Richtliniendefinitionen werden mit JSON erstellt und in der Quellcodeverwalt
 
 Wenn eine neue Richtlinie hinzugefügt oder eine vorhandene Richtlinie aktualisiert wird, sollte der Workflow die Richtliniendefinition in Azure automatisch aktualisieren. Das Testen der neuen oder aktualisierten Richtliniendefinition erfolgt in einem späteren Schritt.
 
+Lesen Sie außerdem [Exportieren von Azure Policy-Ressourcen](../how-to/export-resources.md), um Ihre vorhandenen Definitionen und Zuweisungen in die Verwaltungsumgebung des Quellcodes, [GitHub](https://www.github.com), zu übertragen.
+
 ### <a name="create-and-update-initiative-definitions"></a>Erstellen und Aktualisieren von Initiativendefinitionen
 
 Auch Initiativen verfügen über eine eigene JSON-Datei und zugehörige Dateien, die im gleichen Ordner gespeichert werden sollten. Die Initiativendefinition erfordert eine bereits vorhandene Richtliniendefinition und kann daher erst erstellt oder aktualisiert werden, wenn die Quelle für die Richtlinie zunächst in der Quellcodeverwaltung und dann in Azure aktualisiert wurde. Die folgende Struktur zeigt eine empfohlene Methode zum Speichern der Initiativendefinitionen in der Quellcodeverwaltung.
@@ -102,7 +102,7 @@ Ebenso wie bei Richtliniendefinitionen sollte der Workflow die Initiativendefini
 
 ### <a name="test-and-validate-the-updated-definition"></a>Testen und Validieren der aktualisierten Definition
 
-Sobald die Automatisierung Ihre neu erstellten oder aktualisierten Richtlinien- oder Initiativendefinitionen übernommen und das entsprechende Objekt in Azure aktualisiert hat, ist es an der Zeit, die Änderungen zu testen. Entweder die Richtlinie oder die zugehörige Initiative sollte Ressourcen in der Umgebung zugewiesen werden, die am weitesten von der Produktion entfernt ist. Diese Umgebung ist in der Regel die Entwicklungsumgebung: _Dev_ .
+Sobald die Automatisierung Ihre neu erstellten oder aktualisierten Richtlinien- oder Initiativendefinitionen übernommen und das entsprechende Objekt in Azure aktualisiert hat, ist es an der Zeit, die Änderungen zu testen. Entweder die Richtlinie oder die zugehörige Initiative sollte Ressourcen in der Umgebung zugewiesen werden, die am weitesten von der Produktion entfernt ist. Diese Umgebung ist in der Regel die Entwicklungsumgebung: _Dev_.
 
 Die Zuweisung sollte den [enforcementMode](./assignment-structure.md#enforcement-mode)_deaktiviert_ verwenden, damit Ressourcenerstellung und -aktualisierung nicht blockiert, aber vorhandene Ressourcen weiterhin auf Einhaltung der aktualisierten Richtliniendefinition überwacht werden. Auch im enforcementMode wird empfohlen, entweder eine Ressourcengruppe oder ein Abonnement, das speziell zur Validierung von Richtlinien dient, als Zuweisungsbereich zu verwenden.
 

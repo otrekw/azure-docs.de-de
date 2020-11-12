@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/21/2019
-ms.openlocfilehash: eaf12fe1d757c3a5a76307d87151bf71aa720b2b
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 13959c4a3c798656efdc72b5c8e5f96e4fb2392a
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042403"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94375345"
 ---
 # <a name="how-to-troubleshoot-issues-with-the-log-analytics-agent-for-linux"></a>Behandeln von Problemen mit dem Log Analytics-Agent für Linux 
 
@@ -60,7 +60,7 @@ Weitere Informationen finden Sie in der [GitHub-Dokumentation](https://github.co
 Wir haben festgestellt, dass eine saubere Neuinstallation des Agents die meisten Probleme behebt. Dies ist möglicherweise die erste Empfehlung des Supportteams, um den Agent wieder in einen fehlerfreien Zustand zu versetzen. Das Ausführen der Problembehandlung, die Erfassung von Protokollen und der Versuch einer sauberen Neuinstallation tragen zu einer schnelleren Behebung von Problemen bei.
 
 1. Laden Sie das Skript zur endgültigen Löschung herunter:
-- `$ wget https://github.com/microsoft/OMS-Agent-for-Linux/blob/master/tools/purge_omsagent.sh`
+- `$ wget https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/tools/purge_omsagent.sh`
 2. Führen Sie das Skript zur endgültigen Löschung (mit sudo-Berechtigungen) aus:
 - `$ sudo sh purge_omsagent.sh`
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: 5ecb4d249c8c2167ec61740eb9515fd1937230b0
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519740"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357707"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) für die automatische Benutzerbereitstellung
 
@@ -58,7 +58,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![Zscaler Private Access (ZPA): Hinzufügen von SCIM](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
 
-3. Folgen Sie dem Assistenten zum **Hinzufügen von IdP-Konfigurationen** , um einen IdP hinzuzufügen. Übernehmen Sie im Feld **Einmaliges Anmelden** die Einstellung **Benutzer** . Geben Sie einen **Namen** an, und wählen Sie in der Dropdownliste die **Domänen** aus. Klicken Sie auf **Weiter** , um zum nächsten Fenster zu navigieren.
+3. Folgen Sie dem Assistenten zum **Hinzufügen von IdP-Konfigurationen** , um einen IdP hinzuzufügen. Übernehmen Sie im Feld **Einmaliges Anmelden** die Einstellung **Benutzer**. Geben Sie einen **Namen** an, und wählen Sie in der Dropdownliste die **Domänen** aus. Klicken Sie auf **Weiter** , um zum nächsten Fenster zu navigieren.
 
     ![Zscaler Private Access (ZPA): Hinzufügen von IdP](media/zscaler-private-access-provisioning-tutorial/addidp.png)
 
@@ -74,7 +74,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![Zscaler Private Access (ZPA): IdP-ID](media/zscaler-private-access-provisioning-tutorial/idpid.png)
 
-7.  Scrollen Sie nach unten zu **Enable SCIM Sync** (SCIM-Synchronisierung aktivieren). Klicken Sie auf die Schaltfläche **Neues Token generieren** . Kopieren Sie das **Bearertoken** . Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Zscaler Private Access (ZPA)-Anwendung in das Feld „Geheimes Token“ eingegeben.
+7.  Scrollen Sie nach unten zu **Enable SCIM Sync** (SCIM-Synchronisierung aktivieren). Klicken Sie auf die Schaltfläche **Neues Token generieren**. Kopieren Sie das **Bearertoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Zscaler Private Access (ZPA)-Anwendung in das Feld „Geheimes Token“ eingegeben.
 
     ![Zscaler Private Access (ZPA): Erstellen eines Tokens](media/zscaler-private-access-provisioning-tutorial/token.png)
 
@@ -97,7 +97,7 @@ Bevor Sie Zscaler Private Access (ZPA) für die automatische Benutzerbereitstell
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -121,7 +121,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-private-access-zpa-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Zscaler Private Access (ZPA) in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -129,7 +129,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Link für Zscaler Private Access (ZPA) in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -141,11 +141,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to Zscaler Private Access (ZPA)** (Azure Active Directory-Benutzer mit Zscaler Private Access (ZPA) synchronisieren) aus.
 
@@ -173,7 +173,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: a2113130cdfb41152b03e87606b757a3fa61793f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521117"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359322"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TeamViewer für die automatische Benutzerbereitstellung
 
@@ -46,19 +46,19 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-teamviewer-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von TeamViewer für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich bei der [TeamViewer-Verwaltungskonsole](https://login.teamviewer.com) an. Navigieren Sie zu **Profil bearbeiten** .
+1. Melden Sie sich bei der [TeamViewer-Verwaltungskonsole](https://login.teamviewer.com) an. Navigieren Sie zu **Profil bearbeiten**.
 
     ![TeamViewer-Administratorkonsole](./media/teamviewer-provisioning-tutorial/admin.png)
 
-2.  Navigieren Sie zu **Apps** . Klicken Sie auf **Skripttoken erstellen** .
+2.  Navigieren Sie zu **Apps**. Klicken Sie auf **Skripttoken erstellen**.
 
     ![TeamViewer – Token erstellen](./media/teamviewer-provisioning-tutorial/createtoken.png)
 
-3.  Geben Sie einen Namen für das Skripttoken an. Klicken Sie auf die Schaltfläche **Speichern** .
+3.  Geben Sie einen Namen für das Skripttoken an. Klicken Sie auf die Schaltfläche **Speichern**.
 
     ![TeamViewer-Tokenname](./media/teamviewer-provisioning-tutorial/tokenname.png)
 
-4. Kopieren Sie das **Token** , und klicken Sie auf **OK** . Dieser Wert wird im Feld **Geheimes Token** Ihrer TeamViewer-Anwendung im Azure-Portal eingegeben.
+4. Kopieren Sie das **Token** , und klicken Sie auf **OK**. Dieser Wert wird im Feld **Geheimes Token** Ihrer TeamViewer-Anwendung im Azure-Portal eingegeben.
 
     ![TeamViewer-Token](./media/teamviewer-provisioning-tutorial/token.png)
 
@@ -81,7 +81,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-teamviewer-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für TeamViewer in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -89,7 +89,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![TeamViewer-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Soll der Azure AD-Bereitstellungsdienst für TeamViewer aktiviert werden, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+11. Soll der Azure AD-Bereitstellungsdienst für TeamViewer aktiviert werden, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

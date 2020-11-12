@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: deli, rohitha, vikanand, hongzili, sopai, absaafan, logicappspm
 ms.topic: conceptual
-ms.date: 10/16/2020
-ms.openlocfilehash: 51fd8b8427dd8214e22fa59e50b26bb9db237946
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 749807349fd83f9639461fd4ddd9ab771d108119
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322053"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410554"
 ---
 # <a name="create-stateful-or-stateless-workflows-in-visual-studio-code-with-the-azure-logic-apps-preview-extension"></a>Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code mit der Azure Logic Apps (Vorschau)-Erweiterung
 
@@ -109,8 +109,6 @@ Diese Funktionen sind für diese öffentliche Vorschau nicht verfügbar oder wer
   Mit Ausnahme der zuvor angegebenen Trigger können *zustandsbehaftete* Workflows im Gegensatz zu integrierten Triggern und Aktionen, die nativ mit der Logic Apps-Laufzeit ausgeführt werden, sowohl Trigger als auch Aktionen für [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) verwenden, die in Azure bereitgestellt werden. *Zustandslose* Workflows unterstützen derzeit nur *Aktionen* für verwaltete Connectors, keine für Trigger. Obwohl Sie Connectors in Azure für zustandslose Workflows aktivieren können, zeigt der Designer keine verwalteten Connectortrigger an, die Sie auswählen können.
 
 * Sie können den neuen **Logik-App** -Ressourcentyp (Vorschau) nur für einen [Premium- oder App Service-Hostingplan in Azure](#publish-azure) oder einen [Docker-Container](#deploy-docker) bereitstellen, nicht für [Integrationsdienstumgebungen (Integration Service Environment, ISEs)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md). Hostingpläne für den **Verbrauch** werden weder unterstützt, noch stehen sie zur Bereitstellung dieses Ressourcentyps zur Verfügung.
-
-* Im Azure-Portal können Sie keine neuen Logik-Apps mit dem neuen Ressourcentyp **Logik-App (Vorschau)** erstellen. Sie können diese Logik-Apps nur in Visual Studio Code erstellen. Nachdem Sie Logik-Apps mit diesem Ressourcentyp aus Visual Studio Code in Azure bereitgestellt haben, können Sie [diesen Logik-Apps jedoch neue Workflows hinzufügen](#add-workflows).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -774,12 +772,7 @@ In Visual Studio Code können Sie alle bereitgestellten Logik-Apps in Ihrem Azur
 
 ## <a name="find-and-manage-deployed-logic-apps-in-the-portal"></a>Suchen und Verwalten bereitgestellter Logik-Apps im Portal
 
-Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ihrem Azure-Abonnement enthalten sind, unabhängig davon, ob es sich um den ursprünglichen **Logic Apps** -Ressourcentyp oder den **Logik-App (Vorschau)** -Ressourcentyp handelt. Zurzeit wird jeder Ressourcentyp in Azure als separate Kategorien organisiert und verwaltet.
-
-> [!NOTE]
-> Während der öffentlichen Vorschauphase können Sie nur bereitgestellte **Logik-App (Vorschau)** -Ressourcen im Azure-Portal anzeigen und keine neuen **Logik-App (Vorschau)** -Ressourcen erstellen. Sie können diese Logik-Apps nur in Visual Studio Code erstellen. Mit diesem Ressourcentyp können Sie jedoch bereitgestellten Logik-Apps [Workflows](#add-workflows) hinzufügen.
-
-Um Logik-Apps zu finden, die vom Ressourcentyp **Logik-App (Vorschau)** sind, gehen Sie wie folgt vor:
+Im Azure-Portal können Sie alle bereitgestellten Logik-Apps anzeigen, die in Ihrem Azure-Abonnement enthalten sind, unabhängig davon, ob es sich um den ursprünglichen **Logic Apps** -Ressourcentyp oder den **Logik-App (Vorschau)** -Ressourcentyp handelt. Zurzeit wird jeder Ressourcentyp in Azure als separate Kategorien organisiert und verwaltet. Um Logik-Apps zu finden, die vom Ressourcentyp **Logik-App (Vorschau)** sind, gehen Sie wie folgt vor:
 
 1. Geben Sie in das Suchfeld des Azure-Portals `logic app preview` ein. Wenn die Ergebnisliste angezeigt wird, wählen Sie unter **Dienste** die Option **Logik-App (Vorschau)** aus.
 

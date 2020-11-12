@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: 2fe0d8e6ad2056a244ec0d811f1b2dcb67e7bd84
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: ac41fb5ed6fd1e46719fcc39ccaf5b29375e7410
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516803"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359900"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Meta Networks Connector für die automatische Benutzerbereitstellung
 
@@ -62,13 +62,13 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Screenshot der Verwaltungskonsole von Meta Networks Connector mit hervorgehobenen Werten für API-Schlüsselname und API-Schlüsselbeschreibung für den Azure AD- und API-Schlüssel" border="false":::
 
-4.  Aktivieren Sie die Schreibberechtigungen (Option **Write** ) für **Gruppen** und **Benutzer** .
+4.  Aktivieren Sie die Schreibberechtigungen (Option **Write** ) für **Gruppen** und **Benutzer**.
 
     ![Meta Networks Connector-Berechtigungen](media/meta-networks-connector-provisioning-tutorial/privileges.png)
 
-5.  Klicken Sie auf **Hinzufügen** . Kopieren Sie den Wert von **SECRET** (Geheimnis), und speichern Sie ihn, weil er nur zu diesem Zeitpunkt angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Meta Networks Connector-Anwendung in das Feld „Geheimes Token“ eingegeben.
+5.  Klicken Sie auf **Hinzufügen**. Kopieren Sie den Wert von **SECRET** (Geheimnis), und speichern Sie ihn, weil er nur zu diesem Zeitpunkt angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Meta Networks Connector-Anwendung in das Feld „Geheimes Token“ eingegeben.
 
-    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Screenshot der Verwaltungskonsole von Meta Networks Connector mit hervorgehobenen Werten für API-Schlüsselname und API-Schlüsselbeschreibung für den Azure AD- und API-Schlüssel" border="false":::
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Screenshot eines Fensters, in dem der Benutzer informiert wird, dass der API-Schlüssel hinzugefügt wurde. Das Feld „Secret“ (Geheimnis) enthält einen nicht lesbaren Wert und ist hervorgehoben." border="false":::
 
 6.  Fügen Sie einen IdP hinzu, indem Sie zu **Administration > Settings > IdP > Create New** (Verwaltung > Einstellungen > IdP > Neu erstellen) navigieren.
 
@@ -80,7 +80,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![Meta Networks Connector, IdP-Symbol](media/meta-networks-connector-provisioning-tutorial/icon.png)
 
-8.  Wählen Sie unter **Configure SCIM** (SCIM konfigurieren) den in den vorherigen Schritten erstellten API-Schlüssel aus. Klicken Sie auf **Speichern** .
+8.  Wählen Sie unter **Configure SCIM** (SCIM konfigurieren) den in den vorherigen Schritten erstellten API-Schlüssel aus. Klicken Sie auf **Speichern**.
 
     ![Meta Networks Connector, SCIM konfigurieren](media/meta-networks-connector-provisioning-tutorial/configure.png)
 
@@ -98,7 +98,7 @@ Vor dem Konfigurieren von Meta Networks Connector für die automatische Benutzer
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-meta-networks-connector-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Meta Networks Connector in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Der Meta Networks Connector-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -139,11 +139,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Meta Networks Connector synchronisieren** aus.
 
@@ -163,7 +163,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Meta Networks Connector zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Meta Networks Connector zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -171,7 +171,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

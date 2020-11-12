@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/29/2020
 ms.author: memildin
-ms.openlocfilehash: d1837d84c97227ba3d8743c3717e2f68dafd6b95
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 7c09a7f6c6a313852fc6212c6190a584ba5f67bd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911391"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94409891"
 ---
 # <a name="prevent-dangling-dns-entries-and-avoid-subdomain-takeover"></a>Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen
 
@@ -27,7 +27,7 @@ In diesem Artikel werden die allgemeinen Sicherheitsrisiken einer Unterdomänen�
 
 ## <a name="what-is-subdomain-takeover"></a>Was bedeutet Unterdomänenübernahme?
 
-Unterdomänenübernahmen sind häufige Bedrohungen mit hohem Schweregrad für Unternehmen, die regelmäßig viele Ressourcen erstellen und löschen. Eine Unterdomänenübernahme kann auftreten, wenn Sie über einen [DNS-Eintrag](https://docs.microsoft.com/azure/dns/dns-zones-records#dns-records) verfügen, der auf eine Azure-Ressource verweist, deren Bereitstellung aufgehoben wurde. Solche DNS-Einträge werden auch als „verwaiste DNS“-Einträge bezeichnet. CNAME-Einträge sind besonders anfällig für diese Bedrohung. Durch die Übernahme von Unterdomänen können böswillige Akteure Datenverkehr, der für die Domäne eines Unternehmens bestimmt ist, an eine Website für schädliche Aktivitäten umleiten.
+Unterdomänenübernahmen sind häufige Bedrohungen mit hohem Schweregrad für Unternehmen, die regelmäßig viele Ressourcen erstellen und löschen. Eine Unterdomänenübernahme kann auftreten, wenn Sie über einen [DNS-Eintrag](../../dns/dns-zones-records.md#dns-records) verfügen, der auf eine Azure-Ressource verweist, deren Bereitstellung aufgehoben wurde. Solche DNS-Einträge werden auch als „verwaiste DNS“-Einträge bezeichnet. CNAME-Einträge sind besonders anfällig für diese Bedrohung. Durch die Übernahme von Unterdomänen können böswillige Akteure Datenverkehr, der für die Domäne eines Unternehmens bestimmt ist, an eine Website für schädliche Aktivitäten umleiten.
 
 Ein häufiges Szenario für eine Unterdomänenübernahme:
 

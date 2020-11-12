@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87533902"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410576"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -86,11 +86,11 @@ Weitere Beispiele für Azure Active Directory-Funktionen sind:
 
 - Azure AD ermöglicht SSO für SaaS-Anwendungen unabhängig davon, wo sie gehostet werden. Einige Anwendungen bilden einen Verbund mit Azure AD, andere verwenden Kennwort-SSO. Verbundanwendungen können auch die Benutzerbereitstellung und [Kennworttresore](https://www.techopedia.com/definition/31415/password-vault) unterstützen.
 
-- Der Zugriff auf Daten in [Azure Storage](https://azure.microsoft.com/services/storage/) wird über die Authentifizierung gesteuert. Jedes Speicherkonto verfügt über einen Primärschlüssel ([Speicherkontoschlüssel](../../storage/common/storage-create-storage-account.md); Storage Account Key, SAK) und einen sekundären geheimen Schlüssel (Shared Access Signature, SAS).
+- Der Zugriff auf Daten in [Azure Storage](https://azure.microsoft.com/services/storage/) wird über die Authentifizierung gesteuert. Jedes Speicherkonto verfügt über einen Primärschlüssel ([Speicherkontoschlüssel](../../storage/common/storage-account-create.md); Storage Account Key, SAK) und einen sekundären geheimen Schlüssel (Shared Access Signature, SAS).
 
-- Azure AD bietet Identity-as-a-Service durch Verbund (unter Verwendung der [Active Directory-Verbunddienste](../../active-directory/hybrid/how-to-connect-fed-azure-adfs.md)) sowie Synchronisierung und Replikation mit lokalen Verzeichnissen.
+- Azure AD bietet Identity-as-a-Service durch Verbund (unter Verwendung der [Active Directory-Verbunddienste](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)) sowie Synchronisierung und Replikation mit lokalen Verzeichnissen.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) ist der Dienst für die mehrstufige Authentifizierung, bei der Benutzer Anmeldevorgänge über eine mobile App, einen Telefonanruf oder per SMS bestätigen müssen. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Azure Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
+- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ist der Dienst für die mehrstufige Authentifizierung, bei der Benutzer Anmeldevorgänge über eine mobile App, einen Telefonanruf oder per SMS bestätigen müssen. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Azure Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
 
 - Mit [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) können Sie virtuelle Azure-Computer in eine Active Directory-Domäne einbinden, ohne Domänencontroller bereitzustellen. Sie können sich bei diesen virtuellen Computern mithilfe Ihrer Active Directory-Unternehmensanmeldeinformationen anmelden und in die Domäne eingebundene virtuelle Computer mithilfe von Gruppenrichtlinien verwalten, um Sicherheitsbaselines für alle Ihre virtuellen Azure-Computer zu erzwingen.
 
@@ -119,7 +119,7 @@ Microsoft Azure enthält viele verschiedene cloudbasierte Computingdienste mit e
 
 ### <a name="dedicated-hosts"></a>Dedizierte Hosts
 
-Neben den im vorherigen Abschnitt beschriebenen isolierten Hosts bietet Azure auch dedizierte Hosts. Bei dedizierten Hosts in Azure handelt es sich um einen Dienst für die Bereitstellung physischer Server, die virtuelle Computer hosten können und für ein einzelnes Azure-Abonnement reserviert sind. Dedizierte Hosts bieten Hardwareisolation auf physischer Serverebene. Es werden keine anderen virtuellen Computer auf Ihren Hosts platziert. Dedizierte Hosts werden in den gleichen Rechenzentren bereitgestellt und nutzen das gleiche Netzwerk und die gleiche zugrunde liegende Speicherinfrastruktur wie andere, nicht isolierte Hosts. Weitere Informationen finden Sie in der umfassenden Übersicht zu [dedizierten Azure-Hosts](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts).
+Neben den im vorherigen Abschnitt beschriebenen isolierten Hosts bietet Azure auch dedizierte Hosts. Bei dedizierten Hosts in Azure handelt es sich um einen Dienst für die Bereitstellung physischer Server, die virtuelle Computer hosten können und für ein einzelnes Azure-Abonnement reserviert sind. Dedizierte Hosts bieten Hardwareisolation auf physischer Serverebene. Es werden keine anderen virtuellen Computer auf Ihren Hosts platziert. Dedizierte Hosts werden in den gleichen Rechenzentren bereitgestellt und nutzen das gleiche Netzwerk und die gleiche zugrunde liegende Speicherinfrastruktur wie andere, nicht isolierte Hosts. Weitere Informationen finden Sie in der umfassenden Übersicht zu [dedizierten Azure-Hosts](../../virtual-machines/dedicated-hosts.md).
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V- und Stammbetriebssystem-Isolation zwischen Stamm-VM und Gast-VMs
 
@@ -194,7 +194,7 @@ Für die **Zugriffssteuerung in Azure Storage** gilt ein einfaches Zugriffssteue
 
 ![Isolation mithilfe der Storage-Zugriffssteuerung](./media/isolation-choices/azure-isolation-fig9.png)
 
-Der **Zugriff auf Azure Storage-Daten (einschließlich Tabellen)** kann per [SAS](../../storage/common/storage-dotnet-shared-access-signature-part-1.md)-Token (Shared Access Signature) gesteuert werden. Mit dem Token wird der bereichsbezogene Zugriff gewährt. Die SAS wird mit einer Abfragevorlage (URL) erstellt, die per [SAK](https://msdn.microsoft.com/library/azure/ee460785.aspx) (Storage Account Key, Speicherkontoschlüssel) signiert wird. Diese [signierte URL](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) kann an einen anderen Prozess übergeben (delegiert) werden, mit dem dann die Details der Abfrage eingefügt werden können und der Speicherdienst angefordert werden kann. Mit einer SAS können Sie zeitabhängigen Zugriff auf Clients gewähren, ohne den geheimen Schlüssel des Speicherkontos offenzulegen.
+Der **Zugriff auf Azure Storage-Daten (einschließlich Tabellen)** kann per [SAS](../../storage/common/storage-sas-overview.md)-Token (Shared Access Signature) gesteuert werden. Mit dem Token wird der bereichsbezogene Zugriff gewährt. Die SAS wird mit einer Abfragevorlage (URL) erstellt, die per [SAK](/previous-versions/azure/reference/ee460785(v=azure.100)) (Storage Account Key, Speicherkontoschlüssel) signiert wird. Diese [signierte URL](../../storage/common/storage-sas-overview.md) kann an einen anderen Prozess übergeben (delegiert) werden, mit dem dann die Details der Abfrage eingefügt werden können und der Speicherdienst angefordert werden kann. Mit einer SAS können Sie zeitabhängigen Zugriff auf Clients gewähren, ohne den geheimen Schlüssel des Speicherkontos offenzulegen.
 
 Eine SAS bietet die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte im Speicherkonto zu erteilen. Hierfür müssen Sie nicht Ihre Kontozugriffsschlüssel freigeben.
 
@@ -225,13 +225,13 @@ Für viele Organisationen ist die Verschlüsselung von [ruhenden Daten](isolatio
 
 - [Storage Service Encryption](../../storage/blobs/security-recommendations.md) können Sie anfordern, dass der Speicherdienst die Daten beim Schreiben in Azure Storage automatisch verschlüsselt.
 - [Client-side Encryption](../../storage/blobs/security-recommendations.md) ermöglicht ebenfalls eine Verschlüsselung ruhender Daten.
-- [Azure-Datenträgerverschlüsselung](../azure-security-disk-encryption-overview.md) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
+- [Azure-Datenträgerverschlüsselung](./azure-disk-encryption-vms-vmss.md) können Sie die Betriebssystemdatenträger und andere Datenträger verschlüsseln, die von einem virtuellen IaaS-Computer verwendet werden.
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Mithilfe von [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) für virtuelle Computer können Sie die Sicherheits- und Konformitätsanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) steuern.
+Mithilfe von [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) für virtuelle Computer können Sie die Sicherheits- und Konformitätsanforderungen Ihrer Organisation erfüllen, indem Sie die Datenträger Ihrer virtuellen Computer (Startdatenträger und allgemeine Datenträger) mit Schlüsseln und Richtlinien verschlüsseln, die Sie über [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) steuern.
 
-Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](https://technet.microsoft.com/library/cc732774.aspx), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
+Die Disk Encryption-Lösung für Windows basiert auf der [Microsoft BitLocker-Laufwerkverschlüsselung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc732774(v=ws.11)), die Linux-Lösung auf [dm-crypt](https://en.wikipedia.org/wiki/Dm-crypt).
 
 Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, wenn sie in Microsoft Azure aktiviert sind:
 
@@ -243,7 +243,7 @@ Die Lösung unterstützt die folgenden Szenarien für virtuelle IaaS-Computer, w
 - Aktivieren der Verschlüsselung auf virtuellen IaaS-Computern mit dem Windows-Clientbetriebssystem
 - Aktivieren der Verschlüsselung auf Volumes mit Bereitstellungspfaden
 - Aktivieren der Verschlüsselung auf virtuellen Linux-Computern, die mithilfe von [mdadm](https://en.wikipedia.org/wiki/Mdadm) mit Datenträgerstriping (RAID) konfiguriert sind
-- Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit [LVM (Logical Volume Manager)](https://msdn.microsoft.com/library/windows/desktop/bb540532) für Datenträger
+- Aktivieren der Verschlüsselung auf virtuellen Linux-Computern mit [LVM (Logical Volume Manager)](/windows/win32/fileio/about-volume-management) für Datenträger
 - Aktivieren der Verschlüsselung auf virtuellen Windows-Computern, die mithilfe von Speicherplätzen konfiguriert sind
 - Alle öffentlichen Azure-Regionen werden unterstützt.
 

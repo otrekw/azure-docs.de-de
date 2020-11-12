@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/24/2020
 ms.author: Zhchia
-ms.openlocfilehash: 86cb23a25bb55bfebd126f02236d60166a289219
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d567985cba35647654d3ec47340979fcf9411132
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519053"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359458"
 ---
 # <a name="tutorial-configure-zapier-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zapier für die automatische Benutzerbereitstellung
 
@@ -46,7 +46,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-zapier-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Zapier für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich bei Ihrer [Zapier-Administratorkonsole](https://zapier.com/app/login/) an. Navigieren Sie unter der Mandanten-ID zu **Einstellungen** .
+1. Melden Sie sich bei Ihrer [Zapier-Administratorkonsole](https://zapier.com/app/login/) an. Navigieren Sie unter der Mandanten-ID zu **Einstellungen**.
 
     ![Zapier-Administratorkonsole](media/zapier-provisioning-tutorial/admin.png)
 
@@ -54,7 +54,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Zapier: Hinzufügen von SCIM](media/zapier-provisioning-tutorial/user.png)
 
-3. Kopieren Sie die **SCIM-Basis-URL** und das **SCIM-Bearertoken** . Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ der Zapier-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
+3. Kopieren Sie die **SCIM-Basis-URL** und das **SCIM-Bearertoken**. Diese Werte werden im Azure-Portal auf der Registerkarte „Bereitstellung“ der Zapier-Anwendung in das Feld „Mandanten-URL“ bzw. „Geheimes Token“ eingegeben.
 
     ![Zapier: Erstellen des Tokens](media/zapier-provisioning-tutorial/token.png)
 
@@ -77,7 +77,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-zapier-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Zapier in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
    ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -85,7 +85,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    ![Zapier-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -97,7 +97,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
    ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/zapier-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
    ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Soll der Azure AD-Bereitstellungsdienst für Zapier aktiviert werden, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+13. Soll der Azure AD-Bereitstellungsdienst für Zapier aktiviert werden, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -135,7 +135,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

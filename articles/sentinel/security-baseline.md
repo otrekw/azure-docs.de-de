@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f4c6bf8b203f9721436ab3dde1f80837df92234d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b1fbedf45514455f0e19461e5ee0558bb2914c58
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518261"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427716"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure-Sicherheitsbaseline für Azure Sentinel
 
@@ -341,7 +341,7 @@ Außerdem ist jede Sentinel-Arbeitsmappe eine Azure-Ressource, und Sie können B
 
 **Leitfaden** : Log Analytics-Arbeitsbereiche in Azure Sentinel und Azure Monitor verwenden derzeit von Microsoft verwaltete Schlüssel zum Verschlüsseln ruhender Daten. Die Möglichkeit, Ihren eigenen Schlüssel bereitzustellen, wird für Sentinel jetzt noch nicht, aber in naher Zukunft vollständig unterstützt.
 
-- [Übersicht zu kundenseitig verwalteten Schlüsseln in Azure Monitor](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-cmk-overview)
+- [Übersicht zu kundenseitig verwalteten Schlüsseln in Azure Monitor](../azure-monitor/platform/customer-managed-keys.md#customer-managed-key-overview)
 
 - [Grundlegendes zu kundenseitig verwalteten Schlüsseln in Azure Sentinel (Vorschau)](customer-managed-keys.md)
 

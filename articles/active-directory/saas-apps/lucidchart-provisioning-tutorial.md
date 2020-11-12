@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: d92db526e0fa3f3f8898ac2ea264d0b8f37be071
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e0b98f15e03552f27cdd1c9683bdd7e74a1c02df
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92458318"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358688"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Lucidchart für die automatische Benutzerbereitstellung
 
@@ -47,15 +47,15 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-lucidchart-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Lucidchart für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Melden Sie sich bei der [Lucidchart-Verwaltungskonsole](https://www.lucidchart.com) an. Navigieren Sie zu **Team > App-Integration** .
+1. Melden Sie sich bei der [Lucidchart-Verwaltungskonsole](https://www.lucidchart.com) an. Navigieren Sie zu **Team > App-Integration**.
 
       :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Das Menü „Team“ ist hervorgehoben und geöffnet. Unter „Administrator“ ist „App-Integration“ markiert." border="false":::
 
-2. Navigieren Sie zu **SCIM** .
+2. Navigieren Sie zu **SCIM**.
 
-      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Das Menü „Team“ ist hervorgehoben und geöffnet. Unter „Administrator“ ist „App-Integration“ markiert." border="false":::
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Screenshot der Lucidchart-Verwaltungskonsole. Auf einer großen Schaltfläche ist der Text „S C I M“ hervorgehoben, und es ist ein aktiviertes Banner zu sehen." border="false":::
 
-3. Scrollen Sie nach unten, um das **Bearertoken** und die **Basisadresse für Lucidchart** anzuzeigen. Kopieren und speichern Sie das **Bearertoken** . Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Lucidchart-Anwendung in das Feld **Geheimes Token** * eingegeben. 
+3. Scrollen Sie nach unten, um das **Bearertoken** und die **Basisadresse für Lucidchart** anzuzeigen. Kopieren und speichern Sie das **Bearertoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ für Ihre Lucidchart-Anwendung in das Feld **Geheimes Token** * eingegeben. 
 
       ![Lucidchart-Token](./media/lucidchart-provisioning-tutorial/token.png)
 
@@ -78,7 +78,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-lucidchart-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Lucidchart in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -86,7 +86,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Lucidchart-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
       ![Bereitstellung](./media/Lucidchart-provisioning-tutorial/lucidchart1.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Lucidchart zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Lucidchart zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -142,7 +142,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
