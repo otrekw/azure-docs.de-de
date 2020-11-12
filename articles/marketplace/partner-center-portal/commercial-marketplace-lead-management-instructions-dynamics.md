@@ -4,15 +4,15 @@ description: Erfahren Sie, wie Sie Dynamics 365 Customer Engagement für die Ve
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 03/30/2020
-ms.openlocfilehash: 54754f4c7753661b247f3f90942fb3074c34a38b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 5d07dda82361ff59a43aa6753669bf38f4463059
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130611"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491136"
 ---
 # <a name="configure-lead-management-for-dynamics-365-customer-engagement"></a>Konfigurieren der Leadverwaltung für Dynamics 365 Customer Engagement
 

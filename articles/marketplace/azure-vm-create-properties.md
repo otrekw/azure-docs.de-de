@@ -7,12 +7,12 @@ ms.topic: how-to
 author: emuench
 ms.author: mingshen
 ms.date: 10/19/2020
-ms.openlocfilehash: cc5702d973150b80188354719333fb7cf22d58b3
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: 30e5ea4df3de0b8a10c9c1f3b4b27a9e0a19359e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92283215"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491204"
 ---
 # <a name="how-to-configure-virtual-machine-offer-properties"></a>Konfigurieren von VM-Angebotseigenschaften
 
@@ -40,7 +40,7 @@ Informationen zum Standardvertrag und zu optionalen Änderungen finden Sie unter
 
 Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der rechtlichen Komplexität für Softwareanbieter stellt Microsoft eine Vorlage für Standardverträge bereit, die Sie für Ihre Angebote im kommerziellen Marketplace verwenden können. Wenn Sie Ihre Software unter dem Standardvertrag anbieten, müssen Kunden ihn nur einmal lesen und akzeptieren, und Sie müssen keine benutzerdefinierten Geschäftsbedingungen erstellen.
 
-1. Aktivieren Sie das Kontrollkästchen **Verwenden Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace** .
+1. Aktivieren Sie das Kontrollkästchen **Verwenden Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace**.
 
    ![Abbildung des Kontrollkästchens „Verwenden Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace“.](partner-center-portal/media/use-standard-contract.png)
 1. Wählen Sie im Dialogfeld **Bestätigung** die Option **Akzeptieren** aus. Unter Umständen müssen Sie nach oben scrollen, um die Option anzuzeigen.
@@ -51,7 +51,7 @@ Zur Vereinfachung des Beschaffungsprozesses für Kunden und zur Reduzierung der 
 
 ### <a name="add-amendments-to-the-standard-contract-optional"></a>Hinzufügen von Änderungen zum Standardvertrag (optional)
 
-Es stehen zwei Arten von Änderungen zur Verfügung: *universell* und *benutzerdefiniert* .
+Es stehen zwei Arten von Änderungen zur Verfügung: *universell* und *benutzerdefiniert*.
 
 #### <a name="add-universal-amendment-terms"></a>Hinzufügen von universellen Zusatzvereinbarungen
 
@@ -63,7 +63,7 @@ Geben Sie im Feld **Dem Standardvertrag für den kommerziellen Microsoft-Marketp
 1. Geben Sie im Feld **Benutzerdefinierte Zusatzbedingungen** Ihre Zusatzbestimmungen ein.
 1. Geben Sie im Feld **Mandanten-ID** eine Mandanten-ID ein. Diese benutzerdefinierten Vereinbarungen werden im Azure-Portal im Rahmen der Kaufabwicklung für das Angebot nur Kunden mit den für sie angegebenen Mandanten-IDs angezeigt.
    > [!TIP]
-   > Die Mandanten-ID identifiziert Ihren Kunden in Azure. Sie können Ihren Kunden nach dieser ID fragen. Kunden finden sie unter [ **https://portal.azure.com**](https://portal.azure.com) > **Azure Active Directory** > **Eigenschaften** . Der Wert der Verzeichnis-ID ist die Mandanten-ID (z. B. `50c464d3-4930-494c-963c-1e951d15360e`). Sie können die von Ihrer Organisation zugeteilte Mandanten-ID Ihres Kunden auch nachschlagen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Office 365?](https://www.whatismytenantid.com/) die Domänennamen-URL des Kunden verwenden.
+   > Die Mandanten-ID identifiziert Ihren Kunden in Azure. Sie können Ihren Kunden nach dieser ID fragen. Kunden finden sie unter [ **https://portal.azure.com**](https://portal.azure.com) > **Azure Active Directory** > **Eigenschaften**. Der Wert der Verzeichnis-ID ist die Mandanten-ID (z. B. `50c464d3-4930-494c-963c-1e951d15360e`). Sie können die von Ihrer Organisation zugeteilte Mandanten-ID Ihres Kunden auch nachschlagen, indem Sie unter [Wie lautet meine Mandanten-ID für Microsoft Azure und Office 365?](https://www.whatismytenantid.com/) die Domänennamen-URL des Kunden verwenden.
 1. Geben Sie im Feld **Beschreibung** optional eine benutzerfreundliche Beschreibung für die Mandanten-ID ein. Diese Beschreibung hilft Ihnen dabei, den Kunden anzugeben, für den der Zusatz gedacht ist.
 1. Wählen Sie zum Hinzufügen einer weiteren Mandanten-ID den Link **Mandanten-ID eines Kunden hinzufügen** aus, und wiederholen Sie die Schritte 3 und 4. Sie können bis zu 20 Mandanten-IDs hinzufügen.
 1. Um weitere Zusatzstimmungen hinzuzufügen, wiederholen Sie die Schritte 1 bis 5. Sie können bis zu zehn benutzerdefinierte Zusatzvereinbarungen pro Angebot angeben. 
@@ -75,10 +75,6 @@ Sie können anstelle des Standardvertrags Ihre eigenen Geschäftsbedingungen ang
 
 1. Achten Sie unter **Rechtliche Hinweise** darauf, dass das Kontrollkästchen **Verwenden Sie den Standardvertrag für den kommerziellen Microsoft-Marketplace** deaktiviert ist.
 1. Geben Sie im Feld **Geschäftsbedingungen** bis zu 10.000 Zeichen Text ein.
-
-   > [!NOTE]
-   > Wenn Sie eine längere Beschreibung benötigen, geben Sie eine einzelne Webadresse ein, unter der Ihre Geschäftsbedingungen zu finden sind. Sie wird Kunden als aktiver Link angezeigt.
-
 1. Wählen Sie **Entwurf speichern** aus, bevor Sie mit der nächsten Registerkarte ( **Angebotsliste** ) fortfahren.
 
 ## <a name="next-steps"></a>Nächste Schritte

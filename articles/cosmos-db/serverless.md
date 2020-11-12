@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: 75d22a5021c7c8ae3a12f25644f2875e0ccf8cdd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: c811a2ea5c06250068e7c0276e4b79e9108d920d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098755"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490354"
 ---
 # <a name="azure-cosmos-db-serverless-preview"></a>Azure Cosmos DB serverlos (Vorschau)
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -50,9 +50,6 @@ Weitere Anleitungen zum Auswählen des Angebots, das Ihrem Anwendungsfall am bes
 ## <a name="using-serverless-resources"></a>Verwenden von serverlosen Ressourcen
 
 Serverlos ist ein neuer Azure Cosmos-Kontotyp. Dies bedeutet, dass Sie zwischen **bereitgestelltem Durchsatz** und **serverlos** wählen müssen, wenn Sie ein neues Konto erstellen. Sie müssen ein neues serverloses Konto erstellen, um mit serverless zu beginnen. Während der Vorschauversion ist die einzige unterstützte Möglichkeit, ein neues serverloses Konto zu erstellen, die [Verwendung des Azure-Portals](create-cosmosdb-resources-portal.md). Das Migrieren vorhandener Konten zum/aus dem serverlosen Modus wird derzeit nicht unterstützt.
-
-> [!NOTE]
-> Serverlos wird derzeit nur von der API Azure Cosmos DB Core (SQL) unterstützt.
 
 Jeder Container, der in einem serverlosen Konto erstellt wird, ist ein serverloser Container. Serverlose Container stellen dieselben Funktionen wie Container bereit, die im Modusfpr bereitgestellten Durchsatz erstellt wurden, sodass Sie Ihre Daten genau auf die gleiche Weise lesen, schreiben und abfragen. Serverlose Konten und Container haben jedoch auch bestimmte Merkmale:
 

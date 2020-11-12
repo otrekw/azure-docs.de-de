@@ -6,24 +6,24 @@ author: jeevansd
 manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
-ms.topic: article
+ms.topic: tutorial
 ms.workload: identity
 ms.date: 10/10/2019
 ms.author: jeedes
 ms.custom: it-pro
 ms.reviewer: celested
-ms.openlocfilehash: 8eeddecbec31ec1bfa73cf956deb4c50809c50e7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 19889c05447db05cc20c8f46e97bd8d16ff43bdf
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521945"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445658"
 ---
 # <a name="tutorials-for-integrating-saas-applications-with-azure-active-directory"></a>Tutorials zur Integration von SaaS-Anwendungen in Azure Active Directory
 
 Um Sie bei der Integration Ihrer cloudfähigen [SaaS](https://azure.microsoft.com/overview/what-is-saas/)-Anwendungen (Software-as-a-Service) in Azure Active Directory zu unterstützen, haben wir eine Sammlung von Tutorials entwickelt, in denen die Konfiguration erläutert wird.
 
-Eine Liste mit allen in Azure AD integrierten SaaS-Apps finden Sie im [Active Directory-Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/azure-active-directory-apps).
+Eine Liste mit allen in Azure AD integrierten SaaS-Apps finden Sie im [Active Directory-Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/azure-active-directory-apps).
 
 Verwenden Sie das [Anwendungsnetzwerkportal](../azuread-dev/howto-app-gallery-listing.md), um das Hinzufügen einer [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md)-fähigen Anwendung zum Katalog für die automatische Bereitstellung oder das Hinzufügen einer SAML/OIDC-fähigen Anwendung zum Katalog für einmaliges Anmelden (SSO) anzufordern.
 

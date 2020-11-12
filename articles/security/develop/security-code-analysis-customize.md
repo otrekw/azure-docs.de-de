@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 4016e1dd055b45f9cd59a172d0e71ef95fec1c40
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816793"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94517205"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>Konfigurieren und Anpassen der Buildtasks
 
@@ -37,9 +37,9 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und Text.
 
 Im Screenshot ist im Listenfeld **Type** (Typ) die Option **Basic** (Standard) ausgewählt. Wählen Sie **Custom** (Benutzerdefiniert) aus, um Befehlszeilenargumente zur Anpassung der Überprüfung anzugeben.
 
-Windows Defender verwendet den Windows Update-Client, um Signaturen herunterzuladen und zu installieren. Wenn beim Signaturupdate für den Build-Agent ein Fehler auftritt, wird der **HRESULT**-Fehlercode wahrscheinlich durch Windows Update generiert.
+Windows Defender verwendet den Windows Update-Client, um Signaturen herunterzuladen und zu installieren. Wenn beim Signaturupdate für den Build-Agent ein Fehler auftritt, wird der **HRESULT** -Fehlercode wahrscheinlich durch Windows Update generiert.
 
-Weitere Informationen zu Windows Update-Fehlern und dazu, wie Sie sie vermeiden, finden Sie unter [Windows Update-Fehlercodes nach Komponente](https://docs.microsoft.com/windows/deployment/update/windows-update-error-reference) und im TechNet-Artikel zu [Fehlercodes des Windows Update-Agents](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
+Weitere Informationen zu Windows Update-Fehlern und dazu, wie Sie sie vermeiden, finden Sie unter [Windows Update-Fehlercodes nach Komponente](/windows/deployment/update/windows-update-error-reference) und im TechNet-Artikel zu [Fehlercodes des Windows Update-Agents](https://social.technet.microsoft.com/wiki/contents/articles/15260.windows-update-agent-error-codes.aspx).
 
 Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für die Antischadsoftware](yaml-configuration.md#anti-malware-scanner-task).
 
@@ -95,9 +95,9 @@ Details zur Taskkonfiguration finden Sie im folgenden Screenshot und in der List
 ![Konfigurieren des Credential Scanner-Buildtasks](./media/security-tools/3-taskdetails.png)
 
 Folgende Optionen sind verfügbar:
-  - **Anzeigename**: Name des Azure DevOps-Tasks. Der Standardwert ist „Credential Scanner ausführen“.
-  - **Hauptversion des Tools**: Verfügbare Werte sind **CredScan V2**, **CredScan V1**. Wir empfehlen Kunden, die Version **CredScan V2** zu verwenden.
-  - **Output Format** (Ausgabeformat): Zu den verfügbaren Werten gehören **TSV**, **CSV**, **SARIF** und **PREfast**.
+  - **Anzeigename** : Name des Azure DevOps-Tasks. Der Standardwert ist „Credential Scanner ausführen“.
+  - **Hauptversion des Tools** : Verfügbare Werte sind **CredScan V2** , **CredScan V1**. Wir empfehlen Kunden, die Version **CredScan V2** zu verwenden.
+  - **Output Format** (Ausgabeformat): Zu den verfügbaren Werten gehören **TSV** , **CSV** , **SARIF** und **PREfast**.
   - **Tool Version** (Toolversion): Es wird empfohlen, **Latest** (Neueste) auszuwählen.
   - **Scan Folder** (Überprüfungsordner): Der zu überprüfende Repositoryordner.
   - **Searchers File Type** (Suchroutinen-Dateityp): Die Optionen zum Suchen der für die Überprüfung verwendeten Suchroutinendatei.
@@ -108,7 +108,7 @@ Folgende Optionen sind verfügbar:
   - **File Scan Read Buffer Size** (Lesepuffergröße der Dateiüberprüfung): Die Größe des beim Lesen von Inhalt verwendeten Puffers in Bytes. Der Standardwert lautet 524.288.  
   - **Maximum File Scan Read Bytes** (Maximale Anzahl gelesener Bytes der Dateiüberprüfung): Die maximale Anzahl von Bytes, die während der Inhaltsanalyse aus einer Datei gelesen werden. Der Standardwert lautet 104.857.600.
   - **Control Options (Steuerungsoptionen)**  > **Run this task (Diesen Task ausführen)** : Gibt an, wann der Task ausgeführt wird. Wählen Sie **Custom Conditions** (Benutzerdefinierte Bedingungen) aus, um komplexere Bedingungen festzulegen.
-  - **Version**: Die Buildtaskversion in Azure DevOps. Diese Option wird selten verwendet.
+  - **Version** : Die Buildtaskversion in Azure DevOps. Diese Option wird selten verwendet.
 
 Weitere Informationen zur YAML-Konfiguration für diese Aufgabe finden Sie in den [YAML-Optionen für Credential Scanner](yaml-configuration.md#credential-scanner-task).
 
@@ -143,7 +143,7 @@ Folgende Optionen sind verfügbar:
 >
 >   Wenn der neue Task auf dem selben Agent wie der ursprüngliche Task ausgeführt wird, wird die Ausgabe des ursprünglichen Tasks im Quellordner *s* durch die Ausgabe des neuen Tasks überschrieben. Obwohl die Buildausgabe identisch ist, wird empfohlen, dass Sie MSBuild ausführen, die Ausgabe in das Artefaktstagingverzeichnis kopieren und dann Roslyn Analyzers ausführen.
 
-Weitere Ressourcen für den Roslyn Analyzers-Task finden Sie unter [Die auf Roslyn basierenden Analysetools](https://docs.microsoft.com/dotnet/standard/analyzers/api-analyzer) in der Microsoft-Dokumentation.
+Weitere Ressourcen für den Roslyn Analyzers-Task finden Sie unter [Die auf Roslyn basierenden Analysetools](/dotnet/standard/analyzers/api-analyzer) in der Microsoft-Dokumentation.
 
 Sie finden das Analyzer-Paket, das von diesem Buildtask installiert und verwendet wird, auf der NuGet-Seite [Microsoft.CodeAnalysis.FxCopAnalyzers](https://www.nuget.org/packages/Microsoft.CodeAnalysis.FxCopAnalyzers).
 

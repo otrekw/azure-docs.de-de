@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 70e3185257c7c70d74fdc8492cf0a2b4970c03b1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305470"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442054"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -34,7 +34,7 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
 * Für einige Szenarien müssen Sie ein Supportticket öffnen. Es handelt sich um folgende Szenarien:
 
-    * __Arbeitsbereich mit aktiviertem Private Link mit einem kundenseitig verwalteten Schlüssel (CMK)__
+    * __Arbeitsbereich mit aktiviertem Private Link mit einem kundenseitig verwalteten Schlüssel__
     * __Azure Container Registry für den Arbeitsbereich hinter Ihrem virtuellen Netzwerk__
 
     Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
@@ -170,7 +170,7 @@ Die folgende Beispielvorlage zeigt, wie Sie einen Arbeitsbereich mit drei Einste
 > [!IMPORTANT]
 > Nachdem ein Arbeitsbereich erstellt wurde, können Sie die Einstellungen für vertrauliche Daten, Verschlüsselung, Key Vault-ID oder Schlüsselbezeichner nicht mehr ändern. Um diese Werte zu ändern, müssen Sie einen neuen Arbeitsbereich erstellen und dabei neue Werte verwenden.
 
-Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
+Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
 > [!IMPORTANT]
 > Es gibt einige bestimmte Anforderungen, die Ihr Abonnement erfüllen muss, bevor Sie diese Vorlage verwenden können:
@@ -252,7 +252,7 @@ New-AzResourceGroupDeployment `
 ```
 ---
 
-Wenn ein vom Kunden verwalteter Schlüssel verwendet wird, erstellt Azure Machine Learning eine sekundäre Ressourcengruppe, die die Cosmos DB-Instanz enthält. Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
+Wenn ein vom Kunden verwalteter Schlüssel verwendet wird, erstellt Azure Machine Learning eine sekundäre Ressourcengruppe, die die Cosmos DB-Instanz enthält. Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
 Als zusätzliche Konfiguration für Ihre Daten können Sie den **confidential_data** -Parameter auf **true** festlegen. Daraus resultiert Folgendes:
 
@@ -264,7 +264,7 @@ Als zusätzliche Konfiguration für Ihre Daten können Sie den **confidential_da
     > [!IMPORTANT]
     > Nachdem ein Arbeitsbereich erstellt wurde, können Sie die Einstellungen für vertrauliche Daten, Verschlüsselung, Key Vault-ID oder Schlüsselbezeichner nicht mehr ändern. Um diese Werte zu ändern, müssen Sie einen neuen Arbeitsbereich erstellen und dabei neue Werte verwenden.
 
-  Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-enterprise-security.md#encryption-at-rest).
+  Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
 ## <a name="deploy-workspace-behind-a-virtual-network"></a>Bereitstellen des Arbeitsbereichs hinter einem virtuellen Netzwerk
 

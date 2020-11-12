@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9456d663eb1600bf73b1fe253560c2d9f29205ae
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 45dac4425f4d2f563cbc942f23d81583728139f6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373328"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489453"
 ---
 # <a name="enforce-a-naming-policy-on-microsoft-365-groups-in-azure-active-directory"></a>Durchsetzen einer Benennungsrichtlinie für Microsoft 365-Gruppen in Azure Active Directory
 
@@ -249,7 +249,6 @@ Mobile Groups-App | In der mobilen Groups-App erstellte Gruppen sind mit der Ben
 Planner | Planner ist mit der Benennungsrichtlinie konform. Planner zeigt bei der Eingabe des Plannamens eine Vorschau des durch die Benennungsrichtlinie erzwungenen Namens an. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird beim Erstellen des Plans eine Fehlermeldung angezeigt.
 Dynamics 365 for Customer Engagement | Dynamics 365 for Customer Engagement ist mit der Benennungsrichtlinie konform. Dynamics 365 zeigt den durch die Benennungsrichtlinie erzwungenen Namen an, wenn der Benutzer einen Gruppennamen oder den E-Mail-Alias einer Gruppe eingibt. Wenn ein Benutzer ein benutzerdefiniertes blockiertes Wort eingibt, wird eine Fehlermeldung mit dem blockierten Wort angezeigt, damit der Benutzer es entfernen kann.
 School Data Sync (SDS) | Gruppen, die mit SDS erstellt werden, sind mit der Benennungsrichtlinie konform, die Benennungsrichtlinie wird jedoch nicht automatisch angewendet. SDS-Administratoren müssen die Präfixe und Suffixe an Klassennamen, für die Gruppen erstellt und hochgeladen werden müssen, anfügen. Das Erstellen oder Bearbeiten der Gruppe würde andernfalls zu einem Fehler führen.
-Outlook Customer Manager (OCM) | Outlook Customer Manager ist mit der Benennungsrichtlinie konform, die automatisch auf die in Outlook Customer Manager erstellte Gruppe angewendet wird. Wenn ein benutzerdefiniertes blockiertes Wort erkannt wird, wird die Erstellung der Gruppe in OCM blockiert und der Benutzer für die Verwendung der OCM-App gesperrt.
 Classroom-App | Die in der Classroom-App erstellten Gruppen sind mit der Benennungsrichtlinie konform, die jedoch nicht automatisch angewendet wird. Den Benutzern wird während der Eingabe des Classroom-Gruppennamens auch keine Vorschau des durch die Benennungsrichtlinie erzwungenen Namens angezeigt. Die Benutzer müssen den erzwungenen Classroom-Gruppennamen inklusive Präfixen und Suffixen eingeben. Andernfalls tritt beim Erstellen oder Bearbeiten der Classroom-Gruppe ein Fehler auf.
 Power BI | Power BI-Arbeitsbereiche sind mit der Benennungsrichtlinie konform.    
 Yammer | Wenn ein Benutzer, der sich mit seinem Azure Active Directory-Konto bei Yammer angemeldet hat, eine Gruppe erstellt oder einen Gruppennamen bearbeitet, entspricht der Gruppenname der Benennungsrichtlinie. Dies gilt sowohl für mit Microsoft 365 verbundene Gruppen als auch für alle anderen Yammer-Gruppen.<br>Wenn eine mit Microsoft 365 verbundene Gruppe erstellt wurde, bevor die Benennungsrichtlinie vorhanden war, entspricht der Gruppenname nicht automatisch den Benennungsrichtlinien. Wenn ein Benutzer den Gruppennamen bearbeitet, wird er aufgefordert, das Präfix und das Suffix hinzuzufügen.

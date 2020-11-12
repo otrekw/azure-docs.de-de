@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/13/2019
-author: keferna
-ms.author: keferna
-ms.openlocfilehash: bf253c4e3b273bc1500e5abbd4dfc045a7909ffd
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+author: trkeya
+ms.author: trkeya
+ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93125681"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504831"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -93,14 +93,10 @@ Auf der Partner Center-Registerkarte **Test drive listings** (Listungen von Test
 
 Wenn Sie Ihre Testversion derzeit im Partner Center erstellen, wählen Sie **Entwurf speichern** aus, bevor Sie fortfahren.
 
+## <a name="additional-resources"></a>Weitere Ressourcen
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Bewährte Methoden für Testversionen](https://github.com/Azure/AzureTestDrive/wiki/Test-Drive-Best-Practices)
 - [Übersicht](https://assetsprod.microsoft.com/mpn/azure-marketplace-appsource-test-drives.pdf) (PDF-Datei; stellen Sie sicher, dass Ihr Popupblocker deaktiviert ist.)
 - [Aktualisieren eines bestehenden Commercial Marketplace-Angebots](partner-center-portal/update-existing-offer.md)
-
-## <a name="additional-resources"></a>Weitere Ressourcen
-
-## <a name="feedback"></a>Feedback
-
-Sie können Feedback für [dieses Produkt](https://feedback.azure.com/forums/216369-azure-marketplace) einreichen und anzeigen.

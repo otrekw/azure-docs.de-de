@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 02/18/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, cc996988-fb4f-47, devx-track-python
-ms.openlocfilehash: 01021530c491fd25a199f32475c031a0e7f6cd0b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 26f0006ad2b26757e335ba1819c2b82ba519f8cc
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89376637"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491442"
 ---
 # <a name="azure-queue-storage-trigger-for-azure-functions"></a>Azure Queue Storage-Trigger für Azure Functions
 
@@ -19,7 +19,7 @@ Der Queue Storage-Trigger führt eine Funktion aus, wenn Azure Queue Storage Nac
 
 ## <a name="encoding"></a>Codieren
 
-Funktionen erwarten eine *Base64*-codierte Zeichenfolge. Alle Anpassungen am Codierungstyp (um Daten als *Base64*-codierte Zeichenfolge vorzubereiten) müssen im aufrufenden Dienst implementiert werden.
+Funktionen erwarten eine *Base64* -codierte Zeichenfolge. Alle Anpassungen am Codierungstyp (um Daten als *Base64* -codierte Zeichenfolge vorzubereiten) müssen im aufrufenden Dienst implementiert werden.
 
 ## <a name="example"></a>Beispiel
 
@@ -408,7 +408,7 @@ Die Datei [host.json](functions-host-json.md#queues) enthält Einstellungen, mit
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Schreiben von Blobspeichernachrichten (Ausgabebindung)](./functions-bindings-storage-blob-output.md)
+- [Schreiben von Queue Storage-Nachrichten (Ausgabebindung)](./functions-bindings-storage-queue-output.md)
 
 <!-- LINKS -->
 

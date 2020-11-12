@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/04/2020
 ms.author: alkohli
-ms.openlocfilehash: eeefbcdc080620c60f7cd49b8f749375e23ddd02
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d0d02532f39d676772e5ee5d6414b802faffba7c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899702"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505936"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-via-templates"></a>Bereitstellen von VMs auf Ihrem Azure Stack Edge Pro-GPU-Gerät über Vorlagen
 
@@ -29,7 +29,7 @@ Für die Bereitstellung von Azure Stack Edge Pro-VMs auf einer Vielzahl von Ger�
 
 Nachfolgend finden Sie eine allgemeine Übersicht über den Bereitstellungsworkflow bei Verwendung von Vorlagen:
 
-1. **Konfigurieren der Voraussetzungen**: Um die Bereitstellungsvoraussetzungen zu erfüllen, müssen entsprechende Einstellungen für das Gerät, den Client und die VM konfiguriert werden.
+1. **Konfigurieren der Voraussetzungen** : Um die Bereitstellungsvoraussetzungen zu erfüllen, müssen entsprechende Einstellungen für das Gerät, den Client und die VM konfiguriert werden.
 
     1. **Voraussetzungen auf dem Gerät**
 
@@ -101,7 +101,7 @@ PS C:\windows\system32>
 
 ### <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
-Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Dabei handelt es sich um ein **lokales Speicherkonto**, das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
+Erstellen Sie unter Verwendung der im vorherigen Schritt erstellten Ressourcengruppe ein neues Speicherkonto. Dabei handelt es sich um ein **lokales Speicherkonto** , das zum Hochladen des virtuellen Datenträgerimages für die VM verwendet wird.
 
 ```powershell
 New-AzureRmStorageAccount -Name <Storage account name> -ResourceGroupName <Resource group name> -Location DBELocal -SkuName Standard_LRS
@@ -149,7 +149,7 @@ In einer typischen Umgebung würden Sie Ihr DNS so konfigurieren, dass alle Spei
 
 ### <a name="optional-install-certificates"></a>(Optional) Installieren von Zertifikaten
 
-Überspringen Sie diesen Schritt, wenn Sie die Verbindung über den Storage-Explorer (unter Verwendung von *http*) herstellen. Bei Verwendung von *https* müssen die erforderlichen Zertifikate im Storage-Explorer installiert werden. In diesem Fall installieren Sie das Blobendpunktzertifikat. Weitere Informationen finden Sie im Abschnitt zum Erstellen und Hochladen von Zertifikaten unter [Verwalten von Zertifikaten](azure-stack-edge-j-series-manage-certificates.md). 
+Überspringen Sie diesen Schritt, wenn Sie die Verbindung über den Storage-Explorer (unter Verwendung von *http* ) herstellen. Bei Verwendung von *https* müssen die erforderlichen Zertifikate im Storage-Explorer installiert werden. In diesem Fall installieren Sie das Blobendpunktzertifikat. Weitere Informationen finden Sie im Abschnitt zum Erstellen und Hochladen von Zertifikaten unter [Verwalten von Zertifikaten](azure-stack-edge-j-series-manage-certificates.md). 
 
 ### <a name="create-and-upload-a-vhd"></a>Erstellen und Hochladen einer VHD
 
@@ -159,7 +159,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
 ### <a name="use-storage-explorer-for-upload"></a>Verwenden des Storage-Explorer für den Upload
 
-1. Öffnen Sie den Storage-Explorer. Wechseln Sie zu **Bearbeiten**, und stellen Sie sicher, dass für die Anwendung **Azure Stack-APIs als Ziel verwenden** festgelegt ist.
+1. Öffnen Sie den Storage-Explorer. Wechseln Sie zu **Bearbeiten** , und stellen Sie sicher, dass für die Anwendung **Azure Stack-APIs als Ziel verwenden** festgelegt ist.
 
     ![Festlegen der Azure Stack-APIs als Ziel](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/set-target-apis-1.png)
 
@@ -181,7 +181,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
     ![Neustart von Storage-Explorer](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/restart-storage-explorer-1.png)
 
-4. Klicken Sie im linken Bereich mit der rechten Maustaste auf **Speicherkonten**, und wählen Sie **Verbindung mit Azure Storage herstellen** aus. 
+4. Klicken Sie im linken Bereich mit der rechten Maustaste auf **Speicherkonten** , und wählen Sie **Verbindung mit Azure Storage herstellen** aus. 
 
     ![Verbindung mit Azure Storage herstellen 1](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-1.png)
 
@@ -189,11 +189,11 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
     ![Verbindung mit Azure Storage herstellen 2](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-azure-storage-2.png)
 
-6. Geben Sie unter **Verbindung mit Name und Schlüssel herstellen** den **Anzeigenamen**, den **Speicherkontonamen** und den **Kontoschlüssel** von Azure Storage an. Wählen Sie für die Speicherdomäne **Andere** aus, und geben Sie die Verbindungszeichenfolge `<device name>.<DNS domain>` ein. Wenn Sie das Zertifikat nicht im Storage-Explorer installiert haben, aktivieren Sie die Option **HTTP verwenden**. Wählen Sie **Weiter** aus.
+6. Geben Sie unter **Verbindung mit Name und Schlüssel herstellen** den **Anzeigenamen** , den **Speicherkontonamen** und den **Kontoschlüssel** von Azure Storage an. Wählen Sie für die Speicherdomäne **Andere** aus, und geben Sie die Verbindungszeichenfolge `<device name>.<DNS domain>` ein. Wenn Sie das Zertifikat nicht im Storage-Explorer installiert haben, aktivieren Sie die Option **HTTP verwenden**. Wählen Sie **Weiter** aus.
 
     ![Verbindung mit Name und Schlüssel herstellen](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/connect-name-key-1.png)
 
-7. Überprüfen Sie die **Verbindungszusammenfassung**, und wählen Sie **Verbinden** aus.
+7. Überprüfen Sie die **Verbindungszusammenfassung** , und wählen Sie **Verbinden** aus.
 
 8. Das Speicherkonto wird auf der linken Seite angezeigt. Erweitern Sie das Speicherkonto. Wählen Sie **Blobcontainer** aus, klicken Sie mit der rechten Maustaste, und wählen Sie **Blobcontainer erstellen** aus. Geben Sie einen Namen für Ihren Blobcontainer ein.
 
@@ -209,7 +209,7 @@ Kopieren Sie die zu verwendenden Datenträgerimages in Seitenblobs im lokalen Sp
 
     ![Hochladen der VHD-Datei 3](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/upload-vhd-file-3.png)
 
-12. Kopieren und speichern Sie den **URI**, da Sie ihn in späteren Schritten erneut benötigen.
+12. Kopieren und speichern Sie den **URI** , da Sie ihn in späteren Schritten erneut benötigen.
 
     ![Kopieren des URI](media/azure-stack-edge-gpu-deploy-virtual-machine-templates/copy-uri-1.png)
 
@@ -287,7 +287,7 @@ Bearbeiten Sie die Datei `CreateImageAndVnet.parameters.json`, und fügen Sie fo
         "value": "https://myasegpusavm.blob.myasegpu1.wdshcsso.com/windows/WindowsServer2016Datacenter.vhd"
         },
     ```
-    Wenn Sie *http* mit dem Storage-Explorer verwenden, ändern Sie den URI in einen *https*-URI.
+    Wenn Sie *http* mit dem Storage-Explorer verwenden, ändern Sie den URI in einen *https* -URI.
 
 3. Ändern Sie `addressPrefix` und `subnetPrefix`. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zur Seite **Netzwerk**. Ermitteln Sie den Port, den Sie für die Computefunktion aktiviert haben. Rufen Sie die IP-Adresse des Basisnetzwerks ab, und fügen Sie die Subnetzmaske hinzu, um die CIDR-Notation zu erstellen. Wenn Sie das Standardsubnetz 255.255.255.0 verwenden, ersetzen Sie dazu die letzte Ziffer der IP-Adresse durch eine 0 und fügen am Ende /24 hinzu. Wenn Sie also 10.126.68.0 mit der Subnetzmaske 255.255.255.0 verwenden, ändern Sie die Ziffernfolge in 10.126.68.0/24. 
     
@@ -441,7 +441,7 @@ Weisen Sie in `CreateVM.parameters.json` die erforderlichen Parameter für Ihr A
 
 1. Geben Sie einen eindeutigen Namen, einen Namen der Netzwerkschnittstelle und einen ipconfig-Namen an. 
 1. Geben Sie einen Benutzernamen, ein Kennwort und eine unterstützte VM-Größe ein.
-1. Geben Sie für **VnetName**, **subnetName** und **ImageName** dieselben Namen wie in den Parametern für `CreateImageAndVnet.parameters.json` an. Wenn Sie für „VnetName“, „subnetName“ und „ImageName“ z. B. **vnet1**, **subnet1** und **image1** angegeben haben, behalten Sie diese Werte auch für die Parameter in dieser Vorlage bei.
+1. Geben Sie für **VnetName** , **subnetName** und **ImageName** dieselben Namen wie in den Parametern für `CreateImageAndVnet.parameters.json` an. Wenn Sie für „VnetName“, „subnetName“ und „ImageName“ z. B. **vnet1** , **subnet1** und **image1** angegeben haben, behalten Sie diese Werte auch für die Parameter in dieser Vorlage bei.
 1. Nun müssen Sie der VM eine statische IP-Adresse zuweisen, die sich im oben definierten Subnetz befindet. Ersetzen Sie **PrivateIPAddress** in der Parameterdatei durch diese Adresse. Wenn die VM eine IP-Adresse vom lokalen DHCP-Server abrufen soll, lassen Sie den `privateIPAddress`-Wert leer.  
     
     ```json
@@ -550,7 +550,8 @@ Stellen Sie die Vorlage zur VM-Erstellung `CreateVM.json` bereit. Mit dieser Vor
         
         PS C:\07-30-2020>
     ```   
-Sie können den Befehl `New-AzureRmResourceGroupDeployment` auch asynchron mit dem Parameter `–AsJob` ausführen. Nachstehend finden Sie eine Beispielausgabe, die erzeugt wird, wenn das Cmdlet im Hintergrund ausgeführt wird. Anschließend können Sie den Status des Auftrags abfragen, der mithilfe des Cmdlets `Get-Job` erstellt wurde.
+
+    Sie können den Befehl `New-AzureRmResourceGroupDeployment` auch asynchron mit dem Parameter `–AsJob` ausführen. Nachstehend finden Sie eine Beispielausgabe, die erzeugt wird, wenn das Cmdlet im Hintergrund ausgeführt wird. Anschließend können Sie den Status des Auftrags abfragen, der mithilfe des Cmdlets `Get-Job` erstellt wurde.
 
     ```powershell   
     PS C:\WINDOWS\system32> New-AzureRmResourceGroupDeployment `
@@ -568,7 +569,6 @@ Sie können den Befehl `New-AzureRmResourceGroupDeployment` auch asynchron mit d
      
     Id     Name            PSJobTypeName   State         HasMoreData     Location             Command
     --     ----            -------------   -----         -----------     --------             -------
-    2      Long Running... AzureLongRun... Completed     True            localhost            New-AzureRmResourceGro...
     ```
 
 7. Überprüfen Sie, ob die VM erfolgreich bereitgestellt wurde. Führen Sie den folgenden Befehl aus:
@@ -615,7 +615,7 @@ On the client used to access your Azure Stack Edge Pro device, set up a global v
 
 ### On Windows client 
 
-`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
+`$Env:AZCOPY_DEFAULT_SERVICE_API_VERSION = "2017-11-09"`
 
 ### On Linux client
 

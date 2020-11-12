@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/17/2017
 ms.author: jegeib
-ms.openlocfilehash: eb0aff6692a12ca7fb00090c0585e46f37c84ace
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 322f5f6a79bdce23706b2211ccc04ef2451675d0
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913023"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515726"
 ---
 # <a name="getting-started-with-the-threat-modeling-tool"></a>Erste Schritte mit dem Threat Modeling Tool
 
 Das Microsoft Threat Modeling Tool 2018 wurde im September 2018 als kostenlos **[per Mausklick](https://aka.ms/threatmodelingtool)** herunterladbare Version für die Allgemeinheit veröffentlicht. Die Änderung am Übermittlungsmechanismus ermöglicht uns, die neuesten Verbesserungen und Fehlerkorrekturen per Push an Kunden zu übertragen, sobald sie das Tool öffnen, wodurch es einfacher zu warten und zu nutzen ist.
 Dieser Artikel begleitet Sie durch die ersten Schritte mit dem Bedrohungsmodellierungsansatz des Microsoft Security Development Lifecycle (SDL) und veranschaulicht, wie Sie das Tool einsetzen, um überzeugende Bedrohungsmodelle als tragende Säule Ihres Sicherheitsprozesses zu entwickeln.
 
-Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungsansatz auf. Eine Kurzübersicht finden Sie im Artikel zur **[Bedrohungsmodellierung für Webanwendungen](https://msdn.microsoft.com/library/ms978516.aspx)** und in einer archivierten Version des 2006 veröffentlichten MSDN-Artikels **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** (Aufdecken von Sicherheitslücken mit der STRIDE-Methode).
+Dieser Artikel setzt auf vorhandenen Kenntnissen zum SDL-Bedrohungsmodellierungsansatz auf. Eine Kurzübersicht finden Sie im Artikel zur **[Bedrohungsmodellierung für Webanwendungen](/previous-versions/msp-n-p/ff648006(v=pandp.10))** und in einer archivierten Version des 2006 veröffentlichten MSDN-Artikels **[Uncover Security Flaws Using the STRIDE Approach](https://docs.google.com/viewer?a=v&pid=sites&srcid=ZGVmYXVsdGRvbWFpbnxzZWN1cmVwcm9ncmFtbWluZ3xneDo0MTY1MmM0ZDI0ZjQ4ZDMy)** (Aufdecken von Sicherheitslücken mit der STRIDE-Methode).
 
 Kurz zusammengefasst, umfasst diese Methode das Erstellen eines Diagramms, das Bestimmen von Bedrohungen und deren Entschärfung sowie das Überprüfen jeder Entschärfung. Es folgt ein Diagramm dieses Prozesses:
 

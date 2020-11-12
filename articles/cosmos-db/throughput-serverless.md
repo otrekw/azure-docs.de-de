@@ -5,13 +5,13 @@ author: ThomasWeiss
 ms.author: thweiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 08/19/2020
-ms.openlocfilehash: d16343864d9602d644b31d34a2b66e39211b6ece
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: f6fbd963966dd1a5c433a97cb8d37ae22998be4c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93079337"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491187"
 ---
 # <a name="how-to-choose-between-provisioned-throughput-and-serverless"></a>Wählen zwischen bereitgestelltem Durchsatz und serverlos
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -19,9 +19,6 @@ ms.locfileid: "93079337"
 Azure Cosmos DB ist in zwei verschiedenen Kapazitätsmodi verfügbar: [bereitgestellter Durchsatz](set-throughput.md) und [serverlos](serverless.md). In beiden Modi können Sie genau die gleichen Datenbankvorgänge ausführen, aber die Abrechnung für diese Vorgänge unterscheidet sich radikal. Im folgenden Video werden die wichtigsten Unterschiede zwischen diesen Modi und deren Eignung für verschiedene Arten von Workloads erläutert:
 
 > [!VIDEO https://www.youtube.com/embed/CgYQo6uHyt0]
-
-> [!NOTE]
-> Serverlos wird derzeit nur von der API Azure Cosmos DB Core (SQL) unterstützt.
 
 ## <a name="detailed-comparison"></a>Ausführlicher Vergleich
 

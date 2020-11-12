@@ -6,16 +6,16 @@ ms.topic: reference
 ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
-ms.openlocfilehash: 7fa49583c17c198642d4ad6d72a0faa19dcfe659
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323327"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491459"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service-Ausgabebindung für Azure Functions
 
-Verwenden Sie die *SignalR*-Ausgabebindung, um eine oder mehrere Nachrichten mithilfe des Azure SignalR-Diensts zu senden. Sie können eine Nachricht senden an:
+Verwenden Sie die *SignalR* -Ausgabebindung, um eine oder mehrere Nachrichten mithilfe des Azure SignalR-Diensts zu senden. Sie können eine Nachricht senden an:
 
 - Alle verbundenen Clients
 - Verbundene Clients, die für einen bestimmten Benutzer authentifiziert sind
@@ -26,7 +26,7 @@ Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht]
 
 ## <a name="broadcast-to-all-clients"></a>Broadcast an alle Clients
 
-Das folgende Beispiel zeigt eine Funktion, die eine Nachricht mithilfe der Ausgabebindung an alle verbundenen Clients sendet. Die *target*-Eigenschaft entspricht dem Namen der Methode, die auf allen Clients aufgerufen wird. Die *Arguments*-Eigenschaft ist ein Array von 0 (null) oder mehr Objekten, das an die Clientmethode übergeben werden soll.
+Das folgende Beispiel zeigt eine Funktion, die eine Nachricht mithilfe der Ausgabebindung an alle verbundenen Clients sendet. Die *target* -Eigenschaft entspricht dem Namen der Methode, die auf allen Clients aufgerufen wird. Die *Arguments* -Eigenschaft ist ein Array von 0 (null) oder mehr Objekten, das an die Clientmethode übergeben werden soll.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -47,7 +47,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
-Die Bindungsdaten in der Datei *function.json*:
+Die Bindungsdaten in der Datei *function.json* :
 
 Beispiel für „function.json“:
 
@@ -82,7 +82,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die Bindungsdaten in der Datei *function.json*:
+Die Bindungsdaten in der Datei *function.json* :
 
 Beispiel für „function.json“:
 
@@ -109,14 +109,14 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json*:
+Die Bindungsdaten in der Datei *function.json* :
 
 Beispiel für „function.json“:
 
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -126,9 +126,9 @@ Beispiel für „function.json“:
 Dies ist der Python-Code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         'target': 'newMessage',
         'arguments': [ message ]
     }))
@@ -241,14 +241,14 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json*:
+Die Bindungsdaten in der Datei *function.json* :
 
 Beispiel für „function.json“:
 
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -258,9 +258,9 @@ Beispiel für „function.json“:
 Dies ist der Python-Code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this user ID
         'userId': 'userId1',
         'target': 'newMessage',
@@ -376,14 +376,14 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json*:
+Die Bindungsdaten in der Datei *function.json* :
 
 Beispiel für „function.json“:
 
 ```json
 {
   "type": "signalR",
-  "name": "out_message",
+  "name": "outMessage",
   "hubName": "<hub_name>",
   "connectionStringSetting": "<name of setting containing SignalR Service connection string>",
   "direction": "out"
@@ -393,9 +393,9 @@ Beispiel für „function.json“:
 Dies ist der Python-Code:
 
 ```python
-def main(req: func.HttpRequest, out_message: func.Out[str]) -> func.HttpResponse:
+def main(req: func.HttpRequest, outMessage: func.Out[str]) -> func.HttpResponse:
     message = req.get_json()
-    out_message.set(json.dumps({
+    outMessage.set(json.dumps({
         #message will only be sent to this group
         'groupName': 'myGroup',
         'target': 'newMessage',
