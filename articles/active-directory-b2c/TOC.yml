@@ -7,6 +7,8 @@
       href: overview.md
     - name: Technische Übersicht und Funktionsübersicht
       href: technical-overview.md
+    - name: Neues in der Dokumentation
+      href: whats-new-docs.md
 - name: Schnellstarts
   expanded: true
   items:
