@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 25161054a53377b9fbbb12621b95dff9c119fa17
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92165507"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377750"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
@@ -23,7 +23,7 @@ Informationen zur direkten Authentifizierung mit Textnachrichten finden Sie unte
 
 Benutzer können sich als zweite Authentifizierungsmethode auch selbst anhand einer Mobiltelefonnummer oder geschäftlichen Telefonnummer bestätigen, z. B. bei der Azure Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung (SSPR).
 
-Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: *+1 4251234567*).
+Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: *+1 4251234567* ).
 
 > [!NOTE]
 > Zwischen Landes-/Ortsvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
@@ -49,8 +49,6 @@ Bei der Überprüfung mit Textnachricht wird bei der Self-Service-Kennwortzurüc
 Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, seine PIN-Nummer, gefolgt von #, auf der Tastatur einzugeben.
 
 ## <a name="office-phone-verification"></a>Überprüfung mit geschäftlicher Rufnummer
-
-Das Attribut für die geschäftliche Rufnummer wird vom Azure AD-Administrator verwaltet und kann nicht vom Benutzer selbst registriert werden.
 
 Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, seine PIN-Nummer, gefolgt von #, auf der Tastatur einzugeben.
 
@@ -81,7 +79,7 @@ Weitere Informationen zu SSPR-Konzepten finden Sie unter [So funktioniert's: Sel
 
 Weitere Informationen zu MFA-Konzepten finden Sie unter [Funktionsweise von Azure Multi-Factor Authentication][concept-mfa].
 
-Im Artikel [API-Übersicht zu Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta) finden Sie weitere Informationen zur Betaversion der REST-API für Microsoft Graph.
+Im Artikel [API-Übersicht zu Azure AD-Authentifizierungsmethoden](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true) finden Sie weitere Informationen zur Betaversion der REST-API für Microsoft Graph.
 
 <!-- INTERNAL LINKS -->
 [tutorial-sspr]: tutorial-enable-sspr.md

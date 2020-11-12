@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: punagpal
-ms.openlocfilehash: 43b7bcba97617d6931fd5c191e62e833a25bf89d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3cae648e3c2bddbafec555621d97575a007cfeb4
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87513371"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394865"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-data-flow"></a>Datenfluss in Azure IoT-Konnektor für FHIR (Vorschau)
 
@@ -26,7 +26,7 @@ Das Diagramm oben zeigt allgemeine Datenflüsse unter Verwendung des Azure IoT-K
 Im Folgenden werden die verschiedenen Phasen beschrieben, die die Daten nach dem Empfang im Azure IoT-Konnektor für FHIR durchlaufen.
 
 ## <a name="ingest"></a>Erfassen
-Die Erfassung ist die erste Phase, in der die Gerätedaten im Azure IoT-Konnektor für FHIR empfangen werden. Der Erfassungsendpunkt für Gerätedaten wird in einer Instanz von [Azure Event Hub](https://docs.microsoft.com/azure/event-hubs/) gehostet. Die Azure Event Hub-Plattform unterstützt hohe Skalierbarkeit und hohen Durchsatz mit der Möglichkeit, Millionen von Nachrichten pro Sekunde zu empfangen und zu verarbeiten. Außerdem wird ermöglicht, dass Nachrichten im Azure IoT-Konnektor für FHIR asynchron verarbeitet werden, sodass Geräte nicht mehr warten müssen, während die Gerätedaten verarbeitet werden.
+Die Erfassung ist die erste Phase, in der die Gerätedaten im Azure IoT-Konnektor für FHIR empfangen werden. Der Erfassungsendpunkt für Gerätedaten wird in einer Instanz von [Azure Event Hub](../event-hubs/index.yml) gehostet. Die Azure Event Hub-Plattform unterstützt hohe Skalierbarkeit und hohen Durchsatz mit der Möglichkeit, Millionen von Nachrichten pro Sekunde zu empfangen und zu verarbeiten. Außerdem wird ermöglicht, dass Nachrichten im Azure IoT-Konnektor für FHIR asynchron verarbeitet werden, sodass Geräte nicht mehr warten müssen, während die Gerätedaten verarbeitet werden.
 
 > [!NOTE]
 > Derzeit wird JSON als einziges Format für die Gerätedaten unterstützt.

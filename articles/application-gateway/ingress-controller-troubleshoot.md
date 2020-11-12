@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: cbb62509472d6f86ba30e13c95ce2c2bfd343765
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168187"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397364"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Behandeln häufig auftretender Fragen oder Probleme mit dem Eingangscontroller
 
@@ -243,7 +243,7 @@ Die Kubernetes-Community hat neun Protokolliergrade für das [kubectl](https://k
 |  5        | Protokolliert gemarshallte Objekte, zeigt die auf ARM angewendete bereinige JSON-Konfiguration an. |
 
 
-Die Ausführlichkeitsgrade sind über die `verbosityLevel`-Variable in der Datei [helm-config.yaml](#sample-helm-config-file) anpassbar. Erhöhen Sie den Ausführlichkeitsgrad auf `5`, um die auf [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) angewendete JSON-Konfiguration abzurufen:
+Die Ausführlichkeitsgrade sind über die `verbosityLevel`-Variable in der Datei [helm-config.yaml](#sample-helm-config-file) anpassbar. Erhöhen Sie den Ausführlichkeitsgrad auf `5`, um die auf [ARM](../azure-resource-manager/management/overview.md) angewendete JSON-Konfiguration abzurufen:
   - Fügen Sie `verbosityLevel: 5` in einer eigenen Zeile in [helm-config.yaml](#sample-helm-config-file) hinzu, und führen Sie eine erneute Installation aus.
   - Rufen Sie Protokolle mit `kubectl logs <pod-name>` ab.
 
@@ -300,4 +300,3 @@ rbac:
 aksClusterConfiguration:
     apiServerAddress: <aks-api-server-address>
 ```
-

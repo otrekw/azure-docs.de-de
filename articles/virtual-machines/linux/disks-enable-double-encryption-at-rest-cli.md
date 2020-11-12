@@ -8,20 +8,16 @@ ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 1b2773b1d860126748e0dd05134d778073478d9f
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 55a49c5f8d066cd6893c46ef9942462bb7911307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741673"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360614"
 ---
 # <a name="use-the-azure-cli-to-enable-double-encryption-at-rest-for-managed-disks"></a>Verwenden der Azure CLI zum Aktivieren der doppelten Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern
 
-Azure Disk Storage unterstützt die doppelte Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern. Informationen zum Konzept der doppelten Verschlüsselung ruhender Daten sowie weitere Typen der Verschlüsselung von Daten auf verwalteten Datenträgern finden Sie im Abschnitt [Doppelte Verschlüsselung ruhender Daten](disk-encryption.md#double-encryption-at-rest) des Artikels zur Datenträgerverschlüsselung.
-
-## <a name="supported-regions"></a>Unterstützte Regionen
-
-[!INCLUDE [virtual-machines-disks-double-encryption-at-rest-regions](../../../includes/virtual-machines-disks-double-encryption-at-rest-regions.md)]
+Azure Disk Storage unterstützt die doppelte Verschlüsselung von ruhenden Daten auf verwalteten Datenträgern. Informationen zum Konzept der doppelten Verschlüsselung ruhender Daten sowie weitere Typen der Verschlüsselung von Daten auf verwalteten Datenträgern finden Sie im Abschnitt [Doppelte Verschlüsselung ruhender Daten](../disk-encryption.md#double-encryption-at-rest) des Artikels zur Datenträgerverschlüsselung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -50,7 +46,7 @@ Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2)
     az keyvault key create --vault-name $keyVaultName -n $keyName --protection software
     ```
 
-1.    Erstellen Sie eine DiskEncryptionSet-Klasse. Legen Sie „encryptionType“ dabei auf „EncryptionAtRestWithPlatformAndCustomerKeys“ fest. Verwenden Sie die API-Version **2020-05-01** in der ARM-Vorlage (Azure Resource Manager). 
+1.    Erstellen Sie eine DiskEncryptionSet-Klasse. Legen Sie encryptionType dabei auf EncryptionAtRestWithPlatformAndCustomerKeys fest. Verwenden Sie die API-Version **2020-05-01** in der Azure Resource Manager-Vorlage (ARM). 
     
         ```azurecli
         az group deployment create -g $rgName \
@@ -71,7 +67,7 @@ Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-az-cli2)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie diese Ressourcen erstellt und konfiguriert haben, können Sie sie zum Schützen Ihrer verwalteten Datenträger verwenden. Unter den folgenden Links finden Sie Beispielskripts mit jeweils einem entsprechenden Szenario, die Sie zum Schützen Ihrer verwalteten Datenträger verwenden können.
+Nachdem Sie diese Ressourcen erstellt und konfiguriert haben, können Sie diese zum Sichern Ihrer verwalteten Datenträger verwenden. Unter den folgenden Links finden Sie Beispielskripts mit jeweils einem entsprechenden Szenario, die Sie zum Schützen Ihrer verwalteten Datenträger verwenden können.
 
 - [Beispiele für Azure Resource Manager-Vorlagen](https://github.com/Azure-Samples/managed-disks-powershell-getting-started/tree/master/DoubleEncryption)
 - [Aktivieren kundenseitig verwalteter Schlüssel mit serverseitiger Verschlüsselung – Beispiele](disks-enable-customer-managed-keys-cli.md#examples)

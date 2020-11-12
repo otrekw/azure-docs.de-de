@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10f78167b9c3f557fa16061cfac8aad080519415
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91285638"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397126"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Tutorial: Aktivieren des Application Gateway-Eingangscontroller-Add-Ons für einen vorhandenen AKS-Cluster mit einem vorhandenen Application Gateway über die Azure CLI (Vorschau)
 
@@ -37,17 +37,17 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon*, indem Sie den Befehl [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) verwenden, wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet:
+Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon* , indem Sie den Befehl [az feature register](/cli/azure/feature#az-feature-register) verwenden, wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet:
 ```azurecli-interactive
 az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
 ```
 
-Es dauert einige Minuten, bis der Status „Registriert“ angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) überprüfen:
+Es dauert einige Minuten, bis der Status „Registriert“ angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-register) überprüfen:
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
 ```
 
-Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) die Registrierung des Microsoft.ContainerService-Ressourcenanbieters:
+Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register](/cli/azure/provider#az-provider-register) die Registrierung des Microsoft.ContainerService-Ressourcenanbieters:
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
 ```
@@ -74,17 +74,17 @@ az group create --name myResourceGroup --location canadacentral
 
 Sie stellen nun einen neuen AKS-Cluster bereit, um einen vorhandenen AKS-Cluster zu simulieren, für den Sie das AGIC-Add-On aktivieren möchten.  
 
-Im folgenden Beispiel stellen Sie einen AKS-Cluster mit dem Namen *myCluster* über [Azure CNI](https://docs.microsoft.com/azure/aks/concepts-network#azure-cni-advanced-networking) und [Verwaltete Identitäten](https://docs.microsoft.com/azure/aks/use-managed-identity) in der von Ihnen erstellten Ressourcengruppe *myResourceGroup* bereit.    
+Im folgenden Beispiel stellen Sie einen AKS-Cluster mit dem Namen *myCluster* über [Azure CNI](../aks/concepts-network.md#azure-cni-advanced-networking) und [Verwaltete Identitäten](../aks/use-managed-identity.md) in der von Ihnen erstellten Ressourcengruppe *myResourceGroup* bereit.    
 
 ```azurecli-interactive
 az aks create -n myCluster -g myResourceGroup --network-plugin azure --enable-managed-identity 
 ```
 
-Um zusätzliche Parameter für den Befehl `az aks create` zu konfigurieren, lesen Sie die Referenzen [hier](https://docs.microsoft.com/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
+Um zusätzliche Parameter für den Befehl `az aks create` zu konfigurieren, lesen Sie die Referenzen [hier](/cli/azure/aks?view=azure-cli-latest#az-aks-create). 
 
 ## <a name="deploy-a-new-application-gateway"></a>Bereitstellen eines neuen Application Gateway 
 
-Sie stellen nun ein neues Application Gateway bereit, um ein vorhandenes Application Gateway zu simulieren, das Sie für den Lastenausgleich des Datenverkehrs zum AKS-Cluster *myCluster* verwenden möchten. Das Application Gateway erhält den Namen *myApplicationGateway*, Sie müssen jedoch zunächst eine Ressource mit öffentlicher IP-Adresse und dem Namen *myPublicIp* und ein neues virtuelles Netzwerk mit dem Namen *myVnet* und dem Adressraum 11.0.0.0/8 erstellen sowie ein Subnetz mit dem Adressraum 11.1.0.0/16 und dem Namen *mySubnet*. Stellen Sie dann das Application Gateway in *mySubnet* mithilfe von *myPublicIp* bereit. 
+Sie stellen nun ein neues Application Gateway bereit, um ein vorhandenes Application Gateway zu simulieren, das Sie für den Lastenausgleich des Datenverkehrs zum AKS-Cluster *myCluster* verwenden möchten. Das Application Gateway erhält den Namen *myApplicationGateway* , Sie müssen jedoch zunächst eine Ressource mit öffentlicher IP-Adresse und dem Namen *myPublicIp* und ein neues virtuelles Netzwerk mit dem Namen *myVnet* und dem Adressraum 11.0.0.0/8 erstellen sowie ein Subnetz mit dem Adressraum 11.1.0.0/16 und dem Namen *mySubnet*. Stellen Sie dann das Application Gateway in *mySubnet* mithilfe von *myPublicIp* bereit. 
 
 Wenn Sie ein AKS-Cluster und ein Application Gateway in separaten virtuellen Netzwerken verwenden, dürfen sich die Adressräume der beiden virtuellen Netzwerke nicht überlappen. Der Standardadressraum, in dem ein AKS-Cluster bereitgestellt wird, ist 10.0.0.0/8. Daher legen Sie das Adresspräfix für das virtuelle Netzwerk mit dem Application Gateway auf 11.0.0.0/8 fest. 
 

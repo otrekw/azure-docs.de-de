@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: conceptual
 ms.date: 03/24/2020
 ms.author: caya
-ms.openlocfilehash: b96720ead2c7b7bc942efca32a8510f57c2dbcad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 48730d03e9a578fb26b691577fa033e5f7bb4d19
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85250247"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397483"
 ---
 # <a name="application-gateway-high-traffic-support"></a>Unterstützung von hohem Datenverkehr für Application Gateway
 
@@ -24,7 +24,7 @@ Sie können Application Gateway mit der Web Application Firewall (WAF) für eine
 Mithilfe der folgenden Vorschläge können Sie Application Gateway mit WAF einrichten, um zusätzlichen Datenverkehr zu verarbeiten.
 
 ## <a name="use-the-v2-sku-over-v1-for-its-autoscaling-capabilities-and-performance-benefits"></a>Verwenden Sie die v2-SKU anstelle von v1 wegen ihrer automatischen Skalierungsfunktionen und Leistungsvorteile.
-Die v2-SKU bietet automatische Skalierung, um sicherzustellen, dass Ihr Application Gateway bei steigendem Datenverkehr zentral hochskaliert werden kann. Außerdem bietet sie weitere bedeutende Leistungsvorteile, z. B. eine 5-fach bessere TLS-Abladeleistung, schnellere Bereitstellungs- und Aktualisierungszeiten, Zonenredundanz und mehr im Vergleich zu v1. Weitere Informationen finden Sie in der [v2-Dokumentation](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant). 
+Die v2-SKU bietet automatische Skalierung, um sicherzustellen, dass Ihr Application Gateway bei steigendem Datenverkehr zentral hochskaliert werden kann. Außerdem bietet sie weitere bedeutende Leistungsvorteile, z. B. eine 5-fach bessere TLS-Abladeleistung, schnellere Bereitstellungs- und Aktualisierungszeiten, Zonenredundanz und mehr im Vergleich zu v1. Weitere Informationen finden Sie in der [v2-Dokumentation](./application-gateway-autoscaling-zone-redundant.md). 
 
 ## <a name="set-maximum-instance-count-to-the-maximum-possible-125"></a>Festlegen der maximalen Anzahl von Instanzen auf den maximal möglichen Wert (125)
  
@@ -35,7 +35,7 @@ Angenommen, Sie haben eine Application Gateway v2-SKU, dann ermöglicht das Fes
 Angenommen, Sie verfügen über eine Application Gateway v2-SKU, dann benötigt die automatische Skalierung sechs bis sieben Minuten für das horizontale Hochskalieren. Bei einer höheren Mindestanzahl von Instanzen kann das Application Gateway Ihren Datenverkehr besser verarbeiten, wenn die Auslastung zunimmt, da eine Spitze im Datenverkehr keinen automatischen Skalierungsvorgang erfordert.  
 
 ## <a name="alert-if-a-certain-metric-surpasses-75-of-average-cu-utilization"></a>Warnung, wenn eine bestimmte Metrik 75 % der durchschnittlichen CU-Auslastung überschreitet 
-Ausführliche Erläuterungen zu unseren Metriken und anderen exemplarischen Vorgehensweisen finden Sie in der [Dokumentation der Application Gateway-Metriken](https://docs.microsoft.com/azure/application-gateway/application-gateway-metrics#metrics-visualization). 
+Ausführliche Erläuterungen zu unseren Metriken und anderen exemplarischen Vorgehensweisen finden Sie in der [Dokumentation der Application Gateway-Metriken](./application-gateway-metrics.md#metrics-visualization). 
 
 ### <a name="example-setting-up-an-alert-on-75-of-average-cu-usage"></a>Beispiel: Einrichten einer Warnung bei 75 % der durchschnittlichen CU-Nutzung
 
@@ -51,13 +51,13 @@ Dieses Beispiel zeigt, wie Sie im Azure-Portal eine Warnung einrichten können, 
 > Sie können festlegen, dass die Warnung bei einem niedrigeren oder höheren CU-Auslastungsprozentsatz auftritt, je nachdem, wie empfindlich Sie auf potenzielle Datenverkehrsspitzen reagieren möchten.
 
 ## <a name="set-up-waf-with-geofiltering-and-bot-protection-to-stop-attacks"></a>Einrichten von WAF mit Geofilterung und Bot-Schutz, um Angriffe zu verhindern
-Wenn Sie vor Ihrer Anwendung noch eine zusätzliche Sicherheitsschicht benötigen, verwenden Sie die Application Gateway WAF_v2-SKU für WAF-Funktionen. Sie können die v2-SKU so konfigurieren, dass nur der Zugriff auf Ihre Anwendungen aus einem oder mehreren bestimmten Ländern bzw. aus einer oder mehreren Regionen zugelassen wird. Sie richten eine benutzerdefinierte WAF-Regel ein, um Datenverkehr basierend auf dem Geostandort explizit zuzulassen oder zu blockieren. Weitere Informationen finden Sie unter [Geofilterung benutzerdefinierter Regeln](https://docs.microsoft.com/azure/web-application-firewall/ag/geomatch-custom-rules) und [Konfigurieren von benutzerdefinierten Regeln in Application Gateway WAF_v2-SKU mit PowerShell](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Wenn Sie vor Ihrer Anwendung noch eine zusätzliche Sicherheitsschicht benötigen, verwenden Sie die Application Gateway WAF_v2-SKU für WAF-Funktionen. Sie können die v2-SKU so konfigurieren, dass nur der Zugriff auf Ihre Anwendungen aus einem oder mehreren bestimmten Ländern bzw. aus einer oder mehreren Regionen zugelassen wird. Sie richten eine benutzerdefinierte WAF-Regel ein, um Datenverkehr basierend auf dem Geostandort explizit zuzulassen oder zu blockieren. Weitere Informationen finden Sie unter [Geofilterung benutzerdefinierter Regeln](../web-application-firewall/ag/geomatch-custom-rules.md) und [Konfigurieren von benutzerdefinierten Regeln in Application Gateway WAF_v2-SKU mit PowerShell](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
-Aktivieren Sie den Bot-Schutz, um bekannte bösartige Bots zu blockieren. Dadurch sollte die Menge des Datenverkehrs, der zu Ihrer Anwendung gelangt, reduziert werden. Weitere Informationen finden Sie unter [Bot-Schutz mit Einrichtungsanweisungen](https://docs.microsoft.com/azure/web-application-firewall/ag/configure-waf-custom-rules).
+Aktivieren Sie den Bot-Schutz, um bekannte bösartige Bots zu blockieren. Dadurch sollte die Menge des Datenverkehrs, der zu Ihrer Anwendung gelangt, reduziert werden. Weitere Informationen finden Sie unter [Bot-Schutz mit Einrichtungsanweisungen](../web-application-firewall/ag/configure-waf-custom-rules.md).
 
 ## <a name="turn-on-diagnostics-on-application-gateway-and-waf"></a>Aktivieren der Diagnose für Application Gateway und WAF
 
-Diagnoseprotokolle ermöglichen es Ihnen, Firewallprotokolle, Leistungsprotokolle und Zugriffsprotokolle anzuzeigen. Sie können diese Protokolle in Azure verwenden, um Application Gateways zu verwalten und Probleme zu behandeln. Weitere Informationen finden Sie in unserer [Diagnosedokumentation](https://docs.microsoft.com/azure/application-gateway/application-gateway-diagnostics#diagnostic-logging). 
+Diagnoseprotokolle ermöglichen es Ihnen, Firewallprotokolle, Leistungsprotokolle und Zugriffsprotokolle anzuzeigen. Sie können diese Protokolle in Azure verwenden, um Application Gateways zu verwalten und Probleme zu behandeln. Weitere Informationen finden Sie in unserer [Diagnosedokumentation](./application-gateway-diagnostics.md#diagnostic-logging). 
 
 ## <a name="set-up-an-tls-policy-for-extra-security"></a>Einrichten einer TLS-Richtlinie für zusätzliche Sicherheit
-Stellen Sie sicher, dass Sie die neueste Version der TLS-Richtlinie verwenden ([AppGwSslPolicy20170401S](https://docs.microsoft.com/azure/application-gateway/application-gateway-ssl-policy-overview#appgwsslpolicy20170401s)). Diese erzwingt TLS 1.2 und stärkere Verschlüsselungen. Weitere Informationen finden Sie unter [Konfigurieren von TLS-Richtlinienversionen und Verschlüsselungssammlungen über PowerShell](https://docs.microsoft.com/azure/application-gateway/application-gateway-configure-ssl-policy-powershell).
+Stellen Sie sicher, dass Sie die neueste Version der TLS-Richtlinie verwenden ([AppGwSslPolicy20170401S](./application-gateway-ssl-policy-overview.md#appgwsslpolicy20170401s)). Diese erzwingt TLS 1.2 und stärkere Verschlüsselungen. Weitere Informationen finden Sie unter [Konfigurieren von TLS-Richtlinienversionen und Verschlüsselungssammlungen über PowerShell](./application-gateway-configure-ssl-policy-powershell.md).

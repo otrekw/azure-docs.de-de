@@ -5,20 +5,20 @@ services: active-directory
 author: markwahl-msft
 manager: daveba
 ms.author: curtand
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.topic: conceptual
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7ffcbd77997e230b9b21ed29b47e37236de025f6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373916"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378753"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -116,7 +116,7 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 1. Legen Sie den **Schweregrad** des Ereignisses fest. Sie sollten ihn auf **Kritisch (Schweregrad 0)** festlegen.
 1. Behalten Sie unter **Regel beim Erstellen aktivieren** die Einstellung **ja** bei.
 1. Wenn Sie Warnungen für eine Weile deaktivieren möchten, aktivieren Sie das Kontrollkästchen **Warnungen unterdrücken** , geben Sie die Wartezeit vor der Warnung erneut ein, und wählen Sie dann **Speichern** aus.
-1. Klicken Sie auf **Warnungsregel erstellen** .
+1. Klicken Sie auf **Warnungsregel erstellen**.
 
 ### <a name="create-an-action-group"></a>Erstellen einer Aktionsgruppe
 
@@ -131,7 +131,7 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 1. Wählen Sie den **Aktionstyp** **E-Mail/SMS/Push/Sprachanruf** aus.
 1. Wählen Sie **Details bearbeiten** aus, um die zu konfigurierenden Benachrichtigungsmethoden auszuwählen, geben Sie die erforderlichen Kontaktinformationen ein, und wählen Sie dann **OK** aus, um die Details zu speichern.
 1. Fügen Sie ggf. zusätzliche Aktionen hinzu, die Sie auslösen möchten.
-1. Klicken Sie auf **OK** .
+1. Klicken Sie auf **OK**.
 
 ## <a name="validate-accounts-regularly"></a>Regelmäßiges Überprüfen der Konten
 

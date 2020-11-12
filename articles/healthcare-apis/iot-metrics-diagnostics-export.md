@@ -8,16 +8,16 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: jasteppe
-ms.openlocfilehash: 2c10dc05775739a55267dd3766e533b73e12b3a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5a57b13cdb8c7c1144815543e03b970de32b4369
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322353"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394253"
 ---
 # <a name="export-azure-iot-connector-for-fhir-preview-metrics-through-diagnostic-settings"></a>Exportieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) über die Diagnoseeinstellungen
 
-In diesem Artikel erfahren Sie, wie Sie Metrikprotokolle von Azure IoT-Konnektor für FHIR* exportieren. Die Metrikprotokollierung wird über die Funktion [**Diagnoseeinstellungen**](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings) im Azure-Portal ermöglicht. 
+In diesem Artikel erfahren Sie, wie Sie Metrikprotokolle von Azure IoT-Konnektor für FHIR* exportieren. Die Metrikprotokollierung wird über die Funktion [**Diagnoseeinstellungen**](../azure-monitor/platform/diagnostic-settings.md) im Azure-Portal ermöglicht. 
 
 > [!TIP]
 > Befolgen Sie die Anweisungen in [Aktivieren der Diagnoseprotokollierung in Azure-API for FHIR und Azure IoT-Connector für FHIR](enable-diagnostic-logging.md#enable-diagnostic-logging-in-azure-api-for-fhir), um die Überwachungsprotokollierung einzurichten.
@@ -48,7 +48,7 @@ In diesem Artikel erfahren Sie, wie Sie Metrikprotokolle von Azure IoT-Konnektor
 > [!Note] 
 > Es kann bis zu 15 Minuten dauern, bis die ersten Metrikprotokolle im Repository Ihrer Wahl angezeigt werden.  
  
-Weitere Informationen zum Arbeiten mit Diagnoseprotokollen finden Sie in der [Dokumentation zum Azure-Ressourcenprotokoll](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-overview).
+Weitere Informationen zum Arbeiten mit Diagnoseprotokollen finden Sie in der [Dokumentation zum Azure-Ressourcenprotokoll](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="conclusion"></a>Zusammenfassung 
 Zugriff auf Metrikprotokolle zu haben, ist für die Überwachung und Problembehandlung von entscheidender Bedeutung.  Azure IoT-Konnektor für FHIR ermöglicht es Ihnen, diese Aufgaben mithilfe von Metrikprotokollen durchzuführen. 

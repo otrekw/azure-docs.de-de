@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: punagpal
-ms.openlocfilehash: 4eede07b285614c061f4b59845c8f44d82083ec2
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 1702c17555d1d3c39a83fa16ca790d6f8f2b3344
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558532"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394236"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-mapping-templates"></a>Zuordnungsvorlagen von Azure IoT-Konnektor für FHIR (Vorschauversion)
 In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für FHIR* mithilfe von Zuordnungsvorlagen konfigurieren können.
@@ -254,7 +254,7 @@ Mit JsonPathContentTemplate können Werte mithilfe des JSON-Pfads abgeglichen un
 #### <a name="iotjsonpathcontenttemplate"></a>IotJsonPathContentTemplate
 IotJsonPathContentTemplate ähnelt JsonPathContentTemplate, mit dem Unterschied, dass DeviceIdExpression und TimestampExpression nicht erforderlich sind.
 
-Bei dieser Vorlage wird davon ausgegangen, dass die ausgewerteten Nachrichten mithilfe der [Azure IoT Hub-Geräte-SDKs](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-hub-device-sdks) gesendet wurden. Werden diese SDKs eingesetzt, sind die Geräteidentität (vorausgesetzt, der Gerätebezeichner aus Azure IoT Hub/Central ist auf dem FHIR-Zielserver als Bezeichner für eine Geräteressource registriert) und der Zeitstempel der Nachricht bekannt. Wenn Sie Azure IoT Hub-Geräte-SDKs verwenden, jedoch benutzerdefinierte Eigenschaften für die im Nachrichtentext angegebene Geräteidentität oder den Messungszeitstempel konfigurieren, können Sie dennoch JsonPathContentTemplate nutzen.
+Bei dieser Vorlage wird davon ausgegangen, dass die ausgewerteten Nachrichten mithilfe der [Azure IoT Hub-Geräte-SDKs](../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks) gesendet wurden. Werden diese SDKs eingesetzt, sind die Geräteidentität (vorausgesetzt, der Gerätebezeichner aus Azure IoT Hub/Central ist auf dem FHIR-Zielserver als Bezeichner für eine Geräteressource registriert) und der Zeitstempel der Nachricht bekannt. Wenn Sie Azure IoT Hub-Geräte-SDKs verwenden, jedoch benutzerdefinierte Eigenschaften für die im Nachrichtentext angegebene Geräteidentität oder den Messungszeitstempel konfigurieren, können Sie dennoch JsonPathContentTemplate nutzen.
 
 *Hinweis: Bei Verwendung von IotJsonPathContentTemplate sollte TypeMatchExpression für die gesamte Nachricht als JToken aufgelöst werden. Weitere Informationen finden Sie in den folgenden Beispielen.* 
 ##### <a name="examples"></a>Beispiele

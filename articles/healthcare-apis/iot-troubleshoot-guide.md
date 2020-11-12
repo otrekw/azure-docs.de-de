@@ -8,12 +8,12 @@ ms.subservice: iomt
 ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
-ms.openlocfilehash: 4a1a23ca2d0b30a192c30b331c588d13a2a261a7
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: a843ee15d4e7c67bcf69609067d70f592b9b50d6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558515"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93394219"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-Konnektor für FHIR (Vorschauversion): Leitfaden zur Problembehandlung
 
@@ -91,7 +91,7 @@ Die Kopien der Zuordnungsdatei sollten beim Öffnen eines Supporttickets für de
 > JSON ist zurzeit das einzige unterstützte Format für Geräte- und FHIR-Zuordnungsdateien.
 
 > [!TIP]
-> Informieren Sie sich ausführlicher zum Thema [JSON-Datei für Geräte- und FHIR-Konvertierungszuordnung](https://docs.microsoft.com/azure/healthcare-apis/iot-mapping-templates) zu Azure IoT-Konnektor für FHIR.
+> Informieren Sie sich ausführlicher zum Thema [JSON-Datei für Geräte- und FHIR-Konvertierungszuordnung](./iot-mapping-templates.md) zu Azure IoT-Konnektor für FHIR.
 
 1. Wählen Sie auf der unteren linken Seite des Ressourcendashboards für Azure-API für FHIR im Abschnitt **„Add-Ins“** die Option **„IoT-Konnektor (Vorschauversion)“** aus.
 
@@ -99,18 +99,18 @@ Die Kopien der Zuordnungsdatei sollten beim Öffnen eines Supporttickets für de
 
 2. Wählen Sie den **„Konnektor“** aus, aus dem Sie die JSON-Datei für Konvertierungszuordnung kopieren werden.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT-Konnektor2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Dieser Prozess kann auch zum Kopieren und Speichern der Inhalte der JSON-Datei für **„FHIR-Zuordnung konfigurieren“** verwendet werden.
 
 3. Wählen Sie **„Gerätezuordnung konfigurieren“** aus.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT-Konnektor3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Wählen Sie den Inhalt der JSON-Datei aus, und führen Sie einen Kopiervorgang aus (Beispiel: Drücken Sie STRG+C). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Konnektor1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT-Konnektor4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Führen Sie einen Einfügevorgang (Beispiel: STRG+C drücken) in eine neue Datei in einem Text-Editor (Beispiel: Visual Studio Code, Notepad) aus, und speichern Sie die Datei mit der Erweiterung „*.JSON“.
 

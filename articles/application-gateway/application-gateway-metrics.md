@@ -7,16 +7,16 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 06/06/2020
 ms.author: absha
-ms.openlocfilehash: ce349a0539986d88f689c53fc2099877df8030bf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c072e7c1339a2217a3c167be3237029bd71429c2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87424391"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93397738"
 ---
 # <a name="metrics-for-application-gateway"></a>Metriken für Application Gateway
 
-Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die Leistung Ihrer Application Gateway- und Back-End-Instanzen bei [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview). Diese Metriken sind numerische Werte in einer geordneten Menge von Zeitreihendaten, die einen Aspekt Ihrer Application Gateway-Instanz zu einem bestimmten Zeitpunkt beschreiben. Wenn Anforderungen durch Application Gateway geleitet werden, werden die Metriken in 60-Sekunden-Intervallen gemessen und gesendet. Wenn keine Anforderungen durch Application Gateway oder keine Daten für eine Metrik geleitet werden, wird die Metrik nicht gemeldet. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](https://docs.microsoft.com/azure/azure-monitor/platform/data-platform-metrics).
+Application Gateway veröffentlicht Datenpunkte, sogenannte Metriken, für die Leistung Ihrer Application Gateway- und Back-End-Instanzen bei [Azure Monitor](../azure-monitor/overview.md). Diese Metriken sind numerische Werte in einer geordneten Menge von Zeitreihendaten, die einen Aspekt Ihrer Application Gateway-Instanz zu einem bestimmten Zeitpunkt beschreiben. Wenn Anforderungen durch Application Gateway geleitet werden, werden die Metriken in 60-Sekunden-Intervallen gemessen und gesendet. Wenn keine Anforderungen durch Application Gateway oder keine Daten für eine Metrik geleitet werden, wird die Metrik nicht gemeldet. Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor/platform/data-platform-metrics.md).
 
 ## <a name="metrics-supported-by-application-gateway-v2-sku"></a>Von der Application Gateway V2-SKU unterstützte Metriken
 
@@ -28,7 +28,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
 > [!NOTE]
 >
-> Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener*, und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
+> Wenn Application Gateway mehr als einen Listener enthält, filtern Sie immer nach der Dimension *Listener* , und vergleichen Sie dabei verschiedene Latenzmetriken, um aussagekräftige Rückschlüsse zu erhalten.
 
 - **Verbindungszeit für das Back-End**
 
@@ -40,7 +40,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
   Zeitintervall zwischen dem Herstellen einer Verbindung mit dem Back-End-Server und dem Empfang des letzten Bytes des Antwortheaders. 
 
-  Dies entspricht ungefähr der Summe aus der *Back-End-Verbindungszeit*, der von der Anforderung zum Erreichen des Back-Ends von Application Gateway benötigten Zeit, der Zeit, die die Back-End-Anwendung für die Antwort benötigt (Zeit für die Generierung der Inhalte durch den Server, ggf. Abrufen von Datenbankabfragen), und der Zeit, bis das erste Byte der Antwort von Application Gateway vom Back-End erreicht.
+  Dies entspricht ungefähr der Summe aus der *Back-End-Verbindungszeit* , der von der Anforderung zum Erreichen des Back-Ends von Application Gateway benötigten Zeit, der Zeit, die die Back-End-Anwendung für die Antwort benötigt (Zeit für die Generierung der Inhalte durch den Server, ggf. Abrufen von Datenbankabfragen), und der Zeit, bis das erste Byte der Antwort von Application Gateway vom Back-End erreicht.
 
 - **Antwortzeit für letztes Byte des Back-Ends**
 
@@ -52,7 +52,7 @@ Application Gateway bietet mehrere integrierte Zeitsteuerungsmetriken, die sich 
 
   Durchschnittliche Zeit, bis eine Anforderung empfangen, verarbeitet und die zugehörige Antwort gesendet wurde. 
 
-  Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der Antwort an den Client gesendet wurde. Dies schließt die Verarbeitungszeit durch Application Gateway, die *Antwortzeit bis zum letzten Byte vom Back-End*, die Zeit, die Application Gateway zum Senden der Antwort benötigt, sowie die *Client-RTT* ein.
+  Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem das letzte Byte der Antwort an den Client gesendet wurde. Dies schließt die Verarbeitungszeit durch Application Gateway, die *Antwortzeit bis zum letzten Byte vom Back-End* , die Zeit, die Application Gateway zum Senden der Antwort benötigt, sowie die *Client-RTT* ein.
 
 - **Client-RTT**
 
@@ -214,7 +214,7 @@ Im folgenden Beispiel wird schrittweise die Erstellung einer Warnungsregel besch
 
 2. Füllen Sie auf der Seite **Regel hinzufügen** die Abschnitte für den Namen, die Bedingung und die Benachrichtigung aus, und wählen Sie **OK** aus.
 
-   * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als**, **Größer oder gleich**, **Kleiner als** oder **Kleiner oder gleich**.
+   * Wählen Sie unter **Bedingung** einen der vier Werte aus: **Größer als** , **Größer oder gleich** , **Kleiner als** oder **Kleiner oder gleich**.
 
    * Wählen Sie unter **Zeitraum** einen Zeitraum zwischen fünf Minuten und sechs Stunden aus.
 
@@ -230,7 +230,7 @@ Nach dem Erstellen einer Metrikwarnung wird eine Liste mit Warnungen angezeigt. 
 
 ![Liste mit Warnungen und Regeln][9]
 
-Weitere Informationen zu Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Weitere Informationen zu Warnungsbenachrichtigungen finden Sie unter [Empfangen von Warnungsbenachrichtigungen](../azure-monitor/platform/alerts-overview.md).
 
 Weitere Informationen zu Webhooks und deren Verwendung mit Warnungen finden Sie unter [Konfigurieren eines Webhooks für eine Azure-Metrikwarnung](../azure-monitor/platform/alerts-webhooks.md).
 

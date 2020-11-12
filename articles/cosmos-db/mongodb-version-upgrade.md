@@ -1,18 +1,18 @@
 ---
 title: Aktualisieren der Mongo-Version Ihrer Azure Cosmos DB-API für das MongoDB-Konto
 description: Informationen, wie Sie die MongoDB Wire Protocol-Version für Ihre vorhandene Azure Cosmos DB-API für MongoDB-Konten nahtlos aktualisieren können
-author: jasonwhowell
+author: christopheranderson
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: guide
 ms.date: 09/22/2020
-ms.author: jasonh
-ms.openlocfilehash: eb12fc909b5165cbc759bbb7c531864cde16bb88
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.author: chrande
+ms.openlocfilehash: 9ce444e41d19ece984071d0f62e705a09d5f23c9
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096307"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356449"
 ---
 # <a name="upgrade-the-mongodb-wire-protocol-version-of-your-azure-cosmos-dbs-api-for-mongodb-account"></a>Aktualisieren der MongoDB Wire Protocol-Version Ihrer Azure Cosmos DB-API für das MongoDB-Konto
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]

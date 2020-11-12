@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 10/12/2020
 ms.author: matjazl
-ms.openlocfilehash: 121ddcc013fbeef29c6d22cfbd273cfd3b8d3d98
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: bfbdb98e691312db5665261743f8ce698541d4cc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558807"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398214"
 ---
 # <a name="configure-private-link"></a>Konfigurieren von Private Link
 
@@ -30,7 +30,7 @@ Vor dem Erstellen eines privaten Endpunkts müssen zunächst ein paar Azure-Ress
 - Azure API for FHIR: Die FHIR-Ressource, die Sie hinter einem privaten Endpunkt platzieren möchten.
 - Virtuelles Netzwerk: Das VNet, mit dem Ihre Clientdienste und der private Endpunkt verbunden werden.
 
-Weitere Informationen finden Sie in der [Dokumentation zu Private Link](https://docs.microsoft.com/azure/private-link/).
+Weitere Informationen finden Sie in der [Dokumentation zu Private Link](../private-link/index.yml).
 
 ## <a name="disable-public-network-access"></a>Deaktivieren des Zugriffs auf das öffentliche Netzwerk
 
@@ -40,7 +40,7 @@ Wenn Sie einen privaten Endpunkt für Ihre FHRI-Ressource erstellen, wird der ö
 
 ## <a name="create-private-endpoint"></a>Erstellen eines privaten Endpunkts
 
-Zum Erstellen eines privaten Endpunkts kann ein Entwickler mit RBAC-Berechtigungen für die FHIR-Ressource das Azure-Portal, die [Azure PowerShell](https://docs.microsoft.com/azure/private-link/create-private-endpoint-powershell) oder die [Azure CLI](https://docs.microsoft.com/azure/private-link/create-private-endpoint-cli) verwenden. Dieser Artikel führt Sie durch die Schritte zur Verwendung des Azure-Portals. Die Verwendung des Azure-Portals wird empfohlen, da es die Erstellung und Konfiguration der privates DNS-Zone automatisiert. Weitere Informationen finden Sie unter [Schnellstarthandbücher zu Private Link](https://docs.microsoft.com/azure/private-link/create-private-endpoint-portal).
+Zum Erstellen eines privaten Endpunkts kann ein Entwickler mit RBAC-Berechtigungen für die FHIR-Ressource das Azure-Portal, die [Azure PowerShell](../private-link/create-private-endpoint-powershell.md) oder die [Azure CLI](../private-link/create-private-endpoint-cli.md) verwenden. Dieser Artikel führt Sie durch die Schritte zur Verwendung des Azure-Portals. Die Verwendung des Azure-Portals wird empfohlen, da es die Erstellung und Konfiguration der privates DNS-Zone automatisiert. Weitere Informationen finden Sie unter [Schnellstarthandbücher zu Private Link](../private-link/create-private-endpoint-portal.md).
 
 Ein privater Endpunkt kann auf zwei Arten erstellt werden. Mit dem automatischen Genehmigungsflow kann ein Benutzer, der über RBAC-Berechtigungen für die FHIR-Ressource verfügt, einen privaten Endpunkt erstellen, ohne dass eine Genehmigung erforderlich ist. Mit dem manuellen Genehmigungsflow kann ein Benutzer ohne RBAC-Berechtigungen für die FHIR-Ressource die Genehmigung eines privaten Endpunkts bei Besitzern der FHIR-Ressource anfordern.
 

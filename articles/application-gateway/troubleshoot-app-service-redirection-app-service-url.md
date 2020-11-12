@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: f3a3ba3ee908204668ad9d7201ddfddec0a26f28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595943"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93396888"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -80,10 +80,10 @@ Beachten Sie im vorherigen Beispiel, dass der Antwortheader über den Statuscode
 
 ## <a name="solution-rewrite-the-location-header"></a>Lösung: Erneutes Generieren des Adressheaders
 
-Legen Sie den Hostnamen im Adressheader auf den Domänennamen des Anwendungsgateways fest. Erstellen Sie hierzu eine [Regel zum erneuten Generieren](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers) mit einer Bedingung, die prüft, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Außerdem muss eine Aktion zum erneuten Generieren des Adressheaders durchgeführt werden, damit der Hostname des Anwendungsgateways vorhanden ist. Weitere Informationen finden Sie in der Anleitung unter [Ändern einer Umleitungs-URL](https://docs.microsoft.com/azure/application-gateway/rewrite-http-headers#modify-a-redirection-url).
+Legen Sie den Hostnamen im Adressheader auf den Domänennamen des Anwendungsgateways fest. Erstellen Sie hierzu eine [Regel zum erneuten Generieren](./rewrite-http-headers.md) mit einer Bedingung, die prüft, ob der Adressheader in der Antwort „azurewebsites.net“ enthält. Außerdem muss eine Aktion zum erneuten Generieren des Adressheaders durchgeführt werden, damit der Hostname des Anwendungsgateways vorhanden ist. Weitere Informationen finden Sie in der Anleitung unter [Ändern einer Umleitungs-URL](./rewrite-http-headers.md#modify-a-redirection-url).
 
 > [!NOTE]
-> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [Standard_v2- und WAF_v2-SKU](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant) von Application Gateway verfügbar. Bei Verwendung der v1-SKU empfehlen wir Ihnen die [Migration von v1 zu v2](https://docs.microsoft.com/azure/application-gateway/migrate-v1-v2). Es ist ratsam, das erneute Generieren und andere [erweiterte Funktionen](https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant#feature-comparison-between-v1-sku-and-v2-sku) zu nutzen, die für die v2-SKU verfügbar sind.
+> Die Unterstützung für das erneute Generieren von HTTP-Headern ist nur für die [Standard_v2- und WAF_v2-SKU](./application-gateway-autoscaling-zone-redundant.md) von Application Gateway verfügbar. Bei Verwendung der v1-SKU empfehlen wir Ihnen die [Migration von v1 zu v2](./migrate-v1-v2.md). Es ist ratsam, das erneute Generieren und andere [erweiterte Funktionen](./application-gateway-autoscaling-zone-redundant.md#feature-comparison-between-v1-sku-and-v2-sku) zu nutzen, die für die v2-SKU verfügbar sind.
 
 ## <a name="alternate-solution-use-a-custom-domain-name"></a>Alternativlösung: Verwenden eines benutzerdefinierten Domänennamens
 
@@ -93,7 +93,7 @@ Der App-Dienst führt die Umleitung (falls zutreffend) dann nicht mit dem eigene
 
 Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess verwenden:
 
-- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](https://docs.microsoft.com//azure/app-service/app-service-web-tutorial-custom-domain).
+- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](//azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![Liste mit benutzerdefinierten Domänen für App-Dienst](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -112,7 +112,7 @@ Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess v
 
 - Das Anwendungsgateway sollte jetzt den gleichen Hostnamen `www.contoso.com` an den App-Dienst weiterleiten. Die Umleitung erfolgt unter demselben Hostnamen. Sehen Sie sich die folgende Beispielanforderung und die Antwortheader an.
 
-Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname**-Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
+Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname** -Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG

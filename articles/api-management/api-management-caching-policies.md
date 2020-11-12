@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/27/2018
 ms.author: apimpm
-ms.openlocfilehash: cc258a0e790559cb343bfbf2eda0787962e2063e
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: e939e3e6eb686894094c77f62ed815d0ebb5a24f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92071267"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358438"
 ---
 # <a name="api-management-caching-policies"></a>Cacherichtlinien für API Management
 Dieses Thema enthält eine Referenz für die folgenden API Management-Richtlinien. Weitere Informationen zum Hinzufügen und Konfigurieren von Richtlinien finden Sie unter [Richtlinien in API Management](./api-management-policies.md).
@@ -120,7 +120,7 @@ Weitere Informationen finden Sie unter [Richtlinienausdrücke](api-management-po
 ### <a name="usage"></a>Verwendung
 Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-policies.md#sections) und [Bereichen](./api-management-howto-policies.md#scopes) von Richtlinien verwendet werden.
 
-- **Richtlinienabschnitte**: inbound
+- **Richtlinienabschnitte** : inbound
 - **Richtlinienbereiche:** alle Bereiche
 
 ## <a name="store-to-cache"></a><a name="StoreToCache"></a> In Cache ablegen
@@ -283,7 +283,7 @@ Diese Richtlinie kann in den folgenden [Abschnitten](./api-management-howto-poli
 - **Richtlinienabschnitte:** inbound, outbound, backend, on-error
 - **Richtlinienbereiche:** alle Bereiche
 
-### <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> Wert aus Cache entfernen
+## <a name="remove-value-from-cache"></a><a name="RemoveCacheByKey"></a> Wert aus Cache entfernen
 `cache-remove-value` löscht ein zwischengespeichertes Element, das über seinen Schlüssel identifiziert wird. Der Schlüssel kann einen beliebigen Zeichenfolgenwert aufweisen und wird in der Regel über einen Richtlinienausdruck angegeben.
 
 #### <a name="policy-statement"></a>Richtlinienanweisung

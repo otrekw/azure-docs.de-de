@@ -10,12 +10,12 @@ author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: afd78acadf133a9f128eec402eba9d0eed51b8e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91284481"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395035"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
@@ -37,9 +37,9 @@ In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für 
    - Aktivieren von parallelen Ausführungsszenarien
 6. Verbesserungen der Energiesparfunktion bei niedrigem Energiestatus
 7. Streaming der Unterstützung für neue Funktionen 
-   - [Momentaufnahmefenster](https://docs.microsoft.com/stream-analytics-query/snapshot-window-azure-stream-analytics): neuer Fenstertyp, der das Gruppieren nach gleichzeitig eintreffenden Ereignissen ermöglicht. 
-   - Aktivieren Sie [TopOne](https://docs.microsoft.com/stream-analytics-query/topone-azure-stream-analytics) und [CollectTop](https://docs.microsoft.com/stream-analytics-query/collecttop-azure-stream-analytics) als analytische Funktion. Dadurch können (nach der Spalte Ihrer Wahl sortierte) Datensätze zurückgegeben werden, ohne dass sie Teil eines Fensters sein müssen. 
-   - Verbesserungen bei [MATCH_RECOGNIZE](https://docs.microsoft.com/stream-analytics-query/match-recognize-stream-analytics). 
+   - [Momentaufnahmefenster](/stream-analytics-query/snapshot-window-azure-stream-analytics): neuer Fenstertyp, der das Gruppieren nach gleichzeitig eintreffenden Ereignissen ermöglicht. 
+   - Aktivieren Sie [TopOne](/stream-analytics-query/topone-azure-stream-analytics) und [CollectTop](/stream-analytics-query/collecttop-azure-stream-analytics) als analytische Funktion. Dadurch können (nach der Spalte Ihrer Wahl sortierte) Datensätze zurückgegeben werden, ohne dass sie Teil eines Fensters sein müssen. 
+   - Verbesserungen bei [MATCH_RECOGNIZE](/stream-analytics-query/match-recognize-stream-analytics). 
 
 ### <a name="fixes"></a>Fehlerbehebungen
 1. Zusätzliche Fehlermeldungen und Details zur Problembehandlung von TQL-Streamingvorgängen. 
