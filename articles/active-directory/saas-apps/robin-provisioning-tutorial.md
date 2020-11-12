@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 09/12/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1a7c2634f4dc06e3c988a48c7ca15294160759e2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6ef4558cc0cbbacb372fc4a4c2b52859517a2635
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520726"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353481"
 ---
 # <a name="tutorial-configure-robin-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Robin für die automatische Benutzerbereitstellung
 
@@ -50,7 +50,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="set-up-robin-for-provisioning"></a>Einrichten von Robin für die Bereitstellung
 
-1. Melden Sie sich bei Ihrer [Robin-Verwaltungskonsole](https://dashboard.robinpowered.com/login) an. Navigieren Sie zu **Verwalten > Integrationen > SCIM > Verwalten** .
+1. Melden Sie sich bei Ihrer [Robin-Verwaltungskonsole](https://dashboard.robinpowered.com/login) an. Navigieren Sie zu **Verwalten > Integrationen > SCIM > Verwalten**.
 
     ![Robin: Verwaltungskonsole](media/robin-provisioning-tutorial/robin-admin.png)
 
@@ -58,7 +58,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![Robin: Hinzufügen von SCIM](media/robin-provisioning-tutorial/robin-token.png)
 
-3.  Kopieren Sie das **SCIM-Authentifizierungstoken** . Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Robin-Anwendung im Feld „Geheimes Token“ eingegeben.
+3.  Kopieren Sie das **SCIM-Authentifizierungstoken**. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Robin-Anwendung im Feld „Geheimes Token“ eingegeben.
 
 
 
@@ -72,7 +72,7 @@ Bevor Sie Robin für die automatische Benutzerbereitstellung mit Azure AD konfi
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** .
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -93,7 +93,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 ### <a name="to-configure-automatic-user-provisioning-for-robin-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für Robin in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -101,7 +101,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Robin: Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -113,11 +113,11 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Robin synchronisieren** aus.
 
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für Robin zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für Robin zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -145,7 +145,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

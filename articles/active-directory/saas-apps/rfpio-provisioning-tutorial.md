@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 98f92a6b0169c573b97788c7ffaf76255796cfa6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2792d5cc65e08a23a333deebdb24c0fd869446c3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91278922"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352880"
 ---
 # <a name="tutorial-configure-rfpio-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von RFPIO für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-rfpio"></a>Zuweisen von Benutzern zu RFPIO
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf RFPIO benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen RFPIO wie folgt zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -68,7 +68,7 @@ Bevor Sie RFPIO für die automatische Benutzerbereitstellung mit Azure AD konfi
 
     ![Screenshot des Abschnitts „SCIM“ mit hervorgehobener Option „GENERATE SCIM API TOKEN“ (SCIM-API-Token generieren).](media/rfpio-provisioning-tutorial/generate.png)
 
-5.  Speichern Sie das **SCIM-API-Token**, da dieses Token aus Sicherheitsgründen nicht erneut angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer RFPIO-Anwendung in das Feld **Geheimes Token** eingegeben.
+5.  Speichern Sie das **SCIM-API-Token** , da dieses Token aus Sicherheitsgründen nicht erneut angezeigt wird. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer RFPIO-Anwendung in das Feld **Geheimes Token** eingegeben.
 
     ![Screenshot des Abschnitts „SCIM“ mit dem Dialogfeld „Warnung“, das angezeigt wird, nachdem Sie „SUBMIT“ (Senden) ausgewählt haben.](media/rfpio-provisioning-tutorial/auth.png)
 
@@ -82,15 +82,15 @@ Bevor Sie RFPIO für die automatische Benutzerbereitstellung mit Azure AD konfi
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **RFPIO** ein, wählen Sie im Ergebnisbereich **RFPIO** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **RFPIO** ein, wählen Sie im Ergebnisbereich **RFPIO** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![RFPIO in der Ergebnisliste](common/search-new-app.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` ein. Ein Beispielwert ist `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. Geben Sie den Wert des **SCIM-API-Tokens** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit RFPIO herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr RFPIO-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<RFPIO tenant instance>.rfpio.com/rfpserver/scim/v2 ` ein. Ein Beispielwert ist `https://Azure-test1.rfpio.com/rfpserver/scim/v2`. Geben Sie den Wert des **SCIM-API-Tokens** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit RFPIO herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr RFPIO-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -133,7 +133,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Benutzerzuordnungen in RFPIO](media/rfpio-provisioning-tutorial/usermapping.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit RFPIO synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in RFPIO für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit RFPIO synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in RFPIO für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
     ![Benutzerattribute in RFPIO](media/rfpio-provisioning-tutorial/userattributes.png)
 

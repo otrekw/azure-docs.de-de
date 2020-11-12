@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2f694c5a089245a29aaf0e493542fc7f4fce46f7
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 5cdc36c20cbba148bb68bda700f5fdccbc593caf
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675446"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352998"
 ---
 # <a name="tutorial-configure-solarwinds-service-desk-previously-samanage-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SolarWinds Service Desk (vormals Samanage) für die automatische Benutzerbereitstellung
 
@@ -28,12 +28,12 @@ Wenn Sie bereits über eine Integration mit SolarWinds Service Desk verfügen, f
 
 #### <a name="whats-changing"></a>Was hat sich geändert?
 
-* Änderungen auf der Azure AD-Seite: Die Autorisierungsmethode für die Bereitstellung von Benutzern in Samanage war bisher die **Basisautorisierung** . Bald werden Sie sehen, dass diese Autorisierungsmethode durch ein **langlebiges geheimes Token** ersetzt wurde.
+* Änderungen auf der Azure AD-Seite: Die Autorisierungsmethode für die Bereitstellung von Benutzern in Samanage war bisher die **Basisautorisierung**. Bald werden Sie sehen, dass diese Autorisierungsmethode durch ein **langlebiges geheimes Token** ersetzt wurde.
 
 
 #### <a name="what-do-i-need-to-do-to-migrate-my-existing-custom-integration-to-the-new-application"></a>Wie muss ich vorgehen, um meine bestehende benutzerdefinierte Integration in die neue Anwendung zu migrieren?
 
-Wenn Sie bereits über eine SolarWinds Service Desk-Integration mit gültigen Administratoranmeldeinformationen verfügen, **müssen Sie nichts weiter tun** . Wir migrieren Kunden automatisch zur neuen Anwendung. Dieser Vorgang erfolgt vollständig im Hintergrund. Wenn die vorhandenen Anmeldeinformationen ablaufen oder Sie den Zugriff auf die Anwendung noch mal autorisieren müssen, müssen Sie ein langlebiges geheimes Token generieren. Informationen zum Generieren eines neuen Tokens finden Sie in Schritt 2 dieses Artikels.
+Wenn Sie bereits über eine SolarWinds Service Desk-Integration mit gültigen Administratoranmeldeinformationen verfügen, **müssen Sie nichts weiter tun**. Wir migrieren Kunden automatisch zur neuen Anwendung. Dieser Vorgang erfolgt vollständig im Hintergrund. Wenn die vorhandenen Anmeldeinformationen ablaufen oder Sie den Zugriff auf die Anwendung noch mal autorisieren müssen, müssen Sie ein langlebiges geheimes Token generieren. Informationen zum Generieren eines neuen Tokens finden Sie in Schritt 2 dieses Artikels.
 
 
 #### <a name="how-can-i-tell-if-my-application-has-been-migrated"></a>Wie kann ich erkennen, ob meine Anwendung migriert wurde? 
@@ -86,13 +86,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-solarwinds-service-desk-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für SolarWinds Service Desk in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 2. Wählen Sie in der Anwendungsliste **SolarWinds Service Desk** aus.
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der ausgewählten Registerkarte „Bereitstellung“](common/provisioning.png)
 
@@ -104,7 +104,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der ausgewählten Schaltfläche „Verbindung testen“](./media/samanage-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -124,7 +124,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für SolarWinds Service Desk zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für SolarWinds Service Desk zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

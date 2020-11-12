@@ -6,18 +6,18 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
+ms.custom: how-to, devx-track-python, data4ml
 ms.author: iefedore
 author: eedorenko
 manager: davete
 ms.reviewer: larryfr
 ms.date: 06/23/2020
-ms.openlocfilehash: 8f229c52b62c740c9d955f745a6922e59163b907
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fe2f35708f6a148f8db9ef6fd0a598e19e746fbd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348558"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358625"
 ---
 # <a name="devops-for-a-data-ingestion-pipeline"></a>DevOps für eine Datenerfassungspipeline
 
@@ -211,18 +211,18 @@ Bei den Werten in der JSON-Datei handelt es sich um in der Pipelinedefinition ko
 
 Der Continuous Delivery-Prozess verwendet die Artefakte und stellt sie in der ersten Zielumgebung bereit. Er stellt sicher, dass die Lösung funktioniert, indem Tests ausgeführt werden. Bei Erfolg wird der Vorgang in der nächsten Umgebung fortgesetzt. 
 
-Die Azure-CD-Pipeline besteht aus mehreren Stufen, die die Umgebungen darstellen. Jede Stufe enthält [Bereitstellungen](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) und [Aufträge](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops), mit denen die folgenden Schritte ausgeführt werden:
+Die Azure-CD-Pipeline besteht aus mehreren Stufen, die die Umgebungen darstellen. Jede Stufe enthält [Bereitstellungen](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) und [Aufträge](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true), mit denen die folgenden Schritte ausgeführt werden:
 
 _ Bereitstellen eines Python-Notebooks im Azure Databricks-Arbeitsbereich
 * Bereitstellen einer Azure Data Factory-Pipeline 
 * Führen Sie die Pipeline aus.
 * Überprüfen des Ergebnisses der Datenerfassung
 
-Die Pipelinestufen können mit [Genehmigungen](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops) und [Gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops) konfiguriert werden, die zusätzliche Kontrolle über die Weiterentwicklung des Bereitstellungsprozesses in der Kette der Umgebungen bieten.
+Die Pipelinestufen können mit [Genehmigungen](/azure/devops/pipelines/process/approvals?tabs=check-pass&view=azure-devops&preserve-view=true) und [Gates](/azure/devops/pipelines/release/approvals/gates?view=azure-devops&preserve-view=true) konfiguriert werden, die zusätzliche Kontrolle über die Weiterentwicklung des Bereitstellungsprozesses in der Kette der Umgebungen bieten.
 
 ### <a name="deploy-a-python-notebook"></a>Bereitstellen eines Python-Notebooks
 
-Mit dem folgenden Codeausschnitt wird die [Bereitstellungs](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) einer Azure-Pipeline definiert, die ein Python-Notebook in einen Databricks-Cluster kopiert:
+Mit dem folgenden Codeausschnitt wird die [Bereitstellungs](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) einer Azure-Pipeline definiert, die ein Python-Notebook in einen Databricks-Cluster kopiert:
 
 ```yaml
 - stage: 'Deploy_to_QA'
@@ -258,7 +258,7 @@ Mit dem folgenden Codeausschnitt wird die [Bereitstellungs](/azure/devops/pipeli
               displayName: 'Deploy (copy) data processing notebook to the Databricks cluster'       
 ```            
 
-Die von CI erstellten Artefakte werden automatisch in den Bereitstellungs-Agent kopiert und sind im Ordner `$(Pipeline.Workspace)` verfügbar. In diesem Fall verweist die Bereitstellungsaufgabe auf das `di-notebooks`-Artefakt, das das Python-Notebook enthält. Diese [Bereitstellungs](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops) verwendet die [Databricks Azure DevOps-Erweiterung](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks), um die Notebookdateien in den Databricks-Arbeitsbereich zu kopieren.
+Die von CI erstellten Artefakte werden automatisch in den Bereitstellungs-Agent kopiert und sind im Ordner `$(Pipeline.Workspace)` verfügbar. In diesem Fall verweist die Bereitstellungsaufgabe auf das `di-notebooks`-Artefakt, das das Python-Notebook enthält. Diese [Bereitstellungs](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true) verwendet die [Databricks Azure DevOps-Erweiterung](https://marketplace.visualstudio.com/items?itemName=riserrad.azdo-databricks), um die Notebookdateien in den Databricks-Arbeitsbereich zu kopieren.
 
 Die Stufe `Deploy_to_QA` enthält einen Verweis auf die im Azure DevOps-Projekt definierte Variablengruppe `devops-ds-qa-vg`. Die Schritte in dieser Stufe verweisen auf die Variablen aus dieser Variablengruppe (z. B. `$(DATABRICKS_URL)` und `$(DATABRICKS_TOKEN)`). Der Gedanke dabei ist, dass die nächste Stufe (z. B. `Deploy_to_UAT`) mit denselben Variablennamen ausgeführt wird, die in der eigenen Variablengruppe mit dem Bereich „UAT“ definiert sind.
 
@@ -339,7 +339,7 @@ Die vollständige CI/CD-Pipeline in Azure besteht aus den folgenden Stufen: _ CI
     * Bereitstellung für Databricks und Bereitstellung in ADF
     * Integrationstest
 
-Sie enthält eine Reihe von * **Bereitstellungsstufen** _, die der Anzahl der Zielumgebungen entsprechen. Jede _*_Bereitstellungsstufe_*_ enthält zwei [Bereitstellungen](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops), die parallel ausgeführt werden, sowie einen [Auftrag](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops), der nach den Bereitstellungen ausgeführt wird, um die Lösung in der Umgebung zu testen.
+Sie enthält eine Reihe von * **Bereitstellungsstufen** _, die der Anzahl der Zielumgebungen entsprechen. Jede _*_Bereitstellungsstufe_*_ enthält zwei [Bereitstellungen](/azure/devops/pipelines/process/deployment-jobs?view=azure-devops&preserve-view=true), die parallel ausgeführt werden, sowie einen [Auftrag](/azure/devops/pipelines/process/phases?tabs=yaml&view=azure-devops&preserve-view=true), der nach den Bereitstellungen ausgeführt wird, um die Lösung in der Umgebung zu testen.
 
 Eine Beispielimplementierung der Pipeline wird im folgenden _*_yaml_*_ -Codeausschnitt zusammengestellt:
 

@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 12/27/2019
 ms.author: jeedes
-ms.openlocfilehash: 6d242fa5ac7257908b4f70d97531a9a1c9c88832
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: cee9544dbc2deecafa67d73d3bdea804937c1d7a
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92457553"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94356279"
 ---
 # <a name="tutorial-configure-atlassian-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für Atlassian Cloud
 
@@ -47,11 +47,11 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="step-2-configure-atlassian-cloud-to-support-provisioning-with-azure-ad"></a>Schritt 2: Konfigurieren von Atlassian Cloud für die Unterstützung der Bereitstellung mit Azure AD
 
-1. Navigieren Sie zu [Atlassian Organization Manager](https://admin.atlassian.com), wählen Sie die Organisation aus, und klicken Sie auf **Verzeichnis** .
+1. Navigieren Sie zu [Atlassian Organization Manager](https://admin.atlassian.com), wählen Sie die Organisation aus, und klicken Sie auf **Verzeichnis**.
 
     ![Screenshot: Seite „Verwaltung“ mit hervorgehobener Option „Directory“ (Verzeichnis)](./media/atlassian-cloud-provisioning-tutorial/select-directory.png)
 
-2. Klicken Sie auf **Benutzerbereitstellung** und dann auf **Verzeichnis erstellen** . Kopieren Sie die **Verzeichnisbasis-URL** und das **Bearertoken** . Diese Werte werden im Azure AD-Portal auf der Registerkarte „Bereitstellung“ Ihrer Atlassian Cloud-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben.
+2. Klicken Sie auf **Benutzerbereitstellung** und dann auf **Verzeichnis erstellen**. Kopieren Sie die **Verzeichnisbasis-URL** und das **Bearertoken**. Diese Werte werden im Azure AD-Portal auf der Registerkarte „Bereitstellung“ Ihrer Atlassian Cloud-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** eingegeben.
 
     ![Screenshot: Seite „Verwaltung“ mit hervorgehobener Option „User provisioning“ (Benutzerbereitstellung)](./media/atlassian-cloud-provisioning-tutorial/secret-token-1.png) ![Screenshot: Seite „Create a token“ (Token erstellen)](./media/atlassian-cloud-provisioning-tutorial/secret-token-2.png)
     ![Screenshot der Seite „demo-time-directory-token“](./media/atlassian-cloud-provisioning-tutorial/secret-token-3.png)
@@ -84,7 +84,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Wählen Sie in der Anwendungsliste Atlassian Cloud aus.](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -96,11 +96,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-7. Klicken Sie auf **Speichern** .
+7. Klicken Sie auf **Speichern**.
 
 8. Wählen Sie im Abschnitt **Mappings** (Zuordnungen) die Option **Synchronize Azure Active Directory Users to Atlassian Cloud** (Azure Active Directory-Benutzer mit Atlassian Cloud synchronisieren).
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-16. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+16. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

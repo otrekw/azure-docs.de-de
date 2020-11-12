@@ -3,12 +3,12 @@ title: Festlegen von Kennwörtern für VMs in Azure Lab Services | Microsoft-Dok
 description: Erfahren Sie, wie Sie Kennwörter für virtuelle Computer (VMs) in Classroom-Labs mit Azure Lab Services festlegen und zurücksetzen.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 49615b37875b8340f46ed900a1e7144256c7cb7d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e24fee26670a664012ec5f0216b0638d6149453f
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334071"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379688"
 ---
 # <a name="set-up-and-manage-virtual-machine-pool"></a>Einrichten und Verwalten eines VM-Pools 
 In diesem Artikel wird gezeigt, wie Sie Folgendes durchführen:
@@ -53,6 +53,7 @@ Ebenso können Sie mindestens eine VM beenden, indem Sie die Schaltfläche in de
 > Wenn ein Lehrer/Dozent eine Kursteilnehmer-VM aktiviert, hat dies keine Auswirkung auf das Kontingent für den Kursteilnehmer. Das Kontingent für einen Benutzer gibt die Anzahl von Labstunden an, die für den Benutzer außerhalb der geplanten Kurszeit verfügbar sind. Weitere Informationen zu Kontingenten finden Sie unter [Festlegen von Kontingenten für Benutzer](how-to-configure-student-usage.md?#set-quotas-for-users).
 
 ## <a name="reset-vms"></a>Zurücksetzen von virtuellen Computern
+
 Wenn Sie virtuelle Computer zurücksetzen möchten, wählen Sie die entsprechenden Computer in der Liste aus, und klicken Sie dann auf der Symbolleiste auf **Zurücksetzen**. 
 
 ![Zurücksetzen von ausgewählten virtuellen Computern](./media/how-to-set-virtual-machine-passwords/reset-vm-button.png)
@@ -61,10 +62,8 @@ Wählen Sie im Dialogfeld **Reset virtual machine(s)** (Virtuelle(n) Computer zu
 
 ![Dialogfeld zum Zurücksetzen virtueller Computer](./media/how-to-set-virtual-machine-passwords/reset-vms-dialog.png)
 
-
-
 ## <a name="set-password-for-vms"></a>Festlegen eines Kennworts für virtuelle Computer
-Ein Labbesitzer (Lehrkraft) kann die Kennwörter für virtuelle Computer zum Zeitpunkt der Erstellung des Labs (Assistent für Lab-Erstellung) oder nach dem Erstellen des Labs (auf der Seite **Vorlage**) festlegen und zurücksetzen. 
+Ein Labbesitzer (Lehrkraft) kann die Kennwörter für virtuelle Computer zum Zeitpunkt der Erstellung des Labs (Assistent für Lab-Erstellung) oder nach dem Erstellen des Labs (auf der Seite **Vorlage** ) festlegen und zurücksetzen. 
 
 ### <a name="set-password-at-the-time-of-lab-creation"></a>Festlegen des Kennworts zum Zeitpunkt der Lab-Erstellung
 Ein Labbesitzer (Lehrkraft) kann auf der Seite **VM-Anmeldeinformationen** im Assistenten zur Lab-Erstellung ein Kennwort für die virtuellen Computer im Lab festlegen.

@@ -11,12 +11,12 @@ ms.devlang: ''
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
-ms.openlocfilehash: 4fbd410a7d2a7374303e637ca81c34dbea90fcb7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 36c12fa7dd37ce1ffebde16cf6ca856d9fcdca0a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791034"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93391992"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>Welche Neuerungen gibt es in Azure SQL-Datenbank und SQL Managed Instance?
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -104,7 +104,7 @@ Die folgenden Funktionen sind im SQL Managed Instance-Bereitstellungsmodell in d
 |[Der Dienstprinzipal kann nicht auf Azure AD und Azure Key Vault zugreifen](#service-principal-cannot-access-azure-ad-and-akv)|August 2020|Mit Problemumgehung||
 |[Wiederherstellen der manuellen Sicherung ohne CHECKSUM schlägt möglicherweise fehl](#restoring-manual-backup-without-checksum-might-fail)|Mai 2020|Gelöst|Juni 2020|
 |[Der Agent reagiert beim Ändern, Deaktivieren oder Aktivieren vorhandener Aufträge nicht mehr](#agent-becomes-unresponsive-upon-modifying-disabling-or-enabling-existing-jobs)|Mai 2020|Gelöst|Juni 2020|
-|[Berechtigungen für Ressourcengruppe werden nicht auf SQL Managed Instance angewendet](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Februar 2020|Mit Problemumgehung||
+|[Berechtigungen für Ressourcengruppe werden nicht auf SQL Managed Instance angewendet](#permissions-on-resource-group-not-applied-to-sql-managed-instance)|Februar 2020|Gelöst|November 2020|
 |[Einschränkung beim manuellen Failover über das Portal für Failovergruppen](#limitation-of-manual-failover-via-portal-for-failover-groups)|Januar 2020|Mit Problemumgehung||
 |[SQL-Agent-Rollen benötigen explizite EXECUTE-Berechtigungen für Anmeldungen, die keine Systemadministratoranmeldungen sind](#in-memory-oltp-memory-limits-are-not-applied)|Dezember 2019|Mit Problemumgehung||
 |[SQL Agent-Aufträge können durch den Neustart des Agent-Prozesses unterbrochen werden](#sql-agent-jobs-can-be-interrupted-by-agent-process-restart)|Dezember 2019|Gelöst|März 2020|

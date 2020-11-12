@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: e3f067647eb7bdb33b06a9ebdefd8fdd0485e4c6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 6276bd0db9bfb93897f7350b87d208ac2951c859
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294193"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330324"
 ---
 # <a name="tutorial-for-extending-azure-ad-b2c-to-protect-on-premises-applications-using-strata"></a>Tutorial: Erweitern von Azure AD B2C zum Schützen lokaler Anwendungen mithilfe von Strata
 
@@ -65,12 +65,10 @@ Im folgenden Architekturdiagramm ist die Implementierung dargestellt.
 | 4. | Der IdP fordert den Benutzer zur Eingabe von Anmeldeinformationen auf. Abhängig vom IdP muss der Benutzer möglicherweise die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) durchführen.|
 | 5. | Der IdP sendet die Authentifizierungsantwort an Azure AD B2C zurück. Optional kann der Benutzer in diesem Schritt ein lokales Konto im Azure AD B2C-Verzeichnis erstellen.|
 | 6. | Azure AD B2C sendet die Benutzeranforderung an den Endpunkt, der während der Registrierung der Orchestrator-App im Azure AD B2C-Mandanten angegeben wurde.|
-| 7. | Der Orchestrator wertet Zugriffsrichtlinien aus und berechnet die Attributwerte, die in die an die App weitergeleiteten HTTP-Header einbezogen werden sollen. In diesem Schritt ruft der Orchestrator möglicherweise zusätzliche Attributanbieter auf, um die zum ordnungsgemäßen Festlegen der Headerwerte erforderlichen Informationen abzurufen.|
-| 8. | Der Orchestrator legt die Headerwerte fest und sendet die Anforderung an die App.|
-| 9. | Der Benutzer ist jetzt authentifiziert und hat Zugriff auf die App.|
+| 7. | Der Orchestrator wertet Zugriffsrichtlinien aus und berechnet die Attributwerte, die in die an die App weitergeleiteten HTTP-Header einbezogen werden sollen. In diesem Schritt ruft der Orchestrator möglicherweise zusätzliche Attributanbieter auf, um die zum ordnungsgemäßen Festlegen der Headerwerte erforderlichen Informationen abzurufen. Der Orchestrator legt die Headerwerte fest und sendet die Anforderung an die App.|
+| 8. | Der Benutzer ist jetzt authentifiziert und hat Zugriff auf die App.|
 
 ## <a name="get-maverics-identity-orchestrator"></a>Erwerben von Maverics Identity Orchestrator
-
 Wenden Sie sich an [Strata](https://www.strata.io/contact/), um die Software zu erhalten, mit der Sie Ihre lokale Legacy-App in Azure AD B2C integrieren. Führen Sie nach Erhalt der Software die folgenden Schritte aus, um die Orchestrator-spezifischen Voraussetzungen zu ermitteln und die erforderlichen Installations- und Konfigurationsschritte auszuführen.
 
 ## <a name="configure-your-azure-ad-b2c-tenant"></a>Konfigurieren Ihres Azure AD B2C-Mandanten
@@ -87,7 +85,7 @@ Wenden Sie sich an [Strata](https://www.strata.io/contact/), um die Software zu 
 
 2. **Erstellen eines Benutzerflows** : Erstellen Sie einen [Benutzerflow für die Registrierung und Anmeldung](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-user-flows).
 
-3. **Hinzufügen eines Identitätsanbieters** : Wählen Sie aus, ob die Benutzeranmeldung über ein lokales Konto oder einen sozialen oder Unternehmens[identitätsanbieter](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers) erfolgen soll.
+3. **Hinzufügen eines Identitätsanbieters** : Wählen Sie aus, ob die Benutzeranmeldung über ein lokales Konto oder einen sozialen oder Unternehmens [identitätsanbieter](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers) erfolgen soll.
 
 4. **Definieren von Benutzerattributen** : Definieren Sie die Attribute, die während der Registrierung gesammelt werden sollen.
 

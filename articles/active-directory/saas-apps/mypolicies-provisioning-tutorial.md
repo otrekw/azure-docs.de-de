@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 55f7b64c9ade91bb2923161d60568e3ea14ee034
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91850492"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353480"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von myPolicies für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-mypolicies"></a>Zuweisen von Benutzern zu myPolicies
 
-Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf myPolicies benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen myPolicies wie folgt zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -66,15 +66,15 @@ Bevor Sie myPolicies für die automatische Benutzerbereitstellung mit Azure AD 
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **myPolicies** ein, wählen Sie im Ergebnisbereich **myPolicies** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **myPolicies** ein, wählen Sie im Ergebnisbereich **myPolicies** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
 
     ![myPolicies in der Ergebnisliste](common/search-new-app.png)
 
@@ -106,7 +106,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** in das Feld **Mandanten-URL** die URL `https://<myPoliciesCustomDomain>.mypolicies.com/scim` ein. Dabei steht `<myPoliciesCustomDomain>` für Ihre benutzerdefinierte myPolicies-Domäne. Sie können Ihre myPolicies-Kundendomäne über Ihre URL abrufen.
 Beispiel: `<demo0-qa>`.mypolicies.com
 
-6. Geben Sie in das Feld **Geheimes Token** den zuvor abgerufenen Tokenwert ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit myPolicies herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr myPolicies-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+6. Geben Sie in das Feld **Geheimes Token** den zuvor abgerufenen Tokenwert ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit myPolicies herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr myPolicies-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -120,7 +120,7 @@ Beispiel: `<demo0-qa>`.mypolicies.com
 
     :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Screenshot des Abschnitts „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit customappsso synchronisieren“ hervorgehoben." border="false":::
 
-10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit myPolicies synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in myPolicies für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
+10. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit myPolicies synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in myPolicies für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -155,7 +155,7 @@ Weitere Informationen zum Lesen von Azure AD-Bereitstellungsprotokollen finden S
 
 ## <a name="connector-limitations"></a>Connector-Einschränkungen
 
-* Für myPolicies ist immer **userName**, **email** und **externalId** erforderlich.
+* Für myPolicies ist immer **userName** , **email** und **externalId** erforderlich.
 * myPolicies unterstützt das endgültige Löschen für Benutzerattribute nicht.
 
 ## <a name="change-log"></a>Änderungsprotokoll

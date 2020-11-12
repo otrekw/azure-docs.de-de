@@ -6,19 +6,19 @@ ms.custom: devx-track-java
 ms.author: karler
 ms.topic: how-to
 ms.date: 04/08/2020
-ms.openlocfilehash: a9592d848398c71bc573c073f0b712898f666640
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 48a732e3935d78bdbf8b81fe989b59be1fbe2203
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104868"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422806"
 ---
 # <a name="use-java-and-gradle-to-create-and-publish-a-function-to-azure"></a>Erstellen und Veröffentlichen einer Funktion für Azure mithilfe von Java und Gradle
 
 In diesem Artikel erfahren Sie, wie Sie mit dem Gradle-Befehlszeilentool ein Java-Funktionsprojekt erstellen und für Azure Functions veröffentlichen. Der fertige Funktionscode wird dann in Azure im Rahmen eines [serverlosen Hostingplans](functions-scale.md#consumption-plan) ausgeführt und durch eine HTTP-Anforderung ausgelöst. 
 
 > [!NOTE]
-> Sollte Gradle nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [VS Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java) für Java-Entwickler zur Verfügung.
+> Sollte Gradle nicht Ihr bevorzugtes Entwicklungstool sein, stehen ähnliche Tutorials mit [Maven](./create-first-function-cli-java.md), [IntelliJ IDEA](/azure/developer/java/toolkit-for-intellij/quickstart-functions) und [VS Code](./create-first-function-vs-code-java.md) für Java-Entwickler zur Verfügung.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -124,10 +124,10 @@ gradle azureFunctionsDeploy
 
 Dadurch werden die folgenden Ressourcen in Azure erstellt, basierend auf den Werten in der Datei build.gradle:
 
-+ Ressourcengruppe – benannt mit der angegebenen Ressourcengruppe (_resourceGroup_).
++ Ressourcengruppe – benannt mit der angegebenen Ressourcengruppe ( _resourceGroup_ ).
 + Speicherkonto – von Functions benötigt. Der Name wird nach dem Zufallsprinzip basierend auf den Anforderungen für den Speicherkontonamen generiert.
-+ App Service-Plan. Serverloses Hosting mit Verbrauchsplan für Ihre Funktions-App in der angegebenen App-Region (_appRegion_). Der Name wird nach dem Zufallsprinzip generiert.
-+ Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name ist Ihr App-Name (_appName_) mit angefügter Zufallszahl. 
++ App Service-Plan. Serverloses Hosting mit Verbrauchsplan für Ihre Funktions-App in der angegebenen App-Region ( _appRegion_ ). Der Name wird nach dem Zufallsprinzip generiert.
++ Funktions-App – die Bereitstellungs-und Ausführungseinheit für Ihre Funktionen. Der Name ist Ihr App-Name ( _appName_ ) mit angefügter Zufallszahl. 
 
 Bei der Bereitstellung werden mithilfe von [zip deployment](functions-deployment-technologies.md#zip-deploy) auch die Projektdateien gepackt und für die neue Funktions-App bereitgestellt (mit aktiviertem Modus für die paketbasierte Ausführung).
 
@@ -140,9 +140,9 @@ Im Beispielprojekt ist der Wert für authLevel für HTTP-Trigger `ANONYMOUS`. Da
 
 Die erforderliche URL zum Auslösen Ihrer Funktion können Sie mit dem Funktionsschlüssel im Azure-Portal abrufen. 
 
-1. Navigieren Sie zum [Azure portal], melden Sie sich an, geben Sie im oberen Seitenbereich unter **Suche** den App-Namen (_appName_) Ihrer Funktions-App ein, und drücken Sie die EINGABETASTE.
+1. Navigieren Sie zum [Azure portal], melden Sie sich an, geben Sie im oberen Seitenbereich unter **Suche** den App-Namen ( _appName_ ) Ihrer Funktions-App ein, und drücken Sie die EINGABETASTE.
  
-1. Klicken Sie in Ihrer Funktions-App auf **Funktionen**, wählen Sie Ihre Funktion aus, und klicken Sie anschließend rechts oben auf **</> Funktions-URL abrufen**. 
+1. Klicken Sie in Ihrer Funktions-App auf **Funktionen** , wählen Sie Ihre Funktion aus, und klicken Sie anschließend rechts oben auf **</> Funktions-URL abrufen**. 
 
     :::image type="content" source="./media/functions-create-first-java-gradle/get-function-url-portal.png" alt-text="Kopieren der Funktions-URL aus dem Azure-Portal":::
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect-Synchronisierung: Vornehmen einer Konfigurationsänderung in der Azure AD Connect-Synchronisierung'
+title: 'Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration'
 description: Erläutert Schritt für Schritt, wie Sie eine Änderung an der Konfiguration in der Azure AD Connect-Synchronisierung vornehmen.
 services: active-directory
 author: billmath
@@ -12,12 +12,12 @@ ms.date: 08/30/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 07c1405482f107e370327ffbc049c77f483c29bd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8a2036086cfb6da0d7807d4752a5911a358d3c47
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89662565"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420647"
 ---
 # <a name="azure-ad-connect-sync-make-a-change-to-the-default-configuration"></a>Azure AD Connect-Synchronisierung: Ändern der Standardkonfiguration
 In diesem Artikel wird Schritt für Schritt erläutert, wie Sie Änderungen an der Standardkonfiguration in der Azure AD Connect-Synchronisierung (Azure Active Directory) vornehmen. Es enthält Schrittanleitungen für einige allgemeinen Szenarien. Mit diesem Wissen sollten Sie in der Lage sein, basierend auf Ihren eigenen Geschäftsregeln einfache Änderungen an Ihrer eigenen Konfiguration vorzunehmen.
@@ -45,7 +45,7 @@ Im oberen rechten Bereich finden Sie die Schaltfläche **Neue Regel hinzufügen*
 Unten im Fenster befinden sich Schaltflächen, mit denen Sie Aktionen für eine ausgewählte Synchronisierungsregel ausführen können. Die Schaltflächen **Bearbeiten** und **Löschen** sind selbsterklärend. **Exportieren** erzeugt ein PowerShell-Skript zur erneuten Erstellung der Synchronisierungsregel. Mit diesem Verfahren können Sie eine Synchronisierungsregel von einem Server zu einem anderen verschieben.
 
 ## <a name="create-your-first-custom-rule"></a>Erstellen Ihrer ersten benutzerdefinierten Regel
-Änderungen an den Attributflüssen zählen zu den häufigsten Änderungen. Die Daten in Ihrem Quellverzeichnis weichen möglicherweise von denen in Azure AD ab. Stellen Sie im Beispiel in diesem Abschnitt sicher, dass der Vorname eines Benutzers immer die *richtige Groß-/Kleinschreibung*aufweist.
+Änderungen an den Attributflüssen zählen zu den häufigsten Änderungen. Die Daten in Ihrem Quellverzeichnis weichen möglicherweise von denen in Azure AD ab. Stellen Sie im Beispiel in diesem Abschnitt sicher, dass der Vorname eines Benutzers immer die *richtige Groß-/Kleinschreibung* aufweist.
 
 ### <a name="disable-the-scheduler"></a>Deaktivieren des Schedulers
 Der [Scheduler](how-to-connect-sync-feature-scheduler.md) wird standardmäßig alle 30 Minuten ausgeführt. Stellen Sie sicher, dass er nicht gestartet wird, während Sie Änderungen vornehmen und Probleme in Ihren neuen Regeln beheben. Um den Scheduler vorübergehend zu deaktivieren, starten Sie PowerShell, und führen Sie den Befehl `Set-ADSyncScheduler -SyncCycleEnabled $false` aus.
@@ -56,8 +56,8 @@ Der [Scheduler](how-to-connect-sync-feature-scheduler.md) wird standardmäßig a
 1. Klicken Sie auf **Neue Regel hinzufügen**.
 2. Geben Sie auf der Seite **Beschreibung** Folgendes ein:  
    ![Filterung für die eingehende Regel](./media/how-to-connect-sync-change-the-configuration/description2.png)  
-   * **Name**: Geben Sie einen beschreibenden Namen für die Regel ein.
-   * **Beschreibung**: Fügen Sie Informationen hinzu, damit andere Benutzer wissen, wozu die Regel dient.
+   * **Name** : Geben Sie einen beschreibenden Namen für die Regel ein.
+   * **Beschreibung** : Fügen Sie Informationen hinzu, damit andere Benutzer wissen, wozu die Regel dient.
    * **Verbundenes System:** Das System, in dem sich das Objekt befindet. Wählen Sie in diesem Fall **Active Directory Connector** aus.
    * **Verbundenes System/Metaverse-Objekttyp:** Wählen Sie **Benutzer** bzw. **Person** aus.
    * **Verknüpfungstyp:** Ändern Sie diesen Wert in **Join**.
@@ -93,8 +93,8 @@ Nachdem Sie diese Änderung vorgenommen haben, möchten Sie sicherstellen, dass 
 **Vorschau und vollständige Synchronisierung eines einzelnen Objekts**  
 
    1. Klicken Sie im Menü „Aktionen“ auf **Connectors** aus. Suchen Sie nach dem Connector, den Sie im vorherigen Abschnitt geändert haben (in diesem Fall die Active Directory Domain Services), und wählen Sie ihn aus.
-   2. Wählen Sie **Search Connector Space**(Connectorbereich durchsuchen) aus. 
-   3. Verwenden Sie den **Bereich**, um nach einem Objekt zu suchen, das Sie zum Testen der Änderung verwenden möchten. Wählen Sie das Objekt aus, und klicken Sie auf **Vorschau**. 
+   2. Wählen Sie **Search Connector Space** (Connectorbereich durchsuchen) aus. 
+   3. Verwenden Sie den **Bereich** , um nach einem Objekt zu suchen, das Sie zum Testen der Änderung verwenden möchten. Wählen Sie das Objekt aus, und klicken Sie auf **Vorschau**. 
    4. Wählen Sie auf dem neuen Bildschirm **Commitvorschau** aus.  
    ![Commit preview](./media/how-to-connect-sync-change-the-configuration/commitpreview.png)  
    Die Änderung wird jetzt an die Metaverse übergeben.
@@ -103,7 +103,7 @@ Nachdem Sie diese Änderung vorgenommen haben, möchten Sie sicherstellen, dass 
 
 1. Wählen Sie einige Beispielobjekte aus, um sicherzustellen, dass der Wert wie erwartet ist und die Regel angewendet wird. 
 2. Wählen Sie oben im Fenster **Metaverse Search** (Metaversesuche) aus. Fügen Sie beliebige Filter hinzu, die Sie zur Suche nach den entsprechenden Objekten benötigen. 
-3. Öffnen Sie im Suchergebnis ein Objekt. Sehen Sie sich die Attributwerte an, und überprüfen Sie in der Spalte **Synchronisierungsregeln**, ob die Regel wie erwartet angewendet wurde.  
+3. Öffnen Sie im Suchergebnis ein Objekt. Sehen Sie sich die Attributwerte an, und überprüfen Sie in der Spalte **Synchronisierungsregeln** , ob die Regel wie erwartet angewendet wurde.  
 ![Metaverse search](./media/how-to-connect-sync-change-the-configuration/mvsearch.png)  
 
 ### <a name="enable-the-scheduler"></a>Deaktivieren des Schedulers
@@ -129,7 +129,7 @@ Führen Sie folgende Schritte aus, um eine Regel mit anderen Attributflüssen zu
 6. Erstellen Sie unter **Transformationen** die folgenden Attributflüsse:  
   ![Attributfluss 3](./media/how-to-connect-sync-change-the-configuration/attributeflowjp3.png)
 7. Klicken Sie auf **Hinzufügen** , um die Regel zu speichern.
-8. Wechseln Sie zu **Synchronization Service Manager**. Wählen Sie unter **Connectors**den Connector aus, für den Sie die Regel hinzugefügt haben. Wählen Sie **Ausführen** und danach **Vollständige Synchronisierung** aus. Bei einer vollständigen Synchronisierung werden alle Objekte anhand der aktuellen Regeln neu berechnet.
+8. Wechseln Sie zu **Synchronization Service Manager**. Wählen Sie unter **Connectors** den Connector aus, für den Sie die Regel hinzugefügt haben. Wählen Sie **Ausführen** und danach **Vollständige Synchronisierung** aus. Bei einer vollständigen Synchronisierung werden alle Objekte anhand der aktuellen Regeln neu berechnet.
 
 Dies ist das Ergebnis für dasselbe Objekt mit dieser benutzerdefinierten Regel:  
 ![Attributfluss 4](./media/how-to-connect-sync-change-the-configuration/attributeflowjp4.png)
@@ -150,7 +150,7 @@ Verketten Sie in diesem Ausdruck alle Zeichen links neben dem ersten @-sign (Wor
 Einige Attribute in Active Directory weisen im Schema mehrere Werte auf, obwohl sie in „Active Directory-Benutzer und -Computer“ wie einwertige Attribute aussehen. Das Attribut „description“ ist ein Beispiel hierfür:  
 `description` <- `IIF(IsNullOrEmpty([description]),NULL,Left(Trim(Item([description],1)),448))`.
 
-Falls das Attribut einen Wert besitzt, wird in diesem Ausdruck das erste Element (*Item*) im Attribut genommen, die voran- und nachgestellten Leerzeichen (*Trim*) werden entfernt, und die ersten 448 Zeichen (*Left*) der Zeichenfolge werden beibehalten.
+Falls das Attribut einen Wert besitzt, wird in diesem Ausdruck das erste Element ( *Item* ) im Attribut genommen, die voran- und nachgestellten Leerzeichen ( *Trim* ) werden entfernt, und die ersten 448 Zeichen ( *Left* ) der Zeichenfolge werden beibehalten.
 
 ### <a name="do-not-flow-an-attribute"></a>Verhindern des „Fließens“ eines Attributs
 Hintergrundinformationen zum Szenario in diesem Abschnitt finden Sie unter [Steuern des Attributflussprozesses](concept-azure-ad-connect-sync-declarative-provisioning.md#control-the-attribute-flow-process).
@@ -166,7 +166,7 @@ In diesem Fabrikam-Szenario haben wir festgestellt, dass einige der Attribute, d
   ![Beschreibungen](./media/how-to-connect-sync-change-the-configuration/syncruledescription.png)
 2. Erstellen Sie Attributflüsse mit **Ausdruck** als **FlowType** und **AuthoritativeNull** als **Source**. Das Literal **AuthoritativeNull** gibt an, dass der Wert in der Metaverse auch dann leer sein sollte, wenn eine Synchronisierungsregel mit geringerer Position in der Rangfolge versucht, den Wert aufzufüllen.
   ![Transformation für Erweiterungsattribute](./media/how-to-connect-sync-change-the-configuration/syncruletransformations.png)
-3. Speichern Sie die Synchronisierungsregel. Starten Sie den **Synchronisierungsdienst**, suchen Sie nach dem Connector, und wählen Sie **Ausführen** und **Vollständige Synchronisierung** aus. Dadurch werden alle Attributflüsse neu berechnet.
+3. Speichern Sie die Synchronisierungsregel. Starten Sie den **Synchronisierungsdienst** , suchen Sie nach dem Connector, und wählen Sie **Ausführen** und **Vollständige Synchronisierung** aus. Dadurch werden alle Attributflüsse neu berechnet.
 4. Stellen Sie sicher, dass die beabsichtigten Änderungen exportiert werden, indem Sie den Connectorbereich durchsuchen.
   ![Gestaffeltes Löschen](./media/how-to-connect-sync-change-the-configuration/deletetobeexported.png)
 
@@ -181,17 +181,17 @@ Die standardmäßigen Synchronisierungsregeln beginnen mit dem Rangfolgewert 100
 
 Sie können die Synchronisierungsengine anweisen, dass vor den Standardregeln weitere Regeln eingefügt werden sollen. Führen Sie folgende Schritte aus, um dieses Verhalten festzulegen:
 
-1. Markieren Sie im Synchronisierungsregel-Editor die erste Standardregel (**Eingehend von AD – Benutzerverknüpfung**), und wählen Sie **Exportieren** aus. Kopieren Sie den SR-ID-Wert.  
+1. Markieren Sie im Synchronisierungsregel-Editor die erste Standardregel ( **Eingehend von AD – Benutzerverknüpfung** ), und wählen Sie **Exportieren** aus. Kopieren Sie den SR-ID-Wert.  
 ![PowerShell vor der Änderung](./media/how-to-connect-sync-change-the-configuration/powershell1.png)  
 2. Erstellen Sie die neue Synchronisierungsregel. Hierzu können Sie den Synchronisierungsregel-Editor verwenden. Exportieren Sie die Regel in ein PowerShell-Skript.
 3. Fügen Sie den Bezeichnerwert aus der Standardregel in die Eigenschaft **PrecedenceBefore** ein. Legen Sie die **Rangfolge** auf **0** fest. Stellen Sie sicher, dass das Bezeichnerattribut eindeutig ist und Sie keine GUID aus einer anderen Regel wiederverwenden. Stellen Sie außerdem sicher, dass die Eigenschaft **ImmutableTag** nicht festgelegt ist. Diese Eigenschaft sollte nur für eine Standardregel festgelegt sein.
 4. Speichern Sie das PowerShell-Skript, und führen Sie es aus. Das Ergebnis dieses Vorgehens: Ihrer benutzerdefinierten Regel wird der Rangfolgewert 100 zugewiesen, und alle anderen Standardregeln erhalten schrittweise ansteigende Werte.  
 ![PowerShell nach der Änderung](./media/how-to-connect-sync-change-the-configuration/powershell2.png)  
 
-Bei Bedarf können Sie eine Vielzahl von benutzerdefinierten Synchronisierungsregeln einrichten, die den gleichen **PrecedenceBefore**-Wert verwenden.
+Bei Bedarf können Sie eine Vielzahl von benutzerdefinierten Synchronisierungsregeln einrichten, die den gleichen **PrecedenceBefore** -Wert verwenden.
 
 ## <a name="enable-synchronization-of-usertype"></a>Synchronisierung des Benutzertyps aktivieren
-Azure AD Connect unterstützt ab Version 1.1.524.0 die Synchronisierung des **UserType**-Attributs für **Benutzer**-Objekte. Genauer gesagt wurden folgende Änderungen eingeführt:
+Azure AD Connect unterstützt ab Version 1.1.524.0 die Synchronisierung des **UserType** -Attributs für **Benutzer** -Objekte. Genauer gesagt wurden folgende Änderungen eingeführt:
 
 - Das Schema des Objekttyps **Benutzer** im Azure AD-Connector wurde um das UserType-Attribut erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
 - Das Schema des Objekttyps **Person** in der Metaverse wurde um das UserType-Attribut erweitert, das vom Typ „Zeichenfolge“ und einwertig ist.
@@ -231,7 +231,7 @@ Um zu vermeiden, dass unbeabsichtigte Änderungen nach Azure AD exportiert werde
  1. Starten Sie eine PowerShell-Sitzung auf dem Azure AD Connect-Server.
  2. Deaktivieren Sie die geplante Synchronisierung durch Ausführung des Cmdlets `Set-ADSyncScheduler -SyncCycleEnabled $false`.
  3. Öffnen Sie den Synchronization Service Manager, indem Sie zu **Start** > **Synchronization Service** wechseln.
- 4. Wechseln Sie zur Registerkarte **Vorgänge**, und vergewissern Sie sich, dass kein Vorgang mit dem Status *Wird ausgeführt* angezeigt wird.
+ 4. Wechseln Sie zur Registerkarte **Vorgänge** , und vergewissern Sie sich, dass kein Vorgang mit dem Status *Wird ausgeführt* angezeigt wird.
 
 ### <a name="step-2-add-the-source-attribute-to-the-on-premises-ad-connector-schema"></a>Schritt 2: Hinzufügen des Quellattributs zum lokalen AD-Connectorschema
 Nicht alle Azure AD-Attribute werden in den lokalen AD-Connectorbereich importiert. So fügen Sie das Quellattribut zur Liste der importierten Attribute hinzu:
@@ -247,7 +247,7 @@ Nicht alle Azure AD-Attribute werden in den lokalen AD-Connectorbereich importie
 Standardmäßig wird das UserType-Attribut nicht in den Azure AD Connect-Bereich importiert. So fügen Sie das UserType-Attribut der Liste der importierten Attribute hinzu
 
  1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
- 2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Eigenschaften** aus.
+ 2. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector** , und wählen Sie **Eigenschaften** aus.
  3. Navigieren Sie im Popupdialogfeld zur Registerkarte **Attribute auswählen**.
  4. Stellen Sie sicher, dass das UserType-Attribut in der Attributliste aktiviert ist.
  5. Klicken Sie zum Speichern auf **OK**.
@@ -259,7 +259,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 
 1. Öffnen Sie den Synchronisierungsregel-Editor, indem Sie zu **Start** > **Synchronisierungsregel-Editor** wechseln.
 2. Legen Sie den Suchfilter **Richtung** auf **Eingehend** fest.
-3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen**, um eine neue Regel für eingehende Daten zu erstellen.
+3. Klicken Sie auf die Schaltfläche **Neue Regel hinzufügen** , um eine neue Regel für eingehende Daten zu erstellen.
 4. Geben Sie auf der Registerkarte **Beschreibung** die folgende Konfiguration an:
 
     | attribute | Wert | Details |
@@ -272,7 +272,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
     | Verknüpfungstyp | **Join** |  |
     | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
 
-5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe** mit folgender Klausel hinzu:
+5. Navigieren Sie zur Registerkarte **Bereichsfilter** , und fügen Sie eine **einzelne Bereichsfiltergruppe** mit folgender Klausel hinzu:
 
     | attribute | Operator | Wert |
     | --- | --- | --- |
@@ -280,7 +280,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
 
     Der Bereichsfilter legt fest, auf welche lokalen AD-Objekte diese Synchronisierungsregel für eingehende Daten angewendet wird. In diesem Beispiel verwenden wir denselben Bereichsfilter wie die Standardsynchronisierungsregel *Eingehend von AD – Benutzer „Common“* , die verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die über die Funktion zum Rückschreiben von Azure AD-Benutzern erstellt wurden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
 
-6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie die gewünschte Transformationsregel. Wenn Sie beispielsweise ein nicht verwendetes lokales AD-Attribut (z.B. „extensionAttribute1“) als Quellattribut für „UserType“ festgelegt haben, können Sie einen direkten Attributfluss implementieren:
+6. Navigieren Sie zur Registerkarte **Transformation** , und implementieren Sie die gewünschte Transformationsregel. Wenn Sie beispielsweise ein nicht verwendetes lokales AD-Attribut (z.B. „extensionAttribute1“) als Quellattribut für „UserType“ festgelegt haben, können Sie einen direkten Attributfluss implementieren:
 
     | Attributflusstyp | Zielattribut | `Source` | Einmal anwenden | Mergetyp |
     | --- | --- | --- | --- | --- |
@@ -292,7 +292,7 @@ Die Synchronisierungsregel für eingehende Daten ermöglicht die Übertragung de
     | --- | --- | --- | --- | --- |
     | Ausdruck | UserType | IIF(IsPresent([userPrincipalName]),IIF(CBool(InStr(LCase([userPrincipalName]),"@partners.fabrikam123.org")=0),"Member","Guest"),Error("UserPrincipalName is not present to determine UserType")) | Deaktiviert | Aktualisieren |
 
-7. Klicken Sie auf **Hinzufügen**, um die Regel für eingehende Daten zu erstellen.
+7. Klicken Sie auf **Hinzufügen** , um die Regel für eingehende Daten zu erstellen.
 
 ![Erstellen einer Synchronisierungsregel für eingehende Daten](./media/how-to-connect-sync-change-the-configuration/usertype3.png)
 
@@ -314,7 +314,7 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
     | Verknüpfungstyp | **Join** ||
     | Rangfolge | *Wählen Sie eine Zahl zwischen 1 und 99 aus.* | Die Zahlen zwischen 1 und 99 sind für benutzerdefinierte Synchronisierungsregeln reserviert. Wählen Sie keinen Wert aus, der von einer anderen Synchronisierungsregel verwendet wird. |
 
-5. Navigieren Sie zur Registerkarte **Bereichsfilter**, und fügen Sie eine **einzelne Bereichsfiltergruppe** mit zwei Klauseln hinzu:
+5. Navigieren Sie zur Registerkarte **Bereichsfilter** , und fügen Sie eine **einzelne Bereichsfiltergruppe** mit zwei Klauseln hinzu:
 
     | attribute | Operator | Wert |
     | --- | --- | --- |
@@ -323,13 +323,13 @@ Die Synchronisierungsregel für ausgehende Daten ermöglicht die Übertragung de
 
     Der Bereichsfilter legt fest, auf welche Azure AD-Objekte diese Synchronisierungsregel für ausgehende Daten angewendet wird. In diesem Beispiel verwenden wir den Bereichsfilter aus der Standardsynchronisierungsregel *Ausgehend nach – Benutzeridentität*. Er verhindert, dass die Synchronisierungsregel auf Benutzerobjekte angewendet wird, die nicht über das lokale Active Directory synchronisiert werden. Möglicherweise müssen Sie den Bereichsfilter entsprechend Ihrer Azure AD Connect-Bereitstellung anpassen.
 
-6. Navigieren Sie zur Registerkarte **Transformation**, und implementieren Sie folgende Transformationsregel:
+6. Navigieren Sie zur Registerkarte **Transformation** , und implementieren Sie folgende Transformationsregel:
 
     | Attributflusstyp | Zielattribut | `Source` | Einmal anwenden | Mergetyp |
     | --- | --- | --- | --- | --- |
     | Direkt | UserType | UserType | Deaktiviert | Aktualisieren |
 
-7. Klicken Sie auf **Hinzufügen**, um die Regel für ausgehende Daten zu erstellen.
+7. Klicken Sie auf **Hinzufügen** , um die Regel für ausgehende Daten zu erstellen.
 
 ![Erstellen einer Synchronisierungsregel für ausgehende Daten](./media/how-to-connect-sync-change-the-configuration/usertype4.png)
 
@@ -341,7 +341,7 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
 1. Führen Sie im **lokalen AD-Connector** einen **vollständigen Import** aus:
 
    1. Wechseln Sie in Synchronization Service Manager zur Registerkarte **Connectors**.
-   2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen** aus.
+   2. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector** , und wählen Sie **Ausführen** aus.
    3. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
    4. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
@@ -350,7 +350,7 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
 
 2. Führen Sie im **Azure AD-Connector** einen **vollständigen Import** aus:
 
-   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen** aus.
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector** , und wählen Sie **Ausführen** aus.
    2. Wählen Sie im Popupdialogfeld **Vollständiger Import** aus, und klicken Sie auf **OK**.
    3. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
@@ -358,27 +358,27 @@ Anhand der folgenden Schritte können Sie die Änderungen überprüfen, während
 
     Das Quellattribut aus dem lokalen Active Directory und das UserType-Attribut aus Azure AD wurden in ihre jeweiligen Connectorbereiche importiert. Bevor Sie mit einer vollständigen Synchronisierung fortfahren, führen Sie eine **Vorschau** für ein vorhandenes Benutzerobjekt im lokalen AD-Connectorbereich aus. In dem von Ihnen ausgewählten Objekt muss das Quellattribut aufgefüllt sein.
     
-    Eine erfolgreiche **Vorschau**, bei der das UserType-Attribut in der Metaverse aufgefüllt ist, ist ein guter Indikator dafür, dass die Synchronisierungsregeln richtig konfiguriert wurden. Informationen zum Ausführen einer **Vorschau** finden Sie im Abschnitt [Überprüfen der Änderungen](#verify-the-change).
+    Eine erfolgreiche **Vorschau** , bei der das UserType-Attribut in der Metaverse aufgefüllt ist, ist ein guter Indikator dafür, dass die Synchronisierungsregeln richtig konfiguriert wurden. Informationen zum Ausführen einer **Vorschau** finden Sie im Abschnitt [Überprüfen der Änderungen](#verify-the-change).
 
 4. Führen Sie im **lokalen AD-Connector** eine **vollständige Synchronisierung** aus:
 
-   1. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector**, und wählen Sie **Ausführen** aus.
+   1. Klicken Sie mit der rechten Maustaste auf den **lokalen AD-Connector** , und wählen Sie **Ausführen** aus.
    2. Wählen Sie im Popupdialogfeld **Vollständige Synchronisierung** aus, und klicken Sie auf **OK**.
    3. Warten Sie, bis der Vorgang abgeschlossen wurde.
 
 5. Stellen Sie sicher, dass **Ausstehende Exporte** in Azure AD festgelegt ist, indem Sie wie folgt vorgehen:
 
-   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Search Connector Space** (Connectorbereich durchsuchen) aus.
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector** , und wählen Sie **Search Connector Space** (Connectorbereich durchsuchen) aus.
    2. Gehen Sie im Popupdialogfeld **Connectorbereich durchsuchen** wie folgt vor:
 
       - Legen Sie den **Bereich** auf **Ausstehender Export** fest.
-      - Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen**, **Ändern** und **Löschen**.
-      - Klicken Sie auf die Schaltfläche **Durchsuchen**, um die Liste von Objekten mit Änderungen, die exportiert werden sollen, abzurufen. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.
+      - Aktivieren Sie alle drei Kontrollkästchen: **Hinzufügen** , **Ändern** und **Löschen**.
+      - Klicken Sie auf die Schaltfläche **Durchsuchen** , um die Liste von Objekten mit Änderungen, die exportiert werden sollen, abzurufen. Um die Änderungen für ein bestimmtes Objekt zu untersuchen, doppelklicken Sie auf das Objekt.
       - Stellen Sie sicher, dass die Änderungen Ihren Erwartungen entsprechen.
 
 6. Führen Sie **Export** im **Azure AD-Connector** aus:
 
-   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector**, und wählen Sie **Ausführen** aus.
+   1. Klicken Sie mit der rechten Maustaste auf den **Azure AD-Connector** , und wählen Sie **Ausführen** aus.
    2. Wählen Sie im Popupdialogfeld **Connector ausführen** die Option **Exportieren** aus, und klicken Sie auf **OK**.
    3. Warten Sie, bis der Export nach Azure AD abgeschlossen ist.
 

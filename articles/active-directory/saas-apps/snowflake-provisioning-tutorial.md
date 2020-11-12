@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 881b1df00f8a962087f1e57b7141ac50f5cfa18b
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514825"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94355439"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -52,7 +52,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 Bevor Sie Snowflake für die automatische Benutzerbereitstellung mit Azure AD konfigurieren, müssen Sie in Snowflake die SCIM-Bereitstellung aktivieren.
 
-1. Melden Sie sich bei Ihrer Snowflake-Administratorkonsole an. Geben Sie die Abfrage aus dem unten hervorgehobenen Arbeitsblatt ein, und klicken Sie auf **Ausführen** .
+1. Melden Sie sich bei Ihrer Snowflake-Administratorkonsole an. Geben Sie die Abfrage aus dem unten hervorgehobenen Arbeitsblatt ein, und klicken Sie auf **Ausführen**.
 
     ![Snowflake-Administratorkonsole](media/Snowflake-provisioning-tutorial/image00.png)
 
@@ -83,7 +83,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-snowflake-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für Snowflake in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -91,7 +91,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Snowflake-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -103,11 +103,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
-7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+7. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
-8. Klicken Sie auf **Speichern** .
+8. Klicken Sie auf **Speichern**.
 
 9. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Snowflake synchronisieren** aus.
 
@@ -135,7 +135,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 13. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-14. Um den Azure AD-Bereitstellungsdienst für Snowflake zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+14. Um den Azure AD-Bereitstellungsdienst für Snowflake zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -143,7 +143,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-16. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+16. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

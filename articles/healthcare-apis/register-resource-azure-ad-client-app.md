@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e92fab392dc73d8de0b7b2547e38b3f345562930
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e22eaacd73bb15ddf43f416831ff5ff42923b6e0
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91975857"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393386"
 ---
 # <a name="register-a-resource-application-in-azure-active-directory"></a>Registrieren einer Ressourcenanwendung in Azure Active Directory
 
@@ -43,7 +43,7 @@ Wenn Sie den Open-Source-FHIR-Server für Azure verwenden, führen Sie die folge
 
 1. Klicken Sie im linken Navigationsbereich des [Azure-Portals](https://portal.azure.com) auf **Azure Active Directory**.
 
-2. Klicken Sie auf dem Blatt **Azure Active Directory** auf **App-Registrierungen**:
+2. Klicken Sie auf dem Blatt **Azure Active Directory** auf **App-Registrierungen** :
 
     ![Azure-Portal. Neue App-Registrierung.](media/how-to-aad/portal-aad-new-app-registration.png)
 
@@ -65,15 +65,15 @@ Eine Ressourcenanwendung verfügt über einen Bezeichner-URI (Anwendungs-ID-URI)
 
 3. Geben Sie den Bezeichner-URI ein, und klicken Sie auf **Speichern**. Ein geeigneter Bezeichner-URI wäre der URI Ihres FHIR-Servers.
 
-4. Klicken Sie auf **Bereich hinzufügen**, und fügen Sie alle Bereiche hinzu, die Sie für Ihre API definieren möchten. Sie müssen mindestens einen Bereich hinzufügen, um Ihrer Ressourcenanwendung in Zukunft Berechtigungen erteilen zu können. Wenn Sie keine bestimmten Bereiche hinzufügen möchten, können Sie „user_impersonation“ hinzufügen.
+4. Klicken Sie auf **Bereich hinzufügen** , und fügen Sie alle Bereiche hinzu, die Sie für Ihre API definieren möchten. Sie müssen mindestens einen Bereich hinzufügen, um Ihrer Ressourcenanwendung in Zukunft Berechtigungen erteilen zu können. Wenn Sie keine bestimmten Bereiche hinzufügen möchten, können Sie „user_impersonation“ hinzufügen.
 
 ![Zielgruppe und Bereich](media/how-to-aad/portal-aad-register-new-app-registration-AUD-SCOPE.png)
 
 ### <a name="define-application-roles"></a>Definieren der Anwendungsrollen
 
-Azure API for FHIR und der OSS FHIR-Server für Azure verwenden [Azure Active Directory-Anwendungsrollen](https://docs.microsoft.com/azure/architecture/multitenant-identity/app-roles) für die rollenbasierte Zugriffssteuerung. Um festzulegen, welche Rollen für Ihre FHIR-Server-API verfügbar sein sollen, öffnen Sie das [Manifest](https://docs.microsoft.com/azure/active-directory/active-directory-application-manifest/) der Ressourcenanwendung:
+Azure API for FHIR und der OSS FHIR-Server für Azure verwenden [Azure Active Directory-Anwendungsrollen](/azure/architecture/multitenant-identity/app-roles) für die rollenbasierte Zugriffssteuerung. Um festzulegen, welche Rollen für Ihre FHIR-Server-API verfügbar sein sollen, öffnen Sie das [Manifest](/azure/active-directory/active-directory-application-manifest/) der Ressourcenanwendung:
 
-1. Klicken Sie auf **Manifest**:
+1. Klicken Sie auf **Manifest** :
 
     ![Anwendungsrollen](media/how-to-aad/portal-aad-register-new-app-registration-APP-ROLES.png)
 

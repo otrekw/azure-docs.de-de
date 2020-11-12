@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 3412bfe95951a3fea035ffc6452719ede5e66d4d
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 2a1744feedc3e0ffae6cf2cd45cd090a6c2f06d5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92519604"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422092"
 ---
 # <a name="set-up-an-indexer-connection-to-a-cosmos-db-database-using-a-managed-identity"></a>Einrichten einer Indexerverbindung mit einer Cosmos DB-Datenbank mithilfe einer verwalteten Identität
 
@@ -43,7 +43,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 1. Navigieren Sie im Azure-Portal zu dem Cosmos DB-Konto, in dem die Daten gespeichert werden, die indiziert werden sollen.
 2. Wählen Sie **Zugriffssteuerung (IAM)** aus.
-3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen** .
+3. Klicken Sie auf **Hinzufügen** und dann auf **Rollenzuweisung hinzufügen**.
 
     ![Hinzufügen der Rollenzuweisung](./media/search-managed-identities/add-role-assignment-cosmos-db.png "Rollenzuweisung hinzufügen")
 
@@ -55,7 +55,7 @@ In diesem Schritt erteilen Sie dem Azure Cognitive Search-Dienst die Berechtigun
 
 ### <a name="3---create-the-data-source"></a>3\. Erstellen der Datenquelle
 
-Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/microsoft.azure.search.models.datasource) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus Cosmos DB mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
+Die Verbindungszeichenfolge für verwaltete Identitäten wird von der [REST-API](/rest/api/searchservice/create-data-source), dem Azure-Portal und dem [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexerdatasourcetype) unterstützt. Im Folgenden finden Sie ein Beispiel für das Erstellen einer Datenquelle zum Indizieren von Daten aus Cosmos DB mithilfe der [REST-API](/rest/api/searchservice/create-data-source) und einer Verbindungszeichenfolge für verwaltete Identitäten. Das Format der Verbindungszeichenfolge für verwaltete Identitäten ist für die REST-API, das .NET SDK und das Azure-Portal identisch.
 
 Wenn Sie verwaltete Identitäten für die Authentifizierung verwenden, enthalten die **Anmeldeinformationen** keinen Kontoschlüssel.
 

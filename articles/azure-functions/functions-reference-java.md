@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mithilfe von Java Funktionen entwickeln könn
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java, devx-track-azurecli
-ms.openlocfilehash: b25e548fe56c22458fe625f617fb076be13525cd
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 9679f6030ac889ac442a40cd852f5cc17f505756
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927514"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422517"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Java-Entwicklerhandbuch für Azure Functions
 
@@ -19,7 +19,7 @@ Wenn Sie noch nicht mit Azure Functions vertraut sind, sollten Sie als Java-Entw
 
 | Erste Schritte | Konzepte| 
 | -- | -- |  
-| <ul><li>[Java-Funktion unter Verwendung von Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java-/Maven-Funktion mit Terminal/Eingabeaufforderung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-Funktion unter Verwendung von Gradle](functions-create-first-java-gradle.md)</li><li>[Java-Funktion unter Verwendung von Eclipse](functions-create-maven-eclipse.md)</li><li>[Java-Funktion unter Verwendung von IntelliJ IDEA](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li></ul> |
+| <ul><li>[Java-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-java.md)</li><li>[Java-/Maven-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-java.md)</li><li>[Java-Funktion unter Verwendung von Gradle](functions-create-first-java-gradle.md)</li><li>[Java-Funktion unter Verwendung von Eclipse](functions-create-maven-eclipse.md)</li><li>[Java-Funktion unter Verwendung von IntelliJ IDEA](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li></ul> |
 
 ## <a name="java-function-basics"></a>Grundlagen zu Java-Funktionen
 
@@ -55,7 +55,7 @@ mvn archetype:generate \
     -DarchetypeArtifactId=azure-functions-archetype 
 ```
 
-Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java). 
+Informationen zu den ersten Schritten bei der Verwendung dieses Archetyps finden Sie im [Java-Schnellstart](./create-first-function-cli-java.md).
 
 ## <a name="folder-structure"></a>Ordnerstruktur
 
@@ -206,7 +206,7 @@ Sie können weitere Argumente in einer App-Einstellung namens `JAVA_OPTS` angebe
 
 Verwenden Sie im [Azur-Portal](https://portal.azure.com) die Registerkarte [Anwendungseinstellungen](functions-how-to-use-azure-function-app-settings.md#settings), um die Einstellung `JAVA_OPTS` hinzuzufügen.
 
-### <a name="azure-cli"></a>Azure CLI
+### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 Mit dem Befehl [az functionapp config appsettings set](/cli/azure/functionapp/config/appsettings) können Sie `JAVA_OPTS` wie im folgenden Beispiel einstellen:
 

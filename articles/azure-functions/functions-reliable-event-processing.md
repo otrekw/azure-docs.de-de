@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: cshoe
-ms.openlocfilehash: aaafe6d4080d85822ec5af9639c27fc8c55c2ce6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: fd784bb184ff9432efc569ac9fd40de93eec0b53
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287224"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379586"
 ---
 # <a name="azure-functions-reliable-event-processing"></a>Zuverlässige Ereignisverarbeitung in Azure Functions
 
@@ -50,7 +50,7 @@ Azure Functions nutzt Event Hub-Ereignisse, während die folgenden Schritte durc
 
 Dieses Verhalten offenbart einige wichtige Aspekte:
 
-- *Unbehandelte Ausnahmen können zum Verlust von Nachrichten führen.* Bei Ausführungen, die zu einer Ausnahme führen, wird der Zeiger weiter vorwärtsbewegt.  Das Festlegen einer [Wiederholungsrichtlinie](./functions-bindings-error-pages.md#retry-policies) verzögert die Verarbeitung des Zeigers so lange, bis die gesamte Wiederholungsrichtlinie ausgewertet wurde.
+- *Unbehandelte Ausnahmen können zum Verlust von Nachrichten führen.* Bei Ausführungen, die zu einer Ausnahme führen, wird der Zeiger weiter vorwärtsbewegt.  Das Festlegen einer [Wiederholungsrichtlinie](./functions-bindings-error-pages.md#retry-policies-preview) verzögert die Verarbeitung des Zeigers so lange, bis die gesamte Wiederholungsrichtlinie ausgewertet wurde.
 - *Funktionen garantieren eine mindestens einmalige Zustellung.* Ihr Code sowie Ihre abhängigen Systeme müssen möglicherweise [die Tatsache berücksichtigen, dass dieselbe Nachricht zweimal empfangen werden könnte](./functions-idempotent.md).
 
 ## <a name="handling-exceptions"></a>Behandeln von Ausnahmen
@@ -59,7 +59,7 @@ Als allgemeine Regel gilt, dass jede Funktion einen [try/catch-Block](./function
 
 ### <a name="retry-mechanisms-and-policies"></a>Wiederholungsmechanismen und -richtlinien
 
-Einige Ausnahmen sind vorübergehender Natur und treten nicht erneut auf, wenn ein Vorgang ein wenig später noch mal versucht wird. Aus diesem Grund besteht der erste Schritt immer darin, den Vorgang zu wiederholen.  Sie können die [Wiederholungsrichtlinien](./functions-bindings-error-pages.md#retry-policies) der Funktions-App nutzen oder Wiederholungslogik innerhalb der Funktionsausführung schreiben.
+Einige Ausnahmen sind vorübergehender Natur und treten nicht erneut auf, wenn ein Vorgang ein wenig später noch mal versucht wird. Aus diesem Grund besteht der erste Schritt immer darin, den Vorgang zu wiederholen.  Sie können die [Wiederholungsrichtlinien](./functions-bindings-error-pages.md#retry-policies-preview) der Funktions-App nutzen oder Wiederholungslogik innerhalb der Funktionsausführung schreiben.
 
 Durch die Einführung von Verhaltensweisen zur Fehlerbehandlung in Ihre Funktionen können Sie sowohl einfache als auch komplexe Wiederholungsrichtlinien definieren. Beispielsweise könnten Sie eine Richtlinie implementieren, die einem Workflow folgt, der durch die folgenden Regeln veranschaulicht wird:
 

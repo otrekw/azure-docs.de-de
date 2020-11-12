@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 7d9f5792fe3da9f47dd1391d1e7cb0162fd36fad
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: b87b9d9e7cab0334f1b1996feb99dc69396527b7
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670842"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94352947"
 ---
 # <a name="tutorial-configure-sap-analytics-cloud-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der automatischen Benutzerbereitstellung für SAP Analytics Cloud
 
@@ -60,11 +60,11 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![Eigenschaften unter „SAP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-properties.png)
 
-3. Kopieren Sie die **URL** , und fügen Sie `/api/v1/scim` an die URL an. Speichern Sie diese zur späteren Verwendung im Feld **Mandanten-URL** .
+3. Kopieren Sie die **URL** , und fügen Sie `/api/v1/scim` an die URL an. Speichern Sie diese zur späteren Verwendung im Feld **Mandanten-URL**.
 
    ![URL in „Eigenschaften“ unter „SAP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-details-url.png)
 
-4. Verwenden Sie [Postman](https://www.postman.com/), um einen POST-HTTPS-Aufruf für die Adresse auszuführen: `<Token URL>?grant_type=client_credentials`. Hierbei ist `Token URL` die URL im Feld **OAuth2TokenServiceURL** . Dieser Schritt ist erforderlich, um ein Zugriffstoken zu generieren, das beim Konfigurieren der automatischen Bereitstellung im Feld „Geheimes Token“ verwendet werden soll.
+4. Verwenden Sie [Postman](https://www.postman.com/), um einen POST-HTTPS-Aufruf für die Adresse auszuführen: `<Token URL>?grant_type=client_credentials`. Hierbei ist `Token URL` die URL im Feld **OAuth2TokenServiceURL**. Dieser Schritt ist erforderlich, um ein Zugriffstoken zu generieren, das beim Konfigurieren der automatischen Bereitstellung im Feld „Geheimes Token“ verwendet werden soll.
 
    ![OAuth in „Eigenschaften“ unter „SAP-IP-Proxysysteme“](./media/sap-analytics-cloud-provisioning-tutorial/sap-proxy-systems-details-oauth.png)
 
@@ -91,7 +91,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-sap-analytics-cloud-in-azure-ad"></a>Gehen Sie wie folgt vor, um die automatische Benutzerbereitstellung für SAP Analytics Cloud in Azure AD zu konfigurieren:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -99,7 +99,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Der Link „SAP Analytics Cloud“ in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -111,7 +111,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/sap-analytics-cloud-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -140,7 +140,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

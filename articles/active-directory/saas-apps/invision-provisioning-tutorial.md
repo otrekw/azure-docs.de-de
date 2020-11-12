@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
+ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: c58a3d9f07b62e92d1e71096ae9dd3fc85515843
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92459882"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354250"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von InVision für die automatische Benutzerbereitstellung
 
@@ -62,7 +62,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![So aktivieren Sie die Bereitstellung von SCIM](./media/invision-provisioning-tutorial/enable-scim-provisioning.png)
 
-4. Kopieren Sie die **SCIM-API-URL** , und fügen Sie `/scim/v2` an die URL an. Kopieren Sie das **Authentifizierungstoken** . Speichern Sie diese Werte zur späteren Verwendung im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer InVision-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token** .
+4. Kopieren Sie die **SCIM-API-URL** , und fügen Sie `/scim/v2` an die URL an. Kopieren Sie das **Authentifizierungstoken**. Speichern Sie diese Werte zur späteren Verwendung im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer InVision-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token**.
 
    ![SCIM-Zugriffstoken](./media/invision-provisioning-tutorial/invision-access-token.png)
 
@@ -86,7 +86,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-invision-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für InVision in Azure AD
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -94,7 +94,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![InVision-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Registerkarte „Bereitstellung“](common/provisioning.png)
 
@@ -106,7 +106,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Administratoranmeldeinformationen](./media/inVision-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -126,7 +126,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Um den Azure AD-Bereitstellungsdienst für InVision zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+11. Um den Azure AD-Bereitstellungsdienst für InVision zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-13. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+13. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 

@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3f1e2e12b7ba0a47c20614065510ffd1ae8bf195
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 6508db654cd27ca4b3844f6037f13fb504173e11
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325342"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361164"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -115,35 +115,10 @@ aks_target = ComputeTarget.create(workspace=ws,
 
 Nach Abschluss des Erstellungsprozesses können Sie Rückschlüsse für einen AKS-Cluster hinter einem virtuellen Netzwerk ziehen oder das Modell bewerten. Weitere Informationen finden Sie unter [Bereitstellen im AKS](how-to-deploy-and-where.md).
 
-## <a name="secure-vnet-traffic"></a>Sicherer VNet-Datenverkehr
-
-Es gibt zwei Ansätze, um den Datenverkehr zwischen AKS-Cluster und virtuellem Netzwerk zu isolieren:
-
-* __Privater AKS-Cluster__ : Bei diesem Ansatz wird Azure Private Link zum Schützen der Kommunikation mit dem Cluster für Bereitstellungs- und Verwaltungsvorgänge verwendet.
-* __Interner AKS-Lastenausgleich__ : Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
-
-> [!WARNING]
-> Der interne Lastenausgleich funktioniert nicht mit einem AKS-Cluster, der Kubenet verwendet. Wenn Sie gleichzeitig einen internen Lastenausgleich und einen privaten AKS-Cluster verwenden möchten, konfigurieren Sie Ihren privaten AKS-Cluster mit Azure Container Networking Interface (CNI). Weitere Informationen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service](../aks/configure-azure-cni.md).
-
-### <a name="private-aks-cluster"></a>Privater AKS-Cluster
-
-AKS-Standardcluster weisen standardmäßig eine Steuerungsebene (API-Server) mit öffentlichen IP-Adressen auf. Sie können AKS so konfigurieren, dass eine private Steuerungsebene verwendet wird, indem Sie einen privaten AKS-Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
-
-Nachdem Sie den privaten AKS-Cluster erstellt haben, [fügen Sie den Cluster an das virtuelle Netzwerk an](how-to-create-attach-kubernetes.md), um ihn mit Azure Machine Learning zu verwenden.
+## <a name="network-contributor-role"></a>Rolle „Netzwerkmitwirkender“
 
 > [!IMPORTANT]
-> Bevor Sie einen Private Link-fähigen AKS-Cluster mit Azure Machine Learning verwenden, müssen Sie einen Supportvorfall öffnen, um diese Funktion zu aktivieren. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
-
-### <a name="internal-aks-load-balancer"></a>Interner AKS-Lastenausgleich
-
-Standardmäßig verwenden AKS-Bereitstellungen einen [öffentlichen Lastenausgleich](../aks/load-balancer-standard.md). In diesem Abschnitt erfahren Sie, wie Sie AKS für die Verwendung eines internen Lastenausgleichs konfigurieren. Ein internes (oder privates) Lastenausgleichsmodul wird verwendet, wenn nur private IP-Adressen als Front-End zulässig sind. Interne Lastenausgleichsmodule werden verwendet, um einen Lastausgleich für Datenverkehr innerhalb eines virtuellen Netzwerks vorzunehmen.
-
-Ein privater Lastenausgleich wird aktiviert, indem AKS zur Verwendung eines _internen Lastenausgleichs_ konfiguriert wird. 
-
-#### <a name="network-contributor-role"></a>Rolle „Netzwerkmitwirkender“
-
-> [!IMPORTANT]
-> Wenn Sie einen AKS-Cluster erstellen oder anfügen, indem Sie ein zuvor erstelltes virtuelles Netzwerk bereitstellen, müssen Sie dem Dienst Prinzipal (Service Principal, SP) oder der verwalteten Identität für den AKS-Cluster die Rolle _Netzwerkmitwirkender_ der Ressourcengruppe zuweisen, die das virtuelle Netzwerk enthält. Dies muss geschehen, bevor Sie versuchen, den internen Load Balancer auf eine private IP-Adresse umzustellen.
+> Wenn Sie einen AKS-Cluster erstellen oder anfügen, indem Sie ein zuvor erstelltes virtuelles Netzwerk bereitstellen, müssen Sie dem Dienst Prinzipal (Service Principal, SP) oder der verwalteten Identität für den AKS-Cluster die Rolle _Netzwerkmitwirkender_ der Ressourcengruppe zuweisen, die das virtuelle Netzwerk enthält.
 >
 > Um die Identität als Netzwerkmitwirkenden hinzuzufügen, führen Sie die folgenden Schritte aus:
 
@@ -171,6 +146,31 @@ Ein privater Lastenausgleich wird aktiviert, indem AKS zur Verwendung eines _int
     az role assignment create --assignee <SP-or-managed-identity> --role 'Network Contributor' --scope <resource-group-id>
     ```
 Weitere Informationen zur Verwendung des internen Lastenausgleichs mit AKS finden Sie unter [Verwenden des internen Lastenausgleichs mit Azure Kubernetes Service](../aks/internal-lb.md).
+
+## <a name="secure-vnet-traffic"></a>Sicherer VNet-Datenverkehr
+
+Es gibt zwei Ansätze, um den Datenverkehr zwischen AKS-Cluster und virtuellem Netzwerk zu isolieren:
+
+* __Privater AKS-Cluster__ : Bei diesem Ansatz wird Azure Private Link zum Schützen der Kommunikation mit dem Cluster für Bereitstellungs- und Verwaltungsvorgänge verwendet.
+* __Interner AKS-Lastenausgleich__ : Bei diesem Ansatz wird der Endpunkt für Ihre Bereitstellungen in AKS konfiguriert, um eine private IP-Adresse innerhalb des virtuellen Netzwerks zu verwenden.
+
+> [!WARNING]
+> Der interne Lastenausgleich funktioniert nicht mit einem AKS-Cluster, der Kubenet verwendet. Wenn Sie gleichzeitig einen internen Lastenausgleich und einen privaten AKS-Cluster verwenden möchten, konfigurieren Sie Ihren privaten AKS-Cluster mit Azure Container Networking Interface (CNI). Weitere Informationen finden Sie unter [Konfigurieren von Azure CNI-Netzwerken in Azure Kubernetes Service](../aks/configure-azure-cni.md).
+
+### <a name="private-aks-cluster"></a>Privater AKS-Cluster
+
+AKS-Standardcluster weisen standardmäßig eine Steuerungsebene (API-Server) mit öffentlichen IP-Adressen auf. Sie können AKS so konfigurieren, dass eine private Steuerungsebene verwendet wird, indem Sie einen privaten AKS-Cluster erstellen. Weitere Informationen finden Sie unter [Erstellen eines privaten Azure Kubernetes Service-Clusters](../aks/private-clusters.md).
+
+Nachdem Sie den privaten AKS-Cluster erstellt haben, [fügen Sie den Cluster an das virtuelle Netzwerk an](how-to-create-attach-kubernetes.md), um ihn mit Azure Machine Learning zu verwenden.
+
+> [!IMPORTANT]
+> Bevor Sie einen Private Link-fähigen AKS-Cluster mit Azure Machine Learning verwenden, müssen Sie einen Supportvorfall öffnen, um diese Funktion zu aktivieren. Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
+
+### <a name="internal-aks-load-balancer"></a>Interner AKS-Lastenausgleich
+
+Standardmäßig verwenden AKS-Bereitstellungen einen [öffentlichen Lastenausgleich](../aks/load-balancer-standard.md). In diesem Abschnitt erfahren Sie, wie Sie AKS für die Verwendung eines internen Lastenausgleichs konfigurieren. Ein internes (oder privates) Lastenausgleichsmodul wird verwendet, wenn nur private IP-Adressen als Front-End zulässig sind. Interne Lastenausgleichsmodule werden verwendet, um einen Lastausgleich für Datenverkehr innerhalb eines virtuellen Netzwerks vorzunehmen.
+
+Ein privater Lastenausgleich wird aktiviert, indem AKS zur Verwendung eines _internen Lastenausgleichs_ konfiguriert wird. 
 
 #### <a name="enable-private-load-balancer"></a>Aktivieren eines privaten Lastenausgleichs
 

@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: hirsin
-ms.reviewer: hirsin
+ms.reviewer: mmacy, hirsin
 ms.custom: aaddev, identityplatformtop40, fasttrack-edit
-ms.openlocfilehash: ee8ea874ba8133216bf5a28587f841d3b7cfa2ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b60be1b3d30ab462f89dd4d72ab67d43393740b8
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740160"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393369"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity Platform-Zugriffstoken
 
@@ -33,7 +33,7 @@ In den folgenden Abschnitten erfahren Sie, wie eine Ressource die Ansprüche inn
 > [!IMPORTANT]
 > Zugriffstoken werden basierend auf der *Zielgruppe* des Tokens erstellt, d. h. der Anwendung, die die Bereiche im Token besitzt.  Auf diese Weise ermöglicht die Ressourceneinstellung `accessTokenAcceptedVersion` im [Anwendungsmanifest](reference-app-manifest.md#manifest-reference) für `2` einem Client, der den v1.0-Endpunkt aufruft, den Empfang eines v2.0-Zugriffstokens.  Aus diesem Grund ändert die Änderung des Zugriffstokens [optionale Ansprüche](active-directory-optional-claims.md) für Ihren Client auch nicht die Zugriffstoken, die beim Anfordern eines Tokens für `user.read` empfangen wurde, das der Ressource gehört.
 >
-> Wenn Sie Ihre Clientanwendung über eine Microsoft-API testen, die ein persönliches Konto (z. B. hotmail.com oder outlook.com) unterstützt, kann es aus demselben Grund vorkommen, dass das von Ihrem Client empfangene Zugriffstoken eine nicht transparente Zeichenfolge ist. Dies liegt daran, dass die Ressource, auf die zugegriffen wird, verschlüsselte Token verwendet, die vom Client nicht ausgewertet werden können.  Dieses Verhalten ist zu erwarten und sollte kein Problem für Ihre App darstellen. Client-Apps sollten nie vom Format des Zugriffstokens abhängig sein. 
+> Wenn Sie Ihre Clientanwendung über eine Microsoft-API testen, die ein persönliches Konto (z. B. hotmail.com oder outlook.com) unterstützt, kann es aus demselben Grund vorkommen, dass das von Ihrem Client empfangene Zugriffstoken eine nicht transparente Zeichenfolge ist. Dies liegt daran, dass die Ressource, auf die zugegriffen wird, verschlüsselte Token verwendet, die vom Client nicht ausgewertet werden können.  Dieses Verhalten ist zu erwarten und sollte kein Problem für Ihre App darstellen. Client-Apps sollten nie vom Format des Zugriffstokens abhängig sein.
 
 ## <a name="sample-tokens"></a>Beispieltoken
 
@@ -245,7 +245,7 @@ Aktualisierungstoken können jederzeit aus vielen verschiedenen Gründen ungült
 
 ### <a name="token-timeouts"></a>Tokenzeitüberschreitungen
 
-Mit der [Konfiguration der Tokenlebensdauer](active-directory-configurable-token-lifetimes.md) kann die Lebensdauer von Aktualisierungstoken geändert werden.  Es ist bei einigen Token normal und erwartungsgemäß, dass sie nicht verwendet werden (wenn z. B. der Benutzer die App drei Monate lang nicht öffnet) und daher ablaufen.  Für Apps können Szenarien eintreten, in denen der Anmeldeserver ein Aktualisierungstoken aufgrund seines Alters ablehnt. 
+Mit der [Konfiguration der Tokenlebensdauer](active-directory-configurable-token-lifetimes.md) kann die Lebensdauer von Aktualisierungstoken geändert werden.  Es ist bei einigen Token normal und erwartungsgemäß, dass sie nicht verwendet werden (wenn z. B. der Benutzer die App drei Monate lang nicht öffnet) und daher ablaufen.  Für Apps können Szenarien eintreten, in denen der Anmeldeserver ein Aktualisierungstoken aufgrund seines Alters ablehnt.
 
 * MaxInactiveTime: Wenn das Aktualisierungstoken innerhalb des von MaxInactiveTime vorgegebenen Zeitraums nicht verwendet wurde, ist es nicht mehr gültig.
 * MaxSessionAge: Wenn „MaxAgeSessionMultiFactor“ oder „MaxAgeSessionSingleFactor“ auf einen anderen Wert als die Standardeinstellung (Until-revoked) festgelegt wurden, ist eine erneute Authentifizierung erforderlich, nachdem der in „MaxAgeSession*“ festgelegte Zeitraum abgelaufen ist.
@@ -255,7 +255,7 @@ Mit der [Konfiguration der Tokenlebensdauer](active-directory-configurable-token
 
 ### <a name="revocation"></a>Widerruf
 
-Aktualisierungstoken können vom Server aufgrund einer Änderung der Anmeldeinformationen oder aufgrund der Verwendung oder einer Administratoraktion widerrufen werden.  Aktualisierungstoken werden in zwei Klassen unterteilt: solche, die für vertrauliche Clients ausgestellt werden (die Spalte ganz rechts), und Aktualisierungstoken, die für öffentliche Clients (alle anderen Spalten) ausgestellt werden.   
+Aktualisierungstoken können vom Server aufgrund einer Änderung der Anmeldeinformationen oder aufgrund der Verwendung oder einer Administratoraktion widerrufen werden.  Aktualisierungstoken werden in zwei Klassen unterteilt: solche, die für vertrauliche Clients ausgestellt werden (die Spalte ganz rechts), und Aktualisierungstoken, die für öffentliche Clients (alle anderen Spalten) ausgestellt werden.
 
 | Change | Kennwortbasiertes Cookie | Kennwortbasiertes Token | Nicht kennwortbasiertes Cookie | Nicht kennwortbasiertes Token | Vertrauliches Clienttoken |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
@@ -275,12 +275,12 @@ Bei einer *Nicht kennwortbasierten* Anmeldung hat der Benutzer kein Kennwort ein
 - FIDO2-Schlüssel
 - SMS
 - Sprache
-- PIN 
+- PIN
 
 > [!NOTE]
 > Primäre Aktualisierungstoken (PRT) unter Windows 10 werden auf Grundlage der Anmeldeinformationen getrennt. Beispielsweise besitzen Windows Hello und Kennwort ihre jeweiligen PRTs, die voneinander isoliert sind. Wenn sich ein Benutzer mit Hello-Anmeldeinformationen (PIN oder Biometrie) anmeldet und dann das Kennwort ändert, wird das zuvor abgerufene kennwortbasierte PRT widerrufen. Bei erneuter Anmeldung mit einem Kennwort wird das alte PRT ungültig und ein neues angefordert.
 >
-> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  Ihre App sollte jedoch das alte verwerfen, sobald es verwendet wird, und durch das neue ersetzen, da für das neue Token eine neue Ablaufzeit gilt. 
+> Beim Abrufen eines neuen Zugriffstoken und Aktualisierungstoken verwendete Aktualisierungstoken sind ungültig oder wurden aufgehoben.  Ihre App sollte jedoch das alte verwerfen, sobald es verwendet wird, und durch das neue ersetzen, da für das neue Token eine neue Ablaufzeit gilt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

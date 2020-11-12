@@ -5,12 +5,12 @@ ms.assetid: 242736be-ec66-4114-924b-31795fd18884
 ms.topic: conceptual
 ms.date: 03/13/2019
 ms.custom: devx-track-csharp, 80e4ff38-5174-43
-ms.openlocfilehash: 17daef18d87c4b5c906694ab1394694b32b6b130
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 78c6e4dffb35980b73fbc09bdc07d55215e659ae
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92164861"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422585"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Arbeiten mit Azure Functions Core Tools
 
@@ -166,7 +166,7 @@ func init MyFunctionProj
 ```
 
 >[!IMPORTANT]
-> Java verwendet einen Maven-Archetyp, um das lokale Functions-Projekt zusammen mit der ersten durch HTTP ausgelösten Funktion zu erstellen. Verwenden Sie den folgenden Befehl, um das Java-Projekt zu erstellen: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype`. Ein Beispiel für die Verwendung des Maven-Archetyps finden Sie im [Befehlszeilen-Schnellstart](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java).  
+> Java verwendet einen Maven-Archetyp, um das lokale Functions-Projekt zusammen mit der ersten durch HTTP ausgelösten Funktion zu erstellen. Verwenden Sie den folgenden Befehl, um das Java-Projekt zu erstellen: `mvn archetype:generate -DarchetypeGroupId=com.microsoft.azure -DarchetypeArtifactId=azure-functions-archetype`. Ein Beispiel für die Verwendung des Maven-Archetyps finden Sie im [Befehlszeilen-Schnellstart](./create-first-function-cli-java.md).  
 
 Wenn Sie einen Projektnamen angeben, wird ein neuer Ordner mit diesem Namen erstellt und initialisiert. Andernfalls wird der aktuelle Ordner initialisiert.  
 In Version 3.x/2.x müssen Sie beim Ausführen des Befehls eine Runtime für das Projekt auswählen. 
@@ -250,7 +250,7 @@ Auch wenn der Microsoft Azure-Speicheremulator für die Entwicklung verwendet wi
 - Suchen Sie im [Azure portal] nach **Speicherkonten** , und wählen Sie diese Option aus. 
   ![Auswählen von Speicherkonten im Azure-Portal](./media/functions-run-local/select-storage-accounts.png)
   
-  Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge** .
+  Wählen Sie Ihr Speicherkonto aus, wählen Sie **Zugriffsschlüssel** unter **Einstellungen** aus, und kopieren Sie dann einen der Werte für **Verbindungszeichenfolge**.
   ![Kopieren der Verbindungszeichenfolge im Azure-Portal](./media/functions-run-local/copy-storage-connection-portal.png)
 
 - Verwenden Sie [Azure Storage-Explorer](https://storageexplorer.com/), um eine Verbindung mit Ihrem Azure-Konto herzustellen. Erweitern Sie im **Explorer** Ihr Abonnement und anschließend **Speicherkonten** , wählen Sie Ihr Speicherkonto aus, und kopieren Sie die primäre oder sekundäre Verbindungszeichenfolge.
@@ -357,7 +357,7 @@ func start
 ```
 func start
 ```
-Dieser Befehl [muss in einer virtuellen Umgebung ausgeführt werden](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python#create-venv).
+Dieser Befehl [muss in einer virtuellen Umgebung ausgeführt werden](./create-first-function-cli-python.md).
 
 # <a name="typescript"></a>[TypeScript](#tab/ts)
 

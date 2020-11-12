@@ -1,19 +1,19 @@
 ---
 title: Regionale Endpunkte für Azure Cosmos DB-Graphdatenbank
 description: Erfahren Sie, wie Sie eine Verbindung mit dem nächstgelegenen Graphdatenbank-Endpunkt für Ihre Anwendung herstellen können.
-author: jasonwhowell
-ms.author: jasonh
+author: christopheranderson
+ms.author: chrande
 ms.service: cosmos-db
 ms.subservice: cosmosdb-graph
 ms.topic: how-to
 ms.date: 09/09/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9350682f7c636979df4dcde0c43a3b4941ad6ebb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e30252d8f5e80538139f8100f1070385c1b6016
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085767"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361786"
 ---
 # <a name="regional-endpoints-for-azure-cosmos-db-graph-account"></a>Regionale Endpunkte für Azure Cosmos DB-Graphkonto
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]

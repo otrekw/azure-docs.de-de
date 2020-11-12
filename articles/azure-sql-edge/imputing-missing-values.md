@@ -9,12 +9,12 @@ author: SQLSourabh
 ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
-ms.openlocfilehash: 03896f4f7aa4e6efc78b498406e79a299318ed7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: eb1b3534481c55723bd5d13760259b18e0b5cce2
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90930515"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392043"
 ---
 # <a name="filling-time-gaps-and-imputing-missing-values"></a>Auffüllen von Zeitlücken und Ergänzen von fehlenden Werten 
 
@@ -181,7 +181,7 @@ timestamp               OrigVoltageVals  ImputedVoltage  OrigPressureVals  Imput
 
 ## <a name="next-steps"></a>Nächste Schritte 
 
-- [FIRST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/first-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)
-- [LAST_VALUE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/last-value-transact-sql?toc=/azure/azure-sql-edge/toc.json)
+- [FIRST_VALUE (Transact-SQL)](/sql/t-sql/functions/first-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
+- [LAST_VALUE (Transact-SQL)](/sql/t-sql/functions/last-value-transact-sql?toc=%252fazure%252fazure-sql-edge%252ftoc.json)
 - [DATE_BUCKET (Transact-SQL)](date-bucket-tsql.md)
-- [Aggregatfunktionen (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/aggregate-functions-transact-sql)
+- [Aggregatfunktionen (Transact-SQL)](/sql/t-sql/functions/aggregate-functions-transact-sql)

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 03/12/2019
-ms.openlocfilehash: 14031118a93f5760b302e4d2b76334205be6d087
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 98e3eb4927b8eb9e52fd974c1ef7c417aff2ad54
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789623"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422789"
 ---
 # <a name="tutorial-implement-a-geo-distributed-database-azure-sql-database"></a>Tutorial: Implementieren einer geografisch verteilten Datenbank (Azure SQL-Datenbank)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -132,7 +132,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    mvn archetype:generate "-DgroupId=com.sqldbsamples" "-DartifactId=SqlDbSample" "-DarchetypeArtifactId=maven-archetype-quickstart" "-Dversion=1.0.0"
    ```
 
-1. Geben Sie **Y** ein, und drücken Sie die **EINGABETASTE** .
+1. Geben Sie **Y** ein, und drücken Sie die **EINGABETASTE**.
 
 1. Wechseln Sie zum Verzeichnis des neuen Projekts.
 
@@ -182,7 +182,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    </build>
    ```
 
-1. Speichern und schließen Sie die Datei *pom.xml* .
+1. Speichern und schließen Sie die Datei *pom.xml*.
 
 1. Öffnen Sie die Datei *App.java* in „..\SqlDbSample\src\main\java\com\sqldbsamples“, und ersetzen Sie ihren Inhalt durch folgenden Code:
 
@@ -290,7 +290,7 @@ Einstellungen für die Georeplikation können auch im Azure-Portal geändert wer
    }
    ```
 
-1. Speichern und schließen Sie die Datei *App.java* .
+1. Speichern und schließen Sie die Datei *App.java*.
 
 1. Führen Sie den folgenden Befehl an der Befehlskonsole aus:
 
@@ -333,7 +333,7 @@ So testen Sie ein Failover
 1. Starten Sie das manuelle Failover der Failovergruppe:
 
    ```powershell
-   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $myresourcegroupname `
+   Switch-AzSqlDatabaseFailoverGroup -ResourceGroupName $resourceGroup `
     -ServerName $drServer -FailoverGroupName $failoverGroup
    ```
 

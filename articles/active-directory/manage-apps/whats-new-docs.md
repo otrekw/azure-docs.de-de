@@ -1,7 +1,7 @@
 ---
 title: Neuerungen bei der Azure Active Directory-Anwendungsverwaltung
 description: Neue und aktualisierte Dokumentation für die Azure Active Directory-Anwendungsverwaltung
-ms.date: 10/21/2020
+ms.date: 11/05/2020
 ms.service: active-directory
 ms.subservice: app-mgmt
 ms.topic: reference
@@ -10,16 +10,34 @@ ms.author: kenwith
 author: kenwith
 manager: CelesteDG
 services: active-directory
-ms.openlocfilehash: 569c111c392e6bbaf9a54d17dc6e88bc8d851dc6
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 257057c4688fcf75651df4250c601eb1f1a2e8a3
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428027"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422602"
 ---
 # <a name="azure-active-directory-application-management-whats-new"></a>Azure Active Directory-Anwendungsverwaltung: Neues
 
 Hier erfahren Sie mehr über die Neuerungen in der Dokumentation zur Azure Active Directory-Anwendungsverwaltung. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden. Informationen zu den Neuerungen beim Anwendungsverwaltungsdienst finden Sie unter [Neuerungen in Azure Active Directory](../fundamentals/whats-new.md).
+
+## <a name="october-2020"></a>Oktober 2020
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Azure Active Directory-Anwendungsverwaltung: Neues](whats-new-docs.md)
+- [Grundlegendes zum OIDC-basierten einmaligen Anmelden](configure-oidc-single-sign-on.md)
+- [Konfigurieren von Berechtigungsklassifizierungen](configure-permission-classifications.md)
+- [Konfigurieren der Gruppenbesitzereinwilligung für Apps, die auf Gruppendaten zugreifen](configure-user-consent-groups.md)
+- [Verwalten von Richtlinien zur Einwilligung für die App](manage-app-consent-policies.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps](application-sign-in-problem-federated-sso-gallery.md)
+- [Problem beim Installieren des Anwendungsproxy-Agent-Connectors](application-proxy-connector-installation-problem.md)
+- [Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory](migrate-adfs-apps-to-azure.md)
+- [Konfigurieren der Art und Weise, wie Endbenutzer Anwendungen zustimmen können](configure-user-consent.md)
+
 
 ## <a name="september-2020"></a>September 2020
 

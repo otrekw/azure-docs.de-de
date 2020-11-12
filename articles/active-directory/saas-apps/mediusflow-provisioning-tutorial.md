@@ -8,15 +8,15 @@ manager: CelesteDG
 ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
-ms.topic: article
+ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: e5b008dd3d3a9d2422cca1fe00329543ed6d362f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517143"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353593"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MediusFlow für die automatische Benutzerbereitstellung
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Speichern Sie die Konfiguration.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole mit dem vierten Integrationsschritt. Die Schaltfläche zum Speichern der Konfiguration ist hervorgehoben." border="false":::
 
-5. Wählen Sie „Benutzerbereitstellung“ aus, und klicken Sie auf **OK** .
+5. Wählen Sie „Benutzerbereitstellung“ aus, und klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole mit dem fünften Integrationsschritt. Die Schaltflächen „Use user provisioning“ (Benutzerbereitstellung verwenden) und „OK“ sind hervorgehoben." border="false":::
 
-6. Klicken Sie auf **Geheimen Schlüssel generieren** . Kopieren und speichern Sie diesen Wert. Er wird im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Geheimes Token** eingegeben.
+6. Klicken Sie auf **Geheimen Schlüssel generieren**. Kopieren und speichern Sie diesen Wert. Er wird im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Geheimes Token** eingegeben.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Screenshot: Registerkarte „User provisioning configuration“ (Konfiguration der Benutzerbereitstellung) in der MediusFlow-Verwaltungskonsole. Die Schaltflächen „Generate secret key“ (Geheimen Schlüssel generieren) und „Copy“ (Kopieren) sind hervorgehoben." border="false":::
 
-7. Klicken Sie auf **OK** .
+7. Klicken Sie auf **OK**.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole mit der Benachrichtigung, dass Benutzer zum Generieren eines neuen geheimen Schlüssels auf „OK“ klicken müssen. Die Schaltfläche „OK“ ist hervorgehoben." border="false":::
 
 8. Damit die Benutzer mit einem vordefinierten Satz von Rollen, Unternehmen und anderen allgemeinen Konfigurationen in MediusFlow importiert werden können, müssen Sie dies zuerst konfigurieren. Fügen Sie zunächst die Konfiguration hinzu, indem Sie auf **Neue Konfiguration hinzufügen** klicken.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Screenshot: Registerkarte „User provisioning configuration“ (Konfiguration der Benutzerbereitstellung) in der MediusFlow-Verwaltungskonsole. Die Schaltfläche „Add new configuration“ (Neue Konfiguration hinzufügen) ist hervorgehoben." border="false":::
 
 9. Geben Sie die Standardeinstellungen für die Benutzer an. In dieser Ansicht ist es möglich, das Standardattribut festzulegen. Wenn die Standardeinstellungen in Ordnung sind, genügt es, nur einen gültigen Firmennamen bereitzustellen. Da diese Konfigurationseinstellungen aus MediusFlow abgerufen werden, müssen Sie zuerst konfiguriert werden. Weitere Informationen finden Sie im Abschnitt **Voraussetzungen** in diesem Artikel.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Screenshot: Fenster „Add new configuration“ (Neue Konfiguration hinzufügen) in MediusFlow. Viele Einstellungen sind sichtbar, einschließlich Gebietsschemaeinstellungen, ein Filter und Benutzerrollen." border="false":::
 
 10. Klicken Sie auf **Speichern** , um die Konfiguration zu speichern.
 
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Screenshot: Registerkarte „User provisioning configuration“ (Konfiguration der Benutzerbereitstellung) in der MediusFlow-Verwaltungskonsole. Die Schaltfläche „Speichern“ ist hervorgehoben." border="false":::
 
-11. Um den Link zur Benutzerbereitstellung abzurufen, klicken Sie auf **SCIM-Link kopieren** . Kopieren und speichern Sie diesen Wert. Diese Werte werden im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Mandanten-URL** eingegeben.
+11. Um den Link zur Benutzerbereitstellung abzurufen, klicken Sie auf **SCIM-Link kopieren**. Kopieren und speichern Sie diesen Wert. Diese Werte werden im Azure-Portal auf der Registerkarte **Bereitstellung** Ihrer MediusFlow-Anwendung in das Feld **Mandanten-URL** eingegeben.
  
-    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Screenshot: MediusFlow-Verwaltungskonsole. Im ersten Integrationsschritt sind das Feld für den MediusFlow-Mandantennamen und die Schaltfläche „Authenticate“ (Authentifizieren) hervorgehoben." border="false":::
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Screenshot: Registerkarte „User provisioning configuration“ (Konfiguration der Benutzerbereitstellung) in der MediusFlow-Verwaltungskonsole. Die Schaltfläche „Copy SCIM link“ (SCIM-Schaltfläche kopieren) ist hervorgehoben." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von MediusFlow aus dem Azure AD-Anwendungskatalog
 
@@ -125,7 +125,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-mediusflow-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für MediusFlow in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** und dann **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -133,7 +133,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![MediusFlow-Link in der Anwendungsliste](common/all-applications.png)
 
-3. Wählen Sie die Registerkarte **Bereitstellung** .
+3. Wählen Sie die Registerkarte **Bereitstellung**.
 
     ![Screenshot der Optionen zum Verwalten mit aufgerufener Bereitstellungsoption](common/provisioning.png)
 
@@ -145,7 +145,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
       ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/mediusflow-provisioning-tutorial/provisioning.png)
 
-6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden** .
+6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
     ![Benachrichtigungs-E-Mail](common/provisioning-notification-email.png)
 
@@ -180,7 +180,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Um den Azure AD-Bereitstellungsdienst für MediusFlow zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein** .
+13. Um den Azure AD-Bereitstellungsdienst für MediusFlow zu aktivieren, ändern Sie den **Bereitstellungsstatus** im Abschnitt **Einstellungen** in **Ein**.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
@@ -188,7 +188,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsbereich](common/provisioning-scope.png)
 
-15. Wenn Sie fertig sind, klicken Sie auf **Speichern** .
+15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
     ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
