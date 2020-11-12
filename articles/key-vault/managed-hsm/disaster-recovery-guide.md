@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 08c1b415ac075429a9bc89098233fffb8c25b710
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760392"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369255"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Notfallwiederherstellung für „Verwaltetes HSM“
 
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 In der Ausgabe dieses Befehls werden die Eigenschaften des verwalteten HSM angezeigt, das Sie erstellt haben. Die zwei wichtigsten Eigenschaften sind diese:
 
 * **name:** Im Beispiel lautet der Name „ContosoMHSM“. Sie verwenden diesen Namen für andere Key Vault-Befehle.
-* **hsmUri**: In diesem Beispiel lautet der URI https://contosohsm.managedhsm.azure.net. Für Anwendungen, die Ihr HSM über die zugehörige REST-API nutzen, muss dieser URI verwendet werden.
+* **hsmUri** : In diesem Beispiel lautet der URI https://contosohsm.managedhsm.azure.net. Für Anwendungen, die Ihr HSM über die zugehörige REST-API nutzen, muss dieser URI verwendet werden.
 
 Ihr Azure-Konto verfügt nun über die Berechtigung zum Durchführen von Vorgängen für dieses verwaltete HSM. Derzeit ist noch keine andere Person autorisiert.
 
@@ -102,11 +102,12 @@ Zum Erstellen einer HSM-Sicherung benötigen Sie Folgendes:
 - Ein Speicherkonto, unter dem die Sicherung gespeichert wird.
 - Einen Blobspeichercontainer in diesem Speicherkonto, in dem vom Sicherungsprozess ein neuer Ordner zum Speichern der verschlüsselten Sicherung erstellt wird.
 
-Im Beispiel unten verwenden wir den Befehl `az keyvault backup` für die HSM-Sicherung im Speichercontainer **mhsmbackupcontainer**, der sich im Speicherkonto **ContosoBackup** befindet. Wir erstellen ein SAS-Token, das innerhalb von 30 Minuten abläuft, und stellen es zum Schreiben der Sicherung für das verwaltete HSM bereit.
+Im Beispiel unten verwenden wir den Befehl `az keyvault backup` für die HSM-Sicherung im Speichercontainer **mhsmbackupcontainer** , der sich im Speicherkonto **ContosoBackup** befindet. Wir erstellen ein SAS-Token, das innerhalb von 30 Minuten abläuft, und stellen es zum Schreiben der Sicherung für das verwaltete HSM bereit.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')
 skey=$(az storage account keys list --query '[0].value' -o tsv --account-name ContosoBackup)
+az storage container create --account-name  mhsmdemobackup --name mhsmbackupcontainer  --account-key $skey
 sas=$(az storage container generate-sas -n mhsmbackupcontainer --account-name ContosoBackup --permissions crdw --expiry $end --account-key $skey -o tsv)
 az keyvault backup start --hsm-name ContosoMHSM2 --storage-account-name ContosoBackup --blob-container-name mhsmdemobackupcontainer --storage-container-SAS-token $sas
 

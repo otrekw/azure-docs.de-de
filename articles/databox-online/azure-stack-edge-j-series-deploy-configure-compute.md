@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to configure compute on Azure Stack Edge Pro so I can use it to transform the data before sending it to Azure.
-ms.openlocfilehash: 6bea4ee4452675a50ef9144da300c3e15652a81f
-ms.sourcegitcommit: a2d8acc1b0bf4fba90bfed9241b299dc35753ee6
+ms.openlocfilehash: 75428b28095b0e425a1670caffcf960aa6ae58f6
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91952164"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504446"
 ---
 # <a name="tutorial-transform-data-with-azure-stack-edge-pro"></a>Tutorial: Transformieren von Daten mit Azure Stack Edge Pro
 
@@ -90,7 +90,7 @@ Für die einfache Bereitstellung in diesem Tutorial benötigen Sie zwei Freigabe
 
     3. Geben Sie auf dem Blatt **Freigabe hinzufügen** den Freigabenamen an, und wählen Sie den Freigabetyp aus.
     4. Aktivieren Sie zum Bereitstellen der Edgefreigabe das Kontrollkästchen für **Freigabe mit Edgecomputing verwenden**.
-    5. Wählen Sie das **Speicherkonto**, den **Speicherdienst**, einen vorhandenen Benutzer und dann die Option **Erstellen** aus.
+    5. Wählen Sie das **Speicherkonto** , den **Speicherdienst** , einen vorhandenen Benutzer und dann die Option **Erstellen** aus.
 
         ![Hinzufügen einer Edgefreigabe](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-1.png) 
 
@@ -110,7 +110,7 @@ Für die einfache Bereitstellung in diesem Tutorial benötigen Sie zwei Freigabe
     ![Hinzufügen einer lokalen Edgefreigabe](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-2.png)
 
   
-3. Wählen Sie **Freigabe(n) hinzufügen**, um die aktualisierte Liste mit den Freigaben anzuzeigen.
+3. Wählen Sie **Freigabe(n) hinzufügen** , um die aktualisierte Liste mit den Freigaben anzuzeigen.
 
     ![Aktualisierte Liste der Freigaben](./media/azure-stack-edge-j-series-deploy-configure-compute/add-edge-share-3.png) 
  
@@ -152,19 +152,19 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob das Modul ausgef�
 
     ![Anzeigen des bereitgestellten Moduls](./media/azure-stack-edge-j-series-deploy-configure-compute/add-module-3.png)
  
-1.   Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
+1. Stellen Sie im Datei-Explorer eine Verbindung mit den lokalen und anderen Edgefreigaben her, die Sie zuvor erstellt haben.
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-2.png) 
  
-1.   Fügen Sie der lokalen Freigabe Daten hinzu.
+1. Fügen Sie der lokalen Freigabe Daten hinzu.
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-3.png) 
  
-    Die Daten werden auf die Cloudfreigabe verschoben.
+   Die Daten werden auf die Cloudfreigabe verschoben.
 
     ![Überprüfen der Datentransformation](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-4.png)  
 
-    Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Im Storage-Explorer können Sie die Daten anzeigen.
+   Anschließend werden die Daten per Pushvorgang von der Cloudfreigabe in das Speicherkonto übertragen. Im Storage-Explorer können Sie die Daten anzeigen.
 
     <!--![Verify data transform](./media/azure-stack-edge-j-series-deploy-configure-compute/verify-data-5.png)-->
  
