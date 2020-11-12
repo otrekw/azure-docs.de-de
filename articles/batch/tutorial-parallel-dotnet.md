@@ -5,12 +5,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 09/29/2020
 ms.custom: mvc, devx-track-csharp
-ms.openlocfilehash: 8c8dcd01c7e97f77e994d021e39ce6a5e591ff9f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2ea68b8a6cf26db2e4ba440140cfa900cebbb4aa
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91537581"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94335654"
 ---
 # <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Tutorial: Ausführen einer parallelen Workload mit Azure Batch über die .NET-API
 
@@ -35,7 +35,7 @@ In diesem Tutorial konvertieren Sie MP4-Mediendateien parallel in das MP3-Format
 
 * Ein Batch-Konto und ein verknüpftes Azure Storage-Konto. Informationen zur Erstellung dieser Konten finden Sie in den Batch-Schnellstartanleitungen zum [Azure-Portal](quick-create-portal.md) und zur [Azure CLI](quick-create-cli.md).
 
-* [Windows-Version (64 Bit) von ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-09-21-full_build.zip) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren.
+* [Windows-Version (64 Bit) von ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) (.zip). Laden Sie die ZIP-Datei auf Ihren lokalen Computer herunter. Für dieses Tutorial benötigen Sie nur die ZIP-Datei. Es ist nicht erforderlich, die Datei zu entzippen oder sie lokal zu installieren.
 
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
@@ -47,7 +47,7 @@ Verwenden Sie das Azure-Portal, um ffmpeg Ihrem Batch-Konto als [Anwendungspaket
 
 1. Klicken Sie im Azure-Portal auf **Weitere Dienste** > **Batch-Konten** und dann auf den Namen Ihres Batch-Kontos.
 3. Klicken Sie auf **Anwendungen** > **Hinzufügen**.
-4. Geben Sie für **Anwendungs-ID** das Tool *ffmpeg* und als Paketversion *4.3.1* ein. Wählen Sie die ffmpeg-ZIP-Datei aus, die Sie heruntergeladen haben, und klicken Sie auf **OK**. Das ffmpeg-Anwendungspaket wird Ihrem Batch-Konto hinzugefügt.
+4. Geben Sie für **Anwendungs-ID** das Tool *ffmpeg* und als Paketversion  *4.3.1* ein. Wählen Sie die ffmpeg-ZIP-Datei aus, die Sie heruntergeladen haben, und klicken Sie auf **OK**. Das ffmpeg-Anwendungspaket wird Ihrem Batch-Konto hinzugefügt.
 
 ![Hinzufügen eines Anwendungspakets](./media/tutorial-parallel-dotnet/add-application.png)
 
@@ -118,13 +118,13 @@ Sample end: 11/19/2018 3:29:36 PM
 Elapsed time: 00:09:14.3418742
 ```
 
-Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben zu überwachen. Klicken Sie beispielsweise auf **Pools** > *WinFFmpegPool*, um ein Wärmebild mit den Computeknoten Ihres Pools anzuzeigen.
+Navigieren Sie im Azure-Portal zu Ihrem Batch-Konto, um den Pool, die Computeknoten, den Auftrag und die Aufgaben zu überwachen. Klicken Sie beispielsweise auf **Pools** > *WinFFmpegPool* , um ein Wärmebild mit den Computeknoten Ihres Pools anzuzeigen.
 
 Bei der Ausführung von Aufgaben sieht das Wärmebild in etwa wie folgt aus:
 
 ![Wärmebild für Pool](./media/tutorial-parallel-dotnet/pool.png)
 
-Die normale Ausführungsdauer beträgt ca. **zehn Minuten**, wenn die Anwendung in der Standardkonfiguration ausgeführt wird. Die meiste Zeit wird für die Poolerstellung benötigt.
+Die normale Ausführungsdauer beträgt ca. **zehn Minuten** , wenn die Anwendung in der Standardkonfiguration ausgeführt wird. Die meiste Zeit wird für die Poolerstellung benötigt.
 
 [!INCLUDE [batch-common-tutorial-download](../../includes/batch-common-tutorial-download.md)]
 

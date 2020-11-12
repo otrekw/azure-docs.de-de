@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 03/26/2020
-ms.openlocfilehash: 294a3dc9525ba0a0c533d68027b148ad402cd7ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f69b62f39b7e62eea26cc4d8511505056c6821bf
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91268841"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93321278"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Tutorial: Trainieren und Bereitstellen eines Modells über die Befehlszeilenschnittstelle
 
@@ -39,7 +39,7 @@ Erfahren Sie, wie Sie die folgenden Maßnahmen durchführen:
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 
-* Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true).
+* Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
     Wenn Sie die [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) verwenden, befindet sich die CLI in der Cloud, und der Zugriff erfolgt über den Browser.
 
@@ -103,7 +103,7 @@ az extension update -n azure-cli-ml
 
 Eine Ressourcengruppe ist ein Container mit Ressourcen auf der Azure-Plattform. Wenn Sie mit Azure Machine Learning arbeiten, enthält die Ressourcengruppe Ihren Azure Machine Learning-Arbeitsbereich. Sie enthält auch andere Azure-Dienste, die vom Arbeitsbereich verwendet werden. Wenn Sie Ihr Modell z. B. mit einer cloudbasierten Computeressource trainieren, wird diese Ressource in der Ressourcengruppe erstellt.
 
-Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
+Um __eine neue Ressourcengruppe zu erstellen__ , verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 
 > [!TIP]
 > Wählen Sie eine Region aus, in der Azure Machine Learning verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -128,7 +128,7 @@ Die Antwort dieses Befehls ähnelt dem folgenden JSON-Code:
 }
 ```
 
-Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az group](https://docs.microsoft.com//cli/azure/group?view=azure-cli-latest&preserve-view=true).
+Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest).
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 

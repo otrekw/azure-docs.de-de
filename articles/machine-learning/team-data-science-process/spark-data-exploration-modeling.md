@@ -11,18 +11,18 @@ ms.topic: sample
 ms.date: 06/03/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath, contperfq4
-ms.openlocfilehash: 406092466b7ab5ca729a08f7c703bcb30812901d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b7a361319c3fc6c80c6dac80c48fb10155a3ff5b
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86027510"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93314853"
 ---
 # <a name="data-exploration-and-modeling-with-spark"></a>Durchsuchen von Daten und Modellierung mit Spark
 
 Hier erfahren Sie, wie Sie HDInsight Spark zum Trainieren von Machine Learning-Modellen für die Vorhersage von Taxifahrtkosten unter Verwendung von Spark MLlib verwenden.
 
-Dieses Beispiel veranschaulicht die verschiedenen Schritte im [Team Data Science-Prozess](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). Zum Laden, Untersuchen und Vorbereiten von Daten wird eine Teilmenge des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 verwendet. Anschließend werden mithilfe von Spark MLlib binäre Klassifizierungs- und Regressionsmodelle trainiert, um vorherzusagen, ob ein Trinkgeld für die Fahrt bezahlt wird, und um den Trinkgeldbetrag zu schätzen.
+Dieses Beispiel veranschaulicht die verschiedenen Schritte im [Team Data Science-Prozess](./index.yml). Zum Laden, Untersuchen und Vorbereiten von Daten wird eine Teilmenge des Datasets der NYC-Taxifahrten und Fahrpreise von 2013 verwendet. Anschließend werden mithilfe von Spark MLlib binäre Klassifizierungs- und Regressionsmodelle trainiert, um vorherzusagen, ob ein Trinkgeld für die Fahrt bezahlt wird, und um den Trinkgeldbetrag zu schätzen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -1119,4 +1119,4 @@ Da Sie nun Regressions- und Klassifizierungsmodelle mit der Spark MlLib erstellt
 
 **Nutzung von Modellen:** Informationen zum Bewerten der in diesem Thema erstellten Klassifizierungs- und Regressionsmodelle finden Sie unter [Bewerten von Machine Learning-Modellen, die mit Spark erstellt wurden](spark-model-consumption.md).
 
-**Kreuzvalidierung und Hyperparameter-Sweeping**: Unter [Erweiterte Datenuntersuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.
+**Kreuzvalidierung und Hyperparameter-Sweeping** : Unter [Erweiterte Datenuntersuchung und Modellierung mit Spark](spark-advanced-data-exploration-modeling.md) erfahren Sie, wie Modelle mit Kreuzvalidierung und Hyperparameter-Sweeping trainiert werden können.

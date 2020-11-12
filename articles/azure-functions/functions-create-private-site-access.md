@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c87fcf4f56b7092436fa16658a72ead24d9fec2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91530067"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423027"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -87,10 +87,10 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     | _Subnetzname_ | Lernprogramm | Der Name des Subnetzes. |
     | _Adressbereich_ (Subnetz) | 10.10.1.0/24 | Die Subnetzgröße definiert, wie viele Schnittstellen zum Subnetz hinzugefügt werden können. Dieses Subnetz wird von dem virtuellen Computer verwendet. Ein /24-Subnetz bietet 254 Hostadressen. |
 
-1. Klicken Sie auf **OK**, um das virtuelle Netzwerk zu erstellen.
-1. Vergewissern Sie sich auf der Registerkarte _Netzwerk_, dass für _Öffentliche IP_ die Option **Keine** ausgewählt ist.
+1. Klicken Sie auf **OK** , um das virtuelle Netzwerk zu erstellen.
+1. Vergewissern Sie sich auf der Registerkarte _Netzwerk_ , dass für _Öffentliche IP_ die Option **Keine** ausgewählt ist.
 1. Wählen Sie die Registerkarte _Verwaltung_ und anschließend unter _Diagnosespeicherkonto_ die Option **Neu erstellen** aus, um ein neues Speicherkonto zu erstellen.
-1. Behalten Sie für _Identität_, _Automatisch herunterfahren_ und _Sicherung_ die Standardwerte bei.
+1. Behalten Sie für _Identität_ , _Automatisch herunterfahren_ und _Sicherung_ die Standardwerte bei.
 1. Klicken Sie auf _Überprüfen + erstellen_. Wenn die Überprüfung abgeschlossen ist, wählen Sie **Erstellen** aus. Der Vorgang der VM-Erstellung dauert einige Minuten.
 
 ## <a name="configure-azure-bastion"></a>Konfigurieren von Azure Bastion
@@ -116,12 +116,12 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     > Eine ausführliche Schritt-für-Schritt-Anleitung zum Erstellen einer Azure Bastion-Ressource finden Sie im Tutorial [Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md).
 
 1. Erstellen Sie ein Subnetz, in dem Azure den Azure Bastion-Host bereitstellen kann. Wenn Sie **Subnetzkonfiguration verwalten** auswählen, wird ein neuer Bereich geöffnet, in dem Sie ein neues Subnetz definieren können.  Wählen Sie **+ Subnetz** aus, um ein neues Subnetz zu erstellen.
-1. Das Subnetz muss den Namen **AzureBastionSubnet** haben, und das Subnetzpräfix muss mindestens **/27** sein.  Klicken Sie auf **OK**, um das Subnetz zu erstellen.
+1. Das Subnetz muss den Namen **AzureBastionSubnet** haben, und das Subnetzpräfix muss mindestens **/27** sein.  Klicken Sie auf **OK** , um das Subnetz zu erstellen.
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines Subnetzes für einen Azure Bastion-Host](./media/functions-create-private-site-access/create-bastion-subnet-2.png)
 
-1. Wählen Sie auf der Seite _Bastion-Instanz erstellen_ in der Liste mit den verfügbaren Subnetzen das neu erstellte **AzureBastionSubnet**-Subnetz aus.
+1. Wählen Sie auf der Seite _Bastion-Instanz erstellen_ in der Liste mit den verfügbaren Subnetzen das neu erstellte **AzureBastionSubnet** -Subnetz aus.
 
     >[!div class="mx-imgBorder"]
     >![Erstellen eines Azure Bastion-Hosts mit einem bestimmten Subnetz](./media/functions-create-private-site-access/create-bastion-basics-2.png)
@@ -145,7 +145,7 @@ Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](funct
     | _Region_ | USA Nord Mitte | Wählen Sie eine [Region](https://azure.microsoft.com/regions/) in Ihrer Nähe oder in der Nähe von anderen Diensten aus, auf die Ihre Funktionen zugreifen. |
 
     Wählen Sie unten auf der Seite die Schaltfläche **Next: Hosting >** aus.
-1. Wählen Sie im Abschnitt _Hosting_ die passenden Werte für _Speicherkonto_, _Betriebssystem_ und _Tarif_ aus. Orientieren Sie sich dabei an den Angaben in der folgenden Tabelle.
+1. Wählen Sie im Abschnitt _Hosting_ die passenden Werte für _Speicherkonto_ , _Betriebssystem_ und _Tarif_ aus. Orientieren Sie sich dabei an den Angaben in der folgenden Tabelle.
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG      |
     | ------------ | ---------------- | ---------------- |
@@ -153,7 +153,7 @@ Im nächsten Schritt wird in Azure eine Funktions-App mit [Verbrauchsplan](funct
     | _Betriebssystem_ | Bevorzugtes Betriebssystem | Ein Betriebssystem ist für Sie basierend auf Ihrer Runtimestapelauswahl vorab ausgewählt, aber Sie können die Einstellung ggf. ändern. |
     | _Planen_ | Nutzung | Der [Hostingplan](./functions-scale.md) bestimmt die Skalierung der Funktions-App und die Ressourcenverfügbarkeit für die jeweilige Instanz. |
 1. Wählen Sie **Überprüfen + erstellen** aus, um die App-Konfigurationsauswahl zu überprüfen.
-1. Klicken Sie auf **Erstellen**, um die Funktionen-App bereitzustellen.
+1. Klicken Sie auf **Erstellen** , um die Funktionen-App bereitzustellen.
 
 ## <a name="configure-access-restrictions"></a>Konfigurieren der Zugriffseinschränkungen
 
@@ -165,8 +165,8 @@ Zur Ermöglichung von [privatem Websitezugriff](functions-networking-options.md#
 1. Die Seite _Netzwerk_ ist der Ausgangspunkt für die Konfiguration von Azure Front Door, Azure CDN und Zugriffseinschränkungen.
 1. Wählen Sie **Zugriffseinschränkungen konfigurieren** aus, um den privaten Websitezugriff zu konfigurieren.
 1. Auf der Seite _Zugriffseinschränkungen_ ist zunächst nur die Standardeinschränkung vorhanden. Die Standardeinschränkung bewirkt keinerlei Zugriffseinschränkungen für die Funktions-App.  Wählen Sie **Regel hinzufügen** aus, um eine Einschränkungskonfiguration für den privaten Websitezugriff zu erstellen.
-1. Geben Sie im Bereich _Zugriffsbeschränkung hinzufügen_ einen _Namen_, eine _Priorität_ und eine _Beschreibung_ für die neue Regel an.
-1. Wählen Sie im Dropdownfeld _Typ_ die Option **Virtuelles Netzwerk** und anschließend das zuvor erstellte virtuelle Netzwerk und anschließend das **Tutorial**-Subnetz aus. 
+1. Geben Sie im Bereich _Zugriffsbeschränkung hinzufügen_ einen _Namen_ , eine _Priorität_ und eine _Beschreibung_ für die neue Regel an.
+1. Wählen Sie im Dropdownfeld _Typ_ die Option **Virtuelles Netzwerk** und anschließend das zuvor erstellte virtuelle Netzwerk und anschließend das **Tutorial** -Subnetz aus. 
     > [!NOTE]
     > Es kann einige Minuten dauern, bis der Dienstendpunkt aktiviert wird.
 1. Auf der Seite _Zugriffseinschränkungen_ wird nun angezeigt, dass eine neue Einschränkung vorhanden ist. Es kann einige Sekunden dauern, bis der Wert von _Endpunktstatus_ von „Deaktiviert“ über „Bereitstellung“ zu „Aktiviert“ wechselt.
@@ -197,7 +197,7 @@ Im nächsten Schritt dieses Tutorials wird eine Azure-Funktion mit HTTP-Trigger 
     * [Visual Studio Code](./functions-create-first-function-vs-code.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
     * [Befehlszeile](./functions-create-first-azure-function-azure-cli.md)
-    * [Maven (Java)](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java&tabs=bash,browser)
+    * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Wählen Sie beim Veröffentlichen Ihres Azure Functions-Projekts die Funktions-App-Ressource aus, die Sie weiter oben in diesem Tutorial erstellt haben.
 1. Vergewissern Sie sich, dass die Funktion bereitgestellt wurde.
@@ -207,7 +207,7 @@ Im nächsten Schritt dieses Tutorials wird eine Azure-Funktion mit HTTP-Trigger 
 
 ## <a name="invoke-the-function-directly"></a>Direktes Aufrufen der Funktion
 
-1. Um den Zugriff auf die Funktion zu testen, müssen Sie die URL der Funktion kopieren. Wählen Sie die bereitgestellte Funktion und anschließend **Funktions-URL abrufen** aus. Klicken Sie auf die Schaltfläche **Kopieren**, um die URL in die Zwischenablage zu kopieren.
+1. Um den Zugriff auf die Funktion zu testen, müssen Sie die URL der Funktion kopieren. Wählen Sie die bereitgestellte Funktion und anschließend **Funktions-URL abrufen** aus. Klicken Sie auf die Schaltfläche **Kopieren** , um die URL in die Zwischenablage zu kopieren.
 
     >[!div class="mx-imgBorder"]
     >![Kopieren Sie die Funktions-URL](./media/functions-create-private-site-access/get-function-url.png)

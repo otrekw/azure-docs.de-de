@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: tracking-python
-ms.openlocfilehash: 13d43eb788c750a2f24033a6138ebf00ac57fffe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 123e55202de8a33bca88afcfd1f0dc0c7edeae77
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91372567"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93320094"
 ---
 # <a name="tutorial-use-your-own-data-part-4-of-4"></a>Tutorial: Verwenden eigener Daten (Teil 4 von 4)
 
 In diesem Tutorial wird gezeigt, wie Sie Ihre eigenen Daten hochladen und in Azure Machine Learning zum Trainieren von Machine Learning-Modellen verwenden können.
 
-Dieses Tutorial ist *Teil 4 einer vierteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten](tutorial-1st-experiment-sdk-setup-local.md), [Teil 2: Ausführen von „Hello World!“](tutorial-1st-experiment-hello-world.md) und [Teil 3: Trainieren eines Modells](tutorial-1st-experiment-sdk-train.md).
+Dieses Tutorial ist *Teil 4 einer vierteiligen Tutorialreihe* , in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten](tutorial-1st-experiment-sdk-setup-local.md), [Teil 2: Ausführen von „Hello World!“](tutorial-1st-experiment-hello-world.md) und [Teil 3: Trainieren eines Modells](tutorial-1st-experiment-sdk-train.md).
 
 In [Teil 3: Trainieren eines Modells](tutorial-1st-experiment-sdk-train.md) wurden Daten mithilfe der integrierten `torchvision.datasets.CIFAR10`-Methode in der PyTorch-API heruntergeladen. In vielen Fällen möchten Sie aber eigene Daten in einem Remotetrainingslauf verwenden. Dieser Artikel zeigt den Workflow, den Sie verwenden können, um in Azure Machine Learning mit eigenen Daten zu arbeiten.
 
@@ -202,7 +202,7 @@ datastore.upload(src_dir='./data', target_path='datasets/cifar10', overwrite=Tru
 Der `target_path`-Wert gibt den Pfad im Datenspeicher an, in den die CIFAR10-Daten hochgeladen werden sollen.
 
 >[!TIP] 
-> Während Sie Azure Machine Learning zum Hochladen der Daten verwenden, können Sie [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) zum Hochladen von Ad-hoc-Dateien verwenden. Wenn Sie ein ETL-Tool benötigen, können Sie [Azure Data Factory](https://docs.microsoft.com/azure/data-factory/introduction) für die Erfassung Ihrer Daten in Azure verwenden.
+> Während Sie Azure Machine Learning zum Hochladen der Daten verwenden, können Sie [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/) zum Hochladen von Ad-hoc-Dateien verwenden. Wenn Sie ein ETL-Tool benötigen, können Sie [Azure Data Factory](../data-factory/introduction.md) für die Erfassung Ihrer Daten in Azure verwenden.
 
 Führen Sie die Python-Datei aus, um die Daten hochzuladen. (Der Upload sollte schnell sein und weniger als 60 Sekunden dauern.)
 
@@ -271,7 +271,7 @@ Das Steuerungsskript ähnelt dem Skript aus [Teil 3 dieser Reihe](tutorial-1st-
       `dataset = Dataset.File.from_files( ... )`
    :::column-end:::
    :::column span="2":::
-      Ein [Dataset](https://docs.microsoft.com/python/api/azureml-core/azureml.core.dataset.dataset?view=azure-ml-py&preserve-view=true) wird verwendet, um auf die Daten zu verweisen, die Sie in Azure Blob Storage hochgeladen haben. Datasets stellen eine Abstraktionsschicht über Ihren Daten dar, die eine höhere Zuverlässigkeit und Vertrauenswürdigkeit sicherstellt.
+      Ein [Dataset](/python/api/azureml-core/azureml.core.dataset.dataset?preserve-view=true&view=azure-ml-py) wird verwendet, um auf die Daten zu verweisen, die Sie in Azure Blob Storage hochgeladen haben. Datasets stellen eine Abstraktionsschicht über Ihren Daten dar, die eine höhere Zuverlässigkeit und Vertrauenswürdigkeit sicherstellt.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -279,7 +279,7 @@ Das Steuerungsskript ähnelt dem Skript aus [Teil 3 dieser Reihe](tutorial-1st-
       `config = ScriptRunConfig(...)`
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) wurde geändert und enthält jetzt eine Liste von Argumenten, die an `train.py` übergeben werden. Das `dataset.as_named_input('input').as_mount()`-Argument bedeutet, dass das angegebene Verzeichnis im Computeziel _eingebunden_ wird.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) wurde geändert und enthält jetzt eine Liste von Argumenten, die an `train.py` übergeben werden. Das `dataset.as_named_input('input').as_mount()`-Argument bedeutet, dass das angegebene Verzeichnis im Computeziel _eingebunden_ wird.
    :::column-end:::
 :::row-end:::
 

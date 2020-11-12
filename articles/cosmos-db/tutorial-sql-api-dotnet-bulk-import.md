@@ -4,18 +4,20 @@ description: Hier erfahren Sie, wie Sie Daten in Azure Cosmos DB importieren ode
 author: ealsur
 ms.author: maquaran
 ms.service: cosmos-db
+ms.subservice: cosmosdb-sql
 ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cfab8ba88c7da84efb3f6aed6f95bb100507f8da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
+ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90981936"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93341237"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Ausführen eines Massenimports von Daten in ein Azure Cosmos DB-SQL-API-Konto mithilfe des .NET SDK
+[!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
 Dieses Tutorial enthält eine Beschreibung der Erstellung einer .NET-Konsolenanwendung, mit der der bereitgestellte Durchsatz (RU/s), der zum Importieren von Daten in Azure Cosmos DB benötigt wird, optimiert wird. In diesem Artikel lesen Sie Daten aus einer Beispieldatenquelle aus und importieren diese in einen Azure Cosmos-Container.
 In diesem Tutorial wird [mindestens Version 3.0](https://www.nuget.org/packages/Microsoft.Azure.Cosmos) des Azure Cosmos DB .NET SDK verwendet, das auf .NET Framework oder .NET Core ausgerichtet werden kann.
@@ -44,7 +46,7 @@ Vergewissern Sie sich zunächst, dass Sie über die folgenden Ressourcen verfüg
 
 ## <a name="step-2-set-up-your-net-project"></a>Schritt 2: Einrichten des .NET-Projekts
 
-Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus. Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen *bulk-import-demo* zu erstellen. Mit dem Parameter `--langVersion` wird die *LangVersion*-Eigenschaft in der erstellten Projektdatei festgelegt.
+Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus. Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen *bulk-import-demo* zu erstellen. Mit dem Parameter `--langVersion` wird die *LangVersion* -Eigenschaft in der erstellten Projektdatei festgelegt.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -84,7 +86,7 @@ Die Beispielanwendung muss sich bei Ihrem Azure Cosmos-Konto authentifizieren. F
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1.  Navigieren Sie zu Ihrem Azure Cosmos-Konto.
-1.  Öffnen Sie den Bereich **Schlüssel**, und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos.
+1.  Öffnen Sie den Bereich **Schlüssel** , und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos.
 
 Wenn Sie den Azure Cosmos DB-Emulator nutzen, können Sie die Anmeldeinformationen für den Emulator [in diesem Artikel](local-emulator.md#authenticate-requests) verwenden.
 
