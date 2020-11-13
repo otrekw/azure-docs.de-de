@@ -8,7 +8,6 @@
     - name: Unterstützte Datenspeicher
       href: supported-data-stores.md
 - name: Schnellstarts
-  expanded: true
   items:
     - name: 'Freigeben von Daten: Azure-Portal'
       href: share-your-data-portal.md
@@ -16,6 +15,7 @@
       displayName: Resource Manager
       href: share-your-data-arm.md
 - name: Tutorials
+  expanded: true
   items:
     - name: Freigeben von Daten
       href: share-your-data.md
