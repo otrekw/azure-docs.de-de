@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 06/12/2020
+ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: c2b96193204c6938338594054bc3cd4715008313
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89055310"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410775"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Sprachdienst: Neues in der Dokumentation
 
@@ -23,9 +23,10 @@ Herzlich Willkommen! Auf dieser Seite erfahren Sie, was in der Dokumentation zum
 
 ### <a name="service-updates"></a>Dienstupdates
 
-Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices SDK oder der Speech-Befehlszeilenschnittstelle finden Sie unter folgenden Links:
+Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices SDK, der Speech-Befehlszeilenschnittstelle oder der Speech-Container finden Sie unter folgenden Links:
 * [Versionshinweise zum Speech SDK](releasenotes.md)
 * [Versionshinweise zum Speech Devices SDK](devices-sdk-release-notes.md)
+* [Versionshinweise zu Cognitive Services-Containern](../containers/container-image-tags.md)
 
 ## <a name="may-2020"></a>Mai 2020
 

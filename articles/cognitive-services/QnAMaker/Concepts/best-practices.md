@@ -4,13 +4,13 @@ description: Nutzen Sie diese bewährten Methoden, um Ihre Knowledge Base zu ver
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 02/15/2020
-ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777019"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376756"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -116,11 +116,17 @@ Standardmäßig durchsucht QnA Maker Fragen und Antworten. Wenn Sie nur Fragen d
 Mit [Metadaten](../How-To/edit-knowledge-base.md) kann einer Clientanwendung mitgeteilt werden, dass nicht alle Antworten verwendet werden sollen, sondern stattdessen die Ergebnisse einer Benutzerabfrage basierend auf Metadatentags eingegrenzt werden sollen. Die Antwort aus der Knowledge Base kann basierend auf Metadatentags variieren, selbst wenn die Frage identisch ist. So gibt es beispielsweise auf die Frage *„Wo ist der Parkplatz?“* eine andere Antwort, wenn ein anderer Standort für eine Filiale der Restaurantkette verwendet wird: Die Metadaten sind für *Standort: Seattle* anders als für *Standort: Redmond*.
 
 ### <a name="use-synonyms"></a>Verwenden von Synonymen
-Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und für alle Wissensdatenbanken des Diensts gemeinsam verwendet.
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und **für alle Wissensdatenbanken des Diensts gemeinsam verwendet**.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme in QnA Maker verwaltet (Vorschau) werden **pro Wissensdatenbank hinzugefügt**.
 
 |Ursprüngliches Wort|Synonyme|
 |--|--|
 |kaufen|erwerben<br>Electronic Banking<br>E-Banking|
+
+---
 
 ### <a name="use-distinct-words-to-differentiate-questions"></a>Verwenden unterschiedlicher Wörter für die Unterscheidung von Fragen
 Die QnA Maker-Algorithmen für Rangfolgen, die eine Benutzerfrage einer Frage in der Wissensdatenbank zuordnen, funktionieren am besten, wenn jede Frage eine andere Anforderung behandelt. Die Wiederholung derselben Wortgruppe in unterschiedlichen Fragen reduziert die Wahrscheinlichkeit, dass die richtige Antwort für eine bestimmte Benutzerfrage mit diesen Wörtern ausgewählt wird.

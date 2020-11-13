@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 06/10/2020
+ms.date: 11/06/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc03cf03f8a8e0f2a222ca1089618eaade9485d
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: 24d4dd4d0caa49b9514bf19f707ea87b0b071a79
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496068"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357095"
 ---
 # <a name="how-to-deploy-a-people-counting-web-application"></a>Gewusst wie: Bereitstellen einer Webanwendung für die Erfassung der Personenanzahl
 
@@ -64,6 +64,8 @@ az iot hub device-identity create --hub-name "<IoT Hub Name>" --device-id "<Edge
 ### <a name="deploy-the-container-on-azure-iot-edge-on-the-host-computer"></a>Bereitstellen des Containers in Azure IoT Edge auf dem Hostcomputer
 
 Stellen Sie den Container für die räumliche Analyse mithilfe der Azure-Befehlszeilenschnittstelle als IoT-Modul auf dem Hostcomputer bereit. Der Bereitstellungsprozess erfordert eine Bereitstellungsmanifestdatei, in der die erforderlichen Container, Variablen und Konfigurationen für Ihre Bereitstellung beschrieben werden. Sie finden ein Beispiel für ein für [Azure Stack Edge spezifisches Bereitstellungsmanifest](https://github.com/Azure-Samples/cognitive-services-rest-api-samples/) sowie für ein [nicht auf Azure Stack Edge bezogenes Bereitstellungsmanifest](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) auf GitHub. Diese enthalten eine einfache Bereitstellungskonfiguration für den Container zur *räumlichen Analyse*. 
+
+Alternativ können Sie die Azure IoT-Erweiterungen für Visual Studio Code verwenden, um Vorgänge mit Ihrem IoT Hub auszuführen. Weitere Informationen erhalten Sie unter [Bereitstellen von Azure IoT Edge-Modulen mithilfe von Visual Studio Code](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-modules-vscode).
 
 > [!NOTE] 
 > Die Container *spatial-analysis-telegraf* und *spatial-analysis-diagnostics* sind optional. Sie können diese aus der Datei *DeploymentManifest.json* entfernen. Weitere Informationen finden Sie im Artikel zu [Telemetrie und Problembehandlung](./spatial-analysis-logging.md). Sie finden zwei *DeploymentManifest.json* -Beispieldateien auf Github, wahlweise für [Azure Stack Edge-Geräte](https://go.microsoft.com/fwlink/?linkid=2142179) oder für einen anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json)
@@ -190,6 +192,9 @@ Nachdem diese beiden Einstellungen hinzugefügt wurden, klicken Sie auf **Speich
 Wechseln Sie zur Azure-Web-App, und vergewissern Sie sich, dass die Bereitstellung erfolgreich war und die Web-App ausgeführt wird. Navigieren Sie zur konfigurierten URL `<yourapp>.azurewebsites.net`, um die ausgeführte App anzuzeigen.
 
 ![Testen der Bereitstellung](./media/spatial-analysis/solution-app-output.png)
+
+## <a name="get-the-personcount-source-code"></a>Abrufen des PersonCount-Quellcodes
+Wenn Sie den Quellcode für diese Anwendung anzeigen oder ändern möchten, finden Sie ihn [auf GitHub](https://github.com/Azure-Samples/cognitive-services-spatial-analysis).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

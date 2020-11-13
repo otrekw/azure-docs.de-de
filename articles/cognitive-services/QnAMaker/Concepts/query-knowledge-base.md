@@ -1,16 +1,14 @@
 ---
 title: 'Abfragen der Wissensdatenbank: QnA Maker'
 description: Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wird die Wissensdatenbank mithilfe der generateAnswer-API am Vorhersageendpunkt der Runtime abgefragt.
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 01/27/2020
-ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: e8dd056a7b6357b8342d3059e17baa88db92b404
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776917"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376711"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>Abfragen der Wissensdatenbank nach Antworten
 
@@ -18,9 +16,11 @@ Eine Wissensdatenbank muss veröffentlicht werden. Nach der Veröffentlichung wi
 
 ## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Verarbeitung einer Benutzerabfrage mit QnA Maker, um die beste Antwort auszuwählen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Die trainierte und [veröffentlichte](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
 
-![Einstufungsmodellprozess für eine Benutzerabfrage](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+![Einstufungsmodellprozess für eine Benutzerabfrage](../media/qnamaker-concepts-knowledgebase/ranker-v1.png)
 
 ### <a name="ranker-process"></a>Einstufungsprozess
 
@@ -38,6 +38,30 @@ Der Prozess wird in der folgenden Tabelle erläutert:
 |||
 
 Zu den verwendeten Funktionen gehören u. a. Semantik auf Wortebene, Wichtigkeit auf Begriffsebene in einem Korpus und Deep Learning-Semantikmodelle, um die Ähnlichkeit und Relevanz zwischen zwei Textzeichenfolgen zu ermitteln.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Die trainierte und [veröffentlichte](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker-Wissensdatenbank empfängt eine Benutzerabfrage von einem Bot oder einer anderen Clientanwendung über die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage). Im folgenden Diagramm ist der Prozess nach dem Empfang der Benutzerabfrage dargestellt.
+
+![Einstufungsmodellprozess für eine Benutzerabfrage (Vorschau)](../media/qnamaker-concepts-knowledgebase/ranker-v2.png)
+
+### <a name="ranker-process"></a>Einstufungsprozess
+
+Der Prozess wird in der folgenden Tabelle erläutert:
+
+|Schritt|Zweck|
+|--|--|
+|1|Die Clientanwendung sendet die Benutzerabfrage an die [GenerateAnswer-API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage).|
+|2|QnA Maker führt die Vorverarbeitung der Benutzerabfrage mit Spracherkennung, Rechtschreibprüfung und Worttrennung durch.|
+|3|Diese Vorverarbeitung hat das Ziel, die Benutzerabfrage so anzupassen, dass die besten Suchergebnisse erzielt werden.|
+|4|Die geänderte Abfrage wird an den Azure Cognitive Search-Index gesendet, der die mit `top` festgelegte Anzahl von Ergebnissen empfängt. Falls diese Ergebnisse die richtige Antwort nicht enthalten, sollten Sie den Wert von `top` leicht erhöhen. Im Allgemeinen eignet sich der Wert „10“ für `top` bei 90 % aller Abfragen.|
+|5|QnA Maker verwendet ein modernes transformatorbasiertes Modell, um die Ähnlichkeit zwischen der Benutzerabfrage und den aus Azure Cognitive Search abgerufenen QnA-Kandidatenergebnissen zu ermitteln. Das transformatorbasierte Modell ist ein mehrsprachiges Deep Learning-Modell, das für alle Sprachen horizontal arbeitet, um die Konfidenzscores sowie die neue Rangfolge zu bestimmen.|
+|6|Die neuen Ergebnisse werden in der Rangfolge an die Clientanwendung zurückgegeben.|
+|||
+
+Der Bewerter bearbeitet alle alternativen Fragen und Antworten, um die am besten übereinstimmenden QnA-Paare für die Benutzerabfrage zu finden. Benutzer haben die Flexibilität, den Bewerter als reinen Fragenbewerter zu konfigurieren. 
+
+---
 
 ## <a name="http-request-and-response-with-endpoint"></a>HTTP-Anforderung und -Antwort mit Endpunkt
 Beim Veröffentlichen Ihrer Wissensdatenbank erstellt der Dienst einen REST-basierten HTTP-Endpunkt, den Sie in Ihre Anwendung integrieren können, etwa in Form eines Chatbots.

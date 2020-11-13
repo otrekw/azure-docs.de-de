@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 01/31/2020
 ms.author: trbye
-ms.openlocfilehash: a04088fc1074949a1228794c22c1fa65a0b736a7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5685a2553b95308a1c18c3e490737338f609b594
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370040"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330936"
 ---
 # <a name="improve-synthesis-with-the-audio-content-creation-tool"></a>Verbessern der Synthese mit dem Audioinhaltserstellungs-Tool
 
@@ -131,7 +131,7 @@ Wenn mehrere Benutzer die Audioinhaltserstellung verwenden möchten, können Sie
 
 Führen Sie diese Schritte aus, um einen Benutzer zu einer Sprachressource hinzuzufügen, damit er/sie die Audioinhaltserstellung verwenden kann.
 
-1. Suchen Sie im Azure-Portal nach **Cognitive Services** , und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach **Cognitive Services** , und wählen Sie die Sprachressource aus, der Sie Benutzer hinzufügen möchten.
 2. Klicken Sie auf **Zugriffssteuerung (IAM)** . Klicken Sie auf die Registerkarte **Rollenzuweisungen** , um alle Rollenzuweisungen für dieses Abonnement anzuzeigen.
     :::image source="media/audio-content-creation/access-control-roles.png" alt-text="Registerkarte „Rollenzuweisung“":::
 1. Klicken Sie auf **Hinzufügen** > **Rollenzuweisung hinzufügen** , um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen. Wählen Sie in der Dropdownliste „Rolle“ die Rolle **Cognitive Service-Benutzer** aus. Wenn Sie den Benutzer zum Besitzer dieser Sprachressource machen möchten, können Sie die Rolle **Besitzer** auswählen.

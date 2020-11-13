@@ -4,22 +4,22 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: 3d4cc17570057f5f37cf38685847afbe38ea6831
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a71762010984928b93c19c7256c2ba4f0fe0f64b
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90606770"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94503948"
 ---
-| Resource | Standarddateifreigaben | Premium-Dateifreigaben |
+| Resource | Standarddateifreigaben\* | Premium-Dateifreigaben |
 |----------|---------------|------------------------------------------|
 | Mindestgröße einer Dateifreigabe | Keine Mindestgröße, nutzungsbasierte Bezahlung | 100 GiB; bereitgestellt |
-| Maximale Größe einer Dateifreigabe | 100 TiB*, 5 TiB | ca. 100 TiB |
+| Maximale Größe einer Dateifreigabe | 100 TiB\*\*, 5 TiB | ca. 100 TiB |
 | Maximale Größe einer Datei in einer Dateifreigabe | 1 TiB | 4 TiB |
 | Maximale Anzahl an Dateien in einer Dateifreigabe | Keine Begrenzung | Keine Begrenzung |
-| Maximale Anzahl IOPS pro Freigabe | 10.000 IOPS*, 1.000 IOPS oder 100 Anforderungen in 100 ms | 100.000 IOPS |
+| Maximale Anzahl IOPS pro Freigabe | 10.000 IOPS\*\*, 1.000 IOPS oder 100 Anforderungen in 100 ms | 100.000 IOPS |
 | Maximale Anzahl gespeicherter Zugriffsrichtlinien pro Dateifreigabe | 5 | 5 |
-| Zieldurchsatz für eine einzelne Dateifreigabe | bis zu 300 MiB/s*, bis zu 60 MiB/s  | Siehe: Ein- und Ausgangswerte für Premium-Dateifreigabe|
+| Zieldurchsatz für eine einzelne Dateifreigabe | bis zu 300 MiB/s\*\*, bis zu 60 MiB/s  | Siehe: Ein- und Ausgangswerte für Premium-Dateifreigabe|
 | Maximaler Ausgang für eine einzelne Dateifreigabe | Siehe: Zieldurchsatz für Standard-Dateifreigabe | Bis zu 6.204 MiB/s |
 | Maximaler Eingang für eine einzelne Dateifreigabe | Siehe: Zieldurchsatz für Standard-Dateifreigabe | Bis zu 4.136 MiB/s |
 | Maximale Anzahl geöffneter Handles pro Datei oder Verzeichnis | 2\.000 geöffnete Handles | 2\.000 geöffnete Handles |
@@ -28,4 +28,6 @@ ms.locfileid: "90606770"
 | Maximale Pfadnamenkomponente (im Pfad \A\B\C\D ist jeder Buchstabe eine Komponente) | 255 Zeichen | 255 Zeichen |
 | Grenzwert für feste Links (nur NFS) | – | 178 |
 
-\* Der Standardwert für Standarddateifreigaben beträgt 5 TiB. Ausführliche Informationen zum Hochskalieren von Standarddateifreigaben auf 100 TiB finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](../articles/storage/files/storage-files-how-to-create-large-file-share.md).
+\* Die Grenzwerte für Standarddateifreigaben gelten für alle drei Dienstebenen, die für Standarddateifreigaben verfügbar sind: transaktionsoptimiert, heiß und kalt.
+
+\*\* Der Standardwert für Standarddateifreigaben beträgt 5 TiB. Ausführliche Informationen zum Hochskalieren von Standarddateifreigaben auf 100 TiB finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](../articles/storage/files/storage-files-how-to-create-large-file-share.md).

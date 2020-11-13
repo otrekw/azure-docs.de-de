@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/26/2020
+ms.date: 11/09/2020
 ms.author: memildin
-ms.openlocfilehash: 549a95b0b2ffc2b2d2bf5670a961e0454683e33a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: df863372cbf7abfb6fee145b7d13bb00d8deb074
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026716"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94380164"
 ---
 # <a name="important-upcoming-changes-to-azure-security-center"></a>Wichtige bevorstehende Änderungen an Azure Security Center
 
@@ -31,49 +31,48 @@ Die neuesten Versionshinweise finden Sie unter [Neuerungen in Azure Security Cen
 
 ## <a name="planned-changes"></a>Geplante Änderungen
 
-### <a name="recommendations-related-to-azure-security-benchmark-to-be-added-preview"></a>Empfehlungen im Zusammenhang mit dem Hinzufügen eines Vergleichstests für die Azure-Sicherheit (Vorschau)
+### <a name="system-updates-should-be-installed-on-your-machines-recommendation-getting-sub-recommendations"></a>Empfehlung „Auf Ihren Computern sollten Systemupdates installiert werden“ mit Unterempfehlungen
+
+#### <a name="summary"></a>Zusammenfassung
 
 | Aspekt | Details |
 |---------|---------|
-|Ankündigungsdatum | 26. Oktober 2020  |
-|Datum dieser Änderung  |  November 2020 |
-|Auswirkung     | Möglicherweise sind weitere Empfehlungen zu prüfen.<br>Keine unmittelbaren Auswirkungen auf Sicherheitsbewertung – Empfehlungen der Vorschau wirken sich nicht auf Ihre Sicherheitsbewertung aus.<br>Keine unmittelbare Auswirkung auf den Integritätsstatus Ihrer Ressourcen – Empfehlungen der Vorschau versetzen keine Ressourcen in den Zustand „Fehlerhaft“.|
+|Ankündigungsdatum | 9\. November 2020  |
+|Datum dieser Änderung  |  Mitte-Ende November 2020 |
+|Auswirkung     | Während des Übergangs von der aktuellen zur neuen Version dieser Empfehlung kann sich Ihre Sicherheitsbewertung ändern. |
 |  |  |
 
-Beim Azure-Sicherheitsvergleichstest handelt es sich um einen von Microsoft erstellten Satz Azure-spezifischer Richtlinien zu bewährten Methoden für Sicherheit und Compliance, die auf allgemeinen Complianceframeworks basieren. [Weitere Informationen zum Azure-Sicherheitsvergleichstest](../security/benchmarks/introduction.md)
+Wir veröffentlichen eine verbesserte Version der Empfehlung **Auf Ihren Computern sollten Systemupdates installiert werden**. Die neue Version *ersetzt* die aktuelle Version in der Sicherheitssteuerung „Systemupdates anwenden“ und bietet die folgenden Verbesserungen:
 
-Die folgenden 18 neuen Empfehlungen werden zu Security Center hinzugefügt, um die Abdeckung des Vergleichstests zu erhöhen.
+- Unterempfehlungen für jedes fehlende Update
+- Eine neu gestaltete Benutzeroberfläche auf den Azure Security Center-Seiten des Azure-Portals
+- Erweiterte Daten für die Empfehlung aus Azure Resource Graph
 
-Empfehlungen der Vorschau versetzen keine Ressourcen in einen fehlerhaften Zustand, und sie werden nicht in die Berechnungen Ihrer Sicherheitsbewertung einbezogen. Setzen Sie sie trotzdem um, wann immer möglich, damit sie nach Ablauf des Vorschauzeitraums zu Ihrer Bewertung beitragen. Informationen zum Umgang mit diesen Empfehlungen finden Sie unter [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md).
+#### <a name="transition-period"></a>Übergangszeitraum
 
-- Azure Backup sollte für virtuelle Computer aktiviert sein
-- Erzwingen einer SSL-Verbindung muss für MySQL-Datenbankserver aktiviert sein
-- Erzwingen einer SSL-Verbindung muss für PostgreSQL-Datenbankserver aktiviert sein
-- Georedundante Sicherung muss für Azure Database for MariaDB aktiviert sein
-- Georedundante Sicherung muss für Azure Database for MySQL aktiviert sein
-- Georedundante Sicherung muss für Azure Database for PostgreSQL aktiviert sein
-- Java sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
-- Java sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden
-- Java sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
-- PHP sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
-- PHP sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
-- Privater Endpunkt muss für MariaDB-Server aktiviert sein
-- Privater Endpunkt muss für MySQL-Server aktiviert sein
-- Privater Endpunkt muss für PostgreSQL-Server aktiviert sein
-- Python sollte für Ihre API-App auf die aktuelle Version aktualisiert werden
-- Python sollte für Ihre Funktions-App auf die aktuelle Version aktualisiert werden
-- Python sollte für Ihre Web-App auf die aktuelle Version aktualisiert werden
-- Web-Apps sollten ein SSL-Zertifikat für alle eingehenden Anforderungen anfordern
+Es wird einen Übergangszeitraum von (ungefähr) 36 Std. geben. Um mögliche Unterbrechungen zu minimieren, wurde die Durchführung des Updates über ein Wochenende geplant. Während des Übergangs können Ihre Sicherheitsbewertung betroffen sein.
 
-Verwandte Links:
+#### <a name="redesigned-portal-experience"></a>Neu gestaltete Benutzeroberfläche des Portals
 
-- [Weitere Informationen zum Vergleichstest für die Azure-Sicherheit](../security/benchmarks/introduction.md)
-- [Weitere Informationen zu API-Apps in Azure](../app-service/app-service-web-tutorial-rest-api.md)
-- [Weitere Informationen zu Funktions-Apps in Azure](../azure-functions/functions-overview.md)
-- [Weitere Informationen zu Web-Apps in Azure](../app-service/overview.md)
-- [Weitere Informationen zu Azure Database for MariaDB](../mariadb/overview.md)
-- [Weitere Informationen zu Azure Database for MySQL](../mysql/overview.md)
-- [Weitere Informationen zu Azure Database for PostgreSQL](../postgresql/overview.md)
+Die Seite mit den Empfehlungsdetails für **Auf Ihren Computern sollten Systemupdates installiert werden** enthält die unten gezeigte Liste der Ergebnisse. Wenn Sie ein einzelnes Ergebnis auswählen, wird die Detailansicht mit einem Link zu den Informationen zur Risikominderung und einer Liste der betroffenen Ressourcen geöffnet.
+
+:::image type="content" source="./media/upcoming-changes/system-updates-should-be-installed-subassessment.png" alt-text="Öffnen einer der Unterempfehlungen in der Benutzeroberfläche des Portals für die aktualisierte Empfehlung":::
+
+
+#### <a name="richer-data-from-azure-resource-graph"></a>Ausführlichere Daten aus Azure Resource Graph
+
+Azure Resource Graph ist ein Dienst in Azure, der für eine effiziente Untersuchung von Ressourcen konzipiert ist. Sie können ARG verwenden, um über einen bestimmten Satz von Abonnements Abfragen im großen Stil durchzuführen und Ihre Umgebung so effektiv zu verwalten. 
+
+Für Azure Security Center können Sie ARG und die [Kusto-Abfragesprache (KQL)](https://docs.microsoft.com/azure/data-explorer/kusto/query/) verwenden, um eine Vielzahl von Daten zum Sicherheitsstatus abzufragen.
+
+Wenn Sie die aktuelle Version von **Auf Ihren Computern sollten Systemupdates installiert werden** abfragen, ist die einzige von ARG bereitgestellte Information die, dass die Empfehlung auf einem Computer korrigiert werden muss. Wenn die aktualisierte Version veröffentlicht wird, gibt die folgende Abfrage alle fehlenden Systemupdates, gruppiert nach Computer, zurück.
+
+```kusto
+securityresources
+| where type =~ "microsoft.security/assessments/subassessments"
+| where extract(@"(?i)providers/Microsoft.Security/assessments/([^/]*)", 1, id) == "4ab6e3c5-74dd-8b35-9ab9-f61b30875b27"
+| where properties.status.code == "Unhealthy"
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

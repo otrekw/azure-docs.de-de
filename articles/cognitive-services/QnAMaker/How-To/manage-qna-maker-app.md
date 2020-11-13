@@ -4,13 +4,13 @@ description: QnA Maker ermöglicht mehreren Personen, an einer Wissensdatenbank 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 10/11/2020
-ms.openlocfilehash: 77290d271709db36f9c62e165b0b4070783b3ec6
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.date: 11/09/2020
+ms.openlocfilehash: 93d9cc871d1cb114f7f08b68eb8ae9d597e228b9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92128421"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376484"
 ---
 # <a name="manage-qna-maker-app"></a>Verwalten der QnA Maker-App
 
@@ -43,7 +43,7 @@ In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwende
 
     ![IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam.png)
 
-1. Wählen Sie **Hinzufügen** .
+1. Wählen Sie **Hinzufügen**.
 
     ![Hinzufügen von IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add.png)
 
@@ -59,7 +59,7 @@ In den folgenden Schritten wird zwar die Rolle „Projektmitarbeiter“ verwende
 
     :::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-add-role-iam.png" alt-text="Hinzufügen einer IAM-Rolle in QnA Maker.":::
 
-1. Geben Sie die E-Mail-Adresse des Benutzers ein, und klicken Sie auf **Speichern** .
+1. Geben Sie die E-Mail-Adresse des Benutzers ein, und klicken Sie auf **Speichern**.
 
     ![Hinzufügen einer E-Mail-Adresse für IAM in QnA Maker](../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-iam-add-email.png)
 
@@ -69,13 +69,23 @@ Wenn sich die Person, für die Sie Ihren QnA Maker-Dienst freigegeben haben, be
 
 Wenn sie eine Wissensdatenbank auswählen, wird ihre aktuelle Rolle auf dieser QnA Maker-Ressource neben dem Namen der Wissensdatenbank angezeigt.
 
-:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Hinzufügen einer IAM-Rolle in QnA Maker.":::
+:::image type="content" source="../media/qnamaker-how-to-collaborate-knowledge-base/qnamaker-knowledge-base-role-name.png" alt-text="Screenshot der Wissensdatenbank im Bearbeitungsmodus mit Rollennamen in Klammern neben dem Namen der Wissensdatenbank in der linken oberen Ecke der Webseite.":::
 
 ## <a name="upgrade-runtime-version-to-use-active-learning"></a>Upgraden der Laufzeitversion, um aktives Lernen zu nutzen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates), um dieses Feature zu nutzen.
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Da bei QnA Maker verwaltet (Vorschau) die Runtime vom QnA Maker-Dienst selbst gehostet wird, ist es nicht erforderlich, ein Upgrade der Runtime manuell durchzuführen.
+
+---
+
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>Aktivieren des aktiven Lernens für alternative Fragen
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie das Feature, um die vorgeschlagenen Fragen anzuzeigen. Nachdem Sie aktives Lernen aktiviert haben, müssen Sie Informationen aus der Client-App an QnA Maker senden. Weitere Informationen finden Sie unter [Architekturfluss für die Verwendung der GenerateAnswer- und der Trainings-API über einen Bot](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
 
@@ -86,13 +96,19 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
     ![Aktivieren Sie auf der Seite „Diensteinstellungen“ Alternativen für die vom Feature für aktives Lernen vorgeschlagenen Fragen. Wählen Sie im Menü rechts oben Ihren Benutzernamen und anschließend „Diensteinstellungen“ aus.](../media/improve-knowledge-base/Endpoint-Keys.png)
 
 
-1. Suchen Sie nach dem QnA Maker-Dienst, und aktivieren Sie die Option **Active Learning** .
+1. Suchen Sie nach dem QnA Maker-Dienst, und aktivieren Sie die Option **Active Learning**.
 
     > [!div class="mx-imgBorder"]
     > [![Aktivieren Sie auf der Seite „Diensteinstellungen“ das Feature für aktives Lernen. Wenn Sie das Feature nicht aktivieren können, müssen Sie möglicherweise ein Upgrade des Diensts ausführen.](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png)](../media/improve-knowledge-base/turn-active-learning-on-at-service-setting.png#lightbox)
     > [!Note]
     > Die genaue Version auf der vorherigen Abbildung ist nur als Beispiel dargestellt. Ihre Version kann abweichen.
     Nachdem Sie **Aktives Lernen** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Das Feature für aktives Lernen ist in QnA Maker verwaltet (Vorschau) standardmäßig **aktiviert**. Verwenden Sie zum Anzeigen der vorgeschlagenen alternativen Fragen die [Anzeigeoptionen](../How-To/improve-knowledge-base.md#view-suggested-questions) auf der Seite „Bearbeiten“.
+
+---
 
 ## <a name="review-suggested-alternate-questions"></a>Überprüfen von Vorschlägen für alternative Fragen
 

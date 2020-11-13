@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/14/2020
 ms.author: anavin
 ms.custom: include file
-ms.openlocfilehash: baf3d02e1c0ecf51ddea043ee560d5054f09d057
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 0d5c9c4a0191c6d5effd8f6067cb6602ed239125
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91936225"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94329557"
 ---
 ### <a name="networking-limits---azure-resource-manager"></a><a name="azure-resource-manager-virtual-networking-limits"></a>Netzwerkgrenzwerte – Azure Resource Manager
 Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azure Resource Manager** pro Region pro Abonnement verwaltet werden. Erfahren Sie, wie Sie [die aktuelle Ressourcennutzung anhand der Grenzwerte Ihres Abonnements anzeigen](../articles/networking/check-usage-against-limits.md).
@@ -55,6 +55,7 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den **Azu
 | Öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
 | Statische öffentliche IP-Adressen<sup>1</sup> | 10 für Basic. | Wenden Sie sich an den Support. |
 | Öffentliche Standard-IP-Adressen<sup>1</sup> | 10 | Wenden Sie sich an den Support. |
+| [Öffentliche IP-Adressen pro Ressourcengruppe](../articles/azure-resource-manager/management/resources-without-resource-group-limit.md#microsoftnetwork) | 800 | Wenden Sie sich an den Support. | 
 | Präfixe von öffentlichen IP-Adressen | begrenzt durch die Anzahl der öffentlichen Standard-IPs in einem Abonnement | Wenden Sie sich an den Support. |
 | Präfixlänge für öffentliche IP-Adressen | /28 | Wenden Sie sich an den Support. |
 
@@ -106,6 +107,6 @@ Die folgenden Grenzwerte gelten nur für Netzwerkressourcen, die über den Azure
 | Benutzerdefinierte Routen pro Routingtabelle |400 |400 |
 | Öffentliche IP-Adressen (dynamisch) |500 |500 |
 | Reservierte öffentliche IP-Adressen |500 |500 |
-| Öffentliche VIP-Adressen pro Bereitstellung |5 |Support kontaktieren |
-| Private VIP-Adressen (interner Lastenausgleich) pro Bereitstellung |1 |1 |
+| Öffentliche IP-Adresse pro Bereitstellung |5 |Support kontaktieren |
+| Private IP-Adressen (interner Lastenausgleich) pro Bereitstellung |1 |1 |
 | Endpunkt-Zugriffssteuerungslisten (ACLs) |50 |50 |

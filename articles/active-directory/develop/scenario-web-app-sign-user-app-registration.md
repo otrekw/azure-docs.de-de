@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 07/14/2020
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 0f4ad8db5b750a8e75a921a6d459a1a294a4bad0
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 29f5d2960a678204387b2bd1dfd6d4acdc4f9c3d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910031"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442513"
 ---
 # <a name="web-app-that-signs-in-users-app-registration"></a>Web-App für Benutzeranmeldungen: App-Registrierung
 
@@ -123,5 +123,4 @@ Sie können diese Links für den Einstieg in die Erstellung Ihrer Webanwendung v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-> [!div class="nextstepaction"]
-> [Codekonfiguration der App](scenario-web-app-sign-user-app-configuration.md)
+Fahren Sie mit dem nächsten Artikel in diesem Szenario fort: [Codekonfiguration der App](scenario-web-app-sign-user-app-configuration.md).

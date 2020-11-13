@@ -196,7 +196,7 @@
           href: sql-api-python-samples.md
         - name: PowerShell
           href: powershell-samples.md
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: cli-samples.md
         - name: Azure Resource Manager
           href: templates-samples-sql.md
@@ -703,6 +703,8 @@
               href: migrate-java-v4-sdk.md
             - name: Migrieren zu .NET V3 SDK
               href: migrate-dotnet-v3.md
+            - name: Migrieren zum .NET V2 SDK
+              href: migrate-dotnet-v2.md
         - name: Problembehandlung
           items:
             - name: Häufige Fehler

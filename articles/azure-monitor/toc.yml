@@ -180,6 +180,21 @@
               href: app/pricing.md
             - name: Protokolldatennutzung und -kosten
               href: platform/manage-cost-storage.md
+    - name: Azure Monitor-Metriken
+      items:
+        - name: Übersicht
+          displayname: Metrics
+          href: platform/data-platform-metrics.md
+        - name: Metrik-Explorer
+          items:
+            - name: Erste Schritte mit Metrik-Explorer
+              href: platform/metrics-getting-started.md
+            - name: Erweiterte Funktionen von Metrik-Explorer
+              href: platform/metrics-charts.md
+            - name: Beispiele für Metrikdiagramme
+              href: platform/metric-chart-samples.md
+            - name: Problembehandlung für Metrikdiagramme
+              href: platform/metrics-troubleshoot.md
     - name: Azure Monitor-Protokolle
       items:
         - name: Übersicht
@@ -191,7 +206,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -262,21 +277,10 @@
               href: platform/logs-export-logic-app.md
             - name: Abfragen exportierter Daten mit Data Explorer
               href: platform/azure-data-explorer-query-storage.md
-    - name: Azure Monitor-Metriken
-      items:
-        - name: Übersicht
-          displayname: Metrics
-          href: platform/data-platform-metrics.md
-        - name: Metrik-Explorer
-          items:
-            - name: Erste Schritte mit Metrik-Explorer
-              href: platform/metrics-getting-started.md
-            - name: Erweiterte Funktionen von Metrik-Explorer
-              href: platform/metrics-charts.md
-            - name: Beispiele für Metrikdiagramme
-              href: platform/metric-chart-samples.md
-            - name: Problembehandlung für Metrikdiagramme
-              href: platform/metrics-troubleshoot.md
+            - name: Senden an Excel
+              href: log-query/log-excel.md
+            - name: Senden an Power BI
+              href: log-query/log-powerbi.md
     - name: Plattformprotokolle
       items:
         - name: Übersicht
@@ -575,12 +579,16 @@
                   displayname: 'ilogger, logging, log'
                   href: app/ilogger.md
             - name: ASP.NET
-              displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
-              href: app/asp-net.md
-            - name: Nicht-HTTP-Apps/Hintergrund-Apps
+              items:
+                - name: ASP.NET-App-Überwachung
+                  displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
+                  href: app/asp-net.md
+                - name: Troubleshooting bei ASP.NET
+                  href: app/asp-net-troubleshoot-no-data.md
+            - name: Nicht-HTTP-/Hintergrund-Apps
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
-            - name: .NET-Konsole
+            - name: ASP.NET-Konsole
               displayname: 'console, .NET, dotnet console, dotnet, c#, csharp, NET'
               href: app/console.md
             - name: Java
@@ -590,18 +598,10 @@
                   href: app/java-get-started.md
                 - name: Protokollablaufverfolgungen
                   href: app/java-trace-logs.md
-                - name: UNIX-Metriken
-                  href: app/java-collectd.md
                 - name: Abhängigkeiten
                   href: app/java-agent.md
                 - name: Filtern von Telemetriedaten
                   href: app/java-filter-telemetry.md
-                - name: Mikrometer-Metriken
-                  displayname: java
-                  href: app/micrometer-java.md
-                - name: Spring Boot-App
-                  displayname: java
-                  href: /java/azure/spring-framework/configure-spring-boot-java-applicationinsights
                 - name: Problembehandlung
                   href: app/java-troubleshoot.md
             - name: Node.js
@@ -637,8 +637,6 @@
             - name: Application Insights-API-Zusammenfassung
               displayname: 'SDK, API, custom events, custom metrics, trackevent,trackmetric, getmetric, trackrequest, trackexception, tracktrace, trackdependency'
               href: app/api-custom-events-metrics.md
-            - name: Troubleshooting bei ASP.NET
-              href: app/asp-net-troubleshoot-no-data.md
             - name: Entfernen von Application Insights
               href: app/remove-application-insights.md
         - name: Überwachung ohne Code
@@ -1241,6 +1239,8 @@
               href: app/release-notes.md
             - name: Web-App-Erweiterung
               href: app/web-app-extension-release-notes.md
+            - name: Debuggen von Momentaufnahmen
+              href: app/snapshot-collector-release-notes.md
         - name: Datenmodell
           items:
             - name: Übersicht
@@ -1323,6 +1323,11 @@
           href: platform/resource-logs-blob-format.md
         - name: Key Vault-Analyse (veraltet)
           href: insights/azure-key-vault-deprecated.md
+        - name: UNIX-Metriken
+          href: app/java-collectd.md
+        - name: Mikrometer-Metriken
+          displayname: java
+          href: app/micrometer-java.md
         - name: Sichten
           items:
             - name: Sicht-Designer

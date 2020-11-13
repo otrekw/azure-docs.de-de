@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie Ihre QnA Maker-App planen. Erfahren Sie, wie 
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 07/2/2020
-ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/09/2020
+ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776934"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376676"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -20,6 +20,8 @@ Zum Planen Ihrer QnA Maker-App müssen Sie verstehen, wie QnA Maker funktioniert
 
 Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker erstellt wird, hat einen bestimmten Zweck. Jede Ressource hat ihren eigenen Zweck, ihre eigenen Grenzwerte und ihren eigenen [Tarif](azure-resources.md#pricing-tier-considerations). Es ist wichtig, die Funktion dieser Ressourcen zu verstehen, sodass Sie dieses Wissen in Ihren Planungsprozess integrieren können.
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 | Resource | Zweck |
 |--|--|
 | [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource | Erstellung und Abfragevorhersage |
@@ -27,6 +29,14 @@ Jede [Azure-Ressource](azure-resources.md#resource-purposes), die mit QnA Maker 
 | [App Service-Ressource und App Plan Service](azure-resources.md#app-service-and-app-service-plan)-Ressource | Abfragevorhersage-Endpunkt |
 | [Application Insights](azure-resources.md#application-insights)-Ressource | Abfragevorhersagetelemetrie |
 
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+| Resource | Zweck |
+|--|--|
+| [QnA Maker](azure-resources.md#qna-maker-resource)-Ressource | Verfassen, Abfragevorhersage-Endpunkt und Telemetrie|
+| [Cognitive Search](azure-resources.md#cognitive-search-resource)-Ressource | Datenspeicherung und -suche |
+
+---
 ### <a name="resource-planning"></a>Ressourcenplanung
 
 Der Free-Tarif, `F0`, der einzelnen Ressourcen funktioniert und kann sowohl die Benutzeroberfläche für die Erstellung als auch die Abfragevorhersage bereitstellen. Sie können diesen Tarif verwenden, um die Erstellung und Abfragevorhersage zu erlernen. Wenn Sie zu einem Produktions- oder Liveszenario wechseln, sollten Sie Ihre Ressourcenauswahl neu auswerten.
@@ -49,7 +59,7 @@ Die Abfragevorhersageanforderung der Wissensdatenbank wird durch den Web-App-Pla
 
 Wenn Sie bereits einige dieser Ressourcen verwenden, können Sie die Freigabe von Ressourcen in Erwägung ziehen. Schauen Sie, welche Ressourcen [gemeinsam genutzt](azure-resources.md#share-services-with-qna-maker) werden können, wobei hierbei das Verständnis zugrunde liegt, dass die gemeinsame Nutzung von Ressourcen ein fortgeschrittenes Szenario ist.
 
-Alle Wissensdatenbanken, die in derselben QnA Maker-Ressource erstellt wurden, verwenden denselben **Test**-Abfragevorhersage-Endpunkt.
+Alle Wissensdatenbanken, die in derselben QnA Maker-Ressource erstellt wurden, verwenden denselben **Test** -Abfragevorhersage-Endpunkt.
 
 ### <a name="understand-the-impact-of-resource-selection"></a>Grundlegendes zu den Auswirkungen der Ressourcenauswahl
 
@@ -65,9 +75,22 @@ Eine Wissensdatenbank ist direkt an die QnA Maker-Ressource gebunden. Sie enthä
 
 ### <a name="language-considerations"></a>Sprachbezogene Überlegungen
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Die erste in Ihrer QnA Maker-Ressource erstellte Wissensdatenbank legt die Sprache für die Ressource fest. Sie können nur eine Sprache für eine QnA Maker-Ressource festlegen.
 
 Sie können Ihre QnA Maker-Ressourcen nach Sprache strukturieren oder [Translator](../../translator/translator-info-overview.md) verwenden, um eine Abfrage von einer anderen Sprache in die Sprache der Wissensdatenbank zu übersetzen, bevor Sie die Abfrage an den Abfragevorhersage-Endpunkt senden.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Sie haben jetzt die Möglichkeit, Wissensdatenbanken in verschiedenen Sprachen innerhalb derselben QnA Maker-Ressource zu haben. Wenn Sie die erste Wissensdatenbank erstellen, können Sie auswählen, ob Sie die Ressource für Wissensdatenbanken in einer einzelnen Sprache oder in mehreren Sprachen verwenden möchten.
+
+![QnA Maker verwaltet (Vorschau) mehrsprachige Wissensdatenbankauswahl](../media/concept-plan-your-knowledge-base/qnamaker-v2-select-multilanguage-knowledge-base.png)
+
+> [!NOTE]
+> Wenn Sie Spracheinstellungen pro Wissensdatenbank aktivieren, können Sie nicht so viele Wissensdatenbanken in ihrer QnA Maker-Ressource erstellen. [Weitere Informationen zu Einschränkungen der Spracheinstellungen](./azure-resources.md).
+
+---
 
 ### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
 
@@ -125,7 +148,7 @@ In einem solchen Szenario mit [gemeinsam genutzter Architektur](../choose-natura
 
 ### <a name="active-learning-from-a-client-application"></a>Aktives Lernen über eine Clientanwendung
 
-QnA Maker nutzt _aktives Lernen_, um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann anhand von Konversationseingabeaufforderungen feststellen, dass die Wissensdatenbank eine Antwort zurückgegeben hat, die für den Benutzer nicht hilfreich ist, und sie kann eine bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
+QnA Maker nutzt _aktives Lernen_ , um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann anhand von Konversationseingabeaufforderungen feststellen, dass die Wissensdatenbank eine Antwort zurückgegeben hat, die für den Benutzer nicht hilfreich ist, und sie kann eine bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
 
 ### <a name="providing-a-default-answer"></a>Bereitstellen einer Standardantwort
 
@@ -152,7 +175,15 @@ Es gibt eine [zweiphasige Antwortrangfolge](query-knowledge-base.md#how-qna-make
 
 ### <a name="service-updates"></a>Dienstupdates
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Wenden Sie die [aktuellsten Runtimeupdates](../how-to/set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates) an, um Dienstupdates automatisch zu verwalten.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+In QnA Maker verwaltet (Vorschau) wird die Runtime vom QnA Maker-Dienst selbst verwaltet. Somit sind Dienstupdates nicht anwendbar.
+
+---
 
 ### <a name="scaling-throughput-and-resiliency"></a>Skalierung, Durchsatz und Resilienz
 
@@ -160,7 +191,16 @@ Skalierung, Durchsatz und Resilienz werden durch die [Azure-Ressourcen](../how-t
 
 ### <a name="analytics-with-application-insights"></a>Analyse mit Application Insights
 
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
+
 Alle Abfragen Ihrer Wissensdatenbank werden in Application Insights gespeichert. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
+
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+In der verwalteten Bereitstellung wird Telemetrie über den [Azure Monitor-Dienst](https://docs.microsoft.com/azure/azure-monitor/) bereitgestellt. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
+
+
+---
 
 ## <a name="development-lifecycle"></a>Lebenszyklus der Entwicklung
 
@@ -177,7 +217,7 @@ Jedes Paar kann Folgendes enthalten:
 
 ### <a name="devops-development"></a>DevOps-Entwicklung
 
-Zum Entwickeln einer Wissensdatenbank, die in eine DevOps-Pipeline eingefügt werden soll, muss die Wissensdatenbank in [Batchtests](../quickstarts/batch-testing.md) isoliert werden.
+Zum Entwickeln einer Wissensdatenbank, die in eine DevOps-Pipeline eingefügt werden soll, muss die Wissensdatenbank in [Batchtests](../quickstarts/batch-testing.md) isoliert sein.
 
 Eine Wissensdatenbank teilt den Cognitive Search-Index mit allen anderen Wissensdatenbanken der QnA Maker-Ressource. Obwohl die Wissensdatenbank durch Partition isoliert ist, kann die Freigabe des Indexes im Vergleich zur veröffentlichten Wissensdatenbank einen Unterschied im Ergebnis verursachen.
 

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 09/30/2020
+ms.date: 11/04/2020
 ms.author: alexeyo
-ms.openlocfilehash: 7e22b772ec35ff9b63c99acd81ad6bb5abe328a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91567161"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93345396"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
 
@@ -24,20 +24,35 @@ Dieser Artikel enthält eine Kurzübersicht und eine **ausführliche Beschreibun
 ## <a name="quotas-and-limits-quick-reference"></a>Kurzübersicht über Kontingente und Grenzwerte
 Zu [Kontingente und Grenzwerte für die Sprachsynthese nach Speech-Ressource](#text-to-speech-quotas-and-limits-per-speech-resource)
 ### <a name="speech-to-text-quotas-and-limits-per-speech-resource"></a>Kontingente und Grenzwerte für die Spracherkennung nach Speech-Ressource
-In der folgenden Tabelle sind Parameter ohne die Zeile „Anpassbar“ **nicht** für alle Tarife anpassbar.
+In den folgenden Tabellen sind Parameter ohne die Zeile „Anpassbar“ **nicht** für alle Tarife anpassbar.
+
+#### <a name="online-transcription"></a>Onlinetranskription
 
 | Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
 |--|--|--|
-| **Grenzwert für gleichzeitige Anforderungen bei der Onlinetranskription (Basismodell und benutzerdefiniertes Modell)** |  |  |
-| Standardwert | 1 | 20 |
+| **Grenzwert für gleichzeitige Anforderungen (Basismodell und benutzerdefiniertes Modell)** | 1 | 20 (Standardwert) |
 | Anpassbar | Nein<sup>2</sup> | Ja<sup>2</sup> |
-| **Grenzwert für REST-API-Anforderungen ([API Management](../../api-management/api-management-key-concepts.md)-Endpunkte)** | 100 Anforderungen pro zehn Sekunden | 100 Anforderungen pro zehn Sekunden |
-| **Maximale Datasetdateigröße für den Datenimport** | 2 GB | 2 GB |
-| **Maximale Eingabeblobgröße für die Batch-Transkription** | – | 2,5 GB |
-| **Maximale Blobcontainergröße für die Batch-Transkription** | – | 5 GB |
-| **Maximale Anzahl von Blobs pro Container für die Batch-Transkription** | – | 10000 |
-| **Maximale Anzahl von Dateien pro Transkriptionsanforderung für die Batch-Transkription (bei Verwendung mehrerer Inhalts-URLs als Eingabe)** | – | 1000  |
-| **Maximale Anzahl gleichzeitig ausgeführter Aufträge für die Batch-Transkription** | – | 2000  |
+
+#### <a name="batch-transcription"></a>Batch-Transkription
+| Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
+|--|--|--|
+| REST-API-Grenzwert | Batchtranskription ist für F0 nicht verfügbar. | 300 Anforderungen pro Minute |
+| Maximale Größe der Audioeingabedatei | Nicht zutreffend | 1 GB |
+| Maximale Größe des Eingabeblobs (kann mehrere Dateien enthalten, z. B. in einem ZIP-Archiv; beachten Sie den Grenzwert für die Dateigröße oben) | – | 2,5 GB |
+| Maximale Größe des Blob-Containers | – | 5 GB |
+| Maximale Anzahl von Blobs pro Container | – | 10000 |
+| Maximale Anzahl von Dateien pro Transkriptionsanforderung (bei Verwendung mehrerer Inhalts-URLs als Eingabe) | – | 1000  |
+| Maximale Anzahl gleichzeitig ausgeführter Aufträge | – | 2000  |
+
+#### <a name="model-customization"></a>Modellanpassung
+| Kontingent | Free (F0)<sup>1</sup> | Standard (S0) |
+|--|--|--|
+| REST-API-Grenzwert | 300 Anforderungen pro Minute | 300 Anforderungen pro Minute |
+| Maximale Anzahl von Sprach-Datasets | 2 | 500 |
+| Maximale Dateigröße für das Akustikdataset für den Datenimport | 2 GB | 2 GB |
+| Maximale Dateigröße für das Sprachdataset für den Datenimport | 200 MB | 1,5 GB |
+| Maximale Dateigröße für das Aussprachedataset für den Datenimport | 1 KB | 1 MB |
+| Maximale Textgröße bei Verwendung des `text`-Parameters in der [Create Model](https://westcentralus.dev.cognitive.microsoft.com/docs/services/speech-to-text-api-v3-0/operations/CreateModel/)-API-Anforderung | 200 KB | 500 KB |
 
 <sup>1</sup> Sehen Sie sich im Zusammenhang mit dem Tarif **Free (F0)** auch die monatlichen Freibeträge auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) an.<br/>
 <sup>2</sup> Sehen Sie sich [weitere Erläuterungen](#detailed-description-quota-adjustment-and-best-practices), [bewährte Methoden](#general-best-practices-to-mitigate-throttling-during-autoscaling) und [Anpassungsanweisungen](#speech-to-text-increasing-online-transcription-concurrent-request-limit) an.<br/> 
@@ -57,7 +72,7 @@ In der folgenden Tabelle sind Parameter ohne die Zeile „Anpassbar“ **nicht**
 | **WebSocket-spezifische Kontingente** |  |  |
 |Maximal generierte Audiolänge pro Turn | 10 Min. | 10 Min. |
 |Maximale SSML-Nachrichtengröße pro Turn |64 KB |64 KB |
-| **Grenzwert für REST-API-Anforderungen** | 20 Anforderungen pro Minute | 25 Anforderungen pro fünf Sekunden |
+| **REST-API-Grenzwert** | 20 Anforderungen pro Minute | 25 Anforderungen pro fünf Sekunden |
 
 
 <sup>3</sup> Sehen Sie sich im Zusammenhang mit dem Tarif **Free (F0)** auch die monatlichen Freibeträge auf der [Preisseite](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) an.<br/>
@@ -102,7 +117,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - **Abrufen der Informationen (Basismodell):**  
   - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
   - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen möchten.
-  - Wählen Sie *Eigenschaften* (Gruppe *Ressourcenverwaltung*) aus. 
+  - Wählen Sie *Eigenschaften* (Gruppe *Ressourcenverwaltung* ) aus. 
   - Kopieren und speichern Sie die Werte der folgenden Felder:
     - **Ressourcen-ID**
     - **Standort** (Ihre Endpunktregion)
@@ -124,7 +139,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - Vergewissern Sie sich, dass Sie über die [erforderlichen Informationen](#have-the-required-information-ready) verfügen.
 - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen (oder überprüfen) möchten.
-- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung*) aus. 
+- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung* ) aus. 
 - Daraufhin wird ein neues Fenster mit automatisch ausgefüllten Informationen zum Azure-Abonnement und zur Azure-Ressource angezeigt.
 - Geben Sie eine *Zusammenfassung* ein (beispielsweise „Increase STT Concurrency Request limit“ (Grenzwert für gleichzeitige STT-Anforderungen erhöhen)).
 - Wählen Sie unter *Problemtyp* die Option für Kontingent- oder Abonnementprobleme aus.
@@ -135,7 +150,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - Fahren Sie mit der Anforderungserstellung fort.
 - Geben Sie auf der Registerkarte *Details* im Feld *Beschreibung* Folgendes ein:
   - Einen Hinweis darauf, dass es bei der Anfrage um ein Kontingent für die **Spracherkennung** geht
-  - Das Modell (**Basis** oder **Benutzerdefiniert**)
+  - Das Modell ( **Basis** oder **Benutzerdefiniert** )
   - [Zuvor ermittelte](#have-the-required-information-ready) Azure-Ressourceninformationen 
   - Geben Sie die übrigen erforderlichen Informationen ein, und klicken Sie auf der Registerkarte *Überprüfen + erstellen* auf die Schaltfläche *Erstellen*.
   - Notieren Sie sich die Nummer der Supportanfrage aus den Benachrichtigungen im Azure-Portal. Sie werden in Kürze zur weiteren Bearbeitung kontaktiert.
@@ -176,7 +191,7 @@ Wenn Sie eine Erhöhungsanforderung erstellen möchten, müssen Sie Ihre Bereits
 - Vergewissern Sie sich, dass Sie über die [erforderlichen Informationen](#prepare-the-required-information) verfügen.
 - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen (oder überprüfen) möchten.
-- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung*) aus. 
+- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung* ) aus. 
 - Daraufhin wird ein neues Fenster mit automatisch ausgefüllten Informationen zum Azure-Abonnement und zur Azure-Ressource angezeigt.
 - Geben Sie eine *Zusammenfassung* ein (beispielsweise „Increase TTS Custom Endpoint Concurrency Request limit“ (Grenzwert für gleichzeitige TTS-Anforderungen für den benutzerdefinierten Endpunkt erhöhen)).
 - Wählen Sie unter *Problemtyp* die Option für Kontingent- oder Abonnementprobleme aus.

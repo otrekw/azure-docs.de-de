@@ -6,21 +6,21 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: roles
 ms.topic: how-to
-ms.date: 11/08/2019
+ms.date: 11/05/2020
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f92ae370358ef09574d0839234ddc8ad11aa47ad
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ccb158548f52059b780fd71bf19788ba200aa7c4
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373912"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505579"
 ---
-# <a name="view-custom-role-assignments-in-azure-active-directory"></a>Anzeigen der Zuweisungen benutzerdefinierter Rollen in Azure Active Directory
+# <a name="view-custom-role-assignments-using-azure-active-directory"></a>Anzeigen der Zuweisungen benutzerdefinierter Rollen mit Azure Active Directory
 
 In diesem Artikel wird beschrieben, wie Sie benutzerdefinierte Rollen anzeigen, die Sie in Azure Active Directory (Azure AD) zugewiesen haben. In Azure Active Directory (Azure AD) können Rollen im organisationsweiten Bereich oder mit einem Einzelanwendungsbereich zugewiesen werden.
 

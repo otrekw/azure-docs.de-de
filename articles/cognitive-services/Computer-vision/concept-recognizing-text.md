@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 34a7cd8669c1545361bc7cd9579cfb6140c0c946
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92331701"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489147"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -73,6 +73,9 @@ Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://
 
 Wenn das Feld **Status** den Wert **succeeded** aufweist, enthält die JSON-Antwort den extrahierten Textinhalt aus Ihrem Bild oder Dokument. In der JSON-Antwort werden die ursprünglichen Zeilengruppierungen der erkannten Wörter beibehalten. Sie enthält die extrahierten Textzeilen und die zugehörigen Begrenzungsrahmenkoordinaten. Jede Textzeile enthält alle extrahierten Wörter mit den zugehörigen Koordinaten und Zuverlässigkeitsbewertungen.
 
+> [!NOTE]
+> Die an den Vorgang `Read` übermittelten Daten werden vorübergehend verschlüsselt, im Ruhezustand gespeichert und innerhalb von 48 Stunden gelöscht. Dadurch können Ihre Anwendungen den extrahierten Text als Teil der Dienstantwort abrufen.
+
 ## <a name="sample-json-output"></a>JSON-Beispielausgabe
 
 Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
@@ -87,7 +90,6 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
     "readResults": [
       {
         "page": 1,
-        "language": "en",
         "angle": 0.8551,
         "width": 2661,
         "height": 1901,

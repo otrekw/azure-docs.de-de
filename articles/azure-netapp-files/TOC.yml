@@ -11,8 +11,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: 'Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes: ARM-Vorlage'
-      displayName: Resource Manager
+    - name: Einrichten von Azure NetApp Files und Erstellen eines NFS-Volumes
       href: azure-netapp-files-quickstart-set-up-account-create-volumes.md
 - name: Konzepte
   items:
@@ -114,8 +113,6 @@
           href: develop-rest-api-powershell.md
         - name: 'SDKs, CLI-Tools und ARM-Vorlagen'
           href: azure-netapp-files-sdk-cli.md
-        - name: Beheben von Fehlern mit Azure NetApp Files-Ressourcenanbietern
-          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
     - name: Problembehandlung
       items:
         - name: Problembehandlung für Kapazitätspools
@@ -126,6 +123,8 @@
           href: troubleshoot-dual-protocol-volumes.md
         - name: Problembehandlung für Momentaufnahmenrichtlinien
           href: troubleshoot-snapshot-policies.md
+        - name: Beheben von Ressourcenanbieterfehlern
+          href: azure-netapp-files-troubleshoot-resource-provider-errors.md
 - name: Verweis
   items:
     - name: REST

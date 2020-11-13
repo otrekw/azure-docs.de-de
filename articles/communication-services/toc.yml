@@ -76,6 +76,8 @@
       href: concepts/pricing.md
     - name: Datenschutz
       href: concepts/privacy.md
+    - name: Identitätsmodell
+      href: concepts/identity-model.md
     - name: Authentifizierung
       href: concepts/authentication.md
     - name: Behandlung von Ereignissen

@@ -1,5 +1,5 @@
 ---
-title: Anpassen von Azure AD-Attributzuordnungen | Microsoft-Dokumentation
+title: 'Tutorial: Anpassen von Attributzuordnungen in Azure Active Directory'
 description: Erfahren Sie, was Attributzuordnungen für SaaS-Apps in Azure Active Directory sind und wie Sie sie an Ihre geschäftlichen Anforderungen anpassen können.
 services: active-directory
 author: kenwith
@@ -7,17 +7,17 @@ manager: celestedg
 ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
-ms.topic: how-to
-ms.date: 10/26/2020
+ms.topic: tutorial
+ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: cac7b169232bb43ba1b1893b59dac81ce4c39c49
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233882"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441952"
 ---
-# <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
+# <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
 Microsoft Azure AD bietet Unterstützung für die Benutzerbereitstellung für SaaS-Anwendungen von Drittanbietern wie Salesforce, G Suite usw. Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieters aktivieren, steuert das Azure-Portal deren Attributwerte mithilfe von Attributzuordnungen.
 
@@ -110,7 +110,7 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 - Workday in Active Directory/Workday in Azure Active Directory
 - SuccessFactors in Active Directory/SuccessFactors in Azure Active Directory
 - Azure Active Directory ([Azure AD Graph-API-Standardattribute](/previous-versions/azure/ad/graph/api/entity-and-complex-type-reference#user-entity) und benutzerdefinierte Verzeichniserweiterungen werden unterstützt)
-- Apps, die [SCIM 2.0](https://tools.ietf.org/html/rfc7643) unterstützen und das Hinzufügen von Attributen erfordern, die im [Kernschema](https://tools.ietf.org/html/rfc7643) definiert sind
+- Apps, die [SCIM 2.0](https://tools.ietf.org/html/rfc7643) unterstützen
 - Für das Azure Active Directory-Rückschreiben in Workday oder SuccessFactors wird das Aktualisieren relevanter Metadaten für unterstützte Attribute (XPATH und JSONPath) unterstützt. Das Hinzufügen neuer Workday- oder SuccessFactors-Attribute, die über die im Standardschema enthaltenen Attribute hinausgehen, wird jedoch nicht unterstützt.
 
 
@@ -146,7 +146,7 @@ Für SCIM-Anwendungen muss der Attributname dem Muster im folgenden Beispiel fol
 
 Diese Anweisungen gelten nur für SCIM-konforme Anwendungen. Anwendungen wie ServiceNow und Salesforce sind nicht per SCIM mit Azure AD integriert. Aus diesem Grund benötigen sie nicht diesen spezifischen Namespace, wenn ein benutzerdefiniertes Attribut hinzugefügt wird.
 
-Benutzerdefinierte Attribute können keine referenziellen Attribute oder Attribute mit mehreren Werten sein. Benutzerdefinierte Erweiterungsattribute mit mehreren Werten werden zurzeit nur für Anwendungen im Katalog unterstützt.  
+Benutzerdefinierte Attribute können keine referenziellen Attribute, komplexe Attribute oder Attribute mit mehreren Werten sein. Benutzerdefinierte Erweiterungsattribute, die komplex sind oder mehrere Werten beinhalten, werden derzeit nur für Anwendungen im Katalog unterstützt.  
  
 **Beispieldarstellung eines Benutzers mit einem Erweiterungsattribut:**
 

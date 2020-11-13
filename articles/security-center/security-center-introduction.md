@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 97853f0524b794169de3aaaec33cf1b30949d930
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: d62ed31a68d9469a1bd1fc66e479b0f91db2f916
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92901551"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372267"
 ---
 # <a name="what-is-azure-security-center"></a>Was ist Azure Security Center?
 
@@ -54,7 +54,7 @@ Darüber hinaus werden mit Security Center auch Server und virtuelle Computer, d
 
 Die über die Agents und über Azure erfassten Ereignisse werden im Sicherheitsanalysemodul korreliert, um maßgeschneiderte Empfehlungen zur Verbesserung der Workloadsicherheit (Härtung) sowie Sicherheitswarnungen bereitzustellen. Es ist ratsam, die Warnungen schnellstmöglich zu untersuchen, um sicherzustellen, dass es für Ihre Workloads nicht zu schädlichen Angriffen kommt.
 
-Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Security Center-Kategorie dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements (Tarife „Free“ oder „Standard“) zugewiesen. Die integrierte Initiative enthält nur Überwachungsrichtlinien. Weitere Informationen zu Security Center-Richtlinien in Azure Policy finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
+Wenn Sie Security Center aktivieren, wird die in Security Center integrierte Sicherheitsrichtlinie in Azure Policy als integrierte Initiative unter der Kategorie „Security Center“ dargestellt. Die integrierte Initiative wird automatisch allen in Security Center registrierten Abonnements zugewiesen (unabhängig davon, ob Azure Defender aktiviert ist oder nicht). Die integrierte Initiative enthält nur Überwachungsrichtlinien. Weitere Informationen zu Security Center-Richtlinien in Azure Policy finden Sie unter [Arbeiten mit Sicherheitsrichtlinien](tutorial-security-policy.md).
 
 ## <a name="strengthen-security-posture"></a>Stärken des Sicherheitsstatus
 
@@ -137,6 +137,6 @@ Umfassende Protokollsammlung: Protokolle von Windows und Linux werden im Sicherh
 
 - Für den Einstieg in Security Center benötigen Sie ein Microsoft Azure-Abonnement. Wenn Sie nicht über ein Abonnement verfügen, können Sie sich für ein [kostenloses Testabonnement](https://azure.microsoft.com/free/)registrieren.
 
-- Der Free-Tarif von Security Center ist für alle aktuellen Azure-Abonnements aktiviert, sobald Sie das Azure Security Center-Dashboard im Azure-Portal zum ersten Mal aufrufen oder wenn es programmgesteuert über die API aktiviert wird. Um die Vorteile der erweiterten Funktionen für die Sicherheitsverwaltung und Bedrohungserkennung nutzen zu können, müssen Sie ein Upgrade auf den Tarif „Standard“ durchführen. Der Tarif „Standard“ kann 30 Tage lang kostenlos getestet werden. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
+- Der Free-Tarif von Security Center ist für alle aktuellen Azure-Abonnements aktiviert, sobald Sie das Azure Security Center-Dashboard im Azure-Portal zum ersten Mal aufrufen oder wenn es programmgesteuert über die API aktiviert wird. Sie müssen Azure Defender aktivieren, um erweiterte Funktionen für die Sicherheitsverwaltung und Bedrohungserkennung nutzen zu können. Azure Defender kann 30 Tage lang kostenlos getestet werden. Weitere Informationen finden Sie auf der Seite mit den [Preisen für Security Center](https://azure.microsoft.com/pricing/details/security-center/).
 
-- Wenn Sie Security Center Standard jetzt aktivieren möchten, helfen Ihnen die Informationen unter [Schnellstart: Einbinden Ihres Azure-Abonnements in Security Center Standard](security-center-get-started.md) weiter.
+- Wenn Sie Azure Defender jetzt aktivieren möchten, finden Sie unter [Schnellstart: Einrichten von Azure Security Center](security-center-get-started.md) die entsprechenden Schritte.
