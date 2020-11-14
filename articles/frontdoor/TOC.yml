@@ -36,6 +36,10 @@
       href: front-door-quickstart-template-samples.md
 - name: Konzepte
   items:
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Back-Ends und Back-End-Pools
       href: front-door-backend-pool.md
     - name: Zwischenspeicherung mit Front Door
@@ -92,7 +96,7 @@
           href: front-door-troubleshoot-allowed-ca.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/ext/front-door/
     - name: Azure PowerShell
       href: /powershell/module/az.frontdoor

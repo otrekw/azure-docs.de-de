@@ -46,7 +46,7 @@
     - name: 13. Überwachen virtueller Computer
       href: tutorial-monitor.md
     - name: 14. Verwalten der VM-Sicherheit
-      href: tutorial-azure-security.md
+      href: ../tutorial-azure-security.md
     - name: 15. Installieren eines SQL-\IIS-\.NET-Stapels
       href: tutorial-iis-sql.md
     - name: '16: Sichern von Webservern mit SSL'
@@ -648,8 +648,16 @@
         - name: Austauschen des Betriebssystemdatenträgers
           href: os-disk-swap.md
         - name: Kennzeichnen eines virtuellen Computers
-          href: tag.md
-        - name: Zeitsynchronisierung
+          items:
+            - name: Portal
+              href: ../tag-portal.md
+            - name: PowerShell
+              href: ../tag-powershell.md
+            - name: Befehlszeilenschnittstelle (CLI)
+              href: ../tag-cli.md
+            - name: Vorlage
+              href: ../tag-template.md
+            - name: Zeitsynchronisierung
           href: time-sync.md
         - name: Ausführen von Skripts für einen virtuellen Computer
           href: run-scripts-in-vm.md
@@ -1057,7 +1065,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

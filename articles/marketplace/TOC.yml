@@ -143,10 +143,12 @@
               href: azure-vm-create-properties.md
             - name: Konfigurieren eines VM-Angebotslistings
               href: azure-vm-create-listing.md
-            - name: Erstellen von VM-Plänen
-              href: azure-vm-create-plans.md
             - name: Hinzufügen einer Vorschauzielgruppe
               href: azure-vm-create-preview.md
+            - name: Erstellen von VM-Plänen
+              href: azure-vm-create-plans.md
+            - name: Verkaufen über CSPs
+              href: azure-vm-create-resell-csp.md
             - name: Erstellen technischer VM-Ressourcen
               items:
                 - name: Erstellen eines virtuellen Computers aus einer genehmigten Basis

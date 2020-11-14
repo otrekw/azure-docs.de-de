@@ -122,6 +122,10 @@
           href: manage/azure-plan-subscription-transfer-partners.md
         - name: "Erste Schritte im Azure\_EA-Portal"
           href: manage/ea-portal-get-started.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
 - name: Anleitungen
   items:
     - name: Konfigurieren der Kostenverwaltung und Abrechnung
