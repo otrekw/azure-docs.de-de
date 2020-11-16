@@ -1,6 +1,6 @@
 ---
-title: Verbinden von IoT Plug & Play-Python-Beispielgerätecode mit Azure IoT Hub | Microsoft-Dokumentation
-description: Mithilfe von Python können Sie IoT Plug & Play-Beispielgerätecode erstellen und ausführen, der eine Verbindung mit einem IoT-Hub herstellt. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.
+title: 'Schnellstart: Verbinden von IoT Plug & Play-Python-Beispielgerätecode mit Azure IoT Hub | Microsoft-Dokumentation'
+description: 'Schnellstart: Verwenden von Python zum Erstellen und Ausführen von IoT Plug & Play-Beispielgerätecode, der eine Verbindung mit einem IoT-Hub herstellt. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 7/14/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 065e65c0c8ccf61dd67da19fd5a94d4506db73ff
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 38c6b835f0a3ddaaf4c049ca6ea3aeb484ad3280
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737304"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421565"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-to-iot-hub-python"></a>Schnellstart: Verbinden einer IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Python)
 

@@ -3,12 +3,12 @@ title: Grundlegendes zur Konfiguration der regelmäßigen Sicherung
 description: Verwenden Sie das Service Fabric-Feature für regelmäßige Sicherungen und Wiederherstellungen, um regelmäßige Sicherungen Ihrer zuverlässigen zustandsbehafteten Dienste oder Reliable Actors zu konfigurieren.
 ms.topic: article
 ms.date: 2/01/2019
-ms.openlocfilehash: 633b13104ecc1697685f49a42b2a9c76b43b81d0
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 2607502af44b178131820d78f23bcdf4e32454a0
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205692"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506123"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Grundlegendes zur Konfiguration der regelmäßigen Sicherung in Azure Service Fabric
 
@@ -46,7 +46,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
         ```
 
     2. **Zeitbasierter Sicherungszeitplan** : Dieser Zeitplantyp sollte verwendet werden, wenn eine Datensicherung zu einer bestimmten Zeit am Tag oder in der Woche erforderlich ist. Die Häufigkeit für diesen Zeitplantyp kann entweder täglich oder wöchentlich sein.
-        1. **_Täglicher_ zeitbasierter Sicherungszeitplan** : Dieser Zeitplantyp sollte verwendet werden, wenn die Datensicherung zu bestimmten Tageszeiten erfolgen muss. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Täglich_ ; und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Zum Beispiel steht `0001-01-01T18:00:00` für täglich um _18:00 Uhr_ , wobei der Datumsteil _0001-01-01_ ignoriert wird. Das folgende Beispiel veranschaulicht die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_ .
+        1. **_Täglicher_ zeitbasierter Sicherungszeitplan** : Dieser Zeitplantyp sollte verwendet werden, wenn die Datensicherung zu bestimmten Tageszeiten erfolgen muss. Um diese festzulegen, setzen Sie `ScheduleFrequencyType` auf _Täglich_ ; und setzen Sie `RunTimes` im ISO8601-Format auf die Liste der gewünschten Uhrzeit während des Tages, wobei das mit der Uhrzeit angegebene Datum ignoriert wird. Zum Beispiel steht `0001-01-01T18:00:00` für täglich um _18:00 Uhr_ , wobei der Datumsteil _0001-01-01_ ignoriert wird. Das folgende Beispiel veranschaulicht die Konfiguration zum Auslösen der täglichen Sicherung um _9:00 Uhr_ und _18:00 Uhr_.
 
             ```json
             {
@@ -81,6 +81,7 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
 
 * **Sicherungsspeicher** : Gibt den Speicherort zum Hochladen von Sicherungen an. Als Speicher kann entweder ein Azure-Blobspeicher oder eine Dateifreigabe verwendet werden.
     1. **Azure-Blobspeicher** : Dieser Speichertyp sollte gewählt werden, wenn die generierten Sicherungen in Azure gespeichert werden müssen. Sowohl _eigenständige_ als auch _auf Azure basierende_ Cluster können diesen Speichertyp verwenden. Die Beschreibung für diesen Speichertyp erfordert die Verbindungszeichenfolge und den Namen des Containers, in den die Sicherungen hochgeladen werden sollen. Wenn der Container mit dem angegebenen Namen nicht verfügbar ist, wird er beim Hochladen einer Sicherung erstellt.
+
         ```json
         {
             "StorageKind": "AzureBlobStore",
@@ -89,9 +90,10 @@ Eine Sicherungsrichtlinie besteht aus den folgenden Konfigurationen:
             "ContainerName": "BackupContainer"
         }
         ```
-> [!NOTE]
-> Sicherungswiederherstellungsdienst funktioniert nicht mit Azure Storage v1
->
+
+        > [!NOTE]
+        > Sicherungswiederherstellungsdienst funktioniert nicht mit Azure Storage v1
+        >
 
     2. **Dateifreigabe** : Dieser Speichertyp sollte für _eigenständige_ Cluster ausgewählt werden, wenn die Datensicherung lokal gespeichert werden muss. Die Beschreibung für diesen Speichertyp erfordert einen Dateifreigabepfad, in den Sicherungen hochgeladen werden müssen. Über eine der folgenden Optionen kann der Zugriff auf die Dateifreigabe konfiguriert werden:
         1. _Integrierte Windows-Authentifizierung_ , wobei der Zugriff auf die Dateifreigabe für alle Computer des Service Fabric-Clusters gewährt wird. Legen Sie in diesem Fall die folgenden Felder fest, um auf einer _Dateifreigabe_ basierenden Sicherungsspeicher zu konfigurieren.
@@ -148,7 +150,7 @@ Es kann ein Szenario geben, in dem für alle Dienste der Anwendung eine Datensic
 
 ### <a name="example"></a>Beispiel
 
-In diesem Beispiel wird ein Setup mit zwei Anwendungen verwendet, _MyApp_A_ und _MyApp_B_ . Anwendung _MyApp_A_ umfasst zwei zustandsbehaftete zuverlässige Dienste, _SvcA1_ & _SvcA3_ , und einen Reliable Actor-Dienst, _ActorA2_ . _SvcA1_ enthält drei Partitionen, während _ActorA2_ und _SvcA3_ jeweils zwei Partitionen enthalten.  Anwendung _MyApp_B_ umfasst drei zustandsbehaftete zuverlässige Dienste, _SvcB1_ , _SvcB2_ und _SvcB3_ . _SvcB1_ und _SvcB2_ enthalten jeweils zwei Partitionen, während _SvcB3_ drei Partitionen enthält.
+In diesem Beispiel wird ein Setup mit zwei Anwendungen verwendet, _MyApp_A_ und _MyApp_B_. Anwendung _MyApp_A_ umfasst zwei zustandsbehaftete zuverlässige Dienste, _SvcA1_ & _SvcA3_ , und einen Reliable Actor-Dienst, _ActorA2_. _SvcA1_ enthält drei Partitionen, während _ActorA2_ und _SvcA3_ jeweils zwei Partitionen enthalten.  Anwendung _MyApp_B_ umfasst drei zustandsbehaftete zuverlässige Dienste, _SvcB1_ , _SvcB2_ und _SvcB3_. _SvcB1_ und _SvcB2_ enthalten jeweils zwei Partitionen, während _SvcB3_ drei Partitionen enthält.
 
 Angenommen es bestehen die folgenden Datensicherungsanforderungen dieser Anwendungen:
 
@@ -166,16 +168,16 @@ Angenommen es bestehen die folgenden Datensicherungsanforderungen dieser Anwendu
 
 Um diese Datensicherungsanforderungen zu erfüllen, werden die Sicherungsrichtlinien „BP_1“ bis „BP_5“ erstellt und die Sicherungen wie folgt aktiviert.
 1. MyApp_A
-    1. Erstellen Sie die Sicherungsrichtlinie _BP_1_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie diese Richtlinie mithilfe der API [Anwendungssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) für Anwendung _MyApp_A_ . Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_1_ für alle Partitionen der _zustandsbehafteten zuverlässigen Dienste_ und _Reliable Actors_ erstellt werden, die zur Anwendung _MyApp_A_ gehören.
+    1. Erstellen Sie die Sicherungsrichtlinie _BP_1_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie diese Richtlinie mithilfe der API [Anwendungssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableapplicationbackup) für Anwendung _MyApp_A_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_1_ für alle Partitionen der _zustandsbehafteten zuverlässigen Dienste_ und _Reliable Actors_ erstellt werden, die zur Anwendung _MyApp_A_ gehören.
 
-    2. Erstellen Sie die Sicherungsrichtlinie _BP_2_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „jede Stunde“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcA3_ . Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_2_ für alle Partitionen des Diensts _SvcA3_ überschrieben. Infolgedessen werden für diese Partitionen Datensicherungen mit der Sicherungsrichtlinie _BP_2_ durchgeführt.
+    2. Erstellen Sie die Sicherungsrichtlinie _BP_2_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „jede Stunde“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcA3_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_2_ für alle Partitionen des Diensts _SvcA3_ überschrieben. Infolgedessen werden für diese Partitionen Datensicherungen mit der Sicherungsrichtlinie _BP_2_ durchgeführt.
 
-    3. Erstellen Sie die Sicherungsrichtlinie _BP_3_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore2_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcA1_P2_ . Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_3_ für die Partition _SvcA1_P2_ überschrieben.
+    3. Erstellen Sie die Sicherungsrichtlinie _BP_3_ mit einem häufigkeitsbasierten Sicherungszeitplan, für den die Häufigkeit auf „alle 24 Stunden“ gesetzt wird, und konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore2_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcA1_P2_. Dadurch wird die weitergegebene Richtlinie _BP_1_ durch die explizit aktivierte Sicherungsrichtlinie _BP_3_ für die Partition _SvcA1_P2_ überschrieben.
 
 2. MyApp_B
-    1. Erstellen Sie die Sicherungsrichtlinie _BP_4_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Wöchentlich“, der Ausführungstag auf „Sonntag“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcB1_ . Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_4_ für alle Partitionen des Diensts _SvcB1_ erstellt werden.
+    1. Erstellen Sie die Sicherungsrichtlinie _BP_4_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Wöchentlich“, der Ausführungstag auf „Sonntag“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Dienstsicherung aktivieren](/rest/api/servicefabric/sfclient-api-enableservicebackup) für den Dienst _SvcB1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_4_ für alle Partitionen des Diensts _SvcB1_ erstellt werden.
 
-    2. Erstellen Sie die Sicherungsrichtlinie _BP_5_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Täglich“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcB2_P1_ . Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_5_ für die Partition _SvcB2_P1_ erstellt werden.
+    2. Erstellen Sie die Sicherungsrichtlinie _BP_5_ mit einem zeitbasierten Sicherungszeitplan, für den die Häufigkeit auf „Täglich“ und die Ausführungszeit auf „8:00 Uhr“ gesetzt wird. Konfigurieren Sie den Sicherungsspeicher so, dass dieser den Speicherort _BackupStore1_ verwendet. Aktivieren Sie die Richtlinie mit der API [Partitionssicherung aktivieren](/rest/api/servicefabric/sfclient-api-enablepartitionbackup) für die Partition _SvcB2_P1_. Dadurch können Datensicherungen mit der Sicherungsrichtlinie _BP_5_ für die Partition _SvcB2_P1_ erstellt werden.
 
 Das folgende Diagramm zeigt explizit aktivierte Sicherungsrichtlinien und weitergegebene Sicherungsrichtlinien.
 

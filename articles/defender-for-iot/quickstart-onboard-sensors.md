@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/10/2020
 ms.author: rkarlin
-ms.openlocfilehash: e90bdcfe22828d85ebeeb74314617fc6eac81385
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: dafa2f231581ee7e7fa7a59a9c9320f6f2a67038
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094688"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357683"
 ---
 # <a name="quickstart-deploy-and-onboard-a-sensor"></a>Schnellstart: Bereitstellen und Integrieren eines Sensors
 
@@ -39,10 +39,10 @@ Das Integrieren von Sensoren ermöglicht Ihnen Folgendes:
 |------ | ----------- |
 | **Definieren eines Sensornamens** | Benennen Sie den Sensor, den Sie integrieren, und ordnen Sie ihn einem IoT Hub oder einem Abonnement zu.<br /><br />Weitere Informationen finden Sie unter **integrieren von Sensoren**.|
 |**Auswählen eines Abonnements und einer Anzahl von committeten Geräten**|Wählen Sie ein Abonnement und die Anzahl der Geräte aus, die vom Abonnement abgedeckt werden. Geben Sie die Zahl in Inkrementen von 1.000 ein.|
-| **Definieren eines Sensorverwaltungsmodus** | Definieren Sie, wo Ressource, Warnung und andere vom Sensor erkannte Informationen angezeigt werden sollen. Dies wird basierend auf dem von Ihnen definierten **Sensorverwaltungsmodus** bestimmt.<br /><br />**Lokal verwalteter Modus**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Erkennungsinformationen werden auch für die lokale Verwaltungskonsole freigegeben, wenn der Sensor damit verbunden ist.<br /><br />**Über die Cloud verwalteter Modus**: Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Außerdem werden Warnungsinformationen über einen IoT Hub übermittelt und können für andere Azure-Dienste, z. B. Azure Sentinel, freigegeben werden.<br />Weitere Informationen finden Sie unter **Integrieren von Sensoren**. |
+| **Definieren eines Sensorverwaltungsmodus** | Definieren Sie, wo Ressource, Warnung und andere vom Sensor erkannte Informationen angezeigt werden sollen. Dies wird basierend auf dem von Ihnen definierten **Sensorverwaltungsmodus** bestimmt.<br /><br />**Lokal verwalteter Modus** : Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Erkennungsinformationen werden auch für die lokale Verwaltungskonsole freigegeben, wenn der Sensor damit verbunden ist.<br /><br />**Über die Cloud verwalteter Modus** : Die vom Sensor erkannten Informationen werden in der Sensorkonsole angezeigt. Außerdem werden Warnungsinformationen über einen IoT Hub übermittelt und können für andere Azure-Dienste, z. B. Azure Sentinel, freigegeben werden.<br />Weitere Informationen finden Sie unter **Integrieren von Sensoren**. |
 | **Abrufen einer Sensoraktivierungsdatei** | Bei **lokal verwalteten** Sensoren wird eine Aktivierungsdatei zum Verwalten von autorisierten Aktivierungszeiträumen für Sensoren verwendet.<br /><br />Bei **über die Cloud verwalteten** Sensoren wird eine Aktivierungsdatei als Verbindung zwischen dem Sensor und einem IoT Hub verwendet. Weitere Informationen finden Sie unter **Integrieren von Sensoren**. |
 | **Hochladen einer Aktivierungsdatei auf Ihren Sensor** | Aktivierungsdateien müssen auf Ihre Unternehmenssensoren hochgeladen werden. Netzwerküberwachung und Zugriff auf die Features von Sensorkonsolen stehen erst dann zur Verfügung, nachdem die Aktivierungsdatei hochgeladen wurde. Weitere Informationen finden Sie unter **Hochladen von Sensoraktivierungsdateien**. |
-| **Aktualisieren von Sensornetzwerkparametern vor der Aktivierung** | Aktualisieren Sie Parameter, die während der Sensorinstallation definiert wurden. Weitere Informationen finden Sie unter **Fehler! Verweisquelle nicht gefunden**.|
+| **Aktualisieren von Sensornetzwerkparametern vor der Aktivierung** | Aktualisieren Sie Parameter, die während der Sensorinstallation definiert wurden. Weitere Informationen finden Sie unter **Hochladen von Sensoraktivierungsdateien**.|
 
 
 **So stellen Sie einen Sensor bereit:**
@@ -57,9 +57,9 @@ Das Integrieren von Sensoren ermöglicht Ihnen Folgendes:
 
 4. Wählen Sie eine Option zum Abrufen eines Sensors aus.
 
-   ![Azure Defender für IoT-Ansicht „Network sector“ (Netzwerksektor)](media/updates/image6.png)
+   ![Azure Defender für IoT-Ansicht „Network sensor“ (Netzwerksensor)](media/updates/image6.png)
 
-  - **Kaufen eines vorkonfigurierten Sensors**: Microsoft ist eine Partnerschaft mit Arrow eingegangen, um vorkonfigurierte Sensoren bereitstellen zu können. Wenn Sie einen vorkonfigurierten Sensor kaufen möchten, wenden Sie sich an Arrow unter: <hardware.sales@arrow.com>. Der Sensor wird an Ihre Einrichtung geliefert. Die aktuellste Version ist installiert.
+  - **Kaufen eines vorkonfigurierten Sensors** : Microsoft ist eine Partnerschaft mit Arrow eingegangen, um vorkonfigurierte Sensoren bereitstellen zu können. Wenn Sie einen vorkonfigurierten Sensor kaufen möchten, wenden Sie sich an Arrow unter: <hardware.sales@arrow.com>. Der Sensor wird an Ihre Einrichtung geliefert. Die aktuellste Version ist installiert.
 
   - **Bring your own appliance (ISO-Installation)** : Die Lösung wird auf zertifizierten Appliances ausgeführt. Informationen beim Kauf Ihrer zertifizierten Appliance finden Sie im [Azure Defender for IoT hardware specifications guide](https://aka.ms/AzureDefenderforIoTBareMetalAppliance) (Leitfaden zu den Hardwarespezifikationen für Azure Defender für IoT).
 
@@ -151,7 +151,7 @@ Ausführliche Informationen zu IoT Hubs finden Sie unter [About IoT Hub](../iot-
 
 5. Genehmigen Sie die Geschäftsbedingungen.
 
-6. Wählen Sie **Aktivieren**aus. Die Netzwerkkonfigurationsparameter für den Sensor wurden während der Softwareinstallation oder beim Kauf eines vorkonfigurierten Sensors definiert. Die folgenden Parameter wurden definiert:
+6. Wählen Sie **Aktivieren** aus. Die Netzwerkkonfigurationsparameter für den Sensor wurden während der Softwareinstallation oder beim Kauf eines vorkonfigurierten Sensors definiert. Die folgenden Parameter wurden definiert:
    - IP-Adresse
    - DNS  
    - Standardgateway

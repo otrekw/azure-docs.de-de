@@ -4,12 +4,12 @@ description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 64d4b9769e1a228294bd7d8741f6f4b1260fb0dd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91270558"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93305275"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
 Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für die Integration von Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einer Azure Synapse Analytics-Instanz (vormals SQL Data Warehouse) verwenden.
@@ -165,7 +165,7 @@ Schließen Sie die Cloud Shell, indem Sie die Schaltfläche **Cloud Shell** im P
 ### <a name="create-a-table-in-azure-synapse-analytics"></a>Erstellen einer Tabelle in Azure Synapse Analytics
 Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWarehouseTable.sql](https://github.com/Azure/azure-event-hubs/blob/master/samples/e2e/EventHubsCaptureEventGridDemo/scripts/CreateDataWarehouseTable.sql) eine Tabelle. Verwenden Sie zum Ausführen des Skripts Visual Studio oder den Abfrage-Editor im Portal. Die folgenden Schritte veranschaulichen die Verwendung des Query-Editors: 
 
-1. Wählen Sie in der Liste der Ressourcen in der Ressourcengruppe Ihren **Synapse SQL-Pool (Data Warehouse)** aus. 
+1. Wählen Sie in der Liste der Ressourcen in der Ressourcengruppe Ihren **dedizierten SQL-Pool** aus. 
 2. Wählen Sie auf der Seite „Azure Synapse Analytics“ im linken Menü **Abfrage-Editor (Vorschauversion)** aus. 
 
     ![Seite „Azure Synapse Analytics“](media/event-grid-event-hubs-integration/sql-data-warehouse-page.png)
@@ -203,8 +203,8 @@ Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWa
 ## <a name="publish-the-azure-functions-app"></a>Veröffentlichen der Azure Functions-App
 
 1. Starten Sie Visual Studio.
-2. Öffnen Sie die Lösung **EventHubsCaptureEventGridDemo.sln**, die Sie aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) als Teil der Voraussetzungen heruntergeladen haben.
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **FunctionEGDWDumper**, und wählen Sie **Veröffentlichen** aus.
+2. Öffnen Sie die Lösung **EventHubsCaptureEventGridDemo.sln** , die Sie aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) als Teil der Voraussetzungen heruntergeladen haben.
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **FunctionEGDWDumper** , und wählen Sie **Veröffentlichen** aus.
 
    ![Veröffentlichen einer Funktions-App](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. Wenn der folgende Bildschirm angezeigt wird, wählen Sie **Start**. 
@@ -222,7 +222,7 @@ Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWa
 8. Wählen Sie im Abschnitt **Dienstabhängigkeiten** die Option **Konfigurieren** aus.
 9. Wählen Sie auf der Seite **Abhängigkeit konfigurieren** das zuvor erstellte Speicherkonto und dann **Weiter** aus. 
 10. Übernehmen Sie die Einstellungen für Name und Wert der Verbindungszeichenfolge, und wählen Sie **Weiter** aus.
-11. Deaktivieren Sie die Option **Geheimnisspeicher**, und wählen Sie dann **Fertig stellen** aus.  
+11. Deaktivieren Sie die Option **Geheimnisspeicher** , und wählen Sie dann **Fertig stellen** aus.  
 8. Wenn Visual Studio das Profil konfiguriert hat, wählen Sie **Veröffentlichen**.
 
    ![Wählen Sie "Veröffentlichen"](media/event-grid-event-hubs-integration/select-publish.png)
@@ -252,8 +252,8 @@ Nach dem Veröffentlichen der Funktion können Sie das Ereignis abonnieren.
         2. Wählen Sie Ihr Azure-Abonnement.
         2. Wählen Sie die Azure-Ressourcengruppe aus.
         3. Wählen Sie Ihren Event Hubs-Namespace aus.
-    3. Vergewissern Sie sich im Abschnitt **EREIGNISTYPEN**, dass unter **Nach Ereignistypen filtern** die Option **Capture File Created** (Capture-Datei erstellt) ausgewählt ist. 
-    4. Vergewissern Sie sich im Abschnitt **ENDPUNKTDETAILS**, dass **Endpunkttyp** auf **Azure-Funktion** und **Endpunkt** auf die Azure-Funktion festgelegt ist. 
+    3. Vergewissern Sie sich im Abschnitt **EREIGNISTYPEN** , dass unter **Nach Ereignistypen filtern** die Option **Capture File Created** (Capture-Datei erstellt) ausgewählt ist. 
+    4. Vergewissern Sie sich im Abschnitt **ENDPUNKTDETAILS** , dass **Endpunkttyp** auf **Azure-Funktion** und **Endpunkt** auf die Azure-Funktion festgelegt ist. 
     
         ![Event Grid-Abonnement erstellen](media/event-grid-event-hubs-integration/create-event-subscription.png)
 

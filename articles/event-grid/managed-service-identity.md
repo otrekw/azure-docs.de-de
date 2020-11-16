@@ -3,12 +3,12 @@ title: Ereignisbereitstellung, verwaltete Dienstidentität und private Verbindun
 description: In diesem Artikel wird beschrieben, wie Sie die verwaltete Dienstidentität für ein Azure Event Grid-Thema aktivieren. So können Sie Ereignisse an unterstützte Ziele weiterleiten.
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: 434a2e36ead0d210b7edf64d104243f6643ac019
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: d16310ac61121af0cc9d76664bfeeeb14e1bc243
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460919"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491714"
 ---
 # <a name="event-delivery-with-a-managed-identity"></a>Ereignisübermittlung mit einer verwalteten Identität
 In diesem Artikel wird beschrieben, wie Sie die [verwaltete Dienstidentität](../active-directory/managed-identities-azure-resources/overview.md) für Azure Event Grid-Themen oder Azure Event Grid-Domänen aktivieren. Verwenden Sie diese Methode, um Ereignisse an unterstützte Ziele wie Service Bus-Warteschlangen und -Themen, Event Hubs und Speicherkonten weiterzuleiten.
@@ -46,9 +46,9 @@ Im letzten Abschnitt haben Sie erfahren, wie Sie die vom System verwaltete Ident
 Das folgende Verfahren zeigt, wie die vom System verwaltete Identität für ein Thema aktiviert wird. Die Schritte zum Aktivieren einer Identität für eine Domäne sind ähnlich. 
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
-2. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen** .
+2. Suchen Sie oben in der Suchleiste nach **Event Grid-Themen**.
 3. Wählen Sie das **Thema** aus, für das Sie die verwaltete Identität aktivieren möchten. 
-4. Wechseln Sie zur Registerkarte **Identität** . 
+4. Wechseln Sie zur Registerkarte **Identität**. 
 5. **Aktivieren** Sie den Schalter, um die Identität zu aktivieren. 
 1. Wählen Sie auf der Symbolleiste **Speichern** aus, um die Einstellung zu speichern. 
 
@@ -86,9 +86,9 @@ Sie können das Azure-Portal verwenden, um die Themen- oder Domänenidentität e
 
 Im folgenden Beispiel wird eine verwaltete Identität für ein Event Grid-Thema mit dem Namen **msitesttopic** der Rolle **Azure Service Bus-Datensender** für einen Service Bus-Namespace hinzugefügt, der eine Warteschlangen- oder Themenressource enthält. Wenn Sie das Thema der Rolle auf Namespaceebene hinzufügen, kann es Ereignisse an alle Entitäten im Namespace weiterleiten. 
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace** . 
-1. Klicken Sie im linken Bereich auf **Zugriffssteuerung** . 
-1. Klicken Sie im Bereich **Rollenzuweisung hinzufügen** auf **Hinzufügen** . 
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrem **Service Bus-Namespace**. 
+1. Klicken Sie im linken Bereich auf **Zugriffssteuerung**. 
+1. Klicken Sie im Bereich **Rollenzuweisung hinzufügen** auf **Hinzufügen**. 
 1. Führen Sie die folgenden Schritte auf der Seite **Rollenzuweisung hinzufügen** durch:
     1. Wählen Sie die Rolle aus. In diesem Fall wird die Rolle **Azure Service Bus-Datensender** verwendet. 
     1. Wählen Sie die **Identität** für Ihr Thema oder Ihre Domäne aus. 
@@ -285,7 +285,7 @@ az eventgrid event-subscription create
 ## <a name="private-endpoints"></a>Private Endpunkte
 Derzeit ist es nicht möglich, Ereignisse über [private Endpunkte](../private-link/private-endpoint-overview.md) zu übermitteln. Das heißt, es gibt keine Unterstützung, wenn Sie strikte Anforderungen an die Netzwerkisolation haben, bei denen der Datenverkehr der übermittelten Ereignisse den privaten IP-Adressraum nicht verlassen darf. 
 
-Wenn Ihre Anforderungen jedoch eine sichere Methode zum Senden von Ereignissen über einen verschlüsselten Kanal und eine bekannte Identität des Absenders (in diesem Fall Event Grid) unter Verwendung eines öffentlichen IP-Adressraums erfordern, könnten Sie Ereignisse an Event Hubs, Service Bus oder Azure Storage Service unter Verwendung eines Azure Event Grid-Themas oder einer Domäne mit vom System verwalteter Identität bereitstellen, die wie in diesem Artikel gezeigt konfiguriert ist. Anschließend können Sie eine private Verbindung verwenden, die in Azure Functions konfiguriert ist, oder Ihren Webhook, der in Ihrem virtuellen Netzwerk zum Pullen von Ereignissen bereitgestellt wurde. Weitere Informationen finden Sie im Beispiel: [Herstellen einer Verbindung mit privaten Endpunkten mit Azure Functions.](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/)
+Wenn Ihre Anforderungen jedoch eine sichere Methode zum Senden von Ereignissen über einen verschlüsselten Kanal und eine bekannte Identität des Absenders (in diesem Fall Event Grid) unter Verwendung eines öffentlichen IP-Adressraums erfordern, könnten Sie Ereignisse an Event Hubs, Service Bus oder Azure Storage Service unter Verwendung eines Azure Event Grid-Themas oder einer Domäne mit vom System verwalteter Identität bereitstellen, die wie in diesem Artikel gezeigt konfiguriert ist. Anschließend können Sie eine private Verbindung verwenden, die in Azure Functions konfiguriert ist, oder Ihren Webhook, der in Ihrem virtuellen Netzwerk zum Pullen von Ereignissen bereitgestellt wurde. Weitere Informationen finden Sie im Beispiel: [Herstellen einer Verbindung mit privaten Endpunkten mit Azure Functions](/samples/azure-samples/azure-functions-private-endpoints/connect-to-private-endpoints-with-azure-functions/).
 
 Beachten Sie, dass bei dieser Konfiguration der Datenverkehr über die öffentliche IP-Adresse bzw. das Internet aus Event Grid an Event Hubs, Service Bus oder Azure Storage übermittelt wird, der Kanal jedoch verschlüsselt werden kann und eine verwaltete Identität von Event Grid verwendet wird. Wenn Sie Ihre Azure Functions-Funktion oder Ihren Webhook, der in Ihrem virtuellen Netzwerk bereitgestellt wurde, für die Verwendung von Event Hubs, Service Bus oder Azure Storage über eine private Verbindung konfigurieren, verbleibt dieser Teil des Datenverkehrs offensichtlich in Azure.
 

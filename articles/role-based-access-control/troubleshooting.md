@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/18/2020
+ms.date: 11/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1, devx-track-azurecli
-ms.openlocfilehash: 325931ea024221bc89df3b2e25f3e7844130f4dc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 53628f5aa0bc5ab5dedde5deb9950c7b13fb4bf6
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741062"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490745"
 ---
 # <a name="troubleshoot-azure-rbac"></a>Behandeln von Problemen bei Azure RBAC
 
@@ -59,7 +59,7 @@ $ras.Count
     az role assignment create --assignee "userupn" --role "Contributor"  --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
 
-    Wenn Sie die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“ erhalten, liegt dies wahrscheinlich daran, dass Azure CLI versucht, die Identität der zugewiesenen Person in Azure AD nachzuschlagen, und der Dienstprinzipal kann Azure AD standardmäßig nicht lesen.
+    Wenn Sie die Fehlermeldung „Unzureichende Berechtigungen zum Durchführen des Vorgangs“ erhalten, liegt dies wahrscheinlich daran, dass die Azure CLI versucht, die Identität der zugewiesenen Person in Azure AD nachzuschlagen, und der Dienstprinzipal kann Azure AD nicht standardmäßig lesen.
 
     Es gibt zwei Möglichkeiten, diesen Fehler möglicherweise zu beheben. Die erste Möglichkeit besteht darin, dem Dienstprinzipal die Rolle [Verzeichnis lesen](../active-directory/roles/permissions-reference.md#directory-readers) zuzuweisen, damit er Daten in dem Verzeichnis lesen kann.
 
@@ -68,6 +68,7 @@ $ras.Count
     ```azurecli
     az role assignment create --assignee-object-id 11111111-1111-1111-1111-111111111111  --role "Contributor" --scope "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}"
     ```
+- Wenn Sie versuchen, die letzte Rollenzuweisung „Besitzer“ für ein Abonnement zu entfernen, wird möglicherweise der Fehler „Letzte RBAC-Administratorzuweisung kann nicht gelöscht werden“ angezeigt. Das Entfernen der letzten Rollenzuweisung „Besitzer“ für ein Abonnement wird nicht unterstützt, um das Verwaisen des Abonnements zu vermeiden. Informationen zum Kündigen Ihres Abonnements finden Sie unter [Kündigen Ihres Azure-Abonnements](../cost-management-billing/manage/cancel-azure-subscription.md).
 
 ## <a name="problems-with-custom-roles"></a>Probleme mit benutzerdefinierten Rollen
 

@@ -1,6 +1,6 @@
 ---
-title: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Python) | Microsoft-Dokumentation
-description: Mithilfe von Python können Sie eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit ihrer Azure IoT-Lösung verbunden ist, und mit ihm interagieren.
+title: 'Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Python) | Microsoft-Dokumentation'
+description: 'Schnellstart: Verwenden von Python zum Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist, und Interagieren mit diesem Gerät.'
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: ad5fa271e3abfaf0c7ee4884881262773a9ad485
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 681568c3aee88483c7f9c813529f0eb500a59e93
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741487"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421497"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-python"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Python)
 
@@ -59,7 +59,7 @@ In dieser Schnellstartanleitung verwenden Sie einen in Python geschriebenen Beis
     git clone https://github.com/Azure/azure-iot-sdk-python
     ```
 
-1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-device/samples/pnp* .
+1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-device/samples/pnp*.
 
 1. Führen Sie den Beispielthermostat mit dem folgenden Befehl aus:
 
@@ -73,7 +73,7 @@ In dieser Schnellstartanleitung verwenden Sie einen in Python geschriebenen Beis
 
 In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in Python, um mit dem gerade eingerichteten Beispielgerät zu interagieren.
 
-1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal** .
+1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal**.
 
 1. Navigieren Sie zum Ordner */azure-iot-sdk-python/azure-iot-hub/samples* des geklonten Python SDK-Repositorys.
 

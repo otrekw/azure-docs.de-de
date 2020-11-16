@@ -1,19 +1,19 @@
 ---
-title: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Node.js) | Microsoft-Dokumentation
-description: Mithilfe von Node.js können Sie eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit ihrer Azure IoT-Lösung verbunden ist, und mit ihm interagieren.
+title: 'Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Node.js) | Microsoft-Dokumentation'
+description: 'Schnellstart: Verwenden von Node.js zum Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist, und Interagieren mit diesem Gerät.'
 author: elhorton
 ms.author: elhorton
 ms.date: 10/05/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.custom: mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 9a71a45f69f7a2bd2fbc198292526a6928e421a2
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: mvc, devx-track-js
+ms.openlocfilehash: 814221997bc927cf411e531b523d693f3ef5854c
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736005"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421514"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-nodejs"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Node.js)
 
@@ -51,7 +51,7 @@ In diesem Schnellstart verwenden Sie ein Beispielthermostat, das in Node.js als 
 
 1. Öffnen Sie ein Terminalfenster, und navigieren Sie zu dem lokalen Ordner mit dem Microsoft Azure IoT SDK for Node.js, das Sie auf GitHub geklont haben.
 
-1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp* . Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
+1. Dieses Terminalfenster wird als Ihr **Geräteterminal** verwendet. Wechseln Sie zum Ordner Ihres geklonten Repositorys, und navigieren Sie zum Ordner */azure-iot-sdk-node/device/samples/pnp*. Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
 
     ```cmd/sh
     npm install
@@ -74,9 +74,9 @@ In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tuto
 
 In diesem Schnellstart verwenden Sie eine Beispiel-IoT-Lösung in Node.js für die Interaktion mit dem gerade eingerichteten Beispielgerät.
 
-1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal** .
+1. Öffnen Sie ein weiteres Terminalfenster zur Verwendung als Ihr **Dienstterminal**.
 
-1. Navigieren Sie im geklonten Node SDK-Repository zum Ordner */azure-iot-sdk-node/service/samples/javascript* . Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
+1. Navigieren Sie im geklonten Node SDK-Repository zum Ordner */azure-iot-sdk-node/service/samples/javascript*. Installieren Sie alle Abhängigkeiten, indem Sie den folgenden Befehl ausführen:
 
     ```cmd/sh
     npm install
@@ -233,7 +233,7 @@ In diesem Szenario wird `Model Id: dtmi:com:example:Thermostat;1` ausgegeben.
 
 1. Öffnen Sie die Datei *device_method.js* , und sehen Sie sich den Code an.
 
-1. Wechseln Sie zum **Dienstterminal** . Verwenden Sie den folgenden Befehl, um das Beispiel für das Aufrufen des Befehls auszuführen:
+1. Wechseln Sie zum **Dienstterminal**. Verwenden Sie den folgenden Befehl, um das Beispiel für das Aufrufen des Befehls auszuführen:
 
     ```cmd/sh
     set IOTHUB_METHOD_NAME=getMaxMinReport

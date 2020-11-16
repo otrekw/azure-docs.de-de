@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 757575b31bde1a0e25cc3e70aad0cca0fdd45953
-ms.sourcegitcommit: 94ca9e89501e65f4dcccc3789249357c7d5e27e5
+ms.openlocfilehash: 1c37742b7ed31d8253f7908c3adac35ca0b4d5d8
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92170328"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376552"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Schnellstart: Hinzufügen eines simulierten Geräts zu Ihrer IoT Central-Anwendung
 
@@ -21,7 +21,7 @@ ms.locfileid: "92170328"
 
 Eine Gerätevorlage definiert die Funktionen eines Geräts, das eine Verbindung mit Ihrer IoT Central-Anwendung herstellt. Zu den Funktionen zählen die vom Gerät gesendeten Telemetriedaten, Geräteeigenschaften und die Befehle, auf die ein Gerät reagiert. Auf der Grundlage einer Gerätevorlage kann ein Ersteller oder Bediener sowohl echte als auch simulierte Geräte zu einer Anwendung hinzufügen. Mithilfe von simulierten Geräten können Sie das Verhalten Ihrer IoT Central-Anwendung testen, bevor Sie eine Verbindung mit echten Geräten herstellen.
 
-In dieser Schnellstartanleitung wird eine Gerätevorlage für ein DevKit-Board (*MXChip IoT DevKit*) hinzugefügt und ein simuliertes Gerät erstellt. Für diese Schnellstartanleitung wird kein echtes Gerät benötigt. Stattdessen wird mit einer Simulation des Geräts gearbeitet. Von einem DevKit-Gerät werden folgende Aktionen ausgeführt:
+In diesem Schnellstart wird eine Gerätevorlage für ein [*MXChip IoT DevKit* (DevKit-Board)](https://aka.ms/iot-devkit-purchase) hinzugefügt und ein simuliertes Gerät erstellt. Für diese Schnellstartanleitung wird kein echtes Gerät benötigt. Stattdessen wird mit einer Simulation des Geräts gearbeitet. Von einem DevKit-Gerät werden folgende Aktionen ausgeführt:
 
 * Senden von Telemetriedaten, z. B. Temperatur
 * Melden von gerätespezifischen Eigenschaften, z. B. Helligkeitsstufe
@@ -60,7 +60,7 @@ In den folgenden Schritten wird gezeigt, wie Sie den Gerätekatalog verwenden, u
 
     ![Gerätevorlage für „MXChip IoT DevKit“](./media/quick-create-simulated-device/devkit-template.png)
 
-    Das Funktionsmodell „MXChip IoT DevKit“ enthält Schnittstellen wie **mxchip_sensor**, **mxchip_settings** und **Device Information**. Schnittstellen definieren die Funktionen eines MXChip IoT DevKit-Geräts. Zu den Funktionen gehören die von einem Gerät gesendeten Telemetriedaten, die von einem Gerät gemeldeten Eigenschaften und die Befehle, auf die ein Gerät antwortet.
+    Das Funktionsmodell „MXChip IoT DevKit“ enthält Schnittstellen wie **mxchip_sensor** , **mxchip_settings** und **Device Information**. Schnittstellen definieren die Funktionen eines MXChip IoT DevKit-Geräts. Zu den Funktionen gehören die von einem Gerät gesendeten Telemetriedaten, die von einem Gerät gemeldeten Eigenschaften und die Befehle, auf die ein Gerät antwortet.
 
 ### <a name="add-cloud-properties"></a>Hinzufügen von Cloudeigenschaften
 
@@ -73,7 +73,7 @@ Eine Gerätevorlage kann Cloudeigenschaften enthalten. Cloudeigenschaften sind n
     | Datum der letzten Wartung | Keine          | Date   |
     | Customer Name     | Keine          | String |
 
-1. Wählen Sie **Speichern**, um Ihre Änderungen zu speichern:
+1. Wählen Sie **Speichern** , um Ihre Änderungen zu speichern:
 
     ![Cloudeigenschaften](media/quick-create-simulated-device/cloud-properties.png)
 
@@ -120,15 +120,15 @@ Veröffentlichen Sie wie folgt eine Gerätevorlage:
 
 1. Wählen Sie im Dialogfeld **Diese Gerätevorlage für die Anwendung veröffentlichen** die Option **Veröffentlichen** aus. 
 
-Veröffentlichte Gerätevorlagen werden auf der Seite **Geräte** angezeigt. In einer veröffentlichten Gerätevorlage können Sie ein Gerätefunktionsmodell nicht bearbeiten, ohne eine neue Versionsnummer zu erstellen. Sie können aber Aktualisierungen für Cloudeigenschaften, Anpassungen und Ansichten in einer veröffentlichten Gerätevorlage ohne Versionsvergabe durchführen. Wählen Sie nach dem Vornehmen von Änderungen die Option **Veröffentlichen**, um diese Änderungen für Ihren Bediener bereitzustellen.
+Veröffentlichte Gerätevorlagen werden auf der Seite **Geräte** angezeigt. In einer veröffentlichten Gerätevorlage können Sie ein Gerätefunktionsmodell nicht bearbeiten, ohne eine neue Versionsnummer zu erstellen. Sie können aber Aktualisierungen für Cloudeigenschaften, Anpassungen und Ansichten in einer veröffentlichten Gerätevorlage ohne Versionsvergabe durchführen. Wählen Sie nach dem Vornehmen von Änderungen die Option **Veröffentlichen** , um diese Änderungen für Ihren Bediener bereitzustellen.
 
 ## <a name="add-a-simulated-device"></a>Hinzufügen eines simulierten Geräts
 
-Verwenden Sie die von Ihnen erstellte Gerätevorlage **MXChip IoT DevKit**, um Ihrer Anwendung ein simuliertes Gerät hinzuzufügen.
+Verwenden Sie die von Ihnen erstellte Gerätevorlage **MXChip IoT DevKit** , um Ihrer Anwendung ein simuliertes Gerät hinzuzufügen.
 
 1. Wählen Sie als Bediener im linken Bereich die Option **Geräte** aus, um ein neues Gerät hinzuzufügen. Auf der Registerkarte **Geräte** werden die Option **Alle Geräte** und die Gerätevorlage **MXChip IoT DevKit** angezeigt. Wählen Sie **MXChip IoT DevKit** aus.
 
-1. Wählen Sie **+** aus, um ein simuliertes DevKit-Gerät hinzuzufügen. Verwenden Sie die vorgeschlagene **Geräte-ID**, oder geben Sie Ihre eigene ein. Eine Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten. Sie können auch einen Namen für Ihr neues Gerät eingeben. Achten Sie darauf, dass die Umschaltfläche **Simuliert** auf **Ein** festgelegt ist, und wählen Sie anschließend **Erstellen** aus.
+1. Wählen Sie **+** aus, um ein simuliertes DevKit-Gerät hinzuzufügen. Verwenden Sie die vorgeschlagene **Geräte-ID** , oder geben Sie Ihre eigene ein. Eine Geräte-ID kann Buchstaben, Ziffern und das Zeichen `-` enthalten. Sie können auch einen Namen für Ihr neues Gerät eingeben. Achten Sie darauf, dass die Umschaltfläche **Simuliert** auf **Ein** festgelegt ist, und wählen Sie anschließend **Erstellen** aus.
 
     ![Simuliertes Gerät](./media/quick-create-simulated-device/simulated-device.png)
 
@@ -142,7 +142,7 @@ Sie können nun mit den Ansichten interagieren, die vom Ersteller für die Gerä
 
     * Die Ansicht **Info** enthält Eigenschaftswerte (einschließlich der Cloudeigenschaften, die Sie der Ansicht hinzugefügt haben).
 
-    * In der Ansicht **Befehle** können Sie Befehle für das Gerät ausführen (beispielsweise **blink**).
+    * In der Ansicht **Befehle** können Sie Befehle für das Gerät ausführen (beispielsweise **blink** ).
 
     * Bei der Ansicht **Manage device** handelt es sich um das Formular, das Sie erstellt haben, um dem Operator die Verwaltung des Geräts zu ermöglichen.
 

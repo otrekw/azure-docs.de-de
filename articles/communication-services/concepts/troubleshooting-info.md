@@ -8,16 +8,16 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 4921078e9e7b5d9de06fbbc9a97dc4a964569e04
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754667"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357622"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
-Dieses Dokument unterstützt Sie bei der Ermittlung der Informationen, die Sie für die Problembehandlung Ihrer Communication Services-Lösung benötigen.
+Dieses Dokument hilft Ihnen bei der Behandlung von Problemen, die möglicherweise in Ihrer Communication Services-Lösung auftreten. Bei der Behandlung von Problemen mit SMS können Sie [Übermittlungsberichte mit Event Grid](../quickstarts/telephony-sms/handle-sms-events.md) aktivieren, um SMS-Übermittlungsdetails zu erfassen.
 
 ## <a name="getting-help"></a>Hilfe
 
@@ -33,6 +33,8 @@ Um Ihnen bei der Behandlung bestimmter Arten von Problemen zu helfen, werden Sie
 * **MS-CV-ID** : Diese ID wird für die Problembehandlung von Anrufen und Nachrichten verwendet. 
 * **Anruf-ID** : Diese ID wird zum Identifizieren von Communication Services-Anrufen verwendet.
 * **SMS-Nachrichten-ID** : Diese ID wird zum Identifizieren von SMS-Nachrichten verwendet.
+* **Anrufprotokolle** : Diese Protokolle enthalten ausführliche Informationen, die zur Behandlung von Anruf- und Netzwerkproblemen verwendet werden können.
+
 
 ## <a name="access-your-ms-cv-id"></a>Zugreifen auf Ihre MS-CV-ID
 
@@ -126,6 +128,44 @@ console.log(result); // your message ID will be in the result
 }
 ```
 ---
+
+## <a name="enable-and-access-call-logs"></a>Aktivieren und Zugreifen auf Anrufprotokolle
+
+
+
+
+# <a name="javascript"></a>[JavaScript](#tab/javascript)
+
+Der folgende Code kann verwendet werden, um `AzureLogger` für die Ausgabe von Protokollen an die Konsole mithilfe der JavaScript-Clientbibliothek zu konfigurieren:
+
+```javascript
+import { AzureLogger } from '@azure/logger'; 
+
+AzureLogger.verbose = (...args) => { console.info(...args); } 
+AzureLogger.info = (...args) => { console.info(...args); } 
+AzureLogger.warning = (...args) => { console.info(...args); } 
+AzureLogger.error = (...args) => { console.info(...args); } 
+
+callClient = new CallClient({logger: AzureLogger}); 
+```
+
+# <a name="ios"></a>[iOS](#tab/ios)
+
+Wenn Sie für iOS entwickeln, werden Ihre Protokolle in `.blog`-Dateien gespeichert. Beachten Sie, dass Sie die Protokolle nicht direkt anzeigen können, weil sie verschlüsselt sind.
+
+Auf diese kann durch Öffnen von Xcode zugegriffen werden. Navigieren Sie zu „Windows > Geräte und Simulatoren > Geräte“. Wählen Sie Ihr Gerät aus. Wählen Sie unter „Installierte Apps“ Ihre Anwendung aus, und klicken Sie auf „Container herunterladen“. 
+
+Dadurch erhalten Sie eine `xcappdata`-Datei. Klicken Sie mit der rechten Maustaste auf diese Datei, und wählen Sie „Paketinhalt anzeigen“ aus. Die `.blog`-Dateien werden angezeigt, die Sie dann an Ihre Azure-Supportanfrage anfügen können.
+
+# <a name="android"></a>[Android](#tab/android)
+
+Wenn Sie für Android entwickeln, werden Ihre Protokolle in `.blog`-Dateien gespeichert. Beachten Sie, dass Sie die Protokolle nicht direkt anzeigen können, weil sie verschlüsselt sind.
+
+Navigieren Sie in Android Studio zum Gerätedatei-Explorer, indem Sie im Simulator und auf dem Gerät „Anzeigen > Toolfenster > Gerätedatei-Explorer“ auswählen. Die `.blog`-Datei befindet sich im Verzeichnis Ihrer Anwendung, das in etwa wie `/data/data/[app_name_space:com.contoso.com.acsquickstartapp]/files/acs_sdk.blog` aussehen sollte. Sie können diese Datei an Ihre Supportanfrage anfügen. 
+   
+
+---
+
 
 ## <a name="related-information"></a>Verwandte Informationen
 - [Protokolle und Diagnose](logging-and-diagnostics.md)

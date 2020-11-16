@@ -1,18 +1,18 @@
 ---
-title: Verbinden von IoT Plug & Play-Java-Beispielgerätecode mit IoT Hub | Microsoft-Dokumentation
-description: Erstellen Sie unter Windows IoT Plug & Play-Beispielgerätecode, der eine Verbindung mit einem IoT-Hub herstellt, und führen Sie ihn aus. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.
+title: 'Schnellstart: Verbinden von IoT Plug & Play-Java-Beispielgerätecode mit Azure IoT Hub | Microsoft-Dokumentation'
+description: 'Schnellstart: Erstellen und Ausführen von IoT Plug & Play-Beispielgerätecode, der eine Verbindung mit einem IoT-Hub herstellt. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 6dfd63f92b8c420a3c5281ee2962b211b8779dd1
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 32e610cbd65aafecec9bafb35a78fb8f68279da5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92045056"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421599"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-windows-to-iot-hub-java"></a>Schnellstart: Verbinden einer unter Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (Java)
 

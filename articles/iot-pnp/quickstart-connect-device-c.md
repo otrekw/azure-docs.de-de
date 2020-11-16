@@ -1,18 +1,18 @@
 ---
-title: Verbinden von IoT Plug & Play-C-Beispielgerätecode mit IoT Hub | Microsoft-Dokumentation
-description: Erstellen Sie unter Linux oder Windows IoT Plug & Play Beispielgerätecode, der eine Verbindung mit einem IoT-Hub herstellt, und führen Sie ihn aus. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.
+title: 'Schnellstart: Verbinden von IoT Plug & Play-C-Beispielgerätecode mit Azure IoT Hub | Microsoft-Dokumentation'
+description: 'Schnellstart: Erstellen und Ausführen von IoT Plug & Play Beispielgerätecode, der eine Verbindung mit einem IoT-Hub herstellt, unter Linux oder Windows. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: e490171fd533783aab9fd44798a9c81c55faf89f
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: d69eca10a3ee19919d7cd9e748486e30db95e749
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047929"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421667"
 ---
 # <a name="quickstart-connect-a-sample-iot-plug-and-play-device-application-running-on-linux-or-windows-to-iot-hub-c"></a>Schnellstart: Verbinden einer unter Linux oder Windows ausgeführten IoT Plug & Play-Beispielgeräteanwendung mit IoT Hub (C)
 
@@ -34,7 +34,7 @@ In diesem Schnellstart wird davon ausgegangen, dass Sie Ubuntu Linux verwenden. 
 
 Installieren Sie die folgende Software in Ihrer lokalen Linux-Umgebung, um diesen Schnellstart unter Linux auszuführen:
 
-Installieren Sie **GCC**, **Git**, **cmake** und alle erforderlichen Abhängigkeiten mit dem Befehl `apt-get`:
+Installieren Sie **GCC** , **Git** , **cmake** und alle erforderlichen Abhängigkeiten mit dem Befehl `apt-get`:
 
 ```sh
 sudo apt-get update
@@ -74,7 +74,7 @@ Sie sollten damit rechnen, dass die Ausführung dieses Vorgangs mehrere Minuten 
 
 Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen:
 
-1. Erstellen Sie im Stammordner des Geräte-SDK den Unterordner _cmake_, und navigieren Sie zu diesem Ordner:
+1. Erstellen Sie im Stammordner des Geräte-SDK den Unterordner _cmake_ , und navigieren Sie zu diesem Ordner:
 
     ```cmd\bash
     cd azure-iot-sdk-c
@@ -90,7 +90,7 @@ Sie verwenden das Geräte-SDK, um den enthaltenen Beispielcode zu erstellen:
     ```
 
 > [!TIP]
-> Unter Windows können Sie die Projektmappe öffnen, die mit dem Befehl `cmake` in Visual Studio 2019 generiert wurde. Öffnen Sie die Projektdatei *azure_iot_sdks.sln* im Verzeichnis _cmake_, und legen Sie das Projekt **pnp_simple_thermostat** als Startprojekt in der Projektmappe fest. Jetzt können Sie das Beispiel in Visual Studio erstellen und im Debugmodus ausführen.
+> Unter Windows können Sie die Projektmappe öffnen, die mit dem Befehl `cmake` in Visual Studio 2019 generiert wurde. Öffnen Sie die Projektdatei *azure_iot_sdks.sln* im Verzeichnis _cmake_ , und legen Sie das Projekt **pnp_simple_thermostat** als Startprojekt in der Projektmappe fest. Jetzt können Sie das Beispiel in Visual Studio erstellen und im Debugmodus ausführen.
 
 ## <a name="run-the-device-sample"></a>Ausführen des Gerätebeispiels
 

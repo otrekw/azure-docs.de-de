@@ -1,6 +1,6 @@
 ---
-title: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Java) | Microsoft-Dokumentation
-description: Mithilfe von Java können Sie eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit Ihrer Azure IoT-Lösung verbunden ist, und damit interagieren.
+title: 'Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (Java) | Microsoft-Dokumentation'
+description: 'Schnellstart: Verwenden von Java zum Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist, und Interagieren mit diesem Gerät.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 9/17/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ce41e6b502aef1c44cf96f3b4a5efe401fba3173
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 7229eedc82dfa7b76ae4a22d095f20c41f102e16
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92046484"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421531"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-java"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (Java)
 
@@ -58,7 +58,7 @@ In dieser Schnellstartanleitung verwenden Sie ein in Java geschriebenes Thermost
     mvn install -T 2C -DskipTests
     ```
 
-1. Navigieren Sie zum Ausführen der Beispielgeräteanwendung zum Ordner *device\iot-device-samples\pnp-device-sample\thermostat-device-sample*, und führen Sie den folgenden Befehl aus:
+1. Navigieren Sie zum Ausführen der Beispielgeräteanwendung zum Ordner *device\iot-device-samples\pnp-device-sample\thermostat-device-sample* , und führen Sie den folgenden Befehl aus:
 
     ```cmd
     mvn exec:java -Dexec.mainClass="samples.com.microsoft.azure.sdk.iot.device.Thermostat"
@@ -70,8 +70,8 @@ Das Gerät ist jetzt zum Empfangen von Befehlen und Eigenschaftsaktualisierungen
 
 In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
-* **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_CONNECTION_STRING** : die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`.
 
 In dieser Schnellstartanleitung verwenden Sie eine in Java geschriebene IoT-Beispiellösung für die Interaktion mit dem gerade eingerichteten Beispielgerät.
 

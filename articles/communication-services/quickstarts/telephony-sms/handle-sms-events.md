@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e66d5c4dd4fc1c6c641da975b0ac2254f459642a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: e153c873305cc128ce97ae7c6a907a8f592f8b32
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976928"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357469"
 ---
 # <a name="quickstart-handle-sms-events"></a>Schnellstart: Behandeln von SMS-Ereignissen
 
@@ -63,21 +63,23 @@ Geben Sie auf der Seite **Ereignisabonnement erstellen** einen **Namen** für da
 
 Sie können spezifische Ereignisse abonnieren, um Event Grid mitzuteilen, welche SMS-Ereignisse Sie nachverfolgen möchten und wohin diese gesendet werden sollen. Wählen Sie im Dropdownmenü die Ereignisse aus, die Sie abonnieren möchten. Für SMS können Sie `SMS Received` (SMS empfangen) und `SMS Delivery Report Received` (SMS-Zustellberichte empfangen) auswählen. 
 
+Wenn Sie aufgefordert werden, einen **Systemthemanamen** anzugeben, können Sie einen eindeutigen Bezeichner bereitstellen, den Sie optional zum Filtern von Ereignissen verwenden können, nachdem diese ausgegeben wurden.
+
 Sehen Sie sich die vollständige Liste der [von Azure Communication Services unterstützten Ereignisse](../../concepts/event-handling.md) an.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-eventsub.png" alt-text="Screenshot, der die Auswahl der Ereignistypen „SMS Received“ (SMS empfangen) und „SMS Delivery Report Received“ (SMS-Zustellberichte empfangen) zeigt":::
 
 Wählen Sie unter **Endpunkttyp** die Option **Webhook** aus. 
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-linkwebhook.png" alt-text="Screenshot, der das Feld „Endpunkttyp“ zeigt, das auf „Webhook“ eingestellt ist":::
 
-Klicken Sie für **Endpunkt** auf **Endpunkt auswählen**, und geben Sie die URL Ihrer Web-App ein.
+Klicken Sie für **Endpunkt** auf **Endpunkt auswählen** , und geben Sie die URL Ihrer Web-App ein.
 
 In diesem Fall verwenden wir die URL aus dem [Azure Event Grid Viewer-Beispiel](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/), das wir zuvor im Schnellstart eingerichtet haben. Die URL für das Beispiel weist das folgende Format auf: `https://{{site-name}}.azurewebsites.net/api/updates`
 
 Wählen Sie anschließend **Auswahl bestätigen** aus.
 
-:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
+:::image type="content" source="./media/handle-sms-events/select-events-create-selectwebhook-epadd.png" alt-text="Screenshot, der das Bestätigen eines Webhookendpunkts zeigt":::
 
 ## <a name="viewing-sms-events"></a>Anzeigen von SMS-Ereignissen
 
@@ -94,9 +96,9 @@ Sehen Sie sich die vollständige Liste der [von Azure Communication Services unt
 
 Nachdem Sie die obigen Aktionen durchgeführt haben, stellen Sie fest, dass die Ereignisse `SMS Received` (SMS empfangen) und `SMS Delivery Report Received` (SMS-Zustellbericht empfangen) an Ihren Endpunkt gesendet werden. Diese Ereignisse werden im [Azure Event Grid Viewer-Beispiel](https://docs.microsoft.com/samples/azure-samples/azure-event-grid-viewer/azure-event-grid-viewer/) angezeigt, das wir am Anfang eingerichtet haben. Wählen Sie das Augensymbol neben dem Ereignis aus, um die gesamte Payload anzuzeigen. Ereignisse sehen wie folgt aus:
 
-:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
+:::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Screenshot, der das Event Grid-Schema für ein „SMS Received“-Ereignis (SMS empfangen) zeigt":::
 
-:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Screenshot, der die Auswahl der Schaltfläche „Ereignisabonnement“ auf der Ereignisseite einer Ressource zeigt":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Screenshot, der das Event Grid-Schema für ein „SMS Delivery Report Received“-Ereignis (SMS-Zustellberichte empfangen) zeigt":::
 
 Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](../../concepts/event-handling.md).
 

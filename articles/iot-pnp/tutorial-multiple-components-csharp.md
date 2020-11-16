@@ -1,18 +1,18 @@
 ---
-title: Verbinden von IoT Plug & Play-C#-Beispielcode für Gerätekomponenten mit IoT Hub | Microsoft-Dokumentation
-description: Hier erfahren Sie, wie Sie IoT Plug & Play-Beispielgerätecode (C#) erstellen und ausführen, bei dem mehrere Komponenten verwendet werden und eine Verbindung mit einem IoT-Hub hergestellt wird. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.
+title: 'Tutorial: Verbinden von IoT Plug & Play-C#-Beispielcode für Gerätekomponenten mit Azure IoT Hub | Microsoft-Dokumentation'
+description: 'Tutorial: Erstellen und Ausführen von IoT Plug & Play-C#-Beispielgerätecode, der mehrere Komponenten verwendet und eine Verbindung mit einem IoT-Hub herstellt. Verwenden Sie das Tool Azure IoT-Explorer, um die vom Gerät an den Hub gesendeten Informationen anzuzeigen.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 07/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: 72b85388bf80a6ed2b9617b606940c243c5711f1
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: f7a1aa85c4456bdcf7ed50e42382fc440618ec7d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945531"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421446"
 ---
 # <a name="tutorial-connect-an-iot-plug-and-play-multiple-component-device-application-running-on-windows-to-iot-hub-c"></a>Tutorial: Herstellen einer Verbindung zwischen einer unter Windows ausgeführten IoT Plug & Play-Geräteanwendung mit mehreren Komponenten und IoT Hub (C#)
 

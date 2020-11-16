@@ -1,6 +1,6 @@
 ---
-title: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (C#) | Microsoft-Dokumentation
-description: Mithilfe von C# können Sie eine Verbindung mit einem IoT Plug & Play-Gerät herstellen, das mit ihrer Azure IoT-Lösung verbunden ist, und mit ihm interagieren.
+title: 'Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Azure IoT-Lösung verbunden ist (C#) | Microsoft-Dokumentation'
+description: 'Schnellstart: Verwenden von C# zum Herstellen einer Verbindung mit einem IoT Plug & Play-Gerät, das mit ihrer Azure IoT-Lösung verbunden ist, und Interagieren mit diesem Gerät.'
 author: ericmitt
 ms.author: ericmitt
 ms.date: 09/21/2020
@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: ec38e0849b7f4c1a0ca98d75d4c6c82908c1e16e
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.openlocfilehash: 018edea9a013df55b32ee22020be7226eab27319
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91945375"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421548"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Schnellstart: Interagieren mit einem IoT Plug & Play-Gerät, das mit Ihrer Lösung verbunden ist (C#)
 
@@ -64,8 +64,8 @@ In dieser Schnellstartanleitung verwenden Sie ein in C# geschriebenes Beispielth
 
 In [Einrichten Ihrer Umgebung für die IoT Plug & Play-Schnellstarts und -Tutorials](set-up-environment.md) haben Sie zwei Umgebungsvariablen erstellt, um das Beispiel so zu konfigurieren, dass eine Verbindung mit Ihrem IoT-Hub und -Gerät hergestellt wird:
 
-* **IOTHUB_CONNECTION_STRING**: die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
-* **IOTHUB_DEVICE_ID**: `"my-pnp-device"`.
+* **IOTHUB_CONNECTION_STRING** : die IoT-Hub-Verbindungszeichenfolge, die Sie sich zuvor notiert haben.
+* **IOTHUB_DEVICE_ID** : `"my-pnp-device"`.
 
 In dieser Schnellstartanleitung verwenden Sie eine IoT-Beispiellösung in C# für die Interaktion mit dem gerade eingerichteten Beispielgerät.
 
