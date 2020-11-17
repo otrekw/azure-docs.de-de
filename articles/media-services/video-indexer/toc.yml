@@ -47,8 +47,6 @@
           href: customize-person-model-overview.md
 - name: Anleitungen
   items:
-    - name: Herstellen einer Verbindung mit Azure
-      href: connect-to-azure.md
     - name: Verwalten eines mit Azure verbundenen Kontos
       href: manage-account-connected-to-azure.md
     - name: Hochladen und Indizieren von Videos

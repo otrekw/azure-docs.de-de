@@ -7,12 +7,12 @@ ms.date: 08/10/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 1437ef8675d0ddc96eb7fc641b3663b66c3ea11b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f9bbf6e9d1d932f7225807613b789821c1462932
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285238"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441850"
 ---
 # <a name="troubleshooting-azure-key-vault-access-policy-issues"></a>Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien
 
@@ -53,7 +53,7 @@ Für die Anwendung muss dem Schlüsseltresor darüber hinaus mindestens eine IAM
 
 Derzeit werden bei der erneuten Key Vault-Bereitstellung alle Zugriffsrichtlinien in Key Vault gelöscht und durch die Zugriffsrichtlinie in der ARM-Vorlage ersetzt. Für Key Vault-Zugriffsrichtlinien steht keine inkrementelle Option zur Verfügung. Wenn die Zugriffsrichtlinien in Key Vault erhalten bleiben sollen, müssen Sie die vorhandene Zugriffsrichtlinien in Key Vault lesen und die ARM-Vorlage mit diesen Richtlinien auffüllen, um Ausfälle beim Zugriff zu vermeiden.
 
-Eine weitere für dieses Szenario hilfreiche Option ist die Verwendung von RBAC-Rollen als Alternative zu Zugriffsrichtlinien. Mit RBAC können Sie den Schlüsseltresor erneut bereitstellen, ohne die Richtlinie erneut anzugeben. [Hier](./rbac-guide.md) finden Sie weitere Informationen zu dieser Lösung.
+Eine weitere für dieses Szenario hilfreiche Option ist die Verwendung von Azure RBAC und Rollen als Alternative zu Zugriffsrichtlinien. Mit Azure RBAC können Sie den Schlüsseltresor erneut bereitstellen, ohne die Richtlinie erneut anzugeben. [Hier](./rbac-guide.md) finden Sie weitere Informationen zu dieser Lösung.
 
 ### <a name="recommended-troubleshooting-steps-for-following-error-types"></a>Empfohlene Schritte zur Problembehandlung bei folgenden Fehlertypen
 

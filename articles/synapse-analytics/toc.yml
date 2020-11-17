@@ -130,6 +130,8 @@
             - name: "Beheben von Synapse\_Studio-Konnektivitätsproblemen"
               href: troubleshoot/troubleshoot-synapse-studio-powershell.md
               displayname: powershell
+            - name: "Behandeln von Problemen bei der Konnektivität zwischen Synapse\_Studio und Speicher"
+              href: troubleshoot/troubleshoot-synapse-studio-and-storage-connectivity.md
     - name: Anleitungen
       items:
         - name: Sicher

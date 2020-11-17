@@ -38,6 +38,21 @@
           href: infrastructure-integrity.md
         - name: Schutz von Daten
           href: protection-customer-data.md
+    - name: Plattformintegrität und -sicherheit
+      href: platform.md
+      items:
+        - name: Firmwaresicherheit
+          href: firmware.md
+        - name: Sicherer Start
+          href: secure-boot.md
+        - name: Gemessener Start- und Hostnachweis
+          href: measured-boot-host-attestation.md
+        - name: Project Cerberus
+          href: project-cerberus.md
+        - name: Verschlüsselung ruhender Daten
+          href: encryption-atrest.md
+        - name: Hypervisor-Sicherheit
+          href: hypervisor.md
     - name: Isolation in der Azure-Cloud
       href: isolation-choices.md
 - name: Identitätsverwaltung

@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -275,7 +275,7 @@
               href: platform/logs-data-export.md
             - name: Exportieren mit Logic Apps
               href: platform/logs-export-logic-app.md
-            - name: Abfragen exportierter Daten mit Data Explorer
+            - name: Abfragen von Daten mit Azure Data Explorer
               href: platform/azure-data-explorer-query-storage.md
             - name: Senden an Excel
               href: log-query/log-excel.md

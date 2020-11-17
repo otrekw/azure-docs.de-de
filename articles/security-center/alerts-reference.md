@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: f98927e71a675cc6264c413ba07b3cf689b91560
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
+ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784285"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94372692"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -456,6 +456,8 @@ Die von Security Center unterstützten Kill Chain-Absichten basieren auf dem [M
 | **Auswirkung**              | Ereignisse vom Typ „Auswirkung“ versuchen in erster Linie, die Verfügbarkeit oder Integrität eines Systems, Diensts oder Netzwerks unmittelbar zu verringern, einschließlich der Manipulation von Daten, um einen Geschäfts- oder Betriebsprozess zu beeinträchtigen. Dies bezieht sich häufig auf Techniken wie Ransomware, Verunstaltung, Datenmanipulation und andere.                                                                                                                                                                                                                                                                                                     |
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
+> [!NOTE]
+> Für Warnungen, die sich in der Vorschau befinden: [!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu Warnungen finden Sie in folgenden Abschnitten:

@@ -2,6 +2,8 @@
   href: cut-planes.md
 - name: Debuggen des Renderings
   href: debug-rendering.md
+- name: Fresnel-Effekt
+  href: fresnel-effect.md
 - name: Hierarchische Zustandsüberschreibung
   href: override-hierarchical-state.md
 - name: Camera

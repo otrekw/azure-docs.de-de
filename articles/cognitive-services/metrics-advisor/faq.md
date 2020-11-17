@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: metrics-advisor
 ms.topic: conceptual
-ms.date: 10/15/2020
+ms.date: 11/05/2020
 ms.author: mbullwin
-ms.openlocfilehash: da4dc3579630d641fcbc1d4321b56de0cc09d555
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0c4c296cb1454ed89eef102732533589b1c8ca0d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893576"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420958"
 ---
 # <a name="metrics-advisor-frequently-asked-questions"></a>Metrics Advisor: Häufig gestellte Fragen
 
@@ -104,6 +104,19 @@ Die intelligente Erkennung ist in der Lage, das Muster Ihrer Daten einschließli
 
 Wenn Ihre Daten normalerweise recht instabil sind und stark schwanken und Sie benachrichtigt werden möchten, wenn die Daten zu stabil sind oder sogar überhaupt keine Schwankungen mehr aufweisen, kann „Change Threshold“ (Änderungsschwellenwert) so konfiguriert werden, dass solche Datenpunkte erkannt werden, wenn die Änderung zu gering ist.
 Ausführliche Informationen finden Sie unter [Anomalieerkennungskonfiguration](how-tos/configure-metrics.md#anomaly-detection-methods).
+
+### <a name="how-to-set-up-email-settings-and-enable-alerting-by-email"></a>Wie richte ich E-Mail-Einstellungen ein und aktiviere Warnungen per E-Mail?
+
+1.  Ein Benutzer mit den Berechtigungen „Abonnementadministrator“ oder „Ressourcengruppenadministrator“ muss zu der Metrics Advisor-Ressource navigieren, die im Azure-Portal erstellt wurde, und die Registerkarte **Zugriffssteuerung (IAM)** auswählen. 
+2.  Wählen Sie **Rollenzuweisung hinzufügen** aus.
+3.  Wählen Sie die Rolle **Cognitive Services Metrics Advisor-Administrator** und dann Ihr Konto aus, wie in der Abbildung unten dargestellt.
+4.  Klicken Sie auf die Schaltfläche **Speichern**, dann sind Sie erfolgreich als Administrator der Metrics Advisor-Ressource hinzugefügt worden. Beachten Sie, dass alle oben genannten Aktionen vom Abonnementadministrator oder Ressourcengruppenadministrator durchgeführt werden müssen. 
+
+:::image type="content" source="media/access-control.png" alt-text="Menüseite für die Zugriffssteuerung (IAM) mit ausgewählter Option zum Hinzufügen einer Rollenzuweisung, gefolgt von einem Feld zum Zuweisen des Zugriffs zum ausgewählten Benutzer, der mit der Zugriffsrolle „Cognitive Services Metrics Advisor-Administrator“ angezeigt wird, gefolgt von der Schaltfläche „Speichern“ der Benutzeroberfläche, die ausgewählt ist, um die Schritte der Suche nach einem Benutzer und zum Hinzufügen einer bestimmten Ebene von Zugriffsberechtigungen zu veranschaulichen." lightbox="media/access-control.png":::
+
+
+5.  Es kann bis zu einer Minute dauern, bis die Berechtigungen weitergegeben werden. Wählen Sie dann Ihren Metrics Advisor-Arbeitsbereich und anschließend die Option **E-Mail-Einstellung** im linken Navigationsbereich aus. Füllen Sie die erforderlichen Felder aus, insbesondere die SMTP-bezogenen Informationen. 
+6.  Wählen Sie **Speichern** aus, dann sind Sie mit der E-Mail-Konfiguration fertig. Sie können neue Hooks erstellen und metrische Anomalien abonnieren, um Warnungen in Quasi-Echtzeit zu erhalten. 
 
 ## <a name="advanced-concepts"></a>Erweiterte Konzepte
 

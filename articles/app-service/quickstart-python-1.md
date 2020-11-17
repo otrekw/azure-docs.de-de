@@ -5,14 +5,15 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: eef0a4f24ba65fea4bb33c68f7e7d15f592e808d
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+adobe-target: true
+ms.openlocfilehash: 8b88b8ef81dc8186c122a24896d85114ef8a163d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92915467"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506463"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
 In diesem Schnellstart stellen Sie eine Python-Web-App für [App Service für Linux](overview.md#app-service-on-linux) bereit. Dies ist der überaus skalierbare Webhostingdienst von Azure mit automatisiertem Patchen. Sie verwenden die lokale [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli) auf einem Macintosh-, Linux- oder Windows-Computer, um ein Beispiel mit dem Flask- oder Django-Framework bereitzustellen. Die Web-App, die Sie konfigurieren, nutzt einen kostenlosen App-Service-Tarif, sodass Ihnen im Laufe dieses Artikels keine Kosten entstehen.
 
@@ -99,7 +100,7 @@ Das Beispiel enthält frameworkspezifischen Code, der von Azure App Service beim
 
 ## <a name="deploy-the-sample"></a>Bereitstellen des Beispiels
 
-Stellen Sie mithilfe des Befehls `az webapp up` den Code in Ihrem lokalen Ordner ( *python-docs-hello-world* ) bereit:
+Stellen Sie mithilfe des Befehls `az webapp up` den Code in Ihrem lokalen Ordner (*python-docs-hello-world*) bereit:
 
 ```azurecli
 az webapp up --sku F1 --name <app-name>
@@ -107,7 +108,7 @@ az webapp up --sku F1 --name <app-name>
 
 - Wird der Befehl `az` nicht erkannt, sollten Sie sich vergewissern, dass die Azure CLI wie unter [Einrichten der anfänglichen Umgebung](#set-up-your-initial-environment) beschrieben installiert wurde.
 - Falls der Befehl `webapp` nicht erkannt wird, kann dies daran liegen, dass Sie Azure CLI-Version 2.0.80 oder höher verwenden. Wenn dies nicht der Fall ist, sollten Sie die [aktuelle Version installieren](/cli/azure/install-azure-cli).
-- Ersetzen Sie `<app_name>` durch einen Namen, der innerhalb von Azure eindeutig ist ( *gültige Zeichen: `a-z`, `0-9` und `-`* ). Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
+- Ersetzen Sie `<app_name>` durch einen Namen, der innerhalb von Azure eindeutig ist (*gültige Zeichen: `a-z`, `0-9` und `-`* ). Ein bewährtes Muster ist eine Kombination aus Ihrem Firmennamen und einer App-ID.
 - Mit dem Argument `--sku F1` wird die Web-App im Tarif „Free“ erstellt. Lassen Sie dieses Argument weg, um einen schnelleren Premium-Tarif zu verwenden. Dieser verursacht jedoch stündlich Kosten.
 - Optional können Sie das Argument `--location <location-name>` einfügen, wobei `<location_name>` eine verfügbare Azure-Region ist. Sie können eine Liste der zulässigen Regionen für Ihr Azure-Konto abrufen, indem Sie den Befehl [`az account list-locations`](/cli/azure/appservice#az-appservice-list-locations) ausführen.
 - Wird der Fehler „Could not auto-detect the runtime stack of your app“ (Der Runtimestapel der App konnte nicht automatisch erkannt werden.) angezeigt, sollten Sie sich vergewissern, dass der Befehl im Ordner *python-docs-hello-world* (Flask) bzw. *python-docs-hello-django* (Django) ausgeführt wird, der die Datei *requirements.txt* enthält. (Siehe [Behandeln von Problemen bei der automatischen Erkennung mit „az webapp up“](https://github.com/Azure/app-service-linux-docs/blob/master/AzWebAppUP/runtime_detection.md) (GitHub))
@@ -155,7 +156,7 @@ Der Python-Beispielcode führt einen Linux-Container in App Service mit einem in
 
     ![Lokales Ausführen einer Python-Beispiel-App](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Drücken Sie in Ihrem Terminalfenster **STRG**+**C** , um den Entwicklungsserver zu beenden.
+1. Drücken Sie in Ihrem Terminalfenster **STRG**+**C**, um den Entwicklungsserver zu beenden.
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
@@ -193,7 +194,7 @@ Der Python-Beispielcode führt einen Linux-Container in App Service mit einem in
 
     ![Lokales Ausführen einer Python-Beispiel-App](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
     
-1. Drücken Sie in Ihrem Terminalfenster **STRG**+**C** , um den Entwicklungsserver zu beenden.
+1. Drücken Sie in Ihrem Terminalfenster **STRG**+**C**, um den Entwicklungsserver zu beenden.
 ::: zone-end
 
 [Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/FlaskCLIQuickstartHelp)
@@ -260,7 +261,7 @@ Sie können im Terminal jederzeit **STRG**+**C** drücken, um das Protokollstrea
 
 ## <a name="manage-the-azure-app"></a>Verwalten der Azure-App
 
-Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten. Suchen Sie nach **App Services** , und wählen Sie diese Option aus.
+Wechseln Sie zum <a href="https://portal.azure.com" target="_blank">Azure-Portal</a>, um die erstellte App zu verwalten. Suchen Sie nach **App Services**, und wählen Sie diese Option aus.
 
 ![Navigieren zu App Services im Azure-Portal](./media/quickstart-python/navigate-to-app-services-in-the-azure-portal.png)
 

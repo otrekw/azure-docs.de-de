@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: c9dcb2fa8be22c21cc2b005cce1bf8bb1c614381
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324278"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505069"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal
 
@@ -59,6 +59,9 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 3. Klicken Sie auf **Weiter: Zusätzliche Einstellungen**.
 4. Wählen Sie **Keine** aus, um den dedizierten SQL-Pool ohne Daten bereitzustellen. Übernehmen Sie die ausgewählte Standardsortierung.
+
+    Wenn Sie Ihren dedizierten SQL-Pool von einem Wiederherstellungspunkt wiederherstellen möchten, wählen Sie **Wiederherstellungspunkt** aus. Weitere Informationen zum Ausführen einer Wiederherstellung finden Sie unter [Gewusst wie: Wiederherstellen eines vorhandenen dedizierten SQL-Pools](backuprestore/restore-sql-pool.md)
+
 ![Erstellungsflow für den dedizierten SQL-Pool: Registerkarte „Zusätzliche Einstellungen“](media/quickstart-create-sql-pool/create-sql-pool-portal-03.png)
 
 5. Klicken Sie auf **Überprüfen + erstellen**.
@@ -84,9 +87,9 @@ Führen Sie die folgenden Schritte aus, um den dedizierten SQL-Pool aus dem Arbe
 Führen Sie die folgenden Schritte aus, wenn Sie den dedizierten SQL-Pool löschen möchten:
 
 1. Navigieren Sie auf dem Blatt des Arbeitsbereichs zum Blatt mit den SQL-Pools.
-1. Wählen Sie den zu löschenden dedizierten SQL-Pool aus (in diesem Fall **contosowdw** ).
+1. Wählen Sie den zu löschenden dedizierten SQL-Pool aus (in diesem Fall **contosowdw**).
 1. Klicken Sie nach der Auswahl auf **Löschen**.
-1. Bestätigen Sie den Löschvorgang, und klicken Sie auf die Schaltfläche **Löschen** : ![Übersicht über den dedizierten SQL-Pool: Hervorhebung der Löschbestätigung](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
+1. Bestätigen Sie den Löschvorgang, und klicken Sie auf die Schaltfläche **Löschen**: ![Übersicht über den dedizierten SQL-Pool: Hervorhebung der Löschbestätigung](media/quickstart-create-sql-pool/create-sql-pool-portal-11.png)
 1. Wenn der Vorgang erfolgreich abgeschlossen wurde, wird der dedizierte SQL-Pool nicht mehr in den Arbeitsbereichsressourcen aufgeführt.
 
 ## <a name="next-steps"></a>Nächste Schritte

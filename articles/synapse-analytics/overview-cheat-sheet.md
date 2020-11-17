@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: c8ae47f89dcddd2253abd21239eb1a9bffee27c7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b3ae2c958b479f5f131de871b64663c2754713b6
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307821"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330427"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Cheatsheet für Azure Synapse Analytics
 
@@ -26,7 +26,7 @@ Im Cheatsheet für Azure Synapse Analytics werden Schritt für Schritt die grund
 
 Ein **Synapse-Arbeitsbereich** bietet einen sicherungsfähigen abgegrenzten Bereich für die Zusammenarbeit an cloudbasierten Unternehmensanalysen in Azure. Ein Arbeitsbereich wird in einer bestimmten Region bereitgestellt und verfügt über ein zugeordnetes ADLS Gen2-Konto und Dateisystem (zum Speichern temporärer Daten). Ein Arbeitsbereich befindet sich unter einer Ressourcengruppe.
 
-Ein Arbeitsbereich ermöglicht die Ausführung von Analysen mit SQL und Apache Spark. Für SQL- und Spark-Analysen verfügbare Ressourcen werden in SQL- und Spark- **Pools** organisiert. 
+Ein Arbeitsbereich ermöglicht die Ausführung von Analysen mit SQL und Apache Spark. Für SQL- und Spark-Analysen verfügbare Ressourcen werden in SQL- und Spark-**Pools** organisiert. 
 
 ## <a name="synapse-sql"></a>Synapse-SQL
 
@@ -40,6 +40,7 @@ Erstellen und verwenden Sie zur Nutzung von Spark-Analysen **serverlose Apache 
 | Begriff                         | Definition      |
 |:---                                 |:---                 |
 | **SQL-Anforderung**  |   Ein Vorgang, etwa eine Abfrage, die für einen dedizierten oder serverlosen SQL-Pool ausgeführt wird |
+|**SQL-Skript**| Gruppe von gespeicherten SQL-Befehlen in einer Datei. Ein SQL-Skript kann eine oder mehrere SQL-Anweisungen enthalten. Es kann verwendet werden, um SQL-Anforderungen per dediziertem SQL-Pool oder serverlosem SQL-Pool auszuführen.|
 
 ## <a name="spark-terminology"></a>Spark-Terminologie
 | Begriff                         | Definition      |
@@ -48,17 +49,24 @@ Erstellen und verwenden Sie zur Nutzung von Spark-Analysen **serverlose Apache 
 | **Apache Spark-Pool**  | In einem Arbeitsbereich können null bis n bereitgestellte Spark-Ressourcen mit entsprechenden Datenbanken bereitgestellt werden. Ein Spark-Pool kann automatisch angehalten, fortgesetzt und skaliert werden.  |
 | **Spark-Anwendung**  |   Besteht aus einem Treiberprozess und einem Satz von Executorprozessen. Eine Spark-Anwendung wird in einem serverlosen Spark-Pool ausgeführt.            |
 | **Spark-Sitzung**  |   Einheitlicher Einstiegspunkt einer Spark-Anwendung. Ermöglicht die Interaktion mit den verschiedenen Funktionen von Spark sowie mit einer kleineren Anzahl von Konstrukten. Zum Ausführen eines Notebooks muss eine Sitzung erstellt werden. Eine Sitzung kann so konfiguriert werden, dass sie in einer bestimmten Anzahl von Executors mit einer bestimmten Größe ausgeführt wird. Eine Notebooksitzung ist standardmäßig für die Ausführung in zwei Executors mittlerer Größe konfiguriert. |
-|**Datenintegration**| Ermöglicht das Erfassen von Daten zwischen verschiedenen Quellen sowie das Orchestrieren von Aktivitäten, die innerhalb oder außerhalb eines Arbeitsbereichs ausgeführt werden.| 
-|**Artefakte**| Konzept, das alle Objekte umfasst, die ein Benutzer zum Verwalten von Datenquellen bzw. zum Entwickeln, Orchestrieren und Visualisieren benötigt.|
 |**Notebook**| Interaktive und reaktive Data Science- und Datentechnik-Schnittstelle mit Unterstützung von Scala, PySpark, C# und SparkSQL. |
 |**Spark-Auftragsdefinition**|Schnittstelle zum Übermitteln eines Spark-Auftrags mithilfe einer Assembly-JAR-Datei, die den Code und die zugehörigen Abhängigkeiten enthält.|
+
+## <a name="pipelines-terminology"></a>Pipelines-Terminologie
+| Begriff                         | Definition      |
+|:---                                 |:---                 |
+|**Datenintegration**| Ermöglicht das Erfassen von Daten zwischen verschiedenen Quellen sowie das Orchestrieren von Aktivitäten, die innerhalb oder außerhalb eines Arbeitsbereichs ausgeführt werden.| 
 |**Datenfluss**|  Vollständig visuelle Darstellung für Big Data-Transformationen ohne Programmieraufwand. Die gesamte Optimierung und Ausführung erfolgt serverlos. |
-|**SQL-Skript**| Gruppe von gespeicherten SQL-Befehlen in einer Datei. Ein SQL-Skript kann eine oder mehrere SQL-Anweisungen enthalten. Es kann verwendet werden, um SQL-Anforderungen per dediziertem SQL-Pool oder serverlosem SQL-Pool auszuführen.|
 |**Pipeline**| Logische Gruppierung von Aktivitäten, die gemeinsam eine Aufgabe ausführen.|
 |**Aktivität**| Definiert Aktionen, die für Daten ausgeführt werden sollen (beispielsweise Kopieren von Daten oder Ausführen eines Notebooks oder SQL-Skripts).|
 |**Trigger**| Dient zum Ausführen einer Pipeline. Sie kann manuell oder automatisch ausgeführt werden (zeitplanbasiert, rollierendes Fenster oder ereignisbasiert).|
+|**Integrationsdataset**|  Benannte Ansicht von Daten, die einfach auf die Daten verweist, die in einer Aktivität als Ein- und Ausgabe verwendet werden sollen. Gehört zu einem verknüpften Dienst.|
+
+## <a name="general-terminology"></a>Allgemeine Terminologie
+| Begriff                         | Definition      |
+|:---                                 |:---                 |
+|**Artefakte**| Konzept, das alle Objekte umfasst, die ein Benutzer zum Verwalten von Datenquellen bzw. zum Entwickeln, Orchestrieren und Visualisieren benötigt.|
 |**Verknüpfter Dienst**| Verbindungszeichenfolgen, mit denen die Verbindungsinformationen definiert werden, die erforderlich sind, damit vom Arbeitsbereich eine Verbindung mit externen Ressourcen hergestellt werden kann.|
-|**Dataset**|  Benannte Ansicht von Daten, die einfach auf die Daten verweist, die in einer Aktivität als Ein- und Ausgabe verwendet werden sollen. Gehört zu einem verknüpften Dienst.|
 
 ## <a name="next-steps"></a>Nächste Schritte
 

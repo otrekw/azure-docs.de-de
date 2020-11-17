@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 3fdc9a9f99b239f68022067a5aedbc7e6e0d12a4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287507"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445539"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
 
@@ -62,7 +62,7 @@ Key Vault funktioniert mit zwei separaten Autorisierungsebenen:
 
     Key Vault unterstützt derzeit die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#key-vault-contributor), die Verwaltungsvorgänge für Key Vault-Ressourcen ermöglicht. Eine Reihe anderer Rollen befinden sich zurzeit in der Vorschauphase. Sie können auch benutzerdefinierte Rollen erstellen, wie unter [Benutzerdefinierte Azure-Rollen](../../role-based-access-control/custom-roles.md) beschrieben.
 
-    Allgemeine Informationen zu Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md).
+    Allgemeine Informationen zu Rollen finden Sie unter [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)?](../../role-based-access-control/overview.md).
 
 
 > [!IMPORTANT]
@@ -125,4 +125,4 @@ Die folgende Tabelle ist mit verschiedenen Artikeln verknüpft, die veranschauli
 - [Behandeln von Problemen mit Schlüsseltresor-Zugriffsrichtlinien](troubleshooting-access-issues.md)
 - [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
 - [Entwicklerhandbuch für Key Vault](developers-guide.md)
-- [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)
+- [Was ist die rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC)?](../../role-based-access-control/overview.md)

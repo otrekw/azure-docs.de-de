@@ -297,7 +297,7 @@
       items:
         - name: Was ist Data Box Gateway?
           href: data-box-gateway-overview.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: 1 – Vorbereiten
           href: data-box-gateway-deploy-prep.md

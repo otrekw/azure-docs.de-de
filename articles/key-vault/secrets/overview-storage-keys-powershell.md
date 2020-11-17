@@ -9,12 +9,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 18bf8d865a5bb4d96fb55199137b38ec30861dbe
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 50fbaf5092e793369daaa71fc7364dfd406e03b3
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793040"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444893"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und Azure PowerShell
 
@@ -33,13 +33,13 @@ Wir empfehlen die Verwendung der Azure Storage-Integration in Azure Active Direc
 
 Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](../../active-directory/managed-identities-azure-resources/index.yml) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
 
-Azure AD verwendet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
+Azure AD verwendet rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 ## <a name="service-principal-application-id"></a>Dienstprinzipal-Anwendungs-ID
 
-Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](../../active-directory/develop/developer-glossary.md#service-principal-object) bereit. Der Dienstprinzipal dient als Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über RBAC auf andere Azure-Ressourcen zuzugreifen.
+Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](../../active-directory/develop/developer-glossary.md#service-principal-object) bereit. Der Dienstprinzipal dient als die Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über Azure RBAC auf andere Azure-Ressourcen zuzugreifen.
 
 Key Vault ist eine Microsoft-Anwendung, die in allen Azure AD-Mandanten vorab registriert ist. Key Vault wird unter derselben Anwendungs-ID in jeder Azure-Cloud registriert.
 

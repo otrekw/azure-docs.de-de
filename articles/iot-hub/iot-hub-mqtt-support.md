@@ -13,12 +13,14 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 9f063b147fbddaeaa7888af755dba8f325d4fe0f
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+- fasttrack-edit
+- iot
+ms.openlocfilehash: 4e06edaf6323c13b3a5af037b5b85b5b0acecc79
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899103"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505647"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikation mit Ihrem IoT Hub mithilfe des Protokolls MQTT
 
@@ -44,7 +46,7 @@ Der MQTT-Port (8883) wird in vielen Netzwerken von Unternehmen und Bildungseinri
 
 ## <a name="using-the-device-sdks"></a>Verwenden der Geräte-SDKs
 
-[Geräte-SDKs](https://github.com/Azure/azure-iot-sdks), die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C, C# und Python zur Verfügung. Die SDKs für Geräte verwenden die IoT Hub-Standard-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT** festgelegt werden. Sie können MQTT über WebSockets auch im Parameter für das Clientprotokoll angeben. Standardmäßig verbinden sich die SDKs von Geräten mit einem IoT Hub, indem das **CleanSession** -Flag auf **0** festgelegt und **QoS 1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird. Es ist möglich, **QoS 0** für einen schnelleren Nachrichtenaustausch zu konfigurieren, dabei sollten Sie jedoch beachten, dass die Übermittlung weder garantiert noch bestätigt wird. Aus diesem Grund wird **QoS 0** oft als „Fire and Forget“ bezeichnet.
+[Geräte-SDKs](https://github.com/Azure/azure-iot-sdks), die das MQTT-Protokoll unterstützen, stehen für Java, Node.js, C, C# und Python zur Verfügung. Die SDKs für Geräte verwenden die IoT Hub-Standard-Verbindungszeichenfolge zum Herstellen einer Verbindung mit einem IoT Hub. Um das MQTT-Protokoll verwenden zu können, muss der Clientprotokollparameter auf **MQTT** festgelegt werden. Sie können MQTT über WebSockets auch im Parameter für das Clientprotokoll angeben. Standardmäßig verbinden sich die SDKs von Geräten mit einem IoT Hub, indem das **CleanSession**-Flag auf **0** festgelegt und **QoS 1** für den Nachrichtenaustausch mit dem IoT Hub verwendet wird. Es ist möglich, **QoS 0** für einen schnelleren Nachrichtenaustausch zu konfigurieren, dabei sollten Sie jedoch beachten, dass die Übermittlung weder garantiert noch bestätigt wird. Aus diesem Grund wird **QoS 0** oft als „Fire and Forget“ bezeichnet.
 
 Wenn ein Gerät mit einem IoT Hub verbunden ist, werden mit den SDKs von Geräten Methoden bereitgestellt, die dem Gerät den Austausch von Nachrichten mit einem IoT Hub ermöglichen.
 
@@ -75,7 +77,7 @@ device_client = IoTHubDeviceClient.create_from_connection_string(deviceConnectio
 
 ### <a name="default-keep-alive-timeout"></a>Keep-Alive-Standardtimeout
 
-Um sicherzustellen, dass eine Client/IoT Hub-Verbindung aktiv bleibt, senden sowohl der Dienst als auch der Client einander regelmäßig einen *Keep-Alive* -Ping. Der Client, der das IoT SDK verwendet, sendet in dem in der nachstehenden Tabelle definierten Intervall ein Keep-Alive:
+Um sicherzustellen, dass eine Client/IoT Hub-Verbindung aktiv bleibt, senden sowohl der Dienst als auch der Client einander regelmäßig einen *Keep-Alive*-Ping. Der Client, der das IoT SDK verwendet, sendet in dem in der nachstehenden Tabelle definierten Intervall ein Keep-Alive:
 
 |Sprache  |Keep-Alive-Standardintervall  |Konfigurierbar  |
 |---------|---------|---------|
@@ -99,7 +101,7 @@ Dabei sollten Sie die folgenden Punkte beachten:
 
 * Bei AMQP werden Fehler für viele Bedingungen zurückgegeben, bei MQTT wird dagegen die Verbindung beendet. Daher müssen an der Ausnahmebehandlungslogik möglicherweise einige Änderungen vorgenommen werden.
 
-* MQTT unterstützt beim Empfang von [Cloud-zu-Gerät-Nachrichten](iot-hub-devguide-messaging.md) keine *reject* -Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
+* MQTT unterstützt beim Empfang von [Cloud-zu-Gerät-Nachrichten](iot-hub-devguide-messaging.md) keine *reject*-Vorgänge. Wenn Ihre Back-End-App eine Antwort von der Geräte-App erhalten muss, können Sie [direkte Methoden](iot-hub-devguide-direct-methods.md) verwenden.
 
 * AMQP wird im Python SDK nicht unterstützt.
 
@@ -137,11 +139,11 @@ Dieser Ordner enthält zwei Beispielbefehle, die bei dem Hilfsprogrammtool „mo
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-device"></a>Direktes Verwenden des Protokolls MQTT (als Gerät)
 
-Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich dennoch mithilfe des Protokolls MQTT über den Port 8883 mit den öffentlichen Geräteendpunkten verbinden. Das Gerät sollte im **CONNECT** -Paket die folgenden Werte verwenden:
+Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich dennoch mithilfe des Protokolls MQTT über den Port 8883 mit den öffentlichen Geräteendpunkten verbinden. Das Gerät sollte im **CONNECT**-Paket die folgenden Werte verwenden:
 
-* Verwenden Sie für das Feld **ClientId** die **deviceId** -Eigenschaft.
+* Verwenden Sie für das Feld **ClientId** die **deviceId**-Eigenschaft.
 
-* Verwenden Sie `{iothubhostname}/{device_id}/?api-version=2018-06-30` für das Feld **Benutzername** , wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
+* Verwenden Sie `{iothubhostname}/{device_id}/?api-version=2018-06-30` für das Feld **Benutzername**, wobei `{iothubhostname}` der vollständige CNAME für den IoT Hub ist.
 
     Beispiel: Wenn der Name für den IoT Hub **contoso.azure devices.net** und der Name des Geräts **MyDevice01** lautet, sollte das vollständige Feld **Benutzername** Folgendes enthalten:
 
@@ -178,7 +180,7 @@ Wenn ein Gerät die SDKs von Geräten nicht verwenden kann, lässt es sich denno
 
 Für die MQTT-Pakete CONNECT und DISCONNECT löst IoT Hub ein Ereignis im Kanal **Vorgangsüberwachung** aus. Dieses Ereignis weist zusätzliche Informationen auf, mit deren Hilfe Sie Konnektivitätsprobleme beheben können.
 
-Die Geräte-App kann eine **Will** -Nachricht im **CONNECT** -Paket angeben. Für die Geräte-App sollte `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Will** -Themenname verwendet werden, um festzulegen, dass **Will** -Nachrichten als Telemetrienachricht weitergeleitet werden sollen. Wenn die Netzwerkverbindung geschlossen ist, aber vorher kein **DISCONNECT** -Paket vom Gerät eingegangen ist, sendet IoT Hub in diesem Fall die im **CONNECT** -Paket bereitgestellte **Will** -Nachricht an den Telemetriekanal. Der Telemetriekanal kann entweder der Standardendpunkt **Ereignisse** oder ein benutzerdefinierter Endpunkt sein, der per IoT Hub-Routing definiert wird. Die Nachricht verfügt über die **iothub-MessageType** -Eigenschaft, der der Wert **Will** zugewiesen ist.
+Die Geräte-App kann eine **Will**-Nachricht im **CONNECT**-Paket angeben. Für die Geräte-App sollte `devices/{device_id}/messages/events/` oder `devices/{device_id}/messages/events/{property_bag}` als **Will**-Themenname verwendet werden, um festzulegen, dass **Will**-Nachrichten als Telemetrienachricht weitergeleitet werden sollen. Wenn die Netzwerkverbindung geschlossen ist, aber vorher kein **DISCONNECT**-Paket vom Gerät eingegangen ist, sendet IoT Hub in diesem Fall die im **CONNECT**-Paket bereitgestellte **Will**-Nachricht an den Telemetriekanal. Der Telemetriekanal kann entweder der Standardendpunkt **Ereignisse** oder ein benutzerdefinierter Endpunkt sein, der per IoT Hub-Routing definiert wird. Die Nachricht verfügt über die **iothub-MessageType**-Eigenschaft, der der Wert **Will** zugewiesen ist.
 
 ## <a name="using-the-mqtt-protocol-directly-as-a-module"></a>Direktes Verwenden des Protokolls MQTT (als Modul)
 
@@ -296,9 +298,10 @@ Hier ist eine Liste mit dem spezifischen Verhalten für die IoT Hub-Implementier
 
 * IoT Hub unterstützt keine QoS 2-Nachrichten. Wenn eine Geräte-App eine Nachricht mit **QoS 2** veröffentlicht, schließt IoT Hub die Netzwerkverbindung.
 
-* IoT Hub speichert Beibehaltungsnachrichten („Retain“) nicht beständig. Wenn ein Gerät eine Nachricht mit auf 1 festgelegtem **RETAIN** -Flag sendet, fügt IoT Hub der Nachricht die Anwendungseigenschaft **mqtt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.
+* IoT Hub speichert Beibehaltungsnachrichten („Retain“) nicht beständig. Wenn ein Gerät eine Nachricht mit auf 1 festgelegtem **RETAIN**-Flag sendet, fügt IoT Hub der Nachricht die Anwendungseigenschaft **mqtt-retain** hinzu. In diesem Fall speichert IoT Hub die Beibehaltungsnachricht nicht beständig, sondern übergibt sie an die Back-End-App.
 
-* IoT Hub unterstützt nur eine aktive MQTT-Verbindung pro Gerät. Jede neue MQTT-Verbindung für die gleiche Geräte-ID bewirkt, dass IoT Hub die vorhandene Verbindung löscht.
+* IoT Hub unterstützt nur eine aktive MQTT-Verbindung pro Gerät. Jede neue MQTT-Verbindung für dieselbe Geräte-ID bewirkt, dass IoT Hub die vorhandene Verbindung löscht und in IoT Hub-Protokollen **400027 ConnectionForcefullyClosedOnNewConnectionn** protokolliert wird.
+
 
 Weitere Informationen finden Sie im [Entwicklerhandbuch zum Messaging](iot-hub-devguide-messaging.md).
 
@@ -306,9 +309,9 @@ Weitere Informationen finden Sie im [Entwicklerhandbuch zum Messaging](iot-hub-d
 
 Zum Empfangen von Nachrichten von einem IoT Hub muss ein Gerät ein Abonnement unter Verwendung von `devices/{device_id}/messages/devicebound/#` als **Themenfilter** einrichten. Der Platzhalter mit mehreren Ebenen `#` im Themenfilter wird nur verwendet, um dem Gerät das Empfangen zusätzlicher Eigenschaften im Themennamen zu erlauben. IoT Hub lässt die Verwendung des Platzhalters `#` oder `?` für die Filterung von Unterthemen nicht zu. Da IoT Hub kein allgemeiner Nachrichtenbrokerdienst für das Veröffentlichen und Abonnieren ist, werden nur die dokumentierten Themennamen und -filter unterstützt.
 
-Das Gerät empfängt Nachrichten von IoT Hub erst, nachdem es dessen gerätespezifischen Endpunkt erfolgreich abonniert hat, der durch den Themenfilter `devices/{device_id}/messages/devicebound/#` dargestellt wird. Nachdem ein Abonnement eingerichtet wurde, empfängt das Gerät C2D-Nachrichten, die nach dem Zeitpunkt des Abonnements an das Gerät gesendet wurden. Wenn das Gerät eine Verbindung mit auf **0** festgelegtem **CleanSession** -Flag herstellt, behält das Abonnement verschiedene Sitzungen übergreifend bei. In diesem Fall empfängt das Gerät beim nächsten Verbindungsaufbau mit **CleanSession 0** ausstehende Nachrichten, die ihm gesendet wurden, als es vom Netzwerk getrennt war. Wenn das Gerät das auf **1** festgelegte **CleanSession** -Flag verwendet, empfängt es erst dann Nachrichten von der IoT Hub-Instanz, wenn es deren Geräteendpunkt abonniert.
+Das Gerät empfängt Nachrichten von IoT Hub erst, nachdem es dessen gerätespezifischen Endpunkt erfolgreich abonniert hat, der durch den Themenfilter `devices/{device_id}/messages/devicebound/#` dargestellt wird. Nachdem ein Abonnement eingerichtet wurde, empfängt das Gerät C2D-Nachrichten, die nach dem Zeitpunkt des Abonnements an das Gerät gesendet wurden. Wenn das Gerät eine Verbindung mit auf **0** festgelegtem **CleanSession**-Flag herstellt, behält das Abonnement verschiedene Sitzungen übergreifend bei. In diesem Fall empfängt das Gerät beim nächsten Verbindungsaufbau mit **CleanSession 0** ausstehende Nachrichten, die ihm gesendet wurden, als es vom Netzwerk getrennt war. Wenn das Gerät das auf **1** festgelegte **CleanSession**-Flag verwendet, empfängt es erst dann Nachrichten von der IoT Hub-Instanz, wenn es deren Geräteendpunkt abonniert.
 
-IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId** ) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$** , Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix. Weitere Details zum Format des Eigenschaftenbehälters finden Sie unter [Senden von D2C-Nachrichten](#sending-device-to-cloud-messages).
+IoT Hub sendet Nachrichten mit dem **Themennamen** `devices/{device_id}/messages/devicebound/` oder `devices/{device_id}/messages/devicebound/{property_bag}`, wenn Nachrichteneigenschaften vorhanden sind. `{property_bag}` enthält URL-codierte Schlüssel-Wert-Paare von Nachrichteneigenschaften. Nur Anwendungseigenschaften und vom Benutzer festlegbare Systemeigenschaften (z.B. **messageId** oder **correlationId**) sind im Eigenschaftenbehälter enthalten. Systemeigenschaftennamen haben das Präfix **$** , Anwendungseigenschaften verwenden den ursprünglichen Eigenschaftennamen ohne Präfix. Weitere Details zum Format des Eigenschaftenbehälters finden Sie unter [Senden von D2C-Nachrichten](#sending-device-to-cloud-messages).
 
 Bei Cloud-zu-Gerät-Nachrichten werden die Werte im Eigenschaftenbehälter wie in folgender Tabelle gezeigt dargestellt:
 
@@ -318,13 +321,13 @@ Bei Cloud-zu-Gerät-Nachrichten werden die Werte im Eigenschaftenbehälter wie i
 | Leere Zeichenfolge | `key=` | Der Schlüssel gefolgt von einem Gleichheitszeichen ohne Wert |
 | nicht NULL, nicht leerer Wert | `key=value` | Der Schlüssel gefolgt von einem Gleichheitszeichen und dem Wert |
 
-Das folgende Beispiel zeigt einen Eigenschaftenbehälter, der drei Anwendungseigenschaften enthält: **prop1** mit einem Wert von `null`; **prop2** , eine leere Zeichenfolge („“) und **prop3** mit einem Wert „eine Zeichenfolge“.
+Das folgende Beispiel zeigt einen Eigenschaftenbehälter, der drei Anwendungseigenschaften enthält: **prop1** mit einem Wert von `null`; **prop2**, eine leere Zeichenfolge („“) und **prop3** mit einem Wert „eine Zeichenfolge“.
 
 ```mqtt
 /?prop1&prop2=&prop3=a%20string
 ```
 
-Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK** -Paket maximal die QoS-Ebene 1. Danach übermittelt IoT Hub mithilfe von QoS 1 Nachrichten an das Gerät.
+Wenn eine Geräte-App ein Thema mit **QoS 2** abonniert, gewährt IoT Hub im **SUBACK**-Paket maximal die QoS-Ebene 1. Danach übermittelt IoT Hub mithilfe von QoS 1 Nachrichten an das Gerät.
 
 ## <a name="retrieving-a-device-twins-properties"></a>Abrufen der Eigenschaften eines Gerätezwillings
 
@@ -366,9 +369,9 @@ Die folgende Sequenz beschreibt, wie ein Gerät die gemeldeten Eigenschaften in 
 
 1. Ein Gerät muss zuerst das Thema `$iothub/twin/res/#` abonnieren, um die Antworten des Vorgangs von IoT Hub zu empfangen.
 
-2. Ein Gerät sendet eine Nachricht, die das Gerätezwillingsupdate enthält, an das Thema `$iothub/twin/PATCH/properties/reported/?$rid={request id}`. Diese Nachricht enthält einen **request ID** -Wert.
+2. Ein Gerät sendet eine Nachricht, die das Gerätezwillingsupdate enthält, an das Thema `$iothub/twin/PATCH/properties/reported/?$rid={request id}`. Diese Nachricht enthält einen **request ID**-Wert.
 
-3. Anschließend sendet der Dienst eine Antwortnachricht, die den neuen ETag-Wert für die Sammlung der gemeldeten Eigenschaften enthält, im Thema `$iothub/twin/res/{status}/?$rid={request id}`. Diese Antwortnachricht verwendet den gleichen **request id** -Wert wie die Anforderung.
+3. Anschließend sendet der Dienst eine Antwortnachricht, die den neuen ETag-Wert für die Sammlung der gemeldeten Eigenschaften enthält, im Thema `$iothub/twin/res/{status}/?$rid={request id}`. Diese Antwortnachricht verwendet den gleichen **request id**-Wert wie die Anforderung.
 
 Der Nachrichtentext der Anforderung enthält ein JSON-Dokument mit neuen Werten für gemeldete Eigenschaften. Jeder Member im JSON-Dokument wird aktualisiert, oder der entsprechende Member wird im Dokument des Gerätezwillings hinzugefügt. Wenn ein Member auf `null` festgelegt wurde, wird er aus dem enthaltenden Objekt gelöscht. Beispiel:
 

@@ -10,12 +10,12 @@ ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 58b4a8c445548c711c2ad76c2d983acaec11ca7f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 47427f8d3690218060fd1e6221b1b089c68d6e1d
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786274"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441833"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>Verwalten von Speicherkontoschlüsseln mit Key Vault und der Azure-Befehlszeilenschnittstelle
 
@@ -34,11 +34,11 @@ Wir empfehlen die Verwendung der Azure Storage-Integration in Azure Active Direc
 
 Azure AD ermöglicht es Ihnen, Ihre Clientanwendung zu authentifizieren, indem Sie eine Anwendungs- oder Benutzeridentität anstelle von Speicherkontoanmeldeinformationen verwenden. Sie können eine [von Azure AD verwaltete Identität](../../active-directory/managed-identities-azure-resources/index.yml) verwenden, wenn Sie Ihre Clientanwendung in Azure ausführen. Verwaltete Identitäten machen die Clientauthentifizierung und das Speichern von Anmeldeinformationen in oder mit Ihrer Anwendung überflüssig.
 
-Azure AD verwendet rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
+Azure AD verwendet rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), um die Autorisierung zu verwalten. Dies wird auch von Key Vault unterstützt.
 
 ## <a name="service-principal-application-id"></a>Dienstprinzipal-Anwendungs-ID
 
-Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](../../active-directory/develop/developer-glossary.md#service-principal-object) bereit. Der Dienstprinzipal dient als Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über RBAC auf andere Azure-Ressourcen zuzugreifen.
+Ein Azure AD-Mandant stellt jede registrierte Anwendung mit einem [Dienstprinzipal](../../active-directory/develop/developer-glossary.md#service-principal-object) bereit. Der Dienstprinzipal dient als die Anwendungs-ID, die während der Autorisierungseinrichtung verwendet wird, um über Azure RBAC auf andere Azure-Ressourcen zuzugreifen.
 
 Key Vault ist eine Microsoft-Anwendung, die in allen Azure AD-Mandanten vorab registriert ist. Key Vault wird unter derselben Anwendungs-ID in jeder Azure-Cloud registriert.
 
@@ -137,29 +137,13 @@ az keyvault storage sas-definition create --vault-name <YourKeyVaultName> --acco
 
 ### <a name="verify-the-shared-access-signature-definition"></a>Überprüfen der SAS-Definition
 
-Mithilfe der Befehle [az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list) und [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) der Azure-Befehlszeilenschnittstelle können Sie überprüfen, ob die SAS-Definition in Ihrem Schlüsseltresor gespeichert wurde.
+Mithilfe des Befehls [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) der Azure CLI können Sie überprüfen, ob die SAS-Definition in Ihrem Schlüsseltresor gespeichert wurde.
 
-Suchen Sie zunächst die SAS-Definition in Ihrem Schlüsseltresor mithilfe des Befehls [az keyvault secret list](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-list).
-
-```azurecli-interactive
-az keyvault secret list --vault-name <YourKeyVaultName>
-```
-
-Das Geheimnis, das Ihrer SAS-Definition entspricht, weist die folgenden Eigenschaften auf:
-
-```console
-    "contentType": "application/vnd.ms-sastoken-storage",
-    "id": "https://<YourKeyVaultName>.vault.azure.net/secrets/<YourStorageAccountName>-<YourSASDefinitionName>",
-```
-
-Sie können jetzt den Befehl [az keyvault secret show](/cli/azure/keyvault/secret?view=azure-cli-latest#az-keyvault-secret-show) und die Eigenschaft `id` verwenden, um den Inhalt dieses Geheimnisses anzuzeigen.
+Sie können jetzt den Befehl [az keyvault storage sas-definition show](/cli/azure/keyvault/storage/sas-definition?#az_keyvault_storage_sas_definition_show) und die Eigenschaft `id` verwenden, um den Inhalt dieses Geheimnisses anzuzeigen.
 
 ```azurecli-interactive
-az keyvault secret show --vault-name <YourKeyVaultName> --id <SasDefinitionID>
+az keyvault storage sas-definition show --id https://<YourKeyVaultName>.vault.azure.net/storage/<YourStorageAccountName>/sas/<YourSASDefinitionName>
 ```
-
-Die Ausgabe dieses Befehls zeigt die Zeichenfolge Ihrer SAS-Definition als `value` an.
-
 
 ## <a name="next-steps"></a>Nächste Schritte
 

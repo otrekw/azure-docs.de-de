@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 10/16/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6ffa7bb07ddb42946acdcef6ee3b7f2aa804f774
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f3ed5f3940a9b02701ad2f3c779b791e128e288c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324347"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506344"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-using-synapse-studio"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe von Synapse Studio
 
@@ -51,11 +51,11 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 ## <a name="create-a-dedicated-sql-pool-in-synapse-studio"></a>Erstellen eines dedizierten SQL-Pools in Synapse Studio
 
-1. Navigieren Sie auf der Synapse Studio-Startseite im linken Navigationsbereich zum **Verwaltungshub** , indem Sie das Symbol **Verwalten** auswählen.
+1. Navigieren Sie auf der Synapse Studio-Startseite im linken Navigationsbereich zum **Verwaltungshub**, indem Sie das Symbol **Verwalten** auswählen.
 
     ![Synapse Studio-Startseite mit hervorgehobenem Abschnitt „Verwaltungshub“](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
 
-1. Sobald Sie sich im Verwaltungshub befinden, navigieren Sie zum Abschnitt **SQL-Pools** , um die aktuelle Liste der SQL-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
+1. Sobald Sie sich im Verwaltungshub befinden, navigieren Sie zum Abschnitt **SQL-Pools**, um die aktuelle Liste der SQL-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
 
     ![Synapse Studio-Verwaltungshub mit ausgewählter Navigation für „SQL-Pools“](media/quickstart-create-sql-pool/create-sql-pool-studio-22.png)
 
@@ -74,13 +74,15 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
     > [!IMPORTANT]
     > Beachten Sie, dass für die Namen, die für dedizierte SQL-Pools verwendet werden können, bestimmte Einschränkungen gelten. Namen dürfen keine Sonderzeichen enthalten, höchstens 15 Zeichen lang sein und keine reservierten Wörter enthalten und müssen im Arbeitsbereich eindeutig sein.
 
-4. Wählen Sie auf der nächsten Registerkarte, **Zusätzliche Einstellungen** , die Option **Keine** aus, um den SQL-Pool ohne Daten bereitzustellen. Übernehmen Sie die bereits ausgewählte Standardsortierung.
+4. Wählen Sie auf der nächsten Registerkarte, **Zusätzliche Einstellungen**, die Option **Keine** aus, um den SQL-Pool ohne Daten bereitzustellen. Übernehmen Sie die bereits ausgewählte Standardsortierung.
+
+    Wenn Sie Ihren dedizierten SQL-Pool von einem Wiederherstellungspunkt wiederherstellen möchten, wählen Sie **Wiederherstellungspunkt** aus. Weitere Informationen zum Ausführen einer Wiederherstellung finden Sie unter [Gewusst wie: Wiederherstellen eines vorhandenen dedizierten SQL-Pools](backuprestore/restore-sql-pool.md)
 
     ![Erstellungsflow für den SQL-Pool: Registerkarte „Zusätzliche Einstellungen“](media/quickstart-create-sql-pool/create-sql-pool-studio-25.png)
 
 1. Wir fügen vorerst keine Tags hinzu. Wählen Sie also als Nächstes **Überprüfen + erstellen** aus.
 
-1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen** , dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
+1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen**, dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
 
     ![Flow für die SQL-Poolerstellung: Registerkarte zum Überprüfen der Einstellungen](media/quickstart-create-sql-pool/create-sql-pool-studio-26.png)
 
@@ -101,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um den dedizierten SQL-Pool mithilfe von
 Wenn Sie den dedizierten SQL-Pool löschen möchten, führen Sie die folgenden Schritte aus:
 
 1. Navigieren Sie in Synapse Studio im Verwaltungshub zu den SQL-Pools.
-1. Wählen Sie die Auslassungspunkte in dem zu löschenden dedizierten SQL-Pool (in diesem Fall **contosoedw** ) aus, um die Befehle für den dedizierten SQL-Pool anzuzeigen:
+1. Wählen Sie die Auslassungspunkte in dem zu löschenden dedizierten SQL-Pool (in diesem Fall **contosoedw**) aus, um die Befehle für den dedizierten SQL-Pool anzuzeigen:
 
     ![Liste der SQL-Pools, wobei der soeben erstellte Pool ausgewählt ist.](media/quickstart-create-sql-pool/create-sql-pool-studio-28.png)
 1. Klicken Sie auf **Löschen**.

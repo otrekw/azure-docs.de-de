@@ -93,6 +93,8 @@
       href: ../../devtest-labs/security-baseline.md
     - name: Azure Firewall-Sicherheitsbaseline
       href: ../../firewall/security-baseline.md
+    - name: Azure Front Door-Sicherheitsbaseline
+      href: ../../frontdoor/security-baseline.md
     - name: Azure Functions-Sicherheitsbaseline
       href: ../../azure-functions/security-baseline.md
     - name: Azure IoT Hub-Sicherheitsbaseline
@@ -139,6 +141,8 @@
       href: ../../container-registry/security-baseline.md
     - name: "Cosmos\_DB-Sicherheitsbaseline"
       href: ../../cosmos-db/security-baseline.md
+    - name: Cost Management-Sicherheitsbaseline
+      href: ../../cost-management-billing/security-baseline.md
     - name: Sicherheitsbaseline für Kunden-Lockbox
       href: ../fundamentals/customer-lockbox-security-baseline.md
     - name: Data Lake Analytics-Sicherheitsbaseline

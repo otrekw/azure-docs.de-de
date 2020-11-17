@@ -28,8 +28,6 @@
       items:
         - name: Ändern der Ausgangssprache für die Spracherkennung
           href: how-to-specify-source-language.md
-        - name: Verbessern der Genauigkeit mit Custom Speech
-          href: how-to-custom-speech.md
         - name: Verwenden komprimierter Audioeingabeformate
           href: how-to-use-codec-compressed-audio-input-streams.md
           displayName: 'codec,codecs,compression,compressed,mp3,flac,mulaw,alaw,mp4,mp4a,wav,opus,ogg,pcm,silk'
@@ -45,20 +43,18 @@
           href: tutorial-tenant-model.md
     - name: Anpassung
       items:
+        - name: Was ist Custom Speech?
+          href: custom-speech-overview.md
         - name: Testen eines Modells mithilfe von Audiodateien in Speech Studio
           href: quickstarts/speech-studio-test-model.md
         - name: Vorbereiten von Daten für Custom Speech
           href: how-to-custom-speech-test-and-train.md
         - name: "Überprüfen von Custom\_Speech-Daten"
           href: how-to-custom-speech-inspect-data.md
-        - name: Bewerten der Custom Speech-Genauigkeit
+        - name: "Bewerten und Verbessern der Custom\_Speech-Genauigkeit"
           href: how-to-custom-speech-evaluate-data.md
-        - name: "Verbessern der Custom\_Speech-Genauigkeit"
-          href: how-to-custom-speech-improve-accuracy.md
-        - name: Trainieren eines Modells für Custom Speech
+        - name: "Trainieren und Bereitstellen eines Custom\_Speech-Modells"
           href: how-to-custom-speech-train-model.md
-        - name: Bereitstellen eines benutzerdefinierten Modells
-          href: how-to-custom-speech-deploy-model.md
         - name: CI/CD für Custom Speech
           href: how-to-custom-speech-continuous-integration-continuous-deployment.md
         - name: Erstellen von menschenmarkierten Transkriptionen
@@ -391,6 +387,10 @@
                       href: how-to-custom-commands-setup-web-endpoints.md
                     - name: Exportieren Ihrer App für benutzerdefinierte Befehle als Skill
                       href: how-to-custom-commands-integrate-remote-skills.md
+                    - name: Aktualisieren eines Befehls über die Client-App
+                      href: how-to-custom-commands-update-command-from-client.md
+                    - name: Aktualisieren eines Befehls über einen Webendpunkt
+                      href: how-to-custom-commands-update-command-from-web-endpoint.md
                 - name: Bereitstellen
                   items:
                     - name: Continuous Deployment mit Azure DevOps

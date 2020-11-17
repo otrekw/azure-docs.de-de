@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: .NET Framework
+        - name: ".NET\_Framework"
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -106,8 +106,10 @@
           href: concept-disaster-recovery.md
 - name: Anleitungen
   items:
-    - name: Aktivieren einer Funktion für eine Teilmenge von Benutzern
+    - name: Aktivieren einer Funktion für einen Prozentsatz von Benutzern
       href: howto-feature-filters-aspnet-core.md
+    - name: Aktivieren einer Funktion für bestimmte Benutzer/Gruppen
+      href: howto-targetingfilter-aspnet-core.md
     - name: Verwenden von Bezeichnungen für die Konfiguration pro Umgebung
       href: howto-labels-aspnet-core.md
     - name: Importieren oder Exportieren von Konfigurationsdaten

@@ -2,15 +2,15 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Erfahren Sie, wie Sie eine Vorlagenspezifikation aus einer ARM-Vorlage erstellen. Stellen Sie dann die Vorlagenspezifikation für eine Ressourcengruppe in Ihrem Abonnement bereit.
 author: tfitzmac
-ms.date: 10/02/2020
+ms.date: 11/10/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: e1bd2f3da8204cf5947d0cf423cd57b023674608
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728776"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506361"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen (Vorschau)
 
@@ -88,7 +88,7 @@ Diese Optionen werden nachstehend vorgestellt.
 1. Wenn Sie eine ARM-Vorlage zum Erstellen der Vorlagenspezifikation verwenden, wird die Vorlage in die Ressourcendefinition eingebettet. Kopieren Sie die folgende Vorlage, und speichern Sie sie lokal als **azuredeploy.json**. In dieser Schnellstartanleitung wird davon ausgegangen, dass die Speicherung im Pfad **c:\Templates\azuredeploy.json** erfolgt ist, aber Sie können einen beliebigen Pfad verwenden.
 
     > [!NOTE]
-    > In der eingebetteten Vorlage müssen alle linken Klammern eine zweite linke Klammer als Escapezeichen verwenden. Verwenden Sie `[[` anstelle von `[`.
+    > In der eingebetteten Vorlage müssen alle [Vorlagenausdrücke](template-expressions.md) eine zweite linke eckige Klammer als Escapezeichen verwenden. Verwenden Sie `"[[` anstelle von `"[`. JSON-Arrays verwenden weiterhin eine einzelne linke eckige Klammer.
 
     ```json
     {
