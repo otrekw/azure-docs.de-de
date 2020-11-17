@@ -1,79 +1,76 @@
 ---
 title: Kundenseitig verwaltete Schlüssel in Azure Monitor
-description: Informationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für das Verschlüsseln von Daten in Ihren Log Analytics-Arbeitsbereichen mithilfe eines Azure Key Vault-Schlüssels.
+description: Informationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel für das Verschlüsseln von Daten in Ihren Log Analytics-Arbeitsbereichen mithilfe eines Azure Key Vault-Schlüssels.
 ms.subservice: logs
 ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
-ms.date: 09/09/2020
-ms.openlocfilehash: 532d96163e2ec66730dc3fdf87f10904fd584224
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.date: 11/09/2020
+ms.openlocfilehash: 62621a36955808ec3f2c796681fe660e6e8524bc
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92107996"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94443380"
 ---
 # <a name="azure-monitor-customer-managed-key"></a>Kundenseitig verwaltete Schlüssel in Azure Monitor 
 
-Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel (Customer-Managed Key, CMK) für Ihre Log Analytics-Arbeitsbereiche. Nach der Konfiguration werden alle Daten, die an Ihre Arbeitsbereiche gesendet werden, mit Ihrem Azure Key Vault-Schlüssel verschlüsselt.
+Dieser Artikel enthält Hintergrundinformationen und Schritte zum Konfigurieren kundenseitig verwalteter Schlüssel für Ihre Log Analytics-Arbeitsbereiche. Nach der Konfiguration werden alle Daten, die an Ihre Arbeitsbereiche gesendet werden, mit Ihrem Azure Key Vault-Schlüssel verschlüsselt.
 
 Es wird empfohlen, vor der Konfiguration die [Einschränkungen](#limitationsandconstraints) weiter unten zu überprüfen.
 
-## <a name="customer-managed-key-cmk-overview"></a>Übersicht über kundenseitig verwaltete Schlüssel (Customer-Managed Key, CMK)
+## <a name="customer-managed-key-overview"></a>Übersicht über kundenseitig verwaltete Schlüssel
 
 Die [Verschlüsselung ruhender Daten](../../security/fundamentals/encryption-atrest.md) ist eine übliche Datenschutz- und Sicherheitsanforderung in Organisationen. Sie können die Verschlüsselung ruhender Daten vollständig von Azure verwalten lassen, wobei Ihnen verschiedene Optionen zum genauen Verwalten der Verschlüsselung oder Verschlüsselungsschlüssel bereitstehen.
 
-Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist und auf den über die Authentifizierung der systemseitig zugewiesenen [verwalteten Identität](../../active-directory/managed-identities-azure-resources/overview.md) zugegriffen wird. Dieser Schlüssel (CMK) kann entweder durch [Software oder Hardware (HSM) geschützt](../../key-vault/general/overview.md) werden. Die Verwendung der Verschlüsselung durch Azure Monitor entspricht der Funktionsweise der [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption).
+Mit Azure Monitor wird sichergestellt, dass alle Daten und gespeicherten Abfragen im Ruhezustand mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt werden. Azure Monitor bietet auch eine Option für die Verschlüsselung mithilfe eines eigenen Schlüssels, der in Ihrer [Azure Key Vault](../../key-vault/general/overview.md)-Instanz gespeichert ist und vom Speicher für die Datenverschlüsselung verwendet wird. Der Schlüssel kann entweder durch [Software oder Hardware (HSM) geschützt](../../key-vault/general/overview.md) werden. Die Verwendung der Verschlüsselung durch Azure Monitor entspricht der Funktionsweise der [Azure Storage-Verschlüsselung](../../storage/common/storage-service-encryption.md#about-azure-storage-encryption).
 
-Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt und bietet Ihnen die Möglichkeit, den Zugriff auf Ihre Daten jederzeit zu widerrufen und die Daten mit [Lockbox](#customer-lockbox-preview) zu schützen. Um sicherzustellen, dass die erforderliche Kapazität für einen dedizierten Cluster in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus zugelassen sein. Wenden Sie sich an Ihren Microsoft-Kontakt, um Ihr Abonnement zuzulassen, bevor Sie mit der Konfiguration von CMK beginnen.
+Die Funktion für kundenseitig verwaltete Schlüssel wird auf dedizierten Log Analytics-Clustern bereitgestellt. Sie bietet Ihnen die Möglichkeit, Ihre Daten mit [Lockbox](#customer-lockbox-preview) zu schützen und den Zugriff auf Ihre Daten jederzeit zu widerrufen. Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#key-revocation). Wir arbeiten daran, dass SSD-Daten in der ersten Hälfte des Jahres 2021 mit kundenseitig verwalteten Schlüsseln verschlüsselt werden.
 
 Beim [Preismodell für Log Analytics-Cluster](./manage-cost-storage.md#log-analytics-dedicated-clusters) werden Kapazitätsreservierungen ab 1000 GB/Tag verwendet.
 
-Daten, die in den letzten 14 Tagen erfasst wurden, werden für einen effizienten Betrieb der Abfrage-Engine auch im Hot-Cache (SSD-gestützt) aufbewahrt. Diese Daten bleiben unabhängig von der CMK-Konfiguration mit Microsoft-Schlüsseln verschlüsselt, aber Ihre Kontrolle über SSD-Daten entspricht der [Schlüsselsperrung](#cmk-kek-revocation). Wir arbeiten daran, dass SSD-Daten in der zweiten Hälfte des Jahres 2020 mit CMK verschlüsselt werden.
+> [!IMPORTANT]
+> Aufgrund temporärer Kapazitätseinschränkungen ist vor dem Erstellen eines Clusters eine Vorabregistrierung erforderlich. Verwenden Sie Ihre Kontakte zu Microsoft, oder öffnen Sie eine Supportanfrage zum Registrieren Ihrer Abonnements-IDs.
 
-## <a name="how-cmk-works-in-azure-monitor"></a>Funktionsweise von CMK in Azure Monitor
+## <a name="how-customer-managed-key-works-in-azure-monitor"></a>Funktionsweise von kundenseitig verwalteten Schlüsseln in Azure Monitor
 
-Azure Monitor nutzt eine systemseitig zugewiesene verwaltete Identität, um Zugriff auf Azure Key Vault zu gewähren. Eine systemseitig zugewiesene verwaltete Identität kann nur einer einzigen Azure-Ressource zugeordnet werden, während die Identität des Log Analytics Clusters auf Clusterebene unterstützt wird. Dadurch ist vorgegeben, dass die CMK-Funktion auf einem dedizierten Log Analytics-Cluster bereitgestellt wird. Zur Unterstützung von CMK in mehreren Arbeitsbereichen wird eine neue Log Analytics- *Clusterressource* als temporäre Identitätsverbindung zwischen Key Vault und Log Analytics-Arbeitsbereichen eingesetzt. Der Log Analytics-Clusterspeicher verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung bei Azure Key Vault über Azure Active Directory. 
+Azure Monitor nutzt eine systemseitig zugewiesene verwaltete Identität, um Zugriff auf Azure Key Vault zu gewähren. Eine systemseitig zugewiesene verwaltete Identität kann nur einer einzigen Azure-Ressource zugeordnet werden, während die Identität des Log Analytics Clusters auf Clusterebene unterstützt wird. Dadurch ist vorgegeben, dass die Funktion auf einem dedizierten Log Analytics-Cluster bereitgestellt wird. Zur Unterstützung von kundenseitig verwalteten Schlüsseln in mehreren Arbeitsbereichen wird eine neue Log Analytics-*Clusterressource* als temporäre Identitätsverbindung zwischen Key Vault und Log Analytics-Arbeitsbereichen eingesetzt. Der Log Analytics-Clusterspeicher verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung bei Azure Key Vault über Azure Active Directory. 
 
-Nach der CMK-Konfiguration werden alle Daten, die in die mit Ihrem dedizierten Cluster verknüpften Arbeitsbereiche eingegeben werden, mit Ihrem Schlüssel in Key Vault verschlüsselt. Sie können die Verknüpfung von Arbeitsbereichen mit dem Cluster jederzeit aufheben. Neue Daten werden im Log Analytics-Speicher erfasst und mit dem Microsoft-Schlüssel verschlüsselt, während Sie die neuen und alten Daten nahtlos abfragen können.
+Nach der Konfiguration werden alle Daten, die in die mit Ihrem dedizierten Cluster verknüpften Arbeitsbereiche eingegeben werden, mit Ihrem Schlüssel in Key Vault verschlüsselt. Sie können die Verknüpfung von Arbeitsbereichen mit dem Cluster jederzeit aufheben. Neue Daten werden dann im Log Analytics-Speicher erfasst und mit dem Microsoft-Schlüssel verschlüsselt, während Sie die neuen und alten Daten nahtlos abfragen können.
 
 
-![CMK-Übersicht](media/customer-managed-keys/cmk-overview.png)
+![Übersicht über kundenseitig verwaltete Schlüssel](media/customer-managed-keys/cmk-overview.png)
 
 1. Key Vault
-2. Log Analytics- *Clusterressource* mit verwalteter Identität und Berechtigungen für Key Vault. Die Identität wird an den zugrunde liegenden dedizierten Log Analytics-Clusterspeicher weitergegeben.
+2. Log Analytics-*Clusterressource* mit verwalteter Identität und Berechtigungen für Key Vault. Die Identität wird an den zugrunde liegenden dedizierten Log Analytics-Clusterspeicher weitergegeben.
 3. Dedizierter Log Analytics-Cluster
-4. Arbeitsbereiche, die mit der *Clusterressource* für die CMK-Verschlüsselung verknüpft sind
+4. Mit der *Clusterressource* verknüpfte Arbeitsbereiche 
 
 ## <a name="encryption-keys-operation"></a>Vorgang für Verschlüsselungsschlüssel
 
 An der Speicherdatenverschlüsselung sind drei Arten von Schlüsseln beteiligt:
 
-- **KEK** (Key Encryption Key): Schlüsselverschlüsselungsschlüssel (CMK)
+- **KEK** (Key Encryption Key): Schlüsselverschlüsselungsschlüssel (Ihr kundenseitig verwalteter Schlüssel)
 - **AEK** (Account Encryption Key): Kontoverschlüsselungsschlüssel
 - **DEK** (Data Encryption Key): Datenverschlüsselungsschlüssel
 
 Es gelten die folgenden Regeln:
 
 - Die Speicherkonten im Log Analytics-Cluster generieren einen eindeutigen Verschlüsselungsschlüssel für jedes Speicherkonto, der als AEK bezeichnet wird.
-
 - Der AEK dient zum Ableiten von DEKs, bei denen es sich um die Schlüssel handelt, die zum Verschlüsseln der einzelnen, auf den Datenträger geschriebenen Datenblöcke verwendet werden.
-
 - Wenn Sie den Schlüssel in Key Vault konfigurieren und im Cluster darauf verweisen, sendet Azure Storage Anforderungen an Azure Key Vault, um den AEK zu packen und zu entpacken und so Verschlüsselungs- und Entschlüsselungsvorgänge für Daten auszuführen.
-
 - Der KEK verlässt niemals den Key Vault, und im Fall eines HSM-Schlüssels verlässt dieser niemals die Hardware.
-
 - Azure Storage verwendet die der *Clusterressource* zugeordnete verwaltete Identität für die Authentifizierung und den Zugriff auf Azure Key Vault über Azure Active Directory.
 
-## <a name="cmk-provisioning-procedure"></a>CMK-Bereitstellungsverfahren
+## <a name="customer-managed-key-provisioning-procedure"></a>Bereitstellungsverfahren für kundenseitig verwalteten Schlüssel
 
-1. Zulassen des Abonnements: Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus zugelassen sein. Wenden Sie sich an Ihren Microsoft-Kontakt, um Ihr Abonnement zuzulassen.
-2. Erstellen von Azure Key Vault und Speichern des Schlüssels
-3. Erstellen eines Clusters
-4. Gewähren von Berechtigungen für Key Vault
-5. Verknüpfen von Log Analytics-Arbeitsbereichen
+1. Registrieren Ihres Abonnements, um Clustererstellung zuzulassen
+1. Erstellen von Azure Key Vault und Speichern des Schlüssels
+1. Erstellen eines Clusters
+1. Gewähren von Berechtigungen für Key Vault
+1. Verknüpfen von Log Analytics-Arbeitsbereichen
 
-Die CMK-Konfiguration wird im Azure-Portal nicht unterstützt, und die Bereitstellung erfolgt über [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)-, [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)- oder [REST](https://docs.microsoft.com/rest/api/loganalytics/)-Anforderungen.
+Die Konfiguration kundenseitig verwalteter Schlüssel wird im Azure-Portal nicht unterstützt, und die Bereitstellung erfolgt über [PowerShell](https://docs.microsoft.com/powershell/module/az.operationalinsights/)-, [CLI](https://docs.microsoft.com/cli/azure/monitor/log-analytics)- oder [REST](https://docs.microsoft.com/rest/api/loganalytics/)-Anforderungen.
 
 ### <a name="asynchronous-operations-and-status-check"></a>Asynchrone Vorgänge und Statusüberprüfung
 
@@ -88,7 +85,7 @@ GET https://management.azure.com/subscriptions/subscription-id/providers/microso
 Authorization: Bearer <token>
 ```
 
-Die Antwort enthält Informationen zu dem Vorgang und seinen *Status* . Folgende Werte sind möglich:
+Die Antwort enthält Informationen zu dem Vorgang und seinen *Status*. Folgende Werte sind möglich:
 
 Vorgang wird ausgeführt
 ```json
@@ -149,12 +146,10 @@ Fehler beim Vorgang
 }
 ```
 
-### <a name="allowing-subscription-for-cmk-deployment"></a>Zulassen eines Abonnements für die CMK-Bereitstellung
-
-Die CMK-Funktion wird auf dedizierten Log Analytics-Clustern bereitgestellt. Um sicherzustellen, dass die erforderliche Kapazität in Ihrer Region vorhanden ist, muss Ihr Abonnement im Voraus zugelassen sein. Verwenden Sie Ihre Kontakte zu Microsoft zum Angeben Ihrer Abonnement-IDs.
+### <a name="allowing-subscription"></a>Zulassen eines Abonnements
 
 > [!IMPORTANT]
-> Die CMK-Funktion ist regional. Azure Key Vault, Cluster und verknüpfte Log Analytics-Arbeitsbereiche müssen sich in der gleichen Region befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
+> Die Funktion für kundenseitig verwaltete Schlüssel ist regional. Azure Key Vault, Cluster und verknüpfte Log Analytics-Arbeitsbereiche müssen sich in der gleichen Region befinden, können jedoch in unterschiedlichen Abonnements enthalten sein.
 
 ### <a name="storing-encryption-key-kek"></a>Speichern des Verschlüsselungsschlüssels (KEK)
 
@@ -162,7 +157,7 @@ Erstellen Sie eine Azure Key Vault-Instanz oder verwenden Sie eine vorhandene In
 
 ![Einstellungen für vorläufiges Löschen und Löschschutz](media/customer-managed-keys/soft-purge-protection.png)
 
-Diese Einstellungen können über die CLI und PowerShell aktualisiert werden:
+Diese Einstellungen können in Key Vault über die CLI und PowerShell aktualisiert werden:
 
 - [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
 - [Bereinigungsschutz](../../key-vault/general/soft-delete-overview.md#purge-protection) schützt vor erzwungenem Löschen des Geheimnisses/Tresors auch nach vorläufigem Löschen
@@ -176,7 +171,7 @@ Folgen Sie dem im [Artikel zu dedizierten Clustern](https://docs.microsoft.com/a
 
 ### <a name="grant-key-vault-permissions"></a>Erteilen von Key Vault-Berechtigungen
 
-Aktualisieren Sie Ihre Key Vault-Instanz mit einer neuen Zugriffsrichtlinie, um Berechtigungen für Ihren Cluster zu erteilen. Diese Berechtigungen werden von der zugrunde liegenden Azure Monitor Storage-Instanz für die Datenverschlüsselung verwendet. Öffnen Sie Ihre Key Vault-Instanz im Azure-Portal, und klicken Sie auf „Zugriffsrichtlinien“ und dann auf „+ Zugriffsrichtlinie hinzufügen“, um eine Richtlinie mit den folgenden Einstellungen zu erstellen:
+Erstellen Sie eine Zugriffsrichtlinie in Key Vault, um Berechtigungen für Ihren Cluster zu erteilen. Diese Berechtigungen werden von der zugrunde liegenden Azure Monitor Storage-Instanz für die Datenverschlüsselung verwendet. Öffnen Sie Ihre Key Vault-Instanz im Azure-Portal, und klicken Sie auf „Zugriffsrichtlinien“ und dann auf „+ Zugriffsrichtlinie hinzufügen“, um eine Richtlinie mit den folgenden Einstellungen zu erstellen:
 
 - Schlüsselberechtigungen: Wählen Sie die Berechtigungen „Abrufen“, „Schlüssel packen“ und „Schlüssel entpacken“ aus.
 - Prinzipal auswählen: Geben Sie den Namen des Clusters oder den Wert von „principal-id“ ein, der in der Antwort des vorherigen Schritts zurückgegeben wurde.
@@ -199,47 +194,40 @@ Aktualisieren Sie „KeyVaultProperties“ im Cluster mit Schlüsselbezeichnerde
 
 Der Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
+```azurecli
+az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --key-name "key-name" --key-vault-uri "key-uri" --key-version "key-version"
+```
+
 ```powershell
 Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -KeyVaultUri "key-uri" -KeyName "key-name" -KeyVersion "key-version"
 ```
 
-> [!NOTE]
-> Sie können für den Cluster *sku* , *keyVaultProperties* oder *billingType* mithilfe von PATCH aktualisieren.
-
 ```rst
-PATCH https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
-Authorization: Bearer <token>
+PATCH https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/cluster-name"?api-version=2020-08-01
+Authorization: Bearer <token> 
 Content-type: application/json
-
+ 
 {
-   "identity": { 
-     "type": "systemAssigned" 
-     },
-   "sku": {
-     "name": "capacityReservation",
-     "capacity": 1000
-     },
-   "properties": {
-    "billingType": "cluster",
-     "KeyVaultProperties": {
-       "KeyVaultUri": "https://<key-vault-name>.vault.azure.net",
-       "KeyName": "<key-name>",
-       "KeyVersion": "<current-version>"
-       }
-   },
-   "location":"<region-name>"
+  "properties": {
+    "keyVaultProperties": {
+      "keyVaultUri": "https://key-vault-name.vault.azure.net",
+      "kyName": "key-name",
+      "keyVersion": "current-version"
+  },
+  "sku": {
+    "name": "CapacityReservation",
+    "capacity": 1000
+  }
 }
 ```
 
 **Antwort**
 
-200 OK und Header.
 Die Weitergabe des Schlüsselbezeichners dauert einige Minuten. Sie können den Aktualisierungsstatus auf zwei Arten überprüfen:
 1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-2. Senden Sie eine GET-Anforderung für den Cluster, und überprüfen Sie die Eigenschaften *KeyVaultProperties* . Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
+2. Senden Sie eine GET-Anforderung für den Cluster, und überprüfen Sie die Eigenschaften *KeyVaultProperties*. Die zuletzt aktualisierten Schlüsselbezeichnerdetails sollten in der Antwort zurückgegeben werden.
 
-Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte die Antwort auf die GET-Anforderung wie folgt aussehen:
-
+Nachdem die Aktualisierung des Schlüsselbezeichners abgeschlossen ist, sollte die Antwort auf die GET-Anforderung wie folgt aussehen: 200 OK und Header
 ```json
 {
   "identity": {
@@ -283,7 +271,7 @@ Dieser Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
 Folgen Sie dem im [Artikel zu dedizierten Clustern](https://docs.microsoft.com/azure/azure-monitor/log-query/logs-dedicated-clusters#link-a-workspace-to-the-cluster) beschriebenen Verfahren.
 
-## <a name="cmk-kek-revocation"></a>CMK-Widerruf (KEK)
+## <a name="key-revocation"></a>Schlüsselsperrung
 
 Sie können den Zugriff auf Daten widerrufen, indem Sie den Schlüssel deaktivieren oder die Zugriffsrichtlinie für den Cluster in Ihrer Key Vault-Instanz löschen. Im Log Analytics-Clusterspeicher werden Änderungen der Schlüsselberechtigungen immer innerhalb einer Stunde oder früher berücksichtigt, und der Speicher steht dann nicht mehr zur Verfügung. Alle neuen Daten, die in Arbeitsbereichen erfasst wurden, die mit Ihrem Cluster verknüpft sind, werden gelöscht und können nicht wiederhergestellt werden, auf die Daten kann nicht zugegriffen werden, und Abfragen an diese Arbeitsbereiche schlagen fehl. Zuvor erfasste Daten verbleiben im Speicher, solange der Cluster und Ihre Arbeitsbereiche nicht gelöscht werden. Daten, auf die nicht zugegriffen werden kann, unterliegen der Datenaufbewahrungsrichtlinie und werden bereinigt, sobald der Aufbewahrungszeitraum abgelaufen ist. 
 
@@ -291,26 +279,26 @@ Die in den letzten 14 Tagen erfassten Daten werden für einen effizienten Betri
 
 Storage fragt Key Vault in regelmäßigen Abständen ab und versucht, den Verschlüsselungsschlüssel zu entpacken. Sobald der Zugriff erfolgt, werden Datenerfassung und Abfrage innerhalb von 30 Minuten fortgesetzt.
 
-## <a name="cmk-kek-rotation"></a>CMK-Rotation (KEK)
+## <a name="key-rotation"></a>Schlüsselrotation
 
-Die Rotation des CMK erfordert eine explizite Aktualisierung des Clusters mit der neuen Schlüsselversion in Azure Key Vault. Befolgen Sie die Anweisungen im Schritt „Aktualisieren des Clusters mit Schlüsselbezeichnerdetails“. Wenn Sie die neuen Schlüsselbezeichnerdetails im Cluster nicht aktualisieren, verwendet der Log Analytics-Clusterspeicher weiterhin den vorherigen Schlüssel zur Verschlüsselung. Wenn Sie den alten Schlüssel deaktivieren oder löschen, bevor Sie den neuen Schlüssel im Cluster aktualisieren, wird der Status der [Schlüsselsperrung](#cmk-kek-revocation) aktiv.
+Die Rotation des kundenseitig verwalteten Schlüssels erfordert eine explizite Aktualisierung des Clusters mit der neuen Schlüsselversion in Azure Key Vault. Befolgen Sie die Anweisungen im Schritt „Aktualisieren des Clusters mit Schlüsselbezeichnerdetails“. Wenn Sie die neuen Schlüsselbezeichnerdetails im Cluster nicht aktualisieren, verwendet der Log Analytics-Clusterspeicher weiterhin den vorherigen Schlüssel zur Verschlüsselung. Wenn Sie den alten Schlüssel deaktivieren oder löschen, bevor Sie den neuen Schlüssel im Cluster aktualisieren, wird der Status der [Schlüsselsperrung](#key-revocation) aktiv.
 
 Nach der Schlüsselrotation kann auf alle Ihre Daten weiter zugegriffen werden, da Daten immer mit dem Kontoverschlüsselungsschlüssel (Account Encryption Key, AEK) verschlüsselt werden, während AEK nun mit der neuen Version des Schlüsselverschlüsselungsschlüssels (Key Encryption Key, KEK) in Key Vault verschlüsselt wird.
 
-## <a name="cmk-for-queries"></a>CMK für Abfragen
+## <a name="customer-managed-key-for-queries"></a>Kundenseitig verwalteter Schlüssel für Abfragen
 
-Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertrauliche Informationen in Kommentaren enthalten, die Sie Abfragen oder in der Abfragesyntax hinzufügen. Einige Organisationen verlangen, dass diese Informationen als Teil der CMK-Richtlinie geschützt werden, und Sie müssen Ihre Abfragen mit Ihrem Schlüssel verschlüsselt speichern. Azure Monitor ermöglicht Ihnen das Speichern von Abfragen für *gespeicherter Suchvorgänge* und *Protokollwarnungen* mit Verschlüsselung mit Ihrem Schlüssel in Ihrem eigenen Speicherkonto, sofern Sie mit Ihrem Arbeitsbereich verbunden sind. 
+Die in Log Analytics verwendete Abfragesprache ist ausdrucksstark und kann vertrauliche Informationen in Kommentaren enthalten, die Sie Abfragen oder in der Abfragesyntax hinzufügen. Einige Organisationen verlangen, dass diese Informationen als Teil der Richtlinie für kundenseitig verwaltete Schlüssel geschützt werden, und Sie müssen Ihre Abfragen mit Ihrem Schlüssel verschlüsselt speichern. Azure Monitor ermöglicht Ihnen das Speichern von Abfragen für *gespeicherter Suchvorgänge* und *Protokollwarnungen* mit Verschlüsselung mit Ihrem Schlüssel in Ihrem eigenen Speicherkonto, sofern Sie mit Ihrem Arbeitsbereich verbunden sind. 
 
 > [!NOTE]
-> Log Analytics-Abfragen können je nach verwendetem Szenario in verschiedenen Speichern abgelegt werden. Abfragen bleiben unabhängig von der CMK-Konfiguration in den folgenden Szenarios mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt: Arbeitsmappen in Azure Monitor, Azure-Dashboards, Azure-Logik-App, Azure Notebooks und Automation Runbooks.
+> Log Analytics-Abfragen können je nach verwendetem Szenario in verschiedenen Speichern abgelegt werden. Abfragen bleiben unabhängig von der Konfiguration kundenseitig verwalteter Schlüssel in den folgenden Szenarien mit von Microsoft verwalteten Schlüsseln (MMK) verschlüsselt: Arbeitsmappen in Azure Monitor, Azure-Dashboards, Azure-Logik-App, Azure Notebooks und Automation Runbooks.
 
 Wenn Sie Bring Your Own Storage (BYOS) verwenden und es mit Ihrem Arbeitsbereich verknüpfen, lädt der Dienst Abfragen für *gespeicherte Suchen* und *Protokollwarnungen* in Ihr Speicherkonto hoch. Dies bedeutet, dass Sie das Speicherkonto und die [Richtlinie für die Verschlüsselung ruhender Daten](../../storage/common/customer-managed-keys-overview.md) entweder mit dem gleichen Schlüssel steuern, den Sie zum Verschlüsseln von Daten im Log Analytics-Cluster verwenden, oder mit einem anderen Schlüssel. Sie sind jedoch auch für die mit diesem Speicherkonto verbundenen Kosten verantwortlich. 
 
-**Überlegungen vor dem Festlegen von CMK für Abfragen**
+**Überlegungen vor dem Festlegen des kundenseitig verwalteten Schlüssels für Abfragen**
 * Sie müssen für Ihren Arbeitsbereich und das Speicherkonto über die Berechtigung „Schreiben“ verfügen.
 * Stellen Sie sicher, dass Sie Ihr Speicherkonto in derselben Region erstellen, in der sich Ihr Log Analytics-Arbeitsbereich befindet.
 * Die *gespeicherten Suchvorgänge* im Speicher werden als Dienstartefakte angesehen und ihr Format kann sich ändern.
-* Vorhandene *gespeicherte Suchvorgänge* werden aus dem Arbeitsbereich entfernt. Kopieren Sie alle *gespeicherten Suchvorgänge* , die Sie vor der Konfiguration benötigen. Sie können Ihre *gespeicherten Suchvorgänge* mithilfe von [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) anzeigen.
+* Vorhandene *gespeicherte Suchvorgänge* werden aus dem Arbeitsbereich entfernt. Kopieren Sie alle *gespeicherten Suchvorgänge*, die Sie vor der Konfiguration benötigen. Sie können Ihre *gespeicherten Suchvorgänge* mithilfe von [PowerShell](/powershell/module/az.operationalinsights/get-azoperationalinsightssavedsearch) anzeigen.
 * Der Abfrageverlauf wird nicht unterstützt, und Sie können keine Abfragen sehen, die Sie ausgeführt haben.
 * Sie können mit dem Arbeitsbereich ein einzelnes Speicherkonto zum Speichern von Abfragen verknüpfen, es kann aber sowohl für Abfragen für *gespeicherte Suchvorgänge* als auch *Protokollwarnungen* verwendet werden.
 * Anheften an das Dashboard wird nicht unterstützt.
@@ -318,6 +306,11 @@ Wenn Sie Bring Your Own Storage (BYOS) verwenden und es mit Ihrem Arbeitsbereich
 **Konfigurieren von BYOS für Abfragen für gespeicherte Suchvorgänge**
 
 Verknüpfen Sie das Speicherkonto für *Abfragen* mit Ihrem Arbeitsbereich. Abfragen für *gespeicherte Suchvorgänge* werden in Ihrem Speicherkonto gespeichert. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type Query --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
@@ -345,6 +338,11 @@ Nach der Konfiguration werden alle neuen Abfragen *gespeicherter Suchvorgänge* 
 **Konfigurieren von BYOS für Abfragen für Protokollwarnungen**
 
 Verknüpfen Sie das Speicherkonto für *Warnungen* mit Ihrem Arbeitsbereich. Abfragen für *Protokollwarnungen* werden in Ihrem Speicherkonto gespeichert. 
+
+```azurecli
+$storageAccountId = '/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage name>'
+az monitor log-analytics workspace linked-storage create --type ALerts --resource-group "resource-group-name" --workspace-name "workspace-name" --storage-accounts $storageAccountId
+```
 
 ```powershell
 $storageAccount.Id = Get-AzStorageAccount -ResourceGroupName "resource-group-name" -Name "storage-account-name"
@@ -376,10 +374,14 @@ In Azure Monitor haben Sie diese Kontrolle über Daten in Arbeitsbereichen, die 
 
 Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../../security/fundamentals/customer-lockbox-overview.md).
 
-## <a name="cmk-management"></a>CMK-Verwaltung
+## <a name="customer-managed-key-operations"></a>Vorgänge für kundenseitig verwaltete Schlüssel
 
 - **Abrufen aller Cluster in einer Ressourcengruppe**
   
+  ```azurecli
+  az monitor log-analytics cluster list --resource-group "resource-group-name"
+  ```
+
   ```powershell
   Get-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name"
   ```
@@ -425,7 +427,11 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   ```
 
 - **Abrufen aller Cluster in einem Abonnement**
-  
+
+  ```azurecli
+  az monitor log-analytics cluster list
+  ```
+
   ```powershell
   Get-AzOperationalInsightsCluster
   ```
@@ -443,8 +449,12 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
   Wenn sich das Datenvolumen Ihrer verknüpften Arbeitsbereiche im Laufe der Zeit ändert und Sie die Kapazitätsreservierungsebene entsprechend aktualisieren möchten. Führen Sie die Schritte zum [Aktualisieren des Clusters](#update-cluster-with-key-identifier-details) aus, und geben Sie den neuen Kapazitätswert an. Dieser kann im Bereich von 1000 bis 3000 GB pro Tag liegen und in 100er Schritten aktualisiert werden. Wenn Sie mehr als 3000 GB pro Tag benötigen, wenden Sie sich an Ihren Microsoft-Kontakt. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen, aber die SKU einschließen sollten:
 
+  ```azurecli
+  az monitor log-analytics cluster update --name "cluster-name" --resource-group "resource-group-name" --sku-capacity daily-ingestion-gigabyte
+  ```
+
   ```powershell
-  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity "daily-ingestion-gigabyte"
+  Update-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name" -SkuCapacity daily-ingestion-gigabyte
   ```
 
   ```rst
@@ -455,7 +465,7 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   {
     "sku": {
       "name": "capacityReservation",
-      "Capacity": 1000
+      "Capacity": daily-ingestion-gigabyte
     }
   }
   ```
@@ -464,7 +474,7 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
   Die Eigenschaft *billingType* bestimmt die Abrechnungszuordnung für den Cluster und dessen Daten:
   - *Cluster* (Standard): Die Abrechnung wird dem Abonnement zugeordnet, das Ihre Clusterressource hostet.
-  - *Arbeitsbereiche* : Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
+  - *Arbeitsbereiche*: Die Abrechnung wird den Abonnements zugeordnet, die Ihre Arbeitsbereiche proportional hosten.
   
   Führen Sie die Schritte zum [Aktualisieren des Clusters](#update-cluster-with-key-identifier-details) aus, und geben Sie den neuen Wert für „billingType“ an. Beachten Sie, dass Sie nicht den vollständigen REST-Anforderungstext angeben müssen und *billingType* einschließen sollten:
 
@@ -486,6 +496,10 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
 
   Dieser Vorgang ist asynchron und kann einige Zeit in Anspruch nehmen.
 
+  ```azurecli
+  az monitor log-analytics workspace linked-service delete --resource-group "resource-group-name" --name "cluster-name" --workspace-name "workspace-name"
+  ```
+
   ```powershell
   Remove-AzOperationalInsightsLinkedService -ResourceGroupName "resource-group-name" -Name "workspace-name" -LinkedServiceName cluster
   ```
@@ -495,18 +509,13 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   Authorization: Bearer <token>
   ```
 
-  **Antwort**
-
-  200 OK und Header.
-
-  Erfasste Daten werden nach dem Aufheben der Verknüpfung im Log Analytics-Speicher gespeichert. Dieser Vorgang kann bis zu 90 Minuten dauern. Sie können den Verknüpfungsstatus des Arbeitsbereichs auf zwei Arten überprüfen:
-
-  1. Kopieren Sie den URL-Wert von „Azure-AsyncOperation“ aus der Antwort, und befolgen Sie die [Überprüfung des Status asynchroner Vorgänge](#asynchronous-operations-and-status-check).
-  2. Senden Sie eine [GET-Anforderung zum Abrufen von Arbeitsbereichen](/rest/api/loganalytics/workspaces/get), und sehen Sie sich die Antwort an. Für Arbeitsbereiche, deren Verknüpfung aufgehoben wurde, wird die *clusterResourceId* nicht unter *features* aufgeführt.
-
-- **Überprüfen des Verknüpfungsstatus des Arbeitsbereichs**
+  - **Überprüfen des Verknüpfungsstatus des Arbeitsbereichs**
   
-  Führen Sie den Get-Vorgang für den Arbeitsbereich aus, und beobachten Sie, ob die *clusterResourceId* -Eigenschaft unter *features* in der Antwort vorhanden ist. Der verknüpfte Arbeitsbereich verfügt über die *clusterResourceId* -Eigenschaft.
+  Führen Sie den Get-Vorgang für den Arbeitsbereich aus, und beobachten Sie, ob die *clusterResourceId*-Eigenschaft unter *features* in der Antwort vorhanden ist. Der verknüpfte Arbeitsbereich verfügt über die *clusterResourceId*-Eigenschaft.
+
+  ```azurecli
+  az monitor log-analytics cluster show --resource-group "resource-group-name" --name "cluster-name"
+  ```
 
   ```powershell
   Get-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
@@ -518,6 +527,10 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   
   Das Aufheben der Verknüpfung ist ein asynchroner Vorgang und kann bis zu 90 Minuten dauern.
 
+  ```azurecli
+  az monitor log-analytics cluster delete --resource-group "resource-group-name" --name "cluster-name"
+  ```
+ 
   ```powershell
   Remove-AzOperationalInsightsCluster -ResourceGroupName "resource-group-name" -ClusterName "cluster-name"
   ```
@@ -526,28 +539,24 @@ Weitere Informationen finden Sie unter [Kunden-Lockbox für Microsoft Azure](../
   DELETE https://management.azure.com/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.OperationalInsights/clusters/<cluster-name>?api-version=2020-08-01
   Authorization: Bearer <token>
   ```
-
-  **Antwort**
-
-  200 – OK
-
+  
 - **Wiederherstellen von Cluster und Daten** 
   
-  Ein Cluster, der in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann zusammen mit den Daten wiederhergestellt werden. Da bei der Löschung des Clusters die Verknüpfung aller Arbeitsbereiche aufgehoben wurde, müssen Sie die Arbeitsbereiche nach der Wiederherstellung für die CMK-Verschlüsselung neu zuordnen. Dieser Wiederherstellungsvorgang wird derzeit manuell von der Produktgruppe durchgeführt. Verwenden Sie Ihren Microsoft-Kanal für Wiederherstellungsanfragen.
+  Ein Cluster, der in den letzten 14 Tagen gelöscht wurde, befindet sich im vorläufig gelöschten Zustand und kann zusammen mit den Daten wiederhergestellt werden. Da bei der Löschung des Clusters die Verknüpfung aller Arbeitsbereiche aufgehoben wurde, müssen Sie die Arbeitsbereiche nach der Wiederherstellung des Clusters neu zuordnen. Dieser Wiederherstellungsvorgang wird derzeit manuell von der Produktgruppe durchgeführt. Verwenden Sie Ihren Microsoft-Kanal, oder öffnen Sie eine Supportanfrage zum Wiederherstellen des gelöschten Clusters.
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
-- Der CMK wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
+- Ein kundenseitig verwalteter Schlüssel wird auf dedizierten Log Analytics-Clustern unterstützt und eignet sich für Kunden, die 1 TB oder mehr pro Tag senden.
 
 - Die maximale Anzahl von Clustern pro Region und Abonnement beträgt 2.
 
-Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 100.
+- Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 1000.
 
-- Sie können Ihren Cluster mit einem Arbeitsbereich verknüpfen und dann die Verknüpfung aufheben, wenn der CMK für den Arbeitsbereich nicht erforderlich ist. Die Anzahl der Verknüpfungen in einem bestimmten Arbeitsbereich ist innerhalb eines Zeitraums von 30 Tagen auf 2 begrenzt.
+- Sie können einen Arbeitsbereich mit Ihrem Cluster verknüpfen und dann die Verknüpfung aufheben. Die Anzahl der Verknüpfungen in einem bestimmten Arbeitsbereich ist innerhalb eines Zeitraums von 30 Tagen auf 2 begrenzt.
 
 - Die Arbeitsbereichverknüpfung mit einem Cluster sollte NUR ausgeführt werden, nachdem Sie sichergestellt haben, dass die Log Analytics-Clusterbereitstellung abgeschlossen wurde. Daten, die vor dem Abschluss an Ihren Arbeitsbereich gesendet wurden, werden gelöscht und können nicht wiederhergestellt werden.
 
-- Die CMK-Verschlüsselung gilt für nach der CMK-Konfiguration neu erfasste Daten. Daten, die vor der CMK-Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der CMK-Konfiguration erfasste Daten nahtlos abfragen.
+- Die Verschlüsselung mit kundenseitig verwaltetem Schlüssel gilt für Daten, die nach dem Konfigurationszeitpunkt neu erfasst werden. Daten, die vor der Konfiguration erfasst wurden, bleiben mit dem Microsoft-Schlüssel verschlüsselt. Sie können vor und nach der Konfiguration erfasste Daten nahtlos abfragen.
 
 - Azure Key Vault muss als wiederherstellbar konfiguriert werden. Die folgenden Eigenschaften sind standardmäßig nicht aktiviert und sollten mithilfe der CLI oder PowerShell konfiguriert werden:<br>
   - [Vorläufiges Löschen](../../key-vault/general/soft-delete-overview.md)
@@ -566,7 +575,7 @@ Das Maximum der verknüpften Arbeitsbereiche für den Cluster beträgt 100.
     
   - Vorübergehende Verbindungsfehler: Storage handhabt vorübergehende Fehler (Timeouts, Verbindungsfehler, DNS-Probleme), indem Schlüssel für eine kurze Zeit im Cache verbleiben können und dadurch kurze Unterbrechungen der Verfügbarkeit überbrückt werden. Die Abfrage- und Erfassungsfunktionen werden ohne Unterbrechung fortgesetzt.
     
-  - Livewebsite: Eine Nichtverfügbarkeit von ungefähr 30 Minuten führt dazu, dass das Speicherkonto nicht mehr zur Verfügung steht. Die Abfragefunktion ist nicht verfügbar, und erfasste Daten werden über mehrere Stunden mithilfe des Microsoft-Key zwischengespeichert, um Datenverluste zu vermeiden. Wenn der Zugriff auf Key Vault wiederhergestellt ist, steht die Abfragefunktion wieder zur Verfügung, und die temporär zwischengespeicherten Daten werden in den Datenspeicher aufgenommen und mit CMK verschlüsselt.
+  - Livewebsite: Eine Nichtverfügbarkeit von ungefähr 30 Minuten führt dazu, dass das Speicherkonto nicht mehr zur Verfügung steht. Die Abfragefunktion ist nicht verfügbar, und erfasste Daten werden über mehrere Stunden mithilfe des Microsoft-Key zwischengespeichert, um Datenverluste zu vermeiden. Wenn der Zugriff auf Key Vault wiederhergestellt ist, steht die Abfragefunktion wieder zur Verfügung, und die temporär zwischengespeicherten Daten werden in den Datenspeicher aufgenommen und mit kundenseitig verwaltetem Schlüssel verschlüsselt.
 
   - Key Vault-Zugriffsrate: Die Häufigkeit, mit der Azure Monitor Storage für Pack- und Entpackvorgänge auf Key Vault zugreift, liegt zwischen 6 und 60 Sekunden.
 

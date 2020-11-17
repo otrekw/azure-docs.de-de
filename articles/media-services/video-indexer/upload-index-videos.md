@@ -8,15 +8,15 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 02/18/2020
+ms.date: 11/10/2020
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 8ea1df2937c6ae771407e4adf839c9ff0fa9f7f5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a5106e1089e2353d2db884977eb51a4fd2717b99
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92218954"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506174"
 ---
 # <a name="upload-and-index-your-videos"></a>Hochladen und Indizieren Ihrer Videos  
 
@@ -26,7 +26,7 @@ Beim Hochladen von Videos mit der Video Indexer-API haben Sie die folgenden Opti
 * Senden der Videodatei als Bytearray im Hauptteil der Anforderung
 * Verwenden Sie ein vorhandenes Azure Media Services-Medienobjekt, indem Sie die [Medienobjekt-ID](../latest/assets-concept.md) angeben (wird nur in kostenpflichtigen Konten unterstützt).
 
-Nachdem Ihr Video hochgeladen wurde, kann es von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, [das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto. 
+Nachdem Ihr Video hochgeladen wurde, kann es von Video Indexer optional codiert werden (wie im Artikel beschrieben). Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei der kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2.400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, [das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist](connect-to-azure.md). Sie bezahlen pro Minute Indizierungszeit. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
 In diesem Artikel wird gezeigt, wie Sie Ihre Videos mit den folgenden Optionen hochladen und indizieren:
 
@@ -72,14 +72,14 @@ Im Artikel [Eingabecontainer/Dateiformate](../latest/media-encoder-standard-form
 > Der Name des Videos darf nicht mehr als 80 Zeichen umfassen.
 
 1. Melden Sie sich bei der [Video Indexer](https://www.videoindexer.ai/)-Website an.
-1. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen** , um ein Video hochzuladen.
+1. Klicken Sie auf die Schaltfläche bzw. den Link **Hochladen**, um ein Video hochzuladen.
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/video-indexer-get-started/video-indexer-upload.png" alt-text="Upload":::
 1. Nachdem Ihr Video hochgeladen wurde, beginnt Video Indexer mit dem Indizieren und Analysieren des Videos.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Upload":::
+    > :::image type="content" source="./media/video-indexer-get-started/progress.png" alt-text="Uploadstatus":::
 1. Wenn Video Indexer die Analyse abgeschlossen hat, erhalten Sie eine E-Mail mit einem Link zu Ihrem Video und einer kurzen Beschreibung dazu, was in Ihrem Video gefunden wurde. Beispiel: Personen, Themen, OCR-Daten.
 
 ## <a name="upload-and-index-with-api"></a><a name="apis"></a>Hochladen und Indizieren mithilfe der API
@@ -118,7 +118,7 @@ Eine URL, die zum Benachrichtigen des Kunden über die folgenden Ereignisse (mit
         
     - Beispiel: https:\//test.com/notifyme?projectName=MeinProjekt&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-##### <a name="notes"></a>Notizen
+##### <a name="other-considerations"></a>Weitere Überlegungen
 
 - Video Indexer gibt vorhandene Parameter aus der ursprünglichen URL zurück.
 - Die angegebene URL muss codiert werden.
@@ -140,7 +140,7 @@ Der Preis richtet sich nach der gewählten Indizierungsoption.
 
 #### <a name="priority"></a>priority
 
-Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind gültig: **Niedrig** , **Normal** (Standard) und **Hoch** .
+Videos werden von Video Indexer gemäß ihrer Priorität indiziert. Geben Sie mithilfe des Parameters **priority** die Indexpriorität an. Die folgenden Werte sind gültig: **Niedrig**, **Normal** (Standard) und **Hoch**.
 
 Der Parameter **priority** wird nur in kostenpflichtigen Konten unterstützt.
 
@@ -177,8 +177,8 @@ Nachdem Sie diesen Code auf Ihre Entwicklungsplattform kopiert haben, müssen Si
 
     * Navigieren Sie zu https://api-portal.videoindexer.ai/.
     * Anmeldename
-    * Navigieren Sie zu **Produkte** -> **Autorisierung** -> **Autorisierungsabonnement** .
-    * Kopieren Sie den **Primärschlüssel** .
+    * Navigieren Sie zu **Produkte** -> **Autorisierung** -> **Autorisierungsabonnement**.
+    * Kopieren Sie den **Primärschlüssel**.
 * Video-URL: Eine URL der zu indizierenden Video-/Audiodatei. Die URL muss auf eine Mediendatei zeigen (HTML-Seiten werden nicht unterstützt). Die Datei kann durch ein Zugriffstoken als Teil des URI geschützt werden, und der Endpunkt für die Datei muss mit TLS 1.2 oder höher gesichert werden. Die URL muss codiert sein.
 
 Das Ergebnis der erfolgreichen Ausführung des Codebeispiels umfasst eine Insight-Widget-URL und eine Player-Widget-URL, mit der Sie die Einblicke bzw. das hochgeladene Video untersuchen können. 

@@ -11,12 +11,12 @@ ms.workload: na
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: inhenkel
-ms.openlocfilehash: d825a30cf43b3e7f9017638138df91d5145d280e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: cdc6cbbea8b222007d94ecac99902bc4498a42fe
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791595"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505256"
 ---
 # <a name="azure-media-services-v3-release-notes"></a>Versionshinweise zu Azure Media Services v3
 
@@ -56,6 +56,11 @@ Liveereignisse verfügen jetzt über einen Standbyzustand.  Weitere Informatione
 Ein Liveereignis unterstützt den Empfang verschiedener Seitenverhältnisse bei Eingaben. Der Stretchingmodus ermöglicht es Kunden, das Stretchingverhalten für die Ausgabe anzugeben.
 
 Live Encoding bietet jetzt die Möglichkeit, feste Keyframe-Intervallfragmente zwischen 0,5 und 20 Sekunden auszugeben.
+
+## <a name="accounts"></a>Konten
+
+> [!WARNING]
+> Wenn Sie ein Media Services-Konto mit der API-Version 2020-05-01 erstellen, funktioniert es nicht mit RESTv2. 
 
 ## <a name="august-2020"></a>August 2020
 
@@ -113,7 +118,7 @@ Media Services ist nun in den folgenden Azure Government-Regionen allgemein verf
 
 ## <a name="december-2019"></a>Dezember 2019
 
-CDN-Unterstützung für *Origin-Assist Prefetch* -Header für Livestreaming und On-Demand-Videostreaming wurde hinzugefügt und ist für Kunden mit direktem Vertrag mit Akamai CDN verfügbar. Die Funktion „Origin-Assist CDN-Prefetch“ umfasst den folgenden HTTP-Header-Austausch zwischen Akamai CDN und dem Azure Media Services-Ursprung:
+CDN-Unterstützung für *Origin-Assist Prefetch*-Header für Livestreaming und On-Demand-Videostreaming wurde hinzugefügt und ist für Kunden mit direktem Vertrag mit Akamai CDN verfügbar. Die Funktion „Origin-Assist CDN-Prefetch“ umfasst den folgenden HTTP-Header-Austausch zwischen Akamai CDN und dem Azure Media Services-Ursprung:
 
 |HTTP-Header|Werte|Sender|Receiver|Zweck|
 | ---- | ---- | ---- | ---- | ----- |
@@ -275,7 +280,7 @@ Sie sollten weder die MPI-Datei ändern oder entfernen noch beliebige Abhängigk
 
 Zu den Updates in der GA-Version der V3-API gehören:
        
-* Die **PresentationTimeRange** -Eigenschaften sind nicht mehr für **Medienobjektfilter** und **Kontofilter** erforderlich. 
+* Die **PresentationTimeRange**-Eigenschaften sind nicht mehr für **Medienobjektfilter** und **Kontofilter** erforderlich. 
 * Die Abfrageoptionen „$top“ und „$skip“ für **Aufträge** und **Transformationen** wurden entfernt, und „$orderby“ wurde hinzugefügt. Beim Hinzufügen der neuen Sortierungsfunktionalität wurde festgestellt, dass die Optionen „$top“ und „$skip“ versehentlich zuvor verfügbar gemacht wurden, obwohl sie nicht implementiert sind.
 * Enumerationserweiterbarkeit wurde erneut aktiviert. Dieses Feature wurde in den Vorschauversionen des SDK aktiviert und wurde in der GA-Version versehentlich deaktiviert.
 * Zwei vordefinierte Streamingrichtlinien wurden umbenannt. **SecureStreaming** ist jetzt **MultiDrmCencStreaming**. **SecureStreamingWithFairPlay** ist jetzt **Predefined_MultiDrmStreaming**.
@@ -352,7 +357,7 @@ Die folgenden Verbesserungen wurden eingeführt:
 
 #### <a name="new-transform-object"></a>Neues Transform-Objekt
 
-Mit dem neuen **Transform** -Objekt wird das Codierungsmodell vereinfacht. Es ist mit dem neuen Objekt einfach, Resource Manager-Vorlagen und -Voreinstellungen für die Codierung zu erstellen und gemeinsam zu nutzen. 
+Mit dem neuen **Transform**-Objekt wird das Codierungsmodell vereinfacht. Es ist mit dem neuen Objekt einfach, Resource Manager-Vorlagen und -Voreinstellungen für die Codierung zu erstellen und gemeinsam zu nutzen. 
 
 #### <a name="azure-active-directory-authentication-and-azure-rbac"></a>Azure Active Directory-Authentifizierung und Azure-RBAC
 

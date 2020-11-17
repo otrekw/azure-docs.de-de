@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: c9679fec1d9c5d501ead03bcfbf28132d9e3b90a
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 6ed00931e8cca1febac0b9b72b53eeb7e81042ea
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92151801"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94487991"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -157,7 +157,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 ### <a name="alerts"></a>Alerts
 - [Aktionsregeln (Vorschau)](platform/alerts-action-rules.md): CLI-Prozesse hinzugefügt
 - [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](platform/action-groups.md): Aktualisiert, um Änderungen an der Benutzeroberfläche zu berücksichtigen
-- [Gespeicherte Abfragen in Azure Monitor Log Analytics](log-query/saved-queries.md): Neuer Artikel
+- [Beispielabfragen in Azure Monitor Log Analytics](log-query/example-queries.md): Neuer Artikel
 - [Behandeln von Protokollwarnungen in Azure Monitor](platform/alerts-troubleshoot-log.md): Abschnitt mit Informationen zum Warnungsregelkontingent hinzugefügt
 - [Behandeln von Problemen mit Azure Monitor-Metrikwarnungen](platform/alerts-troubleshoot-metric.md): Abschnitt mit Informationen zur Warnungsregel für eine benutzerdefinierte, noch nicht ausgegebene Metrik hinzugefügt
 - [Informationen zur Funktionsweise von Metrikwarnungen in Azure Monitor](platform/alerts-metric-overview.md): Empfehlung für die Wahl der Aggregationsgranularität hinzugefügt

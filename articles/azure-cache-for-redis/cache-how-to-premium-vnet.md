@@ -7,12 +7,12 @@ ms.service: cache
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 10/09/2020
-ms.openlocfilehash: a55db6a9db8cc53da15ba6e818db7b78b72cefc9
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f7b4a22c0473acb7da0708f095c25b4f3f78fe66
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927735"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445590"
 ---
 # <a name="how-to-configure-virtual-network-support-for-a-premium-azure-cache-for-redis"></a>Konfigurieren der Unterstützung virtueller Netzwerke für Azure Cache for Redis vom Typ „Premium“
 Für Azure Cache for Redis stehen verschiedene Cacheangebote bereit, die Flexibilität bei der Auswahl von Cachegröße und -features bieten. Dazu zählen auch Features des Premium-Tarifs wie die Unterstützung für Clustering, Persistenz und virtuelle Netzwerke. Ein VNet ist ein privates Netzwerk in der Cloud. Wenn eine Azure Cache for Redis-Instanz mit einem VNET konfiguriert wird, ist dieses nicht öffentlich adressierbar, und auf das VNET kann nur über virtuelle Computer und Anwendungen innerhalb des VNET zugegriffen werden. In diesem Artikel erfahren Sie, wie Sie die Unterstützung eines virtuellen Netzwerks für eine Azure Cache for Redis-Instanz vom Typ „Premium“ konfigurieren.
@@ -159,7 +159,7 @@ Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anford
 | 6379, 6380 |Eingehend |TCP |Clientkommunikation mit Redis, Azure-Lastenausgleich | (Redis-Subnetz) | (Redis-Subnetz), Virtual Network, Azure Load Balancer<sup>1</sup> |
 | 8443 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz) |
 | 8500 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
-| 10221-10231 |Eingehend |TCP |Interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer |
+| 10221-10231 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, interne Kommunikation für Redis | (Redis-Subnetz) |(Redis-Subnetz), Azure Load Balancer, (Clientsubnetz) |
 | 13000-13999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich | (Redis-Subnetz) |Virtuelles Netzwerk, Azure Load Balancer |
 | 15000-15999 |Eingehend |TCP |Clientkommunikation mit Redis-Clustern, Azure-Lastenausgleich und Georeplikation | (Redis-Subnetz) |Virtual Network, Azure Load Balancer, (Georeplikat pro Subnetz) |
 | 16001 |Eingehend |TCP/UDP |Azure-Lastenausgleich | (Redis-Subnetz) |Azure Load Balancer |
@@ -171,15 +171,15 @@ Es liegen Anforderungen für acht eingehende Portbereiche vor. Eingehende Anford
 
 Es gibt Netzwerkverbindungsanforderungen für Azure Cache for Redis, die ursprünglich nicht von einem virtuellen Netzwerk erfüllt werden konnten. Azure Cache for Redis erfordert bei Verwendung in einem virtuellen Netzwerk, dass alle folgenden Voraussetzungen erfüllt sind.
 
-* Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies umfasst sowohl Endpunkte, die sich in derselben Region wie die Azure Cache for Redis-Instanz befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net* , *blob.core.windows.net* , *queue.core.windows.net* und *file.core.windows.net*. 
-* Ausgehende Netzwerkkonnektivität zu *ocsp.digicert.com* , *crl4.digicert.com* , *ocsp.msocsp.com* , *mscrl.microsoft.com* , *crl3.digicert.com* , *cacerts.digicert.com* , *oneocsp.microsoft.com* und *crl.microsoft.com*. Diese Verbindungen sind zur Unterstützung von TLS-/SSL-Funktionen erforderlich.
+* Ausgehende Netzwerkverbindungen mit Azure-Speicherendpunkten in der ganzen Welt. Dies umfasst sowohl Endpunkte, die sich in derselben Region wie die Azure Cache for Redis-Instanz befinden, als auch Speicherendpunkte in **anderen** Azure-Regionen. Azure Storage-Endpunkte werden unter den folgenden DNS-Domänen aufgelöst: *table.core.windows.net*, *blob.core.windows.net*, *queue.core.windows.net* und *file.core.windows.net*. 
+* Ausgehende Netzwerkkonnektivität zu *ocsp.digicert.com*, *crl4.digicert.com*, *ocsp.msocsp.com*, *mscrl.microsoft.com*, *crl3.digicert.com*, *cacerts.digicert.com*, *oneocsp.microsoft.com* und *crl.microsoft.com*. Diese Verbindungen sind zur Unterstützung von TLS-/SSL-Funktionen erforderlich.
 * Die DNS-Konfiguration für das virtuelle Netzwerk muss alle der zuvor genannten Endpunkte und Domänen auflösen können. Diese DNS-Anforderungen können erfüllt werden, indem Sie sicherstellen, dass eine gültige DNS-Infrastruktur für das virtuelle Netzwerk konfiguriert und beibehalten wird.
-* Ausgehende Netzwerkkonnektivität zu den folgenden Azure Monitor-Endpunkten, die zu den folgenden DNS-Domänen auflösen: *shoebox2-black.shoebox2.metrics.nsatc.net* , *north-prod2.prod2.metrics.nsatc.net* , *azglobal-black.azglobal.metrics.nsatc.net* , *shoebox2-red.shoebox2.metrics.nsatc.net* , *east-prod2.prod2.metrics.nsatc.net* , *azglobal-red.azglobal.metrics.nsatc.net*.
+* Ausgehende Netzwerkkonnektivität zu den folgenden Azure Monitor-Endpunkten, die zu den folgenden DNS-Domänen auflösen: *shoebox2-black.shoebox2.metrics.nsatc.net*, *north-prod2.prod2.metrics.nsatc.net*, *azglobal-black.azglobal.metrics.nsatc.net*, *shoebox2-red.shoebox2.metrics.nsatc.net*, *east-prod2.prod2.metrics.nsatc.net*, *azglobal-red.azglobal.metrics.nsatc.net*.
 
 ### <a name="how-can-i-verify-that-my-cache-is-working-in-a-vnet"></a>Wie kann ich sicherstellen, dass mein Cache in einem VNET funktioniert?
 
 >[!IMPORTANT]
->Wenn eine Verbindung mit einer in einem VNET gehosteten Azure Cache for Redis-Instanz hergestellt wird, müssen sich Ihre Cacheclients im selben VNET oder in einem VNET mit aktiviertem VNET-Peering innerhalb derselben Azure-Region befinden. Globales VNET-Peering wird zurzeit nicht unterstützt. Dies schließt alle Testanwendungen oder Diagnosepingtools ein. Unabhängig davon, wo die Clientanwendung gehostet wird, müssen Netzwerksicherheitsgruppen so konfiguriert sein, dass der Netzwerkdatenverkehr des Clients die Redis-Instanz erreichen kann.
+>Wenn eine Verbindung mit einer in einem VNET gehosteten Azure Cache for Redis-Instanz hergestellt wird, müssen sich Ihre Cacheclients im selben VNET oder in einem VNET mit aktiviertem VNET-Peering innerhalb derselben Azure-Region befinden. Globales VNET-Peering wird zurzeit nicht unterstützt. Dies schließt alle Testanwendungen oder Diagnosepingtools ein. Unabhängig davon, wo die Clientanwendung gehostet wird, müssen Netzwerksicherheitsgruppen oder andere Netzwerkschichten so konfiguriert sein, dass der Netzwerkdatenverkehr des Clients die Redis-Instanz erreichen kann.
 >
 >
 

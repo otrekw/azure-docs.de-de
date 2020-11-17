@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 6ab02cc7e60870852666c8c01ccc17a1b1102a62
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742832"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516736"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Schritt 1: Bereitstellen der Protokollweiterleitung
 
@@ -38,7 +38,7 @@ In diesem Schritt bestimmen und konfigurieren Sie den Linux-Computer, der die Pr
 
 - Sie müssen über erhöhte Berechtigungen (sudo) auf dem festgelegten Linux-Computer verfügen.
 
-- Auf dem Linux-Computer muss **Python 2.7** installiert sein.<br>Verwenden Sie den Befehl `python -version` zum Überprüfen dieser Voraussetzung.
+- Auf dem Linux-Computer muss **Python 2.7** oder **3** installiert sein.<br>Verwenden Sie den Befehl `python -version` zum Überprüfen dieser Voraussetzung.
 
 - Der Linux-Computer darf nicht mit Azure-Arbeitsbereichen verbunden sein, bevor Sie den Log Analytics-Agent installieren.
 

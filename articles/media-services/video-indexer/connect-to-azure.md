@@ -10,16 +10,16 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 10/21/2020
 ms.author: juliako
-ms.openlocfilehash: 8cd5969e4362b1581a7b9aebf39f8c6871839918
-ms.sourcegitcommit: d3c3f2ded72bfcf2f552e635dc4eb4010491eb75
+ms.openlocfilehash: 0d954123b0d48a4b78c0dcda98898b7ab539d502
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92558739"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504502"
 ---
 # <a name="create-a-video-indexer-account-connected-to-azure"></a>Erstellen eines Video Indexer-Kontos mit Azure-Verbindung
 
-Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei einer kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das mit Ihrem Azure-Abonnement und einem Azure Media Services-Konto verbunden ist. Sie bezahlen für die Minuten der Indizierungszeit und die Gebühren für das Media Services-Konto.
+Beim Erstellen eines Video Indexer-Kontos können Sie ein kostenloses Testkonto (mit einer bestimmten Anzahl von kostenlosen Indizierungsminuten) oder eine kostenpflichtige Option wählen (ohne Einschränkung durch eine Kontingentvorgabe). Bei einer kostenlosen Testversion stellt Video Indexer bis zu 600 Minuten an kostenloser Indizierungszeit für Websitebenutzer und bis zu 2400 Minuten an kostenloser Indizierungszeit für API-Benutzer bereit. Bei der kostenpflichtigen Option erstellen Sie ein Video Indexer-Konto, das mit Ihrem Azure-Abonnement verbunden ist. Sie bezahlen pro Minute Indizierungszeit. Weitere Informationen finden Sie unter [Media Services – Preise](https://azure.microsoft.com/pricing/details/media-services/).
 
 In diesem Artikel wird veranschaulicht, wie Sie ein Video Indexer-Konto erstellen, das mit einem Azure-Abonnement und einem Azure Media Services-Konto verknüpft ist. Außerdem werden die Schritte zur Verbindungsherstellung mit Azure unter Verwendung des automatischen Flows (Standard) vorgestellt. Darüber hinaus wird gezeigt, wie Sie eine manuelle Verbindung mit Azure herstellen (erweitert).
 
@@ -55,7 +55,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 
     Wechseln Sie im [Azure-Portal](https://portal.azure.com/) zu **Abonnements** > [Abonnement] > **ResourceProviders**.
 
-    Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid**. Klicken Sie auf **Registrieren** , falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch.
+    Suchen Sie nach **Microsoft.Media** und **Microsoft.EventGrid**. Klicken Sie auf **Registrieren**, falls der Status nicht „Registriert“ lautet. Die Registrierung nimmt einige Minuten in Anspruch.
 
     ![EventGrid](./media/create-account/event-grid.png)
 
@@ -65,7 +65,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 > Wenn für Ihr Azure-Abonnement die zertifikatbasierte mehrstufige Authentifizierung verwendet wird, ist es wichtig, die folgenden Schritte auf einem Gerät auszuführen, auf dem die erforderlichen Zertifikate installiert sind.
 
 1. Navigieren Sie zur [Video Indexer](https://www.videoindexer.ai/)-Website, und melden Sie sich an.
-1. Klicken Sie auf die Schaltfläche **Uneingeschränktes Konto erstellen** :
+1. Klicken Sie auf die Schaltfläche **Uneingeschränktes Konto erstellen**:
 
     ![Erstellen eines neuen Video Indexer-Kontos](./media/create-account/create-unlimited-account.png)
 1. Wenn die Liste mit den Abonnements angezeigt wird, können Sie das gewünschte Abonnement auswählen.
@@ -74,10 +74,10 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 1. Wählen Sie aus den unterstützten Standorten eine Azure-Region aus: „USA, Westen 2“, „Europa, Norden“ oder „Asien, Osten“.
 1. Wählen Sie unter **Azure Media Services-Konto** eine dieser Optionen:
 
-    * Wählen Sie **Neue Ressourcengruppe erstellen** , um ein neues Media Services-Konto zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe an.
+    * Wählen Sie **Neue Ressourcengruppe erstellen**, um ein neues Media Services-Konto zu erstellen. Geben Sie einen Namen für Ihre Ressourcengruppe an.
 
         Azure erstellt Ihr neues Konto unter Ihrem Abonnement, einschließlich eines neuen Azure Storage-Kontos.  
-    * Wählen Sie **Vorhandene Ressource verwenden** , um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
+    * Wählen Sie **Vorhandene Ressource verwenden**, um ein vorhandenes Media Services-Konto zu verwenden. Wählen Sie Ihr Konto in der Liste mit den Konten aus.
 
         Ihr Media Services-Konto muss über dieselbe Region wie Ihr Video Indexer-Konto verfügen.
 
@@ -94,7 +94,7 @@ Wenn Sie von einem *Test-* zu einem *kostenpflichtigen* Video Indexer-Konto wech
 1. Stellen Sie sicher, dass der Streamingendpunkt des Media Services-Kontos aktiv ist, damit Sie Ihre Videos in der Video Indexer-Web-App wiedergeben können. (Klicken Sie auf „Starten“, wenn er angehalten ist.)
 
 > [!TIP]
-> Wechseln Sie zu **Einstellungen** , um einen benutzerfreundlichen Anzeigenamen für Ihr Konto festzulegen.
+> Wechseln Sie zu **Einstellungen**, um einen benutzerfreundlichen Anzeigenamen für Ihr Konto festzulegen.
 
 ## <a name="connect-to-azure-manually-advanced-option"></a>Manuelle Verbindungsherstellung mit Azure (erweiterte Option)
 
@@ -175,7 +175,7 @@ Für Azure Media Services gilt Folgendes:
 * Falls Sie eine Verbindung mit einem vorhandenen Media Services-Konto hergestellt haben, ändert Video Indexer die vorhandene Konfiguration für **Reservierte Einheiten für Medien** nicht.
 
    Unter Umständen müssen Sie den Typ und die Anzahl von reservierten Einheiten für Medien gemäß Ihrer geplanten Last anpassen. Beachten Sie hierbei Folgendes: Wenn die Last hoch ist und Sie nicht über genügend Einheiten oder eine ausreichend hohe Geschwindigkeit verfügen, kann es bei der Videoverarbeitung zu Timeoutfehlern kommen.
-* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch den standardmäßigen **Streamingendpunkt** :
+* Bei der Verbindungsherstellung mit einem neuen Media Services-Konto startet Video Indexer dafür automatisch den standardmäßigen **Streamingendpunkt**:
 
     ![Media Services-Streamingendpunkt](./media/create-account/ams-streaming-endpoint.png)
 
@@ -184,6 +184,15 @@ Für Azure Media Services gilt Folgendes:
 * Bei der automatischen Verbindungsherstellung legt Video Indexer die Einstellung für **Reservierte Einheiten für Medien** auf 10 S3-Einheiten fest:
 
     ![Reservierte Einheiten für Media Services](./media/create-account/ams-reserved-units.png)
+    
+## <a name="automate-creation-of-the-video-indexer-account"></a>Automatisieren der Erstellung des Video Indexer-Kontos
+
+Die Automatisierung des Erstellens des Kontos ist ein Prozess in zwei Schritten:
+ 
+1. Verwenden von Azure Resource Manager zum Erstellen eines Azure Media Services-Kontos und einer Azure AD-Anwendung.
+
+    Ein Beispiel für die Vorlage zum Erstellen eines Media Services-Kontos finden Sie [hier](https://github.com/Azure-Samples/media-services-v3-arm-templates).
+1. Aufrufen von [Create-Account mit Media Services und der Azure AD-Anwendung](https://api-portal.videoindexer.ai/docs/services/Operations/operations/Create-Paid-Account).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -7,14 +7,14 @@ tags: azure-resource-manager
 ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
-ms.date: 10/01/2020
+ms.date: 11/10/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 93c2f847678292a1d38eff540a813b591c255ef0
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 955990ed9209ea1e12eed824241e8a5a456ed73b
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043207"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444876"
 ---
 # <a name="azure-tls-certificate-changes"></a>TLS-Zertifikatänderungen für Azure  
 
@@ -22,12 +22,15 @@ Microsoft aktualisiert Azure-Dienste für die Verwendung von TLS-Zertifikaten au
 
 ## <a name="when-will-this-change-happen"></a>Wann wird diese Änderung durchgeführt?
 
-- Für [Azure AD-Dienste](/azure/active-directory) (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
-- Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind.
-- Bereits vorhandene Azure-Endpunkte werden ab dem 13. August 2020 nach und nach umgestellt.
-- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](/azure/iot-dps/) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
-- [Azure Storage](/azure/storage) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518), um ausführliche Informationen zu erhalten.
-- [Azure Cache for Redis](/azure/azure-cache-for-redis) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](../../azure-cache-for-redis/cache-whats-new.md), um ausführliche Informationen zu erhalten.
+Bereits vorhandene Azure-Endpunkte wurden ab dem 13. August 2020 phasenweise umgestellt. Alle neu erstellten TLS/SSL-Azure-Endpunkte enthalten aktualisierte Zertifikate, die mit den neuen Stammzertifizierungsstellen verkettet sind.
+
+Dienstspezifische Details:
+
+- Für [Azure AD-Dienste](../../active-directory/index.yml) (Azure Active Directory) wurde diese Umstellung am 7. Juli 2020 initiiert.
+- [Azure IoT Hub](https://azure.microsoft.com/services/iot-hub) und [DPS](../../iot-dps/index.yml) verbleiben in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/internet-of-things/azure-iot-tls-changes-are-coming-and-why-you-should-care/ba-p/1658456), um ausführliche Informationen zu erhalten.
+- [Azure Storage](../../storage/index.yml) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](https://techcommunity.microsoft.com/t5/azure-storage/azure-storage-tls-changes-are-coming-and-why-you-care/ba-p/1705518), um ausführliche Informationen zu erhalten.
+- [Azure Cache for Redis](../../azure-cache-for-redis/index.yml) verbleibt in der Baltimore CyberTrust Root-Zertifizierungsstelle, die Zwischenzertifizierungsstellen ändern sich jedoch. Klicken Sie [hier](../../azure-cache-for-redis/cache-whats-new.md), um ausführliche Informationen zu erhalten.
+
 > [!IMPORTANT]
 > Kunden müssen ihre Anwendungen nach dieser Änderung ggf. aktualisieren, um Konnektivitätsfehler beim Herstellen einer Verbindung mit Azure-Diensten zu vermeiden.
 

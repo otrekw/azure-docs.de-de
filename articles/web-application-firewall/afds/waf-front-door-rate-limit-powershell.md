@@ -7,18 +7,21 @@ ms.topic: article
 services: web-application-firewall
 ms.date: 02/26/2020
 ms.author: victorh
-ms.openlocfilehash: 29f50b2cf9523b9266de2f73607b0099f32852e1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4b8aa72c7b77da8fdde9925325587b67411de8d8
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87005411"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506412"
 ---
 # <a name="configure-a-web-application-firewall-rate-limit-rule-using-azure-powershell"></a>Konfigurieren einer Web Application Firewall-Regel zur Ratenbegrenzung mit Azure PowerShell
 Die Azure-WAF-Ratenbegrenzungsregel (Web Application Firewall) für Azure Front Door steuert die Anzahl der Anforderungen, die von Clients in einem Zeitraum von einer Minute zulässig sind.
 Dieser Artikel zeigt das Konfigurieren einer WAF-Ratenbegrenzungsregel mithilfe von Azure PowerShell, die steuert, wie viele Anforderungen von Clients an eine Webanwendung, die */promo* in der URL enthält, zulässig sind.
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+
+> [!NOTE]
+> Ratenbegrenzungen werden auf jede Client-IP-Adresse angewendet. Wenn mehrere Clients von unterschiedlichen IP-Adressen aus auf Ihre Front Door zugreifen, werden auf diese jeweils eigene Ratenbegrenzungen angewendet.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Bevor Sie mit der Einrichtung einer Richtlinie für ein Ratenlimit beginnen, müssen Sie zunächst Ihre PowerShell-Umgebung einrichten und ein Front Door-Profil erstellen.
@@ -73,9 +76,7 @@ Legen Sie eine Ratenbegrenzung mit [New-AzFrontDoorWafCustomRuleObject](/powersh
 
 Suchen Sie mithilfe von `Get-AzureRmResourceGroup` nach dem Namen der Ressourcengruppe, die das Front Door-Profil enthält. Konfigurieren Sie als Nächstes mithilfe von [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) eine Sicherheitsrichtlinie mit einer Ratenbegrenzungsregel in der angegebenen Ressourcengruppe, die das Front Door-Profil enthält.
 
-Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß den Anweisungen im Artikel [Schnellstart: Erstellen einer Front Door-Instanz für eine hoch verfügbare globale Webanwendung](../../frontdoor/quickstart-create-front-door.md) erstellt haben.
-
- mit [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy).
+Im folgenden Beispiel wird der Ressourcengruppenname *myResourceGroupFD1* verwendet. Dabei wird davon ausgegangen, dass Sie das Front Door-Profil gemäß den Anweisungen im Artikel [Schnellstart: Erstellen Sie eine „Front Door“](../../frontdoor/quickstart-create-front-door.md) mithilfe von [New-AzFrontDoorWafPolicy](/powershell/module/az.frontdoor/new-azfrontdoorwafpolicy) erstellt haben.
 
 ```powershell-interactive
    $ratePolicy = New-AzFrontDoorWafPolicy `

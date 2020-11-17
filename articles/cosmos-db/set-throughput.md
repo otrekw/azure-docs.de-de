@@ -5,13 +5,13 @@ author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 10/14/2020
-ms.openlocfilehash: 4d03e651006661a2fa82901d64f8fb6ac2236210
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 0dc55f4d77fde48590b1fbf206ed988e8fb9ec0e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098772"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490269"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Einführung zum bereitgestellten Durchsatz in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -80,11 +80,11 @@ Wenn Ihre Workloads das Löschen und Wiederherstellen aller Sammlungen in einer 
 Sie können die beiden Modelle kombinieren. Es ist erlaubt, Durchsatz sowohl auf Datenbank- als auch auf Containerebene bereitzustellen. Das folgende Beispiel zeigt die Vorgehensweise bei der standardmäßigen (manuellen) Bereitstellung von Durchsatz für eine Azure Cosmos-Datenbank und einen Container:
 
 * Sie können eine Azure Cosmos-Datenbank namens *Z* mit standardmäßig (manuell) bereitgestelltem Durchsatz von *K* RUs erstellen. 
-* Als Nächstes erstellen Sie die fünf Container *A* , *B* , *C* , *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die **Option zum Bereitstellen von dediziertem Durchsatz für diesen Container** zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Sie können freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren. 
+* Als Nächstes erstellen Sie die fünf Container *A*, *B*, *C*, *D* und *E* innerhalb der Datenbank. Achten Sie beim Erstellen von Container B darauf, die **Option zum Bereitstellen von dediziertem Durchsatz für diesen Container** zu aktivieren, und konfigurieren Sie explizit *P* RUs des bereitgestellten Durchsatzes für diesen Container. Sie können freigegebenen und dedizierten Durchsatz nur beim Erstellen der Datenbank und des Containers konfigurieren. 
 
    :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Festlegen des Durchsatzes auf Containerebene":::
 
-* Der Durchsatz von *K* RUs ist für die vier Container *A* , *C* , *D* , und *E* freigegeben. Die genaue für *A* , *C* , *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
+* Der Durchsatz von *K* RUs ist für die vier Container *A*, *C*, *D*, und *E* freigegeben. Die genaue für *A*, *C*, *D* oder *E* verfügbare Durchsatzmenge variiert. Es gibt keine SLAs für die einzelnen Containerdurchsätze.
 * Für den Container *B* wird jederzeit ein Durchsatz von *P* RUs sichergestellt. Er wird durch SLAs abgedeckt.
 
 > [!NOTE]
@@ -109,7 +109,7 @@ Die Antwort dieser Methoden enthält auch den [bereitgestellten Mindestdurchsatz
 Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Im Allgemeinen ist es jedoch ein Maximalwert von:
 
 * 400 RU/s 
-* Aktueller Speicher in GB * 10 RU/s
+* Aktueller Speicher in GB * 10 RU/s (falls Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, siehe unser [Programm „High Storage/Low Throughput“ (Hohe Speicherkapazität/geringer Durchsatz)](#high-storage-low-throughput-program))
 * Höchstwert bereitgestellter RU/s für die Datenbank oder den Container / 100
 * Containeranzahl * 100 RU/s (nur Datenbank mit gemeinsam genutztem Durchsatz)
 
@@ -120,9 +120,9 @@ Sie können den bereitgestellten Durchsatz eines Containers oder einer Datenbank
 * [Container.ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) im .NET SDK
 * [CosmosContainer.replaceThroughput](/java/api/com.azure.cosmos.cosmosasynccontainer.replacethroughput?view=azure-java-stable&preserve-view=true) im Java SDK
 
-Wenn Sie den **bereitgestellten Durchsatz verringern** , ist dies bis zum [Mindestwert](#current-provisioned-throughput) möglich.
+Wenn Sie den **bereitgestellten Durchsatz verringern**, ist dies bis zum [Mindestwert](#current-provisioned-throughput) möglich.
 
-Wenn Sie den **bereitgestellten Durchsatz erhöhen** , erfolgt der Vorgang in den meisten Fällen sofort. Es gibt jedoch Fälle in denen der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen höher sein kann. In diesem Fall führt der Versuch, den bereitgestellten Durchsatz zu ändern, während dieser Vorgang ausgeführt wird, zu einer HTTP 423-Antwort mit einer Fehlermeldung, die angibt, dass ein anderer Skalierungsvorgang ausgeführt wird.
+Wenn Sie den **bereitgestellten Durchsatz erhöhen**, erfolgt der Vorgang in den meisten Fällen sofort. Es gibt jedoch Fälle in denen der Zeitaufwand aufgrund der Systemtasks für die Bereitstellung der erforderlichen Ressourcen höher sein kann. In diesem Fall führt der Versuch, den bereitgestellten Durchsatz zu ändern, während dieser Vorgang ausgeführt wird, zu einer HTTP 423-Antwort mit einer Fehlermeldung, die angibt, dass ein anderer Skalierungsvorgang ausgeführt wird.
 
 > [!NOTE]
 > Wenn Sie eine sehr große Erfassungsworkload planen, die einen hohen Zuwachs an bereitgestelltem Durchsatz erfordert, denken Sie daran, dass für den Skalierungsvorgang keine SLA besteht und es – wie im vorherigen Absatz bereits erwähnt – bei einem hohen Zuwachs sehr lange dauern kann. Möglicherweise möchten Sie im Voraus planen und mit der Skalierung beginnen, bevor die Workload startet, und die unten aufgeführten Methoden zum Überprüfen des Fortschritts verwenden.

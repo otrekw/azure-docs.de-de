@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 8/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: f3775e73ce8f152fe39bc8170bbeba054f856630
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: be2fa0fa85da7c0f02567580c50968b7418e4cde
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286605"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445182"
 ---
 # <a name="provide-access-to-key-vault-keys-certificates-and-secrets-with-an-azure-role-based-access-control-preview"></a>Gewähren des Zugriffs auf Key Vault-Schlüssel, -Zertifikate und -Geheimnisse mit der rollenbasierten Zugriffssteuerung in Azure (Vorschauversion)
 
@@ -79,11 +79,11 @@ Sie benötigen Folgendes, um Rollenzuweisungen hinzufügen zu können:
 
 1.  Aktivieren von Azure RBAC-Berechtigungen für einen neuen Schlüsseltresor:
 
-    ![Aktivieren von RBAC-Berechtigungen – neuer Tresor](../media/rbac/image-1.png)
+    ![Aktivieren von Azure RBAC-Berechtigungen – neuer Tresor](../media/rbac/image-1.png)
 
 2.  Aktivieren von Azure RBAC-Berechtigungen für einen vorhandenen Schlüsseltresor:
 
-    ![Aktivieren von RBAC-Berechtigungen – vorhandener Schlüsseltresor](../media/rbac/image-2.png)
+    ![Aktivieren von Azure RBAC-Berechtigungen – vorhandener Tresor](../media/rbac/image-2.png)
 
 ### <a name="assign-role"></a>Zuweisen einer Rolle
 

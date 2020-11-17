@@ -7,12 +7,12 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 05/24/2018
 ms.custom: references_regions
-ms.openlocfilehash: ecafc0c81a6614a914d8cad3d2c35fd04544b8f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 90a5f0f84c72895a8450a42260b07f6dbea15e37
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102019"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94428026"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-it-service-management-connector"></a>Verbinden von Azure mit ITSM-Tools mithilfe des ITSM-Connectors
 
@@ -28,6 +28,9 @@ Der ITSM-Connector unterstützt Verbindungen mit den folgenden ITSM-Tools:
 -   System Center Service Manager
 -   Provance
 -   Cherwell
+
+   >[!NOTE]
+> Ab dem 1. Oktober 2020 werden ITSM-Integrationen von Cherwell und Provance in Azure-Warnungen für neue Kunden nicht mehr aktiviert. Neue ITSM-Verbindungen werden nicht unterstützt. Bestehende ITSM-Verbindungen werden unterstützt.
 
 Mit dem ITSMC können Sie folgende Aktionen ausführen:
 
@@ -87,7 +90,7 @@ Wählen Sie basierend auf dem ITSM-Produkt, mit dem Sie eine Verbindung herstell
 
 Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie diese Schritte aus, um eine Verbindung herzustellen:
 
-1. Suchen Sie in **Alle Ressourcen** nach **ServiceDesk( *IhrArbeitsbereichsname* )** :
+1. Suchen Sie in **Alle Ressourcen** nach **ServiceDesk(*IhrArbeitsbereichsname*)** :
 
    ![Screenshot der zuletzt verwendeten Ressourcen im Azure-Portal](media/itsmc-overview/itsm-connections.png)
 
@@ -111,7 +114,7 @@ Nachdem Sie Ihre ITSM-Tools vorbereitet haben, führen Sie diese Schritte aus, u
 
 ## <a name="template-definitions"></a>Vorlagendefinitionen
    Hierbei handelt es sich um Typen von Arbeitselementen, die vom ITSM-Tool definierte Vorlagen verwenden können.
-Mithilfe von Vorlagen können Sie Felder definieren, die anhand von im Rahmen der Aktionsgruppe definierten festgelegten Werten automatisch aufgefüllt werden. Sie definieren Vorlagen im ITSM-Tool.
+Mithilfe von Vorlagen können Sie Felder definieren, die anhand von im Rahmen der Aktionsgruppe definierten festgelegten Werten automatisch aufgefüllt werden. Sie definieren Vorlagen im ITSM-Tool. Sie können definieren, welche Vorlage Sie als Teil der Aktionsgruppendefinition verwenden möchten.
       
 ## <a name="create-itsm-work-items-from-azure-alerts"></a>Erstellen von ITSM-Arbeitselementen aus Azure-Warnungen
 
@@ -146,9 +149,12 @@ Verwenden Sie das folgende Verfahren, um ein Arbeitselement zu erstellen:
 
 9. Durch Aktivieren von **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement. Pro Konfigurationselement gibt es ein Arbeitselement. Die Aktualisierung erfolgt entsprechend den erstellten Warnungen.
 
-   Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** deaktivieren, wird bei jeder Warnung ein neues Arbeitselement erstellt. Für jedes Konfigurationselement können mehrere Warnungen verwendet werden.
+   * Bei Auswahl von „Incident“ oder „Warnung“ in der Dropdownliste für das Arbeitselement: Wenn Sie das Kontrollkästchen **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** deaktivieren, wird bei jeder Warnung ein neues Arbeitselement erstellt. Für jedes Konfigurationselement können mehrere Warnungen verwendet werden.
 
    ![Screenshot des Fensters „ITSM-Ticket“](media/itsmc-overview/itsm-action-configuration.png)
+   
+   * Bei Auswahl von „Ereignis“ in der Dropdownliste für das Arbeitselement: Wenn Sie das Optionsfeld **Einzelne Arbeitselemente für jeden Protokolleintrag erstellen** aktivieren, wird bei jeder Warnung ein neues Arbeitselement erstellt. Durch Aktivieren des Optionsfelds **Einzelne Arbeitselemente für jedes Konfigurationselement erstellen** erhält jedes Konfigurationselement ein eigenes Arbeitselement.
+   ![Screenshot des Fensters „ITSM-Ticket“](media/itsmc-overview/itsm-action-configuration-event.png)
 
 10. Klicken Sie auf **OK**.
 
@@ -190,7 +196,7 @@ Der folgende Abschnitt enthält Beispiele für Daten, die vom ITSM-Connector ges
 
 Die Felder in **ServiceDesk_CL** variieren abhängig vom Arbeitselementtyp, den Sie in Log Analytics importieren. Im Folgenden finden Sie eine Liste der Felder für zwei Arbeitselementtypen:
 
-**Arbeitselement** : **Incidents**  
+**Arbeitselement**: **Incidents**  
 ServiceDeskWorkItemType_s="Incident"
 
 **Fields**
@@ -217,7 +223,7 @@ ServiceDeskWorkItemType_s="Incident"
 - Computer
 
 
-**Arbeitselement** : **Änderungsanforderungen**
+**Arbeitselement**: **Änderungsanforderungen**
 
 ServiceDeskWorkItemType_s="ChangeRequest"
 
@@ -309,7 +315,7 @@ ServiceDeskWorkItemType_s="ChangeRequest"
 - Wenn Daten von ServiceNow nicht in Log Analytics synchronisiert werden, stellen Sie sicher, dass sich die ServiceNow-Instanz nicht im Energiesparmodus befindet. ServiceNow-Entwicklungsinstanzen wechseln manchmal nach längerem Leerlauf in den Energiesparmodus. Wenn dies nicht der Fall ist, melden Sie das Problem.
 - Wenn Log Analytics-Warnungen ausgelöst werden, aber keine Arbeitselemente im ITSM-Produkt oder keine Konfigurationselemente erstellt bzw. diese nicht mit Arbeitselementen verknüpft werden, nutzen Sie folgende Quellen. Dort finden Sie darüber hinaus allgemeine Informationen:
    -  ITSMC: Die Lösung zeigt eine Zusammenfassung der Verbindungen, Arbeitselemente, Computer usw. an. Wählen Sie die Kachel mit der Bezeichnung **Connectorstatus** aus. Dadurch wechseln Sie zur **Protokollsuche** mit der zugehörigen Abfrage. Weitere Informationen finden Sie in den Protokolldatensätzen mit dem `LogType_S` `ERROR`.
-   - Seite **Protokollsuche** : Sie können die Fehler und zugehörigen Informationen direkt mithilfe der Abfrage `*ServiceDeskLog_CL*` anzeigen.
+   - Seite **Protokollsuche**: Sie können die Fehler und zugehörigen Informationen direkt mithilfe der Abfrage `*ServiceDeskLog_CL*` anzeigen.
 
 ## <a name="troubleshoot-service-manager-web-app-deployment"></a>Beheben von Problemen bei der Service Manager-Web-App-Bereitstellung
 -   Stellen Sie bei Problemen mit der Web-App-Bereitstellung sicher, dass Sie im angegebenen Abonnement über ausreichende Berechtigungen zum Erstellen/Bereitstellen von Ressourcen verfügen.
