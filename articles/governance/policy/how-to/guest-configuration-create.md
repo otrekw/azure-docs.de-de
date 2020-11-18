@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Gastkonfigurationen für Windows
 description: Erfahren Sie, wie Sie eine Azure Policy-Richtlinie für Gastkonfigurationen für Windows erstellen.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 325b00ac1cc747555d38b4c250709638f5e74d95
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: ea9b40006deefbac2c253082eda4ef2da12149a4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348881"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700677"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-windows"></a>Erstellen von Richtlinien für Gastkonfigurationen für Windows
 
@@ -202,9 +202,9 @@ Nachdem die MOF-Datei kompiliert wurde, müssen die unterstützenden Dateien in 
 
 Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Module, die für die Konfiguration erforderlich sind, müssen in `$Env:PSModulePath` verfügbar sein. Parameter des Cmdlets `New-GuestConfigurationPackage` beim Erstellen von Windows-Inhalten:
 
-- **Name** : Name des Pakets mit der Gastkonfiguration.
+- **Name**: Name des Pakets mit der Gastkonfiguration.
 - **Konfiguration:** Vollständiger Pfad für das kompilierte DSC-Konfigurationsdokument.
-- **Pfad** : Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
+- **Pfad**: Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
 
 Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt angegebenen Konfiguration zu erstellen:
 
@@ -220,9 +220,9 @@ Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meis
 
 Parameter des Cmdlets `Test-GuestConfigurationPackage`:
 
-- **Name** : Name der Richtlinie für Gastkonfigurationen.
-- **Parameter** : Richtlinienparameter im Hashtabellenformat.
-- **Pfad** : Vollständiger Pfad des Pakets mit der Gastkonfiguration.
+- **Name**: Name der Richtlinie für Gastkonfigurationen.
+- **Parameter**: Richtlinienparameter im Hashtabellenformat.
+- **Pfad**: Vollständiger Pfad des Pakets mit der Gastkonfiguration.
 
 Führen Sie den folgenden Befehl aus, um das im vorherigen Schritt erstellte Paket zu testen:
 
@@ -247,13 +247,13 @@ Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstel
 
 Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 
-- **ContentUri** : Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
-- **DisplayName** : Anzeigename der Richtlinie.
-- **Beschreibung** : Beschreibung der Richtlinie.
-- **Parameter** : Richtlinienparameter im Hashtabellenformat.
-- **Version** : Version der Richtlinie.
-- **Pfad** : Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
-- **Plattform** : Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
+- **ContentUri**: Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
+- **DisplayName**: Anzeigename der Richtlinie.
+- **Beschreibung**: Beschreibung der Richtlinie.
+- **Parameter**: Richtlinienparameter im Hashtabellenformat.
+- **Version**: Version der Richtlinie.
+- **Pfad**: Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
+- **Plattform**: Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
 - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
 - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
 
@@ -276,7 +276,7 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
-Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path** , mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
+Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
 Um den Veröffentlichungsbefehl auszuführen, benötigen Sie Zugriff zum Erstellen von Richtlinien in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
 
@@ -472,12 +472,12 @@ Sie sollten jetzt über folgende Projektstruktur verfügen:
 
 Die unterstützenden Dateien müssen in einem Paket zusammengefasst werden. Das fertige Paket wird von der Gastkonfiguration verwendet, um die Azure Policy-Definitionen zu erstellen.
 
-Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Verwenden Sie für Drittanbieterinhalt den Parameter **FilesToInclude** , um dem Paket den InSpec-Inhalt hinzuzufügen. Sie müssen nicht wie bei Linux-Paketen **ChefProfilePath** angeben.
+Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Verwenden Sie für Drittanbieterinhalt den Parameter **FilesToInclude**, um dem Paket den InSpec-Inhalt hinzuzufügen. Sie müssen nicht wie bei Linux-Paketen **ChefProfilePath** angeben.
 
-- **Name** : Name des Pakets mit der Gastkonfiguration.
+- **Name**: Name des Pakets mit der Gastkonfiguration.
 - **Konfiguration:** Vollständiger Pfad für das kompilierte Konfigurationsdokument.
-- **Pfad** : Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
-- **FilesoInclude** : Vollständiger Pfad zum InSpec-Profil.
+- **Pfad**: Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
+- **FilesoInclude**: Vollständiger Pfad zum InSpec-Profil.
 
 Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt angegebenen Konfiguration zu erstellen:
 
@@ -496,9 +496,9 @@ Wenn Sie ein Update der Richtliniendefinition veröffentlichen möchten, sind dr
 > [!NOTE]
 > Die Eigenschaft `version` der Gastkonfigurationszuweisung betrifft nur Pakete, die von Microsoft gehostet werden. Bei der Versionsverwaltung für benutzerdefinierte Inhalte hat sich die Best Practice etabliert, die Version in den Dateinamen aufzunehmen.
 
-- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
-- **contentUri** : Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.
-- **contentHash** : Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
+- **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
+- **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI zum Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft in jedem Release ändert.
+- **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
 
@@ -518,8 +518,8 @@ Protect-GuestConfigurationPackage -Path .\package\AuditWindowsService\AuditWindo
 
 Parameter des Cmdlets `Protect-GuestConfigurationPackage`:
 
-- **Pfad** : Vollständiger Pfad des Pakets mit der Gastkonfiguration.
-- **Zertifikat** : Codesignaturzertifikat zum Signieren des Pakets. Dieser Parameter wird nur beim Signieren von Inhalt für Windows unterstützt.
+- **Pfad**: Vollständiger Pfad des Pakets mit der Gastkonfiguration.
+- **Zertifikat**: Codesignaturzertifikat zum Signieren des Pakets. Dieser Parameter wird nur beim Signieren von Inhalt für Windows unterstützt.
 
 Vom GuestConfiguration-Agent wird erwartet, dass der öffentliche Schlüssel des Zertifikats auf Windows-Computern unter „Vertrauenswürdige Stammzertifizierungsstellen“ und auf Linux-Computern unter dem Pfad `/usr/local/share/ca-certificates/extra` vorhanden ist. Damit auf dem Knoten signierter Inhalt überprüft werden kann, müssen Sie den öffentlichen Schlüssel des Zertifikats auf dem Computer installieren, bevor Sie die benutzerdefinierte Richtlinie anwenden. Dieser Prozess kann mit einem beliebigen Verfahren auf der VM oder mit Azure Policy durchgeführt werden. Eine Beispielvorlage finden Sie [hier](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vm-push-certificate-windows).
 In der Key Vault-Zugriffsrichtlinie muss es für den Computeressourcenanbieter zulässig sein, bei Bereitstellungen auf Zertifikate zuzugreifen. Informationen zu den ausführlichen Schritten finden Sie unter [Einrichten des Schlüsseltresors für virtuelle Computer in Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
@@ -532,12 +532,6 @@ $Cert | Export-Certificate -FilePath "$env:temp\DscPublicKey.cer" -Force
 ```
 
 Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Informationen darüber, wie Tags mithilfe von Azure Policy im großen Stil bereitgestellt werden können, finden Sie in den [Tagbeispielen](../samples/built-in-policies.md#tags). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration (Vorschauversion)
-
-Es gibt eine Vorschauversion eines Tools, das Sie bei der Problembehandlung für Zuweisungen für die Azure Policy-Gastkonfiguration unterstützt. Das Tool befindet sich in der Vorschauphase und wurde als Modul namens [GuestConfigurationTroubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) im PowerShell-Katalog veröffentlicht.
-
-Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool den Befehl „Get-Help“ in PowerShell, um den integrierten Leitfaden anzuzeigen. Da das Tool regelmäßig aktualisiert wird, ist dies die beste Option, um aktuelle Informationen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
