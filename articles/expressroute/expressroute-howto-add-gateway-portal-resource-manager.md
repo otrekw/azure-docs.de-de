@@ -9,10 +9,10 @@ ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 843d0b8cfd75e8cbdf45ac535cc9486aa42442d6
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91761792"
 ---
 # <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-the-azure-portal"></a>Tutorial: Konfigurieren eines virtuellen Netzwerkgateways für ExpressRoute mit dem Azure-Portal
@@ -64,7 +64,7 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
 
 ## <a name="create-the-virtual-network-gateway"></a>Erstellen des Gateways für das lokale Netzwerk
 
-1. Wählen Sie im Portal auf der linken Seite **Ressource erstellen** aus, und geben Sie als Suchbegriff „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Gateway für virtuelle Netzwerke** , und wählen Sie diesen Eintrag aus. Wählen Sie auf der Seite **Gateway für virtuelle Netzwerke** die Option **Erstellen** aus.
+1. Wählen Sie im Portal auf der linken Seite **Ressource erstellen** aus, und geben Sie als Suchbegriff „Gateway für virtuelle Netzwerke“ ein. Suchen Sie in der Ausgabe nach **Gateway für virtuelle Netzwerke**, und wählen Sie diesen Eintrag aus. Wählen Sie auf der Seite **Gateway für virtuelle Netzwerke** die Option **Erstellen** aus.
 1. Geben Sie auf der Seite **Gateway für virtuelle Netzwerke erstellen** diese Einstellungen ein, bzw. wählen Sie sie aus:
 
     | Einstellung | Wert |
@@ -72,7 +72,7 @@ Sie können sich ein [Video](https://azure.microsoft.com/documentation/videos/az
     | Abonnement | Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist. |
     | Ressourcengruppe | Die Ressourcengruppe wird automatisch festgelegt, wenn Sie das virtuelle Netzwerk auswählen. | 
     | name | Benennen Sie Ihr Gateway. Dies ist nicht das Gleiche wie das Benennen eines Gatewaysubnetzes. Hierbei handelt es sich um den Namen des Gatewayobjekts, das Sie erstellen.|
-    | Region | Ändern Sie das Feld **Region** , um auf den Standort zu verweisen, an dem sich das virtuelle Netzwerk befindet. Wenn der Standort nicht auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet, wird das virtuelle Netzwerk nicht in der Dropdownliste „Virtuelles Netzwerk auswählen“ angezeigt. |
+    | Region | Ändern Sie das Feld **Region**, um auf den Standort zu verweisen, an dem sich das virtuelle Netzwerk befindet. Wenn der Standort nicht auf die Region verweist, in der sich Ihr virtuelles Netzwerk befindet, wird das virtuelle Netzwerk nicht in der Dropdownliste „Virtuelles Netzwerk auswählen“ angezeigt. |
     | Gatewaytyp | Wählen Sie **ExpressRoute** aus.|
     | SKU | Wählen Sie in der Dropdownliste die Gateway-SKU aus. |
     | Virtuelles Netzwerk | Wählen Sie *TestVNet* aus. |

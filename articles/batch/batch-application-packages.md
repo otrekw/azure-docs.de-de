@@ -8,10 +8,10 @@ ms.custom:
 - devx-track-csharp
 - contperfq1
 ms.openlocfilehash: 1bacb0c71c05aeb983bfa9ebf71873a22fea39a1
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "91277698"
 ---
 # <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Bereitstellen von Anwendungen auf Computeknoten mit Batch-Anwendungspaketen
@@ -33,7 +33,7 @@ Es gibt Einschränkungen für die Anzahl der Anwendungen und Anwendungspakete in
 
 ## <a name="understand-applications-and-application-packages"></a>Grundlegendes zu Anwendungen und Anwendungspaketen
 
-In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Eine Anwendung enthält mindestens ein *Anwendungspaket* , das verschiedene Anwendungsversionen darstellt.
+In Azure Batch ist eine *Anwendung* ein Satz von Binärdateien mit Versionsangabe, die automatisch auf die Computeknoten in Ihrem Pool heruntergeladen werden können. Eine Anwendung enthält mindestens ein *Anwendungspaket*, das verschiedene Anwendungsversionen darstellt.
 
 Jedes *Anwendungspaket* ist eine ZIP-Datei mit den Anwendungsbinärdateien und allen unterstützenden Dateien. Nur das ZIP-Format wird unterstützt.
 
@@ -81,9 +81,9 @@ Wenn Sie die Anwendungen in Ihrem Batch-Konto anzeigen möchten, wählen Sie im 
 
 Durch Auswählen dieser Menüoption wird das Fenster **Anwendungen** geöffnet. In diesem Fenster werden die IDs aller Anwendungen in Ihrem Konto und die folgenden Eigenschaften angezeigt:
 
-- **Pakete** : Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
-- **Standardversion** : Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
-- **Updates zulassen** : Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
+- **Pakete**: Die Anzahl von Versionen, die dieser Anwendung zugeordnet sind.
+- **Standardversion**: Gegebenenfalls die Anwendungsversion, die installiert wird, wenn bei der Bereitstellung der Anwendung keine Version angegeben wird.
+- **Updates zulassen**: Gibt an, ob Pakete aktualisiert und gelöscht werden dürfen.
 
 Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf einem Serverknoten anzeigen möchten, navigieren Sie im Azure-Portal zu Ihrem Batch-Konto. Wählen Sie **Pools** aus. Wählen Sie danach den Pool aus, der den Serverknoten enthält. Wählen Sie den Serverknoten aus, auf dem das Anwendungspaket installiert wurde, und öffnen Sie den Ordner **Anwendungen**.
 
@@ -91,9 +91,9 @@ Wenn Sie die [Dateistruktur](files-and-directories.md) des Anwendungspakets auf 
 
 Wenn Sie die Details einer Anwendung anzeigen möchten, wählen Sie im Fenster **Anwendungen** die entsprechende Anwendung aus. Sie können für Ihre Anwendung die folgenden Einstellungen konfigurieren.
 
-- **Updates zulassen** : Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja** festgelegt. Wenn sie auf **Nein** festgelegt wird, können vorhandene Anwendungspakete nicht aktualisiert oder gelöscht, neue Anwendungspaketversionen aber noch hinzugefügt werden.
-- **Standardversion** : Das Standardanwendungspaket, das bei der Bereitstellung der Anwendung verwendet werden soll, wenn keine Anwendung angegeben wurde.
-- **Anzeigename** : Ein Anzeigename, der von Ihrer Batch-Lösung beim Anzeigen von Informationen zur Anwendung verwendet werden kann. Dieser Name kann beispielsweise in der Benutzeroberfläche eines Diensts verwendet werden, den Sie Ihren Kunden über Batch bereitstellen.
+- **Updates zulassen**: Gibt an, ob Anwendungspakete [aktualisiert oder gelöscht](#update-or-delete-an-application-package) werden können. Die Option ist standardmäßig auf **Ja** festgelegt. Wenn sie auf **Nein** festgelegt wird, können vorhandene Anwendungspakete nicht aktualisiert oder gelöscht, neue Anwendungspaketversionen aber noch hinzugefügt werden.
+- **Standardversion**: Das Standardanwendungspaket, das bei der Bereitstellung der Anwendung verwendet werden soll, wenn keine Anwendung angegeben wurde.
+- **Anzeigename**: Ein Anzeigename, der von Ihrer Batch-Lösung beim Anzeigen von Informationen zur Anwendung verwendet werden kann. Dieser Name kann beispielsweise in der Benutzeroberfläche eines Diensts verwendet werden, den Sie Ihren Kunden über Batch bereitstellen.
 
 ### <a name="add-a-new-application"></a>Hinzufügen einer neuen Anwendung
 
@@ -105,9 +105,9 @@ Wählen Sie in Ihrem Batch-Konto **Anwendungen** und anschließend **Hinzufügen
 
 Geben Sie die folgenden Informationen ein:
 
-- **Anwendungs-ID** : Die ID Ihrer neuen Anwendung.
-- **Version** : Die Version des Anwendungspakets, das Sie hochladen.
-- **Anwendungspaket** : Die ZIP-Datei, die die Binärdateien der Anwendung und jegliche unterstützenden Dateien enthält, die für die Ausführung der Anwendung erforderlich sind.
+- **Anwendungs-ID**: Die ID Ihrer neuen Anwendung.
+- **Version**: Die Version des Anwendungspakets, das Sie hochladen.
+- **Anwendungspaket**: Die ZIP-Datei, die die Binärdateien der Anwendung und jegliche unterstützenden Dateien enthält, die für die Ausführung der Anwendung erforderlich sind.
 
 Die eingegebene **Anwendungs-ID** und **Version** müssen folgende Anforderungen erfüllen:
 

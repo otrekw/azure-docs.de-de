@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 82e0f31e28839fb3a87e0b2a539290b194b3ad77
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7ab61c788a6213b092e74d596b522ac4bb0412ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960421"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541894"
 ---
 # <a name="quickstart-extract-printed-and-handwritten-text-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem und handschriftlichem Text mit der Maschinelles Sehen-REST-API und Python
 
@@ -342,4 +342,4 @@ Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen ve
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

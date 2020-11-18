@@ -1,7 +1,7 @@
 ---
 title: Konfigurieren einer Trainingsausführung
 titleSuffix: Azure Machine Learning
-description: Trainieren Sie Ihr Machine Learning-Modell in verschiedenen Trainingsumgebungen (Computeziele). Sie können problemlos zwischen Trainingsumgebungen wechseln. Beginnen Sie das Training lokal. Wenn ein Aufskalieren erforderlich ist, wechseln Sie zu einem cloudbasierten Computeziel.
+description: Trainieren Sie Ihr Machine Learning-Modell in verschiedenen Trainingsumgebungen (Computeziele). Sie können problemlos zwischen Trainingsumgebungen wechseln.
 services: machine-learning
 author: sdgilley
 ms.author: sgilley
@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 8280af20d63da969504cda8ffe875405d4bf0218
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324708"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541299"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
@@ -38,10 +38,10 @@ Eine [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?pre
 
 Sie übermitteln Ihr Trainingsexperiment mit einem ScriptRunConfig-Objekt.  Dieses Objekt enthält Folgendes:
 
-* **source_directory** : Das Quellverzeichnis mit Ihrem Trainingsskript
-* **script** : Das Trainingsskript, das ausgeführt werden soll
-* **compute_target** : Das Computeziel für die Ausführung
-* **environment** : Die Umgebung für die Ausführung des Skripts
+* **source_directory**: Das Quellverzeichnis mit Ihrem Trainingsskript
+* **script**: Das Trainingsskript, das ausgeführt werden soll
+* **compute_target**: Das Computeziel für die Ausführung
+* **environment**: Die Umgebung für die Ausführung des Skripts
 * Und einige zusätzliche konfigurierbare Optionen. (Weitere Informationen finden Sie in der [Referenzdokumentation](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py).)
 
 ## <a name="train-your-model"></a><a id="submit"></a>Trainieren Ihres Modells
@@ -152,13 +152,13 @@ run.wait_for_completion(show_output=True)
 > Weitere Informationen zu Momentaufnahmen finden Sie unter [Momentaufnahmen](concept-azure-machine-learning-architecture.md#snapshots).
 
 > [!IMPORTANT]
-> **Spezielle Ordner** Zwei Ordner, *outputs* und *logs* , erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner *outputs* und *logs* schreiben, die zum Stammverzeichnis relativ sind (`./outputs` und `./logs`), werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
+> **Spezielle Ordner** Zwei Ordner, *outputs* und *logs*, erhalten eine besondere Behandlung durch Azure Machine Learning. Wenn Sie während des Trainings Dateien in die Ordner *outputs* und *logs* schreiben, die zum Stammverzeichnis relativ sind (`./outputs` und `./logs`), werden diese Dateien automatisch in Ihren Ausführungsverlauf hochgeladen, damit Sie Zugriff darauf haben, wenn die Ausführung abgeschlossen ist.
 >
 > Um während des Trainings Artefakte zu erstellen (z.B. Modelldateien, Prüfpunkte, Datendateien oder gezeichnete Bilder), schreiben Sie diese in den `./outputs`-Ordner.
 >
 > Auf ähnliche Weise können Sie alle Protokolle aus Ihrer Trainingsausführung in den `./logs`-Ordner schreiben. Um die [TensorBoard-Integration](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/track-and-monitor-experiments/tensorboard/export-run-history-to-tensorboard/export-run-history-to-tensorboard.ipynb) in Azure Machine Learning zu nutzen, stellen Sie sicher, dass Sie Ihre TensorBoard-Protokolle in diesen Ordner schreiben. Während Ihre Ausführung läuft, können Sie TensorBoard starten und diese Protokolle streamen.  Später können Sie auch die Protokolle aus Ihrer vorherigen Ausführungen wiederherstellen.
 >
-> So laden Sie beispielsweise eine Datei herunter, die nach Ihrer Remotetrainingausführung in den *outputs* -Ordner auf Ihrem lokalen Computer geschrieben wurde: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
+> So laden Sie beispielsweise eine Datei herunter, die nach Ihrer Remotetrainingausführung in den *outputs*-Ordner auf Ihrem lokalen Computer geschrieben wurde: `run.download_file(name='outputs/my_output_file', output_file_path='my_destination_path')`
 
 ## <a name="git-tracking-and-integration"></a><a id="gitintegration"></a>Git-Nachverfolgung und -Integration
 

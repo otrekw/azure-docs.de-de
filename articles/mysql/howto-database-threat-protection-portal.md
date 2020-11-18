@@ -1,17 +1,17 @@
 ---
 title: Advanced Threat Protection – Azure-Portal – Azure Database for MySQL
 description: Erfahren Sie, wie Advanced Threat Protection zum Identifizieren anomaler Datenbankaktivitäten konfiguriert wird, die auf potenzielle Sicherheitsrisiken für die Datenbank in einer verwalteten Instanz hinweisen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 96f6993f92192a1149e3b243c68fdf5fe96fdc66
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b30bd36dca6f866b8f3e6e8a0b133a6dd61b239b
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541450"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541435"
 ---
 # <a name="advanced-threat-protection-for-azure-database-for-mysql"></a>Advanced Threat Protection für Azure Database for MySQL
 
@@ -42,15 +42,15 @@ Bei Erkennung anormaler Datenbankaktivitäten erhalten Sie eine E-Mail-Benachric
  
 1. Klicken Sie in der E-Mail auf den Link **View recent alerts** (Aktuelle Warnungen anzeigen), um das Azure-Portal zu starten und die Azure Security Center-Seite für Warnungen zu öffnen, auf der eine Übersicht über die aktiven Bedrohungen angezeigt wird, die in der SQL-Datenbank erkannt wurden.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Einrichten der Bedrohungserkennung":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/anomalous-activity-report.png" alt-text="Bericht zu anomalen Aktivitäten":::
 
     Anzeigen aktiver Bedrohungen:
 
-    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Einrichten der Bedrohungserkennung":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/active-threats.png" alt-text="Aktive Bedrohungen":::
 
 2. Klicken Sie auf eine bestimmte Warnung, um weitere Details und Aktionen zum Untersuchen der entsprechenden Bedrohung und Abwehren zukünftiger Bedrohungen anzuzeigen.
     
-    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Einrichten der Bedrohungserkennung":::
+    :::image type="content" source="./media/howto-database-threat-protection-portal/specific-alert.png" alt-text="Spezifische Warnung":::
 
 ## <a name="explore-threat-detection-alerts"></a>Untersuchen von Warnungen der Bedrohungserkennung
 
@@ -58,7 +58,7 @@ Die Warnungen der Bedrohungserkennung von SQL-Datenbank sind in [Azure Security 
 
 Klicken Sie auf **Threat detection alert** (Warnung der Bedrohungserkennung), um die Azure Security Center-Seite für Warnungen zu öffnen und eine Übersicht über die aktiven SQL-Bedrohungen zu erhalten, die in der Datenbank erkannt wurden.
 
-   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Einrichten der Bedrohungserkennung":::
+   :::image type="content" source="./media/howto-database-threat-protection-portal/threat-detection-alert-asc.png" alt-text="Warnung der Bedrohungserkennung":::
    
 
 ## <a name="next-steps"></a>Nächste Schritte

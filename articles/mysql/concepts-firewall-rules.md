@@ -1,17 +1,17 @@
 ---
 title: Firewallregeln – Azure Database for MySQL
 description: Erfahren Sie mehr über die Verwendung von Firewallregeln zum Aktivieren von Verbindungen mit Ihrem Azure Database for MySQL-Server.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 63b3fd64526f45994919267a2f4ddc730d0b2fd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4efd9fd814165755d27de1d269b6319890f7190d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90882655"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541605"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für MySQL-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -43,7 +43,7 @@ Wenn eine feste IP-Adresse für ausgehenden Datenverkehr für Ihren Azure-Dienst
 > Diese Option **Zugriff auf Azure-Dienste zulassen** konfiguriert die Firewall so, dass alle von Azure ausgehenden Verbindungen zugelassen werden (einschließlich Verbindungen von den Abonnements anderer Kunden). Wenn Sie diese Option auswählen, stellen Sie sicher, dass die Anmelde- und die Benutzerberechtigungen den Zugriff nur auf autorisierte Benutzer beschränken.
 > 
 
-:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="Beispielfluss zur Funktionsweise der Firewall":::
+:::image type="content" source="./media/concepts-firewall-rules/allow-azure-services.png" alt-text="Konfigurieren von „Zugriff auf Azure-Dienste erlauben“ im Portal":::
 
 ### <a name="connecting-from-a-vnet"></a>Herstellen einer Verbindung über ein VNet
 Wenn Sie von einem VNet aus eine sichere Verbindung mit Ihrem Azure Database for MySQL-Server herstellen möchten, ziehen Sie die Verwendung von [VNet-Dienstendpunkten](./concepts-data-access-and-security-vnet.md) in Betracht. 

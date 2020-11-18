@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Servern – Azure-Befehlszeilenschnittstelle – Azure Database for MySQL
 description: Erfahren Sie, wie Sie Azure Database for MySQL-Server über die Azure CLI verwalten.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/22/2020
-ms.openlocfilehash: 1f0b059a25cd9fc77a59dc0a78feb18c2c549057
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bd068f0cf76a8edefca854d72d5240c0becaf8fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546856"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542064"
 ---
 # <a name="manage-an-azure-database-for-mysql-single-server-using-the-azure-cli"></a>Verwalten eines Azure Database for MySQL Single Server über die Azure CLI
 
@@ -20,13 +20,13 @@ In diesem Artikel erfahren Sie, wie Sie Ihre in Azure bereitgestellten Einzelser
 ## <a name="prerequisites"></a>Voraussetzungen
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen. Für den Artikel müssen Sie mindestens Version 2.0 der Azure-Befehlszeilenschnittstelle lokal ausführen. Führen Sie den Befehl `az --version` aus, um die installierte Version anzuzeigen. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id** , die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
+Sie müssen sich mithilfe des Befehls [az login](/cli/azure/reference-index#az-login) bei Ihrem Konto anmelden. Beachten Sie die Eigenschaft **id**, die auf die **Abonnement-ID** für Ihr Azure-Konto verweist.
 
 ```azurecli-interactive
 az login
 ```
 
-Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id** . Sie verwenden ihn im Befehl als Wert für das Argument **subscription** . Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
+Wählen Sie mithilfe des Befehls [az account set](/cli/azure/account) das Abonnement unter Ihrem Konto aus. Notieren Sie sich aus der Ausgabe von **az login** den Wert für **id**. Sie verwenden ihn im Befehl als Wert für das Argument **subscription**. Wenn Sie über mehrere Abonnements verfügen, wählen Sie das entsprechende Abonnement aus, in dem die Ressource fakturiert sein sollte. Verwenden Sie [az account list](/cli/azure/account#az-account-list), um alle Abonnements abzurufen.
 
 ```azurecli
 az account set --subscription <subscription id>

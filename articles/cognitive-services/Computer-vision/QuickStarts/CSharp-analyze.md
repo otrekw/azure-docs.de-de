@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 6ec84a2a528b992a2645e94472987ea67331b533
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 879b451131ef7b2fa108ca1ae307107506fe8f27
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969499"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541911"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-c"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und C#
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds Informationen zu visuellen Merkmalen extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) können Sie basierend auf dem Inhalt des Bilds Informationen zu visuellen Merkmalen extrahieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -1,17 +1,17 @@
 ---
 title: Serverkonzepte – Azure Database for MySQL
 description: Dieses Thema enthält Aspekte und Richtlinien für die Arbeit mit Azure-Datenbank für MySQL-Servern.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
-ms.openlocfilehash: afbf80810f45f616eac40de16889bbebb1cf4964
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5477aa0c4eb2a66af816b287a8b6d7da8a53952f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544799"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94534890"
 ---
 # <a name="server-concepts-in-azure-database-for-mysql"></a>Serverkonzepte in Azure-Datenbank für MySQL
 
@@ -48,12 +48,12 @@ Mithilfe der folgenden Elemente kann ein sicherer Zugriff auf Ihre Datenbank sic
 
 ## <a name="stopstart-an-azure-database-for-mysql-preview"></a>Anhalten/Starten einer Azure-Datenbank für MySQL-Instanz (Vorschau)
 
-Azure-Datenbank für MySQL bietet Ihnen die Möglichkeit, den Server **anzuhalten** , wenn er nicht genutzt wird, und ihn zu **starten** , wenn Sie die Aktivität wieder aufnehmen. Dies erfolgt im Wesentlichen, um Kosten auf den Datenbankservern zu sparen und für die Ressource nur dann zu bezahlen, wenn sie in Gebrauch ist. Dies wird noch wichtiger bei Dev-Test-Workloads und wenn Sie den Server nur für einen Teil des Tages benutzen. Wenn Sie den Server anhalten, werden alle aktiven Verbindungen beendet. Wenn Sie den Server später wieder online schalten möchten, können Sie dies entweder über das [Azure-Portal](how-to-stop-start-server.md) oder die [CLI](how-to-stop-start-server.md) erledigen.
+Azure-Datenbank für MySQL bietet Ihnen die Möglichkeit, den Server **anzuhalten**, wenn er nicht genutzt wird, und ihn zu **starten**, wenn Sie die Aktivität wieder aufnehmen. Dies erfolgt im Wesentlichen, um Kosten auf den Datenbankservern zu sparen und für die Ressource nur dann zu bezahlen, wenn sie in Gebrauch ist. Dies wird noch wichtiger bei Dev-Test-Workloads und wenn Sie den Server nur für einen Teil des Tages benutzen. Wenn Sie den Server anhalten, werden alle aktiven Verbindungen beendet. Wenn Sie den Server später wieder online schalten möchten, können Sie dies entweder über das [Azure-Portal](how-to-stop-start-server.md) oder die [CLI](how-to-stop-start-server.md) erledigen.
 
 Wenn sich der Server im Status **Angehalten** befindet, wird das Compute des Servers nicht in Rechnung gestellt. Der Speicher wird jedoch weiterhin in Rechnung gestellt, da der Speicher des Servers verbleibt, um sicherzustellen, dass die Datendateien verfügbar sind, wenn der Server wieder gestartet wird.
 
 > [!IMPORTANT]
-> Wenn Sie den Server **anhalten** , bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten** , wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
+> Wenn Sie den Server **anhalten**, bleibt er für die nächsten sieben Tage in diesem Zustand. Wenn Sie ihn während dieser Zeit nicht manuell **starten**, wird der Server nach Ablauf von sieben Tagen automatisch gestartet. Wenn Sie den Server nicht verwenden, können Sie ihn wieder **anhalten**.
 
 Während der Zeit, in der der Server angehalten ist, können keine Verwaltungsvorgänge auf dem Server durchgeführt werden. Sie müssen [den Server starten](how-to-stop-start-server.md), um Konfigurationseinstellungen auf dem Server zu ändern.
 

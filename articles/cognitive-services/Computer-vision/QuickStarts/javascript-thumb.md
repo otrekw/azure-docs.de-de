@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-js
-ms.openlocfilehash: 4563fc915b76e36b4087e365e31a4e234edb55dc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 64ec7bfa400edceb0f638b1862b9057d104c7904
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977081"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542744"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-and-javascript"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und JavaScript
 
@@ -51,8 +51,8 @@ Führen Sie zum Erstellen und Ausführen des Beispiels die folgenden Schritte au
 <script type="text/javascript">
     function processImage() {
         // **********************************************
-        // *** Update or verify the following values. ***
-        // **********************************************
+        // **_ Update or verify the following values. _*_
+        // _*********************************************
 
         var subscriptionKey = document.getElementById("subscriptionKey").value;
         var endpoint = document.getElementById("endpointUrl").value;
@@ -163,7 +163,7 @@ Eine erfolgreiche Antwort wird als Binärdaten zurückgegeben, die die Bilddaten
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+Lernen Sie eine JavaScript-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale (einschließlich Gesichter) in einem Bild zu erkennen, zu kategorisieren, zu markieren und zu beschreiben. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.
 
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API mit JavaScript](../Tutorials/javascript-tutorial.md)

@@ -1,17 +1,17 @@
 ---
 title: Datenreplikation – Azure Database for MySQL
 description: Erfahren Sie mehr über das Verwenden der Datenreplikation zum Synchronisieren von Daten von einem externen Server mit dem Dienst Azure Database for MySQL.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 8/7/2020
-ms.openlocfilehash: e84f0c9beaee8a755499467925d28a83ba3139fc
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 99beddba470f73d6eadb448dfe1b77453ce6426d
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544051"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541588"
 ---
 # <a name="replicate-data-into-azure-database-for-mysql"></a>Replizieren von Daten in Azure Database for MySQL
 

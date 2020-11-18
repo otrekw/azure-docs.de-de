@@ -4,10 +4,10 @@ description: Anleitung zur Migration von vorhandenen Azure Service Bus-Standardn
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1ed09a077f086390c658e6650171c552b361008d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "85340747"
 ---
 # <a name="migrate-existing-azure-service-bus-standard-namespaces-to-the-premium-tier"></a>Migrieren von vorhandenen Azure Service Bus-Standardnamespaces zum Premium-Tarif
@@ -45,7 +45,7 @@ Einige Bedingungen sind mit dem Migrationsprozess verbunden. Machen Sie sich mit
 
 Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der Azure CLI oder dem PowerShell-Tool mit den folgenden Schritten aus.
 
-1. Erstellen Sie einen neuen Service Bus-Premiumnamespace. Sie können auf die [Azure Resource Manager-Vorlagen](service-bus-resource-manager-namespace.md) verweisen oder das [Azure-Portal](service-bus-create-namespace-portal.md) verwenden. Wählen Sie für den **serviceBusSku** -Parameter **premium** aus.
+1. Erstellen Sie einen neuen Service Bus-Premiumnamespace. Sie können auf die [Azure Resource Manager-Vorlagen](service-bus-resource-manager-namespace.md) verweisen oder das [Azure-Portal](service-bus-create-namespace-portal.md) verwenden. Wählen Sie für den **serviceBusSku**-Parameter **premium** aus.
 
 1. Legen Sie die folgenden Umgebungsvariablen fest, um die Migrationsbefehle zu vereinfachen.
 
@@ -89,7 +89,7 @@ Führen Sie die Migration Ihres Service Bus-Standardnamespace zu Premium mit der
 
 Die Migration über das Azure-Portal hat den gleichen logischen Ablauf wie die Migration über die Befehle. Führen Sie die folgenden Schritte aus, um im Azure-Portal zu migrieren.
 
-1. Wählen Sie im Menü **Navigation** im linken Bereich **Zu Premium migrieren** aus. Klicken Sie auf die Schaltfläche **Erste Schritte** , um auf der nächsten Seite fortzufahren.
+1. Wählen Sie im Menü **Navigation** im linken Bereich **Zu Premium migrieren** aus. Klicken Sie auf die Schaltfläche **Erste Schritte**, um auf der nächsten Seite fortzufahren.
     ![Landing Page für Migration][]
 
 1. Schließen Sie das **Setup** ab.

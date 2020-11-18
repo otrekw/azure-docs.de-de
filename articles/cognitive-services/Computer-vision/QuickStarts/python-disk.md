@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 6445199ee30c52cc426ddce0016a34df5d1e0112
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 3798a58c40284c356eb2ec696a31fb71042a46e1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960474"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538851"
 ---
 # <a name="quickstart-analyze-a-local-image-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Analysieren eines lokalen Bilds mit der Maschinelles Sehen-REST-API und Python
 
-In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
+In dieser Schnellstartanleitung analysieren Sie mithilfe der Maschinelles Sehen-REST-API ein lokal gespeichertes Bild, um visuelle Merkmale zu extrahieren. Mit der Methode [Analyze Image](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) können Sie basierend auf dem Inhalt des Bilds visuelle Merkmale extrahieren.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 
@@ -181,4 +181,4 @@ Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen ve
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

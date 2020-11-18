@@ -1,17 +1,17 @@
 ---
 title: VNET-Dienstendpunkte in Azure Database for MySQL
 description: Übersicht über die Funktionsweise von VNET-Dienstendpunkten für Azure Database for MySQL-Server
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 7/17/2020
-ms.openlocfilehash: dba6b3f2137230ebe95f1bc89156cf6b127c8f52
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 225afcbafeaf7213b4f040a07d709d33e46b44f4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428150"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540806"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-database-for-mysql"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Azure Database for MySQL
 
@@ -35,7 +35,7 @@ Sie können auch die Verwendung [Private Link](concepts-data-access-security-pri
 
 **Subnetz:** Ein virtuelles Netzwerk enthält **Subnetze**. Ihre virtuellen Azure-Computer (VMs) sind Subnetzen zugewiesen. Ein Subnetz kann mehrere VMs oder andere Computeknoten enthalten. Computeknoten, die sich außerhalb Ihres virtuellen Netzwerks befinden, können nicht auf Ihr virtuelles Netzwerk zugreifen, es sei denn, Sie konfigurieren für sie den sicheren Zugriff.
 
-**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql** , der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for MySQL- und Azure Database for PostgreSQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert. 
+**Virtual Network-Dienstendpunkt:** Ein [VNET-Dienstendpunkt][vm-virtual-network-service-endpoints-overview-649d] ist ein Subnetz, dessen Eigenschaftswerte mindestens einen formalen Azure-Diensttypnamen enthalten. In diesem Artikel beschäftigen wir uns mit dem Typnamen **Microsoft.Sql**, der auf einen Azure-Dienst mit dem Namen „SQL-Datenbank“ verweist. Dieses Diensttag gilt auch für die Azure Database for MySQL- und Azure Database for PostgreSQL-Dienste. Bitte beachten Sie: Wenn Sie das Diensttag **Microsoft.Sql** auf einen VNET-Dienstendpunkt anwenden, wird der Dienstendpunkt-Datenverkehr für alle Azure SQL-Datenbank-, Azure Database for MySQL- und Azure Database for PostgreSQL-Server im Subnetz konfiguriert. 
 
 **VNET-Regel:** Eine VNET-Regel für Ihren Azure Database for MySQL-Server ist ein Subnetz, das in der Zugriffssteuerungsliste Ihres Azure Database for MySQL-Servers aufgeführt wird. Das Subnetz muss den Typnamen **Microsoft.Sql** enthalten, um in der Zugriffssteuerungsliste für Ihren Azure Database for MySQL-Server zu sein.
 
@@ -88,7 +88,7 @@ Bei der Verwaltung der VNET-Dienstendpunkte erfolgt eine Trennung von Sicherheit
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste, um das angegebene Subnetz dem Azure Database for MySQL-Server hinzuzufügen.
 
-*Alternative zur Azure RBAC:*
+*Alternative zur rollenbasierten Zugriffssteuerung von Azure (Azure RBAC):*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von VNET-Regeln erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 

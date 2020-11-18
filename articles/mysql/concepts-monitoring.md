@@ -1,18 +1,18 @@
 ---
 title: Überwachung – Azure Database for MySQL
 description: In diesem Artikel werden die Überwachungs- und Warnmetriken (CPU, Speicher, Verbindungsstatistiken und Ähnliches) für Azure Database for MySQL beschrieben.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: b2670862814495ab04f92d8f34a757d3ede6cf4a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5b818068c2aab045b46b34d408a93b7cb3df15c7
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546873"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537695"
 ---
 # <a name="monitoring-in-azure-database-for-mysql"></a>Überwachen in Azure Database for MySQL
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MySQL bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -45,7 +45,7 @@ Für Azure Database for MySQL sind folgende Metriken verfügbar:
 Sie können die Protokollierung von langsamen Abfragen und die Überwachungsprotokollierung auf Ihrem Server aktivieren. Diese Protokolle sind ebenfalls durch Azure-Diagnoseprotokolle in Azure Monitor-Protokolle, Event Hubs und im Speicherkonto verfügbar. Weitere Informationen zur Protokollierung finden Sie in den Artikeln über [Überwachungsprotokolle](concepts-audit-logs.md) und [Protokolle für langsame Abfragen](concepts-server-logs.md).
 
 ## <a name="query-store"></a>Abfragespeicher
-[Abfragespeicher](concepts-query-store.md) ist ein Feature, das die Abfrageleistung im Zeitablauf verfolgt, einschließlich Abfrageausführungszeitstatistiken und Warteereignissen. Das Feature speichert Informationen zur Laufzeitleistung der Abfrage im **mysql** -Schema. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
+[Abfragespeicher](concepts-query-store.md) ist ein Feature, das die Abfrageleistung im Zeitablauf verfolgt, einschließlich Abfrageausführungszeitstatistiken und Warteereignissen. Das Feature speichert Informationen zur Laufzeitleistung der Abfrage im **mysql**-Schema. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 [Query Performance Insight](concepts-query-performance-insight.md) arbeitet mit dem Abfragespeicher zusammen, um Visualisierungen bereitzustellen, auf die über das Azure-Portal zugegriffen werden kann. Diese Diagramme ermöglichen es Ihnen, wichtige Abfragen zu identifizieren, die sich auf die Leistung auswirken. Query Performance Insight ist im Abschnitt **Intelligente Leistung** auf der Portalseite Ihres Azure Database for MySQL-Servers verfügbar.

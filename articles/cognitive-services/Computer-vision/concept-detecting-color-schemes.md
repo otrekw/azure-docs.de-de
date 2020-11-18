@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 57e01683cb8027c2a1f79e58bce03b3bb7dedadb
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80244731"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538383"
 ---
 # <a name="detect-color-schemes-in-images"></a>Erkennen von Farbschemas auf Bildern
 
@@ -80,7 +80,7 @@ Die folgende Tabelle enthält die Schwarzweiß-Auswertung von maschinellem Sehen
 
 ## <a name="use-the-api"></a>Verwenden der API
 
-Die Funktion zur Erkennung von Farbschemas ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Color` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"color"`.
+Die Funktion zur Erkennung von Farbschemas ist Teil der [Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)-API. Sie können diese API über ein natives SDK oder REST-Aufrufe aufrufen. Beziehen Sie `Color` in den Abfrageparameter **visualFeatures** ein. Nachdem Sie die vollständige JSON-Antwort erhalten haben, analysieren Sie einfach die Zeichenfolge auf den Inhalt im Abschnitt `"color"`.
 
 * [Schnellstart: Maschinelles Sehen: .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)

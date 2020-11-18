@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Firewallregeln – Azure-Portal – Azure Database for MariaDB
 description: Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe des Microsoft Azure-Portals
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 464b13fe4aa727a4d3ca3ff074b8bb94544576a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 895c8e51e16cb0b82ebf3edcf954dabe62b08ff4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86101221"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537130"
 ---
 # <a name="create-and-manage-azure-database-for-mariadb-firewall-rules-by-using-the-azure-portal"></a>Erstellen und Verwalten von Firewallregeln für Azure Database for MariaDB mithilfe des Microsoft Azure-Portals
 Mithilfe von Firewallregeln auf Serverebene kann der Zugriff auf einen Azure Database for MariaDB-Server über eine bestimmte IP-Adresse oder über einen IP-Adressbereich verwaltet werden.

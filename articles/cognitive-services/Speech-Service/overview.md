@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: overview
 ms.date: 08/20/2020
 ms.author: trbye
-ms.openlocfilehash: 09641fb66d2f68054d23abbf8ee9f4324e19832f
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7d31649e18f8cc687a9716c8ecafe556fa250de6
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521508"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377886"
 ---
 # <a name="what-is-the-speech-service"></a>Worum handelt es sich beim Speech-Dienst?
 
@@ -46,14 +46,12 @@ Die folgenden Features sind Teil des Speech-Diensts. Verwenden Sie die Links in 
 
 Für die folgenden Schritte benötigen Sie ein Microsoft-Konto und ein Azure-Konto. Wenn Sie kein Microsoft-Konto besitzen, können Sie sich kostenlos im [Microsoft-Kontoportal](https://account.microsoft.com/account) registrieren. Wählen Sie **Mit Microsoft anmelden** und dann **Microsoft-Konto erstellen** aus, wenn Sie zur Anmeldung aufgefordert werden. Führen Sie die Schritte zum Erstellen und Überprüfen Ihres neuen Microsoft-Kontos aus.
 
-Wenn Sie ein Microsoft-Konto besitzen, navigieren Sie zur [Azure-Registrierungsseite](https://azure.microsoft.com/free/ai/), wählen Sie **Kostenlos starten** aus, und erstellen Sie ein neues Azure-Konto mithilfe Ihres Microsoft-Kontos.
+Wenn Sie ein Microsoft-Konto besitzen, navigieren Sie zur [Azure-Registrierungsseite](https://azure.microsoft.com/free/ai/), wählen Sie **Kostenlos starten** aus, und erstellen Sie ein neues Azure-Konto mithilfe Ihres Microsoft-Kontos. Hier finden Sie ein Video zum [Registrieren für ein kostenloses Azure-Konto](https://www.youtube.com/watch?v=GWT2R1C_uUU).
 
 > [!NOTE]
-> Der Speech-Dienst weist die beiden Dienstebenen „Free“ und „Abonnement“ auf, die mit unterschiedlichen Einschränkungen und Vorteilen verbunden sind. Wenn Sie sich für ein kostenloses Azure-Konto registrieren, beinhaltet dieses ein Guthaben von 200 USD, das Sie bis zu 30 Tage lang auf ein kostenpflichtiges Abonnement für den Speech-Dienst anwenden können.
+> Wenn Sie sich für ein kostenloses Azure-Konto registrieren, beinhaltet dieses ein Guthaben von 200 USD, das Sie bis zu 30 Tage lang auf ein kostenpflichtiges Abonnement für den Speech-Dienst anwenden können. Wenn Ihr Guthaben verbraucht oder nach 30 Tagen abgelaufen ist, werden Ihre Azure-Dienste deaktiviert. Damit Sie die Azure-Dienste weiterhin verwenden können, ist ein Upgrade Ihres Kontos erforderlich. Weitere Informationen finden Sie unter [Upgrade Ihres kostenlosen Azure-Kontos](https://docs.microsoft.com/azure/cost-management-billing/manage/upgrade-azure-subscription). 
 >
-> Wenn Sie die Dienstebene „Free“ des Speech-Dienst für kleine Datenmengen verwenden, können Sie dieses kostenlose Abonnement auch nach Ablauf Ihrer kostenlosen Testversion oder Ihres Dienstguthabens weiterhin nutzen.
->
-> Weitere Informationen finden Sie unter [Cognitive Services-Preise: Speech-Dienst](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
+> Der Speech-Dienst weist die beiden Dienstebenen „Free“ (f0) und „Abonnement“ (s0) auf, die mit unterschiedlichen Einschränkungen und Vorteilen verbunden sind. Wenn Sie die Dienstebene „Free“ des Speech-Dienst für kleine Datenmengen verwenden, können Sie dieses kostenlose Abonnement auch nach Ablauf Ihrer kostenlosen Testversion oder Ihres Dienstguthabens weiterhin nutzen. Weitere Informationen finden Sie unter [Cognitive Services-Preise: Speech-Dienst](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 ### <a name="create-the-azure-resource"></a>Erstellen der Azure-Ressource
 
@@ -72,11 +70,11 @@ Gehen Sie wie folgt vor, um Ihrem Azure-Konto eine Ressource des Sprachdiensts (
 1. Wählen Sie **Erstellen** aus, und führen Sie dann folgende Schritte aus:
 
    - Geben Sie der neuen Ressource einen eindeutigen Namen. Über den Namen können Sie zwischen mehreren Abonnements unterscheiden, die für denselben Dienst gelten.
-   - Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden.
-   - Wählen Sie die [Region](regions.md) aus, in der die Ressource verwendet wird.
-   - Wählen Sie einen kostenlosen (F0) oder einen kostenpflichtigen (S0) Tarif aus. Wählen Sie **Alle Preisinformationen anzeigen** aus, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten. Informationen zu den Grenzwerten für Ressourcen, die Sie für die einzelnen Abonnements erstellen können, finden Sie unter [Grenzwerte für Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits).
+   - Wählen Sie das Azure-Abonnement aus, dem die neue Ressource zugeordnet ist, um zu bestimmen, wie die Gebühren berechnet werden. Hier finden Sie die Einführung zum [Erstellen eines Azure-Abonnements](https://docs.microsoft.com/azure/cost-management-billing/manage/create-subscription#create-a-subscription-in-the-azure-portal) im Azure-Portal.
+   - Wählen Sie die [Region](regions.md) aus, in der die Ressource verwendet wird. Azure ist eine globale Cloudplattform, die in vielen Regionen weltweit allgemein verfügbar ist. Um die beste Leistung zu erzielen, wählen Sie eine Region aus, die Ihnen am nächsten liegt oder in der Ihre Anwendung ausgeführt werden kann. Die Verfügbarkeit des Speech-Diensts variiert je nach Region. Stellen Sie sicher, dass Sie die Ressource in einer unterstützten Region erstellen. Weitere Informationen finden Sie unter [Unterstützung für Regionen für Speech-Dienste](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#speech-to-text-text-to-speech-and-translation).
+   - Wählen Sie einen kostenlosen (F0) oder einen kostenpflichtigen (S0) Tarif aus. Wählen Sie **Alle Preisinformationen anzeigen** aus, oder zeigen Sie [Preise für Spracherkennungsdienste](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/) an, um vollständige Informationen zu Preisen und Verwendungskontingenten für die einzelnen Tarife zu erhalten. Grenzwerte zu Ressourcen finden Sie unter [Grenzwerte für Azure Cognitive Services](../../azure-resource-manager/management/azure-subscription-service-limits.md#azure-cognitive-services-limits).
    - Erstellen Sie eine neue Ressourcengruppe für dieses Abonnement für den Sprachdienst, oder weisen Sie das Abonnement einer vorhandenen Ressourcengruppe zu. Anhand von Ressourcengruppen können Sie Ihre verschiedenen Azure-Abonnements organisieren.
-   - Klicken Sie auf **Erstellen**. Dadurch gelangen Sie zur Bereitstellungsübersicht, in der Statusmeldungen zur Bereitstellung angezeigt werden.
+   - Klicken Sie auf **Erstellen**. Dadurch gelangen Sie zur Bereitstellungsübersicht, in der Statusmeldungen zur Bereitstellung angezeigt werden.  
 <!--
 > [!NOTE]
 > You can create an unlimited number of standard-tier subscriptions in one or multiple regions. However, you can create only one free-tier subscription. Model deployments on the free tier that remain unused for 7 days will be decommissioned automatically.

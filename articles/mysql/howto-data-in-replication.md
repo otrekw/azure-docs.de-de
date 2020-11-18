@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren der Datenreplikation – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie die Datenreplikation für Azure Database for MySQL eingerichtet wird.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 9/29/2020
-ms.openlocfilehash: 58df34ae6a6ff3304304da192b429ac83c1b55c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b7f1f16b5182658f42ad6594aace22fb5a1a80fc
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544034"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541401"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Gewusst wie: Konfigurieren der Datenreplikation in Azure Database for MySQL
 
@@ -134,17 +134,17 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
 
    **MySQL Workbench**
 
-   Um die Replikationsrolle in MySQL Workbench zu erstellen, navigieren Sie zu **Benutzer und Berechtigungen** im Bereich **Verwaltung** . Klicken Sie anschließend auf **Konto hinzufügen** . 
+   Um die Replikationsrolle in MySQL Workbench zu erstellen, navigieren Sie zu **Benutzer und Berechtigungen** im Bereich **Verwaltung**. Klicken Sie anschließend auf **Konto hinzufügen**. 
  
    :::image type="content" source="./media/howto-data-in-replication/users_privileges.png" alt-text="Benutzer und Berechtigungen":::
 
    Geben Sie den Benutzernamen in das Feld **Anmeldename** ein. 
 
-   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Benutzer und Berechtigungen":::
+   :::image type="content" source="./media/howto-data-in-replication/syncuser.png" alt-text="Benutzersynchronisierung":::
  
-   Klicken Sie auf den Bereich **Administratorrollen** , und wählen Sie aus der Liste **Globale Berechtigungen** die Option **Replikationsslave** aus. Klicken Sie dann auf **Anwenden** , um die Replikationsrolle zu erstellen.
+   Klicken Sie auf den Bereich **Administratorrollen**, und wählen Sie aus der Liste **Globale Berechtigungen** die Option **Replikationsslave** aus. Klicken Sie dann auf **Anwenden**, um die Replikationsrolle zu erstellen.
 
-   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Benutzer und Berechtigungen":::
+   :::image type="content" source="./media/howto-data-in-replication/replicationslave.png" alt-text="Replikationsslave":::
 
 1. Versetzen des Quellservers in den schreibgeschützten Modus
 
@@ -164,7 +164,7 @@ Mit den folgenden Schritten wird der MySQL-Server, der lokal, auf einem virtuell
    ```
    Die Ergebnisse sollten wie folgt aussehen. Notieren Sie sich den Namen der Binärdatei, da dieser bei den nachfolgenden Schritten benötigt wird.
 
-   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Benutzer und Berechtigungen":::
+   :::image type="content" source="./media/howto-data-in-replication/masterstatus.png" alt-text="Statusergebnisse des Masters":::
  
 ## <a name="dump-and-restore-source-server"></a>Sichern und Wiederherstellen des Quellservers
 

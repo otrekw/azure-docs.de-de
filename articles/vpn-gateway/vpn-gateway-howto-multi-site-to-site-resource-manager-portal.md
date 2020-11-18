@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 10/27/2020
 ms.author: cherylmc
 ms.openlocfilehash: 92d39b0d39511571701fd092f641cb8ca3ae42c7
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92890147"
 ---
 # <a name="add-additional-s2s-connections-to-a-vnet-azure-portal"></a>Hinzufügen zusätzlicher Site-to-Site-Verbindungen zu einem virtuellen Netzwerk: Azure-Portal
@@ -73,7 +73,7 @@ Dieser Artikel gilt für Resource Manager-VNETs, die ein VPN-Gateway des Typs Ro
 
 ## <a name="create-the-connection"></a><a name="create"></a>Erstellen der Verbindung
 
-1. Klicken Sie unten auf der Seite auf **OK** , um die Verbindung zu erstellen. Das Herstellen der Verbindung startet sofort.
+1. Klicken Sie unten auf der Seite auf **OK**, um die Verbindung zu erstellen. Das Herstellen der Verbindung startet sofort.
 1. Sobald die Verbindung hergestellt ist, können Sie sie anzeigen und überprüfen.
 
 ## <a name="view-and-verify-the-vpn-connection"></a><a name="verify"></a>Anzeigen und Überprüfen der VPN-Verbindung

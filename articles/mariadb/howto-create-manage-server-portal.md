@@ -1,17 +1,17 @@
 ---
 title: Verwalten eines Servers – Azure-Portal – Azure Database for MariaDB
 description: Hier erfahren Sie, wie Sie einen Azure Database for MariaDB-Server über das Azure-Portal verwalten.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 24481abb6606d9ce830e5b65285b31637417cbd7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ade70c884a3ef01db45273e4789f34b629473661
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90562450"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537984"
 ---
 # <a name="manage-an-azure-database-for-mariadb-server-using-the-azure-portal"></a>Verwalten eines Azure Database for MariaDB-Servers über das Azure-Portal
 In diesem Artikel erfahren Sie, wie Sie Ihre Azure Database for MariaDB-Server verwalten. Zu den Verwaltungsaufgaben gehören die Compute- und Speicherskalierung, das Zurücksetzen des Administratorkennworts und das Anzeigen von Serverdetails.

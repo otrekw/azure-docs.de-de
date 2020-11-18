@@ -11,16 +11,16 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 27c117786ca7f0004ed3be6b28ed06cb1c7942de
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 7b430f16e96c6d59fe85c711d07e323bf848b069
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960439"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541248"
 ---
 # <a name="quickstart-use-a-domain-model-using-the-rest-api-and-python-in-computer-vision"></a>Schnellstart: Verwenden eines Domänenmodells mit der REST-API und Python in der Maschinelles Sehen-API
 
-In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell und die Maschinelles Sehen-REST-API, um Sehenswürdigkeiten oder Prominente auf einem remote gespeicherten Bild zu identifizieren. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
+In dieser Schnellstartanleitung verwenden Sie ein Domänenmodell und die Maschinelles Sehen-REST-API, um Sehenswürdigkeiten oder Prominente auf einem remote gespeicherten Bild zu identifizieren. Mit der Methode [Recognize Domain Specific Content](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f311) können Sie ein domänenspezifisches Modell anwenden, um Inhalte in einem Bild zu erkennen.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 
@@ -212,4 +212,4 @@ Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen ve
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

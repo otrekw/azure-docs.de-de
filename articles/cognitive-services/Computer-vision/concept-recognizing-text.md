@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: ac3edc466d640fdb98fd38ba59938aa13fe00f73
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489147"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94538749"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -59,7 +59,7 @@ Beim [Read-Aufruf](https://westcentralus.dev.cognitive.microsoft.com/docs/servic
 
 ## <a name="the-get-read-results-call"></a>„Get Read Results“-Aufruf
 
-Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe. Er gibt eine JSON-Antwort zurück, die ein **Status** -Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 1 bis 2 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Der zweite Schritt umfasst das Aufrufen des Vorgangs [Get Read Results](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d9869604be85dee480c8750). Dieser Vorgang erfasst die Vorgangs-ID, die beim Read-Vorgang erstellt wurde, als Eingabe. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 1 bis 2 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -131,7 +131,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 }
 ```
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Die Vorschauversion von Read 3.2 fügt Textzeilenstil hinzu (nur Sprachen mit lateinischem Alphabet)
-Die [Read 3.2-API (Vorschauversion)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) gibt ein **appearance** -Objekt aus, das klassifiziert, ob es sich bei den einzelnen Textzeilen um Drucktext oder eine Handschrift handelt. Außerdem wird eine Zuverlässigkeitsbewertung ausgegeben. Dieses Feature wird nur für lateinische Sprachen unterstützt.
+Die [Read 3.2-API (Vorschauversion)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) gibt ein **appearance**-Objekt aus, das klassifiziert, ob es sich bei den einzelnen Textzeilen um Drucktext oder eine Handschrift handelt. Außerdem wird eine Zuverlässigkeitsbewertung ausgegeben. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 
 Beginnen Sie mit den [Read-OCR-SDK-Schnellstartanleitungen für maschinelles Sehen](./quickstarts-sdk/client-library.md) und den [Schnellstartanleitungen für die Read REST-API](./QuickStarts/CSharp-hand-text.md), um OCR-Funktionen in Ihre Anwendungen zu integrieren.
 
@@ -186,7 +186,7 @@ Die Read-API unterstützt Bilder und Dokumente, die mehrere verschiedene Sprache
 
 ## <a name="ocr-api"></a>OCR-API
 
-Die [OCR-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc) verwendet ein älteres Erkennungsmodell, unterstützt nur Bilder und wird synchron ausgeführt, sodass der erkannte Text direkt zurückgegeben wird. Informationen finden Sie unter [Für OCR unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) in der Read-API.
+Die [OCR-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) verwendet ein älteres Erkennungsmodell, unterstützt nur Bilder und wird synchron ausgeführt, sodass der erkannte Text direkt zurückgegeben wird. Informationen finden Sie unter [Für OCR unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) in der Read-API.
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 

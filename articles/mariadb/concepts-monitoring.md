@@ -1,18 +1,18 @@
 ---
 title: Überwachung – Azure Database for MariaDB
 description: In diesem Artikel werden die Überwachungs- und Warnmetriken (CPU, Speicher, Verbindungsstatistiken und Ähnliches) für Azure Database for MariaDB beschrieben.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mariadb
 ms.topic: conceptual
 ms.custom: references_regions
 ms.date: 10/21/2020
-ms.openlocfilehash: d2d34e95642308dcdacba20879945f2c965db955
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 5790094571563d3ca8576480a6296a73756fb6a6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425196"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540415"
 ---
 # <a name="monitoring-in-azure-database-for-mariadb"></a>Überwachung in Azure Database for MariaDB
 Die Überwachung der Daten zu Ihren Servern unterstützt Sie bei der Problembehandlung und der Optimierung Ihrer Workloads. Azure Database for MariaDB bietet verschiedene Metriken, die Einblicke in das Verhalten Ihres Servers ermöglichen.
@@ -49,7 +49,7 @@ Sie können die Protokollierung von langsamen Abfragen auf Ihrem Server aktivier
 
 ## <a name="query-store"></a>Abfragespeicher
 
-Der [Abfragespeicher](concepts-query-store.md) dient dazu, die Abfrageleistung im Zeitablauf zu verfolgen, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Laufzeitleistung der Abfrage im **mysql** -Schema. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
+Der [Abfragespeicher](concepts-query-store.md) dient dazu, die Abfrageleistung im Zeitablauf zu verfolgen, einschließlich Statistiken zur Abfrageausführungszeit und Warteereignissen. Das Feature speichert Informationen zur Laufzeitleistung der Abfrage im **mysql**-Schema. Sie können die Sammlung und Speicherung von Daten über verschiedene Konfigurationsoptionen steuern.
 
 ## <a name="query-performance-insight"></a>Query Performance Insight
 
@@ -63,7 +63,7 @@ Das Feature [Leistungsempfehlungen](concepts-performance-recommendations.md) ide
 
 [Benachrichtigungen zu geplanten Wartungen](./concepts-planned-maintenance-notification.md) ermöglichen Ihnen das Empfangen von Warnungen für anstehende geplante Wartungsarbeiten an Azure Database for MariaDB. Diese Benachrichtigungen sind in die geplante Wartung von [Service Health](../service-health/overview.md) integriert, sodass Sie alle geplanten Wartungsarbeiten für Ihre Abonnements an zentraler Stelle anzeigen können. Außerdem ist es hilfreich, die Benachrichtigungen an die richtigen Zielgruppen für verschiedene Ressourcengruppen zu richten, da möglicherweise unterschiedliche Ansprechpartner für verschiedene Ressourcen zuständig sind. Sie erhalten die Benachrichtigung über die anstehende Wartung 72 Stunden vor dem Ereignis.
 
-Im Artikel [Benachrichtigungen zu geplanten Wartungen in Azure Database for MariaDB](./concepts-planned-maintenance-notification.md) finden Sie weitere Informationen zum Einrichten von Benachrichtigungen.
+Im Dokument [Benachrichtigungen zu geplanten Wartungen](./concepts-planned-maintenance-notification.md) finden Sie weitere Informationen zum Einrichten von Benachrichtigungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

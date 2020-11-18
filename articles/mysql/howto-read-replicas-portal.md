@@ -1,17 +1,17 @@
 ---
 title: Verwalten von Lesereplikaten mit dem Azure-Portal in Azure Database for MySQL
 description: Erfahren Sie, wie Sie mit dem Azure-Portal Lesereplikate in Azure Database for MySQL einrichten und verwalten.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 63ce078cc80b856fe09f3d2bbad1c6e96615eae8
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 26b503e7d55ed3d2f9bd06837551655e7af05a17
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546805"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541939"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-using-the-azure-portal"></a>Informationen zum Erstellen und Verwalten von Lesereplikaten in Azure Database for MySQL mithilfe des Azure-Portals
 
@@ -37,17 +37,17 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
 3. Wählen Sie im Menü unter **EINSTELLUNGEN** die Option **Replikation** aus.
 
-4. Wählen Sie **Replikat hinzufügen** .
+4. Wählen Sie **Replikat hinzufügen**.
 
    :::image type="content" source="./media/howto-read-replica-portal/add-replica.png" alt-text="Azure Database for MySQL: Replikation":::
 
 5. Geben Sie einen Namen für den Replikatserver ein.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL: Replikation":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-name.png" alt-text="Azure Database for MySQL – Replikatname":::
 
 6. Wählen Sie den Standort für den Replikatserver aus. Der Standardstandort ist mit dem des Quellservers identisch.
 
-    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL: Replikation":::
+    :::image type="content" source="./media/howto-read-replica-portal/replica-location.png" alt-text="Azure Database for MySQL – Replikatstandort":::
 
    > [!NOTE]
    > Weitere Informationen zu den Regionen, in denen Sie ein Replikat erstellen können, finden Sie im [Konzeptartikel zu Lesereplikaten](concepts-read-replicas.md). 
@@ -59,7 +59,7 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 
 Nach der Erstellung des Replikatservers kann dieser auf dem Blatt **Replikation** angezeigt werden.
 
-   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/list-replica.png" alt-text="Azure Database for MySQL: Auflisten der Replikate":::
 
 ## <a name="stop-replication-to-a-replica-server"></a>Beenden der Replikation auf einem Replikatserver
 
@@ -74,15 +74,15 @@ Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Quells
 
 3. Wählen Sie den Replikatserver aus, für den Sie die Replikation beenden möchten.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-select.png" alt-text="Azure Database for MySQL: Beenden der Replikation, Auswählen des Servers":::
 
 4. Wählen Sie **Replikation beenden** aus.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL: Replikation beenden":::
 
-5. Klicken Sie auf **OK** , um zu bestätigen, dass Sie die Replikation beenden möchten.
+5. Klicken Sie auf **OK**, um zu bestätigen, dass Sie die Replikation beenden möchten.
 
-   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL: Bestätigen, dass die Replikation beendet werden soll":::
 
 ## <a name="delete-a-replica-server"></a>Löschen eines Replikatservers
 
@@ -94,15 +94,15 @@ Führen Sie die folgenden Schritte aus, um einen Lesereplikatserver im Azure-Por
 
 3. Wählen Sie den Replikatserver aus, den Sie löschen möchten.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-select.png" alt-text="Azure Database for MySQL: Replikat löschen, Auswählen des Servers":::
 
 4. Wählen Sie **Replikat löschen** aus.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL: Replikat löschen":::
 
-5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen** , um das Löschen des Replikats zu bestätigen.  
+5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen**, um das Löschen des Replikats zu bestätigen.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL: Bestätigen der Replikatlöschung":::
 
 ## <a name="delete-a-source-server"></a>Löschen eines Quellservers
 
@@ -115,11 +115,11 @@ Führen Sie die folgenden Schritte aus, um einen Quellserver im Azure-Portal zu 
 
 2. Wählen Sie unter **Übersicht** die Option **Löschen** aus.
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL: Löschen eines Masterservers":::
 
-3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen** , um das Löschen des Quellservers zu bestätigen.  
+3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen**, um das Löschen des Quellservers zu bestätigen.  
 
-   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL: Bestätigung zum Löschen eines Masterservers":::
 
 ## <a name="monitor-replication"></a>Überwachen der Replikation
 
@@ -129,15 +129,15 @@ Führen Sie die folgenden Schritte aus, um einen Quellserver im Azure-Portal zu 
 
 3. Wählen Sie in der Dropdownliste der verfügbaren Metriken die Option **Replication lag in seconds** (Replikationsverzögerung in Sekunden) aus.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-select-replication-lag.png" alt-text="Auswählen der Replikationsverzögerung":::
 
 4. Wählen Sie den Zeitraum aus, den Sie anzeigen möchten. In der folgenden Abbildung wird ein Zeitraum von 30 Minuten ausgewählt.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range.png" alt-text="Auswählen eines Zeitbereichs":::
 
 5. Zeigen Sie die Replikationsverzögerung für den ausgewählten Zeitraum an. Die folgende Abbildung zeigt die letzten 30 Minuten.
 
-   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Azure Database for MySQL: Replikation":::
+   :::image type="content" source="./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png" alt-text="Auswählen eines Zeitbereichs von 30 Minuten":::
 
 ## <a name="next-steps"></a>Nächste Schritte
 

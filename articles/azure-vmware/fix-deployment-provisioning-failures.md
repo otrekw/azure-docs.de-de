@@ -2,13 +2,13 @@
 title: Unterstützung für die Bereitstellung von Azure VMware Solution und bei Bereitstellungsfehlern
 description: Erfahren Sie, wie Sie die Informationen in Ihrer privaten Azure VMware Solution-Cloud finden, die für das Erstellen einer Supportanfrage zu einer Bereitstellung von Azure VMware Solution und bei Bereitstellungsfehlern erforderlich sind.
 ms.topic: how-to
-ms.date: 06/09/2020
-ms.openlocfilehash: 6d609774b0d3a2de7809d04e4fa0c4e3e6593590
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 10/28/2020
+ms.openlocfilehash: 27b645f4ca225fdd74bca6499b6581b3803e41a4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93349119"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542404"
 ---
 # <a name="open-a-support-request-for-an-azure-vmware-solution-deployment-or-provisioning-failure"></a>Erstellen einer Supportanfrage zu einer Bereitstellung von Azure VMware Solution und bei Bereitstellungsfehlern
 
@@ -118,7 +118,7 @@ So erstellen Sie eine Supportanfrage zu einer Bereitstellung von Azure VMware So
 
       1. Wählen Sie bei **Problemuntertyp** die Option **Private Cloud bereitstellen** aus.
 
-   1. Auf der Registerkarte **Details** :
+   1. Auf der Registerkarte **Details**:
 
       1. Geben Sie die erforderlichen Informationen ein, oder wählen Sie sie aus.
 

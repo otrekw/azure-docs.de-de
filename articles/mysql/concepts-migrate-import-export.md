@@ -1,17 +1,17 @@
 ---
 title: Importieren und Exportieren – Azure Database for MySQL
 description: In diesem Artikel werden gängige Möglichkeiten zum Importieren von Datenbanken in bzw. Exportieren von Datenbanken aus Azure-Datenbank für MySQL mithilfe von Tools wie MySQL Workbench erläutert.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 1b4959cbf082a589c90034f48d597907c9b7e6cc
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: af9f0f65e01a786d478fac0adde6174b8f03b2fd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128928"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537899"
 ---
 # <a name="migrate-your-mysql-database-by-using-import-and-export"></a>Migrieren der MySQL-Datenbank durch Import und Export
 [!INCLUDE[applies-to-single-flexible-server](includes/applies-to-single-flexible-server.md)]
@@ -101,11 +101,11 @@ Exportieren oder importieren Sie mit einem Assistenten SQL-Daten, die von MySQL 
 Sie können Ihre MySQL-Daten mithilfe der Registerkarte **Data Export** (Datenexport) exportieren.
 1. Wählen Sie jedes zu exportierende Schema aus, wählen Sie optional bestimmte Schemaobjekte/-tabellen aus einzelnen Schemas aus, und generieren Sie den Export. Zu den Konfigurationsoptionen zählen das Exportieren in einen Projektordner oder als eigenständige SQL-Datei, das Sichern von gespeicherten Routinen und Ereignissen oder das Überspringen von Tabellendaten.
 
-   Verwenden Sie alternativ die Option **Resultset exportieren** , um ein bestimmtes Resultset im SQL-Editor in einem anderen Format (z.B. CSV, JSON, HTML, XML) zu exportieren.
+   Verwenden Sie alternativ die Option **Resultset exportieren**, um ein bestimmtes Resultset im SQL-Editor in einem anderen Format (z.B. CSV, JSON, HTML, XML) zu exportieren.
 3. Wählen Sie die zu exportierenden Datenbankobjekte aus, und konfigurieren Sie die entsprechenden Optionen.
-4. Klicken Sie auf **Aktualisieren** , um die aktuellen Objekte zu laden.
-5. Öffnen Sie optional die Registerkarte **Erweiterte Optionen** , mit der Sie den Exportvorgang verfeinern können. Fügen Sie beispielsweise Tabellensperren hinzu, und verwenden Sie Replace- anstelle von Insert-Anweisungen sowie Anführungszeichner-Kennzeichner mit Backtick-Zeichen.
-6. Klicken Sie auf **Export starten** , um den Exportvorgang zu beginnen.
+4. Klicken Sie auf **Aktualisieren**, um die aktuellen Objekte zu laden.
+5. Öffnen Sie optional die Registerkarte **Erweiterte Optionen**, mit der Sie den Exportvorgang verfeinern können. Fügen Sie beispielsweise Tabellensperren hinzu, und verwenden Sie Replace- anstelle von Insert-Anweisungen sowie Anführungszeichner-Kennzeichner mit Backtick-Zeichen.
+6. Klicken Sie auf **Export starten**, um den Exportvorgang zu beginnen.
 
 
 #### <a name="data-import"></a>Datenimport

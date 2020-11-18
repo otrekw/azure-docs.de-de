@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 10/16/2020
+ms.date: 11/11/2020
 ms.author: aahi
-ms.openlocfilehash: 3bc2d339ade7dade3cf3be6e63e150c77d3c44b4
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 87e6ad488438ae28467f6e904fbb57f7ca5448ff
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94366756"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94518174"
 ---
 # <a name="how-to-detect-sentiment-using-the-text-analytics-api"></a>Gewusst wie: Standpunktermittlung mithilfe der Textanalyse-API
 
@@ -40,7 +40,7 @@ Die Standpunktanalyse unterstützt eine Vielzahl von Sprachen – weitere befind
 
 In Version 3 wendet die Standpunktanalyse Stimmungsbezeichnungen auf Texte an, die auf Satz- und Dokumentebene zurückgegeben werden, jeweils begleitet von einer Zuverlässigkeitsbewertung. 
 
-Die Bezeichnungen sind *positiv* , *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
+Die Bezeichnungen sind *positiv*, *negativ* und *neutral*. Auf Dokumentebene kann auch die Stimmungsbezeichnung *gemischt* zurückgegeben werden. Die Stimmung des Dokuments wird unten bestimmt:
 
 | Stimmung von Sätzen                                                                            | Zurückgegebene Dokumentbezeichnung |
 |-----------------------------------------------------------------------------------------------|-------------------------|
@@ -78,9 +78,9 @@ Ein Dokument darf maximal 5.120 Zeichen enthalten. Pro Sammlung können bis zu 1
 
 Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Verweislinks [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
 
-#### <a name="version-31-preview1"></a>[Version 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
 
-[Referenz zu Standpunktanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Sentiment)
+[Referenz zu Standpunktanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-2/operations/Sentiment)
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -95,13 +95,13 @@ Legen Sie den HTTPS-Endpunkt für die Standpunktanalyse entweder mithilfe einer 
 > [!NOTE]
 > Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
 
-#### <a name="version-31-preview1"></a>[Version 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
 
 Um die Ergebnisse vom Opinion Mining zu erhalten, müssen Sie den Parameter `opinionMining=true` einschließen. Beispiel:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.1/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
 
 Dieser Parameter ist standardmäßig auf `false` festgelegt. 
 
@@ -142,7 +142,7 @@ Die Standpunktanalyse gibt eine Stimmungsbezeichnung und eine Zuverlässigkeitsb
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
 
-#### <a name="version-31-preview1"></a>[Version 3.1-preview.1](#tab/version-3-1)
+#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-v31-example-response"></a>Beispielantwort der Standpunktanalyse v3.1
 

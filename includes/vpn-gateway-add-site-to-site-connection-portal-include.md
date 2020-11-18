@@ -9,10 +9,10 @@ ms.date: 10/22/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 48f33514510618abadf329a11a9ab71a020be0bd
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92479595"
 ---
 1. Öffnen Sie die Seite Ihres Gateways für virtuelle Netzwerke. Sie können zum Gateway navigieren, indem Sie zu **Name Ihres VNET -> Übersicht -> Verbundene Geräte -> Name Ihres Gateways** wechseln, obwohl es auch mehrere andere Möglichkeiten zur Navigation gibt.
@@ -29,7 +29,7 @@ ms.locfileid: "92479595"
    * Lassen Sie **Private Azure-IP-Adresse verwenden** deaktiviert.
    * Lassen Sie **BGP aktivieren** deaktiviert.
    * Wählen Sie **IKEv2** aus.
-   * Die verbleibenden Werte für **Abonnement** , **Ressourcengruppe** und **Speicherort** wurden korrigiert.
+   * Die verbleibenden Werte für **Abonnement**, **Ressourcengruppe** und **Speicherort** wurden korrigiert.
 
-1. Wählen Sie **OK** , um die Verbindung zu erstellen. Auf dem Bildschirm blinkt der Hinweis *Verbindung wird erstellt* .
-1. Die Verbindung wird auf der Seite **Verbindungen** des Gateways für virtuelle Netzwerke angezeigt. Der Status wechselt von *Unbekannt* zu *Verbindung wird hergestellt* und dann zu *Erfolgreich* .
+1. Wählen Sie **OK**, um die Verbindung zu erstellen. Auf dem Bildschirm blinkt der Hinweis *Verbindung wird erstellt* .
+1. Die Verbindung wird auf der Seite **Verbindungen** des Gateways für virtuelle Netzwerke angezeigt. Der Status wechselt von *Unbekannt* zu *Verbindung wird hergestellt* und dann zu *Erfolgreich*.

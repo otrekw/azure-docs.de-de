@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 62ee8b27a67703d2ec4f861611f1d97062f1255b
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 539f6fe35a2d6eb0566871dbab4e9758a300e999
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91960404"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541877"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und Python
 
 > [!NOTE]
 > Wenn Sie englischsprachigen Text extrahieren, sollten Sie den neuen [Lesevorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) verwenden. Es steht ein [Python-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) zur Verfügung. 
 
-In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
 
 Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-Notebook in [MyBinder](https://mybinder.org) ausführen. Klicken Sie zum Starten von Binder auf die folgende Schaltfläche:
 
@@ -234,4 +234,4 @@ Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen ve
 > [!div class="nextstepaction"]
 > [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

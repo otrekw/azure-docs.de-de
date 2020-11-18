@@ -1,17 +1,17 @@
 ---
 title: Einschränkungen – Azure Database for MySQL
 description: Dieser Artikel beschreibt die Einschränkungen in Azure Database for MySQL, z.B. die Anzahl der Verbindungs- und Speichermoduloptionen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 2c70e862364aea549c10c24a9dcc1c424c792993
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 38c006bd1cda1494b284f742459aaf539ed4a2d1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652175"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94539706"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Beschränkungen in Azure Database for MySQL
 In den folgenden Abschnitten werden die Kapazitäts- und funktionalen Beschränkungen sowie Beschränkungen bei der Unterstützung der Speicher-Engine und von Datenmanipulationsanweisungen im Datenbankdienst beschrieben. Sehen Sie sich auch die [allgemeinen Einschränkungen](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) an, die für die MySQL-Datenbank-Engine gelten.
@@ -25,7 +25,7 @@ Azure Database für MySQL unterstützt das Anpassen einiger Serverparameter. Die
 
 Bei der ersten Bereitstellung enthält ein Azure for MySQL-Server Systemtabellen für Zeitzoneninformationen, aber diese Tabellen sind nicht gefüllt. Die Zeitzonentabellen können durch Aufrufen der gespeicherten Prozedur `mysql.az_load_timezone` über ein Tool wie die MySQL-Befehlszeile oder MySQL Workbench aufgefüllt werden. Informationen zum Aufrufen der gespeicherten Prozedur und zum Festlegen der globalen Zeitzonen oder Zeitzonen auf Sitzungsebene finden Sie in den Artikeln für das [Azure-Portal](howto-server-parameters.md#working-with-the-time-zone-parameter) und die [Azure CLI](howto-configure-server-parameters-using-cli.md#working-with-the-time-zone-parameter).
 
-Kennwort-Plug-ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
+Kennwort-Plug-Ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
 
 ## <a name="storage-engines"></a>Speicher-Engines
 

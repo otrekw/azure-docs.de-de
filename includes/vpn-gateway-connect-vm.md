@@ -9,10 +9,10 @@ ms.date: 10/23/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: a8d1b27fc040e6aed0bdeeb86b2e6c4df13f87c3
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
+ms.lasthandoff: 11/14/2020
 ms.locfileid: "92540895"
 ---
 Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitgestellt wird, indem Sie eine Remotedesktopverbindung mit Ihrer VM herstellen. Die beste Möglichkeit zur anfänglichen Sicherstellung, dass eine Verbindung mit Ihrer VM hergestellt werden kann, ist die Verwendung der privaten IP-Adresse anstelle des Computernamens. Auf diese Weise können Sie testen, ob die Verbindungsherstellung möglich ist, anstatt zu überprüfen, ob die Namensauflösung richtig konfiguriert ist.
@@ -37,7 +37,7 @@ Sie können eine Verbindung mit einer VM herstellen, die in Ihrem VNet bereitges
      ```
 
 1. Vergewissern Sie sich, dass eine Point-to-Site-VPN-Verbindung mit Ihrem VNet besteht.
-1. Öffnen Sie eine **Remotedesktopverbindung** , indem Sie auf der Taskleiste im Suchfeld „RDP“ oder „Remotedesktopverbindung“ eingeben und dann „Remotedesktopverbindung“ wählen. Sie können auch den Befehl „mstsc“ in PowerShell verwenden, um eine Remotedesktopverbindung zu öffnen. 
+1. Öffnen Sie eine **Remotedesktopverbindung**, indem Sie auf der Taskleiste im Suchfeld „RDP“ oder „Remotedesktopverbindung“ eingeben und dann „Remotedesktopverbindung“ wählen. Sie können auch den Befehl „mstsc“ in PowerShell verwenden, um eine Remotedesktopverbindung zu öffnen. 
 1. Geben Sie in der Remotedesktopverbindung die private IP-Adresse der VM ein. Sie können auf „Optionen anzeigen“ klicken, um weitere Einstellungen anzupassen, und dann die Verbindung herstellen.
 
 **Problembehandlung für Verbindungen**

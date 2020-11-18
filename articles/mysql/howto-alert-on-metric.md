@@ -1,17 +1,17 @@
 ---
 title: Konfigurieren von Warnungen zu Metriken – Azure-Portal – Azure Database for MySQL
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal die Warnungen zu Metriken für Azure Database for MySQL konfigurieren und auf diese zugreifen.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: bb86bc3fbfd4beffdaca713d7989218550841f03
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 81003be986524b94e9c4487cd0d8606540445d16
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546890"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542081"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for MySQL 
 
@@ -40,25 +40,25 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
 4. Die Seite **Regel erstellen** wird geöffnet, wie unten gezeigt. Füllen Sie die erforderlichen Informationen aus:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Formular „Metrikwarnung hinzufügen“":::
 
-5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen** .
+5. Wählen Sie im Abschnitt **Bedingung** **Bedingung hinzufügen**.
 
 6. Wählen Sie eine Metrik aus der Liste der Signale aus, bei denen eine Warnung erfolgen soll. Wählen Sie in diesem Beispiel „Speicher in Prozent“ aus.
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrik auswählen":::
 
-7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation** , **Zeitraum** , die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit** .
+7. Konfigurieren Sie die Warnungslogik, einschließlich der **Bedingung** (z.B. „Größer als“), **Schwellenwert** (z.B. 85 Prozent), **Zeitaggregation**, **Zeitraum**, die die Metrikregel erfüllen muss, ehe die Warnung ausgelöst wird (z.B. „Innerhalb der letzten 30 Minuten“) und **Häufigkeit**.
    
    Wählen Sie anschließend **Fertig** aus.
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="„Warnungsregeln“ auswählen":::
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Metrik 2 auswählen":::
 
 8. Wählen Sie im Abschnitt **Aktionsgruppen** die Option **Neu erstellen** aus, um eine neue Gruppe zum Empfangen von Benachrichtigungen zu Warnungen zu erhalten.
 
 9. Tragen Sie in das Formular „Aktionsgruppe hinzufügen“ einen Namen, Kurznamen, ein Abonnement und eine Ressourcengruppe ein.
 
-10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf** .
+10. Konfigurieren Sie den Aktionstyp **E-Mail/SMS/Push/Sprachanruf**.
     
     Wählen Sie „E-Mail an Azure Resource Manager-Rolle“ aus, um Besitzer, Mitwirkende und Leser des Abonnements auszuwählen, die Benachrichtigungen erhalten sollen.
    
@@ -66,11 +66,11 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
     Wählen Sie **OK** aus, wenn Sie fertig sind.
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="„Warnungsregeln“ auswählen":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Aktionsgruppe":::
 
 11. Geben Sie einen Namen, einen Beschreibung und den Schweregrad für die Warnungsregel an.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="„Warnungsregeln“ auswählen"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Aktionsgruppe 2"::: 
 
 12. Wählen Sie **Benachrichtigungsregel erstellen** aus, um die Benachrichtigung zu erstellen.
 
@@ -80,8 +80,8 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende Aktionen ausführen:
 
 * Ein Diagramm anzeigen, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt, die für diese Warnung relevant sind.
-* Die Warnungsregel **bearbeiten** oder **löschen** .
-* Die Warnung **deaktivieren** oder **aktivieren** , wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
+* Die Warnungsregel **bearbeiten** oder **löschen**.
+* Die Warnung **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

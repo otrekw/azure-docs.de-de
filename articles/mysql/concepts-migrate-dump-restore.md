@@ -1,17 +1,17 @@
 ---
 title: Migrieren durch Sicherungen und Wiederherstellungen – Azure Database for MySQL
 description: In diesem Artikel werden zwei Möglichkeiten zum Sichern und Wiederherstellen von Datenbanken in Ihrer Azure-Datenbank für MySQL beschrieben, indem Tools wie mysqldump, MySQL Workbench und PHPMyAdmin genutzt werden.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/30/2020
-ms.openlocfilehash: 336021792b7e5340e35a0c59e0f113d4dad9307d
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: f21587fe6a48d042ed98c126beb2a7dcaa39b7d8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128962"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537916"
 ---
 # <a name="migrate-your-mysql-database-to-azure-database-for-mysql-using-dump-and-restore"></a>Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen
 
@@ -152,17 +152,17 @@ Für den Export können Sie das allgemeine Tool phpMyAdmin verwenden, das Sie ev
 1. Öffnen Sie phpMyAdmin.
 2. Wählen Sie Ihre Datenbank aus. Klicken Sie in der Liste links auf den Datenbanknamen.
 3. Klicken Sie auf den Link **Export**. Eine neue Seite mit dem Speicherabbild der Datenbank wird angezeigt.
-4. Klicken Sie im Bereich „Export“ auf den Link **Alle auswählen** , um die Tabellen in Ihrer Datenbank auszuwählen.
+4. Klicken Sie im Bereich „Export“ auf den Link **Alle auswählen**, um die Tabellen in Ihrer Datenbank auszuwählen.
 5. Klicken Sie im Bereich mit den SQL-Optionen auf die gewünschten Optionen.
 6. Klicken Sie auf die Option **Als Datei speichern** und die entsprechende Komprimierungsoption. Klicken Sie dann auf die Schaltfläche **Gehe zu**. Es sollte ein Dialogfeld angezeigt werden, in dem Sie dazu aufgefordert werden, die Datei lokal zu speichern.
 
 ### <a name="import-using-phpmyadmin"></a>Importieren mithilfe von PHPMyAdmin
 Der Import der Datenbank ist mit dem Exportvorgang vergleichbar. Führen Sie folgende Aktionen durch:
 1. Öffnen Sie phpMyAdmin.
-2. Klicken Sie auf der phpMyAdmin-Setupseite auf **Hinzufügen** , um Ihren Azure-Datenbank für MySQL-Server hinzuzufügen. Geben Sie die Verbindungsdetails und Anmeldeinformationen an.
+2. Klicken Sie auf der phpMyAdmin-Setupseite auf **Hinzufügen**, um Ihren Azure-Datenbank für MySQL-Server hinzuzufügen. Geben Sie die Verbindungsdetails und Anmeldeinformationen an.
 3. Erstellen Sie eine passend benannte Datenbank, und wählen Sie sie links auf dem Bildschirm aus. Klicken Sie zum erneuten Generieren der vorhandenen Datenbank auf den Datenbanknamen, aktivieren Sie alle Kontrollkästchen neben den Tabellennamen, und wählen Sie **Drop** (Verwerfen), um die vorhandenen Tabellen zu löschen.
-4. Klicken Sie auf den Link **SQL** , um die Seite anzuzeigen, auf der Sie SQL-Befehle eingeben oder Ihre SQL-Datei hochladen können.
-5. Verwenden Sie die Schaltfläche **Durchsuchen** , um nach der Datenbankdatei zu suchen.
+4. Klicken Sie auf den Link **SQL**, um die Seite anzuzeigen, auf der Sie SQL-Befehle eingeben oder Ihre SQL-Datei hochladen können.
+5. Verwenden Sie die Schaltfläche **Durchsuchen**, um nach der Datenbankdatei zu suchen.
 6. Klicken Sie auf die Schaltfläche **Go** (Los), um die Sicherung zu exportieren, die SQL-Befehle auszuführen und die Datenbank neu zu erstellen.
 
 ## <a name="known-issues"></a>Bekannte Probleme

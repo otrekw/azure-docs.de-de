@@ -7,24 +7,24 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.author: pafarley
-ms.openlocfilehash: ec23ec58a020cc314f301e33b72b4787f4e32e14
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: cf7b82ec1da660ac68c6031434c0e0748ee67b3d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918691"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94523666"
 ---
 Erste Schritte mit Gesichtserkennung unter Verwendung der Gesichtserkennungs-Clientbibliothek für Python. Führen Sie die nachfolgenden Schritte zum Installieren des Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. Über den Gesichtserkennungsdienst haben Sie Zugriff auf erweiterte Algorithmen für die Erkennung von menschlichen Gesichtern in Bildern.
 
 Verwenden Sie die Clientbibliothek zur Gesichtserkennung für Python für Folgendes:
 
-* Gesichtserkennung in einem Bild
-* Suchen ähnlicher Gesichter
-* Erstellen und Trainieren einer Personengruppe
-* Identifizieren eines Gesichts
-* Überprüfen von Gesichtern
+* [Gesichtserkennung in einem Bild](#detect-faces-in-an-image)
+* [Suchen ähnlicher Gesichter](#find-similar-faces)
+* [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group)
+* [Identifizieren eines Gesichts](#identify-a-face)
+* [Überprüfen von Gesichtern](#verify-faces)
 
 [Referenzdokumentation](/python/api/azure-cognitiveservices-vision-face/?view=azure-python) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face) | [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/) | [Beispiele](/samples/browse/?products=azure&term=face)
 
@@ -73,9 +73,9 @@ Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen 
 |[FaceClient](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Diese Klasse stellt Ihre Autorisierung für die Verwendung des Gesichtserkennungsdiensts dar. Sie benötigen sie für alle Gesichtserkennungsfunktionen. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie zum Generieren von Instanzen anderer Klassen. |
 |[FaceOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Diese Klasse behandelt die grundlegenden Erkennungs- und Wiedererkennungsaufgaben, die Sie für menschliche Gesichter ausführen können. |
 |[DetectedFace](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.models.detectedface?view=azure-python)|Diese Klasse stellt alle Daten dar, die in einem einzelnen Gesicht in einem Bild erkannt wurden. Sie können damit ausführliche Informationen zum Gesicht abrufen.|
-|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|Diese Klasse verwaltet die in der Cloud gespeicherten **FaceList** -Konstrukte, die verschiedene Gesichter speichern. |
-|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Diese Klasse verwaltet die in der Cloud gespeicherten **Person** -Konstrukte, die eine Gruppe von Gesichtern speichern, die zu einer einzelnen Person gehören.|
-|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Diese Klasse verwaltet die in der Cloud gespeicherten **PersonGroup** -Konstrukte, die verschiedene **Person** -Objekte speichern. |
+|[FaceListOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.facelistoperations?view=azure-python)|Diese Klasse verwaltet die in der Cloud gespeicherten **FaceList**-Konstrukte, die verschiedene Gesichter speichern. |
+|[PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)| Diese Klasse verwaltet die in der Cloud gespeicherten **Person**-Konstrukte, die eine Gruppe von Gesichtern speichern, die zu einer einzelnen Person gehören.|
+|[PersonGroupOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongroupoperations?view=azure-python)| Diese Klasse verwaltet die in der Cloud gespeicherten **PersonGroup**-Konstrukte, die verschiedene **Person**-Objekte speichern. |
 |[ShapshotOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.snapshotoperations?view=azure-python)|Mit dieser Klasse wird die Funktionalität für Momentaufnahmen verwaltet. Sie können mit ihr vorübergehend alle cloudbasierten Gesichtserkennungsdaten speichern und zu einem neuen Azure-Abonnement migrieren. |
 
 ## <a name="code-examples"></a>Codebeispiele
@@ -134,40 +134,40 @@ Verwenden Sie den folgenden Code, um die Übereinstimmungsdetails in der Konsole
 
 ## <a name="create-and-train-a-person-group"></a>Erstellen und Trainieren einer Personengruppe
 
-Mit dem folgenden Code wird eine Personengruppe ( **PersonGroup** ) mit drei verschiedenen Personen ( **Person** ) erstellt. Er ordnet jeder **Person** verschiedene Beispielbilder zu. Danach folgt ein Trainingsschritt, um die einzelnen Personen zu erkennen. 
+Mit dem folgenden Code wird eine Personengruppe (**PersonGroup**) mit drei verschiedenen Personen (**Person**) erstellt. Er ordnet jeder **Person** verschiedene Beispielbilder zu. Danach folgt ein Trainingsschritt, um die einzelnen Personen zu erkennen. 
 
 ### <a name="create-persongroup"></a>Erstellen einer Personengruppe
 
 Für dieses Szenario müssen Sie die folgenden Bilder im Stammverzeichnis Ihres Projekts speichern: https://github.com/Azure-Samples/cognitive-services-sample-data-files/tree/master/Face/images.
 
-Diese Gruppe von Bildern enthält drei verschiedene Bilder des Gesichts, die den drei Personen entsprechen. Der Code definiert drei **Person** -Objekte und ordnet sie Bilddateien zu, die mit `woman`, `man` und `child` beginnen.
+Diese Gruppe von Bildern enthält drei verschiedene Bilder des Gesichts, die den drei Personen entsprechen. Der Code definiert drei **Person**-Objekte und ordnet sie Bilddateien zu, die mit `woman`, `man` und `child` beginnen.
 
-Definieren Sie nach der Einrichtung Ihrer Bilder am Anfang Ihres Skripts eine Bezeichnung für das **PersonGroup** -Objekt, das Sie erstellen.
+Definieren Sie nach der Einrichtung Ihrer Bilder am Anfang Ihres Skripts eine Bezeichnung für das **PersonGroup**-Objekt, das Sie erstellen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Fügen Sie dann am Ende des Skripts den folgenden Code hinzu. Mit diesem Code werden ein **PersonGroup** -Objekt und drei **Person** -Objekte erstellt.
+Fügen Sie dann am Ende des Skripts den folgenden Code hinzu. Mit diesem Code werden ein **PersonGroup**-Objekt und drei **Person**-Objekte erstellt.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 
 ### <a name="assign-faces-to-persons"></a>Zuweisen von Gesichtern zu Personen
 
-Der folgende Code sortiert Ihre Bilder anhand ihres Präfixes, erkennt Gesichter und weist die Gesichter den einzelnen **Person** -Objekten zu.
+Der folgende Code sortiert Ihre Bilder anhand ihres Präfixes, erkennt Gesichter und weist die Gesichter den einzelnen **Person**-Objekten zu.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_assign)]
 
 > [!TIP]
-> Sie können auch ein **PersonGroup** -Element aus Remotebildern erstellen, auf die durch eine URL verwiesen wird. Sehen Sie sich die [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)-Methoden an, etwa **add_face_from_url**.
+> Sie können auch ein **PersonGroup**-Element aus Remotebildern erstellen, auf die durch eine URL verwiesen wird. Sehen Sie sich die [PersonGroupPersonOperations](/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.persongrouppersonoperations?view=azure-python)-Methoden an, etwa **add_face_from_url**.
 
 ### <a name="train-persongroup"></a>Trainieren von PersonGroup
 
-Nach dem Zuweisen von Gesichtern müssen Sie das **PersonGroup** -Objekt trainieren, sodass es die den einzelnen **Person** -Objekten zugewiesenen visuellen Merkmale erkennen kann. Der folgende Code ruft die asynchrone **train** -Methode auf, ruft das Ergebnis ab und gibt den Status in der Konsole aus.
+Nach dem Zuweisen von Gesichtern müssen Sie das **PersonGroup**-Objekt trainieren, sodass es die den einzelnen **Person**-Objekten zugewiesenen visuellen Merkmale erkennen kann. Der folgende Code ruft die asynchrone **train**-Methode auf, ruft das Ergebnis ab und gibt den Status in der Konsole aus.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_train)]
 
 ## <a name="identify-a-face"></a>Identifizieren eines Gesichts
 
-Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup** -Objekt, einer Datenbank mit verschiedenen **Person** -Objekten,deren Gesichtsmerkmale bekannt sind.
+Der Identifizierungsvorgang verwendet ein Bild einer Person (oder mehrerer Personen) und sucht im Bild nach der Identität der einzelnen Gesichter (Gesichtserkennungssuche). Er vergleicht jedes erkannte Gesicht mit einem **PersonGroup**-Objekt, einer Datenbank mit verschiedenen **Person**-Objekten,deren Gesichtsmerkmale bekannt sind.
 
 > [!IMPORTANT]
 > Damit Sie dieses Beispiel ausführen können, müssen Sie zunächst den Code unter [Erstellen und Trainieren einer Personengruppe](#create-and-train-a-person-group) ausführen.
@@ -180,13 +180,13 @@ Der folgende Code sucht im Stammverzeichnis des Projekts nach dem Bild _test-ima
 
 ### <a name="identify-faces"></a>Identifizieren von Gesichtern
 
-Die Methode **identify** verwendet ein Array erkannter Gesichter und vergleicht diese mit einem **PersonGroup** -Objekt. Stimmt ein erkanntes Gesicht mit einem **Person** -Objekt überein, wird das Ergebnis gespeichert. Dieser Code gibt detaillierte Übereinstimmungsergebnisse in der Konsole aus.
+Die Methode **identify** verwendet ein Array erkannter Gesichter und vergleicht diese mit einem **PersonGroup**-Objekt. Stimmt ein erkanntes Gesicht mit einem **Person**-Objekt überein, wird das Ergebnis gespeichert. Dieser Code gibt detaillierte Übereinstimmungsergebnisse in der Konsole aus.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_identify)]
 
 ## <a name="verify-faces"></a>Überprüfen von Gesichtern
 
-Der Überprüfungsvorgang (Verify) akzeptiert eine Gesichtserkennungs-ID und entweder eine andere Gesichtserkennungs-ID oder ein **Person** -Objekt und ermittelt, ob sie zu derselben Person gehören.
+Der Überprüfungsvorgang (Verify) akzeptiert eine Gesichtserkennungs-ID und entweder eine andere Gesichtserkennungs-ID oder ein **Person**-Objekt und ermittelt, ob sie zu derselben Person gehören.
 
 Mit dem folgenden Code werden Gesichter in zwei Quellbildern erkannt und dann anhand eines Gesichts überprüft, das in einem Zielbild erkannt wurde.
 
@@ -225,7 +225,7 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Falls Sie in dieser Schnellstartanleitung ein **PersonGroup** -Objekt erstellt haben und dieses löschen möchten, führen Sie in Ihrem Skript den folgenden Code aus:
+Falls Sie in dieser Schnellstartanleitung ein **PersonGroup**-Objekt erstellt haben und dieses löschen möchten, führen Sie in Ihrem Skript den folgenden Code aus:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
 
