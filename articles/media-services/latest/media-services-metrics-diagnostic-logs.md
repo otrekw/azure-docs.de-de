@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: inhenkel
-ms.openlocfilehash: 33aed32c30f298fd3432f4cebcc28b9c20974545
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ed436336b9b1f9f5815938d13315e821694e5f1c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309072"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685170"
 ---
 # <a name="monitor-media-services-metrics-and-diagnostic-logs-with-azure-monitor"></a>Überwachen von Media Services-Metriken und -Diagnoseprotokollen mit Azure Monitor
 
@@ -67,8 +67,8 @@ Die folgenden [Streamingendpunkte](/rest/api/media/streamingendpoints) von Media
 |Requests|Requests|Gibt die Gesamtzahl der HTTP-Anforderungen an, die vom Streamingendpunkt behandelt werden.|
 |Ausgehende Daten|Ausgehende Daten|Ausgehende Bytes gesamt pro Minute pro Streamingendpunkt.|
 |SuccessE2ELatency|End-to-End-Wartezeit bei Erfolg|Die Zeitspanne zwischen dem Empfang der Anforderung durch den Streamingendpunkt und dem Senden des letzten Bytes der Antwort.|
-|CPU-Auslastung| CPU-Auslastung für Premium-Streamingendpunkte. Diese Daten stehen für Standard-Streamingendpunkte nicht zur Verfügung. |
-|Ausgangsbandbreite | Ausgangsbandbreite in Bits pro Sekunde.|
+|CPU-Auslastung| | CPU-Auslastung für Premium-Streamingendpunkte. Diese Daten stehen für Standard-Streamingendpunkte nicht zur Verfügung. |
+|Ausgangsbandbreite | | Ausgangsbandbreite in Bits pro Sekunde.|
 
 ### <a name="metrics-are-useful"></a>Praktische Metriken
 

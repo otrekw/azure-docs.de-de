@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 424a1ef7a73b5abbdba0d89ededb44cb9efdd116
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340987"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684558"
 ---
 # <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
@@ -24,9 +24,9 @@ Der serverlose SQL-Pool unterstützt das Lesen mehrerer Dateien/Ordner durch die
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Im ersten Schritt **erstellen Sie eine Datenbank** , in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
+Im ersten Schritt **erstellen Sie eine Datenbank**, in der Sie die Abfragen ausführen. Initialisieren Sie dann die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen verwendet werden.
 
-Sie verwenden den Ordner *csv/taxi* , um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_<year>-<month>.csv.
+Sie verwenden den Ordner *csv/taxi*, um die Beispielabfragen nachzuverfolgen. Er enthält Daten der Fahrtenaufzeichnungen für „NYC Taxi – Yellow Taxi“ von Juli 2016 bis Juni 2018. Dateien in *csv/taxi* sind nach Jahr und Monat im folgenden Format benannt: yellow_tripdata_<year>-<month>.csv.
 
 ## <a name="read-all-files-in-folder"></a>Lesen aller Dateien im Ordner
 

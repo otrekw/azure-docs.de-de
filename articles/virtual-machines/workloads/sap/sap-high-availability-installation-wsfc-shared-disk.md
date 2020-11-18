@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5126ae94d8c751952964aaf4df0736a5e546ff36
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c914afb3a72ccac4753a1942b6c4303850654a2e
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963634"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682637"
 ---
 # <a name="install-sap-netweaver-ha-on-a-windows-failover-cluster-and-shared-disk-for-an-sap-ascsscs-instance-in-azure"></a>SAP NetWeaver-HA-Installation auf einem Windows-Failovercluster und freigegebenen Datenträger für eine SAP ASCS/SCS-Instanz in Azure
 
@@ -149,7 +149,7 @@ ms.locfileid: "91963634"
 
 In diesem Artikel wird beschrieben, wie Sie ein SAP-Hochverfügbarkeitssystem in Azure für das Clustering einer SAP ASCS/SCS-Instanz unter Verwendung eines Windows Server-Failoverclusters und eines freigegebenen Datenträgers für den Cluster installieren und konfigurieren. Wie im [Architekturleitfaden: Gruppieren einer SAP ASCS/SCS-Instanz in einem Windows-Failovercluster mithilfe freigegebener Clusterdatenträger in Azure][sap-high-availability-guide-wsfc-shared-disk] beschrieben, gibt es zwei Alternativen für *freigegebene Clusterdatenträger*:
 
-- [Freigegebene Azure-Datenträger](../../windows/disks-shared.md)
+- [Freigegebene Azure-Datenträger](../../disks-shared.md)
 - Verwenden von [SIOS DataKeeper Cluster Edition](https://us.sios.com/products/datakeeper-cluster/) zum Erstellen eines gespiegelten Speichers, der die freigegebenen Clusterdatenträger simuliert 
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -250,7 +250,7 @@ Nutzen Sie die Testfunktionalität des internen Lastenausgleichs, damit die gesa
 Allerdings funktioniert dies bei einigen Clusterkonfigurationen nicht, da nur eine Instanz aktiv ist. Die andere Instanz ist passiv und kann daher keine Workload annehmen. Eine Testfunktion hilft, wenn der interne Azure Load Balancer erkennt, welche Instanz aktiv ist, und nur die aktive Instanz zum Ziel hat.  
 
 > [!IMPORTANT]
-> In dieser Beispielkonfiguration ist **ProbePort** auf „620**Nr**“ festgelegt. Für die SAP ASCS-Instanz mit der Nummer **00** lautet der Port „620**00**“. Sie müssen die Konfiguration entsprechend Ihren SAP-Instanznummern und Ihrer SAP-SID anpassen.
+> In dieser Beispielkonfiguration ist **ProbePort** auf „620 **Nr**“ festgelegt. Für die SAP ASCS-Instanz mit der Nummer **00** lautet der Port „620 **00**“. Sie müssen die Konfiguration entsprechend Ihren SAP-Instanznummern und Ihrer SAP-SID anpassen.
 
 Zum Hinzufügen eines Testports führen Sie das folgende PowerShell-Modul auf einer der Cluster-VMs aus:
 

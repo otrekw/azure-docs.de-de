@@ -3,13 +3,13 @@ title: Durchführen von Upgrades für AKS-Knotenimages (Azure Kubernetes Service
 description: Erfahren Sie, wie Sie für die Images auf AKS-Clusterknoten und Knotenpools ein Upgrade durchführen.
 ms.service: container-service
 ms.topic: conceptual
-ms.date: 08/17/2020
-ms.openlocfilehash: b6abb0eb98e2548e53ff67a943970613e6981c2b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/17/2020
+ms.openlocfilehash: 211190228c1ea9c98004b55da96ad38808821d67
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631120"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682382"
 ---
 # <a name="azure-kubernetes-service-aks-node-image-upgrade"></a>Upgrade für AKS-Knotenimages (Azure Kubernetes Service)
 
@@ -25,7 +25,7 @@ Informationen zum Upgrade der Kubernetes-Version für Ihren Cluster finden Sie u
 
 ## <a name="install-the-aks-cli-extension"></a>Installieren der CLI-Erweiterung für AKS
 
-Vor Veröffentlichung der nächsten CLI-Hauptversion benötigen Sie die CLI-Erweiterung *aks-preview* , um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
+Vor Veröffentlichung der nächsten CLI-Hauptversion benötigen Sie die CLI-Erweiterung *aks-preview*, um Upgrades für Knotenimages durchführen zu können. Verwenden Sie den Befehl [az extension add][az-extension-add], und suchen Sie dann mit dem Befehl [az extension update][az-extension-update] nach verfügbaren Updates:
 
 ```azurecli
 # Install the aks-preview extension
@@ -133,6 +133,6 @@ az aks nodepool show \
 [upgrade-cluster]: upgrade-cluster.md
 [security-update]: node-updates-kured.md
 [use-multiple-node-pools]: use-multiple-node-pools.md
-[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade-preview
+[max-surge]: upgrade-cluster.md#customize-node-surge-upgrade
 [az-extension-add]: /cli/azure/extension#az-extension-add
 [az-extension-update]: /cli/azure/extension#az-extension-update
