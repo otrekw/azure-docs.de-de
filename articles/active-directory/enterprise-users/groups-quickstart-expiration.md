@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: quickstart
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 842cd92e451b8d959dcf04135da504d7cf85a16e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378692"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647204"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Schnellstart: Festlegen des Ablaufs von Microsoft 365-Gruppen in Azure Active Directory
 
@@ -45,13 +45,13 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 1. Melden Sie sich mit einem Benutzeradministratorkonto beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Gruppen** und anschließend auf **Allgemein** .
+2. Klicken Sie auf **Gruppen** und anschließend auf **Allgemein**.
   
    ![Seite „Self-Service-Gruppeneinstellungen“](./media/groups-quickstart-expiration/self-service-settings.png)
 
 3. Legen Sie **Benutzer können Microsoft 365-Gruppen in Azure-Portalen erstellen** auf **Ja** fest.
 
-4. Klicken Sie auf **Speichern** , um die Gruppeneinstellungen zu speichern, wenn Sie fertig sind.
+4. Klicken Sie auf **Speichern**, um die Gruppeneinstellungen zu speichern, wenn Sie fertig sind.
 
 ## <a name="set-group-expiration"></a>Festlegen des Gruppenablaufs
 
@@ -65,7 +65,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 4. Legen Sie für diese Schnellstartanleitung **Ablauf für diese Microsoft 365-Gruppen aktivieren** auf **Alle** fest.
 
-5. Klicken Sie auf **Speichern** , um die Ablaufeinstellungen zu speichern, wenn Sie fertig sind.
+5. Klicken Sie auf **Speichern**, um die Ablaufeinstellungen zu speichern, wenn Sie fertig sind.
 
 Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie für die ausgewählten Microsoft 365-Gruppen festgelegt.
 
@@ -74,12 +74,12 @@ Das ist alles! In dieser Schnellstartanleitung haben Sie die Ablaufrichtlinie f�
 ### <a name="to-remove-the-expiration-policy"></a>So entfernen Sie die Ablaufrichtlinie
 
 1. Vergewissern Sie sich, dass Sie beim [Azure-Portal](https://portal.azure.com) über ein Konto angemeldet sind, das als globaler Administrator für Ihre Azure AD-Organisation konfiguriert ist.
-2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Ablauf** .
+2. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Ablauf**.
 3. Legen Sie **Ablauf für diese Microsoft 365-Gruppen aktivieren** auf **Keine** fest.
 
 ### <a name="to-turn-off-user-creation-for-groups"></a>So deaktivieren Sie die Benutzererstellung für Gruppen
 
-1. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Allgemein** . 
+1. Klicken Sie auf **Azure Active Directory** > **Gruppen** > **Allgemein**. 
 2. Legen Sie **Benutzer können Microsoft 365-Gruppen in Azure-Portalen erstellen** auf **Nein** fest.
 
 ## <a name="next-steps"></a>Nächste Schritte

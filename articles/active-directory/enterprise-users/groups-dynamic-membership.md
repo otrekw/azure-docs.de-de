@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: overview
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1dc0429ae4507172e95618bc95e6a2c51034d352
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 8a448b510662eb2c3c4c8ae5a68c2ebc2ed448dc
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92378892"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647357"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory
 
@@ -100,7 +100,7 @@ Im Folgenden sind die Benutzereigenschaften aufgelistet, die Sie verwenden könn
 | companyName | Jeder string-Wert oder *null* | (user.companyName -eq "value") |
 | department |Jeder string-Wert oder *null* |(user.department -eq "value") |
 | displayName |Ein beliebiger Zeichenfolgenwert |(user.displayName -eq "value") |
-| employeeId |Ein beliebiger Zeichenfolgenwert |(user.employeeId -eq "value")<br>(user.employeeId -ne *null* ) |
+| employeeId |Ein beliebiger Zeichenfolgenwert |(user.employeeId -eq "value")<br>(user.employeeId -ne *null*) |
 | facsimileTelephoneNumber |Jeder string-Wert oder *null* |(user.facsimileTelephoneNumber -eq "value") |
 | givenName |Jeder string-Wert oder *null* |(user.givenName -eq "value") |
 | jobTitle |Jeder string-Wert oder *null* |(user.jobTitle -eq "value") |
@@ -192,8 +192,8 @@ Wenn Sie einen Wert in einem Ausdruck angeben, ist es wichtig, die richtige Synt
 
 Zum Angeben eines NULL-Werts in einer Regel können Sie den Wert *null* verwenden. 
 
-* Verwenden Sie „-eq“ oder „-ne“ zum Vergleichen des *null* -Werts in einem Ausdruck.
-* Verwenden Sie nur Anführungszeichen um das Wort *null* , wenn es als literaler Zeichenfolgenwert interpretiert werden soll.
+* Verwenden Sie „-eq“ oder „-ne“ zum Vergleichen des *null*-Werts in einem Ausdruck.
+* Verwenden Sie nur Anführungszeichen um das Wort *null*, wenn es als literaler Zeichenfolgenwert interpretiert werden soll.
 * Der -not-Operator kann nicht als Vergleichsoperator für NULL verwendet werden. Wenn Sie ihn verwenden, erhalten Sie eine Fehlermeldung, egal ob Sie „null“ oder „$null“ verwenden.
 
 Die richtige Referenzierung des NULL-Werts erfolgt auf diese Weise:

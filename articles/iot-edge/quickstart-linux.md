@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 3328fa7d71138ba75fac0c2aed11d7a85081d03a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 720a4d14a73350d98b3f9054f748b93d296be11b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748722"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579282"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Schnellstart: Bereitstellen Ihres ersten IoT Edge-Moduls auf einem virtuellen Linux-Gerät
 
@@ -49,7 +49,7 @@ Fügen Sie die Azure IoT-Erweiterung der Cloud Shell-Instanz hinzu.
 
 Cloudressourcen:
 
-* Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden. Wir verwenden in dieser Schnellstartanleitung und den folgenden Tutorials durchgängig die Beispielressourcengruppe mit dem Namen **IoTEdgeResources** .
+* Eine Ressourcengruppe zum Verwalten aller Ressourcen, die Sie in dieser Schnellstartanleitung verwenden. Wir verwenden in dieser Schnellstartanleitung und den folgenden Tutorials durchgängig die Beispielressourcengruppe mit dem Namen **IoTEdgeResources**.
 
    ```azurecli-interactive
    az group create --name IoTEdgeResources --location westus2
@@ -63,13 +63,13 @@ Beginnen Sie den Schnellstart, indem Sie an der Azure-Befehlszeilenschnittstelle
 
 Der kostenlose IoT Hub kann für diesen Schnellstart verwendet werden. Wenn Sie IoT Hub schon einmal genutzt und bereits einen Hub erstellt haben, können Sie diesen IoT-Hub verwenden.
 
-Mit dem folgenden Code wird ein kostenloser **F1** -Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie `{hub_name}` durch einen eindeutigen Namen für Ihren IoT-Hub. Die Erstellung einer IoT Hub-Instanz kann einige Minuten dauern.
+Mit dem folgenden Code wird ein kostenloser **F1**-Hub in der Ressourcengruppe **IoTEdgeResources** erstellt. Ersetzen Sie `{hub_name}` durch einen eindeutigen Namen für Ihren IoT-Hub. Die Erstellung einer IoT Hub-Instanz kann einige Minuten dauern.
 
    ```azurecli-interactive
    az iot hub create --resource-group IoTEdgeResources --name {hub_name} --sku F1 --partition-count 2
    ```
 
-   Wenn Sie eine Fehlermeldung erhalten, da bereits ein kostenloser Hub in Ihrem Abonnement vorhanden ist, ändern Sie die SKU auf **S1** . Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. Sollten Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der IoT Hub-Name nicht verfügbar ist, ist bereits ein Hub mit diesem Namen vorhanden. Probieren Sie einen neuen Namen aus.
+   Wenn Sie eine Fehlermeldung erhalten, da bereits ein kostenloser Hub in Ihrem Abonnement vorhanden ist, ändern Sie die SKU auf **S1**. Jedes Abonnement kann nur über einen kostenlosen IoT Hub verfügen. Sollten Sie eine Fehlermeldung mit dem Hinweis erhalten, dass der IoT Hub-Name nicht verfügbar ist, ist bereits ein Hub mit diesem Namen vorhanden. Probieren Sie einen neuen Namen aus.
 
 ## <a name="register-an-iot-edge-device"></a>Registrieren eines IoT Edge-Geräts
 
@@ -116,7 +116,15 @@ Verwenden Sie den folgenden CLI-Befehl, um Ihr IoT Edge-Gerät basierend auf der
 * Bash- oder Cloud Shell-Benutzer: Kopieren Sie den folgenden Befehl in einen Text-Editor, ersetzen Sie den Platzhaltertext durch Ihre Informationen, und kopieren Sie ihn dann in Ihr Bash- bzw. Cloud Shell-Fenster:
 
    ```azurecli-interactive
-   az deployment group create --resource-group IoTEdgeResources --template-uri "https://aka.ms/iotedge-vm-deploy" --parameters dnsLabelPrefix='my-edge-vm' --parameters adminUsername='azureUser' --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name <REPLACE_WITH_HUB_NAME> -o tsv) --parameters authenticationType='password' --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
+   az deployment group create \
+   --resource-group IoTEdgeResources \
+   --template-uri "https://aka.ms/iotedge-vm-deploy" \
+   --parameters dnsLabelPrefix='my-edge-vm' \
+   --parameters adminUsername='azureUser' \
+   --parameters deviceConnectionString=$(az iot hub device-identity connection-string show --device-id myEdgeDevice --hub-name
+   <REPLACE_WITH_HUB_NAME> -o tsv) \
+   --parameters authenticationType='password'
+   --parameters adminPasswordOrKey="<REPLACE_WITH_PASSWORD>"
    ```
 
 * PowerShell-Benutzer: Kopieren Sie den folgenden Befehl in Ihr PowerShell-Fenster, und ersetzen Sie den Platzhaltertext dann durch Ihre eigenen Informationen:
@@ -136,15 +144,15 @@ Für diese Vorlage werden die folgenden Parameter verwendet:
 
 | Parameter | BESCHREIBUNG |
 | --------- | ----------- |
-| **resource-group** | Die Ressourcengruppe, in der die Ressourcen erstellt werden. Verwenden Sie die Standardressourcengruppe **IoTEdgeResources** , die in diesem Artikel bereits verwendet wurde, oder geben Sie den Namen einer Ressourcengruppe an, die unter Ihrem Abonnement vorhanden ist. |
+| **resource-group** | Die Ressourcengruppe, in der die Ressourcen erstellt werden. Verwenden Sie die Standardressourcengruppe **IoTEdgeResources**, die in diesem Artikel bereits verwendet wurde, oder geben Sie den Namen einer Ressourcengruppe an, die unter Ihrem Abonnement vorhanden ist. |
 | **template-uri** | Ein Zeiger auf die Resource Manager-Vorlage, die wir verwenden. |
-| **dnsLabelPrefix** | Eine Zeichenfolge, die zum Erstellen des Hostnamens des virtuellen Computers verwendet wird. Verwenden Sie die Beispielzeichenfolge **my-edge-vm** , oder geben Sie eine neue Zeichenfolge an. |
-| **adminUsername** | Ein Benutzername für das Administratorkonto des virtuellen Computers. Verwenden Sie das Beispiel **azureUser** , oder geben Sie einen neuen Benutzernamen an. |
+| **dnsLabelPrefix** | Eine Zeichenfolge, die zum Erstellen des Hostnamens des virtuellen Computers verwendet wird. Verwenden Sie die Beispielzeichenfolge **my-edge-vm**, oder geben Sie eine neue Zeichenfolge an. |
+| **adminUsername** | Ein Benutzername für das Administratorkonto des virtuellen Computers. Verwenden Sie das Beispiel **azureUser**, oder geben Sie einen neuen Benutzernamen an. |
 | **deviceConnectionString** | Die Verbindungszeichenfolge aus der Geräteidentität in IoT Hub, die zum Konfigurieren der IoT Edge-Runtime auf dem virtuellen Computer verwendet wird. Mit dem CLI-Befehl in diesem Parameter wird die Verbindungszeichenfolge für Sie abgerufen. Ersetzen Sie den Platzhaltertext durch den Namen Ihres IoT-Hubs. |
 | **authenticationType** | Die Authentifizierungsmethode für das Administratorkonto. In dieser Schnellstartanleitung wird die Authentifizierung vom Typ **password** verwendet, aber Sie können diesen Parameter auch auf **sshPublicKey** festlegen. |
 | **adminPasswordOrKey** | Das Kennwort oder der Wert des SSH-Schlüssels für das Administratorkonto. Ersetzen Sie den Platzhaltertext durch ein sicheres Kennwort. Ihr Kennwort muss mindestens zwölf Zeichen lang sein und drei von vier der folgenden Zeichenarten abdecken: Kleinbuchstaben, Großbuchstaben, Ziffern und Sonderzeichen. |
 
-Nach Abschluss der Bereitstellung sollten Sie in der CLI eine Ausgabe im JSON-Format erhalten, die die SSH-Informationen zum Herstellen der Verbindung mit dem virtuellen Computer enthält. Kopieren Sie den Wert des Eintrags **Öffentlicher SSH-Schlüssel** im Abschnitt **outputs** :
+Nach Abschluss der Bereitstellung sollten Sie in der CLI eine Ausgabe im JSON-Format erhalten, die die SSH-Informationen zum Herstellen der Verbindung mit dem virtuellen Computer enthält. Kopieren Sie den Wert des Eintrags **Öffentlicher SSH-Schlüssel** im Abschnitt **outputs**:
 
    ![Abrufen des öffentlichen SSH-Werts aus der Ausgabe](./media/quickstart-linux/outputs-public-ssh.png)
 
@@ -229,7 +237,7 @@ Wenn Sie Ihren virtuellen Computer und Azure IoT Hub in einer neuen Ressourcengr
 > [!IMPORTANT]
 > Das Löschen einer Ressourcengruppe kann nicht rückgängig gemacht werden.
 
-Entfernen Sie die Gruppe **IoTEdgeResources** . Das Löschen einer Ressourcengruppe kann einige Minuten dauern.
+Entfernen Sie die Gruppe **IoTEdgeResources**. Das Löschen einer Ressourcengruppe kann einige Minuten dauern.
 
 ```azurecli-interactive
 az group delete --name IoTEdgeResources

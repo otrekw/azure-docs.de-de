@@ -10,12 +10,12 @@ ms.workload: big-data
 ms.topic: quickstart
 ms.custom: mvc, devx-track-azurecli
 ms.date: 07/01/2020
-ms.openlocfilehash: 8c2e7b6a02c0a0fea32fb1effb30b682971c3f6f
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: fa7919f54663387ddef811d02137da6d3ffb9d9b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646626"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-using-the-azure-cli"></a>Schnellstart: Erstellen eines Azure Stream Analytics-Auftrags mit der Azure CLI
 
@@ -23,43 +23,13 @@ In dieser Schnellstartanleitung verwenden Sie die Azure CLI zum Definieren eines
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-* Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
+- Erstellen Sie eine Ressourcengruppe. Alle Azure-Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
 
-1. Melden Sie sich an.
-
-   Melden Sie sich mit dem Befehl [az login](/cli/azure/reference-index#az-login) an, falls Sie eine lokale Installation der Befehlszeilenschnittstelle verwenden.
-
-    ```azurecli
-    az login
-    ```
-
-    Führen Sie die in Ihrem Terminal angezeigten Schritte aus, um den Authentifizierungsprozess abzuschließen.
-
-2. Installieren Sie die Erweiterung für die Azure-Befehlszeilenschnittstelle (Azure CLI).
-
-   Bei der Verwendung von Erweiterungsverweisen für die Azure CLI müssen Sie die Erweiterung zunächst installieren.  Mit Azure CLI-Erweiterungen erhalten Sie Zugriff auf experimentelle Befehle und Vorabversionen von Befehlen, die noch nicht als Bestandteil der Kern-CLI bereitgestellt wurden.  Weitere Informationen zu Erweiterungen, u. a. zum Aktualisieren und Deinstallieren, finden Sie unter [Verwenden von Erweiterungen mit der Azure CLI](/cli/azure/azure-cli-extensions-overview).
-
-   Installieren Sie die [Erweiterung für Stream Analytics](/cli/azure/ext/stream-analytics/stream-analytics), indem Sie den folgenden Befehl ausführen:
-
-    ```azurecli
-    az extension add --name stream-analytics
-    ```
-
-   Installieren Sie die [Erweiterung für Azure IoT](/cli/azure/ext/azure-iot), indem Sie den folgenden Befehl ausführen:
-
-    ```azurecli
-    az extension add --name azure-iot
-    ```
-
-3. Erstellen Sie eine Ressourcengruppe.
-
-   Alle Azure-Ressourcen müssen in einer Ressourcengruppe bereitgestellt werden. Mit Ressourcengruppen können verwandte Azure-Ressourcen organisiert und verwaltet werden.
-
-   Erstellen Sie für diese Schnellstartanleitung mit dem folgenden [az group create](/cli/azure/group#az-group-create)-Befehl eine Ressourcengruppe mit dem Namen *streamanalyticsrg* am Standort *eastus* :
+   Erstellen Sie für diese Schnellstartanleitung mit dem folgenden [az group create](/cli/azure/group#az-group-create)-Befehl eine Ressourcengruppe mit dem Namen *streamanalyticsrg* am Standort *eastus*:
 
    ```azurecli
    az group create --name streamanalyticsrg --location eastus
@@ -270,7 +240,7 @@ az stream-analytics job start
 
 Löschen Sie die Ressourcengruppe, den Streamingauftrag und alle dazugehörigen Ressourcen, wenn Sie sie nicht mehr benötigen. Durch das Löschen des Auftrags verhindern Sie, dass Kosten für die vom Auftrag verbrauchten Streamingeinheiten anfallen. Wenn Sie den Auftrag in Zukunft verwenden möchten, können Sie den Löschvorgang überspringen und Auftrag vorläufig beenden. Wenn Sie diesen Auftrag nicht weiter verwenden möchten, löschen Sie alle in diesem Schnellstart erstellten Ressourcen, indem Sie das folgende Cmdlet ausführen:
 
-```powershell
+```azurecli
 az group delete \
     --name streamanalyticsrg \
     --no-wait

@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: a5a958228d79c86550604109d7aaf19e68593a57
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9f58a9cdf8dea9631443d499548f2aee61eda69
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314955"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553674"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Verwenden externer Tabellen mit Synapse SQL
 
@@ -238,7 +238,7 @@ WITH (
 - PARQUET: Dient zum Angeben eines Parquet-Formats.
 - „DELIMITEDTEXT“: Dient zum Angeben eines Textformats mit Spaltentrennzeichen (auch Feldabschlusszeichen genannt).
 
-„FIELD_TERMINATOR = *field_terminator* “: Nur für durch Trennzeichen getrennte Textdateien relevant. Das Feldabschlusszeichen gibt mindestens ein Zeichen an, welches das Ende der einzelnen Felder (Spalten) in der durch Trennzeichen getrennten Textdatei markiert. Als Standardzeichen wird der senkrechte Strich (ꞌ|ꞌ) verwendet.
+„FIELD_TERMINATOR = *field_terminator*“: Nur für durch Trennzeichen getrennte Textdateien relevant. Das Feldabschlusszeichen gibt mindestens ein Zeichen an, welches das Ende der einzelnen Felder (Spalten) in der durch Trennzeichen getrennten Textdatei markiert. Als Standardzeichen wird der senkrechte Strich (ꞌ|ꞌ) verwendet.
 
 Beispiele:
 
@@ -246,7 +246,7 @@ Beispiele:
 - FIELD_TERMINATOR = ' '
 - FIELD_TERMINATOR = ꞌ\tꞌ
 
-STRING_DELIMITER = *string_delimiter* : Dient zum Angeben des Feldabschlusszeichens für Zeichenfolgendaten in der durch Trennzeichen getrennten Textdatei. Das Zeichenfolgen-Trennzeichen umfasst mindestens ein Zeichen und ist in einfache Anführungszeichen gesetzt. Der Standardwert ist eine leere Zeichenfolge ("").
+STRING_DELIMITER = *string_delimiter*: Dient zum Angeben des Feldabschlusszeichens für Zeichenfolgendaten in der durch Trennzeichen getrennten Textdatei. Das Zeichenfolgen-Trennzeichen umfasst mindestens ein Zeichen und ist in einfache Anführungszeichen gesetzt. Der Standardwert ist eine leere Zeichenfolge ("").
 
 Beispiele:
 
@@ -254,7 +254,7 @@ Beispiele:
 - STRING_DELIMITER = '*'
 - STRING_DELIMITER = ꞌ,ꞌ
 
-FIRST_ROW = *First_row_int* : Dient zum Angeben der Zeilennummer, die zuerst gelesen wird, und gilt für alle Dateien. Wenn Sie diesen Wert auf „2“ festlegen, wird beim Laden der Daten in allen Dateien jeweils die erste Zeile (Kopfzeile) übersprungen. Zeilen werden basierend auf dem Vorhandensein von Zeilenabschlusszeichen (/ r/n, r, /n) übersprungen.
+FIRST_ROW = *First_row_int*: Dient zum Angeben der Zeilennummer, die zuerst gelesen wird, und gilt für alle Dateien. Wenn Sie diesen Wert auf „2“ festlegen, wird beim Laden der Daten in allen Dateien jeweils die erste Zeile (Kopfzeile) übersprungen. Zeilen werden basierend auf dem Vorhandensein von Zeilenabschlusszeichen (/ r/n, r, /n) übersprungen.
 
 USE_TYPE_DEFAULT = { TRUE | **FALSE** }: Gibt an, wie fehlende Werte in durch Trennzeichen getrennten Textdateien behandelt werden sollen, wenn Daten aus der Textdatei abgerufen werden.
 
@@ -268,7 +268,7 @@ FALSE: Fehlende Werte werden als NULL-Werte gespeichert. Alle NULL-Werte, die du
 
 Encoding = {'UTF8' | 'UTF16'}: Vom serverlosen SQL-Pool können UTF8- und UTF16-codierte, durch Trennzeichen getrennte Textdateien gelesen werden.
 
-DATA_COMPRESSION = *data_compression_method* : Dieses Argument dient zum Angeben der Datenkomprimierungsmethode für die externen Daten. 
+DATA_COMPRESSION = *data_compression_method*: Dieses Argument dient zum Angeben der Datenkomprimierungsmethode für die externen Daten. 
 
 Der PARQUET-Dateiformattyp unterstützt folgende Komprimierungsmethoden:
 
@@ -323,7 +323,7 @@ column_name <data_type>
 
 Ein- bis dreiteiliger Name der Tabelle, die erstellt werden soll. Bei einer externen Tabelle speichert der serverlose SQL-Pool nur die Tabellenmetadaten. Im serverlosen SQL-Pool werden keine tatsächlichen Daten verschoben oder gespeichert.
 
-<column_definition>, ... *n* ]
+<column_definition>, ...*n* ]
 
 „CREATE EXTERNAL TABLE“ unterstützt das Konfigurieren von Spaltenname, Datentyp, NULL-Zulässigkeit und Sortierung. Sie können DEFAULT CONSTRAINT nicht für externe Tabellen verwenden.
 
@@ -332,7 +332,7 @@ Ein- bis dreiteiliger Name der Tabelle, die erstellt werden soll. Bei einer exte
 
 Beim Lesen aus Parquet-Dateien können Sie die zu lesenden Spalten angeben und die übrigen Spalten überspringen.
 
-LOCATION = ' *folder_or_filepath* '
+LOCATION = '*folder_or_filepath*'
 
 Dient zum Angeben des Ordners oder des Dateipfads und Dateinamens für die tatsächlichen Daten in Azure Blob Storage. Der Speicherort beginnt im Stammordner. Der Stammordner ist der in der externen Datenquelle angegebene Datenspeicherort.
 
@@ -345,9 +345,9 @@ In diesem Beispiel werden von einer Abfrage des serverlosen SQL-Pools Zeilen aus
 
 ![Rekursive Daten für externe Tabellen](./media/develop-tables-external-tables/folder-traversal.png)
 
-DATA_SOURCE = *external_data_source_name* : Dient zum Angeben des Namens der externen Datenquelle, die den Speicherort der externen Daten enthält. Verwenden Sie zum Erstellen einer externen Datenquelle [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
+DATA_SOURCE = *external_data_source_name*: Dient zum Angeben des Namens der externen Datenquelle, die den Speicherort der externen Daten enthält. Verwenden Sie zum Erstellen einer externen Datenquelle [CREATE EXTERNAL DATA SOURCE](#create-external-data-source).
 
-FILE_FORMAT = *external_file_format_name* : Dient zum Angeben des Namens des Objekts für das externe Dateiformat, das den Dateityp und die Komprimierungsmethode für die externen Daten enthält. Verwenden Sie zum Erstellen eines externen Dateiformats [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
+FILE_FORMAT = *external_file_format_name*: Dient zum Angeben des Namens des Objekts für das externe Dateiformat, das den Dateityp und die Komprimierungsmethode für die externen Daten enthält. Verwenden Sie zum Erstellen eines externen Dateiformats [CREATE EXTERNAL FILE FORMAT](#create-external-file-format).
 
 ### <a name="permissions-create-external-table"></a>Berechtigungen für „CREATE EXTERNAL TABLE“
 
@@ -388,8 +388,6 @@ Mithilfe von Data Lake-Erkundungsfunktionen können Sie nun mit einem einfachen
 - Für den Zugriff auf den Arbeitsbereich müssen Sie mindestens über die ARM-Zugriffsrolle „Mitwirkender an Storage-Blobdaten“ für das ADLS Gen2-Konto verfügen.
 
 - Sie müssen mindestens über [Berechtigungen zum Erstellen](/sql/t-sql/statements/create-external-table-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest#permissions-2&preserve-view=true) und Abfragen externer Tabellen im SQL-Pool oder in SQL On-Demand verfügen.
-
-- Der verknüpfte Dienst, der dem ADLS Gen2-Konto zugeordnet ist, muss über **Zugriff auf die Datei** verfügen. Wenn für den verknüpften Dienst beispielsweise „Verwaltete Identität“ als Authentifizierungsmechanismus verwendet wird, muss die verwaltete Identität für den Arbeitsbereich mindestens über Speicherblob-Leseberechtigung für das Speicherkonto verfügen.
 
 Wählen Sie im Datenbereich die Datei aus, auf deren Grundlage Sie die externe Tabelle erstellen möchten:
 > [!div class="mx-imgBorder"]

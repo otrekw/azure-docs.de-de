@@ -11,12 +11,12 @@ ms.date: 10/30/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45b8ed75a87d1ac638e5ca55058a3d1ad7fcdffa
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: eaf033f7da7a5bd4882d0c78a2321640aa64d8ac
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93134942"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646558"
 ---
 # <a name="what-is-hr-driven-provisioning"></a>Worum handelt es sich bei der personalbasierten Bereitstellung?
 
@@ -46,4 +46,3 @@ Informationen zu Microsoft Identity Manager und zu den unterstützten Systemen f
 - [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Worum handelt es sich bei der App-Bereitstellung?](what-is-app-provisioning.md)
 - [Worum handelt es sich bei der Bereitstellung zwischen Verzeichnissen?](what-is-inter-directory-provisioning.md)
-- [Worum handelt es sich bei der Verzeichnisbereitstellung?](what-is-inter-directory-provisioning.md)

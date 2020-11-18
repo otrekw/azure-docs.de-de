@@ -5,12 +5,12 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: dd75e5e97e5dca898ba10e91528782861fb949ec
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114592"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94574199"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -75,6 +75,9 @@ Nun kann die Schaltfläche **Join Teams Meeting** (Teams-Besprechung beitreten) 
 ```javascript
 meetingButton.addEventListener("click", () => {
     
+    // set display name in the meeting
+    callAgent.updateDisplayName('YOUR_NAME');
+    
     // join with meeting link
     call = callAgent.join({meetingLink: 'MEETING_LINK'}, {});
 
@@ -97,7 +100,7 @@ meetingButton.addEventListener("click", () => {
 
 Der Teams-Kontext kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http) erläutert.
 
-Die erforderlichen Besprechungsinformationen können auch der URL für den Besprechungsbeitritt aus der Besprechungseinladung entnommen werden. 
+Die erforderlichen Besprechungsinformationen können auch der URL für den Besprechungsbeitritt aus der Besprechungseinladung entnommen werden.
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
