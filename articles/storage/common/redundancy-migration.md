@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 286a4f47d542a500fb49f022f3c647088ebad637
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6f5eab8f53fb4c9e15606223707292261b4615e0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784217"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330290"
 ---
 # <a name="change-how-a-storage-account-is-replicated"></a>Ändern der Replikation eines Speicherkontos
 
@@ -62,7 +62,7 @@ Um die Redundanzoption für Ihr Speicherkonto im Azure-Portal zu ändern, führe
 
 1. Navigieren Sie zum Speicherkonto im Azure-Portal.
 1. Wählen Sie die Einstellung **Konfiguration** aus.
-1. Aktualisieren Sie die Einstellung **Replikation** .
+1. Aktualisieren Sie die Einstellung **Replikation**.
 
 ![Screenshot zur Änderung der Replikationsoption im Portal](media/redundancy-migration/change-replication-option.png)
 
@@ -125,24 +125,24 @@ Sie können eine Livemigration über das [Azure-Support-Portal](https://ms.porta
 
 1. Wählen Sie **Neue Supportanfrage** aus.
 2. Geben Sie die **Grundlagen** basierend auf den Informationen Ihres Kontos an: 
-    - **Problemtyp** : Wählen Sie **Technisch** aus.
-    - **Dienst** : Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
+    - **Problemtyp**: Wählen Sie **Technisch** aus.
+    - **Dienst**: Wählen Sie **Meine Dienste** und **Speicherkontenverwaltung** aus.
     - **Ressource:** Wählen Sie die Ressource aus, die Sie zu ZRS konvertieren möchten.
 3. Wählen Sie **Weiter** aus.
 4. Geben Sie im Abschnitt **Problem** die folgenden Werte an:
-    - **Schweregrad** : Behalten Sie den Standardwert bei.
-    - **Problemtyp** : Wählen Sie **Datenmigration** aus.
+    - **Schweregrad**: Behalten Sie den Standardwert bei.
+    - **Problemtyp**: Wählen Sie **Datenmigration** aus.
     - **Kategorie:** Wählen Sie **Zu ZRS migrieren** aus.
-    - **Titel** : Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration** .
-    - **Details** : Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“.
+    - **Titel**: Geben Sie einen aussagekräftigen Titel ein, z.B. **ZRS-Kontomigration**.
+    - **Details**: Geben Sie im Feld **Details** weitere Informationen ein, z.B. „Ich möchte von [LRS, GRS] in der Region „\_\_“ zu ZRS migrieren“.
 5. Wählen Sie **Weiter** aus.
 6. Überprüfen Sie, ob die Kontaktinformationen auf dem Blatt **Kontaktinformationen** korrekt sind.
-7. Klicken Sie auf **Erstellen** .
+7. Klicken Sie auf **Erstellen**.
 
 Ein Supportmitarbeiter wird sich mit Ihnen in Verbindung setzen und Sie nach Bedarf und Wunsch unterstützen.
 
 > [!NOTE]
-> Die Livemigration wird für Premium-Dateifreigaben zurzeit nicht unterstützt. Derzeit wird nur das manuelle Kopieren oder Verschieben von Daten unterstützt.
+> Premium-Dateifreigaben (FileStorage-Konten) sind nur für LRS und ZRS verfügbar.
 >
 > GZRS-Speicherkonten unterstützen die Archivebene derzeit nicht. Unter [Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](../blobs/storage-blob-storage-tiers.md) finden Sie weitere Details.
 >

@@ -6,19 +6,20 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
-ms.openlocfilehash: 52d7bc9ed4068d6a2e697cece7ca6cd0b12876c3
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: seo-nov-2020
+ms.openlocfilehash: f698c1ac7ab3ad2dbd86710bea9a48d962603d86
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93085444"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334583"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Azure Cosmos DB unterstützt viele APIs wie z.B. SQL, MongoDB, Cassandra, Gremlin und Tabelle. Jede API verfügt über einen eigenen Satz von Datenbankvorgängen. Diese Vorgänge reichen von einfachen Lese- und Schreibvorgängen für Datenpunkte bis hin zu komplexen Abfragen. Jeder Datenbankvorgang beansprucht je nach Komplexität eine bestimmte Menge an Systemressourcen.
 
-Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und als *Anforderungseinheiten* (Request Units, kurz RUs) ausgedrückt. Sie können sich Anforderungseinheiten als Währung zur Abstrahierung der Systemressourcen wie CPU, IOPS und Arbeitsspeicher vorstellen, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind.
+Die Kosten sämtlicher Datenbankvorgänge werden von Azure Cosmos DB normalisiert und in Anforderungseinheiten (Request Units, RUs) ausgedrückt. Anforderungseinheiten stellen praktisch die „Währung“ zur Abstrahierung von Systemressourcen wie CPU, IOPS und Arbeitsspeicher dar, die zum Ausführen der von Azure Cosmos DB unterstützten Datenbankvorgänge erforderlich sind.
 
 Die Kosten für einen Punktlesevorgang (d. h. das Abrufen eines einzelnen Elements anhand seiner ID und seines Partitionsschlüsselwerts) für ein Element von 1 KB betragen 1 Anforderungseinheit (oder 1 RU). Allen anderen Datenbankvorgängen werden analog dazu ebenfalls Kosten in RUs zugewiesen. Unabhängig davon, welche API Sie für die Interaktion mit Ihrem Azure Cosmos-Container verwenden, werden die Kosten immer in RUs gemessen. Unabhängig davon, ob es sich bei dem Datenbankvorgang um einen Schreib-, Lese- oder Abfragevorgang handelt, werden die Kosten immer in RUs gemessen.
 
@@ -34,10 +35,10 @@ Die Art des Azure Cosmos-Kontos, das Sie verwenden, bestimmt die Art, auf die ve
 
    Durchsatz kann in zwei Granularitäten bereitgestellt werden:
 
-   * **Container** : Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
-   * **Datenbanken** : Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md).
+   * **Container**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für einen Azure Cosmos-Container](how-to-provision-container-throughput.md).
+   * **Datenbanken**: Weitere Informationen finden Sie unter [Bereitstellen von Durchsatz für eine Azure Cosmos-Datenbank](how-to-provision-database-throughput.md).
 
-2. **Serverloser Modus** : In diesem Modus müssen Sie beim Erstellen von Ressourcen in Ihrem Azure Cosmos-Konto keinen Durchsatz bereitstellen. Am Ende des Abrechnungszeitraums wird Ihnen die Anzahl der Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen genutzt wurden. Weitere Informationen finden Sie im Artikel [Serverloser Durchsatz](serverless.md). 
+2. **Serverloser Modus**: In diesem Modus müssen Sie beim Erstellen von Ressourcen in Ihrem Azure Cosmos-Konto keinen Durchsatz bereitstellen. Am Ende des Abrechnungszeitraums wird Ihnen die Anzahl der Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen genutzt wurden. Weitere Informationen finden Sie im Artikel [Serverloser Durchsatz](serverless.md). 
 
 3. **Autoskalierung:** In diesem Modus können Sie den Durchsatz (RU/s) Ihrer Datenbank oder Ihres Containers automatisch und sofort anhand der Nutzung skalieren, ohne die Verfügbarkeit, die Wartezeit, den Durchsatz oder die Leistung der Workload zu beeinträchtigen. Dieser Modus eignet sich gut für unternehmenskritische Workloads, die über variable oder unvorhersehbare Datenverkehrsmuster verfügen und SLAs für hohe Leistung und Skalierung erfordern. Weitere Informationen finden Sie im Artikel [Durchsatz mit Autoskalierung](provision-throughput-autoscale.md). 
 
@@ -45,19 +46,19 @@ Die Art des Azure Cosmos-Kontos, das Sie verwenden, bestimmt die Art, auf die ve
 
 Berücksichtigen Sie die folgenden Faktoren, wenn Sie die Anzahl der für Ihre Workload verbrauchen RUs schätzen:
 
-* **Elementgröße** : Je größer ein Element, desto mehr RUs werden beim Lesen oder Schreiben des Elements genutzt.
+* **Elementgröße**: Je größer ein Element, desto mehr RUs werden beim Lesen oder Schreiben des Elements genutzt.
 
-* **Elementindizierung** : Standardmäßig wird jedes Element automatisch indiziert. Wenn Sie einige Elemente in einem Container nicht indizieren, werden weniger RUs genutzt.
+* **Elementindizierung**: Standardmäßig wird jedes Element automatisch indiziert. Wenn Sie einige Elemente in einem Container nicht indizieren, werden weniger RUs genutzt.
 
-* **Anzahl der Elementeigenschaften** : Bei Verwendung der standardmäßigen Indizierung für alle Eigenschaften erhöht sich die Anzahl von RUs, die beim Schreiben eines Elements genutzt werden, wenn sich die Anzahl von Elementeigenschaften erhöht.
+* **Anzahl der Elementeigenschaften**: Bei Verwendung der standardmäßigen Indizierung für alle Eigenschaften erhöht sich die Anzahl von RUs, die beim Schreiben eines Elements genutzt werden, wenn sich die Anzahl von Elementeigenschaften erhöht.
 
-* **Indizierte Eigenschaften** : Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenzen Sie die Anzahl indizierter Eigenschaften.
+* **Indizierte Eigenschaften**: Eine Indexrichtlinie für jeden Container gibt an, welche Eigenschaften standardmäßig indiziert werden. Zum Verringern der für Schreibvorgänge genutzten RUs begrenzen Sie die Anzahl indizierter Eigenschaften.
 
-* **Datenkonsistenz** : Im Vergleich zu anderen, weniger strengen Konsistenzebenen nutzen die Konsistenzebenen „Stark“ und „Begrenzte Veraltung“ bei Lesevorgängen ungefähr zweimal mehr RUs.
+* **Datenkonsistenz**: Im Vergleich zu anderen, weniger strengen Konsistenzebenen nutzen die Konsistenzebenen „Stark“ und „Begrenzte Veraltung“ bei Lesevorgängen ungefähr zweimal mehr RUs.
 
 * **Lesetypen:** Punktlesevorgänge kosten erheblich weniger RUs als Abfragen.
 
-* **Abfragemuster** : Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele RUs für einen Vorgang verbraucht werden. Faktoren, die die Kosten von Abfragevorgängen beeinflussen: 
+* **Abfragemuster**: Die Komplexität einer Abfrage wirkt sich darauf aus, wie viele RUs für einen Vorgang verbraucht werden. Faktoren, die die Kosten von Abfragevorgängen beeinflussen: 
  
   * Die Anzahl der Abfrageergebnisse
   * Die Anzahl der Prädikate
@@ -69,7 +70,7 @@ Berücksichtigen Sie die folgenden Faktoren, wenn Sie die Anzahl der für Ihre W
 
   Die gleiche Abfrage mit den gleichen Daten beansprucht bei wiederholter Ausführung immer die gleiche Anzahl von RUs.
 
-* **Skriptnutzung** : Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [Request-Charge-Header](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
+* **Skriptnutzung**: Bei gespeicherten Prozeduren und Triggern hängt die Nutzung von RUs genau wie bei Abfragen von der Komplexität der ausgeführten Vorgänge ab. Sehen Sie sich beim Entwickeln Ihrer Anwendung den [Request-Charge-Header](./optimize-cost-reads-writes.md#measuring-the-ru-charge-of-a-request) an, um zu ermitteln, wie viele RUs der jeweilige Vorgang erfordert.
 
 ## <a name="request-units-and-multiple-regions"></a>Anforderungseinheiten und mehrere Regionen
 
@@ -77,7 +78,7 @@ Wenn Sie *R* RUs in einem Cosmos-Container (oder einer Datenbank) bereitstellen,
 
 Angenommen, ein Cosmos-Container ist mit *R* RUs konfiguriert, und es gibt *N* Regionen, die dem Cosmos-Konto zugeordnet sind, dann beträgt die Gesamtzahl von im Container verfügbaren RUs = *R* x *N*.
 
-Die Wahl des [Konsistenzmodells](consistency-levels.md) wirkt sich auch auf den Durchsatz aus. Für die eher gelockerten Konsistenzebenen (z.B. *Sitzung* , *Präfixkonsistenz* und *letztliche Konsistenz* ) können Sie den etwa 2-fachen Lesedurchsatz im Vergleich zu höheren Konsistenzebenen (z.B. *begrenzte Veraltung* oder *starke Konsistenz* ) erzielen.
+Die Wahl des [Konsistenzmodells](consistency-levels.md) wirkt sich auch auf den Durchsatz aus. Für die eher gelockerten Konsistenzebenen (z.B. *Sitzung*, *Präfixkonsistenz* und *letztliche Konsistenz*) können Sie den etwa 2-fachen Lesedurchsatz im Vergleich zu höheren Konsistenzebenen (z.B. *begrenzte Veraltung* oder *starke Konsistenz*) erzielen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

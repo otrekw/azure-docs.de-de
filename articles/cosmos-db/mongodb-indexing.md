@@ -5,16 +5,16 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.devlang: nodejs
 ms.topic: how-to
-ms.date: 10/21/2020
+ms.date: 11/06/2020
 author: timsander1
 ms.author: tisande
 ms.custom: devx-track-js
-ms.openlocfilehash: a1144560b8bd8638477828f1aeafcacbc8b77f1d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e920af85c511387e66bcafcb6a140844d25f204c
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096477"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369289"
 ---
 # <a name="manage-indexing-in-azure-cosmos-dbs-api-for-mongodb"></a>Verwalten der Indizierung in der Azure Cosmos DB-API für MongoDB
 [!INCLUDE[appliesto-mongodb-api](includes/appliesto-mongodb-api.md)]
@@ -211,7 +211,7 @@ globaldb:PRIMARY> db.runCommand({shardCollection: db.coll._fullName, key: { univ
         "ok" : 1,
         "collectionsharded" : "test.coll"
 }
-globaldb:PRIMARY> db.coll.createIndex( { "student_id" : 1, "university" : 1 }, {unique:true})
+globaldb:PRIMARY> db.coll.createIndex( { "university" : 1, "student_id" : 1 }, {unique:true});
 {
         "_t" : "CreateIndexesResponse",
         "ok" : 1,
@@ -327,7 +327,7 @@ Die Details zum Indizierungsfortschritt zeigen den Fortschritt des aktuellen Ind
 
 ## <a name="background-index-updates"></a>Indexaktualisierungen im Hintergrund
 
-Unabhängig von dem für die **Hintergrund** -Indexeigenschaft angegebenen Wert werden Indexaktualisierungen immer im Hintergrund durchgeführt. Da Indexaktualisierungen Anforderungseinheiten (Request Units, RUs) mit einer niedrigeren Priorität als andere Datenbankvorgänge nutzen, führen Indexänderungen nicht zu Ausfallzeiten bei Schreib-, Update- oder Löschvorgängen.
+Unabhängig von dem für die **Hintergrund**-Indexeigenschaft angegebenen Wert werden Indexaktualisierungen immer im Hintergrund durchgeführt. Da Indexaktualisierungen Anforderungseinheiten (Request Units, RUs) mit einer niedrigeren Priorität als andere Datenbankvorgänge nutzen, führen Indexänderungen nicht zu Ausfallzeiten bei Schreib-, Update- oder Löschvorgängen.
 
 Das Hinzufügen eines neuen Indexes hat keine Auswirkung auf die Leseverfügbarkeit. Abfragen verwenden neue Indizes erst dann, wenn die Indextransformation abgeschlossen ist. Während der Indextransformation werden von der Abfrage-Engine weiterhin vorhandene Indizes verwendet, sodass Sie während der Indextransformation eine ähnliche Leseleistung beobachten werden wie vor dem Einleiten der Indexänderung. Beim Hinzufügen neuer Indizes besteht auch kein Risiko, unvollständige oder inkonsistente Abfrageergebnisse zu erhalten.
 
@@ -335,6 +335,51 @@ Wenn Indizes entfernt und sofort Abfragen ausgeführt werden, die nach den gelö
 
 > [!NOTE]
 > Sie können [den Indizierungsfortschritt nachverfolgen](#track-index-progress).
+
+## <a name="reindex-command"></a>ReIndex-Befehl
+
+Mit dem `reIndex`-Befehl werden alle Indizes in einer Sammlung neu erstellt. Dies ist in den meisten Fällen nicht erforderlich. In einigen seltenen Fällen kann sich die Abfrageleistung jedoch verbessern, nachdem der `reIndex`-Befehl ausgeführt wurde.
+
+Verwenden Sie für die Ausführung des `reIndex`-Befehls die folgende Syntax:
+
+`db.runCommand({ reIndex: <collection> })`
+
+Mithilfe der folgenden Syntax können Sie überprüfen, ob Sie den `reIndex`-Befehl ausführen müssen:
+
+`db.runCommand({"customAction":"GetCollection",collection:<collection>, showIndexes:true})`
+
+Beispielausgabe:
+
+```
+{
+        "database" : "myDB",
+        "collection" : "myCollection",
+        "provisionedThroughput" : 400,
+        "indexes" : [
+                {
+                        "v" : 1,
+                        "key" : {
+                                "_id" : 1
+                        },
+                        "name" : "_id_",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                },
+                {
+                        "v" : 1,
+                        "key" : {
+                                "b.$**" : 1
+                        },
+                        "name" : "b.$**_1",
+                        "ns" : "myDB.myCollection",
+                        "requiresReIndex" : true
+                }
+        ],
+        "ok" : 1
+}
+```
+
+Wenn `reIndex` erforderlich ist, ist **requiresReIndex** TRUE. Wenn `reIndex` nicht erforderlich ist, wird diese Eigenschaft ausgelassen.
 
 ## <a name="migrate-collections-with-indexes"></a>Migrieren von Sammlungen mit Indizes
 

@@ -8,14 +8,14 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f6953f145621e11506a009fa59d67a5f40508a13
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 90fc356929a9ea5713a8d359dfaa83286017b8f8
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539570"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445437"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-11"></a>Upgrade auf Version 11 des Azure Cognitive Search .NET SDK
 
@@ -169,6 +169,24 @@ Mit den folgenden Schritten können Sie eine Codemigration beginnen, indem Sie d
    ```
 
 1. Fügen Sie neue Clientverweise für indexerbezogene Objekte hinzu. Wenn Sie Indexer, Datenquellen oder Skillsets verwenden, ändern Sie die Clientverweise in [SearchIndexerClient](/dotnet/api/azure.search.documents.indexes.searchindexerclient). Dieser Client ist in Version 11 neu und hat keine Vorgängerversion.
+
+1. Sammlungen wurden überarbeitet. Im neuen SDK sind alle Listen schreibgeschützt, um Downstreamprobleme zu vermeiden, wenn die Liste NULL-Werte enthält. Der Code muss so geändert werden, dass Elemente in eine Liste eingefügt werden. Anstatt beispielsweise einer Select-Eigenschaft Zeichenfolgen zuzuweisen, fügen Sie diese wie folgt hinzu:
+
+   ```csharp
+   var options = new SearchOptions
+    {
+       SearchMode = SearchMode.All,
+       IncludeTotalCount = true
+    };
+
+    // Select fields to return in results.
+    options.Select.Add("HotelName");
+    options.Select.Add("Description");
+    options.Select.Add("Tags");
+    options.Select.Add("Rooms");
+    options.Select.Add("Rating");
+    options.Select.Add("LastRenovationDate");
+   ```
 
 1. Aktualisieren Sie Clientverweise für Abfragen und Datenimport. Instanzen von [SearchIndexClient](/dotnet/api/microsoft.azure.search.searchindexclient) müssen in [SearchClient](/dotnet/api/azure.search.documents.searchclient) geändert werden. Stellen Sie sicher, dass Sie alle Instanzen abfangen, bevor Sie mit dem nächsten Schritt fortfahren, um Namensverwechslungen zu vermeiden.
 

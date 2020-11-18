@@ -1,7 +1,7 @@
 ---
 title: Referenz des Moduls „Feature Hashing“
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie das Modul „Feature Hashing“ in Azure Machine Learning verwenden, um Textdaten in Merkmale zu zerlegen.
+description: Erfahren Sie, wie Sie mit dem Modul Feature Hashing im Azure Machine Learning-Designer Textdaten in Features zerlegen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
-ms.openlocfilehash: a9ef6ff81a2c9f3697f7c3ccf1cd8e91ad2fb683
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: cd48b32afee320aa3d252540d566317c374c73a8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323722"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420783"
 ---
 # <a name="feature-hashing-module-reference"></a>Referenz des Moduls „Feature Hashing“
 
@@ -22,7 +22,7 @@ In diesem Artikel wird ein Modul beschrieben, das in Azure Machine Learning-Desi
 
 Verwenden Sie das Modul „Feature Hashing“, um einen Datenstrom aus englischem Text in eine Reihe von ganzzahligen Merkmalen umzuwandeln. Anschließend können Sie diese gehashte Merkmalssammlung an einen Machine Learning-Algorithmus übergeben, um ein Textanalysemodell zu trainieren.
 
-Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest).
+Die in diesem Modul bereitgestellte Feature Hashing-Funktionalität basiert auf dem nimbusml-Framework. Weitere Informationen finden Sie unter [NgramHash-Klasse](/python/api/nimbusml/nimbusml.feature_extraction.text.extractor.ngramhash?view=nimbusml-py-latest&preserve-view=true).
 
 ## <a name="what-is-feature-hashing"></a>Was ist Feature Hashing?
 

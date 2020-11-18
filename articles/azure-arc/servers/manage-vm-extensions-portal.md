@@ -1,18 +1,21 @@
 ---
 title: Entfernen von VM-Erweiterungen über das Azure-Portal
 description: In diesem Artikel wird beschrieben, wie Sie über das Azure-Portal VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 10/19/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: dcab7cb441c329a60b2c6fa3256aeedb2bb5b33d
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 48d7d4085dce893d94436fe0c6be32cfeea9cda3
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92462821"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359084"
 ---
 # <a name="enable-azure-vm-extensions-from-the-azure-portal"></a>Aktivieren von Azure-VM-Erweiterungen über das Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Azure-VM-Erweiterungen, die von Azure Arc-fähigen Servern unterstützt werden, auf einem Linux- oder Windows-Hybridcomputer unter Verwendung des Azure-Portals bereitstellen oder deinstallieren.
+
+> [!NOTE]
+> Die Key Vault-VM-Erweiterung (Vorschau) unterstützt keine Bereitstellung über das Azure-Portal, sondern lediglich über die Azure-Befehlszeilenschnittstelle, Azure PowerShell oder eine Azure Resource Manager-Vorlage.
 
 ## <a name="enable-extensions-from-the-portal"></a>Aktivieren von Erweiterungen über das Portal
 
@@ -20,7 +23,7 @@ VM-Erweiterungen können über das Azure-Portal auf Ihren mit Arc für Server ve
 
 1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Portal zu **Server - Azure Arc** , und wählen Sie in der Liste Ihren Hybridcomputer aus.
+2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
 
 3. Wählen Sie **Erweiterungen** und dann **Hinzufügen** aus. Wählen Sie die Erweiterung aus, die Sie aus der Liste verfügbarer Erweiterungen erhalten, und befolgen Sie die Anweisungen im Assistenten. In diesem Beispiel stellen wir die Log Analytics-VM-Erweiterung bereit.
 
@@ -43,7 +46,7 @@ Sie können über das Azure-Portal Erweiterungen von einem Arc-fähigen Server e
 
 1. Navigieren Sie in Ihrem Browser zum [Azure-Portal](https://portal.azure.com).
 
-2. Navigieren Sie im Portal zu **Server - Azure Arc** , und wählen Sie in der Liste Ihren Hybridcomputer aus.
+2. Navigieren Sie im Portal zu **Server - Azure Arc**, und wählen Sie in der Liste Ihren Hybridcomputer aus.
 
 3. Wählen Sie **Erweiterungen** aus, und wählen Sie dann eine Erweiterung aus der Liste der installierten Erweiterungen aus.
 

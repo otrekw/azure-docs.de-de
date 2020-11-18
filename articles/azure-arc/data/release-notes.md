@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 10/29/2020
 ms.topic: conceptual
-ms.openlocfilehash: 82dd2f16fa43b52ba4c6dfacd26da5da622523b2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 94074c2c5e11187252084832e5a20a197f6723fd
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321708"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359815"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Versionshinweise – Azure Arc-fähige Datendienste (Vorschauversion)
 
@@ -90,7 +90,7 @@ Anweisungen finden Sie unter [Was sind Azure Arc-fähige Datendienste?](overview
 
 - In der Vorschauversion werden keine Sicherungen/Wiederherstellungen für die Version 11 der PostgreSQL-Engine unterstützt. Es werden nur Sicherungen/Wiederherstellungen für die PostgreSQL-Version 12 unterstützt.
 - Von `azdata arc dc debug copy-logs` werden keine PostgreSQL-Engineprotokolle unter Windows gesammelt.
-- Es kann vorkommen, dass das erneute Erstellen einer Servergruppe mit dem Namen einer gerade erst gelöschten Servergruppe nicht erfolgreich ist oder hängen bleibt. 
+- Es kann vorkommen, dass beim erneuten Erstellen einer Servergruppe mit dem Namen einer gerade erst gelöschten Servergruppe Fehler auftreten oder keine Reaktion erfolgt. 
    - **Problemumgehung:** Verwenden Sie beim erneuten Erstellen einer Servergruppe nicht den gleichen Namen, oder warten Sie auf den Lastenausgleich/externen Dienst der zuvor gelöschten Servergruppe. Wenn der Name der gelöschten Servergruppe also beispielsweise `postgres01` lautet und sie im Namespace `arc` gehostet wurde, warten Sie vor dem erneuten Erstellen einer Servergruppe gleichen Namens, bis `postgres01-external-svc` nicht mehr in der Ausgabe des kubectl-Befehls `kubectl get svc -n arc` erscheint.
  - Die Übersichtsseite und die Konfigurationsseite „Compute + Speicher“ in Azure Data Studio werden nur langsam geladen. 
 

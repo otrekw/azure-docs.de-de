@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
-ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3f2dfb113f4c82dfea422a7c2be1c5fb07ffd60e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329260"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358166"
 ---
 # <a name="public-ip-addresses"></a>Öffentliche IP-Adressen
 
@@ -38,6 +38,8 @@ In Azure-Ressourcen-Manager ist eine [öffentliche IP-Adresse](virtual-network-p
 Öffentliche IP-Adressen werden mit einer IPv4- oder IPv6-Adresse erstellt. 
 
 ## <a name="sku"></a>SKU
+
+Weitere Informationen zum SKU-Upgrade finden Sie unter [Ausführen eines Upgrades für öffentliche IP-Adressen](../virtual-network/virtual-network-public-ip-address-upgrade.md).
 
 Öffentliche IP-Adressen werden mit einer der folgenden SKUs erstellt:
 

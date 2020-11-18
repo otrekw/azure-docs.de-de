@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 1ed3f50198c0410d9c893fe87523fa214ca03d88
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521457"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93395868"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -39,17 +39,18 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 | Asien, Osten | 4 | 16 | 4 | 16 | 50 | – |
 | East US | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 | USA (Ost) 2 | 4 | 16 | 4 | 16 | 50 | – |
+| Frankreich, Mitte | 4 | 16 | 4 | 16 | 50 | – |
 | Japan, Osten | 2 | 8 | 4 | 16 | 50 | – |
 | Korea, Mitte | 4 | 16 | – | – | 50 | – |
-| USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | – |
+| USA Nord Mitte | 2 | 3,5 | 4 | 16 | 50 | K80, P100, V100 |
 | Europa, Norden | 4 | 16 | 4 | 16 | 50 | K80 |
 | USA Süd Mitte | 4 | 16 | 4 | 16 | 50 | – |
 | Asien, Südosten | 4 | 16 | 4 | 16 | 50 | P100, V100 |
 | Indien (Süden) | 4 | 16 | – | – | 50 | – |
 | UK, Süden | 4 | 16 | 4 | 16 | 50 | – |
-| USA, Westen-Mitte| 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
+| USA, Westen-Mitte| 4 | 16 | 4 | 16 | 50 | – |
 | Europa, Westen | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
-| USA, Westen | 4 | 16 | 2 | 4 | 16| – |
+| USA, Westen | 4 | 16 | 4 | 16 | 50 | – |
 | USA, Westen 2 | 4 | 16 | 4 | 16 | 50 | K80, P100, V100 |
 
 Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschau) bereitgestellt wird, sind die folgenden maximalen Ressourcen verfügbar.
@@ -67,29 +68,63 @@ Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) 
 
 Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](container-instances-faq.md#what-windows-base-os-images-are-supported)Windows Server-Containern zur Verfügung.
 
-| Region | Windows Server 2016: max. CPU | Windows Server 2016: max. Arbeitsspeicher (GB) | Windows Server 2019 LTSC: max. CPU | Windows Server 2019 LTSC: max. Arbeitsspeicher (GB) | Speicher (GB) |
+###  <a name="windows-server-2016"></a>Windows Server 2016
+
+> [!NOTE]
+> Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
+
+| Region | 1B/2B: max. CPU | 1B/2B: max. Arbeitsspeicher (GB) |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Australien (Osten) | 2 | 3,5 | 4 | 16 | 20 |
+| Australien (Osten) | 2 | 8 | 2 | 3,5 | 20 |
 | Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
-| Kanada, Mitte | 2 | 3,5 | 4 | 16 | 20 |
-| Indien, Mitte | 2 | 3,5 | 4 | 16 | 20 |
-| USA (Mitte) | 2 | 3,5 | 4 | 16 | 20 |
-| Asien, Osten | 2 | 3,5 | 4 | 16 | 20 |
-| East US | 2 | 8 | 4 | 16 | 20 |
-| USA (Ost) 2 | 2 | 3,5 | 2 | 3,5 | 20 |
-| Frankreich, Mitte | 4 | 16 | 4 | 16 | 20 |
+| Kanada, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
+| Indien, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA (Mitte) | 2 | 3,5 | 2 | 3,5 | 20 |
+| Asien, Osten | 2 | 3,5 | 2 | 3,5 | 20 |
+| East US | 4 | 16 | 2 | 8 | 20 |
+| USA (Ost) 2 | 2 | 3,5 | 4 | 16 | 20 |
 | Japan, Osten | 4 | 16 | 4 | 16 | 20 |
 | Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
-| USA Nord Mitte | 2 | 3,5 | 4 | 16 | 20 |
-| Nordeuropa | 2 | 3,5 | 4 | 16 | 20 |
-| USA Süd Mitte | 2 | 3,5 | 4 | 16 | 20 |
-| Indien (Süden) | 2 | 3,5 | 4 | 16 | 20 |
-| Asien, Südosten | 2 | 3,5 | 4 | 16 | 20 |
-| UK, Süden | 2 | 3,5 | 4 | 16 | 20 |
+| USA Nord Mitte | 4 | 16 | 4 | 16 | 20 |
+| Nordeuropa | 2 | 3,5 | 2 | 8 | 20 |
+| USA Süd Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
+| Asien, Südosten | – | – | 2 | 3,5 | 20 |
+| Indien (Süden) | 2 | 3,5 | 2 | 3,5 | 20 |
+| UK, Süden | 2 | 8 | 2 | 3,5 | 20 |
 | USA, Westen-Mitte | 4 | 16 | 4 | 16 | 20 |
 | Europa, Westen | 4 | 16 | 4 | 16 | 20 |
-| USA (Westen) | 4 | 14 | – | – | 20 |
+| USA (Westen) | 4 | 16 | 2 | 8 | 20 |
 | USA, Westen 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+
+
+### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC
+
+> [!NOTE]
+> Weitere Informationen zu den 1B-, 2B- und 3B-Hosts finden Sie unter [Kompatibilität der Host- und Containerversionen](/virtualization/windowscontainers/deploy-containers/update-containers#host-and-container-version-compatibility).
+
+| Region | 1B/2B: max. CPU | 1B/2B: max. Arbeitsspeicher (GB) |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
+| -------- | :---: | :---: | :----: | :-----: | :-------: |
+| Australien (Osten) | 4 | 16 | 4 | 16 | 20 |
+| Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
+| Kanada, Mitte | 4 | 16 | 4 | 16 | 20 |
+| Indien, Mitte | 4 | 16 | 4 | 16 | 20 |
+| USA (Mitte) | 4 | 16 | 4 | 16 | 20 |
+| Asien, Osten | 4 | 16 | 4 | 16 | 20 |
+| East US | 4 | 16 | 4 | 16 | 20 |
+| USA (Ost) 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| Frankreich, Mitte | 4 | 16 | 4 | 16 | 20 |
+| Japan, Osten | – | N/V | 4 | 16 | 20 |
+| Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
+| USA Nord Mitte | 4 | 16 | 4 | 16 | 20 |
+| Nordeuropa | 4 | 16 | 4 | 16 | 20 |
+| USA Süd Mitte | 4 | 16 | 4 | 16 | 20 |
+| Asien, Südosten | 4 | 16 | 4 | 16 | 20 |
+| Indien (Süden) | 4 | 16 | 4 | 16 | 20 |
+| UK, Süden | 4 | 16 | 4 | 16 | 20 |
+| USA, Westen-Mitte | 4 | 16 | 4 | 16 | 20 |
+| Europa, Westen | 4 | 16 | 4 | 16 | 20 |
+| USA (Westen) | 4 | 16 | 4 | 16 | 20 |
+| USA, Westen 2 | 2 | 8 | 4 | 16 | 20 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

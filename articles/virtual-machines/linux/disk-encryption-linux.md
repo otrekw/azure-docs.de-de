@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: d3e856256e02e2c1914aeec493a87ffe992bbf13
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e8f71b277a4f4b538d501b1fa825bc6ec43428c8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740321"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94359390"
 ---
 # <a name="azure-disk-encryption-scenarios-on-linux-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Linux-Computern
 
@@ -191,7 +191,7 @@ Sie können die Datenträgerverschlüsselung auf einer vorhandenen oder aktuell 
 
 1. Klicken Sie in der Azure-Schnellstartvorlage auf **Deploy to Azure** (In Azure bereitstellen).
 
-2. Wählen Sie das Abonnement, die Ressourcengruppe, den Ressourcengruppenstandort, die Parameter, die rechtlichen Bedingungen und die Vereinbarung aus. Klicken Sie auf **Erstellen** , um die Verschlüsselung auf dem vorhandenen oder aktuell ausgeführten virtuellen Computer zu aktivieren.
+2. Wählen Sie das Abonnement, die Ressourcengruppe, den Ressourcengruppenstandort, die Parameter, die rechtlichen Bedingungen und die Vereinbarung aus. Klicken Sie auf **Erstellen**, um die Verschlüsselung auf dem vorhandenen oder aktuell ausgeführten virtuellen Computer zu aktivieren.
 
 Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene oder ausgeführte virtuelle Computer:
 
@@ -201,7 +201,7 @@ Die folgende Tabelle enthält Resource Manager-Vorlagenparameter für vorhandene
 | keyVaultName | Der Name des Schlüsseltresors, in den der Verschlüsselungsschlüssel hochgeladen werden soll. Sie können ihn mit dem Cmdlet `(Get-AzKeyVault -ResourceGroupName <MyKeyVaultResourceGroupName>). Vaultname` oder dem Azure CLI-Befehl `az keyvault list --resource-group "MyKeyVaultResourceGroupName"` abrufen.|
 | keyVaultResourceGroup | Der Name der Ressourcengruppe, die den Schlüsseltresor enthält. |
 |  keyEncryptionKeyURL | Die URL des KEK, der zum Verschlüsseln des Verschlüsselungsschlüssels verwendet wird. Dieser Parameter ist optional, wenn Sie in der Dropdownliste „UseExistingKek“ die Option **nokek** auswählen. Wenn Sie in der Dropdownliste „UseExistingKek“ die Option **kek** auswählen, müssen Sie den Wert _keyEncryptionKeyURL_ eingeben. |
-| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_ , _Data_ und _All_ . 
+| volumeType | Der Typ des Volumes, auf dem der Verschlüsselungsvorgang durchgeführt wird. Gültige Werte sind _OS_, _Data_ und _All_. 
 | forceUpdateTag | Dient zum Übergeben eines eindeutigen Werts (beispielsweise einer GUID), wenn die Ausführung des Vorgangs erzwungen werden muss. |
 | location | Der Standort für alle Ressourcen. |
 
@@ -415,6 +415,7 @@ Die folgenden Linux-Szenarien,- Features und -Technologien werden von Azure Disk
 - VMs der M-Serie mit Datenträgern mit Schreibbeschleunigung
 - Anwenden von ADE auf eine VM, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md) (SSE + CMK) verschlüsselte Datenträger aufweist. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer VM, die mit ADE verschlüsselt ist oder **jemals** mit ADE verschlüsselt war, zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](disk-encryption.md).
+- [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md), insbesondere Dv4, Dsv4, Ev4 und Esv4.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

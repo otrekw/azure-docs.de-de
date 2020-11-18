@@ -3,12 +3,12 @@ title: Konzepte – Private Clouds und Cluster
 description: Hier erfahren Sie mehr über die wichtigsten Funktionen von softwaredefinierten Azure VMware Solution-Rechenzentren und vSphere-Clustern.
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: b261eb0517e9890d9bccf12f2e5748626f4c1ff9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: daa712a722ca3252a49e4f54e0cc9e42de4ffc73
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791017"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337320"
 ---
 #  <a name="azure-vmware-solution-private-cloud-and-cluster-concepts"></a>Azure VMware Solution: Konzepte – Private Clouds und Cluster
 
@@ -52,9 +52,9 @@ Im Folgenden die aktuellen in Clustern privater Azure VMware Solution-Clouds ver
 
 | Software              |    Version   |
 | :---                  |     :---:    |
-| VCSA/vSphere/ESXi |    6.7 U2    | 
-| ESXi                  |    6.7 U2    | 
-| vSAN                  |    6.7 U2    |
+| VCSA/vSphere/ESXi |    6.7 U3    | 
+| ESXi                  |    6.7 U3    | 
+| vSAN                  |    6.7 U3    |
 | NSX-T                 |      2.5     |
 
 Bei allen neuen Clustern in einer privaten Cloud stimmt die Softwareversion mit der aktuell ausgeführten überein. Für alle neuen privaten Clouds in einem Abonnement wird die aktuelle Version des Softwarestapels installiert.

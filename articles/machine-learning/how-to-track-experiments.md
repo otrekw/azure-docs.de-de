@@ -1,7 +1,7 @@
 ---
 title: Protokollieren von ML-Experimenten und -Metriken
 titleSuffix: Azure Machine Learning
-description: Überwachen Sie Ihre ML-Experimente, und überwachen Sie Ausführungsmetriken, um den Modellerstellungsprozess zu verbessern. Fügen Sie die Protokollierung mit „run.log“, „Run.start_logging“ oder „ScriptRunConfig“ zu Ihrem Trainingsskript hinzu.
+description: Aktivieren Sie die Protokollierung für Ihre ML-Trainingsausführungen, um Ausführungsmetriken in Echtzeit zu überwachen und Fehler und Warnungen zu diagnostizieren.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,14 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 6680bdc525c6f07b8330277056413f886412551b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: deeee689c27008ab71df0a050be3d7a6b5109307
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318431"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93361062"
 ---
-# <a name="enable-logging-in-azure-ml-training-runs"></a>Aktivieren der Protokollierung in Azure ML-Trainingsausführungen
+# <a name="enable-logging-in-ml-training-runs"></a>Aktivieren der Protokollierung in ML-Trainingsausführungen
 
 
 Mit dem Python-SDK für Azure Machine Learning können Sie Echtzeitinformationen protokollieren, indem Sie sowohl das standardmäßige Python-Protokollierungspaket als auch SDK-spezifische Funktionen verwenden. Sie können lokal protokollieren und Protokolle an Ihren Arbeitsbereich im Portal senden.

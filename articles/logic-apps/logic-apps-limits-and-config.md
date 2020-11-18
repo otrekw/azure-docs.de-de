@@ -5,13 +5,13 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: jonfan, logicappspm
 ms.topic: article
-ms.date: 10/09/2020
-ms.openlocfilehash: f722345b5be91a09bc513064b476f0b94eda765d
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/06/2020
+ms.openlocfilehash: 7532366d533aa957525235511a1f29649d6f8828
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094505"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94369209"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Grenzwert- und Konfigurationsinformationen für Azure Logic Apps
 
@@ -37,7 +37,7 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 | Maximale Anzahl von `parameters` | 50 | |
 | Maximale Anzahl von `outputs` | 10 | |
 | Maximale Größe für `trackedProperties` | 16.000 Zeichen |
-| Inlinecodeaktion: maximale Anzahl von Codezeichen | 1\.024 Zeichen <p>Für eine Begrenzung auf maximal 100.000 Zeichen erstellen Sie Ihre Logik-Apps mit Visual Studio Code und der [Vorschauversion der **Azure Logic Apps** -Erweiterung](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md). |
+| Inlinecodeaktion: maximale Anzahl von Codezeichen | 1\.024 Zeichen <p>Für eine Begrenzung auf maximal 100.000 Zeichen erstellen Sie Ihre Logik-Apps mit Visual Studio Code und der [Vorschauversion der **Azure Logic Apps**-Erweiterung](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md). |
 
 <a name="run-duration-retention-limits"></a>
 
@@ -69,7 +69,7 @@ Nehmen wir beispielsweise an, dass Sie den Aufbewahrungsgrenzwert von 90 Tagen 
 > [!IMPORTANT]
 > Wenn die Dauer einer Ausführung den aktuellen Aufbewahrungsgrenzwert für Ausführungsverläufe überschreitet, wird die Ausführung aus dem Ausführungsverlauf im Speicher entfernt. Um den Verlust des Ausführungsverlaufs zu vermeiden, stellen Sie sicher, dass die Aufbewahrungsdauer *immer* länger als die längste mögliche Dauer einer Ausführung ist.
 
-1. Suchen Sie Suchfeld des [Azure-Portals](https://portal.azure.com) nach **Logic Apps** , und wählen Sie es aus.
+1. Suchen Sie Suchfeld des [Azure-Portals](https://portal.azure.com) nach **Logic Apps**, und wählen Sie es aus.
 
 1. Suchen Sie Ihre Logik-App, und wählen Sie sie aus. Öffnen Sie Ihre Logik-App im Logik-App-Designer.
 
@@ -108,14 +108,23 @@ Wenn Sie für Ihre Logik-App eine Azure Resource Manager-Vorlage generieren, wir
 
 Dies sind die Grenzwerte für eine einzelne Ausführung der Logik-App:
 
+### <a name="loops"></a>Schleifen
+
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
-| Triggerparallelität | - Unbegrenzt, wenn die Parallelitätssteuerung deaktiviert ist <p><p>- Wenn die Parallelitätssteuerung aktiviert ist, beträgt der Standardgrenzwert 25. Nach der Aktivierung der Parallelität kann dies nicht mehr rückgängig gemacht werden. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>**Hinweis** : Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente für das [Auflösen von Arraybatches](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) reduziert. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Triggerparallelitäts-Grenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
-| Maximale Anzahl von wartenden Ausführungen | - Ohne Parallelität beträgt die Mindestanzahl wartender Ausführungen 1, und die maximale Anzahl beträgt 50. <p><p>- Bei aktivierter Parallelität beträgt die Mindestanzahl wartender Ausführungen 10 zuzüglich der Anzahl paralleler Ausführungen (Triggerparallelität). Sie können die maximale Anzahl bis auf 100 (einschließlich) heraufsetzen. | Dieser Grenzwert beschreibt die maximale Anzahl von Logik-App-Instanzen, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl paralleler Instanzen ausgeführt wird. <p><p>Informationen zum Ändern des Standardlimits finden Sie unter [Ändern des Limits für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
 | Foreach-Arrayelemente | 100.000 | Dieser Grenzwert beschreibt die maximale Anzahl von Arrayelementen, die eine Foreach-Schleife verarbeiten kann. <p><p>Sie können die [Abfrageaktion](logic-apps-perform-data-operations.md#filter-array-action) verwenden, um größere Arrays zu filtern. |
-| Foreach-Parallelität | Wenn die Parallelitätssteuerung deaktiviert ist, beträgt der standardmäßige Grenzwert 20. Der Standardwert kann in einen Wert von 1 bis 50 (einschließlich) geändert werden. | Dieser Grenzwert entspricht der maximalen Anzahl von Foreach-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern des Standardlimits auf einen Wert zwischen 1 und 50 (einschließlich) finden Sie unter [Ändern des Foreach-Parallelitätsgrenzwerts](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von Foreach-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
-| SplitOn-Elemente | - 100.000 ohne Triggerparallelität <p><p>- 100 mit Triggerparallelität | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. <p><p>**Hinweis** : Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente reduziert. |
-| Until-Iterationen | - Standardwert: 60 <p><p>- Maximum: 5.000 | |
+| Foreach-Parallelität | Bei deaktivierter Parallelität: 20 <p><p>Bei aktivierter Parallelität: <p><p>- Standardwert: 20 <br>- Min: 1 <br>- Max: 50 | Dieser Grenzwert entspricht der maximalen Anzahl von Foreach-Schleifeniterationen, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern der „for each“-Parallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-for-each-concurrency) und [Sequenzielles Ausführen von „for each“-Schleifen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-for-each). |
+| Until-Iterationen | - Standardwert: 60 <br>- Min: 1 <br>- Max: 5.000 | Die maximale Anzahl von Zyklen, die eine Until-Schleife während einer Logik-App-Ausführung aufweisen kann. <p><p>Um diesen Grenzwert zu ändern, wählen Sie in der Until-Schleife die Option **Grenzwerte ändern** aus und geben einen Wert für die **Count**-Eigenschaft an. |
+| Until-Timeout | - Standardwert: PT1H (1 Stunde) | Die maximale Zeitspanne, die die Until-Schleife vor dem Beenden ausgeführt wird. Die Angabe erfolgt im [ISO 8601-Format](https://en.wikipedia.org/wiki/ISO_8601). Der Timeoutwert wird für jeden Schleifendurchlauf ausgewertet. Wenn eine Aktion in der Schleife länger als die Zeitüberschreitung dauert, wird der aktuelle Zyklus nicht beendet. Der nächste Zyklus beginnt jedoch nicht, weil die Grenzwertbedingung nicht erfüllt ist. <p><p>Um diesen Grenzwert zu ändern, wählen Sie in der Until-Schleife die Option **Grenzwerte ändern** aus und geben einen Wert für die **Timeout**-Eigenschaft an. |
+||||
+
+### <a name="concurrency-and-debatching"></a>Parallelität und Auflösen von Batches
+
+| Name | Begrenzung | Notizen |
+| ---- | ----- | ----- |
+| Triggerparallelität | Bei deaktivierter Parallelität: Unbegrenzt <p><p>Bei aktivierter Parallelität, die nach dem Aktivieren nicht rückgängig gemacht werden kann: <p><p>- Standardwert: 25 <br>- Min: 1 <br>- Max: 50 | Dieser Grenzwert gibt die maximale Anzahl von Logik-App-Instanzen an, die gleichzeitig bzw. parallel ausgeführt werden können. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente für das [Auflösen von Arraybatches](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch) reduziert. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern der Triggerparallelität](../logic-apps/logic-apps-workflow-actions-triggers.md#change-trigger-concurrency) und [Sequenzielles Auslösen von Instanzen](../logic-apps/logic-apps-workflow-actions-triggers.md#sequential-trigger). |
+| Maximale Anzahl von wartenden Ausführungen | Bei deaktivierter Parallelität: <p><p>- Min: 1 <br>- Max: 50 <p><p>Bei aktivierter Parallelität: <p><p>- Min: 10 plus die Anzahl gleichzeitiger Ausführungen (Triggerparallelität) <br>- Max: 100 | Dieser Grenzwert gibt die maximale Anzahl von Logik-App-Instanzen an, die auf die Ausführung warten können, wenn für Ihre Logik-App bereits die maximale Anzahl gleichzeitiger Instanzen ausgeführt wird. <p><p>Informationen zum Ändern dieses Grenzwerts finden Sie unter [Ändern des Limits für wartende Ausführungen](../logic-apps/logic-apps-workflow-actions-triggers.md#change-waiting-runs). |
+| SplitOn-Elemente | Bei deaktivierter Parallelität: 100.000 <p><p>Bei aktivierter Parallelität: 100 | Für Trigger, die ein Array zurückgeben, können Sie einen Ausdruck angeben, der eine SplitOn-Eigenschaft verwendet, um [Arrayelemente für die Verarbeitung in mehrere Workflowinstanzen aufzuteilen bzw. aufzulösen](../logic-apps/logic-apps-workflow-actions-triggers.md#split-on-debatch), anstatt eine Foreach-Schleife zu verwenden. Dieser Ausdruck verweist auf das Array, das zum Erstellen und Ausführen einer Workflowinstanz für jedes Arrayelement verwendet werden soll. <p><p>**Hinweis**: Wenn Parallelität aktiviert ist, wird das SplitOn-Limit auf 100 Elemente reduziert. |
 ||||
 
 <a name="throughput-limits"></a>
@@ -128,13 +137,57 @@ Dies sind die Grenzwerte für eine einzelne Logik-App-Definition:
 
 | Name | Begrenzung | Notizen |
 | ---- | ----- | ----- |
-| Aktion: Ausführungen pro 5 Minuten | 100.000 ist der Standardgrenzwert, aber 300.000 ist der maximale Grenzwert. | Weitere Informationen zum Ändern des Standardgrenzwerts finden Sie unter [Ausführen Ihre Logik-App im Modus „Hoher Durchsatz“](../logic-apps/logic-apps-workflow-actions-triggers.md#run-high-throughput-mode) (Vorschauversion). Sie können auch die Workload nach Bedarf auf mehrere Logik-Apps verteilen. |
+| Aktion: Ausführungen pro 5 Minuten | 100.000 ist der Standardgrenzwert, aber 300.000 ist der maximale Grenzwert. | Weitere Informationen zum Erhöhen des Grenzwerts auf den Höchstwert für Ihre Logik-App finden Sie unter [Ausführen im Modus mit hohem Durchsatz](#run-high-throughput-mode) (Vorschauversion). Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling). |
 | Aktion: Gleichzeitig ausgehende Aufrufe | ca. 2.500 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
 | Endpunkt zur Laufzeit: Gleichzeitig eingehende Aufrufe | ca. 1.000 | Sie können die Anzahl gleichzeitiger Anforderungen oder die Dauer nach Bedarf verringern. |
 | Endpunkt zur Laufzeit: Read-Aufrufe pro 5 Minuten  | 60.000 | Dieser Grenzwert gilt für Aufrufe, die die unformatierten Eingaben und Ausgaben aus dem Ausführungsverlauf einer Logik-App erhalten. Bei Bedarf können Sie die Workload auf mehrere Apps verteilen. |
 | Endpunkt zur Laufzeit: Invoke-Aufrufe pro 5 Minuten | 45.000 | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. |
 | Inhaltsdurchsatz pro 5 Minuten | 600 MB | Bei Bedarf können Sie eine Workload auch auf mehrere Apps verteilen. |
 ||||
+
+<a name="run-high-throughput-mode"></a>
+
+#### <a name="run-in-high-throughput-mode"></a>Ausführen im Modus mit hohem Durchsatz
+
+Für eine einzelne Logik-App-Definition gilt für die Anzahl von Aktionen, die alle fünf Minuten ausgeführt werden, ein [Standardlimit](../logic-apps/logic-apps-limits-and-config.md#throughput-limits). Zum Erhöhen des Grenzwerts auf den Höchstwert für Ihre Logik-App können Sie den Modus „Hoher Durchsatz“ aktivieren, der sich noch in der Vorschau befindet. Sie können bei Bedarf auch die [Workload auf mehrere Logik-Apps verteilen](../logic-apps/handle-throttling-problems-429-errors.md#logic-app-throttling).
+
+1. Wählen Sie im Azure-Portal im Menü Ihrer Logik-App unter **Einstellungen** die Option **Workfloweinstellungen** aus.
+
+1. Ändern Sie die Einstellung unter **Laufzeitoptionen** > **Hoher Durchsatz** in **Ein**.
+
+   ![Screenshot des Logik-App-Menüs im Azure-Portal mit den „Workfloweinstellungen“ und dem Wert „Ein“ für die Einstellung „Hoher Durchsatz“](./media/logic-apps-limits-and-config/run-high-throughput-mode.png)
+
+Um diese Einstellung in einer ARM-Vorlage für die Bereitstellung Ihrer Logik-App zu aktivieren, fügen Sie im `properties`-Objekt für die Ressourcendefinition Ihrer Logik-App das `runtimeConfiguration`-Objekt hinzu, dessen `operationOptions`-Eigenschaft auf `OptimizedForHighThroughput` festgelegt ist:
+
+```json
+{
+   <template-properties>
+   "resources": [
+      // Start logic app resource definition
+      {
+         "properties": {
+            <logic-app-resource-definition-properties>,
+            <logic-app-workflow-definition>,
+            <more-logic-app-resource-definition-properties>,
+            "runtimeConfiguration": {
+               "operationOptions": "OptimizedForHighThroughput"
+            }
+         },
+         "name": "[parameters('LogicAppName')]",
+         "type": "Microsoft.Logic/workflows",
+         "location": "[parameters('LogicAppLocation')]",
+         "tags": {},
+         "apiVersion": "2016-06-01",
+         "dependsOn": [
+         ]
+      }
+      // End logic app resource definition
+   ],
+   "outputs": {}
+}
+```
+
+Weitere Informationen zur Ressourcendefinition Ihrer Logik-App finden Sie unter [Übersicht: Automatisieren der Bereitstellung für Azure Logic Apps durch Verwenden von Azure Resource Manager-Vorlagen](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md#logic-app-resource-definition).
 
 ### <a name="integration-service-environment-ise"></a>Integrationsdienstumgebung (Integration Service Environment, ISE)
 
@@ -170,8 +223,8 @@ Einige Connectorvorgänge führen asynchrone Aufrufe aus oder lauschen auf Webho
 
 | Name | Grenzwert bei mehreren Mandanten | Grenzwert für Integrationsdienstumgebung | Notizen |
 |------|--------------------|---------------------------------------|-------|
-| Ausgehende Anforderung | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele ausgehender Anforderungen umfassen Aufrufe durch HTTP-Trigger. <p><p>**Tipp** : Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Um Timeoutlimits zu umgehen, wenn Sie eine andere Logik-App aufrufen, die einen [aufrufbaren Endpunkt](logic-apps-http-endpoint.md) besitzt, können Sie stattdessen die integrierte Azure Logic Apps-Aktion verwenden, die Sie in der Connectorauswahl unter **Integriert** finden. |
-| Eingehende Anforderungen | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele eingehender Anforderungen umfassen Aufrufe, die durch Anforderungstrigger und Webhooktrigger empfangen wurden. <p><p>**Hinweis** : Damit der ursprüngliche Aufrufer die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen eine andere Logik-App als geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
+| Ausgehende Anforderung | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele ausgehender Anforderungen umfassen Aufrufe durch HTTP-Trigger. <p><p>**Tipp**: Verwenden Sie für Vorgänge, die länger ausgeführt werden, ein [asynchrones Abrufmuster](../logic-apps/logic-apps-create-api-app.md#async-pattern) oder eine [Until-Schleife](../logic-apps/logic-apps-workflow-actions-triggers.md#until-action). Um Timeoutlimits zu umgehen, wenn Sie eine andere Logik-App aufrufen, die einen [aufrufbaren Endpunkt](logic-apps-http-endpoint.md) besitzt, können Sie stattdessen die integrierte Azure Logic Apps-Aktion verwenden, die Sie in der Connectorauswahl unter **Integriert** finden. |
+| Eingehende Anforderungen | 120 Sekunden <br>(2 Minuten) | 240 Sekunden <br>(4 Minuten) | Beispiele eingehender Anforderungen umfassen Aufrufe, die durch Anforderungstrigger und Webhooktrigger empfangen wurden. <p><p>**Hinweis**: Damit der ursprüngliche Aufrufer die Antwort erhält, müssen alle Schritte in der Antwort innerhalb des Grenzwerts abgeschlossen werden, es sei denn, Sie rufen eine andere Logik-App als geschachtelten Workflow auf. Weitere Informationen hierzu finden Sie unter [Aufrufen, Auslösen oder Schachteln von Logik-Apps](../logic-apps/logic-apps-http-endpoint.md). |
 |||||
 
 <a name="message-size-limits"></a>
@@ -285,7 +338,7 @@ Eine Preisübersicht finden Sie unter [Logic Apps – Preise](https://azure.micr
 | Artefakt | Begrenzung | Notizen |
 | -------- | ----- | ----- |
 | Assembly | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
-| Zuordnung (XSLT-Datei) | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB die [Zuordnungen der REST-API für Azure Logic Apps](/rest/api/logic/maps/createorupdate). <p><p>**Hinweis** : Die Menge der Daten oder Datensätze, die eine Zuordnung erfolgreich verarbeiten kann, basiert auf den Grenzwerten für Nachrichtengröße und Aktionstimeout in Azure Logic Apps. Wenn Sie z. B. eine HTTP-Aktion verwenden, die auf [HTTP-Nachrichtengröße und -Timeoutlimits](#request-limits) basiert, kann eine Zuordnung Daten bis zum HTTP-Nachrichtengrößenlimit verarbeiten, wenn der Vorgang innerhalb des HTTP-Timeoutlimits abgeschlossen wird. |
+| Zuordnung (XSLT-Datei) | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB die [Zuordnungen der REST-API für Azure Logic Apps](/rest/api/logic/maps/createorupdate). <p><p>**Hinweis**: Die Menge der Daten oder Datensätze, die eine Zuordnung erfolgreich verarbeiten kann, basiert auf den Grenzwerten für Nachrichtengröße und Aktionstimeout in Azure Logic Apps. Wenn Sie z. B. eine HTTP-Aktion verwenden, die auf [HTTP-Nachrichtengröße und -Timeoutlimits](#request-limits) basiert, kann eine Zuordnung Daten bis zum HTTP-Nachrichtengrößenlimit verarbeiten, wenn der Vorgang innerhalb des HTTP-Timeoutlimits abgeschlossen wird. |
 | Schema | 8 MB | Verwenden Sie zum Hochladen von Dateien über 2 MB ein [Azure Storage-Konto und einen Blobcontainer](../logic-apps/logic-apps-enterprise-integration-schemas.md). |
 ||||
 
@@ -326,14 +379,14 @@ Wenn Sie eine Logik-App löschen, werden keine neuen Ausführungen instanziiert.
 
 ## <a name="firewall-configuration-ip-addresses-and-service-tags"></a>Firewallkonfiguration: IP-Adressen und Diensttags
 
-Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe verwendet, hängen von der Region ab, in der sich Ihre Logik-App befindet. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Einige [Power Automate](/power-automate/getting-started)-Aufrufe, z. B. **HTTP** - und **HTTP + OpenAPI** -Anforderungen, werden direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/flow/limits-and-config#ip-address-configuration).
+Die IP-Adressen, die Azure Logic Apps für eingehende und ausgehende Aufrufe verwendet, hängen von der Region ab, in der sich Ihre Logik-App befindet. Für *alle* Logik-Apps in derselben Region werden dieselben IP-Adressbereiche verwendet. Einige [Power Automate](/power-automate/getting-started)-Aufrufe, z. B. **HTTP**- und **HTTP + OpenAPI**-Anforderungen, werden direkt über den Azure Logic Apps-Dienst geleitet und stammen von den hier aufgeführten IP-Adressen. Weitere Informationen zu von Power Automate verwendeten IP-Adressen finden Sie unter [Grenzwerte und Konfiguration in Microsoft Flow](/flow/limits-and-config#ip-address-configuration).
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional [Diensttags](../virtual-network/service-tags-overview.md) verwenden, anstatt die Logic Apps-IP-Adressen für jede Region anzugeben (weiter unten in diesem Abschnitt beschrieben).
 > Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist:
 >
-> * **LogicAppsManagement** : Steht für die IP-Adresspräfixe des Logic Apps-Diensts in eingehender Richtung.
-> * **LogicApps** : Steht für die IP-Adresspräfixe des Logic Apps-Diensts in ausgehender Richtung.
+> * **LogicAppsManagement**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in eingehender Richtung.
+> * **LogicApps**: Steht für die IP-Adresspräfixe des Logic Apps-Diensts in ausgehender Richtung.
 
 * Für [Azure China 21Vianet](/azure/china/) sind keine festen oder reservierten IP-Adressen für [benutzerdefinierte Connectors](../logic-apps/custom-connector-overview.md) und [verwaltete Connectors](../connectors/apis-list.md#managed-api-connectors) (z. B. Azure Storage, SQL Server, Office 365 Outlook usw.) verfügbar.
 
@@ -419,7 +472,7 @@ In diesem Abschnitt sind die IP-Adressen für die ausgehende Richtung aufgeführ
 
 > [!TIP]
 > Zur Reduzierung der Komplexität beim Erstellen von Sicherheitsregeln können Sie optional das [Diensttag](../virtual-network/service-tags-overview.md) **LogicApps** verwenden, anstatt für jede Region Logic Apps-IP-Adresspräfixe für die ausgehende Richtung anzugeben.
-> Bei verwalteten Connectors können Sie optional das **AzureConnectors** -Diensttag verwenden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist. 
+> Bei verwalteten Connectors können Sie optional das **AzureConnectors**-Diensttag verwenden, anstatt für jede Region IP-Adresspräfixe des verwalteten Connectors für die ausgehende Richtung anzugeben. Diese Tags funktionieren in den Regionen, in denen der Logic Apps-Dienst verfügbar ist. 
 
 <a name="multi-tenant-outbound"></a>
 

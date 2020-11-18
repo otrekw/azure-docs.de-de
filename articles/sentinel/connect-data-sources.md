@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 97873c9f59dc0d99293d2b1ebaf87af309dbcf47
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 432104c7e2cb9486dfb47a793ae73829d8705b60
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92208293"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655815"
 ---
 # <a name="connect-data-sources"></a>Herstellen einer Verbindung mit Datenquellen
 
@@ -34,7 +34,7 @@ Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindu
 
    ![Konfigurieren von Datenconnectors](./media/collect-data/opened-connector-page.png)
   
-1. Klicken Sie auf die Registerkarte **Nächste Schritte** , um eine Liste mit vorgefertigten Inhalten anzuzeigen, die von Azure Sentinel für den spezifischen Datentyp bereitgestellt wird.
+1. Klicken Sie auf die Registerkarte **Nächste Schritte**, um eine Liste mit vorgefertigten Inhalten anzuzeigen, die von Azure Sentinel für den spezifischen Datentyp bereitgestellt wird.
 
    ![Nächste Schritte für Connectors](./media/collect-data/data-insights.png)
  
@@ -43,7 +43,7 @@ Nachdem Sie Azure Sentinel aktiviert haben, müssen Sie als Erstes eine Verbindu
 
 Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
 
-- **Dienst-zu-Dienst-Integration** :<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
+- **Dienst-zu-Dienst-Integration**:<br> Einige Dienste werden nativ verbunden, z. B. AWS und Microsoft-Dienste. Diese Dienste nutzen die Azure-Basiskomponenten für die sofortige Integration. Die folgenden Lösungen können mit wenigen Klicks verbunden werden:
     - [Amazon Web Services – CloudTrail](connect-aws.md)
     - [Azure Active Directory](connect-azure-active-directory.md) – Überwachungs- und Anmeldeprotokolle
     - [Azure-Aktivität](connect-azure-activity.md)
@@ -64,7 +64,7 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Windows-Firewall](connect-windows-firewall.md)
     - [Windows-Sicherheitsereignisse](connect-windows-security-events.md)
 
-- **Externe Lösungen per API** : Einige Datenquellen werden mit APIs verbunden, die von der verbundenen Datenquelle bereitgestellt werden. Normalerweise werden bei den meisten Sicherheitstechnologien verschiedene APIs bereitgestellt, über die Ereignisprotokolle abgerufen werden können. Mit den APIs wird eine Verbindung mit Azure Sentinel hergestellt, und es werden bestimmte Datentypen erfasst und an Azure Log Analytics gesendet. Per API verbundene Appliances sind:
+- **Externe Lösungen per API**: Einige Datenquellen werden mit APIs verbunden, die von der verbundenen Datenquelle bereitgestellt werden. Normalerweise werden bei den meisten Sicherheitstechnologien verschiedene APIs bereitgestellt, über die Ereignisprotokolle abgerufen werden können. Mit den APIs wird eine Verbindung mit Azure Sentinel hergestellt, und es werden bestimmte Datentypen erfasst und an Azure Log Analytics gesendet. Per API verbundene Appliances sind:
     
     - [Alcide kAudit](connect-alcide-kaudit.md)
     - [Barracuda WAF](connect-barracuda.md)
@@ -83,7 +83,7 @@ Die folgenden Datenverbindungsmethoden werden von Azure Sentinel unterstützt:
     - [Zimperium](connect-zimperium-mtd.md)
 
 
-- **Externe Lösungen per Agent** : Azure Sentinel kann über einen Agent mit allen anderen Datenquellen verbunden werden, die ein Echtzeit-Protokollstreaming über das Syslog-Protokoll durchführen können.
+- **Externe Lösungen per Agent**: Azure Sentinel kann über einen Agent mit allen anderen Datenquellen verbunden werden, die ein Echtzeit-Protokollstreaming über das Syslog-Protokoll durchführen können.
 
     Für die meisten Appliances wird das Syslog-Protokoll zum Senden von Nachrichten genutzt, die das eigentliche Protokoll und die Daten zum Protokoll enthalten. Das Format der Protokolle variiert zwar, aber die meisten Appliances unterstützen die CEF-basierte Formatierung für Protokolldaten. 
 
@@ -137,17 +137,17 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | AzureActivity | [Herstellen einer Verbindung mit Azure-Aktivitäten](connect-azure-activity.md) und [Übersicht über Aktivitätsprotokolle](../azure-monitor/platform/platform-logs-overview.md)| &#10003; | |
 | AuditLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | &#10003; | |
 | SigninLogs | [Herstellen einer Verbindung mit Azure AD](connect-azure-active-directory.md)  | &#10003; | |
-| AzureFirewall |[Azure-Diagnose](../firewall/tutorial-diagnostics.md) | &#10003; | |
-| InformationProtectionLogs_CL  | [Azure Information Protection-Berichte](https://docs.microsoft.com/azure/information-protection/reports-aip)<br>[Herstellen einer Verbindung mit Azure Information Protection](connect-azure-information-protection.md)  | &#10003; | Dabei wird in der Regel die Funktion **InformationProtectionEvents** zusätzlich zum Datentyp verwendet. Weitere Informationen finden Sie unter [Ändern der Berichte und Erstellen von benutzerdefinierten Abfragen](https://docs.microsoft.com/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries).|
+| AzureFirewall |[Azure-Diagnose](../firewall/firewall-diagnostics.md) | &#10003; | |
+| InformationProtectionLogs_CL  | [Azure Information Protection-Berichte](/azure/information-protection/reports-aip)<br>[Herstellen einer Verbindung mit Azure Information Protection](connect-azure-information-protection.md)  | &#10003; | Dabei wird in der Regel die Funktion **InformationProtectionEvents** zusätzlich zum Datentyp verwendet. Weitere Informationen finden Sie unter [Ändern der Berichte und Erstellen von benutzerdefinierten Abfragen](/azure/information-protection/reports-aip#how-to-modify-the-reports-and-create-custom-queries).|
 | AzureNetworkAnalytics_CL  | [Schema der Datenverkehrsanalyse](../network-watcher/traffic-analytics.md) [Datenverkehrsanalyse](../network-watcher/traffic-analytics.md)  | | |
 | CommonSecurityLog  | [Herstellen einer Verbindung mit CEF](connect-common-event-format.md)  | &#10003; | |
 | OfficeActivity | [Herstellen einer Verbindung mit Office 365](connect-office-365.md) | &#10003; | |
-| SecurityEvents | [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)  | &#10003; | Informationen zu den Arbeitsmappen für unsichere Protokolle finden Sie unter [Einrichten einer Arbeitsmappe für unsichere Protokolle](/azure/sentinel/quickstart-get-visibility#use-built-in-workbooks).  |
+| SecurityEvents | [Herstellen einer Verbindung mit Windows-Sicherheitsereignissen](connect-windows-security-events.md)  | &#10003; | Informationen zu den Arbeitsmappen für unsichere Protokolle finden Sie unter [Einrichten einer Arbeitsmappe für unsichere Protokolle](./quickstart-get-visibility.md#use-built-in-workbooks).  |
 | syslog | [Herstellen einer Verbindung mit Syslog](connect-syslog.md) | &#10003; | |
-| Microsoft Web Application Firewall (WAF) – (AzureDiagnostics) |[Herstellen einer Verbindung mit Microsoft Web Application Firewall](connect-microsoft-waf.md) | &#10003; | |
+| Microsoft Web Application Firewall (WAF) – (AzureDiagnostics) |[Herstellen einer Verbindung mit Microsoft Web Application Firewall](./connect-azure-waf.md) | &#10003; | |
 | SymantecICDx_CL | [Herstellen einer Verbindung mit Symantec](connect-symantec.md) | &#10003; | |
 | ThreatIntelligenceIndicator  | [Herstellen einer Verbindung mit Threat Intelligence](connect-threat-intelligence.md)  | &#10003; | |
-| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor-Dienstzuordnung](../azure-monitor/insights/service-map.md)<br>[Onboarding von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-onboard.md) <br> [Aktivieren von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Verwenden von Onboarding für einen einzelnen virtuellen Computer](../azure-monitor/insights/vminsights-enable-single-vm.md)<br>  [Verwenden von Onboarding per Richtlinie](../azure-monitor/insights/vminsights-enable-at-scale-policy.md)| &#10007; | VM Insights-Arbeitsmappe  |
+| VMConnection <br> ServiceMapComputer_CL<br> ServiceMapProcess_CL|  [Azure Monitor-Dienstzuordnung](../azure-monitor/insights/service-map.md)<br>[Onboarding von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Aktivieren von Azure Monitor-VM-Insights](../azure-monitor/insights/vminsights-enable-overview.md) <br> [Verwenden von Onboarding für einen einzelnen virtuellen Computer](../azure-monitor/insights/vminsights-enable-portal.md)<br>  [Verwenden von Onboarding per Richtlinie](../azure-monitor/insights/vminsights-enable-policy.md)| &#10007; | VM Insights-Arbeitsmappe  |
 | DnsEvents | [Herstellen einer Verbindung mit DNS](connect-dns.md) | &#10003; | |
 | W3CIISLog | [Herstellen einer Verbindung mit IIS-Protokollen](../azure-monitor/platform/data-sources-iis-logs.md)  | &#10007; | |
 | WireData | [Herstellen einer Verbindung mit Wire Data](../azure-monitor/insights/wire-data.md) | &#10007; | |
@@ -157,7 +157,7 @@ Alternativ können Sie den Agent manuell auf einem vorhandenen virtuellen Azure-
 | ASC SecurityAlert  | [Verbinden von Azure Defender-Benachrichtigungen](connect-azure-security-center.md) aus Azure Security Center  | &#10003; | |
 | MCAS SecurityAlert  | [Herstellen einer Verbindung mit Microsoft Cloud App Security](connect-cloud-app-security.md)  | &#10003; | |
 | SecurityAlert | | | |
-| Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](https://docs.microsoft.com/sysinternals/downloads/sysmon). |
+| Sysmon (Ereignis) | [Herstellen einer Verbindung mit Sysmon](https://azure.microsoft.com/blog/detecting-in-memory-attacks-with-sysmon-and-azure-security-center)<br> [Herstellen einer Verbindung mit Windows-Ereignissen](../azure-monitor/platform/data-sources-windows-events.md) <br> [Sysmon-Parser herunterladen](https://github.com/Azure/Azure-Sentinel/blob/master/Parsers/Sysmon/Sysmon-v10.42-Parser.txt)| &#10007; | Die Sysmon-Sammlung wird auf virtuellen Computern standardmäßig nicht installiert. Weitere Informationen zum Installieren des Sysmon-Agents finden Sie unter [Sysmon](/sysinternals/downloads/sysmon). |
 | ConfigurationData  | [Automatisieren des VM-Bestands](../automation/change-tracking/overview.md)| &#10007; | |
 | ConfigurationChange  | [Automatisieren der VM-Nachverfolgung](../automation/change-tracking/overview.md) | &#10007; | |
 | F5 BIG-IP | [Herstellen einer Verbindung mit F5 BIG-IP](https://devcentral.f5.com/s/articles/Integrating-the-F5-BIGIP-with-Azure-Sentinel)  | &#10007; | |

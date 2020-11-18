@@ -1,7 +1,7 @@
 ---
 title: 'Execute R Script: Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie das Modul Execute R Script in Azure Machine Learning zum Ausführen von R-Code verwendet wird.
+description: Erfahren Sie, wie Sie mit dem Modul Execute R Script im Azure Machine Learning-Designer benutzerdefinierten R-Code ausführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: 0a3dbb42e69978a8a4895f44b57cc3ca5353e799
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3e94172096daf5fd06549f8645d05b874948a917
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323737"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420817"
 ---
 # <a name="execute-r-script-module"></a>Execute R Script-Module
 
@@ -147,11 +147,11 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
 
 1. Stellen Sie Verbindungen mit sämtlichen Eingaben her, die das Skript benötigt. Eingaben sind optional und können Daten sowie zusätzlichen R-Code enthalten.
 
-    * **Dataset1** : Verweisen Sie auf die erste Eingabe als `dataframe1`. Das eingegebene Dataset muss als CSV-, TSV- oder ARFF-Datei formatiert sein. Oder Sie können eine Verbindung mit einem Azure Machine Learning-Dataset herstellen.
+    * **Dataset1**: Verweisen Sie auf die erste Eingabe als `dataframe1`. Das eingegebene Dataset muss als CSV-, TSV- oder ARFF-Datei formatiert sein. Oder Sie können eine Verbindung mit einem Azure Machine Learning-Dataset herstellen.
 
-    * **Dataset2** : Verweisen Sie auf die zweite Eingabe als `dataframe2`. Dieses Dataset muss auch das Format CSV, TSV oder ARFF aufweisen oder ein Azure Machine Learning-Dataset sein.
+    * **Dataset2**: Verweisen Sie auf die zweite Eingabe als `dataframe2`. Dieses Dataset muss auch das Format CSV, TSV oder ARFF aufweisen oder ein Azure Machine Learning-Dataset sein.
 
-    * **Script Bundle** : Die dritte Eingabe akzeptiert ZIP-Dateien. Eine ZIP-Datei kann mehrere Dateien und Dateitypen enthalten.
+    * **Script Bundle**: Die dritte Eingabe akzeptiert ZIP-Dateien. Eine ZIP-Datei kann mehrere Dateien und Dateitypen enthalten.
 
 1. Geben oder fügen Sie in das Textfeld **R script** (R-Skript) ein gültiges R-Skript ein.
 
@@ -194,12 +194,12 @@ Im Designer gespeicherte Datasets werden automatisch in einen R-Datenrahmen konv
     > [!NOTE]
     > Vorhandener R-Code kann kleinere Änderungen erfordern, damit er in einer Designer-Pipeline ausgeführt werden kann. Beispielsweise müssen Eingabedaten, die Sie im CSV-Format bereitstellen, explizit in ein Dataset konvertiert werden, bevor Sie sie in Ihrem Code verwenden können. Daten- und Spaltentypen, die in der Sprache R verwendet werden, unterscheiden sich ebenfalls durch einige Besonderheiten von den im Designer verwendeten Daten- und Spaltentypen.
 
-1. Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle** -Port, um Fehler wie *CommandLine überschreitet das Limit von 16.597 Zeichen* zu vermeiden. 
+1. Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle**-Port, um Fehler wie *CommandLine überschreitet das Limit von 16.597 Zeichen* zu vermeiden. 
     
     1. Bündeln Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei.
     1. Laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. 
     1. Ziehen Sie das Datasetmodul aus der Liste *Datasets* im linken Modulbereich auf die Erstellungsseite des Designers. 
-    1. Verbinden Sie das Dataset mit dem **Script Bundle** -Port des **Execute R Script** -Moduls.
+    1. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
     
     Im Folgenden finden Sie den Beispielcode zum Verwenden des Skripts im Script Bundle:
 
@@ -237,7 +237,7 @@ Es gibt viele Möglichkeiten, wie Sie Ihre Pipeline mithilfe eines benutzerdefin
 
 Das Modul „Execute R Script“ unterstützt beliebige R-Skriptdateien als Eingaben. Sie müssen sie als Teil der ZIP-Datei in Ihren Arbeitsbereich hochladen, um sie verwenden zu können.
 
-1. Wechseln Sie zur Ressourcenseite **Datasets** , um eine ZIP-Datei, die R-Code enthält, in Ihren Arbeitsbereich hochzuladen. Wählen Sie **Dataset erstellen** aus. Anschließend wählen Sie **Aus lokaler Datei** und die Option **Datei** für den Datasettyp aus.  
+1. Wechseln Sie zur Ressourcenseite **Datasets**, um eine ZIP-Datei, die R-Code enthält, in Ihren Arbeitsbereich hochzuladen. Wählen Sie **Dataset erstellen** aus. Anschließend wählen Sie **Aus lokaler Datei** und die Option **Datei** für den Datasettyp aus.  
 
 1. Überprüfen Sie, ob die ZIP-Datei in der Liste **My Datasets** (Meine Datasets) unter der Kategorie **Datasets** in der linken Modulstruktur angezeigt wird.
 
@@ -292,7 +292,7 @@ Dieses Beispiel zeigt, wie Sie ein Dataset in einer ZIP-Datei als Eingabe für d
 1. Erstellen Sie die Datendatei im CSV-Format, und nennen Sie sie **mydatafile.csv**.
 1. Erstellen Sie eine ZIP-Datei, und fügen Sie die CSV-Datei dem Archiv hinzu.
 1. Laden Sie die ZIP-Datei in Ihren Azure Machine Learning-Arbeitsbereich hoch. 
-1. Verbinden Sie das resultierende Dataset mit der **ScriptBundle** -Eingabe Ihres Moduls **Execute R Script**.
+1. Verbinden Sie das resultierende Dataset mit der **ScriptBundle**-Eingabe Ihres Moduls **Execute R Script**.
 1. Verwenden Sie den folgenden Code, um die CSV-Daten aus der ZIP-Datei zu lesen.
 
 ```R

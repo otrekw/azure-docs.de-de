@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 40b777342c2c565efc5b40d361a259c98eae693c
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91739934"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337707"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box
 
@@ -55,40 +55,40 @@ Das Konfigurieren eines kundenseitig verwalteten Schlüssels für Azure Data Box
 
     ![Auswählen des kundenseitig verwalteten Schlüssels](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3.png)
 
-5. Auf dem Blatt **Schlüssel aus Azure Key Vault auswählen** wird das Abonnementfeld automatisch aufgefüllt. Für **Schlüsseltresor** können Sie einen vorhandenen Schlüsseltresor aus der Dropdownliste auswählen.
+4. Auf dem Blatt **Schlüssel aus Azure Key Vault auswählen** wird das Abonnementfeld automatisch aufgefüllt. Für **Schlüsseltresor** können Sie einen vorhandenen Schlüsseltresor aus der Dropdownliste auswählen.
 
-    ![Erstellen einer neuen Azure Key Vault-Instanz](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-31.png)
+    ![Auswählen einer vorhandenen Azure Key Vault-Instanz](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-3-a.png)
 
     Sie können auch **Neu erstellen** auswählen, um einen neuen Schlüsseltresor zu erstellen. Geben Sie auf dem Blatt **Schlüsseltresor erstellen** die Ressourcengruppe und den Namen des Schlüsseltresors ein. Stellen Sie sicher, dass **Vorläufiges Löschen** und **Löschschutz** aktiviert sind. Behalten Sie alle anderen Standardeinstellungen bei. Klicken Sie auf **Überprüfen + erstellen**.
 
-    ![Erstellen einer neuen Azure Key Vault-Instanz – 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Überprüfen und Erstellen einer Azure Key Vault-Instanz](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
-7. Überprüfen Sie die Informationen im Zusammenhang mit Ihrem Schlüsseltresor, und wählen Sie **Erstellen** aus. Warten Sie einige Minuten, bis die Erstellung des Schlüsseltresors abgeschlossen ist.
+5. Überprüfen Sie die Informationen im Zusammenhang mit Ihrem Schlüsseltresor, und wählen Sie **Erstellen** aus. Warten Sie einige Minuten, bis die Erstellung des Schlüsseltresors abgeschlossen ist.
 
-    ![Azure Key Vault erstellen](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
+    ![Erstellen einer Azure Key Vault-Instanz mit Ihren Einstellungen](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-5.png)
 
-8. Unter **Schlüssel aus Azure Key Vault auswählen** können Sie einen Schlüssel im vorhandenen Schlüsseltresor auswählen.
+6. Unter **Schlüssel aus Azure Key Vault auswählen** können Sie einen Schlüssel im vorhandenen Schlüsseltresor auswählen.
 
-    ![Erstellen eines neuen Schlüssels in Azure Key Vault – 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Auswählen des Schlüssels aus Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
-9. Wenn Sie einen neuen Schlüssel erstellen möchten, wählen Sie **Neu erstellen** aus, um einen Schlüssel zu erstellen. Der RSA-Schlüssel kann eine Größe von 2048 oder mehr haben.
+7. Wenn Sie einen neuen Schlüssel erstellen möchten, wählen Sie **Neu erstellen** aus, um einen Schlüssel zu erstellen. Der RSA-Schlüssel kann eine Größe von 2048 oder mehr haben.
 
-    ![Erstellen eines neuen Schlüssels in Azure Key Vault – 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Erstellen eines neuen Schlüssels in Azure Key Vault](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6-a.png)
 
-10. Geben Sie den Namen für Ihren Schlüssel an, behalten Sie ansonsten die Standardeinstellungen bei, und wählen Sie **Erstellen** aus. 
+8. Geben Sie den Namen für Ihren Schlüssel an, behalten Sie ansonsten die Standardeinstellungen bei, und wählen Sie **Erstellen** aus.
 
-    ![Erstellen eines neuen Schlüssels](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
+    ![Benennen eines neuen Schlüssels](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-7.png)
 
 
-11. Sie werden benachrichtigt, dass ein Schlüssel in Ihrem Schlüsseltresor erstellt wurde. Wählen Sie die **Version** und dann **Auswählen** aus.
+9. Sie werden benachrichtigt, dass ein Schlüssel in Ihrem Schlüsseltresor erstellt wurde. Wählen Sie die **Version** und dann **Auswählen** aus.
 
-    ![Neu erstellter Schlüssel im Schlüsseltresor](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
+    ![Auswählen der Version für einen neuen Schlüssel](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-8.png)
 
-12. Im Bereich **Verschlüsselungstyp** werden der Schlüsseltresor und der Schlüssel angezeigt, der als kundenseitig verwalteter Schlüssel ausgewählt wurde.
+10. Im Bereich **Verschlüsselungstyp** werden der Schlüsseltresor und der Schlüssel angezeigt, der als kundenseitig verwalteter Schlüssel ausgewählt wurde.
 
     ![Schlüssel und Schlüsseltresor für kundenseitig verwalteten Schlüssel](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-9.png)
 
-13. Speichern Sie den Schlüssel. 
+11. Speichern Sie den Schlüssel. 
 
     ![Speichern des kundenseitig verwalteten Schlüssels](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-10.png)
 

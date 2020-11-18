@@ -1,7 +1,7 @@
 ---
 title: Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
 titleSuffix: Azure Machine Learning
-description: Überwachen Sie Ihre Azure ML-Experimente, und zeigen Sie Ausführungsmetriken an, um die Modellerstellung zu verbessern. Verwenden Sie Widgets und das Studio-Portal, um den Ausführungsstatus und Ausführungsaufzeichnungen anzuzeigen.
+description: Verwenden Sie Jupyter-Widgets und Azure Machine Learning Studio, um Ihre ML-Experimente zu überwachen und Ausführungsmetriken anzuzeigen.
 services: machine-learning
 author: likebupt
 ms.author: keli19
@@ -11,16 +11,14 @@ ms.subservice: core
 ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7929c80f4f90de82c516b746310b5e58819a16bc
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 845160d92100a27c32f16eddcd1f36e9e8624e80
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316681"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360597"
 ---
 # <a name="monitor-and-view-ml-run-logs-and-metrics"></a>Überwachen und Anzeigen von ML-Ausführungsprotokollen und -metriken
-
-
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Ausführungen überwachen und die zugehörigen Protokolle anzeigen. Bevor Sie Protokolle anzeigen können, müssen Sie sie zuerst aktivieren. Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung in Azure ML-Trainingsausführungen](how-to-track-experiments.md).
 
@@ -58,7 +56,7 @@ Sobald eine Ausführung abgeschlossen ist, wird sie nicht mehr auf dieser Seite 
 
 ## <a name="monitor-runs-using-the-jupyter-notebook-widget"></a>Überwachen von Ausführungen mit dem Jupyter Notebook-Widget
 
-Wenn Sie Ausführungen mithilfe der **ScriptRunConfig** -Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
+Wenn Sie Ausführungen mithilfe der **ScriptRunConfig**-Methode übermitteln, können Sie den Fortschritt der Ausführung mit dem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py) anzeigen. Ebenso wie die Übermittlung der Ausführung ist das Widget asynchron und stellt alle 10 bis 15 Sekunden Liveupdates bereit, bis der Auftrag abgeschlossen ist.
 
 Zeigen Sie das Jupyter-Widget an, während Sie darauf warten, dass die Ausführung abgeschlossen wird.
     

@@ -1,7 +1,7 @@
 ---
 title: 'Two-Class Logistic Regression: Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit dem Modul Two-Class Logistic Regression in Azure Machine Learning ein logistisches Regressionsmodell erstellen, mit dem Sie zwei (und nur zwei) Ergebnisse vorhersagen können.
+description: Erfahren Sie, wie Sie mit dem Modul Two-Class Logistic Regression in Azure Machine Learning einen binären Klassifizierer erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
-ms.openlocfilehash: 68bd42b6e9f1498db294b57d0ea1ffdac5245be8
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2e29a666f4d478e11986f834cff94d9743223f22
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309976"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420579"
 ---
 # <a name="two-class-logistic-regression-module"></a>Modul „Two-Class Logistic Regression“ (Logistische Regression mit zwei Klassen)
 
@@ -22,7 +22,7 @@ In diesem Artikel wird ein Modul im Azure Machine Learning-Designer beschrieben.
 
 Verwenden Sie dieses Modul, um ein logistisches Regressionsmodell zu erstellen, mit dem Sie zwei (und nur zwei) Ergebnisse vorhersagen können. 
 
-Die logistische Regression ist eine bekannte statistische Methode, die zur Modellierung vieler Arten von Problemen verwendet wird. Dieser Algorithmus ist eine *überwachte Lernmethode* , weshalb Sie ein Dataset bereitstellen müssen, das bereits die Ergebnisse zum Trainieren des Modells enthält.  
+Die logistische Regression ist eine bekannte statistische Methode, die zur Modellierung vieler Arten von Problemen verwendet wird. Dieser Algorithmus ist eine *überwachte Lernmethode*, weshalb Sie ein Dataset bereitstellen müssen, das bereits die Ergebnisse zum Trainieren des Modells enthält.  
 
 ### <a name="about-logistic-regression"></a>Informationen zur logistischen Regression  
 
@@ -62,7 +62,7 @@ Beispielsweise kann die Bezeichnungsspalte [Abgestimmt] mit den möglichen Werte
     >
     > Für logistische Regressionsmodelle wurden verschiedene lineare Kombinationen von L1- und L2-Begriffen entwickelt: zum Beispiel [Regularisierung mit elastischem Netz](https://wikipedia.org/wiki/Elastic_net_regularization). Wir empfehlen, dass Sie sich auf diese Kombinationen beziehen, um eine lineare Kombination zu definieren, die in Ihrem Modell wirksam ist.
       
-5.  Geben Sie für **Memory size for L-BFGS** (Speichergröße für L-BFGS) die Speichergröße an, die für die *L-BFGS* -Optimierung verwendet werden soll.  
+5.  Geben Sie für **Memory size for L-BFGS** (Speichergröße für L-BFGS) die Speichergröße an, die für die *L-BFGS*-Optimierung verwendet werden soll.  
   
      L-BFGS steht für „limited memory Broyden-Fletcher-Goldfarb-Shanno“. Es handelt sich um einen Optimierungsalgorithmus, der häufig zur Parameterschätzung verwendet wird. Dieser Parameter gibt die Anzahl der bisherigen Positionen und Gradienten an, die für die Berechnung des nächsten Schritts gespeichert werden sollen.  
   

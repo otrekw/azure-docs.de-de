@@ -1,7 +1,7 @@
 ---
 title: Erstellen und Bereitstellen von Modellen mithilfe von AutoML
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie mit Azure Machine Learning automatisierte Machine Learning-Modelle erstellen, überprüfen und bereitstellen.
+description: Verwenden Sie Azure Machine Learning Studio zum Erstellen, Überprüfen und Bereitstellen von Modellen für automatisiertes maschinelles Lernen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.reviewer: nibaccam
 ms.date: 07/10/2020
 ms.topic: conceptual
-ms.custom: how-to
-ms.openlocfilehash: ad84d3d3fd58edc6f7967c6f50440dcc90625617
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, automl
+ms.openlocfilehash: 0c697e6332b757e1d135a77b70f33a6e32528309
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311268"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358897"
 ---
 # <a name="create-review-and-deploy-automated-machine-learning-models-with-azure-machine-learning"></a>Erstellen, Überprüfen und Bereitstellen von automatisierten Machine Learning-Modellen mit Azure Machine Learning
 
@@ -126,9 +126,9 @@ Andernfalls wird eine Liste ihrer letzten automatisierten Machine Learning-Exper
     
         1. Aktivieren Sie Deep Learning.
     
-        1. Auswählen der *Zeitspalte* : Diese Spalte enthält die zu verwendenden Zeitdaten.
+        1. Auswählen der *Zeitspalte*: Diese Spalte enthält die zu verwendenden Zeitdaten.
 
-        1. Auswählen des *Vorhersagehorizonts* : Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
+        1. Auswählen des *Vorhersagehorizonts*: Geben Sie an, wie viele Zeiteinheiten (Minuten/Stunden/Tage/Wochen/Monate/Jahre) das Modell die Zukunft vorhersagen können soll. Je weiter das Modell die Zukunft vorhersagen muss, desto ungenauer wird es. [Weitere Informationen zu Vorhersagen und zum Vorhersagehorizont](how-to-auto-train-forecast.md).
 
 1. (Optional:) Anzeigen weiterer Konfigurationseinstellungen: zusätzliche Einstellungen, mit denen Sie den Trainingsauftrag besser steuern können. Andernfalls werden die Standardwerte auf Basis der Experimentauswahl und -daten angewendet. 
 

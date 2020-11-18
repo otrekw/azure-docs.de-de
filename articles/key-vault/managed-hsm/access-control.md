@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 803dc4d1a7b78df891780eb741cba4e57ab2d5dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 816941fe0ec3a81c41da56acedcedf2de7febe74
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784421"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445233"
 ---
 # <a name="managed-hsm-access-control"></a>Zugriffssteuerung für verwaltetes HSM
 
@@ -35,7 +35,7 @@ Für die Authentifizierung verwenden beide Ebenen Azure Active Directory. Für d
 
 Wenn ein verwaltetes HSM erstellt wird, stellt der Anforderer auch eine Liste von Datenebenenadministratoren bereit (es werden alle [Sicherheitsprinzipale](../../role-based-access-control/overview.md#security-principal) unterstützt). Nur diese Administratoren können auf die Datenebene des verwalteten HSMs zuzugreifen, um wichtige Vorgänge durchzuführen und die Rollenzuweisungen der Datenebene zu verwalten (Lokale RBAC für verwaltetes HSM).
 
-Das Berechtigungsmodell für beide Ebenen verwendet dieselbe Syntax (RBAC), aber sie werden auf verschiedenen Ebenen erzwungen, und die Rollenzuweisungen verwenden unterschiedliche Bereiche. Die RBAC der Verwaltungsebene wird von Azure Resource Manager erzwungen, während die RBAC der Datenebene vom verwalteten HSM selbst durchgesetzt wird.
+Das Berechtigungsmodell für beide Ebenen verwendet dieselbe Syntax, aber sie werden auf verschiedenen Ebenen erzwungen, und die Rollenzuweisungen verwenden unterschiedliche Bereiche. Auf Verwaltungsebene wird Azure RBAC von Azure Resource Manager erzwungen, während auf der Datenebene vom verwalteten HSM selbst die lokale RBAC des verwalteten HSM durchgesetzt wird.
 
 > [!IMPORTANT]
 > Die Gewährung des Zugriffs auf die Verwaltungsebene eines verwalteten HSMs für einen Sicherheitsprinzipalen ermöglicht ihnen keinen Zugriff auf die Datenebene für den Zugriff auf Schlüssel oder Rollenzuweisungen der Datenebene (Lokale RBAC für verwaltetes HSM). Diese Isolation ist so konzipiert, dass eine unbeabsichtigte Erweiterung von Berechtigungen, die den Zugriff auf in verwaltetem HSM gespeicherte Schlüssel beeinträchtigen, verhindert wird.
@@ -63,20 +63,20 @@ Die folgende Tabelle zeigt die Endpunkte für die Verwaltungs- und Datenebene.
 | Zugriffs&nbsp;ebene | Zugriffsendpunkte | Operationen (Operations) | Zugriffssteuerungsmechanismus |
 | --- | --- | --- | --- |
 | Verwaltungsebene | **Global:**<br> management.azure.com:443<br> | Erstellen, Lesen, Aktualisieren, Löschen und Verschieben von verwalteten HSMs<br>Festlegen von verwalteten HSM-Tags | Azure RBAC |
-| Datenebene | **Global:**<br> &lt;hsm-name&gt;.vault.azure.net:443<br> | **Schlüssel** : decrypt, encrypt,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollenverwaltung auf Datenebene (Lokale RBAC für verwaltetes HSM):** _Rollendefinitionen auflisten, Rollen zuweisen, Rollenzuweisungen löschen, benutzerdefinierte Rollen definieren<br/><br/>_ *Sicherung/Wiederherstellung: **Sicherung, Wiederherstellung, Status von Sicherungs-/Wiederherstellungsvorgängen überprüfen <br/><br/>** Sicherheitsdomäne:** Sicherheitsdomäne herunter- und hochladen | Lokale RBAC für verwaltetes HSM |
+| Datenebene | **Global:**<br> &lt;hsm-name&gt;.vault.azure.net:443<br> | **Schlüssel**: decrypt, encrypt,<br> unwrap, wrap, verify, sign, get, list, update, create, import, delete, backup, restore, purge<br/><br/> **Rollenverwaltung auf Datenebene (Lokale RBAC für verwaltetes HSM):** _Rollendefinitionen auflisten, Rollen zuweisen, Rollenzuweisungen löschen, benutzerdefinierte Rollen definieren<br/><br/>_ *Sicherung/Wiederherstellung: **Sicherung, Wiederherstellung, Status von Sicherungs-/Wiederherstellungsvorgängen überprüfen <br/><br/>** Sicherheitsdomäne:** Sicherheitsdomäne herunter- und hochladen | Lokale RBAC für verwaltetes HSM |
 |||||
 ## <a name="management-plane-and-azure-rbac"></a>Verwaltungsebene und Azure RBAC
 
-In der Verwaltungsebene autorisieren Sie mit Azure RBAC die Vorgänge, die ein Anrufer ausführen darf. Im RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure Active Directory. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden. Um den Zugriff zu gewähren, können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](/rest/api/authorization/roleassignments) verwenden.
+In der Verwaltungsebene autorisieren Sie mit Azure RBAC die Vorgänge, die ein Anrufer ausführen darf. Im Azure RBAC-Modell verfügt jedes Azure-Abonnement über eine Instanz von Azure Active Directory. Über dieses Verzeichnis gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff. Der Zugriff wird gewährt, um Ressourcen im Azure-Abonnement zu verwalten, die das Bereitstellungsmodell von Azure Resource Manager verwenden. Um den Zugriff zu gewähren, können Sie das [Azure-Portal](https://portal.azure.com/), die [Azure CLI](/cli/azure/install-classic-cli), [Azure PowerShell](/powershell/azureps-cmdlets-docs) oder die [Azure Resource Manager-REST-APIs](/rest/api/authorization/roleassignments) verwenden.
 
-Mit Azure Active Directory erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende RBAC-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer RBAC-Rolle zugeordnet werden:
+Mit Azure Active Directory erstellen Sie einen Schlüsseltresor in einer Ressourcengruppe und steuern den Zugriff. So können Sie Benutzern oder einer Gruppe die Verwaltung von Schlüsseltresoren in einer Ressourcengruppe ermöglichen. Sie gewähren den Zugriff auf eine bestimmte Bereichsebene, indem Sie entsprechende Azure-Rollen zuordnen. Um einem Benutzer Zugriff für die Verwaltung von Schlüsseltresoren zu gewähren, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle `key vault Contributor` zu. Die folgenden Bereichsebenen können einer Azure-Rolle zugeordnet werden:
 
-- **Verwaltungsgruppe** :  Eine auf Abonnementebene zugewiesene RBAC-Rolle gilt für alle Abonnements in dieser Verwaltungsgruppe.
-- **Abonnement** : Eine auf Abonnementebene zugewiesene RBAC-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
-- **Ressourcengruppe** : Eine auf Ressourcengruppenebene zugewiesene RBAC-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
-- **Bestimmte Ressourcen** : Eine für eine bestimmte Ressource zugewiesene RBAC-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
+- **Verwaltungsgruppe**:  Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Abonnements in dieser Verwaltungsgruppe.
+- **Abonnement**: Eine auf Abonnementebene zugewiesene Azure-Rolle gilt für alle Ressourcengruppen und Ressourcen innerhalb des Abonnements.
+- **Ressourcengruppe**: Eine auf Ressourcengruppenebene zugewiesene Azure-Rolle gilt für alle Ressourcen in der Ressourcengruppe.
+- **Bestimmte Ressourcen**: Eine für eine bestimmte Ressource zugewiesene Azure-Rolle gilt für diese Ressource. In diesem Fall ist die Ressource ein bestimmter Schlüsseltresor.
 
-Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
+Es gibt verschiedene vordefinierte Rollen. Wenn eine vordefinierte Rolle nicht Ihren Anforderungen entspricht, können Sie Ihre eigene Rolle definieren. Weitere Informationen finden Sie unter [Azure RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="data-plane-and-managed-hsm-local-rbac"></a>Datenebene und lokale RBAC für verwaltetes HSM
 

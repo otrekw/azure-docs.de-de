@@ -5,13 +5,13 @@ author: robinsh
 ms.author: robinsh
 ms.topic: conceptual
 ms.service: iot-hub
-ms.date: 10/22/2020
-ms.openlocfilehash: 71a7041ec02da9a85de411f1113814311c21cd4f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/06/2020
+ms.openlocfilehash: dc239843c4ed597949b4ba00c44ec84fc70741a8
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128878"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357605"
 ---
 # <a name="monitoring-azure-iot-hub"></a>Überwachen von Azure IoT Hub
 
@@ -291,6 +291,14 @@ class Program
 Azure Monitor-Warnungen informieren Sie proaktiv, wenn wichtige Bedingungen in Ihren Überwachungsdaten gefunden werden. Sie ermöglichen Ihnen, Probleme in Ihrem System zu identifizieren und zu beheben, bevor Ihre Kunden sie bemerken. Sie können Warnungen für [Metriken](/azure/azure-monitor/platform/alerts-metric-overview), [Protokolle](/azure/azure-monitor/platform/alerts-unified-log) und das [Aktivitätsprotokoll](/azure/azure-monitor/platform/activity-log-alerts) festlegen. Verschiedene Arten von Warnungen haben Vor- und Nachteile.
 
 Beachten Sie Folgendes beim Erstellen einer Warnungsregel, die auf Plattformmetriken basiert: Bei IoT Hub-Plattformmetriken, die in Anzahlen von Einheiten gesammelt werden, sind einige Aggregationen möglicherweise nicht verfügbar oder können nicht verwendet werden. Weitere Informationen finden Sie in der [Referenz zu Azure IoT Hub-Überwachungsdaten im Abschnitt „Unterstützte Aggregationen“](monitor-iot-hub-reference.md#supported-aggregations).
+
+## <a name="monitor-per-device-disconnects-with-event-grid"></a>Überwachen der Verbindungstrennungen pro Gerät mithilfe von Event Grid
+
+Azure Monitor bietet die Metrik *Verbundene Geräte*, mit der Sie die Anzahl der mit Ihrem IoT-Hub verbundenen Geräte überwachen und eine Warnung auslösen können, wenn die Anzahl der verbundenen Geräte unter einen Schwellenwert fällt. Während dies in einigen Szenarien ausreichend sein mag, bietet [Azure Event Grid](/azure/event-grid/) eine Überwachungslösung mit geringer Latenz pro Gerät, die Sie zum Nachverfolgen von Geräteverbindungen bei kritischen Geräten und einer kritischen Infrastruktur verwenden können.
+
+Mit Event Grid können Sie die [Ereignisse **DeviceConnected** und **DeviceDisconnected**](iot-hub-event-grid.md#event-types) in IoT Hub abonnieren, um Warnungen auszulösen und den Geräteverbindungsstatus zu überwachen. Event Grid bietet eine viel geringere Ereignislatenz als Azure Monitor, und Sie können die Überwachung pro Gerät statt für die Gesamtanzahl verbundener Geräte durchführen. Diese Faktoren machen Event Grid zur bevorzugten Methode für die Überwachung von Verbindungen von kritischen Geräten und einer kritischen Infrastruktur. Es wird dringend empfohlen, Event Grid zur Überwachung von Geräteverbindungen in Produktionsumgebungen zu verwenden.
+
+Weitere ausführliche Informationen zum Überwachen von Geräteverbindungen mithilfe von Event Grid und Azure Monitor finden Sie unter [Überwachen, Diagnostizieren und Behandeln von Problemen bei der Trennung von Geräteverbindungen mit Azure IoT Hub](iot-hub-troubleshoot-connectivity.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

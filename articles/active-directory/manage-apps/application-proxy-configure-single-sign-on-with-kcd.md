@@ -12,12 +12,12 @@ ms.date: 08/13/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 860d29d3fff2187e770a5ff00b7145fc188a497c
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e43ad9dedf4212e9b30a08f0c978cb8d1a86776c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92426491"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657413"
 ---
 # <a name="kerberos-constrained-delegation-for-single-sign-on-sso-to-your-apps-with-application-proxy"></a>Eingeschränkte Kerberos-Delegierung für einmaliges Anmelden (SSO) bei Ihren Apps mit dem Anwendungsproxy
 
@@ -42,9 +42,9 @@ Dieses Diagramm erläutert die Vorgänge, die beim Zugriff eines Benutzers auf e
 ## <a name="prerequisites"></a>Voraussetzungen
 Vergewissern Sie sich vor Ihren ersten Schritten mit dem einmaligen Anmelden für IWA-Anwendungen, dass Ihre Umgebung über folgende Einstellungen und Konfigurationen verfügt:
 
-* Ihre Apps (beispielsweise SharePoint-Web-Apps) sind für die Verwendung der integrierten Windows-Authentifizierung konfiguriert. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](https://technet.microsoft.com/library/dd759186.aspx). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](https://technet.microsoft.com/library/ee806870.aspx).
+* Ihre Apps (beispielsweise SharePoint-Web-Apps) sind für die Verwendung der integrierten Windows-Authentifizierung konfiguriert. Weitere Informationen finden Sie unter [Aktivieren der Unterstützung für die Kerberos-Authentifizierung](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/dd759186(v=ws.11)). Weitere Informationen zu SharePoint finden Sie unter [Planen der Kerberos-Authentifizierung in SharePoint 2013](/SharePoint/security-for-sharepoint-server/kerberos-authentication-planning).
 * Alle Ihre Apps verfügen über [Dienstprinzipalnamen](https://social.technet.microsoft.com/wiki/contents/articles/717.service-principal-names-spns-setspn-syntax-setspn-exe.aspx).
-* Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne bzw. der vertrauenswürdigen Domänen. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](https://technet.microsoft.com/library/dd807102.aspx).
+* Der Server, auf dem der Connector ausgeführt wird, und der Server, auf dem die App ausgeführt wird, gehören einer Domäne an und sind Teil der gleichen Domäne bzw. der vertrauenswürdigen Domänen. Weitere Informationen zum Domänenbeitritt finden Sie unter [Hinzufügen eines Computers zu einer Domäne](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dd807102(v=ws.11)).
 * Der Server, auf dem der Connector ausgeführt wird, verfügt über Lesezugriff auf das Attribut „TokenGroupsGlobalAndUniversal“ für Benutzer. Hierbei handelt es sich um eine Standardeinstellung, die unter Umständen im Rahmen einer Sicherheitshärtung für die Umgebung geändert wurde.
 
 ### <a name="configure-active-directory"></a>Konfigurieren von Active Directory
@@ -61,7 +61,7 @@ Die Active Directory-Konfiguration variiert in Abhängigkeit davon, ob Ihr Anwen
    ![Screenshot des Connector-SVR-Eigenschaftenfensters](./media/application-proxy-configure-single-sign-on-with-kcd/properties.jpg)
 
 #### <a name="connector-and-application-server-in-different-domains"></a>Connector und Anwendungsserver in unterschiedlichen Domänen
-1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](https://technet.microsoft.com/library/hh831477.aspx).
+1. Eine Liste der Voraussetzungen für das domänenübergreifende Arbeiten mit KCD finden Sie unter [Eingeschränkte Kerberos-Delegierung über Domänengrenzen hinweg](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831477(v=ws.11)).
 2. Verwenden Sie die Eigenschaft `principalsallowedtodelegateto` des Dienstkontos (Computerkonto oder dediziertes Domänenbenutzerkonto) der Webanwendung, um die Kerberos-Authentifizierungsdelegierung über den Anwendungsproxy (Connector) zu aktivieren. Der Anwendungsserver wird im Kontext `webserviceaccount` ausgeführt. Der delegierende Server ist `connectorcomputeraccount`. Führen Sie die folgenden Befehle auf einem Domänencontroller (mit Windows Server 2012 R2 oder einer höheren Version) in der Domäne `webserviceaccount` aus. Verwenden Sie für beide Konten Flatnames (keine UPNs).
 
    Ist `webserviceaccount` ein Computerkonto, verwenden Sie die folgenden Befehle:
@@ -153,4 +153,3 @@ In einigen Fällen wird die Anforderung jedoch erfolgreich an die Back-End-Anwen
 
 * [Konfigurieren einer Anwendungsproxyanwendung zum Verwenden der eingeschränkten Kerberos-Delegierung](application-proxy-back-end-kerberos-constrained-delegation-how-to.md)
 * [Problembehandlung von Anwendungsproxys](application-proxy-troubleshoot.md)
-

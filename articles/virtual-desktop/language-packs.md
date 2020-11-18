@@ -3,15 +3,15 @@ title: Installieren von Language Packs auf Windows 10-VMs in Windows Virtual De
 description: Hier erfahren Sie, wie Sie Language Packs für Windows 10-VMs (mehrere Sitzungen) in Windows Virtual Desktop installieren.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 08/21/2020
+ms.date: 11/06/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: fbc2aba21212a83bd73d5664f4fe288017954c0d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10d79d08e3f6ed422f0354074ebc6e0acc125553
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90084208"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354035"
 ---
 # <a name="add-language-packs-to-a-windows-10-multi-session-image"></a>Hinzufügen von Language Packs zu einem Image für Windows 10 (mehrere Sitzungen)
 
@@ -43,6 +43,11 @@ Sie benötigen folgende Komponenten, um die Images für Windows 10 Enterprise (
      - Inbox Apps ISO:
         - [Windows 10, Version 1903 oder 1909, Inbox Apps ISO](https://software-download.microsoft.com/download/pr/18362.1.190318-1202.19h1_release_amd64fre_InboxApps.iso)
         - [Windows 10, Version 2004, Inbox Apps ISO](https://software-download.microsoft.com/download/pr/19041.1.191206-1406.vb_release_amd64fre_InboxApps.iso)
+        - [Windows 10, Version 20H2, Inbox Apps ISO](https://software-download.microsoft.com/download/pr/19041.508.200905-1327.vb_release_svc_prod1_amd64fre_InboxApps.iso)
+     
+     - Wenn Sie Windows 10 Version 2004 oder 20H2 verwenden, können Sie mit den LXP-ISOs (Local Experience Pack) neue Sprachen herunterladen. Verwenden Sie die Informationen in [Hinzufügen von Sprachen unter Windows 10: bekannte Probleme](/windows-hardware/manufacture/desktop/language-packs-known-issue), um herauszufinden, ob Sie Version 9B oder 9C herunterladen sollten:
+        - [Windows 10 Version 2004 oder 20H2 **9B** LXP-ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_64_ARM64_MultiLang_LangPckAll_LIP_LXP_ONLY)
+        - [Windows 10 Version 2004 oder 20H2 **9C** LXP-ISO](https://software-download.microsoft.com/download/pr/Win_10_2004_32_64_ARM64_MultiLng_LngPkAll_LIP_9C_LXP_ONLY) 
 
 - Eine Azure Files-Freigabe oder eine Dateifreigabe auf einer Windows-Dateiserver-VM
 

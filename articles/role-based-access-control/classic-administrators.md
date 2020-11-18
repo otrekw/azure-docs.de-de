@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc8a23d8cdb923f86d581d1af2967112d226c847
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d61d49fdd90f1f916141ca636e2c2a4dbe0b9bcd
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370626"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657738"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Verwaltung von Azure-Abonnements im klassischem Bereitstellungsmodell
 
@@ -40,15 +40,15 @@ In diesem Artikel wird das Hinzufügen oder Ändern der Azure-Rollen „Co-Admin
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Klassische Administratoren** .
+1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
 
     ![Screenshot des Öffnens von „Klassische Administratoren“](./media/classic-administrators/classic-administrators.png)
 
-1. Klicken Sie auf **Hinzufügen** > **Co-Administrator hinzufügen** , um den Bereich „Co-Administratoren hinzufügen“ zu öffnen.
+1. Klicken Sie auf **Hinzufügen** > **Co-Administrator hinzufügen**, um den Bereich „Co-Administratoren hinzufügen“ zu öffnen.
 
     Wenn die Schaltfläche „Co-Administrator hinzufügen“ deaktiviert ist, fehlen Ihnen Berechtigungen.
 
-1. Wählen Sie den Benutzer aus, den Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen** .
+1. Wählen Sie den Benutzer aus, den Sie hinzufügen möchten, und klicken Sie auf **Hinzufügen**.
 
     ![Screenshot, auf dem der Co-Administrator hinzugefügt wird](./media/classic-administrators/add-coadmin.png)
 
@@ -58,7 +58,7 @@ Wenn Sie einen Gastbenutzer als Co-Administrator hinzufügen möchten, führen S
 
 - Der Gastbenutzer muss in Ihrem Verzeichnis vorhanden sein. Dies bedeutet, dass der Benutzer eine Einladung zu Ihrem Verzeichnis erhalten und diese akzeptiert haben muss.
 
-Weitere Informationen zum Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/b2b/add-users-administrator.md).
+Weitere Informationen zum Hinzufügen eines Gastbenutzers zu Ihrem Verzeichnis finden Sie unter [Hinzufügen von Azure Active Directory B2B-Zusammenarbeitsbenutzern über das Azure-Portal](../active-directory/external-identities/add-users-administrator.md).
 
 ### <a name="differences-for-guest-users"></a>Unterschiede für Gastbenutzer
 
@@ -85,13 +85,13 @@ Eine vergleichende Betrachtung zu Mitglieds- und Gastbenutzern finden Sie unter 
 
 1. Klicken Sie auf **Zugriffssteuerung (IAM)** .
 
-1. Klicken Sie auf die Registerkarte **Klassische Administratoren** .
+1. Klicken Sie auf die Registerkarte **Klassische Administratoren**.
 
 1. Fügen Sie ein Häkchen neben dem Co-Administrator hinzu, den Sie entfernen möchten.
 
-1. Klicken Sie auf **Entfernen** .
+1. Klicken Sie auf **Entfernen**.
 
-1. Klicken Sie im angezeigten Meldungsfeld auf **Ja** .
+1. Klicken Sie im angezeigten Meldungsfeld auf **Ja**.
 
     ![Screenshot, auf dem der Co-Administrator entfernt wird](./media/classic-administrators/remove-coadmin.png)
 
@@ -109,7 +109,7 @@ Befolgen Sie diese Schritte, um den Dienstadministrator im **Kontocenter** zu ä
 
 1. Klicken Sie auf ein Abonnement.
 
-1. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten** .
+1. Klicken Sie auf der rechten Seite auf **Abonnementdetails bearbeiten**.
 
     ![Screenshot mit der Schaltfläche „Abonnementdetails bearbeiten“ im Kontocenter](./media/classic-administrators/editsub.png)
 
@@ -142,7 +142,7 @@ Gehen Sie folgendermaßen vor, um den Kontoadministrator anzuzeigen.
 
 1. Öffnen Sie [Abonnements](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade), und wählen Sie ein Abonnement aus.
 
-1. Klicken Sie auf **Eigenschaften** .
+1. Klicken Sie auf **Eigenschaften**.
 
     Der Kontoadministrator des Abonnements wird im Feld **Kontoadministrator** angezeigt.
 

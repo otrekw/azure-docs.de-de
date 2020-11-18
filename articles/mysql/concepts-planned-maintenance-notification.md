@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 754d693294235ff34c68f828235cca5bb2389a2b
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: c85624d9eced3130a1c7b99943095688beee62bd
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544833"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93417587"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-mysql---single-server"></a>Benachrichtigung über geplante Wartung in Azure Database for MySQL – Einzelserver
 
@@ -25,7 +25,7 @@ Eine geplante Wartung ist ein Wartungsfenster, in dem diese Dienstupdates auf Se
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Geplante Wartung: Dauer und Beeinträchtigung für Kunden
 
-Eine geplante Wartung für eine bestimmte Azure-Region dauert in der Regel 15 Stunden. Das Fenster umfasst auch Pufferzeit zum Ausführen eines Rollbackplans, falls dies erforderlich wird. Während einer geplanten Wartung können Datenbankserver neu gestartet oder Failover ausgeführt werden. Dies kann dazu führen, dass die Datenbankserver kurzzeitig nicht für Endbenutzer verfügbar sind. Azure Database for MySQL-Server werden in Containern ausgeführt, sodass Neustarts von Datenbankservern meist schnell abgeschlossen sind – in der Regel innerhalb von 60-120 Sekunden. Das gesamte geplante Wartungsereignis, einschließlich der einzelnen Serverneustarts, wird vom Technikerteam sorgfältig überwacht. Die Zeit für Serverfailover hängt von der Wiederherstellungszeit der Datenbank ab. Es kann daher länger dauern, die Datenbank wieder online zu schalten, wenn während des Failovers auf dem Server viele Transaktionsaktivitäten ausgeführt werden. Um längere Neustarts zu vermeiden, empfiehlt es sich, zeitintensive Transaktionen (Massenladen) während geplanter Wartungsereignisse zu vermeiden.
+Eine geplante Wartung für eine bestimmte Azure-Region dauert in der Regel 15 Stunden. Das Fenster umfasst auch Pufferzeit zum Ausführen eines Rollbackplans, falls dies erforderlich wird. Während einer geplanten Wartung können Datenbankserver neu gestartet oder Failover ausgeführt werden. Dies kann dazu führen, dass die Datenbankserver kurzzeitig nicht für Endbenutzer verfügbar sind. Azure Database for MySQL-Server werden in Containern ausgeführt, sodass Neustarts von Datenbankservern meist schnell abgeschlossen sind – in der Regel innerhalb von 60-120 Sekunden. Das gesamte geplante Wartungsereignis, einschließlich der einzelnen Serverneustarts, wird vom Technikerteam sorgfältig überwacht. Die Zeit für Serverfailover hängt von der Wiederherstellungszeit der Datenbank ab. Es kann daher länger dauern, die Datenbank wieder online zu schalten, wenn während des Failovers auf dem Server extrem viele Transaktionsaktivitäten auftreten. Um längere Neustarts zu vermeiden, empfiehlt es sich, zeitintensive Transaktionen (Massenladen) während geplanter Wartungsereignisse zu vermeiden.
 
 Zusammenfassend gilt: Auch wenn das geplante Wartungsereignis 15 Stunden dauert, sind die einzelnen Server in der Regel je nach den Transaktionsaktivitäten auf dem Server nur etwa 60 Sekunden lang beeinträchtigt. 72 Stunden vor dem Start der geplanten Wartung wird eine Benachrichtigung gesendet. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
 
@@ -48,7 +48,7 @@ Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen 
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Service Health** aus.
 2. Wählen Sie die Registerkarte **Geplante Wartung** aus.
-3. Wählen Sie das **Abonnement** , die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
+3. Wählen Sie das **Abonnement**, die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Empfangen von Benachrichtigungen zu geplanten Wartungen
 
@@ -56,7 +56,7 @@ Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen 
 2. Wählen Sie im Abschnitt **Warnungen** die Option **Integritätswarnungen** aus.
 3. Wählen Sie **+ Service Health-Warnung hinzufügen** aus, und füllen Sie die Felder aus.
 4. Füllen Sie die erforderlichen Felder aus. 
-5. Wählen Sie den **Ereignistyp** aus. Wählen Sie **Geplante Wartung** oder **Alle auswählen** .
+5. Wählen Sie den **Ereignistyp** aus. Wählen Sie **Geplante Wartung** oder **Alle auswählen**.
 6. Legen Sie unter **Aktionsgruppen** fest, wie Sie die Warnung erhalten möchten (Empfangen einer E-Mail, Auslösen einer Logik-App usw.)  
 7. Stellen Sie sicher, dass „Regel beim Erstellen aktivieren“ auf „Ja“ festgelegt ist.
 8. Wählen Sie **Warnungsregel erstellen** aus, um die Warnung fertig zu stellen.

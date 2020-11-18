@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 07/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 01eb35a60a6d51b5742d8fedd2ee0631aa86c924
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 3a915ac8de83a5e183660ec4a3d05044eafff4a9
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92147943"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337507"
 ---
 # <a name="tracking-and-event-logging-for-your-azure-data-box-and-azure-data-box-heavy-export-orders"></a>Nachverfolgung und Ereignisprotokollierung für Azure Data Box und Azure Data Box Heavy-Exportaufträge
 
@@ -38,8 +38,8 @@ Sie können beim Erstellen Ihres Auftrags festlegen, wer auf diesen Auftrag zugr
 
 Für den Azure Data Box-Dienst können die folgenden beiden Rollen definiert werden:
 
-- **Data Box-Leser** : Schreibgeschützter Zugriff auf Aufträge, wie im Bereich definiert. Hiermit können lediglich die Details eines Auftrags angezeigt werden. Es ist nicht möglich, auf weitere Details im Zusammenhang mit Speicherkonten zuzugreifen oder die Auftragsdetails zu bearbeiten, z.B. Adresse usw.
-- **Data Box-Mitwirkender** : Kann nur einen Auftrag zum Übertragen von Daten in ein bestimmtes Speicherkonto erstellen, *wenn bereits Schreibzugriff auf ein Speicherkonto gewährt wurde* . Falls kein Zugriff auf ein Speicherkonto gewährt wurde, kann mit dieser Rolle kein Data Box-Auftrag zum Kopieren von Daten in das Konto erstellt werden. Diese Rolle definiert keine Berechtigungen für Speicherkonten und gewährt keinen Zugriff auf Speicherkonten.  
+- **Data Box-Leser**: Schreibgeschützter Zugriff auf Aufträge, wie im Bereich definiert. Hiermit können lediglich die Details eines Auftrags angezeigt werden. Es ist nicht möglich, auf weitere Details im Zusammenhang mit Speicherkonten zuzugreifen oder die Auftragsdetails zu bearbeiten, z.B. Adresse usw.
+- **Data Box-Mitwirkender**: Kann nur einen Auftrag zum Übertragen von Daten in ein bestimmtes Speicherkonto erstellen, *wenn bereits Schreibzugriff auf ein Speicherkonto gewährt wurde*. Falls kein Zugriff auf ein Speicherkonto gewährt wurde, kann mit dieser Rolle kein Data Box-Auftrag zum Kopieren von Daten in das Konto erstellt werden. Diese Rolle definiert keine Berechtigungen für Speicherkonten und gewährt keinen Zugriff auf Speicherkonten.  
 
 Um den Zugriff auf einen Auftrag zu beschränken, können Sie folgende Aktionen ausführen:
 
@@ -50,11 +50,11 @@ Weitere Informationen zur vorgeschlagenen Azure RBAC-Nutzung finden Sie unter [B
 
 ## <a name="enable-verbose-log-in-the-order"></a>Aktivieren ausführlicher Protokolle in der Bestellung
 
-Wenn Sie einen Exportauftrag für Data Box erstellen, haben Sie die Möglichkeit, die Sammlung von ausführlichen Protokollen zu aktivieren. Auf der folgenden Abbildung sehen Sie die Oberfläche für Aufträge, über die Sie ausführliche Protokolle aktivieren können:
+Wenn Sie einen Exportauftrag für Data Box erstellen, haben Sie die Möglichkeit, die Sammlung eines ausführlichen Protokolls zu aktivieren. Auf der folgenden Abbildung sehen Sie die Oberfläche für Aufträge, über die Sie ausführliche Protokolle aktivieren können:
 
-![Exportoption auswählen](media/data-box-deploy-export-ordered/azure-data-box-export-04b.png)
+![Exportoption auswählen](media/data-box-deploy-export-ordered/azure-data-box-export-order-export-option.png)
 
-Wenn Sie die Option **Include verbose log** (Ausführliches Protokoll hinzufügen) auswählen, wird eine ausführliche Protokolldatei erstellt, wenn Sie Daten aus Ihrem Azure Storage-Konto kopieren. Dieses Protokoll enthält eine Liste aller Dateien, die erfolgreich exportiert wurden.      
+Wenn Sie die Option **Include verbose log** (Ausführliches Protokoll hinzufügen) auswählen, wird eine ausführliche Protokolldatei erstellt, wenn Sie Daten aus Ihrem Azure Storage-Konto kopieren. Dieses Protokoll enthält eine Liste aller Dateien, die erfolgreich exportiert wurden.
 
 Weitere Informationen zu Exportaufträgen finden Sie unter [Erstellen eines Exportauftrags für Data Box](data-box-deploy-export-ordered.md).
 
@@ -62,7 +62,7 @@ Weitere Informationen zu Exportaufträgen finden Sie unter [Erstellen eines Expo
 
 Sie können Ihren Auftrag über das Azure-Portal und über die Website des Spediteurs nachverfolgen. Mit den folgenden vorhandenen Verfahren können Sie den Data Box-Auftrag jederzeit nachverfolgen:
 
-- Um den Auftrag nachzuverfolgen, wenn sich das Gerät im Azure-Rechenzentrum oder in Ihrer lokalen Umgebung befindet, wechseln Sie im Azure-Portal zu **Data Box-Auftrag > Übersicht** .
+- Um den Auftrag nachzuverfolgen, wenn sich das Gerät im Azure-Rechenzentrum oder in Ihrer lokalen Umgebung befindet, wechseln Sie im Azure-Portal zu **Data Box-Auftrag > Übersicht**.
 
     ![Anzeigen von Auftragsstatus und Nachverfolgungsnummer](media/data-box-logs/overview-view-status-1.png)
 
@@ -251,8 +251,8 @@ Der Auftragsverlauf ist im Azure-Portal verfügbar. Wenn der Auftrag und die Ger
 Wenn Sie durch den Auftragsverlauf scrollen, sehen Sie Folgendes:
 
 - Nachverfolgungsinformationen des Spediteurs für Ihr Gerät.
-- Ereignisse mit der Aktivität *SecureErase* . Diese Ereignisse entsprechen der Löschung der Daten auf dem Datenträger.
-- Data Box-Protokolllinks. Die Pfade für die *Überwachungsprotokolle* , *Kopierprotokolle* und *BOM* -Dateien werden angezeigt.
+- Ereignisse mit der Aktivität *SecureErase*. Diese Ereignisse entsprechen der Löschung der Daten auf dem Datenträger.
+- Data Box-Protokolllinks. Die Pfade für die *Überwachungsprotokolle*, *Kopierprotokolle* und *BOM*-Dateien werden angezeigt.
 
 Hier finden Sie ein Beispiel für das Auftragsverlaufsprotokoll im Azure-Portal:
 

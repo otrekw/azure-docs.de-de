@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
 ms.custom: references_regions
-ms.openlocfilehash: 791c9e8ea8f7c8ffbf9268af2b3a93f592a77f9e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92629741"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353355"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Ausführen eines Upgrades für öffentliche IP-Adressen
 
@@ -100,7 +100,7 @@ Wenn Sie die neuen Funktionen in Azure Resource Manager nutzen möchten, können
 
 Im folgenden Beispiel wird davon ausgegangen, dass die klassische reservierte Azure-IP **myReservedIP** in **myResourceGroup** erstellt wurde. Außerdem müssen Sie vor der Migration sicherstellen, dass das Azure Resource Manager-Abonnement für die Migration registriert ist. Dies wird ausführlich in den Schritten 3 und 4 auf [dieser Seite](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-ps) behandelt.
 
-Führen Sie die folgenden Befehle mithilfe von PowerShell aus, um die reservierte IP zu migrieren.  Falls die IP-Adresse keinem Dienst zugeordnet ist (im Beispiel gibt es einen Dienst namens **myService** ), kann dieser Schritt übersprungen werden.
+Führen Sie die folgenden Befehle mithilfe von PowerShell aus, um die reservierte IP zu migrieren.  Falls die IP-Adresse keinem Dienst zugeordnet ist (im Beispiel gibt es einen Dienst namens **myService**), kann dieser Schritt übersprungen werden.
 
 ```azurepowershell-interactive
 ## Variables for the command ##
@@ -118,13 +118,13 @@ Der vorhergehende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration b
 Move-AzureReservedIP -ReservedIPName $name -Prepare
 Move-AzureReservedIP -ReservedIPName $name -Commit
 ```
-Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der migrierten reservierten IP erstellt (im obigen Beispiel heißt die Ressourcengruppe dann **myReservedIP-Migrated** ).
+Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der migrierten reservierten IP erstellt (im obigen Beispiel heißt die Ressourcengruppe dann **myReservedIP-Migrated**).
 
 # <a name="reserved-to-basic---cli"></a>[**Reservierte IP zu Basic: Befehlszeilenschnittstelle**](#tab/option-migrate-cli)
 
 Im folgenden Beispiel wird davon ausgegangen, dass die klassische reservierte Azure-IP **myReservedIP** in **myResourceGroup** erstellt wurde. Außerdem müssen Sie vor der Migration sicherstellen, dass das Azure Resource Manager-Abonnement für die Migration registriert ist. Dies wird ausführlich in den Schritten 3 und 4 auf [dieser Seite](https://docs.microsoft.com/azure/virtual-machines/linux/migration-classic-resource-manager-cli) behandelt.
 
-Führen Sie die folgenden Befehle mithilfe der Azure-Befehlszeilenschnittstelle aus, um die reservierte IP zu migrieren.  Falls die IP-Adresse keinem Dienst zugeordnet ist (im Beispiel gibt es einen Dienst namens **myService** sowie die Bereitstellung **myDeployment** ), kann dieser Schritt übersprungen werden.
+Führen Sie die folgenden Befehle mithilfe der Azure-Befehlszeilenschnittstelle aus, um die reservierte IP zu migrieren.  Falls die IP-Adresse keinem Dienst zugeordnet ist (im Beispiel gibt es einen Dienst namens **myService** sowie die Bereitstellung **myDeployment**), kann dieser Schritt übersprungen werden.
 
 ```azurecli-interactive
 ## Variables for the command ##
@@ -142,7 +142,7 @@ Der vorhergehende Befehl zeigt ggf. Warnungen und Fehler an, die die Migration b
 azure network reserved-ip prepare-migration $name
 azure network reserved-ip commit-migration $name
 ```
-Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der migrierten reservierten IP erstellt (im obigen Beispiel heißt die Ressourcengruppe dann **myReservedIP-Migrated** ).
+Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der migrierten reservierten IP erstellt (im obigen Beispiel heißt die Ressourcengruppe dann **myReservedIP-Migrated**).
 
 ---
 
@@ -154,11 +154,18 @@ USA Nord Mitte<br>
 USA (Westen)<br>
 USA, Westen 2<br>
 Norwegen, Osten<br>
+Südafrika, Norden<br>
 East US<br>
+Nordeuropa<br>
+Korea, Mitte<br>
+Indien, Mitte<br>
 USA (Ost) 2<br>
 Schweiz, Norden<br>
 Indien, Westen<br>
-Deutschland, Norden
+Deutschland, Norden<br>
+Kanada, Mitte<br>
+Frankreich, Süden<br>
+Indien, Westen
 
 * Damit ein Upgrade der öffentlichen IP-Adresse mit Basic-SKU durchgeführt werden kann, darf diese keiner Azure-Ressource zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von öffentlichen IP-Adressen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address).  Ebenso darf eine reservierte IP, die migriert werden soll, keinem Clouddienst zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von reservierten IPs finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm).  
 * Öffentliche IP-Adressen, für die ein Upgrade von der Basic-SKU auf die Standard-SKU durchgeführt wird, haben weiterhin keine [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) und können daher keinen Azure-Ressourcen zugeordnet werden, die zonenredundant oder zonal sind.  Beachten Sie, dass dies nur für Regionen gilt, in denen Verfügbarkeitszonen angeboten werden.

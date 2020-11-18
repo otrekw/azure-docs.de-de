@@ -5,18 +5,20 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 4/13/2020
-ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/6/2020
+ms.openlocfilehash: 1e967c77bc41f0f91674fe55bc622adaf5046f6d
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81271980"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94358999"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Protokolle für langsame Abfragen in Azure Database for MySQL
 In Azure Database for MySQL ist das Protokoll für langsame Abfragen für Benutzer verfügbar. Der Zugriff auf das Transaktionsprotokoll wird jedoch nicht unterstützt. Das Protokoll für langsame Abfragen kann verwendet werden, um Leistungsengpässe für die Problembehandlung zu erkennen.
 
 Weitere Informationen zum MySQL-Protokoll für langsame Abfragen finden Sie im [Abschnitt zu langsamen Abfragen](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html) im MySQL-Referenzhandbuch.
+
+Wenn [Abfragespeicher](concepts-query-store.md) auf dem Server aktiviert ist, werden in Ihren Protokollen für langsame Abfragen möglicherweise Abfragen wie „`CALL mysql.az_procedure_collect_wait_stats (900, 30);`“ erfasst. Dieses Verhalten ist zu erwarten, da das Feature Abfragespeicher Statistiken zu Ihren Abfragen sammelt. 
 
 ## <a name="configure-slow-query-logging"></a>Konfigurieren der Protokollierung für langsame Abfragen 
 Das Protokoll für langsame Abfragen ist standardmäßig deaktiviert. Um sie zu aktivieren, legen Sie `slow_query_log` auf ON fest. Diese Aktivierung kann über das Azure-Portal oder die Azure CLI erfolgen. 

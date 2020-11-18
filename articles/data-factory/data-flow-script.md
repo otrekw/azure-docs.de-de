@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/29/2020
-ms.openlocfilehash: 8310c34e06d52dc12af42f8bc33f4a4d7e99d68d
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 69cc835b37d2405e15638d85309dc89d51c6d043
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "91598094"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360274"
 ---
 # <a name="data-flow-script-dfs"></a>Datenflussskript (DFS)
 
@@ -218,6 +218,17 @@ Dies ist ein Codeausschnitt, den Sie in Ihren Datenfluss einfügen können, um a
 ```
 split(contains(array(columns()),isNull(#item)),
     disjoint: false) ~> LookForNULLs@(hasNULLs, noNULLs)
+```
+
+### <a name="automap-schema-drift-with-a-select"></a>Schemadrift bei automatischer Zuordnung mit select-Funktion
+Wenn Sie ein vorhandenes Datenbankschema aus einem unbekannten oder dynamischen Satz eingehender Spalten laden möchten, müssen Sie die Spalten auf der rechten Seite in der Senkentransformation zuordnen. Dies ist nur erforderlich, wenn Sie eine vorhandene Tabelle laden. Fügen Sie diesen Codeausschnitt vor der Senke ein, um eine select-Funktion zu erstellen, die Ihre Spalten automatisch zuordnet. Behalten Sie für die Senke die automatische Zuordnung bei.
+
+```
+select(mapColumn(
+        each(match(true()))
+    ),
+    skipDuplicateMapInputs: true,
+    skipDuplicateMapOutputs: true) ~> automap
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

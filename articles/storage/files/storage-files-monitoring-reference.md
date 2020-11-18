@@ -9,12 +9,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.subservice: logs
 ms.custom: monitoring
-ms.openlocfilehash: 11f89a0a42a42fd84d1dc0c8606128f5af9e751e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c6f4b932bb8f16af3c0368ab219bd8a12bf2face
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91711056"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357979"
 ---
 # <a name="azure-files-monitoring-data-reference"></a>Überwachen von Daten in Azure Files – Referenz
 
@@ -26,7 +26,7 @@ In den nachstehenden Tabellen sind die für Azure Files erfassten Plattformmetri
 
 ### <a name="capacity-metrics"></a>Kapazitätsmetriken
 
-Kapazitätsmetrikwerte werden stündlich an Azure Monitor gesendet. Die Werte werden täglich aktualisiert. Das Aggregationsintervall definiert das Zeitintervall, für das Metrikwerte dargestellt werden. Das unterstützte Aggregationsintervall für alle Kapazitätsmetriken beträgt eine Stunde (PT1H).
+Kapazitätsmetriken werden täglich aktualisiert (bis zu 24 Stunden). Das Aggregationsintervall definiert das Zeitintervall, für das Metrikwerte dargestellt werden. Das unterstützte Aggregationsintervall für alle Kapazitätsmetriken beträgt eine Stunde (PT1H).
 
 Azure Files stellt in Azure Monitor die folgenden Kapazitätsmetriken bereit.
 

@@ -6,14 +6,14 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: vikrambmsft
 ms.author: vikramb
-ms.date: 10/30/2020
+ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 0a97286564f7d2c04268034d6f70b1a178cbb5a5
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 95ac1abc1f286330bc5e7036f01faa6cf1b22d70
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348337"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337898"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -43,7 +43,7 @@ Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden
 Eine GUID ist eine eindeutige Verweis-ID mit 32 Hexadezimalziffern. Zum Erstellen einer GUID für die Nachverfolgung sollten Sie einen GUID-Generator verwenden, beispielsweise über PowerShell.
 
 ```powershell
-[guid]::NewGuid()]
+[guid]::NewGuid()
 ```
 
 Es empfiehlt sich, für jedes Produkt eine eindeutige GUID für jedes Angebot und jeden Distributionskanal zu erstellen. Sie können festlegen, dass eine einzige GUID für die vielfältigen Verteilungskanäle des Produkts verwendet wird, wenn die Berichterstellung nicht aufgeteilt werden soll.
@@ -311,10 +311,6 @@ Kunden können ihre Nutzung einzelner Ressourcen oder benutzerdefinierter Ressou
 **Ist diese Methode mit dem digitalen Partner des Eintrags (Digital Partner of Record, DPOR) vergleichbar?**
 
 Diese neue Methode für das Verbinden von Bereitstellung und Nutzung mit der Lösung eines Partners stellt einen Mechanismus zum Verknüpfen einer Partnerlösung mit der Azure-Nutzung bereit. Mit DPOR soll ein Beratungspartner (Systemintegrator) oder Verwaltungspartner (Managed Services Provider) dem Azure-Abonnement eines Kunden zugeordnet werden.
-
-**Was ist der Vorteil bei der Verwendung des GUID-Generatorformulars von Azure Storage?**
-
-Das GUID-Generatorformular von Azure Storage generiert eine GUID garantiert im erforderlichen Format. Wenn Sie außerdem eine der Verfolgungsmethoden von Azure Storage für die Datenebene verwenden, können Sie dieselbe GUID für die Verfolgung der Marketplace-Steuerungsebene verwenden. Auf diese Weise können Sie eine einzelne einheitliche GUID für die Partnerzuordnung nutzen, ohne separate GUIDs verwalten zu müssen.
 
 **Kann ich eine private, benutzerdefinierte virtuelle Festplatte für ein Angebot für Lösungsvorlagen im Azure Marketplace verwenden?**
 

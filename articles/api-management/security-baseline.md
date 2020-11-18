@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: b6b94c30f00765164385987ed0ea9b201044f248
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 78a882378becda8c381ac036d786b32a2b42a5f1
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92077438"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379467"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -323,7 +323,7 @@ Optional können Sie auch Azure Sentinel oder die SIEM-Lösung eines Drittanbiet
 
 * [Überwachen von veröffentlichten APIs](./api-management-howto-use-azure-monitor.md#activity-logs)
 
-* [Einrichten einer Warnungsregel für nicht autorisierte Anforderungen](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule-for-unauthorized-request)
+* [Konfigurieren einer Warnungsregel für Azure API Management](./api-management-howto-use-azure-monitor.md#set-up-an-alert-rule)
 
 * [Kapazität einer Azure API Management-Instanz](./api-management-capacity.md)
 
@@ -375,11 +375,11 @@ Befolgen Sie die Empfehlungen aus Azure Security Center, die sich auf die Verwal
 
 * [Verwenden der rollenbasierten Zugriffssteuerung in Azure API Management](./api-management-role-based-access-control.md)
 
-* [Abrufen einer Liste mit Benutzern unter einer Azure API Management-Instanz](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Abrufen einer Liste mit Benutzern unter einer Azure API Management-Instanz](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
-* [Abrufen einer Liste mit Benutzern, die in Azure AD einer Verzeichnisrolle zugewiesen sind, mit PowerShell](/powershell/module/az.resources/get-azroleassignment?view=azps-3.7.0)
+* [Abrufen einer Liste mit Benutzern, die in Azure AD einer Verzeichnisrolle zugewiesen sind, mit PowerShell](/powershell/module/az.resources/get-azroleassignment)
 
-* [Abrufen einer Verzeichnisrollendefinition in Azure AD mit PowerShell](/powershell/module/az.resources/get-azroledefinition?view=azps-3.7.0)
+* [Abrufen einer Verzeichnisrollendefinition in Azure AD mit PowerShell](/powershell/module/az.resources/get-azroledefinition)
 
 * [Empfehlungen für Identität und Zugriff](../security-center/recommendations-reference.md#recs-identity)
 
@@ -480,7 +480,7 @@ Verwenden Sie zusätzlich Azure AD-Risikoerkennungen, um Warnungen und Berichte 
 
 ### <a name="39-use-azure-active-directory"></a>3.9: Verwenden von Azure Active Directory
 
-**Leitfaden**: Verwenden Sie nach Möglichkeit Azure AD als zentrales Authentifizierungs- und Autorisierungssystem. AAD schützt Daten durch eine starke Verschlüsselung für ruhende und übertragene Daten. Außerdem werden in Azure AD Salts und Hashs verwendet, und Anmeldeinformationen werden sicher gespeichert.
+**Leitfaden**: Verwenden Sie nach Möglichkeit Azure AD als zentrales Authentifizierungs- und Autorisierungssystem. Azure AD schützt Daten durch eine starke Verschlüsselung für ruhende und übertragene Daten. Außerdem werden in Azure AD Salts und Hashs verwendet, und Anmeldeinformationen werden sicher gespeichert.
 
 Konfigurieren Sie Ihr Entwicklerportal für Azure API Management, um Entwicklerkonten per Azure Active Directory zu authentifizieren.
 
@@ -490,7 +490,7 @@ Konfigurieren Sie Ihre Azure API Management-Instanz so, dass Ihre APIs über das
 
 * [Schützen einer API über OAuth 2.0 mit Azure Active Directory und API Management](./api-management-howto-protect-backend-with-aad.md)
 
-* [Erstellen und Konfigurieren einer AAD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
+* [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -506,7 +506,7 @@ Administratoren können benutzerdefinierte Gruppen erstellen oder externe Gruppe
 
 * [Verwalten von Benutzerkonten in Azure API Management](./api-management-howto-create-or-invite-developers.md)
 
-* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuser?view=azps-3.1.0)
+* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuse)
 
 * [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management](./api-management-howto-create-groups.md)
 
@@ -746,7 +746,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 * [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+* [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
 * [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -888,7 +888,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Definieren und implementieren Sie mit Azure Policy Standardsicherheitskonfigurationen für Ihren Azure API Management-Dienst. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration Ihrer Azure API Management-Dienste zu erstellen.
 
-* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?view=azps-3.3.0)
+* [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias)
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -928,9 +928,9 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 **Leitfaden**: Nutzen Sie bei Verwendung von benutzerdefinierten Azure-Richtliniendefinitionen Azure DevOps oder Azure Repos, um die Konfiguration Ihres Azure API Management-Diensts sicher zu speichern und zu verwalten.
 
-* [Speichern von Dateien in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+* [Speichern von Dateien in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
-* [Dokumentation zu Azure Repos](/azure/devops/repos/index?view=azure-devops)
+* [Dokumentation zu Azure Repos](/azure/devops/repos/index)
 
 * [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
 
@@ -1086,7 +1086,7 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 * [Implementieren der Notfallwiederherstellung mit Sichern und Wiederherstellen von Diensten in Azure API Management](./api-management-howto-disaster-recovery-backup-restore.md#calling-the-backup-and-restore-operations)
 
-* [Sichern von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Sichern von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/backup-azurekeyvaultcertificate)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1098,7 +1098,7 @@ Verwaltete Identitäten können für das Abrufen von Zertifikaten aus Azure Key 
 
 * [Aufrufen des API Management-Wiederherstellungsvorgangs](/rest/api/apimanagement/2019-12-01/apimanagementservice/restore)
 
-* [Wiederherstellen von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate?view=azurermps-6.13.0)
+* [Wiederherstellen von Azure Key Vault-Zertifikaten](/powershell/module/azurerm.keyvault/restore-azurekeyvaultcertificate)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -3,12 +3,12 @@ title: Bereitstellen von Horizon in Azure VMware Solution
 description: Es wird beschrieben, wie Sie VMware Horizon in Azure VMware Solution bereitstellen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: babce512b896009c08165d2e3d9aec7c33724bf4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321353"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93423102"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Bereitstellen von Horizon in Azure VMware Solution 
 
@@ -127,6 +127,18 @@ Dasselbe Prinzip gilt, wenn Sie zwei Horizon-Pods in derselben Region bereitstel
 ## <a name="size-azure-vmware-solution-hosts-for-horizon-deployments"></a>Dimensionieren von Azure VMware Solution-Hosts für Horizon-Bereitstellungen 
 
 Die Dimensionierungsmethodik von Horizon auf einem Host, der unter Azure VMware Solution ausgeführt wird, ist einfacher als eine lokale Horizon-Instanz.  Dies liegt daran, dass der Azure VMware Solution-Host standardisiert ist.  Wenn die Größe des Hosts präzise festgelegt wird, kann die Anzahl von Hosts, die zur Unterstützung Ihrer VDI-Anforderungen benötigt werden, besser ermittelt werden.  Dies ist für die Bestimmung der Kosten pro Desktop von zentraler Bedeutung.
+
+### <a name="sizing-tables"></a>Größentabellen
+
+In den Tabellen sind die allgemeinen Workloads für Login VSI-Knowledge Worker-Workloads und -Power Worker-Workloads aufgeführt.
+
+#### <a name="knowledge-worker-workloads"></a>Knowledge Worker-Workloads
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" alt-text="Tabelle mit allgemeinen VDI-Profilen für VMware Horizon für Login VSI-Knowledge Worker-Workloads" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-knowledge.png" border="false":::
+
+#### <a name="power-worker-workloads"></a>Power Worker-Workloads
+
+:::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabelle mit allgemeinen VDI-Profilen für VMware Horizon für Login VSI-Power Worker-Workloads" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
 
 ### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution-Hostinstanz
 

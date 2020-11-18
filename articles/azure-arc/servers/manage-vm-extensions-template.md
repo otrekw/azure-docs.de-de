@@ -1,14 +1,14 @@
 ---
 title: Aktivieren der VM-Erweiterung mithilfe einer Azure Resource Manager-Vorlage
 description: In diesem Artikel wird beschrieben, wie Sie mit einer Azure Resource Manager-Vorlage VM-Erweiterungen auf Azure Arc-fähigen Servern bereitstellen, die in Hybrid Cloud-Umgebungen ausgeführt werden.
-ms.date: 10/22/2020
+ms.date: 11/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: 935fa38fbb98622f2da7d2ce9e1d166b12a32e44
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: d5c7f5055f3e41a91fa00e1e3ad08e7686145b9e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92491205"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94353865"
 ---
 # <a name="enable-azure-vm-extensions-by-using-arm-template"></a>Aktivieren von Azure-VM-Erweiterungen mithilfe einer ARM-Vorlage
 
@@ -129,7 +129,7 @@ Um den Log Analytics-Agent komfortabel bereitzustellen, steht das folgende Beisp
 }
 ```
 
-Speichern Sie die Vorlagen- und Parameterdateien auf dem Datenträger, und bearbeiten Sie die Parameterdatei mit den passenden Werten für Ihre Bereitstellung. Anschließend können Sie mit dem folgenden Befehl die Erweiterung auf allen verbundenen Computern innerhalb einer Ressourcengruppe installieren. Der Befehl verwendet den *TemplateFile* -Parameter zum Angeben der Vorlage und den *TemplateParameterFile* -Parameter zum Angeben einer Datei, die Parameter und Parameterwerte enthält.
+Speichern Sie die Vorlagen- und Parameterdateien auf dem Datenträger, und bearbeiten Sie die Parameterdatei mit den passenden Werten für Ihre Bereitstellung. Anschließend können Sie mit dem folgenden Befehl die Erweiterung auf allen verbundenen Computern innerhalb einer Ressourcengruppe installieren. Der Befehl verwendet den *TemplateFile*-Parameter zum Angeben der Vorlage und den *TemplateParameterFile*-Parameter zum Angeben einer Datei, die Parameter und Parameterwerte enthält.
 
 ```powershell
 New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\LogAnalyticsAgentWin.json" -TemplateParameterFile "D:\Azure\Templates\LogAnalyticsAgentWinParms.json"
@@ -623,8 +623,85 @@ Zum Verwenden der Azure Monitor Dependency-Agent-Erweiterung steht das folgende 
 }
 ```
 
+## <a name="deploy-azure-key-vault-vm-extension-preview"></a>Bereitstellen der Azure Key Vault-VM-Erweiterung (Vorschau)
+
+Im folgenden JSON-Code ist das Schema für die Key Vault-VM-Erweiterung (Vorschau) dargestellt. Für die Erweiterung sind keine geschützten Einstellungen erforderlich. Alle Einstellungen werden als öffentliche Informationen betrachtet. Für die Erweiterung werden eine Liste mit berücksichtigten Zertifikaten, die Abrufhäufigkeit und ein Zielzertifikatspeicher benötigt. Dies gilt insbesondere in folgenden Fällen:
+
+### <a name="template-file-for-linux"></a>Vorlagendatei für Linux
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KeyVaultForLinux",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForLinux",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+          "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g. "3600">,
+          "certificateStoreName": <ingnored on linux>,
+          "certificateStoreLocation": <disk path where certificate is stored, default: "/var/lib/waagent/Microsoft.Azure.KeyVault">,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+          }
+      }
+     }
+}
+```
+
+### <a name="template-file-for-windows"></a>Vorlagendatei für Windows
+
+```json
+{
+      "type": "Microsoft.HybridCompute/machines/extensions",
+      "name": "KVVMExtensionForWindows",
+      "apiVersion": "2019-07-01",
+      "location": "<location>",
+      "dependsOn": [
+          "[concat('Microsoft.HybridCompute/machines/extensions/', <machineName>)]"
+      ],
+      "properties": {
+      "publisher": "Microsoft.Azure.KeyVault",
+      "type": "KeyVaultForWindows",
+      "typeHandlerVersion": "1.0",
+      "autoUpgradeMinorVersion": true,
+      "settings": {
+        "secretsManagementSettings": {
+          "pollingIntervalInS": <polling interval in seconds, e.g: "3600">,
+          "certificateStoreName": <certificate store name, e.g.: "MY">,
+          "linkOnRenewal": <Only Windows. This feature ensures s-channel binding when certificate renews, without necessitating a re-deployment.  e.g.: false>,
+          "certificateStoreLocation": <certificate store location, currently it works locally only e.g.: "LocalMachine">,
+          "requireInitialSync": <initial synchronization of certificates e..g: true>,
+          "observedCertificates": <list of KeyVault URIs representing monitored certificates, e.g.: "https://myvault.vault.azure.net/secrets/mycertificate"
+        },
+        "authenticationSettings": {
+                "msiEndpoint":  <Optional MSI endpoint e.g.: "http://169.254.169.254/metadata/identity">,
+                "msiClientId":  <Optional MSI identity e.g.: "c7373ae5-91c2-4165-8ab6-7381d6e75619">
+        }
+      }
+     }
+}
+```
+
+> [!NOTE]
+> Die URLs der berücksichtigten Zertifikate müssen das folgende Format haben: `https://myVaultName.vault.azure.net/secrets/myCertName`.
+> 
+> Der Grund: Der Pfad `/secrets` gibt das vollständige Zertifikat einschließlich des privaten Schlüssels zurück, der Pfad `/certificates` dagegen nicht. Weitere Informationen zu Zertifikaten finden Sie hier: [Key Vault-Zertifikate](../../key-vault/general/about-keys-secrets-certificates.md)
+
+Speichern Sie die Vorlagendatei auf dem Datenträger. Anschließend können Sie mit dem folgenden Befehl die Erweiterung auf allen verbundenen Computern innerhalb einer Ressourcengruppe installieren.
+
+```powershell
+New-AzResourceGroupDeployment -ResourceGroupName "ContosoEngineering" -TemplateFile "D:\Azure\Templates\KeyVaultExtension.json"
+```
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sie können eine Erweiterung mithilfe der Azure CLI oder von PowerShell bereitstellen und entfernen.
+* Sie können VM-Erweiterungen über [Azure PowerShell](manage-vm-extensions-powershell.md), das [Azure-Portal](manage-vm-extensions-portal.md) oder die [Azure-Befehlszeilenschnittstelle](manage-vm-extensions-cli.md) bereitstellen, verwalten und entfernen.
 
 * Informationen zur Problembehandlung finden Sie im [Problembehandlungs-Handbuch für VM-Erweiterungen](troubleshoot-vm-extensions.md).

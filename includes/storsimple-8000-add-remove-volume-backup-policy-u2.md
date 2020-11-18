@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 92036cebf0541f9e9928acf1a9c32db0037bde48
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b57c2ff2e53a5b836d9faeef7e18052d6e670cf6
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178282"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376247"
 ---
 #### <a name="to-add-or-remove-a-volume"></a>Hinzufügen oder Entfernen eines Volumes
 
@@ -21,15 +21,15 @@ ms.locfileid: "67178282"
 
 3. Aktivieren oder deaktivieren Sie auf dem Blatt **Volume hinzufügen/entfernen** das bzw. die Kontrollkästchen zum Hinzufügen oder Entfernen des Volumes. Mehrere Volumes werden durch Aktivieren oder Deaktivieren der entsprechenden Kontrollkästchen aktiviert/deaktiviert.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
+    ![Verwalten von Zeitplänen 2](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol3.png)
 
     Wenn Sie einer Sicherungsrichtlinie Volumes aus verschiedenen Volumecontainern zuweisen, müssen Sie ein gemeinsames Failover für diese Volumecontainer durchführen. Eine entsprechende Warnung wird angezeigt.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
+    ![Verwalten von Zeitplänen 3](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol2.png)
 
 4. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie geändert wird. Die Liste der Sicherungsrichtlinien wird ebenfalls aktualisiert.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
+    ![Verwalten von Zeitplänen 4](./media/storsimple-8000-add-remove-volume-backup-policy-u2/addvolbupol6.png)
 
 
 

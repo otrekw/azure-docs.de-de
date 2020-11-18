@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: f1da7149a41ec8dd08e307394cba3e7feabec42a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320709"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93357945"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 
@@ -26,7 +26,8 @@ Erfahren Sie, wie Sie die Zugriffsschlüssel für Azure Storage-Konten ändern, 
 Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für ein Azure Storage-Konto ändern. Wenn Sie den Zugriffsschlüssel neu generieren, muss Azure Machine Learning aktualisiert werden, um den neuen Schlüssel zu verwenden. Azure Machine Learning kann das Speicherkonto sowohl für die Modellspeicherung als auch als Datenspeicher verwenden.
 
 > [!IMPORTANT]
-> Anmeldeinformationen, die mit Datenspeichern registriert werden, werden im Azure Key Vault gespeichert, der dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](../key-vault/general/soft-delete-overview.md) für Ihren Key Vault aktiviert haben, sollten Sie diesen Artikel zum Aktualisieren von Anmeldeinformationen befolgen. Das Aufheben der Registrierung des Datenspeichers und die erneute Registrierung unter demselben Namen schlägt fehl.
+
+> Anmeldeinformationen, die bei Datenspeichern registriert sind, werden in Ihrer Azure Key Vault-Instanz gespeichert, die dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) für Ihren Schlüsseltresor aktiviert haben, finden Sie in diesem Artikel Informationen zum Aktualisieren von Anmeldeinformationen. Wenn Sie die Registrierung des Datenspeichers aufheben und versuchen, ihn unter demselben Namen erneut zu registrieren, tritt bei dieser Aktion ein Fehler auf. Informationen zum Aktivieren des vorläufigen Löschens in diesem Szenario finden Sie unter [Aktivieren des vorläufigen Löschens für einen vorhandenen Schlüsseltresor]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -132,7 +133,7 @@ Um Azure Machine Learning so zu aktualisieren, dass der neue Schlüssel verwende
         
         ```
     
-    1. Klicken Sie im linken Bereich von Studio auf **Datenspeicher** , **um Datenspeicher über Studio erneut zu registrieren**. 
+    1. Klicken Sie im linken Bereich von Studio auf **Datenspeicher**, **um Datenspeicher über Studio erneut zu registrieren**. 
         1. Wählen Sie den Datenspeicher aus, den Sie aktualisieren möchten.
         1. Klicken Sie oben links auf die Schaltfläche **Update credentials** (Anmeldeinformationen aktualisieren). 
         1. Verwenden Sie den neuen Zugriffsschlüssel aus Schritt 1, um das Formular auszufüllen, und klicken Sie auf **Speichern**.

@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: a6d6ca825a556ea3c98fb94d4becbb75b8f2a7d7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294207"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376883"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren des TheAccessHub-Verwaltungstools mit Azure Active Directory B2C
 
@@ -102,7 +102,7 @@ Führen Sie die folgenden Schritte aus, um das TheAccessHub-Verwaltungstool für
 
 5. Befolgen Sie die Eingabeaufforderungen, und wählen Sie **Akzeptieren** aus, um dem TheAccessHub-Verwaltungstool die erforderlichen Berechtigungen zu erteilen.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-your-enterprise-identity"></a>Konfigurieren eines neuen CSR-/Helpdesk-Benutzers mithilfe Ihrer Unternehmensidentität
+## <a name="configure-a-new-csr-user-using-your-enterprise-identity"></a>Konfigurieren eines neuen CSR-Benutzers mithilfe Ihrer Unternehmensidentität
 
 Erstellen Sie einen CSR-/Helpdesk-Benutzer, der mit den vorhandenen Unternehmensanmeldeinformationen von Azure Active Directory auf das TheAccessHub-Verwaltungstool zugreift.
 
@@ -126,7 +126,7 @@ Zum Konfigurieren des CSR-/Helpdesk-Benutzers für einmaliges Anmelden (Single S
 
 6. Wählen Sie **Senden** aus.
 
-## <a name="configure-a-new-csrhelpdesk-user-using-a-new-identity"></a>Konfigurieren eines neuen CSR-/Helpdesk-Benutzers mit einer neuen Identität
+## <a name="configure-a-new-csr-user-using-a-new-identity"></a>Konfigurieren eines neuen CSR-Benutzers mithilfe einer neuen Identität
 
 Erstellen Sie einen CSR-/Helpdesk-Benutzer, der mit neuen lokalen Anmeldeinformationen (exklusiv für das TheAccessHub-Verwaltungstool) auf das TheAccessHub-Verwaltungstool zugreift. Dies wird hauptsächlich von Organisationen verwendet, die Azure AD nicht für ihr Unternehmen verwenden.
 
@@ -150,7 +150,7 @@ Führen Sie die folgenden Schritte aus, um einen [CSR-/Helpdesk-Benutzer](https:
 
 7. Wählen Sie **Senden** aus.
 
-## <a name="configure-partitioned-csrhelpdesk-administration"></a>Konfigurieren einer partitionierten CSR-/Helpdesk-Verwaltung
+## <a name="configure-partitioned-csr-administration"></a>Konfigurieren einer partitionierten CSR-Verwaltung
 
 Die Berechtigungen zum Verwalten von Kunden und CSR-/Helpdesk-Benutzern im TheAccessHub-Verwaltungstool werden mithilfe einer Organisationshierarchie verwaltet. Alle Kollegen und Kunden verfügen über eine eigene Organisation, in der sie sich befinden. Als Besitzer von Organisationen können bestimmte Kollegen oder Kollegengruppen zugewiesen werden.  Organisationsbesitzer können in Organisationen oder Unterorganisationen, die sie besitzen, Kollegen und Kunden verwalten (und Änderungen vornehmen). Damit mehrere Kollegen diverse Benutzer verwalten können, kann eine Gruppe mit vielen Mitgliedern erstellt werden. Die Gruppe kann dann zum Organisationsbesitzer ernannt werden, und alle Mitglieder der Gruppe können Kollegen und Kunden in der Organisation verwalten.
 
@@ -162,7 +162,7 @@ Die Berechtigungen zum Verwalten von Kunden und CSR-/Helpdesk-Benutzern im TheAc
 
 3. Wählen Sie **Gruppe hinzufügen** aus.
 
-4. Geben Sie einen **Gruppennamen** , eine **Gruppenbeschreibung** und einen **Gruppenbesitzer** ein.
+4. Geben Sie einen **Gruppennamen**, eine **Gruppenbeschreibung** und einen **Gruppenbesitzer** ein.
 
 5. Suchen Sie nach den Kollegen, die Mitglieder der Gruppe sein sollen, aktivieren Sie die zugehörigen Kontrollkästchen, und wählen Sie dann **Hinzufügen** aus.
 
@@ -180,7 +180,7 @@ Die Berechtigungen zum Verwalten von Kunden und CSR-/Helpdesk-Benutzern im TheAc
 
 3. Wählen Sie **Organisation hinzufügen** aus.
 
-4. Geben Sie einen **Organisationsnamen** , **Organisationsbesitzer** und die **übergeordnete Organisation** an.
+4. Geben Sie einen **Organisationsnamen**, **Organisationsbesitzer** und die **übergeordnete Organisation** an.
 
     a. Der Name der Organisation ist idealerweise ein Wert, der Ihren Kundendaten entspricht. Wenn Sie beim Laden von Kollegen- und Kundendaten den Namen der Organisation im Ladevorgang angeben, kann der Kollege automatisch in die Organisation eingefügt werden.
 
@@ -238,45 +238,45 @@ Mithilfe des TheAccessHub-Verwaltungstools können Sie Daten aus verschiedenen D
 
    **Datenbanken**
 
-   a. **Typ** : Datenbank
+   a. **Typ**: Datenbank
 
-   b. **Datenbanktyp** : Wählen Sie eine Datenbank aus einem der unterstützten Datenbanktypen aus.
+   b. **Datenbanktyp**: Wählen Sie eine Datenbank aus einem der unterstützten Datenbanktypen aus.
 
-   c. **Verbindungs-URL** : Geben Sie eine ordnungsgemäß formatierte JDBC-Verbindungszeichenfolge ein. Beispiel: ``jdbc:postgresql://myhost.com:5432/databasename``
+   c. **Verbindungs-URL**: Geben Sie eine ordnungsgemäß formatierte JDBC-Verbindungszeichenfolge ein. Beispiel: ``jdbc:postgresql://myhost.com:5432/databasename``
 
-   d. **Benutzername** : Geben Sie den Benutzernamen für den Zugriff auf die Datenbank ein.
+   d. **Benutzername**: Geben Sie den Benutzernamen für den Zugriff auf die Datenbank ein.
 
-   e. **Kennwort** : Geben Sie das Kennwort für den Zugriff auf die Datenbank ein.
+   e. **Kennwort**: Geben Sie das Kennwort für den Zugriff auf die Datenbank ein.
 
-   f. **Abfrage** : Geben Sie die SQL-Abfrage zum Extrahieren der Kundendetails ein. Beispiel: ``SELECT * FROM mytable;``
+   f. **Abfrage**: Geben Sie die SQL-Abfrage zum Extrahieren der Kundendetails ein. Beispiel: ``SELECT * FROM mytable;``
 
    g. Wählen Sie **Testverbindung** aus. Es wird ein Beispiel mit Ihren Daten angezeigt, um sicherzustellen, dass die Verbindung funktioniert.
 
    **LDAPs**
 
-   a. **Typ** : LDAP
+   a. **Typ**: LDAP
 
-   b. **Host** : Geben Sie den Hostnamen oder die IP-Adresse für den Computer ein, auf dem der LDAP-Server ausgeführt wird. Beispiel: ``mysite.com``
+   b. **Host**: Geben Sie den Hostnamen oder die IP-Adresse für den Computer ein, auf dem der LDAP-Server ausgeführt wird. Beispiel: ``mysite.com``
 
-   c. **Port** : Geben Sie die Nummer des Ports ein, den der LDAP-Server überwacht.
+   c. **Port**: Geben Sie die Nummer des Ports ein, den der LDAP-Server überwacht.
 
-   d. **SSL** : Aktivieren Sie das Kontrollkästchen, wenn das TheAccessHub-Verwaltungstool sicher über SSL mit dem LDAP-Server kommunizieren soll. Die Verwendung von SSL wird dringend empfohlen.
+   d. **SSL**: Aktivieren Sie das Kontrollkästchen, wenn das TheAccessHub-Verwaltungstool sicher über SSL mit dem LDAP-Server kommunizieren soll. Die Verwendung von SSL wird dringend empfohlen.
 
-   e. **Anmelde-DN** : Geben Sie den DN des Benutzerkontos ein, um sich anzumelden und die LDAP-Suche auszuführen.
+   e. **Anmelde-DN**: Geben Sie den DN des Benutzerkontos ein, um sich anzumelden und die LDAP-Suche auszuführen.
 
-   f. **Kennwort** : Geben Sie das Kennwort für den Benutzer ein.
+   f. **Kennwort**: Geben Sie das Kennwort für den Benutzer ein.
 
-   g. **Basis-DN** : Geben Sie den DN am Anfang der Hierarchie ein, in der Sie die Suche ausführen möchten.
+   g. **Basis-DN**: Geben Sie den DN am Anfang der Hierarchie ein, in der Sie die Suche ausführen möchten.
 
-   h. **Filter** : Geben Sie die LDAP-Filterzeichenfolge ein, mit der Ihre Kundendatensätze abgerufen werden.
+   h. **Filter**: Geben Sie die LDAP-Filterzeichenfolge ein, mit der Ihre Kundendatensätze abgerufen werden.
 
-   i. **Attribute** : Geben Sie eine durch Komma getrennte Liste mit Attributen aus ihren Kundendatensätzen ein, die an das TheAccessHub-Verwaltungstool übergeben werden sollen.
+   i. **Attribute**: Geben Sie eine durch Komma getrennte Liste mit Attributen aus ihren Kundendatensätzen ein, die an das TheAccessHub-Verwaltungstool übergeben werden sollen.
 
    j. Wählen Sie **Testverbindung** aus. Es wird ein Beispiel mit Ihren Daten angezeigt, um sicherzustellen, dass die Verbindung funktioniert.
 
    **OneDrive**
 
-   a. **Typ** : OneDrive for Business
+   a. **Typ**: OneDrive for Business
 
    b. Wählen Sie **Verbindung autorisieren** aus.
 
@@ -324,7 +324,7 @@ Mithilfe des TheAccessHub-Verwaltungstools können Sie Daten aus verschiedenen D
 
 18. Wenn der Datensatz für die **Datensynchronisierung** in der Ladephase 100 % erreicht, wurden alle Änderungen, die sich aus dem Ladevorgang ergeben, initiiert. Die Änderungen sollten in Azure AD B2C vorgenommen und den Kunden angezeigt werden.
 
-## <a name="synchronize-azure-ad-b2c-customer-data-into-theaccesshub-admin-tool"></a>Synchronisieren von Azure AD B2C-Kundendaten mit dem TheAccessHub-Verwaltungstool
+## <a name="synchronize-azure-ad-b2c-customer-data"></a>Synchronisieren von Azure AD B2C-Kundendaten 
 
 Das TheAccessHub-Verwaltungstool kann einmalig oder fortlaufend alle Kundendaten von Azure AD B2C mit dem TheAccessHub-Verwaltungstool synchronisieren. Dadurch wird sichergestellt, dass CSR-/Helpdesk-Administratoren aktuelle Kundeninformationen angezeigt werden.
 
@@ -356,7 +356,7 @@ So synchronisieren Sie Daten von Azure AD B2C mit dem TheAccessHub-Verwaltungs
 
 13. Wenn der Datensatz für die **Datensynchronisierung** in der Ladephase 100 % erreicht, wurden alle Änderungen, die sich aus dem Ladevorgang ergeben, initiiert.
 
-## <a name="configure-azure-ad-b2c-policies-to-call-theaccesshub-admin-tool"></a>Konfigurieren von Azure AD B2C-Richtlinien zum Aufrufen des TheAccessHub-Verwaltungstools
+## <a name="configure-azure-ad-b2c-policies"></a>Konfigurieren von Azure AD B2C-Richtlinien
 
 Bei gelegentlichen Synchronisierungen sind die Möglichkeiten des TheAccessHub-Verwaltungstools begrenzt, mit Azure AD B2C auf dem aktuellen Stand zu sein. Mithilfe der API des TheAccessHub-Verwaltungstools und Azure AD B2C-Richtlinien können Sie das TheAccessHub-Verwaltungstool über Änderungen informieren, sobald sie auftreten. Für diese Lösung sind technische Kenntnisse in Bezug auf [Benutzerdefinierte Azure AD B2C-Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20) erforderlich. Im nächsten Abschnitt lernen Sie die Schritte für eine Beispielrichtlinie und ein sicheres Zertifikat kennen, um das TheAccessHub-Verwaltungstool über neue Konten in Ihren benutzerdefinierten Registrierungsrichtlinien zu benachrichtigen.
 

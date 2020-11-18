@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/15/2018
 ms.author: alkohli
 ms.custom: include file
-ms.openlocfilehash: b7bdeeedaac65f67a3224e824c19e8cad794682b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7bdbfd8ffd44f9515ae4df20c55b09c8a0adcaef
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87507317"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93376214"
 ---
 #### <a name="to-create-a-new-service"></a>So erstellen Sie einen neuen Dienst
 
@@ -45,7 +45,7 @@ ms.locfileid: "87507317"
 
     7.  Klicken Sie auf **Erstellen**, um den StorSimple-Geräte-Manager zu erstellen.
 
-        ![Erstellen eines neuen Diensts](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
+        ![Erstellen eines neuen Diensts 2](./media/storsimple-virtual-array-create-new-service/createnewservice4.png)  
 
 Sie werden auf die Startseite **Dienst** weitergeleitet. Die Diensterstellung dauert einige Minuten. Nachdem der Dienst erfolgreich erstellt wurde, werden Sie entsprechend benachrichtigt, und der Status des Diensts ändert sich in **Aktiv**.
 

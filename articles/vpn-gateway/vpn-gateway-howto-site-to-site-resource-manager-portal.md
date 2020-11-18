@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: b8c12048283cb8cc4220cb325762b272cde4a68f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 10cc97692e43cb46bd26597317b7f05ae6e19f83
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541314"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657192"
 ---
 # <a name="create-a-site-to-site-connection-in-the-azure-portal"></a>Erstellen einer Site-to-Site-Verbindung im Azure-Portal
 
@@ -46,9 +46,9 @@ Erstellen Sie ein virtuelles Netzwerk (VNET) mit den folgenden Werten:
 * **Ressourcengruppe:** TestRG1
 * **Name:** VNet1
 * **Region:** (USA) USA, Osten
-* **IPv4-Adressraum** : 10.1.0.0/16
+* **IPv4-Adressraum**: 10.1.0.0/16
 * **Subnetzname:** FrontEnd
-* **Subnetzadressraum** : 10.1.0.0/24
+* **Subnetzadressraum**: 10.1.0.0/24
 
 [!INCLUDE [About cross-premises addresses](../../includes/vpn-gateway-cross-premises.md)]
 
@@ -68,16 +68,16 @@ Erstellen Sie ein VPN-Gateway mit den folgenden Werten:
 
 * **Name:** VNet1GW
 * **Region:** East US
-* **Gatewaytyp** : VPN
+* **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
-* **SKU** : VpnGw1
-* **Generation** : Generation1
+* **SKU**: VpnGw1
+* **Generation**: Generation1
 * **Virtuelles Netzwerk:** VNet1
-* **Adressbereich für Gatewaysubnetz** : 10.1.255.0/27
-* **Öffentliche IP-Adresse** : Neu erstellen
+* **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
+* **Öffentliche IP-Adresse**: Neu erstellen
 * **Öffentliche IP-Adresse:** VNet1GWpip
-* **Aktiv/Aktiv-Modus aktivieren** : Disabled
-* **BGP konfigurieren** : Disabled
+* **Aktiv/Aktiv-Modus aktivieren**: Disabled
+* **BGP konfigurieren**: Disabled
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
 
@@ -110,8 +110,8 @@ Erstellen Sie die Site-to-Site-VPN-Verbindung zwischen dem Gateway Ihres virtuel
 
 Erstellen Sie eine Verbindung mit den folgenden Werten:
 
-* **Name des Gateways für das lokale Netzwerk** : Site1
-* **Verbindungsname** : VNet1toSite1
+* **Name des Gateways für das lokale Netzwerk**: Site1
+* **Verbindungsname**: VNet1toSite1
 * **Gemeinsam verwendeter Schlüssel:** In diesem Beispiel verwenden wir „abc123“. Sie können jedoch einen beliebigen, mit Ihrer VPN-Hardware kompatiblen Wert verwenden. Wichtig ist, dass die Werte auf beiden Seiten der Verbindung übereinstimmen.
 
 [!INCLUDE [Add a site-to-site connection](../../includes/vpn-gateway-add-site-to-site-connection-portal-include.md)]
@@ -136,17 +136,17 @@ Eine Anleitung zum Ändern einer Gateway-SKU finden Sie unter [Gateway-SKUs](vpn
 
 Sie können weitere Verbindungen hinzufügen. Voraussetzung dafür ist, dass sich Adressbereiche zwischen Verbindungen nicht überlappen.
 
-1. Um eine zusätzliche Verbindung hinzuzufügen, navigieren Sie zum VPN-Gateway, und klicken Sie auf **Verbindungen** , um die Seite „Verbindungen“ zu öffnen.
-1. Klicken Sie auf **+ Hinzufügen** , um die Verbindung hinzuzufügen. Passen Sie den Verbindungstyp an, um VNET-to-VNET (falls Sie eine Verbindung mit einem anderen VNET-Gateway herstellen) oder Site-to-Site widerzuspiegeln.
+1. Um eine zusätzliche Verbindung hinzuzufügen, navigieren Sie zum VPN-Gateway, und klicken Sie auf **Verbindungen**, um die Seite „Verbindungen“ zu öffnen.
+1. Klicken Sie auf **+ Hinzufügen**, um die Verbindung hinzuzufügen. Passen Sie den Verbindungstyp an, um VNET-to-VNET (falls Sie eine Verbindung mit einem anderen VNET-Gateway herstellen) oder Site-to-Site widerzuspiegeln.
 1. Wenn Sie eine Verbindung über Site-to-Site herstellen und noch kein lokales Netzwerkgateway für die Website erstellt haben, mit der Sie eine Verbindung herstellen möchten, können Sie ein neues erstellen.
-1. Geben Sie den gemeinsam verwendeten Schlüssel ein, den Sie verwenden möchten, und klicken Sie auf **OK** , um die Verbindung zu erstellen.
+1. Geben Sie den gemeinsam verwendeten Schlüssel ein, den Sie verwenden möchten, und klicken Sie auf **OK**, um die Verbindung zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 * Weitere Informationen zur Tunnelerzwingung finden Sie unter [Konfigurieren der Tunnelerzwingung mit dem Azure Resource Manager-Bereitstellungsmodell](vpn-gateway-forced-tunneling-rm.md).
 * Informationen zu hochverfügbaren Aktiv/Aktiv-Verbindungen finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).
-* Informationen zum Beschränken von Netzwerkdatenverkehr auf Ressourcen in einem virtuellen Netzwerk finden Sie unter [Netzwerksicherheit](../virtual-network/security-overview.md).
+* Informationen zum Beschränken von Netzwerkdatenverkehr auf Ressourcen in einem virtuellen Netzwerk finden Sie unter [Netzwerksicherheit](../virtual-network/network-security-groups-overview.md).
 * Informationen zur Weiterleitung von Datenverkehr zwischen Azure, lokalen Speicherorten und Internetressourcen finden Sie unter [Routing von Datenverkehr für virtuelle Netzwerke](../virtual-network/virtual-networks-udr-overview.md).
 * Informationen zum Erstellen einer Site-to-Site-VPN-Verbindung mithilfe einer Azure Resource Manager-Vorlage finden Sie unter [Create a Site-to-Site VPN Connection](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/) (Erstellen einer Site-to-Site-VPN-Verbindung).
 * Informationen zum Erstellen einer VNET-zu-VNET-VPN-Verbindung mithilfe einer Azure Resource Manager-Vorlage finden Sie unter [Deploy HBase geo replication](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/) (Bereitstellen der HBase-Georeplikation).

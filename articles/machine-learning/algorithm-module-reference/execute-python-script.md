@@ -1,7 +1,7 @@
 ---
 title: 'Python-Skript ausführen: Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie das Modul Execute Python Script in Azure Machine Learning zum Ausführen von Python-Code verwendet wird.
+description: Erfahren Sie, wie Sie mit dem Modul Execute Python Script im Azure Machine Learning-Designer Python-Code ausführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: devx-track-python
 author: likebupt
 ms.author: keli19
 ms.date: 10/21/2020
-ms.openlocfilehash: e6a7eabec76cf27044b5d0e13acfc2431cb19b77
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e0da478e221fe392135362cd74cbdd8baca101ef
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323754"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421361"
 ---
 # <a name="execute-python-script-module"></a>Execute Python Script-Modul
 
@@ -37,7 +37,7 @@ Azure Machine Learning verwendet die Anaconda-Distribution von Python, die viele
 
 Eine vollständige Liste finden Sie im Abschnitt [Vorinstallierte Python-Pakete](#preinstalled-python-packages).
 
-Um Pakete zu installieren, die nicht in der Liste mit den vorinstallierten Paketen enthalten sind (z. B. *scikit-misc* ), fügen Sie Ihrem Skript den folgenden Code hinzu: 
+Um Pakete zu installieren, die nicht in der Liste mit den vorinstallierten Paketen enthalten sind (z. B. *scikit-misc*), fügen Sie Ihrem Skript den folgenden Code hinzu: 
 
 ```python
 import os
@@ -120,13 +120,13 @@ Das Modul „Execute Python Script“ (Python-Skript ausführen) enthält Python
 
     ![Eingabezuordnung zum Ausführen von Python-Code](media/module/python-module.png)
 
-4. Verbinden Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, mit dem Port **Script bundle** (Skriptbundle), um neue Python-Pakete einzuschließen. Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle** -Port, um Fehler wie *CommandLine überschreitet das Limit von 16.597 Zeichen* zu vermeiden. 
+4. Verbinden Sie die ZIP-Datei, die diese benutzerdefinierten Ressourcen enthält, mit dem Port **Script bundle** (Skriptbundle), um neue Python-Pakete einzuschließen. Wenn Ihr Skript größer als 16 KB ist, verwenden Sie den **Script Bundle**-Port, um Fehler wie *CommandLine überschreitet das Limit von 16.597 Zeichen* zu vermeiden. 
 
     
     1. Fassen Sie das Skript und andere benutzerdefinierte Ressourcen in einer ZIP-Datei zusammen.
     1. Laden Sie die ZIP-Datei als **Dateidataset** in Studio hoch. 
     1. Ziehen Sie das Datasetmodul aus der Liste *Datasets* im linken Modulbereich auf die Erstellungsseite des Designers. 
-    1. Verbinden Sie das Dataset mit dem **Script Bundle** -Port des **Execute R Script** -Moduls.
+    1. Verbinden Sie das Dataset mit dem **Script Bundle**-Port des **Execute R Script**-Moduls.
     
     Während der Ausführung der Pipeline kann jede Datei verwendet werden, die im hochgeladenen ZIP-Archiv enthalten ist. Wenn das Archiv eine Verzeichnisstruktur enthält, bleibt die Struktur erhalten.
  

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: update-management
 ms.date: 10/26/2020
 ms.topic: conceptual
-ms.openlocfilehash: 36540de8924a1433f16f942d9aedc059efae05de
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 09bd82225fb7d8a6eefe84b5a70660e4553a3070
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348677"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360784"
 ---
 # <a name="update-management-overview"></a>Übersicht über die Updateverwaltung
 
@@ -18,6 +18,9 @@ Mithilfe der Updateverwaltung in Azure Automation können Sie Betriebssystemupda
 
 > [!NOTE]
 > Auf einem Computer, der mit der Updateverwaltung konfiguriert ist, können Sie keine benutzerdefinierten Skripts aus Azure Automation ausführen. Auf diesem Computer kann nur das von Microsoft signierte Updateskript ausgeführt werden.
+
+> [!NOTE]
+> Zum aktuellen Zeitpunkt wird das Aktivieren der Updateverwaltung direkt von einem Arc-fähigen Server aus nicht unterstützt. Informationen zu den Anforderungen und zum Aktivieren für Ihren Server finden Sie unter [Aktivieren der Updateverwaltung aus Ihrem Automation-Konto](../../automation/update-management/enable-from-automation-account.md).
 
 Informationen zum automatischen Herunterladen und Installieren verfügbarer Patches vom Typ *Kritisch* und *Sicherheit* auf Ihren virtuellen Azure-Computer finden Sie unter [Automatische VM-Gastpatches](../../virtual-machines/windows/automatic-vm-guest-patching.md) für Windows-VMs.
 

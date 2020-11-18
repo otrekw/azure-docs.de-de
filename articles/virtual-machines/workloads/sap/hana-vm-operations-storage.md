@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/26/2020
+ms.date: 11/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0861d1fd3ab2a378f0b9afc4e8b35b32badfc3db
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bbaa9d33d3a31b682a66b2a3254fc2265b6f8d7b
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670668"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357076"
 ---
 # <a name="sap-hana-azure-virtual-machine-storage-configurations"></a>SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer
 
@@ -37,16 +37,16 @@ Azure bietet zwei Bereitstellungsmethoden für virtuelle Festplatten (VHDs) in A
 Eine Liste der Speichertypen und deren Vereinbarungen zum Servicelevel für IOPS- und Speicherdurchsatz finden Sie in der [Azure-Dokumentation für verwaltete Datenträger](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 > [!IMPORTANT]
-> Unabhängig vom gewählten Azure-Speichertyp muss das Dateisystem, das für diesen Speicher verwendet wird, von SAP für das jeweilige Betriebssystem und DBMS unterstützt werden. [SAP-Supporthinweis 405827](https://launchpad.support.sap.com/#/notes/405827) listet die für verschiedene Betriebssysteme und Datenbanken, einschließlich SAP HANA, unterstützten Dateisysteme auf. Dies gilt für alle Volumes, auf die SAP HANA zum Lesen und Schreiben für eine beliebige Aufgabe möglicherweise zugreift. Speziell bei Verwendung von NFS in Azure für SAP HANA gelten, wie weiter unten in diesem Artikel angegeben, zusätzliche Einschränkungen der NFS-Versionen. 
+> Unabhängig vom gewählten Azure-Speichertyp muss das Dateisystem, das für diesen Speicher verwendet wird, von SAP für das jeweilige Betriebssystem und DBMS unterstützt werden. [SAP-Supporthinweis 2972496](https://launchpad.support.sap.com/#/notes/2972496) listet die für verschiedene Betriebssysteme und Datenbanken, einschließlich SAP HANA, unterstützten Dateisysteme auf. Dies gilt für alle Volumes, auf die SAP HANA zum Lesen und Schreiben für eine beliebige Aufgabe möglicherweise zugreift. Speziell bei Verwendung von NFS in Azure für SAP HANA gelten, wie weiter unten in diesem Artikel angegeben, zusätzliche Einschränkungen der NFS-Versionen. 
 
 
 Die minimalen für SAP HANA zertifizierten Bedingungen für die verschiedenen Speichertypen sind: 
 
-- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure- [Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
+- Azure Storage Premium – **/hana/log** ist erforderlich, um von der Azure-[Schreibbeschleunigung](../../how-to-enable-write-accelerator.md) unterstützt zu werden. Das Volume **/hana/data** kann ohne Azure-Schreibbeschleunigung auf Storage Premium oder auf Disk Ultra platziert werden.
 - Azure Disk Ultra mindestens für das Volume **/hana/log**. Das Volume **/hana/data** kann entweder ohne Azure-Schreibbeschleunigung auf Storage Premium oder für schnellere Neustartzeiten auf Disk Ultra platziert werden.
-- **NFS v4.1** -Volumes basierend auf Azure NetApp Files für **/hana/log und /hana/data**. Das Volume von „/hana/shared“ kann das Protokoll NFS v3 oder NFS v4.1 verwenden.
+- **NFS v4.1**-Volumes basierend auf Azure NetApp Files für **/hana/log und /hana/data**. Das Volume von „/hana/shared“ kann das Protokoll NFS v3 oder NFS v4.1 verwenden.
 
-Einige Speichertypen können kombiniert werden. Es ist z. B. möglich, **/hana/data** unter Storage Premium zu speichern, und **/hana/log** kann unter Disk Storage Ultra gespeichert werden, um die erforderliche geringe Wartezeit zu erzielen. Wenn Sie ein auf ANF basierendes Volume für **/hana/data** verwenden, muss das Volume **/hana/log** zusätzlich zu ANF auch auf NFS basieren. Die Verwendung von NFS über ANF für eines der Volumes (z. B. „/hana/data“) und Azure Storage Premium oder Disk Ultra für das andere Volume (z. B. **/hana/log** ) wird **nicht unterstützt**.
+Einige Speichertypen können kombiniert werden. Es ist z. B. möglich, **/hana/data** unter Storage Premium zu speichern, und **/hana/log** kann unter Disk Storage Ultra gespeichert werden, um die erforderliche geringe Wartezeit zu erzielen. Wenn Sie ein auf ANF basierendes Volume für **/hana/data** verwenden, muss das Volume **/hana/log** zusätzlich zu ANF auch auf NFS basieren. Die Verwendung von NFS über ANF für eines der Volumes (z. B. „/hana/data“) und Azure Storage Premium oder Disk Ultra für das andere Volume (z. B. **/hana/log**) wird **nicht unterstützt**.
 
 In der lokalen Umgebung mussten Sie sich nur selten Gedanken über die E/A-Subsysteme und deren Funktionen machen. Das lag daran, dass der Hersteller des Geräts sicherstellen musste, dass die Mindestspeicheranforderungen für SAP HANA erfüllt sind. Da Sie die Azure-Infrastruktur selbst erstellen, sollten Sie mit einigen dieser SAP-Anforderungen vertraut sein. Einige der von SAP empfohlenen minimalen Durchsatzmerkmale sind:
 
@@ -61,7 +61,7 @@ Einige Leitprinzipien bei der Auswahl Ihrer Speicherkonfiguration für HANA kön
 
 - Entscheiden Sie sich für den Speichertyp auf der Grundlage von [Azure Storage-Typen für die SAP-Workload](./planning-guide-storage.md) und [Auswählen eines Datenträgertyps](../../disks-types.md).
 - Beachten Sie den E/A-Gesamtdurchsatz und die IOPS-Grenzwerte eines virtuellen Computers, wenn Sie die Größe festlegen oder sich für einen virtuellen Computer entscheiden. Der VM-Gesamtspeicherdurchsatz ist im Artikel [Arbeitsspeicheroptimierte Größen virtueller Computer](../../sizes-memory.md) beschrieben.
-- Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data** -Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data** -Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data** -Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
+- Versuchen Sie bei der Entscheidung für die Speicherkonfiguration mit Ihrer **/hana/data**-Volumenkonfiguration unter dem Gesamtdurchsatz des virtuellen Computers zu bleiben. Beim Schreiben von Sicherungspunkten kann SAP HANA bei der E/A-Ausgabe aggressiv sein. Es ist leicht möglich, beim Schreiben eines Sicherungspunkts bis an die Durchsatzgrenzen Ihres **/hana/data**-Volumens zu gehen. Wenn Ihre Datenträger, die das **/hana/data**-Volume bilden, einen höheren Durchsatz aufweisen, als Ihre VM zulässt, könnten Sie in Situationen geraten, in denen der vom Sicherungspunkt verwendete Durchsatz die Durchsatzanforderungen der Schreibvorgänge für das Wiederholungsprotokoll stört. Eine Situation, die sich auf den Durchsatz der Anwendung auswirken kann.
 - Wenn Sie Azure Storage Premium verwenden, ist die kostengünstigste Konfiguration die Verwendung von logischen Volume-Managern zur Erstellung von Stripesets für die Volumes **/hana/data** und **/hana/log**.
 
 > [!IMPORTANT]
@@ -141,7 +141,7 @@ Insbesondere auf kleineren DBMS-Systemen, auf denen Ihre Workload nur ein paar h
 
 **Empfehlung: Die empfohlenen Konfigurationen mit Azure Storage Premium für Produktionsszenarien sehen wie folgt aus:**
 
-Konfiguration für SAP **/hana/data** -Volume:
+Konfiguration für SAP **/hana/data**-Volume:
 
 | VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/data | Bereitgestellter Durchsatz | Maximaler Burstdurchsatz | IOPS | Burst-IOPS |
 | --- | --- | --- | --- | --- | --- | --- | 
@@ -179,8 +179,8 @@ Für die anderen Volumes würde die Konfiguration wie folgt aussehen:
 
 | VM-SKU | RAM | Maximal VM-E/A<br /> Throughput | /hana/shared | /root volume | /usr/sap |
 | --- | --- | --- | --- | --- | --- | --- | --- | -- |
-| M32ts | 192 GiB | 500 MBit/s | 1 x P20 | 1 x P6 | 1 x P6 |
-| M32ls | 256 GiB | 500 MBit/s |  1 x P20 | 1 x P6 | 1 x P6 |
+| M32ts | 192 GiB | 500 MBit/s | 1 x P15 | 1 x P6 | 1 x P6 |
+| M32ls | 256 GiB | 500 MBit/s |  1 x P15 | 1 x P6 | 1 x P6 |
 | M64ls | 512 GB | 1\.000 MBit/s | 1 x P20 | 1 x P6 | 1 x P6 |
 | M64s | 1\.000 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 |
 | M64ms | 1\.750 GiB | 1\.000 MBit/s | 1 x P30 | 1 x P6 | 1 x P6 | 

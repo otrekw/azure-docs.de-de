@@ -1,7 +1,7 @@
 ---
 title: 'Convert to Dataset: Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie das Modul „Convert to Dataset“ in Azure Machine Learning verwenden, um Dateneingaben in das von Microsoft Azure Machine Learning verwendete interne Datasetformat zu konvertieren.
+description: Erfahren Sie, wie Sie mit dem Modul Convert to Dataset im Azure Machine Learning-Designer Dateneingaben in das interne Datasetformat konvertieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 9c014f14149b903713ae2f03b98956cd4ecaf8a1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 671a8f7c6fa4c20ef4fc88f57d4a946a84614389
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323056"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420868"
 ---
 # <a name="convert-to-dataset"></a>Konvertieren in ein Dataset
 
@@ -45,8 +45,8 @@ Es empfiehlt sich, das Dataset mithilfe des Moduls [Edit Metadata](edit-metadata
   
     - **ReplaceValues:** Verwenden Sie diese Option, um einen einzelnen exakten Wert anzugeben, der durch einen anderen exakten Wert ersetzt werden soll. Sie können fehlende oder benutzerdefinierte Werte ersetzen, indem Sie die Methode **Ersetzen** festlegen:
 
-      - **Missing** : Wählen Sie diese Option aus, um fehlende Werte im Eingabedataset zu ersetzen. Geben Sie für **Neuer Wert** den Wert ein, durch den die fehlenden Werte ersetzt werden sollen.
-      - **Benutzerdefiniert** : Wählen Sie diese Option aus, um benutzerdefinierte Werte im Eingabedataset zu ersetzen. Geben Sie für **Benutzerdefinierter Wert** den Wert ein, den Sie suchen möchten. Wenn die Daten z. B. die Zeichenfolge `obs` als Platzhalter für fehlende Werte enthalten, geben Sie `obs` ein. Geben Sie für **Neuer Wert** den neuen Wert ein, durch den die ursprüngliche Zeichenfolge ersetzt werden soll.
+      - **Missing**: Wählen Sie diese Option aus, um fehlende Werte im Eingabedataset zu ersetzen. Geben Sie für **Neuer Wert** den Wert ein, durch den die fehlenden Werte ersetzt werden sollen.
+      - **Benutzerdefiniert**: Wählen Sie diese Option aus, um benutzerdefinierte Werte im Eingabedataset zu ersetzen. Geben Sie für **Benutzerdefinierter Wert** den Wert ein, den Sie suchen möchten. Wenn die Daten z. B. die Zeichenfolge `obs` als Platzhalter für fehlende Werte enthalten, geben Sie `obs` ein. Geben Sie für **Neuer Wert** den neuen Wert ein, durch den die ursprüngliche Zeichenfolge ersetzt werden soll.
   
     Beachten Sie, dass der Vorgang **ReplaceValues** nur für exakte Übereinstimmungen gilt. Diese Zeichenfolgen sind z. B. nicht betroffen: `obs.`, `obsolete`.  
  
