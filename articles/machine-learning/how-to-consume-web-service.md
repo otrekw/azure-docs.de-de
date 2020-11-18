@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 10/12/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 03b077c7cadbfd101705c040e485c5766909c2de
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4fb62ec8d3a6fa97fe6db5b146ba58d3ad66b1b4
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318158"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441986"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Nutzen eines als Webdienst bereitgestellten Azure Machine Learning-Modells
 
@@ -85,7 +85,7 @@ az ml service show -n <service-name>
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-Wählen Sie im Azure Machine Learning Studio __Endpunkte__ , __Echtzeitendpunkte__ und dann den Endpunktnamen aus. In den Details für den Endpunkt enthält das Feld __REST-Endpunkt__ den Bewertungs-URI. Das Feld __Swagger-URI__ enthält den Swagger-URI.
+Wählen Sie im Azure Machine Learning Studio __Endpunkte__, __Echtzeitendpunkte__ und dann den Endpunktnamen aus. In den Details für den Endpunkt enthält das Feld __REST-Endpunkt__ den Bewertungs-URI. Das Feld __Swagger-URI__ enthält den Swagger-URI.
 
 ---
 
@@ -117,9 +117,9 @@ Azure Machine Learning bietet zwei Möglichkeiten zur Steuerung des Zugriffs auf
 |Schlüssel|Standardmäßig deaktiviert| Standardmäßig aktiviert|
 |Token| Nicht verfügbar.| Standardmäßig deaktiviert |
 
-Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__ -Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.
+Verwenden Sie beim Senden einer Anforderung an einen Dienst, der mit einem Schlüssel oder Token gesichert ist, den __Authorization__-Header, um den Schlüssel oder das Token zu übergeben. Der Schlüssel oder das Token muss als `Bearer <key-or-token>` formatiert sein, wobei `<key-or-token>` der Schlüssel- oder Tokenwert ist.
 
-Der primäre Unterschied zwischen Schlüsseln und Token besteht darin, dass **Schlüssel statisch sind und manuell neu generiert werden können** und **Token bei Ablauf aktualisiert werden müssen**. Die schlüsselbasierte Authentifizierung wird für Webdienste unterstützt, die über Azure Container Instances und Azure Kubernetes Service bereitgestellt werden. Die tokenbasierte Authentifizierung ist **nur** für Azure Kubernetes Service-Bereitstellungen verfügbar. Weitere Informationen sowie spezifische Codebeispiele finden Sie in der [Vorgehensweise](how-to-setup-authentication.md#web-service-authentication) zur Authentifizierung.
+Der primäre Unterschied zwischen Schlüsseln und Token besteht darin, dass **Schlüssel statisch sind und manuell neu generiert werden können** und **Token bei Ablauf aktualisiert werden müssen**. Die schlüsselbasierte Authentifizierung wird für Webdienste unterstützt, die über Azure Container Instances und Azure Kubernetes Service bereitgestellt werden. Die tokenbasierte Authentifizierung ist **nur** für Azure Kubernetes Service-Bereitstellungen verfügbar. Weitere Informationen zum Konfigurieren der Authentifizierung finden Sie unter [Konfigurieren der Authentifizierung für Modelle, die als Webdienst bereitgestellt werden](how-to-authenticate-web-service.md).
 
 
 #### <a name="authentication-with-keys"></a>Authentifizierung mit Schlüsseln

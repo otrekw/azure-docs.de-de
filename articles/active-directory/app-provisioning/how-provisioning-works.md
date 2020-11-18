@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/20/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: c9d8bf42d8856ffcf7bb0247172f6c0fd49600e0
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424633"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393080"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -43,9 +43,7 @@ Wenn Sie einen automatischen Azure AD-Bereitstellungsconnector für eine App anf
 
 ## <a name="authorization"></a>Authorization
 
-Damit Azure AD eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herstellen kann, sind Anmeldeinformationen erforderlich. Wenn Sie die automatische Benutzerbereitstellung für eine Anwendung konfigurieren, müssen Sie gültige Anmeldeinformationen eingeben. Die Anmeldeinformationstypen und die Anforderungen für die Anwendung finden Sie im entsprechenden App-Tutorial. Im Azure-Portal können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
-
-Wenn für die Anwendung auch SAML-basiertes einmaliges Anmelden konfiguriert ist, beträgt das interne Azure AD-Speicherlimit pro Anwendung 1024 Bytes. Dieses Limit umfasst alle Zertifikate, geheimen Token, Anmeldeinformationen und die zugehörigen Konfigurationsdaten für eine einzelne Instanz einer Anwendung (in Azure AD auch als Dienstprinzipaldatensatz bezeichnet). Wenn das SAML-basierte einmalige Anmelden konfiguriert ist, beansprucht das zum Signieren der SAML-Token verwendete Zertifikat oft mehr als 50 Prozent des Speicherplatzes. Alle zusätzlichen Elemente (geheime Token, URIs, Benachrichtigungs-E-Mail-Adressen, Benutzernamen und Kennwörter), die Sie beim Einrichten der Benutzerbereitstellung eingeben, könnten zur Überschreitung des Speicherlimits führen. Weitere Informationen finden Sie unter [Problem beim Speichern von Administratoranmeldeinformationen während des Konfigurierens der Benutzerbereitstellung](./application-provisioning-config-problem-storage-limit.md).
+Damit Azure AD eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herstellen kann, sind Anmeldeinformationen erforderlich. Wenn Sie die automatische Benutzerbereitstellung für eine Anwendung konfigurieren, müssen Sie gültige Anmeldeinformationen eingeben. Bei Kataloganwendungen finden Sie die Anmeldeinformationstypen und die Anforderungen für die Anwendung im entsprechenden App-Tutorial. Bei nicht im Katalog enthaltenen Anwendungen finden Sie Informationen zu den Anmeldeinformationstypen und Anforderungen in der Dokumentation zu [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery). Im Azure-Portal können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
 
 ## <a name="mapping-attributes"></a>Zuordnen von Attributen
 
@@ -53,7 +51,7 @@ Wenn Sie die Benutzerbereitstellung für eine SaaS-Anwendung eines Drittanbieter
 
 Es ist ein vorkonfigurierter Satz von Attributen und Attributzuordnungen zwischen Azure AD-Benutzerobjekten und den Benutzerobjekten der einzelnen SaaS-Apps verfügbar. Einige Apps verwalten neben Benutzern andere Objekttypen wie beispielsweise Gruppen.
 
-Überprüfen und konfigurieren Sie beim Einrichten der Bereitstellung unbedingt die Attributzuordnungen und Workflows, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) zwischen Azure AD und der Anwendung übertragen werden. Überprüfen und konfigurieren Sie die übereinstimmende Eigenschaft ( **Objekte mit diesem Attribut abgleichen** ), mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden.
+Überprüfen und konfigurieren Sie beim Einrichten der Bereitstellung unbedingt die Attributzuordnungen und Workflows, mit denen festgelegt wird, welche Benutzereigenschaften (oder Gruppeneigenschaften) zwischen Azure AD und der Anwendung übertragen werden. Überprüfen und konfigurieren Sie die übereinstimmende Eigenschaft (**Objekte mit diesem Attribut abgleichen**), mit der Benutzer/Gruppen zwischen den beiden Systemen eindeutig identifiziert und abgeglichen werden.
 
 Sie können die Standardattributzuordnungen den Anforderungen Ihres Unternehmens entsprechend anpassen. Dies bedeutet, dass Sie vorhandene Attributzuordnungen ändern oder löschen und neue Attributzuordnungen erstellen können. Ausführliche Informationen hierzu finden Sie unter [Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory](./customize-application-attributes.md).
 
@@ -135,7 +133,7 @@ Nach dem ersten Zyklus führen alle anderen Zyklen folgende Aktionen aus:
 10. Legen Sie am Ende des inkrementellen Zyklus einen neuen Grenzwert fest, der als Startpunkt für die nachfolgenden inkrementellen Zyklen dient.
 
 > [!NOTE]
-> Optional können Sie die Vorgänge **Erstellen** , **Aktualisieren** und **Löschen** deaktivieren. Dazu verwenden Sie im Abschnitt **Zuordnungen** die Kontrollkästchen für [Zielobjektaktionen](customize-application-attributes.md). Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
+> Optional können Sie die Vorgänge **Erstellen**, **Aktualisieren** und **Löschen** deaktivieren. Dazu verwenden Sie im Abschnitt **Zuordnungen** die Kontrollkästchen für [Zielobjektaktionen](customize-application-attributes.md). Die Logik zum Deaktivieren eines Benutzers während eines Updates wird ebenfalls per Attributzuordnung über ein Feld wie „accountEnabled“ gesteuert.
 
 Der Bereitstellungsdienst führt aufeinander folgende inkrementelle Zyklen in bestimmten (im [jeweiligen Anwendungstutorial](../saas-apps/tutorial-list.md) angegebenen) Intervallen aus. Die inkrementellen Zyklen werden ausgeführt, bis eines der folgenden Ereignisse auftritt:
 
@@ -172,7 +170,7 @@ Alle vom Benutzerbereitstellungsdienst ausgeführten Vorgänge werden in Azure 
 ## <a name="de-provisioning"></a>Aufheben der Bereitstellung
 Der Azure AD-Bereitstellungsdienst sorgt für die Synchronisierung von Quell- und Zielsystem, indem die Bereitstellung von Konten aufgehoben wird, wenn Benutzerzugriff entfernt wurde.
 
-Der Bereitstellungsdienst unterstützt sowohl das Löschen als auch das Deaktivieren (manchmal auch als vorläufiges Löschen bezeichnet) von Benutzern. Die genaue Definition von „Deaktivieren“ und „Löschen“ variiert je nach Implementierung der Ziel-App, aber normalerweise ist durch ein „Deaktivieren“ gekennzeichnet, dass sich der Benutzer nicht anmelden kann. Ein „Löschen“ kennzeichnet, dass der Benutzer vollständig aus der Anwendung entfernt wurde. Bei einer SCIM-Anwendungen ist ein Deaktivieren eine Anforderung, die *active* -Eigenschaft für einen Benutzer auf „false“ festzulegen. 
+Der Bereitstellungsdienst unterstützt sowohl das Löschen als auch das Deaktivieren (manchmal auch als vorläufiges Löschen bezeichnet) von Benutzern. Die genaue Definition von „Deaktivieren“ und „Löschen“ variiert je nach Implementierung der Ziel-App, aber normalerweise ist durch ein „Deaktivieren“ gekennzeichnet, dass sich der Benutzer nicht anmelden kann. Ein „Löschen“ kennzeichnet, dass der Benutzer vollständig aus der Anwendung entfernt wurde. Bei einer SCIM-Anwendungen ist ein Deaktivieren eine Anforderung, die *active*-Eigenschaft für einen Benutzer auf „false“ festzulegen. 
 
 **Konfigurieren Ihrer Anwendung, um einen Benutzer zu deaktivieren**
 

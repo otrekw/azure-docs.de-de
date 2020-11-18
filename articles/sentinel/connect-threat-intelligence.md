@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2019
 ms.author: yelevin
-ms.openlocfilehash: d794b0a33eabedd3e6e309f291543ba23bc40f79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 223f3e45f25e3aed3ed6fa15e5b9ea04b17f6c59
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91362745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655322"
 ---
 # <a name="connect-data-from-threat-intelligence-providers"></a>Verknüpfen von Daten von Threat Intelligence-Anbietern
 
@@ -36,7 +36,7 @@ Mit Azure Sentinel können Sie die von Ihrer Organisation verwendeten Bedrohungs
 
 - **Notebooks** können Bedrohungsindikatoren verwenden, wenn Sie Anomalien untersuchen und nach schädlichen Verhaltensweisen suchen.
 
-Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines der im Abschnitt „Verbinden von Azure Sentinel mit TAXII-Servern“ aufgeführten Produkte der integrierten Threat Intelligence-Plattform (TIP) oder aber die direkte Integration mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](https://aka.ms/graphsecuritytiindicators) verwenden.
+Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines der im Abschnitt „Verbinden von Azure Sentinel mit TAXII-Servern“ aufgeführten Produkte der integrierten Threat Intelligence-Plattform (TIP) oder aber die direkte Integration mit der [Microsoft Graph-Sicherheits-API „tiIndicators“](/graph/api/resources/tiindicator) verwenden.
 
 ## <a name="integrated-threat-intelligence-platform-products"></a>Produkte der integrierten Threat Intelligence Platform
 
@@ -114,4 +114,4 @@ Sie können Bedrohungsindikatoren an Azure Sentinel streamen, indem Sie eines de
 In diesem Artikel haben Sie gelernt, wie Sie Ihren Threat Intelligence-Anbieter mit Azure Sentinel verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln.
 
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).

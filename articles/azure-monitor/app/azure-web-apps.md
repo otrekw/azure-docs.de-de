@@ -4,12 +4,12 @@ description: Überwachung der Anwendungsleistung für Azure App Services. Ladeze
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: e326f9764147b882a5009c53b9f13a3c3bd0bfc1
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: c78a43f9efb263c08dad21218636f21121b9732c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875604"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377801"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Überwachen der Leistung von Azure App Service
 
@@ -100,7 +100,8 @@ Wählen Sie in Ihrer App Service-Web-App die Option **Einstellungen** > **Applic
 
 # <a name="java"></a>[Java](#tab/java)
 
-Auf App Service basierende Java-Webanwendungen unterstützen derzeit keine automatische Überwachung mit Agents/Erweiterungen. Um die Überwachung für Ihre Java-Anwendung zu aktivieren, müssen Sie [Ihre Anwendung manuell instrumentieren](./java-get-started.md).
+Befolgen Sie die Anweisungen für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md), um die automatische Instrumentierung für Ihre Java-Apps zu aktivieren, ohne den Code zu ändern.
+Die automatische Integration ist für App Service noch nicht verfügbar.
 
 # <a name="python"></a>[Python](#tab/python)
 
@@ -350,7 +351,8 @@ Wenn das Upgrade für eine frühere Version als 2.5.1 ausgeführt wird, vergewis
 Nachfolgend finden Sie schrittweise Anleitungen zur Problembehandlung für die Erweiterung/Agent-basierte Überwachung für Anwendungen, die auf .NET und .NET Core basieren und unter Azure App Services ausgeführt werden.
 
 > [!NOTE]
-> Java-Anwendungen werden unter Azure App Services nur über die manuelle SDK-basierte Instrumentierung unterstützt. Daher gelten die folgenden Schritte nicht für diese Szenarien.
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+
 
 1. Überprüfen Sie, ob die Anwendung über `ApplicationInsightsAgent` überwacht wird.
     * Überprüfen Sie, ob die App-Einstellung `ApplicationInsightsAgent_EXTENSION_VERSION` auf den Wert „~2“ festgelegt ist.
@@ -401,7 +403,7 @@ Wenn Sie die server- und clientseitige Überwachung ohne Code für ASP.NET oder 
 
 ### <a name="php-and-wordpress-are-not-supported"></a>PHP und WordPress werden nicht unterstützt.
 
-PHP- und WordPress-Sites werden nicht unterstützt. Zurzeit ist kein offiziell unterstütztes SDK/unterstützter Agent für die serverseitige Überwachung dieser Workloads verfügbar. Das manuelle Instrumentieren clientseitiger Transaktionen auf einer PHP- oder WordPress-Site durch Hinzufügen des clientseitigen JavaScripts zu Ihren Webseiten kann jedoch mithilfe des [JavaScript SDK](./javascript.md) erreicht werden.
+PHP- und WordPress-Sites werden nicht unterstützt. Zurzeit ist kein offiziell unterstütztes SDK/unterstützter Agent für die serverseitige Überwachung dieser Workloads verfügbar. Das manuelle Instrumentieren clientseitiger Transaktionen auf einer PHP- oder WordPress-Website durch Hinzufügen von clientseitigem JavaScript zu Ihren Webseiten kann jedoch mithilfe des [JavaScript SDK](./javascript.md) erreicht werden.
 
 ### <a name="connection-string-and-instrumentation-key"></a>Verbindungszeichenfolge und Instrumentierungsschlüssel
 

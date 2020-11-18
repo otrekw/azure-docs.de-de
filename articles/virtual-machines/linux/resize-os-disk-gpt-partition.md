@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: baa260e911673ea99b292ab5dc9895840d0098ef
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340306"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392689"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist
 
@@ -82,7 +82,7 @@ So setzen Sie die Größe des Betriebssystem-Datenträgers in Ubuntu 16.x und 1
 
 1. Beenden Sie den virtuellen Computer.
 1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
-1. Führen Sie einen Neustart der VM aus, und melden Sie sich dann bei der VM als **Root** -Benutzer an.
+1. Führen Sie einen Neustart der VM aus, und melden Sie sich dann bei der VM als **Root**-Benutzer an.
 1. Vergewissern Sie sich, dass der Betriebssystem-Datenträger jetzt ein größeres Dateisystem anzeigt.
 
 Wie im folgenden Beispiel gezeigt, wurde der Betriebssystem-Datenträger im Portal auf 100 GB vergrößert. Das auf **/** eingebundene Dateisystem **/dev/sda1** zeigt jetzt 97 GB an.
@@ -112,7 +112,7 @@ So setzen Sie die Größe des Betriebssystem-Datenträgers in SUSE 12 SP4, SUS
 
 Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
 
-1. Greifen Sie als **Root** -Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
+1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
 
    ```
    # sudo -i
@@ -231,95 +231,144 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    
    Im vorherigen Beispiel können wir sehen, dass die Größe des Dateisystems für den Betriebssystem-Datenträger heraufgesetzt wurde.
 
-### <a name="rhel-lvm"></a>RHEL LVM
+### <a name="rhel-with-lvm"></a>RHEL mit LVM
 
-So setzen Sie die Größe des Betriebssystem-Datenträgers in RHEL 7.x mit LVM herauf:
+1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
 
-1. Beenden Sie den virtuellen Computer.
-1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
-1. Starten Sie den virtuellen Computer.
-
-Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
-
-1. Greifen Sie als **Root** -Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
- 
-   ```
-   #sudo su
+   ```bash
+   [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Installieren Sie das **gptfdisk** -Paket, das erforderlich ist, um die Größe des Betriebssystem-Datenträgers heraufzusetzen.
+1. Verwenden Sie den Befehl `lsblk`, um das logische Volume (LV) zu suchen, das im Stammverzeichnis des Dateisystems („/“) eingebunden ist. In diesem Fall sehen Sie, dass **_rootvg-rootlv_ *_ unter _* /** eingebunden ist.  Wenn Sie ein anderes Dateisystem verwenden möchten, ersetzen Sie das LV und den Bereitstellungspunkt mithilfe dieses Dokuments.
 
-   ```
-   #yum install gdisk -y
-   ```
-
-1. Um den größten Sektor anzuzeigen, der auf dem Datenträger verfügbar ist, führen Sie den folgenden Befehl aus:
-
-   ```
-   #sgdisk -e /dev/sda
-   ```
-
-1. Ändern Sie mithilfe des folgenden Befehls die Größe der Partition, ohne sie zu löschen. Der **parted** -Befehl weist eine Option mit der Bezeichnung **resizepart** auf, um die Größe einer Partition zu ändern, ohne sie zu löschen. Die Zahl 4 nach **resizepart** ist die Angabe, dass die Größe der vierten Partition geändert werden soll.
-
-   ```
-   #parted -s /dev/sda "resizepart 4 -1" quit
-   ```
-    
-1. Führen Sie den folgenden Befehl aus, um zu überprüfen, ob die Partition erweitert wurde:
-
-   ```
-   #lsblk
+   ```shell
+   [root@dd-rhel7vm ~]# lsblk -f
+   NAME                  FSTYPE      LABEL   UUID                                   MOUNTPOINT
+   fd0
+   sda
+   ├─sda1                vfat                C13D-C339                              /boot/efi
+   ├─sda2                xfs                 8cc4c23c-fa7b-4a4d-bba8-4108b7ac0135   /boot
+   ├─sda3
+   └─sda4                LVM2_member         zx0Lio-2YsN-ukmz-BvAY-LCKb-kRU0-ReRBzh
+      ├─rootvg-tmplv      xfs                 174c3c3a-9e65-409a-af59-5204a5c00550   /tmp
+      ├─rootvg-usrlv      xfs                 a48dbaac-75d4-4cf6-a5e6-dcd3ffed9af1   /usr
+      ├─rootvg-optlv      xfs                 85fe8660-9acb-48b8-98aa-bf16f14b9587   /opt
+      ├─rootvg-homelv     xfs                 b22432b1-c905-492b-a27f-199c1a6497e7   /home
+      ├─rootvg-varlv      xfs                 24ad0b4e-1b6b-45e7-9605-8aca02d20d22   /var
+      └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-   Die folgende Ausgabe zeigt, dass die Partition **/dev/sda4** auf 99 GB vergrößert wurde.
+1. Überprüfen Sie, ob in der LVM-Volumegruppe mit der Stammpartition freier Speicherplatz verfügbar ist.  Wenn freier Speicherplatz verfügbar ist, fahren Sie mit **Schritt 12** fort.
 
-   ```
-   [user@myvm ~]# lsblk
-   NAME              MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
-   fd0                 2:0    1    4K  0 disk
-   sda                 8:0    0  100G  0 disk
-   ├─sda1              8:1    0  500M  0 part /boot/efi
-   ├─sda2              8:2    0  500M  0 part /boot
-   ├─sda3              8:3    0    2M  0 part
-   └─sda4              8:4    0   99G  0 part
-   ├─rootvg-tmplv    253:0    0    2G  0 lvm  /tmp
-   ├─rootvg-usrlv    253:1    0   10G  0 lvm  /usr
-   ├─rootvg-optlv    253:2    0    2G  0 lvm  /opt
-   ├─rootvg-homelv   253:3    0    1G  0 lvm  /home
-   ├─rootvg-varlv    253:4    0    8G  0 lvm  /var
-   └─rootvg-rootlv   253:5    0    2G  0 lvm  /
-   sdb                 8:16   0   50G  0 disk
-   └─sdb1              8:17   0   50G  0 part /mnt/resource
+   ```bash
+   [root@dd-rhel7vm ~]# vgdisplay rootvg
+   --- Volume group ---
+   VG Name               rootvg
+   System ID
+   Format                lvm2
+   Metadata Areas        1
+   Metadata Sequence No  7
+   VG Access             read/write
+   VG Status             resizable
+   MAX LV                0
+   Cur LV                6
+   Open LV               6
+   Max PV                0
+   Cur PV                1
+   Act PV                1
+   VG Size               <63.02 GiB
+   PE Size               4.00 MiB
+   Total PE              16132
+   Alloc PE / Size       6400 / 25.00 GiB
+   Free  PE / Size       9732 / <38.02 GiB
+   VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-1. Verwenden Sie den folgenden Befehl, um die Größe des physischen Volumes (PV) zu ändern:
+   In diesem Beispiel gibt die Zeile **Free PE / Size** an, dass in der Volumegruppe 38,02 GB frei sind.  Keine Größenänderung des Datenträgers vor dem Hinzufügen von Speicherplatz zur Volumegruppe erforderlich
 
-   ```
-   #pvresize /dev/sda4
+1. So setzen Sie die Größe des Betriebssystem-Datenträgers in RHEL 7.x mit LVM herauf:
+
+   1. Beenden Sie den virtuellen Computer.
+   1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
+   1. Starten Sie den virtuellen Computer.
+
+1. Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
+
+   1. Installieren Sie das Paket **cloud-utils-growpart**, um den Befehl **growpart** bereitzustellen, der zum Vergrößern der Größe des Betriebssystemdatenträgers erforderlich ist.
+
+      Dieses Paket ist auf den meisten Azure Marketplace-Images vorinstalliert.
+
+      ```bash
+      [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
+      ```
+
+1. Ermitteln Sie mit dem Befehl **pvscan**, auf welchem Datenträger und welcher Partition die physischen LVM-Volumes (PV) in der Volumegruppe (VG) mit dem Namen „rootvg“ enthalten sind.  Notieren Sie sich die Größe und den freien Speicherplatz, die zwischen den eckigen Klammern **[]** angegeben sind.
+
+   ```bash
+   [root@dd-rhel7vm ~]# pvscan
+     PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-   Die folgende Ausgabe zeigt, dass das PV auf 99,02 GB vergrößert wurde.
+1. Überprüfen Sie die Größe der Partition mit **lsblk**.  Überprüfen Sie die Ausgabe: 
 
+   ```bash
+   [root@dd-rhel7vm ~]# lsblk /dev/sda4
+   NAME            MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+   sda4              8:4    0  63G  0 part
+   ├─rootvg-tmplv  253:1    0   2G  0 lvm  /tmp
+   ├─rootvg-usrlv  253:2    0  10G  0 lvm  /usr
+   ├─rootvg-optlv  253:3    0   2G  0 lvm  /opt
+   ├─rootvg-homelv 253:4    0   1G  0 lvm  /home
+   ├─rootvg-varlv  253:5    0   8G  0 lvm  /var
+   └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
-   [user@myvm ~]# pvresize /dev/sda4
+
+1. Erweitern Sie die Partition mit dieser PV mit **growpart**, und verwenden Sie den Gerätenamen und die Partitionsnummer.  Dadurch wird die angegebene Partition so erweitert, dass der gesamte freie zusammenhängende Speicherplatz auf dem Gerät verwendet wird.
+
+   ```bash
+   [root@dd-rhel7vm ~]# growpart /dev/sda 4
+   CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
+   ```
+
+1. Überprüfen Sie erneut mit dem Befehl **lsblk**, ob die Größe der Partition wie erwartet geändert wurde.  Beachten Sie, dass in diesem Beispiel sda4 von 63 GB in 95 GB geändert wurde.
+
+   ```bash
+   [root@dd-rhel7vm ~]# lsblk /dev/sda4
+   NAME            MAJ:MIN RM SIZE RO TYPE MOUNTPOINT
+   sda4              8:4    0  95G  0 part
+   ├─rootvg-tmplv  253:1    0   2G  0 lvm  /tmp
+   ├─rootvg-usrlv  253:2    0  10G  0 lvm  /usr
+   ├─rootvg-optlv  253:3    0   2G  0 lvm  /opt
+   ├─rootvg-homelv 253:4    0   1G  0 lvm  /home
+   ├─rootvg-varlv  253:5    0   8G  0 lvm  /var
+   └─rootvg-rootlv 253:6    0   2G  0 lvm  /
+   ```
+
+1. Erweitern des PV zur Verwendung der restlichen neu erweiterten Partition
+
+   ```bash
+   [root@dd-rhel7vm ~]# pvresize /dev/sda4
    Physical volume "/dev/sda4" changed
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
-
-   [user@myvm ~]# pvs
-   PV         VG     Fmt  Attr PSize   PFree
-   /dev/sda4  rootvg lvm2 a--  <99.02g <74.02g
    ```
 
-1. Im folgenden Beispiel wird die Größe von **/dev/mapper/rootvg-rootlv** von 2 GB auf 12 GB heraufgesetzt (eine Erhöhung um 10 GB), mit dem folgenden Befehl. Mit diesem Befehl wird außerdem die Größe des Dateisystems heraufgesetzt.
+1. Überprüfen Sie die neue Größe des PV, und vergleichen Sie dabei die ursprünglichen Werte für **[Größe/freien Speicherplatz]** .
 
+   ```bash
+   [root@dd-rhel7vm ~]# pvscan
+   PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
-   #lvresize -r -L +10G /dev/mapper/rootvg-rootlv
+
+1. Erweitern Sie das logische Volume (LV) um den gewünschten Betrag. Dieser darf nicht den gesamten freien Speicherplatz in der Volumegruppe ausmachen.  Im folgenden Beispiel wird die Größe von **/dev/mapper/rootvg-rootlv** von 2 GB auf 12 GB heraufgesetzt (eine Erhöhung um 10 GB), mit dem folgenden Befehl. Mit diesem Befehl wird außerdem die Größe des Dateisystems heraufgesetzt.
+
+   ```bash
+   [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
    ```
 
    Beispielausgabe:
 
-   ```
-   [user@myvm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
+   ```bash
+   [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
    Size of logical volume rootvg/rootlv changed from 2.00 GiB (512 extents) to 12.00 GiB (3072 extents).
    Logical volume rootvg/rootlv successfully resized.
    meta-data=/dev/mapper/rootvg-rootlv isize=512    agcount=4, agsize=131072 blks
@@ -333,24 +382,24 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    realtime =none                   extsz=4096   blocks=0, rtextents=0
    data blocks changed from 524288 to 3145728
    ```
-         
-1. Überprüfen Sie mithilfe des folgenden Befehls, ob **/dev/mapper/rootvg-rootlv** eine erweiterte Größe des Dateisystems aufweist:
 
-   ```
-   #df -Th /
+1. Mit dem Befehl „lvresize“ wird automatisch der entsprechende Befehl zum Ändern der Größe für das Dateisystem im LV aufgerufen. Überprüfen Sie mithilfe des folgenden Befehls, ob die Größe des Dateisystems unter **/dev/mapper/rootvg-rootlv** (unter **/** eingebunden) erweitert wurde:
+
+   ```shell
+   [root@dd-rhel7vm ~]# df -Th /
    ```
 
    Beispielausgabe:
 
-   ```
-   [user@myvm ~]# df -Th /
+   ```shell
+   [root@dd-rhel7vm ~]# df -Th /
    Filesystem                Type  Size  Used Avail Use% Mounted on
    /dev/mapper/rootvg-rootlv xfs    12G   71M   12G   1% /
-   [user@myvm ~]#
+   [root@dd-rhel7vm ~]#
    ```
 
 > [!NOTE]
-> Um die gleiche Vorgehensweise zum Ändern der Größe jedes beliebigen anderen logischen Volumes zu verwenden, ändern Sie in Schritt 7 den **lv** -Namen.
+> Um die gleiche Vorgehensweise zum Ändern der Größe jedes beliebigen anderen logischen Volumes zu verwenden, ändern Sie in **Schritt 12** den **lv**-Namen.
 
 ### <a name="rhel-raw"></a>RHEL RAW
 >[!NOTE]
@@ -363,13 +412,13 @@ Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
 Starten Sie den virtuellen Computer.
 Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
 
-1. Greifen Sie als **Root** -Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
+1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
  
    ```
    sudo su
    ```
 
-1. Installieren Sie das **gptfdisk** -Paket, das erforderlich ist, um die Größe des Betriebssystem-Datenträgers heraufzusetzen.
+1. Installieren Sie das **gptfdisk**-Paket, das erforderlich ist, um die Größe des Betriebssystem-Datenträgers heraufzusetzen.
 
    ```
    yum install gdisk -y

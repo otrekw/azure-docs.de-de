@@ -6,18 +6,18 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/30/2020
 ms.author: rahugup
-ms.openlocfilehash: 5541d5c3b9beea86f5c76747dd13ffeff1b12d97
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e1b34db7f2473e16d3ebde11376652f654f2f778
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133396"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93377954"
 ---
 # <a name="scale-migration-of-vmware-vms"></a>Skalieren der Migration von VMware-VMs 
 
 In diesem Artikel wird erläutert, wie Sie mithilfe von Skripts eine große Anzahl von VMware-VMs ohne einen Agent migrieren. Für das Skalieren einer Migration verwenden Sie das [Azure Migrate-PowerShell-Modul](https://aka.ms/azuremigratepowershellvmware). 
 
-Die Skripts zur Automatisierung der VMware-Migration mit Azure Migrate stehen auf GitHub im Repository [Azure PowerShell-Beispiele](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) zum Download zur Verfügung. Mithilfe der Skripts können Sie VMware-VMs ohne Agent zu Azure migrieren. Die in diesen Skripts verwendeten Azure Migrate-PowerShell-Befehle sind [hier](https://aka.ms/azuremigratepowershellvmware) dokumentiert.
+Die Skripts zur Automatisierung der VMware-Migration mit Azure Migrate stehen auf GitHub im Repository mit den [Azure PowerShell-Beispielen](https://github.com/Azure/azure-docs-powershell-samples/tree/master/azure-migrate/migrate-at-scale-vmware-agentles) zum Download zur Verfügung. Mithilfe der Skripts können Sie VMware-VMs ohne Agent zu Azure migrieren. Die in diesen Skripts verwendeten Azure Migrate-PowerShell-Befehle sind [hier](https://aka.ms/azuremigratepowershellvmware) dokumentiert.
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 - Diese Skripts unterstützen die Migration von VMware-VMs mit allen Datenträgern. Sie können die Skripts anpassen, wenn Sie die an eine VMware-VM angefügten Datenträger selektiv replizieren möchten. 

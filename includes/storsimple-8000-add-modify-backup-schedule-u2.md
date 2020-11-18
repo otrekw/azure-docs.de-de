@@ -4,12 +4,12 @@ ms.service: storsimple
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
-ms.openlocfilehash: 2ab3b089ce65c9f27457fd1cfb360d6776ed6244
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f423d30dd10930d593bb1d5d39b46ed8914146e7
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178280"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93375781"
 ---
 #### <a name="to-add-or-modify-a-storsimple-backup-schedule"></a>So können sie einen StorSimple-Sicherungszeitplan hinzufügen oder ändern
 
@@ -21,9 +21,9 @@ ms.locfileid: "67178280"
 
 3. Auf dem Blatt **Zeitplan hinzufügen** können Sie die Momentaufnahme, die Sicherungshäufigkeit, die Vermerkdauer sowie Startdatum und -uhrzeit ändern. Klicken Sie auf **Hinzufügen**.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
+    ![Verwalten von Zeitplänen 2](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule5.png)
 
 4. Sie werden benachrichtigt, wenn die Sicherungsrichtlinie erstellt wurde. Die Liste der Sicherungsrichtlinien wird ebenfalls aktualisiert.
 
-    ![Zeitpläne verwalten](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
+    ![Verwalten von Zeitplänen 3](./media/storsimple-8000-add-modify-backup-schedule-u2/addschedule4.png)
 

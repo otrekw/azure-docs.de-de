@@ -7,12 +7,12 @@ ms.author: brendm
 author: bmitchell287
 ms.date: 10/18/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 2f788452455bfbbc47f0a48689ccf3344515fdae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 06d5196e612bcf20e11f17634b32db028cd5bc88
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90904255"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378090"
 ---
 # <a name="set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Einrichten einer Spring Cloud-Konfigurationsserverinstanz für Ihren Dienst
 
@@ -81,6 +81,9 @@ Alle konfigurierbaren Eigenschaften, die zum Einrichten des privaten Git-Reposit
 | `host-key`                 | Nein     | Der Hostschlüssel des Git-Repositoryservers. Er darf nicht das Algorithmuspräfix (abgedeckt durch `host-key-algorithm`) enthalten. |
 | `host-key-algorithm`       | Nein     | Der Algorithmus für den Hostschlüssel, sollte *ssh-dss*, *ssh-rsa*, *ecdsa-sha2-nistp256*, *ecdsa-sha2-nistp384* oder *ecdsa-sha2-nistp521* sein. Nur *erforderlich*, wenn `host-key` vorhanden ist. |
 | `strict-host-key-checking` | Nein     | Gibt an, ob die Konfigurationsserverinstanz nicht gestartet werden kann, wenn das private `host-key`-Element genutzt wird. Muss *true* (Standardwert) oder *false* sein. |
+
+> [!NOTE]
+> Config Server übernimmt `master` (auf Git selbst) als Standardbezeichnung, wenn kein Wert angegeben ist. Allerdings wurde der Standardbranch auf GitHub kürzlich von `master` in `main` geändert. Um einen Fehler bei Azure Spring Cloud Config Server zu vermeiden, achten Sie beim Einrichten von Config Server mit GitHub auf die Standardbezeichnung. Dies gilt insbesondere für neu erstellte Repositorys.
 
 -----
 

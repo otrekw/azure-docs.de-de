@@ -11,14 +11,14 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 240b96a47c84ec3b15a356edc35549a4a197b219
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 2dbc75ac4f143089db778b260bb2c4bee5b49f6a
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967966"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393165"
 ---
-# <a name="password-and-account-lockout-policies-on-active-directory-domain-services-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien für verwaltete Active Directory Domain Services-Domänen
+# <a name="password-and-account-lockout-policies-on-azure-active-directory-domain-services-managed-domains"></a>Kennwort- und Kontosperrungsrichtlinien für verwaltete Azure Active Directory Domain Services-Domänen
 
 Um die Benutzersicherheit in Azure Active Directory Domain Services (Azure AD DS) zu verwalten, können Sie differenzierte Kennwortrichtlinien definieren, die die Einstellungen für die Kontosperre oder die minimale Kennwortlänge und -komplexität steuern. Eine differenzierte Standardkennwortrichtlinie wird erstellt und auf alle Benutzer in einer verwalteten Azure AD DS-Domäne angewendet. Um eine differenzierte Steuerung zu gewährleisten und bestimmte Geschäfts- oder Complianceanforderungen zu erfüllen, können zusätzliche Richtlinien erstellt und auf bestimmte Gruppen von Benutzern angewendet werden.
 

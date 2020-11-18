@@ -8,16 +8,16 @@ ms.date: 05/29/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 190aaae81d51434b57b5aaa6817a443dc541d26e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6c611d65c30cceba5fd6ff409ef71b906cd8674c
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89069135"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94330307"
 ---
 # <a name="enable-and-create-large-file-shares"></a>Aktivieren und Erstellen großer Dateifreigaben
 
-Wenn Sie große Dateifreigaben in Ihrem Speicherkonto aktivieren, können Ihre Dateifreigaben auf bis zu 100 TiB hochskaliert werden. Sie können diese Skalierung bei Ihren vorhandenen Speicherkonten für die vorhandenen Dateifreigaben aktivieren.
+Wenn Sie in Ihrem Speicherkonto große Dateifreigaben aktivieren, können Ihre Dateifreigaben auf bis zu 100 TiB hochskaliert werden. Gleichzeitig werden die IOPS- und Durchsatzgrenzwerte für Standardfreigaben erhöht. Sie können diese Skalierung auch bei Ihren vorhandenen Speicherkonten für vorhandene Dateifreigaben aktivieren. Weitere Informationen finden Sie unter [Skalierungsziele für Dateifreigaben und Dateien](storage-files-scale-targets.md#azure-files-scale-targets). 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

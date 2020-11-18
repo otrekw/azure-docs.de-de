@@ -12,12 +12,12 @@ ms.date: 06/01/2020
 ms.author: phsignor
 ms.reviewer: arvindh, luleon, phsignor
 ms.custom: contperfq2
-ms.openlocfilehash: d23ef7b78f5e97ee8a82f46794f37f3baf05ca49
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: b72530868b2b12e5f95e79be6ad5a2d7ce170b62
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427661"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654676"
 ---
 # <a name="configure-permission-classifications"></a>Konfigurieren von Berechtigungsklassifizierungen
 
@@ -45,11 +45,11 @@ In diesem Beispiel haben wir den minimalen Berechtigungssatz klassifiziert, der 
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=azureadps-2.0-preview&preserve-view=true) verwenden, um Berechtigungen zu klassifizieren. Berechtigungsklassifizierungen werden für das **ServicePrincipal** -Objekt der API konfiguriert, die die Berechtigungen veröffentlicht.
+Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](/powershell/module/azuread/?preserve-view=true&view=azureadps-2.0-preview) verwenden, um Berechtigungen zu klassifizieren. Berechtigungsklassifizierungen werden für das **ServicePrincipal**-Objekt der API konfiguriert, die die Berechtigungen veröffentlicht.
 
 #### <a name="list-the-current-permission-classifications-for-an-api"></a>Auflisten der aktuellen Berechtigungsklassifizierungen für eine API
 
-1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `
@@ -65,7 +65,7 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https
 
 #### <a name="classify-a-permission-as-low-impact"></a>Klassifizieren einer Berechtigung als „Geringe Auswirkung“
 
-1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `
@@ -90,7 +90,7 @@ Sie können das neueste Azure AD PowerShell-Vorschaumodul [AzureADPreview](https
 
 #### <a name="remove-a-delegated-permission-classification"></a>Entfernen einer delegierten Berechtigungsklassifizierung
 
-1. Rufen Sie das **ServicePrincipal** -Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
+1. Rufen Sie das **ServicePrincipal**-Objekt für die API ab. Hier rufen wir das ServicePrincipal-Objekt für die Microsoft Graph-API ab:
 
    ```powershell
    $api = Get-AzureADServicePrincipal `
@@ -123,7 +123,7 @@ Weitere Informationen:
 * [Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)](configure-admin-consent-workflow.md)
 * Weitere Informationen zum [Verwalten der Einwilligung zu Anwendungen und Auswerten von Einwilligungsanforderungen](manage-consent-requests.md)
 * [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
-* [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
+* [Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 So erhalten Sie Hilfe oder finden Antworten auf Ihre Fragen:
 * [Azure AD bei StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

@@ -5,24 +5,27 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/05/2020
+ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91708610"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421808"
 ---
 # <a name="logical-decoding"></a>Logische Decodierung
  
+> [!NOTE]
+> Die logische Decodierung in Azure Database for PostgreSQL (Einzelserver) befindet sich in der Public Preview.
+
 Die [logische Decodierung in PostgreSQL](https://www.postgresql.org/docs/current/logicaldecoding.html) ermöglicht das Streamen von Datenänderungen an externe Consumer. Die logische Decodierung wird besonders häufig für das Ereignisstreaming und Change Data Capture-Szenarien verwendet.
 
-Für die logische Decodierung wird ein Ausgabe-Plug-In verwendet, um das Write-Ahead-Protokoll (WAL) von Postgres in ein lesbares Format zu konvertieren. Azure Database for PostgreSQL bietet die Ausgabe-Plug-Ins [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) und „pgoutput“. „pgoutput“ wird ab der Postgres-Version 10 bereitgestellt.
+Für die logische Decodierung wird ein Ausgabe-Plug-In verwendet, um das Write-Ahead-Protokoll (WAL) von Postgres in ein lesbares Format zu konvertieren. Azure Database for PostgreSQL bietet die Ausgabe-Plug-Ins [wal2json](https://github.com/eulerto/wal2json), [test_decoding](https://www.postgresql.org/docs/current/test-decoding.html) und „pgoutput“. „pgoutput“ wird ab der PostgreSQL-Version 10 bereitgestellt.
 
 Einen Überblick über die Funktionsweise der logischen Decodierung von Postgres finden Sie in [unserem Blog](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/change-data-capture-in-postgres-how-to-use-logical-decoding-and/ba-p/1396421). 
 
 > [!NOTE]
-> Die logische Decodierung in Azure Database for PostgreSQL (Einzelserver) befindet sich in der Public Preview.
+> Die logische Replikation mit PostgreSQL-Veröffentlichung/-Abonnement wird für Azure Database for PostgreSQL-Einzelserver nicht unterstützt.
 
 
 ## <a name="set-up-your-server"></a>Einrichten des Servers 
@@ -39,14 +42,15 @@ Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Int
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
 1. Legen Sie „azure.replication_support“ auf `logical` fest.
-   ```
+   ```azurecli-interactive
    az postgres server configuration set --resource-group mygroup --server-name myserver --name azure.replication_support --value logical
    ``` 
 
 2. Starten Sie den Server neu, um die Änderung zu übernehmen.
-   ```
+   ```azurecli-interactive
    az postgres server restart --resource-group mygroup --name myserver
    ```
+3. Wenn Sie Postgres 9.5 oder 9.6 ausführen und öffentlichen Netzwerkzugriff nutzen, fügen Sie die Firewallregel hinzu, um die öffentliche IP-Adresse des Clients, von dem aus Sie die logische Replikation ausführen, einzuschließen. Der Name der Firewallregel muss **_replrule** enthalten. Beispiel: *test_replrule*. Erstellen Sie mit dem Befehl [az postgres server firewall-rule create](/cli/azure/postgres/server/firewall-rule) eine neue Firewallregel auf dem Server. 
 
 ### <a name="using-azure-portal"></a>Verwenden des Azure-Portals
 
@@ -56,8 +60,11 @@ Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Int
 
 2. Starten Sie den Server neu, um die Änderung zu übernehmen, indem Sie **Ja** auswählen.
 
-   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL: Replikation: Azure-Replikationsunterstützung":::
+   :::image type="content" source="./media/concepts-logical/confirm-restart.png" alt-text="Azure Database for PostgreSQL – Replikation – Neustart bestätigen":::
 
+3. Wenn Sie Postgres 9.5 oder 9.6 ausführen und öffentlichen Netzwerkzugriff nutzen, fügen Sie die Firewallregel hinzu, um die öffentliche IP-Adresse des Clients, von dem aus Sie die logische Replikation ausführen, einzuschließen. Der Name der Firewallregel muss **_replrule** enthalten. Beispiel: *test_replrule*. Klicken Sie anschließend auf **Speichern**.
+
+   :::image type="content" source="./media/concepts-logical/client-replrule-firewall.png" alt-text="Azure Database for PostgreSQL: Replikation – Hinzufügen einer Firewallregel":::
 
 ## <a name="start-logical-decoding"></a>Starten der logischen Decodierung
 

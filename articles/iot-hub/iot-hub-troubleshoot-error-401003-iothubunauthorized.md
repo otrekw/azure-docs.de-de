@@ -6,17 +6,17 @@ manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: troubleshooting
-ms.date: 01/30/2020
+ms.date: 11/06/2020
 ms.author: jlian
 ms.custom:
 - amqp
 - mqtt
-ms.openlocfilehash: af057750e81086bf691b87057da97af3de19cd3b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8fb891d5a47203c9905a7def9d04199d24327f70
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909640"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94357248"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
@@ -42,7 +42,7 @@ Anforderungen an IoT Hub schlagen mit einer der folgenden Meldungen fehl:
 
 ### <a name="cause-1"></a>Ursache 1
 
-Bei MQTT verlassen sich einige SDKs darauf, dass IoT Hub beim Ablauf des Tokens eine Trennung der Verbindung auslöst, um zu wissen, wann es aktualisiert werden muss. Also: 
+Bei MQTT verlassen sich einige SDKs darauf, dass IoT Hub beim Ablauf des Tokens eine Trennung der Verbindung auslöst, um zu wissen, wann es aktualisiert werden muss. Also:
 
 1. Das SAS-Token läuft ab.
 1. IoT Hub bemerkt den Ablauf und trennt die Geräteverbindung mit **401003 IoTHubUnauthorized**.
@@ -58,9 +58,11 @@ IoT Hub konnte den Autorisierungsheader, die Regel oder den Schlüssel nicht aut
 
 ### <a name="solution-1"></a>Lösung 1
 
-Wenn das IoT SDK – unter Angabe der Geräteverbindungszeichenfolge – für die Verbindung verwendet wird, ist keine Aktion erforderlich. Das IoT SDK generiert das neue Token erneut, um bei SAS-Tokenablauf die Verbindung wiederherzustellen. 
+Wenn das IoT SDK – unter Angabe der Geräteverbindungszeichenfolge – für die Verbindung verwendet wird, ist keine Aktion erforderlich. Das IoT SDK generiert das neue Token erneut, um bei SAS-Tokenablauf die Verbindung wiederherzustellen.
 
-Wenn die Fehlermenge ein Problem darstellt, wechseln Sie zum C SDK, von dem das SAS-Token vor dem Ablauf erneuert wird. Darüber hinaus kann das SAS-Token bei AMQP ohne eine Trennung der Verbindung aktualisiert werden.
+Die standardmäßige Tokenlebensdauer beträgt 60 Minuten für SDKs. Bei einigen SDKs können die Tokenlebensdauer und der Schwellenwert für die Tokenerneuerung jedoch konfiguriert werden. Außerdem unterscheiden sich bei jedem SDK die Fehler, die generiert werden, wenn die Verbindung eines Geräts bei der Tokenerneuerung getrennt und wiederhergestellt wird. Weitere entsprechende Einzelheiten sowie Informationen dazu, wie Sie feststellen können, welches SDK das Gerät in Protokollen verwendet, finden Sie unter [Verbindungstrennungsverhalten von MQTT-Geräten bei Azure IoT-SDKs](iot-hub-troubleshoot-connectivity.md#mqtt-device-disconnect-behavior-with-azure-iot-sdks).
+
+Wenn die Fehlermenge für Geräteentwickler ein Problem darstellt, wechseln Sie zum C SDK, über das das SAS-Token vor dem Ablauf erneuert wird. Bei AMQP kann das SAS-Token ohne eine Trennung der Verbindung aktualisiert werden.
 
 ### <a name="solution-2"></a>Lösung 2
 

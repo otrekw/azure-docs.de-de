@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/12/2020
 ms.author: yelevin
-ms.openlocfilehash: ecb4203c822f5b72068e11d0ad4b988d294aab0d
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: bd85936c86656a8ae59a04ccdf53a62bd852368f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427053"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655271"
 ---
 # <a name="set-up-azure-sentinel-customer-managed-key"></a>Einrichten kundenseitig verwalteter Schlüssel in Azure Sentinel
 
@@ -59,7 +59,7 @@ Gehen Sie zum Bereitstellen von CMK wie folgt vor:
 
 ### <a name="step-1-create-an-azure-key-vault-and-storing-key"></a>SCHRITT 1: Erstellen einer Azure Key Vault-Instanz und Speichern eines Schlüssels
 
-1.  [Erstellen Sie eine Azure Key Vault-Ressource](https://docs.microsoft.com/azure-stack/user/azure-stack-key-vault-manage-portal), und generieren oder importieren Sie einen Schlüssel für die Datenverschlüsselung.
+1.  [Erstellen Sie eine Azure Key Vault-Ressource](/azure-stack/user/azure-stack-key-vault-manage-portal), und generieren oder importieren Sie einen Schlüssel für die Datenverschlüsselung.
     > [!NOTE]
     >  Azure Key Vault muss als wiederherstellbar konfiguriert werden, um Ihren Schlüssel und den Zugriff zu schützen.
 
@@ -132,6 +132,5 @@ Wenn Sie in Azure Sentinel und Log Analytics den gleichen Schlüssel verwenden, 
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie gelernt, wie Sie einen kundenseitig verwalteten Schlüssel in Azure Sentinel einrichten. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
 - [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
-

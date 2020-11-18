@@ -8,12 +8,12 @@ ms.subservice: pod
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: alkohli
-ms.openlocfilehash: 9f4f9f65b562b01466aec69cd541ea77f443f803
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: f5bcb5c42661c375372d4d0b17571d784152dd5f
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127523"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94337286"
 ---
 # <a name="use-the-local-web-ui-to-administer-your-data-box-and-data-box-heavy"></a>Verwalten von Data Box und Data Box Heavy über die lokale Webbenutzeroberfläche
 
@@ -212,7 +212,7 @@ So aktivieren Sie die Berechtigungen des Typs „Sicherungsoperator“ auf Ihrem
 
 1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
 
-   ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+   ![Öffnen der Data Box-Einstellungen 1](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Aktivieren** Sie die Berechtigungen des Typs „Sicherungsoperator“.
 
@@ -235,7 +235,7 @@ So aktivieren Sie die Übertragung von ACLs für Azure-Dateien:
 
 1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
 
-    ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Öffnen der Data Box-Einstellungen 2](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Aktivieren** Sie ACLs für Azure-Dateien.
 
@@ -255,7 +255,7 @@ Führen Sie zum Aktivieren von TLS 1.1 auf Ihrem Azure-Gerät die folgenden Sch
 
 1. Wählen Sie in der lokalen Webbenutzeroberfläche für Ihr Gerät in der oberen rechten Ecke **Einstellungen** aus.
 
-    ![Öffnen der Data Box-Einstellungen](media/data-box-local-web-ui-admin/data-box-settings-1.png)
+    ![Öffnen der Data Box-Einstellungen 3](media/data-box-local-web-ui-admin/data-box-settings-1.png)
 
 2. **Aktivieren** Sie TLS 1.1.
 
