@@ -7,16 +7,16 @@ ms.service: firewall
 ms.topic: how-to
 ms.date: 09/11/2020
 ms.author: victorh
-ms.openlocfilehash: 2d4ed76e849385c4edecb7bd97d58087c8e5b4b3
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 86538f6d0467eb15e549179166ca957902a2d0c3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132787"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659555"
 ---
 # <a name="azure-monitor-logs-for-azure-firewall"></a>Azure Monitor-Protokolle für Azure Firewall
 
-Sie können die folgenden Azure Monitor-Protokollbeispiele verwenden, um Ihre Azure Firewall-Protokolle zu analysieren. Die Beispieldatei wird im Ansicht-Designer in Azure Monitor erstellt. Im Artikel zum [Ansicht-Designer in Azure Monitor](https://docs.microsoft.com/azure/log-analytics/log-analytics-view-designer) finden Sie weitere Informationen zum Konzept des Ansicht-Designers.
+Sie können die folgenden Azure Monitor-Protokollbeispiele verwenden, um Ihre Azure Firewall-Protokolle zu analysieren. Die Beispieldatei wird im Ansicht-Designer in Azure Monitor erstellt. Im Artikel zum [Ansicht-Designer in Azure Monitor](../azure-monitor/platform/view-designer.md) finden Sie weitere Informationen zum Konzept des Ansicht-Designers.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -27,10 +27,10 @@ Hier wird beschrieben, wie Sie eine Beispielvisualisierung für Azure Monitor-Pr
 Führen Sie die folgenden Schritte aus, um die Ansicht zu Ihrem Log Analytics-Arbeitsbereich hinzuzufügen:
 
 1. Öffnen Sie den Log Analytics-Arbeitsbereich im Azure-Portal.
-2. Öffnen Sie **Ansicht-Designer** unter **Allgemein** .
-3. Klicken Sie auf **Importieren** .
-4. Navigieren Sie zu der zuvor heruntergeladenen Datei **AzureFirewall.omsview** , und wählen Sie sie aus.
-5. Klicken Sie auf **Speichern** .
+2. Öffnen Sie **Ansicht-Designer** unter **Allgemein**.
+3. Klicken Sie auf **Importieren**.
+4. Navigieren Sie zu der zuvor heruntergeladenen Datei **AzureFirewall.omsview**, und wählen Sie sie aus.
+5. Klicken Sie auf **Speichern**.
 
 Die Ansicht der Anwendungsregelprotokolldaten sieht wie folgt aus:
 
@@ -40,7 +40,7 @@ Die Netzwerkregelprotokolldaten werden wie folgt angezeigt:
 
 ![Netzwerkregelprotokolldaten]( ./media/log-analytics-samples/azurefirewall-networkrulelogstats.png)
 
-Mit Azure Firewall werden Daten unter AzureDiagnostics mit der Kategorie **AzureFirewallApplicationRule** oder **AzureFirewallNetworkRule** protokolliert. Die Daten, die die Details enthalten, werden im Feld „msg_s“ gespeichert. Mit dem [parse](https://docs.microsoft.com/azure/kusto/query/parseoperator)-Operator können die verschiedenen Eigenschaften aus dem Feld „msg_s“ extrahiert werden. Mit den Abfragen unten werden die Informationen für beide Kategorien extrahiert.
+Mit Azure Firewall werden Daten unter AzureDiagnostics mit der Kategorie **AzureFirewallApplicationRule** oder **AzureFirewallNetworkRule** protokolliert. Die Daten, die die Details enthalten, werden im Feld „msg_s“ gespeichert. Mit dem [parse](/azure/kusto/query/parseoperator)-Operator können die verschiedenen Eigenschaften aus dem Feld „msg_s“ extrahiert werden. Mit den Abfragen unten werden die Informationen für beide Kategorien extrahiert.
 
 ## <a name="application-rules-log-data-query"></a>Abfrage der Anwendungsregelprotokolldaten
 
@@ -172,9 +172,9 @@ In den folgenden Protokollbeispielen werden die in einem Protokolleintrag enthal
 
 :::image type="content" source="media/log-analytics-samples/log1.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
 
-:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
+:::image type="content" source="media/log-analytics-samples/log2.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, Quell- und Ziel-IP-Adressen und eine Aktion." border="false":::
 
-:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, eine Portnummer, eine Aktion, eine Regelsammlung und eine Regel." border="false":::
+:::image type="content" source="media/log-analytics-samples/log3.png" alt-text="Der Screenshot eines Protokolleintrags. Es sind mehrere Werte sichtbar, z. B. ein Zeitstempel, ein Protokoll, Quell- und Ziel-IP-Adressen und Ports sowie eine Nachricht." border="false":::
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu Azure Firewall-Überwachung und -Diagnose finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](tutorial-diagnostics.md).
+Informationen zu Azure Firewall-Überwachung und -Diagnose finden Sie unter [Tutorial: Überwachen von Azure Firewall-Protokollen und -Metriken](./firewall-diagnostics.md).

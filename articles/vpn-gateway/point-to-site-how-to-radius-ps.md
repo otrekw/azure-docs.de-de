@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: cherylmc
-ms.openlocfilehash: bce381ba4916bc58d2c7acf8d69b323dbdf972aa
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 64a4eb1b473c8944dadea4e1ee4323dfe4e9bcde
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544782"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661119"
 ---
 # <a name="configure-a-point-to-site-connection-to-a-vnet-using-radius-authentication-powershell"></a>Konfigurieren einer Point-to-Site-Verbindung mit einem VNET unter Verwendung der RADIUS-Authentifizierung: PowerShell
 
@@ -119,7 +119,7 @@ Mit den folgenden Schritten werden eine Ressourcengruppe und ein virtuelles Netz
    ```azurepowershell-interactive
    New-AzResourceGroup -Name "TestRG" -Location "East US"
    ```
-2. Erstellen Sie die Subnetzkonfigurationen für das virtuelle Netzwerk, und benennen Sie sie mit *FrontEnd* , *BackEnd* und *GatewaySubnet* . Diese Präfixe müssen im deklarierten VNet-Adressraum enthalten sein.
+2. Erstellen Sie die Subnetzkonfigurationen für das virtuelle Netzwerk, und benennen Sie sie mit *FrontEnd*, *BackEnd* und *GatewaySubnet*. Diese Präfixe müssen im deklarierten VNet-Adressraum enthalten sein.
 
    ```azurepowershell-interactive
    $fesub = New-AzVirtualNetworkSubnetConfig -Name "FrontEnd" -AddressPrefix "192.168.1.0/24"  
@@ -152,7 +152,7 @@ Vor dem Erstellen und Konfigurieren des Gateways für virtuelle Netzwerke muss d
 2. Konfigurieren Sie das VPN-Gateway als RADIUS-Client auf dem RADIUS-Server. Geben Sie beim Hinzufügen dieses RADIUS-Clients das erstellte Gatewaysubnetzt für virtuelle Netzwerke an. 
 3. Rufen Sie nach der Einrichtung des RADIUS-Servers die IP-Adresse und das gemeinsame Geheimnis des RADIUS-Servers ab, die RADIUS-Clients für die Kommunikation mit dem RADIUS-Server verwenden sollen. Wenn sich der RADIUS-Server im Azure-VNET befindet, verwenden Sie die Zertifizierungsstellen-IP des virtuellen Computers mit dem RADIUS-Server.
 
-Der Artikel [Network Policy Server (NPS)](https://docs.microsoft.com/windows-server/networking/technologies/nps/nps-top) (Netzwerkrichtlinienserver (Network Policy Server, NPS)) enthält Anweisungen zum Konfigurieren eines Windows-RADIUS-Servers (NPS) für AD-Domänenauthentifizierung.
+Der Artikel [Network Policy Server (NPS)](/windows-server/networking/technologies/nps/nps-top) (Netzwerkrichtlinienserver (Network Policy Server, NPS)) enthält Anweisungen zum Konfigurieren eines Windows-RADIUS-Servers (NPS) für AD-Domänenauthentifizierung.
 
 ## <a name="4-create-the-vpn-gateway"></a>4. <a name="creategw"></a>Erstellen des VPN-Gateways
 
@@ -252,7 +252,7 @@ Die VPN-Clientkonfiguration ermöglicht Geräten das Herstellen einer P2S-Verbin
 
 ### <a name="connect-from-a-mac-vpn-client"></a>Herstellen einer Verbindung von einem Mac-VPN-Client
 
-Navigieren Sie im Dialogfeld „Netzwerk“ zum gewünschten Clientprofil, und klicken Sie auf **Verbinden** .
+Navigieren Sie im Dialogfeld „Netzwerk“ zum gewünschten Clientprofil, und klicken Sie auf **Verbinden**.
 
   ![Mac-Verbindung](./media/vpn-gateway-howto-point-to-site-rm-ps/applyconnect.png)
 
@@ -292,4 +292,4 @@ Diese häufig gestellten Fragen beziehen sich auf P2S mit RADIUS-Authentifizieru
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/linux/azure-vm-network-overview.md).
+Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](../index.yml) . Weitere Informationen zu Netzwerken und virtuellen Computern finden Sie unter [Azure- und Linux-VM-Netzwerke (Übersicht)](../virtual-machines/network-overview.md).

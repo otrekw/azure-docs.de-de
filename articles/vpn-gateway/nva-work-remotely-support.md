@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: scottnap
-ms.openlocfilehash: 4783016e472907392f2d379efa0fed2d90ed21bc
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: beb59674d678ed9c61c9ee0b425da7032794ca64
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89595358"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660609"
 ---
 # <a name="working-remotely-network-virtual-appliance-nva-considerations-for-remote-work"></a>Remotearbeit: Aspekte in Bezug auf virtuelle Netzwerkgeräte für die Remotearbeit
 
@@ -30,7 +30,7 @@ Alle führenden NVA-Anbieter in Azure Marketplace sollten Empfehlungen zu VM-Gr�
 
 - **Kapazität und Anzahl gleichzeitiger Benutzer**: Dies ist für Point-to-Site-VPN-Benutzer besonders wichtig, weil jeder verbundene Benutzer einen verschlüsselten Tunnel (vom Typ IPSec-VPN oder SSL-VPN) erstellt.  
 - **Aggregierter Durchsatz**: Die aggregierte Bandbreite, die Sie für das Bereitstellen von Remotezugriff für die erforderliche Anzahl von Benutzern benötigen.
-- **Die erforderliche VM-Größe**: Sie sollten immerdie vom NVA-Anbieter empfohlenen VM-Größen verwenden.  Für Point-to-Site-VPN gilt Folgendes: Bei vielen gleichzeitigen Benutzerverbindungen sollten Sie größere VM-Größen (z. B. VMs der [Dv2- und DSv2-Serie](https://docs.microsoft.com/azure/virtual-machines/dv2-dsv2-series "Dv2- und Dsv2-Serie")) verwenden. Diese VMs verfügen tendenziell über mehr vCPUs und können eine größere Anzahl gleichzeitiger VPN-Sitzungen verarbeiten.  Zusätzlich zur höheren Anzahl virtueller Kerne verfügen größere VM-Größen in Azure auch über eine höhere aggregierte Bandbreitenkapazität als kleinere VM-Größen.
+- **Die erforderliche VM-Größe**: Sie sollten immerdie vom NVA-Anbieter empfohlenen VM-Größen verwenden.  Für Point-to-Site-VPN gilt Folgendes: Bei vielen gleichzeitigen Benutzerverbindungen sollten Sie größere VM-Größen (z. B. VMs der [Dv2- und DSv2-Serie](../virtual-machines/dv2-dsv2-series.md "Dv2- und Dsv2-Serie")) verwenden. Diese VMs verfügen tendenziell über mehr vCPUs und können eine größere Anzahl gleichzeitiger VPN-Sitzungen verarbeiten.  Zusätzlich zur höheren Anzahl virtueller Kerne verfügen größere VM-Größen in Azure auch über eine höhere aggregierte Bandbreitenkapazität als kleinere VM-Größen.
     > **Wichtig:** Jeder Anbieter/Hersteller nutzt Ressourcen anders.  Wenn Sie nicht genau wissen, welche Instanzgrößen Sie für die geschätzte Benutzerauslastung verwenden sollten, wenden Sie sich direkt an den Softwarehersteller, um eine Empfehlung von ihm zu erhalten.
 - **Anzahl von Instanzen**: Wenn Sie von einer großen Anzahl von Benutzern und Verbindungen ausgehen, müssen Sie bedenken, dass es Beschränkungen hinsichtlich der Skalierung Ihrer NVA-Instanzgrößen gibt.  Ziehen Sie in Erwägung, mehrere VM-Instanzen bereitzustellen.
 - **IPSec-VPN versus SSL-VPN**: IPSec-VPN-Implementierungen erzielen im Allgemeinen eine bessere Leistung als SSL-VPN-Implementierungen.  

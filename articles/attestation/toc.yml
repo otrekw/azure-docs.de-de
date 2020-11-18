@@ -11,6 +11,8 @@
       href: quickstart-template.md
     - name: PowerShell
       href: quickstart-powershell.md
+    - name: Azure-Befehlszeilenschnittstelle
+      href: quickstart-azure-cli.md
 - name: Tutorials
   items:
     - name: Erstellen einer Nachweisrichtlinie
