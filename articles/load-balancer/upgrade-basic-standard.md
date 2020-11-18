@@ -7,15 +7,15 @@ ms.service: load-balancer
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.author: irenehua
-ms.openlocfilehash: 66c56ae6730043022a0d8bf3c94f7c6ce14d9852
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dd0617536147787f436e5817f3f2367a19ba6aa4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84809336"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696182"
 ---
 # <a name="upgrade-azure-public-load-balancer"></a>Upgraden einer öffentlichen Azure Load Balancer-Instanz
-[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](https://docs.microsoft.com/azure/load-balancer/skus#skus).
+[Azure Load Balancer Standard](load-balancer-overview.md) bietet umfangreiche Funktionen sowie Hochverfügbarkeit durch Zonenredundanz. Weitere Informationen zu Load Balancer-SKUs finden Sie in der [Vergleichstabelle](./skus.md#skus).
 
 Ein Upgrade umfasst drei Phasen:
 
@@ -34,7 +34,7 @@ Es gibt ein Azure PowerShell-Skript, in dem folgende Vorgänge ausgeführt werde
 
 ### <a name="caveatslimitations"></a>Vorbehalte/Einschränkungen
 
-* Das Skript unterstützt nur Upgrades für öffentliche Load Balancer-Instanzen. Anleitungen für ein Upgrade des internen Load Balancers im Tarif „Basic“ finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/load-balancer/upgrade-basicinternal-standard).
+* Das Skript unterstützt nur Upgrades für öffentliche Load Balancer-Instanzen. Anleitungen für ein Upgrade des internen Load Balancers im Tarif „Basic“ finden Sie auf [dieser Seite](./upgrade-basicinternal-standard.md).
 * Die Load Balancer Standard-Instanz hat eine neue öffentliche Adresse. Die mit der vorhandenen Load Balancer Basic-Instanz verknüpften IP-Adressen können aufgrund der abweichenden SKUs nicht nahtlos auf die Load Balancer Standard-Instanz übertragen werden.
 * Wenn die Load Balancer Standard-Instanz in einer anderen Region erstellt wird, können die virtuellen Computer aus der alten Region nicht der neu erstellten Load Balancer Standard-Instanz zugeordnet werden. Erstellen Sie zur Umgehung dieser Einschränkung einen neuen virtuellen Computer in der neuen Region.
 * Wenn Ihre Load Balancer-Instanz über keine Front-End-IP-Konfiguration oder über keinen Back-End-Pool verfügt, tritt beim Ausführen des Skripts wahrscheinlich ein Fehler auf. Stellen Sie sicher, dass die Angaben vorhanden sind.
@@ -108,11 +108,11 @@ In den folgenden Szenarien wird gezeigt, wie Sie virtuelle Computer zu Back-End-
     >Für virtuelle Computer mit öffentlichen IP-Adressen müssen zuerst Standard-IP-Adressen erstellt werden. Hierbei können allerdings keine identischen IP-Adressen garantiert werden. Heben Sie die Zuordnung der virtuellen Computer zu Basic-IP-Adressen auf, und ordnen Sie sie den neu erstellten Standard-IP-Adressen zu. Anschließend können Sie die Schritte zum Hinzufügen von virtuellen Computern zum Back-End-Pool der Load Balancer Standard-Instanz ausführen. 
 
 * **Erstellen neuer virtueller Computer, um sie den Back-End-Pools der neu erstellten öffentlichen Load Balancer Standard-Instanz hinzuzufügen:**
-    * Weitere Informationen zum Erstellen eines virtuellen Computers sowie zum Zuordnen des virtuellen Computers zu Load Balancer Standard finden Sie [hier](https://docs.microsoft.com/azure/load-balancer/quickstart-load-balancer-standard-public-portal#create-virtual-machines).
+    * Weitere Informationen zum Erstellen eines virtuellen Computers sowie zum Zuordnen des virtuellen Computers zu Load Balancer Standard finden Sie [hier](./quickstart-load-balancer-standard-public-portal.md#create-virtual-machines).
 
 ### <a name="create-an-outbound-rule-for-outbound-connection"></a>Erstellen einer Ausgangsregel für ausgehende Verbindungen
 
-Befolgen Sie die [Anweisungen](https://docs.microsoft.com/azure/load-balancer/configure-load-balancer-outbound-portal#create-outbound-rule-configuration), um eine Ausgangsregel zu erstellen, die Ihnen Folgendes ermöglicht:
+Befolgen Sie die [Anweisungen](./quickstart-load-balancer-standard-public-powershell.md#create-outbound-rule-configuration), um eine Ausgangsregel zu erstellen, die Ihnen Folgendes ermöglicht:
 * Eine ausgehende NAT von Grund auf neu definieren
 * Das Verhalten einer vorhandenen NAT für ausgehenden Datenverkehr skalieren und optimieren
 

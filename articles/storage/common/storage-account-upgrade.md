@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 02/25/2019
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 4cec356b8438952327624e71deebb5e23db281a3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 10d9a74306fcdf3fe32db7019ba3b095727da4c0
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787804"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694563"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“
 
@@ -29,10 +29,10 @@ Das Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Universell V2�
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 2. Navigieren Sie zum Speicherkonto.
-3. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration** .
-4. Klicken Sie unter **Kontoart** auf **Upgrade** .
+3. Klicken Sie im Abschnitt **Einstellungen** auf **Konfiguration**.
+4. Klicken Sie unter **Kontoart** auf **Upgrade**.
 5. Geben Sie unter **Confirm upgrade** (Upgrade bestätigen) den Namen Ihres Kontos ein.
-6. Klicken Sie unten auf dem Blatt auf **Upgrade durchführen** .
+6. Klicken Sie unten auf dem Blatt auf **Upgrade durchführen**.
 
     ![Upgrade für Konto durchführen](../blobs/media/storage-blob-account-upgrade/upgrade-to-gpv2-account.png)
 
@@ -45,7 +45,7 @@ Wenn Sie für ein Konto vom Typ „Universell V1“ mit PowerShell ein Upgrade a
 Rufen Sie anschließend den folgenden Befehl auf, um das Konto zu aktualisieren, und ersetzen Sie dabei den Namen der Ressourcengruppe, den Namen des Speicherkontos und die gewünschte Kontozugriffsebene.
 
 ```powershell
-Set-AzStorageAccount -ResourceGroupName <resource-group> -AccountName <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
+Set-AzStorageAccount -ResourceGroupName <resource-group> -Name <storage-account> -UpgradeToStorageV2 -AccessTier <Hot/Cool>
 ```
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 

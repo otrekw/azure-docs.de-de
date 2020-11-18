@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: 97fdf55032e92585d723b54e21079098cdc19636
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 75226f92995794221635ced7ee0e285ac824b6e2
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92735911"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696862"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Erstellen eines öffentlichen Lastenausgleichs mit IPv6 mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -48,17 +48,17 @@ Die folgenden Schritte zeigen, wie Sie einen öffentlichen Lastenausgleich mithi
 
 Erstellen und konfigurieren Sie die folgenden Objekte, um einen Lastenausgleich bereitzustellen:
 
-* **Front-End-IP-Konfiguration** : Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
-* **Back-End-Adresspool** : Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
-* **Lastenausgleichsregeln** : Enthält Regeln, die einen öffentlichen Port des Lastenausgleichs einem Port im Back-End-Adresspool zuordnen.
-* **NAT-Eingangsregeln** : Enthält Netzwerkadressübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
-* **Tests** : Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
+* **Front-End-IP-Konfiguration**: Enthält öffentliche IP-Adressen für eingehenden Netzwerkdatenverkehr.
+* **Back-End-Adresspool**: Enthält Netzwerkschnittstellen (NICs), die virtuellen Computern den Empfang von Netzwerkdatenverkehr des Lastenausgleichs ermöglichen.
+* **Lastenausgleichsregeln**: Enthält Regeln, die einen öffentlichen Port des Lastenausgleichs einem Port im Back-End-Adresspool zuordnen.
+* **NAT-Eingangsregeln**: Enthält Netzwerkadressübersetzungs-Regeln (Network Address Translation, NAT), die einen öffentlichen Port des Lastenausgleichs einem Port für einen bestimmten virtuellen Computer im Back-End-Adresspool zuordnen.
+* **Tests**: Enthält Integritätstests zum Prüfen der Verfügbarkeit von VM-Instanzen im Back-End-Adresspool.
 
 ## <a name="set-up-azure-cli"></a>Einrichten der Azure-Befehlszeilenschnittstelle
 
 In diesem Beispiel führen Sie die Azure CLI-Tools in einem PowerShell-Befehlsfenster aus. Sie verwenden nicht die Azure PowerShell-Cmdlets, sondern die PowerShell-Skriptfunktionen, um Lesbarkeit und Wiederverwendung zu verbessern.
 
-1. [Installieren und konfigurieren Sie die Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) anhand der Schritte im verlinkten Artikel, und melden Sie sich dann bei Ihrem Azure-Konto an.
+1. [Installieren und konfigurieren Sie die Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) anhand der Schritte im verlinkten Artikel, und melden Sie sich dann bei Ihrem Azure-Konto an.
 
 2. Richten Sie PowerShell-Variablen für die Verwendung mit den Azure CLI-Befehlen ein:
 
@@ -122,7 +122,7 @@ In diesem Beispiel führen Sie die Azure CLI-Tools in einem PowerShell-Befehlsfe
     > [!IMPORTANT]
     > Der Lastenausgleich verwendet die Domänenbezeichnung der öffentlichen IP-Adresse als seinen vollqualifizierten Domänennamen (Fully Qualified Domain Name, FQDN). Dies ist eine Abkehr von der klassischen Bereitstellung, bei der der Clouddienstname als FQDN des Load Balancers verwendet wird.
     >
-    > In diesem Beispiel lautet der FQDN *contoso09152016.southcentralus.cloudapp.azure.com* .
+    > In diesem Beispiel lautet der FQDN *contoso09152016.southcentralus.cloudapp.azure.com*.
 
 ## <a name="create-front-end-and-back-end-pools"></a>Erstellen von Front-End- und Back-End-Pools
 
@@ -284,7 +284,7 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
     ```
 
     > [!WARNING]
-    > Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die virtuellen Computer in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [`Get-Credential`](https://technet.microsoft.com/library/hh849815.aspx).
+    > Dieses Beispiel verwendet den Benutzernamen und das Kennwort für die virtuellen Computer in Klartext. Bei Anmeldeinformationen in Klartext müssen Sie entsprechend vorsichtig vorgehen. Eine sicherere Methode zur Handhabung der Anmeldeinformationen in PowerShell finden Sie in den Informationen zum Cmdlet [`Get-Credential`](/powershell/module/microsoft.powershell.security/get-credential).
 
 2. Erstellen Sie die Verfügbarkeitsgruppe:
 
@@ -299,5 +299,3 @@ Um VMs zu erstellen, benötigen Sie ein Speicherkonto. Für den Lastenausgleich 
 
     az vm create --resource-group $rgname --name $vm2Name --image $imageurn --admin-username $vmUserName --admin-password $mySecurePassword --nics $nic2Id --location $location --availability-set $availabilitySetName --size "Standard_A1" 
     ```
-
-

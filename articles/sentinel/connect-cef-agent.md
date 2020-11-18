@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: yelevin
-ms.openlocfilehash: 2f90a7c954fc8930f69dfee3e7b56b394225405a
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5374871a51586a573e9ab41121f3f2dd95baf876
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94516736"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695247"
 ---
 # <a name="step-1-deploy-the-log-forwarder"></a>Schritt 1: Bereitstellen der Protokollweiterleitung
 
@@ -51,7 +51,7 @@ In diesem Schritt bestimmen und konfigurieren Sie den Linux-Computer, der die Pr
 1. Kopieren Sie unter **1.2 CEF-Collector auf dem Linux-Computer installieren** den unter **Run the following script to install and apply the CEF collector** (Folgendes Skript zum Installieren und Anwenden des CEF-Collectors ausführen) oder im nachstehenden Text aufgeführten Link (ersetzen Sie die Platzhalter durch die ID und den Primärschlüssel des Arbeitsbereichs):
 
     ```bash
-    sudo wget https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
+    sudo wget -O https://raw.githubusercontent.com/Azure/Azure-Sentinel/master/DataConnectors/CEF/cef_installer.py&&sudo python cef_installer.py [WorkspaceID] [Workspace Primary Key]`
     ```
 
 1. Wenn das Skript ausgeführt wird, stellen Sie sicher, dass keine Fehler- oder Warnmeldungen angezeigt werden.
@@ -82,7 +82,7 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
     - Herunterladen des Installationsskripts für den Log Analytics-Linux-Agent (OMS)
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -97,7 +97,7 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
     - Herunterladen der Konfiguration aus dem GitHub-Repository für den Log Analytics-Agent
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -148,7 +148,7 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
     - Herunterladen des Installationsskripts für den Log Analytics-Linux-Agent (OMS)
 
         ```bash
-        wget https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
+        wget -O https://raw.githubusercontent.com/Microsoft/OMS-Agent-for-Linux/master/installer/scripts/
             onboard_agent.sh
         ```
 
@@ -163,7 +163,7 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
     - Herunterladen der Konfiguration aus dem GitHub-Repository für den Log Analytics-Agent
 
         ```bash
-        wget -o /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
+        wget -O /etc/opt/microsoft/omsagent/[workspaceID]/conf/omsagent.d/security_events.conf
             https://raw.githubusercontent.com/microsoft/OMS-Agent-for-Linux/master/installer/conf/
             omsagent.d/security_events.conf
         ```
@@ -208,9 +208,10 @@ Wählen Sie einen Syslog-Daemon aus, um die entsprechende Beschreibung anzuzeige
         ```bash
         sed -i -e "/'Severity' => tags\[tags.size - 1\]/ a \ \t 'Host' => record['host']" -e "s/'Severity' => tags\[tags.size - 1\]/&,/" /opt/microsoft/omsagent/plugin/filter_syslog_security.rb && sudo /opt/microsoft/omsagent/bin/service_control restart [workspaceID]
         ```
+---
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 In diesem Dokument haben Sie gelernt, wie Sie den Log Analytics-Agent bereitstellen, um CEF-Appliances mit Azure Sentinel zu verbinden. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
-
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).

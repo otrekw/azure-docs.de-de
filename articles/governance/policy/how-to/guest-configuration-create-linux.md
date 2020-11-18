@@ -4,12 +4,12 @@ description: Hier wird beschrieben, wie Sie eine Azure Policy-Richtlinie für Ga
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 240f22a076b5f185ebe3028b201b66d187c9bb2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1e81d1a5157cc5872ba2628c8d6cb408e35ab9c6
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346875"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694241"
 ---
 # <a name="how-to-create-guest-configuration-policies-for-linux"></a>Erstellen von Richtlinien für Gastkonfigurationen für Linux
 
@@ -119,7 +119,7 @@ end
 
 Speichern Sie diese Datei mit dem Namen `linux-path.rb` in einem neuen Ordner namens `controls` im Verzeichnis `linux-path`.
 
-Erstellen Sie abschließend eine Konfiguration, importieren Sie das Ressourcenmodul **PSDesiredStateConfiguration** , und kompilieren Sie die Konfiguration.
+Erstellen Sie abschließend eine Konfiguration, importieren Sie das Ressourcenmodul **PSDesiredStateConfiguration**, und kompilieren Sie die Konfiguration.
 
 ```powershell
 # import PSDesiredStateConfiguration module
@@ -163,10 +163,10 @@ Die unterstützenden Dateien müssen in einem Paket zusammengefasst werden. Das 
 
 Mit dem Cmdlet `New-GuestConfigurationPackage` wird das Paket erstellt. Parameter des Cmdlets `New-GuestConfigurationPackage` beim Erstellen von Linux-Inhalten:
 
-- **Name** : Name des Pakets mit der Gastkonfiguration.
+- **Name**: Name des Pakets mit der Gastkonfiguration.
 - **Konfiguration:** Vollständiger Pfad für das kompilierte Konfigurationsdokument.
-- **Pfad** : Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
-- **ChefInspecProfilePath** : Vollständiger Pfad zum InSpec-Profil. Dieser Parameter wird nur unterstützt, wenn Inhalt für die Linux-Überprüfung erstellt wird.
+- **Pfad**: Pfad des Ausgabeordners. Dieser Parameter ist optional. Wenn er nicht angegeben ist, wird das Paket im aktuellen Verzeichnis erstellt.
+- **ChefInspecProfilePath**: Vollständiger Pfad zum InSpec-Profil. Dieser Parameter wird nur unterstützt, wenn Inhalt für die Linux-Überprüfung erstellt wird.
 
 Führen Sie den folgenden Befehl aus, um ein Paket mit der im vorherigen Schritt angegebenen Konfiguration zu erstellen:
 
@@ -183,9 +183,9 @@ Da der Agent tatsächlich die lokale Umgebung auswertet, müssen Sie in den meis
 
 Parameter des Cmdlets `Test-GuestConfigurationPackage`:
 
-- **Name** : Name der Richtlinie für Gastkonfigurationen.
-- **Parameter** : Richtlinienparameter im Hashtabellenformat.
-- **Pfad** : Vollständiger Pfad des Pakets mit der Gastkonfiguration.
+- **Name**: Name der Richtlinie für Gastkonfigurationen.
+- **Parameter**: Richtlinienparameter im Hashtabellenformat.
+- **Pfad**: Vollständiger Pfad des Pakets mit der Gastkonfiguration.
 
 Führen Sie den folgenden Befehl aus, um das im vorherigen Schritt erstellte Paket zu testen:
 
@@ -210,13 +210,13 @@ Nachdem ein benutzerdefiniertes Richtlinienpaket für Gastkonfigurationen erstel
 
 Parameter des Cmdlets `New-GuestConfigurationPolicy`:
 
-- **ContentUri** : Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
-- **DisplayName** : Anzeigename der Richtlinie.
-- **Beschreibung** : Beschreibung der Richtlinie.
-- **Parameter** : Richtlinienparameter im Hashtabellenformat.
-- **Version** : Version der Richtlinie.
-- **Pfad** : Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
-- **Plattform** : Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
+- **ContentUri**: Öffentlicher HTTP(S)-URI des Pakets mit dem Inhalt der Gastkonfiguration.
+- **DisplayName**: Anzeigename der Richtlinie.
+- **Beschreibung**: Beschreibung der Richtlinie.
+- **Parameter**: Richtlinienparameter im Hashtabellenformat.
+- **Version**: Version der Richtlinie.
+- **Pfad**: Zielpfad, unter dem Richtliniendefinitionen erstellt werden.
+- **Plattform**: Zielplattform (Windows/Linux) für das Paket mit den Richtlinien und dem Inhalt der Gastkonfiguration.
 - Mit **Tag** werden der Richtliniendefinition ein oder mehrere Tags hinzugefügt.
 - Mit **Category** wird das Feld mit den Kategoriemetadaten in der Richtliniendefinition festgelegt.
 
@@ -239,7 +239,7 @@ Mit `New-GuestConfigurationPolicy` werden die folgenden Dateien erstellt:
 
 In der Ausgabe des Cmdlets wird ein Objekt zurückgegeben, das den Anzeigenamen der Initiative und den Pfad der Richtliniendateien enthält.
 
-Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path** , mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
+Abschließend veröffentlichen Sie die Richtliniendefinitionen mit dem Cmdlet `Publish-GuestConfigurationPolicy`. Das Cmdlet verfügt nur über den Parameter **Path**, mit dem auf den Speicherort der JSON-Dateien verwiesen wird, die mit `New-GuestConfigurationPolicy` erstellt werden.
 
 Um den Veröffentlichungsbefehl auszuführen, benötigen Sie Zugriff zum Erstellen von Richtlinien in Azure. Die entsprechenden Autorisierungsanforderungen sind auf der Seite mit der [Übersicht über Azure Policy](../overview.md) dokumentiert. Die beste integrierte Rolle ist **Mitwirkender bei Ressourcenrichtlinien**.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Version 1.0.0
 ```
 
-Fügen Sie für Linux-Richtlinien die **AttributesYmlContent** -Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte nach Bedarf. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
+Fügen Sie für Linux-Richtlinien die **AttributesYmlContent**-Eigenschaft in Ihre Konfiguration ein, und überschreiben Sie die Werte nach Bedarf. Der Gastkonfigurations-Agent erstellt automatisch die YAML-Datei, die von InSpec zum Speichern der Attribute genutzt wird. Betrachten Sie das folgende Beispiel.
 
 ```powershell
 Configuration AuditFilePathExists
@@ -330,9 +330,9 @@ Wenn Sie eine Aktualisierung für die Richtliniendefinition veröffentlichen mö
 > [!NOTE]
 > Die Eigenschaft `version` der Gastkonfigurationszuweisung wirkt sich nur auf Pakete aus, die von Microsoft gehostet werden. Im Zusammenhang mit der Versionsverwaltung für benutzerdefinierte Inhalte empfiehlt es sich, die Version in den Dateinamen aufzunehmen.
 
-- **Version** : Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
-- **contentUri** : Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI für den Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft bei jedem Release ändert.
-- **contentHash** : Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
+- **Version**: Beim Ausführen des Cmdlets `New-GuestConfigurationPolicy` müssen Sie eine Versionsnummer angeben, die höher als die der derzeitigen Veröffentlichung ist.
+- **contentUri**: Wenn Sie das Cmdlet `New-GuestConfigurationPolicy` ausführen, müssen Sie einen URI für den Speicherort des Pakets angeben. Durch Einschließen einer Paketversion in den Dateinamen wird sichergestellt, dass sich der Wert dieser Eigenschaft bei jedem Release ändert.
+- **contentHash**: Diese Eigenschaft wird vom Cmdlet `New-GuestConfigurationPolicy` automatisch aktualisiert. Es handelt sich um einen Hashwert des Pakets, das mit `New-GuestConfigurationPackage` erstellt wurde. Diese Eigenschaft muss für die von Ihnen veröffentlichte Datei vom Typ `.zip` stimmen. Wenn nur die Eigenschaft **contentUri** aktualisiert wird, akzeptiert die Erweiterung das Inhaltspaket nicht.
 
 Die einfachste Möglichkeit zum Freigeben eines aktualisierten Pakets ist das Wiederholen des Prozesses in diesem Artikel und das Angeben einer aktualisierten Versionsnummer. Mit dieser Vorgehensweise wird sichergestellt, dass alle Eigenschaften richtig aktualisiert wurden.
 
@@ -375,8 +375,8 @@ Führen Sie zum Verwenden des Features für die Signaturüberprüfung das Cmdlet
 
 Parameter des Cmdlets `Protect-GuestConfigurationPackage`:
 
-- **Pfad** : Vollständiger Pfad des Pakets mit der Gastkonfiguration.
-- **PublicGpgKeyPath** : Pfad des öffentlichen GPG-Schlüssels. Dieser Parameter wird nur beim Signieren von Inhalt für Linux unterstützt.
+- **Pfad**: Vollständiger Pfad des Pakets mit der Gastkonfiguration.
+- **PublicGpgKeyPath**: Pfad des öffentlichen GPG-Schlüssels. Dieser Parameter wird nur beim Signieren von Inhalt für Linux unterstützt.
 
 Eine gute Referenz zur Erstellung von GPG-Schlüsseln für die Nutzung mit Linux-Computern ist der Artikel [Generating a new GPG key](https://help.github.com/en/articles/generating-a-new-gpg-key) (Generieren eines neuen GPG-Schlüssels) auf GitHub.
 
@@ -384,12 +384,6 @@ Vom GuestConfiguration-Agent wird erwartet, dass der öffentliche Schlüssel des
 In der Key Vault-Zugriffsrichtlinie muss es für den Computeressourcenanbieter zulässig sein, bei Bereitstellungen auf Zertifikate zuzugreifen. Informationen zu den ausführlichen Schritten finden Sie unter [Einrichten des Schlüsseltresors für virtuelle Computer in Azure Resource Manager](../../../virtual-machines/windows/key-vault-setup.md#use-templates-to-set-up-key-vault).
 
 Fügen Sie nach dem Veröffentlichen Ihres Inhalts ein Tag mit dem Namen `GuestConfigPolicyCertificateValidation` und dem Wert `enabled` an alle virtuellen Computer an, für die das Codesignieren erforderlich ist. Informationen darüber, wie Tags mithilfe von Azure Policy im großen Stil bereitgestellt werden können, finden Sie in den [Tagbeispielen](../samples/built-in-policies.md#tags). Wenn dieses Tag vorhanden ist, ermöglicht die Richtliniendefinition, die mit dem Cmdlet `New-GuestConfigurationPolicy` generiert wurde, die Anforderung über die Gastkonfigurationserweiterung.
-
-## <a name="troubleshooting-guest-configuration-policy-assignments-preview"></a>Problembehandlung für Richtlinienzuweisungen für die Gastkonfiguration (Vorschauversion)
-
-Es gibt eine Vorschauversion eines Tools, das Sie bei der Problembehandlung für Zuweisungen für die Azure Policy-Gastkonfiguration unterstützt. Das Tool befindet sich in der Vorschauphase und wurde als Modul namens [GuestConfigurationTroubleshooter](https://www.powershellgallery.com/packages/GuestConfigurationTroubleshooter/) im PowerShell-Katalog veröffentlicht.
-
-Verwenden Sie zum Abrufen weiterer Informationen zu den Cmdlets in diesem Tool den Befehl „Get-Help“ in PowerShell, um den integrierten Leitfaden anzuzeigen. Da das Tool regelmäßig aktualisiert wird, ist dies die beste Option, um aktuelle Informationen zu erhalten.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
