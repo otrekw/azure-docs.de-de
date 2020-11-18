@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 098256c3174f5a737bec4f6a62cb1d2af99e6f4f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a284e453a621860c0aebf68bef13d30e77971f88
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311063"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686156"
 ---
 # <a name="connect-to-synapse-sql-with-visual-studio-and-ssdt"></a>Herstellen einer Verbindung mit Synapse SQL mit Visual Studio und SSDT
 
@@ -52,9 +52,9 @@ Sie benötigen die folgenden Komponenten, um dieses Tutorial verwenden zu könne
    
     ![Verbindung mit Server herstellen](./media/get-started-visual-studio/connection-dialog.png)
    
-   * **Servername** : Geben Sie den zuvor ermittelten **Servernamen** ein.
-   * **Authentifizierung:** Wählen Sie **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung** :
-   * **Benutzername** und **Kennwort** : Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
+   * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
+   * **Authentifizierung:** Wählen Sie **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**:
+   * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
    * Klicken Sie auf **Verbinden**.
 5. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie „AdventureWorksDW“, um die Tabellen in Ihrer Beispieldatenbank anzuzeigen.
    

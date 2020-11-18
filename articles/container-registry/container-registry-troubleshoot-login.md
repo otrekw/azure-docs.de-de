@@ -3,12 +3,12 @@ title: Beheben von Problemen bei der Anmeldung bei der Registrierung
 description: Symptome, Ursachen und Lösungen allgemeiner Probleme bei der Anmeldung bei einer Azure Container Registry
 ms.topic: article
 ms.date: 08/11/2020
-ms.openlocfilehash: a00db5cc34da6d90210a22005f33b0ad1bf20f1b
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 5499c64bef8ce36a5f622c4d847b417ef49a5a03
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348898"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379501"
 ---
 # <a name="troubleshoot-registry-login"></a>Beheben von Problemen mit der Registrierungsanmeldung
 
@@ -98,7 +98,9 @@ Verwandte Links:
 
 Überprüfen Sie die Registrierungsberechtigungen, die mit den Anmeldeinformationen verknüpft sind, z. B. die Azure-Rolle `AcrPull` zum Pullen von Images aus der Registrierung und die Rolle `AcrPush` zum Pushen von Images. 
 
-Zugriff auf eine Registrierung im Portal oder die Registrierungsverwaltung über die Azure CLI erfordert mindestens die Rolle `Reader`, um Azure Resource Manager-Vorgänge auszuführen.
+Zugriff auf eine Registrierung im Portal oder die Registrierungsverwaltung über die Azure CLI erfordert mindestens die Rolle `Reader` oder entsprechende Berechtigungen, um Azure Resource Manager-Vorgänge auszuführen.
+
+Wenn Ihre Berechtigungen vor Kurzem geändert wurden, um den Zugriff auf die Registrierung über das Portal zuzulassen, müssen Sie möglicherweise eine Inkognito- oder private Sitzung in Ihrem Browser verwenden, um Probleme aufgrund veralteter Browsercaches oder Cookies zu vermeiden.
 
 Sie oder ein Registrierungsbesitzer müssen über ausreichende Berechtigungen im Abonnement verfügen, um Rollenzuweisungen hinzuzufügen oder zu entfernen.
 

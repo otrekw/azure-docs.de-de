@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/22/2020
-ms.openlocfilehash: 0c05db39e02a6bc2a7fa5d62b8b891626eb0d241
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 362f46290bbe2008f9fb862a8711577050050192
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675799"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693248"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Abfragetypen und -komposition in der kognitiven Azure-Suche
 
@@ -35,7 +35,7 @@ Das folgende Beispiel ist eine repräsentative Abfrage, die in der [REST-API](/r
 
 + **`queryType`** legt den Parser fest. Es kann es sich dabei um den [einfachen Standardabfrageparser](search-query-simple-examples.md) (optimal für die Volltextsuche) handeln oder um den [vollständigen Lucene-Abfrageparser](search-query-lucene-examples.md), der für erweiterte Abfragekonstrukte wie reguläre Ausdrücke, NEAR-Suche, Fuzzy- und Platzhaltersuche usw. verwendet wird.
 
-+ **`search`** gibt die Übereinstimmungskriterien an, normalerweise ganze Ausdrücke oder Formulierungen, häufig mit Booleschen Operatoren einhergehend. Einzelne eigenständige Begriffe sind *Begriffsabfragen* . In Anführungszeichen eingeschlossene mehrteilige Abfragen sind *Ausdrucksabfragen* . Die Suche kann undefiniert sein, wie in **`search=*`** , aber ohne Kriterien für die Übereinstimmung besteht das Resultset aus zufällig ausgewählten Dokumenten.
++ **`search`** gibt die Übereinstimmungskriterien an, normalerweise ganze Ausdrücke oder Formulierungen, häufig mit Booleschen Operatoren einhergehend. Einzelne eigenständige Begriffe sind *Begriffsabfragen*. In Anführungszeichen eingeschlossene mehrteilige Abfragen sind *Ausdrucksabfragen*. Die Suche kann undefiniert sein, wie in **`search=*`** , aber ohne Kriterien für die Übereinstimmung besteht das Resultset aus zufällig ausgewählten Dokumenten.
 
 + **`searchFields`** schränkt die Ausführung von Abfragen auf bestimmte Felder ein. Jedes im Indexschema als *durchsuchbar* (searchable) attributierte Feld ist ein Kandidat für diesen Parameter.
 
@@ -61,7 +61,7 @@ Wenn Sie die [Schnellstartanleitung zum Erstellen des Hotel-Demoindex](search-ge
 
 Der Indexentwurf und der Abfrageentwurf sind in der kognitiven Azure-Suche eng aneinander gekoppelt. Wichtig zu wissen ist hierbei, dass das *Indexschema* mit Attributen für jedes Feld die Art der Abfrage bestimmt, die Sie erstellen können. 
 
-Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein Feld im Index *durchsuchbar* ist, ob es in Ergebnissen *abrufbar* , *sortierbar* , *filterbar* ist usw. In der Beispielabfragezeichenfolge funktioniert `"$orderby": "Rating"` nur, weil das Feld „Rating“ (Bewertung) im Indexschema als *sortierbar* (sortable) markiert ist. 
+Die Indexattribute für ein Feld bestimmen die zulässigen Vorgänge – ob ein Feld im Index *durchsuchbar* ist, ob es in Ergebnissen *abrufbar*, *sortierbar*, *filterbar* ist usw. In der Beispielabfragezeichenfolge funktioniert `"$orderby": "Rating"` nur, weil das Feld „Rating“ (Bewertung) im Indexschema als *sortierbar* (sortable) markiert ist. 
 
 ![Indexdefinition für das „hotels“-Beispiel](./media/search-query-overview/hotel-sample-index-definition.png "Indexdefinition für das „hotels“-Beispiel")
 
@@ -91,7 +91,7 @@ In der folgenden Tabelle sind die APIs und toolbasierten Ansätze zum Übermitte
 | Methodik | BESCHREIBUNG |
 |-------------|-------------|
 | [Suchexplorer (Portal)](search-explorer.md) | Stellt eine Suchleiste und Optionen für die Auswahl des Index und von API-Versionen bereit. Die Ergebnisse werden als JSON-Dokumente zurückgegeben. Empfohlen für das Erkunden, Testen und Validieren. <br/>[Weitere Informationen.](search-get-started-portal.md#query-index) | 
-| [Postman oder andere REST-Tools](search-get-started-postman.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in der kognitiven Azure-Suche. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an die kognitive Azure-Suche einrichten.  |
+| [Postman oder andere REST-Tools](search-get-started-rest.md) | Webtesttools sind eine hervorragende Wahl für das Formulieren von REST-Aufrufen. Die REST-API unterstützt alle möglichen Vorgänge in der kognitiven Azure-Suche. In diesem Artikel erfahren Sie, wie Sie einen HTTP-Anforderungsheader und -text zum Senden von Anforderungen an die kognitive Azure-Suche einrichten.  |
 | [SearchClient (.NET)](/dotnet/api/azure.search.documents.searchclient) | Client, der zum Abfragen eines Index für die kognitive Azure-Suche verwendet werden kann.  <br/>[Weitere Informationen.](search-howto-dotnet-sdk.md)  |
 | [Search Documents (REST API)](/rest/api/searchservice/search-documents) (Durchsuchen von Dokumenten (REST-API)) | GET- oder POST-Methoden für einen Index, wobei Abfrageparameter für zusätzliche Eingaben verwendet werden.  |
 

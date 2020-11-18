@@ -4,14 +4,18 @@ description: Handbuch zur Problembehandlung – Überwachen von Live-Java-Apps m
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 4b6a7070b6b1b76a3f763105f4dce795f3e5c4be
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8d11eaa76f2133b9fdc66ba4e6bc91e2cc38c51c
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87372517"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93379535"
 ---
-# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für Java
+# <a name="troubleshooting-and-q-and-a-for-application-insights-for-java-sdk"></a>Anleitung zur Problembehandlung sowie Fragen und Antworten zu Application Insights für das Java SDK
+
+> [!IMPORTANT]
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+
 Haben Sie Fragen oder Probleme im Zusammenhang mit [Azure Application Insights in Java][java]? Hier sind einige Tipps.
 
 ## <a name="build-errors"></a>Buildfehler

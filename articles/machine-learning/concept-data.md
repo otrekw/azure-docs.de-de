@@ -1,7 +1,7 @@
 ---
 title: Sicherer Datenzugriff in der Cloud
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie eine sichere Verbindung mit Ihren Daten von Azure Machine Learning herstellen und wie Sie Datasets und Datenspeicher für ML-Aufgaben verwenden. Datenspeicher können für die Speicherung von Daten aus einem Azure-Blob, Azure Data Lake Gen 1 und 2, SQL-DB und Azure Databricks verwendet werden.
+description: Hier erfahren Sie, wie Sie mit Azure Machine Learning-Datenspeichern und -Datasets eine sichere Verbindung mit Ihrem Datenspeicher in Azure herstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ ms.reviewer: nibaccam
 author: nibaccam
 ms.author: nibaccam
 ms.date: 08/31/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: f46222740ad668b8bb6ec9eb85e78efb0f673528
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-python, data4ml
+ms.openlocfilehash: 6d8c04e48a3d0009a152830a4ee332cd706c4b2c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322242"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93360172"
 ---
 # <a name="secure-data-access-in-azure-machine-learning"></a>Sicherer Datenzugriff in Azure Machine Learning
 

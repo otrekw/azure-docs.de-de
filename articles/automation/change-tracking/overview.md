@@ -3,14 +3,14 @@ title: 'Azure Automation: Übersicht über Änderungsnachverfolgung und Bestand'
 description: In diesem Artikel wird das Feature „Änderungsnachverfolgung und Bestand“ beschrieben, mit dem Sie Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung erkennen können.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 10/26/2020
+ms.date: 11/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 39caa60196eca1afb7df1b0acbecddb557796fc3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: b5390e4b3dc6d77390c3fca6323cbd52544c638a
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130339"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445420"
 ---
 # <a name="change-tracking-and-inventory-overview"></a>Übersicht über Änderungsnachverfolgung und Bestand
 
@@ -48,7 +48,7 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 - Rekursion für die Nachverfolgung der Windows-Registrierung
 - Netzwerkdateisysteme
 - Verschiedene Installationsmethoden
-- Unter Windows gespeicherte **_.exe_* -Dateien
+- Unter Windows gespeicherte **_.exe_*-Dateien
 - Die Spalte **Maximale Dateigröße** und ihre Werte werden in der aktuellen Implementierung nicht genutzt.
 - Wenn Sie versuchen, anhand eines 30-minütigen Sammlungszyklus mehr als 2.500 Dateien zu erfassen, wird das Feature „Änderungsnachverfolgung und Bestand“ unter Umständen beeinträchtigt.
 - Bei einem hohen Netzwerkdatenverkehr-Aufkommen kann es bis zu sechs Stunden dauern, bis Änderungsdatensätze angezeigt werden.
@@ -61,6 +61,16 @@ Für Änderungsnachverfolgung und Bestand werden die folgenden Einschränkungen 
 Änderungsnachverfolgung und Bestand werden unter allen Betriebssystemen unterstützt, die die Anforderungen des Log Analytics-Agent erfüllen. Eine Liste der Windows- und Linux-Betriebssystemversionen, die derzeit vom Log Analytics-Agent unterstützt werden, finden Sie unter [Unterstützte Betriebssysteme](../../azure-monitor/platform/agents-overview.md#supported-operating-systems).
 
 Informationen zu den Clientanforderungen für TLS 1.2 finden Sie unter [Erzwingen von TLS 1.2 für Azure Automation](../automation-managing-data.md#tls-12-enforcement-for-azure-automation).
+
+### <a name="python-requirement"></a>Python-Anforderung
+
+Änderungsnachverfolgung und Bestand unterstützen nur Python 2. Wenn Ihr Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie es installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.
+
+- Red Hat, CentOS, Oracle: `yum install -y python2`
+- Ubuntu, Debian: `apt-get install -y python2`
+- SUSE: `zypper install -y python2`
+
+Die ausführbare python2-Datei muss dem Alias *python* zugewiesen werden.
 
 ## <a name="network-requirements"></a>Netzwerkanforderungen
 
@@ -81,7 +91,7 @@ Sie können „Änderungsnachverfolgung und Bestand“ auf folgende Arten aktivi
 
 - Aus Ihrem [Automation-Konto](enable-from-automation-account.md) für einen oder mehrere Azure- und Nicht-Azure-Computer.
 
-- Manuell für Nicht-Azure-Computer, einschließlich Computer oder Server, die mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) registriert sind. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „ [Log Analytics-Agent auf Azure Arc-Computern unter *Linux* oder *Windows* bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring)“ zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
+- Manuell für Nicht-Azure-Computer, einschließlich Computer oder Server, die mit [Servern mit Azure Arc-Unterstützung](../../azure-arc/servers/overview.md) registriert sind. Für Hybridcomputer empfehlen wir, den Log Analytics-Agent für Windows zu installieren, indem Sie zuerst Ihren Computer mit [Azure Arc-fähigen Servern](../../azure-arc/servers/overview.md) verbinden und dann Azure Policy verwenden, um die integrierte Richtlinie „[Log Analytics-Agent auf Azure Arc-Computern unter *Linux* oder *Windows* bereitstellen](../../governance/policy/samples/built-in-policies.md#monitoring)“ zuzuweisen. Wenn Sie auch die Überwachung der Computer mit Azure Monitor für VMs planen, verwenden Sie stattdessen die Initiative [Azure Monitor für VMs aktivieren](../../governance/policy/samples/built-in-initiatives.md#monitoring).
 
 - Für einen einzelnen virtuellen Azure-Computer auf der [Seite für virtuelle Computer](enable-from-vm.md) im Azure-Portal. Dieses Szenario steht für virtuelle Computer unter Linux oder Windows zur Verfügung.
 
@@ -119,7 +129,7 @@ Zum Nachverfolgen von Änderungen unter Windows und Linux verwendet Änderungsna
 > |`HKEY\LOCAL\MACHINE\Software\Microsoft\Windows NT\CurrentVersion\Drivers32` | Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc. Ähnlich dem Abschnitt „[drivers]“ in der Datei **system.ini**.
 > |`HKEY\LOCAL\MACHINE\Software\Wow6432Node\Microsoft\Windows NT\CurrentVersion\Drivers32` | Überwacht die mit wavemapper zugeordneten 32-Bit-Treiber, wave1 und wave2, msacm.imaadpcm, .msadpcm, .msgsm610 und vidc für 32-Bit-Anwendungen, die auf 64-Bit-Computern ausgeführt werden. Ähnlich dem Abschnitt „[drivers]“ in der Datei **system.ini**.
 > |`HKEY\LOCAL\MACHINE\System\CurrentControlSet\Control\Session Manager\KnownDlls` | Überwacht die Liste der bekannten oder häufig verwendeten System-DLL-Dateien. Überwachung verhindert, dass schwache Anwendungsverzeichnisberechtigungen durch Infiltration mit Trojanerversionen von System-DLLs ausgenutzt werden.
-> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Überwacht die Liste der Pakete, die Ereignisbenachrichtigungen von **winlogon.exe** , dem interaktiven Anmeldungsunterstützungsmodell für Windows, empfangen können.
+> |`HKEY\LOCAL\MACHINE\SOFTWARE\Microsoft\Windows NT\CurrentVersion\Winlogon\Notify` | Überwacht die Liste der Pakete, die Ereignisbenachrichtigungen von **winlogon.exe**, dem interaktiven Anmeldungsunterstützungsmodell für Windows, empfangen können.
 
 ## <a name="recursion-support"></a>Rekursionsunterstützung
 

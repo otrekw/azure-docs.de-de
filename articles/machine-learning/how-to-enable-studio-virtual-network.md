@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 781b37405bebc5ddc3d33cbbc089049b0c0f8ca4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: aca7b7e8590c9c8eb3db987c5d1527d9f135bf3f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325537"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93392995"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -53,7 +53,7 @@ Sehen Sie sich auch die anderen Artikel in dieser Reihe an:
 
 Wenn Sie über eine Ressource innerhalb eines virtuellen Netzwerks (z. B. eine Computeinstanz oder eine VM) auf das Studio zugreifen, müssen Sie aus dem virtuellen Netzwerk an das Studio ausgehenden Datenverkehr zulassen. 
 
-Wenn Sie z. B. ausgehenden Datenverkehr mit Netzwerksicherheitsgruppen (NSG) einschränken, fügen Sie einem __Diensttag__ -Ziel von __AzureFrontDoor.Frontend__ eine Regel hinzu.
+Wenn Sie z. B. ausgehenden Datenverkehr mit Netzwerksicherheitsgruppen (NSG) einschränken, fügen Sie einem __Diensttag__-Ziel von __AzureFrontDoor.Frontend__ eine Regel hinzu.
 
 ## <a name="access-data-using-the-studio"></a>Zugreifen auf Daten mithilfe von Studio
 
@@ -90,14 +90,17 @@ Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um
 1. Wählen Sie in den Datenspeichereinstellungen __Ja__ für __Allow Azure Machine Learning service to access the storage using workspace managed identity__ (Azure Machine Learning Service den Zugriff auf den Speicher über die vom Arbeitsbereich verwaltete Identität erlauben).
 
 
-Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung von Azure (Azure Resource-Based Access Control, Azure RBAC) dem Speicherdienst als __Leser__ hinzugefügt. Mit __Reader__ -Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
+Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung von Azure (Azure Resource-Based Access Control, Azure RBAC) dem Speicherdienst als __Leser__ hinzugefügt. Mit __Reader__-Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
 
 > [!NOTE]
 > Diese Änderungen können bis zu 10 Minuten dauern.
 
 ## <a name="technical-notes-for-managed-identity"></a>Technische Hinweise zur verwalteten Identität
 
-Die Verwendung der verwalteten Identität für den Zugriff auf Speicherdienste hat Auswirkungen auf bestimmte Sicherheitsaspekte. Diese Überlegungen gelten nur für den Typ des Speicherkontos, auf das Sie zugreifen. In diesem Abschnitt werden die Änderungen für die einzelnen Speicherkontotypen beschrieben.
+Die Verwendung der verwalteten Identität für den Zugriff auf Speicherdienste hat Auswirkungen auf bestimmte Sicherheitsaspekte. In diesem Abschnitt werden die Änderungen für die einzelnen Speicherkontotypen beschrieben.
+
+> [!IMPORTANT]
+> Diese Überlegungen gelten nur für den __Typ des Speicherkontos__, auf das Sie zugreifen.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
 

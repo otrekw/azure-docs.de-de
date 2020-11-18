@@ -1,26 +1,88 @@
 ---
-title: Verwalten der Benutzereinstellungen für Azure Multi-Factor Authentication – Azure Active Directory
+title: Verwalten von Authentifizierungsmethoden für Azure Multi-Factor Authentication – Azure Active Directory
 description: Erfahren Sie, wie Sie Azure Active Directory-Benutzereinstellungen für Azure Multi-Factor Authentication konfigurieren können.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 11/04/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
-ms.reviewer: michmcla
+ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2006422d3516aa67076233b0b4b9d3e7c58a7232
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92166510"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378044"
 ---
-# <a name="manage-user-settings-for-azure-multi-factor-authentication"></a>Verwalten der Benutzereinstellungen für Azure Multi-Factor Authentication
+# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Verwalten von Authentifizierungsmethoden für Azure Multi-Factor Authentication
 
-Zur Unterstützung der Verwaltung der Azure Multi-Factor Authentication-Benutzer können Sie festlegen, dass Benutzer Ihr Kennwort zurücksetzen, sich erneut für MFA registrieren oder vorhandene MFA-Sitzungen widerrufen müssen. Für Benutzer, die App-Kennwörter definiert haben, können Sie diese Kennwörter auch löschen, sodass bei der Legacy-Authentifizierung in diesen Anwendungen ein Fehler auftritt. Diese Aktionen sind möglicherweise erforderlich, wenn Sie einen Benutzer unterstützen müssen oder seinen Sicherheitsstatus zurücksetzen möchten.
+Kontaktinformationen der Benutzer in Azure AD fallen in zwei unterschiedliche Kategorien:  
+
+- Kontaktinformationen für öffentliche Profile, die im Benutzerprofil verwaltet werden und für Mitglieder Ihrer Organisation sichtbar sind. Bei Benutzern, die aus dem lokalen Active Directory synchronisiert werden, werden diese Informationen in den lokalen Windows Server Active Directory-Domänendiensten verwaltet.
+- Authentifizierungsmethoden, die immer privat sind und nur für die Authentifizierung verwendet werden, einschließlich Multi-Factor Authentication (MFA). Administratoren können diese Methoden auf dem Blatt zur Authentifizierungsmethode eines Benutzers verwalten, und Benutzer können Ihre Methoden auf der Seite „Sicherheitsinformationen“ von MyAccount verwalten.
+
+Bei der Verwaltung von Azure Multi-Factor Authentication-Methoden für Ihre Benutzer können Authentifizierungsadministratoren folgende Aktionen ausführen: 
+
+1. Hinzufügen von Authentifizierungsmethoden für einen bestimmten Benutzer, einschließlich der für MFA verwendeten Telefonnummern.
+1. Setzt das Kennwort eines Benutzers zurück.
+1. Anfordern einer erneuten Registrierung des Benutzers für MFA.
+1. Widerrufen vorhandener MFA-Sitzungen.
+1. Löschen der vorhandenen App-Kennwörter eines Benutzers  
+
+## <a name="add-authentication-methods-for-a-user"></a>Hinzufügen von Authentifizierungsmethoden für einen Benutzer 
+
+Sie können Authentifizierungsmethoden für einen Benutzer über das Azure-Portal oder Microsoft Graph hinzufügen.  
+
+> [!NOTE]
+> Aus Sicherheitsgründen sollten die Felder für die öffentlichen Kontaktinformationen eines Benutzers nicht zum Ausführen von MFA verwendet werden. Stattdessen sollten die Benutzer die Nummern für ihre Authentifizierungsmethoden eintragen, die für die MFA verwendet werden sollen.  
+
+:::image type="content" source="media/howto-mfa-userdevicesettings/add-authentication-method-detail.png" alt-text="Hinzufügen von Authentifizierungsmethoden über das Azure-Portal":::
+
+So fügen Sie Authentifizierungsmethoden für einen Benutzer über das Azure-Portal hinzu  
+
+1. Melden Sie sich beim **Azure-Portal** an. 
+1. Gehen Sie zu **Azure Active Directory** > **Benutzer** > **Alle Benutzer**. 
+1. Wählen Sie den Benutzer aus, für den Sie eine Authentifizierungsmethode hinzufügen möchten, und wählen Sie **Authentifizierungsmethoden** aus.  
+1. Wählen Sie oben im Fenster **+ Authentifizierungsmethode hinzufügen** aus.
+   1. Wählen Sie eine Methode aus (Telefonnummer oder E-Mail). „E-Mail“ kann für die Self-Service-Kennwortrücksetzung, aber nicht für die Authentifizierung verwendet werden. Wählen Sie beim Hinzufügen einer Telefonnummer einen Telefontyp aus, und geben Sie eine Telefonnummer in einem gültigen Format ein (z. B. +1 4255551234).
+   1. Wählen Sie **Hinzufügen**.
+
+> [!NOTE]
+> In der Vorschauversion können Administratoren alle verfügbaren Authentifizierungsmethoden für Benutzer hinzufügen, während die ursprüngliche Version nur das Aktualisieren der Methoden für ein Telefon und ein alternatives Telefon zulässt.
+
+### <a name="manage-methods-using-powershell"></a>Verwalten von Methoden mit PowerShell:  
+
+Installieren Sie das Modul „Microsoft.Graph.Identity.Signins PowerShell“ mithilfe der folgenden Befehle. 
+
+```powershell
+Install-module Microsoft.Graph.Identity.Signins
+Connect-MgGraph -Scopes UserAuthenticationMethod.ReadWrite.All
+Select-MgProfile -Name beta
+```
+
+Listet die Telefonauthentifizierungsmethoden für einen bestimmten Benutzer auf.
+
+```powershell
+Get-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com
+```
+
+Erstellt eine Mobiltelefon-Authentifizierungsmethode für einen bestimmten Benutzer.
+
+```powershell
+New-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -phoneType “mobile” -phoneNumber "+1 7748933135"
+```
+
+Entfernt eine bestimmte Telefonmethode für einen Benutzer.
+
+```powershell
+Remove-MgUserAuthenticationPhoneMethod -UserId balas@contoso.com -PhoneAuthenticationMethodId 3179e48a-750b-4051-897c-87b9720928f7
+```
+
+Authentifizierungsmethoden können auch mithilfe von Microsoft Graph-APIs verwaltet werden. Weitere Informationen finden Sie im Dokument [Übersicht über die Azure AD Authentifizierungsmethoden-API](/graph/api/resources/authenticationmethods-overview?view=graph-rest-beta&preserve-view=true).
 
 ## <a name="manage-user-authentication-options"></a>Verwalten von Authentifizierungsoptionen
 
@@ -41,7 +103,7 @@ Wenn Ihnen die Rolle *Authentifizierungsadministrator* zugewiesen wurde, können
 
 ## <a name="delete-users-existing-app-passwords"></a>Löschen vorhandener App-Kennwörter eines Benutzers
 
-Falls erforderlich, können Sie alle App-Kennwörter löschen, die ein Benutzer erstellt hat. Nicht-Browser-Apps, die diesen App-Kennwörtern zugeordnet waren, sind bis zur Erstellung eines neuen App-Kennworts nicht mehr funktionsfähig. Zum Ausführen dieser Aktion sind *globale Administratorberechtigungen* erforderlich.
+Bei Benutzern, die App-Kennwörter definiert haben, können Administratoren diese Kennwörter auch löschen, sodass keine Legacy-Authentifizierung in diesen Anwendungen mehr möglich ist. Diese Aktionen sind möglicherweise erforderlich, wenn Sie einen Benutzer unterstützen oder seine Authentifizierungsmethoden zurücksetzen müssen. Nicht-Browser-Apps, die diesen App-Kennwörtern zugeordnet waren, funktionieren erst wieder, wenn ein neues App-Kennwort erstellt wurde. 
 
 Um die App-Kennwörter eines Benutzers zu löschen, führen Sie die folgenden Schritte aus:
 

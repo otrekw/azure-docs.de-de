@@ -10,13 +10,13 @@ ms.author: nibaccam
 author: nibaccam
 ms.reviewer: nibaccam
 ms.date: 09/22/2020
-ms.custom: how-to
-ms.openlocfilehash: a8868b930abe28ed205446df0c6c9b0f111213eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, data4ml
+ms.openlocfilehash: e97546e678b3b7bf7932600ea53d09557493685c
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312792"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359866"
 ---
 # <a name="connect-to-data-with-the-azure-machine-learning-studio"></a>Herstellen einer Verbindung mit Daten in Azure Machine Learning Studio
 
@@ -50,8 +50,6 @@ Informationen zu einer Code First-Funktion finden Sie in den folgenden Artikeln,
 
 Aus diesen [Azure-Speicherlösungen](how-to-access-data.md#matrix) können Sie Datenspeicher erstellen. **Für nicht unterstützte Speicherlösungen** sowie zur Einsparung von Kosten für ausgehende Daten bei ML-Experimenten müssen Sie [Ihre Daten in eine unterstützte Azure-Speicherlösung verschieben](how-to-access-data.md#move). [Weitere Informationen zu Datenspeichern](how-to-access-data.md). 
 
-
-
 Erstellen Sie einen neuen Datenspeicher in wenigen Schritten mit Azure Machine Learning Studio.
 
 > [!IMPORTANT]
@@ -60,7 +58,7 @@ Erstellen Sie einen neuen Datenspeicher in wenigen Schritten mit Azure Machine L
 1. Melden Sie sich bei [Azure Machine Learning Studio](https://ml.azure.com/) an.
 1. Wählen Sie im linken Bereich unter **Verwalten** die Option **Datenspeicher** aus.
 1. Wählen Sie **+ Neuer Datenspeicher** aus.
-1. Füllen Sie das Formular für einen neuen Datenspeicher aus. Das Formular aktualisiert sich ausgehend von den ausgewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent selbst. Lesen Sie den Abschnitt [Speicherzugriff und Berechtigungen](#access-validation), um zu erfahren, wo Sie die erforderlichen Anmeldeinformationen zum Ausfüllen dieses Formulars finden.
+1. Füllen Sie das Formular aus, um einen neuen Datenspeicher zu erstellen und zu registrieren. Das Formular aktualisiert sich ausgehend von den ausgewählten Optionen für den Azure-Speichertyp und den Authentifizierungstyp intelligent selbst. Lesen Sie den Abschnitt [Speicherzugriff und Berechtigungen](#access-validation), um zu erfahren, wo Sie die erforderlichen Anmeldeinformationen zum Ausfüllen dieses Formulars finden.
 
 Das folgende Beispiel zeigt, wie das Formular aussieht, wenn Sie einen **Azure-Blobdatenspeicher** erstellen:
 
@@ -153,15 +151,19 @@ Informationen zu Kontoschlüssel, SAS-Token und Dienstprinzipal finden Sie im [A
       1. Wechseln Sie für Kontoschlüssel zu **Kontoschlüssel** im Bereich **Einstellungen**.
       1. Für SAS-Token wechseln Sie zu **Shared Access Signatures** im Bereich **Einstellungen**.
 
-* Wenn Sie einen [Dienstprinzipal](../active-directory/develop/howto-create-service-principal-portal.md) für die Authentifizierung verwenden möchten, navigieren Sie zu Ihren **App-Registrierungen** , und wählen Sie die gewünschte App aus.
+* Wenn Sie einen [Dienstprinzipal](../active-directory/develop/howto-create-service-principal-portal.md) für die Authentifizierung verwenden möchten, navigieren Sie zu Ihren **App-Registrierungen**, und wählen Sie die gewünschte App aus.
     * Auf der entsprechenden Übersichtsseite werden erforderliche Informationen wie Mandanten-ID und Client-ID angezeigt.
 
 > [!IMPORTANT]
-> Aus Sicherheitsgründen müssen möglicherweise Ihre Zugriffsschlüssel für ein Azure Storage-Konto geändert werden (Kontoschlüssel oder SAS-Token). Denken Sie in diesem Fall daran, die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern zu synchronisieren. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md).
+> * Wenn Sie Ihre Zugriffsschlüssel für ein Azure Storage-Konto (Kontoschlüssel oder SAS-Token) ändern müssen, stellen Sie sicher, dass die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern synchronisiert werden. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). <br> <br>
+> * Wenn Sie die Registrierung aufheben und einen Datenspeicher mit dem gleichen Namen erneut registrieren und dabei ein Fehler auftritt, ist bei dem Azure Key Vault für Ihren Arbeitsbereich vorläufiges Löschen möglicherweise nicht aktiviert. Standardmäßig ist vorläufiges Löschen für die Key Vault-Instanz aktiviert, die von Ihrem Arbeitsbereich erstellt wurde. Es ist jedoch möglicherweise nicht aktiviert, wenn Sie einen vorhandenen Schlüsseltresor verwendet haben oder einen Arbeitsbereich vor Oktober 2020 erstellt haben. Informationen zum Aktivieren des vorläufigen Löschens finden Sie unter [Aktivieren des vorläufigen Löschens für einen vorhandenen Schlüsseltresor]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ### <a name="permissions"></a>Berechtigungen
 
-Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). 
+Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
+* Für den **Lesezugriff** auf Daten müssen Ihre Anmeldeinformationen für die Authentifizierung mindestens die Berechtigungen zum Auflisten und Lesen für Container und Objekte besitzen. 
+
+* Für den **Schreibzugriff** auf Daten sind auch Berechtigungen zum Schreiben und Hinzufügen erforderlich.
 
 ## <a name="train-with-datasets"></a>Trainieren mit Datasets
 

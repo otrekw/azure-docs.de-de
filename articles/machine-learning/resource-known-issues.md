@@ -10,13 +10,13 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
-ms.date: 10/02/2020
-ms.openlocfilehash: b49e7ab7f3412177ee9eafad8d1a68525e054421
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/09/2020
+ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314757"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445390"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -143,7 +143,7 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 
     Falls bei Python-Bibliotheken immer wieder Installationsprobleme auftreten, können Sie alternativ Initialisierungsskripts verwenden. Dieser Ansatz wird nicht offiziell unterstützt. Weitere Informationen finden Sie unter [Initialisierungsskripts im Clusterbereich](https://docs.azuredatabricks.net/user-guide/clusters/init-scripts.html#cluster-scoped-init-scripts).
 
-* **Databricks-Importfehler: Der Name `Timedelta` kann nicht aus `pandas._libs.tslibs` importiert werden** : Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning verwenden, führen Sie die beiden folgenden Zeilen in Ihrem Notebook aus:
+* **Databricks-Importfehler: Der Name `Timedelta` kann nicht aus `pandas._libs.tslibs` importiert werden**: Wenn dieser Fehler angezeigt wird, wenn Sie automatisiertes Machine Learning verwenden, führen Sie die beiden folgenden Zeilen in Ihrem Notebook aus:
     ```
     %sh rm -rf /databricks/python/lib/python3.7/site-packages/pandas-0.23.4.dist-info /databricks/python/lib/python3.7/site-packages/pandas
     %sh /databricks/python/bin/pip install pandas==0.23.4
@@ -162,7 +162,7 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
     
     Wenn diese Schritte das Problem nicht beheben, versuchen Sie, den Cluster neu zu starten.
 
-* **Databricks FailToSendFeather** : Sollte beim Lesen von Daten aus einem Azure Databricks-Cluster ein Fehler vom Typ `FailToSendFeather` auftreten, haben Sie folgende Möglichkeiten:
+* **Databricks FailToSendFeather**: Sollte beim Lesen von Daten aus einem Azure Databricks-Cluster ein Fehler vom Typ `FailToSendFeather` auftreten, haben Sie folgende Möglichkeiten:
     
     * Upgraden Sie das Paket `azureml-sdk[automl]` auf die aktuelle Version.
     * Fügen Sie mindestens die Version 1.1.8 von `azureml-dataprep` hinzu.
@@ -173,11 +173,11 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 > [!WARNING]
 > Das Verschieben des Azure Machine Learning-Arbeitsbereichs in ein anderes Abonnement oder das Verschieben des besitzenden Abonnements in einen neuen Mandanten wird nicht unterstützt. Andernfalls können Fehler auftreten.
 
-* **Azure-Portal** : 
+* **Azure-Portal**: 
   * Wenn Sie direkt über einen Freigabelink aus dem SDK oder dem Azure-Portal zu Ihrem Arbeitsbereich gelangen, können Sie die standardmäßige **Übersichtsseite** mit Abonnementinformationen in der Erweiterung nicht anzeigen. In diesem Szenario können Sie auch nicht zu einem anderen Arbeitsbereich wechseln. Um einen anderen Arbeitsbereich anzuzeigen, wechseln Sie direkt zu [Azure Machine Learning-Studio](https://ml.azure.com) und suchen nach dem Namen des Arbeitsbereichs.
   * Alle Assets (Datasets, Experimente, Computes usw.) sind nur in [Azure Machine Learning Studio](https://ml.azure.com) verfügbar. Sie sind *nicht* über das Azure-Portal verfügbar.
 
-* **Unterstützte Browser im Azure Machine Learning Studio-Webportal** : Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
+* **Unterstützte Browser im Azure Machine Learning Studio-Webportal**: Es wird empfohlen, den neuesten Browser zu verwenden, der mit Ihrem Betriebssystem kompatibel ist. Die folgenden Browser werden unterstützt:
   * Microsoft Edge (Die neueste Version von Microsoft Edge. Keine ältere Microsoft Edge-Version.)
   * Safari (neueste Version, nur auf Mac)
   * Chrome (neueste Version)
@@ -185,7 +185,7 @@ Manchmal kann es hilfreich sein, Diagnoseinformationen bereitstellen zu können,
 
 ## <a name="set-up-your-environment"></a>Einrichten Ihrer Umgebung
 
-* **Probleme beim Erstellen von AmlCompute** : In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verfügbaren Release ihren Azure Machine Learning-Arbeitsbereich über das Azure-Portal erstellt haben, AmlCompute nicht in diesem Arbeitsbereich erstellen können. In einem solchen Fall können Sie entweder eine Supportanfrage für den Dienst erstellen oder über das Portal oder das SDK einen neuen Arbeitsbereich erstellen und die Blockierung dadurch umgehend aufheben.
+* **Probleme beim Erstellen von AmlCompute**: In seltenen Fällen kann es vorkommen, dass Benutzer, die vor dem allgemein verfügbaren Release ihren Azure Machine Learning-Arbeitsbereich über das Azure-Portal erstellt haben, AmlCompute nicht in diesem Arbeitsbereich erstellen können. In einem solchen Fall können Sie entweder eine Supportanfrage für den Dienst erstellen oder über das Portal oder das SDK einen neuen Arbeitsbereich erstellen und die Blockierung dadurch umgehend aufheben.
 
 * **Azure Container Registry unterstützt derzeit keine Unicode-Zeichen in Ressourcengruppennamen:** Möglicherweise treten bei ACR-Anforderungen Fehler auf, da der zugehörige Ressourcengruppenname Unicode-Zeichen enthält. Um dieses Problem zu beheben, wird empfohlen, eine ACR-Instanz in einer Ressourcengruppe mit abweichendem Namen zu erstellen.
 
@@ -199,7 +199,7 @@ Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübe
 
 ### <a name="passing-data-as-input"></a>Übergeben von Daten als Eingabe
 
-*  **TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden** : Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
+*  **TypeError: FileNotFound: Datei oder Verzeichnis nicht vorhanden**: Dieser Fehler tritt auf, wenn sich die Datei nicht an dem von Ihnen angegebenen Dateipfad befindet. Sie müssen sicherstellen, dass Ihre Verweise auf die Datei konsistent mit dem Einbindungsort des Datasets auf Ihrem Computeziel ist. Um einen deterministischen Zustand sicherzustellen, empfiehlt es sich, für die Einbindung eines Datasets an einem Computeziel den abstrakten Pfad zu verwenden. Im folgenden Code wird das Dataset beispielsweise unter dem Stammverzeichnis des Dateisystems des Computeziels eingebunden: `/tmp`. 
     
     ```python
     # Note the leading / in '/tmp/dataset'
@@ -258,7 +258,20 @@ Einschränkungen und bekannte Probleme bei Datendriftüberwachungen:
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
-* **Lange Computevorbereitungszeit** :
+### <a name="dataset-visualization-in-the-designer"></a>Datasetvisualisierung im Designer
+
+Nachdem Sie ein Dataset auf der Ressourcenseite **Datasets** oder mithilfe des SDK registriert haben, finden Sie es in der Liste links im Designer unter der Kategorie **Datasets**.
+
+Wenn Sie das Dataset jedoch in den Zeichenbereich ziehen und visualisieren, kann es möglicherweise aus folgenden Gründen nicht visualisiert werden:
+
+- Derzeit können nur tabellarische Datasets im Designer visualisiert werden. Wenn Sie ein Dateidataset außerhalb des Designers registrieren, können Sie es nicht im Designer-Zeichenbereich visualisieren.
+- Das Dataset ist im virtuellen Netzwerk (VNET) gespeichert. Zum Visualisieren müssen Sie die vom Arbeitsbereich verwaltete Identität des Datenspeichers aktivieren.
+    1. Rufen Sie den entsprechenden Datenspeicher auf, und klicken Sie auf **Anmeldeinformationen aktualisieren**
+    :::image type="content" source="./media/resource-known-issues/datastore-update-credential.png" alt-text="Anmeldeinformationen aktualisieren":::.
+    1. Wählen Sie **Ja** aus, um die vom Arbeitsbereich verwaltete Identität zu aktivieren.
+    :::image type="content" source="./media/resource-known-issues/enable-workspace-managed-identity.png" alt-text="Aktivieren der vom Arbeitsbereich verwalteten Identität":::
+
+### <a name="long-compute-preparation-time"></a>Lange Compute-Vorbereitungszeit
 
 Es kann einige Minuten oder sogar länger dauern, wenn Sie zum ersten Mal eine Verbindung zu einem Computeziel herstellen oder ein Computeziel erstellen. 
 
@@ -269,7 +282,7 @@ import time
 time.sleep(600)
 ```
 
-* **Protokoll für Echtzeitendpunkte:**
+### <a name="log-for-real-time-endpoints"></a>Protokoll für Echtzeitendpunkte
 
 Protokolle von Echtzeitendpunkten sind Kundendaten. Für die Problembehandlung für Echtzeitendpunkte können Sie den folgenden Code zum Aktivieren von Protokollen verwenden. 
 
@@ -306,13 +319,13 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **NameError (Name nicht definiert), AttributeError (Objekt besitzt kein Attribut)** : Diese Ausnahme sollte von Ihren Trainingsskripts stammen. Sie können sich die Protokolldateien des Azure-Portals ansehen, um weitere Informationen über den nicht definierten Namen oder den Attributfehler zu erhalten. Aus dem SDK können Sie `run.get_details()` verwenden, um die Fehlermeldung anzuzeigen. Dadurch werden auch alle für Ihre Ausführung generierten Protokolldateien aufgelistet. Werfen Sie unbedingt einen Blick auf das Trainingsskript, und beheben Sie den Fehler, bevor Sie Ihren Durchlauf erneut übermitteln. 
 
-* **Horovod wurde heruntergefahren** : In den meisten Fällen, wenn „AbortedError: Horovod wurde heruntergefahren“ auftritt, bedeutet dies, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfachere Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von Horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
+* **Horovod wurde heruntergefahren**: In den meisten Fällen, wenn „AbortedError: Horovod wurde heruntergefahren“ auftritt, bedeutet dies, dass in einem der Prozesse eine Ausnahme aufgetreten ist, die Horovod zum Herunterfahren veranlasst hat. Jeder Rang im MPI-Auftrag erhält eine eigene dedizierte Protokolldatei in Azure ML. Diese Protokolle haben die Bezeichnung `70_driver_logs`. Im Falle von verteiltem Training werden die Protokollnamen durch das Suffix `_rank` ergänzt, um eine einfachere Unterscheidung der Protokolle zu ermöglichen. Um den genauen Fehler zu finden, der das Herunterfahren von Horovod verursacht hat, gehen Sie alle Protokolldateien durch, und suchen Sie am Ende der driver_log-Dateien nach `Traceback`. Eine dieser Dateien enthält die eigentliche zugrunde liegende Ausnahme. 
 
-* **Löschen von Ausführungen oder Experimenten** :  Experimente können mit der Methode [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
+* **Löschen von Ausführungen oder Experimenten**:  Experimente können mit der Methode [Experiment.archive](/python/api/azureml-core/azureml.core.experiment%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truearchive--) oder über die Registerkartenansicht „Experiment“ im Azure Machine Learning Studio-Client über die Schaltfläche „Experiment archivieren“ archiviert werden. Durch diese Aktion wird das Experiment aus Abfragelisten und Ansichten ausgeblendet, aber nicht gelöscht.
 
     Das endgültige Löschen einzelner Experimente oder Ausführungen wird derzeit nicht unterstützt. Weitere Informationen zum Löschen von Arbeitsbereichsressourcen finden Sie unter [Exportieren oder Löschen Ihrer Arbeitsbereichsdaten im Machine Learning-Dienst](how-to-export-delete-data.md).
 
-* **Metrikdokument ist zu groß** : Azure Machine Learning weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
+* **Metrikdokument ist zu groß**: Azure Machine Learning weist interne Beschränkungen der Größe von Metrikobjekten auf, die gleichzeitig aus einem Trainingsdurchlauf protokolliert werden können. Wenn bei der Protokollierung einer Metrik mit Listenwert der Fehler „Metrikdokument ist zu groß“ angezeigt wird, versuchen Sie, die Liste in kleinere Blöcke aufzuteilen, z. B.:
 
     ```python
     run.log_list("my metric name", my_metric[:N])
@@ -323,7 +336,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
 
 ## <a name="automated-machine-learning"></a>Automatisiertes maschinelles Lernen
 
-* **Das letzte Upgrade der AutoML-Abhängigkeiten auf neuere Versionen führt zu Inkompatibilität** :  Ab Version 1.13.0 des SDK werden Modelle in älteren SDKs nicht mehr geladen, da die in den früheren Paketen angehefteten Versionen mit den neueren, jetzt angehefteten Versionen nicht kompatibel sind. Es wird ein Fehler wie der folgende angezeigt:
+* **Das letzte Upgrade der AutoML-Abhängigkeiten auf neuere Versionen führt zu Inkompatibilität**:  Ab Version 1.13.0 des SDK werden Modelle in älteren SDKs nicht mehr geladen, da die in den früheren Paketen angehefteten Versionen mit den neueren, jetzt angehefteten Versionen nicht kompatibel sind. Es wird ein Fehler wie der folgende angezeigt:
   * Das Modul wurde nicht gefunden: Beispiel: `No module named 'sklearn.decomposition._truncated_svd`,
   * Importfehler: Beispiel: `ImportError: cannot import name 'RollingOriginValidator'`,
   * Attributfehler: Ex. `AttributeError: 'SimpleImputer' object has no attribute 'add_indicator`
@@ -345,7 +358,7 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
  
 * **Der Prognose-R2-Score ist immer 0 (null)** : Dieses Problem tritt auf, wenn die bereitgestellten Trainingsdaten Zeitreihen enthalten, die für die letzten `n_cv_splits` + `forecasting_horizon` Datenpunkte den gleichen Wert aufweisen. Wenn dieses Muster in Ihrer Zeitreihe erwartet wird, können Sie die primäre Metrik in die normalisierte mittlere quadratische Gesamtabweichung ändern.
  
-* **TensorFlow** : Ab der SDK-Version 1.5.0 installiert das automatisierte maschinelle Lernen TensorFlow-Modelle nicht mehr standardmäßig. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über CondaDependecies. 
+* **TensorFlow**: Ab der SDK-Version 1.5.0 installiert das automatisierte maschinelle Lernen TensorFlow-Modelle nicht mehr standardmäßig. Wenn Sie TensorFlow installieren und bei Ihren automatisierten ML-Experimenten verwenden möchten, installieren Sie „tensorflow==1.12.0“ über CondaDependecies. 
  
    ```python
    from azureml.core.runconfig import RunConfiguration
@@ -353,13 +366,13 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
    run_config = RunConfiguration()
    run_config.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['tensorflow==1.12.0'])
   ```
-* **Diagramm mit Experimenten** : Seit dem 12. April werden Diagramme für die binäre Klassifizierung (Genauigkeit und Trefferquote, ROC, Gewinnkurve usw.), die in automatisierten ML-Experimentiterationen angezeigt werden, auf der Benutzeroberfläche nicht richtig gerendert. In Diagrammen werden derzeit invertierte Ergebnisse angezeigt, was dazu führt, dass Modelle mit besserer Leistung mit schlechteren Ergebnissen angezeigt werden. Derzeit wird an einer Lösung gearbeitet.
+* **Diagramm mit Experimenten**: Seit dem 12. April werden Diagramme für die binäre Klassifizierung (Genauigkeit und Trefferquote, ROC, Gewinnkurve usw.), die in automatisierten ML-Experimentiterationen angezeigt werden, auf der Benutzeroberfläche nicht richtig gerendert. In Diagrammen werden derzeit invertierte Ergebnisse angezeigt, was dazu führt, dass Modelle mit besserer Leistung mit schlechteren Ergebnissen angezeigt werden. Derzeit wird an einer Lösung gearbeitet.
 
-* **Databricks – Abbrechen einer automatisierten Ausführung des maschinellen Lernens** : Wenn Sie Funktionen für automatisiertes maschinelles Lernen in Azure Databricks verwenden um eine Ausführung abzubrechen und eine neue Experimentausführung zu starten, starten Sie Ihren Azure Databricks-Cluster neu.
+* **Databricks – Abbrechen einer automatisierten Ausführung des maschinellen Lernens**: Wenn Sie Funktionen für automatisiertes maschinelles Lernen in Azure Databricks verwenden um eine Ausführung abzubrechen und eine neue Experimentausführung zu starten, starten Sie Ihren Azure Databricks-Cluster neu.
 
-* **Databricks > Mehr als 10 Iterationen von automatisiertem maschinellem Lernen** : Sofern in den Einstellungen für automatisiertes maschinelles Lernen mehr als 10 Iterationen vorgesehen sind, legen Sie `show_output` auf `False` fest, wenn Sie die Ausführung übermitteln.
+* **Databricks > Mehr als 10 Iterationen von automatisiertem maschinellem Lernen**: Sofern in den Einstellungen für automatisiertes maschinelles Lernen mehr als 10 Iterationen vorgesehen sind, legen Sie `show_output` auf `False` fest, wenn Sie die Ausführung übermitteln.
 
-* **Databricks-Widget für das Azure Machine Learning SDK und automatisiertes maschinelles Lernen** : Das Azure Machine Learning SDK-Widget wird in Databricks-Notebooks nicht unterstützt, da die Notebooks keine HTML-Widgets analysieren können. Sie können das Widget im Portal anzeigen, indem Sie diesen Python-Code in die Zelle Ihres Azure Databricks-Notebooks einfügen:
+* **Databricks-Widget für das Azure Machine Learning SDK und automatisiertes maschinelles Lernen**: Das Azure Machine Learning SDK-Widget wird in Databricks-Notebooks nicht unterstützt, da die Notebooks keine HTML-Widgets analysieren können. Sie können das Widget im Portal anzeigen, indem Sie diesen Python-Code in die Zelle Ihres Azure Databricks-Notebooks einfügen:
 
     ```
     displayHTML("<a href={} target='_blank'>Azure Portal: {}</a>".format(local_run.get_portal_url(), local_run.id))
@@ -393,15 +406,15 @@ interactive_auth = InteractiveLoginAuthentication(tenant_id="the tenant_id in wh
   3. Wenn ein neues Abonnement, eine neue Ressourcengruppe, ein neuer Arbeitsbereich oder eine neue Region verwendet wird, stellen Sie sicher, dass Sie das Notebook `configuration.ipynb` erneut ausführen. Eine direkte Änderung von „config.json“ funktioniert nur, wenn der Arbeitsbereich bereits in der angegebenen Ressourcengruppe im angegebenen Abonnement vorhanden ist.
   4. Wenn Sie die Region ändern möchten, ändern Sie den Arbeitsbereich, die Ressourcengruppe oder das Abonnement. `Workspace.create` erstellt keinen Arbeitsbereich und aktualisiert auch keinen vorhandenen Arbeitsbereich, auch dann nicht, wenn eine andere Region angegeben wird.
   
-* **Fehler im Beispielnotebook** : Wenn bei einem Beispielnotebook ein Fehler aufgrund einer fehlenden Eigenschaft, Methode oder Bibliothek auftritt, gehen Sie folgendermaßen vor:
+* **Fehler im Beispielnotebook**: Wenn bei einem Beispielnotebook ein Fehler aufgrund einer fehlenden Eigenschaft, Methode oder Bibliothek auftritt, gehen Sie folgendermaßen vor:
   * Stellen Sie sicher, dass im Jupyter-Notebook der richtige Kernel ausgewählt wurde. Der Kernel wird oben rechts auf der Seite des Notebooks angezeigt. Der Standardwert lautet „azure_automl“. Beachten Sie, dass der Kernel als Teil des Notebooks gespeichert wird. Wenn Sie zu einer neuen Conda-Umgebung wechseln, müssen Sie den neuen Kernel im Notebook auswählen.
       * Bei Azure Notebooks sollte Python 3.6 verwendet werden. 
       * Bei lokalen Conda-Umgebungen sollte es sich um den Namen der Conda-Umgebung handeln, die Sie in „automl_setup“ angegeben haben.
   * Stellen Sie sicher, dass das Notebook auf die von Ihnen verwendete SDK-Version ausgelegt ist. Sie können die SDK-Version überprüfen, indem Sie `azureml.core.VERSION` in einer Jupyter-Notebook-Zelle ausführen. Wenn Sie vorherige Versionen der Beispielnotebooks von GitHub herunterladen möchten, klicken Sie auf die Schaltfläche `Branch` und wählen dann die Registerkarte `Tags` und dort die Version aus.
 
-* **Fehler beim NumPy-Import in Windows** : In einigen Windows-Umgebungen tritt beim Laden von NumPy mit der neuesten Python-Version 3.6.8 ein Fehler auf. Versuchen Sie in diesem Fall die Python-Version 3.6.7.
+* **Fehler beim NumPy-Import in Windows**: In einigen Windows-Umgebungen tritt beim Laden von NumPy mit der neuesten Python-Version 3.6.8 ein Fehler auf. Versuchen Sie in diesem Fall die Python-Version 3.6.7.
 
-* **Fehler beim NumPy-Import** : Überprüfen Sie die TensorFlow-Version in der Conda-Umgebung für automatisiertes ML. Es werden Versionen unter 1.13 unterstützt. Wenn die vorhandene Version 1.13 oder höher ist, deinstallieren Sie TensorFlow in der Umgebung. Sie können die TensorFlow-Version folgendermaßen überprüfen und deinstallieren:
+* **Fehler beim NumPy-Import**: Überprüfen Sie die TensorFlow-Version in der Conda-Umgebung für automatisiertes ML. Es werden Versionen unter 1.13 unterstützt. Wenn die vorhandene Version 1.13 oder höher ist, deinstallieren Sie TensorFlow in der Umgebung. Sie können die TensorFlow-Version folgendermaßen überprüfen und deinstallieren:
   1. Starten Sie eine Befehlsshell, und aktivieren Sie die Conda-Umgebung, in der die Pakete für das automatisierte maschinelle Lernen installiert sind.
   2. Geben Sie `pip freeze` ein, und suchen Sie nach `tensorflow`. Die aufgelistete Version sollte kleiner als 1.13 sein.
   3. Wenn die aufgelistete Version keine unterstützte Version ist, geben Sie in der Befehlsshell `pip uninstall tensorflow` ein, und bestätigen Sie den Befehl mit „y“.

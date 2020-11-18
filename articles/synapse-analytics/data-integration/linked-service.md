@@ -2,21 +2,21 @@
 title: Schützen eines verknüpften Diensts
 description: Hier erfahren Sie, wie Sie einen verknüpften Dienst per verwaltetem VNET bereitstellen und schützen.
 services: synapse-analytics
-author: acomet
+author: ArnoMicrosoft
 ms.service: synapse-analytics
 ms.topic: how-to
 ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f5a3c73d60f038820de100f99c554eec27fd6f55
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: feabfe505601276269c2774e3b39dd5cbaa32087
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90033182"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359968"
 ---
-# <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link 
+# <a name="secure-a-linked-service-with-private-links"></a>Schützen eines verknüpften Diensts mit Private Link
 
 In diesem Artikel erfahren Sie, wie Sie einen verknüpften Dienst in Synapse mit einem privaten Endpunkt schützen.
 
@@ -68,6 +68,8 @@ Jetzt haben Sie eine sichere und private Verbindung zwischen Synapse und Ihrem v
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie noch besser verstehen möchten, was „Verwalteter privater Endpunkt“ in Synapse Analytics bedeutet, lesen Sie den Artikel [Concept around Synapse Managed private endpoint](data-integration-data-lake.md) (Konzept rund um „Verwalteter privater Endpunkt in Synapse“).
+
+Wenn Sie noch besser verstehen möchten, was „Verwalteter privater Endpunkt“ in Synapse Analytics bedeutet, finden Sie weitere Informationen unter [Verwaltete private Endpunkte](../security/synapse-workspace-managed-private-endpoints.md).
+
 
 Weitere Informationen zur Datenintegration bei Synapse Analytics finden Sie im Artikel [Erfassen von Daten in einem Data Lake](data-integration-data-lake.md).

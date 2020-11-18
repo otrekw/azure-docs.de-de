@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c8116f3e00d13c0bd1e5f075a7fbe3264f337079
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: df611e01fefacd22f4dc026a819d4c71ede6e7e3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970400"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686088"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>Multi-SID-Hochverfügbarkeit für SAP ASCS/SCS-Instanzen mit Windows Server-Failoverclustering und freigegebenem Azure-Datenträger
 
@@ -35,12 +35,12 @@ In diesem Artikel wird der Übergang von einer einzelnen ASCS/SCS-Installation z
 Derzeit können Sie Azure SSD Premium-Datenträger als freigegebenen Azure-Datenträger für die SAP ASCS/SCS-Instanz verwenden. Es gelten die folgenden Einschränkungen:
 
 -  Ein [Azure Ultra-Datenträger](../../disks-types.md#ultra-disk) wird nicht als freigegebener Azure-Datenträger für SAP-Workloads unterstützt. Derzeit ist es nicht möglich, Azure-VMs mithilfe eines Azure Ultra-Datenträgers in einer Verfügbarkeitsgruppe zu platzieren.
--  Ein [freigegebener Azure-Datenträger](../../windows/disks-shared.md) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
+-  Ein [freigegebener Azure-Datenträger](../../disks-shared.md) mit SSD Premium-Datenträgern wird nur für VMs in einer Verfügbarkeitsgruppe unterstützt. Bei der Bereitstellung in Verfügbarkeitszonen wird dies nicht unterstützt. 
 -  Der Wert [maxShares](../../disks-shared-enable.md?tabs=azure-cli#disk-sizes) des freigegebenen Azure-Datenträgers bestimmt, wie viele Clusterknoten den freigegebenen Datenträger verwenden können. In der Regel werden für SAP ASCS/SCS-Instanzen zwei Knoten im Windows-Failovercluster konfiguriert. Daher muss der Wert für `maxShares` auf zwei festgelegt werden.
 -  Alle VMs im SAP ASCS/SCS-Cluster müssen in derselben [Azure-Näherungsplatzierungsgruppe](../../windows/proximity-placement-groups.md) (Proximity Placement Group, PPG) bereitgestellt werden.   
    Zwar können Sie VMs im Windows-Cluster in einer Verfügbarkeitsgruppe mit freigegebenem Azure-Datenträger ohne PPG bereitstellen, doch gewährleistet PPG die physische Nähe von freigegebenen Azure-Datenträgern und Cluster-VMs und erzielt somit eine geringere Latenz zwischen den VMs und der Speicherebene.    
 
-Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../linux/disks-shared.md#limitations) der entsprechenden Dokumentation.  
+Weitere Informationen zu Einschränkungen für freigegebene Azure-Datenträger finden Sie im Abschnitt [Einschränkungen](../../disks-shared.md#limitations) der entsprechenden Dokumentation.  
 
 > [!IMPORTANT]
 > Beachten Sie beim Bereitstellen des SAP ASCS/SCS-Windows-Failoverclusters mit freigegebenem Azure-Datenträger, dass die Bereitstellung mit einem einzelnen freigegebenen Datenträger in nur einem Speichercluster erfolgt. Probleme mit dem Speichercluster, in dem der freigegebene Azure-Datenträger bereitgestellt wird, beeinträchtigen Ihre SAP ASCS/SCS-Instanz.  
@@ -121,17 +121,17 @@ Sie müssen dem vorhandenen Lastenausgleich eine Konfiguration für die zweite A
 - Backendkonfiguration  
     Bereits vorhanden. Die VMs wurden dem Back-End-Pool während der Konfiguration für SAP-SID **PR1** bereits hinzugefügt.
 - Testport
-    - Port 620**nr** [**62002**]. Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
+    - Port 620 **nr** [**62002**]. Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
 - Lastenausgleichsregeln
     - Wenn Sie Load Balancer Standard verwenden, wählen Sie HA-Ports aus.
     - Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
-        - 32**nr** TCP [**3202**]
-        - 36**nr** TCP [**3602**]
-        - 39**nr** TCP [**3902**]
-        - 81**nr** TCP [**8102**]
-        - 5**nr**13 TCP [**50213**]
-        - 5**nr**14 TCP [**50214**]
-        - 5**nr**16 TCP [**50216**]
+        - 32 **nr** TCP [**3202**]
+        - 36 **nr** TCP [**3602**]
+        - 39 **nr** TCP [**3902**]
+        - 81 **nr** TCP [**8102**]
+        - 5 **nr** 13 TCP [**50213**]
+        - 5 **nr** 14 TCP [**50214**]
+        - 5 **nr** 16 TCP [**50216**]
         - Ordnen Sie die ASCS-Front-End-IP-Adresse, den Integritätstest und den vorhandenen Back-End-Pool für **PR2** zu.  
 
     - Stellen Sie sicher, dass „Leerlauftimeout (Minuten)“ auf den Höchstwert 30 festgelegt ist und dass „Floating IP (Direct Server Return)“ aktiviert ist.
@@ -146,16 +146,16 @@ Da Enqueue Replication Server 2 (ERS2) ebenfalls gruppiert ist, muss die virtue
   Die VMs wurden dem ILB-Back-End-Pool bereits hinzugefügt.  
 
 - Neuer Testport
-    - Port 621**nr** [**62112**]. Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
+    - Port 621 **nr** [**62112**]. Lassen Sie die Standardoptionen für das Protokoll (TCP), das Intervall (5) und den Fehlerschwellenwert (2) unverändert.
 
 - Neue Lastenausgleichsregeln
     - Wenn Sie Load Balancer Standard verwenden, wählen Sie HA-Ports aus.
     - Wenn Sie Load Balancer Basic verwenden, erstellen Sie Lastenausgleichsregeln für die folgenden Ports:
-        - 32**nr** TCP [**3212**]
-        - 33**nr** TCP [**3312**]
-        - 5**nr**13 TCP [**51212**]
-        - 5**nr**14 TCP [**51212**]
-        - 5**nr**16 TCP [**51212**]
+        - 32 **nr** TCP [**3212**]
+        - 33 **nr** TCP [**3312**]
+        - 5 **nr** 13 TCP [**51212**]
+        - 5 **nr** 14 TCP [**51212**]
+        - 5 **nr** 16 TCP [**51212**]
         - Ordnen Sie die ERS2-Front-End-IP-Adresse, den Integritätstest und den vorhandenen Back-End-Pool für **PR2** zu.  
 
     - Stellen Sie sicher, dass „Leerlauftimeout (Minuten)“ auf den Höchstwert (z. B. 30) festgelegt ist und dass „Floating IP (Direct Server Return)“ aktiviert ist.
@@ -293,7 +293,7 @@ Nutzen Sie die Testfunktionalität des internen Lastenausgleichs, damit die gesa
 Allerdings funktioniert dies bei einigen Clusterkonfigurationen nicht, da nur eine Instanz aktiv ist. Die andere Instanz ist passiv und kann daher keine Workload annehmen. Eine Testfunktion hilft, wenn der interne Azure Load Balancer erkennt, welche Instanz aktiv ist, und nur die aktive Instanz zum Ziel hat.  
 
 > [!IMPORTANT]
-> In dieser Beispielkonfiguration wird **ProbePort** auf „620**Nr**“ festgelegt. Für die SAP ASCS-Instanz mit der Nummer **02** lautet der Port „620**02**“.
+> In dieser Beispielkonfiguration wird **ProbePort** auf „620 **Nr**“ festgelegt. Für die SAP ASCS-Instanz mit der Nummer **02** lautet der Port „620 **02**“.
 > Sie müssen die Konfiguration entsprechend Ihren SAP-Instanznummern und der SAP-SID anpassen.
 
 Zum Hinzufügen eines Testports führen Sie das folgende PowerShell-Modul auf einer der Cluster-VMs aus:

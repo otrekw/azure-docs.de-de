@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2020
-ms.openlocfilehash: 6c0908d2656d9d6464ae1f94d5b0cd68f759530a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 19d464f0148572f30ecd0c3ab1dcee7bd0315b87
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637342"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427801"
 ---
 # <a name="log-analytics-workspace-data-export-in-azure-monitor-preview"></a>Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor (Vorschau)
 Der Datenexport im Log Analytics-Arbeitsbereich in Azure Monitor ermöglicht es Ihnen, Daten aus ausgewählten Tabellen in Ihrem Log Analytics-Arbeitsbereich bei der Sammlung fortlaufend in ein Azure Storage-Konto oder in Azure Event Hubs zu exportieren. In diesem Artikel werden dieses Feature und die Schritte zum Konfigurieren des Datenexports in Ihren Arbeitsbereichen ausführlich beschrieben.
@@ -77,8 +77,9 @@ Durch den Log Analytics-Datenexport können Anfügeblobs in unveränderliche Spe
 ### <a name="event-hub"></a>Event Hub
 Daten werden, sobald sie Azure Monitor erreichen, nahezu in Echtzeit an Event Hub gesendet. Für jeden Datentyp, den Sie exportieren, wird ein Event Hub mit dem Namen *am-* erstellt, gefolgt vom Namen der Tabelle. Beispielsweise würde die Tabelle *SecurityEvent* an einen Event Hub mit dem Namen *am-SecurityEvent* gesendet. Wenn für die exportierten Daten ein bestimmter Event Hub als Ziel verwendet werden soll oder Sie eine Tabelle mit einem Namen haben, der den Grenzwert von 47 Zeichen überschreitet, können Sie den Namen Ihrer eigenen Event Hub-Instanz angeben und alle Daten für definierte Tabelle in diese exportieren.
 
-Die Menge der exportierten Daten nimmt im Laufe der Zeit häufig zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie die Funktion „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
-
+Überlegungen:
+1. Die Event Hub SKU „Basic“ unterstützt ein niedrigeres [Limit](https://docs.microsoft.com/azure/event-hubs/event-hubs-quotas#basic-vs-standard-tiers) der Ereignisgröße, und einige Protokolle in Ihrem Arbeitsbereich können diese überschreiten und gelöscht werden. Es wird empfohlen, das Event Hub „Standard“ oder „Dedicated“ als Exportziel zu verwenden.
+2. Die Menge der exportierten Daten nimmt im Laufe der Zeit häufig zu, und die Event Hub-Skalierung muss erhöht werden, um größere Übertragungsraten zu bewältigen und Drosselungsszenarien und Datenlatenz zu vermeiden. Verwenden Sie die Funktion „Automatische Vergrößerung“ von Event Hubs, um die Anzahl von Durchsatzeinheiten automatisch hochzuskalieren und so den Nutzungsanforderungen gerecht zu werden. Weitere Informationen finden Sie unter [Automatisches Hochskalieren von Azure Event Hubs-Durchsatzeinheiten](../../event-hubs/event-hubs-auto-inflate.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 Im Folgenden sind die Voraussetzungen aufgeführt, die vor der Konfiguration des Log Analytics-Datenexports erfüllt sein müssen.
@@ -99,7 +100,7 @@ Der folgende Azure-Ressourcenanbieter muss für Ihr Abonnement registriert werde
 
 - Microsoft.Insights
 
-Dieser Ressourcenanbieter ist bei den meisten Azure Monitor-Benutzern wahrscheinlich bereits registriert. Um dies zu überprüfen, gehen Sie im Azure-Portal zu **Abonnements**. Wählen Sie Ihr Abonnement aus, und klicken Sie dann im Bereich **Einstellungen** im Menü auf **Ressourcenanbieter**. Suchen Sie nach **Microsoft.Insights**. Wenn der Status **Registriert** lautet, ist die Registrierung bereits erfolgt. Andernfalls klicken Sie auf **Registrieren** , um die Registrierung vorzunehmen.
+Dieser Ressourcenanbieter ist bei den meisten Azure Monitor-Benutzern wahrscheinlich bereits registriert. Um dies zu überprüfen, gehen Sie im Azure-Portal zu **Abonnements**. Wählen Sie Ihr Abonnement aus, und klicken Sie dann im Bereich **Einstellungen** im Menü auf **Ressourcenanbieter**. Suchen Sie nach **Microsoft.Insights**. Wenn der Status **Registriert** lautet, ist die Registrierung bereits erfolgt. Andernfalls klicken Sie auf **Registrieren**, um die Registrierung vorzunehmen.
 
 Sie können auch eine der verfügbaren Methoden zum Registrieren eines Ressourcenanbieters verwenden, die unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md) beschrieben sind. Im Folgenden finden Sie einen Beispielbefehl für PowerShell:
 
@@ -189,6 +190,7 @@ Es folgt ein Beispieltext für die REST-Anforderung für einen Event Hub, bei de
         ],
         "enable": true
     }
+  }
 }
 ```
 
@@ -270,7 +272,7 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 
 
 | Tabelle | Einschränkungen |
-|:---|:---|:---|
+|:---|:---|
 | AADDomainServicesAccountLogon | |
 | AADDomainServicesAccountManagement | |
 | AADDomainServicesDirectoryServiceAccess | |
@@ -324,7 +326,6 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | ContainerImageInventory | |
 | ContainerInventory | |
 | ContainerLog | |
-| ContainerLog | |
 | ContainerNodeInventory | |
 | ContainerServiceLog | |
 | CoreAzureBackup | |
@@ -342,7 +343,6 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | DnsInventory | |
 | Dynamics365Activity | |
 | Ereignis | Teilweise unterstützt. Einige Daten für diese Tabelle werden über das Speicherkonto erfasst. Diese Daten werden zurzeit nicht exportiert. |
-| ExchangeAssessmentRecommendation | |
 | ExchangeAssessmentRecommendation | |
 | FailedIngestion | |
 | FunctionAppLogs | |
@@ -436,7 +436,6 @@ Die Unterstützung für Tabellen ist zurzeit auf die unten genannten beschränkt
 | WindowsEvent | |
 | WindowsFirewall | |
 | WireData | Teilweise unterstützt. Einige Daten werden durch interne Dienste erfasst, die für den Export nicht unterstützt werden. Diese Daten werden zurzeit nicht exportiert. |
-| WorkloadMonitoringPerf | |
 | WorkloadMonitoringPerf | |
 | WVDAgentHealthStatus | |
 | WVDCheckpoints | |

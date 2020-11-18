@@ -7,12 +7,12 @@ ms.date: 09/25/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.openlocfilehash: 1e8f1d2964f42c480026d13bed59921dd3f07610
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: f7f9acd18da57bd83e688249600b8468cc4ebbe5
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286221"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445556"
 ---
 # <a name="key-vault-authentication-fundamentals"></a>Grundlagen der Key Vault-Authentifizierung
 
@@ -45,9 +45,9 @@ Unter den nachfolgenden Dokumentationslinks erfahren Sie, wie Sie einen Benutzer
 * [Registrieren eines Benutzers in Azure Active Directory](../../active-directory/fundamentals/add-users-azure-active-directory.md)
 * [Registrieren einer Anwendung in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md)
 
-## <a name="assign-your-security-principal-a-role-in-azure-active-directory"></a>Zuweisen einer Rolle in Azure Active Directory zu Ihrem Sicherheitsprinzipal
+## <a name="assign-your-security-principal-a-role"></a>Zuweisen einer Rolle zum Sicherheitsprinzipal
 
-In Azure Active Directory wird die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) verwendet, um Sicherheitsprinzipalen Berechtigungen zuzuweisen. Diese Berechtigungen werden als Rollenzuweisungen bezeichnet.
+Sie können die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) verwenden, um Sicherheitsprinzipalen Berechtigungen zuzuweisen. Diese Berechtigungen werden als Rollenzuweisungen bezeichnet.
 
 Bei Key Vault legen diese Rollenzuweisungen die Zugriffsebene eines Sicherheitsprinzipals auf die Verwaltungsebene (auch als Steuerungsebene bezeichnet) des Schlüsseltresors fest. Diese Rollenzuweisungen bieten keinen direkten Zugriff auf die Geheimnisse der Datenebene, aber der gewährte Zugriff ermöglicht das Verwalten von Eigenschaften des Schlüsseltresors. Beispielsweise kann ein Benutzer oder eine Anwendung mit der zugewiesenen Rolle **Leser** keine Änderungen an den Firewalleinstellungen des Schlüsseltresors vornehmen. Dafür benötigen Benutzer oder Anwendungen die Rolle **Mitwirkender**. Keine dieser Rollen hat jedoch direkten Zugriff für das Durchführen von Vorgängen mit Geheimnissen, Schlüsseln oder Zertifikaten, z. B. zum Erstellen oder Abrufen ihres Werts, bis ihnen der Zugriff auf die Datenebene des Schlüsseltresors zugewiesen wird. Dies wird im nächsten Schritt behandelt.
 
@@ -57,7 +57,7 @@ Bei Key Vault legen diese Rollenzuweisungen die Zugriffsebene eines Sicherheitsp
 >[!NOTE]
 > Wenn Sie einem Benutzer eine Rollenzuweisung auf Mandantenebene von Azure Active Directory zuweisen, werden die zugehörigen Berechtigungen auf alle Abonnements, Ressourcengruppen und Ressourcen im Bereich der Zuweisung übertragen. Um das Prinzip minimaler Berechtigung einzuhalten, können Sie diese Rollenzuweisung auf einen differenzierteren Bereich anwenden. Beispielsweise können Sie einem Benutzer die Rolle „Leser“ auf Abonnementebene und die Rolle „Besitzer“ für einen spezifischen Schlüsseltresor zuweisen. Wenn Sie präzisere Rollenzuweisungen vornehmen möchten, wechseln Sie zu den IAM-Einstellungen (Identity & Access Management) des Abonnements, der Ressourcengruppe oder des Schlüsseltresors.
 
-* [Weitere Informationen zu Azure Active Directory-Rollen](../../role-based-access-control/built-in-roles.md)
+* Weitere Informationen zu Azure-Rollen [Link](../../role-based-access-control/built-in-roles.md)
 * [Weitere Informationen zum Zuweisen oder Aufheben von Rollenzuweisungen](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="configure-key-vault-access-policies-for-your-security-principal"></a>Konfigurieren von Zugriffsrichtlinien auf den Schlüsseltresor für einen Sicherheitsprinzipal
@@ -91,7 +91,7 @@ Der Zugriff auf Datenebene oder zum Ausführen von Vorgängen mit Schlüsseln, G
 Key Vault-Zugriffsrichtlinien gewähren Benutzern und Anwendungen den erforderlichen Zugriff für das Ausführen von Vorgängen auf der Datenebene eines Schlüsseltresors.
 
 > [!NOTE]
-> Dieses Zugriffsmodell ist nicht mit der unter „Option 2“ beschriebenen rollenbasierten Zugriffssteuerung (RBAC) für den Schlüsseltresor kompatibel. Sie müssen sich für eine Option entscheiden. Sie treffen diese Auswahl, indem Sie in Ihrem Schlüsseltresor auf die Registerkarte „Zugriffsrichtlinie“ klicken.
+> Dieses Zugriffsmodell ist nicht mit der unter „Option 2“ beschriebenen rollenbasierten Zugriffssteuerung in Azure (Azure RBAC) für Key Vault kompatibel. Sie müssen sich für eine Option entscheiden. Sie treffen diese Auswahl, indem Sie in Ihrem Schlüsseltresor auf die Registerkarte „Zugriffsrichtlinie“ klicken.
 
 Klassische Zugriffsrichtlinien sind sehr präzise. Sie können einzelnen Benutzern oder Anwendungen ganz spezifische Vorgänge innerhalb eines Schlüsseltresors erlauben oder verweigern. Hier sind einige Beispiele:
 
@@ -104,25 +104,25 @@ Allerdings lassen klassische Zugriffsrichtlinien keine Berechtigungen auf Objekt
 > [!IMPORTANT]
 > Klassische Key Vault-Zugriffsrichtlinien und Azure Active Directory-Rollenzuweisungen sind voneinander unabhängig. Wenn Sie einem Sicherheitsprinzipal die Rolle „Mitwirkender“ auf Abonnementebene zuweisen, hat er nicht automatisch die Berechtigung, Vorgänge auf Datenebene für jeden Schlüsseltresor innerhalb des Bereichs des Abonnements auszuführen. Dem Sicherheitsprinzipal müssen weiterhin (eventuell auch durch sich selbst) Berechtigungen über Zugriffsrichtlinien gewährt werden, damit er Vorgänge auf Datenebene ausführen kann.
 
-### <a name="data-plane-access-option-2--key-vault-rbac-preview"></a>Zugriff auf Datenebene – Option 2:  Rollenbasierte Zugriffssteuerung in Key Vault (Vorschauversion)
+### <a name="data-plane-access-option-2--azure-rbac-for-key-vault-preview"></a>Zugriff auf Datenebene – Option 2:  Azure RBAC für Key Vault (Vorschauversion)
 
-Eine neue Möglichkeit zum Gewähren des Zugriffs auf Datenebene für einen Schlüsseltresor stellt die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) von Key Vault dar.
+Eine neue Möglichkeit zum Gewähren des Zugriffs auf Datenebene für einen Schlüsseltresor stellt die rollenbasierte Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC) für Key Vault dar.
 
 > [!NOTE]
 > Dieses Zugriffsmodell ist nicht mit den oben beschriebenen klassischen Zugriffsrichtlinien für Key Vault kompatibel. Sie müssen sich für eine Option entscheiden. Sie treffen diese Auswahl, indem Sie in Ihrem Schlüsseltresor auf die Registerkarte „Zugriffsrichtlinie“ klicken.
 
 Key Vault-Rollenzuweisungen sind verschiedene in Azure integrierte Rollen mit allgemeinen Berechtigungen für den Zugriff auf Schlüssel, Geheimnisse oder Zertifikate. Dieses Berechtigungsmodell bietet darüber hinaus zusätzliche Funktionen, die beim klassischen Key Vault-Modell mit Zugriffsrichtlinien nicht verfügbar sind.
 
-* RBAC-Berechtigungen können im großen Stil verwaltet werden, da diese Rollen Benutzern auf der Ebene eines einzelnen Abonnements, einer Ressourcengruppe oder eines Schlüsseltresors zugewiesen werden können. Ein Benutzer erhält die Berechtigungen auf Datenebene für alle Schlüsseltresore innerhalb des Bereichs der RBAC-Zuweisung. Dadurch entfällt die Notwendigkeit, Zugriffsrichtlinienberechtigungen einzeln speziellen Benutzern oder Anwendungen für jeweils einen Schlüsseltresor zuzuweisen.
+* Azure RBAC-Berechtigungen können im großen Stil verwaltet werden, da diese Rollen Benutzern auf der Ebene eines einzelnen Abonnements, einer Ressourcengruppe oder eines Schlüsseltresors zugewiesen werden können. Ein Benutzer erhält die Berechtigungen auf Datenebene für alle Schlüsseltresore innerhalb des Bereichs der Azure RBAC-Zuweisung. Dadurch entfällt die Notwendigkeit, Zugriffsrichtlinienberechtigungen einzeln speziellen Benutzern oder Anwendungen für jeweils einen Schlüsseltresor zuzuweisen.
 
-* RBAC-Berechtigungen sind mit Privileged Identity Management (PIM) kompatibel. Auf diese Weise können Sie Just-In-Time-Zugriffssteuerungen für privilegierte Rollen wie „Key Vault-Administrator“ konfigurieren. Dies ist eine bewährte Sicherheitsmaßnahme, die dem Prinzip minimaler Berechtigungen folgt, da kein dauerhafter Zugriff auf Ihre Schlüsseltresore gewährt wird.
+* Azure RBAC-Berechtigungen sind mit Privileged Identity Management (PIM) kompatibel. Auf diese Weise können Sie Just-In-Time-Zugriffssteuerungen für privilegierte Rollen wie „Key Vault-Administrator“ konfigurieren. Dies ist eine bewährte Sicherheitsmaßnahme, die dem Prinzip minimaler Berechtigungen folgt, da kein dauerhafter Zugriff auf Ihre Schlüsseltresore gewährt wird.
 
-* RBAC-Berechtigungen können auch objektweise zugewiesen werden, sodass Sie beispielsweise einen Benutzer daran hindern können, bestimmte Vorgänge mit einigen Ihrer Schlüsseltresorobjekte auszuführen. So können mehrere Anwendungen einen Schlüsseltresor gemeinsam nutzen, während der Zugriff zwischen den Anwendungen weiterhin isoliert wird.
+* Azure RBAC-Berechtigungen können auch objektweise zugewiesen werden, sodass Sie beispielsweise einen Benutzer daran hindern können, bestimmte Vorgänge mit einigen Ihrer Schlüsseltresorobjekte auszuführen. So können mehrere Anwendungen einen Schlüsseltresor gemeinsam nutzen, während der Zugriff zwischen den Anwendungen weiterhin isoliert wird.
 
-Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) in Key Vault finden Sie in den folgenden Dokumenten:
+Weitere Informationen zu Azure RBAC für Key Vault finden Sie in den folgenden Dokumenten:
 
-* [Azure Key Vault-RBAC](./secure-your-key-vault.md#management-plane-and-azure-rbac)
-* [RBAC-Rollen in Azure Key Vault (Vorschau)](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
+* Azure RBAC für Key Vault [Link](./secure-your-key-vault.md#management-plane-and-azure-rbac)
+* Azure RBAC-Rollen für Key Vault (Vorschauversion) [Link](../../role-based-access-control/built-in-roles.md#key-vault-administrator-preview)
 
 ## <a name="configure-key-vault-firewall"></a>Konfigurieren der Key Vault-Firewall
 
@@ -163,7 +163,7 @@ Nachdem Sie alle oben beschriebenen Schritte ausgeführt haben, können Sie Gehe
 Verwenden Sie das folgende Codebeispiel, um zu testen, ob Ihre Anwendung mit dem von Ihnen konfigurierten Dienstprinzipal ein Geheimnis aus Ihrem Schlüsseltresor abrufen kann.
 
 >[!NOTE]
->Dieses Beispiel dient nur zu Demonstrations- und Testzwecken. **VERWENDEN SIE DIE AUTHENTIFIZIERUNG MIT GEHEIMEN CLIENTSCHLÜSSELN NICHT IN PRODUKTIONSUMGEBUNGEN** , da dies keine sichere Entwurfspraxis darstellt. Sie sollten ein Clientzertifikat oder die MSI-Authentifizierung als bewährte Methode nutzen.
+>Dieses Beispiel dient nur zu Demonstrations- und Testzwecken. **VERWENDEN SIE DIE AUTHENTIFIZIERUNG MIT GEHEIMEN CLIENTSCHLÜSSELN NICHT IN PRODUKTIONSUMGEBUNGEN**, da dies keine sichere Entwurfspraxis darstellt. Sie sollten ein Clientzertifikat oder die MSI-Authentifizierung als bewährte Methode nutzen.
 
 ```python
 from azure.identity import ClientSecretCredential

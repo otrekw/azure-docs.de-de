@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.date: 10/09/2020
 ms.topic: conceptual
-ms.custom: how-to, contperfq2
-ms.openlocfilehash: 681e965d5fb64e35374b580cbbb238defd619492
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: how-to, contperfq2, automl
+ms.openlocfilehash: fcbe0fc5049f6e892f80f048a885c75420bc636e
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311471"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93359084"
 ---
 # <a name="evaluate-automated-machine-learning-experiment-results"></a>Auswerten der Ergebnisse von Experimenten des automatisierten maschinellen Lernens
 
-In diesem Artikel erfahren Sie, wie Sie die Ergebnisse Ihrer Experimente des automatisierten maschinellen Lernens (AutoML) anzeigen und auswerten. Diese Experimente bestehen aus mehreren Ausführungen. Bei jeder Ausführung wird ein Modell erstellt. Um Sie bei der Auswertung der Modelle zu unterstützen, generiert AutoML automatisch Leistungsmetriken und Diagramme für Ihren jeweiligen Experimenttyp. 
+In diesem Artikel erfahren Sie, wie Sie die Ergebnisse Ihrer Experimente des automatisierten maschinellen Lernens (automatisiertes ML) anzeigen und auswerten. Diese Experimente bestehen aus mehreren Ausführungen. Bei jeder Ausführung wird ein Modell erstellt. Um Sie bei der Auswertung der Modelle zu unterstützen, generiert automatisiertes ML automatisch Leistungsmetriken und Diagramme für Ihren jeweiligen Experimenttyp. 
 
-AutoML stellt beispielsweise verschiedene Diagramme für Klassifizierungs- und Regressionsmodelle bereit. 
+Automatisiertes ML stellt beispielsweise verschiedene Diagramme für Klassifizierungs- und Regressionsmodelle bereit. 
 
 |Klassifizierung|Regression
 |---|---|
@@ -61,7 +61,7 @@ So zeigen Sie den Ausführungsverlauf und die Leistungsmetriken und Diagramme ei
 
 ## <a name="classification-performance-metrics"></a>Leistungsmetriken für Klassifizierungen
 
-In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die AutoML für jedes Klassifizierungsmodell berechnet, das für Ihr Experiment generiert wird. 
+In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Klassifizierungsmodell berechnet, das für Ihr Experiment generiert wird. 
 
 Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
 --|--|--|--
@@ -88,7 +88,7 @@ weighted_accuracy|Die gewichtete Genauigkeit ist die Genauigkeit, bei der die Ge
 
 ### <a name="binary-vs-multiclass-metrics"></a>Gegenüberstellung von Binär- und Multiklassenmetriken
 
-AutoML unterscheidet nicht zwischen Binär- und Multiklassenmetriken. Für Datasets mit zwei Klassen werden die gleichen Validierungsmetriken gemeldet wie für Datasets mit mehr als zwei Klassen. Einige Metriken sind jedoch für die Klassifizierung mit mehreren Klassen vorgesehen. Wenn eine solche Metrik auf ein binäres Dataset angewendet wird, wird keine Klasse als `true` behandelt. Metriken, die eindeutig für mehrere Klassen vorgesehen sind, sind mit dem Suffix `micro`, `macro`oder `weighted` gekennzeichnet. Beispiele hierfür sind etwa `average_precision_score`, `f1_score`, `precision_score`, `recall_score` und `AUC`.
+Automatisiertes ML unterscheidet nicht zwischen Binär- und Multiklassenmetriken. Für Datasets mit zwei Klassen werden die gleichen Validierungsmetriken gemeldet wie für Datasets mit mehr als zwei Klassen. Einige Metriken sind jedoch für die Klassifizierung mit mehreren Klassen vorgesehen. Wenn eine solche Metrik auf ein binäres Dataset angewendet wird, wird keine Klasse als `true` behandelt. Metriken, die eindeutig für mehrere Klassen vorgesehen sind, sind mit dem Suffix `micro`, `macro`oder `weighted` gekennzeichnet. Beispiele hierfür sind etwa `average_precision_score`, `f1_score`, `precision_score`, `recall_score` und `AUC`.
 
 Anstatt beispielsweise den Abruf als `tp / (tp + fn)` zu berechnen, wird beim Durchschnittsabruf mit mehreren Klassen (`micro`, `macro` oder `weighted`) für beide Klassen eines Datasets mit Binärklassifizierung ein Durchschnitt gebildet. Dies entspricht der separaten Berechnung des Abrufs für die Klassen `true` und `false` und der anschließenden Bildung des Durchschnitts der beiden Klassen.
 
@@ -209,7 +209,7 @@ Ein gut kalibriertes Modell ist an der y=x-Linie ausgerichtet, wo es die Wahrsch
 
 ## <a name="regression-performance-metrics"></a>Leistungsmetriken für Regression
 
-In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die AutoML für jedes Regressions- oder Vorhersagemodell berechnet, das für Ihr Experiment generiert wird. 
+In der folgenden Tabelle sind die Modellleistungsmetriken zusammengefasst, die automatisiertes ML für jedes Regressions- oder Vorhersagemodell berechnet, das für Ihr Experiment generiert wird. 
 
 |Metrik|BESCHREIBUNG|Berechnung|Zusätzliche Parameter
 --|--|--|--|

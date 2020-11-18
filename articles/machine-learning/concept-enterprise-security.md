@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: f9d6f58256ccc21e5121a16a429e0f4c3ff1e485
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323098"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94441782"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -26,7 +26,16 @@ Wenn Sie einen Clouddienst verwenden, empfiehlt es sich, den Zugriff auf die Ben
 > [!NOTE]
 > Die Informationen in diesem Artikel arbeiten mit dem Azure Machine Learning Python-SDK Version 1.0.83.1 oder höher.
 
-## <a name="authentication"></a>Authentifizierung
+## <a name="authentication--authorization"></a>Authentifizierung und Autorisierung
+
+Bei der Authentifizierung bei Azure Machine Learning-Ressourcen werden meistens Azure Active Directory (Azure AD) für die Authentifizierung und die rollenbasierte Zugriffssteuerung (Azure RBAC) für die Autorisierung verwendet. Dabei gibt es die folgenden Ausnahmen:
+
+* __SSH__: Sie können den SSH-Zugriff auf einige Computeressourcen wie die Azure Machine Learning-Computeinstanz aktivieren. Für den SSH-Zugriff wird die schlüsselbasierte Authentifizierung verwendet. Weitere Informationen zum Erstellen von SSH-Schlüsseln finden Sie unter [Erstellen und Verwalten von SSH-Schlüsseln](../virtual-machines/linux/create-ssh-keys-detailed.md). Informationen zum Aktivieren des SSH-Zugriffs finden Sie unter [Erstellen und Verwalten einer Azure Machine Learning-Computeinstanz](how-to-create-manage-compute-instance.md).
+* __Als Webdienste bereitgestellte Modelle__: Webdienstbereitstellungen können __schlüssel__- oder __token__ basierte Zugriffssteuerung verwenden. Schlüssel sind statische Zeichenfolgen. Token werden mithilfe eines Azure AD-Kontos abgerufen. Weitere Informationen finden Sie unter [Konfigurieren der Authentifizierung für Modelle, die als Webdienst bereitgestellt werden](how-to-authenticate-web-service.md).
+
+Bestimmte Dienste, von denen Azure Machine Learning abhängig ist, z. B. Azure-Datenspeicherdienste, verfügen über eigene Authentifizierungs- und Autorisierungsmethoden. Weitere Informationen zur Speicherdienstauthentifizierung finden Sie unter [Herstellen einer Verbindung mit Speicherdiensten](how-to-access-data.md).
+
+### <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
 Die mehrstufige Authentifizierung wird unterstützt, wenn Azure Active Directory (Azure AD) dafür konfiguriert ist. So verläuft der Authentifizierungsprozess:
 
@@ -36,26 +45,17 @@ Die mehrstufige Authentifizierung wird unterstützt, wenn Azure Active Directory
 
 [![Authentifizierung in Azure Machine Learning](media/concept-enterprise-security/authentication.png)](media/concept-enterprise-security/authentication.png#lightbox)
 
-Weitere Informationen finden Sie unter [Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows](how-to-setup-authentication.md). Dieser Artikel enthält Informationen und Beispiele zur Authentifizierung, einschließlich der Verwendung von Dienstprinzipalen und automatisierten Workflows.
+Weitere Informationen finden Sie unter [Authentifizierung für einen Azure Machine Learning-Arbeitsbereich](how-to-setup-authentication.md).
 
-### <a name="authentication-for-web-service-deployment"></a>Authentifizierung für die Webdienstbereitstellung
+### <a name="azure-rbac"></a>Azure RBAC
 
-Azure Machine Learning unterstützt zwei Authentifizierungsarten für Webdienste: Schlüssel und Token. Die einzelnen Webdienste können jeweils nur eine Authentifizierungsart verwenden.
-
-|Authentifizierungsmethode|BESCHREIBUNG|Azure Container Instances|AKS|
-|---|---|---|---|
-|Schlüssel|Schlüssel sind statisch und müssen nicht aktualisiert werden. Schlüssel können manuell erneut generiert werden.|Standardmäßig deaktiviert| Standardmäßig aktiviert|
-|Token|Token laufen nach einem bestimmten Zeitraum ab und müssen aktualisiert werden.| Nicht verfügbar| Standardmäßig deaktiviert |
-
-Codebeispiele finden Sie im Abschnitt [Webdienstauthentifizierung](how-to-setup-authentication.md#web-service-authentication).
-
-## <a name="authorization"></a>Authorization
-
-Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Den Zugriff auf einen freigegebenen Arbeitsbereich können Sie steuern, indem Sie Benutzern die folgenden Rollen zuweisen:
+Sie können mehrere Arbeitsbereiche erstellen, und jeder Arbeitsbereich kann von mehreren Benutzern gemeinsam genutzt werden. Sie können steuern, auf welche Features oder Vorgänge des Arbeitsbereichs Benutzer zugreifen können, indem Sie deren Azure AD-Konto den Azure RBAC-Rollen zuweisen. Folgende Rollen sind integriert:
 
 * Besitzer
 * Mitwirkender
 * Leser
+
+Besitzer und Mitwirkende können alle Computeziele und Datenspeicher verwenden, die dem Arbeitsbereich angefügt sind.  
 
 Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorgänge und die Rollen, von denen sie ausgeführt werden können:
 
@@ -74,18 +74,17 @@ Die folgende Tabelle enthält einige der wichtigsten Azure Machine Learning-Vorg
 | Modelle/Images anzeigen | ✓ | ✓ | ✓ |
 | Webdienst aufrufen | ✓ | ✓ | ✓ |
 
-Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen werden unterstützt, um alle Vorgänge in einem Arbeitsbereich zu steuern, z. B. das Erstellen einer Compute-Instanz, das Übermitteln einer Ausführung, das Registrieren eines Datenspeichers oder das Bereitstellen eines Modells. Benutzerdefinierte Rollen können über Lese-, Schreib- oder Löschberechtigungen für die verschiedenen Ressourcen eines Arbeitsbereichs verfügen, z. B. Cluster, Datenspeicher, Modelle und Endpunkte. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+Wenn die integrierten Rollen Ihren Anforderungen nicht entsprechen, können Sie benutzerdefinierte Rollen erstellen. Benutzerdefinierte Rollen steuern alle Vorgänge in einem Arbeitsbereich, z. B. das Erstellen einer Compute-Instanz, das Übermitteln einer Ausführung, das Registrieren eines Datenspeichers oder das Bereitstellen eines Modells. Benutzerdefinierte Rollen können über Lese-, Schreib- oder Löschberechtigungen für die verschiedenen Ressourcen eines Arbeitsbereichs verfügen, z. B. Cluster, Datenspeicher, Modelle und Endpunkte. Sie können die Rolle auf einer bestimmten Arbeitsbereichsebene, einer bestimmten Ressourcengruppenebene oder einer bestimmten Abonnementebene verfügbar machen. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
+
+> [!IMPORTANT]
+> Azure Machine Learning ist von anderen Azure-Diensten wie Azure Blob Storage und Azure Kubernetes Services abhängig. Jeder Azure-Dienst verfügt über eigene Azure RBAC-Konfigurationen. Für eine Zugriffssteuerung im gewünschten Umfang müssen Sie möglicherweise die Azure RBAC-Konfigurationen sowohl für Azure Machine Learning als auch für die Dienste anwenden, die mit Azure Machine Learning verwendet werden.
 
 > [!WARNING]
 > Azure Machine Learning wird mit der Azure Active Directory-Business-to-Business-Zusammenarbeit unterstützt, jedoch derzeit noch nicht mit der Azure Active Directory-Business-to-Consumer-Zusammenarbeit.
 
-### <a name="securing-compute-targets-and-data"></a>Sichern von Computezielen und Daten
+### <a name="managed-identities"></a>Verwaltete Identitäten
 
-Besitzer und Mitwirkende können alle Computeziele und Datenspeicher verwenden, die dem Arbeitsbereich angefügt sind.  
-
-Jedem Arbeitsbereich ist außerdem eine vom System zugewiesene verwaltete Identität zugeordnet, die den gleichen Namen wie der Arbeitsbereich trägt. Die verwaltete Identität verfügt über die folgenden Berechtigungen für angefügte Ressourcen, die im Arbeitsbereich verwendet werden.
-
-Weitere Informationen zu verwalteten Identitäten finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../active-directory/managed-identities-azure-resources/overview.md).
+Jedem Arbeitsbereich ist außerdem eine vom System zugewiesene [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) zugeordnet, die den gleichen Namen wie der Arbeitsbereich trägt. Die verwaltete Identität wird für den sicheren Zugriff auf Ressourcen verwendet, die vom Arbeitsbereich verwendet werden. Sie verfügt über die folgenden Berechtigungen für angefügte Ressourcen:
 
 | Resource | Berechtigungen |
 | ----- | ----- |
@@ -100,151 +99,19 @@ Administratoren sollten den Zugriff der verwalteten Identität auf die in der vo
 
 Azure Machine Learning erstellt eine weitere Anwendung (deren Name mit `aml-` oder `Microsoft-AzureML-Support-App-` beginnt) mit Zugriff auf Mitwirkendenebene in Ihrem Abonnement für jede Region des Arbeitsbereichs. Wenn Sie z. B. im selben Abonnement über einen Arbeitsbereich in „USA, Osten“ und einen anderen in „Europa, Norden“ verfügen, sehen Sie zwei dieser Anwendungen. Azure Machine Learning kann Sie mithilfe dieser Anwendungen beim Verwalten der Computeressourcen unterstützen.
 
-## <a name="network-security"></a>Netzwerksicherheit
+Optional können Sie Ihre eigenen verwalteten Identitäten für die Verwendung mit Azure Virtual Machines und Azure Machine Learning-Computecluster konfigurieren. Bei einer VM kann die verwaltete Identität verwendet werden, um über das SDK anstatt das Azure AD-Konto eines einzelnen Benutzers auf Ihren Arbeitsbereich zuzugreifen. Bei einem Computecluster wird die verwaltete Identität verwendet, um auf Ressourcen wie gesicherte Datenspeicher zuzugreifen, auf die der Benutzer, der den Trainingsauftrag durchführt, möglicherweise keinen Zugriff hat. Weitere Informationen finden Sie unter [Authentifizierung für einen Azure Machine Learning-Arbeitsbereich](how-to-setup-authentication.md).
 
-Azure Machine Learning ist hinsichtlich Computeressourcen auf andere Azure-Dienste angewiesen. Computeressourcen (Computeziele) dienen zum Trainieren und Bereitstellen von Modellen. Sie können diese Computeziele in einem virtuellen Netzwerk erstellen. So können Sie beispielsweise Azure Data Science Virtual Machine verwenden, um ein Modell zu trainieren, und das Modell anschließend in AKS bereitstellen.  
+## <a name="network-security-and-isolation"></a>Netzwerksicherheit und -isolation
+
+Um den physischen Zugriff auf Azure Machine Learning-Ressourcen zu beschränken, können Sie Azure Virtual Network (VNET) verwenden. Mit VNETs können Sie Netzwerkumgebungen erstellen, die teilweise oder vollständig vom öffentlichen Internet isoliert sind. Dadurch werden die Angriffsfläche für die Lösung und die Möglichkeit einer Datenexfiltration reduziert.
 
 Weitere Informationen finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
 
-Sie können auch Azure Private Link für Ihren Arbeitsbereich aktivieren. Private Link ermöglicht es Ihnen, die Kommunikation aus einem Azure Virtual Network auf Ihren Arbeitsbereich zu beschränken. Weitere Informationen finden Sie unter [Konfigurieren von Private Link](how-to-configure-private-link.md).
+<a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
 ## <a name="data-encryption"></a>Datenverschlüsselung
 
-> [!IMPORTANT]
-> Für die Verschlüsselung in der Produktionsqualität während des __Trainings__ empfiehlt Microsoft, den Azure Machine Learning-Computecluster zu verwenden. Für die Verschlüsselung in der Produktionsqualität während der __Inferenz__ empfiehlt Microsoft die Verwendung von Azure Kubernetes Service.
->
-> Die Azure Machine Learning-Computeinstanz ist eine Dev/Test-Umgebung. Wenn Sie sie verwenden, wird empfohlen, dass Sie Ihre Dateien in einer Dateifreigabe speichern (z. B. Notebooks und Skripte). Ihre Daten sollten in einem Datenspeicher gespeichert werden.
-
-### <a name="encryption-at-rest"></a>Verschlüsselung ruhender Daten
-
-> [!IMPORTANT]
-> Wenn Ihr Arbeitsbereich vertrauliche Daten enthält, wird empfohlen, das [hbi_workspace-Flag](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) während der Erstellung Ihres Arbeitsbereichs festzulegen. Das `hbi_workspace`-Flag kann nur beim Erstellen eines Arbeitsbereichs festgelegt werden. Es kann für einen vorhandenen Arbeitsbereich nicht geändert werden.
-
-Das Flag `hbi_workspace` steuert die Menge der [von Microsoft zu Diagnosezwecken gesammelten Daten](#microsoft-collected-data) und ermöglicht eine [zusätzliche Verschlüsselung in von Microsoft verwalteten Umgebungen](../security/fundamentals/encryption-atrest.md). Darüber hinaus ermöglicht es folgende Aktionen:
-
-* Startet die Verschlüsselung des lokalen Scratch-Datenträgers in Ihrem Azure Machine Learning-Computecluster, sofern Sie in diesem Abonnement keine vorherigen Cluster erstellt haben. Andernfalls müssen Sie ein Supportticket erstellen, um die Verschlüsselung des Scratch-Datenträgers Ihrer Computecluster zu aktivieren. 
-* Bereinigt Ihren lokalen Scratch-Datenträger zwischen den Ausführungen.
-* Führt unter Verwendung Ihres Schlüsseltresors die sichere Übergabe der Anmeldeinformationen für Speicherkonto, Containerregistrierung und SSH-Konto von der Ausführungsebene zu Ihren Computeclustern durch.
-* Aktiviert IP-Filterung, um sicherzustellen, dass die zugrunde liegenden Batch-Pools nicht von anderen externen Diensten als AzureMachineLearningService aufgerufen werden können.
-
-#### <a name="azure-blob-storage"></a>Azure Blob Storage
-
-Azure Machine Learning speichert Momentaufnahmen, Ausgaben und Protokolle in dem Azure Blob Storage-Konto, das mit dem Azure Machine Learning-Arbeitsbereich und Ihrem Abonnement verknüpft ist. Alle in Azure Blob Storage gespeicherten Daten werden im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt.
-
-Informationen dazu, wie Sie Ihre eigenen Schlüssel für die in Azure Blob Storage gespeicherten Daten verwenden können, finden Sie unter [Konfigurieren von Kunden verwalteter Schlüssel für die Azure Storage-Verschlüsselung mithilfe des Azure-Portals](../storage/common/customer-managed-keys-configure-key-vault.md).
-
-Trainingsdaten werden in der Regel auch in Azure Blob Storage gespeichert, damit sie zum Trainieren von Computezielen zur Verfügung stehen. Dieser Speicher wird nicht von Azure Machine Learning verwaltet, sondern er wird Computezielen als Remotedateisystem bereitgestellt.
-
-Wenn Sie Ihren Schlüssel __rotieren oder widerrufen__ müssen, können Sie dies jederzeit veranlassen. Wenn ein Schlüssel rotiert wird, beginnt das Speicherkonto, den neuen Schlüssel (neueste Version) zur Verschlüsselung der ruhenden Daten zu verwenden. Wenn ein Schlüssel widerrufen (deaktiviert) wird, kümmert sich das Speicherkonto um fehlgeschlagene Anforderungen. Normalerweise dauert es eine Stunde, bis die Rotation oder der Widerruf wirksam wird.
-
-Informationen zum erneuten Generieren der Zugriffsschlüssel finden Sie unter [Erneutes Generieren von Speicherzugriffsschlüsseln](how-to-change-storage-access-key.md).
-
-#### <a name="azure-cosmos-db"></a>Azure Cosmos DB
-
-Azure Machine Learning speichert Metriken und Metadaten in einer Azure Cosmos DB-Instanz. Diese Instanz ist mit einem Microsoft-Abonnement verbunden, das von Azure Machine Learning verwaltet wird. Alle in Azure Cosmos DB gespeicherten Daten werden im Ruhezustand mit von Microsoft verwalteten Schlüsseln verschlüsselt.
-
-Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung der Azure-Cosmos-DB-Instanz zu verwenden, können Sie eine dedizierte Cosmos-DB-Instanz zur Verwendung mit Ihrem Arbeitsbereich erstellen. Wir empfehlen diesen Ansatz, wenn Sie Ihre Daten, z. B. Informationen zum Ausführungsverlauf, außerhalb der mehrinstanzenfähigen Cosmos DB-Instanz speichern möchten, die in unserem Microsoft-Abonnement gehostet wird. 
-
-Um die Bereitstellung einer Cosmos DB-Instanz in Ihrem Abonnement mit vom Kunden verwalteten Schlüsseln zu ermöglichen, führen Sie die folgenden Aktionen durch:
-
-* Registrieren Sie die Anbieter von Microsoft.MachineLearning- und Microsoft.DocumentDB-Ressourcen in Ihrem Abonnement, falls dies noch nicht geschehen ist.
-
-* Verwenden Sie die folgenden Parameter, wenn Sie den Azure Machine Learning-Arbeitsbereich erstellen. Beide Parameter sind obligatorisch und werden in SDK-, CLI-, REST-APIs und Resource Manager-Vorlagen unterstützt.
-
-    * `resource_cmk_uri`: Dieser Parameter ist der vollständige Ressourcen-URI des vom Kunden verwalteten Schlüssels in Ihrem Schlüsseltresor, einschließlich der [Versionsinformationen für den Schlüssel](../key-vault/general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning). 
-
-    * `cmk_keyvault`: Dieser Parameter ist die Ressourcen-ID des Schlüsseltresors in Ihrem Abonnement. Dieser Schlüsseltresor muss sich in derselben Region und demselben Abonnement befinden, das Sie für den Azure Machine Learning-Arbeitsbereich verwenden werden. 
-    
-        > [!NOTE]
-        > Diese Schlüsseltresorinstanz kann sich von dem Schlüsseltresor unterscheiden, der von Azure Machine Learning beim Bereitstellen des Arbeitsbereichs erstellt wird. Wenn Sie dieselbe Schlüsseltresorinstanz für den Arbeitsbereich verwenden möchten, übergeben Sie denselben Schlüsselspeicher beim Bereitstellen des Arbeitsbereichs mithilfe des [key_vault-Parameters](/python/api/azureml-core/azureml.core.workspace%28class%29?preserve-view=true&view=azure-ml-py#&preserve-view=truecreate-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--cmk-keyvault-none--resource-cmk-uri-none--hbi-workspace-false--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-). 
-
-[!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
-
-Wenn Sie Ihren Schlüssel __rotieren oder widerrufen__ müssen, können Sie dies jederzeit veranlassen. Wenn ein Schlüssel rotiert wird, beginnt Cosmos DB, den neuen Schlüssel (neueste Version) zur Verschlüsselung der ruhenden Daten zu verwenden. Wenn ein Schlüssel widerrufen (deaktiviert) wird, kümmert sich Cosmos DB um fehlgeschlagene Anforderungen. Normalerweise dauert es eine Stunde, bis die Rotation oder der Widerruf wirksam wird.
-
-Weitere Informationen zu von Kunden verwalteten Schlüsseln mit Cosmos DB finden Sie unter [Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos DB-Konto](../cosmos-db/how-to-setup-cmk.md).
-
-#### <a name="azure-container-registry"></a>Azure Container Registry
-
-Alle Containerimages in Ihrer Registrierung (Azure Container Registry) werden im Ruhezustand verschlüsselt. Azure verschlüsselt ein Image automatisch vor dessen Speicherung, und entschlüsselt es, wenn Azure Machine Learning das Image herunterlädt (pullt).
-
-Um Ihre eigenen (vom Kunden verwalteten) Schlüssel zur Verschlüsselung Ihrer Azure Container Registry zu verwenden, müssen Sie Ihre eigene ACR erstellen und diese während der Bereitstellung des Arbeitsbereichs anfügen oder die Standardinstanz verschlüsseln, die zum Zeitpunkt der Arbeitsbereichsbereitstellung erstellt wird.
-
-> [!IMPORTANT]
-> Azure Machine Learning erfordert, dass das Administratorkonto in Ihrer Azure Container Registry aktiviert ist. Diese Einstellung ist standardmäßig deaktiviert, wenn Sie eine Containerregistrierung erstellen. Informationen zum Aktivieren des Administratorkontos finden Sie unter [Administratorkonto](../container-registry/container-registry-authentication.md#admin-account).
->
-> Nachdem eine Azure Container Registry für einen Arbeitsbereich erstellt wurde, dürfen Sie diese nicht mehr löschen. Dadurch wird Ihr Azure Machine Learning-Arbeitsbereich beschädigt.
-
-Ein Beispiel für die Erstellung eines Arbeitsbereichs unter Verwendung einer bestehenden Azure Container Registry finden Sie in den folgenden Artikeln:
-
-* [Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI](how-to-manage-workspace-cli.md).
-* [Erstellen eines Arbeitsbereichs mit dem Python SDK](how-to-manage-workspace.md?tabs=python#create-a-workspace).
-* [Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning](how-to-create-workspace-template.md)
-
-#### <a name="azure-container-instance"></a>Azure Container Instances
-
-Sie können eine bereitgestellte ACI-Ressource (Azure Container Instances) mit vom Kunden verwalteten Schlüsseln verschlüsseln. Der für ACI verwendete vom Kunden verwaltete Schlüssel kann in Azure Key Vault für Ihren Arbeitsbereich gespeichert werden. Informationen zum Generieren eines Schlüssels finden Sie unter [Verschlüsseln von Daten mit einem kundenseitig verwalteten Schlüssel](../container-instances/container-instances-encrypt-data.md#generate-a-new-key).
-
-Erstellen Sie zur Verwendung des Schlüssels bei der Bereitstellung eines Modells in Azure Container Instance eine neue Bereitstellungskonfiguration mit `AciWebservice.deploy_configuration()`. Geben Sie die Schlüsselinformationen unter Verwendung der folgenden Parameter an:
-
-* `cmk_vault_base_url`: Die URL des Schlüsseltresors, der den Schlüssel enthält.
-* `cmk_key_name`: Der Name des Schlüssels.
-* `cmk_key_version`: Die Version des Schlüssels.
-
-Weitere Informationen zum Erstellen und Verwenden einer Bereitstellungskonfiguration finden Sie in den folgenden Artikeln:
-
-* [AciWebservice.deploy_configuration()](/python/api/azureml-core/azureml.core.webservice.aci.aciwebservice?preserve-view=true&view=azure-ml-py#&preserve-view=truedeploy-configuration-cpu-cores-none--memory-gb-none--tags-none--properties-none--description-none--location-none--auth-enabled-none--ssl-enabled-none--enable-app-insights-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--ssl-cname-none--dns-name-label-none--primary-key-none--secondary-key-none--collect-model-data-none--cmk-vault-base-url-none--cmk-key-name-none--cmk-key-version-none-)-Referenz
-* [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md)
-* [Bereitstellen eines Modells in Azure Container Instances](how-to-deploy-azure-container-instance.md)
-
-Weitere Informationen zur Verwendung eines vom Kunden verwalteten Schlüssels mit ACI finden Sie unter [Verschlüsseln von Daten mit einem kundenseitig verwalteten Schlüssel](../container-instances/container-instances-encrypt-data.md#encrypt-data-with-a-customer-managed-key).
-
-#### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
-
-Sie können eine bereitgestellte Ressource des Azure Kubernetes Service jederzeit mit vom Kunden verwalteten Schlüsseln verschlüsseln. Weitere Informationen finden Sie unter [Bring Your Own Keys (BYOK) mit Azure Kubernetes Service (AKS)](../aks/azure-disk-customer-managed-keys.md). 
-
-Dieser Prozess ermöglicht es Ihnen, sowohl die Daten als auch den Betriebssystemdatenträger der bereitgestellten virtuellen Computer im Kubernetes-Cluster zu verschlüsseln.
-
-> [!IMPORTANT]
-> Dieser Prozess funktioniert nur mit AKS K8s Version 1.17 oder höher. Azure Machine Learning hat am 13. Januar 2020 die Unterstützung für AKS 1.17 hinzugefügt.
-
-#### <a name="machine-learning-compute"></a>Machine Learning Compute
-
-Der Betriebssystem-Datenträger für jeden in Azure Storage gespeicherten Computeknoten wird mit von Microsoft verwalteten Schlüsseln in Speicherkonten von Azure Machine Learning verschlüsselt. Dieses Computeziel ist kurzlebig, und Cluster werden in der Regel zentral herunterskaliert, wenn keine Ausführungen in der Warteschlange stehen. Die Bereitstellung des zugrunde liegenden virtuellen Computers wird aufgehoben, und der Betriebssystem-Datenträger wird gelöscht. Azure Disk Encryption wird für den Betriebssystem-Datenträger nicht unterstützt.
-
-Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträger für Betriebssystem-Vorgänge. Wenn Sie möchten, können Sie den Datenträger zum Bereitstellen von Trainingsdaten verwenden. Der Datenträger wird standardmäßig für Arbeitsbereiche mit dem Parameter `hbi_workspace` verschlüsselt, der auf `TRUE` festgelegt ist. Diese Umgebung ist auf die Dauer Ihrer Ausführung befristet, und die Unterstützung für die Verschlüsselung beschränkt sich auf vom System verwaltete Schlüssel.
-
-#### <a name="azure-databricks"></a>Azure Databricks
-
-Azure Databricks kann in Azure Machine Learning-Pipelines verwendet werden. Das von Azure Databricks verwendete Databricks-Dateisystem (Databricks File System, DBFS) wird standardmäßig mithilfe eines von Microsoft verwalteten Schlüssels verschlüsselt. Informationen zum Konfigurieren von Azure Databricks für die Verwendung von kundenseitig verwalteten Schlüsseln finden Sie unter [Konfigurieren der kundenseitig verwalteten Schlüsseln im Standard-DBFS (Stamm)](/azure/databricks/security/customer-managed-keys-dbfs).
-
-### <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
-
-Azure Machine Learning verwendet TLS zum Sichern der internen Kommunikation zwischen Azure Machine Learning-Microservices. Der gesamte Azure Storage-Zugriff erfolgt ebenfalls über einen sicheren Kanal.
-
-Zum Sichern externer Aufrufe an den Bewertungsendpunkt verwendet Azure Machine Learning TLS. Weitere Informationen finden Sie unter [Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning](./how-to-secure-web-service.md).
-
-### <a name="using-azure-key-vault"></a>Verwenden von Azure Key Vault
-
-Azure Machine Learning verwendet die mit dem Arbeitsbereich verknüpfte Azure Key Vault-Instanz zum Speichern von Anmeldeinformationen verschiedener Art:
-
-* Der verknüpften Speicherkonto-Verbindungszeichenfolge
-* Kennwörter in Azure Container Repository-Instanzen
-* Verbindungszeichenfolgen zur Verbindung mit Datenspeichern.
-
-SSH-Kennwörter und Schlüssel für Computeziele wie Azure HDInsight und virtuelle Computer werden in einem separaten Schlüsseltresor gespeichert, der dem Microsoft-Abonnement zugeordnet ist. Azure Machine Learning speichert weder Kennwörter noch Schlüssel, die von Benutzern bereitgestellt wurden. Stattdessen werden eigene SSH-Schlüssel generiert, autorisiert und gespeichert, um eine Verbindung mit virtuellen Computern und HDInsight herzustellen und die Experimente auszuführen.
-
-Jedem Arbeitsbereich ist eine vom System zugewiesene verwaltete Identität zugeordnet, die den gleichen Namen hat wie der Arbeitsbereich. Diese verwaltete Identität verfügt über Zugriff auf alle Schlüssel, Geheimnisse und Zertifikate im Schlüsseltresor.
-
-## <a name="data-collection-and-handling"></a>Datensammlung und -verarbeitung
-
-### <a name="microsoft-collected-data"></a>Von Microsoft gesammelte Daten
-
-Microsoft sammelt möglicherweise Informationen, z. B. Ressourcennamen (wie den Datasetnamen oder den Namen des Machine Learning-Experiments) oder Variablen von Auftragsumgebungen zu Diagnosezwecken, die nicht den Benutzer identifizieren. Alle diese Daten werden mit von Microsoft verwalteten Schlüsseln in einem Speicher gespeichert, der in Microsoft-eigenen Abonnements gehostet wird, und folgen den [Standarddatenschutzrichtlinien und Datenverarbeitungsstandards von Microsoft](https://privacy.microsoft.com/privacystatement).
-
-Microsoft empfiehlt außerdem, keine vertraulichen Informationen (z. B. Geheimnisse von Kontoschlüsseln) in Umgebungsvariablen zu speichern. Umgebungsvariablen werden von uns protokolliert, verschlüsselt und gespeichert. Vermeiden Sie beim Benennen von [run_id](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) daher vertrauliche Informationen wie Benutzernamen oder geheime Projektnamen. Diese Informationen können in Telemetrieprotokollen enthalten sein, auf die Microsoft-Supporttechniker zugreifen können.
-
-Sie können sich von der Erfassung von Diagnosedaten abmelden, indem Sie den Parameter `hbi_workspace` während der Bereitstellung des Arbeitsbereichs auf `TRUE` festlegen. Diese Funktionalität wird unterstützt, wenn AzureML Python-SDK-, CLI-, REST-APIs oder Azure Resource Manager-Vorlagen verwendet werden.
+Azure Machine Learning verwendet verschiedene Computeressourcen und Datenspeicher. Weitere Informationen zu deren Unterstützung der Verschlüsselung von Daten im Ruhezustand und während der Übertragung finden Sie unter [Datenverschlüsselung mit Azure Machine Learning](concept-data-encryption.md).
 
 ### <a name="microsoft-generated-data"></a>Von Microsoft generierte Daten
 
@@ -254,7 +121,23 @@ Möglicherweise möchten Sie auch [Diagnoseinformationen verschlüsseln, die von
 
 ## <a name="monitoring"></a>Überwachung
 
-### <a name="metrics"></a>Metriken
+Bei Azure Machine Learning sind je nach Rolle und überwachter Komponente verschiedene Überwachungsszenarien möglich.
+
+| Role | Zu verwendende Überwachung |
+| ---- | ----- |
+| Admin, DevOps, MLOps | [Azure Monitor-Metriken](#azure-monitor), [Aktivitätsprotokoll](#activity-log), [Überprüfung auf Sicherheitsrisiken](#vulnerability-scanning) |
+| Data Scientist, MLOps | [Überwachen von Ausführungen](#monitor-runs) |
+
+### <a name="monitor-runs"></a>Überwachen von Ausführungen
+
+Sie können die Ausführung von Experimenten in Azure Machine Learning, einschließlich der Protokollierungsinformationen, aus den Trainingsskripts überwachen. Diese Informationen können über das SDK, die Azure CLI und Studio angezeigt werden. Weitere Informationen finden Sie in den folgenden Artikeln:
+
+* [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md)
+* [Aktivieren von Protokollen](how-to-track-experiments.md)
+* [Anzeigen von Protokollen](how-to-monitor-view-training-logs.md)
+* [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
+
+### <a name="azure-monitor"></a>Azure Monitor
 
 Sie können Azure Monitor-Metriken verwenden, um Metriken für Ihren Azure Machine Learning-Arbeitsbereich anzuzeigen und zu überwachen. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Arbeitsbereich und anschließend **Metriken** aus:
 
@@ -291,83 +174,12 @@ Details der Bewertungsanforderung werden in Application Insights gespeichert. Ap
 
 Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwaltung und den erweiterten Schutz vor Bedrohungen für Hybrid Cloud-Workloads. Für Azure Machine Learning sollten Sie die Überprüfung der Azure Container Registry-Ressourcen sowie der Azure Kubernetes Service-Ressourcen aktivieren. Informationen finden Sie unter [Einführung in Azure Defender für Containerregistrierungen](../security-center/defender-for-container-registries-introduction.md) und [Einführung in Azure Defender für Kubernetes](../security-center/defender-for-kubernetes-introduction.md).
 
-## <a name="data-flow-diagrams"></a>Datenflussdiagramme
-
-### <a name="create-workspace"></a>Arbeitsbereich erstellen
-
-Das folgende Diagramm zeigt den Workflow des Erstellens des Arbeitsbereichs.
-
-* Sie melden sich von einem der unterstützten Azure Machine Learning-Clients (Azure CLI, Python, SDK, Azure-Portal) aus bei Azure AD an und fordern das entsprechende Azure Resource Manager-Token an.
-* Sie rufen Azure Resource Manager auf, um den Arbeitsbereich zu erstellen. 
-* Der Azure Resource Manager fordert den Azure Machine Learning-Ressourcenanbieter auf, den Arbeitsbereich bereitzustellen.
-
-Zusätzliche Ressourcen werden bei der Erstellung des Arbeitsbereichs im Abonnement des Benutzers erstellt:
-
-* Key Vault (zum Speichern von Geheimnissen)
-* Ein Azure Storage-Konto (einschließlich Blob und Dateifreigabe)
-* Azure Container Registry (zum Speichern von Docker-Images für Rückschlüsse/Bewertungen und Experimente)
-* Application Insights (zum Speichern von Telemetriedaten)
-
-Der Benutzer kann bei Bedarf auch andere Computeziele bereitstellen, die an einen Arbeitsbereich angefügt sind (wie Azure Kubernetes Service oder VMs).
-
-[![Erstellen eines Arbeitsbereichs-Workflows](media/concept-enterprise-security/create-workspace.png)](media/concept-enterprise-security/create-workspace.png#lightbox)
-
-### <a name="save-source-code-training-scripts"></a>Speichern des Quellcodes (Trainingsskripts)
-
-Das folgende Diagramm zeigt den Workflow der Codemomentaufnahme.
-
-Einem Azure Machine Learning-Arbeitsbereich sind Verzeichnisse (Experimente) zugeordnet, die den Quellcode (Trainingsskripts) enthalten. Diese Skripts werden auf Ihrem lokalen Computer und in der Cloud (in Azure Blob Storage für Ihr Abonnement) gespeichert. Die Codemomentaufnahmen werden für die Ausführung oder Überprüfung für die Verlaufsüberwachung verwendet.
-
-[![Workflow der Codemomentaufnahme](media/concept-enterprise-security/code-snapshot.png)](media/concept-enterprise-security/code-snapshot.png#lightbox)
-
-### <a name="training"></a>Training
-
-Das folgende Diagramm zeigt den Trainingsworkflow.
-
-* Azure Machine Learning wird mit der Momentaufnahmen-ID für die im vorherigen Abschnitt gespeicherte Codemomentaufnahme aufgerufen.
-* Azure Machine Learning erstellt eine Ausführungs-ID (optional) und ein Azure Machine Learning-Token, das später von Computezielen wie Machine Learning Compute/VMs für die Kommunikation mit Machine Learning verwendet wird.
-* Sie können entweder ein verwaltetes Computeziel (wie Machine Learning Compute) oder ein nicht verwaltetes Computeziel (wie VMs) auswählen, um Trainingsaufträge auszuführen. Im Folgenden finden Sie die Datenflüsse für beide Szenarien:
-   * VMs/HDInsight, Zugriff erfolgt über SSH-Anmeldeinformationen in einem Schlüsseltresor im Microsoft-Abonnement. Azure Machine Learning führt verwalteten Code auf dem Computeziel aus, der die folgenden Aktionen ausführt:
-
-   1. Vorbereiten der Umgebung (Docker ist eine Option für VMs und lokale Computer. In den folgenden Schritten für Machine Learning Compute erfahren Sie, wie die Ausführung eines Experiments in Docker-Containern funktioniert.)
-   1. Herunterladen des Codes
-   1. Einrichten von Umgebungsvariablen und Konfigurationen
-   1. Ausführen von Benutzerskripts (die im vorherigen Abschnitt genannte Codemomentaufnahme)
-
-   * Machine Learning Compute, Zugriff erfolgt über eine vom Arbeitsbereich verwaltete Identität.
-Da Machine Learning Compute ein verwaltetes Computeziel ist (d. h. es wird von Microsoft verwaltet), wird es unter Ihrem Microsoft-Abonnement ausgeführt.
-
-   1. Starten der Docker-Remotekonstruktion (sofern erforderlich)
-   1. Schreiben des Verwaltungscodes in die Azure Files-Freigabe des Benutzers
-   1. Starten des Containers mit einem ersten Befehl. Dies ist der Verwaltungscode, der im vorherigen Schritt beschrieben wurde.
-
-#### <a name="querying-runs-and-metrics"></a>Abfragen von Ausführungen und Metriken
-
-Im folgenden Flussdiagramm wird dieser Schritt ausgeführt, wenn das Trainingscomputeziel die Ausführungsmetriken aus dem Speicher in der Cosmos DB-Datenbank an Azure Machine Learning zurückschreibt. Clients können Azure Machine Learning aufrufen. Machine Learning pullt wiederum die Metriken aus der Cosmos DB-Datenbank und gibt sie an den Client zurück.
-
-[![Trainingsworkflow](media/concept-enterprise-security/training-and-metrics.png)](media/concept-enterprise-security/training-and-metrics.png#lightbox)
-
-### <a name="creating-web-services"></a>Erstellen von Webdiensten
-
-Das folgende Diagramm zeigt den Rückschlussworkflow. Rückschlüsse oder Modellbewertungen stellen die Phase dar, in der das bereitgestellte Modell für die Vorhersage verwendet wird (meist für Produktionsdaten).
-
-Es folgen die Details:
-
-* Der Benutzer registriert ein Modell, indem er einen Client wie das Azure Machine Learning-SDK verwendet.
-* Der Benutzer erstellt das Image mit einem Modell, einer Bewertungsdatei und anderen Modellabhängigkeiten.
-* Das Docker-Image wird erstellt und in Azure Container Registry gespeichert.
-* Der Webdienst wird auf dem Computeziel (Container Instances/AKS) mithilfe des Images bereitgestellt, das im vorherigen Schritt erstellt wurde.
-* Details der Bewertung werden in Application Insights gespeichert (im Abonnement des Benutzers enthalten).
-* Telemetriedaten werden ebenfalls per Push an das Microsoft/Azure-Abonnement übertragen.
-
-[![Rückschlussworkflow](media/concept-enterprise-security/inferencing.png)](media/concept-enterprise-security/inferencing.png#lightbox)
-
 ## <a name="audit-and-manage-compliance"></a>Überwachen und Verwalten der Compliance
 
 [Azure Policy](../governance/policy/index.yml) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
-* **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
-* **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
+* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
+* **Private Link**: Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
 Weitere Informationen zu Azure Policy finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
 
@@ -383,5 +195,5 @@ Weitere Informationen zu den Richtlinien, die speziell für Azure Machine Learni
 * [Nutzen eines als Webdienst bereitgestellten Machine Learning-Modells](how-to-consume-web-service.md)
 * [Verwenden von Azure Machine Learning hinter Azure Firewall](how-to-access-azureml-behind-firewall.md)
 * [Verwenden von Azure Machine Learning mit einem virtuellen Azure-Netzwerk](how-to-network-security-overview.md)
-* [Bewährte Methoden für das Erstellen von Empfehlungssystemen](https://github.com/Microsoft/Recommenders)
+* [Datenverschlüsselung von ruhenden Daten und während der Übertragung](concept-data-encryption.md)
 * [Erstellen einer Echtzeitempfehlungs-API in Azure](/azure/architecture/reference-architectures/ai/real-time-recommendation)
