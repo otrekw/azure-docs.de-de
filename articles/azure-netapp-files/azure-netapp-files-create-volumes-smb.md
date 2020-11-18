@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: b-juche
-ms.openlocfilehash: d0a16dc639fb3206b480c1091a66686955cbb11d
-ms.sourcegitcommit: 50802bffd56155f3b01bfb4ed009b70045131750
+ms.openlocfilehash: 9740506da2c03996db756175551867ed43575a7c
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91932344"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488178"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>Erstellen eines SMB-Volumes für Azure NetApp Files
 
@@ -146,7 +146,7 @@ Diese Einstellung wird in **Active Directory-Verbindungen** unter **NetApp-Konto
     * **AD-DNS-Domänenname**  
         Dies ist der Domänenname Ihrer Active Directory Domain Services, denen Sie beitreten möchten.
     * **AD-Standortname**  
-        Dies ist der Name des Standorts, auf den die Domänencontrollerermittlung beschränkt wird.
+        Dies ist der Name des Standorts, auf den die Domänencontrollerermittlung beschränkt wird. Sollte dem Standortnamen in Active Directory-Standorte und -Dienste entsprechen.
     * **Präfix des SMB-Servers (Computerkonto)**  
         Dies ist das Namenspräfix für das Computerkonto in Active Directory, das Azure NetApp Files für die Erstellung von neuen Konten verwendet.
 
