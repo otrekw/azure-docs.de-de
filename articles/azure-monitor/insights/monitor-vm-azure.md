@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/05/2020
-ms.openlocfilehash: 84db7f58c292cf0a9d01cf90da4b847691f601fb
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 0c1e84695ce40b489fb1005325d501ea241cdaf1
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491629"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94738100"
 ---
 # <a name="monitoring-azure-virtual-machines-with-azure-monitor"></a>Überwachen von virtuellen Azure-Computern mit Azure Monitor
 In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor Überwachungsdaten von virtuellen Azure-Computern erfassen und analysieren, um deren Integrität aufrechtzuerhalten. Virtuelle Computer können wie alle [anderen Azure-Ressourcen](monitor-azure-resource.md) mit Azure Monitor auf Verfügbarkeit und Leistung überwacht werden, unterscheiden sich jedoch von anderen Ressourcen darin, dass Sie außerdem das Gastbetriebssystem und die darin ausgeführten Workloads überwachen müssen. 
@@ -75,7 +75,7 @@ Die einzelnen Konfigurationsschritte werden in den folgenden Abschnitten beschri
 ![Zuordnungsansicht „Azure Monitor für VMs“](media/monitor-vm-azure/vminsights-02.png)
 
 
-Aktivieren Sie Azure Monitor für VMs von der **Einblicke** -Option im VM-Menü des Azure-Portals aus. Weitere Informationen und andere Konfigurationsmethoden finden Sie unter [Aktivieren von Azure Monitor für VMs: Übersicht](vminsights-enable-overview.md).
+Aktivieren Sie Azure Monitor für VMs von der **Einblicke**-Option im VM-Menü des Azure-Portals aus. Weitere Informationen und andere Konfigurationsmethoden finden Sie unter [Aktivieren von Azure Monitor für VMs: Übersicht](vminsights-enable-overview.md).
 
 ![Aktivieren von Azure Monitor für VMs](media/monitor-vm-azure/enable-vminsights.png)
 
@@ -86,7 +86,7 @@ Sie können die Konfiguration für den Arbeitsbereich direkt von Azure Monitor f
 
 ![Arbeitsbereichskonfiguration](media/monitor-vm-azure/workspace-configuration.png)
 
-Wählen Sie im Arbeitsbereichsmenü **Erweiterte Einstellungen** aus und dann **Daten** , um Datenquellen zu konfigurieren. Wählen Sie für Windows-Agents **Windows-Ereignisprotokolle** aus, und fügen Sie gängige Ereignisprotokolle wie *System* und *Anwendung* hinzu. Wählen Sie für Linux-Agents **Syslog** aus, und fügen Sie allgemeine Funktionen wie *Kern* und *Daemon* hinzu. Eine Liste der verfügbaren Datenquellen und nähere Informationen zu ihrer Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](../platform/agent-data-sources.md). 
+Wählen Sie im Arbeitsbereichsmenü **Erweiterte Einstellungen** aus und dann **Daten**, um Datenquellen zu konfigurieren. Wählen Sie für Windows-Agents **Windows-Ereignisprotokolle** aus, und fügen Sie gängige Ereignisprotokolle wie *System* und *Anwendung* hinzu. Wählen Sie für Linux-Agents **Syslog** aus, und fügen Sie allgemeine Funktionen wie *Kern* und *Daemon* hinzu. Eine Liste der verfügbaren Datenquellen und nähere Informationen zu ihrer Konfiguration finden Sie unter [Agent-Datenquellen in Azure Monitor](../platform/agent-data-sources.md). 
 
 ![Konfigurieren von Ereignissen](media/monitor-vm-azure/configure-events.png)
 
@@ -124,7 +124,7 @@ az monitor diagnostic-settings create \
 ## <a name="monitoring-in-the-azure-portal"></a>Überwachen im Azure-Portal 
 Nachdem Sie die Sammlung von Überwachungsdaten für einen virtuellen Computer konfiguriert haben, haben Sie mehrere Optionen für den Zugriff auf die Daten im Azure-Portal:
 
-- Verwenden Sie das **Azure Monitor** -Menü, um auf Daten aus allen überwachten Ressourcen zuzugreifen. 
+- Verwenden Sie das **Azure Monitor**-Menü, um auf Daten aus allen überwachten Ressourcen zuzugreifen. 
 - Verwenden Sie Azure Monitor für VMs, um Gruppen von virtuellen Computern flexibel zu überwachen.
 - Analysieren Sie Daten für einen einzelnen virtuellen Computer über das Menü im Azure-Portal. In der folgenden Tabelle werden verschiedene Optionen zum Überwachen des Menüs für virtuelle Computer aufgelistet.
 
@@ -159,7 +159,7 @@ Drei Namespaces werden von virtuellen Computern für Metriken verwendet:
 ## <a name="analyzing-log-data"></a>Analysieren von Protokolldaten
 Die folgenden Daten werden von virtuellen Azure-Computern in Azure Monitor-Protokollen gesammelt. 
 
-Azure Monitor für VMs aktiviert die Auflistung eines vordefinierten Satzes von Leistungsindikatoren, die in die *InsightsMetrics* -Tabelle geschrieben werden. Dies ist die gleiche Tabelle, die von [Azure Monitor für Container](container-insights-overview.md) verwendet wird. 
+Azure Monitor für VMs aktiviert die Auflistung eines vordefinierten Satzes von Leistungsindikatoren, die in die *InsightsMetrics*-Tabelle geschrieben werden. Dies ist die gleiche Tabelle, die von [Azure Monitor für Container](container-insights-overview.md) verwendet wird. 
 
 | Datenquelle | Requirements (Anforderungen) | Tabellen |
 |:---|:---|:---|
@@ -170,7 +170,7 @@ Azure Monitor für VMs aktiviert die Auflistung eines vordefinierten Satzes von 
 
 
 > [!NOTE]
-> Vom Log Analytics-Agent gesammelte Leistungsdaten werden in die *Perf* -Tabelle geschrieben, während Azure Monitor für VMs sie in der *InsightsMetrics* -Tabelle erfasst. Dabei handelt es sich um die gleichen Daten, die Tabellen haben jedoch eine andere Struktur. Wenn Sie über Abfragen verfügen, die auf *Perf* basieren, müssen sie zur Verwendung von *InsightsMetrics* umgeschrieben werden.
+> Vom Log Analytics-Agent gesammelte Leistungsdaten werden in die *Perf*-Tabelle geschrieben, während Azure Monitor für VMs sie in der *InsightsMetrics*-Tabelle erfasst. Dabei handelt es sich um die gleichen Daten, die Tabellen haben jedoch eine andere Struktur. Wenn Sie über Abfragen verfügen, die auf *Perf* basieren, müssen sie zur Verwendung von *InsightsMetrics* umgeschrieben werden.
 
 
 ## <a name="alerts"></a>Alerts
@@ -207,7 +207,7 @@ Um beispielsweise eine Warnung zu erstellen, mit der überprüft wird, ob virtue
 
 ```kusto
 Heartbeat
-| where TimeGenerated < ago(10m)
+| where TimeGenerated > ago(10m)
 | where ResourceGroup == "my-resource-group"
 | summarize max(TimeGenerated) by Computer
 ```
@@ -218,7 +218,7 @@ Um eine Warnung zu erstellen, wenn auf allen virtuellen Windows-Computern im Abo
 
 ```kusto
 Event
-| where TimeGenerated < ago(1hr)
+| where TimeGenerated > ago(1hr)
 | where EventID == 4625
 ```
 
