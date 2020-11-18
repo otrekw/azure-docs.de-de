@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: ''
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4337d6bb108042a909250b3d87d13ab60357cfec
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311125"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686207"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -54,9 +54,9 @@ Führen Sie die folgenden Schritte aus, um mithilfe des dedizierten SQL-Pools ei
   
     ![Mit Server verbinden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/connect-object-explorer1.png)
    
-   * **Servername** : Geben Sie den zuvor ermittelten **Servernamen** ein.
+   * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:**  Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
-   * **Benutzername** und **Kennwort** : Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
+   * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
 
 1. Erweitern Sie Ihre Azure SQL Server-Instanz im **Objekt-Explorer**. Sie können die dem Server zugeordneten Datenbanken anzeigen, etwa die Beispieldatenbank „AdventureWorksDW“. Sie können die Datenbank erweitern, um die Tabellen anzuzeigen:
    
@@ -72,12 +72,12 @@ Führen Sie die folgenden Schritte aus, um mithilfe des serverlosen SQL-Pools ei
    
     ![Mit Server verbinden 2](./media/get-started-ssms/connect-object-explorer1.png)
    
-   * **Servername** : Geben Sie den zuvor ermittelten **Servernamen** ein.
+   * **Servername**: Geben Sie den zuvor ermittelten **Servernamen** ein.
    * **Authentifizierung:** Wählen Sie einen Authentifizierungstyp aus, etwa **SQL Server-Authentifizierung** oder **Integrierte Active Directory-Authentifizierung**.
-   * **Benutzername** und **Kennwort** : Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
+   * **Benutzername** und **Kennwort**: Geben Sie Benutzername und Kennwort ein, wenn Sie oben „SQL Server-Authentifizierung“ ausgewählt haben.
    * Wählen Sie **Verbinden** aus.
 
-4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie *Demo* , um den Inhalt in der Beispieldatenbank anzuzeigen.
+4. Erweitern Sie den Azure SQL-Server. Sie können die dem Server zugeordneten Datenbanken anzeigen. Erweitern Sie *Demo*, um den Inhalt in der Beispieldatenbank anzuzeigen.
    
     ![AdventureWorksDW erkunden 2](./media/get-started-ssms/explore-tables.png)
 

@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 04/15/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3fd3a94efd6e7870ae3919a011fc24f66b97c559
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310952"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685663"
 ---
 # <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
 
@@ -228,7 +228,7 @@ Für Abfragen erforderliche Tools:
 
 ### <a name="demo-setup"></a>Demoeinrichtung
 
-Im ersten Schritt **erstellen Sie eine Datenbank** , in der Sie die Abfragen ausführen. Anschließend initialisieren Sie die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. 
+Im ersten Schritt **erstellen Sie eine Datenbank**, in der Sie die Abfragen ausführen. Anschließend initialisieren Sie die Objekte, indem Sie das [Setupskript](https://github.com/Azure-Samples/Synapse/blob/master/SQL/Samples/LdwSample/SampleDB.sql) für diese Datenbank ausführen. 
 
 Mit diesem Setupskript werden die Datenquellen, die für die gesamte Datenbank gültigen Anmeldeinformationen und externe Dateiformate erstellt, die in diesen Beispielen zum Lesen von Daten verwendet werden.
 

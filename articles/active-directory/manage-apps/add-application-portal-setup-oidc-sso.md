@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
-ms.openlocfilehash: 0a25d910b694968802e853a81c16e34dd0539f7a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 9ea4ec748ca37f93e9711970b10746a009543d00
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203499"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656597"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Schnellstart: Einrichten des OIDC-basierten einmaligen Anmeldens (Single Sign-On, SSO) für eine Anwendung auf Ihrem Azure Active Directory-Mandanten (Azure AD-Mandanten)
 
@@ -54,13 +54,13 @@ Richten Sie einmaliges Anmelden wie folgt für eine Anwendung ein:
 
 3. Nach erfolgreichem Abschluss der Authentifizierung wird in einem Dialogfeld nach der Administratoreinwilligung gefragt. Wählen Sie die Option **Zustimmung im Namen Ihrer Organisation** und dann **Annehmen** aus. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Screenshot: Option für einmaliges Anmelden und Schaltfläche für die Registrierung" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Screenshot: Einwilligungsbildschirm für eine App" lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. Die Anwendung wird Ihrem Mandanten hinzugefügt, und die Startseite der Anwendung wird angezeigt.
 
 
 > [!TIP]
-> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](https://docs.microsoft.com/graph/application-saml-sso-configure-api).
+> Sie können die App-Verwaltung mithilfe der Graph-API automatisieren. Informationen hierzu finden Sie unter [Automatisieren einer SAML-basierten SSO-App-Konfiguration mit Microsoft Graph-API](/graph/application-saml-sso-configure-api).
 
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen

@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: quickstart
 ms.date: 10/14/2020
 ms.custom: references_regions
-ms.openlocfilehash: b33f3e58f82d52e77437c29f7e5219926b2578c3
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 21e0cfd56a37304d1ec333f8713894504282541f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92106976"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660660"
 ---
 # <a name="quickstart-on-board-azure-sentinel"></a>Schnellstart: Ausführen des Onboardings für Azure Sentinel
 
@@ -32,7 +32,7 @@ Nachdem Sie die Datenquellen verbunden haben, steht Ihnen ein Katalog von profes
 
 - Aktives Azure-Abonnement: Wenn Sie über keines verfügen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-- Log Analytics-Arbeitsbereich. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../log-analytics/log-analytics-quick-create-workspace.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../azure-monitor/platform/design-logs-deployment.md).
+- Log Analytics-Arbeitsbereich. Informationen zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie [hier](../azure-monitor/learn/quick-create-workspace.md). Weitere Informationen zu Log Analytics-Arbeitsbereichen finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](../azure-monitor/platform/design-logs-deployment.md).
 
 - Für das Abonnement, in dem sich der Azure Sentinel-Arbeitsbereich befindet, benötigen Sie Berechtigungen für Mitwirkende, um Azure Sentinel zu aktivieren. 
 - Für die Ressourcengruppe, zu der der Arbeitsbereich gehört, benötigen Sie entweder Berechtigungen für Mitwirkende oder für Leser, um Azure Sentinel zu verwenden.

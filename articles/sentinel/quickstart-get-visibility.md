@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, fasttrack-edit
 ms.date: 09/16/2020
 ms.author: yelevin
-ms.openlocfilehash: affefb302d602e9069a903fa5f6a0fbae78992b9
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 26a29524e0bf329a368b3cd2281dd9b070b42a14
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516952"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660813"
 ---
 # <a name="quickstart-get-started-with-azure-sentinel"></a>Schnellstart: Erste Schritte mit Azure Sentinel
 
@@ -57,7 +57,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
 1. Wählen Sie unter **Einstellungen** die Option **Arbeitsmappen** aus. Unter **Installiert** werden alle installierten Arbeitsmappen angezeigt. Unter **Alle** wird der gesamte Katalog integrierter Arbeitsmappen angezeigt, die zur Installation verfügbar sind. 
 2. Suchen Sie nach einer bestimmten Arbeitsmappe, um die ganze Liste und die Beschreibung des Funktionsumfangs der einzelnen Arbeitsmappen anzuzeigen. 
 3. Sofern Sie Azure AD verwenden, empfehlen wir, zur Verwendung von Azure Sentinel mindestens die folgenden Arbeitsmappen zu installieren:
-   - **Azure AD** : Verwenden Sie eines oder beide der folgenden Dashboards:
+   - **Azure AD**: Verwenden Sie eines oder beide der folgenden Dashboards:
        - Das Dashboard **Azure AD sign-ins** (Azure AD-Anmeldungen) analysiert Anmeldungen im Zeitverlauf, um Anomalien zu ermitteln. In dieser Arbeitsmappe werden fehlgeschlagene Anmeldungen nach Anwendungen, Geräten und Orten sortiert angezeigt, sodass Sie auf einen Blick sehen können, ob etwas Ungewöhnliches geschieht. Achten Sie besonders auf mehrmals fehlgeschlagene Anmeldungen. 
        - Das Dashboard **Azure AD audit logs** (Azure AD-Überwachungsprotokolle) analysiert Administratoraktivitäten, z. B. Änderungen der Benutzer (Hinzufügen, Entfernen usw.), die Erstellung von Gruppen und andere Änderungen.  
 
@@ -66,7 +66,7 @@ Integrierte Arbeitsmappen stellen integrierte Daten aus Ihren verbundenen Datenq
       ![Palo Alto-Dashboard](./media/qs-get-visibility/palo-alto-week-query.png)
 
 
-Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/get-started-portal.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen** , um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
+Sie können die Arbeitsmappen jeweils anpassen, indem Sie die Hauptabfrage über die ![Schaltfläche „Abfrage bearbeiten“](./media/qs-get-visibility/edit-query-button.png) bearbeiten. Sie können auf die Schaltfläche ![Schaltfläche „Log Analytics“](./media/qs-get-visibility/go-to-la-button.png) klicken, um [zu Log Analytics zu wechseln und die Abfrage dort zu bearbeiten](../azure-monitor/log-query/log-analytics-tutorial.md). Sie können auch auf die Schaltfläche mit den Auslassungspunkten (…) klicken und dann auf **Kacheldaten anpassen**, um den Filter für die Hauptzeit zu bearbeiten oder bestimmte Kacheln aus der Arbeitsmappe zu entfernen.
 
 Weitere Informationen zum Verwenden von Abfragen finden Sie unter [Tutorial: Visualisieren von Daten in Log Analytics](../azure-monitor/learn/tutorial-logs-dashboards.md).
 
@@ -129,4 +129,3 @@ Weitere Informationen zum Abrufen von Standarderkennungen finden Sie unter [Tuto
 In diesem Schnellstart wurden die ersten Schritte mit Azure Sentinel erläutert. Fahren Sie mit dem Tutorial zum [Erkennen von Bedrohungen](tutorial-detect-threats-built-in.md) fort.
 > [!div class="nextstepaction"]
 > [Erstellen Sie benutzerdefinierte Regeln zur Bedrohungserkennung](tutorial-detect-threats-custom.md), um die auf Bedrohungen zu automatisieren.
-

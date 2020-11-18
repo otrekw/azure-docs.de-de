@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: f7d9389eb0a0118f2c1be8375531f58b6bed94b6
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 5f19b55a955b8e3e1500cf14fa221b46808ac857
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92488094"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698290"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für den Lastenausgleich virtueller Computer über das Azure-Portal
 
@@ -60,7 +60,7 @@ Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausg
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus. |
     | Name der öffentlichen IP-Adresse | Geben Sie **myPublicIP** in das Textfeld ein.|
     | Verfügbarkeitszone | Wählen Sie **Zonenredundant** aus, um einen resilienten Lastenausgleich zu erstellen. Wählen Sie zum Erstellen eines zonalen Lastenausgleichs eine bestimmte Zone aus 1, 2 oder 3 aus. |
-    | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).  |
+    | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](../virtual-network/ipv6-overview.md).  |
 
 3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
 
@@ -80,7 +80,7 @@ In diesem Abschnitt wird Folgendes konfiguriert:
 
 Der Back-End-Adresspool enthält die IP-Adressen der virtuellen NICs, die mit dem Lastenausgleich verbunden sind. 
 
-Erstellen Sie den Back-End-Adresspool **myBackendPool** , um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
+Erstellen Sie den Back-End-Adresspool **myBackendPool**, um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
 
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
 
@@ -205,7 +205,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-In diesem Abschnitt werden drei virtuelle Computer ( **myVM1** , **myVM2** und **myVM3** ) in drei verschiedenen Zonen ( **Zone 1** , **Zone 2** und **Zone 3** ) erstellt. 
+In diesem Abschnitt werden drei virtuelle Computer (**myVM1**, **myVM2** und **myVM3**) in drei verschiedenen Zonen (**Zone 1**, **Zone 2** und **Zone 3**) erstellt. 
 
 Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenausgleichs hinzugefügt.
 
@@ -265,13 +265,13 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
   
 8. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-9. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1** :
+9. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
     | Einstellung | VM 2| VM 3|
     | ------- | ----- |---|
     | Name |  **myVM2** |**myVM3**|
     | Verfügbarkeitszone | **2** |**3**|
-    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe ( **myNSG** ) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe ( **myNSG** ) aus.|
+    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
 
 ## <a name="create-outbound-rule-configuration"></a>Erstellen der Konfiguration für Ausgangsregeln
 Ausgangsregeln für den Lastenausgleich konfigurieren das ausgehende SNAT für virtuelle Computer im Back-End-Pool. 
@@ -311,7 +311,7 @@ Weitere Informationen zu ausgehenden Verbindungen finden Sie unter [Ausgehende V
 
 5. Wählen Sie in **Vrtuelle Computer** die Option **+ Hinzufügen** aus.
 
-6. Aktivieren Sie die Kontrollkästchen neben **myVM1** , **myVM2** und **myVM3**. 
+6. Aktivieren Sie die Kontrollkästchen neben **myVM1**, **myVM2** und **myVM3**. 
 
 7. Wählen Sie **Hinzufügen**.
 
@@ -341,7 +341,7 @@ Wenn Sie einen öffentlichen Lastenausgleich erstellen, muss für den Lastenausg
     | Öffentliche IP-Adresse | Wählen Sie **Neu erstellen**. Wenn Sie über eine vorhandene öffentliche IP-Adresse verfügen, die Sie verwenden möchten, wählen Sie **Vorhandene verwenden** aus. |
     | Name der öffentlichen IP-Adresse | Geben Sie **myPublicIP** in das Textfeld ein.|
     | Zuweisung | Wählen Sie **Dynamisch** aus. |
-    | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](https://docs.microsoft.com/azure/virtual-network/ipv6-overview).  |
+    | Öffentliche IPv6-Adresse hinzufügen | Wählen Sie **Nein** aus. </br> Weitere Informationen zu IPv6-Adressen und zum Lastenausgleich finden Sie unter [Was ist IPv6 für Azure Virtual Network?](../virtual-network/ipv6-overview.md).  |
 
 3. Übernehmen Sie bei den anderen Einstellungen die Standardwerte, und wählen Sie **Überprüfen + erstellen** aus.
 
@@ -412,7 +412,7 @@ In diesem Abschnitt erstellen Sie ein virtuelles Netzwerk und ein Subnetz.
 
 Der Back-End-Adresspool enthält die IP-Adressen der virtuellen NICs, die mit dem Lastenausgleich verbunden sind. 
 
-Erstellen Sie den Back-End-Adresspool **myBackendPool** , um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
+Erstellen Sie den Back-End-Adresspool **myBackendPool**, um virtuelle Computer für den Lastenausgleich von Internetdatenverkehr einzubeziehen.
 
 1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myLoadBalancer** aus.
 
@@ -490,7 +490,7 @@ In diesem Abschnitt führen Sie folgende Schritte aus:
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-In diesem Abschnitt werden drei virtuelle Computer ( **myVM1** , **myVM2** und **myVM3** ) mit einer öffentlichen IP-Adresse vom Typ „Basic“ erstellt.  
+In diesem Abschnitt werden drei virtuelle Computer (**myVM1**, **myVM2** und **myVM3**) mit einer öffentlichen IP-Adresse vom Typ „Basic“ erstellt.  
 
 Die drei virtuellen Computer werden einer Verfügbarkeitsgruppe namens **myAvailabilitySet** hinzugefügt.
 
@@ -546,13 +546,13 @@ Diese virtuellen Computer werden dem Back-End-Pool des zuvor erstellten Lastenau
   
 8. Überprüfen Sie die Einstellungen, und wählen Sie dann die Option **Erstellen**.
 
-9. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1** :
+9. Führen Sie die Schritte 1 bis 8 aus, um zwei weitere virtuelle Computer mit folgenden Werten zu erstellen. Verwenden Sie für alle übrigen Einstellungen die Werte von **myVM1**:
 
     | Einstellung | VM 2| VM 3|
     | ------- | ----- |---|
     | Name |  **myVM2** |**myVM3**|
     | Verfügbarkeitsgruppe| Wählen Sie **myAvailabilitySet** aus. | Wählen Sie **myAvailabilitySet** aus.|
-    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe ( **myNSG** ) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe ( **myNSG** ) aus.|
+    | Netzwerksicherheitsgruppe | Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.| Wählen Sie die vorhandene Netzwerksicherheitsgruppe (**myNSG**) aus.|
 
 ### <a name="add-virtual-machines-to-the-backend-pool"></a>Hinzufügen virtueller Computer zum Back-End-Pool
 
@@ -566,7 +566,7 @@ Die in den vorherigen Schritten erstellten virtuellen Computer müssen dem Back-
 
 4. Wählen Sie im Abschnitt **Virtuelle Computer** die Option **+ Hinzufügen** aus.
 
-5. Aktivieren Sie die Kontrollkästchen neben **myVM1** , **myVM2** und **myVM3**.
+5. Aktivieren Sie die Kontrollkästchen neben **myVM1**, **myVM2** und **myVM3**.
 
 6. Wählen Sie **Hinzufügen**.
 
@@ -576,7 +576,7 @@ Die in den vorherigen Schritten erstellten virtuellen Computer müssen dem Back-
 
 ## <a name="install-iis"></a>Installieren von IIS
 
-1. Wählen Sie im linken Menü **Alle Dienste**  > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myVM1** (in der Ressourcengruppe **CreateStdLBQS-rg** ) aus.
+1. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myVM1** (in der Ressourcengruppe **CreateStdLBQS-rg**) aus.
 
 2. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
@@ -609,7 +609,7 @@ Die in den vorherigen Schritten erstellten virtuellen Computer müssen dem Back-
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
-1. Ermitteln Sie auf dem Bildschirm **Übersicht** die öffentliche IP-Adresse für den Load Balancer. Wählen Sie im linken Menü **Alle Dienste**  > **Alle Ressourcen** und anschließend **myPublicIP** aus.
+1. Ermitteln Sie auf dem Bildschirm **Übersicht** die öffentliche IP-Adresse für den Load Balancer. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend **myPublicIP** aus.
 
 2. Kopieren Sie die öffentliche IP-Adresse, und fügen Sie sie in die Adressleiste des Browsers ein. Die Standardseite des IIS-Webservers wird im Browser angezeigt.
 

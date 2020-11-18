@@ -7,14 +7,14 @@ ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: sql
 ms.date: 05/20/2020
-ms.author: v-stazar
+ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d578529839afb5393dd013cb10f48c755f08addd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316247"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685561"
 ---
 # <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics
 
@@ -72,7 +72,7 @@ FROM
 
 Ansichten können in Ihren Abfragen auf die gleiche Weise verwendet werden wie in SQL Server-Abfragen.
 
-Die folgende Abfrage veranschaulicht die Verwendung der Ansicht *population_csv* , die Sie unter [Erstellen einer Ansicht](#create-a-view) erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
+Die folgende Abfrage veranschaulicht die Verwendung der Ansicht *population_csv*, die Sie unter [Erstellen einer Ansicht](#create-a-view) erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
 
 > [!NOTE]
 > Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird.

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/25/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 0dfb5a68149f4745d17581dcefed6aedcf394106
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35dc088909522494d6c1cf4c94f9342c95fda59a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487703"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698460"
 ---
 # <a name="quickstart-create-a-public-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines öffentlichen Lastenausgleichs für virtuelle Computer mithilfe von Azure PowerShell
 
@@ -421,7 +421,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic3 -LoadBa
 ```
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -1079,7 +1079,7 @@ New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -1191,7 +1191,7 @@ Die Erstellung und Konfiguration der drei virtuellen Computer dauert einige Minu
 
 ## <a name="install-iis"></a>Installieren von IIS
 
-Verwenden Sie [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. 
+Verwenden Sie [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension), um die benutzerdefinierte Skripterweiterung zu installieren. 
 
 Die Erweiterung führt „PowerShell Add-WindowsFeature Web-Server“ zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite „Default.htm“ mit dem Hostnamen der VM:
 
@@ -1242,7 +1242,7 @@ Set-AzVMExtension -ResourceGroupName $rg -ExtensionName $enm -VMName $vmn -Locat
 
 ## <a name="test-the-load-balancer"></a>Testen des Lastenausgleichs
 
-Rufen Sie mit [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
+Rufen Sie mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) die öffentliche IP-Adresse des Lastenausgleichs ab:
 
 ```azurepowershell-interactive
   ## Variables for command. ##
@@ -1281,5 +1281,3 @@ In dieser Schnellstartanleitung wurde Folgendes vermittelt:
 Fahren Sie mit dem folgenden Artikel fort, um sich weiter über Azure Load Balancer zu informieren:
 > [!div class="nextstepaction"]
 > [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md)
-
-

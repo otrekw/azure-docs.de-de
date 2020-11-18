@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 08/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 12190a50579bf5b87685fc4b19ec7b2907e5ee9c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e1fa97fb8a3dcae3a78ba0bc85cf59db2c167dea
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547043"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696777"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-powershell"></a>Schnellstart: Erstellen eines internen Lastenausgleichs für den Lastenausgleich virtueller Computer mithilfe von Azure PowerShell
 
@@ -297,7 +297,7 @@ $rule =
 New-AzLoadBalancerRuleConfig -Name $lbr -Protocol $pro -Probe $probe -FrontendPort $port -BackendPort $port -FrontendIpConfiguration $feip -BackendAddressPool $bePool -DisableOutboundSNAT -IdleTimeoutInMinutes $idl -EnableTcpReset
 ```
 >[!NOTE]
->Die virtuellen Computer im Back-End-Pool verfügen mit dieser Konfiguration nicht über ausgehende Internetkonnektivität. </br> Weitere Informationen zu ausgehender Konnektivität finden Sie unter: </br> **[Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md)**</br> Optionen zum Bereitstellen von Konnektivität: </br> **[Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)](egress-only.md)** </br> **[Was ist Virtual Network NAT?](https://docs.microsoft.com/azure/virtual-network/nat-overview)**
+>Die virtuellen Computer im Back-End-Pool verfügen mit dieser Konfiguration nicht über ausgehende Internetkonnektivität. </br> Weitere Informationen zu ausgehender Konnektivität finden Sie unter: </br> **[Ausgehende Verbindungen in Azure](load-balancer-outbound-connections.md)**</br> Optionen zum Bereitstellen von Konnektivität: </br> **[Lastenausgleichskonfiguration (nur ausgehender Datenverkehr)](egress-only.md)** </br> **[Was ist Virtual Network NAT?](../virtual-network/nat-overview.md)**
 
 
 ### <a name="create-load-balancer-resource"></a>Erstellen der Lastenausgleichsressource
@@ -399,7 +399,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic2 -LoadBa
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -832,7 +832,7 @@ New-AzAvailabilitySet -ResourceGroupName $rg -Name $avs -Location $loc
 
 ### <a name="create-virtual-machines"></a>Erstellen von virtuellen Computern
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators der VMs fest:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -914,7 +914,7 @@ Die Erstellung und Konfiguration der drei virtuellen Computer dauert einige Minu
 
 ## <a name="install-iis"></a>Installieren von IIS
 
-Verwenden Sie [Set-AzVMExtension](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension?view=latest), um die benutzerdefinierte Skripterweiterung zu installieren. 
+Verwenden Sie [Set-AzVMExtension](/powershell/module/az.compute/set-azvmextension?view=latest), um die benutzerdefinierte Skripterweiterung zu installieren. 
 
 Die Erweiterung führt „PowerShell Add-WindowsFeature Web-Server“ zum Installieren des IIS-Webservers aus und aktualisiert dann die Seite „Default.htm“ mit dem Hostnamen der VM:
 
@@ -986,7 +986,7 @@ New-AzNetworkInterface -ResourceGroupName $rg -Location $loc -Name $nic1 -Networ
 
 ### <a name="create-virtual-machine"></a>Erstellen eines virtuellen Computers
 
-Legen Sie mit [Get-Credential](https://msdn.microsoft.com/powershell/reference/5.1/microsoft.powershell.security/Get-Credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
+Legen Sie mit [Get-Credential](/powershell/module/microsoft.powershell.security/get-credential) den Benutzernamen und das Kennwort des Administrators des virtuellen Computers fest:
 
 ```azurepowershell
 $cred = Get-Credential
@@ -1033,11 +1033,11 @@ New-AzVM -ResourceGroupName $rg -Location $loc -VM $vmConfig
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-1. Suchen Sie im Bildschirm **Übersicht** nach der privaten IP-Adresse für den Lastenausgleich. Wählen Sie im linken Menü **Alle Dienste**  > **Alle Ressourcen** und anschließend **myLoadBalancer** aus.
+1. Suchen Sie im Bildschirm **Übersicht** nach der privaten IP-Adresse für den Lastenausgleich. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend **myLoadBalancer** aus.
 
-2. Notieren Sie sich in der **Übersicht** von **myLoadBalancer** die Adresse neben **Private IP-Adresse** , oder kopieren Sie sie.
+2. Notieren Sie sich in der **Übersicht** von **myLoadBalancer** die Adresse neben **Private IP-Adresse**, oder kopieren Sie sie.
 
-3. Wählen Sie im linken Menü **Alle Dienste**  > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myTestVM** (in der Ressourcengruppe **CreateIntLBQS-rg** ) aus.
+3. Wählen Sie im linken Menü **Alle Dienste** > **Alle Ressourcen** und anschließend in der Ressourcenliste den Eintrag **myTestVM** (in der Ressourcengruppe **CreateIntLBQS-rg**) aus.
 
 4. Wählen Sie auf der Seite **Übersicht** die Option **Verbinden** und dann **Bastion** aus.
 
@@ -1074,5 +1074,3 @@ In dieser Schnellstartanleitung wurde Folgendes vermittelt:
 Fahren Sie mit dem folgenden Artikel fort, um sich weiter über Azure Load Balancer zu informieren:
 > [!div class="nextstepaction"]
 > [Was versteht man unter Azure Load Balancer?](load-balancer-overview.md)
-
-

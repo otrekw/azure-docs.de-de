@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.devlang: rest-api
 ms.date: 08/20/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: e4141bc4887a166876d1fc4590b73f382abd0b95
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: dca53dc27eacc5c7e04bbf6cb5df82a8e8da0dfc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88936672"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694550"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-python-using-jupyter-notebooks"></a>Schnellstart: Erstellen eines Azure Cognitive Search-Index in Python mithilfe von Jupyter Notebooks
 
@@ -23,7 +23,7 @@ ms.locfileid: "88936672"
 > * [Python (REST)](search-get-started-python.md)
 > * [PowerShell (REST)](./search-get-started-powershell.md)
 > * [C#](./search-get-started-dotnet.md)
-> * [Postman (REST)](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 > * [Portal](search-get-started-portal.md)
 > 
 
@@ -47,7 +47,7 @@ Für REST-Aufrufe sind die Dienst-URL und ein Zugriffsschlüssel für jede Anfor
 
 1. Rufen Sie unter **Einstellungen** > **Schlüssel** einen Administratorschlüssel ab, um Vollzugriff auf den Dienst zu erhalten. Es gibt zwei austauschbare Administratorschlüssel – diese wurden zum Zweck der Geschäftskontinuität bereitgestellt, falls Sie einen Rollover für einen Schlüssel durchführen müssen. Für Anforderungen zum Hinzufügen, Ändern und Löschen von Objekten können Sie den primären oder den sekundären Schlüssel verwenden.
 
-![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
+![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-rest/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 

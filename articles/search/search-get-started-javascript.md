@@ -10,12 +10,12 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 10/26/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 5ccbe1035c5cc73993e069c7683d6b15ae18e21c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 0e1b7aa0eb56d5668b6561b36a0f63e719974573
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795535"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698895"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-using-the-javascript-sdk"></a>Schnellstart: Erstellen eines Index für Azure Cognitive Search mit dem JavaScript-SDK
 > [!div class="op_single_selector"]
@@ -24,10 +24,10 @@ ms.locfileid: "92795535"
 > * [Portal](search-get-started-portal.md)
 > * [PowerShell](./search-get-started-powershell.md)
 > * [Python](search-get-started-python.md)
-> * [Postman](search-get-started-postman.md)
+> * [REST](search-get-started-rest.md)
 
 
-Verwenden Sie das [Javascript/Typscript-SDK für Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest), um eine Node.js-Anwendung in JavaScript zum Erstellen, Laden und Abfragen eines Suchindex zu erstellen.
+Verwenden Sie das [Javascript/Typscript-SDK für Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme), um eine Node.js-Anwendung in JavaScript zum Erstellen, Laden und Abfragen eines Suchindex zu erstellen.
 
 Dieser Artikel veranschaulicht Schritt für Schritt, wie Sie die Anwendung erstellen. Alternativ können Sie [den Quellcode und die Daten herunterladen](https://github.com/Azure-Samples/azure-search-javascript-samples/tree/master/quickstart/v11) und die Anwendung über die Befehlszeile ausführen.
 
@@ -58,7 +58,7 @@ Aufrufe, die an den Dienst gerichtet werden, erfordern jeweils einen URL-Endpunk
 
 2. Rufen Sie in **Einstellungen** > **Schlüssel** einen Administratorschlüssel für vollständige Rechte für den Dienst ab. Dieser ist erforderlich, wenn Sie Objekte erstellen oder löschen. Es gibt einen Primär- und einen Sekundärschlüssel, die austauschbar sind. Sie können beide verwenden.
 
-   ![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-postman/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
+   ![Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels](media/search-get-started-rest/get-url-key.png "Abrufen eines HTTP-Endpunkts und eines Zugriffsschlüssels")
 
 Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erforderlich. Ein gültiger Schlüssel stellt anforderungsbasiert eine Vertrauensstellung her zwischen der Anwendung, die die Anforderung versendet, und dem Dienst, der sie verarbeitet.
 
@@ -80,7 +80,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
     ```
      Übernehmen Sie die Standardwerte, außer für die Lizenz, die Sie auf „MIT“ festlegen sollten. 
 
-3. Installieren Sie `@azure/search-documents`, das [Javascript/Typscript-SDK für Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme?view=azure-node-latest).
+3. Installieren Sie `@azure/search-documents`, das [Javascript/Typscript-SDK für Azure Cognitive Search](https://docs.microsoft.com/javascript/api/overview/azure/search-documents-readme).
 
     ```cmd
     npm install @azure/search-documents
@@ -91,7 +91,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
     npm install dotenv
     ```
 
-5. Um sicherzustellen, dass die Projekte und ihre Abhängigkeiten ordnungsgemäß konfiguriert wurden, überprüfen Sie, ob Ihre **package.json** -Datei wie die folgende json-Datei aussieht:
+5. Um sicherzustellen, dass die Projekte und ihre Abhängigkeiten ordnungsgemäß konfiguriert wurden, überprüfen Sie, ob Ihre **package.json**-Datei wie die folgende json-Datei aussieht:
 
     ```json
     {
@@ -115,7 +115,7 @@ Für alle an Ihren Dienst gesendeten Anforderungen ist ein API-Schlüssel erford
     }
     ```
 
-6. Erstellen Sie eine **ENV** -Datei zum Speichern Ihrer Suchdienstparameter:
+6. Erstellen Sie eine **ENV**-Datei zum Speichern Ihrer Suchdienstparameter:
 
     ```
     SEARCH_API_KEY=<search-admin-key>
@@ -126,7 +126,7 @@ Ersetzen Sie den Wert `<search-service-name>` durch den Namen Ihres Suchdiensts.
 
 ### <a name="create-indexjs-file"></a>Erstellen der Datei „index.js“
 
-Als Nächstes erstellen Sie eine **index.js** -Datei, die die Hauptdatei ist, die den Code hostet.
+Als Nächstes erstellen Sie eine **index.js**-Datei, die die Hauptdatei ist, die den Code hostet.
 
 Importieren Sie oben in dieser Datei die Bibliothek `@azure/search-documents`:
 
@@ -134,7 +134,7 @@ Importieren Sie oben in dieser Datei die Bibliothek `@azure/search-documents`:
 const { SearchIndexClient, SearchClient, AzureKeyCredential, odata } = require("@azure/search-documents");
 ```
 
-Als nächstes muss das `dotenv`-Paket die Parameter aus der **ENV** -Datei wie folgt einlesen:
+Als nächstes muss das `dotenv`-Paket die Parameter aus der **ENV**-Datei wie folgt einlesen:
 
 ```javascript
 // Load the .env file if it exists
@@ -169,7 +169,7 @@ Damit sind Sie bereit, einen Index zu erstellen.
 
 ## <a name="1---create-index"></a>1\. Erstellen des Index 
 
-Erstellen Sie die Datei **hotels_quickstart_index.json** .  Diese Datei definiert, wie Azure Cognitive Search mit den Dokumenten verfährt, die Sie im nächsten Schritt laden. Jedes Feld wird durch einen `name` identifiziert und weist einen bestimmten `type` auf. Jedes Feld verfügt zudem über eine Reihe von Indexattributen, die angeben, ob Azure Cognitive Search das Feld durchsuchen, filtern, sortieren und facettieren kann. Bei den meisten Feldern handelt es sich um einfache Datentypen, einige wie z.B. `AddressType` sind aber komplexe Typen, die es Ihnen ermöglichen, umfangreiche Datenstrukturen in Ihrem Index zu erstellen.  Informieren Sie sich über [unterstützte Datentypen](/rest/api/searchservice/supported-data-types) und [Indexattribute](./search-what-is-an-index.md#index-attributes). 
+Erstellen Sie die Datei **hotels_quickstart_index.json**.  Diese Datei definiert, wie Azure Cognitive Search mit den Dokumenten verfährt, die Sie im nächsten Schritt laden. Jedes Feld wird durch einen `name` identifiziert und weist einen bestimmten `type` auf. Jedes Feld verfügt zudem über eine Reihe von Indexattributen, die angeben, ob Azure Cognitive Search das Feld durchsuchen, filtern, sortieren und facettieren kann. Bei den meisten Feldern handelt es sich um einfache Datentypen, einige wie z.B. `AddressType` sind aber komplexe Typen, die es Ihnen ermöglichen, umfangreiche Datenstrukturen in Ihrem Index zu erstellen.  Informieren Sie sich über [unterstützte Datentypen](/rest/api/searchservice/supported-data-types) und [Indexattribute](./search-what-is-an-index.md#index-attributes). 
 
 Fügen Sie der Datei **hotels_quickstart_index.json** folgenden Code hinzu, oder [laden Sie die Datei herunter](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels_quickstart_index.json). 
 
@@ -305,7 +305,7 @@ Fügen Sie der Datei **hotels_quickstart_index.json** folgenden Code hinzu, oder
 }
 ```
 
-Wenn die Indexdefinition eingerichtet ist, importieren Sie **hotels_quickstart_index.json** am Anfang von **index.js** , damit die main-Funktion auf die Indexdefinition zugreifen kann.
+Wenn die Indexdefinition eingerichtet ist, importieren Sie **hotels_quickstart_index.json** am Anfang von **index.js**, damit die main-Funktion auf die Indexdefinition zugreifen kann.
 
 ```javascript
 const indexDefinition = require('./hotels_quickstart_index.json');
@@ -373,7 +373,7 @@ Im nächsten Schritt fügen Sie Daten zum Index hinzu.
 
 In Azure Cognitive Search sind Dokumente Datenstrukturen, bei denen es sich sowohl um Eingaben für die Indizierung als auch um Ausgaben von Abfragen handeln kann. Sie können diese Daten per Push an den Index senden oder einen [Indexer](search-indexer-overview.md) verwenden. In diesem Fall werden die Dokumente programmseitig per Push an den Index gesendet.
 
-Dokumenteingaben können Zeilen in einer Datenbank, Blobs in einem Blobspeicher oder JSON-Dokumente auf einem Datenträger sein. Sie können entweder [hotels.json](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels.json) herunterladen oder selbst eine **hotels.json** -Datei mit folgendem Inhalt erstellen:
+Dokumenteingaben können Zeilen in einer Datenbank, Blobs in einem Blobspeicher oder JSON-Dokumente auf einem Datenträger sein. Sie können entweder [hotels.json](https://github.com/Azure-Samples/azure-search-javascript-samples/blob/master/quickstart/v11/hotels.json) herunterladen oder selbst eine **hotels.json**-Datei mit folgendem Inhalt erstellen:
 
 ```json
 {
@@ -480,7 +480,7 @@ let indexDocumentsResult = await searchClient.mergeOrUploadDocuments(hotelData['
 console.log(`Index operations succeeded: ${JSON.stringify(indexDocumentsResult.results[0].succeeded)}`);
 ```
 
-Führen Sie das Programm erneut mit `node index.js` aus. Jetzt werden etwas andere Meldungen angezeigt als in Schritt 1. Dieses Mal ist der Index *vorhanden* , und es sollte eine Meldung angezeigt werden, die besagt, dass dieser gelöscht wird, bevor die App den neuen Index erstellt und dort Daten einfügt. 
+Führen Sie das Programm erneut mit `node index.js` aus. Jetzt werden etwas andere Meldungen angezeigt als in Schritt 1. Dieses Mal ist der Index *vorhanden*, und es sollte eine Meldung angezeigt werden, die besagt, dass dieser gelöscht wird, bevor die App den neuen Index erstellt und dort Daten einfügt. 
 
 Bevor Sie die Abfragen im nächsten Schritt ausführen, definieren Sie eine Funktion, die das Programm eine Sekunde lang warten lässt. Dies geschieht nur zu Test-/Demozwecken, um sicherzustellen, dass die Indizierung abgeschlossen ist und die Dokumente im Index für Abfragen zur Verfügung stehen.
 
