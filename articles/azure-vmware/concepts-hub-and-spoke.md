@@ -3,12 +3,12 @@ title: 'Konzept: Integrieren einer Azure VMware Solution-Bereitstellung in eine 
 description: Hier erfahren Sie, wie Sie eine Azure VMware Solution-Bereitstellung in eine Hub-and-Spoke-Architektur in Azure integrieren.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 93c11ad9253fe78e1935da7b40e7251788f1f037
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674672"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490813"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur
 
@@ -36,30 +36,29 @@ Das Diagramm zeigt ein Beispiel für eine Hub-and-Spoke-Bereitstellung in Azure,
 
 Diese Architektur besteht aus den folgenden Hauptkomponenten:
 
--   **Lokaler Standort:** Lokale Rechenzentren des Kunden, die über ExpressRoute-Verbindungen mit Azure verbunden sind.
+- **Lokaler Standort:** Lokale Rechenzentren des Kunden, die über ExpressRoute-Verbindungen mit Azure verbunden sind.
 
--   **Private Azure VMware Solution-Cloud:** Das aus einem oder mehreren vSphere-Clustern bestehende Azure VMware Solution SDDC (Software Defined Data Center), jeweils mit maximal 16 Knoten.
+- **Private Azure VMware Solution-Cloud:** Das aus einem oder mehreren vSphere-Clustern bestehende Azure VMware Solution SDDC (Software Defined Data Center), jeweils mit maximal 16 Knoten.
 
--   **ExpressRoute-Gateway:** Ermöglicht die Kommunikation zwischen privater Azure VMware Solution-Cloud, freigegebenen Diensten im virtuellen Hub-Netzwerk und Workloads, die in virtuellen Spoke-Netzwerken ausgeführt werden.
+- **ExpressRoute-Gateway:** Ermöglicht die Kommunikation zwischen privater Azure VMware Solution-Cloud, freigegebenen Diensten im virtuellen Hub-Netzwerk und Workloads, die in virtuellen Spoke-Netzwerken ausgeführt werden.
 
--   **ExpressRoute Global Reach:** Ermöglicht die Konnektivität zwischen lokaler und privater Azure VMware Solution-Cloud.
-
-
-  > [!NOTE]
-  > **S2S-VPN-Überlegungen:** Für die Bereitstellung von Azure VMware Solution-Produktionsumgebungen wird Azure S2S-VPN wegen Netzwerkanforderungen für VMware HCX nicht unterstützt. Allerdings können Sie dieses für eine Proof-of-Concept-Bereitstellung verwenden.
+- **ExpressRoute Global Reach:** Ermöglicht die Konnektivität zwischen lokaler und privater Azure VMware Solution-Cloud. Die Konnektivität zwischen Azure VMware Solution und Azure-Fabric erfolgt ausschließlich über ExpressRoute Global Reach. Sie können keine andere Option als ExpressRoute Fast Path auswählen.  ExpressRoute Direct wird nicht unterstützt.
 
 
--   **Virtuelles Hub-Netzwerk:** Fungiert als zentraler Verbindungspunkt für Ihr lokales Netzwerk und Ihre private Azure VMware Solution-Cloud.
+- **S2S-VPN-Überlegungen:** Für die Bereitstellung von Azure VMware Solution-Produktionsumgebungen wird Azure S2S-VPN wegen Netzwerkanforderungen für VMware HCX nicht unterstützt. Allerdings können Sie dieses für eine Proof-of-Concept-Bereitstellung verwenden.
 
--   **Virtuelles Spoke-Netzwerk**
 
-    -   **IaaS-Spoke:** In einer IaaS-Spoke werden IaaS-basierte Azure-Workloads gehostet, wozu VM-Verfügbarkeitsgruppen und VM-Skalierungsgruppen sowie die entsprechenden Netzwerkkomponenten gehören.
+- **Virtuelles Hub-Netzwerk:** Fungiert als zentraler Verbindungspunkt für Ihr lokales Netzwerk und Ihre private Azure VMware Solution-Cloud.
 
-    -   **PaaS-Spoke:** In einer PaaS-Spoke werden Azure-PaaS-Dienste über private Adressierung gehostet, wozu [privater Endpunkt](../private-link/private-endpoint-overview.md) (Private Endpoint) und [Private Link](../private-link/private-link-overview.md) verwendet werden.
+- **Virtuelles Spoke-Netzwerk**
 
--   **Azure Firewall:** Fungiert als das zentrale Element zum Segmentieren von Datenverkehr zwischen den Spokes und Azure VMware Solution.
+    - **IaaS-Spoke:** In einer IaaS-Spoke werden IaaS-basierte Azure-Workloads gehostet, wozu VM-Verfügbarkeitsgruppen und VM-Skalierungsgruppen sowie die entsprechenden Netzwerkkomponenten gehören.
 
--   **Application Gateway:** Macht Webanwendungen, die entweder auf Azure IaaS/PaaS- oder Azure VMware Solution-VMs ausgeführt werden, verfügbar und schützt diese. Dieser Dienst lässt sich mit anderen Diensten wie API Management kombinieren.
+    - **PaaS-Spoke:** In einer PaaS-Spoke werden Azure-PaaS-Dienste über private Adressierung gehostet, wozu [privater Endpunkt](../private-link/private-endpoint-overview.md) (Private Endpoint) und [Private Link](../private-link/private-link-overview.md) verwendet werden.
+
+- **Azure Firewall:** Fungiert als das zentrale Element zum Segmentieren von Datenverkehr zwischen den Spokes und Azure VMware Solution.
+
+- **Application Gateway:** Macht Webanwendungen, die entweder auf Azure IaaS/PaaS- oder Azure VMware Solution-VMs ausgeführt werden, verfügbar und schützt diese. Dieser Dienst lässt sich mit anderen Diensten wie API Management kombinieren.
 
 ## <a name="network-and-security-considerations"></a>Netzwerk- und Sicherheitsaspekte
 
@@ -89,7 +88,7 @@ Erstellen Sie Routingtabellen, um den Datenverkehr an Azure Firewall zu leiten. 
 
 
 > [!IMPORTANT]
-> Eine Route, die das Adresspräfix 0.0.0.0/0 in der **GatewaySubnet** -Einstellung hat, wird nicht unterstützt.
+> Eine Route, die das Adresspräfix 0.0.0.0/0 in der **GatewaySubnet**-Einstellung hat, wird nicht unterstützt.
 
 Legen Sie Routen für bestimmte Netzwerke in der entsprechenden Routingtabelle fest. Beispielsweise Routen zum Erreichen von IP-Präfixen für Azure VMware Solution-Verwaltung und -Workloads aus den Spoke-Workloads und umgekehrt.
 
@@ -139,11 +138,7 @@ Als allgemeine Entwurfsempfehlung sollten Sie die vorhandene Azure DNS-Infrastru
 
 Sie können ein privates Azure-DNS verwenden, bei dem die private Azure-DNS-Zone zum virtuellen Netzwerk führt.  Die DNS-Server werden als hybride Resolver mit bedingter Weiterleitung an die lokale oder Azure VMware Solution-Instanz mit einem DNS, das die private Azure-DNS-Infrastruktur des Kunden nutzt. 
 
-Es gibt verschiedene Aspekte, die für private Azure DNS-Zonen zu berücksichtigen sind:
-
-* Die automatische Registrierung sollte für Azure DNS aktiviert werden, sodass der Lebenszyklus der DNS-Einträge für die in virtuellen Spoke-Netzwerken bereitgestellten VMs automatisch verwaltet wird.
-* Die maximale Anzahl von privaten DNS-Zonen, mit denen ein virtuelles Netzwerk bei aktivierter automatischer Registrierung verknüpft werden kann, beträgt nur eins.
-* Die maximale Anzahl von privaten DNS-Zonen, mit denen ein virtuelles Netzwerk verknüpft werden kann, beträgt 1000, wenn die automatische Registrierung nicht aktiviert ist.
+Aktivieren Sie die automatische Registrierung, um den Lebenszyklus der DNS-Einträge für die VMs, die in den virtuellen Spoke-Netzwerken bereitgestellt werden, automatisch zu verwalten. Wenn diese Option aktiviert ist, ist die maximale Anzahl von privaten DNS-Zonen nur 1. Wenn diese Option deaktiviert ist, beträgt die maximale Anzahl 1000.
 
 Lokale und Azure VMware Solution-Server können mit bedingten Weiterleitungen an Konfliktlöser-VMs in Azure für die Zone mit privatem Azure-DNS konfiguriert werden.
 

@@ -4,21 +4,21 @@ description: Entfernen Sie Gruppenmitglieder in Massenvorgängen in Azure Admin 
 services: active-directory
 author: curtand
 ms.author: curtand
-manager: mtillman
-ms.date: 04/27/2020
+manager: daveba
+ms.date: 11/15/2020
 ms.topic: how-to
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5da3da152fa8d0f568ee0f4075dafb8da8c3bf8a
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 83b905faa892cc338b5bdf4f998ad95f7b8a484e
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373279"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650852"
 ---
 # <a name="bulk-remove-group-members-in-azure-active-directory"></a>Massenentfernung von Gruppenmitgliedern in Azure Active Directory
 
@@ -34,7 +34,7 @@ Laden Sie die CSV-Vorlage für den Massenupload herunter, und füllen Sie sie au
 
 Die Zeilen der heruntergeladenen CSV-Vorlage lauten wie folgt:
 
-- **Versionsnummer** : Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
+- **Versionsnummer**: Die erste Zeile, die die Versionsnummer enthält, muss in der hochzuladenden CSV-Datei enthalten sein.
 - **Spaltenüberschriften:** Das Format der Spaltenüberschriften lautet &lt;*Elementname*&gt; [Eigenschaftenname] &lt;*Required (erforderlich) oder leer*&gt;. Beispiel: `Member object ID or user principal name [memberObjectIdOrUpn] Required`. Einige ältere Versionen der Vorlage können geringfügige Abweichungen aufweisen. Für Änderungen der Gruppenmitgliedschaft können Sie den Bezeichner auswählen: Mitgliedsobjekt-ID oder Benutzerprinzipalname.
 - **Beispielzeile:** In der Vorlage ist eine Zeile mit Beispielen für zulässige Werte für alle Spalten enthalten. Sie müssen die Beispielzeile entfernen und durch Ihre eigenen Einträge ersetzen.
 
@@ -70,7 +70,7 @@ Sie können den Status aller Ihrer ausstehenden Massenanforderungen auf der Seit
 
 [![Überprüfen des Status auf der Seite „Ergebnisse von Massenvorgängen“](./media/groups-bulk-remove-members/bulk-center.png)](./media/groups-bulk-remove-members/bulk-center.png#lightbox)
 
-Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte unter der Spalte **# Erfolg** , **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
+Wenn Sie ausführliche Informationen zu jedem Zeilenelement des Massenvorgangs erhalten möchten, wählen Sie die Werte unter der Spalte **# Erfolg**, **# Fehler** oder **Anforderungen insgesamt** aus. Wenn Fehler aufgetreten sind, werden die Fehlerursachen aufgeführt.
 
 ## <a name="bulk-removal-service-limits"></a>Diensteinschränkungen bei Massenentfernung
 

@@ -1,27 +1,27 @@
 ---
 title: Upgrade mithilfe von Sicherung und Wiederherstellung – Azure Database for PostgreSQL – Single Server
-description: Erläuterung verschiedener Methoden zum Sichern und Wiederherstellen von Datenbanken, um zu einer höheren Version von Azure Database for PostgreSQL – Single Server zu migrieren.
+description: Beschreibt, wie Offlineupgrades für Datenbanken mithilfe der Sicherungs- und Wiederherstellungsfunktionen durchgeführt werden, um zu einer höheren Version von Azure Database for PostgreSQL – Single Server zu migrieren.
 author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/03/2020
-ms.openlocfilehash: 26154f4501daba373f1f8b108f1ee7105b1b194f
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.date: 11/10/2020
+ms.openlocfilehash: e756e033c8e5b2508dca9bde76ad16be26a940fa
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93294214"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505783"
 ---
 # <a name="upgrade-your-postgresql-database-using-dump-and-restore"></a>Upgrade einer PostgreSQL-Datenbank durch Sichern und Wiederherstellen
 
-In Azure Database for PostgreSQL – Single Server empfiehlt es sich, die PostgreSQL-Datenbank-Engine mit einer der folgenden Methoden auf eine höhere Hauptversion zu aktualisieren:
-* Offlinemethode unter Verwendung der PostgreSQL-Befehle [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html). Bei dieser Methode führen Sie zunächst die Sicherung auf dem Quellserver aus und stellen die Sicherung dann auf dem Zielserver wieder her.
-* Onlinemethode mit [**Database Migration Service**](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS). Bei dieser Methode bleibt die Zieldatenbank mit der Quelldatenbank synchron, und Sie können wählen, wann der Übergang erfolgen soll. Allerdings müssen einige Voraussetzungen und Einschränkungen beachtet werden. 
+Sie können einen in Azure Database for PostgreSQL – Single Server bereitgestellten PostgreSQL-Server aktualisieren, indem Sie Ihre Datenbanken mithilfe der folgenden Methoden zu einem Server mit einer höheren Hauptversion migrieren.
+* **Offlinemethode** mit [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) von PostgreSQL – die Datenmigration verursacht eine Downtime. Im vorliegenden Dokument wird diese Upgrade-/Migrationsmethode behandelt.
+* **Onlinemethode** mit [Database Migration Service](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal) (DMS). Bei dieser Methode erfolgt die Migration mit einer geringeren Downtime. Außerdem bleibt die Zieldatenbank mit der Quelldatenbank synchron, und Sie können wählen, wann der Übergang erfolgen soll. Allerdings müssen bei Verwendung von DMS einige Voraussetzungen und Einschränkungen beachtet werden. Ausführliche Informationen finden Sie in der [DMS-Dokumentation](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal). 
 
-Die folgende Empfehlung kann Ihnen bei der Entscheidung zwischen der Online- und Offlinemethode für Upgrades von Hauptversionen helfen.
+ In der folgenden Tabelle finden Sie Empfehlungen, die auf der Größe und dem Verwendungsszenario der Datenbank basieren.
 
-| **Datenbank** | **Sichern/Wiederherstellen (offline)** | **DMS (online)** |
+| **Datenbank/Szenario** | **Sichern/Wiederherstellen (offline)** | **DMS (online)** |
 | ------ | :------: | :-----: |
 | Sie haben eine kleine Datenbank und können von einem Upgrade verursachte Ausfallzeiten verkraften  | X | |
 | Kleine Datenbanken (< 10 GB)  | X | X | 
@@ -31,20 +31,23 @@ Die folgende Empfehlung kann Ihnen bei der Entscheidung zwischen der Online- und
 | Können [Voraussetzungen](https://docs.microsoft.com/azure/dms/tutorial-azure-postgresql-to-azure-postgresql-online-portal#prerequisites) für DMS einschließlich Neustart erfüllt werden? |  | X |
 | Können DDLs und nicht protokollierte Tabellen während des Upgradevorgangs vermieden werden? | |  X |
 
-Diese Anleitung bietet zwei Beispielmethoden, wie Sie Ihre Datenbanken mit den PostgreSQL-Befehlen pg_dump und pg_restore aktualisieren können. Der Prozess wird in diesem Dokument als **Upgrade** bezeichnet, obwohl die Datenbank vom Quell- auf den Zielserver **migriert** wird. 
+Dieser Leitfaden enthält einige Methoden und Beispiele für die Offlinemigration, um zu veranschaulichen, wie Sie vom Quellserver zum Zielserver migrieren können, auf dem eine höhere Version von PostgreSQL ausgeführt wird.
 
 > [!NOTE]
-> Die PostgreSQL-Sicherung und -Wiederherstellung kann auf verschiedene Weisen erfolgen. Sie haben die Möglichkeit, andere Methoden als die in diesem Dokument genannten zu wählen. Wenn Sie beispielsweise eine Sicherung und anschließende Wiederherstellung auf einem PostgreSQL-Client ausführen möchten, finden Sie in der [Dokumentation](./howto-migrate-using-dump-and-restore.md) Einzelheiten zu den einzelnen Schritten und bewährten Methoden. Die detaillierte Syntax für Sicherung und Wiederherstellung mit zusätzlichen Parametern finden Sie in den Artikeln [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html). 
+> Die PostgreSQL-Sicherung und -Wiederherstellung kann auf verschiedene Weisen erfolgen. Sie können sich für eine Migration mit einer der in diesem Leitfaden angebotenen Methoden entscheiden oder alternative Möglichkeiten wählen, die Ihren Bedürfnissen entsprechen. Die detaillierte Syntax für Sicherung und Wiederherstellung mit zusätzlichen Parametern finden Sie in den Artikeln [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html). 
 
 
-## <a name="prerequisites-for-using-dump-and-restore-with-azure-postgresql"></a>Voraussetzungen für die Sicherung und Wiederherstellung mit Azure PostgreSQL
+## <a name="prerequisites-for-using-dump-and-restore-with-azure-database-for-postgresql"></a>Voraussetzungen für die Sicherung und Wiederherstellung mit Azure Database for PostgreSQL
  
 Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
-- Quelldatenbank der Version 9.5, 9.6 oder 10 (Azure Database for PostgreSQL – Single Server)
-- Zieldatenbankserver mit der gewünschten PostgreSQL-Hauptversion von [Azure Database for PostgreSQL-Server](quickstart-create-server-database-portal.md). 
-- Clientsystem (Linux), auf dem PostgreSQL sowie die Befehlszeilenprogramme [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) installiert sind. 
-- Alternativ können Sie [Azure Cloud Shell](https://shell.azure.com) verwenden, indem Sie auf der Menüleiste rechts oben im [Azure-Portal](https://portal.azure.com) auf Azure Cloud Shell klicken. Sie müssen sich bei Ihrem Konto `az login` anmelden, ehe Sie die Befehle zur Sicherung und Wiederherstellung ausführen können.
-- Den Standort Ihres PostgreSQL-Clients, z. B. eine VM, die vorzugsweise in der gleichen Region wie der Quell- und Zielserver läuft. 
+
+- Eine PostgreSQL-**Quelldatenbank** mit Version 9.5, 9.6 oder 10, für die Sie ein Upgrade ausführen möchten
+- Ein PostgreSQL-[Zieldatenbankserver](quickstart-create-server-database-portal.md) mit der gewünschten Hauptversion von **Azure Database for PostgreSQL** 
+- Ein PostgreSQL-Clientsystem zum Ausführen der Sicherungs- und Wiederherstellungsbefehle
+  - Dabei kann es sich um einen Linux- oder Windows-Client handeln, auf dem PostgreSQL sowie die Befehlszeilenprogramme [pg_dump](https://www.postgresql.org/docs/current/static/app-pgdump.html) und [pg_restore](https://www.postgresql.org/docs/current/static/app-pgrestore.html) installiert sind. 
+  - Alternativ können Sie [Azure Cloud Shell](https://shell.azure.com) verwenden, indem Sie auf der Menüleiste rechts oben im [Azure-Portal](https://portal.azure.com) auf Azure Cloud Shell klicken. Sie müssen sich bei Ihrem Konto `az login` anmelden, ehe Sie die Befehle zur Sicherung und Wiederherstellung ausführen können.
+- Ihr PostgreSQL-Client, der vorzugsweise in derselben Region wie der Quell- und Zielserver ausgeführt wird 
+
 
 ## <a name="additional-details-and-considerations"></a>Weitere Details und Überlegungen
 - Sie können die Verbindungszeichenfolge für die Quell- und Zieldatenbank finden, indem Sie im Portal auf „Verbindungszeichenfolgen“ klicken. 
@@ -52,16 +55,12 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
 - Erstellen Sie entsprechende Datenbanken auf dem Zieldatenbankserver.
 - Sie können das Upgrade von `azure_maintenance` -oder Vorlagendatenbanken überspringen.
 - Anhand der obigen Tabellen können Sie feststellen, ob die Datenbank für diesen Migrationsmodus geeignet ist.
-- Wenn Sie Azure Cloud Shell verwenden möchten, erfolgt für die Sitzung nach 20 Minuten ein Timeout. Wenn die Datenbankgröße kleiner als 10 GB ist, können Sie das Upgrade ohne Timeout abschließen. Andernfalls müssen Sie die Sitzung möglicherweise durch andere Mittel geöffnet halten, z. B. durch einmaliges Drücken der <Enter>-Taste alle 10-15 Minuten. 
+- Wenn Sie Azure Cloud Shell verwenden möchten, sollten Sie beachten, dass die Sitzung nach 20 Minuten ein Timeout verursacht. Wenn die Datenbankgröße kleiner als 10 GB ist, können Sie das Upgrade möglicherweise ohne ein Timeout der Sitzung abschließen. Andernfalls müssen Sie die Sitzung möglicherweise durch andere Mittel geöffnet halten, z. B. durch einmaliges Drücken der <Enter>-Taste alle 10-15 Minuten. 
 
-> [!TIP] 
-> - Wenn Sie für Quell- und Zieldatenbank dasselbe Kennwort verwenden, können Sie die Umgebungsvariable `PGPASSWORD=yourPassword` festlegen.  Dann müssen Sie nicht jedes Mal ein Kennwort angeben, wenn Sie Befehle wie psql, pg_dump und pg_restore ausführen.  Ebenso können Sie zusätzliche Variablen wie `PGUSER`, `PGSSLMODE` usw. einrichten. Weitere Informationen finden Sie unter [PostgreSQL-Umgebungsvariablen](https://www.postgresql.org/docs/11/libpq-envars.html).
->  
-> - Wenn Ihr PostgreSQL-Server TLS-/SSL-Verbindungen erfordert (auf Azure Database for PostgreSQL-Servern standardmäßig aktiviert), legen Sie eine Umgebungsvariable `PGSSLMODE=require` fest, damit das pg_restore-Tool über TLS eine Verbindung herstellt. Erfolgt die Verbindung nicht über TLS, kann der Fehler möglicherweise wie folgt lauten: `FATAL:  SSL connection is required. Please specify SSL options and retry.`
->
-> - Führen Sie in der Windows-Befehlszeile den Befehl `SET PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen. Führen Sie unter Linux oder Bash den Befehl `export PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen.
 
 ## <a name="example-database-used-in-this-guide"></a>In dieser Anleitung verwendete Beispieldatenbank
+
+In den Beispielen in diesem Leitfaden werden zur Veranschaulichung die folgenden Quellserver-, Zielserver- und Datenbanknamen verwendet.
 
  | **Beschreibung** | **Wert** |
  | ------- | ------- |
@@ -73,15 +72,28 @@ Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
  | Zieldatenbank | bench5gb |
  | Zielbenutzername | pg@pg-11 |
 
-## <a name="method-1-upgrade-with-streaming-backups-to-the-target"></a>Methode 1: Upgrade durch Streaming der Sicherungen in das Ziel 
+## <a name="upgrade-your-databases-using-offline-migration-methods"></a>Datenbankupgrade mithilfe von Offlinemigrationsmethoden
+Sie können eine der in diesem Abschnitt beschriebenen Methoden für Ihre Upgrades verwenden. Sie können die folgenden Tipps bei der Durchführung der Aufgaben nutzen.
 
-Bei dieser Methode wird die gesamte Datenbanksicherung direkt zum Zieldatenbankserver gestreamt, ohne dass die Sicherung im Client gespeichert wird. Folglich kann diese Methode bei einem Client mit begrenztem Speicherplatz verwendet und sogar über Azure Cloud Shell ausgeführt werden. 
+- Wenn Sie für Quell- und Zieldatenbank dasselbe Kennwort verwenden, können Sie die Umgebungsvariable `PGPASSWORD=yourPassword` festlegen.  Dann müssen Sie nicht jedes Mal ein Kennwort angeben, wenn Sie Befehle wie „psql“, „pg_dump“ und „pg_restore“ ausführen.  Ebenso können Sie zusätzliche Variablen wie `PGUSER`, `PGSSLMODE` usw. einrichten. Weitere Informationen finden Sie unter [PostgreSQL-Umgebungsvariablen](https://www.postgresql.org/docs/11/libpq-envars.html).
+  
+- Wenn Ihr PostgreSQL-Server TLS-/SSL-Verbindungen erfordert (auf Azure Database for PostgreSQL-Servern standardmäßig aktiviert), legen Sie eine Umgebungsvariable `PGSSLMODE=require` fest, damit das pg_restore-Tool über TLS eine Verbindung herstellt. Erfolgt die Verbindung nicht über TLS, kann der Fehler möglicherweise wie folgt lauten: `FATAL:  SSL connection is required. Please specify SSL options and retry.`
+
+- Führen Sie in der Windows-Befehlszeile den Befehl `SET PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen. Führen Sie unter Linux oder Bash den Befehl `export PGSSLMODE=require` aus, bevor Sie den Befehl „pg_restore“ ausführen.
+
+### <a name="method-1-migrate-using-dump-file"></a>Methode 1: Migrieren mit einer Sicherungsdatei
+
+Diese Methode umfasst zwei Schritte. Zuerst wird eine Sicherung vom Quellserver erstellt. Der zweite Schritt besteht darin, die Sicherungsdatei auf dem Zielserver wiederherzustellen. Weitere Informationen finden Sie in der Dokumentation [Migrieren durch Sicherungen und Wiederherstellungen](howto-migrate-using-dump-and-restore.md). Dies ist die empfohlene Methode, wenn Sie über umfangreiche Datenbanken verfügen und Ihr Clientsystem genügend Speicherplatz für die Speicherung der Sicherungsdatei aufweist.
+
+### <a name="method-2-migrate-using-streaming-the-dump-data-to-the-target-database"></a>Methode 2: Migrieren durch das Streamen der Sicherungsdaten in die Zieldatenbank
+
+Wenn Sie keinen PostgreSQL-Client besitzen oder Azure Cloud Shell verwenden möchten, können Sie diese Methode nutzen. Die Datenbanksicherung wird direkt auf den Zieldatenbankserver gestreamt, ohne dass die Sicherung auf dem Client gespeichert wird. Folglich kann diese Methode bei einem Client mit begrenztem Speicherplatz verwendet und sogar über Azure Cloud Shell ausgeführt werden. 
 
 1. Vergewissern Sie sich mit dem Befehl `\l`, dass die Datenbank auf dem Zielserver vorhanden ist. Wenn die Datenbank nicht vorhanden ist, erstellen Sie sie.
    ```azurecli-interactive
     psql "host=myTargetServer port=5432 dbname=postgres user=myUser password=###### sslmode=mySSLmode"
     ```
-    ```bash
+    ```SQL
     postgres> \l   
     postgres> create database myTargetDB;
    ```
@@ -99,7 +111,7 @@ Bei dieser Methode wird die gesamte Datenbanksicherung direkt zum Zieldatenbanks
 3. Nach Abschluss des Prozesses zum Upgrade (Migration) können Sie Ihre Anwendung auf dem Zielserver testen. 
 4. Wiederholen Sie diesen Vorgang für alle Datenbanken auf dem Server.
 
- In der folgenden Tabelle finden Sie eine Angabe zur Dauer des Upgrades mit dieser Methode. Die Daten werden mithilfe von [pgbench](https://www.postgresql.org/docs/10/pgbench.html) aufgefüllt. Da Ihre Datenbank eine andere Anzahl von Objekten mit unterschiedlichen Größen als die von pgbench generierten Tabellen und Indizes enthalten kann, wird dringend empfohlen, die Befehle zur Sicherung und Wiederherstellung Ihrer Datenbank zu testen, um die tatsächliche Dauer der Aktualisierung Ihrer Datenbank zu ermitteln. 
+ Die folgende Tabelle veranschaulicht beispielsweise, wie lange die Migration mit der Sicherungsmethode per Streaming gedauert hat. Die Beispieldaten werden mithilfe von [pgbench](https://www.postgresql.org/docs/10/pgbench.html) aufgefüllt. Da Ihre Datenbank eine andere Anzahl von Objekten mit unterschiedlichen Größen als die von pgbench generierten Tabellen und Indizes enthalten kann, wird dringend empfohlen, die Befehle zur Sicherung und Wiederherstellung Ihrer Datenbank zu testen, um die tatsächliche Dauer der Aktualisierung Ihrer Datenbank zu ermitteln. 
 
 | **Datenbankgröße** | **Ca. benötigte Zeit** | 
 | ----- | ------ |
@@ -109,9 +121,9 @@ Bei dieser Methode wird die gesamte Datenbanksicherung direkt zum Zieldatenbanks
 | 50 GB | 1-1,5 Stunden |
 | 100 GB | 2,5-3 Stunden|
    
-## <a name="method-2-upgrade-with-parallel-dump-and-restore"></a>Methode 2: Upgrade mit paralleler Sicherung und Wiederherstellung 
+### <a name="method-3-migrate-using-parallel-dump-and-restore"></a>Method 3: Migrieren durch parallele Sicherungen und Wiederherstellungen 
 
-Diese Methode eignet sich, wenn die Datenbank nur wenige größere Tabellen enthält und Sie den Sicherungs- und Wiederherstellungsprozess für diese Datenbank parallelisieren möchten. Sie benötigen genügend lokalen Datenträgerspeicher für die Sicherungen Ihrer Datenbanken. Dieser parallele Sicherungs- und Wiederherstellungsprozess verringert den Zeitaufwand für die gesamte Migration bzw. das gesamte Upgrade. Beispielsweise wurde der Vorgang für die 50 GB große pgbench-Datenbank, deren Migration 1-1,5 Stunden dauerte, in weniger als 30 Minuten abgeschlossen.
+Diese Methode eignet sich, wenn die Datenbank nur wenige größere Tabellen enthält und Sie den Sicherungs- und Wiederherstellungsprozess für diese Datenbank parallel ausführen möchten. Außerdem benötigen Sie auf Ihrem Clientsystem ausreichend Speicherplatz für die Sicherungen. Dieser parallele Sicherungs- und Wiederherstellungsprozess verringert den Zeitaufwand für die gesamte Migration. Beispielsweise wurde der Vorgang für die 50 GB große pgbench-Datenbank, deren Migration mit Methode 1 und 2 zwischen 1 und 1,5 Stunden dauerte, mit dieser Methode in weniger als 30 Minuten abgeschlossen.
 
 1. Erstellen Sie für jede Datenbank auf dem Quellserver eine entsprechende Datenbank auf dem Zielserver.
 

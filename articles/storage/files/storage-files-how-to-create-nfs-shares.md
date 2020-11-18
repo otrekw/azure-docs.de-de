@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: bf75537c0baf029bc3fc63e320f6290a1f41a524
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738847"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629460"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 
@@ -38,7 +38,7 @@ Azure-Dateifreigaben sind vollständig verwaltete Dateifreigaben, die in der Clo
     - [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
     - [Konfigurieren eines Site-to-Site-VPN zur Verwendung mit Azure Files](storage-files-configure-s2s-vpn.md)
     - Konfigurieren von [ExpressRoute](../../expressroute/expressroute-introduction.md)
-- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+- Falls Sie die Azure CLI verwenden möchten, [installieren Sie die neueste Version](/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 ## <a name="register-the-nfs-41-protocol"></a>Registrieren des NFS 4.1-Protokolls
 
@@ -96,7 +96,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
     - Kein Root-Squash: Remotesuperuser (Stamm) erhält Zugriff als Stamm.
     - All Squash: Der gesamte Benutzerzugriff wird UID (65534) und GID (65534) zugeordnet.
     
-1. Klicken Sie auf **Erstellen** .
+1. Klicken Sie auf **Erstellen**.
 
     :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/create-nfs-file-share.png" alt-text="Screenshots des Blatts für die Erstellung einer Dateifreigabe":::
 
@@ -110,7 +110,7 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
    echo $PSVersionTable.PSVersion.ToString() 
    ```
     
-   Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](https://docs.microsoft.com/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
+   Informationen zum Aktualisieren der PowerShell-Version finden Sie unter [Aktualisieren einer vorhandenen Windows PowerShell-Version](/powershell/scripting/install/installing-windows-powershell?view=powershell-6#upgrading-existing-windows-powershell).
     
 1. Installieren Sie die aktuelle Version des PowerShellGet-Moduls.
 
@@ -120,13 +120,13 @@ Nachdem Sie nun ein FileStorage-Konto erstellt und das Netzwerk konfiguriert hab
 
 1. Schließen Sie die PowerShell-Konsole, und öffnen Sie sie dann erneut.
 
-1. Installieren Sie die Version **2.5.2-preview** des **Az.Storage** -Vorschaumoduls:
+1. Installieren Sie die Version **2.5.2-preview** des **Az.Storage**-Vorschaumoduls:
 
    ```powershell
    Install-Module Az.Storage -Repository PsGallery -RequiredVersion 2.5.2-preview -AllowClobber -AllowPrerelease -Force  
    ```
 
-   Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](https://docs.microsoft.com/powershell/azure/install-az-ps?view=azps-3.0.0).
+   Weitere Informationen zum Installieren von PowerShell-Modulen finden Sie unter [Installieren des Azure PowerShell-Moduls](/powershell/azure/install-az-ps?view=azps-3.0.0).
    
 1. Im Azure PowerShell-Modul verwenden Sie das Cmdlet [New-AzRmStorageShare](/powershell/module/az.storage/new-azrmstorageshare) zum Erstellen einer Premium-Dateifreigabe.
 

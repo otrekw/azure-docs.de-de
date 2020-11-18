@@ -6,20 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/04/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11708aeb434f3b258377c02f15214f1ac9ae4295
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: d0472b2adb3213338b9fbc4e3a17a2c3444eb113
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393624"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647578"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory
 
@@ -42,7 +42,7 @@ Einige Produkte, die SharePoint und OneDrive enthalten, z. B. Microsoft 365, un
 
 3. Wählen Sie in der Bestätigungs-E-Mail von Power BI **Yes, that's me** (Ja, das bin ich) aus.
 
-4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Microsoft 365 Admin Center](https://portal.office.com/admintakeover) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden ( **Become the Admin** ), der bereits in der nicht verwalteten Organisation bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
+4. Melden Sie sich mit dem Power BI-Benutzerkonto im [Microsoft 365 Admin Center](https://portal.office.com/admintakeover) an. Sie erhalten eine Nachricht mit der Aufforderung, der Administrator des Domänennamens zu werden (**Become the Admin**), der bereits in der nicht verwalteten Organisation bestätigt wurde. Wählen Sie **Yes, I want to be the admin** (Ja, ich möchte der Administrator werden) aus.
   
    ![Erster Screenshot für „Become the Admin“](./media/domains-admin-takeover/become-admin-first.png)
   
@@ -57,7 +57,7 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
 ### <a name="adding-the-domain-name-to-a-managed-organization-in-azure-ad"></a>Hinzufügen des Domänennamens zu einer verwalteten Organisation in Azure AD
 
 1. Öffnen Sie das [Microsoft 365 Admin Center](https://admin.microsoft.com).
-2. Wählen Sie die Registerkarte **Benutzer** aus, und erstellen Sie ein neues Benutzerkonto mit einem Namen wie *user\@fourthcoffeexyz.onmicrosoft.com* , der keinen benutzerdefinierten Domänennamen verwendet. 
+2. Wählen Sie die Registerkarte **Benutzer** aus, und erstellen Sie ein neues Benutzerkonto mit einem Namen wie *user\@fourthcoffeexyz.onmicrosoft.com*, der keinen benutzerdefinierten Domänennamen verwendet. 
 3. Stellen Sie sicher, dass das neue Benutzerkonto globale Administratorberechtigungen für die Azure AD-Organisation hat.
 4. Öffnen Sie die Registerkarte **Domänen** im Microsoft 365 Admin Center, wählen Sie den Domänennamen aus, und klicken Sie auf **Entfernen**. 
   
@@ -67,7 +67,7 @@ Wenn Sie die vorherigen Schritte abgeschlossen haben, sind Sie jetzt der globale
   
 6. Melden Sie sich beim [Azure AD Admin Center](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Overview) mit dem Konto an, das globale Administratorberechtigungen für die Azure AD-Organisation hat.
   
-7. Klicken Sie auf **Benutzerdefinierte Domänennamen** , und fügen Sie den Domänennamen hinzu. Sie müssen die DNS-TXT-Einträge eingeben, um die Inhaberschaft des Domänennamens zu bestätigen. 
+7. Klicken Sie auf **Benutzerdefinierte Domänennamen**, und fügen Sie den Domänennamen hinzu. Sie müssen die DNS-TXT-Einträge eingeben, um die Inhaberschaft des Domänennamens zu bestätigen. 
   
    ![Überprüfte Domäne, wie zu Azure AD hinzugefügt](./media/domains-admin-takeover/add-domain-to-azure-ad.png)
   

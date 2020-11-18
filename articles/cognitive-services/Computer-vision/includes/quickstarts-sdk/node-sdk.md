@@ -10,12 +10,12 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 9c0ed50cc0f7ef3580d1441fe2f361065e6f8524
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: b6c879d126b0c16f2dc6ceb41a1dfcc3ecf6a2d5
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886572"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94639613"
 ---
 <a name="HOLTop"></a>
 
@@ -56,7 +56,7 @@ npm install @azure/cognitiveservices-computervision
 
 Die Datei `package.json` Ihrer App wird mit den Abhängigkeiten aktualisiert.
 
-Erstellen Sie die neue Datei *index.js* , und öffnen Sie sie in einem Text-Editor. Fügen Sie die folgenden import-Anweisungen hinzu.
+Erstellen Sie die neue Datei *index.js*, und öffnen Sie sie in einem Text-Editor. Fügen Sie die folgenden import-Anweisungen hinzu.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imports)]
 
@@ -79,7 +79,7 @@ Die folgenden Klassen und Schnittstellen dienen zum Verarbeiten einiger Hauptfun
 |Name|BESCHREIBUNG|
 |---|---|
 | [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest) | Diese Klasse wird für alle Funktionen der Maschinelles Sehen-API benötigt. Sie instanziieren sie mit Ihren Abonnementinformationen und verwenden sie für die meisten Bildvorgänge.|
-|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes** -Werte an. |
+|[VisualFeatureTypes](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/visualfeaturetypes?view=azure-node-latest)| Diese Enumeration definiert die verschiedenen Typen der Bildanalyse, die bei einem standardmäßigen Analysevorgang ausgeführt werden können. Sie geben abhängig von Ihren Anforderungen verschiedene **VisualFeatureTypes**-Werte an. |
 
 ## <a name="code-examples"></a>Codebeispiele
 
@@ -104,7 +104,7 @@ Definieren Sie anschließend die Funktion `computerVision`, und deklarieren Sie 
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
-Mit dem Code in diesem Abschnitt werden Remotebilder analysiert, um verschiedene visuelle Merkmale zu extrahieren. Sie können diese Vorgänge im Rahmen der **analyzeImage** -Methode des Clientobjekts durchführen, oder Sie können sie mit individuellen Methoden aufrufen. Ausführlichere Informationen finden Sie in der [Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest).
+Mit dem Code in diesem Abschnitt werden Remotebilder analysiert, um verschiedene visuelle Merkmale zu extrahieren. Sie können diese Vorgänge im Rahmen der **analyzeImage**-Methode des Clientobjekts durchführen, oder Sie können sie mit individuellen Methoden aufrufen. Ausführlichere Informationen finden Sie in der [Referenzdokumentation](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest).
 
 > [!NOTE]
 > Sie können auch ein lokales Bild analysieren. Sehen Sie sich die [ComputerVisionClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-computervision/computervisionclient?view=azure-node-latest)-Methoden an, etwa **analyzeImageInStream**. Alternativ finden Sie im Beispielcode auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js) Szenarien zu lokalen Bildern.
@@ -215,7 +215,7 @@ Definieren Sie die Hilfsfunktion `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
-## <a name="extract-text-ocr-with-read"></a>Extrahieren von Text (OCR) mit einem Lesevorgang
+## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
 
 Maschinelles Sehen kann sichtbaren Text in einem Bild extrahieren und in eine Zeichenfolge konvertieren. In diesem Beispiel werden die Lesevorgänge verwendet.
 
@@ -239,7 +239,7 @@ Fügen Sie den unten angegebenen Code hinzu, mit dem die Funktion `readTextFromU
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
 
-Definieren Sie die Funktion `readTextFromURL`. Hiermit wird die **read** -Methode für das Clientobjekt aufgerufen, mit der eine Vorgangs-ID zurückgegeben und ein asynchroner Prozess zum Auslesen des Bildinhalts gestartet wird. Anschließend wird die Vorgangs-ID verwendet, um den Vorgangsstatus zu überprüfen, bis die Ergebnisse zurückgegeben werden. Danach werden die extrahierten Ergebnisse zurückgegeben.
+Definieren Sie die Funktion `readTextFromURL`. Hiermit wird die **read**-Methode für das Clientobjekt aufgerufen, mit der eine Vorgangs-ID zurückgegeben und ein asynchroner Prozess zum Auslesen des Bildinhalts gestartet wird. Anschließend wird die Vorgangs-ID verwendet, um den Vorgangsstatus zu überprüfen, bis die Ergebnisse zurückgegeben werden. Danach werden die extrahierten Ergebnisse zurückgegeben.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_helper)]
 

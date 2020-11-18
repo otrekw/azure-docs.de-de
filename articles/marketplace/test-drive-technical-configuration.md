@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/13/2019
 author: trkeya
 ms.author: trkeya
-ms.openlocfilehash: 6faecdd561d7c434d2948e70886d6f1b19115d9f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: f628c2a4c2f8eb474bbc34ef2d3fd2f03f668992
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504831"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629902"
 ---
 # <a name="test-drive-technical-configuration"></a>Technische Konfiguration der Testversion
 
@@ -74,7 +74,7 @@ Erstellen Sie ein separates eindeutiges Azure-Abonnement, und stellen Sie es ber
 
 - **Azure AD-App-ID** (erforderlich): Geben Sie Ihre [Anwendungs-ID](../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in) für Azure Active Directory (AD) ein. Um diese ID zu ermitteln, melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an, wählen Sie im linken Menü die Registerkarte „Active Directory“ und dann **App-Registrierungen** aus, und suchen Sie die unter **Anwendungs-ID** aufgeführte Nummer (z. B. `50c464d3-4930-494c-963c-1e951d15360e`).
 
-- **Azure AD app client secret** (Geheimer Clientschlüssel der Azure AD-App) (erforderlich): Geben Sie den [geheimen Clientschlüssel](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen** , und wählen Sie dann Ihre Testversion-App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und klicken Sie dann auf **Hinzufügen**. Stellen Sie sicher, dass Sie den Wert kopieren. Navigieren Sie erst von der Seite weg, nachdem Sie den Wert kopiert haben.
+- **Azure AD app client secret** (Geheimer Clientschlüssel der Azure AD-App) (erforderlich): Geben Sie den [geheimen Clientschlüssel](../active-directory/develop/howto-create-service-principal-portal.md#option-2-create-a-new-application-secret) Ihrer Azure AD-Anwendung ein. Um diesen Wert zu finden, melden Sie sich beim [Azur-Portal](https://portal.azure.com/) an. Wählen Sie im linken Menü die Registerkarte **Azure Active Directory** aus, klicken Sie auf **App-Registrierungen**, und wählen Sie dann Ihre Testversion-App aus. Wählen Sie als Nächstes **Zertifikate und Geheimnisse** und dann **Neuer geheimer Clientschlüssel** aus, geben Sie eine Beschreibung ein, wählen Sie **Nie** unter **Läuft ab** aus, und klicken Sie dann auf **Hinzufügen**. Stellen Sie sicher, dass Sie den Wert kopieren. Navigieren Sie erst von der Seite weg, nachdem Sie den Wert kopiert haben.
 
 ## <a name="test-drive-listings"></a>Listungen von Testversionen
 

@@ -9,12 +9,13 @@ ms.reviewer: ebertra
 ms.date: 11/09/2020
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: bf7e841586250142c23d6672491af30a011043ca
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+monikerRange: '>=iotedge-2020-11'
+ms.openlocfilehash: ef92895374f07c79f8ba8d626a0aab3d89733f40
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447488"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629647"
 ---
 # <a name="publish-and-subscribe-with-azure-iot-edge"></a>Veröffentlichen und Abonnieren mit Azure IoT Edge
 
@@ -30,8 +31,10 @@ Sie können den Azure IoT Edge-MQTT-Broker zum Veröffentlichen und Abonnieren v
 - Ein **IoT Hub** der SKU F1, S1, S2 oder S3.
 - Sie haben ein **IoT Edge-Gerät mit Version 1.2 oder höher**. Da sich der IoT Edge-MQTT-Broker zurzeit in der öffentlichen Vorschau befindet, legen Sie die folgenden Umgebungsvariablen für den edgeHub-Container auf „true“ fest, um den MQTT-Broker zu aktivieren:
 
-    - experimentalFeatures__enabled
-    - mqttbroker__enabled
+   | Name | Wert |
+   | - | - |
+   | `experimentalFeatures__enabled` | `true` |
+   | `experimentalFeatures__mqttBrokerEnabled` | `true` |
 
 - Auf dem IoT Edge-Gerät sind **Mosquitto-Clients** installiert. In diesem Artikel werden die beliebten Mosquitto-Clients verwendet, die [MOSQUITTO_PUB](https://mosquitto.org/man/mosquitto_pub-1.html) und [MOSQUITTO_SUB](https://mosquitto.org/man/mosquitto_sub-1.html) enthalten. Stattdessen könnten aber auch andere MQTT-Clients verwendet werden. Führen Sie zum Installieren der Mosquitto-Clients auf einem Ubuntu-Gerät den folgenden Befehl aus:
 

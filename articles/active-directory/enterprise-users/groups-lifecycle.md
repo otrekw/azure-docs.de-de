@@ -8,19 +8,19 @@ manager: mtillman
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 08/13/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb51f402cd7032358e6a9d2f9fad9aa64316b809
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f3544d81059cd4c25c584d8af1b6fcd45a41b8bb
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373335"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650715"
 ---
 # <a name="configure-the-expiration-policy-for-microsoft-365-groups"></a>Konfigurieren der Ablaufrichtlinie für Microsoft 365-Gruppen
 
@@ -84,8 +84,8 @@ Weitere Informationen zu Berechtigungen zum Wiederherstellen einer gelöschten G
     - Wählen Sie aus, welche Microsoft 365-Gruppen ablaufen sollen. Sie können den Ablauf wie folgt festlegen:
       - **Alle** Microsoft 365-Gruppen
       - Eine Liste von **ausgewählten** Microsoft 365 Gruppen
-      - Für **Keine** , um den Ablauf für alle Gruppen einzuschränken
-    - Speichern Sie die Einstellungen durch Auswahl von **Speichern** .
+      - Für **Keine**, um den Ablauf für alle Gruppen einzuschränken
+    - Speichern Sie die Einstellungen durch Auswahl von **Speichern**.
 
 > [!NOTE]
 > - Beim erstmaligen Einrichten des Ablaufs wird für alle Gruppen, deren Alter das Ablaufintervall übersteigt, ein Ablaufzeitraum von 35 Tagen festgelegt – außer wenn der Besitzer ihn verlängert oder die Gruppe automatisch erneuert wird.

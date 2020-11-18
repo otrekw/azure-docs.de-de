@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.date: 07/11/2017
 ms.author: kenwith
 ms.reviewer: asteen
-ms.openlocfilehash: 0534c85548b1d8b6203aaac4911dc851dd49d81a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1823de88597756ba3db9aee0dc29501b1ba914a4
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89460353"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646235"
 ---
 # <a name="troubleshoot-password-based-single-sign-on-in-azure-ad"></a>Behandeln von Problemen beim kennwortbasierten einmaligen Anmelden in Azure AD
 
@@ -36,7 +36,7 @@ Dieses Problem tritt normalerweise auf, wenn der Anwendungsanbieter vor Kurzem d
 
 Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Integrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Falls eine dieser Integrationen nicht richtig funktioniert, können Sie eine Supportanfrage erstellen, damit der Fehler so schnell wie möglich behoben werden kann.
 
-**Falls Sie Kontakt zum Hersteller der Anwendung haben**, können Sie ihn an Microsoft verweisen, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../azuread-dev/howto-app-gallery-listing.md).
+**Falls Sie Kontakt zum Hersteller der Anwendung haben**, können Sie ihn an Microsoft verweisen, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="credentials-are-filled-in-and-submitted-but-the-page-indicates-the-credentials-are-incorrect"></a>Die Anmeldeinformationen wurden angegeben und gesendet, die Seite gibt jedoch an, dass die Anmeldeinformationen falsch sind
 
@@ -62,7 +62,7 @@ Sollten die obigen Vorschläge nicht funktionieren, wurde unter Umständen auf A
 
 Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../azuread-dev/howto-app-gallery-listing.md).
+Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="check-if-the-applications-login-page-has-changed-recently-or-requires-an-additional-field"></a>Überprüfen Sie, ob die Anmeldeseite der Anwendung vor Kurzem geändert wurde oder ein zusätzliches Feld erfordert.
 
@@ -70,7 +70,7 @@ Wenn die Anmeldeseite der Anwendung erheblich geändert wurde, kann dies in eini
 
 Microsoft verfügt zwar über Technologie, mit der automatisch erkannt werden kann, wenn es für Anwendungsintegrationen zu Fehlern kommt. Unter Umständen ist es aber nicht möglich, die Probleme sofort zu finden, oder die Lösung des Problems dauert einige Zeit. Wenn eine Integration nicht richtig funktioniert, können Sie eine Supportanfrage öffnen, damit das Problem so schnell wie möglich behoben werden kann. 
 
-Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../azuread-dev/howto-app-gallery-listing.md).
+Falls Sie darüber hinaus **Kontakt zum Hersteller der Anwendung haben,** **verweisen Sie ihn an uns**, damit wir mit ihm zusammenarbeiten können, um die Anwendung in Azure Active Directory zu integrieren. Verweisen Sie den Hersteller als Einstieg an [Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten](../develop/v2-howto-app-gallery-listing.md).
 
 ## <a name="capture-sign-in-fields-for-an-app"></a>Erfassen von Anmeldefeldern für eine Anwendung
 

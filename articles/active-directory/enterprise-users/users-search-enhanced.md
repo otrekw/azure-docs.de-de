@@ -8,19 +8,19 @@ manager: daveba
 editor: ''
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 10/23/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0e2ce094b792d6f3f7e5f8fe1920d87a9cceea2
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: d0136f7677aa722e578ac54c4f7d34338e47b0f7
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517174"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646609"
 ---
 # <a name="user-management-enhancements-preview-in-azure-active-directory"></a>Erweiterungen bei der Benutzerverwaltung (Vorschau) – Azure Active Directory
 
@@ -39,7 +39,7 @@ Zu den Änderungen in dieser Vorschau gehören:
 
 ## <a name="find-the-preview"></a>Verwenden der Vorschau
 
-Die Vorschau ist standardmäßig aktiviert, sodass Sie sie sofort verwenden können. Klicken Sie auf der Seite **Alle Benutzer** auf **Previewfunktionen** , um die neuesten Features und Verbesserungen kennenzulernen. Alle Seiten, die als Teil dieser Vorschauversion aktualisiert wurden, zeigen ein Vorschautag an. Wenn Probleme auftreten, können Sie jederzeit zurück zur Legacybenutzeroberfläche wechseln:
+Die Vorschau ist standardmäßig aktiviert, sodass Sie sie sofort verwenden können. Klicken Sie auf der Seite **Alle Benutzer** auf **Previewfunktionen**, um die neuesten Features und Verbesserungen kennenzulernen. Alle Seiten, die als Teil dieser Vorschauversion aktualisiert wurden, zeigen ein Vorschautag an. Wenn Probleme auftreten, können Sie jederzeit zurück zur Legacybenutzeroberfläche wechseln:
 
 1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) an, und klicken Sie auf **Benutzer**.
 1. Klicken Sie auf der Seite **Benutzer – Alle Benutzer** auf das Banner oben auf der Seite.
@@ -81,14 +81,14 @@ Auf der Seite **Gelöschte Benutzer** werden alle auf der Seite **Alle Benutzer*
 > [!NOTE]
 > Löschtermine werden in koordinierter Weltzeit (UTC) angezeigt.
 
-Einige Spalten werden standardmäßig angezeigt. Wenn Sie weitere Spalten hinzufügen möchten, klicken Sie auf der Seite auf **Spalten** , wählen Sie die gewünschten Spaltennamen aus, und klicken Sie zum Speichern der Einstellungen auf **OK**.
+Einige Spalten werden standardmäßig angezeigt. Wenn Sie weitere Spalten hinzufügen möchten, klicken Sie auf der Seite auf **Spalten**, wählen Sie die gewünschten Spaltennamen aus, und klicken Sie zum Speichern der Einstellungen auf **OK**.
 
 ### <a name="identity-issuers"></a>Identitätsaussteller
 
 Wenn Sie zusätzliche Informationen zu einem Aussteller anzeigen möchten, wie etwa den Anmeldetyp und die zugewiesene Aussteller-ID, klicken Sie in der Spalte **Identitätsaussteller** auf einen beliebigen Eintrag. Die Einträge in der Spalte **Identitätsaussteller** können mehrere Werte enthalten. Sind für eine Benutzeridentität mehrere Aussteller vorhanden, wird auf den Seiten **Alle Benutzer** und **Gelöschte Benutzer** in der Spalte **Identitätsaussteller** das Wort „Mehrere“ angezeigt. Außerdem werden im Detailbereich alle Aussteller aufgelistet.
 
 > [!NOTE]
-> Die Spalte **Quelle** wurde für eine präzisere Filterung durch mehrere Spalten (wie etwa **Erstellungstyp** , **Verzeichnissynchronisierung** und **Identitätsaussteller** ) ersetzt.
+> Die Spalte **Quelle** wurde für eine präzisere Filterung durch mehrere Spalten (wie etwa **Erstellungstyp**, **Verzeichnissynchronisierung** und **Identitätsaussteller**) ersetzt.
 
 ## <a name="user-list-search"></a>Suchen in der Benutzerliste
 
@@ -139,7 +139,7 @@ Frage | Antwort
 -------- | ------
 Warum wird der gelöschte Benutzer noch angezeigt, wenn das Datum der permanenten Löschung abgelaufen ist? | Das Datum der permanenten Löschung wird in der Zeitzone UTC angezeigt, sodass es möglicherweise nicht mit Ihrer aktuellen Zeitzone übereinstimmt. Außerdem ist dieses Datum das früheste Datum, nach dem der Benutzer endgültig aus der Organisation gelöscht wird, sodass dieser Vorgang möglicherweise noch läuft. Dauerhaft gelöschte Benutzer werden automatisch aus der Liste entfernt.
 Sind die Funktionen für Massenvorgänge für Benutzer und Gäste noch verfügbar? | Massenvorgänge wie die Massenerstellung, die Masseneinladung, die Massenlöschung oder der Download von Benutzern sind weiterhin für Benutzer und Gäste verfügbar. Sie wurden im Menü **Massenvorgänge** zusammengeführt. Die Option **Massenvorgänge** befindet sich oben auf der Seite **Alle Benutzer**.
-Was ist mit der Spalte „Quelle“ passiert? | Die Spalte **Quelle** wurde durch andere Spalten mit ähnlichen Informationen ersetzt. Sie können nun unabhängig voneinander nach diesen Werte filtern. Diese sind z. B. **Erstellungstyp** , **Verzeichnissynchronisierung** und **Identitätsaussteller**.
+Was ist mit der Spalte „Quelle“ passiert? | Die Spalte **Quelle** wurde durch andere Spalten mit ähnlichen Informationen ersetzt. Sie können nun unabhängig voneinander nach diesen Werte filtern. Diese sind z. B. **Erstellungstyp**, **Verzeichnissynchronisierung** und **Identitätsaussteller**.
 Was ist mit der Spalte „Benutzername“ passiert? | Die Spalte **Benutzername** wurde in **Benutzerprinzipalname** umbenannt. Dieser Name beschreibt den Inhalt der Spalte besser. Zudem wird nun für B2B-Gäste der vollständige Benutzerprinzipalname angezeigt. Dies entspricht auch der Anzeige in MS Graph.  
 
 ## <a name="next-steps"></a>Nächste Schritte

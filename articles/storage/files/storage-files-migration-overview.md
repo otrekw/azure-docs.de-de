@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 3/18/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: e3ecf29be94074f51ead3173f997154df6dfa88f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 995ae176a8eec58f8dc9522e6fac6fd78170014d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785611"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628916"
 ---
 # <a name="migrate-to-azure-file-shares"></a>Migrieren zu Azure-Dateifreigaben
 
@@ -34,8 +34,8 @@ Der Schlüssel bei jeder Migration liegt in der Erfassung sämtlicher anwendbare
 
 Hier sind die beiden grundlegenden Komponenten einer Datei:
 
-- **Datenstrom** : Der Datenstrom einer Datei speichert den Dateiinhalt.
-- **Dateimetadaten** : Die Dateimetadaten weisen diese Unterkomponenten auf:
+- **Datenstrom**: Der Datenstrom einer Datei speichert den Dateiinhalt.
+- **Dateimetadaten**: Die Dateimetadaten weisen diese Unterkomponenten auf:
    * Dateiattribute, z. B. Schreibschutz
    * Dateiberechtigungen, als *NTFS-Berechtigungen* oder *Datei- und Ordner-ACLs* bezeichnet
    * Zeitstempel, insbesondere für Erstellung und letzte Änderung
@@ -111,7 +111,7 @@ Es sind mehrere Tools zum Kopieren von Dateien von Microsoft und anderen Anbiete
 
     Beim ersten Ausführen des Tools wird ein Großteil der Daten kopiert. Diese erste Ausführung kann eine Weile dauern. Es dauert häufig länger, als Sie die Datenquelle für Ihre Geschäftsprozesse offline nehmen möchten.
 
-    Indem Sie eine Quelle an einem Ziel spiegeln (z. B. mit **robocopy /MIR** ), können Sie das Tool mit derselben Quelle und demselben Ziel erneut ausführen. Die Ausführung läuft viel schneller ab, da nur Änderungen an der Quelle transportiert werden müssen, die nach der vorherigen Ausführung aufgetreten sind. Ein Kopiertool auf diese Weise erneut auszuführen, kann die Ausfallzeit erheblich verringern.
+    Indem Sie eine Quelle an einem Ziel spiegeln (z. B. mit **robocopy /MIR**), können Sie das Tool mit derselben Quelle und demselben Ziel erneut ausführen. Die Ausführung läuft viel schneller ab, da nur Änderungen an der Quelle transportiert werden müssen, die nach der vorherigen Ausführung aufgetreten sind. Ein Kopiertool auf diese Weise erneut auszuführen, kann die Ausfallzeit erheblich verringern.
 
 In der folgenden Tabelle sind Microsoft-Tools und deren aktuelle Eignung für Azure-Dateifreigaben klassifiziert:
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden Tools beschrieben, die Ihnen beim Planen und Ausführ
 
 #### <a name="robocopy-from-microsoft-corporation"></a>RoboCopy der Microsoft Corporation
 
-RoboCopy ist eines der für Dateimigrationsvorgänge am besten geeigneten Tools. Es ist Teil von Windows. Die [Hauptdokumentation zu RoboCopy](https://docs.microsoft.com/windows-server/administration/windows-commands/robocopy) ist eine hilfreiche Quelle für die vielen Optionen dieses Tools.
+RoboCopy ist eines der für Dateimigrationsvorgänge am besten geeigneten Tools. Es ist Teil von Windows. Die [Hauptdokumentation zu RoboCopy](/windows-server/administration/windows-commands/robocopy) ist eine hilfreiche Quelle für die vielen Optionen dieses Tools.
 
 #### <a name="treesize-from-jam-software-gmbh"></a>TreeSize von der JAM Software GmbH
 

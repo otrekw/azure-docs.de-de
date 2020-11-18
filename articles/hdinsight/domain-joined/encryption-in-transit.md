@@ -7,19 +7,16 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/24/2020
-ms.openlocfilehash: 6f043a1cb870d003e371d2f20d0e1f6614c9201e
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: ac210adbc29075f27739b08dcf83eeedbeea3ed5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628982"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630361"
 ---
 # <a name="ipsec-encryption-in-transit-for-azure-hdinsight"></a>IPSec-Verschlüsselung während der Übertragung für Azure HDInsight
 
 In diesem Artikel wird die Implementierung der Verschlüsselung während der Übertragung für die Kommunikation zwischen Azure HDInsight-Clusterknoten erläutert.
-
-> [!Note]
-> Die Verschlüsselung während der Übertragung ist derzeit für die folgenden Regionen aktiviert: USA, Osten; USA, Süden-Mitte; USA, Westen 2
 
 ## <a name="background"></a>Hintergrund
 

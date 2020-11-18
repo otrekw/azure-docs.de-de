@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: fauhse
 ms.subservice: files
-ms.openlocfilehash: 128e4d0a421fc9ad4251f24f2cb37a217eeb1e31
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 046cca4e683a8f14893bf48ac8601b138a7c28a7
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322204"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630276"
 ---
 # <a name="storsimple-8100-and-8600-migration-to-azure-file-sync"></a>StorSimple 8100- und 8600-Migration zur Azure-Dateisynchronisierung
 
@@ -45,7 +45,7 @@ Migrationen, die von StorSimple-Volumes über Aufträge des Datentransformations
 
 Azure-Dateifreigaben eröffnen eine ganz neue Welt der Möglichkeiten zum Strukturieren der Bereitstellung Ihrer Dateidienste. Eine Azure-Dateifreigabe ist lediglich eine SMB-Freigabe in der Cloud, die Sie so einrichten können, dass Benutzer direkt über das SMB-Protokoll mit der vertrauten Kerberos-Authentifizierung und vorhandenen NTFS-Berechtigungen (Datei- und Ordnerzugriffssteuerungslisten) darauf zugreifen können. Erfahren Sie mehr über [identitätsbasierten Zugriff auf Azure-Dateifreigaben](storage-files-active-directory-overview.md).
 
-Eine Alternative zum direkten Zugriff ist die [Azure-Dateisynchronisierung](https://aka.ms/AFS). Die Azure-Dateisynchronisierung ist das direkte Gegenstück zur StorSimple-Funktionalität, bei der häufig verwendete Dateien lokal zwischengespeichert werden.
+Eine Alternative zum direkten Zugriff ist die [Azure-Dateisynchronisierung](./storage-sync-files-planning.md). Die Azure-Dateisynchronisierung ist das direkte Gegenstück zur StorSimple-Funktionalität, bei der häufig verwendete Dateien lokal zwischengespeichert werden.
 
 Die Azure-Dateisynchronisierung ist ein Microsoft-Clouddienst, der auf zwei Hauptkomponenten basiert:
 
@@ -56,7 +56,7 @@ In Azure-Dateifreigaben werden wichtige Dateigenauigkeitsaspekte, etwa Attribute
 
 In diesem Artikel werden hauptsächlich die Migrationsschritte behandelt. Weitere Informationen zur Azure-Dateisynchronisierung vor der Migration finden Sie in den folgenden Artikeln:
 
-* [Azure-Dateisynchronisierung – Übersicht](https://aka.ms/AFS "Übersicht")
+* [Azure-Dateisynchronisierung – Übersicht](./storage-sync-files-planning.md "Übersicht")
 * [Azure-Dateisynchronisierung – Bereitstellungsleitfaden](storage-sync-files-deployment-guide.md)
 
 ### <a name="storsimple-service-data-encryption-key"></a>StorSimple-Dienstdatenverschlüsselungs-Schlüssel
@@ -232,7 +232,7 @@ Am Ende von Phase 2 haben Sie Ihre Speicherkonten und alle zugehörigen Azure-D
 
 ## <a name="phase-3-create-and-run-a-migration-job"></a>Phase 3: Erstellen und Ausführen eines Migrationsauftrags
 
-In diesem Abschnitt ist beschrieben, wie Sie einen Migrationsauftrag einrichten und sorgfältig die Verzeichnisse auf einem StorSimple-Volume zuordnen, die in die von Ihnen ausgewählte Azure-Zieldateifreigabe kopiert werden sollen. Navigieren Sie zunächst zu Ihrem StorSimple Data Manager, suchen Sie im Menü nach der Option **Auftragsdefinitionen** , und wählen Sie **+ Auftragsdefinition** aus. Der Zielspeichertyp ist die standardmäßige **Azure-Dateifreigabe**.
+In diesem Abschnitt ist beschrieben, wie Sie einen Migrationsauftrag einrichten und sorgfältig die Verzeichnisse auf einem StorSimple-Volume zuordnen, die in die von Ihnen ausgewählte Azure-Zieldateifreigabe kopiert werden sollen. Navigieren Sie zunächst zu Ihrem StorSimple Data Manager, suchen Sie im Menü nach der Option **Auftragsdefinitionen**, und wählen Sie **+ Auftragsdefinition** aus. Der Zielspeichertyp ist die standardmäßige **Azure-Dateifreigabe**.
 
 ![Migrationsauftragstypen für die StorSimple 8000-Serie](media/storage-files-migration-storsimple-8000/storage-files-migration-storsimple-8000-new-job-type.png "Screenshot des Azure-Portal-Abschnitts „Auftragsdefinitionen“ mit dem neuen Dialogfeld „Auftragsdefinitionen“, in dem nach dem Typ des Auftrags gefragt wird: Kopieren in eine Dateifreigabe oder einen Blobcontainer.")
 
@@ -385,7 +385,7 @@ Die registrierte lokale Windows Server-Instanz muss für diesen Prozess vorberei
 * [Konfigurieren eines P2S-VPN (Point-to-Site) unter Windows zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-windows.md)
 * [Konfigurieren eines P2S-VPN (Point-to-Site) unter Linux zur Verwendung mit Azure Files](storage-files-configure-p2s-vpn-linux.md)
 * [Konfigurieren der DNS-Weiterleitung für Azure Files](storage-files-networking-dns.md)
-* [Übersicht über DFS-Namespaces](https://aka.ms/AzureFiles/Namespaces)
+* [Übersicht über DFS-Namespaces](/windows-server/storage/dfs-namespaces/dfs-overview)
    :::column-end:::
 :::row-end:::
 
@@ -425,11 +425,11 @@ Wenn etwas anderes als **Erste Synchronisierung** angezeigt wird, befindet sich 
 
 Sie können auch die Ereignisanzeige auf Ihrer Windows Server-Instanz verwenden, um zu ermitteln, wann der Namespace vollständig heruntergeladen wurde.
 
-1. Öffnen Sie die **Ereignisanzeige** , und navigieren Sie zu **Anwendungen und Dienste**.
-1. Navigieren Sie zu **Microsoft\FileSync\Agent\Telemetry** , und öffnen Sie den Ordner.
-1. Suchen Sie nach dem neuesten **Ereignis 9102** , das einer abgeschlossenen Synchronisierungssitzung entspricht.
+1. Öffnen Sie die **Ereignisanzeige**, und navigieren Sie zu **Anwendungen und Dienste**.
+1. Navigieren Sie zu **Microsoft\FileSync\Agent\Telemetry**, und öffnen Sie den Ordner.
+1. Suchen Sie nach dem neuesten **Ereignis 9102**, das einer abgeschlossenen Synchronisierungssitzung entspricht.
 1. Wählen Sie **Details** aus, und vergewissern Sie sich, dass ein Ereignis angezeigt wird, für das **SyncDirection** den Wert **Download** hat.
-1. Für den Zeitpunkt, zu dem der Download Ihres Namespace auf den Server vollständig abgeschlossen war, ist ein einzelnes Ereignis mit **Scenario** , **FullGhostedSync** -Wert und **HResult** = **0** vorhanden.
+1. Für den Zeitpunkt, zu dem der Download Ihres Namespace auf den Server vollständig abgeschlossen war, ist ein einzelnes Ereignis mit **Scenario**, **FullGhostedSync**-Wert und **HResult** = **0** vorhanden.
 1. Sollte dieses Ereignis nicht vorhanden sein, können Sie nach anderen **9102-Ereignissen** mit **SyncDirection** = **Download** und **Scenario** = **RegularSync** suchen. Wenn Sie eines dieser Ereignisse finden, ist dies auch ein Hinweis darauf, dass das Herunterladen des Namespace abgeschlossen und die Synchronisierung zu regelmäßigen Synchronisierungssitzungen übergegangen ist. Dies gilt unabhängig davon, ob derzeit eine Synchronisierung erforderlich ist oder nicht.
 
 ### <a name="a-final-robocopy"></a>Abschließende RoboCopy
@@ -535,7 +535,7 @@ Wenn Sie die Azure-Dateisynchronisierung verwenden, müssen Sie wahrscheinlich d
 
 Wenn Sie über eine DFS-N-Bereitstellung verfügen, können Sie die DFN-Namespaces auf die neuen Speicherorte für Serverordner verweisen. Wenn Sie keine DFS-N-Bereitstellung nutzen und Ihrer 8100- oder 8600-Appliance lokal eine Windows Server-Instanz vorgeschaltet haben, können Sie diesen Server aus der Domäne entfernen. Binden Sie anschließend Ihre neue Windows Server-Instanz mit aktivierter Azure-Dateisynchronisierung in die Domäne ein. Geben Sie dem Server im Rahmen dieses Vorgangs denselben Servernamen und dieselben Freigabenamen wie beim alten Server, damit die Übernahme für Ihre Benutzer, Gruppenrichtlinien und Skripts transparent bleibt.
 
-Erfahren Sie mehr zu [DFS-Namespaces](https://aka.ms/AzureFiles/Namespaces).
+Erfahren Sie mehr zu [DFS-Namespaces](/windows-server/storage/dfs-namespaces/dfs-overview).
 
 ## <a name="deprovision"></a>Aufheben der Bereitstellung
 
@@ -561,7 +561,7 @@ Die Migration ist abgeschlossen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Machen Sie sich mit der [Azure-Dateisynchronisierung](https://aka.ms/AFS) vertraut.
+* Machen Sie sich mit der [Azure-Dateisynchronisierung](./storage-sync-files-planning.md) vertraut.
 * Informationen über die Flexibilität von [Cloudtiering](storage-sync-cloud-tiering.md)-Richtlinien.
 * [Aktivieren Sie Azure Backup](../../backup/backup-afs.md#configure-backup-from-the-file-share-pane) in ihren Azure-Dateifreigaben, um Momentaufnahmen zu planen und Aufbewahrungszeitpläne für Sicherungen zu definieren.
 * Wenn Sie im Azure-Portal feststellen, dass einige Dateien dauerhaft nicht synchronisiert werden, helfen Ihnen die Schritte zum Lösen des Problems im [Leitfaden zur Problembehandlung](storage-sync-files-troubleshoot.md) weiter.

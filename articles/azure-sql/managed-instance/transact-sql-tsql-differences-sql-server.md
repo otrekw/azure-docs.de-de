@@ -9,14 +9,14 @@ ms.topic: reference
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
-ms.date: 06/02/2020
+ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 1b42e9ea06d13271c277ff254b41f10a1ff07e14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790609"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506378"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -114,7 +114,7 @@ SQL Managed Instance kann nicht auf Dateifreigaben und Windows-Ordner zugreifen.
 
 Siehe [CREATE CERTIFICATE](/sql/t-sql/statements/create-certificate-transact-sql) und [BACKUP CERTIFICATE](/sql/t-sql/statements/backup-certificate-transact-sql). 
  
-**Problemumgehung** : Anstatt eine Sicherung des Zertifikats zu erstellen und die Sicherung wiederherzustellen, [rufen Sie den binären Inhalt des Zertifikats und den privaten Schlüssel ab, speichern Sie sie als SQL-Datei, und erstellen Sie Folgendes aus den Binärdaten](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
+**Problemumgehung**: Anstatt eine Sicherung des Zertifikats zu erstellen und die Sicherung wiederherzustellen, [rufen Sie den binären Inhalt des Zertifikats und den privaten Schlüssel ab, speichern Sie sie als SQL-Datei, und erstellen Sie Folgendes aus den Binärdaten](/sql/t-sql/functions/certencoded-transact-sql#b-copying-a-certificate-to-another-database):
 
 ```sql
 CREATE CERTIFICATE  
@@ -153,11 +153,13 @@ SQL Managed Instance kann nicht auf Dateien zugreifen. Daher können keine Krypt
 - Das Festlegen einer Azure AD-Anmeldung, die einer Azure AD-Gruppe zugeordnet ist, als Besitzer der Datenbank wird nicht unterstützt.
 - Identitätswechsel von Azure AD-Prinzipalen auf Serverebene unter Verwendung anderer Azure AD-Prinzipale werden unterstützt, z.B. in der [EXECUTE AS](/sql/t-sql/statements/execute-as-transact-sql)-Klausel. Einschränkung für EXECUTE AS:
 
-  - EXECUTE AS USER wird für Azure AD-Benutzer nicht unterstützt, wenn der Name sich vom Anmeldenamen unterscheidet. Beispiel: Der Benutzer wird über die Syntax CREATE USER [meinAADBenutzer] FROM LOGIN [john@contoso.com] erstellt, und es wird ein Identitätswechsel über EXEC AS USER = _meinAADBenutzer_ versucht. Wenn Sie einen Benutzer ( **USER** ) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzernamen den gleichen Anmeldenamen angeben wie in der Anmeldung ( **LOGIN** ).
+  - EXECUTE AS USER wird für Azure AD-Benutzer nicht unterstützt, wenn der Name sich vom Anmeldenamen unterscheidet. Beispiel: Der Benutzer wird über die Syntax CREATE USER [meinAADBenutzer] FROM LOGIN [john@contoso.com] erstellt, und es wird ein Identitätswechsel über EXEC AS USER = _meinAADBenutzer_ versucht. Wenn Sie einen Benutzer (**USER**) auf der Grundlage eines Azure AD-Serverprinzipals (Anmeldung) erstellen, müssen Sie als Benutzernamen den gleichen Anmeldenamen angeben wie in der Anmeldung (**LOGIN**).
   - Die folgenden Vorgänge für Azure AD-Prinzipale können nur von Prinzipalen (Anmeldungen) auf SQL Server-Ebene ausgeführt werden, die der Rolle `sysadmin` angehören:
 
     - EXECUTE AS USER
     - EXECUTE AS LOGIN
+
+  - Um die Identität eines Benutzers mit einer EXECUTE AS-Anweisung anzunehmen, muss der Benutzer dem Azure AD-Serverprinzipal (Anmeldung) direkt zugeordnet werden. Die Identität von Benutzern, die Mitglieder von Azure AD-Gruppen sind, die Azure AD-Serverprinzipalen zugeordnet sind, kann mit der EXECUTE AS-Anweisung nicht effektiv angenommen werden. Dies gilt selbst dann, wenn der Aufrufer über IMPERSONATE-Berechtigungen für den angegebenen Benutzernamen verfügt.
 
 - Das Exportieren/Importieren von Datenbanken mithilfe von BACPAC-Dateien wird für Azure AD-Benutzer in SQL Managed Instance per [SSMS V18.4 oder höher](/sql/ssms/download-sql-server-management-studio-ssms) oder [SQLPackage.exe](/sql/tools/sqlpackage-download) unterstützt.
   - Die folgenden Konfigurationen werden mit einer BACPAC-Datei für die Datenbank unterstützt: 
@@ -300,6 +302,7 @@ Weitere Informationen finden Sie unter [ALTER DATABASE](/sql/t-sql/statements/al
   - Warnungen werden noch nicht unterstützt.
   - Proxys werden nicht unterstützt.
 - EventLog wird nicht unterstützt.
+- Der Benutzer muss dem Azure AD-Serverprinzipal (Anmeldung) direkt zugeordnet sein, um SQL-Agent-Aufträge zu erstellen, zu ändern oder auszuführen. Benutzer, die nicht direkt zugeordnet sind, z. B. Benutzer, die einer Azure AD-Gruppe angehören, die über die Berechtigungen zum Erstellen, Ändern oder Ausführen von SQL-Agent-Aufträgen verfügt, können diese Aktionen nicht effektiv ausführen. Dies liegt an Einschränkungen beim Identitätswechsel für verwaltete Instanzen und bei [EXECUTE AS](#logins-and-users).
 
 Die folgenden SQL-Agent-Funktionen werden derzeit nicht unterstützt:
 
@@ -407,7 +410,7 @@ Vorgänge:
 
 ### <a name="polybase"></a>PolyBase
 
-Externe Tabellen, die auf Dateien in HDFS oder Azure Blob Storage verweisen, werden nicht unterstützt. Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
+Der einzige unterstützte Typ externer Quellen für Azure SQL-Datenbank und andere Azure SQL Managed Instance-Instanzen ist RDBMS. Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikation
 

@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 85264eae325d9ed7049daac47a124cf1efb806e0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91649948"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630242"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -96,21 +96,21 @@ Das vorläufige Löschen von Dateifreigaben (Vorschauversion) ist eine Einstellu
 
 Es wird empfohlen, das vorläufige Löschen für die meisten Dateifreigaben zu aktivieren. Wenn Sie über einen Workflow verfügen, bei dem das Löschen von Dateifreigaben üblich und zu erwarten ist, können Sie sich für einen sehr kurzen Aufbewahrungszeitraum oder die Deaktivierung der Funktion für das vorläufige Löschen entscheiden.
 
-Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-prevent-file-share-deletion).
+Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben](./storage-files-prevent-file-share-deletion.md).
 
 ### <a name="backup"></a>Backup
-Sie können Ihre Azure-Dateifreigabe mithilfe von [Freigabemomentaufnahmen](https://docs.microsoft.com/azure/storage/files/storage-snapshots-files) sichern, die schreibgeschützte Zeitpunktwiederherstellungskopien Ihrer Freigaben sind. Momentaufnahmen sind inkrementell, d. h., sie enthalten nur so viele Daten, wie seit der vorherigen Momentaufnahme geändert wurden. Sie können bis zu 200 Momentaufnahmen pro Dateifreigabe machen und diese bis zu zehn Jahre lang aufbewahren. Sie können die Momentaufnahmen entweder manuell im Azure-Portal, über PowerShell oder die Befehlszeilenschnittstelle (CLI) machen oder [Azure Backup](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) verwenden. Momentaufnahmen werden in der Dateifreigabe gespeichert. Wenn Sie die Dateifreigabe also löschen, werden die Momentaufnahmen ebenfalls gelöscht. Stellen Sie sicher, dass das vorläufige Löschen für Ihre Dateifreigabe aktiviert ist, um Ihre Momentaufnahmensicherungen vor dem unbeabsichtigten Löschen zu schützen.
+Sie können Ihre Azure-Dateifreigabe mithilfe von [Freigabemomentaufnahmen](./storage-snapshots-files.md) sichern, die schreibgeschützte Zeitpunktwiederherstellungskopien Ihrer Freigaben sind. Momentaufnahmen sind inkrementell, d. h., sie enthalten nur so viele Daten, wie seit der vorherigen Momentaufnahme geändert wurden. Sie können bis zu 200 Momentaufnahmen pro Dateifreigabe machen und diese bis zu zehn Jahre lang aufbewahren. Sie können die Momentaufnahmen entweder manuell im Azure-Portal, über PowerShell oder die Befehlszeilenschnittstelle (CLI) machen oder [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) verwenden. Momentaufnahmen werden in der Dateifreigabe gespeichert. Wenn Sie die Dateifreigabe also löschen, werden die Momentaufnahmen ebenfalls gelöscht. Stellen Sie sicher, dass das vorläufige Löschen für Ihre Dateifreigabe aktiviert ist, um Ihre Momentaufnahmensicherungen vor dem unbeabsichtigten Löschen zu schützen.
 
-Im Artikel [Informationen zum Sichern von Azure-Dateifreigaben](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json) finden Sie Informationen zum Planen und Aufbewahren von Momentaufnahmen. Durch die Generationenprinzipfunktionen (grandfather-father-son, GFS) können Sie täglich, wöchentlich, monatlich oder jährlich Momentaufnahmen machen, die jeweils einen eigenen Aufbewahrungszeitraum haben. Azure Backup orchestriert außerdem die Aktivierung des vorläufigen Löschens und übernimmt eine Löschsperre für ein Speicherkonto, sobald eine beliebige Dateifreigabe für die Sicherung konfiguriert ist. Schließlich stellt Azure Backup bestimmte wichtige Überwachungs- und Warnungsfunktionen bereit, durch die Kunden eine konsolidierte Ansicht ihres Sicherungsbestands haben.
+Im Artikel [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) finden Sie Informationen zum Planen und Aufbewahren von Momentaufnahmen. Durch die Generationenprinzipfunktionen (grandfather-father-son, GFS) können Sie täglich, wöchentlich, monatlich oder jährlich Momentaufnahmen machen, die jeweils einen eigenen Aufbewahrungszeitraum haben. Azure Backup orchestriert außerdem die Aktivierung des vorläufigen Löschens und übernimmt eine Löschsperre für ein Speicherkonto, sobald eine beliebige Dateifreigabe für die Sicherung konfiguriert ist. Schließlich stellt Azure Backup bestimmte wichtige Überwachungs- und Warnungsfunktionen bereit, durch die Kunden eine konsolidierte Ansicht ihres Sicherungsbestands haben.
 
 Mithilfe von Azure Backup können Sie im Azure-Portal Wiederherstellungen sowohl auf Element- als auch auf Freigabeebene durchführen. Sie müssen lediglich den Wiederherstellungspunkt (eine bestimmte Momentaufnahme), die bestimmte Datei oder das bestimmte Verzeichnis und dann den Speicherort (ursprünglich oder alternativ) auswählen, in dem die Ressourcen wiederhergestellt werden sollen. Der Sicherungsdienst übernimmt das Kopieren der Momentaufnahmedaten und zeigt den Wiederherstellungsfortschritt im Portal an.
 
-Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](https://docs.microsoft.com/azure/backup/azure-file-share-backup-overview?toc=/azure/storage/files/toc.json).
+Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection für Azure Files (Vorschauversion)
 Advanced Threat Protection (ATP) für Azure Storage bietet eine zusätzliche Ebene der Sicherheitsintelligenz, durch die Warnungen ausgegeben werden, wenn in Ihrem Speicherkonto anomale Aktivitäten wie beispielsweise ungewöhnliche Zugriffsversuche auf das Speicherkonto erkannt werden. ATP führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können ATP über das Azure Security Center auf Abonnement- oder Speicherkontoebene konfigurieren. 
 
-Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protection für Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-advanced-threat-protection).
+Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protection für Azure Storage](../common/azure-defender-storage-configure.md).
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
@@ -124,7 +124,7 @@ Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen 
     - Standard-Dateifreigaben sind für lokal redundanten, zonenredundanten, georedundanten (GRS) und georedundanten (GZRS) Speicher verfügbar.
 - **Maximale Größe einer Dateifreigabe**
     - Premium-Dateifreigaben können ohne zusätzlichen Aufwand für bis zu 100 TiB bereitgestellt werden.
-    - Standardmäßig können Standard-Dateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden, indem das Featureflag *large file share* (große Dateifreigabe) des Speicherkontos verwendet wird. Standard-Dateifreigaben dürfen nur bis zu 100 TiB für lokal redundante oder zonenredundante Speicherkonten umfassen. Weitere Informationen zum Vergrößern von Dateifreigaben finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](https://docs.microsoft.com/azure/storage/files/storage-files-how-to-create-large-file-share).
+    - Standardmäßig können Standard-Dateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden, indem das Featureflag *large file share* (große Dateifreigabe) des Speicherkontos verwendet wird. Standard-Dateifreigaben dürfen nur bis zu 100 TiB für lokal redundante oder zonenredundante Speicherkonten umfassen. Weitere Informationen zum Vergrößern von Dateifreigaben finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](./storage-files-how-to-create-large-file-share.md).
 - **Regionale Verfügbarkeit**
     - Premium-Dateifreigaben sind mit Ausnahme einiger weniger Regionen in den meisten Azure-Regionen verfügbar. Zonenredundante Unterstützung ist in einer Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen darüber, welche Regionen ZRS unterstützen, finden Sie unter [Zonenredundante Speicherung](../common/storage-redundancy.md#zone-redundant-storage). Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
     - Standard-Dateifreigaben sind in allen Azure-Regionen verfügbar.

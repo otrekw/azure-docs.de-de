@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 10/1/2020
-ms.openlocfilehash: 6fff7f22e7d265eb9b15bcec8604eeab692ac1c0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: a064b2b2d0bad5fc8ded9a59b66d84a361facec9
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650288"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504338"
 ---
 # <a name="limitations-in-azure-database-for-mysql---flexible-server-preview"></a>Einschränkungen in Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -23,9 +23,9 @@ Dieser Artikel beschreibt Einschränkungen im Azure Database for MySQL Flexible 
 ## <a name="server-parameters"></a>Serverparameter
 
 > [!NOTE]
-> Wenn Sie nach Minimal-/Maximalwerten für Serverparameter wie `max_connections` und `innodb_buffer_pool_size` suchen, finden Sie diese Informationen nun im Artikel zu Serverparametern <!-- **[server parameters](./concepts-server-parameters.md)** --> .
+> Wenn Sie nach Minimal-/Maximalwerten für Serverparameter wie `max_connections` und `innodb_buffer_pool_size` suchen, finden Sie diese nun in den Konzepten zu Serverparametern im Artikel zu [Serverparametern](./concepts-server-parameters.md).
 
-Azure Database für MySQL unterstützt das Anpassen einiger Serverparameter. Die Minimal- und Maximalwerte einiger Parameter (z. B. `max_connections`, `join_buffer_size`, `query_cache_size`) wird durch die Computeebene und die Computegröße des Servers bestimmt. Weitere Informationen zu diesen Einschränkungen <!-- [server parameters](./concepts-server-parameters.md)--> finden Sie unter den Serverparameterkonzepten.
+Azure Database für MySQL unterstützt das Anpassen einiger Serverparameter. Die Minimal- und Maximalwerte einiger Parameter (z. B. `max_connections`, `join_buffer_size`, `query_cache_size`) wird durch die Computeebene und die Computegröße des Servers bestimmt. Im Artikel [Serverparameter](./concepts-server-parameters.md) finden Sie weitere Informationen zu diesen Grenzwerten.
 
 Kennwort-Plug-ins wie „validate_password“ und „caching_sha2_password“ werden vom Dienst nicht unterstützt.
 

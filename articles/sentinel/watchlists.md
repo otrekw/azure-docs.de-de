@@ -10,12 +10,12 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: 1267f040b13184f50c9d98fe0fb13fb24db0f4f7
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: fd3c8a08e5512d15be4dfb26ca3eff151d08386f
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026835"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651361"
 ---
 # <a name="use-azure-sentinel-watchlists"></a>Verwenden von Azure Sentinel-Watchlists
 
@@ -33,7 +33,7 @@ Häufige Szenarien für die Verwendung von Watchlists umfassen Folgendes:
 
 ## <a name="create-a-new-watchlist"></a>Erstellen einer neuen Watchlist
 
-1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Watchlist** , und wählen Sie dann **Neu hinzufügen** aus.
+1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Watchlist**, und wählen Sie dann **Neu hinzufügen** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Neue Watchlist](./media/watchlists/sentinel-watchlist-new.png)
@@ -62,7 +62,7 @@ Häufige Szenarien für die Verwendung von Watchlists umfassen Folgendes:
 
 ## <a name="use-watchlists-in-queries"></a>Verwenden von Watchlists in Abfragen
 
-1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Watchlist** , wählen Sie die gewünschte Watchlist aus, und wählen Sie dann **In Log Analytics anzeigen** aus.
+1. Navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Watchlist**, wählen Sie die gewünschte Watchlist aus, und wählen Sie dann **In Log Analytics anzeigen** aus.
 
     :::image type="content" source="./media/watchlists/sentinel-watchlist-queries-list.png" alt-text="Verwenden von Watchlists in Abfragen" lightbox="./media/watchlists/sentinel-watchlist-queries-list.png":::
 
@@ -75,13 +75,13 @@ Häufige Szenarien für die Verwendung von Watchlists umfassen Folgendes:
     
 ## <a name="use-watchlists-in-analytics-rules"></a>Verwenden von Watchlists in Analyseregeln
 
-Um Watchlists in Analyseregeln zu verwenden, navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Analysen** , und erstellen Sie eine Regel mithilfe der Funktion `_GetWatchlist('<watchlist>')` in der Abfrage.
+Um Watchlists in Analyseregeln zu verwenden, navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Konfiguration** > **Analysen**, und erstellen Sie eine Regel mithilfe der Funktion `_GetWatchlist('<watchlist>')` in der Abfrage.
 
 :::image type="content" source="./media/watchlists/sentinel-watchlist-analytics-rule.png" alt-text="Verwenden von Watchlists in Analyseregeln" lightbox="./media/watchlists/sentinel-watchlist-analytics-rule.png":::
 
 ## <a name="view-list-of-watchlists-aliases"></a>Anzeigen der Liste von Watchlist-Aliasen
 
-Um eine Liste von Watchlist-Aliasen abzurufen, navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Allgemein** > **Protokolle** , und führen Sie die Abfrage `_GetWatchlistAlias` aus. Die Liste der Aliase wird auf der Registerkarte **Ergebnisse** angezeigt.
+Um eine Liste von Watchlist-Aliasen abzurufen, navigieren Sie im Azure-Portal zu **Azure Sentinel** > **Allgemein** > **Protokolle**, und führen Sie die Abfrage `_GetWatchlistAlias` aus. Die Liste der Aliase wird auf der Registerkarte **Ergebnisse** angezeigt.
 
 > [!div class="mx-imgBorder"]
 > ![Auflisten von Watchlists](./media/watchlists/sentinel-watchlist-alias.png)
@@ -89,6 +89,5 @@ Um eine Liste von Watchlist-Aliasen abzurufen, navigieren Sie im Azure-Portal zu
 ## <a name="next-steps"></a>Nächste Schritte
 In diesem Dokument haben Sie erfahren, wie Sie Watchlists in Azure Sentinel verwenden, um Daten zu erweitern und Untersuchungen zu verbessern. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 - Erfahren Sie, wie Sie [Einblick in Ihre Daten und potenzielle Bedrohungen erhalten](quickstart-get-visibility.md).
-- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](tutorial-detect-threats.md).
+- Beginnen Sie mit der [Erkennung von Bedrohungen mithilfe von Azure Sentinel](./tutorial-detect-threats-built-in.md).
 - [Verwenden Sie Arbeitsmappen](tutorial-monitor-your-data.md), um Ihre Daten zu überwachen.
-

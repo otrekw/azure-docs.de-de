@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 3289f8a22e5601552ec6d44c7d37195b06913fde
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ad0ba3c63f6f0ef6e7e02051031cf215c2e72cce
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545343"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94648241"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Übertragen eines Azure-Abonnements in ein anderes Azure AD-Verzeichnis
 
@@ -87,7 +87,7 @@ Mehrere Azure-Ressourcen weisen eine Abhängigkeit von einem Abonnement oder ein
 
 Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
-- [Bash in der Azure Cloud Shell](/azure/cloud-shell/overview) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
+- [Bash in der Azure Cloud Shell](../cloud-shell/overview.md) oder [Azure-Befehlszeilenschnittstelle](/cli/azure)
 - Kontoadministrator des Abonnements, das Sie im Quellverzeichnis übertragen möchten
 - Rolle [Besitzer](built-in-roles.md#owner) im Zielverzeichnis
 
@@ -111,7 +111,7 @@ Zum Ausführen dieser Schritte benötigen Sie Folgendes:
 
 ### <a name="install-the-azure-resource-graph-extension"></a>Installieren der Azure Resource Graph-Erweiterung
 
- Die Azure CLI-Erweiterung für [Azure Resource Graph](../governance/resource-graph/index.yml), *ressource-graph* , ermöglicht es Ihnen, mit dem Befehl [az graph](/cli/azure/ext/resource-graph/graph) Ressourcen abzufragen, die von Azure Resource Manager verwaltet werden. Sie verwenden diesen Befehl in späteren Schritten.
+ Die Azure CLI-Erweiterung für [Azure Resource Graph](../governance/resource-graph/index.yml), *ressource-graph*, ermöglicht es Ihnen, mit dem Befehl [az graph](/cli/azure/ext/resource-graph/graph) Ressourcen abzufragen, die von Azure Resource Manager verwaltet werden. Sie verwenden diesen Befehl in späteren Schritten.
 
 1. Verwenden Sie [az extension list](/cli/azure/extension#az_extension_list), um festzustellen, ob die Erweiterung *resource-graph* installiert ist.
 

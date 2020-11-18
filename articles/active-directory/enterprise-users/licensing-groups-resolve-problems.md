@@ -7,20 +7,20 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/08/2019
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b7529d72c3d94e3c7bef58c6a26af62b97ac92d9
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: bd61a33bdcc0d18dee7dba651f097f7cd49e7149
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373234"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647032"
 ---
 # <a name="identify-and-resolve-license-assignment-problems-for-a-group-in-azure-active-directory"></a>Identifizieren und Beheben von Lizenzzuweisungsproblemen für eine Gruppe in Azure Active Directory
 
@@ -42,7 +42,7 @@ Bei Verwendung der gruppenbasierten Lizenzierung können die gleichen Fehler auf
 
    ![Liste der Benutzer im Gruppenlizenzierungs-Fehlerzustand](./media/licensing-groups-resolve-problems/list-of-users-with-errors.png)
 
-1. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht** . Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
+1. Um nach allen Gruppen zu suchen, die mindestens einen Fehler enthalten, klicken Sie auf dem Blatt **Azure Active Directory** erst auf **Lizenzen** und dann auf **Übersicht**. Sollte für Gruppen eine Aktion erforderlich sein, wird ein Informationsfeld angezeigt.
 
    ![Übersicht und Informationen zu Gruppen im Fehlerzustand](./media/licensing-groups-resolve-problems/group-errors-widget.png)
 
@@ -56,11 +56,11 @@ In den folgenden Abschnitten werden die einzelnen potenziellen Probleme sowie di
 
 **Problem:** Es sind nicht genügend Lizenzen für eines der in der Gruppe angegebenen Produkte verfügbar. Sie müssen entweder weitere Lizenzen für das Produkt erwerben oder nicht verwendete Lizenzen anderer Benutzer oder Gruppen freigeben.
 
-Um anzuzeigen, wie viele Lizenzen verfügbar sind, wechseln Sie zu **Azure Active Directory** > **Lizenzen** > **Alle Produkte** .
+Um anzuzeigen, wie viele Lizenzen verfügbar sind, wechseln Sie zu **Azure Active Directory** > **Lizenzen** > **Alle Produkte**.
 
 Klicken Sie auf ein Produkt, um zu ermitteln, welche Benutzer und Gruppen Lizenzen verwenden. Unter **Lizenzierte Benutzer** wird eine Liste mit allen Benutzern angezeigt, denen Lizenzen zugewiesen wurden (direkt oder über Gruppen). Unter **Lizenzierte Gruppen** sind alle Gruppen aufgeführt, denen Produkte zugewiesen sind.
 
-**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _CountViolation_ .
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _CountViolation_.
 
 ## <a name="conflicting-service-plans"></a>In Konflikt stehende Diensteeinstellungen
 
@@ -75,7 +75,7 @@ Zur Behebung dieses Konflikts müssen zwei der Pläne deaktiviert werden. Sie k�
 
 Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim Administrator. Azure AD löst Lizenzkonflikte nicht automatisch.
 
-**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _MutuallyExclusiveViolation_ .
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _MutuallyExclusiveViolation_.
 
 ## <a name="other-products-depend-on-this-license"></a>Andere Produkte sind von dieser Lizenz abhängig
 
@@ -83,7 +83,7 @@ Die Entscheidung, wie der Produktlizenzkonflikt zu lösen ist, liegt stets beim 
 
 Stellen Sie zur Behebung dieses Problems sicher, dass der erforderliche Plan Benutzern weiterhin über eine andere Methode zugewiesen ist oder dass die abhängigen Dienste für diese Benutzer deaktiviert sind. Anschließend können Sie die Gruppenlizenz für diese Benutzer richtig entfernen.
 
-**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _DependencyViolation_ .
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _DependencyViolation_.
 
 ## <a name="usage-location-isnt-allowed"></a>Verwendungsstandort ist nicht zulässig
 
@@ -93,7 +93,7 @@ Wenn Azure AD versucht, einem Benutzer, dessen Verwendungsstandort nicht unterst
 
 Sie können dieses Problem beheben, indem Sie Benutzer von nicht unterstützten Standorten aus der lizenzierten Gruppe entfernen. Alternativ können Sie wie folgt vorgehen: Wenn die aktuellen Werte des Verwendungsstandorts nicht den tatsächlichen Benutzerstandort darstellen, können Sie sie ändern, damit die Lizenzen beim nächsten Mal richtig zugewiesen werden (wenn der neue Standort unterstützt wird).
 
-**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _ProhibitedInUsageLocationViolation_ .
+**PowerShell:** PowerShell-Cmdlets melden diesen Fehler als _ProhibitedInUsageLocationViolation_.
 
 > [!NOTE]
 > Wenn von Azure AD Gruppenlizenzen zugewiesen werden, erben alle Benutzer ohne Verwendungsstandort den Standort des Verzeichnisses. Es wird empfohlen, dass Administratoren die richtigen Werte für den Verwendungsstandort von Benutzern festlegen, bevor sie die gruppenbasierte Lizenzierung verwenden, um die vor Ort geltenden Gesetze und Bestimmungen zu erfüllen.
@@ -138,7 +138,7 @@ Beispiel: Einer Gruppe sind Office 365 E3-/E5-Lizenzen zugewiesen, und es ist ei
 
 ## <a name="manage-licenses-for-products-with-prerequisites"></a>Verwalten von Lizenzen für Produkte mit bestimmten Voraussetzungen
 
-Bei einigen Ihrer Microsoft Online-Produkte handelt es sich unter Umständen um *Add-Ons* . Bei Add-Ons muss für einen Benutzer oder eine Gruppe ein Dienstplan mit Voraussetzungen aktiviert werden, bevor eine Lizenz zugewiesen werden kann. Bei der gruppenbasierten Lizenzierung müssen der Dienstplan mit den Voraussetzungen und der Add-On-Dienstplan in der gleichen Gruppe enthalten sein. Hierdurch wird sichergestellt, dass alle Benutzer, die der Gruppe hinzugefügt werden, das voll funktionsfähige Produkt erhalten können. Betrachten Sie das folgende Beispiel:
+Bei einigen Ihrer Microsoft Online-Produkte handelt es sich unter Umständen um *Add-Ons*. Bei Add-Ons muss für einen Benutzer oder eine Gruppe ein Dienstplan mit Voraussetzungen aktiviert werden, bevor eine Lizenz zugewiesen werden kann. Bei der gruppenbasierten Lizenzierung müssen der Dienstplan mit den Voraussetzungen und der Add-On-Dienstplan in der gleichen Gruppe enthalten sein. Hierdurch wird sichergestellt, dass alle Benutzer, die der Gruppe hinzugefügt werden, das voll funktionsfähige Produkt erhalten können. Betrachten Sie das folgende Beispiel:
 
 Microsoft Workplace Analytics ist ein Add-On-Produkt. Es enthält einen einzelnen Dienstplan mit demselben Namen. Dieser Dienstplan kann einem Benutzer (oder einer Gruppe) nur zugewiesen werden, wenn auch eine der folgenden Voraussetzungen zugewiesen ist:
 
@@ -165,13 +165,13 @@ Ab jetzt verwenden alle Benutzer, die dieser Gruppe hinzugefügt werden, eine Li
 
 Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, müssen Sie die Verarbeitung einer Gruppe ggf. manuell auslösen, um den Benutzerzustand zu aktualisieren.
 
-Wenn Sie beispielsweise einige Lizenzen freigegeben haben, indem Sie direkte Zuweisungen von Lizenzen für Benutzer entfernt haben, müssen Sie die Verarbeitung von Gruppen auslösen, für die zuvor ein Fehler aufgetreten ist. Nur so erreichen Sie die vollständige Versorgung von Benutzern mit Lizenzen. Navigieren Sie zum erneuten Verarbeiten einer Gruppe zum Namen der Gruppe, öffnen Sie **Lizenzen** , und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten** .
+Wenn Sie beispielsweise einige Lizenzen freigegeben haben, indem Sie direkte Zuweisungen von Lizenzen für Benutzer entfernt haben, müssen Sie die Verarbeitung von Gruppen auslösen, für die zuvor ein Fehler aufgetreten ist. Nur so erreichen Sie die vollständige Versorgung von Benutzern mit Lizenzen. Navigieren Sie zum erneuten Verarbeiten einer Gruppe zum Namen der Gruppe, öffnen Sie **Lizenzen**, und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten**.
 
 ## <a name="force-user-license-processing-to-resolve-errors"></a>Erzwingen der Verarbeitung von Benutzerlizenzen zum Beheben von Fehlern
 
 Je nachdem, welche Maßnahmen Sie ergriffen haben, um die Fehler zu beheben, müssen Sie die Verarbeitung eines Benutzers ggf. manuell auslösen, um den Benutzerzustand zu aktualisieren.
 
-Sie müssen beispielsweise die Verarbeitung des Benutzers auslösen, nachdem Sie das Problem mit der doppelten Proxyadresse für einen betroffenen Benutzer behoben haben. Navigieren Sie zum erneuten Verarbeiten eines Benutzers zum entsprechenden Benutzerbereich, öffnen Sie **Lizenzen** , und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten** .
+Sie müssen beispielsweise die Verarbeitung des Benutzers auslösen, nachdem Sie das Problem mit der doppelten Proxyadresse für einen betroffenen Benutzer behoben haben. Navigieren Sie zum erneuten Verarbeiten eines Benutzers zum entsprechenden Benutzerbereich, öffnen Sie **Lizenzen**, und klicken Sie auf der Symbolleiste auf **Erneut verarbeiten**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

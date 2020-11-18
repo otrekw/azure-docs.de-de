@@ -7,20 +7,20 @@ ms.date: 02/23/2020
 ms.author: rogarana
 ms.subservice: files
 ms.topic: conceptual
-ms.openlocfilehash: 609f6d5fd0bf75b1a2056c01c8d22ae9e08ab9cb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 1eddca26152f27ced20bbae66b3265639b97e64e
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746826"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629494"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Häufig gestellte Fragen (FAQ) zu Azure Files
-[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
+[Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll [Server Message Block (SMB)](/windows/win32/fileio/microsoft-smb-protocol-and-cifs-protocol-overview) sowie über das [Network File System-Protokoll (NFS)](https://en.wikipedia.org/wiki/Network_File_System) (Vorschau) zugegriffen werden kann. Sie können Azure-Dateifreigaben gleichzeitig unter Cloud- und lokalen Bereitstellungen von Windows, Linux und macOS einbinden. Azure-Dateifreigaben können auch auf Windows Server-Computern zwischengespeichert werden, indem die Azure-Dateisynchronisierung verwendet wird, um den schnellen Zugriff in der Nähe der Datennutzung zu ermöglichen.
 
 In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -Funktionen beantwortet, z.B. die Nutzung der Azure-Dateisynchronisierung mit Azure Files. Wenn Sie hier keine Antwort auf Ihre Frage finden, können Sie sich über die folgenden Kanäle an uns wenden (Eskalationsreihenfolge):
 
 1. Im Abschnitt „Kommentare“ dieses Artikels.
-2. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](https://docs.microsoft.com/answers/topics/azure-file-storage.html).
+2. [Frageseite von Microsoft Q&A (Fragen und Antworten) zu Azure Storage](/answers/topics/azure-file-storage.html).
 3. [Azure Files UserVoice](https://feedback.azure.com/forums/217298-storage/category/180670-files) 
 4. Microsoft-Support. Wählen Sie zum Erstellen einer neuen Supportanfrage im Azure-Portal auf der Registerkarte **Hilfe** die Schaltfläche **Hilfe und Support** und anschließend die Option **Neue Supportanfrage**.
 
@@ -76,11 +76,11 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Azure Files unterstützt zwei Speichertarife: Premium und Standard. Standard-Dateifreigaben werden in universellen Speicherkonten (GPv1 oder GPv2) und Premium-Dateifreigaben in FileStorage-Speicherkonten erstellt. Erfahren Sie mehr darüber, wie Sie [Standard-Dateifreigaben](storage-how-to-create-file-share.md) und [Premium-Dateifreigaben](storage-how-to-create-premium-fileshare.md) erstellen. 
     
     > [!NOTE]
-    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium* -Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard* -Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium* -Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
+    > Es ist nicht möglich, Azure-Dateifreigaben basierend auf Blobspeicherkonten oder universellen *Premium*-Speicherkonten (GPv1 oder GPv2) zu erstellen. Standard-Azure-Dateifreigaben können nur in universellen *Standard*-Konten und Premium-Azure-Dateifreigaben nur in FileStorage-Speicherkonten erstellt werden. Universelle *Premium*-Speicherkonten (GPv1 und GPv2) sind nur für Premium-Seitenblobs bestimmt. 
 
 * <a id="file-locking"></a>
   **Unterstützt Azure Files das Sperren von Dateien?**  
-    Ja. Die Dateisperrung im SMB-/Windows-Stil wird von Azure Files vollständig unterstützt. Ausführliche Informationen finden Sie [hier](https://docs.microsoft.com/rest/api/storageservices/managing-file-locks).
+    Ja. Die Dateisperrung im SMB-/Windows-Stil wird von Azure Files vollständig unterstützt. Ausführliche Informationen finden Sie [hier](/rest/api/storageservices/managing-file-locks).
 
 * <a id="give-us-feedback"></a>
   **Ich wünsche mir, dass Azure Files ein bestimmtes Feature hinzugefügt wird. Können Sie es hinzufügen?**  
@@ -158,7 +158,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     
 * <a id="afs-resource-move"></a>
   **Kann ich den Speichersynchronisierungsdienst und/oder das Speicherkonto in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschieben?**  
-   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cportal#troubleshoot-rbac)).
+   Ja, der Speichersynchronisierungsdienst und/oder das Speicherkonto kann in eine andere Ressourcengruppe, ein anderes Abonnement oder einen anderen Azure AD-Mandanten verschoben werden. Wenn der Speichersynchronisierungsdienst oder das Speicherkonto verschoben wurde, müssen Sie der Anwendung „Microsoft.StorageSync“ Zugriff auf das Speicherkonto gewähren (siehe [Sicherstellen, dass die Azure-Dateisynchronisierung über Zugriff auf das Speicherkonto verfügt](./storage-sync-files-troubleshoot.md?tabs=portal1%252cportal#troubleshoot-rbac)).
 
     > [!Note]  
     > Beim Erstellen des Cloudendpunkts müssen sich der Speichersynchronisierungsdienst und das Speicherkonto im selben Azure AD-Mandanten befinden. Nach der Erstellung des Cloudendpunkts können der Speichersynchronisierungsdienst und das Speicherkonto in verschiedene Azure AD Mandanten verschoben werden.
@@ -184,7 +184,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 
     - Für die Azure-Dateisynchronisierung werden alle besitzerverwalteten ACLs bzw. DACLs (ob Active Directory-basiert oder lokal) für alle Serverendpunkte beibehalten und repliziert, für die die Synchronisierung durchgeführt wird. 
     
-    Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-auth?toc=%2fazure%2fstorage%2fblobs%2ftoc.json). 
+    Eine umfassende Darstellung aller in Azure Storage-Diensten unterstützten Protokolle finden Sie unter [Autorisierung des Zugriffs auf Azure Storage](../common/storage-auth.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json). 
     
 * <a id="encryption-at-rest"></a>
 **Wie kann ich sicherstellen, dass meine Azure-Dateifreigabe im ruhenden Zustand verschlüsselt wird?**  
@@ -209,14 +209,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="data-compliance-policies"></a>
 **Welche Richtlinien zur Datenkonformität werden von Azure Files unterstützt?**  
 
-   Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](https://docs.microsoft.com/azure/storage/common/storage-compliance-offerings) und im [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
+   Azure Files wird zusätzlich zu der gleichen Speicherarchitektur ausgeführt, die auch in anderen Speicherdiensten in Azure Storage genutzt wird. Für Azure Files werden die gleichen Richtlinien zur Datenkonformität wie in anderen Azure-Speicherdiensten angewendet. Weitere Informationen zur Datenkonformität von Azure Storage finden Sie unter [Azure Storage-Complianceangebote](../common/storage-compliance-offerings.md) und im [Microsoft Trust Center](https://microsoft.com/trustcenter/default.aspx).
 
 * <a id="file-auditing"></a>
 **Wie kann ich den Dateizugriff und Änderungen in Azure Files überwachen?**
 
   Bei den Überwachungsfunktionen für Azure Files haben Sie zwei Optionen:
-  - Wenn Benutzer direkt auf die Azure-Dateifreigabe zugreifen, können [Azure Storage-Protokolle (Vorschau)](https://docs.microsoft.com/azure/storage/common/monitor-storage?tabs=azure-powershell#logs-in-azure-monitor-preview) verwendet werden, um Dateiänderungen und den Benutzerzugriff nachzuverfolgen. Diese Protokolle können für die Problembehandlung genutzt werden, und die Anforderungen werden bestmöglich protokolliert.
-  - Wenn Benutzer auf die Azure-Dateifreigabe über eine Windows Server-Instanz zugreifen, auf der der Azure-Dateisynchronisierungs-Agent installiert ist, sollten Sie eine [Überwachungsrichtlinie](https://docs.microsoft.com/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) oder ein Drittanbieterprodukt verwenden, um Dateiänderungen und den Benutzerzugriff auf der Windows Server-Instanz nachzuverfolgen. 
+  - Wenn Benutzer direkt auf die Azure-Dateifreigabe zugreifen, können [Azure Storage-Protokolle (Vorschau)](../blobs/monitor-blob-storage.md?tabs=azure-powershell#analyzing-logs) verwendet werden, um Dateiänderungen und den Benutzerzugriff nachzuverfolgen. Diese Protokolle können für die Problembehandlung genutzt werden, und die Anforderungen werden bestmöglich protokolliert.
+  - Wenn Benutzer auf die Azure-Dateifreigabe über eine Windows Server-Instanz zugreifen, auf der der Azure-Dateisynchronisierungs-Agent installiert ist, sollten Sie eine [Überwachungsrichtlinie](/windows/security/threat-protection/auditing/apply-a-basic-audit-policy-on-a-file-or-folder) oder ein Drittanbieterprodukt verwenden, um Dateiänderungen und den Benutzerzugriff auf der Windows Server-Instanz nachzuverfolgen. 
    
 ### <a name="ad-ds--azure-ad-ds-authentication"></a>AD DS- und Azure AD DS-Authentifizierung
 * <a id="ad-support-devices"></a>
@@ -247,7 +247,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="ad-aad-smb-files"></a>
 **Wie kann ich überprüfen, ob die AD DS-Authentifizierung für mein Speicherkonto aktiviert wurde, und die Domäneninformationen abrufen?**
 
-    Anweisungen dazu finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#1-enable-ad-authentication-for-your-account).
+    Anweisungen dazu finden Sie [hier](./storage-files-identity-ad-ds-enable.md#confirm-the-feature-is-enabled).
 
 * <a id=""></a>
 **Unterstützt die Azure AD-Authentifizierung für Azure Files virtuelle Linux-Computer?**
@@ -288,19 +288,14 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
     Ja, Sie können die AD-Authentifizierung für eine von der Azure-Dateisynchronisierung verwaltete Dateifreigabe aktivieren. Änderungen an den NTFS-ACLs der Verzeichnisse/Dateien auf lokalen Dateiservern werden in Azure Files gestaffelt und umgekehrt.
 
 * <a id="ad-aad-smb-files"></a>
-**Wie kann ich überprüfen, ob die AD-Authentifizierung für mein Speicherkonto aktiviert ist, und die AD-Domäneninformationen abrufen?**
-
-    In der [hier](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#enable-ad-authentication-for-your-account) bereitgestellten Anleitung erfahren Sie, wie Sie überprüfen, ob die AD-Authentifizierung von Azure Files für Ihr Speicherkonto aktiviert ist und wie Sie die AD-Domäneninformationen abrufen.
-
-* <a id="ad-aad-smb-files"></a>
 **Macht es für die Darstellung meines Speicherkontos in AD einen Unterschied, ob ich ein Computerkonto oder ein Dienstanmeldekonto erstelle?**
 
-    Ob Sie ein [Computerkonto](https://docs.microsoft.com/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standard) oder ein [Dienstanmeldekonto](https://docs.microsoft.com/windows/win32/ad/about-service-logon-accounts) erstellen, hat keine Auswirkung darauf, wie die Authentifizierung mit Azure Files erfolgt. Sie können festlegen, wie ein Speicherkonto als Identität in Ihrer AD-Umgebung dargestellt werden soll. Der im Join-AzStorageAccountForAuth-Cmdlet standardmäßig festgelegte DomainAccountType ist Computerkonto. Das in Ihrer AD-Umgebung konfigurierte Kennwort für den Ablauf des Kennworts kann jedoch für das Computer- oder Dienstanmeldekonto abweichen. Berücksichtigen Sie dies beim [Aktualisieren des Kennworts Ihrer Speicherkontoidentität in AD](https://docs.microsoft.com/azure/storage/files/storage-files-identity-auth-active-directory-enable#5-update-ad-account-password).
+    Ob Sie ein [Computerkonto](/windows/security/identity-protection/access-control/active-directory-accounts#manage-default-local-accounts-in-active-directory) (Standard) oder ein [Dienstanmeldekonto](/windows/win32/ad/about-service-logon-accounts) erstellen, hat keine Auswirkung darauf, wie die Authentifizierung mit Azure Files erfolgt. Sie können festlegen, wie ein Speicherkonto als Identität in Ihrer AD-Umgebung dargestellt werden soll. Der im Join-AzStorageAccountForAuth-Cmdlet standardmäßig festgelegte DomainAccountType ist Computerkonto. Das in Ihrer AD-Umgebung konfigurierte Kennwort für den Ablauf des Kennworts kann jedoch für das Computer- oder Dienstanmeldekonto abweichen. Berücksichtigen Sie dies beim [Aktualisieren des Kennworts Ihrer Speicherkontoidentität in AD](./storage-files-identity-ad-ds-update-password.md).
  
 * <a id="ad-support-rest-apis"></a>
 **Sind REST-APIs zur Unterstützung von Get/Set/Copy-Vorgängen für Windows-ACLs auf Verzeichnis-/Dateiebene vorhanden?**
 
-    Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren. Außerdem wird das Beibehalten von Windows-ACLs in REST-basierten Tools unterstützt: [AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases).
+    Ja, wir unterstützen REST-APIs, die NTFS-ACLs für Verzeichnisse oder Dateien bei Verwendung der REST-API [2019-07-07](/rest/api/storageservices/versioning-for-the-azure-storage-services#version-2019-07-07) (oder höher) erfassen, festlegen oder kopieren. Außerdem wird das Beibehalten von Windows-ACLs in REST-basierten Tools unterstützt: [AzCopy v10.4+](https://github.com/Azure/azure-storage-azcopy/releases).
 
 ## <a name="network-file-system"></a>Network File System
 
@@ -324,7 +319,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 * <a id="port-445-blocked"></a>
 **Mein ISP oder meine IT-Abteilung blockiert Port 445, wodurch das Bereitstellen von Azure Files fehlschlägt. Wie soll ich vorgehen?**
 
-    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](https://docs.microsoft.com/azure/storage/files/storage-troubleshoot-windows-file-connection-problems#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen mit SMB 3.0 (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.0 wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich sehr sicher über das Internet nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
+    Informationen zu verschiedenen Möglichkeiten, den blockierten Port 445 zu umgehen, finden Sie [hier](./storage-troubleshoot-windows-file-connection-problems.md#cause-1-port-445-is-blocked). Azure Files erlaubt von außerhalb der Region oder des Rechenzentrums nur Verbindungen mit SMB 3.0 (mit Verschlüsselungsunterstützung). In das Protokoll SMB 3.0 wurden viele Sicherheitsfunktionen integriert, darunter die Kanalverschlüsselung, die sich sehr sicher über das Internet nutzen lässt. Es ist jedoch möglich, dass Port 445 aufgrund von Schwachstellen in niedrigeren SMB-Versionen blockiert wurde. Im Idealfall sollte der Port nur für SMB 1.0-Datenverkehr gesperrt werden und SMB 1.0 auf allen Clients deaktiviert sein.
 
 * <a id="expressroute-not-required"></a>
 **Muss ich Azure ExpressRoute verwenden, wenn ich eine Verbindung mit Azure Files herstellen oder die Azure-Dateisynchronisierung lokal verwenden möchte?**  
@@ -339,7 +334,7 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="backup"></a>Backup
 * <a id="backup-share"></a>
 **Wie sichere ich meine Azure-Dateifreigabe?**  
-    Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. Azure Backup ermöglicht die Sicherung von Azure Files. Erfahren Sie mehr über das [Sichern von Azure-Dateifreigaben mit Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-files).
+    Sie können regelmäßige [Freigabemomentaufnahmen](storage-snapshots-files.md) zum Schutz vor einer versehentlichen Löschung verwenden. Außerdem können Sie AzCopy, Robocopy oder ein Sicherungstool eines Drittanbieters nutzen, das zum Sichern einer eingebundenen Dateifreigabe geeignet ist. Azure Backup ermöglicht die Sicherung von Azure Files. Erfahren Sie mehr über das [Sichern von Azure-Dateifreigaben mit Azure Backup](../../backup/backup-afs.md).
 
 ## <a name="share-snapshots"></a>Freigabemomentaufnahmen
 
@@ -450,11 +445,11 @@ In diesem Artikel werden häufig gestellte Fragen zu Azure Files-Features und -F
 ## <a name="features-and-interoperability-with-other-services"></a>Features und Interoperabilität mit anderen Diensten
 * <a id="cluster-witness"></a>
 **Kann ich meine Azure-Dateifreigabe als *Dateifreigabenzeugen* für meinen Windows Server-Failovercluster verwenden?**  
-    Diese Konfiguration wird für eine Azure-Dateifreigabe derzeit nicht unterstützt. Weitere Informationen zum Einrichten dieser Funktion für den Azure Blob Storage finden Sie unter [Bereitstellen eines Cloudzeugen für einen Failovercluster](https://docs.microsoft.com/windows-server/failover-clustering/deploy-cloud-witness).
+    Diese Konfiguration wird für eine Azure-Dateifreigabe derzeit nicht unterstützt. Weitere Informationen zum Einrichten dieser Funktion für den Azure Blob Storage finden Sie unter [Bereitstellen eines Cloudzeugen für einen Failovercluster](/windows-server/failover-clustering/deploy-cloud-witness).
 
 * <a id="containers"></a>
 **Kann ich eine Azure-Dateifreigabe in einer Azure-Containerinstanz bereitstellen?**  
-    Ja. Azure-Dateifreigaben sind eine gute Möglichkeit, um Informationen über die Lebensdauer einer Containerinstanz hinaus dauerhaft zu speichern. Weitere Informationen finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](../../container-instances/container-instances-mounting-azure-files-volume.md).
+    Ja. Azure-Dateifreigaben sind eine gute Möglichkeit, um Informationen über die Lebensdauer einer Containerinstanz hinaus dauerhaft zu speichern. Weitere Informationen finden Sie unter [Einbinden einer Azure-Dateifreigabe in Azure Container Instances](../../container-instances/container-instances-volume-azure-files.md).
 
 * <a id="rest-rename"></a>
 **Steht in der REST-API ein Umbenennungsvorgang zur Verfügung?**  

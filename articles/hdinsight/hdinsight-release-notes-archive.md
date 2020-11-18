@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 10/07/2020
-ms.openlocfilehash: d8b36676c9b95992bdcf382c1f474b56e30ad3fb
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3973e32fdc724bd3c0894d6aaf2eb06ad3ba3adc
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535551"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629936"
 ---
 # <a name="archived-release-notes"></a>Archivierte Versionshinweise
 
@@ -21,9 +21,39 @@ ms.locfileid: "92535551"
 
 Azure HDInsight ist einer der beliebtesten Dienste unter Enterprise-Kunden für die Open Source-Analyseframeworks Apache Hadoop und Apache Spark in Azure.
 
-## <a name="release-date-09282020"></a>Veröffentlichungsdatum: 28.09.2020
+## <a name="release-date-10082020"></a>Veröffentlichungsdatum: 08.10.2020
 
 Diese Version gilt sowohl für HDInsight 3.6 als auch für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen in Ihrer Region erst einige Tage später verfügbar werden.
+
+### <a name="new-features"></a>Neue Funktionen
+#### <a name="hdinsight-private-clusters-with-no-public-ip-and-private-link-preview"></a>Private HDInsight-Cluster ohne öffentliche IP-Adresse und private Verbindung (Vorschau)
+HDInsight unterstützt jetzt die Erstellung von Clustern ohne öffentliche IP-Adresse und den Zugriff auf Cluster über private Verbindungen in der Vorschau. Kunden können die neuen erweiterten Netzwerkeinstellungen verwenden, um einen vollständig isolierten Cluster ohne öffentliche IP-Adresse zu erstellen und ihre eigenen privaten Endpunkte für den Zugriff auf den Cluster verwenden. 
+
+#### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
+HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Ab dieser Version wird der Dienst schrittweise zu [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) migriert. Der gesamte Prozess kann Monate dauern. Nachdem Ihre Regionen und Abonnements migriert wurden, werden neu erstellte HDInsight-Cluster ohne Kundenaktionen in VM-Skalierungsgruppen ausgeführt. Es wird kein Breaking Change erwartet.
+
+### <a name="deprecation"></a>Eingestellte Unterstützung
+#### <a name="deprecation-of-hdinsight-36-ml-services-cluster"></a>Eingestellte Unterstützung des HDInsight 3.6 ML Services-Clusters
+Der Support für den Clustertyp „HDInsight 3.6 ML Services“ wird am 31. Dezember 2020 auslaufen. Kunden werden danach keine neuen 3.6 ML Services-Cluster mehr erstellen können. Vorhandene Cluster werden unverändert ohne Unterstützung durch Microsoft ausgeführt. Prüfen Sie [hier](./hdinsight-component-versioning.md#available-versions) das Auslaufen des Supports für HDInsight-Versionen und Clustertypen.
+
+### <a name="behavior-changes"></a>Verhaltensänderungen
+Keine Verhaltensänderung für diese Version.
+
+### <a name="upcoming-changes"></a>Bevorstehende Änderungen
+Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
+
+#### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Möglichkeit zum Auswählen anderer Größen virtueller Zookeeper-Computer für Spark, Hadoop und ML Services
+HDInsight unterstützt derzeit keine Anpassung der Zookeeper-Knotengröße für die Clustertypen „Spark“, „Hadoop“ und „ML Services“. Standardmäßig wird A2_v2/A2 für die Größen virtueller Computer verwendet, die kostenlos zur Verfügung gestellt werden. In der kommenden Version können Sie die Größe der virtuellen Zookeeper-Computer auswählen, die für Ihr Szenario am besten geeignet ist. Für Zookeeper-Knoten mit einer anderen Größe der virtuellen Computer als A2_v2/A2 fallen Gebühren an. Die virtuellen Computer vom Typ A2_v2 und A2 werden weiterhin kostenlos angeboten.
+
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit und -leistung. 
+
+### <a name="component-version-change"></a>Änderung der Komponentenversion
+Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](./hdinsight-component-versioning.md).
+
+## <a name="release-date-09282020"></a>Veröffentlichungsdatum: 28.09.2020
+
+Diese Version gilt sowohl für HDInsight 3.6 als auch für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
 
 ### <a name="new-features"></a>Neue Funktionen
 #### <a name="autoscale-for-interactive-query-with-hdinsight-40-is-now-generally-available"></a>Autoskalierung für Interactive Query mit HDInsight 4.0 ist jetzt allgemein verfügbar
@@ -39,7 +69,7 @@ Eine Fehlerdomäne ist eine logische Gruppierung von zugrundeliegender Hardware 
 Kunden können die Verschlüsselung während der Übertragung zwischen Clusterknoten mithilfe der IPSec-Verschlüsselung mit plattformseitig verwalteten Schlüsseln aktivieren. Diese Option kann zum Zeitpunkt der Clustererstellung aktiviert werden. Erfahren Sie weitere Einzelheiten zum [Aktivieren der Verschlüsselung während der Übertragung](./domain-joined/encryption-in-transit.md).
 
 #### <a name="encryption-at-host"></a>Verschlüsselung auf dem Host
-Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Host gespeicherten Daten ruhend verschlüsselt und verschlüsselt an den Speicherdienst übermittelt. Ab dieser Version können Sie die **Verschlüsselung beim Host auf einem temporären Datenträger aktivieren** , wenn Sie den Cluster erstellen. Die Verschlüsselung auf dem Host wird nur für [bestimmte VM-SKUs in ausgewählten Regionen](../virtual-machines/disks-enable-host-based-encryption-portal.md) unterstützt. HDInsight unterstützt [folgende Knotenkonfiguration und SKUs](./hdinsight-supported-node-configuration.md). Erfahren Sie weitere Einzelheiten zum [Aktivieren der Verschlüsselung auf dem Host](./disk-encryption.md#encryption-at-host-using-platform-managed-keys).
+Wenn Sie die Verschlüsselung auf dem Host aktivieren, werden die auf dem VM-Host gespeicherten Daten ruhend verschlüsselt und verschlüsselt an den Speicherdienst übermittelt. Ab dieser Version können Sie die **Verschlüsselung beim Host auf einem temporären Datenträger aktivieren**, wenn Sie den Cluster erstellen. Die Verschlüsselung auf dem Host wird nur für [bestimmte VM-SKUs in ausgewählten Regionen](../virtual-machines/disks-enable-host-based-encryption-portal.md) unterstützt. HDInsight unterstützt [folgende Knotenkonfiguration und SKUs](./hdinsight-supported-node-configuration.md). Erfahren Sie weitere Einzelheiten zum [Aktivieren der Verschlüsselung auf dem Host](./disk-encryption.md#encryption-at-host-using-platform-managed-keys).
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
 HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Ab dieser Version wird der Dienst schrittweise zu [Azure-VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) migriert. Der gesamte Prozess kann Monate dauern. Nachdem Ihre Regionen und Abonnements migriert wurden, werden neu erstellte HDInsight-Cluster ohne Kundenaktionen in VM-Skalierungsgruppen ausgeführt. Es wird kein Breaking Change erwartet.
@@ -188,7 +218,7 @@ Um die Hochverfügbarkeit und Zuverlässigkeit von HDInsight-Clustern zu gewähr
 #### <a name="cluster-worker-node-provisioning-change"></a>Änderung bei der Bereitstellung von Workerknoten für Cluster
 Wenn 80 Prozent der Workerknoten bereit sind, ist der Cluster **betriebsbereit**. Kunden können nun alle Vorgänge auf der Datenebene nutzen und beispielsweise Skripts und Aufträge ausführen. Vorgänge auf der Steuerungsebene (etwa das Hoch-/Herunterskalieren) stehen dagegen nicht zur Verfügung. Nur Löschvorgänge werden unterstützt.
  
-Im Anschluss an die Phase **Betriebsbereit** wartet der Cluster noch 60 Minuten auf die restlichen 20 Prozent der Workerknoten. Nach diesen 60 Minuten wechselt der Cluster in die **Ausführungsphase** , auch wenn noch nicht alle Workerknoten verfügbar sind. Sobald sich ein Cluster in der **Ausführungsphase** befindet, können er ganz normal verwendet werden. Sowohl Vorgänge auf der Steuerungsebene (etwa das Hoch-/Herunterskalieren) als auch Vorgänge auf der Datenebene (beispielsweise das Ausführen von Skripts und Aufträgen) werden akzeptiert. Sollten einige der angeforderten Workerknoten nicht verfügbar sein, wird der Cluster als teilweise erfolgreich gekennzeichnet. Ihnen werden die Knoten in Rechnung gestellt, die erfolgreich bereitgestellt wurden. 
+Im Anschluss an die Phase **Betriebsbereit** wartet der Cluster noch 60 Minuten auf die restlichen 20 Prozent der Workerknoten. Nach diesen 60 Minuten wechselt der Cluster in die **Ausführungsphase**, auch wenn noch nicht alle Workerknoten verfügbar sind. Sobald sich ein Cluster in der **Ausführungsphase** befindet, können er ganz normal verwendet werden. Sowohl Vorgänge auf der Steuerungsebene (etwa das Hoch-/Herunterskalieren) als auch Vorgänge auf der Datenebene (beispielsweise das Ausführen von Skripts und Aufträgen) werden akzeptiert. Sollten einige der angeforderten Workerknoten nicht verfügbar sein, wird der Cluster als teilweise erfolgreich gekennzeichnet. Ihnen werden die Knoten in Rechnung gestellt, die erfolgreich bereitgestellt wurden. 
  
 #### <a name="create-new-service-principal-through-hdinsight"></a>Erstellen eines neuen Dienstprinzipals über HDInsight
 Bislang konnten Kunden mit der Clustererstellung einen neuen Dienstprinzipal für den Zugriff auf das verbundene ADLS Gen 1-Konto im Azure-Portal erstellen. Ab dem 15. Juni 2020 können Kunden im Rahmen des HDInsight-Erstellungsworkflows keinen neuen Dienstprinzipal mehr erstellen, und es wird nur noch ein bereits vorhandener Dienstprinzipal unterstützt. Weitere Informationen finden Sie unter [Gewusst wie: Erstellen einer Azure AD-Anwendung und eines Dienstprinzipals mit Ressourcenzugriff über das Portal](../active-directory/develop/howto-create-service-principal-portal.md).
@@ -227,7 +257,7 @@ Diese Version gilt für HDInsight 3.6 und 4.0. Das HDInsight-Release wird über 
 #### <a name="tls-12-enforcement"></a>Erzwingen von TLS 1.2
 Transport Layer Security (TLS) und Secure Sockets Layer (SSL) sind kryptografische Protokolle, die Kommunikationssicherheit über ein Computernetzwerk bereitstellen. Erfahren Sie mehr über [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0). HDInsight verwendet auf öffentlichen HTTPS-Endpunkten TLS 1.2, TLS 1.1 wird jedoch aus Gründen der Abwärtskompatibilität weiterhin unterstützt. 
 
-Mit diesem Release können Kunden nur TLS 1.2 für alle Verbindungen über den öffentlichen Clusterendpunkt auswählen. Zur Unterstützung dieser Möglichkeit wird die neue **minSupportedTlsVersion** -Eigenschaft eingeführt, die bei der Clustererstellung angegeben werden kann. Wenn die-Eigenschaft nicht festgelegt ist, unterstützt der Cluster weiterhin TLS 1.0, 1.1 und 1.2. Dies entspricht dem derzeitigen Verhalten. Kunden können den Wert für diese Eigenschaft auf „1.2“ festlegen, damit der Cluster nur TLS 1.2 und höher unterstützt. Weitere Informationen finden Sie unter [Transport Layer Security](./transport-layer-security.md).
+Mit diesem Release können Kunden nur TLS 1.2 für alle Verbindungen über den öffentlichen Clusterendpunkt auswählen. Zur Unterstützung dieser Möglichkeit wird die neue **minSupportedTlsVersion**-Eigenschaft eingeführt, die bei der Clustererstellung angegeben werden kann. Wenn die-Eigenschaft nicht festgelegt ist, unterstützt der Cluster weiterhin TLS 1.0, 1.1 und 1.2. Dies entspricht dem derzeitigen Verhalten. Kunden können den Wert für diese Eigenschaft auf „1.2“ festlegen, damit der Cluster nur TLS 1.2 und höher unterstützt. Weitere Informationen finden Sie unter [Transport Layer Security](./transport-layer-security.md).
 
 #### <a name="bring-your-own-key-for-disk-encryption"></a>Bring Your Own Key für Datenträgerverschlüsselung
 Alle verwalteten Datenträger in HDInsight werden mit der Speicherdienstverschlüsselung (Storage Service Encryption, SSE) von Azure geschützt. Die Daten auf diesen Datenträgern werden standardmäßig mit von Microsoft verwalteten Schlüsseln verschlüsselt. Ab diesem Release können Sie Bring Your Own Key (BYOK) für die Datenträgerverschlüsselung auswählen und mithilfe von Azure Key Vault verwalten. Die BYOK-Verschlüsselung ist eine Konfiguration in einem Schritt bei der Clustererstellung ohne zusätzliche Kosten. Registrieren Sie beim Erstellen Ihres Clusters lediglich HDInsight als verwaltete Identität bei Azure Key Vault, und fügen Sie den Verschlüsselungsschlüssel hinzu. Weitere Informationen finden Sie unter [Datenträgerverschlüsselung mit kundenseitig verwalteten Schlüsseln](./disk-encryption.md).
@@ -526,9 +556,9 @@ Die neuen Updates und Funktionen fallen in die folgenden Kategorien:
 
 *  ***Update von R Server 9.1 auf Machine Learning Services 9.3** _: Mit diesem Release erhalten Data Scientists und Entwickler das Beste aus dem Open-Source-Bereich ergänzt durch algorithmische Innovationen und einfache Operationalisierung – alles in ihrer bevorzugten Sprache und mit der Geschwindigkeit von Apache Spark. Dieses Release erweitert die in R Server angebotenen Funktionen um die Unterstützung für Python, was zur Änderung des Clusternamens von R Server zu ML Services geführt hat. 
 
-_  * **Unterstützung für Azure Data Lake Storage Gen2** _: HDInsight unterstützt die Vorschauversion von Azure Data Lake Storage Gen2. In den verfügbaren Regionen können Kunden ein ADLS Gen2-Konto als primären oder sekundären Speicher für ihre HDInsight-Cluster auswählen.
+_  ***Unterstützung für Azure Data Lake Storage Gen2** _: HDInsight unterstützt die Vorschauversion von Azure Data Lake Storage Gen2. In den verfügbaren Regionen können Kunden ein ADLS Gen2-Konto als primären oder sekundären Speicher für ihre HDInsight-Cluster auswählen.
 
-_  * **Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):** – [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
+_  ***Updates für HDInsight-Enterprise-Sicherheitspaket (Vorschauversion):** – [VNET-Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) unterstützen Azure Blob Storage, ADLS Gen1, Cosmos DB und Azure DB.
 
 ### <a name="component-versions"></a>Komponentenversionen
 
@@ -1788,7 +1818,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 |**Apache-Komponente**|**Apache JIRA**|**Zusammenfassung**|**Details**|
 |--|--|--|--|
 |**Spark 2.3** |**N/V** |**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |– Es gibt ein Dokument für veraltete Komponenten und einen Leitfaden für Verhaltensänderungen, https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations<br /><br />– Für den SQL-Abschnitt gibt es einen weiteren ausführlichen Leitfaden zur Migration (von 2.2 zu 2.3), https://spark.apache.org/docs/latest/sql-programming-guide.html#upgrading-from-spark-sql-22-to-23|
-|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-Auftrag wird erfolgreich abgeschlossen, aber es besteht ein HDFS-Fehler aufgrund eines vollen Datenträgerkontingents |**Szenario:** Ausführen von **insert overwrite** , wenn ein Kontingent auf den Papierkorb des Benutzers festgelegt ist, der den Befehl ausführt.<br /><br />**Vorheriges Verhalten:** Der Auftrag wird erfolgreich abgeschlossen, obwohl die Daten nicht in den Papierkorb verschoben werden. Das Ergebnis kann fälschlicherweise einige Daten enthalten, die zuvor in der Tabelle vorhanden waren.<br /><br />**Neues Verhalten:** Wenn das Verschieben der Daten in den Papierkorb fehlschlägt, werden die Dateien dauerhaft gelöscht.|
+|Spark |[**HIVE-12505**](https://issues.apache.org/jira/browse/HIVE-12505) |Spark-Auftrag wird erfolgreich abgeschlossen, aber es besteht ein HDFS-Fehler aufgrund eines vollen Datenträgerkontingents |**Szenario:** Ausführen von **insert overwrite**, wenn ein Kontingent auf den Papierkorb des Benutzers festgelegt ist, der den Befehl ausführt.<br /><br />**Vorheriges Verhalten:** Der Auftrag wird erfolgreich abgeschlossen, obwohl die Daten nicht in den Papierkorb verschoben werden. Das Ergebnis kann fälschlicherweise einige Daten enthalten, die zuvor in der Tabelle vorhanden waren.<br /><br />**Neues Verhalten:** Wenn das Verschieben der Daten in den Papierkorb fehlschlägt, werden die Dateien dauerhaft gelöscht.|
 |**Kafka 1.0**|**N/V**|**Änderungen, die in den Versionsanmerkungen zu Apache Spark dokumentiert sind** |https://kafka.apache.org/10/documentation.html#upgrade_100_notable|
 |**Hive/Ranger** | |Zusätzliche Ranger Hive-Richtlinien sind für INSERT OVERWRITE erforderlich |**Szenario:** Zusätzliche Ranger Hive-Richtlinien sind für **INSERT OVERWRITE** erforderlich<br /><br />**Vorheriges Verhalten:** Hive-Abfragen von **INSERT OVERWRITE** werden wie gewohnt erfolgreich ausgeführt.<br /><br />**Neues Verhalten:** Hive-Abfragen von **INSERT OVERWRITE** schlagen unerwartet nach dem Upgrade auf HDP-2.6.x mit der folgenden Fehlermeldung fehl:<br /><br />Fehler beim Kompilieren der Anweisung: FEHLER: Berechtigung für HiveAccessControlException wurde verweigert: Benutzer „Jdoe“ verfügt über keine Schreibberechtigung für /tmp/\*(state=42000,code=40000)<br /><br />Ab HDP-2.6.0 erfordern Hive-Abfragen von **INSERT OVERWRITE** eine Ranger-URI-Richtline, um Schreibvorgänge zuzulassen, selbst wenn der Benutzer über eine HDFS-Richtlinie über Schreibberichtigungen verfügt.<br /><br />**Problemumgehung/Erwartete Kundenaktion:**<br /><br />1. Erstellen Sie eine neue Richtlinie im Hive-Repository.<br />2. Wählen Sie „URI“ in der Dropdownliste aus, bei der „Database“ angezeigt wird.<br />3. Aktualisieren Sie den Pfad (z.B. /tmp/*)<br />4. Fügen Sie die Benutzer und Gruppen hinzu, und speichern Sie die Änderungen.<br />5. Wiederholen Sie die INSERT-Abfrage.|
 |**HDFS**|**N/V** |HDFS sollte mehrere KMS-URI unterstützen |**Vorheriges Verhalten:** Die dfs.encryption.key.provider.uri-Eigenschaft wurde verwendet, um den Pfad des KMS-Anbieters zu konfigurieren.<br /><br />**Neues Verhalten:** dfs.encryption.key.provider.uri ist nun veraltet und wurde zum Konfigurieren des Pfads des KMS-Anbieters durch hadoop.security.key.provider.path ersetzt.|
@@ -1796,7 +1826,7 @@ Behobene Probleme stellen ausgewählte Probleme dar, die zuvor über den Support
 
 ### <a name="known-issues"></a>Bekannte Probleme
 
-- **HDInsight-Integration in ADLS Gen 2** : In HDInsight-ESP-Clustern mit Azure Data Lake Storage Gen 2 können bei Benutzerverzeichnissen und -berechtigungen zwei Probleme auftreten:
+- **HDInsight-Integration in ADLS Gen 2**: In HDInsight-ESP-Clustern mit Azure Data Lake Storage Gen 2 können bei Benutzerverzeichnissen und -berechtigungen zwei Probleme auftreten:
    
   1. Die Stammverzeichnisse für Benutzer werden in „Head Node 1“ nicht erstellt. Um dieses Problem zu umgehen, erstellen Sie die Verzeichnisse manuell, und ändern Sie den Besitz in den Benutzerprinzipalnamen des jeweiligen Benutzers.
    

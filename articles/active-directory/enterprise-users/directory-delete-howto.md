@@ -7,19 +7,19 @@ author: curtand
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 05/21/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bf8eeb2d1f19ca0848ae5c608ba9f0d8e9526e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 189eaf3a08ce0e8411ce67170fdf1a895cbc56d2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647714"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Löschen eines Mandanten in Azure Active Directory
 
@@ -48,11 +48,11 @@ Sie können eine Organisation in Azure AD erst löschen, nachdem sie mehrere Pr�
   
    ![Auswählen des Befehls zum Löschen der Organisation](./media/directory-delete-howto/delete-directory-list.png)
 
-5. Wenn Ihre Organisation mindestens eine Prüfung nicht bestanden hat, erhalten Sie einen Link zu weiteren Informationen, wie die Prüfung bestanden werden kann. Sobald Sie alle Prüfungen bestanden haben, klicken Sie auf **Löschen** , um den Vorgang abzuschließen.
+5. Wenn Ihre Organisation mindestens eine Prüfung nicht bestanden hat, erhalten Sie einen Link zu weiteren Informationen, wie die Prüfung bestanden werden kann. Sobald Sie alle Prüfungen bestanden haben, klicken Sie auf **Löschen**, um den Vorgang abzuschließen.
 
 ## <a name="if-you-cant-delete-the-organization"></a>Wenn Sie die Organisation nicht löschen können
 
-Bei der Konfiguration Ihrer Azure AD-Organisation haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihre Organisation wie Azure AD Premium P2, Microsoft 365 Business Standard oder Enterprise Mobility + Security E5 aktiviert. Um einen versehentlichen Datenverlust zu vermeiden, können Sie eine Organisation erst löschen, nachdem die Abonnements vollständig gelöscht wurden. Die Abonnements müssen den Status **Bereitstellung aufgehoben** haben, damit die Organisation gelöscht werden kann. Ein Abonnement mit dem Status **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert** . Die letzte Stufe ist der Status **Bereitstellung aufgehoben** .
+Bei der Konfiguration Ihrer Azure AD-Organisation haben Sie möglicherweise auch lizenzbasierte Abonnements für Ihre Organisation wie Azure AD Premium P2, Microsoft 365 Business Standard oder Enterprise Mobility + Security E5 aktiviert. Um einen versehentlichen Datenverlust zu vermeiden, können Sie eine Organisation erst löschen, nachdem die Abonnements vollständig gelöscht wurden. Die Abonnements müssen den Status **Bereitstellung aufgehoben** haben, damit die Organisation gelöscht werden kann. Ein Abonnement mit dem Status **Abgelaufen** oder **Gekündigt** wechselt in den Zustand **Deaktiviert**. Die letzte Stufe ist der Status **Bereitstellung aufgehoben**.
 
 Informationen dazu, was zu erwarten ist, wenn ein Microsoft 365-Testabonnement abläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Microsoft 365 Business-Abonnement endet?](https://support.office.com/article/what-happens-to-my-data-and-access-when-my-office-365-for-business-subscription-ends-4436582f-211a-45ec-b72e-33647f97d8a3) finden Sie weitere Informationen zur Datenaufbewahrung und zum Abonnementlebenszyklus von Microsoft 365. 
 
@@ -89,7 +89,7 @@ Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereits
   
    ![Lesen Sie sich die Geschäftsbedingungen sorgfältig durch.](./media/directory-delete-howto/delete-terms.png)
 
-7. Der Abonnementstatus hat sich nun geändert, und das Abonnement ist zum Löschen markiert. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben** .
+7. Der Abonnementstatus hat sich nun geändert, und das Abonnement ist zum Löschen markiert. Das Abonnement wechselt 72 Stunden später in den Zustand **Bereitstellung aufgehoben**.
 
 8. Sobald Sie eine Organisation in Ihrem Verzeichnis gelöscht haben und 72 Stunden verstrichen sind, können Sie sich wieder in Azure AD Admin Center anmelden. Dort sollten keine Aktionen erforderlich sein und keine Abonnements das Löschen Ihrer Organisation blockieren. Sie sollten Ihre Azure AD-Organisation nun erfolgreich löschen können.
   

@@ -3,22 +3,22 @@ title: Widerrufen des Benutzerzugriffs im Notfall in Azure Active Directory | Mi
 description: Widerrufen des gesamten Zugriffs für einen Benutzer in Azure Active Directory
 services: active-directory
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
 author: curtand
 ms.author: curtand
 manager: daveba
 ms.reviewer: krbain
-ms.date: 07/15/2020
+ms.date: 11/15/2020
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 16577c3509c9d3d9b02ead5e69832bacc7d083bb
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e12d08acdd9fc869ed766a1bbd78f35eb371cc8a
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92373208"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94649686"
 ---
 # <a name="revoke-user-access-in-azure-active-directory"></a>Widerrufen des Benutzerzugriffs in Azure Active Directory
 
@@ -113,9 +113,9 @@ Stellen Sie als Active Directory-Administrator eine Verbindung mit Ihrem lokalen
 
 Sobald Administratoren die oben genannten Schritte ausgeführt haben, kann der Benutzer keine neuen Token für Anwendungen erhalten, die an Azure Active Directory gebunden sind. Die Zeit, die zwischen dem Widerruf und dem Entzug des Zugriffs durch den Benutzer vergeht, hängt davon ab, wie die Anwendung Zugriff gewährt:
 
-- Bei **Anwendungen, die Zugriffstoken verwenden** , verliert der Benutzer den Zugriff, wenn das Zugriffstoken abläuft.
+- Bei **Anwendungen, die Zugriffstoken verwenden**, verliert der Benutzer den Zugriff, wenn das Zugriffstoken abläuft.
 
-- Bei **Anwendungen, in denen Sitzungstoken verwendet werden** , enden die bestehenden Sitzungen, sobald das Token abläuft. Wenn der deaktivierte Zustand des Benutzers mit der Anwendung synchronisiert ist, kann die Anwendung die bestehenden Sitzungen des Benutzers automatisch widerrufen, sofern sie entsprechend konfiguriert ist.  Die Zeitspanne hängt von der Häufigkeit der Synchronisierung zwischen Anwendung und Azure AD ab.
+- Bei **Anwendungen, in denen Sitzungstoken verwendet werden**, enden die bestehenden Sitzungen, sobald das Token abläuft. Wenn der deaktivierte Zustand des Benutzers mit der Anwendung synchronisiert ist, kann die Anwendung die bestehenden Sitzungen des Benutzers automatisch widerrufen, sofern sie entsprechend konfiguriert ist.  Die Zeitspanne hängt von der Häufigkeit der Synchronisierung zwischen Anwendung und Azure AD ab.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

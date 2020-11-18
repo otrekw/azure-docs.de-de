@@ -7,19 +7,19 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 04/29/2020
+ms.date: 11/15/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86b3b44e480ccdc823853b5c790cad02a0821795
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 046a19d41364f7e4db3edcb011c8c65519924b3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373324"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94650324"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell- und Microsoft Graph-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
@@ -239,7 +239,7 @@ HTTP/1.1 200 OK
 
 ## <a name="get-all-users-with-license-errors-in-a-group"></a>Abrufen aller Benutzer mit Lizenzfehlern in einer Gruppe
 
-Wenn eine Gruppe einige Fehler im Zusammenhang mit der Lizenzierung enthält, können Sie jetzt alle Benutzer auflisten, die von diesen Fehlern betroffen sind. Für einen Benutzer können auch Fehler aus anderen Gruppen relevant sein. In diesem Beispiel beschränken wir die Ergebnisse jedoch ausschließlich auf Fehler, die für die betreffende Gruppe relevant sind, indem wir die **ReferencedObjectId** -Eigenschaft der einzelnen **IndirectLicenseError** -Einträge für den Benutzer überprüfen.
+Wenn eine Gruppe einige Fehler im Zusammenhang mit der Lizenzierung enthält, können Sie jetzt alle Benutzer auflisten, die von diesen Fehlern betroffen sind. Für einen Benutzer können auch Fehler aus anderen Gruppen relevant sein. In diesem Beispiel beschränken wir die Ergebnisse jedoch ausschließlich auf Fehler, die für die betreffende Gruppe relevant sind, indem wir die **ReferencedObjectId**-Eigenschaft der einzelnen **IndirectLicenseError**-Einträge für den Benutzer überprüfen.
 
 ```powershell
 #a sample group with errors
@@ -402,7 +402,7 @@ function UserHasLicenseAssignedFromGroup
 }
 ```
 
-Dieses Skript führt diese Funktionen für jeden Benutzer in der Organisation aus, indem die SKU-ID als Eingabe verwendet wird – in diesem Beispiel interessieren wir uns für die Lizenz für *Enterprise Mobility + Security* , die in unserer Organisation mit der ID *contoso:EMS* dargestellt wird:
+Dieses Skript führt diese Funktionen für jeden Benutzer in der Organisation aus, indem die SKU-ID als Eingabe verwendet wird – in diesem Beispiel interessieren wir uns für die Lizenz für *Enterprise Mobility + Security*, die in unserer Organisation mit der ID *contoso:EMS* dargestellt wird:
 
 ```powershell
 #the license SKU we are interested in. use Get-MsolAccountSku to see a list of all identifiers in your organization
