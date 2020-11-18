@@ -5,15 +5,15 @@ author: matjazl
 ms.service: healthcare-apis
 ms.subservice: fhir
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: cavoeg
 ms.date: 10/06/2020
-ms.openlocfilehash: c04bb82810bf55d6ac55b2697f5010896e0eb9b4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 0cc31c26a71775dfdf3e9ee94852fda8af2c0cfc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289283"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844538"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Schnellstart: Verwenden Sie eine ARM-Vorlage zum Bereitstellen von Azure API for FHIR
 
@@ -71,7 +71,7 @@ Wählen Sie den folgenden Link aus, um Azure API for FHIR mit einer ARM-Vorlage 
 
 [:::image type="content" source="../media/template-deployments/deploy-to-azure.svg" alt-text="Bereitstellen eines Azure API for FHIR-Diensts mithilfe der ARM-Vorlage im Azure-Portal.":::](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-azure-api-for-fhir%2fazuredeploy.json)
 
-Auf der Seite **Azure API for FHIR bereitstellen** :
+Auf der Seite **Azure API for FHIR bereitstellen**:
 
 1. Wenn Sie möchten, ändern Sie das **Abonnement** aus dem Standardabonnement in ein anderes Abonnement.
 
@@ -150,7 +150,7 @@ read -p "Press [ENTER] to continue: "
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihren neuen Azure API for FHIR-Dienst anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure API for FHIR** , und wählen Sie diese Option dann aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Azure API for FHIR**, und wählen Sie diese Option dann aus.
 
 2. Wählen Sie in der FHIR-Liste den neuen Dienst aus. Die Seite **Übersicht** für den neuen Azure API for FHIR-Dienst wird angezeigt.
 
@@ -196,7 +196,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 

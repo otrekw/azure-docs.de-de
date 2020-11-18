@@ -2,19 +2,19 @@
 title: Häufig gestellte Fragen zu Azure Synapse Analytics (Vorschau für Arbeitsbereiche)
 description: Häufig gestellte Fragen zu Azure Synapse Analytics (Vorschau für Arbeitsbereiche)
 services: synapse-analytics
-author: ArnoMicrosoft
+author: saveenr
 ms.service: synapse-analytics
 ms.topic: overview
 ms.subservice: overview
 ms.date: 04/15/2020
-ms.author: acomet
+ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: d7e8ea231dd6db9eab6cf9115f6ce2e62893371a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 530ebe09ee0ca44b0a5fbd4b8da2784e2c7ae7ea
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305412"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843892"
 ---
 # <a name="azure-synapse-analytics-workspaces-preview-frequently-asked-questions"></a>Azure Synapse Analytics (Vorschau für Arbeitsbereiche): häufig gestellte Fragen
 
@@ -101,8 +101,6 @@ A: Ja. Sie können Geschäftsanwendungen von Drittanbietern wie Tableau und Powe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
-- [Verwenden von Synapse Studio](quickstart-synapse-studio.md)
-- [Erstellen eines dedizierten SQL-Pools](quickstart-create-sql-pool-portal.md)
-- [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)
-- [Erstellen eines serverlosen Apache Spark-Pools](quickstart-create-apache-spark-pool-portal.md) 
+* [Erste Schritte mit Azure Synapse Analytics](get-started.md)
+* [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
+* [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)
