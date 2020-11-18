@@ -4,15 +4,15 @@ description: In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe 
 author: sffamily
 ms.service: signalr
 ms.topic: quickstart
-ms.custom: subject-armqs
+ms.custom: subject-armqs, devx-track-azurecli
 ms.author: zhshang
 ms.date: 10/02/2020
-ms.openlocfilehash: a7e8183f21ab49fe4662470d30e52977dd89153a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 4ab029048b37a4dcb44ef405249dcb9e20de70cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289907"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841614"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-signalr-service"></a>Schnellstart: Verwenden einer ARM-Vorlage zum Bereitstellen von Azure SignalR Service
 
@@ -70,9 +70,9 @@ Auf der Seite **Deploy an Azure SignalR service** (Azure SignalR Service bereits
 
 3. Wenn Sie eine neue Ressourcengruppe erstellt haben, wählen Sie eine **Region** für die Ressourcengruppe aus.
 
-4. Sie können für die Azure SignalR Service-Instanz einen neuen **Namen** und **Standort** (z. B. **eastus2** ) eingeben. Wenn Sie keinen Namen angeben, wird er automatisch generiert. Der Standort für die Azure SignalR Service-Instanz kann sich in derselben Region wie die Ressourcengruppe oder in einer anderen Region befinden. Wenn Sie keinen Standort angeben, wird dieselbe Region wie für die Ressourcengruppe verwendet.
+4. Sie können für die Azure SignalR Service-Instanz einen neuen **Namen** und **Standort** (z. B. **eastus2**) eingeben. Wenn Sie keinen Namen angeben, wird er automatisch generiert. Der Standort für die Azure SignalR Service-Instanz kann sich in derselben Region wie die Ressourcengruppe oder in einer anderen Region befinden. Wenn Sie keinen Standort angeben, wird dieselbe Region wie für die Ressourcengruppe verwendet.
 
-5. Wählen Sie den **Tarif** ( **Free_F1** oder **Standard_S1** ) aus, geben Sie die **Kapazität** (Anzahl von SignalR-Einheiten) ein, und wählen Sie einen **Dienstmodus** aus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an Hubserver, wenn der Hub über eine Serververbindung verfügt). Wählen Sie anschließend die Option **Enable Connectivity Logs** (Konnektivitätsprotokolle aktivieren) oder **Enable Messaging Logs** (Messagingprotokolle aktivieren) aus.
+5. Wählen Sie den **Tarif** (**Free_F1** oder **Standard_S1**) aus, geben Sie die **Kapazität** (Anzahl von SignalR-Einheiten) ein, und wählen Sie einen **Dienstmodus** aus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an Hubserver, wenn der Hub über eine Serververbindung verfügt). Wählen Sie anschließend die Option **Enable Connectivity Logs** (Konnektivitätsprotokolle aktivieren) oder **Enable Messaging Logs** (Messagingprotokolle aktivieren) aus.
 
     > [!NOTE]
     > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
@@ -92,12 +92,12 @@ Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mithilfe 
 
 * Name und Region der neuen Azure SignalR Service-Instanz
 * Name und Region einer neuen Ressourcengruppe
-* Azure-Tarif ( **Free_F1** oder **Standard_S1** )
+* Azure-Tarif (**Free_F1** oder **Standard_S1**)
 * Kapazität der SignalR-Einheit (1, 2, 5, 10, 20, 50 oder 100)
   > [!NOTE]
   > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
 * Dienstmodus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an einen Hubserver, wenn der Hub über eine Serververbindung verfügt).
-* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging ( **true** oder **false** )
+* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging (**true** oder **false**)
 
 ```azurepowershell-interactive
 $serviceName = Read-Host -Prompt "Enter a name for the new Azure SignalR Service"
@@ -137,12 +137,12 @@ Verwenden Sie den folgenden Code, um die Azure SignalR Service-Instanz mithilfe 
 
 * Name und Region der neuen Azure SignalR Service-Instanz
 * Name und Region einer neuen Ressourcengruppe
-* Azure-Tarif ( **Free_F1** oder **Standard_S1** )
+* Azure-Tarif (**Free_F1** oder **Standard_S1**)
 * Kapazität der SignalR-Einheit (1, 2, 5, 10, 20, 50 oder 100)
     > [!NOTE]
     > Für den Tarif **Free_F1** ist die Kapazität auf 1 Einheit beschränkt.
 * Dienstmodus: **Standard** (Hubserver erforderlich), **Serverlos** (keine Serververbindung zulässig) oder **Klassisch** (nur Weiterleitung an einen Hubserver, wenn der Hub über eine Serververbindung verfügt).
-* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging ( **true** oder **false** )
+* Aktivierung/Deaktivierung der Protokolle für Konnektivität oder Messaging (**true** oder **false**)
 
 ```azurecli-interactive
 read -p "Enter a name for the new Azure SignalR Service: " serviceName &&
@@ -173,7 +173,7 @@ read -p "Press [ENTER] to continue: "
 
 Führen Sie die folgenden Schritte aus, um eine Übersicht über Ihre neue Azure SignalR Service-Instanz anzuzeigen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **SignalR** , und wählen Sie diese Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **SignalR**, und wählen Sie diese Option aus.
 
 2. Wählen Sie in der SignalR-Liste Ihren neuen Dienst aus. Die Seite **Übersicht** für die neue Azure SignalR Service-Instanz wird angezeigt.
 
@@ -209,7 +209,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen** , und wählen Sie die entsprechende Option aus.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Ressourcengruppen**, und wählen Sie die entsprechende Option aus.
 
 2. Wählen Sie in der Liste der Ressourcengruppen den Namen Ihrer Ressourcengruppe aus.
 

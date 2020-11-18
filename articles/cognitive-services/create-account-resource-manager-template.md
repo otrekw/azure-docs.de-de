@@ -9,13 +9,13 @@ ms.service: cognitive-services
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
-ms.custom: subject-armqs
-ms.openlocfilehash: 9ca92bf81acd72260d89404051f941b317ee3e1d
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: subject-armqs, devx-track-azurecli
+ms.openlocfilehash: 4afaad77fdff7a1ba80a385e9f2c3d8ddef8ab96
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363390"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842106"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Schnellstart: Erstellen einer Cognitive Services-Ressource mithilfe einer ARM-Vorlage
 
@@ -121,9 +121,9 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 
 # <a name="azure-portal"></a>[Azure portal](#tab/portal)
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen** , um die Liste mit Ihren Ressourcengruppen anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Ressourcengruppen**, um die Liste mit Ihren Ressourcengruppen anzuzeigen.
 2. Suchen Sie die Ressourcengruppe, die die zu löschende Ressource enthält.
-3. Klicken Sie mit der rechten Maustaste auf die Ressourcengruppenauflistung. Klicken Sie auf **Ressourcengruppe löschen** , und bestätigen Sie den Vorgang.
+3. Klicken Sie mit der rechten Maustaste auf die Ressourcengruppenauflistung. Klicken Sie auf **Ressourcengruppe löschen**, und bestätigen Sie den Vorgang.
 
 # <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/CLI)
 
