@@ -9,18 +9,72 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: a60ca64113bb3f2700e9f521f65780dc8ffbcc54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307742"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489130"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
 In diesem Artikel erhalten Sie Informationen zu Azure Machine Learning-Versionen.  Den vollständigen SDK-Referenzinhalt finden Sie auf der Hauptseite der Referenz zum [**Azure Machine Learning SDK für Python**](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
 
 Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um mehr über bekannte Fehler und Problemumgehungen zu erfahren.
+
+
+## <a name="2020-11-09"></a>11.9.2020
+
+### <a name="azure-machine-learning-sdk-for-python-v1180"></a>Azure Machine Learning SDK für Python v1.18.0
++ **Fehlerbehebungen und Verbesserungen**
+  + **azureml-automl-core**
+    +  Die Verarbeitung von kurzen Zeitreihen wurde verbessert, indem sie mit gaußschem Rauschen aufgefüllt werden dürfen.
+  + **azureml-automl-runtime**
+    + Wenn eine DateTime-Spalte einen OutOfBoundsDatetime-Wert aufweist, wird eine ConfigException-Ausnahme ausgelöst.
+    + Die Verarbeitung von kurzen Zeitreihen wurde verbessert, indem sie mit gaußschem Rauschen aufgefüllt werden dürfen.
+    + Es wird sichergestellt, dass jede Textspalte char-gram-Transformationen mit dem n-gram-Bereich auf Grundlage der Länge der Zeichenfolgen in der entsprechenden Textspalte verwenden kann.
+    + Für auf dem lokalen Computer eines Benutzers ausgeführte AutoML-Experimente werden Rohfeatureerklärungen für den besten Modus bereitgestellt.
+  + **azureml-core**
+    + Anpinnen von Paketen: pyjwt wird verwendet, um das Pullen in fehlerhaften Versionen zukünftiger Veröffentlichungen zu verhindern.
+    + Das Erstellen eines Experiments gibt das aktive oder zuletzt archivierte Experiment mit demselben Name zurück, wenn ein solches Experiment vorhanden ist, oder ein neues Experiment.
+    + Das Aufrufen von get_experiment über seinen Namen gibt das aktive oder zuletzt archivierte Experiment mit demselben Namen zurück.
+    + Benutzer können ein Experiment nicht umbenennen, während es reaktiviert wird.
+    + Die Fehlermeldung wurde verbessert, sodass sie nun mögliche Fehlerbehebungen beinhaltet, wenn ein Dataset fehlerhaft an ein Experiment übergeben wurde, z. B. ScriptRunConfig. 
+    + Die Dokumentation für `OutputDatasetConfig.register_on_complete` wurde verbessert, sodass das Verhalten eingeschlossen wird, das angewendet wird, wenn der Name bereits vorhanden ist.
+    + Wenn Namen für Dataseteingabe und -ausgabe angegeben werden, die möglicherweise zu Konflikten mit allgemeinen Umgebungsvariablen führen könnten, führt dies nun zu einer Warnung.
+    + Der Zweck des `grant_workspace_access`-Parameters beim Registrieren von Datenspeichern wurde neu bestimmt. Legen Sie ihn auf `True` fest, um auf Daten in einem virtuellen Netzwerk in Machine Learning Studio zuzugreifen.
+      [Weitere Informationen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+    + Die verknüpfte Dienst-API wurde optimiert. Anstatt eine Ressourcen-ID anzugeben, verfügen Sie über die drei eigenständigen Parameter sub_id, rg und name, die in der Konfiguration definiert sind.
+    + Damit Kunden Probleme mit beschädigten Token selbst lösen können, aktivieren Sie die Synchronisierung für Arbeitsbereichstoken als öffentliche Methode.
+    + Diese Änderung ermöglicht es, dass eine leere Zeichenfolge als Wert für scrip_param verwendet werden kann.
+  + **azureml-pipeline-core**
+    + Hierbei handelt es sich um ein SDK, das den SynapseCompute-Typ und SynapseSparkStep unterstützt. Kunden können Experimente und Pipelineausführungen in Synapse Spark-Pools ausführen.
+  + **azureml-pipeline-steps**
+    + Hierbei handelt es sich um ein SDK, das den SynapseCompute-Typ und SynapseSparkStep unterstützt. Kunden können Experimente und Pipelineausführungen in Synapse Spark-Pools ausführen.
+  + **azureml-synapse**
+    + Fügen Sie den Magic-Befehl in Synapse und SparkMonitor hinzu, damit Benutzer Synapse-Aufträge übermitteln und den Fortschritt des im Notebook ausgeführten Auftrags anzeigen können.
+  + **azureml-train-automl-client**
+    +  Die Verarbeitung von kurzen Zeitreihen wurde verbessert, indem sie mit gaußschem Rauschen aufgefüllt werden dürfen.
+  + **azureml-train-automl-runtime**
+    + Wenn eine DateTime-Spalte einen OutOfBoundsDatetime-Wert aufweist, wird eine ConfigException-Ausnahme ausgelöst.
+    + Es wurde Unterstützung für das Bereitstellen von Rohfeatureerklärungen für das beste Modell für auf dem lokalen Computer eines Benutzers ausgeführte AutoML-Experimente hinzugefügt.
+    + Die Verarbeitung von kurzen Zeitreihen wurde verbessert, indem sie mit gaußschem Rauschen aufgefüllt werden dürfen.
+  + **azureml-train-core**
+    + Diese Änderung ermöglicht es, dass eine leere Zeichenfolge als Wert für scrip_param verwendet werden kann.
+  + **azureml-train-restclients-hyperdrive**
+    + Die README-Datei wurde geändert und bietet nun mehr Kontext.
+  + **azureml-widgets**
+    + Für das Widget wurde Unterstützung für Zeichenfolgen für Diagramme/parallele Koordinaten hinzugefügt.
+
+## <a name="2020-11-05"></a>5\.11.2020
+
+### <a name="data-labeling-for-image-instance-segmentation-polygon-annotation-preview"></a>Datenbeschriftungen für die Segmentierung von Bildinstanzen (Polygonanmerkungen) (Vorschau)
+
+Der Projekttyp für die Segmentierung von Bildinstanzen (Polygonanmerkungen) bei der Datenbeschriftung ist ab sofort verfügbar. Benutzer können also Polygone zeichnen und mit Anmerkungen um die Kontur der Objekte herum auf Bildern versehen. Benutzer können den einzelnen Objekten eine Klasse und ein Polygon zuweisen, das für ein Bild relevant ist.
+
+Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-to-label-images.md)
+
+
 
 ## <a name="2020-10-26"></a>2020-10-26
 
@@ -529,7 +583,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + AutoML unterstützt Kundenprognosen jetzt über den vorgegebenen maximalen Horizont hinaus, ohne dass das Modell neu trainiert werden muss. Wenn das Prognoseziel ferner in der Zukunft liegt als der angegebene maximale Horizont, erstellt die forecast()-Funktion mit einem rekursiven Betriebsmodus dennoch gezielte Vorhersagen für den späteren Zeitpunkt. Die Abbildung der neuen Funktion finden Sie im Abschnitt „Forecasting farther than the maximum horizon“ (Vorhersagen über den maximalen Horizont hinaus) des Notebooks „forecasting-forecast-function“ in diesem [Ordner](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning).
   
   + **azureml-pipeline-steps**
-    + ParallelRunStep ist nun herausgegeben worden und Teil des **azureml-pipeline-steps** -Pakets. Vorhandenes ParallelRunStep im **azureml-contrib-pipeline-steps** -Paket ist veraltet. Änderungen gegenüber der öffentlichen Vorschauversion:
+    + ParallelRunStep ist nun herausgegeben worden und Teil des **azureml-pipeline-steps**-Pakets. Vorhandenes ParallelRunStep im **azureml-contrib-pipeline-steps**-Paket ist veraltet. Änderungen gegenüber der öffentlichen Vorschauversion:
       + Der optional konfigurierbare Parameter `run_max_try` zum Steuern der maximalen Anzahl von Aufrufen der Run-Methode für einen beliebigen Batch wurde hinzugefügt. Der Standardwert ist 3.
       + Es werden keine PipelineParameters mehr automatisch generiert. Die folgenden konfigurierbaren Werte können explizit als PipelineParameter festgelegt werden.
         + mini_batch_size
@@ -1075,7 +1129,7 @@ Greifen Sie von Studio aus auf die folgenden webbasierten Erstellungstools zu:
 
 + **Neue Features**
   + Dataset: Zwei Optionen, `on_error` und `out_of_range_datetime`, für `to_pandas_dataframe` hinzugefügt, die fehlschlagen, wenn Daten Fehlerwerte aufweisen, statt mit `None` aufgefüllt zu werden.
-  + Arbeitsbereich: Das Flag `hbi_workspace` für Arbeitsbereiche mit vertraulichen Daten wurde hinzugefügt, das eine weitere Verschlüsselung ermöglicht und eine erweiterte Diagnose für Arbeitsbereiche deaktiviert. Wir haben zudem die BYOK-Unterstützung (Bring Your Own Keys) für die zugehörige Cosmos DB-Instanz hinzugefügt, indem die Parameter `cmk_keyvault` und `resource_cmk_uri` beim Erstellen eines Arbeitsbereichs angegeben werden, wodurch eine Cosmos DB-Instanz in Ihrem Abonnement erstellt wird, während Sie Ihren Arbeitsbereich bereitstellen. [Weitere Informationen finden Sie hier.](./concept-enterprise-security.md#azure-cosmos-db)
+  + Arbeitsbereich: Das Flag `hbi_workspace` für Arbeitsbereiche mit vertraulichen Daten wurde hinzugefügt, das eine weitere Verschlüsselung ermöglicht und eine erweiterte Diagnose für Arbeitsbereiche deaktiviert. Wir haben zudem die BYOK-Unterstützung (Bring Your Own Keys) für die zugehörige Cosmos DB-Instanz hinzugefügt, indem die Parameter `cmk_keyvault` und `resource_cmk_uri` beim Erstellen eines Arbeitsbereichs angegeben werden, wodurch eine Cosmos DB-Instanz in Ihrem Abonnement erstellt wird, während Sie Ihren Arbeitsbereich bereitstellen. [Weitere Informationen finden Sie hier.](./concept-data-encryption.md#azure-cosmos-db)
 
 + **Fehlerbehebungen und Verbesserungen**
   + **azureml-automl-runtime**
@@ -1775,7 +1829,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 ### <a name="azure-portal"></a>Azure-Portal
 + **Previewfunktion**
   + Das Streaming von Protokoll- und Ausgabedateien ist nun für Seiten mit Ausführungsdetails verfügbar. Die Dateien streamen Updates in Echtzeit, wenn die Umschaltfläche für die Vorschau aktiviert ist.
-  + Die Möglichkeit, ein Kontingent auf Arbeitsbereichsebene festzulegen, wurde als Vorschauversion veröffentlicht. AmlCompute-Kontingente werden auf Abonnementebene zugeordnet, aber wir ermöglichen Ihnen nun, dieses Kontingent für eine gerechte Freigabe und Governance zwischen Arbeitsbereichen zu verteilen und zuzuordnen. Klicken Sie in der linken Navigationsleiste Ihres Arbeitsbereichs auf das Blatt **Nutzung + Kontingente** , und wählen Sie die Registerkarte **Configure Quotas** (Kontingente konfigurieren) aus. Sie müssen Abonnementadministrator sein, um auf Arbeitsbereichsebene Kontingente festlegen zu können, da dies ein arbeitsbereichsübergreifender Vorgang ist.
+  + Die Möglichkeit, ein Kontingent auf Arbeitsbereichsebene festzulegen, wurde als Vorschauversion veröffentlicht. AmlCompute-Kontingente werden auf Abonnementebene zugeordnet, aber wir ermöglichen Ihnen nun, dieses Kontingent für eine gerechte Freigabe und Governance zwischen Arbeitsbereichen zu verteilen und zuzuordnen. Klicken Sie in der linken Navigationsleiste Ihres Arbeitsbereichs auf das Blatt **Nutzung + Kontingente**, und wählen Sie die Registerkarte **Configure Quotas** (Kontingente konfigurieren) aus. Sie müssen Abonnementadministrator sein, um auf Arbeitsbereichsebene Kontingente festlegen zu können, da dies ein arbeitsbereichsübergreifender Vorgang ist.
 
 ## <a name="2019-08-05"></a>2019-08-05
 
@@ -1944,7 +1998,7 @@ Zum Zeitpunkt dieses Releases werden die folgenden Browser unterstützt: Chrome,
 
 + **Neue Features**
   + **azureml-opendatasets**
-    + **azureml-contrib-opendatasets** ist jetzt verfügbar als **azureml-opendatasets**. Das alte Paket kann weiterhin funktionieren, aber wir empfehlen Ihnen die Verwendung von **azureml-opendatasets** , um in den Genuss umfangreicherer Funktionen und Verbesserungen zu kommen.
+    + **azureml-contrib-opendatasets** ist jetzt verfügbar als **azureml-opendatasets**. Das alte Paket kann weiterhin funktionieren, aber wir empfehlen Ihnen die Verwendung von **azureml-opendatasets**, um in den Genuss umfangreicherer Funktionen und Verbesserungen zu kommen.
     + Mit diesem neuen Paket können Sie geöffnete Datasets als Dataset im Azure Machine Learning-Arbeitsbereich registrieren und jegliche Funktionen nutzen, die dieses Dataset bietet.
     + Es umfasst außerdem vorhandene Funktionen, wie das Nutzen geöffneter Datasets als Pandas/SPARK-Dataframes sowie Standortverknüpfungen für einige Datasets wie Wetter.
 

@@ -12,18 +12,18 @@ ms.date: 09/14/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: bilderkennung, bildbezeichner, app für bilderkennung, custom vision
-ms.openlocfilehash: 47227a60b1ed45499afdb42fbc062abc5ae51ff9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aa338bf708abaa49d65b6a817009224973f3fb29
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90605465"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616908"
 ---
 # <a name="what-is-custom-vision"></a>Was ist Custom Vision?
 
 [!INCLUDE [TLS 1.2 enforcement](../../../includes/cognitive-services-tls-announcement.md)]
 
-Azure Custom Vision ist ein Bilderkennungsdienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildbezeichner. Ein Bildbezeichner wendet entsprechend den visuellen Merkmalen auf einem Bild Bezeichnungen (die Klassen oder Objekte darstellen) auf Bilder an. Anders als beim Dienst für [maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home) können Sie bei Custom Vision die Bezeichnungen angeben und benutzerdefinierte Modelle für deren Erkennung trainieren.
+Azure Custom Vision ist ein Bilderkennungsdienst zum Erstellen, Bereitstellen und Optimieren benutzerdefinierter Bildbezeichner. Ein Bildbezeichner wendet entsprechend den visuellen Merkmalen auf einem Bild Bezeichnungen (die Klassen oder Objekte darstellen) auf Bilder an. Anders als beim Dienst für [maschinelles Sehen](../computer-vision/overview.md) können Sie bei Custom Vision die Bezeichnungen angeben und benutzerdefinierte Modelle für deren Erkennung trainieren.
 
 ## <a name="what-it-does"></a>Funktionsbeschreibung
 

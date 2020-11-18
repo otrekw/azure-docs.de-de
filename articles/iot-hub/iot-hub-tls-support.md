@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/01/2020
+ms.date: 11/13/2020
 ms.author: jlian
-ms.openlocfilehash: 08ecb766a1a9bd7ff75bf97647be811577212eb5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c9dd66fe9d71f0a857e4b0821190bceb5d6d4680
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90006039"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628797"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-Unterstützung in IoT Hub
 
@@ -107,4 +107,4 @@ IoT Edge-Geräte können für die Verwendung von TLS 1.2 bei der Kommunikation 
 
 ## <a name="device-authentication"></a>Geräte-Authentifizierung
 
-Nach einem erfolgreichen TLS-Handshake kann IoT Hub ein Gerät mithilfe eines symmetrischen Schlüssels oder eines X.509-Zertifikats authentifizieren. Bei der zertifikatbasierten Authentifizierung kann dies ein beliebiges X.509-Zertifikat sein, einschließlich ECC. IoT Hub überprüft das Zertifikat mit dem Fingerabdruck oder der Zertifizierungsstelle (Certificate Authority, CA), den bzw. die Sie bereitstellen. IoT Hub unterstützt noch keine X.509-basierte gegenseitige Authentifizierung (mTLS). Weitere Informationen finden Sie unter [Unterstützte X.509-Zertifikate](iot-hub-devguide-security.md#supported-x509-certificates).
+Nach einem erfolgreichen TLS-Handshake kann IoT Hub ein Gerät mithilfe eines symmetrischen Schlüssels oder eines X.509-Zertifikats authentifizieren. Bei der zertifikatbasierten Authentifizierung kann dies ein beliebiges X.509-Zertifikat sein, einschließlich ECC. IoT Hub überprüft das Zertifikat mit dem Fingerabdruck oder der Zertifizierungsstelle (Certificate Authority, CA), den bzw. die Sie bereitstellen. Weitere Informationen finden Sie unter [Unterstützte X.509-Zertifikate](iot-hub-devguide-security.md#supported-x509-certificates).

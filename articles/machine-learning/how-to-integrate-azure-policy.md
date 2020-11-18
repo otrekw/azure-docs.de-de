@@ -10,19 +10,19 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: how-to
 ms.reviewer: larryfr
-ms.openlocfilehash: 47a97bb8fbe52d3dde84afd77997b179a5c9248d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 22901c4e8409fc4846c1566a57b2679f4fa92396
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325503"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94444559"
 ---
 # <a name="audit-and-manage-azure-machine-learning-using-azure-policy"></a>Überwachen und Verwalten von Azure Machine Learning mit Azure Policy
 
 [Azure Policy](../governance/policy/index.yml) ist ein Governancetool, mit dem Sie sicherstellen können, dass Azure-Ressourcen mit Ihren Richtlinien konform sind. Mit Azure Machine Learning können Sie die folgenden Richtlinien zuweisen:
 
-* **Kundenseitig verwalteter Schlüssel** : Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
-* **Private Link** : Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
+* **Kundenseitig verwalteter Schlüssel**: Überwachen oder erzwingen Sie, ob Arbeitsbereiche einen kundenseitig verwalteten Schlüssel verwenden müssen.
+* **Private Link**: Überwachen Sie, ob Arbeitsbereiche mithilfe eines privaten Endpunkts mit einem virtuellen Netzwerk kommunizieren.
 
 Richtlinien können in unterschiedlichen Bereichen festgelegt werden, z. B. auf Abonnement- oder Ressourcengruppenebene. Weitere Informationen finden Sie in der [Dokumentation zu Azure Policy](../governance/policy/overview.md).
 
@@ -42,11 +42,11 @@ Sie können Richtlinien auch mit [Azure PowerShell](../governance/policy/assign-
 
 ## <a name="workspaces-encryption-with-customer-managed-key"></a>Arbeitsbereichverschlüsselung mit kundenseitig verwaltetem Schlüssel
 
-Steuert, ob Arbeitsbereiche mit einem kundenseitig verwalteten Schlüssel (Customer-Managed Key, CMK) verschlüsselt werden sollen oder mithilfe eines von Microsoft verwalteten Schlüssels zum Verschlüsseln von Metriken und Metadaten. Weitere Informationen zur Verwendung von CMK finden Sie im Abschnitt [Azure Cosmos DB](concept-enterprise-security.md#azure-cosmos-db) des Artikels zur Unternehmenssicherheit.
+Hiermit wird gesteuert, ob Arbeitsbereiche mit einem kundenseitig verwalteten Schlüssel oder mithilfe eines von Microsoft verwalteten Schlüssels zum Verschlüsseln von Metriken und Metadaten verschlüsselt werden sollen. Weitere Informationen zur Verwenden on kundenseitig verwalteten Schlüsseln finden Sie im Abschnitt [Azure Cosmos DB](concept-data-encryption.md#azure-cosmos-db) des Artikels zur Datenverschlüsselung.
 
-Um diese Richtlinie zu konfigurieren, legen Sie den Effektparameter auf __audit__ (Überwachen) oder __Deny__ (Verweigern) fest. Wenn __audit__ festgelegt ist, können Sie Arbeitsbereiche ohne einen CMK erstellen, und im Aktivitätsprotokoll wird ein Warnungsereignis erstellt.
+Um diese Richtlinie zu konfigurieren, legen Sie den Effektparameter auf __audit__ (Überwachen) oder __Deny__ (Verweigern) fest. Wenn __audit__ festgelegt ist, können Sie Arbeitsbereiche ohne einen kundenseitig verwalteten Schlüssel erstellen, und im Aktivitätsprotokoll wird ein Warnungsereignis erstellt.
 
-Wenn die Richtlinie auf __deny__ festgelegt ist, können Sie keinen Arbeitsbereich erstellen, es sei denn, es wird ein CMK angegeben. Der Versuch, einen Arbeitsbereich ohne einen CMK zu erstellen, führt zu einem Fehler, der `Resource 'clustername' was disallowed by policy` ähnelt und einen Fehler im Aktivitätsprotokoll generiert. Der Richtlinienbezeichner wird ebenfalls als Teil dieses Fehlers zurückgegeben.
+Wenn die Richtlinie auf __deny__ festgelegt ist, können Sie keinen Arbeitsbereich erstellen, es sei denn, es wird ein kundenseitig verwalteter Schlüssel angegeben. Der Versuch, einen Arbeitsbereich ohne einen kundenseitig verwalteten Schlüssel zu erstellen, führt zu einem Fehler, der `Resource 'clustername' was disallowed by policy` ähnelt und einen Fehler im Aktivitätsprotokoll generiert. Der Richtlinienbezeichner wird ebenfalls als Teil dieses Fehlers zurückgegeben.
 
 ## <a name="workspaces-should-use-private-link"></a>Arbeitsbereiche sollten Private Link verwenden
 
