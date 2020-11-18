@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial: Erste Schritte mit Jupyter Notebooks (Python)'
 titleSuffix: Azure Machine Learning
-description: Einrichtung für Jupyter Notebook-Tutorials. Erstellen Sie einen Azure Machine Learning-Arbeitsbereich, klonen Sie Jupyter Notebooks in den Arbeitsbereich, und erstellen Sie eine Compute-Instanz, in der Sie die Notebooks ausführen.
+description: Einrichtung für Jupyter Notebook-Tutorials. Erstellen Sie einen Arbeitsbereich, klonen Sie Notebooks in den Arbeitsbereich, und erstellen Sie eine Compute-Instanz, in der Sie die Notebooks ausführen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 601e124c1ad87724babfabffc95e9265bc962d87
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 6eb76c9d8cc8447755e045972a7aceddefd1604a
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913295"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94532969"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Tutorial: Machen Sie sich mit den ersten Schritten mit Azure Machine Learning in Jupyter Notebooks vertraut.
 
@@ -75,7 +75,7 @@ Sie führen die folgenden Schritte zum Einrichten und Ausführen des Experiments
 
 ### <a name="open-the-cloned-notebook"></a><a name="open"></a>Öffnen des geklonten Notebooks
 
-1. Öffnen Sie den Ordner **Tutorials** , den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
+1. Öffnen Sie den Ordner **Tutorials**, den Sie im Abschnitt **Benutzerdateien** geschlossen haben.
 
     > [!IMPORTANT]
     > Im Ordner **Beispiele** können Notebooks angezeigt, aber nicht ausgeführt werden. Öffnen Sie zum Ausführen eines Notebooks die geklonte Version des Notebooks unbedingt im Abschnitt **Benutzerdateien**.

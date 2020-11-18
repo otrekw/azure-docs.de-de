@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 7a8bdd911db82a07bfcdd1596b7a8203a19a6442
-ms.sourcegitcommit: f88074c00f13bcb52eaa5416c61adc1259826ce7
+ms.openlocfilehash: 0e2406cd35fb2d4dd99da4f5139a9f0f80697912
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92341956"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566247"
 ---
 # <a name="set-up-web-endpoints"></a>Einrichten von Webendpunkten
 
@@ -54,11 +54,11 @@ In diesem Artikel erfahren Sie, wie Sie Webendpunkte in einer Anwendung für ben
     > - Um sicherzustellen, dass der Wert des Headers an Ihrem Beispielendpunkt eindeutig ist, nehmen Sie die ersten 8 Stellen Ihrer applicationId
     > - In der Praxis kann der Webendpunkt der Endpunkt für den [IoT-Hub](https://docs.microsoft.com/azure/iot-hub/about-iot-hub) sein, der Ihre Geräte verwaltet.
 
-1. Klicken Sie auf **Speichern** .
+1. Klicken Sie auf **Speichern**.
 
 ## <a name="call-web-endpoints"></a>Aufrufen von Webendpunkten
 
-1. Wechseln Sie zum Befehl **TurnOnOff** , wählen Sie **ConfirmationResponse** unter der Vervollständigungsregel und dann **Aktion hinzufügen** aus.
+1. Wechseln Sie zum Befehl **TurnOnOff**, wählen Sie **ConfirmationResponse** unter der Vervollständigungsregel und dann **Aktion hinzufügen** aus.
 1. Wählen Sie unter **Neuer Aktionstyp** die Option **Webendpunkt aufrufen** aus.
 1. Wählen Sie unter **Aktion bearbeiten – Endpunkte** die Option **UpdateDeviceState** aus, die den von uns erstellten Webendpunkt darstellt.  
 1. Fügen Sie in **Konfiguration** die folgenden Werte ein: 
@@ -118,21 +118,21 @@ Entfernen Sie einen der Abfrageparameter, und führen Sie Speicherung, erneutes 
 In [Vorgehensweise Aktivität an Clientanwendung senden (Vorschau)](./how-to-custom-commands-send-activity-to-client.md) haben Sie die Aktion **Aktivität an Client senden** hinzugefügt. Die Aktivität wird an die Clientanwendung gesendet, unabhängig davon, ob die Aktion **Webendpunkt aufrufen** erfolgreich durchgeführt wurde.
 In den meisten Fällen möchten Sie jedoch nur dann Aktivitäten an die Clientanwendung senden, wenn der Aufruf des Webendpunkts erfolgreich ist. In diesem Beispiel ist dies der Fall, wenn der Status des Geräts erfolgreich aktualisiert wurde.
 
-1. Löschen Sie die Aktion **Aktivität an Client senden** , die Sie zuvor hinzugefügt haben.
+1. Löschen Sie die Aktion **Aktivität an Client senden**, die Sie zuvor hinzugefügt haben.
 1. Aufruf des Webendpunkts bearbeiten: 
     1. Stellen Sie in **Konfiguration** sicher, dass **Abfrageparameter** auf `item={SubjectDevice}&&value={OnOff}` festgelegt ist.
-    1. In **Bei Erfolg** ändern Sie **Auszuführende Aktion** in **Aktivität an Client senden** .
-    1. Kopieren Sie den nachfolgenden JSON-Code in den **Aktivitätsinhalt** .
+    1. In **Bei Erfolg** ändern Sie **Auszuführende Aktion** in **Aktivität an Client senden**.
+    1. Kopieren Sie den nachfolgenden JSON-Code in den **Aktivitätsinhalt**.
    ```json
    {
-     "type": "event",
-     "name": "UpdateDeviceState",
-     "state": "{OnOff}",
-     "device": "{SubjectDevice}"
-   }
+      "type": "event",
+      "name": "UpdateDeviceState",
+      "value": {
+        "state": "{OnOff}",
+        "device": "{SubjectDevice}"
+      }
+    }
    ```
-    > [!div class="mx-imgBorder"]
-    > ![Aktivität bei Erfolg senden](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-activity.png)
    
 Jetzt werden nur Aktivitäten an den Client gesendet, wenn die Anforderung an den Webendpunkt erfolgreich ist.
 
@@ -207,3 +207,4 @@ Wenn Sie die App im vorigen Abschnitt mit `turn on tv` ausprobiert haben, würde
 
 > [!div class="nextstepaction"]
 > [Exportieren einer Benutzerdefinierte Befehle-Anwendung als Remoteskill](./how-to-custom-commands-integrate-remote-skills.md)
+

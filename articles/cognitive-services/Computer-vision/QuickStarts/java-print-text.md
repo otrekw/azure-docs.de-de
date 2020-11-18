@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: 63bc767c5843862ec056f3d68a9c96dccca4fba0
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ad14eec6bcebcb144d73581ebc15479a489ad333
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969062"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542846"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-java"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und Java
 
 > [!NOTE]
 > Wenn Sie englischsprachigen Text extrahieren, sollten Sie den neuen [Lesevorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) verwenden. Es steht ein [Java-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/java-hand-text) zur Verfügung. 
 
-In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fc)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
+In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -217,4 +217,4 @@ Lernen Sie eine Java Swing-Anwendung kennen, die maschinelles Sehen verwendet, u
 > [!div class="nextstepaction"]
 > [Computer Vision API Java Tutorial](../Tutorials/java-tutorial.md) (Java-Tutorial zur Maschinelles Sehen-API)
 
-* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+* Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

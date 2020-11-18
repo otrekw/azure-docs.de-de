@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 49225fe535e8e4f05874444b285ced41a9085894
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: fa76da782ab9b0fe7c0adcb7bd37e882d18daaa8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91969193"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542897"
 ---
 # <a name="quickstart-generate-a-thumbnail-using-the-computer-vision-rest-api-with-go"></a>Schnellstart: Generieren einer Miniaturansicht mit der Maschinelles Sehen-REST-API und Go
 
@@ -123,7 +123,7 @@ Eine erfolgreiche Antwort enthält die Binärdaten zur Miniaturansicht. Wenn die
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Machen Sie sich mit der Maschinelles Sehen-API vertraut, um ein Bild zu analysieren, Prominente und Sehenswürdigkeiten zu erkennen, eine Miniaturansicht zu erstellen und gedruckten und handschriftlichen Text zu extrahieren. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa/console) aus.
+Machen Sie sich mit der Maschinelles Sehen-API vertraut, um ein Bild zu analysieren, Prominente und Sehenswürdigkeiten zu erkennen, eine Miniaturansicht zu erstellen und gedruckten und handschriftlichen Text zu extrahieren. Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.
 
 > [!div class="nextstepaction"]
-> [Erkunden der Maschinelles Sehen-API](https://westus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44)
+> [Erkunden der Maschinelles Sehen-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b)

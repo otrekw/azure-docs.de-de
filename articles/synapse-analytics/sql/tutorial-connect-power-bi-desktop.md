@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Herstellen einer Verbindung zwischen SQL On-Demand und Power BI Desktop und Erstellen eines Berichts'
-description: In diesem Tutorial erfahren Sie, wie Sie SQL On-Demand in Azure Synapse Analytics mit Power BI Desktop verbinden und einen Demobericht auf der Grundlage einer Ansicht erstellen.
+title: 'Tutorial: Herstellen einer Verbindung zwischen einem serverlosen SQL-Pool und Power BI Desktop und Erstellen eines Berichts'
+description: In diesem Tutorial erfahren Sie, wie Sie einen serverlosen SQL-Pool in Azure Synapse Analytics mit Power BI Desktop verbinden und einen Demobericht auf der Grundlage einer Ansicht erstellen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 5c86825d6dce8681e114ec930add751b6beae085
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: dc2b068dd7c5e7fb3f9e3505f93245515d90ae23
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539553"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93317199"
 ---
-# <a name="tutorial-use-sql-on-demand-with-power-bi-desktop--create-a-report"></a>Tutorial: Verwenden von SQL On-Demand mit Power BI Desktop und Erstellen eines Berichts
+# <a name="tutorial-use-serverless-sql-pool-with-power-bi-desktop--create-a-report"></a>Tutorial: Verwenden eines serverlosen SQL-Pools mit Power BI Desktop und Erstellen eines Berichts
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -24,7 +24,7 @@ In diesem Tutorial lernen Sie Folgendes:
 >
 > - Erstellen einer Demodatenbank
 > - Erstellen der für den Bericht verwendeten Ansicht
-> - Herstellen einer Verbindung Power BI Desktop und SQL On-Demand
+> - Herstellen einer Verbindung zwischen Power BI Desktop und einem serverlosen SQL-Pool
 > - Erstellen eines Berichts anhand einer Ansicht
 
 ## <a name="prerequisites"></a>Voraussetzungen
@@ -42,8 +42,8 @@ Werte für die folgenden Parameter:
 
 | Parameter                                 | BESCHREIBUNG                                                   |
 | ----------------------------------------- | ------------------------------------------------------------- |
-| Dienstendpunktadresse von SQL On-Demand    | Wird als Servername verwendet.                                   |
-| Dienstendpunktregion von SQL On-Demand     | Wird verwendet, um den in den Beispielen verwendeten Speicher zu bestimmen. |
+| Adresse des Dienstendpunkts des serverlosen SQL-Pools    | Wird als Servername verwendet.                                   |
+| Region des Dienstendpunkts des serverlosen SQL-Pools     | Wird verwendet, um den in den Beispielen verwendeten Speicher zu bestimmen. |
 | Benutzername und Kennwort für den Endpunktzugriff | Wird für den Zugriff auf den Endpunkt verwendet.                               |
 | Datenbank zum Erstellen von Ansichten     | Die Datenbank wird als Ausgangspunkt in den Beispielen verwendet.       |
 
@@ -65,7 +65,7 @@ GO
 
 ## <a name="2---create-data-source"></a>2 – Erstellen einer Datenquelle
 
-Eine Datenquelle wird vom SQL On-Demand-Dienst für den Zugriff auf Dateien im Speicher benötigt. Erstellen Sie die Datenquelle für ein Speicherkonto, das sich in derselben Region wie Ihr Endpunkt befindet. SQL On-Demand kann zwar auf Speicherkonten aus verschiedenen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich Speicher und Endpunkt in der gleichen Region befinden.
+Eine Datenquelle wird vom Dienst für den serverlosen SQL-Pool für den Zugriff auf Dateien im Speicher benötigt. Erstellen Sie die Datenquelle für ein Speicherkonto, das sich in derselben Region wie Ihr Endpunkt befindet. Der serverlose SQL-Pool kann zwar auf Speicherkonten aus verschiedenen Regionen zugreifen, die Leistung ist jedoch besser, wenn sich Speicher und Endpunkt in der gleichen Region befinden.
 
 Führen Sie zum Erstellen der Datenquelle das folgende T-SQL-Skript (Transact-SQL) aus:
 

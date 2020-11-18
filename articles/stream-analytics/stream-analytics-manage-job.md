@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/03/2019
-ms.openlocfilehash: a265bc2ed131dc0bb69d89f767ab60225d30ee8e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 10/30/2020
+ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
+ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89612059"
+ms.lasthandoff: 11/07/2020
+ms.locfileid: "94354467"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Tutorial: Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -39,7 +39,7 @@ Führen Sie zunächst folgende Aktionen aus:
 
 ## <a name="create-an-azure-event-hub"></a>Erstellen eines Azure Event Hubs
 
-Damit Stream Analytics den Datenstrom mit den betrügerischen Anrufen analysieren kann, müssen die Daten an Azure gesendet werden. In diesem Tutorial senden Sie Daten an Azure, indem Sie [Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-what-is-event-hubs) verwenden.
+Damit Stream Analytics den Datenstrom mit den betrügerischen Anrufen analysieren kann, müssen die Daten an Azure gesendet werden. In diesem Tutorial senden Sie Daten an Azure, indem Sie [Azure Event Hubs](../event-hubs/event-hubs-about.md) verwenden.
 
 Gehen Sie wie folgt vor, um einen Event Hub zu erstellen und Anrufdaten an diesen Event Hub zu senden:
 
@@ -51,17 +51,18 @@ Gehen Sie wie folgt vor, um einen Event Hub zu erstellen und Anrufdaten an diese
 
    |**Einstellung**  |**Empfohlener Wert** |**Beschreibung**  |
    |---------|---------|---------|
-   |Name     | myEventHubsNS        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
+   |Name     | asaTutorialEventHub        |  Ein eindeutiger Name zum Identifizieren des Event Hub-Namespace.       |
    |Subscription     |   \<Your subscription\>      |   Wählen Sie ein Azure-Abonnement aus, unter dem Sie den Event Hub erstellen möchten.      |
    |Resource group     |   MyASADemoRG      |  Wählen Sie **Neu erstellen** aus, und geben Sie einen neuen Ressourcengruppennamen für Ihr Konto ein.       |
    |Position     |   USA, Westen 2      |    Der Standort, an dem der Event Hub-Namespace bereitgestellt werden kann.     |
 
-4. Verwenden Sie für die verbleibenden Einstellungen die Standardoptionen, und wählen Sie **Erstellen**.
+4. Verwenden Sie für die verbleibenden Einstellungen die Standardoptionen, und wählen Sie **Überprüfen und erstellen** aus. Wählen Sie anschließend **Erstellen** aus, um die Bereitstellung zu starten.
 
    ![Erstellen eines Event Hub-Namespace im Azure-Portal](media/stream-analytics-manage-job/create-event-hub-namespace.png)
 
-5. Navigieren Sie nach Abschluss der Namespacebereitstellung zu **Alle Ressourcen**, und suchen Sie in der Liste mit den Azure-Ressourcen nach *myEventHubsNS*. Wählen Sie *myEventHubsNS* aus, um die Ressource zu öffnen.
-6. Wählen Sie dann **+ Event Hub** aus, und geben Sie unter **Name** die Zeichenfolge *MyEventHub* oder einen anderen Namen Ihrer Wahl ein. Verwenden Sie für die restlichen Einstellungen die Standardoptionen, und wählen Sie **Erstellen** aus. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurde.
+5. Navigieren Sie nach Abschluss der Namespacebereitstellung zu **Alle Ressourcen**, und suchen Sie in der Liste mit den Azure-Ressourcen nach *asaTutorialEventHub*. Wählen Sie *asaTutorialEventHub* aus, um die Ressource zu öffnen.
+
+6. Wählen Sie als Nächstes **+Event Hub** aus, und geben Sie unter **Name** einen Namen für den Event Hub ein. Legen Sie den Wert für **Partitionsanzahl** auf *2* fest.  Verwenden Sie für die restlichen Einstellungen die Standardoptionen, und wählen Sie **Erstellen** aus. Warten Sie, bis die Bereitstellung erfolgreich abgeschlossen wurde.
 
    ![Event Hub-Konfiguration im Azure-Portal](media/stream-analytics-manage-job/create-event-hub-portal.png)
 
@@ -69,13 +70,13 @@ Gehen Sie wie folgt vor, um einen Event Hub zu erstellen und Anrufdaten an diese
 
 Bevor eine Anwendung Daten an Azure Event Hubs senden kann, muss der Event Hub mit einer Richtlinie versehen werden, die einen entsprechenden Zugriff ermöglicht. Die Zugriffsrichtlinie erzeugt eine Verbindungszeichenfolge, die Autorisierungsinformationen enthält.
 
-1. Navigieren Sie zum Event Hub „MyEventHub“*, den Sie im vorherigen Schritt erstellt haben. Wählen Sie unter **Einstellungen** die Option **SAS-Richtlinien** und anschließend **+ Hinzufügen** aus.
+1. Navigieren Sie zum Event Hub *MyEventHub*, den Sie im vorherigen Schritt erstellt haben. Wählen Sie unter **Einstellungen** die Option **SAS-Richtlinien** und anschließend **+ Hinzufügen** aus.
 
 2. Nennen Sie die Richtlinie **MyPolicy**, und vergewissern Sie sich, dass das Kontrollkästchen **Verwalten** aktiviert ist. Klicken Sie anschließend auf **Erstellen**.
 
    ![Erstellen einer SAS-Richtlinie für den Event Hub](media/stream-analytics-manage-job/create-event-hub-access-policy.png)
 
-3. Wählen Sie die erstellte Richtlinie aus, um sie zu öffnen, und suchen Sie nach **Verbindungszeichenfolge – Primärschlüssel**. Wählen Sie neben der Verbindungszeichenfolge **die blaue**Kopierschaltfläche aus.
+3. Klicken Sie nach der Erstellung der Richtlinie auf den Richtliniennamen, um die Richtlinie zu öffnen. Suchen Sie nach **Verbindungszeichenfolge – Primärschlüssel**. Wählen Sie neben der Verbindungszeichenfolge die Schaltfläche zum **Kopieren** aus.
 
    ![Speichern der Verbindungszeichenfolge der SAS-Richtlinie](media/stream-analytics-manage-job/save-connection-string.png)
 
@@ -128,9 +129,9 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), um einen Stream Analytics-Auftrag zu erstellen.
 
-2. Wählen Sie **Ressource erstellen** > **Internet der Dinge (IoT)**  > **Stream Analytics-Auftrag**.
+2. Wählen Sie **Ressource erstellen** aus, und suchen Sie nach **Stream Analytics-Auftrag**. Wählen Sie die Kachel **Stream Analytics-Auftrag** und dann *Erstellen** aus.
 
-3. Fügen Sie die folgenden Werte in den Bereich **Neuer Stream Analytics-Auftrag** ein:
+3. Fügen Sie die folgenden Werte in das Formular **Neuer Stream Analytics-Auftrag** ein:
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
@@ -149,17 +150,17 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
 
 Im nächsten Schritt wird für den Auftrag eine Eingabequelle zum Lesen von Daten definiert. Dabei wird der Event Hub verwendet, den Sie im vorherigen Abschnitt erstellt haben.
 
-1. Öffnen Sie im Azure-Portal den Bereich **Alle Ressourcen**, und suchen Sie nach dem Stream Analytics-Auftrag *ASATutorial*.
+1. Öffnen Sie im Azure-Portal die Seite **Alle Ressourcen**, und suchen Sie nach dem Stream Analytics-Auftrag *ASATutorial*.
 
-2. Wählen Sie im Bereich „Stream Analytics-Auftrag“ im Abschnitt **Auftragstopologie** die Option **Eingaben**.
+2. Wählen Sie im Abschnitt **Auftragstopologie** des Stream Analytics-Auftrags die Option **Eingaben** aus.
 
-3. Wählen Sie **Datenstromeingabe hinzufügen** und anschließend **Event Hub** aus. Geben Sie in dem Bereich die folgenden Werte an:
+3. Wählen Sie **Datenstromeingabe hinzufügen** und anschließend **Event Hub** aus. Geben Sie in dem Eingabeformular die folgenden Werte an:
 
    |**Einstellung**  |**Empfohlener Wert**  |**Beschreibung**  |
    |---------|---------|---------|
    |Eingabealias     |  CallStream       |  Geben Sie einen Anzeigenamen zum Identifizieren Ihrer Eingabe an. Der Eingabealias darf nur alphanumerische Zeichen, Bindestriche und Unterstriche enthalten und muss zwischen 3 und 63 Zeichen lang sein.       |
    |Subscription    |   \<Your subscription\>      |   Wählen Sie das Azure-Abonnement aus, unter dem Sie den Event Hub erstellt haben. Der Event Hub kann sich unter demselben oder einem anderen Abonnement wie der Stream Analytics-Auftrag befinden.       |
-   |Event Hub-Namespace    |  myEventHubsNS       |  Wählen Sie den Event Hub-Namespace aus, den Sie im vorherigen Abschnitt erstellt haben. Alle Event Hub-Namespaces, die unter Ihrem aktuellen Abonnement verfügbar sind, sind in der Dropdownliste aufgeführt.       |
+   |Event Hub-Namespace    |  asaTutorialEventHub       |  Wählen Sie den Event Hub-Namespace aus, den Sie im vorherigen Abschnitt erstellt haben. Alle Event Hub-Namespaces, die unter Ihrem aktuellen Abonnement verfügbar sind, sind in der Dropdownliste aufgeführt.       |
    |Event Hub-Name    |   MyEventHub      |  Wählen Sie den Event Hub aus, den Sie im vorherigen Abschnitt erstellt haben. Alle Event Hubs, die unter Ihrem aktuellen Abonnement verfügbar sind, sind in der Dropdownliste aufgeführt.       |
    |Event Hub-Richtlinienname   |  MyPolicy       |  Wählen Sie die Event Hub-SAS-Richtlinie aus, die Sie im vorherigen Abschnitt erstellt haben. Alle Event Hub-Richtlinien, die unter Ihrem aktuellen Abonnement verfügbar sind, sind in der Dropdownliste aufgeführt.       |
 
@@ -169,33 +170,39 @@ Im nächsten Schritt wird für den Auftrag eine Eingabequelle zum Lesen von Date
 
 ## <a name="configure-job-output"></a>Konfigurieren der Auftragsausgabe
 
-Der letzte Schritt umfasst das Definieren einer Ausgabesenke für den Auftrag, in die die transformierten Daten geschrieben werden können. In diesem Tutorial verwenden Sie Power BI, um Daten auszugeben und zu visualisieren.
+Der letzte Schritt umfasst das Definieren einer Ausgabesenke, in die der Auftrag die transformierten Daten schreiben kann. In diesem Tutorial verwenden Sie Power BI, um Daten auszugeben und zu visualisieren.
 
-1. Öffnen Sie im Azure-Portal den Bereich **Alle Ressourcen** und den Stream Analytics-Auftrag *ASATutorial*.
+1. Öffnen Sie im Azure-Portal **Alle Ressourcen**, und wählen Sie den Stream Analytics-Auftrag *ASATutorial* aus.
 
-2. Wählen Sie im Bereich „Stream Analytics-Auftrag“ im Abschnitt **Auftragstopologie** die Option **Ausgaben**.
+2. Wählen Sie im Abschnitt **Auftragstopologie** des Stream Analytics-Auftrags die Option **Ausgaben** aus.
 
-3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Geben Sie dann folgende Informationen in das Formular ein, und wählen Sie **Autorisieren** aus:
+3. Wählen Sie **+ Hinzufügen** > **Power BI** aus. Wählen Sie anschließend **Autorisieren** aus, und befolgen Sie die Eingabeaufforderungen zum Authentifizieren von Power BI.
+
+:::image type="content" source="media/stream-analytics-manage-job/authorize-power-bi.png" alt-text="Autorisierungsschaltfläche für Power BI":::
+
+4. Geben Sie folgende Informationen in das Ausgabeformular ein, und wählen Sie **Speichern** aus:
 
    |**Einstellung**  |**Empfohlener Wert**  |
    |---------|---------|
    |Ausgabealias  |  MyPBIoutput  |
+   |Gruppenarbeitsbereich| Mein Arbeitsbereich |
    |Datasetname  |   ASAdataset  |
    |Tabellenname |  ASATable  |
+   | Authentifizierungsmodus | Benutzertoken |
 
    ![Konfigurieren der Azure Stream Analytics-Ausgabe](media/stream-analytics-manage-job/configure-stream-analytics-output.png)
 
-4. Nachdem Sie **Autorisieren** ausgewählt haben, werden Sie in einem Popupfenster aufgefordert, Anmeldeinformationen für die Authentifizierung Ihres Power BI-Kontos anzugeben. Nachdem die Autorisierung erfolgreich abgeschlossen wurde, können Sie die Einstellungen speichern, indem Sie **Speichern** wählen. Informationen zur Verwendung von verwalteten Identitäten finden Sie unter [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI](powerbi-output-managed-identity.md).
+   In diesem Tutorial wird der Authentifizierungsmodus *Benutzertoken* verwendet. Informationen zur Verwendung von verwalteten Identitäten finden Sie unter [Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI](powerbi-output-managed-identity.md).
 
 ## <a name="define-a-query-to-analyze-input-data"></a>Definieren einer Abfrage zum Analysieren von Eingabedaten
 
-Der nächste Schritt besteht darin, eine Transformation zu erstellen, die Daten in Echtzeit analysiert. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference). Die in diesem Tutorial verwendete Abfrage erkennt betrügerische Anrufe auf der Grundlage der Telefondaten.
+Der nächste Schritt besteht darin, eine Transformation zu erstellen, die Daten in Echtzeit analysiert. Sie definieren die Transformationsabfrage mit der [Stream Analytics-Abfragesprache](/stream-analytics-query/stream-analytics-query-language-reference). Die in diesem Tutorial verwendete Abfrage erkennt betrügerische Anrufe auf der Grundlage der Telefondaten.
 
 Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer innerhalb von fünf Sekunden von verschiedenen Standorten aus an. Beispielsweise kann derselbe Benutzer nicht gleichzeitig einen legitimen Anruf aus den USA und aus Australien tätigen. So definieren Sie die Transformationsabfrage für Ihren Stream Analytics-Auftrag:
 
 1. Öffnen Sie im Azure-Portal den Bereich **Alle Ressourcen**, und navigieren Sie zum Stream Analytics-Auftrag **ASATutorial**, den Sie zuvor erstellt haben.
 
-2. Wählen Sie im Bereich „Stream Analytics-Auftrag“ im Abschnitt **Auftragstopologie** die Option **Abfrage**. Im Abfragefenster werden die Ein- und Ausgaben aufgelistet, die für den Auftrag konfiguriert sind, und Sie können darin eine Abfrage zum Transformieren des Eingabedatenstroms erstellen.
+2. Wählen Sie im Abschnitt **Auftragstopologie** des Stream Analytics-Auftrags die Option **Abfrage** aus. Im Abfragefenster werden die Ein- und Ausgaben aufgelistet, die für den Auftrag konfiguriert sind, und Sie können darin eine Abfrage zum Transformieren des Eingabedatenstroms erstellen.
 
 3. Ersetzen Sie die vorhandene Abfrage im Editor durch die folgende Abfrage. Diese Abfrage führt alle fünf Sekunden der Anrufdaten eine Selbstverknüpfung durch:
 
@@ -210,7 +217,7 @@ Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer inn
    GROUP BY TumblingWindow(Duration(second, 1))
    ```
 
-   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland/-region). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](https://docs.microsoft.com/stream-analytics-query/datediff-azure-stream-analytics) verwendet.
+   Sie können für die Streamingdaten eine Selbstverknüpfung basierend auf dem Wert `CallRecTime` durchführen, um die Daten auf betrügerische Anrufe zu prüfen. Anschließend können Sie nach Anrufdatensätzen suchen, bei denen der Wert `CallingIMSI` (die ursprüngliche Anzahl) identisch ist, aber nicht der Wert `SwitchNum` (Ursprungsland/-region). Wenn Sie eine Verknüpfung per JOIN-Vorgang für Streamingdaten durchführen, müssen bei der Verknüpfung einige Beschränkungen dazu festgelegt werden, welchen Zeitabstand die übereinstimmenden Zeilen haben können. Da die Streamingdaten endlos sind, werden die Zeitgrenzen für die Beziehung in der **ON**-Klausel der Verknüpfung angegeben. Hierfür wird die Funktion [DATEDIFF](/stream-analytics-query/datediff-azure-stream-analytics) verwendet.
 
    Diese Abfrage entspricht bis auf die Funktion **DATEDIFF** einer regulären SQL-Verknüpfung. Die in dieser Abfrage verwendete Funktion **DATEDIFF** gilt speziell für Streaming Analytics und muss in der `ON...BETWEEN`-Klausel verwendet werden.
 
@@ -220,25 +227,17 @@ Bei den betrügerischen Anrufen in diesem Beispiel ruft der gleiche Benutzer inn
 
 ## <a name="test-your-query"></a>Testen Ihrer Abfrage
 
-Sie können eine Abfrage unter Verwendung von Beispieldaten mithilfe des Abfrage-Editors testen. Führen Sie die folgenden Schritte aus, um die Abfrage zu testen:
+Sie können eine Abfrage über den Abfrage-Editor testen. Führen Sie die folgenden Schritte aus, um die Abfrage zu testen:
 
 1. Stellen Sie sicher, dass die TelcoGenerator-App ausgeführt wird und Telefonanruf-Datensätze erzeugt.
 
-2. Wählen Sie im Bereich **Abfrage** die Punkte neben der Eingabe *CallStream* und anschließend die Option **Beispieldaten aus Eingabe** aus.
-
-3. Legen Sie **Minuten** auf 3 fest, und wählen Sie **OK**. Daraufhin werden auf der Grundlage des Eingabedatenstroms Beispieldaten für einen Zeitraum von drei Minuten generiert, und Sie werden benachrichtigt, wenn die Beispieldaten bereit sind. Sie können den Status der Stichprobenentnahme in der Benachrichtigungsleiste anzeigen.
-
-   Die Beispieldaten werden vorübergehend gespeichert und sind verfügbar, solange das Abfragefenster geöffnet ist. Wenn Sie das Abfragefenster schließen, werden die Beispieldaten verworfen, und Sie müssen ggf. einen neuen Satz von Beispieldaten zu Testzwecken erstellen. Alternativ können Sie eine auf [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json) verfügbare JSON-Datei mit Beispieldaten verwenden und sie als Beispieldaten für die Eingabe *CallStream* hochladen.
-
-   ![Visuelle Darstellung: Beispieleingabedaten für Stream Analytics](media/stream-analytics-manage-job/sample-input-data-asa.png)
-
-4. Wählen Sie **Testen** aus, um die Abfrage zu testen. Die Ergebnisse sollten wie folgt aussehen:
+2. Wählen Sie **Testen** aus, um die Abfrage zu testen. Die Ergebnisse sollten wie folgt aussehen:
 
    ![Ausgabe des Stream Analytics-Abfragetests](media/stream-analytics-manage-job/sample-test-output-restuls.png)
 
 ## <a name="start-the-job-and-visualize-output"></a>Starten des Auftrags und Visualisieren der Ausgabe
 
-1. Navigieren Sie zum Starten des Auftrags zum Bereich **Übersicht** Ihres Auftrags, und wählen Sie **Starten** aus.
+1. Navigieren Sie zum Starten des Auftrags zu seiner **Übersicht**, und wählen Sie **Starten** aus.
 
 2. Wählen Sie als Startzeit für die Auftragsausgabe die Option **Jetzt** und anschließend **Starten**. Der Auftragsstatus kann über die Benachrichtigungsleiste angezeigt werden.
 
@@ -246,7 +245,7 @@ Sie können eine Abfrage unter Verwendung von Beispieldaten mithilfe des Abfrage
 
 4. Wählen Sie in Ihrem Power BI-Arbeitsbereich die Option **+ Erstellen** aus, um ein neues Dashboard namens *Fraudulent Calls* zu erstellen.
 
-5. Wählen Sie im oberen Fensterbereich **Kachel hinzufügen** aus. Wählen Sie dann **Benutzerdefinierte Streamingdaten** und anschließend **Weiter** aus. Wählen Sie unter **Ihre Datasets** das Dataset **ASAdataset** aus. Wählen Sie in der Dropdownliste **Visualisierungstyp** die Option **Karte** aus, und fügen Sie unter **Felder** die Option **fraudulent calls** hinzu. Wählen Sie **Weiter** aus, um einen Namen für die Kachel einzugeben, und wählen Sie dann **Übernehmen** aus, um die Kachel zu erstellen.
+5. Wählen Sie im oberen Fensterbereich **Bearbeiten** und **Kachel hinzufügen** aus. Wählen Sie dann **Benutzerdefinierte Streamingdaten** und anschließend **Weiter** aus. Wählen Sie unter **Ihre Datasets** das Dataset **ASAdataset** aus. Wählen Sie in der Dropdownliste **Visualisierungstyp** die Option **Karte** aus, und fügen Sie unter **Felder** die Option **fraudulent calls** hinzu. Wählen Sie **Weiter** aus, um einen Namen für die Kachel einzugeben, und wählen Sie dann **Übernehmen** aus, um die Kachel zu erstellen.
 
    ![Erstellen von Power BI-Dashboard-Kacheln](media/stream-analytics-manage-job/create-power-bi-dashboard-tiles.png)
 
@@ -262,9 +261,9 @@ Sie können eine Abfrage unter Verwendung von Beispieldaten mithilfe des Abfrage
 
 ## <a name="embedding-your-power-bi-dashboard-in-a-web-application"></a>Einbetten Ihres Power BI-Dashboards in eine Webanwendung
 
-Für diesen Teil des Tutorials verwenden Sie eine [ASP.NET](https://asp.net/)-Beispielwebanwendung, die vom Power BI-Team zum Einbetten Ihres Dashboards erstellt wurde. Weitere Informationen zum Einbetten von Dashboards finden Sie im Artikel [Einbetten mit Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
+Für diesen Teil des Tutorials verwenden Sie eine [ASP.NET](https://asp.net/)-Beispielwebanwendung, die vom Power BI-Team zum Einbetten Ihres Dashboards erstellt wurde. Weitere Informationen zum Einbetten von Dashboards finden Sie im Artikel [Einbetten mit Power BI](/power-bi/developer/embedding).
 
-Navigieren Sie zum Einrichten der Anwendung zum GitHub-Repository [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples), und befolgen Sie die Anweisungen im Abschnitt **User Owns Data** (Benutzer ist Besitzer der Daten). (Verwenden Sie die Umleitungs- und Startseiten-URLs im Unterabschnitt **integrate-web-app**.) Da wir das Dashboardbeispiel verwenden, können Sie den Beispielcode für **integrate-web-app** aus dem [GitHub-Repository](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/integrate-web-app) nutzen.
+Navigieren Sie zum Einrichten der Anwendung zum GitHub-Repository [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples), und befolgen Sie die Anweisungen im Abschnitt **User Owns Data** (Benutzer ist Besitzer der Daten). (Verwenden Sie die Umleitungs- und Startseiten-URLs im Unterabschnitt **integrate-web-app**.) Da wir das Dashboardbeispiel verwenden, können Sie den Beispielcode für **integrate-web-app** aus dem [GitHub-Repository](https://github.com/microsoft/PowerBI-Developer-Samples/tree/master/.NET%20Framework/Embed%20for%20your%20organization/) nutzen.
 Nachdem die Anwendung in Ihrem Browser ausgeführt wird, können Sie das Dashboard, das Sie zuvor erstellt haben, mit diesen Schritten in die Webseite einbetten:
 
 1. Wählen Sie die Option **Bei Power BI anmelden**, mit der der Anwendung Zugriff auf die Dashboards in Ihrem Power BI-Konto gewährt wird.

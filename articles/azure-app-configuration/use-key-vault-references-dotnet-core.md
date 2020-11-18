@@ -14,12 +14,12 @@ ms.topic: tutorial
 ms.date: 04/08/2020
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
-ms.openlocfilehash: 3e6403f41d8e4b52ca64e9fa452524fa25efe870
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ff11546225a3b07cbe9f8773dab2139636af787e
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213251"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93124797"
 ---
 # <a name="tutorial-use-key-vault-references-in-an-aspnet-core-app"></a>Tutorial: Verwenden von Key Vault-Verweisen in einer ASP.NET Core-App
 
@@ -51,7 +51,7 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), bev
 
 1. Wählen Sie oben links im Azure-Portal die Option **Ressource erstellen** aus:
 
-    ![Ausgabe nach Erstellung der Key Vault-Instanz abgeschlossen](./media/quickstarts/search-services.png)
+    ![Screenshot: Option „Ressource erstellen“ im Azure-Portal](./media/quickstarts/search-services.png)
 1. Geben Sie **Key Vault** in das Suchfeld ein.
 1. Wählen Sie in der Ergebnisliste links **Key Vault** aus.
 1. Wählen Sie unter **Schlüsseltresore** die Option **Hinzufügen** aus.
@@ -65,7 +65,7 @@ Installieren Sie das [.NET Core SDK](https://dotnet.microsoft.com/download), bev
 
 An diesem Punkt ist nur Ihr Azure-Konto für den Zugriff auf diesen neuen Tresor autorisiert.
 
-![Ausgabe nach Erstellung der Key Vault-Instanz abgeschlossen](./media/quickstarts/vault-properties.png)
+![Screenshot: Schlüsseltresor](./media/quickstarts/vault-properties.png)
 
 ## <a name="add-a-secret-to-key-vault"></a>Hinzufügen eines Geheimnisses zu Key Vault
 

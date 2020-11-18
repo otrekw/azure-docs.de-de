@@ -4,12 +4,12 @@ description: Tutorial – Rendern einer Autodesk 3ds Max-Szene mit Arnold per Ba
 ms.topic: tutorial
 ms.date: 03/05/2020
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: 516f5a3f80f1252dbf63e3b254f0c7200de16e11
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 579a5446cb199bb73f98e2e1cbb0948f062470a8
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747054"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542387"
 ---
 # <a name="tutorial-render-a-scene-with-azure-batch"></a>Tutorial: Rendern einer Szene mit Azure Batch 
 
@@ -26,14 +26,16 @@ In diesem Tutorial rendern Sie eine 3ds Max-Szene mit Batch, indem Sie den [Arno
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. **Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.**
+ - Sie benötigen ein Abonnement mit nutzungsbasierter Bezahlung oder eine andere Azure-Kaufoption, um die Renderinganwendungen in Batch auf nutzungsbasierter Basis zu verwenden. **Nutzungsbasierte Lizenzierung wird nicht unterstützt, wenn Sie ein kostenloses Azure-Angebot verwenden, das mit monetären Gutschriften verbunden ist.**
 
-Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright &copy; Autodesk, Inc.)
+ - Die 3ds Max-Beispielszene für dieses Tutorial ist auf [GitHub](https://github.com/Azure/azure-docs-cli-python-samples/tree/master/batch/render-scene) zusammen mit einem Bash-Beispielskript und JSON-Konfigurationsdateien zu finden. Die 3ds Max-Szene stammt aus den [Autodesk 3ds Max-Beispieldateien](https://download.autodesk.com/us/support/files/3dsmax_sample_files/2017/Autodesk_3ds_Max_2017_English_Win_Samples_Files.exe). (Autodesk 3ds Max-Beispieldateien sind unter einer Creative Commons Attribution-NonCommercial-Share Alike-Lizenz verfügbar. Copyright &copy; Autodesk, Inc.)
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.20 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für dieses Tutorial ist mindestens Version 2.0.20 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
+> [!TIP]
+> Sie können [Arnold-Auftragsvorlagen](https://github.com/Azure/batch-extension-templates/tree/master/templates/arnold/render-windows-frames) im GitHub-Repository mit Azure Batch-Erweiterungsvorlagen anzeigen.
 ## <a name="create-a-batch-account"></a>Erstellen eines Batch-Kontos
 
 Erstellen Sie, falls nicht bereits geschehen, eine Ressourcengruppe, ein Batch-Konto und ein verknüpftes Speicherkonto in Ihrem Abonnement. 
@@ -107,7 +109,7 @@ az storage blob upload-batch \
 
 ## <a name="create-a-rendering-pool"></a>Erstellen eines Renderingpools
 
-Erstellen Sie einen Batch-Pool für das Rendering, indem Sie den Befehl [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) verwenden. In diesem Beispiel geben Sie die Pooleinstellungen in einer JSON-Datei an. Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *mypool.json* , und fügen Sie dann den folgenden Inhalt ein. Achten Sie darauf, dass der Text richtig kopiert wird. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) herunterladen.)
+Erstellen Sie einen Batch-Pool für das Rendering, indem Sie den Befehl [az batch pool create](/cli/azure/batch/pool#az-batch-pool-create) verwenden. In diesem Beispiel geben Sie die Pooleinstellungen in einer JSON-Datei an. Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *mypool.json*, und fügen Sie dann den folgenden Inhalt ein. Achten Sie darauf, dass der Text richtig kopiert wird. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/mypool.json) herunterladen.)
 
 
 ```json
@@ -193,7 +195,7 @@ az batch job create \
 
 ### <a name="create-a-task"></a>Erstellt eine Aufgabe.
 
-Verwenden Sie den Befehl [az batch task create](/cli/azure/batch/task#az-batch-task-create), um im Auftrag eine Renderaufgabe zu erstellen. In diesem Beispiel geben Sie die Aufgabeneinstellungen in einer JSON-Datei an. Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *myrendertask.json* , und fügen Sie dann den folgenden Inhalt ein. Achten Sie darauf, dass der Text richtig kopiert wird. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) herunterladen.)
+Verwenden Sie den Befehl [az batch task create](/cli/azure/batch/task#az-batch-task-create), um im Auftrag eine Renderaufgabe zu erstellen. In diesem Beispiel geben Sie die Aufgabeneinstellungen in einer JSON-Datei an. Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *myrendertask.json*, und fügen Sie dann den folgenden Inhalt ein. Achten Sie darauf, dass der Text richtig kopiert wird. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask.json) herunterladen.)
 
 In der Aufgabe wird ein 3ds Max-Befehl angegeben, um einen einzelnen Frame der Szene *MotionBlur-DragonFlying.max* zu rendern.
 
@@ -288,7 +290,7 @@ Es dauert einige Minuten, um die Größe des Pools zu ändern. Richten Sie währ
 
 Verwenden Sie wie im Beispiel mit nur einem Frame den Befehl [az batch task create](/cli/azure/batch/task#az-batch-task-create), um Renderaufgaben im Auftrag *myrenderjob* zu erstellen. Geben Sie hier die Aufgabeneinstellungen in einer JSON-Datei mit dem Namen *myrendertask_multi.json* an. (Sie können die Datei von [GitHub](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json) herunterladen.) Für die sechs Aufgaben wird jeweils eine Arnold-Befehlszeile zum Rendern eines Frames der 3ds Max-Szene *MotionBlur-DragonFlying.max* angegeben.
 
-Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *myrendertask_multi.json* , und fügen Sie den Inhalt aus der heruntergeladenen Datei ein. Ändern Sie die Elemente `blobSource` und `containerURL` in der JSON-Datei, damit sie den Namen Ihres Speicherkontos und Ihr SAS-Token enthalten. Achten Sie darauf, die Einstellungen für alle sechs Aufgaben zu ändern. Speichern Sie die Datei, und führen Sie den folgenden Befehl aus, um die Aufgaben in die Warteschlange einzureihen:
+Erstellen Sie in Ihrer aktuellen Shell eine Datei mit dem Namen *myrendertask_multi.json*, und fügen Sie den Inhalt aus der heruntergeladenen Datei ein. Ändern Sie die Elemente `blobSource` und `containerURL` in der JSON-Datei, damit sie den Namen Ihres Speicherkontos und Ihr SAS-Token enthalten. Achten Sie darauf, die Einstellungen für alle sechs Aufgaben zu ändern. Speichern Sie die Datei, und führen Sie den folgenden Befehl aus, um die Aufgaben in die Warteschlange einzureihen:
 
 ```azurecli-interactive
 az batch task create --job-id myrenderjob --json-file myrendertask_multi.json

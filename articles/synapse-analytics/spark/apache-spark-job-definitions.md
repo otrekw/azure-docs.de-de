@@ -8,16 +8,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 10/16/2020
-ms.openlocfilehash: f942525f1360a134f58f18e0ec76a84b0ceee50b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b8c7792a09dd86e7d4ac043c572f69fc47ee6e63
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738184"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93307176"
 ---
 # <a name="tutorial-create-apache-spark-job-definition-in-synapse-studio"></a>Tutorial: Erstellen einer Apache Spark-Auftragsdefinition in Synapse Studio
 
-In diesem Tutorial erfahren Sie, wie Sie Apache Spark-Auftragsdefinitionen mithilfe von Azure Synapse Studio erstellen und anschließend an einen Apache Spark-Pool übermitteln.
+In diesem Tutorial erfahren Sie, wie Sie Apache Spark-Auftragsdefinitionen mithilfe von Azure Synapse Studio erstellen und anschließend an einen serverlosen Apache Spark-Pool übermitteln.
 
 Dieses Tutorial enthält die folgenden Aufgaben:
 > [!div class="checklist"]
@@ -33,7 +33,7 @@ Dieses Tutorial enthält die folgenden Aufgaben:
 Vergewissern Sie sich zunächst, dass die folgenden Anforderungen erfüllt sind bzw. dass Folgendes vorhanden ist:
 
 * Ein Azure Synapse Analytics-Arbeitsbereich. Entsprechende Anweisungen finden Sie unter [Erstellen eines Arbeitsbereichs](../../machine-learning/how-to-manage-workspace.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#create-a-workspace).
-* Ein Apache Spark-Pool.
+* Ein serverloser Apache Spark-Pool
 * Ein ADLS Gen2-Speicherkonto. Sie müssen der **Besitzer der Speicherblobdaten** des ADLS Gen2-Dateisystems sein, das Sie verwenden möchten. Andernfalls müssen Sie die Berechtigung manuell hinzufügen.
 * Wenn Sie nicht den Standardspeicher des Arbeitsbereichs verwenden möchten, verknüpfen Sie das erforderliche ADLS Gen2-Speicherkonto in Synapse Studio. 
 
@@ -51,7 +51,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für PySp
 
      ![Python-Datei hochladen](./media/apache-spark-job-definitions/upload-python-file.png)
 
-4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
+4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. 
 
      ![Neue Definition für Python erstellen](./media/apache-spark-job-definitions/create-new-definition.png)
 
@@ -93,7 +93,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für Apac
  
      ![Scala-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-scala-structure.png)
 
- 4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **Spark (Scala)** aus.
 
@@ -133,7 +133,7 @@ In diesem Abschnitt erstellen Sie eine Apache Spark-Auftragsdefinition für .NET
  
      ![DotNet-Struktur vorbereiten](./media/apache-spark-job-definitions/prepare-dotnet-structure.png)
 
- 4. Wählen Sie den Hub **Entwickeln** , das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
+ 4. Wählen Sie den Hub **Entwickeln**, das Plussymbol (+) und anschließend **Spark-Auftragsdefinition** aus, um eine neue Spark-Auftragsdefinition zu erstellen. (Die Beispielabbildung ist identisch mit der in Schritt 4 unter **Erstellen einer Apache Spark-Auftragsdefinition für PySpark (Python)** .)
 
  5. Wählen Sie in der Dropdownliste „Sprache“ im Hauptfenster der Apache Spark-Auftragsdefinition **.NET Spark (C#/F#)** aus.
 

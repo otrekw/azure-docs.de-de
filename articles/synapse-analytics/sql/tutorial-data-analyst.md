@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe von SQL On-Demand (Vorschauversion)'
-description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe von SQL On-Demand (Vorschauversion) verschiedene Azure Open Datasets miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
+title: 'Tutorial: Analysieren von Azure Open Datasets in Azure Synapse Studio (Vorschauversion) mithilfe eines serverlosen SQL-Pools (Vorschauversion)'
+description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe eines serverlosen SQL-Pools (Vorschauversion) verschiedene Azure Open Datasets-Instanzen miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0471bd594dcf1b0654d6b4c496e5d39ade2739fd
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cec16041edd10a57088df4ae9cfe0587906919eb
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91539519"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93309293"
 ---
-# <a name="tutorial-use-sql-on-demand-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Tutorial: Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio mithilfe von SQL On-Demand
+# <a name="tutorial-use-serverless-sql-pool-to-analyze-azure-open-datasets-and-visualize-the-results-in-azure-synapse-studio"></a>Tutorial: Verwenden eines serverlosen SQL-Pools zum Analysieren von Azure Open Datasets und Visualisieren der Ergebnisse in Azure Synapse Studio
 
-In diesem Tutorial erfahren Sie, wie Sie eine explorative Datenanalyse durchführen, indem Sie mithilfe von SQL On-Demand verschiedene Azure Open Datasets miteinander kombinieren und die Ergebnisse anschließend in Azure Synapse Studio visualisieren.
+In diesem Tutorial erfahren Sie, wie Sie eine explorative Datenanalyse durchführen, indem Sie mithilfe eines serverlosen SQL-Pools verschiedene Azure Open Datasets-Instanzen miteinander kombinieren und die Ergebnisse anschließend in Azure Synapse Studio visualisieren.
 
 Hierzu analysieren Sie speziell das [Dataset für Taxifahren in New York City (NYC)](https://azure.microsoft.com/services/open-datasets/catalog/nyc-taxi-limousine-commission-yellow-taxi-trip-records/). Dieses enthält Folgendes:
 
@@ -213,9 +213,9 @@ Die Ergebnisse der Abfrage zeigen, dass der Einbruch bei der Anzahl von Taxifahr
 - Es war kalt (Temperatur unter Null Grad Celsius).
 - Es war windig (~ 10 m/s).
 
-In diesem Tutorial haben Sie gelernt, wie Datenanalysten schnell eine explorative Datenanalyse durchführen, mithilfe von SQL On-Demand verschiedene Datasets miteinander kombinieren und die Ergebnisse mithilfe von Azure Synapse Studio visualisieren können.
+In diesem Tutorial haben Sie gelernt, wie Datenanalysten schnell eine explorative Datenanalyse durchführen, mithilfe eines serverlosen SQL-Pools verschiedene Datasets miteinander kombinieren und die Ergebnisse mithilfe von Azure Synapse Studio visualisieren können.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Im Artikel [Tutorial: Verbinden von SQL On-Demand mit Power BI Desktop und Erstellen eines Berichts](tutorial-connect-power-bi-desktop.md) erfahren Sie, wie Sie SQL On-Demand mit Power BI Desktop verbinden und Berichte erstellen.
+Im Tutorial [Verwenden eines serverlosen SQL-Pools mit Power BI Desktop und Erstellen eines Berichts](tutorial-connect-power-bi-desktop.md) erfahren Sie, wie Sie einen serverlosen SQL-Pool mit Power BI Desktop verbinden und Berichte erstellen.
  

@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: 99f29466c5f81eabbf0b603a89674fa2c70da9d8
-  ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+  ms.openlocfilehash: e8ffb5469f8aa2997a6e94b0a3836e7d954e9c07
+  ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 10/22/2020
-  ms.locfileid: "92756899"
+  ms.lasthandoff: 11/12/2020
+  ms.locfileid: "94555900"
 landingContent:
 - title: Informationen zur Spracherkennung
   linkLists:
@@ -26,6 +26,8 @@ landingContent:
       url: speech-to-text.md
     - text: Was ist die Batch-Spracherkennung?
       url: batch-transcription.md
+    - text: Was ist Custom Speech?
+      url: custom-speech-overview.md
     - text: Verwenden der Speech-Befehlszeilenschnittstelle für Spracherkennung ohne Code
       url: spx-overview.md
   - linkListType: quickstart

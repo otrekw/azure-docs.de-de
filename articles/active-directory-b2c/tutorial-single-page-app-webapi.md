@@ -11,12 +11,12 @@ ms.custom: mvc, devx-track-js
 ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 9fe1363ffc714754c1de333a77d36595ce4223e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 737810a7d07d0d97b2e42acffa17fdd32986c48b
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92442336"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421089"
 ---
 # <a name="tutorial-protect-and-grant-access-to-a-nodejs-web-api-from-a-single-page-application-with-azure-ad-b2c"></a>Tutorial: Schützen einer Node.js-Web-API und Gewähren von Zugriff auf eine Node.js-Web-API über eine Single-Page-Webanwendung mithilfe von Azure AD B2C
 
@@ -56,11 +56,11 @@ Notieren Sie sich den Wert unter **Bereiche** für den Bereich `demo.read`. Er w
 
 Wenn Sie über eine andere Anwendung eine geschützte Web-API aufrufen möchten, müssen Sie der Anwendung Berechtigungen für die Web-API erteilen.
 
-Im vorbereitenden Tutorial haben Sie eine Webanwendung namens *webapp1* erstellt. In diesem Tutorial konfigurieren Sie diese Anwendung so, dass sie die Web-API aufruft, die Sie in einem vorherigen Abschnitt, *webapi1* , erstellt haben.
+Im vorbereitenden Tutorial haben Sie eine Single-Page-Webanwendung namens *spaapp1* erstellt. In diesem Tutorial konfigurieren Sie diese Anwendung so, dass sie die Web-API aufruft, die Sie in einem vorherigen Abschnitt erstellt haben (*spaapp1*).
 
 [!INCLUDE [active-directory-b2c-permissions-api](../../includes/active-directory-b2c-permissions-api.md)]
 
-Ihre Single-Page-Webanwendung verfügt nun über Berechtigungen für die geschützte Web-API für die angegebenen Bereiche. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Single-Page-Webanwendung zu verwenden. Die Single-Page-Webanwendung verwendet den Autorisierungsgewährungsablauf, um mit einem von Azure AD B2C zurückgegebenen Zugriffstoken auf die geschützte Web-API zuzugreifen.
+Ihre Single-Page-Webanwendung verfügt nun über Berechtigungen für die geschützte Web-API für die angegebenen Bereiche. Ein Benutzer authentifiziert sich mit Azure AD B2C, um die Single-Page-Webanwendung zu verwenden. Die Single-Page-Webanwendung ruft ein Zugriffstoken aus Azure AD B2C ab, um auf die geschützte Web-API zuzugreifen.
 
 ## <a name="configure-the-sample"></a>Konfigurieren des Beispiels
 
@@ -75,7 +75,7 @@ git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-nodej
 ### <a name="configure-the-web-api"></a>Konfigurieren der Web-API
 
 1. Öffnen Sie die Datei *config.json* in Ihrem Code-Editor.
-1. Passen Sie die Variablenwerte an die zuvor erstellte Anwendungsregistrierung an. Aktualisieren Sie außerdem den Richtliniennamen (`policyName`) mit dem Benutzerablauf, den Sie im Rahmen der Voraussetzungen erstellt haben. Beispiel: *B2C_1_signupsignin1* .
+1. Passen Sie die Variablenwerte an die zuvor erstellte Anwendungsregistrierung an. Aktualisieren Sie außerdem den Richtliniennamen (`policyName`) mit dem Benutzerablauf, den Sie im Rahmen der Voraussetzungen erstellt haben. Beispiel: *B2C_1_signupsignin1*.
     
     ```json
     "credentials": {
@@ -112,9 +112,9 @@ In diesem Abschnitt wird die Single-Page-Webanwendung aktualisiert, um die Node.
 
 So ändern Sie die Einstellungen in der SPA
 
-1. Öffnen Sie im Projekt [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder geklont haben, die Datei *apiConfig.js* im Ordner *JavaScriptSPA* .
+1. Öffnen Sie im Projekt [active-directory-b2c-javascript-msal-singlepageapp][github-js-spa], das Sie im vorherigen Tutorial heruntergeladen oder geklont haben, die Datei *apiConfig.js* im Ordner *JavaScriptSPA*.
 1. Konfigurieren Sie das Beispiel mit dem URI für den zuvor erstellten Bereich *demo.read* und der URL der Web-API.
-    1. Ersetzen Sie in der Definition von `apiConfig` den Wert für `b2cScopes` durch den vollständigen URI für den Bereich *demo.read* (der Wert für **Bereich** , den Sie sich weiter oben notiert haben).
+    1. Ersetzen Sie in der Definition von `apiConfig` den Wert für `b2cScopes` durch den vollständigen URI für den Bereich *demo.read* (der Wert für **Bereich**, den Sie sich weiter oben notiert haben).
     1. Ändern Sie die Domäne im Wert für `webApi` in den Umleitungs-URI, den Sie zuvor beim Registrieren der Web-API-Anwendung hinzugefügt haben.
 
     Da auf die API am Endpunkt `/hello` zugegriffen werden kann, behalten Sie */hello* im URI bei.
@@ -161,7 +161,7 @@ In diesem Tutorial werden zwar beide Anwendungen lokal ausgeführt, aufgrund ihr
 1. Öffnen Sie ein weiteres Konsolenfenster, und wechseln Sie zum Verzeichnis mit dem JavaScript-SPA-Beispiel. Beispiel:
 
     ```console
-    cd active-directory-b2c-javascript-msal-singlepageapp
+    cd ms-identity-b2c-javascript-spa
     ```
 
 1. Führen Sie die folgenden Befehle aus:

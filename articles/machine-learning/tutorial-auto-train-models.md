@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial zur Regression: Automatisiertes maschinelles Lernen'
 titleSuffix: Azure Machine Learning
-description: In diesem Tutorial lernen Sie, wie Sie mit automatisiertem maschinellem Lernen ein Machine Learning-Modell erstellen. Azure Machine Learning kann die Datenvorverarbeitung, Algorithmusauswahl und Hyperparameterauswahl automatisiert für Sie ausführen.
+description: Erstellen Sie ein Experiment mit automatisiertem maschinellem Lernen, das basierend auf den von Ihnen bereitgestellten Trainingsdaten und Konfigurationseinstellungen ein Regressionsmodell für Sie generiert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: aniththa
 ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
-ms.custom: devx-track-python
-ms.openlocfilehash: cf6616dcc3935946ad4a7213263bb20281d25354
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.custom: devx-track-python, automl
+ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90896788"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93358608"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 
@@ -173,7 +173,7 @@ final_df.describe()
 
 ## <a name="configure-workspace"></a>Konfigurieren des Arbeitsbereichs
 
-Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein [Arbeitsbereich](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) ist eine Klasse, die Informationen zu Ihrem Azure-Abonnement und Ihren Azure-Ressourcen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. `Workspace.from_config()` liest die Datei **config.json** und lädt die Authentifizierungsdetails in ein Objekt namens `ws`. `ws` wird im restlichen Code in diesem Tutorial verwendet.
+Erstellen Sie ein Arbeitsbereichsobjekt aus dem vorhandenen Arbeitsbereich. Ein [Arbeitsbereich](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) ist eine Klasse, die Informationen zu Ihrem Azure-Abonnement und Ihren Azure-Ressourcen akzeptiert. Außerdem erstellt der Arbeitsbereich eine Cloudressource zur Überwachung und Nachverfolgung Ihrer Modellausführungen. `Workspace.from_config()` liest die Datei **config.json** und lädt die Authentifizierungsdetails in ein Objekt namens `ws`. `ws` wird im restlichen Code in diesem Tutorial verwendet.
 
 ```python
 from azureml.core.workspace import Workspace
@@ -300,7 +300,7 @@ BEST: The best observed score thus far.
 
 ## <a name="explore-the-results"></a>Untersuchen der Ergebnisse
 
-Untersuchen Sie die Ergebnisse des automatischen Trainings mit einem [Jupyter-Widget](https://docs.microsoft.com/python/api/azureml-widgets/azureml.widgets?view=azure-ml-py&preserve-view=true). Mit dem Widget können Sie ein Diagramm und eine Tabelle aller individuellen Ausführungsiterationen sowie Metriken zur Trainingsgenauigkeit und Metadaten anzeigen. Darüber hinaus können Sie über das Dropdownmenü nach anderen Genauigkeitsmetriken filtern.
+Untersuchen Sie die Ergebnisse des automatischen Trainings mit einem [Jupyter-Widget](/python/api/azureml-widgets/azureml.widgets?preserve-view=true&view=azure-ml-py). Mit dem Widget können Sie ein Diagramm und eine Tabelle aller individuellen Ausführungsiterationen sowie Metriken zur Trainingsgenauigkeit und Metadaten anzeigen. Darüber hinaus können Sie über das Dropdownmenü nach anderen Genauigkeitsmetriken filtern.
 
 ```python
 from azureml.widgets import RunDetails

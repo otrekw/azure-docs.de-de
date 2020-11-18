@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: ecebaf9384bcb0dbbb6fe36df4dd474738422149
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 8e97a2f077efd4d00eec4a91645dc1b65057ebd9
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043408"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565006"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication"></a>Konfigurieren eines VPN-Clients für P2S-VPN-Protokollverbindungen: Azure AD-Authentifizierung
 
@@ -32,7 +32,7 @@ Verwenden Sie diesen [Link](https://go.microsoft.com/fwlink/?linkid=2117554), um
 
 1. Wechseln Sie zu „Start“, und wählen Sie dann „Einstellungen“ > „Datenschutz“ > „Hintergrund-Apps“ aus.
 2. Stellen Sie sicher, dass unter „Hintergrund-Apps“ die Option **Apps die Ausführung im Hintergrund gestatten** aktiviert ist.
-3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ ( **Ein** ).
+3. Aktivieren Sie unter „Wählen Sie aus, welche Apps im Hintergrund ausgeführt werden dürfen“ die Einstellung für „Azure-VPN-Client“ (**Ein**).
 
   ![Berechtigung (permission)](./media/openvpn-azure-ad-client/backgroundpermission.png)
 
@@ -138,7 +138,7 @@ Diese Schritte unterstützen Sie beim Konfigurieren der Verbindung, sodass sie a
 
 ## <a name="diagnose-connection-issues"></a><a name="diagnose"></a>Diagnose von Verbindungsproblemen
 
-1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose** -Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
+1. Zum Diagnostizieren von Verbindungsproblemen können Sie das **Diagnose**-Tool verwenden. Wählen Sie die **...** neben der VPN-Verbindung aus, die Sie diagnostizieren möchten, um das Menü einzublenden. Wählen Sie dann **Diagnose** aus.
 
     ![Screenshot der im Menü ausgewählten Option „Diagnose“.](./media/openvpn-azure-ad-client/diagnose/diagnose1.jpg)
 
@@ -192,7 +192,7 @@ Sie können die heruntergeladene XML-Datei für das Profil ändern und die Tags 
 ```
 
 > [!NOTE]
-> Der OpenVPN-Azure AD-Client verwendet DNS-Einträge der Richtlinientabelle für die Namensauflösung (Name Resolution Policy Table, NRPT). Dies bedeutet, dass in der Ausgabe von `ipconfig /all` keine DNS-Server aufgeführt werden. Verwenden Sie [Get-DnsClientNrptPolicy](https://docs.microsoft.com/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in PowerShell, um die von Ihnen derzeit verwendeten DNS-Einstellungen zu überprüfen.
+> Der OpenVPN-Azure AD-Client verwendet DNS-Einträge der Richtlinientabelle für die Namensauflösung (Name Resolution Policy Table, NRPT). Dies bedeutet, dass in der Ausgabe von `ipconfig /all` keine DNS-Server aufgeführt werden. Verwenden Sie [Get-DnsClientNrptPolicy](/powershell/module/dnsclient/get-dnsclientnrptpolicy?view=win10-ps) in PowerShell, um die von Ihnen derzeit verwendeten DNS-Einstellungen zu überprüfen.
 >
 
 ### <a name="how-do-i-add-custom-routes-to-the-vpn-client"></a>Wie füge ich dem VPN-Client benutzerdefinierte Routen hinzu?

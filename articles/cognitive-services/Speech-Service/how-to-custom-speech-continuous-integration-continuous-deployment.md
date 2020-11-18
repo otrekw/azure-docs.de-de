@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/09/2020
 ms.author: kaprochi
-ms.openlocfilehash: 46bdc314e7aa0002937e808d7982f43c8e725d6f
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: de0065abaf5669859e864186fc9a3fb88219414b
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91357470"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555820"
 ---
 # <a name="cicd-for-custom-speech"></a>CI/CD für Custom Speech
 
@@ -37,7 +37,7 @@ Auf diesem Weg sollten die Workflows Daten, Tests, Testdateien, Modelle und Endp
 
 ### <a name="ci-workflow-for-testing-data-updates"></a>CI-Workflow für Aktualisierungen von Testdaten
 
-Der Hauptzweck der CI/CD-Workflows besteht darin, ein neues Modell mit den Trainingsdaten zu erstellen und dieses Modell unter Verwendung der Testdaten zu testen, um festzustellen, ob sich die [Wort-Fehler-Rate](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (Word Error Rate, WER) im Vergleich zum vorherigen leistungsstärksten Modell (dem „Vergleichstestmodell“) verbessert hat. Wenn das neue Modell eine bessere Leistung erzielt, wird es zum neuen Vergleichstestmodell, mit dem zukünftige Modelle verglichen werden.
+Der Hauptzweck der CI/CD-Workflows besteht darin, ein neues Modell mit den Trainingsdaten zu erstellen und dieses Modell unter Verwendung der Testdaten zu testen, um festzustellen, ob sich die [Wort-Fehler-Rate](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (Word Error Rate, WER) im Vergleich zum vorherigen leistungsstärksten Modell (dem „Vergleichstestmodell“) verbessert hat. Wenn das neue Modell eine bessere Leistung erzielt, wird es zum neuen Vergleichstestmodell, mit dem zukünftige Modelle verglichen werden.
 
 Der CI-Workflow zum Testen von Datenaktualisierungen sollte das aktuelle Vergleichstestmodell mit den aktualisierten Testdaten erneut testen, um die überarbeitete Wort-Fehler-Rate (WER) zu berechnen. Dadurch wird sichergestellt, dass beim Vergleich der WER eines neuen Modells mit der WER des Vergleichsmodells beide Modelle mit denselben Testdaten getestet wurden und Sie somit Gleiches mit Gleichem vergleichen.
 
@@ -85,7 +85,7 @@ Das [Speech DevOps-Vorlagenrepository](https://github.com/Azure-Samples/Speech-S
 - Kopieren Sie das Vorlagenrepository in Ihr GitHub-Konto, erstellen Sie dann Azure-Ressourcen und einen [Dienstprinzipal](../../active-directory/develop/app-objects-and-service-principals.md#service-principal-object) für die CI/CD-Workflows für GitHub Actions.
 - Durchlaufen Sie die „[innere Schleife der Entwicklung](https://mitchdenny.com/the-inner-loop/)“. Aktualisieren Sie Trainings- und Testdaten von einem Featurebranch, testen Sie die Änderungen mit einem temporären Entwicklungsmodell, und lösen Sie einen Pull Request aus, um die Änderungen vorzuschlagen und zu überprüfen.
 - Wenn Trainingsdaten in einem Pull Request für *master* aktualisiert werden, trainieren Sie Modelle mit dem CI-Workflow für GitHub Actions.
-- Führen Sie automatisierte Genauigkeitsprüfungen durch, um die [Wort-Fehler-Rate](how-to-custom-speech-evaluate-data.md#what-is-word-error-rate-wer) (WER) eines Modells zu ermitteln. Speichern Sie die Testergebnisse in Azure-Blob.
+- Führen Sie automatisierte Genauigkeitsprüfungen durch, um die [Wort-Fehler-Rate](how-to-custom-speech-evaluate-data.md#evaluate-custom-speech-accuracy) (WER) eines Modells zu ermitteln. Speichern Sie die Testergebnisse in Azure-Blob.
 - Führen Sie den CD-Workflow aus, um einen Endpunkt zu erstellen, wenn sich die Wort-Fehler-Rate verbessert.
 
 ## <a name="next-steps"></a>Nächste Schritte

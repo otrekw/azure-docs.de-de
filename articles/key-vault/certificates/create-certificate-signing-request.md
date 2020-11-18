@@ -10,18 +10,18 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: ad3dd64bb55ccd657b74bacff3e4441ce63f0cf7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89569372"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93289614"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
 Azure Key Vault unterstützt die Speicherung eines digitalen Zertifikats, das von einer Zertifizierungsstelle Ihrer Wahl ausgestellt wurde, in Ihrem Schlüsseltresor. Hierbei wird die Erstellung der Zertifikatsignieranforderung mit einem Schlüsselpaar aus einem privaten und einem öffentlichen Schlüssel unterstützt, das von einer beliebigen ausgewählten Zertifizierungsstelle signiert sein kann. Hierbei kann es sich um eine interne Zertifizierungsstelle des Unternehmens oder eine externe öffentliche Zertifizierungsstelle handeln. Eine Zertifikatsignieranforderung (auch CSR oder Zertifizierungsanforderung genannt) ist eine Nachricht, die vom Benutzer an eine Zertifizierungsstelle gesendet wird, um die Ausstellung eines digitalen Zertifikats anzufordern.
 
-Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](/azure/key-vault/certificates/about-certificates).
+Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vault-Zertifikate](./about-certificates.md).
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
@@ -74,7 +74,7 @@ Mithilfe der folgenden Schritte können Sie ein Zertifikat mit einer nicht mit K
     ![Zertifikateigenschaften](../media/certificates/create-csr-merge-csr/create-certificate.png)
 6.  Sie werden feststellen, dass der Zertifikatliste jetzt ein Zertifikat hinzugefügt ist. Wählen Sie dieses neue Zertifikat aus, das Sie soeben erstellt haben. Der aktuelle Status des Zertifikats ist „Deaktiviert“, da es noch nicht von der Zertifizierungsstelle ausgestellt wurde.
 7. Klicken Sie auf die Registerkarte **Zertifikatvorgang**, und wählen Sie **CSR herunterladen** aus.
- ![Zertifikateigenschaften](../media/certificates/create-csr-merge-csr/download-csr.png)
+ ![Screenshot: Hervorgehobene Schaltfläche „CSR herunterladen“](../media/certificates/create-csr-merge-csr/download-csr.png)
 
 8.  Übergeben Sie die CSR-Datei an die Zertifizierungsstelle, damit die Anforderung signiert wird.
 9.  Nachdem die Anforderung von der Zertifizierungsstelle signiert wurde, führen Sie die Zertifikatsdatei zurück, um die **signierte Anforderung auf demselben Bildschirm „Zertifikatvorgang“ zusammenzuführen**.

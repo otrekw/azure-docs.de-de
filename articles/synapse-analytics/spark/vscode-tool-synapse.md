@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Spark- und Hive-Tools für VS Code (Spark-Anwendung)'
-description: In diesem Tutorial erfahren Sie, wie Sie Spark- und Hive-Tools für VS Code verwenden, um in Python geschriebene Spark-Anwendungen zu entwickeln und an einen Apache Spark-Pool (Vorschauversion) zu übermitteln.
+description: In diesem Tutorial erfahren Sie, wie Sie Spark- und Hive-Tools für VS Code verwenden, um in Python geschriebene Spark-Anwendungen zu entwickeln und an einen serverlosen Apache Spark-Pool (Vorschauversion) zu übermitteln.
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 09/03/2020
-ms.openlocfilehash: 6778d78ff5e342d97c1c9bc477c1a88eca42a10a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 99b2b04d0f29d92b503cc0bed2460b79cfa6c354
+ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91337843"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93315653"
 ---
 # <a name="tutorial-create-an-apache-spark-applications-with-vscode-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit VS Code mithilfe eines Synapse-Arbeitsbereichs
 
@@ -26,7 +26,7 @@ Spark- und Hive-Tools können auf allen von Visual Studio Code unterstützten Pl
 
 Die folgenden Elemente sind zum Ausführen der Schritte in diesem Artikel erforderlich:
 
-- Ein Apache Spark-Pool. Informationen zum Erstellen eines Apache Spark-Pools finden Sie unter [Erstellen eines Apache Spark-Pools mit dem Azure-Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
+- Serverloser Apache Spark-Pool. Informationen zum Erstellen eines serverlosen Apache Spark-Pools finden Sie unter [Schnellstart: Erstellen eines neuen serverlosen Apache Spark-Pools über das Azure-Portal](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md).
 - [Visual Studio Code](https://code.visualstudio.com/)
 - [Mono](https://www.mono-project.com/docs/getting-started/install/). Mono wird nur für Linux und macOS benötigt.
 - [Eine interaktive PySpark-Umgebung für Visual Studio Code](../../hdinsight/set-up-pyspark-interactive-environment.md).

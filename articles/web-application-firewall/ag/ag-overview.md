@@ -8,12 +8,12 @@ ms.service: web-application-firewall
 ms.date: 09/16/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: 050252718e4796ff20d57be3fdeac98f0cf04fdf
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785220"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560790"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -122,8 +122,8 @@ Bei aktiviertem Bot-Schutz werden eingehende Anforderungen, die von Client-IP-Ad
 
 Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Modi konfiguriert werden:
 
-* **Erkennungsmodus** : Überwacht und protokolliert alle Bedrohungswarnungen. Sie aktivieren die Protokollierung von Diagnosedaten für Application Gateway im Abschnitt **Diagnose**. Zudem müssen Sie sicherstellen, dass das WAF-Protokoll ausgewählt und aktiviert ist. Im Erkennungsmodus werden eingehende Anforderungen von der Web Application Firewall nicht blockiert.
-* **Schutzmodus** : Blockiert Eindringversuche und Angriffe, die die Regeln erkennen. Der Angreifer erhält eine Ausnahme vom Typ 403 (nicht autorisierter Zugriff), und die Verbindung wird getrennt. Der Schutzmodus hält solche Angriffe weiterhin in den WAF-Protokollen fest.
+* **Erkennungsmodus**: Überwacht und protokolliert alle Bedrohungswarnungen. Sie aktivieren die Protokollierung von Diagnosedaten für Application Gateway im Abschnitt **Diagnose**. Zudem müssen Sie sicherstellen, dass das WAF-Protokoll ausgewählt und aktiviert ist. Im Erkennungsmodus werden eingehende Anforderungen von der Web Application Firewall nicht blockiert.
+* **Schutzmodus**: Blockiert Eindringversuche und Angriffe, die die Regeln erkennen. Der Angreifer erhält eine Ausnahme vom Typ 403 (nicht autorisierter Zugriff), und die Verbindung wird getrennt. Der Schutzmodus hält solche Angriffe weiterhin in den WAF-Protokollen fest.
 
 > [!NOTE]
 > Es empfiehlt sich, eine neu bereitgestellte WAF kurzzeitig im Erkennungsmodus in einer Produktionsumgebung auszuführen. Dadurch können Sie vor dem Wechsel zum Schutzmodus [Firewallprotokolle](../../application-gateway/application-gateway-diagnostics.md#firewall-log) generieren und ggf. Ausnahmen oder [benutzerdefinierte Regeln](./custom-waf-rules-overview.md) aktualisieren. Dies kann zur Vermeidung unerwarteter Datenverkehrsblockierungen beitragen.
@@ -132,9 +132,9 @@ Die Application Gateway-WAF kann für die Ausführung in den folgenden beiden Mo
 
 OWASP kann in zwei Modi entscheiden, ob Datenverkehr blockiert wird: herkömmlicher Modus und Anomaliebewertungsmodus.
 
-Im herkömmlichen Modus wird Datenverkehr, der einer Regel entspricht, unabhängig davon berücksichtigt, ob er mit einer anderen Regel übereinstimmt. Dieser Modus ist leicht verständlich. Doch der Mangel an Informationen darüber, wie viele Regeln mit einer bestimmten Anforderung übereinstimmen, ist eine Einschränkung. Darum wurde der Anomaliebewertungsmodus eingeführt. Er ist die Standardeinstellung für OWASP 3. *x*.
+Im herkömmlichen Modus wird Datenverkehr, der einer Regel entspricht, unabhängig davon berücksichtigt, ob er mit einer anderen Regel übereinstimmt. Dieser Modus ist leicht verständlich. Doch der Mangel an Informationen darüber, wie viele Regeln mit einer bestimmten Anforderung übereinstimmen, ist eine Einschränkung. Darum wurde der Anomaliebewertungsmodus eingeführt. Er ist die Standardeinstellung für OWASP 3.*x*.
 
-Im Anomaliebewertungsmodus wird Datenverkehr, der einer beliebigen Regel entspricht, nicht sofort blockiert, wenn die Firewall sich im Schutzmodus befindet. Regeln haben einen bestimmten Schweregrad: *Kritisch* , *Fehler* , *Warnung* oder *Hinweis*. Dieser Schweregrad wirkt sich auf einen numerischen Wert für die Anforderung aus, der als „Anomaliebewertung“ bezeichnet wird. So trägt eine Übereinstimmung mit einer *Warnungsregel* mit 3 zum Ergebnis bei. Eine Übereinstimmung mit einer *kritischen* Regel trägt mit 5 zum Ergebnis bei.
+Im Anomaliebewertungsmodus wird Datenverkehr, der einer beliebigen Regel entspricht, nicht sofort blockiert, wenn die Firewall sich im Schutzmodus befindet. Regeln haben einen bestimmten Schweregrad: *Kritisch*, *Fehler*, *Warnung* oder *Hinweis*. Dieser Schweregrad wirkt sich auf einen numerischen Wert für die Anforderung aus, der als „Anomaliebewertung“ bezeichnet wird. So trägt eine Übereinstimmung mit einer *Warnungsregel* mit 3 zum Ergebnis bei. Eine Übereinstimmung mit einer *kritischen* Regel trägt mit 5 zum Ergebnis bei.
 
 |severity  |Wert  |
 |---------|---------|
@@ -160,7 +160,7 @@ Application Gateway-Protokolle sind in [Azure Monitor](../../azure-monitor/overv
 
 #### <a name="azure-security-center"></a>Azure Security Center
 
-Mit [Security Center](../../security-center/security-center-intro.md) können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Application Gateway ist [in Azure Security Center](../../application-gateway/application-gateway-integration-security-center.md) integriert. Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt von Security Center aus. Diese WAF-Instanzen sind in Security Center integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Security Center.
+Mit [Security Center](../../security-center/security-center-introduction.md) können Sie Bedrohungen verhindern, erkennen und beheben. Security Center sorgt für eine größere Transparenz und bessere Kontrolle der Sicherheit Ihrer Azure-Ressourcen. Application Gateway ist [in Azure Security Center](../../application-gateway/application-gateway-integration-security-center.md) integriert. Security Center scannt die Umgebung, um ungeschützte Webanwendungen zu ermitteln. Security Center kann der Application Gateway-WAF die Empfehlung geben, diese ungeschützten Ressourcen zu schützen. Sie erstellen die Firewalls direkt von Security Center aus. Diese WAF-Instanzen sind in Security Center integriert. Sie senden Warnungen und Integritätsinformationen für die Berichterstellung an Security Center.
 
 ![Security Center-Übersichtsfenster](../media/ag-overview/figure1.png)
 

@@ -3,12 +3,12 @@ title: 'Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge für die fortlaufende Videoaufzeichnung in der Cloud verwenden und einen beliebigen Teil dieses Videos mit Azure Media Services streamen.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 4333ceb9c02f39629e4bd06d3d9634b97bb2e2d7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 7e8bf1202e95cb4e76b54473f9d84076d24accea
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91774027"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93346365"
 ---
 # <a name="tutorial-continuous-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Fortlaufende Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -93,7 +93,7 @@ Sie benötigen die Dateien, um diese Schritte auszuführen:
     Die IoT Hub-Verbindungszeichenfolge ermöglicht die Verwendung von Visual Studio Code, um Befehle über Azure IoT Hub an die Edge-Module zu senden.
     
 1. Navigieren Sie als Nächstes zum Ordner „src/edge“, und erstellen Sie eine Datei vom Typ **.env**.
-1. Kopieren Sie den Inhalt der Datei „~/clouddrive/lva-sample/.env“. Der Text sollte wie folgt aussehen:
+1. Kopieren Sie den Inhalt der Datei „~/clouddrive/lva-sample/edge-deployment/.env“. Der Text sollte wie folgt aussehen:
 
     ```
     SUBSCRIPTION_ID="<Subscription ID>"  
@@ -164,11 +164,63 @@ Wenn Sie das Modul „Live Video Analytics in IoT Edge“ verwenden, um den Liv
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Mediendiagramm":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::
 1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Mediendiagramm"
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Show Verbose Message (Ausführliche Meldung anzeigen)":::
+1. <!--In Visual Studio Code, go-->Navigieren Sie zu „src/cloud-to-device-console-app/operations.json“.
+1. Bearbeiten Sie unter dem Knoten **GraphTopologySet** Folgendes:
+
+    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json" `
+1. Vergewissern Sie sich anschließend unter den Knoten **GraphInstanceSet** und **GraphTopologyDelete**, dass der Wert für **topologyName** dem Wert der Eigenschaft **name** in der vorherigen Graphtopologie entspricht:
+
+    `"topologyName" : "CVRToAMSAsset"`  
+1. Öffnen Sie die [Topologie](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/cvr-asset/topology.json) in einem Browser, und sehen Sie sich „assetNamePattern“ an. Es empfiehlt sich gegebenenfalls, in der Datei „operations.json“ den Namen der Graphinstanz (standardmäßig „Sample-Graph-1“) zu ändern, um sicherzustellen, dass Sie über ein Medienobjekt mit einem eindeutigen Namen verfügen.
+
+    `"assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}"`    
+1. Starten Sie eine Debugsitzung, indem Sie F5 drücken. Daraufhin werden im **Terminalfenster** einige Nachrichten ausgegeben.
+1. Die Datei „operations.json“ beginnt mit Aufrufen für „GraphTopologyList“ und „GraphInstanceList“. Falls Sie nach Abschluss vorheriger Schnellstartanleitungen oder Tutorials eine Ressourcenbereinigung durchgeführt haben, gibt diese Aktion leere Listen zurück, und die Ausführung wird angehalten, bis Sie die **EINGABETASTE** drücken, wie hier zu sehen:
+
+    ```
+    --------------------------------------------------------------------------
+    Executing operation GraphTopologyList
+    -----------------------  Request: GraphTopologyList  --------------------------------------------------
+    {
+      "@apiVersion": "1.0"
+    }
+    ---------------  Response: GraphTopologyList - Status: 200  ---------------
+    {
+      "value": []
+    }
+    --------------------------------------------------------------------------
+    Executing operation WaitForInput
+    Press Enter to continue
+    ```
+
+1. Nachdem Sie im **Terminalfenster** die **EINGABETASTE** gedrückt haben, werden die nächsten Aufrufe direkter Methoden durchgeführt:
+   * Ein Aufruf von „GraphTopologySet“ unter Verwendung des vorherigen Werts für „topologyUrl“
+   * Ein Aufruf von „GraphInstanceSet“ unter Verwendung des folgenden Textkörpers:
+     
+     ```
+     {
+       "@apiVersion": "1.0",
+       "name": "Sample-Graph-1",
+       "properties": {
+         "topologyName": "CVRToAMSAsset",
+         "description": "Sample graph description",
+         "parameters": [
+           {
+             "name": "rtspUrl",
+             "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
+           },
+           {
+             "name": "rtspUserName",
+             "value": "testuser"
+           },
+           {
+             "name": "rtspPassword",
+             "value": "testpassword"
            }
          ]
        }

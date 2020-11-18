@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: mahi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 080e56a5b6be8ba68c901509fe87421632144643
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 79a4db1f7d4be88260ea41ce1090007bc66cc7c8
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312040"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556028"
 ---
 # <a name="secure-your-synapse-workspace-preview"></a>Sichern Ihres Synapse-Arbeitsbereichs (Vorschau) 
 
@@ -31,7 +31,7 @@ Um einen Synapse-Arbeitsbereich (Vorschau) zu sichern, befolgen Sie ein Muster z
   - Apache Spark für Azure Synapse Analytics-Administrator
 - Zugriffssteuerung für Daten in Azure Data Lake Storage Gen 2 (ADLSGEN2).
 - Zugriffssteuerung für Synapse-SQL- und Spark-Datenbanken
-- 
+
 ## <a name="steps-to-secure-a-synapse-workspace"></a>Schritte zur Sicherung eines Synapse-Arbeitsbereichs
 
 In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinfachen. Ersetzen Sie sie durch Namen Ihrer Wahl.
@@ -48,9 +48,9 @@ In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinf
 
 Erstellen Sie drei Sicherheitsgruppen für Ihren Arbeitsbereich, und füllen Sie sie auf:
 
-- **WS1\_WSAdmins** : für Benutzer, die vollständige Kontrolle über den Arbeitsbereich benötigen.
-- **WS1\_SparkAdmins** : für Benutzer, die vollständige Kontrolle über die Spark-Aspekte des Arbeitsbereichs benötigen.
-- **WS1\_SQLAdmins** : für Benutzer, die vollständige Kontrolle über die SQL-Aspekte des Arbeitsbereichs benötigen.
+- **WS1\_WSAdmins**: für Benutzer, die vollständige Kontrolle über den Arbeitsbereich benötigen.
+- **WS1\_SparkAdmins**: für Benutzer, die vollständige Kontrolle über die Spark-Aspekte des Arbeitsbereichs benötigen.
+- **WS1\_SQLAdmins**: für Benutzer, die vollständige Kontrolle über die SQL-Aspekte des Arbeitsbereichs benötigen.
 
 ## <a name="step-2-prepare-your-data-lake-storage-gen2-account"></a>SCHRITT 2: Vorbereiten Ihres Data Lake Storage Gen2-Kontos
 

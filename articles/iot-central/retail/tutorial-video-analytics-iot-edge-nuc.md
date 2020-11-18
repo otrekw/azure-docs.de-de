@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.author: nandab
 author: KishorIoT
 ms.date: 07/27/2020
-ms.openlocfilehash: b74c7c3e9678c89edbe90d648520b9526c8fb569
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: e2e97b857f648390ec017a529115b23c4f17a68d
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748655"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427988"
 ---
 # <a name="tutorial-create-an-iot-edge-instance-for-video-analytics-intel-nuc"></a>Tutorial: Erstellen einer IoT Edge-Instanz für die Videoanalyse (Intel NUC)
 
@@ -115,11 +115,11 @@ Konfigurieren Sie IoT Edge für die Registrierung und Verbindungsherstellung mit
         symmetric_key: "{symmetric_key}"
     ```
 
-1. Ersetzen Sie `{scope_id}` durch den **ID-Bereich** , den Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben.
+1. Ersetzen Sie `{scope_id}` durch den **ID-Bereich**, den Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben.
 
-1. Ersetzen Sie `{registration_id}` durch das Gerät *lva-gateway-001* , das Sie im vorherigen Tutorial erstellt haben.
+1. Ersetzen Sie `{registration_id}` durch das Gerät *gateway-001*, das Sie im vorherigen Tutorial erstellt haben.
 
-1. Ersetzen Sie `{symmetric_key}` durch den **Primärschlüssel** für das Gerät **lva-gateway-001** , den Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben.
+1. Ersetzen Sie `{symmetric_key}` durch den **Primärschlüssel** für das Gerät **gateway-001**, den Sie sich im vorherigen Tutorial in der Datei *scratchpad.txt* notiert haben.
 
 1. Führen Sie den folgenden Befehl aus, um den IoT Edge-Daemon neu zu starten:
 

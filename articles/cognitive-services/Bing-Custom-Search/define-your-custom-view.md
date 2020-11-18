@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: aahi
-ms.openlocfilehash: 52819caeb833eb475c8ea2c476ef5ba27681a50c
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: e8747b822916ba2c9ef7b45cc3cbbaa88d16dcb1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94367555"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565788"
 ---
 # <a name="configure-your-bing-custom-search-experience"></a>Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche
 
@@ -24,7 +24,7 @@ ms.locfileid: "94367555"
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
 > Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
 
-Mit einer benutzerdefinierten Suchinstanz können Sie die Benutzeroberfläche für die Suche so anpassen, dass nur Inhalte von Websites einbezogen werden, die Ihre Benutzer interessieren. Anstatt eine webweite Suche durchzuführen, durchsucht Bing nur die Segmente des Webs, die für Sie interessant sind. Um Ihre benutzerdefinierte Ansicht des Webs zu erstellen, verwenden Sie das [Portal](https://customsearch.ai) für die benutzerdefinierte Bing-Suche.
+Mit einer benutzerdefinierten Suchinstanz können Sie die Benutzeroberfläche für die Suche so anpassen, dass nur Inhalte von Websites einbezogen werden, die Ihre Benutzer interessieren. Anstatt eine webweite Suche durchzuführen, durchsucht Bing nur die Segmente des Webs, die für Sie interessant sind. Um Ihre benutzerdefinierte Ansicht des Webs zu erstellen, verwenden Sie das [Portal](https://www.customsearch.ai) für die benutzerdefinierte Bing-Suche.
 
 Im Portal können Sie eine Suchinstanz erstellen, die die Websegmente angibt: Domänen, Unterseiten und Webseiten, die Bing durchsuchen soll, sowie diejenigen, die nicht durchsucht werden sollen. Das Portal kann auch Inhalt vorschlagen, der ggf. eingebunden werden soll.
 
@@ -60,7 +60,7 @@ Wenn Sie nicht sicher sind, welche Segmente einbezogen werden sollen, können Si
 
 Sie können auf die Liste mit aktiven und blockierten Segmenten zugreifen, indem Sie in Ihrer Instanz für die benutzerdefinierte Suche auf die Registerkarten **Aktiv** und **Blockiert** klicken. Die Segmente, die Sie der Liste „Aktiv“ hinzufügen, werden in Ihre benutzerdefinierte Suche einbezogen. Blockierte Segmente werden nicht durchsucht und nicht in Ihren Suchergebnissen angezeigt.
 
-Klicken Sie auf die Registerkarte **Aktiv** , und fügen Sie mindestens eine URL hinzu, um die Websegmente anzugeben, die mit Bing durchsucht werden sollen. Verwenden Sie zum Bearbeiten oder Löschen von URLs die Optionen unter der Spalte **Steuerelemente**. 
+Klicken Sie auf die Registerkarte **Aktiv**, und fügen Sie mindestens eine URL hinzu, um die Websegmente anzugeben, die mit Bing durchsucht werden sollen. Verwenden Sie zum Bearbeiten oder Löschen von URLs die Optionen unter der Spalte **Steuerelemente**. 
 
 Sie können der Liste **Aktiv** einzelne URLs oder mehrere URLs gleichzeitig hinzufügen, indem Sie über das entsprechende Symbol eine Textdatei hochladen.
 
@@ -75,7 +75,7 @@ Erstellen Sie für den Dateiupload eine Textdatei, und geben Sie nur eine Domän
 
 ### <a name="get-website-suggestions-for-your-search-experience"></a>Abrufen von Websitevorschlägen für Ihre Suchoberfläche
 
-Nach dem Hinzufügen von Websegmenten zur Liste **Aktiv** werden im Portal für die benutzerdefinierte Bing-Suche unten auf der Registerkarte Vorschläge für Websites und Unterseiten generiert. Hierbei handelt es sich um Segmente, für die von der benutzerdefinierten Bing-Suche die Einbindung vorgeschlagen wird. Klicken Sie auf **Aktualisieren** , um aktualisierte Vorschläge erhalten, nachdem die Einstellungen Ihrer Instanz für die benutzerdefinierte Suche aktualisiert wurden. Dieser Abschnitt ist nur sichtbar, wenn Vorschläge verfügbar sind.
+Nach dem Hinzufügen von Websegmenten zur Liste **Aktiv** werden im Portal für die benutzerdefinierte Bing-Suche unten auf der Registerkarte Vorschläge für Websites und Unterseiten generiert. Hierbei handelt es sich um Segmente, für die von der benutzerdefinierten Bing-Suche die Einbindung vorgeschlagen wird. Klicken Sie auf **Aktualisieren**, um aktualisierte Vorschläge erhalten, nachdem die Einstellungen Ihrer Instanz für die benutzerdefinierte Suche aktualisiert wurden. Dieser Abschnitt ist nur sichtbar, wenn Vorschläge verfügbar sind.
 
 ## <a name="search-for-images-and-videos"></a>Suchen nach Bildern und Videos
 
@@ -89,7 +89,7 @@ Sie können Ihre Suchinstanz im Vorschaubereich auf der rechten Seite testen, um
 
 1. Wählen Sie unterhalb des Suchfelds die Option **Meine Instanz**. Sie können die Ergebnisse Ihrer Suchbenutzeroberfläche mit Bing vergleichen, indem Sie die Option **Bing** wählen. 
 2. Wählen Sie einen sicheren Suchfilter und den zu durchsuchenden Markt aus (siehe [Abfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-custom-search-api-v7-reference#query-parameters)).
-3. Geben Sie eine Abfrage ein, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Suchsymbol, um die Ergebnisse aus der aktuellen Konfiguration anzuzeigen. Sie können den Typ der von Ihnen durchgeführten Suche ändern, indem Sie auf **Web** , **Bild** oder **Video** klicken, um die entsprechenden Ergebnisse abzurufen. 
+3. Geben Sie eine Abfrage ein, und drücken Sie die EINGABETASTE, oder klicken Sie auf das Suchsymbol, um die Ergebnisse aus der aktuellen Konfiguration anzuzeigen. Sie können den Typ der von Ihnen durchgeführten Suche ändern, indem Sie auf **Web**, **Bild** oder **Video** klicken, um die entsprechenden Ergebnisse abzurufen. 
 
 <a name="adjustrank"></a>
 

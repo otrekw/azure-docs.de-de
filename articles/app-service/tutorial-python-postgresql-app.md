@@ -3,7 +3,7 @@ title: 'Tutorial: Bereitstellen einer Python-Django-App mit Postgres'
 description: Hier erfahren Sie, wie Sie eine Python-Web-App mit einer PostgreSQL-Datenbank erstellen und in Azure bereitstellen. In diesem Tutorial wird das Django-Framework verwendet, und die App wird in Azure App Service für Linux gehostet.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 10/09/2020
+ms.date: 11/02/2020
 ms.custom:
 - mvc
 - seodec18
@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: 63fdee6036580df42f7f965244b5f888c1ec082d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 348721304970a5d1d697ecf546a8c5039e81afc1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92540753"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506106"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service
 
@@ -79,7 +79,7 @@ Dieser Befehl öffnet einen Browser zum Erfassen Ihrer Anmeldeinformationen. Wen
 
 Nachdem Sie sich angemeldet haben, können Sie Azure-Befehle mit der Azure CLI ausführen, um Ressourcen in Ihrem Abonnement zu verwenden.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="clone-or-download-the-sample-app"></a>Klonen oder Herunterladen der Beispiel-App
 
@@ -111,12 +111,12 @@ Das Beispiel „djangoapp“ enthält die datengesteuerte Django-Umfrage-App, di
 
 Das Beispiel wird außerdem für die Ausführung in einer Produktionsumgebung wie App Service angepasst:
 
-- Die Produktionseinstellungen befinden sich in der Datei *azuresite/production.py*. Die Entwicklungsdetails befinden sich in *azuresite/settings.py*.
-- Von der App werden Produktionseinstellungen verwendet, wenn die Umgebungsvariable `DJANGO_ENV` auf „production“ festgelegt ist. Diese Umgebungsvariable wird später in diesem Tutorial zusammen mit anderen Umgebungsvariablen für die PostgreSQL-Datenbankkonfiguration erstellt.
+- Die Produktionseinstellungen befinden sich in der Datei *azuresite/production.py*. Die Entwicklungseinstellungen befinden sich in *azuresite/settings.py*.
+- Von der App werden Produktionseinstellungen verwendet, wenn die Umgebungsvariable `WEBSITE_HOSTNAME` festgelegt ist. Von Azure App Service wird diese Variable automatisch auf die URL der Web-App festgelegt, z. B. `msdocs-django.azurewebsites.net`.
 
-Diese Änderungen gelten nicht speziell für App Service, sondern ermöglichen die Ausführung von Django in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ausführliche Informationen zu einigen Änderungen finden Sie unter [Produktionseinstellungen für Django in Azure](configure-language-python.md#production-settings-for-django-apps).
+Die Produktionseinstellungen gelten nicht speziell für App Service, sondern ermöglichen die Konfiguration von Django für die Ausführung in einer beliebigen Produktionsumgebung. Weitere Informationen finden Sie in der [Bereitstellungsprüfliste für Django](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/). Ausführliche Informationen zu einigen Änderungen finden Sie unter [Produktionseinstellungen für Django in Azure](configure-language-python.md#production-settings-for-django-apps).
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="create-postgres-database-in-azure"></a>Erstellen einer Postgres-Datenbankinstanz in Azure
 
@@ -159,7 +159,7 @@ Nach Abschluss der Befehlsausführung wird ein JSON-Objekt mit verschiedenen Ver
 > [!TIP]
 > `-l <location-name>`: Kann auf eine beliebige [Azure-Region](https://azure.microsoft.com/global-infrastructure/regions/) festgelegt werden. Sie können die Regionen, die für Ihr Abonnement verfügbar sind, mit dem [`az account list-locations`](/cli/azure/account#az-account-list-locations)-Befehl abrufen. Legen Sie bei Produktions-Apps für Ihre Datenbank und Ihre App den gleichen Standort fest.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="deploy-the-code-to-azure-app-service"></a>Bereitstellen des Codes in Azure App Service
 
@@ -194,30 +194,27 @@ Nach erfolgreicher Bereitstellung wird eine JSON-Ausgabe wie im folgenden Beispi
 
 ![Beispielausgabe des Befehls „az webapp up“](./media/tutorial-python-postgresql-app/az-webapp-up-output.png)
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
-
-> [!NOTE]
-> Wenn Sie an diesem Punkt versuchen, die URL der App zu besuchen, wird der folgende Fehler angezeigt: „DisallowedHost at /“. Dieser Fehler tritt auf, da die App noch nicht für die Verwendung der weiter oben angesprochenen Produktionseinstellungen konfiguriert wurde. Die entsprechende Konfiguration wird im nächsten Abschnitt vorgenommen.
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="configure-environment-variables-to-connect-the-database"></a>Konfigurieren der Umgebungsvariablen für die Datenbankverbindung
 
 Nachdem der Code nun in App Service bereitgestellt ist, muss als Nächstes eine Verbindung zwischen der App und der Postgres-Datenbank in Azure hergestellt werden.
 
-Vom App-Code werden Datenbankinformationen in vier Umgebungsvariablen namens `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erwartet. Damit die Produktionseinstellungen verwendet werden können, muss außerdem die Umgebungsvariable `DJANGO_ENV` auf `production` festgelegt werden.
+Vom App-Code werden Datenbankinformationen in vier Umgebungsvariablen namens `DBHOST`, `DBNAME`, `DBUSER` und `DBPASS` erwartet.
 
 Mithilfe des folgenden Befehls [az webapp config appsettings set](/cli/azure/webapp/config/appsettings#az-webapp-config-appsettings-set) werden App-Einstellungen erstellt, um Umgebungsvariablen in App Service festzulegen:
 
 ```azurecli
-az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
+az webapp config appsettings set --settings DBHOST="<postgres-server-name>" DBNAME="pollsdb" DBUSER="<username>" DBPASS="<password>"
 ```
 
 - Ersetzen Sie *\<postgres-server-name>* durch den Namen, den Sie zuvor mit dem Befehl `az postgres up` verwendet haben. Der Code in *azuresite/production.py* hängt automatisch `.postgres.database.azure.com` an, um die vollständige Postgres-Server-URL zu erstellen.
 - Ersetzen Sie *\<username>* und *\<password>* durch die Administratoranmeldeinformationen, die Sie mit dem Befehl `az postgres up` weiter oben verwendet haben, oder durch die Anmeldeinformationen, die von `az postgres up` für Sie generiert wurden. Der Code in *azuresite/production.py* erstellt automatisch den vollständigen Postgres-Benutzernamen aus `DBUSER` und `DBHOST`. Lassen Sie daher den Teil `@server` weg. (Wie bereits erwähnt, sollten Sie das Zeichen `$` in keinem der Werte verwenden, da es eine besondere Bedeutung für Linux-Umgebungsvariablen hat.)
 - Die Namen für Ressourcengruppe und App werden aus den zwischengespeicherten Werten in der Datei *.azure/config* abgerufen.
 
-In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DJANGO_ENV')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
+In Ihrem Python-Code wird auf diese Einstellungen in Form von Umgebungsvariablen mit Anweisungen wie `os.environ.get('DBHOST')`zugegriffen. Weitere Informationen finden Sie unter [Zugreifen auf Umgebungsvariablen](configure-language-python.md#access-environment-variables).
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="run-django-database-migrations"></a>Ausführen von Django-Datenbankmigrationen
 
@@ -254,11 +251,11 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
     python manage.py createsuperuser
     ```
 
-1. Durch den Befehl `createsuperuser` werden Sie zur Eingabe von Superuser-Anmeldeinformationen aufgefordert. Verwenden Sie für dieses Tutorial den Standardbenutzernamen `root`, drücken Sie für die E-Mail-Adresse die **EINGABETASTE** , um sie leer zu lassen, und geben Sie `Pollsdb1` als Kennwort ein.
+1. Durch den Befehl `createsuperuser` werden Sie zur Eingabe von Superuser-Anmeldeinformationen aufgefordert. Verwenden Sie für dieses Tutorial den Standardbenutzernamen `root`, drücken Sie für die E-Mail-Adresse die **EINGABETASTE**, um sie leer zu lassen, und geben Sie `Pollsdb1` als Kennwort ein.
 
 1. Wenn eine Fehlermeldung angezeigt wird, dass die Datenbank gesperrt ist, stellen Sie sicher, dass Sie den Befehl `az webapp settings` im vorherigen Abschnitt ausgeführt haben. Ohne diese Einstellungen kann der Migrationsbefehl (migrate) nicht mit der Datenbank kommunizieren, was zu einem Fehler führt.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
     
 ### <a name="create-a-poll-question-in-the-app"></a>Erstellen einer Frage für die Umfrage in der App
 
@@ -274,7 +271,7 @@ Durch Django-Datenbankmigrationen wird sichergestellt, dass das Schema in der Po
 
 **Glückwunsch!** Sie führen eine Python-Django-Web-App in Azure App Service für Linux mit einer aktiven Postgres-Datenbank aus.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 > [!NOTE]
 > Zur Erkennung von Django-Projekten wird von App Service jedes Unterverzeichnis nach einer Datei namens *wsgi.py* durchsucht. Diese wird standardmäßig durch `manage.py startproject` erstellt. Wird die Datei von App Service gefunden, wird die Django-Web-App geladen. Weitere Informationen finden Sie unter [Konfigurieren einer Linux-Python-App für Azure App Service](configure-language-python.md).
@@ -350,13 +347,13 @@ Testen Sie die App lokal:
 
 1. Wechseln Sie zu `http:///localhost:8000/admin`, und melden Sie sich mit dem Administratorbenutzer an, den Sie zuvor erstellt haben. Wählen Sie erneut unter **Polls** (Umfragen) neben **Questions** (Fragen) die Option **Add** (Hinzufügen) aus, und erstellen Sie eine Frage für eine Umfrage mit mehreren Auswahlmöglichkeiten. 
 
-1. Navigieren Sie erneut zu *http:\//localhost:8000* , und beantworten Sie die Frage, um die App zu testen. 
+1. Navigieren Sie erneut zu *http:\//localhost:8000*, und beantworten Sie die Frage, um die App zu testen. 
 
-1. Drücken Sie **STRG**+**C** , um den Django-Server zu beenden.
+1. Drücken Sie **STRG**+**C**, um den Django-Server zu beenden.
 
 Bei lokaler Ausführung wird von der App eine lokale SQLite3-Datenbank verwendet, und Ihre Produktionsdatenbank wird nicht beeinträchtigt. Auf Wunsch kann auch eine lokale PostgreSQL-Datenbank erstellt werden, um die Produktionsumgebung besser zu simulieren.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ### <a name="update-the-app"></a>Aktualisieren der App
 
@@ -374,11 +371,11 @@ python manage.py makemigrations
 python manage.py migrate
 ```
 
-Führen Sie den Entwicklungsserver erneut mit `python manage.py runserver` aus, und testen Sie die App unter *http:\//localhost:8000/admin* :
+Führen Sie den Entwicklungsserver erneut mit `python manage.py runserver` aus, und testen Sie die App unter *http:\//localhost:8000/admin*:
 
 Beenden Sie den Django-Webserver erneut durch Drücken von **STRG**+**C**.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="redeploy-the-code-to-azure"></a>Erneutes Bereitstellen des Codes in Azure
 
@@ -390,7 +387,7 @@ az webapp up
 
 Bei diesem Befehl werden die in der Datei *.azure/config* zwischengespeicherten Parameter verwendet. Da von App Service erkannt wird, dass die App bereits vorhanden ist, wird lediglich der Code erneut bereitgestellt.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="rerun-migrations-in-azure"></a>Erneutes Ausführen von Migrationen in Azure
 
@@ -407,13 +404,13 @@ source /antenv/bin/activate
 python manage.py migrate
 ```
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ### <a name="review-app-in-production"></a>Überprüfen der App in der Produktion
 
 Navigieren Sie zu `http://<app-name>.azurewebsites.net`, und testen Sie die App erneut in der Produktion. (Da Sie lediglich die Länge eines Datenbankfelds geändert haben, macht sich die Änderung nur bemerkbar, wenn Sie versuchen, bei der Frageerstellung eine längere Antwort einzugeben.)
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="stream-diagnostic-logs"></a>Streamen von Diagnoseprotokollen
 
@@ -429,7 +426,7 @@ Falls Sie nicht sofort Konsolenprotokolle sehen, können Sie es nach 30 Sekunde
 
 Zum Beenden des Protokollstreamings können Sie jederzeit **STRG**+**C** drücken.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 > [!NOTE]
 > Sie können die Protokolldateien auch im Browser unter `https://<app-name>.scm.azurewebsites.net/api/logs/docker` untersuchen.
@@ -450,7 +447,7 @@ Standardmäßig wird im Portal die Seite **Übersicht** mit einer allgemeinen Le
 
 ![Verwalten der Python-Django-App auf der Seite „Übersicht“ im Azure-Portal](./media/tutorial-python-postgresql-app/manage-django-app-in-app-services-in-the-azure-portal.png)
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? Lesen Sie zunächst das [Handbuch zur Problembehandlung](configure-language-python.md#troubleshooting), andernfalls [informieren Sie uns darüber](https://aka.ms/DjangoCLITutorialHelp).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -464,7 +461,7 @@ Bei diesem Befehl wird der zwischengespeicherte Ressourcengruppenname aus der Da
 
 Das Löschen aller Ressourcen kann einige Zeit dauern. Das Argument `--no-wait` ermöglicht, dass der Befehl sofort zurückgegeben wird.
 
-[Treten Probleme auf? Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/DjangoCLITutorialHelp)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

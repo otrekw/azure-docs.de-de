@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jixin
-ms.openlocfilehash: d1c13c5d4bea8bfdb0f70e67ce8f264a1929b8a2
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 16fd15a5939cc6c268a80e88401f05042a206075
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150884"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516814"
 ---
 # <a name="tutorial-build-a-blazor-server-chat-app"></a>Tutorial: Erstellen einer Blazor Server-Chat-App
 
@@ -96,7 +96,7 @@ Ab der Version 16.2.0 von Visual Studio 2019 ist Azure SignalR Service in den 
    dotnet add package Microsoft.AspNetCore.SignalR.Client --version 3.1.7
    ```
 
-1. Erstellen Sie `ChartRoom.razor` unter dem Ordner `Pages`, um den SignalR-Client zu implementieren. Führen Sie die im Anschluss angegebenen Schritte aus, oder kopieren Sie einfach die Datei [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
+1. Erstellen Sie `ChatRoom.razor` unter dem Ordner `Pages`, um den SignalR-Client zu implementieren. Führen Sie die im Anschluss angegebenen Schritte aus, oder kopieren Sie einfach die Datei [ChatRoom.razor](https://github.com/aspnet/AzureSignalR-samples/tree/master/samples/BlazorChat/Pages/ChatRoom.razor).
 
    1. Fügen Sie einen Seitenlink und einen Verweis hinzu.
       

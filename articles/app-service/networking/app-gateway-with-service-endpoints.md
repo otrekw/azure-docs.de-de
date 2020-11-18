@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: dbf38c303f024884971e95f7be9d4dfc50d118de
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 954e94063ec91cd2a6d67d154dfd7da553e0935a
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127823"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560892"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway-Integration mit Dienstendpunkten
 Es gibt drei Varianten von App Service, die jeweils eine etwas andere Konfiguration der Integration mit Azure Application Gateway erfordern. Zu diesen Varianten zählen die reguläre App Service-Instanz (mehrinstanzenfähig) sowie ILB-ASE (Internal Load Balancer App Service Environment, App Service-Umgebung mit internem Lastenausgleich) und die externe ASE. In diesem Artikel erfahren Sie Schritt für Schritt, wie Sie die Konfiguration mit App Service (mehrinstanzenfähig) durchführen, und Sie finden Informationen zu ILB und externer ASE.
@@ -36,7 +36,7 @@ Im Azure-Portal müssen vier Schritte ausgeführt werden, um das Setup bereitzus
 1. Erstellen Sie mithilfe einer der Schnellstartanleitungen aus der App Service-Dokumentation (beispielsweise [Erstellen von ASP.NET Core-Web-Apps in Azure](../quickstart-dotnetcore.md)) eine App Service-Instanz.
 2. Erstellen Sie gemäß der Schnellstartanleitung [Weiterleiten von Webdatenverkehr per Azure Application Gateway – Azure-Portal](../../application-gateway/quick-create-portal.md) eine Application Gateway-Instanz, überspringen Sie dabei aber den Abschnitt „Hinzufügen von Back-End-Zielen“.
 3. Konfigurieren Sie [App Service als Back-End in Application Gateway](../../application-gateway/configure-web-app-portal.md), überspringen Sie dabei aber den Abschnitt „Beschränken des Zugriffs“.
-4. Erstellen Sie abschließend die [Zugriffseinschränkung mithilfe von Dienstendpunkten](../../app-service/app-service-ip-restrictions.md#service-endpoints).
+4. Erstellen Sie abschließend die [Zugriffseinschränkung mithilfe von Dienstendpunkten](../../app-service/app-service-ip-restrictions.md#use-service-endpoints).
 
 Nun können Sie über die Application Gateway-Instanz auf die App Service-Instanz zugreifen. Wenn Sie jedoch versuchen, direkt auf die App Service-Instanz zuzugreifen, erhalten Sie einen HTTP-Fehler vom Typ 403, der angibt, dass die Website beendet wurde.
 

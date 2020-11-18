@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 09/15/2020
-ms.openlocfilehash: dd055eecaef00a2f3b555034f44f3c04684a1722
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92171857"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331956"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über das Synapse Knowledge Center
 
@@ -37,9 +37,9 @@ Im **Knowledge Center** haben Sie drei Möglichkeiten:
 * **Browse available samples** (Verfügbare Beispiele durchsuchen). Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
 * **Tour Synapse studio** (Einführung in Synapse Studio). Mit dieser Option können Sie sich einen kurzen Überblick über die Hauptbereiche von Synapse Studio verschaffen. Dies ist hilfreich, wenn Sie Synapse Studio noch nie verwendet haben.
 
-## <a name="exploring-blob-storage-with-sql-on-demand"></a>Untersuchen von Blobspeicher mit SQL On-Demand
+## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Untersuchen von Blobspeicher mit einem serverlosen SQL-Pool
 
-1. Klicken Sie im **Knowledge Center** auf **Use samples immediately** (Beispiele sofort verwenden).
+1. Navigieren Sie zum **Knowledge Center**, und klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
 1. Wählen Sie **Query data with SQL** (Daten mit SQL abfragen) aus. 
 1. Klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
 1. Es wird ein neues SQL-Skript erstellt.
@@ -47,7 +47,7 @@ Im **Knowledge Center** haben Sie drei Möglichkeiten:
 1. Klicken Sie auf "Ausführen". Der ausgewählte Text wird ausgeführt.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Laden von weiteren NYC Taxi-Daten
-1. Klicken Sie im **Knowledge Center** auf **Browse available samples** (Verfügbare Beispiele durchsuchen). 
+1. Navigieren Sie zum **Knowledge Center**, und klicken Sie auf **Browse available samples** (Verfügbare Beispiele durchsuchen). 
 1. Wählen Sie oben die Registerkarte **SQL scripts** (SQL-Skripts) aus.
 1. Wählen Sie **Load the New York Taxicab dataset** (New York Taxicab-Dataset laden) aus.
 1. Wählen Sie unter **Inputs** (Eingabe) **Select an existing pool** (Vorhandenen Pool auswählen) und dann **SQLDB1** aus.
@@ -60,4 +60,4 @@ Im **Knowledge Center** haben Sie drei Möglichkeiten:
 
 * [Erste Schritte mit Azure Synapse Analytics](get-started.md)
 * [Erstellen eines Arbeitsbereichs](quickstart-create-workspace.md)
-* [Verwenden von SQL On-Demand](quickstart-sql-on-demand.md)
+* [Verwenden eines serverlosen SQL-Pools](quickstart-sql-on-demand.md)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.author: gwallace
 ms.custom: mvc, devcenter, devx-track-azurecli
-ms.openlocfilehash: 3727e9a83827261bf9e8a526ffedb6d3fc644afa
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b02c16c63d83fc33be5512d26eafb0ca0d6c9b98
+ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92745976"
+ms.lasthandoff: 11/01/2020
+ms.locfileid: "93145887"
 ---
 # <a name="tutorial-deploy-an-application-to-service-fabric-mesh-using-a-template"></a>Tutorial: Bereitstellen einer Anwendung in Service Fabric Mesh mithilfe einer Vorlage
 
@@ -103,6 +103,11 @@ Wenn die Registrierung erstellt wird, sieht die Ausgabe etwa wie folgt aus:
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Die Containerimages für die Dienste [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) befinden sich in Docker Hub. Informationen zum Erstellen der Anwendung in Visual Studio finden Sie unter [Tutorial: Erstellen, Debuggen, Bereitstellen und Aktualisieren einer Service Fabric Mesh-App mit mehreren Diensten](service-fabric-mesh-tutorial-create-dotnetcore.md). In Service Fabric Mesh können Windows-oder Linux-Docker-Container ausgeführt werden.  Wählen Sie bei der Verwendung von Linux-Containern in Docker die Option **Switch to Linux containers** (Zu Linux-Containern wechseln) aus.  Wählen Sie bei der Verwendung von Windows-Containern in Docker die Option **Switch to Windows containers** (Zu Windows-Containern wechseln) aus.
 
 Um ein Image per Push an eine ACR-Instanz übertragen zu können, benötigen Sie zunächst ein Containerimage. Falls Sie noch keine lokalen Containerimages besitzen, rufen Sie mithilfe des Befehls [docker pull](https://docs.docker.com/engine/reference/commandline/pull/) die Images [WebFrontEnd](https://hub.docker.com/r/seabreeze/azure-mesh-todo-webfrontend/) und [ToDoService](https://hub.docker.com/r/seabreeze/azure-mesh-todo-service/) per Pull aus Docker Hub ab.
+
+>[!NOTE]
+> Ab dem 2. November 2020 [gelten die Grenzwerte für die Downloadrate](https://docs.docker.com/docker-hub/download-rate-limit/) für anonyme und authentifizierte Anforderungen an Docker Hub von Docker-Konten im Plan „Free“. Diese Grenzwerte werden durch die IP-Adresse erzwungen. 
+> 
+> Diese Befehle nutzen öffentliche Images aus Docker Hub. Beachten Sie, dass möglicherweise Ratenbeschränkungen gelten. Ausführlichere Informationen finden Sie unter [Authentifizieren mit Docker Hub](https://docs.microsoft.com/azure/container-registry/buffer-gate-public-content#authenticate-with-docker-hub).
 
 Abrufen der Windows-Images:
 
@@ -196,7 +201,7 @@ Eine Service Fabric Mesh-Anwendung ist eine Azure-Ressource, die Sie mithilfe vo
 In diesem Tutorial wird die Aufgabenlistenanwendung als Beispiel verwendet.  Laden Sie die Dateien [mesh_rp.windows.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.json) (Bereitstellungsvorlage) und [mesh_rp.windows.parameter.json](https://github.com/Azure-Samples/service-fabric-mesh/blob/master/templates/todolist/mesh_rp.windows.parameters.json) (Parameterdatei) herunter, statt eine neue Vorlage und neue Parameterdateien zu erstellen.
 
 ### <a name="parameters"></a>Parameter
-Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte zu parametrisieren. Zu diesem Zweck muss am Anfang der Bereitstellungsvorlage ein Abschnitt namens „parameters“ erstellt werden. Dieser Abschnitt dient zum Angeben von Parameternamen und Eigenschaften, auf die später in der Bereitstellungsvorlage verwiesen wird. Jede Parameterdefinition enthält die Einträge *type* , *defaultValue* und einen optionalen *metadata* -Abschnitt mit einer Beschreibung ( *description* ).
+Wenn Ihre Vorlage Werte enthält, die Sie nach Bereitstellen der Anwendung wahrscheinlich ändern werden, oder wenn Sie gerne die Möglichkeit hätten, die Werte pro Bereitstellung zu ändern (falls diese Vorlage für andere Bereitstellungen wiederverwendet werden soll), ist es empfehlenswert, die Werte zu parametrisieren. Zu diesem Zweck muss am Anfang der Bereitstellungsvorlage ein Abschnitt namens „parameters“ erstellt werden. Dieser Abschnitt dient zum Angeben von Parameternamen und Eigenschaften, auf die später in der Bereitstellungsvorlage verwiesen wird. Jede Parameterdefinition enthält die Einträge *type*, *defaultValue* und einen optionalen *metadata*-Abschnitt mit einer Beschreibung (*description*).
 
 Der Abschnitt „parameters“ wird am Anfang Ihrer Bereitstellungsvorlage direkt vor dem Abschnitt *resources* definiert:
 
@@ -336,7 +341,7 @@ Erstellen Sie die Anwendung und die zugehörigen Ressourcen mit dem folgenden Be
 
 Aktualisieren Sie in der Parameterdatei die folgenden Parameterwerte:
 
-|Parameter|value|
+|Parameter|Wert|
 |---|---|
 |location|Die Region für die Bereitstellung der Anwendung.  Beispiel: eastus|
 |registryPassword|Das Kennwort, das Sie zuvor unter [Abrufen von Anmeldeinformationen für die Registrierung](#retrieve-credentials-for-the-registry) abgerufen haben. Dieser Parameter in der Vorlage ist eine sichere Zeichenfolge und wird nicht im Bereitstellungsstatus oder in den `az mesh service show`-Befehlen angezeigt.|

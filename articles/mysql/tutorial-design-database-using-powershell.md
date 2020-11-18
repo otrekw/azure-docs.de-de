@@ -1,19 +1,19 @@
 ---
 title: 'Tutorial: Entwerfen eines Servers – Azure PowerShell: Azure Database for MySQL'
 description: In diesem Tutorial wird das Erstellen und Verwalten von Azure Database for MySQL-Servern und -Datenbanken mithilfe von PowerShell erläutert.
-author: ajlam
-ms.author: andrela
+author: savjani
+ms.author: pariks
 ms.service: mysql
 ms.devlang: azurepowershell
 ms.topic: tutorial
 ms.date: 04/29/2020
 ms.custom: mvc, devx-track-azurepowershell
-ms.openlocfilehash: b5dd66b16674e1441865f796153e7508acc854d0
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: fd8294d60ed0af4e8d1eeb8a3cd07c737b69aadd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92543745"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533581"
 ---
 # <a name="tutorial-design-an-azure-database-for-mysql-using-powershell"></a>Tutorial: Entwerfen einer Azure Database for MySQL-Instanz mithilfe von PowerShell
 
@@ -66,7 +66,7 @@ New-AzResourceGroup -Name myresourcegroup -Location westus
 
 Erstellen Sie mit dem Cmdlet `New-AzMySqlServer` einen Azure Database for MySQL-Server. Ein Server kann mehrere Datenbanken verwalten. In der Regel wird für jedes Projekt oder jeden Benutzer eine separate Datenbank verwendet.
 
-Im folgenden Beispiel wird ein MySQL-Server in der Region **USA, Westen** mit dem Namen **mydemoserver** in der Ressourcengruppe **myresourcegroup** erstellt. Der Benutzername für den Serveradministrator lautet **myadmin** . Es handelt sich um einen Gen 5-Server im Tarif „Universell“ mit zwei virtuellen Kernen und Aktivierung von georedundanten Sicherungen. Notieren Sie sich das Kennwort, das in der ersten Zeile des Beispiels verwendet wird, da dies das Kennwort für das Administratorkonto des MySQL-Servers ist.
+Im folgenden Beispiel wird ein MySQL-Server in der Region **USA, Westen** mit dem Namen **mydemoserver** in der Ressourcengruppe **myresourcegroup** erstellt. Der Benutzername für den Serveradministrator lautet **myadmin**. Es handelt sich um einen Gen 5-Server im Tarif „Universell“ mit zwei virtuellen Kernen und Aktivierung von georedundanten Sicherungen. Notieren Sie sich das Kennwort, das in der ersten Zeile des Beispiels verwendet wird, da dies das Kennwort für das Administratorkonto des MySQL-Servers ist.
 
 > [!TIP]
 > Ein Servername wird einem DNS-Namen zugeordnet und muss in Azure global eindeutig sein.
@@ -104,7 +104,7 @@ New-AzMySqlFirewallRule -Name AllowMyIP -ResourceGroupName myresourcegroup -Serv
 
 ## <a name="get-the-connection-information"></a>Abrufen der Verbindungsinformationen
 
-Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben. Verwenden Sie das folgende Beispiel, um die Verbindungsinformationen zu ermitteln. Notieren Sie sich die Werte für **FullyQualifiedDomainName** und **AdministratorLogin** .
+Zum Herstellen einer Verbindung zum Server müssen Sie Hostinformationen und Anmeldeinformationen für den Zugriff angeben. Verwenden Sie das folgende Beispiel, um die Verbindungsinformationen zu ermitteln. Notieren Sie sich die Werte für **FullyQualifiedDomainName** und **AdministratorLogin**.
 
 ```azurepowershell-interactive
 Get-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup |
@@ -207,6 +207,24 @@ Die Werte zum Standort und Tarif des wiederhergestellten Servers bleiben mit den
 Suchen Sie nach Abschluss der Wiederherstellung den neuen Server, um zu überprüfen, ob die Daten wie erwartet wiederhergestellt wurden. Der neue Server verfügt über den gleichen Anmeldenamen für den Serveradministrator (und das dazugehörige Kennwort), der für den vorhandenen Server beim Start der Wiederherstellung gültig war. Sie können das Kennwort auf der Seite **Übersicht** des neuen Servers ändern.
 
 Der neue Server, der während einer Wiederherstellung erstellt wird, weist nicht die VNET-Dienstendpunkte auf, die auf dem ursprünglichen Server vorhanden waren. Diese Regeln müssen separat für den neuen Server eingerichtet werden. Firewallregeln vom ursprünglichen Server werden wiederhergestellt.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn Sie die in diesem Tutorial erstellten Ressourcen nicht für eine andere Schnellstartanleitung oder ein anderes Tutorial benötigen, können Sie sie löschen, indem Sie das folgende Beispiel ausführen.
+
+> [!CAUTION]
+> Im folgenden Beispiel werden die angegebene Ressourcengruppe und alle darin enthaltenen Ressourcen gelöscht.
+> Falls in der angegebenen Ressourcengruppe Ressourcen enthalten sind, die nicht zum Umfang dieses Tutorials gehören, werden sie ebenfalls gelöscht.
+
+```azurepowershell-interactive
+Remove-AzResourceGroup -Name myresourcegroup
+```
+
+Verwenden Sie das Cmdlet `Remove-AzMySqlServer`, um nur den in diesem Tutorial erstellten Server ohne die Ressourcengruppe zu löschen.
+
+```azurepowershell-interactive
+Remove-AzMySqlServer -Name mydemoserver -ResourceGroupName myresourcegroup
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

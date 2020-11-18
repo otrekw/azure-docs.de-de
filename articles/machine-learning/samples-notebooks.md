@@ -1,7 +1,7 @@
 ---
 title: Jupyter-Beispiel-Notebooks
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie Beispiele für Jupyter-Notebooks finden und verwenden, um sich mit dem Python-SDK für Azure Machine Learning vertraut zu machen.
+description: Hier erfahren Sie, wie Sie die Juypter Notebook-Instanzen finden und verwenden, die Ihnen dabei helfen sollen, sich mit dem SDK vertraut zu machen, und die als Modelle für Ihre eigenen Machine Learning-Projekte fungieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: sgilley
 ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
-ms.openlocfilehash: f8b4256f33a143c711a23a3564c2a46c69e0783b
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 3f5cb2831a58ce9d0d30039b80815e281401e883
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675772"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542557"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>Erkunden von Azure Machine Learning mit Jupyter-Notebooks
 
@@ -47,7 +47,7 @@ Falls Sie für die lokale Entwicklung einen eigenen Notebookserver verwenden mö
 
 [!INCLUDE [aml-your-server](../../includes/aml-your-server.md)]
 
-Mit diesen Schritten werden die erforderlichen SDK-Basispakete für die Schnellstart- und Tutorialnotebooks installiert. Für andere Beispielnotebooks müssen ggf. zusätzliche Komponenten installiert werden. Weitere Informationen finden Sie unter [Install the Azure Machine Learning SDK for Python](https://docs.microsoft.com/python/api/overview/azure/ml/install) (Installieren des Azure Machine Learning SDK für Python).
+Mit diesen Schritten werden die erforderlichen SDK-Basispakete für die Schnellstart- und Tutorialnotebooks installiert. Für andere Beispielnotebooks müssen ggf. zusätzliche Komponenten installiert werden. Weitere Informationen finden Sie unter [Install the Azure Machine Learning SDK for Python](/python/api/overview/azure/ml/install) (Installieren des Azure Machine Learning SDK für Python).
 
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>Abrufen von Beispielen für DSVM

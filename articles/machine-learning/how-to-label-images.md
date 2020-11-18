@@ -1,23 +1,23 @@
 ---
 title: Taggen von Bildern in einem Bezeichnungsprojekt
 title.suffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie die Datentaggingtools in einem Azure Machine Learning-Bezeichnungsprojekt verwenden.
+description: Hier erfahren Sie, wie Sie die Datentaggingtools verwenden, um Daten schnell für Machine Learning in einem Azure Machine Learning-Bezeichnungsprojekt vorzubereiten.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90897573"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542183"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
-Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](https://docs.microsoft.com/azure/machine-learning/how-to-create-labeling-projects#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool (öffentliche Vorschau) schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
+Nachdem Ihr Projektadministrator ein [Bezeichnungsprojekt](./how-to-create-labeling-projects.md#create-a-labeling-project) in Azure Machine Learning erstellt hat, können Sie mit dem Beschriftungstool schnell Daten für ein Machine Learning-Projekt vorbereiten. Dieser Artikel beschreibt Folgendes:
 
 > [!div class="checklist"]
 > * Zugreifen auf Ihre Bezeichnungsprojekte
@@ -127,6 +127,28 @@ Wenn Sie *alle* Begrenzungsrahmen im aktuellen Bild löschen möchten, wählen S
 
 Wählen Sie nach Erstellung der Begrenzungsrahmen für ein Bild die Option **Übermitteln** aus, um Ihre Arbeit zu speichern. Andernfalls geht Ihre Arbeit verloren.
 
+## <a name="tag-images-and-specify-polygons-for-image-segmentation"></a>Markieren von Bildern und Angeben von Polygonen für die Bildsegmentierung 
+
+Ist Ihr Projekt vom Typ „Instanzsegmentierung (Polygon)“, geben Sie im Bild mindestens ein Polygon an, und wenden jeweils ein Tag auf jedes Polygon an. Bilder können über mehrere Begrenzungspolygone mit jeweils einem einzelnen Tag verfügen. Verwenden Sie **Detaillierte Anweisungen anzeigen**, um zu ermitteln, ob in Ihrem Projekt mehrere Begrenzungspolygone verwendet werden.
+
+1. Wählen Sie ein Tag für das Polygon aus, das Sie erstellen möchten.
+1. Wählen Sie das Tool **Polygonbereich zeichnen** ![Tool „Polygonbereich zeichnen“](./media/how-to-label-images/polygon-tool.png) oder „P“ aus.
+3. Klicken Sie für jeden Punkt im Polygon.  Wenn Sie die Form abgeschlossen haben, doppelklicken Sie zum Fertigstellen.
+
+    :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Erstellen von Polygonen für Katze und Hund":::
+
+Wenn Sie ein Polygon löschen möchten, klicken Sie auf das X-förmige Ziel, das nach der Erstellung neben dem Polygon angezeigt wird.
+
+Wenn Sie das Tag für ein Polygon ändern möchten, wählen Sie das Tool **Verschiebebereich** aus, klicken Sie auf das Polygon, und wählen Sie das richtige Tag aus.
+
+Sie können vorhandene Polygone bearbeiten. Das Tool zum **Sperren/Entsperren von Bereichen** ![Bearbeiten von Polygonen mit dem Tool zum Sperren/Entsperren von Bereichen](./media/how-to-label-images/lock-bounding-boxes-tool.png) oder „L“ schaltet dieses Verhalten um. Wenn Bereiche gesperrt sind, können Sie nur die Form oder Position eines neuen Polygons ändern.
+
+Verwenden Sie das Tool **Polygonpunkte hinzufügen oder entfernen** ![Tool „Polygonpunkte hinzufügen oder entfernen“](./media/how-to-label-images/add-remove-points-tool.png) oder „U“, um ein vorhandenes Polygon anzupassen. Klicken Sie auf das Polygon, um einen Punkt hinzuzufügen oder zu entfernen. Wenn Sie einen Bereich nicht bearbeiten können, haben Sie diese Funktionalität wahrscheinlich mit dem Tool zum **Sperren/Entsperren von Bereichen** umgeschaltet.
+
+Wenn Sie *alle* Polygone im aktuellen Bild löschen möchten, wählen Sie das Tool **Alle Bereiche löschen** ![Tool „Alle Bereiche löschen“](./media/how-to-label-images/delete-regions-tool.png) aus.
+
+Wählen Sie nach Erstellung der Polygone für ein Bild die Option **Übermitteln** aus, um Ihre Arbeit zu speichern. Andernfalls geht Ihre Arbeit verloren.
+
 ## <a name="finish-up"></a>Fertigstellen
 
 Wenn Sie eine Seite mit markierten Daten übermitteln, weist Azure Ihnen neue Daten ohne Bezeichnung aus einer Arbeitswarteschlange zu. Sind keine Daten ohne Bezeichnung mehr vorhanden, erhalten Sie eine entsprechende Meldung mit einem Link zur Startseite des Portals.
@@ -135,5 +157,4 @@ Wenn Sie mit dem Anwenden von Bezeichnungen fertig sind, wählen Sie in der rech
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml).
-
+* Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](./tutorial-train-models-with-aml.md).

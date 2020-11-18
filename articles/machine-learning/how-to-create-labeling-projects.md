@@ -1,19 +1,19 @@
 ---
 title: Erstellen eines Datenbeschriftungsprojekts
 titleSuffix: Azure Machine Learning
-description: In diesem Artikel erfahren Sie, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen.  Zur Unterstützung bei dieser Aufgabe stehen die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung zur Verfügung.
+description: In diesem Artikel erfahren Sie, wie Sie Beschriftungsprojekte zum Kennzeichnen von Daten für das maschinelle Lernen erstellen und ausführen.  Verwenden Sie zur Unterstützung bei dieser Aufgabe die ML-gestützte Beschriftung sowie die Human-in-the-Loop-Beschriftung.
 author: sdgilley
 ms.author: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: e30140dc23e64bfc733a0a51fa77fe811ba8fbc7
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: da046fd633120944231ee440605367bdb730cbff
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776118"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94543220"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -189,7 +189,7 @@ Um das Projekt anzuhalten oder neu zu starten, schalten Sie den Status **Wird au
 
 Auf der Registerkarte **Dashboard** wird der Fortschritt der Beschriftungsaufgabe angezeigt.
 
-:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Assistent zum Erstellen von Bezeichnungsprojekten":::
+:::image type="content" source="media/how-to-create-labeling-projects/labeling-dashboard.png" alt-text="Dashboard für Datenbeschriftung":::
 
 Das Fortschrittsdiagramm zeigt an, wie viele Elemente beschriftet wurden und wie viele noch übrig sind.  Für ausstehende Elemente kann Folgendes gelten:
 
@@ -213,7 +213,7 @@ Auf der rechten Seite befindet sich eine Verteilung der Beschriftungen für abge
 
 ### <a name="data-tab"></a>Registerkarte „Daten“
 
-Auf der Registerkarte**Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
+Auf der Registerkarte **Daten** können Sie Ihr Dataset anzeigen und beschriftete Daten überprüfen. Wenn Sie falsch beschriftete Daten sehen, können Sie diese auswählen und auf **Ablehnen** klicken. Dadurch werden die Beschriftungen entfernt und die Daten wieder in die Warteschlange der unbeschrifteten Daten eingereiht.
 
 ### <a name="details-tab"></a>Registerkarte „Details“
 
@@ -260,4 +260,4 @@ Die COCO-Datei wird im Standardblobspeicher des Azure Machine Learning-Arbeitsbe
 
 * [Tutorial: Erstellen eines Beschriftungsprojekts für mehrklassige Bildklassifizierung](tutorial-labeling.md).
 * Beschriften von Bildern für die [Bildklassifizierung oder Objekterkennung](how-to-label-images.md)
-* Weitere Informationen zu [Azure Machine Learning und Machine Learning Studio (klassisch)](compare-azure-ml-to-studio-classic.md)
+* Weitere Informationen zu [Azure Machine Learning und Machine Learning Studio (klassisch)](./overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)

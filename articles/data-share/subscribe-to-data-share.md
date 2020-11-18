@@ -6,12 +6,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/14/2020
-ms.openlocfilehash: 4d4ef9f1d80604373463450adf597f8202611175
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 9031ea2d862a23df5d597b790fffc49e624e53fb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216571"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491918"
 ---
 # <a name="tutorial-accept-and-receive-data-using-azure-data-share"></a>Tutorial: Akzeptieren und Empfangen von Daten mithilfe von Azure Data Share  
 
@@ -130,7 +130,14 @@ Diese Schritte sind nur für die momentaufnahmebasierte Freigabe relevant.
    ![Consumerdatasets](./media/consumer-datasets.png "Consumerdatasetzuordnung") 
 
 ## <a name="view-history"></a>Anzeigen des Verlaufs
-Dieser Schritt ist nur für die momentaufnahmebasierte Freigabe relevant. Wählen Sie zum Anzeigen des Verlaufs der Momentaufnahmen die Registerkarte **Verlauf** aus. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 30 Tagen generiert wurden. 
+Dieser Schritt ist nur für die momentaufnahmebasierte Freigabe relevant. Wählen Sie zum Anzeigen des Verlaufs der Momentaufnahmen die Registerkarte **Verlauf** aus. Hier ist ein Verlauf aller Momentaufnahmen angegeben, die in den letzten 30 Tagen generiert wurden.
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Wenn die Ressource nicht mehr benötigt wird, navigieren Sie zur Seite mit der **Data Share-Übersicht**, und wählen Sie **Löschen** aus, um die Ressource zu entfernen.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Tutorial haben Sie gelernt, wie Sie eine Azure Data Share-Instanz akzeptieren und empfangen. Weitere Informationen zu den Konzepten von Azure Data Share finden Sie unter [Konzepte: Azure Data Share-Terminologie](terminology.md).
+In diesem Tutorial haben Sie gelernt, wie Sie eine Azure Data Share-Instanz akzeptieren und empfangen. Weitere Informationen zu den Konzepten von Azure Data Share finden Sie in der Terminologie zu Azure Data Share.
+
+> [!div class="nextstepaction"]
+> [Azure Data Share-Konzepte](terminology.md)

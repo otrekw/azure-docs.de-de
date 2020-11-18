@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: monitoring
 ms.topic: tutorial
 ms.date: 10/15/2020
-ms.openlocfilehash: d497ff1a829902c0623740f01a457e6496db2401
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 2970bb58bb73d52c75729b00a8209a9c576d4ec0
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92744955"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94427410"
 ---
 # <a name="monitor-your-synapse-workspace"></a>Überwachen Ihres Synapse-Arbeitsbereichs
 
@@ -31,9 +31,8 @@ In diesem Tutorial erfahren Sie, wie Sie Aktivitäten in Ihrem Synapse-Arbeitsbe
 ## <a name="integration"></a>Integration
 
 1. Navigieren Sie zu **Integration > Pipeline**. In dieser Ansicht können Sie alle Ausführungen einer Pipeline in Ihrem Arbeitsbereich anzeigen. 
-1. Suchen Sie die Pipeline, die Sie im vorherigen Schritt ausgeführt haben, und klicken Sie auf den **Pipelinenamen**.
-1. Nun können Sie sehen, wie einzelne Aktivitäten innerhalb dieser Pipeline ausgeführt werden.
-1. Klicken Sie am oberen Rand von Synapse Studio auf die **Breadcrumb-Leiste** und dann auf **Alle Pipelineausführungen** , um zur vorherigen Ansicht zurückzukehren.
+1. Suchen Sie die Pipeline, die Sie im vorherigen Schritt ausgeführt haben, und klicken Sie auf den **Pipelinenamen**, um Details anzuzeigen.
+1. Klicken Sie am oberen Rand von Synapse Studio auf die **Breadcrumb-Leiste** und dann auf **Alle Pipelineausführungen**, um zur vorherigen Ansicht zurückzukehren.
 
 ## <a name="apache-spark-activities"></a>Apache Spark-Aktivitäten
 

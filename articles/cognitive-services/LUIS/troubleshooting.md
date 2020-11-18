@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: troubleshooting
 ms.date: 05/06/2020
-ms.openlocfilehash: 8eb37b993ee5bc3944228cba72be0557b52e3dc6
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 17b070fea422268ec12e0ccd3357ae0549a78916
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92149256"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566264"
 ---
 # <a name="language-understanding-frequently-asked-questions-faq"></a>Language Understanding: häufig gestellte Fragen (FAQ)
 
@@ -91,7 +91,7 @@ Sie erhalten Fehler mit dem Statuscode 403 und 429, wenn Sie für Ihren Tarif 
 
 Wenn Sie die gesamten kostenlosen 1.000 Endpunktabfragen aufgebraucht haben oder das Kontingent der monatlichen Transaktionen Ihres Tarifs überschreiten, erhalten Sie einen Fehler mit dem Statuscode HTTP 403.
 
-Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-pricing-tier) oder [eine neue Ressource erstellen](get-started-portal-deploy-app.md#create-the-endpoint-resource) und [Ihrer App zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
+Zum Beheben dieses Fehlers müssen Sie entweder [einen höheren Tarif wählen](luis-how-to-azure-subscription.md#change-the-pricing-tier) oder [eine neue Ressource erstellen](get-started-portal-deploy-app.md#create-the-endpoint-resource) und [Ihrer App zuweisen](get-started-portal-deploy-app.md#assign-the-resource-key-to-the-luis-app-in-the-luis-portal).
 
 Lösungen für diesen Fehler:
 
@@ -106,7 +106,7 @@ Dieser Statuscode wird zurückgegeben, wenn Ihre Transaktionen pro Sekunde Ihren
 
 Beispiele für Lösungen sind:
 
-* Sie können [Ihren Tarif erhöhen](luis-how-to-azure-subscription.md#change-pricing-tier), falls Sie noch nicht den höchsten Tarif verwenden.
+* Sie können [Ihren Tarif erhöhen](luis-how-to-azure-subscription.md#change-the-pricing-tier), falls Sie noch nicht den höchsten Tarif verwenden.
 * Falls Ihre Nutzung den höchsten Tarif übersteigt, sollten Sie weitere Language Understanding-Ressourcen mit vorgeschaltetem Lastenausgleich hinzufügen. Hierbei kann der [Language Understanding-Container](luis-container-howto.md) mit Kubernetes oder Docker Compose hilfreich sein.
 * Sie können Ihre Anforderungen der Clientanwendung mit einer [Wiederholungsrichtlinie](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) versehen, die Sie selbst implementieren, wenn Sie diesen Statuscode erhalten.
 
@@ -132,7 +132,7 @@ Ihr System sollte die am höchsten bewertete Absicht unabhängig vom Wert verwen
 ### <a name="why-dont-i-see-my-endpoint-hits-in-my-apps-dashboard"></a>Warum werden Endpunktabrufe nicht im App-Dashboard angezeigt?
 Die Gesamtzahl der Endpunktabrufe in Ihrem App-Dashboard wird regelmäßig aktualisiert. Die Metriken, die dem LUIS-Endpunktschlüssel im Azure-Portal zugeordnet sind, werden jedoch häufiger aktualisiert.
 
-Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich beim Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist. Öffnen Sie **Metriken** , und wählen Sie die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
+Wenn die Endpunktabrufe im Dashboard nicht aktualisiert werden, melden Sie sich beim Azure-Portal an, suchen Sie nach der Ressource, die Ihrem LUIS-Endpunktschlüssel zugeordnet ist. Öffnen Sie **Metriken**, und wählen Sie die Metrik **Aufrufe gesamt** aus. Wenn der Endpunktschlüssel für mehr als eine LUIS-App verwendet wird, zeigt die Metrik im Azure-Portal die aggregierten Aufrufe durch alle LUIS-Apps an, die den Schlüssel verwenden.
 
 ### <a name="is-there-a-powershell-command-get-to-the-endpoint-quota"></a>Gibt es einen PowerShell-Befehl zum Abrufen des Endpunktkontingents?
 
@@ -190,7 +190,7 @@ Weitere Informationen finden Sie unter [Trainieren mit allen Daten](luis-how-to-
 ## <a name="app-publishing"></a>Veröffentlichen von Apps
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Was ist die Mandanten-ID im Fenster „Add a key to your app“ (Schlüssel zur App hinzufügen)?
-In Azure stellen Mandanten Clients oder Organisationen dar, die einem Dienst zugeordnet sind. Ihre Mandanten-ID finden Sie im Azure-Portal im Feld **Verzeichnis-ID** . Dieses rufen Sie über **Azure Active Directory** > **Verwalten** > **Eigenschaften** auf.
+In Azure stellen Mandanten Clients oder Organisationen dar, die einem Dienst zugeordnet sind. Ihre Mandanten-ID finden Sie im Azure-Portal im Feld **Verzeichnis-ID**. Dieses rufen Sie über **Azure Active Directory** > **Verwalten** > **Eigenschaften** auf.
 
 ![Mandanten-ID im Azure-Portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
@@ -268,7 +268,7 @@ Das erste Problem besteht in der Feststellung, ob das Problem mit LUIS zusammenh
 #### <a name="resolve-issue-in-luis"></a>Beheben des Problems in LUIS
 Übergeben Sie die gleiche Äußerung an LUIS aus dem [LUIS-Endpunkt](luis-get-started-create-app.md#query-the-v2-api-prediction-endpoint). Wenn Sie eine Fehlermeldung erhalten, beheben Sie das Problem in LUIS, bis der Fehler nicht mehr auftritt. Häufige Fehler sind z.B. folgende:
 
-* `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstebenen](luis-how-to-azure-subscription.md#change-pricing-tier) ändern müssen.
+* `Out of call volume quota. Quota will be replenished in <time>.`: Dieses Problem deutet darauf hin, dass Sie entweder von einem Erstellungsschlüssel zu einem [Endpunktschlüssel](luis-how-to-azure-subscription.md) wechseln oder [Dienstebenen](luis-how-to-azure-subscription.md#change-the-pricing-tier) ändern müssen.
 
 #### <a name="resolve-issue-in-azure-bot-service"></a>Beheben des Problems in Azure Bot Service
 

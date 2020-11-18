@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie eine Azure-Containerregistrierung erst
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.custom: seodec18, mvc, devx-track-azurecli
-ms.openlocfilehash: c473e3cd891214c2c5789bd43b0d293cb25d660a
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 804f07762bef596f4631fbc5f694ecc6b308bfad
+ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739487"
+ms.lasthandoff: 10/29/2020
+ms.locfileid: "93027226"
 ---
 # <a name="tutorial-prepare-a-geo-replicated-azure-container-registry"></a>Tutorial: Vorbereiten einer georeplizierten Azure-Containerregistrierung
 
@@ -44,20 +44,20 @@ Für dieses Tutorial benötigen Sie eine Azure-Containerregistrierung auf der Di
 
 Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry** .
+Klicken Sie auf **Ressource erstellen** > **Container** > **Azure Container Registry**.
 
 :::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
 
-Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen. Auf der Registerkarte **Grundlagen** :
+Konfigurieren Sie Ihre neue Registrierung mit den folgenden Einstellungen. Auf der Registerkarte **Grundlagen**:
 
 * **Registrierungsname:** Erstellen Sie einen Registrierungsnamen, der in Azure global eindeutig ist und 5 bis 50 alphanumerische Zeichen enthält.
-* **Ressourcengruppe** : **Neu erstellen** > `myResourceGroup`
-* **Standort** : `West US`
-* **SKU** : `Premium` (für die Georeplikation erforderlich)
+* **Ressourcengruppe**: **Neu erstellen** > `myResourceGroup`
+* **Standort**: `West US`
+* **SKU**: `Premium` (für die Georeplikation erforderlich)
 
 Wählen Sie **Bewerten + erstellen** und dann **Erstellen** aus, um die Registrierungsinstanz zu erstellen.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-02.png" alt-text="Konfigurieren einer Containerregistrierung über das Azure-Portal":::
 
 Im restlichen Teil dieses Tutorials verwenden wir `<acrName>` als Platzhalter für den von Ihnen gewählten **Registrierungsnamen** des Containers.
 
@@ -70,28 +70,28 @@ Nachdem Sie nun über eine Premium-Registrierung verfügen, können Sie die Geor
 
 Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Dienste** die Option **Replikationen** aus:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-03.png" alt-text="Replikationen auf der Benutzeroberfläche für Containerregistrierungen im Azure-Portal":::
 
 Es wird eine Karte mit grünen Sechsecken angezeigt, die für die Azure-Regionen stehen, für die eine Georeplikation möglich ist:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-map-01.png" alt-text="Karte mit Regionen im Azure-Portal":::
 
-Replizieren Sie Ihre Registrierung in der Region „USA, Osten“, indem Sie das grüne Sechseck auswählen, und wählen Sie dann unter **Replikation erstellen** die Option **Erstellen** :
+Replizieren Sie Ihre Registrierung in der Region „USA, Osten“, indem Sie das grüne Sechseck auswählen, und wählen Sie dann unter **Replikation erstellen** die Option **Erstellen**:
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-04.png" alt-text="Benutzeroberfläche zum Erstellen von Replikaten im Azure-Portal":::
 
-Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bereit* angezeigt. Verwenden Sie die Schaltfläche **Aktualisieren** , um den Status der Replikation zu aktualisieren. Es kann ca. eine Minute dauern, bis die Replikate erstellt und synchronisiert wurden.
+Wenn die Replikation abgeschlossen ist, wird im Portal für beide Regionen *Bereit* angezeigt. Verwenden Sie die Schaltfläche **Aktualisieren**, um den Status der Replikation zu aktualisieren. Es kann ca. eine Minute dauern, bis die Replikate erstellt und synchronisiert wurden.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-05.png" alt-text="Benutzeroberfläche für den Replikatstatus im Azure-Portal":::
 
 
 ## <a name="enable-admin-account"></a>Aktivieren des Administratorkontos
 
 In den nachfolgenden Tutorials stellen Sie ein Containerimage aus der Registrierung direkt für Web-App für Container bereit. Zum Aktivieren dieser Funktion müssen Sie auch das [Administratorkonto](container-registry-authentication.md#admin-account) der Registrierung aktivieren.
 
-Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Klicken Sie unter **Administratorbenutzer** auf **Aktivieren** .
+Navigieren Sie im Azure-Portal zu Ihrer neuen Containerregistrierung, und wählen Sie unter **Einstellungen** die Option **Zugriffsschlüssel** aus. Klicken Sie unter **Administratorbenutzer** auf **Aktivieren**.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-portal-06.png" alt-text="Aktivieren des Administratorkontos im Azure-Portal":::
 
 
 ## <a name="container-registry-login"></a>Anmeldung bei der Containerregistrierung
@@ -110,7 +110,7 @@ Der Befehl gibt `Login Succeeded` zurück, wenn der Vorgang abgeschlossen ist.
 
 Das Beispiel in diesem Tutorial enthält eine kleine Webanwendung, die mit [ASP.NET Core][aspnet-core] erstellt wurde. Die App stellt eine HTML-Seite bereit, auf der die Region angezeigt wird, aus der das Image von Azure Container Registry bereitgestellt wurde.
 
-:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Erstellen einer Containerregistrierung über das Azure-Portal":::
+:::image type="content" source="./media/container-registry-tutorial-prepare-registry/tut-app-01.png" alt-text="Tutorial-App im Browser":::
 
 Verwenden Sie Git, um das Beispiel in ein lokales Verzeichnis herunterzuladen, und wechseln Sie mit `cd` in das Verzeichnis:
 
@@ -123,19 +123,19 @@ Sollte `git` nicht installiert sein, können Sie das [ZIP-Archiv direkt von GitH
 
 ## <a name="update-dockerfile"></a>Aktualisieren der Dockerfile
 
-Mit der im Beispiel enthaltenen Dockerfile wird veranschaulicht, wie der Container erstellt wird. Der Ausgangspunkt ist ein offizielles [aspnetcore][dockerhub-aspnetcore]-Image. Anschließend werden die Anwendungsdateien in den Container kopiert, die Abhängigkeiten werden installiert, die Ausgabe wird mit dem offiziellen Image [aspnetcore-build][dockerhub-aspnetcore-build] kompiliert, und zuletzt wird ein optimiertes aspnetcore-Image erstellt.
+Mit der im Beispiel enthaltenen Dockerfile wird veranschaulicht, wie der Container erstellt wird. Den Ausgangspunkt bildet ein offizielles ASP.NET Core-Runtimeimage. Anschließend werden die Anwendungsdateien in den Container kopiert und die Abhängigkeiten installiert, die Ausgabe wird mit dem offiziellen .NET Core SDK-Image kompiliert, und zuletzt wird ein optimiertes aspnetcore-Image erstellt.
 
 Die [Dockerfile][dockerfile] befindet sich in der geklonten Quelle unter `./AcrHelloworld/Dockerfile`.
 
 ```Dockerfile
-FROM microsoft/aspnetcore:2.0 AS base
+FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
 # Update <acrName> with the name of your registry
 # Example: uniqueregistryname.azurecr.io
 ENV DOCKER_REGISTRY <acrName>.azurecr.io
 WORKDIR /app
 EXPOSE 80
 
-FROM microsoft/aspnetcore-build:2.0 AS build
+FROM mcr.microsoft.com/dotnet/core/sdk:2.2 AS build
 WORKDIR /src
 COPY *.sln ./
 COPY AcrHelloworld/AcrHelloworld.csproj AcrHelloworld/
@@ -187,8 +187,8 @@ Beim Erstellen des Docker-Image werden mehrere Ausgabezeilen angezeigt (hier gek
 
 ```bash
 Sending build context to Docker daemon  523.8kB
-Step 1/18 : FROM microsoft/aspnetcore:2.0 AS base
-2.0: Pulling from microsoft/aspnetcore
+Step 1/18 : FROM mcr.microsoft.com/dotnet/core/aspnet:2.2 AS base
+2.2: Pulling from mcr.microsoft.com/dotnet/core/aspnet
 3e17c6eae66c: Pulling fs layer
 
 [...]
@@ -245,6 +245,4 @@ Im nächsten Tutorial erfahren Sie, wie Sie Ihren Container in mehreren Instanze
 <!-- LINKS - External -->
 [acr-helloworld-zip]: https://github.com/Azure-Samples/acr-helloworld/archive/master.zip
 [aspnet-core]: https://dot.net
-[dockerhub-aspnetcore]: https://hub.docker.com/r/microsoft/aspnetcore/
-[dockerhub-aspnetcore-build]: https://store.docker.com/community/images/microsoft/aspnetcore-build
 [dockerfile]: https://github.com/Azure-Samples/acr-helloworld/blob/master/AcrHelloworld/Dockerfile

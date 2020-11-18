@@ -9,12 +9,12 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc, devx-track-azurecli
 ms.reviewer: akjosh
-ms.openlocfilehash: 2e1f94b5a8e361a6bbd34f3f12756377dd1713f4
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 62cf7c979be83454ae2433befcdbf4f5d8e5524f
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518711"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516542"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Tutorial: Erstellen und Verwenden eines benutzerdefinierten Images für VM-Skalierungsgruppen mit der Azure CLI
 Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bereitstellen der VM-Instanzen verwendet wird. Sie können ein benutzerdefiniertes VM-Image verwenden, um die Anzahl von Aufgaben zu reduzieren, nachdem VM-Instanzen bereitgestellt wurden. Dieses benutzerdefinierte VM-Image enthält alle erforderlichen Anwendungsinstallationen oder -konfigurationen. Für alle VM-Instanzen, die in der Skalierungsgruppe erstellt werden, wird das benutzerdefinierte VM-Image verwendet, und die VM-Instanzen sind für die Bereitstellung Ihres Anwendungsdatenverkehrs bereit. In diesem Tutorial lernen Sie Folgendes:
@@ -27,11 +27,11 @@ Wenn Sie eine Skalierungsgruppe erstellen, geben Sie ein Image an, das beim Bere
 > * Freigeben eines Imagekatalogs
 
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial Version 2.4.0 oder höher der Azure CLI ausführen. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI]( /cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.4.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="overview"></a>Übersicht
 
@@ -118,7 +118,7 @@ az sig image-definition create \
 
 Erstellen Sie mithilfe von [az image gallery create-image-version](/cli/azure/sig/image-version#az-sig-image-version-create) eine Imageversion der VM.  
 
-Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*. *Nebenversion*. *Patch*.
+Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
 In diesem Beispiel wird ein Image der Version *1.0.0* verwendet, und es werden zwei Replikate erstellt: eins in der Region *USA, Süden-Mitte* und eins in der Region *USA, Osten 2*. Die Replikationsregionen müssen die Region beinhalten, in der sich der virtuelle Quellcomputer befindet.
 
@@ -165,7 +165,7 @@ Die Erstellung und Konfiguration aller Ressourcen und virtuellen Computer der Sk
 
 
 ## <a name="test-your-scale-set"></a>Testen Ihrer Skalierungsgruppe
-Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule) eine Lastenausgleichsregel, damit Datenverkehr Ihre Skalierungsgruppe erreichen und überprüft werden kann, dass der Webserver richtig funktioniert. Im folgenden Beispiel wird eine Regel mit dem Namen *myLoadBalancerRuleWeb* erstellt, die Datenverkehr über *TCP* -Port *80* zulässt:
+Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule) eine Lastenausgleichsregel, damit Datenverkehr Ihre Skalierungsgruppe erreichen und überprüft werden kann, dass der Webserver richtig funktioniert. Im folgenden Beispiel wird eine Regel mit dem Namen *myLoadBalancerRuleWeb* erstellt, die Datenverkehr über *TCP*-Port *80* zulässt:
 
 ```azurecli-interactive
 az network lb rule create \

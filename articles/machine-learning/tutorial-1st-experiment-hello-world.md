@@ -11,18 +11,18 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: afc851be08e6708efc0138dc45931cda147c67c1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 20173c4ba02f53a526167a5a8e22bd0cedc85594
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895884"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93393217"
 ---
 # <a name="tutorial-run-a-hello-world-python-script-part-2-of-4"></a>Tutorial: Ausführen eines Python-Skripts „Hello World!“ (Teil 2 von 4)
 
 In diesem Tutorial erfahren Sie, wie das Azure Machine Learning SDK für Python verwendet wird, um ein Python-Skript „Hello World“ zu übermitteln und auszuführen.
 
-Dieses Tutorial ist *Teil 2 einer vierteiligen Tutorialreihe* , in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten Ihres lokalen Computers für Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
+Dieses Tutorial ist *Teil 2 einer vierteiligen Tutorialreihe*, in der Sie die Grundlagen von Azure Machine Learning kennenlernen und auftragsbasierte Machine Learning-Aufgaben in Azure ausführen. Dieses Tutorial basiert auf den Schritten aus [Teil 1: Einrichten Ihres lokalen Computers für Azure Machine Learning](tutorial-1st-experiment-sdk-setup-local.md).
 
 In diesem Tutorial wird Folgendes vermittelt:
 
@@ -99,7 +99,7 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
       `ws = Workspace.from_config()`
    :::column-end:::
    :::column span="2":::
-      [Workspace](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true) stellt eine Verbindung mit Ihrem Azure Machine Learning-Arbeitsbereich her, so dass Sie mit Ihren Azure Machine Learning-Ressourcen kommunizieren können.
+      [Workspace](/python/api/azureml-core/azureml.core.workspace.workspace?preserve-view=true&view=azure-ml-py) stellt eine Verbindung mit Ihrem Azure Machine Learning-Arbeitsbereich her, so dass Sie mit Ihren Azure Machine Learning-Ressourcen kommunizieren können.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -107,7 +107,7 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
       `experiment =  Experiment( ... )`
    :::column-end:::
    :::column span="2":::
-      [Experiment](https://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py&preserve-view=true) bietet eine einfache Möglichkeit, mehrere Ausführungen unter einem einzelnen Namen zu ordnen. Später können Sie sehen, wie Experimente den Vergleich von Metriken zwischen Dutzenden von Ausführungen einfach machen.
+      [Experiment](/python/api/azureml-core/azureml.core.experiment.experiment?preserve-view=true&view=azure-ml-py) bietet eine einfache Möglichkeit, mehrere Ausführungen unter einem einzelnen Namen zu ordnen. Später können Sie sehen, wie Experimente den Vergleich von Metriken zwischen Dutzenden von Ausführungen einfach machen.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -115,7 +115,7 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
       `config = ScriptRunConfig( ... )` 
    :::column-end:::
    :::column span="2":::
-      [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py&preserve-view=true) umschließt Ihren `hello.py`-Code und übergibt ihn an Ihren Arbeitsbereich. Wie der Name schon nahelegt, können Sie diese Klasse verwenden, um die _Ausführung_ Ihres _Skripts_ in Azure Machine Learning zu _konfigurieren_. Außerdem wird angegeben, auf welchem Computeziel das Skript ausgeführt wird. In diesem Code ist das Ziel der Computecluster, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
+      [ScriptRunConfig](/python/api/azureml-core/azureml.core.scriptrunconfig?preserve-view=true&view=azure-ml-py) umschließt Ihren `hello.py`-Code und übergibt ihn an Ihren Arbeitsbereich. Wie der Name schon nahelegt, können Sie diese Klasse verwenden, um die _Ausführung_ Ihres _Skripts_ in Azure Machine Learning zu _konfigurieren_. Außerdem wird angegeben, auf welchem Computeziel das Skript ausgeführt wird. In diesem Code ist das Ziel der Computecluster, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -123,7 +123,7 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
       `run = experiment.submit(config)`
    :::column-end:::
    :::column span="2":::
-       Übermittelt Ihr Skript. Diese Übermittlung wird als [Ausführung](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run%28class%29?view=azure-ml-py&preserve-view=true) bezeichnet. Eine Ausführung (Run) verkapselt eine einzelne Ausführung (Execution) Ihres Codes. Verwenden Sie eine Ausführung, um den Status Ihres Skripts zu überwachen, die Ausgabe zu erfassen, die Ergebnisse zu analysieren, die Metriken zu visualisieren und mehr.
+       Übermittelt Ihr Skript. Diese Übermittlung wird als [Ausführung](/python/api/azureml-core/azureml.core.run%28class%29?preserve-view=true&view=azure-ml-py) bezeichnet. Eine Ausführung (Run) verkapselt eine einzelne Ausführung (Execution) Ihres Codes. Verwenden Sie eine Ausführung, um den Status Ihres Skripts zu überwachen, die Ausgabe zu erfassen, die Ergebnisse zu analysieren, die Metriken zu visualisieren und mehr.
    :::column-end:::
 :::row-end:::
 :::row:::
@@ -138,6 +138,14 @@ Eine kurze Beschreibung zur Funktionsweise des Steuerungsskripts:
 ## <a name="submit-and-run-your-code-in-the-cloud"></a>Übermitteln und Ausführen Ihres Codes in der Cloud
 
 Führen Sie Ihr Steuerungsskript aus, das seinerseits `hello.py` auf dem Computecluster ausführt, den Sie im [Setup-Tutorial](tutorial-1st-experiment-sdk-setup-local.md) erstellt haben.
+
+Die erste Ausführung dauert fünf bis zehn Minuten. Dies hat folgende Ursachen:
+
+* Ein Docker-Image wird in der Cloud erstellt.
+* Die Größe des Computeclusters wird von 0 in 1 Knoten geändert.
+* Das Docker-Image wird in den Computecluster heruntergeladen. 
+
+Nachfolgende Ausführungen sind wesentlich schneller (etwa 15 Sekunden), da das Docker-Image im Computecluster zwischengespeichert wird. Sie können dies testen, indem Sie den folgenden Code nach Abschluss der ersten Ausführung erneut übermitteln.
 
 ```bash
 python 03-run-hello.py

@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: e30692f26af786097f3cdb81690be617bfea0c79
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
+ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92517360"
+ms.lasthandoff: 11/03/2020
+ms.locfileid: "93287051"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -17,7 +17,7 @@ In diesem Artikel wird der Planungsprozess zum Identifizieren und Sammeln von Da
 Die Prozesse dieser Schnellstartanleitung führen zu einer für die Produktion vorbereiteten Umgebung zum Erstellen von virtuellen Computern (VMs) und Durchführen der Migration. 
 
 >[!IMPORTANT]
->Halten Sie sich vor dem Erstellen Ihrer Azure VMware Solution-Ressource an die Informationen im Artikel [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md), um ein Supportticket für die Zuordnung Ihrer Knoten zu übermitteln. Sobald das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wird und ihre Knoten zugewiesen werden. Wenn Sie eine vorhandene private Azure VMware Solution-Cloud haben und möchten, dass weitere Knoten zugeordnet werden, durchlaufen Sie denselben Prozess. 
+>Halten Sie sich vor dem Erstellen Ihrer Azure VMware Solution-Ressource an die Informationen im Artikel [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md), um ein Supportticket für die Zuordnung Ihrer Hosts zu übermitteln. Nachdem das Supportteam Ihre Anforderung erhalten hat, dauert es bis zu fünf Werktage, bis die Anforderung bestätigt wurde und Ihre Hosts zugewiesen wurden. Wenn Sie über eine vorhandene private Azure VMware Solution-Cloud verfügen und weitere Hosts zugeordnet werden sollen, müssen Sie den gleichen Prozess durchlaufen. 
 
 
 ## <a name="subscription"></a>Subscription
@@ -39,9 +39,9 @@ Identifizieren Sie die Region, in der Azure VMware Solution bereitgestellt werde
 
 Legen Sie den Ressourcennamen fest, den Sie während der Bereitstellung verwenden möchten.  Der Ressourcenname ist ein benutzerfreundlicher und beschreibender Name, in dem Sie Ihre private Azure VMware Solution-Cloud angeben.
 
-## <a name="size-nodes"></a>Größenknoten
+## <a name="size-hosts"></a>Größenhosts
 
-Identifizieren Sie die Größenknoten, die Sie beim Bereitstellen von Azure VMware Solution verwenden möchten.  Eine vollständige Liste finden Sie in der Dokumentation zu [privaten Clouds und Clustern unter Azure VMware Solution](concepts-private-clouds-clusters.md#hosts).
+Identifizieren Sie die Größenhosts, die Sie beim Bereitstellen von Azure VMware Solution verwenden möchten.  Eine vollständige Liste finden Sie in der Dokumentation zu [privaten Clouds und Clustern unter Azure VMware Solution](concepts-private-clouds-clusters.md#hosts).
 
 ## <a name="number-of-hosts"></a>Anzahl von Hosts
 
@@ -111,8 +111,8 @@ Falls Sie für die ExpressRoute-Leitung eine Verbindung von Azure VMware Solutio
 
 Die Frage lautet also: Möchten Sie für Azure VMware Solution eine Verbindung mit einem vorhandenen ExpressRoute-Gateway herstellen?  
 
-* **Ja** : Identifizieren Sie das virtuelle Netzwerk, das während der Bereitstellung nicht verwendet wird.
-* **Nein** : Identifizieren Sie ein vorhandenes virtuelles Netzwerk, oder erstellen Sie während der Bereitstellung ein neues.
+* **Ja**: Identifizieren Sie das virtuelle Netzwerk, das während der Bereitstellung nicht verwendet wird.
+* **Nein**: Identifizieren Sie ein vorhandenes virtuelles Netzwerk, oder erstellen Sie während der Bereitstellung ein neues.
 
 Dokumentieren Sie in beiden Fällen, was Sie in diesem Schritt tun möchten.
 

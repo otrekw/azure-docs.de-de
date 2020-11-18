@@ -7,12 +7,12 @@ ms.author: msangapu
 keywords: Azure App Service, Web-App, Linux, Windows, Docker, Container
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python, devx-track-azurecli
 zone_pivot_groups: app-service-containers-windows-linux
-ms.openlocfilehash: f3c687d5c8b4e4c6d0b7f4ff912137066fe10bbb
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b5682275a9e5f3993de715ab5f23a708d5df47ae
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743712"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93130118"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Migrieren benutzerdefinierter Software zu Azure App Service mithilfe eines benutzerdefinierten Containers
 
@@ -29,7 +29,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 - <a href="https://hub.docker.com/" target="_blank">Registrierung für ein Docker-Hub-Konto</a>
 - <a href="https://docs.docker.com/docker-for-windows/install/" target="_blank">Installieren Sie Docker für Windows</a>.
 - <a href="/virtualization/windowscontainers/quick-start/quick-start-windows-10" target="_blank">Wechseln Sie Docker, um Windows-Container auszuführen</a>.
-- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installieren Sie Visual Studio 2019</a> mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung** . Sie haben Visual Studio 2019 bereits installiert:
+- <a href="https://www.visualstudio.com/downloads/" target="_blank">Installieren Sie Visual Studio 2019</a> mit den Workloads **ASP.NET und Webentwicklung** und **Azure-Entwicklung**. Sie haben Visual Studio 2019 bereits installiert:
     - Installieren Sie die neuesten Updates in Visual Studio, indem Sie auf **Hilfe** > **Nach Updates suchen** klicken.
     - Fügen Sie die Workloads in Visual Studio hinzu, indem Sie auf **Tools** > **Tools und Features abrufen** klicken.
 
@@ -40,13 +40,13 @@ Für dieses Tutorial benötigen Sie Folgendes:
 In diesem Schritt richten Sie das lokale .NET-Projekt ein.
 
 - [Laden Sie das Beispielprojekt](https://github.com/Azure-Samples/custom-font-win-container/archive/master.zip) herunter.
-- Extrahieren (Entzippen) Sie die Datei *custom-font-win-container.zip* .
+- Extrahieren (Entzippen) Sie die Datei *custom-font-win-container.zip*.
 
 Das Beispielprojekt enthält eine einfache ASP.NET-Anwendung, die eine benutzerdefinierte Schriftart verwendet, die in der Schriftartenbibliothek von Windows installiert ist. Es ist nicht erforderlich, Schriftarten zu installieren, aber es ist ein Beispiel für eine App, die in das zugrunde liegende Betriebssystem integriert ist. Um eine solche App zu App Service zu migrieren, strukturieren Sie entweder Ihren Code neu, um die Integration zu entfernen, oder Sie migrieren sie unverändert zu einem benutzerdefinierten Windows-Container.
 
 ### <a name="install-the-font"></a>Installieren der Schriftart
 
-Navigieren Sie in Windows-Explorer zu _custom-font-win-container-master/CustomFontSample_ , klicken Sie mit der rechten Maustaste auf _FrederickatheGreat-Regular.ttf_ , und wählen Sie **installieren** aus.
+Navigieren Sie in Windows-Explorer zu _custom-font-win-container-master/CustomFontSample_, klicken Sie mit der rechten Maustaste auf _FrederickatheGreat-Regular.ttf_, und wählen Sie **installieren** aus.
 
 Diese Schriftart ist öffentlich bei [Google Fonts](https://fonts.google.com/specimen/Fredericka+the+Great) erhältlich.
 
@@ -62,15 +62,15 @@ Da sie eine installierte Schriftart verwendet, kann die App nicht in der App Ser
 
 ### <a name="configure-windows-container"></a>Konfigurieren des Windows-Containers
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **CustomFontSample** , und wählen Sie **Hinzufügen** > **Unterstützung für Containerorchestrierung** aus.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **CustomFontSample**, und wählen Sie **Hinzufügen** > **Unterstützung für Containerorchestrierung** aus.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Screenshot: im Standardbrowser angezeigte App":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Screenshot: Fenster „Projektmappen-Explorer“ mit dem ausgewählten Projekt „CustomFontSample“ und den ausgewählten Menüelementen „Hinzufügen“ und „Unterstützung für Containerorchestrator“":::
 
 Wählen Sie **Docker Compose** > **OK** aus.
 
 Ihr Projekt ist jetzt für die Ausführung in einem Windows-Container eingerichtet. Eine _Dockerfile_ wird dem Projekt **CustomFontSample** hinzugefügt, und ein Projekt **docker-compose** wird der Projektmappe hinzugefügt. 
 
-Öffnen Sie im Projektmappen-Explorer **Dockerfile** .
+Öffnen Sie im Projektmappen-Explorer **Dockerfile**.
 
 Sie müssen ein [unterstütztes, übergeordnetes Image](configure-custom-container.md#supported-parent-images) verwenden. Ändern Sie das übergeordnete Image, indem Sie die `FROM`-Zeile durch den folgenden Code ersetzen:
 
@@ -84,7 +84,7 @@ Fügen Sie am Ende der Datei die folgende Zeile hinzu, und speichern Sie die Dat
 RUN ${source:-obj/Docker/publish/InstallFont.ps1}
 ```
 
-Sie finden das Skript _InstallFont.ps1_ im Projekt **CustomFontSample** . Es ist ein einfaches Skript, das die Schriftart installiert. Eine komplexere Version des Skripts finden Sie im [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
+Sie finden das Skript _InstallFont.ps1_ im Projekt **CustomFontSample**. Es ist ein einfaches Skript, das die Schriftart installiert. Eine komplexere Version des Skripts finden Sie im [Script Center](https://gallery.technet.microsoft.com/scriptcenter/fb742f92-e594-4d0c-8b79-27564c575133).
 
 > [!NOTE]
 > Wenn Sie den Windows-Container lokal testen möchten, stellen Sie sicher, dass Docker auf dem lokalen Computer gestartet wird.
@@ -96,15 +96,15 @@ Sie finden das Skript _InstallFont.ps1_ im Projekt **CustomFontSample** . Es ist
 
 ### <a name="open-publish-wizard"></a>Öffnen des Veröffentlichungs-Assistenten
 
-Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **CustomFontSample** , und wählen Sie **Veröffentlichen** aus.
+Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **CustomFontSample**, und wählen Sie **Veröffentlichen** aus.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Screenshot: im Standardbrowser angezeigte App":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Screenshot: Projektmappen-Explorer mit dem ausgewählten Projekt „CustomFontSample“ und der ausgewählten Option „Veröffentlichen“":::
 
 ### <a name="create-registry-and-publish"></a>Erstellen der Registrierung und Veröffentlichen
 
 Wählen Sie im Veröffentlichungs-Assistenten **Container Registry** > **Neue Azure Container Registry-Instanz erstellen** > **Veröffentlichen** aus.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Screenshot: im Standardbrowser angezeigte App":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Screenshot: Veröffentlichungs-Assistent mit den ausgewählten Optionen „Containerregistrierung“ und „Neue Azure Container Registry-Instanz erstellen“ und der ausgewählten Schaltfläche „Veröffentlichen“":::
 
 ### <a name="sign-in-with-azure-account"></a>Anmelden mit Azure-Konto
 
@@ -114,12 +114,12 @@ Wählen Sie im Dialogfeld **Neue Azure Container Registry-Instanz erstellen** di
 
 ### <a name="configure-the-registry"></a>Konfigurieren der Registrierung
 
-Konfigurieren Sie die neue Containerregistrierung, basierend auf den in der folgenden Tabelle vorgeschlagenen Werten. Klicken Sie auf **Erstellen** , wenn Sie fertig sind.
+Konfigurieren Sie die neue Containerregistrierung, basierend auf den in der folgenden Tabelle vorgeschlagenen Werten. Klicken Sie auf **Erstellen**, wenn Sie fertig sind.
 
 | Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
 | ----------------- | ------------ | ----|
 |**DNS-Präfix**| Behalten Sie den generierten Registrierungsnamen bei, oder ändern Sie ihn in einen anderen eindeutigen Namen. |  |
-|**Ressourcengruppe**| Klicken Sie auf **Neu** , geben Sie **myResourceGroup** ein, und klicken Sie auf **OK** . |  |
+|**Ressourcengruppe**| Klicken Sie auf **Neu**, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK**. |  |
 |**SKU**| Basic | [Tarife](https://azure.microsoft.com/pricing/details/container-registry/)|
 |**Registrierungsstandort**| Europa, Westen | |
 
@@ -137,17 +137,17 @@ Wählen Sie im linken Menü **Ressource erstellen** > **Web** > **Web-App für C
 
 ### <a name="configure-app-basics"></a>Konfigurieren der grundlegenden App-Einstellungen
 
-Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen entsprechend der folgenden Tabelle, und klicken Sie dann auf **Weiter: Docker** .
+Konfigurieren Sie auf der Registerkarte **Grundlagen** die Einstellungen entsprechend der folgenden Tabelle, und klicken Sie dann auf **Weiter: Docker**.
 
 | Einstellung  | Vorgeschlagener Wert | Weitere Informationen finden Sie unter |
 | ----------------- | ------------ | ----|
 |**Abonnement**| Vergewissern Sie sich, dass das richtige Abonnement ausgewählt ist. |  |
-|**Ressourcengruppe**| Wählen Sie **Neu erstellen** aus, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK** . |  |
+|**Ressourcengruppe**| Wählen Sie **Neu erstellen** aus, geben Sie **myResourceGroup** ein, und klicken Sie auf **OK**. |  |
 |**Name**| Geben Sie einen eindeutigen Namen ein. | Die URL der Web-App lautet `http://<app-name>.azurewebsites.net`, wobei `<app-name>` der Name Ihrer App ist. |
 |**Veröffentlichen**| Docker-Container | |
 |**Betriebssystem**| Windows | |
 |**Region**| Europa, Westen | |
-|**Windows-Plan**| Wählen Sie **Neu erstellen** aus, geben Sie **myAppServicePlan** ein, und klicken Sie auf **OK** . | |
+|**Windows-Plan**| Wählen Sie **Neu erstellen** aus, geben Sie **myAppServicePlan** ein, und klicken Sie auf **OK**. | |
 
 Die Registerkarte **Grundlagen** sollte wie folgt aussehen:
 
@@ -166,7 +166,7 @@ Konfigurieren Sie auf der Registerkarte **Docker** Ihren benutzerdefinierten Win
 
 ### <a name="complete-app-creation"></a>Abschließen der App-Erstellung
 
-Klicken Sie auf **Erstellen** , und warten Sie, bis Azure die erforderlichen Ressourcen erstellt hat.
+Klicken Sie auf **Erstellen**, und warten Sie, bis Azure die erforderlichen Ressourcen erstellt hat.
 
 ## <a name="browse-to-the-web-app"></a>Navigieren zur Web-App
 
@@ -174,9 +174,9 @@ Wenn der Azure-Vorgang abgeschlossen ist, wird ein Benachrichtigungsfeld angezei
 
 ![Abgeschlossener Azure-Vorgang](media/tutorial-custom-container/portal-create-finished.png)
 
-1. Klicken Sie auf **Zu Ressource wechseln** .
+1. Klicken Sie auf **Zu Ressource wechseln**.
 
-2. Klicken Sie auf der App-Seite auf den Link unter **URL** .
+2. Klicken Sie auf der App-Seite auf den Link unter **URL**.
 
 Die folgende neue Browserseite wird geöffnet:
 
@@ -278,13 +278,13 @@ cd docker-django-webapp-linux
 
 Statt „Git Clone“ zu verwenden, können Sie zu [https://github.com/Azure-Samples/docker-django-webapp-linux](https://github.com/Azure-Samples/docker-django-webapp-linux) navigieren und dann **Klonen** und **ZIP herunterladen** auswählen. 
 
-Entpacken Sie die ZIP-Datei in einem Ordner mit dem Namen *docker-django-webapp-linux* . 
+Entpacken Sie die ZIP-Datei in einem Ordner mit dem Namen *docker-django-webapp-linux*. 
 
-Öffnen Sie dann ein Terminalfenster im Ordner *docker-django-webapp-linux* .
+Öffnen Sie dann ein Terminalfenster im Ordner *docker-django-webapp-linux*.
 
 ## <a name="optional-examine-the-docker-file"></a>(Optional) Untersuchen der Docker-Datei
 
-Die Datei im Beispiel mit dem Namen _Dockerfile_ , die das Docker-Image beschreibt und Konfigurationsanweisungen enthält:
+Die Datei im Beispiel mit dem Namen _Dockerfile_, die das Docker-Image beschreibt und Konfigurationsanweisungen enthält:
 
 ```Dockerfile
 FROM tiangolo/uwsgi-nginx-flask:python3.6
@@ -319,6 +319,10 @@ ENTRYPOINT ["init.sh"]
 
 ## <a name="build-and-test-the-image-locally"></a>Lokales Erstellen und Testen des Images
 
+> [!NOTE]
+> Docker Hub verfügt über [Kontingente für die Anzahl anonymer Pullvorgänge pro IP-Adresse und die Anzahl authentifizierter Pullvorgänge pro Free-Benutzer (siehe **Datenübertragungen**)](https://www.docker.com/pricing). Wenn Sie bemerken, dass die Pullvorgänge aus Docker Hub eingeschränkt sind, probieren Sie `docker login` aus, falls Sie nicht bereits angemeldet sind.
+> 
+
 1. Führen Sie den folgenden Befehl aus, um das Image zu erstellen:
 
     ```bash
@@ -334,7 +338,7 @@ ENTRYPOINT ["init.sh"]
     Mit diesem [`docker run`](https://docs.docker.com/engine/reference/commandline/run/)-Befehl wird mit dem Argument `-p` der Port gefolgt vom Namen des Images angegeben. 
     
     > [!TIP]
-    > Wenn Sie Windows verwenden und der Fehler „ *standard_init_linux.go:211: exec user process caused "Datei oder Verzeichnis nicht vorhanden"* “ angezeigt wird, enthält die Datei *init.sh* CRLF-Zeilenenden anstelle der erwarteten LF-Zeilenenden. Dieser Fehler tritt auf, wenn Sie Git zum Klonen des Beispielrepositorys verwendet, aber den Parameter `--config core.autocrlf=input` ausgelassen haben. In diesem Fall klonen Sie das Repository erneut mit dem Argument „--config“. Der Fehler wird möglicherweise auch angezeigt, wenn Sie *init.sh* bearbeitet und mit CRLF-Zeilenenden gespeichert haben. Speichern Sie in diesem Fall die Datei nur mit LF-Zeilenenden erneut.
+    > Wenn Sie Windows verwenden und der Fehler „*standard_init_linux.go:211: exec user process caused "Datei oder Verzeichnis nicht vorhanden"* “ angezeigt wird, enthält die Datei *init.sh* CRLF-Zeilenenden anstelle der erwarteten LF-Zeilenenden. Dieser Fehler tritt auf, wenn Sie Git zum Klonen des Beispielrepositorys verwendet, aber den Parameter `--config core.autocrlf=input` ausgelassen haben. In diesem Fall klonen Sie das Repository erneut mit dem Argument „--config“. Der Fehler wird möglicherweise auch angezeigt, wenn Sie *init.sh* bearbeitet und mit CRLF-Zeilenenden gespeichert haben. Speichern Sie in diesem Fall die Datei nur mit LF-Zeilenenden erneut.
 
 1. Rufen Sie `http://localhost:8000` auf, um zu überprüfen, ob Web-App und Container ordnungsgemäß funktionieren.
 
@@ -497,7 +501,7 @@ Sie können diese Schritte ausführen, sobald das Image in die Containerregistri
 
 In diesem Abschnitt ändern Sie den Web-App-Code, erstellen den Container neu und pushen den Container anschließend in die Registrierung. App Service pullt das aktualisierte Image dann automatisch aus der Registrierung, um die ausgeführte Web-App zu aktualisieren.
 
-1. Öffnen Sie im lokalen Ordner *docker-django-webapp-linux* die Datei *app/templates/app/index.html* .
+1. Öffnen Sie im lokalen Ordner *docker-django-webapp-linux* die Datei *app/templates/app/index.html*.
 
 1. Ändern Sie das erste HTML-Element entsprechend dem folgenden Code.
 
@@ -513,7 +517,7 @@ In diesem Abschnitt ändern Sie den Web-App-Code, erstellen den Container neu un
     
 1. Speichern Sie die Änderungen.
 
-1. Navigieren Sie zum Ordner *docker-django-webapp-linux* , und erstellen Sie das Image neu:
+1. Navigieren Sie zum Ordner *docker-django-webapp-linux*, und erstellen Sie das Image neu:
 
     ```bash
     docker build --tag appsvc-tutorial-custom-image .
@@ -569,7 +573,7 @@ SSH ermöglicht die sichere Kommunikation zwischen einem Container und einem Cli
 
 ### <a name="configure-the-container-for-ssh"></a>Konfigurieren des Containers für SSH
 
-Die in diesem Tutorial verwendete Beispiel-App verfügt bereits über die erforderliche Konfiguration im *Dockerfile* , die den SSH-Server installiert und außerdem die Anmeldeinformationen festlegt. Dieser Abschnitt dient nur zu Informationszwecken. Fahren Sie mit dem nächsten Abschnitt fort, um eine Verbindung mit dem Container herzustellen.
+Die in diesem Tutorial verwendete Beispiel-App verfügt bereits über die erforderliche Konfiguration im *Dockerfile*, die den SSH-Server installiert und außerdem die Anmeldeinformationen festlegt. Dieser Abschnitt dient nur zu Informationszwecken. Fahren Sie mit dem nächsten Abschnitt fort, um eine Verbindung mit dem Container herzustellen.
 
 ```Dockerfile
 ENV SSH_PASSWD "root:Docker!"
