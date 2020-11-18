@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 10/27/2020
 ms.author: cynthn
 ms.reviewer: olayemio
-ms.openlocfilehash: 5873f28fed492f9ef906a9d7c1364d8ae07033a7
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1fbdae2480caef5bf1d190124ca3be6c5b97a2f9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336060"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576358"
 ---
 # <a name="create-a-managed-disk-from-an-image-version"></a>Erstellen eines verwalteten Datenträgers aus einer Imageversion
 
@@ -23,7 +23,7 @@ Falls erforderlich, können Sie das Betriebssystem oder einen einzelnen Datentr�
 
 ## <a name="cli"></a>Befehlszeilenschnittstelle (CLI)
 
-Listen Sie die Imageversionen in einem Katalog mithilfe von [az sig image-version list](/cli/azure/sig/image-version.md#az_sig_image_version_list) auf. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Imagekatalog *myGallery* sind.
+Listen Sie die Imageversionen in einem Katalog mithilfe von [az sig image-version list](/cli/azure/sig/image-version#az_sig_image_version_list) auf. In diesem Beispiel suchen wir nach allen Imageversionen, die Teil der Imagedefinition *myImageDefinition* im Imagekatalog *myGallery* sind.
 
 ```azurecli-interactive
 az sig image-version list \
@@ -33,7 +33,7 @@ az sig image-version list \
    -o table
 ```
 
-Legen Sie die `source`-Variable auf die ID der Imageversion fest, und verwenden Sie anschließend [az disk create](/cli/azure/disk.md#az_disk_create), um den verwalteten Datenträger zu erstellen. 
+Legen Sie die `source`-Variable auf die ID der Imageversion fest, und verwenden Sie anschließend [az disk create](//cli/azure/disk#az_disk_create), um den verwalteten Datenträger zu erstellen. 
 
 In diesem Beispiel exportieren wir den Betriebssystemdatenträger der Imageversion, um einen verwalteten Datenträger namens *myManagedOSDisk* in der Region *EastUS* in einer Ressourcengruppe namens *myResourceGroup* zu erstellen. 
 

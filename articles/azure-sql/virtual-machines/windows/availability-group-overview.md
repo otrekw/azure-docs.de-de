@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: eb17b8286ce994146c1fa9867cd8131a909c8ace
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146687"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94504389"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -72,13 +72,13 @@ Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines DNN-
 
 Es gibt mehrere Optionen für die Bereitstellung einer Verfügbarkeitsgruppe für SQL Server auf Azure-VMS. Dabei verfügen einige über einen höheren Automatisierungsgrad als andere. 
 
-Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen: 
+Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen:
 
-| |**[Azure-Portal](availability-group-azure-portal-configure.md)**|**[Azure CLI/PowerShell](./availability-group-az-commandline-configure.md)**|**[Schnellstartvorlagen](availability-group-quickstart-template-configure.md)**|**[Manuell](availability-group-manually-configure-prerequisites-tutorial.md)** | 
-|---------|---------|---------|--------- |---------|
+| | Azure-Portal | Azure CLI/PowerShell | Schnellstartvorlagen | Manuell |
+|---------|---------|---------|---------|---------|
 |**SQL Server-Version** |2016 + |2016 +|2016 +|2012 +|
 |**SQL Server-Edition** |Enterprise |Enterprise |Enterprise |Enterprise, Standard|
-|**Windows Server-Version**| 2016 + | 2016 + | 2016 + | All| 
+|**Windows Server-Version**| 2016 + | 2016 + | 2016 + | All|
 |**Der Cluster wird für Sie erstellt.**|Ja|Ja | Ja |Nein|
 |**Die Verfügbarkeitsgruppe wird für Sie erstellt.** |Ja |Nein|Nein|Nein|
 |**Der Listener und Lastenausgleich werden unabhängig voneinander erstellt.** |Nein|Nein|Nein|Ja|
@@ -90,9 +90,8 @@ Die folgende Tabelle bietet einen Vergleich der verfügbaren Optionen:
 |**DR mit mehreren Zonen in derselben Region**|Ja|Ja|Ja|Ja|
 |**Verteilte AG ohne AD**|Nein|Nein|Nein|Ja|
 |**Verteilte AG ohne Cluster** |Nein|Nein|Nein|Ja|
-||||||
 
-
+Weitere Informationen finden Sie unter [Azure-Portal](availability-group-azure-portal-configure.md), [Azure CLI/PowerShell](./availability-group-az-commandline-configure.md), [Schnellstartvorlagen](availability-group-quickstart-template-configure.md) und [Leitfaden](availability-group-manually-configure-prerequisites-tutorial.md).
 
 ## <a name="considerations"></a>Überlegungen 
 

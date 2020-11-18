@@ -5,15 +5,15 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/28/2020
+ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 8ab001636cc6fac921f552070b9b064d9c53a8d7
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042077"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594214"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -45,15 +45,15 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Unveränderlicher Speicher|Vorschau|Vorschau|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |Vorläufiges Löschen von Containern|Vorschau|Vorschau|[Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)|
 |Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](storage-blob-soft-delete.md)|
-|blobfuse|Vorschau|Vorschau|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
+|blobfuse|Allgemein verfügbar|Allgemein verfügbar|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
 |Failover des Kontos|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blobcontainer-ACL|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Siehe entsprechende Anmerkung unter dieser Tabelle.|
 |Vom Kunden bereitgestellte Schlüssel|Noch nicht unterstützt|Noch nicht unterstützt|[Angeben eines Verschlüsselungsschlüssels bei Richten einer Anforderung an Blob Storage](encryption-customer-provided-keys.md)|
 |Benutzerdefinierte Domänen|Noch nicht unterstützt|Noch nicht unterstützt|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
 |Verschlüsselungsbereiche|Noch nicht unterstützt|Noch nicht unterstützt|[Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)](encryption-scope-manage.md)|
 |Änderungsfeed|Noch nicht unterstützt|Noch nicht unterstützt|[Unterstützung für Änderungsfeeds in Azure Blob Storage](storage-blob-change-feed.md)|
-|Objektreplikation|Noch nicht unterstützt|Noch nicht unterstützt|[Konfigurieren der Objektreplikation für Blockblobs (Vorschau)](object-replication-configure.md)|
-|Blobversionsverwaltung|Noch nicht unterstützt|Noch nicht unterstützt|[Aktivieren und Verwalten der Blobversionsverwaltung (Vorschau)](versioning-enable.md)|
+|Objektreplikation|Noch nicht unterstützt|Noch nicht unterstützt|[Konfigurieren der Objektreplikation für Blockblobs](object-replication-configure.md)|
+|Blobversionsverwaltung|Noch nicht unterstützt|Noch nicht unterstützt|[Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)|
 
 <div id="blob-container-ACL"><sup>1</sup> Sie können ACLs für den Stammordner des Containers, jedoch nicht für den Container selbst festlegen.</div><br>
 

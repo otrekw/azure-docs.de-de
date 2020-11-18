@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 381ee08f44ad8fb4dade9b6229f5a5925cf2b6b7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: a17143045b368038e24ac40f131325a623fc934d
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92373274"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489606"
 ---
 # <a name="change-static-group-membership-to-dynamic-in-azure-active-directory"></a>Ändern der statischen Gruppenmitgliedschaft in „Dynamisch“ in Azure Active Directory
 
@@ -32,7 +32,7 @@ Sie können die Mitgliedschaft einer Gruppe in Azure Active Directory (Azure AD)
 
 ## <a name="change-the-membership-type-for-a-group"></a>Ändern des Typs der Mitgliedschaft für eine Gruppe
 
-1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator oder Benutzeradministrator in Ihrer Azure AD-Organisation konfiguriert ist.
+1. Melden Sie sich beim [Azure AD Admin Center](https://aad.portal.azure.com) über ein Konto an, das als globaler Administrator, Benutzeradministrator oder Gruppenadministrator in Ihrer Azure AD-Organisation konfiguriert ist.
 2. Wählen Sie **Gruppen** aus.
 3. Öffnen Sie in der Liste **Alle Gruppen** die Gruppe, die Sie ändern möchten.
 4. Wählen Sie **Eigenschaften** aus.

@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 707b6d0f8a5fa3cff89339b9b0465d96b5369a34
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 596de459b888bb9973aca1c7d72f2f9e24c966eb
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287604"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94445131"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -56,11 +56,11 @@ Key Vault verwendet Azure AD-Authentifizierung, die den Azure AD-Sicherheitspr
 Es wird empfohlen, die verwaltete Identität für in Azure bereitgestellte Anwendungen zu verwenden. Wenn Sie Azure-Dienste verwenden, die keine verwaltete Identität unterstützen, oder wenn Anwendungen lokal bereitgestellt werden, ist ein [Dienstprinzipal mit einem Zertifikat](../../active-directory/develop/howto-create-service-principal-portal.md) eine mögliche Alternative. In diesem Szenario sollte das Zertifikat in Key Vault gespeichert und häufig rotiert werden. Ein Dienstprinzipal mit Geheimnis kann für Entwicklungs- und Testumgebungen verwendet werden. Lokal oder in Cloud Shell wird die Verwendung eines Benutzerprinzipals empfohlen.
 
 Empfohlene Sicherheitsprinzipale pro Umgebung:
-- **Produktionsumgebung** :
+- **Produktionsumgebung**:
   - Verwaltete Identität oder Dienstprinzipal mit einem Zertifikat
-- **Test- und Entwicklungsumgebungen** :
+- **Test- und Entwicklungsumgebungen**:
   - Verwaltete Identität, Dienstprinzipal mit Zertifikat oder Dienstprinzipal mit Geheimnis
-- **Lokale Entwicklung** :
+- **Lokale Entwicklung**:
   - Benutzerprinzipal oder Dienstprinzipal mit Geheimnis
 
 Die oben beschriebenen Authentifizierungsszenarien werden von der **Azure Identity-Clientbibliothek** unterstützt und in Key Vault SDKs integriert. Die Azure Identity-Bibliothek kann in verschiedenen Umgebungen und auf verschiedenen Plattformen verwendet werden, ohne den Code zu ändern. Azure Identity ruft auch automatisch das Authentifizierungstoken von bei Azure angemeldeten Benutzern mit der Azure CLI, Visual Studio, Visual Studio Code und anderen Anwendungen ab. 
@@ -79,7 +79,7 @@ Tutorials zum Authentifizieren bei Key Vault in Anwendungen finden Sie unter:
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Verwalten von Schlüsseln, Zertifikaten und Geheimnissen
 
-Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung der Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder RBAC (Vorschau) erfolgen.
+Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Datenebene gesteuert. Die Zugriffssteuerung auf Datenebene kann mithilfe von Zugriffsrichtlinien für lokale Tresore oder der Azure-RBAC (Vorschauversion) erfolgen.
 
 **Schlüssel-APIs und SDKs**
 
@@ -104,7 +104,7 @@ Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Dateneben
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 
-Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) und [Key Vault-Datenebene und RBAC (Vorschau)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview).
+Weitere Informationen zur Sicherheit der Key Vault-Datenebene finden Sie unter [Key Vault-Datenebene und Zugriffsrichtlinien](./secure-your-key-vault.md#data-plane-and-access-policies) und [Key Vault-Datenebene und die Azure-RBAC (Vorschauversion)](./secure-your-key-vault.md#data-plane-and-azure-rbac-preview).
 
 ### <a name="code-examples"></a>Codebeispiele
 

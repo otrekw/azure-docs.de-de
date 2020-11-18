@@ -2,16 +2,16 @@
 title: 'Azure Event Grid: Partnerereignisse'
 description: Mit Azure Event Grid können Sie Ereignisse von SaaS- und PaaS-Drittanbieterpartnern direkt an Azure-Dienste senden.
 ms.topic: conceptual
-ms.date: 10/29/2020
-ms.openlocfilehash: 87d1d40b3696229344b0b5c20d06d9d993a514a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.date: 11/10/2020
+ms.openlocfilehash: 31a5fe611871eb4734b6a68e3818592028ebc75c
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102697"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94506145"
 ---
 # <a name="partner-events-in-azure-event-grid-preview"></a>Partnerereignisse in Azure Event Grid (Vorschau)
-Mit dem Feature **Partnerereignisse** kann ein SaaS-Drittanbieter Ereignisse aus seinen Diensten veröffentlichen, um Sie für Consumer verfügbar zu machen, die diese Ereignisse abonnieren können. Geboten wird eine Erstanbietererfahrung für Ereignisquellen von Drittanbietern, indem als [Thementyp](concepts.md#topics) ein **Partnerthema** verfügbar gemacht wird, das Abonnenten zum Nutzen von Ereignissen einsetzen. Außerdem bietet dieses Feature ein klares Modell für Veröffentlichung/Abonnement, indem es die Belange und den Besitz von Ressourcen trennt, die von Ereignisherausgebern und -abonnenten verwendet werden.
+Mit dem Feature **Partnerereignisse** kann ein SaaS-Drittanbieter Ereignisse über seine Dienste veröffentlichen, damit Kunden diese Ereignisse abonnieren können. Dieses Feature bietet Erstanbieterfunktionen für Ereignisquellen von Drittanbietern, indem ein [Thementyp](concepts.md#topics) zur Verfügung gestellt wird: ein **Partnerthema**. Abonnenten erstellen Abonnements dieses Themas, um Ereignisse zu nutzen. Außerdem bietet dieses Feature ein klares Modell für Veröffentlichungen/Abonnements, indem es die Belange und den Besitz von Ressourcen trennt, die von Ereignisherausgebern und -abonnenten verwendet werden.
 
 > [!NOTE]
 > Wenn Sie noch nicht mit Event Grid vertraut sind, sehen Sie sich die Themen [Übersicht](overview.md), [Konzepte](concepts.md) und [Ereignishandler](event-handlers.md) an.
@@ -75,6 +75,20 @@ Ein Ereigniskanal ist eine gespiegelte Ressource zu einem Partnerthema. Wenn ein
 
 ## <a name="resources-managed-by-subscribers"></a>Von Abonnenten verwaltete Ressourcen 
 Abonnenten können Partnerthemen verwenden, die von einem Herausgeber definiert wurden. Dies ist die einzige Art von Ressource, die sie sehen und verwalten. Nachdem ein Partnerthema erstellt wurde, kann ein Abonnement Ereignisabonnements erstellen, die Filterregeln zu [Zielen/Ereignishandlern](overview.md#event-handlers) definieren. Für Abonnenten bieten ein Partnerthema und die damit verbundenen Ereignisabonnements die gleichen umfangreichen Möglichkeiten wie [benutzerdefinierte Themen](custom-topics.md) und die damit verbundenen Abonnements mit einem nennenswerten Unterschied: Partnerthemen unterstützen nur das Schema [Cloud Events 1.0](cloudevents-schema.md), das im Vergleich zu anderen unterstützten Schemas einen größeren Funktionsumfang bietet.
+
+Die folgende Abbildung veranschaulicht den Ablauf der Vorgänge auf der Steuerungsebene.
+
+:::image type="content" source="./media/partner-events-overview/partner-control-plane-flow.png" alt-text="Partnerereignisse: Ablauf der Steuerungsebene":::
+
+1. Der Herausgeber erstellt eine **Partnerregistrierung**. Partnerregistrierungen sind global. Das heißt, dass sie keiner bestimmten Azure-Region zugeordnet sind. Dieser Schritt ist optional.
+1. Der Herausgeber erstellt einen **Partnernamespace** in einer bestimmten Region.
+1. Wenn Abonnent 1 versucht, ein Partnerthema zu erstellen, wird zuerst ein **Ereigniskanal** (Event Channel 1) im Azure-Abonnement des Herausgebers erstellt.
+1. Dann wird ein **Partnerthema** (Partner Topic 1) im Azure-Abonnement des Abonnenten erstellt. Der Abonnent muss das Partnerthema aktivieren. 
+1. Abonnent 1 erstellt ein **Azure Logic Apps-Abonnement** für Partner Topic 1.
+1. Abonnent 1 erstellt ein **Azure Blob Storage-Abonnement** für Partner Topic 1. 
+1. Wenn Abonnent 2 versucht, ein Partnerthema zu erstellen, wird zuerst ein weiterer **Ereigniskanal** (Event Channel 2) im Azure-Abonnement des Herausgebers erstellt. 
+1. Dann wird das **Partnerthema** (Partner Topic 2) im Azure-Abonnement des zweiten Abonnenten erstellt. Der Abonnent muss das Partnerthema aktivieren. 
+1. Abonnent 2 erstellt ein **Azure Functions-Abonnement** für Partner Topic 2. 
 
 ## <a name="pricing"></a>Preise
 Partnerthemen werden nach Anzahl der Vorgänge in Rechnung gestellt, die bei Verwendung von Event Grid erfolgen. Weitere Informationen zu allen Arten von Vorgängen, die als Grundlage für die Abrechnung herangezogen werden, sowie detaillierte Preisinformationen finden Sie unter [Event Grid: Preise](https://azure.microsoft.com/pricing/details/event-grid/).

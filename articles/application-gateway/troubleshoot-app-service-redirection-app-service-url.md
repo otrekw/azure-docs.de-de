@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 676d7c2ad18327471c6e95f3cef26185fa49b78b
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396888"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94575984"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -93,7 +93,7 @@ Der App-Dienst führt die Umleitung (falls zutreffend) dann nicht mit dem eigene
 
 Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess verwenden:
 
-- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](//azure/app-service/app-service-web-tutorial-custom-domain).
+- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain).
 
     ![Liste mit benutzerdefinierten Domänen für App-Dienst](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 
@@ -112,7 +112,7 @@ Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess v
 
 - Das Anwendungsgateway sollte jetzt den gleichen Hostnamen `www.contoso.com` an den App-Dienst weiterleiten. Die Umleitung erfolgt unter demselben Hostnamen. Sehen Sie sich die folgende Beispielanforderung und die Antwortheader an.
 
-Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname** -Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
+Verwenden Sie das folgende PowerShell-Beispielskript, um die obigen Schritte für ein vorhandenes Setup mit PowerShell zu implementieren. Beachten Sie, dass die **-PickHostname**-Switches in der Konfiguration für die Test- und HTTP-Einstellungen nicht verwendet wurden.
 
 ```azurepowershell-interactive
 $gw=Get-AzApplicationGateway -Name AppGw1 -ResourceGroupName AppGwRG

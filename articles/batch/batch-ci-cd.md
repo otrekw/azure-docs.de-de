@@ -5,12 +5,12 @@ author: chrisreddington
 ms.author: chredd
 ms.date: 03/28/2019
 ms.topic: how-to
-ms.openlocfilehash: 4d758d4613f68450be9c444063d3a6188d1aa689
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: e87be0db65cf12a265566e0c05815722ce3cc609
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337575"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578874"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>Verwenden von Azure Pipelines zum Erstellen und Bereitstellen von HPC-Lösungen
 
@@ -41,10 +41,10 @@ Dieses Beispiel basiert stark auf einer Reihe von Resource Manager-Vorlagen (JSO
 
 Die in diesem Beispiel verwendete Codebasisstruktur ähnelt dem Folgenden:
 
-* Ein **arm-templates** -Ordner mit einer Reihe von Azure Resource Manager-Vorlagen. Die Vorlagen werden in diesem Artikel erläutert.
-* Ein **client-application** -Ordner, der eine Kopie des Beispiels [Azure Batch .NET File Processing with ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) (Azure Batch .NET-Dateiverarbeitung mit ffmpeg) ist. Dies ist für diesen Artikel nicht erforderlich.
-* Ein **hpc-application** -Ordner, der die Windows-64-Bit-Version von [ffmpeg 4.3.1](https://www.gyan.dev/ffmpeg/builds/packages/ffmpeg-4.3.1-2020-10-01-essentials_build.7z) ist.
-* Ein **pipelines** -Ordner. Dieser enthält eine YAML-Datei mit dem Konzept unseres Buildprozesses. Dies wird in diesem Artikel erläutert.
+* Ein **arm-templates**-Ordner mit einer Reihe von Azure Resource Manager-Vorlagen. Die Vorlagen werden in diesem Artikel erläutert.
+* Ein **client-application**-Ordner, der eine Kopie des Beispiels [Azure Batch .NET File Processing with ffmpeg](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) (Azure Batch .NET-Dateiverarbeitung mit ffmpeg) ist. Dies ist für diesen Artikel nicht erforderlich.
+* Ein **hpc-application**-Ordner, der die Windows-64-Bit-Version von [ffmpeg 4.3.1](https://github.com/GyanD/codexffmpeg/releases/tag/4.3.1-2020-11-08) ist.
+* Ein **pipelines**-Ordner. Dieser enthält eine YAML-Datei mit dem Konzept unseres Buildprozesses. Dies wird in diesem Artikel erläutert.
 
 In diesem Abschnitt wird davon ausgegangen, dass Sie mit der Versionskontrolle und dem Entwerfen von Resource Manager-Vorlagen vertraut sind. Wenn Sie mit diesen Konzepten nicht vertraut sind, finden Sie auf den folgenden Seiten weitere Informationen.
 
@@ -297,10 +297,10 @@ Für diese Lösung wird ffmpeg als Anwendungspaket verwendet. Das ffmpeg-Paket k
 
 Dieses Repository hat vier Hauptabschnitte:
 
-* Der **arm-templates** -Ordner, in dem unsere Infrastruktur als Code gespeichert wird.
-* Der **hpc-application** -Ordner mit den Binärdateien für ffmpeg.
-* Der **pipelines** -Ordner, der die Definition für unsere Buildpipeline enthält.
-* **Optional** : Der **client-application** -Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
+* Der **arm-templates**-Ordner, in dem unsere Infrastruktur als Code gespeichert wird.
+* Der **hpc-application**-Ordner mit den Binärdateien für ffmpeg.
+* Der **pipelines**-Ordner, der die Definition für unsere Buildpipeline enthält.
+* **Optional**: Der **client-application**-Ordner zum Speichern von Code für die .NET Anwendung. Wir verwenden dies nicht im Beispiel, aber in Ihrem eigenen Projekt können Sie die HPC-Batch-Anwendung über eine Clientanwendung ausführen.
 
 > [!NOTE]
 > Dies ist nur ein Beispiel einer Struktur einer Codebasis. Dieser Ansatz soll veranschaulichen, dass Anwendungs-, Infrastruktur- und Pipelinecode im selben Repository gespeichert werden.
@@ -315,7 +315,7 @@ In dieser Phase der Pipeline werden Tests in der Regel zum Überprüfen von Code
 
 ## <a name="preparing-the-hpc-application"></a>Vorbereiten der HPC-Anwendung
 
-In diesem Beispiel konzentrieren wir uns auf den **hpc-application** -Ordner. Der **hpc-application** -Ordner ist die ffmpeg-Software, die vom Azure Batch-Konto aus ausgeführt wird.
+In diesem Beispiel konzentrieren wir uns auf den **hpc-application**-Ordner. Der **hpc-application**-Ordner ist die ffmpeg-Software, die vom Azure Batch-Konto aus ausgeführt wird.
 
 1. Navigieren Sie zum Abschnitt „Builds“ von Azure Pipelines in Ihrer Azure DevOps-Organisation. Erstellen Sie eine **Neue Pipeline**.
 
@@ -348,11 +348,11 @@ In diesem Beispiel konzentrieren wir uns auf den **hpc-application** -Ordner. De
         targetPath: '$(Build.ArtifactStagingDirectory)/package'
     ```
 
-1. Sobald der Build wie erforderlich konfiguriert ist, wählen Sie **Speichern und in Warteschlange einreihen** aus. Wenn Sie (im **Trigger** -Abschnitt) fortlaufende Integration aktiviert haben, wird der Build automatisch ausgelöst, wenn gemäß der im Build festgelegten Bedingungen ein neuer Commit an das Repository vorgenommen wird.
+1. Sobald der Build wie erforderlich konfiguriert ist, wählen Sie **Speichern und in Warteschlange einreihen** aus. Wenn Sie (im **Trigger**-Abschnitt) fortlaufende Integration aktiviert haben, wird der Build automatisch ausgelöst, wenn gemäß der im Build festgelegten Bedingungen ein neuer Commit an das Repository vorgenommen wird.
 
     ![Beispiel für eine vorhandene Buildpipeline](media/batch-ci-cd/existing-build-pipeline.jpg)
 
-1. Um Liveupdates über den Fortschritt des Builds in Azure DevOps anzuzeigen, navigieren Sie zum **Build** -Abschnitt von Azure Pipelines. Wählen Sie den entsprechenden Build aus der Builddefinition aus.
+1. Um Liveupdates über den Fortschritt des Builds in Azure DevOps anzuzeigen, navigieren Sie zum **Build**-Abschnitt von Azure Pipelines. Wählen Sie den entsprechenden Build aus der Builddefinition aus.
 
     ![Anzeigen von Liveausgaben von Ihrem Build](media/batch-ci-cd/Build-1.jpg)
 
@@ -367,35 +367,35 @@ Azure Pipelines hat auch stets Ihre Anwendung und die zugrunde liegende Infrastr
 
 Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden. Da wir [verknüpfte Vorlagen](../azure-resource-manager/templates/linked-templates.md) verwendet haben, muss der Zugriff auf diese Vorlagen von einem öffentlichen Endpunkt (HTTP oder HTTPS) möglich sein. Dies kann ein Repository auf GitHub, ein Azure Blob Storage-Konto oder ein anderer Speicherort sein. Die hochgeladenen Vorlagenartefakte können sicher bleiben, weil sie in einem privaten Modus gehalten werden können, der Zugriff auf sie aber mithilfe einer Form des Shared Access Signature-Tokens (SAS) erfolgt. Das folgende Beispiel veranschaulicht die Bereitstellung einer Infrastruktur mit Vorlagen aus einem Azure Storage-Blob.
 
-1. Erstellen Sie eine **Neue Releasedefinition** , und wählen Sie eine leere Definition aus. Wir müssen dann die neu erstellte Umgebung unserer Pipeline gemäß umbenennen.
+1. Erstellen Sie eine **Neue Releasedefinition**, und wählen Sie eine leere Definition aus. Wir müssen dann die neu erstellte Umgebung unserer Pipeline gemäß umbenennen.
 
     ![Anfängliche Releasepipeline](media/batch-ci-cd/Release-0.jpg)
 
 1. Erstellen Sie eine Abhängigkeit von der Buildpipeline, um die Ausgabe für die HPC-Anwendung zu erhalten.
 
     > [!NOTE]
-    > Beachten Sie auch hier den **Quellalias** , da dieser benötigt wird, wenn Aufgaben innerhalb der Releasedefinition erstellt werden.
+    > Beachten Sie auch hier den **Quellalias**, da dieser benötigt wird, wenn Aufgaben innerhalb der Releasedefinition erstellt werden.
 
     ![Erstellen eines Artefaktlinks zum HPCApplicationPackage in der entsprechenden Buildpipeline](media/batch-ci-cd/Release-1.jpg)
 
 1. Erstellen Sie einen Link zu einem anderen Artefakt, dieses Mal einem Azure-Repository. Dies ist erforderlich, um auf die in Ihrem Repository gespeicherten Resource Manager-Vorlagen zuzugreifen. Da Resource Manager-Vorlagen nicht kompiliert werden müssen, müssen Sie sie nicht über eine Buildpipeline pushen.
 
     > [!NOTE]
-    > Beachten Sie auch hier den **Quellalias** , da dieser benötigt wird, wenn Aufgaben innerhalb der Releasedefinition erstellt werden.
+    > Beachten Sie auch hier den **Quellalias**, da dieser benötigt wird, wenn Aufgaben innerhalb der Releasedefinition erstellt werden.
 
     ![Erstellen eines Artefaktlinks zu den Azure Repos](media/batch-ci-cd/Release-2.jpg)
 
 1. Navigieren Sie zum Abschnitt **Variablen**. Sie sollten eine Reihe von Variablen in Ihrer Pipeline erstellen, damit Sie nicht die gleichen Informationen in mehrere Aufgaben eingeben müssen. Im Folgenden werden die in diesem Beispiel verwendeten Variablen und ihre Auswirkungen auf die Bereitstellung aufgeführt.
 
-    * **applicationStorageAccountName** : Name des Speicherkontos zum Speichern von Binärdateien für die HPC-Anwendung
-    * **batchAccountApplicationName** : Name der Anwendung im Azure Batch-Konto
-    * **batchAccountName** : Name des Azure Batch-Kontos
-    * **batchAccountPoolName** : Der Name des Pools von virtuellen Computern, die die Verarbeitung ausführen
-    * **batchApplicationId** : Eindeutige ID für die Azure Batch-Anwendung
-    * **batchApplicationVersion** : Semantische Version Ihrer Batchanwendung (d.h. ffmpeg-Binärdateien)
-    * **location** : Speicherort für die bereitzustellenden Azure-Ressourcen
-    * **resourceGroupName** : Name der zu erstellenden Ressourcengruppe, und wo Ihre Ressourcen bereitgestellt werden
-    * **storageAccountName** : Name des Speicherkontos zum Speichern der verknüpften Resource Manager-Vorlagen
+    * **applicationStorageAccountName**: Name des Speicherkontos zum Speichern von Binärdateien für die HPC-Anwendung
+    * **batchAccountApplicationName**: Name der Anwendung im Azure Batch-Konto
+    * **batchAccountName**: Name des Azure Batch-Kontos
+    * **batchAccountPoolName**: Der Name des Pools von virtuellen Computern, die die Verarbeitung ausführen
+    * **batchApplicationId**: Eindeutige ID für die Azure Batch-Anwendung
+    * **batchApplicationVersion**: Semantische Version Ihrer Batchanwendung (d.h. ffmpeg-Binärdateien)
+    * **location**: Speicherort für die bereitzustellenden Azure-Ressourcen
+    * **resourceGroupName**: Name der zu erstellenden Ressourcengruppe, und wo Ihre Ressourcen bereitgestellt werden
+    * **storageAccountName**: Name des Speicherkontos zum Speichern der verknüpften Resource Manager-Vorlagen
 
     ![Beispiel für Variablen, die für das Azure Pipelines-Release festgelegt werden](media/batch-ci-cd/Release-4.jpg)
 
@@ -404,68 +404,68 @@ Das Bereitstellen der Infrastruktur ist mit einer Reihe von Schritten verbunden.
     ![Beispiel für die Aufgaben, die zum Herausgeben der HPC-Anwendung für Azure Batch verwendet werden](media/batch-ci-cd/Release-3.jpg)
 
 1. Fügen Sie die Aufgabe **Pipelineartefakt herunterladen (Vorschau)** hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Anzeigename** : Herunterladen von ApplicationPackage auf den Agent
+    * **Anzeigename**: Herunterladen von ApplicationPackage auf den Agent
     * **Der Name des herunterzuladenden Artefakts:** hpc-application
-    * **Pfad, der als Downloadziel verwendet werden soll** : $(System.DefaultWorkingDirectory)
+    * **Pfad, der als Downloadziel verwendet werden soll**: $(System.DefaultWorkingDirectory)
 
 1. Erstellen Sie ein Speicherkonto zum Speichern Ihrer Artefakte. Ein vorhandenes Speicherkonto aus der Lösung könnte verwendet werden, aber für das eigenständige Beispiel und zur Isolation des Inhalts erstellen wir ein dediziertes Speicherkonto für unsere Artefakte (speziell die Resource Manager-Vorlagen).
 
     Fügen Sie die Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Anzeigename** : Bereitstellen des Speicherkontos für Resource Manager-Vorlagen
+    * **Anzeigename**: Bereitstellen des Speicherkontos für Resource Manager-Vorlagen
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
     * **Aktion:** Erstellen oder aktualisieren Sie eine Ressourcengruppe.
-    * **Ressourcengruppe** : $(resourceGroupName)
-    * **Speicherort** : $(location)
-    * **Vorlage** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
-    * **Vorlagenparameter überschreiben** : -accountName $(storageAccountName)
+    * **Ressourcengruppe**: $(resourceGroupName)
+    * **Speicherort**: $(location)
+    * **Vorlage**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/storageAccount.json
+    * **Vorlagenparameter überschreiben**: -accountName $(storageAccountName)
 
 1. Laden Sie die Artefakte aus der Quellcodeverwaltung in das Speicherkonto hoch. Dies kann durch eine Azure Pipelines-Aufgabe durchgeführt werden. Im Rahmen dieser Aufgabe können die URL des Speicherkontocontainers und das SAS-Token in eine Variable in Azure Pipelines ausgegeben werden. Dies bedeutet, dass sie während dieser gesamten Agent-Phase wiederverwendet werden können.
 
-    Fügen Sie die **Azure-Dateikopiervorgang** -Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
+    Fügen Sie die **Azure-Dateikopiervorgang**-Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
     * **Quelle:** $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/
-    * **Azure-Verbindungstyp** : Azure Resource Manager
+    * **Azure-Verbindungstyp**: Azure Resource Manager
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
-    * **Zieltyp** : Azure Blob
-    * **RM-Speicherkonto** : $(storageAccountName)
-    * **Containername** : templates
-    * **Speichercontainer-URI** : templateContainerUri
-    * **SAS-Token des Speichercontainers** : templateContainerSasToken
+    * **Zieltyp**: Azure Blob
+    * **RM-Speicherkonto**: $(storageAccountName)
+    * **Containername**: templates
+    * **Speichercontainer-URI**: templateContainerUri
+    * **SAS-Token des Speichercontainers**: templateContainerSasToken
 
 1. Stellen Sie die Orchestratorvorlage bereit. Rufen Sie die früher verwendete Orchestratorvorlage wieder auf – Ihnen wird auffallen, dass sie zusätzlich zum SAS-Token Parameter für die Speicherkontocontainer-URL enthält. Sie sollten beachten, dass die in der Resource Manager-Vorlage erforderlichen Variablen entweder im Variablenabschnitt der Releasedefinition gespeichert werden oder von einer anderen Azure Pipelines-Aufgabe (z.B. als Teil der Azure-Blobkopiervorgang-Aufgabe) festgelegt wurden.
 
     Fügen Sie die Aufgabe **Bereitstellung einer Azure-Ressourcengruppe** hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Anzeigename** : Bereitstellen von Azure Batch
+    * **Anzeigename**: Bereitstellen von Azure Batch
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
     * **Aktion:** Erstellen oder aktualisieren Sie eine Ressourcengruppe.
-    * **Ressourcengruppe** : $(resourceGroupName)
-    * **Speicherort** : $(location)
-    * **Vorlage** : $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
-    * **Vorlagenparameter überschreiben** : ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
+    * **Ressourcengruppe**: $(resourceGroupName)
+    * **Speicherort**: $(location)
+    * **Vorlage**: $(System.ArtifactsDirectory)/ **{YourAzureRepoArtifactSourceAlias}** /arm-templates/deployment.json
+    * **Vorlagenparameter überschreiben**: ```-templateContainerUri $(templateContainerUri) -templateContainerSasToken $(templateContainerSasToken) -batchAccountName $(batchAccountName) -batchAccountPoolName $(batchAccountPoolName) -applicationStorageAccountName $(applicationStorageAccountName)```
 
 Eine gängige Praxis ist die Verwendung von Azure Key Vault-Aufgaben. Wenn für den Dienstprinzipal (Verbindung mit Ihrem Azure-Abonnement) entsprechende Zugriffsrichtlinien festgelegt sind, kann er Geheimnisse aus einer Azure Key Vault-Instanz herunterladen und als Variablen in Ihrer Pipeline verwendet werden. Der Name des Geheimnisses wird mit den zugeordneten Wert festgelegt. Beispielsweise könnte auf ein Geheimnis sshPassword in der Releasedefinition mit „$(sshPassword)“ verwiesen werden.
 
 1. Die nächsten Schritten rufen die Azure-Befehlszeilenschnittstelle auf. Mit dem ersten wird eine Anwendung in Azure Batch erstellt. und zugehörige Pakete hochgeladen.
 
-    Fügen Sie die **Azure CLI** -Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Anzeigename** : Erstellen einer Anwendung im Azure Batch-Konto
+    Fügen Sie die **Azure CLI**-Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
+    * **Anzeigename**: Erstellen einer Anwendung im Azure Batch-Konto
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
-    * **Skriptspeicherort** : Inlineskript
-    * **Inlineskript** : ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
+    * **Skriptspeicherort**: Inlineskript
+    * **Inlineskript**: ```az batch application create --application-id $(batchApplicationId) --name $(batchAccountName) --resource-group $(resourceGroupName)```
 
 1. Im zweiten Schritt werden zugehörige Pakete in die Anwendung hochgeladen. In unserem Fall die ffmpeg-Dateien.
 
-    Fügen Sie die **Azure CLI** -Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
-    * **Anzeigename** : Hochladen des Pakets in das Azure Batch-Konto
+    Fügen Sie die **Azure CLI**-Aufgabe hinzu, und legen Sie die folgenden Eigenschaften fest:
+    * **Anzeigename**: Hochladen des Pakets in das Azure Batch-Konto
     * **Azure-Abonnement:** Auswählen des entsprechenden Azure-Abonnements
-    * **Skriptspeicherort** : Inlineskript
-    * **Inlineskript** : ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
+    * **Skriptspeicherort**: Inlineskript
+    * **Inlineskript**: ```az batch application package create --application-id $(batchApplicationId)  --name $(batchAccountName)  --resource-group $(resourceGroupName) --version $(batchApplicationVersion) --package-file=$(System.DefaultWorkingDirectory)/$(Release.Artifacts.{YourBuildArtifactSourceAlias}.BuildId).zip```
 
     > [!NOTE]
     > Die Versionsnummer des Anwendungspakets wird auf eine Variable festgelegt. Dies ist hilfreich, wenn das Überschreiben früherer Versionen des Pakets bei Ihnen funktioniert, und wenn Sie die Versionsnummer des an Azure Batch gepushten Pakets manuell steuern möchten.
 
 1. Erstellen Sie ein neues Release durch Auswahl von **Release > Neues Release erstellen**. Wählen Sie nach dem Auslösenden den Link zu Ihrem neuen Release aus, um den Status anzuzeigen.
 
-1. Sie können die Liveausgabe vom Agent aus anzeigen, indem Sie die **Protokolle** -Schaltfläche unterhalb Ihrer Umgebung auswählen.
+1. Sie können die Liveausgabe vom Agent aus anzeigen, indem Sie die **Protokolle**-Schaltfläche unterhalb Ihrer Umgebung auswählen.
 
     ![Anzeigen des Status Ihres Release](media/batch-ci-cd/Release-5.jpg)
 

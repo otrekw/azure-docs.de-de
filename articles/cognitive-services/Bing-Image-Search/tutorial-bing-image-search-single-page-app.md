@@ -11,12 +11,12 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: a62133737d48a8ebf454b5fab83ef52ef2daad09
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a9dba9222816ef2cc7891ff7f803e6a7409802a4
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93098432"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593449"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-image-search-api"></a>Tutorial: Erstellen einer einseitigen Web-App mit der Bing-Bildersuche-API
 
@@ -122,7 +122,7 @@ Der `onsubmit`-Handler gibt standardmäßig `false` zurück, wodurch verhindert 
 
 ![[Bing-Bildersuche-Formular]](media/cognitive-services-bing-images-api/image-search-spa-form.png)
 
-Die Bing-Bildersuche-API bietet mehrere [Filterabfrageparameter](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), um Suchergebnisse einzuschränken und zu filtern. Das HTML-Formular in dieser Anwendung verwendet die folgenden Parameteroptionen und zeigt sie an:
+Die Bing-Bildersuche-API bietet mehrere [Filterabfrageparameter](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#filter-query-parameters), um Suchergebnisse einzuschränken und zu filtern. Das HTML-Formular in dieser Anwendung verwendet die folgenden Parameteroptionen und zeigt sie an:
 
 | Option | BESCHREIBUNG |
 |--------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: troubleshooting
 ms.date: 03/31/2020
 ms.custom: seodec18
-ms.openlocfilehash: c2c199b2366f2708af19c1868cce09e0ba38fc96
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ef03560cff704255d2779a747d124e0b39a1c657
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130254"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491306"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Problembehandlung von Azure Stream Analytics-Abfragen
 
@@ -41,7 +41,7 @@ Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream
     - Der Zeitstempel für Ereignisse steht vor der Startzeit des Auftrags und Ereignisse werden abgelegt.
     - [**JOIN**](/stream-analytics-query/join-azure-stream-analytics)-Bedingungen stimmen nicht überein. Wenn keine Übereinstimmungen vorhanden sind, gibt es keine Ausgabe.
 
-5.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen** , und wählen Sie [**Ereignisreihenfolge**](./stream-analytics-time-handling.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags. 
+5.  Stellen Sie sicher, dass die Richtlinien für die Ereignisreihenfolge wie erwartet konfiguriert sind. Wechseln Sie zu **Einstellungen**, und wählen Sie [**Ereignisreihenfolge**](./stream-analytics-time-handling.md) aus. Die Richtlinie wird *nicht* angewendet, wenn Sie die Abfrage mithilfe der Schaltfläche **Testen** testen. Dieses Ergebnis ist ein Unterschied zwischen dem Testen im Browser und der tatsächlichen Ausführung des Auftrags. 
 
 6. Debuggen mithilfe von Aktivitäts- und Ressourcenprotokollen:
     - Verwenden Sie [Aktivitätsprotokolle](../azure-resource-manager/management/view-activity-logs.md), und filtern Sie diese, um Fehler zu ermitteln und zu debuggen.
@@ -50,6 +50,8 @@ Dieser Artikel beschreibt häufige Probleme bei der Entwicklung von Azure Stream
 ## <a name="resource-utilization-is-high"></a>Die Ressourcenverwendung ist hoch
 
 Stellen Sie sicher, dass Sie die Vorteile der Parallelisierung in Azure Stream Analytics nutzen. Erfahren Sie, wie Sie die [Skalierung mit Abfrageparallelisierung](stream-analytics-parallelization.md) von Stream Analytics-Aufträgen betreiben, indem Sie Eingabepartitionen konfigurieren und die Definition der Analyseabfrage anpassen.
+
+Wenn die Ressourcenauslastung konstant mehr als 80 % beträgt, die Verzögerung des Wasserzeichens steigt und die Anzahl der protokollierten Ereignisse zunimmt, erhöhen Sie ggf. die Streamingeinheiten. Eine hohe Auslastung deutet darauf hin, dass der Auftrag fast die maximale Anzahl der bereitgestellten Ressourcen verwendet.
 
 ## <a name="debug-queries-progressively"></a>Progressives Debuggen von Abfragen
 
@@ -61,7 +63,7 @@ Die folgende Beispielabfrage in einem Azure Stream Analytics-Auftrag weist eine 
 
 ![SELECT INTO-Beispielabfrage in Stream Analytics](./media/stream-analytics-select-into/stream-analytics-select-into-query1.png)
 
-Beachten Sie, dass der Auftrag ausgeführt wird, aber keine Ereignisse in der Ausgabe erzeugt werden. Auf der hier gezeigten Kachel **Überwachung** sehen Sie, dass die Eingabe Daten erzeugt, aber Sie wissen nicht, welcher Schritt des **JOIN** -Vorgangs das Löschen aller Ereignisse verursacht hat.
+Beachten Sie, dass der Auftrag ausgeführt wird, aber keine Ereignisse in der Ausgabe erzeugt werden. Auf der hier gezeigten Kachel **Überwachung** sehen Sie, dass die Eingabe Daten erzeugt, aber Sie wissen nicht, welcher Schritt des **JOIN**-Vorgangs das Löschen aller Ereignisse verursacht hat.
 
 ![Die Kachel „Stream Analytics-Überwachung“](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
 

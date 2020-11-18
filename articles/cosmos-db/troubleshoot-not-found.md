@@ -8,12 +8,12 @@ ms.date: 07/13/2020
 ms.author: jawilley
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: f0fa8e5923639ea74a83a9a775bd5d580234b7ed
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 782abee06c5ab0f985e8bd90dbbecae18b1dfe02
+ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340123"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94442326"
 ---
 # <a name="diagnose-and-troubleshoot-azure-cosmos-db-not-found-exceptions"></a>Diagnose und Troubleshooting für die Ausnahme „Nicht gefunden“ in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -43,7 +43,7 @@ Korrigieren Sie die Anwendungslogik, die die falsche Kombination verursacht.
 Ein Element mit einem [ungültigen Zeichen](/dotnet/api/microsoft.azure.documents.resource.id?preserve-view=true&view=azure-dotnet#remarks) in der Element-ID wird in Azure Cosmos DB eingefügt.
 
 #### <a name="solution"></a>Lösung:
-Ändern Sie die ID in einen anderen Wert, der keine Sonderzeichen enthält. Wenn das Ändern der ID nicht möglich ist, können Sie die ID mit Base64 codieren, um keine Sonderzeichen zu verwenden.
+Ändern Sie die ID in einen anderen Wert, der keine Sonderzeichen enthält. Wenn das Ändern der ID nicht möglich ist, können Sie die ID mit Base64 codieren, um keine Sonderzeichen zu verwenden. Base64 kann weiterhin einen Namen mit dem ungültigen Zeichen „ / “ ausgeben, das ersetzt werden muss.
 
 Bei Elementen, die bereits in den Container eingefügt wurden, kann die ID ersetzt werden, indem RID-Werte anstelle von namensbasierten Verweisen verwendet werden.
 ```c#
@@ -65,7 +65,7 @@ while (invalidItemsIterator.HasMoreResults)
         // Choose a new ID that doesn't contain special characters.
         // If that isn't possible, then Base64 encode the ID to escape the special characters.
         byte[] plainTextBytes = Encoding.UTF8.GetBytes(itemWithInvalidId["id"].ToString());
-        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes);
+        itemWithInvalidId["id"] = Convert.ToBase64String(plainTextBytes).Replace('/', '!');
 
         // Update the item with the new ID value by using the RID-based container reference.
         JObject item = await containerByRid.ReplaceItemAsync<JObject>(
@@ -109,3 +109,5 @@ Stellen Sie sicher, dass Sie beim Herstellen einer Verbindung mit Cosmos DB den
 ## <a name="next-steps"></a>Nächste Schritte
 * [Diagnostizieren und Behandeln](troubleshoot-dot-net-sdk.md) von Problemen bei Verwendung des .NET SDK für Azure Cosmos DB
 * Weitere Informationen zu Leistungsrichtlinien für [.NET Version 3](performance-tips-dotnet-sdk-v3-sql.md) und [.NET Version 2](performance-tips.md)
+* [Diagnostizieren und Behandeln](troubleshoot-java-sdk-v4-sql.md) von Problemen bei Verwendung des Java v4 SDK für Azure Cosmos DB.
+* Weitere Informationen zu Leistungsrichtlinien für das [Java v4 SDK](performance-tips-java-sdk-v4-sql.md).

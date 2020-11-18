@@ -9,12 +9,12 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: c742240cc82035b2a9af16348eaa9f2a40a32fa3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 548d936538a909da10796d0377f119826582c420
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900325"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616058"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Kopieren und Verschieben von Custom Vision-Projekten
 
@@ -30,15 +30,15 @@ Wenn Ihre App oder Ihr Unternehmen von der Verwendung eines Custom Vision-Projek
 
 - Zwei Azure Custom Vision-Ressourcen. Wenn Sie diese nicht haben, wechseln Sie zum Azure-Portal und [erstellen Sie eine neue Custom Vision-Ressource](https://portal.azure.com/?microsoft_azure_marketplace_ItemHideKey=microsoft_azure_cognitiveservices_customvision#create/Microsoft.CognitiveServicesCustomVision?azure-portal=true).
 - Die Trainingsschlüssel und Endpunkt-URLs Ihrer Custom Vision-Ressourcen. Sie finden diese Werte im Azure-Portal auf der Registerkarte **Übersicht** für die Ressource.
-- Ein erstelltes Custom Vision-Projekt. Anweisungen dazu finden Sie unter [Erstellen einer Klassifizierung](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/getting-started-build-a-classifier).
+- Ein erstelltes Custom Vision-Projekt. Anweisungen dazu finden Sie unter [Erstellen einer Klassifizierung](./getting-started-build-a-classifier.md).
 
 ## <a name="process-overview"></a>Übersicht über den Prozess
 
 Der Vorgang zum Kopieren eines Projekts umfasst die folgenden Schritte:
 
 1. Zuerst erhalten Sie die ID des Projekts in dem Quellkonto, das Sie kopieren möchten.
-1. Dann rufen Sie die **ExportProjekt** -API mithilfe der Projekt-ID und des Trainingsschlüssels Ihres Quellkontos auf. Sie erhalten eine temporäre Tokenzeichenfolge.
-1. Dann rufen Sie die **ImportProjekt** -API mithilfe der Tokenzeichenfolge und des Trainingsschlüssels Ihres Zielkontos auf. Das Projekt wird dann unter Ihrem Zielkonto aufgeführt.
+1. Dann rufen Sie die **ExportProjekt**-API mithilfe der Projekt-ID und des Trainingsschlüssels Ihres Quellkontos auf. Sie erhalten eine temporäre Tokenzeichenfolge.
+1. Dann rufen Sie die **ImportProjekt**-API mithilfe der Tokenzeichenfolge und des Trainingsschlüssels Ihres Zielkontos auf. Das Projekt wird dann unter Ihrem Zielkonto aufgeführt.
 
 ## <a name="get-the-project-id"></a>Abrufen der Projekt-ID
 

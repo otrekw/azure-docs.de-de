@@ -8,12 +8,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
-ms.openlocfilehash: 631717252abe956357cf8b588fa653890037bbc9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97283a096d1b1549b2c7fa8f34a32b4bb4dca1eb
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322180"
+ms.locfileid: "93349051"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Schnellstart: Einrichten von Data Science Virtual Machine für Linux (Ubuntu)
 
@@ -39,25 +39,25 @@ Mit den folgenden Schritten erstellen Sie eine Instanz der Data Science Virtual 
    
 1. Geben Sie die folgenden Informationen ein, um die einzelnen Schritte des Assistenten zu konfigurieren:
 
-    1. **Grundlagen** :
+    1. **Grundlagen**:
     
-       * **Abonnement** : Falls Sie über mehrere Abonnements verfügen, müssen Sie das Abonnement auswählen, unter dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
-       * **Ressourcengruppe** : Erstellen Sie eine neue Gruppe, oder verwenden Sie eine bereits vorhandene.
-       * **Name des virtuellen Computers** : Geben Sie den Namen des virtuellen Computers ein. Dieser Name wird im Azure-Portal verwendet.
-       * **Region** : Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Informieren Sie sich über die [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
-       * **Image** : Behalten Sie den Standardwert bei.
-       * **Size** : Diese Option sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/sizes.md).
+       * **Abonnement**: Falls Sie über mehrere Abonnements verfügen, müssen Sie das Abonnement auswählen, unter dem der Computer erstellt und abgerechnet werden soll. Sie müssen für dieses Abonnement über Berechtigungen zum Erstellen von Ressourcen verfügen.
+       * **Ressourcengruppe**: Erstellen Sie eine neue Gruppe, oder verwenden Sie eine bereits vorhandene.
+       * **Name des virtuellen Computers**: Geben Sie den Namen des virtuellen Computers ein. Dieser Name wird im Azure-Portal verwendet.
+       * **Region**: Wählen Sie das am besten geeignete Rechenzentrum aus. Den schnellsten Netzwerkzugriff erreichen Sie mit dem Datencenter, in dem der größte Teil Ihrer Daten gespeichert ist oder das Ihrem physischen Standort am nächsten ist. Informieren Sie sich über die [Azure-Regionen](https://azure.microsoft.com/global-infrastructure/regions/).
+       * **Image**: Behalten Sie den Standardwert bei.
+       * **Size**: Diese Option sollte automatisch mit einer Größe ausgefüllt werden, die für allgemeine Workloads geeignet ist. Lesen Sie mehr zu [Linux-VM-Größen in Azure](../../virtual-machines/sizes.md).
        * **Authentifizierungstyp:** Wählen Sie für eine schnellere Einrichtung die Option „Kennwort“ aus. 
          
          > [!NOTE]
          > Wenn Sie JupyterHub verwenden möchten, achten Sie darauf, dass „Kennwort“ ausgewählt ist, da JupyterHub *nicht* für die Verwendung von öffentlichen SSH-Schlüsseln konfiguriert ist.
 
-       * **Benutzername** : Geben Sie den Benutzernamen des Administrators ein. Sie verwenden diesen Benutzernamen, um sich bei Ihrem virtuellen Computer anzumelden. Dieser Benutzername braucht nicht mit Ihrem Azure-Benutzernamen übereinzustimmen. Verwenden Sie *keine* Großbuchstaben.
+       * **Benutzername**: Geben Sie den Benutzernamen des Administrators ein. Sie verwenden diesen Benutzernamen, um sich bei Ihrem virtuellen Computer anzumelden. Dieser Benutzername braucht nicht mit Ihrem Azure-Benutzernamen übereinzustimmen. Verwenden Sie *keine* Großbuchstaben.
          
          > [!IMPORTANT]
          > Wenn Sie in Ihrem Benutzernamen Großbuchstaben verwenden, funktioniert JupyterHub nicht, und die Meldung „500 – Interner Serverfehler“ wird angezeigt.
 
-       * **Kennwort** : Geben Sie das Kennwort ein, das Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden.    
+       * **Kennwort**: Geben Sie das Kennwort ein, das Sie für die Anmeldung bei Ihrem virtuellen Computer verwenden.    
     
    1. Klicken Sie auf **Überprüfen + erstellen**.
    1. **Überprüfen + erstellen**
@@ -96,12 +96,12 @@ Die Linux-VM ist schon in der Bereitstellung von X2Go-Server enthalten und zum A
 
 1. Geben Sie im daraufhin angezeigten Konfigurationsfenster die folgenden Konfigurationsparameter ein:
    * **Registerkarte „Sitzung“:**
-     * **Host** : Geben Sie die IP-Adresse Ihres virtuellen Computers ein, die Sie zuvor notiert haben.
-     * **Anmeldung** : Geben Sie den Benutzernamen für die Linux-VM ein.
-     * **SSH-Port** : Übernehmen Sie den Standardwert 22.
-     * **Sitzungstyp** : Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
+     * **Host**: Geben Sie die IP-Adresse Ihres virtuellen Computers ein, die Sie zuvor notiert haben.
+     * **Anmeldung**: Geben Sie den Benutzernamen für die Linux-VM ein.
+     * **SSH-Port**: Übernehmen Sie den Standardwert 22.
+     * **Sitzungstyp**: Ändern Sie den Wert in **XFCE**. Derzeit unterstützt die Linux-VM nur den XFCE-Desktop.
    * **Registerkarte „Medien“** : Sie können die Soundunterstützung und die Clientausgabe deaktivieren, wenn Sie diese Funktionen nicht benötigen.
-   * **Freigegebene Ordner** : Verwenden Sie diese Registerkarte, um das Verzeichnis auf dem Clientcomputer hinzuzufügen, das Sie auf dem virtuellen Computer einbinden möchten. 
+   * **Freigegebene Ordner**: Verwenden Sie diese Registerkarte, um das Verzeichnis auf dem Clientcomputer hinzuzufügen, das Sie auf dem virtuellen Computer einbinden möchten. 
 
    ![X2go-Konfiguration](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
 1. Klicken Sie auf **OK**.
@@ -121,12 +121,16 @@ Die Ubuntu-DSVM führt [JupyterHub](https://github.com/jupyterhub/jupyterhub), e
 
    1. Öffnen Sie auf Ihrem lokalen Computer einen Webbrowser, und navigieren Sie zu „https:\//IP-Ihrer-VM:8000“. Ersetzen Sie dabei „IP-Ihrer-VM“ durch die IP-Adresse, die Sie zuvor notiert haben.
    1. Ihr Browser verhindert wahrscheinlich das direkte Öffnen der Seite, und es wird eine Meldung mit dem Hinweis angezeigt, dass ein Zertifikatfehler vorliegt. Für die DSVM wird die Sicherheit anhand eines selbstsignierten Zertifikats erzielt. Bei den meisten Browsern können Sie nach dieser Warnung weiterklicken. In vielen Browsern wird aber während der gesamten Websitzung eine visuelle Warnung zum Zertifikat angezeigt.
+
+      >[!NOTE]
+      > Wenn die Fehlermeldung `ERR_EMPTY_RESPONSE` in Ihrem Browser angezeigt wird, stellen Sie sicher, dass Sie auf den Computer zugreifen, indem Sie explizit das *HTTPS*-Protokoll und nicht *HTTP* oder nur die Webadresse verwenden. Wenn Sie die Webadresse ohne `https://` in die Adresszeile eingeben, wird in den meisten Browsern der Standardwert `http` verwendet und dieser Fehler wird angezeigt.
+
    1. Geben Sie den Benutzernamen mit dem zugehörigen Kennwort ein, den Sie zum Erstellen des virtuellen Computers verwendet haben, und melden Sie sich an. 
 
       ![Jupyter-Anmeldung eingeben](./media/dsvm-ubuntu-intro/jupyter-login.png)
 
->[!NOTE]
-> Wenn Sie in dieser Phase einen 500-Fehler erhalten, haben Sie wahrscheinlich Großbuchstaben in Ihrem Benutzernamen verwendet. Dies ist eine bekannte Interaktion zwischen Jupyter Hub und dem von ihm verwendeten PAMAuthenticator. Wenn ein Fehler mit dem Hinweis angezeigt wird, dass die Seite nicht erreichbar ist, müssen wahrscheinlich die Berechtigungen der Netzwerksicherheitsgruppe angepasst werden. Navigieren Sie im Azure-Portal zur Netzwerksicherheitsgruppen-Ressource in Ihrer Ressourcengruppe. Wenn Sie über das öffentliche Internet auf JupyterHub zugreifen möchten, muss Port 8000 geöffnet sein. (Die Abbildung zeigt, dass dieser virtuelle Computer für den Just-In-Time-Zugriff konfiguriert ist. Dies wird dringend empfohlen.) Informationen finden Sie unter [Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)](../../security-center/security-center-just-in-time.md). ![Konfiguration der Netzwerksicherheitsgruppe](./media/dsvm-ubuntu-intro/nsg-permissions.png)
+      >[!NOTE]
+      > Wenn Sie in dieser Phase einen 500-Fehler erhalten, haben Sie wahrscheinlich Großbuchstaben in Ihrem Benutzernamen verwendet. Dies ist eine bekannte Interaktion zwischen Jupyter Hub und dem von ihm verwendeten PAMAuthenticator. Wenn ein Fehler mit dem Hinweis angezeigt wird, dass die Seite nicht erreichbar ist, müssen wahrscheinlich die Berechtigungen der Netzwerksicherheitsgruppe angepasst werden. Navigieren Sie im Azure-Portal zur Netzwerksicherheitsgruppen-Ressource in Ihrer Ressourcengruppe. Wenn Sie über das öffentliche Internet auf JupyterHub zugreifen möchten, muss Port 8000 geöffnet sein. (Die Abbildung zeigt, dass dieser virtuelle Computer für den Just-In-Time-Zugriff konfiguriert ist. Dies wird dringend empfohlen.) Informationen finden Sie unter [Sichern Ihrer Verwaltungsports mit Just-in-Time-Zugriff (JIT)](../../security-center/security-center-just-in-time.md). ![Konfiguration der Netzwerksicherheitsgruppe](./media/dsvm-ubuntu-intro/nsg-permissions.png)
 
    1. Durchsuchen Sie die zahlreichen verfügbaren Beispielnotebooks.
 

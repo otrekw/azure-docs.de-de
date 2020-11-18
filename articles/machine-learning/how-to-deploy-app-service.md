@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: bea3270821888334ed876bb827dab56b4c206b6a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 491fa39bed9e73a41f5a29a9040df052b6945552
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325235"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578024"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Bereitstellen eines Machine Learning-Modells in Azure App Service (Vorschauversion)
 
@@ -70,12 +70,12 @@ Vor der Bereitstellung müssen Sie die Elemente definieren, die zum Ausführen d
 
     Weitere Informationen zu Eingabeskripts finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
-* **Abhängigkeiten** , z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
+* **Abhängigkeiten**, z. B. Hilfsprogramme oder Python/Conda-Pakete, die zum Ausführen des Eingabeskripts oder Modells erforderlich sind
 
 Diese Entitäten werden in einer __Rückschlusskonfiguration__ gekapselt. Die Rückschlusskonfiguration verweist auf das Eingabeskript und andere Abhängigkeiten.
 
 > [!IMPORTANT]
-> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](//python/api/azureml-core/azureml.core.environment%28class%29?preserve-view=true&view=azure-ml-py)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
+> Beim Erstellen einer Rückschlusskonfiguration zur Verwendung mit Azure App Service müssen Sie ein [Environment](/python/api/azureml-core/azureml.core.environment(class)?preserve-view=true&view=azure-ml-py)-Objekt verwenden. Beachten Sie, dass Sie beim Definieren einer benutzerdefinierten Umgebung azureml-defaults mit Version > = 1.0.45 als Pip-Abhängigkeit hinzufügen müssen. Dieses Paket enthält die erforderlichen Funktionen zum Hosten des Modells als Webdienst. Im folgenden Beispiel wird veranschaulicht, wie ein Environment-Objekt erstellt und mit einer Rückschlusskonfiguration verwendet wird:
 >
 > ```python
 > from azureml.core.environment import Environment
@@ -101,7 +101,7 @@ Weitere Informationen zur Rückschlusskonfiguration finden Sie unter [Bereitstel
 
 ## <a name="create-the-image"></a>Erstellen des Images
 
-Verwenden Sie [Model.package](//python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py#&preserve-view=truepackage-workspace--models--inference-config-none--generate-dockerfile-false-), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
+Verwenden Sie [Model.package](/python/api/azureml-core/azureml.core.model.model?preserve-view=true&view=azure-ml-py), um das Docker-Image zu erstellen, das in Azure App Service bereitgestellt wird. Der folgende Codeausschnitt veranschaulicht, wie ein neues Image aus dem Modell und der Rückschlusskonfiguration erstellt wird:
 
 > [!NOTE]
 > Im Codeausschnitt wird davon ausgegangen, dass `model` ein registriertes Modell und `inference_config` die Konfiguration für die Rückschlussumgebung enthält. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
@@ -155,7 +155,7 @@ Bei `show_output=True` wird die Ausgabe des Docker-Buildprozesses angezeigt. Nac
     az appservice plan create --name myplanname --resource-group myresourcegroup --sku B1 --is-linux
     ```
 
-    In diesem Beispiel wird der __Basic__ -Tarif (`--sku B1`) verwendet.
+    In diesem Beispiel wird der __Basic__-Tarif (`--sku B1`) verwendet.
 
     > [!IMPORTANT]
     > Die von Azure Machine Learning erstellten Images verwenden Linux, daher müssen Sie den Parameter `--is-linux` verwenden.

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 9e5b9017854465724724638bfe5d32783a031030
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fcbcaab7b5cd050e072aaded3e2c09a94a451072
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90056402"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578534"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Partnerintegration für Windows Virtual Desktop
 
@@ -350,7 +350,7 @@ SSH2 ist ein Anbieter von Windows Virtual Desktop-Mehrwertdiensten, der Ihre IT-
 appCURE erfasst Anwendungsdetails aus laufenden Anwendungen, um sicherzustellen, dass alle Punkte verstanden sind, die sich auf die Anwendungen Ihrer Endbenutzer auswirken können. appCURE aktualisiert die Anwendungen dann und stellt sie in Ihrer neuen Windows Virtual Desktop-Umgebung bereit. Durch Erfassen aller Anwendungsintegrationspunkte in Ihrer aktuellen Umgebung bietet appCURE die Geschwindigkeit, IT-Ressourcen zu optimieren und Ihre Migrationen besser und schneller als je zuvor planen zu können, wodurch es Organisationen ermöglicht wird, schneller zur Produktion überzugehen.
 
 - [Zur gemeinsamen Lösungsübersicht](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE4Fs38).
-- [Zur Partnerseite wechseln](https://www.ssh2.xyz/windows-virtual-desktop/).
+- [Zur Partnerseite wechseln](/azure/virtual-desktop/partners#ssh2).
 
 ## <a name="thinprint"></a>ThinPrint
 

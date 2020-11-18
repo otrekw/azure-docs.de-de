@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 1/28/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 9a69ca707577ceddc56ae691d6e5e701458cae28
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 4adf0b8a7c12abed9689b9ac0cc9c5d5c8c3f980
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346600"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488433"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>Lesen von Eingabe in beliebigen Formaten mithilfe benutzerdefinierter .NET-Deserialisierer
 
@@ -249,9 +249,9 @@ Dies wird nicht unterstützt. Wenn Sie diese Funktion benötigen, können Sie in
 
 Nach der Implementierung des Deserialisierers können Sie ihn für die Community freigeben. Übermitteln Sie den Code an das [Azure Stream Analytics-Repository in GitHub](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
-### <a name="what-are-the-other-limitation-of-using-custom-deserializers-in-stream-analytics"></a>Welche sonstigen Einschränkungen gelten für die Verwendung benutzerdefinierter Deserialisierer in Stream Analytics?
+### <a name="what-are-the-other-limitations-of-using-custom-deserializers-in-stream-analytics"></a>Welche sonstigen Einschränkungen gelten für die Verwendung benutzerdefinierter Deserialisierer in Stream Analytics?
 
-Wenn die Eingabe im Protobuf-Format mit einem Schema vorliegt, das den MapField-Typ enthält, können Sie keinen benutzerdefinierten Deserialisierer implementieren. Wir arbeiten an einer zukünftigen Unterstützung dieses Typs.
+Wenn die Eingabe im Protobuf-Format mit einem Schema vorliegt, das den `MapField`-Typ enthält, können Sie keinen benutzerdefinierten Deserialisierer implementieren. Außerdem unterstützen benutzerdefinierte Deserialisierer weder Beispiel- noch Vorschaudaten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

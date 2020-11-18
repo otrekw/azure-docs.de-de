@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
-ms.openlocfilehash: 9163868848f2fdbd535a6b601077be570b0b01bf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 20050cb373456296ef573368e6b289ec4b7d946d
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93076723"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591885"
 ---
 # <a name="get-trending-images-from-the-web"></a>Abrufen von beliebten Bildern aus dem Web
 
@@ -44,7 +44,7 @@ Die API für beliebte Bilder unterstützt zurzeit nur die folgenden Märkte:
 - en-AU (Englisch, Australien)  
 - zh-CN (Chinesisch, China)
 
-Die Antwort enthält einen [TrendingImages](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) -Objekt, das Bilder nach Kategorie aufgelistet. Verwenden Sie den `title`-Parameter der Kategorie, um die Bilder in Ihrer Benutzeroberfläche zu gruppieren. Die Kategorien können sich täglich ändern.  
+Die Antwort enthält einen [TrendingImages](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#trendingimages) -Objekt, das Bilder nach Kategorie aufgelistet. Verwenden Sie den `title`-Parameter der Kategorie, um die Bilder in Ihrer Benutzeroberfläche zu gruppieren. Die Kategorien können sich täglich ändern.  
 
 ```json
 {
@@ -93,9 +93,9 @@ Die Antwort enthält einen [TrendingImages](https://docs.microsoft.com/rest/api/
 }  
 ```  
 
-Jede Kachel enthält ein Bild und die Optionen zum Abrufen verwandter Bilder. Um die verwandten Bilder zu erhalten, können Sie die Abfrage `text` verwenden, um die [Bildersuche-API](./search-the-web.md) aufzurufen und die verwandten Bilder selbst anzuzeigen. Alternativ können Sie die URL im `webSearchUrl` verwenden, um den Benutzer zur Seite der Bildersuchergebnisse von Bing zu leiten, auf der die verwandten Bilder zu finden sind.
+Jede Kachel enthält ein Bild und die Optionen zum Abrufen verwandter Bilder. Um die verwandten Bilder zu erhalten, können Sie die Abfrage `text` verwenden, um die [Bildersuche-API](./overview.md) aufzurufen und die verwandten Bilder selbst anzuzeigen. Alternativ können Sie die URL im `webSearchUrl` verwenden, um den Benutzer zur Seite der Bildersuchergebnisse von Bing zu leiten, auf der die verwandten Bilder zu finden sind.
 
-Wenn Sie die Bildersuche-API zum Abrufen der verwandten Bilder aufrufen, legen Sie für den [Id](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id)-Abfrageparameter die ID im `id`-Feld fest. Durch die Angabe der ID wird sichergestellt, dass die Antwort das Bild (es ist das erste Bild in der Antwort) und die verwandten Bilder enthält. Legen Sie außerdem für den [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) -Abfrageparameter den Text im `text`-Feld des `query`-Objekts fest.
+Wenn Sie die Bildersuche-API zum Abrufen der verwandten Bilder aufrufen, legen Sie für den [Id](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id)-Abfrageparameter die ID im `id`-Feld fest. Durch die Angabe der ID wird sichergestellt, dass die Antwort das Bild (es ist das erste Bild in der Antwort) und die verwandten Bilder enthält. Legen Sie außerdem für den [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) -Abfrageparameter den Text im `text`-Feld des `query`-Objekts fest.
 
 Das folgende Beispiel zeigt, wie die Bild-ID verwendet wird, um verwandte Bilder von Mr. Smith in der vorhergehenden Antwort der API für beliebte Bilder zu erhalten.
 
@@ -106,4 +106,4 @@ X-MSEdge-ClientIP: 999.999.999.999
 X-Search-Location: lat:47.60357;long:-122.3295;re:100  
 X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>  
 Host: api.cognitive.microsoft.com  
-```  
+```

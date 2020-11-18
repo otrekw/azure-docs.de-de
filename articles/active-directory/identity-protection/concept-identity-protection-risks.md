@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: conceptual
-ms.date: 09/10/2020
+ms.date: 11/09/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87239e361b518a85cf30352374e7a9b5e530928e
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042618"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490609"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -24,14 +24,14 @@ Risikoerkennungen in Azure AD Identity Protection umfassen alle identifizierten 
 
 Identity Protection bietet Organisationen Zugriff auf leistungsstarke Ressourcen, um diese verdächtigen Aktionen zu erkennen und schnell darauf zu reagieren. 
 
->**Hinweis:** Identity Protection generiert Risikoerkennungen nur, wenn die richtigen Anmeldeinformationen verwendet werden. Wenn bei der Anmeldung falsche Anmeldeinformationen verwendet werden, stellt dies kein Risiko durch eine Gefährdung der Anmeldeinformationen dar.
-
 ![Sicherheitsübersicht riskanter Benutzer und Anmeldungen](./media/concept-identity-protection-risks/identity-protection-security-overview.png)
 
+> [!NOTE]
+> Identity Protection generiert Risikoerkennungen nur, wenn die richtigen Anmeldeinformationen verwendet werden. Wenn bei der Anmeldung falsche Anmeldeinformationen verwendet werden, stellt dies kein Risiko durch eine Gefährdung der Anmeldeinformationen dar.
 
 ## <a name="risk-types-and-detection"></a>Risikotypen und Erkennung
 
-Es gibt zwei Arten von Risiken ( **Benutzerrisiken** und **Anmelderisiken** ) und zwei Arten der Erkennung oder Berechnung ( **Echtzeit** und **Offline** ).
+Es gibt zwei Arten von Risiken (**Benutzerrisiken** und **Anmelderisiken**) und zwei Arten der Erkennung oder Berechnung (**Echtzeit** und **Offline**).
 
 Erkennungen in Echtzeit werden bei der Berichterstellung möglicherweise 5-10 Minuten nicht angezeigt. Offlineerkennungen werden bei der Berichterstellung möglicherweise 2 bis 24 Stunden nicht angezeigt.
 
@@ -77,6 +77,10 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 Mit Identity Protection werden Risiken in drei Stufen eingeteilt: niedrig, mittel und hoch. 
 
 Microsoft macht zwar keine spezifischen Angaben zur Berechnung von Risiken, mit den einzelnen Stufen wird jedoch jeweils eine höhere Zuverlässigkeit bei der Einschätzung erreicht, ob eine Kompromittierung des Benutzers oder der Anmeldung vorliegt. Beispielsweise sind einmalige ungewöhnliche Anmeldeeigenschaften eines Benutzers unter Umständen nicht so riskant wie kompromittierte Anmeldeinformationen eines anderen Benutzers.
+
+### <a name="password-hash-synchronization"></a>Kennworthashsynchronisierung
+
+Damit Risiken wie kompromittierte Anmeldeinformationen und Kennwortsprays erkannt werden können, müssen Kennworthashes vorhanden sein. Weitere Informationen zur Kennworthashsynchronisierung finden Sie unter [Implementieren der Kennworthashsynchronisierung mit der Azure AD Connect-Synchronisierung](../hybrid/how-to-connect-password-hash-synchronization.md).
 
 ### <a name="leaked-credentials"></a>Kompromittierte Anmeldeinformationen
 

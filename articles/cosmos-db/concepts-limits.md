@@ -5,13 +5,13 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/02/2020
-ms.openlocfilehash: e8b13369cb961d4be49f0045805a805fda38a59c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/10/2020
+ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319830"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491816"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -44,7 +44,7 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RU/s haben. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
 
 * Der maximale Durchsatz, der jemals im Container bereitgestellt wurde. Wenn der Durchsatz beispielsweise auf 50.000 RU/s erhöht wurde, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 500 RU/s.
-* Der aktuelle Speicher im Container (in GB). Wenn Ihr Container beispielsweise über 100 GB Speicher verfügt, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 1.000 RU/s.
+* Der aktuelle Speicher im Container (in GB). Wenn Ihr Container beispielsweise über 100 GB Speicher verfügt, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 1.000 RU/s. **Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
 * Der Mindestdurchsatz für eine Datenbank mit gemeinsam genutztem Durchsatz hängt von der Gesamtanzahl von Containern ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben (gemessen in 100 RU/s pro Container). Wenn Sie also beispielsweise fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RU/s betragen.
 
 Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). 

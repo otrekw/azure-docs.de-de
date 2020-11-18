@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: ddf418c90857b5bb7eca97eb2c6943cc93fce9ab
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 7f71cacee86edd5b3f054f0996893c2148c626eb
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518924"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422670"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -42,7 +42,7 @@ Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, u
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
-| [Azure.Search.Documents-Clientbibliothek](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK für .NET | Eine vom Azure SDK-Team veröffentlichte .NET-Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist für Search-REST-API-Version „2020-06-30“ ausgelegt, aber sie verfügt noch nicht über Unterstützung für Wissensspeicher, räumliche Typen oder [FieldBuilder](/dotnet/api/microsoft.azure.search.fieldbuilder). <br/><br/>Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Suchindex in .NET](search-get-started-dotnet.md) and [Upgrade auf Version 11 des Azure Cognitive Search .NET SDK](search-dotnet-sdk-migration-version-11.md). | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
+| [Azure.Search.Documents-Clientbibliothek](/dotnet/api/overview/azure/search.documents-readme) | Azure SDK für .NET | Eine vom Azure SDK-Team veröffentlichte .NET-Clientbibliothek, die für die Konsistenz mit anderen .NET-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist für Search-REST-API-Version „2020-06-30“ ausgelegt, aber sie verfügt noch nicht über Unterstützung für Wissensspeicher oder räumliche Typen. <br/><br/>Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Suchindex in .NET](search-get-started-dotnet.md) and [Upgrade auf Version 11 des Azure Cognitive Search .NET SDK](search-dotnet-sdk-migration-version-11.md). | Allgemein verfügbar. </br> Installieren Sie das Paket [Azure.Search.Documents](https://www.nuget.org/packages/Azure.Search.Documents/) über NuGet. |
 | [azure.search.documents-Clientbibliothek](/python/api/overview/azure/search-documents-readme)  | Azure SDK für Python| Eine vom Azure SDK-Team veröffentlichte Python-Clientbibliothek, die für die Konsistenz mit anderen Python-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das Paket [azure-search-documents](https://pypi.org/project/azure-search-documents/) über PyPI. |
 | [@azure/search-documents-Clientbibliothek](/javascript/api/overview/azure/search-documents-readme)  | Azure SDK für JavaScript | Eine vom Azure SDK-Team veröffentlichte JavaScript-Clientbibliothek, die für die Konsistenz mit anderen JavaScript-Clientbibliotheken konzipiert ist. <br/><br/>Version 11 ist auf die Search-REST-API-Version „2020-06-30“ ausgelegt. | Allgemein verfügbar. </br> Installieren Sie das [Paket @azure/search-documents](https://www.npmjs.com/package/@azure/search-documents) über npm. |
 
@@ -85,7 +85,7 @@ Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, u
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
 | [**Von Kunden verwaltete Verschlüsselungsschlüssel**](search-security-manage-encryption-keys.md) |Sicherheit | Zusätzlich zur integrierten Verschlüsselung der Plattform wird eine zusätzliche Verschlüsselungsebene hinzugefügt. Mithilfe eines Verschlüsselungsschlüssels, den Sie erstellen und verwalten, können Sie Indexinhalt und Synonymzuordnungen verschlüsseln, bevor die Nutzlast einen Suchdienst erreicht. | Allgemein verfügbar. </br> Verwenden Sie REST-API 2019-05-06 oder höher suchen. Bei verwaltetem Code heißt das richtige Paket noch [.NET SDK Version 8.0-preview](search-dotnet-sdk-migration-version-9.md), auch wenn das Feature sich nicht mehr in der Vorschau befindet. |
-| [**IP-Regeln für eingehende Firewallunterstützung(Vorschau)**](service-configure-firewall.md) | Sicherheit | Beschränken Sie den Zugriff auf einen Suchdienstendpunkt auf bestimmte IP-Adressen. Die Vorschau-API verfügt über neue **IpRule** - und **NetworkRuleSet** -Eigenschaften in der [CreateOrUpdate-API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Diese Previewfunktion ist in den ausgewählten Regionen verfügbar. |  Öffentliche Vorschau mit api-version=2019-10-01-Preview.  |
+| [**IP-Regeln für eingehende Firewallunterstützung(Vorschau)**](service-configure-firewall.md) | Sicherheit | Beschränken Sie den Zugriff auf einen Suchdienstendpunkt auf bestimmte IP-Adressen. Die Vorschau-API verfügt über neue **IpRule**- und **NetworkRuleSet**-Eigenschaften in der [CreateOrUpdate-API](/rest/api/searchmanagement/2019-10-01-preview/createorupdate-service). Diese Previewfunktion ist in den ausgewählten Regionen verfügbar. |  Öffentliche Vorschau mit api-version=2019-10-01-Preview.  |
 | [**Azure Private Link für einen privaten Suchendpunkt (Vorschau)**](service-create-private-endpoint.md) | Sicherheit| Sie können einen Suchdienst vor dem öffentlichen Internet abschirmen, indem Sie ihn als Private Link-Ressource ausführen, auf die nur Client-Apps und andere Azure-Dienste im gleichen virtuellen Netzwerk zugreifen können. | Öffentliche Vorschau mit api-version=2019-10-01-Preview.  |
 
 ## <a name="features-in-2019"></a>Funktionen in 2019

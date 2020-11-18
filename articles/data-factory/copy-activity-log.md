@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: yexu
-ms.openlocfilehash: c54b81ca25602fa77ad66bbb818df3cd8eee39a1
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: e56a840da07a2f6e966867699506f0122a0e7956
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518860"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593642"
 ---
 #  <a name="session-log-in-copy-activity"></a>Sitzungsprotokoll in der Kopieraktivität
 
@@ -60,9 +60,10 @@ Das folgende Beispiel zeigt eine JSON-Definition, mit der das Sitzungsprotokoll 
         },
         "logLocationSettings": {
             "linkedServiceName": {
-                "referenceName": "ADLSGen2",
+               "referenceName": "ADLSGen2",
                "type": "LinkedServiceReference"
-            }
+            },
+            "path": "sessionlog/"
         }
     }
 }

@@ -11,12 +11,12 @@ author: jpe316
 ms.date: 09/24/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq2, devx-track-python, deploy
-ms.openlocfilehash: 6ac28e430681f35d9935cf0f484529074403bf54
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 9ec82dcd7578744dc7443d48dc28820413f14005
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324966"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491697"
 ---
 # <a name="deploy-ml-models-to-field-programmable-gate-arrays-fpgas-with-azure-machine-learning"></a>Bereitstellen von ML-Modellen für Field Programmable Gate Arrays (FPGAs) mit Azure Machine Learning 
 
@@ -349,7 +349,7 @@ for top in sorted_results[:5]:
 
 ### <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Zum Vermeiden unnötiger Kosten bereinigen Sie Ihre Ressourcen **in dieser Reihenfolge** : Webdienst, dann Image und dann das Modell.
+Zum Vermeiden unnötiger Kosten bereinigen Sie Ihre Ressourcen **in dieser Reihenfolge**: Webdienst, dann Image und dann das Modell.
 
 ```python
 aks_service.delete()
@@ -362,6 +362,8 @@ converted_model.delete()
 ## <a name="next-steps"></a>Nächste Schritte
 
 + Erfahren Sie, wie Sie Ihr [Webdienstdokument sichern](how-to-secure-web-service.md).
+
++ Weitere Informationen über den [Preisen und Kosten von Azure Machine Learning](https://azure.microsoft.com/pricing/details/machine-learning/) und FPGAs
 
 + [Hyperscalehardware: ML mit Skalierung über Azure und FPGA: Build 2018 (Video)](https://channel9.msdn.com/events/Build/2018/BRK3202)
 

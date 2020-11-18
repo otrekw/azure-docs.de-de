@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 4cb706bfa1c10e941e6d2d44358c784549973302
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: f6ec6bced9c84e4e5b0f04cc32eebb438052bd6c
+ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927973"
+ms.lasthandoff: 11/04/2020
+ms.locfileid: "93348286"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL-Server Flexible Server (Vorschau)
 
@@ -89,7 +89,7 @@ Weitere Informationen finden Sie unter [Compute- und Speicherkonzepte](concepts-
 
 MySQL ist eine der beliebtesten Datenbank-Engines für die Ausführung von Web- und mobilen Anwendungen im Internet. Viele unserer Kunden verwenden es für ihre Onlinebildungsdienste, Videostreamingdienste, digitalen Zahlungslösungen, E-Commerce-Plattformen, Gamingdienste, Nachrichtenportale sowie für Websites für Behörden und das Gesundheitswesen. Diese Dienste müssen in dem Maße, wie der Datenverkehr im Web oder bei mobilen Anwendungen zunimmt, genutzt und skaliert werden.
 
-Auf der Anwendungsseite wird die Anwendung typischerweise in Java oder PHP entwickelt und migriert, um in  [Azure-VM-Skalierungsgruppen](/azure/virtual-machine-scale-sets/overview.md) oder [Azure App Services](/azure/app-service/overview.md) ausgeführt zu werden, oder sie wird containerisiert, um unter [Azure Kubernetes Service (AKS)](/azure/aks/intro-kubernetes.md) ausgeführt zu werden. Mit VM-Skalierungsgruppen, App Service oder AKS als zugrunde liegende Infrastruktur wird die Anwendungsskalierung vereinfacht, indem neue virtuelle Computer sofort bereitgestellt und die zustandslosen Komponenten von Anwendungen repliziert werden, um die Anforderungen zu erfüllen, aber oft wird die Datenbank als zentrale zustandsbehaftete Komponente zum Engpass.
+Auf der Anwendungsseite wird die Anwendung typischerweise in Java oder PHP entwickelt und migriert, um in  [Azure-VM-Skalierungsgruppen](../../virtual-machine-scale-sets/overview.md) oder [Azure App Services](../../app-service/overview.md) ausgeführt zu werden, oder sie wird containerisiert, um unter [Azure Kubernetes Service (AKS)](../../aks/intro-kubernetes.md) ausgeführt zu werden. Mit VM-Skalierungsgruppen, App Service oder AKS als zugrunde liegende Infrastruktur wird die Anwendungsskalierung vereinfacht, indem neue virtuelle Computer sofort bereitgestellt und die zustandslosen Komponenten von Anwendungen repliziert werden, um die Anforderungen zu erfüllen, aber oft wird die Datenbank als zentrale zustandsbehaftete Komponente zum Engpass.
 
 Mithilfe des Lesereplikatfeatures können Sie Daten von einer Azure Database for MySQL Flexible Server-Instanz auf einem schreibgeschützten Server replizieren. Sie können vom Quellserver auf **bis zu zehn Replikate** replizieren. Replikate werden asynchron mithilfe des auf der [Position der nativen, binären Protokolldatei (binlog) basierenden Replikationsverfahrens](https://dev.mysql.com/doc/refman/5.7/en/replication-features.html) der MySQL-Engine aktualisiert. Sie können eine Proxylösung für den Lastenausgleich wie [ProxySQL](https://techcommunity.microsoft.com/t5/azure-database-for-mysql/load-balance-read-replicas-using-proxysql-in-azure-database-for/ba-p/880042) verwenden, um Ihre Anwendungsworkload nahtlos horizontal auf Lesereplikate zu skalieren, ohne dass Refactoringkosten anfallen. 
 
@@ -125,8 +125,8 @@ Weitere Informationen finden Sie unter [Überwachungskonzepte](concepts-monitori
 
 Der Dienst führt die MySQL-Community-Version aus. Dies ermöglicht vollständige Anwendungskompatibilität und erfordert minimale Refactoringkosten für die Migration vorhandener Anwendungen, die in der MySQL-Engine entwickelt wurden, zum Single Server-Dienst. Die Migration zum Single Server-Dienst kann mithilfe einer der folgenden Optionen durchgeführt werden:
 
-- **Sichern und Wiederherstellen** : Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter „Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen“. 
-- **Azure Database Migration Service** : Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) verwenden. 
+- **Sichern und Wiederherstellen**: Für Offlinemigrationen, bei denen sich Benutzer einige Ausfallzeiten leisten können, kann das Sichern und Wiederherstellen mit Communitytools wie mysqldump/mydumper die schnellste Option für die Migration sein. Ausführliche Informationen finden Sie unter „Migrieren der MySQL-Datenbank auf Azure-Datenbank für MySQL durch Sicherungen und Wiederherstellungen“. 
+- **Azure Database Migration Service**: Für eine nahtlose und einfachere Migration zum Single Server-Dienst mit minimalen Ausfallzeiten können Sie [Azure Database Migration Service](../../dms/tutorial-mysql-azure-mysql-online.md) verwenden. 
 
 ## <a name="azure-regions"></a>Azure-Regionen
 

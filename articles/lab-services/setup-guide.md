@@ -1,18 +1,18 @@
 ---
-title: Leitfaden für beschleunigte Classroom-Lab-Einrichtung für Azure Lab Services
+title: Leitfaden für beschleunigte Lab-Einrichtung für Azure Lab Services
 description: Dieser Leitfaden unterstützt Lab-Ersteller beim schnellen Einrichten eines Lab-Kontos für die Verwendung innerhalb ihrer Bildungseinrichtung.
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 510aa97a0a47e62f627203495c601bb2538e19ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f7423a76fd3ceb238c8c5c1a4ea794ff83b28b4a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91652209"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491663"
 ---
-# <a name="classroom-lab-setup-guide"></a>Einrichtungsleitfaden für Classroom-Labs
+# <a name="lab-setup-guide"></a>Leitfaden für die Lab-Einrichtung
 
-Der Vorgang zum Veröffentlichen eines Labs für Ihre Kursteilnehmer kann – je nach Anzahl der virtuellen Computer (VMs), die in Ihrem Lab erstellt werden, – mehrere Stunden dauern. Zum Einrichten eines Labs sollten Sie mindestens einen Tag einplanen, um sicherzustellen, dass es einwandfrei funktioniert und ausreichend Zeit für die Veröffentlichung der VMs von Kursteilnehmern zur Verfügung steht.
+Der Vorgang zum Veröffentlichen eines Labs für Ihre Kursteilnehmer kann einige Stunden in Anspruch nehmen.  Die Zeitspanne hängt von der Anzahl der virtuellen Computer (VMs) ab, die im Lab erstellt werden. Zum Einrichten eines Labs sollten Sie mindestens einen Tag einplanen, um sicherzustellen, dass es einwandfrei funktioniert und ausreichend Zeit für die Veröffentlichung der VMs von Kursteilnehmern zur Verfügung steht.
 
 ## <a name="understand-the-lab-requirements-of-your-class"></a>Informationen zu den Lab-Anforderungen für Ihren Kurs
 
@@ -26,7 +26,7 @@ Entscheiden Sie aufgrund der Lernziele Ihres Kurses, welches Betriebssystem, wel
 
 - **Erstellen Sie ein neues benutzerdefiniertes Image**: Sie können Ihr eigenes benutzerdefiniertes Image erstellen, indem Sie ein Azure Marketplace-Image als Ausgangspunkt verwenden und es anpassen, indem Sie zusätzliche Software installieren und Konfigurationsänderungen vornehmen.
 
-- **Verwenden Sie ein vorhandenes benutzerdefiniertes Image**: Sie können vorhandene benutzerdefinierte Images wiederverwenden, die Sie zuvor erstellt haben oder die von anderen Administratoren oder Lehrkräften an Ihrer Bildungseinrichtung erstellt wurden. Dafür müssen Ihre Administratoren einen Katalog der freigegebenen Images (Shared Image Gallery) konfiguriert haben, bei dem es sich um ein Repository zum Speichern von benutzerdefinierten Images handelt.
+- **Verwenden Sie ein vorhandenes benutzerdefiniertes Image**: Sie können vorhandene benutzerdefinierte Images wiederverwenden, die Sie zuvor erstellt haben oder die von anderen Administratoren oder Lehrkräften an Ihrer Bildungseinrichtung erstellt wurden. Wenn Sie benutzerdefinierte Images verwenden möchten, müssen Ihre Administratoren einen Shared Image Gallery-Dienst einrichten.  Ein Shared Image Gallery-Dienst ist ein Repository, das zum Speichern benutzerdefinierter Images.
 
 > [!NOTE]
 > Ihre Administratoren sind für die Aktivierung von Azure Marketplace-Images und benutzerdefinierten Images zuständig, damit Sie sie verwenden können. Stimmen Sie dies mit Ihrer IT-Abteilung ab, um sicherzustellen, dass die benötigten Images aktiviert sind. Benutzerdefinierte Images, die Sie erstellen, werden automatisch für die Verwendung in Labs aktiviert, deren Besitzer Sie sind.
@@ -35,34 +35,35 @@ Entscheiden Sie aufgrund der Lernziele Ihres Kurses, welches Betriebssystem, wel
 
 Es gibt eine Vielzahl von Computegrößen, aus denen Sie auswählen können:
 
-- Die Größen der geschachtelten Virtualisierung, damit Sie den Kursteilnehmern Zugriff auf eine VM erteilen können, die mehrere, geschachtelte VMs hosten kann. So könnten Sie diese Computegröße beispielsweise für Netzwerkkurse verwenden.
+- Die Größen der geschachtelten Virtualisierung, damit Sie den Kursteilnehmern Zugriff auf eine VM erteilen können, die mehrere, geschachtelte VMs hosten kann. So könnten Sie diese Computegröße beispielsweise für Netzwerk- oder Hackingkurse verwenden.
 
-- GPU-Größen, damit Ihre Kursteilnehmer rechenintensive Anwendungstypen verwenden können. Diese Auswahl kann z. B. für künstliche Intelligenz und maschinelles Lernen geeignet sein.
+- GPU-Größen, damit Ihre Kursteilnehmer rechenintensive Anwendungstypen verwenden können. Diese Auswahl wird oft mit künstlicher Intelligenz und maschinellem Lernen verwendet.
 
-Die vollständige Liste der verfügbaren Computegrößen finden Sie im Leitfaden zu den [VM-Größen](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing).
+Anleitungen zum Auswählen der richtigen VM-Größe finden Sie in den folgenden Artikeln:
+- [Festlegen der VM-Größe](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#vm-sizing)
+- [Von einem physischen Lab zu Azure Lab Services](https://techcommunity.microsoft.com/t5/azure-lab-services/moving-from-a-physical-lab-to-azure-lab-services/ba-p/1654931)
 
 > [!NOTE]
 > Abhängig von der Region Ihres Labs sind möglicherweise weniger Computegrößen verfügbar, da dies je nach Region variiert. Generell sollten Sie die kleinste Computegröße auswählen, die Ihren Anforderungen am ehesten entspricht. Bei Bedarf können Sie mit Azure Lab Services zu einem späteren Zeitpunkt ein neues Lab mit einer anderen Computekapazität einrichten.
 
 ### <a name="what-dependencies-does-the-class-have-on-external-azure-or-network-resources"></a>Welche Abhängigkeiten von externen Azure- oder Netzwerkressourcen gibt es für den Kurs?
-
-Wenn Ihre Lab-VMs externe Ressourcen wie eine Datenbank, eine Dateifreigabe oder einen Lizenzierungsserver verwenden müssen, stimmen Sie sich mit Ihren Administratoren ab, um sicherzustellen, dass Ihr Lab auf diese Ressourcen zugreifen kann.
-
-Für den Zugriff auf Azure-Ressourcen, die *nicht* durch ein virtuelles Netzwerk gesichert werden, müssen Sie keine zusätzliche Konfiguration durch ihre Administratoren suchen. Sie können auf diese Ressourcen über das öffentliche Internet zugreifen.
+Ihre Lab-VMs benötigen möglicherweise Zugriff auf externe Ressourcen, z. B. den Zugriff auf eine Datenbank, eine Dateifreigabe oder einen Lizenzierungsserver.  Damit Ihre Lab-VMs externe Ressourcen verwenden können, sollten Sie sich mit Ihren IT-Administratoren koordinieren.
 
 > [!NOTE]
 > Sie sollten berücksichtigen, ob Sie die Abhängigkeiten Ihres Labs von externen Ressourcen verringern können, indem Sie die Ressource direkt auf der VM bereitstellen. Wenn Sie beispielsweise das Lesen von Daten aus einer externen Datenbank vermeiden möchten, können Sie die Datenbank direkt auf der VM installieren.  
 
 ### <a name="how-will-costs-be-controlled"></a>Wie werden die Kosten kontrolliert?
-
-Lab Services verwendet ein Preismodell mit nutzungsbasierter Bezahlung. Dies bedeutet: Sie müssen nur für die Zeit bezahlen, in der eine Lab-VM ausgeführt wird. Zur Kostenkontrolle haben Sie drei Optionen, die in der Regel in Verbindung miteinander verwendet werden:
+Lab Services verwendet ein Preismodell mit nutzungsbasierter Bezahlung. Dies bedeutet: Sie müssen nur für die Zeit bezahlen, in der eine Lab-VM ausgeführt wird. Zur Kostenkontrolle haben Sie drei Optionen, die in der Regel zusammen verwendet werden:
 
 - **Zeitplan:** Mit einem Zeitplan können Sie automatisch steuern, wann die VMs Ihrer Labs gestartet und heruntergefahren werden.
-- **Kontingent**: Das Kontingent steuert die Anzahl der Stunden, die Kursteilnehmer außerhalb der geplanten Stunden auf eine VM können. Wenn das Kontingent erreicht wird, während ein Kursteilnehmer es verwendet, wird die VM automatisch heruntergefahren. Der Kursteilnehmer kann die VM nur dann neu starten, wenn das Kontingent verlängert wurde.
-- **Automatisches Herunterfahren**: Wenn diese Einstellung aktiviert ist, bewirkt das automatische Herunterfahren, dass Windows-VMs nach einem bestimmten Zeitraum automatisch heruntergefahren werden, nachdem ein Kursteilnehmer die Verbindung mit einer Remotedesktopprotokoll-Sitzung (RDP) getrennt hat. Diese Einstellung ist standardmäßig deaktiviert.  
+- **Kontingent**: Das Kontingent steuert die Anzahl der Stunden, die Kursteilnehmer außerhalb der geplanten Stunden auf eine VM können.  Wenn ein Kursteilnehmer seine VM verwendet und das Kontingent erreicht ist, wird der virtuelle Computer automatisch heruntergefahren.  Der Kursteilnehmer kann die VM nur dann neu starten, wenn das Kontingent verlängert wurde.
+- **Automatisches Herunterfahren**: Wenn diese Einstellung aktiviert ist, bewirkt das automatische Herunterfahren, dass Windows-VMs automatisch heruntergefahren werden, nachdem ein Kursteilnehmer die Verbindung mit einer Remotedesktopprotokoll-Sitzung (RDP) getrennt hat. Diese Einstellung ist standardmäßig deaktiviert.
+
+Weitere Informationen finden Sie in den folgenden Artikeln:
+- [Schätzen der Kosten](https://docs.microsoft.com/azure/lab-services/cost-management-guide#estimate-the-lab-costs)
+- [Verwalten von Kosten](https://docs.microsoft.com/azure/lab-services/cost-management-guide#manage-costs)
 
 ### <a name="how-will-students-save-their-work"></a>Wie speichern Kursteilnehmer ihre Arbeit?
-
 Kursteilnehmern wird für die Lebensdauer des Labs jeweils eine eigene VM zugewiesen. Sie haben folgende Auswahlmöglichkeiten:
 
 - Direktes Speichern auf der VM.
@@ -74,16 +75,23 @@ Es ist möglich, OneDrive für Kursteilnehmer auf Ihren Lab-VMS automatisch konf
 > Wenn Sie sicherstellen möchten, dass Ihre Kursteilnehmer außerhalb des Labs und nach dem Ende des Kurses weiterhin auf ihre gespeicherte Arbeit zugreifen können, sollten sie ihre Arbeit in einem externen Repository speichern.
 
 ### <a name="how-will-students-connect-to-their-vm"></a>Wie stellen Kursteilnehmer eine Verbindung mit ihrer VM her?
-
 Bei VMs mit RDP zu Windows wird empfohlen, dass die Kursteilnehmer den [Microsoft-Remotedesktopclient](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-clients) verwenden. Remotedesktopclient unterstützt Mac-, Chromebook- und Windows-Computer.
 
 Bei Linux-VMs können die Kursteilnehmer SSH oder RDP verwenden. Damit die Kursteilnehmer eine Verbindung über RDP herstellen können, müssen Sie die erforderlichen RDP- und GUI-Pakete installieren und konfigurieren.
 
+### <a name="will-students-also-be-using-microsoft-teams"></a>Werden Kursteilnehmer auch Microsoft Teams verwenden?
+Azure Lab Services ist in Microsoft Teams integriert, sodass Lehrkräfte ihre Labs innerhalb von Teams erstellen und verwalten können.  Ebenso können Kursteilnehmer innerhalb von Teams auf das Lab zugreifen.
+
+Weitere Informationen finden Sie im folgenden Artikel:
+- [Azure Lab Services in Microsoft Teams](https://docs.microsoft.com/azure/lab-services/lab-services-within-teams-overview)
+
 ## <a name="set-up-your-lab"></a>Einrichten des Labs
 
-Nachdem Sie sich mit den Anforderungen für das Lab Ihres Kurses vertraut gemacht haben, können Sie es jetzt einrichten. Folgen Sie den Links in diesem Abschnitt, um zu erfahren, wie Sie Ihr Lab einrichten.
+Nachdem Sie sich mit den Anforderungen für das Lab Ihres Kurses vertraut gemacht haben, können Sie es jetzt einrichten. Folgen Sie den Links in diesem Abschnitt, um zu erfahren, wie Sie Ihr Lab einrichten.  Beachten Sie, dass verschiedene Schritte bereitgestellt werden, je nachdem, ob Sie Labs innerhalb von Teams verwenden.
 
-1. **Erstellen Sie ein Lab.** Im Tutorial zum [Erstellen eines Classroom-Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) finden Sie weitere Anleitungen.
+1. **Erstellen Sie ein Lab.** Weitere Informationen finden Sie in den Tutorials zum Erstellen eines Labs:
+    - Sehen Sie sich den Artikel [Erstellen eines Classroom-Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#create-a-classroom-lab) an.
+    - [Erstellen eines Labs über Teams](https://docs.microsoft.com/azure/lab-services/how-to-get-started-create-lab-within-teams)
 
     > [!NOTE]
     > Wenn für Ihren Kurs eine geschachtelte Virtualisierung erforderlich ist, lesen Sie die Schritte in [Aktivieren von geschachtelter Virtualisierung](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-enable-nested-virtualization-template-vm).
@@ -95,17 +103,21 @@ Nachdem Sie sich mit den Anforderungen für das Lab Ihres Kurses vertraut gemach
     > [!NOTE]
     > Wenn Sie Windows verwenden, sollten Sie auch die Anleitungen in [Vorbereiten eines virtuellen Windows-Vorlagencomputers](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-prepare-windows-template) lesen. Diese Anweisungen enthalten Schritte zum Einrichten von OneDrive und Office für Ihre Kursteilnehmer.
 
-1. **Verwalten Sie den VM-Pool und die VM-Kapazität.** Sie können die von Ihrem Kurs benötigte VM-Kapazität nach Bedarf problemlos zentral hoch- oder herunterskalieren. Denken Sie aber daran, dass das Erhöhen der VM-Kapazität möglicherweise mehrere Stunden dauert, weil damit das Einrichten neuer VMs verbunden ist. Lesen Sie dazu die Schritte in [Einrichten und Verwalten eines VM-Pools](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords).
+1. **Verwalten Sie den VM-Pool und die VM-Kapazität.** Sie können die von Ihrem Kurs benötigte VM-Kapazität nach Bedarf problemlos zentral hoch- oder herunterskalieren. Denken Sie aber daran, dass das Erhöhen der VM-Kapazität möglicherweise mehrere Stunden dauert, weil neue VMs eingerichtet werden. Führen Sie die Schritte in den folgenden Artikeln aus:
+    - [Einrichten und Verwalten eines VM-Pools](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-set-virtual-machine-passwords)
+    - [Verwalten eines VM-Pools in Lab Services von Teams aus](https://docs.microsoft.com/azure/lab-services/how-to-manage-vm-pool-within-teams)
 
 1. **Fügen Sie Lab-Benutzer hinzu, und verwalten Sie sie.** Weitere Informationen zum Hinzufügen von Benutzern zu Ihrem Lab finden Sie in den einzelnen Schritten in den folgenden Tutorials:
    - [Hinzufügen von Benutzern zum Lab](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#add-users-to-the-lab)
    - [Senden von Einladungen an Benutzer](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#send-invitation-emails-to-users)
+   - [Verwalten von Lab Services-Benutzerlisten aus Teams](https://docs.microsoft.com/azure/lab-services/how-to-manage-user-lists-within-teams)
 
     Informationen zu den Typen von Konten, die Kursteilnehmer verwenden können, finden Sie unter [Konten für Kursteilnehmer](https://docs.microsoft.com/azure/lab-services/classroom-labs/how-to-configure-student-usage#student-accounts).
   
 1. **Legen Sie Kostenkontrollen fest.** Wenn Sie die Kosten Ihres Labs kontrollieren möchten, legen Sie Zeitpläne, Kontingente und automatisches Herunterfahren fest. Arbeiten Sie die folgenden Tutorials durch:
 
    - [Zeitplan festlegen](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-classroom-lab#set-a-schedule-for-the-lab)
+
         > [!NOTE]
         > Je nach installiertem Betriebssystem dauert es vielleicht mehrere Minuten, bis eine VM gestartet wird. Wenn Sie sicherstellen möchten, dass eine Lab-VM während Ihrer geplanten Stunden einsatzbereit ist, sollten Sie VMs 30 Minuten im Voraus starten.
 
@@ -118,8 +130,9 @@ Nachdem Sie sich mit den Anforderungen für das Lab Ihres Kurses vertraut gemach
         > 
         > Wenn Sie ein Lab erstellen,wird die Vorlagen-VM zwar erstellt, aber nicht gestartet. Sie können diese starten, eine Verbindung herstellen, eine beliebige erforderliche Software für das Lab installieren und die VM dann veröffentlichen. Wenn Sie die Vorlagen-VM veröffentlichen, wird diese automatisch für Sie heruntergefahren, wenn Sie dies nicht bereits selbst getan haben. 
         > 
-        > Bei Vorlagen-VMs entstehen **Kosten**, wenn sie ausgeführt werden. Stellen Sie daher sicher, dass die Vorlagen-VM heruntergefahren wird, wenn sie nicht ausgeführt werden muss. 
+        > Bei Vorlagen-VMs entstehen **Kosten**, wenn sie ausgeführt werden. Stellen Sie daher sicher, dass die Vorlagen-VM heruntergefahren wird, wenn sie nicht ausgeführt werden muss.
 
+    - [Erstellen und Verwalten von Lab Services-Zeitplänen in Teams](https://docs.microsoft.com/azure/lab-services/how-to-create-schedules-within-teams) 
 
 1. **Verwenden Sie das Dashboard.** Entsprechende Anleitungen finden Sie unter [Verwenden des Dashboards des Labs](https://docs.microsoft.com/azure/lab-services/classroom-labs/use-dashboard).
 

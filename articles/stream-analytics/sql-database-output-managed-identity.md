@@ -6,12 +6,12 @@ ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/08/2020
-ms.openlocfilehash: c703dd4053cc27d469d83d344da910e8e5b23ddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: ec260c2e71d1716eb4de9ad25942f61169356dfb
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129897"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94491340"
 ---
 # <a name="use-managed-identities-to-access-azure-sql-database-from-an-azure-stream-analytics-job-preview"></a>Zugreifen auf Azure SQL-Datenbank mit verwalteten Identitäten aus einem Azure Stream Analytics-Auftrag (Vorschau)
 
@@ -33,7 +33,7 @@ Erstellen Sie zuerst eine verwaltete Identität für den Azure Stream Analytics-
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Azure Stream Analytics-Auftrag.
 
-1. Wählen Sie im linken Navigationsmenü unter **Konfigurieren** die Option **Verwaltete Identität** aus. Aktivieren Sie dann das Kontrollkästchen neben **Systemseitig zugewiesene verwaltete Identität verwenden** , und wählen Sie **Speichern** aus.
+1. Wählen Sie im linken Navigationsmenü unter **Konfigurieren** die Option **Verwaltete Identität** aus. Aktivieren Sie dann das Kontrollkästchen neben **Systemseitig zugewiesene verwaltete Identität verwenden**, und wählen Sie **Speichern** aus.
 
    ![Systemseitig zugewiesene verwaltete Identität](./media/sql-db-output-managed-identity/system-assigned-managed-identity.png)
 
@@ -86,8 +86,8 @@ Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ih
 
    1. Navigieren Sie in diesem Fall im Azure-Portal zu Ihrer SQL Server-Ressource. Öffnen Sie im Abschnitt **Sicherheit** die Seite **Firewalls und virtuelle Netzwerke**. 
    1. Fügen Sie eine neue Regel mit einem beliebigen Regelnamen hinzu.
-   1. Verwenden Sie die *Von* -IP-Adresse im Fenster **Neue Firewallregel** als *Start-IP*.
-   1. Verwenden Sie die *An* -IP-Adresse im Fenster **Neue Firewallregel** als *End-IP*. 
+   1. Verwenden Sie die *Von*-IP-Adresse im Fenster **Neue Firewallregel** als *Start-IP*.
+   1. Verwenden Sie die *An*-IP-Adresse im Fenster **Neue Firewallregel** als *End-IP*. 
    1. Wählen Sie **Speichern** aus, und versuchen Sie erneut, eine Verbindung von SQL Server Management Studio herzustellen. 
 
 1. Sobald eine Verbindung hergestellt ist, erstellen Sie den Benutzer einer eigenständigen Datenbank. Mit dem folgenden SQL-Befehl wird ein Benutzer einer eigenständigen Datenbank erstellt, der denselben Namen wie der Stream Analytics-Auftrag hat. Stellen Sie sicher, dass Sie *ASA_JOB_NAME* in eckige Klammern einschließen. Verwenden Sie die folgende T-SQL-Syntax, und führen Sie die Abfrage aus. 
@@ -102,7 +102,7 @@ Als Nächstes erstellen Sie einen Benutzer einer eigenständigen Datenbank in Ih
 
 ## <a name="grant-stream-analytics-job-permissions"></a>Erteilen von Berechtigungen für einen Stream Analytics-Auftrag
 
-Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung, mithilfe der verwalteten Identität eine **VERBINDUNG** mit Ihrer SQL-Datenbank herzustellen. Es empfiehlt sich, dem Stream Analytics-Auftrag die Berechtigungen SELECT und INSERT zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT** -Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in der SQL-Datenbank testen. Die Berechtigung **INSERT** ermöglicht das Testen von End-to-End-Abfragen in Stream Analytics, sobald Sie eine Eingabe und die SQL-Datenbankausgabe konfiguriert haben. Sie können dem Auftrag diese Berechtigungen mithilfe von SQL Server Management Studio erteilen. Weitere Informationen finden Sie in der Referenz zu GRANT (Transact-SQL).
+Nachdem Sie einen Benutzer einer eigenständigen Datenbank erstellt und Zugriff auf Azure-Dienste erteilt haben, wie im vorherigen Abschnitt beschrieben, hat Ihr Stream Analytics-Auftrag von der verwalteten Identität die Berechtigung, mithilfe der verwalteten Identität eine **VERBINDUNG** mit Ihrer SQL-Datenbank herzustellen. Es empfiehlt sich, dem Stream Analytics-Auftrag die Berechtigungen SELECT und INSERT zu erteilen, da diese später im Stream Analytics-Workflow benötigt werden. Mithilfe der **SELECT**-Berechtigung kann der Auftrag seine Verbindung mit der Tabelle in der SQL-Datenbank testen. Die Berechtigung **INSERT** ermöglicht das Testen von End-to-End-Abfragen in Stream Analytics, sobald Sie eine Eingabe und die SQL-Datenbankausgabe konfiguriert haben. Sie können dem Auftrag diese Berechtigungen mithilfe von SQL Server Management Studio erteilen. Weitere Informationen finden Sie in der Referenz zu GRANT (Transact-SQL).
 
 Um nur Berechtigung für eine bestimmte Tabelle oder ein bestimmtes Objekt in der Datenbank zu erteilen, verwenden Sie die folgende T-SQL-Syntax, und führen Sie die Abfrage aus. 
 
@@ -123,6 +123,10 @@ Vergewissern Sie sich, dass Sie in Ihrer SQL-Datenbank eine Tabelle mit dem pass
 1. Wählen Sie **Hinzufügen > SQL-Datenbank** aus. Wählen Sie im Fenster mit den Ausgabeeigenschaften der SQL-Datenbank-Ausgabesenke in der Dropdownliste mit Authentifizierungsmodi die Option **Verwaltete Identität** aus.
 
 1. Geben Sie die restlichen Eigenschaften an. Weitere Informationen zum Erstellen einer SQL-Datenbank-Ausgabe finden Sie unter [Erstellen einer SQL-Datenbank-Ausgabe mit Stream Analytics](sql-database-output.md). Wenn Sie fertig sind, wählen Sie **Speichern** aus. 
+
+## <a name="remove-managed-identity"></a>Entfernen der verwalteten Identität
+
+Die für einen Stream Analytics-Auftrag erstellte verwaltete Identität wird nur gelöscht, wenn der Auftrag gelöscht wird. Es gibt keine Möglichkeit, die verwaltete Identität zu löschen, ohne den Auftrag zu löschen. Wenn Sie die verwaltete Identität nicht mehr verwenden möchten, können Sie die Authentifizierungsmethode für die Ausgabe ändern. Die verwaltete Identität bleibt weiterhin bestehen, bis der Auftrag gelöscht wird, und wird wieder verwendet, wenn Sie die Authentifizierung der verwalteten Identität wieder verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

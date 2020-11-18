@@ -3,12 +3,12 @@ title: Einführung
 description: Hier finden Sie Informationen zu den Features und Vorteilen von Azure VMware Solution für die Bereitstellung und Verwaltung VMware-basierter Workloads in Azure.
 ms.topic: overview
 ms.date: 05/04/2020
-ms.openlocfilehash: b71427402e08167e5868128ed1e553c69bef425d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: 1875f535a5ca3e346362409c143da82cb8c07a12
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574455"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488586"
 ---
 # <a name="what-is-azure-vmware-solution"></a>Was ist Azure VMware Solution?
 
@@ -44,7 +44,7 @@ Durch regelmäßige Upgrades der privaten Azure VMware Solution-Cloud und der VM
 
 ## <a name="monitoring-your-private-cloud"></a>Überwachen Ihrer privaten Cloud
 
-Nach der Bereitstellung von Azure VMware Solution in Ihrem Abonnement werden automatisch [Azure Monitor-Protokolle](../azure-monitor/overview.md) generiert. Darüber hinaus können Sie Protokolle auf den einzelnen virtuellen Computern in Ihrer privaten Cloud erfassen. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-options) sowie die [Azure-Diagnoseerweiterung](../azure-monitor/platform/diagnostics-extension-overview.md) aktivieren. Sie können sogar die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen. Weitere Informationen zum Erstellen von Abfragen finden Sie unter [Wie erfahre ich, wie ich Abfragen schreiben kann?](../azure-monitor/log-query/log-query-overview.md#how-can-i-learn-how-to-write-queries). Überwachungsmuster innerhalb von Azure VMware Solution ähneln Azure Virtual Machines innerhalb der IaaS-Plattform. Weitere Informationen und Anleitungen finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md).
+Nach der Bereitstellung von Azure VMware Solution in Ihrem Abonnement werden automatisch [Azure Monitor-Protokolle](../azure-monitor/overview.md) generiert. Darüber hinaus können Sie Protokolle auf den einzelnen virtuellen Computern in Ihrer privaten Cloud erfassen. Sie können den [MMA-Agent auf virtuellen Linux- und Windows-Computern, die in Ihren privaten Azure VMware Solution-Clouds ausgeführt werden, herunterladen und installieren](../azure-monitor/platform/log-analytics-agent.md#installation-options) sowie die [Azure-Diagnoseerweiterung](../azure-monitor/platform/diagnostics-extension-overview.md) aktivieren. Sie können sogar die gleichen Abfragen ausführen, die Sie normalerweise auf Ihren virtuellen Computern ausführen. Weitere Informationen über das Erstellen von Abfragen finden Sie unter [Übersicht über Azure Monitor-Protokolle](../azure-monitor/platform/data-platform-logs.md). Überwachungsmuster innerhalb von Azure VMware Solution ähneln Azure Virtual Machines innerhalb der IaaS-Plattform. Weitere Informationen und Anleitungen finden Sie unter [Überwachen von virtuellen Azure-Computern mit Azure Monitor](../azure-monitor/insights/monitor-vm-azure.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

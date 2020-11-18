@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/21/2020
-ms.openlocfilehash: a52f10c7081875113a0ad22bd687776e71d238e2
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: ad5e91a6dcdb61e09a64e61a27f12148ec28168e
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460800"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490575"
 ---
 # <a name="log-analytics-agent-data-sources-in-azure-monitor"></a>Datenquellen für den Log Analytics-Agent in Azure Monitor
 Die Daten, die Azure Monitor mit dem [Log Analytics](log-analytics-agent.md)-Agent von virtuellen Computern sammelt, werden durch die im [Log Analytics-Arbeitsbereich](data-platform-logs.md) konfigurierten Datenquellen definiert.   Jede Datenquelle erstellt Datensätze eines bestimmten Typs, von denen jeder über einen eigenen Satz von Eigenschaften verfügt.
@@ -20,6 +20,9 @@ Die Daten, die Azure Monitor mit dem [Log Analytics](log-analytics-agent.md)-Age
 > In diesem Artikel werden Datenquellen für den [Log Analytics-Agent](log-analytics-agent.md) beschrieben, einen der von Azure Monitor verwendeten Agents. Andere Agents sammeln andere Daten und werden anders konfiguriert. Eine Liste der verfügbaren Agents und der von ihnen gesammelten Daten finden Sie unter [Übersicht über Azure Monitor-Agents](agents-overview.md).
 
 ![Protokolldatensammlung](media/agent-data-sources/overview.png)
+
+> [!IMPORTANT]
+> Die in diesem Artikel beschriebenen Datenquellen gelten nur für virtuelle Computer, auf denen der Log Analytics-Agent ausgeführt wird. 
 
 ## <a name="summary-of-data-sources"></a>Übersicht über Datenquellen
 In der folgenden Tabelle werden die zurzeit für den Log Analytics-Agent verfügbaren Datenquellen aufgeführt.  In den Links zu den Datenquellen finden Sie weitere Informationen zur jeweiligen Datenquelle.   Außerdem finden Sie hier Informationen zur jeweiligen Methode und Häufigkeit der Sammlung. 

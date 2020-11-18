@@ -7,12 +7,12 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: d5e8305fb80e6869bf604108aaa0e4d8e36cab8e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 4da0f40c25d322953fea968396ef33924877c2e1
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92314738"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505222"
 ---
 # <a name="troubleshoot-assessmentdependency-visualization"></a>Behandeln von Problemen bei der Bewertung- und Abhängigkeitsvisualisierung
 
@@ -26,7 +26,7 @@ Beheben Sie Probleme mit der Bewertungsbereitschaft wie folgt:
 **Problem** | **Behebung**
 --- | ---
 Nicht unterstützter Starttyp | Azure unterstützt keine virtuellen Computer mit dem Starttyp „EFI“. Wir empfehlen, dass Sie vor einer Migration den Starttyp in „BIOS“ ändern. <br/><br/>Sie können die Azure Migrate-Servermigration verwenden, um die Migration solcher virtuellen Computer zu verarbeiten. Sie ändert den Starttyp des virtuellen Computers im Rahmen der Migration in „BIOS“.
-Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](/troubleshoot/azure/virtual-machines/server-software-support) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung.
+Bedingt unterstütztes Windows-Betriebssystem | Der Unterstützungszeitraum für das Betriebssystem ist abgelaufen. Für die [Unterstützung in Azure](/troubleshoot/azure/virtual-machines/server-software-support) wird eine benutzerdefinierte Supportvereinbarung (Custom Support Agreement, CSA) benötigt. Ziehen Sie vor der Migration zu Azure ein Upgrade in Erwägung. [Lesen Sie]() die Informationen zum [Vorbereiten von Computern mit Windows Server 2003](prepare-windows-server-2003-migration.md) auf die Migration zu Azure.
 Nicht unterstütztes Windows-Betriebssystem | Azure unterstützt nur [ausgewählte Windows-Betriebssystemversionen](/troubleshoot/azure/virtual-machines/server-software-support). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung.
 Bedingt unterstütztes Linux-Betriebssystem | Azure unterstützt nur [ausgewählte Linux-Betriebssystemversionen](../virtual-machines/linux/endorsed-distros.md). Ziehen Sie vor der Migration zu Azure ein Upgrade des Computers in Erwägung. Weitere Informationen finden Sie auch [hier](#linux-vms-are-conditionally-ready-in-an-azure-vm-assessment).
 Nicht unterstütztes Linux-Betriebssystem | Der Computer startet möglicherweise in Azure, aber Azure stellt keine Betriebssystemunterstützung bereit. Ziehen Sie vor der Migration zu Azure ein Upgrade auf eine [unterstützte Linux-Version](../virtual-machines/linux/endorsed-distros.md) in Erwägung.

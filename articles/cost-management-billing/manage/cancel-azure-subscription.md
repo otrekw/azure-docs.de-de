@@ -7,18 +7,18 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/09/2020
 ms.author: banders
-ms.openlocfilehash: 16ba70717d04c44e950ce2ed2c47e54859c4be47
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684880"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408021"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
-Sie können Ihr Azure-Abonnement im Azure-Portal kündigen, wenn Sie das Abonnement nicht länger benötigen.
+Sie können Ihr Azure-Abonnement im Azure-Portal kündigen, wenn Sie es nicht länger benötigen.
 
 Die folgenden Schritte sind zwar nicht obligatorisch, aber Microsoft *empfiehlt* Ihnen, sie vor dem Kündigen Ihres Abonnements auszuführen:
 
@@ -69,11 +69,23 @@ Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 T
 
 Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt haben, können Sie es [im Kontocenter reaktivieren](subscription-disabled.md).
 
-Wenn es sich bei Ihrem Abonnement nicht um ein Abonnement mit nutzungsbasierter Bezahlung handelt, nehmen Sie bitte innerhalb von 90 Tagen nach der Kündigung Kontakt zum Support auf, um Ihr Abonnement zu reaktivieren.
+Wenn es sich bei Ihrem Abonnement nicht um ein Abonnement mit nutzungsbasierter Bezahlung handelt, nehmen Sie bitte innerhalb von 90 Tagen nach der Kündigung Kontakt zum Support auf, um Ihr Abonnement zu reaktivieren.
 
-## <a name="need-help-contact-us"></a>Sie brauchen Hilfe? Wenden Sie sich an uns.
+## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Warum wird die Option „Abonnement kündigen“ im Azure-Portal nicht angezeigt? 
 
-Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Supportanfrage](https://go.microsoft.com/fwlink/?linkid=2083458).
+Möglicherweise verfügen Sie nicht über die erforderlichen Berechtigungen, um ein Abonnement zu kündigen. Unter [Wer kann ein Abonnement kündigen?](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription) erfahren Sie, wer die verschiedenen Arten von Abonnements kündigen kann.
+
+## <a name="how-do-i-delete-my-azure-account"></a>Wie lösche ich mein Azure-Konto?
+
+*Ich muss mein Konto einschließlich aller personenbezogenen Informationen entfernen. Ich habe bereits meine aktiven Abonnements (kostenlose Testversion) gekündigt. Ich verfüge über keine aktiven Abonnements und möchte mein Konto vollständig löschen.*
+
+* Wenn Sie über ein im Unternehmen bereitgestelltes Azure Active Directory-Konto verfügen, kann das Konto vom Azure AD-Administrator gelöscht werden. Danach werden Ihre Dienste deaktiviert. Dies bedeutet, dass die Zuordnung Ihrer virtuellen Computer aufgehoben wird, die vorübergehenden IP-Adressen freigegeben werden und der Speicher nur noch im Lesezugriff verfügbar ist. Sobald Sie kündigen, wird die Berechnung sofort beendet.
+
+* Wenn Sie kein Azure AD-Konto über Ihr Unternehmen verwenden, können Sie Ihre Azure-Abonnements kündigen und dann löschen und anschließend Ihre Kreditkarteninformationen aus dem Konto entfernen. Das Konto wird dadurch zwar nicht gelöscht, aber unbrauchbar gemacht. Sie können einen Schritt weiter gehen und auch das zugehörige Microsoft-Konto löschen, solange es nicht für einen anderen Zweck verwendet wird.
+
+## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Wie kann ich ein Visual Studio Professional-Konto kündigen?
+
+Weitere Informationen finden Sie im Artikel [Verlängerung und Kündigung](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation). Wenn Sie über Visual Studio Azure-Abonnements verfügen, müssen diese ebenfalls gekündigt und gelöscht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

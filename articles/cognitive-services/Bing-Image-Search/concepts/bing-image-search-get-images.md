@@ -11,12 +11,12 @@ ms.subservice: bing-image-search
 ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
-ms.openlocfilehash: b414711f5589a141d59fbe2f14d0a8ae992f5acf
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 3e5041855cc036c278979ba1c87634a61ec68ec7
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93084441"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94593483"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Abrufen von Bildern aus dem Web mit der Bing-Bildersuche-API
 
@@ -36,7 +36,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Verwenden Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) für Ihren URL-codierten Suchbegriff. Wenn Sie z. B. *sailing dinghies* eingeben, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
+Verwenden Sie den Abfrageparameter [q](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) für Ihren URL-codierten Suchbegriff. Wenn Sie z. B. *sailing dinghies* eingeben, legen Sie `q` auf `sailing+dinghies` oder `sailing%20dinghies` fest.
 
 > [!IMPORTANT]
 > * Alle Anforderungen müssen über einen Server erfolgen, nicht über einen Client.
@@ -44,29 +44,29 @@ Verwenden Sie den Abfrageparameter [q](https://docs.microsoft.com/rest/api/cogni
 
 ## <a name="get-images-from-a-specific-web-domain"></a>Abrufen von Bildern aus einer bestimmten Webdomäne
 
-Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](https://msdn.microsoft.com/library/ff795613.aspx).
+Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](/previous-versions/bing/search/ff795613(v=msdn.10)).
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us HTTP/1.1
 ```
 
 > [!NOTE]
-> Antworten auf Abfragen, für die der Operator `site:` verwendet wird, können unter Umständen nicht jugendfreien Inhalt enthalten, und zwar unabhängig von der Einstellung [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch). Verwenden Sie `site:` nur, wenn Sie den Inhalt der Domäne kennen.
+> Antworten auf Abfragen, für die der Operator `site:` verwendet wird, können unter Umständen nicht jugendfreien Inhalt enthalten, und zwar unabhängig von der Einstellung [safeSearch](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch). Verwenden Sie `site:` nur, wenn Sie den Inhalt der Domäne kennen.
 
 ## <a name="filter-images"></a>Filtern von Bildern
 
  Die Bildersuche-API gibt standardmäßig alle Bilder zurück, die für die Abfrage relevant sind. Wenn Sie die von Bing zurückgegebenen Bilder filtern möchten (um z. B. nur Bilder mit einem durchsichtigen Hintergrund oder einer bestimmten Größe zurückzugeben), verwenden Sie die folgenden Abfrageparameter:
 
-* [aspect](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect): Filtert Bilder nach Seitenverhältnis (beispielsweise Standard oder Breitbild).
-* [color](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color): Filtert Bilder nach dominanter Farbe oder Schwarzweiß.
-* [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness): Filtert Bilder nach Alter (beispielsweise Bilder, die von Bing in der letzten Woche gefunden wurden).
-* [height](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [width](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width): Filtert Bilder nach Breite und Höhe.
-* [imageContent](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent): Filtert Bilder nach Inhalt (beispielsweise Bilder, die nur das Gesicht einer Person zeigen).
-* [imageType](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype): Filtert Bilder nach Typ (beispielsweise ClipArts, animierte GIFs oder transparente Hintergründe).
-* [license](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license): Filtert Bilder nach Art der Websitelizenz.
-* [size](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size): Filtert Bilder nach Größe (beispielsweise kleine Bilder bis zu einer Größe von 200 x 200 Pixel).
+* [aspect](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#aspect): Filtert Bilder nach Seitenverhältnis (beispielsweise Standard oder Breitbild).
+* [color](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#color): Filtert Bilder nach dominanter Farbe oder Schwarzweiß.
+* [freshness](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#freshness): Filtert Bilder nach Alter (beispielsweise Bilder, die von Bing in der letzten Woche gefunden wurden).
+* [height](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#height), [width](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#width): Filtert Bilder nach Breite und Höhe.
+* [imageContent](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagecontent): Filtert Bilder nach Inhalt (beispielsweise Bilder, die nur das Gesicht einer Person zeigen).
+* [imageType](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetype): Filtert Bilder nach Typ (beispielsweise ClipArts, animierte GIFs oder transparente Hintergründe).
+* [license](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#license): Filtert Bilder nach Art der Websitelizenz.
+* [size](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#size): Filtert Bilder nach Größe (beispielsweise kleine Bilder bis zu einer Größe von 200 x 200 Pixel).
 
-Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](https://msdn.microsoft.com/library/ff795613.aspx).
+Wenn Sie Bilder aus einer bestimmten Domäne abrufen möchten, verwenden Sie den Abfrageoperator [site:](/previous-versions/bing/search/ff795613(v=msdn.10)).
 
 Das folgende Beispiel zeigt, wie Sie von ContosoSailing.com kleine Bilder abrufen, die Bing in der letzten Woche gefunden hat.  
 
@@ -81,7 +81,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="bing-image-search-response-format"></a>Format von Antworten der Bing-Bildersuche
 
-Die Antwortnachricht von Bing enthält eine [Images](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images)-Antwort mit einer Liste mit Bildern, die von Cognitive Services als für die Abfrage relevant ermittelt wurden. Jedes [Image](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image)-Objekt der Liste enthält die folgenden Informationen zum Bild: URL, Größe, Abmessungen, Codierungsformat, URL für eine Miniaturansicht des Bilds und die Abmessungen der Miniaturansicht.
+Die Antwortnachricht von Bing enthält eine [Images](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images)-Antwort mit einer Liste mit Bildern, die von Cognitive Services als für die Abfrage relevant ermittelt wurden. Jedes [Image](/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image)-Objekt der Liste enthält die folgenden Informationen zum Bild: URL, Größe, Abmessungen, Codierungsformat, URL für eine Miniaturansicht des Bilds und die Abmessungen der Miniaturansicht.
 
 > [!NOTE]
 > * Bilder müssen in der Reihenfolge angezeigt werden, die von der Antwort vorgegeben wird.
@@ -114,7 +114,7 @@ Die Antwortnachricht von Bing enthält eine [Images](https://docs.microsoft.com/
 },
 ```
 
-Wenn Sie die Bing-Bildersuche-API aufrufen, gibt Bing eine Liste mit Ergebnissen zurück. Bei der Liste handelt es sich um eine Teilmenge der gesamten Ergebnisse, die für die Abfrage relevant sind. Das Feld `totalEstimatedMatches` der Antwort enthält die geschätzte Anzahl von Bildern, die angezeigt werden können. Ausführliche Informationen zum Blättern durch die restlichen Bilder finden Sie [hier](../paging-images.md).
+Wenn Sie die Bing-Bildersuche-API aufrufen, gibt Bing eine Liste mit Ergebnissen zurück. Bei der Liste handelt es sich um eine Teilmenge der gesamten Ergebnisse, die für die Abfrage relevant sind. Das Feld `totalEstimatedMatches` der Antwort enthält die geschätzte Anzahl von Bildern, die angezeigt werden können. Ausführliche Informationen zum Blättern durch die restlichen Bilder finden Sie [hier](../../bing-web-search/paging-search-results.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

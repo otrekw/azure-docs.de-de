@@ -11,12 +11,12 @@ author: MarkusVi
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: aaa9fa036f86fc822a4bb2175f404cdff1ca81d7
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 9e6b03a2f9dd0089b1112000804e46f3d214cd3c
+ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362568"
+ms.lasthandoff: 10/30/2020
+ms.locfileid: "93131291"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Tutorial: Konfigurieren des Protokollanalyseassistenten
 
@@ -96,11 +96,11 @@ Das Konfigurieren eines Protokollanalyse-Arbeitsbereichs besteht aus zwei Haupts
 
 7. Suchen Sie nach **Azure Active Directory**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Screenshot: Azure Active Directory in der Azure-Suche](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 8. Klicken Sie im Abschnitt **Überwachen** auf **Diagnoseeinstellung**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
+    ![Screenshot: Unter „Überwachen“ ausgewählte Option „Diagnoseeinstellungen“](./media/tutorial-log-analytics-wizard/diagnostic-settings.png)
 
 9. Klicken Sie auf der Seite **Diagnoseeinstellungen** auf **Diagnoseeinstellung hinzufügen**.
 
@@ -128,7 +128,7 @@ In diesem Verfahren wird das Ausführen von Abfragen mithilfe der **Kusto-Abfrag
 
 2. Suchen Sie nach **Azure Active Directory**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Screenshot: Azure Active Directory in der Azure-Suche](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Protokolle**.
 
@@ -210,7 +210,7 @@ Dieses Verfahren zeigt, wie Sie Warnungen senden, wenn das BreakGlass-Konto verw
 
 2. Suchen Sie nach **Azure Active Directory**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Screenshot: Azure Active Directory in der Azure-Suche](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Protokolle**.
 
@@ -301,7 +301,7 @@ In diesem Verfahren wird gezeigt, wie Sie mithilfe der Schnellstartvorlage eine 
 
 2. Suchen Sie nach **Azure Active Directory**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Screenshot: Azure Active Directory in der Azure-Suche](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Arbeitsmappen**.
 
@@ -332,7 +332,7 @@ In diesem Verfahren wird gezeigt, wie Sie mithilfe der Schnellstartvorlage eine 
 
 10. Klicken auf **Abfrage ausführen**.
 
-    ![Abfrage ausführen](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
+    ![Screenshot: Schaltfläche „Abfrage ausführen“](./media/tutorial-log-analytics-wizard/run-workbook-query.png)
 
 11. Klicken Sie in der Symbolleiste unter **Visualisierungs** auf **Kreisdiagramm**.
 
@@ -353,7 +353,7 @@ In diesem Verfahren wird gezeigt, wie einer vorhandenen Arbeitsmappenvorlage ein
 
 2. Suchen Sie nach **Azure Active Directory**.
 
-    ![Azure Active Directory](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
+    ![Screenshot: Azure Active Directory in der Azure-Suche](./media/tutorial-log-analytics-wizard/search-azure-ad.png)
 
 3. Klicken Sie im Abschnitt **Überwachung** auf **Arbeitsmappen**.
 
@@ -361,11 +361,11 @@ In diesem Verfahren wird gezeigt, wie einer vorhandenen Arbeitsmappenvorlage ein
 
 4. Klicken Sie im Abschnitt **Bedingter Zugriff** auf **Erkenntnisse und Berichte zum bedingten Zugriff**.
 
-    ![Vorlage für bedingten Zugriff](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
+    ![Screenshot: Option „Erkenntnisse und Berichte zum bedingten Zugriff“](./media/tutorial-log-analytics-wizard/conditional-access-template.png)
 
 5. Klicken Sie auf der Symbolleiste auf **Bearbeiten**.
 
-    ![Vorlage für bedingten Zugriff](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
+    ![Screenshot: Schaltfläche „Bearbeiten“](./media/tutorial-log-analytics-wizard/edit-workbook-template.png)
 
 6. Klicken Sie in der Symbolleiste auf die drei Punkte, dann auf **Hinzufügen** und dann auf **Abfrage hinzufügen**.
 
@@ -375,7 +375,7 @@ In diesem Verfahren wird gezeigt, wie einer vorhandenen Arbeitsmappenvorlage ein
 
 8. Klicken auf **Abfrage ausführen**.
 
-    ![Abfrage ausführen](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
+    ![Screenshot: Schaltfläche „Abfrage ausführen“ zum Ausführen dieser Abfrage](./media/tutorial-log-analytics-wizard/run-workbook-insights-query.png)
 
 9. Klicken Sie auf **Zeitbereich**, und wählen Sie dann **In Abfrage festlegen** aus.
 

@@ -6,12 +6,12 @@ ms.author: sacedarb
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/10/2020
-ms.openlocfilehash: 29f02f80aa5bff1304dc593d68954e15fe6e66bb
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 469610d7195835a4b68e4d887c5be57a8926ba37
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93346433"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489504"
 ---
 # <a name="use-managed-identity-to-authenticate-your-azure-stream-analytics-job-to-power-bi"></a>Verwenden von verwalteten Identitäten zum Authentifizieren von Azure Stream Analytics-Aufträgen in Power BI
 
@@ -48,7 +48,7 @@ Folgendes ist für die Verwendung dieses Features erforderlich:
 Mit Azure Resource Manager können Sie die Bereitstellung Ihres Stream Analytics-Auftrags vollständig automatisieren. Sie können Resource Manager-Vorlagen entweder mit Azure PowerShell oder der [Azure-Befehlszeilenschnittstelle](/cli/azure/) bereitstellen. In den folgenden Beispielen wird die Azure-Befehlszeilenschnittstelle verwendet.
 
 
-1. Sie können eine **Microsoft.StreamAnalytics/streamingjobs** -Ressource mit einer verwalteten Identität erstellen, indem Sie die folgende Eigenschaft in den Ressourcenabschnitt Ihrer Resource Manager-Vorlage einfügen:
+1. Sie können eine **Microsoft.StreamAnalytics/streamingjobs**-Ressource mit einer verwalteten Identität erstellen, indem Sie die folgende Eigenschaft in den Ressourcenabschnitt Ihrer Resource Manager-Vorlage einfügen:
 
     ```json
     "identity": {
@@ -209,6 +209,10 @@ Anforderungstext
     "principalType": "App"
 }
 ```
+
+## <a name="remove-managed-identity"></a>Entfernen der verwalteten Identität
+
+Die für einen Stream Analytics-Auftrag erstellte verwaltete Identität wird nur gelöscht, wenn der Auftrag gelöscht wird. Es gibt keine Möglichkeit, die verwaltete Identität zu löschen, ohne den Auftrag zu löschen. Wenn Sie die verwaltete Identität nicht mehr verwenden möchten, können Sie die Authentifizierungsmethode für die Ausgabe ändern. Die verwaltete Identität bleibt weiterhin bestehen, bis der Auftrag gelöscht wird, und wird verwendet, wenn Sie sich noch einmal mithilfe einer verwalteten Identität authentifizieren.
 
 ## <a name="limitations"></a>Einschränkungen
 Im Folgenden finden Sie Einschränkungen für dieses Feature:

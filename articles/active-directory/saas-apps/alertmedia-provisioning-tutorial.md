@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 086f79239fd4f6b01f4b76d1385598bac52bb471
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 9a7c19e30c6c26d7bf7f11d6f03a0acaee160c9a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358967"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578602"
 ---
 # <a name="tutorial-configure-alertmedia-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von AlertMedia für die automatische Benutzerbereitstellung
 
@@ -95,11 +95,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
     ![Registerkarte „Bereitstellung“, Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
 5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** Ihre **Mandanten-URL** für AlertMedia als einen der folgenden Werte ein.
-      * (keine benutzerdefinierte Domäne) https://dashboard.alertmedia.com/api/scim/v3
+      * (keine benutzerdefinierte Domäne) `https://dashboard.alertmedia.com/api/scim/v3`
 
-      * (benutzerdefinierte Domäne) https://subdomain.alertmedia.com/api/scim/v3
+      * (benutzerdefinierte Domäne) `https://subdomain.alertmedia.com/api/scim/v3`
 
-      Geben Sie das **Geheime Token** ein, das Sie in Schritt 2 abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit AlertMedia herstellen kann. Vergewissern Sie bei einem Verbindungsfehler, dass Ihr AlertMedia-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+      Geben Sie das **Geheime Token** ein, das Sie in Schritt 2 abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit AlertMedia herstellen kann. Vergewissern Sie bei einem Verbindungsfehler, dass Ihr AlertMedia-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
       ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -111,7 +111,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit AlertMedia synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit AlertMedia synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in AlertMedia für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) ändern möchten, müssen Sie sicherstellen, dass die AlertMedia-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit AlertMedia synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in AlertMedia für Updatevorgänge verwendet werden. Wenn Sie das [übereinstimmende Zielattribut](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) ändern möchten, müssen Sie sicherstellen, dass die AlertMedia-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -145,7 +145,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit AlertMedia synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die aus Azure AD mit AlertMedia synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in AlertMedia für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die aus Azure AD mit AlertMedia synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in AlertMedia für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

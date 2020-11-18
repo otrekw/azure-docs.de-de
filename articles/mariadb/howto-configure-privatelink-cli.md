@@ -7,12 +7,12 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 01/09/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c7f95b2009521b054958be48e444a129b0a59ed3
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 7ba8a5ded1d83ffdf153724c5e76b27e10bccfcb
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242890"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515760"
 ---
 # <a name="create-and-manage-private-link-for-azure-database-for-mariadb-using-cli"></a>Erstellen und Verwalten von Private Link für Azure Database for MariaDB über die CLI
 
@@ -21,19 +21,19 @@ Ein privater Endpunkt ist der grundlegende Baustein für Private Link in Azure. 
 > [!NOTE]
 > Das Feature „Private Link“ ist nur für Azure Database for MariaDB-Server in den Tarifen „Universell“ und „Arbeitsspeicheroptimiert“ verfügbar. Stellen Sie sicher, dass für den Datenbankserver einer dieser Tarife festgelegt ist.
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Zum Ausführen der Schritte in dieser Anleitung benötigen Sie Folgendes:
+- Sie benötigen einen [Azure Database for MariaDB-Server](quickstart-create-mariadb-server-database-using-azure-cli.md). 
 
-- [Azure Database for MariaDB-Server](quickstart-create-mariadb-server-database-using-azure-cli.md).
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie stattdessen entscheiden, Azure CLI lokal zu installieren und zu verwenden möchten, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.28 verwenden. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.28 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Bevor Sie eine Ressource erstellen können, müssen Sie eine Ressourcengruppe zum Hosten des virtuellen Netzwerks erstellen. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westeurope* :
+Bevor Sie eine Ressource erstellen können, müssen Sie eine Ressourcengruppe zum Hosten des virtuellen Netzwerks erstellen. Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Das folgende Beispiel erstellt eine Ressourcengruppe mit dem Namen *myResourceGroup* am Standort *westeurope*:
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westeurope
@@ -137,7 +137,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 1. Wählen Sie die Schaltfläche **Verbinden** aus. Nach dem Auswählen der Schaltfläche **Verbinden** wird **Verbindung mit virtuellem Computer herstellen** geöffnet.
 
-1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei ( *RDP* ) und lädt sie auf Ihren Computer herunter.
+1. Wählen Sie **RDP-Datei herunterladen** aus. Azure erstellt eine Remotedesktopprotokoll-Datei (*RDP*) und lädt sie auf Ihren Computer herunter.
 
 1. Öffnen Sie die Datei *downloaded.rdp*.
 
@@ -171,7 +171,7 @@ Stellen Sie wie folgt eine Verbindung mit dem virtuellen Computer *myVm* aus dem
 
 3. Testen Sie die Verbindung über den privaten Link für den MariaDB-Server mit einem beliebigen verfügbaren Client. Im folgenden Beispiel wird für diesen Vorgang [MySQL Workbench](https://dev.mysql.com/doc/workbench/en/wb-installing-windows.html) verwendet.
 
-4. Geben Sie in **Neue Verbindung** die folgenden Informationen ein, oder wählen Sie sie aus:
+4. Geben Sie in **Neue Verbindung** diese Informationen ein, oder wählen Sie sie aus:
 
     | Einstellung | Wert |
     | ------- | ----- |

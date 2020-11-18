@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: aahi
-ms.openlocfilehash: a3b2a9db688104c168017863910745427a3a68f9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 80e0de73bbeae2ee1a79199fde34a3c430959ac8
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425801"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356704"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batchverarbeitungskit für Speech-Container
 
@@ -121,7 +121,7 @@ Im `ONESHOT`-Modus wird ein einzelner Batch von Audiodateien (aus einem Eingabev
 
 Im `DAEMON`-Modus werden die vorhandenen Dateien in einem bestimmen Ordner transkribiert; neue Audiodateien werden nach dem Hinzufügen fortlaufend transkribiert.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Ein Diagramm, das den Batchkit-Container beim Verarbeiten von Dateien im Daemon-Modus zeigt.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Diagramm, das den Container „batch-kit“beim Verarbeiten von Dateien im Daemon-Modus zeigt":::
 
 1. Definieren Sie die Speech-Containerendpunkte, die der Batchclient verwenden soll, in der Datei `config.yaml`. 
 2. Rufen Sie den Container in einem Eingabeverzeichnis auf. Der Batchclient beginnt, das Verzeichnis auf eingehende Dateien zu überwachen. 
@@ -156,7 +156,7 @@ Der `REST`-Modus ist ein API-Servermodus, der einen grundlegenden Satz von HTTP-
 > [!NOTE]
 > Der Batchclient überschreibt die Datei *run.log* regelmäßig, wenn sie zu groß wird.
 
-Der Client erstellt eine *run.log* -Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand des `-log_level`-Arguments gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
+Der Client erstellt eine *run.log*-Datei in dem Verzeichnis, das im `-log_folder`-Argument im Docker-Befehl `run` angegeben ist. Protokolle werden standardmäßig mit dem Protokolliergrad DEBUG erfasst. Die gleichen Protokolle werden an `stdout/stderr` gesendet und anhand des `-log_level`-Arguments gefiltert. Dieses Protokoll ist nur zum Debuggen erforderlich oder wenn Sie eine Ablaufverfolgung an den Support senden müssen. Der Protokollierungsordner enthält außerdem die Protokolle des Speech SDK für die einzelnen Audiodateien.
 
 Das durch `-output_folder` angegebene Ausgabeverzeichnis enthält eine Datei *run_summary.json* , die regelmäßig alle 30 Sekunden oder beim Abschluss neuer Transkriptionen neu geschrieben wird. Sie können diese Datei verwenden, um bei fortschreitender Verarbeitung des Batches den Status zu überprüfen. Wenn der Batch abgeschlossen ist, enthält sie außerdem die endgültige Ausführungsstatistik und den Abschlussstatus jeder Datei. Der Batch ist abgeschlossen, wenn der Prozess zu einem ordnungsgemäßen Ende gelangt. 
 

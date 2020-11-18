@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/28/2020
-ms.openlocfilehash: 70b5e85c99184b890d2b5269f483785a82340255
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 38f649fbff9ea2c1182adb613b9302768708a4c4
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127551"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490949"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Überblick über Streamingeinheiten und Informationen zu Anpassungen
 
@@ -20,7 +20,7 @@ Streamingeinheiten stellen die Computeressourcen dar, die zur Ausführung eines 
 
 Um eine Streamingverarbeitung mit geringer Latenz zu erreichen, führen Azure Stream Analytics-Aufträge (ASA) die gesamte Verarbeitung im Arbeitsspeicher durch. Wenn nicht genügend Arbeitsspeicher vorhanden ist, tritt beim Streamingauftrag ein Fehler auf. Daher ist es bei einem Produktionsauftrag wichtig, die Ressourcennutzung eines Streamingauftrags zu überwachen und sicherzustellen, dass genügend Ressourcen zugewiesen werden, um die Aufträge rund um die Uhr auszuführen.
 
-Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht, zeigt die Arbeitsspeichernutzung Ihrer Workload auf. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik in der Regel zwischen 10 % und 20 %. Wenn die prozentuale Nutzung der Streamingeinheit hoch (über 80 Prozent) ist oder Eingabeereignisse in den Rückstand geraten (auch mit einer niedrigen prozentualen Nutzung der Streamingeinheit, da die CPU-Auslastung nicht angezeigt wird), benötigt Ihre Workload wahrscheinlich mehr Computeressourcen, sodass Sie die Anzahl der Streamingeinheiten erhöhen müssen. Die Metrik für die Streamingeinheit sollte im Idealfall bei unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können. Microsoft empfiehlt, eine Warnung für die Metrik „Nutzung der Speichereinheit in %“ bei 80 % festzulegen, um eine Ressourcenauslastung zu verhindern. Weitere Informationen finden Sie im [Tutorial: Einrichten von Warnungen für Azure Stream Analytics-Aufträge](stream-analytics-set-up-alerts.md).
+Die Nutzungsmetrik der Streamingeinheit in Prozent, die von 0 % bis 100 % reicht, zeigt die Arbeitsspeichernutzung Ihrer Workload auf. Bei einem Streamingauftrag mit minimalem Ressourcenbedarf liegt die Metrik in der Regel zwischen 10 % und 20 %. Wenn die prozentuale Nutzung der Streamingeinheit hoch (über 80 Prozent) ist oder Eingabeereignisse in den Rückstand geraten (auch mit einer niedrigen prozentualen Nutzung der Streamingeinheit, da die CPU-Auslastung nicht angezeigt wird), benötigt Ihre Workload wahrscheinlich mehr Computeressourcen, sodass Sie die Anzahl der Streamingeinheiten erhöhen müssen. Die Metrik für die Streamingeinheit sollte am besten immer unter 80 % liegen, damit gelegentliche Spitzen verarbeitet werden können. Für den Fall einer größeren Anzahl von Workloads und Streamingeinheiten können Sie auch eine 80-Prozent-Warnung für die Metrik der Nutzung der Streamingeinheiten einrichten. Außerdem können Sie mithilfe der Metriken zur Verzögerung des Wasserzeichens und den im Backlog erfassten Ereignissen ermitteln, ob eine Auswirkung vorliegt.
 
 ## <a name="configure-stream-analytics-streaming-units-sus"></a>Konfigurieren von Streamingeinheiten (SUs) für Stream Analytics-Aufträge
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.

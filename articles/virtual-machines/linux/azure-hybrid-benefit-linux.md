@@ -9,15 +9,15 @@ ms.service: virtual-machines-linux
 ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
-ms.author: alsin
-ms.openlocfilehash: da17122de8db41b6ba9ae9597d52bc3e1d8d0062
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.author: mathapli
+ms.openlocfilehash: 8437c83faf8dfcec0a21add2006b6cf627447dd1
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91962393"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94516440"
 ---
-# <a name="preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Vorschau: Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
+# <a name="public-preview-azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Public Preview: Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
 
 ## <a name="overview"></a>Übersicht
 
@@ -45,30 +45,28 @@ Die Hybridvorteile von reservierten Instanzen, Dedicated Hosts und SQL berechtig
 
 ## <a name="how-to-get-started"></a>Erste Schritte
 
-Der Azure-Hybridvorteil befindet sich derzeit für virtuelle Linux-Computer in einer Vorschauphase. Sobald Sie Zugriff auf die Vorschauversion haben, können Sie den Vorteil über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle aktivieren.
+Der Azure-Hybridvorteil befindet sich derzeit für virtuelle Linux-Computer in einer Vorschauphase. Sobald Sie Zugriff auf die Vorschauversion haben, können Sie den Vorteil über die Azure CLI aktivieren.
 
-### <a name="preview"></a>Vorschau
+### <a name="public-preview"></a>Öffentliche Vorschau
 
-In dieser Phase können Sie den Vorteil nutzen, indem Sie das Formular [hier](https://aka.ms/ahb-linux-form) ausfüllen. Nachdem Sie das Formular ausgefüllt haben, werden Ihre Azure-Abonnements für den Vorteil aktiviert und Sie erhalten innerhalb von drei Werktagen eine Bestätigung von Microsoft.
+Der Azure-Hybridvorteil für Linux befindet sich derzeit in der öffentlichen Vorschau. Mithilfe der untenstehenden Schritte können Sie den Vorteil für Red Hat- und SUSE-Distributionen aktivieren. 
 
 ### <a name="red-hat-customers"></a>Red Hat-Kunden
 
-1.    Füllen Sie das oben erwähnte Formular zur Beantragung der Vorschauversion aus.
-1.    Registrieren Sie sich beim [Red Hat Cloud Access-Programm](https://aka.ms/rhel-cloud-access).
-1.    Aktivieren Sie für Ihre Azure-Abonnements den Cloudzugriff, und aktivieren Sie die Abonnements für die virtuellen Computer, die Sie nutzen möchten.
-1.    Wenden Sie den Vorteil über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle auf Ihre vorhandenen virtuellen Computer an.
-1.    Registrieren Sie die virtuellen Computer, auf die der Vorteil angewendet wird, bei einer separaten Quelle für Updates.
+Der Azure-Hybridvorteil für RHEL ist für Kunden verfügbar, die über aktive/nicht genutzte RHEL-Abonnements verfügen, die für die Verwendung in Azure berechtigt sind und für die mindestens eines der Abonnements für die Verwendung in Azure mit dem [Red Hat Cloud Access](https://www.redhat.com/en/technologies/cloud-computing/cloud-access)-Programm aktiviert ist. 
+
+1.  Aktivieren Sie mindestens eines Ihrer berechtigten RHEL-Abonnements für die Verwendung in Azure über die [Red Hat Cloud Access-Benutzeroberfläche für Kunden](https://access.redhat.com/management/cloud).
+1.  Die von Ihnen während des Red Hat Cloud Access-Aktivierungsprozesses bereitgestellten Azure-Abonnements sind dann berechtigt, den Azure-Hybridvorteil zu nutzen.
+1.  Wenden Sie den Azure-Hybridvorteil auf alle Ihre vorhandenen RHEL-VMs mit nutzungsbasierter Zahlung sowie auf alle neuen RHEL-VMs an, die Sie auf Grundlage von Images im Azure Marketplace mit nutzungsbasierter Zahlung bereitstellen.
+1.  Befolgen Sie die empfohlenen [weiteren Schritte](https://access.redhat.com/articles/5419341) für das Konfigurieren von Updatequellen für Ihre RHEL-VMs und für Compliancerichtlinien für RHEL-Abonnements.
+
 
 ### <a name="suse-customers"></a>SUSE-Kunden
 
-1.    Füllen Sie das oben erwähnte Formular zur Beantragung der Vorschauversion aus.
 1.    Registrieren Sie sich beim SUSE Public Cloud-Programm.
-1.    Wenden Sie den Vorteil über das Azure-Portal oder die Azure-Befehlszeilenschnittstelle auf Ihre vorhandenen virtuellen Computer an.
+1.    Wenden Sie den Vorteil über die Azure CLI auf Ihre vorhandenen VMs an.
 1.    Registrieren Sie die virtuellen Computer, auf die der Vorteil angewendet wird, bei einer separaten Quelle für Updates.
 
-### <a name="enable-and-disable-the-benefit-in-the-azure-portal"></a>Aktivieren und Deaktivieren des Vorteils im Azure-Portal
-
-Sie können den Vorteil für vorhandene virtuelle Computer aktivieren, indem Sie den Anweisungen auf dem Blatt **Konfiguration** befolgen. Sie können den Vorteil auf neuen virtuellen Computern beim Erstellen des virtuellen Computers aktivieren.
 
 ### <a name="enable-and-disable-the-benefit-in-the-azure-cli"></a>Aktivieren und Deaktivieren des Vorteils über die Azure-Befehlszeilenschnittstelle
 
@@ -109,12 +107,8 @@ az vm list -o json | jq '.[] | {VMName: .name, ResourceID: .id}'
 ```
 
 ## <a name="check-ahb-status-of-a-vm"></a>Prüfen des AHB-Status eines virtuellen Computers
-Es gibt drei Möglichkeiten, den AHB-Status (Azure Hybrid Benefit, Azure-Hybridvorteil) anzuzeigen: über das Portal, über die Azure-Befehlszeilenschnittstelle und mithilfe von Azure Instance Metadata Service (Azure IMDS).
+Es gibt zwei Möglichkeiten, den AHB-Status (Azure Hybrid Benefit, Azure-Hybridvorteil) einer VM anzuzeigen: über die Azure CLI und mithilfe von Azure Instance Metadata Service (Azure IMDS).
 
-
-### <a name="portal"></a>Portal
-
-Wenn Sie feststellen möchten, ob für Ihren virtuellen Computer AHB aktiviert ist, rufen Sie das Blatt „Konfiguration“ auf und zeigen den Lizenzierungsstatus an.
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -132,7 +126,19 @@ az vm get-instance-view -g MyResourceGroup -n MyVm
 
 ### <a name="red-hat"></a>Red Hat
 
-Wenn Sie den Azure-Hybridvorteil für Ihre virtuellen RHEL-Computer verwenden möchten, müssen Sie sich zunächst beim Red Hat Cloud Access-Programm registrieren. Die Registrierung können Sie über die Red Hat Cloud Access-Website hier durchführen. Nachdem Sie den Vorteil für Ihren virtuellen Computer aktiviert haben, müssen Sie den virtuellen Computer bei Ihrer eigenen Quelle für Updates entweder bei Red Hat Subscription Manager oder bei Red Hat Satellite registrieren. Durch die Registrierung für Updates wird sichergestellt, dass Sie in einem unterstützten Zustand bleiben.
+Kunden, die den Azure-Hybridvorteil für RHEL verwenden, stimmen den [rechtlichen Standardbedingungen](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Cloud_Software_Subscription_Agreement_for_Microsoft_Azure.pdf) und den [Standarddatenschutzbestimmungen](http://www.redhat.com/licenses/cloud_CSSA/Red_Hat_Privacy_Statement_for_Microsoft_Azure.pdf) für RHEL-Angebote im Azure Marketplace zu.
+
+Kunden, die den Azure-Hybridvorteil für RHEL nutzen, haben drei Möglichkeiten, Softwareupdates und Patches für diese VMs bereitzustellen:
+
+1.  [Red Hat-Updateinfrastruktur (RHUI)](../workloads/redhat/redhat-rhui.md) (Standardoption)
+1.  Red Hat Satellite Server
+1.  Red Hat Subscription Manager
+
+Kunden, die sich für die RHUI-Option entschließen, können diese weiterhin als Hauptquelle für Updates für ihre RHEL-VMs mit Azure-Hybridvorteil nutzen, ohne RHEL-Abonnements an diese VMs anfügen zu müssen.  Kunden, die sich für die RHUI-Option entscheiden, sind dafür verantwortlich, für die RHEL-Abonnementscompliance zu sorgen.
+
+Kunden, die sich für Red Hat Satellite-Server oder Red Hat Subscription Manager entscheiden, sollten die RHUI-Konfiguration entfernen und dann ein RHEL-Abonnement mit Cloud Access-Aktivierung an ihre RHEL-VMs mit Azure-Hybridvorteil anfügen.  
+
+Weitere Informationen zur Red Hat-Abonnementscompliance, Softwareupdates und Quellen für RHEL-VMs mit Azure-Hybridvorteil finden Sie [hier](https://access.redhat.com/articles/5419341).
 
 ### <a name="suse"></a>SUSE
 
@@ -147,13 +153,12 @@ A: Nein, das ist nicht möglich. Wenn Sie versuchen, einen Lizenztyp einzugeben,
 
 A: Es kann einige Zeit in Anspruch nehmen, bis die Registrierung Ihres Red Hat Cloud Access-Abonnements von Red Hat an Azure weitergegeben wird. Wenn der Fehler nach einem Werktag weiterhin auftritt, wenden Sie sich an den Microsoft Support.
 
-## <a name="common-errors"></a>Häufige Fehler
-Dieser Abschnitt enthält eine Liste mit häufigen Fehlern und Anweisungen zur Problemlösung.
+## <a name="common-issues"></a>Häufige Probleme
+In diesem Abschnitt finden Sie eine Liste häufiger Probleme, die auftreten könnten, sowie Schritte zu deren Behebung.
 
 | Fehler | Minderung |
 | ----- | ---------- |
-| „Das Abonnement wurde nicht für die Linux-Vorschauversion des Azure-Hybridvorteils registriert. Schritt-für-Schritt-Anleitungen finden Sie unter https://aka.ms/ahb-linux.“ | Füllen Sie das Formular unter https://aka.ms/ahb-linux-form aus, um sich für die Linux-Vorschauversion des Azure-Hybridvorteils zu registrieren.
 | „Die Aktion konnte nicht durchgeführt werden, da Red Hat Cloud Access laut unseren Datensätzen nicht für Ihr Azure-Abonnement aktiviert wurde.“ | Um den Vorteil mit virtuellen RHEL-Computern zu nutzen, müssen Sie zunächst Ihre Azure-Abonnements bei Red Hat Cloud Access registrieren. Weitere Informationen zum Registrieren von Azure-Abonnements für Red Hat Cloud Access finden Sie unter diesem Link.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* Unternehmen Sie die ersten Schritte mit der Vorschauversion, indem Sie das Formular [hier](https://aka.ms/ahb-linux-form) ausfüllen.
+* [Hier](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true) erhalten Sie Informationen zum Erstellen und Aktualisieren von VMs und zum Hinzufügen von Lizenztypen (RHEL_BYOS, SLES_BYOS) für den Azure-Hybridvorteil mit der Azure CLI.

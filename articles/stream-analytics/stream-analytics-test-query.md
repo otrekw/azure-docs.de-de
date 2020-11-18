@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
-ms.openlocfilehash: 3fda153d4c48ced17d1a9ba5f060b435b161542e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8e08c4c34495b58c105560dba9d818be9ebf5e34
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127636"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490966"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Testen eines Azure Stream Analytics-Auftrags im Portal
 
@@ -33,15 +33,15 @@ Azure Stream Analytics ruft automatisch Ereignisse aus Ihrer Streamingeingabe ab
 
    a. Der Serialisierungstyp für Ihre Daten wird automatisch erkannt, wenn es sich um JSON oder CSV handelt. Sie können ihn manuell in JSON, CSV oder AVRO ändern, indem Sie die Option im Dropdownmenü ändern.
     
-   b. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen** - oder **Roh** format anzuzeigen.
+   b. Verwenden Sie die Auswahl, um Ihre Daten im **Tabellen**- oder **Roh** format anzuzeigen.
     
    c. Wenn die angezeigten Daten nicht aktuell sind, wählen Sie **Aktualisieren** aus, um die neuesten Ereignisse anzuzeigen.
 
-   Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat** :
+   Die folgende Tabelle ist ein Beispiel für Daten im **Tabellenformat**:
 
    ![Azure Stream Analytics: Beispieleingabe im Tabellenformat](./media/stream-analytics-test-query/asa-sample-table.png)
 
-   Die folgende Tabelle ist ein Beispiel für Daten im **Rohformat** :
+   Die folgende Tabelle ist ein Beispiel für Daten im **Rohformat**:
 
    ![Azure Stream Analytics: Beispieleingabe im Rohformat](./media/stream-analytics-test-query/asa-sample-raw.png)
 
@@ -101,8 +101,8 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
 
 1.  Zeitrichtlinien werden bei Portaltests nicht unterstützt:
 
-   * Falsche Reihenfolge: alle eingehenden Ereignisse werden sortiert.
-   * Verspätetes Eintreffen: Es wird kein verspätetes Eintreffen geben, da Stream Analytics nur vorhandene Daten für Tests verwenden kann.
+    * Falsche Reihenfolge: alle eingehenden Ereignisse werden sortiert.
+    * Verspätetes Eintreffen: Es wird kein verspätetes Eintreffen geben, da Stream Analytics nur vorhandene Daten für Tests verwenden kann.
    
 2.  C#-UDF wird nicht unterstützt.
 
@@ -111,6 +111,20 @@ Anstatt Livedaten zu verwenden, können Sie Beispieldaten aus einer lokalen Date
 4.  Der Timeoutwert beträgt eine Minute. Somit kann jede Abfrage mit einer Fenstergröße von mehr als einer Minute keine Daten erhalten.
 
 5.  Maschinelles Lernen wird nicht unterstützt.
+
+6. Die Beispieldaten-API wird nach fünf Anforderungen für 15 Minuten gedrosselt. Nach Ende dieses Zeitfensters können Sie weitere Anforderungen von Beispieldaten ausführen. Diese Einschränkung wird auf Abonnementebene angewendet.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+1.  Wenn Sie den Fehler „There was a network connectivity issue when fetching the results. Please check your network and firewall settings.“ (Beim Abrufen der Ergebnisse ist ein Fehler aufgetreten. Überprüfen Sie die Netzwerk- und Firewalleinstellungen.) erhalten, führen Sie die folgenden Schritte aus:
+
+  * Öffnen Sie [https://queryruntime.azurestreamanalytics.com/api/home/index](https://queryruntime.azurestreamanalytics.com/api/home/index) in einem Browser, um die Verbindung zum Dienst zu überprüfen. Wenn Sie diesen Link nicht öffnen können, aktualisieren Sie die Firewalleinstellungen.
+  
+2. Wenn Sie den Fehler „The request size is too big. Please reduce the input data size and try again“ (Die Anforderung ist zu groß. Verkleinern Sie die Eingabedaten, und versuchen Sie es noch einmal.) erhalten, führen Sie die folgenden Schritte aus:
+
+  * Verringern der Eingabegröße: Testen Sie Ihre Abfrage mit einer kleineren Beispieldatei oder einem kleineren Zeitbereich.
+  * Reduzieren der Abfragegröße: Wählen Sie einen Teil der Abfrage aus, und klicken Sie dann auf **Test selected query** (Ausgewählte Abfrage testen), um einen ausgewählten Teil der Abfrage zu testen.
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 * [Erstellen einer IoT-Lösung mithilfe von Stream Analytics:](./stream-analytics-build-an-iot-solution-using-stream-analytics.md) In diesem Tutorial wird erläutert, wie Sie eine End-to-End-Lösung mit einem Datengenerator erstellen, die den Datenverkehr an einer Mautstation simuliert.

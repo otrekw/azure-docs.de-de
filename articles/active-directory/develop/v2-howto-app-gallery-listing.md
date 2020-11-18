@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: d6df94cca46d82c3e066779cd28584c84f12fbce
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
+ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339432"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93356347"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -97,6 +97,7 @@ Die folgende Tabelle enthält einen Vergleich der drei wichtigsten Standards: Op
 | Mobile-basiertes einmaliges Abmelden| √| √* |
 | Richtlinien für den bedingten Zugriff für mobile Anwendungen| √| X |
 | Nahtlose MFA-Erfahrung für mobile Anwendungen| √| X |
+| SCIM-Bereitstellung| √| √ |
 | Zugriff auf Microsoft Graph| √| X |
 
 *Möglich, Microsoft stellt jedoch keine Beispiele und Anweisungen bereit.
@@ -261,7 +262,7 @@ Wenn Sie Ihre im Katalog aufzulistende Anwendung mithilfe von Kennwort-SSO hinzu
 
 ![Auflisten einer Kennwort-SSO-Anwendung im Katalog](./media/howto-app-gallery-listing/passwordsso.png)
 
-Wenn Sie einen SCIM 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. 
+Wenn Sie einen [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. 
 
    ![Anfordern der Benutzerbereitstellung](./media/howto-app-gallery-listing/user-provisioning.png)
 

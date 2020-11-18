@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 11/05/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1485c2abd24022dbfa6476e3c5a530413b9cb4f2
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233796"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489521"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -82,9 +82,9 @@ Bevor Sie die Legacyauthentifizierung in Ihrem Verzeichnis blockieren können, m
 
 1. Navigieren Sie zu **Azure-Portal** > **Azure Active Directory** > **Anmeldungen**.
 1. Falls die Spalte „Client-App“ nicht angezeigt wird, fügen Sie sie durch Klicken auf **Spalten** > **Client-App** hinzu.
-1. Klicken Sie auf **Filter hinzufügen** > **Client-App** , und wählen Sie alle älteren Authentifizierungsprotokolle aus. Klicken Sie auf eine Stelle außerhalb des Filterdialogfelds, um die Auswahl anzuwenden und das Dialogfeld zu schließen.
+1. Klicken Sie auf **Filter hinzufügen** > **Client-App**, und wählen Sie alle älteren Authentifizierungsprotokolle aus. Klicken Sie auf eine Stelle außerhalb des Filterdialogfelds, um die Auswahl anzuwenden und das Dialogfeld zu schließen.
 
-Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App** -Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
+Durch das Filtern werden Ihnen nur Anmeldeversuche von Legacyauthentifizierungsprotokollen angezeigt. Bei Klicken auf jeden einzelnen Anmeldeversuch werden Ihnen weitere Details angezeigt. Das **Client-App**-Feld auf der Registerkarte **Grundlegende Informationen** gibt an, welche Legacyauthentifizierungsprotokolle verwendet wurden.
 
 Diese Protokolle geben an, welche Benutzer weiterhin von der Legacyauthentifizierung abhängig sind, und welche Anwendungen ältere Protokolle für Authentifizierungsanforderungen verwenden. Implementieren Sie für Benutzer, die in diesen Protokollen nicht aufgeführt sind und nachweislich keine Legacyauthentifizierung verwenden, eine Richtlinie für bedingten Zugriff, die nur für diese Benutzer vorgesehen ist.
 
@@ -116,6 +116,10 @@ Durch das Konfigurieren einer Richtlinie für **Andere Clients** wird die gesamt
 Es kann bis zu 24 Stunden dauern, bis die Richtlinie wirksam wird.
 
 Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung **Andere Clients** auswählen. Die Endbenutzererfahrung ist jedoch immer die gleiche: Der Zugriff ist blockiert.
+
+### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online-und B2B-Gastbenutzer
+
+Zum Blockieren des B2B-Benutzerzugriffs über die Legacyauthentifizierung auf SharePoint Online müssen Organisationen die Legacyauthentifizierung in SharePoint mit dem PowerShell-Befehl `Set-SPOTenant` deaktivieren und den `-LegacyAuthProtocolsEnabled`-Parameter auf `$false` festlegen. Weitere Informationen zum Festlegen dieses Parameters finden Sie im SharePoint-PowerShell-Referenzdokument zu [Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

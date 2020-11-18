@@ -4,15 +4,15 @@ description: In diesem Artikel werden die im kommerziellen Microsoft-Marketplace
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-author: keferna
-ms.author: keferna
+author: trkeya
+ms.author: trkeya
 ms.date: 10/06/2020
-ms.openlocfilehash: 0d22e10a71c3eee2026f55a73074ba02c68c2b78
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 897f16d84a3e1cf0ca747e90ce621a35ff326b2a
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146176"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94488977"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Leitfaden zur Veröffentlichung nach Angebotstyp
 
@@ -30,9 +30,8 @@ Die folgende Tabelle zeigt die Angebotstypen im kommerziellen Marketplace in Par
 
 | **Angebotstyp**    | **Beschreibung**  |
 | :------------------- | :-------------------|
-| [Azure-Anwendung: **Verwaltete Anwendung**](marketplace-managed-apps.md) | Verwenden Sie den Angebotstyp „Azure-Anwendung: Verwaltete Anwendung“, wenn die folgenden Bedingungen gelten: <br> <ul> <li>Sie stellen entweder eine Abonnement-basierte Lösung für Ihren Kunden mit einer VM oder eine vollständig IaaS-basierte Lösung bereit. </li> <li>Sie oder Ihr Kunde setzen voraus, dass die Lösung von einem Partner verwaltet wird. </li> <ul> |
-| [Azure-Anwendung: **Lösungsvorlage**](marketplace-solution-templates.md) | Verwenden Sie den Angebotstyp „Azure-Anwendung: Lösungsvorlage“, wenn für eine Lösung neben einer einzelnen VM noch zusätzliche Bereitstellungs- und Konfigurationsautomatisierung erforderlich ist. In Lösungsvorlagen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich VMs u. a.  |
-  | [**Azure-Container**](marketplace-containers.md) | Verwenden Sie den Angebotstyp „Azure Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure-Containerdienst bereitgestellt wird. |
+| [**Azure-Anwendung**](plan-azure-application-offer.md) | Es gibt zwei Typen von Azure-Anwendungsplänen: _Lösungsvorlage_ und _verwaltete Anwendung_. Beide Plantypen unterstützen die Automatisierung der Bereitstellung und Konfiguration einer Lösung auf mehr als einer einzelnen VM. Sie können die Bereitstellung mehrerer Ressourcen automatisieren, beispielsweise VMs, Netzwerke und Speicherressourcen, um komplexe Lösungen (z. B. IaaS-Lösungen) bereitzustellen. Bei beiden Plantypen können viele verschiedene Arten von Azure-Ressourcen genutzt werden, einschließlich u. a. VMs.<ul><li>Pläne für **Lösungsvorlagen** zählen zu den wichtigsten Optionen für die Veröffentlichung von Lösungen im kommerziellen Marketplace. Pläne für Lösungsvorlagen sind keine Transaktionsangebote im kommerziellen Marketplace. Sie können jedoch zum Bereitstellen kostenpflichtiger VM-Angebote verwendet werden, die über den kommerziellen Marketplace abgerechnet werden. Verwenden Sie den Plantyp für Lösungsvorlagen, wenn der Kunde die Lösung verwaltet und die Transaktionen über einen anderen Plan abgerechnet werden.</li><br><li>Verwenden Sie Pläne für **verwaltete Anwendungen**, um mühelos vollständig verwaltete, schlüsselfertige Anwendungen für Ihre Kunden zu erstellen und bereitzustellen. Sie verfügen über die gleichen Funktionen wie Pläne für Lösungsvorlagen mit einigen wichtigen Unterschieden:</li><ul><li> Die Ressourcen werden in einer Ressourcengruppe bereitgestellt und vom Herausgeber der App verwaltet. Die Ressourcengruppe befindet sich zwar im Abonnement des Verbrauchers, eine Identität im Mandanten des Herausgebers hat jedoch Zugriff auf die Ressourcengruppe.</li><li>Als Herausgeber legen Sie die Kosten für den laufenden Support der Lösung fest, und Transaktionen erfolgen über den kommerziellen Marketplace.</li></ul>Verwenden Sie den Plantyp für verwaltete Anwendungen, wenn Sie oder Ihr Kunde möchten, dass die Lösung von einem Partner verwaltet wird, oder wenn Sie eine abonnementbasierte Lösung bereitstellen.</ul> |
+| [**Azure-Container**](marketplace-containers.md) | Verwenden Sie den Angebotstyp „Azure Container“, wenn Ihre Lösung ein Docker-Container-Image ist, das als Kubernetes-basierter Azure-Containerdienst bereitgestellt wird. |
 | [**Virtueller Azure-Computer**](marketplace-virtual-machines.md) | Verwenden Sie den VM-Angebotstyp beim Bereitstellen einer virtuellen Appliance für das Abonnement Ihres Kunden. |
 | [**Beratungsdienst**](consulting-services.md) | Beratungsdienste unterstützen Kunden dabei, Verbindungen mit Diensten herzustellen, um die Nutzung von Azure-, Dynamics 365- oder Power Suite-Diensten zu unterstützen und zu erweitern.|
 | [**Dynamics 365**](appsource-offer-publishing-guide.md) | Sie können AppSource-Angebote veröffentlichen, die Dynamics 365 Business Central, Dynamics 365 Customer Engagement, Power Apps sowie die Apps „Finance“ und „Operations“ ergänzen oder erweitern.|

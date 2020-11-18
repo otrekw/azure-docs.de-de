@@ -2,13 +2,13 @@
 title: Schaltfläche zum Bereitstellen in Azure
 description: Verwenden Sie diese Schaltfläche, um Azure Resource Manager-Vorlagen aus einem GitHub-Repository bereitzustellen.
 ms.topic: conceptual
-ms.date: 10/22/2020
-ms.openlocfilehash: 62a0a8b0336d9a7fcf00efb172775b9606bcef98
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/10/2020
+ms.openlocfilehash: 7d002508f6b2402f8cff40fb0369896080ecbbad
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675390"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94490898"
 ---
 # <a name="use-a-deployment-button-to-deploy-templates-from-github-repository"></a>Verwenden einer Bereitstellungsschaltfläche zum Bereitstellen von Vorlagen aus einem GitHub-Repository
 
@@ -35,7 +35,7 @@ Das Bild sieht so aus:
 
 ## <a name="create-url-for-deploying-template"></a>Erstellen einer URL zum Bereitstellen einer Vorlage
 
-Beginnen Sie mit der unformatierten URL für die Vorlage in Ihrem Repository, um die URL für Ihre Vorlage zu erstellen: Klicken Sie auf **Roh** , um die unformatierte URL anzuzeigen.
+Beginnen Sie mit der unformatierten URL für die Vorlage in Ihrem Repository, um die URL für Ihre Vorlage zu erstellen: Klicken Sie auf **Roh**, um die unformatierte URL anzuzeigen.
 
 :::image type="content" source="./media/deploy-to-azure-button/select-raw.png" alt-text="Schaltfläche „Roh“ anklicken":::
 
@@ -71,6 +71,14 @@ https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.github
 
 Damit ist die URL für Ihren Link vollständig.
 
+Wenn Sie [Git mit Azure Repos](/azure/devops/repos/git/) anstelle eines GitHub-Repositorys verwenden, können Sie die Schaltfläche „Bereitstellung in Azure“ dennoch verwenden. Sorgen Sie dafür, dass es sich bei Ihrem Repository um ein öffentliches handelt. Verwenden Sie den [Items-Vorgang](/rest/api/azure/devops/git/items/get), um die Vorlage abzurufen. Ihre Anforderung sollte das folgende Format aufweisen:
+
+```http
+https://dev.azure.com/{organization-name}/{project-name}/_apis/git/repositories/{repository-name}/items?scopePath={url-encoded-path}&api-version=6.0
+```
+
+Codieren Sie diese Anforderungs-URL.
+
 ## <a name="create-deploy-to-azure-button"></a>Erstellen der Schaltfläche für die Bereitstellung in Azure
 
 Fügen Sie zum Schluss Link und Bild zusammen.
@@ -87,6 +95,12 @@ Verwenden Sie für HTML folgenden Code:
 <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-storage-account-create%2Fazuredeploy.json" target="_blank">
   <img src="https://aka.ms/deploytoazurebutton"/>
 </a>
+```
+
+Bei Git mit einem Azure-Repository weist die Schaltfläche das folgende Format auf:
+
+```markdown
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fdev.azure.com%2Forgname%2Fprojectname%2F_apis%2Fgit%2Frepositories%2Freponame%2Fitems%3FscopePath%3D%252Freponame%252Fazuredeploy.json%26api-version%3D6.0)
 ```
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
