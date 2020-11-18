@@ -1,7 +1,7 @@
 ---
 title: One-vs-All-Multiklasse
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ in Azure Machine Learning verwenden, um ein Multiklassen-Klassifizierungsmodell aus einer Zusammenstellung von Binärklassifizierungsmodellen zu erstellen.
+description: Erfahren Sie, wie Sie das Modul „One-vs-All-Multiklasse“ im Azure Machine Learning-Designer verwenden, um eine Gruppe aus Binärklassifizierungsmodellen zu erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: dfe01e16b55325db03e4150a33ae5c4aa5822ae2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90898500"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376331"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All-Multiklasse
 
@@ -26,11 +26,11 @@ Dieses Modul ist nützlich zum Erstellen von Modellen, mit denen drei oder mehr 
 
 Einige Klassifizierungsalgorithmen sind so gestaltet, dass sie die Verwendung von mehr als zwei Klassen ermöglichen. Bei anderen sind die möglichen Ergebnisse auf einen von zwei Werten beschränkt (binäres Modell oder Zweiklassenmodell). Allerdings gibt es auch für Binärklassifizierungsalgorithmen verschiedene Strategien, um sie an Multiklassen-Klassifizierungsaufgaben anzupassen. 
 
-In diesem Modul wird die One-vs-All-Methode implementiert, durch die für jede der Ausgabeklassen ein binäres Modell erstellt wird. Das Modul bewertet jedes dieser binären Modelle für die einzelnen Klassen anhand seines Komplements (alle anderen Klassen im Modell), als wäre es ein Binärklassifizierungsproblem. Für die Vorhersage führt das Modul dann diese binären Klassifizierer aus und wählt die Vorhersage mit der höchsten Zuverlässigkeitsbewertung.  
+In diesem Modul wird die One-vs-All-Methode implementiert, durch die für jede der Ausgabeklassen ein binäres Modell erstellt wird. Das Modul bewertet jedes dieser binären Modelle für die einzelnen Klassen anhand seines Komplements (alle anderen Klassen im Modell), als wäre es ein Binärklassifizierungsproblem. Dieser Ansatz bietet nicht nur mehr Effizienz in Bezug auf Berechnungen (es werden nur `n_classes`-Klassifizierer benötigt), sondern zudem den Vorteil einer hohen Interpretierbarkeit. Da jede Klasse durch nur einen einzigen Klassifizierer dargestellt wird, ist es möglich, durch Untersuchen des entsprechenden Klassifizierers Informationen über die Klasse zu erhalten. Dies ist die gängigste Strategie für die Multiklassenklassifizierung und eine sinnvolle Standardauswahl. Für die Vorhersage führt das Modul dann diese binären Klassifizierer aus und wählt die Vorhersage mit der höchsten Zuverlässigkeitsbewertung. 
 
 Im Wesentlichen erstellt das Modul eine Zusammenstellung einzelner Modelle und führt die Ergebnisse anschließend zusammen, um ein einzelnes Modell zu erstellen, das alle Klassen vorhersagt. Jeder binäre Klassifizierer kann als Grundlage für ein One-vs-All-Modell verwendet werden.  
 
-Ein Beispiel: Angenommen, Sie konfigurieren ein Modell vom Typ [Two-Class Support Vector Machine](two-class-support-vector-machine.md) (2-Klassen-Support Vector Machine) und stellen dieses Modell als Eingabe für das Modul „One-vs-All-Multiklasse“ bereit. Das Modul erstellt daraufhin Modelle vom Typ „Two-Class Support Vector Machine“ (2-Klassen-Support Vector Machine) für alle Elemente der Ausgabeklasse. Anschließend wendet es die One-vs-All-Methode an, um die Ergebnisse für alle Klassen zu kombinieren.  
+Nehmen Sie z. B. an, Sie konfigurieren ein [Two-Class Support Vector Machine](two-class-support-vector-machine.md)-Modell und stellen dieses Modell als Eingabe für das Modul One-vs-All-Multiklasse bereit. Das Modul erstellt daraufhin Modelle vom Typ „Two-Class Support Vector Machine“ (2-Klassen-Support Vector Machine) für alle Elemente der Ausgabeklasse. Anschließend wendet es die One-vs-All-Methode an, um die Ergebnisse für alle Klassen zu kombinieren.  
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Konfigurieren des Klassifizierers „One-vs-All-Multiklasse“  
 

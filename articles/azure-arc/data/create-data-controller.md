@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: a78c67892e2bccb7c98d680539a84c2cc1f49a95
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 6830bdd38e8e1f1d649673cfdaf48e8c50ba6c3e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372292"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413223"
 ---
 # <a name="create-the-azure-arc-data-controller"></a>Erstellen des Azure Arc-Datencontrollers
 
@@ -36,7 +36,8 @@ Derzeit werden die folgenden Kubernetes-Dienste und -Distributionen unterstützt
 - Open-Source-Upstreamversion von Kubernetes – in der Regel mit kubeadm bereitgestellt
 
 > [!IMPORTANT]
-> * Die unterstützte Mindestversion von Kubernetes ist v1.14.
+> * Die unterstützte Mindestversion von Kubernetes ist v1.17.
+> * Die unterstützte Mindestversion von OCP ist 4.3.
 > * Unter [Konnektivitätsanforderungen](connectivity.md) erfahren Sie, welche Konnektivität zwischen Ihrer Umgebung und Azure erforderlich ist.
 > * Informationen zum Konfigurieren Ihres beständigen Speichers finden Sie in der [Anleitung zur Speicherkonfiguration](storage-configuration.md).
 > * Wenn Sie Azure Kubernetes Service verwenden, muss die Größe der Workerknoten-VM Ihres Clusters mindestens **Standard_D8s_v3** betragen, und der Cluster muss **Premium-Datenträger** nutzen. Der Cluster sollte sich nicht über mehrere Verfügbarkeitszonen hinweg ausdehnen. 

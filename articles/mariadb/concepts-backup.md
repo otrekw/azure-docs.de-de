@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 8/13/2020
-ms.openlocfilehash: d452070619a8e6284b976ff202d2a86f1ff9312b
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 1d95459797a32ab3e026ee1c3a2cf93fe6e95cc4
+ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480733"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93378957"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mariadb"></a>Sichern und Wiederherstellen in Azure Database for MariaDB
 
@@ -90,7 +90,12 @@ Sie können einen Server in einer anderen Azure-Region wiederherstellen, in der 
 
 Die Geowiederherstellung ist die Standardoption für die Wiederherstellung, wenn Ihr Server aufgrund eines Incidents in der Region, in der der Server gehostet wird, nicht verfügbar ist. Wenn Ihre Datenbankanwendung wegen eines umfangreichen Incidents in einer Region nicht mehr verfügbar ist, können Sie einen Server aus den georedundanten Sicherungen auf einem Server in einer beliebigen anderen Region wiederherstellen. Bei der Geowiederherstellung wird die aktuellste Sicherung des Servers verwendet. Zwischen der Erstellung einer Sicherung und der Replikation in einer anderen Region kommt es zu einer Verzögerung. Diese Verzögerung kann bis zu einer Stunde betragen. Folglich kann bei einem Notfall ein Datenverlust von bis zu einer Stunde auftreten.
 
+> [!IMPORTANT]
+>Wenn für einen neu erstellten Server eine Geowiederherstellung durchgeführt wird, kann die anfängliche Sicherungssynchronisierung je nach Datenumfang mehr als 24 Stunden dauern, da der Kopiervorgang einer ersten vollständigen Momentaufnahmesicherung sehr viel länger dauert. Nachfolgende Momentaufnahmesicherungen sind inkrementelle Kopien, daher erfolgen nachfolgende Wiederherstellungen 24 Stunden nach der Servererstellung schneller. Wenn Sie Geowiederherstellungen zur Definition Ihrer RTO auswerten, sollten Sie die Geowiederherstellung bei neuen Servern **erst 24 Stunden** nach der Servererstellung auswerten, um bessere Schätzwerte zu erhalten.
+
 Während der Geowiederherstellung können folgende Serverkonfigurationen geändert werden: Computegeneration, virtueller Kern, Aufbewahrungszeitraum für die Sicherung und Sicherungsredundanzoptionen. Allerdings wird während der Geowiederherstellung nicht das Ändern des Tarifs („Basic“, „Allgemein“ oder „Arbeitsspeicheroptimiert“) oder der Speichergröße unterstützt.
+
+Die geschätzte Wiederherstellungszeit hängt von verschiedenen Faktoren ab, z.B. der Datenbankgröße, Transaktionsprotokollgröße und Netzwerkbandbreite sowie der Gesamtzahl von Datenbanken, die gleichzeitig in derselben Region wiederhergestellt werden müssen. Die Wiederherstellungszeit beträgt für gewöhnlich weniger als 12 Stunden.
 
 ### <a name="perform-post-restore-tasks"></a>Durchführen der Aufgaben nach der Wiederherstellung
 

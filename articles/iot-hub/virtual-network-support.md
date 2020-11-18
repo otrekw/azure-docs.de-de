@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 11/09/2020
 ms.author: jlian
-ms.openlocfilehash: cb6e4b2b10b6b44a544416ad5d57808c7ad4d83f
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427852"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413393"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -56,13 +56,13 @@ Ein privater Endpunkt kann für IoT Hub-Geräte-APIs (z. B. D2C-Nachrichten) so
 
 1. Geben Sie das Abonnement, die Ressourcengruppe, den Namen und die Region an, in der der neue private Endpunkt erstellt werden soll. Idealerweise sollte ein privater Endpunkt in der gleichen Region wie Ihr Hub erstellt werden.
 
-1. Klicken Sie auf **Weiter: Ressource** , und geben Sie das Abonnement für die IoT Hub-Ressource an. Wählen Sie dann **"Microsoft.Devices/IotHubs"** als Ressourcentyp, den IoT Hub-Namen als **Ressource** und **iotHub** als Zielunterressource aus.
+1. Klicken Sie auf **Weiter: Ressource**, und geben Sie das Abonnement für die IoT Hub-Ressource an. Wählen Sie dann **"Microsoft.Devices/IotHubs"** als Ressourcentyp, den IoT Hub-Namen als **Ressource** und **iotHub** als Zielunterressource aus.
 
-1. Klicken Sie auf **Weiter: Konfiguration** , und stellen Sie Ihr virtuelles Netzwerk und Subnetz bereit, in dem der private Endpunkt erstellt werden soll. Klicken Sie bei Bedarf auf die Option für die Integration in eine private Azure-DNS-Zone.
+1. Klicken Sie auf **Weiter: Konfiguration**, und stellen Sie Ihr virtuelles Netzwerk und Subnetz bereit, in dem der private Endpunkt erstellt werden soll. Klicken Sie bei Bedarf auf die Option für die Integration in eine private Azure-DNS-Zone.
 
-1. Klicken Sie auf **Weiter: Tags** , und stellen Sie optional Tags für Ihre Ressource bereit.
+1. Klicken Sie auf **Weiter: Tags**, und stellen Sie optional Tags für Ihre Ressource bereit.
 
-1. Klicken Sie auf **Überprüfen und erstellen** , um die Private Link-Ressource zu erstellen.
+1. Klicken Sie auf **Überprüfen und erstellen**, um die Private Link-Ressource zu erstellen.
 
 ### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Integrierter Event Hub-kompatibler Endpunkt unterstützt Zugriff über privaten Endpunkt nicht
 
@@ -174,13 +174,13 @@ IoT Hub kann Nachrichten an ein Speicherkonto im Kundenbesitz weiterleiten. Dami
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ( [*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke** , und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
+3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
 
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte** , und klicken Sie auf **Hinzufügen**. Wählen Sie **Storage** als Endpunkttyp aus.
+5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Storage** als Endpunkttyp aus.
 
 6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, wählen Sie den Container aus, den Sie in Blob Storage verwenden möchten, und geben Sie das Codierungs- und Dateinamenformat an. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** .
 
@@ -194,13 +194,13 @@ IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Event Hub-Namespa
 
 2. Wählen Sie **Azure Event Hubs-Datensender** als **Rolle** und **Azure AD user, group, or service principal** (Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal) für **Assigning access to** (Zugriff für) aus, und klicken Sie dann auf den Ressourcennamen Ihres IoT-Hubs in der Dropdownliste. Klicken Sie auf die Schaltfläche **Save** .
 
-3. Navigieren Sie in Ihren Event Hubs zur Registerkarte **Firewalls und virtuelle Netzwerke** , und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access event hubs** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Event Hubs erlauben). Klicken Sie auf die Schaltfläche **Save** .
+3. Navigieren Sie in Ihren Event Hubs zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access event hubs** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Event Hubs erlauben). Klicken Sie auf die Schaltfläche **Save** .
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
 
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte** , und klicken Sie auf **Hinzufügen**. Wählen Sie **Event Hubs** als Endpunkttyp aus.
+5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Event Hubs** als Endpunkttyp aus.
 
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, wählen Sie den Event Hub-Namespace und die Instanz aus, und klicken Sie auf die Schaltfläche **Erstellen**.
+6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, und wählen Sie den Event Hubs-Namespace und die Event Hubs-Instanz aus. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** aus, und klicken Sie auf die Schaltfläche **Erstellen**.
 
 Nun ist Ihr benutzerdefinierter Event Hub-Endpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Event Hubs zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
 
@@ -212,13 +212,13 @@ IoT Hub kann so konfiguriert werden, dass Nachrichten an einen Service Bus-Names
 
 2. Wählen Sie **Azure Service Bus-Datensender** als **Rolle** und **Azure AD user, group, or service principal** (Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal) für **Assigning access to** (Zugriff für) aus, und klicken Sie dann auf den Ressourcennamen Ihres IoT-Hubs in der Dropdownliste. Klicken Sie auf die Schaltfläche **Save** .
 
-3. Navigieren Sie in Ihrem Service Bus zur Registerkarte **Firewalls und virtuelle Netzwerke** , und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access this service bus** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Service Bus erlauben). Klicken Sie auf die Schaltfläche **Save** .
+3. Navigieren Sie in Ihrem Service Bus zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Allow trusted Microsoft services to access this service bus** (Vertrauenswürdigen Microsoft-Diensten den Zugriff auf Service Bus erlauben). Klicken Sie auf die Schaltfläche **Save** .
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Nachrichtenrouting**.
 
-5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte** , und klicken Sie auf **Hinzufügen**. Wählen Sie **Service Bus-Warteschlange** oder **Service Bus-Thema** (sofern zutreffend) als Endpunkttyp aus.
+5. Navigieren Sie zum Abschnitt **Benutzerdefinierte Endpunkte**, und klicken Sie auf **Hinzufügen**. Wählen Sie **Service Bus-Warteschlange** oder **Service Bus-Thema** (sofern zutreffend) als Endpunkttyp aus.
 
-6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, und wählen Sie den Namespace, die Warteschlange oder das Thema (sofern zutreffend) Ihres Service Bus aus. Klicken Sie auf die Schaltfläche **Erstellen** .
+6. Geben Sie auf der angezeigten Seite einen Namen für den Endpunkt ein, und wählen Sie den Namespace, die Warteschlange oder das Thema (sofern zutreffend) Ihres Service Bus aus. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** aus, und klicken Sie auf die Schaltfläche **Erstellen**.
 
 Nun ist Ihr benutzerdefinierter Service Bus-Endpunkt für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Service Bus-Ressource zuzugreifen. Sie können diesen Endpunkt jetzt zum Einrichten einer Routingregel verwenden.
 
@@ -230,13 +230,13 @@ Das IoT Hub-Feature für den Dateiupload ermöglicht Geräten das Hochladen von 
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ( [*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke** , und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
+3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
 4. Navigieren Sie auf der Seite Ihrer IoT Hub-Ressource zur Registerkarte **Dateiupload**.
 
-5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen** , **SAS TTL** , **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** . Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
+5. Wählen Sie auf der angezeigten Seite den Container aus, den Sie in Blob Storage verwenden möchten, und konfigurieren Sie die **Dateibenachrichtigungseinstellungen**, **SAS TTL**, **Standard-TTL** und die **Anzahl maximaler Zustellungen** nach Bedarf. Wählen Sie **Identitätsbasiert** als **Authentifizierungstyp** für Ihren Speicherendpunkt aus. Klicken Sie auf die Schaltfläche **Erstellen** . Wenn bei diesem Schritt eine Fehlermeldung angezeigt wird, legen Sie Ihr Speicherkonto vorübergehend so fest, dass der Zugriff aus **Allen Netzwerken** ermöglicht wird, und wiederholen Sie dann den Vorgang. Sie können die Firewall für das Speicherkonto konfigurieren, sobald die Konfiguration des Dateiuploads beendet ist.
 
 Nun ist Ihr Speicherendpunkt für den Dateiupload für die Verwendung der vom System zugewiesenen Identität des Hubs eingerichtet und verfügt trotz der Firewalleinschränkungen über die Berechtigung, auf Ihre Speicherressource zuzugreifen.
 
@@ -248,9 +248,9 @@ Diese Funktion erfordert Konnektivität von IoT Hub mit dem Speicherkonto. Damit
 
 1. Navigieren Sie im Azure-Portal zur Registerkarte **Zugriffssteuerung (IAM)** Ihres Speicherkontos, und klicken Sie im Abschnitt **Rollenzuweisung hinzufügen** auf **Hinzufügen**.
 
-2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ( [*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
+2. Wählen Sie **Mitwirkender an Storage-Blobdaten** ([*nicht* „Mitwirkender“ oder „Speicherkontomitwirkender“](../storage/common/storage-auth-aad-rbac-portal.md#azure-roles-for-blobs-and-queues)) als **Rolle** und **Azure AD-Benutzer, -Gruppe oder -Dienstprinzipal** für **Zugriff zuweisen für** aus, und wählen Sie dann in der Dropdownliste den Ressourcennamen Ihrer IoT Hub-Instanz aus. Klicken Sie auf die Schaltfläche **Save** .
 
-3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke** , und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
+3. Navigieren Sie in Ihrem Speicherkonto zur Registerkarte **Firewalls und virtuelle Netzwerke**, und aktivieren Sie die Option **Allow access from selected networks** (Zugriff von ausgewählten Netzwerken zulassen). Aktivieren Sie unter **Ausnahmen** das Kontrollkästchen für **Vertrauenswürdigen Microsoft-Diensten den Zugriff auf dieses Speicherkonto erlauben**. Klicken Sie auf die Schaltfläche **Save** .
 
 Sie können jetzt die Azure IoT-REST-APIs zum [Erstellen von Import-/Exportaufträgen](/rest/api/iothub/service/jobs/getimportexportjobs) verwenden, um Informationen zur Verwendung der Funktion für Massenimporte/-exporte zu erhalten. Sie müssen `storageAuthenticationType="identityBased"` im Anforderungstext bereitstellen und `inputBlobContainerUri="https://..."` und `outputBlobContainerUri="https://..."` als Eingabe- bzw. Ausgabe-URLs des Speicherkontos verwenden.
 

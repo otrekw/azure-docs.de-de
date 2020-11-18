@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: d55f52b5e99a7a617e2bec8bea4d6e6ef687730a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 898b0d00fcad99a1059e01ad54ce13d192f1227f
+ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91336529"
+ms.lasthandoff: 11/05/2020
+ms.locfileid: "93398010"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -45,7 +45,7 @@ Die Front-End-IP-Konfiguration Ihres regionsübergreifenden Lastenausgleichs ist
 :::image type="content" source="./media/cross-region-overview/cross-region-load-balancer.png" alt-text="Abbildung des regionsübergreifenden Lastenausgleichs." border="true":::
 
 > [!NOTE]
-> Der Back-End-Port für die Lastenausgleichsregel im regionsübergreifenden Lastenausgleich muss mit dem Front-End-Port der Lastenausgleichsregel/NAT-Regel für eingehenden Datenverkehr für den regionalen Standardlastenausgleich identisch sein. 
+> Der Back-End-Port Ihrer Lastenausgleichsregel für den regionsübergreifenden Lastenausgleich muss mit dem Front-End-Port der Lastenausgleichsregel/NAT-Regel für eingehenden Datenverkehr für den regionalen Standardlastenausgleich identisch sein. 
 
 ### <a name="regional-redundancy"></a>Regionale Redundanz
 
@@ -55,7 +55,7 @@ Wenn eine Region ausfällt, wird der Datenverkehr an den nächstgelegenen fehler
 
 Der Integritätstest des regionsübergreifenden Lastenausgleichs erfasst alle 20 Sekunden Informationen zur Verfügbarkeit. Wenn die Verfügbarkeit eines regionalen Lastenausgleichs auf 0 sinkt, erkennt der regionsübergreifende Lastenausgleich den Fehler. Der regionale Lastenausgleich wird dann von der Rotation ausgenommen. 
 
-:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Abbildung des regionsübergreifenden Lastenausgleichs." border="true":::
+:::image type="content" source="./media/cross-region-overview/global-region-view.png" alt-text="Abbildung der Ansicht des globalen Regionsdatenverkehrs." border="true":::
 
 ### <a name="ultra-low-latency"></a>Extrem geringe Latenz
 

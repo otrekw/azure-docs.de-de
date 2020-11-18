@@ -1,7 +1,7 @@
 ---
 title: 'Permutation Feature Importance (PFI): Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit dem PFI-Modul in Azure Machine Learning Bewertungen der Relevanz von Permutationsfeatures für Featurevariablen berechnen können, wenn ein trainiertes Modell und ein Testdataset vorliegen.
+description: Erfahren Sie, wie Sie mit dem Permutation Feature Importance-Modul im Designer Bewertungen der Relevanz von Permutationsfeatures für Featurevariablen berechnen können.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 02/24/2020
-ms.openlocfilehash: bddd9a6825899f646a86ae274c539b54156667c5
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8ae1e79922cc0f34e8b2d1f253fce5078df286d2
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319393"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421242"
 ---
 # <a name="permutation-feature-importance"></a>Permutation Feature Importance (PFI)
 

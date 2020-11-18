@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2020
 ms.author: yelevin
-ms.openlocfilehash: b769703f7e7054571a3b65a021c0123d8ae07078
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 140228a65be166bc172e81267c4449b49621e02c
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148234"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425778"
 ---
 # <a name="enable-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Aktivieren von User and Entity Behavior Analytics (UEBA) in Azure Sentinel 
 
 > [!IMPORTANT]
 >
-> - Das UEBA-Feature ist nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar** :
+> - Die Features UEBA und Entitätsseiten sind nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar**:
 >    - in den US-amerikanischen Regionen
 >    - in der Region Europa, Westen
 >    - in den australischen Regionen
 >
-> - In allen anderen geografischen Regionen verbleibt dieses Feature für den Augenblick in der **öffentlichen Vorschau** und wird ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - In allen anderen Geografien und Regionen bleiben diese Features bis auf Weiteres in der **Vorschau**. Die [zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

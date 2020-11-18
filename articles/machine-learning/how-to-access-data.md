@@ -1,5 +1,5 @@
 ---
-title: Herstellen einer Verbindung mit Azure-Speicherdiensten
+title: Herstellen einer Verbindung mit Speicherdiensten in Azure
 titleSuffix: Azure Machine Learning
 description: Hier erfahren Sie, wie Sie mithilfe von Datenspeichern während des Trainings mit Azure Machine Learning eine sichere Verbindung zu Azure Storage-Diensten herstellen.
 services: machine-learning
@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.author: sihhu
 author: MayMSFT
 ms.reviewer: nibaccam
-ms.date: 07/22/2020
-ms.custom: how-to, contperfq1, devx-track-python
-ms.openlocfilehash: db641eee13350f5a774e4ffd138e38c474af4981
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/03/2020
+ms.custom: how-to, contperfq1, devx-track-python, data4ml
+ms.openlocfilehash: 7f2c7e99117c338d07abc2ed8760c2be18955d66
+ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320855"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94489300"
 ---
-# <a name="connect-to-azure-storage-services"></a>Herstellen einer Verbindung mit Azure-Speicherdiensten
+# <a name="connect-to-storage-services-on-azure"></a>Herstellen einer Verbindung mit Speicherdiensten in Azure
 
-In diesem Artikel erfahren Sie, wie Sie **über Azure Machine Learning-Datenspeicher eine Verbindung mit Azure-Speicherdiensten herstellen**. Datenspeicher stellen eine sichere Verbindung mit Ihrem Azure-Speicherdienst her, ohne Ihre Anmeldeinformationen für die Authentifizierung und die Integrität Ihrer ursprünglichen Datenquelle zu gefährden. Darin werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. Sie können Datenspeicher mit dem [Azure Machine Learning-Python-SDK](#python) oder mit [Azure Machine Learning Studio](how-to-connect-data-ui.md) erstellen und registrieren.
+In diesem Artikel erfahren Sie, wie Sie **über Azure Machine Learning-Datenspeicher eine Verbindung mit Speicherdiensten in Azure herstellen**. Datenspeicher stellen eine sichere Verbindung mit Ihrem Azure-Speicherdienst her, ohne Ihre Anmeldeinformationen für die Authentifizierung und die Integrität Ihrer ursprünglichen Datenquelle zu gefährden. Darin werden Verbindungsinformationen wie Ihre Abonnement-ID und die Tokenautorisierung in Ihrer mit dem Arbeitsbereich verknüpften [Key Vault](https://azure.microsoft.com/services/key-vault/)-Instanz gespeichert, damit Sie sicher auf Ihren Speicher zuzugreifen können, ohne diese Informationen in Ihren Skripts hartcodieren zu müssen. Sie können Datenspeicher mit dem [Azure Machine Learning-Python-SDK](#python) oder mit [Azure Machine Learning Studio](how-to-connect-data-ui.md) erstellen und registrieren.
 
 Wenn Sie Datenspeicher mithilfe der VS Code-Erweiterung für Azure Machine Learning erstellen und verwalten möchten, finden Sie weitere Informationen in der [Schrittanleitung zur Ressourcenverwaltung für VS Code](how-to-manage-resources-vscode.md#datastores).
 
@@ -53,7 +53,7 @@ Sie benötigen Folgendes:
     Wenn Sie einen Arbeitsbereich erstellen, werden automatisch ein Azure-Blobcontainer und eine Azure-Dateifreigabe als Datenspeicher im Arbeitsbereich registriert. Sie erhalten die Namen `workspaceblobstore` und `workspacefilestore`. Der `workspaceblobstore` dient zum Speichern von Arbeitsbereichsartefakten und Ihren Protokollen zu Experimenten mit maschinellem Lernen. Er wird außerdem als **Standarddatenspeicher** festgelegt und kann nicht aus dem Arbeitsbereich gelöscht werden. Der `workspacefilestore` dient zum Speichern von Notebooks und R-Skripts, die über [Computeinstanzen](./concept-compute-instance.md#accessing-files) autorisiert werden.
     
     > [!NOTE]
-    > Azure Machine Learning-Designer erstellt automatisch einen Datenspeicher namens **azureml_globaldatasets** , wenn Sie ein Beispiel auf der Designerstartseite öffnen. Dieser Datenspeicher enthält nur Beispieldatasets. Verwenden Sie diesen Datenspeicher **nicht** für den Zugriff auf vertrauliche Daten.
+    > Azure Machine Learning-Designer erstellt automatisch einen Datenspeicher namens **azureml_globaldatasets**, wenn Sie ein Beispiel auf der Designerstartseite öffnen. Dieser Datenspeicher enthält nur Beispieldatasets. Verwenden Sie diesen Datenspeicher **nicht** für den Zugriff auf vertrauliche Daten.
 
 <a name="matrix"></a>
 
@@ -105,15 +105,17 @@ Informationen zu Kontoschlüssel, SAS-Token und Dienstprinzipal finden Sie im [A
       1. Wechseln Sie für Kontoschlüssel zu **Kontoschlüssel** im Bereich **Einstellungen**. 
       1. Für SAS-Token wechseln Sie zu **Shared Access Signatures** im Bereich **Einstellungen**.
 
-* Wenn Sie einen Dienstprinzipal für die Authentifizierung verwenden möchten, navigieren Sie zu Ihren **App-Registrierungen** , und wählen Sie die gewünschte App aus. 
+* Wenn Sie einen Dienstprinzipal für die Authentifizierung verwenden möchten, navigieren Sie zu Ihren **App-Registrierungen**, und wählen Sie die gewünschte App aus. 
     * Auf der entsprechenden Übersichtsseite werden erforderliche Informationen wie Mandanten-ID und Client-ID angezeigt.
 
 > [!IMPORTANT]
-> Aus Sicherheitsgründen müssen möglicherweise Ihre Zugriffsschlüssel für ein Azure Storage-Konto geändert werden (Kontoschlüssel oder SAS-Token). Denken Sie in diesem Fall daran, die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern zu synchronisieren. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). 
-
+> * Wenn Sie Ihre Zugriffsschlüssel für ein Azure Storage-Konto (Kontoschlüssel oder SAS-Token) ändern müssen, stellen Sie sicher, dass die neuen Anmeldeinformationen mit Ihrem Arbeitsbereich und den damit verbundenen Datenspeichern synchronisiert werden. Eine Anleitung zum Synchronisieren Ihrer aktualisierten Anmeldeinformationen finden Sie [hier](how-to-change-storage-access-key.md). 
 ### <a name="permissions"></a>Berechtigungen
 
-Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](../role-based-access-control/built-in-roles.md#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. Für den Datenlesezugriff müssen Ihre Anmeldeinformationen für die Authentifizierung ein Minimum an Berechtigungen zum Auflisten und Lesen für Container und Objekte aufweisen. Für den Datenschreibzugriff sind auch Berechtigungen zum Schreiben und Hinzufügen erforderlich.
+Stellen Sie für Azure-Blobcontainer und Azure Data Lake Gen2-Speicher sicher, dass Ihre Anmeldeinformationen für die Authentifizierung über den Zugriff **Storage-Blobdatenleser** verfügen. Erfahren Sie mehr über [Storage-Blobdatenleser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader). Ein Konto-SAS-Token besitzt standardmäßig keine Berechtigungen. 
+* Für den **Lesezugriff** auf Daten müssen Ihre Anmeldeinformationen für die Authentifizierung mindestens die Berechtigungen zum Auflisten und Lesen für Container und Objekte besitzen. 
+
+* Für den **Datenschreibzugriff** sind auch Berechtigungen zum Schreiben und Hinzufügen erforderlich.
 
 <a name="python"></a>
 
@@ -130,6 +132,8 @@ In diesem Abschnitt finden Sie Beispiele für das Erstellen und Registrieren ein
  Informationen zum Erstellen von Datenspeichern für andere unterstützte Speicherdienste finden Sie in der [Referenzdokumentation für die entsprechenden `register_azure_*`-Methoden](/python/api/azureml-core/azureml.core.datastore.datastore?preserve-view=true&view=azure-ml-py#&preserve-view=truemethods).
 
 Wenn Sie eine Umgebung mit weniger Code bevorzugen, finden Sie weitere Informationen unter [Verbinden mit Daten mit Azure Machine Learning Studio](how-to-connect-data-ui.md).
+>[!IMPORTANT]
+> Wenn Sie die Registrierung aufheben und einen Datenspeicher mit dem gleichen Namen erneut registrieren und dabei ein Fehler auftritt, ist bei dem Azure Key Vault für Ihren Arbeitsbereich vorläufiges Löschen möglicherweise nicht aktiviert. Standardmäßig ist vorläufiges Löschen für die Key Vault-Instanz aktiviert, die von Ihrem Arbeitsbereich erstellt wurde. Es ist jedoch möglicherweise nicht aktiviert, wenn Sie einen vorhandenen Schlüsseltresor verwendet haben oder einen Arbeitsbereich vor Oktober 2020 erstellt haben. Informationen zum Aktivieren des vorläufigen Löschens finden Sie unter [Aktivieren des vorläufigen Löschens für einen vorhandenen Schlüsseltresor]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 > [!NOTE]
 > Der Datenspeichername darf nur Kleinbuchstaben, Ziffern und Unterstriche enthalten. 

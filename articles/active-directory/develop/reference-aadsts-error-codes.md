@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.workload: identity
 ms.topic: reference
-ms.date: 04/30/2020
+ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4bd738197c84d7dce36f087d170f61a55d8e9f32
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93241326"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410928"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -74,7 +74,7 @@ Für das Feld `error` gibt es mehrere mögliche Werte. Unter den Protokolldokume
 ## <a name="lookup-current-error-code-information"></a>Nachschlagen aktueller Fehlercodeinformationen
 Fehlercodes und Meldungen unterliegen Änderungen.  Die aktuellen Informationen finden Sie auf der Seite [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error). Sie enthält AADSTS-Fehlerbeschreibungen, Fehlerbehebungen und einige Vorschläge für Problemumgehungen.  
 
-Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie beispielsweise den Fehlercode „AADSTS16000“ erhalten haben, sollten Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „16000“ suchen.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=16000](https://login.microsoftonline.com/error?code=16000).
+Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen Sie unter [https://login.microsoftonline.com/error](https://login.microsoftonline.com/error) nach „50058“.  Sie können auch einen direkten Link zu einem bestimmten Fehler einrichten, indem Sie die Nummer des Fehlercodes der URL hinzufügen: [https://login.microsoftonline.com/error?code=50058](https://login.microsoftonline.com/error?code=50058).
 
 ## <a name="aadsts-error-codes"></a>AADSTS-Fehlercodes
 
@@ -250,7 +250,7 @@ Suchen Sie nach dem numerischen Teil des zurückgegebenen Fehlercodes.  Wenn Sie
 | AADSTS90043 | NationalCloudAuthCodeRedirection: Das Feature ist deaktiviert. |
 | AADSTS90051 | InvalidNationalCloudId: Der nationale Cloudbezeichner enthält einen ungültigen Cloudbezeichner. |
 | AADSTS90055 | TenantThrottlingError: Zu viele eingehende Anforderungen. Diese Ausnahme wird für blockierte Mandanten ausgelöst. |
-| AADSTS90056 | BadResourceRequest: Um den Code für ein Zugriffstoken einzulösen, sollte die App eine POST-Anforderung an den `/token`-Endpunkt senden. Außerdem sollten Sie zuvor einen Autorisierungscode bereitstellen und ihn in der POST-Anforderung an den `/token`-Endpunkt senden. In diesem Artikel finden Sie einen Überblick über den OAuth 2.0-Autorisierungscodeflow: [../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md). Sie müssen den Benutzer an den `/authorize`-Endpunkt weiterleiten, der einen authorization_code zurückgibt. Durch das Senden einer Anforderung an den `/token`-Endpunkt erhält der Benutzer das Zugriffstoken. Melden Sie sich am Azure-Portal an, und überprüfen Sie **App-Registrierungen > Endpunkte** , um sicherzustellen, dass die beiden Endpunkte ordnungsgemäß konfiguriert wurden. |
+| AADSTS90056 | BadResourceRequest: Um den Code für ein Zugriffstoken einzulösen, sollte die App eine POST-Anforderung an den `/token`-Endpunkt senden. Außerdem sollten Sie zuvor einen Autorisierungscode bereitstellen und ihn in der POST-Anforderung an den `/token`-Endpunkt senden. In diesem Artikel finden Sie einen Überblick über den OAuth 2.0-Autorisierungscodeflow: [../azuread-dev/v1-protocols-oauth-code.md](../azuread-dev/v1-protocols-oauth-code.md). Sie müssen den Benutzer an den `/authorize`-Endpunkt weiterleiten, der einen authorization_code zurückgibt. Durch das Senden einer Anforderung an den `/token`-Endpunkt erhält der Benutzer das Zugriffstoken. Melden Sie sich am Azure-Portal an, und überprüfen Sie **App-Registrierungen > Endpunkte**, um sicherzustellen, dass die beiden Endpunkte ordnungsgemäß konfiguriert wurden. |
 | AADSTS90072 | PassThroughUserMfaError: Das externe Konto, mit dem sich der Benutzer anmeldet, ist nicht im Mandanten für die Anmeldung vorhanden. Aus diesem Grund kann der Benutzer die MFA-Anforderungen für den Mandanten nicht erfüllen. Dieser Fehler kann auch auftreten, wenn die Benutzer synchronisiert werden, aber das Attribut „ImmutableID (sourceAnchor)“ zwischen Active Directory und Azure AD nicht übereinstimmt. Das Konto muss zunächst als externer Benutzer im Mandanten hinzugefügt werden. Melden Sie sich ab, und melden Sie sich mit einem anderen Azure AD-Benutzerkonto an. |
 | AADSTS90081 | OrgIdWsFederationMessageInvalid: Fehler beim Verarbeiten einer WS-Verbundnachricht durch den Dienst. Die Nachricht ist ungültig. |
 | AADSTS90082 | OrgIdWsFederationNotSupported: Die ausgewählte Authentifizierungsrichtlinie für die Anforderung wird aktuell nicht unterstützt. |

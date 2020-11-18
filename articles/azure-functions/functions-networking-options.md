@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 3a44efac274bf5c5d6cfc6a0f044ee89b479cbe6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897074"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413087"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -117,6 +117,9 @@ Trigger für virtuelle Netzwerke können auch mithilfe des folgenden Azure CLI-B
 az resource update -g <resource_group> -n <function_app_name>/config/web --set properties.functionsRuntimeScaleMonitoringEnabled=1 --resource-type Microsoft.Web/sites
 ```
 
+> [!TIP]
+> Das Aktivieren von Triggern für virtuelle Netzwerke kann sich auf die Leistung Ihrer Anwendung auswirken, da die Instanzen Ihres App Service-Plans Ihre Trigger überwachen müssen, um den Zeitpunkt einer erforderlichen Skalierung zu bestimmen. Diese Auswirkung ist wahrscheinlich nur geringfügig.
+
 Trigger für virtuelle Netzwerke werden ab Version 2.x der Functions-Runtime unterstützt. Folgende HTTP-fremde Triggertypen werden unterstützt:
 
 | Durchwahl | Mindestversion |
@@ -156,8 +159,8 @@ Wenn Sie eine Funktions-App in einen Premium-Tarif oder einen App Service-Plan 
 ## <a name="automation"></a>Automation
 Die folgenden APIs ermöglichen es Ihnen, regionale Integrationen virtueller Netzwerke programmgesteuert zu verwalten:
 
-+ **Azure CLI** : Verwenden Sie die Befehle [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration), um Integrationen regionaler virtueller Netzwerk hinzuzufügen, aufzulisten oder zu entfernen.  
-+ **ARM-Vorlagen** : Die Integration regionaler virtueller Netzwerke kann mithilfe einer Azure Resource Manager-Vorlage aktiviert werden. Ein vollständiges Beispiel finden Sie in [dieser Functions-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
++ **Azure CLI**: Verwenden Sie die Befehle [`az functionapp vnet-integration`](/cli/azure/functionapp/vnet-integration), um Integrationen regionaler virtueller Netzwerk hinzuzufügen, aufzulisten oder zu entfernen.  
++ **ARM-Vorlagen**: Die Integration regionaler virtueller Netzwerke kann mithilfe einer Azure Resource Manager-Vorlage aktiviert werden. Ein vollständiges Beispiel finden Sie in [dieser Functions-Schnellstartvorlage](https://azure.microsoft.com/resources/templates/101-function-premium-vnet-integration/).
 
 ## <a name="troubleshooting"></a>Problembehandlung
 

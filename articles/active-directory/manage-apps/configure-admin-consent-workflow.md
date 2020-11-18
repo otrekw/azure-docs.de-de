@@ -12,12 +12,12 @@ ms.date: 10/29/2019
 ms.author: kenwith
 ms.reviewer: luleon
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cde5afe01c90b68567f411bcf26063f02ca5a34a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 7fc688ca0981024e5e08c9fb20ecb6704efbd7f2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027243"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658773"
 ---
 # <a name="configure-the-admin-consent-workflow-preview"></a>Konfigurieren des Workflows für die Administratoreinwilligung (Vorschau)
 
@@ -44,10 +44,10 @@ So aktivieren Sie den Workflow für die Administratoreinwilligung und wählen Pr
  
 6. Konfigurieren Sie die folgenden Einstellungen:
 
-   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen** : Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören.
-   * **Die ausgewählten Benutzer erhalten E-Mail-Benachrichtigungen zu Anforderungen** : Aktivieren oder deaktivieren Sie Benachrichtigungen an die Prüfer, wenn eine Anforderung gesendet wird.  
-   * **Die ausgewählten Benutzer erhalten Erinnerungen zum Ablauf von Anforderungen** : Aktivieren oder deaktivieren Sie Erinnerungs-E-Mail-Benachrichtigungen an die Prüfer, wenn eine Anforderung bald abläuft.  
-   * **Einwilligungsanforderung läuft nach (Tagen) ab** : Geben Sie an, wie lange Anforderungen gültig bleiben.
+   * **Benutzer zum Überprüfen von Anforderungen zur Administratoreinwilligung auswählen**: Wählen Sie die Prüfer für diesen Workflow aus Benutzern aus, die der Rolle „Globaler Administrator“, „Cloudanwendungsadministrator“ oder „Anwendungsadministrator“ angehören.
+   * **Die ausgewählten Benutzer erhalten E-Mail-Benachrichtigungen zu Anforderungen**: Aktivieren oder deaktivieren Sie Benachrichtigungen an die Prüfer, wenn eine Anforderung gesendet wird.  
+   * **Die ausgewählten Benutzer erhalten Erinnerungen zum Ablauf von Anforderungen**: Aktivieren oder deaktivieren Sie Erinnerungs-E-Mail-Benachrichtigungen an die Prüfer, wenn eine Anforderung bald abläuft.  
+   * **Einwilligungsanforderung läuft nach (Tagen) ab**: Geben Sie an, wie lange Anforderungen gültig bleiben.
 
 7. Wählen Sie **Speichern** aus. Die Aktivierung der Funktion kann bis zu einer Stunde dauern.
 
@@ -147,7 +147,7 @@ Nein, aktuell erhalten Anforderer Updates nur per E-Mail-Benachrichtigung.
 
 **Habe ich als Prüfer die Möglichkeit, eine Anwendung nicht für alle Benutzer zu genehmigen?**
  
-Wenn Sie Bedenken haben, die Administratoreinwilligung zu erteilen und allen Benutzern im Mandanten die Nutzung der Anwendung zu ermöglichen, empfehlen wir Ihnen, die Anforderung abzulehnen. Erteilen Sie dann manuell die Administratoreinwilligung, indem Sie den Zugriff auf die Anwendung durch die Anforderung einer Benutzerzuweisung einschränken. Anschließend können Sie der Anwendung Benutzer oder Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](methods-for-assigning-users-and-groups.md).
+Wenn Sie Bedenken haben, die Administratoreinwilligung zu erteilen und allen Benutzern im Mandanten die Nutzung der Anwendung zu ermöglichen, empfehlen wir Ihnen, die Anforderung abzulehnen. Erteilen Sie dann manuell die Administratoreinwilligung, indem Sie den Zugriff auf die Anwendung durch die Anforderung einer Benutzerzuweisung einschränken. Anschließend können Sie der Anwendung Benutzer oder Gruppen zuweisen. Weitere Informationen finden Sie unter [Zuweisen von Benutzern und Gruppen zu einer Anwendung in Azure Active Directory](./assign-user-or-group-access-portal.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -157,6 +157,6 @@ Weitere Informationen zur Einwilligung für Anwendungen finden Sie unter [Azure 
 
 [Erteilen einer mandantenweiten Administratoreinwilligung für eine Anwendung](grant-admin-consent.md)
 
-[Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/active-directory-v2-scopes.md)
+[Berechtigungen und Zustimmung im Microsoft Identity Platform-Endpunkt](../develop/v2-permissions-and-consent.md)
 
 [Azure AD bei StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)

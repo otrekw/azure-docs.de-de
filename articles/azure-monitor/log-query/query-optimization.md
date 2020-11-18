@@ -6,15 +6,15 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/30/2019
-ms.openlocfilehash: ba9f2b10258f19504e3fd37723eceff7b8c37f6a
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 7e1deb11eb8ae754198cae5be7ecf7150262a61e
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92203482"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411387"
 ---
 # <a name="optimize-log-queries-in-azure-monitor"></a>Optimieren von Protokollabfragen in Azure Monitor
-Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten zwar eine deutliche Steigerung, aber in einigen Fällen können Sie damit die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
+Azure Monitor-Protokolle verwendet [Azure Data Explorer (ADX)](/azure/data-explorer/), um Protokolldaten zu speichern und Abfragen zum Analysieren dieser Daten auszuführen. Es werden die ADX-Cluster für Sie erstellt, verwaltet und gepflegt sowie für Ihre Protokollanalyse-Workload optimiert. Wenn Sie eine Abfrage ausführen, wird diese optimiert und an den entsprechenden ADX-Cluster weitergeleitet, der die Arbeitsbereichsdaten speichert. Sowohl Azure Monitor-Protokolle als auch Azure Data Explorer nutzen eine Vielzahl automatischer Mechanismen zur Abfrageoptimierung. Automatische Optimierungen bieten bereits eine deutliche Steigerung, aber in einigen Fällen können Sie die Abfrageleistung erheblich verbessern. In diesem Artikel werden Leistungsaspekte sowie verschiedene Verfahren zur Behebung von Leistungsproblemen erläutert.
 
 Die meisten der Verfahren gelten für Abfragen, die direkt in Azure Data Explorer und Azure Monitor-Protokolle ausgeführt werden. Es gibt jedoch einige Aspekte, die nur auf Azure Monitor-Protokolle zutreffen und hier erläutert werden. Weitere Tipps zur Optimierung von Azure Data Explorer finden Sie unter [Best Practices für Abfragen](/azure/kusto/query/best-practices).
 
@@ -131,7 +131,7 @@ SecurityEvent
 
 Während einige Aggregationsbefehle wie [max()](/azure/kusto/query/max-aggfunction), [sum()](/azure/kusto/query/sum-aggfunction), [count()](/azure/kusto/query/count-aggfunction) und [avg()](/azure/kusto/query/avg-aggfunction) aufgrund ihrer Logik nur geringe CPU-Auswirkung haben, sind andere komplexer und umfassen Heuristik und Schätzungen, die eine effiziente Ausführung ermöglichen. Beispielsweise verwendet [dcount()](/azure/kusto/query/dcount-aggfunction) den HyperLogLog-Algorithmus, um eine genaue Schätzung für die eindeutige Anzahl großer Datenmengen zu liefern, ohne jeden Wert tatsächlich zu zählen. Mit den Perzentilfunktionen werden ähnliche Annäherungen mithilfe des Algorithmus für das Perzentil des nächsten Rangs durchgeführt. Einige der Befehle enthalten optionale Parameter, um ihre Auswirkung zu verringern. Beispielsweise verfügt die [makeset()](/azure/kusto/query/makeset-aggfunction)-Funktion über einen optionalen Parameter zum Definieren der maximalen festgelegten Größe, was sich erheblich auf CPU und Arbeitsspeicher auswirkt.
 
-[join](/azure/kusto/query/joinoperator?pivots=azuremonitor)- und [summarize](/azure/kusto/query/summarizeoperator)-Befehle können zu einer hohen CPU-Auslastung führen, wenn mit ihnen eine große Datenmenge verarbeitet wird. Ihre Komplexität steht in direktem Bezug zur Anzahl möglicher Werte ( *Kardinalität* genannt) der Spalten, die als `by` in „summarize“ oder als „join“-Attribute verwendet werden. Eine Erläuterung und Informationen zur Optimierung von „join“ und „summarize“ finden Sie in den Artikeln und Optimierungstipps in der jeweiligen Dokumentation.
+[join](/azure/kusto/query/joinoperator?pivots=azuremonitor)- und [summarize](/azure/kusto/query/summarizeoperator)-Befehle können zu einer hohen CPU-Auslastung führen, wenn mit ihnen eine große Datenmenge verarbeitet wird. Ihre Komplexität steht in direktem Bezug zur Anzahl möglicher Werte (*Kardinalität* genannt) der Spalten, die als `by` in „summarize“ oder als „join“-Attribute verwendet werden. Eine Erläuterung und Informationen zur Optimierung von „join“ und „summarize“ finden Sie in den Artikeln und Optimierungstipps in der jeweiligen Dokumentation.
 
 Beispielsweise wird mit den folgenden Abfragen genau das gleiche Ergebnis erzielt, da **CounterPath** immer **CounterName** und **ObjectName** eins zu eins zugeordnet wird. Die zweite Abfrage ist effizienter, da die Aggregationsdimension kleiner ist:
 
@@ -197,7 +197,7 @@ Ein kritischer Faktor bei der Verarbeitung der Abfrage ist die Menge an Daten, d
 
 Abfragen, die mehr als 2.000 KB Daten verarbeiten, werden als Abfragen mit übermäßigem Ressourcenverbrauch betrachtet. Abfragen, die mehr als 20.000 KB Daten verarbeiten, werden als missbräuchliche Abfragen betrachtet und möglicherweise gedrosselt.
 
-In Azure Monitor-Protokolle wird die Spalte **TimeGenerated** als Methode zum Indizieren der Daten verwendet. Wenn Sie die **TimeGenerated** -Werte auf einen möglichst kleinen Bereich beschränken, wird die Abfrageleistung wesentlich verbessert, da die Menge der zu verarbeitenden Daten erheblich eingeschränkt wird.
+In Azure Monitor-Protokolle wird die Spalte **TimeGenerated** als Methode zum Indizieren der Daten verwendet. Wenn Sie die **TimeGenerated**-Werte auf einen möglichst kleinen Bereich beschränken, wird die Abfrageleistung wesentlich verbessert, da die Menge der zu verarbeitenden Daten erheblich eingeschränkt wird.
 
 ### <a name="avoid-unnecessary-use-of-search-and-union-operators"></a>Vermeiden der unnötigen Verwendung von search- und union-Operatoren
 
@@ -325,7 +325,7 @@ Abfragen mit einer Zeitspanne von mehr als 15 Tagen werden als Abfragen mit üb
 Der Zeitbereich kann mithilfe der Zeitbereichsauswahl im Log Analytics-Bildschirm festgelegt werden, wie es unter [Protokollabfragebereich und Zeitbereich in Azure Monitor Log Analytics](scope.md#time-range) beschrieben ist. Dies ist die empfohlene Methode, da der ausgewählte Zeitbereich mithilfe der Abfragemetadaten an das Back-End übermittelt wird. 
 
 Eine alternative Methode ist das explizite Einschließen einer [where](/azure/kusto/query/whereoperator)-Bedingung für **TimeGenerated** in die Abfrage. Sie sollten diese Methode verwenden, da dann auch bei Verwendung der Abfrage über eine andere Schnittstelle eine feste Zeitspanne gewährleistet ist.
-Sie sollten sicherstellen, dass alle Teile der Abfrage über **TimeGenerated** -Filter verfügen. Wenn eine Abfrage Unterabfragen zum Abrufen von Daten aus verschiedenen Tabellen oder derselben Tabelle enthält, muss jede dieser Abfragen eine eigene [where](/azure/kusto/query/whereoperator)-Bedingung enthalten.
+Sie sollten sicherstellen, dass alle Teile der Abfrage über **TimeGenerated**-Filter verfügen. Wenn eine Abfrage Unterabfragen zum Abrufen von Daten aus verschiedenen Tabellen oder derselben Tabelle enthält, muss jede dieser Abfragen eine eigene [where](/azure/kusto/query/whereoperator)-Bedingung enthalten.
 
 ### <a name="make-sure-all-sub-queries-have-timegenerated-filter"></a>Stellen Sie sicher, dass alle Unterabfragen über den TimeGenerated-Filter verfügen.
 

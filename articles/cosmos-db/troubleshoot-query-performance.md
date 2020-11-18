@@ -8,12 +8,12 @@ ms.date: 10/12/2020
 ms.author: tisande
 ms.subservice: cosmosdb-sql
 ms.reviewer: sngun
-ms.openlocfilehash: 3979e5e904eb54db9566eb014f7e455ebaceaff0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012e155737b9251827c668b3a9cacbbe8d59ae77
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087178"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94411353"
 ---
 # <a name="troubleshoot-query-issues-when-using-azure-cosmos-db"></a>Behandeln von Problemen bei Verwendung von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -51,7 +51,7 @@ Beim Optimieren einer Abfrage in Azure Cosmos DB ist der erste Schritt immer da
 
 Vergleichen Sie nach dem Abrufen der Abfragemetriken die **Anzahl der abgerufenen Dokumente** mit der **Anzahl der Ausgabedokumente** für Ihre Abfrage. Verwenden Sie diesen Vergleich zum Identifizieren der relevanten Abschnitte, auf die in diesem Artikel verwiesen werden soll.
 
-Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Bei der **Anzahl der Ausgabedokumente** handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente** , konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Bei der **Anzahl der Ausgabedokumente** handelt es sich um die Anzahl von Dokumenten, die für die Ergebnisse der Abfrage benötigt wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierungen für Ihr Szenario besser zu verstehen.
 
@@ -93,7 +93,7 @@ Die folgenden Abschnitte sollen Ihnen helfen, die relevanten Abfrageoptimierunge
 
 ## <a name="queries-where-retrieved-document-count-exceeds-output-document-count"></a>Abfragen, bei denen die Anzahl der abgerufenen Dokumente die Anzahl der Ausgabedokumente überschreitet
 
- Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Die **Anzahl der Ausgabedokumente** ist die Anzahl von Dokumenten, die von der Abfrage zurückgegebenen wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente** , konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
+ Bei der **Anzahl der abgerufenen Dokumente** handelt es sich um die Anzahl von Dokumenten, die die Abfrage-Engine laden musste. Die **Anzahl der Ausgabedokumente** ist die Anzahl von Dokumenten, die von der Abfrage zurückgegebenen wurden. Wenn die **Anzahl der abgerufenen Dokumente** deutlich höher ist als die **Anzahl der Ausgabedokumente**, konnte mindestens ein Teil der Abfrage einen Index nicht nutzen, und es musste eine Überprüfung durchgeführt werden.
 
 Nachstehend finden Sie ein Beispiel für eine Überprüfungsabfrage, die nicht vollständig vom Index bedient wurde:
 
@@ -494,3 +494,4 @@ Die folgenden Artikel enthalten u. a. Informationen dazu, wie Sie RUs pro Abfra
 * [Abrufen von SQL-Abfrageausführungsmetriken und Analysieren der Abfrageleistung mit dem .NET SDK](profile-sql-api-query.md)
 * [Optimieren der Abfrageleistung mit Azure Cosmos DB](./sql-api-query-metrics.md)
 * [Tipps zur Leistungssteigerung für das .NET SDK](performance-tips.md)
+* [Leistungstipps für das Java v4 SDK](performance-tips-java-sdk-v4-sql.md)

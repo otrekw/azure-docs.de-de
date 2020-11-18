@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: akjosh
-ms.openlocfilehash: 1faf4455a983e87ce4c702c09f8bf2d9fbe70047
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0ae6366acf270d762b1c15563bfec1b2eb2a1b8d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893402"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93421072"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Verwenden der Linux-Diagnoseerweiterung zum Überwachen von Metriken und Protokollen
 
@@ -74,6 +74,29 @@ Unterstützte Distributionen und Versionen:
 * **Azure-Befehlszeilenschnittstelle**. [Richten Sie Azure CLI](/cli/azure/install-azure-cli) auf dem Computer ein.
 * Der wget-Befehl, sofern Sie ihn noch nicht ausgeführt haben: Führen Sie `sudo apt-get install wget` aus.
 * Ein vorhandenes Azure-Abonnement und ein vorhandenes universelles Speicherkonto zum Speichern der Daten.  Universelle Speicherkonten unterstützen den erforderlichen Tabellenspeicher.  Ein Blobspeicherkonto kann nicht verwendet werden.
+* Python 2
+
+### <a name="python-requirement"></a>Python-Anforderung
+
+Die Linux-Diagnoseerweiterung erfordert Python 2. Wenn Ihr virtueller Computer eine Distribution verwendet, in der Python 2 nicht standardmäßig enthalten ist, müssen Sie die Sprache installieren. Mithilfe der folgenden Beispielbefehle wird Python 2 auf verschiedenen Distributionen installiert.    
+
+ - Red Hat, CentOS, Oracle: `yum install -y python2`
+ - Ubuntu, Debian: `apt-get install -y python2`
+ - SUSE: `zypper install -y python2`
+
+Die ausführbare python2-Datei muss dem Alias *python* zugewiesen werden. Mit der folgenden Methode können Sie diesen Alias festlegen:
+
+1. Führen Sie den folgenden Befehl aus, um eventuell vorhandene Aliase zu entfernen.
+ 
+    ```
+    sudo update-alternatives --remove-all python
+    ```
+
+2. Führen Sie den folgenden Befehl aus, um den Alias zu erstellen.
+
+    ```
+    sudo update-alternatives --install /usr/bin/python python /usr/bin/python2 1
+    ```
 
 ### <a name="sample-installation"></a>Beispielinstallation
 
@@ -213,7 +236,7 @@ storageAccountSasToken | Ein [Konto-SAS-Token](https://azure.microsoft.com/blog/
 mdsdHttpProxy | (optional:) HTTP-Proxyinformationen, die erforderlich sind, damit die Erweiterung Verbindungen mit dem angegebenen Speicherkonto und dem Endpunkt herstellen kann
 sinksConfig | (optional:) Details zu alternativen Zielen, an die Metriken und Ereignisse übermittelt werden können. Die spezifischen Details der einzelnen Datensenken, die von der Erweiterung unterstützt werden, sind in den folgenden Abschnitten beschrieben.
 
-Verwenden Sie die **listAccountSas** -Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
+Verwenden Sie die **listAccountSas**-Funktion, um ein SAS-Token innerhalb einer Resource Manager-Vorlage zu erhalten. Eine Beispielvorlage finden Sie unter [Beispiel für eine Listenfunktion](../../azure-resource-manager/templates/template-functions-resource.md#list-example).
 
 Sie können das erforderliche SAS-Token einfach über das Azure-Portal erstellen.
 

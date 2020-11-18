@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: reference
 ms.date: 09/29/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 25c79229a09db912903fba825f0d48f571880745
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: a36e15a56a5a4c8a637120ca730ae1da764d376d
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91876794"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93422898"
 ---
 # <a name="common-error-codes-for-azure-key-vault"></a>Allgemeine Fehlercodes für Azure Key Vault
 
@@ -22,7 +22,7 @@ Die in der folgenden Tabelle aufgelisteten Fehlercodes können von einem Vorgang
 
 | Fehlercode | Meldung für den Benutzer |
 |--|--|
-| VaultAlreadyExists |  Der angegebene Schlüsseltresor ist bereits vorhanden (vorläufig gelöscht oder in einem anderen Abonnement). |
+| VaultAlreadyExists |  Ihr neuer Schlüsseltresor konnte nicht mit dem angegebenen Namen erstellt werden, weil der Name bereits verwendet wird. Wenn Sie kürzlich einen Schlüsseltresor mit diesem Namen gelöscht haben, befindet er sich möglicherweise noch im vorläufig gelöschten Zustand. [Hier](https://docs.microsoft.com/azure/key-vault/general/key-vault-recovery?tabs=azure-portal#list-recover-or-purge-a-soft-deleted-key-vault) können Sie überprüfen, ob der Tresor noch im vorläufig gelöschten Zustand vorhanden ist. |
 | VaultNameNotValid |  Der Tresorname muss 24 Zeichen lang sein, alphanumerisch sein und mit einem Buchstaben beginnen. |
 | AccessDenied |  Möglicherweise fehlen in der Zugriffsrichtlinie Berechtigungen, um diesen Vorgang durchzuführen. |
 | ForbiddenByFirewall |  Die Clientadresse ist nicht autorisiert, und der Aufrufer ist kein vertrauenswürdiger Dienst. |

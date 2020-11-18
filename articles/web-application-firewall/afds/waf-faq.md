@@ -8,12 +8,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/05/2020
 ms.author: victorh
-ms.openlocfilehash: d129c37c909c630623f8a41c06da9aa80e4e2392
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0ba0cbbccd1f4a9bc8ff8a4895e238c9150c9b17
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "82837633"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413070"
 ---
 # <a name="frequently-asked-questions-for-azure-web-application-firewall-on-azure-front-door-service"></a>Häufig gestellte Fragen zu Azure Web Application Firewall in Azure Front Door Service
 
@@ -64,7 +64,7 @@ ModSec CRS 2.2.9-, CRS 3.0- und CRS 3.1-Regeln werden derzeit nur bei Verwendung
 
 ## <a name="is-ddos-protection-integrated-with-front-door"></a>Ist DDoS-Schutz in Front Door integriert? 
 
-Azure Front Door wird global im Edgebereich des Azure-Netzwerks verteilt. Dadurch kann der Dienst groß angelegte Angriffe absorbieren und geografisch isolieren. Sie können eine benutzerdefinierte WAF-Richtlinie erstellen, um HTTP(S)-Angriffe mit bekannten Signaturen automatisch zu blockieren sowie eine Ratenbegrenzung anzuwenden. Darüber hinaus können Sie DDoS Protection Standard für das VNET aktivieren, in dem Ihre Back-Ends bereitgestellt werden. Azure DDoS Protection Standard-Kunden profitieren von weiteren Vorteilen wie Kostenschutz, SLA-Garantie und Zugang zu Experten des DDoS Rapid Response-Teams für Soforthilfe im Angriffsfall.
+Azure Front Door wird global im Edgebereich des Azure-Netzwerks verteilt. Dadurch kann der Dienst groß angelegte Angriffe absorbieren und geografisch isolieren. Sie können eine benutzerdefinierte WAF-Richtlinie erstellen, um HTTP(S)-Angriffe mit bekannten Signaturen automatisch zu blockieren sowie eine Ratenbegrenzung anzuwenden. Darüber hinaus können Sie DDoS Protection Standard für das VNET aktivieren, in dem Ihre Back-Ends bereitgestellt werden. Azure DDoS Protection Standard-Kunden profitieren von weiteren Vorteilen wie Kostenschutz, SLA-Garantie und Zugang zu Experten des DDoS Rapid Response-Teams für Soforthilfe im Angriffsfall. Weitere Informationen finden Sie unter [DDoS-Schutz für Front Door](../../frontdoor/front-door-ddos.md).
 
 ## <a name="why-do-additional-requests-above-the-threshold-configured-for-my-rate-limit-rule-get-passed-to-my-backend-server"></a>Warum werden zusätzliche Anforderungen oberhalb des Schwellenwerts, der für meine Ratenbegrenzungsregel konfiguriert ist, an meinen Back-End-Server übergeben?
 

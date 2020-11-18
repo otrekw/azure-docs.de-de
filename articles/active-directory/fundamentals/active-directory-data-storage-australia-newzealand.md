@@ -12,20 +12,20 @@ ms.topic: conceptual
 ms.date: 7/21/2020
 ms.custom: it-pro, seodec18, references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0bbd31bf47c7ce7ae75a6934da0ea769698ef187
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 812abe141f8130a198178668dc4f212f373d9bcd
+ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565106"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94334940"
 ---
-# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Speicherung von Kundendaten für Kunden in Australien und Neuseeland in Azure Active Directory
+# <a name="customer-data-storage-for-australian-and-new-zealand-customers-in-azure-active-directory"></a>Speicherung von Kundendaten für Kunden in Australien und Neuseeland in Azure Active Directory 
 
 In Azure Active Directory (Azure AD) werden Kundendaten je nach Land/Region, das bzw. die Sie bei der Registrierung für einen Onlinedienst von Microsoft angegeben haben, an einem bestimmten geografischen Standort gespeichert. Zu den Onlinediensten von Microsoft zählen Microsoft 365 und Azure. 
 
 Weitere Informationen zur Datenaufbewahrung bei Microsoft-Diensten in Azure AD finden Sie im Microsoft Trust Center im Abschnitt [Wo wir Ihre Daten speichern](https://www.microsoft.com/trustcenter/privacy/where-your-data-is-located).
 
-Seit dem 26. Februar 2020 speichert Microsoft Kundendaten in Azure AD für neue Mandanten mit Rechnungsadresse aus Australien oder Neuseeland in den Rechenzentren in Australien. Zwischen dem 1. Mai 2020 und dem 31. Oktober 2020 migriert Microsoft vorhandene Mandanten mit Rechnungsadresse aus Australien oder Neuseeland dann in die Rechenzentren in Australien. Kunden müssen dafür nicht tätig werden. Der Migrationsprozess beinhaltet keinerlei Downtime für Kunden und wirkt sich auch nicht negativ auf die Funktionalität eines Mandanten während der Migration aus.
+Seit dem 26. Februar 2020 speichert Microsoft Kundendaten in Azure AD für neue Mandanten mit Rechnungsadresse aus Australien oder Neuseeland in den Rechenzentren in Australien. Zwischen dem 1. Mai 2020 und dem 31. März 2021 migriert Microsoft vorhandene Mandanten mit Rechnungsadresse in Australien oder Neuseeland in die Rechenzentren in Australien. Kunden müssen dafür nicht tätig werden. Der Migrationsprozess beinhaltet keinerlei Downtime für Kunden und wirkt sich auch nicht negativ auf die Funktionalität eines Mandanten während der Migration aus.
 
 Außerdem unterstützen bestimmte Azure AD-Features das Speichern von Kundendaten in Australien noch nicht. Weitere Informationen zu Features finden Sie auf der [Azure AD-Datenkarte](https://msit.powerbi.com/view?r=eyJrIjoiYzEyZTc5OTgtNTdlZS00ZTVkLWExN2ItOTM0OWU4NjljOGVjIiwidCI6IjcyZjk4OGJmLTg2ZjEtNDFhZi05MWFiLTJkN2NkMDExZGI0NyIsImMiOjV9). Bei Microsoft Azure Multi-Factor Authentication werden Kundendaten beispielsweise in den USA gespeichert und global verarbeitet. Weitere Informationen finden Sie unter [Datenresidenz und Kundendaten für Azure Multi-Factor Authentication](../authentication/concept-mfa-data-residency.md).
 

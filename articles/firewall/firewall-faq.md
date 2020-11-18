@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 75435155ba1dad798d301006a30a5d5b6e96226a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88611176"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94413002"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -139,9 +139,9 @@ Nein. Mit NAT-Regeln wird implizit eine entsprechende Netzwerkregel hinzugefügt
 
 ## <a name="how-do-wildcards-work-in-an-application-rule-target-fqdn"></a>Wie funktionieren Platzhalter in einem FQDN eines Anwendungsregelziels?
 
-Platzhalter können derzeit nur auf der linken Seite des FQDN verwendet werden. Beispiel: „* **.contoso.com**“ und „***contoso.com**“.
+Platzhalter können derzeit nur auf der linken Seite des FQDN verwendet werden. Beispiel: **_.contoso.com_* und **_contoso.com_*.
 
-Wenn Sie * **.contoso.com** konfigurieren, ist *anyvalue*.contoso.com, aber nicht „contoso.com“ (Domäne an der Spitze der Zone) zulässig. Wenn Sie die Domäne an der Spitze der Zone zulassen möchten, müssen Sie sie explizit als Ziel-FQDN konfigurieren.
+Wenn Sie **_.contoso.com_* konfigurieren, ist „*anyvalue*.contoso.com“ zulässig, nicht aber „contoso.com“ (Domänenapex). Wenn Sie die Domäne an der Spitze der Zone zulassen möchten, müssen Sie sie explizit als Ziel-FQDN konfigurieren.
 
 ## <a name="what-does-provisioning-state-failed-mean"></a>Was bedeutet *Bereitstellungsstatus: Fehler*?
 
@@ -205,7 +205,7 @@ Set-AzFirewall -AzureFirewall $fw
 
 ## <a name="why-can-a-tcp-ping-and-similar-tools-successfully-connect-to-a-target-fqdn-even-when-no-rule-on-azure-firewall-allows-that-traffic"></a>Warum kann ein TCP-Ping und können ähnliche Tools eine Verbindung mit einem Ziel-FQDN erfolgreich herstellen, auch wenn keine Regel von Azure Firewall diesen Datenverkehr zulässt?
 
-Ein TCP-Ping stellt tatsächlich keine Verbindung mit dem Ziel-FQDN her. Der Grund dafür: Der transparente Proxy von Azure Firewall lauscht an Port 80/443 für ausgehenden Datenverkehr. Der TCP-Ping stellt eine Verbindung mit der Firewall her, die das Paket dann löscht und die Verbindung protokolliert. Dieses Verhalten hat keinerlei Auswirkung auf die Sicherheit. Um ein Durcheinander zu vermeiden, untersuchen wir jedoch mögliche Änderungen an diesem Verhalten.
+Ein TCP-Ping stellt tatsächlich keine Verbindung mit dem Ziel-FQDN her. Der Grund dafür: Der transparente Proxy von Azure Firewall lauscht an Port 80/443 für ausgehenden Datenverkehr. Das TCP-Pingsignal stellt eine Verbindung mit der Firewall her, die das Paket dann verwirft. Dieses Verhalten hat keinerlei Auswirkung auf die Sicherheit. Um ein Durcheinander zu vermeiden, untersuchen wir jedoch mögliche Änderungen an diesem Verhalten.
 
 ## <a name="are-there-limits-for-the-number-of-ip-addresses-supported-by-ip-groups"></a>Gibt es Beschränkungen bei der Anzahl von IP-Adressen, die von IP-Gruppen unterstützt werden?
 

@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 04/24/2020
-ms.openlocfilehash: f496d0f38452fa7cf64bc9eef370bd0b2116cfa5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: fe703b9589dcd49298ac45d5a14032ca7e556bfd
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89049960"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408405"
 ---
 # <a name="azure-red-hat-openshift-support-policy"></a>Unterstützungsrichtlinien in Azure Red Hat OpenShift
 
@@ -30,6 +30,7 @@ Bestimmte Konfigurationen Ihrer Cluster in Azure Red Hat OpenShift 4 können si
 * Alle Cluster-VMs benötigen direkten ausgehenden Internetzugriff, und zwar mindestens auf die Endpunkte für Azure Resource Manager (ARM) und die Dienstprotokollierung (Geneva).  Es wird keine Form von HTTPS-Proxys unterstützt.
 * Ändern Sie die DNS-Konfiguration des virtuellen Netzwerks des Clusters nicht. Der Azure DNS-Standardkonfliktlöser muss verwendet werden.
 * Setzen Sie keines der MachineConfig-Objekte des Clusters (z. B. die Kubelet-Konfiguration) auf irgendeine Weise außer Kraft.
+* Legen Sie keine unsupportedConfigOverrides-Optionen fest. Durch Festlegen dieser Optionen werden Upgrades von Nebenversionen verhindert.
 * Der Azure Red Hat OpenShift-Dienst greift auf Ihre Cluster über den Private Link-Dienst zu.  Ändern oder entfernen Sie den Dienstzugriff nicht.
 * Nicht-RHCOS-Serverknoten werden nicht unterstützt. Sie können z. B. keinen RHEL-Serverknoten verwenden.
 

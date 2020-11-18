@@ -1,7 +1,7 @@
 ---
 title: 'Poisson-Regression: Modulreferenz'
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie mit dem Poisson-Regressions-Modul ein Poisson-Regressionsmodell erstellen.
+description: Erfahren Sie, wie Sie mit dem Poisson Regression-Modul im Azure Machine Learning-Designer ein Poisson-Regressionsmodell erstellen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 07/13/2020
-ms.openlocfilehash: 91d6d15fc8855b49bece3a7ed903074e716b7ac4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2dfd8b3d919f9eeb3e183135ef543f417c878977
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319423"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420698"
 ---
 # <a name="poisson-regression"></a>Poisson-Regression
 

@@ -11,12 +11,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Operations'
 - 'Role: Technical Support'
-ms.openlocfilehash: 72aff2a2761d3aae695968bd5b4b9d07eab1697f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5a5b20efbf804c2ea1097f905da1cfd62727ff15
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547689"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410690"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Referenz: IoT Hub-Kontingente und -Drosselung
 
@@ -69,11 +69,11 @@ Die folgende Tabelle zeigt die erzwungenen Drosselungen. Die Werte beziehen sich
 
    Bei einer Nutzlastgröße zwischen 156 KB und 160 KB wird das Limit von 160 KB/Sek./Einheit in Ihrem Hub nach bereits einem einzelnen Aufruf pro Sekunde und Einheit erreicht.
 
-*  Bei *Aufträgegerätevorgängen (Gerätezwilling aktualisieren, direkte Methode aufrufen)* für den Tarif S2 gilt der Grenzwert von 50/Sek./Einheit nur, wenn Sie Methoden unter Verwendung von Aufträgen aufrufen. Wenn Sie direkte Methoden direkt aufrufen, gilt das ursprüngliche Drosselungslimit von 24 MB/Sek./Einheit (für S2).
+*  Bei *Auftragsgerätevorgängen (Gerätezwilling aktualisieren, direkte Methode aufrufen)* für den Tarif S3 gilt der Grenzwert von 50/Sek./Einheit nur, wenn Sie Methoden unter Verwendung von Aufträgen aufrufen. Wenn Sie direkte Methoden direkt aufrufen, gilt das ursprüngliche Drosselungslimit von 24 MB/Sek./Einheit (für S3).
 
 *  **Kontingent** ist die aggregierte Anzahl von Nachrichten, die Sie in Ihrem Hub *pro Tag* senden können. Das Kontingentlimit Ihres Hubs finden Sie auf der Seite [IoT Hub – Preise](https://azure.microsoft.com/pricing/details/iot-hub/) in der Spalte **GESAMTANZAHL VON NACHRICHTEN/TAG**.
 
-*  Ihre Cloud-zu-Gerät- und Gerät-zu-Cloud-Drosselung bestimmt die maximale *Rate* , mit der Sie Nachrichten senden können (also die Anzahl von Nachrichten, unabhängig von 4-KB-Blöcken). Jede Nachricht kann bis zu 256 KB groß sein. Hierbei handelt es sich um die [maximale Nachrichtengröße](iot-hub-devguide-quotas-throttling.md#other-limits).
+*  Ihre Cloud-zu-Gerät- und Gerät-zu-Cloud-Drosselung bestimmt die maximale *Rate*, mit der Sie Nachrichten senden können (also die Anzahl von Nachrichten, unabhängig von 4-KB-Blöcken). Jede Nachricht kann bis zu 256 KB groß sein. Hierbei handelt es sich um die [maximale Nachrichtengröße](iot-hub-devguide-quotas-throttling.md#other-limits).
 
 *  Es empfiehlt sich, Ihre Aufrufe zu drosseln, um die Drosselungslimits nicht zu erreichen oder zu überschreiten. Bei Erreichen des Limits gibt IoT Hub den Fehlercode 429 zurück, und der Client muss den Vorgang nach einem Backoff wiederholen. Diese Limits gelten pro Hub (in einigen Fällen auch pro Hub/Einheit). Weitere Informationen finden Sie unter [Wiederholungsmuster](iot-hub-reliability-features-in-sdks.md#retry-patterns).
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: a6f5526b01588649d1e094036241d616a8392949
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: 7079f0b1060be1a260b41e07b9d9299bab57127f
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91996484"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410809"
 ---
 # <a name="azure-disk-encryption-for-linux-vms"></a>Azure Disk Encryption für Linux-VMs 
 
@@ -48,6 +48,8 @@ Azure Disk Encryption ist auch für virtuelle Computer mit Storage Premium verf�
 
 Azure Disk Encryption ist für [VMs der Generation 2](../generation-2.md#generation-1-vs-generation-2-capabilities) und [VMs der Lsv2-Serie](../lsv2-series.md) nicht verfügbar. Weitere Ausnahmen finden Sie unter [Azure Disk Encryption: Nicht unterstützte Szenarien](disk-encryption-linux.md#unsupported-scenarios).
 
+Azure Disk Encryption ist für VM-Images ohne temporäre Datenträger (Dv4, Dsv4, Ev4 und Esv4) nicht verfügbar.  Weitere Informationen finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md).
+
 ### <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
 Azure Disk Encryption wird von einer Teilmenge der [Azure zugelassenen Linux-Distributionen](endorsed-distros.md) unterstützt, die selbst eine Teilmenge aller möglichen Linux-Serverdistributionen ist.
@@ -73,6 +75,7 @@ Nicht von Azure zugelassene Linux-Serverdistributionen unterstützen Azure Disk 
 | RedHat | RHEL 7.2 | 7.2 | RedHat:RHEL:7.2:latest | Betriebssystem- und andere Datenträger (siehe der Hinweis unten) |
 | RedHat | RHEL 6.8 | 6,8 | RedHat:RHEL:6.8:latest | Datenträger für Daten (siehe der Hinweis unten) |
 | RedHat | RHEL 6.7 | 6.7 | RedHat:RHEL:6.7:latest | Datenträger für Daten (siehe der Hinweis unten) |
+| OpenLogic | CentOS 7.8 | 7,8 | OpenLogic:CentOS:7_8:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.7 | 7,7 | OpenLogic:CentOS:7.7:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.7 | 7-LVM | OpenLogic:CentOS:7-LVM:latest | Betriebssystem- und andere Datenträger |
 | OpenLogic | CentOS 7.6 | 7.6 | OpenLogic:CentOS:7.6:latest | Betriebssystem- und andere Datenträger |

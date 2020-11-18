@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/25/2020
-ms.openlocfilehash: b6a914df9ed277625d3706465fe335e128aeced1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: b5b171941a3da42d2f5b385303c51285ff793599
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545156"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376773"
 ---
 # <a name="server-parameters-in-azure-database-for-mysql"></a>Serverparameter in Azure Database for MySQL
 
@@ -108,7 +108,7 @@ Weitere Informationen zu diesem Parameter finden Sie in der [MySQL-Dokumentation
 
 MySQL speichert die InnoDB-Tabelle in verschiedenen Tabellenbereichen, basierend auf der Konfiguration, die Sie während der Tabellenerstellung angegeben haben. Der [Systemtabellenbereich](https://dev.mysql.com/doc/refman/5.7/en/innodb-system-tablespace.html) ist der Speicherbereich für das InnoDB-Datenwörterbuch. Ein [file-per-table-Tabellenbereich](https://dev.mysql.com/doc/refman/5.7/en/innodb-file-per-table-tablespaces.html) enthält die Daten und Indizes für eine einzelne InnoDB-Tabelle und wird im Dateisystem in einer eigenen Datendatei gespeichert. Dieses Verhalten wird vom `innodb_file_per_table`-Serverparameter gesteuert. Durch Festlegen von `innodb_file_per_table` auf `OFF` werden Tabellen von InnoDB im Systemtabellenbereich erstellt. Andernfalls werden die Tabellen im Tabellen-Tabellenbereich erstellt.
 
-Azure Database for MySQL unterstützt bis zu **1 TB** in einer einzelnen Datendatei. Wenn die Datenbankgröße 1 TB überschreitet, sollten Sie die Tabelle in [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) erstellen. Wenn eine einzelne Tabelle größer als ein Terabyte ist, sollten Sie die Partitionstabelle verwenden.
+Azure Database for MySQL unterstützt bis zu **4 TB** in einer einzelnen Datendatei. Wenn die Größe Ihrer Datenbank 4 TB überschreitet, sollten Sie die Tabelle im Tabellenbereich [innodb_file_per_table](https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_file_per_table) erstellen. Wenn eine einzelne Ihrer Tabellen größer als 4 TB ist, sollten Sie die Partitionstabelle verwenden.
 
 ### <a name="join_buffer_size"></a>join_buffer_size
 

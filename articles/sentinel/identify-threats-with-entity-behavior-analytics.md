@@ -14,23 +14,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: d3c0ba55541baf3f31952b82a2fa357b48a5f1a9
-ms.sourcegitcommit: 8ad5761333b53e85c8c4dabee40eaf497430db70
+ms.openlocfilehash: 9c5e57f2eb3c38a7df23052a4b3d33bc5a9675fc
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93148353"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94425931"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
 > [!IMPORTANT]
 >
-> - Die Features UEBA und Entitätsseiten sind nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar** :
+> - Die Features UEBA und Entitätsseiten sind nun in den folgenden Azure Sentinel-Regionen **allgemein verfügbar**:
 >    - in den US-amerikanischen Regionen
 >    - in der Region Europa, Westen
 >    - in den australischen Regionen
 >
-> - In allen anderen geografischen Regionen verbleiben diese Features für den Augenblick in der **öffentlichen Vorschau** und werden ohne Vereinbarung zum Servicelevel bereitgestellt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> - In allen anderen Geografien und Regionen bleiben diese Features bis auf Weiteres in der **Vorschau**. Die [**zusätzlichen Nutzungsbestimmungen für Microsoft Azure-Vorschauen**](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) enthalten zusätzliche rechtliche Bedingungen, die für Azure-Features gelten, die sich in der Beta- oder Vorschauversion befinden bzw. anderweitig noch nicht zur allgemeinen Verfügbarkeit freigegeben sind.
 
 ## <a name="what-is-user-and-entity-behavior-analytics-ueba"></a>Was ist User and Entity Behavior Analytics (UEBA)?
 
@@ -124,7 +124,7 @@ Entitätsseiten bestehen aus drei Teilen:
 
 Die Zeitachse ist ein wesentlicher Bestandteil des Beitrags der Entität zur Verhaltensanalyse in Azure Sentinel. Sie stellt den Verlauf von für eine Entität wichtigen Ereignissen dar, sodass Sie sich einen Überblick über die Aktivitäten der Entität innerhalb eines bestimmten Zeitraums verschaffen können.
 
-Sie können den **Zeitbereich** aus verschiedenen vordefinierten Optionen (z. B. *letzte 24 Stunden* ) auswählen oder einen benutzerdefinierten Zeitrahmen festlegen. Zudem können Sie Filter festlegen, mit denen die Informationen auf der Zeitachse auf bestimmte Ereignis- oder Warnungsarten beschränkt wird.
+Sie können den **Zeitbereich** aus verschiedenen vordefinierten Optionen (z. B. *letzte 24 Stunden*) auswählen oder einen benutzerdefinierten Zeitrahmen festlegen. Zudem können Sie Filter festlegen, mit denen die Informationen auf der Zeitachse auf bestimmte Ereignis- oder Warnungsarten beschränkt wird.
 
 Die folgenden Elemente sind auf der Zeitachse enthalten:
 
@@ -195,7 +195,7 @@ BehaviorAnalytics
 
 Die Metadaten der Benutzerpeers liefern wichtigen Kontext bei der Erkennung von Bedrohungen, bei der Untersuchung von Vorfällen sowie bei der Suche nach einer potenziellen Bedrohung. Sicherheitsanalysten können die normalen Aktivitäten der Peers eines Benutzers beobachten, um festzustellen, ob die Aktivitäten des Benutzers im Vergleich zu denen seiner Peers ungewöhnlich sind.
 
-Azure Sentinel berechnet und bewertet die Peers eines Benutzers basierend auf der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers, anhand von Mailinglisten usw. und speichert die Peers mit einer Bewertung zwischen 1 und 20 in der Tabelle **UserPeerAnalytics**. Im folgenden Screenshot ist das Schema der Tabelle „UserPeerAnalytics“ mit den acht ersten Peers des Benutzers Kendall Collins dargestellt. Azure Sentinel verwendet den TF-IDF-Algorithmus ( *Term Frequency-Inverse Document Frequency* ) zur Normalisierung der Gewichtung bei der Berechnung der Bewertung: je kleiner die Gruppe, umso höher die Gewichtung. 
+Azure Sentinel berechnet und bewertet die Peers eines Benutzers basierend auf der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers, anhand von Mailinglisten usw. und speichert die Peers mit einer Bewertung zwischen 1 und 20 in der Tabelle **UserPeerAnalytics**. Im folgenden Screenshot ist das Schema der Tabelle „UserPeerAnalytics“ mit den acht ersten Peers des Benutzers Kendall Collins dargestellt. Azure Sentinel verwendet den TF-IDF-Algorithmus (*Term Frequency-Inverse Document Frequency*) zur Normalisierung der Gewichtung bei der Berechnung der Bewertung: je kleiner die Gruppe, umso höher die Gewichtung. 
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-peers-metadata.png" alt-text="Screenshot: Tabelle mit Metadaten von Peers eines Benutzers":::
 

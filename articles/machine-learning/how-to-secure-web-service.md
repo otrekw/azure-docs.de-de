@@ -11,12 +11,12 @@ author: aashishb
 ms.date: 03/05/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: dca5d65364d11e96a15913309686bc532d130278
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a9b68b2d4298c5e692782e529bae9a9df6359953
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313966"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331157"
 ---
 # <a name="use-tls-to-secure-a-web-service-through-azure-machine-learning"></a>Verwenden von TLS zum Absichern eines Webdiensts mit Azure Machine Learning
 
@@ -28,9 +28,9 @@ Verwenden Sie [HTTPS](https://en.wikipedia.org/wiki/HTTPS), um den Zugriff auf W
 > [!TIP]
 > Im Azure Machine Learning SDK wird der Begriff „SSL“ für Eigenschaften im Zusammenhang mit sicherer Kommunikation verwendet. Dies bedeutet nicht, dass Ihr Webdienst *TLS* nicht verwendet. SSL ist nur ein gebräuchlicherer Begriff.
 >
-> Insbesondere unterstützen über Azure Machine Learning bereitgestellte Webdienste die TLS-Version 1.2 für AKS und ACI. Wenn Sie mit ACI-Bereitstellungen arbeiten oder eine ältere TLS-Version verwenden, empfiehlt sich eine erneute Bereitstellung, um die neueste TLS-Version zu erhalten.
+> Insbesondere unterstützen über Azure Machine Learning bereitgestellte Webdienste die TLS-Version 1.2 für neue AKS- und ACI-Bereitstellungen. Wenn Sie mit ACI-Bereitstellungen arbeiten oder eine ältere TLS-Version verwenden, empfiehlt sich eine erneute Bereitstellung, um die neueste TLS-Version zu erhalten.
 
-Sowohl TLS als auch SSL beruhen auf *digitalen Zertifikaten* , die zur Verschlüsselung und Identitätsüberprüfung verwendet werden. Weitere Informationen zur Funktionsweise digitaler Zertifikate finden Sie im Wikipedia-Thema [Public key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (Public-Key-Infrastruktur).
+Sowohl TLS als auch SSL beruhen auf *digitalen Zertifikaten*, die zur Verschlüsselung und Identitätsüberprüfung verwendet werden. Weitere Informationen zur Funktionsweise digitaler Zertifikate finden Sie im Wikipedia-Thema [Public key infrastructure](https://en.wikipedia.org/wiki/Public_key_infrastructure) (Public-Key-Infrastruktur).
 
 > [!WARNING]
 > Wenn Sie HTTPS nicht für Ihren Webdienst verwenden, sind vom Dienst an andere Benutzer und zurück gesendete Daten möglicherweise im Internet sichtbar.
@@ -73,7 +73,7 @@ Wenn Sie ein Zertifikat anfordern, müssen Sie den FQDN der Adresse angeben, die
 
 ## <a name="enable-tls-and-deploy"></a><a id="enable"></a> Aktivieren und Bereitstellen von TLS
 
-Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled* -Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate* -Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
+Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
 ### <a name="deploy-on-aks-and-field-programmable-gate-array-fpga"></a>Bereitstellen auf AKS und Field-Programmable Gate Array (FPGA)
 
@@ -83,13 +83,13 @@ Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktivi
 Beim Bereitstellen in AKS können Sie einen neuen AKS-Cluster erstellen oder einen vorhandenen anfügen. Weitere Informationen zum Erstellen oder Anfügen eines Clusters finden Sie unter [Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster](how-to-deploy-azure-kubernetes-service.md).
   
 -  Wenn Sie einen neuen Cluster erstellen, verwenden Sie **[AksCompute.provisioning_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueprovisioning-configuration-agent-count-none--vm-size-none--ssl-cname-none--ssl-cert-pem-file-none--ssl-key-pem-file-none--location-none--vnet-resourcegroup-name-none--vnet-name-none--subnet-name-none--service-cidr-none--dns-service-ip-none--docker-bridge-cidr-none--cluster-purpose-none--load-balancer-type-none--load-balancer-subnet-none-)** .
-- Wenn Sie einen vorhandenen Cluster anfügen, verwenden Sie **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Beide geben ein Konfigurationsobjekt mit einer **enable_ssl** -Methode zurück.
+- Wenn Sie einen vorhandenen Cluster anfügen, verwenden Sie **[AksCompute.attach_configuration()](/python/api/azureml-core/azureml.core.compute.akscompute?view=azure-ml-py&preserve-view=true#&preserve-view=trueattach-configuration-resource-group-none--cluster-name-none--resource-id-none--cluster-purpose-none-)** . Beide geben ein Konfigurationsobjekt mit einer **enable_ssl**-Methode zurück.
 
-Die **enable_ssl** -Methode kann ein Zertifikat verwenden, das von Microsoft bereitgestellt wird, oder ein von Ihnen erworbenes Zertifikat.
+Die **enable_ssl**-Methode kann ein Zertifikat verwenden, das von Microsoft bereitgestellt wird, oder ein von Ihnen erworbenes Zertifikat.
 
-  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label* -Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Mit dem Wert „contoso“ wird z. B. der Domänenname „contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com“ erstellt, wobei \<azureregion> die Region ist, in der sich der Dienst befindet. Optional können Sie den *overwrite_existing_domain* -Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
+  * Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie den *leaf_domain_label*-Parameter verwenden. Dieser Parameter generiert den DNS-Namen für den Dienst. Mit dem Wert „contoso“ wird z. B. der Domänenname „contoso\<six-random-characters>.\<azureregion>.cloudapp.azure.com“ erstellt, wobei \<azureregion> die Region ist, in der sich der Dienst befindet. Optional können Sie den *overwrite_existing_domain*-Parameter zum Überschreiben des vorhandenen *leaf_domain_label* verwenden.
 
-    Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled* -Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate* -Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
+    Legen Sie zum Bereitstellen (oder erneuten Bereitstellen) des Diensts mit aktiviertem TLS den *ssl_enabled*-Parameter auf „True“ fest, wenn zutreffend. Legen Sie den *ssl_certificate*-Parameter auf den Wert der *Zertifikatdatei* fest. Legen Sie den *ssl_key* auf den Wert der *Schlüsseldatei* fest.
 
     > [!IMPORTANT]
     > Wenn Sie ein Zertifikat von Microsoft verwenden, müssen Sie nicht Ihr eigenes Zertifikat oder Ihren eigenen Domänennamen erwerben.
@@ -115,7 +115,7 @@ Die **enable_ssl** -Methode kann ein Zertifikat verwenden, das von Microsoft ber
     attach_config.enable_ssl(leaf_domain_label = "contoso")
     ```
 
-  * Wenn Sie *ein Zertifikat verwenden, das Sie erworben haben* , verwenden Sie die Parameter *ssl_cert_pem_file* , *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie *PEM* -Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes TLS/SSL-Zertifikat verwendet:
+  * Wenn Sie *ein Zertifikat verwenden, das Sie erworben haben*, verwenden Sie die Parameter *ssl_cert_pem_file*, *ssl_key_pem_file* und *ssl_cname*. Im folgenden Beispiel wird veranschaulicht, wie *PEM*-Dateien zum Erstellen einer Konfiguration verwendet werden, die ein von Ihnen erworbenes TLS/SSL-Zertifikat verwendet:
 
     ```python
     from azureml.core.compute import AksCompute
@@ -155,7 +155,7 @@ Als Nächstes müssen Sie Ihren DNS aktualisieren, so dass er auf den Dienst ver
 
   Abhängig von der Registrierungsstelle und dem TTL-Wert (Time-to-Live), der für den Domänennamen konfiguriert ist, kann es einige Minuten bis mehrere Stunden dauern, bevor Clients den Domänennamen auflösen können.
 
-+ **Für AKS** :
++ **Für AKS**:
 
   > [!WARNING]
   > Wenn Sie *leaf_domain_label* zum Erstellen des Diensts mit einem Zertifikat von Microsoft verwendet haben, aktualisieren Sie den DNS-Wert für den Cluster nicht manuell. Der Wert sollte automatisch festgelegt werden.

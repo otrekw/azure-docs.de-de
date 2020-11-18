@@ -1,7 +1,7 @@
 ---
 title: Problembehandlung bei Designermodulfehlern
 titleSuffix: Azure Machine Learning
-description: Problembehandlung bei Modulfehlercodes im Azure Machine Learning-Designer
+description: Erfahren Sie, wie Sie Fehlercodes automatisierter Module im Azure Machine Learning-Designer lesen und die entsprechenden Probleme beheben.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
 ms.date: 04/16/2020
-ms.openlocfilehash: 05926f7ce25714fb76415802876db0640eb30aae
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
+ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323780"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "93420834"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
@@ -1322,7 +1322,7 @@ Die Fehlerbehandlung für dieses Ereignis wurde in einer früheren Version von A
   
  Dieser Fehler in Azure Machine Learning tritt auf, wenn Sie eine XML-Definition für ein benutzerdefiniertes Modul erstellen und der Typ eines Parameters oder Arguments in der Definition nicht mit einem unterstützten Typ übereinstimmt.  
   
-**Lösung:** Stellen Sie sicher, dass die Typeigenschaft eines beliebigen **Arg** -Elements in der XML-Definitionsdatei für das benutzerdefinierte Modul ein unterstützter Typ ist.  
+**Lösung:** Stellen Sie sicher, dass die Typeigenschaft eines beliebigen **Arg**-Elements in der XML-Definitionsdatei für das benutzerdefinierte Modul ein unterstützter Typ ist.  
   
 |Ausnahmemeldungen|  
 |------------------------|  

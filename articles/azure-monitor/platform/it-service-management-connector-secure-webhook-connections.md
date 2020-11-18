@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 64d45861f37e2015b747a4db0feb2d32e68fe893
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
+ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427334"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94376535"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export
 
@@ -28,8 +28,8 @@ Der ITSM-Connector verwendet Anmeldeinformationen aus Benutzername und Kennwort.
 
 Mit der Secure Export-Architektur werden die folgenden neuen Funktionen eingeführt:
 
-* **Neue Aktionsgruppe** : Warnungen werden nicht über die ITSM-Aktionsgruppe, die ITSMC verwendet, sondern über die Aktionsgruppe für sichere Webhooks an das ITSM-Tool gesendet.
-* **Azure AD-Authentifizierung** : Die Authentifizierung erfolgt nicht über Anmeldeinformationen aus Benutzername und Kennwort, sondern über Azure AD.
+* **Neue Aktionsgruppe**: Warnungen werden nicht über die ITSM-Aktionsgruppe, die ITSMC verwendet, sondern über die Aktionsgruppe für sichere Webhooks an das ITSM-Tool gesendet.
+* **Azure AD-Authentifizierung**: Die Authentifizierung erfolgt nicht über Anmeldeinformationen aus Benutzername und Kennwort, sondern über Azure AD.
 
 ## <a name="secure-export-data-flow"></a>Secure Export-Datenfluss
 
@@ -49,8 +49,8 @@ Nachfolgend sind die Schritte des Secure Export-Datenflusses gezeigt:
 
 Die Integration hat unter anderem folgende Vorteile:
 
-* **Bessere Authentifizierung** : Azure AD bietet eine sicherere Authentifizierung ohne die Timeouts, die bei ITSMC häufig auftreten.
-* **Warnungen werden im ITSM-Tool behandelt** : Bei Metrikwarnungen werden die Status „ausgelöst“ und „behoben“ verwendet. Wenn die Bedingung erfüllt ist, lautet der Warnungsstatus „ausgelöst“. Ist die Bedingung nicht mehr erfüllt, lautet der Status der Warnung „behoben“. In ITSMC können Warnungen nicht automatisch behandelt werden. Bei Secure Export wird der Status „behoben“ an das ITSM-Tool übermittelt und automatisch aktualisiert.
+* **Bessere Authentifizierung**: Azure AD bietet eine sicherere Authentifizierung ohne die Timeouts, die bei ITSMC häufig auftreten.
+* **Warnungen werden im ITSM-Tool behandelt**: Bei Metrikwarnungen werden die Status „ausgelöst“ und „behoben“ verwendet. Wenn die Bedingung erfüllt ist, lautet der Warnungsstatus „ausgelöst“. Ist die Bedingung nicht mehr erfüllt, lautet der Status der Warnung „behoben“. In ITSMC können Warnungen nicht automatisch behandelt werden. Bei Secure Export wird der Status „behoben“ an das ITSM-Tool übermittelt und automatisch aktualisiert.
 * **[Einheitliches Warnungsschema](./alerts-common-schema.md)** : In ITSMC variiert das Schema der Nutzdaten einer Warnung basierend auf dem Warnungstyp. In Secure Export wird ein einheitliches Schema für alle Warnungstypen verwendet. Dieses gemeinsame Schema umfasst das Konfigurationselement für alle Warnungstypen. Sämtliche Warnungstypen können ihr Konfigurationselement an die CMDB binden.
 
 Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
@@ -60,6 +60,7 @@ Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
 3. Konfigurieren Sie Ihre Partnerumgebung. 
 
 Von Secure Export werden Verbindungen mit den folgenden ITSM-Tools unterstützt:
+* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
 * [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Registrieren bei Azure Active Directory
@@ -82,7 +83,7 @@ Weitere Informationen zu Aktionsgruppen finden Sie unter [Erstellen und Verwalte
 
 Befolgen Sie diese Anweisungen für sichere Webhooks, um einen Webhook zu einer Aktion hinzuzufügen:
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach dem Eintrag **Überwachen** , und wählen Sie ihn aus. Im Bereich **Überwachen** sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com/) nach dem Eintrag **Überwachen**, und wählen Sie ihn aus. Im Bereich **Überwachen** sind alle Ihre Überwachungseinstellungen und -daten an einem zentralen Ort zusammengefasst.
 2. Wählen Sie **Warnungen** > **Aktionen verwalten** aus.
 3. Wählen Sie [Aktionsgruppe hinzufügen](./action-groups.md#create-an-action-group-by-using-the-azure-portal), und füllen Sie die Felder aus.
 4. Geben Sie jeweils einen Namen in die Felder **Aktionsgruppenname** und **Kurzname** ein. Der Kurzname wird anstelle eines vollständigen Aktionsgruppennamens verwendet, wenn Benachrichtigungen mithilfe dieser Gruppe gesendet werden.
@@ -101,6 +102,26 @@ Befolgen Sie diese Anweisungen für sichere Webhooks, um einen Webhook zu einer 
 Die Konfiguration umfasst zwei Schritte:
 1. Abrufen des URI für die Definition des sicheren Exports
 2. Definitionen gemäß dem Flow des ITSM-Tools
+
+
+### <a name="connect-servicenow-to-azure-monitor"></a>Herstellen einer Verbindung von ServiceNow mit Azure Monitor
+
+In den folgenden Abschnitten finden Sie Einzelheiten dazu, wie Sie Ihr ServiceNow-Produkt und den sicheren Export in Azure verbinden.
+
+### <a name="prerequisites"></a>Voraussetzungen
+
+Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
+
+* Azure AD wurde registriert.
+* Sie verfügen über eine unterstützte Version von The ServiceNow Event Management – ITOM (Version „Orlando“ oder höher).
+
+### <a name="configure-the-servicenow-connection"></a>Konfigurieren der ServiceNow-Verbindung
+
+1. Verwenden Sie diesen Link als URI für die Definition des sicheren Exports: https://(instance name).service-now.com/api/sn_em_connector/em/inbound_event?source=azuremonitor.
+
+2. Gehen Sie gemäß der versionsspezifischen Anleitung vor:
+   * [Paris](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
+   * [Orlando](https://docs.servicenow.com/bundle/paris-it-operations-management/page/product/event-management/concept/azure-integration.html)
 
 ### <a name="connect-bmc-helix-to-azure-monitor"></a>Verbinden von BMC Helix mit Azure Monitor
 
@@ -135,15 +156,18 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt sind:
    4. Wählen Sie eine **Konfiguration** aus.
    5. Wählen Sie die Konfiguration **Neue Verbindung hinzufügen** aus.
    6. Geben Sie im Abschnitt zur Konfiguration die folgenden Informationen ein:
-      - **Name** : Legen Sie einen eigenen Namen fest.
-      - **Autorisierungstyp** : **NONE**
-      - **Beschreibung** : Geben Sie eine eigene Beschreibung ein.
-      - **Site** : **Cloud**
-      - **Anzahl von Instanzen** : **2** (Standardwert).
-      - **Aktivieren** : Standardmäßig ausgewählt, um die Verwendung zu ermöglichen.
+      - **Name**: Legen Sie einen eigenen Namen fest.
+      - **Autorisierungstyp**: **NONE**
+      - **Beschreibung**: Geben Sie eine eigene Beschreibung ein.
+      - **Site**: **Cloud**
+      - **Anzahl von Instanzen**: **2** (Standardwert).
+      - **Aktivieren**: Standardmäßig ausgewählt, um die Verwendung zu ermöglichen.
       - Die Azure-Mandanten-ID und die Azure-Anwendungs-ID stammen von der Anwendung, die Sie zuvor definiert haben.
 
 ![Screenshot einer BMC-Konfiguration.](media/it-service-management-connector-secure-webhook-connections/bmc-configuration.png)
+
+
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

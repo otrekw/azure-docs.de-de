@@ -2,13 +2,13 @@
 title: Verknüpfen von Vorlagen für die Bereitstellung
 description: Beschreibt, wie verknüpfte Vorlagen in einer Azure-Ressourcen-Manager-Vorlage zum Erstellen einer modularen Vorlagenprojektmappe verwendet werden. Zeigt, wie Parameterwerte übergeben, eine Parameterdatei festgelegt und URLs dynamisch erstellt werden.
 ms.topic: conceptual
-ms.date: 09/08/2020
-ms.openlocfilehash: fb742ed4fabd6630d2d27f5876719e2e2b1a9a4d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/06/2020
+ms.openlocfilehash: 603445fdd96cc72a2d64bae21a47cfeabd6dd167
+ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91369313"
+ms.lasthandoff: 11/08/2020
+ms.locfileid: "94366336"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen
 
@@ -283,7 +283,7 @@ Im folgenden Beispiel wird eine SQL Server-Instanz bereitgestellt, und ein Schl�
 
 ## <a name="linked-template"></a>Verknüpfte Vorlage
 
-Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der **templateLink**-Eigenschaft den URI der einzuschließenden Vorlage an. Im folgenden Beispiel wird eine Vorlage verknüpft, die ein neues Speicherkonto bereitstellt.
+Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsressource](/azure/templates/microsoft.resources/deployments) hinzu. Geben Sie in der **templateLink**-Eigenschaft den URI der einzuschließenden Vorlage an. Das folgende Beispiel verknüpft eine Vorlage, die sich in einem Speicherkonto befindet.
 
 ```json
 {
@@ -310,13 +310,17 @@ Zum Verknüpfen einer Vorlage fügen Sie der Hauptvorlage eine [Bereitstellungsr
 }
 ```
 
-Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` keine lokale Datei oder keine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Sie müssen einen URI-Wert angeben, der als **http**- oder **https**-Wert heruntergeladen werden kann.
+Beim Verweisen auf eine verknüpfte Vorlage darf der Wert von `uri` weder eine lokale Datei noch eine Datei sein, die nur in Ihrem lokalen Netzwerk verfügbar ist. Azure Resource Manager muss auf die Vorlage zugreifen können. Geben Sie einen URI-Wert an, der als **http**- oder **https**-Wert heruntergeladen werden kann. 
 
-> [!NOTE]
->
-> Sie können auf Vorlagen mithilfe von Parametern verweisen, die letztendlich in einen Wert aufgelöst werden, der **http** oder **https** verwendet, beispielsweise die Verwendung des Parameters `_artifactsLocation` wie folgt: `"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]",`
+Sie können auf Vorlagen mit Parametern verweisen, die **http** oder **http** enthalten. Ein gängiges Muster ist beispielsweise die Verwendung des Parameters `_artifactsLocation`. Sie können die verknüpfte Vorlage mit einem Ausdruck wie dem folgenden festlegen:
 
-Der Resource Manager muss auf die Vorlage zugreifen können. Eine Option besteht darin, die verknüpfte Vorlage in einem Speicherkonto zu platzieren und den URI für dieses Element zu verwenden.
+```json
+"uri": "[concat(parameters('_artifactsLocation'), '/shared/os-disk-parts-md.json', parameters('_artifactsLocationSasToken'))]"
+```
+
+Wenn Sie eine Vorlage in GitHub verknüpfen, verwenden Sie die unformatierte URL. Der Link weist dieses Format auf: `https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/get-started-with-templates/quickstart-template/azuredeploy.json`. Um den unformatierten Link zu erhalten, wählen Sie **Unformatiert** aus.
+
+:::image type="content" source="./media/linked-templates/select-raw.png" alt-text="Auswählen der unformatierten URL":::
 
 ### <a name="parameters-for-linked-template"></a>Parameter für eine verknüpfte Vorlage
 

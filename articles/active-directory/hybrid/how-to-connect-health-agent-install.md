@@ -17,12 +17,12 @@ ms.topic: how-to
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 78871441fe7f9b0f6d02cdf6f05b97933abfca54
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: da3ae5e86833eb3e7eb71d7e47cb6f963d37b9cf
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92275642"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94410724"
 ---
 # <a name="azure-ad-connect-health-agent-installation"></a>Installieren des Azure AD Connect Health-Agents
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 | Anforderung | BESCHREIBUNG |
 | --- | --- |
 | Azure AD Premium |Azure AD Connect Health ist ein Azure AD Premium-Feature und erfordert Azure AD Premium. <br /><br />Weitere Informationen finden Sie unter [Erste Schritte mit Azure AD Premium](../fundamentals/active-directory-get-started-premium.md). <br />Informationen zum Starten einer kostenlosen Testversion für 30 Tage finden Sie auf der Seite zum [Aktivieren einer Testversion](https://azure.microsoft.com/trial/get-started-active-directory/). |
-| Sie müssen ein globaler Administrator Ihrer Azure AD-Instanz sein, um die ersten Schritte für Azure AD Connect Health durchzuführen |Standardmäßig können nur globale Administratoren die Health-Agents installieren und konfigurieren, um die ersten Schritte auszuführen, auf das Portal zuzugreifen und Vorgänge in Azure AD Connect Health durchzuführen. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../fundamentals/active-directory-administer.md). <br /><br /> Mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie anderen Benutzern in Ihrer Organisation den Zugriff auf Azure AD Connect Health gewähren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) für Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Wichtig:** Das bei der Installation der Agents verwendete Konto muss ein Geschäfts-, Schul- oder Unikonto sein. Ein Microsoft-Konto kann nicht verwendet werden. Weitere Informationen finden Sie unter [Als Unternehmen für Azure registrieren](../fundamentals/sign-up-organization.md). |
+| Sie müssen ein globaler Administrator Ihrer Azure AD-Instanz sein, um die ersten Schritte für Azure AD Connect Health durchzuführen |Standardmäßig können nur globale Administratoren die Health-Agents installieren und konfigurieren, um die ersten Schritte auszuführen, auf das Portal zuzugreifen und Vorgänge in Azure AD Connect Health durchzuführen. Weitere Informationen finden Sie unter [Verwalten Ihres Azure AD-Verzeichnisses](../fundamentals/active-directory-whatis.md). <br /><br /> Mit der rollenbasierten Zugriffssteuerung von Azure (Azure RBAC) können Sie anderen Benutzern in Ihrer Organisation den Zugriff auf Azure AD Connect Health gewähren. Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung (Role-based Access Control, RBAC) für Azure AD Connect Health](how-to-connect-health-operations.md#manage-access-with-azure-rbac). <br /><br />**Wichtig:** Das bei der Installation der Agents verwendete Konto muss ein Geschäfts-, Schul- oder Unikonto sein. Ein Microsoft-Konto kann nicht verwendet werden. Weitere Informationen finden Sie unter [Als Unternehmen für Azure registrieren](../fundamentals/sign-up-organization.md). |
 | Der Azure AD Connect Health-Agent ist auf jedem Zielserver installiert. | Damit Azure AD Connect Health Daten empfangen und Überwachungs- und Analysefunktionen bereitstellen kann, müssen die Integritäts-Agents auf Zielservern installiert und konfiguriert sein. <br /><br />Um beispielsweise Daten aus Ihrer AD FS-Infrastruktur abzurufen, muss der Agent auf den AD FS- und Webanwendungsproxy-Servern installiert sein. Ebenso muss der Agent auf den Domänencontrollern installiert sein, um Daten zu Ihrer lokalen AD DS-Infrastruktur abzurufen. <br /><br /> |
 | Ausgehende Verbindungen zu den Azure-Dienstendpunkten | Während der Installation und der Laufzeit erfordert der Agent Verbindungen mit den Endpunkten des Azure AD Connect Health-Diensts. Falls ausgehende Verbindungen mithilfe von Firewalls blockiert werden, müssen der Zulassungsliste folgende Endpunkte hinzugefügt werden. Siehe [outbound connectivity endpoints](how-to-connect-health-agent-install.md#outbound-connectivity-to-the-azure-service-endpoints) (Endpunkte für ausgehende Verbindungen) |
 |Ausgehende Verbindungen auf IP-Adressbasis | Informationen zur IP-adressbasierten Firewallfilterung finden Sie in den [IP-Bereichen für Azure](https://www.microsoft.com/download/details.aspx?id=41653).|
@@ -59,7 +59,7 @@ Die folgende Tabelle enthält eine Liste mit Anforderungen für die Verwendung v
 
 | Domänenumgebung | Erforderliche Azure-Dienstendpunkte |
 | --- | --- |
-| Allgemein verfügbar | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net – Port: 5671 </li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *Dieser Endpunkt wird nur zu Ermittlungszwecken während der Registrierung verwendet.</li> |
+| Allgemein verfügbar | <li>&#42;.blob.core.windows.net </li><li>&#42;.aadconnecthealth.azure.com </li><li>&#42;.servicebus.windows.net – Port: 5671 (in der neuesten Agent-Version nicht erforderlich)</li><li>&#42;.adhybridhealth.azure.com/</li><li>https:\//management.azure.com </li><li>https:\//policykeyservice.dc.ad.msft.net/</li><li>https:\//login.windows.net</li><li>https:\//login.microsoftonline.com</li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *Dieser Endpunkt wird nur zu Ermittlungszwecken während der Registrierung verwendet.</li> |
 | Azure Deutschland | <li>&#42;.blob.core.cloudapi.de </li><li>&#42;.servicebus.cloudapi.de </li> <li>&#42;.aadconnecthealth.microsoftazure.de </li><li>https:\//management.microsoftazure.de </li><li>https:\//policykeyservice.aadcdi.microsoftazure.de </li><li>https:\//login.microsoftonline.de </li><li>https:\//secure.aadcdn.microsoftonline-p.de </li><li>https:\//www.office.de *Dieser Endpunkt wird nur zu Ermittlungszwecken während der Registrierung verwendet.</li> |
 | Azure Government | <li>&#42;.blob.core.usgovcloudapi.net </li> <li>&#42;.servicebus.usgovcloudapi.net </li> <li>&#42;.aadconnecthealth.microsoftazure.us </li> <li>https:\//management.usgovcloudapi.net </li><li>https:\//policykeyservice.aadcdi.azure.us </li><li>https:\//login.microsoftonline.us </li><li>https:\//secure.aadcdn.microsoftonline-p.com </li><li>https:\//www.office.com *Dieser Endpunkt wird nur zu Ermittlungszwecken während der Registrierung verwendet.</li> |
 
@@ -154,9 +154,9 @@ Standardmäßig ist die Überwachungsebene „basic“ aktiviert. Weitere Inform
 #### <a name="to-locate-the-ad-fs-audit-logs"></a>So ermitteln Sie die AD FS-Überwachungsprotokolle
 
 1. Öffnen Sie die **Ereignisanzeige**.
-2. Wechseln Sie zu "Windows-Protokolle", und wählen Sie **Sicherheit**aus.
+2. Wechseln Sie zu "Windows-Protokolle", und wählen Sie **Sicherheit** aus.
 3. Klicken Sie auf der rechten Seite auf **Aktuelle Protokolle filtern**.
-4. Wählen Sie unter "Ereignisquelle" die **AD FS-Überwachung**aus.
+4. Wählen Sie unter "Ereignisquelle" die **AD FS-Überwachung** aus.
 
     Unter [diesem Link](reference-connect-health-faq.md#operations-questions) finden Sie einige häufig gestellte Fragen zu Überwachungsprotokollen.
 

@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: a3899d9fbf04f9629885ec38f6b0b2bde728561b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740146"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331605"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
@@ -30,7 +30,7 @@ In diesem Artikel wird erläutert, was SSO und APP so wichtig macht. Außerdem f
 
 Außerdem werden durch Aktivieren von einmaligem Anmelden in Ihrer App neue Authentifizierungsmechanismen unterstützt, die zu einer zeitgemäßen Authentifizierung gehören, z. B. [kennwortlose Anmeldungen](../authentication/concept-authentication-passwordless.md). Benutzernamen und Kennwörter gehören zu den Vektoren, die bei Anwendungen am häufigsten angegriffen werden. Durch Aktivieren von SSO können Sie dieses Risiko verringern, indem Sie den bedingten Zugriff oder kennwortlose Anmeldungen erzwingen, die zusätzliche Sicherheit bieten oder auf sicherere Authentifizierungsmechanismen zurückgreifen. Schließlich ermöglicht das Aktivieren von einmaligem Anmelden auch [einmaliges Abmelden](v2-protocols-oidc.md#single-sign-out). Dies ist z. B. bei Unternehmensanwendungen hilfreich, die auf gemeinsam genutzten Geräten verwendet werden.
 
-[App-Schutzrichtlinien (App Protection Policies, APP)](/mem/intune/apps/app-protection-policy) stellen sicher, dass die Daten einer Organisation geschützt und abgekapselt sind. Sie ermöglichen es Unternehmen, ihre Daten in einer App zu verwalten und zu schützen sowie zu steuern, wer auf die App und die zugehörigen Daten zugreifen kann. Durch Implementieren von App-Schutzrichtlinien können Benutzer mit Ressourcen, die durch Richtlinien für bedingten Zugriff geschützt sind, eine Verbindung herstellen und Daten sicher mit anderen geschützten Apps auszutauschen. Zu den Szenarien, die von App-Schutzrichtlinien unterstützt werden, gehört das Abfragen einer obligatorischen PIN zum Öffnen einer App, das Steuern der Freigabe von Daten für andere Apps und das Verhindern des Speicherns von Daten aus einer Unternehmens-App an einem privaten Speicherort auf dem Gerät.
+[App-Schutzrichtlinien (App Protection Policies, APP)](/mem/intune/apps/app-protection-policy) stellen sicher, dass die Daten einer Organisation geschützt und abgekapselt sind. Sie ermöglichen es Unternehmen, ihre Daten in einer App zu verwalten und zu schützen sowie zu steuern, wer auf die App und die zugehörigen Daten zugreifen kann. Durch Implementieren von App-Schutzrichtlinien können Benutzer mit Ressourcen, die durch Richtlinien für bedingten Zugriff geschützt sind, eine Verbindung herstellen und Daten sicher mit anderen geschützten Apps auszutauschen. Folgende Szenarien lassen sich mit App-Schutzrichtlinien umsetzen: Anfordern einer PIN zum Öffnen einer App, Steuern der Freigabe von Daten für andere Apps und Verhindern, dass Daten aus Unternehmens-Apps an privaten Speicherorten gespeichert werden.
 
 ## <a name="implementing-single-sign-on"></a>Implementieren von einmaligem Anmelden
 

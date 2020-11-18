@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/11/2020
 ms.author: yelevin
-ms.openlocfilehash: 502b93b4459fba4da04207d9186f8c7ce6b298c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d13f401fab126f57d07d405ab5d6ce461c26e139
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91578477"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658943"
 ---
 # <a name="extend-azure-sentinel-across-workspaces-and-tenants"></a>Erweitern von Azure Sentinel auf Arbeitsbereiche und Mandanten
 
@@ -84,7 +84,7 @@ Azure Sentinel unterstützt eine [arbeitsbereichsübergreifende Incident-Ansicht
 Azure Sentinel unterstützt das Abfragen [mehrerer Arbeitsbereiche in einer einzigen Abfrage](../azure-monitor/log-query/cross-workspace-query.md). So lassen sich Daten aus mehreren Arbeitsbereichen mit einer Abfrage suchen und korrelieren. 
 
 - Um auf eine Tabelle in einem anderen Arbeitsbereich zu verweisen, verwenden Sie den [workspace()-Ausdruck](../azure-monitor/log-query/workspace-expression.md). 
-- Verwenden Sie den [union-Operator](https://docs.microsoft.com/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) zusammen mit dem workspace()-Ausdruck, um eine Abfrage tabellenübergreifend auf mehrere Arbeitsbereiche anzuwenden.
+- Verwenden Sie den [union-Operator](/azure/data-explorer/kusto/query/unionoperator?pivots=azuremonitor) zusammen mit dem workspace()-Ausdruck, um eine Abfrage tabellenübergreifend auf mehrere Arbeitsbereiche anzuwenden.
 
 Sie können gespeicherte [Funktionen](../azure-monitor/log-query/functions.md) verwenden, um arbeitsbereichsübergreifende Abfragen zu vereinfachen. Wenn z. B. ein Verweis auf einen Arbeitsbereich lang ist, können Sie den Ausdruck `workspace("customer-A's-hard-to-remember-workspace-name").SecurityEvent` als eine Funktion mit dem Namen `SecurityEventCustomerA` speichern. Anschließend können Sie Abfragen als `SecurityEventCustomerA | where ...` schreiben.
 

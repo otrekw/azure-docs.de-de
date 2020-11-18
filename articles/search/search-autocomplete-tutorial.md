@@ -7,24 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 09/08/2020
+ms.date: 11/10/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 5dd2d9e932bd1be3da74a2bdc9bd918401076aa3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 1bf0a4a86ccc36960f218fabebda5bc82eb29019
+ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348609"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94426169"
 ---
 # <a name="add-autocomplete-and-suggestions-to-client-apps"></a>Hinzufügen von AutoVervollständigen und Vorschlägen zu Client-Apps
 
-„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine andere Form sind *Vorschläge* , d. h. eine kurze Liste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie eine Verknüpfung zu einer Detailseite herstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
+„Suche während der Eingabe“ ist ein gängiges Verfahren für mehr Produktivität bei von Benutzern initiierten Abfragen. In Azure Cognitive Search wird dieses Vorgehen durch die Funktion *AutoVervollständigen* unterstützt, die einen Begriff oder einen Ausdruck auf der Grundlage von partiellen Eingaben vervollständigt (aus „Micro“ wird z. B. „Microsoft“). Eine andere Form sind *Vorschläge*, d. h. eine kurze Liste übereinstimmender Dokumente (Buchtitel werden mit einer ID zurückgegeben, sodass Sie eine Verknüpfung zu einer Detailseite herstellen können). Sowohl AutoVervollständigen als auch Vorschläge basieren auf einer Entsprechung im Index. Der Dienst bietet keine Abfragen an, die keine Ergebnisse zurückgeben.
 
 Zum Implementieren dieser Verfahren in Azure Cognitive Search benötigen Sie Folgendes:
 
 + Eine *Vorschlagsfunktion* auf dem Back-End.
 + Eine *Abfrage* mit Angabe der [AutoVervollständigen](/rest/api/searchservice/autocomplete)- oder [Vorschlags](/rest/api/searchservice/suggestions)-API für die Anforderung.
-+ Ein *UI-Steuerelement* , um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
++ Ein *UI-Steuerelement*, um Interaktionen bei der Suche während der Eingabe in Ihrer Client-App zu verarbeiten. Wir empfehlen für diesen Zweck eine vorhandene JavaScript-Bibliothek.
 
 In Azure Cognitive Search werden automatisch vervollständigte Abfragen und vorgeschlagene Ergebnisse aus dem Suchindex abgerufen, und zwar aus ausgewählten Feldern, die Sie bei einer Vorschlagsfunktion registriert haben. Eine Vorschlagsfunktion ist Bestandteil des Index und gibt an, welche Felder Inhalte zum Vervollständigen einer Abfrage und/oder zum Vorschlagen eines Ergebnisses bereitstellen. Wenn der Index erstellt und geladen wird, wird intern eine Vorschlagsdatenstruktur zum Speichern von Präfixen erstellt, die für die Übereinstimmung bei partiellen Abfragen verwendet werden. Bei Vorschlägen ist es für die Sucherfahrung äußerst wichtig, geeignete Felder auszuwählen, die einmalig sind oder sich zumindest nicht wiederholen. Weitere Informationen finden Sie unter [Erstellen einer Vorschlagsfunktion](index-add-suggesters.md).
 
@@ -48,7 +48,7 @@ Der Parameter **search** stellt die partielle Abfrage bereit, bei der Zeichen ü
 
 Die APIs erzwingen keine Mindestanforderungen für die Länge der partiellen Abfrage. Sie kann auch aus nur einem Zeichen bestehen. „jQuery Autocomplete“ stellt jedoch eine Mindestlänge bereit. In der Regel sind es mindestens zwei oder drei Zeichen.
 
-Übereinstimmungen finden sich am Anfang eines Begriffs an beliebiger Stelle in der Eingabezeichenfolge. Bei der Suche nach „the quick brown fox“ zum Beispiel findet sowohl die Funktion „AutoVervollständigen“, als auch die Vorschlagsfunktion die partiellen Versionen von „the“, „quick“, „brown“ oder „fox“, aber keine partiellen Infixe wie „rown“ oder „ox“. Außerdem legt jede Übereinstimmung den Bereich für nachfolgende Erweiterungen fest. Die partielle Abfrage von „quick br“ findet „quick brown“ oder „quick bread“. Sie findet aber weder „brown“ noch „bread“ alleine, solange nicht „quick“ voransteht.
+Übereinstimmungen finden sich am Anfang eines Begriffs an beliebiger Stelle in der Eingabezeichenfolge. Bei der Suche nach „the quick brown fox“ zum Beispiel findet sowohl die Funktion „AutoVervollständigen“, als auch die Vorschlagsfunktion die partiellen Versionen von „the“, „quick“, „brown“ oder „fox“, aber keine partiellen Infixe wie „rown“ oder „ox“. Außerdem legt jede Übereinstimmung den Bereich für nachfolgende Erweiterungen fest. Die partielle Abfrage von „quick br“ findet „quick brown“ oder „quick bread“. Sie findet aber weder „brown“ noch „bread“ alleine, solange nicht „quick“ davorsteht.
 
 ### <a name="apis-for-search-as-you-type"></a>APIs für die Suche während der Eingabe
 
@@ -56,8 +56,8 @@ Folgen Sie diesen Links zu den REST- und .NET SDK-Referenzseiten:
 
 + [Vorschläge-REST-API](/rest/api/searchservice/suggestions) 
 + [AutoVervollständigen-REST-API](/rest/api/searchservice/autocomplete) 
-+ [SuggestWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.suggestwithhttpmessagesasync)
-+ [AutocompleteWithHttpMessagesAsync-Methode](/dotnet/api/microsoft.azure.search.idocumentsoperations.autocompletewithhttpmessagesasync)
++ [SuggestAsync-Methode](/dotnet/api/azure.search.documents.searchclient.suggestasync)
++ [AutocompleteAsync-Methode](/dotnet/api/azure.search.documents.searchclient.autocompleteasync)
 
 ## <a name="structure-a-response"></a>Struktur einer Antwort
 
@@ -131,7 +131,7 @@ source: "/home/suggest?highlights=false&fuzzy=true&",
 
 ### <a name="enable-highlighting"></a>Aktivieren der Hervorhebung
 
-Durch die Hervorhebung wird auf die Zeichen im Ergebnis, die der Eingabe entsprechen, ein Schriftschnitt angewendet. Wenn beispielsweise die partielle Eingabe „micro“ lautet", würde das Ergebnis als „ **micro** soft“, „ **micro** scope“ usw. angezeigt. Die Hervorhebung basiert auf den HighlightPreTag- und HighlightPostTag-Parametern, die zusammen mit der Vorschlagsfunktion definiert werden.
+Durch die Hervorhebung wird auf die Zeichen im Ergebnis, die der Eingabe entsprechen, ein Schriftschnitt angewendet. Wenn beispielsweise die partielle Eingabe „micro“ lautet", würde das Ergebnis als „**micro** soft“, „**micro** scope“ usw. angezeigt. Die Hervorhebung basiert auf den HighlightPreTag- und HighlightPostTag-Parametern, die zusammen mit der Vorschlagsfunktion definiert werden.
 
 ```javascript
 source: "/home/suggest?highlights=true&fuzzy=true&",
@@ -139,45 +139,43 @@ source: "/home/suggest?highlights=true&fuzzy=true&",
 
 ### <a name="suggest-function"></a>Vorschlagsfunktion
 
-Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [DocumentsOperationsExtensions.Suggest-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.suggest). Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
+Wenn Sie C# und eine MVC-Anwendung verwenden, können Sie in der Datei **HomeController.cs** im Verzeichnis des Controllers eine Klasse für vorgeschlagene Ergebnisse erstellen. In .NET basiert eine Vorschlagsfunktion auf der [SuggestAsync-Methode](/dotnet/api/azure.search.documents.searchclient.suggestasync). Weitere Informationen zum .NET SDK finden Sie unter [Verwenden von Azure Cognitive Search aus einer .NET-Anwendung](search-howto-dotnet-sdk.md).
 
-Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Eigenschaften der Klasse [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters) bestimmen, welche Felder durchsucht und in den Ergebnissen zurückgegeben werden sowie die Anzahl der Übereinstimmungen und ob die Fuzzyübereinstimmung verwendet wird. 
+Mit der `InitSearch`-Methode wird für den Azure Cognitive Search-Dienst ein authentifizierter Client für den HTTP-Index erstellt. Eigenschaften in der Klasse [SuggestOptions](/dotnet/api/azure.search.documents.suggestoptions) bestimmen, welche Felder durchsucht und in den Ergebnissen zurückgegeben werden. Die Eigenschaften legen auch fest, wie viele Übereinstimmungen gesucht werden und ob die Fuzzyübereinstimmung verwendet wird. 
 
 Für AutoVervollständigen ist die Fuzzyübereinstimmung auf einen Bearbeitungsabstand (ein ausgelassenes oder falsch platziertes Zeichen) beschränkt. Beachten Sie, dass die Fuzzyübereinstimmung bei AutoVervollständigen-Abfragen manchmal unerwartete Ergebnisse liefern kann, abhängig von der Größe des Indexers und der Art und Weise, wie er partitioniert wird. Weitere Informationen finden Sie unter [Partitions- und Shardkonzepte](search-capacity-planning.md#concepts-search-units-replicas-partitions-shards).
 
 ```csharp
-public ActionResult Suggest(bool highlights, bool fuzzy, string term)
+public async Task<ActionResult> SuggestAsync(bool highlights, bool fuzzy, string term)
 {
     InitSearch();
 
-    // Call suggest API and return results
-    SuggestParameters sp = new SuggestParameters()
+    var options = new SuggestOptions()
     {
-        Select = HotelName,
-        SearchFields = HotelName,
         UseFuzzyMatching = fuzzy,
-        Top = 5
+        Size = 8,
     };
 
     if (highlights)
     {
-        sp.HighlightPreTag = "<b>";
-        sp.HighlightPostTag = "</b>";
+        options.HighlightPreTag = "<b>";
+        options.HighlightPostTag = "</b>";
     }
 
-    DocumentSuggestResult resp = _indexClient.Documents.Suggest(term, "sg", sp);
+    // Only one suggester can be specified per index.
+    // The suggester for the Hotels index enables autocomplete/suggestions on the HotelName field only.
+    // During indexing, HotelNames are indexed in patterns that support autocomplete and suggested results.
+    var suggestResult = await _searchClient.SuggestAsync<Hotel>(term, "sg", options).ConfigureAwait(false);
 
     // Convert the suggest query results to a list that can be displayed in the client.
-    List<string> suggestions = resp.Results.Select(x => x.Text).ToList();
-    return new JsonResult
-    {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = suggestions
-    };
+    List<string> suggestions = suggestResult.Value.Results.Select(x => x.Text).ToList();
+
+    // Return the list of suggestions.
+    return new JsonResult(suggestions);
 }
 ```
 
-Die Funktion „Suggest“ (Vorschlagen) verwendet zwei Parameter, die bestimmen, ob Treffermarkierungen zurückgegeben werden sollen oder ob zusätzlich zur Eingabe des Suchbegriffs die Fuzzyübereinstimmung verwendet werden soll. Die Methode erstellt das Objekt [SuggestParameters](/dotnet/api/microsoft.azure.search.models.suggestparameters), das anschließend an die Suggest-API übergeben wird. Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
+Die SuggestAsync-Funktion akzeptiert zwei Parameter, die bestimmen, ob Treffermarkierungen zurückgegeben werden sollen oder ob zusätzlich zum eingegebenen Suchbegriff die Fuzzyübereinstimmung verwendet werden soll. Die vorgeschlagenen Ergebnisse können bis zu acht Übereinstimmungen enthalten. Die Methode erstellt ein [SuggestOptions-Objekt](/dotnet/api/azure.search.documents.suggestoptions), das an die Vorschlags-API übergeben wird. Das Ergebnis wird anschließend in JSON konvertiert, damit es im Client angezeigt werden kann.
 
 ## <a name="autocomplete"></a>AutoVervollständigen
 
@@ -185,7 +183,7 @@ Bisher war der UX-Suchcode auf Vorschläge ausgerichtet. Der nächste Codeblock 
 
 ```javascript
 $(function () {
-    // using modified jQuery Autocomplete plugin v1.2.6 https://xdsoft.net/jqplugins/autocomplete/
+    // using modified jQuery Autocomplete plugin v1.2.8 https://xdsoft.net/jqplugins/autocomplete/
     // $.autocomplete -> $.autocompleteInline
     $("#searchbox1").autocompleteInline({
         appendMethod: "replace",
@@ -220,28 +218,25 @@ $(function () {
 
 ### <a name="autocomplete-function"></a>Funktion „AutoVervollständigen“
 
-AutoVervollständigen basiert auf der [DocumentsOperationsExtensions.Autocomplete-Methode](/dotnet/api/microsoft.azure.search.documentsoperationsextensions.autocomplete). Wie bei den Vorschlägen gehört dieser Codeblock in die Datei **HomeController.cs**.
+AutoVervollständigen basiert auf der [AutocompleteAsync-Methode](/dotnet/api/azure.search.documents.searchclient.autocompleteasync). Wie bei den Vorschlägen gehört dieser Codeblock in die Datei **HomeController.cs**.
 
 ```csharp
-public ActionResult AutoComplete(string term)
+public async Task<ActionResult> AutoCompleteAsync(string term)
 {
     InitSearch();
-    //Call autocomplete API and return results
-    AutocompleteParameters ap = new AutocompleteParameters()
-    {
-        AutocompleteMode = AutocompleteMode.OneTermWithContext,
-        UseFuzzyMatching = false,
-        Top = 5
-    };
-    AutocompleteResult autocompleteResult = _indexClient.Documents.Autocomplete(term, "sg", ap);
 
-    // Convert the Suggest results to a list that can be displayed in the client.
-    List<string> autocomplete = autocompleteResult.Results.Select(x => x.Text).ToList();
-    return new JsonResult
+    // Setup the autocomplete parameters.
+    var ap = new AutocompleteOptions()
     {
-        JsonRequestBehavior = JsonRequestBehavior.AllowGet,
-        Data = autocomplete
+        Mode = AutocompleteMode.OneTermWithContext,
+        Size = 6
     };
+    var autocompleteResult = await _searchClient.AutocompleteAsync(term, "sg", ap).ConfigureAwait(false);
+
+    // Convert the autocompleteResult results to a list that can be displayed in the client.
+    List<string> autocomplete = autocompleteResult.Value.Results.Select(x => x.Text).ToList();
+
+    return new JsonResult(autocomplete);
 }
 ```
 

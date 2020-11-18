@@ -1,20 +1,20 @@
 ---
 title: Azure IoT Hub-Vorgangsüberwachung (veraltet) | Microsoft-Dokumentation
 description: Verwenden der Azure IoT Hub-Vorgangsüberwachung zum Überwachen des Status von Vorgängen auf Ihrem IoT Hub in Echtzeit.
-author: nberdy
-manager: briz
+author: robinsh
+manager: philmea
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 03/11/2019
-ms.author: nberdy
+ms.author: robinsh
 ms.custom: amqp, devx-track-csharp
-ms.openlocfilehash: 559dac0f37daf612404fca839e9918e97077029e
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 045d5693c4388c6285bc6983ac2a385ceac9f6d0
+ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92538492"
+ms.lasthandoff: 11/10/2020
+ms.locfileid: "94408123"
 ---
 # <a name="iot-hub-operations-monitoring-deprecated"></a>IoT Hub-Vorgangsüberwachung (veraltet)
 
@@ -197,23 +197,23 @@ Zum Herstellen einer Verbindung mit dem Überwachungsendpunkt benötigen Sie ein
 
 1. Navigieren Sie im Portal zum Blatt für die IoT Hub-Ressource.
 
-2. Wählen Sie **Vorgangsüberwachung** aus, und notieren Sie sich die Werte für **Event Hub-kompatibler Name** und **Event Hub-kompatibler Endpunkt** :
+2. Wählen Sie **Vorgangsüberwachung** aus, und notieren Sie sich die Werte für **Event Hub-kompatibler Name** und **Event Hub-kompatibler Endpunkt**:
 
     ![Werte für Event Hub-kompatiblen Endpunkt](./media/iot-hub-operations-monitoring/monitoring-endpoint.png)
 
-3. Wählen Sie **Freigegebene Zugriffsrichtlinien** und dann **Dienst** aus. Notieren Sie sich den Wert von **Primärschlüssel** :
+3. Wählen Sie **Freigegebene Zugriffsrichtlinien** und dann **Dienst** aus. Notieren Sie sich den Wert von **Primärschlüssel**:
 
     ![Primärschlüssel des Diensts unter „SAS-Richtlinie“](./media/iot-hub-operations-monitoring/service-key.png)
 
 Das folgende C#-Codebeispiel stammt aus einer Visual Studio C#-Konsolenanwendung für den **klassischen Windows-Desktop**. Im Projekt ist das NuGet-Paket **WindowsAzure.ServiceBus** installiert.
 
-* Ersetzen Sie den Platzhalter für die Verbindungszeichenfolge durch eine Verbindungszeichenfolge, in der die Werte für **Event Hub-kompatibler Endpunkt** und Dienst- **Primärschlüssel** verwendet werden, die Sie sich zuvor notiert haben, wie im folgenden Beispiel gezeigt:
+* Ersetzen Sie den Platzhalter für die Verbindungszeichenfolge durch eine Verbindungszeichenfolge, in der die Werte für **Event Hub-kompatibler Endpunkt** und Dienst-**Primärschlüssel** verwendet werden, die Sie sich zuvor notiert haben, wie im folgenden Beispiel gezeigt:
 
     ```csharp
     "Endpoint={your Event Hub-compatible endpoint};SharedAccessKeyName=service;SharedAccessKey={your service primary key value}"
     ```
 
-* Ersetzen Sie den Platzhalter für den Namen des Überwachungsendpunkts durch den Wert von **Event Hub-kompatibler Name** , den Sie sich zuvor notiert haben.
+* Ersetzen Sie den Platzhalter für den Namen des Überwachungsendpunkts durch den Wert von **Event Hub-kompatibler Name**, den Sie sich zuvor notiert haben.
 
 ```csharp
 class Program
@@ -267,8 +267,8 @@ class Program
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Funktionen von IoT Hub finden Sie unter:
+Weitere Informationen zur Verwendung von Azure Monitor zum Überwachen von IoT Hub finden Sie hier:
 
-* [Entwicklungsleitfaden für IoT Hub](iot-hub-devguide.md)
+* [Überwachen von IoT Hub](monitor-iot-hub.md)
 
-* [Bereitstellen von KI auf Edge-Geräten mit Azure IoT Edge](../iot-edge/quickstart-linux.md)
+* [Migrieren von der IoT Hub-Vorgangsüberwachung zu Azure Monitor](iot-hub-migrate-to-diagnostics-settings.md)

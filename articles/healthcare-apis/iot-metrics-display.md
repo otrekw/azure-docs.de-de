@@ -1,6 +1,6 @@
 ---
-title: Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschauversion)
-description: Dieser Artikel enthält Informationen zum Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschauversion).
+title: Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau)
+description: In diesem Artikel wird erläutert, wie Sie Azure IoT-Konnektor für FHIR-Metriken (Vorschau) anzeigen und konfigurieren.
 services: healthcare-apis
 author: msjasteppe
 ms.service: healthcare-apis
@@ -8,73 +8,71 @@ ms.subservice: iomt
 ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: jasteppe
-ms.openlocfilehash: 76166fc5c525d36474a585179472e93b22dad647
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9a4e2c4dfe8a9de28688afe0dd036cecb7ce2b39
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133398"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94381217"
 ---
-# <a name="view-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschauversion) 
+# <a name="display-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Anzeigen und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) 
 
-In diesem Artikel erfahren Sie, wie Sie Metriken von Azure IoT-Konnektor für FHIR* anzeigen und konfigurieren. 
+In diesem Artikel erfahren Sie, wie Sie Azure IoT-Konnektor für FHIR&#174;*-Metriken (Fast Healthcare Interoperability Resources) anzeigen und konfigurieren.
 
 > [!TIP]
-> Informationen zum Einrichten des Exports von Metrikdaten finden Sie unter [Exportieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) über die Diagnoseeinstellungen](https://docs.microsoft.com/azure/healthcare-apis/iot-metrics-diagnostics-export).
+> Informationen zum Einrichten des Exports von Metrikdaten finden Sie unter [Exportieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau) über die Diagnoseeinstellungen](./iot-metrics-diagnostics-export.md).
 
-## <a name="view-metrics-for-azure-iot-connector-for-fhir-preview"></a>Anzeigen von Metriken für Azure IoT-Konnektor für FHIR (Vorschauversion)
-1. Wenn Sie Metriken für IoT-Konnektor-Instanzen anzeigen möchten, wählen Sie im Azure-Portal Ihren Azure API for FHIR-Dienst aus. 
+## <a name="display-metrics-for-azure-iot-connector-for-fhir-preview"></a>Anzeigen von Metriken für Azure IoT-Konnektor für FHIR (Vorschau)
 
-2. Navigieren Sie zu **Metriken**. 
+1. Melden Sie sich beim Azure-Portal an, und wählen Sie Ihren Azure API for FHIR-Dienst aus. 
+
+2. Wählen Sie im linken Bereich **Metriken** aus. 
 
 3. Wählen Sie die Registerkarte **IoT-Konnektor** aus.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="IoT-Konnektor1" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-main.png" alt-text="Screenshot des Bereichs „IoT-Konnektor“ mit Liniendiagrammen, die die Anzahl eingehender und normalisierter Nachrichten anzeigen" lightbox="media/iot-metrics-display/iot-metrics-main.png"::: 
 
-4. Wählen Sie eine IoT-Konnektor-Instanz aus, um die zugehörigen Metriken anzuzeigen. (Diesem Azure API for FHIR-Dienst sind beispielsweise vier IoT-Konnektor-Instanzen zugeordnet.)
+4. Wählen Sie einen IoT-Konnektor aus, um die zugehörigen Metriken anzuzeigen. Diesem Azure API for FHIR-Dienst sind beispielsweise vier IoT-Konnektor-Instanzen (*connector 1*, *connector 2* usw.) zugeordnet.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="IoT-Konnektor2" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-connector.png" alt-text="Screenshot des Bereichs „IoT-Konnektor“ mit den IoT-Konnektor-Registerkarten 1, 2, 3 und 4" lightbox="media/iot-metrics-display/iot-metrics-select-connector.png"::: 
 
-> [!NOTE]
-> Auf der Registerkarte **Benutzerdefiniert** können spezifische Uhrzeit-/Datumskombinationen zum Anzeigen von IoT-Konnektor-Metriken erstellt werden.
+5. Wählen Sie den Zeitraum (z. B. **1 Stunde**, **24 Stunden**, **7 Tage** oder **Benutzerdefiniert**) der IoT-Konnektor-Metriken an, die Sie anzeigen möchten. Auf der Registerkarte **Benutzerdefiniert** können Sie spezifische Uhrzeit-/Datumskombinationen zum Anzeigen von IoT-Konnektor-Metriken erstellen.
 
-5. Wählen Sie den anzuzeigenden Zeitraum für IoT-Konnektor-Metriken aus (beispielsweise „1 Stunde“, „24 Stunden“, „7 Tage“ oder „Benutzerdefiniert“).
-
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="IoT-Konnektor3" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-select-time.png" alt-text="Screenshot des Bereichs „IoT-Konnektor“, in dem für „connector 1“ ein Liniendiagramm mit einem Zeitraum von 1 Stunde angezeigt wird" lightbox="media/iot-metrics-display/iot-metrics-select-time.png"::: 
  
-## <a name="metrics-types-for-azure-iot-connector-for-fhir-preview"></a>Metriktypen für Azure IoT-Konnektor für FHIR (Vorschauversion) 
-Folgende IoT-Konnektor-Metriken werden angezeigt:
+## <a name="metric-types-for-azure-iot-connector-for-fhir-preview"></a>Metriktypen für Azure IoT-Konnektor für FHIR (Vorschau) 
+
+In der folgenden Tabelle sind die IoT-Konnektor-Metriken aufgeführt, die Sie anzeigen können:
 
 |Metriktyp|Zweck der Metrik| 
 |-----------|--------------|
-|Anzahl eingehender Nachrichten|Die Anzahl unformatierter eingehender Nachrichten (etwa die Geräteereignisse).|
-|Anzahl normalisierter Nachrichten|Die Anzahl normalisierter Nachrichten.|
-|Anzahl von Nachrichtengruppen|Die Anzahl von Gruppen, in denen innerhalb des angegebenen Zeitfensters Nachrichten aggregiert wurden.|
-|Durchschnittliche Wartezeit der Normalisierungsphase|Die durchschnittliche Wartezeit der Normalisierungsphase. In der Normalisierungsphase werden eingehende unformatierte Nachrichten normalisiert.|
-|Durchschnittliche Wartezeit der Gruppierungsphase|Die durchschnittliche Wartezeit der Gruppierungsphase. In der Gruppierungsphase werden Puffer-, Aggregations- und Gruppierungsvorgänge für normalisierte Nachrichten durchgeführt.| 
-|Gesamtfehlerzahl|Die Gesamtanzahl von Fehlern.| 
+|Anzahl eingehender Nachrichten|Zeigt die Anzahl empfangener unformatierter Nachrichten an (z. B. die Geräteereignisse).|
+|Anzahl normalisierter Nachrichten|Zeigt die Anzahl normalisierter Nachrichten an.|
+|Anzahl von Nachrichtengruppen|Zeigt die Anzahl von Gruppen an, in denen innerhalb des angegebenen Zeitfensters Nachrichten aggregiert wurden.|
+|Durchschnittliche Wartezeit der Normalisierungsphase|Zeigt die durchschnittliche Wartezeit der Normalisierungsphase an. In der Normalisierungsphase werden eingehende unformatierte Nachrichten normalisiert.|
+|Durchschnittliche Wartezeit der Gruppierungsphase|Zeigt die durchschnittliche Wartezeit der Gruppierungsphase an. In der Gruppierungsphase werden Puffer-, Aggregations- und Gruppierungsvorgänge für normalisierte Nachrichten durchgeführt.| 
+|Gesamtfehlerzahl|Zeigt die Gesamtanzahl von Fehlern an.| 
 
-## <a name="focusing-and-configuring-azure-iot-connector-for-fhir-preview-metrics"></a>Fokussieren und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschauversion)
-In diesem Beispiel steht Metriken für die **Anzahl eingehender Nachrichten** im Mittelpunkt.
+## <a name="focus-on-and-configure-azure-iot-connector-for-fhir-preview-metrics"></a>Fokussieren auf und Konfigurieren der Metriken von Azure IoT-Konnektor für FHIR (Vorschau)
+
+In diesem Beispiel geht es um die Metrik für die **Anzahl eingehender Nachrichten**.
 
 1. Wählen Sie einen Zeitpunkt aus, auf den Sie sich konzentrieren möchten.
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="IoT-Konnektor4" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-focus.png" alt-text="Screenshot des Metrikbereichs „Anzahl eingehender Nachrichten“, in dem ein einzelner Zeitpunkt im Liniendiagramm hervorgehoben ist" lightbox="media/iot-metrics-display/iot-metrics-focus.png"::: 
 
-2. Zur weiteren Anpassung stehen auf diesem Bildschirm folgende Optionen zur Verfügung: **Metrik hinzufügen** , **Filter hinzufügen** und **Teilung anwenden**. 
+2. Im Bereich **Anzahl eingehender Nachrichten** können Sie die Metrik mithilfe der Optionen **Metrik hinzufügen**, **Filter hinzufügen** oder **Teilung anwenden**. 
 
-   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="IoT-Konnektor5" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
+   :::image type="content" source="media/iot-metrics-display/iot-metrics-add-options.png" alt-text="Screenshot des Metrikbereichs „Anzahl eingehender Nachrichten“ mit hervorgehobenen Schaltflächen „Metrik hinzufügen“, „Filter hinzufügen“ und „Teilung anwenden“" lightbox="media/iot-metrics-display/iot-metrics-add-options.png"::: 
 
 ## <a name="conclusion"></a>Zusammenfassung 
-Der Zugriff auf Metriken der Datenebene ist für die Überwachung und Problembehandlung von entscheidender Bedeutung.  Azure IoT-Konnektor für FHIR unterstützt Sie bei diesen Aufgaben durch Metriken. 
+Der Zugriff auf Metriken der Datenebene ist für die Überwachung und Problembehandlung von entscheidender Bedeutung. Azure IoT-Konnektor für FHIR unterstützt Sie mit Metriken bei diesen Aufgaben. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Lesen Sie häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR.
+Lesen Sie die Antworten auf häufig gestellte Fragen zu Azure IoT-Konnektor für FHIR.
 
 >[!div class="nextstepaction"]
->[Azure IoT-Konnektor für FHIR – Häufig gestellte Fragen](fhir-faq.md)
+>[Azure IoT-Konnektor für FHIR: häufig gestellte Fragen](fhir-faq.md)
 
-*Im Azure-Portal wird Azure IoT-Konnektor für FHIR als IoT-Konnektor (Vorschauversion) bezeichnet.
-
-FHIR ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.
+*Im Azure-Portal wird Azure IoT-Konnektor für FHIR als „IoT-Konnektor (Vorschau)“ bezeichnet. FHIR ist eine eingetragene Marke von HL7 und wird mit Genehmigung von HL7 verwendet. 

@@ -8,19 +8,19 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 866640d90c66dd82e8be61d221bc903907575454
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 10177dd949ac531027e13cf633b11c16674fd4ab
+ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91642520"
+ms.lasthandoff: 11/09/2020
+ms.locfileid: "94386523"
 ---
 In der Vorschau weist NFS die folgenden Einschränkungen auf:
 
 - NFS 4.1 unterstützt derzeit nur die obligatorischen Features aus der [Protokollspezifikation](https://tools.ietf.org/html/rfc5661). Optionale Features wie Delegierungen und Rückrufe aller Art, Upgrades und Downgrades von Sperren sowie Kerberos-Authentifizierung und -Verschlüsselung werden nicht unterstützt.
 - Wenn sich die meisten Ihrer Anforderungen schwerpunktmäßig auf Metadaten beziehen, ist die Wartezeit im Vergleich zu Lese-/Schreib-/Aktualisierungsvorgängen schlechter.
 - Es muss ein neues Speicherkonto erstellt werden, um eine NFS-Freigabe zu erstellen.
-- Nur die REST-APIs der Verwaltungsebene werden unterstützt. REST-APIs der Datenebene sind nicht verfügbar, was bedeutet, dass Tools wie Speicher-Explorer nicht mit NFS-Freigaben funktionieren und Sie auch nicht in der Lage sind, NFS-Freigabedaten im Azure-Portal zu durchsuchen.
+- Nur die REST-APIs der Verwaltungsebene werden unterstützt. REST-APIs der Datenebene sind nicht verfügbar. Das bedeutet, dass Tools wie der Speicher-Explorer mit NFS-Freigaben nicht funktionieren und Sie keine NFS-Freigabedaten im Azure-Portal durchsuchen können.
 - Nur für den Premium-Tarif verfügbar.
 - Derzeit nur mit lokal redundantem Speicher (LRS) verfügbar.
 

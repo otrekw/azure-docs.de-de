@@ -5,12 +5,12 @@ author: gundarev
 ms.topic: how-to
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: 33b8d3f62ef45c6078f10535c6376f611472f5a2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7599a0c7b48bdc371d851ec20282af82e77783bf
+ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89441747"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94505307"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>Konfigurieren der Beschleunigung durch Graphics Processing Units (GPUs) für Windows Virtual Desktop
 
@@ -21,9 +21,12 @@ Windows Virtual Desktop unterstützt durch GPU beschleunigtes Rendern und Codier
 
 Anhand der Anweisungen in diesem Artikel können Sie eine GPU-optimierte Azure-VM erstellen, ihrem Hostpool hinzufügen und so konfigurieren, dass sie die GPU-Beschleunigung zum Rendern und Codieren verwendet. In diesem Artikel wird vorausgesetzt, dass Sie den Windows Virtual Desktop-Mandanten bereits konfiguriert haben.
 
-## <a name="select-a-gpu-optimized-azure-virtual-machine-size"></a>Auswählen einer GPU-optimierten VM-Größe
+## <a name="select-an-appropriate-gpu-optimized-azure-virtual-machine-size"></a>Auswählen einer geeigneten GPU-optimierten Größe für virtuelle Azure-Computer
 
-Azure bietet mehrere [GPU-optimierte VM-Größen](/azure/virtual-machines/windows/sizes-gpu). Welche VM-Größe sich am besten für Ihren Hostpool eignet, hängt von mehreren Faktoren ab, z. B. von den Workloads Ihrer App, der gewünschten Benutzerfreundlichkeit und den Kosten. Grundsätzlich bieten größere und leistungsfähigere GPUs eine bessere Benutzerfreundlichkeit bei einer bestimmten Benutzerdichte.
+Wählen Sie eine der VM-Größen von Azure der [NV-Serie](/azure/virtual-machines/nv-series), [NVv3-Serie](/azure/virtual-machines/nvv3-series) oder [NVv4-Serie](/azure/virtual-machines/nvv4-series) aus. Diese sind auf die App- und Desktopvirtualisierung ausgerichtet und ermöglichen es, Apps und die Windows-Benutzeroberfläche über die GPU zu beschleunigen. Welche VM-Größe sich am besten für Ihren Hostpool eignet, hängt von mehreren Faktoren ab, z. B. von den Workloads Ihrer App, der gewünschten Benutzerfreundlichkeit und den Kosten. Im Allgemeinen bieten größere und leistungsfähigere GPUs ein besseres Benutzererlebnis bei einer gegebenen Benutzerdichte, während kleinere und fraktionierte GPU-Größen eine differenziertere Kontrolle über Kosten und Qualität ermöglichen.
+
+>[!NOTE]
+>Die VMs der NC-, NCv2-, NCv3-, ND- und NDv2-Serien von Azure sind im Allgemeinen nicht für Windows Virtual Desktop-Sitzungshost geeignet. Diese VMs sind auf spezialisierte, hochleistungsfähige Compute- oder Machine Learning-Tools ausgerichtet, wie die mit NVIDIA CUDA erstellten. Für die allgemeine Beschleunigung von Apps und Desktops mit NVIDIA-Grafikprozessoren ist eine NVIDIA GRID-Lizenzierung erforderlich. Diese wird von Azure für die empfohlenen VM-Größen angeboten, muss jedoch für VMs der NC/ND-Serie separat vereinbart werden.
 
 ## <a name="create-a-host-pool-provision-your-virtual-machine-and-configure-an-app-group"></a>Erstellen eines Hostpools, Bereitstellen der VM und Konfigurieren einer App-Gruppe
 
@@ -40,7 +43,7 @@ Außerdem müssen Sie eine App-Gruppe konfigurieren oder die Standarddesktop-App
 
 Nach der Bereitstellung müssen Sie die entsprechenden Grafiktreiber installieren, um die GPU-Funktionen von Azure-VMs der N-Serie in Windows Virtual Desktop nutzen zu können. Befolgen Sie die Anweisungen unter [Unterstützte Betriebssysteme und Treiber](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers), um Treiber vom entsprechenden Grafikanbieter entweder manuell oder mithilfe einer Azure-VM-Erweiterung zu installieren.
 
-Nur von Azure angebotene Treiber werden für Windows Virtual Desktop unterstützt. Außerdem werden für Azure-VMs mit NVIDIA-GPUs nur [NVIDIA GRID-Treiber](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) für Windows Virtual Desktop unterstützt.
+Nur von Azure angebotene Treiber werden für Windows Virtual Desktop unterstützt. Bei VMs der NV-Serie von Azure mit NVIDIA-Grafikprozessoren unterstützen nur [NVIDIA GRID-Treiber](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers), nicht aber NVIDIA Tesla (CUDA)-Treiber, die GPU-Beschleunigung für universelle Apps und Desktops.
 
 Wenn die Treiber installiert wurden, muss die VM neu gestartet werden. Überprüfen Sie anhand der oben aufgelisteten Schritte, dass die Grafiktreiber erfolgreich installiert wurden.
 

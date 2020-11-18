@@ -11,12 +11,12 @@ ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: e7635aad85352887646a1319b4d0bfbf64924bf9
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
+ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042904"
+ms.lasthandoff: 11/06/2020
+ms.locfileid: "94331854"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -45,7 +45,7 @@ Für jeden Umleitungs-URI, den Sie einer App-Registrierung hinzufügen, können 
 
 Das Azure Active Directory (Azure AD)-Anwendungsmodell unterstützt derzeit bei Apps, die Geschäfts-, Schul- oder Unikonten in einem Azure AD-Mandanten eines Unternehmens anmelden, sowohl das HTTP- als auch das HTTPS-Schema. Diese Kontotypen werden im Feld `signInAudience` des Anwendungsmanifests durch die Werte `AzureADMyOrg` und `AzureADMultipleOrgs` angegeben. Bei Apps, die persönliche Microsoft-Konten *und* Geschäfts-, Schul- oder Unikonten anmelden (d. h., `signInAudience` ist auf `AzureADandPersonalMicrosoftAccount` festgelegt), ist nur das HTTPS-Schema zulässig.
 
-Um Umleitungs-URIs mit einem HTTP-Schema zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen HTTP-basierten Umleitungs-URI festlegen können, empfehlen wir *dringend* , für Ihre Umleitungs-URIs das HTTPS-Schema zu verwenden.
+Um Umleitungs-URIs mit einem HTTP-Schema zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen HTTP-basierten Umleitungs-URI festlegen können, empfehlen wir *dringend*, für Ihre Umleitungs-URIs das HTTPS-Schema zu verwenden.
 
 ## <a name="localhost-exceptions"></a>Ausnahmen für Localhost
 
@@ -63,7 +63,9 @@ Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section
 Aus Entwicklersicht bedeutet dies Folgendes:
 
 * Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
-* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path* -Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
+
+    Dies ist besonders dann wichtig, wenn Sie in ein und derselben Anwendungsregistrierung verschiedene Authentifizierungsflows verwenden möchten, beispielsweise die Autorisierungscodegenehmigung und den impliziten Flow. Um jedem Umleitungs-URI das richtige Antwortverhalten zuzuordnen, muss der Anmeldeserver zwischen den verschiedenen URIs unterscheiden können. Dies ist nur mit unterschiedlichen Ports möglich.
+* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
 * Die IPv6-Loopback Adresse (`[::1]`) wird derzeit nicht unterstützt.
 * Um Fehler in Ihrer App aufgrund falsch konfigurierter Firewalls oder umbenannter Netzwerkschnittstellen zu vermeiden, verwenden Sie anstelle von `localhost` die tatsächliche IP-Loopbackadresse `127.0.0.1` in Ihrem Umleitungs-URI.
 
@@ -75,7 +77,7 @@ Platzhalter in URIs wie `https://*.contoso.com` sind möglicherweise bequem, sin
 
 URIs mit Platzhalter werden derzeit in App-Registrierungen, die für die Anmeldung von persönlichen Microsoft-Konten und von Geschäfts-, Schul- oder Unikonten konfiguriert sind, nicht unterstützt. URIs mit Platzhalter sind jedoch zulässig bei Apps, die nur für die Anmeldung von Geschäfts-, Schul- oder Unikonten bei einem Azure AD-Mandanten in einer Organisation konfiguriert sind.
 
-Um Umleitungs-URIs mit Platzhalter zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen Umleitungs-URI mit Platzhalter festlegen können, empfehlen wir *dringend* , [RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) zu beachten und ausschließlich absolute URIs zu verwenden.
+Um Umleitungs-URIs mit Platzhalter zu App-Registrierungen hinzuzufügen, die Geschäfts-, Schul- oder Unikonten anmelden, müssen Sie im Azure-Portal unter [App-Registrierungen](https://go.microsoft.com/fwlink/?linkid=2083908) den Anwendungsmanifest-Editor verwenden. Auch wenn Sie mit dem Manifest-Editor einen Umleitungs-URI mit Platzhalter festlegen können, empfehlen wir *dringend*, [RFC 6749, Abschnitt 3.1.2](https://tools.ietf.org/html/rfc6749#section-3.1.2) zu beachten und ausschließlich absolute URIs zu verwenden.
 
 Wenn die Anzahl der in Ihrem Szenario erforderlichen Umleitungs-URIs den zulässigen Höchstwert überschreitet, sollten Sie anstelle eines Umleitungs-URIs mit Platzhalter den [folgenden Ansatz mit Statusparameter](#use-a-state-parameter) in Betracht ziehen.
 
