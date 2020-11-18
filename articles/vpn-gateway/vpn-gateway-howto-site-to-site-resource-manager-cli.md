@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: cherylmc
-ms.openlocfilehash: 83ae4185d22a6578130ca96c06ac1e5d0c25b375
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a29c4522812b728f553bf52543ac3307f0ffbda
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92541365"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94739936"
 ---
 # <a name="create-a-virtual-network-with-a-site-to-site-vpn-connection-using-cli"></a>Erstellen eines virtuellen Netzwerks mit einer Site-to-Site-VPN-Verbindung per CLI
 
@@ -24,9 +24,6 @@ In diesem Artikel wird beschrieben, wie Sie die Azure-CLI zum Erstellen einer Si
 > * [PowerShell](vpn-gateway-create-site-to-site-rm-powershell.md)
 > * [BEFEHLSZEILENSCHNITTSTELLE (CLI)](vpn-gateway-howto-site-to-site-resource-manager-cli.md)
 > * [Azure-Portal (klassisch)](vpn-gateway-howto-site-to-site-classic-portal.md)
-> 
->
-
 
 ![Diagramm für die standortübergreifende Site-to-Site-VPN Gateway-Verbindung](./media/vpn-gateway-howto-site-to-site-resource-manager-cli/site-to-site-diagram.png)
 
@@ -39,9 +36,8 @@ Vergewissern Sie sich vor Beginn der Konfiguration, dass die folgenden Vorausset
 * Achten Sie darauf, dass Sie ein kompatibles VPN-Gerät nutzen (und über eine Person verfügen, die es konfigurieren kann). Weitere Informationen zu kompatiblen VPN-Geräten und zur Gerätekonfiguration finden Sie unter [Informationen zu VPN-Geräten](vpn-gateway-about-vpn-devices.md).
 * Vergewissern Sie sich, dass Sie über eine externe öffentliche IPv4-Adresse für Ihr VPN-Gerät verfügen.
 * Falls Sie nicht mit den IP-Adressbereichen in Ihrer lokalen Netzwerkkonfiguration vertraut sind, wenden Sie sich an eine Person, die Ihnen diese Informationen zur Verfügung stellen kann. Beim Erstellen dieser Konfiguration müssen Sie die Präfixe für die IP-Adressbereiche angeben, die Azure an Ihren lokalen Standort weiterleitet. Kein Subnetz Ihres lokalen Netzwerks darf sich mit den Subnetzen des virtuellen Netzwerks überschneiden, mit dem Sie eine Verbindung herstellen möchten.
-* Sie können Azure Cloud Shell zum Ausführen Ihrer CLI-Befehle nutzen (siehe Anleitung unten). Falls Sie Ihre Befehle dagegen lokal ausführen möchten, sollten Sie sicherstellen, dass Sie die aktuelle Version der CLI-Befehle (2.0 oder höher) installiert haben. Informationen zum Installieren der CLI-Befehle finden Sie unter [Installieren von Azure CLI 2.0](/cli/azure/install-azure-cli) und [Erste Schritte mit Azure CLI 2.0](/cli/azure/get-started-with-azure-cli). 
- 
-  [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+* Für diesen Artikel ist mindestens Version 2.0 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ### <a name="example-values"></a><a name="example"></a>Beispielwerte
 
@@ -141,7 +137,7 @@ Erstellen Sie das VPN-Gateway für das virtuelle Netzwerk. Die Erstellung eines 
 
 Verwenden Sie folgende Werte:
 
-* *--gateway-type* für eine Site-to-Site-Konfiguration lautet *Vpn* . Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Weitere Informationen finden Sie unter [Gatewaytypen](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
+* *--gateway-type* für eine Site-to-Site-Konfiguration lautet *Vpn*. Der Gatewaytyp ist immer spezifisch für die Konfiguration, die Sie implementieren. Weitere Informationen finden Sie unter [Gatewaytypen](vpn-gateway-about-vpn-gateway-settings.md#gwtype).
 * *--vpn-type* kann *RouteBased* (in einigen Dokumentationen als dynamisches Gateway bezeichnet) oder *PolicyBased* lauten (in einigen Dokumentationen als statisches Gateway bezeichnet). Die Einstellung richtet sich nach den Anforderungen des Geräts, mit dem Sie eine Verbindung herstellen. Weitere Informationen zu VPN-Gatewaytypen finden Sie unter [Informationen zu VPN Gateway-Einstellungen](vpn-gateway-about-vpn-gateway-settings.md#vpntype).
 * Wählen Sie die gewünschte Gateway-SKU aus. Für bestimmte SKUs gelten Einschränkungen bei der Konfiguration. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
@@ -196,10 +192,10 @@ Dieser Abschnitt enthält allgemeine Befehle, die beim Arbeiten mit Site-to-Site
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](https://docs.microsoft.com/azure/) .
+* Sobald die Verbindung hergestellt ist, können Sie Ihren virtuellen Netzwerken virtuelle Computer hinzufügen. Weitere Informationen finden Sie unter [Virtuelle Computer](../index.yml) .
 * Informationen zu BGP finden Sie in der [Übersicht über BGP](vpn-gateway-bgp-overview.md) und unter [Konfigurieren von BGP](vpn-gateway-bgp-resource-manager-ps.md).
 * Weitere Informationen zur Tunnelerzwingung finden Sie unter [Informationen zur Tunnelerzwingung](vpn-gateway-forced-tunneling-rm.md).
 * Informationen zu hochverfügbaren Aktiv/Aktiv-Verbindungen finden Sie unter [Standortübergreifende Verbindungen und VNET-zu-VNET-Verbindungen mit hoher Verfügbarkeit](vpn-gateway-highlyavailable.md).
-* Eine Liste mit Azure-CLI-Netzwerkbefehlen finden Sie unter [Azure-CLI](https://docs.microsoft.com/cli/azure/network).
+* Eine Liste mit Azure-CLI-Netzwerkbefehlen finden Sie unter [Azure-CLI](/cli/azure/network).
 * Informationen zum Erstellen einer Site-to-Site-VPN-Verbindung mithilfe einer Azure Resource Manager-Vorlage finden Sie unter [Create a Site-to-Site VPN Connection](https://azure.microsoft.com/resources/templates/101-site-to-site-vpn-create/) (Erstellen einer Site-to-Site-VPN-Verbindung).
 * Informationen zum Erstellen einer VNet-zu-VNet-VPN-Verbindung mithilfe einer Azure Resource Manager-Vorlage finden Sie unter [Deploy HBase geo replication](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-replication-geo/) (Bereitstellen der HBase-Georeplikation).

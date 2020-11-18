@@ -1,18 +1,18 @@
 ---
 title: Integrierte Richtliniendefinitionen für Kubernetes mit Azure Arc-Aktivierung
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Kubernetes mit Azure Arc-Aktivierung. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.service: azure-arc
 author: mlearned
 ms.author: mlearned
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 606c737fcec176051d460bc3d0831d59d616506a
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: cf773b6a54e6a84d8f55c84e7fc3e065436dd931
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92310870"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94746114"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-arc-enabled-kubernetes"></a>Integrierte Azure Policy-Richtliniendefinitionen für Kubernetes mit Azure Arc-Aktivierung
 

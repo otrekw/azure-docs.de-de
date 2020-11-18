@@ -1,15 +1,15 @@
 ---
 title: Integrierte Richtliniendefinitionen für Azure Automation
 description: Hier finden Sie eine Liste der integrierten Azure Policy-Richtliniendefinitionen für Azure Automation. Diese integrierten Richtliniendefinitionen bieten allgemeine Ansätze für die Verwaltung von Azure-Ressourcen.
-ms.date: 10/20/2020
+ms.date: 11/17/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 08ede1182e1c5f8ae796ab7c950055ea44137f55
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: acdcb747887dc41b11b2eb0a5a14553c799d22b4
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92319716"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741354"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-automation"></a>Integrierte Azure Policy-Definitionen für Azure Automation
 

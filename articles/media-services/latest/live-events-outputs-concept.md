@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.author: inhenkel
-ms.openlocfilehash: f7f73efff266e012616ac68d956abd921afaac2a
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: a74dcb3cae74605e747a63f8fbb102404d8cc80e
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337422"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94741823"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Liveereignisse und Liveausgaben in Media Services
 
@@ -28,7 +28,7 @@ ms.locfileid: "94337422"
 Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cloud anbieten. Um Ihre Livestreamingereignisse in Media Services v3 zu konfigurieren, müssen Sie die in diesem Artikel erläuterten Konzepte verstehen.
 
 > [!TIP]
-> Bei Kunden, die von APIs für Version 2 von Media Services migrieren, wird **Kanal** aus Version 2 durch die **Liveereignis** -Entität ersetzt und **Programm** durch die **Liveausgabe**.
+> Bei Kunden, die von APIs für Version 2 von Media Services migrieren, wird **Kanal** aus Version 2 durch die **Liveereignis**-Entität ersetzt und **Programm** durch die **Liveausgabe**.
 
 ## <a name="live-events"></a>Liveereignisse
 
@@ -38,15 +38,15 @@ Mit Azure Media Services können Sie Ihren Kunden Liveereignisse in der Azure Cl
 
 Ein [Liveereignis](/rest/api/media/liveevents) kann entweder auf *Passthrough* (ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten) oder *Livecodierung* (ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate) festgelegt werden. Die Typen werden während der Erstellung mit [LiveEventEncodingType](/rest/api/media/liveevents/create#liveeventencodingtype) festgelegt:
 
-* **LiveEventEncodingType.None** : Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Stream durchläuft das Liveereignis ohne weitere Verarbeitung. Wird auch als Pass-Through-Modus bezeichnet.
-* **LiveEventEncodingType.Standard** : Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p** , dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
-* **LiveEventEncodingType.Premium1080p** : Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösungs-/Bitrate-Paaren an.
+* **LiveEventEncodingType.None**: Ein lokaler Liveencoder sendet einen Stream mit mehreren Bitraten. Der erfasste Stream durchläuft das Liveereignis ohne weitere Verarbeitung. Wird auch als Pass-Through-Modus bezeichnet.
+* **LiveEventEncodingType.Standard**: Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Wenn der Beitragsfeed eine Auflösung von 720p oder höher hat, bewirkt die Voreinstellung **Default720p**, dass eine Reihe von 6 Auflösungs-/Bitrate-Paaren codiert wird.
+* **LiveEventEncodingType.Premium1080p**: Ein lokaler Liveencoder sendet einen Stream mit Einzelbitrate an das Liveereignis, und Media Services erstellt Streams mit mehreren Bitraten. Die Voreinstellung „Default1080p“ gibt den Ausgabesatz von Auflösungs-/Bitrate-Paaren an.
 
 ### <a name="pass-through"></a>Pass-Through
 
 ![Beispieldiagramm für Passthrough-Liveereignis mit Media Services](./media/live-streaming/pass-through.svg)
 
-Wenn Sie das Passthrough- **Liveereignis** verwenden, erzeugen Sie mit Ihrem lokalen Liveencoder einen Videostream mit mehreren Bitraten und senden diesen als Beitragsfeed an das Liveereignis (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Verarbeitung weiter. Ein solches Passthrough-Liveereignis ist für lang andauernde Liveereignisse oder lineares Livestreaming rund um die Uhr optimiert. Geben Sie beim Erstellen dieser Art von Liveereignis „None“ an (LiveEventEncodingType.None).
+Wenn Sie das Passthrough-**Liveereignis** verwenden, erzeugen Sie mit Ihrem lokalen Liveencoder einen Videostream mit mehreren Bitraten und senden diesen als Beitragsfeed an das Liveereignis (über RTMP oder das Protokoll für fragmentiertes MP4). Das Liveereignis leitet dann die eingehenden Videostreams ohne weitere Verarbeitung weiter. Ein solches Passthrough-Liveereignis ist für lang andauernde Liveereignisse oder lineares Livestreaming rund um die Uhr optimiert. Geben Sie beim Erstellen dieser Art von Liveereignis „None“ an (LiveEventEncodingType.None).
 
 Sie können den Beitragsfeed mit einer Auflösung von bis zu 4K und einer Bildrate von 60 Bildern/Sekunde senden, entweder mit H.264/AVC- oder H.265/HEVC-Videocodecs und AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2). Weitere Informationen finden Sie unter [Vergleich von Liveereignistypen](live-event-types-comparison.md).
 
@@ -64,7 +64,7 @@ Wenn Sie die Livecodierung mit Media Services verwenden, konfigurieren Sie Ihren
 
 Bei Verwendung der Livecodierung können Sie den Beitragsfeed nur mit einer Auflösung von bis zu 1080p und einer Bildfrequenz von 30 Bildern/Sekunde senden (mit den H.264/AVC-Videocodecs und dem AAC-Audiocodec (AAC-LC, HE-AACv1 oder HE-AACv2)). Beachten Sie, dass Passthrough-Liveereignisse Auflösungen bis zu 4K und 60 Frames/Sekunde unterstützen. Weitere Informationen finden Sie unter [Vergleich von Liveereignistypen](live-event-types-comparison.md).
 
-Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, werden durch die Voreinstellung bestimmt. Wird ein **Standard** -Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* sechs Auflösungs-/Bitrate-Paare an, die von 720p und 3,5 MBit/s bis 192p und 200 KBit/s reichen. Bei Verwendung eines **Premium1080p** -Liveencoders (LiveEventEncodingType.Premium1080p) gibt die Voreinstellung *Default1080p* sechs Auflösungs-/Bitrate-Paare an, die von 1080p und 3,5 MBit/s bis 180p und 200 KBit/s reichen. Weitere Informationen finden Sie auf der Seite mit den [Systemvoreinstellungen](live-event-types-comparison.md#system-presets).
+Die Auflösungen und Bitraten, die in der Ausgabe vom Liveencoder enthalten sind, werden durch die Voreinstellung bestimmt. Wird ein **Standard**-Liveencoder (LiveEventEncodingType.Standard) verwendet, gibt die Voreinstellung *Default720p* sechs Auflösungs-/Bitrate-Paare an, die von 720p und 3,5 MBit/s bis 192p und 200 KBit/s reichen. Bei Verwendung eines **Premium1080p**-Liveencoders (LiveEventEncodingType.Premium1080p) gibt die Voreinstellung *Default1080p* sechs Auflösungs-/Bitrate-Paare an, die von 1080p und 3,5 MBit/s bis 180p und 200 KBit/s reichen. Weitere Informationen finden Sie auf der Seite mit den [Systemvoreinstellungen](live-event-types-comparison.md#system-presets).
 
 > [!NOTE]
 > Wenn Sie die Voreinstellung für die Livecodierung anpassen müssen, öffnen Sie ein Supportticket über das Azure-Portal. Geben Sie hierbei eine Tabelle mit den gewünschten Auflösungen und Bitraten an. Stellen Sie sicher, dass nur eine Ebene mit 720p (bei Anforderung einer Voreinstellung für einen Standard-Liveencoder) oder mit 1080p (bei Anforderung einer Voreinstellung für einen Premium1080p-Liveencoder) und höchstens sechs Ebenen vorhanden sind.
@@ -150,13 +150,13 @@ Sie können Nicht-Vanity-URLs oder Vanity-URLs verwenden.
     |---|---|---|
     |REST|[properties.vanityUrl](/rest/api/media/liveevents/create#liveevent)|[LiveEventInput.accessToken](/rest/api/media/liveevents/create#liveeventinput)|
     |Befehlszeilenschnittstelle (CLI)|[--vanity-url](/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--access-token](/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
-    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
+    |.NET|[LiveEvent.VanityUrl](/dotnet/api/microsoft.azure.management.media.models.liveevent.md?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput.AccessToken](/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
 
 ### <a name="live-ingest-url-naming-rules"></a>Benennungsregeln für Liveerfassungs-URLs
 
 * Die nachstehende *zufällige* Zeichenfolge ist eine 128-Bit-Hexadezimalzahl (sie umfasst 32 Zeichen von 0 bis 9 und a bis f).
-* *auto-generated access token* : Die von Ihnen festgelegte gültige GUID-Zeichenfolge bei Verwendung des Vanity-Modus. Beispiel: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
-* *stream name* : Gibt den Streamnamen für eine bestimmte Verbindung an. Der Wert des Datenstromnamens wird in der Regel von dem von Ihnen verwendeten Liveencoder hinzugefügt. Sie können den Liveencoder so konfigurieren, dass Sie zum Beschreiben der Verbindung einen beliebigen Namen verwenden können. Beispiel: „video1_audio1“, „video2_audio1“ oder „stream“.
+* *auto-generated access token*: Die von Ihnen festgelegte gültige GUID-Zeichenfolge bei Verwendung des Vanity-Modus. Beispiel: `"1fce2e4b-fb15-4718-8adc-68c6eb4c26a7"`.
+* *stream name*: Gibt den Streamnamen für eine bestimmte Verbindung an. Der Wert des Datenstromnamens wird in der Regel von dem von Ihnen verwendeten Liveencoder hinzugefügt. Sie können den Liveencoder so konfigurieren, dass Sie zum Beschreiben der Verbindung einen beliebigen Namen verwenden können. Beispiel: „video1_audio1“, „video2_audio1“ oder „stream“.
 
 #### <a name="non-vanity-url"></a>Nicht-Vanity-URL
 
