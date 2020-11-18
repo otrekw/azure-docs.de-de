@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: b3924a563d8266cfa38f24106dbb84102031a182
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331871"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694779"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Verwenden von SNAT für ausgehende Verbindungen
 
@@ -22,13 +22,13 @@ Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Insta
 SNAT ermöglicht **IP-Maskierung** der Back-End-Instanz. Diese Maskierung verhindert, dass externe Quellen eine direkte Adresse für die Back-End-Instanzen abrufen können. Wenn Sie eine IP-Adresse zwischen Back-End-Instanzen freigeben, werden die Kosten für statische öffentliche IPs reduziert, und es werden Szenarien wie das Vereinfachen von IP-Zulassungslisten mit Datenverkehr von bekannten öffentlichen IP-Adressen unterstützt. 
 
 >[!Note]
-> Für Anwendungen, bei denen eine große Anzahl ausgehender Verbindungen erforderlich ist, oder Unternehmenskunden, die einen einzelnen Satz von IP-Adressen in einem bestimmten virtuellen Netzwerk benötigen, wird [Virtual Network NAT](https://docs.microsoft.com/azure/virtual-network/nat-overview) empfohlen. Die dynamische Zuordnung ermöglicht eine einfache Konfiguration und die effizienteste Verwendung der SNAT-Ports von jeder IP-Adresse. Außerdem können alle Ressourcen im virtuellen Netzwerk eine Gruppe von IP-Adressen gemeinsam nutzen, ohne dass ein Load Balancer freigegeben werden muss.
+> Für Anwendungen, bei denen eine große Anzahl ausgehender Verbindungen erforderlich ist, oder Unternehmenskunden, die einen einzelnen Satz von IP-Adressen in einem bestimmten virtuellen Netzwerk benötigen, wird [Virtual Network NAT](../virtual-network/nat-overview.md) empfohlen. Die dynamische Zuordnung ermöglicht eine einfache Konfiguration und die effizienteste Verwendung der SNAT-Ports von jeder IP-Adresse. Außerdem können alle Ressourcen im virtuellen Netzwerk eine Gruppe von IP-Adressen gemeinsam nutzen, ohne dass ein Load Balancer freigegeben werden muss.
 
 >[!Important]
 > Auch ohne Konfiguration einer ausgehenden SNAT sind Azure Storage-Konten innerhalb derselben Region weiterhin zugänglich, und Back-End-Ressourcen erhalten weiterhin Zugriff auf Microsoft-Dienste wie Windows Update.
 
 >[!NOTE] 
->Dieser Artikel gilt nur für Azure Resource Manager-Bereitstellungen. Lesen Sie für alle klassischen Bereitstellungsszenarien in Azure den Artikel [Ausgehende Verbindungen (klassisch)](load-balancer-outbound-connections-classic.md).
+>Dieser Artikel gilt nur für Azure Resource Manager-Bereitstellungen. Lesen Sie für alle klassischen Bereitstellungsszenarien in Azure den Artikel [Ausgehende Verbindungen (klassisch)](/previous-versions/azure/load-balancer/load-balancer-outbound-connections-classic).
 
 ## <a name="sharing-frontend-ip-address-across-backend-resources"></a><a name ="snat"></a> Gemeinsame Nutzung der Front-End-IP-Adresse für Back-End-Ressourcen
 
@@ -48,7 +48,7 @@ Per Definition umfasst jede IP-Adresse 65.535 Ports. Jeder Port kann entweder f
 >[!NOTE]
 > Jeder Port, der für eine Lastenausgleichsregel oder NAT-Regel für eingehenden Datenverkehr verwendet wird, nutzt von diesen 64.000 Ports einen Bereich von acht Ports, wodurch die Anzahl der für SNAT verfügbaren Ports verringert wird. Wenn eine Lastenausgleichs- oder NAT-Regel denselben Bereich von acht Ports einschließt, werden keine zusätzlichen Ports genutzt. 
 
-Über [Ausgangsregeln](https://docs.microsoft.com/azure/load-balancer/outbound-rules) und Lastenausgleichsregeln können diese SNAT-Ports auf Back-End-Instanzen verteilt werden, damit sie die öffentlichen IP-Adressen des Load Balancers für ausgehende Verbindungen freigeben können.
+Über [Ausgangsregeln](./outbound-rules.md) und Lastenausgleichsregeln können diese SNAT-Ports auf Back-End-Instanzen verteilt werden, damit sie die öffentlichen IP-Adressen des Load Balancers für ausgehende Verbindungen freigeben können.
 
 Wenn das weiter unten beschriebene [Szenario 2](#scenario2) konfiguriert ist, führt der Host für jede Back-End-Instanz SNAT für Pakete aus, die Teil einer ausgehenden Verbindung sind. Beim Ausführen von SNAT für eine ausgehende Verbindung über eine Back-End-Instanz schreibt der Host die Quell-IP-Adresse in eine der Front-End-IP-Adressen um. Um eindeutige Datenflüsse aufrechtzuerhalten, schreibt der Host den Quellport jedes ausgehenden Pakets in einen der SNAT-Ports um, die für die Back-End-Instanz zugeordnet sind.
 
@@ -101,7 +101,7 @@ Wenn das weiter unten beschriebene [Szenario 2](#scenario2) konfiguriert ist, f
  Mit kurzlebigen Ports der öffentlichen Front-End-IP-Adresse des Load Balancers werden die einzelnen Datenflüsse unterschieden, die von der VM stammen. Beim Erstellen ausgehender Datenflüsse werden für SNAT [vorab zugewiesene kurzlebige Ports](#preallocatedports) verwendet. 
 
 
- In diesem Zusammenhang werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet. Es wird dringend empfohlen, explizit eine [Ausgangsregel](https://docs.microsoft.com/azure/load-balancer/outbound-rules) zu konfigurieren. Bei Verwendung von Standard-SNAT über eine Lastenausgleichsregel werden SNAT-Ports vorab zugeordnet, wie in der [Tabelle zur Zuordnung von Standard-SNAT-Ports](#snatporttable) angegeben.
+ In diesem Zusammenhang werden die kurzlebigen für SNAT verwendeten Ports als SNAT-Ports bezeichnet. Es wird dringend empfohlen, explizit eine [Ausgangsregel](./outbound-rules.md) zu konfigurieren. Bei Verwendung von Standard-SNAT über eine Lastenausgleichsregel werden SNAT-Ports vorab zugeordnet, wie in der [Tabelle zur Zuordnung von Standard-SNAT-Ports](#snatporttable) angegeben.
 
 
  ### <a name="scenario-3-virtual-machine-without-public-ip-and-behind-basic-load-balancer"></a><a name="scenario3"></a>Szenario 3: VM ohne öffentliche IP-Adresse und hinter öffentlichem Load Balancer Basic
@@ -142,7 +142,7 @@ Ohne unterschiedliche Zielports für den Rückgabedatenverkehr (der SNAT-Port, d
 
 Für ausgehende Verbindungen kann ein Burst auftreten. Einer Back-End-Instanz können nicht genügend Ports zugeordnet werden. Wenn **Wiederverwendung von Verbindungen** nicht aktiviert ist, wird das Risiko von SNAT-**Porterschöpfung** gesteigert.
 
-Neue ausgehende Verbindungen mit einer IP-Zieladresse schlagen fehl, wenn Porterschöpfung auftritt. Verbindungen werden erfolgreich hergestellt, wenn ein Port verfügbar wird. Diese Erschöpfung tritt auf, wenn die 64.000 Ports von einer IP-Adresse dünn über viele Back-End-Instanzen verteilt sind. Anleitungen zur Entschärfung von SNAT-Porterschöpfung finden Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection).  
+Neue ausgehende Verbindungen mit einer IP-Zieladresse schlagen fehl, wenn Porterschöpfung auftritt. Verbindungen werden erfolgreich hergestellt, wenn ein Port verfügbar wird. Diese Erschöpfung tritt auf, wenn die 64.000 Ports von einer IP-Adresse dünn über viele Back-End-Instanzen verteilt sind. Anleitungen zur Entschärfung von SNAT-Porterschöpfung finden Sie im [Leitfaden zur Problembehandlung](./troubleshoot-outbound-connection.md).  
 
 Bei TCP-Verbindungen verwendet der Load Balancer einen einzelnen SNAT-Port für jede Ziel-IP und jeden -Port. Diese Mehrfachnutzung ermöglicht mehrere Verbindungen mit derselben IP-Zieladresse und demselben SNAT-Port. Diese Mehrfachnutzung ist eingeschränkt, wenn die Verbindung nicht mit verschiedenen Zielports erfolgt.
 
@@ -194,6 +194,5 @@ Weitere Informationen zu Azure Virtual Network NAT finden Sie unter [Was ist Azu
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-*   [Problembehandlung von Fehlern bei ausgehenden Verbindungen aufgrund von SNAT-Erschöpfung](https://docs.microsoft.com/azure/load-balancer/troubleshoot-outbound-connection)
-*   [Überprüfen Sie die SNAT-Metriken](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#how-do-i-check-my-snat-port-usage-and-allocation), und machen Sie sich mit den richtigen Verfahren zum Filtern, Aufteilen und Anzeigen dieser Metriken vertraut.
-
+*   [Problembehandlung von Fehlern bei ausgehenden Verbindungen aufgrund von SNAT-Erschöpfung](./troubleshoot-outbound-connection.md)
+*   [Überprüfen Sie die SNAT-Metriken](./load-balancer-standard-diagnostics.md#how-do-i-check-my-snat-port-usage-and-allocation), und machen Sie sich mit den richtigen Verfahren zum Filtern, Aufteilen und Anzeigen dieser Metriken vertraut.
