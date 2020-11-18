@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
-ms.openlocfilehash: bc1e477882f3d065dfe89e8511259732129cec30
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 06dfa65236bf1aa5cfde626c5574ffdf487eb045
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746039"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698358"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-using-azure-cli"></a>Lastenausgleich bei Konfigurationen mit mehreren IP-Adressen mit Azure CLI
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie Azure Load Balancer mit mehreren IP-
 
 Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Szenario umzusetzen:
 
-1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest), und melden Sie sich dann an Ihrem Azure-Konto an.
+1. [Installieren und konfigurieren Sie die Azure CLI anhand der Schritte im verlinkten Artikel](/cli/azure/install-azure-cli?view=azure-cli-latest), und melden Sie sich dann an Ihrem Azure-Konto an.
 2. [Erstellen Sie eine Ressourcengruppe](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-resource-group) mit dem Namen *contosofabrikam* wie folgt:
 
     ```azurecli
@@ -43,14 +43,14 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     az vm availability-set create --resource-group contosofabrikam --location westcentralus --name myAvailabilitySet
     ```
 
-4. [Erstellen Sie ein virtuelles Netzwerk](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) mit dem Namen *myVNet* und ein Subnetz mit dem Namen *mySubnet* :
+4. [Erstellen Sie ein virtuelles Netzwerk](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-network-and-subnet) mit dem Namen *myVNet* und ein Subnetz mit dem Namen *mySubnet*:
 
     ```azurecli
     az network vnet create --resource-group contosofabrikam --name myVnet --address-prefixes 10.0.0.0/16  --location westcentralus --subnet-name MySubnet --subnet-prefix 10.0.0.0/24
 
     ```
 
-5. [Erstellen Sie den Lastenausgleich](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mit dem Namen *mylb* :
+5. [Erstellen Sie den Lastenausgleich](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) mit dem Namen *mylb*:
 
     ```azurecli
     az network lb create --resource-group contosofabrikam --location westcentralus --name mylb
@@ -64,14 +64,14 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     az network public-ip create --resource-group contosofabrikam --location westcentralus --name PublicIp2 --domain-name-label fabrikam --allocation-method Dynamic
     ```
 
-7. Erstellen Sie die beiden Front-End-IP-Konfigurationen *contosofe* und *fabrikamfe* :
+7. Erstellen Sie die beiden Front-End-IP-Konfigurationen *contosofe* und *fabrikamfe*:
 
     ```azurecli
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp1 --name contosofe
     az network lb frontend-ip create --resource-group contosofabrikam --lb-name mylb --public-ip-name PublicIp2 --name fabrkamfe
     ```
 
-8. Erstellen Sie die Back-End-Adresspools ( *contosopool* und *fabrikampool* ), einen [Test (](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP* ) und die Lastenausgleichsregeln ( *HTTPc* und *HTTPf* ):
+8. Erstellen Sie die Back-End-Adresspools (*contosopool* und *fabrikampool*), einen [Test (](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json) - *HTTP*) und die Lastenausgleichsregeln (*HTTPc* und *HTTPf*):
 
     ```azurecli
     az network lb address-pool create --resource-group contosofabrikam --lb-name mylb --name contosopool
@@ -97,7 +97,7 @@ Führen Sie die folgenden Schritte aus, um das in diesem Artikel beschriebene Sz
     az storage account create --location westcentralus --resource-group contosofabrikam --kind Storage --sku-name GRS mystorageaccount1
     ```
 
-11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) für VM1, fügen Sie eine zweite IP-Konfiguration ( *VM1-ipconfig2* ) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) wie folgt:
+11. [Erstellen Sie die Netzwerkschnittstellen](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-virtual-nic) für VM1, fügen Sie eine zweite IP-Konfiguration (*VM1-ipconfig2*) hinzu, und [erstellen Sie den virtuellen Computer](../virtual-machines/linux/create-cli-complete.md?toc=%2fazure%2fvirtual-network%2ftoc.json#create-a-vm) wie folgt:
 
     ```azurecli
     az network nic create --resource-group contosofabrikam --location westcentralus --subnet-vnet-name myVnet --subnet-name mySubnet --name VM1Nic1 --ip-config-name NIC1-ipconfig1

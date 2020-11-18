@@ -13,18 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/05/2020
 ms.author: allensu
-ms.openlocfilehash: 42ec5a661bd7b42ba5de5bfa99b3898291cc60fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f24ab2c646757f0241748336243b0d5f977d081c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935601"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698324"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Azure Monitor-Protokolle für öffentlichen Load Balancer vom Typ „Basic“
 
 Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom Typ „Basic“ zu verwalten und eventuelle Fehler zu beheben. Auf einige dieser Protokolle kann über das Portal zugegriffen werden. Protokolle können an einen Event Hub oder einen Log Analytics-Arbeitsbereich gestreamt werden. Alle Protokolle können aus Azure Blob Storage extrahiert und in anderen Tools wie Excel und PowerBI angezeigt werden.  In der unten stehenden Liste finden Sie weitere Informationen über die verschiedenen Typen von Protokollen.
 
-* **Aktivitätsprotokolle**: Mithilfe von [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) können Sie alle Aktivitäten, die an Ihre Azure-Abonnements übermittelt werden, und ihren Status anzeigen. Aktivitätsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
+* **Aktivitätsprotokolle**: Mithilfe von [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) können Sie alle Aktivitäten, die an Ihre Azure-Abonnements übermittelt werden, und ihren Status anzeigen. Aktivitätsprotokolle sind standardmäßig aktiviert und können im Azure-Portal angezeigt werden.
 * **Warnereignisprotokolle**: Verwenden Sie dieses Protokoll, um Warnungen anzuzeigen, die vom Lastenausgleich ausgelöst wurden. Der Status des Lastenausgleichs wird alle fünf Minuten erfasst. Dieses Protokoll wird nur geschrieben, wenn ein Warnereignis für den Lastenausgleich ausgelöst wird.
 * **Integritätstestprotokolle:** Verwenden Sie dieses Protokoll zum Anzeigen von Problemen, die vom Integritätstest erkannt wurden, z.B. die Anzahl der Instanzen in Ihrem Back-End-Pool, die aufgrund von Integritätstestfehlern keine Anforderungen vom Lastenausgleich empfangen. In dieses Protokoll wird geschrieben, wenn sich der Integritätsteststatus ändert.
 
@@ -35,7 +35,7 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Load Balancer vom
 
 Die Aktivitätsprotokollierung ist automatisch für alle Resource Manager-Ressourcen aktiviert. Aktivieren Sie die Ereignis- und Integritätstestprotokollierung, um mit der Erfassung von Daten aus diesen Protokollen zu beginnen. Führen Sie die folgenden Schritte aus, um die Protokollierung zu aktivieren:
 
-Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](https://docs.microsoft.com/azure/load-balancer/quickstart-create-basic-load-balancer-portal) , bevor Sie fortfahren.
+Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch nicht über einen Load Balancer verfügen, [erstellen Sie einen Load Balancer](./quickstart-load-balancer-standard-public-portal.md) , bevor Sie fortfahren.
 
 1. Klicken Sie im Portal auf **Ressourcengruppen**.
 2. Wählen Sie den **\<resource-group-name>** der Ressourcengruppe aus, in der sich Ihr Lastenausgleichsmodul befindet.
@@ -49,7 +49,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
    * **An Log Analytics senden**
 
     ### <a name="archive-to-a-storage-account"></a>In einem Speicherkonto archivieren
-    Für diesen Vorgang benötigen Sie ein bereits erstelltes Speicherkonto.  Informationen zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account?tabs=azure-portal).
+    Für diesen Vorgang benötigen Sie ein bereits erstelltes Speicherkonto.  Informationen zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md?tabs=azure-portal).
 
     1. Aktivieren Sie das Kontrollkästchen neben **In einem Speicherkonto archivieren**.
     2. Wählen Sie **Konfigurieren** aus, um den Bereich **Speicherkonto auswählen** zu öffnen.
@@ -58,7 +58,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
     5. Wählen Sie „OK“ aus.
 
     ### <a name="stream-to-an-event-hub"></a>An einen Event Hub streamen
-    Für diesen Vorgang benötigen Sie einen bereits erstellten Event Hub.  Informationen zum Erstellen eines Event Hubs finden Sie unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
+    Für diesen Vorgang benötigen Sie einen bereits erstellten Event Hub.  Informationen zum Erstellen eines Event Hubs finden Sie unter [Schnellstart: Erstellen eines Event Hubs mithilfe des Azure-Portals](../event-hubs/event-hubs-create.md).
 
     1. Aktivieren Sie das Kontrollkästchen neben **An einen Event Hub streamen**
     2. Wählen Sie **Konfigurieren** aus, um den Bereich **Event Hub auswählen** zu öffnen.
@@ -68,7 +68,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
     6. Wählen Sie „OK“ aus.
 
     ### <a name="send-to-log-analytics"></a>An Log Analytics senden
-    Für diesen Prozess benötigen Sie einen bereits erstellten und konfigurierten Log Analytics-Arbeitsbereich.  Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](https://docs.microsoft.com/azure/azure-monitor/learn/quick-create-workspace).
+    Für diesen Prozess benötigen Sie einen bereits erstellten und konfigurierten Log Analytics-Arbeitsbereich.  Eine Anleitung zum Erstellen eines Log Analytics-Arbeitsbereichs finden Sie unter [Erstellen eines Log Analytics-Arbeitsbereichs im Azure-Portal](../azure-monitor/learn/quick-create-workspace.md).
 
     1. Aktivieren Sie das Kontrollkästchen neben **An Log Analytics senden**.
     2. Wählen Sie im Pulldownfeld das **Abonnement** aus, in dem sich Ihr Log Analytics-Arbeitsbereich befindet.
@@ -86,7 +86,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wenn Sie noch 
 
 ## <a name="activity-log"></a>Aktivitätsprotokoll
 
-Das Aktivitätsprotokoll wird standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-audit) erfahren.
+Das Aktivitätsprotokoll wird standardmäßig generiert. Die Protokolle werden 90 Tage lang im Azure-Ereignisprotokollspeicher aufbewahrt. Mehr zu diesen Protokollen können Sie im Artikel [Anzeigen von Aktivitätsprotokollen zur Überwachung von Aktionen in Ressourcen](../azure-resource-manager/management/view-activity-logs.md) erfahren.
 
 ## <a name="archive-to-storage-account-logs"></a>In Speicherkontoprotokollen archivieren
 
@@ -171,7 +171,7 @@ Stellen Sie eine Verbindung mit Ihrem Speicherkonto her, und rufen Sie die JSON-
 Wenn Diagnoseinformationen an einen Event Hub gestreamt werden, kann er für die zentrale Protokollanalyse in einem SIEM-Tool eines Drittanbieters mit Azure Monitor-Integration verwendet werden. Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub](../azure-monitor/platform/stream-monitoring-data-event-hubs.md#partner-tools-with-azure-monitor-integration)
 
 ## <a name="send-to-log-analytics"></a>An Log Analytics senden
-Ressourcen in Azure können ihre Diagnoseinformationen direkt an einen Log Analytics-Arbeitsbereich senden lassen, in dem zwecks Problembehandlung und Analyse komplexe Abfragen für die Informationen ausgeführt werden können.  Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/resource-logs-collect-workspace)
+Ressourcen in Azure können ihre Diagnoseinformationen direkt an einen Log Analytics-Arbeitsbereich senden lassen, in dem zwecks Problembehandlung und Analyse komplexe Abfragen für die Informationen ausgeführt werden können.  Weitere Informationen finden Sie unter [Erfassen von Azure-Ressourcenprotokollen im Log Analytics-Arbeitsbereich in Azure Monitor](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
