@@ -12,20 +12,20 @@ ms.date: 02/18/2019
 ms.author: kenwith
 ms.reviewer: luleon, asteen
 ms.custom: contperfq2
-ms.openlocfilehash: 12b11d6283bbed4e43daf52a65c0c259c476e73f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: e75669c70c67d55c94642a0f6dbe3c9dbc3376e6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357911"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94651548"
 ---
 # <a name="problems-signing-in-to-saml-based-single-sign-on-configured-apps"></a>Probleme beim Anmelden bei für SAML-basiertes einmaliges Anmelden konfigurierten Apps
 Zur Behandlung der unten aufgeführten Anmeldeprobleme werden folgende Vorgehensweisen empfohlen, um bessere Diagnosen zu erzielen und Lösungsschritte zu automatisieren:
 
-- Installieren Sie die [Browsererweiterung zur sicheren Anmeldung für„Meine Apps“](access-panel-extension-problem-installing.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, bessere Diagnosen und Lösungen bereitzustellen, wenn Sie die Testumgebung im Azure-Portal nutzen.
-- Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen finden Sie unter [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](../azuread-dev/howto-v1-debug-saml-sso-issues.md).
+- Installieren Sie die [Browsererweiterung zur sicheren Anmeldung für„Meine Apps“](./access-panel-deployment-plan.md), um Azure Active Directory (Azure AD) dabei zu unterstützen, bessere Diagnosen und Lösungen bereitzustellen, wenn Sie die Testumgebung im Azure-Portal nutzen.
+- Reproduzieren Sie den Fehler mithilfe der Testfunktionen auf der App-Konfigurationsseite im Azure-Portal. Weitere Informationen finden Sie unter [Debuggen von SAML-basierten Anwendungen für einmaliges Anmelden](./debug-saml-sso-issues.md).
 
-Wenn Sie die [Testumgebung](../azuread-dev/howto-v1-debug-saml-sso-issues.md) im Azure-Portal mit der sicheren Browsererweiterung für „Meine Apps“ verwenden, müssen Sie die folgenden Schritte nicht manuell ausführen, um die Seite zur Konfiguration des SAML-basierten einmaligen Anmeldens zu öffnen.
+Wenn Sie die [Testumgebung](./debug-saml-sso-issues.md) im Azure-Portal mit der sicheren Browsererweiterung für „Meine Apps“ verwenden, müssen Sie die folgenden Schritte nicht manuell ausführen, um die Seite zur Konfiguration des SAML-basierten einmaligen Anmeldens zu öffnen.
 
 So öffnen Sie die Seite für die Konfiguration des SAML-basierten einmaligen Anmeldens:
 1.  Öffnen Sie das [**Azure-Portal**](https://portal.azure.com/), und melden Sie sich als **Globaler Administrator** oder **Co-Admin** an.
@@ -88,7 +88,7 @@ Azure AD unterstützt die von der Anwendung für einmaliges Anmelden gesendete S
 
 **Lösung**
 
-1. Erfassen Sie die SAML-Anforderung. Im Tutorial [Debug SAML-based single sign-on to applications in Azure Active Directory (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](../azuread-dev/howto-v1-debug-saml-sso-issues.md) erhalten Sie Informationen zum Erfassen der SAML-Anforderung.
+1. Erfassen Sie die SAML-Anforderung. Im Tutorial [Debug SAML-based single sign-on to applications in Azure Active Directory (Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD)](./debug-saml-sso-issues.md) erhalten Sie Informationen zum Erfassen der SAML-Anforderung.
 1. Wenden Sie sich an den Anwendungshersteller, und teilen Sie diesem folgende Informationen mit:
     - SAML-Anforderung
     - [Anforderungen des SAML-Protokolls für einmaliges Anmelden bei Azure AD](../develop/single-sign-on-saml-protocol.md)
@@ -174,5 +174,5 @@ Vergleichen Sie die Ressource, auf die Sie zugreifen möchten, im Code mit den k
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Schnellstartserie zur Anwendungsverwaltung](add-application-portal-assign-users.md)
-- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD](../azuread-dev/howto-v1-debug-saml-sso-issues.md)
-- [Anforderungen des SAML-Protokolls für einmaliges Anmelden bei Azure AD](../develop/active-directory-single-sign-on-protocol-reference.md)
+- [Debuggen des SAML-basierten einmaligen Anmeldens bei Anwendungen in Azure AD](./debug-saml-sso-issues.md)
+- [Anforderungen des SAML-Protokolls für einmaliges Anmelden bei Azure AD](../develop/single-sign-on-saml-protocol.md)

@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: victorh
-ms.openlocfilehash: 8b94b71993285a61042be3c6cd9e4708315fab9f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3e6ea6692a81a06bbf3180904dfb465a88b105d1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413002"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653418"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall – Häufig gestellte Fragen
 
@@ -50,7 +50,7 @@ Azure Firewall unterstützt Filter für eingehenden und ausgehenden Datenverkehr
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Welche Protokollierungs- und Analysedienste werden von Azure Firewall unterstützt?
 
-Azure Firewall ist zum Anzeigen und Analysieren von Firewallprotokollen in Azure Monitor integriert. Protokolle können an Log Analytics, Azure Storage oder Event Hubs gesendet werden. Sie können in Log Analytics oder von anderen Tools, wie Excel und Power BI, analysiert werden. Weitere Informationen finden Sie im [Tutorial: Überwachen von Azure Firewall-Protokollen](tutorial-diagnostics.md).
+Azure Firewall ist zum Anzeigen und Analysieren von Firewallprotokollen in Azure Monitor integriert. Protokolle können an Log Analytics, Azure Storage oder Event Hubs gesendet werden. Sie können in Log Analytics oder von anderen Tools, wie Excel und Power BI, analysiert werden. Weitere Informationen finden Sie im [Tutorial: Überwachen von Azure Firewall-Protokollen](./firewall-diagnostics.md).
 
 ## <a name="how-does-azure-firewall-work-differently-from-existing-services-such-as-nvas-in-the-marketplace"></a>Wie unterscheidet sich die Funktionsweise von Azure Firewall von vorhandenen Diensten wie NVAs im Marketplace?
 
@@ -217,7 +217,7 @@ Nein, das Verschieben einer IP-Gruppe in eine andere Ressourcengruppe wird zurze
 
 ## <a name="what-is-the-tcp-idle-timeout-for-azure-firewall"></a>Was ist das TCP-Leerlauftimeout für Azure Firewall?
 
-Das Standardverhalten einer Netzwerkfirewall besteht darin, TCP-Verbindungen aufrechtzuerhalten und sie sofort zu schließen, wenn es keine Aktivität gibt. Das TCP-Leerlauftimeout von Azure Firewall beträgt vier Minuten. Diese Einstellung ist nicht konfigurierbar. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung aufrechterhalten wird. Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in den [.NET-Beispielen](https://docs.microsoft.com/dotnet/api/system.net.servicepoint.settcpkeepalive?redirectedfrom=MSDN&view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
+Das Standardverhalten einer Netzwerkfirewall besteht darin, TCP-Verbindungen aufrechtzuerhalten und sie sofort zu schließen, wenn es keine Aktivität gibt. Das TCP-Leerlauftimeout von Azure Firewall beträgt vier Minuten. Diese Einstellung ist nicht konfigurierbar. Wenn die Dauer einer Inaktivitätsperiode den Timeoutwert überschreitet, gibt es keine Garantie dafür, dass die TCP- oder HTTP-Sitzung aufrechterhalten wird. Eine gängige Methode zur Aufrechterhaltung von Verbindungen ist TCP-Keep-Alive. Dadurch bleibt die Verbindung länger aktiv. Weitere Informationen finden Sie in den [.NET-Beispielen](/dotnet/api/system.net.servicepoint.settcpkeepalive?view=netcore-3.1#System_Net_ServicePoint_SetTcpKeepAlive_System_Boolean_System_Int32_System_Int32_).
 
 ## <a name="can-i-deploy-azure-firewall-without-a-public-ip-address"></a>Kann ich die Azure Firewall ohne eine öffentliche IP-Adresse bereitstellen?
 

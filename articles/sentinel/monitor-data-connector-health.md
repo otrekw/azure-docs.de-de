@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/09/2020
 ms.author: yelevin
-ms.openlocfilehash: 161e2d424611661619b99ecac3515aac6a8464e0
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 7d52b76601a617f62ae5b10fa38841ef2608bf49
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94428519"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656989"
 ---
 # <a name="monitor-the-health-of-your-data-connectors-with-this-azure-sentinel-workbook"></a>Überwachen der Integrität ihrer Datenconnectors mit dieser Azure Sentinel-Arbeitsmappe
 
@@ -42,7 +42,7 @@ Diese Arbeitsmappe enthält drei Registerkartenabschnitte:
 
 1. Auf der Registerkarte **Übersicht** wird der allgemeine Status der Datenerfassung im ausgewählten Arbeitsbereich angezeigt: Volumemeasures, EPS-Raten und die Zeit des letzten Protokollempfangs.
 
-1. Mithilfe der Registerkarte **Datensammlung: Anomalien** können Sie Anomalien im Datensammlungsprozess nach Tabelle und Datenquelle erkennen. Auf den einzelnen Registerkarten werden Anomalien für eine bestimmte Tabelle angezeigt (die Registerkarte **Allgemein** enthält eine Sammlung von Tabellen). Die Anomalien werden mit der Funktion **series_decompose_anomalies()** berechnet, bei der eine **Anomaliebewertung** zurückgegeben wird. Lesen Sie die [weiteren Informationen zu dieser Funktion](https://docs.microsoft.com/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx). Legen Sie die folgenden Parameter für die auszuwertende Funktion fest:
+1. Mithilfe der Registerkarte **Datensammlung: Anomalien** können Sie Anomalien im Datensammlungsprozess nach Tabelle und Datenquelle erkennen. Auf den einzelnen Registerkarten werden Anomalien für eine bestimmte Tabelle angezeigt (die Registerkarte **Allgemein** enthält eine Sammlung von Tabellen). Die Anomalien werden mit der Funktion **series_decompose_anomalies()** berechnet, bei der eine **Anomaliebewertung** zurückgegeben wird. Lesen Sie die [weiteren Informationen zu dieser Funktion](/azure/data-explorer/kusto/query/series-decompose-anomaliesfunction?WT.mc_id=Portal-fx). Legen Sie die folgenden Parameter für die auszuwertende Funktion fest:
 
     - **AnomaliesTimeRange**: Diese Zeitauswahl gilt nur für die Ansicht mit den Anomalien der Datensammlung.
     - **SampleInterval**: Das Zeitintervall, in dem für Daten im angegebenen Zeitbereich Stichproben genommen werden. Die Anomaliebewertung wird nur anhand der Daten des letzten Intervalls berechnet.

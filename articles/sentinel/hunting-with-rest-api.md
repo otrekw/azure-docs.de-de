@@ -15,18 +15,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/06/2020
 ms.author: yelevin
-ms.openlocfilehash: ca60b9350171cee55462c9df28915c811e1cfd25
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: cd52f22004bf72f3328d1e6a0d1ec988c2406317
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94377050"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660847"
 ---
 # <a name="manage-hunting-and-livestream-queries-in-azure-sentinel-using-rest-api"></a>Verwalten von Hunting- und Livestreamabfragen in Azure Sentinel über die REST-API
 
 Mit Azure Sentinel, das teilweise auf Azure Monitor Log Analytics basiert, können Sie die REST-API von Log Analytics nutzen, um Hunting- und Livestreamabfragen zu verwalten. Dieses Dokument zeigt, wie Sie Huntingabfragen über die REST-API erstellen und verwalten.  Abfragen, die auf diese Weise erstellt werden, werden auf der Azure Sentinel-Benutzeroberfläche angezeigt.
 
-Weitere Informationen zur [API für gespeicherte Suchvorgänge](https://docs.microsoft.com/rest/api/loganalytics/savedsearches) finden Sie in der endgültigen REST-API-Referenz.
+Weitere Informationen zur [API für gespeicherte Suchvorgänge](/rest/api/loganalytics/savedsearches) finden Sie in der endgültigen REST-API-Referenz.
 
 ## <a name="api-examples"></a>API-Beispiele
 
