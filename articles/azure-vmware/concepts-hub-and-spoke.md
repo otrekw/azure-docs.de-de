@@ -3,16 +3,16 @@ title: 'Konzept: Integrieren einer Azure VMware Solution-Bereitstellung in eine 
 description: Hier erfahren Sie, wie Sie eine Azure VMware Solution-Bereitstellung in eine Hub-and-Spoke-Architektur in Azure integrieren.
 ms.topic: conceptual
 ms.date: 10/26/2020
-ms.openlocfilehash: 0895e9c97f79e433b0383f0a99fbeeb124fd9064
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: da4a5f5ec6fa2b0a2733e8d1bf0243ec75f38d55
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490813"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577718"
 ---
 # <a name="integrate-azure-vmware-solution-in-a-hub-and-spoke-architecture"></a>Integrieren von Azure VMware Solution in eine Hub-and-Spoke-Architektur
 
-In diesem Artikel finden Sie Empfehlungen für die Integration einer Azure VMware Solution-Bereitstellung in eine vorhandene oder neue [Hub-and-Spoke-Architektur](/azure/architecture/reference-architectures/hybrid-networking/shared-services) in Azure. 
+In diesem Artikel finden Sie Empfehlungen für die Integration einer Azure VMware Solution-Bereitstellung in eine vorhandene oder neue [Hub-and-Spoke-Architektur](/azure/architecture/reference-architectures/hybrid-networking/#hub-spoke-network-topology) in Azure. 
 
 
 Für das Hub-and-Spoke-Szenario wird eine Hybrid Cloud-Umgebung mit Workloads für folgende Komponenten angenommen:

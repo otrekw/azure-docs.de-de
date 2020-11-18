@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: fbb78148418206a9a6e17b29ce17de0a23491839
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 2f32fc9ffb8be5b71bfe84a4f0e946e68e8fcd03
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369763"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577820"
 ---
 # <a name="plan-an-azure-managed-application-for-an-azure-application-offer"></a>Planen einer von Azure verwalteten Anwendung für ein Azure-Anwendungsangebot
 
@@ -32,7 +32,7 @@ Verwenden einer Azure-Anwendung: Plan für die verwaltete Anwendung, wenn die fo
 | ------------ | ------------- |
 | Ein Azure-Abonnement | Verwaltete Anwendungen müssen im Abonnement eines Kunden bereitgestellt werden, können aber von einem Drittanbieter verwaltet werden. |
 | Abrechnung und Messung | Die Ressourcen werden im Azure-Abonnement eines Kunden bereitgestellt. Bei VMs, für die das Modell der nutzungsbasierten Bezahlung verwendet wird, erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei Bring-Your-Own-License-VMs rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab. Die Softwarelizenzgebühren rechnen Sie jedoch direkt mit dem Kunden ab. |
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<br> • [Erstellen einer technischen Azure-VM-Ressource](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (für Windows-VHDs).<br> • [Von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs). |
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<br> • [Erstellen einer technischen Azure-VM-Ressource](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (für Windows-VHDs).<br> • [Von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros) (für Linux-VHDs). |
 | Zuordnen der Nutzung durch Kunden | Alle neuen Azure-Anwendungsangebote müssen auch eine [GUID zum Zuordnen der Nutzung durch Kunden von Azure-Partnern](azure-partner-customer-usage-attribution.md) enthalten. Weitere Informationen zur Zuordnung der Nutzung durch Kunden sowie zu deren Aktivierung finden Sie unter [Zuordnung der Nutzung durch Kunden von Azure-Partnern](azure-partner-customer-usage-attribution.md). |
 | Bereitstellungspaket | Sie benötigen ein Bereitstellungspaket, mit dem Kunden Ihren Plan bereitstellen können. Wenn Sie mehrere Pläne erstellen, die dieselbe technische Konfiguration erfordern, können Sie auch dasselbe Paket verwenden. Weitere Details finden Sie im nächsten Abschnitt: Bereitstellungspaket. |
 |||
@@ -47,7 +47,7 @@ Das Bereitstellungspaket enthält alle für diesen Plan erforderlichen Vorlagend
 Alle Azure-Anwendungen müssen diese beiden Dateien im Stammordner eines ZIP-Archivs enthalten:
 
 - Eine Resource Manager-Vorlagendatei mit dem Namen [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md). In dieser Vorlage werden die Ressourcen definiert, die im Azure-Abonnement des Kunden bereitgestellt werden sollen. Beispiele für Resource Manager-Vorlagen finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) oder im entsprechenden Repository [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) (Azure Resource Manager-Schnellstartvorlagen).
-- Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview.md). Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
+- Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview). Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
 
 Unterstützte maximale Dateigrößen:
 
@@ -58,7 +58,7 @@ Alle neuen Azure-Anwendungsangebote müssen auch eine [GUID zum Zuordnen der Nut
 
 ## <a name="azure-regions"></a>Azure-Regionen
 
-Sie können Ihren Plan in öffentlichen Azure-Regionen und Azure Government-Regionen veröffentlichen. Testen und validieren Sie Ihren Plan vor dem Veröffentlichen für [Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners.md) in der Umgebung, da sich bestimmte Endpunkte möglicherweise unterscheiden. Fordern Sie für Einrichten und Testen Ihres Plans ein Testkonto bei [Microsoft Azure Government-Test](https://azure.microsoft.com/global-infrastructure/government/request/) an.
+Sie können Ihren Plan in öffentlichen Azure-Regionen und Azure Government-Regionen veröffentlichen. Testen und validieren Sie Ihren Plan vor dem Veröffentlichen für [Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners) in der Umgebung, da sich bestimmte Endpunkte möglicherweise unterscheiden. Fordern Sie für Einrichten und Testen Ihres Plans ein Testkonto bei [Microsoft Azure Government-Test](https://azure.microsoft.com/global-infrastructure/government/request/) an.
 
 Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
 
@@ -87,14 +87,14 @@ Preise in USD (USD = US-Dollar) werden beim Speichern gemäß dem aktuellen Wech
 
 ## <a name="just-in-time-jit-access"></a>Just-In-Time-Zugriff (JIT)
 
-Der JIT-Zugriff ermöglicht es Ihnen, erhöhte Zugriffsrechte auf die Ressourcen einer verwalteten Anwendung zur Problembehandlung oder Wartung anzufordern. Sie verfügen immer über Lesezugriff auf die Ressourcen, aber für einen bestimmten Zeitraum können Sie über erhöhte Zugriffsrechte verfügen. Weitere Informationen finden Sie unter [Aktivieren und Anfordern des Just-In-time-Zugriffs für Azure Managed Applications](/azure/managed-applications/request-just-in-time-access.md).
+Der JIT-Zugriff ermöglicht es Ihnen, erhöhte Zugriffsrechte auf die Ressourcen einer verwalteten Anwendung zur Problembehandlung oder Wartung anzufordern. Sie verfügen immer über Lesezugriff auf die Ressourcen, aber für einen bestimmten Zeitraum können Sie über erhöhte Zugriffsrechte verfügen. Weitere Informationen finden Sie unter [Aktivieren und Anfordern des Just-In-time-Zugriffs für Azure Managed Applications](/azure/managed-applications/request-just-in-time-access).
 
 > [!NOTE]
 > Informationen, die der Benutzer auch im Falle von Skimming bemerken sollte. Aktualisieren Sie Ihre `createUiDefinition.json`-Datei unbedingt, um dieses Feature zu unterstützen.
 
 ## <a name="deployment-mode"></a>Bereitstellungsmodus
 
-Sie können einen Plan für eine verwaltete Anwendung so konfigurieren, dass entweder der Bereitstellungsmodus **Vollständig** oder **Inkrementell** verwendet wird. Im Modus „Vollständig“ führt eine erneute Bereitstellung der Anwendung durch den Kunden zur Entfernung von Ressourcen aus der verwalteten Ressourcengruppe, wenn die Ressourcen nicht in der Datei [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) definiert sind. Im inkrementellen Modus bleiben bestehende Ressourcen bei einer erneuten Bereitstellung der Anwendung unverändert. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](/azure/azure-resource-manager/templates/deployment-modes.md?WT.mc_id=pc_52).
+Sie können einen Plan für eine verwaltete Anwendung so konfigurieren, dass entweder der Bereitstellungsmodus **Vollständig** oder **Inkrementell** verwendet wird. Im Modus „Vollständig“ führt eine erneute Bereitstellung der Anwendung durch den Kunden zur Entfernung von Ressourcen aus der verwalteten Ressourcengruppe, wenn die Ressourcen nicht in der Datei [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md) definiert sind. Im inkrementellen Modus bleiben bestehende Ressourcen bei einer erneuten Bereitstellung der Anwendung unverändert. Weitere Informationen finden Sie unter [Azure Resource Manager-Bereitstellungsmodi](/azure/azure-resource-manager/templates/deployment-modes).
 
 ## <a name="notification-endpoint-url"></a>Benachrichtigungsendpunkt-URL
 
@@ -104,7 +104,7 @@ Sie können optional einen HTTPS-Webhookendpunkt angeben, um Benachrichtigungen 
 
 Sie können optional angeben, welche Aktionen Kunden neben den standardmäßig verfügbaren `*/read`-Aktionen für verwaltete Ressourcen ausführen können.
 
-Wenn Sie diese Option auswählen, müssen Sie entweder die Steuerungsaktionen oder die zulässigen Datenaktionen oder beides bereitstellen. Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](/azure/role-based-access-control/deny-assignments.md). Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations.md). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
+Wenn Sie diese Option auswählen, müssen Sie entweder die Steuerungsaktionen oder die zulässigen Datenaktionen oder beides bereitstellen. Weitere Informationen finden Sie unter Weitere Informationen finden Sie unter [Grundlegendes zu Ablehnungszuweisungen für Azure-Ressourcen](/azure/role-based-access-control/deny-assignments). Die verfügbaren Aktionen finden Sie unter [Vorgänge für Azure Resource Manager-Ressourcenanbieter](/azure/role-based-access-control/resource-provider-operations). Beispiel: Wenn Sie Kunden das Neustarten virtueller Computer erlauben möchten, fügen Sie den zulässigen Aktionen `Microsoft.Compute/virtualMachines/restart/action` hinzu.
 
 ## <a name="choose-who-can-manage-the-application"></a>Festlegen des Verwaltungszugriffs auf die Anwendung
 
@@ -113,14 +113,14 @@ Sie müssen angeben, wer eine verwaltete Anwendung in den einzelnen ausgewählte
 - **Azure Active Directory-Mandanten-ID**: Hierbei handelt es sich um die Azure AD-Mandanten-ID (auch als Verzeichnis-ID bezeichnet), die die Identitäten der Benutzer, Gruppen oder Anwendungen enthält, denen Sie Berechtigungen erteilen möchten. Sie finden Ihre Azure AD-Mandanten-ID im Azure-Portal unter [Eigenschaften für Azure Active Directory](https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties).
 - **Autorisierungen:** Fügen Sie die Azure Active Directory-Objekt-ID jedes Benutzers, jeder Gruppe oder Anwendung hinzu, dem oder der die Berechtigung für die verwaltete Ressourcengruppe erteilt werden soll. Sie können den Benutzer anhand seiner Prinzipal-ID auf dem [Blatt „Azure Active Directory Benutzer“ im Azure-Portal](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) identifizieren.
 
-Ordnen Sie jeder Prinzipal-ID eine der in Azure AD integrierten Rollen zu (Besitzer oder Mitwirkender). Die ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](/azure/role-based-access-control/built-in-roles.md). Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Erste Schritte mit RBAC im Azure-Portal](/azure/role-based-access-control/overview.md).
+Ordnen Sie jeder Prinzipal-ID eine der in Azure AD integrierten Rollen zu (Besitzer oder Mitwirkender). Die ausgewählte Rolle beschreibt die Berechtigungen, die der Prinzipal für die Ressourcen im Kundenabonnement erhält. Weitere Informationen finden Sie unter [Integrierte Azure-Rollen](/azure/role-based-access-control/built-in-roles). Weitere Informationen zur rollenbasierten Zugriffssteuerung (RBAC) finden Sie unter [Erste Schritte mit RBAC im Azure-Portal](/azure/role-based-access-control/overview).
 
 > [!NOTE]
 > Obwohl Sie bis zu 100 Autorisierungen pro Azure-Region hinzufügen können, ist es im Allgemeinen einfacher, eine Active Directory-Benutzergruppe zu erstellen und ihre ID in der „Prinzipal-ID“ anzugeben. Dies ermöglicht Ihnen, nach der Bereitstellung des Plans der Verwaltungsgruppe weitere Benutzer hinzuzufügen, und verringert die Notwendigkeit, den Plan zu aktualisieren, nur um weitere Autorisierungen hinzuzufügen.
 
 ## <a name="policy-settings"></a>Richtlinieneinstellungen
 
-Sie können [Azure-Richtlinien](/azure/governance/policy.md) auf Ihre verwaltete Anwendung anwenden, um Complianceanforderungen für die bereitgestellte Lösung anzugeben. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](/azure/governance/policy/samples.md).
+Sie können [Azure-Richtlinien](/azure/governance/policy) auf Ihre verwaltete Anwendung anwenden, um Complianceanforderungen für die bereitgestellte Lösung anzugeben. Informationen zu Richtliniendefinitionen und zum Format der Parameterwerte finden Sie unter [Azure Policy-Beispiele](/azure/governance/policy/samples).
 
 Sie können maximal fünf Richtlinien und nur eine Instanz jedes einzelnen Richtlinientyps konfigurieren. Einige Richtlinientypen erfordern zusätzliche Parameter.
 

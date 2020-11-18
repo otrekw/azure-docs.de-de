@@ -6,12 +6,12 @@ ms.author: srranga
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/05/2020
-ms.openlocfilehash: 0e9773e5c08f9d07f76a70bc4f899acf5004d3c2
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: cda305ac705b728e0d2e129d7d42d53ea0251d86
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421808"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591528"
 ---
 # <a name="logical-decoding"></a>Logische Decodierung
  
@@ -37,7 +37,6 @@ Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter 
 * **Replica**: Ausführlichere Informationen als bei **Off**. Dies ist der mindestens erforderliche Protokolliergrad, damit [Lesereplikate](concepts-read-replicas.md) funktionieren. Auf den meisten Servern ist dies die Standardeinstellung.
 * **Logical**: Noch ausführlichere Informationen als bei **Replica**. Dies ist der mindestens erforderliche Protokolliergrad, damit die logische Decodierung funktioniert. Lesereplikate funktionieren bei dieser Einstellung ebenfalls.
 
-Der Server muss nach einer Änderung dieses Parameters neu gestartet werden. Intern werden durch diesen Parameter die Postgres-Parameter `wal_level`, `max_replication_slots` und `max_wal_senders` festgelegt.
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 

@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 3662f6007049a5531e11c193adf71e8f8442dcdb
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377019"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565635"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -127,7 +127,7 @@ Der Pfad der Integritätsüberprüfung sollte die kritischen Komponenten der Anw
 
 #### <a name="security"></a>Sicherheit 
 
-Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für die verfügbar gemachten APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules), [Clientzertifikate](../../app-service/app-service-ip-restrictions.md#adding-ip-address-rules) oder ein virtuelles Netzwerk verwenden, um den Zugriff auf die Anwendung einzuschränken. Sie können den Endpunkt der Integritätsprüfung selbst sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `ReadyForRequest/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wurde.
+Entwicklungsteams in großen Unternehmen müssen häufig Sicherheitsanforderungen für die verfügbar gemachten APIs erfüllen. Um den Endpunkt der Integritätsprüfung zu sichern, sollten Sie zunächst Features wie [IP-Einschränkungen](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule), [Clientzertifikate](../../app-service/app-service-ip-restrictions.md#set-an-ip-address-based-rule) oder ein virtuelles Netzwerk verwenden, um den Zugriff auf die Anwendung einzuschränken. Sie können den Endpunkt der Integritätsprüfung selbst sichern, indem Sie anfordern, dass der `User-Agent` der eingehenden Anforderung `ReadyForRequest/1.0` entspricht. Der Benutzer-Agent kann nicht manipuliert werden, da die Anforderung bereits durch die vorherigen Sicherheitsfeatures gesichert wurde.
 
 ### <a name="behavior"></a>Verhalten
 
@@ -146,7 +146,7 @@ Nachdem Sie den Pfad der Integritätsüberprüfung der Anwendung angegeben haben
 
 ## <a name="moving-autoscale-to-a-different-region"></a>Verschieben der Autoskalierung in eine andere Region
 In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in eine andere Region im selben Abonnement und in derselben Ressourcengruppe verschieben. Sie können die Einstellungen für die Autoskalierung mithilfe der REST-API verschieben.
-### <a name="prerequisite"></a>Voraussetzung
+### <a name="prerequisite"></a>Voraussetzungen
 1. Stellen Sie sicher, dass das Abonnement und die Ressourcengruppe verfügbar sind und die Details in der Quell- und der Zielregion identisch sind.
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 

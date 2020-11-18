@@ -5,14 +5,14 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 11/09/2020
-author: mingshen-ms
-ms.author: mingshen
-ms.openlocfilehash: 2682202b68deeeb1dbbe2493ecb9592acd1788b8
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+author: sayantanroy83
+ms.author: sroy
+ms.openlocfilehash: ceecaf88f87a94473011eb48e944db7a011b3acc
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413673"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94563782"
 ---
 # <a name="orders-dashboard-in-commercial-marketplace-analytics"></a>Dashboard „Aufträge“ in Analysen für den kommerziellen Marketplace
 
@@ -118,7 +118,7 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 | ------------ | ------------- | ------------- |
 | Marketplace Subscription Id | Marketplace-Abonnement-ID | Der eindeutige Bezeichner (ID), der mit dem Azure-Abonnement verknüpft ist, über das der Kunde Ihr Angebot im kommerziellen Marketplace erworben hat. Früher war ID die Azure-Abonnement-GUID. |
 | MonthStartDate | Monatsstartdatum | Das Monatsstartdatum steht für den Monat des Kaufs. |
-| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace. |
+| Angebotstyp | Angebotstyp | Der Typ des Angebots im kommerziellen Marketplace |
 | Azure-Lizenztyp | Azure-Lizenztyp | Die Art der Lizenzvereinbarung, über die Kunden Azure erwerben. Wird auch als Kanal bezeichnet. Mögliche Werte sind:<ul><li>Cloud Solution Provider</li><li>Enterprise</li><li>Enterprise über Handelspartner</li><li>Nutzungsbasierte Bezahlung</li></ul> |
 | Marketplace-Lizenztyp | Marketplace-Lizenztyp | Die Abrechnungsmethode für das Angebot im kommerziellen Marketplace. Die unterschiedlichen Werte sind:<ul><li>Abrechnung über Azure</li><li>BYOL (Bring Your Own License)</li><li>Kostenlos</li><li>Microsoft als Handelspartner</li></ul> |
 | SKU | SKU | Der dem Angebot zugeordnete Plan |
@@ -134,8 +134,8 @@ In der Tabelle „Auftragsdetails“ wird eine nummerierte Liste der 1.000 beste
 | Kaufdatum der Bestellung | Kaufdatum der Bestellung | Das Datum, an dem der Auftrag im kommerziellen Marketplace gelöscht wurde. |
 | Angebotsname | Angebotsname | Der Name des Angebots im kommerziellen Marketplace. |
 | Enddatum der Testversion | Enddatum der Testversion | Das Datum, an dem der Testzeitraum für die Bestellung endet oder beendet ist. |
-| Customer Id | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements haben. |
-| ID des Abrechnungskontos | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die _ *ID des Abrechnungskontos** der **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Auftrags- und Nutzungsberichten zu verbinden. |
+| Customer Id | Customer ID | Der eindeutige, einem Kunden zugewiesene Bezeichner. Ein Kunde kann keine oder mehrere Azure Marketplace-Abonnements besitzen. |
+| Billing Account Id | ID des Abrechnungskontos | Der Bezeichner des Kontos, für das die Abrechnung generiert wird. Ordnen Sie die _ *ID des Abrechnungskontos** der **customerID** zu, um Ihren Auszahlungstransaktionsbericht mit den Kunden-, Auftrags- und Nutzungsberichten zu verbinden. |
 | AssetCount | Anzahl der Objekte | Die Anzahl der Objekte, die der Auftrags-ID zugeordnet sind. |
 ||||
 

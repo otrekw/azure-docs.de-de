@@ -8,27 +8,27 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/06/2020
-ms.openlocfilehash: c8ab076392fd9d0bb3a0c780272938918bb69d14
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 38c7072472a13d7fe3d529933ca17a51e6a86733
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369757"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577803"
 ---
 # <a name="plan-a-solution-template-for-an-azure-application-offer"></a>Planen einer Lösungsvorlage für ein Azure-Anwendungsangebot
 
 In diesem Artikel werden die Anforderungen zum Veröffentlichen eines Plans für eine Lösungsvorlage für ein Azure-Anwendungsangebot erläutert. Ein Plan für eine Lösungsvorlage ist einer der beiden für Azure-Anwendungsangebote unterstützten Plantypen. Weitere Informationen zu den Unterschieden zwischen diesen beiden Plantypen finden Sie unter [Plantypen](plan-azure-application-offer.md#plans). Wenn Sie den Artikel [Planen eines Azure-Anwendungsangebots](plan-azure-application-offer.md) noch nicht gelesen haben, holen Sie dies nach.
 
-Für den Plantyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](/azure/azure-resource-manager/templates/overview.md) erforderlich, damit Ihre Lösungsinfrastruktur automatisch bereitgestellt werden kann.
+Für den Plantyp „Lösungsvorlage“ ist eine [Azure Resource Manager-Vorlage (ARM-Vorlage)](/azure/azure-resource-manager/templates/overview) erforderlich, damit Ihre Lösungsinfrastruktur automatisch bereitgestellt werden kann.
 
 ## <a name="solution-template-requirements"></a>Anforderungen für Lösungsvorlagen
 
-| Anforderungen | Details |
+| Requirements (Anforderungen) | Details |
 | ------------ | ------------- |
 | Abrechnung und Messung | Pläne für Lösungsvorlagen sind keine Transaktionsangebote. Sie können jedoch zum Bereitstellen bezahlter VM-Angebote verwendet werden, die über den kommerziellen Microsoft-Marketplace abgerechnet werden. Die über die ARM-Vorlage der Lösung bereitgestellten Ressourcen werden im Azure-Abonnement des Kunden eingerichtet. Bei virtuellen Computern mit nutzungsbasierter Bezahlung erfolgt die Transaktion mit dem Kunden über Microsoft, und die Abrechnung wird über das Azure-Abonnement des Kunden abgewickelt. <br><br> Bei der Abrechnung nach dem Modell „Bring Your Own License“ (BYOL) rechnet Microsoft die angefallenen Infrastrukturkosten im Kundenabonnement ab, während Sie Ihre Softwarelizenzgebühren direkt mit dem Kunden abrechnen. |
-| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros.md) (für Linux-VHDs)</li></ul> |
+| Azure-kompatible virtuelle Festplatte (VHD) | VMs müssen unter Windows oder Linux erstellt werden. Weitere Informationen finden Sie unter<ul><li>[Erstellen einer technischen Azure-VM-Ressource](/azure/marketplace/partner-center-portal/vm-certification-issues-solutions#how-to-address-a-vulnerability-or-exploit-in-a-vm-offer.md) (für Windows-VHDs)</li><li>[Von Azure unterstützte Distributionen von Linux](/azure/virtual-machines/linux/endorsed-distros) (für Linux-VHDs)</li></ul> |
 | Zuordnen der Nutzung durch Kunden | Die Zuordnung der Nutzung durch Kunden muss für alle Lösungsvorlagen aktiviert werden, die im Azure Marketplace veröffentlicht werden. Weitere Informationen zur Zuordnung der Nutzung durch Kunden sowie zu deren Aktivierung finden Sie unter [Zuordnung der Nutzung durch Kunden von Azure-Partnern](azure-partner-customer-usage-attribution.md). |
-| Verwenden von verwalteten Datenträgern | [Verwaltete Datenträger](/azure/virtual-machines/windows/managed-disks-overview.md) sind die Standardoption für persistente Datenträger von Infrastructure-as-a-Service-VMs (IaaS-VMs) in Azure. In Lösungsvorlagen müssen Sie verwaltete Datenträger verwenden.<ul><li>Wenn Sie Ihre Lösungsvorlagen aktualisieren möchten, folgen Sie den Anweisungen unter [Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen](/azure/virtual-machines/using-managed-disks-template-deployments.md), und verwenden Sie die bereitgestellten [Beispiele](https://github.com/Azure/azure-quickstart-templates).</li><li>Wenn Sie die VHD als Image im Azure Marketplace veröffentlichen möchten, importieren Sie die zugrunde liegende VHD der verwalteten Datenträger in ein Speicherkonto. Verwenden Sie dazu entweder [Azure PowerShell](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd.md) oder die [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd.md).</ul> |
+| Verwenden von verwalteten Datenträgern | [Verwaltete Datenträger](/azure/virtual-machines/windows/managed-disks-overview) sind die Standardoption für persistente Datenträger von Infrastructure-as-a-Service-VMs (IaaS-VMs) in Azure. In Lösungsvorlagen müssen Sie verwaltete Datenträger verwenden.<ul><li>Wenn Sie Ihre Lösungsvorlagen aktualisieren möchten, folgen Sie den Anweisungen unter [Verwenden verwalteter Datenträger mit Resource Manager-Vorlagen](/azure/virtual-machines/using-managed-disks-template-deployments), und verwenden Sie die bereitgestellten [Beispiele](https://github.com/Azure/azure-quickstart-templates).</li><li>Wenn Sie die VHD als Image im Azure Marketplace veröffentlichen möchten, importieren Sie die zugrunde liegende VHD der verwalteten Datenträger in ein Speicherkonto. Verwenden Sie dazu entweder [Azure PowerShell](/azure/virtual-machines/scripts/virtual-machines-powershell-sample-copy-managed-disks-vhd) oder die [Azure-Befehlszeilenschnittstelle](/azure/virtual-machines/scripts/virtual-machines-cli-sample-copy-managed-disks-vhd).</ul> |
 | Bereitstellungspaket | Sie benötigen ein Bereitstellungspaket, mit dem Kunden Ihren Plan bereitstellen können. Wenn Sie mehrere Pläne erstellen, die dieselbe technische Konfiguration erfordern, können Sie auch dasselbe Planpaket verwenden. Weitere Details finden Sie im nächsten Abschnitt: „Bereitstellungspaket“. |
 |||
 
@@ -39,7 +39,7 @@ Das Bereitstellungspaket enthält alle für diesen Plan erforderlichen Vorlagend
 Alle Azure-Anwendungen müssen diese beiden Dateien im Stammordner eines ZIP-Archivs enthalten:
 
 - Eine Resource Manager-Vorlagendatei mit dem Namen [mainTemplate.json](/azure/azure-resource-manager/managed-applications/publish-service-catalog-app?tabs=azure-powershell#create-the-arm-template.md). In dieser Vorlage werden die Ressourcen definiert, die im Azure-Abonnement des Kunden bereitgestellt werden sollen. Beispiele für Resource Manager-Vorlagen finden Sie im [Katalog der Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/) oder im entsprechenden Repository [GitHub: Azure Resource Manager Quickstart Templates](https://github.com/azure/azure-quickstart-templates) (Azure Resource Manager-Schnellstartvorlagen).
-- Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview.md). Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
+- Eine Benutzeroberflächendefinition für die Oberfläche zum Erstellen von Azure-Anwendungen mit dem Namen [createUiDefinition.json](/azure/azure-resource-manager/managed-application-createuidefinition-overview). Auf der Benutzeroberfläche geben Sie Elemente an, die Kunden die Angabe von Parameterwerten ermöglichen.
 
 Unterstützte maximale Dateigrößen:
 
@@ -50,7 +50,7 @@ Alle neuen Azure-Anwendungsangebote müssen auch eine [GUID zum Zuordnen der Nut
 
 ## <a name="azure-regions"></a>Azure-Regionen
 
-Sie können Ihren Plan in öffentlichen Azure-Regionen und Azure Government-Regionen veröffentlichen. Testen und validieren Sie Ihren Plan vor dem Veröffentlichen für [Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners.md) in der Umgebung, da sich bestimmte Endpunkte möglicherweise unterscheiden. Fordern Sie für Einrichten und Testen Ihres Plans ein Testkonto bei [Microsoft Azure Government-Test](https://azure.microsoft.com/global-infrastructure/government/request/) an.
+Sie können Ihren Plan in öffentlichen Azure-Regionen und Azure Government-Regionen veröffentlichen. Testen und validieren Sie Ihren Plan vor dem Veröffentlichen für [Azure Government](/azure/azure-government/documentation-government-manage-marketplace-partners) in der Umgebung, da sich bestimmte Endpunkte möglicherweise unterscheiden. Fordern Sie für Einrichten und Testen Ihres Plans ein Testkonto bei [Microsoft Azure Government-Test](https://azure.microsoft.com/global-infrastructure/government/request/) an.
 
 Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden).
 
@@ -62,7 +62,7 @@ Azure Government-Dienste verarbeiten Daten, die bestimmten behördlichen Vorschr
 
 Sie können festlegen, dass jeder Plan für alle Benutzer (öffentlich) oder nur für eine bestimmte Zielgruppe (privat) angezeigt werden soll. Sie können bis zu 100 Pläne erstellen, von denen bis zu 45 privat sein können. Möglicherweise möchten Sie einen privaten Plan erstellen, um bestimmten Kunden abweichende Preisoptionen oder technische Konfigurationen anzubieten.
 
-Der Zugriff auf einen private Plan wird über Azure-Abonnement-IDs zugewiesen. Dabei kann eine Beschreibung jeder zugewiesenen Abonnement-ID angegeben werden. Sie können maximal 10 Abonnement-IDs manuell eingeben oder über eine CSV-Datei bis zu 10.000 Abonnement-IDs angeben. Azure-Abonnement-IDs werden als GUIDs dargestellt. Buchstaben müssen in Kleinbuchstaben angegeben werden.
+Der Zugriff auf einen privaten Plan wird über Azure-Abonnement-IDs zugewiesen. Dabei kann eine Beschreibung jeder zugewiesenen Abonnement-ID angegeben werden. Sie können maximal 10 Abonnement-IDs manuell eingeben oder über eine CSV-Datei bis zu 10.000 Abonnement-IDs angeben. Azure-Abonnement-IDs werden als GUIDs dargestellt. Buchstaben müssen in Kleinbuchstaben angegeben werden.
 
 > [!NOTE]
 > Wenn Sie einen privaten Plan veröffentlichen, können Sie die Sichtbarkeit später in „Öffentlich“ ändern. Wenn Sie hingegen einen öffentlichen Plan veröffentlichen, können Sie dessen Sichtbarkeit nicht in „Privat“ ändern.

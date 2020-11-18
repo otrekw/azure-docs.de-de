@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 11/03/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 0670107d84374589aa60cc18f184b9b3d3facce1
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4903f1e48eb2f33c68d62c635201474b841ed146
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331803"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591511"
 ---
 # <a name="azure-database-for-mysql-versioning-policy"></a>Azure Database for MySQL: Versionsrichtlinie
 
@@ -30,7 +30,7 @@ Azure Database for MySQL unterstützt die folgenden Datenbankversionen.
 
 
 ## <a name="major-version-support"></a>Support für die Hauptversion
-Jede Hauptversion von MySQL wird durch Azure Database for MySQL ab dem Datum, an dem Azure mit der Unterstützung für die Version beginnt, bis zu dem Datum unterstützt, an dem die Version durch die MySQL-Community eingestellt wird, wie in der [Versionsrichtlinie](https://en.wikipedia.org/wiki/mysql) angegeben.
+Jede Hauptversion von MySQL wird durch Azure Database for MySQL ab dem Datum, an dem Azure mit der Unterstützung für die Version beginnt, bis zu dem Datum unterstützt, an dem die Version durch die MySQL-Community eingestellt wird, wie in der [Versionsrichtlinie](https://www.mysql.com/support/eol-notice.html) angegeben.
 
 ## <a name="minor-version-support"></a>Support für die Nebenversionen
 Azure Database for MySQL führt im Rahmen regelmäßiger Wartungsarbeiten automatisch Nebenversionsupgrades auf die bevorzugte Azure MySQL-Version durch. 
@@ -40,8 +40,8 @@ Die folgende Tabelle enthält die Details zur Einstellung von MySQL-Hauptversion
 
 | Version | Neues | Startdatum des Azure-Supports | Deaktivierungstermin|
 | ----- | ----- | ------ | ----- |
-| [MySQL 5.6](https://dev.mysql.com/doc/relnotes/mysql/5.6/)| [Funktionen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | 20. März 2018 | Februar 2021
-| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/) | [Funktionen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | 20. März 2018 | Oktober 2023
+| [MySQL 5.6](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/)| [Funktionen](https://dev.mysql.com/doc/relnotes/mysql/5.6/en/news-5-6-49.html)  | 20. März 2018 | Februar 2021
+| [MySQL 5.7](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/) | [Funktionen](https://dev.mysql.com/doc/relnotes/mysql/5.7/en/news-5-7-31.html) | 20. März 2018 | Oktober 2023
 | [MySQL 8](https://mysqlserverteam.com/whats-new-in-mysql-8-0-generally-available/) | [Features](https://dev.mysql.com/doc/relnotes/mysql/8.0/en/news-8-0-21.html)) | 11. Dezember 2019 | April 2026
 
 

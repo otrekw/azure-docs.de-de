@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 10/20/2020
+ms.date: 11/11/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 7ecccd64921b2d95155318fe91c897725e340b7e
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: c68f76e56f49f055466f7332d7751ac468e034d8
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334668"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616738"
 ---
 ::: zone target="docs"
 
@@ -74,7 +74,7 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
 
     ![Abrufen von Anmeldeinformationen für SMB-Freigaben](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
-2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Wenn das Kennwort Sonderzeichen enthält, fügen Sie vor und hinter dem Kennwort doppelte Anführungszeichen ein. Klicken Sie anschließend auf **OK**.
+2. Kopieren Sie im Dialogfeld „Auf Freigabe zugreifen und Daten kopieren“ den **Benutzernamen** und das **Kennwort** für die Freigabe. Klicken Sie anschließend auf **OK**.
     
     ![Abrufen des Benutzernamens und des Kennworts für eine Freigabe](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
@@ -87,11 +87,11 @@ Wenn Sie einen Windows Server-Hostcomputer verwenden, führen Sie die folgenden 
     - Azure-Seitenblob: `\\10.126.76.138\utSAC1_202006051000_PageBlob`
     - Azure-Dateien: `\\10.126.76.138\utSAC1_202006051000_AzFile`
 
-4. Geben Sie das Kennwort für die Freigabe ein, wenn Sie dazu aufgefordert werden. Das folgende Beispiel zeigt das Herstellen einer Verbindung mit einer Freigabe über den obigen Befehl.
+4. Geben Sie das Kennwort für die Freigabe ein, wenn Sie dazu aufgefordert werden. Wenn das Kennwort Sonderzeichen enthält, fügen Sie vor und hinter dem Kennwort doppelte Anführungszeichen ein. Das folgende Beispiel zeigt das Herstellen einer Verbindung mit einer Freigabe über den obigen Befehl.
 
     ```
     C:\Users\Databoxuser>net use \\10.126.76.138\utSAC1_202006051000_BlockBlob /u:testuser1
-    Enter the password for 'testuser1' to connect to '10.126.76.138':
+    Enter the password for 'testuser1' to connect to '10.126.76.138': "ab1c2def$3g45%6h7i&j8kl9012345"
     The command completed successfully.
     ```
 
