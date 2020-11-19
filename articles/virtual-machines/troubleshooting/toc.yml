@@ -115,6 +115,8 @@
           href: windows-boot-error-invalid-image-hash.md
         - name: 'Windows-kritischer Fehler: Fehlerhafte Systemkonfigurationsinformationen'
           href: windows-stop-error-bad-system-config-info.md
+        - name: 'Windows-kritischer Fehler: Hardwarefehler'
+          href: windows-stop-error-hardware-malfunction.md
         - name: 'Windows-kritischer Fehler: Status „Nicht genügend Arbeitsspeicher“'
           href: troubleshoot-windows-stop-error.md
         - name: 'Windows-kritischer Fehler: Systemprozess beendet'

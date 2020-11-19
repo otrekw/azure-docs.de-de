@@ -5,15 +5,15 @@ services: data-factory
 author: chez-charlie
 ms.service: data-factory
 ms.topic: include
-ms.date: 10/28/2020
+ms.date: 11/16/2020
 ms.author: chez
 ms.custom: include file
-ms.openlocfilehash: 4cbe179d015c71094e6813666a6fd0cee3e5e3c2
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 1e8d13e7cf302c486bab291ef6482216122b62a3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92909060"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681219"
 ---
 Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standardgrenzwerten, die sicherstellen sollen, dass Kundenabonnements vor anderen Workloads geschützt sind. Wenden Sie sich an den Support, um die Grenzwerte bis zum Höchstwert für Ihr Abonnement zu erhöhen.
 
@@ -40,6 +40,7 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Maximales Zeitlimit für Ausführungen von Pipelineaktivitäten | 7 Tage | 7 Tage |
 | Bytes pro Objekt für Pipelineobjekte<sup>3</sup> | 200 KB | 200 KB |
 | Bytes pro Objekt für Datasetobjekte und verknüpfte Dienstobjekte<sup>3</sup> | 100 KB | 2\.000 KB |
+| Bytes pro Nutzdaten für jede Aktivitätsausführung<sup>4</sup> | 896 KB | 896 KB |
 | Datenintegrationseinheiten<sup>1</sup> pro Kopieraktivitätsausführung | 256 | 256 |
 | Schreiben von API-Aufrufen | 1\.200/h | 1\.200/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. |
 | Lesen von API-Aufrufen | 12.500/h | 12.500/h<br/><br/> Dieser Grenzwert wird von Azure Resource Manager, nicht von Azure Data Factory vorgegeben. |
@@ -60,6 +61,8 @@ Azure Data Factory ist ein mehrinstanzenfähiger Dienst mit den folgenden Standa
 | Regionsgruppe 3 | „Kanada, Mitte“, „Asien, Osten“, „Frankreich, Mitte“, „Südkorea Mitte“, „Vereinigtes Königreich, Süden“ |
 
 <sup>3</sup> Objekte für Pipelines, Datasets und verknüpfte Dienste stellen eine logische Gruppierung Ihrer Workload dar. Die Grenzwerte für diese Objekte beziehen sich nicht auf die Datenmenge, die Sie mit Azure Data Factory verschieben und verarbeiten können. Data Factory kann so skaliert werden, dass Petabytes an Daten verarbeitet werden können.
+
+<sup>4</sup> Die Nutzdaten für jede Aktivitätsausführung enthalten die Aktivitätskonfiguration, die Konfigurationen der zugeordneten Datasets und verknüpften Dienste (sofern vorhanden) sowie einen kleinen Teil der Systemeigenschaften, die pro Aktivitätstyp generiert werden. Die Grenzwerte für diese Nutzdaten beziehen sich nicht auf die Datenmenge, die Sie mit Azure Data Factory verschieben und verarbeiten können. [Hier](../articles/data-factory/data-factory-troubleshoot-guide.md#payload-is-too-large) erfahren Sie mehr über die Symptome und Empfehlungen bei Erreichen dieser Grenzwerte.
 
 ### <a name="version-1"></a>Version 1
 

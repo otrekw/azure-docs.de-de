@@ -81,6 +81,8 @@
           href: spring-cloud-howto-start-stop-delete.md
         - name: Verwenden von beständigem Speicher
           href: spring-cloud-howto-persistent-storage.md
+        - name: Ermitteln öffentlicher IP-Ausgangsadressen
+          href: spring-cloud-howto-outbound-public-ip.md
     - name: Überwachen
       items:
         - name: Verteilte Ablaufverfolgung und App Insights

@@ -129,7 +129,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -944,14 +944,28 @@
           href: insights/vminsights-maps.md
         - name: Überwachen der Leistung
           href: insights/vminsights-performance.md
-        - name: Überwachen von Änderungen
-          href: insights/vminsights-change-analysis.md
+        - name: Überwachen der Gastintegrität (Vorschau)
+          items:
+            - name: Übersicht
+              href: insights/vminsights-health-overview.md
+            - name: Aktivieren
+              href: insights/vminsights-health-enable.md
+            - name: Alerts
+              href: insights/vminsights-health-alerts.md
+            - name: Konfigurieren von Monitoren im Portal
+              href: insights/vminsights-health-configure.md
+            - name: Konfigurieren von Monitoren im großen Stil
+              href: insights/vminsights-health-configure-dcr.md
+            - name: Problembehandlung
+              href: insights/vminsights-health-troubleshoot.md
         - name: Analysieren von Daten mit Protokollabfragen
           href: insights/vminsights-log-search.md
+        - name: Überwachen der Leistung
+          href: insights/vminsights-alerts.md
+        - name: Überwachen von Änderungen
+          href: insights/vminsights-change-analysis.md
         - name: Visualisieren von Daten mit Arbeitsmappen
           href: insights/vminsights-workbooks.md
-        - name: Erstellen von Warnungsregeln
-          href: insights/vminsights-alerts.md
         - name: Deaktivieren der Überwachung
           href: insights/vminsights-optout.md
     - name: Azure Monitor für Container

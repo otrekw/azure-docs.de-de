@@ -330,7 +330,9 @@
         - name: Sicherung und Notfallwiederherstellung für Datenträger
           href: ../backup-and-disaster-recovery-for-azure-iaas-disks.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Freigegebene Datenträger
-          href: disks-shared.md
+          href: ../disks-shared.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: Leistungsstufen für Datenträger
+          href: ../disks-change-performance.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Kurzlebige Betriebssystemdatenträger
           href: ../ephemeral-os-disks.md
     - name: Netzwerk
@@ -699,7 +701,7 @@
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -886,8 +888,10 @@
               href: attach-disk-ps.md
             - name: Azure-Portal
               href: attach-managed-disk-portal.md
-        - name: Ändern der Datenträgerebene
+        - name: 'Ändern der Datenträgerebene: PowerShell/CLI'
           href: ../disks-performance-tiers.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+        - name: 'Ändern der Datenträgerebene: Portal'
+          href: ../disks-performance-tiers-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Trennen eines Datenträgers
           href: detach-disk.md
         - name: Bereitstellen von Datenträgern mit einer ARM-Vorlage

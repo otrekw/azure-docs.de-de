@@ -28,7 +28,7 @@
       href: network-watcher-nsg-flow-logging-portal.md
 - name: Konzepte
   items:
-    - name: Verbindungsmonitor (Vorschau)
+    - name: Verbindungsmonitor
       href: connection-monitor-overview.md
     - name: Diagnostizieren von Problemen mit dem Filter für VM-Netzwerkdatenverkehr
       href: network-watcher-ip-flow-verify-overview.md
@@ -58,7 +58,7 @@
   items:
     - name: Konfigurieren von Network Watcher
       href: network-watcher-create.md
-    - name: Erstellen eines Verbindungsmonitors (Vorschau)
+    - name: Erstellen eines Verbindungsmonitors
       items:
         - name: Verwenden des Azure-Portals
           href: connection-monitor-create-using-portal.md
@@ -66,11 +66,11 @@
           href: connection-monitor-create-using-template.md
         - name: Verwenden von PowerShell
           href: connection-monitor-create-using-powershell.md
-    - name: Migrieren zu Verbindungsmonitor (Vorschau)
+    - name: Migrieren zu Verbindungsmonitor
       items:
         - name: Von Netzwerkleistungsmonitor
           href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
-        - name: Von Verbindungsmonitor
+        - name: Von Verbindungsmonitor (Klassisch)
           href: migrate-to-connection-monitor-preview-from-connection-monitor.md
     - name: Diagnostizieren von VM-Netzwerkproblemen
       items:
@@ -84,7 +84,7 @@
           items:
             - name: Azure PowerShell
               href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Diagnostizieren von Problemen mit der ausgehenden Verbindung
           items:
@@ -92,7 +92,7 @@
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: network-watcher-connectivity-cli.md
             - name: REST
               href: network-watcher-connectivity-rest.md
@@ -104,7 +104,7 @@
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: network-watcher-packet-capture-manage-cli.md
                 - name: REST
                   href: network-watcher-packet-capture-manage-rest.md
@@ -124,7 +124,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
@@ -159,7 +159,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-security-group-view-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: network-watcher-security-group-view-cli.md
             - name: REST
               href: network-watcher-security-group-view-rest.md
@@ -171,7 +171,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: network-watcher-troubleshoot-manage-cli.md
             - name: REST
               href: network-watcher-troubleshoot-manage-rest.md
@@ -191,7 +191,7 @@
           href: resource-move.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: /powershell/module/az.network/#network_watcher

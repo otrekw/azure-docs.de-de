@@ -96,7 +96,7 @@
           items:
             - name: Azure-Portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -112,7 +112,7 @@
               maintainContext: true
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: sample-scripts-azure-cli.md
         - name: Java-Verbindungspool
           href: sample-scripts-java-connection-pooling.md
@@ -246,7 +246,7 @@
             - name: Azure-Portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-restore-server-cli.md
               displayName: 'restore server, backup'
             - name: Azure PowerShell
@@ -277,7 +277,7 @@
             - name: Azure-Portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -287,12 +287,16 @@
           items:
             - name: Beenden/Starten des MySQL-Servers
               href: how-to-stop-start-server.md
+        - name: Hauptversionsupgrade
+          items:
+            - name: Hauptversionsupgrade
+              href: how-to-major-version-upgrade.md
         - name: Automatische Speichervergrößerung
           items:
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-auto-grow-storage-cli.md
               displayName: 'storage, business continuity , downtime, cli'
             - name: Azure PowerShell
@@ -303,7 +307,7 @@
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-server-logs-in-cli.md
               displayName: 'debug, slow query log , performance'
         - name: Überwachungsprotokolle
@@ -311,7 +315,7 @@
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-configure-audit-logs-cli.md
               displayName: 'debug, audit log'
         - name: Überwachen
@@ -400,7 +404,7 @@
             - name: Azure-Portal
               href: howto-restart-server-portal.md
               displayName: restart
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: howto-restart-server-cli.md
               displayName: restart
             - name: Azure PowerShell
@@ -427,7 +431,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -530,7 +534,7 @@
             - name: Azure-Portal
               href: flexible-server/how-to-configure-server-parameters-portal.md
               displayName: server parameters
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: flexible-server/how-to-configure-server-parameters-cli.md
               displayName: 'server parameters, cli'
         - name: Überwachung und Protokolle
@@ -561,7 +565,7 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql

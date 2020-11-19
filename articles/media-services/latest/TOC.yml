@@ -68,8 +68,8 @@
       items:
         - name: Codieren und Streamen einer Remotedatei (REST)
           href: stream-files-tutorial-with-rest.md
-        - name: Benutzerseitig verwaltete Schlüssel mit Media Services
-          href: tutorial-byok.md
+        - name: Kundenseitig verwaltete Schlüssel mit REST-API
+          href: tutorial-byok-postman.md
     - name: Befehlszeilenschnittstelle (CLI)
       items:
         - name: Codieren und Streamen einer Remotedatei (CLI)
@@ -80,6 +80,8 @@
           href: stream-files-nodejs-quickstart.md
     - name: Azure-Portal
       items:
+        - name: 'Tutorial zu kundenseitig verwalteten Schlüsseln (Bring-Your-Own-Key, BYOK)'
+          href: tutorial-byok-portal.md
         - name: Speichern von AMS-Ereignissen in Azure Log Analytics
           href: tutorial-events-log-analytics.md
 - name: Beispiele
@@ -102,6 +104,11 @@
         - name: Speicherkonto
           href: storage-account-concept.md
           displayName: Storage side encryption
+        - name: Verwaltete Identitäten und Mediendienste
+          displayName: content protection
+          href: concept-managed-identities.md
+        - name: Vom Kunden verwaltete Schlüssel
+          href: concept-use-customer-managed-keys-byok.md
     - name: Objekte
       items:
         - name: Objekte
@@ -178,8 +185,6 @@
         - name: Dynamische Verschlüsselung und Schlüsselübermittlung
           displayName: 'content protection, streaming protocols, encryption types, PlayReady, Widevine, FairPlay, custom'
           href: content-protection-overview.md
-        - name: Vom Kunden verwaltete Schlüssel
-          href: concept-use-customer-managed-keys-byok.md
         - name: Entwerfen eines Multi-DRM-Systems
           displayName: 'drm, access control'
           href: design-multi-drm-system-with-access-control.md
