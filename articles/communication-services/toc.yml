@@ -103,15 +103,15 @@
     - name: Übersicht über die Referenzdokumentation
       href: concepts/reference.md
     - name: REST-API-Dokumentation
-      href: 'https://docs.microsoft.com/rest/api/communication/'
+      href: /rest/api/communication/
     - name: Telefoniebibliotheken
       items:
         - name: Telefonie (JavaScript)
-          href: 'https://docs.microsoft.com/javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js'
+          href: /javascript/api/azure-communication-services/@azure/communication-calling/?view=azure-communication-services-js
         - name: Telefonie (Android/Java)
-          href: 'https://docs.microsoft.com/java/api/com.azure.communication.calling?view=communication-services-java-android'
+          href: /java/api/com.azure.communication.calling?view=communication-services-java-android
         - name: Telefonie (iOS)
-          href: 'https://docs.microsoft.com/objectivec/communication-services/calling/'
+          href: /objectivec/communication-services/calling/
     - name: Chatbibliotheken
       items:
         - name: Chat (JavaScript)
