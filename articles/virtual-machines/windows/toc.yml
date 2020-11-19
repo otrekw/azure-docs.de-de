@@ -39,7 +39,7 @@
     - name: 10. Aktivieren der Notfallwiederherstellung
       href: tutorial-disaster-recovery.md
     - name: 11. Verwalten virtueller Computer
-      displayName: scope policy RBAC lock tag
+      displayName: scope policy Azure RBAC lock tag
       href: tutorial-govern-resources.md
     - name: 12. Nachverfolgen und Aktualisieren virtueller Computer
       href: tutorial-config-management.md
@@ -425,17 +425,17 @@
         - name: Deaktivierung ab dem 1. März 2023
           href: ../classic-vm-deprecation.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Übersicht über die Migration
-          href: migration-classic-resource-manager-overview.md
+          href: ../migration-classic-resource-manager-overview.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Ausführliche Informationen zur Migration
           href: ../migration-classic-resource-manager-deep-dive.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Planen der Migration
-          href: migration-classic-resource-manager-plan.md
+          href: ../migration-classic-resource-manager-plan.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Migrieren mit PowerShell
-          href: migration-classic-resource-manager-ps.md
+          href: ../migration-classic-resource-manager-ps.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Häufige Fehler bei der Migration
-          href: migration-classic-resource-manager-errors.md
+          href: ../migration-classic-resource-manager-errors.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Communitytools für die Migration
-          href: migration-classic-resource-manager-community-tools.md
+          href: ../migration-classic-resource-manager-community-tools.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Häufig gestellte Fragen
           href: ../migration-classic-resource-manager-faq.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
     - name: Verwenden von Images
@@ -701,7 +701,7 @@
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: CLI
+            - name: Befehlszeilenschnittstelle (CLI)
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
@@ -1069,7 +1069,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/
