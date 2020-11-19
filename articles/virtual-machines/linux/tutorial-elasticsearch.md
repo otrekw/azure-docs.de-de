@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: tutorial
 ms.date: 10/11/2017
 ms.author: routlaw
-ms.openlocfilehash: c3d35940a445b73ecb9285355f36b141c3a151b8
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 48fc9f7e021ba5158182344ddfdba3c8eafaf781
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92475055"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659215"
 ---
 # <a name="install-the-elastic-stack-on-an-azure-vm"></a>Installieren des Elastic Stack auf einem virtuellen Azure-Computer
 
@@ -211,7 +211,7 @@ Die Syslog-Einträge werden während der Übermittlung an Elasticsearch in Ihrem
 Bearbeiten Sie `/etc/kibana/kibana.yml`, und ändern Sie die IP-Adresse, an der Kibana lauscht, damit Sie darauf über Ihren Webbrowser zugreifen können.
 
 ```bash
-server.host:"0.0.0.0"
+server.host: "0.0.0.0"
 ```
 
 Führen Sie den folgenden Befehl aus, um Kibana zu starten:
@@ -226,7 +226,7 @@ sudo systemctl start kibana.service
 az vm open-port --port 5601 --resource-group myResourceGroup --name myVM
 ```
 
-Öffnen Sie die Kibana-Konsole, und klicken Sie auf **Erstellen** , um auf der Grundlage der zuvor an Elasticsearch gesendeten Syslog-Daten einen Standardindex zu generieren. 
+Öffnen Sie die Kibana-Konsole, und klicken Sie auf **Erstellen**, um auf der Grundlage der zuvor an Elasticsearch gesendeten Syslog-Daten einen Standardindex zu generieren. 
 
 ![Der Screenshot zeigt die Kibana-Konsole und hebt die Schaltfläche „Erstellen“ hervor.](media/elasticsearch-install/kibana-index.png)
 

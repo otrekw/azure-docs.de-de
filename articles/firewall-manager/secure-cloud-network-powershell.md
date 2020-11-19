@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.service: firewall-manager
 ms.date: 10/22/2020
 ms.author: victorh
-ms.openlocfilehash: d9d9da9cd01b4bb9b3cabcf069990cd3cbd38d38
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: e2bcdf947db60fb50b44abba9d6a224768840b28
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92428551"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94656138"
 ---
 # <a name="tutorial-secure-your-virtual-hub-using-azure-powershell"></a>Tutorial: Sichern Sie Ihren virtuellen Hub mithilfe von Azure PowerShell
 
@@ -31,7 +31,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 - PowerShell 7
 
-   Für dieses Tutorial müssen Sie Azure PowerShell lokal unter PowerShell 7 ausführen. Informationen zur Installation von PowerShell 7 finden Sie unter [Migrieren von Windows PowerShell 5.1 zu PowerShell 7](https://docs.microsoft.com/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
+   Für dieses Tutorial müssen Sie Azure PowerShell lokal unter PowerShell 7 ausführen. Informationen zur Installation von PowerShell 7 finden Sie unter [Migrieren von Windows PowerShell 5.1 zu PowerShell 7](/powershell/scripting/install/migrating-from-windows-powershell-51-to-powershell-7?view=powershell-7).
 - Az.Network, Version 3.2.0
 
     Wenn Sie über Az.Network in der Version 3.4.0 oder höher verfügen, müssen Sie ein Downgrade durchführen, um einige der Befehle in diesem Tutorial verwenden zu können. Sie können die Version Ihres Az.Network-Moduls mit dem Befehl `Get-InstalledModule -Name Az.Network` überprüfen. Führen Sie `Uninstall-Module -name az.network` aus, um das Az.Network-Modul zu deinstallieren. Führen Sie `Install-Module az.network -RequiredVersion 3.2.0 -force` aus, um das Modul Az.Network 3.2.0 zu installieren.

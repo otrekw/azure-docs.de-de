@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 10/13/2020
 ms.author: cherylmc
-ms.openlocfilehash: 91004b9cb545275746f75dbd6ad46981fe4b04d5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: b70a3fe4884ef209e57fbb954c27aa83486b5c98
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461157"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661000"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-powershell"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways mit PowerShell
 
@@ -124,7 +124,7 @@ New-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroupName $RG1 `
 
 Wichtige Parameterwerte:
 * GatewayType: Verwenden Sie **Vpn** für Site-to-Site- und VNET-zu-VNET-Verbindungen.
-* VpnType: Verwenden Sie **RouteBased** , um mit einem größeren Bereich von VPN-Geräten und mehr Routingfeatures zu interagieren.
+* VpnType: Verwenden Sie **RouteBased**, um mit einem größeren Bereich von VPN-Geräten und mehr Routingfeatures zu interagieren.
 * GatewaySku: Die Standardeinstellung ist **VpnGw1**. Ändern Sie diese in eine andere VpnGw-SKU, wenn Sie einen höheren Durchsatz oder mehr Verbindungen benötigen. Weitere Informationen finden Sie unter [Gateway-SKUs](vpn-gateway-about-vpn-gateway-settings.md#gwsku).
 
 Wenn Sie „TryIt“ verwenden, kann ein Timeout für die Sitzung auftreten. Das ist kein Problem. Das Gateway wird trotzdem erstellt.
@@ -133,7 +133,7 @@ Nachdem die Erstellung des Gateways abgeschlossen ist, können Sie eine Verbindu
 
 ## <a name="view-the-gateway-public-ip-address"></a>Anzeigen der öffentlichen IP-Adresse des Gateways
 
-Wenn Ihnen der Name der öffentlichen IP-Adresse bekannt ist, können Sie die öffentliche IP-Adresse, die dem Gateway zugewiesen ist, mit [Get-AzPublicIpAddress](https://docs.microsoft.com/powershell/module/az.network/get-azpublicipaddress) anzeigen.
+Wenn Ihnen der Name der öffentlichen IP-Adresse bekannt ist, können Sie die öffentliche IP-Adresse, die dem Gateway zugewiesen ist, mit [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) anzeigen.
 
 Falls Ihre Sitzung abgelaufen ist, kopieren Sie die allgemeinen Netzwerkparameter vom Anfang dieses Tutorials in die neue Sitzung, und fahren Sie anschließend fort.
 
@@ -162,11 +162,11 @@ $gateway = Get-AzVirtualNetworkGateway -Name $Gw1 -ResourceGroup $RG1
 Reset-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway
 ```
 
-Weitere Informationen finden Sie unter [Zurücksetzen eines VPN-Gateways](vpn-gateway-resetgw-classic.md).
+Weitere Informationen finden Sie unter [Zurücksetzen eines VPN-Gateways](./reset-gateway.md).
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Die hier verwendeten Ressourcen sind eine Voraussetzung für das [nächste Tutorial](vpn-gateway-tutorial-vpnconnection-powershell.md). Wenn Sie mit diesem Tutorial fortfahren möchten, sollten Sie sie daher beibehalten.
+Die hier verwendeten Ressourcen sind eine Voraussetzung für das [nächste Tutorial](./vpn-gateway-create-site-to-site-rm-powershell.md). Wenn Sie mit diesem Tutorial fortfahren möchten, sollten Sie sie daher beibehalten.
 
 Falls das Gateway jedoch Teil einer Prototyp-, Test- oder Proof of Concept-Bereitstellung ist, können Sie die Ressourcengruppe, das VPN-Gateway und alle zugehörigen Ressourcen mit dem Befehl [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) entfernen.
 
