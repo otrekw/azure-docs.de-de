@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 11/17/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3845c5e5d7cf6bb372744fb3c740c44aa2b94236
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 4719bd21bc6299373f9dabfe4733541c6fa27b94
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305610"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94740180"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>Modellierungsphase des Team Data Science-Prozesslebenszyklus
 
@@ -41,8 +41,8 @@ Dies ist eine visuelle Darstellung des TDSP-Lebenszyklus:
 ## <a name="how-to-do-it"></a>Vorgehensweise
 In dieser Phase werden drei Hauptaufgaben durchgeführt:
 
-  * **Featureentwicklung** : Erstellen Sie Datenfeatures aus den Rohdaten, um das Trainieren des Modells zu ermöglichen.
-  * **Modelltraining** : Ermitteln Sie das Modell, mit dem die Frage am genauesten beantwortet wird, indem Sie die Erfolgsmetriken vergleichen.
+  * **Featureentwicklung**: Erstellen Sie Datenfeatures aus den Rohdaten, um das Trainieren des Modells zu ermöglichen.
+  * **Modelltraining**: Ermitteln Sie das Modell, mit dem die Frage am genauesten beantwortet wird, indem Sie die Erfolgsmetriken vergleichen.
   * Bestimmen Sie, ob Ihr Modell **für die Produktion geeignet** ist.
 
 ### <a name="feature-engineering"></a>Featureentwicklung
@@ -63,18 +63,16 @@ Der Prozess für das Modelltraining umfasst die folgenden Schritte:
    * **Ermitteln Sie die „beste“ Lösung** für die Beantwortung der Frage, indem Sie die Erfolgsmetrik für die alternativen Methoden vergleichen.
 
 > [!NOTE]
-> **Vermeiden von Datenlecks** : Datenlecks können dadurch verursacht werden, dass Daten von außerhalb des Trainingsdatasets einbezogen werden, sodass ein Modell oder ein Algorithmus für maschinelles Lernen unrealistisch gute Vorhersagen ergibt. Datenlecks sind häufig der Grund dafür, warum Data Scientists nervös werden, wenn die Vorhersageergebnisse zu schön sind, um wahr zu sein. Es kann schwierig sein, diese Abhängigkeiten zu erkennen. Um Datenlecks zu vermeiden, ist häufig das wiederholte Durchlaufen der Schritte zur Erstellung eines Analyse-DataSets, Erstellung eines Modells und Auswertung der Genauigkeit der Ergebnisse erforderlich. 
+> **Vermeiden von Datenlecks**: Datenlecks können dadurch verursacht werden, dass Daten von außerhalb des Trainingsdatasets einbezogen werden, sodass ein Modell oder ein Algorithmus für maschinelles Lernen unrealistisch gute Vorhersagen ergibt. Datenlecks sind häufig der Grund dafür, warum Data Scientists nervös werden, wenn die Vorhersageergebnisse zu schön sind, um wahr zu sein. Es kann schwierig sein, diese Abhängigkeiten zu erkennen. Um Datenlecks zu vermeiden, ist häufig das wiederholte Durchlaufen der Schritte zur Erstellung eines Analyse-DataSets, Erstellung eines Modells und Auswertung der Genauigkeit der Ergebnisse erforderlich. 
 > 
 > 
 
-Wir stellen für TDSP ein [Tool für die Automatisierung von Modellierung und Berichterstellung](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/Modeling) bereit, mit dem mehrere Algorithmen und Parameter-Sweeping-Vorgänge durchlaufen werden können, um ein Grundmodell zu erhalten. Außerdem wird ein Basisbericht für die Modellierung erstellt, in dem die Leistung der einzelnen Modell-Parameter-Kombinationen, einschließlich Variablenwichtigkeit, zusammengefasst wird. Dieser Prozess ist ebenfalls iterativ, da er weitere Maßnahmen zur Featureentwicklung nach sich ziehen kann. 
-
-## <a name="artifacts"></a>Artefakte
+## <a name="artifacts"></a>Artifacts
 In dieser Phase werden die folgenden Artefakte produziert:
 
-   * [Featuregruppen](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Featuregruppen** des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
-   * [Modellbericht](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
-   * **Prüfpunktentscheidung** : Analysieren Sie, ob das Modell für die Produktion geeignet ist. Einige wichtige Fragen lauten:
+   * [Funktionssätze:](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md) Die für die Modellierung entwickelten Funktionen werden im Abschnitt **Feature Sets** (Featuresätze) des Berichts **Datendefinition** beschrieben. Er enthält Verknüpfungen zum Code, mit dem die Features generiert werden, und eine Beschreibung zur Generierung der Features.
+   * [Model Report](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md) (Modellbericht): Für jedes getestete Modell wird ein vorlagenbasierter Standardbericht mit Details zu den einzelnen Experimenten erstellt.
+   * **Prüfpunktentscheidung**: Analysieren Sie, ob das Modell für die Produktion geeignet ist. Einige wichtige Fragen lauten:
      * Kann die Frage mit dem Modell basierend auf den Testdaten ausreichend beantwortet werden? 
      * Sollten Alternativen ausprobiert werden? Sollten weitere Daten erfasst, weitere Features entwickelt oder Experimente mit anderen Algorithmen durchgeführt werden?
 
