@@ -3,13 +3,13 @@ title: 'Tutorial: Senden von Event Hubs-Daten an Data Warehouse – Event Grid'
 description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event Grid und Event Hubs zu Azure Synapse Analytics migriert werden. Zum Abrufen einer Capture-Datei wird eine Azure-Funktion verwendet.'
 ms.topic: tutorial
 ms.date: 07/07/2020
-ms.custom: devx-track-csharp
-ms.openlocfilehash: 4fb26bf92e6af1fd9e97f3b9434b4ab5e76316b3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305275"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841353"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
 Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für die Integration von Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einer Azure Synapse Analytics-Instanz (vormals SQL Data Warehouse) verwenden.
@@ -203,8 +203,8 @@ Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWa
 ## <a name="publish-the-azure-functions-app"></a>Veröffentlichen der Azure Functions-App
 
 1. Starten Sie Visual Studio.
-2. Öffnen Sie die Lösung **EventHubsCaptureEventGridDemo.sln** , die Sie aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) als Teil der Voraussetzungen heruntergeladen haben.
-3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **FunctionEGDWDumper** , und wählen Sie **Veröffentlichen** aus.
+2. Öffnen Sie die Lösung **EventHubsCaptureEventGridDemo.sln**, die Sie aus [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) als Teil der Voraussetzungen heruntergeladen haben.
+3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf **FunctionEGDWDumper**, und wählen Sie **Veröffentlichen** aus.
 
    ![Veröffentlichen einer Funktions-App](media/event-grid-event-hubs-integration/publish-function-app.png)
 4. Wenn der folgende Bildschirm angezeigt wird, wählen Sie **Start**. 
@@ -222,7 +222,7 @@ Erstellen Sie in Ihrem Data Warehouse durch Ausführen des Skripts [CreateDataWa
 8. Wählen Sie im Abschnitt **Dienstabhängigkeiten** die Option **Konfigurieren** aus.
 9. Wählen Sie auf der Seite **Abhängigkeit konfigurieren** das zuvor erstellte Speicherkonto und dann **Weiter** aus. 
 10. Übernehmen Sie die Einstellungen für Name und Wert der Verbindungszeichenfolge, und wählen Sie **Weiter** aus.
-11. Deaktivieren Sie die Option **Geheimnisspeicher** , und wählen Sie dann **Fertig stellen** aus.  
+11. Deaktivieren Sie die Option **Geheimnisspeicher**, und wählen Sie dann **Fertig stellen** aus.  
 8. Wenn Visual Studio das Profil konfiguriert hat, wählen Sie **Veröffentlichen**.
 
    ![Wählen Sie "Veröffentlichen"](media/event-grid-event-hubs-integration/select-publish.png)
@@ -252,8 +252,8 @@ Nach dem Veröffentlichen der Funktion können Sie das Ereignis abonnieren.
         2. Wählen Sie Ihr Azure-Abonnement.
         2. Wählen Sie die Azure-Ressourcengruppe aus.
         3. Wählen Sie Ihren Event Hubs-Namespace aus.
-    3. Vergewissern Sie sich im Abschnitt **EREIGNISTYPEN** , dass unter **Nach Ereignistypen filtern** die Option **Capture File Created** (Capture-Datei erstellt) ausgewählt ist. 
-    4. Vergewissern Sie sich im Abschnitt **ENDPUNKTDETAILS** , dass **Endpunkttyp** auf **Azure-Funktion** und **Endpunkt** auf die Azure-Funktion festgelegt ist. 
+    3. Vergewissern Sie sich im Abschnitt **EREIGNISTYPEN**, dass unter **Nach Ereignistypen filtern** die Option **Capture File Created** (Capture-Datei erstellt) ausgewählt ist. 
+    4. Vergewissern Sie sich im Abschnitt **ENDPUNKTDETAILS**, dass **Endpunkttyp** auf **Azure-Funktion** und **Endpunkt** auf die Azure-Funktion festgelegt ist. 
     
         ![Event Grid-Abonnement erstellen](media/event-grid-event-hubs-integration/create-event-subscription.png)
 

@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: tutorial
 ms.devlang: php
 ms.date: 9/21/2020
-ms.custom: mvc
-ms.openlocfilehash: 38665cdf42450b09d14211f7ed44d62e4adb75b1
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.custom: mvc, devx-track-azurecli
+ms.openlocfilehash: 426cf59c9fb9d88039231ed441b2ffc7246716c7
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537931"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844436"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Tutorial: Erstellen einer PHP- (Laravel) und flexiblen MySQL – Flexible Server-App (Vorschau) in Azure App Service
 
@@ -96,7 +96,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>Konfigurieren der MySQL-Verbindung
 
-Erstellen Sie im Repositorystamm eine Datei mit dem Namen *.env* . Kopieren Sie die folgenden Variablen in die Datei *.env* . Ersetzen Sie den Platzhalter _&lt;root_password>_ durch das Kennwort des MySQL-Root-Benutzers.
+Erstellen Sie im Repositorystamm eine Datei mit dem Namen *.env*. Kopieren Sie die folgenden Variablen in die Datei *.env*. Ersetzen Sie den Platzhalter _&lt;root_password>_ durch das Kennwort des MySQL-Root-Benutzers.
 
 ```txt
 APP_ENV=local
@@ -110,7 +110,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Informationen dazu, wie Laravel die _ENV_ -Datei verwendet, finden Sie unter [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurieren der Laravel-Umgebung).
+Informationen dazu, wie Laravel die _ENV_-Datei verwendet, finden Sie unter [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurieren der Laravel-Umgebung).
 
 ### <a name="run-the-sample-locally"></a>Lokales Ausführen des Beispiels
 
@@ -134,7 +134,7 @@ php artisan serve
 
 Navigieren Sie in einem Browser zu `http://localhost:8000`. Fügen Sie auf der Seite einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Erfolgreiche Verbindung zwischen PHP und MySQL":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -146,7 +146,7 @@ az mysql flexible-server create  --resource-group myResourceGroup --public-acces
 ```
 
 > [!IMPORTANT]
-> - Notieren Sie sich **Servername** und **Verbindungszeichenfolge** , um sie im nächsten Schritt zur Herstellung einer Verbindung und zur Durchführung einer Laravel-Datenmigration zu verwenden.
+> - Notieren Sie sich **Servername** und **Verbindungszeichenfolge**, um sie im nächsten Schritt zur Herstellung einer Verbindung und zur Durchführung einer Laravel-Datenmigration zu verwenden.
 > - Geben Sie für das Argument **IP-Adresse** die IP-Adresse Ihres Clientcomputers an. Der Server ist nach der Erstellung gesperrt, weshalb Sie den Zugriff auf Ihren Clientcomputer erlauben müssen, um den Server lokal zu verwalten.
 
 ### <a name="configure-server-firewall-to-allow-web-app-to-connect-to-the-server"></a>Konfigurieren der Serverfirewall, damit die Web-App eine Verbindung mit dem Server herstellen kann
@@ -175,7 +175,7 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>Erstellen eines Benutzers mit Berechtigungen
 
-Erstellen Sie einen Datenbankbenutzer mit dem Namen _phpappuser_ , und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu. Verwenden Sie zur Vereinfachung des Tutorials als Kennwort _MySQLAzure2020_ .
+Erstellen Sie einen Datenbankbenutzer mit dem Namen _phpappuser_, und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu. Verwenden Sie zur Vereinfachung des Tutorials als Kennwort _MySQLAzure2020_.
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2020';
@@ -196,7 +196,7 @@ In diesem Schritt verbinden Sie die PHP-Anwendung mit der MySQL-Datenbank, die S
 
 ### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
 
-Erstellen Sie im Stammverzeichnis des Repositorys eine Datei _.env.production_ , und kopieren Sie die folgenden Variablen in die Datei. Ersetzen Sie sowohl in *DB_HOST* als auch *DB_USERNAME* den Platzhalter _&lt;mysql-server-name>_ .
+Erstellen Sie im Stammverzeichnis des Repositorys eine Datei _.env.production_, und kopieren Sie die folgenden Variablen in die Datei. Ersetzen Sie sowohl in *DB_HOST* als auch *DB_USERNAME* den Platzhalter _&lt;mysql-server-name>_ .
 
 ```
 APP_ENV=production
@@ -214,14 +214,14 @@ MYSQL_SSL=true
 Speichern Sie die Änderungen.
 
 > [!TIP]
-> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure Database for MySQL hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV* -Datei in App Service nicht.
+> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure Database for MySQL hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV*-Datei in App Service nicht.
 >
 
 ### <a name="configure-tlsssl-certificate"></a>Konfigurieren des TLS-/SSL-Zertifikats
 
-Standardmäßig erzwingt die MySQL – Flexible Server-Instanz TLS-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_ -Zertifikat verwenden, das von Azure Database for MySQL – Flexible Server bereitgestellt wird](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem). Laden Sie [dieses Zertifikat](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) herunter, und legen Sie es in der lokalen Kopie des Beispiel-App-Repositorys im Ordner **SSL** ab.
+Standardmäßig erzwingt die MySQL – Flexible Server-Instanz TLS-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL – Flexible Server bereitgestellt wird](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem). Laden Sie [dieses Zertifikat](https://dl.cacerts.digicert.com/DigiCertGlobalRootCA.crt.pem)) herunter, und legen Sie es in der lokalen Kopie des Beispiel-App-Repositorys im Ordner **SSL** ab.
 
-Öffnen Sie _config/database.php_ , und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
+Öffnen Sie _config/database.php_, und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
 
 ```php
 'mysql' => [
@@ -257,7 +257,7 @@ Navigieren Sie zu `http://localhost:8000`. Wenn die Seite ohne Fehler geladen wi
 
 Fügen Sie auf der Seite einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="Erfolgreiche Verbindung zwischen PHP und Azure Database for MySQL":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -375,7 +375,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 ### <a name="set-the-virtual-application-path"></a>Festlegen des virtuellen Anwendungspfads
 
-Der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) beginnt im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung. Für das PHP-Docker-Image für App Service wird Apache verwendet, und das Anpassen des `DocumentRoot`-Elements für Laravel ist nicht möglich. Sie können aber `.htaccess` verwenden, um alle Anforderungen so umzuschreiben, dass sie nicht auf das Stammverzeichnis verweisen, sondern auf _/public_ . Im Repositorystamm wurde bereits ein `.htaccess`-Element für diese Zwecke hinzugefügt. Hiermit ist Ihre Laravel-Anwendung bereit für die Bereitstellung.
+Der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) beginnt im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung. Für das PHP-Docker-Image für App Service wird Apache verwendet, und das Anpassen des `DocumentRoot`-Elements für Laravel ist nicht möglich. Sie können aber `.htaccess` verwenden, um alle Anforderungen so umzuschreiben, dass sie nicht auf das Stammverzeichnis verweisen, sondern auf _/public_. Im Repositorystamm wurde bereits ein `.htaccess`-Element für diese Zwecke hinzugefügt. Hiermit ist Ihre Laravel-Anwendung bereit für die Bereitstellung.
 
 Weitere Informationen finden Sie unter [Ändern des Stammverzeichnisses der Website](../../app-service/configure-language-php.md?pivots=platform-linux#change-site-root).
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-Web-App in Azure":::
 
 Glückwunsch! Sie führen eine datengesteuerte PHP-App in Azure App Service aus.
 
@@ -466,11 +466,11 @@ Führen Sie im lokalen Terminalfenster Laravel-Datenbankmigrationen aus, um die 
 php artisan migrate
 ```
 
-Das Modell `Task` (siehe _app/Task.php_ ) wird basierend auf der [Laravel-Namenskonvention](https://laravel.com/docs/5.4/eloquent#defining-models) standardmäßig der Tabelle `tasks` zugeordnet.
+Das Modell `Task` (siehe _app/Task.php_) wird basierend auf der [Laravel-Namenskonvention](https://laravel.com/docs/5.4/eloquent#defining-models) standardmäßig der Tabelle `tasks` zugeordnet.
 
 ### <a name="update-application-logic"></a>Aktualisieren der Anwendungslogik
 
-Öffnen Sie die Datei *routes/web.php* . Die Anwendung definiert hier die Routen und Geschäftslogik.
+Öffnen Sie die Datei *routes/web.php*. Die Anwendung definiert hier die Routen und Geschäftslogik.
 
 Fügen Sie mit folgendem Code am Ende der Datei eine Route hinzu:
 
@@ -493,7 +493,7 @@ Der obige Code führt eine einfache Aktualisierung des Datenmodells durch, indem
 
 ### <a name="update-the-view"></a>Aktualisieren der Ansicht
 
-Öffnen Sie die Datei *resources/views/tasks.blade.php* . Suchen Sie das öffnende Tag `<tr>`, und ersetzen Sie es durch Folgendes:
+Öffnen Sie die Datei *resources/views/tasks.blade.php*. Suchen Sie das öffnende Tag `<tr>`, und ersetzen Sie es durch Folgendes:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -534,7 +534,7 @@ php artisan serve
 
 Navigieren Sie zu `http://localhost:8000`, um die Änderung des Aufgabenstatus anzuzeigen, und aktivieren Sie das Kontrollkästchen.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="Hinzugefügtes Kontrollkästchen in der Aufgabe":::
 
 Geben Sie zum Beenden von PHP im Terminal `Ctrl + C` ein.
 
@@ -556,7 +556,7 @@ git push azure master
 
 Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Sie die neuen Funktionen.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-Web-App in Azure mit Flexible Server":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Auf Azure veröffentlichte Änderungen an Modell und Datenbank":::
 
 Wenn Sie Aufgaben hinzugefügt haben, werden sie in der Datenbank beibehalten. Bei Updates des Datenschemas bleiben vorhandene Daten erhalten.
 

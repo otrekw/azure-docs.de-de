@@ -4,12 +4,12 @@ description: Hier erfahren Sie, wie Sie eine Jupyter Notebook-Instanz in Azure�
 ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 47e9a07c7b8abffc06bfd30a792af46ba04adf5c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88589250"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844470"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Tutorial: Erstellen und Ausführen einer Jupyter Notebook-Datei mit Python
 
@@ -158,7 +158,7 @@ Im Folgenden werden die Gruppen der Menübefehle aufgeführt:
 | Edit (Bearbeiten) | Herkömmliche Befehle zum Ausschneiden, Kopieren und Einfügen von Zellen, Suchen und Ersetzen von Werten, Verwalten von Zellanhängen und Einfügen von Bildern.  |
 | Sicht | Befehle zum Steuern der Sichtbarkeit verschiedener Abschnitte der Jupyter-Benutzeroberfläche. |
 | Einfügen | Befehle zum Einfügen einer neuen Zelle ober- oder unterhalb der aktuellen Zelle. Diese Befehle werden Sie beim Erstellen eines Notebooks häufig verwenden. |
-| Cell (Zelle) | Die verschiedenen**Run**-Befehle (Ausführen) werden in einer Zelle oder mehreren Zellen in unterschiedlichen Kombinationen ausgeführt. Die Befehle **Cell Type** (Zellentyp) ändern den Typ einer Zelle zwischen **Code**, **Markdown** und **unformatierte NBConvert**-Zellen (Nur-Text). Die Befehle **Current Outputs** (Aktuelle Ausgaben) und **All Outputs** (Alle Ausgaben) steuern, wie die Ausgabe des ausgeführten Codes angezeigt wird. Zudem wird ein Befehl zum Löschen der gesamten Ausgabe eingefügt. |
+| Cell (Zelle) | Die verschiedenen **Run**-Befehle (Ausführen) werden in einer Zelle oder mehreren Zellen in unterschiedlichen Kombinationen ausgeführt. Die Befehle **Cell Type** (Zellentyp) ändern den Typ einer Zelle zwischen **Code**, **Markdown** und **unformatierte NBConvert**-Zellen (Nur-Text). Die Befehle **Current Outputs** (Aktuelle Ausgaben) und **All Outputs** (Alle Ausgaben) steuern, wie die Ausgabe des ausgeführten Codes angezeigt wird. Zudem wird ein Befehl zum Löschen der gesamten Ausgabe eingefügt. |
 | Kernel | Befehle, mit denen verwaltet werden kann, wie Code im Kernel zusammen mit **Change kernel** (Kernel ändern) ausgeführt wird, um die Sprache der Python-Version zu ändern, die zum Ausführen des Notebook verwendet wird. |
 | Daten | Befehle zum Hochladen und Herunterladen von Dateien aus dem Projekt oder der Sitzung. Weitere Informationen finden Sie unter [Arbeiten mit Datendateien](work-with-project-data-files.md). |
 | Widgets | Befehle zum Verwalten von [Jupyter Widgets](https://ipywidgets.readthedocs.io/en/stable/examples/Widget%20Basics.html), die zusätzliche Funktionen zur Visualisierung, Zuordnung und zum Zeichnen bieten.|
@@ -433,4 +433,4 @@ Gewusst-wie-Artikel:
 - [Zeigen einer Bildschirmpräsentation](present-jupyter-notebooks-slideshow.md)
 - [Arbeiten mit Datendateien](work-with-project-data-files.md)
 - [Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
-- [Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [Verwenden von Azure Machine Learning](../machine-learning/samples-notebooks.md)

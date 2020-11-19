@@ -4,12 +4,12 @@ description: Informationen zum Ausführen von Wiederherstellungen auf Dateiebene
 ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: cf55b9d64d7d716aee9862b0e1e3e24966629286
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 236b2c2c7799ef6a0df1da2ddded0e689349e222
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746691"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842208"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Wiederherstellen von Dateien auf einem virtuellen Computer in Azure
 
@@ -119,7 +119,7 @@ Um Ihre Dateien wiederherzustellen, bietet Azure Backup ein Skript zur Ausführu
 Wenn das Wiederherstellungsskript auf Ihren virtuellen Computer kopiert worden ist, können Sie eine Verbindung mit dem Wiederherstellungspunkt herstellen und Dateien wiederherstellen.
 
 >[!NOTE]
-> [Hier](backup-azure-restore-files-from-vm.md#selecting-the-right-machine-to-run-the-script) können Sie überprüfen, ob Sie das Skript auf Ihrem virtuellen Computer ausführen können, bevor Sie den Vorgang fortsetzen.
+> [Hier](backup-azure-restore-files-from-vm.md#step-2-ensure-the-machine-meets-the-requirements-before-executing-the-script) können Sie überprüfen, ob Sie das Skript auf Ihrem virtuellen Computer ausführen können, bevor Sie den Vorgang fortsetzen.
 
 1. Stellen Sie die Verbindung mit Ihrem virtuellen Computer mit SSH her. Ersetzen Sie *publicIpAddress* wie folgt durch die öffentliche IP-Adresse Ihres virtuellen Computers:
 

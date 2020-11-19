@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
-ms.openlocfilehash: d36c6e8ebbb86f9027a4822daa4481b5481523c2
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 50f2515cee92ead8018ffaaf4b4574905f8007d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289537"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844504"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>Integrieren von Key Vault in die DigiCert-Zertifizierungsstelle
 
@@ -31,9 +31,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Leitfaden benötigen Sie die folgenden Ressourcen.
 * Einen Schlüsseltresor. Sie können einen vorhandenen Schlüsseltresor verwenden oder einen neuen Schlüsseltresor erstellen, indem Sie die Schritte in einem der folgenden Schnellstarts ausführen:
-   - [Erstellen eines Schlüsseltresors mit der Azure CLI](../secrets/quick-create-cli.md)
-   - [Erstellen eines Schlüsseltresors mit Azure PowerShell](../secrets/quick-create-powershell.md)
-   - [Erstellen eines Schlüsseltresors im Azure-Portal](../secrets/quick-create-portal.md)
+   - [Erstellen eines Schlüsseltresors mit der Azure CLI](../general/quick-create-cli.md)
+   - [Erstellen eines Schlüsseltresors mit Azure PowerShell](../general/quick-create-powershell.md)
+   - [Erstellen eines Schlüsseltresors im Azure-Portal](../general/quick-create-portal.md)
 *   Sie müssen das DigiCert CertCentral-Konto aktivieren. [Registrieren Sie sich](https://www.digicert.com/account/signup/) für Ihr CertCentral-Konto.
 *   Berechtigungen auf Administratorebene in Ihren Konten.
 
@@ -56,11 +56,11 @@ Nachdem Sie die Informationen aus dem DigiCert CertCentral-Konto gesammelt haben
 4.  Wählen Sie die Option **Hinzufügen** aus.
  ![Hinzufügen von Zertifizierungsstellen](../media/certificates/how-to-integrate-certificate-authority/add-certificate-authority.png)
 5.  Wählen Sie im Bildschirm **Zertifizierungsstelle erstellen** die folgenden Werte aus:
-    -   **Name** : Fügen Sie einen identifizierbaren Ausstellernamen hinzu. Beispiel: DigicertCA
-    -   **Anbieter** : Wählen Sie DigiCert aus dem Menü aus.
+    -   **Name**: Fügen Sie einen identifizierbaren Ausstellernamen hinzu. Beispiel: DigicertCA
+    -   **Anbieter**: Wählen Sie DigiCert aus dem Menü aus.
     -   **Account ID (Konto-ID)** : Geben Sie Ihre DigiCert CertCentral-Konto-ID ein.
-    -   **Kontokennwort** : Geben Sie den API-Schlüssel ein, den Sie in Ihrem DigiCert CertCentral-Konto erstellt haben.
-    -   **Organisations-ID** : Geben Sie die aus dem DigiCert CertCentral-Konto gesammelte OrgID ein. 
+    -   **Kontokennwort**: Geben Sie den API-Schlüssel ein, den Sie in Ihrem DigiCert CertCentral-Konto erstellt haben.
+    -   **Organisations-ID**: Geben Sie die aus dem DigiCert CertCentral-Konto gesammelte OrgID ein. 
     -   Klicken Sie auf **Erstellen**.
    
 6.  Sie werden feststellen, dass DigicertCA jetzt in der Liste der Zertifizierungsstellen hinzugefügt ist.
@@ -88,9 +88,9 @@ New-AzResourceGroup -Name ContosoResourceGroup -Location EastUS
 
 Sie müssen einen eindeutigen Namen für Ihren Schlüsseltresor verwenden. Hier ist „Contoso-Vaultname“ der Name für den Schlüsseltresor in diesem Handbuch.
 
-- **Tresorname** : Contoso-Vaultname.
+- **Tresorname**: Contoso-Vaultname.
 - **Ressourcengruppenname:** ContosoResourceGroup
-- **Standort** : EastUS.
+- **Standort**: EastUS.
 
 ```azurepowershell-interactive
 New-AzKeyVault -Name 'Contoso-Vaultname' -ResourceGroupName 'ContosoResourceGroup' -Location 'EastUS'
@@ -134,7 +134,7 @@ Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz
 
 - Kann ich mit Key Vault ein DigiCert-Platzhalterzertifikat generieren? 
    Ja. Dies hängt davon ab, wie Sie Ihr DigiCert-Konto konfiguriert haben.
-- Wie kann ich ein **OV-SSL- oder EV-SSL** -Zertifikat mit DigiCert erstellen? 
+- Wie kann ich ein **OV-SSL- oder EV-SSL**-Zertifikat mit DigiCert erstellen? 
    Schlüsseltresore unterstützen das Erstellen von OV- und EV-SSL-Zertifikaten. Klicken Sie beim Erstellen eines Zertifikats auf „Erweiterte Richtlinienkonfiguration“, und geben Sie anschließend den Zertifikattyp an. Die folgenden Werte werden unterstützt: OV-SSL, EV-SSL
    
    Sie können diese Art von Zertifikat in Schlüsseltresoren erstellen, wenn Ihr DigiCert-Konto dies zulässt. Bei dieser Art von Zertifikat wird die Überprüfung von DigiCert durchgeführt, und das Supportteam wäre in der Lage, Sie zu unterstützen, wenn die Überprüfung fehlschlägt. Sie können beim Erstellen eines Zertifikats zusätzliche Informationen hinzufügen, indem Sie sie in „subjectName“ definieren.

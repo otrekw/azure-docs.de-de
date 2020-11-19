@@ -3,12 +3,12 @@ title: Jupyter-Beispielnotebooks für Azure Notebooks (Vorschauversion)
 description: Beispiele sind eine hervorragende Möglichkeit, Jupyter-Notebooks, die in den kostenlosen Azure Notebooks-Clouddiensten ausgeführt werden, kennenzulernen.
 ms.topic: sample
 ms.date: 01/11/2019
-ms.openlocfilehash: 397e40f628e6e935fef74d2225d2e477aac7b276
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8282a4047ede7d1344551a052ccf1b0143dae66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85833994"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94845056"
 ---
 # <a name="discover-and-use-sample-notebooks-in-azure-notebooks-preview"></a>Entdecken und Verwenden von Beispielnotebooks in Azure Notebooks (Vorschauversion)
 
@@ -36,4 +36,4 @@ Sobald Sie ein Notebook ermittelt haben, das Sie untersuchen möchten, sollten S
 - [Vorgehensweise: Konfigurieren und Verwalten von Projekten](configure-manage-azure-notebooks-projects.md)
 - [Vorgehensweise: Arbeiten mit Datendateien](work-with-project-data-files.md)
 - [Vorgehensweise: Zugreifen auf Datenressourcen](access-data-resources-jupyter-notebooks.md)
-- [Vorgehensweise: Verwenden von Azure Machine Learning](use-machine-learning-services-jupyter-notebooks.md)
+- [Vorgehensweise: Verwenden von Azure Machine Learning](../machine-learning/samples-notebooks.md)

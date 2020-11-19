@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: Zhchia
-ms.openlocfilehash: 69a9b9401f25893ec94b282f52730d92d372268d
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: b12a595c9b59b40ee6982f123baddaa818dd87ef
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355701"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836290"
 ---
 # <a name="tutorial-configure-cofense-recipient-sync-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Cofense Recipient Sync für die automatische Benutzerbereitstellung
 
@@ -93,7 +93,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Registerkarte „Bereitstellung“, Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor in Schritt 2 für die **SCIM 2.0-Basis-URL und das SCIM-Authentifizierungstoken** abgerufenen Werte ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Cofense Recipient Sync herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Cofense Recipient Sync-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor in Schritt 2 für die **SCIM 2.0-Basis-URL und das SCIM-Authentifizierungstoken** abgerufenen Werte ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Cofense Recipient Sync herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Cofense Recipient Sync-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Mandanten-URL und Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -105,12 +105,12 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Cofense Recipient Sync synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Cofense Recipient Sync synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Cofense Recipient Sync für Aktualisierungsvorgänge verwendet.  Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit Cofense Recipient Sync synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Cofense Recipient Sync für Aktualisierungsvorgänge verwendet.  Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-   |attribute|type|
-   |---|---|
+   |attribute|type|Unterstützung für das Filtern|
+   |---|---|---|
+   |externalId|String|&check;|
    |userName|String|
-   |externalId|String|
    |aktiv|Boolean|
    |displayName|String|
    |name.formatted|String|
