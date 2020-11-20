@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 09/11/2020
+ms.date: 11/13/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90907063"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629749"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -27,19 +27,19 @@ ms.locfileid: "90907063"
 
 Über den Azure-Dienst für maschinelles Sehen haben Sie Zugriff auf erweiterte Algorithmen, die Bilder verarbeiten und Informationen anhand der für sie interessanten visuellen Features zurückgeben. Beispielsweise kann durch maschinelles Sehen ermittelt werden, ob ein Bild nicht jugendfreie Inhalte aufweist, oder es können bestimmte Marken oder Objekte oder menschliche Gesichter gesucht werden.
 
-Sie können Anwendungen für maschinelles Sehen über ein Clientbibliothek-SDK oder durch direktes Aufrufen der REST-API nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+Sie können Anwendungen für maschinelles Sehen über ein [Clientbibliothek-SDK](./quickstarts-sdk/client-library.md) oder durch direktes Aufrufen der [REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) nutzen. Auf dieser Seite erfahren Sie ganz allgemein, welche Möglichkeiten maschinelles Sehen bietet.
+
+## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
+
+Maschinelles Sehen umfasst auch Funktionen für [optische Zeichenerkennung (Optical Character Recognition, OCR)](concept-recognizing-text.md). Sie können die neue Lese-API verwenden, um gedruckten und handschriftlichen Text aus Bildern und Dokumenten zu extrahieren. Hierbei werden die neuesten Modelle verwendet, und es wird Text auf vielen verschiedenen Flächen und Hintergründen verarbeitet. Beispiele hierfür sind Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die zwei OCR-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md). Nutzen Sie einen [Schnellstart](./quickstarts-sdk/client-library.md), um erste Schritte auszuführen.
 
 ## <a name="computer-vision-for-digital-asset-management"></a>Maschinelles Sehen für Digital Asset Management (DAM)
 
 Das maschinelle Sehen kann viele DAM-Szenarien (Digital Asset Management) unterstützen. DAM ist der Geschäftsprozess der Organisation, Speicherung und Abfrage von Rich-Media-Medienobjekten und der Verwaltung digitaler Rechte und Berechtigungen. Beispielsweise kann ein Unternehmen Bilder basierend auf sichtbaren Logos, Gesichtern, Objekten, Farben usw. gruppieren und identifizieren. Oder Sie können automatisch [Beschriftungen für Bilder generieren](./Tutorials/storage-lab-tutorial.md) und Schlüsselwörter anhängen, damit sie durchsuchbar sind. Eine All-in-One-DAM-Lösung mit Cognitive Services, Azure Cognitive Search und intelligenter Berichterstellung finden Sie im Leitfaden [Knowledge Mining Solution Accelerator](https://github.com/Azure-Samples/azure-search-knowledge-mining) auf GitHub. Weitere DAM-Beispiele finden Sie im Repository zu [Lösungsvorlagen für maschinelles Sehen](https://github.com/Azure-Samples/Cognitive-Services-Vision-Solution-Templates).
 
-## <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
-
-Maschinelles Sehen umfasst auch Funktionen für [optische Zeichenerkennung (Optical Character Recognition, OCR)](concept-recognizing-text.md). Sie können die neue Lese-API verwenden, um gedruckten und handschriftlichen Text aus Bildern und Dokumenten zu extrahieren. Hierbei werden die neuesten Modelle verwendet, und es wird Text auf vielen verschiedenen Flächen und Hintergründen verarbeitet. Beispiele hierfür sind Belege, Poster, Visitenkarten, Briefe und Whiteboards. Die zwei OCR-APIs unterstützen das Extrahieren von gedrucktem Text in [mehreren Sprachen](./language-support.md). Nutzen Sie einen [Schnellstart](#next-steps), um erste Schritte auszuführen.
-
 ## <a name="analyze-images-for-insight"></a>Analysieren von Bildern, um Erkenntnisse zu gewinnen
 
-Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) bereitgestellt. Nutzen Sie einen [Schnellstart](#next-steps), um erste Schritte auszuführen.
+Sie können Bilder analysieren, um Erkenntnisse zu visuellen Merkmalen und Eigenschaften zu gewinnen. Alle Features in der folgenden Tabelle werden von der [API für die Bildanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) bereitgestellt. Nutzen Sie einen [Schnellstart](./quickstarts-sdk/client-library.md), um erste Schritte auszuführen.
 
 
 ### <a name="tag-visual-features"></a>Markieren visueller Merkmale
@@ -113,8 +113,6 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Maschinel
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nutzen Sie die folgende Schnellstartanleitung als Einführung in die Verwendung von maschinellem Sehen:
+Führen Sie anhand der Schnellstartanleitung in der bevorzugten Entwicklungssprache erste Schritte für maschinelles Sehen aus:
 
-- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp) (.NET)
-- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-python) (Python)
-- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-java) (Java)
+- [Schnellstart: Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md)

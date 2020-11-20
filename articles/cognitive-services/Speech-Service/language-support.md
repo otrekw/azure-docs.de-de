@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: seodec18
-ms.openlocfilehash: a864717304dacaf6cf4c77c92050827af619ed39
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: cfd28171524ada5f5feea9e18e4b88a291254e88
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92736672"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616789"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -36,7 +36,7 @@ To get pronunciation bits:
 https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronunciation Datasets" -> Click on Import -> Locale: the list of locales there correspond to the supported locales
 -->
 
-| Sprache                          | Gebietsschema | Anpassungen                                   |
+| Sprache                          | Gebietsschema (BCP-47) | Anpassungen                                   |
 |-----------------------------------|--------|--------------------------------------------------|
 |Arabisch (Bahrain), modernes Hocharabisch  |`ar-BH` | Sprachmodell                                   |
 |Arabisch (Ägypten)                     |`ar-EG` | Sprachmodell                                   |
@@ -136,12 +136,12 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 
 Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
-|Sprache  | Gebietsschema           | Geschlecht | Name der Stimme | Stilunterstützung |
+|Sprache  | Gebietsschema (BCP-47)          | Geschlecht | Name der Stimme | Stilunterstützung |
 |--|--|--|--|--|
 | Arabisch (Ägypten) | `ar-EG` | Female | `ar-EG-SalmaNeural` | Allgemein |
 | Arabisch (Saudi-Arabien) | `ar-SA` | Female | `ar-SA-ZariyahNeural` | Allgemein |
 | Bulgarisch (Bulgarien) | `bg-BG` <sup>Neu</sup> | Female | `bg-BG-KalinaNeural` | Allgemein |
-| Kantonesisch (Chinesisch, traditionell, Hongkong) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Allgemein |
+| Kantonesisch (Chinesisch, traditionell, Hongkong [SAR]) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Allgemein |
 | Katalanisch (Spanien) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Allgemein |
 | Kroatisch (Kroatien) | `hr-HR` <sup>Neu</sup> | Female | `hr-HR-GabrijelaNeural` | Allgemein |
 | Tschechisch (Tschechische Republik) | `cs-CZ` <sup>Neu</sup> | Female | `cs-CZ-VlastaNeural` | Allgemein |
@@ -219,13 +219,13 @@ Informationen dazu, wie Sie neuronale Stimmen konfigurieren und anpassen können
 
 Es stehen mehr als 75 Standardstimmen in mehr als 45 Sprachen und Gebietsschemas zur Verfügung, mit denen Sie Text in Sprache umwandeln können. Weitere Informationen zur regionalen Verfügbarkeit finden Sie unter [Regionen](regions.md#standard-and-neural-voices).
 
-| Sprache | Gebietsschema | Geschlecht | Name der Stimme |
+| Sprache | Gebietsschema (BCP-47) | Geschlecht | Name der Stimme |
 |--|--|--|--|
 | Arabisch (Arabisch)  |  `ar-EG`  |  Female  |  `ar-EG-Hoda`|
 | Arabisch (Saudi-Arabien)  |  `ar-SA`  |  Male  |  `ar-SA-Naayf`|
 | Bulgarisch (Bulgarien)  |  `bg-BG`  |  Male  |  `bg-BG-Ivan`|
-| Kantonesisch (Chinesisch, traditionell, Hongkong)  |  `zh-HK`  |  Male  |  `zh-HK-Danny`|
-| Kantonesisch (Chinesisch, traditionell, Hongkong)  |  `zh-HK`  |  Female  |  `zh-HK-TracyRUS`|
+| Kantonesisch (Chinesisch, traditionell, Hongkong [SAR])  |  `zh-HK`  |  Male  |  `zh-HK-Danny`|
+| Kantonesisch (Chinesisch, traditionell, Hongkong [SAR])  |  `zh-HK`  |  Female  |  `zh-HK-TracyRUS`|
 | Katalanisch (Spanien)  |  `ca-ES`  |  Female  |  `ca-ES-HerenaRUS`|
 | Kroatisch (Kroatien)  |  `hr-HR`  |  Male  |  `hr-HR-Matej`|
 | Tschechisch (Tschechische Republik)  |  `cs-CZ`  |  Male  |  `cs-CZ-Jakub`|
@@ -315,7 +315,7 @@ Die Sprachanpassung ist für `de-DE`, `en-GB`, `en-IN`, `en-US`, `es-MX`, `fr-FR
 
 ## <a name="speech-translation"></a>Sprachübersetzung
 
-Die **Sprachübersetzungs** -API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der Sprachentabelle für die Spracherkennung sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt. Sie können Spracheingaben in mehr als [60 Sprachen](https://www.microsoft.com/translator/business/languages/) übersetzen. Eine Teilmenge der Sprachen steht für die [Sprachsynthese](language-support.md#text-languages) zur Verfügung.
+Die **Sprachübersetzungs**-API unterstützt verschiedene Sprachen für die Übersetzung von Sprache in Sprache und Sprache in Text. Die Ausgangssprache muss immer eine der Sprachen aus der Sprachentabelle für die Spracherkennung sein. Welche Zielsprachen verfügbar sind, richtet sich danach, ob es sich beim Übersetzungsziel um Sprache oder Text handelt. Sie können Spracheingaben in mehr als [60 Sprachen](https://www.microsoft.com/translator/business/languages/) übersetzen. Eine Teilmenge der Sprachen steht für die [Sprachsynthese](language-support.md#text-languages) zur Verfügung.
 
 ### <a name="text-languages"></a>Sprachen für Textausgabe
 
@@ -397,7 +397,7 @@ Die **Sprachübersetzungs** -API unterstützt verschiedene Sprachen für die Üb
 
 In der folgenden Tabelle finden Sie die unterstützten Sprachen für die verschiedenen Sprechererkennungs-APIs. Weitere Informationen zur Sprechererkennung finden Sie in der [Übersicht](speaker-recognition-overview.md).
 
-| Sprache | Gebietsschema | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
+| Sprache | Gebietsschema (BCP-47) | Textabhängige Überprüfung | Textunabhängige Überprüfung | Textunabhängige Identifikation |
 |----|----|----|----|----|
 |Englisch (USA)  |  en-US  |  ja  |  ja  |  ja |
 |Chinesisch (Mandarin, vereinfacht) | zh-CN     |     – |     ja |     ja|
