@@ -66,7 +66,7 @@ Bei der Geocodierung handelt es sich um den Prozess, bei dem eine Adresse (z. B
 Azure Maps bietet mehrere Methoden zur Geocodierung von Adressen:
 
 -   [Freiform-Geocodierung von Adressen](/rest/api/maps/search/getsearchaddress): Geben Sie eine einzelne Adresszeichenfolge (wie `"1 Microsoft way, Redmond, WA"`) an, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird zur schnellen Geocodierung einzelner Adressen empfohlen.
--   [Strukturierte Geocodierung von Adressen:](/rest/api/maps/search/getsearchaddressstructured)  Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
+-   [Strukturierte Geocodierung von Adressen](/rest/api/maps/search/getsearchaddressstructured):  Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land bzw. die Region und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
 -   [Batch-Geocodierung von Adressen:](/rest/api/maps/search/postsearchaddressbatchpreview)  Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Adressen werden auf dem Server parallel geocodiert. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden. Dieser Dienst wird für die Geocodierung großer Datasets empfohlen.
 -   [Fuzzysuche:](/rest/api/maps/search/getsearchfuzzy)  Diese API kombiniert die Geocodierung von Adressen mit der Suche nach Points of Interest (POI). Diese API übernimmt eine Freiform-Zeichenfolge, die eine Adresse, ein Ort, ein Orientierungspunkt, ein Point of Interest oder eine POI-Kategorie sein kann, und verarbeitet die Anforderung sofort. Diese API wird für Anwendungen empfohlen, in denen Benutzer im selben Textfeld nach Adressen oder Points of Interest suchen können.
 -   [Batchfuzzysuche:](/rest/api/maps/search/postsearchfuzzybatchpreview)  Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, Orten, Orientierungspunkten oder Points of Interest, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
@@ -154,12 +154,12 @@ Die folgende Tabelle enthält Querverweise zwischen den Werten des Bing Karten-E
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Adresse*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Viertel*                             |
-| `PopulatedPlace`      | `Municipality` oder `MunicipalitySubdivision`     | *Stadt* , *Vorort* oder *Metropolregion*     |
-| `Postcode1`           | `PostalCodeArea`                                | <bpt id="p1">*</bpt>Postal Code<ept id="p1">*</ept> or <bpt id="p2">*</bpt>Zip Code<ept id="p2">*</ept>                |
+| `PopulatedPlace`      | `Municipality` oder `MunicipalitySubdivision`     | *Stadt*, *Vorort* oder *Metropolregion*     |
+| `Postcode1`           | `PostalCodeArea`                                | *Postleitzahl*                 |
 | `AdminDivision1`      | `CountrySubdivision`                            | *Bundesland* oder *Kanton*                      |
 | `AdminDivision2`      | `CountrySecondarySubdivison`                    | *Landkreis* oder *Verwaltungsbezirk*                    |
 | `CountryRegion`       | `Country`                                       | *Name des Landes*                             |
-|                       | `CountryTertiarySubdivision`                    | *Stadtteile* , *Kantone* , *Gemeinden*          |
+|                       | `CountryTertiarySubdivision`                    | *Stadtteile*, *Kantone*, *Gemeinden*          |
 
 ## <a name="get-location-suggestions-autosuggest"></a>Abrufen von Standortvorschlägen (Vorschlagssuche)
 
@@ -527,9 +527,9 @@ In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichb
 
 Daten zu Points of Interest können in Bing Karten mithilfe der folgenden APIs gesucht werden.
 
--   **Lokale Suche** : Sucht nahe gelegene Point of Interest (radiale Suche), nach Namen oder nach Entitätstyp (Kategorie). Die Azure Maps-APIs [POI-Suche](/rest/api/maps/search/getsearchpoi) und [POI-Kategoriesuche](/rest/api/maps/search/getsearchpoicategory) sind dieser API sehr ähnlich.
--   **Standortbestimmung** : Sucht nach Points of Interest innerhalb einer bestimmten Entfernung zum Standort. Die Azure Maps-API zur [Umgebungssuche](/rest/api/maps/search/getsearchnearby) ist dieser API sehr ähnlich.
--   **Lokale Einblicke** : Sucht nach Points of Interest, die innerhalb einer angegebenen maximalen Fahrzeit oder Entfernung von einer bestimmten Koordinate liegen. Dies kann mit Azure Maps erreicht werden, indem zuerst ein Isochron berechnet und dann der API [Suche innerhalb einer Geometrie](/rest/api/maps/search/postsearchinsidegeometry) übergeben wird.
+-   **Lokale Suche**: Sucht nahe gelegene Point of Interest (radiale Suche), nach Namen oder nach Entitätstyp (Kategorie). Die Azure Maps-APIs [POI-Suche](/rest/api/maps/search/getsearchpoi) und [POI-Kategoriesuche](/rest/api/maps/search/getsearchpoicategory) sind dieser API sehr ähnlich.
+-   **Standortbestimmung**: Sucht nach Points of Interest innerhalb einer bestimmten Entfernung zum Standort. Die Azure Maps-API zur [Umgebungssuche](/rest/api/maps/search/getsearchnearby) ist dieser API sehr ähnlich.
+-   **Lokale Einblicke**: Sucht nach Points of Interest, die innerhalb einer angegebenen maximalen Fahrzeit oder Entfernung von einer bestimmten Koordinate liegen. Dies kann mit Azure Maps erreicht werden, indem zuerst ein Isochron berechnet und dann der API [Suche innerhalb einer Geometrie](/rest/api/maps/search/postsearchinsidegeometry) übergeben wird.
 
 Azure Maps stellt mehrere Such-APIs für Points of Interest bereit:
 
@@ -547,8 +547,8 @@ Lesen Sie unbedingt die Dokumentation mit [bewährten Methoden für die Suche](.
 
 Azure Maps bietet mehrere APIs zum Abrufen von Verkehrsdaten. Zwei Typen von Verkehrsdaten sind verfügbar:
 
--   **Flussdaten** : Stellt Metriken zum Verkehrsfluss auf Straßenabschnitten bereit. Dies wird häufig verwendet, um Straßen farbig zu codieren. Diese Daten werden alle 2 Minuten aktualisiert.
--   **Störungsdaten** : Bietet Daten zu Baustellen, Straßensperrungen, Unfällen und anderen Vorfällen, die sich auf den Verkehr auswirken können. Diese Daten werden jede Minute aktualisiert.
+-   **Flussdaten**: Stellt Metriken zum Verkehrsfluss auf Straßenabschnitten bereit. Dies wird häufig verwendet, um Straßen farbig zu codieren. Diese Daten werden alle 2 Minuten aktualisiert.
+-   **Störungsdaten**: Bietet Daten zu Baustellen, Straßensperrungen, Unfällen und anderen Vorfällen, die sich auf den Verkehr auswirken können. Diese Daten werden jede Minute aktualisiert.
 
 Bing Karten stellt Verkehrsfluss- und Störungsdaten in seinen interaktiven Kartensteuerelementen zur Verfügung und stellt Störungsdaten auch als Dienst bereit.
 
@@ -617,7 +617,7 @@ Azure Maps verfügt über einen Dienst zur Batchgeocodierung, der jedoch nur die
 Eine weitere Möglichkeit für die Geocodierung einer großen Anzahl von Adressen mit Azure Maps besteht darin, parallele Anforderungen an die Standard-Such-APIs zu senden. Diese Dienste akzeptieren nur eine einzelne Adresse pro Anforderung, können aber im S0-Tarif verwendet werden, der auch Grenzwerte für die kostenlose Nutzung beinhaltet. Im S0-Tarif sind bis zu 50 Anforderungen pro Sekunde an die Azure Maps-Plattform von einem einzelnen Konto aus möglich. Wenn Sie die Verarbeitung so gestalten, dass dieser Grenzwert eingehalten wird, können mehr als 180.000 Adressen pro Stunde geocodiert werden. Für den Tarif S1 ist keine Beschränkung für die Anzahl der Abfragen pro Sekunde dokumentiert, die von einem Konto durchgeführt werden können. Daher können bei Verwendung dieses Tarifs viel mehr Daten schneller verarbeitet werden. Vor allem hilft der Dienst zur Batchgeocodierung aber, die Gesamtmenge der übertragenen Daten zu reduzieren, sodass sich der Datenverkehr im Netzwerk drastisch reduziert.
 
 -   [Freiform-Geocodierung von Adressen](/rest/api/maps/search/getsearchaddress): Geben Sie eine einzelne Adresszeichenfolge (wie `"1 Microsoft way, Redmond, WA"`) an, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird zur schnellen Geocodierung einzelner Adressen empfohlen.
--   [Strukturierte Geocodierung von Adressen:](/rest/api/maps/search/getsearchaddressstructured)  Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
+-   [Strukturierte Geocodierung von Adressen](/rest/api/maps/search/getsearchaddressstructured):  Geben Sie die Teile einer einzelnen Adresse an, z. B. den Namen der Straße, die Stadt, das Land bzw. die Region und die Postleitzahl, und verarbeiten Sie die Anforderung sofort. Dieser Dienst wird empfohlen, wenn Sie einzelne Adressen schnell geocodieren müssen und die Daten bereits als einzelne Adressbestandteile analysiert haben.
 -   [Batch-Geocodierung von Adressen:](/rest/api/maps/search/postsearchaddressbatchpreview)  Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Adressen werden auf dem Server parallel geocodiert. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden. Dieser Dienst wird für die Geocodierung großer Datasets empfohlen.
 -   [Fuzzysuche:](/rest/api/maps/search/getsearchfuzzy)  Diese API kombiniert die Geocodierung von Adressen mit der Suche nach Points of Interest (POI). Diese API übernimmt eine Freiform-Zeichenfolge, die eine Adresse, ein Ort, ein Orientierungspunkt, ein Point of Interest oder eine POI-Kategorie sein kann, und verarbeitet die Anforderung sofort. Diese API wird für Anwendungen empfohlen, in denen Benutzer im selben Textfeld nach Adressen oder Points of Interest suchen können.
 -   [Batchfuzzysuche:](/rest/api/maps/search/postsearchfuzzybatchpreview)  Erstellen Sie eine Anforderung mit bis zu 10.000 Adressen, Orten, Orientierungspunkten oder Points of Interest, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.

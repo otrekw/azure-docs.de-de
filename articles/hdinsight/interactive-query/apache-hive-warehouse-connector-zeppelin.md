@@ -19,7 +19,7 @@ ms.locfileid: "92426957"
 HDInsight Spark-Cluster enthalten Apache Zeppelin-Notebooks mit verschiedenen Interpretern. In diesem Artikel wird überwiegend der Livy-Interpreter für den Zugriff auf Hive-Tabellen über Spark mit Hive Warehouse Connector behandelt.
 
 > [!NOTE]
-> Dieser Artikel enthält Verweise auf den Begriff *Whitelist* , den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
+> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="prerequisite"></a>Voraussetzung
 

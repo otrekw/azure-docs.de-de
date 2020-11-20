@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: sukishen
-ms.openlocfilehash: 83cc7757f31a631af755155b49c7c26753618426
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 6b2595eaf1e373c3a15014d0bc684d6e3914a665
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399107"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566638"
 ---
 # <a name="interconnect-with-china-using-azure-virtual-wan-and-secure-hub"></a>Herstellen einer Verbindung mit China über Azure Virtual WAN und einen sicheren Hub
 
@@ -111,7 +111,7 @@ Abhängig von Ihrer Auswahl für die Verbindung nach Hongkong kann sich die Gesa
 
 Alle beschriebenen Optionen verwenden den geschützten Azure Virtual WAN-Hub für die direkte Microsoft 365-Konnektivität in Hongkong. Diese Architekturen unterstützen auch die Complianceanforderungen für [Microsoft 365 Multi-Geo](/microsoft-365/enterprise/microsoft-365-multi-geo) und sorgen dafür, dass der Datenverkehr in der Nähe des nächsten Azure Front Door-Standorts bleibt. So wird auch eine Verbesserung bei der Verwendung von Microsoft 365 ausgehend von China erreicht.
 
-Wenn Sie Azure Virtual WAN zusammen mit Internetverbindungen verwenden, kann jede Verbindung von zusätzlichen Diensten wie [Microsoft Azure Peering Services (MAPS)](https://docs.microsoft.com/azure/peering-service/about) profitieren. MAPS wurde erstellt, um den Datenverkehr zu optimieren, der von externen Internetdienstanbietern an das globale Netzwerk von Microsoft geht.
+Wenn Sie Azure Virtual WAN zusammen mit Internetverbindungen verwenden, kann jede Verbindung von zusätzlichen Diensten wie [Microsoft Azure Peering Services (MAPS)](../peering-service/about.md) profitieren. MAPS wurde erstellt, um den Datenverkehr zu optimieren, der von externen Internetdienstanbietern an das globale Netzwerk von Microsoft geht.
 
 ### <a name="option-1-sdwan-or-vpn"></a><a name="option-1"></a>Option 1: SDWAN oder VPN
 
@@ -151,4 +151,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 
 * [Konfigurieren eines sicherten Virtual WAN-Hubs](../firewall-manager/secure-cloud-network.md)
 
-* [Azure Peering Service (Vorschauversion) – Übersicht](https://docs.microsoft.com/azure/peering-service/about)
+* [Azure Peering Service (Vorschauversion) – Übersicht](../peering-service/about.md)

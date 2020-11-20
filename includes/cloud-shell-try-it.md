@@ -19,8 +19,8 @@ Starten von Azure Cloud Shell:
 
 | Option | Beispiel/Link |
 |-----------------------------------------------|---|
-| Klicken Sie in der rechten oberen Ecke eines Codeblocks auf **Ausprobieren** . Durch die Auswahl von **Ausprobieren** wird der Code nicht automatisch in Cloud Shell kopiert. | ![Beispiel für „Testen Sie es.“ für Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
-| Rufen Sie [https://shell.azure.com](https://shell.azure.com) auf, oder wählen Sie die Schaltfläche **Cloud Shell starten** , um Cloud Shell im Browser zu öffnen. | [![Starten von Cloud Shell in einem neuen Fenster](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
+| Klicken Sie in der rechten oberen Ecke eines Codeblocks auf **Ausprobieren**. Durch die Auswahl von **Ausprobieren** wird der Code nicht automatisch in Cloud Shell kopiert. | ![Beispiel für „Testen Sie es.“ für Azure Cloud Shell](./media/cloud-shell-try-it/hdi-azure-cli-try-it.png) |
+| Rufen Sie [https://shell.azure.com](https://shell.azure.com) auf, oder wählen Sie die Schaltfläche **Cloud Shell starten**, um Cloud Shell im Browser zu öffnen. | [![Starten von Cloud Shell in einem neuen Fenster](media/cloud-shell-try-it/hdi-launch-cloud-shell.png)](https://shell.azure.com) |
 | Wählen Sie im **Azure-Portal** rechts oben im Menü die Schaltfläche [Cloud Shell](https://portal.azure.com) aus. | ![Cloud Shell-Schaltfläche im Azure-Portal](./media/cloud-shell-try-it/hdi-cloud-shell-menu.png) |
 
 Ausführen des Codes in diesem Artikel in Azure Cloud Shell:
@@ -31,4 +31,4 @@ Ausführen des Codes in diesem Artikel in Azure Cloud Shell:
 
 1. Fügen Sie den Code mit **STRG**+**UMSCHALT**+**V** unter Windows und Linux oder **Cmd**+**UMSCHALT**+**V** unter macOS in die Cloud Shell-Sitzung ein.
 
-1. Drücken Sie die **EINGABETASTE** , um den Code auszuführen.
+1. Drücken Sie die **EINGABETASTE**, um den Code auszuführen.

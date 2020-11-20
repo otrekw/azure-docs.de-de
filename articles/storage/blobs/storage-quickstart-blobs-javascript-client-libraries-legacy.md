@@ -37,7 +37,7 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie Blobs per JavaScript-Code 
 
 Damit Ihre Webanwendung vom Client aus auf einen Blobspeicher zugreifen kann, müssen Sie Ihr Konto so konfigurieren, dass [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert ist.
 
-Kehren Sie zum Azure-Portal zurück, und wählen Sie Ihr Speicherkonto aus. Navigieren Sie zum Definieren einer neuen CORS-Regel zum Abschnitt **Einstellungen** , und klicken Sie auf den Link **CORS** . Klicken Sie anschließend auf die Schaltfläche **Hinzufügen** , um das Fenster **CORS-Regel hinzufügen** zu öffnen. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine offene CORS-Regel:
+Kehren Sie zum Azure-Portal zurück, und wählen Sie Ihr Speicherkonto aus. Navigieren Sie zum Definieren einer neuen CORS-Regel zum Abschnitt **Einstellungen**, und klicken Sie auf den Link **CORS**. Klicken Sie anschließend auf die Schaltfläche **Hinzufügen**, um das Fenster **CORS-Regel hinzufügen** zu öffnen. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine offene CORS-Regel:
 
 ![Azure Blob Storage-Konto: CORS-Einstellungen](media/storage-quickstart-blobs-javascript-client-libraries-v10/azure-blob-storage-cors-settings.png)
 
@@ -88,7 +88,7 @@ Die Reihe von Werten nach den einzelnen Parametern erscheint unter Umständen et
 |------------------|---------|---------|
 | *Berechtigungen*    | racwdl  | Diese SAS umfasst Folgendes: *read* (Lesen), *append* (Anfügen), *create* (Erstellen), *write* (Schreiben), *delete* (Löschen) und *list* (Auflisten). |
 | *resource-types* | sco     | Die SAS gilt für folgende Ressourcen: *service* (Dienst), *container* (Container) und *object* (Objekt). |
-| *services*       | b       | Die SAS gilt für den *Blob-Dienst* . |
+| *services*       | b       | Die SAS gilt für den *Blob-Dienst*. |
 
 Nachdem die SAS generiert wurde, kopieren Sie den Rückgabewert, und speichern Sie ihn zur Verwendung in einem späteren Schritt. Wenn Sie Ihre SAS mit einer anderen Methode als der Azure-Befehlszeilenschnittstelle erstellt haben, müssen Sie ggf. das `?` entfernen. Dieses Zeichen ist ein URL-Trennzeichen, das in der URL-Vorlage weiter unten in diesem Thema (bei der SAS-Verwendung) bereits angegeben ist.
 
@@ -101,7 +101,7 @@ In diesem Abschnitt erstellen Sie eine einfache Webseite und konfigurieren VS Co
 
 ### <a name="set-up-the-web-application"></a>Einrichten der Webanwendung
 
-Erstellen Sie zunächst einen neuen Ordner namens *azure-blobs-javascript* , und öffnen Sie ihn in Visual Studio Code. Erstellen Sie dann eine neue Datei in VS Code, fügen Sie den folgenden HTML-Code hinzu, und speichern Sie die Datei als *index.html* im Ordner *azure-blobs-javascript* .
+Erstellen Sie zunächst einen neuen Ordner namens *azure-blobs-javascript*, und öffnen Sie ihn in Visual Studio Code. Erstellen Sie dann eine neue Datei in VS Code, fügen Sie den folgenden HTML-Code hinzu, und speichern Sie die Datei als *index.html* im Ordner *azure-blobs-javascript*.
 
 ```html
 <!DOCTYPE html>
@@ -127,7 +127,7 @@ Erstellen Sie zunächst einen neuen Ordner namens *azure-blobs-javascript* , und
 
 ### <a name="configure-the-debugger"></a>Konfigurieren des Debuggers
 
-Wählen Sie zum Einrichten der Debuggererweiterung in VS Code die Optionen **Debuggen > Konfiguration hinzufügen** , und wählen Sie dann **Chrome** bzw. **Microsoft Edge** aus, je nachdem, welche Erweiterung Sie oben im Abschnitt „Voraussetzungen“ installiert haben. Durch diese Aktion wird eine Datei *launch.json* erstellt und im Editor geöffnet.
+Wählen Sie zum Einrichten der Debuggererweiterung in VS Code die Optionen **Debuggen > Konfiguration hinzufügen**, und wählen Sie dann **Chrome** bzw. **Microsoft Edge** aus, je nachdem, welche Erweiterung Sie oben im Abschnitt „Voraussetzungen“ installiert haben. Durch diese Aktion wird eine Datei *launch.json* erstellt und im Editor geöffnet.
 
 Ändern Sie als Nächstes die Datei *launch.json* so, dass der `url`-Wert `/index.html` enthält:
 
@@ -159,11 +159,11 @@ Um den lokalen Node.js-Webserver zu starten, wählen Sie **Ansicht > Terminal** 
 npx http-server
 ```
 
-Dieser Befehl installiert das *http-server* -Paket und startet den Server, um den aktuellen Ordner über Standard-URLs (einschließlich der im vorherigen Schritt angegeben) verfügbar zu machen.
+Dieser Befehl installiert das *http-server*-Paket und startet den Server, um den aktuellen Ordner über Standard-URLs (einschließlich der im vorherigen Schritt angegeben) verfügbar zu machen.
 
 ### <a name="start-debugging"></a>Starten des Debugvorgangs
 
-Um *index.html* im Browser mit angefügtem VS Code-Debugger zu starten, wählen Sie **Debuggen > Debuggen starten** , oder drücken Sie F5 in Visual Studio Code.
+Um *index.html* im Browser mit angefügtem VS Code-Debugger zu starten, wählen Sie **Debuggen > Debuggen starten**, oder drücken Sie F5 in Visual Studio Code.
 
 Die angezeigte Benutzeroberfläche führt noch keine Vorgänge aus, aber Sie fügen im folgenden Abschnitt JavaScript-Code hinzu, um die einzelnen gezeigten Funktionen zu implementieren. Anschließend können Sie Haltepunkte festlegen und mit dem Debugger interagieren, wenn er auf Ihrem Code angehalten ist.
 
@@ -183,7 +183,7 @@ Fügen Sie dann in *index.html* nach dem schließenden `</body>`-Tag den folgend
 </script>
 ```
 
-Dieser Code fügt einen Verweis auf die Skriptdatei hinzu und bietet Platz für Ihren eigenen JavaScript-Code. Im Rahmen dieses Schnellstarts verwenden wir die Skriptdatei *azure-storage-blob.js* , damit Sie sie in VS Code öffnen, ihren Inhalt lesen und Haltepunkte festlegen können. In einer Produktionsumgebung sollten Sie die kompaktere Datei *azure-storage.blob.min.js* verwenden, die ebenfalls in der ZIP-Datei enthalten ist.
+Dieser Code fügt einen Verweis auf die Skriptdatei hinzu und bietet Platz für Ihren eigenen JavaScript-Code. Im Rahmen dieses Schnellstarts verwenden wir die Skriptdatei *azure-storage-blob.js*, damit Sie sie in VS Code öffnen, ihren Inhalt lesen und Haltepunkte festlegen können. In einer Produktionsumgebung sollten Sie die kompaktere Datei *azure-storage.blob.min.js* verwenden, die ebenfalls in der ZIP-Datei enthalten ist.
 
 In der [Referenzdokumentation](https://docs.microsoft.com/javascript/api/%40azure/storage-blob/index) finden Sie weitere Informationen zu den einzelnen Blobspeicherfunktionen. Beachten Sie, dass einige der Funktionen im SDK nur in Node.js oder nur im Browser verfügbar sind.
 

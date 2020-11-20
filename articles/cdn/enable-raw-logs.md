@@ -59,7 +59,7 @@ So konfigurieren Sie unformatierte Protokolle für Azure CDN über Microsoft-Pro
     * **In einem Speicherkonto archivieren**
         * Wählen Sie das **Abonnement** und das **Speicherkonto** aus.
     * **An einen Event Hub streamen**
-        * Wählen Sie das **Abonnement** , den **Event Hub-Namespace** , den **Event Hub-Namen** (optional) und den **Event Hub-Richtliniennamen** aus.
+        * Wählen Sie das **Abonnement**, den **Event Hub-Namespace**, den **Event Hub-Namen** (optional) und den **Event Hub-Richtliniennamen** aus.
 
     :::image type="content" source="./media/cdn-raw-logs/raw-logs-02.png" alt-text="Konfigurieren des Ziels für Protokolleinstellungen" border="true":::
 
@@ -178,7 +178,7 @@ Azure CDN vom Microsoft-Dienst stellt zurzeit unformatierte Protokolle bereit. U
     ```
 
 ### <a name="sent-to-origin-shield-deprecation"></a>An eingestellte Unterstützung von Origin Shield gesendet
-Die unformatierte Protokolleigenschaft **isSentToOriginShield** wurde eingestellt und durch ein neues Feld, **isReceivedFromClient** , ersetzt. Verwenden Sie das neue Feld, wenn Sie bereits das veraltete Feld verwenden. 
+Die unformatierte Protokolleigenschaft **isSentToOriginShield** wurde eingestellt und durch ein neues Feld, **isReceivedFromClient**, ersetzt. Verwenden Sie das neue Feld, wenn Sie bereits das veraltete Feld verwenden. 
 
 Unformatierte Protokolle umfassen Protokolle, die sowohl über CDN Edge (untergeordneter POP) als auch Origin Shield generiert wurden. Origin Shield bezieht sich auf übergeordnete Knoten, die strategisch über den Globus verteilt sind. Diese Knoten kommunizieren mit den Ursprungsservern und reduzieren den Datenverkehr am Ursprung. 
 
@@ -218,9 +218,9 @@ Weitere Informationen finden Sie unter [Azure Monitor-Metriken](../azure-monitor
 | Metriken         | BESCHREIBUNG                                                                                                      | Dimension                                                                                   |
 |-----------------|------------------------------------------------------------------------------------------------------------------|---------------------------------------------------------------------------------------------|
 | Bytetrefferquote* | Der Prozentsatz der ausgehenden Daten aus dem CDN-Cache, berechnet im Vergleich zu den ausgehenden Gesamtdaten                                      | Endpunkt                                                                                    |
-| RequestCount    | Die Anzahl der in CDN bereitgestellten Clientanforderungen                                                                     | Endpunkt </br> Land des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe |
-| ResponseSize    | Die Anzahl der vom CDN-Edge als Antworten an Clients gesendeten Bytes                                                  |Endpunkt </br> Land des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                          |
-| TotalLatency    | Die Gesamtzeit zwischen dem Empfang der Clientanforderung in CDN **und dem letzten von CDN an den Client gesendeten Antwortbyte** |Endpunkt </br> Land des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                             |
+| RequestCount    | Die Anzahl der in CDN bereitgestellten Clientanforderungen                                                                     | Endpunkt </br> Land/Region des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe |
+| ResponseSize    | Die Anzahl der vom CDN-Edge als Antworten an Clients gesendeten Bytes                                                  |Endpunkt </br> Land/Region des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                          |
+| TotalLatency    | Die Gesamtzeit zwischen dem Empfang der Clientanforderung in CDN **und dem letzten von CDN an den Client gesendeten Antwortbyte** |Endpunkt </br> Land/Region des Clients </br> Region des Clients </br> HTTP-Status </br> HTTP-Statusgruppe                                                                                             |
 
 **_Bytetrefferquote = (vom Edge ausgehende Daten – vom Ursprung ausgehende Daten) : vom Edge ausgehende Daten_*
 

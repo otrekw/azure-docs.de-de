@@ -357,7 +357,7 @@ Führen Sie für die Azure CLI die folgenden Schritte aus, um ein Gerät zu best
    |street-address2| Die zusätzlichen Adressinformationen, z. B. Apartment- oder Gebäudenummer. | „Bld 123“ |
    |city| Der Ort, an den das Gerät gesendet wird. | „Redmond“ |
    |state-or-province| Das Bundesland oder der Kanton, an das bzw. den das Gerät gesendet wird (in diesem Beispiel: Bundesstaat).| „WA“ |
-   |country| Das Land, an das das Gerät gesendet wird. | „USA“ |
+   |country| Das Land/die Region, an das/die das Gerät gesendet wird. | „USA“ |
    |postal-code| Die Postleitzahl, die zur Lieferadresse gehört.| „98052“|
    |company-name| Der Name des Unternehmens, für das Sie arbeiten.| „Contoso, LTD“ |
    |Speicherkonto| Das Azure Storage-Konto, aus dem Sie Daten importieren möchten.| „mystorageaccount“|
@@ -477,7 +477,7 @@ Führen Sie für Azure PowerShell die folgenden Schritte aus, um ein Gerät zu b
     |StreetAddress3| Die tertiären Adressinformationen. | |
     |City [Erforderlich]| Der Ort, an den das Gerät gesendet wird. | „Redmond“ |
     |StateOrProvinceCode [Erforderlich]| Das Bundesland oder der Kanton, an das bzw. den das Gerät gesendet wird (in diesem Beispiel: Bundesstaat).| „WA“ |
-    |CountryCode [Erforderlich]| Das Land, an das das Gerät gesendet wird. | „USA“ |
+    |CountryCode [Erforderlich]| Das Land/die Region, an das/die das Gerät gesendet wird. | „USA“ |
     |PostalCode [Erforderlich]| Die Postleitzahl, die zur Lieferadresse gehört.| „98052“|
     |CompanyName| Der Name des Unternehmens, für das Sie arbeiten.| „Contoso, LTD“ |
     |StorageAccountResourceId [Erforderlich]| Die ID für das Azure Storage-Konto, aus dem Sie Daten importieren möchten.| <AzStorageAccount>.id |

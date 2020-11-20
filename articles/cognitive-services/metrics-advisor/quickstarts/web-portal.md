@@ -97,7 +97,7 @@ Wählen Sie die entsprechenden Felder aus, nachdem das Datenschema geladen wurde
 |**Ignorieren**     | Die ausgewählte Spalte wird ignoriert.        |         |
 
 
-:::image type="content" source="../media/schema-configuration.png" alt-text="Verbindungseinstellungen" lightbox="../media/schema-configuration.png":::
+:::image type="content" source="../media/schema-configuration.png" alt-text="Schemakonfiguration" lightbox="../media/schema-configuration.png":::
 
 ### <a name="automatic-roll-up-settings"></a>Einstellungen für automatisches Rollup
 
@@ -117,7 +117,7 @@ Klicken Sie bei angewendeter Erkennung auf eine der im Datenfeed aufgelisteten M
 - Aktualisieren der Erkennungskonfiguration, um die erwarteten Ergebnisse zu erhalten
 - Einrichten von Benachrichtigungen für erkannte Anomalien
 
-:::image type="content" source="../media/metric-details.png" alt-text="Verbindungseinstellungen" lightbox="../media/metric-details.png":::
+:::image type="content" source="../media/metric-details.png" alt-text="Metrikdetails" lightbox="../media/metric-details.png":::
 
 ## <a name="view-the-diagnostic-insights"></a>Anzeigen der Diagnoseerkenntnisse
 
@@ -125,13 +125,13 @@ Nach dem Optimieren der Erkennungskonfiguration sollte es sich bei ggf. gefunden
 
 Klicken Sie zum Anzeigen der Diagnoseerkenntnisse auf die roten Punkte in Zeitreihenvisualisierungen. Diese stellen erkannte Anomalien dar. Daraufhin wird ein Fenster mit einem Link zur Seite für die Incidentanalyse angezeigt. 
 
-:::image type="content" source="../media/incident-link.png" alt-text="Verbindungseinstellungen" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Incidentlink" lightbox="../media/incident-link.png":::
 
 Durch Klicken auf diesen Link gelangen Sie zur Seite für die Incidentanalyse, auf der die entsprechende Anomalie analysiert und eine Reihe von Diagnoseerkenntnissen angezeigt wird. Im oberen Bereich finden Sie eine Statistik für den Incident. Diese liefert unter anderem Informationen zu **Schweregrad** und **beteiligten Anomalien** sowie zu **Startzeit** und **Endzeit**. 
 
 Als Nächstes sehen Sie die Vorgängeranomalie des Incidents sowie einen automatisierten Ursachenratschlag. Zur Generierung dieses automatisierten Ursachenratschlags wird die Incidentstruktur aller verwandten Anomalien analysiert – einschließlich Abweichung, Verteilung und Anteil an den übergeordneten Anomalien. 
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Verbindungseinstellungen" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidentdiagnose" lightbox="../media/incident-diagnostic.png":::
 
 Anhand dieser Aspekte können Sie sich bereits einen Überblick über die Vorgänge sowie über die Auswirkungen des Incidents und die wahrscheinlichste Grundursache verschaffen. Dadurch können Sie umgehend Maßnahmen ergreifen, um den Incident schnellstmöglich aufzulösen. 
 

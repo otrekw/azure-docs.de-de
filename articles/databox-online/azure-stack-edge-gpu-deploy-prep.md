@@ -107,9 +107,9 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 1. Melden Sie sich mit Ihren Microsoft Azure-Anmeldeinformationen beim Azure-Portal unter der folgenden URL an: [https://portal.azure.com](https://portal.azure.com).
 
-2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway** , und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
+2. Wählen Sie im linken Bereich **+ Ressource erstellen** aus. Suchen Sie nach **Azure Stack Edge/Data Box Gateway**, und wählen Sie den Eintrag aus. Klicken Sie auf **Erstellen**. 
 
-3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie das Land aus, in das das physische Gerät versendet werden soll. Wählen Sie **Geräte anzeigen** aus.
+3. Wählen Sie das Abonnement aus, das Sie für das Azure Stack Edge Pro-Gerät verwenden möchten. Wählen Sie das Land/die Region aus, in das/die das physische Gerät versendet werden soll. Wählen Sie **Geräte anzeigen** aus.
 
     ![Ressource erstellen 1](media/azure-stack-edge-gpu-deploy-prep/create-resource-1.png)
 
@@ -149,7 +149,7 @@ Um eine Azure Stack Edge-Ressource zu erstellen, führen Sie im Azure-Portal die
 
 9. Klicken Sie auf **Weiter: Tags**. Geben Sie optional Tags an, um Ressourcen zu kategorisieren und die Abrechnung zu konsolidieren. Klicken Sie auf **Weiter: Überprüfen + erstellen**.
 
-10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails** , die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
+10. Überprüfen Sie auf der Registerkarte **Überprüfen + erstellen** die **Preisdetails**, die **Nutzungsbedingungen** und die Details für Ihre Ressource. Aktivieren Sie das Kontrollkästchen **Ich habe die angegebenen Informationen gelesen und stimme den Datenschutzbestimmungen zu.** .
 
     ![Ressource erstellen 8](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png) 
 

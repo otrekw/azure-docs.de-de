@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte im Azure-Portal aus, um ein Gerät zu bestell
     |Subscription     | Wählen Sie ein EA-, CSP- oder Azure Sponsorship-Abonnement für den Data Box-Dienst aus. <br> Das Abonnement ist mit Ihrem Abrechnungskonto verknüpft.       |
     |Resource group     |    Wählen Sie eine vorhandene Ressourcengruppe aus. <br> Eine Ressourcengruppe ist ein logischer Container für die Ressourcen, die zusammen verwaltet oder bereitgestellt werden können.         |
     |Azure-Quellregion    |    Wählen Sie die Azure-Region aus, in der sich Ihre Daten zurzeit befinden.         |
-    |Zielland     |     Wählen Sie das Land aus, wohin Sie das Gerät versenden möchten.        |
+    |Zielland     |     Wählen Sie das Land/die Region aus, in das/die das Gerät versendet werden soll.        |
 
    ![Auswählen Ihrer Data Box-Einstellungen](media/data-box-deploy-export-ordered/azure-data-box-export-order-data-box-settings.png)
 
