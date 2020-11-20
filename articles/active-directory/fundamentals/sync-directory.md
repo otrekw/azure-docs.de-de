@@ -1,6 +1,6 @@
 ---
 title: Verzeichnissynchronisierung mit Azure Active Directory
-description: Architektonischer Leitfaden zum Erreichen dieses Synchronisierungsmusters
+description: Architekturleitfaden zum Erzielen der Verzeichnissynchronisierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 862d17948cb09c18f9372f8b8b981e5efa6be71b
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113921"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578908"
 ---
 # <a name="directory-synchronization"></a>Verzeichnissynchronisierung
 
@@ -42,15 +42,15 @@ Sie müssen Identitätsdaten aus Ihren lokalen Active Directory-Umgebungen mit 
 
 * **Benutzer:** Greift mithilfe von Azure AD auf eine Anwendung zu.
 
-* **Webbrowser** : Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
+* **Webbrowser**: Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
 
-* **Anwendung** : Web-App, die Azure AD zu Authentifizierungs- und Autorisierungszwecken verwendet.
+* **Anwendung**: Web-App, die Azure AD zu Authentifizierungs- und Autorisierungszwecken verwendet.
 
-* **Azure AD** : Synchronisiert Identitätsinformationen aus dem lokalen Verzeichnis der Organisation über Azure AD Connect. 
+* **Azure AD**: Synchronisiert Identitätsinformationen aus dem lokalen Verzeichnis der Organisation über Azure AD Connect. 
 
-* **Azure AD Connect** : Ein Tool zum Verbinden von lokalen Identitätsinfrastrukturen mit Microsoft Azure AD. Der Assistent und die geführten Oberflächen unterstützen Sie beim Bereitstellen und Konfigurieren von Voraussetzungen und Komponenten, die für die Verbindung erforderlich sind, einschließlich der Synchronisierung und Anmeldung von Active Directory-Instanzen mit/bei Azure AD. 
+* **Azure AD Connect**: Ein Tool zum Verbinden von lokalen Identitätsinfrastrukturen mit Microsoft Azure AD. Der Assistent und die geführten Oberflächen unterstützen Sie beim Bereitstellen und Konfigurieren von Voraussetzungen und Komponenten, die für die Verbindung erforderlich sind, einschließlich der Synchronisierung und Anmeldung von Active Directory-Instanzen mit/bei Azure AD. 
 
-* **Active Directory** : Active Directory ist ein Verzeichnisdienst, der in den meisten Windows Server-Betriebssystemen enthalten ist. Server, auf denen Active Directory Domain Services (AD DS) ausgeführt wird, werden als Domänencontroller bezeichnet. Sie authentifizieren und autorisieren alle Benutzer und Computer in der Domäne.
+* **Active Directory**: Active Directory ist ein Verzeichnisdienst, der in den meisten Windows Server-Betriebssystemen enthalten ist. Server, auf denen Active Directory Domain Services (AD DS) ausgeführt wird, werden als Domänencontroller bezeichnet. Sie authentifizieren und autorisieren alle Benutzer und Computer in der Domäne.
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Implementieren der Verzeichnissynchronisierung mit Azure AD
 

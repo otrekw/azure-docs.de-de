@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.date: 07/28/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: 3b407ae18316071d77cc87992a70a4fba857ab64
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0b0e198075455f697c87ad48741a770e6f78b5a5
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91979018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542149"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -84,7 +84,6 @@ Bekannte Probleme und Einschränkungen bei der Verwendung der automatischen VM-P
 
 - Sie können für Ihre dedizierten Hosts keine Azure-Hybridvorteile anwenden.
 - Sie können Ihre VMs nicht erneut bereitstellen. 
-- Sie können die Wartung Ihrer dedizierten Hosts nicht steuern.
 - Sie können in Verbindung mit dedizierten Hosts keine VMs der Serien Lsv2, NVasv4, NVsv3, Msv2 oder M verwenden. 
 
 
@@ -120,7 +119,7 @@ Nicht alle Orchestrierungs- und Optimierungseinstellungen für Skalierungsgruppe
 
 Die Infrastruktur, die Ihre virtuellen Computer unterstützt, kann gelegentlich aktualisiert werden, um die Zuverlässigkeit, Leistung und Sicherheit zu verbessern und neue Features zu integrieren. Die Azure-Plattform versucht, die Auswirkungen der Plattformwartung möglichst gering zu halten, aber Kunden mit *wartungsempfindlichen* Workloads können nicht einmal wenige Sekunden tolerieren, in denen die VM zur Wartung eingefroren oder getrennt werden muss.
 
-Die **Wartungssteuerung** bietet Kunden eine Option zum Überspringen regulärer Plattformupdates, die für ihre dedizierten Hosts geplant sind, und wendet sie dann zu einem ausgewählten Zeitpunkt innerhalb eines 35-tägigen gleitenden Fensters an.
+Die **Wartungssteuerung** bietet Kunden eine Option zum Überspringen regulärer Plattformupdates, die für ihre dedizierten Hosts geplant sind, und wendet sie dann zu einem ausgewählten Zeitpunkt innerhalb eines 35-tägigen gleitenden Fensters an. Innerhalb des Wartungsfensters können Sie die Wartung direkt auf Hostebene und in beliebiger Reihenfolge anwenden. Wenn das Wartungsfenster vorbei ist, setzt Microsoft den Vorgang fort und wendet die ausstehende Wartung auf die Hosts an. Dabei richtet sich die Reihenfolge nicht unbedingt nach den benutzerdefinierten Fehlerdomänen.
 
 Weitere Informationen finden Sie unter [Verwalten von Plattformupdates mit der Wartungssteuerung](./maintenance-control.md).
 

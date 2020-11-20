@@ -15,12 +15,12 @@ ms.date: 09/15/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b87af4a08c5a796d96d853ca63e50e335b9731fb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 18f0627b809f56b813052cc763e6ff961f31aa02
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92362772"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94697134"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Erstellen einer Zugriffsüberprüfung für Gruppen und Anwendungen in Azure AD-Zugriffsüberprüfungen
 
@@ -36,6 +36,8 @@ In diesem Artikel wird die Erstellung einer oder mehrerer Zugriffsüberprüfunge
 
 - Azure AD Premium P2
 - Globaler Administrator oder Benutzeradministrator
+- (Vorschau) Ressourcenbesitzer von Microsoft 365-Gruppen können für die Microsoft 365-Gruppen, die sie besitzen, Überprüfungen erstellen
+- (Vorschau) Ressourcenbesitzer von Azure AD-Sicherheitsgruppen können für die Azure AD-Sicherheitsgruppen, die sie besitzen, Überprüfungen erstellen
 
 Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-overview.md#license-requirements).
 
@@ -43,9 +45,9 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 1. Melden Sie sich beim Azure-Portal an, und öffnen Sie die Seite [Identity Governance](https://portal.azure.com/#blade/Microsoft_AAD_ERM/DashboardBlade/).
 
-1. Klicken Sie im linken Menü auf **Zugriffsüberprüfungen** .
+1. Klicken Sie im linken Menü auf **Zugriffsüberprüfungen**.
 
-1. Klicken Sie auf **Neue Zugriffsüberprüfung** , um eine neue Zugriffsüberprüfung zu erstellen.
+1. Klicken Sie auf **Neue Zugriffsüberprüfung**, um eine neue Zugriffsüberprüfung zu erstellen.
 
     ![Bereich „Zugriffsüberprüfungen“ in Identity Governance](./media/create-access-review/access-reviews.png)
 
@@ -57,7 +59,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
     ![Erstellen einer Zugriffsüberprüfung – Start- und Enddatum](./media/create-access-review/start-end-dates.png)
 
-1. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich** , **Monatlich** ,  **Vierteljährlich** , **Halbjährlich** oder **Jährlich** . Verwenden Sie den Schieberegler oder das Textfeld **Dauer** , um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
+1. Wenn die Zugriffsüberprüfung wiederholt ausgeführt werden soll, ändern Sie die Einstellung **Häufigkeit** von **Einmal** in **Wöchentlich**, **Monatlich**,  **Vierteljährlich**, **Halbjährlich** oder **Jährlich**. Verwenden Sie den Schieberegler oder das Textfeld **Dauer**, um festzulegen, wie viele Tage Prüfer Eingaben für jede Überprüfung der Serie vornehmen können. Für eine monatliche Überprüfung kann beispielsweise eine maximale Dauer von 27 Tagen angegeben werden, um Überschneidungen zu vermeiden.
 
 1. Geben Sie mithilfe der Einstellung **Ende** an, wie die wiederkehrende Zugriffsüberprüfungsreihe beendet werden soll. Die Serie kann auf drei Arten enden: 
     1. Sie wird fortlaufend ausgeführt, um unbegrenzt Überprüfungen zu starten
@@ -98,7 +100,7 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 ### <a name="upon-completion-settings"></a>Einstellungen nach Abschluss
 
-1. Erweitern Sie den Abschnitt **Einstellungen nach Abschluss** , um anzugeben, was nach Abschluss der Überprüfung geschehen soll.
+1. Erweitern Sie den Abschnitt **Einstellungen nach Abschluss**, um anzugeben, was nach Abschluss der Überprüfung geschehen soll.
 
     ![Erstellen einer Zugriffsüberprüfung – Einstellungen nach Abschluss](./media/create-access-review/upon-completion-settings-new.png)
 
@@ -106,10 +108,10 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 
 3. Geben Sie mithilfe der Liste **If reviewers don‘t respond** (Wenn die Prüfer nicht reagieren) an, was bei Benutzern geschehen soll, die vom Prüfer nicht innerhalb des vorgesehenen Zeitraums überprüft werden. Diese Einstellung hat keine Auswirkungen auf Benutzer, die von den Prüfern manuell überprüft wurden. Lautet die Entscheidung des Prüfers letztlich „Verweigern“, wird dem Benutzer der Zugriff entzogen.
 
-    - **Keine Änderung** : Der Zugriff des Benutzers bleibt unverändert.
-    - **Zugriff entfernen** : Dem Benutzer wird der Zugriff entzogen.
-    - **Zugriff genehmigen** : Der Zugriff des Benutzers wird genehmigt.
-    - **Empfehlungen annehmen** : Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
+    - **Keine Änderung**: Der Zugriff des Benutzers bleibt unverändert.
+    - **Zugriff entfernen**: Dem Benutzer wird der Zugriff entzogen.
+    - **Zugriff genehmigen**: Der Zugriff des Benutzers wird genehmigt.
+    - **Empfehlungen annehmen**: Die Systemempfehlungen hinsichtlich der Ablehnung oder Gewährung des weiteren Benutzerzugriffs werden verwendet.
 
     ![Erstellen einer Zugriffsüberprüfung – Erweiterte Einstellungen](./media/create-access-review/advanced-settings-preview-new.png)
 
@@ -120,11 +122,11 @@ Weitere Informationen finden Sie unter [Lizenzanforderungen](access-reviews-over
 Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, die keinen Zugriff mehr auf Ressourcen in Ihrer Organisation haben sollen, finden Sie im Artikel [Verwenden von Azure AD Identity Governance zum Überprüfen und Entfernen externer Benutzer, die keinen Zugriff mehr auf Ressourcen haben](access-reviews-external-users.md).
 
 >[!NOTE]
-> „Auf verweigerte Benutzer anzuwendende Aktion“ funktioniert nur, wenn Sie zuvor eine Prüfung nur für Gastbenutzer durchgeführt haben. Weitere Informationen finden Sie unter **Erstellen einer oder mehrerer Zugriffsüberprüfung, Schritt 8** .
+> „Auf verweigerte Benutzer anzuwendende Aktion“ funktioniert nur, wenn Sie zuvor eine Prüfung nur für Gastbenutzer durchgeführt haben. Weitere Informationen finden Sie unter **Erstellen einer oder mehrerer Zugriffsüberprüfung, Schritt 8**.
 
 ### <a name="advanced-settings"></a>Erweiterte Einstellungen
 
-1. Erweitern Sie den Abschnitt **Erweiterte Einstellungen** , um weitere Einstellungen anzugeben.
+1. Erweitern Sie den Abschnitt **Erweiterte Einstellungen**, um weitere Einstellungen anzugeben.
 
 1. Legen Sie **Empfehlungen anzeigen** auf **Aktivieren** fest, damit den Prüfern die Systemempfehlungen auf der Grundlage der Zugriffsinformationen des Benutzers angezeigt werden.
 
@@ -143,7 +145,7 @@ Weitere Informationen zu bewährten Methoden zum Entfernen von Gastbenutzern, di
 
 ## <a name="start-the-access-review"></a>Starten der Zugriffsüberprüfung
 
-Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten** . Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
+Klicken Sie nach dem Festlegen der Einstellungen für eine Zugriffsüberprüfung auf **Starten**. Die Zugriffsüberprüfung wird in der Liste mit einer Angabe des Status angezeigt.
 
 ![Liste der Zugriffsüberprüfungen mit jeweiligem Status](./media/create-access-review/access-reviews-list.png)
 

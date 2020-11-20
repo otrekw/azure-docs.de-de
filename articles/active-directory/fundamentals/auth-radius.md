@@ -1,6 +1,6 @@
 ---
 title: RADIUS-Authentifizierung mit Azure Active Directory
-description: Architekturleitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Erzielen der RADIUS-Authentifizierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff6210741d87602b4f695633b11d2641a6bb6781
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 155b359c109de948ab9b9d6862ef7507ee76f619
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92114007"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576811"
 ---
 # <a name="radius-authentication-with-azure-active-directory"></a>RADIUS-Authentifizierung mit Azure Active Directory
 
@@ -49,13 +49,13 @@ Sie müssen die mehrstufige Authentifizierung für folgende Anwendungen hinzufü
 
 * **Clientanwendung (VPN-Client)** : Sendet eine Authentifizierungsanforderung an den RADIUS-Client.
 
-* **RADIUS-Client** : Konvertiert Anforderungen der Clientanwendung und sendet sie an den RADIUS-Server, auf dem die NPS-Erweiterung installiert ist.
+* **RADIUS-Client**: Konvertiert Anforderungen der Clientanwendung und sendet sie an den RADIUS-Server, auf dem die NPS-Erweiterung installiert ist.
 
-* **RADIUS-Server** : Stellt eine Verbindung mit Active Directory her, um die primäre Authentifizierung für die RADIUS-Anforderung durchzuführen. Wenn der Vorgang erfolgreich ist, wird die Anforderung an die NPS-Erweiterung von Azure Multi-Factor Authentication übergeben.
+* **RADIUS-Server**: Stellt eine Verbindung mit Active Directory her, um die primäre Authentifizierung für die RADIUS-Anforderung durchzuführen. Wenn der Vorgang erfolgreich ist, wird die Anforderung an die NPS-Erweiterung von Azure Multi-Factor Authentication übergeben.
 
-* **NPS-Erweiterung** : Löst eine Anforderung von Azure Multi-Factor Authentication für eine sekundäre Authentifizierung aus. Wenn der Vorgang erfolgreich ist, wird die Authentifizierungsanforderung von der NPS-Erweiterung abgeschlossen, indem für den RADIUS-Server Sicherheitstoken bereitgestellt werden. Die Sicherheitstoken enthalten den Multi-Factor Authentication-Anspruch, der vom Sicherheitstokendienst von Azure ausgestellt wird.
+* **NPS-Erweiterung**: Löst eine Anforderung von Azure Multi-Factor Authentication für eine sekundäre Authentifizierung aus. Wenn der Vorgang erfolgreich ist, wird die Authentifizierungsanforderung von der NPS-Erweiterung abgeschlossen, indem für den RADIUS-Server Sicherheitstoken bereitgestellt werden. Die Sicherheitstoken enthalten den Multi-Factor Authentication-Anspruch, der vom Sicherheitstokendienst von Azure ausgestellt wird.
 
-* **Azure Multi-Factor Authentication** : Kommuniziert mit Azure AD, um die Benutzerdetails abzurufen, und führt eine sekundäre Authentifizierung mithilfe einer Verifizierungsmethode aus, die vom Benutzer konfiguriert wird.
+* **Azure Multi-Factor Authentication**: Kommuniziert mit Azure AD, um die Benutzerdetails abzurufen, und führt eine sekundäre Authentifizierung mithilfe einer Verifizierungsmethode aus, die vom Benutzer konfiguriert wird.
 
 ## <a name="implement-radius-with-azure-ad"></a>Implementieren von RADIUS mit Azure AD 
 

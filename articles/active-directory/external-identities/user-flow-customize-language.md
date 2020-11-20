@@ -1,6 +1,6 @@
 ---
 title: Sprachanpassung in Azure AD-Benutzerflows
-description: Erfahren Sie mehr über das Anpassen der Oberfläche für die Sprache in Ihren Benutzerflows.
+description: Erfahren Sie mehr über das Anpassen der Oberfläche für die Sprache in Ihren Benutzerflows in Azure Active Directory.
 services: active-directory
 author: msmimart
 manager: celestedg
@@ -11,12 +11,12 @@ ms.date: 05/06/2020
 ms.author: mimart
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c73a5491c0ad543d57a6721f37d81ae661c0a653
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 98ead87ce2bd3b4e3ffc45763aa5151168c72078
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441435"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576511"
 ---
 # <a name="language-customization-in-azure-active-directory-preview"></a>Sprachanpassung in Azure Active Directory (Vorschau)
 
@@ -43,8 +43,8 @@ Mit der Sprachanpassung können Sie alle Zeichenfolgen Ihres Benutzerflows anpas
 3. Wählen Sie den Benutzerflow aus, den Sie für Übersetzungen aktivieren möchten.
 4. Wählen Sie **Sprachen** aus.
 5. Wählen Sie auf der Seite **Sprachen** für den Benutzerflow die Sprache aus, die Sie anpassen möchten.
-6. Erweitern Sie die **Attributerfassungsseite** .
-7. Klicken Sie auf **Standardeinstellungen herunterladen** (oder **Außerkraftsetzungen herunterladen** , wenn Sie diese Sprache zuvor bearbeitet haben).
+6. Erweitern Sie die **Attributerfassungsseite**.
+7. Klicken Sie auf **Standardeinstellungen herunterladen** (oder **Außerkraftsetzungen herunterladen**, wenn Sie diese Sprache zuvor bearbeitet haben).
 
 Bei diesen Schritten erhalten Sie eine JSON-Datei, die Sie nutzen können, um mit dem Bearbeiten Ihrer Zeichenfolgen zu beginnen.
 

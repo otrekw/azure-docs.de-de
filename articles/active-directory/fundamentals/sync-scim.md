@@ -1,6 +1,6 @@
 ---
 title: SCIM-Synchronisierung mit Azure Active Directory
-description: Architektonischer Leitfaden zum Erreichen dieses Synchronisierungsmusters
+description: Architekturleitfaden zum Erzielen der SCIM-Synchronisierung mit Azure Active Directory.
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d1dda465dd675e0f5f519f86289df2621be0b9bb
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367855"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578857"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM-Synchronisierung mit Azure Active Directory
 
@@ -35,13 +35,13 @@ Sie möchten Benutzerinformationen aus einem HCM-System automatisch für Azure 
 
 ## <a name="components-of-system"></a>Komponenten des Systems 
 
-* **HCM-System** : Anwendungen und Technologien, die HCM-Prozesse und -Praktiken ermöglichen, die HR-Prozesse während des gesamten Mitarbeiterlebenszyklus unterstützen und automatisieren. 
+* **HCM-System**: Anwendungen und Technologien, die HCM-Prozesse und -Praktiken ermöglichen, die HR-Prozesse während des gesamten Mitarbeiterlebenszyklus unterstützen und automatisieren. 
 
-* **Azure AD-Bereitstellungsdienst** : Verwendet das SCIM 2.0-Protokoll für die automatische Bereitstellung. Der Dienst stellt eine Verbindung mit dem SCIM-Endpunkt für die Anwendung her und verwendet das SCIM-Benutzerobjektschema und REST-APIs, um die Bereitstellung und Aufhebung der Bereitstellung von Benutzern und Gruppen zu automatisieren.  
+* **Azure AD-Bereitstellungsdienst**: Verwendet das SCIM 2.0-Protokoll für die automatische Bereitstellung. Der Dienst stellt eine Verbindung mit dem SCIM-Endpunkt für die Anwendung her und verwendet das SCIM-Benutzerobjektschema und REST-APIs, um die Bereitstellung und Aufhebung der Bereitstellung von Benutzern und Gruppen zu automatisieren.  
 
-* **Azure AD** : Das zum Verwalten des Lebenszyklus von Identitäten und deren Berechtigungen verwendete Benutzerrepository. 
+* **Azure AD**: Das zum Verwalten des Lebenszyklus von Identitäten und deren Berechtigungen verwendete Benutzerrepository. 
 
-* **Zielsystem** : Die Anwendung oder das System, die/das über den SCIM-Endpunkt verfügt und die Azure AD-Bereitstellung verwendet, um die automatische Bereitstellung von Benutzern und Gruppen zu ermöglichen.  
+* **Zielsystem**: Die Anwendung oder das System, die/das über den SCIM-Endpunkt verfügt und die Azure AD-Bereitstellung verwendet, um die automatische Bereitstellung von Benutzern und Gruppen zu ermöglichen.  
 
 ## <a name="implement-scim-with-azure-ad"></a>Implementieren von SCIM mit Azure AD 
 

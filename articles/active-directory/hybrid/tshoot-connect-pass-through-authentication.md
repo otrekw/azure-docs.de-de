@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741192"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94652517"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -156,6 +156,8 @@ Prüfen Sie bei Fehlern im Zusammenhang mit der Installation die Azure AD Connec
 Öffnen Sie bei Fehlern in Zusammenhang mit dem Authentifizierungs-Agent die Ereignisanzeige auf dem Server unter **Anwendungs- und Dienstprotokolle\Microsoft\AzureAdConnect\AuthenticationAgent\Admin**, und prüfen Sie sie.
 
 Aktivieren Sie zur detaillierten Analyse das Sitzungsprotokoll. (Klicken Sie mit der rechten Maustaste in die Anwendung „Ereignisanzeige“, um diese Option zu finden.). Führen Sie den Authentifizierungs-Agent im Normalbetrieb nicht mit diesem Protokoll aus. Verwenden Sie es ausschließlich zur Problembehandlung. Die Protokollinhalte werden nur angezeigt, nachdem das Protokoll wieder deaktiviert wird.
+
+Das Ereignismanifest des PTA-Agents finden Sie [hier](https://msazure.visualstudio.com/One/_git/AD-AppProxy?path=%2Fsrc%2FProduct%2FMUC%2FPTADiagnosticsResource%2FPTADiagnosticsResource%2FPTAConnectorDiagnosticsResource%2FPTAConnectorEventManifest.man&_a=contents&version=GBmaster).
 
 ### <a name="detailed-trace-logs"></a>Ausführliche Ablaufverfolgungsprotokolle
 
