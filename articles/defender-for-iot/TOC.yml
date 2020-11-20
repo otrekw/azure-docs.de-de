@@ -57,8 +57,12 @@
       href: concept-security-alerts.md
     - name: Anpassbare Sicherheitswarnungen
       href: concept-customizable-security-alerts.md
-    - name: Sicherheitsempfehlungen
-      href: concept-recommendations.md
+    - name: Sicherheit
+      items:
+        - name: Sicherheitsempfehlungen
+          href: concept-recommendations.md
+        - name: Sicherheitsbaseline
+          href: security-baseline.md
     - name: Grundwert
       href: concept-baseline.md
     - name: Ereignisaggregation

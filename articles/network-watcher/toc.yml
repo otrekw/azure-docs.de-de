@@ -69,22 +69,22 @@
     - name: Migrieren zu Verbindungsmonitor
       items:
         - name: Von Netzwerkleistungsmonitor
-          href: migrate-to-connection-monitor-preview-from-network-performance-monitor.md
+          href: migrate-to-connection-monitor-from-network-performance-monitor.md
         - name: Von Verbindungsmonitor (Klassisch)
-          href: migrate-to-connection-monitor-preview-from-connection-monitor.md
+          href: migrate-to-connection-monitor-from-connection-monitor-classic.md
     - name: Diagnostizieren von VM-Netzwerkproblemen
       items:
         - name: Installieren der VM-Erweiterung
           items:
             - name: Windows
-              href: ../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
             - name: Linux
-              href: ../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
         - name: Diagnostizieren eines Routingproblems
           items:
             - name: Azure PowerShell
               href: diagnose-vm-network-routing-problem-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: diagnose-vm-network-routing-problem-cli.md
         - name: Diagnostizieren von Problemen mit der ausgehenden Verbindung
           items:
@@ -92,7 +92,7 @@
               href: network-watcher-connectivity-portal.md
             - name: Azure PowerShell
               href: network-watcher-connectivity-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: network-watcher-connectivity-cli.md
             - name: REST
               href: network-watcher-connectivity-rest.md
@@ -104,7 +104,7 @@
                   href: network-watcher-packet-capture-manage-portal.md
                 - name: Azure PowerShell
                   href: network-watcher-packet-capture-manage-powershell.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: network-watcher-packet-capture-manage-cli.md
                 - name: REST
                   href: network-watcher-packet-capture-manage-rest.md
@@ -124,7 +124,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-nsg-flow-logging-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
@@ -159,7 +159,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-security-group-view-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: network-watcher-security-group-view-cli.md
             - name: REST
               href: network-watcher-security-group-view-rest.md
@@ -171,7 +171,7 @@
           items:
             - name: Azure PowerShell
               href: network-watcher-troubleshoot-manage-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: network-watcher-troubleshoot-manage-cli.md
             - name: REST
               href: network-watcher-troubleshoot-manage-rest.md
@@ -184,14 +184,14 @@
     - name: Bestimmen der relativen Wartezeit zwischen einem Standort und einer Azure-Region
       href: view-relative-latencies.md
     - name: Überwachen der Netzwerkleistung
-      href: ../log-analytics/log-analytics-network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
     - name: Verschieben von Ressourcen
       items:
         - name: Verschieben von Network Watcher-Ressourcen
           href: resource-move.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/network/watcher
     - name: Azure PowerShell
       href: /powershell/module/az.network/#network_watcher
@@ -214,7 +214,7 @@
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/network-watcher/'
     - name: Dienstupdates

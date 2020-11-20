@@ -96,7 +96,7 @@
           items:
             - name: Azure-Portal
               href: tutorial-design-database-using-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: tutorial-design-database-using-cli.md
             - name: Azure PowerShell
               href: tutorial-design-database-using-powershell.md
@@ -112,12 +112,10 @@
               maintainContext: true
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: sample-scripts-azure-cli.md
         - name: Java-Verbindungspool
           href: sample-scripts-java-connection-pooling.md
-        - name: Azure Policy-Integrationen
-          href: ./policy-reference.md
     - name: Konzepte
       items:
         - name: Server
@@ -156,6 +154,9 @@
               href: concepts-azure-ad-authentication.md
             - name: Doppelte Infrastrukturverschlüsselung
               href: concepts-infrastructure-double-encryption.md
+            - name: Sicherheitskontrollen von Azure Policy
+              displayName: 'regulatory, compliance, standards, domains'
+              href: ./security-controls-policy.md
             - name: Sicherheitsbaseline
               href: security-baseline.md
         - name: Geplante Wartung
@@ -246,7 +247,7 @@
             - name: Azure-Portal
               href: howto-restore-server-portal.md
               displayName: 'restore server,backup'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restore-server-cli.md
               displayName: 'restore server, backup'
             - name: Azure PowerShell
@@ -277,7 +278,7 @@
             - name: Azure-Portal
               href: howto-server-parameters.md
               displayName: server parameters
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-parameters-using-cli.md
               displayName: 'server parameters, cli'
             - name: Azure PowerShell
@@ -296,7 +297,7 @@
             - name: Azure-Portal
               href: howto-auto-grow-storage-portal.md
               displayName: 'storage, business continuity , downtime, portal'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-auto-grow-storage-cli.md
               displayName: 'storage, business continuity , downtime, cli'
             - name: Azure PowerShell
@@ -307,7 +308,7 @@
             - name: Azure-Portal
               href: howto-configure-server-logs-in-portal.md
               displayName: 'debug, slow query log , performance'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-server-logs-in-cli.md
               displayName: 'debug, slow query log , performance'
         - name: Überwachungsprotokolle
@@ -315,7 +316,7 @@
             - name: Azure-Portal
               href: howto-configure-audit-logs-portal.md
               displayName: 'debug, audit log'
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-configure-audit-logs-cli.md
               displayName: 'debug, audit log'
         - name: Überwachen
@@ -404,7 +405,7 @@
             - name: Azure-Portal
               href: howto-restart-server-portal.md
               displayName: restart
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: howto-restart-server-cli.md
               displayName: restart
             - name: Azure PowerShell
@@ -431,7 +432,7 @@
           items:
             - name: Azure-Portal
               href: flexible-server/quickstart-create-server-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: flexible-server/quickstart-create-server-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -565,7 +566,7 @@
               href: flexible-server/how-to-troubleshoot-common-connection-issues.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/mysql
     - name: REST-API
       href: /rest/api/mysql
@@ -573,6 +574,9 @@
       href: /azure/templates/microsoft.dbformysql/allversions
     - name: Gespeicherte Verwaltungsprozeduren
       href: reference-stored-procedures.md
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
 - name: Ressourcen
   items:
     - name: Bereitstellungsvorlagen

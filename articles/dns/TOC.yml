@@ -173,7 +173,7 @@
     - name: Funktionsanfragen
       href: 'https://feedback.azure.com/forums/217313-networking/category/77466-domain-name-service-dns-traffic-manager'
     - name: "Frageseite von Microsoft\_Q&A (Fragen und Antworten)"
-      href: 'https://docs.microsoft.com/en-us/answers/topics/azure-virtual-network.html'
+      href: /answers/topics/azure-virtual-network.html
     - name: Netzwerkblog
       href: 'https://azure.microsoft.com/blog/topics/networking'
     - name: Preise
