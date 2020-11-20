@@ -504,14 +504,16 @@
                   href: ./spark/synapse-spark-sql-pool-import-export.md
 - name: Synapse Link
   items:
+    - name: Übersicht
+      items:
+        - name: Synapse Link für Azure Cosmos DB
+          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
     - name: Schnellstarts
       items:
         - name: "Herstellen einer Verbindung mit Synapse\_Link für Cosmos DB"
           href: quickstart-connect-synapse-link-cosmos-db.md
     - name: Konzepte
       items:
-        - name: Synapse Link für Azure Cosmos DB
-          href: ../cosmos-db/synapse-link.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: 'Analysespeicher: Übersicht'
           href: ../cosmos-db/analytical-store-introduction.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: "Unterstützte Features in Synapse\_Link"
@@ -967,7 +969,7 @@
   items:
     - name: Übersicht
       items:
-        - name: Was ist maschinelles Lernen in Synapse Analytics?
+        - name: Was ist maschinelles Lernen in Azure Synapse?
           href: machine-learning/what-is-machine-learning.md
     - name: Schnellstarts
       items:

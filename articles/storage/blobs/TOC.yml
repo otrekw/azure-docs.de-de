@@ -113,7 +113,7 @@
           href: ../common/storage-samples.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Azure PowerShell
           href: storage-samples-blobs-powershell.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: storage-samples-blobs-cli.md
     - name: Konzepte
       items:
@@ -339,7 +339,7 @@
                   href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
                 - name: PowerShell
                   href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Authentifizieren und Autorisieren mit Azure AD
               items:
@@ -363,7 +363,7 @@
                   items:
                     - name: PowerShell
                       href: storage-blob-user-delegation-sas-create-powershell.md
-                    - name: Azure-Befehlszeilenschnittstelle
+                    - name: Azure CLI
                       href: storage-blob-user-delegation-sas-create-cli.md
                     - name: .NET
                       href: storage-blob-user-delegation-sas-create-dotnet.md
@@ -733,8 +733,10 @@
           items:
             - name: Migrieren aus Data Lake Storage Gen1
               href: data-lake-storage-migrate-gen1-to-gen2.md
-            - name: Migrieren eines lokalen HDFS-Speichers
+            - name: Offlinemigration eines HDFS-Speichers
               href: data-lake-storage-migrate-on-premises-HDFS-cluster.md
+            - name: Onlinemigration eines HDFS-Speichers
+              href: migrate-gen2-wandisco-live-data-platform.md
         - name: Verwalten
           items:
             - name: .NET
