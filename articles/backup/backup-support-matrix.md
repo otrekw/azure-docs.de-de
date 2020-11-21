@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ee37e994c9e72c3d3c98455360dc68746f49d278
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743130"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555435"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -25,7 +25,7 @@ Andere Support-Matrizen sind verfügbar:
 
 ## <a name="vault-support"></a>Unterstützung für Tresore
 
-Azure Backup nutzt Recovery Services-Tresore zum Orchestrieren und Verwalten von Sicherungen. Azure Backup nutzt Tresore außerdem zum Speichern von gesicherten Daten.
+Azure Backup verwendet Recovery Services-Tresore, um Sicherungen für die folgenden Workloadtypen zu orchestrieren und zu verwalten: Azure-VMs, SQL in Azure-VMs, SAP HANA in Azure-VMs, Azure-Dateifreigaben und lokale Workloads mit Azure Backup Agent, Azure Backup Server und System Center DPM. Außerdem werden die Recovery Services-Tresore verwendet, um gesicherte Daten für diese Workloads zu speichern.
 
 In der folgenden Tabelle werden die Features von Recovery Services-Tresoren beschrieben:
 

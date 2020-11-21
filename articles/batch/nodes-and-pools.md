@@ -2,17 +2,17 @@
 title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 10/21/2020
-ms.openlocfilehash: c85c50d0b30e30563390d2ffb05942f199047d67
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.date: 11/10/2020
+ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913805"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94537610"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
-In einem Azure Batch-Workflow ist ein *Computeknoten* (bzw. *Knoten* ) ein virtueller Computer, der einen Teil der Workload Ihrer Anwendung verarbeitet. Ein *Pool* ist eine Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. In diesem Artikel erfahren Sie mehr über Knoten und Pools sowie Aspekte bei deren Erstellung und Nutzung in einem Azure Batch-Workflow.
+In einem Azure Batch-Workflow ist ein *Computeknoten* (bzw. *Knoten*) ein virtueller Computer, der einen Teil der Workload Ihrer Anwendung verarbeitet. Ein *Pool* ist eine Sammlung von Knoten, auf denen Ihre Anwendung ausgeführt wird. In diesem Artikel erfahren Sie mehr über Knoten und Pools sowie Aspekte bei deren Erstellung und Nutzung in einem Azure Batch-Workflow.
 
 ## <a name="nodes"></a>Nodes
 
@@ -72,9 +72,9 @@ Der [Batch-Knoten-Agent](https://github.com/Azure/Batch/blob/master/changelogs/n
 
 ### <a name="cloud-services-configuration"></a>Konfiguration „Cloud Services“
 
-Die **Konfiguration „Cloud Services“** gibt an, dass der Pool aus Azure Cloud Services-Knoten besteht. Bei Cloud Services werden *ausschließlich* Windows-Computeknoten bereitgestellt.
+Die **Konfiguration „Cloud Services“** gibt an, dass der Pool aus Azure Cloud Services-Knoten besteht. Cloud Services stellt nur Windows-Computeknoten bereit.
 
-Verfügbare Betriebssysteme für Pools vom Typ „Clouddienstkonfiguration“ sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md)aufgeführt. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, müssen Sie die Knotengröße und *Betriebssystemfamilie* angeben (die bestimmt, welche Versionen von .NET mit dem Betriebssystem installiert werden). Cloud Services wird in Azure schneller bereitgestellt als virtuelle Computer mit Windows. Wenn Sie Pools von Windows-Serverknoten benötigen, werden Sie möglicherweise feststellen, dass die Konfiguration „Cloud Services“ im Hinblick auf die Bereitstellungszeit einen Leistungsvorteil bietet.
+Die verfügbaren Betriebssysteme für Pools zur Konfiguration der Clouddienste sind unter [Azure-Gastbetriebssystemversionen und SDK-Kompatibilitätsmatrix](../cloud-services/cloud-services-guestos-update-matrix.md) aufgeführt, und die verfügbaren Größen für Computeknoten sind unter [Größen für Clouddienste](../cloud-services/cloud-services-sizes-specs.md) aufgelistet. Beim Erstellen eines Pools, der Cloud Services-Knoten enthält, geben Sie die Knotengröße und *Betriebssystemfamilie* an (die bestimmt, welche Versionen von .NET mit dem Betriebssystem installiert werden). Cloud Services wird in Azure schneller bereitgestellt als virtuelle Computer mit Windows. Wenn Sie Pools von Windows-Serverknoten benötigen, werden Sie möglicherweise feststellen, dass die Konfiguration „Cloud Services“ im Hinblick auf die Bereitstellungszeit einen Leistungsvorteil bietet.
 
 Genau wie bei Workerrollen innerhalb von Cloud Services können Sie eine *Betriebssystemversion* angeben. (Weitere Informationen zu Workerrollen finden Sie unter [Übersicht über Cloud Services](../cloud-services/cloud-services-choose-me.md).) Es empfiehlt sich auch bei der *Betriebssystemversion* die Angabe von `Latest (*)`, damit die Knoten automatisch per Upgrade aktualisiert werden und für neue Versionen kein Zusatzaufwand entsteht. Mit der Wahl einer bestimmten Betriebssystemversion wird in erster Linie die Anwendungskompatibilität sichergestellt. Hierzu wird die Überprüfung der Abwärtskompatibilität vor der Versionsaktualisierung ermöglicht. Nach der Überprüfung können die *Betriebssystemversion* für den Pool aktualisiert und das neue Betriebssystemimage installiert werden. Alle laufenden Tasks werden unterbrochen und erneut in die Warteschlange gestellt.
 
@@ -127,7 +127,7 @@ Eine Skalierungsformel kann auf den folgenden Metriken basieren:
 
 - **Zeitmetriken** : Basieren auf Statistiken, die alle fünf Minuten für die angegebene Anzahl von Stunden erfasst werden.
 - **Ressourcenmetriken** : Basieren auf CPU-Auslastung, Bandbreitenauslastung, Speicherauslastung und Knotenanzahl.
-- **Taskmetriken** : Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
+- **Taskmetriken**: Basieren auf dem Taskstatus – beispielsweise *Aktiv* (in der Warteschlange), *Wird ausgeführt* oder *Abgeschlossen*.
 
 Wenn die Anzahl von Computeknoten in einem Pool durch die automatische Skalierung verringert wird, müssen Sie sich überlegen, wie Sie Tasks behandeln, die zum Zeitpunkt des Verringerungsvorgangs ausgeführt werden. Hierfür verfügt Batch über eine [*Option zum Aufheben der Knotenzuordnung*](/rest/api/batchservice/pool/removenodes#computenodedeallocationoption), die Sie in Ihre Formeln einfügen können. Sie können beispielsweise angeben, dass ausgeführte Tasks sofort beendet und dann für die Ausführung auf einem anderen Knoten erneut in die Warteschlange eingereiht werden oder dass die Fertigstellung abgewartet werden soll, bevor der Knoten aus dem Pool entfernt wird. Beachten Sie, dass das Festlegen der Optionen zum Aufheben der Knotenzuordnung auf `taskcompletion` oder `retaineddata` Vorgänge zum Ändern der Poolgröße verhindert, bis alle Aufgaben abgeschlossen sind bzw. alle Aufbewahrungszeiträume von Tasks abgelaufen sind.
 
@@ -179,7 +179,7 @@ Weitere Informationen zum Einrichten eines Batch-Pools in einem VNet finden Sie 
 
 Beim Entwerfen Ihrer Azure Batch-Lösung müssen Sie angeben, wie und wann Pools erstellt werden und wie lange Computeknoten innerhalb dieser Pools verfügbar bleiben sollen.
 
-An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen, den Sie senden, und den Pool dann löschen, sobald die Ausführung seiner Tasks abgeschlossen ist. Auf diese Weise wird die Effektivität der Nutzung erhöht, da die Knoten nur bei Bedarf zugeordnet und heruntergefahren werden, wenn sie sich im Leerlauf befinden. Dies bedeutet, dass der Auftrag bis zur Zuteilung der Knoten warten muss. Dabei ist aber wichtig zu erwähnen, dass für die Tasks die Ausführung geplant wird, sobald die Knoten einzeln zugeteilt wurden und der Starttask abgeschlossen ist. Batch wartet mit dem Zuweisen von Tasks zu den Knoten *nicht* , bis alle Knoten in einem Pool verfügbar sind. Dadurch ist eine maximale Auslastung aller verfügbaren Knoten gewährleistet.
+An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen, den Sie senden, und den Pool dann löschen, sobald die Ausführung seiner Tasks abgeschlossen ist. Auf diese Weise wird die Effektivität der Nutzung erhöht, da die Knoten nur bei Bedarf zugeordnet und heruntergefahren werden, wenn sie sich im Leerlauf befinden. Dies bedeutet, dass der Auftrag bis zur Zuteilung der Knoten warten muss. Dabei ist aber wichtig zu erwähnen, dass für die Tasks die Ausführung geplant wird, sobald die Knoten einzeln zugeteilt wurden und der Starttask abgeschlossen ist. Batch wartet mit dem Zuweisen von Tasks zu den Knoten *nicht*, bis alle Knoten in einem Pool verfügbar sind. Dadurch ist eine maximale Auslastung aller verfügbaren Knoten gewährleistet.
 
 Falls dagegen der sofortige Start von Aufträgen höchste Priorität hat, können Sie bereits vorab einen Pool erstellen und die zugehörigen Knoten vor der Auftragsübermittlung verfügbar machen. Dieses Szenario ermöglicht zwar den sofortigen Start von Tasks, führt aber unter Umständen auch dazu, dass sich Knoten im Leerlauf befinden, während sie auf die Zuteilung warten.
 
