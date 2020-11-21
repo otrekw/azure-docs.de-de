@@ -19,7 +19,7 @@
 - name: Konzepte
   items:
     - name: Was ist Kennworthashsynchronisierung?
-      href: ../hybrid/whatis-phs.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
+      href: ../hybrid/whatis-phs.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcloud-provisioning-context
     - name: Grundlegendes zum Schema sowie zu den Attributen und Ausdrücken von Azure AD
       href: concept-attributes.md
     - name: Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory
@@ -63,10 +63,10 @@
 - name: Verweis
   items:
     - name: Versionsverlauf des Agents für die Azure AD Connect-Cloudbereitstellung
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: Häufig gestellte Fragen zur Azure AD Connect-Cloudbereitstellung
       href: reference-cloud-provisioning-faq.md
     - name: 'Attribute, die synchronisiert werden'
-      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=azure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+      href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: "Grundlegende Active Directory- und Azure\_AD-Umgebung"
       href: tutorial-basic-ad-azure.md

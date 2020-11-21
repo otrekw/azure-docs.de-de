@@ -78,7 +78,7 @@
     - name: Verbleibende DNS- und Subdomainübernahme
       href: subdomain-takeover.md
     - name: Sichere Hybrid-Netzwerkarchitektur
-      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: /azure/architecture/reference-architectures/dmz/secure-vnet-hybrid?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
 - name: IaaS-Sicherheit
   items:
     - name: Microsoft Antimalware
@@ -118,7 +118,7 @@
         - name: Checkliste für die Sicherheit
           href: database-security-checklist.md
     - name: Sicherheitsleitfaden zu Storage
-      href: ../../storage/blobs/security-recommendations.md?bc=%252fazure%252fsecurity%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fsecurity%252ftoc.json
+      href: ../../storage/blobs/security-recommendations.md?bc=%2fazure%2fsecurity%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fsecurity%2ftoc.json
     - name: Kunden-Lockbox
       href: customer-lockbox-overview.md
     - name: Kunden-Lockbox-Sicherheitsbaseline

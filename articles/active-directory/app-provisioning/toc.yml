@@ -49,7 +49,7 @@
         - name: Exportieren und Importieren Ihrer Konfiguration
           href: export-import-provisioning-configuration.md
         - name: Bereitstellungsberichte
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
     - name: Automatisieren der Konfiguration mit MS Graph
       href: 'https://docs.microsoft.com/graph/application-provisioning-configure-api'
     - name: Problembehandlung bei der Anwendungsbereitstellung
@@ -65,7 +65,7 @@
         - name: Fehlendes Quellattribut
           href: user-provisioning-sync-attributes-for-mapping.md
         - name: Bereitstellungsprotokolle
-          href: ../reports-monitoring/concept-provisioning-logs.md?context=azure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
+          href: ../reports-monitoring/concept-provisioning-logs.md?context=%2fazure%2factive-directory%2fapp-provisioning%2fcontext%2fapp-provisioning-context
 - name: Verweis
   items:
     - name: "Einhaltung des SCIM\_2.0-Protokolls"
