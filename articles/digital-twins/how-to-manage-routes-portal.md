@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 7/22/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 21188f473cbd5a6fd2a1ee549f47ad9b0e5b8af3
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 083d868f2d2652be9480227c29dfb289564056d6
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279494"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533785"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-portal"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (Portal)
 
@@ -22,7 +22,7 @@ In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](how-to-interpret
 
 In diesem Artikel wird der Vorgang zum Erstellen von Endpunkten und Routen mit dem [Azure-Portal](https://portal.azure.com) Schritt für Schritt beschrieben.
 
-Sie können Endpunkte und Routen auch mit den [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) oder der [Azure Digital Twins-Befehlszeilenschnittstelle](how-to-use-cli.md) verwalten. Eine Version dieses Artikels, in der diese Mechanismen anstelle des Portals verwendet werden, finden Sie unter [*Anleitung: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)*](how-to-manage-routes-apis-cli.md).
+Sie können Endpunkte und Routen alternativ auch mit den [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), den [SDKs](how-to-use-apis-sdks.md#overview-data-plane-apis) oder der [CLI von Azure Digital Twins](how-to-use-cli.md) verwalten. Eine Version dieses Artikels, in der diese Mechanismen anstelle des Portals verwendet werden, finden Sie unter [*Anleitung: Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)*](how-to-manage-routes-apis-cli.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -52,7 +52,7 @@ Um einen Endpunkt mit Azure Digital Twins zu verknüpfen, muss das für den Endp
 
 ### <a name="create-an-event-grid-endpoint"></a>Erstellen eines Event Grid-Endpunkts
 
-**Voraussetzung** : Erstellen Sie ein Event Grid-Thema, indem Sie die folgenden Schritte im Abschnitt [*Erstellen eines benutzerdefinierten Themas* der Schnellstartanleitung](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)*Benutzerdefinierte Ereignisse* für die Event Grid-Instanz befolgen.
+**Voraussetzung**: Erstellen Sie ein Event Grid-Thema, indem Sie die folgenden Schritte im Abschnitt [*Erstellen eines benutzerdefinierten Themas* der Schnellstartanleitung](../event-grid/custom-event-quickstart-portal.md#create-a-custom-topic)*Benutzerdefinierte Ereignisse* für die Event Grid-Instanz befolgen.
 
 Nachdem Sie das Thema erstellt haben, können Sie im [Azure-Portal](https://portal.azure.com) auf der Seite für Ihre Azure Digital Twins-Instanz dafür einen Link einrichten. (Sie finden die Instanz, indem Sie ihren Namen in die Suchleiste des Portals eingeben.)
 
@@ -72,7 +72,7 @@ Sie können auch den Endpunkt anzeigen, der erstellt wurde, indem Sie auf der Se
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Event Grid-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute** , die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
+Nun ist das Event Grid-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
 ### <a name="create-an-event-hubs-endpoint"></a>Erstellen eines Event Hubs-Endpunkts
 
@@ -84,7 +84,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Detailseite für 
 
 Wählen Sie im Instanzmenü die Option _Endpunkte_ aus. Wählen Sie anschließend auf der darauffolgenden Seite *Endpunkte* die Option *+ Endpunkt erstellen* aus. 
 
-Auf der geöffneten Seite *Endpunkt erstellen* können Sie einen Endpunkt vom Typ _Event Hub_ erstellen, indem Sie das entsprechende Optionsfeld auswählen. Geben Sie im Feld _Name_ einen Namen für Ihren Endpunkt ein. Wählen Sie anschließend Ihr _Abonnement_ und in den entsprechenden Dropdownlisten die vorab erstellten Elemente _Event Hub-Namespace_ , _Event Hub_ und _Autorisierungsregel_ aus.
+Auf der geöffneten Seite *Endpunkt erstellen* können Sie einen Endpunkt vom Typ _Event Hub_ erstellen, indem Sie das entsprechende Optionsfeld auswählen. Geben Sie im Feld _Name_ einen Namen für Ihren Endpunkt ein. Wählen Sie anschließend Ihr _Abonnement_ und in den entsprechenden Dropdownlisten die vorab erstellten Elemente _Event Hub-Namespace_, _Event Hub_ und _Autorisierungsregel_ aus.
 
 Erstellen Sie anschließend Ihren Endpunkt, indem Sie _Speichern_ auswählen.
 
@@ -94,7 +94,7 @@ Sie können überprüfen, ob die Erstellung des Endpunkts erfolgreich war, indem
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Event Hub-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute** , die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
+Nun ist das Event Hub-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
 ### <a name="create-a-service-bus-endpoint"></a>Erstellen eines Service Bus-Endpunkts
 
@@ -106,7 +106,7 @@ Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Detailseite für 
 
 Wählen Sie im Instanzmenü die Option _Endpunkte_ aus. Wählen Sie anschließend auf der darauffolgenden Seite *Endpunkte* die Option *+ Endpunkt erstellen* aus. 
 
-Auf der Seite *Endpunkt erstellen* , die geöffnet wird, können Sie einen Endpunkt vom Typ _Service Bus_ erstellen, indem Sie das entsprechende Optionsfeld auswählen. Geben Sie im Feld _Name_ einen Namen für Ihren Endpunkt ein. Wählen Sie anschließend Ihr _Abonnement_ und in den entsprechenden Dropdownlisten die vorab erstellten Elemente _Service Bus-Namespace_ , _Service Bus-Thema_ und _Autorisierungsregel_ aus.
+Auf der Seite *Endpunkt erstellen*, die geöffnet wird, können Sie einen Endpunkt vom Typ _Service Bus_ erstellen, indem Sie das entsprechende Optionsfeld auswählen. Geben Sie im Feld _Name_ einen Namen für Ihren Endpunkt ein. Wählen Sie anschließend Ihr _Abonnement_ und in den entsprechenden Dropdownlisten die vorab erstellten Elemente _Service Bus-Namespace_, _Service Bus-Thema_ und _Autorisierungsregel_ aus.
 
 Erstellen Sie anschließend Ihren Endpunkt, indem Sie _Speichern_ auswählen.
 
@@ -116,7 +116,7 @@ Sie können überprüfen, ob die Erstellung des Endpunkts erfolgreich war, indem
 
 Falls bei der Erstellung des Endpunkts ein Fehler auftritt, sollten Sie die Fehlermeldung beachten und den Vorgang nach einigen Minuten wiederholen.
 
-Nun ist das Service Bus-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute** , die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
+Nun ist das Service Bus-Thema als Endpunkt innerhalb von Azure Digital Twins unter dem Namen verfügbar, der im Feld _Name_ angegeben ist. Normalerweise verwenden Sie diesen Namen als Ziel einer **Ereignisroute**, die Sie [später in diesem Artikel](#create-an-event-route) erstellen.
 
 ### <a name="create-an-endpoint-with-dead-lettering"></a>Erstellen eines Endpunkts mit unzustellbaren Nachrichten
 
@@ -130,7 +130,7 @@ Anweisungen dazu, wie dies mit den APIs funktioniert, finden Sie in der Version 
 
 Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden möchten, müssen Sie eine **Ereignisroute** definieren. Diese Routen ermöglichen es Entwicklern, den Ereignisdatenfluss im gesamten System und zu Downstreamdiensten einzurichten. Weitere Informationen zu Ereignisrouten finden Sie unter [*Konzepte: Weiterleiten von Azure Digital Twins-Ereignissen*](concepts-route-events.md).
 
-**Voraussetzung** : Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
+**Voraussetzung**: Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
 
 >[!NOTE]
 >Wenn Sie Ihre Endpunkte gerade erst bereitgestellt haben, vergewissern Sie sich, dass die Bereitstellung abgeschlossen ist, **bevor** Sie versuchen, die Endpunkte für eine neue Ereignisroute zu verwenden. Falls Sie die Route nicht einrichten können, weil die Endpunkte nicht betriebsbereit sind, sollten Sie einige Minuten warten und den Vorgang dann wiederholen.
@@ -153,13 +153,13 @@ Wählen Sie im Instanzmenü die Option _Ereignisrouten_ aus. Wählen Sie anschli
 
 Wählen Sie auf der Seite *Create an event route* (Ereignisroute erstellen) mindestens Folgendes aus:
 * Einen Namen für Ihre Route im Feld _Name_.
-* Den _Endpunkt_ , den Sie zum Erstellen der Route verwenden möchten. 
+* Den _Endpunkt_, den Sie zum Erstellen der Route verwenden möchten. 
 
-Zum Aktivieren der Route müssen Sie auch einen **Ereignisroutenfilter hinzufügen** , für den mindestens `true` festgelegt ist. (Wenn Sie den Standardwert `false` beibehalten, wird die Route erstellt, aber es werden keine Ereignisse dafür gesendet.) Verwenden Sie hierfür den Umschalter für _Erweiterter Editor_ , um ihn zu aktivieren, und geben Sie im Feld *Filter* die Zeichenfolge `true` ein.
+Zum Aktivieren der Route müssen Sie auch einen **Ereignisroutenfilter hinzufügen**, für den mindestens `true` festgelegt ist. (Wenn Sie den Standardwert `false` beibehalten, wird die Route erstellt, aber es werden keine Ereignisse dafür gesendet.) Verwenden Sie hierfür den Umschalter für _Erweiterter Editor_, um ihn zu aktivieren, und geben Sie im Feld *Filter* die Zeichenfolge `true` ein.
 
 :::image type="content" source="media/how-to-manage-routes-portal/create-event-route-no-filter.png" alt-text="Screenshot: Erstellen einer Ereignisroute für Ihre Instanz" lightbox="media/how-to-manage-routes-portal/create-event-route-no-filter.png":::
 
-Klicken Sie nach Abschluss des Vorgangs auf die Schaltfläche _Speichern_ , um Ihre Ereignisroute zu erstellen.
+Klicken Sie nach Abschluss des Vorgangs auf die Schaltfläche _Speichern_, um Ihre Ereignisroute zu erstellen.
 
 ## <a name="filter-events"></a>Filtern von Ereignissen
 
@@ -178,7 +178,7 @@ Sie können entweder eine Auswahl aus einigen grundlegenden allgemeinen Filterop
 
 #### <a name="use-the-basic-filters"></a>Verwenden der grundlegenden Filter
 
-Erweitern Sie zur Verwendung der grundlegenden Filter die Option _Ereignistypen_ , und wählen Sie die Kontrollkästchen für die Ereignisse aus, die Sie an Ihren Endpunkt senden möchten. 
+Erweitern Sie zur Verwendung der grundlegenden Filter die Option _Ereignistypen_, und wählen Sie die Kontrollkästchen für die Ereignisse aus, die Sie an Ihren Endpunkt senden möchten. 
 
 :::row:::
     :::column:::

@@ -2,13 +2,13 @@
 title: Konfigurieren von Nutzungseinstellungen in Classroom-Labs von Azure Lab Services
 description: Erfahren Sie, wie Sie die Anzahl der Kursteilnehmer für ein Lab konfigurieren, sie beim Lab registrieren, die Anzahl der Stunden steuern, in denen sie den virtuellen Computer verwenden können, und vieles mehr.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/11/2020
+ms.openlocfilehash: d3100f1a7e67e3b0d403375de02cb3daf5fcfb31
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91399668"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94555718"
 ---
 # <a name="add-and-manage-lab-users"></a>Hinzufügen und Verwalten von Labbenutzern
 
@@ -41,7 +41,9 @@ In diesem Abschnitt fügen Sie einem Lab Kursteilnehmer manuell oder durch Hochl
 
 ### <a name="add-users-by-uploading-a-csv-file"></a>Hinzufügen von Benutzern durch Hochladen einer CSV-Datei
 
-Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen.
+Sie können auch eine CSV-Datei mit E-Mail-Adressen von Benutzern hochladen, um Benutzer hinzuzufügen. 
+
+Eine CSV-Textdatei wird zum Speichern von durch Trennzeichen getrennten tabellarischen Daten (Zahlen und Text) verwendet. Anstatt Informationen in Spaltenfeldern (z. B. in Tabellenkalkulationen) zu speichern, speichert eine CSV-Datei Informationen, die durch Trennzeichen voneinander getrennt sind. Jede Zeile in einer CSV-Datei verfügt über die gleiche Anzahl von durch Trennzeichen getrennten „Feldern“. Sie können Excel verwenden, um auf einfache Weise CSV-Dateien zu erstellen und zu bearbeiten.
 
 1. Erstellen Sie in Microsoft Excel eine CSV-Datei, die die E-Mail-Adressen der Kursteilnehmer in einer Spalte auflistet.
 
@@ -172,6 +174,7 @@ Zum Hinzufügen von Kursteilnehmern zu einem Classroom-Lab verwenden Sie deren E
 - Ein GitHub-Konto. Dieses Konto muss mit einem Microsoft-Konto verknüpft werden.
 
 ### <a name="use-a-non-microsoft-email-account"></a>Verwenden eines Microsoft-fremden E-Mail-Kontos
+
 Kursteilnehmer können Microsoft-fremde E-Mail-Konten verwenden, um sich für ein Classroom-Lab zu registrieren und sich bei diesem anzumelden.  Die Registrierung erfordert jedoch, dass sie zunächst ein Microsoft-Konto erstellen, das mit ihrer Microsoft-fremden E-Mail-Adresse verknüpft ist.
 
 Viele Kursteilnehmer verfügen möglicherweise bereits über ein Microsoft-Konto, das mit ihrer Microsoft-fremden E-Mail-Adresse verknüpft ist. Beispielsweise verfügen Kursteilnehmer bereits über ein Microsoft-Konto, wenn sie ihre E-Mail-Adresse mit anderen Microsoft-Produkten oder -Diensten wie Office, Skype, OneDrive oder Windows verwendet haben.  
@@ -186,6 +189,7 @@ Hier ist ein Link für Kursteilnehmer, um sich [für ein Microsoft-Konto zu regi
 > Wenn sich Kursteilnehmer bei einem Classroom-Lab anmelden, ist keine Option zum Erstellen eines Microsoft-Kontos verfügbar. Daher wird empfohlen, diesen Registrierungslink (http://signup.live.com ) in die Registrierungs-E-Mail für das Classroom-Lab einzufügen, die Sie an Kursteilnehmer senden, die Microsoft-fremde Konten verwenden.
 
 ### <a name="use-a-github-account"></a>Verwenden eines GitHub-Kontos
+
 Kursteilnehmer können auch ein vorhandenes GitHub-Konto verwenden, um sich für ein Classroom-Lab zu registrieren und bei diesem anzumelden. Wenn Kursteilnehmer bereits über ein Microsoft-Konto verfügen, das mit ihrem GitHub-Konto verknüpft ist, können sie sich anmelden und ihr Kennwort angeben, wie im vorherigen Abschnitt gezeigt. 
 
 Wenn sie ihr GitHub-Konto noch nicht mit einem Microsoft-Konto verknüpft haben, können sie folgendermaßen vorgehen:
@@ -209,6 +213,7 @@ Wenn sie ihr GitHub-Konto noch nicht mit einem Microsoft-Konto verknüpft haben,
 
 
 ## <a name="next-steps"></a>Nächste Schritte
+
 Weitere Informationen finden Sie in folgenden Artikeln:
 
 - Für Administratoren: [Erstellen und Verwalten von Lab-Konten](how-to-manage-lab-accounts.md)

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 929181f9a4d159892956274a7958b1daa95cbc10
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360070"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540967"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -26,6 +26,10 @@ In diesem Artikel wird die Verwaltung digitaler Zwillinge beschrieben. Informati
 ## <a name="prerequisites"></a>Voraussetzungen
 
 [!INCLUDE [digital-twins-prereq-instance.md](../../includes/digital-twins-prereq-instance.md)]
+
+## <a name="ways-to-manage-twins"></a>Möglichkeiten zum Verwalten von Zwillingen
+
+[!INCLUDE [digital-twins-ways-to-manage.md](../../includes/digital-twins-ways-to-manage.md)]
 
 ## <a name="create-a-digital-twin"></a>Erstellen eines digitalen Zwillings
 
@@ -188,6 +192,17 @@ foreach (string prop in twin.Contents.Keys)
 
 Weitere Informationen zu den Serialisierungshilfsklassen finden Sie unter [*Gewusst wie: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
 
+## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
+
+Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](how-to-use-cli.md) ausführen.
+
+Im Folgenden finden Sie den Text der grundlegenden Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
+
+```sql
+SELECT *
+FROM DIGITALTWINS
+``` 
+
 ## <a name="update-a-digital-twin"></a>Aktualisieren eines digitalen Zwillings
 
 Um die Eigenschaften eines digitalen Zwillings zu aktualisieren, schreiben Sie die Informationen, die Sie ersetzen möchten, im [JSON Patch](http://jsonpatch.com/)-Format. So können Sie mehrere Eigenschaften gleichzeitig ersetzen. Anschließend übergeben Sie das JSON Patch-Dokument an eine `UpdateDigitalTwin()`-Methode:
@@ -260,7 +275,7 @@ Sehen Sie sich beispielsweise das folgende JSON Patch-Dokument an, das das `$mod
 Dieser Vorgang ist nur erfolgreich, wenn der vom Patch geänderte digitale Zwilling dem neuen Modell entspricht. 
 
 Betrachten Sie das folgenden Beispiel:
-1. Stellen Sie sich einen digitalen Zwilling mit dem Modell *foo_old* vor. *foo_old* definiert die erforderliche *mass* -Eigenschaft.
+1. Stellen Sie sich einen digitalen Zwilling mit dem Modell *foo_old* vor. *foo_old* definiert die erforderliche *mass*-Eigenschaft.
 2. Das neue Modell *foo_new* definiert die Eigenschaften „mass“ und fügt die neue erforderliche Eigenschaft *temperature* hinzu.
 3. Nach dem Patch muss der digitale Zwilling die beiden Eigenschaften „mass“ und „temperature“ aufweisen. 
 
@@ -360,7 +375,7 @@ async Task FindAndDeleteIncomingRelationshipsAsync(string dtId)
 
 Ein Beispiel für das gleichzeitige Löschen aller Zwillinge finden Sie in der Beispiel-App im [_Tutorial: Erkunden von Azure Digital Twins mit einer Beispielclient-App*](tutorial-command-line-app.md). In der Datei *CommandLoop.cs* wird dies in einer `CommandDeleteAllTwins()`-Funktion durchgeführt.
 
-## <a name="manage-twins-using-runnable-code-sample"></a>Verwalten von Zwillingen mithilfe eines ausführbaren Codebeispiels
+## <a name="runnable-digital-twin-code-sample"></a>Ausführbares Codebeispiel für digitale Zwillinge
 
 Sie können das folgende ausführbare Codebeispiel verwenden, um einen Zwilling zu erstellen, seine Details zu aktualisieren und den Zwilling zu löschen. 
 
@@ -535,22 +550,6 @@ Hier ist die Konsolenausgabe des obigen Programms:
 
 :::image type="content" source="./media/how-to-manage-twin/console-output-manage-twins.png" alt-text="Konsolenausgabe, die zeigt, dass der Zwilling erstellt, aktualisiert und gelöscht wurde" lightbox="./media/how-to-manage-twin/console-output-manage-twins.png":::
 
-## <a name="manage-twins-with-cli"></a>Verwalten von Zwillingen mit der Befehlszeilenschnittstelle
-
-Zwillinge können auch über die Azure Digital Twins-Befehlszeilenschnittstelle verwaltet werden. Die Befehle finden Sie unter [_Vorgehensweise: Verwenden der Azure Digital Twins-Befehlszeilenschnittstelle*](how-to-use-cli.md).
-
-## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
-
-Verwenden Sie zum Anzeigen aller digitalen Zwillinge in Ihrer Instanz eine [Abfrage](how-to-query-graph.md). Sie können eine Abfrage mit den [Abfrage-APIs](/rest/api/digital-twins/dataplane/query) oder den [CLI-Befehlen](how-to-use-cli.md) ausführen.
-
-Im Folgenden finden Sie den Text der grundlegenden Abfrage, die eine Liste aller digitalen Zwillinge in der Instanz zurückgibt:
-
-```sql
-SELECT *
-FROM DIGITALTWINS
-``` 
-
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie Beziehungen zwischen Ihren digitalen Zwillingen erstellen und verwalten können:
-* [*Verwenden Verwalten des Zwillingsgraphen mit Beziehungen*](how-to-manage-graph.md)
+Erfahren Sie, wie Sie Beziehungen zwischen Ihren digitalen Zwillingen erstellen und verwalten können: [*Vorgehensweise: Verwalten des Zwillingsgraphen mit Beziehungen*](how-to-manage-graph.md)

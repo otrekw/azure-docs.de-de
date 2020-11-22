@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 10/12/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 88828d6dea05c530d20fe378a108df2bd0dcd5b9
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93279450"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533751"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -20,9 +20,9 @@ ms.locfileid: "93279450"
 
 In Azure Digital Twins können Sie [Ereignisbenachrichtigungen](how-to-interpret-event-data.md) an Downstreamdienste oder verbundene Computeressourcen weiterleiten. Dies erfolgt, indem zunächst **Endpunkte** eingerichtet werden, die die Ereignisse empfangen können. Anschließend können Sie [**Ereignisrouten**](concepts-route-events.md) erstellen, die angeben, welche von Azure Digital Twins generierten Ereignisse an welche Endpunkte übermittelt werden.
 
-Endpunkte und Routen werden mit den [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) oder der [Azure Digital Twins CLI](how-to-use-cli.md) verwaltet. Dieser Artikel führt Sie durch den Vorgang zum Erstellen von Endpunkten und Routen über diese Mechanismen.
+Dieser Artikel führt Sie schrittweise durch das Erstellen von Endpunkten und Routen mit der [Ereignisrouten-APIs](/rest/api/digital-twins/dataplane/eventroutes), dem [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true) und der [CLI von Azure Digital Twins](how-to-use-cli.md).
 
-Sie können auch über das [Azure-Portal](https://portal.azure.com) verwaltet werden. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)*](how-to-manage-routes-portal.md).
+Alternativ können Sie auch Endpunkte und Routen mit dem [Azure-Portal](https://portal.azure.com) verwalten. Eine Version dieses Artikels, die stattdessen das Portal verwendet, finden Sie unter [*Vorgehensweise: Verwalten von Endpunkten und Routen (Portal)*](how-to-manage-routes-portal.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -71,8 +71,8 @@ Nun ist das Event Grid-Thema als Endpunkt innerhalb von Azure Digital Twins unte
 Der Vorgang zum Erstellen von Event Hubs- oder Service Bus-Endpunkten ähnelt dem oben gezeigten Event Grid-Vorgang.
 
 Erstellen Sie zunächst die Ressourcen, die Sie als Endpunkt verwenden möchten. Folgendes ist erforderlich:
-* Service Bus: _Service Bus-Namespace_ , _Service Bus-Thema_ , _Autorisierungsregel_
-* Event Hubs: _Event Hubs-Namespace_ , _Event Hub_ , _Autorisierungsregel_
+* Service Bus: _Service Bus-Namespace_, _Service Bus-Thema_, _Autorisierungsregel_
+* Event Hubs: _Event Hubs-Namespace_, _Event Hub_, _Autorisierungsregel_
 
 Verwenden Sie dann die folgenden Befehle, um die Endpunkte in Azure Digital Twins zu erstellen: 
 
@@ -156,7 +156,7 @@ Wenn Sie tatsächlich Daten von Azure Digital Twins an einen Endpunkt senden mö
 
 Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true).
 
-**Voraussetzung** : Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
+**Voraussetzung**: Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
 
 >[!NOTE]
 >Wenn Sie Ihre Endpunkte gerade erst bereitgestellt haben, vergewissern Sie sich, dass die Bereitstellung abgeschlossen ist, **bevor** Sie versuchen, die Endpunkte für eine neue Ereignisroute zu verwenden. Wenn die Routenbereitstellung fehlschlägt, weil die Endpunkte noch nicht bereit sind, warten Sie einige Minuten, und versuchen Sie es dann erneut.
@@ -238,7 +238,7 @@ Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für *https://{I
 }
 ``` 
 
-Dies sind die unterstützten Routenfilter. Verwenden Sie die Details in der Spalte *Filtertextschema* , um den Platzhalter `<filter-text>` im Anforderungstext oben zu ersetzen.
+Dies sind die unterstützten Routenfilter. Verwenden Sie die Details in der Spalte *Filtertextschema*, um den Platzhalter `<filter-text>` im Anforderungstext oben zu ersetzen.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
 

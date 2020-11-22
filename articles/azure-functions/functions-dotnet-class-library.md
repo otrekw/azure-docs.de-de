@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Azure Functions mithilfe von C# entwickelt wird.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/24/2020
-ms.openlocfilehash: 51a7ffe72f8597fbaa11eae12585ebde8bb83153
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 3c363d13933e6554a6eefbeaf02d87dc6b382628
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94380962"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578772"
 ---
 # <a name="azure-functions-c-developer-reference"></a>C#-Entwicklerreferenz zu Azure Functions
 
@@ -17,12 +17,13 @@ ms.locfileid: "94380962"
 
 Dieser Artikel ist eine Einführung in die Entwicklung von Azure Functions durch Verwenden von C# in .NET-Klassenbibliotheken.
 
+Für C#-Entwickler sind möglicherweise auch folgende Artikel interessant:
+
+| Erste Schritte | Konzepte| Geführte Tutorials/Beispiele |
+| -- | -- | -- | 
+| <ul><li>[Verwenden von Visual Studio](functions-create-your-first-function-visual-studio.md)</li><li>[Verwendung von Visual Studio Code](create-first-function-vs-code-csharp.md)</li><li>[Verwenden von Befehlszeilentools](create-first-function-cli-csharp.md)</li></ul> | <ul><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen zur &nbsp;Leistung](functions-best-practices.md)</li><li>[Visual Studio-Entwicklung](functions-develop-vs.md)</li><li>[Dependency Injection](functions-dotnet-dependency-injection.md)</li></ul> | <ul><li>[Erstellen serverloser Anwendungen](/learn/paths/create-serverless-applications/)</li><li>[Beispiele für C#](/samples/browse/?products=azure-functions&languages=csharp)</li></ul> |
+
 Azure Functions unterstützt die Programmiersprachen C# und C#-Skript. Wenn Sie nach Anleitungen zum [Verwenden von C# im Azure-Portal](functions-create-function-app-portal.md) suchen, lesen Sie [C#-Skriptentwicklerreferenz (C#-Skript, CSX) zu Azure Functions](functions-reference-csharp.md).
-
-In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Artikel bereits gelesen haben:
-
-* [Azure Functions: Entwicklerhandbuch](functions-reference.md)
-* [Azure Functions Visual Studio 2019 Tools](functions-develop-vs.md)
 
 ## <a name="supported-versions"></a>Unterstützte Versionen
 
