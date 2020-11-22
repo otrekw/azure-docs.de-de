@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/22/2020
+ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ebf383c1a904027d3ff5a1864ea9f50e87a5fa8
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92093292"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701312"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
@@ -51,11 +51,7 @@ Die Überladungen dieser Methoden bieten zusätzliche Optionen zum Steuern, wie 
 
 ### <a name="manage-how-many-results-are-returned"></a>Festlegen der Anzahl der zurückgegebenen Ergebnisse
 
-Standardmäßig gibt ein Auflistungsvorgang bis zu 5000 Ergebnisse in einem Durchgang zurück, Sie können jedoch die Anzahl der Ergebnisse angeben, die von jedem Auflistungsvorgang zurückgegeben werden soll. Die Beispiele in diesem Artikel veranschaulichen dies.
-
-Wenn ein Auflistungsvorgang mehr als 5000 Blobs zurückgibt oder die Anzahl der verfügbaren Blobs die von Ihnen angegebene Anzahl überschreitet, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
-
-Überprüfen Sie im Code den Wert des Fortsetzungstokens, um zu bestimmen, ob er NULL ist. Wenn das Fortsetzungstoken NULL ist, ist der Satz der Ergebnisse vollständig. Wenn das Fortsetzungstoken nicht NULL ist, rufen Sie den Auflistungsvorgang erneut auf, und übergeben Sie das Fortsetzungstoken, um den nächsten Ergebnissatz so oft abzurufen, bis das Fortsetzungstoken NULL ist.
+Standardmäßig gibt ein Auflistungsvorgang bis zu 5000 Ergebnisse in einem Durchgang zurück, Sie können jedoch die Anzahl der Ergebnisse angeben, die von jedem Auflistungsvorgang zurückgegeben werden soll. Die Beispiele in diesem Artikel zeigen Ihnen, wie Ergebnisse in Seiten zurückgegeben werden.
 
 ### <a name="filter-results-with-a-prefix"></a>Filtern von Ergebnissen mit einem Präfix
 
@@ -63,11 +59,15 @@ Um die Liste der Blobs zu filtern, geben Sie für den `prefix`-Parameter eine Ze
 
 ### <a name="return-metadata"></a>Zurückgeben von Metadaten
 
-Sie können zusammen mit den Ergebnissen Blobmetadaten zurückgeben. 
+Sie können zusammen mit den Ergebnissen Blobmetadaten zurückgeben.
 
 - Wenn Sie das .NET v12 SDK verwenden, geben Sie den Wert **Metadaten** für die [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)-Enumeration an.
 
-- Wenn Sie das .NET v11 SDK verwenden, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes** -Methoden aufrufen, um die Blobmetadaten abzurufen.
+- Wenn Sie das .NET v11 SDK verwenden, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
+
+### <a name="list-blob-versions-or-snapshots"></a>Auflisten von Blobversionen oder-Momentaufnahmen
+
+Geben Sie zum Auflisten von Blobversionen oder Momentaufnahmen bei der .NET v12-Clientbibliothek den Parameter [BlobStates](/dotnet/api/azure.storage.blobs.models.blobstates) im Feld **Version** oder **Momentaufnahme** an. Versionen und Momentaufnahmen werden von der ältesten zur neuesten aufgeführt. Weitere Informationen zum Auflisten von Versionen finden Sie unter [Auflisten von Blobversionen](versioning-enable.md#list-blob-versions).
 
 ### <a name="flat-listing-versus-hierarchical-listing"></a>Flache Auflistung und hierarchische Auflistung im Vergleich
 
@@ -89,7 +89,11 @@ Wenn Sie für Ihr Konto das Feature für hierarchische Namespaces aktiviert habe
 
 :::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_ListBlobsFlatListing":::
 
-# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+# <a name="net-v11"></a>[.NET v11](#tab/dotnet11)
+
+Wenn ein Auflistungsvorgang mehr als 5000 Blobs zurückgibt oder die Anzahl der verfügbaren Blobs die von Ihnen angegebene Anzahl überschreitet, gibt Azure Storage ein *Fortsetzungstoken* mit der Liste der Blobs zurück. Ein Fortsetzungstoken ist ein nicht transparenter Wert, den Sie verwenden können, um den nächsten Satz von Ergebnissen aus Azure Storage abzurufen.
+
+Überprüfen Sie im Code den Wert des Fortsetzungstokens, um zu bestimmen, ob er NULL ist. Wenn das Fortsetzungstoken NULL ist, ist der Satz der Ergebnisse vollständig. Wenn das Fortsetzungstoken nicht NULL ist, rufen Sie den Auflistungsvorgang erneut auf, und übergeben Sie das Fortsetzungstoken, um den nächsten Ergebnissatz so oft abzurufen, bis das Fortsetzungstoken NULL ist.
 
 ```csharp
 private static async Task ListBlobsFlatListingAsync(CloudBlobContainer container, int? segmentSize)
