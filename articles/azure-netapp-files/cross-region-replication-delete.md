@@ -12,20 +12,23 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e08b69271ba9d115c26418bc5e421ee6c94b031d
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708350"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695706"
 ---
 # <a name="delete-replications"></a>Löschen von Replikationen
 
 Sie können die Replikationsverbindung zwischen den Quell- und Zielvolumes beenden, indem Sie die Volumereplikation löschen. Sie können entweder über das Quell- oder das Zielvolume einen Löschvorgang durchführen. Mit dem Löschvorgang wird nur die Autorisierung für die Replikation entfernt. Damit wird weder das Quell- noch das Zielvolume entfernt. 
 
 ## <a name="steps"></a>Schritte
+
+1. Stellen Sie sicher, dass das Replikationspeering unterbrochen wurde, bevor Sie die Volumereplikation löschen.    
+    Weitere Informationen finden Sie unter [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md) und [Unterbrechen des Replikationspeerings](cross-region-replication-manage-disaster-recovery.md#break-replication-peering-to-activate-the-destination-volume).  
 
 1. Wenn Sie die Volumereplikation löschen möchten, wählen Sie aus dem Quell- oder Zielvolume die Option **Replikation** aus.  
 
