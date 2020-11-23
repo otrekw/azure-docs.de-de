@@ -1,6 +1,6 @@
 ---
-title: Microsoft Azure-Datenverschlüsselung ruhender Daten | Microsoft-Dokumentation
-description: In diesem Artikel erhalten Sie einen Überblick über die Datenverschlüsselung ruhender Daten von Microsoft Azure, die Hauptfunktionen und allgemeine Überlegungen.
+title: Datenverschlüsselung ruhender Azure-Daten – Azure Security
+description: In diesem Artikel erhalten Sie einen Überblick über die Datenverschlüsselung ruhender Daten von Azure, die Hauptfunktionen und allgemeine Überlegungen.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: dafc55656be2d8ef2c0f52d633c7db7eeee83534
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412781"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556623"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Datenverschlüsselung ruhender Azure-Daten
 
@@ -128,7 +128,7 @@ Alle Azure Storage-Dienste (Blob Storage, Queue Storage, Table Storage und Azure
 
 Azure SQL-Datenbank unterstützt aktuell die Verschlüsselung ruhender Daten für von Microsoft verwaltete serverseitige und clientseitige Verschlüsselungsszenarien.
 
-Die Unterstützung für die Serververschlüsselung wird aktuell mit dem SQL-Feature „Transparent Data Encryption“ bereitgestellt. Sobald ein Azure SQL-Datenbank-Kunde TDE aktiviert, werden Schlüssel automatisch für ihn erstellt und verwaltet. Die Verschlüsselung ruhender Daten kann auf Datenbank- und Serverebene aktiviert werden. Seit Juni 2017 ist [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) standardmäßig in neu erstellten Datenbanken aktiviert. Die Azure SQL-Datenbank unterstützt von Kunden verwaltete RSA-Schlüssel mit 2048 Bit in Azure Key Vault. Weitere Informationen finden Sie unter [Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql?view=azuresqldb-current).
+Die Unterstützung für die Serververschlüsselung wird aktuell mit dem SQL-Feature „Transparent Data Encryption“ bereitgestellt. Sobald ein Azure SQL-Datenbank-Kunde TDE aktiviert, werden Schlüssel automatisch für ihn erstellt und verwaltet. Die Verschlüsselung ruhender Daten kann auf Datenbank- und Serverebene aktiviert werden. Seit Juni 2017 ist [Transparent Data Encryption (TDE)](/sql/relational-databases/security/encryption/transparent-data-encryption) standardmäßig in neu erstellten Datenbanken aktiviert. Die Azure SQL-Datenbank unterstützt von Kunden verwaltete RSA-Schlüssel mit 2048 Bit in Azure Key Vault. Weitere Informationen finden Sie unter [Transparent Data Encryption mit BYOK-Unterstützung (Bring Your Own Key) für Azure SQL-Datenbank und Data Warehouse](/sql/relational-databases/security/encryption/transparent-data-encryption-byok-azure-sql).
 
 Die clientseitige Verschlüsselung von Daten von Azure SQL-Datenbank wird durch die Funktion [Always Encrypted](/sql/relational-databases/security/encryption/always-encrypted-database-engine) unterstützt. Always Encrypted verwendet einen Schlüssel, der vom Client erstellt und gespeichert wird. Kunden können den Masterschlüssel in einem Windows-Zertifikatspeicher, Azure Key Vault oder einem lokalen Hardwaresicherheitsmodul speichern. Mit SQL Server Management Studio können SQL-Benutzer auswählen, welchen Schlüssel sie zum Verschlüsseln welcher Spalte verwenden möchten.
 
@@ -140,3 +140,4 @@ Der Schutz von Kundendaten, die in Azure-Diensten gespeichert sind, ist für Mic
 
 - Weitere Informationen zu dienstseitig und kundenseitig verwalteten Schlüsseln finden Sie unter [Datenverschlüsselungsmodelle](encryption-models.md).
 - Erfahren Sie, wie Azure [doppelte Verschlüsselung](double-encryption.md) verwendet, um Bedrohungen zu minimieren, die bei der Verschlüsselung von Daten auftreten.
+- Erfahren Sie, was Microsoft unternimmt, um die [Plattformintegrität und -sicherheit](platform.md) von Hosts beim Durchlaufen von Hardware- und Firmwareentwicklungs-, Integration-s, Operationalisierungs- und Reparaturpipelines zu gewährleisten.

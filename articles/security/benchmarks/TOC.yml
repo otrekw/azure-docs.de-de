@@ -81,6 +81,8 @@
       href: /azure/data-explorer/security-baseline
     - name: Azure Data Factory-Sicherheitsbaseline
       href: ../../data-factory/security-baseline.md
+    - name: Azure Data Share-Sicherheitsbaseline
+      href: ../../data-share/security-baseline.md
     - name: Azure Database for MySQL-Sicherheitsbaseline
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB-Sicherheitsbaseline
@@ -91,6 +93,8 @@
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: Azure Databricks-Sicherheitsbaseline
       href: /azure/databricks/scenarios/security-baseline
+    - name: Sicherheitsbaseline von Azure Defender für IoT Edge
+      href: ../../defender-for-iot/security-baseline.md
     - name: Azure DNS-Sicherheitsbaseline
       href: ../../dns/security-baseline.md
     - name: Azure DevTest Labs-Sicherheitsbaseline
@@ -101,18 +105,24 @@
       href: ../../frontdoor/security-baseline.md
     - name: Azure Functions-Sicherheitsbaseline
       href: ../../azure-functions/security-baseline.md
+    - name: Azure HPC Cache-Sicherheitsbaseline
+      href: ../../hpc-cache/security-baseline.md
     - name: Azure Information Protection-Sicherheitsbaseline
       href: /azure/information-protection/security-baseline
     - name: Azure IoT Hub-Sicherheitsbaseline
       href: ../../iot-hub/security-baseline.md
     - name: Azure Kubernetes Service-Sicherheitsbaseline
       href: ../../aks/security-baseline.md
+    - name: Azure Lighthouse-Sicherheitsbaseline
+      href: ../../lighthouse/security-baseline.md
     - name: Azure Load Balancer-Sicherheitsbaseline
       href: ../../load-balancer/security-baseline.md
     - name: Azure Monitor-Sicherheitsbaseline
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Machine Learning-Sicherheitsbaseline
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Migrate-Sicherheitsbaseline
+      href: ../../migrate/security-baseline.md
     - name: Azure Policy-Sicherheitsbaseline
       href: ../../governance/policy/concepts/azure-security-benchmark-baseline.md
     - name: Azure Private Link-Sicherheitsbaseline

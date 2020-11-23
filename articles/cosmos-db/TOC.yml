@@ -196,7 +196,7 @@
           href: sql-api-python-samples.md
         - name: PowerShell
           href: powershell-samples.md
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: cli-samples.md
         - name: Azure Resource Manager
           href: templates-samples-sql.md
@@ -945,6 +945,8 @@
               href: oracle-migrate-cosmos-db-blitzz.md
             - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Blitzz'
               href: cassandra-migrate-cosmos-db-blitzz.md
+            - name: 'Migrieren: Apache Cassandra zur Cassandra-API mithilfe von Databricks'
+              href: cassandra-migrate-cosmos-db-databricks.md
         - name: Änderungsfeed
           href: cassandra-change-feed.md
         - name: 'Erstellen eines Containers: Cassandra-API'

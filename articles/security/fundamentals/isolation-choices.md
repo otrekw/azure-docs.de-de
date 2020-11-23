@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: fa2025fa31ac960eb6c61d03bafd582de4f0e55c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410576"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696216"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -38,7 +38,7 @@ Jedes Azure AD-Verzeichnis ist eindeutig und von anderen Azure AD-Verzeichnissen
 
 ### <a name="azure-tenancy"></a>Azure-Mandant
 
-Die Bezeichnung „Azure-Mandant“ (Azure-Abonnement) bezieht sich auf eine Kunden-/Abrechnungsbeziehung und einen eindeutigen [Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) in [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Die Isolation auf Mandantenebene wird in Microsoft Azure mithilfe von Azure Active Directory und der damit verbundenen [rollenbasierten Zugriffssteuerung](../../role-based-access-control/overview.md) erreicht. Jedes Azure-Abonnement ist mit einem Azure Active Directory-Verzeichnis (AD) verknüpft.
+Die Bezeichnung „Azure-Mandant“ (Azure-Abonnement) bezieht sich auf eine Kunden-/Abrechnungsbeziehung und einen eindeutigen [Mandanten](../../active-directory/develop/quickstart-create-new-tenant.md) in [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md). Die Isolation auf Mandantenebene wird in Microsoft Azure mithilfe von Azure Active Directory und der damit verbundenen [rollenbasierten Zugriffssteuerung von Azure](../../role-based-access-control/overview.md) erreicht. Jedes Azure-Abonnement ist mit einem Azure Active Directory-Verzeichnis (AD) verknüpft.
 
 Benutzer, Gruppen und Anwendungen aus diesem Verzeichnis können Ressourcen im Azure-Abonnement verwalten. Sie können diese Zugriffsrechte mit dem Azure-Portal, Azure-Befehlszeilentools und Azure-Verwaltungs-APIs zuweisen. Ein Azure AD-Mandant ist logisch isoliert und nutzt Sicherheitsgrenzen, sodass kein Kunde auf andere Mandanten zugreifen oder diese kompromittieren kann – weder in böswilliger Absicht noch versehentlich. Azure AD wird auf „Bare-Metal“-Servern ausgeführt, die in einem abgetrennten Netzwerksegment isoliert sind, für das per Paketfilterung auf Hostebene und über die Windows-Firewall unerwünschte Verbindungen und Datenübertragungen blockiert werden.
 
@@ -52,7 +52,7 @@ Benutzer, Gruppen und Anwendungen aus diesem Verzeichnis können Ressourcen im A
 
 - Der physische Zugriff auf die Server des Azure AD-Diensts und der direkte Zugriff auf die Back-End-Systeme von Azure AD ist eingeschränkt.
 
-- Azure AD-Benutzer haben keinen Zugriff auf physische Assets oder Standorte und können daher auch nicht die logischen Richtlinien der rollenbasierten Zugriffssteuerung (RBAC) umgehen. Diese sind unten beschrieben.
+- Azure AD-Benutzer haben keinen Zugriff auf physische Assets oder Standorte und können daher auch nicht die logischen Azure RBAC-Richtlinien umgehen. Diese sind unten beschrieben.
 
 Für Diagnose- und Wartungszwecke ist ein Betriebsmodell mit einem System für Just-in-Time-Rechteerweiterungen erforderlich und wird entsprechend verwendet. Mit Azure AD Privileged Identity Management (PIM) wird das Konzept der „berechtigten Administratoren“ eingeführt. [Berechtigte Administratoren](../../active-directory/privileged-identity-management/pim-configure.md) sollten Benutzer sein, die von Zeit zu Zeit (aber nicht jeden Tag) Zugriff mit erhöhten Rechten benötigen. Die Rolle ist inaktiv, bis der Benutzer Zugriff benötigt. Dann wird eine Aktivierung ausgeführt, und der Benutzer wird für einen zuvor festgelegten Zeitraum zu einem aktiven Administrator.
 
@@ -80,7 +80,7 @@ Azure RBAC verfügt über drei grundlegende Rollen, die für alle Ressourcentype
 
 Die verbleibenden Azure-Rollen in Azure ermöglichen die Verwaltung von bestimmten Azure-Ressourcen. Mit der Rolle „Mitwirkender von virtuellen Computern“ können Benutzer beispielsweise virtuelle Computer erstellen und verwalten. Sie haben damit keinen Zugriff auf das virtuelle Azure-Netzwerk oder das Subnetz, mit dem der virtuelle Computer verbunden ist.
 
-Unter [Integrierte Rollen für die rollenbasierte Zugriffssteuerung in Azure](../../role-based-access-control/built-in-roles.md) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](../../role-based-access-control/custom-roles.md)weiter.
+Unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md) sind die Rollen aufgeführt, die in Azure verfügbar sind. Hierbei werden die Vorgänge und der Bereich angegeben, die mit jeder integrierten Rolle für Benutzer gewährt werden. Wenn Sie Ihre eigenen Rollen definieren möchten, um eine noch bessere Kontrolle zu haben, helfen Ihnen die Informationen zum Erstellen von [benutzerdefinierten Rollen in Azure RBAC](../../role-based-access-control/custom-roles.md)weiter.
 
 Weitere Beispiele für Azure Active Directory-Funktionen sind:
 
