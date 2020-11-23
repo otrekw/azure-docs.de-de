@@ -89,6 +89,8 @@
               href: samples/resource-manager-web-app.md
             - name: Azure-Funktionen
               href: samples/resource-manager-function-app.md
+        - name: Regeln für die Datensammlung
+          href: samples/resource-manager-data-collection-rules.md
         - name: Diagnoseeinstellungen
           href: samples/resource-manager-diagnostic-settings.md
         - name: Log Analytics-Arbeitsbereiche
@@ -164,6 +166,7 @@
         - name: Bereitstellen von Azure Monitor
           href: deploy.md
         - name: Bedarfsorientiertes Bereitstellen
+          displayName: 'Azure Policy, Policy'
           href: deploy-scale.md
     - name: Verwalten und Konfigurieren
       items:
@@ -206,7 +209,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -351,6 +354,9 @@
             - name: Übersicht
               displayname: Azure Monitor agent
               href: platform/azure-monitor-agent-overview.md
+            - name: Installieren
+              displayname: Azure Monitor agent
+              href: platform/azure-monitor-agent-install.md
             - name: Datensammlung
               displayname: 'data collection rule,Azure Monitor agent'
               href: platform/data-collection-rule-azure-monitor-agent.md
