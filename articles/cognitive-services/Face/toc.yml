@@ -71,6 +71,16 @@
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
         - name: "Dokumentation zu Cognitive\_Services-Containern"
           href: ../containers/index.yml
+- name: Detaillierte Informationen zu Szenarien
+  items:
+    - name: Registrierung der Gesichtserkennung
+      items:
+        - name: Übersicht
+          href: enrollment-overview.md
+        - name: Anleitungen
+          items:
+            - name: Erstellen einer Registrierungs-App mit React
+              href: build-enrollment-app.md
 - name: Verweis
   items:
     - name: Gesichtserkennungs-API
@@ -105,7 +115,7 @@
       href: 'https://azure.microsoft.com/updates/?product=cognitive-services'
     - name: Regionale Verfügbarkeit
       href: 'https://azure.microsoft.com/global-infrastructure/services/?products=cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: face-encryption-of-data-at-rest.md

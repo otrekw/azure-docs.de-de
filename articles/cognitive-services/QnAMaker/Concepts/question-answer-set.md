@@ -1,16 +1,16 @@
 ---
-title: 'Entwerfen einer Wissensdatenbank: QnA Maker'
+title: 'Entwerfen einer Wissensdatenbank: QnA Maker-Konzepte'
 description: Erfahren Sie, wie Sie eine Wissensdatenbank für QnA Maker entwerfen.
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: b2661b61e0422f796813be0908d866028ee128a6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c21c82b5fd024598da30f4ac7b1ed01e64561e3b
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91776900"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576188"
 ---
 # <a name="question-and-answer-pair-concepts"></a>Konzepte von Frage-Antwort-Paaren
 

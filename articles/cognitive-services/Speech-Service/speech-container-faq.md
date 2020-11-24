@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 07/24/2020
+ms.date: 11/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b13a6944290f58f5ede239dee60610d67fff8b1c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0e4a6d9180d2a9949cebc40cf30edffac73ef9d0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88918467"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653537"
 ---
 # <a name="speech-service-containers-frequently-asked-questions-faq"></a>Häufig gestellte Fragen (FAQ) zu Containern für den Speech-Dienst
 
@@ -43,7 +43,7 @@ Darüber hinaus packen wir ausführbare Dateien für Computer mit dem [AVX2](spe
 Cannot find Scan4_llvm__mcpu_skylake_avx512 in cache, using JIT...
 ```
 
-Schließlich können Sie mit der `DECODER MAX_COUNT`-Variablen die Anzahl der gewünschten Decoder innerhalb eines *einzelnen* Containers festlegen. Im Grunde genommen sollten wir also mit Ihrer SKU (CPU/Speicher) beginnen, und wir können Ihnen empfehlen, wie Sie sie optimal nutzen können. Ein geeigneter Ausgangspunkt ist der Verweis auf die empfohlenen Ressourcenspezifikationen für Hostcomputer.
+Sie können mit der `DECODER MAX_COUNT`-Variablen die Anzahl der gewünschten Decoder innerhalb eines *einzelnen* Containers festlegen. Im Grunde genommen sollten wir also mit Ihrer SKU (CPU/Speicher) beginnen, und wir können Ihnen empfehlen, wie Sie sie optimal nutzen können. Ein geeigneter Ausgangspunkt ist der Verweis auf die empfohlenen Ressourcenspezifikationen für Hostcomputer.
 
 <br>
 </details>
@@ -419,7 +419,7 @@ Wie viele gleichzeitige Anforderungen können von einem Szenario mit vier Kernen
 |-----------------------|---------------------|---------------------|
 | Benutzerdefinierte Sprachsynthese | Ein Kern, 2 GB Arbeitsspeicher | 2 Kerne, 3 GB Arbeitsspeicher |
 
-***
+**_
 
 - Jeder Kern muss eine Geschwindigkeit von mindestens 2,6 GHz aufweisen.
 - Bei Dateien wird die Drosselung im Speech SDK auf 2x festgelegt (die ersten fünf Sekunden der Audiodaten werden nicht gedrosselt).
@@ -438,7 +438,7 @@ Um z. B. 1000 Stunden/24 Stunden zu verarbeiten, haben wir versucht, 3-4 virtue
 <b>Unterstützt der Speech-Container die Interpunktion?</b>
 </summary>
 
-**Antwort:** Im lokalen Container ist die Großschreibung (ITN) verfügbar. Die Interpunktion ist sprachabhängig und wird für einige Sprachen, darunter Chinesisch und Japanisch, nicht unterstützt.
+_ *Antwort:* * Im lokalen Container ist die Großschreibung (ITN) verfügbar. Die Interpunktion ist sprachabhängig und wird für einige Sprachen, darunter Chinesisch und Japanisch, nicht unterstützt.
 
 Wir *verfügen* über eine implizite und grundlegende Unterstützung der Interpunktion für die bestehenden Container, aber sie ist standardmäßig `off`. Das bedeutet, dass Sie in Ihrem Beispiel das Zeichen `.` erhalten können, aber nicht das Zeichen `。`. Um diese implizite Logik zu aktivieren, finden Sie hier ein Beispiel dafür, wie dies in Python mit unserem Speech SDK möglich ist (in anderen Sprachen wäre es ähnlich):
 
@@ -480,6 +480,16 @@ Content-Length: 0
 
 **Antwort:** Wir unterstützen keine REST-API in beiden Spracherkennungscontainern, sondern nur WebSockets über das Speech SDK. Weitere Informationen finden Sie in der offiziellen Dokumentation unter [Endpunkte der Abfragevorhersage](speech-container-howto.md#query-the-containers-prediction-endpoint).
 
+<br>
+</details>
+
+
+<details>
+<summary>
+<b> Warum wird der Container als Nicht-Root-Benutzer ausgeführt? Welche Probleme könnten dadurch entstehen?</b>
+</summary>
+
+**Antwort:** Beachten Sie, dass der Standardbenutzer innerhalb des Containers ein Nicht-Root-Benutzer ist. Dies bietet Schutz vor Prozessen, die aus dem Container entweichen und ausgeweitete Berechtigungen auf dem Hostknoten erhalten. Standardmäßig gehen einige Plattformen wie die OpenShift Container-Plattform bereits entsprechend vor, indem sie Container mithilfe einer willkürlich zugewiesenen Benutzer-ID ausführen. Für diese Plattformen muss der Nicht-Root-Benutzer über die Berechtigung verfügen, auf jedes extern zugeordnete Volume zu schreiben, das Schreibvorgänge erfordert. Beispiel: ein Protokollordner oder ein Downloadordner für benutzerdefinierte Modelle.
 <br>
 </details>
 
