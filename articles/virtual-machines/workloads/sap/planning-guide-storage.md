@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 819ac1f01cc182c79571de35ec0753f694dc7722
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88653612"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540925"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -352,11 +352,10 @@ Wenn Sie virtuelle Azure-Computer im Lebenszyklus eines SAP-Systems ausbauen, so
 
 
 ## <a name="striping-or-not-striping"></a>Striping oder kein Striping
-Das Erstellen eines Stripesets aus mehreren Azure-Datenträgern in einem größeren Volume ermöglicht es Ihnen, die IOPS und den Durchsatz der einzelnen Datenträger in einem Volume zu kumulieren. Striping wird nur für Azure Storage Standard und Azure Storage Premium verwendet. Bei Azure Disk Ultra können Sie Durchsatz und IOPS unabhängig von der Kapazität eines Datenträgers konfigurieren, sodass die Verwendung von Stripesets nicht erforderlich ist. Für freigegebene auf NFS oder SMB basierende Volumes können keine Stripesets erstellt werden. Da der Durchsatz und die IOPS bei Azure Storage Premium nicht linear sind, können Sie eine geringere Kapazität mit den gleichen IOPS und dem gleichen Durchsatz bereitstellen wie bei großen einzelnen Azure Storage Premium-Datenträgern. Mit dieser Methode können mit Azure Storage Premium ein höherer Durchsatz oder höhere IOPS zu geringeren Kosten erreicht werden. Beispiel:
+Das Erstellen eines Stripesets aus mehreren Azure-Datenträgern in einem größeren Volume ermöglicht es Ihnen, die IOPS und den Durchsatz der einzelnen Datenträger in einem Volume zu kumulieren. Striping wird nur für Azure Storage Standard und Azure Storage Premium verwendet. Bei Azure Disk Ultra können Sie Durchsatz und IOPS unabhängig von der Kapazität eines Datenträgers konfigurieren, sodass die Verwendung von Stripesets nicht erforderlich ist. Für freigegebene auf NFS oder SMB basierende Volumes können keine Stripesets erstellt werden. Da der Durchsatz und die IOPS bei Azure Storage Premium nicht linear sind, können Sie eine geringere Kapazität mit den gleichen IOPS und dem gleichen Durchsatz bereitstellen wie bei großen einzelnen Azure Storage Premium-Datenträgern. Mit dieser Methode können mit Azure Storage Premium ein höherer Durchsatz oder höhere IOPS zu geringeren Kosten erreicht werden. Durch Striping über zwei Storage P15 Premium-Datenträger erreichen Sie beispielsweise einen Durchsatz von: 
 
-- Durch Striping über zwei Storage P15 Premium-Datenträger erreichen Sie einen Durchsatz von 
 - 250 MiB/s. Ein solches Volume verfügt über eine Kapazität von 512 GiB. Für einen einzelnen Datenträger mit einem Durchsatz von 250 MiB/s müssen Sie einen P40-Datenträger mit einer Kapazität von 2 TiB verwenden. 
-- Sie können auch durch Striping von vier Storage P10 Premium-Datenträgern mit einer Gesamtkapazität von 512 GiB einen Durchsatz von 400 MiB/s erzielen. Für einen einzelnen Datenträger mit einem Durchsatz von mindestens 500 MiB pro Sekunde müssen Sie einen Storage P60 Premium-Datenträger mit einer Kapazität von 8 TiB verwenden. Da die Kosten für Storage Premium nahezu linear zur Kapazität sind, sind die Kosteneinsparungen bei Verwendung von Striping klar erkennbar.
+- 400 MiB/s durch Striping von vier Storage P10 Premium-Datenträgern mit einer Gesamtkapazität von 512 GiB. Für einen einzelnen Datenträger mit einem Durchsatz von mindestens 500 MiB pro Sekunde müssen Sie einen Storage P60 Premium-Datenträger mit einer Kapazität von 8 TiB verwenden. Da die Kosten für Storage Premium nahezu linear zur Kapazität sind, sind die Kosteneinsparungen bei Verwendung von Striping klar erkennbar.
 
 Beim Striping sind folgende Regeln zu beachten:
 

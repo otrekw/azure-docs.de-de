@@ -1,6 +1,6 @@
 ---
 title: Versionshinweise zu Azure Stack Edge Pro (Preview) | Microsoft-Dokumentation
-description: In diesem Artikel werden schwerwiegende offene Issues und Lösungen im Release zur allgemeinen Verfügbarkeit von Azure Stack Edge Pro beschrieben.
+description: In diesem Artikel werden schwerwiegende offene Probleme und Lösungen im Release mit verfügbarer Vorschauversion von Azure Stack Edge Pro beschrieben.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: article
 ms.date: 09/07/2020
 ms.author: alkohli
-ms.openlocfilehash: d166b0a4c4b69f03d7dba9d997d7d07fbd81ef41
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: cfb20b3bf9db9e02ed9820232f1f252379660dca
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90893984"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579271"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-preview-release-notes"></a>Versionshinweise zu Azure Stack Edge Pro (Preview) mit GPU
 

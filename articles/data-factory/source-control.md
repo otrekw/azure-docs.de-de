@@ -11,12 +11,12 @@ ms.reviewer: ''
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 78e230453e256e90803b3607fa02904f90774881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 37982d1c28d445d40fa9d53a2a1eb076fbbf7f2f
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325043"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566706"
 ---
 # <a name="source-control-in-azure-data-factory"></a>Quellcodeverwaltung in Azure Data Factory
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
@@ -207,7 +207,7 @@ Versionskontrollsysteme (auch als _Quellcodeverwaltung_ bezeichnet) ermöglichen
 
 ### <a name="creating-feature-branches"></a>Erstellen von Featurebranches
 
-Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfügt über einen Branch für die Kollaboration. (`master` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. Sobald der Bereich „Neuer Branch“ angezeigt wird, geben Sie den Namen Ihres Featurebranches ein.
+Jedes Azure Repos Git-Repository, das einer Data Factory zugeordnet ist, verfügt über einen Branch für die Kollaboration. (`main` ist der Standardbranch für die Kollaboration.) Benutzer können auch Featurebranches erstellen, indem sie im Dropdownmenü „Branch“ auf **+ Neuer Branch** klicken. Sobald der Bereich „Neuer Branch“ angezeigt wird, geben Sie den Namen Ihres Featurebranches ein.
 
 ![Neuen Branch erstellen](media/author-visually/new-branch.png)
 
@@ -232,11 +232,11 @@ In Azure Data Factory kann jeweils nur ein Veröffentlichungsbranch vorhanden se
 
 ### <a name="publish-code-changes"></a>Veröffentlichen von Codeänderungen
 
-Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`master` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen** , um Ihre Codeänderungen manuell im Masterbranch im Data Factory-Dienst zu veröffentlichen.
+Nachdem Sie die Änderungen mit dem Kollaborationsbranch gemergt haben (`master` ist die Standardeinstellung), klicken Sie auf **Veröffentlichen**, um Ihre Codeänderungen manuell im Masterbranch im Data Factory-Dienst zu veröffentlichen.
 
 ![Veröffentlichen von Änderungen für den Data Factory-Dienst](media/author-visually/publish-changes.png)
 
-Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für die Veröffentlichung und ausstehende Änderungen korrekt sind. Nachdem Sie Ihre Änderungen überprüft haben, klicken Sie auf **OK** , um die Veröffentlichung zu bestätigen.
+Ein Seitenbereich wird geöffnet, in dem Sie bestätigen, dass der Branch für die Veröffentlichung und ausstehende Änderungen korrekt sind. Nachdem Sie Ihre Änderungen überprüft haben, klicken Sie auf **OK**, um die Veröffentlichung zu bestätigen.
 
 ![Überprüfen des Branch für die Veröffentlichung](media/author-visually/configure-publish-branch.png)
 
@@ -282,7 +282,7 @@ Wenn Sie zu einem anderen Git-Repository wechseln möchten, navigieren Sie im Ve
 
 ![Git-Symbol](media/author-visually/remove-repository.png)
 
-Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen** , um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
+Geben Sie Ihren Data Factory Namen ein, und klicken Sie auf **Bestätigen**, um das Git-Repository zu entfernen, das Ihrer Data Factory-Instanz zugeordnet ist.
 
 ![Entfernen der Zuordnung zum aktuellen Git-Repository](media/author-visually/remove-repository-2.png)
 

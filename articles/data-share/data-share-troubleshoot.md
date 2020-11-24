@@ -7,12 +7,12 @@ ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
 ms.date: 10/15/2020
-ms.openlocfilehash: a323dec66a3077784ff85deadd4f12086648fb3a
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: e29c640494a18bb3be2125a5b53b4f943521fe6c
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92220457"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579146"
 ---
 # <a name="troubleshoot-common-issues-in-azure-data-share"></a>Behandeln allgemeiner Probleme in Azure Data Share 
 
@@ -28,11 +28,11 @@ Dies könnte die folgenden Gründe haben:
 
 * **Der Azure Data Share-Dienst ist im Azure-Mandanten nicht als Ressourcenanbieter eines Azure-Abonnements registriert.** Dieses Problem tritt auf, wenn es in Ihrem Azure-Mandanten keine Data Share-Ressource gibt. Wenn Sie eine Azure Data Share-Ressource erstellen, wird der Ressourcenanbieter in Ihrem Azure-Abonnement automatisch registriert. Sie können den Data Share-Dienst auch manuell registrieren, indem Sie die nachstehenden Schritte ausführen. Für diese Schritte benötigen Sie die Rolle „Azure-Mitwirkender“.
 
-    1. Navigieren Sie im Azure-Portal zu **Abonnements** .
+    1. Navigieren Sie im Azure-Portal zu **Abonnements**.
     1. Wählen Sie das Abonnement aus, das Sie zum Erstellen einer Azure Data Share-Ressource verwenden möchten.
-    1. Klicken Sie auf **Ressourcenanbieter** .
-    1. Suchen Sie nach **Microsoft.DataShare** .
-    1. Klicken Sie auf **Registrieren** . 
+    1. Klicken Sie auf **Ressourcenanbieter**.
+    1. Suchen Sie nach **Microsoft.DataShare**.
+    1. Klicken Sie auf **Registrieren**. 
 
     Für diese Schritte benötigen Sie die Rolle [Azure-Mitwirkender](../role-based-access-control/built-in-roles.md#contributor) für das Azure-Abonnement. 
 
@@ -52,11 +52,11 @@ Dies könnte die folgenden Gründe haben:
 
 „Es konnten keine Schreibberechtigungen für das Azure Data Share-Konto mindestens einer Ihrer ausgewählten Ressourcen hinzugefügt werden.“
 
-Wenn beim Erstellen einer neuen Freigabe oder beim Zuordnen von Datasets einer der vorstehenden Fehler angezeigt wird, könnte dies daran liegen, dass die Berechtigungen für den Azure-Datenspeicher nicht ausreichen. Informationen zu den erforderlichen Berechtigungen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). 
+Wenn beim Erstellen einer neuen Freigabe, Hinzufügen von Datasets oder Zuordnen von Datasets einer der vorstehenden Fehler angezeigt wird, könnte dies daran liegen, dass die Berechtigungen für den Azure-Datenspeicher nicht ausreichen. Informationen zu den erforderlichen Berechtigungen finden Sie unter [Rollen und Anforderungen](concepts-roles-permissions.md). 
 
-Sie benötigen eine Schreibberechtigung zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher, die in der Rolle „Mitwirkender“ normalerweise enthalten ist. 
+Sie benötigen eine Schreibberechtigung zum Freigeben oder Empfangen von Daten aus einem Azure-Datenspeicher, die in der Rolle **Mitwirkender** normalerweise enthalten ist. 
 
-Wenn Sie zum ersten Mal Daten aus dem Azure-Datenspeicher freigeben oder empfangen, benötigen Sie außerdem die Berechtigung *Microsoft.Authorization/role assignments/write* , die normalerweise in der Rolle „Besitzer“ enthalten ist. Selbst wenn Sie die Azure Data Store-Ressource erstellt haben, werden Sie dadurch NICHT automatisch zu deren Besitzer. Bei der entsprechenden Berechtigung gewährt der Azure Data Share-Dienst der verwalteten Identität der Data Share-Ressource automatisch Zugriff auf den Datenspeicher. Dieser Vorgang könnte einige Minuten dauern. Wenn aufgrund dieser Verzögerung ein Fehler auftritt, versuchen Sie es in einigen Minuten erneut.
+Wenn Sie zum ersten Mal Daten aus dem Azure-Datenspeicher freigeben oder empfangen, benötigen Sie außerdem die Berechtigung *Microsoft.Authorization/role assignments/write*, die normalerweise in der Rolle **Besitzer** enthalten ist. Selbst wenn Sie die Azure Data Store-Ressource erstellt haben, werden Sie dadurch NICHT automatisch zu deren Besitzer. Bei der entsprechenden Berechtigung gewährt der Azure Data Share-Dienst der verwalteten Identität der Data Share-Ressource automatisch Zugriff auf den Datenspeicher. Dieser Vorgang könnte einige Minuten dauern. Wenn aufgrund dieser Verzögerung ein Fehler auftritt, versuchen Sie es in einigen Minuten erneut.
 
 Für SQL-basierte Freigabe sind zusätzliche Berechtigungen erforderlich. Eine ausführliche Liste der Voraussetzungen finden Sie unter [Freigeben aus SQL-Quellen](how-to-share-from-sql.md).
 
@@ -69,7 +69,7 @@ Die Momentaufnahme kann aus einer Vielzahl von Gründen fehlschlagen. Die ausfü
 
 Bei SQL-Quellen gibt es die folgenden zusätzlichen Ursachen für Momentaufnahmefehler. 
 
-* Das SQL-Quell- oder -Zielskript zum Erteilen der Data Share-Berechtigung wird nicht ausgeführt oder wird mithilfe der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
+* Das SQL-Quell- oder -Zielskript zum Erteilen der Data Share-Berechtigung wird nicht ausgeführt. Möglicherweise wird es auch für Azure SQL-Datenbank oder Azure Synapse Analytics (ehemals Azure SQL DW) mithilfe der SQL-Authentifizierung anstelle der Azure Active Directory-Authentifizierung ausgeführt.  
 * Der SQL-Quell- oder -Zieldatenspeicher wurde angehalten.
 * SQL-Datentypen werden weder bei der Erstellung der Momentaufnahme noch vom Zieldatenspeicher unterstützt. Ausführliche Informationen finden Sie unter [Freigeben aus SQL-Quellen](how-to-share-from-sql.md#supported-data-types).
 * Der SQL-Quell- oder -Zieldatenspeicher ist durch andere Prozesse gesperrt. Azure Data Share wendet keine Sperren auf den SQL-Quell- und -Zieldatenspeicher an. Vorhandene Sperren für den SQL-Quell- und -Zieldatenspeicher führen jedoch zu einem Momentaufnahmefehler.

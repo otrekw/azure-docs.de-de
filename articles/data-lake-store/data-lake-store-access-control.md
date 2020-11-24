@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: 11629338a808ae0f83ac513b6475dce7a53814da
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88190151"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701448"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -280,7 +280,11 @@ Einträge in den ACLs werden als GUIDs gespeichert, die Benutzern in Azure AD en
 
 ### <a name="why-do-i-sometimes-see-guids-in-the-acls-when-im-using-the-azure-portal"></a>Warum werden im Azure-Portal manchmal GUIDs in den ACLs angezeigt?
 
-Eine GUID wird angezeigt, wenn der Benutzer in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde.
+Eine GUID wird angezeigt, wenn der Benutzer in Azure AD nicht mehr vorhanden ist. Dies ist meist der Fall, wenn der Benutzer aus dem Unternehmen ausgeschieden ist oder sein Konto in Azure AD gelöscht wurde. Stellen Sie außerdem sicher, dass Sie die richtige ID zum Festlegen von ACLs verwenden (Informationen dazu finden Sie unter der folgenden Frage).
+
+### <a name="when-using-service-principal-what-id-should-i-use-to-set-acls"></a>Welche ID sollte ich bei Verwendung des Dienstprinzipals zum Festlegen von ACLs verwenden?
+
+Navigieren Sie im Azure-Portal zu **Azure Active Directory > Unternehmensanwendungen**, und wählen Sie Ihre Anwendung aus. Auf der Registerkarte **Übersicht** sollte eine Objekt-ID angezeigt werden, die beim Hinzufügen von ACLs für den Datenzugriff zu verwenden ist (und nicht die Anwendungs-ID).
 
 ### <a name="does-data-lake-storage-gen1-support-inheritance-of-acls"></a>Unterstützt Data Lake Storage Gen1 die Vererbung von ACLs?
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: faacb78ca7f055bb8e9a469afb894bc30ee87501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 89c13566c3710e56a4cd737d9aa03c6fb57edc93
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94507384"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542727"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Versionshinweise zu „Microsoft.ApplicationInsights.SnapshotCollector“
 

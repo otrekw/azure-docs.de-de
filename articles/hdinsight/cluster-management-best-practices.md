@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: fc2f9e5408dd760b48fc63c4021230446fe40de9
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3a96a7116c83bf9ea2c3798c335c6cefcbdbc36d
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92542317"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659487"
 ---
 # <a name="hdinsight-cluster-management-best-practices"></a>Verwaltung von HDInsight-Clustern – Bewährte Methoden
 
@@ -49,7 +49,7 @@ Informieren Sie sich über bewährte Methoden für die Verwaltung von HDInsight-
 
 | Fehler | Weitere Informationen |
 |---|---|
-| Kein Kontingent | Es gibt Kontingente für die Anzahl von Clustern, die Sie in Ihrem Abonnement in jeder Region erstellen können. Weitere Informationen finden Sie unter [Kapazitätsplanung: Kontingente](./hdinsight-capacity-planning.md). |
+| Kein Kontingent | Es gibt Kontingente für die Anzahl von Kernen, die Sie in Ihrem Abonnement in jeder Region erstellen können. Weitere Informationen finden Sie unter [Kapazitätsplanung: Kontingente](./hdinsight-capacity-planning.md). |
 | Keine weiteren IP-Adressen verfügbar | Jedes VNet verfügt über eine begrenzte Anzahl von IP-Adressen. Wenn Sie einen HDInsight-Cluster erstellen, verwendet jeder Knoten (einschließlich ZooKeeper- und Gatewayknoten) einige dieser zugewiesenen IP-Adressen. Wenn alle IP-Adressen verwendet werden, tritt dieser Fehler auf.  |
 | Regeln für Netzwerksicherheitsgruppen (NSG) verhindern die Kommunikation mit HDInsight-Ressourcenanbietern | Wenn Sie NSGs oder benutzerdefinierte Routen (UDRs) verwenden, um den beim HDInsight-Cluster eingehenden Datenverkehr zu steuern, müssen Sie sicherstellen, dass der Cluster mit wichtigen Integritäts- und Verwaltungsdiensten von Azure kommunizieren kann. Weitere Informationen finden Sie unter [NSG-Diensttags (Netzwerksicherheitsgruppen) für Azure HDInsight](./hdinsight-service-tags.md). |
 | Wiederverwendung des Clusternamens | Wenn Sie einen zuvor bereits verwendeten Clusternamen nutzen, müssen Sie einige Minuten warten, bevor Sie den Cluster neu erstellen. Andernfalls wird die Meldung angezeigt, dass die Ressource bereits vorhanden ist. |

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: 8a84c9979bdfac1165d44d03572567ab1ea7ab1f
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91995345"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592055"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -262,6 +262,13 @@ Diese Funktion wird unterstützt, wenn Daten aus einer beliebigen Quelle in die 
 ## <a name="fault-tolerance"></a>Fehlertoleranz
 
 Wenn Datenzeilen in der Quelle und in der Senke nicht kompatibel sind, wird ein Fehler zurückgegeben, und der Kopiervorgang wird von der Kopieraktivität standardmäßig beendet. Damit der Kopiervorgang erfolgreich verläuft, können Sie die Kopieraktivität so konfigurieren, dass nicht kompatible Zeilen übersprungen und protokolliert werden und nur die kompatiblen Daten kopiert werden. Weitere Details finden Sie unter [Fehlertoleranz der Kopieraktivität](copy-activity-fault-tolerance.md).
+
+## <a name="data-consistency-verification"></a>Datenkonsistenzprüfung
+
+Wenn Sie Daten aus dem Quell- in den Zielspeicher verschieben, bietet die Azure Data Factory-Kopieraktivität eine Option, mit der Sie eine zusätzliche Datenkonsistenzprüfung durchführen können. Damit stellen Sie sicher, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch dass überprüft wird, ob sie zwischen Quell- und Zielspeicher konsistent sind. Wenn während der Datenverschiebung inkonsistente Dateien gefunden werden, können Sie entweder die Kopieraktivität abbrechen oder auch noch die restlichen Dateien kopieren. Hierzu aktivieren Sie die Einstellung für Fehlertoleranz, damit inkonsistente Daten übersprungen werden. Die Namen der übersprungenen Dateien können Sie durch Aktivieren der Einstellung für das Sitzungsprotokoll in der Kopieraktivität abrufen. Ausführliche Informationen finden Sie unter [Datenkonsistenzprüfung in der Kopieraktivität](copy-activity-data-consistency.md).
+
+## <a name="session-log"></a>Sitzungsprotokoll
+Sie können die kopierten Dateinamen protokollieren, um sicherzustellen, dass die Daten nicht nur erfolgreich aus dem Quell- in den Zielspeicher kopiert werden, sondern auch zwischen Quell- und Zielspeicher konsistent sind. Dazu überprüfen Sie die Sitzungsprotokolle der Kopieraktivität. Ausführliche Informationen finden Sie unter [Sitzungsprotokoll in der Kopieraktivität](copy-activity-log.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in den folgenden Schnellstartanleitungen, Tutorials und Beispielen:
