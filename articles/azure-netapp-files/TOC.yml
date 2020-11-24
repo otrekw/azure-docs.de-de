@@ -97,13 +97,13 @@
       href: dynamic-change-volume-service-level.md
     - name: Verwalten der regionsübergreifenden Replikation
       items:
-        - name: Erstellen eines Replikationspeerings
+        - name: Erstellen der Volumereplikation
           href: cross-region-replication-create-peering.md
         - name: Anzeigen des Integritätsstatus der Replikationsbeziehung
           href: cross-region-replication-display-health-status.md
         - name: Verwalten der Notfallwiederherstellung
           href: cross-region-replication-manage-disaster-recovery.md
-        - name: Löschen von Replikationen
+        - name: Löschen von Volumereplikationen oder Volumes
           href: cross-region-replication-delete.md
     - name: Entwickeln
       items:

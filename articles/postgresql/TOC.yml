@@ -603,8 +603,14 @@
           href: reference-hyperscale-metadata.md
     - name: Anleitungen
       items:
-        - name: Skalieren einer Servergruppe
-          href: howto-hyperscale-scaling.md
+        - name: Größe der Servergruppe
+          items:
+            - name: Auswählen der ursprünglichen Größe
+              href: howto-hyperscale-scale-initial.md
+            - name: Skalieren einer Servergruppe
+              href: howto-hyperscale-scale-grow.md
+            - name: Ausgleichen von Shards
+              href: howto-hyperscale-scale-rebalance.md
         - name: Firewallregeln
           items:
             - name: Azure-Portal

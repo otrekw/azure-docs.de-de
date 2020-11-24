@@ -115,12 +115,10 @@
             - name: Zugriffssteuerung
               items:
                 - name: Übersicht
-                  href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                  href: ./security/access-control.md
+                  displayname: 'access, control'
                 - name: 'Synapse-Arbeitsbereich: Verwaltete Identität'
                   href: ./security/synapse-workspace-managed-identity.md
-                - name: SQL-Pools
-                  href: ./sql/access-control.md
-                  displayname: 'access, control'
         - name: 'Toolintegration (KI, ETL, BI)'
           items:
             - name: Problembehandlung für Synapse Studio
@@ -304,6 +302,8 @@
               href: ./sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Sicherheit
           items:
+            - name: Datenbank-Zugriffssteuerung
+              href: ../sql-database/sql-database-control-access.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Datensicherheit
               items:
                 - name: Sicherheit auf Spaltenebene

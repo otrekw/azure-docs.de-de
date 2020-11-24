@@ -51,6 +51,8 @@
           href: tutorial-connect-device-nodejs.md
         - name: Herstellen einer Verbindung mit einem Gerät (Python)
           href: tutorial-connect-device-python.md
+        - name: Herstellen einer Verbindung mit einem Gerät (Java)
+          href: tutorial-connect-device-java.md
         - name: Erstellen einer Gatewaygerätevorlage
           href: tutorial-define-gateway-device-type.md
         - name: Verbinden mit einem IoT Edge-Gerät
@@ -181,7 +183,7 @@
       href: howto-faq.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/azure-cli-reference-for-IoT
 - name: Ressourcen
   items:

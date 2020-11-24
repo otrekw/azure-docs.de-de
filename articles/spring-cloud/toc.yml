@@ -75,6 +75,8 @@
           href: spring-cloud-howto-launch-from-source.md
         - name: Verwenden von IntelliJ zum Bereitstellen von Apps
           href: spring-cloud-tutorial-intellij-deploy-apps.md
+        - name: Bereitstellen von Azure Spring Cloud mit Azure PowerShell
+          href: spring-cloud-howto-deploy-powershell.md
     - name: Konfigurieren
       items:
         - name: 'Starten, Beenden und Löschen einer App'

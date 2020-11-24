@@ -4,6 +4,8 @@
   items:
     - name: Übersicht zu Azure Backup
       href: backup-overview.md
+    - name: Neuerungen in Azure Backup
+      href: whats-new.md
     - name: Preise
       href: 'https://azure.microsoft.com/pricing/details/backup/'
 - name: Schnellstarts
@@ -458,7 +460,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Kompatibilität
+    - name: Compliance
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'

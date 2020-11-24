@@ -51,6 +51,8 @@
       href: /samples/azure-samples/mxchip-iot-devkit-pnp-get-started/sample/
     - name: Herstellen einer Verbindung mit einem Gerätemodul
       href: tutorial-migrate-device-to-module.md
+    - name: 'Vorschau: Herstellen einer Verbindung und Analysieren von Daten mit Time Series Insights Gen2'
+      href: tutorial-configure-tsi.md
 - name: Konzepte
   items:
     - name: Aufbau

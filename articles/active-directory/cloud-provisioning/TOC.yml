@@ -62,10 +62,12 @@
           href: /office365/troubleshoot/administration/duplicate-attributes-prevent-dirsync
 - name: Verweis
   items:
-    - name: Versionsverlauf des Agents für die Azure AD Connect-Cloudbereitstellung
-      href: ../app-provisioning/provisioning-agent-release-version-history.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
+    - name: Versionsverlauf des Azure AD Connect-Cloudsynchronisierungs-Agents
+      href: reference-version-history.md
     - name: Häufig gestellte Fragen zur Azure AD Connect-Cloudbereitstellung
       href: reference-cloud-provisioning-faq.md
+    - name: AADCloudSyncTools-PowerShell-Modul
+      href: reference-powershell.md
     - name: 'Attribute, die synchronisiert werden'
       href: ../hybrid/reference-connect-sync-attributes-synchronized.md?context=%2fazure%2factive-directory%2fcloud-provisioning%2fcontext%2fcp-context
     - name: "Grundlegende Active Directory- und Azure\_AD-Umgebung"

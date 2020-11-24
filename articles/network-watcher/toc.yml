@@ -77,9 +77,9 @@
         - name: Installieren der VM-Erweiterung
           items:
             - name: Windows
-              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-windows.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
             - name: Linux
-              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+              href: ../virtual-machines/extensions/network-watcher-linux.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
         - name: Diagnostizieren eines Routingproblems
           items:
             - name: Azure PowerShell
@@ -184,7 +184,7 @@
     - name: Bestimmen der relativen Wartezeit zwischen einem Standort und einer Azure-Region
       href: view-relative-latencies.md
     - name: Überwachen der Netzwerkleistung
-      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json
+      href: ../azure-monitor/insights/network-performance-monitor.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json
     - name: Verschieben von Ressourcen
       items:
         - name: Verschieben von Network Watcher-Ressourcen
