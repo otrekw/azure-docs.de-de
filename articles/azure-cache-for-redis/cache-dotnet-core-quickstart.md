@@ -9,11 +9,11 @@ ms.custom: devx-track-csharp, mvc
 ms.topic: quickstart
 ms.date: 06/18/2020
 ms.openlocfilehash: 945d4a3d2bba84bf8f5973fd8dec092c66794c11
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004295"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-net-core"></a>Schnellstart: Verwenden von Azure Cache for Redis mit .NET Core
 
@@ -29,7 +29,7 @@ In dieser Schnellstartanleitung integrieren Sie Azure Cache für Redis in eine .
 
 [!INCLUDE [redis-cache-access-keys](../../includes/redis-cache-access-keys.md)]
 
-Notieren Sie sich den **HOSTNAMEN** und den **primären** Zugriffsschlüssel. Sie verwenden diese Werte später, um das *CacheConnection* -Geheimnis zu erstellen.
+Notieren Sie sich den **HOSTNAMEN** und den **primären** Zugriffsschlüssel. Sie verwenden diese Werte später, um das *CacheConnection*-Geheimnis zu erstellen.
 
 
 
@@ -113,7 +113,7 @@ Führen Sie im Befehlsfenster im Projektverzeichnis *Redistest* den folgenden Be
 dotnet add package StackExchange.Redis
 ```
 
-Nach Abschluss der Installation kann der *StackExchange.Redis* -Cacheclient für Ihr Projekt verwendet werden.
+Nach Abschluss der Installation kann der *StackExchange.Redis*-Cacheclient für Ihr Projekt verwendet werden.
 
 
 ## <a name="connect-to-the-cache"></a>Herstellen einer Verbindung mit dem Cache
@@ -268,7 +268,7 @@ Fügen Sie in *Program.cs* am unteren Ende der Prozedur `Main()` und vor dem Auf
     Console.WriteLine("\tEmployee.Age  : " + e007FromCache.Age + "\n");
 ```
 
-Speichern Sie *Program.cs* , und erstellen Sie die App mit dem folgenden Befehl neu:
+Speichern Sie *Program.cs*, und erstellen Sie die App mit dem folgenden Befehl neu:
 
 ```
 dotnet build

@@ -15,11 +15,11 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 38992c15c23216aa81cda566a333d8e45f90b17e
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004686"
 ---
 # <a name="activate-my-azure-ad-roles-in-pim"></a>Aktivieren meiner Azure AD-Rollen in PIM
 
@@ -34,7 +34,7 @@ Dieser Artikel richtet sich an Administratoren, die ihre Azure AD-Rolle in Privi
 Ab November 2019 werden die Azure AD Rollen von Privileged Identity Management auf eine neue Version aktualisiert, die dem Verhalten von Azure-Ressourcenrollen entspricht. Dadurch werden zusätzliche Features verfügbar, und es kommt zu [Änderungen an der vorhandenen API](azure-ad-roles-features.md#api-changes). Welche Verfahren Sie in diesem Artikel während der Einführung der neuen Version befolgen, hängt von Ihrer aktuellen Version von Privileged Identity Management ab. Führen Sie die Schritte in diesem Abschnitt aus, um Ihre Version von Privileged Identity Management zu ermitteln. Nachdem Sie Ihre Version von Privileged Identity Management kennen, können Sie die Verfahren in diesem Artikel auswählen, die dieser Version entsprechen.
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) mit der Rolle [Administrator für privilegierte Rollen](../roles/permissions-reference.md#privileged-role-administrator) an.
-1. Öffnen Sie **Azure AD Privileged Identity Management** . Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version** .
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Wenn sich oben auf der Übersichtsseite ein Banner befindet, befolgen Sie die Anweisungen auf der Registerkarte **Neue Version** dieses Artikels. Andernfalls befolgen Sie die Anweisungen auf der Registerkarte **Vorherige Version**.
 
     [![Auswählen von „Azure AD“ > „Privileged Identity Management“](media/pim-how-to-add-role-to-user/pim-new-version.png)](media/pim-how-to-add-role-to-user/pim-new-version.png#lightbox)
 
@@ -46,7 +46,7 @@ Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identit
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** . Informationen zum Hinzufügen der Privileged Identity Management-Kachel zu Ihrem Dashboard finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Informationen zum Hinzufügen der Privileged Identity Management-Kachel zu Ihrem Dashboard finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 
 1. Wählen Sie **Meine Rollen** aus, und wählen Sie dann **Azure AD-Rollen** aus, um eine Liste der Azure AD-Rollen anzuzeigen, für die Sie berechtigt sind.
 
@@ -60,7 +60,7 @@ Wenn Sie eine Azure AD-Rolle annehmen müssen, können Sie in Privileged Identit
 
     ![Azure AD Rollen: Aktivierungsseite mit Dauer und Bereich](./media/pim-how-to-activate-role/activate-page.png)
 
-1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen** . Sie müssen sich nur einmal pro Sitzung authentifizieren.
+1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
 
     ![Überprüfung meiner Identität mit MFA vor der Rollenaktivierung](./media/pim-resource-roles-activate-your-roles/resources-my-roles-mfa.png)
 
@@ -124,11 +124,11 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Iden
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 
-1. Öffnen Sie **Azure AD Privileged Identity Management** . Informationen zum Hinzufügen der Privileged Identity Management-Kachel zu Ihrem Dashboard finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
+1. Öffnen Sie **Azure AD Privileged Identity Management**. Informationen zum Hinzufügen der Privileged Identity Management-Kachel zu Ihrem Dashboard finden Sie unter [Einstieg in die Verwendung von PIM](pim-getting-started.md).
 
-1. Klicken Sie auf **Azure AD-Rollen** .
+1. Klicken Sie auf **Azure AD-Rollen**.
 
-1. Klicken Sie auf **Meine Rollen** , um eine Liste der Azure AD-Rollen anzuzeigen, für die Sie berechtigt sind.
+1. Klicken Sie auf **Meine Rollen**, um eine Liste der Azure AD-Rollen anzuzeigen, für die Sie berechtigt sind.
 
     ![„Azure AD-Rollen – Meine Rollen“ zeigt eine Liste mit berechtigten oder aktiven Rollen](./media/pim-how-to-activate-role/directory-roles-my-roles.png)
 
@@ -136,17 +136,17 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Iden
 
     ![„Azure AD-Rollen – Meine berechtigten Rollen“ zeigt eine Liste mit „Link aktivieren“](./media/pim-how-to-activate-role/directory-roles-my-roles-activate.png)
 
-1. Klicken Sie auf **Aktivieren** , um den Detailbereich für die Rollenaktivierung zu öffnen.
+1. Klicken Sie auf **Aktivieren**, um den Detailbereich für die Rollenaktivierung zu öffnen.
 
-1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen** . Sie müssen sich nur einmal pro Sitzung authentifizieren.
+1. Wenn Ihre Rolle eine mehrstufige Authentifizierung erfordert, klicken Sie auf **Überprüfen Sie Ihre Identität, bevor Sie den Vorgang fortsetzen**. Sie müssen sich nur einmal pro Sitzung authentifizieren.
 
     ![Überprüfung meiner Identität mit MFA vor der Rollenaktivierung](./media/pim-how-to-activate-role/directory-roles-my-roles-mfa.png)
 
-1. Klicken Sie auf **Meine Identität überprüfen** , und folgen Sie den Anweisungen zur Bereitstellung einer zusätzlichen Sicherheitsüberprüfung.
+1. Klicken Sie auf **Meine Identität überprüfen**, und folgen Sie den Anweisungen zur Bereitstellung einer zusätzlichen Sicherheitsüberprüfung.
 
     ![Zusätzliche Sicherheitsüberprüfung mit der Frage nach Kontaktmöglichkeiten](./media/pim-how-to-activate-role/additional-security-verification.png)
 
-1. Klicken Sie auf **Aktivieren** , um den Bereich für die Aktivierung zu öffnen.
+1. Klicken Sie auf **Aktivieren**, um den Bereich für die Aktivierung zu öffnen.
 
     ![Aktivierungsfeld zum Angeben einer Startzeit, Dauer, eines Tickets und eines Grunds](./media/pim-how-to-activate-role/directory-roles-activate.png)
 
@@ -158,13 +158,13 @@ Wenn Sie eine Azure AD-Rolle übernehmen müssen, können Sie in Privileged Iden
 
     ![Ausgefülltes Aktivierungsfeld mit benutzerdefinierter Startzeit, Dauer, Ticket und Grund](./media/pim-how-to-activate-role/directory-roles-activation-pane.png)
 
-1. Klicken Sie auf **Aktivieren** .
+1. Klicken Sie auf **Aktivieren**.
 
     Wenn die Rolle nicht genehmigungspflichtig ist, wird ein Bereich **Aktivierungsstatus** angezeigt, der den Status der Aktivierung angibt.
 
     ![Die Statusaktivierungsseite zeigt die drei Phasen der Aktivierung](./media/pim-how-to-activate-role/activation-status.png)
 
-    Nachdem alle Phasen abgeschlossen wurden, klicken Sie auf den Link **Abmelden** , um sich vom Azure-Portal abzumelden. Wenn Sie sich erneut am Portal anmelden, können Sie die Rolle nun verwenden.
+    Nachdem alle Phasen abgeschlossen wurden, klicken Sie auf den Link **Abmelden**, um sich vom Azure-Portal abzumelden. Wenn Sie sich erneut am Portal anmelden, können Sie die Rolle nun verwenden.
 
     Wenn für die Aktivierung der [Rolle eine Genehmigung erforderlich ist](./azure-ad-pim-approval-workflow.md), wird in der oberen rechten Ecke des Browsers eine Azure-Benachrichtigung angezeigt, in der Sie darüber informiert werden, dass die Genehmigung der Anforderung aussteht.
 
@@ -174,9 +174,9 @@ Sie können den Status Ihrer ausstehenden Aktivierungsanforderungen anzeigen.
 
 1. Öffnen Sie Azure AD Privileged Identity Management.
 
-1. Klicken Sie auf **Azure AD-Rollen** .
+1. Klicken Sie auf **Azure AD-Rollen**.
 
-1. Klicken Sie auf **Meine Anforderungen** , um eine Liste Ihrer Anforderungen anzuzeigen.
+1. Klicken Sie auf **Meine Anforderungen**, um eine Liste Ihrer Anforderungen anzuzeigen.
 
     ![Azure AD-Rollen – Meine Anforderungsliste](./media/pim-how-to-activate-role/directory-roles-my-requests.png)
 
@@ -188,13 +188,13 @@ Wenn Sie Ihre Administratoraufgaben früher als geplant beendet haben, können S
 
 1. Öffnen Sie Azure AD Privileged Identity Management.
 
-1. Klicken Sie auf **Azure AD-Rollen** .
+1. Klicken Sie auf **Azure AD-Rollen**.
 
-1. Klicken Sie auf **Meine Rollen** .
+1. Klicken Sie auf **Meine Rollen**.
 
-1. Klicken sie auf **Aktive Rollen** , um die Liste Ihrer aktiven Rollen anzuzeigen.
+1. Klicken sie auf **Aktive Rollen**, um die Liste Ihrer aktiven Rollen anzuzeigen.
 
-1. Suchen Sie nach der Rolle, die Sie nicht mehr benötigen, und klicken Sie auf **Deaktivieren** .
+1. Suchen Sie nach der Rolle, die Sie nicht mehr benötigen, und klicken Sie auf **Deaktivieren**.
 
 ## <a name="cancel-a-pending-request-previous-version"></a>Abbrechen einer ausstehenden Anforderung (vorherige Version)
 
@@ -202,11 +202,11 @@ Sollten Sie die Aktivierung einer Rolle, für die eine Genehmigung erforderlich 
 
 1. Öffnen Sie Azure AD Privileged Identity Management.
 
-1. Klicken Sie auf **Azure AD-Rollen** .
+1. Klicken Sie auf **Azure AD-Rollen**.
 
-1. Klicken Sie auf **Meine Anforderungen** .
+1. Klicken Sie auf **Meine Anforderungen**.
 
-1. Klicken Sie für die Rolle, für die Sie eine ausstehende Anforderung abbrechen möchten, auf **Abbrechen** .
+1. Klicken Sie für die Rolle, für die Sie eine ausstehende Anforderung abbrechen möchten, auf **Abbrechen**.
 
     Durch das Klicken auf „Abbrechen“ wird die Anforderung abgebrochen. Um die Rolle erneut zu aktivieren, müssen Sie eine neue Anforderung zur Aktivierung übermitteln.
 

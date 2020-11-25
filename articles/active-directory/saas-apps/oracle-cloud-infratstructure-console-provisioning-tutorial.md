@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
 ms.openlocfilehash: 92aeedd25a4a60b49de54aaaa90ee4a31490c444
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96004380"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Oracle-URL](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/url.png)
 
-3. Klicken Sie auf **Identitätsanbieter hinzufügen** , um einen neuen Identitätsanbieter zu erstellen. Speichern Sie die IdP-ID, die als Teil der Mandanten-URL verwendet werden soll. Klicken Sie auf das Pluszeichen neben der Registerkarte **Anwendungen** , um einen OAuth-Client zu erstellen und die IDCS-App-Rolle „Identitätsdomänenadministrator“ zu erteilen.
+3. Klicken Sie auf **Identitätsanbieter hinzufügen**, um einen neuen Identitätsanbieter zu erstellen. Speichern Sie die IdP-ID, die als Teil der Mandanten-URL verwendet werden soll. Klicken Sie auf das Pluszeichen neben der Registerkarte **Anwendungen**, um einen OAuth-Client zu erstellen und die IDCS-App-Rolle „Identitätsdomänenadministrator“ zu erteilen.
 
     ![Oracle-Cloudsymbol](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/add.png)
 
@@ -65,11 +65,11 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![Oracle-Tokenausstellungsrichtlinie](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/token-issuance.png)
 
-5. Erweitern Sie auf der Registerkarte „Konfiguration“ Ihrer Anwendung die Option **Allgemeine Informationen** , um die Client-ID und den geheimen Clientschlüssel abzurufen.
+5. Erweitern Sie auf der Registerkarte „Konfiguration“ Ihrer Anwendung die Option **Allgemeine Informationen**, um die Client-ID und den geheimen Clientschlüssel abzurufen.
 
     ![Oracle-Tokengenerierung](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/general-information.png)
 
-6. Codieren Sie mit Base64 die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel** , um ein geheimes Token zu generieren. Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
+6. Codieren Sie mit Base64 die Client-ID und den geheimen Clientschlüssel im Format **Client-ID:geheimer Clientschlüssel**, um ein geheimes Token zu generieren. Speichern Sie das geheime Token. Dieser Wert wird im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer Oracle Cloud Infrastructure-Konsolenanwendung in das Feld **Geheimes Token** eingegeben.
 
 ## <a name="step-3-add-oracle-cloud-infrastructure-console-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen der Oracle Cloud Infrastructure-Konsole aus dem Azure AD-Anwendungskatalog
 
@@ -106,7 +106,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** im Format `https://<IdP ID>.identity.oraclecloud.com/admin/v1` ein. Beispiel: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit der Oracle Cloud Infrastructure-Konsole herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Konto für die Oracle Cloud Infrastructure-Konsole über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die **Mandanten-URL** im Format `https://<IdP ID>.identity.oraclecloud.com/admin/v1` ein. Beispiel: `https://idcs-0bfd023ff2xx4a98a760fa2c31k92b1d.identity.oraclecloud.com/admin/v1`. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit der Oracle Cloud Infrastructure-Konsole herstellen kann. Wenn die Verbindung nicht hergestellt werden kann, stellen Sie sicher, dass Ihr Konto für die Oracle Cloud Infrastructure-Konsole über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/oracle-cloud-infratstructure-console-provisioning-tutorial/provisioning.png)
 
@@ -118,7 +118,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit Oracle Cloud Infrastructure-Konsole synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Oracle Cloud Infrastructure-Konsolen-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die Oracle Cloud Infrastructure-Konsolen-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|
@@ -147,7 +147,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Oracle Cloud Infrastructure-Konsole synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit der Oracle Cloud Infrastructure-Konsole synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in der Oracle Cloud Infrastructure-Konsole für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|
