@@ -8,11 +8,11 @@ ms.date: 06/06/2019
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: e1549dda367105db34272eab8a90c1760dd5bb5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576443"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010179"
 ---
 # <a name="set-up-azure-app-service-access-restrictions"></a>Einrichten von Azure App Service-Zugriffseinschränkungen
 
