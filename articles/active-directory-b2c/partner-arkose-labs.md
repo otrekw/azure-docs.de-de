@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a4d8174cd0bfdb2297099b403fb836210c5529ac
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86170223"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994059"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -90,7 +90,7 @@ Azure AD B2C-Code in einem Browser verwendet einen modernen Standardansatz zum L
 
 2. Geben Sie unter  **Zulässige Ursprünge** die URL `https://your-tenant-name.b2clogin.com` ein. Ersetzen Sie „your-tenant-name“ durch den Namen Ihres Azure AD B2C-Mandanten. Beispiel:  `https://fabrikam.b2clogin.com`. Verwenden Sie bei der Eingabe Ihres Mandantennamens ausschließlich Kleinbuchstaben.
 
-3. Wählen Sie unter **Zulässige Methoden** die Optionen **GET**, **PUT** und **OPTIONS** aus.
+3. Wählen Sie unter  **Zulässige Methoden** die Optionen  **GET**, **PUT** und  **OPTIONS** aus.
 
 4. Geben Sie für **Zulässige Header** ein Sternchen (*) ein.
 
@@ -106,7 +106,7 @@ Azure AD B2C-Code in einem Browser verwendet einen modernen Standardansatz zum L
 
 Laden Sie Git Bash herunter, und führen Sie die unten angegebenen Schritte aus:
 
-1. Befolgen Sie die Anleitung zum [Erstellen einer Web-App](https://docs.microsoft.com/azure/app-service/app-service-web-get-started-php), bis die Meldung „Glückwunsch! Sie haben Ihre erste PHP-App für App Service bereitgestellt.“ angezeigt wird.
+1. Befolgen Sie die Anleitung zum [Erstellen einer Web-App](../app-service/quickstart-php.md), bis die Meldung „Glückwunsch! Sie haben Ihre erste PHP-App für App Service bereitgestellt.“ angezeigt wird.
 
 2. Öffnen Sie Ihren lokalen Ordner, und benennen Sie die Datei **index.php** in **verify-token.php** um.
 
