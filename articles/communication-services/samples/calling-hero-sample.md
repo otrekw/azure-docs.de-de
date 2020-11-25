@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 799c46ad2715e1edd3d2fba24a8350fd2608d3d8
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.openlocfilehash: c872c2a2799eee3ae9e39653b0046b70ca5d7e8b
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93233932"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887534"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenanrufe
 
@@ -34,7 +34,7 @@ In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funk
 
 ## <a name="overview"></a>Übersicht
 
-Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung** , die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
+Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
 
 Das Beispiel sieht wie folgt aus:
 
@@ -50,9 +50,9 @@ Nachdem Sie Ihren Anzeigenamen und Ihre Geräte konfiguriert haben, können Sie 
 
 Komponenten des Hauptbildschirms für Anrufe:
 
-1. **Medienkatalog** : Der Hauptbereich, in dem die Teilnehmer angezeigt werden. Wenn ein Teilnehmer seine Kamera aktiviert hat, wird der Videofeed hier angezeigt. Jeder Teilnehmer verfügt über eine individuelle Kachel, auf der sein Anzeigename und der Videostream (falls vorhanden) angezeigt werden.
-2. **Header** : Hier befinden sich die wichtigsten Anrufsteuerelemente zum Umschalten der Seitenleiste für Einstellungen und Teilnehmer, Aktivieren/Deaktivieren von Videos und der Mischung, Freigeben des Bildschirms und Beenden des Anrufs.
-3. **Seitenleiste** : Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
+1. **Medienkatalog**: Der Hauptbereich, in dem die Teilnehmer angezeigt werden. Wenn ein Teilnehmer seine Kamera aktiviert hat, wird der Videofeed hier angezeigt. Jeder Teilnehmer verfügt über eine individuelle Kachel, auf der sein Anzeigename und der Videostream (falls vorhanden) angezeigt werden.
+2. **Header**: Hier befinden sich die wichtigsten Anrufsteuerelemente zum Umschalten der Seitenleiste für Einstellungen und Teilnehmer, Aktivieren/Deaktivieren von Videos und der Mischung, Freigeben des Bildschirms und Beenden des Anrufs.
+3. **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Komponente kann mit dem „X“ oben rechts geschlossen werden. In der Seitenleiste für die Teilnehmer werden eine Liste mit Teilnehmern und ein Link zum Einladen von weiteren Benutzern zum Chatten angezeigt. In der Seitenleiste für die Einstellungen können Sie die Mikrofon- und Kameraeinstellungen konfigurieren.
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -116,4 +116,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Redux](https://redux.js.org/): Clientseitige Zustandsverwaltung
 - [Fluent-UI](https://aka.ms/fluent-ui): UI-Bibliothek von Microsoft
 - [React](https://reactjs.org/): Bibliothek zum Erstellen von Benutzeroberflächen
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): Framework für die Erstellung von Webanwendungen
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1): Framework für die Erstellung von Webanwendungen

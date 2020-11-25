@@ -1,7 +1,7 @@
 ---
-title: Erstellen eines Verbindungsmonitors (Vorschau) – ARMClient
+title: 'Erstellen eines Verbindungsmonitors: ARMClient'
 titleSuffix: Azure Network Watcher
-description: Erfahren Sie, wie Sie mithilfe von ARMClient einen Verbindungsmonitor (Vorschau) erstellen.
+description: Hier erfahren Sie, wie Sie einen Verbindungsmonitors mithilfe von ARMClient erstellen.
 services: network-watcher
 documentationcenter: na
 author: vinigam
@@ -12,22 +12,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/30/2020
 ms.author: vinigam
-ms.openlocfilehash: 5a351e550cac9edcc8ce1c54fbe5c57d012ee607
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 929a2feeb53e8903d675644dcb72b422eceb2858
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447449"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94699099"
 ---
-# <a name="create-a-connection-monitor-preview-using-the-armclient"></a>Erstellen eines Verbindungsmonitors (Vorschau) mithilfe von ARMClient
+# <a name="create-a-connection-monitor-using-the-armclient"></a>Erstellen eines Verbindungsmonitors mithilfe von ARMClient
 
-Hier erfahren Sie, wie Sie einen Verbindungsmonitor (Vorschau) erstellen, um die Kommunikation zwischen Ihren Ressourcen mithilfe von ARMClient zu überwachen. Er unterstützt Hybrid- und Azure-Cloudbereitstellungen.
+Hier erfahren Sie, wie Sie mithilfe von ARMClient einen Verbindungsmonitor erstellen, um die Kommunikation zwischen Ihren Ressourcen zu überwachen. Er unterstützt Hybrid- und Azure-Cloudbereitstellungen.
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
-In Verbindungsmonitoren, die Sie im Verbindungsmonitor (Vorschau) erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
+In Verbindungsmonitoren, die Sie im Feature „Verbindungsmonitor“ erstellen, können Sie sowohl lokale Computer als auch Azure-VMs als Quellen hinzufügen. Mit diesen Verbindungsmonitoren kann auch die Konnektivität mit Endpunkten überwacht werden. Die Endpunkte können sich in Azure oder einer beliebigen anderen URL oder IP-Adresse befinden.
 
-Der Verbindungsmonitor (Vorschau) umfasst die folgenden Entitäten:
+Der Verbindungsmonitor umfasst die folgenden Entitäten:
 
 * **Verbindungsmonitorressource**: Dies ist eine regionsspezifische Azure-Ressource. Alle folgenden Entitäten sind Eigenschaften einer Verbindungsmonitorressource.
 * **Endpunkt**: Eine Quelle oder ein Ziel, die bzw. das an Konnektivitätsprüfungen beteiligt ist. Beispiele für Endpunkte umfassen Azure-VMs, lokale Agents, URLs und IP-Adressen.
@@ -359,7 +359,7 @@ armclient PUT $ARM/$SUB/$NW/connectionMonitors/$connectionMonitorName/?api-versi
 
 * Endpunkte
     * name: Der eindeutige Name für jeden Endpunkt.
-    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Nicht-Azure-Agents verknüpft ist.
+    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Azure-fremden Agents verknüpft ist.
     * address: Dies trifft nur zu, wenn entweder keine Ressourcen-ID angegeben oder die Ressourcen-ID der Log Analytics-Arbeitsbereich ist. Bei Verwendung mit Log Analytics-Ressourcen-ID bezieht sich dies auf den FQDN des Agents, der für die Überwachung verwendet werden kann. Bei Verwendung ohne Ressourcen-ID kann dies die URL oder IP-Adresse eines beliebigen öffentlichen Endpunkts sein.
     * filter: Bei Azure-fremden Endpunkten verwenden Sie Filter, um Agents aus dem Log Analytics-Arbeitsbereich auszuwählen, die für die Überwachung in der Verbindungsmonitorressource verwendet werden. Wenn keine Filter festgelegt sind, können alle Agents, die zum Log Analytics-Arbeitsbereich gehören, für die Überwachung verwendet werden.
         * type: Legen Sie den Typ auf „Agent Address“ fest.

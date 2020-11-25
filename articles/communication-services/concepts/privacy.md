@@ -8,12 +8,12 @@ ms.author: chpalm
 ms.date: 10/03/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 6b8145666ab92432d01b2f039685afe5534f0958
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7c522abd04f4a3e480bb5c3e14e78cc03dbd5d86
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043569"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888639"
 ---
 # <a name="region-availability-and-data-residency"></a>Regionale Verfügbarkeit und Datenresidenz
 
@@ -37,13 +37,13 @@ Es gibt zwei Kategorien von Communication Services-Daten:
 
 ### <a name="identities"></a>Identities
 
-Von Azure Communication Services wird ein Verzeichnis mit Identitäten gepflegt. Verwenden Sie zum Entfernen der Identitäten die API [DeleteIdentity](https://docs.microsoft.com/rest/api/communication/communicationidentity/delete). Wenn Sie eine Identität löschen, werden alle zugeordneten Zugriffstoken widerrufen, und die zugehörigen Chatnachrichten werden gelöscht. Weitere Informationen zum Entfernen einer Identität finden Sie auf [dieser Seite](../quickstarts/access-tokens.md).
+Von Azure Communication Services wird ein Verzeichnis mit Identitäten gepflegt. Verwenden Sie zum Entfernen der Identitäten die API [DeleteIdentity](/rest/api/communication/communicationidentity/delete). Wenn Sie eine Identität löschen, werden alle zugeordneten Zugriffstoken widerrufen, und die zugehörigen Chatnachrichten werden gelöscht. Weitere Informationen zum Entfernen einer Identität finden Sie auf [dieser Seite](../quickstarts/access-tokens.md).
 
 - DeleteIdentity
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
 
-Durch die Verwendung des Azure-Portals oder der Azure Resource Manager-APIs mit Communication Services können personenbezogene Daten erstellt werden. Auf [dieser Seite](https://docs.microsoft.com/azure/azure-resource-manager/management/resource-manager-personal-data) erfahren Sie, wie Sie personenbezogene Daten in Azure Resource Manager-Systemen verwalten.
+Durch die Verwendung des Azure-Portals oder der Azure Resource Manager-APIs mit Communication Services können personenbezogene Daten erstellt werden. Auf [dieser Seite](../../azure-resource-manager/management/resource-manager-personal-data.md) erfahren Sie, wie Sie personenbezogene Daten in Azure Resource Manager-Systemen verwalten.
 
 ### <a name="telephone-number-management"></a>Telefonnummernverwaltung
 
@@ -52,7 +52,7 @@ Von Azure Communication Services wird ein Verzeichnis mit Telefonnummern gepfleg
 
 ### <a name="chat"></a>Chat
 
-Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](https://docs.microsoft.com/rest/api/communication/chat/deletechatmessage/deletechatmessage), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
+Chatthreads und -nachrichten werden aufbewahrt, bis sie explizit gelöscht werden. Ein vollständig im Leerlauf befindlicher Thread wird nach 30 Tagen automatisch gelöscht. Verwenden Sie [Chat-APIs](/rest/api/communication/chat/deletechatmessage/deletechatmessage), um Nachrichten abzurufen, aufzulisten, zu aktualisieren und zu löschen.
 
 - `Get Thread`
 - `Get Message`
@@ -73,10 +73,10 @@ Audio- und Videokommunikation wird flüchtig durch den Dienst verarbeitet, und m
 
 ## <a name="azure-monitor-and-log-analytics"></a>Azure Monitor und Log Analytics
 
-Azure Communication Services wird zum besseren Verständnis der Betriebsintegrität und Nutzung des Diensts in Azure Monitor-Protokollierungsdaten eingebunden. Einige dieser Protokolle enthalten Communication Services-Identitäten und -Telefonnummern als Felddaten. Verwenden Sie zum Löschen potenziell personenbezogener Daten [diese Verfahren für Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/personal-data-mgmt). Unter Umständen empfiehlt es sich auch, die [Standardaufbewahrungsdauer für Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage) zu konfigurieren.
+Azure Communication Services wird zum besseren Verständnis der Betriebsintegrität und Nutzung des Diensts in Azure Monitor-Protokollierungsdaten eingebunden. Einige dieser Protokolle enthalten Communication Services-Identitäten und -Telefonnummern als Felddaten. Verwenden Sie zum Löschen potenziell personenbezogener Daten [diese Verfahren für Azure Monitor](../../azure-monitor/platform/personal-data-mgmt.md). Unter Umständen empfiehlt es sich auch, die [Standardaufbewahrungsdauer für Azure Monitor](../../azure-monitor/platform/manage-cost-storage.md) zu konfigurieren.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Anträge betroffener Personen für Azure im Rahmen der DSGVO und des CCPA](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure?view=o365-worldwide&preserve-view=true)
+- [Anträge betroffener Personen für Azure im Rahmen der DSGVO und des CCPA](/microsoft-365/compliance/gdpr-dsr-azure?preserve-view=true&view=o365-worldwide)
 - [Microsoft Trust Center](https://www.microsoft.com/trust-center/privacy/data-location)
 - [Microsoft Azure: Wo befinden sich meine Kundendaten?](https://azuredatacentermap.azurewebsites.net/)

@@ -12,12 +12,12 @@ ms.reviewer: nibaccam
 ms.date: 01/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 2f7d102ad6bf2aba2056456acfe6207a0b0643ba
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0da4127960450a13b64ec23908b4a4fd4c69bd7e
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357979"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542013"
 ---
 # <a name="start-monitor-and-cancel-training-runs-in-python"></a>Starten, Überwachen und Abbrechen von Trainingsausführungen in Python
 
@@ -29,6 +29,10 @@ In diesem Artikel finden Sie Beispiele für die folgenden Aufgaben:
 * Abbrechen oder Fehler von Ausführungen
 * Erstellen untergeordneter Ausführungen
 * Markieren und Suchen von Ausführungen
+
+> [!TIP]
+> Informationen zur Überwachung des Azure Machine Learning-Diensts und der zugehörigen Azure-Dienste finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
+> Informationen zur Überwachung von Modellen, die als Webdienste oder IoT Edge-Module bereitgestellt werden, finden Sie unter [Sammeln von Daten von Modellen in der Produktion](how-to-enable-data-collection.md) sowie unter [Überwachen und Erfassen von Daten von ML-Webdienst-Endpunkten](how-to-enable-app-insights.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

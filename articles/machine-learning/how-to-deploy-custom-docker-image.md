@@ -1,28 +1,28 @@
 ---
 title: Bereitstellen von Modellen mit einem benutzerdefinierten Docker-Image
 titleSuffix: Azure Machine Learning
-description: Erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Azure Machine Learning stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
+description: Hier erfahren Sie, wie Sie bei der Bereitstellung Ihrer Azure Machine Learning-Modelle ein benutzerdefiniertes Docker-Basisimage verwenden können. Azure Machine Learning stellt ein Standardbasisimage für Sie bereit, Sie können aber auch Ihr eigenes Basisimage verwenden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.author: sagopal
 author: saachigopal
 ms.reviewer: larryfr
-ms.date: 09/09/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, deploy, devx-track-azurecli
-ms.openlocfilehash: 63089e853be825f9399081f2d39845e22b18ed2a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 1ff4d7693a7e493ccb736ab9363fd26c93017c79
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325181"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695349"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Bereitstellen eines Modells mithilfe eines benutzerdefinierten Docker-Basisimages
 
 Erfahren Sie, wie Sie ein benutzerdefiniertes Docker-Basisimage verwenden können, wenn Sie trainierte Modelle mit Azure Machine Learning bereitstellen.
 
-Azure Machine Learning verwendet ein standardmäßiges Docker-Basisimage, wenn kein Image angegeben wird. Sie können das spezifische Docker-Image ermitteln, das mit `azureml.core.runconfig.DEFAULT_CPU_IMAGE`verwendet wird. Sie können auch Azure Machine Learning- __Umgebungen__ verwenden, um ein bestimmtes Basisimage auszuwählen oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image zu verwenden.
+Azure Machine Learning verwendet ein standardmäßiges Docker-Basisimage, wenn kein Image angegeben wird. Sie können das spezifische Docker-Image ermitteln, das mit `azureml.core.runconfig.DEFAULT_CPU_IMAGE`verwendet wird. Sie können auch Azure Machine Learning-__Umgebungen__ verwenden, um ein bestimmtes Basisimage auszuwählen oder ein von Ihnen bereitgestelltes benutzerdefiniertes Image zu verwenden.
 
 Ein Basisimage wird als Ausgangspunkt verwendet, wenn ein Image für eine Bereitstellung erstellt wird. Es stellt das zugrunde liegende Betriebssystem und die Komponenten zur Verfügung. Der Bereitstellungsprozess fügt dann dem Image zusätzliche Komponenten wie Ihr Modell, Ihre Conda-Umgebung und andere Objekte hinzu.
 
@@ -46,7 +46,7 @@ Dieser Artikel ist in zwei Abschnitte unterteilt:
 * Die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest)
 * Die [CLI-Erweiterung für Azure Machine Learning](reference-azure-machine-learning-cli.md).
 * Ein [Azure Container Registry](../container-registry/index.yml) oder eine andere Docker-Registrierung, die über das Internet zugänglich ist.
-* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__ -Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
+* Die Schritte in diesem Dokument gehen davon aus, dass Sie mit dem Erstellen und Verwenden eines __Rückschlusskonfiguration__-Objekts im Rahmen der Modellimplementierung vertraut sind. Weitere Informationen finden Sie unter [Bereitstellen von Modellen mit Azure Machine Learning](how-to-deploy-and-where.md).
 
 ## <a name="create-a-custom-base-image"></a>Erstellen eines benutzerdefinierten Basisimages
 
@@ -234,7 +234,7 @@ Weitere Informationen finden Sie im GitHub-Repository [Azure Machine Learning se
 
 ### <a name="use-an-image-with-the-azure-machine-learning-sdk"></a>Verwenden eines Images mit dem Azure Machine Learning SDK
 
-Legen Sie die folgenden [Environment](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)-Attribute fest, um ein Image zu verwenden, das in der **Azure Container Registry-Instanz für Ihren Arbeitsbereich gespeichert ist** , oder eine **Containerregistrierung, die öffentlich zugänglich ist** :
+Legen Sie die folgenden [Environment](/python/api/azureml-core/azureml.core.environment.environment?preserve-view=true&view=azure-ml-py)-Attribute fest, um ein Image zu verwenden, das in der **Azure Container Registry-Instanz für Ihren Arbeitsbereich gespeichert ist**, oder eine **Containerregistrierung, die öffentlich zugänglich ist**:
 
 + `docker.enabled=True`
 + `docker.base_image`: Legen Sie dies auf die Registrierung und den Pfad zum Image fest.

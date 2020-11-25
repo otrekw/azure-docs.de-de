@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 11/16/2020
 ms.author: kevin
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3b32e7a1df0dbbf4d43a73f1e3e409a904ab88a3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8d70a45b89142f6f9c6990fdbb4b79751c82275f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660082"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237475"
 ---
 # <a name="quickstart-bulk-loading-with-synapse-sql"></a>Schnellstart: Massenladen mit Synapse SQL
 
@@ -39,7 +39,8 @@ Das Massenladen von Daten unter Verwendung von dedizierten SQL-Pools ist jetzt g
 
 ### <a name="steps"></a>Schritte
 
-1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien zu erkennen. Werden keine Dateien vom Typ „Parquet“ erkannt, wird standardmäßig das CSV-Format (durch Trennzeichen getrennter Text) verwendet. 
+1. Wählen Sie im Bereich für den Quellspeicherort das Speicherkonto und die Datei bzw. den Ordner aus, die bzw. den Sie als Quelle für den Ladevorgang verwenden möchten. Der Assistent versucht automatisch, Parquet-Dateien zu erkennen. Werden keine Dateien vom Typ „Parquet“ erkannt, wird standardmäßig das CSV-Format (durch Trennzeichen getrennter Text) verwendet.
+
    ![Auswählen des Quellspeicherorts](./sql/media/bulk-load/bulk-load-source-location.png)
 
 2. Wählen Sie die Dateiformateinstellungen einschließlich des Speicherkontos aus, in das abgelehnte Zeilen geschrieben werden sollen (Fehlerdatei). Aktuell werden nur CSV- und Parquet-Dateien unterstützt.

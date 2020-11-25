@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: b385d6dfb5beba481ad92403d69f5d0988f3bce3
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92786427"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94564564"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -30,6 +30,10 @@ Dieser Artikel enthält bewährte Methoden für die Clusterkonfiguration für [F
 ## <a name="networking"></a>Netzwerk
 
 Verwenden Sie eine einzelne NIC pro Server (Clusterknoten) und ein einzelnes Subnetz. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure-VM-Gastcluster überflüssig macht. Der Clusterüberprüfungsbericht weist Sie darauf hin, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind. Diese Warnung kann für Azure-VM-Gastfailovercluster ignoriert werden.
+
+### <a name="tuning-failover-cluster-network-thresholds"></a>Optimieren von Failovercluster-Netzwerkschwellenwerten
+
+Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server Always On ausführen, wird empfohlen, die Clustereinstellung in einen weniger strengen Überwachungsstatus zu ändern.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Always On: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluser).
 
 ## <a name="quorum"></a>Quorum
 
@@ -56,7 +60,7 @@ Konfigurieren Sie einen freigegebenen Azure-Datenträger als Datenträgerzeuge.
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Datenträgerzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Unterstütztes Betriebssystem** : All   
+**Unterstütztes Betriebssystem**: All   
 
 
 ### <a name="cloud-witness"></a>Cloudzeuge
@@ -66,7 +70,7 @@ Ein Cloudzeuge ist ein Quorumzeugentyp für Failovercluster, der Microsoft Azure
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Cloudzeugen](/windows-server/failover-clustering/deploy-cloud-witness#CloudWitnessSetUp).
 
 
-**Unterstütztes Betriebssystem** : Windows Server 2016 oder höher   
+**Unterstütztes Betriebssystem**: Windows Server 2016 oder höher   
 
 
 ### <a name="file-share-witness"></a>Dateifreigabenzeuge
@@ -78,7 +82,7 @@ Wenn Sie eine Azure-Dateifreigabe verwenden möchten, können Sie diese mit dem 
 Informationen zu den ersten Schritten finden Sie unter [Konfigurieren eines Dateifreigabenzeugen](/windows-server/failover-clustering/manage-cluster-quorum#configure-the-cluster-quorum).
 
 
-**Unterstütztes Betriebssystem** : Windows Server 2012 und höher   
+**Unterstütztes Betriebssystem**: Windows Server 2012 und höher   
 
 ## <a name="connectivity"></a>Konnektivität
 
@@ -104,9 +108,9 @@ Bei Verwendung des Lastenausgleichs kommt es zu einer geringfügigen Failoverver
 
 Informieren Sie sich zunächst darüber, wie Sie Azure Load Balancer für eine [Failoverclusterinstanz](failover-cluster-instance-vnn-azure-load-balancer-configure.md) oder für eine [Verfügbarkeitsgruppe](availability-group-vnn-azure-load-balancer-configure.md) konfigurieren.
 
-**Unterstütztes Betriebssystem** : All   
-**Unterstützte SQL-Version** : All   
-**Unterstützte HADR-Lösung** : Failoverclusterinstanz und Verfügbarkeitsgruppe   
+**Unterstütztes Betriebssystem**: All   
+**Unterstützte SQL-Version**: All   
+**Unterstützte HADR-Lösung**: Failoverclusterinstanz und Verfügbarkeitsgruppe   
 
 
 ### <a name="distributed-network-name-dnn"></a>Name des verteilten Netzwerks (Distributed Network Name, DNN)
@@ -124,9 +128,9 @@ Bei Verwendung des DNN funktionieren die meisten SQL Server-Features transparen
 
 Informieren Sie sich zunächst darüber, wie Sie eine DNN-Ressource für eine [Failoverclusterinstanz](failover-cluster-instance-distributed-network-name-dnn-configure.md) oder für eine [Verfügbarkeitsgruppe](availability-group-distributed-network-name-dnn-listener-configure.md) konfigurieren.
 
-**Unterstütztes Betriebssystem** : Windows Server 2016 oder höher   
-**Unterstützte SQL-Version** : SQL Server 2019 CU2 (FCI) und SQL Server 2019 CU8 (Verfügbarkeitsgruppe)   
-**Unterstützte HADR-Lösung** : Failoverclusterinstanz und Verfügbarkeitsgruppe   
+**Unterstütztes Betriebssystem**: Windows Server 2016 oder höher   
+**Unterstützte SQL-Version**: SQL Server 2019 CU2 (FCI) und SQL Server 2019 CU8 (Verfügbarkeitsgruppe)   
+**Unterstützte HADR-Lösung**: Failoverclusterinstanz und Verfügbarkeitsgruppe   
 
 
 ## <a name="limitations"></a>Einschränkungen

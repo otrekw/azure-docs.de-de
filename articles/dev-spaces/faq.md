@@ -5,12 +5,12 @@ ms.date: 01/28/2020
 ms.topic: conceptual
 description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen zu Azure Dev Spaces.
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: 9870ba52424f6f59cc908e4d70bf1560f7d69165
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a25ebd88d022ff278b3e3d9cc9cbf4d8b9b670cd
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91970298"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636094"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Häufig gestellte Fragen zu Azure Dev Spaces
 
@@ -72,9 +72,9 @@ Ja. Sie können Azure Dev Spaces in AKS-Clustern mit [vom API-Server autorisiert
 
 Ja. Sie können Azure Dev Spaces in AKS-Clustern mit [eingeschränktem ausgehenden Datenverkehr für Clusterknoten][aks-restrict-egress-traffic] verwenden, wenn die korrekten FQDNs zugelassen wurden. Weitere Informationen zur Verwendung eines AKS-Clusters mit eingeschränktem ausgehenden Datenverkehr für Clusterknoten, die für Azure Dev Spaces aktiviert sind, finden Sie [hier](configure-networking.md#ingress-and-egress-network-traffic-requirements).
 
-## <a name="can-i-use-azure-dev-spaces-on-rbac-enabled-aks-clusters"></a>Kann ich Azure Dev Spaces für RBAC-aktivierte AKS-Cluster verwenden?
+## <a name="can-i-use-azure-dev-spaces-on-kubernetes-rbac-enabled-aks-clusters"></a>Kann ich Azure Dev Spaces für Kubernetes RBAC-fähige AKS-Cluster verwenden?
 
-Ja, Sie können Azure Dev Spaces für AKS-Cluster mit oder ohne RBAC-Aktivierung verwenden.
+Ja. Sie können Azure Dev Spaces für AKS-Cluster mit oder ohne Aktivierung der rollenbasierten Zugriffssteuerung für Kubernetes (Kubernetes Role-Based Access Control, Kubernetes RBAC) verwenden.
 
 ## <a name="what-happens-when-i-enable-ingress-for-project-in-visual-studio"></a>Was geschieht, wenn ich eingehenden Datenverkehr für das Projekt in Visual Studio aktiviere?
 

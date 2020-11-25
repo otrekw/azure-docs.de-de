@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 08/06/2020
-ms.openlocfilehash: 1c02f9de5b41d58e40001ba103191f3ef015f5c5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: bcfd14572b632cdc455babf7b9f8d67be904406c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534905"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629953"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Verwenden von externen Metadatenspeichern in Azure HDInsight
 
@@ -67,7 +67,7 @@ Vor dem Einrichten eines benutzerdefinierten Hive-Metastores für einen HDInsigh
 
 Beim Erstellen des Clusters muss der HDInsight-Dienst eine Verbindung mit dem externen metastore herstellen und Ihre Anmeldeinformationen überprüfen. Konfigurieren Sie die Regeln der Azure SQL-Datenbank-Firewall, um Azure-Diensten und -Ressourcen den Zugriff auf den Server zu ermöglichen. Aktivieren Sie diese Option im Azure-Portal, indem Sie **Serverfirewall festlegen** auswählen. Wählen Sie dann unterhalb von **Zugriff auf öffentliches Netzwerk verweigern** **Nein** und unterhalb von **Azure-Diensten Zugriff auf den Server erlauben** für Azure SQL-Datenbank **Ja** aus. Weitere Informationen finden Sie unter [IP-Firewallregeln für Azure SQL-Datenbank und Azure SQL Data Warehouse](../azure-sql/database/firewall-configure.md#use-the-azure-portal-to-manage-server-level-ip-firewall-rules).
 
-Private Endpunkte für SQL-Speicher werden nicht unterstützt.
+Private Endpunkte für SQL-Speicher werden nur in Clustern unterstützt, die mit „ResourceProviderConnection“ vom Typ `outbound` erstellt wurden. Weitere Informationen finden Sie in [dieser Dokumentation](https://docs.microsoft.com/azure/hdinsight/hdinsight-private-link).
 
 ![Schaltfläche zum Festlegen der Serverfirewall](./media/hdinsight-use-external-metadata-stores/configure-azure-sql-database-firewall1.png)
 

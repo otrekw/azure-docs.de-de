@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/18/2020
 ms.author: mathoma
-ms.openlocfilehash: 1994cda9dbf22a81216408ee07d51f635e89cff4
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 56509bfcd267a590946eb750bd74ce1f67aecc00
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93285278"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94556402"
 ---
 # <a name="create-an-fci-with-a-premium-file-share-sql-server-on-azure-vms"></a>Erstellen einer FCI mit einer Premium-Dateifreigabe (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -42,8 +42,8 @@ Bevor Sie die in diesem Artikel aufgeführten Anweisungen ausführen, sollten Si
 ## <a name="mount-premium-file-share"></a>Einbinden der Premium-Dateifreigabe
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wechseln Sie dann zu Ihrem Speicherkonto.
-1. Navigieren Sie unter **Dateidienst** zu **Dateifreigaben** , und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
-1. Klicken Sie auf **Verbinden** , um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
+1. Navigieren Sie unter **Dateidienst** zu **Dateifreigaben**, und wählen Sie die Premium-Dateifreigabe aus, die Sie als SQL-Speicher verwenden möchten.
+1. Klicken Sie auf **Verbinden**, um die Verbindungszeichenfolge für Ihre Dateifreigabe anzuzeigen.
 1. Wählen Sie in der Dropdownliste den gewünschten Laufwerkbuchstaben aus, und kopieren Sie dann beide Codeblöcke in Editor.
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/premium-file-storage-commands.png" alt-text="Kopieren beider PowerShell-Befehle aus dem Portal zum Herstellen der Verbindung mit der Dateifreigabe":::
@@ -94,7 +94,7 @@ Um den Cluster über die Benutzeroberfläche zu validieren, gehen Sie auf einem 
 1. Geben Sie unter **Server oder Cluster auswählen** die Namen der beiden virtuellen Computer ein.
 1. Wählen Sie unter **Testoptionen** die Option **Nur ausgewählte Tests ausführen** aus. 
 1. Wählen Sie **Weiter** aus.
-1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze** , wie hier gezeigt:
+1. Wählen Sie unter **Testauswahl** alle Tests aus, ausgenommen **Speicher** und **Direkte Speicherplätze**, wie hier gezeigt:
 
    :::image type="content" source="media/failover-cluster-instance-premium-file-share-manually-configure/cluster-validation.png" alt-text="Auswählen von Tests zur Überprüfung des Clusters":::
 
@@ -178,7 +178,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 1. Nachdem das Setup die FCI auf dem ersten Knoten installiert hat, können Sie per RDP eine Verbindung mit dem zweiten Knoten herstellen.
 
-1. Öffnen Sie das **SQL Server-Installationscenter** , und wählen Sie **Installation** aus.
+1. Öffnen Sie das **SQL Server-Installationscenter**, und wählen Sie **Installation** aus.
 
 1. Wählen Sie **Knoten einem SQL Server-Failovercluster hinzufügen** aus. Befolgen Sie die Anweisungen im Assistenten, um SQL Server zu installieren und die Serverinstanz der FCI hinzuzufügen.
 
@@ -189,7 +189,7 @@ Nachdem Sie den Failovercluster konfiguriert haben, können Sie die SQL Server-F
 
 ## <a name="register-with-the-sql-vm-rp"></a>Registrieren beim SQL-VM-RP
 
-Um Ihre SQL Server-VM über das Portal zu verwalten, registrieren Sie sie beim SQL-VM-Ressourcenanbieter (RP) im [Verwaltungsmodus „Lightweight“](sql-vm-resource-provider-register.md#lightweight-management-mode), der derzeit als einziger Modus mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
+Wenn Sie Ihre SQL Server-VM im Portal verwalten möchten, registrieren Sie die VM mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-agent-extension-manually-register-single-vm.md#lightweight-management-mode). Dies ist derzeit der einzige Modus, der mit FCI und SQL Server auf Azure-VMs unterstützt wird. 
 
 Registrieren Sie eine SQL Server-VM im Modus „Lightweight“ mit PowerShell (-LicenseType `PAYG` oder `AHUB`):
 
@@ -210,7 +210,7 @@ Um Datenverkehr ordnungsgemäß an den aktuellen primären Knoten zu leiten, kon
 
 - MS DTC-Transaktionen (Microsoft Distributed Transaction Coordinator) werden unter Windows Server 2016 und früheren Versionen nicht unterstützt. 
 - Filestream wird für einen Failovercluster mit einer Premium-Dateifreigabe nicht unterstützt. Um Filestream zu verwenden, stellen Sie den Cluster stattdessen mithilfe von [Direkte Speicherplätze](failover-cluster-instance-storage-spaces-direct-manually-configure.md) oder von [freigegebenen Azure-Datenträgern](failover-cluster-instance-azure-shared-disks-manually-configure.md) bereit.
-- Nur die Registrierung beim SQL-VM-Ressourcenanbieter im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt. 
+- Nur die Registrierung mit der SQL-IaaS-Agent-Erweiterung im [Verwaltungsmodus „Lightweight“](sql-server-iaas-agent-extension-automate-management.md#management-modes) wird unterstützt. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

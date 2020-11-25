@@ -3,18 +3,17 @@ title: 'Schnellstart: Erstellen einer Azure IoT Central-Anwendung | Microsoft-Do
 description: 'Schnellstart: Erstellen einer neuen Azure IoT Central-Anwendung Erstellen Sie die Anwendung entweder im Free-Tarif oder in einem der Standard-Tarife.'
 author: viv-liu
 ms.author: viviali
-ms.date: 07/30/2020
+ms.date: 11/16/2020
 ms.topic: quickstart
 ms.service: iot-central
 services: iot-central
-ms.custom: mvc
 manager: corywink
-ms.openlocfilehash: 477da41bab48ee49727ec2a8c029e748d6e7f863
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: afe3e9812271f4b8e049fb2a53efd45fe746e514
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987384"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992810"
 ---
 # <a name="quickstart---create-an-azure-iot-central-application"></a>Schnellstart: Erstellen einer Azure IoT Central-Anwendung
 
@@ -43,11 +42,11 @@ So erstellen Sie eine neue Azure IoT Central-Anwendung über die Vorlage **Benut
     ![Abrechnungsinformationen zu Azure IoT Central](media/quick-deploy-iot-central/iotcentralcreate-billinginfo.png)
 
     > [!NOTE]
-    > Wenn Sie auf der vorherigen Seite **Benutzerdefinierte App** ausgewählt haben, wird das Dropdownmenü **Anwendungsvorlage** angezeigt. Im Dropdownmenü werden unter Umständen andere Vorlagen angezeigt, die von Ihrer Organisation für Sie zur Verfügung gestellt wurden. 
+    > Wenn Sie auf der vorherigen Seite **Benutzerdefinierte App** ausgewählt haben, wird das Dropdownmenü **Anwendungsvorlage** angezeigt. Im Dropdownmenü werden unter Umständen andere Vorlagen angezeigt, die von Ihrer Organisation für Sie zur Verfügung gestellt wurden.
 
     >[!IMPORTANT]
-    >Die Vorlage **Benutzerdefinierte Anwendung (veraltet)** (V2) wurde eingestellt, da alle Funktionen, die zuvor in der Legacyanwendungsvorlage verfügbar waren, nun in der aktuellen Vorlage **Benutzerdefinierte Anwendung** (V3) zur Verfügung stehen. 
-    
+    >Die Vorlage **Benutzerdefinierte Anwendung (veraltet)** (V2) wurde eingestellt, da alle Funktionen, die zuvor in der Legacyanwendungsvorlage verfügbar waren, nun in der aktuellen Vorlage **Benutzerdefinierte Anwendung** (V3) zur Verfügung stehen.
+
 1. Erstellen Sie die Anwendung entweder im Tarif für die kostenlose 7-Tage-Testversion oder in einem der Standard-Tarife.
 
     - Im Tarif *Free* erstellte Anwendungen sind sieben Tage lang kostenlos und unterstützen bis zu fünf Geräte. Sie können bis zum Ablauftermin jederzeit in Anwendungen mit Standard-Tarif konvertiert werden.

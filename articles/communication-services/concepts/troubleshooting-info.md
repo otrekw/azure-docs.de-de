@@ -8,12 +8,12 @@ ms.author: manoskow
 ms.date: 10/23/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: ff3e7fee87661fb89ba930b7368bd54e71ad57bf
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 775075765c8c8eaa94541c0f094c1f7743fe59d9
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357622"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886786"
 ---
 # <a name="troubleshooting-in-azure-communication-services"></a>Problembehandlung in Azure Communication Services
 
@@ -23,17 +23,17 @@ Dieses Dokument hilft Ihnen bei der Behandlung von Problemen, die möglicherweis
 
 Wir empfehlen Entwicklern, Fragen zu stellen, Features vorzuschlagen und Probleme als Issues im [GitHub-Repository](https://github.com/Azure/communication) von Communication Services zu melden. Weitere Foren sind:
 
-* [Microsoft Q&A (Fragen und Antworten)](https://docs.microsoft.com/answers/questions/topics/single/101418.html)
+* [Microsoft Q&A (Fragen und Antworten)](/answers/questions/topics/single/101418.html)
 * [StackOverflow](https://stackoverflow.com/questions/tagged/azure+communication)
 
 Abhängig vom [Supportplan](https://azure.microsoft.com/support/plans/) Ihres Azure-Abonnements können Sie ein Supportticket direkt über das [Azure-Portal](https://azure.microsoft.com/support/create-ticket/) übermitteln.
 
 Um Ihnen bei der Behandlung bestimmter Arten von Problemen zu helfen, werden Sie möglicherweise nach den folgenden Informationen gefragt:
 
-* **MS-CV-ID** : Diese ID wird für die Problembehandlung von Anrufen und Nachrichten verwendet. 
-* **Anruf-ID** : Diese ID wird zum Identifizieren von Communication Services-Anrufen verwendet.
-* **SMS-Nachrichten-ID** : Diese ID wird zum Identifizieren von SMS-Nachrichten verwendet.
-* **Anrufprotokolle** : Diese Protokolle enthalten ausführliche Informationen, die zur Behandlung von Anruf- und Netzwerkproblemen verwendet werden können.
+* **MS-CV-ID**: Diese ID wird für die Problembehandlung von Anrufen und Nachrichten verwendet. 
+* **Anruf-ID**: Diese ID wird zum Identifizieren von Communication Services-Anrufen verwendet.
+* **SMS-Nachrichten-ID**: Diese ID wird zum Identifizieren von SMS-Nachrichten verwendet.
+* **Anrufprotokolle**: Diese Protokolle enthalten ausführliche Informationen, die zur Behandlung von Anruf- und Netzwerkproblemen verwendet werden können.
 
 
 ## <a name="access-your-ms-cv-id"></a>Zugreifen auf Ihre MS-CV-ID

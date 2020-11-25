@@ -5,17 +5,17 @@ ms.author: mikben
 ms.date: 10/10/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
-ms.openlocfilehash: 0559a9b763d273579373bb57922606f14ff6e6db
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ab13e02c9154dbfc1bd28872f1bd6f993019a604
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94574199"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915232"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Eine funktionierende [Communication Services-Telefonie-App](../getting-started-with-calling.md)
-- Eine [Teams-Bereitstellung](https://docs.microsoft.com/deployoffice/teams-install)
+- Eine [Teams-Bereitstellung](/deployoffice/teams-install)
 
 ## <a name="enable-teams-interoperability"></a>Aktivieren der Teams-Interoperabilität
 
@@ -98,7 +98,7 @@ meetingButton.addEventListener("click", () => {
 
 ## <a name="get-the-meeting-context"></a>Abrufen des Besprechungskontexts
 
-Der Teams-Kontext kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](https://docs.microsoft.com/graph/api/onlinemeeting-createorget?view=graph-rest-beta&tabs=http) erläutert.
+Der Teams-Kontext kann mithilfe der Graph-APIs abgerufen werden. Dies wird in der [Graph-Dokumentation](/graph/api/onlinemeeting-createorget?tabs=http&view=graph-rest-beta) erläutert.
 
 Die erforderlichen Besprechungsinformationen können auch der URL für den Besprechungsbeitritt aus der Besprechungseinladung entnommen werden.
 
@@ -115,4 +115,3 @@ Navigieren Sie in Ihrem Browser zu http://localhost:8080/. Daraufhin sollte Folg
 :::image type="content" source="../media/javascript/calling-javascript-app.png" alt-text="Screenshot der fertigen JavaScript-Anwendung":::
 
 Fügen Sie den Teams-Kontext in das Textfeld ein, und klicken Sie auf *Join Teams Meeting* (Teams-Besprechung beitreten), um der Teams-Besprechung über Ihre Communication Services-Anwendung beizutreten.
-

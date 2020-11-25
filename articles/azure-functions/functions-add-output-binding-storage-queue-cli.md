@@ -5,20 +5,18 @@ ms.date: 02/07/2020
 ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: c7d41d889692856a9818aacd265e67b0c2d3d1ad
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d0d559579e841553e04c26bf4dcc78934de3e95
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422883"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920201"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Verbinden von Azure Functions mit Azure Storage über Befehlszeilentools
 
-In diesem Artikel integrieren Sie eine Azure Storage-Warteschlange in die Funktion und das Speicherkonto, die bzw. das Sie im vorherigen Schnellstartartikel erstellt haben. Sie erzielen diese Integration mit einer *Ausgabebindung* , mit der Daten aus einer HTTP-Anforderung in eine Nachricht der Warteschlange geschrieben werden. Beim Durcharbeiten dieses Artikels fallen keine zusätzlichen Kosten an, die über die wenigen US-Cent aus der vorherigen Schnellstartanleitung hinausgehen. Weitere Informationen zu Bindungen finden Sie unter [Azure Functions-Trigger und Bindungskonzepte](functions-triggers-bindings.md).
+In diesem Artikel integrieren Sie eine Azure Storage-Warteschlange in die Funktion und das Speicherkonto, die bzw. das Sie im vorherigen Schnellstartartikel erstellt haben. Sie erzielen diese Integration mit einer *Ausgabebindung*, mit der Daten aus einer HTTP-Anforderung in eine Nachricht der Warteschlange geschrieben werden. Beim Durcharbeiten dieses Artikels fallen keine zusätzlichen Kosten an, die über die wenigen US-Cent aus der vorherigen Schnellstartanleitung hinausgehen. Weitere Informationen zu Bindungen finden Sie unter [Azure Functions-Trigger und Bindungskonzepte](functions-triggers-bindings.md).
 
 ## <a name="configure-your-local-environment"></a>Konfigurieren Ihrer lokalen Umgebung
-
-Zunächst müssen Sie den Artikel [Schnellstart: Erstellen Ihrer ersten Funktion über die Befehlszeile mithilfe der Azure-Befehlszeilenschnittstelle][previous-quickstart] durcharbeiten. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.
 
 ::: zone pivot="programming-language-csharp"  
 Zunächst müssen Sie den Artikel [Schnellstart: Erstellen Ihrer ersten Funktion über die Befehlszeile mithilfe der Azure-Befehlszeilenschnittstelle](create-first-function-cli-csharp.md) durcharbeiten. Falls Sie die Ressourcen am Ende dieses Artikels bereits bereinigt haben, sollten Sie die Schritte erneut ausführen, um die Funktions-App und die zugehörigen Ressourcen neu zu erstellen.  
@@ -120,7 +118,7 @@ mvn azure-functions:deploy
 
     # <a name="browser"></a>[Browser](#tab/browser)
     
-    Kopieren Sie die vollständige **Aufruf-URL** , die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Functions` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
+    Kopieren Sie die vollständige **Aufruf-URL**, die in der Ausgabe des Befehls zum Veröffentlichen (publish) angezeigt wird, in eine Browseradressleiste, und fügen Sie den Abfrageparameter `&name=Functions` an. Im Browser sollte eine ähnliche Ausgabe wie bei der lokalen Ausführung der Funktion angezeigt werden.
 
     ![Ausgabe der in Azure ausgeführten Funktion in einem Browser](./media/functions-add-output-binding-storage-queue-cli/function-test-cloud-browser.png)
 

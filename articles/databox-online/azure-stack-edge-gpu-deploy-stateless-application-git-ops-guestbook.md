@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 3200cfe290cbba208c61e914b17ffa6cd65e6eee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d323504a46cd35525c889a94d2d044193c1471ac
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899563"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94535944"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP-Gästebuchanwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -79,7 +79,7 @@ Führen Sie diese Schritte aus, um die Azure Arc-Ressource für die Bereitstell
 
 1. Navigieren Sie zu **Konfigurationen**, und wählen Sie **+ Konfiguration hinzufügen** aus.
 
-    ![Wechseln zu „Konfigurationen“](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
+    ![Screenshot: Kubernetes-Cluster mit Azure Arc-Unterstützung und ausgewählter Option „Konfiguration hinzufügen“](media/azure-stack-edge-gpu-connect-powershell-interface/select-configurations-1.png)
 
 1. Geben Sie unter **Konfiguration hinzufügen** die geeigneten Werte für die Felder ein, und wählen Sie **Anwenden** aus.
 
@@ -100,11 +100,11 @@ Führen Sie diese Schritte aus, um die Azure Arc-Ressource für die Bereitstell
 
 1. Die Bereitstellung der Konfiguration wird gestartet, und für **Operatorstatus** wird **Ausstehend** angezeigt. 
 
-    ![Wechseln zu „Konfigurationen“](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
+    ![Screenshot: Kubernetes-Cluster mit Azure Arc-Unterstützung im Zustand „Ausstehend“ während der Aktualisierung](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-1.png)
 
 1. Die Bereitstellung nimmt einige Minuten in Anspruch. Wenn die Bereitstellung abgeschlossen ist, wird für **Operatorstatus** **Installiert** angezeigt.
 
-    ![Wechseln zu „Konfigurationen“](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
+    ![Screenshot: Kubernetes-Cluster mit Azure Arc-Unterstützung im Zustand „Installiert“](media/azure-stack-edge-gpu-connect-powershell-interface/view-configurations-2.png)
 
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung

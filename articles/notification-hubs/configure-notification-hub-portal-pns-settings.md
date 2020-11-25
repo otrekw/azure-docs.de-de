@@ -12,12 +12,12 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 02/14/2019
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9c75ccaa05457f13697d1a26dbc8fd2f6720a751
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: 5dd1044895ba55d1fbc6be7f4f4a2d7f615daa16
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517851"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887262"
 ---
 # <a name="quickstart-set-up-push-notifications-in-a-notification-hub"></a>Schnellstart: Einrichten von Pushbenachrichtigungen in einem Notification Hub
 
@@ -107,6 +107,8 @@ Sie benötigen den **API-Schlüssel** für Ihr Google Firebase Cloud Messaging-P
 Rufen Sie Azure CLI-Referenzen für andere Plattformen mit dem Befehl [az notification-hub credential](/cli/azure/ext/notification-hub/notification-hub/credential) ab.
 
 Weitere Informationen zum Senden von Benachrichtigungen an eine Android-Anwendung finden Sie unter [Senden von Pushbenachrichtigungen an Android-Geräte mit Firebase](notification-hubs-android-push-notification-google-fcm-get-started.md).
+
+---
 
 ## <a name="windows-push-notification-service"></a>Windows-Pushbenachrichtigungsdienst (Windows Push Notification Service, WNS)
 

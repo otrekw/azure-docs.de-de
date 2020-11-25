@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
-ms.date: 08/28/2020
-ms.openlocfilehash: c64112e30bdaf0da2218177bd2737c3ebe688b0c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/16/2020
+ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675295"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94653741"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -97,14 +97,17 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Richtlinie für automatisches Failover**
 
-  Standardmäßig wird eine Failovergruppe mit einer Richtlinie für automatisches Failover konfiguriert. Azure löst das Failover aus, nachdem der Fehler erkannt und die Toleranzperiode abgelaufen ist. Das System muss sicherstellen, dass der Ausfall aufgrund des Ausmaßes der Auswirkungen nicht durch die integrierte [Hochverfügbarkeitsinfrastruktur](high-availability-sla.md) gemildert werden kann. Wenn Sie den Failoverworkflow aus der Anwendung steuern möchten, können Sie automatisches Failover deaktivieren.
+  Standardmäßig wird eine Failovergruppe mit einer Richtlinie für automatisches Failover konfiguriert. Azure löst das Failover aus, nachdem der Fehler erkannt und die Toleranzperiode abgelaufen ist. Das System muss sicherstellen, dass der Ausfall aufgrund des Ausmaßes der Auswirkungen nicht durch die integrierte [Hochverfügbarkeitsinfrastruktur](high-availability-sla.md) gemildert werden kann. Wenn Sie den Failoverworkflow über die Anwendung oder manuell steuern möchten, können Sie automatisches Failover deaktivieren.
   
   > [!NOTE]
   > Da das Betriebsteam Maßnahmen ergreifen muss, um das Ausmaß des Ausfalls zu überprüfen und festzustellen, wie schnell dieser minimiert werden kann, kann die Toleranzperiode nicht auf einen Wert unter einer Stunde festgelegt werden. Diese Einschränkung gilt unabhängig vom jeweiligen Datensynchronisierungsstatus für alle Datenbanken in der Failovergruppe.
 
 - **Schreibgeschützte Failoverrichtlinie**
 
-  Standardmäßig ist das Failover des schreibgeschützten Listeners deaktiviert. Dadurch wird sichergestellt, dass die Leistung der primären Datenbank nicht beeinträchtigt wird, wenn die sekundäre Datenbank offline ist. Es bedeutet jedoch auch, dass die schreibgeschützten Sitzungen erst dann eine Verbindung herstellen können, nachdem die sekundäre Datenbank wiederhergestellt wurde. Wenn Sie keine Ausfallzeiten für die schreibgeschützten Sitzungen tolerieren und die primäre Datenbank vorübergehend sowohl für den schreibgeschützten als auch den Lese-/Schreibdatenverkehr auf Kosten der möglichen Leistungseinbußen der primären Datenbank verwenden möchten, können Sie das Failover für den schreibgeschützten Listener aktivieren, indem Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` konfigurieren. In diesem Fall wird der schreibgeschützte Datenverkehr automatisch zur primären Datenbank umgeleitet, wenn die sekundäre Datenbank nicht verfügbar ist.
+  Standardmäßig ist das Failover des schreibgeschützten Listeners deaktiviert. Dadurch wird sichergestellt, dass die Leistung der primären Datenbank nicht beeinträchtigt wird, wenn die sekundäre Datenbank offline ist. Es bedeutet jedoch auch, dass die schreibgeschützten Sitzungen erst dann eine Verbindung herstellen können, nachdem die sekundäre Datenbank wiederhergestellt wurde. Wenn Sie keine Downtime für die schreibgeschützten Sitzungen tolerieren und die primäre Datenbank sowohl für schreibgeschützten Datenverkehr als auch für Lese-/Schreibdatenverkehr verwenden können (auf Kosten der möglichen Leistungseinbußen für die primäre Datenbank), können Sie das Failover für den schreibgeschützten Listener aktivieren, indem Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` konfigurieren. In diesem Fall wird der schreibgeschützte Datenverkehr automatisch zur primären Datenbank umgeleitet, wenn die sekundäre Datenbank nicht verfügbar ist.
+
+  > [!NOTE]
+  > Die Eigenschaft `AllowReadOnlyFailoverToPrimary` ist nur wirksam, wenn die Richtlinie für automatisches Failover aktiviert ist und von Azure ein automatisches Failover ausgelöst wurde. Ist die Eigenschaft in diesem Fall auf „True“ festgelegt, werden von der primären Datenbank sowohl Sitzung mit Lese-/Schreibzugriff als auch schreibgeschützte Sitzungen bedient.
 
 - **Geplantes Failover**
 
@@ -128,7 +131,7 @@ Wenn Sie echte Geschäftskontinuität erreichen möchten, ist das Bereitstellen 
 
 - **Mehrere Failovergruppen**
 
-  Sie können mehrere Failovergruppen für das gleiche Serverpaar konfigurieren, um die Skalierung der Failover zu steuern. Jede Gruppe führt ein unabhängiges Failover durch. Wenn Ihre mehrinstanzenfähige Anwendung Pools für elastische Datenbanken verwendet, können Sie diese Funktion zum Mischen primärer und sekundärer Datenbanken in den einzelnen Pools verwenden. Auf diese Weise können Sie die Auswirkungen eines Ausfalls auf nur die Hälfte der Mandanten reduzieren.
+  Sie können mehrere Failovergruppen für das gleiche Serverpaar konfigurieren, um den Umfang von Failovern zu steuern. Jede Gruppe führt ein unabhängiges Failover durch. Wenn Ihre mehrinstanzenfähige Anwendung Pools für elastische Datenbanken verwendet, können Sie diese Funktion zum Mischen primärer und sekundärer Datenbanken in den einzelnen Pools verwenden. Auf diese Weise können Sie die Auswirkungen eines Ausfalls auf nur die Hälfte der Mandanten reduzieren.
 
   > [!NOTE]
   > SQL Managed Instance bietet keine Unterstützung für mehrere Failovergruppen.
@@ -173,7 +176,7 @@ Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.database.windows
 
 ### <a name="using-read-only-listener-for-read-only-workload"></a>Verwenden eines schreibgeschützten Listeners für schreibgeschützte Workloads
 
-Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Darüber hinaus wird empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu `ApplicationIntent=ReadOnly`. Wenn Sie sicherstellen möchten, dass die schreibgeschützte Workload nach einem Failover oder beim Wechsel des sekundären Servers in den Offlinemodus die Verbindung wiederherstellen kann, müssen Sie die Eigenschaft `AllowReadOnlyFailoverToPrimary` der Failoverrichtlinie konfigurieren.
+Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie für schreibgeschützte Sitzungen `<fog-name>.secondary.database.windows.net` als Server-URL, damit die Verbindung automatisch an die sekundäre Datenbank weitergeleitet wird. Darüber hinaus wird empfohlen, in der Verbindungszeichenfolge die Leseabsicht anzugeben. Verwenden Sie dazu `ApplicationIntent=ReadOnly`.
 
 ### <a name="preparing-for-performance-degradation"></a>Vorbereiten auf Leistungsbeeinträchtigungen
 
@@ -264,20 +267,20 @@ Verwenden Sie beim Durchführen von OLTP-Vorgängen `<fog-name>.zone_id.database
 Wenn Sie über eine logisch isolierte schreibgeschützte Workload verfügen, die gegenüber einer bestimmten Veraltung tolerant ist, können Sie die sekundäre Datenbank in der Anwendung verwenden. Verwenden Sie zum direkten Verbinden mit der georeplizierten sekundären Datenbank `<fog-name>.secondary.<zone_id>.database.windows.net` als Server-URL, damit die Verbindung direkt mit der georeplizierten sekundären Datenbank hergestellt wird.
 
 > [!NOTE]
-> Bei bestimmten Dienstebenen unterstützt SQL-Datenbank die Verwendung von [schreibgeschützten Replikaten](read-scale-out.md) für den Lastenausgleich schreibgeschützter Abfrageworkloads, wobei die Kapazität eines schreibgeschützten Replikats und der Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge verwendet werden. Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
+> Auf den Dienstebenen „Premium“, „Unternehmenskritisch“ und „Hyperscale“ unterstützt SQL-Datenbank die Verwendung [schreibgeschützter Replikate](read-scale-out.md) für die Ausführung schreibgeschützter Abfrageworkloads unter Verwendung der Kapazität einzelner oder mehrerer schreibgeschützter Replikate (mit dem Parameter `ApplicationIntent=ReadOnly` in der Verbindungszeichenfolge). Wenn Sie eine georeplizierte sekundäre Datenbank konfiguriert haben, können Sie mit dieser Funktion eine Verbindung entweder mit einem schreibgeschützten Replikat am primären Standort oder am geografisch replizierten Standort herstellen.
 >
-> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am primären Standort verwenden Sie `<fog-name>.<zone_id>.database.windows.net`.
-> - Zum Herstellen einer Verbindung mit einem schreibgeschützten Replikat am sekundären Standort verwenden Sie `<fog-name>.secondary.<zone_id>.database.windows.net`.
+> - Verwenden Sie `ApplicationIntent=ReadOnly` und `<fog-name>.<zone_id>.database.windows.net`, um eine Verbindung mit einem schreibgeschützten Replikat am primären Standort herzustellen.
+> - Wenn Sie eine Verbindung mit einem schreibgeschützten Replikat am sekundären Standort herstellen möchten, verwenden Sie `ApplicationIntent=ReadOnly` und `<fog-name>.secondary.<zone_id>.database.windows.net`.
 
 ### <a name="preparing-for-performance-degradation"></a>Vorbereiten auf Leistungsbeeinträchtigungen
 
-Eine typische Azure-Anwendung nutzt mehrere Azure-Dienste und besteht aus mehreren Komponenten. Das automatisierte Failover der Failovergruppe wird ausschließlich anhand des Status der Azure SQL-Komponenten ausgelöst. Andere Azure-Dienste in der primären Region sind vom Ausfall ggf. nicht betroffen, und es kann sein, dass die entsprechenden Komponenten in dieser Region weiterhin verfügbar sind. Nachdem die primären Datenbanken auf die Region für die Notfallwiederherstellung umgestellt wurden, nimmt die Latenz zwischen den abhängigen Komponenten unter Umständen zu. Um Auswirkungen der höheren Latenz auf die Leistung der Anwendung zu vermeiden, sollten Sie sicherstellen, dass in der Region für die Notfallwiederherstellung für die Redundanz aller Anwendungskomponenten gesorgt ist. Befolgen Sie außerdem diese [Richtlinien zur Netzwerksicherheit](#failover-groups-and-network-security).
+Eine typische Azure-Anwendung nutzt mehrere Azure-Dienste und besteht aus mehreren Komponenten. Das automatisierte Failover der Failovergruppe wird ausschließlich anhand des Status der Azure SQL-Komponenten ausgelöst. Andere Azure-Dienste in der primären Region sind vom Ausfall ggf. nicht betroffen, und es kann sein, dass die entsprechenden Komponenten in dieser Region weiterhin verfügbar sind. Nachdem die primären Datenbanken auf die sekundäre Region umgestellt wurden, erhöht sich unter Umständen die Wartezeit zwischen den abhängigen Komponenten. Gewährleisten Sie die Redundanz aller Anwendungskomponenten in der sekundären Region, und führen Sie Failover für Anwendungskomponenten zusammen mit der Datenbank durch, um zu vermeiden, dass die Leistung der Anwendung durch höhere Wartezeit beeinträchtigt wird. Halten Sie sich bei der Konfiguration an die [Richtlinien für die Netzwerksicherheit](#failover-groups-and-network-security), um die Konnektivität mit der Datenbank in der sekundären Region sicherzustellen.
 
 ### <a name="preparing-for-data-loss"></a>Vorbereiten auf Datenverlust
 
-Wenn ein Ausfall erkannt wird, wird automatisch ein Lese-/Schreibfailover ausgelöst, sofern nach unserem Erkenntnissen keine Daten verloren gegangen sind. Andernfalls wird der von Ihnen angegebene Zeitraum abgewartet. Andernfalls wartet es für den mit `GracePeriodWithDataLossHours` festgelegten Zeitraum. Wenn Sie `GracePeriodWithDataLossHours` angegeben haben, müssen Sie auf Datenverluste vorbereitet sein. Bei Ausfällen priorisiert Azure grundsätzlich die Verfügbarkeit. Wenn keine Datenverluste auftreten dürfen, legen Sie „GracePeriodWithDataLossHours“ auf eine ausreichend große Zahl fest, z.B. 24 Stunden.
+Wenn ein Ausfall erkannt wird, wird automatisch ein Lese-/Schreibfailover ausgelöst, sofern nach unserem Erkenntnissen keine Daten verloren gegangen sind. Andernfalls wird das Failover für den mithilfe von `GracePeriodWithDataLossHours` angegebenen Zeitraum zurückgestellt. Wenn Sie `GracePeriodWithDataLossHours` angegeben haben, müssen Sie auf Datenverluste vorbereitet sein. Bei Ausfällen priorisiert Azure grundsätzlich die Verfügbarkeit. Wenn keine Datenverluste auftreten dürfen, legen Sie „GracePeriodWithDataLossHours“ auf einen ausreichend hohen Wert (beispielsweise 24 Stunden) fest, oder deaktivieren Sie das automatische Failover.
 
-Die DNS-Aktualisierung des Lese-/Schreib-Listeners erfolgt sofort nach dem Initiieren des Failovers. Bei diesem Vorgang gehen keine Daten verloren. Allerdings kann der Prozess zum Wechseln der Datenbankrollen unter normalen Bedingungen bis zu 5 Minuten dauern. Bis er abgeschlossen ist, sind einige Datenbanken in der neuen primären Instanz noch schreibgeschützt. Wenn das Failover mithilfe von PowerShell initiiert wird, ist der gesamte Vorgang synchron. Wird es über das Azure-Portal initiiert, wird auf der Benutzeroberfläche der Abschlussstatus angegeben. Bei Initiierung über die REST-API verwenden Sie den Standardabfragemechanismus von Azure Resource Manager, um den Vorgang auf seinen Abschluss zu überwachen.
+Die DNS-Aktualisierung des Lese-/Schreib-Listeners erfolgt sofort nach dem Initiieren des Failovers. Bei diesem Vorgang gehen keine Daten verloren. Allerdings kann der Prozess zum Wechseln der Datenbankrollen unter normalen Bedingungen bis zu 5 Minuten dauern. Bis er abgeschlossen ist, sind einige Datenbanken in der neuen primären Instanz noch schreibgeschützt. Wenn ein Failover mithilfe von PowerShell initiiert wird, ist der Vorgang für den Wechsel der primären Replikatrolle synchron. Wird es über das Azure-Portal initiiert, wird auf der Benutzeroberfläche der Abschlussstatus angegeben. Bei Initiierung über die REST-API verwenden Sie den Standardabfragemechanismus von Azure Resource Manager, um den Vorgang auf seinen Abschluss zu überwachen.
 
 > [!IMPORTANT]
 > Verwenden Sie manuelles Gruppenfailover, um primäre Datenbanken wieder an den ursprünglichen Standort zu verschieben. Sobald der Ausfall, der das Failover verursacht hat, behoben ist, können Sie die primären Datenbanken an den ursprünglichen Standort verschieben. Dazu sollten Sie ein manuelles Failover der Gruppe initiieren.

@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 ms.devlang: java
 ms.custom: mvc, devx-track-java
-ms.openlocfilehash: 7c5aa7e5189b4c89636fdb38e8fd365208148900
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fb6f9f598ef68911a9017dde504a032672dc55a3
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93094641"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966580"
 ---
 # <a name="quickstart-enroll-x509-devices-to-the-device-provisioning-service-using-java"></a>Schnellstart: Registrieren von X.509-Geräten für den Device Provisioning-Dienst mit Java
 
@@ -51,7 +51,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihre
 
     1. Fügen Sie das Element `[Provisioning Connection String]` für Ihren Provisioning-Dienst wie folgt aus dem Portal hinzu:
         1. Navigieren Sie zu Ihrem Provisioning-Dienst im [Azure-Portal](https://portal.azure.com). 
-        2. Öffnen Sie **Freigegebene Zugriffsrichtlinien** , und wählen Sie eine Richtlinie aus, die über die Berechtigung *EnrollmentWrite* verfügt.
+        2. Öffnen Sie **Freigegebene Zugriffsrichtlinien**, und wählen Sie eine Richtlinie aus, die über die Berechtigung *EnrollmentWrite* verfügt.
         3. Kopieren Sie die **Primärschlüssel-Verbindungszeichenfolge**. 
 
             ![Abrufen der Verbindungszeichenfolge für die Bereitstellung aus dem Portal](./media/quick-enroll-device-x509-java/provisioning-string.png)  
@@ -62,7 +62,7 @@ In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihre
             private static final String PROVISIONING_CONNECTION_STRING = "[Provisioning Connection String]";
             ```
 
-    2. Fügen Sie das Stammzertifikat für die Gruppe mit den Geräten hinzu. Verwenden Sie das Tool _X.509 Certificate Generator_ : Gehen Sie wie folgt vor, wenn Sie ein Beispielstammzertifikat benötigen:
+    2. Fügen Sie das Stammzertifikat für die Gruppe mit den Geräten hinzu. Verwenden Sie das Tool _X.509 Certificate Generator_: Gehen Sie wie folgt vor, wenn Sie ein Beispielstammzertifikat benötigen:
         1. Navigieren Sie in einem Befehlsfenster zum Ordner **_azure-iot-sdk-java/provisioning/provisioning-tools/provisioning-x509-cert-generator_** .
         2. Erstellen Sie das Tool, indem Sie den folgenden Befehl ausführen:
 
@@ -78,8 +78,8 @@ In den folgenden Schritten wird gezeigt, wie Sie die Bereitstellungsdetails Ihre
             ```
 
         5. Wenn die Aufforderung angezeigt wird, können Sie optional einen _allgemeinen Namen_ für Ihre Zertifikate eingeben.
-        6. Das Tool erstellt lokal ein Clientzertifikat ( **Client Cert** ), den privaten Schlüssel für das Clientzertifikat ( **Client Cert Private Key** ) und das Stammzertifikat ( **Root Cert** ).
-        7. Kopieren Sie das **Stammzertifikat** , einschließlich der Zeilen **_-----BEGIN CERTIFICATE-----_** und **_-----END CERTIFICATE-----_** . 
+        6. Das Tool erstellt lokal ein Clientzertifikat (**Client Cert**), den privaten Schlüssel für das Clientzertifikat (**Client Cert Private Key**) und das Stammzertifikat (**Root Cert**).
+        7. Kopieren Sie das **Stammzertifikat**, einschließlich der Zeilen **_-----BEGIN CERTIFICATE-----_** und **_-----END CERTIFICATE-----_** . 
         8. Weisen Sie den Wert des **Stammzertifikats** wie hier dargestellt dem Parameter **PUBLIC_KEY_CERTIFICATE_STRING** zu:
 
             ```Java
@@ -163,7 +163,7 @@ Bei diesem Verfahren wird eine Registrierungsgruppe verwendet. Im nächsten Absc
 
 ## <a name="modifications-to-enroll-a-single-x509-device"></a>Änderungen zur Registrierung eines einzelnen X.509-Geräts
 
-Ändern Sie zum Registrieren eines einzelnen X.509-Geräts den Beispielcode für die *individuelle Registrierung* , der unter [Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK](quick-enroll-device-tpm-java.md#javasample) verwendet wurde, wie folgt:
+Ändern Sie zum Registrieren eines einzelnen X.509-Geräts den Beispielcode für die *individuelle Registrierung*, der unter [Registrieren eines TPM-Geräts für den IoT Hub Device Provisioning-Dienst per Java-Dienst-SDK](quick-enroll-device-tpm-java.md#javasample) verwendet wurde, wie folgt:
 
 1. Kopieren Sie den *allgemeinen Namen* Ihres X.509-Clientzertifikats in die Zwischenablage. Wenn Sie das Tool _X.509 Certificate Generator_ wie im [vorherigen Codeabschnitt](#javasample) gezeigt verwenden möchten, können Sie entweder einen _allgemeinen Namen_ für Ihr Zertifikat eingeben oder den Standardwert **microsoftriotcore** verwenden. Verwenden Sie diesen **allgemeinen Namen** als Wert für die Variable *REGISTRATION_ID*. 
 

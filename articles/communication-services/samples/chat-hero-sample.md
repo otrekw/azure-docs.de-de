@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 8349654650ff0c85fb7c9c1af6ab5dabc4f5c3ac
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: fc757e1310369c48de24c0cc9253c668ca27495c
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677413"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888571"
 ---
 # <a name="get-started-with-the-group-chat-hero-sample"></a>Erste Schritte mit dem Hero-Beispiel für Gruppenchats
 
@@ -36,7 +36,7 @@ In dieser Beispiel-Schnellstartanleitung wird beschrieben, wie das Beispiel funk
 
 ## <a name="overview"></a>Übersicht
 
-Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung** , die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
+Das Beispiel verfügt sowohl über eine clientseitige als auch eine serverseitige Anwendung. Die **clientseitige Anwendung** ist eine React/Redux-Webanwendung, für die das Fluent-UI-Framework von Microsoft verwendet wird. Diese Anwendung sendet Anforderungen an eine **serverseitige ASP.NET Core-Anwendung**, die für die clientseitige Anwendung die Verbindungsherstellung mit Azure ermöglicht. 
 
 Das Beispiel sieht wie folgt aus:
 
@@ -44,17 +44,17 @@ Das Beispiel sieht wie folgt aus:
 
 Wenn Sie auf die Schaltfläche „Start a chat“ (Chat starten) klicken, ruft die Webanwendung ein Benutzerzugriffstoken aus der serverseitigen Anwendung ab. Dieses Token wird dann verwendet, um die Client-App mit Azure Communication Services zu verbinden. Nach dem Abrufen des Tokens werden Sie aufgefordert, Ihren Namen und Ihr Emoji für den Chat anzugeben. 
 
-:::image type="content" source="./media/chat/pre-chat.png" alt-text="Screenshot: Landing Page der Beispielanwendung":::
+:::image type="content" source="./media/chat/pre-chat.png" alt-text="Screenshot: Bildschirm zur Vorbereitung des Chats in der Anwendung":::
 
 Nachdem Sie Ihren Anzeigenamen und Ihr Emoji konfiguriert haben, können Sie der Chatsitzung beitreten. Der Hauptbereich für Chats, der die zentrale Benutzeroberfläche für Chats enthält, wird angezeigt.
 
-:::image type="content" source="./media/chat/main-app.png" alt-text="Screenshot: Landing Page der Beispielanwendung":::
+:::image type="content" source="./media/chat/main-app.png" alt-text="Screenshot: Hauptbildschirm der Beispielanwendung":::
 
 Komponenten des Hauptbildschirms für Chats:
 
-- **Hauptbereich für Chats** : Dies ist der Hauptbereich für Chats, in dem Benutzer Nachrichten senden und empfangen können. Zum Senden von Nachrichten können Sie den Eingabebereich nutzen und dann die EINGABETASTE drücken (oder die Schaltfläche „Senden“ verwenden). Die empfangenen Chatnachrichten werden nach Absender mit dem zugehörigen Namen und Emoji kategorisiert. Im Chatbereich werden zwei Arten von Benachrichtigungen angezeigt: 1) Eingabebenachrichtigungen, wenn ein Benutzer Text eingibt, und 2) Sende- und Lesebenachrichtigungen für Nachrichten.
-- **Header** : Hier werden dem Benutzer der Titel des Chatthreads und die Steuerelemente zum Umschalten der Seitenleiste für die Teilnehmer und die Einstellungen angezeigt. Darüber hinaus ist eine Schaltfläche zum Beenden der Chatsitzung vorhanden.
-- **Seitenleiste** : Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren. 
+- **Hauptbereich für Chats**: Dies ist der Hauptbereich für Chats, in dem Benutzer Nachrichten senden und empfangen können. Zum Senden von Nachrichten können Sie den Eingabebereich nutzen und dann die EINGABETASTE drücken (oder die Schaltfläche „Senden“ verwenden). Die empfangenen Chatnachrichten werden nach Absender mit dem zugehörigen Namen und Emoji kategorisiert. Im Chatbereich werden zwei Arten von Benachrichtigungen angezeigt: 1) Eingabebenachrichtigungen, wenn ein Benutzer Text eingibt, und 2) Sende- und Lesebenachrichtigungen für Nachrichten.
+- **Header**: Hier werden dem Benutzer der Titel des Chatthreads und die Steuerelemente zum Umschalten der Seitenleiste für die Teilnehmer und die Einstellungen angezeigt. Darüber hinaus ist eine Schaltfläche zum Beenden der Chatsitzung vorhanden.
+- **Seitenleiste**: Hier werden die Informationen zu den Teilnehmern und Einstellungen angezeigt, wenn der entsprechende Umschalter im Headerbereich verwendet wird. Die Seitenleiste für Teilnehmer enthält eine Liste mit den Teilnehmern des Chats und einen Link zum Einladen von Teilnehmern zur Chatsitzung. Mit der Seitenleiste für die Einstellungen können Sie den Titel des Chatthreads konfigurieren. 
 
 Unten sind weitere Informationen zu den Voraussetzungen und Schritten zum Einrichten des Beispiels angegeben.
 
@@ -118,4 +118,4 @@ Weitere Informationen finden Sie in den folgenden Artikeln:
 - [Redux](https://redux.js.org/): Clientseitige Zustandsverwaltung
 - [Fluent-UI](https://aka.ms/fluent-ui): UI-Bibliothek von Microsoft
 - [React](https://reactjs.org/): Bibliothek zum Erstellen von Benutzeroberflächen
-- [ASP.NET Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true): Framework für die Erstellung von Webanwendungen
+- [ASP.NET Core](/aspnet/core/introduction-to-aspnet-core?preserve-view=true&view=aspnetcore-3.1): Framework für die Erstellung von Webanwendungen
