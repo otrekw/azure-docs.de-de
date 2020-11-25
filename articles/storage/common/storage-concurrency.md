@@ -12,11 +12,11 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b83a8bfbc79af344c4d158ee65134034db714e9c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783962"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008904"
 ---
 # <a name="managing-concurrency-in-microsoft-azure-storage"></a>Verwalten von Nebenläufigkeit Microsoft Azure Storage
 
@@ -50,7 +50,7 @@ Dieser Prozess ist folgendermaßen gegliedert:
 4. Wenn der aktuelle ETag-Wert des Blob eine andere Version hat als das ETag im bedingten **If-Match** -Header in der Anforderung, gibt der Dienst einen 412-Fehler an den Client zurück. Dieser Fehler teilt dem Client mit, dass das Blob von einem anderen Prozess geändert wurde, nachdem es vom Client abgerufen wurde.
 5. Wenn der aktuelle ETag-Wert des Blob dieselbe Version hat wie der des ETag im bedingten **If-Match** -Header in der Anforderung, führt der Dienst die angeforderte Operation aus und aktualisiert den aktuellen ETag-Wert des Blobs, um anzuzeigen, dass eine neue Version erstellt wurde.
 
-Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition** -Objekt verwendet: Das **AccessCondition** -Objekt fügt der Anforderung den **If-Match** -Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst die Statusmeldung HTTP 412 (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt (der Client Storage Library 4.2.0 verwendet) zeigt ein einfaches Beispiel zur Konstruktion eines **If-Match AccessCondition** -Objekts, das auf dem ETag-Wert beruht, auf den über die Eigenschaften eines Blob zugegriffen wird, das zuvor abgerufen oder eingefügt wurde. Beim Aktualisieren des Blobs wird dann das **AccessCondition**-Objekt verwendet: Das **AccessCondition**-Objekt fügt der Anforderung den **If-Match**-Header hinzu. Falls das Blob von einem anderen Prozess aktualisiert wurde, gibt der Blob-Dienst die Statusmeldung HTTP 412 (Vorbedingungsfehler) zurück. Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
 ```csharp
 // Retrieve the ETag from the newly created blob
@@ -85,7 +85,7 @@ catch (StorageException ex)
 }
 ```
 
-Azure Storage umfasst auch Unterstützung für bedingte Header, z. B. **If-Modified-Since** , **If-Unmodified-Since** , **If-None-Match** sowie beliebige Kombinationen dieser Header. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts).
+Azure Storage umfasst auch Unterstützung für bedingte Header, z. B. **If-Modified-Since**, **If-Unmodified-Since**, **If-None-Match** sowie beliebige Kombinationen dieser Header. Weitere Informationen finden Sie unter [Specifying Conditional Headers for Blob Service Operations](/rest/api/storageservices/Specifying-Conditional-Headers-for-Blob-Service-Operations) (Angeben von bedingten Headern für Vorgänge des Blob-Diensts).
 
 Die folgende Tabelle gibt eine Übersicht über die Containervorgänge, die bedingte Header wie **If-Match** in der Anforderung akzeptieren und in der Antwort einen ETag-Wert zurückgeben.
 
@@ -130,9 +130,9 @@ Die folgende Tabelle gibt einen Überblick über die Blob-Vorgänge, die bedingt
 
 Zum Sperren eines Blobs für die exklusive Verwendung können Sie eine [Leasedauer](/rest/api/storageservices/Lease-Blob) für dieses abrufen. Wenn Sie eine Leasedauer erwerben, geben Sie einen Zeitraum für diese an. Dieser Zeitraum kann von 15 bis 60 Sekunden reichen oder unendlich sein, was einer exklusiven Sperre entspricht. Sie können eine begrenzte Leasedauer erneuern, um sie zu verlängern. Geben Sie die Leasedauer frei, wenn Sie diese nicht mehr benötigen. Blob Storage gibt begrenzte Leasedauern automatisch frei, sobald diese ablaufen.
 
-Die Leasedauer ermöglicht die Unterstützung verschiedener Synchronisierungsstategien. Zu den Strategien gehören *exklusiver Schreib/gemeinsamer Lesezugriff* , *exklusiver Schreib-/exklusiver Lesezugriff* und *gemeinsamer Schreib-/exklusiver Lesezugriff*. Wenn eine Leasedauer vorliegt, erzwingt Azure Storage exklusive Schreibzugriffe (put-, set- und delete-Vorgänge). Allerdings erfordert das Sicherstellen der Exklusivität für Lesevorgänge, dass der Entwickler sicherstellt, dass alle Clientanwendungen eine Lease-ID verwenden und dass jederzeit nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.
+Die Leasedauer ermöglicht die Unterstützung verschiedener Synchronisierungsstategien. Zu den Strategien gehören *exklusiver Schreib/gemeinsamer Lesezugriff*, *exklusiver Schreib-/exklusiver Lesezugriff* und *gemeinsamer Schreib-/exklusiver Lesezugriff*. Wenn eine Leasedauer vorliegt, erzwingt Azure Storage exklusive Schreibzugriffe (put-, set- und delete-Vorgänge). Allerdings erfordert das Sicherstellen der Exklusivität für Lesevorgänge, dass der Entwickler sicherstellt, dass alle Clientanwendungen eine Lease-ID verwenden und dass jederzeit nur ein Client über eine gültige Lease-ID verfügt. Lesevorgänge, die keine Lease-ID enthalten, führen zu gemeinsamen Lesevorgängen.
 
-Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Leasedauer für das Blob bereits eine Leasedauer wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP 409 (Konflikt)“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition** -Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
+Der folgende C#-Codeausschnitt zeigt an einem Beispiel, wie eine exklusive Lease von 30 Sekunden für ein Blob abgerufen, der Inhalt des Blob aktualisiert und die Lease anschließend freigegeben wird. Wenn beim Abrufen einer neuen Leasedauer für das Blob bereits eine Leasedauer wirksam ist, gibt der Blob-Dienst die Statusmeldung „HTTP 409 (Konflikt)“ zurück. Im folgenden Codeausschnitt wird ein **AccessCondition**-Objekt verwendet, um die Lease-Informationen zu kapseln, wenn die Anforderung zum Aktualisieren des Blob im Speicherdienst ausgeführt wird.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
 ```csharp
 // Acquire lease for 15 seconds
@@ -161,7 +161,7 @@ catch (StorageException ex)
 }
 ```
 
-Wenn Sie an einem Blob mit Lease einen Schreibvorgang versuchen, ohne die Lease-ID zu übergeben, erzeugt die Anforderung einen 412-Fehler. Wenn die Leasedauer abläuft, bevor die **UploadText** -Methode aufgerufen wird, die Lease-ID aber dennoch übergeben wird, erzeugt die Anforderung ebenfalls einen **412** -Fehler. Weitere Informationen zum Verwalten von Lease-Ablaufzeiten und Lease-IDs finden Sie in der REST-Dokumentation zum [Leasen eines Blob](/rest/api/storageservices/Lease-Blob).
+Wenn Sie an einem Blob mit Lease einen Schreibvorgang versuchen, ohne die Lease-ID zu übergeben, erzeugt die Anforderung einen 412-Fehler. Wenn die Leasedauer abläuft, bevor die **UploadText**-Methode aufgerufen wird, die Lease-ID aber dennoch übergeben wird, erzeugt die Anforderung ebenfalls einen **412**-Fehler. Weitere Informationen zum Verwalten von Lease-Ablaufzeiten und Lease-IDs finden Sie in der REST-Dokumentation zum [Leasen eines Blob](/rest/api/storageservices/Lease-Blob).
 
 Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Blob-Vorgänge Leases verwenden:
 
@@ -184,7 +184,7 @@ Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Blob-V
 
 ### <a name="pessimistic-concurrency-for-containers"></a>Pessimistische Nebenläufigkeit für Container
 
-Leases für Container unterstützen die gleichen Synchronisierungsstrategien wie für Blobs ( *exklusiver Schreib-/gemeinsamer Lesezugriff* , *exklusiver Schreib-/exklusiver Lesezugriff* und *gemeinsamer Schreib-/exklusiver Lesezugriff* ). Im Gegensatz zu Blobs erzwingt der Speicherdienst die Exklusivität jedoch nur bei Löschvorgängen. Um einen Container mit einer aktiven Lease zu löschen, muss ein Client die ID der aktiven Lease bei der Löschanforderung angeben. Alle anderen Containervorgänge können bei einem Container mit Lease ohne Angabe der Lease-ID erfolgreich ausgeführt werden. In diesem Fall handelt sich dann um gemeinsame Vorgänge. Wenn Aktualisierungs- (put oder set) bzw. Lesevorgänge exklusiv sein sollen, müssen die Entwickler sicherstellen, dass alle Clients eine Lease-ID verwenden und dass jeweils nur ein Client über eine gültige Lease-ID verfügt.
+Leases für Container unterstützen die gleichen Synchronisierungsstrategien wie für Blobs (*exklusiver Schreib-/gemeinsamer Lesezugriff*, *exklusiver Schreib-/exklusiver Lesezugriff* und *gemeinsamer Schreib-/exklusiver Lesezugriff*). Im Gegensatz zu Blobs erzwingt der Speicherdienst die Exklusivität jedoch nur bei Löschvorgängen. Um einen Container mit einer aktiven Lease zu löschen, muss ein Client die ID der aktiven Lease bei der Löschanforderung angeben. Alle anderen Containervorgänge können bei einem Container mit Lease ohne Angabe der Lease-ID erfolgreich ausgeführt werden. In diesem Fall handelt sich dann um gemeinsame Vorgänge. Wenn Aktualisierungs- (put oder set) bzw. Lesevorgänge exklusiv sein sollen, müssen die Entwickler sicherstellen, dass alle Clients eine Lease-ID verwenden und dass jeweils nur ein Client über eine gültige Lease-ID verfügt.
 
 Zur Verwaltung der pessimistischen Nebenläufigkeit können die folgenden Containervorgänge Leases verwenden:
 
@@ -212,9 +212,9 @@ Um die optimistische Nebenläufigkeit zu verwenden und zu prüfen, ob eine Entit
 2. Wenn Sie die Entität aktualisieren, fügen Sie den in Schritt 1 erhaltenen ETag-Wert in den obligatorischen **If-Match** -Header der Anforderung ein, die Sie an den Dienst senden.
 3. Der Dienst vergleicht den ETag-Wert in der Anforderung mit dem aktuellen ETag-Wert der Entität.
 4. Wenn der aktuelle ETag-Wert der Entität vom ETag im obligatorischen **If-Match** -Header in der Anforderung abweicht, gibt der Dienst einen 412-Fehler an den Client zurück. Dadurch wird dem Client mitgeteilt, dass die Entität von einem anderen Prozess aktualisiert wurde, seitdem sie vom Client abgerufen wurde.
-5. Wenn der aktuelle ETag-Wert der Entität mit dem ETag-Wert im obligatorischen **If-Match** -Header in der Anforderung übereinstimmt oder wenn der **If-Match** -Header das Platzhalterzeichen (*) enthält, führt der Dienst den angeforderten Vorgang aus und aktualisiert den aktuellen ETag-Wert der Entität, um anzuzeigen, dass die Entität aktualisiert wurde.
+5. Wenn der aktuelle ETag-Wert der Entität mit dem ETag-Wert im obligatorischen **If-Match**-Header in der Anforderung übereinstimmt oder wenn der **If-Match**-Header das Platzhalterzeichen (*) enthält, führt der Dienst den angeforderten Vorgang aus und aktualisiert den aktuellen ETag-Wert der Entität, um anzuzeigen, dass die Entität aktualisiert wurde.
 
-Table Storage erfordert, dass ein **If-Match** -Header in den Aktualisierungsanforderungen des Clients enthalten ist. Es ist jedoch möglich, eine unbedingte Aktualisierung zu erzwingen (Strategie "Letzter Schreiber gewinnt") und Nebenläufigkeitsprüfungen zu umgehen, wenn der Client den **If-Match** -Header in der Anforderung auf das Platzhalterzeichen (*) festlegt.
+Table Storage erfordert, dass ein **If-Match**-Header in den Aktualisierungsanforderungen des Clients enthalten ist. Es ist jedoch möglich, eine unbedingte Aktualisierung zu erzwingen (Strategie "Letzter Schreiber gewinnt") und Nebenläufigkeitsprüfungen zu umgehen, wenn der Client den **If-Match** -Header in der Anforderung auf das Platzhalterzeichen (*) festlegt.
 
 Der folgende C#-Codeausschnitt zeigt, wie für eine Kundenentität, die zuvor erstellt oder abgerufen wurde, die E-Mail-Adresse aktualisiert wird. Mit dem anfänglichen Einfüge- oder Abrufvorgang wird der ETag-Wert im Kundenobjekt gespeichert. Da im Beispiel beim Ausführen des Ersetzenvorgangs dieselbe Objektinstanz verwendet wird, wird der ETag-Wert automatisch an den Tabellendienst zurückgesendet, sodass der Dienst auf Verletzungen der Nebenläufigkeit prüfen kann. Falls die Entität im Tabellenspeicher von einem anderen Prozess aktualisiert wurde, gibt der Dienst eine HTTP 412-Statusmeldung (Vorbedingungsfehler) zurück.  Sie können das vollständige Beispiel hier herunterladen: [Managing Concurrency using Azure Storage](https://code.msdn.microsoft.com/Managing-Concurrency-using-56018114)(Verwalten von Parallelität mit Azure Storage).
 
@@ -235,7 +235,7 @@ catch (StorageException ex)
 }
 ```
 
-Um die Parallelitätsprüfung explizit zu deaktivieren, müssen Sie die **ETag** -Eigenschaft des Objekts **employee** auf „*“ festlegen, bevor der Ersetzungsvorgang ausgeführt wird.
+Um die Parallelitätsprüfung explizit zu deaktivieren, müssen Sie die **ETag**-Eigenschaft des Objekts **employee** auf „*“ festlegen, bevor der Ersetzungsvorgang ausgeführt wird.
 
 ```csharp
 customer.ETag = "*";

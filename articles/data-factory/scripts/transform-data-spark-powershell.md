@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/12/2017
 ms.openlocfilehash: 3af38f4cae53807c7268f00017f02f1325116fb6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637053"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008751"
 ---
 # <a name="powershell-script---transform-data-in-cloud-using-azure-data-factory"></a>PowerShell-Skript: Transformieren von Daten in der Cloud mithilfe von Azure Data Factory
 
@@ -26,7 +26,7 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline, die Daten in der Cloud 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh-az.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
-* **Azure Storage-Konto** . Erstellen Sie ein Python-Skript und eine Eingabedatei, und laden Sie diese in Azure Storage hoch. Die Ausgabe des Spark-Programms wird in diesem Storage-Konto gespeichert. Der bedarfsgesteuerte Spark-Cluster verwendet dieses Storage-Konto als primären Speicher.  
+* **Azure Storage-Konto**. Erstellen Sie ein Python-Skript und eine Eingabedatei, und laden Sie diese in Azure Storage hoch. Die Ausgabe des Spark-Programms wird in diesem Storage-Konto gespeichert. Der bedarfsgesteuerte Spark-Cluster verwendet dieses Storage-Konto als primären Speicher.  
 
 ### <a name="upload-python-script-to-your-blob-storage-account"></a>Hochladen eines Python-Skripts in Ihr Blob Storage-Konto
 1. Erstellen Sie eine Python-Datei mit dem Namen **WordCount_Spark.py** und dem folgenden Inhalt: 
@@ -55,9 +55,9 @@ Dieses PowerShell-Beispielskript erstellt eine Pipeline, die Daten in der Cloud 
         main()
     ```
 2. Ersetzen Sie **&lt;storageAccountName&gt;** durch den Namen Ihres Azure Storage-Kontos. Speichern Sie dann die Datei. 
-3. Erstellen Sie in Azure Blob Storage einen Container mit dem Namen **adftutorial** , falls dieser noch nicht vorhanden ist. 
-4. Erstellen Sie einen Ordner mit dem Namen **spark** .
-5. Erstellen Sie unterhalb des Ordners **spark** einen Unterordner mit dem Namen **script** . 
+3. Erstellen Sie in Azure Blob Storage einen Container mit dem Namen **adftutorial**, falls dieser noch nicht vorhanden ist. 
+4. Erstellen Sie einen Ordner mit dem Namen **spark**.
+5. Erstellen Sie unterhalb des Ordners **spark** einen Unterordner mit dem Namen **script**. 
 6. Laden Sie die Datei **WordCount_Spark.py** in den Unterordner **script** hoch. 
 
 

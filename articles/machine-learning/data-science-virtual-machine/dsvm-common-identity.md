@@ -11,11 +11,11 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 3dc6fb64f6e8695d84e292322293998e2f4cb0a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324783"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96009227"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Einrichten einer gemeinsamen Identität für Data Science Virtual Machine
 
@@ -49,7 +49,7 @@ Azure AD DS vereinfacht die Verwaltung Ihrer Identitäten, indem Ihnen ein volls
     
    1. Kopieren oder notieren Sie sich das generierte Benutzerkennwort, damit sie es nach Abschluss des Vorgangs dem Benutzer mitteilen können.
     
-   1. Optional können Sie die Informationen unter **Profil** , **Gruppen** oder **Verzeichnisrolle** für den Benutzer ausfüllen. 
+   1. Optional können Sie die Informationen unter **Profil**, **Gruppen** oder **Verzeichnisrolle** für den Benutzer ausfüllen. 
     
    1. Wählen Sie unter **Benutzer** die Option **Erstellen** aus.
     

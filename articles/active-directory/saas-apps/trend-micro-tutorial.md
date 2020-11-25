@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: b76c41787d7a35fb3024fa18c0122bc966243bbc
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92514536"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008394"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Trend Micro Web Security (TMWS)
 
@@ -70,7 +70,7 @@ Führen Sie die folgenden grundlegenden Schritte aus, um das einmalige Anmelden 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren:
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Trend Micro Web Security (TMWS)** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Trend Micro Web Security (TMWS)** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Wählen Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** das Stiftsymbol für **Grundlegende SAML-Konfiguration** aus, um die Einstellungen zu bearbeiten:
 
@@ -116,17 +116,17 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Wählen Sie oben im Bildschirm die Option **Neuer Benutzer** aus.
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** Folgendes ein: `B.Simon`.  
-   1. Geben Sie im Feld **Benutzername** den Namen * *_Benutzername_@* IhreUnternehmensdomäne *.* Erweiterung*** ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie **Kennwort anzeigen** , und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
+   1. Geben Sie im Feld **Benutzername** den Namen **_Benutzername_@* IhreUnternehmensdomäne *.* Erweiterung*** ein. Beispiel: `B.Simon@contoso.com`.
+   1. Aktivieren Sie **Kennwort anzeigen**, und notieren Sie sich den Wert, der im Feld **Kennwort** angezeigt wird.
    1. Klicken Sie auf **Erstellen**.
 
 ### <a name="grant-the-azure-ad-test-user-access-to-tmws"></a>Gewähren des Zugriffs auf TMWS für den Azure AD-Testbenutzer
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf TMWS gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Trend Micro Web Security (TMWS)** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus:
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus:
 
    ![Benutzer und Gruppen auswählen](common/users-groups-blade.png)
 
@@ -224,7 +224,7 @@ Nachdem Sie den Azure AD-Dienst konfiguriert und Azure AD als Methode für die
 
 1. Rufen Sie eine beliebige Website im Internet auf. TMWS leitet Sie an das Captive Portal von TMWS weiter.
 
-1. Geben Sie ein Active Directory-Konto (Format: *domain*\\*sAMAccountName* oder *sAMAccountName*@*domain* ), eine E-Mail-Adresse oder einen UPN an, und wählen Sie dann **Log On** (Anmelden) aus. TMWS leitet Sie zum Azure AD-Anmeldefenster weiter.
+1. Geben Sie ein Active Directory-Konto (Format: *domain*\\*sAMAccountName* oder *sAMAccountName*@*domain*), eine E-Mail-Adresse oder einen UPN an, und wählen Sie dann **Log On** (Anmelden) aus. TMWS leitet Sie zum Azure AD-Anmeldefenster weiter.
 
 1. Geben Sie im Azure AD-Anmeldefenster die Anmeldeinformationen für das Azure AD-Konto ein. Sie sollten jetzt bei TMWS angemeldet werden.
 
