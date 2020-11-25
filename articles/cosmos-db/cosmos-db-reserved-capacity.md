@@ -8,11 +8,11 @@ ms.date: 02/18/2020
 ms.author: tisande
 ms.reviewer: sngun
 ms.openlocfilehash: 27725b1a3dd6059010ce67977c39891a012c037e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097633"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995783"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>Optimieren der Kosten mit reservierter Kapazität in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -63,7 +63,7 @@ Diese Empfehlung zum Erwerb einer Reservierung von 30.000 RU/s weist darauf hin
 
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen** > **Hinzufügen**.  
 
-3. Wählen Sie im Bereich **Reservierungen erwerben** die Option **Azure Cosmos DB** , um eine neue Reservierung zu erwerben.  
+3. Wählen Sie im Bereich **Reservierungen erwerben** die Option **Azure Cosmos DB**, um eine neue Reservierung zu erwerben.  
 
 4. Füllen Sie die Pflichtfelder aus, wie in der folgenden Tabelle beschrieben:
 

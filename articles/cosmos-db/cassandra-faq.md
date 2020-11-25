@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: thvankra
 ms.openlocfilehash: 3436a0edf69efc71d3528bffaefd613668426fad
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339936"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995817"
 ---
 # <a name="frequently-asked-questions-about-the-cassandra-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Cassandra-API in Azure Cosmos DB
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -28,7 +28,7 @@ In diesem Artikel werden die Funktionsunterschiede zwischen Apache Cassandra und
 - Das Festlegen eines Replikationsfaktors von „1“ ist mit Apache Cassandra möglich. Es führt jedoch zu geringer Verfügbarkeit, wenn der einzige Knoten mit den Daten ausfällt. Dies ist bei der Cassandra-API für Azure Cosmos DB kein Problem, weil immer ein Replikationsfaktor von „4“ (Quorum von „3“) verwendet wird.
 - Das Hinzufügen oder Entfernen von Knoten in Apache Cassandra erfordert manuelle Eingriffe sowie eine hohe CPU-Auslastung auf dem neuen Knoten, während vorhandene Knoten einige ihrer Tokenbereiche auf den neuen Knoten verschieben. Das ist auch bei der Außerbetriebnahme eines vorhandenen Knotens der Fall. Die Cassandra-API kann jedoch horizontal skaliert werden, ohne dass Probleme beim Dienst oder bei der Anwendung auftreten.
 - Sie müssen nicht wie in Apache Cassandra **num_tokens** auf jedem Knoten im Cluster festlegen. Knoten und Tokenbereiche werden von Azure Cosmos DB vollständig verwaltet.
-- Die Cassandra-API wird vollständig verwaltet. Sie benötigen nicht die **nodetool** -Befehle wie „Repair“ und „Decommission“, die in Apache Cassandra verwendet werden.
+- Die Cassandra-API wird vollständig verwaltet. Sie benötigen nicht die **nodetool**-Befehle wie „Repair“ und „Decommission“, die in Apache Cassandra verwendet werden.
 
 ## <a name="other-frequently-asked-questions"></a>Weitere häufig gestellte Fragen
 

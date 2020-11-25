@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/23/2019
 ms.openlocfilehash: 421993ac4aaba551b6fcbd002783d44559ce377d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545734"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95995334"
 ---
 # <a name="debug-apache-spark-applications-on-an-hdinsight-cluster-with-azure-toolkit-for-intellij-through-ssh"></a>Debuggen von Apache Spark-Anwendungen in einem HDInsight-Cluster mit dem Azure-Toolkit für IntelliJ per SSH
 
@@ -65,7 +65,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 1. Wählen Sie **Fertig stellen** aus. Es kann einige Minuten dauern, bis das Projekt verfügbar ist. Verfolgen Sie den Fortschritt in der unteren rechten Ecke.
 
-1. Erweitern Sie das Projekt, und navigieren Sie zu **src** > **main** > **scala** > **sample** (Beispiel). Doppelklicken Sie auf **SparkCore_WasbIOTest** .
+1. Erweitern Sie das Projekt, und navigieren Sie zu **src** > **main** > **scala** > **sample** (Beispiel). Doppelklicken Sie auf **SparkCore_WasbIOTest**.
 
 ## <a name="perform-local-run"></a>Durchführen einer lokalen Ausführung
 
@@ -75,7 +75,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
     ![Intellij – Ergebnis der lokalen Ausführung des Projekts](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-local-run-result.png)
 
-1. Unsere Tools legen die Standardkonfiguration für die lokale Ausführung automatisch fest, wenn Sie die lokale Ausführung und lokales Debuggen durchführen. Öffnen Sie die Konfiguration **[Spark on HDInsight] XXX** ([Spark auf HDInsight] XXX). In der oberen rechten Ecke sehen Sie, dass **[Spark auf HDInsight] XXX** bereits unter **Apache Spark on HDInsight** (Apache Spark auf HDInsight) erstellt wurde. Wechseln Sie zur Registerkarte **Lokal ausführen** .
+1. Unsere Tools legen die Standardkonfiguration für die lokale Ausführung automatisch fest, wenn Sie die lokale Ausführung und lokales Debuggen durchführen. Öffnen Sie die Konfiguration **[Spark on HDInsight] XXX** ([Spark auf HDInsight] XXX). In der oberen rechten Ecke sehen Sie, dass **[Spark auf HDInsight] XXX** bereits unter **Apache Spark on HDInsight** (Apache Spark auf HDInsight) erstellt wurde. Wechseln Sie zur Registerkarte **Lokal ausführen**.
 
     ![Intellij – Konfigurationen debuggen/ausführen – lokale Ausführung](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/local-run-configuration.png)
 
@@ -87,19 +87,19 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 ## <a name="perform-local-debugging"></a>Durchführen eines lokalen Debuggens
 
-1. Öffnen Sie das Skript **SparkCore_wasbloTest** , und legen Sie Breakpoints fest.
+1. Öffnen Sie das Skript **SparkCore_wasbloTest**, und legen Sie Breakpoints fest.
 
 1. Klicken Sie mit der rechten Maustaste auf den Skript-Editor, und wählen Sie dann die Option **Debug „[Spark on HDInsight]XXX“** („[Spark auf HDInsight]XXX“ debuggen), um das lokale Debuggen zu starten.
 
 ## <a name="perform-remote-run"></a>Remoteausführung
 
-1. Navigieren Sie zu **Ausführen** > **Konfigurationen bearbeiten** . Über dieses Menü können Sie die Konfigurationen für das Remotedebuggen erstellen und bearbeiten.
+1. Navigieren Sie zu **Ausführen** > **Konfigurationen bearbeiten**. Über dieses Menü können Sie die Konfigurationen für das Remotedebuggen erstellen und bearbeiten.
 
 1. Klicken Sie im Dialogfeld **Run/Debug Configurations** (Konfigurationen ausführen/debuggen) auf das Plussymbol ( **+** ). Wählen Sie dann die Option **Apache Spark auf HDInsight** aus.
 
    ![Intellij – Neue Konfiguration hinzufügen](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-add-new-Configuration.png)
 
-1. Wechseln Sie zur Registerkarte **Remotely Run in Cluster** (Im Cluster remote ausführen). Geben Sie Informationen für **Name** , **Spark cluster** und **Main class name** (Name der main-Klasse) ein. Klicken Sie dann auf **Erweiterte Konfiguration (Remotedebuggen)** . Unseren Tools unterstützen das Debuggen mit **Executors** . Die **numExecutors** , der Standardwert ist 5. Sie sollten ihn nicht auf einen größeren Wert als 3 festlegen.
+1. Wechseln Sie zur Registerkarte **Remotely Run in Cluster** (Im Cluster remote ausführen). Geben Sie Informationen für **Name**, **Spark cluster** und **Main class name** (Name der main-Klasse) ein. Klicken Sie dann auf **Erweiterte Konfiguration (Remotedebuggen)** . Unseren Tools unterstützen das Debuggen mit **Executors**. Die **numExecutors**, der Standardwert ist 5. Sie sollten ihn nicht auf einen größeren Wert als 3 festlegen.
 
    ![Intellij – Konfigurationen debuggen/ausführen](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-run-debug-configurations.png)
 
@@ -113,17 +113,17 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
    ![Intellij – Spark-Auftrag remotedebuggen – Schaltfläche „Remote ausführen“](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/perform-remote-run-button.png)
 
-1. Klicken Sie auf die Schaltfläche **Trennen** , damit Die Übermittlungsprotokolle nicht im linken Bereich angezeigt werden. Die Ausführung wird jedoch auf dem Back-End fortgesetzt.
+1. Klicken Sie auf die Schaltfläche **Trennen**, damit Die Übermittlungsprotokolle nicht im linken Bereich angezeigt werden. Die Ausführung wird jedoch auf dem Back-End fortgesetzt.
 
    ![Intellij – Spark-Auftrag remotedebuggen – Ergebnis von „Remote ausführen“](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/spark-remote-run-result.png)
 
 ## <a name="perform-remote-debugging"></a>Remotedebuggen
 
-1. Richten Sie Breakpoints ein, und klicken Sie dann auf das Symbol **Remotedebuggen** . Der Unterschied bei der Remoteübermittlung besteht darin, dass der SSH-Benutzername und das Kennwort konfiguriert werden müssen.
+1. Richten Sie Breakpoints ein, und klicken Sie dann auf das Symbol **Remotedebuggen**. Der Unterschied bei der Remoteübermittlung besteht darin, dass der SSH-Benutzername und das Kennwort konfiguriert werden müssen.
 
    ![Intellij – Spark-Auftrag Remotedebuggen – Symbol „Debuggen“](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debug-icon.png)
 
-1. Wenn die Programmausführung den Breakpoint erreicht, werden eine Registerkarte **Driver** (Treiber) und zwei Registerkarten **Executor** im Bereich **Debugger** angezeigt. Klicken Sie auf das Symbol **Resume Program** (Programm fortsetzen), um die Ausführung des Codes fortzusetzen. Die Ausführung erreicht dann den nächsten Breakpoint. Sie müssen zur richtigen **Executor** -Registerkarte wechseln, um den Zielexecutor für das Debuggen zu finden. Sie können die Ausführungsprotokolle auf der entsprechenden Registerkarte **Console** (Konsole) anzeigen.
+1. Wenn die Programmausführung den Breakpoint erreicht, werden eine Registerkarte **Driver** (Treiber) und zwei Registerkarten **Executor** im Bereich **Debugger** angezeigt. Klicken Sie auf das Symbol **Resume Program** (Programm fortsetzen), um die Ausführung des Codes fortzusetzen. Die Ausführung erreicht dann den nächsten Breakpoint. Sie müssen zur richtigen **Executor**-Registerkarte wechseln, um den Zielexecutor für das Debuggen zu finden. Sie können die Ausführungsprotokolle auf der entsprechenden Registerkarte **Console** (Konsole) anzeigen.
 
    ![Intellij – Spark-Auftrag Remotedebuggen – Registerkarte „Debuggen“](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-debugger-tab.png)
 
@@ -143,7 +143,7 @@ Dieser Artikel enthält eine ausführliche Anleitung zur Verwendung der HDInsigh
 
 1. Um den Wert der Variablen mithilfe der Debugfunktion von IntelliJ dynamisch zu aktualisieren, wählen Sie erneut **Debug** (Debuggen) aus. Der Bereich **Variables** (Variablen) wird wieder angezeigt.
 
-1. Klicken Sie mit der Maustaste auf die Registerkarte **Debug** , und wählen Sie dann **Set Value** (Wert festlegen) aus. Als Nächstes geben Sie einen neuen Wert für die Variable ein. Wählen Sie dann **Enter** (Eingabe) aus, um den Wert zu speichern.
+1. Klicken Sie mit der Maustaste auf die Registerkarte **Debug**, und wählen Sie dann **Set Value** (Wert festlegen) aus. Als Nächstes geben Sie einen neuen Wert für die Variable ein. Wählen Sie dann **Enter** (Eingabe) aus, um den Wert zu speichern.
 
    ![Intellij – Spark-Auftrag Remotedebuggen – Wert festlegen](./media/apache-spark-intellij-tool-debug-remotely-through-ssh/hdinsight-set-value1.png)
 
