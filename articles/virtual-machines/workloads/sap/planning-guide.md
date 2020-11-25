@@ -5,18 +5,19 @@ author: MSSedusch
 manager: juergent
 tags: azure-resource-manager
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017, devx-track-azurecli
-ms.openlocfilehash: ea53eda3863ea5164142fa0d37fff7be365a4d5c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bd45b0e1070efae7ae69a74ad96e1fa94a136006
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92894099"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96019394"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines – Planung und Implementierung für SAP NetWeaver
 
@@ -1007,7 +1008,7 @@ New-AzDisk -ResourceGroupName <resource group name> -DiskName <disk name> -Disk 
 
 ##### <a name="azure-cli"></a>Azure CLI
 
-Sie können die Azure CLI zum Kopieren einer VHD verwenden. Um einen neuen verwalteten Datenträger zu erstellen, verwenden Sie *az disk create* , so wie in folgendem Beispiel gezeigt.
+Sie können die Azure CLI zum Kopieren einer VHD verwenden. Um einen neuen verwalteten Datenträger zu erstellen, verwenden Sie *az disk create*, so wie in folgendem Beispiel gezeigt.
 
 ```azurecli
 az disk create --source "/subscriptions/<subscription id>/resourceGroups/<resource group>/providers/Microsoft.Compute/disks/<disk name>" --name <disk name> --resource-group <resource group name> --location <location>
@@ -1178,7 +1179,7 @@ Weitere Empfehlungen und Details, insbesondere für DBMS-VMs, finden Sie im [DBM
 
 In den meisten Szenarien müssen Sie zusätzliche Datenträger erstellen, um die SAP-Datenbank auf der VM bereitzustellen. Über die Anzahl der Datenträger haben wir bereits im Kapitel [VM-/Datenträgerstruktur für SAP-Bereitstellungen][planning-guide-5.5.1] dieses Dokuments gesprochen. Nach der Bereitstellung der Basis-VM können Sie über das Azure-Portal weitere Datenträger anfügen und trennen. Das Anfügen und Trennen der Datenträger kann unabhängig vom Betriebszustand der VM erfolgen, also auch dann, wenn die VM heruntergefahren ist. Im Azure-Portal haben Sie sowohl die Möglichkeit, einen leeren Datenträger anzufügen, als auch einen bereits bestehenden, der zu diesem Zeitpunkt allerdings an keiner anderen VM angefügt sein darf.
 
-**Hinweis** : Datenträger können jeweils immer nur an eine VM angefügt sein.
+**Hinweis**: Datenträger können jeweils immer nur an eine VM angefügt sein.
 
 ![Verbinden/Trennen von Datenträgern und dem Azure-Standardspeicher][planning-guide-figure-1400]
 
@@ -1271,7 +1272,7 @@ Möglicherweise müssen Sie die Firewall Ihrer VMs konfigurieren, um auf Ihrem S
 >
 > * Öffnen Sie „Systemsteuerung“ > „System und Sicherheit“ > „Windows-Firewall“, und klicken Sie dann auf **Erweiterte Einstellungen**.
 > * Klicken Sie mit der rechten Maustaste auf „Eingehende Regeln“, und wählen Sie **Neue Regel** aus.
-> * Geben Sie im daraufhin geöffneten Assistenten an, dass Sie eine neue **Port** -Regel erstellen möchten.
+> * Geben Sie im daraufhin geöffneten Assistenten an, dass Sie eine neue **Port**-Regel erstellen möchten.
 > * Übernehmen Sie im nächsten Schritt des Assistenten die Einstellung TCP, und geben Sie die Nummer des Ports ein, den Sie öffnen möchten. Da unsere SAP-Instanznummer 00 ist, haben wir hier 3200 eingegeben. Wenn Ihre Instanz eine andere Nummer hat, sollten Sie hier nun den Port öffnen, den Sie zuvor auf Basis Ihrer Instanznummer festgelegt haben.
 > * Lassen Sie im nächsten Fenster des Assistenten die Option **Verbindung zulassen** aktiviert.
 > * Legen Sie im nächsten Schritt fest, ob die Regel auf die Domäne, auf das private und/oder auf das öffentliche Netzwerk angewendet werden soll. Stellen Sie diese Optionen nach Bedarf ein. Die Regel muss jedoch für das öffentliche Netzwerk gelten, wenn über die SAP-GUI Verbindungen von außerhalb über das öffentliche Netzwerk möglich sein sollen.
@@ -1950,7 +1951,7 @@ Für die Offline-Sicherung muss der virtuelle Computer im Grunde über das Azure
 
 
 Bei einer Wiederherstellung dieses Zustands werden sowohl der virtuelle Basiscomputer als auch dessen Originaldatenträger sowie die hinzugefügten Datenträger gelöscht. Die gespeicherten Datenträger werden in das ursprüngliche Storage-Konto oder in die Ressourcengruppe für verwaltete Datenträger zurück kopiert. Anschließend wird das System erneut bereitgestellt.
-Im folgenden Artikel wird anhand eines Beispiels veranschaulicht, wie dieser Prozess in PowerShell geschrieben wird: <http://www.westerndevs.com/azure-snapshots/>
+Im folgenden Artikel wird anhand eines Beispiels veranschaulicht, wie dieser Prozess in PowerShell geschrieben wird: <https://www.westerndevs.com/_/azure-snapshots/>
 
 Wichtig ist, dass Sie eine neue SAP-Lizenz installieren, da beim Wiederherstellen einer VM-Sicherung wie oben beschrieben ein neuer Hardwareschlüssel erstellt wird.
 

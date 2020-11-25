@@ -15,11 +15,11 @@ ms.topic: article
 ms.date: 09/13/2019
 ms.author: allensu
 ms.openlocfilehash: aa2f00a732a3978524fc017481285859c9535387
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779168"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018680"
 ---
 # <a name="understanding-azure-cdn-billing"></a>Grundlegendes zur Abrechnung für Azure CDN
 
@@ -48,7 +48,7 @@ Die Azure CDN-Abrechnungsregion basiert auf dem Standort des Quellservers, der d
 Wenn beispielsweise ein Benutzer, der sich in Mexiko befindet, eine Anforderung sendet, und diese Anforderung aufgrund von Peering- oder Datenverkehrsbedingungen von einem Server an einem POP in den Vereinigten Staaten bedient wird, sind die Vereinigten Staaten die Abrechnungsregion.
 
 ## <a name="what-is-a-billable-azure-cdn-transaction"></a>Was ist eine abrechenbare Azure CDN-Transaktion?
-Jede HTTP(S)-Anforderung, die im CDN endet, ist ein abrechenbares Ereignis, das alle Antworttypen einschließt: Erfolg, Fehler oder andere. Allerdings können verschiedene Antworten unterschiedliche Datenverkehrsmengen generieren. Beispielsweise generieren *304 Nicht geändert* -Antworten und andere Antworten, die nur aus einem Header bestehen, nur wenig Datenverkehr, da es sich um kleine Headerantworten handelt; ebenso sind Fehlerantworten (z. B. *404 Nicht gefunden* ) zwar abrechenbar, aber aufgrund der kleinen Antwortnutzlast fallen nur geringe Kosten an.
+Jede HTTP(S)-Anforderung, die im CDN endet, ist ein abrechenbares Ereignis, das alle Antworttypen einschließt: Erfolg, Fehler oder andere. Allerdings können verschiedene Antworten unterschiedliche Datenverkehrsmengen generieren. Beispielsweise generieren *304 Nicht geändert*-Antworten und andere Antworten, die nur aus einem Header bestehen, nur wenig Datenverkehr, da es sich um kleine Headerantworten handelt; ebenso sind Fehlerantworten (z. B. *404 Nicht gefunden*) zwar abrechenbar, aber aufgrund der kleinen Antwortnutzlast fallen nur geringe Kosten an.
 
 ## <a name="what-other-azure-costs-are-associated-with-azure-cdn-use"></a>Welche sonstigen Azure-Kosten fallen für die Azure CDN-Verwendung an?
 Durch Verwenden von Azure CDN fallen auch einige Nutzungsgebühren für die Dienste an, die als Ursprung für Ihre Objekte verwendet werden. Diese Kosten belaufen sich in der Regel nur auf ein Bruchteil der gesamten Kosten für die CDN-Nutzung.

@@ -12,11 +12,11 @@ ms.date: 04/06/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to learn the options available to monitor the health of my vaults
 ms.openlocfilehash: 9195bb59264731914740e1cca902707603e3502d
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427014"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018119"
 ---
 # <a name="monitoring-and-alerting-for-azure-key-vault"></a>Überwachung und Warnungen für Azure Key Vault
 
@@ -36,15 +36,15 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 + Dienst-API-Treffer gesamt (Filter nach Aktivitätstyp) 
 + Fehlercodes (Filter nach Statuscode) 
 
-**Tresorverfügbarkeit** : Diese Metrik sollte immer bei 100 % liegen. Es ist wichtig, diese Metrik zu überwachen, da sie schnell Aufschluss darüber gibt, ob Ihr Schlüsseltresor ausgefallen ist. 
+**Tresorverfügbarkeit**: Diese Metrik sollte immer bei 100 % liegen. Es ist wichtig, diese Metrik zu überwachen, da sie schnell Aufschluss darüber gibt, ob Ihr Schlüsseltresor ausgefallen ist. 
 
-**Tresorauslastung** : Die Anzahl von Anforderungen pro Sekunde, die ein Schlüsseltresor verarbeiten kann, basiert auf der Art des ausgeführten Vorgangs. Für einige Tresorvorgänge gilt ein niedrigerer Schwellenwert für die Anforderungen pro Sekunde. Diese Metrik aggregiert die Gesamtnutzung Ihres Schlüsseltresors für alle Vorgangstypen, um einen Prozentwert bereitzustellen, der die aktuelle Auslastung des Schlüsseltresors angibt. Eine vollständige Liste der Limits für den Key Vault-Dienst finden Sie im folgenden Dokument. [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
+**Tresorauslastung**: Die Anzahl von Anforderungen pro Sekunde, die ein Schlüsseltresor verarbeiten kann, basiert auf der Art des ausgeführten Vorgangs. Für einige Tresorvorgänge gilt ein niedrigerer Schwellenwert für die Anforderungen pro Sekunde. Diese Metrik aggregiert die Gesamtnutzung Ihres Schlüsseltresors für alle Vorgangstypen, um einen Prozentwert bereitzustellen, der die aktuelle Auslastung des Schlüsseltresors angibt. Eine vollständige Liste der Limits für den Key Vault-Dienst finden Sie im folgenden Dokument. [Grenzwerte des Azure Key Vault-Diensts](service-limits.md)
 
-**Wartezeit für Dienst-API** : Diese Metrik zeigt die durchschnittliche Latenzzeit eines Aufrufs des Schlüsseltresors. Auch wenn Ihr Schlüsselspeicher innerhalb der Dienstlimits arbeitet, kann eine hohe Auslastung des Schlüsselspeichers Wartezeiten verursachen, die zu Fehlern bei nachgelagerten Anwendungen führen. 
+**Wartezeit für Dienst-API**: Diese Metrik zeigt die durchschnittliche Latenzzeit eines Aufrufs des Schlüsseltresors. Auch wenn Ihr Schlüsselspeicher innerhalb der Dienstlimits arbeitet, kann eine hohe Auslastung des Schlüsselspeichers Wartezeiten verursachen, die zu Fehlern bei nachgelagerten Anwendungen führen. 
 
-**API-Treffer gesamt** : Diese Metrik zeigt alle Aufrufe an Ihren Schlüsseltresor. Anhand dieses Werts können Sie ermitteln, welche Anwendungen Ihren Schlüsseltresor aufrufen. 
+**API-Treffer gesamt**: Diese Metrik zeigt alle Aufrufe an Ihren Schlüsseltresor. Anhand dieses Werts können Sie ermitteln, welche Anwendungen Ihren Schlüsseltresor aufrufen. 
 
-**Fehlercodes** : Diese Metrik zeigt, ob für Ihren Schlüsseltresor eine ungewöhnliche Anzahl von Fehlern auftritt. Eine vollständige Liste der Fehlercodes und einen Leitfaden zur Problembehandlung finden Sie im folgenden Dokument. [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
+**Fehlercodes**: Diese Metrik zeigt, ob für Ihren Schlüsseltresor eine ungewöhnliche Anzahl von Fehlern auftritt. Eine vollständige Liste der Fehlercodes und einen Leitfaden zur Problembehandlung finden Sie im folgenden Dokument. [Azure Key Vault: REST-API-Fehlercodes](rest-error-codes.md)
 
 ## <a name="how-to-configure-metrics-and-create-a-dashboard"></a>Konfigurieren von Metriken und Erstellen eines Dashboards
 
@@ -63,17 +63,17 @@ Sobald Sie damit begonnen haben, Ihre Produktionsgeheimnisse im Schlüsseltresor
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Metrik „Tresorverfügbarkeit gesamt“](../media/alert-2.png)
 
-8. Wiederholen Sie die Schritte oben für die Metriken „Tresorauslastung“ und „Wartezeit für Dienst-API“. Klicken Sie auf **An Dashboard anheften** , um Ihre Metriken in einem Dashboard zu speichern. 
+8. Wiederholen Sie die Schritte oben für die Metriken „Tresorauslastung“ und „Wartezeit für Dienst-API“. Klicken Sie auf **An Dashboard anheften**, um Ihre Metriken in einem Dashboard zu speichern. 
 
 > [!IMPORTANT]
 > Auswählen von „An Dashboard anheften“ und Speichern der konfigurierten Metriken Wenn Sie die Seite verlassen und ohne Speicherung zur Seite zurückkehren, gehen Ihre Konfigurationsänderungen verloren. 
 
-9. Um alle Vorgangstypen für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Treffer gesamt** , und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
+9. Um alle Vorgangstypen für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Treffer gesamt**, und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Schaltfläche „Teilung anwenden“](../media/alert-3.png)
 
-10. Um auf Fehlercodes für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Ergebnisse gesamt** , und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
+10. Um auf Fehlercodes für den Schlüsseltresor zu überwachen, verwenden Sie die Metrik **Dienst-API-Ergebnisse gesamt**, und wählen Sie **Teilung anwenden: nach Aktivitätstyp** aus.
 
 > [!div class="mx-imgBorder"]
 > ![Screenshot: Ausgewählte Metrik „Dienst-API-Ergebnisse gesamt“](../media/alert-4.png)
@@ -185,7 +185,7 @@ Beachten Sie die folgenden Konfigurationsparameter.
 + Legen Sie die Schwellenwertempfindlichkeit auf **Mittel** fest.
 + Legen Sie den Aggregationszeitraum auf **5 Minuten** fest.
 + Legen Sie die Auswertungshäufigkeit auf **1 Minute** fest.
-+ **Optional** : Konfigurieren Sie erweiterte Einstellungen. 
++ **Optional**: Konfigurieren Sie erweiterte Einstellungen. 
 + Wählen Sie **Fertig** aus.
 
 > [!div class="mx-imgBorder"]

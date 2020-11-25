@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/16/2020
 ms.openlocfilehash: feeb709f67a0e75f5980ec0520b95feb7edd5960
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124406"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018816"
 ---
 # <a name="scale-your-stream-analytics-job-with-azure-machine-learning-studio-classic-functions"></a>Skalieren eines Stream Analytics-Auftrags mit Azure Machine Learning Studio-Funktionen (klassisch)
 
@@ -52,7 +52,7 @@ Zum Verarbeiten von 200.000 Ereignissen pro Sekunde benötigt der Stream Analyti
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-00.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Beispiel mit zwei Aufträgen")
 
-Wenn * *_B_* _ die Batchgröße und _*_L_*_ die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit _*_N_*_ SUs:
+Wenn **_B_* _ die Batchgröße und _*_L_*_ die Webdienstlatenz bei Batchgröße B in Millisekunden ist, beträgt der Durchsatz eines Stream Analytics-Auftrags mit _*_N_*_ SUs:
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-02.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Formel")
 
@@ -63,7 +63,7 @@ Weitere Informationen zu dieser Einstellung finden Sie im [Artikel zur Skalierun
 ## <a name="example--sentiment-analysis"></a>Beispiel: Stimmungsanalyse
 Das folgende Beispiel enthält einen Stream Analytics-Auftrag mit der Studio-Funktion (klassisch) für die Stimmungsanalyse, die im [Tutorial zur Integration von Machine Learning Studio (klassisch) für Stream Analytics](stream-analytics-machine-learning-integration-tutorial.md) beschrieben ist.
 
-Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion _ *sentiment* *, wie im folgenden Beispiel dargestellt:
+Die Abfrage umfasst eine einfache vollständig partitionierte Abfrage gefolgt von der Funktion _ *sentiment**, wie im folgenden Beispiel dargestellt:
 
 ```SQL
     WITH subquery AS (
@@ -99,7 +99,7 @@ Betrachten wir die Skalierung anhand der folgenden Latenzmessungen für die einz
 | 300 ms | Batches mit 10.000 Ereignissen |
 | 500 ms | Batches mit 25.000 Ereignissen |
 
-1. Mit der ersten Option ( **keine** Bereitstellung von mehr SUs) könnte die Batchgröße auf **25.000** erhöht werden. Durch die höhere Batchgröße könnten vom Auftrag dann 1.000.000 Ereignisse mit 20 gleichzeitigen Verbindungen mit dem Webdienst von Studio (klassisch) verarbeitet werden (bei einer Wartezeit von 500 ms pro Aufruf). Die zusätzliche Wartezeit des Stream Analytics-Auftrags würde sich also aufgrund der Anforderungen der sentiment-Funktion an die Webdienstanforderungen von Studio (klassisch) von **200 ms** auf **500 ms** erhöhen. Die Batchgröße kann jedoch **nicht** unendlich erhöht werden, da die Studio-Webdienste (klassisch) erfordern, dass die Nutzlast einer Anforderung maximal 4 MB beträgt. Für Webdienstanforderungen tritt nach 100 Sekunden eine Zeitüberschreitung auf.
+1. Mit der ersten Option (**keine** Bereitstellung von mehr SUs) könnte die Batchgröße auf **25.000** erhöht werden. Durch die höhere Batchgröße könnten vom Auftrag dann 1.000.000 Ereignisse mit 20 gleichzeitigen Verbindungen mit dem Webdienst von Studio (klassisch) verarbeitet werden (bei einer Wartezeit von 500 ms pro Aufruf). Die zusätzliche Wartezeit des Stream Analytics-Auftrags würde sich also aufgrund der Anforderungen der sentiment-Funktion an die Webdienstanforderungen von Studio (klassisch) von **200 ms** auf **500 ms** erhöhen. Die Batchgröße kann jedoch **nicht** unendlich erhöht werden, da die Studio-Webdienste (klassisch) erfordern, dass die Nutzlast einer Anforderung maximal 4 MB beträgt. Für Webdienstanforderungen tritt nach 100 Sekunden eine Zeitüberschreitung auf.
 1. Bei der zweiten Option wird die Batchgröße von 1000 beibehalten. Bei einer Webdienstlatenz von 200 ms können mit 20 gleichzeitigen Verbindungen mit dem Webdienst also jeweils Ereignisse in folgendem Umfang verarbeitet werden: 1000 × 20 × 5 Ereignisse = 100.000 pro Sekunde. Es sind also 60 SUs für den Auftrag erforderlich, damit 1.000.000 Ereignisse pro Sekunde verarbeitet werden können. Verglichen mit der ersten Option fallen für den Stream Analytics-Auftrag mehr Webdienst-Batchanforderungen an, sodass sich die Kosten erhöhen.
 
 Unten ist eine Tabelle mit Informationen zum Durchsatz des Stream Analytics-Auftrags für unterschiedliche SUs und Batchgrößen angegeben (Anzahl von Ereignissen pro Sekunde).
@@ -120,17 +120,17 @@ Sie sollten nun bereits über gute Grundlagenkenntnisse verfügen und wissen, wi
 Normalerweise lässt sich die Batchgröße, die wir für Funktionen von Studio (klassisch) festlegen, nicht genau durch die Anzahl von Ereignissen teilen, die bei jedem Abrufvorgang eines Stream Analytics-Auftrags zurückgegeben werden. In diesem Fall wird der Studio-Webdienst (klassisch) mit „Teilbatches“ aufgerufen. Durch die Verwendung von Teilbatches wird verhindert, dass ein Auftrag zusätzliche Latenzen verursacht und Ereignisse von einem zum nächsten Abruf gebündelt werden.
 
 ## <a name="new-function-related-monitoring-metrics"></a>Neue funktionsbezogene Überwachungsmetriken
-Im Überwachungsbereich eines Stream Analytics-Auftrags wurden drei zusätzliche funktionsbezogene Metriken hinzugefügt. Dies sind **FUNKTIONSANFORDERUNGEN** , **FUNKTIONSEREIGNISSE** und **FEHLERHAFTE FUNKTIONSANFORDERUNGEN** , wie in der folgenden Grafik dargestellt.
+Im Überwachungsbereich eines Stream Analytics-Auftrags wurden drei zusätzliche funktionsbezogene Metriken hinzugefügt. Dies sind **FUNKTIONSANFORDERUNGEN**, **FUNKTIONSEREIGNISSE** und **FEHLERHAFTE FUNKTIONSANFORDERUNGEN**, wie in der folgenden Grafik dargestellt.
 
 ![Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Metriken](./media/stream-analytics-scale-with-ml-functions/stream-analytics-scale-with-ml-functions-01.png "Skalieren von Stream Analytics mit Studio-Funktionen (klassisch) – Metriken")
 
 Diese sind wie folgt definiert:
 
-**FUNKTIONSANFORDERUNGEN** : Die Anzahl von Funktionsanforderungen.
+**FUNKTIONSANFORDERUNGEN**: Die Anzahl von Funktionsanforderungen.
 
-**FUNKTIONSEREIGNISSE** : Die Anzahl von Ereignissen in den Funktionsanforderungen.
+**FUNKTIONSEREIGNISSE**: Die Anzahl von Ereignissen in den Funktionsanforderungen.
 
-**FEHLER BEI FUNKTIONSANFORDERUNGEN** : Die Anzahl von Funktionsanforderungen mit Fehlern.
+**FEHLER BEI FUNKTIONSANFORDERUNGEN**: Die Anzahl von Funktionsanforderungen mit Fehlern.
 
 ## <a name="key-takeaways"></a>Wesentliche Punkte
 

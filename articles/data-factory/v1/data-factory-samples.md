@@ -12,11 +12,11 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: ed63d148afa6f5674d36cc50c18351b2a06966eb
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636832"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019615"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory Editor – Beispiele
 > [!NOTE]
@@ -59,13 +59,13 @@ Sie können die Kachel mit den **Beispielpipelines** auf der Startseite Ihrer Da
 2. Klicken Sie auf dem Blatt **DATA FACTORY** für die Data Factory auf die Kachel **Beispielpipelines**.
 
     ![Kachel "Beispielpipelines"](./media/data-factory-samples/SamplePipelinesTile.png)
-3. Klicken Sie auf dem Blatt **Beispielpipelines** auf das **Beispiel** , das Sie bereitstellen möchten.
+3. Klicken Sie auf dem Blatt **Beispielpipelines** auf das **Beispiel**, das Sie bereitstellen möchten.
 
     ![Blatt "Beispielpipelines"](./media/data-factory-samples/SampleTile.png)
 4. Geben Sie die Konfigurationseinstellungen für das Beispiel an. Hierzu zählen beispielsweise Ihr Azure Storage-Konto und Ihr Kontoschlüssel, der logische SQL-Servername, die Datenbank, die Benutzer-ID, das Kennwort usw.
 
     ![Blatt "Beispiel"](./media/data-factory-samples/SampleBlade.png)
-5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen** , um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
+5. Wenn Sie mit den Konfigurationseinstellungen fertig sind, klicken Sie auf **Erstellen**, um die Beispielpipelines und die von den Pipelines verwendeten verknüpften Dienste und Tabellen zu erstellen bzw. bereitzustellen.
 6. Auf dem Blatt **Beispielpipelines** wird auf der Kachel für das Beispiel, auf die Sie zuvor geklickt haben, der Status der Bereitstellung angezeigt.
 
     ![Bereitstellungsstatus](./media/data-factory-samples/DeploymentStatus.png)
@@ -83,7 +83,7 @@ Folgendes muss auf Ihrem Computer installiert sein:
 * Laden Sie das neueste Azure Data Factory-Plug-In für Visual Studio herunter: [VS 2013](https://visualstudiogallery.msdn.microsoft.com/754d998c-8f92-4aa7-835b-e89c8c954aa5) oder [VS 2015](https://visualstudiogallery.msdn.microsoft.com/371a4cf9-0093-40fa-b7dd-be3c74f49005). Wenn Sie Visual Studio 2013 verwenden, können Sie das Plug-In auch aktualisieren, indem Sie die folgenden Schritte ausführen: Klicken Sie im Menü auf **Tools** -> **Erweiterungen und Updates** -> **Online** -> **Visual Studio-Katalog** -> **Microsoft Azure Data Factory-Tools für Visual Studio** -> **Aktualisieren**.
 
 ### <a name="use-data-factory-templates"></a>Verwenden von Data Factory-Vorlagen
-1. Klicken Sie im Menü auf **Datei** , zeigen Sie auf **Neu** , und klicken Sie auf **Projekt**.
+1. Klicken Sie im Menü auf **Datei**, zeigen Sie auf **Neu**, und klicken Sie auf **Projekt**.
 2. Führen Sie im Dialogfeld **Neues Projekt** die folgenden Schritte aus:
 
    1. Wählen Sie unter **Vorlagen** die Option **DataFactory** aus.
@@ -98,16 +98,16 @@ Folgendes muss auf Ihrem Computer installiert sein:
     ![Dialogfeld „Data Factory-Vorlagen“](./media/data-factory-samples/vs-data-factory-templates-dialog.png)
 4. Klicken Sie im Dialogfeld **Data Factory-Konfiguration** auf der Seite **Data Factory-Grundeinstellungen** auf **Weiter**.
 5. Führen Sie auf der Seite **Data Factory konfigurieren** die folgenden Schritte aus:
-   1. Wählen Sie **Neue Data Factory erstellen** aus. Sie können auch **Use existing data factory** (Vorhandene Data Factory verwenden) auswählen.
+   1. Wählen Sie **Neue Data Factory erstellen** aus. Sie können auch **Use existing data factory**(Vorhandene Data Factory verwenden) auswählen.
    2. Geben Sie einen **Namen** für die Data Factory ein.
    3. Wählen Sie das **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.
    4. Wählen Sie die **Ressourcengruppe** für die Data Factory aus.
-   5. Wählen Sie **USA, Westen** , **USA, Osten** oder **Europa, Norden** als **Region** aus.
+   5. Wählen Sie **USA, Westen**, **USA, Osten** oder **Europa, Norden** als **Region** aus.
    6. Klicken Sie auf **Weiter**.
 6. Geben Sie auf der Seite **Datenspeicher konfigurieren** eine vorhandene **Datenbank in Azure SQL-Datenbank** und ein **Azure Storage-Konto** an, oder erstellen Sie eine Datenbank/einen Speicher, und klicken Sie dann auf „Weiter“.
 7. Übernehmen Sie auf der Seite **Compute konfigurieren** die Standardwerte, und klicken Sie auf **Weiter**.
 8. Überprüfen Sie auf der Seite **Zusammenfassung** alle Einstellungen, und klicken Sie auf **Weiter**.
-9. Warten Sie auf der Seite **Bereitstellungsstatus** , bis die Bereitstellung abgeschlossen ist, und klicken Sie auf **Fertig stellen**.
+9. Warten Sie auf der Seite **Bereitstellungsstatus**, bis die Bereitstellung abgeschlossen ist, und klicken Sie auf **Fertig stellen**.
 10. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und klicken Sie auf **Veröffentlichen**.
 11. Wenn das Dialogfeld **Melden Sie sich bei Ihrem Microsoft-Konto an** angezeigt wird, geben Sie Ihre Anmeldeinformationen für das Konto mit dem Azure-Abonnement ein, und klicken Sie auf **Anmelden**.
 12. Das folgende Dialogfeld sollte angezeigt werden:
@@ -117,9 +117,9 @@ Folgendes muss auf Ihrem Computer installiert sein:
 
     1. Stellen Sie sicher, dass die Option **Use existing data factory** (Vorhandene Data Factory verwenden) aktiviert ist.
     2. Wählen Sie die **Data Factory** aus, die Sie für die Verwendung der Vorlage ausgewählt hatten.
-    3. Klicken Sie auf **Weiter** , um zur Seite **Publish Items** zu wechseln. (Drücken Sie die **TAB-TASTE** , um das Feld „Name“ zu verlassen, wenn die Schaltfläche **Weiter** deaktiviert ist.)
-14. Stellen Sie auf der Seite **Publish Items** sicher, dass alle Data Factory-Entitäten ausgewählt sind, und klicken Sie auf **Weiter** , um zur Seite **Zusammenfassung** zu wechseln.     
-15. Prüfen Sie die Zusammenfassung, und klicken Sie auf **Weiter** , um den Bereitstellungsprozess zu starten und den **Bereitstellungsstatus** anzuzeigen.
+    3. Klicken Sie auf **Weiter**, um zur Seite **Publish Items** zu wechseln. (Drücken Sie die **TAB-TASTE**, um das Feld „Name“ zu verlassen, wenn die Schaltfläche **Weiter** deaktiviert ist.)
+14. Stellen Sie auf der Seite **Publish Items** sicher, dass alle Data Factory-Entitäten ausgewählt sind, und klicken Sie auf **Weiter**, um zur Seite **Zusammenfassung** zu wechseln.     
+15. Prüfen Sie die Zusammenfassung, und klicken Sie auf **Weiter**, um den Bereitstellungsprozess zu starten und den **Bereitstellungsstatus** anzuzeigen.
 16. Auf der Seite **Bereitstellungsstatus** sollte der Status des Bereitstellungsprozesses angezeigt werden. Klicken Sie auf „Fertig stellen“, nachdem die Bereitstellung abgeschlossen ist.
 
 Einzelheiten zur Verwendung von Visual Studio zum Erstellen von Data Factory-Entitäten und ihrer Veröffentlichung in Azure finden Sie unter [Erstellen der ersten Azure Data Factory mit Microsoft Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) .
