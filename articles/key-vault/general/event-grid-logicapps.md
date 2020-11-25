@@ -11,11 +11,11 @@ ms.topic: how-to
 ms.date: 11/11/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 9c522d870a25b3df34ab6a0cf1c1e944a6462685
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93284496"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013988"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>Verwenden von Logic Apps zum Empfangen einer E-Mail bei Statusänderungen von Key Vault-Geheimnissen
 
@@ -60,7 +60,7 @@ Gehen Sie wie folgt vor, um ein Azure Event Grid-Abonnement zu erstellen:
 
 1. Erstellen Sie Ihre E-Mail-Vorlage:
     - **An:** Geben Sie die E-Mail-Adresse an, die die E-Mail-Benachrichtigungen empfangen soll. Verwenden Sie für dieses Tutorial ein E-Mail-Konto, auf das Sie zu Testzwecken zugreifen können.
-    - **Betreff** und **Text** : Schreiben Sie den Text für Ihre E-Mail. Wählen Sie JSON-Eigenschaften aus dem Auswahlwerkzeug aus, um dynamischen Inhalt basierend auf Ereignisdaten einzuschließen. Sie können die Daten des Ereignisses mit `@{triggerBody()?['Data']}` abrufen.
+    - **Betreff** und **Text**: Schreiben Sie den Text für Ihre E-Mail. Wählen Sie JSON-Eigenschaften aus dem Auswahlwerkzeug aus, um dynamischen Inhalt basierend auf Ereignisdaten einzuschließen. Sie können die Daten des Ereignisses mit `@{triggerBody()?['Data']}` abrufen.
 
     Hier ist ein Beispiel für das Aussehen Ihrer E-Mail-Vorlage angegeben:
 

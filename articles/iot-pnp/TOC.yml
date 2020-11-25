@@ -12,39 +12,13 @@
     - name: Einrichten Ihrer Umgebung
       href: set-up-environment.md
     - name: "Verbinden eines Geräts mit IoT\_Hub"
-      items:
-        - name: C
-          href: quickstart-connect-device-c.md
-        - name: Node.js
-          href: quickstart-connect-device-node.md
-        - name: Python
-          href: quickstart-connect-device-python.md
-        - name: C#
-          href: quickstart-connect-device-csharp.md
-        - name: Java
-          href: quickstart-connect-device-java.md
+      href: quickstart-connect-device.md
     - name: Interagieren mit einem Gerät über Ihre Lösung
-      items:
-        - name: Node.js
-          href: quickstart-service-node.md
-        - name: Python
-          href: quickstart-service-python.md
-        - name: C#
-          href: quickstart-service-csharp.md
-        - name: Java
-          href: quickstart-service-java.md
-- name: Tutorials
+      href: quickstart-service.md
+- name: Lernprogramme
   items:
-    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (C)
-      href: tutorial-multiple-components-c.md
-    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (C#)
-      href: tutorial-multiple-components-csharp.md
-    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (Java)
-      href: tutorial-multiple-components-java.md
-    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (Node.js)
-      href: tutorial-multiple-components-node.md
-    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten (Python)
-      href: tutorial-multiple-components-python.md
+    - name: Herstellen einer Verbindung mit einem Gerät mit mehreren Komponenten
+      href: tutorial-multiple-components.md
     - name: Herstellen einer Verbindung mit einem Gerät mithilfe von MQTT
       href: tutorial-use-mqtt.md
     - name: Interagieren mit einem MXChip-Gerät (Beispiel)
@@ -58,17 +32,7 @@
     - name: Aufbau
       href: concepts-architecture.md
     - name: Leitfaden für Geräteentwickler
-      items:
-        - name: C#
-          href: concepts-developer-guide-device-csharp.md
-        - name: Node.js
-          href: concepts-developer-guide-device-node.md
-        - name: Java
-          href: concepts-developer-guide-device-java.md
-        - name: Python
-          href: concepts-developer-guide-device-python.md
-        - name: C
-          href: concepts-developer-guide-device-c.md
+      href: concepts-developer-guide-device.md
     - name: Leitfaden für Dienstentwickler
       href: concepts-developer-guide-service.md
     - name: Komponenten

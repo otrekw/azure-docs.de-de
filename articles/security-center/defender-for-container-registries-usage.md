@@ -7,12 +7,12 @@ ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 2471a19cf795d969644cb92e23b7a2926f2ee1a9
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: a5d66e43485ec66b6297ef11ed382e8fb82b7cb3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372607"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96014572"
 ---
 # <a name="use-azure-defender-for-container-registries-to-scan-your-images-for-vulnerabilities"></a>Verwenden von Azure Defender für Containerregistrierungen zum Überprüfen Ihrer Images auf Sicherheitsrisiken
 
@@ -22,17 +22,7 @@ Wenn **Azure Defender für Containerregistrierungen** aktiviert ist, wird jedes 
 
 Wenn der Scanner Sicherheitsrisiken an Security Center meldet, stellt Security Center die Ergebnisse und zugehörigen Informationen als Empfehlungen dar. Darüber hinaus enthalten die Ergebnisse zugehörige Informationen, etwa Problembehandlungsschritte, relevante CVEs, CVSS-Bewertungen und mehr. Sie können die ermittelten Sicherheitsrisiken für ein oder mehrere Abonnements oder für eine bestimmte Registrierung anzeigen.
 
-## <a name="availability"></a>Verfügbarkeit
-
-|Aspekt|Details|
-|----|:----|
-|Status des Release:|Allgemein verfügbar (Generally Available, GA)|
-|Preise:|**Azure Defender für Containerregistrierungen** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
-|Unterstützte Registrierungen und Images:|Linux-Images in ACR-Registrierungen, auf die mit Shellzugriff über das öffentliche Internet zugegriffen werden kann|
-|Nicht unterstützte Registrierungen und Images:|Windows-Images<br>„Private“ Registrierungen<br>Registrierungen, deren Zugriff durch eine Firewall, einen Dienstendpunkt oder private Endpunkte wie Azure Private Link beschränkt ist<br>Extrem minimalistische Images wie [Docker-Scratch](https://hub.docker.com/_/scratch/)-Images oder Images ohne Distribution, die nur eine Anwendung und deren Laufzeitabhängigkeiten ohne Paket-Manager, Shell oder Betriebssystem enthalten|
-|Erforderliche Rollen und Berechtigungen:|**Sicherheitsleseberechtigter** und [Azure Container Registry-Leser](../container-registry/container-registry-roles.md)|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov – Derzeit wird nur das Feature zur Überprüfung bei Pushvorgang unterstützt. Weitere Informationen finden Sie unter [Wann werden Images überprüft?](defender-for-container-registries-introduction.md#when-are-images-scanned)<br>![Nein](./media/icons/no-icon.png) China Gov, andere Gov|
-|||
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 
 ## <a name="identify-vulnerabilities-in-images-in-azure-container-registries"></a>Identifizieren von Sicherheitsrisiken in Images in Azure-Containerregistrierungen 
@@ -142,7 +132,7 @@ Sie können auch eines der folgenden Kriterien verwenden:
 
 So erstellen Sie eine Regel:
 
-1. Suchen Sie auf der Seite mit den Empfehlungsdetails nach **Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden** , und wählen Sie **Regel deaktivieren** aus.
+1. Suchen Sie auf der Seite mit den Empfehlungsdetails nach **Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden**, und wählen Sie **Regel deaktivieren** aus.
 1. Wählen Sie den entsprechenden Gültigkeitsbereich aus.
 1. Definieren Sie Ihre Kriterien.
 1. Wählen Sie **Regel anwenden** aus.

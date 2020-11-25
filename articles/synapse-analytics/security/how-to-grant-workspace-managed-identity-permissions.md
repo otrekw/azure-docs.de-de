@@ -9,11 +9,11 @@ ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
 ms.openlocfilehash: 54612bee5715cdb78141a8aacfa5d24c814269d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312374"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96014719"
 ---
 # <a name="grant-permissions-to-workspace-managed-identity-preview"></a>Erteilen von Berechtigungen für die verwaltete Identität eines Arbeitsbereichs (Vorschau)
 
@@ -104,7 +104,7 @@ Der Name der verwalteten Identität ist auch der Name des Arbeitsbereichs. Suche
 
 #### <a name="step-8-select-the-managed-identity"></a>Schritt 8: Auswählen der verwalteten Identität
 
-Wählen Sie die verwaltete Identität für **Ausgewählte Mitglieder** aus. Klicken Sie auf **Speichern** , um die Rollenzuweisung hinzuzufügen.
+Wählen Sie die verwaltete Identität für **Ausgewählte Mitglieder** aus. Klicken Sie auf **Speichern**, um die Rollenzuweisung hinzuzufügen.
 
 ![Auswählen der verwalteten Identität](./media/how-to-grant-workspace-managed-identity-permissions/configure-workspace-managed-identity-13.png)
 
