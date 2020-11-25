@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 91cb1a0819902d2dfa27718ccfe39b175959a16c
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91963838"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837888"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Tutorial: Konfigurieren von benutzerdefinierten gesperrten Kennwörtern für den Azure Active Directory-Kennwortschutz
 
@@ -124,4 +124,4 @@ In diesem Tutorial haben Sie für Azure AD als Schutzmaßnahme benutzerdefinier
 > * Testen von Kennwortänderungen mit einem gesperrten Kennwort
 
 > [!div class="nextstepaction"]
-> [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](./tutorial-enable-azure-mfa.md)
+> [Aktivieren von Azure AD Multi-Factor Authentication (risikobasiert)](./tutorial-enable-azure-mfa.md)

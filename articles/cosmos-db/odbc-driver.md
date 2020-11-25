@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 10/02/2019
 ms.author: sngun
 ms.openlocfilehash: e7d6a67f5322c5bb640430f66ccb0917f6faada1
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339783"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003496"
 ---
 # <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Herstellen einer Azure Cosmos DB-Verbindung mithilfe von BI-Analysetools per ODBC-Treiber
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -54,34 +54,34 @@ Wenden wir uns nun dem ODBC-Treiber zu.
 
 1. Klicken Sie nach dem [Installieren des Azure Cosmos DB ODBC-Treibers](#install) im Fenster **ODBC-Datenquellenadministrator** auf **Hinzufügen**. Sie können einen Benutzer- oder System-DSN erstellen. In diesem Beispiel erstellen Sie einen Benutzer-DSN.
 
-1. Wählen Sie im Fenster **Neue Datenquelle erstellen** die Option **Microsoft Azure Cosmos DB ODBC-Treiber** , und klicken Sie dann auf **Fertig stellen**.
+1. Wählen Sie im Fenster **Neue Datenquelle erstellen** die Option **Microsoft Azure Cosmos DB ODBC-Treiber**, und klicken Sie dann auf **Fertig stellen**.
 
 1. Geben Sie im Fenster **Azure Cosmos DB ODBC-Treiber – DSN-Setup** die folgenden Informationen ein: 
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-dsn-setup.png" alt-text="Fenster „Azure Cosmos DB ODBC Driver DSN Setup“ (Azure Cosmos DB ODBC-Treiber – DSN-Setup)":::
-    - **Datenquellenname** : Der Anzeigename für den ODBC-DSN. Dieser Name muss für Ihr Azure Cosmos DB-Konto eindeutig sein. Vergeben Sie also einen passenden Namen, falls Sie mehrere Konten verwenden.
-    - **Beschreibung** : Eine kurze Beschreibung der Datenquelle.
-    - **Host** : Der URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über die Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
-    - **Zugriffsschlüssel** : Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über die Seite mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
+    - **Datenquellenname**: Der Anzeigename für den ODBC-DSN. Dieser Name muss für Ihr Azure Cosmos DB-Konto eindeutig sein. Vergeben Sie also einen passenden Namen, falls Sie mehrere Konten verwenden.
+    - **Beschreibung**: Eine kurze Beschreibung der Datenquelle.
+    - **Host**: Der URI für Ihr Azure Cosmos DB-Konto. Sie können den URI im Azure-Portal über die Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel) abrufen. Dies ist im folgenden Screenshot dargestellt. 
+    - **Zugriffsschlüssel**: Der Primär- oder Sekundärschlüssel für den Lese-/Schreibzugriff oder schreibgeschützten Zugriff über die Seite mit den Azure Cosmos DB-Schlüsseln im Azure-Portal. Dies ist im folgenden Screenshot dargestellt. Wir empfehlen Ihnen die Verwendung des Schlüssels für den schreibgeschützten Zugriff, falls der DSN nur für die schreibgeschützte Datenverarbeitung und Berichterstellung verwendet wird.
     :::image type="content" source="./media/odbc-driver/odbc-cosmos-account-keys.png" alt-text="Seite „Azure Cosmos DB Keys“ (Azure Cosmos DB-Schlüssel)":::
-    - **Zugriffsschlüssel verschlüsseln für** : Wählen Sie die entsprechende Option basierend auf den Benutzern dieses Computers aus. 
+    - **Zugriffsschlüssel verschlüsseln für**: Wählen Sie die entsprechende Option basierend auf den Benutzern dieses Computers aus. 
     
-1. Klicken Sie auf die Schaltfläche **Testen** , um sicherzustellen, dass Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen können. 
+1. Klicken Sie auf die Schaltfläche **Testen**, um sicherzustellen, dass Sie eine Verbindung mit Ihrem Azure Cosmos DB-Konto herstellen können. 
 
-1.  Klicken Sie auf **Erweiterte Optionen** , und legen Sie die folgenden Werte fest:
-    *  **REST-API-Version** : Wählen Sie die [REST-API-Version](/rest/api/cosmos-db/) für Ihre Vorgänge aus. Die Standardversion ist „2015-12-16“. Wenn Sie Container mit [großen Partitionsschlüsseln](large-partition-keys.md) haben, für die die REST-API-Version „2018-12-31“ erforderlich ist, führen Sie die folgenden Schritte aus:
+1.  Klicken Sie auf **Erweiterte Optionen**, und legen Sie die folgenden Werte fest:
+    *  **REST-API-Version**: Wählen Sie die [REST-API-Version](/rest/api/cosmos-db/) für Ihre Vorgänge aus. Die Standardversion ist „2015-12-16“. Wenn Sie Container mit [großen Partitionsschlüsseln](large-partition-keys.md) haben, für die die REST-API-Version „2018-12-31“ erforderlich ist, führen Sie die folgenden Schritte aus:
         - Geben Sie **2018-12-31** als REST-API-Version ein.
         - Geben Sie im Menü **Start** die Zeichenfolge „regedit“ ein, um die Anwendung **Registrierungs-Editor** zu suchen und zu öffnen.
         - Navigieren Sie im Registrierungs-Editor zum Pfad: **Computer\HKEY_LOCAL_MACHINE\SOFTWARE\ODBC\ODBC.INI**
         - Erstellen Sie einen neuen Unterschlüssel, der denselben Namen wie Ihr DSN hat, z.B. „Contoso-Konto ODBC DSN“.
         - Navigieren Sie zum Unterschlüssel „Contoso-Konto ODBC DSN“.
-        - Klicken Sie mit der rechten Maustaste, um einen neuen **Zeichenfolge** -Wert hinzuzufügen:
+        - Klicken Sie mit der rechten Maustaste, um einen neuen **Zeichenfolge**-Wert hinzuzufügen:
             - Wertname: **IgnoreSessionToken**
             - Wertdaten: **1**
             :::image type="content" source="./media/odbc-driver/cosmos-odbc-edit-registry.png" alt-text="Einstellungen für den Registrierungs-Editor":::
-    - **Abfragekonsistenz** : Wählen Sie die [Konsistenzebene](consistency-levels.md) für Ihre Vorgänge aus. Die Standardeinstellung lautet „Sitzung“.
-    - **Anzahl an Wiederholungen** : Geben Sie ein, wie oft für einen Vorgang ein Wiederholungsversuch durchgeführt werden soll, falls die erste Anforderung aufgrund einer Ratenbegrenzung des Diensts nicht abgeschlossen werden konnte.
-    - **Schemadatei** : Hier stehen Ihnen mehrere Optionen zur Verfügung.
+    - **Abfragekonsistenz**: Wählen Sie die [Konsistenzebene](consistency-levels.md) für Ihre Vorgänge aus. Die Standardeinstellung lautet „Sitzung“.
+    - **Anzahl an Wiederholungen**: Geben Sie ein, wie oft für einen Vorgang ein Wiederholungsversuch durchgeführt werden soll, falls die erste Anforderung aufgrund einer Ratenbegrenzung des Diensts nicht abgeschlossen werden konnte.
+    - **Schemadatei**: Hier stehen Ihnen mehrere Optionen zur Verfügung.
         - Wenn Sie diesen Eintrag unverändert (leer) lassen, überprüft der Treiber die erste Seite der Daten für alle Container, um das Schema der einzelnen Container zu ermitteln. Dieser Vorgang wird als „Containerzuordnung“ bezeichnet. Ohne definierte Schemadatei muss der Treiber den Scanvorgang bei jeder Treibersitzung durchführen. Dies kann zu einer längeren Startdauer für Anwendungen führen, die den DSN nutzen. Es ist ratsam, für einen DSN immer eine Schemadatei zuzuordnen.
         - Wenn Sie bereits über eine (möglicherweise mit dem Schema-Editor erstellte) Schemadatei verfügen, können Sie auf **Durchsuchen** klicken, zur Datei navigieren und dann auf **Speichern** und auf **OK** klicken.
         - Wenn Sie ein neues Schema erstellen möchten, klicken Sie auf **OK** und anschließend im Hauptfenster auf **Schema-Editor**. Fahren Sie dann mit den Informationen im Schema-Editor fort. Achten Sie nach dem Erstellen der neuen Schemadatei darauf, zurück zum Fenster **Erweiterte Optionen** zu wechseln, um die neu erstellte Schemadatei einzufügen.
@@ -107,9 +107,9 @@ Es gibt zwei Arten von Samplingmethoden, die Sie verwenden können: **Containerz
     - Sie können **Hide Column** (Spalte ausblenden) auf **true** (wahr) festlegen, wenn Sie diese Spalte aus den Abfrageergebnissen ausschließen möchten. Spalten mit der Einstellung „Hide Column = true“ werden nicht für die Auswahl und Projektion zurückgegeben, sind aber weiterhin Teil des Schemas. Beispielsweise können Sie alle für das Azure Cosmos DB-System erforderlichen Eigenschaften ausblenden, die mit „_“ beginnen.
     - Die Spalte **id** ist das einzige Feld, das nicht ausgeblendet werden kann, da es als Primärschlüssel im normalisierten Schema verwendet wird. 
 
-1. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern** , navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern**, navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
 
-1. Um dieses Schema mit einem DSN zu verwenden, öffnen Sie das Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator), klicken Sie auf **Erweiterte Optionen** , und navigieren Sie dann im Feld **Schemadatei** zum gespeicherten Schema. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
+1. Um dieses Schema mit einem DSN zu verwenden, öffnen Sie das Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) (über den ODBC-Datenquellenadministrator), klicken Sie auf **Erweiterte Optionen**, und navigieren Sie dann im Feld **Schemadatei** zum gespeicherten Schema. Mit dem Speichern einer Schemadatei unter einem vorhandenen DSN wird die DSN-Verbindung an die vom Schema definierten Daten und die dazugehörige Struktur angepasst.
 
 ## <a name="step-4-create-a-schema-definition-using-the-table-delimiters-mapping-method"></a><a id="table-mapping"></a>Schritt 4: Erstellen einer Schemadefinition mit der Tabellentrennzeichen-Zuordnungsmethode
 
@@ -137,9 +137,9 @@ Mit den folgenden Schritten wird ein Schema für die Daten in einem oder mehrere
     - Sie können **Hide Column** (Spalte ausblenden) auf **true** (wahr) festlegen, wenn Sie diese Spalte aus den Abfrageergebnissen ausschließen möchten. Spalten mit der Einstellung „Hide Column = true“ werden nicht für die Auswahl und Projektion zurückgegeben, sind aber weiterhin Teil des Schemas. Beispielsweise können Sie alle für das Azure Cosmos DB-System erforderlichen Eigenschaften ausblenden, die mit `_` beginnen.
     - Die Spalte **id** ist das einzige Feld, das nicht ausgeblendet werden kann, da es als Primärschlüssel im normalisierten Schema verwendet wird. 
 
-1. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern** , navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
+1. Klicken Sie nach dem Definieren des Schemas auf **Datei** | **Speichern**, navigieren Sie zum Verzeichnis, in dem das Schema gespeichert werden soll, und klicken Sie dann auf **Speichern**.
 
-1. Klicken Sie im angezeigten Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Erweiterte Optionen**. Navigieren Sie dann im Feld **Schemadatei** zur gespeicherten Schemadatei, und klicken Sie auf **OK**. Klicken Sie erneut auf **OK** , um den DSN zu speichern. Das von Ihnen erstellte Schema wird unter dem DSN gespeichert. 
+1. Klicken Sie im angezeigten Fenster **Azure Cosmos DB ODBC Driver DSN Setup** (Azure Cosmos DB ODBC-Treiber – DSN-Setup) auf **Erweiterte Optionen**. Navigieren Sie dann im Feld **Schemadatei** zur gespeicherten Schemadatei, und klicken Sie auf **OK**. Klicken Sie erneut auf **OK**, um den DSN zu speichern. Das von Ihnen erstellte Schema wird unter dem DSN gespeichert. 
 
 ## <a name="optional-set-up-linked-server-connection"></a>(Optional) Einrichten einer Verbindungsserver-Verbindung
 
@@ -203,7 +203,7 @@ Wenn Sie eine Ansicht für Ihre Daten erstellen möchten, klicken Sie im Fenster
 
 Gehen Sie im Fenster **View Definitions** (Ansichtsdefinitionen) dann wie folgt vor:
 
-1. Klicken Sie auf **Neu** , geben Sie einen Namen für die Ansicht ein (z.B. „EmployeesfromSeattleView“), und klicken Sie dann auf **OK**.
+1. Klicken Sie auf **Neu**, geben Sie einen Namen für die Ansicht ein (z.B. „EmployeesfromSeattleView“), und klicken Sie dann auf **OK**.
 
 1. Geben Sie im Fenster **Ansicht bearbeiten** eine Azure Cosmos DB-Abfrage ein. Hierbei muss es sich um eine [Azure Cosmos DB-SQL-Abfrage](./sql-query-getting-started.md) handeln, z. B. `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`. Klicken Sie dann auf **OK**.
 
@@ -230,13 +230,13 @@ Sie können Ihren neuen DSN verwenden, um Azure Cosmos DB mit beliebigen ODBC-ko
 
    :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-3.png" alt-text="Daten abrufen – Datenquellenname (DSN) in Power BI auswählen":::
 
-1. Wählen Sie im Fenster **Mit einem ODBC-Treiber auf eine Datenquelle zugreifen** die Option **Standard oder Benutzerdefiniert** , und klicken Sie dann auf **Verbinden**. Es ist nicht erforderlich, die **Eigenschaften für Anmeldedaten-Verbindungszeichenfolge** einzufügen.
+1. Wählen Sie im Fenster **Mit einem ODBC-Treiber auf eine Datenquelle zugreifen** die Option **Standard oder Benutzerdefiniert**, und klicken Sie dann auf **Verbinden**. Es ist nicht erforderlich, die **Eigenschaften für Anmeldedaten-Verbindungszeichenfolge** einzufügen.
 
 1. Erweitern Sie im Fenster **Navigator** im linken Bereich die Datenbank und das Schema, und wählen Sie dann die Tabelle aus. Der Ergebnisbereich enthält die Daten gemäß dem von Ihnen verwendeten Schema.
 
     :::image type="content" source="./media/odbc-driver/odbc-driver-power-bi-get-data-4.png" alt-text="Daten abrufen – Tabelle in Power BI auswählen":::
 
-1. Aktivieren Sie das Kontrollkästchen vor dem Tabellennamen, und klicken Sie dann auf **Laden** , um die Daten in Power BI Desktop zu visualisieren.
+1. Aktivieren Sie das Kontrollkästchen vor dem Tabellennamen, und klicken Sie dann auf **Laden**, um die Daten in Power BI Desktop zu visualisieren.
 
 1. Wählen Sie in Power BI Desktop ganz links die Registerkarte „Daten“ :::image type="icon" source="./media/odbc-driver/odbc-driver-data-tab.png"::: aus, um sich zu vergewissern, dass die Daten importiert wurden. 
 
@@ -244,7 +244,7 @@ Sie können Ihren neuen DSN verwenden, um Azure Cosmos DB mit beliebigen ODBC-ko
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-Stellen Sie beim Auftreten des folgenden Fehlers sicher, dass die Werte für **Host** und **Zugriffsschlüssel** , die Sie in [Schritt 2](#connect) im Azure-Portal kopiert haben, korrekt sind. Wiederholen Sie anschließend den Vorgang. Verwenden Sie im Azure-Portal die Kopierschaltflächen rechts von den Werten **Host** und **Zugriffsschlüssel** , um die Werte frei von Fehlern zu kopieren.
+Stellen Sie beim Auftreten des folgenden Fehlers sicher, dass die Werte für **Host** und **Zugriffsschlüssel**, die Sie in [Schritt 2](#connect) im Azure-Portal kopiert haben, korrekt sind. Wiederholen Sie anschließend den Vorgang. Verwenden Sie im Azure-Portal die Kopierschaltflächen rechts von den Werten **Host** und **Zugriffsschlüssel**, um die Werte frei von Fehlern zu kopieren.
 
 ```output
 [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}

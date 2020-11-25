@@ -6,15 +6,15 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: ef74c4b799c3a24636f88a8e704bf726104b034f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674317"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001591"
 ---
 # <a name="sensor-partner-integration"></a>Integration von Partnern für Sensordaten
 
-Dieser Artikel enthält Informationen zur **Translator** -Komponente von Azure FarmBeats, die die Integration von Sensoren von Partnern ermöglicht.
+Dieser Artikel enthält Informationen zur **Translator**-Komponente von Azure FarmBeats, die die Integration von Sensoren von Partnern ermöglicht.
 
 Mit dieser Komponente können Partner über Anwendungsprogrammierschnittstellen des FarmBeats-Datenhubs mit FarmBeats integrieren und Daten und Telemetriedaten von kundeneigenen Geräten an den FarmBeats-Datenhub senden. Sobald die Daten in FarmBeats verfügbar sind, werden sie mit dem FarmBeats-Accelerator visualisiert und können zur Datenfusion und zum Aufbau von Modellen für maschinelles Lernen/künstliche Intelligenz verwendet werden.
 

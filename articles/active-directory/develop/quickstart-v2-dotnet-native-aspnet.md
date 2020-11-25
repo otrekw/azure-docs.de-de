@@ -12,16 +12,16 @@ ms.workload: identity
 ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: 786f566b121d5f0d5d64e7b8b269c7cdfab9e4a6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 6874794dcf33d77d0b03f2a5713bdf42a40d6891
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825058"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560909"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Schnellstart: Aufrufen einer durch Microsoft Identity Platform geschützten ASP.NET-Web-API
 
-In dieser Schnellstartanleitung wird eine Web-API verfügbar gemacht und geschützt, sodass nur authentifizierte Benutzer darauf zugreifen können. In diesem Artikel wird gezeigt, wie Sie eine ASP.NET-Web-API verfügbar machen, damit sie Token akzeptieren kann, die von persönlichen Konten (z. B. outlook.com oder live.com) oder von Geschäfts-, Schul- und Unikonten von Unternehmen oder Organisationen ausgestellt wurden, die Microsoft Identity Platform integriert haben.
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie Sie eine ASP.NET-Web-API schützen, indem Sie den Zugriff auf die Ressourcen ausschließlich auf autorisierte Konten beschränken. Das Beispiel unterstützt die Autorisierung von persönlichen Microsoft-Konten sowie Konten in einer beliebigen Azure AD-Organisation (Azure Active Directory).
 
 Der Artikel verwendet auch eine Windows Presentation Foundation (WPF)-App, um zu veranschaulichen, wie Sie ein Zugriffstoken für den Zugriff auf eine Web-API anfordern können.
 
@@ -121,7 +121,7 @@ Gehen Sie zum Registrieren der TodoListClient-App wie folgt vor:
     1. Wählen Sie unter **Plattformkonfigurationen** die Schaltfläche **Plattform hinzufügen** aus.
     1. Wählen Sie unter **Mobilgerät- und Desktopanwendungen** die Option **Mobilgerät- und Desktopanwendungen** aus.
     1. Aktivieren Sie unter **Umleitungs-URIs** das Kontrollkästchen **https://login.microsoftonline.com/common/oauth2/nativeclient** .
-    1. Wählen Sie **Konfigurieren**aus.
+    1. Wählen Sie **Konfigurieren** aus.
 
 1. Wählen Sie **API-Berechtigungen** aus, und gehen Sie dann wie folgt vor:
 

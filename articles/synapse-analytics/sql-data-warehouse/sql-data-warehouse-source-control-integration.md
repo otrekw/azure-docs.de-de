@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 08/23/2019
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 4751f3cf213098873b0c53b15df82f57d155787a
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 766837cacb4ef2acf874c2872b347b6d35633faa
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313304"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700996"
 ---
 # <a name="source-control-integration-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Integration der Quellcodeverwaltung für den dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -85,7 +85,7 @@ Weitere Informationen zum Verbinden von Projekten mithilfe von Visual Studio fin
 
    ![Überprüfen](./media/sql-data-warehouse-source-control-integration/10-verify-column-change-pushed.png "Überprüfen der Änderungen")
 
-4. ( **Optional** ) Verwenden Sie den Schemavergleich, und übertragen Sie die Änderungen mithilfe von SSDT in Ihre Data Warehouse-Zielinstanz, um sicherzustellen, dass die Objektdefinitionen in Ihrem Azure-Repository und im lokalen Repository Ihr Data Warehouse widerspiegeln.
+4. (**Optional**) Verwenden Sie den Schemavergleich, und übertragen Sie die Änderungen mithilfe von SSDT in Ihre Data Warehouse-Zielinstanz, um sicherzustellen, dass die Objektdefinitionen in Ihrem Azure-Repository und im lokalen Repository Ihr Data Warehouse widerspiegeln.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

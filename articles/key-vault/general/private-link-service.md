@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 74669036a40048ca21aae56856981197defe1c35
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: a41eb5b38b741f8bdde59f8a4f1e8de2b4767903
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286529"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832771"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -44,7 +44,7 @@ Anschließend können Sie entweder einen neuen Schlüsseltresor erstellen oder e
 
 ### <a name="create-a-new-key-vault-and-establish-a-private-link-connection"></a>Erstellen eines neuen Schlüsseltresors und Einrichten einer Private Link-Verbindung
 
-Eine Anleitung für die Erstellung eines neuen Schlüsseltresors finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../secrets/quick-create-portal.md).
+Sie können eine Azure Key Vault-Instanz im [Azure-Portal](../general/quick-create-portal.md), mit der [Azure-Befehlszeilenschnittstelle](../general/quick-create-cli.md) oder mit [Azure PowerShell](../general/quick-create-powershell.md) erstellen.
 
 Wählen Sie nach dem Konfigurieren der Grundeinstellungen des Schlüsseltresors die Registerkarte „Netzwerk“ aus, und gehen Sie wie folgt vor:
 

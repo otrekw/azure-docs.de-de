@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/15/2019
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:Android
-ms.openlocfilehash: e8f60a3f39e770c1b09668a6d76e025b07ebbd6d
-ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
+ms.openlocfilehash: e0f3cd034838d5a9ccb1a5ccdc2567933b2e1dd6
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91893508"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94562201"
 ---
 # <a name="quickstart-sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Schnellstart: Benutzeranmeldung und Aufrufen der Microsoft Graph-API aus einer Android-App
 
-In diesem Schnellstart veranschaulicht ein Codebeispiel, wie eine Android-Anwendung persönliche, Geschäfts-, Schul- oder Unikonten über die Microsoft Identity Platform anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann. (Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).)
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Android-Anwendung Benutzer anmelden und ein Zugriffstoken abrufen kann, um die Microsoft Graph-API aufzurufen. 
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 Anwendungen müssen durch ein App-Objekt in Azure Active Directory dargestellt werden, damit Microsoft Identity Platform Token für Ihre Anwendung bereitstellen kann.
 

@@ -10,12 +10,12 @@ ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a061cf493fba99c518448acd9c4bf4bd5949eb98
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91843276"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94831809"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>Automatisieren der Rotation eines Geheimnisses für Ressourcen mit zwei Sätzen mit Anmeldeinformationen für die Authentifizierung
 
@@ -67,8 +67,6 @@ akvrotationstorage2    akvrotation      eastus      Microsoft.Storage/storageAcc
 ```
 
 ## <a name="create-and-deploy-storage-account-key-rotation-function"></a>Erstellen und Bereitstellen der Funktion für die Rotation von Speicherkontoschlüsseln
-> [!IMPORTANT]
-> Für die folgende Vorlage müssen sich Key Vault, Azure Storage-Konto und Azure-Funktion in der gleichen Ressourcengruppe befinden.
 
 Erstellen Sie als Nächstes zusätzlich zu den anderen erforderlichen Komponenten eine Funktions-App mit einer systemseitig verwalteten Identität, und stellen Sie Funktionen für die Rotation von Speicherkontoschlüsseln bereit.
 
@@ -85,13 +83,15 @@ Für die Rotationsfunktionen der Funktions-App werden die unten angegebenen Komp
    [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fjlichwa%2FKeyVault-Rotation-StorageAccountKey-PowerShell%2Fmaster%2Farm-templates%2FFunction%2Fazuredeploy.json)
 
 1. Wählen Sie in der Liste **Ressourcengruppe** die Option **akvrotation** aus.
+1. Geben Sie unter **Storage Account RG** (RG des Speicherkontos) den Namen der Ressourcengruppe ein, in der sich das Speicherkonto befindet. Übernehmen Sie den Standardwert **[resourceGroup().name]** , falls sich Ihr Speicherkonto bereits in der Ressourcengruppe befindet, in der Sie die Funktion für die Schlüsselrotation bereitstellen.
 1. Geben Sie unter **Name des Speicherkontos** den Namen des Speicherkontos ein, für das Zugriffsschlüssel rotiert werden sollen.
+1. Geben Sie unter **Key Vault RG** (RG des Schlüsseltresors) den Namen der Ressourcengruppe ein, in der sich der Schlüsseltresor befindet. Übernehmen Sie den Standardwert **[resourceGroup().name]** , falls sich Ihr Schlüsseltresor bereits in der Ressourcengruppe befindet, in der Sie die Funktion für die Schlüsselrotation bereitstellen.
 1. Geben Sie unter **Schlüsseltresorname** den Namen des Schlüsseltresors ein.
 1. Geben Sie unter **Name der Funktions-App** den Namen der Funktions-App ein.
 1. Geben Sie unter **Name des Geheimnisses** den Namen des Geheimnisses an, unter dem die Zugriffsschlüssel gespeichert werden.
 1. Geben Sie unter **Repository-URL** den GitHub-Speicherort des Funktionscodes an ( **https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell.git** ).
 1. Wählen Sie **Bewerten + erstellen** aus.
-1. Klicken Sie auf **Erstellen**
+1. Klicken Sie auf **Erstellen**.
 
    ![Überprüfen und Erstellen des ersten Speicherkontos](../media/secrets/rotation-dual/dual-rotation-2.png)
 

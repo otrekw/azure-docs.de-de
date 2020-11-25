@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ed8d645c5bedf6df087fa9c948415c6a1df24e9
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 74cc5bb2b434e757e090bac45202704eb934a522
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783180"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835746"
 ---
 # <a name="what-is-identity-protection"></a>Was ist Identity Protection?
 
@@ -59,7 +59,7 @@ Identity Protection identifiziert Risiken in folgenden Klassifizierungen:
 
 Weitere Informationen zu diesen Risiken sowie zu deren Berechnung finden Sie im Artikel [Was bedeutet Risiko?](concept-identity-protection-risks.md).
 
-Die Risikosignale können Korrekturmaßnahmen zur Folge haben, die unter Umständen dazu führen, dass Benutzer die Azure Multi-Factor Authentication verwenden oder ihr Kennwort per Self-Service-Kennwortzurücksetzung zurücksetzen müssen oder blockiert werden, bis ein Administrator aktiv wird.
+Die Risikosignale können Korrekturmaßnahmen zur Folge haben, die unter Umständen dazu führen, dass Benutzer die Azure AD Multi-Factor Authentication verwenden oder ihr Kennwort per Self-Service-Kennwortzurücksetzung zurücksetzen müssen oder blockiert werden, bis ein Administrator aktiv wird.
 
 ## <a name="risk-investigation"></a>Risikountersuchung
 

@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 55cbf0a304bbf13d47fefad0981c0143c101bbb0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88520769"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660337"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle
 
@@ -27,19 +27,9 @@ Die Azure CLI ist die Befehlszeilenumgebung von Azure und dient zum Verwalten vo
 
 [!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../../includes/azure-cli-prepare-your-environment-h3.md)]
 
-## <a name="install-the-azure-cli-locally"></a>Lokales Installieren der Azure-Befehlszeilenschnittstelle
-
-Wenn Sie die Azure-Befehlszeilenschnittstelle lokal installieren und verwenden möchten, benötigen Sie für diese Schnellstartanleitung mindestens die Version 2.0.46 der Azure-Befehlszeilenschnittstelle. Führen Sie `az --version` aus, um Ihre Version zu ermitteln. Installations- und Upgradeinformationen finden Sie bei Bedarf unter [Installieren von Azure CLI](/cli/azure/install-azure-cli).
-
-Wenn Sie die Azure-Befehlszeilenschnittstelle lokal ausführen, müssen Sie sich anmelden und authentifizieren. Bei Verwendung von Azure Cloud Shell ist dieser Schritt nicht erforderlich. Führen Sie `az login` aus, um sich bei der Azure-Befehlszeilenschnittstelle anzumelden, und authentifizieren Sie sich im Browserfenster:
-
-```azurecli
-az login
-```
-
-Weitere Informationen zur Authentifizierung mit der Azure-Befehlszeilenschnittstelle finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.46 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="authorize-access-to-blob-storage"></a>Autorisieren des Zugriffs auf Blobspeicher
 
@@ -111,7 +101,7 @@ Erstellen Sie zunächst eine Datei für den Upload in ein Blockblob. Verwenden S
 vi helloworld
 ```
 
-Wenn die Datei geöffnet wird, drücken Sie **Einfg**. Geben Sie *Hello World* ein und drücken Sie dann **Esc**. Geben Sie danach *:x*ein und drücken Sie dann die **Eingabetaste**.
+Wenn die Datei geöffnet wird, drücken Sie **Einfg**. Geben Sie *Hello World* ein und drücken Sie dann **Esc**. Geben Sie danach *:x* ein und drücken Sie dann die **Eingabetaste**.
 
 In diesem Beispiel laden Sie mithilfe des Befehls [az storage blob upload](/cli/azure/storage/blob) ein Blob in den Container hoch, den Sie im letzten Schritt erstellt haben. Es ist nicht erforderlich, einen Dateipfad anzugeben, da die Datei im Stammverzeichnis erstellt wurde. Denken Sie daran, die Platzhalterwerte in eckigen Klammern durch Ihre eigenen Werte zu ersetzen:
 

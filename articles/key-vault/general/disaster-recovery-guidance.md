@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.author: sudbalas
-ms.openlocfilehash: 3cc4bdc0fabd9d1e209634a88bed1bf063db917c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: aea5f0428fe55c0dae3734e196008cbc26a974b9
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91597867"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576218"
 ---
 # <a name="azure-key-vault-availability-and-redundancy"></a>Azure Key Vault: Verfügbarkeit und Redundanz
 
@@ -23,7 +23,7 @@ Azure Key Vault-Features bieten mehrere Redundanzebenen, um sicherzustellen, das
 > [!NOTE]
 > Diese Anleitung gilt für Tresore. Pools verwalteter HSMs verwenden ein anderes Modell für Hochverfügbarkeit und Notfallwiederherstellung. Weitere Informationen finden Sie unter [Notfallwiederherstellung für „Verwaltetes HSM“](../managed-hsm/disaster-recovery-guide.md).
 
-Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md).
+Der Inhalt Ihres Schlüsseltresors wird innerhalb der Region sowie in eine sekundäre Region repliziert, die mindestens 240 km entfernt ist (jedoch innerhalb des gleichen Gebiets liegt), um eine hohe Dauerhaftigkeit Ihrer Schlüssel und Geheimnisse zu gewährleisten. Einzelheiten zu spezifischen Regionspaaren finden Sie im Dokument [Azure-Regionspaare](../../best-practices-availability-paired-regions.md). Eine Ausnahme vom Modell mit Regionspaaren ist die Region „Brasilien, Süden“. Sie bietet nur die Möglichkeit, Daten in „Brasilien, Süden“ zu speichern. „Brasilien, Süden“ nutzt lokal redundanten Speicher (LRS), um Ihre Daten dreimal innerhalb des einzelnen Standorts/der einzelnen Region zu replizieren.   
 
 Wenn einzelne Komponenten innerhalb des Key Vault-Diensts ausfallen, springen andere Komponenten in der Region ein, um Ihre Anforderung zu erfüllen, sodass die Funktionalität nicht beeinträchtigt wird. Sie müssen keine Maßnahmen ergreifen, um diesen Prozess zu starten. Dieser wird automatisch initiiert und ist für Sie transparent.
 

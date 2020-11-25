@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2230784eedd044acd95b3087793ba664b544f76a
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505069"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541010"
 ---
 # <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal
 
@@ -48,7 +48,7 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
     | Einstellung | Vorgeschlagener Wert | BESCHREIBUNG |
     | :------ | :-------------- | :---------- |
-    | **dedicated SQL pool name** (Name des dedizierten SQL-Pools) | Ein gültiger Name | Name des dedizierten SQL-Pools |
+    | **Dedicated SQL pool name** (Name des dedizierten SQL-Pools) | Ein gültiger Name | Name des dedizierten SQL-Pools |
     | **Leistungsstufe** | DW100c | Legen Sie die kleinste Größe fest, um die Kosten für diesen Schnellstart zu senken. |
 
   
@@ -73,7 +73,6 @@ Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)
 
 8. Wenn Sie nach Abschluss der Bereitstellung zurück zum Arbeitsbereich navigieren, wird ein neuer Eintrag für den neu erstellten dedizierten SQL-Pool angezeigt.
  ![Flow für die SQL-Poolerstellung: Ressourcenbereitstellung](media/quickstart-create-sql-pool/create-sql-pool-studio-27.png)
-
 
 
 Nach der Erstellung des dedizierten SQL-Pools ist er im Arbeitsbereich zum Laden von Daten, Verarbeiten von Datenströmen, Lesen aus dem Data Lake usw. verfügbar.

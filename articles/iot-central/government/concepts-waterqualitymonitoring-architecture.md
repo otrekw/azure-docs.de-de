@@ -7,12 +7,12 @@ ms.date: 10/23/2019
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 2afe53ade9106fa5e1ebb9ec43492a86bd9fc213
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 1c4cc7f5440aca27be085c238179cd0ab20b226a
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127317"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874048"
 ---
 # <a name="water-quality-monitoring-reference-architecture"></a>Überwachung der Wasserqualität: Referenzarchitektur 
 
@@ -41,10 +41,10 @@ Geräte, die für intelligente Lösungen im Wasserwirtschaftsbereich zum Einsatz
 Azure IoT Central ist eine IoT-App-Plattform, mit der Sie Ihre IoT-Lösung schnell in Betrieb nehmen können. Sie können Ihre Lösung mit Branding versehen, anpassen und in Dienste von Drittanbietern integrieren.
 Nachdem Sie Ihre intelligenten Wasserwirtschaftsgeräte mit IoT Central verbunden haben, stehen Ihnen hierfür Befehls-, Steuerungs-, Überwachungs- und Alarmfunktionen, eine Benutzeroberfläche mit integrierter rollenbasierter Zugriffssteuerung (RBAC), konfigurierbare Dashboards zum Gewinnen von Erkenntnissen und Erweiterungsoptionen zur Verfügung. 
 
-## <a name="extensibility-and-integrations"></a>Erweiterbarkeit und Integrationen 
+## <a name="extensibility-and-integrations"></a>Erweiterbarkeit und Integrationen
 Sie können Ihre IoT-Anwendung in IoT Central erweitern und haben folgende Optionen:
 * Transformieren und Integrieren Ihrer IoT-Daten für erweiterte Analysen, z. B. für das Training von Machine Learning-Modellen durch kontinuierlichen Datenexport aus der IoT Central-Anwendung
-* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Microsoft Flow oder Webhooks ausgelöst werden
+* Automatisieren von Workflows in anderen Systemen, indem in der IoT Central-Anwendung Aktionen über Power Automate oder Webhooks ausgelöst werden
 * Programmgesteuertes Zugreifen auf Ihre IoT-Anwendung in IoT Central über IoT Central-APIs
 
 ## <a name="business-applications"></a>Geschäftsanwendungen 

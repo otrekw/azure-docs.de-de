@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 2e9af5dcc00d8cadd0528d56ee73bc6aeba149d7
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747730"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002033"
 ---
 # <a name="tutorial-upgrade-kubernetes-in-azure-kubernetes-service-aks"></a>Tutorial: Durchführen eines Upgrades für Kubernetes in Azure Kubernetes Service (AKS)
 
@@ -37,7 +37,7 @@ Verwenden Sie vor dem Upgrade eines Clusters den Befehl [az aks get-upgrades][],
 az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
-Im folgenden Beispiel lautet die aktuelle Version *1.15.11* , und die verfügbaren Versionen werden unter *Upgrades* angezeigt.
+Im folgenden Beispiel lautet die aktuelle Version *1.15.11*, und die verfügbaren Versionen werden unter *Upgrades* angezeigt.
 
 ```json
 {
@@ -80,7 +80,7 @@ az aks upgrade \
 ```
 
 > [!NOTE]
-> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.14.x* auf *1.15.x* durchführen, aber nicht direkt von *1.14.x* auf *1.16.x* . Für ein Upgrade von *1.14.x* auf *1.16.x* müssen Sie zuerst ein Upgrade von *1.14.x* auf *1.15.x* und dann ein weiteres Upgrade von  *1.15.x* auf *1.16.x* durchführen.
+> Upgrades sind jeweils nur auf die nächste Nebenversion möglich. Beispielsweise können Sie ein Upgrade von *1.14.x* auf *1.15.x* durchführen, aber nicht direkt von *1.14.x* auf *1.16.x*. Für ein Upgrade von *1.14.x* auf *1.16.x* müssen Sie zuerst ein Upgrade von *1.14.x* auf *1.15.x* und dann ein weiteres Upgrade von  *1.15.x* auf *1.16.x* durchführen.
 
 In der folgenden verkürzten Beispielausgabe wird das Ergebnis des Upgrades auf *1.16.8* gezeigt. Beachten Sie, dass die *kubernetesVersion* jetzt *1.16.8* lautet.
 

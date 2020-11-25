@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: 889972f7d94ab960354982275d45bdc5d5726d6e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 528003ac482da6f254bf437321c70c389d23844b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356823"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835015"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Looop für die automatische Benutzerbereitstellung
 
@@ -73,11 +73,11 @@ Bevor Sie Looop für die automatische Benutzerbereitstellung mit Azure AD konfig
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -85,7 +85,7 @@ Bevor Sie Looop für die automatische Benutzerbereitstellung mit Azure AD konfig
 
     ![Looop in der Ergebnisliste](common/search-new-app.png)
 
-5. Wählen Sie die Schaltfläche **Anmeldung bei Looop** aus, über die Sie an die Anmeldeseite von Looop umgeleitet werden. 
+5. Wählen Sie die Schaltfläche **Anmeldung bei Looop** aus, über die Sie auf die Anmeldeseite von Looop umgeleitet werden. 
 
     ![Looop: Hinzufügen von OIDC](media/looop-provisioning-tutorial/signup.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<organisation_domain>.looop.co/scim/v2` ein. Beispiel: `https://demo.looop.co/scim/v2`. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Looop abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Looop herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Looop-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://<organisation_domain>.looop.co/scim/v2` ein. Beispiel: `https://demo.looop.co/scim/v2`. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Looop abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Looop herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Looop-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch mal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -133,17 +133,38 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-
 
     ![Benutzerzuordnungen in Looop](media/looop-provisioning-tutorial/usermappings.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Looop synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Looop für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Looop synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Looop für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Benutzerattribute in Looop](media/looop-provisioning-tutorial/userattributes.png)
+   |attribute|type|Unterstützung für das Filtern|
+   |---|---|---|
+   |userName|String|&check;|
+   |aktiv|Boolean|
+   |emails[type eq "work"].value|String|
+   |name.givenName|String|
+   |name.familyName|String|
+   |externalId|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:area|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_1|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_2|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:custom_3|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:department|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:employee_id|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:location|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:position|String|
+   |urn:ietf:params:scim:schemas:extension:Looop:2.0:User:startAt|String|
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit Meta Networks Connector synchronisieren** aus.
 
     ![Gruppenzuordnungen in Looop](media/looop-provisioning-tutorial/groupmappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Meta Networks Connector synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Meta Networks Connector für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Meta Networks Connector synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Meta Networks Connector für Aktualisierungsvorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Gruppenattribute in Looop](media/looop-provisioning-tutorial/groupattributes.png)
+    |attribute|type|Unterstützung für das Filtern|
+    |---|---|---|
+    |displayName|String|&check;|
+    |members|Verweis|
+    |externalId|String|
+
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

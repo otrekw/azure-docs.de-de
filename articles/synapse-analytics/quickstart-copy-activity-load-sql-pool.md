@@ -1,6 +1,6 @@
 ---
-title: Schnellstart zum Laden von Daten in einen SQL-Pool mithilfe der Copy-Aktivität
-description: Laden von Daten in einen SQL-Pool mithilfe von Azure Synapse Analytics
+title: Schnellstart zum Laden von Daten in einen dedizierten SQL-Pool mithilfe der Copy-Aktivität
+description: Verwenden Sie die Copy-Aktivität für Pipelines in Azure Synapse Analytics zum Laden von Daten in einen dedizierten SQL-Pool.
 services: synapse-analytics
 ms.author: jingwang
 author: linda33wj
@@ -10,18 +10,18 @@ ms.service: synapse-analytics
 ms.topic: quickstart
 ms.custom: seo-lt-2019
 ms.date: 11/02/2020
-ms.openlocfilehash: 12b5530ccf154220b11f9d1286d629caf2209475
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.openlocfilehash: 542fde3ac951bf60d999361dc114491515fb9528
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280795"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94735244"
 ---
-# <a name="quickstart-load-data-into-sql-pool-using-copy-activity"></a>Schnellstart: Laden von Daten in einen SQL-Pool mithilfe der Copy-Aktivität
+# <a name="quickstart-load-data-into-dedicated-sql-pool-using-the-copy-activity"></a>Schnellstart: Laden von Daten in einen dedizierten SQL-Pool mithilfe der Copy-Aktivität
 
-Azure Synapse Analytics enthält verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren und analysieren können. Ein SQL-Pool bietet T-SQL-basierte Compute- und Speicherfunktionen. Nach der Erstellung eines SQL-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und für einen schnelleren analytischen Einblick bereitgestellt werden.
+Azure Synapse Analytics enthält verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren und analysieren können. Ein dedizierter SQL-Pool bietet T-SQL-basierte Compute- und Speicherfunktionen. Nach der Erstellung eines dedizierten SQL-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und für einen schnelleren analytischen Einblick bereitgestellt werden.
 
-In dieser Schnellstartanleitung erfahren Sie, wie Sie *Daten aus Azure SQL-Datenbank in Azure Synapse Analytics laden*. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen. Ähnliche Schritte gelten auch für das Kopieren von Daten zwischen einer anderen Quelle und Senke.
+In dieser Schnellstartanleitung erfahren Sie, wie Sie *Daten aus Azure SQL-Datenbank in Azure Synapse Analytics laden*. Sie können ähnliche Schritte zum Kopieren von Daten aus anderen Typen von Datenspeichern ausführen. Ähnliche Schritte gelten auch für das Kopieren von Daten für andere Quellen und Senken.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -29,13 +29,13 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie *Daten aus Azure SQL-Date
 * Azure Synapse-Arbeitsbereich: Befolgen Sie zum Erstellen eines Synapse-Arbeitsbereichs mithilfe des Azure-Portals die Anweisungen unter [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](quickstart-create-workspace.md).
 * Azure SQL-Datenbank: In diesem Tutorial werden Daten aus einem Beispieldataset von Adventure Works LT nach Azure SQL-Datenbank kopiert. Sie können diese Beispieldatenbank in SQL-Datenbank erstellen, indem Sie den Anweisungen unter [Schnellstart: Erstellen einer Azure SQL-Einzeldatenbank](../azure-sql/database/single-database-create-quickstart.md) folgen. Sie können auch andere Datenspeicher verwenden, indem Sie ähnliche Schritte ausführen.
 * Azure-Speicherkonto: Azure Storage wird im Kopiervorgang als *Stagingbereich* verwendet. Falls Sie noch nicht über ein Azure-Speicherkonto verfügen, finden Sie Anweisungen dazu unter [Erstellen eines Speicherkontos](../storage/common/storage-account-create.md).
-* Azure Synapse Analytics: Sie verwenden einen SQL-Pool als Senkendatenspeicher. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines SQL-Pools](quickstart-create-sql-pool-portal.md) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
+* Azure Synapse Analytics: Sie verwenden einen dedizierten SQL-Pool als Senkendatenspeicher. Wenn Sie keine Azure Synapse Analytics-Instanz haben, finden Sie unter [Erstellen eines dedizierten SQL-Pools](quickstart-create-sql-pool-portal.md) die erforderlichen Schritte zum Erstellen einer solchen Instanz.
 
 ### <a name="navigate-to-the-synapse-studio"></a>Navigieren zu Synapse Studio
 
-Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
+Nachdem Ihr Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
-* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://ms.portal.azure.com/#home). Wählen Sie oben im Abschnitt Übersicht die Option **Synapse Studio starten** aus.
+* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://ms.portal.azure.com/#home). Wählen Sie unter „Erste Schritte“ auf der Karte „Synapse Studio öffnen“ die Option **Öffnen** aus.
 * Öffnen Sie [Azure Synapse Analytics](https://web.azuresynapse.net/), und melden Sie sich beim Arbeitsbereich an.
 
 In dieser Schnellstartanleitung verwenden Sie als Beispiel den Arbeitsbereich mit dem Namen „adftest2020“. Sie werden automatisch zur Startseite von Synapse Studio weitergeleitet.
@@ -44,29 +44,29 @@ In dieser Schnellstartanleitung verwenden Sie als Beispiel den Arbeitsbereich mi
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
-In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verbindungsinformationen für andere Dienste. In diesem Abschnitt erstellen Sie die folgenden zwei Arten verknüpfter Dienste: verknüpfter Azure SQL-Datenbank- und verknüpfter Azure Data Lake Storage Gen2-Dienst.
+In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verbindungsinformationen für andere Dienste. In diesem Abschnitt erstellen Sie die folgenden zwei Arten verknüpfter Dienste: verknüpfter Azure SQL-Datenbank- und verknüpfter Azure Data Lake Storage Gen2-Dienst (ADLS Gen2).
 
 1. Wählen Sie auf der Synapse Studio-Startseite im linken Navigationsbereich die Registerkarte **Verwalten** aus.
 1. Wählen Sie unter Externe Verbindungen die Option Verknüpfte Dienste aus.
   
    ![Erstellen eines neuen verknüpften Diensts](media/doc-common-process/new-linked-service.png)
 
-1. Klicken Sie auf **Neu** , um einen verknüpften Dienst hinzuzufügen.
+1. Klicken Sie auf **Neu**, um einen verknüpften Dienst hinzuzufügen.
 1. Wählen Sie im Katalog **Azure SQL-Datenbank** und dann **Weiter** aus. Sie können in das Suchfeld zum Filtern der Connectors „SQL“ eingeben.
 
    ![Erstellen eines neuen verknüpften Azure SQL-Datenbank-Diensts](media/quickstart-copy-activity-load-sql-pool/new-azure-sql-linked-service.png)
 
-1. Wählen Sie auf der Seite New Linked Service (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen** , um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
+1. Wählen Sie auf der Seite New Linked Service (Neuer verknüpfter Dienst) in der Dropdownliste Ihren Server- und Datenbanknamen aus, und geben Sie den Benutzernamen und das Kennwort an. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus.
 
    ![Konfigurieren eines neuen verknüpften Azure SQL-Datenbank-Diensts](media/quickstart-copy-activity-load-sql-pool/azure-sql-linked-service-configuration.png)
 
-1. Wiederholen Sie die Schritte 3 bis 4, wählen Sie jedoch **Azure Data Lake Storage Gen2** aus dem Katalog aus. Wählen Sie auf der Seite „Neuer verknüpfter Dienst“ im Dropdownmenü den Speicherkontonamen aus. Klicken Sie auf **Verbindung testen** , um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus. 
+1. Wiederholen Sie die Schritte 3 bis 4, wählen Sie jedoch **Azure Data Lake Storage Gen2** aus dem Katalog aus. Wählen Sie auf der Seite „Neuer verknüpfter Dienst“ im Dropdownmenü den Speicherkontonamen aus. Klicken Sie auf **Verbindung testen**, um die Einstellungen zu überprüfen, und wählen Sie dann **Erstellen** aus. 
 
    ![Konfigurieren von Azure Data Lake Storage Gen2](media/quickstart-copy-activity-load-sql-pool/adls-gen2-linked-service-configuration.png)
  
 ## <a name="create-a-pipeline"></a>Erstellen einer Pipeline
 
-Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline mit einer Copy-Aktivität, die Daten aus Azure SQL-Datenbank in einem SQL-Pool erfasst.
+Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitätenmenge. In diesem Abschnitt erstellen Sie eine Pipeline mit einer Copy-Aktivität, die Daten aus Azure SQL-Datenbank in einem dedizierten SQL-Pool erfasst.
 
 1. Navigieren Sie zur Registerkarte **Integrieren**. Wählen Sie neben dem Header „Pipelines“ das Pluszeichen und anschließend „Pipeline“ aus.
 
@@ -83,8 +83,8 @@ Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitä
 
    ![Einrichten der Eigenschaften des Quelldatasets](media/quickstart-copy-activity-load-sql-pool/source-dataset-properties.png)
 1. Wählen Sie **OK** aus, wenn Sie fertig sind.
-1. Wählen Sie die Copy-Aktivität aus, und wechseln Sie zur Registerkarte „Senke“. Klicken Sie auf **Neu** , um ein neues Senkendataset zu erstellen.
-1. Wählen Sie **SQL Analytics pool** (SQL Analytics-Pool) als Datenspeicher und anschließend **Weiter** aus.
+1. Wählen Sie die Copy-Aktivität aus, und wechseln Sie zur Registerkarte „Senke“. Klicken Sie auf **Neu**, um ein neues Senkendataset zu erstellen.
+1. Wählen Sie **Azure Synapse dedicated SQL pool** (Dedizierter Azure Synapse-SQL-Pool) als Datenspeicher aus und anschließend **Weiter** aus.
 1. Wählen Sie im Bereich **Eigenschaften festlegen** den in einem früheren Schritt erstellten SQL Analytics-Pool aus. Wenn Sie in eine vorhandene Tabelle schreiben, wählen Sie sie in der Dropdownliste unter *Tabellenname* aus. Aktivieren Sie andernfalls „Bearbeiten“, und geben Sie Ihren neuen Tabellennamen ein. Wählen Sie **OK** aus, wenn Sie fertig sind.
 1. Aktivieren Sie in den Einstellungen für das Senkendataset im Feld „Tabellenoption“ die Option **Auto create table** (Tabelle automatisch erstellen).
 
@@ -102,7 +102,7 @@ Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitä
 
 Nach Abschluss der Konfiguration Ihrer Pipeline können Sie einen Debuglauf durchführen, bevor Sie Ihre Artefakte zur Überprüfung veröffentlichen, ob alles einwandfrei ist.
 
-1. Klicken Sie auf der Symbolleiste auf **Debuggen** , um die Pipeline zu debuggen. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
+1. Klicken Sie auf der Symbolleiste auf **Debuggen**, um die Pipeline zu debuggen. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
 
    ![Debuggen der Pipeline](media/quickstart-copy-activity-load-sql-pool/debugging-result.png)
 
@@ -122,7 +122,7 @@ In diesem Abschnitt lösen Sie die im vorherigen Schritt veröffentlichte Pipeli
    ![Aktivitätsdetails](media/quickstart-copy-activity-load-sql-pool/activity-details.png)
 
 1. Wählen Sie oben den Link **Alle Pipelineausführungen** aus, um zurück zur Ansicht mit den Pipelineausführungen zu wechseln. Klicken Sie zum Aktualisieren der Liste auf **Aktualisieren**.
-1. Überprüfen Sie, ob Ihre Daten im SQL-Pool richtig geschrieben werden.
+1. Vergewissern Sie sich, dass Ihre Daten korrekt in den dedizierten SQL-Pool geschrieben werden.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

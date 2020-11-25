@@ -8,15 +8,15 @@ tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 11/11/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: 1ce461f50a6775bf7884fedc4cfa4dc7cb41bb8c
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: ab71a7fa3d3f92ecf3e1f73835e41fa7170130e6
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408141"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636604"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Übertragen des Abrechnungsbesitzes eines Azure-Abonnements an ein anderes Konto
 
@@ -24,7 +24,7 @@ In diesem Artikel werden die Schritte zum Übertragen des Abrechnungsbesitzes ei
 
 Wenn Sie den Abrechnungsbesitz behalten, den Typ des Abonnements jedoch ändern möchten, finden Sie Informationen hierzu unter [Ändern Ihres Azure-Abonnements in ein anderes Angebot](switch-azure-offer.md). Informationen zur Steuerung, wer auf Ressourcen im Abonnement zugreifen kann, finden Sie unter [Integrierte Azure-Rollen](../../role-based-access-control/built-in-roles.md).
 
-Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren in Ihrem Unternehmen den Abrechnungsbesitz Ihrer Abonnements zwischen den Konten übertragen. Weitere Informationen finden Sie unter [Ändern des Kontobesitzers](ea-portal-administration.md#change-account-owner).
+Wenn Sie ein Kunde mit Enterprise Agreement (EA) sind, können Administratoren in Ihrem Unternehmen den Abrechnungsbesitz Ihrer Abonnements zwischen den Konten übertragen. Weitere Informationen finden Sie unter [Ändern des Besitzes von Azure-Abonnements oder -Konten](ea-portal-administration.md#change-azure-subscription-or-account-ownership).
 
 Nur der Abrechnungsadministrator eines Kontos kann den Besitz eines Abonnements übertragen.
 

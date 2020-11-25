@@ -9,15 +9,15 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 09/15/2020
-ms.openlocfilehash: 461fabd0dd9948e8967ac61919f77e3e23a981b9
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.date: 11/16/2020
+ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331956"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94685425"
 ---
-# <a name="explore-the-synapse-knowledge-center"></a>Überblick über das Synapse Knowledge Center
+# <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
 In diesem Tutorial erfahren Sie, wie Sie Synapse Studio Knowledge Center verwenden.
 
@@ -25,21 +25,21 @@ In diesem Tutorial erfahren Sie, wie Sie Synapse Studio Knowledge Center verwend
 
 Es gibt zwei Möglichkeiten, das Knowledge Center in Synapse Studio aufzurufen:
 
-  1. Klicken Sie im Start-Hub unter „Nützliche Links“ auf den ersten Link mit dem Namen **Knowledge Center**.
+  1. Klicken Sie im Start-Hub oben rechts auf **Learn**.
   2. Klicken Sie oben im Menü auf **?** und dann auf **Knowledge Center**.
 
 Wählen Sie eine der beiden Methoden aus, und öffnen Sie das **Knowledge Center**.
 
 ## <a name="overview"></a>Übersicht
 
-Im **Knowledge Center** haben Sie drei Möglichkeiten:
+In **Knowledge Center** haben Sie drei Möglichkeiten:
 * **Use samples immediately** (Beispiele sofort verwenden). Diese Option ist dafür optimiert, dass Sie Analysen so schnell wie möglich in Aktion sehen können. Wenn Sie ein kurzes Beispiel für die Funktionsweise von Synapse sehen möchten, wählen Sie diese Option aus.
 * **Browse available samples** (Verfügbare Beispiele durchsuchen). Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
 * **Tour Synapse studio** (Einführung in Synapse Studio). Mit dieser Option können Sie sich einen kurzen Überblick über die Hauptbereiche von Synapse Studio verschaffen. Dies ist hilfreich, wenn Sie Synapse Studio noch nie verwendet haben.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Untersuchen von Blobspeicher mit einem serverlosen SQL-Pool
 
-1. Navigieren Sie zum **Knowledge Center**, und klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
+1. Navigieren Sie zu **Knowledge Center**, und klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
 1. Wählen Sie **Query data with SQL** (Daten mit SQL abfragen) aus. 
 1. Klicken Sie auf **Use samples immediately** (Beispiele sofort verwenden).
 1. Es wird ein neues SQL-Skript erstellt.

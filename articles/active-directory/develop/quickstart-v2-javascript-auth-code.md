@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 45a6843c5ce55dca7ff72731752f3c1f24a5db6b
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: 40929a165e7a3afbbc92a472c352172723745040
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216656"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533190"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA mithilfe des Autorisierungscodeflows
 
-In diesem Schnellstart führen Sie ein Codebeispiel aus, mit dem veranschaulicht wird, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können, indem der Autorisierungscodeflow verwendet wird. Das Codebeispiel veranschaulicht ferner das Abrufen eines Zugriffstokens zum Aufrufen einer Web-API, in diesem Fall der Microsoft Graph-API. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine JavaScript-Single-Page-Webanwendung Benutzer anmelden und Microsoft Graph mithilfe des Autorisierungscodeflow aufrufen kann. Das Codebeispiel veranschaulicht das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API oder einer beliebigen Web-API. 
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 In dieser Schnellstartanleitung wird MSAL.js 2.0 mit dem Autorisierungscodeflow verwendet. Eine ähnliche Schnellstartanleitung, bei der MSAL.js 1.0 mit dem impliziten Flow verwendet wird, finden Sie unter [Schnellstart: Anmelden von Benutzern in JavaScript-Single-Page-Webanwendungen](./quickstart-v2-javascript.md).
 
@@ -59,7 +61,7 @@ In dieser Schnellstartanleitung wird MSAL.js 2.0 mit dem Autorisierungscodeflow
 > 1. Wählen Sie im linken Bereich der registrierten Anwendung die Option **Authentifizierung** aus.
 > 1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus. Wählen Sie im Bereich, der geöffnet wird, **Single-Page-Webanwendung** aus.
 > 1. Legen Sie den Wert für **Umleitungs-URI** auf `http://localhost:3000/` fest.
-> 1. Wählen Sie **Konfigurieren**aus.
+> 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
@@ -200,4 +202,4 @@ npm install @azure/msal-browser
 Eine ausführliche Anleitung zum Erstellen der Anwendung, die in diesem Schnellstart verwendet wird, finden Sie im folgenden Tutorial:
 
 > [!div class="nextstepaction"]
-> [Tutorial zum Anmelden bei und Aufrufen von Microsoft Graph >](./tutorial-v2-javascript-auth-code.md)
+> [Aufrufen der Microsoft Graph-API aus einer JavaScript-SPA](./tutorial-v2-javascript-auth-code.md)

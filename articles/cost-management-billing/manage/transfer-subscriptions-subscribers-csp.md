@@ -6,14 +6,14 @@ ms.reviewer: dhgandhi
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 10/22/2020
+ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 69d6544485e356741634749dd91ba6485cfbb31c
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92460681"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744237"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -25,7 +25,7 @@ Wenn Sie bereits über Reservierungen verfügen, sind diese nach der Übertragun
 
 ## <a name="transfer-ea-subscriptions-to-a-csp-partner"></a>Übertragen von Enterprise Agreement-Abonnements auf einen CSP-Partner
 
-CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
+CSP-Partner mit direkter Abrechnung, die als [Azure Expert Managed Services Provider (MSP)](https://partner.microsoft.com/membership/azure-expert-msp) zertifiziert sind, können die Übertragung von Azure-Abonnements für ihre Kunden anfordern, die über ein direktes Enterprise Agreement (EA) verfügen. Abonnementübertragungen sind nur für Kunden zulässig, die mit dem CSP-Programm eine Microsoft-Kundenvereinbarung (Microsoft Customer Agreement, MCA) akzeptiert und einen Azure-Plan erworben haben.
 
 Wenn die Anforderung genehmigt wird, kann der CSP seinen Kunden eine kombinierte Rechnung stellen. Weitere Informationen zum Übertragen von Abonnements durch CSPs finden Sie unter [Übernehmen des Abrechnungsbesitzes für Azure-Abonnements für Ihr MPA-Konto](mpa-request-ownership.md).
 

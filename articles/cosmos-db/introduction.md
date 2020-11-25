@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: overview
 ms.date: 10/23/2020
-ms.openlocfilehash: eb2212d618d45187779b328c7ba164bbacc980a4
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 012df825f38d292d0b0549701ad90334e3e30bb0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088684"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637012"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Willkommen bei Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -55,7 +55,7 @@ Gewährleisten Sie Geschäftskontinuität, eine Verfügbarkeit von 99,999 Proze
 - Azure Cosmos DB bietet eine umfassende Suite von [SLAs](https://azure.microsoft.com/support/legal/sla/cosmos-db) mit branchenführender weltweiter Verfügbarkeit.
 - Mit der automatischen Datenreplikation lassen sich Daten ganz einfach auf jede beliebige Azure-Region verteilen. Profitieren Sie von einer Umgebung ohne Ausfallzeit mit Schreibvorgängen in mehreren Regionen oder RPO 0 bei Verwendung starker Konsistenz.
 - Nutzen Sie die für den professionellen Einsatz konzipierte Verschlüsselung ruhender Daten mit selbstverwalteten Schlüsseln.
-- Die rollenbasierte Zugriffssteuerung trägt zum Schutz Ihrer Daten bei und bietet differenzierte Steuerungsmöglichkeiten.
+- Die rollenbasierte Zugriffssteuerung von Azure trägt zum Schutz Ihrer Daten bei und bietet differenzierte Steuerungsmöglichkeiten.
 
 ### <a name="fully-managed-and-cost-effective"></a>Vollständig verwaltet und kostengünstig
 

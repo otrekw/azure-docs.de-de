@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: 327e995a8fe2f66903548fba054804768d2538ab
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534293"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001552"
 ---
 # <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>Einrichten des Konfigurationsservers für die Notfallwiederherstellung von physischen Servern in Azure
 
@@ -35,7 +35,7 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 
 ## <a name="choose-your-protection-goals"></a>Auswählen der Schutzziele
 
-1. Navigieren Sie im Azure-Portal zum Blatt **Recovery Services-Tresore** , und wählen Sie den Tresor aus.
+1. Navigieren Sie im Azure-Portal zum Blatt **Recovery Services-Tresore**, und wählen Sie den Tresor aus.
 2. Klicken Sie im Menü **Ressource** des Tresors auf **Erste Schritte** > **Site Recovery** > **Schritt 1: Vorbereiten der Infrastruktur** > **Schutzziel**.
 
     ![Screenshot: Auswählen des Schutzziels](./media/physical-azure-set-up-source/choose-goals.png)
@@ -45,10 +45,10 @@ Die folgende Tabelle enthält die minimalen Hardware-, Software- und Netzwerkanf
 
 ## <a name="set-up-the-source-environment"></a>Einrichten der Quellumgebung
 
-1. Falls Sie über keinen Konfigurationsserver verfügen, klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver** , um einen Konfigurationsserver hinzuzufügen.
+1. Falls Sie über keinen Konfigurationsserver verfügen, klicken Sie unter **Quelle vorbereiten** auf **+Konfigurationsserver**, um einen Konfigurationsserver hinzuzufügen.
 
    ![Screenshot: Auswählen des Konfigurationsservers](./media/physical-azure-set-up-source/plus-config-srv.png)
-2. Überprüfen Sie auf dem Blatt **Server hinzufügen** , ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
+2. Überprüfen Sie auf dem Blatt **Server hinzufügen**, ob unter **Servertyp** die Option **Konfigurationsserver** angezeigt wird.
 4. Laden Sie die Installationsdatei für das einheitliche Setup von Site Recovery herunter.
 5. Laden Sie den Tresorregistrierungsschlüssel herunter. Sie benötigen den Registrierungsschlüssel, wenn Sie das einheitliche Setup ausführen. Der Schlüssel ist nach der Erstellung fünf Tage lang gültig.
 

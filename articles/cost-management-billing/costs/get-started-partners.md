@@ -3,18 +3,18 @@ title: Erste Schritte mit Azure Cost Management für Partner
 description: In diesem Artikel wird erläutert, wie Partner Features von Azure Cost Management verwenden und den Zugriff auf Cost Management für ihre Kunden aktivieren.
 author: bandersmsft
 ms.author: banders
-ms.date: 08/04/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 0076c70f64ec5cea8b92cb2b9ed27de05406316d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91827583"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657311"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -126,7 +126,7 @@ Unabhängig von der Richtlinie können globale Administratoren und Administrator
 
 Sie müssen Mitglied der Gruppe **Administrator-Agent** sein, um die Richtlinie anzuzeigen und zu aktualisieren. Verwenden Sie die folgenden Informationen, um die Richtlinie zu aktivieren, die den Kunden das Anzeigen von Azure-Nutzungsgebühren ermöglicht.
 
-Melden Sie sich im Azure-Portal beim Partnermandanten an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie unter „Abrechnungsbereich“ den relevanten Abrechnungsbereich aus, und wählen Sie dann **Kunden** aus. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft.
+Melden Sie sich im Azure-Portal beim *Partnermandanten* an, und wählen Sie **Kostenverwaltung + Abrechnung** aus. Wählen Sie unter „Abrechnungsbereich“ den relevanten Abrechnungsbereich aus, und wählen Sie dann **Kunden** aus. Die Liste der Kunden wird mit dem Abrechnungskonto verknüpft. *Wenn Sie sich versehentlich beim Kundenmandanten anmelden, wird die Liste der **Kunden** nicht angezeigt.*
 
 Wählen Sie in der Liste der Kunden den Kunden aus, dem Sie die Anzeige von Kosten erlauben möchten.
 
@@ -188,7 +188,7 @@ Die folgenden Datenfelder befinden sich im Nutzungsdetaildateien und Cost Manage
 | costCenter | Dem Abonnement zugeordnete Kostenstelle. | – |
 | billingPeriodStartDate | Startdatum des Abrechnungszeitraums, wie auf der Rechnung aufgeführt. | – |
 | billingPeriodEndDate | Enddatum des Abrechnungszeitraums, wie auf der Rechnung aufgeführt. | – |
-| servicePeriodStartDate | Startdatum des Bewertungszeitraums, für den die Dienstnutzung zur Gebührenermittlung bewertet wurde. Die Preise für Azure-Dienste werden basierend auf dem Bewertungszeitraum bestimmt. | ChargeStartDate in Partner Center. Startdatum des Abrechnungszyklus, ausgenommen bei der Darstellung von Daten zu den zuvor nicht fakturierten latenten Nutzungsdaten aus dem vorherigen Abrechnungszyklus. Die Uhrzeit ist immer der Tagesanfang (0:00 Uhr). |
+| servicePeriodStartDate | Startdatum des Bewertungszeitraums, für den die Dienstnutzung zur Gebührenermittlung bewertet wurde. Die Preise für Azure-Dienste werden basierend auf dem Bewertungszeitraum bestimmt. | ChargeStartDate in Partner Center.  Startdatum des Abrechnungszyklus, ausgenommen bei der Darstellung von Daten zu den zuvor nicht fakturierten latenten Nutzungsdaten aus dem vorherigen Abrechnungszyklus. Die Uhrzeit ist immer der Tagesanfang (0:00 Uhr). |
 | servicePeriodEndDate | Enddatum des Bewertungszeitraums, für den die Dienstnutzung zur Gebührenermittlung bewertet wurde. Die Preise für Azure-Dienste werden basierend auf dem Bewertungszeitraum bestimmt. | – |
 | date | Bei Azure-Verbrauchsdaten wird das bewertete Nutzungsdatum angezeigt. Bei reservierten Instanzen wird das Datum des Erwerbs angezeigt. Bei wiederkehrenden und einmaligen Gebühren beispielsweise für Marketplace und Support wird das Datum des Erwerbs angezeigt. | – |
 | productID | Bezeichner des Produkts, für das basierend auf Verbrauch oder Erwerb Gebühren anfallen. Hierbei handelt es sich um den aus productID und SkuID verketteten Product Key, wie im Partner Center angezeigt. | Die ID des Produkts. |
@@ -371,7 +371,7 @@ Der folgende GET-Aufruf ist ein asynchroner Vorgang.
 GET https://management.azure.com/Microsoft.Billing/billingAccounts/{billingAccountName}/customers/{customerID}/providers/Microsoft.Consumption/usageDetails/download?api-version=2019-10-01 -verbose
 ```
 
-Ruft den in der Antwort zurückgegebenen `Location`-URI auf, um den Vorgangsstatus zu überprüfen. Wenn der Status *Completed*ist, enthält die Eigenschaft `downloadUrl` einen Link, mit dem Sie den generierten Bericht herunterladen können.
+Ruft den in der Antwort zurückgegebenen `Location`-URI auf, um den Vorgangsstatus zu überprüfen. Wenn der Status *Completed* ist, enthält die Eigenschaft `downloadUrl` einen Link, mit dem Sie den generierten Bericht herunterladen können.
 
 
 #### <a name="to-get-or-download-the-price-sheet-for-consumed-azure-services"></a>So rufen Sie das Preisblatt für genutzte Azure-Dienste ab oder laden es herunter

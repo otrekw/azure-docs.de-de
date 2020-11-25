@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Machine Learning?
-description: 'Übersicht über Azure Machine Learning: Hierbei handelt es sich um eine integrierte End-to-End-Lösung, mit der professionelle Data Scientists erweiterte Analyseanwendungen für die Cloud entwickeln und bereitstellen und Experimente für diese durchführen.'
+description: Azure Machine Learning ist eine integrierte Data Science-Lösung für Data Scientists und MLops zum Modellieren und Bereitstellen von ML-Anwendungen in der Cloud.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 4dcc1d755f4fe11dda69f84466d3e958ca981ddf
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93316297"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541282"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -111,10 +111,10 @@ Informationen zu den ersten Schritten mit Azure Machine Learning finden Sie [hie
 
 Azure Machine Learning funktioniert mit anderen Diensten der Azure-Plattform und lässt sich auch in Open-Source-Tools wie Git und MLFlow integrieren.
 
-+ Computeziele wie __Azure Kubernetes Service__ , __Azure Container Instances__ , __Azure Databricks__ , __Azure Data Lake Analytics__ und __Azure HDInsight__. Weitere Informationen zu Computezielen finden Sie unter [Was sind Computeziele in Azure Machine Learning?](concept-compute-target.md).
++ Computeziele wie __Azure Kubernetes Service__, __Azure Container Instances__, __Azure Databricks__, __Azure Data Lake Analytics__ und __Azure HDInsight__. Weitere Informationen zu Computezielen finden Sie unter [Was sind Computeziele in Azure Machine Learning?](concept-compute-target.md).
 + __Azure Event Grid__. Weitere Informationen finden Sie unter [Nutzen von Azure Machine Learning-Ereignissen (Vorschauversion)](./how-to-use-event-grid.md).
-+ __Azure Monitor__ : Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
-+ Datenspeicher wie __Azure Storage-Konten__ , __Azure Data Lake Storage__ , __Azure SQL-Datenbank__ , __Azure Database for PostgreSQL__ und __Azure Open Datasets__. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md) und [Erstellen von Datasets mit Azure Open Datasets](how-to-create-register-datasets.md).
++ __Azure Monitor__: Weitere Informationen finden Sie unter [Überwachen von Azure Machine Learning](monitor-azure-machine-learning.md).
++ Datenspeicher wie __Azure Storage-Konten__, __Azure Data Lake Storage__, __Azure SQL-Datenbank__, __Azure Database for PostgreSQL__ und __Azure Open Datasets__. Weitere Informationen finden Sie unter [Zugreifen auf Daten in Azure Storage-Diensten](how-to-access-data.md) und [Erstellen von Datasets mit Azure Open Datasets](how-to-create-register-datasets.md).
 + __Virtuelle Azure-Netzwerke:__ Weitere Informationen finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
 + __Azure Pipelines__. Weitere Informationen finden Sie unter [Trainieren und Bereitstellen von Machine Learning-Modellen](/azure/devops/pipelines/targets/azure-machine-learning).
 + __Git-Repository-Protokolle:__ Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).

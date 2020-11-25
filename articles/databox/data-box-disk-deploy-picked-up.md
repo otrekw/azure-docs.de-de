@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: disk
 ms.topic: tutorial
-ms.date: 07/21/2020
+ms.date: 11/03/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 638ab84658c36536966ef990570684a047521ee6
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 0aace1041eba771a26bed4c85361ea2551c71ba6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257445"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659419"
 ---
 ::: zone target="docs"
 
@@ -66,18 +66,18 @@ Wenn Sie das Gerät in den USA oder in Kanada zurückgeben möchten, gehen Sie w
     - Wenn Sie keine Nachverfolgungsnummer angeben, fordert UPS eine Zusatzgebühr, die Sie bei der Abholung entrichten müssen.
     - Wenn Sie keine Abholung planen können oder möchten, können Sie den Data Box-Datenträger auch an der nächstgelegenen Versandstelle abgeben.
 
-### <a name="europe"></a>[Europa](#tab/in-europe)
 
-Wenn Sie das Gerät in Europa zurückgeben möchten, gehen Sie wie folgt vor:
+### <a name="europe-or-uk"></a>[Europa oder Vereinigtes Königreich](#tab/in-europe-or-uk)
+
+Wenn Sie das Gerät in Europa oder im Vereinigten Königreich zurückgeben möchten, gehen Sie wie folgt vor:
 
 1. Verwenden Sie das Etikett für den Rückversand in der durchsichtigen Kunststoffhülle, die am Paket angebracht ist. Sollte das Etikett beschädigt oder verloren gegangen sein:
     - Navigieren Sie zu **Übersicht > Versandetikett herunterladen**, und laden Sie ein Etikett für den Rückversand herunter.
     - Bringen Sie das Etikett am Gerät an.
 
 2. Verschließen Sie das Versandpaket, und stellen Sie sicher, dass das Etikett für den Rückversand sichtbar ist.
-3. Wenn Sie das Gerät in Europa per DHL zurücksenden, können Sie die Abholung durch DHL anfordern, indem Sie auf der DHL-Website die Luftfrachtbrief-Nummer angeben.
-4. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen > eReturn-Abholung buchen**.
-5. Geben Sie die Luftfrachtbrief-Nummer an, und klicken Sie auf **Abholung beauftragen**, um die Abholung anzufordern.
+3. Navigieren Sie zur DHL Express-Website für Ihr Land/Ihre Region, und wählen Sie **Abholung buchen** aus. Wählen Sie unter **Do you need a shipping label** (Benötigen Sie ein Adressetikett?) die Option **No** > **I have a DHL Waybill Number** (Nein > Ich habe eine DHL-Frachtbriefnummer.) aus.
+4. Geben Sie die Frachtbriefnummer an, und klicken Sie auf **Abholung buchen**, um die Abholung anzufordern.
 
 ### <a name="australia"></a>[Australien](#tab/in-australia)
 

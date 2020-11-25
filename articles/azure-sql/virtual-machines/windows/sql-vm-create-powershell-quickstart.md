@@ -13,12 +13,12 @@ ms.date: 12/21/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: fcb6d4da3d9b044cf722c6333f61a0f8d38f1956
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a4c8f0c636e254c4afc2d6cd83a744939096233a
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91598016"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94553623"
 ---
 # <a name="quickstart-create-sql-server-on-a-windows-virtual-machine-with-azure-powershell"></a>Schnellstart: Erstellen von SQL Server auf einem virtuellen Windows-Computer mit Azure PowerShell
 
@@ -150,9 +150,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="register-with-sql-vm-rp"></a>Registrieren bei SQL-VM-RP 
 
-Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie sich beim [SQL-VM-Ressourcenanbieter](sql-vm-resource-provider-register.md) registrieren.
+Um die Portalintegration und die SQL-VM-Features nutzen zu können, müssen Sie sich bei der [Erweiterung für den SQL-IaaS-Agent](sql-agent-extension-manually-register-single-vm.md) registrieren.
 
-Damit der vollständige Funktionsumfang zur Verfügung steht, müssen Sie sich im vollständigen Modus beim Ressourcenanbieter registrieren. Dadurch wird jedoch der SQL Server-Dienst neu gestartet. Die empfohlene Vorgehensweise ist daher, sich im Lightweight-Modus zu registrieren und dann während eines Wartungsfensters auf den vollständigen Modus zu aktualisieren. 
+Damit der vollständige Funktionsumfang zur Verfügung steht, müssen Sie sich im vollständigen Modus bei der Erweiterung registrieren. Dadurch wird jedoch der SQL Server-Dienst neu gestartet. Die empfohlene Vorgehensweise ist daher, sich im Lightweight-Modus zu registrieren und dann während eines Wartungsfensters auf den vollständigen Modus zu aktualisieren. 
 
 Registrieren Sie die SQL Server-VM zunächst im Modus „Lightweight“: 
 
@@ -171,7 +171,7 @@ Führen Sie dann während eines Wartungsfensters ein Upgrade auf den vollständi
 # Get the existing Compute VM
 $vm = Get-AzVM -Name <vm_name> -ResourceGroupName <resource_group_name>
       
-# Register with SQL VM resource provider in full mode
+# Register with SQL IaaS Agent extension in full mode
 Update-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -SqlManagementType Full
 ```
 

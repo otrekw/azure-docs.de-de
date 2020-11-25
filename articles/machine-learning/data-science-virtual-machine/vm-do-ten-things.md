@@ -11,11 +11,11 @@ ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320950"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002764"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data Science mit einer Windows Data Science Virtual Machine
 
@@ -52,7 +52,7 @@ In diesem Artikel ist beschrieben, wie Sie Ihre DSVM nutzen können, um Data Sci
 ## <a name="use-jupyter-notebooks"></a>Verwenden von Jupyter-Notebooks
 Jupyter Notebook stellt eine browserbasierte integrierte Entwicklungsumgebung für Datenauswertung und -modellierung bereit. Sie können Python 2, Python 3 oder R (sowohl Open Source als auch Microsoft R Server) in einem Jupyter-Notebook verwenden.
 
-Um das Jupyter-Notebook zu starten, wählen Sie das **Jupyter Notebook** -Symbol im **Startmenü** oder auf dem Desktop aus. An der DSVM-Eingabeaufforderung können Sie auch den Befehl ```jupyter notebook``` in dem Verzeichnis ausführen, in dem Notebooks vorhanden sind oder in dem Sie neue Notebooks erstellen möchten.  
+Um das Jupyter-Notebook zu starten, wählen Sie das **Jupyter Notebook**-Symbol im **Startmenü** oder auf dem Desktop aus. An der DSVM-Eingabeaufforderung können Sie auch den Befehl ```jupyter notebook``` in dem Verzeichnis ausführen, in dem Notebooks vorhanden sind oder in dem Sie neue Notebooks erstellen möchten.  
 
 Navigieren Sie nach dem Starten von Jupyter zum Verzeichnis `/notebooks`, in dem sich bereits in DVSM enthaltene Beispielnotebooks befinden. Sie können jetzt:
 
@@ -81,7 +81,7 @@ Für Python können Sie eine IDE wie Visual Studio Community Edition verwenden, 
 
 In der [PTVS-Dokumentation](/visualstudio/python/) finden Sie weitere Informationen zum Erstellen der Python-Umgebungen.
 
-Nun können Sie ein neues Python-Projekt erstellen. Wechseln Sie zu **Datei** > **Neu** > **Projekt** > **Python-Anwendung** , und wählen Sie die Python-Anwendung aus, die sie erstellen. Sie können die Python-Umgebung für das aktuelle Projekt auf die gewünschte Version (Python 2.7 oder 3.6) festlegen, indem Sie mit der rechten Maustaste auf **Python-Umgebungen** klicken und dann **Python-Umgebungen hinzufügen/entfernen** auswählen. Weitere Informationen zum Arbeiten mit PTVS finden Sie in der [Dokumentation](/visualstudio/python/) des Produkts.
+Nun können Sie ein neues Python-Projekt erstellen. Wechseln Sie zu **Datei** > **Neu** > **Projekt** > **Python-Anwendung**, und wählen Sie die Python-Anwendung aus, die sie erstellen. Sie können die Python-Umgebung für das aktuelle Projekt auf die gewünschte Version (Python 2.7 oder 3.6) festlegen, indem Sie mit der rechten Maustaste auf **Python-Umgebungen** klicken und dann **Python-Umgebungen hinzufügen/entfernen** auswählen. Weitere Informationen zum Arbeiten mit PTVS finden Sie in der [Dokumentation](/visualstudio/python/) des Produkts.
 
 
 
@@ -277,9 +277,9 @@ Sie können die „Volcano JSON“-Datei aus dem vorherigen Azure Cosmos DB-Beis
 1. Öffnen Sie Power BI Desktop, und wählen Sie **Daten abrufen** aus. Geben Sie die URL wie folgt an: `https://cahandson.blob.core.windows.net/samples/volcano.json`.
 2. Sie sollten die JSON-Datensätze in einer importierten Liste sehen. Konvertieren Sie die Liste in eine Tabelle, damit Power BI damit arbeiten kann.
 4. Erweitern Sie die Spalten, indem Sie das Symbol für Erweitern (Pfeil) auswählen.
-5. Beachten Sie, dass der Standort (location) ein **Record** -Feld (Datensatz-Feld) ist. Erweitern Sie den Datensatz und wählen Sie nur „coordinates“. **coordinates** ist eine Listenspalte.
-6. Fügen Sie eine neue Spalte hinzu, um die Listenspalte mit den Koordinaten in eine durch Trennzeichen getrennte **LatLong** -Spalte zu konvertieren. Verketten Sie die beiden Elemente im Koordinatenlistenfeld mit der Formel ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
-7. Konvertieren Sie die **Elevation** -Spalte in eine Dezimalspalte, und wählen Sie die Schaltfläche **Schließen** und **Übernehmen** aus.
+5. Beachten Sie, dass der Standort (location) ein **Record**-Feld (Datensatz-Feld) ist. Erweitern Sie den Datensatz und wählen Sie nur „coordinates“. **coordinates** ist eine Listenspalte.
+6. Fügen Sie eine neue Spalte hinzu, um die Listenspalte mit den Koordinaten in eine durch Trennzeichen getrennte **LatLong**-Spalte zu konvertieren. Verketten Sie die beiden Elemente im Koordinatenlistenfeld mit der Formel ```Text.From([coordinates]{1})&","&Text.From([coordinates]{0})```.
+7. Konvertieren Sie die **Elevation**-Spalte in eine Dezimalspalte, und wählen Sie die Schaltfläche **Schließen** und **Übernehmen** aus.
 
 Anstelle der vorherigen Schritte können Sie den folgenden Code einfügen. In ihm liegen in Skriptform die Schritte vor, die im „Erweiterter Editor“ in Power BI verwendet werden, um die Datentransformationen in einer Abfragesprache zu schreiben.
 

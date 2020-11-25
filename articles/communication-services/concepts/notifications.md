@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 3e68e65a5c2ed73a8fb6d8e5d01c645e05ca5157
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: b368048e5ea34ebfc073b1ae239cbb40724ae393
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92320713"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684371"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
 
@@ -36,7 +36,7 @@ Erfahren Sie mehr über die [Ereignisbehandlung in Azure Communication Services]
 
 Sie können einen Azure Notification Hub mit Ihrer Communication Services-Ressource verbinden, um automatisch Pushbenachrichtigungen an das mobile Gerät eines Benutzers zu senden, wenn er einen eingehenden Anruf erhält. Verwenden Sie diese Pushbenachrichtigungen, um Ihre Anwendung im Hintergrund zu reaktivieren und die Benutzeroberfläche anzuzeigen, über die Benutzer den Anruf annehmen oder ablehnen können. 
 
-:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagramm, das die Integration von Communication Services in Event Grid zeigt":::
+:::image type="content" source="./media/notifications/acs-anh-int.png" alt-text="Diagramm, das die Integration von Communication Services in Azure Notification Hubs zeigt":::
 
 Communication Services verwendet Azure Notification Hub als Passthroughdienst, um mit den verschiedenen plattformspezifischen Pushbenachrichtigungsdiensten über die [Direct Send](https://docs.microsoft.com/rest/api/notificationhubs/direct-send)-API zu kommunizieren. Auf diese Weise können Sie Ihre vorhandenen Azure Notification Hub-Ressourcen und -Konfigurationen wiederverwenden, um geringe Latenzzeiten und zuverlässige Anrufbenachrichtigungen für Ihre Anwendungen bereitzustellen.
 
@@ -53,7 +53,8 @@ Zum Übermitteln von Pushbenachrichtigungen an Clientgeräte mithilfe von Notifi
 Nachdem Ihr Notification Hub konfiguriert wurde, können Sie ihn Ihrer Communication Services-Ressource zuweisen, indem Sie für den Hub mithilfe des Azure Resource Manager-Clients oder des Azure-Portals eine Verbindungszeichenfolge bereitstellen. Die Verbindungszeichenfolge muss Sendeberechtigungen enthalten. Es wird empfohlen, eine andere Zugriffsrichtlinie nur mit Sendeberechtigungen zu erstellen, die speziell für Ihren Hub gilt. Erfahren Sie mehr über die [Sicherheit von Notification Hubs und Zugriffsrichtlinien](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-push-notification-security).
 
 > [!IMPORTANT]
-> Damit Sie Apple Push Notification Service-VoIP-Benachrichtigungen aktivieren können, müssen Sie den Namen Ihres Notification Hubs als Anwendungsbündel-ID mit dem Suffix „`.voip`“ festlegen. Weitere Informationen finden Sie unter [Verwenden von APNS-VoIP über Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
+> Dies gilt nur für den Tokenauthentifizierungsmodus. Der Zertifikatauthentifizierungsmodus wird derzeit nicht unterstützt.  
+Damit Sie APNS-VoIP-Benachrichtigungen aktivieren können, müssen Sie beim Konfigurieren des Notification Hub den Wert der Bündel-ID als Anwendungsbündel-ID mit dem Suffix „`.voip`“ festlegen. Ausführlichere Informationen finden Sie unter [Verwenden von APNS-VoIP über Notification Hubs](https://docs.microsoft.com/azure/notification-hubs/voip-apns).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurieren des Notification Hubs mithilfe des Azure Resource Manager-Clients
 
@@ -73,7 +74,7 @@ armclient POST /subscriptions/<sub_id>/resourceGroups/<resource_group>/providers
 
 Navigieren Sie im Azure-Portal zu Ihrer Azure Communication Services-Ressource. Wählen Sie in der Communication Services-Ressource im linken Menü der Seite „Communication Services“ die Option „Pushbenachrichtigungen“ aus, und stellen Sie eine Verbindung mit dem zuvor bereitgestellten Benachrichtigungshub her. Sie müssen die Verbindungszeichenfolge und die Ressourcen-ID hier angeben:
 
-:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Diagramm, das die Integration von Communication Services in Event Grid zeigt":::
+:::image type="content" source="./media/notifications/acs-anh-portal-int.png" alt-text="Screenshot, der die Einstellungen für Pushbenachrichtigungen im Azure-Portal zeigt":::
 
 > [!NOTE]
 > Wenn die Azure Notification Hub-Verbindungszeichenfolge aktualisiert wird, muss auch die Communication Services-Ressource aktualisiert werden.

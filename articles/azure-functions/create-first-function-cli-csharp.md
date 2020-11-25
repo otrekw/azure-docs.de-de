@@ -6,12 +6,12 @@ ms.topic: quickstart
 ms.custom:
 - devx-track-csharp
 - devx-track-azurecli
-ms.openlocfilehash: 036629bd72f8219c2d7b1877dd1672291ed3d98a
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b87408669dbb9268d6e3cd47b410b888ef1a19c2
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93424804"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94637148"
 ---
 # <a name="quickstart-create-a-c-function-in-azure-from-the-command-line"></a>Schnellstart: Erstellen einer C#-Funktion über die Befehlszeile in Azure
 
@@ -28,6 +28,8 @@ Es gibt auch eine [Visual Studio Code-basierte Version](create-first-function-
 Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
++ [.NET Core SDK 3.1](https://www.microsoft.com/net/download)
 
 + [Azure Functions Core Tools](functions-run-local.md#v2), Version 3.x.
 
@@ -49,6 +51,8 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 
 + Führen Sie `az login` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
 
++ Führen Sie `dotnet --list-sdks` aus, um zu überprüfen, ob Version 3.1.x des .NET Core SDK installiert ist.
+
 # <a name="azure-powershell"></a>[Azure PowerShell](#tab/azure-powershell)
 
 + Führen Sie in einem Terminal oder Befehlsfenster `func --version` aus, um zu überprüfen, ob mindestens Version 3.x der Azure Functions Core Tools verwendet wird.
@@ -56,6 +60,8 @@ Bevor Sie mit diesem Lernprogramm beginnen können, benötigen Sie Folgendes:
 + Führen Sie `(Get-Module -ListAvailable Az).Version` aus, und stellen Sie sicher, dass Version 5.0 oder höher ausgeführt wird. 
 
 + Führen Sie `Connect-AzAccount` aus, um sich bei Azure anzumelden und zu überprüfen, ob ein aktives Abonnement vorhanden ist.
+
++ Führen Sie `dotnet --list-sdks` aus, um zu überprüfen, ob Version 3.1.x des .NET Core SDK installiert ist.
 
 ---
 
@@ -75,7 +81,7 @@ In Azure Functions handelt es sich bei einem Funktionsprojekt um einen Container
     cd LocalFunctionProj
     ```
 
-    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE* -Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
+    Dieser Ordner enthält verschiedene Dateien für das Projekt, z. B. die Konfigurationsdateien [local.settings.json](functions-run-local.md#local-settings-file) und [host.json](functions-host-json.md). Da *local.settings.json* aus Azure heruntergeladene Geheimnisse enthalten kann, wird die Datei in der *GITIGNORE*-Datei standardmäßig aus der Quellcodeverwaltung ausgeschlossen.
 
 1. Fügen Sie dem Projekt über den unten gezeigten Befehl eine Funktion hinzu. Hierbei ist das `--name`-Argument der eindeutige Name Ihrer Funktion (HttpExample), mit dem `--template`-Argument wird der Trigger der Funktion (HTTP) angegeben.
 

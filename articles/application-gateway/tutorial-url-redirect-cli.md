@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: victorh
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: da6d02e620c33610770c71f0c0e3ae68e70ee317
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 36ba593a1d8cd2e50293eaf77dc9ec864245df4c
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397042"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566587"
 ---
 # <a name="tutorial-create-an-application-gateway-with-url-path-based-redirection-using-the-azure-cli"></a>Tutorial: Erstellen eines Anwendungsgateways mit Umleitung auf URL-Pfadbasis mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -34,13 +34,11 @@ Das folgende Beispiel zeigt Websitedatenverkehr, der von den Ports 8080 und 8081
 
 Sie können dieses Tutorial auch mit [Azure PowerShell](tutorial-url-redirect-powershell.md) durcharbeiten.
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen 
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für dieses Tutorial die Azure CLI-Version 2.0.4 oder höher ausführen. Führen Sie `az --version` aus, um die Version zu finden. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -78,7 +76,7 @@ az network public-ip create \
   --sku Standard
 ```
 
-## <a name="create-an-application-gateway"></a>Erstellen eines Anwendungsgateways
+## <a name="create-an-application-gateway"></a>Erstellen einer Application Gateway-Instanz
 
 Erstellen Sie mit [az network application-gateway create](/cli/azure/network/application-gateway) das Anwendungsgateway namens „myAppGateway“. Wenn Sie über die Azure-Befehlszeilenschnittstelle ein Anwendungsgateway erstellen, geben Sie Konfigurationsinformationen wie Kapazität, SKU und HTTP-Einstellungen an. Das Anwendungsgateway wird dem Subnetz *myAGSubnet* und der IP-Adresse *myPublicIPAddress* zugewiesen, das bzw. die Sie zuvor erstellt haben.
 
@@ -100,11 +98,11 @@ az network application-gateway create \
 
  Es kann einige Minuten dauern, bis das Anwendungsgateway erstellt wird. Nachdem das Anwendungsgateway erstellt wurde, sehen Sie diese neuen Features:
 
-- *appGatewayBackendPool* : Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
-- *appGatewayBackendHttpSettings* : Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
-- *appGatewayHttpListener* : Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
-- *appGatewayFrontendIP* : Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
-- *rule1* :Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
+- *appGatewayBackendPool*: Ein Anwendungsgateway muss über mindestens einen Back-End-Adresspool verfügen.
+- *appGatewayBackendHttpSettings*: Gibt an, dass zur Kommunikation Port 80 und ein HTTP-Protokoll verwendet werden.
+- *appGatewayHttpListener*: Der Standardlistener, der *appGatewayBackendPool* zugeordnet ist.
+- *appGatewayFrontendIP*: Hiermit wird *myAGPublicIPAddress* zu *appGatewayHttpListener* zugewiesen.
+- *rule1*:Die Standardroutingregel, die *appGatewayHttpListener* zugeordnet ist.
 
 
 ### <a name="add-backend-pools-and-ports"></a>Hinzufügen von Back-End-Pools und Ports
@@ -236,7 +234,7 @@ az network application-gateway rule create \
 
 ## <a name="create-virtual-machine-scale-sets"></a>Erstellen von VM-Skalierungsgruppen
 
-In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1* , *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
+In diesem Beispiel erstellen Sie drei VM-Skalierungsgruppen, die die drei von Ihnen erstellten Back-End-Pools unterstützen. Die erstellten Skalierungsgruppen werden *myvmss1*, *myvmss2* und *myvmss3* genannt. Jede Skalierungsgruppe enthält zwei VM-Instanzen, auf denen Sie NGINX installieren.
 
 ```azurecli-interactive
 for i in `seq 1 3`; do

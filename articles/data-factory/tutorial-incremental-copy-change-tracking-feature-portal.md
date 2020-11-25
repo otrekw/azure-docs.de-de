@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren von Daten mithilfe der Änderungsnachverfolgung und des Azure-Portals
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der Änderungsnachverfolgung in der Quelldatenbank in Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Instanz mit einer Pipeline, die Deltadaten basierend auf Informationen der Änderungsnachverfolgung in der Quelldatenbank in Azure SQL-Datenbank in einen Azure-Blobspeicher lädt.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 01/12/2018
-ms.openlocfilehash: 78b9d3f30ebc8f74433f04c4474121682c4a3f36
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c5f87e693d2592f830ec785f2163c232915544d1
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91542018"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561130"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-the-azure-portal"></a>Inkrementelles Laden von Daten aus Azure SQL-Datenbank in Azure Blob Storage mit Informationen der Änderungsnachverfolgung und dem Azure-Portal
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** in der Quelldatenbank in Azure SQL-Datenbank als Quelle in Azure Blob Storage lädt.  
+In diesem Tutorial erstellen Sie eine Azure Data Factory-Instanz mit einer Pipeline, die Deltadaten basierend auf Informationen der **Änderungsnachverfolgung** in der Quelldatenbank in Azure SQL-Datenbank in einen Azure-Blobspeicher lädt.  
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -164,7 +164,7 @@ Installieren Sie die aktuellen Azure PowerShell-Module, indem Sie die Anweisunge
 
      ![Seite „Neue Data Factory“](./media/tutorial-incremental-copy-change-tracking-feature-portal/new-azure-data-factory.png)
 
-   Der Name der Azure Data Factory muss **global eindeutig**sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
+   Der Name der Azure Data Factory-Instanz muss **global eindeutig** sein. Sollte der folgende Fehler auftreten, ändern Sie den Namen der Data Factory (beispielsweise in „<IhrName>ADFTutorialDataFactory“), und wiederholen Sie den Vorgang. Benennungsregeln für Data Factory-Artefakte finden Sie im Artikel [Azure Data Factory – Benennungsregeln](naming-rules.md).
 
    *Der Data Factory-Name „ADFTutorialDataFactory“ ist nicht verfügbar.*
 3. Wählen Sie Ihr **Azure-Abonnement** aus, in dem die Data Factory erstellt werden soll.

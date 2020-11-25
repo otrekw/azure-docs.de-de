@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: b08e834233e1ce12392d940cb0ccc0bef7e96158
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 20003a91726e5ccee7f73d85b7c9a9389801e0ad
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337745"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94701754"
 ---
 # <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
 
@@ -84,7 +84,7 @@ OPENROWSET
     FORMAT = 'CSV'
     [ <bulk_options> ] }  
 )  
-WITH ( {'column_name' 'column_type' [ 'column_ordinal'] })  
+WITH ( {'column_name' 'column_type' [ 'column_ordinal' | 'json_path'] })  
 [AS] table_alias(column_alias,...n)
  
 <bulk_options> ::=  
@@ -156,7 +156,7 @@ Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden
     > Bei Spaltennamen in Parquet-Dateien wird die Groß-/Kleinschreibung beachtet. Wenn Sie einen Spaltennamen angeben, dessen Groß-/Kleinschreibung sich von der Schreibweise in der Parquet-Datei unterscheidet, werden für diese Spalte NULL-Werte zurückgegeben.
 
 
-column_name: Der Name für die Ausgabespalte. Bei Angabe dieser Option wird der Spaltenname in der Quelldatei überschrieben.
+column_name: Der Name für die Ausgabespalte. Wird der Name angegeben, überschreibt er den Spaltennamen in der Quelldatei und den Spaltennamen im JSON-Pfad, sofern vorhanden. Wird „json_path“ nicht angegeben, wird automatisch „$.column_name“ hinzugefügt. Überprüfen Sie das Argument „json_path“ auf das Verhalten.
 
 column_type: Der Datentyp für die Ausgabespalte. Hier findet die implizite Datentypkonvertierung statt.
 
@@ -170,6 +170,11 @@ WITH (
     --[population] bigint
 )
 ```
+
+json_path: Der [JSON-Pfadausdruck](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) zur Spalte oder geschachtelten Eigenschaft. Als [PATH-Modus](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15#PATHMODE) ist standardmäßig der Lax-Modus ausgewählt.
+
+> [!NOTE]
+> Im Strict-Modus tritt bei der Abfrage ein Fehler auf, wenn der angegebene Pfad nicht vorhanden ist. Im Lax-Modus wird die Abfrage erfolgreich ausgeführt, und der JSON-Pfadausdruck wird zu NULL ausgewertet.
 
 **\<bulk_options>**
 
@@ -359,6 +364,32 @@ WITH (
     [stateName] VARCHAR (50),
     [population] bigint
 ) AS [r]
+```
+
+### <a name="specify-columns-using-json-paths"></a>Angeben von Spalten mithilfe von JSON-Pfaden
+
+Im folgenden Beispiel wird gezeigt, wie Sie [JSON-Pfadausdrücke](https://docs.microsoft.com/sql/relational-databases/json/json-path-expressions-sql-server?view=sql-server-ver15) in der WITH-Klausel verwenden. Darüber hinaus wird der Unterschied zwischen den PATH-Modi „Strict“ und „Lax“ veranschaulicht: 
+
+```sql
+SELECT 
+    TOP 1 *
+FROM  
+    OPENROWSET(
+        BULK 'https://azureopendatastorage.blob.core.windows.net/censusdatacontainer/release/us_population_county/year=20*/*.parquet',
+        FORMAT='PARQUET'
+    )
+WITH (
+    --lax path mode samples
+    [stateName] VARCHAR (50), -- this one works as column name casing is valid - it targets the same column as the next one
+    [stateName_explicit_path] VARCHAR (50) '$.stateName', -- this one works as column name casing is valid
+    [COUNTYNAME] VARCHAR (50), -- STATEname column will contain NULLs only because of wrong casing - it targets the same column as the next one
+    [countyName_explicit_path] VARCHAR (50) '$.COUNTYNAME', -- STATEname column will contain NULLS only because of wrong casing and default path mode being lax
+
+    --strict path mode samples
+    [population] bigint 'strict $.population' -- this one works as column name casing is valid
+    --,[population2] bigint 'strict $.POPULATION' -- this one fails because of wrong casing and strict path mode
+)
+AS [r]
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

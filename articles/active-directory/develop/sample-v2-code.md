@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: sample
 ms.workload: identity
-ms.date: 10/21/2020
+ms.date: 11/04/2020
 ms.author: marsma
 ms.reviewer: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: e56748df2fb69ace4e9b8d9f6908bc8013176a19
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: b3ea370a686e272a1d8ea201dd953fc09c1098ee
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287805"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628185"
 ---
 # <a name="microsoft-identity-platform-code-samples-v20-endpoint"></a>Microsoft Identity Platform – Codebesipiele (V2.0-Endpunkt)
 
@@ -60,6 +60,8 @@ Die folgenden Beispiele zeigen Webanwendungen, die Benutzer anmelden. Einige Bei
 | ![Diese Abbildung zeigt das ASP.NET Framework-Logo.](media/sample-v2-code/logo_NETframework.png)</p> ASP.NET | [Schnellstart für ASP.NET](https://github.com/AzureAdQuickstarts/AppModelv2-WebApp-OpenIDConnect-DotNet) </p> [dotnet-webapp-openidconnect-v2](https://github.com/azure-samples/active-directory-dotnet-webapp-openidconnect-v2)  |  [dotnet-admin-restricted-scopes-v2](https://github.com/azure-samples/active-directory-dotnet-admin-restricted-scopes-v2) </p> |[msgraph-training-aspnetmvcapp](https://github.com/microsoftgraph/msgraph-training-aspnetmvcapp)
 | ![Diese Abbildung zeigt das Java-Logo.](media/sample-v2-code/logo_java.png)  |                   | [ms-identity-java-webapp](https://github.com/Azure-Samples/ms-identity-java-webapp) |
 | ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | [ms-identity-python-flask-webapp-authentication](https://github.com/Azure-Samples/ms-identity-python-flask-webapp-authentication) | [ms-identity-python-webapp](https://github.com/Azure-Samples/ms-identity-python-webapp) |
+| ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | Tutorial zum Anmelden von Benutzern durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md)                   | Tutorial zum Anmelden von Benutzern und Aufrufen der Graph-API durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-python-flask-tutorial/blob/main/README.md) |
+| ![Diese Abbildung zeigt das Python-Logo.](media/sample-v2-code/logo_python.png)  | Tutorial zum Anmelden von Benutzern mit B2C durch eine [Python Flask-Web-App](https://github.com/Azure-Samples/ms-identity-b2c-python-flask-webapp-authentication/blob/main/README.md)                    |  |
 | ![Diese Abbildung zeigt das Ruby-Logo.](media/sample-v2-code/logo_ruby.png) |                   | [msgraph-training-rubyrailsapp](https://github.com/microsoftgraph/msgraph-training-rubyrailsapp) |
 
 ## <a name="desktop-and-mobile-public-client-apps"></a>Öffentliche Desktop- und mobile Client-Apps

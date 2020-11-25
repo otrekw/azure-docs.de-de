@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 9b6d04e1e7a60bf812ca2b1e370c5075d306c432
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93287051"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888979"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -38,6 +38,9 @@ Identifizieren Sie die Region, in der Azure VMware Solution bereitgestellt werde
 ## <a name="resource-name"></a>Ressourcenname
 
 Legen Sie den Ressourcennamen fest, den Sie während der Bereitstellung verwenden möchten.  Der Ressourcenname ist ein benutzerfreundlicher und beschreibender Name, in dem Sie Ihre private Azure VMware Solution-Cloud angeben.
+
+>[!IMPORTANT]
+>Der Name darf maximal 40 Zeichen lang sein. Wenn der Name diesen Grenzwert überschreitet, können Sie keine öffentlichen IP-Adressen für die Verwendung mit der privaten Cloud erstellen. 
 
 ## <a name="size-hosts"></a>Größenhosts
 
@@ -89,14 +92,6 @@ Bedenken Sie Folgendes:
 
 - Wenn Sie die Erweiterung von Netzwerken aus der lokalen Umgebung planen, muss für diese Netzwerke eine Verbindung mit einem [vSphere Distributed Switch (vDS)](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-B15C6A13-797E-4BCB-B9D9-5CBC5A60C3A6.html) in Ihrer lokalen VMware-Umgebung bestehen.  
 - Falls die zu erweiternden Netzwerke auf einem [vSphere Standard Switch](https://docs.vmware.com/en/VMware-vSphere/6.7/com.vmware.vsphere.networking.doc/GUID-350344DE-483A-42ED-B0E2-C811EE927D59.html) angeordnet sind, können sie nicht erweitert werden.
-
-## <a name="expressroute-global-reach-peering-network"></a>ExpressRoute Global Reach-Peeringnetzwerk
-
-Identifizieren Sie einen CIDR-Netzwerkadressblock vom Typ `/29`, der für das ExpressRoute Global Reach-Peering erforderlich ist. Beachten Sie, dass alle erstellten IP-Segmente in Ihrer Azure VMware Solution- und lokalen Umgebung eindeutig sein müssen. Die IP-Adressen in diesem Segment werden an beiden Enden der ExpressRoute Global Reach-Verbindung verwendet, um für die ExpressRoute-Leitung von Azure VMware Solution eine Verbindung mit der lokalen ExpressRoute-Leitung herzustellen. 
-
-**Beispiel:** 10.1.0.0/29
-
-:::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Identifizieren: ExpressRoute Global Reach-Peeringnetzwerk" border="false":::
 
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Anfügen von Azure VMware Solution an ein Azure Virtual Network
 

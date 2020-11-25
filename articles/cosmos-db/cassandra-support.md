@@ -8,12 +8,12 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: ae4281350efc96fab6c4e2898cbcddf83bf29cd8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ecf4229c95ff9103cd27fd161fdd19c9e7a0f76b
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073103"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636961"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Apache Cassandra-Features, die von der Cassandra-API für Azure Cosmos DB unterstützt werden 
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -86,17 +86,24 @@ Die Cassandra-API für Azure Cosmos DB unterstützt die folgenden CQL-Funktionen
 | writetime | Ja |
 | Umwandlung | Nein |
 
-\* Die Cassandra-API unterstützt Token als Projektion/Selektor. Außerdem ist die Verwendung von token(pk) nur auf der linken Seite einer WHERE-Klausel zulässig. Beispiel: `WHERE token(pk) > 1024` wird unterstützt, aber `WHERE token(pk) > token(100)` wird nicht unterstützt.
+> [!NOTE]
+> \* Die Cassandra-API unterstützt Token als Projektion/Selektor. Außerdem ist die Verwendung von token(pk) nur auf der linken Seite einer WHERE-Klausel zulässig. Beispiel: `WHERE token(pk) > 1024` wird unterstützt, aber `WHERE token(pk) > token(100)` wird **nicht** unterstützt.
+
 
 
 Aggregatfunktionen:
 
 |Get-Help  |Unterstützt |
 |---------|---------|
-| Min. | Ja |
-| max | Ja |
 | avg | Ja |
 | count | Ja |
+| Min. | Ja |
+| max | Ja |
+| Sum | Ja |
+
+> [!NOTE]
+> Aggregatfunktionen können für reguläre Spalten verwendet werden. Aggregate für Clusteringspalten werden jedoch **nicht** unterstützt.
+
 
 Blob-Konvertierungsfunktionen:
  
@@ -152,7 +159,7 @@ Azure Cosmos DB unterstützt die folgenden Datenbankbefehle für Cassandra-API-K
 | CREATE USER (in nativer Apache Cassandra-Version veraltet) | Nein |
 | Delete | Ja |
 | DELETE (einfache Transaktionen mit IF-Bedingung)| Ja |
-| DISTINCT | Nein |
+| DISTINCT | Nein  |
 | DROP AGGREGATE | Nein |
 | DROP FUNCTION | Nein |
 | DROP INDEX | Ja |
@@ -260,7 +267,7 @@ Die Cassandra-API für Azure Cosmos DB ermöglicht die Wahl der Konsistenz bei L
 
 ## <a name="permission-and-role-management"></a>Berechtigungs- und Rollenverwaltung
 
-Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung (RBAC) für die Bereitstellung, Rotation von Schlüsseln, Anzeige von Metriken sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt keine Rollen für CRUD-Aktivitäten.
+Azure Cosmos DB unterstützt die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC) für die Bereitstellung, Rotation von Schlüsseln, Anzeige von Metriken sowie Lese-/Schreibkennwörter bzw. Lese-/Schreibschlüssel und Schreibschutzkennwörter/-schlüssel, die über das [Azure-Portal](https://portal.azure.com) abgerufen werden können. Azure Cosmos DB unterstützt keine Rollen für CRUD-Aktivitäten.
 
 ## <a name="keyspace-and-table-options"></a>Keyspace- und Tabellenoptionen
 

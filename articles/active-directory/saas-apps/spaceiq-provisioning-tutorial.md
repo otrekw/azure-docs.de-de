@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
 ms.openlocfilehash: 4e115de4f86baba9559730d94f45ab7b17cc4379
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357962"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002203"
 ---
 # <a name="tutorial-configure-spaceiq-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von SpaceIQ für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-spaceiq"></a>Zuweisen von Benutzern zu SpaceIQ
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf SpaceIQ benötigen. Anschließend können Sie SpaceIQ diese Benutzer und/oder Gruppen zuweisen, indem Sie den folgenden Anweisungen folgen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -50,7 +50,7 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
 ## <a name="set-up-spaceiq-for-provisioning"></a>Einrichten von SpaceIQ für die Bereitstellung
 
-1. Melden Sie sich bei Ihrer [SpaceIQ-Verwaltungskonsole](https://main.spaceiq.com/login/) an. Navigieren Sie zu **Einstellungen** , indem Sie diesen Eintrag im Dropdownmenü in der oberen rechten Ecke des Bildschirms auswählen.
+1. Melden Sie sich bei Ihrer [SpaceIQ-Verwaltungskonsole](https://main.spaceiq.com/login/) an. Navigieren Sie zu **Einstellungen**, indem Sie diesen Eintrag im Dropdownmenü in der oberen rechten Ecke des Bildschirms auswählen.
 
     ![SpaceIQ-Verwaltungskonsole](media/spaceiq-provisioning-tutorial/admin.png)
 
@@ -78,15 +78,15 @@ Bevor Sie SpaceIQ für die automatische Benutzerbereitstellung mit Azure AD konf
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **SpaceIQ** ein, wählen Sie im Ergebnisbereich **SpaceIQ** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **SpaceIQ** ein, wählen Sie im Ergebnisbereich **SpaceIQ** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![SpaceIQ in der Ergebnisliste](common/search-new-app.png)
 
@@ -115,7 +115,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.spaceiq.com/scim` ein. Geben Sie den Wert des **SCIM-Authentifizierungstokens** ein, den Sie zuvor unter **geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit SpaceIQ herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr SpaceIQ-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.spaceiq.com/scim` ein. Geben Sie den Wert des **SCIM-Authentifizierungstokens** ein, den Sie zuvor unter **geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit SpaceIQ herstellen kann. Wenn die Verbindung nicht möglich ist, sollten Sie sicherstellen, dass Ihr SpaceIQ-Konto über Administratorberechtigungen verfügt, und den Vorgang wiederholen.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -129,7 +129,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Benutzerzuordnungen in SpaceIQ](media/spaceiq-provisioning-tutorial/usermapping.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit SpaceIQ synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in SpaceIQ für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit SpaceIQ synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in SpaceIQ für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![SpaceIQ: Benutzerattribute](media/spaceiq-provisioning-tutorial/userattributes.png)
 

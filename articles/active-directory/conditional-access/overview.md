@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4, azuread-video-2020
-ms.openlocfilehash: d46dfba9d9dedea57b6be872a6853bc522a0bc8c
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: f0a91a4d3b479d1243907951481e5a10f7085bbc
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92145239"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837429"
 ---
 # <a name="what-is-conditional-access"></a>Was ist bedingter Zugriff?
 
@@ -80,7 +80,7 @@ Viele Organisationen haben [allgemeine Bedenken in Bezug auf den Zugriff, bei de
 - Erzwingen der mehrstufigen Authentifizierung für Benutzer mit Administratorrollen
 - Erzwingen der mehrstufigen Authentifizierung für Azure-Verwaltungsaufgaben
 - Blockieren von Anmeldungen für Benutzer, die ältere Authentifizierungsprotokolle verwenden
-- Erzwingen vertrauenswürdiger Speicherorte für die Azure Multi-Factor Authentication-Registrierung
+- Erzwingen vertrauenswürdiger Speicherorte für die Azure AD Multi-Factor Authentication-Registrierung
 - Blockieren oder Gewähren von Zugriff von bestimmten Standorten aus
 - Blockieren riskanter Anmeldeverhalten
 - Erzwingen von durch die Organisation verwaltete Geräte für bestimmte Anwendungen

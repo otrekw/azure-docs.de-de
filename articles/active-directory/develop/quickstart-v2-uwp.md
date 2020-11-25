@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/07/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:UWP
-ms.openlocfilehash: 297b34fd9981308ece52545ac5878eaa144f4829
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 28d912153b52580727e0fb5086e0a7ae55e8b545
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91824406"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94560926"
 ---
 # <a name="quickstart-call-the-microsoft-graph-api-from-a-universal-windows-platform-uwp-application"></a>Schnellstart: Aufrufen der Microsoft Graph-API über eine UWP-Anwendung (UWP = Universelle Windows-Plattform)
 
-Diese Schnellstartanleitung enthält ein Codebeispiel, in dem veranschaulicht wird, wie eine UWP-Anwendung (Universelle Windows-Plattform) Benutzer mit persönlichen Konten oder Geschäfts-, Schul- oder Unikonten anmelden, ein Zugriffstoken abrufen und die Microsoft Graph-API aufrufen kann. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
+In dieser Schnellstartanleitung laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine UWP-Anwendung (Universelle Windows-Plattform) Benutzer anmelden und ein Zugriffstoken abrufen kann, um die Microsoft Graph-API aufzurufen. 
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 > [!div renderon="docs"]
 > ## <a name="prerequisites"></a>Voraussetzungen
@@ -56,7 +58,7 @@ Diese Schnellstartanleitung enthält ein Codebeispiel, in dem veranschaulicht wi
 > 1. Wählen Sie unter **Verwalten** die Option **Authentifizierung** aus.
 > 1. Wählen Sie **Plattform hinzufügen** > **Mobilgerät- und Desktopanwendungen** aus.
 > 1. Wählen Sie unter **Umleitungs-URIs** die Option `https://login.microsoftonline.com/common/oauth2/nativeclient` aus.
-> 1. Wählen Sie **Konfigurieren**aus.
+> 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > #### <a name="step-1-configure-the-application"></a>Schritt 1: Konfigurieren der Anwendung

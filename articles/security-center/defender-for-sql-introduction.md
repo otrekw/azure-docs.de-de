@@ -3,17 +3,17 @@ title: 'Azure Defender für SQL: Vorteile und Features'
 description: Enthält eine Beschreibung der Vorteile und Features von Azure Defender für SQL.
 author: memildin
 ms.author: memildin
-ms.date: 9/22/2020
+ms.date: 11/17/2020
 ms.topic: overview
 ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
-ms.openlocfilehash: 220f9fffd6c0f9b959230964a9ec79f4e209bd54
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b4f046339c027a5ae66f7f7510d8d2b311abd6df
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372544"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94693459"
 ---
 # <a name="introduction-to-azure-defender-for-sql"></a>Einführung in Azure Defender für SQL
 
@@ -23,9 +23,9 @@ Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung
 
 |Aspekt|Details|
 |----|:----|
-|Status des Release:|**Azure Defender für Azure SQL-Datenbank-Server** : Allgemein verfügbar (GA)<br>**Azure Defender für SQL-Server auf Computern** : Vorschauversion<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
+|Status des Release:|**Azure Defender für Azure SQL-Datenbank-Server**: Allgemein verfügbar (GA)<br>**Azure Defender für SQL-Server auf Computern**: Vorschauversion<br>[!INCLUDE [Legalese](../../includes/security-center-preview-legal-text.md)] |
 |Preise:|Die beiden Pläne, die **Azure Defender für SQL** bilden, werden gemäß den Angaben auf der [Preisseite](security-center-pricing.md) berechnet.|
-|Geschützte SQL-Versionen:|Azure SQL-Datenbank <br>Verwaltete Azure SQL-Instanz<br>Azure Synapse Analytics (ehemals SQL DW)<br>SQL Server (alle unterstützten Versionen)|
+|Geschützte SQL-Versionen:|Azure SQL-Datenbank <br>Verwaltete Azure SQL-Instanz<br>Dedizierter SQL-Pool in Azure Synapse (vormals SQL DW)<br>SQL Server (alle unterstützten Versionen)|
 |Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) US Gov<br>![Nein](./media/icons/no-icon.png) China Gov/andere Gov-Clouds|
 |||
 
@@ -36,7 +36,7 @@ Azure Defender for SQL verfügt über zwei Azure Defender-Pläne als Erweiterung
 - Mit **Azure Defender für Azure SQL-Datenbank-Server** wird Folgendes geschützt:
   - [Azure SQL-Datenbank](../azure-sql/database/sql-database-paas-overview.md)
   - [Verwaltete Azure SQL-Datenbank-Instanz](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md)
-  - [Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+  - [Dedizierter SQL-Pool in Azure Synapse](../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse)
 
 - Mit **Azure Defender für SQL-Server auf Computern (Vorschau)** wird der Schutz für Ihre nativen Azure SQL Server-Instanzen erweitert, um Hybridumgebungen vollständig zu unterstützen und SQL Server-Instanzen (alle unterstützten Versionen), die in Azure, anderen Cloudumgebungen oder sogar auf lokalen Computern gehostet werden, schützen zu können.
 
@@ -54,9 +54,9 @@ Diese beiden Pläne verfügen über Funktionen zur Ermittlung und Verringerung p
 
 Sicherheitswarnungen werden ausgelöst, wenn Folgendes vorliegt:
 
-- **Potenzielle Angriffe durch Einschleusung von SQL-Befehlen** : Hierzu gehören auch Sicherheitsrisiken, die erkannt werden, wenn von Anwendungen in der Datenbank eine fehlerhafte SQL-Anweisung generiert wird.
-- **Anomale Muster für Datenbankzugriff und -abfrage** : Ein Beispiel hierfür sind eine ungewöhnlich hohe Anzahl von fehlgeschlagenen Anmeldeversuchen mit unterschiedlichen Anmeldeinformationen (Brute-Force-Angriff).
-- **Verdächtige Datenbankaktivität** : Dies kann beispielsweise eine Änderung des Exportspeicherziels für einen SQL-Import- und -Exportvorgang sein.
+- **Potenzielle Angriffe durch Einschleusung von SQL-Befehlen**: Hierzu gehören auch Sicherheitsrisiken, die erkannt werden, wenn von Anwendungen in der Datenbank eine fehlerhafte SQL-Anweisung generiert wird.
+- **Anomale Muster für Datenbankzugriff und -abfrage**: Ein Beispiel hierfür sind eine ungewöhnlich hohe Anzahl von fehlgeschlagenen Anmeldeversuchen mit unterschiedlichen Anmeldeinformationen (Brute-Force-Angriff).
+- **Verdächtige Datenbankaktivität**: Dies kann beispielsweise eine Änderung des Exportspeicherziels für einen SQL-Import- und -Exportvorgang sein.
 
 Warnungen enthalten Details zum Incident, durch den sie ausgelöst wurden, sowie Empfehlungen zur Untersuchung und Eindämmung von Bedrohungen.
 

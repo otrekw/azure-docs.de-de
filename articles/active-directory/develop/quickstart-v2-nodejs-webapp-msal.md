@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 10/22/2020
 ms.author: amikuma
 ms.custom: aaddev, scenarios:getting-started, languages:js, devx-track-js
-ms.openlocfilehash: e223b5ae072a323ad56ed396c06580fea9b8b7ab
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 52e6c70b76b83c73059dc887eaefe8403befac13
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335246"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94594231"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-node-web-app-using-the-auth-code-flow"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Node-Web-App mithilfe des Autorisierungscodeflows
 
-In diesem Schnellstart führen Sie ein Codebeispiel aus, mit dem veranschaulicht wird, wie Benutzer von persönlichen Konten sowie Geschäfts-, Schul- und Unikonten in einer Node.js-Web-App mithilfe des Autorisierungscodeflows angemeldet werden können. Das Codebeispiel veranschaulicht ferner das Abrufen eines Zugriffstokens zum Aufrufen einer Web-API, in diesem Fall der Microsoft Graph-API. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Node.js-Web-App Benutzer mithilfe des Autorisierungscodeflows anmelden können. Das Codebeispiel veranschaulicht außerdem das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API. 
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) für Node.js (MSAL Node) beim Autorisierungscodeflow verwendet.
 
@@ -102,7 +104,7 @@ In dieser Schnellstartanleitung wird die Microsoft-Authentifizierungsbibliothek 
 > ```
 >
 > > [!TIP]
-> > Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung. Wechseln Sie zu **Zertifikate und Geheimnisse** , um einen neuen **geheimen Clientschlüssel** abzurufen oder zu generieren.
+> > Den Wert für **Anwendungs-ID (Client)** finden Sie im Azure-Portal auf der Seite **Übersicht** der App-Registrierung. Wechseln Sie zu **Zertifikate und Geheimnisse**, um einen neuen **geheimen Clientschlüssel** abzurufen oder zu generieren.
 >
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-3-your-app-is-configured-and-ready-to-run"></a>Schritt 3: Ihre App ist konfiguriert und betriebsbereit

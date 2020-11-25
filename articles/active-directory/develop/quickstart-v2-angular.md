@@ -12,16 +12,16 @@ ms.topic: quickstart
 ms.workload: identity
 ms.date: 03/18/2020
 ms.author: janutter
-ms.openlocfilehash: 4179807b349504d1ac0932f8d0816603f83afae4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 643e3bcd50258e2b5e7f52646f231485f950d677
+ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613423"
+ms.lasthandoff: 11/11/2020
+ms.locfileid: "94515544"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-an-angular-single-page-application"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer Angular-Single-Page-Webanwendung
 
-In dieser Schnellstartanleitung erfahren Sie anhand eines Codebeispiels, wie in einer Angular-Single-Page-Webanwendung (Single-Page Application, SPA) Benutzer mit persönlichen Microsoft-Konten und mit Geschäfts-, Schul- oder Unikonten angemeldet werden können. Eine Angular-SPA kann auch ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen.
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine Angular-Single-Page-Webanwendung (SPA) Benutzer anmelden und Microsoft Graph aufrufen kann. Das Codebeispiel veranschaulicht das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API oder einer beliebigen Web-API.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -2,15 +2,15 @@
 title: Erstellen und Bereitstellen von Vorlagenspezifikationen
 description: Erfahren Sie, wie Sie eine Vorlagenspezifikation aus einer ARM-Vorlage erstellen. Stellen Sie dann die Vorlagenspezifikation für eine Ressourcengruppe in Ihrem Abonnement bereit.
 author: tfitzmac
-ms.date: 11/10/2020
+ms.date: 11/17/2020
 ms.topic: quickstart
 ms.author: tomfitz
-ms.openlocfilehash: 96ef5796aac1d0ee02e6bbafc40b7d3bcdea4e2f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8439b1de5a69b3e5bfc22e10f089938da921c1cb
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506361"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747501"
 ---
 # <a name="quickstart-create-and-deploy-template-spec-preview"></a>Schnellstart: Erstellen und Bereitstellen von Vorlagenspezifikationen (Vorschau)
 
@@ -21,9 +21,7 @@ Dieser Schnellstart zeigt Ihnen, wie Sie eine Azure Resource Manager-Vorlage (AR
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauversion. Um sie zu verwenden, müssen Sie sich [für die Warteliste registrieren](https://aka.ms/templateSpecOnboarding).
->
-> Nachdem Sie von der Warteliste genehmigt wurden, erhalten Sie Anweisungen zur Installation des PowerShell-Vorschaumoduls und des CLI-Vorschaumoduls.
+> Vorlagenspezifikationen befinden sich derzeit in der Vorschauversion. Zu ihrer Verwendung müssen Sie die aktuelle Version von PowerShell oder der Azure CLI installieren. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
 
 ## <a name="create-template-spec"></a>Erstellen von Vorlagenspezifikationen
 

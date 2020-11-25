@@ -11,12 +11,12 @@ ms.author: anumamah
 ms.reviewer: nibaccam
 ms.date: 08/14/2020
 ms.custom: devx-track-python, automl
-ms.openlocfilehash: 811f1c27af660d388ecb875741c073591bd25f7f
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 4f6e194f04789fbcaf24d69965dfa8ac61b20a38
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358608"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886327"
 ---
 # <a name="tutorial-use-automated-machine-learning-to-predict-taxi-fares"></a>Tutorial: Vorhersagen von Preisen für Taxifahrten mit automatisiertem maschinellem Lernen
 
@@ -39,7 +39,9 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein kostenloses Konto erste
 * Absolvieren Sie das [Einrichtungstutorial](tutorial-1st-experiment-sdk-setup.md), falls Sie noch nicht über einen Azure Machine Learning-Arbeitsbereich oder über einen virtuellen Notebook-Computer verfügen.
 * Öffnen Sie nach Abschluss des Einrichtungstutorials das Notebook *tutorials/regression-automl-nyc-taxi-data/regression-automated-ml.ipynb* unter Verwendung des gleichen Notebook-Servers.
 
-Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten. Führen Sie `pip install azureml-sdk[automl] azureml-opendatasets azureml-widgets` aus, um die erforderlichen Pakete abzurufen.
+Dieses Tutorial ist auch auf [GitHub](https://github.com/Azure/MachineLearningNotebooks/tree/master/tutorials) verfügbar, falls Sie es in Ihrer eigenen [lokalen Umgebung](how-to-configure-environment.md#local) ausführen möchten. So erhalten Sie die erforderlichen Pakete: 
+* [Installieren Sie den vollständigen `automl`-Client.](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/README.md#setup-using-a-local-conda-environment)
+* Führen Sie `pip install azureml-opendatasets azureml-widgets` aus, um die erforderlichen Pakete abzurufen.
 
 ## <a name="download-and-prepare-data"></a>Herunterladen und Vorbereiten von Daten
 

@@ -1,6 +1,6 @@
 ---
 title: Was ist Azure Machine Learning Studio?
-description: Azure Machine Learning Studio ist ein Webportal für Azure Machine Learning-Arbeitsbereiche. In Studio werden codefreie Umgebungen und Code First-Umgebungen kombiniert, um eine inklusive Data Science-Plattform zu schaffen.
+description: Studio ist ein Webportal für Azure Machine Learning-Arbeitsbereiche. In Studio werden codefreie Umgebungen und Code First-Umgebungen zu einer inklusiven Data Science-Plattform kombiniert.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -8,12 +8,12 @@ ms.topic: overview
 author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
-ms.openlocfilehash: 345c925d3b1350dfc2ea69d65d8d14688c6930b9
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 018a0e3a244d1f0e36ce638d646ab05861c10e38
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310168"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94565907"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Was ist Azure Machine Learning Studio?
 
@@ -103,3 +103,4 @@ Sehen Sie sich [Studio](https://ml.azure.com) an, oder informieren Sie sich in d
   + [Verwenden von Jupyter-Notebooks auf einer Compute-Instanz zum Trainieren und Bereitstellen von Modellen](tutorial-1st-experiment-sdk-setup.md)
   + [Tutorial: Erstellen eines Klassifizierungsmodells mit automatisiertem maschinellem Lernen in Azure Machine Learning](tutorial-first-experiment-automated-ml.md)  
   + [Tutorial: Prognostizieren von Automobilpreisen mit dem Designer (Vorschau)](tutorial-designer-automobile-price-train-score.md)
+  + [Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

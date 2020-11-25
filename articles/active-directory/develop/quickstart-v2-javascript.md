@@ -12,16 +12,18 @@ ms.workload: identity
 ms.date: 04/11/2019
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:JavaScript, devx-track-js
-ms.openlocfilehash: 1f5281ead3c0487b6052859df3b33fa6ddaaf45a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f2a01c4e4d364494d271fa676bca5bfac2677395
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91613321"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592746"
 ---
 # <a name="quickstart-sign-in-users-and-get-an-access-token-in-a-javascript-spa"></a>Schnellstart: Anmelden von Benutzern und Abrufen eines Zugriffstokens in einer JavaScript-SPA
 
-In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer JavaScript-Single-Page-Anwendung (SPA) Benutzer von persönlichen Konten und Geschäfts-, Schul- und Unikonten angemeldet werden können. Eine JavaScript-Single-Page-Anwendung kann zudem ein Zugriffstoken abrufen, um die Microsoft Graph-API oder eine Web-API aufzurufen. Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
+In diesem Schnellstart laden Sie ein Codebeispiel herunter und führen es aus, das zeigt, wie eine JavaScript-Single-Page-Webanwendung (SPA) Benutzer anmelden und Microsoft Graph aufrufen kann. Das Codebeispiel veranschaulicht außerdem das Abrufen eines Zugriffstokens zum Aufrufen der Microsoft Graph-API oder einer beliebigen Web-API.
+
+Eine Abbildung finden Sie unter [Funktionsweise des Beispiels](#how-the-sample-works).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -58,7 +60,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > 1. Für diesen Schnellstart muss der [Flow zur impliziten Genehmigung](v2-oauth2-implicit-grant-flow.md) aktiviert werden. Wählen Sie im linken Bereich der registrierten Anwendung die Option **Authentifizierung** aus.
 > 1. Wählen Sie unter **Plattformkonfigurationen** die Option **Plattform hinzufügen** aus. Daraufhin wird auf der linken Seite ein Bereich geöffnet. Wählen Sie dort die Region **Webanwendungen** aus.
 > 1. Legen Sie den Wert für den **Umleitungs-URI** auf `http://localhost:3000/` fest (ebenfalls im linken Bereich). Wählen Sie anschließend **Zugriffstoken** und **ID-Token** aus.
-> 1. Wählen Sie **Konfigurieren**aus.
+> 1. Wählen Sie **Konfigurieren** aus.
 
 > [!div class="sxs-lookup" renderon="portal"]
 > #### <a name="step-1-configure-your-application-in-the-azure-portal"></a>Schritt 1: Konfigurieren Ihrer Anwendung im Azure-Portal
@@ -74,10 +76,10 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 > [!div renderon="docs"]
 > Um das Projekt mit einem Webserver unter Verwendung von Node.js auszuführen, [laden Sie die Kernprojektdateien herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
-> [!div renderon="portal"]
+> [!div renderon="portal" class="sxs-lookup"]
 > Ausführen des Projekts mit einem Webserver unter Verwendung von Node.js
 
-> [!div renderon="portal" id="autoupdate" class="nextstepaction"]
+> [!div renderon="portal" id="autoupdate" class="sxs-lookup nextstepaction"]
 > [Laden Sie das Codebeispiel herunter](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/quickstart.zip).
 
 > [!div renderon="docs"]
@@ -102,7 +104,7 @@ In diesem Schnellstart erfahren Sie anhand eines Codebeispiels, wie in einer Jav
 >
 >```
 
-> [!div renderon="portal"]
+> [!div class="sxs-lookup" renderon="portal"]
 > > [!NOTE]
 > > `Enter_the_Supported_Account_Info_Here`
 

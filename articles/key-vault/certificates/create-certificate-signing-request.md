@@ -10,12 +10,12 @@ ms.subservice: certificates
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.author: sebansal
-ms.openlocfilehash: a85656909df5538f9f57e05d79ae768623d7eba6
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: c8f11f17c9e110509dcbcda291194f9b8d928c50
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289614"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658960"
 ---
 # <a name="creating-and-merging-csr-in-key-vault"></a>Erstellen und Zusammenführen einer Zertifikatsignieranforderung in Key Vault
 
@@ -25,7 +25,15 @@ Weitere allgemeine Informationen zu Zertifikaten finden Sie unter [Azure Key Vau
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="adding-certificate-in-key-vault-issued-by-a-non-trusted-ca"></a>Hinzufügen eines von einer nicht vertrauenswürdigen Zertifizierungsstelle ausgestellten Zertifikats in Key Vault
+## <a name="adding-certificate-in-key-vault-issued-by-partnered-ca"></a>Hinzufügen eines von einer Partnerzertifizierungsstelle ausgestellten Zertifikats in Key Vault
+Key Vault ist eine Partnerschaft mit den folgenden zwei Zertifizierungsstellen eingegangen, um die Erstellung von Zertifikaten zu vereinfachen: 
+
+|Anbieter|Zertifikattyp|Konfigurationssetup  
+|--------------|----------------------|------------------|  
+|DigiCert|Key Vault bietet OV- oder EV-SSL-Zertifikate mit DigiCert| [Integrationsleitfaden](./how-to-integrate-certificate-authority.md)
+|GlobalSign|Key Vault bietet OV- oder EV-SSL-Zertifikate mit GlobalSign| [Integrationsleitfaden](https://support.globalsign.com/digital-certificates/digital-certificate-installation/generating-and-importing-certificate-microsoft-azure-key-vault)
+
+## <a name="adding-certificate-in-key-vault-issued-by-non-partnered-ca"></a>Hinzufügen eines Zertifikats einer Zertifizierungsstelle (kein Partner) in Key Vault
 
 Mithilfe der folgenden Schritte können Sie ein Zertifikat mit einer nicht mit Key Vault verbundenen Zertifizierungsstelle erstellen (beispielsweise ist GoDaddy keine vertrauenswürdige Key Vault-Zertifizierungsstelle). 
 

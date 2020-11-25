@@ -10,27 +10,27 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6d0fcd57a71baec54fbed2dd41a936895ad9a462
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: a120e015bd8ca38e32bd8cbef1fd48f4caef8e44
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91966575"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837803"
 ---
-# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Tutorial: Verwenden von Risikoerkennungen für Benutzeranmeldungen, um Azure Multi-Factor Authentication oder Kennwortänderungen auszulösen
+# <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-ad-multi-factor-authentication-or-password-changes"></a>Tutorial: Verwenden von Risikoerkennungen für Benutzeranmeldungen, um Azure AD Multi-Factor Authentication oder Kennwortänderungen auszulösen
 
-Zum Schutz Ihrer Benutzer können Sie in Azure Active Directory (Azure AD) risikobasierte Richtlinien konfigurieren, um im Falle von riskantem Verhalten eine automatische Reaktion zu ermöglichen. Durch Azure AD Identity Protection-Richtlinien kann ein Anmeldeversuch automatisch blockiert oder eine zusätzliche Aktion wie etwa eine Kennwortänderung oder die Verwendung von Azure Multi-Factor Authentication angefordert werden. Diese Richtlinien können mit bereits vorhandenen Azure AD-Richtlinien für bedingten Zugriff kombiniert werden, um die Organisation noch besser zu schützen. Es kann sein, dass von Benutzern niemals ein riskantes Verhalten in einer dieser Richtlinien ausgelöst wird. Im Falle einer Sicherheitsgefährdung ist Ihre Organisation jedoch geschützt.
+Zum Schutz Ihrer Benutzer können Sie in Azure Active Directory (Azure AD) risikobasierte Richtlinien konfigurieren, um im Falle von riskantem Verhalten eine automatische Reaktion zu ermöglichen. Durch Azure AD Identity Protection-Richtlinien kann ein Anmeldeversuch automatisch blockiert oder eine zusätzliche Aktion wie etwa eine Kennwortänderung oder die Verwendung von Azure AD Multi-Factor Authentication angefordert werden. Diese Richtlinien können mit bereits vorhandenen Azure AD-Richtlinien für bedingten Zugriff kombiniert werden, um die Organisation noch besser zu schützen. Es kann sein, dass von Benutzern niemals ein riskantes Verhalten in einer dieser Richtlinien ausgelöst wird. Im Falle einer Sicherheitsgefährdung ist Ihre Organisation jedoch geschützt.
 
 > [!IMPORTANT]
-> In diesem Tutorial wird für Administratoren veranschaulicht, wie Azure Multi-Factor Authentication (risikobasiert) aktiviert wird.
+> In diesem Tutorial wird für Administratoren veranschaulicht, wie Azure AD Multi-Factor Authentication (risikobasiert) aktiviert wird.
 >
-> Wenn Ihr IT-Team die Verwendung von Azure Multi-Factor Authentication nicht aktiviert hat oder Sie Probleme mit der Anmeldung haben, wenden Sie sich an Ihren Helpdesk.
+> Wenn Ihr IT-Team die Verwendung von Azure AD Multi-Factor Authentication nicht aktiviert hat oder Sie Probleme mit der Anmeldung haben, wenden Sie sich an Ihren Helpdesk.
 
 In diesem Tutorial lernen Sie Folgendes:
 
 > [!div class="checklist"]
 > * Grundlegendes zu den verfügbaren Richtlinien für Azure AD Identity Protection
-> * Aktivieren der Registrierung für Azure Multi-Factor Authentication
+> * Aktivieren der Registrierung für Azure AD Multi-Factor Authentication
 > * Aktivieren von risikobasierten Kennwortänderungen
 > * Aktivieren von risikobasierter Multi-Factor Authentication
 > * Testen risikobasierter Richtlinien für Anmeldeversuche von Benutzern
@@ -42,9 +42,9 @@ Für dieses Tutorial benötigen Sie die folgenden Ressourcen und Berechtigungen:
 * Einen funktionierenden Azure AD-Mandanten mit mindestens einer aktivierten Azure AD Premium P2- oder Testlizenz.
     * Erstellen Sie ggf. [ein kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Ein Konto mit Berechtigungen vom Typ *Globaler Administrator*
-* Eine für Self-Service-Kennwortzurücksetzung und Azure Multi-Factor Authentication konfigurierte Azure AD-Instanz.
+* Eine für Self-Service-Kennwortzurücksetzung und Azure AD Multi-Factor Authentication konfigurierte Azure AD-Instanz
     * Absolvieren Sie bei Bedarf das [Tutorial zum Aktivieren der Self-Service-Kennwortzurücksetzung von Azure AD](tutorial-enable-sspr.md).
-    * Absolvieren Sie bei Bedarf das [Tutorial zum Aktivieren von Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+    * Absolvieren Sie bei Bedarf das [Tutorial zum Aktivieren von Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
 ## <a name="overview-of-azure-ad-identity-protection"></a>Übersicht über Azure AD Identity Protection
 
@@ -64,9 +64,9 @@ In Azure AD Identity Protection stehen die drei folgenden Richtlinien zur Verf�
 * Benutzerrisiko-Richtlinie
     * Dient dazu, Benutzerkonten mit möglicherweise kompromittierten Anmeldeinformationen zu identifizieren und darauf zu reagieren. Kann den Benutzer zur Erstellung eines neuen Kennworts auffordern.
 * Anmelderisiko-Richtlinie
-    * Dient dazu, verdächtige Anmeldeversuche zu identifizieren und darauf zu reagieren. Kann den Benutzer zu einer zusätzlichen Form der Verifizierung per Azure Multi-Factor Authentication auffordern.
+    * Dient dazu, verdächtige Anmeldeversuche zu identifizieren und darauf zu reagieren. Kann den Benutzer zu einer zusätzlichen Form der Verifizierung per Azure AD Multi-Factor Authentication auffordern.
 * MFA-Registrierungsrichtlinie
-    * Stellt sicher, dass Benutzer für Azure Multi-Factor Authentication registriert sind. Wenn ein Benutzer durch eine Anmelderisiko-Richtlinie zur mehrstufigen Authentifizierung aufgefordert wird, muss er bereits für Azure Multi-Factor Authentication registriert sein.
+    * Stellt sicher, dass Benutzer für Azure AD Multi-Factor Authentication registriert sind. Wenn ein Benutzer durch eine Anmelderisiko-Richtlinie zur mehrstufigen Authentifizierung aufgefordert wird, muss er bereits für Azure AD Multi-Factor Authentication registriert sein.
 
 Wenn Sie eine Benutzer- oder Anmelderisiko-Richtlinie aktivieren, können Sie auch den Schwellenwert für die Risikostufe (*Niedrig und höher*, *Mittel und höher* oder *Hoch*) auswählen. Dadurch können Sie flexibel steuern, wie aggressiv die Kontrollen im Zusammenhang mit verdächtigen Anmeldeereignissen sein sollen.
 
@@ -74,7 +74,7 @@ Weitere Informationen zu Azure AD Identity Protection finden Sie im Artikel [Wa
 
 ## <a name="enable-mfa-registration-policy"></a>Aktivieren der MFA-Registrierungsrichtlinie
 
-Azure AD Identity Protection enthält eine Standardrichtlinie, die dazu beitragen kann, dass sich Benutzer für Azure Multi-Factor Authentication registrieren. Falls Sie zusätzliche Richtlinien zum Schutz von Anmeldeereignissen verwenden, müssen Benutzer bereits für die mehrstufige Authentifizierung registriert sein. Wenn Sie diese Richtlinie aktivieren, müssen Benutzer nicht bei jedem Anmeldeereignis eine mehrstufige Authentifizierung durchlaufen. Von der Richtlinie wird lediglich der Registrierungsstatus eines Benutzers überprüft und der Benutzer bei Bedarf dazu aufgefordert, sich vorab zu registrieren.
+Azure AD Identity Protection enthält eine Standardrichtlinie, die dazu beitragen kann, dass sich Benutzer für Azure AD Multi-Factor Authentication registrieren. Falls Sie zusätzliche Richtlinien zum Schutz von Anmeldeereignissen verwenden, müssen Benutzer bereits für die mehrstufige Authentifizierung registriert sein. Wenn Sie diese Richtlinie aktivieren, müssen Benutzer nicht bei jedem Anmeldeereignis eine mehrstufige Authentifizierung durchlaufen. Von der Richtlinie wird lediglich der Registrierungsstatus eines Benutzers überprüft und der Benutzer bei Bedarf dazu aufgefordert, sich vorab zu registrieren.
 
 Es empfiehlt sich, die MFA-Registrierungsrichtlinie für Benutzer zu aktivieren, für die die Aktivierung zusätzlicher Azure AD Identity Protection-Richtlinien geplant ist. Führen Sie zum Aktivieren dieser Richtlinie die folgenden Schritte aus:
 
@@ -82,7 +82,7 @@ Es empfiehlt sich, die MFA-Registrierungsrichtlinie für Benutzer zu aktivieren,
 1. Suchen Sie nach **Azure Active Directory**, und wählen Sie die entsprechende Option aus. Wählen Sie anschließend **Sicherheit**. und dann unter der Menüüberschrift *Schützen* die Option **Identity Protection** aus.
 1. Wählen Sie im Menü auf der linken Seite die **MFA-Registrierungsrichtlinie** aus.
 1. Die Richtlinie gilt standardmäßig für *alle Benutzer*. Wählen Sie bei Bedarf **Zuweisungen** und anschließend die Benutzer oder Gruppen aus, auf die die Richtlinie angewendet werden soll.
-1. Wählen Sie unter *Steuerungen* die Option **Zugriff** aus. Stellen Sie sicher, dass die Option *Azure MFA-Registrierung anfordern* aktiviert ist, und wählen Sie **Auswählen** aus.
+1. Wählen Sie unter *Steuerungen* die Option **Zugriff** aus. Stellen Sie sicher, dass die Option *Azure AD MFA-Registrierung anfordern* aktiviert ist, und wählen Sie **Auswählen** aus.
 1. Legen Sie **Richtlinie erzwingen** auf *Ein* fest, und wählen Sie **Speichern** aus.
 
     ![Screenshot: Festlegen, dass sich Benutzer für die mehrstufige Authentifizierung registrieren müssen (im Azure-Portal)](./media/tutorial-risk-based-sspr-mfa/enable-mfa-registration.png)
@@ -133,7 +133,7 @@ In diesem Tutorial haben Sie risikobasierte Benutzerrichtlinien für Azure AD I
 
 > [!div class="checklist"]
 > * Grundlegendes zu den verfügbaren Richtlinien für Azure AD Identity Protection
-> * Aktivieren der Registrierung für Azure Multi-Factor Authentication
+> * Aktivieren der Registrierung für Azure AD Multi-Factor Authentication
 > * Aktivieren von risikobasierten Kennwortänderungen
 > * Aktivieren von risikobasierter Multi-Factor Authentication
 > * Testen risikobasierter Richtlinien für Anmeldeversuche von Benutzern

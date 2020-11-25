@@ -1,6 +1,6 @@
 ---
 title: Inkrementelles Kopieren mehrerer Tabellen mithilfe von PowerShell
-description: In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer SQL Server-Datenbank in Azure SQL-Datenbank geladen werden.
+description: In diesem Tutorial erstellen Sie eine Azure Data Factory-Instanz mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen in einer SQL Server-Datenbank in Azure SQL-Datenbank geladen werden.
 services: data-factory
 ms.author: yexu
 author: dearandyxu
@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019
 ms.date: 06/10/2020
-ms.openlocfilehash: be98ff2a31e3216088fb9197fab477d9b1088f26
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 54dea3ba7bbc3339b7b044b476c321fd95138ac2
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92634095"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566417"
 ---
 # <a name="incrementally-load-data-from-multiple-tables-in-sql-server-to-azure-sql-database-using-powershell"></a>Inkrementelles Laden von Daten aus mehreren Tabellen in SQL Server in Azure SQL-Datenbank mithilfe von PowerShell
 
 [!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
 
-In diesem Tutorial erstellen Sie eine Azure Data Factory mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen einer SQL Server-Datenbank in Azure SQL-Datenbank geladen werden.    
+In diesem Tutorial erstellen Sie eine Azure Data Factory-Instanz mit einer Pipeline, bei der Deltadaten aus mehreren Tabellen in einer SQL Server-Datenbank in Azure SQL-Datenbank geladen werden.    
 
 In diesem Tutorial führen Sie die folgenden Schritte aus:
 
@@ -69,8 +69,8 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **SQL Server** . In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als Quelldatenspeicher. 
-* **Azure SQL-Datenbank** . Sie verwenden eine Datenbank in Azure SQL-Datenbank als Senkendatenspeicher. Wenn Sie noch keine SQL-Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank. 
+* **SQL Server**. In diesem Tutorial verwenden Sie eine SQL Server-Datenbank als Quelldatenspeicher. 
+* **Azure SQL-Datenbank**. Sie verwenden eine Datenbank in Azure SQL-Datenbank als Senkendatenspeicher. Wenn Sie noch keine SQL-Datenbank haben, lesen Sie [Erstellen einer Datenbank in Azure SQL-Datenbank](../azure-sql/database/single-database-create-quickstart.md). Dort finden Sie die erforderlichen Schritte zum Erstellen einer solchen Datenbank. 
 
 ### <a name="create-source-tables-in-your-sql-server-database"></a>Erstellen von Quelltabellen in Ihrer SQL Server-Datenbank
 
@@ -357,7 +357,7 @@ In diesem Schritt verknüpfen Sie Ihre SQL Server-Datenbank mit der Data Factory
     Set-Location 'C:\ADFTutorials\IncCopyMultiTableTutorial'
     ```
 
-3. Führen Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** aus, um den verknüpften Dienst „AzureStorageLinkedService“ zu erstellen. Im folgenden Beispiel übergeben Sie Werte für die *ResourceGroupName* - und *DataFactoryName* -Parameter: 
+3. Führen Sie das Cmdlet **Set-AzDataFactoryV2LinkedService** aus, um den verknüpften Dienst „AzureStorageLinkedService“ zu erstellen. Im folgenden Beispiel übergeben Sie Werte für die *ResourceGroupName*- und *DataFactoryName*-Parameter: 
 
     ```powershell
     Set-AzDataFactoryV2LinkedService -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SqlServerLinkedService" -File ".\SqlServerLinkedService.json"
@@ -539,13 +539,13 @@ In diesem Schritt erstellen Sie ein Dataset zum Speichern eines hohen Grenzwerts
 
 Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die **ForEach-Aktivität** durchläuft die Liste mit den Tabellennamen und führt die folgenden Vorgänge aus: 
 
-1. Verwenden Sie die **Lookup-Aktivität** , um den alten Grenzwert abzurufen (anfänglicher Wert oder der im letzten Durchlauf verwendete Wert).
+1. Verwenden Sie die **Lookup-Aktivität**, um den alten Grenzwert abzurufen (anfänglicher Wert oder der im letzten Durchlauf verwendete Wert).
 
-2. Verwenden Sie die **Lookup-Aktivität** , um den neuen Grenzwert abzurufen (Höchstwert der Grenzwertspalte in der Quelltabelle).
+2. Verwenden Sie die **Lookup-Aktivität**, um den neuen Grenzwert abzurufen (Höchstwert der Grenzwertspalte in der Quelltabelle).
 
-3. Verwenden Sie die **Copy-Aktivität** , um Daten zwischen diesen beiden Grenzwerten aus der Quelldatenbank in die Zieldatenbank zu kopieren.
+3. Verwenden Sie die **Copy-Aktivität**, um Daten zwischen diesen beiden Grenzwerten aus der Quelldatenbank in die Zieldatenbank zu kopieren.
 
-4. Verwenden Sie die **StoredProcedure-Aktivität** , um den alten Grenzwert zu aktualisieren, damit er im ersten Schritt des nächsten Durchlaufs verwendet werden kann. 
+4. Verwenden Sie die **StoredProcedure-Aktivität**, um den alten Grenzwert zu aktualisieren, damit er im ersten Schritt des nächsten Durchlaufs verwendet werden kann. 
 
 ### <a name="create-the-pipeline"></a>Erstellen der Pipeline
 
@@ -814,7 +814,7 @@ Die Pipeline verwendet die Liste mit den Tabellennamen als Parameter. Die **ForE
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 
-2. Klicken Sie auf **Alle Dienste** , führen Sie eine Suche mit dem Schlüsselwort *Data Factorys* durch, und wählen Sie **Data Factorys** aus. 
+2. Klicken Sie auf **Alle Dienste**, führen Sie eine Suche mit dem Schlüsselwort *Data Factorys* durch, und wählen Sie **Data Factorys** aus. 
 
 3. Suchen Sie in der Liste mit den Data Factorys nach Ihrer Data Factory, und wählen Sie sie aus, um die Seite **Data Factory** zu öffnen. 
 
@@ -909,7 +909,7 @@ VALUES
     ```
 2. Überwachen Sie die Pipelineausführungen, indem Sie die Anleitung im Abschnitt [Überwachen der Pipeline](#monitor-the-pipeline) befolgen. Wenn der Pipelinestatus **In Bearbeitung** lautet, wird unter **Aktionen** ein weiterer Aktionslink zum Abbrechen der Pipelineausführung angezeigt. 
 
-3. Klicken Sie auf **Aktualisieren** , um die Liste zu aktualisieren, bis die Pipelineausführung erfolgreich ist. 
+3. Klicken Sie auf **Aktualisieren**, um die Liste zu aktualisieren, bis die Pipelineausführung erfolgreich ist. 
 
 4. Klicken Sie optional unter **Aktionen** auf den Link **View Activity Runs** (Aktivitätsausführungen anzeigen), um alle Aktivitätsausführungen anzuzeigen, die dieser Pipelineausführung zugeordnet sind. 
 
