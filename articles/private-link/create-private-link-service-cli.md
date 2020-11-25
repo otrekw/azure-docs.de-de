@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cfffafaab2e2d4ef6b165ef03beb827342c94608
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658569"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96018051"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Private Link-Dienst in Azure erstellen.
@@ -50,7 +50,7 @@ az network lb create --resource-group myResourceGroup --name myILB --sku standar
 
 ### <a name="create-a-load-balancer-health-probe"></a>Erstellen des Integritätstests für den Load Balancer
 
-Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](https://docs.microsoft.com/cli/azure/network/lb/probe?view=azure-cli-latest) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
+Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass diese Netzwerkdatenverkehr empfangen können. VM-Instanzen mit Fehlern beim Test werden aus dem Load Balancer entfernt, bis sie wieder online geschaltet werden und beim Test überprüft wurde, dass sie fehlerfrei sind. Erstellen Sie mit [az network lb probe create](/cli/azure/network/lb/probe?view=azure-cli-latest) einen Integritätstest zur Überwachung der Integrität von virtuellen Computern. 
 
 ```azurecli-interactive
   az network lb probe create \
@@ -63,7 +63,7 @@ Ein Integritätstest überprüft alle VM-Instanzen, um sicherzustellen, dass die
 
 ### <a name="create-a-load-balancer-rule"></a>Erstellen einer Load Balancer-Regel
 
-Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](https://docs.microsoft.com/cli/azure/network/lb/rule?view=azure-cli-latest) eine Lastenausgleichsregel mit dem Namen *myHTTPRule*, die an Port 80 des Front-End-Pools *myFrontEnd* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
+Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den eingehenden Datenverkehr und den Back-End-IP-Pool zum Empfangen des Datenverkehrs zusammen mit dem erforderlichen Quell- und Zielport definiert. Erstellen Sie mit [az network lb rule create](/cli/azure/network/lb/rule?view=azure-cli-latest) eine Lastenausgleichsregel mit dem Namen *myHTTPRule*, die an Port 80 des Front-End-Pools *myFrontEnd* lauscht und den Netzwerkdatenverkehr nach erfolgtem Lastenausgleich an den Back-End-Adresspool *myBackEndPool* sendet, wobei ebenfalls der Port 80 verwendet wird. 
 
 ```azurecli-interactive
   az network lb rule create \
@@ -79,7 +79,7 @@ Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den ein
 ```
 ### <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-Bei diesem Beispiel wird das Erstellen virtueller Computer nicht behandelt. Sie können die Schritte unter [Schnellstart: Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) befolgen, um zwei virtuelle Computer zu erstellen, die als Back-End-Server für den Load Balancer verwendet werden. 
+Bei diesem Beispiel wird das Erstellen virtueller Computer nicht behandelt. Sie können die Schritte unter [Schnellstart: Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI](../load-balancer/quickstart-load-balancer-standard-internal-cli.md) befolgen, um zwei virtuelle Computer zu erstellen, die als Back-End-Server für den Load Balancer verwendet werden. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst im Subnetz 
@@ -163,4 +163,3 @@ az network private-link-service show --resource-group myResourceGroup --name myP
 ```
 ## <a name="next-steps"></a>Nächste Schritte
 - Weitere Informationen zum [Azure Private Link-Dienst](private-link-service-overview.md)
- 

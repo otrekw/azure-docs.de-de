@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/29/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 21562bc17d4bfd4913c9085755d962382d207c79
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 59eae5303d9eca48fa4cec30fe622faf19ffba1f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566791"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94961888"
 ---
 # <a name="tutorial-prerequisites-for-creating-availability-groups-on-sql-server-on-azure-virtual-machines"></a>Tutorial: Voraussetzungen für die Erstellung von Verfügbarkeitsgruppen für SQL Server in Azure Virtual Machines
 
@@ -538,7 +538,7 @@ Wiederholen Sie diese Schritte auf dem anderen virtuellen SQL Server-Computer.
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Optimieren von Failovercluster-Netzwerkschwellenwerten
 
-Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server Always On ausführen, wird empfohlen, die Clustereinstellung in einen weniger strengen Überwachungsstatus zu ändern.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Always On: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server Always On ausführen, wird empfohlen, die Clustereinstellung in einen weniger strengen Überwachungsstatus zu ändern.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Always On: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 
 ## <a name="configure-the-firewall-on-each-sql-server-vm"></a><a name="endpoint-firewall"></a> Konfigurieren der Firewall auf jeder SQL Server-VM

@@ -9,12 +9,12 @@ ms.author: tchladek
 ms.date: 10/26/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: f172bfcb6e4f11520eb9082052968626efe6fecb
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: dd2ffacb176ed3733acba8699d4e870b15dd3c42
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94651242"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888707"
 ---
 # <a name="identity-model"></a>Identitätsmodell
 
@@ -26,7 +26,7 @@ Azure Communication Services ist ein identitätsunabhängiger Dienst. Dieses D
 
 Anstatt Informationen in Ihrem System zu duplizieren, behalten Sie die für Ihren Geschäftsfall erforderliche Zuordnungsbeziehung bei. Beispielsweise können Sie Identitäten zuordnen: 1:1, 1:N, N:1, N:M. Externe Bezeichner wie Telefonnummern, Benutzer, Geräte, Anwendungen und GUIDs können in Azure Communication Services nicht für die Identität verwendet werden. Für die Azure Communication Services-Identität generierte Zugriffstoken werden für den Zugriff auf Primitive wie Chat oder Anrufe verwendet.
 
-## <a name="identity"></a>Identität
+## <a name="identity"></a>Identity
 
 Sie können Identitäten mithilfe der Azure Communication Services-Verwaltungsbibliothek erstellen. Eine Identität dient in Konversationen als Bezeichner. Sie wird verwendet, um Zugriffstoken zu erstellen. Dieselbe Identität kann an mehreren gleichzeitigen Sitzungen auf mehreren Geräten teilnehmen. Eine Identität kann gleichzeitig über mehrere aktive Zugriffstoken verfügen. 
 
@@ -83,6 +83,6 @@ Wenn Sie Zugriffstoken in einen Sicherungsspeicher zwischenspeichern, empfehlen 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Einführung in die Verwaltung von Zugriffstoken finden Sie unter [Erstellen und Verwalten von Zugriffstoken](https://docs.microsoft.com/azure/communication-services/quickstarts/access-tokens).
-* Eine Einführung in die Authentifizierung finden Sie unter [Authentifizierung bei Azure Communication Services](https://docs.microsoft.com/azure/communication-services/concepts/authentication).
-* Eine Einführung in die Datenresidenz und den Datenschutz finden Sie unter [Regionale Verfügbarkeit und Datenresidenz](https://docs.microsoft.com/azure/communication-services/concepts/privacy).
+* Eine Einführung in die Verwaltung von Zugriffstoken finden Sie unter [Erstellen und Verwalten von Zugriffstoken](../quickstarts/access-tokens.md).
+* Eine Einführung in die Authentifizierung finden Sie unter [Authentifizierung bei Azure Communication Services](./authentication.md).
+* Eine Einführung in die Datenresidenz und den Datenschutz finden Sie unter [Regionale Verfügbarkeit und Datenresidenz](./privacy.md).

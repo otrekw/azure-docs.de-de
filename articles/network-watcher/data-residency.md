@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: damendo
-ms.openlocfilehash: a6be3a7fd19b43bd1b18af05d0dbfaf5053fb181
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2e6a92a4d08f1603f480a990ad437a90302a8189
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682960"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966087"
 ---
 # <a name="data-residency-for-azure-network-watcher"></a>Data Residency für Azure Network Watcher
 Mit Ausnahme des Diensts „Verbindungsmonitor“ (Vorschau) speichert Azure Network Watcher keine Kundendaten.
@@ -32,4 +32,4 @@ Das Feature zum Aktivieren der Speicherung von Kundendaten in einer einzelnen Re
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Verschaffen Sie sich einen Überblick über [Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview).
+* Verschaffen Sie sich einen Überblick über [Network Watcher](./network-watcher-monitoring-overview.md).

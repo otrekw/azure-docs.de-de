@@ -12,12 +12,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
 ms.date: 11/13/2020
-ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 138cd03989008aa4fbd7d6ca3e06aff94fa76e33
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629188"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989444"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -60,7 +60,7 @@ Für ein einzelnes Abonnement gibt es Einschränkungen hinsichtlich der Anzahl g
 Es gibt keine integrierte Methode zum Wiederherstellen des gesamten Servers. Ein Beispiel zum Ausführen dieser Aufgabe finden Sie unter [Azure SQL Database: Full server recovery](https://gallery.technet.microsoft.com/Azure-SQL-Database-Full-82941666) (Azure SQL-Datenbank: Wiederherstellen des gesamten Servers).
 
 > [!IMPORTANT]
-> Zum Durchführen einer Wiederherstellung mit automatisierten Sicherungen müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ oder „Mitwirkender für verwaltete SQL-Instanzen“ (je nach Wiederherstellungsziel) im Abonnement, oder Sie müssen der Besitzer des Abonnements sein. Weitere Informationen finden Sie unter [RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md). Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
+> Zum Durchführen einer Wiederherstellung mit automatisierten Sicherungen müssen Sie Mitglied der Rolle „SQL Server-Mitwirkender“ oder „Mitwirkender für verwaltete SQL-Instanzen“ (je nach Wiederherstellungsziel) im Abonnement, oder Sie müssen der Besitzer des Abonnements sein. Weitere Informationen finden Sie unter [Azure RBAC: Integrierte Rollen](../../role-based-access-control/built-in-roles.md). Sie können das Azure-Portal, PowerShell oder die REST-API zur Wiederherstellung verwenden. Die Nutzung von Transact-SQL ist nicht möglich.
 
 ## <a name="point-in-time-restore"></a>Wiederherstellung bis zu einem bestimmten Zeitpunkt
 
