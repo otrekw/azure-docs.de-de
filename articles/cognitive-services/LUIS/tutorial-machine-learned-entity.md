@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
-ms.openlocfilehash: 1f85ba0c64db23e156f384fadcc5ca7bf84a58d4
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: aa2783abe86b90a907510dec8d7eb40162820ad5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130746"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025258"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Tutorial: Extrahieren strukturierter Daten aus Benutzeräußerungen mithilfe von Machine Learning-Entitäten in Language Understanding (LUIS)
 
@@ -236,7 +236,7 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
     ![Screenshot: LUIS-Schaltfläche zum Veröffentlichen am Endpunkt (im Menü rechts oben)](./media/howto-publish/publish-button.png)
 
-1. Wählen Sie den Slot **Produktion** , dann **Einstellungen ändern** , dann **Standpunktanalyse** und schließlich **Fertig** aus.
+1. Wählen Sie den Slot **Produktion**, dann **Einstellungen ändern**, dann **Standpunktanalyse** und schließlich **Fertig** aus.
 
     > [!div class="mx-imgBorder"]
     > ![Screenshot: LUIS-Veröffentlichung am Endpunkt](./media/tutorial-machine-learned-entity/publish-with-sentiment-analysis.png)
@@ -251,7 +251,7 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
     `2 small cheese pizzas for pickup`
 
-    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage ( **query** ) der Äußerung).
+    Der letzte Parameter der Abfragezeichenfolge lautet `query` (für die Abfrage (**query**) der Äußerung).
 
     ```json
     {
@@ -297,7 +297,7 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 
 ## <a name="related-information"></a>Verwandte Informationen
 
-* [Tutorial: Absichten](luis-quickstart-intents-only.md)
+* [Tutorial: Absichten](./tutorial-intents-only.md)
 * [Konzept: Entitäten](luis-concept-entity-types.md) – Informationen zum Konzept
 * [Konzept: Features](luis-concept-feature.md) – Informationen zum Konzept
 * [Informationen zum Trainieren](luis-how-to-train.md)
@@ -309,4 +309,4 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 In diesem Tutorial verwendet die App eine Machine Learning-Entität, um die Absicht der Äußerung eines Benutzers zu finden und Details aus dieser Äußerung zu extrahieren. Die Verwendung der Machine Learning-Entität ermöglicht es Ihnen, die Details der Entität aufzuschlüsseln.
 
 > [!div class="nextstepaction"]
-> [Hinzufügen einer vorgefertigten keyPhrase-Entität](luis-quickstart-intent-and-key-phrase.md)
+> [Hinzufügen einer vorgefertigten keyPhrase-Entität](./luis-reference-prebuilt-keyphrase.md)
