@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 873bebc462ce4756d38f966a87edda167bd49501
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506378"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684917"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -517,12 +517,11 @@ Die folgenden Variablen, Funktionen und Sichten geben abweichende Ergebnisse zur
 ### <a name="failover-groups"></a>Failovergruppen
 Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, auf der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell auf der sekundären Instanz erstellt.
 
-### <a name="failover-groups"></a>Failovergruppen
-Systemdatenbanken werden nicht auf die sekundäre Instanz in einer Failovergruppe repliziert. Daher sind Szenarien, die von Objekten aus den Systemdatenbanken abhängen, auf der sekundären Instanz nicht möglich, es sei denn, die Objekte werden manuell auf der sekundären Instanz erstellt.
-
 ### <a name="tempdb"></a>TEMPDB
-
-Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße von SQL Managed Instance begrenzt. Die Größe der Protokolldatei `Tempdb` ist bei der Dienstebene „Universell“ auf 120 GB begrenzt. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen.
+- Die maximale Dateigröße von `tempdb` darf in der Dienstebene „Universell“ 24 GB pro Kern nicht überschreiten. Die maximale Größe von `tempdb` ist in der Dienstebene „Unternehmenskritisch“ auf die Speichergröße von SQL Managed Instance begrenzt. Die Größe der Protokolldatei `Tempdb` ist bei der Dienstebene „Universell“ auf 120 GB begrenzt. Einige Abfragen geben möglicherweise einen Fehler zurück, wenn für sie mehr als 24 GB pro Kern in `tempdb` erforderlich sind oder die erstellten Protokolldaten mehr als 120 GB benötigen.
+- `Tempdb` wird immer in 12 Datendateien aufgeteilt: 1 primäre Datendatei (auch als Masterdatei bezeichnet) und 11 nicht primäre Datendateien. Die Dateistruktur kann nicht geändert werden, und es können auch keine neuen Dateien zu `tempdb` hinzugefügt werden. 
+- [Speicheroptimierte `tempdb`-Metadaten](/sql/relational-databases/databases/tempdb-database?view=sql-server-ver15#memory-optimized-tempdb-metadata), ein neues In-Memory Database-Feature von SQL Server 2019, wird nicht unterstützt.
+- In der Modelldatenbank erstellte Objekte können in `tempdb` nach einem Neustart oder Failover nicht automatisch erstellt werden, weil `tempdb` die anfängliche Objektliste nicht aus der Modelldatenbank abruft. Sie müssen Objekte in `tempdb` nach jedem Neustart oder Failover manuell erstellen.
 
 ### <a name="msdb"></a>MSDB
 

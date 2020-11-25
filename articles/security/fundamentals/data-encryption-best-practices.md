@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/09/2020
 ms.author: terrylan
-ms.openlocfilehash: 03035f0ddb2499fb922581855878bc061bf57946
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: c88a2cf33cf1149a17af4a82dcf2858822f0c6d4
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412849"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94696148"
 ---
 # <a name="azure-data-security-and-encryption-best-practices"></a>Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure
 In diesem Artikel werden bewährte Methoden für die Datensicherheit und -verschlüsselung beschrieben.
@@ -45,22 +45,22 @@ Azure Key Vault ist für die Unterstützung von Anwendungsschlüsseln und -gehei
 
 Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Key Vault aufgeführt.
 
-**Bewährte Methode** : Gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff in einem bestimmten Umfang.   
-**Detail** : Verwenden Sie vordefinierte RBAC-Rollen. Wenn Sie beispielsweise einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md) zu. Der Bereich wäre in diesem Fall ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Wenn die vordefinierten Rollen nicht Ihren Anforderungen entsprechen, können Sie [eigene Rollen definieren](../../role-based-access-control/custom-roles.md).
+**Bewährte Methode**: Gewähren Sie Benutzern, Gruppen und Anwendungen Zugriff in einem bestimmten Umfang.   
+**Detail**: Verwenden Sie vordefinierte Azure RBAC-Rollen. Wenn Sie beispielsweise einem Benutzer Zugriff für die Verwaltung von Key Vault-Instanzen gewähren möchten, weisen Sie ihm für einen bestimmten Bereich die vordefinierte Rolle [Key Vault-Mitwirkender](../../role-based-access-control/built-in-roles.md) zu. Der Bereich wäre in diesem Fall ein Abonnement, eine Ressourcengruppe oder einfach eine bestimmte Key Vault-Instanz. Wenn die vordefinierten Rollen nicht Ihren Anforderungen entsprechen, können Sie [eigene Rollen definieren](../../role-based-access-control/custom-roles.md).
 
-**Bewährte Methode** : Steuern Sie, worauf Benutzer Zugriff haben.   
-**Detail** : Der Zugriff auf eine Key Vault-Instanz wird über zwei separate Schnittstellen gesteuert: die Verwaltungsebene und die Datenebene. Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander unabhängig.
+**Bewährte Methode**: Steuern Sie, worauf Benutzer Zugriff haben.   
+**Detail**: Der Zugriff auf eine Key Vault-Instanz wird über zwei separate Schnittstellen gesteuert: die Verwaltungsebene und die Datenebene. Die Zugriffsteuerungen für die Verwaltungs- und die Datenebene sind voneinander unabhängig.
 
-Verwenden Sie RBAC, um zu steuern, worauf Benutzer Zugriff haben. Wenn Sie also beispielsweise einer Anwendung die Verwendung von Schlüsseln in einer Key Vault-Instanz ermöglichen möchten, müssen Sie ihr lediglich mithilfe von Key Vault-Zugriffsrichtlinien Zugriffsberechtigungen für die Datenebene gewähren, da die Anwendung keinen Zugriff auf die Verwaltungsebene benötigt. Umgekehrt gilt: Wenn ein Benutzer Lesezugriff auf Tresoreigenschaften und Tags, aber keinen Zugriff auf Schlüssel, Geheimnisse oder Zertifikate haben soll, können Sie ihm mithilfe von RBAC Lesezugriff gewähren, da in diesem Fall kein Zugriff auf die Datenebene erforderlich ist.
+Verwenden Sie Azure RBAC, um zu steuern, worauf Benutzer Zugriff haben. Wenn Sie also beispielsweise einer Anwendung die Verwendung von Schlüsseln in einer Key Vault-Instanz ermöglichen möchten, müssen Sie ihr lediglich mithilfe von Key Vault-Zugriffsrichtlinien Zugriffsberechtigungen für die Datenebene gewähren, da die Anwendung keinen Zugriff auf die Verwaltungsebene benötigt. Umgekehrt gilt: Wenn ein Benutzer Lesezugriff auf Tresoreigenschaften und Tags, aber keinen Zugriff auf Schlüssel, Geheimnisse oder Zertifikate haben soll, können Sie ihm mithilfe von Azure RBAC Lesezugriff gewähren, da in diesem Fall kein Datenebenenzugriff erforderlich ist.
 
-**Bewährte Methode** : Speichern Sie Zertifikate in Ihrem Schlüsseltresor. Ihre Zertifikate sind sehr wertvoll. Wenn sie in die falschen Hände gelangen, kann die Sicherheit Ihrer Anwendung oder die Sicherheit Ihrer Daten gefährdet sein.   
-**Detail** : Azure Resource Manager kann virtuellen Azure-Computern bei deren Bereitstellung Zertifikate, die in Azure Key Vault gespeichert sind, sicher bereitstellen. Durch Festlegung entsprechender Zugriffsrichtlinien für den Schlüsseltresor können Sie auch steuern, wer Zugriff auf das Zertifikat erhält. Ein weiterer Vorteil ist, dass Sie alle Ihre Zertifikate an einer zentralen Stelle in Azure Key Vault verwalten. Weitere Informationen finden Sie unter [Bereitstellen von Zertifikaten für VMs über einen vom Kunden verwalteten Schlüsseltresor](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).
+**Bewährte Methode**: Speichern Sie Zertifikate in Ihrem Schlüsseltresor. Ihre Zertifikate sind sehr wertvoll. Wenn sie in die falschen Hände gelangen, kann die Sicherheit Ihrer Anwendung oder die Sicherheit Ihrer Daten gefährdet sein.   
+**Detail**: Azure Resource Manager kann virtuellen Azure-Computern bei deren Bereitstellung Zertifikate, die in Azure Key Vault gespeichert sind, sicher bereitstellen. Durch Festlegung entsprechender Zugriffsrichtlinien für den Schlüsseltresor können Sie auch steuern, wer Zugriff auf das Zertifikat erhält. Ein weiterer Vorteil ist, dass Sie alle Ihre Zertifikate an einer zentralen Stelle in Azure Key Vault verwalten. Weitere Informationen finden Sie unter [Bereitstellen von Zertifikaten für VMs über einen vom Kunden verwalteten Schlüsseltresor](/archive/blogs/kv/updated-deploy-certificates-to-vms-from-customer-managed-key-vault).
 
-**Bewährte Methode** : Stellen Sie sicher, dass gelöschte Schlüsseltresore oder Schlüsseltresorobjekte wiederhergestellt werden können.   
-**Detail** : Das Löschen von Schlüsseltresoren oder Schlüsseltresorobjekten kann unbeabsichtigt oder böswillig geschehen. Aktivieren Sie die Funktionen für vorläufiges Löschen und Bereinigungsschutz von Key Vault, insbesondere für Schlüssel, die zum Verschlüsseln ruhender Daten verwendet werden. Das Löschen dieser Schlüssel ist gleichbedeutend mit einem Datenverlust, sodass Sie bei Bedarf in der Lage sein müssen, gelöschte Tresore und Tresorobjekte wiederherzustellen. Üben Sie regelmäßig Wiederherstellungsvorgänge in Key Vault.
+**Bewährte Methode**: Stellen Sie sicher, dass gelöschte Schlüsseltresore oder Schlüsseltresorobjekte wiederhergestellt werden können.   
+**Detail**: Das Löschen von Schlüsseltresoren oder Schlüsseltresorobjekten kann unbeabsichtigt oder böswillig geschehen. Aktivieren Sie die Funktionen für vorläufiges Löschen und Bereinigungsschutz von Key Vault, insbesondere für Schlüssel, die zum Verschlüsseln ruhender Daten verwendet werden. Das Löschen dieser Schlüssel ist gleichbedeutend mit einem Datenverlust, sodass Sie bei Bedarf in der Lage sein müssen, gelöschte Tresore und Tresorobjekte wiederherzustellen. Üben Sie regelmäßig Wiederherstellungsvorgänge in Key Vault.
 
 > [!NOTE]
-> Falls ein Benutzer für eine Key Vault-Verwaltungsebene über Mitwirkungsberechtigungen (RBAC) verfügt, kann er sich durch Festlegen einer Key Vault-Zugriffsrichtlinie selbst Zugriff auf die Datenebene gewähren. Es wird empfohlen, sehr genau darauf zu achten, wer als Mitwirkender Zugriff auf Ihre Key Vault-Instanzen hat, um sicherzustellen, dass nur autorisierte Benutzer auf Ihre Key Vault-Instanzen, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
+> Falls ein Benutzer über Mitwirkungsberechtigungen (Azure RBAC) für eine Schlüsseltresor-Verwaltungsebene verfügt, kann er sich durch Festlegen einer Schlüsseltresor-Zugriffsrichtlinie selbst Zugriff auf die Datenebene gewähren. Es wird empfohlen, sehr genau darauf zu achten, wer als Mitwirkender Zugriff auf Ihre Key Vault-Instanzen hat, um sicherzustellen, dass nur autorisierte Benutzer auf Ihre Key Vault-Instanzen, Schlüssel, Geheimnisse und Zertifikate zugreifen und diese verwalten können.
 >
 >
 
@@ -73,23 +73,23 @@ Verwenden Sie RBAC, um zu steuern, worauf Benutzer Zugriff haben. Wenn Sie also 
 
 Da die große Mehrzahl der Angriffe auf den Endbenutzer zielt, ist der Endpunkt einer der Hauptangriffspunkte. Ein Angreifer, der den Endpunkt zum Ziel hat, kann die Anmeldeinformationen des Benutzers verwenden, um Zugriff auf die Daten der Organisation zu erhalten. Die meisten Angriffe auf Endpunkte können sich zunutze machen, dass Benutzer Administratoren ihrer lokalen Arbeitsstationen sind.
 
-**Bewährte Methode** : Verwenden Sie eine sichere Verwaltungsarbeitsstation, um sensible Konten, Aufgaben und Daten zu schützen.   
-**Detail** : Verwenden Sie eine [Arbeitsstation mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations), um die Angriffsfläche bei Arbeitsstationen zu reduzieren. Diese sicheren Verwaltungsarbeitsstationen helfen Ihnen, einige dieser Angriffe zu minimieren und damit Ihre Daten sicherer zu machen.
+**Bewährte Methode**: Verwenden Sie eine sichere Verwaltungsarbeitsstation, um sensible Konten, Aufgaben und Daten zu schützen.   
+**Detail**: Verwenden Sie eine [Arbeitsstation mit privilegiertem Zugriff](/windows-server/identity/securing-privileged-access/privileged-access-workstations), um die Angriffsfläche bei Arbeitsstationen zu reduzieren. Diese sicheren Verwaltungsarbeitsstationen helfen Ihnen, einige dieser Angriffe zu minimieren und damit Ihre Daten sicherer zu machen.
 
-**Bewährte Methode** : Sorgen Sie für Endpunktsicherheit.   
-**Detail** : Erzwingen Sie die Einhaltung der Sicherheitsrichtlinien auf allen Geräten, die die Daten verwenden, unabhängig vom Speicherort der Daten (in der Cloud oder lokal).
+**Bewährte Methode**: Sorgen Sie für Endpunktsicherheit.   
+**Detail**: Erzwingen Sie die Einhaltung der Sicherheitsrichtlinien auf allen Geräten, die die Daten verwenden, unabhängig vom Speicherort der Daten (in der Cloud oder lokal).
 
 ## <a name="protect-data-at-rest"></a>Schutz gespeicherter Daten
 
 Die [Verschlüsselung ruhender Daten](https://cloudblogs.microsoft.com/microsoftsecure/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) ist eine obligatorische Maßnahme für Datenschutz, Compliance und Datenhoheit.
 
-**Bewährte Methode** : Wenden Sie Datenträgerverschlüsselung zum Schutz Ihrer Daten an.   
-**Detail** : Verwenden Sie [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md). Damit können IT-Administratoren die Datenträger virtueller IaaS-Computer unter Windows und Linux verschlüsseln. Disk Encryption kombiniert die Branchenstandardfeatures BitLocker (Windows) und dm-crypt (Linux), um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
+**Bewährte Methode**: Wenden Sie Datenträgerverschlüsselung zum Schutz Ihrer Daten an.   
+**Detail**: Verwenden Sie [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md). Damit können IT-Administratoren die Datenträger virtueller IaaS-Computer unter Windows und Linux verschlüsseln. Disk Encryption kombiniert die Branchenstandardfeatures BitLocker (Windows) und dm-crypt (Linux), um Volumeverschlüsselung für das Betriebssystem und die Datenträger bereitzustellen.
 
 In Azure Storage und Azure SQL-Datenbank werden ruhende Daten standardmäßig verschlüsselt, und viele Dienste bieten eine Verschlüsselung als Option an. Mithilfe von Azure Key Vault können Sie die Kontrolle über Schlüssel für den Zugriff und das Verschlüsseln Ihrer Daten behalten. Weitere Informationen finden Sie unter [Unterstützung für Verschlüsselungsmodelle von Azure-Ressourcenanbietern](encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
 **Bewährte Methoden:** Verwenden Sie die Verschlüsselung, um das Risiko unberechtigter Datenzugriffe zu reduzieren.   
-**Detail** : Verschlüsseln Sie Ihre Laufwerke, bevor diese mit sensiblen Daten beschrieben werden.
+**Detail**: Verschlüsseln Sie Ihre Laufwerke, bevor diese mit sensiblen Daten beschrieben werden.
 
 Organisationen, die keine Datenverschlüsselung erzwingen, sind anfälliger für Datenintegritätsprobleme. So können beispielsweise nicht autorisierte Benutzer Daten aus kompromittierten Konten entwenden oder sich unberechtigt Zugang zu unverschlüsselten Daten verschaffen. Unternehmen müssen außerdem nachweisen, dass sie gewissenhaft sind und die richtigen Sicherheitsprotokolle zur Verbesserung ihrer Datensicherheit verwenden, um den Branchenbestimmungen zu entsprechen.
 
@@ -101,17 +101,17 @@ Für Daten, die sich zwischen Ihrer lokalen Infrastruktur und Azure bewegen, sol
 
 Nachfolgend sind bewährte Methoden für die Sicherheit bei Verwendung von Azure VPN Gateway, SSL/TLS und HTTPS aufgeführt.
 
-**Bewährte Methode** : Sichern Sie den Zugriff von mehreren lokalen Arbeitsstationen auf ein virtuelles Azure-Netzwerk.   
-**Detail** : Verwenden Sie [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
+**Bewährte Methode**: Sichern Sie den Zugriff von mehreren lokalen Arbeitsstationen auf ein virtuelles Azure-Netzwerk.   
+**Detail**: Verwenden Sie [Site-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-**Bewährte Methode** : Sichern Sie den Zugriff von einer einzelnen lokalen Arbeitsstation auf ein virtuelles Azure-Netzwerk.   
-**Detail** : Verwenden Sie [Point-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
+**Bewährte Methode**: Sichern Sie den Zugriff von einer einzelnen lokalen Arbeitsstation auf ein virtuelles Azure-Netzwerk.   
+**Detail**: Verwenden Sie [Point-to-Site-VPN](../../vpn-gateway/vpn-gateway-howto-point-to-site-classic-azure-portal.md).
 
-**Bewährte Methode** : Verschieben Sie größere Datasets über eine dedizierte Hochgeschwindigkeits-WAN-Verbindung.   
-**Detail** : Verwenden Sie [ExpressRoute](../../expressroute/expressroute-introduction.md). Falls Sie sich für die Verwendung von ExpressRoute entscheiden, können Sie die Daten auch auf Anwendungsebene verschlüsseln, indem Sie SSL/TLS oder andere Protokolle für zusätzlichen Schutz verwenden.
+**Bewährte Methode**: Verschieben Sie größere Datasets über eine dedizierte Hochgeschwindigkeits-WAN-Verbindung.   
+**Detail**: Verwenden Sie [ExpressRoute](../../expressroute/expressroute-introduction.md). Falls Sie sich für die Verwendung von ExpressRoute entscheiden, können Sie die Daten auch auf Anwendungsebene verschlüsseln, indem Sie SSL/TLS oder andere Protokolle für zusätzlichen Schutz verwenden.
 
-**Bewährte Methode** : Führen Sie die Interaktion mit Azure Storage über das Azure-Portal aus.   
-**Detail** : Alle Transaktionen erfolgen über HTTPS. Für die Interaktion mit [Azure Storage](https://azure.microsoft.com/services/storage/) können Sie auch die [Storage-REST-API](/rest/api/storageservices/) über HTTPS verwenden.
+**Bewährte Methode**: Führen Sie die Interaktion mit Azure Storage über das Azure-Portal aus.   
+**Detail**: Alle Transaktionen erfolgen über HTTPS. Für die Interaktion mit [Azure Storage](https://azure.microsoft.com/services/storage/) können Sie auch die [Storage-REST-API](/rest/api/storageservices/) über HTTPS verwenden.
 
 Organisationen, die die Daten während der Übertragung nicht schützen, sind anfälliger für [Man-in-the-Middle-Angriffe](/previous-versions/office/skype-server-2010/gg195821(v=ocs.14)), [Abhöraktionen](/previous-versions/office/skype-server-2010/gg195641(v=ocs.14)) und Session Hijacking. Bei diesen Angriffen kann es sich um den ersten Schritt zur Zugriffsgewinnung auf vertrauliche Daten handeln.
 

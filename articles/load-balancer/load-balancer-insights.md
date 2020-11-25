@@ -11,22 +11,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/27/2020
 ms.author: errobin
-ms.openlocfilehash: 2168ee05ab93655cc0ad87221bff29c1b6b1035d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 63b91194c9ffb10fd8f4c5f1341eaf74bc81f5e1
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897568"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94694880"
 ---
 # <a name="using-insights-to-monitor-and-configure-your-azure-load-balancer"></a>Verwenden von Erkenntnissen zum Überwachen und Konfigurieren Ihrer Azure Load Balancer-Instanz
 
-[Azure Monitor für Netzwerke](https://docs.microsoft.com/azure/azure-monitor/insights/insights-overview#azure-monitor-for-networks-preview) bietet Visualisierungen der funktionalen Abhängigkeiten und vorkonfigurierte Metrikdashboards für Ihre Load Balancer-Instanzen. Diese visuellen Elemente helfen Ihnen, fundierte Entwurfsentscheidungen zu treffen und Fehler schnell zu lokalisieren, zu diagnostizieren und zu beheben.
+Azure Monitor für Netzwerke bietet Visualisierungen der funktionalen Abhängigkeiten und vorkonfigurierte Metrikdashboards für Ihre Load Balancer-Instanzen. Diese visuellen Elemente helfen Ihnen, fundierte Entwurfsentscheidungen zu treffen und Fehler schnell zu lokalisieren, zu diagnostizieren und zu beheben.
 
 >[!NOTE] 
 >Beachten Sie, dass sich dieses Feature in der Vorschauphase befindet und die Ansicht der funktionalen Abhängigkeiten sowie das vorkonfigurierte Dashboard noch geändert werden können, um das Feature zu verbessern.
 
 >[!IMPORTANT]
->Load Balancer Standard ist erforderlich, um Metriken aus dem Load Balancer-Namespace im vorkonfigurierten Metrikdashboard anzuzeigen. Sie können zwar weiterhin Metriken der VM, der VM-Skalierungsgruppe und der Verbindungsmonitor-Namespaces anzeigen, es wird jedoch empfohlen, für alle Produktionsworkloads ein [Upgrade auf Standard](https://docs.microsoft.com/azure/load-balancer/upgrade-basic-standard) durchführen, um die umfangreichen Load Balancer-Metriken verwenden zu können.
+>Load Balancer Standard ist erforderlich, um Metriken aus dem Load Balancer-Namespace im vorkonfigurierten Metrikdashboard anzuzeigen. Sie können zwar weiterhin Metriken der VM, der VM-Skalierungsgruppe und der Verbindungsmonitor-Namespaces anzeigen, es wird jedoch empfohlen, für alle Produktionsworkloads ein [Upgrade auf Standard](./upgrade-basic-standard.md) durchführen, um die umfangreichen Load Balancer-Metriken verwenden zu können.
 
 ## <a name="functional-dependency-view"></a>Ansicht der funktionalen Abhängigkeiten
 
@@ -40,7 +40,7 @@ Für Load Balancer Standard werden Ihre Back-End-Pool-Ressourcen gemäß dem Int
 
 ## <a name="metrics-dashboard"></a>Metrikdashboard
 
-Sie können auf dem Blatt „Erkenntnisse“ Ihrer Load Balancer-Instanz ausführlichere Metriken auswählen, um eine vorkonfigurierte [Azure Monitor-Arbeitsmappe](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) mit visuellen Elementen zu Metriken anzuzeigen, die für bestimmte Aspekte Ihrer Load Balancer-Instanz wichtig sind. Ganz oben auf diesem Dashboard werden der Load Balancer-Status und Links zu relevanter Dokumentation angezeigt.
+Sie können auf dem Blatt „Erkenntnisse“ Ihrer Load Balancer-Instanz ausführlichere Metriken auswählen, um eine vorkonfigurierte [Azure Monitor-Arbeitsmappe](../azure-monitor/platform/workbooks-overview.md) mit visuellen Elementen zu Metriken anzuzeigen, die für bestimmte Aspekte Ihrer Load Balancer-Instanz wichtig sind. Ganz oben auf diesem Dashboard werden der Load Balancer-Status und Links zu relevanter Dokumentation angezeigt.
 
 Als Erstes wird die Registerkarte „Übersicht“ angezeigt. Sie können durch die verfügbaren Registerkarten navigieren, die jeweils visuelle Elemente zu einem bestimmten Aspekt Ihrer Load Balancer-Instanz enthalten. Unten auf jeder Registerkarte des Dashboards finden Sie passende Anleitungen.
 
@@ -68,16 +68,16 @@ Auf der Registerkarte „Datendurchsatz“ können Sie den gesamten Durchsatz f�
 ### <a name="flow-distribution"></a>Flowverteilung
 Mithilfe der Registerkarte „Flowverteilung“ können Sie die Anzahl der Flows visualisieren und verwalten, die von Ihren Back-End-Instanzen empfangen und generiert werden. Sie zeigt die Erstellungsrate und die Anzahl der Flows für ein- und ausgehenden Datenverkehr sowie den Netzwerkdatenverkehr, den die einzelnen virtuellen Computer und Instanzen von VM-Skalierungsgruppen empfangen. 
 
-Diese Ansichten können Ihnen Aufschluss darüber geben, ob Ihre Load Balancer-Konfiguration oder die Datenverkehrsmuster zu einem unausgeglichenen Datenverkehr führen. Angenommen beispielsweise, Sie haben Sitzungsaffinität konfiguriert, aber ein einzelner Client führt eine unverhältnismäßig hohe Anzahl von Anforderungen durch. In diesem Fall werden Sie informiert, wenn Sie den [Grenzwert pro virtuellem Computer](https://docs.microsoft.com/azure/virtual-network/virtual-machine-network-throughput#flow-limits-and-recommendations) für Ihre Computergröße erreichen.
+Diese Ansichten können Ihnen Aufschluss darüber geben, ob Ihre Load Balancer-Konfiguration oder die Datenverkehrsmuster zu einem unausgeglichenen Datenverkehr führen. Angenommen beispielsweise, Sie haben Sitzungsaffinität konfiguriert, aber ein einzelner Client führt eine unverhältnismäßig hohe Anzahl von Anforderungen durch. In diesem Fall werden Sie informiert, wenn Sie den [Grenzwert pro virtuellem Computer](../virtual-network/virtual-machine-network-throughput.md#flow-limits-and-recommendations) für Ihre Computergröße erreichen.
 
 ### <a name="connection-monitors"></a>Verbindungsmonitore
-Auf der Registerkarte „Verbindungsmonitore“ wird die Roundtriplatenz auf einer globalen Karte für alle [Verbindungsmonitore](https://docs.microsoft.com/azure/network-watcher/connection-monitor) angezeigt, die Sie konfiguriert haben. Diese visuellen Elemente bieten nützliche Informationen für Dienste mit strengen Latenzanforderungen. Damit Sie Ihre Anforderungen erfüllen können, müssen Sie möglicherweise zusätzliche regionale Bereitstellungen hinzufügen oder auf ein [regionsübergreifendes Lastenausgleichsmodell](https://docs.microsoft.com/azure/load-balancer/cross-region-overview) umstellen.
+Auf der Registerkarte „Verbindungsmonitore“ wird die Roundtriplatenz auf einer globalen Karte für alle [Verbindungsmonitore](../network-watcher/connection-monitor.md) angezeigt, die Sie konfiguriert haben. Diese visuellen Elemente bieten nützliche Informationen für Dienste mit strengen Latenzanforderungen. Damit Sie Ihre Anforderungen erfüllen können, müssen Sie möglicherweise zusätzliche regionale Bereitstellungen hinzufügen oder auf ein [regionsübergreifendes Lastenausgleichsmodell](./cross-region-overview.md) umstellen.
 
 ### <a name="metric-definitions"></a>Metrikdefinitionen
-Die Registerkarte „Metrikdefinitionen“ enthält alle im Artikel [Mehrdimensionale Metriken](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics) aufgeführten Informationen.
+Die Registerkarte „Metrikdefinitionen“ enthält alle im Artikel [Mehrdimensionale Metriken](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics) aufgeführten Informationen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Sehen Sie sich das Dashboard an, und geben Sie über den unten stehenden Link Feedback, wenn Sie Verbesserungsvorschläge haben.
-* [Lesen Sie die Dokumentation zu Metriken, um zu verstehen, wie die einzelnen Metriken berechnet werden.](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-diagnostics#multi-dimensional-metrics)
-* [Erstellen Sie Verbindungsmonitore für Ihre Load Balancer-Instanzen.](https://docs.microsoft.com/azure/network-watcher/connection-monitor)
-* [Erstellen Sie Ihre eigenen Arbeitsmappen.](https://docs.microsoft.com/azure/azure-monitor/platform/workbooks-overview) Anregungen erhalten Sie durch Klicken auf die Schaltfläche „Bearbeiten“ auf Ihrem detaillierten Metrikdashboard.
+* [Lesen Sie die Dokumentation zu Metriken, um zu verstehen, wie die einzelnen Metriken berechnet werden.](./load-balancer-standard-diagnostics.md#multi-dimensional-metrics)
+* [Erstellen Sie Verbindungsmonitore für Ihre Load Balancer-Instanzen.](../network-watcher/connection-monitor.md)
+* [Erstellen Sie Ihre eigenen Arbeitsmappen.](../azure-monitor/platform/workbooks-overview.md) Anregungen erhalten Sie durch Klicken auf die Schaltfläche „Bearbeiten“ auf Ihrem detaillierten Metrikdashboard.

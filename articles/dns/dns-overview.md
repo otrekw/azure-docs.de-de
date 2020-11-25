@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: d59f166897674e9dcff8086b8f5c906605155ee3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87924273"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965645"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
 Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [App Service-Domänen](https://docs.microsoft.com/azure/app-service/manage-custom-dns-buy-domain#buy-the-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [App Service-Domänen](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
 Azure DNS bietet folgende Features.
 
@@ -29,11 +29,11 @@ DNS-Domänen in Azure DNS werden im globalen Azure-Netzwerk von DNS-Servern geho
 
  Azure DNS basiert auf Azure Resource Manager, wodurch beispielsweise folgende Features zur Verfügung stehen:
 
-* [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), um zu steuern, wer Zugriff auf bestimmte Aktionen für Ihre Organisation hat
+* [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../azure-resource-manager/management/overview.md), um zu steuern, wer Zugriff auf bestimmte Aktionen für Ihre Organisation hat
 
-* [Aktivitätsprotokolle](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), um nachzuverfolgen, wie ein Benutzer in Ihrer Organisation eine Ressource geändert hat, oder um im Rahmen der Problembehandlung Fehler zu finden.
+* [Aktivitätsprotokolle](../azure-resource-manager/management/overview.md), um nachzuverfolgen, wie ein Benutzer in Ihrer Organisation eine Ressource geändert hat, oder um im Rahmen der Problembehandlung Fehler zu finden.
 
-* [Ressourcensperre](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources), um ein Abonnement, eine Ressourcengruppe oder eine Ressource zu sperren. Eine Sperre verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern.
+* [Ressourcensperre](../azure-resource-manager/management/lock-resources.md), um ein Abonnement, eine Ressourcengruppe oder eine Ressource zu sperren. Eine Sperre verhindert, dass andere Benutzer in Ihrer Organisation versehentlich wichtige Ressourcen löschen oder ändern.
 
 Weitere Informationen finden Sie unter [Schützen von DNS-Zonen und -Einträgen](dns-protect-zones-recordsets.md). 
 
@@ -67,6 +67,6 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-DNS-Aliaseinträ
 
 * Weitere Informationen zu DNS-Zonen und -Einträgen finden Sie in der [Übersicht über DNS-Zonen und -Einträge](dns-zones-records.md).
 
-* Informationen zur Erstellung einer Zone in Azure DNS finden Sie unter [Erstellen einer DNS-Zone](./dns-getstarted-create-dnszone-portal.md).
+* Informationen zur Erstellung einer Zone in Azure DNS finden Sie unter [Erstellen einer DNS-Zone](./dns-getstarted-portal.md).
 
 * Häufig gestellte Fragen zu Azure DNS finden Sie unter der [Häufig gestellte Fragen zu Azure DNS](dns-faq.md).

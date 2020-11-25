@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 09/11/2020
-ms.openlocfilehash: e72acb532a33d0b3751bb8ad5051b1a3df4d7514
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 584e1e943f215aa4a69368fb71cb3053b1444a01
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491476"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94660218"
 ---
 # <a name="common-questions-about-the-microsoft-commercial-marketplace"></a>Häufig gestellte Fragen zum kommerziellen Marketplace von Microsoft
 
@@ -87,7 +87,7 @@ Der kommerzielle Marketplace funktioniert nach einem Agenturmodell. Der Kunde un
 
 Als Herausgeber legen Sie die Nutzungsbedingungen für Ihre Softwarelösung fest, die von Kunden im Rahmen der Kaufabwicklung akzeptiert werden müssen. Um dies zu vereinfachen und zu beschleunigen, stellen wir einen Standardvertrag bereit, den Sie in Ihre Geschäftsbedingungen aufnehmen können. Auf diese Weise können Kunden den Standardvertrag einmal prüfen, die Genehmigung der Rechts- und Einkaufsteams einholen und sich dann auf die jeweiligen Zusatzvereinbarungen für ein Angebot konzentrieren.
 
-Sie können Änderungen vornehmen, die für alle Kunden gelten, oder die Bedingungen speziell auf bestimmte Kunden abstimmen. Sie können Ihre Geschäftsbedingungen auch vollständig anpassen. Diese können in ein Textfeld eingegeben oder auf einer Website gehostet werden, die als Webadresse angezeigt wird.
+Sie können Änderungen vornehmen, die für alle Kunden gelten, oder die Bedingungen speziell auf bestimmte Kunden abstimmen. Sie können Ihre Geschäftsbedingungen auch vollständig anpassen und sie in ein Textfeld in Partner Center eingeben.
 
 Weitere Informationen finden Sie unter [Standardvertrag für den kommerziellen Microsoft-Marketplace](standard-contract.md).
 
@@ -99,9 +99,9 @@ Ja, der Azure Government Marketplace ist in Azure Government-Regionen verfügbar
 
 Es gibt vier relevante Rollen, die den Zugriff auf das Partner Center steuern.
 
-- *Manager* : Bietet Berechtigungen zum Verwalten von Partner Center-Benutzern im Verzeichnis sowie zum Erstellen und Aktualisieren von Angeboten.
-- *Entwickler* : Ermöglicht einem Benutzer das Erstellen und Aktualisieren von Angeboten.
-- *Mitwirkender im Finanzbereich* : Bietet Berechtigungen zum Anzeigen von Auszahlungsberichten.
+- *Manager*: Bietet Berechtigungen zum Verwalten von Partner Center-Benutzern im Verzeichnis sowie zum Erstellen und Aktualisieren von Angeboten.
+- *Entwickler*: Ermöglicht einem Benutzer das Erstellen und Aktualisieren von Angeboten.
+- *Mitwirkender im Finanzbereich*: Bietet Berechtigungen zum Anzeigen von Auszahlungsberichten.
 - *Besitzer:* Kann das Auszahlungskonto und das Steuerprofil einrichten. Der Benutzer, der die Herausgebervereinbarung akzeptiert hat, wird standardmäßig der Besitzer.
 
 Zum Erstellen neuer Benutzerkonten oder zum Einladen von Gastkonten im zugrunde liegenden Verzeichnis sind *globale Administratorberechtigungen* für Azure Active Directory (Azure AD) erforderlich. Partner Center wendet Azure AD auf das Identitätsmodell an, und die Azure AD-Instanz einer Organisation wird häufig von IT- oder Sicherheitsteams der Organisation verwaltet und gesteuert.
@@ -195,7 +195,7 @@ Obwohl nicht alle Angebotstypen transaktionsfähig sind, können Sie dennoch Mil
 Ja, und es gibt sogar mehrere Möglichkeiten, kostenlose Testversionen anzubieten:
 
 - Die bevorzugte Methode ist das Hinzufügen eines kostenlosen Zeitraums zu Beginn eines kostenpflichtigen SaaS-Angebots (ein Monat) oder VM-Image-Angebots (ein oder drei Monate). Den Kunden werden Kosten von 0,00 (null) USD berechnet, und nach Ende des Testzeitraums wird das Abonnement automatisch in ein kostenpflichtiges Abonnement umgewandelt. Die Vertragslaufzeit beginnt dann an diesem Punkt.
-- Sie können eine SaaS-Angebotsliste erstellen, über die der Kunde zu einer Webadresse Ihrer Wahl geführt wird, um eine Testversion außerhalb des kommerziellen Marketplace zu starten. Einige Angebotstypen unterstützen eine *Testversion* , mit der Sie dem Kunden eine Demo zur Verfügung stellen können.
+- Sie können eine SaaS-Angebotsliste erstellen, über die der Kunde zu einer Webadresse Ihrer Wahl geführt wird, um eine Testversion außerhalb des kommerziellen Marketplace zu starten. Einige Angebotstypen unterstützen eine *Testversion*, mit der Sie dem Kunden eine Demo zur Verfügung stellen können.
 
 ### <a name="who-pays-for-the-underlying-azure-consumption"></a>Wer zahlt für die zugrunde liegende Azure-Nutzung?
 

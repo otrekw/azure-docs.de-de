@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-js
-ms.openlocfilehash: eebfa61632bc49d5df35c17ba2d2faca0382001c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 998d49e91d38a1f2fdc2503165ee99635e153027
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91336138"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001897"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
@@ -26,7 +26,7 @@ Zusätzliche Ressourcen:
 * [API-Referenzdokumentation](/javascript/api/@azure/storage-blob)
 * [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob)
 * [Paket (npm)](https://www.npmjs.com/package/@azure/storage-blob)
-* [Beispiele](https://docs.microsoft.com/azure/storage/common/storage-samples-javascript?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
+* [Beispiele](../common/storage-samples-javascript.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#blob-samples)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -66,7 +66,7 @@ In diesem Abschnitt wird beschrieben, wie ein Projekt zur Verwendung mit der Azu
 
 ### <a name="create-a-cors-rule"></a>Erstellen einer CORS-Regel
 
-Damit Ihre Webanwendung vom Client aus auf Blobspeicher zugreifen kann, müssen Sie Ihr Konto so konfigurieren, dass [Cross-Origin Resource Sharing (CORS)](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert ist.
+Damit Ihre Webanwendung vom Client aus auf Blobspeicher zugreifen kann, müssen Sie Ihr Konto so konfigurieren, dass [Cross-Origin Resource Sharing (CORS)](/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) aktiviert ist.
 
 Wählen Sie im Azure-Portal Ihr Speicherkonto aus. Navigieren Sie zum Definieren einer neuen CORS-Regel zum Abschnitt **Einstellungen**, und wählen Sie **CORS** aus. Im Rahmen dieser Schnellstartanleitung erstellen Sie eine offene CORS-Regel:
 
@@ -76,10 +76,10 @@ In der folgenden Tabelle werden die einzelnen CORS-Einstellungen beschrieben und
 
 |Einstellung  |Wert  | BESCHREIBUNG |
 |---------|---------|---------|
-| **ZULÄSSIGE URSPRÜNGE** | **\*** | Akzeptiert eine kommagetrennte Liste mit Domänen, die als zulässige Ursprünge festgelegt werden. Wenn Sie den Wert auf `*` festlegen, wird allen Domänen Zugriff auf das Speicherkonto gewährt. |
+| **ZULÄSSIGE URSPRÜNGE** | **\** _ | Akzeptiert eine kommagetrennte Liste mit Domänen, die als zulässige Ursprünge festgelegt werden. Wenn Sie den Wert auf `_` festlegen, wird allen Domänen Zugriff auf das Speicherkonto gewährt. |
 | **ZULÄSSIGE METHODEN** | **DELETE**, **GET**, **HEAD**, **MERGE**, **POST**, **OPTIONS** und **PUT** | Listet die zulässigen HTTP-Verben für das Speicherkonto auf. Wählen Sie für diese Schnellstartanleitung alle verfügbaren Optionen aus. |
-| **ZULÄSSIGE HEADER** | **\*** | Definiert eine Liste mit Anforderungsheadern (einschließlich Header mit Präfix), die vom Speicherkonto zugelassen werden. Wenn Sie den Wert auf `*` festlegen, wird allen Headern Zugriff gewährt. |
-| **VERFÜGBAR GEMACHTE HEADER** | **\*** | Listet die zulässigen Antwortheader für das Konto auf. Wenn Sie den Wert auf `*` festlegen, kann das Konto einen beliebigen Header senden. |
+| **ZULÄSSIGE HEADER** | **\** _ | Definiert eine Liste mit Anforderungsheadern (einschließlich Header mit Präfix), die vom Speicherkonto zugelassen werden. Wenn Sie den Wert auf `_` festlegen, wird allen Headern Zugriff gewährt. |
+| **VERFÜGBAR GEMACHTE HEADER** | **\** _ | Listet die zulässigen Antwortheader für das Konto auf. Wenn Sie den Wert auf `_` festlegen, kann das Konto einen beliebigen Header senden. |
 | **MAX. ALTER** | **86400** | Die maximale Zeit (in Sekunden), für die der Browser die Preflight-OPTIONS-Anforderung zwischenspeichert. Bei Verwendung des Werts *86.400* bleibt der Cache einen ganzen Tag erhalten. |
 
 Nachdem Sie die Felder mit den Werten in dieser Tabelle ausgefüllt haben, klicken Sie auf die Schaltfläche **Speichern**.
