@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/11/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-dotnet
-ms.openlocfilehash: ce75b5465d18f988d9dfd2b329c4157bab41ded9
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8755a600a1e6afaae4ebe7451e16f6632073587f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94534516"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95746590"
 ---
 # <a name="quickstart-extract-text-using-the-computer-vision-20-rest-api-ocr-operation-and-c"></a>Schnellstart: Extrahieren von Text mit dem OCR-Vorgang der REST-API von Maschinelles Sehen 2.0 und C#
 
 > [!IMPORTANT]
-> Falls Sie Text in den Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch, Spanisch oder vereinfachtes Chinesisch (Vorschauversion) extrahieren, empfehlen wir Ihnen, den neueren [Read-Vorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) zu nutzen. Es steht ein [C#-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text) zur Verfügung. 
+> Falls Sie Text in den Sprachen Englisch, Niederländisch, Französisch, Deutsch, Italienisch, Portugiesisch, Spanisch oder vereinfachtes Chinesisch (Vorschauversion) extrahieren, empfehlen wir Ihnen, den neueren [Read-Vorgang](../concept-recognizing-text.md) zu nutzen. Es steht ein [C#-Schnellstart](./csharp-hand-text.md) zur Verfügung. 
 
 In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, indem Sie das [OCR-Feature](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) der Maschinelles Sehen-REST-API verwenden. Mit diesem Feature können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
 
@@ -32,7 +32,7 @@ In dieser Schnellstartanleitung extrahieren Sie gedruckten Text aus einem Bild, 
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* [Erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` nennen.
+* [Erstellen Sie Umgebungsvariablen](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` nennen.
 
 ## <a name="create-and-run-the-sample-application"></a>Erstellen und Ausführen der Beispielanwendung
 
