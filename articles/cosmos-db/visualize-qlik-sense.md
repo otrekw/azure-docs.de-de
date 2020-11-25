@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 2401786a82b6a3e5bf6c6a893a8e7cd3656f3402
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340429"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996955"
 ---
 # <a name="connect-qlik-sense-to-azure-cosmos-db-and-visualize-your-data"></a>Verbinden von Qlik Sense mit Azure Cosmos DB und Visualisieren Ihrer Daten
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -60,9 +60,9 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass die folg
 
 2. Nachdem die neue App erfolgreich erstellt wurde, können Sie **App öffnen** und dann **Add data from files and other sources** (Daten aus Dateien und anderen Quellen hinzufügen) wählen. 
 
-3. Wählen Sie aus den Datenquellen die Option **ODBC** , um das Fenster für die Einrichtung der neuen Verbindung zu öffnen. 
+3. Wählen Sie aus den Datenquellen die Option **ODBC**, um das Fenster für die Einrichtung der neuen Verbindung zu öffnen. 
 
-4. Wechseln Sie zu **Benutzer-DSN** , und wählen Sie die zuvor erstellte ODBC-Verbindung aus. Geben Sie einen Namen für die Verbindung an, und wählen Sie **Erstellen**. 
+4. Wechseln Sie zu **Benutzer-DSN**, und wählen Sie die zuvor erstellte ODBC-Verbindung aus. Geben Sie einen Namen für die Verbindung an, und wählen Sie **Erstellen**. 
 
    :::image type="content" source="./media/visualize-qlik-sense/create-new-connection.png" alt-text="Erstellen einer neuen Verbindung":::
 
@@ -70,7 +70,7 @@ Bevor Sie diesen Artikel durcharbeiten, sollten Sie sicherstellen, dass die folg
 
    :::image type="content" source="./media/visualize-qlik-sense/choose-database-and-collection.png" alt-text="Auswählen der Datenbank und Sammlung"::: 
 
-6. Wählen Sie als Nächstes die Option **Daten hinzufügen** , um die Daten in Qlik Sense zu laden. Nachdem Sie Daten in Qlik Sense geladen haben, können Sie Erkenntnisse generieren und Analysen für die Daten durchführen. Sie können entweder die Erkenntnisse nutzen oder Ihre eigene App erstellen, um die Verkäufe von Videospielen zu erkunden. In der folgenden Abbildung ist die Visualisierung der Daten dargestellt: 
+6. Wählen Sie als Nächstes die Option **Daten hinzufügen**, um die Daten in Qlik Sense zu laden. Nachdem Sie Daten in Qlik Sense geladen haben, können Sie Erkenntnisse generieren und Analysen für die Daten durchführen. Sie können entweder die Erkenntnisse nutzen oder Ihre eigene App erstellen, um die Verkäufe von Videospielen zu erkunden. In der folgenden Abbildung ist die Visualisierung der Daten dargestellt: 
 
    :::image type="content" source="./media/visualize-qlik-sense/visualize-data.png" alt-text="Visualisieren von Daten":::
 

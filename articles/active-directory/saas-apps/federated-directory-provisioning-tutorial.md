@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
 ms.openlocfilehash: 8ca7654d930247f70d85cbc20fbbeb961223f05f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359798"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998361"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Federated Directory für die automatische Benutzerbereitstellung
 
@@ -55,7 +55,7 @@ Bevor Sie Federated Directory für die automatische Benutzerbereitstellung mit A
 
     :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit einem Feld für die Eingabe eines Firmennamens. Anmeldeschaltflächen sind ebenfalls sichtbar." border="false":::
 
-2. Navigieren Sie zu **Verzeichnisse > Benutzerverzeichnisse** , und wählen Sie Ihren Mandanten aus. 
+2. Navigieren Sie zu **Verzeichnisse > Benutzerverzeichnisse**, und wählen Sie Ihren Mandanten aus. 
 
     :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Screenshot der Federated Directory-Verwaltungskonsole mit hervorgehobenen Verzeichnissen und der Option zum Testen von Federated Directory mit Azure AD" border="false":::
 
@@ -82,11 +82,11 @@ Bevor Sie Federated Directory für die automatische Benutzerbereitstellung mit A
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
@@ -134,7 +134,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld „Mandanten-URL“ `https://api.federated.directory/v2/` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Federated Directory abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Federated Directory herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Federated Directory-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld „Mandanten-URL“ `https://api.federated.directory/v2/` ein. Geben Sie im Feld **Geheimes Token** den Wert ein, den Sie zuvor aus Federated Directory abgerufen und gespeichert haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Federated Directory herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Federated Directory-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -149,7 +149,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
     :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Screenshot des Abschnitts „Zuordnungen“. Unter „Name“ ist die Option „Azure Active Directory-Benutzer mit Federated Directory synchronisieren“ hervorgehoben." border="false":::
     
     
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Federated Directory synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Federated Directory für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Federated Directory synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Federated Directory für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Screenshot der Seite „Attributzuordnungen“. In einer Tabelle werden Attribute für Azure Active Directory und Federated Directory sowie die entsprechende Rangfolge aufgelistet." border="false":::
     

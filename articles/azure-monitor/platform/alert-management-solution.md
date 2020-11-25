@@ -7,11 +7,11 @@ author: bwren
 ms.author: bwren
 ms.date: 01/19/2018
 ms.openlocfilehash: adc29916c6b674531d7b0e8fcdd4e151b4a17bde
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677564"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997255"
 ---
 # <a name="alert-management-solution-in-azure-log-analytics"></a>Warnungsverwaltungslösung in Azure Log Analytics
 
@@ -20,7 +20,7 @@ ms.locfileid: "92677564"
 Die Alert Management-Lösung unterstützt Sie beim Analysieren aller Warnungen in Ihrem Log Analytics-Repository.  Diese Warnungen können aus einer Vielzahl von Quellen stammen, einschließlich der [von Log Analytics erstellten](./alerts-overview.md) oder [aus Nagios oder Zabbix importierten](../learn/quick-collect-linux-computer.md). Die Lösung importiert auch Warnungen aus beliebigen [verbundenen System Center Operations Manager-Verwaltungsgruppen](./om-agents.md).
 
 ## <a name="prerequisites"></a>Voraussetzungen
-Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit dem Typ **Warnung** , sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
+Die Lösung funktioniert mit allen Einträgen im Log Analytics-Repository mit dem Typ **Warnung**, sodass Sie die jeweilige erforderliche Konfiguration ausführen müssen, um diese Datensätze zu sammeln.
 
 - Für Log Analytics-Warnungen müssen Sie [Warnungsregeln erstellen](./alerts-overview.md), um Warnungsdatensätze direkt im Repository zu erstellen.
 - Für Warnungen von Nagios und Zabbix müssen Sie [diese Server konfigurieren](../learn/quick-collect-linux-computer.md), sodass sie Warnungen an Log Analytics senden.
@@ -56,14 +56,14 @@ Wenn Sie dem Log Analytics-Arbeitsbereich die Warnungsverwaltungslösung hinzuf�
 
 ![Kachel „Alert Management“](media/alert-management-solution/tile.png)
 
-Klicken Sie auf die Kachel **Alert Management** , um das Dashboard **Alert Management** zu öffnen.  Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind.  In jeder Spalte sind die zehn wichtigsten Warnungen nach ihrer Anzahl aufgeführt. Dies richtet sich jeweils nach den Spaltenkriterien für den angegebenen Bereich und Zeitraum.  Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie unten in der Spalte auf **Alle anzeigen** oder auf die Spaltenüberschrift klicken.
+Klicken Sie auf die Kachel **Alert Management**, um das Dashboard **Alert Management** zu öffnen.  Das Dashboard enthält die Spalten, die in der folgenden Tabelle angegeben sind.  In jeder Spalte sind die zehn wichtigsten Warnungen nach ihrer Anzahl aufgeführt. Dies richtet sich jeweils nach den Spaltenkriterien für den angegebenen Bereich und Zeitraum.  Sie können eine Protokollsuche durchführen, mit der die gesamte Liste ausgegeben wird, indem Sie unten in der Spalte auf **Alle anzeigen** oder auf die Spaltenüberschrift klicken.
 
 | Column | BESCHREIBUNG |
 |:--- |:--- |
 | Kritische Warnungen |Alle Warnungen mit dem Schweregrad „Kritisch“, gruppiert nach Warnungsname.  Klicken Sie auf einen Warnungsnamen, um eine Protokollsuche durchzuführen, mit der alle Datensätze für die Warnung zurückgegeben werden. |
 | Warnungen |Alle Warnungen mit dem Schweregrad „Warnung“, gruppiert nach Warnungsname.  Klicken Sie auf einen Warnungsnamen, um eine Protokollsuche durchzuführen, mit der alle Datensätze für die Warnung zurückgegeben werden. |
-| Aktive System Center Operations Manager-Warnungen |Alle von Operations Manager gesammelten Warnungen mit einem anderen Zustand als *Geschlossen* , gruppiert nach der Quelle, die die Warnung generiert hat |
-| Alle aktiven Warnungen |Alle Warnungen mit einem beliebigen Schweregrad, gruppiert nach dem Namen der Warnung. Umfasst nur Operations Manager-Warnungen mit einem anderen Zustand als *Geschlossen* . |
+| Aktive System Center Operations Manager-Warnungen |Alle von Operations Manager gesammelten Warnungen mit einem anderen Zustand als *Geschlossen*, gruppiert nach der Quelle, die die Warnung generiert hat |
+| Alle aktiven Warnungen |Alle Warnungen mit einem beliebigen Schweregrad, gruppiert nach dem Namen der Warnung. Umfasst nur Operations Manager-Warnungen mit einem anderen Zustand als *Geschlossen*. |
 
 Wenn Sie nach rechts scrollen, werden im Dashboard mehrere allgemeine Abfragen aufgeführt, auf die Sie klicken können, um eine [Protokollsuche](../log-query/log-query-overview.md) nach Warnungsdaten durchzuführen.
 

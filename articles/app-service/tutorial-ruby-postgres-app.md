@@ -6,11 +6,11 @@ ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747132"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95997915"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -125,7 +125,7 @@ In diesem Abschnitt erstellen Sie eine Azure Database for PostgreSQL-Serverinsta
 az extension add --name db-up
 ```
 
-Erstellen Sie die Postgres-Datenbankinstanz wie im folgenden Beispiel gezeigt mit dem Befehl [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) in Azure. Ersetzen Sie *\<postgresql-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<postgresql-name>.postgres.database.azure.com* ). Geben Sie für *\<admin-username>* und *\<admin-password>* Anmeldeinformationen ein, um einen Administratorbenutzer für diesen Postgres-Server zu erstellen.
+Erstellen Sie die Postgres-Datenbankinstanz wie im folgenden Beispiel gezeigt mit dem Befehl [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) in Azure. Ersetzen Sie *\<postgresql-name>* durch einen *eindeutigen* Namen (der Serverendpunkt ist *https://\<postgresql-name>.postgres.database.azure.com*). Geben Sie für *\<admin-username>* und *\<admin-password>* Anmeldeinformationen ein, um einen Administratorbenutzer für diesen Postgres-Server zu erstellen.
 
 <!-- Issue: without --location -->
 ```azurecli
@@ -157,7 +157,7 @@ In diesem Schritt stellen Sie eine Verbindung zwischen der Ruby on Rails-Anwendu
 
 ### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
 
-Öffnen Sie im Repository die Datei _config/database.yml_ . Ersetzen Sie am Ende der Datei die Produktionsvariablen durch den folgenden Code. 
+Öffnen Sie im Repository die Datei _config/database.yml_. Ersetzen Sie am Ende der Datei die Produktionsvariablen durch den folgenden Code. 
 
 ```txt
 production:
@@ -316,7 +316,7 @@ remote: Running deployment command...
 
 Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
-:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Screenshot: Ruby on Rails-App-Beispiel mit dem Titel „Aufgaben“":::
+:::image type="content" source="./media/tutorial-ruby-postgres-app/ruby-postgres-in-azure.png" alt-text="Screenshot: Azure-App-Beispiel mit dem Titel „Aufgaben“, das zeigt, wie der Liste Aufgaben hinzugefügt werden":::
 
 Glückwunsch! Sie führen eine datengesteuerte Ruby on Rails-App in Azure App Service aus.
 
@@ -347,7 +347,7 @@ rake db:migrate
 
 ### <a name="update-application-logic"></a>Aktualisieren der Anwendungslogik
 
-Öffnen Sie die Datei *app/controllers/tasks_controller.rb* . Suchen Sie am Ende der Datei nach der folgenden Zeile:
+Öffnen Sie die Datei *app/controllers/tasks_controller.rb*. Suchen Sie am Ende der Datei nach der folgenden Zeile:
 
 ```rb
 params.require(:task).permit(:Description)
@@ -361,7 +361,7 @@ params.require(:task).permit(:Description, :Done)
 
 ### <a name="update-the-views"></a>Aktualisieren der Ansichten
 
-Öffnen Sie die Datei *app/views/tasks/_form.html.erb* , bei der es sich um das Bearbeitungsformular handelt.
+Öffnen Sie die Datei *app/views/tasks/_form.html.erb*, bei der es sich um das Bearbeitungsformular handelt.
 
 Suchen Sie die Zeile `<%=f.error_span(:Description) %>`, und fügen Sie direkt darunter den folgenden Code ein:
 
@@ -372,7 +372,7 @@ Suchen Sie die Zeile `<%=f.error_span(:Description) %>`, und fügen Sie direkt d
 </div>
 ```
 
-Öffnen Sie die Datei *app/views/tasks/show.html.erb* , bei der es sich um die Ansichtsseite mit einem Datensatz handelt. 
+Öffnen Sie die Datei *app/views/tasks/show.html.erb*, bei der es sich um die Ansichtsseite mit einem Datensatz handelt. 
 
 Suchen Sie die Zeile `<dd><%= @task.Description %></dd>`, und fügen Sie direkt darunter den folgenden Code ein:
 
@@ -381,7 +381,7 @@ Suchen Sie die Zeile `<dd><%= @task.Description %></dd>`, und fügen Sie direkt 
   <dd><%= check_box "task", "Done", {:checked => @task.Done, :disabled => true}%></dd>
 ```
 
-Öffnen Sie die Datei *app/views/tasks/index.html.erb* , bei der es sich um die Indexseite für alle Datensätze handelt.
+Öffnen Sie die Datei *app/views/tasks/index.html.erb*, bei der es sich um die Indexseite für alle Datensätze handelt.
 
 Suchen Sie die Zeile `<th><%= model_class.human_attribute_name(:Description) %></th>`, und fügen Sie direkt darunter den folgenden Code ein:
 

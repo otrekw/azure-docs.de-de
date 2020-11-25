@@ -7,15 +7,15 @@ ms.custom: devx-track-csharp
 ms.date: 02/20/2020
 ms.author: cshoe
 ms.openlocfilehash: 8bb07e650c99f18cfecbc7b7674e0ca0e5a01dae
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491459"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998905"
 ---
 # <a name="signalr-service-output-binding-for-azure-functions"></a>SignalR Service-Ausgabebindung für Azure Functions
 
-Verwenden Sie die *SignalR* -Ausgabebindung, um eine oder mehrere Nachrichten mithilfe des Azure SignalR-Diensts zu senden. Sie können eine Nachricht senden an:
+Verwenden Sie die *SignalR*-Ausgabebindung, um eine oder mehrere Nachrichten mithilfe des Azure SignalR-Diensts zu senden. Sie können eine Nachricht senden an:
 
 - Alle verbundenen Clients
 - Verbundene Clients, die für einen bestimmten Benutzer authentifiziert sind
@@ -26,7 +26,7 @@ Informationen zu Setup- und Konfigurationsdetails finden Sie in der [Übersicht]
 
 ## <a name="broadcast-to-all-clients"></a>Broadcast an alle Clients
 
-Das folgende Beispiel zeigt eine Funktion, die eine Nachricht mithilfe der Ausgabebindung an alle verbundenen Clients sendet. Die *target* -Eigenschaft entspricht dem Namen der Methode, die auf allen Clients aufgerufen wird. Die *Arguments* -Eigenschaft ist ein Array von 0 (null) oder mehr Objekten, das an die Clientmethode übergeben werden soll.
+Das folgende Beispiel zeigt eine Funktion, die eine Nachricht mithilfe der Ausgabebindung an alle verbundenen Clients sendet. Die *target*-Eigenschaft entspricht dem Namen der Methode, die auf allen Clients aufgerufen wird. Die *Arguments*-Eigenschaft ist ein Array von 0 (null) oder mehr Objekten, das an die Clientmethode übergeben werden soll.
 
 # <a name="c"></a>[C#](#tab/csharp)
 
@@ -47,7 +47,7 @@ public static Task SendMessage(
 
 # <a name="c-script"></a>[C#-Skript](#tab/csharp-script)
 
-Die Bindungsdaten in der Datei *function.json* :
+Die Bindungsdaten in der Datei *function.json*:
 
 Beispiel für „function.json“:
 
@@ -82,7 +82,7 @@ public static Task Run(
 
 # <a name="javascript"></a>[JavaScript](#tab/javascript)
 
-Die Bindungsdaten in der Datei *function.json* :
+Die Bindungsdaten in der Datei *function.json*:
 
 Beispiel für „function.json“:
 
@@ -109,7 +109,7 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json* :
+Die Bindungsdaten in der Datei *function.json*:
 
 Beispiel für „function.json“:
 
@@ -241,7 +241,7 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json* :
+Die Bindungsdaten in der Datei *function.json*:
 
 Beispiel für „function.json“:
 
@@ -376,7 +376,7 @@ module.exports = async function (context, req) {
 
 # <a name="python"></a>[Python](#tab/python)
 
-Die Bindungsdaten in der Datei *function.json* :
+Die Bindungsdaten in der Datei *function.json*:
 
 Beispiel für „function.json“:
 

@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 0eb9afc179f1dd2559f0db7b212f6b3a1da15824
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790915"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998752"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>Fehler „InvalidNetworkConfigurationErrorCode“ bei der Clustererstellung in Azure HDInsight
 
@@ -60,7 +60,7 @@ Da Azure Storage und SQL nicht über feste IP-Adressen verfügen, müssen wir au
 
 * Bei Verwendung einer [Netzwerksicherheitsgruppe (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md) in Ihrem Cluster:
 
-    Navigieren Sie zum Azure-Portal, und ermitteln Sie die NSG des Subnetzes, in dem der Cluster bereitgestellt wird. Lassen Sie im Abschnitt **Ausgangssicherheitsregeln** den Zugriff auf das Internet in ausgehender Richtung ohne Einschränkungen zu. (Beachten Sie, dass ein niedrigerer Wert unter **Priorität** hier für eine höhere Priorität steht.) Vergewissern Sie sich außerdem im Abschnitt **Subnetze** , ob diese NSG auf das Clustersubnetz angewendet wird.
+    Navigieren Sie zum Azure-Portal, und ermitteln Sie die NSG des Subnetzes, in dem der Cluster bereitgestellt wird. Lassen Sie im Abschnitt **Ausgangssicherheitsregeln** den Zugriff auf das Internet in ausgehender Richtung ohne Einschränkungen zu. (Beachten Sie, dass ein niedrigerer Wert unter **Priorität** hier für eine höhere Priorität steht.) Vergewissern Sie sich außerdem im Abschnitt **Subnetze**, ob diese NSG auf das Clustersubnetz angewendet wird.
 
 * Bei Verwendung einer [benutzerdefinierten Route (UDR)](../../virtual-network/virtual-networks-udr-overview.md) in Ihrem Cluster:
 

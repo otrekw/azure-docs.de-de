@@ -9,11 +9,11 @@ ms.date: 09/04/2020
 ms.topic: how-to
 ms.service: key-vault
 ms.openlocfilehash: ac3ee108fc63441b2a9381b9e7624631bdca4e5b
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289830"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998105"
 ---
 # <a name="service-to-service-authentication-to-azure-key-vault-using-net"></a>Dienst-zu-Dienst-Authentifizierung in Azure Key Vault mithilfe von .NET
 
@@ -65,15 +65,15 @@ Für die lokale Entwicklung gibt es zwei primäre Authentifizierungsszenarien: [
 
 Lokale Computer unterstützen keine verwalteten Identitäten für Azure-Ressourcen. Daher verwendet die `Microsoft.Azure.Services.AppAuthentication`-Bibliothek Ihre Entwickleranmeldeinformationen für die Ausführung in Ihrer lokalen Entwicklungsumgebung. Wenn die Lösung in Azure bereitgestellt wird, verwendet die Bibliothek eine verwaltete Identität, um zu einem Flow zum Erteilen der OAuth 2.0-Clientanmeldeinformationen zu wechseln. Dieses Vorgehen bedeutet, dass Sie den gleichen Code ohne Sorge lokal und remote testen können.
 
-Für die lokale Entwicklung ruft `AzureServiceTokenProvider` Token mithilfe von **Visual Studio** , der **Azure-Befehlszeilenschnittstelle** (CLI) oder der **integrierten Azure AD-Authentifizierung** ab. Jede Option wird nacheinander ausprobiert, und die Bibliothek verwendet die erste Option, die erfolgreich ausgeführt wird. Wenn keine Option funktioniert, wird eine `AzureServiceTokenProviderException`-Ausnahme mit detaillierten Informationen ausgelöst.
+Für die lokale Entwicklung ruft `AzureServiceTokenProvider` Token mithilfe von **Visual Studio**, der **Azure-Befehlszeilenschnittstelle** (CLI) oder der **integrierten Azure AD-Authentifizierung** ab. Jede Option wird nacheinander ausprobiert, und die Bibliothek verwendet die erste Option, die erfolgreich ausgeführt wird. Wenn keine Option funktioniert, wird eine `AzureServiceTokenProviderException`-Ausnahme mit detaillierten Informationen ausgelöst.
 
 #### <a name="authenticating-with-visual-studio"></a>Authentifizierung mit Visual Studio
 
 Authentifizieren mithilfe von Visual Studio:
 
-1. Melden Sie sich bei Visual Studio an, und verwenden Sie **Extras**&nbsp;>&nbsp;**Optionen** , um **Optionen** zu öffnen.
+1. Melden Sie sich bei Visual Studio an, und verwenden Sie **Extras**&nbsp;>&nbsp;**Optionen**, um **Optionen** zu öffnen.
 
-1. Wählen Sie **Azure-Dienstauthentifizierung** , ein Konto für die lokale Entwicklung und dann **OK** aus.
+1. Wählen Sie **Azure-Dienstauthentifizierung**, ein Konto für die lokale Entwicklung und dann **OK** aus.
 
 Wenn Probleme bei der Verwendung von Visual Studio auftreten, z. B. Fehler im Zusammenhang mit der Tokenanbieterdatei, überprüfen Sie sorgfältig die vorherigen Schritte.
 
@@ -91,7 +91,7 @@ So verwenden Sie die Azure-Befehlszeilenschnittstelle:
 
 1. Überprüfen Sie den Zugriff, indem Sie *az account get-access-token --resource https:\//vault.azure.net* eingeben. Wenn Sie einen Fehler erhalten, vergewissern Sie sich, dass die richtige Azure-Version ordnungsgemäß installiert ist.
 
-   Wenn Azure CLI nicht im Standardverzeichnis installiert ist, erhalten Sie möglicherweise eine Fehlermeldung, die angibt, dass `AzureServiceTokenProvider` den Pfad zu Azure CLI nicht finden kann. Verwenden Sie die Umgebungsvariable **AzureCLIPath** , um den Azure CLI-Installationsordner zu definieren. `AzureServiceTokenProvider` fügt das in der Umgebungsvariable **AzureCLIPath** angegebene Verzeichnis bei Bedarf zur Umgebungsvariable **Path** hinzu.
+   Wenn Azure CLI nicht im Standardverzeichnis installiert ist, erhalten Sie möglicherweise eine Fehlermeldung, die angibt, dass `AzureServiceTokenProvider` den Pfad zu Azure CLI nicht finden kann. Verwenden Sie die Umgebungsvariable **AzureCLIPath**, um den Azure CLI-Installationsordner zu definieren. `AzureServiceTokenProvider` fügt das in der Umgebungsvariable **AzureCLIPath** angegebene Verzeichnis bei Bedarf zur Umgebungsvariable **Path** hinzu.
 
 1. Wenn Sie mit mehreren Konten bei Azure CLI angemeldet sind, oder wenn Ihr Konto Zugriff auf mehrere Abonnements hat, müssen Sie das zu verwendende Abonnement angeben. Geben Sie den Befehl *az account set --subscription <Abonnement-ID>* ein.
 
@@ -131,7 +131,7 @@ Dieses Vorgehen betrifft nur die lokale Entwicklung. Wenn Ihre Lösung in Azure 
 
 ## <a name="running-the-application-using-managed-identity-or-user-assigned-identity"></a>Ausführen der Anwendung mithilfe einer verwalteten Identität oder benutzerseitig zugewiesenen Identität
 
-Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. Es sind keine Codeänderungen erforderlich, die verwaltete Identität muss jedoch über *GET* -Berechtigungen für den Schlüsseltresor verfügen. Über die *Zugriffsrichtlinien* des Schlüsseltresors können Sie der verwalteten Identität *GET* -Berechtigungen erteilen.
+Wenn Sie den Code auf einer Azure App Service-Instanz oder einem virtuellen Azure-Computer ausführen und eine verwaltete Identität aktiviert ist, verwendet die Bibliothek automatisch die verwaltete Identität. Es sind keine Codeänderungen erforderlich, die verwaltete Identität muss jedoch über *GET*-Berechtigungen für den Schlüsseltresor verfügen. Über die *Zugriffsrichtlinien* des Schlüsseltresors können Sie der verwalteten Identität *GET*-Berechtigungen erteilen.
 
 Alternativ können Sie sich auch mit einer benutzerseitig zugewiesenen Identität authentifizieren. Weitere Informationen zu benutzerseitig zugewiesenen Identitäten finden Sie unter [Informationen zu verwalteten Identitäten für Azure-Ressourcen](../../active-directory/managed-identities-azure-resources/overview.md#managed-identity-types). Um sich mit einer vom Benutzer zugewiesenen Identität zu authentifizieren, müssen Sie die Client-ID der vom Benutzer zugewiesenen Identität in der Verbindungszeichenfolge angeben. Die Verbindungszeichenfolge ist in [Unterstützung der Verbindungszeichenfolge](#connection-string-support) angegeben.
 
@@ -155,7 +155,7 @@ Es gibt drei primäre Methoden, um einen Dienstprinzipal zur Ausführung Ihrer A
     az ad sp create-for-rbac --create-cert
     ```
 
-    Durch diesen Befehl wird eine PEM-Datei (privater Schlüssel) erstellt, die in Ihrem Basisverzeichnis gespeichert wird. Stellen Sie dieses Zertifikat entweder dem *LocalMachine* - oder *CurrentUser* -Store bereit.
+    Durch diesen Befehl wird eine PEM-Datei (privater Schlüssel) erstellt, die in Ihrem Basisverzeichnis gespeichert wird. Stellen Sie dieses Zertifikat entweder dem *LocalMachine*- oder *CurrentUser*-Store bereit.
 
     > [!Important]
     > Der CLI-Befehl generiert eine PEM-Datei, aber Windows bietet systemeigene Unterstützung nur für PFX-Zertifikate. Um stattdessen ein PFX-Zertifikat zu generieren, verwenden Sie die hier gezeigten PowerShell-Befehle: [Erstellen eines Dienstprinzipals mit selbstsigniertem Zertifikat](../../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-self-signed-certificate). Mit diesen Befehlen wird automatisch auch das Zertifikat bereitgestellt.
@@ -167,7 +167,7 @@ Es gibt drei primäre Methoden, um einen Dienstprinzipal zur Ausführung Ihrer A
           CertificateStoreLocation={CertificateStore}
     ```
 
-    Ersetzen Sie *{AppId}* , *{TenantId}* und *{Thumbprint}* durch die in Schritt 1 generierten Werte. Ersetzen Sie *{CertificateStore}* entweder durch *LocalMachine* oder durch *CurrentUser* , abhängig von Ihrem Bereitstellungsplan.
+    Ersetzen Sie *{AppId}* , *{TenantId}* und *{Thumbprint}* durch die in Schritt 1 generierten Werte. Ersetzen Sie *{CertificateStore}* entweder durch *LocalMachine* oder durch *CurrentUser*, abhängig von Ihrem Bereitstellungsplan.
 
 1. Führen Sie die Anwendung aus.
 

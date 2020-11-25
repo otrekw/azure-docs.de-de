@@ -8,11 +8,11 @@ ms.date: 06/15/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 1053eb9772650dce040570bda04addf93df49178
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743548"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998019"
 ---
 # <a name="tutorial-build-a-php-and-mysql-app-in-azure-app-service"></a>Tutorial: Erstellen einer PHP- und MySQL-App in Azure App Service
 
@@ -107,7 +107,7 @@ composer install
 
 ### <a name="configure-mysql-connection"></a>Konfigurieren der MySQL-Verbindung
 
-Erstellen Sie im Repositorystamm eine Datei mit dem Namen *.env* . Kopieren Sie die folgenden Variablen in die Datei *.env* . Ersetzen Sie den Platzhalter _&lt;root_password>_ durch das Kennwort des MySQL-Root-Benutzers.
+Erstellen Sie im Repositorystamm eine Datei mit dem Namen *.env*. Kopieren Sie die folgenden Variablen in die Datei *.env*. Ersetzen Sie den Platzhalter _&lt;root_password>_ durch das Kennwort des MySQL-Root-Benutzers.
 
 ```txt
 APP_ENV=local
@@ -121,7 +121,7 @@ DB_USERNAME=root
 DB_PASSWORD=<root_password>
 ```
 
-Informationen dazu, wie Laravel die _ENV_ -Datei verwendet, finden Sie unter [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurieren der Laravel-Umgebung).
+Informationen dazu, wie Laravel die _ENV_-Datei verwendet, finden Sie unter [Laravel Environment Configuration](https://laravel.com/docs/5.4/configuration#environment-configuration) (Konfigurieren der Laravel-Umgebung).
 
 ### <a name="run-the-sample-locally"></a>Lokales Ausführen des Beispiels
 
@@ -221,7 +221,7 @@ CREATE DATABASE sampledb;
 
 ### <a name="create-a-user-with-permissions"></a>Erstellen eines Benutzers mit Berechtigungen
 
-Erstellen Sie einen Datenbankbenutzer mit dem Namen _phpappuser_ , und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu. Verwenden Sie zur Vereinfachung des Tutorials _MySQLAzure2017_ als Kennwort.
+Erstellen Sie einen Datenbankbenutzer mit dem Namen _phpappuser_, und weisen Sie ihm alle Berechtigungen in der Datenbank `sampledb` zu. Verwenden Sie zur Vereinfachung des Tutorials _MySQLAzure2017_ als Kennwort.
 
 ```sql
 CREATE USER 'phpappuser' IDENTIFIED BY 'MySQLAzure2017'; 
@@ -242,7 +242,7 @@ In diesem Schritt verbinden Sie die PHP-Anwendung mit der MySQL-Datenbank, die S
 
 ### <a name="configure-the-database-connection"></a>Konfigurieren der Datenbankverbindung
 
-Erstellen Sie im Stammverzeichnis des Repositorys eine Datei _.env.production_ , und kopieren Sie die folgenden Variablen in die Datei. Ersetzen Sie den Platzhalter „&lt;mysql-server-name>“ sowohl in *DB_HOST* als auch in *DB_USERNAME* .
+Erstellen Sie im Stammverzeichnis des Repositorys eine Datei _.env.production_, und kopieren Sie die folgenden Variablen in die Datei. Ersetzen Sie den Platzhalter „&lt;mysql-server-name>“ sowohl in *DB_HOST* als auch in *DB_USERNAME*.
 
 ```
 APP_ENV=production
@@ -260,14 +260,14 @@ MYSQL_SSL=true
 Speichern Sie die Änderungen.
 
 > [!TIP]
-> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure Database for MySQL hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV* -Datei in App Service nicht.
+> Um Ihre MySQL-Verbindungsinformationen zu schützen, ist diese Datei bereits aus dem Git-Repository ausgeschlossen (siehe _.gitignore_ im Repositorystamm). Später erfahren Sie, wie Sie die Umgebungsvariablen in App Service so konfigurieren, dass eine Verbindung mit Ihrer Datenbank in Azure Database for MySQL hergestellt wird. Bei Umgebungsvariablen benötigen Sie die *ENV*-Datei in App Service nicht.
 >
 
 ### <a name="configure-tlsssl-certificate"></a>Konfigurieren des TLS-/SSL-Zertifikats
 
-Standardmäßig erzwingt Azure Database for MySQL TLS-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_ -Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
+Standardmäßig erzwingt Azure Database for MySQL TLS-Verbindungen von Clients. Zum Herstellen einer Verbindung mit Ihrer MySQL-Datenbank in Azure müssen Sie das [_PEM_-Zertifikat verwenden, das von Azure Database for MySQL bereitgestellt wird](../mysql/howto-configure-ssl.md).
 
-Öffnen Sie _config/database.php_ , und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
+Öffnen Sie _config/database.php_, und fügen Sie `connections.mysql` die Parameter `sslmode` und `options` hinzu, wie im folgenden Code gezeigt.
 
 ::: zone pivot="platform-windows"  
 
@@ -428,13 +428,13 @@ Legen Sie in Cloud Shell mit dem Befehl [`az resource update`](/cli/azure/resour
 az resource update --name web --resource-group myResourceGroup --namespace Microsoft.Web --resource-type config --parent sites/<app_name> --set properties.virtualApplications[0].physicalPath="site\wwwroot\public" --api-version 2015-06-01
 ```
 
-Standardmäßig verweist Azure App Service im Stammverzeichnis des virtuellen Anwendungspfads ( _/_ ) auf das Stammverzeichnis der bereitgestellten Anwendungsdateien ( _sites\wwwroot_ ).
+Standardmäßig verweist Azure App Service im Stammverzeichnis des virtuellen Anwendungspfads ( _/_ ) auf das Stammverzeichnis der bereitgestellten Anwendungsdateien (_sites\wwwroot_).
 
 ::: zone-end
 
 ::: zone pivot="platform-linux"
 
-Der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) beginnt im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung. Für das PHP-Docker-Image für App Service wird Apache verwendet, und das Anpassen des `DocumentRoot`-Elements für Laravel ist nicht möglich. Sie können aber `.htaccess` verwenden, um alle Anforderungen so umzuschreiben, dass sie nicht auf das Stammverzeichnis verweisen, sondern auf _/public_ . Im Repositorystamm wurde bereits ein `.htaccess`-Element für diese Zwecke hinzugefügt. Hiermit ist Ihre Laravel-Anwendung bereit für die Bereitstellung.
+Der [Lebenszyklus der Laravel-Anwendung](https://laravel.com/docs/5.4/lifecycle) beginnt im _öffentlichen_ Verzeichnis anstatt im Stammverzeichnis der Anwendung. Für das PHP-Docker-Image für App Service wird Apache verwendet, und das Anpassen des `DocumentRoot`-Elements für Laravel ist nicht möglich. Sie können aber `.htaccess` verwenden, um alle Anforderungen so umzuschreiben, dass sie nicht auf das Stammverzeichnis verweisen, sondern auf _/public_. Im Repositorystamm wurde bereits ein `.htaccess`-Element für diese Zwecke hinzugefügt. Hiermit ist Ihre Laravel-Anwendung bereit für die Bereitstellung.
 
 Weitere Informationen finden Sie unter [Ändern des Stammverzeichnisses der Website](configure-language-php.md#change-site-root).
 
@@ -498,7 +498,7 @@ remote: Running deployment command...
 
 Browsen Sie zu `http://<app-name>.azurewebsites.net`, und fügen Sie der Liste einige Aufgaben hinzu.
 
-:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Screenshot: PHP-App-Beispiel mit dem Titel „Aufgabenliste“":::
+:::image type="content" source="./media/tutorial-php-mysql-app/php-mysql-in-azure.png" alt-text="Screenshot: Azure-App-Beispiel mit dem Titel „Aufgabenliste“, das zeigt, wie neue Aufgaben hinzugefügt werden":::
 
 Glückwunsch! Sie führen eine datengesteuerte PHP-App in Azure App Service aus.
 
@@ -550,11 +550,11 @@ Führen Sie im lokalen Terminalfenster Laravel-Datenbankmigrationen aus, um die 
 php artisan migrate
 ```
 
-Das Modell `Task` (siehe _app/Task.php_ ) wird basierend auf der [Laravel-Namenskonvention](https://laravel.com/docs/5.4/eloquent#defining-models) standardmäßig der Tabelle `tasks` zugeordnet.
+Das Modell `Task` (siehe _app/Task.php_) wird basierend auf der [Laravel-Namenskonvention](https://laravel.com/docs/5.4/eloquent#defining-models) standardmäßig der Tabelle `tasks` zugeordnet.
 
 ### <a name="update-application-logic"></a>Aktualisieren der Anwendungslogik
 
-Öffnen Sie die Datei *routes/web.php* . Die Anwendung definiert hier die Routen und Geschäftslogik.
+Öffnen Sie die Datei *routes/web.php*. Die Anwendung definiert hier die Routen und Geschäftslogik.
 
 Fügen Sie mit folgendem Code am Ende der Datei eine Route hinzu:
 
@@ -577,7 +577,7 @@ Der obige Code führt eine einfache Aktualisierung des Datenmodells durch, indem
 
 ### <a name="update-the-view"></a>Aktualisieren der Ansicht
 
-Öffnen Sie die Datei *resources/views/tasks.blade.php* . Suchen Sie das öffnende Tag `<tr>`, und ersetzen Sie es durch Folgendes:
+Öffnen Sie die Datei *resources/views/tasks.blade.php*. Suchen Sie das öffnende Tag `<tr>`, und ersetzen Sie es durch Folgendes:
 
 ```html
 <tr class="{{ $task->complete ? 'success' : 'active' }}" >
@@ -669,7 +669,7 @@ Zum Beenden des Protokollstreamings geben Sie `Ctrl`+`C` ein.
 ::: zone-end
 
 > [!TIP]
-> Eine PHP-Anwendung kann die Standardmethode [error_log()](https://php.net/manual/function.error-log.php) für die Ausgabe an die Konsole verwenden. Die Beispielanwendung verwendet diesen Ansatz in _app/Http/routes.php_ .
+> Eine PHP-Anwendung kann die Standardmethode [error_log()](https://php.net/manual/function.error-log.php) für die Ausgabe an die Konsole verwenden. Die Beispielanwendung verwendet diesen Ansatz in _app/Http/routes.php_.
 >
 > Als ein Webframework verwendet [Laravel Monolog](https://laravel.com/docs/5.4/errors) als Protokollierungsanbieter. Was Sie tun müssen, damit Monolog ausgehende Nachrichten an der Konsole ausgibt, erfahren Sie unter [PHP: How to use monolog to log to console (php://out) (Wie Sie Monolog zur Protokollierung auf der Konsole verwenden (php://out))](https://stackoverflow.com/questions/25787258/php-how-to-use-monolog-to-log-to-console-php-out).
 >
