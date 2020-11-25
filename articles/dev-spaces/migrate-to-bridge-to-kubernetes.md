@@ -5,12 +5,12 @@ ms.date: 10/21/2020
 ms.topic: conceptual
 description: Beschreibt den Migrationsprozess von Azure Dev Spaces zu Kubernetes
 keywords: Azure Dev Spaces, Dev Spaces, Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Bridge to Kubernetes
-ms.openlocfilehash: 7a7642d986d8490c5d0dc3c413e658b21b010798
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d48814df30c17f9b51d8642efa0960a26bbd24f4
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895255"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888520"
 ---
 # <a name="migrating-to-bridge-to-kubernetes"></a>Migrieren zu Bridge to Kubernetes
 
@@ -85,7 +85,7 @@ Bridge to Kubernetes bietet die Flexibilität, unabhängig von der Bereitstellun
 1. Wenn Sie Visual Studio verwenden, aktualisieren Sie Ihre Visual Studio-IDE auf Version 16.7 oder höher, und installieren Sie die Bridge to Kubernetes-Erweiterung aus dem [Visual Studio Marketplace][vs-marketplace]. Wenn Sie Visual Studio Code verwenden, installieren Sie die [Bridge to Kubernetes-Erweiterung][vsc-marketplace].
 1. Deaktivieren Sie den Azure Dev Spaces-Controller mithilfe des Azure-Portals oder der [Azure Dev Spaces-CLI][azds-delete].
 1. Verwenden Sie [Azure Cloud Shell](https://shell.azure.com). Auf dem Mac und unter Linux oder Windows mit installiertem Bash öffnen Sie eine Bash-Shell-Eingabeaufforderung. Stellen Sie sicher, dass die folgenden Tools in der Befehlszeilenumgebung verfügbar sind: Azure CLI, Docker, kubectl, curl, tar und gunzip.
-1. Erstellen Sie eine Containerregistrierung, oder verwenden Sie eine vorhandene. Sie können eine Containerregistrierung in Azure mit [Azure Container Registry](../container-registry/index.yml) oder [Docker Hub](https://hub.docker.com/) erstellen. Wenn Sie Azure Cloud Shell verwenden, steht nur Azure Container Registry für das Hosten von Docker-Images zur Verfügung.
+1. Erstellen Sie eine Containerregistrierung, oder verwenden Sie eine vorhandene. Sie können eine Containerregistrierung in Azure mit [Azure Container Registry](https://azure.microsoft.com/services/container-registry/) oder [Docker Hub](https://hub.docker.com/) erstellen. Wenn Sie Azure Cloud Shell verwenden, steht nur Azure Container Registry für das Hosten von Docker-Images zur Verfügung.
 1. Führen Sie das Migrationsskript aus, um Azure Dev Spaces-Ressourcen in Bridge to Kubernetes-Ressourcen zu konvertieren. Das Skript erstellt ein neues Image, das mit Bridge to Kubernetes kompatibel ist, lädt es in die angegebene Registrierung hoch und verwendet dann [Helm](https://helm.sh), um den Cluster mit dem Image zu aktualisieren. Sie müssen die Ressourcengruppe, den Namen des AKS-Clusters und eine Containerregistrierung angeben. Weitere verfügbare Befehlszeilenoptionen sind hier aufgeführt:
 
    ```azure-cli

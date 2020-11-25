@@ -3,12 +3,12 @@ title: Programmgesteuertes Erstellen von Richtlinien
 description: In diesem Artikel wird Schritt für Schritt das programmgesteuerte Erstellen und Verwalten von Richtlinien für Azure Policy per Azure-Befehlszeilenschnittstelle, Azure PowerShell und REST-API beschrieben.
 ms.date: 08/17/2020
 ms.topic: how-to
-ms.openlocfilehash: 2bf2b1864331fd785ecdd70be4af79be01f1e5e0
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 86c1b60608780cba4d8ae27e3c82ace458f09a26
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491799"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920014"
 ---
 # <a name="programmatically-create-policies"></a>Programmgesteuertes Erstellen von Richtlinien
 
@@ -74,7 +74,7 @@ Im ersten Schritt zur besseren Sichtbarkeit Ihrer Ressourcen werden Richtlinien 
 
    `New-AzPolicyDefinition` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
 
-   - **SubscriptionId** zum Speichern in einem anderen Abonnement. Dies erfordert einen _GUID_ -Wert.
+   - **SubscriptionId** zum Speichern in einem anderen Abonnement. Dies erfordert einen _GUID_-Wert.
    - **ManagementGroupName** zum Speichern in einer Verwaltungsgruppe. Dies erfordert einen _Zeichenfolgenwert_.
 
 1. Nach dem Erstellen der Richtliniendefinition können Sie eine Richtlinienzuweisung erstellen. Führen Sie dazu die folgenden Befehle aus:
@@ -203,7 +203,7 @@ Verwenden Sie das folgende Verfahren, um eine Richtliniendefinition zu erstellen
    ```
 
    Mit dem Befehl wird die Richtliniendefinition _Audit Storage Accounts Open to Public Networks_ erstellt.
-   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [az policy definition create](/cli/azure/policy/definition#az-policy-definition-create).
+   Weitere Informationen zu anderen Parametern, die Sie verwenden können, finden Sie unter [az policy definition create](/cli/azure/policy/definition#az_policy_definition_create).
 
    `az policy definition creation` speichert die Richtliniendefinition standardmäßig im ausgewählten Abonnement des Sitzungskontexts bei Aufruf ohne Speicherortparameter. Um die Definition an einem anderen Speicherort zu speichern, verwenden Sie die folgenden Parameter:
 

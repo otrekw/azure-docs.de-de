@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 857429ab5fd2e2ea9a0cb0173015ceba4bb0bacb
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 47885e64b40db07ca3b4a7380389967a36abbd9e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92504110"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949835"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow-preview"></a>Hinzufügen eines API-Connectors zu einem Benutzerflow für die Registrierung (Vorschauversion)
 
@@ -42,7 +42,7 @@ Um einen [API-Connector](api-connectors-overview.md) zu verwenden, erstellen Sie
 8. Wählen Sie **Speichern** aus.
 
 ## <a name="the-request-sent-to-your-api"></a>An die API gesendete Anforderung
-Ein API-Connector wird als **HTTP POST** -Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
+Ein API-Connector wird als **HTTP POST**-Anforderung dargestellt und sendet Benutzerattribute („Ansprüche“) als Schlüssel-Wert-Paare in einem JSON-Text. Attribute werden ähnlich wie [Microsoft Graph](/graph/api/resources/user#properties)-Benutzereigenschaften serialisiert. 
 
 **Beispielanforderung**
 ```http
@@ -83,7 +83,7 @@ Außerdem wird der Anspruch **Gebietsschema der Benutzeroberfläche („ui_local
 > Wenn ein Anspruch zum Zeitpunkt des Aufrufs des API-Endpunkts keinen Wert enthält, wird der Anspruch nicht an die API gesendet. Ihre API sollte so entworfen sein, dass explizit geprüft wird, ob ein Anspruch in der Anforderung enthalten ist. Fehlt der Anspruch, sollte eine entsprechende Verarbeitung erfolgen.
 
 > [!TIP] 
-> Mit den Ansprüchen [**Identitäten („identities“)**](https://docs.microsoft.com/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. 
+> Mit den Ansprüchen [**Identitäten („identities“)**](/graph/api/resources/objectidentity) und **E-Mail-Adresse („email“)** kann Ihre API einen Benutzer identifizieren, bevor er über ein Konto in Ihrem Mandanten verfügt. 
 
 ## <a name="enable-the-api-connector-in-a-user-flow"></a>Aktivieren des API-Connectors in einem Benutzerflow
 
@@ -103,7 +103,7 @@ Führen Sie die folgenden Schritte aus, um einem Benutzerflow für die Registrie
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Nach Anmeldung bei einem Identitätsanbieter
 
-Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der * *_Seite zur Attributsammlung_* _ voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert.
+Ein API-Connector in diesem Schritt des Registrierungsprozesses wird unmittelbar nach der Authentifizierung des Benutzers bei einem Identitätsanbieter (etwa Google, Facebook und Azure AD) aufgerufen. Dieser Schritt geht der **_Seite zur Attributsammlung_* _ voraus, die dem Benutzer zum Sammeln von Benutzerattributen angezeigt wird. Dieser Schritt wird nicht aufgerufen, wenn sich ein Benutzer mit einem lokalen Konto registriert.
 
 ### <a name="example-request-sent-to-the-api-at-this-step"></a>In diesem Schritt an die API gesendete Beispielanforderung
 ```http

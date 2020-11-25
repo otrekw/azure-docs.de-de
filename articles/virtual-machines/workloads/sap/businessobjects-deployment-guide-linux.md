@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 1f15a3b4d8f51ec79fffce09bc006942d08096a6
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427461"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965356"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -84,7 +85,7 @@ In den folgenden Anweisungen wird davon ausgegangen, dass Sie bereits [Azure Vir
 
 3. Richten Sie entsprechend den Anweisungen in [Einrichten eines Kapazitätspools](../../../azure-netapp-files/azure-netapp-files-set-up-capacity-pool.md) einen Azure NetApp Files-Kapazitätspool ein.
 
-   - Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene *Premium*. Für SAP BI File Repository Server in Azure empfehlen wir die Verwendung einer Azure NetApp Files- [Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ *Premium* oder *Ultra*.
+   - Die in diesem Artikel vorgestellte Architektur der SAP BI-Plattform verwendet einen einzigen Azure NetApp Files-Kapazitätspool auf der Dienstebene *Premium*. Für SAP BI File Repository Server in Azure empfehlen wir die Verwendung einer Azure NetApp Files-[Dienstebene](../../../azure-netapp-files/azure-netapp-files-service-levels.md) vom Typ *Premium* oder *Ultra*.
 
 4. Delegieren Sie ein Subnetz an Azure NetApp Files, wie in den Anweisungen in [Delegieren eines Subnetzes an Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-delegate-subnet.md) beschrieben.
 
@@ -196,7 +197,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
    **Überprüfen der NFS-Domäneneinstellungen**
 
-   Stellen Sie sicher, dass die Domäne als Azure NetApp Files-Standarddomäne (also **defaultv4iddomain.com** ) konfiguriert und die Zuordnung auf **nobody** festgelegt ist.
+   Stellen Sie sicher, dass die Domäne als Azure NetApp Files-Standarddomäne (also **defaultv4iddomain.com**) konfiguriert und die Zuordnung auf **nobody** festgelegt ist.
 
    ```bash
    sudo cat /etc/idmapd.conf
@@ -401,9 +402,9 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
 
 2. **[A]** Stellen Sie sicher, dass die Zeitzone auf Ihrem Computer ordnungsgemäß eingestellt ist. Weitere Informationen finden Sie im Abschnitt [Weitere Unix- und Linux-Anforderungen](https://help.sap.com/viewer/65018c09dbe04052b082e6fc4ab60030/4.3/en-US/46b143336e041014910aba7db0e91070.html) im Installationsleitfaden.
 
-3. **[A]** Erstellen Sie ein Benutzerkonto ( **bl1** adm) und eine Benutzergruppe (sapsys), unter denen die Hintergrundprozesse der Software ausgeführt werden können. Verwenden Sie dieses Konto, um die Installation und die Software auszuführen. Das Konto erfordert keine Stammberechtigungen.
+3. **[A]** Erstellen Sie ein Benutzerkonto (**bl1** adm) und eine Benutzergruppe (sapsys), unter denen die Hintergrundprozesse der Software ausgeführt werden können. Verwenden Sie dieses Konto, um die Installation und die Software auszuführen. Das Konto erfordert keine Stammberechtigungen.
 
-4. **[A]** Legen Sie die Umgebung des Benutzerkontos ( **bl1** adm) so fest, dass ein unterstütztes UTF-8-Gebietsschema verwendet wird, und stellen Sie sicher, dass Ihre Konsolensoftware UTF-8-Zeichensätze unterstützt. Um sicherzustellen, dass Ihr Betriebssystem das richtige Gebietsschema verwendet, legen Sie die Umgebungsvariablen LC_ALL und LANG auf Ihr bevorzugtes Gebietsschema in Ihrer Benutzerumgebung ( **bl1** adm) fest.
+4. **[A]** Legen Sie die Umgebung des Benutzerkontos (**bl1** adm) so fest, dass ein unterstütztes UTF-8-Gebietsschema verwendet wird, und stellen Sie sicher, dass Ihre Konsolensoftware UTF-8-Zeichensätze unterstützt. Um sicherzustellen, dass Ihr Betriebssystem das richtige Gebietsschema verwendet, legen Sie die Umgebungsvariablen LC_ALL und LANG auf Ihr bevorzugtes Gebietsschema in Ihrer Benutzerumgebung (**bl1** adm) fest.
 
    ```bash
    # This configuration is for bash shell. If you are using any other shell for sidadm, kindly set environment variable accordingly.
@@ -413,7 +414,7 @@ Für die Schritte in diesem Abschnitt werden die folgenden Präfixe verwendet:
    export LC_ALL=en_US.utf8
    ```
 
-5. **[A]** Konfigurieren Sie das Benutzerkonto ( **bl1** adm).
+5. **[A]** Konfigurieren Sie das Benutzerkonto (**bl1** adm).
 
    ```bash
    # Set ulimit for bl1adm to unlimited
@@ -559,7 +560,7 @@ Im Rahmen des Sicherungsvorgangs wird eine Momentaufnahme erstellt, und die Date
 
 Für **Azure NetApp Files** können Sie eine On-Demand-Momentaufnahme erstellen und mithilfe von Momentaufnahmerichtlinien eine automatische Momentaufnahme planen. Momentaufnahmekopien stellen eine Zeitpunktkopie Ihres ANF-Volumes dar. Weitere Informationen finden Sie unter [Verwalten von Momentaufnahmen mithilfe von Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-manage-snapshots.md).
 
-Die **Azure Files** -Sicherung ist in den nativen [Azure Backup](../../../backup/backup-overview.md)-Dienst integriert, der die Sicherungs- und Wiederherstellungsfunktion zusammen mit der Sicherung von VMs zentralisiert und die Abläufe vereinfacht. Weitere Informationen finden Sie unter [Sichern von Azure-Dateifreigaben](../../../backup/azure-file-share-backup-overview.md) und [Häufig gestellte Fragen zu Azure Files](../../../backup/backup-azure-files-faq.md).
+Die **Azure Files**-Sicherung ist in den nativen [Azure Backup](../../../backup/backup-overview.md)-Dienst integriert, der die Sicherungs- und Wiederherstellungsfunktion zusammen mit der Sicherung von VMs zentralisiert und die Abläufe vereinfacht. Weitere Informationen finden Sie unter [Sichern von Azure-Dateifreigaben](../../../backup/azure-file-share-backup-overview.md) und [Häufig gestellte Fragen zu Azure Files](../../../backup/backup-azure-files-faq.md).
 
 #### <a name="backup--restore-for-cms-database"></a>Sicherung und Wiederherstellung für CMS-Datenbank
 

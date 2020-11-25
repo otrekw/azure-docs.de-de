@@ -2,17 +2,18 @@
 title: Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Kubernetes Service gibt es?
 description: Erfahren Sie, wie Oracle WebLogic Server für Azure Kubernetes Service ausgeführt wird.
 author: rezar
-ms.service: container-service
+ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/28/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: ff7b9b0bfcdc0c06eae14ecfdccabf9e337d3649
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: a57d5a00fad9a17e01b96ebdf395fb7a4b857935
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186676"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968688"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-the-azure-kubernetes-service"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Kubernetes Service gibt es?
 

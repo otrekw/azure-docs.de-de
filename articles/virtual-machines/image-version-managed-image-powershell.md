@@ -9,12 +9,12 @@ ms.workload: infrastructure
 ms.date: 05/04/2020
 ms.author: cynthn
 ms.reviewer: akjosh
-ms.openlocfilehash: c1b40cc8d52ffe5655401f7698790cdc05898331
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1c57d9d283714da6905335fd3167c4f8a69292f8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88225539"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964880"
 ---
 # <a name="migrate-from-a-managed-image-to-a-shared-image-gallery-image"></a>Migrieren von einem verwalteten Image zu einem Image in einem Katalog mit freigegebenen Images
 
@@ -88,7 +88,7 @@ Erstellen Sie mit [New-AzGalleryImageVersion](/powershell/module/az.compute/new-
 
 Zulässige Zeichen für die Imageversion sind Zahlen und Punkte. Zahlen müssen im Bereich einer ganzen 32-Bit-Zahl liegen. Format: *Hauptversion*.*Nebenversion*.*Patch*.
 
-In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die *Quell*region als Ziel für die Replikation angeben müssen. 
+In diesem Beispiel lautet die Imageversion *1.0.0*. Sie wird in den Rechenzentren *USA, Westen-Mitte* und *USA, Süden-Mitte* repliziert. Bei der Auswahl der Zielregionen für die Replikation ist zu beachten, dass Sie auch die *Quell* region als Ziel für die Replikation angeben müssen. 
 
 
 ```azurepowershell-interactive
@@ -102,7 +102,7 @@ $job = $imageVersion = New-AzGalleryImageVersion `
    -ResourceGroupName $imageDefinition.ResourceGroupName `
    -Location $imageDefinition.Location `
    -TargetRegion $targetRegions  `
-   -Source $managedImage.Id.ToString() `
+   -SourceImageId $managedImage.Id.ToString() `
    -PublishingProfileEndOfLifeDate '2020-12-31' `
    -asJob 
 ```

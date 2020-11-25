@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 03/18/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: c294079663630e71581f08227fbdb9ae4640cab5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f26f3e6e80bf854ff4f57503aa43de2558f07a1e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92102424"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888554"
 ---
 # <a name="client-libraries-and-rest-apis"></a>Clientbibliotheken und REST-APIs
 
@@ -50,7 +50,7 @@ Veröffentlichungsspeicherorte für einzelne Clientbibliothekspakete finden Sie 
 | Referenzdokumentation     | [docs](https://azure.github.io/azure-sdk-for-js/communication.html)         | [docs](https://azure.github.io/azure-sdk-for-net/communication.html)      | -      | [docs](http://azure.github.io/azure-sdk-for-java/communication.html)     | (Obj-C) ✔️     | ✔️            | -                              |
 ## <a name="rest-apis"></a>REST-APIs
 
-Communication Services-APIs sind unter [docs.microsoft.com](https://docs.microsoft.com/rest/api/azure/) neben anderen Azure-REST-APIs dokumentiert. Diese Dokumentation erläutert die Strukturierung Ihrer HTTP-Nachrichten und bietet eine Anleitung zur Verwendung von Postman. Diese Dokumentation wird auch im Swagger-Format auf [GitHub](https://github.com/Azure/azure-rest-api-specs) angeboten.
+Communication Services-APIs sind unter [docs.microsoft.com](/rest/api/azure/) neben anderen Azure-REST-APIs dokumentiert. Diese Dokumentation erläutert die Strukturierung Ihrer HTTP-Nachrichten und bietet eine Anleitung zur Verwendung von Postman. Diese Dokumentation wird auch im Swagger-Format auf [GitHub](https://github.com/Azure/azure-rest-api-specs) angeboten.
 
 ## <a name="additional-support-details"></a>Weitere Details zur Unterstützung
 
@@ -81,7 +81,7 @@ Unterstützung über .NET Core 2.0:
 ## <a name="api-stability-expectations"></a>Erwartungen an die API-Stabilität 
 
 > [!IMPORTANT]
-> Dieser Abschnitt enthält Anleitungen zu REST-APIs und Clientbibliotheken, die als **stabil** gekennzeichnet sind. APIs, die als Vorabversion, Vorschau oder Beta gekennzeichnet sind, können ohne Vorankündigung geändert oder als **veraltet eingestuft** werden. Azure Communication Services ist derzeit in der Phase **Public Preview** . APIs sind entsprechend markiert.
+> Dieser Abschnitt enthält Anleitungen zu REST-APIs und Clientbibliotheken, die als **stabil** gekennzeichnet sind. APIs, die als Vorabversion, Vorschau oder Beta gekennzeichnet sind, können ohne Vorankündigung geändert oder als **veraltet eingestuft** werden. Azure Communication Services ist derzeit in der Phase **Public Preview**. APIs sind entsprechend markiert.
 
 In Zukunft werden wir möglicherweise Versionen der Communication Services-Clientbibliotheken zurückziehen und möglicherweise Änderungen an unseren REST-APIs und veröffentlichten Clientbibliotheken vornehmen. Für Azure Communication Services gelten *allgemein* zwei Richtlinien zur Unterstützung des Zurückziehens von Dienstversionen:
 

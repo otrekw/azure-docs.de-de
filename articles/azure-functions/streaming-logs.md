@@ -3,13 +3,13 @@ title: Streamen von Ausführungsprotokollen in Azure Functions
 description: 115 bis 145 Zeichen, einschließlich Leerzeichen. Diese Zusammenfassung wird in den Suchergebnissen angezeigt.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 61756afb5111da3d5573e967a6ca13f25354aef5
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92216095"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832878"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Aktivieren des Streamings von Ausführungsprotokollen in Azure Functions
 
@@ -17,9 +17,9 @@ Bei der Anwendungsentwicklung ist es häufig wünschenswert, nahezu in Echtzeit 
 
 Es gibt zwei Möglichkeiten, einen Datenstrom von Protokolldateien anzuzeigen, die bei den Ausführungen Ihrer Funktion generiert werden.
 
-* **Integriertes Protokollstreaming** : Mithilfe der App Service-Plattform können Sie einen Datenstrom Ihrer Anwendungsprotokolldateien einsehen. Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) oder bei Verwenden der Registerkarte **Test** im Portal zu sehen ist. Alle protokollbasierten Informationen werden angezeigt. Weitere Informationen finden Sie unter [Streamen von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Diese Streamingmethode unterstützt nur eine einzelne Instanz und kann nicht mit einer App verwendet werden, die unter Linux in einem Verbrauchstarif ausgeführt wird.
+* **Integriertes Protokollstreaming**: Mithilfe der App Service-Plattform können Sie einen Datenstrom Ihrer Anwendungsprotokolldateien einsehen. Dies entspricht der Ausgabe, die beim Debuggen Ihrer Funktionen bei der [lokalen Entwicklung](functions-develop-local.md) oder bei Verwenden der Registerkarte **Test** im Portal zu sehen ist. Alle protokollbasierten Informationen werden angezeigt. Weitere Informationen finden Sie unter [Streamen von Protokollen](../app-service/troubleshoot-diagnostic-logs.md#stream-logs). Diese Streamingmethode unterstützt nur eine einzelne Instanz und kann nicht mit einer App verwendet werden, die unter Linux in einem Verbrauchstarif ausgeführt wird.
 
-* **Live Metrics Stream** : Wenn Ihre Funktions-App [mit Application Insights verbunden](configure-monitoring.md#enable-application-insights-integration) ist, können Sie im Azure-Portal mithilfe von [Live Metrics Stream](../azure-monitor/app/live-stream.md) Protokolldaten und andere Metriken nahezu in Echtzeit anzeigen. Verwenden Sie diese Methode, wenn Sie Funktionen überwachen, die auf mehreren Instanzen oder unter Linux in einem Verbrauchstarif ausgeführt werden. Diese Methode verwendet [Stichprobendaten](configure-monitoring.md#configure-sampling).
+* **Live Metrics Stream**: Wenn Ihre Funktions-App [mit Application Insights verbunden](configure-monitoring.md#enable-application-insights-integration) ist, können Sie im Azure-Portal mithilfe von [Live Metrics Stream](../azure-monitor/app/live-stream.md) Protokolldaten und andere Metriken nahezu in Echtzeit anzeigen. Verwenden Sie diese Methode, wenn Sie Funktionen überwachen, die auf mehreren Instanzen oder unter Linux in einem Verbrauchstarif ausgeführt werden. Diese Methode verwendet [Stichprobendaten](configure-monitoring.md#configure-sampling).
 
 Protokolldatenströme können sowohl im Portal als auch in den meisten lokalen Entwicklungsumgebungen eingesehen werden. 
 
@@ -29,7 +29,7 @@ Sie können im Portal beide Arten von Protokolldatenströmen einsehen.
 
 ### <a name="built-in-log-streaming"></a>Integriertes Protokollstreaming
 
-Um Streamingprotokolle im Portal anzuzeigen, wählen Sie in Ihrer Funktions-App die Registerkarte **Plattformfeatures** aus. Klicken Sie unter **Überwachung** auf **Protokollstreaming** .
+Um Streamingprotokolle im Portal anzuzeigen, wählen Sie in Ihrer Funktions-App die Registerkarte **Plattformfeatures** aus. Klicken Sie unter **Überwachung** auf **Protokollstreaming**.
 
 ![Aktivieren von Streamingprotokollen im Portal](./media/functions-monitoring/enable-streaming-logs-portal.png)
 

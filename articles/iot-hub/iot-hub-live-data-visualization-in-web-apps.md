@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 35df99d0a30b0952521281fa0d6bb95ce0509695
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 8f7baca94d653d9851c506068ccf7ecf84063641
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741007"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832176"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -51,13 +51,7 @@ In diesem Tutorial erfahren Sie, wie Sie vom IoT-Hub empfangene Echtzeit-Sensord
 
 * Bei den Schritten in diesem Artikel wird ein Windows-Entwicklungscomputer vorausgesetzt. Allerdings können Sie diese Schritte auch problemlos auf einem Linux-System in Ihrer bevorzugten Shell ausführen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Führen Sie den folgenden Befehl aus, um Ihrer Cloud Shell-Instanz die Microsoft Azure IoT-Erweiterung für die Azure-Befehlszeilenschnittstelle hinzuzufügen. Die IoT-Erweiterung fügt der Azure-Befehlszeilenschnittstelle spezifische Befehle für IoT Hub, IoT Edge und IoT Device Provisioning Service (DPS) hinzu.
-
-```azurecli-interactive
-az extension add --name azure-iot
-```
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="add-a-consumer-group-to-your-iot-hub"></a>Hinzufügen einer Consumergruppe zu Ihrem IoT Hub
 
@@ -73,7 +67,7 @@ Notieren Sie sich den verwendeten Namen, da Sie ihn später in diesem Tutorial b
 
 ## <a name="get-a-service-connection-string-for-your-iot-hub"></a>Abrufen einer Dienst-Verbindungszeichenfolge für den IoT-Hub
 
-IoT-Hubs werden mit verschiedenen Standardzugriffsrichtlinien erstellt. Eine dieser Richtlinien ist die **Dienstrichtlinie** . Sie gewährt Diensten ausreichende Berechtigungen, um Lese- und Schreibvorgänge in den Endpunkten des IoT-Hubs auszuführen. Führen Sie den folgenden Befehl aus, um eine Verbindungszeichenfolge für den IoT-Hub abzurufen, die die Bedingungen der Dienstrichtlinie erfüllt:
+IoT-Hubs werden mit verschiedenen Standardzugriffsrichtlinien erstellt. Eine dieser Richtlinien ist die **Dienstrichtlinie**. Sie gewährt Diensten ausreichende Berechtigungen, um Lese- und Schreibvorgänge in den Endpunkten des IoT-Hubs auszuführen. Führen Sie den folgenden Befehl aus, um eine Verbindungszeichenfolge für den IoT-Hub abzurufen, die die Bedingungen der Dienstrichtlinie erfüllt:
 
 ```azurecli-interactive
 az iot hub show-connection-string --hub-name YourIotHub --policy-name service
@@ -253,7 +247,7 @@ Falls bei der Ausführung dieses Beispiels Probleme auftreten, versuchen Sie, di
 
 ### <a name="azure-app-service-issues"></a>Probleme mit Azure App Service
 
-* Navigieren Sie im Azure-Portal zu Ihrer Web-App. Wählen Sie unter **Überwachung** im linken Bereich **App Service-Protokolle** aus. Aktivieren Sie **Anwendungsprotokollierung (Dateisystem)** , legen Sie **Ebene** auf „Fehler“ fest, und wählen Sie dann **Speichern** aus. Öffnen Sie dann (unter **Überwachung** ) **Protokollstream** .
+* Navigieren Sie im Azure-Portal zu Ihrer Web-App. Wählen Sie unter **Überwachung** im linken Bereich **App Service-Protokolle** aus. Aktivieren Sie **Anwendungsprotokollierung (Dateisystem)** , legen Sie **Ebene** auf „Fehler“ fest, und wählen Sie dann **Speichern** aus. Öffnen Sie dann (unter **Überwachung**) **Protokollstream**.
 
 * Wählen Sie im Azure-Portal für Ihre Web-App unter **Entwicklungstools** die Option **Konsole** aus, und validieren Sie die node-Version und npm-Version mit `node -v` bzw. `npm -v`.
 

@@ -3,12 +3,12 @@ title: Erstellen von Richtlinien für Arrayeigenschaften für Ressourcen
 description: Erfahren Sie, wie Sie mit Arrayparametern und Arrayausdrücken arbeiten, den [*]-Alias auswerten und Elemente mit Azure Policy-Definitionsregeln anfügen.
 ms.date: 10/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 92339a6da4fd2061d66935cc8d04428c69822862
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 60044d4a599c14088ea923a6a14cb46543646995
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323228"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920456"
 ---
 # <a name="author-policies-for-array-properties-on-azure-resources"></a>Erstellen von Richtlinien für Arrayeigenschaften für Azure-Ressourcen
 
@@ -17,7 +17,7 @@ Azure Resource Manager-Eigenschaften werden häufig als Zeichenfolgen und booles
 - Als Typ eines [Definitionsparameters](../concepts/definition-structure.md#parameters), um mehrere Optionen bereitzustellen
 - Als Teil einer [Richtlinienregel](../concepts/definition-structure.md#policy-rule) mit den Bedingungen **in** oder **notIn**
 - Als Teil einer Richtlinienregel, die den [\[\*\]-Alias](../concepts/definition-structure.md#understanding-the--alias) auswertet für:
-  - Szenarien wie **Keine** , **Beliebig** oder **Alle**
+  - Szenarien wie **Keine**, **Beliebig** oder **Alle**
   - Komplexe Szenarien mit **count**
 - In der [Auswirkung „append“](../concepts/effects.md#append), um ein vorhandenes Array zu ersetzen oder ihm Elemente hinzuzufügen
 
@@ -28,7 +28,7 @@ Dieser Artikel befasst sich mit jedem dieser Verwendungsfälle in Azure Policy u
 ### <a name="define-a-parameter-array"></a>Definieren eines Parameterarrays
 
 Durch das Definieren eines Parameters als Array kann die Richtlinie flexibel gestaltet werden, wenn mehrere Werte erforderlich sind.
-Diese Richtliniendefinition lässt einen beliebigen einzelnen Ort für den Parameter **AllowedLocations** zu (der Standardwert ist _eastus2_ ):
+Diese Richtliniendefinition lässt einen beliebigen einzelnen Ort für den Parameter **AllowedLocations** zu (der Standardwert ist _eastus2_):
 
 ```json
 "parameters": {
@@ -44,7 +44,7 @@ Diese Richtliniendefinition lässt einen beliebigen einzelnen Ort für den Param
 }
 ```
 
-Da **type** auf _string_ festgelegt ist, kann beim Zuweisen der Richtlinie nur ein Wert festgelegt werden. Wenn diese Richtlinie zugewiesen ist, sind Ressourcen innerhalb des Bereichs nur in einer einzigen Azure-Region zulässig. Die meisten Richtliniendefinitionen müssen eine Liste genehmigter Optionen zulassen, z. B. _eastus2_ , _eastus_ und _westus2_.
+Da **type** auf _string_ festgelegt ist, kann beim Zuweisen der Richtlinie nur ein Wert festgelegt werden. Wenn diese Richtlinie zugewiesen ist, sind Ressourcen innerhalb des Bereichs nur in einer einzigen Azure-Region zulässig. Die meisten Richtliniendefinitionen müssen eine Liste genehmigter Optionen zulassen, z. B. _eastus2_, _eastus_ und _westus2_.
 
 Verwenden Sie zum Erstellen einer Richtliniendefinition, die mehrere Optionen zulässt, den **Typ** _array_. Diese Richtlinie kann wie folgt umgeschrieben werden:
 
@@ -69,13 +69,13 @@ Verwenden Sie zum Erstellen einer Richtliniendefinition, die mehrere Optionen zu
 ```
 
 > [!NOTE]
-> Nachdem eine Richtliniendefinition gespeichert wurde, kann die **type** -Eigenschaft eines Parameters nicht mehr geändert werden.
+> Nachdem eine Richtliniendefinition gespeichert wurde, kann die **type**-Eigenschaft eines Parameters nicht mehr geändert werden.
 
 Diese neue Parameterdefinition akzeptiert während der Richtlinienzuweisung mehrere Werte. Wenn die Arrayeigenschaft **allowedValues** definiert ist, werden die bei der Zuweisung verfügbaren Werte zusätzlich auf die vordefinierte Liste von Optionen beschränkt. Die Verwendung von **allowedValues** ist optional.
 
 ### <a name="pass-values-to-a-parameter-array-during-assignment"></a>Übergeben von Werten an ein Parameterarray während der Zuweisung
 
-Wenn Sie die Richtlinie über das Azure-Portal zuweisen, wird ein Parameter vom **Typ** _array_ als ein einzelnes Textfeld angezeigt. Der Hinweis lautet „Trennen Sie die Werte durch Semikola (;). (Beispiel: London;New York)“. Verwenden Sie die folgende Zeichenfolge, um die zulässigen Werte _eastus2_ , _eastus_ und _westus2_ für den Ort an den Parameter zu übergeben:
+Wenn Sie die Richtlinie über das Azure-Portal zuweisen, wird ein Parameter vom **Typ** _array_ als ein einzelnes Textfeld angezeigt. Der Hinweis lautet „Trennen Sie die Werte durch Semikola (;). (Beispiel: London;New York)“. Verwenden Sie die folgende Zeichenfolge, um die zulässigen Werte _eastus2_, _eastus_ und _westus2_ für den Ort an den Parameter zu übergeben:
 
 `eastus2;eastus;westus2`
 
@@ -95,9 +95,9 @@ Das Format für den Parameterwert unterscheidet sich bei der Verwendung der Azur
 
 Die Befehle zur Verwendung dieser Zeichenfolge mit den einzelnen SDKs lauten wie folgt:
 
-- Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment#az-policy-assignment-create) mit dem Parameter **params**
+- Azure CLI: Befehl [az policy assignment create](/cli/azure/policy/assignment#az_policy_assignment_create) mit dem Parameter **params**
 - Azure PowerShell: Cmdlet [New-AzPolicyAssignment](/powershell/module/az.resources/New-Azpolicyassignment) mit dem Parameter **PolicyParameter**
-- REST-API: Im _PUT_ -Vorgang [create](/rest/api/resources/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters** -Eigenschaft
+- REST-API: Im _PUT_-Vorgang [create](/rest/api/resources/policyassignments/create) als Teil des Anforderungstextes als Wert der **properties.parameters**-Eigenschaft
 
 ## <a name="array-conditions"></a>Arraybedingungen
 
@@ -311,7 +311,7 @@ Dieses Verhalten gilt auch bei geschachtelten Arrays. Beispielsweise wird der fo
 }
 ```
 
-Die eigentliche Stärke von `count` zeigt sich in der `where`-Bedingung. Wenn diese angegeben ist, werden in Azure Policy die Arraymember gezählt und jeweils für die Bedingung ausgewertet. Dabei wird gezählt, wie viele Arraymember als `true` ausgewertet werden. Konkret wird in Azure Policy in jeder Iteration der Auswertung der `where`-Bedingung der einzelne Arraymember * **i** _ ausgewählt und der Ressourceninhalt für die `where`-Bedingung ausgewertet, _*als ob * *_i_*_ der einzige Member des Arrays_* wäre. Die Tatsache, dass in jeder Iteration nur ein Arraymember zur Verfügung steht, bietet die Möglichkeit, komplexe Bedingungen auf jeden einzelnen Arraymember anzuwenden.
+Die eigentliche Stärke von `count` zeigt sich in der `where`-Bedingung. Wenn diese angegeben ist, werden in Azure Policy die Arraymember gezählt und jeweils für die Bedingung ausgewertet. Dabei wird gezählt, wie viele Arraymember als `true` ausgewertet werden. Konkret wird in Azure Policy in jeder Iteration der Auswertung der `where`-Bedingung der einzelne Arraymember ***i** _ ausgewählt und der Ressourceninhalt für die `where`-Bedingung ausgewertet, _*als ob **_i_*_ der einzige Member des Arrays_* wäre. Die Tatsache, dass in jeder Iteration nur ein Arraymember zur Verfügung steht, bietet die Möglichkeit, komplexe Bedingungen auf jeden einzelnen Arraymember anzuwenden.
 
 Beispiel:
 ```json

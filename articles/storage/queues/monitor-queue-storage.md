@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 52c07861fcd3db5f9a53c4bd6730f89925b11ae6
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e41be54ce2017b303543a2e53eabbecb3ddc2978
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348949"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843331"
 ---
 # <a name="monitoring-azure-queue-storage"></a>Überwachen von Azure Queue Storage
 
@@ -99,7 +99,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
-1. Aktivieren Sie das Kontrollkästchen bei **In ein Speicherkonto archivieren** , und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
+1. Aktivieren Sie das Kontrollkästchen bei **In ein Speicherkonto archivieren**, und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
 
    > [!div class="mx-imgBorder"]
    > ![Seite „Diagnoseeinstellungen“: „In ein Speicherkonto archivieren“](media/monitor-queue-storage/diagnostic-logs-settings-pane-archive-storage.png)
@@ -111,7 +111,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamen von Protokollen an Azure Event Hubs
 
-1. Aktivieren Sie das Kontrollkästchen bei **An einen Event Hub streamen** , und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
+1. Aktivieren Sie das Kontrollkästchen bei **An einen Event Hub streamen**, und wählen Sie dann die Schaltfläche **Konfigurieren** aus.
 
 2. Wählen Sie im Bereich **Event Hub auswählen** den Namespace, den Namen und den Richtliniennamen der Event Hub-Instanz aus, an die Sie Ihre Protokolle streamen möchten.
 
@@ -482,7 +482,7 @@ Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpun
 - Erfolgreiche Anforderungen
 - Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
 - Anforderungen, die eine SAS (Shared Access Signature) oder OAuth verwenden, einschließlich fehlerhafter und erfolgreicher Anforderungen
-- Anforderungen an Analysedaten (klassische Protokolldaten im Container **$logs** und klassische Metrikdaten in den **$metric** -Tabellen)
+- Anforderungen an Analysedaten (klassische Protokolldaten im Container **$logs** und klassische Metrikdaten in den **$metric**-Tabellen)
 
 Anforderungen, die durch den Queue Storage-Dienst selbst erfolgen, z. B. Protokollerstellungs- oder -löschvorgänge, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten finden Sie unter [Protokollierte Storage Analytics-Vorgänge und -Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Storage Analytics-Protokollformat](monitor-queue-storage-reference.md).
 
@@ -521,7 +521,7 @@ Mithilfe von Azure Monitor-Protokollabfragen können Sie auf Protokolle zugreife
 
 Weitere Informationen finden Sie unter [Erste Schritte mit Log Analytics in Azure Monitor](../../azure-monitor/log-query/get-started-portal.md).
 
-Die Daten werden in der **StorageQueueLogs** -Tabelle gespeichert.
+Die Daten werden in der **StorageQueueLogs**-Tabelle gespeichert.
 
 #### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 

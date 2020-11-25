@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 9d1759e5b809bc40e63fb6024fb7f107ad347da6
-ms.sourcegitcommit: 30505c01d43ef71dac08138a960903c2b53f2499
+ms.openlocfilehash: ee7cc1c81bd35bf2b51c712c3a60a046435ee700
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92094136"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94951282"
 ---
 # <a name="sap-businessobjects-bi-platform-planning-and-implementation-guide-on-azure"></a>Planungs- und Implementierungsleitfaden für die SAP BusinessObjects BI-Plattform in Azure
 
@@ -137,7 +138,7 @@ Die BI-Plattform benötigt eine Datenbank für CMS und Überwachungsdatenspeiche
 
 - MaxDB
 
-Dieses Dokument veranschaulicht die Richtlinien zur Bereitstellung der **SAP BOBI-Plattform unter Windows mit Azure SQL-Datenbank** und der **SAP BOBI-Plattform unter Linux mit Azure Database for MySQL** . Es ist auch unser empfohlener Ansatz für die Ausführung der SAP BusinessObjects BI-Plattform in Azure.
+Dieses Dokument veranschaulicht die Richtlinien zur Bereitstellung der **SAP BOBI-Plattform unter Windows mit Azure SQL-Datenbank** und der **SAP BOBI-Plattform unter Linux mit Azure Database for MySQL**. Es ist auch unser empfohlener Ansatz für die Ausführung der SAP BusinessObjects BI-Plattform in Azure.
 
 ## <a name="sizing"></a>Festlegen der Größe
 

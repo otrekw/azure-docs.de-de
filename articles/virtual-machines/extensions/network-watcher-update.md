@@ -8,16 +8,17 @@ manager: balar
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
+ms.subservice: extensions
 ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 09/23/2020
 ms.author: damendo
-ms.openlocfilehash: 23520a0249e22b3f81c7f7c598ef10d8c3acb550
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: c427a206e0422e66cb526a29a462d8b6bdf6818e
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900197"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94965934"
 ---
 # <a name="update-the-network-watcher-extension-to-the-latest-version"></a>Aktualisieren der Network Watcher-Erweiterung auf die neueste Version
 
@@ -82,7 +83,8 @@ Führen Sie die folgenden Befehle aus:
 Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentLinux"
 
 #Windows command
-Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "AzureNetworkWatcherExtension" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows"
+Set-AzVMExtension -ResourceGroupName "myResourceGroup1" -Location "WestUS" -VMName "myVM1" -Name "NetworkWatcherAgentWindows" -Publisher "Microsoft.Azure.NetworkWatcher" -Type "NetworkWatcherAgentWindows" -ForceRerun "True"
+
 ```
 
 Falls dies nicht funktioniert, entfernen Sie die Erweiterung, und installieren Sie sie noch einmal mithilfe der folgenden Schritte. Hierdurch wird die aktuelle Version automatisch hinzugefügt.
@@ -143,4 +145,4 @@ Wenn Sie für die Network Watcher-Erweiterung das automatische Upgrade aktivier
 
 ## <a name="support"></a>Support
 
-Sollten Sie im Rahmen dieses Artikels weitere Hilfe benötigen, lesen Sie die Dokumentation zur Network Watcher-Erweiterung für [Linux](./network-watcher-linux.md) oder [Windows](./network-watcher-windows.md). Über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) können Sie sich auch mit den Azure-Experten in Verbindung setzen. Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten** . Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).
+Sollten Sie im Rahmen dieses Artikels weitere Hilfe benötigen, lesen Sie die Dokumentation zur Network Watcher-Erweiterung für [Linux](./network-watcher-linux.md) oder [Windows](./network-watcher-windows.md). Über das [MSDN Azure-Forum oder über das Stack Overflow-Forum](https://azure.microsoft.com/support/forums/) können Sie sich auch mit den Azure-Experten in Verbindung setzen. Alternativ dazu können Sie eine Azure-Supportanfrage erstellen. Rufen Sie die [Azure-Support-Website](https://azure.microsoft.com/support/options/) auf, und wählen Sie die Option **Support erhalten**. Informationen zur Nutzung von Azure-Support finden Sie unter [Microsoft Azure-Support-FAQ](https://azure.microsoft.com/support/faq/).

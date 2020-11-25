@@ -3,13 +3,13 @@ title: Konfigurieren der Überwachung für Azure Functions
 description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mit Application Insights verbinden und die Datensammlung konfigurieren.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2
-ms.openlocfilehash: 50705eeedf9c985a053600a8c0b27c823231e9a3
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.custom: contperfq2, devx-track-azurecli
+ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92217183"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94833077"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
@@ -245,22 +245,22 @@ Wenn Sie auf **Erstellen** klicken, wird eine Application Insights-Ressource mit
 
 Verwenden Sie die folgenden Schritte zum Erstellen der entsprechenden Ressource, falls für Ihre Funktions-App keine Application Insights-Ressource erstellt wurde. Sie können dann den Instrumentierungsschlüssel dieser Ressource Ihrer Funktions-App als [Anwendungseinstellung](functions-how-to-use-azure-function-app-settings.md#settings) hinzufügen.
 
-1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Funktions-App** , und wählen Sie diese Option und dann Ihre Funktions-App aus. 
+1. Suchen Sie im [Azure-Portal](https://portal.azure.com) nach **Funktions-App**, und wählen Sie diese Option und dann Ihre Funktions-App aus. 
 
 1. Wählen Sie oben im Fenster das Banner **Application Insights ist nicht konfiguriert** aus. Sollte dieses Banner nicht angezeigt werden, ist Application Insights möglicherweise bereits für Ihre App aktiviert.
 
     :::image type="content" source="media/configure-monitoring/enable-application-insights.png" alt-text="Aktivieren von Application Insights über das Portal":::
 
-1. Erweitern Sie **Ressource ändern** , und erstellen Sie eine Application Insights-Ressource. Verwenden Sie dazu die Einstellungen, die in der folgenden Tabelle angegeben sind.  
+1. Erweitern Sie **Ressource ändern**, und erstellen Sie eine Application Insights-Ressource. Verwenden Sie dazu die Einstellungen, die in der folgenden Tabelle angegeben sind.  
 
     | Einstellung      | Vorgeschlagener Wert  | BESCHREIBUNG                                        |
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name der neuen Ressource** | Eindeutiger App-Name | Es ist am einfachsten, den gleichen Namen wie für Ihre Funktionen-App zu verwenden, der in Ihrem Abonnement eindeutig sein muss. | 
     | **Location** | Europa, Westen | Verwenden Sie nach Möglichkeit dieselbe [Region](https://azure.microsoft.com/regions/) wie für Ihre Funktions-App (oder eine Region in der Nähe). |
 
-    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Aktivieren von Application Insights über das Portal":::.
+    :::image type="content" source="media/configure-monitoring/ai-general.png" alt-text="Erstellen Sie eine Application Insights-Ressource":::.
 
-1. Wählen Sie **Übernehmen** . 
+1. Wählen Sie **Übernehmen**. 
 
    Die Application Insights-Ressource wird in derselben Ressourcengruppe und unter demselben Abonnement wie Ihre Funktionen-App erstellt. Schließen Sie nach der Erstellung der Ressource das Application Insights-Fenster.
 

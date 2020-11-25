@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 3/20/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1e6965e15b7482935148ae7fcd2edf0f3cc722b2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 98c33d4b9e749e804f70d9dccb7198884c80dfe7
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "83738556"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952700"
 ---
 # <a name="user-profile-attributes"></a>Benutzerprofilattribute
 
@@ -26,7 +26,7 @@ Ihr Azure Active Directory (Azure AD) B2C-Verzeichnisbenutzerprofil umfasst eine
 
 Sie können auch externe Systeme integrieren. Sie können z. B. Azure AD B2C für die Authentifizierung verwenden und eine externe Datenbank für Kundenbeziehungsmanagement (Customer Relationship Management, CRM) oder Kundendatenbank als autoritative Quelle der Kundendaten nutzen. Weitere Informationen finden Sie unter [Lösung für Remoteprofile](https://github.com/azure-ad-b2c/samples/tree/master/policies/remote-profile).
 
-In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](https://docs.microsoft.com/graph/api/resources/user) aufgeführt, die vom Azure AD B2C-Verzeichnisbenutzerprofil unterstützt werden. Darin sind die folgenden Informationen zu den einzelnen Attributen enthalten:
+In der nachstehenden Tabelle sind die Attribute von [Benutzerressourcentypen](/graph/api/resources/user) aufgeführt, die vom Azure AD B2C-Verzeichnisbenutzerprofil unterstützt werden. Darin sind die folgenden Informationen zu den einzelnen Attributen enthalten:
 
 - Der von Azure AD B2C verwendete Attributname (gefolgt vom Microsoft Graph-Namen in Klammern, falls dieser anders lautet)
 - Attributdatentyp
@@ -94,7 +94,7 @@ Sie müssen häufig Ihre eigenen Attribute erstellen, beispielsweise in den folg
 - Ein Identitätsanbieter verfügt über eine eindeutige Benutzer-ID, die gespeichert werden muss, z.B. **uniqueUserGUID**.
 - Für eine benutzerdefinierte User Journey muss ein Status eines Benutzers (z. B. **migrationStatus**) beibehalten werden.
 
-Azure AD B2C erweitert die für die einzelnen Benutzerkonten gespeicherten Attribute. Erweiterungsattribute [erweitern das Schema](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions) der Benutzerobjekte im Verzeichnis. Die Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens b2c-extensions-app angefügt. Nehmen Sie keine Änderungen an dieser Anwendung vor. Sie wird von Azure AD B2C zum Speichern von Benutzerdaten verwendet. Sie finden diese Anwendung in Azure Active Directory unter „App-Registrierungen“.
+Azure AD B2C erweitert die für die einzelnen Benutzerkonten gespeicherten Attribute. Erweiterungsattribute [erweitern das Schema](/graph/extensibility-overview#schema-extensions) der Benutzerobjekte im Verzeichnis. Die Erweiterungsattribute können nur für ein Anwendungsobjekt registriert werden, obwohl sie Daten für einen Benutzer enthalten können. Das Erweiterungsattribut wird an die Anwendung namens b2c-extensions-app angefügt. Nehmen Sie keine Änderungen an dieser Anwendung vor. Sie wird von Azure AD B2C zum Speichern von Benutzerdaten verwendet. Sie finden diese Anwendung in Azure Active Directory unter „App-Registrierungen“.
 
 > [!NOTE]
 > - Für jedes Benutzerkonto können bis zu 100 Erweiterungsattribute geschrieben werden.
@@ -113,6 +113,6 @@ Für das Definieren einer Eigenschaft in einer Schemaerweiterung werden die folg
 
 ## <a name="next-steps"></a>Nächste Schritte
 Erfahren Sie mehr über Erweiterungsattribute:
-- [Schemaerweiterungen](https://docs.microsoft.com/graph/extensibility-overview#schema-extensions)
+- [Schemaerweiterungen](/graph/extensibility-overview#schema-extensions)
 - [Definieren von benutzerdefinierten Attributen in einem Benutzerflow](user-flow-custom-attributes.md)
 - [Definieren von benutzerdefinierten Attributen in einer benutzerdefinierten Richtlinie](custom-policy-custom-attributes.md)

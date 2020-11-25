@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
-ms.openlocfilehash: d4d21ac0fc0f218b9168adfad3e1b2ec42092b42
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a6b62e9c894c25b2c3cd064524881ae5db51ec5a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544748"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968535"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Konnektivität öffentlicher Endpunkte für VMs, die Azure Load Balancer Standard in SAP-Hochverfügbarkeitsszenarien verwenden
 
@@ -97,7 +98,7 @@ Die Konfiguration würde wie folgt aussehen:
    1. Wählen Sie **Öffentliche IP-Adresse erstellen** aus, und geben Sie als Namen **MyPublicILBFrondEndIP** an.  
    1. Wählen Sie **Zonenredundant** als Verfügbarkeitszone aus.  
    1. Klicken Sie auf „Überprüfen und erstellen“, dann auf „Erstellen“.  
-2. Erstellen Sie den Back-End-Pool **MyBackendPoolOfPublicILB** , und fügen Sie die virtuellen Computer hinzu.  
+2. Erstellen Sie den Back-End-Pool **MyBackendPoolOfPublicILB**, und fügen Sie die virtuellen Computer hinzu.  
    1. Wählen Sie das virtuelle Netzwerk aus.  
    1. Wählen Sie die virtuellen Computer und ihre IP-Adressen aus, und fügen Sie sie dem Back-End-Pool hinzu.  
 3. [Erstellen Sie Ausgangsregeln](../../../load-balancer/quickstart-load-balancer-standard-public-cli.md?tabs=option-1-create-load-balancer-standard%3ftabs%3doption-1-create-load-balancer-standard#create-outbound-rule-configuration). Derzeit ist es nicht möglich, Ausgangsregeln über das Azure-Portal zu erstellen. Sie können Ausgangsregeln mit der [Azure-Befehlszeilenschnittstelle](../../../cloud-shell/overview.md?view=azure-cli-latest) erstellen.  
@@ -153,7 +154,7 @@ Die Architektur sieht folgendermaßen aus:
    1. Öffentliche IP-Adresse: Klicken Sie auf „Erstellen“, und geben Sie einen Namen ein. Beispiel: **MyFirewallPublicIP**.  
 4. Erstellen Sie eine Azure Firewall-Regel, um ausgehende Verbindungen mit bestimmten öffentlichen Endpunkten zuzulassen. Das Beispiel zeigt, wie Sie den Zugriff auf den öffentlichen Endpunkt der Azure-Verwaltungs-API zulassen.  
    1. Wählen Sie „Regeln“, „Netzwerkregelsammlung“ aus, und klicken Sie dann auf „Netzwerkregelsammlung hinzufügen“.  
-   1. Name: **MyOutboundRule** , Priorität eingeben, Aktion **Zulassen** auswählen.  
+   1. Name: **MyOutboundRule**, Priorität eingeben, Aktion **Zulassen** auswählen.  
    1. Dienst: Name **ToAzureAPI**.  Protokoll: Wählen Sie **Beliebig** aus. Quelladresse: Geben Sie den Bereich für Ihr Subnetz ein, in dem z. B. die virtuellen Computer und der Load Balancer Standard bereitgestellt werden: **11.97.0.0/24**. Zielports: Geben Sie <b>*</b> ein.  
    1. Speichern
    1. Da Sie sich noch bei der Azure Firewall befinden, wählen Sie „Übersicht“ aus. Notieren Sie sich die private IP-Adresse für Azure Firewall.  

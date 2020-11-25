@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 06d71713075b401c876edd87f0ec884bcb252589
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977747"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843552"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 
@@ -67,7 +67,7 @@ Die Funktion für verwaltete Identitäten für Azure-Ressourcen in Azure Active 
 
 Mit [Azure-Richtlinien](../governance/policy/overview.md) kann das gewünschte Verhalten für die [Windows-VMs](./windows/policy.md) und [Linux-VMs](./linux/policy.md) Ihrer Organisation definiert werden. Mithilfe von Richtlinien kann eine Organisation verschiedene Konventionen und Regeln im gesamten Unternehmen durchsetzen. Die Durchsetzung des gewünschten Verhaltens hilft dabei, Risiken zu mindern, und trägt gleichzeitig zum Erfolg des Unternehmens bei.
 
-## <a name="role-based-access-control"></a>Rollenbasierte Zugriffssteuerung
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
 Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure-RBAC)](../role-based-access-control/overview.md) können Sie Aufgabenbereiche in Ihrem Team trennen und Benutzern nur das Maß an Zugriff auf Ihre VM gewähren, das sie zur Ausführung ihrer Aufgaben benötigen. Anstatt allen Benutzern den uneingeschränkten Zugriff auf die VM zu gewähren, können Sie auch nur bestimmte Aktionen zulassen. Sie können die Zugriffssteuerung für die VM im [Azure-Portal](../role-based-access-control/role-assignments-portal.md), per [Azure CLI](/cli/azure/role) oder mit [Azure PowerShell](../role-based-access-control/role-assignments-powershell.md) konfigurieren.
 

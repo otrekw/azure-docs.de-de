@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 48b8737fc37a183405f42b958e38c328a2ce7cb8
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92739596"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967413"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
 
@@ -25,14 +25,14 @@ Beispielsweise möchten Sie eventuell das Zertifikat überprüfen, das während 
 
 In diesem Artikel wird eine benutzerdefinierte Zuweisungsrichtlinie mithilfe einer in C# geschriebenen Azure-Funktion veranschaulicht. Es werden zwei neue IoT-Hubs werden erstellt, die die *Contoso-Abteilung „Toaster“* und die *Contoso-Abteilung „Wärmepumpen“* darstellen. Für Geräte, deren Bereitstellung angefordert wird, ist eine Registrierungs-ID mit einem der folgenden Suffixe erforderlich, damit die Bereitstellung möglich ist:
 
-* **-contoso-tstrsd-007** : Contoso-Abteilung „Toaster“
-* **-contoso-hpsd-088** : Contoso-Abteilung „Wärmepumpen“
+* **-contoso-tstrsd-007**: Contoso-Abteilung „Toaster“
+* **-contoso-hpsd-088**: Contoso-Abteilung „Wärmepumpen“
 
 Die Geräte werden basierend auf einem dieser erforderlichen Suffixe der Registrierungs-ID bereitgestellt. Diese Geräte werden mit einem Bereitstellungsbeispiel simuliert, das im [Azure IoT C SDK](https://github.com/Azure/azure-iot-sdk-c) enthalten ist.
 
 In diesem Artikel führen Sie die folgenden Schritte aus:
 
-* Verwenden der Azure CLI zum Erstellen der beiden IoT-Hubs für die Contoso-Abteilungen ( **Contoso-Abteilung „Toaster“** und **Contoso-Abteilung „Wärmepumpen“** )
+* Verwenden der Azure CLI zum Erstellen der beiden IoT-Hubs für die Contoso-Abteilungen (**Contoso-Abteilung „Toaster“** und **Contoso-Abteilung „Wärmepumpen“** )
 * Erstellen einer neuen Gruppenregistrierung mithilfe einer Azure-Funktion für die benutzerdefinierte Zuweisungsrichtlinie
 * Erstellen von Geräteschlüsseln für die beiden Gerätesimulationen
 * Einrichten der Entwicklungsumgebung für das Azure IoT C SDK
@@ -44,7 +44,7 @@ In diesem Artikel führen Sie die folgenden Schritte aus:
 
 Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie in der SDK-Dokumentation im entsprechenden Abschnitt unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md).
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](https://docs.microsoft.com/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
 
 * Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
@@ -68,7 +68,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 
 2. Verwenden Sie Azure Cloud Shell zum Erstellen eines Device Provisioning-Diensts mit dem Befehl [az iot dps create](/cli/azure/iot/dps#az-iot-dps-create). Der Bereitstellungsdienst wird zu *contoso-us-resource-group* hinzugefügt.
 
-    Im folgenden Beispiel wird am Standort *westus* ein Bereitstellungsdienst mit dem Namen *contoso-provisioning-service-1098* erstellt. Sie müssen einen eindeutigen Dienstnamen verwenden. Verwenden Sie im Dienstnamen ein eigenes Suffix anstelle von **1098** .
+    Im folgenden Beispiel wird am Standort *westus* ein Bereitstellungsdienst mit dem Namen *contoso-provisioning-service-1098* erstellt. Sie müssen einen eindeutigen Dienstnamen verwenden. Verwenden Sie im Dienstnamen ein eigenes Suffix anstelle von **1098**.
 
     ```azurecli-interactive 
     az iot dps create --name contoso-provisioning-service-1098 --resource-group contoso-us-resource-group --location westus
@@ -78,7 +78,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 
 3. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) den IoT-Hub für die **Contoso-Abteilung „Toaster“** . Der IoT-Hub wird zu *contoso-us-resource-group* hinzugefügt.
 
-    Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-toasters-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098** . Im Beispielcode für die benutzerdefinierte Zuweisungsrichtlinie muss der Hubname `-toasters-` enthalten.
+    Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-toasters-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098**. Im Beispielcode für die benutzerdefinierte Zuweisungsrichtlinie muss der Hubname `-toasters-` enthalten.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-toasters-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -88,7 +88,7 @@ In diesem Abschnitt verwenden Sie Azure Cloud Shell zum Erstellen eines Bereitst
 
 4. Erstellen Sie in Azure Cloud Shell mit dem Befehl [az iot hub create](/cli/azure/iot/hub#az-iot-hub-create) den IoT-Hub für die **Contoso-Abteilung „Wärmepumpen“** . Dieser IoT-Hub wird ebenfalls zu *contoso-us-resource-group* hinzugefügt.
 
-    Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-heatpumps-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098** . Im Beispielcode für die benutzerdefinierte Zuweisungsrichtlinie muss der Hubname `-heatpumps-` enthalten.
+    Im folgenden Beispiel wird in der Region *westus* ein IoT-Hub mit dem Namen *contoso-heatpumps-hub-1098* erstellt. Sie müssen einen eindeutigen Hubnamen verwenden. Verwenden Sie im Hubnamen ein eigenes Suffix anstelle von **1098**. Im Beispielcode für die benutzerdefinierte Zuweisungsrichtlinie muss der Hubname `-heatpumps-` enthalten.
 
     ```azurecli-interactive 
     az iot hub create --name contoso-heatpumps-hub-1098 --resource-group contoso-us-resource-group --location westus --sku S1
@@ -102,19 +102,19 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion, die Ihre benutzerdefinier
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie auf der Startseite **+ Ressource erstellen** aus.
 
-2. Geben Sie im Suchfeld *Marketplace durchsuchen* „Funktions-App“ ein. Wählen Sie in der Dropdownliste **Funktions-App** aus, und wählen Sie dann **Erstellen** .
+2. Geben Sie im Suchfeld *Marketplace durchsuchen* „Funktions-App“ ein. Wählen Sie in der Dropdownliste **Funktions-App** aus, und wählen Sie dann **Erstellen**.
 
 3. Geben Sie in **Funktions-App** auf der Seite „Erstellen“ auf der Registerkarte **Grundeinstellungen** die folgenden Einstellungen für die neue Funktions-App ein, und wählen Sie **Überprüfen + erstellen** aus:
 
-    **Ressourcengruppe** : Wählen Sie **contoso-us-resource-group** aus, damit sich alle in diesem Artikel erstellten Ressourcen in derselben Gruppe befinden.
+    **Ressourcengruppe**: Wählen Sie **contoso-us-resource-group** aus, damit sich alle in diesem Artikel erstellten Ressourcen in derselben Gruppe befinden.
 
-    **Name der Funktions-App** : Geben Sie einen eindeutigen Namen für die Funktions-App ein. In diesem Beispiel wird **contoso-function-app-1098** verwendet.
+    **Name der Funktions-App**: Geben Sie einen eindeutigen Namen für die Funktions-App ein. In diesem Beispiel wird **contoso-function-app-1098** verwendet.
 
-    **Veröffentlichen** : Vergewissern Sie sich, dass **Code** ausgewählt ist.
+    **Veröffentlichen**: Vergewissern Sie sich, dass **Code** ausgewählt ist.
 
-    **Laufzeitstapel** : Wählen Sie in der Dropdownliste **.NET Core** aus.
+    **Laufzeitstapel**: Wählen Sie in der Dropdownliste **.NET Core** aus.
 
-    **Region** : Wählen Sie die gleiche Region wie für Ihre Ressourcengruppe aus. In diesem Beispiel wird **USA, Westen** verwendet.
+    **Region**: Wählen Sie die gleiche Region wie für Ihre Ressourcengruppe aus. In diesem Beispiel wird **USA, Westen** verwendet.
 
     > [!NOTE]
     > Application Insights ist standardmäßig aktiviert. Application Insights ist für diesen Artikel nicht erforderlich, kann jedoch hilfreich sein, um Probleme zu verstehen und zu untersuchen, die bei der benutzerdefinierten Zuordnung auftreten. Wenn Sie möchten, können Sie Application Insights deaktivieren, indem Sie die Registerkarte **Überwachung** auswählen und dann für **Application Insights aktivieren** die Option **Nein** wählen.
@@ -127,11 +127,11 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion, die Ihre benutzerdefinier
 
     ![Hinzufügen einer Funktion zur Funktions-App](./media/how-to-use-custom-allocation-policies/create-function.png)
 
-6. Wählen Sie auf der Seite **Azure-Funktionen für .NET – Erste Schritte** für den Schritt **WÄHLEN SIE EINE BEREITSTELLUNGSUMGEBUNG AUS** die Kachel **Im Portal** aus, und wählen Sie dann **Weiter** .
+6. Wählen Sie auf der Seite **Azure-Funktionen für .NET – Erste Schritte** für den Schritt **WÄHLEN SIE EINE BEREITSTELLUNGSUMGEBUNG AUS** die Kachel **Im Portal** aus, und wählen Sie dann **Weiter**.
 
     ![Auswählen der Portalentwicklungsumgebung](./media/how-to-use-custom-allocation-policies/function-choose-environment.png)
 
-7. Wählen Sie auf der nächsten Seite für den Schritt **FUNKTION ERSTELLEN** die Kachel **Webhook + API** aus, und wählen Sie dann **Erstellen** . Eine Funktion mit dem Namen **HttpTrigger1** wird erstellt, und im Portal wird der Inhalt der Codedatei **run.csx** angezeigt.
+7. Wählen Sie auf der nächsten Seite für den Schritt **FUNKTION ERSTELLEN** die Kachel **Webhook + API** aus, und wählen Sie dann **Erstellen**. Eine Funktion mit dem Namen **HttpTrigger1** wird erstellt, und im Portal wird der Inhalt der Codedatei **run.csx** angezeigt.
 
 8. Verweisen Sie auf die erforderlichen NuGet-Pakete. Zum Erstellen des anfänglichen Gerätezwillings verwendet die benutzerdefinierte Zuordnungsfunktion Klassen, die in zwei NuGet-Paketen definiert sind, die in die Hostumgebung geladen werden müssen. In Azure Functions wird auf NuGet-Pakete mithilfe der Datei *function.host* verwiesen. In diesem Schritt speichern Sie die Datei *function.host* und laden sie hoch.
 
@@ -149,15 +149,15 @@ In diesem Abschnitt erstellen Sie eine Azure-Funktion, die Ihre benutzerdefinier
         </Project>
         ```
 
-    2. Erweitern Sie in der **HttpTrigger1** -Funktion auf der rechten Seite des Fensters die Registerkarte **Dateien anzeigen** .
+    2. Erweitern Sie in der **HttpTrigger1**-Funktion auf der rechten Seite des Fensters die Registerkarte **Dateien anzeigen**.
 
         ![Öffnen von „Dateien anzeigen“](./media/how-to-use-custom-allocation-policies/function-open-view-files.png)
 
-    3. Wählen Sie **Hochladen** aus, navigieren Sie zur Datei **function.proj** , und wählen Sie **Öffnen** , um die Datei hochzuladen.
+    3. Wählen Sie **Hochladen** aus, navigieren Sie zur Datei **function.proj**, und wählen Sie **Öffnen**, um die Datei hochzuladen.
 
         ![Option zum Hochladen der Datei](./media/how-to-use-custom-allocation-policies/function-choose-upload-file.png)
 
-9. Ersetzen Sie den Code für die **HttpTrigger1** -Funktion durch den folgenden Code, und wählen Sie **Speichern** aus:
+9. Ersetzen Sie den Code für die **HttpTrigger1**-Funktion durch den folgenden Code, und wählen Sie **Speichern** aus:
 
     ```csharp
     #r "Newtonsoft.Json"
@@ -302,17 +302,17 @@ In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe, von der die be
 
 1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) den Bereitstellungsdienst.
 
-2. Wählen Sie im linken Bereich **Registrierungen verwalten** aus, und wählen Sie dann oben auf der Seite die Schaltfläche **Registrierungsgruppe hinzufügen** .
+2. Wählen Sie im linken Bereich **Registrierungen verwalten** aus, und wählen Sie dann oben auf der Seite die Schaltfläche **Registrierungsgruppe hinzufügen**.
 
 3. Geben Sie unter **Registrierungsgruppe hinzufügen** die folgenden Informationen ein, und wählen Sie die Schaltfläche **Speichern** aus.
 
-    **Gruppenname** : Geben Sie **contoso-custom-allocated-devices** ein.
+    **Gruppenname**: Geben Sie **contoso-custom-allocated-devices** ein.
 
-    **Nachweistyp** : Wählen Sie **Symmetrischer Schlüssel** .
+    **Nachweistyp**: Wählen Sie **Symmetrischer Schlüssel**.
 
-    **Schlüssel automatisch generieren** : Dieses Kontrollkästchen sollte bereits aktiviert sein.
+    **Schlüssel automatisch generieren**: Dieses Kontrollkästchen sollte bereits aktiviert sein.
 
-    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen** : Wählen Sie **Benutzerdefiniert (Azure-Funktion verwenden)** .
+    **Wählen Sie, wie Geräte den Hubs zugewiesen werden sollen**: Wählen Sie **Benutzerdefiniert (Azure-Funktion verwenden)** .
 
     ![Hinzufügen einer benutzerdefinierten Zuweisungsregistrierungsgruppe für den Nachweis des symmetrischen Schlüssels](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
@@ -320,11 +320,11 @@ In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe, von der die be
 
     Führen Sie diesen Schritt für beide Abteilungs-IoT Hubs aus.
 
-    **Abonnement** : Wenn Sie über mehrere Abonnements verfügen, sollten Sie das Abonnement auswählen, in dem Sie die IoT Hubs für die Abteilungen erstellt haben.
+    **Abonnement**: Wenn Sie über mehrere Abonnements verfügen, sollten Sie das Abonnement auswählen, in dem Sie die IoT Hubs für die Abteilungen erstellt haben.
 
-    **IoT-Hub** : Wählen Sie einen der von Ihnen erstellten Abteilungshubs aus.
+    **IoT-Hub**: Wählen Sie einen der von Ihnen erstellten Abteilungshubs aus.
 
-    **Zugriffsrichtlinie** : Wählen Sie **iothubowner** .
+    **Zugriffsrichtlinie**: Wählen Sie **iothubowner**.
 
     ![Verknüpfen der Abteilungs-IoT-Hubs mit dem Bereitstellungsdienst](./media/how-to-use-custom-allocation-policies/link-divisional-hubs.png)
 
@@ -332,17 +332,17 @@ In diesem Abschnitt erstellen Sie eine neue Registrierungsgruppe, von der die be
 
     ![Erstellen der Abteilungshubgruppe für die Registrierung](./media/how-to-use-custom-allocation-policies/enrollment-divisional-hub-group.png)
 
-6. Scrollen Sie in **Registrierungsgruppe hinzufügen** nach unten zum Abschnitt **Azure-Funktions-App auswählen** , und wählen Sie die Funktions-App aus, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie dann die erstellte Funktion aus, und wählen Sie „Speichern“ aus, um die Registrierungsgruppe zu speichern.
+6. Scrollen Sie in **Registrierungsgruppe hinzufügen** nach unten zum Abschnitt **Azure-Funktions-App auswählen**, und wählen Sie die Funktions-App aus, die Sie im vorherigen Abschnitt erstellt haben. Wählen Sie dann die erstellte Funktion aus, und wählen Sie „Speichern“ aus, um die Registrierungsgruppe zu speichern.
 
     ![Auswählen der Funktion und Speichern der Registrierungsgruppe](./media/how-to-use-custom-allocation-policies/save-enrollment.png)
 
-7. Öffnen Sie die Registrierungsgruppe nach dem Speichern erneut, und notieren Sie sich den **Primärschlüssel** . Sie müssen die Registrierung speichern, damit die Schlüssel generiert werden. Mit diesem Schlüssel werden später eindeutige Geräteschlüssel für simulierte Geräte generiert.
+7. Öffnen Sie die Registrierungsgruppe nach dem Speichern erneut, und notieren Sie sich den **Primärschlüssel**. Sie müssen die Registrierung speichern, damit die Schlüssel generiert werden. Mit diesem Schlüssel werden später eindeutige Geräteschlüssel für simulierte Geräte generiert.
 
 ## <a name="derive-unique-device-keys"></a>Ableiten eindeutiger Geräteschlüssel
 
 In diesem Abschnitt erstellen Sie zwei eindeutige Geräteschlüssel. Ein Schlüssel wird für einen simulierten Toaster verwendet. Der andere Schlüssel wird für eine simulierte Wärmepumpe verwendet.
 
-Sie verwenden zum Generieren des Geräteschlüssels den **Primärschlüssel** , den Sie zuvor notiert haben, um die [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Verschlüsselung der Geräteregistrierungs-ID für jedes Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren. Weitere Informationen zum Erstellen von abgeleiteten Geräteschlüsseln mit Registrierungsgruppen finden Sie im Abschnitt Gruppenregistrierungen unter [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md).
+Sie verwenden zum Generieren des Geräteschlüssels den **Primärschlüssel**, den Sie zuvor notiert haben, um die [HMAC-SHA256](https://wikipedia.org/wiki/HMAC)-Verschlüsselung der Geräteregistrierungs-ID für jedes Gerät zu berechnen und das Ergebnis in das Base64-Format zu konvertieren. Weitere Informationen zum Erstellen von abgeleiteten Geräteschlüsseln mit Registrierungsgruppen finden Sie im Abschnitt Gruppenregistrierungen unter [Nachweis des symmetrischen Schlüssels](concepts-symmetric-key-attestation.md).
 
 Verwenden Sie für das Beispiel in diesem Artikel die folgenden beiden Geräteregistrierungs-IDs, und berechnen Sie einen Geräteschlüssel für beide Geräte. Beide Registrierungs-IDs haben ein gültiges Suffix für den Beispielcode der benutzerdefinierten Zuweisungsrichtlinie:
 
@@ -353,7 +353,7 @@ Verwenden Sie für das Beispiel in diesem Artikel die folgenden beiden Gerätere
 
 Wenn Sie eine Linux-Arbeitsstation verwenden, können Sie die abgeleiteten Geräteschlüssel mit OpenSSL generieren, wie im folgenden Beispiel gezeigt.
 
-1. Ersetzen Sie den Wert von **KEY** durch den **Primärschlüssel** , den Sie zuvor notiert haben.
+1. Ersetzen Sie den Wert von **KEY** durch den **Primärschlüssel**, den Sie zuvor notiert haben.
 
     ```bash
     KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
@@ -377,7 +377,7 @@ Wenn Sie eine Linux-Arbeitsstation verwenden, können Sie die abgeleiteten Gerä
 
 Wenn Sie eine Windows-Arbeitsstation verwenden, können Sie die abgeleiteten Geräteschlüssel mit PowerShell generieren, wie im folgenden Beispiel gezeigt.
 
-1. Ersetzen Sie den Wert von **KEY** durch den **Primärschlüssel** , den Sie zuvor notiert haben.
+1. Ersetzen Sie den Wert von **KEY** durch den **Primärschlüssel**, den Sie zuvor notiert haben.
 
     ```powershell
     $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
@@ -437,7 +437,7 @@ In diesem Abschnitt wird eine Windows-Arbeitsstation vorausgesetzt. Ein Beispiel
     cmake -Dhsm_type_symm_key:BOOL=ON -Duse_prov_client:BOOL=ON  ..
     ```
 
-    Wenn `cmake` Ihren C++-Compiler nicht findet, treten beim Ausführen des Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs) aus.
+    Wenn `cmake` Ihren C++-Compiler nicht findet, treten beim Ausführen des Befehls unter Umständen Buildfehler auf. Führen Sie den Befehl in diesem Fall an der [Visual Studio-Eingabeaufforderung](/dotnet/framework/tools/developer-command-prompt-for-vs) aus.
 
     Nach erfolgreicher Erstellung ähneln die letzten Ausgabezeilen der folgenden Ausgabe:
 
@@ -465,15 +465,15 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
 
     ![Extrahieren von Informationen zum Device Provisioning Service-Endpunkt aus dem Portalblatt](./media/quick-create-simulated-device-x509/extract-dps-endpoints.png) 
 
-2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln** , die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
+2. Öffnen Sie in Visual Studio die Projektmappendatei **azure_iot_sdks.sln**, die zuvor durch das Ausführen von CMake generiert wurde. Die Projektmappendatei befindet sich am folgenden Speicherort:
 
     ```
     azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
 
-3. Navigieren Sie im Visual Studio-Fenster *Projektmappen-Explorer* zum Ordner **Provision\_Samples** . Erweitern Sie das Beispielprojekt mit dem Namen **prov\_dev\_client\_sample** . Erweitern Sie **Quelldateien** , und öffnen Sie **prov\_dev\_client\_sample.c** .
+3. Navigieren Sie im Visual Studio-Fenster *Projektmappen-Explorer* zum Ordner **Provision\_Samples**. Erweitern Sie das Beispielprojekt mit dem Namen **prov\_dev\_client\_sample**. Erweitern Sie **Quelldateien**, und öffnen Sie **prov\_dev\_client\_sample.c**.
 
-4. Suchen Sie die Konstante `id_scope`, und ersetzen Sie den Wert durch Ihren **ID-Bereich** -Wert, den Sie zuvor kopiert haben. 
+4. Suchen Sie die Konstante `id_scope`, und ersetzen Sie den Wert durch Ihren **ID-Bereich**-Wert, den Sie zuvor kopiert haben. 
 
     ```c
     static const char* id_scope = "0ne00002193";
@@ -488,11 +488,11 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
     hsm_type = SECURE_DEVICE_TYPE_SYMMETRIC_KEY;
     ```
 
-6. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample** , und wählen Sie **Als Startprojekt festlegen** aus.
+6. Klicken Sie mit der rechten Maustaste auf das Projekt **prov\_dev\_client\_sample**, und wählen Sie **Als Startprojekt festlegen** aus.
 
 ### <a name="simulate-the-contoso-toaster-device"></a>Simulieren des Contoso-Toasters
 
-1. Suchen Sie zum Simulieren des Toasters nach dem Aufruf von `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c** . Der Aufruf ist auskommentiert.
+1. Suchen Sie zum Simulieren des Toasters nach dem Aufruf von `prov_dev_set_symmetric_key_info()` in **prov\_dev\_client\_sample.c**. Der Aufruf ist auskommentiert.
 
     ```c
     // Set the symmetric key if using they auth type
@@ -537,7 +537,7 @@ Dieser Beispielcode simuliert eine Gerätestartsequenz, von der die Bereitstellu
 
     Speichern Sie die Datei .
 
-2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Eingabeaufforderung zum Neuerstellen des Projekts **Ja** , um das Projekt vor der Ausführung neu zu erstellen.
+2. Wählen Sie im Visual Studio-Menü die Option **Debuggen** > **Starten ohne Debugging** aus, um die Projektmappe auszuführen. Wählen Sie in der Eingabeaufforderung zum Neuerstellen des Projekts **Ja**, um das Projekt vor der Ausführung neu zu erstellen.
 
     Die folgende Ausgabe ist ein Beispiel für einen erfolgreichen Start der Wärmepumpe und das Herstellen der Verbindung mit der Instanz des Bereitstellungsdiensts, die durch die benutzerdefinierte Zuweisungsrichtlinie dem IoT-Hub für die Contoso-Wärmepumpe zugewiesen werden soll:
 
@@ -580,9 +580,9 @@ Bei dieser Vorgehensweise wird davon ausgegangen, dass Sie alle in diesem Artike
 
 Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen** .
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und klicken Sie auf **Ressourcengruppen**.
 
-2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre Ressourcen enthält: **contoso-us-resource-group** . 
+2. Geben Sie im Textfeld **Nach Name filtern...** den Namen der Ressourcengruppe ein, die Ihre Ressourcen enthält: **contoso-us-resource-group**. 
 
 3. Wählen Sie in der Ergebnisliste rechts neben Ihrer Ressourcengruppe **...** und dann **Ressourcengruppe löschen** aus.
 
@@ -591,4 +591,4 @@ Löschen Sie die Ressourcengruppen wie folgt nach Namen:
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Weitere Informationen zur erneuten Bereitstellung finden Sie unter [IoT Hub Device-Konzepte für die erneute Bereitstellung](concepts-device-reprovision.md). 
-* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md). 
+* Weitere Informationen zum Aufheben der Bereitstellung finden Sie unter [Aufheben der Bereitstellung von Geräten, die zuvor automatisch bereitgestellt wurden](how-to-unprovision-devices.md).

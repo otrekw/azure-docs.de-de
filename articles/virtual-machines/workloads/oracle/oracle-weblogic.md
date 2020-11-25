@@ -3,16 +3,17 @@ title: Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Mach
 description: Erfahren Sie, wie Oracle WebLogic Server in Microsoft Azure Virtual Machines ausgeführt wird.
 author: rezar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 09/23/2020
 ms.author: rezar
 ms.reviewer: cynthn
-ms.openlocfilehash: d8639214773a4444876b2a89dda5dd831b8c36ce
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 51f0e68b3e07a157a5222a4374f9e1b74ef7e403
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927289"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94968705"
 ---
 # <a name="what-are-solutions-for-running-oracle-weblogic-server-on-azure-virtual-machines"></a>Welche Lösungen zum Ausführen von Oracle WebLogic Server in Azure Virtual Machines gibt es?
 

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to, contperfq1, deploy
+ms.custom: how-to, contperfq1, deploy, devx-track-azurecli
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: b98d3ea69286fe7c23b6c2978b71699ba7eb0e00
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325192"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873793"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
 
@@ -29,7 +29,7 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azu
 - __Modelldatensammlung__
 - __Authentifizierung__
 - __TLS-Terminierung__
-- Optionen für die __Hardwarebeschleunigung__ , beispielsweise GPU und FPGA (Field-Programmable Gate Arrays)
+- Optionen für die __Hardwarebeschleunigung__, beispielsweise GPU und FPGA (Field-Programmable Gate Arrays)
 
 Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Informationen zum Verbinden eines AKS-Clusters mit Ihrem Arbeitsbereich finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
@@ -46,7 +46,7 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 
 - Die [Azure CLI-Erweiterung für Machine Learning Service](reference-azure-machine-learning-cli.md), das [Azure Machine Learning Python SDK](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) oder die [Visual Studio Code-Erweiterung für Azure Machine Learning](tutorial-setup-vscode-extension.md).
 
-- Bei den in diesem Artikel verwendeten __Python__ -Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
+- Bei den in diesem Artikel verwendeten __Python__-Codeausschnitten wird davon ausgegangen, dass die folgenden Variablen festgelegt sind:
 
     * `ws`: Legen Sie diese Variable auf Ihren Arbeitsbereich fest.
     * `model`: Legen Sie diese Variable auf Ihr registriertes Modell fest.
@@ -54,7 +54,7 @@ Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellun
 
     Weitere Informationen zum Festlegen dieser Variablen finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
-- Bei den in diesem Artikel verwendeten __CLI__ -Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+- Bei den in diesem Artikel verwendeten __CLI__-Ausschnitten wird davon ausgegangen, dass Sie ein `inferenceconfig.json`-Dokument erstellt haben. Weitere Informationen zum Erstellen dieses Dokuments finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 - Ein Azure Kubernetes Service-Cluster, der mit Ihrem Arbeitsbereich verbunden ist. Weitere Informationen finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
@@ -95,7 +95,7 @@ Beim Herunter- und Abskalieren wird die CPU-Auslastung verwendet. Wenn der Schwe
 
 ## <a name="deploy-to-aks"></a>Bereitstellen für AKS
 
-Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__ , in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__ , in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
+Um ein Modell für Azure Kubernetes Service bereitzustellen, erstellen Sie eine __Bereitstellungskonfiguration__, in der die benötigten Computeressourcen beschrieben werden. Dies sind beispielsweise die Anzahl von Kernen und die Arbeitsspeichergröße. Außerdem benötigen Sie eine __Rückschlusskonfiguration__, in der die zum Hosten des Modells und des Webdiensts erforderliche Umgebung beschrieben wird. Weitere Informationen zum Erstellen der Rückschlusskonfiguration finden Sie unter [Wie und wo Modelle bereitgestellt werden](how-to-deploy-and-where.md).
 
 > [!NOTE]
 > Die Anzahl der bereitzustellenden Modelle ist auf 1.000 Modelle pro Bereitstellung (pro Container) beschränkt.
@@ -154,7 +154,7 @@ Die Komponente, die die automatische Skalierung für Implementierungen von Azure
 > [!IMPORTANT]
 > * **Aktivieren Sie die horizontale automatische Kubernetes-Podskalierung (HPA) nicht für Modellbereitstellungen**. Dies würde dazu führen, dass die beiden Komponenten für die automatische Skalierung miteinander konkurrieren würden. Azureml-fe ist für die automatische Skalierung von Modellen konzipiert, die von Azure ML bereitgestellt wurden, wobei HPA die Modellauslastung anhand einer generischen Metrik wie der CPU-Auslastung oder einer benutzerdefinierten Metrikkonfiguration erraten oder näherungsweise ermitteln müsste.
 > 
-> * **Azureml-fe skaliert die Anzahl der Knoten in einem AKS-Cluster nicht** , da dies zu unerwarteten Kostensteigerungen führen könnte. Stattdessen erfolgt eine **Skalierung der Anzahl der Replikate für das Modell** innerhalb der physischen Clustergrenzen. Wenn Sie die Anzahl der Knoten im Cluster skalieren müssen, können Sie den Cluster manuell skalieren oder die [Autoskalierung von AKS-Clustern konfigurieren](../aks/cluster-autoscaler.md).
+> * **Azureml-fe skaliert die Anzahl der Knoten in einem AKS-Cluster nicht**, da dies zu unerwarteten Kostensteigerungen führen könnte. Stattdessen erfolgt eine **Skalierung der Anzahl der Replikate für das Modell** innerhalb der physischen Clustergrenzen. Wenn Sie die Anzahl der Knoten im Cluster skalieren müssen, können Sie den Cluster manuell skalieren oder die [Autoskalierung von AKS-Clustern konfigurieren](../aks/cluster-autoscaler.md).
 
 Die automatische Skalierung kann durch Festlegen von `autoscale_target_utilization`, `autoscale_min_replicas` und `autoscale_max_replicas` für den AKS-Webdienst gesteuert werden. Die Aktivierung der automatischen Skalierung wird im folgenden Beispiel veranschaulicht:
 
@@ -284,7 +284,7 @@ endpoint.delete_version(version_name="versionb")
 
 Bei der Bereitstellung in Azure Kubernetes Service ist die __schlüsselbasierte__ Authentifizierung standardmäßig aktiviert. Sie können auch die __tokenbasierte__ Authentifizierung aktivieren. Die tokenbasierte Authentifizierung erfordert, dass Clients ein Azure Active Directory-Konto verwenden, um ein Authentifizierungstoken anzufordern, mit dem Anforderungen an den bereitgestellten Dienst gesendet werden.
 
-Um die Authentifizierung zu __deaktivieren__ , legen Sie den Parameter `auth_enabled=False` beim Erstellen der Bereitstellungskonfiguration fest. Im folgenden Beispiel wird die Authentifizierung mithilfe des SDKs deaktiviert:
+Um die Authentifizierung zu __deaktivieren__, legen Sie den Parameter `auth_enabled=False` beim Erstellen der Bereitstellungskonfiguration fest. Im folgenden Beispiel wird die Authentifizierung mithilfe des SDKs deaktiviert:
 
 ```python
 deployment_config = AksWebservice.deploy_configuration(cpu_cores=1, memory_gb=1, auth_enabled=False)
@@ -333,6 +333,7 @@ Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwalt
 
 ## <a name="next-steps"></a>Nächste Schritte
 
+* [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
 * [Schützen von Rückschlussumgebungen mit Azure Virtual Network](how-to-secure-inferencing-vnet.md)
 * [Wie man ein Modell mit einem benutzerdefinierten Docker-Image bereitstellt](how-to-deploy-custom-docker-image.md)
 * [Problembehandlung von Bereitstellungen von Azure Machine Learning Service mit AKS und ACI](how-to-troubleshoot-deployment.md)

@@ -6,17 +6,17 @@ services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.custom: how-to
+ms.custom: how-to, devx-track-azurecli
 ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: ce80c6bbd3e4a5154e80317c3918776c771e67fb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0bbf70016dc9b93120b3158e8954c336095ea211
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93318212"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832686"
 ---
 # <a name="create-an-azure-machine-learning-compute-cluster"></a>Erstellen eines Computeclusters für Azure Machine Learning
 
@@ -60,7 +60,7 @@ Computecluster können Aufträge sicher in einer [virtuellen Netzwerkumgebung](h
 
 ## <a name="create"></a>Erstellen
 
-**Geschätzter Zeitaufwand** : Ca. fünf Minuten.
+**Geschätzter Zeitaufwand**: Ca. fünf Minuten.
 
 Azure Machine Learning Compute kann in mehreren Ausführungen wiederverwendet werden. Compute kann für andere Benutzer im Arbeitsbereich freigegeben werden und wird zwischen den Ausführungen beibehalten. Dabei werden Knoten basierend auf der Anzahl der übermittelten Ausführungen und der Einstellung „max_nodes“ für Ihren Cluster automatisch hoch- oder herunterskaliert. Die Einstellung „min_nodes“ steuert die Mindestanzahl verfügbarer Knoten.
 
@@ -74,8 +74,8 @@ Die Computeressource skaliert automatisch auf Null herunter, wenn sie nicht ben�
 
 Um eine persistente Azure Machine Learning Compute-Ressource in Python zu erstellen, geben Sie die Eigenschaften **vm_size** und **max_nodes** an. Azure Machine Learning verwendet dann für die restlichen Eigenschaften intelligente Standardwerte. 
     
-* **vm_size** : Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
-* **max_nodes** : Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
+* **vm_size**: Die VM-Familie der von Azure Machine Learning Compute erstellten Knoten.
+* **max_nodes**: Die maximale Anzahl von Knoten, auf die das Computeziel bei der Ausführung eines Auftrags in Azure Machine Learning Compute automatisch hochskaliert wird.
 
 
 [!code-python[](~/aml-sdk-samples/ignore/doc-qa/how-to-set-up-training-targets/amlcompute2.py?name=cpu_cluster)]

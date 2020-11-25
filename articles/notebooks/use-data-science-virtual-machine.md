@@ -6,12 +6,12 @@ manager: andneil
 ms.author: getroyer
 ms.topic: how-to
 ms.date: 06/13/2019
-ms.openlocfilehash: 291f1ac093568f50ad6146b70fa1ef69263b7b5b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d65a39c1a1d302e565b59db1644af2c08befb6b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85830304"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843161"
 ---
 # <a name="use-azure-data-science-virtual-machines"></a>Verwenden von Azure Data Science VMs
 
@@ -24,7 +24,7 @@ Standardmäßig werden Projekte auf der Ebene **Free Compute** ausgeführt, die 
 
 ## <a name="create-a-dsvm-instance"></a>Erstellen einer DSVM-Instanz
 
-Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Weitere Informationen, einschließlich der Preisinformationen, finden Sie unter [Virtuelle Data Science-Computer](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
+Um eine neue DSVM-Instanz zu erstellen, befolgen Sie die Anweisungen in [Erstellen einer Ubuntu Data Science VM](../machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro.md). Weitere Informationen, einschließlich der Preisinformationen, finden Sie unter [Virtuelle Data Science-Computer](https://azure.microsoft.com/services/virtual-machines/data-science-virtual-machines/).
 
 ## <a name="connect-to-the-dsvm"></a>Herstellen einer Verbindung mit der DSVM
 
@@ -68,4 +68,4 @@ Wenn mehrere Benutzer eine DSVM gemeinsam nutzen, können Sie vermeiden, dass si
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu DSVMs finden Sie unter [Einführung in Azure Data Science Virtual Machine für Linux und Windows](/azure/machine-learning/data-science-virtual-machine/overview).
+Weitere Informationen zu DSVMs finden Sie unter [Einführung in Azure Data Science Virtual Machine für Linux und Windows](../machine-learning/data-science-virtual-machine/overview.md).

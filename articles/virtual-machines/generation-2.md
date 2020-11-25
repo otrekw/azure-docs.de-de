@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 7234c02d387e2fbf21a7f6002e44f84deb851133
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0aedcc3be4cb319dc24990507d85756bd77777e4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977594"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963826"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>Unterstützung für VMs der Generation 2 in Azure
 
@@ -101,7 +101,8 @@ Azure unterstützt zurzeit einige der Funktionen nicht, die lokale Hyper-V-Insta
 | Azure Site Recovery               | :heavy_check_mark: | :heavy_check_mark: |
 | Sichern/Wiederherstellen                    | :heavy_check_mark: | :heavy_check_mark: |
 | Shared Image Gallery              | :heavy_check_mark: | :heavy_check_mark: |
-| Azure Disk Encryption             | :heavy_check_mark: | :x:                |
+| [Azure Disk Encryption](../security/fundamentals/azure-disk-encryption-vms-vmss.md)             | :heavy_check_mark: | :x:                |
+| [Serverseitige Verschlüsselung](disk-encryption.md)            | :heavy_check_mark: | :heavy_check_mark: |
 
 ## <a name="creating-a-generation-2-vm"></a>Erstellen einer VM der Generation 2
 

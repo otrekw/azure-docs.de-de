@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
-ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: 13540f6a4c2e80da390298f7deaf050cd913487f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
+ms.openlocfilehash: e5b54f0eb3f068e1697b8541373ed84692448a59
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320039"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844828"
 ---
 # <a name="monitoring-azure-table-storage"></a>Überwachen von Azure-Tabellenspeicher
 
@@ -98,7 +98,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
-1. Aktivieren Sie das Kontrollkästchen **In ein Speicherkonto archivieren** , und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+1. Aktivieren Sie das Kontrollkästchen **In ein Speicherkonto archivieren**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
 
    > [!div class="mx-imgBorder"]   
    > ![Seite „Diagnoseeinstellungen“: „In ein Speicherkonto archivieren“](media/monitor-table-storage/diagnostic-logs-settings-pane-archive-storage.png)
@@ -110,7 +110,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamen von Protokollen an Azure Event Hubs
 
-1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen** , und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
 
 2. Wählen Sie im Bereich **Event Hub auswählen** den Namespace, den Namen und den Richtliniennamen des Event Hubs aus, an den Sie Ihre Protokolle streamen möchten. 
 
@@ -121,7 +121,7 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung 
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Senden von Protokollen an Azure Log Analytics
 
-1. Aktivieren Sie das Kontrollkästchen **An Log Analytics senden** , wählen Sie einen Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
+1. Aktivieren Sie das Kontrollkästchen **An Log Analytics senden**, wählen Sie einen Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
 
    > [!div class="mx-imgBorder"]   
    > ![Seite „Diagnoseeinstellungen“ für Log Analytics](media/monitor-table-storage/diagnostic-logs-settings-pane-log-analytics.png)
@@ -480,7 +480,7 @@ Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpun
 - Erfolgreiche Anforderungen
 - Fehlerhafte Anforderungen, einschließlich Timeout-, Drosselungs-, Netzwerk- und Autorisierungsfehler sowie anderer Fehler
 - Anforderungen, die eine SAS (Shared Access Signature) oder OAuth verwenden, einschließlich fehlerhafter und erfolgreicher Anforderungen
-- Anforderungen an Analysedaten (klassische Protokolldaten im Container **$logs** und klassische Metrikdaten in den **$metric** -Tabellen)
+- Anforderungen an Analysedaten (klassische Protokolldaten im Container **$logs** und klassische Metrikdaten in den **$metric**-Tabellen)
 
 Anforderungen, die durch den Tabellenspeicherdienst selbst erfolgen, z. B. Protokollerstellungs- oder -löschvorgänge, werden nicht protokolliert. Eine vollständige Liste der protokollierten Daten finden Sie unter [Protokollierte Storage Analytics-Vorgänge und -Statusmeldungen](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) und [Storage Analytics-Protokollformat](monitor-table-storage-reference.md).
 
@@ -519,7 +519,7 @@ Mithilfe von Azure Monitor-Protokollabfragen können Sie auf Protokolle zugreife
 
 Weitere Informationen finden Sie unter [Streamen von Azure-Überwachungsdaten an einen Event Hub und externe Partner](../../azure-monitor/platform/stream-monitoring-data-event-hubs.md).
 
-Die Daten werden in der **StorageTableLogs** -Tabelle gespeichert. 
+Die Daten werden in der **StorageTableLogs**-Tabelle gespeichert. 
 
 #### <a name="sample-kusto-queries"></a>Kusto-Beispielabfragen
 

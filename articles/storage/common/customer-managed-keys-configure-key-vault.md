@@ -10,13 +10,13 @@ ms.date: 09/16/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 219fe82f16dd9bbc887c9b17b067c706230c63dd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 02661c9c2a581ab21a2ae9dc31e5da95426c0edd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782381"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843382"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>Konfigurieren der Verschlüsselung mit kundenseitig verwalteten Schlüsseln, die in Azure Key Vault gespeichert sind
 
@@ -241,7 +241,7 @@ Wenn Sie die Schlüsselversion manuell aktualisieren möchten, geben Sie die Ver
 Um kundenseitig verwaltete Schlüssel mit der manuellen Aktualisierung der Schlüsselversion im Azure-Portal zu konfigurieren, geben Sie den Schlüssel-URI einschließlich der Version an. Gehen Sie wie folgt vor, um einen Schlüssel als URI anzugeben:
 
 1. Um den Schlüssel-URI im Azure-Portal anzuzeigen, navigieren Sie zu Ihrem Schlüsseltresor, und wählen die Einstellung **Schlüssel** aus. Wählen Sie den gewünschten Schlüssel aus, und klicken Sie darauf, um dessen Versionen anzuzeigen. Wählen Sie eine Schlüsselversion aus, um die Einstellungen für diese Version anzuzeigen.
-1. Kopieren Sie den Wert im Feld **Schlüsselbezeichner** , das den URI enthält.
+1. Kopieren Sie den Wert im Feld **Schlüsselbezeichner**, das den URI enthält.
 
     ![Screenshot mit Schlüssel-URI des Schlüsseltresors](media/customer-managed-keys-configure-key-vault/portal-copy-key-identifier.png)
 

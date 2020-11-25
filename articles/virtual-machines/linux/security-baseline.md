@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab266e1a94a647c4c1f0c42cc75fe6b6a68d9afa
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: f9835a0bb67fd276096153c54a569ebb58161799
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205148"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842412"
 ---
 # <a name="azure-security-baseline-for-linux-virtual-machines"></a>Azure-Sicherheitsbaseline für Virtuelle Linux-Computer
 
@@ -978,7 +978,7 @@ In den meisten Fällen sind die Microsoft-Basisvorlagen in Kombination mit Azure
 
 * [Integrieren mit verwalteten Azure-Identitäten](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
-* [Erstellen einer Key Vault-Instanz](../../key-vault/secrets/quick-create-portal.md)
+* [Erstellen einer Key Vault-Instanz](../../key-vault/general/quick-create-portal.md)
 
 * [Authentifizieren bei Key Vault](../../key-vault/general/authentication.md)
 
@@ -1088,7 +1088,7 @@ Wenn Sie Azure Disk Encryption verwenden, können Sie die Azure-VM mit den Versc
 
 * [Sichern und Wiederherstellen einer verschlüsselten VM](../../backup/backup-azure-vms-encryption.md)
 
-**Azure Security Center-Überwachung**: Nicht zutreffend
+**Azure Security Center-Überwachung:** Nicht zutreffend
 
 **Verantwortlichkeit**: Kunde
 

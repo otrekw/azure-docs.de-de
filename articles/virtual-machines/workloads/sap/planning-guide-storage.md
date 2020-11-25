@@ -10,18 +10,19 @@ tags: azure-resource-manager
 keywords: ''
 ms.assetid: d7c59cc1-b2d0-4d90-9126-628f9c7a5538
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 06/23/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4ed99145a2d3860849c4a8117a93a9a0f24d227c
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540925"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955411"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.

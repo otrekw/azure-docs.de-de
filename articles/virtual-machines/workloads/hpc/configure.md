@@ -3,16 +3,17 @@ title: Konfiguration und Optimierung von InfiniBand-fähigen Azure-VMs der H- un
 description: Informieren Sie sich über das Konfigurieren und Optimieren der InfiniBand-fähigen virtuellen Computer der H-Serie und der N-Serie für HPC.
 author: vermagit
 ms.service: virtual-machines
+ms.subservice: workloads
 ms.topic: article
 ms.date: 10/23/2020
 ms.author: amverma
 ms.reviewer: cynthn
-ms.openlocfilehash: a1bfb5988169ba79a6e3e8416804d7d4c896c758
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: b1686b08608e4f1c49cd918e86e8149f0fe2a21c
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92516849"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963367"
 ---
 # <a name="configure-and-optimize-vms"></a>Konfigurieren und Optimieren von virtuellen Computern
 
@@ -30,7 +31,7 @@ Auf InfiniBand-fähigen virtuellen Computern sind die entsprechenden Treiber erf
 Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances), die SR-IOV nicht unterstützen, ist die CentOS-HPC-Version 6.5 oder höher bis zu 7.5 im Marketplace geeignet. Für [virtuelle Computer der H16-Serie](../../h-series.md) werden z. B. die Versionen 7.1 bis 7.5 empfohlen. Bei diesen VM-Images sind die Network Direct-Treiber für RDMA und Intel MPI Version 5.1 vorab geladen.
 
 > [!NOTE]
-> Bei den CentOS-basierten HPC-Images für SR-IOV nicht unterstützende VMs sind Kernel-Updates in der **yum** -Konfigurationsdatei deaktiviert. Der Grund: Die Network Direct-Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
+> Bei den CentOS-basierten HPC-Images für SR-IOV nicht unterstützende VMs sind Kernel-Updates in der **yum**-Konfigurationsdatei deaktiviert. Der Grund: Die Network Direct-Linux RDMA-Treiber werden als RPM-Paket verteilt, und Treiberupdates funktionieren möglicherweise nicht, wenn der Kernel aktualisiert wird.
 
 #### <a name="sr-iov-enabled-vms"></a>SR-IOV unterstützende VMs
   Für [RDMA-fähige VMs](../../sizes-hpc.md#rdma-capable-instances), die SR-IOV unterstützen, ist die [CentOS-HPC-Version 7.6 oder höher](https://techcommunity.microsoft.com/t5/Azure-Compute/CentOS-HPC-VM-Image-for-SR-IOV-enabled-Azure-HPC-VMs/ba-p/665557) im Marketplace geeignet. Diese VM-Images sind optimiert und vorab mit den OFED-Treibern für RDMA sowie verschiedenen gängigen MPI-Bibliotheken und Paketen für wissenschaftliches Computing geladen. Damit bieten diese VMs einen sehr einfachen Einstieg.

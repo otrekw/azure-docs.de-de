@@ -9,18 +9,19 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 10/01/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 19abb3f12dc1a0fd2a3dff548ecdc9e7fff47659
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 2ce9ab371c0ed1e81cf1dfb53fca7e359e1aeb35
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927667"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94967498"
 ---
 # <a name="sap-hana-infrastructure-configurations-and-operations-on-azure"></a>SAP HANA-Infrastrukturkonfigurationen und -Vorgänge in Azure
 Dieses Dokument enthält Anleitungen für die Konfiguration der Azure-Infrastruktur und SAP HANA-Betriebssystemen, die auf nativen virtuellen Azure-Computern bereitgestellt werden. Das Dokument enthält auch Informationen zur Konfiguration für die horizontale SAP HANA-Skalierung für die M128s-VM-SKU. Dieses Dokument ist nicht als Ersatz für die SAP-Standarddokumentation gedacht, zu der folgende Inhalte gehören:
@@ -140,7 +141,7 @@ Ein typisches grundlegendes Design für einen einzelnen Knoten in einer Konfigur
 Die grundlegende Konfiguration von einem VM-Knoten für die horizontale SAP HANA-Skalierung sieht wie folgt aus:
 
 - Für **/hana/shared** verwenden Sie den nativen NFS-Dienst, der über Azure NetApp Files bereitgestellt wird. 
-- Alle anderen Datenträgervolumes werden nicht für die unterschiedlichen Knoten freigegeben und basieren nicht auf NFS. Installationskonfigurationen und Schritte für HANA-Installationen mit horizontaler Skalierung mit nicht freigegebenen **/hana/data** - und **/hana/log** -Volumes finden Sie im weiteren Verlauf dieses Dokuments. Informationen zu für HANA zertifiziertem Speicher, der verwendet werden kann, finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
+- Alle anderen Datenträgervolumes werden nicht für die unterschiedlichen Knoten freigegeben und basieren nicht auf NFS. Installationskonfigurationen und Schritte für HANA-Installationen mit horizontaler Skalierung mit nicht freigegebenen **/hana/data**- und **/hana/log**-Volumes finden Sie im weiteren Verlauf dieses Dokuments. Informationen zu für HANA zertifiziertem Speicher, der verwendet werden kann, finden Sie im Artikel [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md).
 
 
 Informationen zum Anpassen der Größe der Volumes oder Datenträger finden Sie im Dokument [SAP HANA: TDI-Speicheranforderungen](https://www.sap.com/documents/2015/03/74cdb554-5a7c-0010-82c7-eda71af511fa.html). Es enthält Angaben zur erforderlichen Größe abhängig von der Anzahl der Workerknoten. Das Dokument enthält eine Formel, die Sie anwenden müssen, um die erforderliche Kapazität des Volumes zu erhalten.

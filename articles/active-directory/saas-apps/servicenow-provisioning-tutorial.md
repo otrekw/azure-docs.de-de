@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 1d6213d49c98f5e09f22e7310183315800d0c6f6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: fe2d09315dcb2a0958f8a1b8efe7532c64c111d8
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359781"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966546"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von ServiceNow für die automatische Benutzerbereitstellung
 
@@ -56,13 +56,6 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![ServiceNow-Administratorrolle](media/servicenow-provisioning-tutorial/servicenow-admin-role.png)
 
-3. Stellen Sie sicher, dass die folgenden Einstellungen in ServiceNow **deaktiviert** sind:
-
-   1. Wählen Sie **System Security** > **High security settings** > **Require basic authentication for incoming SCHEMA requests** („Systemsicherheit“ -> „Einstellungen für hohe Sicherheit“ -> „Einfache Authentifizierung für eingehende SCHEMA-Anforderungen erforderlich“).
-   2. Wählen Sie **System Properties** > **Web Services** > **Require basic authorization for incoming SOAP requests** („Systemeigenschaften“ -> „Webdienste“ -> „Einfache Authentifizierung für eingehende SOAP-Anforderungen erforderlich“).
-     
-   > [!IMPORTANT]
-   > Wenn diese Einstellungen *aktiviert* sind, kann die Bereitstellungs-Engine nicht mit ServiceNow kommunizieren.
 
 ## <a name="step-3-add-servicenow-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von ServiceNow aus dem Azure AD-Anwendungskatalog
 
@@ -99,7 +92,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernahmen für den ServiceNow-Administrator ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit ServiceNow herstellen kann. Wenn die Verbindung nicht möglich ist, müssen Sie sicherstellen, dass Ihr ServiceNow-Konto über Administratorberechtigungen verfügt. Versuchen Sie es anschließend noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die Anmeldeinformationen und den Benutzernahmen für den ServiceNow-Administrator ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit ServiceNow herstellen kann. Wenn die Verbindung nicht möglich ist, müssen Sie sicherstellen, dass Ihr ServiceNow-Konto über Administratorberechtigungen verfügt. Versuchen Sie es anschließend noch einmal.
 
     ![Screenshot: Dienstbereitstellungsseite, auf der Sie Administratoranmeldeinformationen eingeben können](./media/servicenow-provisioning-tutorial/provisioning.png)
 
@@ -111,11 +104,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit ServiceNow synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit ServiceNow synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute zum Abgleichen der Benutzerkonten in ServiceNow bei Updatevorgängen verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die ServiceNow-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit ServiceNow synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute zum Abgleichen der Benutzerkonten in ServiceNow bei Updatevorgängen verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die ServiceNow-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit ServiceNow synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit ServiceNow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Updatevorgängen in ServiceNow für den Abgleich der Gruppen verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit ServiceNow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden bei Updatevorgängen in ServiceNow für den Abgleich der Gruppen verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

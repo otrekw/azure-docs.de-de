@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
-ms.openlocfilehash: d6bcb9125cdfc07eb249353cb85b40a22d3e468c
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: f2b9f79f0914e645c736f8a577c46baa42587332
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397364"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874609"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>Behandeln häufig auftretender Fragen oder Probleme mit dem Eingangscontroller
 
@@ -141,7 +141,7 @@ Folgendes muss vorhanden sein, damit AGIC wie erwartet funktioniert:
      aspnetapp              1/1     Running   0          17h   10.0.0.6    aks-agentpool-35064155-1   <none>           <none>            app=aspnetapp
      ```
 
-  2. Mindestens ein **Dienst** , der über übereinstimmende `selector`-Bezeichnungen auf die Pods oben verweist.
+  2. Mindestens ein **Dienst**, der über übereinstimmende `selector`-Bezeichnungen auf die Pods oben verweist.
      Überprüfen Sie dies aus [Cloud Shell](https://shell.azure.com/) mit `kubectl get services -o wide`.
      ```bash
      delyan@Azure:~$ kubectl get services -o wide --show-labels
@@ -150,7 +150,7 @@ Folgendes muss vorhanden sein, damit AGIC wie erwartet funktioniert:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Eingehender Datenverkehr** , der mit `kubernetes.io/ingress.class: azure/application-gateway`kommentiert ist und auf den obigen Dienst verweist. Überprüfen Sie dies aus [Cloud Shell](https://shell.azure.com/) mit `kubectl get ingress -o wide --show-labels`.
+  3. **Eingehender Datenverkehr**, der mit `kubernetes.io/ingress.class: azure/application-gateway`kommentiert ist und auf den obigen Dienst verweist. Überprüfen Sie dies aus [Cloud Shell](https://shell.azure.com/) mit `kubectl get ingress -o wide --show-labels`.
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -292,7 +292,7 @@ armAuth:
 #    secretJSON: <<Generate this value with: "az ad sp create-for-rbac --subscription <subscription-uuid> --sdk-auth | base64 -w0" >>
 
 ################################################################################
-# Specify if the cluster is RBAC enabled or not
+# Specify if the cluster is Kubernetes RBAC enabled or not
 rbac:
     enabled: false # true/false
 

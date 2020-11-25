@@ -6,13 +6,13 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: c64e01253652ea3b49ad6221f161bb78f499b6ed
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92150536"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841919"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
@@ -20,7 +20,7 @@ ms.locfileid: "92150536"
 
 ## <a name="use-monitoring-solutions"></a>Verwenden von Überwachungslösungen
 
-Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in einem Log Analytics-Arbeitsbereich installierte Lösung jeweils eine Kachel angezeigt. Um diese Seite zu öffnen, navigieren Sie im [Azure-Portal](https://ms.portal.azure.com) zu **Azure Monitor** . Wählen Sie im Menü **Insights** die Option **Mehr** aus, um den **Insights-Hub** zu öffnen, und klicken Sie dann auf **Log Analytics-Arbeitsbereiche** .
+Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in einem Log Analytics-Arbeitsbereich installierte Lösung jeweils eine Kachel angezeigt. Um diese Seite zu öffnen, navigieren Sie im [Azure-Portal](https://ms.portal.azure.com) zu **Azure Monitor**. Wählen Sie im Menü **Insights** die Option **Mehr** aus, um den **Insights-Hub** zu öffnen, und klicken Sie dann auf **Log Analytics-Arbeitsbereiche**.
 
 [![Insights-Hub](media/solutions/insights-hub.png)](media/solutions/insights-hub.png#lightbox)
 
@@ -37,7 +37,7 @@ Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in eine
 
 Gehen Sie wie folgt vor, um die in Ihrem Abonnement installierten Überwachungslösungen aufzulisten.
 
-1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Lösungen** , und wählen Sie diese Option aus.
+1. Öffnen Sie das [Azure-Portal](https://ms.portal.azure.com). Suchen Sie nach **Lösungen**, und wählen Sie diese Option aus.
 1. Alle in Ihren Arbeitsbereichen installierten Lösungen werden aufgelistet. Auf den Namen der Lösung folgt der Name des Arbeitsbereichs, in dem sie installiert ist.
 1. Mit den Dropdownfeldern am oberen Bildschirmrand können Sie die Anzeige nach Abonnement oder Ressourcengruppe filtern.
 
@@ -85,10 +85,10 @@ Get-AzMonitorLogAnalyticsSolution -ResourceGroupName MyResourceGroup
 
 Überwachungslösungen von Microsoft und Partnern sind im [Azure Marketplace](https://azuremarketplace.microsoft.com) verfügbar. Sie können nach verfügbaren Lösungen suchen und sie mit folgendem Verfahren installieren. Wenn Sie eine Lösung installieren, müssen Sie einen [Log Analytics-Arbeitsbereich](../platform/manage-access.md) auswählen, in dem die Lösung installiert wird und in dem ihre Daten gesammelt werden.
 
-1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen** .
+1. Klicken Sie in der [Liste mit Lösungen für Ihr Abonnement](#list-installed-monitoring-solutions) auf **Hinzufügen**.
 1. Durchsuchen Sie eine Projektmappe oder suchen Sie sie. Sie können auch Projektmappen über [diesen Suchlink](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/category/management-tools?page=1&subcategories=management-solutions) durchsuchen.
 1. Suchen Sie die gewünschte Überwachungslösung, und lesen Sie ihre Beschreibung.
-1. Klicken Sie auf **Erstellen** , um den Installationsprozess zu starten.
+1. Klicken Sie auf **Erstellen**, um den Installationsprozess zu starten.
 1. Wenn der Installationsvorgang gestartet wird, werden Sie aufgefordert, den Log Analytics-Arbeitsbereich anzugeben und die erforderliche Konfiguration für die Projektmappe bereitzustellen.
 
 ![Installieren einer Lösung](media/solutions/install-solution.png)
@@ -101,9 +101,9 @@ Mitglieder der Community können Verwaltungslösungen für Azure-Schnellstartvor
 2. Gehen Sie zu [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
 3. Suchen Sie nach einer Lösung, an der Sie interessiert sind.
 4. Wählen Sie die Lösung aus den Ergebnissen aus, um ihre Details anzuzeigen.
-5. Klicken Sie auf die Schaltfläche **Bereitstellen in Azure** .
+5. Klicken Sie auf die Schaltfläche **Bereitstellen in Azure**.
 6. Sie werden aufgefordert, Informationen wie die Ressourcengruppe und den Standort sowie Werte für Parameter in der Lösung anzugeben.
-7. Klicken Sie auf **Kaufen** , um die Lösung zu installieren.
+7. Klicken Sie auf **Kaufen**, um die Lösung zu installieren.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
@@ -238,7 +238,7 @@ Sie können die Verknüpfung zwischen einem Log Analytics-Arbeitsbereich und ein
 
 ### <a name="portal"></a>[Portal](#tab/portal)
 
-Wenn Sie eine installierte Lösung über das Portal entfernen möchten, suchen Sie sie in der [Liste mit den installierten Lösungen](#list-installed-monitoring-solutions). Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen** .
+Wenn Sie eine installierte Lösung über das Portal entfernen möchten, suchen Sie sie in der [Liste mit den installierten Lösungen](#list-installed-monitoring-solutions). Klicken Sie auf den Namen der Lösung, um die dazugehörige Zusammenfassungsseite zu öffnen, und klicken Sie anschließend auf **Löschen**.
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
