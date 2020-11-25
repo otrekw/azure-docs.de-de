@@ -10,11 +10,11 @@ ms.date: 04/15/2020
 ms.author: daperlov
 ms.reviewer: jrasnick
 ms.openlocfilehash: f06777e559187a57bfe0625cde700f30fb636a2b
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309340"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95974458"
 ---
 # <a name="ingest-data-into-azure-data-lake-storage-gen2"></a>Erfassen von Daten in Azure Data Lake Storage Gen2 
 
@@ -22,8 +22,8 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe von Azure Synapse Analytics Dat
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Abonnement** : Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure Storage-Konto** : Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
+* **Azure-Abonnement**: Wenn Sie über kein Azure-Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* **Azure Storage-Konto**: Sie verwenden Azure Data Lake Gen 2 als *Quelldatenspeicher*. Wenn Sie kein Speicherkonto haben, finden Sie unter [Erstellen eines Azure Storage-Kontos](../../storage/blobs/data-lake-storage-quickstart-create-account.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json) die erforderlichen Schritte zum Erstellen eines solchen Kontos.
 
 ## <a name="create-linked-services"></a>Erstellen von verknüpften Diensten
 
@@ -31,7 +31,7 @@ In Azure Synapse Analytics definieren Sie in einem verknüpften Dienst Ihre Verb
 
 1. Öffnen Sie die Benutzeroberfläche für Azure Synapse Analytics, und wechseln Sie zur Registerkarte **Verwalten**.
 1. Wählen Sie unter **Externe Verbindungen** die Option **Verknüpfte Dienste** aus.
-1. Klicken Sie auf **Neu** , um einen verknüpften Dienst hinzuzufügen.
+1. Klicken Sie auf **Neu**, um einen verknüpften Dienst hinzuzufügen.
 1. Wählen Sie in der Liste die Kachel „Azure Data Lake Storage Gen2“ und dann **Weiter** aus.
 1. Geben Sie Ihre Anmeldeinformationen für die Authentifizierung ein. Derzeit werden die Authentifizierungstypen „Kontoschlüssel“, „Dienstprinzipal“ und „Verwaltete Identität“ unterstützt. Klicken Sie auf „Verbindung testen“, um Ihre Anmeldeinformationen zu überprüfen. 
 1. Wenn Sie fertig sind, klicken Sie auf **Erstellen**.
@@ -46,7 +46,7 @@ Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitä
 1. Wählen Sie „Azure Data Lake Storage Gen2“ als Datenspeicher aus, und klicken Sie auf „Weiter“.
 1. Wählen Sie „DelimitedText“ als Format aus, und klicken Sie auf „Weiter“.
 1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften ADLS-Dienst aus. Geben Sie den Dateipfad Ihrer Quelldaten und dann an, ob die erste Zeile einen Header hat. Sie können das Schema aus dem Dateispeicher oder einer Beispieldatei importieren. Wählen Sie nach der Fertigstellung OK aus.
-1. Wechseln Sie zur Registerkarte **Senke**. Klicken Sie auf **Neu** , um ein neues Senkendataset zu erstellen.
+1. Wechseln Sie zur Registerkarte **Senke**. Klicken Sie auf **Neu**, um ein neues Senkendataset zu erstellen.
 1. Wählen Sie „Azure Data Lake Storage Gen2“ als Datenspeicher aus, und klicken Sie auf „Weiter“.
 1. Wählen Sie „DelimitedText“ als Format aus, und klicken Sie auf „Weiter“.
 1. Wählen Sie im Bereich „Eigenschaften festlegen“ den von Ihnen erstellten verknüpften ADLS-Dienst aus. Geben Sie den Pfad des Ordners an, in den Daten geschrieben werden sollen. Wählen Sie nach der Fertigstellung OK aus.
@@ -55,7 +55,7 @@ Eine Pipeline enthält den logischen Ablauf für die Ausführung einer Aktivitä
 
 Nach Abschluss der Konfiguration Ihrer Pipeline können Sie einen Debuglauf durchführen, bevor Sie Ihre Artefakte zur Überprüfung veröffentlichen, ob alles einwandfrei ist.
 
-1. Klicken Sie auf der Symbolleiste auf **Debuggen** , um die Pipeline zu debuggen. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
+1. Klicken Sie auf der Symbolleiste auf **Debuggen**, um die Pipeline zu debuggen. Der Status der Pipelineausführung wird unten im Fenster auf der Registerkarte **Ausgabe** angezeigt. 
 1. Wenn die Pipeline ausgeführt wird, klicken Sie auf der oberen Symbolleiste auf **Alle veröffentlichen**. Mit dieser Aktion werden erstellte Entitäten (Datasets und Pipelines) im Synapse Analytics-Dienst veröffentlicht.
 1. Warten Sie, bis die Meldung **Erfolgreich veröffentlicht** angezeigt wird. Wenn Sie Benachrichtigungsmeldungen anzeigen möchten, klicken Sie oben rechts auf die Schaltfläche mit der Glocke. 
 
