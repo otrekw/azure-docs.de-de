@@ -4,11 +4,11 @@ description: Erfahren Sie etwas über die Unterstützung der Migration virtuelle
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: 7a7713021683c394e609a302a1aa6fcb282484e5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544204"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008292"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>Unterstützungsmatrix für die VMware-Migration
 
@@ -19,8 +19,8 @@ Dieser Artikel enthält eine Zusammenfassung der Unterstützungseinstellungen un
 
 Es gibt mehrere Möglichkeiten, virtuelle VMware-Computer zu migrieren:
 
-- **Verwendung der Migration ohne Agent** : Migrieren von VMs, ohne dass darauf Software installiert werden muss Bei der Migration ohne Agent stellen Sie die [Azure Migrate-Appliance](migrate-appliance.md) bereit.
-- **Verwendung der Agent-basierten Migration** : Installieren eines Agents für die Replikation auf der VM Bei der Agent-basierten Migration stellen Sie eine [Replikationsappliance](migrate-replication-appliance.md) bereit.
+- **Verwendung der Migration ohne Agent**: Migrieren von VMs, ohne dass darauf Software installiert werden muss Bei der Migration ohne Agent stellen Sie die [Azure Migrate-Appliance](migrate-appliance.md) bereit.
+- **Verwendung der Agent-basierten Migration**: Installieren eines Agents für die Replikation auf der VM Bei der Agent-basierten Migration stellen Sie eine [Replikationsappliance](migrate-replication-appliance.md) bereit.
 
 In [diesem Artikel](server-migrate-overview.md) finden Sie Informationen zur Verwendung dieser beiden Methoden.
 
@@ -41,7 +41,7 @@ In der Tabelle werden die VMware-Hypervisor-Anforderungen zusammengefasst.
 --- | ---
 **VMware vCenter Server** | Version 5.5, 6.0, 6.5, 6.7 und 7.0
 **VMware vSphere ESXI-Host** | Version 5.5, 6.0, 6.5, 6.7 und 7.0
-**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen in vCenter Server erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.FileManagement** : Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Config.ChangeTracking** : Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Config.DiskLease** : Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskAccess** : (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.DiskRandomRead** : Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess** : Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.GetVmFiles** : Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.State.\* *_: Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - _* VirtualMachine.Interact.PowerOff** : Ermöglicht das Ausschalten der VM während der Migration zu Azure.
+**vCenter Server-Berechtigungen** | Bei der Migration ohne Agent wird die [Migrate-Appliance](migrate-appliance.md) verwendet. Für die Appliance sind folgende Berechtigungen in vCenter Server erforderlich:<br/><br/> - **Datastore.Browse:** Ermöglicht das Durchsuchen von VM-Protokolldateien zur Fehlerbehebung bei der Erstellung und Löschung von Momentaufnahmen.<br/><br/> - **Datastore.FileManagement**: Ermöglicht Lese-/Schreib-/Lösch-/Umbenennungsvorgänge im Datenspeicherbrowser, um Probleme bei der Erstellung und Löschung von Momentaufnahmen zu beheben.<br/><br/> - **VirtualMachine.Config.ChangeTracking**: Ermöglicht die Aktivierung oder Deaktivierung der Änderungsverfolgung von VM-Datenträgern, um geänderte Datenblöcke zwischen Momentaufnahmen abzurufen.<br/><br/> - **VirtualMachine.Config.DiskLease**: Ermöglicht Datenträger-Leasevorgänge für eine VM, damit der Datenträger mit dem VMware vSphere Virtual Disk Development Kit (VDDK) gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskAccess**: (insbesondere für vSphere 6.0 und höher) ermöglicht das Öffnen eines Datenträgers auf einem virtuellen Computer für den zufälligen Lesezugriff auf den Datenträger mit dem VDDK.<br/><br/> - **VirtualMachine.Provisioning.DiskRandomRead**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.DiskRandomAccess**: Ermöglicht das Öffnen eines Datenträgers auf einer VM, damit der Datenträger mit dem VDDK gelesen werden kann.<br/><br/> - **VirtualMachine.Provisioning.GetVmFiles**: Ermöglicht Lesevorgänge für Dateien, die einer VM zugeordnet sind, um die Protokolle herunterzuladen und ggf. Fehler zu beheben.<br/><br/> - **VirtualMachine.State.\* *_: Ermöglicht das Erstellen und Verwalten von VM-Momentaufnahmen zur Replikation.<br/><br/> - _* VirtualMachine.Interact.PowerOff**: Ermöglicht das Ausschalten der VM während der Migration zu Azure.
 
 
 

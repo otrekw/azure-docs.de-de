@@ -5,11 +5,11 @@ services: container-service
 ms.topic: article
 ms.date: 04/08/2020
 ms.openlocfilehash: 39c2fe177d0a6d913d7bf2b2baf44af3c69c0868
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900080"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006932"
 ---
 # <a name="create-and-manage-multiple-node-pools-for-a-cluster-in-azure-kubernetes-service-aks"></a>Erstellen und Verwalten mehrerer Knotenpools für einen Cluster in Azure Kubernetes Service (AKS)
 
@@ -74,7 +74,7 @@ az aks get-credentials --resource-group myResourceGroup --name myAKSCluster
 
 ## <a name="add-a-node-pool"></a>Hinzufügen eines Knotenpools
 
-Der im vorherigen Schritt erstellte Cluster verfügt über einen einzelnen Knotenpool. Fügen Sie als Nächstes einen zweiten Knotenpool mit dem Befehl [az aks nodepool add][az-aks-nodepool-add] hinzu. Das folgende Beispiel erstellt einen Knotenpool namens *mynodepool* , der *3* Knoten ausführt:
+Der im vorherigen Schritt erstellte Cluster verfügt über einen einzelnen Knotenpool. Fügen Sie als Nächstes einen zweiten Knotenpool mit dem Befehl [az aks nodepool add][az-aks-nodepool-add] hinzu. Das folgende Beispiel erstellt einen Knotenpool namens *mynodepool*, der *3* Knoten ausführt:
 
 ```azurecli-interactive
 az aks nodepool add \
@@ -93,7 +93,7 @@ Um den Status Ihrer Knotenpools anzuzeigen, verwenden Sie den Befehl [az aks nod
 az aks nodepool list --resource-group myResourceGroup --cluster-name myAKSCluster
 ```
 
-Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knoten im Knotenpool erstellt wurde. Wenn der AKS-Cluster im vorherigen Schritt erstellt wurde, dann wurde ein Standardknotenpool ( *nodepool1* ) mit *2* Knoten erstellt.
+Die folgende Beispielausgabe zeigt, dass *mynodepool* erfolgreich mit drei Knoten im Knotenpool erstellt wurde. Wenn der AKS-Cluster im vorherigen Schritt erstellt wurde, dann wurde ein Standardknotenpool (*nodepool1*) mit *2* Knoten erstellt.
 
 ```output
 [
@@ -249,7 +249,7 @@ Wenn sich die Anforderungen der Workloads Ihrer Anwendungen ändern, müssen Sie
 
 <!--If you scale down, nodes are carefully [cordoned and drained][kubernetes-drain] to minimize disruption to running applications.-->
 
-Um die Anzahl der Knoten in einem Knotenpool zu skalieren, verwenden Sie den Befehl [az aks node pool scale][az-aks-nodepool-scale]. Das folgende Beispiel skaliert die Anzahl der Knoten in *mynodepool* auf *5* :
+Um die Anzahl der Knoten in einem Knotenpool zu skalieren, verwenden Sie den Befehl [az aks node pool scale][az-aks-nodepool-scale]. Das folgende Beispiel skaliert die Anzahl der Knoten in *mynodepool* auf *5*:
 
 ```azurecli-interactive
 az aks nodepool scale \
@@ -303,7 +303,7 @@ AKS bietet eine separate Funktion zum automatischen Skalieren von Knotenpools mi
 
 ## <a name="delete-a-node-pool"></a>Löschen eines Knotenpools
 
-Wenn Sie einen Pool nicht mehr benötigen, können Sie ihn löschen und die zugrunde liegenden VM-Knoten entfernen. Um einen Knotenpool zu löschen, verwenden Sie den Befehl [az aks node pool delete][az-aks-nodepool-delete], und geben Sie den Namen des Knotenpools an. Das folgende Beispiel löscht den in den vorherigen Schritten erstellten Knotenpool *mynodepool* :
+Wenn Sie einen Pool nicht mehr benötigen, können Sie ihn löschen und die zugrunde liegenden VM-Knoten entfernen. Um einen Knotenpool zu löschen, verwenden Sie den Befehl [az aks node pool delete][az-aks-nodepool-delete], und geben Sie den Namen des Knotenpools an. Das folgende Beispiel löscht den in den vorherigen Schritten erstellten Knotenpool *mynodepool*:
 
 > [!CAUTION]
 > Es gibt keine Wiederherstellungsoptionen für Datenverluste, die beim Löschen eines Knotenpools auftreten können. Wenn Pods nicht in anderen Knotenpools geplant werden können, sind diese Anwendungen nicht verfügbar. Stellen Sie sicher, dass Sie einen Knotenpool nicht löschen, wenn aktive Anwendungen keine Datensicherungen aufweisen oder nicht in anderen Knotenpools in Ihrem Cluster ausgeführt werden können.
@@ -367,7 +367,7 @@ az aks nodepool add \
     --no-wait
 ```
 
-Die folgende Beispielausgabe des Befehls [az aks node pool list][az-aks-nodepool-list] zeigt, dass *gpunodepool* Knoten mit der angegebenen *VmSize* (VM-Größe) *erstellt* :
+Die folgende Beispielausgabe des Befehls [az aks node pool list][az-aks-nodepool-list] zeigt, dass *gpunodepool* Knoten mit der angegebenen *VmSize* (VM-Größe) *erstellt*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -425,7 +425,7 @@ az aks nodepool add \
 > [!NOTE]
 > Ein Taint kann nur bei der Erstellung des Knotenpools festgelegt werden.
 
-Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *taintnp* Knoten mit dem angegebenen *nodeTaints* *erstellt* :
+Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *taintnp* Knoten mit dem angegebenen *nodeTaints* *erstellt*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -456,7 +456,7 @@ Die Taint-Informationen sind in Kubernetes für die Behandlung von Planungsregel
 
 Weitere Informationen zur Verwendung der erweiterten geplanten Kubernetes-Features finden Sie unter [Best Practices für erweiterte Scheduler-Funktionen in Azure Kubernetes Service (AKS)][taints-tolerations].
 
-Im vorherigen Schritt haben Sie beim Erstellen Ihres Knotenpools den *sku=gpu:NoSchedule* -Taint angewendet. Das folgende einfache YAML-Beispielmanifest verwendet eine Toleranz, damit der Kubernetes-Planer einen NGINX-Pod auf einem Knoten in diesem Knotenpool ausführen kann.
+Im vorherigen Schritt haben Sie beim Erstellen Ihres Knotenpools den *sku=gpu:NoSchedule*-Taint angewendet. Das folgende einfache YAML-Beispielmanifest verwendet eine Toleranz, damit der Kubernetes-Planer einen NGINX-Pod auf einem Knoten in diesem Knotenpool ausführen kann.
 
 Erstellen Sie eine Datei mit dem Namen `nginx-toleration.yaml`, und fügen Sie den folgenden YAML-Beispielcode ein:
 
@@ -531,7 +531,7 @@ az aks nodepool add \
 > [!NOTE]
 > Die Bezeichnung kann für Knotenpools nur während der Erstellung des Knotenpools festgelegt werden. Bezeichnungen müssen auch ein Schlüssel-Wert-Paar sein und eine [gültige Syntax][kubernetes-label-syntax] aufweisen.
 
-Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *labelnp* Knoten mit dem angegebenen *nodeLabels* *erstellt* :
+Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *labelnp* Knoten mit dem angegebenen *nodeLabels* *erstellt*:
 
 ```console
 $ az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -577,9 +577,9 @@ az aks nodepool add \
 ```
 
 > [!NOTE]
-> Sie können den `--tags`-Parameter darüber hinaus mit dem [az aks nodepool update][az-aks-nodepool-update]-Befehl sowie während der Clustererstellung verwenden. Während der Clustererstellung wendet der `--tags`-Parameter das Tag auf den zusammen mit dem Cluster erstellten ursprünglichen Knotenpool an. Alle Tagnamen müssen den in [Verwenden von Tags zum Organisieren von Azure-Ressourcen][tag-limitation] genannten Einschränkungen entsprechen. Das Aktualisieren eines Knotenpools mit dem `--tags`-Parameter bewirkt die Aktualisierung aller Tagwerte und fügt ggf. vorhandene neue Tags an. Wenn Ihr Knotenpool beispielsweise die Tags *dept=IT* und *costcenter=9999* aufweist und sie ihn mit den Tags *team=dev* und *costcenter=111* aktualisieren, hat Ihr Knotenpool die Tags *dept=IT* , *costcenter=111* und *team=dev*.
+> Sie können den `--tags`-Parameter darüber hinaus mit dem [az aks nodepool update][az-aks-nodepool-update]-Befehl sowie während der Clustererstellung verwenden. Während der Clustererstellung wendet der `--tags`-Parameter das Tag auf den zusammen mit dem Cluster erstellten ursprünglichen Knotenpool an. Alle Tagnamen müssen den in [Verwenden von Tags zum Organisieren von Azure-Ressourcen][tag-limitation] genannten Einschränkungen entsprechen. Das Aktualisieren eines Knotenpools mit dem `--tags`-Parameter bewirkt die Aktualisierung aller Tagwerte und fügt ggf. vorhandene neue Tags an. Wenn Ihr Knotenpool beispielsweise die Tags *dept=IT* und *costcenter=9999* aufweist und sie ihn mit den Tags *team=dev* und *costcenter=111* aktualisieren, hat Ihr Knotenpool die Tags *dept=IT*, *costcenter=111* und *team=dev*.
 
-Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *tagnodepool* Knoten mit dem angegebenen *Tag* *erstellt* :
+Die folgende Beispielausgabe des Befehls [az aks nodepool list][az-aks-nodepool-list] zeigt, dass *tagnodepool* Knoten mit dem angegebenen *Tag* *erstellt*:
 
 ```azurecli
 az aks nodepool list -g myResourceGroup --cluster-name myAKSCluster
@@ -612,8 +612,8 @@ Wenn Sie eine Azure Resource Manager-Vorlage zum Erstellen und Verwalten von Res
 
 Erstellen Sie eine Vorlage wie `aks-agentpools.json`, und fügen Sie das folgende Beispielmanifest ein. Diese Beispielvorlage konfiguriert die folgenden Einstellungen:
 
-* Aktualisiert den *Linux* -Knotenpool mit dem Namen *myagentpool* , sodass dieser drei Knoten ausführt.
-* Legt die Knoten im Knotenpool auf die Ausführung von Kubernetes Version  *1.15.7* fest.
+* Aktualisiert den *Linux*-Knotenpool mit dem Namen *myagentpool*, sodass dieser drei Knoten ausführt.
+* Legt die Knoten im Knotenpool auf die Ausführung von Kubernetes Version *1.15.7* fest.
 * Definiert die Knotengröße als *Standard_DS2_v2*.
 
 Bearbeiten Sie diese Werte nach Bedarf, um Knotenpools nach Bedarf zu aktualisieren, hinzuzufügen oder zu löschen:
@@ -694,7 +694,7 @@ az group deployment create \
 ```
 
 > [!TIP]
-> Sie können Ihrem Knotenpool ein Tag hinzufügen, indem Sie die *tag* -Eigenschaft in der Vorlage hinzufügen, wie im folgenden Beispiel gezeigt.
+> Sie können Ihrem Knotenpool ein Tag hinzufügen, indem Sie die *tag*-Eigenschaft in der Vorlage hinzufügen, wie im folgenden Beispiel gezeigt.
 > 
 > ```json
 > ...

@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 11/29/2019
 ms.openlocfilehash: d110f4ee0248b6ea069c6033dd69840eec1a18f3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92741620"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007153"
 ---
 # <a name="install-custom-apache-hadoop-applications-on-azure-hdinsight"></a>Installieren von benutzerdefinierten Apache Hadoop-Anwendungen in Azure HDInsight
 
@@ -49,9 +49,9 @@ Zum Bereitstellen der Anwendung „Hue“ benötigen Sie folgende Dateien:
 
 1. Geben Sie den Namen des Clusters ein, in dem die Anwendung installiert werden soll. Dieser Cluster muss bereits vorhanden sein.
 
-1. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** .
+1. Aktivieren Sie das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu**.
 
-1. Wählen Sie die Option **Kaufen** .
+1. Wählen Sie die Option **Kaufen**.
 
 Der Installationsstatus kann über die an das Portaldashboard angeheftete Kachel sowie anhand der Portalbenachrichtigung nachverfolgt werden.  (Klicken Sie oben im Portal auf das Glockensymbol.) Die Installation der Anwendung dauert etwa zehn Minuten.
 
@@ -129,7 +129,7 @@ Wenn eine Anwendungsinstallation nicht erfolgreich ist, können Sie Fehlermeldun
 1. Wählen Sie den Cluster aus, in dem Sie die Anwendung installiert haben.
 1. Wählen Sie im Menü **Einstellungen** die Option **Anwendungen** aus.
 1. Klicken Sie mit der rechten Maustaste auf die zu entfernende Anwendung, und wählen Sie dann **Löschen** aus.
-1. Klicken Sie auf **Ja** , um zu bestätigen.
+1. Klicken Sie auf **Ja**, um zu bestätigen.
 
 ### <a name="azure-cli"></a>Azure CLI
 

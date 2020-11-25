@@ -6,11 +6,11 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.author: vturecek
 ms.openlocfilehash: 87b922cb9655588a22c739d26c9ce9e49d35781a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "75465552"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007119"
 ---
 # <a name="service-fabric-testability-scenarios-service-communication"></a>Szenarien für die Service Fabric-Prüfbarkeit: Dienstkommunikation
 Microservices und dienstorientierte Architekturstile können in Azure Service Fabric auf natürliche Weise genutzt werden. Bei diesen Arten von verteilten Architekturen setzen sich komponentenbasierte Microserviceanwendungen in der Regel aus mehreren Diensten zusammen, die miteinander kommunizieren müssen. Sogar im einfachsten Fall verfügen Sie im Allgemeinen mindestens über einen zustandslosen Webdienst und einen zustandsbehafteten Datenspeicherdienst, die miteinander kommunizieren müssen.

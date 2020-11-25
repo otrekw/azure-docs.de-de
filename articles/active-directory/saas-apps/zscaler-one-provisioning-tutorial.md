@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: b8b6383c7808fd6c298d7776fc10572631bc6ddc
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006216"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler One für die automatische Benutzerbereitstellung
 
@@ -47,7 +47,7 @@ Führen Sie zum Hinzufügen von Zscaler One aus dem Azure Marketplace die folgen
 
     ![Azure Active Directory-Symbol](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -61,7 +61,7 @@ Führen Sie zum Hinzufügen von Zscaler One aus dem Azure Marketplace die folgen
 
 ## <a name="assign-users-to-zscaler-one"></a>Zuweisen von Benutzern zu Zscaler One
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Zusammenhang mit der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Zusammenhang mit der automatischen Benutzerbereitstellung werden nur die Benutzer oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer oder Gruppen in Azure AD Zugriff auf Zscaler One benötigen. Zum Zuweisen dieser Benutzer oder Gruppen zu Zscaler One befolgen Sie die Anleitung unter [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md).
 

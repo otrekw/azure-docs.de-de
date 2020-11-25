@@ -7,11 +7,11 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: d5b6ecc12cee983cee0772da8b6f8f26a3b5a8ae
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92890274"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96008181"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Erstellen Ihrer ersten dauerhaften Funktion in C\#
 
@@ -86,9 +86,9 @@ In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funkt
     | Auswählen einer Ressourcengruppe | *Eindeutiger Name* | Der Name der zu erstellenden Ressourcengruppe. |
     | Standort auswählen | *Region* | Wählen Sie eine Region in Ihrer Nähe aus. |
 
-Dem Projekt wird eine Klasse mit den neuen Funktionen hinzugefügt. Von VS Code wird außerdem die Verbindungszeichenfolge des Speicherkontos zu *local.settings.json* und ein Verweis auf das NuGet-Paket [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) zur *CSPROJ* -Projektdatei hinzugefügt.
+Dem Projekt wird eine Klasse mit den neuen Funktionen hinzugefügt. Von VS Code wird außerdem die Verbindungszeichenfolge des Speicherkontos zu *local.settings.json* und ein Verweis auf das NuGet-Paket [`Microsoft.Azure.WebJobs.Extensions.DurableTask`](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.DurableTask) zur *CSPROJ*-Projektdatei hinzugefügt.
 
-Öffnen Sie die neue Datei *HelloOrchestration.cs* , um den Inhalt anzuzeigen. Diese dauerhafte Funktion ist ein einfaches Beispiel für eine Funktionsverkettung mit den folgenden Methoden:  
+Öffnen Sie die neue Datei *HelloOrchestration.cs*, um den Inhalt anzuzeigen. Diese dauerhafte Funktion ist ein einfaches Beispiel für eine Funktionsverkettung mit den folgenden Methoden:  
 
 | Methode | FunctionName | Beschreibung |
 | -----  | ------------ | ----------- |
@@ -136,7 +136,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
     }
     ```
 
-1. Drücken Sie in VS Code **UMSCHALT+F5** , um das Debuggen zu beenden.
+1. Drücken Sie in VS Code **UMSCHALT+F5**, um das Debuggen zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
 
@@ -146,7 +146,7 @@ Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer r
 
 ## <a name="test-your-function-in-azure"></a>Testen der Funktion in Azure
 
-1. Kopieren Sie die URL des HTTP-Triggers im Bereich **Ausgabe** . Die URL, über die Ihre per HTTP ausgelöste Funktion aufgerufen wird, sollte das folgende Format haben:
+1. Kopieren Sie die URL des HTTP-Triggers im Bereich **Ausgabe**. Die URL, über die Ihre per HTTP ausgelöste Funktion aufgerufen wird, sollte das folgende Format haben:
 
     `https://<functionappname>.azurewebsites.net/api/HelloOrchestration_HttpStart`
 
@@ -181,7 +181,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktions-App in Azure veröffentlicht werden kann. Sie können mit einer Funktions-App Funktionen zu logischen Einheiten gruppieren. Dies erleichtert die Verwaltung, Bereitstellung, Skalierung und Freigabe von Ressourcen.
 
-1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt** .
+1. Wählen Sie in Visual Studio im Menü **Datei** die Optionen **Neu** > **Projekt**.
 
 1. Suchen Sie im Dialogfeld **Neues Projekt erstellen** nach `functions`, und wählen Sie die Vorlage **Azure Functions** und dann **Weiter** aus. 
 
@@ -205,7 +205,7 @@ Mit der Azure Functions-Vorlage wird ein Projekt erstellt, das in einer Funktion
 
 In den folgenden Schritten wird eine Vorlage zum Erstellen des dauerhaften Funktionscodes in Ihrem Projekt verwendet.
 
-1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Neue Azure-Funktion** .
+1. Klicken Sie in Visual Studio mit der rechten Maustaste auf das Projekt, und wählen Sie **Hinzufügen** > **Neue Azure-Funktion**.
 
     ![Hinzufügen einer neuen Funktion](./media/durable-functions-create-first-csharp/functions-vs-add-function.png)
 
@@ -261,7 +261,7 @@ Mit Azure Functions Core-Tools können Sie ein Azure Functions-Projekt auf dem l
     }
     ```
 
-5. Drücken Sie **UMSCHALT+F5** , um das Debuggen zu beenden.
+5. Drücken Sie **UMSCHALT+F5**, um das Debuggen zu beenden.
 
 Nachdem Sie sichergestellt haben, dass die Funktion auf Ihrem lokalen Computer richtig ausgeführt wird, können Sie das Projekt in Azure veröffentlichen.
 

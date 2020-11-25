@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 10/14/2020
 ms.author: chmutali
 ms.openlocfilehash: d39e00a80ab167936a749c73867b4343e6ed9d76
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358812"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006437"
 ---
 # <a name="tutorial-configure-attribute-write-back-from-azure-ad-to-sap-successfactors"></a>Tutorial: Konfigurieren des Rückschreibens von Attributen aus Azure AD in SAP SuccessFactors
 In diesem Tutorial werden die Schritte zum Rückschreiben von Attributen aus Azure AD in SuccessFactors Employee Central beschrieben. 
@@ -177,7 +177,7 @@ In SAP SuccessFactors umfasst eine *Auswahlliste* konfigurierbare Optionen, aus 
    > [!div class="mx-imgBorder"]
    > ![Auswählen des E-Mail-Typs „Business“](./media/sap-successfactors-inbound-provisioning/select-business-email-type.png)
 
-1. Notieren Sie sich die **Option ID** , die dem E-Mail-Typ *Business* zugeordnet ist. Sie verwenden diesen Code mit *emailType* in der Attributzuordnungstabelle.
+1. Notieren Sie sich die **Option ID**, die dem E-Mail-Typ *Business* zugeordnet ist. Sie verwenden diesen Code mit *emailType* in der Attributzuordnungstabelle.
 
    > [!div class="mx-imgBorder"]
    > ![Abrufen des Codes für den E-Mail-Typ](./media/sap-successfactors-inbound-provisioning/get-email-type-code.png)
@@ -203,12 +203,12 @@ In SAP SuccessFactors umfasst eine *Auswahlliste* konfigurierbare Optionen, aus 
    > [!div class="mx-imgBorder"]
    > ![Überprüfen der Telefontypen](./media/sap-successfactors-inbound-provisioning/review-phone-types.png)
 
-1. Notieren Sie sich die **Option ID** , die dem Telefontyp *Business* zugeordnet ist. Sie verwenden diesen Code mit *businessPhoneType* in der Attributzuordnungstabelle.
+1. Notieren Sie sich die **Option ID**, die dem Telefontyp *Business* zugeordnet ist. Sie verwenden diesen Code mit *businessPhoneType* in der Attributzuordnungstabelle.
 
    > [!div class="mx-imgBorder"]
    > ![Abrufen des Codes für den Telefontyp „Business“](./media/sap-successfactors-inbound-provisioning/get-business-phone-code.png)
 
-1. Notieren Sie sich die **Option ID** , die dem Telefontyp *Cell* zugeordnet ist. Sie verwenden diesen Code mit *cellPhoneType* in der Attributzuordnungstabelle.
+1. Notieren Sie sich die **Option ID**, die dem Telefontyp *Cell* zugeordnet ist. Sie verwenden diesen Code mit *cellPhoneType* in der Attributzuordnungstabelle.
 
    > [!div class="mx-imgBorder"]
    > ![Abrufen des Codes für den Telefontyp „Cell“](./media/sap-successfactors-inbound-provisioning/get-cell-phone-code.png)
@@ -235,7 +235,7 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
-4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
+4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie die Kategorie **Alle** aus.
 
 5. Suchen Sie nach **SuccessFactors Writeback** (SuccessFactors-Rückschreiben), und fügen Sie die App aus dem Katalog hinzu.
 
@@ -245,13 +245,13 @@ Dieser Abschnitt enthält die folgenden Schritte:
 
 8. Vervollständigen Sie den Abschnitt **Administratoranmeldeinformationen** wie folgt:
 
-   * **Administratorbenutzername** : Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
+   * **Administratorbenutzername**: Geben Sie den Benutzernamen des Benutzerkontos für die SuccessFactors-API ein, und fügen Sie die Unternehmens-ID an. Verwenden Sie das Format **Benutzername\@Unternehmens-ID**.
 
-   * **Administratorkennwort** : Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
+   * **Administratorkennwort**: Geben Sie das Kennwort des Benutzerkontos für die SuccessFactors-API ein. 
 
-   * **Mandanten-URL** : Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte folgendermaßen aussehen: `api4.successfactors.com`.
+   * **Mandanten-URL**: Geben Sie den Namen des Dienstendpunkts für die SuccessFactors-OData-API ein. Geben Sie nur den Hostnamen des Servers ohne „http“ oder „https“ ein. Dieser Wert sollte folgendermaßen aussehen: `api4.successfactors.com`.
 
-   * **Benachrichtigungs-E-Mail** : Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
+   * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
     > [!NOTE]
     > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
 
@@ -296,7 +296,7 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
     >[!div class="mx-imgBorder"]
     >![Writeback-Attributzuordnung](./media/sap-successfactors-inbound-provisioning/writeback-attribute-mapping.png)
 
-1. Klicken Sie auf **Speichern** , um die Zuordnungen zu speichern. Als Nächstes aktualisieren Sie die JSON Path-API-Ausdrücke, um die phoneType-Codes in Ihrer SuccessFactors-Instanz zu verwenden. 
+1. Klicken Sie auf **Speichern**, um die Zuordnungen zu speichern. Als Nächstes aktualisieren Sie die JSON Path-API-Ausdrücke, um die phoneType-Codes in Ihrer SuccessFactors-Instanz zu verwenden. 
 1. Wählen Sie **Erweiterte Optionen anzeigen** aus. 
 
     >[!div class="mx-imgBorder"]
@@ -308,12 +308,12 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus SuccessFac
    > Wenn die Option **Attributliste für SuccessFactors bearbeiten** im Azure-Portal nicht angezeigt wird, können Sie über die URL *https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true* auf die Seite zugreifen. 
 
 1. In der Ansicht werden in der Spalte **API-Ausdruck** die JSON Path-Ausdrücke angezeigt, die vom Connector verwendet werden. 
-1. Aktualisieren Sie die JSON Path-Ausdrücke für geschäftliche Telefonnummer und Mobiltelefonnummer so, dass der ID-Wert ( *businessPhoneType* und *cellPhoneType* ) angezeigt wird, der Ihrer Umgebung entspricht. 
+1. Aktualisieren Sie die JSON Path-Ausdrücke für geschäftliche Telefonnummer und Mobiltelefonnummer so, dass der ID-Wert (*businessPhoneType* und *cellPhoneType*) angezeigt wird, der Ihrer Umgebung entspricht. 
 
     >[!div class="mx-imgBorder"]
     >![JSON Path-Änderung für Telefon](./media/sap-successfactors-inbound-provisioning/phone-json-path-change.png)
 
-1. Klicken Sie auf **Speichern** , um die Zuordnungen zu speichern.
+1. Klicken Sie auf **Speichern**, um die Zuordnungen zu speichern.
 
 ## <a name="enable-and-launch-user-provisioning"></a>Aktivieren und Starten der Benutzerbereitstellung
 
@@ -325,8 +325,8 @@ Nachdem die Konfiguration der SuccessFactors-Bereitstellungs-App abgeschlossen i
 1. Legen Sie auf der Registerkarte **Bereitstellung** die Einstellung **Bereitstellungsstatus** auf **Ein** fest.
 
 1. Wählen Sie **Bereich** aus. Sie können eine der folgenden Optionen auswählen: 
-   * **Alle Benutzer und Gruppen synchronisieren** : Wählen Sie diese Option aus, falls Sie planen, zugeordnete Attribute aller Benutzer aus Azure AD in SuccessFactors zurückzuschreiben. Dies unterliegt den Bereichsregeln, die unter **Zuordnungen** -> **Quellobjektbereich** definiert wurden. 
-   * **Nur zugewiesene Benutzer und Gruppen synchronisieren** : Wählen Sie diese Option aus, falls Sie planen, das Rückschreiben nur für zugeordnete Attribute von Benutzern durchzuführen, die Sie dieser Anwendung zugewiesen haben (Menüoption unter **Anwendung** -> **Verwalten** -> **Benutzer und Gruppen** ). Diese Benutzer unterliegen auch den Bereichsregeln, die unter **Zuordnungen** -> **Quellobjektbereich** definiert sind.
+   * **Alle Benutzer und Gruppen synchronisieren**: Wählen Sie diese Option aus, falls Sie planen, zugeordnete Attribute aller Benutzer aus Azure AD in SuccessFactors zurückzuschreiben. Dies unterliegt den Bereichsregeln, die unter **Zuordnungen** -> **Quellobjektbereich** definiert wurden. 
+   * **Nur zugewiesene Benutzer und Gruppen synchronisieren**: Wählen Sie diese Option aus, falls Sie planen, das Rückschreiben nur für zugeordnete Attribute von Benutzern durchzuführen, die Sie dieser Anwendung zugewiesen haben (Menüoption unter **Anwendung** -> **Verwalten** -> **Benutzer und Gruppen**). Diese Benutzer unterliegen auch den Bereichsregeln, die unter **Zuordnungen** -> **Quellobjektbereich** definiert sind.
 
    > [!div class="mx-imgBorder"]
    > ![Rückschreibe-Bereich auswählen](./media/sap-successfactors-inbound-provisioning/select-writeback-scope.png)

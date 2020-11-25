@@ -12,11 +12,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 5d61c0f5f26bc46b9c4a5bc4a793df1e10710004
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130866"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006728"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Erstellen von Hive-Tabellen und Laden von Daten aus Azure Blob Storage
 
@@ -152,7 +152,7 @@ Im Folgenden werden die Felder beschrieben, mit denen Sie die Implementierung un
 * **\<field separator\>** : Das Trennzeichen für die Felder in der Datendatei, die in die Hive-Tabelle hochgeladen werden soll.
 * **\<line separator\>** : Das Trennzeichen für die Zeilen in der Datendatei.
 * **\<storage location\>** : Der Azure-Speicherort zum Speichern der Daten der Hive-Tabellen. Wenn Sie *LOCATION \<storage location\>* nicht angeben, werden die Datenbank und die Tabellen standardmäßig im Verzeichnis *hive/warehouse/* im Standardcontainer des Hive-Clusters gespeichert. Wenn Sie den Speicherort angeben möchten, muss sich dieser im Standardcontainer für die Datenbank und die Tabellen befinden. Auf diesen Speicherort muss als relativer Speicherort zum Standardcontainer des Clusters im Format *'wasb:///\<directory 1>/'* oder *'wasb:///\<directory 1>/\<directory 2>/'* usw. verwiesen werden. Nachdem die Abfrage ausgeführt wurde, werden die relativen Verzeichnisse innerhalb des Standardcontainers erstellt.
-* **TBLPROPERTIES("skip.header.line.count"="1")** : Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table* -Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
+* **TBLPROPERTIES("skip.header.line.count"="1")** : Wenn die Datendatei einen Header enthält, müssen Sie diese Eigenschaft **am Ende** der *create table*-Abfrage einfügen. Andernfalls wird der Header als ein Datensatz in die Tabelle geladen. Wenn die Datendatei keinen Header enthält, kann dieser Konfigurationsschritt in der Abfrage ausgelassen werden.
 
 ## <a name="load-data-to-hive-tables"></a><a name="load-data"></a>Laden von Daten in Hive-Tabellen
 Mit dieser Hive-Abfrage laden Sie Daten eine Hive-Tabelle.

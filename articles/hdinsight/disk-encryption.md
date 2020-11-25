@@ -8,12 +8,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/10/2020
-ms.openlocfilehash: 9afab87e0d7f0e7a9e5c05b36ace1dfc09c9aa9f
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: a9a90fbb2eedd6db2873d4ac2a5fea94c05c7eed
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92548029"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005655"
 ---
 # <a name="azure-hdinsight-double-encryption-for-data-at-rest"></a>Doppelte Verschlüsselung für ruhende Daten in Azure HDInsight
 
@@ -71,17 +71,17 @@ Die einzelnen Schritte finden Sie unter [Erstellen einer benutzerseitig zugewies
 
 ### <a name="create-azure-key-vault"></a>Azure Key Vault erstellen
 
-Erstellen eines Schlüsseltresors Die einzelnen Schritte finden Sie unter [Erstellen eines Tresors](../key-vault/secrets/quick-create-portal.md).
+Erstellen eines Schlüsseltresors Die einzelnen Schritte finden Sie unter [Erstellen eines Tresors](../key-vault/general/quick-create-portal.md).
 
 HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltresor besitzen, können Sie Ihre Schlüssel in Azure Key Vault importieren. Denken Sie daran, dass für den Schlüsseltresor das **vorläufige Löschen** aktiviert sein muss. Weitere Informationen zum Importieren vorhandener Schlüsseln finden Sie unter [Informationen zu Schlüsseln, Geheimnissen und Zertifikaten](../key-vault/general/about-keys-secrets-certificates.md).
 
 ### <a name="create-key"></a>Erstellen eines Schlüssels
 
-1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Schlüssel** >  **+ Generieren/Importieren** .
+1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Schlüssel** >  **+ Generieren/Importieren**.
 
     ![Generieren eines neuen Schlüssels in Azure Key Vault](./media/disk-encryption/create-new-key.png "Generieren eines neuen Schlüssels in Azure Key Vault")
 
-1. Geben Sie einen Namen an, und wählen Sie dann **Erstellen** aus. Behalten Sie den standardmäßigen **Schlüsseltyp** (Option **RSA** ) bei.
+1. Geben Sie einen Namen an, und wählen Sie dann **Erstellen** aus. Behalten Sie den standardmäßigen **Schlüsseltyp** (Option **RSA**) bei.
 
     ![Generieren des Schlüsselnamens](./media/disk-encryption/create-key.png "Generieren des Schlüsselnamens")
 
@@ -89,13 +89,13 @@ HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltr
 
     ![Key Vault-Schlüsselliste](./media/disk-encryption/key-vault-key-list.png)
 
-1. Wählen Sie die Version aus, um die Seite **Schlüsselversion** zu öffnen. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des HDInsight-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner** , und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
+1. Wählen Sie die Version aus, um die Seite **Schlüsselversion** zu öffnen. Wenn Sie Ihren eigenen Schlüssel für die Verschlüsselung des HDInsight-Clusters verwenden, müssen Sie die Schlüssel-URI angeben. Kopieren Sie den **Schlüsselbezeichner**, und speichern sie ihn, bis Sie zum Erstellen des Clusters bereit sind.
 
     ![Abrufen des Schlüsselbezeichners](./media/disk-encryption/get-key-identifier.png)
 
 ### <a name="create-access-policy"></a>Erstellen einer Zugriffsrichtlinie
 
-1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Zugriffsrichtlinien** >  **+ Zugriffsrichtlinie hinzufügen** .
+1. Navigieren Sie in Ihrem neuen Schlüsseltresor zu **Einstellungen** > **Zugriffsrichtlinien** >  **+ Zugriffsrichtlinie hinzufügen**.
 
     ![Erstellen einer neuen Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/key-vault-access-policy.png)
 
@@ -103,13 +103,13 @@ HDInsight unterstützt nur Azure Key Vault. Falls Sie einen eigenen Schlüsseltr
 
     |Eigenschaft |BESCHREIBUNG|
     |---|---|
-    |Schlüsselberechtigungen|Wählen Sie **Abrufen** , **Schlüssel entpacken** und **Schlüssel packen** aus.|
-    |Berechtigungen für Geheimnis|Wählen Sie **Abrufen** , **Festlegen** und **Löschen** aus.|
+    |Schlüsselberechtigungen|Wählen Sie **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen** aus.|
+    |Berechtigungen für Geheimnis|Wählen Sie **Abrufen**, **Festlegen** und **Löschen** aus.|
     |Prinzipal auswählen|Wählen Sie die benutzerseitig zugewiesene verwaltete Identität aus, die Sie zuvor erstellt haben.|
 
     ![Festlegen der Option „Prinzipal auswählen“ für die Azure Key Vault-Zugriffsrichtlinie](./media/disk-encryption/azure-portal-add-access-policy.png)
 
-1. Wählen Sie **Hinzufügen** .
+1. Wählen Sie **Hinzufügen**.
 
 1. Wählen Sie **Speichern** aus.
 
@@ -359,7 +359,7 @@ In manchen Szenarien müssen unter Umständen die vom HDInsight-Cluster verwende
 
 #### <a name="using-the-azure-portal"></a>Verwenden des Azure-Portals
 
-Zum Rotieren des Schlüssels benötigen Sie die Basis-URI des Schlüsseltresors. Wechseln Sie anschließend im Portal zum Abschnitt mit den HDInsight-Clustereigenschaften, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern** . Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
+Zum Rotieren des Schlüssels benötigen Sie die Basis-URI des Schlüsseltresors. Wechseln Sie anschließend im Portal zum Abschnitt mit den HDInsight-Clustereigenschaften, und klicken Sie unter **Schlüssel-URL für Datenträgerverschlüsselung** auf **Schlüssel ändern**. Geben Sie die neue Schlüssel-URL ein, und senden Sie sie, um den Schlüssel zu rotieren.
 
 ![Rotieren des Schlüssels für die Datenträgerverschlüsselung](./media/disk-encryption/change-key.png)
 

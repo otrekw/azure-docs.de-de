@@ -7,11 +7,11 @@ ms.date: 11/21/2018
 ms.author: gwallace
 ms.custom: mvc, devcenter , devx-track-azurecli
 ms.openlocfilehash: 00addbe992bc113c67df08f73414107d51b3bce5
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748215"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96007391"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Einbinden eines auf Azure Files basierenden Volumes in einer Service Fabric Mesh-Anwendung 
 
@@ -76,8 +76,8 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 
 Sie können diese Werte auch im [Azure-Portal](https://portal.azure.com) abrufen:
 * `<storageAccountName>`: Unter **Speicherkonten** ist der Name des Speicherkontos angegeben, das Sie zum Erstellen der Dateifreigabe verwendet haben.
-* `<storageAccountKey>` Wählen Sie unter **Speicherkonten** Ihr Speicherkonto aus, klicken Sie auf **Zugriffsschlüssel** , und verwenden Sie den Wert unter **key1** .
-* `<fileShareName>` Wählen Sie unter **Speicherkonten** Ihr Speicherkonto aus, und klicken Sie dann auf **Dateien** . Als Name muss der Name der Dateifreigabe verwendet werden, die Sie erstellt haben.
+* `<storageAccountKey>` Wählen Sie unter **Speicherkonten** Ihr Speicherkonto aus, klicken Sie auf **Zugriffsschlüssel**, und verwenden Sie den Wert unter **key1**.
+* `<fileShareName>` Wählen Sie unter **Speicherkonten** Ihr Speicherkonto aus, und klicken Sie dann auf **Dateien**. Als Name muss der Name der Dateifreigabe verwendet werden, die Sie erstellt haben.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Deklarieren einer Volumeressource und Aktualisieren der Dienstressource (JSON)
 
@@ -195,7 +195,7 @@ Fügen Sie `volumeRefs` zum `codePackages`-Element des Diensts hinzu, um das Vol
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-yaml"></a>Deklarieren einer Volumeressource und Aktualisieren der Dienstressource (YAML)
 
-Fügen Sie eine neue *volume.yaml* -Datei zum Verzeichnis *App-Ressourcen* Ihrer Anwendung hinzu.  Geben Sie einen Namen und den Anbieter an („SFAzureFile“, um das auf Azure Files basierende Volume zu verwenden). Bei `<fileShareName>`, `<storageAccountName>` und `<storageAccountKey>` handelt es sich um die Werte, die Sie in einem vorherigen Schritt ermittelt haben.
+Fügen Sie eine neue *volume.yaml*-Datei zum Verzeichnis *App-Ressourcen* Ihrer Anwendung hinzu.  Geben Sie einen Namen und den Anbieter an („SFAzureFile“, um das auf Azure Files basierende Volume zu verwenden). Bei `<fileShareName>`, `<storageAccountName>` und `<storageAccountKey>` handelt es sich um die Werte, die Sie in einem vorherigen Schritt ermittelt haben.
 
 ```yaml
 volume:

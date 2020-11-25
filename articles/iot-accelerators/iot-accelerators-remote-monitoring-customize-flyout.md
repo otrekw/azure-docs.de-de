@@ -1,5 +1,5 @@
 ---
-title: Hinzufügen eines Flyouts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
+title: Hinzufügen eines Flyouts zur Benutzeroberfläche der Remoteüberwachungslösung – Azure | Microsoft-Dokumentation
 description: Dieser Artikel zeigt Ihnen, wie Sie ein neues Flyout auf einer Seite zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung hinzufügen können.
 author: dominicbetts
 manager: timlt
@@ -10,11 +10,11 @@ ms.date: 10/05/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: afd8c5b01b9f36606bf6bd43fbed747ca83ba320
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91318414"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96006114"
 ---
 # <a name="add-a-custom-flyout-to-the-remote-monitoring-solution-accelerator-web-ui"></a>Hinzufügen eines benutzerdefinierten Flyouts zur Webbenutzeroberfläche des Solution Accelerators für die Remoteüberwachung
 

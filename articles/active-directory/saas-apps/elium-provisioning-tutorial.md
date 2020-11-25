@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 08/19/2019
 ms.author: Zhchia
 ms.openlocfilehash: e8f027ccc577df79e561fca7194c20b6cc7ef2c6
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94356753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96005502"
 ---
 # <a name="tutorial-configure-elium-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Elium für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Dieses Tutorial setzt voraus, dass Sie bereits über die folgenden erforderliche
 
 ## <a name="assigning-users-to-elium"></a>Zuweisen von Benutzern zu Elium
 
-Azure AD ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf ausgewählte Apps erhalten. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure AD ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf ausgewählte Apps erhalten. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Entscheiden Sie vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung, welche Benutzer und Gruppen in Azure AD Zugriff auf Elium benötigen. Weisen Sie anschließend diese Benutzer und Gruppen Elium zu, indem Sie die Schritte in [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md) ausführen.
 
@@ -71,7 +71,7 @@ Um Elium für die automatische Benutzerbereitstellung mit Azure AD konfigurieren
 
     ![Menüelement „Azure Active Directory“](common/select-azuread.png)
 
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
      ![Blatt „Azure AD-Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -108,7 +108,7 @@ Führen Sie zum Konfigurieren der automatischen Benutzerbereitstellung für Eliu
 
     ![Einstellung „Automatisch“ für „Bereitstellungsmodus“](common/provisioning-automatic.png)
 
-1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge **\<tenantURL\>/scim/v2** ein. ( **tenantURL** ist der Wert, der zuvor aus der Elium-Administratorkonsole abgerufen wurde.) Geben Sie auch den Elium-Wert **Secret token** im Feld **Geheimes Token** ein. Wählen Sie schließlich **Verbindung testen** aus, um zu überprüfen, ob diese Azure AD-Instanz eine Verbindung mit Elium herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Elium-Konto über Administratorberechtigungen verfügt, und versuchen Sie es dann noch einmal.
+1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge **\<tenantURL\>/scim/v2** ein. (**tenantURL** ist der Wert, der zuvor aus der Elium-Administratorkonsole abgerufen wurde.) Geben Sie auch den Elium-Wert **Secret token** im Feld **Geheimes Token** ein. Wählen Sie schließlich **Verbindung testen** aus, um zu überprüfen, ob diese Azure AD-Instanz eine Verbindung mit Elium herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Elium-Konto über Administratorberechtigungen verfügt, und versuchen Sie es dann noch einmal.
 
     ![Felder „Mandanten-URL“ und „Geheimes Token“ in „Anmeldeinformationen“](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -142,7 +142,7 @@ Führen Sie zum Konfigurieren der automatischen Benutzerbereitstellung für Eliu
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der Vorgang der Erstsynchronisierung dauert länger als spätere Synchronisierungen. Weitere Informationen zu der für die Bereitstellung benötigten Zeit finden Sie unter [Wie lange dauert die Bereitstellung von Benutzern?](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md#how-long-will-it-take-to-provision-users).
 
-Verwenden Sie den Abschnitt **Aktueller Status** , um den Fortschritt zu überwachen und den Links zu Ihrem Bereitstellungsaktivitätsbericht zu folgen. Im Bereitstellungsaktivitätsbericht werden alle Aktionen beschrieben, die vom Azure AD-Bereitstellungsdienst für Elium ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
+Verwenden Sie den Abschnitt **Aktueller Status**, um den Fortschritt zu überwachen und den Links zu Ihrem Bereitstellungsaktivitätsbericht zu folgen. Im Bereitstellungsaktivitätsbericht werden alle Aktionen beschrieben, die vom Azure AD-Bereitstellungsdienst für Elium ausgeführt werden. Weitere Informationen finden Sie unter [Ermitteln, wann ein bestimmter Benutzer auf eine Anwendung zugreifen kann](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md). Informationen zum Lesen der Azure AD-Bereitstellungsprotokolle finden Sie unter [Tutorial: Berichterstellung zur automatischen Benutzerkontobereitstellung](../app-provisioning/check-status-user-account-provisioning.md).
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
