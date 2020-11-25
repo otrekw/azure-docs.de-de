@@ -35,6 +35,8 @@
           href: claim-sets.md
     - name: Workflow
       href: workflow.md
+    - name: Anzeigen von Überwachungsprotokollen
+      href: audit-logs.md
 - name: References
   items:
     - name: Häufig gestellte Fragen

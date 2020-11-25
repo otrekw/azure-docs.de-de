@@ -15,7 +15,7 @@
       href: partner-center-portal/account-migration-from-cpp-to-pc.md
 - name: Konzepte
   items:
-    - name: Listungsoptionen
+    - name: Auflistungsoptionen
       href: determine-your-listing-type.md
     - name: Transaktionen im kommerziellen Marketplace
       href: marketplace-commercial-transaction-capabilities-and-considerations.md
@@ -125,12 +125,12 @@
       items:
         - name: Planen eines Azure-Containerangebots
           href: marketplace-containers.md
+        - name: Vorbereiten technischer Ressourcen
+          href: create-azure-container-technical-assets.md
         - name: Erstellen und Veröffentlichen eines Azure-Containerangebots
           items:
-            - name: Vorbereiten technischer Ressourcen
-              href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Erstellen eines Azure-Containerangebots
-              href: partner-center-portal/create-azure-container-offer.md
+              href: create-azure-container-offer.md
     - name: Azure-VM-Angebote
       items:
         - name: Planen eines Angebots für virtuelle Computer

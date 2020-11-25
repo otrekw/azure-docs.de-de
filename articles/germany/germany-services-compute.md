@@ -7,19 +7,19 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 8466714c48910b234e385e9dba2b774cd1cf271a
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: 122920b02070be5d87e93e8bd37b1fa1e77491ea
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92122234"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018563"
 ---
 # <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
 
 [!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="virtual-machines"></a>Virtual Machines
-Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
 
 ### <a name="variations"></a>Abweichungen
 Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:
@@ -140,9 +140,4 @@ Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Abonnieren Sie den [Azure Deutschland-Blog](https://blogs.msdn.microsoft.com/azuregermany/), um weitere Informationen und Updates zu erhalten.
-
-
-
-
-
+Abonnieren Sie den [Azure Deutschland-Blog](/archive/blogs/azuregermany/), um weitere Informationen und Updates zu erhalten.
