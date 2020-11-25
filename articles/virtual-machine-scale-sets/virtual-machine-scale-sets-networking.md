@@ -10,11 +10,11 @@ ms.date: 06/25/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt, devx-track-azurecli
 ms.openlocfilehash: 234834af4fcf4ad809f548d171a4c1c406d85895
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92747826"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96016691"
 ---
 # <a name="networking-for-azure-virtual-machine-scale-sets"></a>Netzwerk für Azure-VM-Skalierungsgruppen
 
@@ -146,9 +146,9 @@ Wenn Sie eine Skalierungsgruppe mithilfe einer Azure-Vorlage erstellen möchten,
 Beispielvorlage: [201-vmss-public-ip-linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-public-ip-linux)
 
 ### <a name="querying-the-public-ip-addresses-of-the-virtual-machines-in-a-scale-set"></a>Abfragen der öffentlichen IP-Adressen der virtuellen Computer in einer Skalierungsgruppe
-Um mithilfe der CLI die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl **az vmss list-instance-public-ips** .
+Um mithilfe der CLI die öffentlichen IP-Adressen aufzulisten, die den virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, verwenden Sie den Befehl **az vmss list-instance-public-ips**.
 
-Verwenden Sie den Befehl _Get-AzPublicIpAddress_ , um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel:
+Verwenden Sie den Befehl _Get-AzPublicIpAddress_, um mit PowerShell öffentliche IP-Adressen für Skalierungsgruppen aufzulisten. Beispiel:
 
 ```powershell
 Get-AzPublicIpAddress -ResourceGroupName myrg -VirtualMachineScaleSetName myvmss
@@ -160,7 +160,7 @@ Sie können die öffentlichen IP-Adressen auch abfragen, indem Sie direkt auf di
 Get-AzPublicIpAddress -ResourceGroupName myrg -Name myvmsspip
 ```
 
-Die öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, können auch durch Abfragen des [Azure-Ressourcen-Explorers](https://resources.azure.com) oder der Azure-REST-API (ab Version **2017-03-30** ) angezeigt werden.
+Die öffentlichen IP-Adressen, die virtuellen Computern in einer Skalierungsgruppe zugewiesen sind, können auch durch Abfragen des [Azure-Ressourcen-Explorers](https://resources.azure.com) oder der Azure-REST-API (ab Version **2017-03-30**) angezeigt werden.
 
 So fragen Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) ab:
 
@@ -168,11 +168,11 @@ So fragen Sie den [Azure-Ressourcen-Explorer](https://resources.azure.com) ab:
 1. Erweitern Sie *Abonnements* auf der linken Seite, indem Sie daneben auf *+* klicken. Falls sich unter *Abonnements* nur ein einzelnes Element befindet, ist der Bereich möglicherweise bereits erweitert.
 1. Erweitern Sie Ihr Abonnement.
 1. Erweitern Sie Ihre Ressourcengruppe.
-1. Erweitern Sie *Anbieter* .
-1. Erweitern Sie *Microsoft.Compute* .
-1. Erweitern Sie *virtualMachineScaleSets* .
+1. Erweitern Sie *Anbieter*.
+1. Erweitern Sie *Microsoft.Compute*.
+1. Erweitern Sie *virtualMachineScaleSets*.
 1. Erweitern Sie Ihre Skalierungsgruppe.
-1. Klicken Sie auf *publicipaddresses* .
+1. Klicken Sie auf *publicipaddresses*.
 
 So fragen Sie die Azure-REST-API ab:
 

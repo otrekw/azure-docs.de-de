@@ -11,11 +11,11 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: b8560c4890855683e6ebb1c05383db8aa89988c0
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359868"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96017643"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Workday für die automatische Benutzerbereitstellung
 
@@ -66,8 +66,8 @@ Diese Workday-Benutzerbereitstellungslösung eignet sich ideal für:
 
 In diesem Abschnitt wird die Lösungsarchitektur der End-to-End-Benutzerbereitstellung für häufige Hybridumgebungen beschrieben. Es gibt zwei zugehörige Flows:
 
-* **Autoritativer Personaldatenfluss – von Workday in ein lokales Active Directory-Verzeichnis** : In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloud-HR-Mandanten von Workday auf und werden dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory-Verzeichnis übertragen. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
-* **Rückschreibedatenfluss – vom lokalen Active Directory-Verzeichnis zu Workday** : Nach Abschluss der Kontoerstellung in Active Directory wird das Konto über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann für Informationen wie E-Mail-Adresse, Benutzername und Telefonnummer das Rückschreiben in Workday durchgeführt werden.
+* **Autoritativer Personaldatenfluss – von Workday in ein lokales Active Directory-Verzeichnis**: In diesem Flow treten mitarbeiterbezogene Ereignisse (z.B. Neueinstellungen, Wechsel, Kündigungen) zuerst im Cloud-HR-Mandanten von Workday auf und werden dann über Azure AD und den Bereitstellungs-Agent in ein lokales Active Directory-Verzeichnis übertragen. Abhängig vom Ereignis kann dies dann in Active Directory zu Erstellungs-, Aktualisierungs-, Aktivierungs- oder Deaktivierungsvorgängen führen.
+* **Rückschreibedatenfluss – vom lokalen Active Directory-Verzeichnis zu Workday**: Nach Abschluss der Kontoerstellung in Active Directory wird das Konto über Azure AD Connect mit Azure AD synchronisiert. Anschließend kann für Informationen wie E-Mail-Adresse, Benutzername und Telefonnummer das Rückschreiben in Workday durchgeführt werden.
 
 ![Übersicht](./media/workday-inbound-tutorial/wd_overview.png)
 
@@ -212,7 +212,7 @@ In diesem Schritt gewähren Sie der Sicherheitsgruppe Berechtigungen der Sicherh
    >[!div class="mx-imgBorder"]
    >![Der Screenshot zeigt „Business Process Policy“ im Suchfeld und die ausgewählte Aufgabe „Edit Business Process Security Policy“.](./media/workday-inbound-tutorial/wd_isu_12.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
 
-2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen* , wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK**.
+2. Suchen Sie im Textfeld **Geschäftsprozesstyp** nach *Kontaktinformationen*, wählen Sie den Geschäftsprozess **Mitarbeiterkontaktinformationen ändern** aus, und klicken Sie auf **OK**.
 
    >[!div class="mx-imgBorder"]
    >![Der Screenshot zeigt die Seite „Edit Business Process Security Policy“ und „Mitarbeiterkontaktinformationen ändern“, ausgewählt im Menü „Geschäftsprozesstyp“.](./media/workday-inbound-tutorial/wd_isu_13.png "Sicherheitsrichtlinien für Geschäftsprozesse")  
@@ -251,7 +251,7 @@ Melden Sie sich nach der Ermittlung der Windows Server-Instanz, auf dem der Bere
 ### <a name="permissions-required-to-configure-the-provisioning-agent-service"></a>Erforderliche Berechtigungen zum Konfigurieren des Bereitstellungs-Agent-Diensts
 Führen Sie die unten angegebenen Schritte aus, um ein Dienstkonto einzurichten, das für Vorgänge des Bereitstellungs-Agents verwendet werden kann. 
 1.  Öffnen Sie auf Ihrem AD-Domänencontroller das Snap-In *Active Directory-Benutzer und -Computer*. 
-2.  Erstellen eines neuen Domänenbenutzers (Beispiel: *provAgentAdmin* )  
+2.  Erstellen eines neuen Domänenbenutzers (Beispiel: *provAgentAdmin*)  
 3.  Klicken Sie mit der rechten Maustaste auf die Organisationseinheit oder den Domänennamen, und wählen Sie *Objektverwaltung zuweisen* aus, um den *Assistenten zum Zuweisen der Objektverwaltung* zu öffnen. 
 
 > [!NOTE] 
@@ -269,7 +269,7 @@ Führen Sie die unten angegebenen Schritte aus, um ein Dienstkonto einzurichten,
    >[!div class="mx-imgBorder"]
    >![Bildschirm „Aufgaben“](./media/workday-inbound-tutorial/delegation-wizard-02.png "Bildschirm „Aufgaben“")
 
-7. Klicken Sie auf **Weiter** , und wählen Sie **Speichern** aus, um die Konfiguration zu speichern.
+7. Klicken Sie auf **Weiter**, und wählen Sie **Speichern** aus, um die Konfiguration zu speichern.
 
 
 ## <a name="configuring-user-provisioning-from-workday-to-active-directory"></a>Konfiguration der Benutzerbereitstellung aus Workday in Active Directory
@@ -288,13 +288,13 @@ Dieser Abschnitt enthält die Schritte zum Konfigurieren der Bereitstellung von 
 
 1. Gehe zu <https://portal.azure.com>.
 
-2. Suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie es aus.
+2. Suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie es aus.
 
 3. Klicken Sie auf **Unternehmensanwendungen** und dann auf **Alle Anwendungen**.
 
-4. Klicken Sie auf **Anwendung hinzufügen** , und wählen Sie die Kategorie **Alle** aus.
+4. Klicken Sie auf **Anwendung hinzufügen**, und wählen Sie die Kategorie **Alle** aus.
 
-5. Suchen Sie nach **Benutzerbereitstellung von Workday in Active Directory** , und fügen Sie die App aus dem Katalog hinzu.
+5. Suchen Sie nach **Benutzerbereitstellung von Workday in Active Directory**, und fügen Sie die App aus dem Katalog hinzu.
 
 6. Sobald die App hinzugefügt wurde und der Bildschirm mit den App-Details angezeigt wird, wählen Sie **Bereitstellung** aus.
 
@@ -323,7 +323,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
    >[!div class="mx-imgBorder"]
    >![Installationsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_1.png "Installationsbildschirm")
    
-1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren** , um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
+1. Nachdem die Installation abgeschlossen ist, wird der Assistent gestartet, und der Bildschirm **Azure AD verbinden** wird angezeigt. Klicken Sie auf die Schaltfläche **Authentifizieren**, um eine Verbindung mit Ihrer Azure AD-Instanz herzustellen.
 
    >[!div class="mx-imgBorder"]
    >![Herstellen einer Verbindung mit Azure AD](./media/workday-inbound-tutorial/pa_install_screen_2.png "Herstellen einer Verbindung mit Azure AD")
@@ -341,7 +341,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
    >[!div class="mx-imgBorder"]
    >![Verzeichnis hinzufügen](./media/workday-inbound-tutorial/pa_install_screen_4.png "Verzeichnis hinzufügen")
   
-1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen** , um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
+1. Sie werden daraufhin aufgefordert, die Anmeldeinformationen für die Verbindung mit der AD-Domäne einzugeben. Auf dem gleichen Bildschirm können Sie die **Domänencontrollerpriorität auswählen**, um Domänencontroller anzugeben, die der Agent zum Senden von Bereitstellungsanforderungen verwenden soll.
 
    >[!div class="mx-imgBorder"]
    >![Anmeldeinformationen für die Domäne](./media/workday-inbound-tutorial/pa_install_screen_5.png)
@@ -355,7 +355,7 @@ Um Active Directory lokal bereitzustellen, muss der Bereitstellungs-Agent auf ei
    > Wenn Sie über mehrere AD-Domänen verfügen (z.B. na.contoso.com, emea.contoso.com), fügen Sie jede Domäne einzeln der Liste hinzu.
    > Es reicht nicht aus, nur die übergeordnete Domäne (z.B. „contoso.com“) hinzufügen. Sie müssen jede untergeordnete Domäne mit dem Agent registrieren.
    
-1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen** , um den Agent zu registrieren.
+1. Überprüfen Sie die Konfigurationsdetails, und klicken Sie auf **Bestätigen**, um den Agent zu registrieren.
   
    >[!div class="mx-imgBorder"]
    >![Bestätigungsbildschirm](./media/workday-inbound-tutorial/pa_install_screen_7.png "Bestätigungsbildschirm")
@@ -407,7 +407,7 @@ In diesem Schritt stellen Sie im Azure-Portal Konnektivität zwischen Workday un
      > [!NOTE]
      > Diese Einstellung wird nur für die Benutzerkontoerstellung verwendet, wenn das Attribut *parentDistinguishedName* nicht in den Attributzuordnungen konfiguriert ist. Diese Einstellung wird nicht zum Suchen von Benutzern oder für Updatevorgänge verwendet. Der Suchvorgang schließt die gesamte Domänenteilstruktur ein.
 
-   * **Benachrichtigungs-E-Mail** : Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
+   * **Benachrichtigungs-E-Mail**: Geben Sie Ihre E-Mail-Adresse ein, und aktivieren Sie das Kontrollkästchen „E-Mail senden, wenn Fehler auftritt“.
 
      > [!NOTE]
      > Der Azure AD-Bereitstellungsdienst sendet eine E-Mail-Benachrichtigung, wenn der Bereitstellungsauftrag in den Zustand [Quarantäne](../app-provisioning/application-provisioning-quarantine-status.md) wechselt.
@@ -451,34 +451,34 @@ In diesem Abschnitt konfigurieren Sie den Fluss von Benutzerdaten aus Workday in
 
 1. Im Abschnitt **Attributzuordnungen** können Sie definieren, wie einzelne Workday-Attribute Active Directory-Attributen zugeordnet werden.
 
-1. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen** , um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
+1. Klicken Sie auf eine vorhandene Attributzuordnung, um sie zu aktualisieren. Oder klicken Sie am unteren Bildschirmrand auf **Neue Zuordnung hinzufügen**, um neue Zuordnungen hinzuzufügen. Eine einzelne Attributzuordnung unterstützt die folgenden Eigenschaften:
 
       * **Zuordnungstyp**
 
-         * **Direkt** : Schreibt den Wert des Workday-Attributs unverändert in das AD-Attribut.
+         * **Direkt**: Schreibt den Wert des Workday-Attributs unverändert in das AD-Attribut.
 
-         * **Konstant** : Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
+         * **Konstant**: Schreibt einen statischen, konstanten Zeichenfolgenwert in das AD-Attribut.
 
-         * **Ausdruck** : Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md).
+         * **Ausdruck**: Ermöglicht das Schreiben eines benutzerdefinierten Werts basierend auf einem oder mehreren Workday-Attributen in das AD-Attribut. [Weitere Informationen finden Sie im Artikel zu Ausdrücken](../app-provisioning/functions-for-customizing-application-data.md).
 
-      * **Quellattribut** : Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
+      * **Quellattribut**: Das Benutzerattribut aus Workday. Wenn das gesuchte Attribut nicht vorhanden ist, finden Sie weitere Informationen unter [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes).
 
-      * **Standardwert** : Optional. Wenn das Quellattribut einen leeren Wert aufweist, wird von der Zuordnung stattdessen dieser Wert geschrieben.
+      * **Standardwert**: Optional. Wenn das Quellattribut einen leeren Wert aufweist, wird von der Zuordnung stattdessen dieser Wert geschrieben.
             Die meisten Konfigurationen sehen vor, dieses Feld leer zu lassen.
 
-      * **Zielattribut** : Das Benutzerattribut in Active Directory.
+      * **Zielattribut**: Das Benutzerattribut in Active Directory.
 
-      * **Objekte mit diesem Attribut abgleichen** : Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Workday und Active Directory verwendet werden soll. Dieser Wert wird meist auf das Feld „Worker-ID“ für Workday festgelegt, das in der Regel den „Mitarbeiter-ID“-Attributen in Active Directory zugeordnet wird.
+      * **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Workday und Active Directory verwendet werden soll. Dieser Wert wird meist auf das Feld „Worker-ID“ für Workday festgelegt, das in der Regel den „Mitarbeiter-ID“-Attributen in Active Directory zugeordnet wird.
 
-      * **Rangfolge für Abgleich** : Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
+      * **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet.
 
       * **Diese Zuordnung anwenden**
 
-         * **Immer** : Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
+         * **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
 
-         * **Nur während der Erstellung** : Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
+         * **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
-1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern** , um Ihre Zuordnungen zu speichern.
+1. Klicken Sie oben im Abschnitt „Attributzuordnung“ auf **Speichern**, um Ihre Zuordnungen zu speichern.
    >[!div class="mx-imgBorder"]
    >![Der Screenshot zeigt die Seite „Attributzuordnung“ mit ausgewählter Aktion „Speichern“.](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -600,7 +600,7 @@ Diese Funktion wird derzeit nicht unterstützt. Eine empfohlene Problemumgehung 
 
 Die Lösung verwendet derzeit die folgenden Workday-APIs:
 
-* Das Format der **Workday Web Services-API-URL** , das im Abschnitt **Administratoranmeldeinformationen** verwendet wird, bestimmt die für Get_Workers verwendete API-Version.
+* Das Format der **Workday Web Services-API-URL**, das im Abschnitt **Administratoranmeldeinformationen** verwendet wird, bestimmt die für Get_Workers verwendete API-Version.
   * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/Mandantenname“ lautet, wird API v21.1 verwendet. 
   * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources“ lautet, wird API v21.1 verwendet. 
   * Wenn das URL-Format „https://\#\#\#\#\.workday\.com/ccx/service/tenantName/Human\_Resources/v\#\#\.\#“ lautet, wird die angegebene API-Version verwendet. (Beispiel: Wenn v34.0 angegeben ist, wird diese Version verwendet.)  
@@ -623,7 +623,7 @@ Wenn Azure AD im Hybridmodus verwendet wird (mit einer Mischung aus Cloud- + lok
 
 #### <a name="how-do-i-suggest-improvements-or-request-new-features-related-to-workday-and-azure-ad-integration"></a>Wie kann ich Verbesserungen vorschlagen oder neue Funktionen im Zusammenhang mit der Workday- und Azure AD-Integration anfordern?
 
-Ihr Feedback ist uns sehr wichtig, da es uns hilft, die Weichen für die zukünftigen Releases und Verbesserungen zu stellen. Wir freuen uns über jedes Feedback und ermutigen Sie, Ihre Ideen oder Verbesserungsvorschläge im [Feedbackforum von Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory) einzureichen. Für spezifisches Feedback im Zusammenhang mit der Workday-Integration wählen Sie die Kategorie *SaaS-Anwendungen* und suchen Sie anhand des Stichworts *Workday* , um vorhandenes Feedback zum Workday zu finden.
+Ihr Feedback ist uns sehr wichtig, da es uns hilft, die Weichen für die zukünftigen Releases und Verbesserungen zu stellen. Wir freuen uns über jedes Feedback und ermutigen Sie, Ihre Ideen oder Verbesserungsvorschläge im [Feedbackforum von Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory) einzureichen. Für spezifisches Feedback im Zusammenhang mit der Workday-Integration wählen Sie die Kategorie *SaaS-Anwendungen* und suchen Sie anhand des Stichworts *Workday*, um vorhandenes Feedback zum Workday zu finden.
 
 > [!div class="mx-imgBorder"]
 > ![UserVoice-SaaS-Apps](media/workday-inbound-tutorial/uservoice_saas_apps.png)
@@ -729,7 +729,7 @@ Die Lösung unterstützt benutzerdefinierte Workday- und Active Directory-Attrib
 
 ![Attributliste bearbeiten](./media/workday-inbound-tutorial/wd_edit_attr_list.png)
 
-Um Ihre benutzerdefinierten Workday-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für Workday bearbeiten* , und um Ihre benutzerdefinierten AD-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für lokales Active Directory bearbeiten*.
+Um Ihre benutzerdefinierten Workday-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für Workday bearbeiten*, und um Ihre benutzerdefinierten AD-Attribute hinzuzufügen, wählen Sie die Option *Attributliste für lokales Active Directory bearbeiten*.
 
 Weitere Informationen:
 
@@ -751,7 +751,7 @@ Die Lösung unterstützt derzeit keine Einstellung von binären Attributen wie *
 
 * Wechseln Sie zum Blatt „Bereitstellung“ Ihrer Workday-Bereitstellungs-App.
 * Klicken Sie auf die Attributzuordnungen. 
-* Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren** ).
+* Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren**).
 * Scrollen Sie auf der Seite „Attributzuordnungen“ nach unten und aktivieren Sie das Kontrollkästchen „Erweiterte Optionen anzeigen“.  Klicken Sie auf **Attributliste für Workday bearbeiten**.
 * Suchen Sie auf dem Blatt, das geöffnet wird, das Attribut „Mobile“, und klicken Sie auf die Zeile, sodass Sie den **API-Ausdruck** ![Mobile GDPR](./media/workday-inbound-tutorial/mobile_gdpr.png) bearbeiten können.
 
@@ -771,7 +771,7 @@ Es ist eine häufige Anforderung, das Attribut *displayName* in AD so zu konfigu
 
 So können Sie solche Anforderungen für die Konstruktion von *CN* oder *displayName* verarbeiten, um Attribute wie Unternehmen, Geschäftseinheit, Stadt oder Land/Region aufzunehmen.
 
-* Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName* , *PreferredLastName* , *Company* und *SupervisoryOrganization*.
+* Jedes Workday-Attribut wird über einen zugrundeliegenden XPATH-API-Ausdruck abgerufen, der in **Attributzuordnung -> Abschnitt „Erweitert“ -> Attributliste für Workday bearbeiten** konfigurierbar ist. Hier ist der XPATH-API-Standardausdruck für die Workday-Attribute *PreferredFirstName*, *PreferredLastName*, *Company* und *SupervisoryOrganization*.
 
      | Workday-Attribut | API-XPATH-Ausdruck |
      | ----------------- | -------------------- |
@@ -796,7 +796,7 @@ So können Sie solche Anforderungen für die Konstruktion von *CN* oder *display
 
   Vergewissern Sie sich bei Ihrem Workday-Team, dass die obigen API-Ausdrücke für Ihre Workday-Mandantenkonfiguration gültig ist. Bei Bedarf können Sie sie gemäß den Schritten in [Anpassen der Liste der Workday-Benutzerattribute](#customizing-the-list-of-workday-user-attributes) bearbeiten.
 
-* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, den Nachnamen, das Land bzw. die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName* , *PreferredLastName* , *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
+* Um den richtigen Attributzuordnungsausdruck zu erstellen, identifizieren Sie, welches Workday-Attribut „autoritativ“ den Vornamen, den Nachnamen, das Land bzw. die Region und die Abteilung des Benutzers darstellt. Nehmen wir an, die Attribute sind *PreferredFirstName*, *PreferredLastName*, *CountryReferenceTwoLetter* und *SupervisoryOrganization*. Sie können dies verwenden, um einen Ausdruck für das AD-Attribut *displayName* wie folgt aufzubauen, um einen Anzeigenamen wie *Smith, John (Marketing-US)* zu erhalten.
 
     ```
      Append(Join(", ",[PreferredLastName],[PreferredFirstName]), Join(""," (",[SupervisoryOrganization],"-",[CountryReferenceTwoLetter],")"))
@@ -865,7 +865,7 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung
 
   ![Windows-Ereignisanzeige](media/workday-inbound-tutorial/wd_event_viewer_01.png))
 
-* Klicken Sie auf **OK** , um die Ergebnisansicht anhand der Spalte **Datum und Uhrzeit** zu filtern.
+* Klicken Sie auf **OK**, um die Ergebnisansicht anhand der Spalte **Datum und Uhrzeit** zu filtern.
 
 ### <a name="setting-up-azure-portal-audit-logs-for-service-troubleshooting"></a>Einrichten von Azure-Portal-Überwachungsprotokollen für die Problembehandlung bei einem Dienst
 
@@ -882,13 +882,13 @@ Dieser Abschnitt enthält die folgenden Aspekte bezüglich der Problembehandlung
 
 ### <a name="understanding-logs-for-ad-user-account-create-operations"></a>Grundlegendes zu Protokollen für Erstellungsvorgänge für ein AD-Benutzerkonto
 
-Wenn ein neuer Mitarbeiter in Workday erkannt wird (z.B. mit der Mitarbeiter-ID *21023* ), versucht der Azure AD-Bereitstellungsdienst, ein neues AD-Benutzerkonto für den Mitarbeiter zu erstellen und erstellt dabei 4 Datensätze für das Überwachungsprotokoll, wie unten beschrieben:
+Wenn ein neuer Mitarbeiter in Workday erkannt wird (z.B. mit der Mitarbeiter-ID *21023*), versucht der Azure AD-Bereitstellungsdienst, ein neues AD-Benutzerkonto für den Mitarbeiter zu erstellen und erstellt dabei 4 Datensätze für das Überwachungsprotokoll, wie unten beschrieben:
 
   [![Erstellungsvorgänge für Überwachungsprotokolle](media/workday-inbound-tutorial/wd_audit_logs_02.png)](media/workday-inbound-tutorial/wd_audit_logs_02.png#lightbox)
 
 Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite **Aktivitätsdetails** geöffnet. Das wird auf der Seite **Aktivitätsdetails** für jeden Protokolldatensatztyp angezeigt.
 
-* Datensatz **Workday-Import** : Dieser Protokolldatensatz zeigt die aus Workday abgerufenen Workerinformationen an. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme beim Abrufen von Daten aus Workday beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
+* Datensatz **Workday-Import**: Dieser Protokolldatensatz zeigt die aus Workday abgerufenen Workerinformationen an. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme beim Abrufen von Daten aus Workday beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
 
   ```JSON
   ErrorCode : None  // Use the error code captured here to troubleshoot Workday issues
@@ -897,7 +897,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
   SourceAnchor : a071861412de4c2486eb10e5ae0834c3 // set to the WorkdayID (WID) associated with the record
   ```
 
-* Datensatz **AD-Import** : Dieser Protokolldatensatz zeigt aus AD abgerufene Kontoinformationen an. Da es bei der ersten Benutzererstellung kein AD-Konto gibt, wird unter *Statusgrund Aktivität* angegeben, dass kein Konto mit dem Attributwert mit einer übereinstimmenden ID im Active Directory gefunden wurde. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme beim Abrufen von Daten aus Workday beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
+* Datensatz **AD-Import**: Dieser Protokolldatensatz zeigt aus AD abgerufene Kontoinformationen an. Da es bei der ersten Benutzererstellung kein AD-Konto gibt, wird unter *Statusgrund Aktivität* angegeben, dass kein Konto mit dem Attributwert mit einer übereinstimmenden ID im Active Directory gefunden wurde. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme beim Abrufen von Daten aus Workday beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot Workday issues
@@ -905,11 +905,11 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
   JoiningProperty : 21023 // Value of the Workday attribute that serves as the Matching ID
   ```
 
-  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Importvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023* ).
+  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Importvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).
 
   ![Suchen](media/workday-inbound-tutorial/wd_event_viewer_02.png)
 
-  Suchen Sie nach dem Eintrag mit *Event ID = 9* , der Ihnen den LDAP-Suchfilter zur Verfügung stellt, mit dem der Agent das AD-Konto abruft. Sie können überprüfen, ob dies der richtige Suchfilter ist, um eindeutige Benutzereingaben zu erhalten.
+  Suchen Sie nach dem Eintrag mit *Event ID = 9*, der Ihnen den LDAP-Suchfilter zur Verfügung stellt, mit dem der Agent das AD-Konto abruft. Sie können überprüfen, ob dies der richtige Suchfilter ist, um eindeutige Benutzereingaben zu erhalten.
 
   ![LDAP-Suche](media/workday-inbound-tutorial/wd_event_viewer_03.png)
 
@@ -917,7 +917,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
   ![LDAP-Ergebnisse](media/workday-inbound-tutorial/wd_event_viewer_04.png)
 
-* Datensatz **Synchronisierungsregelaktion** : Dieser Protokolldatensatz zeigt die Ergebnisse der Attributzuordnungsregeln und konfigurierten Bereichsfilter sowie die Bereitstellungsaktion an, die zur Verarbeitung des eingehenden Workday-Ereignisses durchgeführt wird. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme mit der Synchronisierungsaktion beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
+* Datensatz **Synchronisierungsregelaktion**: Dieser Protokolldatensatz zeigt die Ergebnisse der Attributzuordnungsregeln und konfigurierten Bereichsfilter sowie die Bereitstellungsaktion an, die zur Verarbeitung des eingehenden Workday-Ereignisses durchgeführt wird. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme mit der Synchronisierungsaktion beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder.
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot sync issues
@@ -928,7 +928,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
   Wenn es Probleme mit Ihren Attributzuordnungsausdrücken gibt oder die eingehenden Workday-Daten Fehler enthalten (z.B. Leer- oder Nullwert für erforderliche Attribute), dann wird an dieser Stelle ein Fehler ausgegeben, wobei der ErrorCode Details über den Fehler liefert.
 
-* Datensatz **AD-Export** : Dieser Protokolldatensatz zeigt das Ergebnis der AD-Kontoerstellung zusammen mit den Attributwerten, die im Prozess festgelegt wurden. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme mit der Kontoerstellung beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder. Im Abschnitt „Zusätzliche Details“ wird der „EventName“ auf „EntryExportAdd“, die „JoiningProperty“ auf den Wert des übereinstimmenden ID-Attributs, der „SourceAnchor“ auf die dem Datensatz zugeordnete WorkdayID (WID) und der „TargetAnchor“ auf den Wert des AD-Attributs „ObjectGuid“ des neu erstellten Benutzers festgelegt. 
+* Datensatz **AD-Export**: Dieser Protokolldatensatz zeigt das Ergebnis der AD-Kontoerstellung zusammen mit den Attributwerten, die im Prozess festgelegt wurden. Anhand der Informationen im Abschnitt *Zusätzliche Details* des Protokolldatensatzes können Sie Probleme mit der Kontoerstellung beheben. Unten finden Sie einen Beispieldatensatz sowie Hinweise für die Interpretation der einzelnen Felder. Im Abschnitt „Zusätzliche Details“ wird der „EventName“ auf „EntryExportAdd“, die „JoiningProperty“ auf den Wert des übereinstimmenden ID-Attributs, der „SourceAnchor“ auf die dem Datensatz zugeordnete WorkdayID (WID) und der „TargetAnchor“ auf den Wert des AD-Attributs „ObjectGuid“ des neu erstellten Benutzers festgelegt. 
 
   ```JSON
   ErrorCode : None // Use the error code captured here to troubleshoot AD account creation issues
@@ -938,7 +938,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
   TargetAnchor : 83f0156c-3222-407e-939c-56677831d525 // set to the value of the AD "objectGuid" attribute of the new user
   ```
 
-  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Exportvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023* ).  
+  Um die Protokolldatensätze des Bereitstellungs-Agent zu finden, die diesem AD-Exportvorgang entsprechen, öffnen Sie die Protokolle der Windows-Ereignisanzeige, und verwenden Sie die Option **Suche....** , um Protokolleinträge mit dem Attributwert für die übereinstimmende ID/Verknüpfungseigenschaft zu suchen (in diesem Fall *21023*).  
 
   Suchen Sie nach einem HTTP POST-Datensatz, der dem Zeitstempel des Exportvorgangs mit *Event ID = 2* entspricht. Dieser Datensatz enthält die Attributwerte, die der Bereitstellungsdienst an den Bereitstellungs-Agent gesendet hat.
 
@@ -950,7 +950,7 @@ Wenn Sie auf einen Datensatz im Überwachungsprotokoll klicken, wird die Seite *
 
 ### <a name="understanding-logs-for-manager-update-operations"></a>Grundlegendes zu Protokollen für Aktualisierungsvorgänge für Manager
 
-Das Manager-Attribut ist ein Verweisattribut in Active Directory. Der Bereitstellungsdienst legt das Manager-Attribut nicht als Teil des Erstellungsvorgangs des Benutzers fest. Das Manager-Attribut wird stattdessen als Teil des *Aktualisierungsvorgangs* nach der AD-Kontoerstellung für den Benutzer festgelegt. Um das obige Beispiel zu erweitern, nehmen wir an, dass ein neuer Mitarbeiter mit der Mitarbeiter-ID „21451“ in Workday aktiviert ist und der Manager des neuen Mitarbeiters ( *21023* ) bereits ein AD-Konto hat. In diesem Szenario werden bei der Suche im Überwachungsprotokolle für Benutzer 21451 5 Einträge ausgegeben.
+Das Manager-Attribut ist ein Verweisattribut in Active Directory. Der Bereitstellungsdienst legt das Manager-Attribut nicht als Teil des Erstellungsvorgangs des Benutzers fest. Das Manager-Attribut wird stattdessen als Teil des *Aktualisierungsvorgangs* nach der AD-Kontoerstellung für den Benutzer festgelegt. Um das obige Beispiel zu erweitern, nehmen wir an, dass ein neuer Mitarbeiter mit der Mitarbeiter-ID „21451“ in Workday aktiviert ist und der Manager des neuen Mitarbeiters (*21023*) bereits ein AD-Konto hat. In diesem Szenario werden bei der Suche im Überwachungsprotokolle für Benutzer 21451 5 Einträge ausgegeben.
 
   [![Manager-Update](media/workday-inbound-tutorial/wd_audit_logs_03.png)](media/workday-inbound-tutorial/wd_audit_logs_03.png#lightbox)
 
@@ -984,7 +984,7 @@ Dieser Abschnitt behandelt häufig auftretende Fehler bei der Bereitstellung von
 |#|Fehlerszenario |Mögliche Ursachen|Empfohlene Lösung|
 |--|---|---|---|
 |1.| Fehler bei der Installation des Bereitstellungs-Agent mit Fehlermeldung:  *Dienst „Microsoft Azure AD Connect Provisioning Agent“ (AADConnectProvisioningAgent) konnte nicht gestartet werden. Überprüfen Sie, ob Sie über ausreichend Rechte verfügen, um das System zu starten.* | Dieser Fehler tritt normalerweise auf, wenn Sie versuchen, den Bereitstellungs-Agent auf einem Domänencontroller zu installieren, und die Gruppenrichtlinie verhindert, dass der Dienst gestartet wird.  Es wird auch angezeigt, ob Sie eine frühere Version des Agent ausführen und ihn nicht deinstalliert haben, bevor Sie eine neue Installation starten.| Installieren Sie den Bereitstellungs-Agent auf einem Nicht-DC-Server. Stellen Sie sicher, dass frühere Versionen des Agents deinstalliert werden, bevor Sie den neuen Agent installieren.|
-|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt*. | Im Rahmen der Installation erstellt der Agent-Assistent ein lokales Konto ( **NT Service\\AADConnectProvisioningAgent** ) auf dem Server. Dies ist das Anmeldekonto, das zum Starten des Diensts verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole*. Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect-Bereitstellungs-Agent“, und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
+|2.| Der Windows-Dienst „Microsoft Azure AD Connect Provisioning Agent“ befindet sich im Zustand *Wird gestartet* und wechselt nicht in den Zustand *Wird ausgeführt*. | Im Rahmen der Installation erstellt der Agent-Assistent ein lokales Konto (**NT Service\\AADConnectProvisioningAgent**) auf dem Server. Dies ist das Anmeldekonto, das zum Starten des Diensts verwendet wird. Wenn eine Sicherheitsrichtlinie auf Ihrem Windows Server verhindert, dass lokale Konten die Dienste ausgeführt werden, wird dieser Fehler angezeigt. | Öffnen Sie die *Dienstkonsole*. Klicken Sie mit der rechten Maustaste auf den Windows-Dienst „Microsoft Azure AD Connect-Bereitstellungs-Agent“, und geben Sie auf der Registerkarte „Anmelden“ das Konto eines Domänenadministrators an, um den Dienst auszuführen. Starten Sie den Dienst neu. |
 |3.| Wenn Sie den Bereitstellungs-Agent mit Ihrer AD-Domäne im Schritt *Active Directory verbinden* konfigurieren, dauert es lange, bis der Assistent versucht, das AD-Schema zu laden und schließlich abbricht. | Dieser Fehler wird in der Regel angezeigt, wenn der Assistent aufgrund von Firewallproblemen den Server des AD-Domänencontrollers nicht kontaktieren kann. | Auf dem Assistentenbildschirm *Active Directory verbinden* gibt es beim Bereitstellen der Anmeldeinformationen für Ihre AD-Domäne eine Option namens *Domänencontrollerpriorität auswählen*. Verwenden Sie diese Option, um einen Domänencontroller auszuwählen, der sich auf der gleichen Site wie der Agent-Server befindet, und stellen Sie sicher, dass es keine Firewallregeln gibt, die die Kommunikation blockieren. |
 
 #### <a name="connectivity-errors"></a>Verbindungsfehler
@@ -1046,7 +1046,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 7. Legen Sie **Operation** auf **Get_Workers** fest.
 
-8.    Klicken Sie auf den **configure** -Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung** , und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
+8.    Klicken Sie auf den **configure**-Link unterhalb der Bereiche „Request“ (Anforderung) und „Response“ (Antwort), um Ihre Workday-Anmeldeinformationen festzulegen. Aktivieren Sie das Kontrollkästchen **Authentifizierung**, und geben Sie den Benutzernamen und das Kennwort für Ihr Systemkonto für die Workday-Integration ein. Stellen Sie sicher, dass der Benutzername das Format „name\@mandant“ aufweist, und behalten Sie die Auswahl der Option **WS-Security UsernameToken** bei.
    ![Der Screenshot zeigt die Registerkarte „Sicherheit“ mit Eingaben in „Benutzername“ und „Kennwort“ sowie ausgewählter Option „WS-Security Username Token“.](./media/workday-inbound-tutorial/wdstudio2.png)
 
 9. Klicken Sie auf **OK**.
@@ -1082,13 +1082,13 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 11. Klicken Sie auf **Send Request** (Anforderung senden, grüner Pfeil), um den Befehl auszuführen. Bei erfolgreicher Ausführung wird die Antwort im Bereich **Response** angezeigt. Überprüfen Sie die Antwort, um sicherzustellen, dass sie die Daten des eingegebenen Benutzers enthält und fehlerfrei ist.
 
-12. Wenn alles richtig ist, kopieren Sie den XML-Code aus dem Bereich **Response** , und speichern Sie ihn als XML-Datei.
+12. Wenn alles richtig ist, kopieren Sie den XML-Code aus dem Bereich **Response**, und speichern Sie ihn als XML-Datei.
 
 13. Wählen Sie in der Befehlsleiste von Workday Studio **File > Open File...** (Datei > Datei öffnen...) aus, und öffnen Sie die gespeicherte XML-Datei. Durch diese Aktion wird die Datei im XML-Editor von Workday Studio geöffnet.
 
     ![Screenshot einer im XML-Editor von Workday Studio geöffneten XML-Datei.](./media/workday-inbound-tutorial/wdstudio3.png)
 
-14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker** , um die Daten zu Ihrem Benutzer zu finden.
+14. Navigieren Sie in der Dateistruktur durch **/env: Envelope > env: Body > wd:Get_Workers_Response > wd:Response_Data > wd: Worker**, um die Daten zu Ihrem Benutzer zu finden.
 
 15. Suchen Sie unter **wd: Worker** das Attribut, das Sie hinzufügen möchten, und wählen Sie es aus.
 
@@ -1106,7 +1106,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 2. Legen Sie den **Bereitstellungsstatus** auf **Aus** fest, und klicken Sie dann auf **Speichern**. Mit diesem Schritt können Sie sicherstellen, dass Ihre Änderungen erst dann wirksam werden, wenn Sie bereit sind.
 
-3. Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren** ).
+3. Wählen Sie unter **Zuordnungen** die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Workday-Worker mit Azure AD synchronisieren**).
 
 4. Scrollen Sie im nächsten Bildschirm nach unten, und wählen Sie **Erweiterte Optionen anzeigen** aus.
 
@@ -1118,7 +1118,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 7. Geben Sie unter **Name** einen Anzeigenamen für Ihr Attribut ein.
 
-8. Wählen Sie einen **Typ** aus, der zu Ihrem Attribut passt ( **Zeichenfolge** ist der am häufigsten verwendete Typ).
+8. Wählen Sie einen **Typ** aus, der zu Ihrem Attribut passt (**Zeichenfolge** ist der am häufigsten verwendete Typ).
 
 9. Geben Sie unter **API-Ausdruck** den XPath-Ausdruck ein, den Sie aus Workday Studio kopiert haben. Beispiel: `wd:Worker/wd:Worker_Data/wd:Personal_Data/wd:Birth_Date/text()`
 
@@ -1128,7 +1128,7 @@ Um diese Änderung vorzunehmen, müssen Sie [Workday Studio](https://community.w
 
 11. Wählen Sie oben **Speichern** aus, und klicken Sie im angezeigten Dialogfeld auf **Ja**. Schließen Sie den Bildschirm „Attributzuordnung“, falls dieser noch geöffnet ist.
 
-12. Wählen Sie auf der Registerkarte **Bereitstellung** erneut die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Worker mit Azure AD synchronisieren** ).
+12. Wählen Sie auf der Registerkarte **Bereitstellung** erneut die Option **Workday-Worker mit lokalem Active Directory synchronisieren** (oder **Worker mit Azure AD synchronisieren**).
 
 13. Wählen Sie **Neue Zuordnung hinzufügen** aus.
 
