@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: victorh
 ms.openlocfilehash: 5d2760415e4f4ef3b181f2fb69802659fec3ef66
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397874"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95975954"
 ---
 # <a name="create-a-custom-probe-for-application-gateway-by-using-the-portal"></a>Erstellen eines benutzerdefinierten Tests für ein Anwendungsgateway über das Portal
 
@@ -70,7 +70,7 @@ Nachdem Sie die Testeigenschaften eingegeben haben, können Sie die Integrität 
 
    ![Testen der Back-End-Integrität][5]
 
-2. Wenn fehlerhafte Back-End-Ressourcen vorhanden sind, überprüfen Sie die Spalte **Details** , um die Ursache für den fehlerhaften Zustand der Ressource zu ermitteln. Wenn die Ressource aufgrund einer falschen Testkonfiguration als fehlerhaft gekennzeichnet wurde, klicken Sie auf den Link **Zurück zum Test** , und bearbeiten Sie die Testkonfiguration. Wenn die Ressource aufgrund eines Problems beim Back-End als fehlerhaft gekennzeichnet wurde, beheben Sie die Probleme bei der Back-End-Ressource, und testen Sie dann das Back-End erneut, indem Sie auf den Link **Zurück zum Test** klicken und **Test** auswählen.
+2. Wenn fehlerhafte Back-End-Ressourcen vorhanden sind, überprüfen Sie die Spalte **Details**, um die Ursache für den fehlerhaften Zustand der Ressource zu ermitteln. Wenn die Ressource aufgrund einer falschen Testkonfiguration als fehlerhaft gekennzeichnet wurde, klicken Sie auf den Link **Zurück zum Test**, und bearbeiten Sie die Testkonfiguration. Wenn die Ressource aufgrund eines Problems beim Back-End als fehlerhaft gekennzeichnet wurde, beheben Sie die Probleme bei der Back-End-Ressource, und testen Sie dann das Back-End erneut, indem Sie auf den Link **Zurück zum Test** klicken und **Test** auswählen.
 
    > [!NOTE]
    > Sie können den Test auch mit fehlerhaften Back-End-Ressourcen speichern, dies wird jedoch nicht empfohlen. Von Application Gateway werden keine als fehlerhaft identifizierten Anforderungen aus dem Back-End-Pool an die Back-End-Server weitergeleitet. Sollten in einem Back-End-Pool keine fehlerfreien Ressourcen vorhanden sein, können Sie nicht auf die Anwendung zugreifen, und es wird der HTTP-Fehler 502 ausgegeben.
@@ -100,7 +100,7 @@ Tests werden in einem aus zwei Schritten bestehenden Prozess im Portal konfiguri
    |**Name**|customProbe|Dieser Wert ist der Anzeigename für den Test, auf den Sie über das Portal zugreifen können.|
    |**Protokoll**|HTTP oder HTTPS | Das Protokoll, das vom Integritätstest verwendet wird. |
    |**Host**|z.B.: contoso.com|Dieser Wert ist der Name des virtuellen Hosts (nicht der VM-Hostname), der auf dem Anwendungsserver ausgeführt wird. Der Test wird an diese Adresse gesendet: (Protokoll)://(Hostname):(Port aus HTTP-Einstellungen)/urlPath.  Dies ist relevant, wenn in Application Gateway mehrere Standorte konfiguriert sind. Wenn Application Gateway für einen einzelnen Standort konfiguriert ist, geben Sie „127.0.0.1“ ein.|
-   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den *host* -Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
+   |**Hostnamen aus Back-End-Adresse auswählen**|Ja oder Nein|Legt den *host*-Header im Test auf den Hostnamen der Back-End-Ressource im Back-End-Pool fest, der der HTTP-Einstellung für den Test zugeordnet ist. Dies ist insbesondere im Falle mehrinstanzenfähiger Back-Ends, z. B. Azure App Service, erforderlich. [Weitere Informationen](./configuration-http-settings.md#pick-host-name-from-back-end-address)|
    |**Pfad**|„/“ oder beliebiger gültiger Pfad|Dies ist der Rest der vollständigen URL für den benutzerdefinierten Test. Ein gültiger Pfad beginnt mit „/“. Verwenden Sie für den Standardpfad von „http:\//contoso.com“ nur „/“. |
    |**Interval (Sek.)**|30|Legen Sie fest, wie oft der Test ausgeführt werden soll, um die Integrität zu prüfen. Es wird nicht empfohlen, einen Wert unter 30 Sekunden einzustellen.|
    |**Timeout (Sek.)**|30|Legen Sie fest, wie lange der Test warten soll, bis ein Timeout auftritt. Die Überprüfung wird als fehlerhaft markiert, wenn innerhalb des Zeitraums für die Zeitüberschreitung keine gültige Antwort empfangen wird. Das Timeoutintervall muss lang genug sein, damit ein HTTP-Aufruf erfolgen und sichergestellt werden kann, dass die Integritätsseite für das Back-End verfügbar ist. Beachten Sie, dass der Timeoutwert nicht größer als der in dieser Testeinstellung verwendete Wert für „Intervall“ oder der Wert für „Anforderungstimeout“ in der HTTP-Einstellung für diesen Test sein sollte.|
@@ -118,8 +118,8 @@ Nachdem der Test erstellt wurde, können Sie ihn jetzt zum Gateway hinzufügen. 
 
    ![Fenster mit HTTPS-Einstellungen][2]
 
-2. Aktivieren Sie auf der Seite mit den Einstellungen für **appGatewayBackEndHttpSettings** das Kontrollkästchen **Benutzerdefinierten Test verwenden** , und wählen Sie den Test aus, den Sie im Abschnitt [Erstellen des Tests](#createprobe) in der Dropdownliste **Benutzerdefinierter Test** erstellt haben.
-   Wenn Sie fertig sind, klicken Sie auf **Speichern** , um die Einstellungen anzuwenden.
+2. Aktivieren Sie auf der Seite mit den Einstellungen für **appGatewayBackEndHttpSettings** das Kontrollkästchen **Benutzerdefinierten Test verwenden**, und wählen Sie den Test aus, den Sie im Abschnitt [Erstellen des Tests](#createprobe) in der Dropdownliste **Benutzerdefinierter Test** erstellt haben.
+   Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die Einstellungen anzuwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
