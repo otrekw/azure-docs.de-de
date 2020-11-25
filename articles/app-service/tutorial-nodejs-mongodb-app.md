@@ -8,11 +8,11 @@ ms.date: 06/16/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-js, devx-track-azurecli
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 9c204a07e3c5edff028342af1c88b15ebac0754b
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743651"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012199"
 ---
 # <a name="tutorial-build-a-nodejs-and-mongodb-app-in-azure"></a>Tutorial: Erstellen einer Node.js- und MongoDB-App in Azure
 
@@ -138,7 +138,7 @@ Ersetzen Sie im folgenden Befehl den Platzhalter *\<cosmosdb-name>* durch einen 
 az cosmosdb create --name <cosmosdb-name> --resource-group myResourceGroup --kind MongoDB
 ```
 
-Der *--kind MongoDB* -Parameter ermöglicht MongoDB-Clientverbindungen.
+Der *--kind MongoDB*-Parameter ermöglicht MongoDB-Clientverbindungen.
 
 Nach dem Erstellen des Cosmos DB-Kontos zeigt die Azure-Befehlszeilenschnittstelle ähnliche Informationen wie im folgenden Beispiel an:
 
@@ -186,7 +186,7 @@ Kopieren Sie den Wert von `primaryMasterKey`. Sie benötigen diese Informationen
 <a name="devconfig"></a>
 ### <a name="configure-the-connection-string-in-your-nodejs-application"></a>Konfigurieren der Verbindungszeichenfolge in der Node.js-Anwendung
 
-Erstellen Sie in Ihrem lokalen MEAN.js-Repository im _config/env/_ -Ordner eine Datei mit dem Namen _local-production.js_ . _.gitignore_ ist bereits so konfiguriert, diese Datei aus dem Repository herauszuhalten. 
+Erstellen Sie in Ihrem lokalen MEAN.js-Repository im _config/env/_ -Ordner eine Datei mit dem Namen _local-production.js_. _.gitignore_ ist bereits so konfiguriert, diese Datei aus dem Repository herauszuhalten. 
 
 Kopieren Sie den folgenden Code in diese Datei ein. Achten Sie darauf, dass Sie die beiden Platzhalter *\<cosmosdb-name>* durch den Namen Ihrer Cosmos DB-Datenbank und den Platzhalter *\<primary-master-key>* durch den Schlüssel ersetzen, den Sie im vorherigen Schritt kopiert haben.
 
@@ -287,7 +287,7 @@ az webapp config appsettings set --name <app-name> --resource-group myResourceGr
 
 Im Node.js-Code führen Sie den [Zugriff auf diese App-Einstellung](configure-language-nodejs.md#access-environment-variables) mit `process.env.MONGODB_URI` genauso durch, wie Sie auf eine Umgebungsvariable zugreifen würden. 
 
-Öffnen Sie in Ihrem lokalen MEAN.js-Repository die Datei _config/env/production.js_ (nicht _config/env/local-production.js_ ), die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Die MEAN.js-Standard-App ist bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert, die Sie erstellt haben.
+Öffnen Sie in Ihrem lokalen MEAN.js-Repository die Datei _config/env/production.js_ (nicht _config/env/local-production.js_), die eine für die Produktionsumgebung spezifische Konfiguration aufweist. Die MEAN.js-Standard-App ist bereits für die Verwendung der `MONGODB_URI`-Umgebungsvariablen konfiguriert, die Sie erstellt haben.
 
 ```javascript
 db: {
@@ -351,7 +351,7 @@ In diesem Schritt ändern Sie das `article`-Datenmodell und veröffentlichen die
 
 ### <a name="update-the-data-model"></a>Aktualisieren des Datenmodells
 
-Öffnen Sie in Ihrem lokalen MEAN.js-Repository _modules/articles/server/models/article.server.model.js_ .
+Öffnen Sie in Ihrem lokalen MEAN.js-Repository _modules/articles/server/models/article.server.model.js_.
 
 Fügen Sie in `ArticleSchema` einen `String`-Typ mit dem Namen `comment` hinzu. Anschließend sollte Ihr Schemacode wie folgt aussehen:
 
@@ -376,7 +376,7 @@ Aktualisieren Sie den restlichen `articles`-Code so, dass `comment` verwendet wi
 
 Sie müssen fünf Dateien ändern – den Servercontroller und die vier Clientansichten. 
 
-Öffnen Sie _modules/articles/server/controllers/articles.server.controller.js_ .
+Öffnen Sie _modules/articles/server/controllers/articles.server.controller.js_.
 
 Fügen Sie in der `update`-Funktion eine Zuweisung für `article.comment` hinzu. Der folgende Code zeigt die abgeschlossene `update`-Funktion:
 
@@ -392,7 +392,7 @@ exports.update = function (req, res) {
 };
 ```
 
-Öffnen Sie _modules/articles/client/views/view-article.client.view.html_ .
+Öffnen Sie _modules/articles/client/views/view-article.client.view.html_.
 
 Fügen Sie unmittelbar vor dem schließenden `</section>`-Tag die folgende Zeile hinzu, um `comment` und die verbleibenden Artikeldaten anzuzeigen:
 
@@ -400,7 +400,7 @@ Fügen Sie unmittelbar vor dem schließenden `</section>`-Tag die folgende Zeile
 <p class="lead" ng-bind="vm.article.comment"></p>
 ```
 
-Öffnen Sie _modules/articles/client/views/list-articles.client.view.html_ .
+Öffnen Sie _modules/articles/client/views/list-articles.client.view.html_.
 
 Fügen Sie unmittelbar vor dem schließenden `</a>`-Tag die folgende Zeile hinzu, um `comment` und die verbleibenden Artikeldaten anzuzeigen:
 
@@ -408,7 +408,7 @@ Fügen Sie unmittelbar vor dem schließenden `</a>`-Tag die folgende Zeile hinzu
 <p class="list-group-item-text" ng-bind="article.comment"></p>
 ```
 
-Öffnen Sie _modules/articles/client/views/admin/list-articles.client.view.html_ .
+Öffnen Sie _modules/articles/client/views/admin/list-articles.client.view.html_.
 
 Fügen Sie im `<div class="list-group">`-Element und unmittelbar vor dem schließenden `</a>`-Tag die folgende Zeile hinzu, um `comment` und die verbleibenden Artikeldaten anzuzeigen:
 
@@ -416,7 +416,7 @@ Fügen Sie im `<div class="list-group">`-Element und unmittelbar vor dem schlie�
 <p class="list-group-item-text" data-ng-bind="article.comment"></p>
 ```
 
-Öffnen Sie _modules/articles/client/views/admin/form-article.client.view.html_ .
+Öffnen Sie _modules/articles/client/views/admin/form-article.client.view.html_.
 
 Suchen Sie nach dem `<div class="form-group">`-Element mit der Schaltfläche zum Senden, die wie folgt aussieht:
 
@@ -505,7 +505,7 @@ Geben Sie `Ctrl+C` ein, um das Protokollstreaming zu einem beliebigen Zeitpunkt 
 
 Wechseln Sie zum [Azure-Portal](https://portal.azure.com), um die erstellte App anzuzeigen.
 
-Klicken Sie im linken Menü auf **App Services** , und klicken Sie dann auf den Namen Ihrer Azure-App.
+Klicken Sie im linken Menü auf **App Services**, und klicken Sie dann auf den Namen Ihrer Azure-App.
 
 ![Portalnavigation zur Azure-App](./media/tutorial-nodejs-mongodb-app/access-portal.png)
 

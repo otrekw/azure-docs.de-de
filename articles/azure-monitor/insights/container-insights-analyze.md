@@ -4,11 +4,11 @@ description: In diesem Artikel wird beschrieben, wie Sie mit Azure Monitor für 
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: de61e8e5b2716a3ca212a0a830a4d48b8bd2c3ef
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92368756"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011080"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>Überwachen der Leistung von Kubernetes-Clustern mit Azure Monitor für Container
 
@@ -34,10 +34,10 @@ Zum Anzeigen des Integritätsstatus aller bereitgestellten Kubernetes-Cluster w�
 
 Sie können die im Raster dargestellten Ergebnisse so festlegen, dass folgende Cluster angezeigt werden:
 
-* **Azure** : AKS- und AKS-Engine-Cluster, die in Azure Kubernetes Service gehostet werden
+* **Azure**: AKS- und AKS-Engine-Cluster, die in Azure Kubernetes Service gehostet werden
 * **Azure Stack (Vorschau)** : AKS-Engine-Cluster, die in Azure Stack gehostet werden
 * **Nicht-Azure (Vorschau)** : Kubernetes-Cluster, die lokal gehostet werden
-* **Alle** : Anzeigen aller in Azure, Azure Stack und lokalen Umgebungen gehosteten Kubernetes-Cluster, die in Azure Monitor für Container integriert sind
+* **Alle**: Anzeigen aller in Azure, Azure Stack und lokalen Umgebungen gehosteten Kubernetes-Cluster, die in Azure Monitor für Container integriert sind
 
 Zum Anzeigen von Clustern aus einer bestimmten Umgebung wählen Sie diese im Bereich **Umgebungen** oben links auf der Seite aus.
 
@@ -52,15 +52,15 @@ Die Registerkarte **Überwachte Cluster** enthält die folgenden Informationen:
 
 Folgende Integritätsstatus sind enthalten:
 
-* **Fehlerfrei** : Für die VM wurden keine Probleme erkannt, und sie funktioniert wie gewünscht.
-* **Kritisch** : Mindestens ein kritischer Fehler wurde entdeckt, der behandelt werden muss, um den normalen Betriebszustand wiederherzustellen.
+* **Fehlerfrei**: Für die VM wurden keine Probleme erkannt, und sie funktioniert wie gewünscht.
+* **Kritisch**: Mindestens ein kritischer Fehler wurde entdeckt, der behandelt werden muss, um den normalen Betriebszustand wiederherzustellen.
 * **Warnung:** Es wurde mindestens ein Problem entdeckt, das behandelt werden muss, weil sonst ggf. der Übergang zu einem kritischen Integritätszustand erfolgt.
 * **Unbekannt:** Wenn der Dienst keine Verbindung mit einem Knoten oder einem Pod herstellen konnte, wechselt der Status zu „Unbekannt“.
-* **Nicht gefunden** : Entweder der Arbeitsbereich, die Ressourcengruppe oder das Abonnement mit dem Arbeitsbereich für diese Lösung wurde gelöscht.
-* **Nicht autorisiert** : Der Benutzer verfügt nicht über die erforderlichen Berechtigungen, um die Daten im Arbeitsbereich zu lesen.
+* **Nicht gefunden**: Entweder der Arbeitsbereich, die Ressourcengruppe oder das Abonnement mit dem Arbeitsbereich für diese Lösung wurde gelöscht.
+* **Nicht autorisiert**: Der Benutzer verfügt nicht über die erforderlichen Berechtigungen, um die Daten im Arbeitsbereich zu lesen.
 * **Fehler:** Beim Versuch, Daten aus dem Arbeitsbereich zu lesen, ist ein Fehler aufgetreten.
-* **Falsch konfiguriert** : Azure Monitor für Container wurde im angegebenen Arbeitsbereich nicht richtig konfiguriert.
-* **Keine Daten** : In den letzten 30 Minuten wurden keine Daten an den Arbeitsbereich gemeldet.
+* **Falsch konfiguriert**: Azure Monitor für Container wurde im angegebenen Arbeitsbereich nicht richtig konfiguriert.
+* **Keine Daten**: In den letzten 30 Minuten wurden keine Daten an den Arbeitsbereich gemeldet.
 
 Für den Integritätszustand wird der allgemeine Clusterstatus als *schlechtester* der drei Status berechnet, mit einer Ausnahme: Falls einer der drei Status „Unbekannt“ lautet, wird auch für den allgemeinen Clusterstatus **Unbekannt** angezeigt.
 
@@ -106,8 +106,8 @@ In den Leistungsdiagrammen werden vier Leistungsmetriken angezeigt:
 
 - **Knoten-CPU-Auslastung&nbsp;%** : Eine aggregierte Ansicht der CPU-Auslastung für den gesamten Cluster. Wählen Sie zum Filtern der Ergebnisse für den Zeitbereich im Perzentilselektor oberhalb des Diagramms **Mittelw.** , **Min.** , **50.** , **90.** , **95.** oder **Max.** aus. Die Filter können einzeln oder gemeinsam verwendet werden.
 - **Knotenspeicherauslastung&nbsp;%** : Eine aggregierte Ansicht der Speicherauslastung für den gesamten Cluster. Wählen Sie zum Filtern der Ergebnisse für den Zeitbereich im Perzentilselektor oberhalb des Diagramms **Mittelw.** , **Min.** , **50.** , **90.** , **95.** oder **Max.** aus. Die Filter können einzeln oder gemeinsam verwendet werden.
-- **Knotenanzahl** : Die Anzahl von Knoten und der Status von Kubernetes. Für die dargestellten Clusterknoten werden die Status „Gesamt“, „Bereit“ und „Nicht bereit“ angezeigt. Sie können im Selektor oberhalb des Diagramms einzeln oder gemeinsam gefiltert werden.
-- **Anzahl aktiver Pods** : Die Podanzahl und der Status von Kubernetes. Als Status der dargestellten Pods werden „Gesamt“, „Ausstehend“, „Wird ausgeführt“, „Unbekannt“, „Erfolgreich“ oder „Fehler“ angezeigt. Sie können im Selektor oberhalb des Diagramms einzeln oder gemeinsam gefiltert werden.
+- **Knotenanzahl**: Die Anzahl von Knoten und der Status von Kubernetes. Für die dargestellten Clusterknoten werden die Status „Gesamt“, „Bereit“ und „Nicht bereit“ angezeigt. Sie können im Selektor oberhalb des Diagramms einzeln oder gemeinsam gefiltert werden.
+- **Anzahl aktiver Pods**: Die Podanzahl und der Status von Kubernetes. Als Status der dargestellten Pods werden „Gesamt“, „Ausstehend“, „Wird ausgeführt“, „Unbekannt“, „Erfolgreich“ oder „Fehler“ angezeigt. Sie können im Selektor oberhalb des Diagramms einzeln oder gemeinsam gefiltert werden.
 
 Verwenden Sie die Pfeiltasten nach links und rechts, um die einzelnen Datenpunkte des Diagramms zu durchlaufen. Verwenden Sie die Pfeiltasten nach oben und unten, um die Perzentilzeilen zu durchlaufen. Wählen Sie das Stecknadelsymbol in der oberen rechten Ecke eines Diagramms aus, um das ausgewählte Diagramm an das zuletzt angezeigte Azure-Dashboard anzuheften. Über dem Dashboard können Sie die Größe des Diagramms ändern und es neu positionieren. Die Auswahl des Diagramms über das Dashboard leitet Sie zu Azure Monitor für Container weiter und lädt den richtigen Bereich und die richtige Ansicht.
 
@@ -139,11 +139,11 @@ Sie können eine Metrik [teilen](../platform/metrics-charts.md#apply-splitting-t
 
 ## <a name="analyze-nodes-controllers-and-container-health"></a>Analysieren von Knoten, Controllern und der Containerintegrität
 
-Wenn Sie zur Registerkarte **Knoten** , **Controller** oder **Container** wechseln, wird rechts auf der Seite automatisch ein Eigenschaftenbereich angezeigt. Dort werden die Eigenschaften des ausgewählten Elements angezeigt. Dies umfasst auch die Bezeichnungen, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Wählen Sie im Bereich den Link **>>** aus, um den Bereich ein- und auszublenden.
+Wenn Sie zur Registerkarte **Knoten**, **Controller** oder **Container** wechseln, wird rechts auf der Seite automatisch ein Eigenschaftenbereich angezeigt. Dort werden die Eigenschaften des ausgewählten Elements angezeigt. Dies umfasst auch die Bezeichnungen, die Sie definieren, um die Kubernetes-Objekte zu organisieren. Wenn ein Linux-Knoten ausgewählt ist, werden im Abschnitt **Local Disk Capacity** (Kapazität der lokalen Festplatte) auch der verfügbare Speicherplatz auf der Festplatte und der prozentual für jede Festplatte auf dem Knoten genutzte Speicherplatz angezeigt. Wählen Sie im Bereich den Link **>>** aus, um den Bereich ein- und auszublenden.
 
 Wenn Sie die Objekte in der Hierarchie erweitern, wird der Eigenschaftenbereich auf Basis des ausgewählten Objekts aktualisiert. In dem Bereich können Sie auch Kubernetes-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken anzeigen, indem Sie im oberen Bereich auf den Link **Livedaten anzeigen (Vorschau)** klicken. Weitere Informationen zur erforderlichen Konfiguration zum Erteilen und Steuern des Zugriffs für die Anzeige dieser Daten finden Sie unter [Einrichten der Funktion für Livedaten (Vorschau)](container-insights-livedata-setup.md). Beim Überprüfen von Clusterressourcen können Sie diese Daten aus dem Containern in Echtzeit sehen. Weitere Informationen zu dieser Funktion finden Sie unter [Anzeigen von Kubernetes-Protokollen, -Ereignissen und Podmetriken in Echtzeit](container-insights-livedata-overview.md). Zum Anzeigen von Kubernetes-Protokolldaten, die in Ihrem Arbeitsbereich basierend auf vordefinierten Protokollsuchen gespeichert wurden, wählen Sie in der Dropdownliste **In Analytics anzeigen** die Option **Containerprotokolle anzeigen** aus. Weitere Informationen zu diesem Thema finden Sie unter [Suchen von Protokollen zur Datenanalyse](container-insights-log-search.md#search-logs-to-analyze-data).
 
-Verwenden Sie die Option **+ Filter hinzufügen** oben auf der Seite, um die Ergebnisse für die Ansicht nach **Dienst** , **Knoten** , **Namespace** oder **Knotenpool** zu filtern. Nachdem Sie den Filterbereich ausgewählt haben, wählen Sie einen der Werte im Feld **Wert(e) auswählen** aus. Nachdem der Filter konfiguriert wurde, wird er global auf alle Perspektiven des AKS-Clusters angewendet. Die Formel unterstützt nur das Gleichheitszeichen. Sie können zusätzlich zum obersten weitere Filter hinzufügen, um Ihre Ergebnisse weiter einzugrenzen. Wenn Sie beispielsweise einen Filter nach **Knoten** angeben, können Sie für den zweiten Filter nur **Dienst** oder **Namespace** auswählen.
+Verwenden Sie die Option **+ Filter hinzufügen** oben auf der Seite, um die Ergebnisse für die Ansicht nach **Dienst**, **Knoten**, **Namespace** oder **Knotenpool** zu filtern. Nachdem Sie den Filterbereich ausgewählt haben, wählen Sie einen der Werte im Feld **Wert(e) auswählen** aus. Nachdem der Filter konfiguriert wurde, wird er global auf alle Perspektiven des AKS-Clusters angewendet. Die Formel unterstützt nur das Gleichheitszeichen. Sie können zusätzlich zum obersten weitere Filter hinzufügen, um Ihre Ergebnisse weiter einzugrenzen. Wenn Sie beispielsweise einen Filter nach **Knoten** angeben, können Sie für den zweiten Filter nur **Dienst** oder **Namespace** auswählen.
 
 Die Angabe eines Filters auf einer Registerkarte wird weiterhin angewendet, wenn Sie eine andere Registerkarte auswählen. Sie wird gelöscht, wenn Sie das Symbol **x** neben dem angegebenen Filter auswählen.
 
@@ -181,7 +181,7 @@ Wenn Sie den Mauszeiger auf das Balkendiagramm unter der Spalte **Trend** bewege
 
 ![Beispiel für ein Trendbalkendiagramm mit Mauszeigerbewegung](./media/container-insights-analyze/containers-metric-trend-bar-01.png)
 
-Im nächsten Beispiel hat **Container** für den ersten Knoten in der Liste ( *aks-nodepool1-* ) den Wert 9. Dieser Wert ist ein Rollup der gesamten bereitgestellten Container.
+Im nächsten Beispiel hat **Container** für den ersten Knoten in der Liste (*aks-nodepool1-* ) den Wert 9. Dieser Wert ist ein Rollup der gesamten bereitgestellten Container.
 
 ![Beispiel für ein Rollup der Container pro Knoten](./media/container-insights-analyze/containers-nodes-containerstotal.png)
 
@@ -235,7 +235,7 @@ In der folgenden Tabelle sind die Informationen beschrieben, die bei der Anzeige
 | Column | BESCHREIBUNG |
 |--------|-------------|
 | Name | Der Name des Controllers.|
-| Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK* , *Abgebrochen* , *Fehler* , *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, aber der Status entweder nicht richtig angezeigt oder vom Agent nicht übernommen wurde und seit über 30 Minuten keine Antwort erfolgt ist, lautet der Status *Unbekannt*. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
+| Status | Der Rollupstatus der Container, wenn deren Ausführung mit einem Status abgeschlossen wurde, z. B. *OK*, *Abgebrochen*, *Fehler*, *Beendet* oder *Angehalten*. Wenn der Container ausgeführt wird, aber der Status entweder nicht richtig angezeigt oder vom Agent nicht übernommen wurde und seit über 30 Minuten keine Antwort erfolgt ist, lautet der Status *Unbekannt*. Zusätzliche Informationen zum Statussymbol finden Sie in der folgenden Tabelle.|
 | Min.&nbsp;%, Mittelw.&nbsp;%, 50.&nbsp;%, 90.&nbsp;%, 95.&nbsp;%, Max.&nbsp;%| Durchschnittliches Rollup des durchschnittlichen Prozentsatzes jeder Entität für die ausgewählte Metrik und das ausgewählte Perzentil. |
 | Min., Mittelw., 50., 90., 95., Max.  | Rollup der durchschnittlichen CPU-Millicore oder Speicherleistung des Containers für das ausgewählte Perzentil. Der Mittelwert wird ausgehend vom festgelegten CPU-/Speichergrenzwert für einen Pod gemessen. |
 | Container | Gesamtanzahl der Container für den Controller oder Pod. |
@@ -301,18 +301,18 @@ Arbeitsmappen kombinieren Text,  [Protokollabfragen](/azure/data-explorer/kust
 
 Azure Monitor für Container enthält vier Arbeitsmappen für den Einstieg:
 
-- **Datenträgerkapazität** : Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
+- **Datenträgerkapazität**: Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
 
     - Prozentuale Datenträgerauslastung für alle Datenträger.
     - Freier Speicherplatz für alle Datenträger.
     - Ein Raster, in dem der Datenträger jedes Knotens, der prozentual genutzte Speicherplatz mit dem zugehörigen Trend sowie der freie Speicherplatz auf dem Datenträger (GiB) mit dem Trend (GiB) angezeigt werden. Wenn in der Tabelle eine Zeile ausgewählt wird, wird der Prozentsatz des belegten und freien Speicherplatzes auf dem Datenträger unterhalb der Zeile angezeigt (in GiB).
 
-- **Datenträger-E/A** : Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
+- **Datenträger-E/A**: Diese Arbeitsmappe zeigt interaktive Diagramme zur Datenträgerauslastung für jeden Datenträger, der dem Knoten in einem Container bereitgestellt wird, anhand der folgenden Gesichtspunkte:
 
     - Zusammenfassung der Datenträger-E/A auf allen Datenträgern nach gelesenen Bytes/Sek., geschriebenen Bytes/Sek. und Trends der gelesenen und geschriebenen Bytes/Sek.
     - In acht Leistungsdiagrammen werden wichtige Leistungsindikatoren angezeigt, um Datenträger-E/A-Engpässe zu messen und zu identifizieren.
 
-- **Kubelet** : Enthält zwei Raster, die die Hauptknoten-Betriebsstatistiken anzeigen:
+- **Kubelet**: Enthält zwei Raster, die die Hauptknoten-Betriebsstatistiken anzeigen:
 
     - „Übersicht nach Knotenraster“ fasst alle Vorgänge, alle Fehler und die erfolgreichen Vorgänge für jeden Knoten in Prozent und Trend zusammen.
     - „Übersicht nach Vorgangstyp“ fasst die Vorgänge für jeden Typ, alle Fehler und die erfolgreichen Vorgänge in Prozent und Trend zusammen.

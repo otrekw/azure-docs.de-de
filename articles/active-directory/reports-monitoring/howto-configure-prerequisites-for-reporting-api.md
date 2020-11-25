@@ -18,11 +18,11 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130220"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013053"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
@@ -77,7 +77,7 @@ Um Ihr Verzeichnis für den Zugriff auf die Azure AD-Berichterstellungs-API zu k
 
     ![Screenshot: Ausgewählte Option „Neue Registrierung“](./media/howto-configure-prerequisites-for-reporting-api/03.png)
 
-4. Die Seite **Anwendung registrieren** :
+4. Die Seite **Anwendung registrieren**:
 
     ![Screenshot: Seite „Anwendung registrieren“, auf der Sie die Werte in diesem Schritt eingeben können](./media/howto-configure-prerequisites-for-reporting-api/04.png)
 
@@ -103,7 +103,7 @@ Abhängig von der API, auf die Sie zugreifen möchten, müssen Sie Ihrer App die
 
 Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie nicht auf eine der APIs zugreifen möchten, können Sie die zugehörigen Schritte überspringen.
 
-**So erteilen Sie Ihrer Anwendung die Berechtigung zur Verwendung der APIs** :
+**So erteilen Sie Ihrer Anwendung die Berechtigung zur Verwendung der APIs**:
 
 
 1. Wählen Sie **API-Berechtigungen** und dann **Berechtigung hinzufügen** aus. 
@@ -114,7 +114,7 @@ Im folgenden Abschnitt werden die Schritte für beide APIs aufgelistet. Wenn Sie
 
     ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie „Azure Active Directory Graph“ auswählen können](./media/howto-configure-prerequisites-for-reporting-api/06.png)
 
-3. Wählen Sie auf der Seite **Erforderliche Berechtigungen** die Option **Anwendungsberechtigungen** aus, erweitern Sie **Verzeichnis** , und aktivieren Sie dann das Kontrollkästchen **Directory.ReadAll**.  Wählen Sie **Berechtigungen hinzufügen** aus.
+3. Wählen Sie auf der Seite **Erforderliche Berechtigungen** die Option **Anwendungsberechtigungen** aus, erweitern Sie **Verzeichnis**, und aktivieren Sie dann das Kontrollkästchen **Directory.ReadAll**.  Wählen Sie **Berechtigungen hinzufügen** aus.
 
     ![Screenshot: Seite „API-Berechtigungen anfordern“, auf der Sie Anwendungsberechtigungen auswählen können](./media/howto-configure-prerequisites-for-reporting-api/07.png)
 
@@ -161,7 +161,7 @@ Sie benötigen diese Werte, um Aufrufe an die Berichterstellungs-API zu konfigur
 
 2. Wählen Sie Ihre Anwendung auf der Seite **App-Registrierungen** aus.
 
-3. Navigieren Sie auf der Anwendungsseite zu **Anwendungs-ID** , und wählen Sie die Option **Click to copy** (Zum Kopieren klicken).
+3. Navigieren Sie auf der Anwendungsseite zu **Anwendungs-ID**, und wählen Sie die Option **Click to copy** (Zum Kopieren klicken).
 
     ![Screenshot: Seite „Berichterstellungs-API-Anwendung“, auf der Sie die Anwendung-ID kopieren können](./media/howto-configure-prerequisites-for-reporting-api/11.png) 
 

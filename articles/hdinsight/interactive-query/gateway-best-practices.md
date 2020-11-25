@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.openlocfilehash: 3db411df69a754857220867865522f8e4fa24030
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92546006"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011488"
 ---
 # <a name="gateway-deep-dive-and-best-practices-for-apache-hive-in-azure-hdinsight"></a>Ausführliche Informationen zum Gateway und bewährte Methoden für Apache Hive in Azure HDInsight
 
@@ -36,7 +36,7 @@ Zur Authentifizierung ermöglicht das Gateway Benutzern die Authentifizierung mi
 
 ## <a name="best-practices"></a>Bewährte Methoden
 
-Das Gateway ist ein einzelner Dienst ( Lastenausgleich über zwei Hosts), der für die Weiterleitung und Authentifizierung von Anforderungen zuständig ist. Das Gateway kann zu einem Engpass beim Durchsatz von Hive-Abfragen werden, die eine bestimmte Größe überschreiten. Eine Verschlechterung der Abfrageleistung kann beobachtet werden, wenn sehr große **SELECT** -Abfragen über ODBC oder JDBC auf dem Gateway ausgeführt werden. „Sehr groß“ bezeichnet Abfragen, die mehr als 5 GB Daten in Zeilen oder Spalten umfassen. Diese Abfrage könnte eine lange Liste von Zeilen und/oder eine große Anzahl von Spalten enthalten.
+Das Gateway ist ein einzelner Dienst ( Lastenausgleich über zwei Hosts), der für die Weiterleitung und Authentifizierung von Anforderungen zuständig ist. Das Gateway kann zu einem Engpass beim Durchsatz von Hive-Abfragen werden, die eine bestimmte Größe überschreiten. Eine Verschlechterung der Abfrageleistung kann beobachtet werden, wenn sehr große **SELECT**-Abfragen über ODBC oder JDBC auf dem Gateway ausgeführt werden. „Sehr groß“ bezeichnet Abfragen, die mehr als 5 GB Daten in Zeilen oder Spalten umfassen. Diese Abfrage könnte eine lange Liste von Zeilen und/oder eine große Anzahl von Spalten enthalten.
 
 Die Leistungseinbußen des Gateways bei großen Abfragen sind darauf zurückzuführen, dass die Daten vom zugrunde liegenden Datenspeicher (ADLS Gen2) übertragen werden müssen an den HDInsight Hive-Server, das Gateway und schließlich über die JDBC- oder ODBC-Treiber an den Clienthost.
 
@@ -44,9 +44,9 @@ Das folgende Diagramm veranschaulicht die Schritte, die die SELECT-Abfrage umfas
 
 ![Ergebnisdiagramm](./media/gateway-best-practices/result-retrieval-diagram.png "Ergebnisdiagramm")
 
-Apache Hive ist eine relationale Abstraktion auf einem HDFS-kompatiblen Dateisystem. Diese Abstraktion bedeutet, dass **SELECT** -Anweisungen in Hive den **READ** -Vorgängen im Dateisystem entsprechen. Die **READ** -Vorgänge werden in das entsprechende Schema übersetzt, bevor sie dem Benutzer gemeldet werden. Die Wartezeit dieses Prozesses steigt mit dem Umfang der Daten und der Gesamtzahl der Hops, die erforderlich sind, um den Endbenutzer zu erreichen.
+Apache Hive ist eine relationale Abstraktion auf einem HDFS-kompatiblen Dateisystem. Diese Abstraktion bedeutet, dass **SELECT**-Anweisungen in Hive den **READ**-Vorgängen im Dateisystem entsprechen. Die **READ**-Vorgänge werden in das entsprechende Schema übersetzt, bevor sie dem Benutzer gemeldet werden. Die Wartezeit dieses Prozesses steigt mit dem Umfang der Daten und der Gesamtzahl der Hops, die erforderlich sind, um den Endbenutzer zu erreichen.
 
-Ein ähnliches Verhalten kann bei der Ausführung von **CREATE** - oder **INSERT** -Anweisungen für große Datenmengen auftreten, da diese Befehle **WRITE** -Vorgänge im zugrunde liegenden Dateisystem entsprechen. Ziehen Sie in Betracht, Daten (z. B. unformatiertes ORC) in das Dateisystem/Data Lake zu schreiben, anstatt sie mit **INSERT** oder **LOAD** zu laden.
+Ein ähnliches Verhalten kann bei der Ausführung von **CREATE**- oder **INSERT**-Anweisungen für große Datenmengen auftreten, da diese Befehle **WRITE**-Vorgänge im zugrunde liegenden Dateisystem entsprechen. Ziehen Sie in Betracht, Daten (z. B. unformatiertes ORC) in das Dateisystem/Data Lake zu schreiben, anstatt sie mit **INSERT** oder **LOAD** zu laden.
 
 In Clustern mit aktiviertem Enterprise-Sicherheitspaket können ausreichend komplexe Apache Ranger-Richtlinien eine Verlangsamung der Abfragekompilierungszeit verursachen, was zu einem Gatewayzeitlimit führen kann. Wenn in einem ESP-Cluster ein Gatewayzeitlimit festgestellt wird, sollten Sie in Erwägung ziehen, die Anzahl der Ranger-Richtlinien zu reduzieren oder zu kombinieren.
 
@@ -54,9 +54,9 @@ In Clustern mit aktiviertem Enterprise-Sicherheitspaket können ausreichend komp
 
 Es gibt mehrere Ansätze für das Entschärfen und das Verstehen von Leistungsproblemen, die im Rahmen des oben beschriebenen Verhaltens auftreten. Verwenden Sie die folgende Prüfliste, wenn eine Verschlechterung der Abfrageleistung über das HDInsight-Gateway festgestellt wird:
 
-* Verwenden Sie die **LIMIT** -Klausel, wenn Sie große **SELECT** -Abfragen ausführen. Die **LIMIT** -Klausel reduziert die Gesamtzahl der an den Clienthost gemeldeten Zeilen. Die **LIMIT** -Klausel betrifft nur die Ergebnisgenerierung und ändert nicht den Abfrageplan. Um die **LIMIT** -Klausel auf den Abfrageplan anzuwenden, verwenden Sie die Konfiguration `hive.limit.optimize.enable`. **LIMIT** kann mit einem Offset mit der Argumentform **LIMIT x,y** kombiniert werden.
+* Verwenden Sie die **LIMIT**-Klausel, wenn Sie große **SELECT**-Abfragen ausführen. Die **LIMIT**-Klausel reduziert die Gesamtzahl der an den Clienthost gemeldeten Zeilen. Die **LIMIT**-Klausel betrifft nur die Ergebnisgenerierung und ändert nicht den Abfrageplan. Um die **LIMIT**-Klausel auf den Abfrageplan anzuwenden, verwenden Sie die Konfiguration `hive.limit.optimize.enable`. **LIMIT** kann mit einem Offset mit der Argumentform **LIMIT x,y** kombiniert werden.
 
-* Benennen Sie die für Sie interessanten Spalten, wenn Sie **SELECT** -Abfragen ausführen, anstatt * *SELECT \** _ zu verwenden. Wenn Sie weniger Spalten auswählen, verringert sich die Menge der gelesenen Daten.
+* Benennen Sie die für Sie interessanten Spalten, wenn Sie **SELECT**-Abfragen ausführen, anstatt **SELECT \** _ zu verwenden. Wenn Sie weniger Spalten auswählen, verringert sich die Menge der gelesenen Daten.
 
 _ Versuchen Sie, die betreffende Abfrage über Apache Beeline auszuführen. Wenn das Abrufen von Ergebnissen über Apache Beeline längere Zeit in Anspruch nimmt, rechnen Sie mit Verzögerungen beim Abrufen derselben Ergebnisse über externe Tools.
 

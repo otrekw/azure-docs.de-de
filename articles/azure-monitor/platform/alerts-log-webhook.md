@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 06/25/2019
 ms.subservice: alerts
 ms.openlocfilehash: 9a074be9bcc62d8c20635400f462f52fb796d2fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294307"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012321"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Webhookaktionen für Protokollwarnungsregeln
 
@@ -55,7 +55,7 @@ Standardmäßige Webhookaktionseigenschaften und deren benutzerdefinierte JSON-P
 ## <a name="custom-webhook-payload-definition"></a>Nutzlastdefinition für benutzerdefinierten Webhook
 
 Mit **Benutzerdefinierte JSON-Nutzdaten für Webhook einschließen** können Sie eine benutzerdefinierte JSON-Nutzlast mit den oben genannten Parametern erhalten. Sie können auch zusätzliche Eigenschaften generieren.
-Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text*enthält. Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter:
+Sie können beispielsweise die folgende benutzerdefinierte Nutzlast angeben, die einen einzelnen Parameter wie *text* enthält. Der Dienst, der von diesem Webhook aufgerufen wird, erwartet diesen Parameter:
 
 ```json
 

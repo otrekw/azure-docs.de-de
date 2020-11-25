@@ -9,11 +9,11 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895833"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013121"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
 
@@ -50,7 +50,7 @@ DWG-Dateien können innerhalb des Ordners beliebig organisiert sein. Die Manifes
 
 ## <a name="dwg-files-requirements"></a>Anforderungen für DWG-Dateien
 
-Für jede Ebene der Einrichtung ist jeweils eine einzelne DWG-Datei erforderlich. Die Daten der Ebene müssen in einer einzelnen DWG-Datei enthalten sein. Externe Referenzen ( _Querverweise_ ) müssen jeweils an die übergeordnete Zeichnung gebunden werden. Darüber hinaus gilt für jede DWG-Datei Folgendes:
+Für jede Ebene der Einrichtung ist jeweils eine einzelne DWG-Datei erforderlich. Die Daten der Ebene müssen in einer einzelnen DWG-Datei enthalten sein. Externe Referenzen (_Querverweise_) müssen jeweils an die übergeordnete Zeichnung gebunden werden. Darüber hinaus gilt für jede DWG-Datei Folgendes:
 
 * Sie muss die Schichten _Exterior_ (Außenbereich) und _Unit_ (Einheit) definieren. Folgende Schichten können optional definiert werden: _Wall_ (Wand), _Door_ (Tür), _UnitLabel_ (Einheitenbezeichnung), _Zone_ (Zone) und _ZoneLabel_ (Zonenbezeichnung).
 * Sie darf keine Features mehrerer Ebenen enthalten.
@@ -93,7 +93,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Schicht
 
 ### <a name="exterior-layer"></a>Exterior-Schicht
 
-Die DWG-Datei für die jeweilige Ebene muss eine Schicht zum Definieren der Grenze der betreffenden Ebene enthalten. Diese Schicht wird als *Exterior* -Schicht bezeichnet. Wenn eine Einrichtung also beispielsweise zwei Ebenen enthält, benötigen Sie zwei DWG-Dateien mit einer Exterior-Schicht für jede Datei.
+Die DWG-Datei für die jeweilige Ebene muss eine Schicht zum Definieren der Grenze der betreffenden Ebene enthalten. Diese Schicht wird als *Exterior*-Schicht bezeichnet. Wenn eine Einrichtung also beispielsweise zwei Ebenen enthält, benötigen Sie zwei DWG-Dateien mit einer Exterior-Schicht für jede Datei.
 
 Das [resultierende Einrichtungsdataset](tutorial-creator-indoor-maps.md#create-a-feature-stateset) enthält jeweils nur ein Ebenenfeature pro DWG-Datei – unabhängig davon, wie viele Entitätszeichnungen sich in der Exterior-Schicht befinden. Außerdem zu beachten:
 

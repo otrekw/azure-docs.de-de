@@ -9,11 +9,11 @@ ms.date: 05/22/2020
 ms.author: yegu
 ms.custom: mvc, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: edb80ab3107cbd0a5ddd802d56a60ce77affb2f2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93088113"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012917"
 ---
 # <a name="quickstart-use-azure-cache-for-redis-in-java"></a>Schnellstart: Verwenden von Azure Cache for Redis mit Java
 
@@ -59,7 +59,7 @@ mvn archetype:generate -DarchetypeGroupId=org.apache.maven.archetypes -Darchetyp
 
 Wechseln Sie zum neuen Projektverzeichnis *redistest*.
 
-Öffnen Sie die Datei *pom.xml* , und fügen Sie eine Abhängigkeit für [Jedis](https://github.com/xetorthio/jedis) hinzu:
+Öffnen Sie die Datei *pom.xml*, und fügen Sie eine Abhängigkeit für [Jedis](https://github.com/xetorthio/jedis) hinzu:
 
 ```xml
     <dependency>
@@ -73,7 +73,7 @@ Wechseln Sie zum neuen Projektverzeichnis *redistest*.
 
 Speichern Sie die Datei *pom.xml* .
 
-Öffnen Sie die Datei *App.java* , und ersetzen Sie den Code durch folgenden Code:
+Öffnen Sie die Datei *App.java*, und ersetzen Sie den Code durch folgenden Code:
 
 ```java
 package example.demo;

@@ -12,11 +12,11 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: d222234cd6ff3d910e6dbc51a394695ce467edce
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92793295"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011852"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-databases"></a>Verwalten von Schemas in einer SaaS-Anwendung, die mehrinstanzenfähige Datenbanken mit Sharding verwendet
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -53,7 +53,7 @@ In diesem Tutorial lernen Sie Folgendes:
 - Azure PowerShell muss installiert sein. Ausführliche Informationen finden Sie unter [Erste Schritte mit Azure PowerShell](/powershell/azure/get-started-azureps).
 
 > [!NOTE]
-> In diesem Tutorial werden Funktionen des Azure SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen ([Aufträge für die elastische Datenbank](elastic-database-client-library.md)). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an *SaaSFeedback\@microsoft.com* mit dem Betreff „Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt. Wenden Sie sich daher an *SaaSFeedback\@microsoft.com* , wenn Sie Fragen haben oder Support benötigen.
+> In diesem Tutorial werden Funktionen des Azure SQL-Datenbank-Diensts verwendet, die als eingeschränkte Vorschauversion vorliegen ([Aufträge für die elastische Datenbank](elastic-database-client-library.md)). Wenn Sie dieses Tutorial durcharbeiten möchten, geben Sie Ihre Abonnement-ID per E-Mail an *SaaSFeedback\@microsoft.com* mit dem Betreff „Elastic Jobs Preview“ an. Wenn Sie die Bestätigung erhalten haben, dass die Aktivierung für Ihr Abonnement ausgeführt wurde, [laden Sie die aktuellen Vorabversion-Cmdlets für Aufträge herunter und installieren Sie sie](https://github.com/jaredmoo/azure-powershell/releases). Die Vorschauversion ist eingeschränkt. Wenden Sie sich daher an *SaaSFeedback\@microsoft.com*, wenn Sie Fragen haben oder Support benötigen.
 
 ## <a name="introduction-to-saas-schema-management-patterns"></a>Einführung in SaaS-Schemaverwaltungsmuster
 
@@ -75,7 +75,7 @@ Die Skripts und der Quellcode der mehrinstanzenfähigen Wingtip Tickets-SaaS-Dat
 
 Für dieses Tutorial müssen Sie mit PowerShell die Auftrags-Agent-Datenbank und den Auftrags-Agent erstellen. In gleicher Weise, wie SQL-Agent eine MSDB-Datenbank verwendet, nutzt ein Auftrags-Agent eine Datenbank in Azure SQL-Datenbank, um Auftragsdefinitionen, Auftragsstatus und den Verlauf zu speichern. Sobald der Auftrags-Agent erstellt wurde, können Sie sofort Aufträge erstellen und überwachen.
 
-1. Öffnen Sie *…\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* in der **PowerShell ISE** .
+1. Öffnen Sie *…\\Learning Modules\\Schema Management\\Demo-SchemaManagement.ps1* in der **PowerShell ISE**.
 2. Drücken Sie **F5** , um das Skript auszuführen.
 
 Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.ps1* auf, um eine Datenbank namens _jobagent_ auf dem Katalogserver zu erstellen. Das Skript erstellt dann den Auftrags-Agent, und übergibt die Datenbank _jobagent_ als Parameter.
@@ -84,7 +84,7 @@ Das Skript *Demo-SchemaManagement.ps1* ruft das Skript *Deploy-SchemaManagement.
 
 #### <a name="prepare"></a>Vorbereiten
 
-Jede Mandantendatenbank enthält in der Tabelle **VenueTypes** eine Gruppe von Veranstaltungsorttypen. Jeder Typ definiert eine bestimmte Art von Ereignissen, die an einem Veranstaltungsort präsentiert werden können. Diese Veranstaltungsorttypen entsprechen den Hintergrundbildern, die in der Mandantenereignis-App angezeigt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Datenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club* .
+Jede Mandantendatenbank enthält in der Tabelle **VenueTypes** eine Gruppe von Veranstaltungsorttypen. Jeder Typ definiert eine bestimmte Art von Ereignissen, die an einem Veranstaltungsort präsentiert werden können. Diese Veranstaltungsorttypen entsprechen den Hintergrundbildern, die in der Mandantenereignis-App angezeigt werden.  In dieser Übung stellen Sie eine Aktualisierung für alle Datenbanken bereit, wobei zwei weitere Veranstaltungsorttypen hinzugefügt werden: *Motorcycle Racing* und *Swimming Club*.
 
 Prüfen Sie zunächst die in jeder Mandantendatenbank enthaltenen Veranstaltungsorttypen. Stellen Sie in SQL Server Management Studio (SSMS) eine Verbindung mit einer der Mandantendatenbanken her, und überprüfen Sie die Tabelle VenueTypes.  Sie können diese Tabelle auch im Azure-Portal im Abfrage-Editor abfragen, den Sie über die Seite „Datenbank“ aufrufen können.
 
@@ -101,15 +101,15 @@ Zum Erstellen eines neuen Auftrags verwenden Sie die Gruppe der im System gespei
 
 1. Stellen Sie in SSMS eine Verbindung mit dem Mandantenserver her: tenants1-mt-&lt;Benutzer&gt;.database.windows.net
 
-2. Navigieren Sie zur Datenbank *tenants1* .
+2. Navigieren Sie zur Datenbank *tenants1*.
 
 3. Fragen Sie die Tabelle *VenueTypes* ab, um sich zu überzeugen, dass *Motorcycle Racing* und *Swimming Club* noch nicht in der Ergebnisliste erscheinen.
 
-4. Stellen Sie eine Verbindung mit dem Katalogserver her. Dieser lautet *catalog-mt-&lt;Benutzer&gt;.database.windows.net* .
+4. Stellen Sie eine Verbindung mit dem Katalogserver her. Dieser lautet *catalog-mt-&lt;Benutzer&gt;.database.windows.net*.
 
 5. Stellen Sie eine Verbindung zur Datenbank _jobagent_  auf dem Katalogserver her.
 
-6. Öffnen Sie in SSMS die Datei *…\\Learning Modules\\Schema Management\\DeployReferenceData.sql* .
+6. Öffnen Sie in SSMS die Datei *…\\Learning Modules\\Schema Management\\DeployReferenceData.sql*.
 
 7. Ändern Sie die Anweisung „set @User = &lt;Benutzer&gt;“, und ersetzen Sie den Wert „Benutzer“ durch den Benutzer, der beim Bereitstellen der mehrinstanzenfähigen Wingtip Tickets-SaaS-Datenbankanwendung verwendet wurde.
 
@@ -117,7 +117,7 @@ Zum Erstellen eines neuen Auftrags verwenden Sie die Gruppe der im System gespei
 
 #### <a name="observe"></a>Beobachen
 
-Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql* :
+Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql*:
 
 - **sp\_add\_target\_group** erstellt den Zielgruppennamen *DemoServerGroup* und fügt Zielmember zur Gruppe hinzu.
 
@@ -125,8 +125,8 @@ Beachten Sie die folgenden Elemente im Skript *DeployReferenceData.sql* :
     - Einen Zielmembertyp *server*
         - Dies ist der Server *tenants1-mt-&lt;Benutzer&gt;* , der die Mandantendatenbanken enthält.
         - Durch das Einschließen des Servers werden auch die Mandantendatenbanken einbezogen, die zum Zeitpunkt der Auftragsausführung vorhanden sind.
-    - Einen Zielmembertyp *database* für die Vorlagedatenbank ( *basetenantdb* ), die sich auf dem Server *catalog-mt-&lt;Benutzer&gt;* befindet
-    - Einen Zielmembertyp *database* , der die in einem späteren Tutorial verwendete Datenbank *adhocreporting* enthält
+    - Einen Zielmembertyp *database* für die Vorlagedatenbank (*basetenantdb*), die sich auf dem Server *catalog-mt-&lt;Benutzer&gt;* befindet
+    - Einen Zielmembertyp *database*, der die in einem späteren Tutorial verwendete Datenbank *adhocreporting* enthält
 
 - **sp\_add\_job** erstellt einen Auftrag mit dem Namen *Reference Data Deployment* (Verweisdatenbereitstellung).
 
@@ -148,13 +148,13 @@ In dieser Übung wird ein Auftrag erstellt, um den Index für den Primärschlüs
 
 #### <a name="observe"></a>Beobachen
 
-Beachten Sie folgende Elemente im Skript *OnlineReindex.sql* :
+Beachten Sie folgende Elemente im Skript *OnlineReindex.sql*:
 
-* **sp\_add\_job** erstellt einen neuen Auftrag mit dem Namen *Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885* .
+* **sp\_add\_job** erstellt einen neuen Auftrag mit dem Namen *Online Reindex PK\_\_VenueTyp\_\_265E44FD7FD4C885*.
 
 * **sp\_add\_jobstep** erstellt den Auftragsschritt mit dem T-SQL-Befehlstext zum Aktualisieren des Index.
 
-* Die verbleibenden Ansichten im Skript überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der **lifecycle** -Spalte zu überprüfen und zu ermitteln, wann der Auftrag für alle Zielgruppenelemente erfolgreich abgeschlossen wurde.
+* Die verbleibenden Ansichten im Skript überwachen die Auftragsausführung. Verwenden Sie diese Abfragen, um den Statuswert in der **lifecycle**-Spalte zu überprüfen und zu ermitteln, wann der Auftrag für alle Zielgruppenelemente erfolgreich abgeschlossen wurde.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
