@@ -1,22 +1,22 @@
 ---
 title: Einrichten der Python-Entwicklungsumgebung
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie eine Python-Entwicklungsumgebung für Azure Machine Learning einrichten. Verwenden Sie Conda-Umgebungen, erstellen Sie Konfigurationsdateien und konfigurieren Sie Ihren eigenen cloudbasierten Notebook-Server sowie Ihre eigenen Jupyter Notebooks, Azure Databricks, IDEs und Code-Editoren und die Data Science Virtual Machine.
+description: Hier erfahren Sie, wie Sie Python-Entwicklungsumgebungen für Azure Machine Learning in Jupyter Notebooks, Visual Studio Code, Azure Databricks und Data Science Virtual Machines einrichten.
 services: machine-learning
 author: rastala
 ms.author: roastala
 ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
-ms.date: 09/30/2020
+ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 451ad33a9d041635c3f51e323539b423378d02d1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 03d10f71b585090157eff164cc98246f50608fe1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422897"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96018782"
 ---
 # <a name="set-up-a-python-development-environment-for-azure-machine-learning"></a>Einrichten einer Python-Entwicklungsumgebung für Azure Machine Learning
 
@@ -216,5 +216,5 @@ Weitere Informationen finden Sie unter [Data Science Virtual Machines](https://a
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Trainieren eines Modells](tutorial-train-models-with-aml.md) in Azure Machine Learning mit dem MNIST-Dataset
-- Referenz zum [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py) 
+- [Trainieren Sie ein Modell](tutorial-train-models-with-aml.md) in Azure Machine Learning mit dem MNIST-Dataset.
+- Weitere Informationen erhalten Sie in der [Referenz zum Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py). 

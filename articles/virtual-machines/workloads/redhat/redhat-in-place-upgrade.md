@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 48884e6faa5f26f027c772b44d5f960979a40d1d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: beede74134affeb3ee0d4bdd20d5da3b4c5e6eda
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94447486"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566621"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Direkte Upgrades für Red Hat Enterprise Linux
 
@@ -22,10 +22,12 @@ Dieser Artikel enthält schrittweise Anweisungen zur Durchführung eines direkte
 > Angebote von SQL Server auf Red Hat Enterprise Linux unterstützen kein direktes Upgrade auf Azure.
 
 ## <a name="what-to-expect-during-the-upgrade"></a>Erwartungen während des Upgrades
-Das System wird während des Upgrades einige Male neu gestartet, und das ist normal. Beim letzten Neustart wird ein Upgrade der VM auf die neueste Nebenversion von RHEL 8 durchgeführt.
+Das System wird während des Upgrades einige Male neu gestartet, und das ist normal. Beim letzten Neustart wird ein Upgrade der VM auf die neueste Nebenversion von RHEL 8 durchgeführt. 
+
+Der Upgradevorgang kann zwischen 20 Minuten und einigen Stunden dauern. Dies hängt von mehreren Faktoren ab, z. B. von der VM-Größe und der Anzahl der auf dem System installierten Pakete.
 
 ## <a name="preparations-for-the-upgrade"></a>Vorbereitungen für das Upgrade
-Direkte Upgrades sind die offiziell empfohlene Methode von Red Hat und Azure, um Kunden ein Upgrade Ihres Systems auf die nächste Hauptversion zu ermöglichen. Bevor Sie das Upgrade durchführen, sollten Sie einige Aspekte beachten und in Betracht ziehen. 
+Direkte Upgrades sind die offiziell empfohlene Methode von Red Hat und Azure, um Kunden ein Upgrade ihres Systems auf die nächste Hauptversion zu ermöglichen. Bevor Sie das Upgrade durchführen, sollten Sie einige Aspekte beachten und in Betracht ziehen. 
 
 >[!Important] 
 > Erstellen Sie eine Momentaufnahme des Images, bevor Sie das Upgrade durchführen.
@@ -39,6 +41,12 @@ Direkte Upgrades sind die offiziell empfohlene Methode von Red Hat und Azure, um
     ```bash
     leapp preupgrade --no-rhsm
     ```
+* Vergewissern Sie sich, dass die serielle Konsole funktioniert, da dies eine Überwachung während des Upgradeprozesses ermöglicht.
+
+* Aktivieren des SSH-Root-Zugriffs in `/etc/ssh/sshd_config`
+    1. Öffnen Sie die Datei `/etc/ssh/sshd_config`.
+    1. Suchen Sie nach „#PermitRootLogin yes“.
+    1. Entfernen Sie das „#“ zum Aufheben der Auskommentierung.
 
 ## <a name="steps-for-performing-the-upgrade"></a>Schritte zum Durchführen des Upgrades
 
@@ -46,7 +54,7 @@ Führen Sie diese Schritte sorgfältig aus. Es wird auf jeden Fall empfohlen, da
 
 1. Führen Sie ein yum-Update durch, um die neuesten Clientpakete abzurufen.
     ```bash
-    yum update
+    yum update -y
     ```
 
 1. Installieren Sie das leapp-Clientpaket.
@@ -58,35 +66,66 @@ Führen Sie diese Schritte sorgfältig aus. Es wird auf jeden Fall empfohlen, da
     1. Laden Sie die Datei herunter.
     1. Extrahieren Sie den Inhalt, und entfernen Sie die Datei mithilfe des folgenden Befehls:
     ```bash
-     tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
+    tar -xzf leapp-data12.tar.gz -C /etc/leapp/files && rm leapp-data12.tar.gz
     ```
-    
-
 
 1. Fügen Sie die Datei „answers“ für Leapp hinzu.
     ```bash
     leapp answer --section remove_pam_pkcs11_module_check.confirm=True --add
-    ```
-    
-1. Aktivieren Sie „PermitRootLogin“ in „/etc/ssh/sshd_config“.
-    1. Öffnen Sie die Datei „/etc/ssh/sshd_config“.
-    1. Suchen Sie nach „#PermitRootLogin yes“.
-    1. Entfernen Sie das „#“ zum Aufheben der Auskommentierung.
-
-
+    ``` 
 
 1. Führen Sie das Upgrade für Leapp durch.
     ```bash
     leapp upgrade --no-rhsm
     ```
+1.  Nachdem der `leapp upgrade`-Befehl erfolgreich ausgeführt wurde, starten Sie das System manuell neu, um den Vorgang abzuschließen. Das System wird mehrmals neu gestartet und steht währenddessen nicht zur Verfügung. Überwachen Sie den Prozess mithilfe der seriellen Konsole.
+
+1.  Vergewissern Sie sich, dass das Upgrade erfolgreich abgeschlossen wurde.
+    ```bash
+    uname -a && cat /etc/redhat-release
+    ```
+
+1. Entfernen Sie den SSH-Root-Zugriff, nachdem das Upgrade ausgeführt wurde.
+    1. Öffnen Sie die Datei `/etc/ssh/sshd_config`.
+    1. Suchen Sie nach „#PermitRootLogin yes“.
+    1. Fügen Sie das „#“ zum Kommentar hinzu.
+
 1. Starten Sie den sshd-Dienst neu, damit die Änderungen wirksam werden.
     ```bash
     systemctl restart sshd
     ```
-1. Kommentieren Sie „PermitRootLogin“ in „/etc/ssh/sshd_config“ erneut aus.
-    1. Öffnen Sie die Datei „/etc/ssh/sshd_config“.
-    1. Suchen Sie nach „#PermitRootLogin yes“.
-    1. Fügen Sie das „#“ zum Kommentar hinzu.
+
+## <a name="common-issues"></a>Häufige Probleme
+Im Folgenden finden Sie einige der häufigen Fälle, in denen beim Prozess `leapp preupgrade` oder `leapp upgrade` ein Fehler auftritt.
+
+**Error: Keine Übereinstimmungen für die folgenden Muster für deaktivierte Plug-Ins gefunden**
+```plaintext
+STDERR:
+No matches found for the following disabled plugin patterns: subscription-manager
+Warning: Packages marked by Leapp for upgrade not found in repositories metadata: gpg-pubkey
+```
+**Lösung**\
+Deaktivieren Sie das Abonnement-Manager-Plug-In, indem Sie die Datei `/etc/yum/pluginconf.d/subscription-manager.conf` bearbeiten und „enabled“ in `enabled=0` ändern.
+
+Dieser Fehler tritt auf, weil das Abonnement-Manager-yum-Plug-In aktiviert ist, das für PAYG-VMs nicht verwendet wird.
+
+**Error: Mögliche Probleme bei der Remoteanmeldung mithilfe von root** Bei `leapp preupgrade` kann der folgende Fehler auftreten:
+```structured-text
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+
+Upgrade has been inhibited due to the following problems:
+    1. Inhibitor: Possible problems with remote login using root account
+Consult the pre-upgrade report for details and possible remediation.
+
+============================================================
+                     UPGRADE INHIBITED
+============================================================
+```
+**Lösung**\
+Aktivieren Sie den Root-Zugriff in `/etc/sshd_conf`.
+Dieser Fehler wird dadurch verursacht, dass der Root-SSH-Zugriff in `/etc/sshd_conf` nicht gemäß der Beschreibung unter [Vorbereitungen für das Upgrade](#preparations-for-the-upgrade) aktiviert wurde. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 * Erfahren Sie mehr über die [Red Hat-Images in Azure](./redhat-images.md).

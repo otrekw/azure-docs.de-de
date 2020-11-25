@@ -6,12 +6,12 @@ author: gundarev
 ms.topic: conceptual
 ms.date: 11/16/2020
 ms.author: denisgun
-ms.openlocfilehash: ee37ab90910058378172223a3435047346f5fe7c
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 6ffe631dc237e7efaf1d6bfd9ac79ab7431c7371
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701782"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023138"
 ---
 # <a name="windows-virtual-desktop-rdp-shortpath-preview"></a>Windows Virtual Desktop – RDP Shortpath (Vorschau)
 
@@ -36,7 +36,7 @@ RDP Shortpath ergänzt die RDP-Mehrfachtransportfunktionen. Es soll den Reverse
 
 UDP-Port 3390 wird nur für den eingehenden Shortpath-Datenverkehr verwendet, der über den Reverse Connection-Transport authentifiziert wird. Der RDP Shortpath-Listener ignoriert alle Verbindungsversuche mit dem Listener, solange sie nicht zu der Reverse Connection-Sitzung passen.
 
-RDP Shortpath verwendet eine TLS-Verbindung zwischen Client und Sitzungshost und nutzt dafür die Zertifikate des Sitzungshosts. Standardmäßig wird das Zertifikat, das für die RDP-Verschlüsselung verwendet wird, vom Betriebssystem bei der Bereitstellung selbst generiert. Bei Bedarf können Kunden zentral verwaltete Zertifikate bereitstellen, die von der Unternehmenszertifizierungsstelle ausgestellt werden. Weitere Informationen zur Konfiguration von Zertifikaten finden Sie in der [Windows Server-Dokumentation](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations.md).
+RDP Shortpath verwendet eine TLS-Verbindung zwischen Client und Sitzungshost und nutzt dafür die Zertifikate des Sitzungshosts. Standardmäßig wird das Zertifikat, das für die RDP-Verschlüsselung verwendet wird, vom Betriebssystem bei der Bereitstellung selbst generiert. Bei Bedarf können Kunden zentral verwaltete Zertifikate bereitstellen, die von der Unternehmenszertifizierungsstelle ausgestellt werden. Weitere Informationen zur Konfiguration von Zertifikaten finden Sie in der [Windows Server-Dokumentation](/troubleshoot/windows-server/remote/remote-desktop-listener-certificate-configurations).
 
 ## <a name="rdp-shortpath-connection-sequence"></a>RDP Shortpath-Verbindungssequenz
 
@@ -53,7 +53,7 @@ Das folgende Diagramm bietet eine allgemeine Übersicht über die RDP Shortpath
 
 :::image type="content" source="media/rdp-shortpath-connections.svg" alt-text="Diagramm der RDP Shortpath-Netzwerkverbindungen" lightbox="media/rdp-shortpath-connections.svg":::
 
-## <a name="requirements"></a>Anforderungen
+## <a name="requirements"></a>Requirements (Anforderungen)
 
 Zur Unterstützung von RDP Shortpath muss der virtuelle Windows Virtual Desktop-Client über eine direkte Sichtverbindung zum Sitzungshost verfügen. Eine direkte Sichtverbindung können Sie mit einer der folgenden Technologien herstellen:
 
@@ -187,7 +187,7 @@ Mögliche Werte sind:
 * **0**: Benutzerverbindung verwendet RDP Shortpath nicht
 * **1**: Benutzerverbindung verwendet RDP Shortpath
   
-Mit der folgenden Abfrageliste können Sie Verbindungsinformationen überprüfen. Sie können diese Abfrage im [Log Analytics-Abfrage-Editor](../azure-monitor/log-query/get-started-portal.md#write-and-run-basic-queries) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
+Mit der folgenden Abfrageliste können Sie Verbindungsinformationen überprüfen. Sie können diese Abfrage im [Log Analytics-Abfrage-Editor](../azure-monitor/log-query/log-analytics-tutorial.md#write-a-query) ausführen. Ersetzen Sie für jede Abfrage `userupn` durch den UPN des Benutzers, den Sie suchen möchten.
 
 ```kusto
 let Events = WVDConnections | where UserName == "userupn" ;

@@ -2,15 +2,15 @@
 title: Übersicht der Vorlagenspezifikationen
 description: Beschreibt, wie Sie Vorlagenspezifikationen erstellen und diese mit anderen Benutzern in Ihrer Organisation teilen.
 ms.topic: conceptual
-ms.date: 10/02/2020
+ms.date: 11/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 83d5a210a5af538173ad0ca5e4c718363639c40a
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91728470"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747399"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager-Vorlagenspezifikationen (Vorschau)
 
@@ -21,7 +21,7 @@ Eine Vorlagenspezifikation ist ein Ressourcentyp zum Speichern einer Azure Resou
 Zum Bereitstellen der Vorlagenspezifikation verwenden Sie Azure-Standardtools wie PowerShell, Azure CLI, Azure-Portal, REST und andere unterstützte SDKs und Clients. Sie verwenden dieselben Befehle wie für die Vorlage.
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Um sie zu verwenden, müssen Sie sich [für die Warteliste registrieren](https://aka.ms/templateSpecOnboarding).
+> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zu ihrer Verwendung müssen Sie die aktuelle Version von PowerShell oder der Azure CLI installieren. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
 
 ## <a name="why-use-template-specs"></a>Gründe zur Verwendung von Vorlagenspezifikationen
 
@@ -126,7 +126,7 @@ az ts show \
 
 ## <a name="deploy-template-spec"></a>Bereitstellen von Vorlagenspezifikationen
 
-Nachdem Sie die Vorlagenspezifikation erstellt haben, können Benutzer mit **Lese**zugriff auf die Vorlagenspezifikation diese bereitstellen. Informationen zum Erteilen von Zugriffsberechtigungen finden Sie unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mithilfe von Azure PowerShell](../../role-based-access-control/tutorial-role-assignments-group-powershell.md).
+Nachdem Sie die Vorlagenspezifikation erstellt haben, können Benutzer mit **Lese** zugriff auf die Vorlagenspezifikation diese bereitstellen. Informationen zum Erteilen von Zugriffsberechtigungen finden Sie unter [Tutorial: Gewähren des Zugriffs auf Azure-Ressourcen für eine Gruppe mithilfe von Azure PowerShell](../../role-based-access-control/tutorial-role-assignments-group-powershell.md).
 
 Vorlagenspezifikationen können über das Portal, mittels PowerShell, Azure CLI oder als verknüpfte Vorlage in einer größeren Vorlagenbereitstellung bereitgestellt werden. Benutzer in einer Organisation können eine Vorlagenspezifikation in einem beliebigen Bereich in Azure (Ressourcengruppe, Abonnement, Verwaltungsgruppe oder Mandant) bereitstellen.
 

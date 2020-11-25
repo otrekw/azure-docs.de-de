@@ -8,16 +8,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/03/2020
-ms.openlocfilehash: 0bf1611dee2b3f7f9a3059e3118ddbf08c00f886
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 207679ad5b508b687c9cad372d144839fcaa501d
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342788"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94743846"
 ---
 # <a name="quickstart-transform-data-using-mapping-data-flows"></a>Schnellstart: Transformieren von Daten mithilfe von Mapping Data Flow
 
-In dieser Schnellstartanleitung wird Azure Synapse Analytics verwendet, um eine Pipeline zu erstellen, die Daten unter Verwendung eines Zuordnungsdatenflusses von einer ADLS Gen2-Quelle (Azure Data Lake Storage) in eine ADLS Gen2-Senke transformiert. Das Konfigurationsmuster in dieser Schnellstartanleitung kann beim Transformieren von Daten per Zuordnungsdatenfluss erweitert werden.
+In dieser Schnellstartanleitung wird Azure Synapse Analytics verwendet, um eine Pipeline zu erstellen, die Daten unter Verwendung eines Zuordnungsdatenflusses von einer ADLS Gen2-Quelle (Azure Data Lake Storage Gen2) in eine ADLS Gen2-Senke transformiert. Das Konfigurationsmuster in dieser Schnellstartanleitung kann beim Transformieren von Daten per Zuordnungsdatenfluss erweitert werden.
 
 Diese Schnellstartanleitung umfasst folgende Schritte:
 
@@ -29,9 +29,9 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* **Azure-Abonnement** : Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
-* **Azure Synapse-Arbeitsbereich** : Befolgen Sie zum Erstellen eines Synapse-Arbeitsbereichs mithilfe des Azure-Portals die Anweisungen unter [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](quickstart-create-workspace.md).
-* **Azure-Speicherkonto** : Hier wird ADLS-Speicher als *Quelldatenspeicher* und *Senkendatenspeicher* verwendet. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
+* **Azure-Abonnement**: Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
+* **Azure Synapse-Arbeitsbereich**: Befolgen Sie zum Erstellen eines Synapse-Arbeitsbereichs mithilfe des Azure-Portals die Anweisungen unter [Schnellstart: Erstellen eines Synapse-Arbeitsbereichs](quickstart-create-workspace.md).
+* **Azure-Speicherkonto**: Hier wird ADLS-Speicher als *Quelldatenspeicher* und *Senkendatenspeicher* verwendet. Wenn Sie kein Speicherkonto besitzen, finden Sie unter [Informationen zu Azure-Speicherkonten](../storage/common/storage-account-create.md) Schritte zum Erstellen eines solchen Kontos.
 
     Die Datei, die in diesem Tutorial transformiert wird, ist „MoviesDB.csv“, die sich [hier](https://raw.githubusercontent.com/djpmsft/adf-ready-demo/master/moviesDB.csv) befindet. Zum Abrufen der Datei aus GitHub kopieren Sie den Inhalt in einen Text-Editor Ihrer Wahl, und speichern Sie ihn lokal als CSV-Datei. Wenn Sie die Datei in Ihr Speicherkonto hochladen möchten, finden Sie Informationen dazu unter [Hochladen von Blobs mit dem Azure-Portal](../storage/blobs/storage-quickstart-blobs-portal.md). In den Beispielen wird auf einen Container mit dem Namen „sample-data“ verwiesen.
 
@@ -39,7 +39,7 @@ Diese Schnellstartanleitung umfasst folgende Schritte:
 
 Nachdem Ihr Azure Synapse-Arbeitsbereich erstellt wurde, haben Sie zwei Möglichkeiten zum Öffnen von Synapse Studio:
 
-* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://ms.portal.azure.com/#home). Wählen Sie oben im Abschnitt Übersicht die Option **Synapse Studio starten** aus.
+* Öffnen Sie Ihren Synapse-Arbeitsbereich im [Azure-Portal](https://ms.portal.azure.com/#home). Wählen Sie unter „Erste Schritte“ auf der Karte „Synapse Studio öffnen“ die Option **Öffnen** aus.
 * Öffnen Sie [Azure Synapse Analytics](https://web.azuresynapse.net/), und melden Sie sich bei Ihrem Arbeitsbereich an.
 
 In dieser Schnellstartanleitung wird der Arbeitsbereich „adftest2020“ als Beispiel verwendet. Sie werden automatisch zur Startseite von Synapse Studio weitergeleitet.
@@ -74,7 +74,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
 1. Fügen Sie auf der Datenflusscanvas eine Quelle hinzu, indem Sie auf das Feld **Quelle hinzufügen** klicken.
 
-1. Geben Sie der Quelle den Namen **MoviesDB**. Klicken Sie auf **Neu** , um ein neues Quelldataset zu erstellen.
+1. Geben Sie der Quelle den Namen **MoviesDB**. Klicken Sie auf **Neu**, um ein neues Quelldataset zu erstellen.
 
     ![Erstellen eines neuen Quelldatasets](media/quickstart-data-flow/new-source-dataset.png)
 
@@ -86,7 +86,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
 1. Geben Sie dem Dataset den Namen **MoviesDB**. Wählen Sie in der Dropdownliste für den verknüpften Dienst die Option **Neu** aus.
 
-1. Geben Sie im Erstellungsbildschirm für verknüpfte Dienste dem verknüpften ADLS Gen2-Dienst den Namen **ADLSGen2** , und geben Sie Ihre Authentifizierungsmethode an. Dann geben Sie Ihre Verbindungsanmeldeinformationen ein. In dieser Schnellstartanleitung wird „Kontoschlüssel“ verwendet, um eine Verbindung mit dem Speicherkonto herzustellen. Sie können auf **Verbindung testen** klicken, um zu überprüfen, ob Ihre Anmeldeinformationen korrekt eingegeben wurden. Klicken Sie auf **Erstellen** , nachdem der Vorgang abgeschlossen wurde.
+1. Geben Sie im Erstellungsbildschirm für verknüpfte Dienste dem verknüpften ADLS Gen2-Dienst den Namen **ADLSGen2**, und geben Sie Ihre Authentifizierungsmethode an. Dann geben Sie Ihre Verbindungsanmeldeinformationen ein. In dieser Schnellstartanleitung wird „Kontoschlüssel“ verwendet, um eine Verbindung mit dem Speicherkonto herzustellen. Sie können auf **Verbindung testen** klicken, um zu überprüfen, ob Ihre Anmeldeinformationen korrekt eingegeben wurden. Klicken Sie auf **Erstellen**, nachdem der Vorgang abgeschlossen wurde.
 
     ![Erstellen eines neuen verknüpften Quelldiensts](media/quickstart-data-flow/adls-gen2-linked-service.png)
 
@@ -94,7 +94,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     ![Einstellungen des Quelldatasets](media/quickstart-data-flow/source-dataset-properties.png)
 
-1. Wenn Ihr Debugcluster gestartet wurde, wechseln Sie zur Registerkarte **Datenvorschau** der Quelltransformation, und klicken Sie auf **Aktualisieren** , um eine Momentaufnahme der Daten zu erhalten. Mithilfe der Datenvorschau können Sie überprüfen, ob die Transformation ordnungsgemäß konfiguriert ist.
+1. Wenn Ihr Debugcluster gestartet wurde, wechseln Sie zur Registerkarte **Datenvorschau** der Quelltransformation, und klicken Sie auf **Aktualisieren**, um eine Momentaufnahme der Daten zu erhalten. Mithilfe der Datenvorschau können Sie überprüfen, ob die Transformation ordnungsgemäß konfiguriert ist.
 
     ![Datenvorschau](media/quickstart-data-flow/data-preview.png)
 
@@ -102,7 +102,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     ![Hinzufügen eines Filters](media/quickstart-data-flow/add-filter.png)
 
-1. Geben Sie der Filtertransformation den Namen **FilterYears**. Klicken Sie auf das Ausdrucksfeld neben **Filtern nach** , um den Ausdrucks-Generator zu öffnen. Hier geben Sie dann die Filterbedingung an.
+1. Geben Sie der Filtertransformation den Namen **FilterYears**. Klicken Sie auf das Ausdrucksfeld neben **Filtern nach**, um den Ausdrucks-Generator zu öffnen. Hier geben Sie dann die Filterbedingung an.
 
 1. Mit dem Datenfluss-Ausdrucks-Generator können Sie Ausdrücke interaktiv erstellen, die dann in verschiedenen Transformationen verwendet werden können. Ausdrücke können integrierte Funktionen, Spalten aus dem Eingabeschema und benutzerdefinierte Parameter enthalten. Weitere Informationen zum Erstellen von Ausdrücken finden Sie unter [Mapping Data Flow: Ausdrucks-Generator](https://docs.microsoft.com/azure/data-factory/concepts-data-flow-expression-builder?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
@@ -116,13 +116,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     ![Angeben der Filterbedingung](media/quickstart-data-flow/visual-expression-builder.png)
 
-    Wenn ein Debugcluster aktiv ist, können Sie die Logik überprüfen. Klicken Sie dazu auf **Aktualisieren** , um die Ausdrucksausgabe im Vergleich zu den verwendeten Eingaben anzuzeigen. Es gibt mehrere Möglichkeiten, wie Sie diese Logik mithilfe der Ausdruckssprache für Datenflüsse erzielen können.
+    Wenn ein Debugcluster aktiv ist, können Sie die Logik überprüfen. Klicken Sie dazu auf **Aktualisieren**, um die Ausdrucksausgabe im Vergleich zu den verwendeten Eingaben anzuzeigen. Es gibt mehrere Möglichkeiten, wie Sie diese Logik mithilfe der Ausdruckssprache für Datenflüsse erzielen können.
 
     Sobald Sie den Ausdruck fertiggestellt haben, klicken Sie auf **Speichern und beenden**.
 
 1. Rufen Sie eine **Datenvorschau** ab, um zu überprüfen, ob der Filter ordnungsgemäß funktioniert.
 
-1. Als nächste Transformation fügen Sie eine **Aggregat** -Transformation unter **Schemamodifizierer** hinzu.
+1. Als nächste Transformation fügen Sie eine **Aggregat**-Transformation unter **Schemamodifizierer** hinzu.
 
     ![Hinzufügen eines Aggregats](media/quickstart-data-flow/add-aggregate.png)
 
@@ -142,7 +142,7 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     ![Durchschnittliche Bewertung für Komödie](media/quickstart-data-flow/average-comedy-rating.png)
 
-1. Wechseln Sie zur Registerkarte **Datenvorschau** , um die Transformationsausgabe anzuzeigen. Es sind nur zwei Spalten vorhanden: **year** und **AverageComedyRating**.
+1. Wechseln Sie zur Registerkarte **Datenvorschau**, um die Transformationsausgabe anzuzeigen. Es sind nur zwei Spalten vorhanden: **year** und **AverageComedyRating**.
 
     ![Vorschau der aggregierten Daten](media/quickstart-data-flow/transformation-output.png)
 
@@ -150,13 +150,13 @@ Sobald Sie den Datenfluss erstellen, werden Sie automatisch zur Datenflusscanvas
 
     ![Hinzufügen einer Senke](media/quickstart-data-flow/add-sink.png)
 
-1. Geben Sie der Senke den Namen **Sink**. Klicken Sie auf **Neu** , um das Senkendataset zu erstellen.
+1. Geben Sie der Senke den Namen **Sink**. Klicken Sie auf **Neu**, um das Senkendataset zu erstellen.
 
 1. Wählen Sie **Azure Data Lake Storage Gen2** aus. Klicken Sie auf „Weiter“.
 
 1. Wählen Sie **DelimitedText** aus. Klicken Sie auf „Weiter“.
 
-1. Geben Sie dem Senkendataset den Namen **MoviesSink**. Wählen Sie als verknüpften Dienst den verknüpften ADLS Gen2-Dienst aus, den Sie in Schritt 7 erstellt haben. Geben Sie einen Ausgabeordner ein, in den die Daten geschrieben werden sollen. In dieser Schnellstartanleitung wird in den Ordner „output“ im Container „sample-data“ geschrieben. Der Ordner muss nicht vorab vorhanden sein und kann dynamisch erstellt werden. Aktivieren Sie das Kontrollkästchen **Erste Zeile als Header** , und wählen Sie für **Schema importieren** die Option **Kein** aus. Klicken Sie nach Abschluss des Vorgangs auf **OK**.
+1. Geben Sie dem Senkendataset den Namen **MoviesSink**. Wählen Sie als verknüpften Dienst den verknüpften ADLS Gen2-Dienst aus, den Sie in Schritt 7 erstellt haben. Geben Sie einen Ausgabeordner ein, in den die Daten geschrieben werden sollen. In dieser Schnellstartanleitung wird in den Ordner „output“ im Container „sample-data“ geschrieben. Der Ordner muss nicht vorab vorhanden sein und kann dynamisch erstellt werden. Aktivieren Sie das Kontrollkästchen **Erste Zeile als Header**, und wählen Sie für **Schema importieren** die Option **Kein** aus. Klicken Sie nach Abschluss des Vorgangs auf **OK**.
 
     ![Eigenschaften des Senkendatasets](media/quickstart-data-flow/sink-dataset-properties.png)
 
@@ -166,7 +166,7 @@ Sie haben nun die Erstellung des Datenflusses beendet. Jetzt können Sie ihn in 
 
 Sie können eine Pipeline vor der Veröffentlichung debuggen. In diesem Schritt lösen Sie eine Debugausführung der Datenflusspipeline aus. Während bei der Datenvorschau keine Daten geschrieben werden, werden bei einer Debugausführung Daten in das Senkenziel geschrieben.
 
-1. Wechseln Sie zur Pipelinecanvas. Klicken Sie auf **Debuggen** , um eine Debugausführung auszulösen.
+1. Wechseln Sie zur Pipelinecanvas. Klicken Sie auf **Debuggen**, um eine Debugausführung auszulösen.
 
     ![Debuggen der Pipeline](media/quickstart-data-flow/debug-pipeline.png)
 

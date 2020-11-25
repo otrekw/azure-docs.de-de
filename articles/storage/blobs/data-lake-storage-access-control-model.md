@@ -5,14 +5,14 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/10/2020
 ms.author: normesta
-ms.openlocfilehash: 099d79e63795a88a66ef1ec65aa1bfd97037191e
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a5cdeba654440e666bc79df361b3f90db8a73b0a
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92134105"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94578647"
 ---
 # <a name="access-control-model-in-azure-data-lake-storage-gen2"></a>Zugriffssteuerungsmodell in Azure Data Lake Storage Gen2
 
@@ -43,7 +43,7 @@ Die folgenden Rollen ermöglichen einem Sicherheitsprinzipal den Zugriff auf Dat
 | [Mitwirkender an Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) | Lesen, Schreiben und Löschen von Blobspeichercontainern und -blobs. Dieser Zugriff gestattet es dem Sicherheitsprinzipal nicht, den Besitzer eines Elements festzulegen, er kann jedoch die ACL von Elementen ändern, deren Besitzer der Sicherheitsprinzipal ist. |
 | [Leser von Speicherblobdaten](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) | Lesen und Auflisten von Blobspeichercontainern und -blobs. |
 
-Rollen wie [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) und [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) gestatten einem Sicherheitsprinzipal die Verwaltung eines Speicherkontos, gewähren jedoch keinen Zugriff auf Daten in diesem Konto. Allerdings können diese Rollen (mit Ausnahme von **Leser** ) Zugriff auf die Speicherschlüssel erhalten, die in verschiedenen Clienttools für den Datenzugriff verwendet werden können.
+Rollen wie [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner), [Mitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor), [Leser](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#reader) und [Speicherkontomitwirkender](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-account-contributor) gestatten einem Sicherheitsprinzipal die Verwaltung eines Speicherkontos, gewähren jedoch keinen Zugriff auf Daten in diesem Konto. Allerdings können diese Rollen (mit Ausnahme von **Leser**) Zugriff auf die Speicherschlüssel erhalten, die in verschiedenen Clienttools für den Datenzugriff verwendet werden können.
 
 ## <a name="access-control-lists-acls"></a>Zugriffssteuerungslisten (ACLs)
 
@@ -62,7 +62,7 @@ Während der auf Sicherheitsprinzipalen beruhenden Autorisierung werden Berechti
 > [!div class="mx-imgBorder"]
 > ![Berechtigungsflow für Data Lake Storage](./media/control-access-permissions-data-lake-storage/data-lake-storage-permissions-flow.png)
 
-Aufgrund der Art und Weise, wie Zugriffsberechtigungen vom System ausgewertet werden, können Sie **keine** ACL verwenden, um den Zugriff **einzuschränken** , der bereits durch eine Rollenzuweisung gewährt wurde. Der Grund hierfür ist, dass das System die Azure RBAC-Rollenzuweisungen zuerst auswertet. Wenn die Zuweisung ausreichende Zugriffsberechtigungen gewährt, werden ACLs ignoriert. 
+Aufgrund der Art und Weise, wie Zugriffsberechtigungen vom System ausgewertet werden, können Sie **keine** ACL verwenden, um den Zugriff **einzuschränken**, der bereits durch eine Rollenzuweisung gewährt wurde. Der Grund hierfür ist, dass das System die Azure RBAC-Rollenzuweisungen zuerst auswertet. Wenn die Zuweisung ausreichende Zugriffsberechtigungen gewährt, werden ACLs ignoriert. 
 
 Das folgende Diagramm zeigt den Berechtigungsflow für drei häufige Vorgänge: Auflisten von Verzeichnisinhalten, Lesen einer Datei und Schreiben einer Datei.
 
@@ -71,7 +71,7 @@ Das folgende Diagramm zeigt den Berechtigungsflow für drei häufige Vorgänge: 
 
 ## <a name="permissions-table-combining-azure-rbac-and-acl"></a>Berechtigungstabelle: Kombinieren von Azure RBAC und ACL
 
-In der folgenden Tabelle ist aufgeführt, wie Sie Azure RBAC-Rollen und ACL-Einträge kombinieren, damit ein Sicherheitsprinzipal die Vorgänge ausführen kann, die in der Spalte **Vorgang** aufgelistet sind. Diese Tabelle enthält eine Spalte, die die einzelnen Ebenen einer fiktiven Verzeichnishierarchie darstellt. Es gibt eine Spalte für das Stammverzeichnis des Containers (`/`), ein Unterverzeichnis mit dem Namen **Oregon** , ein Unterverzeichnis des Verzeichnisses „Oregon“ namens **Portland** und eine Textdatei im Verzeichnis „Portland“ mit dem Namen **Data.txt** . Diese Spalten enthalten Darstellungen des ACL-Eintrags, der zum Erteilen von Berechtigungen erforderlich ist, in [Kurzform](data-lake-storage-access-control.md#short-forms-for-permissions). **–** ( _nicht zutreffend_ ) steht in der Spalte, wenn der ACL-Eintrag zum Ausführen des Vorgangs nicht erforderlich ist.
+In der folgenden Tabelle ist aufgeführt, wie Sie Azure RBAC-Rollen und ACL-Einträge kombinieren, damit ein Sicherheitsprinzipal die Vorgänge ausführen kann, die in der Spalte **Vorgang** aufgelistet sind. Diese Tabelle enthält eine Spalte, die die einzelnen Ebenen einer fiktiven Verzeichnishierarchie darstellt. Es gibt eine Spalte für das Stammverzeichnis des Containers (`/`), ein Unterverzeichnis mit dem Namen **Oregon**, ein Unterverzeichnis des Verzeichnisses „Oregon“ namens **Portland** und eine Textdatei im Verzeichnis „Portland“ mit dem Namen **Data.txt**. Diese Spalten enthalten Darstellungen des ACL-Eintrags, der zum Erteilen von Berechtigungen erforderlich ist, in [Kurzform](data-lake-storage-access-control.md#short-forms-for-permissions). **–** (_nicht zutreffend_) steht in der Spalte, wenn der ACL-Eintrag zum Ausführen des Vorgangs nicht erforderlich ist.
 
 |    Vorgang             | Zugewiesene RBAC-Rolle               |    /        | Oregon/     | Portland/ | Data.txt |             
 |--------------------------|----------------------------------|-------------|-------------|-----------|----------|

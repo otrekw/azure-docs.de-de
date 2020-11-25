@@ -1,6 +1,6 @@
 ---
 title: Eingeschränkte Kerberos-Delegierung mit Azure Active Directory
-description: Architektonischer Leitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Implementieren der eingeschränkten Kerberos-Delegierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77f90cd7aa8d972226a8f134eaa7b3abfe7bea66
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 62c8f230ca2b2d0db1170cde9b24f9e4819889bb
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113988"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577123"
 ---
 # <a name="windows-authentication---kerberos-constrained-delegation-with-azure-active-directory"></a>Windows-Authentifizierung – Eingeschränkte Kerberos-Delegierung mit Azure Active Directory
 
@@ -38,17 +38,17 @@ Es besteht die Notwendigkeit, Remotezugriff bereitzustellen, mit Vorauthentifizi
 
 * **Benutzer:** Greift auf die vom Anwendungsproxy bereitgestellte Legacyanwendung zu.
 
-* **Webbrowser** : Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
+* **Webbrowser**: Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
 
-* **Azure AD** : Authentifiziert den Benutzer. 
+* **Azure AD**: Authentifiziert den Benutzer. 
 
-* **Anwendungsproxydienst** : Fungiert als Reverseproxy, um Anforderungen vom Benutzer an die lokale Anwendung zu senden. Er befindet sich in Azure AD. Der Anwendungsproxy kann auch Richtlinien für bedingten Zugriff erzwingen.
+* **Anwendungsproxydienst**: Fungiert als Reverseproxy, um Anforderungen vom Benutzer an die lokale Anwendung zu senden. Er befindet sich in Azure AD. Der Anwendungsproxy kann auch Richtlinien für bedingten Zugriff erzwingen.
 
-* **Anwendungsproxyconnector** : Wird lokal auf Windows-Servern installiert, um die Konnektivität mit der Anwendung zu ermöglichen. Gibt die Antwort an Azure AD zurück. Führt die KCD-Aushandlung mit Active Directory aus und nimmt dabei die Identität des Benutzers an, um ein Kerberos-Token für die Anwendung abzurufen.
+* **Anwendungsproxyconnector**: Wird lokal auf Windows-Servern installiert, um die Konnektivität mit der Anwendung zu ermöglichen. Gibt die Antwort an Azure AD zurück. Führt die KCD-Aushandlung mit Active Directory aus und nimmt dabei die Identität des Benutzers an, um ein Kerberos-Token für die Anwendung abzurufen.
 
-* **Active Directory** : Sendet das Kerberos-Token für die Anwendung an den Anwendungsproxyconnector.
+* **Active Directory**: Sendet das Kerberos-Token für die Anwendung an den Anwendungsproxyconnector.
 
-* **Legacyanwendungen** : Anwendungen, die Benutzeranforderungen vom Anwendungsproxy empfangen. Die Legacyanwendungen geben die Antwort an den Anwendungsproxyconnector zurück.
+* **Legacyanwendungen**: Anwendungen, die Benutzeranforderungen vom Anwendungsproxy empfangen. Die Legacyanwendungen geben die Antwort an den Anwendungsproxyconnector zurück.
 
 ## <a name="implement-windows-authentication-kcd-with-azure-ad"></a>Implementieren der Windows-Authentifizierung (KCD) mit Azure AD
 

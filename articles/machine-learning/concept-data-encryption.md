@@ -10,12 +10,12 @@ ms.author: jhirono
 author: jhirono
 ms.reviewer: larryfr
 ms.date: 11/09/2020
-ms.openlocfilehash: a133cdb72e304a254305833b9ae6e8a7ebe30ab3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 211ef9571b5a126686b4583330dc0f80863fd47e
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540007"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992045"
 ---
 # <a name="data-encryption-with-azure-machine-learning"></a>Datenverschlüsselung mit Azure Machine Learning
 
@@ -129,6 +129,12 @@ Jeder virtuelle Computer verfügt auch über einen lokalen temporären Datenträ
 ### <a name="azure-databricks"></a>Azure Databricks
 
 Azure Databricks kann in Azure Machine Learning-Pipelines verwendet werden. Das von Azure Databricks verwendete Databricks-Dateisystem (Databricks File System, DBFS) wird standardmäßig mithilfe eines von Microsoft verwalteten Schlüssels verschlüsselt. Informationen zum Konfigurieren von Azure Databricks für die Verwendung von kundenseitig verwalteten Schlüsseln finden Sie unter [Konfigurieren der kundenseitig verwalteten Schlüsseln im Standard-DBFS (Stamm)](/azure/databricks/security/customer-managed-keys-dbfs).
+
+### <a name="microsoft-generated-data"></a>Von Microsoft generierte Daten
+
+Bei der Verwendung von Diensten wie automatisiertes ML generiert Microsoft möglicherweise vorübergehende, vorverarbeitete Daten für das Training mehrerer Modelle. Diese Daten werden in einem Datenspeicher in Ihrem Arbeitsbereich gespeichert, der es Ihnen ermöglicht, die Zugriffssteuerung und Verschlüsselung entsprechend durchzusetzen.
+
+Möglicherweise möchten Sie auch [Diagnoseinformationen verschlüsseln, die von Ihrem bereitgestellten Endpunkt](how-to-enable-app-insights.md) in Ihrer Azure Application Insights-Instanz protokolliert werden.
 
 ## <a name="encryption-in-transit"></a>Verschlüsselung während der Übertragung
 

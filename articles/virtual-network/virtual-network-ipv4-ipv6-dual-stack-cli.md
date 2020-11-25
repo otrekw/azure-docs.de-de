@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
-ms.openlocfilehash: 2746397e2aa97f3c8c3b98d1c7be65b083dcc425
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9b8dbaa4877c5bf6e7d300c3bb2fc1abf586ee
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90983818"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94742928"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-basic-load-balancer---cli"></a>Bereitstellen einer IPv6-Anwendung mit dualem Stapel und Basic-Load Balancer – Befehlszeilenschnittstelle
 
@@ -26,12 +26,11 @@ In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure-Befehlszeilenschnitts
 
 Informationen zum Bereitstellen einer Anwendung mit dualem Stapel (IPv4 und IPv6) unter Verwendung von Load Balancer Standard finden Sie unter [Bereitstellen einer IPv6-Dual Stack-Anwendung mit Load Balancer Standard in Azure Virtual Network – CLI (Vorschau)](virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-cli.md).
 
+[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
-Wenn Sie kein Azure-Abonnement besitzen, können Sie jetzt ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen.
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
-Wenn Sie sich stattdessen entscheiden, die Azure CLI lokal zu installieren und zu verwenden, müssen Sie für diese Schnellstartanleitung mindestens die Azure CLI-Version 2.0.49 verwenden. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist mindestens Version 2.0.49 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 ## <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 

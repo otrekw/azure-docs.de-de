@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/26/2020
+ms.date: 11/16/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: c59a104796e11b15af805e34f9cd14b2ce8bd075
-ms.sourcegitcommit: 3e8058f0c075f8ce34a6da8db92ae006cc64151a
+ms.openlocfilehash: 80ecd02f9aebbca66169d64d6c6d0302d58ca439
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92628846"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94647663"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>Registrieren einer SAML-Anwendung in Azure AD B2C
 
@@ -51,8 +51,8 @@ Zusammenfassung der beiden nicht exklusiven Kernszenarien mit SAML:
 
 Für dieses Szenario sind drei Hauptkomponenten erforderlich:
 
-* SAML- **Dienstanbieter** mit der Möglichkeit, SAML-Anforderungen zu senden und SAML-Assertionen von Azure AD B2C zu empfangen, zu decodieren und darauf zu antworten. Der Dienstanbieter wird auch als Anwendung der vertrauenden Seite bezeichnet.
-* Öffentlich verfügbarer SAML- **Metadatenendpunkt** für Ihren Dienstanbieter.
+* SAML-**Dienstanbieter** mit der Möglichkeit, SAML-Anforderungen zu senden und SAML-Assertionen von Azure AD B2C zu empfangen, zu decodieren und darauf zu antworten. Der Dienstanbieter wird auch als Anwendung der vertrauenden Seite bezeichnet.
+* Öffentlich verfügbarer SAML-**Metadatenendpunkt** für Ihren Dienstanbieter.
 * [Azure AD B2C-Mandant](tutorial-create-tenant.md)
 
 Wenn Sie noch nicht über einen SAML-Dienstanbieter und einen zugehörigen Metadatenendpunkt verfügen, können Sie diese SAML-Beispielanwendung verwenden, die wir zum Testen zur Verfügung stellen:
@@ -131,7 +131,7 @@ Sie können den Wert der `IssuerUri`-Metadaten ändern. Dies ist der Aussteller-
       <OutputTokenFormat>SAML2</OutputTokenFormat>
       <Metadata>
         <!-- The issuer contains the policy name; it should be the same name as configured in the relying party application. B2C_1A_signup_signin_SAML is used below. -->
-        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_SAML</Item>-->
+        <!--<Item Key="IssuerUri">https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml</Item>-->
       </Metadata>
       <CryptographicKeys>
         <Key Id="MetadataSigning" StorageReferenceId="B2C_1A_SamlIdpCert"/>
@@ -260,7 +260,7 @@ Die endgültige Richtliniendatei der vertrauenden Seite sollte wie im folgenden 
 
 Speichern Sie die Änderungen, und laden Sie die neue Richtliniendatei hoch. Nachdem Sie beide Richtlinien (die Erweiterung und die Dateien der vertrauenden Seite) hochgeladen haben, öffnen Sie einen Webbrowser, und navigieren Sie dann zu den Richtlinienmetadaten.
 
-Die IDP-Metadaten der Azure AD B2C-Richtlinie sind Informationen, die im SAML-Protokoll verwendet werden, um die Konfiguration eines SAML-Identitätsanbieters offenzulegen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie:
+Die IDP-Metadaten der Azure AD B2C-Richtlinie sind Informationen, die im SAML-Protokoll verwendet werden, um die Konfiguration eines SAML-Identitätsanbieters offenzulegen. Die Metadaten definieren den Ort der Dienste, z.B. Anmelden und Abmelden, Zertifikate und die Anmeldemethode. Die Azure AD B2C-Richtlinienmetadaten sind unter der folgenden URL verfügbar. Ersetzen Sie `tenant-name` durch den Namen Ihres Azure AD B2C-Mandanten und `policy-name` durch den Namen (ID) der Richtlinie, z. B. „.../B2C_1A_signup_signin_saml/samlp/metadata“:
 
 `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 
@@ -272,7 +272,7 @@ Ihre benutzerdefinierte Richtlinie und der Azure AD B2C-Mandant sind jetzt berei
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im oberen Menü den Filter **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
-1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C** , und wählen Sie ihn aus.
+1. Wählen Sie im linken Menü die Option **Azure AD B2C** aus. Oder wählen Sie **Alle Dienste** aus, suchen Sie nach dem Eintrag **Azure AD B2C**, und wählen Sie ihn aus.
 1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann **Registrierung einer neuen Anwendung** aus.
 1. Geben Sie unter **Name** einen Namen für die Anwendung ein. Beispielsweise *SAMLApp1*.
 1. Wählen Sie unter **Unterstützte Kontotypen** die Option **Nur Konten in diesem Organisationsverzeichnis** aus.
@@ -339,15 +339,15 @@ Die Metadaten können in Ihrem Dienstanbieter als „Statische Metadaten“ oder
 
 In der Regel sind einige oder alle der folgenden Angaben erforderlich:
 
-* **Metadaten** : `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
+* **Metadaten**: `https://tenant-name.b2clogin.com/tenant-name.onmicrosoft.com/policy-name/Samlp/metadata`
 * **Aussteller:**  Der `issuer`-Wert der SAML-Anforderung muss mit einem der URIs übereinstimmen, die im Element `identifierUris` des Anwendungsregistrierungsmanifests konfiguriert wurden. Wenn der Name `issuer` der SAML-Anforderung im Element `identifierUris` nicht vorhanden ist, [fügen Sie ihn zum Anwendungsregistrierungsmanifest hinzu](#identifieruris). Beispiel: `https://contoso.onmicrosoft.com/app-name`. 
 * **Anmelde-URL/SAML-Endpunkt/SAML-URL-** : Überprüfen Sie den Wert in der Metadatendatei der Azure AD B2C SAML-Richtlinie für das XML-Element `<SingleSignOnService>`.
-* **Zertifikat** : Dies ist *B2C_1A_SamlIdpCert* , aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
+* **Zertifikat**: Dies ist *B2C_1A_SamlIdpCert*, aber ohne den privaten Schlüssel. So rufen Sie den öffentlichen Schlüssel des Zertifikats ab:
 
     1. Navigieren Sie zur Metadaten-URL, die oben angegeben wurde.
     1. Kopieren Sie den Wert in das `<X509Certificate>`-Element.
     1. Fügen Sie ihn in eine Textdatei ein.
-    1. Speichern Sie die Textdatei als *CER* -Datei.
+    1. Speichern Sie die Textdatei als *CER*-Datei.
 
 ### <a name="51-test-with-the-saml-test-app-optional"></a>5.1 Testen mit der SAML-Test-App (optional)
 
@@ -428,7 +428,7 @@ Wir stellen eine vollständige Beispielrichtlinie zur Verfügung, die Sie zum Te
 
 1. Laden Sie die [Anmeldebeispielrichtlinie „SAML-SP-initiated“](https://github.com/azure-ad-b2c/saml-sp/tree/master/policy/SAML-SP-Initiated) herunter.
 1. Aktualisieren Sie `TenantId` entsprechend Ihrem Mandantennamen, z.B. *contoso.b2clogin.com*.
-1. Behalten Sie den Richtliniennamen *B2C_1A_SAML2_signup_signin* bei.
+1. Behalten Sie den Richtliniennamen *B2C_1A_signup_signin* bei.
 
 ## <a name="supported-and-unsupported-saml-modalities"></a>Unterstützte und nicht unterstützte SAML-Modalitäten
 

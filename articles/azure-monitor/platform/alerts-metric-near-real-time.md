@@ -7,12 +7,12 @@ services: monitoring
 ms.topic: conceptual
 ms.date: 9/30/2020
 ms.subservice: alerts
-ms.openlocfilehash: d99e37171f2fb5b86bee897caca55c3e8782f92e
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d1a1a31d5894338e0deeed27fabcde9fdbf6f588
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92108812"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94566485"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Unterstützte Ressourcen für Metrikwarnungen in Azure Monitor
 
@@ -26,7 +26,7 @@ Derzeit können Sie neuere Metrikwarnungen nur im Azure-Portal, in der [REST-API
 ## <a name="metrics-and-dimensions-supported"></a>Unterstützte Metriken und Dimensionen
 Neuere Metrikwarnungen unterstützen Warnungen für Metriken mit Dimensionen. Mithilfe von Dimensionen können Sie die Metrik nach der richtigen Ebene filtern. Sie können alle unterstützten Metriken und die dazugehörigen Dimensionen unter [Azure Monitor-Metrik-Explorer](./metrics-charts.md) erkunden und visualisieren.
 
-Im Anschluss finden Sie die vollständige Liste der Azure Monitor-Metrikquellen, die von den neueren Warnungen unterstützt werden:
+Im Folgenden finden Sie die vollständige Liste der Azure Monitor-Metrikquellen, die von den neueren Warnungen unterstützt werden:
 
 |Ressourcentyp  |Unterstützte Dimensionen |Warnungen mit mehreren Ressourcen| Verfügbare Metriken|
 |---------|---------|-----|----------|

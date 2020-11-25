@@ -14,12 +14,12 @@ ms.date: 06/08/2020
 ms.author: RamaKoni
 ms.reviewer: sqlblt, daleche
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a0ecc36d78ffde002dac971a749889104ff10073
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: b9223ffc564620804b36f6f0e71602b3888a9f42
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556453"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025377"
 ---
 # <a name="in-place-change-of-sql-server-version-on-azure-vm"></a>Direktes Ändern der SQL Server-Version auf Azure-VMs
 
@@ -66,7 +66,7 @@ Für ein Upgrade der SQL Server-Version beschaffen Sie sich die SQL Server-Setup
 
    :::image type="content" source="./media/change-sql-server-version/upgrade.png" alt-text="Auswahl des Upgrades der Version von SQL Server":::
 
-1. Aktivieren Sie auf der Seite **Product Key** eine Option, um anzugeben, ob Sie auf eine kostenlose Edition von SQL Server aktualisieren oder über einen PID-Schlüssel für eine Produktionsversion des Produkts verfügen. Weitere Informationen finden Sie unter [Editions and supported features of SQL Server 2019 (15.x) (Editionen und unterstützte Features von SQL Server 2019 [15.x]](/sql/sql-server/editions-and-components-of-sql-server-version-155) und [Unterstützte Versions- und Editionsupgrades in SQL Server 2016](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
+1. Aktivieren Sie auf der Seite **Product Key** eine Option, um anzugeben, ob Sie auf eine kostenlose Edition von SQL Server aktualisieren oder über einen PID-Schlüssel für eine Produktionsversion des Produkts verfügen. Weitere Informationen finden Sie unter [Editions and supported features of SQL Server 2019 (15.x) (Editionen und unterstützte Features von SQL Server 2019 [15.x]](/sql/sql-server/editions-and-components-of-sql-server-version-15) und [Unterstützte Versions- und Editionsupgrades in SQL Server 2016](/sql/database-engine/install-windows/supported-version-and-edition-upgrades).
 1. Klicken Sie auf **Weiter**, bis Sie zur Seite **Zum Upgrade bereit** gelangen. Wählen Sie dann **Upgrade** aus. Das Setupfenster reagiert möglicherweise einige Minuten nicht mehr, während die Änderung wirksam wird. Auf der Seite **Abgeschlossen** wird bestätigt, dass das Upgrade abgeschlossen wurde. Eine Schritt-für-Schritt-Anleitung für das Upgrade finden Sie unter [Das gesamte Verfahren](/sql/database-engine/install-windows/upgrade-sql-server-using-the-installation-wizard-setup#procedure).
 
    :::image type="content" source="./media/change-sql-server-version/complete-page.png" alt-text="Seite „Abgeschlossen“":::

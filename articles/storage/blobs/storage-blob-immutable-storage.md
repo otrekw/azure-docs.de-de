@@ -5,16 +5,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 11/13/2020
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 39fdde572e269bb4f5648e91bf85539d02236ff6
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87448338"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658552"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher
 
@@ -102,17 +102,21 @@ Im Zusammenhang mit der Aufbewahrung für juristische Zwecke gelten folgende Gre
 - Für einen Container werden höchstens zehn Richtlinien-Überwachungsprotokolle für die gesetzliche Aufbewahrungspflicht für die Dauer der Richtlinie aufbewahrt.
 
 ## <a name="scenarios"></a>Szenarien
+
 Die folgende Tabelle gibt Aufschluss über die Arten von Blobspeichervorgängen, die für die verschiedenen Unveränderlichkeitsszenarien deaktiviert sind. Weitere Informationen finden Sie in der Dokumentation [Blob-Dienst-REST-API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api).
 
-|Szenario  |Blobzustand  |Verweigerte Blobvorgänge  |Container- und Kontoschutz
-|---------|---------|---------|---------|
-|Effektiver Aufbewahrungszeitraum für das Blob ist noch nicht abgelaufen bzw. ein Zeitraum für die gesetzliche Aufbewahrungspflicht wurde festgelegt     |Unveränderlich: Lösch- und Schreibschutz         | Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Delete Container, Delete Blob, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block<sup>2</sup>         |Containerlöschung verweigert, Speicherkontenlöschung verweigert         |
-|Effektiver Aufbewahrungszeitraum für das Blob ist abgelaufen, und kein Zeitraum zur Aufbewahrung für juristische Zwecke ist festgelegt    |Nur Schreibschutz (Löschvorgänge sind zulässig)         |Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block<sup>2</sup>         |Die Löschung von Containern wird verweigert, wenn mindestens ein Blob im geschützten Container vorhanden ist. Die Löschung von Speicherkonten wird nur bei *gesperrten* zeitbasierten Richtlinien verweigert.         |
-|Keine WORM-Richtlinie angewandt (keine zeitbasierte Aufbewahrung und kein Tag für die Aufbewahrung für juristische Zwecke)     |Veränderlich         |Keine         |Keine         |
+| Szenario | Blobzustand | Verweigerte Blobvorgänge | Container- und Kontoschutz |
+|--|--|--|--|
+| Effektiver Aufbewahrungszeitraum für das Blob ist noch nicht abgelaufen bzw. ein Zeitraum für die gesetzliche Aufbewahrungspflicht wurde festgelegt | Unveränderlich: Lösch- und Schreibschutz | Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Delete Container, Delete Blob, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block<sup>2</sup> | Containerlöschung verweigert, Speicherkontenlöschung verweigert |
+| Effektiver Aufbewahrungszeitraum für das Blob ist abgelaufen, und kein Zeitraum zur Aufbewahrung für juristische Zwecke ist festgelegt | Nur Schreibschutz (Löschvorgänge sind zulässig) | Put Blob<sup>1</sup>, Put Block<sup>1</sup>, Put Block List<sup>1</sup>, Set Blob Metadata, Put Page, Set Blob Properties, Snapshot Blob, Incremental Copy Blob, Append Block<sup>2</sup> | Die Löschung von Containern wird verweigert, wenn mindestens ein Blob im geschützten Container vorhanden ist. Die Löschung von Speicherkonten wird nur bei *gesperrten* zeitbasierten Richtlinien verweigert. |
+| Keine WORM-Richtlinie angewandt (keine zeitbasierte Aufbewahrung und kein Tag für die Aufbewahrung für juristische Zwecke) | Veränderlich | Keine | Keine |
 
 <sup>1</sup> Der Blob-Dienst lässt diese Vorgänge zu, um einmalig ein neues Blob zu erstellen. Alle nachfolgenden Überschreibungsvorgänge in einem vorhandenen Blobpfad eines unveränderlichen Containers sind nicht zulässig.
 
 <sup>2</sup> „Append Block“ ist nur bei zeitbasierten Aufbewahrungsrichtlinien mit aktivierter `allowProtectedAppendWrites`-Eigenschaft zulässig. Weitere Informationen finden Sie im Abschnitt [Zulassen von Schreibvorgängen in geschützten Anfügeblobs](#allow-protected-append-blobs-writes).
+
+> [!IMPORTANT]
+> Einige Workloads, z. B. [SQL Server-Sicherung über URLs](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url), erstellen ein Blob und fügen es dann hinzu. Wenn für den Container eine aktive zeitbasierte Aufbewahrungsrichtlinie oder eine gesetzliche Aufbewahrungspflicht gilt, wird dieses Muster nicht erfolgreich ausgeführt.
 
 ## <a name="pricing"></a>Preise
 

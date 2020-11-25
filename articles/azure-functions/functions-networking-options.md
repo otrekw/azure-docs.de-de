@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 10/27/2020
 ms.author: jehollan
-ms.openlocfilehash: 691fbf3be4e39a724a8a290c3ec147a679013cba
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: bed76a6f3a17332f9a1e411ff1d4efb52703f3e1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413087"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020989"
 ---
 # <a name="azure-functions-networking-options"></a>Netzwerkoptionen von Azure Functions
 
@@ -30,18 +30,36 @@ Sie können Funktions-Apps auf verschiedene Arten hosten:
 
 [!INCLUDE [functions-networking-features](../../includes/functions-networking-features.md)]
 
-## <a name="inbound-ip-restrictions"></a>IP-Einschränkungen für eingehenden Datenverkehr
+## <a name="inbound-access-restrictions"></a>Einschränkungen für eingehenden Zugriff
 
-Mit IP-Einschränkungen können Sie eine nach Priorität sortierte Liste mit IP-Adressen definieren, über die der Zugriff auf Ihre App zugelassen bzw. abgelehnt wird. Die Liste kann IPv4- und IPv6-Adressen enthalten. Wenn mindestens ein Eintrag vorhanden ist, enthält die Liste am Ende einen impliziten Eintrag vom Typ „Alle ablehnen“. IP-Einschränkungen können für alle Hostingoptionen für Funktionen verwendet werden.
+Mit Zugriffseinschränkungen können Sie eine nach Priorität sortierte Liste mit IP-Adressen definieren, über die der Zugriff auf Ihre App zugelassen bzw. abgelehnt wird. Die Liste kann IPv4- und IPv6-Adressen oder bestimmte Subnetze eines virtuellen Netzwerks mit [Dienstendpunkten](#use-service-endpoints) enthalten. Wenn mindestens ein Eintrag vorhanden ist, enthält die Liste am Ende einen impliziten Eintrag vom Typ „Alle ablehnen“. IP-Einschränkungen können für alle Hostingoptionen für Funktionen verwendet werden.
+
+Zugriffseinschränkungen sind für [Premium](functions-premium-plan.md), [Verbrauch](functions-scale.md#consumption-plan) und [App Service](functions-scale.md#app-service-plan) verfügbar.
 
 > [!NOTE]
-> Mit den geltenden Netzwerkbeschränkungen können Sie den Portal-Editor nur in Ihrem virtuellen Netzwerk verwenden, oder wenn Sie die IP-Adresse des Computers, mit dem Sie auf das Azure-Portal zugreifen, der Liste der sicheren Empfänger hinzugefügt haben. Sie können aber weiterhin von jedem Computer aus auf alle Funktionen der Registerkarte **Plattformfeatures** zugreifen.
+> Mit den geltenden Netzwerkbeschränkungen können Sie nur in Ihrem virtuellen Netzwerk bereitstellen, oder wenn Sie die IP-Adresse des Computers, mit dem Sie auf das Azure-Portal zugreifen, der Liste der sicheren Empfänger hinzugefügt haben. Sie können die Funktion jedoch weiterhin über das Portal verwalten.
 
 Weitere Informationen finden Sie unter [Azure App Service – statische Zugriffseinschränkungen](../app-service/app-service-ip-restrictions.md).
 
-## <a name="private-site-access"></a>Privater Websitezugriff
+### <a name="use-service-endpoints"></a>Verwenden von Dienstendpunkten
+
+Die Verwendung von Dienstendpunkten ermöglicht das Einschränken des Zugriffs auf ausgewählte Subnetze virtueller Azure-Netzwerke. Erstellen Sie zum Einschränken des Zugriffs auf ein bestimmtes Subnetz eine Einschränkungsregel vom Typ **Virtual Network**. Anschließend können Sie das Abonnement, das virtuelle Netzwerk und das Subnetz auswählen, für das Sie den Zugriff zulassen oder ablehnen möchten. 
+
+Falls für das von Ihnen ausgewählte Subnetz nicht bereits Dienstendpunkte mit Microsoft.Web aktiviert sind, wird dies automatisch durchgeführt, sofern Sie nicht das Kontrollkästchen **Fehlende Microsoft.Web-Dienstendpunkte ignorieren** aktivieren. In einem Szenario, bei dem Sie Dienstendpunkte in der App aktivieren möchten, aber nicht im Subnetz, hängt es vor allem davon ab, ob Sie über die Berechtigungen für die Aktivierung im Subnetz verfügen. 
+
+Falls die Dienstendpunkte im Subnetz bei Ihnen von einer anderen Person aktiviert werden müssen, sollten Sie das Kontrollkästchen **Fehlende Microsoft.Web-Dienstendpunkte ignorieren** aktivieren. Ihre App wird für Dienstendpunkte konfiguriert, weil damit zu rechnen ist, dass diese später im Subnetz aktiviert werden. 
+
+![Screenshot: Bereich „Add IP Restriction“ (IP-Einschränkung hinzufügen) mit Auswahl des Typs „Virtual Network“](../app-service/media/app-service-ip-restrictions/access-restrictions-vnet-add.png)
+
+Sie können Dienstendpunkte nicht nutzen, um den Zugriff auf Apps einzuschränken, die in einer App Service-Umgebung ausgeführt werden. Wenn Ihre App in einer App Service-Umgebung enthalten ist, können Sie den Zugriff darauf steuern, indem Sie IP-Zugriffsregeln anwenden. 
+
+Informationen zum Einrichten von Dienstendpunkten Sie unter [Tutorial: Einrichten von privatem Websitezugriff für Azure Functions](functions-create-private-site-access.md).
+
+## <a name="private-endpoint-connections"></a>Private Endpunktverbindungen
 
 [!INCLUDE [functions-private-site-access](../../includes/functions-private-site-access.md)]
+
+Konfigurieren Sie zum Aufrufen anderer Dienste, die über eine Verbindung mit einem privaten Endpunkt verfügen (z. B. Speicher oder Service Bus), Ihre App so, dass sie [ausgehende Aufrufe an private Endpunkte](#private-endpoints) ausführt.
 
 ## <a name="virtual-network-integration"></a>Integration in ein virtuelles Netzwerk
 
@@ -79,8 +97,8 @@ Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Kon
 1. Erstellen oder konfigurieren Sie ein anderes Speicherkonto.  Dabei handelt es sich um das Speicherkonto, in dem die Dienstendpunkte abgesichert und die Verbindung zur Funktion hergestellt werden sollen.
 1. [Erstellen Sie eine Dateifreigabe](../storage/files/storage-how-to-create-file-share.md#create-file-share) im abgesicherten Speicherkonto.
 1. Aktivieren Sie Dienstendpunkte oder einen privaten Endpunkt für das Speicherkonto.  
-    * Sorgen Sie dafür, das für Ihre Funktions-Apps dedizierte Subnetz zu aktivieren, wenn ein Dienstendpunkt verwendet wird.
-    * Achten Sie darauf, einen DNS-Eintrag zu erstellen und Ihre App so zu konfigurieren, dass sie [mit privaten Endpunkten verwendet](#azure-dns-private-zones) werden kann, wenn ein privater Endpunkt verwendet werden soll.  Für das Speicherkonto ist ein privater Endpunkt für die `file`- und `blob`-Subressourcen erforderlich.  Wenn bestimmte Funktionen wie Durable Functions verwendet werden, muss der Zugriff auf `queue` und `table` außerdem über eine private Endpunktverbindung möglich sein.
+    * Bei der Verwendung von Verbindungen mit privaten Endpunkten ist für das Speicherkonto ein privater Endpunkt für die Subressourcen `file` und `blob` erforderlich.  Wenn bestimmte Funktionen wie Durable Functions verwendet werden, muss der Zugriff auf `queue` und `table` außerdem über eine Verbindung mit einem privaten Endpunkt möglich sein.
+    * Wenn Sie Dienstendpunkte verwenden, aktivieren Sie das für ihre Funktions-Apps dedizierte Subnetz für Speicherkonten.
 1. Optional: Kopieren Sie die Datei und den Blobinhalt aus dem Speicherkonto der Funktions-App in das geschützte Speicherkonto und die Dateifreigabe.
 1. Kopieren Sie die Verbindungszeichenfolge für dieses Speicherkonto.
 1. Aktualisieren Sie die **Anwendungseinstellungen** unter **Konfiguration** für die Funktions-App folgendermaßen:
@@ -88,6 +106,9 @@ Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Kon
     - Legen Sie `WEBSITE_CONTENTAZUREFILECONNECTIONSTRING` als Verbindungszeichenfolge für das geschützte Speicherkonto fest.
     - Legen Sie `WEBSITE_CONTENTSHARE` für den Namen der Dateifreigabe fest, die im geschützten Speicherkonto erstellt wurde.
     - Erstellen Sie eine neue Einstellung mit dem Namen `WEBSITE_CONTENTOVERVNET` und einem Wert von `1`.
+    - Wenn das Speicherkonto Verbindungen mit privaten Endpunkten verwendet, überprüfen Sie die folgenden Einstellungen, oder fügen Sie sie hinzu:
+        - `WEBSITE_VNET_ROUTE_ALL` mit dem Wert `1`
+        - `WEBSITE_DNS_SERVER` mit dem Wert `168.63.129.16` 
 1. Speichern Sie die Anwendungseinstellungen.  
 
 Die Funktions-App wird neu gestartet und ist nun mit einem geschützten Speicherkonto verbunden.

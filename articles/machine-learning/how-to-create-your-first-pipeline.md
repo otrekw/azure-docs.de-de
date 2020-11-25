@@ -1,7 +1,7 @@
 ---
 title: Erstellen und Ausführen von ML-Pipelines
 titleSuffix: Azure Machine Learning
-description: Erstellen Sie eine Machine Learning-Pipeline mit dem Azure Machine Learning SDK für Python, und führen Sie sie aus. Verwenden Sie Machine Learning-Pipelines (ML) zum Erstellen und Verwalten von Workflows, die Machine Learning-Phasen zusammenfügen. Zu diesen Phasen gehören beispielsweise Datenaufbereitung, Modelltraining, Modellimplementierung und Rückschluss/Bewertung.
+description: Erstellen Sie Machine Learning-Pipelines zum Erstellen und Verwalten von Workflows, die Machine Learning-Phasen (ML) zusammenfügen, und führen Sie sie aus.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ author: NilsPohlmann
 ms.date: 10/21/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: 76369d3bc3ed152bf9e0b13f7bf4b4386a974c33
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 452904e18a0910c2dd4781ca978042e0cdd4996d
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322095"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630123"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Erstellen und Ausführen von Machine Learning-Pipelines mit dem Azure Machine Learning SDK
 
@@ -110,7 +110,7 @@ output_data1 = PipelineData(
 ## <a name="set-up-a-compute-target"></a>Einrichten von Computezielen
 
 
-In Azure Machine Learning bezieht sich der Begriff __Compute__ (oder __Computeziel__ ) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen.   Eine vollständige Liste der Computeziele finden Sie unter [Computeziele für das Modelltraining](concept-compute-target.md#train), und Informationen zum Erstellen und Anfügen an Ihren Arbeitsbereich finden Sie unter [Erstellen von Computezielen](how-to-create-attach-compute-studio.md).   Das Verfahren zum Erstellen und/oder Anfügen eines Computeziels ist immer dasselbe, ganz gleich, ob Sie ein Modell trainieren oder einen Pipelineschritt ausführen. Verwenden Sie nach dem Erstellen und Anfügen des Computeziels das `ComputeTarget`-Objekt in Ihrem [Pipelineschritt](#steps).
+In Azure Machine Learning bezieht sich der Begriff __Compute__ (oder __Computeziel__) auf die Computer oder Cluster, die die Berechnungsschritte in Ihrer Machine Learning-Pipeline durchführen.   Eine vollständige Liste der Computeziele finden Sie unter [Computeziele für das Modelltraining](concept-compute-target.md#train), und Informationen zum Erstellen und Anfügen an Ihren Arbeitsbereich finden Sie unter [Erstellen von Computezielen](how-to-create-attach-compute-studio.md).   Das Verfahren zum Erstellen und/oder Anfügen eines Computeziels ist immer dasselbe, ganz gleich, ob Sie ein Modell trainieren oder einen Pipelineschritt ausführen. Verwenden Sie nach dem Erstellen und Anfügen des Computeziels das `ComputeTarget`-Objekt in Ihrem [Pipelineschritt](#steps).
 
 > [!IMPORTANT]
 > Das Anwenden von Verwaltungsvorgängen auf Computeziele wird innerhalb von Remoteaufträgen nicht unterstützt. Da Pipelines für maschinelles Lernen als Remoteauftrag übermittelt werden, sollten Sie innerhalb der Pipeline keine Verwaltungsvorgänge auf Computeziele anwenden.
@@ -305,7 +305,7 @@ Weitere Details, einschließlich alternativer Verfahren zum Übergeben von Daten
 ## <a name="caching--reuse"></a>Zwischenspeichern und Wiederverwenden  
 
 Zur Optimierung und Anpassung des Verhaltens Ihrer Pipelines können Sie einige Optionen für die Zwischenspeicherung und Wiederverwendung nutzen. Sie haben beispielsweise folgende Optionen:
-+ **Deaktivieren Sie die standardmäßige Wiederverwendung der Ausgabe nach Ausführung des Schritts** , indem Sie bei der [Schrittdefinition](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)`allow_reuse=False` festlegen. Die Wiederverwendung ist entscheidend, wenn Pipelines in einer Umgebung für die Zusammenarbeit verwendet werden, weil die Beseitigung von nicht benötigten Ausführungen zu einer höheren Flexibilität führt. Sie können die Wiederverwendung aber auch deaktivieren.
++ **Deaktivieren Sie die standardmäßige Wiederverwendung der Ausgabe nach Ausführung des Schritts**, indem Sie bei der [Schrittdefinition](/python/api/azureml-pipeline-steps/?preserve-view=true&view=azure-ml-py)`allow_reuse=False` festlegen. Die Wiederverwendung ist entscheidend, wenn Pipelines in einer Umgebung für die Zusammenarbeit verwendet werden, weil die Beseitigung von nicht benötigten Ausführungen zu einer höheren Flexibilität führt. Sie können die Wiederverwendung aber auch deaktivieren.
 + **Erzwingen Sie die erneute Generierung der Ausgabe für alle Schritte einer Ausführung** mit `pipeline_run = exp.submit(pipeline, regenerate_outputs=False)`.
 
 Standardmäßig ist `allow_reuse` für Schritte aktiviert, und das in der Schrittdefinition angegebene `source_directory` verfügt über einen Hashwert. Wenn das Skript für einen Schritt unverändert bleibt (`script_name`, Eingaben und Parameter), und sich nichts sonst im ` source_directory` geändert hat, wird also die Ausgabe eines vorherigen Schritts wiederverwendet, der Auftrag wird nicht an den Computevorgang übermittelt, und die Ergebnisse der vorherigen Ausführung sind stattdessen sofort für den nächsten Schritt verfügbar.

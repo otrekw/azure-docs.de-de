@@ -6,17 +6,17 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 8/6/2020
-ms.openlocfilehash: 2a130345a755644874b4547a5906101b593664a6
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/16/2020
+ms.openlocfilehash: 6dd855695a155e924f7c46bdb17449c5e6504ca6
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123471"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745359"
 ---
 # <a name="stream-analytics-and-power-bi-a-real-time-analytics-dashboard-for-streaming-data"></a>Stream Analytics und Power BI: Ein Dashboard zur Echtzeitanalyse von Streamingdaten
 
-Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Darüber hinaus erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden.
+Azure Stream Analytics ermöglicht Ihnen die Nutzung von [Microsoft Power BI](https://powerbi.com/), einem der führenden Business Intelligence-Tools. In diesem Artikel erfahren Sie, wie Sie Business Intelligence-Tools erstellen können, indem Sie Power BI als Ausgabe für Ihre Azure Stream Analytics-Aufträge verwenden. Außerdem erfahren Sie, wie Sie ein Echtzeitdashboard erstellen und verwenden, das vom Stream Analytics-Auftrag laufend aktualisiert wird.
 
 Dieser Artikel ist eine Fortsetzung des Stream Analytics-Tutorials [Erste Schritte mit Azure Stream Analytics: Betrugserkennung in Echtzeit](stream-analytics-real-time-fraud-detection.md). Er baut auf dem in diesem Tutorial erstellten Workflow auf, und es wird eine Power BI-Ausgabe hinzugefügt, damit Sie betrügerische Telefonanrufe visualisieren können, die von einem Stream Analytics-Auftrag erkannt werden. 
 
@@ -63,8 +63,8 @@ Im Tutorial zur Betrugsermittlung in Echtzeit wird die Ausgabe an Azure Blob Sto
 
 Das Dataset wird mit den folgenden Einstellungen erstellt:
 
-* **defaultRetentionPolicy: BasicFIFO** : Für die Daten gilt FIFO, mit maximal 200.000 Zeilen.
-* **defaultMode: pushStreaming** : Das Dataset unterstützt sowohl Streamingkacheln als auch herkömmliche berichtsbasierte Visualisierungen (auch „Push“ genannt).
+* **defaultRetentionPolicy: BasicFIFO**: Für die Daten gilt FIFO, mit maximal 200.000 Zeilen.
+* **defaultMode: hybrid**: Das Dataset unterstützt sowohl Streamingkacheln (auch „Push“ genannt) als auch herkömmliche berichtsbasierte Visuals. Bei Pushinhalten werden die Daten in diesem Fall laufend vom Stream Analytics-Auftrag aktualisiert, ohne dass eine Aktualisierung von Power BI-Seite geplant werden muss.
 
 Derzeit ist es nicht möglich, Datasets mit anderen Kennzeichen zu erstellen.
 
@@ -73,14 +73,14 @@ Weitere Informationen zu Power BI-Datasets finden Sie in der [Power BI-REST-API]
 
 ## <a name="write-the-query"></a>Schreiben der Abfrage
 
-1. Schließen Sie das Blatt **Ausgaben** , und wechseln Sie zurück zum Auftragsblatt.
+1. Schließen Sie das Blatt **Ausgaben**, und wechseln Sie zurück zum Auftragsblatt.
 
 2. Klicken Sie in das Feld **Abfrage**. 
 
 3. Geben Sie die folgende Abfrage ein. Diese Abfrage ähnelt der Selbstverknüpfungsabfrage, die Sie im Tutorial zur Betrugserkennung erstellt haben. Der Unterschied besteht darin, dass diese Abfrage Ergebnisse an die neue Ausgabe sendet, die Sie erstellt haben (`CallStream-PowerBI`). 
 
     >[!NOTE]
-    >Wenn Sie der Eingabe im Tutorial zur Betrugserkennung nicht den Namen `CallStream` gegeben haben, müssen Sie für `CallStream` in den **FROM** - und **JOIN** -Klauseln der Abfrage Ihren Namen einfügen.
+    >Wenn Sie der Eingabe im Tutorial zur Betrugserkennung nicht den Namen `CallStream` gegeben haben, müssen Sie für `CallStream` in den **FROM**- und **JOIN**-Klauseln der Abfrage Ihren Namen einfügen.
 
    ```SQL
    /* Our criteria for fraud:
@@ -121,7 +121,7 @@ Dieser Abschnitt ist optional, wird aber empfohlen.
 
 3. Geben Sie an, dass Sie Daten für einen Zeitraum von drei Minuten benötigen, und klicken Sie auf **OK**. Warten Sie auf die Benachrichtigung, dass die Beispieldaten erfasst wurden.
 
-4. Klicken Sie auf **Test** , und überprüfen Sie die Ergebnisse.
+4. Klicken Sie auf **Test**, und überprüfen Sie die Ergebnisse.
 
 ## <a name="run-the-job"></a>Ausführung des Auftrags.
 
@@ -148,7 +148,7 @@ Der Stream Analytics-Auftrag beginnt mit der Suche nach betrügerischen Anrufen,
 
     ![Erstellen und Benennen eines Dashboards im Power BI-Arbeitsbereich](./media/stream-analytics-power-bi-dashboard/pbi-create-dashboard-name.png)
 
-4. Klicken Sie oben im Fenster auf **Kachel hinzufügen** , wählen Sie die Option **BENUTZERDEFINIERTE STREAMINGDATEN** , und klicken Sie dann auf **Weiter**.
+4. Klicken Sie oben im Fenster auf **Kachel hinzufügen**, wählen Sie die Option **BENUTZERDEFINIERTE STREAMINGDATEN**, und klicken Sie dann auf **Weiter**.
 
     ![Benutzerdefinierte Kachel für Streamingdataset in Power BI](./media/stream-analytics-power-bi-dashboard/custom-streaming-data.png)
 
@@ -181,7 +181,7 @@ Der Stream Analytics-Auftrag beginnt mit der Suche nach betrügerischen Anrufen,
 
       ![Kachel zum Erstellen eines Liniendiagramms in Power BI](./media/stream-analytics-power-bi-dashboard/pbi-create-tile-line-chart.png)
 
-9. Klicken Sie auf **Weiter** , fügen Sie einen Titel und einen Untertitel hinzu, und klicken Sie auf **Übernehmen**.
+9. Klicken Sie auf **Weiter**, fügen Sie einen Titel und einen Untertitel hinzu, und klicken Sie auf **Übernehmen**.
 
      Im Power BI-Dashboard werden jetzt zwei Ansichten mit Daten zu betrügerischen Anrufen angezeigt, die in den Streamingdaten erkannt wurden.
 
@@ -223,7 +223,7 @@ Mit dieser Konfiguration können Sie die ursprüngliche Abfrage wie folgt änder
 ### <a name="renew-authorization"></a>Erneuern der Autorisierung
 Wenn das Kennwort seit der Erstellung oder letzten Authentifizierung Ihres Auftrags geändert wurde, müssen Sie Ihr Power BI-Konto erneut authentifizieren. Wenn Azure Multi-Factor Authentication auf Ihrem Azure Active Directory (Azure AD)-Mandanten konfiguriert ist, müssen Sie die Power BI-Autorisierung ebenfalls alle zwei Wochen erneuern. Wenn Sie sie nicht erneuern, erhalten Sie unter Umständen keine Auftragsausgabe, oder in den Vorgangsprotokollen tritt ein `Authenticate user error` (Benutzerauthentifizierungsfehler) auf.
 
-Wenn ein Auftrag gestartet wird, nachdem das Token abgelaufen ist, wird eine Fehlermeldung angezeigt, und die Ausführung des Auftrags ist nicht erfolgreich. Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe. Klicken Sie auf den Link **Autorisierung erneuern** , und starten Sie den Auftrag ab der **Letzten Beendigungszeit** neu, um Datenverlust zu vermeiden.
+Wenn ein Auftrag gestartet wird, nachdem das Token abgelaufen ist, wird eine Fehlermeldung angezeigt, und die Ausführung des Auftrags ist nicht erfolgreich. Um dieses Problem zu beheben, halten Sie den laufenden Auftrag an, und wechseln Sie zur Power BI-Ausgabe. Klicken Sie auf den Link **Autorisierung erneuern**, und starten Sie den Auftrag ab der **Letzten Beendigungszeit** neu, um Datenverlust zu vermeiden.
 
 Nachdem die Autorisierung mit Power BI aktualisiert wurde, wird im Autorisierungsbereich eine grüne Benachrichtigung angezeigt, die darauf hinweist, dass das Problem gelöst ist.
 

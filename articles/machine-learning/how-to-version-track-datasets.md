@@ -11,15 +11,14 @@ ms.reviewer: nibaccam
 ms.date: 03/09/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, data4ml
-ms.openlocfilehash: b4dc222ed0fc350b680d2696c1faa16d44b84a02
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 496a38e43c7bd624c42f5c7a43ad9cf16f85d166
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358336"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94579571"
 ---
 # <a name="version-and-track-datasets-in-experiments"></a>Versionieren und Nachverfolgen von Datasets in Experimenten
-
 
 In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Datasets für die Reproduzierbarkeit versionieren und nachverfolgen. Eine Datasetversionierung ermöglicht es, den Zustand der Daten zu markieren, sodass Sie eine bestimmte Version des Datasets für zukünftige Experimente verwenden können.
 
@@ -116,11 +115,11 @@ dataset2.register(workspace = workspace,
 
 <a name="pipeline"></a>
 
-## <a name="version-a-pipeline-output-dataset"></a>Version eines Pipelineausgabe-Datasets
+## <a name="version-an-ml-pipeline-output-dataset"></a>Version eines ML-Pipelineausgabe-Datasets
 
-Sie können ein Dataset als Eingabe und Ausgabe für jeden Schritt der Machine Learning-Pipeline verwenden. Wenn Sie Pipelines erneut ausführen, wird die Ausgabe der einzelnen Pipelineschritte als neue Datasetversion registriert.
+Sie können ein Dataset als Eingabe und Ausgabe für jeden Schritt der [ML-Pipeline](concept-ml-pipelines.md) verwenden. Wenn Sie Pipelines erneut ausführen, wird die Ausgabe der einzelnen Pipelineschritte als neue Datasetversion registriert.
 
-Da Machine Learning-Pipelines bei jeder erneuten Ausführung der Pipeline die Ausgabe jedes Schrittes in einen neuen Ordner ausgeben, sind die versionierten Ausgabedatasets reproduzierbar. Erfahren Sie mehr über [Datasets in Pipelines](how-to-create-your-first-pipeline.md#steps).
+ML-Pipelines füllen immer dann, wenn die Pipelines neu ausgeführt werden, die Ausgabe jedes Schritts in einen neuen Ordner. Dieses Verhalten ermöglicht, dass die versionsspezifischen Ausgabedatasets reproduzierbar sind. Erfahren Sie mehr über [Datasets in Pipelines](how-to-create-your-first-pipeline.md#steps).
 
 ```Python
 from azureml.core import Dataset
@@ -154,9 +153,36 @@ prep_step = PythonScriptStep(script_name="prepare.py",
 
 <a name="track"></a>
 
-## <a name="track-datasets-in-experiments"></a>Nachverfolgen von Datasets in Experimenten
+## <a name="track-datas-in-your-experiments"></a>Nachverfolgen von Daten in Ihren Experimenten
 
-Sie können die als Eingabe verwendeten Datasets für jedes Machine Learning-Experiment einfach über das `Run`-Objekt des Experiments nachverfolgen.
+Azure Machine Learning verfolgt Ihre Daten im gesamten Experiment als Eingabe- und Ausgabedatasets nach.  
+
+Im Folgenden finden Sie Szenarios, in denen Ihre Daten als **Eingabedataset** nachverfolgt werden. 
+
+* Beim Übermitteln der Experimentausführung entweder über den `inputs`- oder `arguments`-Parameter des `ScriptRunConfig`-Objekts als `DatasetConsumptionConfig`-Objekt. 
+
+* Wenn Methoden wie get_by_name() oder get_by_id() im Skript aufgerufen werden. In diesem Szenario wird der Name angezeigt, der dem Dataset bei der Registrierung im Arbeitsbereich zugewiesen wurde. 
+
+Im Folgenden finden Sie Szenarios, in denen Ihre Daten als **Ausgabedataset** nachverfolgt werden.  
+
+* Übergeben Sie ein `OutputFileDatasetConfig`-Objekt entweder über den `outputs`- oder `arguments`-Parameter, wenn eine Experimentausführung gesendet wird. `OutputFileDatasetConfig`-Objekte können auch verwendet werden, um Daten zwischen Pipelineschritten beizubehalten. Weitere Informationen finden Sie unter [Verschieben von Daten in ML-Pipelineschritte und zwischen ML-Pipelineschritten (Python)](how-to-move-data-in-out-of-pipelines.md).
+    > [!TIP]
+    > [`OutputFileDatasetConfig`](/python/api/azureml-core/azureml.data.outputfiledatasetconfig?preserve-view=true&view=azure-ml-py) ist eine Klasse in der öffentlichen Vorschau mit [experimentellen](/python/api/overview/azure/ml/?preserve-view=true&view=azure-ml-py#&preserve-view=truestable-vs-experimental) Vorschaufeatures, die sich jederzeit ändern können.
+
+* Registrieren Sie ein Dataset in Ihrem Skript. In diesem Szenario wird der Name angezeigt, der dem Dataset bei der Registrierung im Arbeitsbereich zugewiesen wurde. Im folgenden Beispiel ist `training_ds` der Name, der angezeigt würde.
+
+    ```Python
+   training_ds = unregistered_ds.register(workspace = workspace,
+                                     name = 'training_ds',
+                                     description = 'training data'
+                                     )
+    ```
+
+* Übermitteln Sie die untergeordnete Ausführung mit einem nicht registrierten Dataset im Skript. Dies führt zu einem anonymen gespeicherten Dataset.
+
+### <a name="trace-datasets-in-experiment-runs"></a>Ablaufverfolgung von Datasets in Experimentausführungen
+
+Sie können die als Eingabe verwendeten Datasets für jedes Machine Learning-Experiment einfach mit dem `Run`-Objekt des Experiments nachverfolgen.
 
 Im folgenden Code wird die [`get_details()`](/python/api/azureml-core/azureml.core.run.run?preserve-view=true&view=azure-ml-py#&preserve-view=trueget-details--)-Methode verwendet, um nachzuverfolgen, welche Eingabedatasets bei der Ausführung des Experiments verwendet wurden:
 
@@ -169,9 +195,9 @@ input_dataset = inputs[0]['dataset']
 input_dataset.to_path()
 ```
 
-Die `input_datasets` aus den Experimenten können Sie auch anhand von https://ml.azure.com/ suchen. 
+Die `input_datasets` aus den Experimenten können Sie auch mit [Azure Machine Learning Studio]() suchen. 
 
-Die folgende Abbildung zeigt, wo Sie das Eingabedataset eines Experiments im Azure Machine Learning Studio finden. Wechseln Sie in diesem Beispiel zum Bereich **Experimente** , und öffnen Sie die Registerkarte **Eigenschaften** für eine bestimmte Ausführung Ihres Experiments, `keras-mnist`.
+Die folgende Abbildung zeigt, wo Sie das Eingabedataset eines Experiments im Azure Machine Learning Studio finden. Wechseln Sie in diesem Beispiel zum Bereich **Experimente**, und öffnen Sie die Registerkarte **Eigenschaften** für eine bestimmte Ausführung Ihres Experiments, `keras-mnist`.
 
 ![Eingabedatasets](./media/how-to-version-track-datasets/input-datasets.png)
 
@@ -183,7 +209,7 @@ model = run.register_model(model_name='keras-mlp-mnist',
                            datasets =[('training data',train_dataset)])
 ```
 
-Nach der Registrierung können Sie die Liste der mit dem Dataset registrierten Modelle mit Python oder unter https://ml.azure.com/ einsehen.
+Nach der Registrierung können Sie die Liste der mit dem Dataset registrierten Modelle mit Python oder im [Studio](https://ml.azure.com/) einsehen.
 
 Die folgende Ansicht stammt aus dem Bereich **Datasets** unter **Objekte**. Wählen Sie das Dataset und dann die Registerkarte **Modelle** aus, um eine Liste der Modelle anzuzeigen, die mit dem Dataset registriert sind. 
 

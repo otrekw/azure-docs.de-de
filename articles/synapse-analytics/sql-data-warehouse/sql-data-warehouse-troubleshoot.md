@@ -7,16 +7,16 @@ manager: craigg
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.subservice: sql-dw
-ms.date: 02/04/2019
+ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: a50554c73958400f1f16348d3b8fb2bac88ac61b
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: e9811710971b411aaaed64ec0072dcf7b6b116d3
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340276"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630055"
 ---
 # <a name="troubleshooting-synapse-sql-in-azure-synapse-analytics"></a>Problembehandlung für Synapse SQL in Azure Synapse Analytics
 
@@ -39,6 +39,12 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung in Synaps
 | Im Objekt-Explorer von Visual Studio fehlen Azure AD-Benutzer           | Dies ist ein bekanntes Problem.  Sie können die Benutzer in [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) anzeigen, um dieses Problem zu umgehen.  Weitere Informationen zur Verwendung von Azure Active Directory beim dedizierten SQL-Pool finden Sie unter [Authentifizierung in Azure Synapse](sql-data-warehouse-authentication.md). |
 | Manuelle, über den Assistenten für die Skripterstellung erstellte Skripts oder über SSMS hergestellte Verbindungen sind langsam, reagieren nicht mehr oder erzeugen Fehler | Vergewissern Sie sich, dass Benutzer in der Masterdatenbank erstellt wurden. Stellen Sie zudem in den Skriptoptionen sicher, dass die Engine-Edition auf „Microsoft Azure Synapse Analytics Edition“ und der Engine-Typ auf „Microsoft Azure SQL-Datenbank“ festgelegt ist. |
 | Fehler beim Generieren von Skripts in SSMS                               | Beim Generieren eines Skripts für den dedizierten SQL-Pool tritt ein Fehler auf, wenn die Option „Skript für abhängige Objekte generieren“ auf „True“ festgelegt ist. Um dieses Problem zu umgehen, müssen Benutzer manuell zu **Extras > Optionen > SQL Server-Objekt-Explorer > Skript für abhängige Objekte generieren** navigieren und diese Option auf FALSE festlegen. |
+
+## <a name="data-ingestion-and-preparation"></a>Datenerfassung und -vorbereitung
+
+| Problem                                                        | Lösung                                                   |
+| :----------------------------------------------------------- | :----------------------------------------------------------- |
+| Das Exportieren leerer Zeichenfolgen mithilfe von CETAS führt in Parquet- und ORC-Dateien zu NULL-Werten. Beachten Sie: Wenn Sie leere Zeichenfolgen aus Spalten mit NOT NULL-Einschränkungen exportieren, führt CETAS zu abgelehnten Datensätzen, und möglicherweise ist der Export nicht möglich. | Entfernen Sie leere Zeichenfolgen oder die problematische Spalte aus der SELECT-Anweisung Ihres CETAS-Befehls. |
 
 ## <a name="performance"></a>Leistung
 

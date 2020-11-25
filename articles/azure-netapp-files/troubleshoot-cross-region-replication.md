@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 09/16/2020
+ms.date: 11/17/2020
 ms.author: b-juche
-ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90708434"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94745682"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Problembehandlung für die regionsübergreifende Replikation
 
@@ -50,6 +50,7 @@ In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Si
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     Überprüfen Sie, ob die Replikation entweder unterbrochen oder deinitialisiert wurde und sich im Leerlauf befindet (Initialisierungsfehler).    |
 |     `Cannot delete   source replication`    |     Das Löschen der Replikation auf Quellseite ist nicht zulässig. Sorgen Sie dafür, dass die Replikation auf Zielseite gelöscht wird.    |
+| `Volume with replication cannot be deleted`  |  Löschen Sie die Replikation, bevor Sie das Volume löschen. Weitere Informationen finden Sie unter [Löschen von Replikationen](cross-region-replication-delete.md). Für diesen Vorgang müssen Sie das Peering unterbrechen, bevor Sie die Replikation für das Volume löschen. 
 
 ## <a name="errors-resyncing-volume"></a>Fehler bei Neusynchronisierung eines Volumes
 

@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
-ms.openlocfilehash: 20e255958cbd90aaddf060e42d7627c1e1ebec88
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 1f8cb98ea36fdad9a67eca26c6fbea7ede1f811a
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371459"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94627879"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Verwenden verwalteter Identitäten in Azure Kubernetes Service
 
@@ -27,7 +27,6 @@ Die folgenden Ressourcen müssen installiert sein:
 ## <a name="limitations"></a>Einschränkungen
 
 * AKS-Cluster mit verwalteten Identitäten können nur während der Erstellung des Clusters aktiviert werden.
-* Vorhandene AKS-Cluster können nicht zu verwalteten Identitäten migriert werden.
 * Während eines **Upgradevorgangs** des Clusters ist die verwaltete Identität vorübergehend nicht verfügbar.
 * Das Verschieben/Migrieren von Clustern mit aktivierter verwalteter Identität wird für Mandanten nicht unterstützt.
 * Wenn für den Cluster `aad-pod-identity` aktiviert wurde, werden die IPTables der Knoten von NMI-Pods (Node Managed Identity) so geändert, dass Aufrufe für den Azure Instance Metadata-Endpunkt abgefangen werden. Diese Konfiguration bedeutet, dass jede Anforderung, die an den Metadatenendpunkt gerichtet ist, von NMI abgefangen wird, auch wenn `aad-pod-identity` vom Pod nicht verwendet wird. Die AzurePodIdentityException-CRD kann so konfiguriert werden, dass `aad-pod-identity` darüber informiert wird, dass an den Metadatenendpunkt gerichtete Anforderungen, die von einem Pod stammen, der in der CRD definierte Bezeichnungen abgleicht, ohne Verarbeitung in NMI über einen Proxy zu senden sind. Die Systempods mit der Bezeichnung `kubernetes.azure.com/managedby: aks` im Namespace _kube-system_ müssen in `aad-pod-identity` durch Konfiguration der AzurePodIdentityException-CRD ausgeschlossen werden. Weitere Informationen finden Sie unter [Disable aad-pod-identity for a specific pod or application (Deaktivieren von „aad-pod-identity“ für einen bestimmten Pod oder eine bestimmte Anwendung)](https://azure.github.io/aad-pod-identity/docs/configure/application_exception).
@@ -106,6 +105,23 @@ Rufen Sie schließlich Anmeldeinformationen für den Zugriff auf den Cluster ab:
 ```azurecli-interactive
 az aks get-credentials --resource-group myResourceGroup --name myManagedCluster
 ```
+## <a name="update-an-existing-service-principal-based-aks-cluster-to-managed-identities"></a>Aktualisieren eines vorhandenen dienstprinzipalbasierten AKS-Clusters auf verwaltete Identitäten
+
+Sie können jetzt einen AKS-Cluster mit verwalteten Identitäten aktualisieren, indem Sie die folgenden CLI-Befehle verwenden.
+
+Aktualisieren Sie zuerst die systemseitig zugewiesene Identität:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity
+```
+
+Aktualisieren Sie dann die benutzerseitig zugewiesene Identität:
+
+```azurecli-interactive
+az aks update -g <RGName> -n <AKSName> --enable-managed-identity --assign-identity <UserAssignedIdentityResourceID> 
+```
+> [!NOTE]
+> Sobald die systemseitig oder benutzerseitig zugewiesenen Identitäten auf die verwaltete Identität aktualisiert sind, führen Sie ein `az nodepool upgrade --node-image-only` auf Ihren Knoten aus, um das Update der verwalteten Identität abzuschließen.
 
 ## <a name="bring-your-own-control-plane-mi-preview"></a>Verwenden einer eigenen verwalteten Identität für die Steuerungsebene (Vorschauversion)
 Eine benutzerdefinierte Steuerungsebenenidentität ermöglicht den Zugriff auf die vorhandene Identität vor der Clustererstellung. Dies ermöglicht beispielsweise die Verwendung eines benutzerdefinierten VNET oder des ausgehenden Typs (outboundType) „UDR“ mit einer verwalteten Identität.

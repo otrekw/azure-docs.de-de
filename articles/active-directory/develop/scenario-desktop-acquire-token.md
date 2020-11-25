@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 05/18/2020
+ms.date: 11/04/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
-ms.openlocfilehash: 8608da33c747f76452a0106e4e2737849e06a75c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: cdda14bb579fc94414f9da89b8b1f1aa04ec3bf5
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94443227"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628100"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Desktop-App, die Web-APIs aufruft: Abrufen eines Token
 
@@ -183,7 +183,7 @@ Bei Android müssen Sie außerdem mit `.WithParentActivityOrWindow` die übergeo
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Die Benutzeroberfläche ist wichtig, da sie interaktiv ist. `AcquireTokenInteractive` hat einen speziellen optionalen Parameter, der für die unterstützenden Plattformen die übergeordnete Benutzeroberfläche angeben kann. Bei Verwendung in einer Desktopanwendung weist `.WithParentActivityOrWindow` je nach Plattform einen anderen Typ auf. Alternativ können Sie beim Erstellen eines Fensters auf den optionalen Parameter für das übergeordnete Fenster verzichten, wenn Sie nicht steuern möchten, wo das Anmeldedialogfeld auf dem Bildschirm angezeigt wird. Diese Vorgehensweise würde sich für befehlszeilenbasierte Anwendungen eignen und zum Weiterleiten von Aufrufen an andere Back-End-Dienste verwendet werden. Dabei werden keine Fenster für die Benutzerinteraktion benötigt. 
+Die Benutzeroberfläche ist wichtig, da sie interaktiv ist. `AcquireTokenInteractive` hat einen speziellen optionalen Parameter, der für die unterstützenden Plattformen die übergeordnete Benutzeroberfläche angeben kann. Bei Verwendung in einer Desktopanwendung weist `.WithParentActivityOrWindow` je nach Plattform einen anderen Typ auf. Alternativ können Sie beim Erstellen eines Fensters auf den optionalen Parameter für das übergeordnete Fenster verzichten, wenn Sie nicht steuern möchten, wo das Anmeldedialogfeld auf dem Bildschirm angezeigt wird. Diese Vorgehensweise würde sich für befehlszeilenbasierte Anwendungen eignen und zum Weiterleiten von Aufrufen an andere Back-End-Dienste verwendet werden. Dabei werden keine Fenster für die Benutzerinteraktion benötigt.
 
 ```csharp
 // net45
@@ -278,7 +278,7 @@ Das MSAL.NET-Team hat die Benutzeroberflächentests so umgeschrieben, dass Sie d
 
 ##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Mehr Benutzerfreundlichkeit mit SystemWebViewOptions
 
-Von MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) können Sie Folgendes angeben:
+Von MSAL.NET 4.1 [`SystemWebViewOptions`](/dotnet/api/microsoft.identity.client.systemwebviewoptions) können Sie Folgendes angeben:
 
 - URI, zu dem navigiert werden soll (`BrowserRedirectError`), oder das anzuzeigende HTML-Fragment (`HtmlMessageError`), wenn Anmelde- oder Einwilligungsfehler im Systemwebbrowser auftreten.
 - URI, zu dem navigiert werden soll (`BrowserRedirectSuccess`), oder das bei erfolgreicher Anmeldung oder Einwilligung anzuzeigende HTML-Fragment (`HtmlMessageSuccess`).
@@ -304,7 +304,7 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Andere optionale Parameter
 
-Informationen zu allen anderen optionalen Parametern für `AcquireTokenInteractive` finden Sie unter [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
+Informationen zu allen anderen optionalen Parametern für `AcquireTokenInteractive` finden Sie unter [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -532,7 +532,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Die Liste der möglichen Modifizierer für AcquireTokenByIntegratedWindowsAuthentication finden Sie unter [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
+Die Liste der möglichen Modifizierer für AcquireTokenByIntegratedWindowsAuthentication finden Sie unter [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -602,7 +602,7 @@ Sie können ein Token auch abrufen, indem Sie Benutzername und Kennwort angeben.
 
 ### <a name="this-flow-isnt-recommended"></a>Dieser Flow wird nicht empfohlen.
 
-Dieser Flow wird *nicht empfohlen* , da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
+Dieser Flow wird *nicht empfohlen*, da es nicht sicher ist, wenn die Anwendung das Kennwort des Benutzers abfragt. Weitere Informationen finden Sie unter [What's the solution to the growing problem of passwords? (Wie sich das zunehmende Problem der Passwörter lösen lässt.)](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). Der bevorzugte Flow für das automatische Abrufen eines Tokens auf Computern in Windows-Domänen ist die [integrierte Windows-Authentifizierung](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Sie können auch den [Gerätecodeflow](https://aka.ms/msal-net-device-code-flow) verwenden.
 
 > [!NOTE]
 > In manchen Fällen ist auch die Verwendung eines Benutzernamens und Kennworts hilfreich, z. B. in DevOps-Szenarien. Wenn Sie jedoch Benutzernamen und Kennwort in interaktiven Szenarien verwenden möchten, in denen Sie Ihre eigene Benutzeroberfläche bereitstellen, sollten Sie sich Gedanken darüber machen, wie Sie das ändern können. Durch die Verwendung von Benutzername und Kennwort geben Sie eine Reihe von Vorteilen auf:
@@ -832,7 +832,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-Weitere Informationen zu allen Modifizierern, die auf `AcquireTokenByUsernamePassword` angewendet werden können, finden Sie unter [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
+Weitere Informationen zu allen Modifizierern, die auf `AcquireTokenByUsernamePassword` angewendet werden können, finden Sie unter [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder#methods).
 
 # <a name="java"></a>[Java](#tab/java)
 
@@ -1169,7 +1169,7 @@ Klassen und Schnittstellen, die an der Serialisierung über den Tokencache betei
 > [!IMPORTANT]
 > MSAL.NET erstellt automatisch Tokencaches und stellt den `IToken`-Cache für Sie bereit, wenn Sie die `UserTokenCache`-Methode und die `AppTokenCache`-Eigenschaften einer Anwendung aufrufen. Sie müssen die Schnittstelle nicht selbst implementieren. Beim Implementieren einer benutzerdefinierten Serialisierung des Tokencaches müssen Sie folgende Aufgaben ausführen:
 >
-> - Sie müssen auf Ereignisse vom Typ `BeforeAccess` und `AfterAccess` (oder auf deren *Async* -Pendant) reagieren. Der `BeforeAccess`-Delegat ist für das Deserialisieren des Caches verantwortlich. Der `AfterAccess`-Delegat ist für das Serialisieren des Caches verantwortlich.
+> - Sie müssen auf Ereignisse vom Typ `BeforeAccess` und `AfterAccess` (oder auf deren *Async*-Pendant) reagieren. Der `BeforeAccess`-Delegat ist für das Deserialisieren des Caches verantwortlich. Der `AfterAccess`-Delegat ist für das Serialisieren des Caches verantwortlich.
 > - Denken Sie daran, dass einige dieser Ereignisse Blobs speichern oder laden, die über das Ereignisargument an den gewünschten Speicher übergeben werden.
 
 Die Strategien variieren, je nachdem, ob Sie eine Tokencacheserialisierung für eine öffentliche Clientanwendung (z. B. ein Desktop) oder eine vertrauliche Clientanwendung (z. B. Web-App oder Web-API bzw. Daemon-App) schreiben.
@@ -1387,6 +1387,10 @@ namespace CommonCacheMsalV3
  }
 }
 ```
+
+## <a name="advanced-accessing-the-users-cached-tokens-in-background-apps-and-services"></a>(Erweitert) Zugreifen auf die zwischengespeicherten Token des Benutzers in Hintergrund-Apps und Diensten
+
+[!INCLUDE [advanced-token-caching](../../../includes/advanced-token-cache.md)]
 
 ## <a name="next-steps"></a>Nächste Schritte
 

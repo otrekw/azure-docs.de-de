@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 47ac8d0e3172645ec168d5cfe7a002d84765b864
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7f4238035a6fccb0addb9a481287b31732bd2662
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333119"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94744534"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -68,7 +68,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Kann ich ein Abonnement in einer Resource Manager-Vorlage erstellen?**
 
-  Noch nicht, aber wir arbeiten daran.
+  Ja. Weitere Informationen finden Sie unter [Programmgesteuertes Erstellen von Azure-Abonnements mit den neuesten APIs](../../cost-management-billing/manage/programmatically-create-subscription.md).
 
 * **Wie kann ich meine Vorlage vor der Bereitstellung testen?**
 
@@ -104,9 +104,9 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 ## <a name="template-specs"></a>Vorlagenspezifikationen
 
-* **Wie kann ich an der Vorschauversion von Vorlagenspezifikationen beteiligt werden?**
+* **Wie kann ich die Vorschauversion von Vorlagenspezifikationen verwenden?**
 
-  Melden sie sich für die [Warteliste](https://aka.ms/templateSpecsWaitlist) für Vorlagenspezifikationen an.
+  Installieren Sie die aktuelle Version von PowerShell oder der Azure CLI. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
 
 * **Was ist der Zusammenhang zwischen Vorlagenspezifikationen und Azure Blueprints?**
 

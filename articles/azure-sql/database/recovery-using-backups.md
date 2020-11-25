@@ -11,13 +11,13 @@ ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein, danil
-ms.date: 09/26/2019
-ms.openlocfilehash: 334495eeef410c42fb45445c400a86ff1b777061
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.date: 11/13/2020
+ms.openlocfilehash: 415c9fdcbf0e8bfecaa48b8199702d4159bc32d9
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790337"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94629188"
 ---
 # <a name="recover-using-automated-database-backups---azure-sql-database--sql-managed-instance"></a>Azure SQL-Datenbank und SQL Managed Instance: Wiederherstellen automatisierter Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -107,6 +107,9 @@ Sie können eine gelöschte Datenbank auf demselben Server oder in der gleichen 
 ### <a name="deleted-database-restore-by-using-the-azure-portal"></a>Wiederherstellen einer gelöschten Datenbank im Azure-Portal
 
 Die Wiederherstellung gelöschter Datenbanken über das Azure-Portal erfolgt aus der Ressource für den Server oder die verwaltete Instanz.
+
+> [!TIP]
+> Es kann einige Minuten dauern, bis kürzlich gelöschte Datenbanken auf der Seite **Gelöschte Datenbanken** im Azure-Portal angezeigt werden, oder wenn gelöschte Datenbanken [programmgesteuert](#programmatic-recovery-using-automated-backups) angezeigt werden.
 
 #### <a name="sql-database"></a>SQL-Datenbank
 

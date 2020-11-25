@@ -2,13 +2,13 @@
 title: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage
 description: Erfahren Sie, wie Sie eine vorhandene Vorlagenspezifikation in einer verknüpften Bereitstellung bereitstellen.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: 9755774f79ee4901c8aa691054da749f37756742
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: 65ad5767817457133d0fbc34c7735cf52ff2c3f3
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321581"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747467"
 ---
 # <a name="tutorial-deploy-a-template-spec-as-a-linked-template-preview"></a>Tutorial: Bereitstellen einer Vorlagenspezifikation als verknüpfte Vorlage (Vorschau)
 
@@ -19,7 +19,7 @@ Erfahren Sie, wie Sie eine vorhandene [Vorlagenspezifikation](template-specs.md)
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/templateSpecOnboarding).
+> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zu ihrer Verwendung müssen Sie die aktuelle Version von PowerShell oder der Azure CLI installieren. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
 
 ## <a name="create-a-template-spec"></a>Erstellen einer Vorlagenspezifikation
 

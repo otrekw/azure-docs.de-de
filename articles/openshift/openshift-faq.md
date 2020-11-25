@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 07/31/2020
-ms.openlocfilehash: a8b5ec48b64341ad9eabd087d7ee20bb703198c6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c09f741b37e06010a0bfbab40317980793240e29
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816234"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94683504"
 ---
 # <a name="azure-red-hat-openshift-faq"></a>Häufig gestellte Fragen zu Azure Red Hat OpenShift
 
@@ -186,13 +186,13 @@ Weitere Informationen finden Sie in der OpenShift-Dokumentation unter dem Thema 
 
 ### <a name="which-unix-rights-in-iaas-are-available-for-mastersinfraapp-nodes"></a>Welche UNIX-Rechte (in IaaS) sind für Master/Infra/App-Knoten verfügbar?
 
-Für Cluster der Version 4.x ist der Knotenzugriff über die Clusteradministratorrolle verfügbar. Weitere Informationen finden Sie unter [Übersicht über RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+Für Cluster der Version 4.x ist der Knotenzugriff über die Clusteradministratorrolle verfügbar. Weitere Informationen finden Sie in der [Übersicht über Kubernetes RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 Bei Clustern der Version 3.11 ist der Knotenzugriff unzulässig.
 
 ### <a name="which-ocp-rights-do-we-have-cluster-admin-project-admin"></a>Welche OCP-Rechte haben wir? Clusteradministrator? Projektadministrator?
 
-Bei Clustern der Version 4.x ist die Clusteradministratorrolle verfügbar. Weitere Informationen finden Sie unter [Übersicht über RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
+Bei Clustern der Version 4.x ist die Clusteradministratorrolle verfügbar. Weitere Informationen finden Sie in der [Übersicht über Kubernetes RBAC](https://docs.openshift.com/container-platform/4.3/authentication/using-rbac.html).
 
 Informationen zu Clustern der Version 3.11 finden Sie in der Übersicht über die [Clusterverwaltung](https://docs.openshift.com/aro/admin_guide/index.html).
 

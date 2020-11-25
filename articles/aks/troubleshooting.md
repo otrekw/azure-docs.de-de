@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie allgemeine Probleme bei der Verwendung von Az
 services: container-service
 ms.topic: troubleshooting
 ms.date: 06/20/2020
-ms.openlocfilehash: d15e381baf3abdb77f63b17cbd1d33b24f5d3321
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: aefb33325c1a5bf8e94d47106147d4c7c4f0f1ca
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286763"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684167"
 ---
 # <a name="aks-troubleshooting"></a>AKS-Problembehandlung
 
@@ -46,7 +46,7 @@ In den folgenden drei (3) Fällen tritt ein Fehler aufgrund unzureichender Subne
    1. Bei Verwendung von Kubenet tritt dieser Fehler auf, wenn `number of free IPs in the subnet` **kleiner ist als** `number of buffer nodes needed to upgrade`.
    1. Bei Verwendung von Azure CNI tritt dieser Fehler auf, wenn `number of free IPs in the subnet` **kleiner ist als** `number of buffer nodes needed to upgrade times (*) the node pool's --max-pod value`.
    
-   Standardmäßig ist für AKS-Cluster der maximale Anstiegswert (Upgradepuffer) „1“ festgelegt. Dieses Upgradeverhalten kann jedoch durch Festlegen des [maximalen Anstiegswerts eines Knotenpools](upgrade-cluster.md#customize-node-surge-upgrade-preview) angepasst werden, indem die Anzahl der zum Durchführen eines Upgrades erforderlichen verfügbaren IP-Adressen erhöht wird.
+   Standardmäßig ist für AKS-Cluster der maximale Anstiegswert (Upgradepuffer) „1“ festgelegt. Dieses Upgradeverhalten kann jedoch durch Festlegen des [maximalen Anstiegswerts eines Knotenpools](upgrade-cluster.md#customize-node-surge-upgrade) angepasst werden, indem die Anzahl der zum Durchführen eines Upgrades erforderlichen verfügbaren IP-Adressen erhöht wird.
 
 1. AKS-Erstellung oder AKS-Knotenpool-Hinzufügung
    1. Bei Verwendung von Kubenet tritt dieser Fehler auf, wenn `number of free IPs in the subnet` **kleiner ist als** `number of nodes requested for the node pool`.
@@ -86,17 +86,17 @@ AKS verfügt über Steuerungsebenen mit Hochverfügbarkeit, die vertikal nach de
 
 Diese Timeouts können damit zusammenhängen, dass interner Datenverkehr zwischen Knoten blockiert wird. Vergewissern Sie sich, dass dieser Datenverkehr nicht blockiert wird, etwa von [Netzwerksicherheitsgruppen](concepts-security.md#azure-network-security-groups) im Subnetz für die Clusterknoten.
 
-## <a name="im-trying-to-enable-role-based-access-control-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ich versuche, rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) in einem vorhandenen Cluster zu aktivieren. Wie gehe ich dazu vor?
+## <a name="im-trying-to-enable-kubernetes-role-based-access-control-kubernetes-rbac-on-an-existing-cluster-how-can-i-do-that"></a>Ich versuche, rollenbasierte Zugriffssteuerung in Kubernetes (Kubernetes RBAC) in einem vorhandenen Cluster zu aktivieren. Wie gehe ich dazu vor?
 
-Eine Aktivierung der rollenbasierten Zugriffssteuerung (RBAC) in vorhandenen Clustern wird derzeit nicht unterstützt. Sie muss beim Erstellen neuer Cluster eingestellt werden. RBAC ist standardmäßig aktiviert, wenn Sie die CLI, das Portal oder eine höhere API-Version als `2020-03-01` verwenden.
+Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes RBAC) in vorhandenen Clustern wird derzeit nicht unterstützt. Sie muss beim Erstellen neuer Cluster eingestellt werden. Kubernetes RBAC ist standardmäßig aktiviert, wenn Sie die CLI, das Portal oder eine höhere API-Version als `2020-03-01` verwenden.
 
-## <a name="i-created-a-cluster-with-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ich habe einen Cluster mit aktivierter RBAC erstellt, und auf dem Kubernetes-Dashboard werden nun viele Warnungen angezeigt. Das Dashboard hat vorher ohne Warnungen funktioniert. Wie sollte ich vorgehen?
+## <a name="i-created-a-cluster-with-kubernetes-rbac-enabled-and-now-i-see-many-warnings-on-the-kubernetes-dashboard-the-dashboard-used-to-work-without-any-warnings-what-should-i-do"></a>Ich habe einen Cluster mit aktivierter Kubernetes RBAC erstellt, und auf dem Kubernetes-Dashboard werden nun viele Warnungen angezeigt. Das Dashboard hat vorher ohne Warnungen funktioniert. Wie sollte ich vorgehen?
 
-Der Grund für die Warnungen ist, dass für den Cluster RBAC aktiviert und der Zugriff auf das Dashboard jetzt standardmäßig eingeschränkt ist. Dieser Ansatz gilt allgemein als bewährte Methode, da die standardmäßige Offenlegung des Dashboards für alle Benutzer des Clusters zu Sicherheitsrisiken führen kann. Wenn Sie das Dashboard weiterhin aktivieren möchten, befolgen Sie die Schritte in [diesem Blogbeitrag](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
+Der Grund für die Warnungen ist, dass für den Cluster Kubernetes RBAC aktiviert und der Zugriff auf das Dashboard jetzt standardmäßig eingeschränkt ist. Dieser Ansatz gilt allgemein als bewährte Methode, da die standardmäßige Offenlegung des Dashboards für alle Benutzer des Clusters zu Sicherheitsrisiken führen kann. Wenn Sie das Dashboard weiterhin aktivieren möchten, befolgen Sie die Schritte in [diesem Blogbeitrag](https://pascalnaber.wordpress.com/2018/06/17/access-dashboard-on-aks-with-rbac-enabled/).
 
 ## <a name="i-cant-get-logs-by-using-kubectl-logs-or-i-cant-connect-to-the-api-server-im-getting-error-from-server-error-dialing-backend-dial-tcp-what-should-i-do"></a>Ich kann Protokolle nicht mithilfe von kubectl-Protokollen abrufen, oder ich kann keine Verbindung mit dem API-Server herstellen. Ich erhalte „Fehler vom Server: Fehler beim Anwählen des Back-Ends: Wählen Sie tcp…“. Wie sollte ich vorgehen?
 
-Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system* -Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
+Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
 ## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
 
@@ -154,10 +154,10 @@ Führen Sie die Schritte unter *Voraussetzungen* im entsprechenden Dokument aus,
 Benennungseinschränkungen werden sowohl von der Azure-Plattform als auch AKS implementiert. Verletzt ein Ressourcenname oder Parameter eine dieser Einschränkungen, wird ein Fehler zurückgegeben, der Sie auffordert, eine andere Eingabe zu machen. Es gelten die folgenden allgemeinen Benennungsrichtlinien:
 
 * Clusternamen müssen zwischen 1 und 63 Zeichen lang sein. Die einzigen zulässigen Zeichen sind Buchstaben, Ziffern, Bindestriche und Unterstriche. Das erste und das letzte Zeichen müssen ein Buchstabe oder eine Zahl sein.
-* Der Name der AKS-Knoten-/ *MC_* -Ressourcengruppe ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen. Sie können auch [den Namen der Knotenressourcengruppe anpassen](cluster-configuration.md#custom-resource-group-name).
+* Der Name der AKS-Knoten-/*MC_* -Ressourcengruppe ist eine Kombination aus Ressourcengruppenname und Ressourcenname. Die automatisch generierte Syntax von `MC_resourceGroupName_resourceName_AzureRegion` darf nicht mehr als 80 Zeichen umfassen. Kürzen Sie bei Bedarf Ihren Ressourcengruppennamen oder AKS-Clusternamen. Sie können auch [den Namen der Knotenressourcengruppe anpassen](cluster-configuration.md#custom-resource-group-name).
 * Das *dnsPrefix* muss mit alphanumerischen Werten beginnen und enden und zwischen 1 und 54 Zeichen lang sein. Gültige Zeichen sind alphanumerische Werte und Bindestriche (-). Das *dnsPrefix* darf keine Sonderzeichen wie z.B. einen Punkt (.) enthalten.
 * AKS-Knotenpoolnamen müssen aus Kleinbuchstaben bestehen und für Linux-Knotenpools und 1-11 Zeichen und für Windows-Knotenpools 1-6 Zeichen lang sein. Der Name muss mit einem Buchstaben beginnen, und die einzigen zulässigen Zeichen sind Buchstaben und Ziffern.
-* Der *admin-username* , der den Administratorbenutzernamen für Linux-Knoten festlegt, muss mit einem Buchstaben beginnen, darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten und maximal 64 Zeichen lang sein.
+* Der *admin-username*, der den Administratorbenutzernamen für Linux-Knoten festlegt, muss mit einem Buchstaben beginnen, darf nur Buchstaben, Ziffern, Bindestriche und Unterstriche enthalten und maximal 64 Zeichen lang sein.
 
 ## <a name="im-receiving-errors-when-trying-to-create-update-scale-delete-or-upgrade-cluster-that-operation-is-not-allowed-as-another-operation-is-in-progress"></a>Wenn ich versuche, einen Cluster zu erstellen, zu aktualisieren, zu skalieren, zu löschen oder zu aktualisieren, erhalte ich die Fehlermeldung, dass dieser Vorgang nicht erlaubt ist, da ein anderer Vorgang ausgeführt wird.
 
@@ -167,7 +167,7 @@ Clustervorgänge sind nur eingeschränkt möglich, wenn ein vorheriger Vorgang n
 
 Basierend auf der Ausgabe des Status des Clusters:
 
-* Wenn sich der Cluster in einem anderen Bereitstellungsstatus als *Erfolgreich* oder *Fehler* befindet, warten Sie, bis der Vorgang ( *Upgrade/Aktualisieren/Erstellen/Skalieren/Löschen/Migrieren* ) abgeschlossen ist. Sobald der vorherige Vorgang abgeschlossen ist, wiederholen Sie Ihren letzten Clustervorgang.
+* Wenn sich der Cluster in einem anderen Bereitstellungsstatus als *Erfolgreich* oder *Fehler* befindet, warten Sie, bis der Vorgang (*Upgrade/Aktualisieren/Erstellen/Skalieren/Löschen/Migrieren*) abgeschlossen ist. Sobald der vorherige Vorgang abgeschlossen ist, wiederholen Sie Ihren letzten Clustervorgang.
 
 * Wenn im Cluster ein fehlerhaftes Upgrade erfolgt, befolgen Sie die Anweisungen unter [Ich erhalte Fehler, dass sich mein Cluster in einem fehlerhaften Zustand befindet und ein Upgrade oder eine Skalierung nicht funktioniert, bis der Fehler behoben wurde](#im-receiving-errors-that-my-cluster-is-in-failed-state-and-upgrading-or-scaling-will-not-work-until-it-is-fixed).
 
@@ -385,7 +385,7 @@ parameters:
   skuName: Standard_LRS
 ```
 
-Einige zusätzliche nützliche *mountOptions* -Einstellungen:
+Einige zusätzliche nützliche *mountOptions*-Einstellungen:
 
 * *mfsymlinks* aktiviert Unterstützung bei der Einbindung symbolischer Links (CIFS) in Azure Files.
 * *nobrl* verhindert das Senden von Anforderungen für Byte-Bereichssperrungen an den Server. Diese Einstellung ist für bestimmte Anwendungen erforderlich, die obligatorische Byte-Bereichssperren im CIFS-Stil verletzen. Die meisten CIFS-Server unterstützen noch keine Anforderung von Byte-Bereichssperrenempfehlungen. Wenn Sie *nobrl* nicht verwenden, verursachen Anwendungen, die obligatorische Byte-Bereichssperren im CIFS-Stil verletzen, möglicherweise ähnliche Fehlermeldungen wie diese:

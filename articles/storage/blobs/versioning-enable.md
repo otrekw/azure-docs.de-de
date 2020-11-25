@@ -10,12 +10,12 @@ ms.date: 11/17/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a52b736efaabdca8b08427f293ebf0cda5f22e44
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5802070bf9b495c0e866d160d6661349369a444e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695876"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95993742"
 ---
 # <a name="enable-and-manage-blob-versioning"></a>Aktivieren und Verwalten von Blobversionsverwaltung
 
@@ -77,7 +77,7 @@ Im folgenden Codebeispiel wird veranschaulicht, wie Sie die Erstellung einer neu
 
 Im Beispiel wird ein Blockblob erstellt, und anschließend werden die Metadaten des Blobs aktualisiert. Durch Aktualisieren der Metadaten des Blobs wird die Erstellung einer neuen Version ausgelöst. Das Beispiel ruft die anfängliche Version und die aktuelle Version ab und zeigt, dass nur die aktuelle Version die Metadaten enthält.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_TriggerNewBlobVersion":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/CRUD.cs" id="Snippet_UpdateVersionedBlobMetadata":::
 
 ## <a name="list-blob-versions"></a>Auflisten von Blobversionen
 
@@ -90,4 +90,4 @@ Das folgende Codebeispiel zeigt, wie Sie Blobversionen mit der Azure Storage-Cl
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Blobversionsverwaltung](versioning-overview.md)
-- [Vorläufiges Löschen für Azure Storage-Blobs](soft-delete-overview.md)
+- [Vorläufiges Löschen für Azure Storage-Blobs](./soft-delete-blob-overview.md)

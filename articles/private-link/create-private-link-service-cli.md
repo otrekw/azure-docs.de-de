@@ -7,19 +7,20 @@ ms.service: private-link
 ms.topic: how-to
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 2cfc746d883b565fe7a082a316ce314f385225df
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 87fe02aed19ae7e5858715748a2b4c4da87a07b3
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358151"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94658569"
 ---
 # <a name="create-a-private-link-service-using-azure-cli"></a>Erstellen eines Private Link-Diensts mithilfe der Azure CLI
 In diesem Artikel erfahren Sie, wie Sie mit der Azure CLI einen Private Link-Dienst in Azure erstellen.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
-Wenn Sie sich stattdessen entscheiden, die Azure CLI lokal zu installieren und zu nutzen, müssen Sie für diese Schnellstartanleitung die neueste Azure CLI-Version verwenden. Führen Sie `az --version` aus, um die installierte Version zu ermitteln. Informationen zum Ausführen einer Installation oder eines Upgrades finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
+- Für diesen Artikel ist die aktuelle Azure CLI-Version erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+
 ## <a name="create-a-private-link-service"></a>Erstellen eines Private Link-Diensts
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
@@ -78,7 +79,7 @@ Mit einer Lastenausgleichsregel wird die Front-End-IP-Konfiguration für den ein
 ```
 ### <a name="create-backend-servers"></a>Erstellen von Back-End-Servern
 
-Bei diesem Beispiel wird das Erstellen virtueller Computer nicht behandelt. Sie können die Schritte unter [Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI](../load-balancer/load-balancer-get-started-ilb-arm-cli.md#create-servers-for-the-backend-address-pool) befolgen, um zwei virtuelle Computer zu erstellen, die als Back-End-Server für den Load Balancer verwendet werden. 
+Bei diesem Beispiel wird das Erstellen virtueller Computer nicht behandelt. Sie können die Schritte unter [Schnellstart: Erstellen eines internen Load Balancers für den Lastenausgleich virtueller Computer mit der Azure CLI](/load-balancer/quickstart-load-balancer-standard-internal-cli#create-backend-servers) befolgen, um zwei virtuelle Computer zu erstellen, die als Back-End-Server für den Load Balancer verwendet werden. 
 
 
 ### <a name="disable-private-link-service-network-policies-on-subnet"></a>Deaktivieren von Netzwerkrichtlinien für einen Private Link-Dienst im Subnetz 

@@ -7,12 +7,12 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
-ms.openlocfilehash: 93b25e65914ce603b4a969eda7fd7c048704e466
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: a7396c9a29c7d9f69dbe6a9cc5cd085c72ebafde
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410010"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700945"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Bewährte Methoden für die Azure Service Fabric-Sicherheit
 Die Bereitstellung einer Anwendung in Azure ist schnell, einfach und kostengünstig. Bevor Sie Ihre Cloudanwendung für die Produktion bereitstellen, überprüfen Sie unsere Liste grundlegender und empfohlener bewährter Methoden zum Implementieren sicherer Cluster in der Anwendung.
@@ -60,7 +60,7 @@ Es gibt drei [Szenarien](../../service-fabric/service-fabric-cluster-security.md
 -   Knoten-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen den VMs und den Computern im Cluster geschützt. So wird sichergestellt, dass nur Computer, die zum Beitreten zum Cluster berechtigt sind, Anwendungen und Dienste im Cluster hosten können.
 In diesem Szenario können in Azure ausgeführte Cluster oder eigenständige unter Windows ausgeführte Cluster für Windows Server-Computer entweder die [Zertifikatsicherheit](../../service-fabric/service-fabric-windows-cluster-x509-security.md) oder die [Windows-Sicherheit](../../service-fabric/service-fabric-windows-cluster-windows-security.md) verwenden.
 -   Client-zu-Knoten-Sicherheit: Mit diesem Szenario wird die Kommunikation zwischen einem Service Fabric-Client und den einzelnen Knoten im Cluster geschützt.
--   Rollenbasierte Zugriffssteuerung (RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
+-   Rollenbasierte Zugriffssteuerung in Service Fabric (Service Fabric RBAC): In diesem Szenario werden separate Identitäten (Zertifikate, Azure AD usw.) für alle Administrator- und Clientrollen verwendet, die auf den Cluster zugreifen. Sie geben die Rollenidentitäten bei der Erstellung des Clusters an.
 
 >[!NOTE]
 >**Sicherheitsempfehlung für Azure-Cluster:** Verwenden Sie Azure AD-Sicherheit, um Clients und Zertifikate für die Knoten-zu-Knoten-Sicherheit zu authentifizieren.
@@ -83,7 +83,7 @@ Viele Aspekte des [Service Fabric-Anwendungslebenszyklus](../../service-fabric/s
 ## <a name="use-x509-certificates"></a>Verwenden von X.509-Zertifikaten
 Cluster sollten immer mit X.509-Zertifikaten oder Windows-Sicherheit geschützt werden. Die Sicherheit wird nur zum Zeitpunkt der Clustererstellung konfiguriert. Es ist nicht möglich, die Sicherheit nach dem Erstellen eines Clusters zu aktivieren.
 
-Wenn Sie ein [Clusterzertifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md) angeben, legen Sie den Wert der **ClusterCredentialType** -Eigenschaft auf „X509“ fest. Wenn Sie ein Serverzertifikat für externe Verbindungen angeben, legen Sie die **ServerCredentialType** -Eigenschaft auf „X509“ fest.
+Wenn Sie ein [Clusterzertifikat](../../service-fabric/service-fabric-windows-cluster-x509-security.md) angeben, legen Sie den Wert der **ClusterCredentialType**-Eigenschaft auf „X509“ fest. Wenn Sie ein Serverzertifikat für externe Verbindungen angeben, legen Sie die **ServerCredentialType**-Eigenschaft auf „X509“ fest.
 
 Wenden Sie darüber hinaus diese empfohlenen Methoden an:
 -   Erstellen Sie die Zertifikate für Produktionscluster mit einem ordnungsgemäß konfigurierten Windows Server-Zertifikatdienst. Sie können die Zertifikate auch von einer genehmigten Zertifizierungsstelle (CA) abrufen.
@@ -99,7 +99,7 @@ Service Fabric schützt auch Ressourcen, die von Anwendungen verwendet werden. R
 
 -   Verwenden einer Active Directory-Domänengruppe oder eines Active Directory-Benutzers: Führen Sie den Dienst mit den Anmeldeinformationen für einen Active Directory-Benutzer oder ein Active Directory-Gruppenkonto aus. Verwenden Sie unbedingt eine lokale Active Directory-Instanz in Ihrer Domäne, nicht Azure Active Directory. Auf andere Ressourcen in der Domäne greifen Sie über einen Domänenbenutzer oder eine Domänengruppe zu, für den bzw. die Berechtigungen gewährt wurden. Zu solchen Ressourcen gehören z.B. Dateifreigaben.
 
--   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte: Geben Sie die **SecurityAccessPolicy** -Eigenschaft an, um eine **RunAs** -Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
+-   Zuweisen einer Sicherheitszugriffsrichtlinie für HTTP- und HTTPS-Endpunkte: Geben Sie die **SecurityAccessPolicy**-Eigenschaft an, um eine **RunAs**-Richtlinie auf einen Dienst anzuwenden, wenn das Dienstmanifest Endpunktressourcen mit HTTP deklariert. Ports, die den HTTP-Endpunkten zugeordnet sind, werden ordnungsgemäß über Zugriffssteuerungslisten für das RunAs-Benutzerkonto, unter dem der Dienst ausgeführt wird, gesteuert. Wurde die Richtlinie nicht festgelegt, hat „http.sys“ keinen Zugriff auf den Dienst, sodass bei Aufrufen vom Client Fehler auftreten können.
 
 Weitere Informationen zum Verwenden von Sicherheitsrichtlinien in Service Fabric-Clustern finden Sie unter [Konfigurieren von Sicherheitsrichtlinien für Ihre Anwendung](../../service-fabric/service-fabric-application-runas-security.md).
 
@@ -172,7 +172,7 @@ Weitere Informationen zum Einrichten eines Schlüsseltresors finden Sie unter [W
 Nachdem Sie die Anwendungen für Ihren Cluster erstellt haben, müssen Ihre Benutzer den von Service Fabric unterstützten Rollen zugewiesen werden: „read-only“ (schreibgeschützt) und „admin“ (Administrator). Für die Rollenzuweisung können Sie das Azure-Portal verwenden.
 
 >[!NOTE]
-> Weitere Informationen zur Verwendung von Rollen in Service Fabric finden Sie unter [Rollenbasierte Zugriffssteuerung für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md).
+> Weitere Informationen zur Verwendung von Rollen in Service Fabric finden Sie unter [Rollenbasierte Zugriffssteuerung in Service Fabric für Service Fabric-Clients](../../service-fabric/service-fabric-cluster-security-roles.md).
 
 Azure Service Fabric unterstützt zwei Zugriffssteuerungstypen für Clients, die mit einem [Service Fabric-Cluster](../../service-fabric/service-fabric-cluster-creation-via-arm.md) verbunden sind: Administrator und Benutzer. Mit der Zugriffssteuerung können Clusteradministratoren den Zugriff auf bestimmte Clustervorgänge für verschiedene Gruppen von Benutzern einschränken. Diese Zugriffssteuerung macht den Cluster sicherer.
 

@@ -1,6 +1,6 @@
 ---
 title: Remotedesktop-Gatewaydienste mit Azure Active Directory
-description: Architekturleitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Implementieren von Remotedesktop-Gatewaydiensten mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff099d41970ad4d78d5c6035a60f448f29ab24b1
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113927"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576794"
 ---
 # <a name="remote-desktop-gateway-services"></a>Remotedesktop-Gatewaydienste
 
@@ -34,13 +34,13 @@ Sie müssen Remotezugriff bereitstellen und Ihre Remotedesktopdienste-Bereitstel
 
 * **Benutzer:** Der Benutzer greift auf die über den Anwendungsproxy bereitgestellten Remotedesktopdienste zu.
 
-* **Webbrowser** : Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
+* **Webbrowser**: Die Komponente, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
 
-* **Azure AD** : Hiermit wird der Benutzer authentifiziert. 
+* **Azure AD**: Hiermit wird der Benutzer authentifiziert. 
 
-* **Anwendungsproxydienst** : Dieser Dienst fungiert als Reverseproxy zum Weiterleiten von Anforderungen vom Benutzer an RDS. Der Anwendungsproxy kann auch Richtlinien für bedingten Zugriff erzwingen. 
+* **Anwendungsproxydienst**: Dieser Dienst fungiert als Reverseproxy zum Weiterleiten von Anforderungen vom Benutzer an RDS. Der Anwendungsproxy kann auch Richtlinien für bedingten Zugriff erzwingen. 
 
-* **Remotedesktopdienste** : RDS fungiert als Plattform für einzelne virtualisierte Anwendungen und bietet sicheren mobilen sowie Remotedesktopzugriff. Zudem bietet RDS Endbenutzern die Möglichkeit, ihre Anwendungen und Desktops in der Cloud auszuführen. 
+* **Remotedesktopdienste**: RDS fungiert als Plattform für einzelne virtualisierte Anwendungen und bietet sicheren mobilen sowie Remotedesktopzugriff. Zudem bietet RDS Endbenutzern die Möglichkeit, ihre Anwendungen und Desktops in der Cloud auszuführen. 
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Implementieren von Remotedesktop-Gatewaydiensten mit Azure AD
 

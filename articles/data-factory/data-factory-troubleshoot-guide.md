@@ -5,15 +5,15 @@ services: data-factory
 author: nabhishek
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 09/01/2020
+ms.date: 11/16/2020
 ms.author: abnarain
 ms.reviewer: craigg
-ms.openlocfilehash: 6f16e4b1f9728ae8d9cb36ab442603083e83eb92
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: c9dd39ffa68d8261f5c5d301d4c351c52b3f27c1
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331378"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94654591"
 ---
 # <a name="troubleshoot-azure-data-factory"></a>Problembehandlung für Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -1008,7 +1008,16 @@ Weitere Informationen finden Sie unter [Erste Schritte mit Fiddler](https://docs
 ## <a name="general"></a>Allgemein
 
 ### <a name="activity-stuck-issue"></a>Problem mit hängen gebliebener Aktivität
+
 Wenn Sie beobachten, dass die Aktivität viel länger läuft als gewöhnlich und kaum vorankommt, ist sie möglicherweise hängen geblieben. Sie können versuchen, die Aktivität abzubrechen und zu wiederholen, um zu sehen, ob das hilft. Wenn es sich um eine Kopieraktivität handelt, können Sie sich unter [Problembehandlung für die Leistung der Kopieraktivität](copy-activity-performance-troubleshooting.md) über die Leistungsüberwachung und Problembehandlung informieren. Wenn es sich um einen Datenfluss handelt, informieren Sie sich unter [Leistung von Zuordnungsdatenflüssen](concepts-data-flow-performance.md) und im Leitfaden für die Optimierung.
+
+### <a name="payload-is-too-large"></a>Nutzdaten sind zu umfangreich
+
+**Fehlermeldung:** `The payload including configurations on activity/dataSet/linked service is too large. Please check if you have settings with very large value and try to reduce its size.`
+
+**Ursache:** Die Nutzdaten für jede Aktivitätsausführung enthalten die Aktivitätskonfiguration, die Konfigurationen der zugeordneten Datasets und verknüpften Dienste (sofern vorhanden) sowie einen kleinen Teil der Systemeigenschaften, die pro Aktivitätstyp generiert werden. Der Grenzwert für diese Nutzdatengröße ist 896 KB, wie im Abschnitt [Data Factory-Grenzwerte](../azure-resource-manager/management/azure-subscription-service-limits.md#data-factory-limits) beschrieben.
+
+**Empfehlung:** Sie erreichen dieses Limit wahrscheinlich, weil Sie einen oder mehrere große Parameterwerte übergeben, die entweder aus der vorgelagerten Aktivitätsausgabe stammen oder externen Ursprungs sind, insbesondere, wenn Sie tatsächliche Daten über Aktivitäten in der Ablaufsteuerung hinweg übergeben. Überprüfen Sie, ob Sie die Größe großer Parameterwerte reduzieren können, oder optimieren Sie die Pipelinelogik, um zu vermeiden, dass solche Werte über Aktivitäten hinweg übergeben werden, und verarbeiten Sie sie stattdessen in der Aktivität.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

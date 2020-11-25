@@ -2,13 +2,13 @@
 title: 'Konzepte: Überwachen und Reparieren von privaten Azure VMware Solution-Clouds'
 description: Es wird beschrieben, wie VMware ESXi-Server in Azure VMware Solution in einer privaten Azure VMware Solution-Cloud überwacht und repariert werden.
 ms.topic: conceptual
-ms.date: 09/16/2020
-ms.openlocfilehash: bee08304cd14f2aeec6995203638b5a37d9a861c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 11/18/2020
+ms.openlocfilehash: 11a3c53bff7ce7b67b677977eddb9829f336672d
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91339355"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684694"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Überwachen und Reparieren von privaten Azure VMware Solution-Clouds
 
@@ -42,4 +42,10 @@ Der Fehlerbehebungsprozess für den Host beginnt, indem dem Cluster ein neuer fe
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über [Upgrades für private Clouds](concepts-upgrades.md).  
+Im folgenden finden Sie einige Themen mit weiteren Informationen:
+
+- [Azure VMware Solution-Upgrades für private Clouds](concepts-upgrades.md)
+- [Lebenszyklusverwaltung von Azure VMware Solution-VMs](lifecycle-management-of-azure-vmware-solution-vms.md)
+- [Schützen von Azure VMware Solution-VMs mit Azure Security Center-Integration](azure-security-integration.md)
+- [Sichern von Azure VMware Solution-VMs mit Azure Backup Server](backup-azure-vmware-solution-virtual-machines.md)
+- [Ausführen der Notfallwiederherstellung virtueller Computer mithilfe von Azure VMware Solution](disaster-recovery-for-virtual-machines.md)

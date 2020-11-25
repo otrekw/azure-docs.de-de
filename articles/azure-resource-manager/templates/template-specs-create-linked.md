@@ -2,13 +2,13 @@
 title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
-ms.date: 11/03/2020
-ms.openlocfilehash: b1862789ede4a9d2ab8c57bdb913c449a560dc58
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.date: 11/17/2020
+ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321595"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747433"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen (Vorschau)
 
@@ -19,7 +19,7 @@ Erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer 
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Um ihn zu verwenden, müssen Sie sich [für die Preview registrieren](https://aka.ms/templateSpecOnboarding).
+> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zu ihrer Verwendung müssen Sie die aktuelle Version von PowerShell oder der Azure CLI installieren. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
 
 ## <a name="create-linked-templates"></a>Erstellen verknüpfter Vorlagen
 

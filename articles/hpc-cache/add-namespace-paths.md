@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: v-erkel
-ms.openlocfilehash: 090e3f93d025fe87ad5b89a98193574595f3d632
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: a39b6973767b72e69a82750ab8d0d487c733eda0
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91614511"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94657107"
 ---
 # <a name="set-up-the-aggregated-namespace"></a>Einrichten des aggregierten Namespace
 
@@ -57,7 +57,7 @@ Befolgen Sie die nachstehenden Anweisungen, um den Pfad über das Azure-Portal o
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden, müssen Sie beim Erstellen des Speicherziels einen Namespacepfad hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen eines neuen Azure Blob Storage-Ziels](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-azure-blob-storage-target).
 
@@ -119,7 +119,7 @@ Geben Sie diese Werte für die einzelnen Namespacepfade ein:
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
-[!INCLUDE [cli-reminder.md](includes/cli-reminder.md)]
+[Einrichten der Azure CLI für Azure HPC Cache](./az-cli-prerequisites.md).
 
 Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden, müssen Sie beim Erstellen des Speicherziels mindestens einen Namespacepfad hinzufügen. Weitere Informationen finden Sie unter [Hinzufügen eines neuen NFS-Speicherziels](hpc-cache-add-storage.md?tabs=azure-cli#add-a-new-nfs-storage-target).
 

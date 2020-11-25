@@ -8,19 +8,19 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: jhirono
 author: jhirono
-ms.date: 10/05/2020
+ms.date: 11/13/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 168dc342eaf61a9ede632fb429311f6f5c1d4be4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: e3d95be52215b03a30dc4b5c7f251357f163b24a
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311567"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616092"
 ---
 # <a name="how-to-use-your-workspace-with-a-custom-dns-server"></a>Verwenden Ihres Arbeitsbereichs mit einem benutzerdefinierten DNS-Server
 
-Wenn Sie Azure Machine Learning mit einem virtuellen Netzwerk verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie jedoch __Ihren eigenen benutzerdefinierten DNS-Server__ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen.
+Wenn Sie Azure Machine Learning mit einem virtuellen Netzwerk verwenden, gibt es [verschiedene Möglichkeiten, die DNS-Namensauflösung zu verarbeiten](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md). Standardmäßig übernimmt Azure automatisch die Namensauflösung für Ihren Arbeitsbereich und Ihren privaten Endpunkt. Wenn Sie stattdessen _Ihren eigenen benutzerdefinierten DNS-Server_ verwenden, müssen Sie DNS-Einträge für den Arbeitsbereich manuell erstellen.
 
 > [!IMPORTANT]
 > In diesem Artikel wird nur behandelt, wie der vollqualifizierte Domänenname (FQDN) und die IP-Adressen für diese Einträge gefunden werden können. Er enthält KEINE Informationen zum Konfigurieren der DNS-Einträge für diese Elemente. Weitere Informationen zum Hinzufügen von Einträgen finden Sie in der Dokumentation zu Ihrer DNS-Software.
@@ -40,13 +40,14 @@ Wenn Sie Azure Machine Learning mit einem virtuellen Netzwerk verwenden, gibt es
 Die folgende Liste enthält die vollqualifizierten Domänennamen (FQDN), die von Ihrem Arbeitsbereich und Ihrem privaten Endpunkt verwendet werden:
 
 * `<workspace-GUID>.workspace.<region>.api.azureml.ms`
-* `<workspace-GUID>.studio.workspace.<region>.api.azureml.ms`
-* `cert-<workspace-GUID>.workspace.<region>.api.azureml.ms`
 * `<workspace-GUID>.workspace.<region>.experiments.azureml.net`
 * `<workspace-GUID>.workspace.<region>.modelmanagement.azureml.net`
 * `<workspace-GUID>.workspace.<region>.aether.ms`
 * `ml-<workspace-name>-<region>-<workspace-guid>.notebooks.azure.ml`
-* Wenn Sie eine Compute-Instanz erstellen, müssen Sie auch einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts für den Arbeitsbereich hinzufügen. Beachten Sie, dass nur innerhalb des virtuellen Netzwerks auf die Compute-Instanz zugegriffen werden kann.
+* Wenn Sie eine Compute-Instanz erstellen, müssen Sie auch einen Eintrag für `<instance-name>.<region>.instances.azureml.ms` mit der privaten IP-Adresse des privaten Endpunkts für den Arbeitsbereich hinzufügen.
+
+    > [!NOTE]
+    > Auf Compute-Instanzen kann nur innerhalb des virtuellen Netzwerks zugegriffen werden.
 
 Verwenden Sie eine der folgenden Methoden, um die internen IP-Adressen für die FQDNs im VNet zu finden:
 
@@ -68,7 +69,7 @@ $workspaceDns.CustomDnsConfigs | format-table
 
 # <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
-1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Azure Machine Learning- __Arbeitsbereich__ aus.
+1. Wählen Sie im [Azure-Portal](https://portal.azure.com) Ihren Azure Machine Learning-__Arbeitsbereich__ aus.
 1. Wählen Sie im Abschnitt __Einstellungen__ die Option __Private Endpunktverbindungen__ aus.
 1. Wählen Sie den Link in der Spalte __Privater Endpunkt__ aus, der angezeigt wird.
 1. Eine Liste der vollqualifizierten Domänennamen (FQDN) und IP-Adressen für den privaten Endpunkt des Arbeitsbereichs finden Sie unten auf der Seite.
@@ -82,8 +83,6 @@ Die Informationen, die von allen Methoden zurückgegeben werden, sind dieselben:
 | FQDN | IP-Adresse |
 | ----- | ----- |
 | `fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `fb7e20a0-8891-458b-b969-55ddb3382f51.studio.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
-| `cert-fb7e20a0-8891-458b-b969-55ddb3382f51.workspace.eastus.api.azureml.ms` | `10.1.0.5` |
 | `ml-myworkspace-eastus-fb7e20a0-8891-458b-b969-55ddb3382f51.notebooks.azure.net` | `10.1.0.6` |
 
 > [!IMPORTANT]

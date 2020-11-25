@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: b73a6b8c024cfa5ed7188bbf3fed2bbb7142a2a0
-ms.sourcegitcommit: 7a7b6c7ac0aa9dac678c3dfd4b5bcbc45dc030ca
+ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/02/2020
-ms.locfileid: "93186636"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94646371"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -100,12 +100,12 @@ Windows 7 (x64) mit SP1 und höher | Ab Version [9.30](https://support.microsof
 --- | ---
 Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6,[7.7](https://support.microsoft.com/help/4528026/update-rollup-41-for-azure-site-recovery), [7.8](https://support.microsoft.com/help/4564347/), [7.9](https://support.microsoft.com/help/4578241/), [8.0](https://support.microsoft.com/help/4531426/update-rollup-42-for-azure-site-recovery), 8.1, [8.2](https://support.microsoft.com/help/4570609/)
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, [7.8](https://support.microsoft.com/help/4564347/), [7.9 Vor-GA-Version](https://support.microsoft.com/help/4578241/), 7.9 GA-Version wird von 9.37 Hotfix-Patch unterstützt** </br> 8.0, 8.1, [8.2](https://support.microsoft.com/en-us/help/4570609)
-Ubuntu 14.04 LTS Server | Schließt Unterstützung für alle 14.04. *x* -Versionen ein. [Unterstützte Kernelversionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) 
-Ubuntu 16.04 LTS Server | Schließt Unterstützung für alle 16.04. *x* -Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
-Ubuntu 18.04 LTS Server | Schließt Unterstützung für alle 18.04. *x* -Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
-Ubuntu 20.04 LTS Server | Schließt Unterstützung für alle 20.04. *x* -Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
-Debian 7 | Schließt Unterstützung für alle 7er Versionen ein. *x* -Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
-Debian 8 | Schließt Unterstützung für alle 8er Versionen ein. *x* -Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Ubuntu 14.04 LTS Server | Schließt Unterstützung für alle 14.04.*x*-Versionen ein. [Unterstützte Kernelversionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) 
+Ubuntu 16.04 LTS Server | Schließt Unterstützung für alle 16.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
+Ubuntu 18.04 LTS Server | Schließt Unterstützung für alle 18.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
+Ubuntu 20.04 LTS Server | Schließt Unterstützung für alle 20.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
+Debian 7 | Schließt Unterstützung für alle 7er Versionen ein. *x*-Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
+Debian 8 | Schließt Unterstützung für alle 8er Versionen ein. *x*-Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 9 | Schließt Unterstützung für 9.1 bis 9.13 ein. Debian 9.0 wird nicht unterstützt. [Unterstützte Kernel-Versionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 12 | SP1, SP2, SP3, SP4, SP5 [(Unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 SUSE Linux Enterprise Server 15 | 15, SP1, SP2 [(Unterstützte Kernelversionen)](#supported-suse-linux-enterprise-server-15-kernel-versions-for-azure-virtual-machines)
@@ -131,7 +131,7 @@ Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5,
 18.04 LTS | [9.36](https://support.microsoft.com/help/4578241/) | 4.15.0-20-generic bis 4.15.0-112-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-58-generic </br> 5.3.0-19-generic bis 5.3.0-65-generic </br> 5.4.0-37-generic bis 5.4.0-42-generic</br> 4.15.0-1009-azure bis 4.15.0-1092-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1032-azure </br> 5.4.0-1020-azure bis 5.4.0-1022-azure </br> 5.0.0-60-generic & 5.3.0-1035-azure bis Hotfix-Patch 9.36**|
 18.04 LTS | [9.34](https://support.microsoft.com/help/4570609), [9.35](https://support.microsoft.com/help/4573888/) | 4.15.0-20-generic bis 4.15.0-108-generic </br> 4.18.0-13-generic bis 4.18.0-25-generic </br> 5.0.0-15-generic bis 5.0.0-52-generic </br> 5.3.0-19-generic bis 5.3.0-61-generic </br> 4.15.0-1009-azure bis 4.15.0-1089-azure </br> 4.18.0-1006-azure bis 4.18.0-1025-azure </br> 5.0.0-1012-azure bis 5.0.0-1036-azure </br> 5.3.0-1007-azure bis 5.3.0-1031-azure </br> 4.15.0-109-generic, 5.0.0-53-generic, 5.3.0-62-generic, 4.15.0-1091-azure und 5.3.0-1032-azure bis Hotfix-Patch 9.35**|
 |||
-20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic bis 5.4.0-48 </br> -generic 5.4.0-1010-azure bis 5.4.0-1026-azure </br> 5.4.0-51-generic, 5.4.0-52-generic, 5.8.0-23-generic, 5.4.0-1031-azure bis Hotfix-Patch 9.38**
+20.04 LTS |[9.38](https://support.microsoft.com/help/4590304/) | 5.4.0-26-generic bis 5.4.0-48 </br> -generic 5.4.0-1010-azure bis 5.4.0-1026-azure </br> 5.4.0-51-generic, 5.4.0-52-generic, 5.8.0-23-generic, 5.8.0-25-generic, 5.4.0-1031-azure bis 9.38 Hotfix-Patch**
 20.04 LTS |[9.37](https://support.microsoft.com/help/4582666/) | 5.4.0-26-generic bis 5.4.0-45 </br> -generic 5.4.0-1010-azure bis 5.4.0-1023-azure </br> 5.4.0-47-generic, 5.4.0-48-generic, 5.4.0-1025-azure, 5.4.0-1026-azure bis 9.37 Hotfix-Patch**
 20.04 LTS |[9.36](https://support.microsoft.com/help/4578241/) | 5.4.0-26-generic bis 5.4.0-42 </br> -generic 5.4.0-1010-azure bis 5.4.0-1022-azure
 
@@ -146,7 +146,7 @@ Debian 7 |  [9.34](https://support.microsoft.com/help/4570609), [9.35](https://s
 Debian 8 | [9.35](https://support.microsoft.com/help/4573888/, ), [9.36](https://support.microsoft.com/help/4578241/), [9.37](https://support.microsoft.com/help/4582666/), [9.38](https://support.microsoft.com/help/4590304/) | 3.16.0-4-amd64 bis 3.16.0-11-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.11-amd64 |
 Debian 8 | [9.34](https://support.microsoft.com/help/4570609) | 3.16.0-4-amd64 bis 3.16.0-10-amd64, 4.9.0-0.bpo.4-amd64 bis 4.9.0-0.bpo.11-amd64 |
 |||
-Debian 9.1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 bis 4.9.0-13-amd64 </br> 4.19.0-0.bpo.1-amd64 bis 4.19.0-0.bpo.11-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 bis 4.19.0-0.bpo.11-cloud-amd64 </br> 
+Debian 9.1 | [9.38](https://support.microsoft.com/help/4590304/) | 4.9.0-1-amd64 bis 4.9.0-13-amd64 </br> 4.19.0-0.bpo.1-amd64 bis 4.19.0-0.bpo.11-amd64 </br> 4.19.0-0.bpo.1-cloud-amd64 bis 4.19.0-0.bpo.11-cloud-amd64 </br> 4.9.0-14-amd64, 4.19.0-0.bpo.12-amd64, 4.19.0-0.bpo.12-cloud-amd64 bis 9.38 Hotfix-Patch**
 Debian 9.1 | [9.37](https://support.microsoft.com/help/4582666/) | 4.9.0-3-amd64 bis 4.9.0-13-amd64, 4.19.0-0.bpo.6-amd64 bis 4.19.0-0.bpo.10-amd64, 4.19.0-0.bpo.6-cloud-amd64 bis 4.19.0-0.bpo.10-cloud-amd64
 
 #### <a name="supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines"></a>Unterstützte SUSE Linux Enterprise Server 12-Kernelversionen für Azure-VMs

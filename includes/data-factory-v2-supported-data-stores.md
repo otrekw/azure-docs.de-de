@@ -9,11 +9,11 @@ ms.date: 09/28/2020
 ms.author: jingwang
 ms.custom: include file
 ms.openlocfilehash: 1d621d39ac6f7c296286f7a3b06d5cc32c513170
-ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/12/2020
-ms.locfileid: "91946166"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96003061"
 ---
 | Category | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt | Von [Azure-Integrationslaufzeit](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) unterstützt | Von [selbstgehosteter IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) unterstützt |
 |:--- |:--- |:--- |:--- |:--- |:--- |

@@ -8,12 +8,12 @@ author: mlearned
 ms.author: mlearned
 description: Verwenden von GitOps für Azure Arc-fähiger Clusterkonfiguration (Vorschauversion)
 keywords: GitOps, Kubernetes, K8s, Azure, Arc, Azure Kubernetes Service, Container
-ms.openlocfilehash: 1a8839c2463494ba0e165bf9e1a5d22245fac8df
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ce6c754c308d2979db9b1b8eb36e7858e8a91c3c
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371255"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659793"
 ---
 # <a name="deploy-configurations-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Bereitstellen von Konfigurationen mithilfe von GitOps in Arc-fähigen Kubernetes-Clustern (Vorschauversion)
 
@@ -99,7 +99,7 @@ Im Folgenden finden Sie die unterstützten Szenarios für den Wert des Parameter
 | Szenario | Format | BESCHREIBUNG |
 | ------------- | ------------- | ------------- |
 | Öffentliches Git-Repository | http[s]://server/repo.git or git://server/repo.git   | Öffentliches Git-Repository  |
-| Privates Git-Repository – SSH – mit Flux erstellte Schlüssel | ssh://[user@]server/repo.git or [user@]server:repo.git | Der von Flux generierte öffentliche Schlüssel muss dem Benutzerkonto oder Repository in Ihrem Git-Dienstanbieter hinzugefügt werden. Weitere Informationen finden Sie [hier](#apply-configuration-from-a-private-git-repository) |
+| Privates Git-Repository – SSH – mit Flux erstellte Schlüssel | ssh://[user@]server/repo.git or [user@]server:repo.git | Der von Flux generierte öffentliche Schlüssel muss dem Benutzerkonto in Ihrem Git-Dienstanbieter hinzugefügt werden. Wenn der Bereitstellungsschlüssel dem Repository statt dem Benutzerkonto hinzugefügt wird, verwenden Sie `git@` anstelle von `user@`. Weitere Informationen finden Sie [hier](#apply-configuration-from-a-private-git-repository) |
 
 Diese Szenarios werden von Flux, jedoch noch nicht von der „sourceControlConfiguration“-Ressource unterstützt.
 
@@ -222,16 +222,26 @@ Command group 'k8sconfiguration' is in preview. It may be changed/removed in a f
 3. Klicken Sie auf die Konfiguration, die das private Git-Repository verwendet.
 4. Kopieren Sie den **öffentlichen Repositoryschlüssel** im geöffneten Kontextfenster unten auf der Seite.
 
-**Hinzufügen des öffentlichen Schlüssels als Bereitstellungsschlüssel zum Git-Repository**
+Wenn Sie GitHub verwenden, verwenden Sie eine der folgenden beiden Optionen:
+
+**Option 1: Hinzufügen des öffentlichen Schlüssels zu Ihrem Benutzerkonto**
+
+1. Öffnen Sie GitHub, und klicken Sie in der oberen rechten Ecke der Seite auf Ihr Profilsymbol.
+2. Klicken Sie auf **Einstellungen**.
+3. Klicken Sie auf **SSH- und GPG-Schlüssel**.
+4. Klicken Sie auf **Neuer SSH-Schlüssel**.
+5. Geben Sie einen Titel an.
+6. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
+7. Klicken Sie auf **SSH-Schlüssel hinzufügen**.
+
+**Option 2: Hinzufügen des öffentlichen Schlüssels als Bereitstellungsschlüssel zum Git-Repository**
 
 1. Öffnen Sie GitHub, navigieren Sie zunächst zu Ihrem Repository, dann zu **Einstellungen** und anschließend zu **Deploy keys** (Bereitstellungsschlüssel).
-2. Klicken Sie auf **Add deploy key** (Bereitstellungsschlüssel hinzufügen).
+2. Klicken Sie auf **Bereitstellungsschlüssel hinzufügen**.
 3. Geben Sie einen Titel an.
 4. Aktivieren Sie die Option **Allow write access** (Schreibzugriff gewähren).
 5. Fügen Sie den öffentlichen Schlüssel ohne die diesen umgebenden Anführungszeichen ein.
 6. Klicken Sie auf **Schlüssel hinzufügen**.
-
-Weitere Informationen zur Verwaltung dieser Schlüssel finden Sie in den GitHub-Dokumentationen.
 
 **Hinzufügen des Schlüssels zu den SSH-Schlüsseln bei Verwendung eines Azure DevOps-Repositorys**
 

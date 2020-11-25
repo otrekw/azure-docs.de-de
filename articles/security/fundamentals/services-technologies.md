@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 46b1cbbd620cf2de8d875927f5745e91fcf608c5
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410044"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94700758"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -67,7 +67,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 ## <a name="identity-and-access-management"></a>Identitäts- und Zugriffsverwaltung
 |Dienst|BESCHREIBUNG|
 |------|--------|
-| [Azure&nbsp;–&nbsp;Rollenbasierte&nbsp;Zugriffssteuerung](../../role-based-access-control/role-assignments-portal.md)|Ein Zugriffssteuerungsfeature, mit dem Benutzer nur auf die Ressourcen zugreifen können, die sie anhand ihrer Rollen innerhalb der Organisation benötigen  |
+| [Rollenbasierte&nbsp;Zugriffssteuerung&nbsp;in Azure](../../role-based-access-control/role-assignments-portal.md)|Ein Zugriffssteuerungsfeature, mit dem Benutzer nur auf die Ressourcen zugreifen können, die sie anhand ihrer Rollen innerhalb der Organisation benötigen  |
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Ein cloudbasiertes Authentifizierungsrepository, das ein cloudbasiertes Verzeichnis mit mehreren Mandanten sowie Verwaltungsdienste für mehrere Identitäten in Azure unterstützt  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Ein Identitätsverwaltungsdienst, mit dem Sie die Registrierung und Anmeldung von Kunden und deren Verwaltung ihrer Profile bei der Verwendung von Azure-Anwendungen steuern können   |
 | [Azure Active Directory-Domänendienste](../../active-directory-domain-services/overview.md)| Eine cloudbasierte und verwaltete Version von Active Directory Domain Services |

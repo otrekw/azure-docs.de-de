@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 089476980ff3e8b2d3b72cb2d229934cf7850c03
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0f67a36ac4ccb27d7b955158b7e4a9cf4f5185d0
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90899244"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636917"
 ---
 # <a name="kubernetes-on-your-azure-stack-edge-pro-gpu-device"></a>Kubernetes auf Ihrem Azure Stack Edge Pro-GPU-Gerät
 
@@ -67,7 +67,7 @@ Sobald neue Kubernetes-Versionen verfügbar sind, kann Ihr Cluster über die Sta
 
 ## <a name="access-monitoring"></a>Zugriff und Überwachung
 
-Der Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät erlaubt die rollenbasierte Zugriffssteuerung (RBAC). Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung für Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-kubernetes-rbac.md).
+Der Kubernetes-Cluster auf Ihrem Azure Stack Edge Pro-Gerät erlaubt die rollenbasierte Kubernetes-Zugriffssteuerung (Kubernetes RBAC). Weitere Informationen finden Sie unter [Rollenbasierte Zugriffssteuerung in Kubernetes auf einem Azure Stack Edge Pro-GPU-Gerät](azure-stack-edge-gpu-kubernetes-rbac.md).
 
 Zudem können Sie die Integrität Ihres Clusters und Ihrer Ressourcen über das Kubernetes-Dashboard überwachen. Darüber hinaus sind Containerprotokolle verfügbar. Weitere Informationen finden Sie unter [Überwachen der Integrität des Kubernetes-Clusters auf Ihrem Azure Stack Edge Pro-Gerät über das Kubernetes-Dashboard](azure-stack-edge-gpu-monitor-kubernetes-dashboard.md).
 

@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: 86db8c88fae7a5fd1ec4828d8936c6cb8172a61c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 446731e084084ca301b350f6fec0c4065485a40f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564564"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026623"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>Bewährte Methoden für die Clusterkonfiguration (SQL Server auf Azure-VMS)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -33,7 +33,7 @@ Verwenden Sie eine einzelne NIC pro Server (Clusterknoten) und ein einzelnes Sub
 
 ### <a name="tuning-failover-cluster-network-thresholds"></a>Optimieren von Failovercluster-Netzwerkschwellenwerten
 
-Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server Always On ausführen, wird empfohlen, die Clustereinstellung in einen weniger strengen Überwachungsstatus zu ändern.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Always On: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluser).
+Wenn Sie Windows-Failoverclusterknoten auf Azure-VMs mit SQL Server Always On ausführen, wird empfohlen, die Clustereinstellung in einen weniger strengen Überwachungsstatus zu ändern.  Dadurch wird der Cluster deutlich stabiler und zuverlässiger.  Weitere Informationen hierzu finden Sie unter [IaaS mit SQL Always On: Optimieren der Failovercluster-Netzwerkschwellenwerte](/windows-server/troubleshoot/iaas-sql-failover-cluster).
 
 ## <a name="quorum"></a>Quorum
 

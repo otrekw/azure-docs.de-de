@@ -1,7 +1,7 @@
 ---
 title: Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps | Azure
 titleSuffix: Microsoft identity platform
-description: Hier erhalten Sie eine Erläuterung und Übersicht über die Entwickelung mobiler Anwendungen, die einmaliges Anmelden und App-Schutzrichtlinien unterstützen
+description: Erklärung und Übersicht zum Erstellen mobiler Anwendungen, die Single Sign-On und App-Schutzrichtlinien mithilfe der Microsoft Identity Platform und Integration in Azure Active Directory unterstützen.
 services: active-directory
 author: knicholasa
 manager: CelesteDG
@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/14/2020
 ms.author: nichola
-ms.openlocfilehash: 09fc29b54951d2f33acc725c734e01e3d3364ff0
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 4a9282882d23ecbdc3c03ca158ea3de5566143e7
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331605"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94634853"
 ---
 # <a name="support-single-sign-on-and-app-protection-policies-in-mobile-apps-you-develop"></a>Unterstützung von einmaligem Anmelden und App-Schutzrichtlinien in von Ihnen entwickelten mobilen Apps
 
-Einmaliges Anmelden (Single Sign-On, SSO) ermöglicht Benutzern Ihrer App einfache und sichere Anmeldungen. App-Schutzrichtlinien (App Protection Policies, APP) erlauben die Unterstützung der wesentlichen Sicherheitsrichtlinien zum Schutz der Daten Ihrer Benutzer. Diese beiden Features ermöglichen sichere Benutzeranmeldungen und die Verwaltung der Daten Ihrer App.
+Einmaliges Anmelden (Single Sign-On, SSO) ist ein wichtiges Angebot von Microsoft Identity Platform und Azure Active Directory, das Benutzern Ihrer App einfache und sichere Anmeldungen ermöglicht. App-Schutzrichtlinien (App Protection Policies, APP) erlauben außerdem die Unterstützung der wesentlichen Sicherheitsrichtlinien zum Schutz der Daten Ihrer Benutzer. Diese beiden Features ermöglichen sichere Benutzeranmeldungen und die Verwaltung der Daten Ihrer App.
 
 In diesem Artikel wird erläutert, was SSO und APP so wichtig macht. Außerdem finden Sie hier die allgemeinen Schritte zum Erstellen mobiler Anwendungen, die diese Features unterstützen. Diese Informationen gelten für Smartphone- und Tablet-Apps gleichermaßen. Wenn Sie IT-Administrator sind, der SSO für den Azure Active Directory-Mandanten Ihrer Organisation bereitstellen möchte, lesen Sie unseren [Leitfaden zum Planen einer Bereitstellung von einmaligem Anmelden](../manage-apps/plan-sso-deployment.md).
 

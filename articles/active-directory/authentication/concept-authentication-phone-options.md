@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 11/13/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45851015dd5a845497fb2d09bf1f9fffb9e35a06
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 65c8baa101df5e24780e5e68b5a21b86985608a6
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377750"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628117"
 ---
 # <a name="authentication-methods-in-azure-active-directory---phone-options"></a>Authentifizierungsmethoden in Azure Active Directory – Telefonoptionen
 
@@ -23,7 +23,7 @@ Informationen zur direkten Authentifizierung mit Textnachrichten finden Sie unte
 
 Benutzer können sich als zweite Authentifizierungsmethode auch selbst anhand einer Mobiltelefonnummer oder geschäftlichen Telefonnummer bestätigen, z. B. bei der Azure Multi-Factor Authentication oder der Self-Service-Kennwortzurücksetzung (SSPR).
 
-Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: *+1 4251234567* ).
+Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvorwahl Telefonnummer* vorliegen (Beispiel: *+1 4251234567*).
 
 > [!NOTE]
 > Zwischen Landes-/Ortsvorwahl und Telefonnummer muss sich ein Leerzeichen befinden.
@@ -32,7 +32,7 @@ Für eine ordnungsgemäße Funktion müssen Telefonnummern im Format *+Landesvor
 
 ## <a name="mobile-phone-verification"></a>Überprüfung mit Mobiltelefonnummer
 
-Bei Azure Multi-Factor Authentication oder SSPR stehen dem Benutzer zwei Optionen zur Auswahl: Empfang einer Textnachricht mit einem Prüfcode, der im Anmeldebildschirm eingegeben wird, oder Telefonanruf mit der Aufforderung, einen definierten PIN-Code einzugeben.
+Bei Azure Multi-Factor Authentication oder SSPR stehen dem Benutzer zwei Optionen zur Auswahl: Empfang einer Textnachricht mit einem Prüfcode, der im Anmeldebildschirm eingegeben wird, oder Empfang eines Telefonanrufs.
 
 Wenn ein Benutzer nicht möchte, dass seine Mobiltelefonnummer im Verzeichnis sichtbar ist, sie aber dennoch für die Kennwortzurücksetzung verwenden möchte, sollten Administratoren die Telefonnummer nicht in das Verzeichnis übernehmen. Der Benutzer sollte stattdessen über die kombinierte Registrierung von Sicherheitsinformationen auf [https://aka.ms/setupsecurityinfo](https://aka.ms/setupsecurityinfo) das Attribut **Authentifizierungstelefon** für sich eingeben. Administratoren können diese Informationen im Profil des Benutzers anzeigen, sie werden jedoch nicht an anderer Stelle veröffentlicht.
 
@@ -46,22 +46,24 @@ Bei der Überprüfung mit Textnachricht wird bei der Self-Service-Kennwortzurüc
 
 ### <a name="phone-call-verification"></a>Überprüfung mit Telefonanruf
 
-Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, seine PIN-Nummer, gefolgt von #, auf der Tastatur einzugeben.
+Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, die Taste „#“ auf der Tastatur zu drücken.
 
 ## <a name="office-phone-verification"></a>Überprüfung mit geschäftlicher Rufnummer
 
-Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, seine PIN-Nummer, gefolgt von #, auf der Tastatur einzugeben.
+Bei der Überprüfung mit Telefonanruf erfolgt bei der Self-Service-Kennwortzurücksetzung oder bei Azure Multi-Factor Authentication ein automatischer Sprachanruf an die vom Benutzer registrierte Telefonnummer. Zum Abschließen des Anmeldevorgangs wird der Benutzer aufgefordert, die Taste „#“ auf der Tastatur zu drücken.
 
 ## <a name="troubleshooting-phone-options"></a>Problembehandlung bei Telefonoptionen
 
 Wenn bei der telefonischen Authentifizierung für Azure AD Probleme auftreten, überprüfen Sie die folgenden Schritte zur Problembehebung:
 
+* Fehlermeldungen „Sie haben das Limit für Verifizierungsanrufe erreicht“ oder „Sie haben das Limit für Textprüfcodes erreicht“ während Anmeldungen
+   * Verwenden Sie die Micrsoft Authenticator-App oder den Prüfcode, um die Authentifizierung abzuschließen, oder versuchen Sie es später erneut.
 * Gesperrte Anrufer-ID auf einem einzelnen Gerät.
    * Überprüfen Sie alle gesperrten Telefonnummern, die auf dem Gerät konfiguriert sind.
 * Falsche Telefonnummer oder falsche Landes-/Ortsvorwahl oder Verwechslung von persönlicher und geschäftlicher Telefonnummer.
    * Beheben Sie das Problem in Bezug auf das Benutzerobjekt und die konfigurierten Authentifizierungsmethoden. Stellen Sie sicher, dass die richtigen Telefonnummern registriert sind.
 * Falsche PIN eingegeben.
-   * Vergewissern Sie sich, dass der Benutzer die richtige PIN, die für sein Konto registriert ist, verwendet hat.
+   * Vergewissern Sie sich, dass der Benutzer die richtige PIN, die für sein Konto registriert ist, verwendet hat (nur MFA-Server-Benutzer).
 * Anruf an Voicemail weitergeleitet.
    * Stellen Sie sicher, dass der Benutzer sein Telefon eingeschaltet hat und dieser Dienst in seiner Region verfügbar ist, oder verwenden Sie die alternative Methode.
 * Benutzer ist gesperrt

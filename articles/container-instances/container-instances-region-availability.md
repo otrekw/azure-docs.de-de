@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: e4fbf1023863f9f4c46e6bd2266f72ff2f7d7adc
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395868"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576613"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -55,6 +55,9 @@ Die folgenden Regionen und maximalen Ressourcen sind für Containergruppen mit L
 
 Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) (Vorschau) bereitgestellt wird, sind die folgenden maximalen Ressourcen verfügbar.
 
+> [!IMPORTANT]
+> Zurzeit werden Bereitstellungen mit GPU-Ressourcen in einer Azure Virtual Network-Bereitstellung nicht unterstützt und sind nur für Linux-Containergruppen verfügbar.
+
 | GPU: SKUs | GPU-Anzahl | Maximale CPU-Auslastung | Maximaler Speicher (GB) | Speicher (GB) |
 | --- | --- | --- | --- | --- |
 | K80 | 1 | 6 | 56 | 50 |
@@ -67,6 +70,9 @@ Für eine Containergruppe, die mit [GPU-Ressourcen](container-instances-gpu.md) 
 ## <a name="windows-container-groups"></a>Windows-Containergruppen
 
 Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unterstützten und Vorschau-](container-instances-faq.md#what-windows-base-os-images-are-supported)Windows Server-Containern zur Verfügung.
+
+> [!IMPORTANT]
+> Zurzeit werden Bereitstellungen mit Windows-Containergruppen in einer Azure Virtual Network-Bereitstellung nicht unterstützt.
 
 ###  <a name="windows-server-2016"></a>Windows Server 2016
 

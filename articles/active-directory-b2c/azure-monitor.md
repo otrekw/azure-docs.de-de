@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: 68a7dd1b9a7af9f2667785c8b822b2771510d00e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94562776"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95992842"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -25,7 +25,7 @@ Verwenden Sie Azure Monitor, um Azure AD B2C-Protokolle (Azure Active Directory 
 Sie können Protokollereignisse an folgende Komponenten weiterleiten:
 
 * Ein Azure-[Speicherkonto](../storage/blobs/storage-blobs-introduction.md).
-* Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
+* Einen Azure [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace) (zum Analysieren von Daten, Erstellen von Dashboards und Warnen bei bestimmten Ereignissen).
 * Einen Azure [Event Hub](../event-hubs/event-hubs-about.md) (mit Integration in Ihre Splunk- und Sumo Logic-Instanzen).
 
 ![Azure Monitor](./media/azure-monitor/azure-monitor-flow.png)
@@ -58,7 +58,7 @@ Ein **Log Analytics-Arbeitsbereich** ist eine spezielle Umgebung für Azure Moni
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren **Azure AD-Mandanten** enthält.
-1. [Erstellen Sie einen Log Analytics-Arbeitsbereich](../azure-monitor/learn/quick-create-workspace.md). In diesem Beispiel wird in der Ressourcengruppe namens *azure-ad-b2c-monitor* ein Log Analytics Arbeitsbereich namens *AzureAdB2C* verwendet.
+1. [Erstellen eines Log Analytics-Arbeitsbereichs](../azure-monitor/learn/quick-create-workspace.md) In diesem Beispiel wird in der Ressourcengruppe namens *azure-ad-b2c-monitor* ein Log Analytics Arbeitsbereich namens *AzureAdB2C* verwendet.
 
 ## <a name="3-delegate-resource-management"></a>3. Delegieren der Ressourcenverwaltung
 
@@ -104,7 +104,7 @@ Als Nächstes erstellen Sie eine Azure Resource Manager-Vorlage, die Azure AD 
    | MSP-Angebotsname| Ein Name, der diese Definition beschreibt. Beispiel: *Azure-AD-B2C-Monitoring*.  |
    | MSP-Angebotsbeschreibung| Eine kurze Beschreibung Ihres Angebots. Beispiel: *Ermöglicht Azure Monitor in Azure AD B2C*.|
    | Verwaltet durch Mandanten-ID| Die **Mandanten-ID** Ihres Azure AD B2C-Mandanten (auch als Verzeichnis-ID bezeichnet). |
-   |Autorisierungen|Geben Sie ein JSON-Array von Objekten an, das die `principalId` und den `principalIdDisplayName` von Azure AD und die `roleDefinitionId` von Azure enthält. `principalId` ist die **Objekt-ID** der B2C-Gruppe bzw. des Benutzers, die oder der Zugriff auf die Ressourcen in diesem Azure-Abonnement haben soll. Geben Sie für diese exemplarische Vorgehensweise die Objekt-ID der Gruppe an, die Sie zuvor notiert haben. Verwenden Sie als `roleDefinitionId` den Wert der [integrierten Rolle](../role-based-access-control/built-in-roles.md) für die *Rolle „Mitwirkender“* : `b24988ac-6180-42a0-ab88-20f7382dd24c`.|
+   |Authorizations|Geben Sie ein JSON-Array von Objekten an, das die `principalId` und den `principalIdDisplayName` von Azure AD und die `roleDefinitionId` von Azure enthält. `principalId` ist die **Objekt-ID** der B2C-Gruppe bzw. des Benutzers, die oder der Zugriff auf die Ressourcen in diesem Azure-Abonnement haben soll. Geben Sie für diese exemplarische Vorgehensweise die Objekt-ID der Gruppe an, die Sie zuvor notiert haben. Verwenden Sie als `roleDefinitionId` den Wert der [integrierten Rolle](../role-based-access-control/built-in-roles.md) für die *Rolle „Mitwirkender“* : `b24988ac-6180-42a0-ab88-20f7382dd24c`.|
    | Ressourcengruppenname | Der Name der Ressourcengruppe, die Sie zuvor auf Ihrem Azure AD-Mandanten erstellt haben. Beispiel: *azure-ad-b2c-monitor*. |
 
    Im folgenden Beispiel wird ein Autorisierungs-Array mit einer Sicherheitsgruppe veranschaulicht.
@@ -153,7 +153,7 @@ Jetzt können Sie im Azure-Portal [Diagnoseeinstellungen erstellen](../active-di
 Konfigurieren Sie die Überwachungseinstellungen für Azure AD B2C-Aktivitätsprotokolle wie folgt:
 
 1. Melden Sie sich mit Ihrem Azure AD B2C-Administratorkonto beim [Azure-Portal](https://portal.azure.com/) an. Dieses Konto muss ein Mitglied der Sicherheitsgruppe sein, die Sie im Schritt [Auswählen einer Sicherheitsgruppe](#32-select-a-security-group) angegeben haben.
-1. Wählen Sie im Portal auf der Symbolleiste das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie auf der Symbolleiste des Portals das Symbol **Verzeichnis und Abonnement** aus, und wählen Sie dann das Verzeichnis aus, das Ihren Azure AD B2C-Mandanten enthält.
 1. Wählen Sie **Azure Active Directory** aus.
 1. Wählen Sie unter **Überwachung** die Option **Diagnoseeinstellungen** aus.
 1. Wenn Einstellungen für die Ressource vorhanden sind, wird eine Liste der bereits konfigurierten Einstellungen angezeigt. Wählen Sie entweder **Diagnoseeinstellung hinzufügen** aus, um eine neue Einstellung hinzuzufügen, oder wählen Sie **Bearbeiten** aus, um eine vorhandene Einstellung zu bearbeiten. Jede Einstellung kann höchstens einen der Zieltypen aufweisen.
@@ -192,7 +192,7 @@ Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Proto
     | order by SignInCount desc  nulls last
     ```
 
-1. Klicken Sie auf **Ausführen**. Die Abfrageergebnisse werden unten im Bildschirm angezeigt.
+1. Klicken Sie auf **Run** (Ausführen). Die Abfrageergebnisse werden unten im Bildschirm angezeigt.
 1. Wenn Sie die Abfrage zur späteren Verwendung speichern möchten, wählen Sie **Speichern** aus.
 
    ![Log Analytics-Protokoll-Editor](./media/azure-monitor/query-policy-usage.png)

@@ -10,12 +10,12 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 6fd0ba19739b75e72541ac84d6b1696ab2819dee
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
+ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317425"
+ms.lasthandoff: 11/16/2020
+ms.locfileid: "94638868"
 ---
 # <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Bewährte Methoden für serverlose SQL-Pools (Vorschauversion) in Azure Synapse Analytics
 
@@ -61,7 +61,7 @@ Die Datentypen, die Sie in Ihrer Abfrage verwenden, wirken sich auf die Leistung
 - Verwenden der kleinsten Datengröße, die den größtmöglichen Wert aufnehmen kann.
   - Wenn die maximale Zeichenlänge des Werts 30 Zeichen beträgt, verwenden Sie den Zeichendatentyp der Länge 30.
   - Wenn Zeichenspaltenwerte eine festgelegte Größe haben, verwenden Sie **char** oder **nchar**. Verwenden Sie andernfalls **varchar** oder **nvarchar**.
-  - Wenn der Höchstwert für eine ganzzahlige (integer) Spalte 500 ist, verwenden Sie **smallint** , da dies der kleinste Datentyp ist, der diesen Wert aufnehmen kann. Ganzzahlige Datentypen (integer) finden Sie [hier](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true).
+  - Wenn der Höchstwert für eine ganzzahlige (integer) Spalte 500 ist, verwenden Sie **smallint**, da dies der kleinste Datentyp ist, der diesen Wert aufnehmen kann. Ganzzahlige Datentypen (integer) finden Sie [hier](/sql/t-sql/data-types/int-bigint-smallint-and-tinyint-transact-sql?view=azure-sqldw-latest&preserve-view=true).
 - Verwenden Sie nach Möglichkeit **varchar** und **char** anstelle von **nvarchar** und **nchar**.
 - Verwenden Sie nach Möglichkeit ganzzahlige Datentypen (integer). Die Vorgänge SORT, JOIN und GROUP BY erfolgen schneller mit ganzzahligen Daten als mit Zeichendaten.
 - Wenn Sie Schemarückschlüsse verwenden, [überprüfen Sie den abgeleiteten Datentyp](#check-inferred-data-types).
@@ -127,13 +127,17 @@ Wenn Ihre gespeicherten Daten nicht partitioniert sind, können Sie sie partitio
 
 Beim Abfragen von CSV-Dateien können Sie einen leistungsoptimierten Parser verwenden. Weitere Informationen finden Sie unter [PARSER_VERSION](develop-openrowset.md).
 
+## <a name="manually-create-statistics-for-csv-files"></a>Manuelles Erstellen von Statistiken für CSV-Dateien
+
+Der serverlose SQL-Pool verwendet Statistiken, um optimale Abfrageausführungspläne zu generieren. Statistiken werden bei Bedarf automatisch für Spalten in den Parquet-Dateien erstellt. Zurzeit werden Statistiken nicht automatisch für Spalten in CSV-Dateien erstellt, und Sie sollten Statistiken manuell für Spalten erstellen, die Sie in Abfragen verwenden, insbesondere in DISTINCT, JOIN, WHERE, ORDER BY und GROUP BY. Weitere Informationen finden Sie unter [Statistiken im serverlosen SQL-Pool](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview).
+
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Verwenden von CETAS zum Verbessern von Abfrageleistung und Verknüpfungen
 
 [CETAS](develop-tables-cetas.md) ist eine der wichtigsten Funktionen, die in einem serverlosen SQL-Pool verfügbar sind. CETAS ist ein paralleler Vorgang, der externe Tabellenmetadaten erstellt und die Ergebnisse der SELECT-Abfrage in eine Reihe von Dateien in Ihrem Speicherkonto exportiert.
 
 Sie können CETAS verwenden, um häufig verwendete Teile von Abfragen, z. B. verknüpfte Verweistabellen, zu einem neuen Satz von Dateien zu speichern. Als Nächstes können Sie eine Verknüpfung zu dieser einzelnen externen Tabelle herstellen, anstatt gemeinsame Verknüpfungen in mehreren Abfragen zu wiederholen.
 
-Da CETAS Parquet-Dateien generiert, werden Statistiken automatisch erstellt, wenn die erste Abfrage auf diese externe Tabelle ausgerichtet ist, was zu einer verbesserten Leistung führt.
+Da CETAS Parquet-Dateien generiert, werden Statistiken automatisch erstellt, wenn die erste Abfrage auf diese externe Tabelle ausgerichtet ist, was bei nachfolgenden, auf eine mit CETAS generierte Tabelle ausgerichteten Abfragen zu einer verbesserten Leistung führt.
 
 ## <a name="azure-ad-pass-through-performance"></a>Leistung von Azure AD-Pass-Through
 

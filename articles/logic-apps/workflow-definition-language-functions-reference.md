@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 09/04/2020
-ms.openlocfilehash: 3910b6ffcce6c5bc4a8d565071c4b07db9e3ff63
-ms.sourcegitcommit: b6f3ccaadf2f7eba4254a402e954adf430a90003
+ms.openlocfilehash: dff2488094bd9abde44b8d8a8d7a44d4f79a12e0
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92279016"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94592684"
 ---
 # <a name="reference-guide-to-using-functions-in-expressions-for-azure-logic-apps-and-power-automate"></a>Referenzhandbuch für die Verwendung von Funktionen in Ausdrücken für Azure Logic Apps und Power Automate
 
@@ -3925,12 +3925,12 @@ substring('<text>', <startIndex>, <length>)
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, aus der die Zeichen zurückgegeben werden sollen |
 | <*startIndex*> | Ja | Integer | Eine positive Zahl gleich oder größer als 0, die Sie als Ausgangswert oder Indexwert verwenden können. |
-| <*length*> | Ja | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
+| <*length*> | Nein | Integer | Eine positive Anzahl von Zeichen, die in der Teilzeichenfolge enthalten sein sollen |
 |||||
 
 > [!NOTE]
 > Stellen Sie sicher, dass die Summe aus der Addition der Parameterwerte von *startIndex* und *length* kleiner als die Länge der Zeichenfolge ist, die Sie für den Parameter *text* angeben.
-> Andernfalls erhalten Sie einen Fehler, im Gegensatz zu ähnlichen Funktionen in anderen Sprachen, bei denen das Ergebnis die Teilzeichenfolge ab dem *startIndex* bis zum Ende der Zeichenfolge ist.
+> Andernfalls erhalten Sie einen Fehler, im Gegensatz zu ähnlichen Funktionen in anderen Sprachen, bei denen das Ergebnis die Teilzeichenfolge ab dem *startIndex* bis zum Ende der Zeichenfolge ist. Der *length*-Parameter ist optional, und wenn er nicht angegeben wird, nimmt die **substring()** -Funktion alle Zeichen ab *startIndex* bis zum Ende der Zeichenfolge entgegen.
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
@@ -3958,7 +3958,7 @@ Siehe auch [getPastTime](#getPastTime).
 subtractFromTime('<timestamp>', <interval>, '<timeUnit>', '<format>'?)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge, die den Zeitstempel enthält |
 | <*interval*> | Ja | Integer | Die Anzahl der angegebenen Zeiteinheiten, die subtrahiert werden sollen |
@@ -4002,7 +4002,7 @@ take('<collection>', <count>)
 take([<collection>], <count>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection*> | Ja | Zeichenfolge oder Array | Die Sammlung, aus der Sie Elemente abrufen möchten |
 | <*count*> | Ja | Integer | Eine positive ganze Zahl für die Anzahl von Elementen, die ab dem Anfang abgerufen werden sollen |
@@ -4037,7 +4037,7 @@ Gibt die Anzahl der Ticks zurück, bei denen es sich um 100-Nanosekunden-Interva
 ticks('<timestamp>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*timestamp*> | Ja | String | Die Zeichenfolge für einen Zeitstempel |
 |||||
@@ -4057,7 +4057,7 @@ Gibt eine Zeichenfolge in Kleinbuchstaben zurück. Gibt es für ein Zeichen in d
 toLower('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, die in Kleinbuchstaben zurückgegeben werden soll |
 |||||
@@ -4087,7 +4087,7 @@ Gibt eine Zeichenfolge in Großbuchstaben zurück. Gibt es für ein Zeichen in d
 toUpper('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, die in Großbuchstaben zurückgegeben werden soll |
 |||||
@@ -4156,7 +4156,7 @@ Gibt ein Array mit den Werten zurück, die mit einem Schlüsselnamen (key-Name) 
 triggerFormDataMultiValues('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
@@ -4187,7 +4187,7 @@ Findet die Funktion mehrere Übereinstimmungen, löst sie einen Fehler aus.
 triggerFormDataValue('<key>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*key*> | Ja | String | Der Name des Schlüssels, dessen Wert Sie abrufen möchten |
 |||||
@@ -4217,7 +4217,7 @@ Gibt den Textteil für einen bestimmten Teil einer Triggerausgabe zurück, die m
 triggerMultipartBody(<index>)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*index*> | Ja | Integer | Der Indexwert des von Ihnen gewünschten Teils |
 |||||
@@ -4254,7 +4254,7 @@ Entfernt führende und nachfolgende Leerzeichen aus einer Zeichenfolge und gibt 
 trim('<text>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*text*> | Ja | String | Die Zeichenfolge, in der sich die führenden und nachfolgende Leerzeichen befinden, die entfernt werden sollen |
 |||||
@@ -4286,7 +4286,7 @@ union('<collection1>', '<collection2>', ...)
 union([<collection1>], [<collection2>], ...)
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
@@ -4318,7 +4318,7 @@ Obwohl beide Funktionen in gleicher Weise funktionieren, wird `uriComponent()` b
 uriComponent('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die Zeichenfolge, die in das URI-codierte Format konvertiert werden soll |
 |||||
@@ -4348,7 +4348,7 @@ Gibt die binäre Version einer URI-Komponente (Uniform Resource Identifier) zur�
 uriComponentToBinary('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die konvertiert werden soll |
 |||||
@@ -4383,7 +4383,7 @@ Gibt die Zeichenfolgenversion einer URI-codierten Zeichenfolge (Uniform Resource
 uriComponentToString('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die URI-codierte Zeichenfolge, die decodiert werden soll |
 |||||
@@ -4413,7 +4413,7 @@ Gibt den Wert `host` für einen Uniform Resource Identifier (URI) zurück.
 uriHost('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `host`-Wert Sie abrufen möchten |
 |||||
@@ -4443,7 +4443,7 @@ Gibt den Wert `path` für einen Uniform Resource Identifier (URI) zurück.
 uriPath('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `path`-Wert Sie abrufen möchten |
 |||||
@@ -4473,7 +4473,7 @@ Gibt die den `path`- und den `query`-Wert für einen Uniform Resource Identifier
 uriPathAndQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `path`- und `query`-Wert abgerufen werden sollen |
 |||||
@@ -4503,7 +4503,7 @@ Gibt den Wert `port` für einen Uniform Resource Identifier (URI) zurück.
 uriPort('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `port`-Wert Sie abrufen möchten |
 |||||
@@ -4533,7 +4533,7 @@ Gibt den Wert `query` für einen Uniform Resource Identifier (URI) zurück.
 uriQuery('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `query`-Wert Sie abrufen möchten |
 |||||
@@ -4563,7 +4563,7 @@ Gibt den Wert `scheme` für einen Uniform Resource Identifier (URI) zurück.
 uriScheme('<uri>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*uri*> | Ja | String | Der URI, dessen `scheme`-Wert Sie abrufen möchten |
 |||||
@@ -4596,7 +4596,7 @@ utcNow('<format>')
 Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*format*> | Nein | String | Entweder ein [einzelner Formatbezeichner](/dotnet/standard/base-types/standard-date-and-time-format-strings) oder ein [benutzerdefiniertes Formatmuster](/dotnet/standard/base-types/custom-date-and-time-format-strings). Das Standardformat für den Zeitstempel ist [„o“](/dotnet/standard/base-types/standard-date-and-time-format-strings) (JJJJ-MM-TTT hh:mm:ss:fffffffK), das mit [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) übereinstimmt und in dem Zeitzoneninformationen erhalten bleiben. |
 |||||
@@ -4638,7 +4638,7 @@ Gibt den Wert für eine angegebene Variable zurück.
 variables('<variableName>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*variableName*> | Ja | String | Der Name der Variablen, deren Wert Sie abrufen möchten |
 |||||
@@ -4669,7 +4669,7 @@ Gibt sämtliche Details zum Workflow selbst zur Laufzeit zurück.
 workflow().<property>
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*property*> | Nein | String | Der Name der Workfloweigenschaft, deren Wert Sie abrufen möchten <p>Ein Workflowobjekt hat diese Eigenschaften: **name**, **type**, **id**, **location** und **run**. Der Wert der **run**-Eigenschaft ist ebenfalls ein Objekt, das diese Eigenschaften hat: **name**, **type** und **id**. |
 |||||
@@ -4692,7 +4692,7 @@ Gibt die XML-Version einer Zeichenfolge zurück, die ein JSON-Objekt enthält.
 xml('<value>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*value*> | Ja | String | Die Zeichenfolge mit dem JSON-Objekt, das konvertiert werden soll. <p>Das JSON-Objekt darf nur eine Stammeigenschaft haben, die kein Array sein darf. <br>Verwenden Sie den umgekehrten Schrägstrich (\\) als Escapezeichen für das doppelte Anführungszeichen ("). |
 |||||
@@ -4750,7 +4750,7 @@ Dies ist das zurückgegebene XML-Objekt:
 xpath('<xml>', '<xpath>')
 ```
 
-| Parameter | Erforderlich | Typ | BESCHREIBUNG |
+| Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
 | <*xml*> | Ja | Any | Die XML-Zeichenfolge, in der nach Knoten oder Werten gesucht werden soll, die mit einem XPath-Ausdruckswert übereinstimmen |
 | <*xpath*> | Ja | Any | Der XPath-Ausdruck, der für die Suche nach übereinstimmenden XML-Knoten oder -Werten verwendet wird |

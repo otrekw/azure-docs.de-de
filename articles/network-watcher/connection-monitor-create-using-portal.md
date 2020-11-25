@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 8c4df64334957a78fcf05c11625335214f8e032a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: a6ba9c02b384c1b30977d962659983d600c7b2ac
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699371"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545719"
 ---
 # <a name="create-a-monitor-in-connection-monitor-by-using-the-azure-portal"></a>Erstellen eines Monitors in Verbindungsmonitor mit dem Azure-Portal
 
 In diesem Artikel erfahren Sie, wie Sie Verbindungsmonitor verwenden, um die Kommunikation zwischen Ihren Ressourcen zu überwachen. In diesem Artikel wird das Erstellen eines Monitors über das Azure-Portal beschrieben. Verbindungsmonitor unterstützt Hybrid- und Azure-Cloudbereitstellungen.
+
 
 ## <a name="before-you-begin"></a>Vorbereitung 
 
@@ -102,7 +103,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
 
 * **Testgruppe deaktivieren**: Sie können dieses Kontrollkästchen aktivieren, um die Überwachung für alle in der Testgruppe angegebenen Quellen und Ziele zu deaktivieren. Diese Auswahl ist standardmäßig deaktiviert.
 * **Name**: Geben Sie Ihrer Testgruppe einen Namen.
-* **Quellen**: Sie können sowohl Azure-VMs als auch lokale Computer als Quellen angeben, wenn Agents darauf installiert sind. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+* **Quellen**: Sie können sowohl Azure-VMs als auch lokale Computer als Quellen angeben, wenn Agents darauf installiert sind. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](./connection-monitor-overview.md#install-monitoring-agents).
    * Wählen Sie zum Auswählen von Azure-Agents die Registerkarte **Azure-Endpunkte** aus. Hier werden nur VMs angezeigt, die an die Region gebunden sind, die Sie beim Erstellen des Verbindungsmonitors angegeben haben. Standardmäßig sind VMs in den Abonnements gruppiert, denen Sie angehören. Diese Gruppen sind reduziert. 
    
        Sie können von der **Abonnement** ebene einen Drilldown auf andere Hierarchieebenen ausführen:
@@ -117,7 +118,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
 
    * Zum Auswählen lokaler Agents wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
    
-       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+       Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.NetworkMonitoringOMS?tab=Overview) ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
    
        Unter **Verbindungsmonitor erstellen** ist auf der Registerkarte **Grundlagen** die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt. Sie können den Selektor **Gruppieren nach** ändern, um nach Agents zu gruppieren.
 
@@ -140,7 +141,7 @@ Wenn Sie eine Testgruppe in einem Verbindungsmonitor erstellen möchten, geben S
     
     * Um Nicht-Azure-Agents als Ziele auszuwählen, wählen Sie die Registerkarte **Nicht-Azure-Endpunkte** aus. Standardmäßig sind Agents in Arbeitsbereichen nach Region gruppiert. Für alle diese Arbeitsbereiche ist der Netzwerkleistungsmonitor konfiguriert. 
     
-      Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem Azure Marketplace ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/insights/solutions). 
+      Wenn Sie dem Arbeitsbereich den Netzwerkleistungsmonitor hinzufügen müssen, rufen Sie ihn aus dem Azure Marketplace ab. Informationen zum Hinzufügen des Netzwerkleistungsmonitors finden Sie unter [Überwachungslösungen in Azure Monitor](../azure-monitor/insights/solutions.md). 
 
       Unter  **Verbindungsmonitor erstellen** ist auf der Registerkarte  **Grundlagen**  die Standardregion ausgewählt. Wenn Sie die Region ändern, können Sie Agents aus Arbeitsbereichen in der neuen Region auswählen. Sie können ein/en oder mehrere Agents oder Subnetze auswählen. In der Ansicht **Subnetz** können Sie bestimmte IP-Adressen für die Überwachung auswählen. Wenn Sie mehrere Subnetze hinzufügen, wird ein benutzerdefiniertes lokales Netzwerk mit dem Namen **OnPremises_Network_1** erstellt.  
 
@@ -182,7 +183,7 @@ Wenn Sie Warnungen für einen Verbindungsmonitor erstellen möchten, geben Sie i
 
 - **Bedingungsname**: Die Warnung wir für die `Test Result(preview)`-Metrik erstellt. Wenn das Ergebnis des Verbindungsmonitortests fehlerhaft ist, wird die Warnungsregel ausgelöst. 
 
-- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](https://docs.microsoft.com/azure/azure-monitor/platform/action-groups). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-metric#view-and-manage-with-azure-portal). 
+- **Aktionsgruppenname**: Sie können Ihre E-Mail-Adresse direkt eingeben, oder Sie können Warnungen über Aktionsgruppen erstellen. Wenn Sie Ihre E-Mail-Adresse direkt eingeben, wird eine Aktionsgruppe namens **NPM Email ActionGroup** erstellt. Die E-Mail-ID wird dieser Aktionsgruppe hinzugefügt. Wenn Sie sich für die Verwendung von Aktionsgruppen entscheiden, müssen Sie eine zuvor erstellte Aktionsgruppe auswählen. Wie Sie eine Aktionsgruppe erstellen, erfahren Sie unter [Aktionsgruppen im Azure-Portal erstellen](../azure-monitor/platform/action-groups.md). Nachdem die Warnung erstellt wurde, können Sie [Ihre Warnungen verwalten](../azure-monitor/platform/alerts-metric.md#view-and-manage-with-azure-portal). 
 
 - **Name der Warnungsregel**: Der Name des Verbindungsmonitors.
 
@@ -201,5 +202,5 @@ Für Verbindungsmonitore gelten diese Skalierungslimits:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
-* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).
+* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](./connection-monitor-overview.md#diagnose-issues-in-your-network).

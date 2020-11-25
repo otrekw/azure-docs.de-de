@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: mathapli
 ms.reviewer: cynthn
-ms.openlocfilehash: e7c9f9b158d01204536712f8024ed098cd7a5037
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 124ff65087887a437e0b82fbd7b1e4c72e4f7b4c
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372858"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684354"
 ---
 # <a name="red-hat-enterprise-linux-rhel-extended-lifecycle-support"></a>Erweiterte Lebenszyklusunterstützung für Red Hat Enterprise Linux (RHEL)
 Dieser Artikel bietet Informationen zur erweiterten Lebenszyklusunterstützung für die Red Hat Enterprise-Images:
@@ -40,7 +40,7 @@ Am 30. November 2020 ist die Wartungsphase für Red Hat Enterprise Linux 6 be
 
 #### <a name="what-is-the-process-to-add-extended-life-cycle-support-els-repositories-to-continue-to-receive-software-maintenance-bug-and-security-fixes-and--support-for-red-hat-enterprise-linux-6"></a>Wie füge ich ELS-Repositorys (Extended Life Cycle Support, erweiterte Lebenszyklusunterstützung) hinzu, um weiterhin Softwarewartungsaktivitäten (Fehler- und Sicherheitskorrekturen) und Unterstützung für Red Hat Enterprise Linux 6 zu erhalten?
 
-Der vollständige Prozess zum Registrieren für die erweiterte Lebenszyklusunterstützung wird in Kürze hier zur Verfügung stehen (spätestens am 15. November 2020).
+Der vollständige Prozess zum Registrieren für die erweiterte Lebenszyklusunterstützung wird in Kürze hier zur Verfügung stehen (spätestens am 30. November 2020).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

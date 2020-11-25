@@ -1,6 +1,6 @@
 ---
 title: LDAP-Authentifizierung mit Azure Active Directory
-description: Architekturleitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Implementieren der LDAP-Authentifizierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a70cb4754d98f4573670860c510692a7a2d134c
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113938"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577055"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>LDAP-Authentifizierung mit Azure Active Directory
 
@@ -42,21 +42,21 @@ Eine Anwendung oder ein Dienst muss die LDAP-Authentifizierung verwenden.
 
 * **Benutzer:** Der Benutzer greift über einen Browser auf von LDAP abhängige Anwendungen zu.
 
-* **Webbrowser** : Die Schnittstelle, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
+* **Webbrowser**: Die Schnittstelle, mit der der Benutzer interagiert, um auf die externe URL der Anwendung zuzugreifen.
 
-* **Virtuelles Netzwerk** : Ein privates Netzwerk in Azure, über das die Legacyanwendung LDAP-Dienste nutzen kann. 
+* **Virtuelles Netzwerk**: Ein privates Netzwerk in Azure, über das die Legacyanwendung LDAP-Dienste nutzen kann. 
 
-* **Legacyanwendungen** : Anwendungen oder Serverworkloads, für die LDAP in einem virtuellen Netzwerk in Azure bereitgestellt sein muss oder die über Netzwerkrouten Einblick in AD DS-Instanz-IPs haben. 
+* **Legacyanwendungen**: Anwendungen oder Serverworkloads, für die LDAP in einem virtuellen Netzwerk in Azure bereitgestellt sein muss oder die über Netzwerkrouten Einblick in AD DS-Instanz-IPs haben. 
 
-* **Azure AD** : Synchronisiert Identitätsinformationen aus dem lokalen Verzeichnis der Organisation über Azure AD Connect.
+* **Azure AD**: Synchronisiert Identitätsinformationen aus dem lokalen Verzeichnis der Organisation über Azure AD Connect.
 
 * **Azure AD Domain Services (AD DS)** : Dieser Dienst führt eine unidirektionale Synchronisierung von Azure AD durch, um Zugriff auf einen zentralen Satz aus Benutzern, Gruppen und Anmeldeinformationen zu ermöglichen. Die AD DS-Instanz ist einem virtuellen Netzwerk zugewiesen. Anwendungen, Dienste und VMs in Azure, die eine Verbindung mit diesem AD DS zugewiesenen virtuellen Netzwerk herstellen, können gemeinsame AD DS-Features wie LDAP, Domänenbeitritt, Gruppenrichtlinien, Kerberos und NTLM-Authentifizierung nutzen.
    > [!NOTE]
    >  In Umgebungen, in denen die Organisation keine Kennworthashes synchronisieren kann oder Benutzer sich mithilfe von Smartcards anmelden, empfiehlt sich die Verwendung einer Ressourcengesamtstruktur in AD DS. 
 
-* **Azure AD Connect** : Ein Tool zum Synchronisieren von lokalen Identitätsinformationen mit Microsoft Azure AD. Der Bereitstellungs-Assistent und die Anleitungen unterstützen Sie beim Konfigurieren von Voraussetzungen und Komponenten, die für die Verbindung erforderlich sind – einschließlich Synchronisierungs- und Anmeldevorgängen von Active Directory in Azure AD. 
+* **Azure AD Connect**: Ein Tool zum Synchronisieren von lokalen Identitätsinformationen mit Microsoft Azure AD. Der Bereitstellungs-Assistent und die Anleitungen unterstützen Sie beim Konfigurieren von Voraussetzungen und Komponenten, die für die Verbindung erforderlich sind – einschließlich Synchronisierungs- und Anmeldevorgängen von Active Directory in Azure AD. 
 
-* **Active Directory** : Verzeichnisdienst, der [lokale Identitätsinformationen wie Benutzer- und Kontoinformationen](https://www.dnsstuff.com/active-directory-service-accounts) sowie Sicherheitsinformationen wie Kennwörter speichert.
+* **Active Directory**: Verzeichnisdienst, der [lokale Identitätsinformationen wie Benutzer- und Kontoinformationen](https://www.dnsstuff.com/active-directory-service-accounts) sowie Sicherheitsinformationen wie Kennwörter speichert.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Implementieren der LDAP-Authentifizierung mit Azure AD
 

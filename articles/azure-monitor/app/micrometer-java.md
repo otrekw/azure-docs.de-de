@@ -6,17 +6,17 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: 434d978f6a228bad9b142738767500d639017032
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 30bd45cee962395ad6c6b87e393ea0f1b7329908
+ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378872"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94616840"
 ---
-# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK
+# <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk-not-recommended"></a>Verwenden von Micrometer mit dem Azure Application Insights Java SDK (nicht empfohlen)
 
 > [!IMPORTANT]
-> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Befolgen Sie die Leitlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
+> Der empfohlene Ansatz zur Überwachung von Java-Anwendungen ist die automatische Instrumentierung ohne Änderung des Codes. Die Micrometer-Telemetrie wird automatisch mit dem Application Insights Java 3.0-Agent erfasst. Befolgen Sie die Richtlinien für den [Application Insights Java 3.0-Agent](./java-in-process-agent.md).
 
 > [!NOTE]
 > Das Java SDK für Application Insights unterstützt Spring Webflux nicht. Verwenden Sie stattdessen den [Application Insights Java 3.0-Agent](./java-in-process-agent.md). 

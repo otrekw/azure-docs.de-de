@@ -7,12 +7,12 @@ ms.custom: references_regions
 author: bwren
 ms.author: bwren
 ms.date: 07/27/2020
-ms.openlocfilehash: 9827f79f8407bd04468f1b4456aec9d6a8793a6f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: a7bdc1ee22d3672160122cad65b18de99f743cc7
+ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506293"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94747688"
 ---
 # <a name="configure-log-analytics-workspace-for-azure-monitor-for-vms"></a>Konfigurieren eines Log Analytics-Arbeitsbereichs für Azure Monitor für VMs
 Azure Monitor für VMs erfasst die Daten von einem oder mehreren Log Analytics-Arbeitsbereichen in Azure Monitor. Vor dem Integrieren von Agents müssen Sie einen Arbeitsbereich erstellen und konfigurieren. In diesem Artikel werden die Anforderungen für den Arbeitsbereich und dessen Konfiguration für Azure Monitor für VMs beschrieben.
@@ -78,7 +78,7 @@ Bevor ein Log Analytics-Arbeitsbereich mit Azure Monitor für VMs verwendet werd
 > Wenn Sie dem Arbeitsbereich die *VMInsights*-Lösung hinzufügen, beginnen alle vorhandenen virtuellen Computer, die mit dem Arbeitsbereich verbunden sind, mit dem Senden von Daten an InsightsMetrics. Daten für die anderen Datentypen werden erst erfasst, wenn Sie den Dependency-Agent zu den vorhandenen virtuellen Computern hinzufügen, die mit dem Arbeitsbereich verbunden sind.
 
 ### <a name="azure-portal"></a>Azure-Portal
-Es gibt drei Optionen zum Konfigurieren eines vorhandenen Arbeitsbereichs über das Azure-Portal.
+Es gibt drei Optionen zum Konfigurieren eines vorhandenen Arbeitsbereichs über das Azure-Portal. Diese werden unten im Einzelnen beschrieben.
 
 Zum Konfigurieren eines einzelnen Arbeitsbereichs wählen Sie **Andere Onboardingoptionen** und dann **Arbeitsbereich konfigurieren** aus. Wählen Sie ein Abonnement und einen Arbeitsbereich aus, und klicken Sie dann auf **Konfigurieren**.
 

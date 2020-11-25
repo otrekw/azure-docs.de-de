@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: f034cd07b481f9d72cb3f753b30e1779bf672ac2
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491935"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94655050"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -93,6 +93,21 @@ Derzeit werden drei Dienste unterstützt:
 ### <a name="can-i-view-add-or-move-persistent-volumes-from-inside-my-applications"></a>Kann ich persistente Volumes innerhalb meiner Anwendungen anzeigen, hinzufügen oder verschieben?
 
 Ja.
+
+### <a name="how-many-outbound-public-ip-addresses-does-an-azure-spring-cloud-instance-have"></a>Wie viele öffentliche IP-Ausgangsadressen hat eine Azure Spring Cloud-Instanz?
+
+Die Anzahl der öffentlichen IP-Ausgangsadressen kann je nach Ebene und anderen Faktoren variieren. 
+
+| Azure Spring Cloud-Instanztyp | Standardzahl öffentlicher IP-Ausgangsadressen |
+| -------------------------------- | ---------------------------------------------- |
+| Basic-Tarif-Instanzen             | 1                                              |
+| Standard-Tarif-Instanzen          | 2                                              |
+| VNET-Einschleusungsinstanzen         | 1                                              |
+
+
+### <a name="can-i-increase-the-number-of-outbound-public-ip-addresses"></a>Kann ich die Anzahl öffentlicher IP-Ausgangsadressen heraufsetzen?
+
+Ja, Sie können ein [Supportticket](https://azure.microsoft.com/support/faq/) öffnen, um weitere öffentliche IP-Ausgangsadressen anzufordern.
 
 ### <a name="when-i-deletemove-an-azure-spring-cloud-service-instance-will-its-extension-resources-be-deletedmoved-as-well"></a>Werden beim Löschen oder Verschieben einer Azure Spring Cloud-Dienstinstanz auch die Erweiterungsressourcen gelöscht bzw. verschoben?
 

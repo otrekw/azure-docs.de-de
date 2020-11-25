@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 10/16/2019
-ms.openlocfilehash: 23077d7d6b476bcca0812dcff8660376568f7dd9
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.date: 11/13/2020
+ms.openlocfilehash: 4dfe284a00052cbd1915d62355e1d7772f3712ab
+ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376331"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94591868"
 ---
 # <a name="one-vs-all-multiclass"></a>One-vs-All-Multiklasse
 
@@ -31,6 +31,8 @@ In diesem Modul wird die One-vs-All-Methode implementiert, durch die für jede d
 Im Wesentlichen erstellt das Modul eine Zusammenstellung einzelner Modelle und führt die Ergebnisse anschließend zusammen, um ein einzelnes Modell zu erstellen, das alle Klassen vorhersagt. Jeder binäre Klassifizierer kann als Grundlage für ein One-vs-All-Modell verwendet werden.  
 
 Nehmen Sie z. B. an, Sie konfigurieren ein [Two-Class Support Vector Machine](two-class-support-vector-machine.md)-Modell und stellen dieses Modell als Eingabe für das Modul One-vs-All-Multiklasse bereit. Das Modul erstellt daraufhin Modelle vom Typ „Two-Class Support Vector Machine“ (2-Klassen-Support Vector Machine) für alle Elemente der Ausgabeklasse. Anschließend wendet es die One-vs-All-Methode an, um die Ergebnisse für alle Klassen zu kombinieren.  
+
+Das Modul verwendet OneVsRestClassifier von „sklearn“, und Sie können [hier](https://scikit-learn.org/stable/modules/generated/sklearn.multiclass.OneVsRestClassifier.html) weitere Details erfahren.
 
 ## <a name="how-to-configure-the-one-vs-all-multiclass-classifier"></a>Konfigurieren des Klassifizierers „One-vs-All-Multiklasse“  
 
