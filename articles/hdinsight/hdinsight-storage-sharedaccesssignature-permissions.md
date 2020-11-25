@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020, devx-track-azurecli
 ms.date: 04/28/2020
 ms.openlocfilehash: eb8201ea888b98250d452e0b0e1c48f30cbb1efc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92742060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022733"
 ---
 # <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Verwenden von Shared Access Signatures von Azure-Blobspeicher zum Einschränken des Zugriffs auf Daten in HDInsight
 
@@ -207,7 +207,7 @@ Möglicherweise müssen Sie `pip install --upgrade azure-storage` ausführen, we
 
 1. Öffnen Sie die Projektmappe in Visual Studio.
 
-2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SASExample** , und wählen Sie **Eigenschaften** aus.
+2. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt **SASExample**, und wählen Sie **Eigenschaften** aus.
 
 3. Wählen Sie **Einstellungen** aus, und fügen Sie Werte für die folgenden Einträge hinzu:
 
@@ -349,7 +349,7 @@ Die Ausführung dieses Skripts dauert eine Weile, meist etwa 15 Minuten. Wenn da
 
 ### <a name="use-the-sas-with-an-existing-cluster"></a>Verwenden des SAS mit einem bestehenden Cluster
 
-Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site** -Konfiguration mithilfe der folgenden Schritte hinzufügen:
+Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site**-Konfiguration mithilfe der folgenden Schritte hinzufügen:
 
 1. Öffnen Sie die Ambari-Webbenutzeroberfläche für den Cluster. Die Adresse für diese Seite lautet `https://YOURCLUSTERNAME.azurehdinsight.net`. Authentifizieren Sie sich bei Aufforderung am Cluster mithilfe des Administratornamens (admin) und des Kennworts, das Sie beim Erstellen des Clusters verwendet haben.
 
@@ -357,14 +357,14 @@ Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site** -Kon
 
 1. Erweitern Sie den Abschnitt **Custom core-site** (Benutzerdefinierte core-site), scrollen Sie zum Seitenende, und wählen Sie **Add property...** (Eigenschaft hinzufügen) aus. Verwenden Sie für **Key** (Schlüssel) und **Value** (Wert) die folgenden Werte:
 
-    * **Schlüssel** : `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
-    * **Value** : Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
+    * **Schlüssel**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Value**: Die von einer der zuvor ausgeführten Methoden zurückgegebene SAS.
 
     Ersetzen Sie `CONTAINERNAME` durch den Containernamen, den Sie mit der C#- oder SAS-Anwendung verwendet haben. Ersetzen Sie `STORAGEACCOUNTNAME` durch den Namen des von Ihnen verwendeten Speicherkontos.
 
     Wählen Sie **Hinzufügen** aus, um diesen Schlüssel und diesen Wert zu speichern.
 
-1. Klicken Sie auf die Schaltfläche **Speichern** , um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und wählen Sie anschließend **Speichern** aus.
+1. Klicken Sie auf die Schaltfläche **Speichern**, um die Konfigurationsänderungen zu speichern. Fügen Sie bei Aufforderung eine Beschreibung der Änderung hinzu (z. B. „Hinzufügen des SAS-Speicherzugriffs“), und wählen Sie anschließend **Speichern** aus.
 
     Wählen Sie **OK** aus, wenn die Änderungen abgeschlossen sind.
 
@@ -373,7 +373,7 @@ Wenn Sie bereits einen Cluster haben, können Sie die SAS der **core-site** -Kon
 
 1. Die Dropdownliste **Neu starten** wird angezeigt. Wählen Sie in der Dropdownliste **Restart All Affected** (Alle betroffenen neu starten) und anschließend die Option __Confirm Restart All__ (Alle neu starten bestätigen) aus.
 
-    Wiederholen Sie diesen Vorgang für **MapReduce2** und **YARN** .
+    Wiederholen Sie diesen Vorgang für **MapReduce2** und **YARN**.
 
 1. Sobald diese Dienste neu gestartet wurden, wählen Sie sie nacheinander aus und deaktivieren den Wartungsmodus in der Dropdownliste **Service Actions** (Dienstaktionen).
 

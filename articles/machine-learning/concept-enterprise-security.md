@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 09/09/2020
-ms.openlocfilehash: 2234b1507e6e0fdb0b668fc18a7c8533e3ea7cc1
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: fb1f1d098970927ba04c840e77ec0a0b8d76ca02
+ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441782"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94561317"
 ---
 # <a name="enterprise-security-and-governance-for-azure-machine-learning"></a>Sicherheit und Governance in Unternehmen für Azure Machine Learning
 
@@ -105,7 +105,13 @@ Optional können Sie Ihre eigenen verwalteten Identitäten für die Verwendung m
 
 Um den physischen Zugriff auf Azure Machine Learning-Ressourcen zu beschränken, können Sie Azure Virtual Network (VNET) verwenden. Mit VNETs können Sie Netzwerkumgebungen erstellen, die teilweise oder vollständig vom öffentlichen Internet isoliert sind. Dadurch werden die Angriffsfläche für die Lösung und die Möglichkeit einer Datenexfiltration reduziert.
 
-Weitere Informationen finden Sie unter [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md).
+Weitere Informationen finden Sie in den folgenden Dokumenten:
+
+* [Übersicht zu Isolation und Datenschutz bei virtuellen Netzwerken](how-to-network-security-overview.md)
+* [Schützen von Arbeitsbereichsressourcen](how-to-secure-workspace-vnet.md)
+* [Schützen der Trainingsumgebung](how-to-secure-training-vnet.md)
+* [Schützen der Rückschlussumgebung](how-to-secure-inferencing-vnet.md)
+* [Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)
 
 <a id="encryption-at-rest"></a><a id="azure-blob-storage"></a>
 
@@ -123,10 +129,11 @@ Möglicherweise möchten Sie auch [Diagnoseinformationen verschlüsseln, die von
 
 Bei Azure Machine Learning sind je nach Rolle und überwachter Komponente verschiedene Überwachungsszenarien möglich.
 
-| Role | Zu verwendende Überwachung |
-| ---- | ----- |
-| Admin, DevOps, MLOps | [Azure Monitor-Metriken](#azure-monitor), [Aktivitätsprotokoll](#activity-log), [Überprüfung auf Sicherheitsrisiken](#vulnerability-scanning) |
-| Data Scientist, MLOps | [Überwachen von Ausführungen](#monitor-runs) |
+| Role | Zu verwendende Überwachung | Beschreibung |
+| ---- | ----- | ----- |
+| Admin, DevOps, MLOps | [Azure Monitor-Metriken](#azure-monitor), [Aktivitätsprotokoll](#activity-log), [Überprüfung auf Sicherheitsrisiken](#vulnerability-scanning) | Servicelevelinformationen |
+| Data Scientist, MLOps | [Überwachen von Ausführungen](#monitor-runs) | Informationen, die bei Trainingsausführungen protokolliert werden |
+| MLOps | [Sammeln von Modelldaten](how-to-enable-data-collection.md), [Überwachen mit Application Insights](how-to-enable-app-insights.md) | Informationen, die von Modellen protokolliert werden, die als Webdienste oder IoT Edge-Module bereitgestellt werden|
 
 ### <a name="monitor-runs"></a>Überwachen von Ausführungen
 
@@ -134,7 +141,7 @@ Sie können die Ausführung von Experimenten in Azure Machine Learning, einschli
 
 * [Starten, Überwachen und Abbrechen von Trainingsausführungen in Python](how-to-manage-runs.md)
 * [Aktivieren von Protokollen](how-to-track-experiments.md)
-* [Anzeigen von Protokollen](how-to-monitor-view-training-logs.md)
+* [Protokoll anzeigen...](how-to-monitor-view-training-logs.md)
 * [Visualisieren von Experimentausführungen und -metriken mit TensorBoard und Azure Machine Learning](how-to-monitor-tensorboard.md)
 
 ### <a name="azure-monitor"></a>Azure Monitor

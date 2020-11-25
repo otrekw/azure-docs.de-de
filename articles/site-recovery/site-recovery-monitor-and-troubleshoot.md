@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: d441284b265ab11dd5ece42ec3737e455d662435
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545802"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023566"
 ---
 # <a name="monitor-site-recovery"></a>Überwachen von Azure Site Recovery
 
@@ -38,7 +38,7 @@ Machen Sie sich ggf. zunächst mit [allgemeinen Fragen zur Überwachung](monitor
 
     ![Screenshot der Bereiche im Dashboard, in denen Sie einen Drilldown ausführen können](./media/site-recovery-monitor-and-troubleshoot/site-recovery-overview-page.png)erforderlich.
 
-3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen** , um alle Server im Tresor anzuzeigen.
+3. Klicken Sie unter **Replizierte Elemente** auf **Alle anzeigen**, um alle Server im Tresor anzuzeigen.
 4. Klicken Sie in den einzelnen Abschnitten auf die Statusdetails, um Detailinformationen anzuzeigen.
 5. Sortieren Sie in der **Infrastrukturansicht** die Überwachungsinformationen nach der Art der replizierten Computer.
 
@@ -116,7 +116,7 @@ Softwareupdates | Die Verfügbarkeit neuer Softwareupdates sowie Informationen z
     **VMware-Replikation in Azure** | Failover/Failback ausgeführt | Nein      
     **Hyper-V-Replikation in Azure** | Failover/Failback ausgeführt | Nein
 
-- Wenn Sie die Infrastrukturansicht für einen einzelnen replizierenden Computer anzeigen möchten, klicken Sie im Menü des Tresors auf **Replizierte Elemente** , und wählen Sie einen Server aus.  
+- Wenn Sie die Infrastrukturansicht für einen einzelnen replizierenden Computer anzeigen möchten, klicken Sie im Menü des Tresors auf **Replizierte Elemente**, und wählen Sie einen Server aus.  
 
 
 
@@ -135,7 +135,7 @@ Softwareupdates | Die Verfügbarkeit neuer Softwareupdates sowie Informationen z
 Aufträge werden wie folgt überwacht:
 
 1. Auf dem Dashboard im Abschnitt **Aufträge** wird eine Zusammenfassung der Aufträge der letzten 24 Stunden angezeigt, die abgeschlossen sind, die gerade ausgeführt werden oder die auf eine Eingabe warten. Sie können auf einen beliebigen Status klicken, um weitere Informationen zu den entsprechenden Aufträgen abzurufen.
-2. Klicken Sie auf **Alle anzeigen** , um alle Aufträge der letzten 24 Stunden anzuzeigen.
+2. Klicken Sie auf **Alle anzeigen**, um alle Aufträge der letzten 24 Stunden anzuzeigen.
 
     > [!NOTE]
     > Sie können auf die Auftragsinformationen auch über **Site Recovery-Aufträge** im Tresormenü zugreifen. 
@@ -149,17 +149,17 @@ Unter **Replizierte Elemente** erhalten Sie eine Liste der replizierten Computer
     ![Listenansicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-list-view.png)
 
 2. Sie können Informationen betrachten und filtern. Über das Aktionsmenü im oberen Bereich können Sie Aktionen für einen bestimmten Computer ausführen und u.a. ein Testfailover ausführen oder bestimmte Fehler anzeigen.
-3. Klicken Sie auf **Spalten** , um zusätzliche Spalten einzublenden und beispielsweise RPO, Zielkonfigurationsprobleme und Replikationsfehler anzuzeigen.
-4. Klicken Sie auf **Filter** , um Informationen basierend auf bestimmten Parametern wie Replikationsintegrität oder basierend auf einer bestimmten Replikationsrichtlinie anzuzeigen.
+3. Klicken Sie auf **Spalten**, um zusätzliche Spalten einzublenden und beispielsweise RPO, Zielkonfigurationsprobleme und Replikationsfehler anzuzeigen.
+4. Klicken Sie auf **Filter**, um Informationen basierend auf bestimmten Parametern wie Replikationsintegrität oder basierend auf einer bestimmten Replikationsrichtlinie anzuzeigen.
 5. Klicken Sie mit der rechten Maustaste auf einen Computer, um für ihn Vorgänge wie Testfailover zu initiieren oder bestimmte Fehlerdetails anzuzeigen.
 6. Klicken Sie auf einen Computer, um weitere Details zu ihm anzuzeigen. Zu den Details gehören:
    - **Replikationsinformationen:** Aktueller Status und Integrität des Computers.
    - **RPO** (Recovery Point Objective): Aktuelle RPO für den virtuellen Computer und die Uhrzeit, an dem die RPO zuletzt berechnet wurde.
-   - **Wiederherstellungspunkte** : Neueste verfügbare Wiederherstellungspunkte für den Computer.
-   - **Failoverbereitschaft** : Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
-   - **Fehler** : Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
-   - **Ereignisse** : Eine chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
-   - **Infrastrukturansicht** : Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
+   - **Wiederherstellungspunkte**: Neueste verfügbare Wiederherstellungspunkte für den Computer.
+   - **Failoverbereitschaft**: Gibt an, ob ein Testfailover für den Computer ausgeführt wurde, und zeigt die auf dem Computer ausgeführte Agent-Version (für Computer mit dem Mobilitätsdienst) und etwaige Konfigurationsprobleme an.
+   - **Fehler**: Liste der Replikationsfehlersymptome, die derzeit auf dem Computer beobachtet werden, sowie mögliche Ursachen und empfohlene Aktionen.
+   - **Ereignisse**: Eine chronologische Liste der aktuellen Ereignisse, die den Computer beeinträchtigen. Während Fehlerdetails die derzeit auf dem Computer feststellbaren Fehlersymptome anzeigen, sind die Ereignisse eine historische Aufzeichnung von Problemen, die Auswirkungen auf den Computer gehabt haben.
+   - **Infrastrukturansicht**: Zeigt den Status der Infrastruktur für das Szenario an, wenn Computer in Azure repliziert werden.
 
      ![Details/Übersicht der replizierten Elemente in Site Recovery](./media/site-recovery-monitor-and-troubleshoot/site-recovery-virtual-machine-details.png)
 

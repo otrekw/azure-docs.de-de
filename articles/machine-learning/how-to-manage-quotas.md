@@ -1,7 +1,7 @@
 ---
 title: Verwalten von Ressourcen und Kontingenten
 titleSuffix: Azure Machine Learning
-description: Enthält eine Beschreibung der Kontingente für Azure Machine Learning-Ressourcen und der Anforderung von Kontingenterhöhungen.
+description: Enthält eine Beschreibung der Kontingente und Grenzwerte für Azure Machine Learning-Ressourcen und der Anforderung von Kontingenterhöhungen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.author: nigup
 ms.date: 10/13/2020
 ms.topic: conceptual
 ms.custom: troubleshooting,contperfq4, contperfq2
-ms.openlocfilehash: 9bcf6ac9991c1ad070f823c97b5bd0460eff07c2
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d82cbafbbdeb379c8eb97494ca8d3243f356b7a1
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309087"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542115"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-machine-learning"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Machine Learning
 
@@ -139,7 +139,7 @@ Verwenden Sie das Azure-Portal, um Ihr Kontingent für verschiedene Azure-Ressou
 
 Sie verwalten das Azure Machine Learning Compute-Kontingent für Ihr Abonnement getrennt von anderen Azure-Kontingenten: 
 
-1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning** -Arbeitsbereich.
+1. Navigieren Sie im Azure-Portal zu Ihrem **Azure Machine Learning**-Arbeitsbereich.
 
 2. Wählen Sie im linken Bereich im Abschnitt **Support + Problembehandlung** die Option **Nutzung + Kontingente** aus, um Ihre aktuellen Kontingentgrenzen und die Nutzung anzuzeigen.
 
@@ -181,7 +181,7 @@ Verwenden Sie die folgenden Schritte, um eine Zuteilung für diese Szenarien anz
     | Problemtyp | **Konfiguration und Sicherheit von Arbeitsbereichen** |
     | Problemuntertyp | **Zuteilungsanforderung für private Endpunkte und private DNS-Zonen** |
 
-2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__ , um die Azure-Region und das gewünschte Szenario anzugeben. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld die Abonnement-IDs an.
+2. Verwenden Sie im Abschnitt __Details__ das Feld __Beschreibung__, um die Azure-Region und das gewünschte Szenario anzugeben. Wenn Sie Kontingenterhöhungen für mehrere Abonnements anfordern müssen, geben Sie in diesem Feld die Abonnement-IDs an.
 
 3. Wählen Sie __Erstellen__ aus, um die Anforderung zu erstellen.
 

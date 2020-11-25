@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 08/11/2020
 ms.openlocfilehash: 1a90bc6636dcb3aa81f09b0489850c1a95b3256d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535245"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022750"
 ---
 # <a name="nsg-service-tags-for-azure-hdinsight"></a>Diensttags von Netzwerksicherheitsgruppen für Azure HDInsight
 
@@ -26,9 +26,9 @@ Wenn Sie eine bestimmte Region verwenden möchten und das Diensttag noch nicht a
 
 Sie haben zwei Optionen für die Verwendung von Diensttags in Ihrer Netzwerksicherheitsgruppe:
 
-- **Verwenden eines einzelnen globalen HDInsight-Diensttags** : Diese Option öffnet Ihr virtuelles Netzwerk für alle IP-Adressen, die der HDInsight-Dienst zur Überwachung von Clustern in allen Regionen verwendet. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
+- **Verwenden eines einzelnen globalen HDInsight-Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk für alle IP-Adressen, die der HDInsight-Dienst zur Überwachung von Clustern in allen Regionen verwendet. Diese Option ist die einfachste Methode, sie ist jedoch möglicherweise nicht geeignet, wenn Sie über restriktive Sicherheitsanforderungen verfügen.
 
-- **Verwenden von mehreren regionalen Diensttags** : Diese Option öffnet Ihr virtuelles Netzwerk nur für die IP-Adressen, die HDInsight in dieser bestimmten Region verwendet. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
+- **Verwenden von mehreren regionalen Diensttags**: Diese Option öffnet Ihr virtuelles Netzwerk nur für die IP-Adressen, die HDInsight in dieser bestimmten Region verwendet. Wenn Sie jedoch mehrere Regionen verwenden, müssen Sie Ihrem virtuellen Netzwerk mehrere Diensttags hinzufügen.
 
 ## <a name="use-a-single-global-hdinsight-service-tag"></a>Verwenden eines einzelnen globalen HDInsight-Diensttags
 

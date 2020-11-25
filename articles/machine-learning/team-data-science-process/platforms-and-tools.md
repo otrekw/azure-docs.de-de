@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d3f6a48815519499ddc39dcc12cafe0fe95e70e0
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93320230"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023804"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Plattformen und Tools für Data Science-Projekte
 
@@ -136,7 +136,7 @@ Wenn Sie die Git-Befehle auf einem Computer unter Linux (CentOS) ausführen, mü
    
    ![Befehle zum Generieren des SSH-Schlüssels](./media/platforms-and-tools/resources-1-generate_ssh.png)
 
-1. Kopieren Sie den gesamten SSH-Schlüssel (einschließlich *ssh-rsa* ). 
+1. Kopieren Sie den gesamten SSH-Schlüssel (einschließlich *ssh-rsa*). 
 1. Melden Sie sich bei Azure DevOps Services an. 
 1. Klicken Sie rechts oben auf der Seite auf **<Ihr Name\>** und dann auf **Sicherheit**. 
     

@@ -1,7 +1,7 @@
 ---
 title: Trainieren und Bereitstellen eines TensorFlow-Modells
 titleSuffix: Azure Machine Learning
-description: Hier erfahren Sie, wie Sie TensorFlow-Trainingsskripts mithilfe von Azure Machine Learning bedarfsorientiert ausführen.
+description: Erfahren Sie, wie Azure Machine Learning es Ihnen ermöglicht, einen TensorFlow-Trainingsauftrag mithilfe elastischer Cloudcomputeressourcen aufzuskalieren.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 5c1c6af5f8304fd9093aa0351078b84d3f4d0b5d
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 9b8d48139e6cbabfbc5bf63f85d2d03c64d7efd9
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360750"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542285"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>Bedarfsorientiertes Trainieren von TensorFlow-Modellen mit Azure Machine Learning
 
@@ -229,13 +229,13 @@ run.wait_for_completion(show_output=True)
 ### <a name="what-happens-during-run-execution"></a>Was passiert während der Ausführung
 Die Ausführung durchläuft die folgenden Phasen:
 
-- **Vorbereitung** : Ein Docker-Image wird entsprechend der definierten Umgebung erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann. Wenn stattdessen eine zusammengestellte Umgebung angegeben wird, wird das zwischengespeicherte Image verwendet, das diese zusammengestellte Umgebung unterstützt.
+- **Vorbereitung**: Ein Docker-Image wird entsprechend der definierten Umgebung erstellt. Das Image wird in die Containerregistrierung des Arbeitsbereichs hochgeladen und für spätere Ausführungen zwischengespeichert. Darüber hinaus werden Protokolle in den Ausführungsverlauf gestreamt, mit deren Hilfe der Status überwacht werden kann. Wenn stattdessen eine zusammengestellte Umgebung angegeben wird, wird das zwischengespeicherte Image verwendet, das diese zusammengestellte Umgebung unterstützt.
 
-- **Skalierung** : Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
+- **Skalierung**: Der Cluster versucht ein Hochskalieren, wenn der Batch KI-Cluster mehr Knoten zur Ausführung benötigt, als derzeit verfügbar sind.
 
 - **Wird ausgeführt:** Alle Skripts im Skriptordner werden auf das Computeziel hochgeladen, Datenspeicher werden bereitgestellt oder kopiert, und das `script` wird ausgeführt. Ausgaben aus „stdout“ und dem Ordner **./logs** werden in den Ausführungsverlauf gestreamt und können zur Überwachung der Ausführung verwendet werden.
 
-- **Nachbearbeitung** : Der Ordner **./outputs** der Ausführung wird in den Ausführungsverlauf kopiert.
+- **Nachbearbeitung**: Der Ordner **./outputs** der Ausführung wird in den Ausführungsverlauf kopiert.
 
 ## <a name="register-or-download-a-model"></a>Registrieren oder Herunterladen eines Modells
 
@@ -276,7 +276,7 @@ Weitere Informationen zur Verwendung von Horovod mit TensorFlow finden Sie in de
 * [Horovod mit TensorFlow](https://github.com/horovod/horovod/blob/master/docs/tensorflow.rst)
 * [Horovod mit der Keras-API von TensorFlow](https://github.com/horovod/horovod/blob/master/docs/keras.rst)
 
-Stellen Sie außerdem sicher, dass Ihre Trainingsumgebung das **horovod** -Paket enthält. Wenn Sie eine zusammengestellte TensorFlow-Umgebung verwenden, ist Horovod bereits als eine der Abhängigkeiten enthalten. Wenn Sie Ihre eigene Umgebung verwenden, stellen Sie sicher, dass die Horovod-Abhängigkeit enthalten ist, z. B.:
+Stellen Sie außerdem sicher, dass Ihre Trainingsumgebung das **horovod**-Paket enthält. Wenn Sie eine zusammengestellte TensorFlow-Umgebung verwenden, ist Horovod bereits als eine der Abhängigkeiten enthalten. Wenn Sie Ihre eigene Umgebung verwenden, stellen Sie sicher, dass die Horovod-Abhängigkeit enthalten ist, z. B.:
 
 ```yaml
 channels:

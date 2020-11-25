@@ -8,11 +8,11 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92079053"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023522"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-Verschlüsselung: IPsec über ExpressRoute für Virtual WAN
 
@@ -105,16 +105,16 @@ Nachdem Sie den VPN-Standort erstellt und die Verbindung mit dem Hub hergestellt
 
 1. Kehren Sie zur Virtual WAN-Ressourcenseite zurück und wählen Sie die Hubressource aus. Oder navigieren Sie vom VPN-Standort zum verbundenen Hub.
 
-   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="VPN über ExpressRoute":::
+   :::image type="content" source="./media/vpn-over-expressroute/hub-selection.png" alt-text="Hub auswählen":::
 1. Wählen Sie unter **Konnektivität** die Option **VPN (Site-to-Site)** aus.
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="VPN über ExpressRoute":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-select.png" alt-text="Auswählen des VPN (Site-to-Site)":::
 1. Wählen Sie das Auslassungszeichen (**...**) neben dem VPN-Standort über ExpressRoute aus, und wählen Sie **VPN-Verbindung mit diesem Hub bearbeiten** aus.
 
-   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="VPN über ExpressRoute":::
+   :::image type="content" source="./media/vpn-over-expressroute/config-menu.png" alt-text="Menü „Konfiguration eingeben“":::
 1. Wählen Sie für **Private Azure-IP-Adresse verwenden** den Wert **Ja** aus. Mit dieser Einstellung wird das Hub-VPN-Gateway so konfiguriert, dass für diese Verbindung anstelle der öffentlichen IP-Adressen private IP-Adressen innerhalb des Hubadressbereichs auf dem Gateway verwendet werden. Dadurch wird sichergestellt, dass der Datenverkehr aus dem lokalen Netzwerk die privaten ExpressRoute-Peeringpfade durchläuft und nicht das öffentliche Internet für diese VPN-Verbindung verwendet wird. Der folgende Screenshot zeigt die Einstellung:
 
-   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="VPN über ExpressRoute" border="false":::
+   :::image type="content" source="./media/vpn-over-expressroute/vpn-link-configuration.png" alt-text="Einstellung für die Verwendung einer privaten IP-Adresse für die VPN-Verbindung" border="false":::
 1. Wählen Sie **Speichern** aus.
 
 Nachdem Sie Ihre Änderungen gespeichert haben, verwendet das VPN-Gateway des Hubs die privaten IP-Adressen des VPN-Gateways, um die IPsec/IKE-Verbindungen mit dem lokalen VPN-Gerät über ExpressRoute herzustellen.

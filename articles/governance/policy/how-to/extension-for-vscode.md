@@ -4,11 +4,11 @@ description: In diesem Artikel erfahren Sie, wie Sie mithilfe der Azure Policy-E
 ms.date: 10/20/2020
 ms.topic: how-to
 ms.openlocfilehash: 233c9158c30d6c373dd6147090894dc83b83da3d
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317614"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022427"
 ---
 # <a name="use-azure-policy-extension-for-visual-studio-code"></a>Verwenden der Azure Policy-Erweiterung für Visual Studio Code
 
@@ -34,11 +34,11 @@ Wenn die Voraussetzungen erfüllt sind, können Sie die Azure Policy-Erweiterung
 
 1. Öffnen Sie Visual Studio Code.
 
-1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Erweiterungen** .
+1. Navigieren Sie auf der Menüleiste zu **Ansicht** > **Erweiterungen**.
 
 1. Geben Sie im Suchfeld **Azure Policy** ein.
 
-1. Wählen Sie in den Suchergebnissen **Azure Policy** aus, und wählen Sie dann **Installieren** .
+1. Wählen Sie in den Suchergebnissen **Azure Policy** aus, und wählen Sie dann **Installieren**.
 
 1. Wählen Sie bei Bedarf **Erneut laden** aus.
 
@@ -48,7 +48,7 @@ Führen Sie für Benutzer der nationalen Cloud die folgenden Schritte aus, um zu
 
 1. Wählen Sie **Datei > Einstellungen > Einstellungen** aus.
 
-1. Suchen Sie nach folgender Zeichenfolge: _Azure: Cloud_ .
+1. Suchen Sie nach folgender Zeichenfolge: _Azure: Cloud_.
 
 1. Wählen Sie in der Liste die nationale Cloud aus:
 
@@ -64,13 +64,13 @@ Zum Auswerten von Ressourcen und Suchen nach Aliasen müssen Sie eine Verbindung
 
      Wählen Sie in der Azure Policy-Erweiterung die Option **Bei Azure anmelden** aus.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-policy-extension.png" alt-text="Screenshot von Visual Studio Code und dem Symbol für die Azure Policy-Erweiterung" border="false":::
 
    - Befehlspalette
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette** , und geben Sie **Azure: Anmelden** ein.
+     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure: Anmelden** ein.
 
-     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
+     :::image type="content" source="../media/extension-for-vscode/azure-cloud-sign-in-command-palette.png" alt-text="Screenshot der Azure-Cloudanmeldungsoptionen für Visual Studio Code über die Befehlspalette" border="false":::
 
 1. Befolgen Sie die Anleitung für die Anmeldung, um sich bei Azure anzumelden. Nach dem Herstellen der Verbindung wird Ihr Azure-Kontoname unten im Visual Studio Code-Fenster in der Statusleiste angezeigt.
 
@@ -82,13 +82,13 @@ Bei der ersten Anmeldung werden nur die Ressourcen und Richtlinien des Standarda
 
    - Befehlspalette: 
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette** , und geben Sie **Azure: Abonnements auswählen** ein.
+     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Azure: Abonnements auswählen** ein.
 
    - Fensterfußzeile
 
      Wählen Sie in der Fensterfußzeile am unteren Bildschirmrand das Segment aus, das **Azure: \<your account\>** entspricht.
 
-1. Verwenden Sie das Filterfeld, um Abonnements schnell nach Namen zu finden. Dann aktivieren bzw. deaktivieren Sie die einzelnen Abonnements, um die von der Azure Policy-Erweiterung angezeigten Abonnements festzulegen. Nachdem Sie Abonnements für die Anzeige hinzugefügt oder entfernt haben, klicken Sie auf **OK** .
+1. Verwenden Sie das Filterfeld, um Abonnements schnell nach Namen zu finden. Dann aktivieren bzw. deaktivieren Sie die einzelnen Abonnements, um die von der Azure Policy-Erweiterung angezeigten Abonnements festzulegen. Nachdem Sie Abonnements für die Anzeige hinzugefügt oder entfernt haben, klicken Sie auf **OK**.
 
 ## <a name="search-for-and-view-resources"></a>Suchen nach und Anzeigen von Ressourcen
 
@@ -99,7 +99,7 @@ Die Azure Policy-Erweiterung listet Ressourcen in den ausgewählten Abonnements 
 - **Ressourcengruppen**
   - Alle Ressourcen nach der Ressourcengruppe, in der sie enthalten sind
 
-Standardmäßig filtert die Erweiterung den Abschnitt „Ressourcenanbieter“ nach vorhandenen Ressourcen und Ressourcen mit Richtlinienaliasen. Ändern Sie dieses Verhalten unter **Einstellungen** > **Erweiterungen** > **Azure Policy** , um alle Ressourcenanbieter ohne Filter anzuzeigen.
+Standardmäßig filtert die Erweiterung den Abschnitt „Ressourcenanbieter“ nach vorhandenen Ressourcen und Ressourcen mit Richtlinienaliasen. Ändern Sie dieses Verhalten unter **Einstellungen** > **Erweiterungen** > **Azure Policy**, um alle Ressourcenanbieter ohne Filter anzuzeigen.
 
 Kunden mit Hunderten oder Tausenden von Ressourcen in einem einzelnen Abonnement bevorzugen möglicherweise eine Suchmethode zum Auffinden ihrer Ressourcen. Die Azure Policy-Erweiterung ermöglicht die Suche nach einer bestimmten Ressource mit den folgenden Schritten:
 
@@ -107,11 +107,11 @@ Kunden mit Hunderten oder Tausenden von Ressourcen in einem einzelnen Abonnement
 
    - Azure Policy-Erweiterung
 
-     Zeigen Sie in der Azure Policy-Erweiterung auf den Bereich **Ressourcen** , und wählen Sie die Auslassungspunkte und dann **Ressourcen suchen** aus.
+     Zeigen Sie in der Azure Policy-Erweiterung auf den Bereich **Ressourcen**, und wählen Sie die Auslassungspunkte und dann **Ressourcen suchen** aus.
 
    - Befehlspalette:
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette** , und geben Sie **Ressourcen: Ressourcen suchen** ein.
+     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Ressourcen: Ressourcen suchen** ein.
 
 1. Wenn mehr als ein Abonnement für die Anzeige ausgewählt ist, wählen Sie mit dem Filter das zu durchsuchende Abonnement aus.
 
@@ -125,7 +125,7 @@ Bei Auswahl einer Ressource (unabhängig davon, ob über die Suchschnittstelle o
 
 Sobald eine Ressource geöffnet ist, wird beim Zeigen auf den Namen oder den Wert der Resource Manager-Eigenschaft der Azure Policy-Alias angezeigt (sofern vorhanden). In diesem Beispiel ist die Ressource vom Typ `Microsoft.Compute/virtualMachines`, und es wird auf die Eigenschaft **properties.storageProfile.imageReference.offer** gezeigt. Beim Zeigen werden die entsprechenden Aliase eingeblendet.
 
-:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Screenshot: Auswählen der Anmeldung bei der nationalen Azure-Cloud für Visual Studio Code" border="false":::
+:::image type="content" source="../media/extension-for-vscode/extension-hover-shows-property-alias.png" alt-text="Screenshot der Azure Policy-Erweiterung für Visual Studio Code mit dem Mauszeiger über einer Eigenschaft, um die Aliasnamen anzuzeigen" border="false":::
 
 > [!NOTE]
 > Die VS Code-Erweiterung stellt nur Eigenschaften des Resource Manager-Modus zur Verfügung und zeigt keine Eigenschaften des [Ressourcenanbietermodus](../concepts/definition-structure.md#mode) an.
@@ -138,11 +138,11 @@ Die Azure Policy-Erweiterung listet Richtlinientypen und Richtlinienzuweisungen 
 
    - Azure Policy-Erweiterung
 
-     Zeigen Sie in der Azure Policy-Erweiterung auf den Bereich **Richtlinien** , und wählen Sie die Auslassungspunkte und dann **Richtlinien suchen** aus.
+     Zeigen Sie in der Azure Policy-Erweiterung auf den Bereich **Richtlinien**, und wählen Sie die Auslassungspunkte und dann **Richtlinien suchen** aus.
 
    - Befehlspalette:
 
-     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette** , und geben Sie **Richtlinien: Richtlinien suchen** ein.
+     Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie **Richtlinien: Richtlinien suchen** ein.
 
 1. Wenn mehr als ein Abonnement für die Anzeige ausgewählt ist, wählen Sie mit dem Filter das zu durchsuchende Abonnement aus.
 
@@ -178,7 +178,7 @@ Ein Auswertungsscan kann mit der Azure Policy-Erweiterung für Visual Studio Co
 > [!NOTE]
 > Wird als Richtliniendefinition entweder [AuditIfNotExists](../concepts/effects.md#auditifnotexists) oder [DeployIfNotExists](../concepts/effects.md#deployifnotexists) ausgewählt, verwenden Sie im Bereich **Auswertung** das Pluszeichen, um eine _verwandte_ Ressource für die Existenzprüfung auszuwählen.
 
-Die Auswertungsergebnisse enthalten Informationen zur Richtliniendefinition und die Richtlinienzuweisung sowie die Eigenschaft **policyEvaluations.evaluationResult** . Die Ausgabe sieht etwa folgendermaßen aus:
+Die Auswertungsergebnisse enthalten Informationen zur Richtliniendefinition und die Richtlinienzuweisung sowie die Eigenschaft **policyEvaluations.evaluationResult**. Die Ausgabe sieht etwa folgendermaßen aus:
 
 ```json
 {
@@ -199,7 +199,7 @@ Die Auswertungsergebnisse enthalten Informationen zur Richtliniendefinition und 
 
 ## <a name="sign-out"></a>Abmelden
 
-Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette** , und geben Sie dann **Azure: Abmelden** ein.
+Navigieren Sie auf der Menüleiste zu **Ansicht** > **Befehlspalette**, und geben Sie dann **Azure: Abmelden** ein.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.date: 12/05/2018
 ms.author: alkohli
 ms.openlocfilehash: f59d1e297ba4d7607d7abd07a78da4784f55d20f
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792904"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96023226"
 ---
 # <a name="data-transfer-for-small-datasets-with-low-to-moderate-network-bandwidth"></a>Datenübertragung kleiner Datasets mit geringer bis mittlerer Netzwerkbandbreite
  
@@ -35,14 +35,14 @@ Die folgenden Optionen werden in diesem Szenario empfohlen:
 - **Tools mit grafischer Benutzeroberflächen** wie Azure Storage-Explorer und Azure Storage im Azure-Portal. Diese bieten eine einfache Möglichkeit zum Anzeigen von Daten und schnellen Übertragen einiger Dateien.
 
     - **Azure Storage-Explorer** ist ein plattformübergreifendes Tool zur Verwaltung der Inhalte Ihrer Azure-Speicherkonten. Mit diesem Tool können Sie Blobs, Dateien, Warteschlangen, Tabellen und Azure Cosmos DB-Entitäten hochladen, herunterladen und verwalten. Verwenden Sie es zusammen mit Blob Storage, um Blobs und Ordner zu verwalten und Blobs zwischen Ihrem lokalen Dateisystem und Blob Storage oder zwischen Speicherkonten hoch- und herunterzuladen.
-    - **Azure-Portal** : Azure Storage im Azure-Portal bietet eine webbasierte Schnittstelle zum Durchsuchen von Dateien und Hochladen einzelner neuer Dateien. Diese Option empfiehlt sich, wenn Sie Ihre Dateien schnell erkunden möchten, ohne Tools zu installieren oder Befehle auszuführen, oder einfach einige neue Dateien hochladen möchten.
+    - **Azure-Portal**: Azure Storage im Azure-Portal bietet eine webbasierte Schnittstelle zum Durchsuchen von Dateien und Hochladen einzelner neuer Dateien. Diese Option empfiehlt sich, wenn Sie Ihre Dateien schnell erkunden möchten, ohne Tools zu installieren oder Befehle auszuführen, oder einfach einige neue Dateien hochladen möchten.
 
 - **Skripterstellung/programmgesteuerte Tools** wie AzCopy, PowerShell. Azure CLI und Azure Storage REST-APIs.
 
-    - **AzCopy** : Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
-    - **Azure PowerShell** : Benutzer, die mit Systemverwaltung vertraut sind, können das Azure Storage-Modul in Azure PowerShell zum Übertragen von Daten verwenden.
-    - **Azure CLI** : Verwenden Sie dieses plattformübergreifende Tool zur Verwaltung von Azure-Diensten und zum Hochladen von Daten in Azure Storage.
-    - **Azure Storage REST-APIs/SDKs** : Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs/SDKs entwickeln und die in mehreren Sprachen angebotenen Azure-Clientbibliotheken verwenden.
+    - **AzCopy**: Verwenden Sie dieses Befehlszeilentool, um Daten einfach und schnell in und aus Azure Blobs, Files und Table Storage mit optimaler Leistung zu kopieren. AzCopy unterstützt Nebenläufigkeit und Parallelität sowie die Fortsetzung unterbrochener Kopiervorgänge.
+    - **Azure PowerShell**: Benutzer, die mit Systemverwaltung vertraut sind, können das Azure Storage-Modul in Azure PowerShell zum Übertragen von Daten verwenden.
+    - **Azure CLI**: Verwenden Sie dieses plattformübergreifende Tool zur Verwaltung von Azure-Diensten und zum Hochladen von Daten in Azure Storage.
+    - **Azure Storage REST-APIs/SDKs**: Beim Erstellen einer Anwendung können Sie die Anwendung mithilfe von Azure Storage REST-APIs/SDKs entwickeln und die in mehreren Sprachen angebotenen Azure-Clientbibliotheken verwenden.
 
 
 ## <a name="comparison-of-key-capabilities"></a>Vergleich der Schlüsselfunktionen

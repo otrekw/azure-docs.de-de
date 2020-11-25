@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: b8dc63030c6791779ad90500747e4e2f5c4ffeef
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288977"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022665"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Problembehandlung für Apache Hadoop YARN mit Azure HDInsight
 
@@ -24,7 +24,7 @@ Lernen Sie die wichtigsten Probleme und ihre Lösungen bei der Arbeit mit Apache
 
 Erstellen Sie mit den folgenden Schritten in Ambari eine neue YARN-Warteschlange, und teilen Sie die Kapazitätszuordnung dann gleichmäßig auf alle Warteschlangen auf.
 
-In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **default** und **thriftsvr** ) von 50% in 25% geändert, sodass die neue Warteschlange (spark) 50% Kapazität bekommt.
+In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen (**default** und **thriftsvr**) von 50% in 25% geändert, sodass die neue Warteschlange (spark) 50% Kapazität bekommt.
 
 | Warteschlange | Capacity | Maximale Kapazität |
 | --- | --- | --- |
@@ -32,13 +32,13 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **def
 | thrftsvr | 25 % | 50% |
 | spark | 50% | 50% |
 
-1. Wählen Sie das **Ambari-Ansichten** -Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
+1. Wählen Sie das **Ambari-Ansichten**-Symbol und dann das Gittermuster. Wählen Sie als Nächstes **YARN Queue Manager**.
 
     ![Apache Ambari-Dashboard: YARN Queue Manager](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-1.png)
 2. Wählen Sie die Warteschlange **default** aus.
 
     ![Apache Ambari YARN – Auswählen der Warteschlange „default“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-2.png)
-3. Ändern Sie für die **default** -Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr** -Warteschlange **capacity** in 25%.
+3. Ändern Sie für die **default**-Warteschlange **capacity** von 50% in 25%. Ändern Sie für die **thriftsvr**-Warteschlange **capacity** in 25%.
 
     ![Ändern der Kapazität in 25% für die Warteschlangen „default“ und „thriftsvr“](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-3.png)
 4. Wählen Sie zum Erstellen einer neuen Warteschlange **Add Queue**.
@@ -49,7 +49,7 @@ In diesem Beispiel wird die Kapazität zweier vorhandener Warteschlangen ( **def
 
     ![Apache Ambari YARN-Dashboard – Benennen einer Warteschlange](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-5.png)  
 
-6. Lassen Sie die **capacity** -Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
+6. Lassen Sie die **capacity**-Werte auf 50%, und wählen Sie die Schaltfläche **Actions**.
 
     ![Apache Ambari YARN – Auswählen der Aktion](media/hdinsight-troubleshoot-yarn/apache-yarn-create-queue-6.png)  
 7. Wählen Sie **Save and Refresh Queues**.

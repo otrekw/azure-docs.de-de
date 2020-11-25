@@ -1,7 +1,7 @@
 ---
 title: Planen und Verwalten von Kosten
 titleSuffix: Azure Machine Learning
-description: Planen und verwalten Sie Kosten für Azure Machine Learning mithilfe der Kostenanalyse im Azure-Portal. Lernen Sie beim Erstellen von Machine Learning-Modellen weitere kostensparende Tipps zur Senkung Ihrer Kosten kennen.
+description: Planen und verwalten Sie Kosten für Azure Machine Learning mithilfe der Kostenanalyse im Azure-Portal. Erhalten Sie weitere Tipps zur Senkung der Kosten, um Ihre Kosten beim Erstellen von ML-Modellen zu senken.
 author: sdgilley
 ms.author: sgilley
 ms.custom: subject-cost-optimization
@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: e8554bf4385c7ddad540b8ba807988618fe80b53
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a0e0f61da52ce00fb2eb4b4a7d95ab74082f9472
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322991"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94541707"
 ---
 # <a name="plan-and-manage-costs-for-azure-machine-learning"></a>Planen und Verwalten von Kosten für Azure Machine Learning
 

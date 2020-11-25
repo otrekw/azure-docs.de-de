@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 2c9d00f1d78d2dea46d4ff4a08433360e00c7b9d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445624"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94540126"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -163,7 +163,7 @@ Das Azure Machine Learning Python SDK bietet die Klasse [PrivateEndpointConfig](
 
    :::image type="content" source="media/how-to-manage-workspace/select-private-endpoint.png" alt-text="Auswahl des privaten Endpunkts":::  
 
-1. Legen Sie im Formular __Privaten Endpunkt erstellen__ den Speicherort, den Namen und das zu verwendende virtuelle Netzwerk fest. Wenn Sie den Endpunkt mit einer privaten DNS-Zone verwenden möchten, klicken Sie auf __In private DNS-Zone integrieren__ , und wählen Sie im Feld __Private DNS-Zone__ die gewünschte Zone aus. Klicken Sie auf __OK__ , um den Endpunkt zu erstellen.   
+1. Legen Sie im Formular __Privaten Endpunkt erstellen__ den Speicherort, den Namen und das zu verwendende virtuelle Netzwerk fest. Wenn Sie den Endpunkt mit einer privaten DNS-Zone verwenden möchten, klicken Sie auf __In private DNS-Zone integrieren__, und wählen Sie im Feld __Private DNS-Zone__ die gewünschte Zone aus. Klicken Sie auf __OK__, um den Endpunkt zu erstellen.   
 
    :::image type="content" source="media/how-to-manage-workspace/create-private-endpoint.png" alt-text="Erstellen des privaten Endpunkts":::   
 
@@ -181,7 +181,7 @@ Wenn Sie einen privaten Endpunkt erstellen, wird eine neue private DNS-Zone name
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Ressourcengruppe aus, die den Arbeitsbereich enthält. Wählen Sie dann die Ressource namens __privatelink.api.azureml.ms__ für die private DNS-Zone aus.
 2. Klicken Sie unter __Einstellungen__ auf __VNET-Verknüpfungen__.
-3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__ , um die Netzwerkverknüpfung hinzuzufügen.
+3. Wählen Sie __Hinzufügen__. Geben Sie auf der Seite __VNET-Verknüpfung hinzufügen__ einen eindeutigen __Linknamen__ an, und wählen Sie dann das __virtuelle Netzwerk__ aus, das hinzugefügt werden soll. Klicken Sie auf __OK__, um die Netzwerkverknüpfung hinzuzufügen.
 
 Weitere Informationen finden Sie unter [DNS-Konfiguration für private Azure-Endpunkte](../private-link/private-endpoint-dns.md).
 
@@ -191,7 +191,7 @@ Azure Security Center bietet einheitliche Funktionen für die Sicherheitsverwalt
 
 ### <a name="advanced"></a>Erweitert
 
-Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt.
+Standardmäßig werden Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt.
 
 Wählen Sie __Arbeitsbereich mit hohen geschäftlichen Auswirkungen__ im Portal aus oder legen Sie `hbi_workspace=true ` in Python fest, um die von Microsoft in Ihrem Arbeitsbereich gesammelten Daten zu beschränken. Weitere Informationen zu dieser Einstellung finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
@@ -200,7 +200,7 @@ Wählen Sie __Arbeitsbereich mit hohen geschäftlichen Auswirkungen__ im Portal 
 
 #### <a name="use-your-own-key"></a>Eigenen Schlüssel verwenden
 
-Sie können einen eigenen Schlüssel für die Datenverschlüsselung bereitstellen. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert.
+Sie können einen eigenen Schlüssel für die Datenverschlüsselung bereitstellen. Damit wird die Azure Cosmos DB-Instanz erstellt, die Metadaten in Ihrem Azure-Abonnement speichert.
 
 [!INCLUDE [machine-learning-customer-managed-keys.md](../../includes/machine-learning-customer-managed-keys.md)]
 
@@ -242,7 +242,7 @@ from azureml.core import Workspace
 
     :::image type="content" source="media/how-to-manage-workspace/advanced-workspace.png" alt-text="Kundenseitig verwaltete Schlüssel":::
 
-1. Wählen Sie im Formular __Schlüssel aus Azure Key Vault auswählen__ eine vorhandene Azure Key Vault-instanz, einen darin enthaltenen Schlüssel sowie die Schlüsselversion aus. Dieser Schlüssel wird zum Verschlüsseln der in Azure Cosmos DB gespeicherten Daten verwendet. Klicken Sie abschließend auf die Schaltfläche __Auswählen__ , um diesen Schlüssel zu verwenden.
+1. Wählen Sie im Formular __Schlüssel aus Azure Key Vault auswählen__ eine vorhandene Azure Key Vault-instanz, einen darin enthaltenen Schlüssel sowie die Schlüsselversion aus. Dieser Schlüssel wird zum Verschlüsseln der in Azure Cosmos DB gespeicherten Daten verwendet. Klicken Sie abschließend auf die Schaltfläche __Auswählen__, um diesen Schlüssel zu verwenden.
 
    :::image type="content" source="media/how-to-manage-workspace/select-key-vault.png" alt-text="Auswählen des Schlüssels":::
 

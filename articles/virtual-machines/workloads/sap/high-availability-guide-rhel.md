@@ -9,17 +9,18 @@ editor: ''
 tags: azure-resource-manager
 keywords: ''
 ms.service: virtual-machines-windows
+ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/22/2020
 ms.author: radeltch
-ms.openlocfilehash: 9b4684f8d9a6bd04a11961632b616258db7344a3
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 496b78de869cc213af6b79b3e72016bba3da1266
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487567"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022444"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver-on-red-hat-enterprise-linux"></a>Hochverfügbarkeit von Azure Virtual Machines für SAP NetWeaver unter Red Hat Enterprise Linux
 
@@ -172,14 +173,14 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
    1. Erstellen der Front-End-IP-Adressen
       1. IP-Adresse 10.0.0.7 für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-ascs-frontend** ).
-         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7** ).
+         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-ascs-frontend**).
+         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
          1. OK klicken
       1. IP-Adresse 10.0.0.8 für ASCS ERS
-         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend** ).
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
    1. Erstellen des Back-End-Pools
       1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend** ).
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
       1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
       1. Wählen Sie einen virtuellen Computer aus.
       1. Wählen Sie die virtuellen Computer des (A)SCS-Clusters mit ihren IP-Adressen aus.
@@ -187,33 +188,33 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
    1. Erstellen der Integritätstests
       1. Port 620 **00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp** ).
+         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp**).
          1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
          1. OK klicken
       1. Port 621 **02** für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp** ).
+         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp**).
    1. Lastenausgleichsregeln
       1. Lastenausgleichsregeln für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb-ascs** ).
-         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-ascs-frontend** , **nw1-backend** und **nw1-ascs-hp** ).
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z. B. **nw1-lb-ascs**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z. B. **nw1-ascs-frontend**, **nw1-backend** und **nw1-ascs-hp**).
          1. Wählen Sie **HA-Ports** aus.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
          1. OK klicken
-         * Wiederholen Sie die oben angegebenen Schritte, um Lastenausgleichsregeln für ERS zu erstellen (z. B. **nw1-lb-ers** ).
+         * Wiederholen Sie die oben angegebenen Schritte, um Lastenausgleichsregeln für ERS zu erstellen (z. B. **nw1-lb-ers**).
 1. Wenn Ihr Szenario einen grundlegenden Lastenausgleich (intern) erfordert, führen Sie stattdessen die folgenden Schritte aus:  
    1. Erstellen der Front-End-IP-Adressen
       1. IP-Adresse 10.0.0.7 für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie den Front-End-IP-Pool aus und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-ascs-frontend** ).
-         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7** ).
+         1. Geben Sie den Namen des neuen Front-End-IP-Pools ein (z.B. **nw1-ascs-frontend**).
+         1. Legen Sie die Zuweisung als statisch fest, und geben Sie die IP-Adresse ein (z.B. **10.0.0.7**).
          1. OK klicken
       1. IP-Adresse 10.0.0.8 für ASCS ERS
-         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend** ).
+         * Wiederholen Sie die obigen Schritte, um eine IP-Adresse für ERS zu erstellen (z. B. **10.0.0.8** und **nw1-aers-frontend**).
    1. Erstellen des Back-End-Pools
       1. Öffnen Sie den Lastenausgleich, wählen Sie Back-End-Pools und klicken Sie auf „Hinzufügen“.
-      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend** ).
+      1. Geben Sie den Namen des neuen Back-End-Pools ein (z.B. **nw1-backend**).
       1. Klicken Sie auf „Virtuellen Computer hinzufügen“.
       1. Wählen Sie die Verfügbarkeitsgruppe aus, die Sie zuvor erstellt haben.
       1. Wählen Sie die virtuellen Computer des A(SCS)-Clusters aus.
@@ -221,24 +222,24 @@ Zuerst müssen Sie die virtuellen Computer für diesen Cluster erstellen. Anschl
    1. Erstellen der Integritätstests
       1. Port 620 **00** für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie Integritätstests aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp** ).
+         1. Geben Sie den Namen des neuen Integritätstests ein (z.B. **nw1-ascs-hp**).
          1. Wählen Sie TCP als Protokoll und Port 620 **00** aus, und behalten Sie „Intervall 5“ und „Fehlerschwellenwert 2“ bei.
          1. OK klicken
       1. Port 621 **02** für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp** ).
+         * Wiederholen Sie die oben stehenden Schritte, um einen Integritätstest für ERS zu erstellen (z.B. 621 **02** und **nw1-aers-hp**).
    1. Lastenausgleichsregeln
       1. 32 **00** TCP für ASCS
          1. Öffnen Sie den Lastenausgleich, wählen Sie „Lastenausgleichsregeln“ aus, und klicken Sie auf „Hinzufügen“.
-         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-3200** ).
-         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-ascs-frontend** ).
+         1. Geben Sie den Namen der neuen Lastenausgleichsregel ein (z.B. **nw1-lb-3200**).
+         1. Wählen Sie die Front-End-IP-Adresse, den Back-End-Pool und den Integritätstest aus, die Sie zuvor erstellt haben (z.B. **nw1-ascs-frontend**).
          1. Behalten Sie **TCP** als Protokoll bei, und geben Sie Port **3200** ein.
          1. Erhöhen Sie die Leerlaufzeitüberschreitung auf 30 Minuten.
          1. **Achten Sie darauf, dass Sie „Floating IP“ aktivieren.**
          1. OK klicken
       1. Zusätzliche Ports für ASCS
-         * Wiederholen Sie die oben stehenden Schritte für die Ports 36 **00** , 39 **00** , 81 **00** , 5 **00** 13, 5 **00** 14, 5 **00** 16 und TCP für ASCS
+         * Wiederholen Sie die oben stehenden Schritte für die Ports 36 **00**, 39 **00**, 81 **00**, 5 **00** 13, 5 **00** 14, 5 **00** 16 und TCP für ASCS
       1. Zusätzliche Ports für ASCS ERS
-         * Wiederholen Sie die oben stehenden Schritte für die Ports 33 **02** , 5 **02** 13, 5 **02** 14, 5 **02** 16 und TCP für ASCS ERS
+         * Wiederholen Sie die oben stehenden Schritte für die Ports 33 **02**, 5 **02** 13, 5 **02** 14, 5 **02** 16 und TCP für ASCS ERS
 
 > [!IMPORTANT]
 > Floating IP-Adressen werden in IP-Konfigurationen mit zwei NICs in Szenarien mit Lastenausgleich nicht unterstützt. Weitere Informationen finden Sie unter [Azure Load Balancer – Einschränkungen](https://docs.microsoft.com/azure/load-balancer/load-balancer-multivip-overview#limitations). Wenn Sie zusätzliche IP-Adressen für die VM benötigen, stellen Sie eine zweite NIC bereit.  
@@ -406,7 +407,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/ **NW1** /ASCS **00** “ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS **00** “ fest, und versuchen Sie es noch mal.
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ASCS **00**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ASCS **00**“ fest, und versuchen Sie es noch mal.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ASCS<b>00</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ASCS<b>00</b>
@@ -462,7 +463,7 @@ Die folgenden Elemente sind mit einem der folgenden Präfixe versehen: **[A]** �
    sudo &lt;swpm&gt;/sapinst SAPINST_REMOTE_ACCESS_USER=<b>sapadmin</b>
    </code></pre>
 
-   Wenn bei der Installation kein Unterordner in „/usr/sap/ **NW1** /ERS **02** “ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS **02** “ fest, und versuchen Sie es noch mal.
+   Wenn bei der Installation kein Unterordner in „/usr/sap/**NW1**/ERS **02**“ erstellt werden kann, legen Sie den Besitzer und die Gruppe des Ordners „ERS **02**“ fest, und versuchen Sie es noch mal.
 
    <pre><code>sudo chown nw1adm /usr/sap/<b>NW1</b>/ERS<b>02</b>
    sudo chgrp sapsys /usr/sap/<b>NW1</b>/ERS<b>02</b>
@@ -761,7 +762,7 @@ Führen Sie die folgenden Schritte durch, um einen SAP-Anwendungsserver zu insta
      DATABASE: <b>NW1</b>
    </code></pre>
 
-   Die Ausgabe veranschaulicht, dass die IP-Adresse des Standardeintrags auf den virtuellen Computer zeigt, nicht auf die IP-Adresse des Lastenausgleichs. Dieser Eintrag muss so geändert werden, dass er auf den Namen des virtuellen Hosts des Lastenausgleichs zeigt. Achten Sie darauf, den gleichen Port ( **30313** in der obigen Ausgabe) und Datenbanknamen ( **HN1** in der obigen Ausgabe) zu verwenden!
+   Die Ausgabe veranschaulicht, dass die IP-Adresse des Standardeintrags auf den virtuellen Computer zeigt, nicht auf die IP-Adresse des Lastenausgleichs. Dieser Eintrag muss so geändert werden, dass er auf den Namen des virtuellen Hosts des Lastenausgleichs zeigt. Achten Sie darauf, den gleichen Port (**30313** in der obigen Ausgabe) und Datenbanknamen (**HN1** in der obigen Ausgabe) zu verwenden!
 
    <pre><code>su - <b>nw1</b>adm
    hdbuserstore SET DEFAULT <b>nw1-db</b>:<b>30313@NW1</b> <b>SAPABAP1</b> <b>&lt;password of ABAP schema&gt;</b>

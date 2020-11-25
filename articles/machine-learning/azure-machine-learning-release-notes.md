@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 0afd1f2f8dd06c3c224d64304eec2e18489a7e81
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 54b15d5865b1abb0d624628ed4b5c9892ab04d41
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489130"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94542132"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -43,7 +43,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Die Dokumentation für `OutputDatasetConfig.register_on_complete` wurde verbessert, sodass das Verhalten eingeschlossen wird, das angewendet wird, wenn der Name bereits vorhanden ist.
     + Wenn Namen für Dataseteingabe und -ausgabe angegeben werden, die möglicherweise zu Konflikten mit allgemeinen Umgebungsvariablen führen könnten, führt dies nun zu einer Warnung.
     + Der Zweck des `grant_workspace_access`-Parameters beim Registrieren von Datenspeichern wurde neu bestimmt. Legen Sie ihn auf `True` fest, um auf Daten in einem virtuellen Netzwerk in Machine Learning Studio zuzugreifen.
-      [Weitere Informationen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [Erfahren Sie mehr](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
     + Die verknüpfte Dienst-API wurde optimiert. Anstatt eine Ressourcen-ID anzugeben, verfügen Sie über die drei eigenständigen Parameter sub_id, rg und name, die in der Konfiguration definiert sind.
     + Damit Kunden Probleme mit beschädigten Token selbst lösen können, aktivieren Sie die Synchronisierung für Arbeitsbereichstoken als öffentliche Methode.
     + Diese Änderung ermöglicht es, dass eine leere Zeichenfolge als Wert für scrip_param verwendet werden kann.
@@ -107,6 +107,16 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
   + **azureml-train-automl-client**
     + Es wurde ein Problem behoben, bei dem „get_output“ einen XGBoostError auslösen konnte.
 
+### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio Notebooks-Oberfläche (Aktualisierung vom Oktober)
++ **Neue Features**
+  + [Volle Unterstützung für virtuelle Netzwerke](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+  + [Fokusmodus](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + Notebooks speichern Strg-S
+  + Zeilennummern
+
++ **Fehlerbehebungen und Verbesserungen**
+  + Verbesserung der Geschwindigkeit und Kernelzuverlässigkeit
+  + Updates der Jupyter Widget-Benutzeroberfläche
 
 ## <a name="2020-10-12"></a>2020-10-12
 

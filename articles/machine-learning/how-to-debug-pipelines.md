@@ -1,7 +1,7 @@
 ---
 title: Debuggen und Troubleshooting bei ML-Pipelines
 titleSuffix: Azure Machine Learning
-description: Debuggen Sie Ihre Azure Machine Learning-Pipelines in Python. Lernen Sie häufige Fallstricke bei der Entwicklung von Pipelines kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen.
+description: Debuggen Sie Ihre Azure Machine Learning-Pipelines in Python. Lernen Sie häufige Fallstricke kennen, und erhalten Sie Tipps, die Ihnen helfen, Ihre Skripts vor und während der Remoteausführung zu debuggen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,12 +10,12 @@ ms.author: laobri
 ms.date: 10/22/2020
 ms.topic: conceptual
 ms.custom: troubleshooting, devx-track-python, contperfq2
-ms.openlocfilehash: 80bc5034e6e192c1b493a65e61b94ae1b785a430
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 13897f9881a8f505f0053443a218cf744d8edf8b
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325591"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94630106"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Debuggen und Problembehandlung für Machine Learning-Pipelines
 
@@ -36,7 +36,7 @@ Die folgende Tabelle enthält häufige Probleme bei der Pipelinentwicklung mit m
 
 ## <a name="troubleshooting-parallelrunstep"></a>Problembehandlung für `ParallelRunStep` 
 
-Das Skript für `ParallelRunStep` *muss zwei Funktionen enthalten* :
+Das Skript für `ParallelRunStep` *muss zwei Funktionen enthalten*:
 - `init()`: Verwenden Sie diese Funktion für alle aufwendigen oder allgemeinen Vorbereitungsmaßnahmen für den späteren Rückschluss. Ein Beispiel wäre etwa das Laden des Modells in ein globales Objekt. Diese Funktion wird nur einmal zu Beginn des Prozesses aufgerufen.
 -  `run(mini_batch)`: Diese Funktion wird für jede Instanz vom Typ `mini_batch` ausgeführt.
     -  `mini_batch`: `ParallelRunStep` ruft die Run-Methode auf und übergibt entweder eine Liste oder einen Pandas-Datenrahmen (`DataFrame`) als Argument an die Methode. Jeder Eintrag in „mini_batch“ entspricht einem Dateipfad, wenn die Eingabe ein `FileDataset` ist, bzw. einem Pandas-Datenrahmen (`DataFrame`), wenn die Eingabe ein `TabularDataset` ist.
@@ -216,7 +216,7 @@ logger.error("I am an OpenCensus error statement with custom dimensions", {'step
 
 ## <a name="azure-machine-learning-designer"></a>Azure Machine Learning-Designer
 
-Die **70_driver_log** -Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
+Die **70_driver_log**-Dateien für die im Designer erstellten Pipelines finden Sie entweder auf der Seite zur Dokumenterstellung oder auf der Detailseite zur Pipelineausführung.
 
 ### <a name="enable-logging-for-real-time-endpoints"></a>Aktivieren der Protokollierung für Echtzeitendpunkte
 

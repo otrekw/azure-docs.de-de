@@ -3,16 +3,17 @@ title: Übersicht über das Oracle-Notfallwiederherstellungsszenario in der Azur
 description: Ein Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in Ihrer Azure-Umgebung.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 9736c4d2b048aa18f283689247f5597d7526f1df
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: b8da0b5c55b291af42d9a30db23d6f55f7c0bf2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480359"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022784"
 ---
 # <a name="disaster-recovery-for-an-oracle-database-12c-database-in-an-azure-environment"></a>Notfallwiederherstellungsszenario für eine Oracle Database 12c-Datenbank in einer Azure-Umgebung
 
@@ -37,7 +38,7 @@ Hier ein Überblick über den Aufbau von Azure:
 - Zwei Oracle-Datenbanken mit Data Guard (primär und Standby)
 - Zwei Oracle-Datenbanken mit Golden Gate oder Data Guard (nur am primären Standort)
 - Zwei Anwendungsdienste, einer am primären und einer am DR-Standort
-- Eine *Verfügbarkeitsgruppe* , die für Datenbank- und Anwendungsdienste am primären Standort verwendet wird
+- Eine *Verfügbarkeitsgruppe*, die für Datenbank- und Anwendungsdienste am primären Standort verwendet wird
 - Eine Jumpbox an jedem Standort, die den Zugriff auf das private Netzwerk einschränkt und nur Anmeldung durch einen Administrator zulässt
 - Jumpbox, Anwendungsdienst, Datenbank und VPN-Gateway befinden sich in separaten Subnetzen
 - Netzwerksicherheitsgruppe (Network Security Group, NSG) wird auf den Anwendungs- und Datenbanksubnetzen erzwungen

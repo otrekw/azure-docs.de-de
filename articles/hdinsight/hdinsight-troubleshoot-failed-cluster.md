@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 4fea7719d0aa375aad3d2795d240006222b6486c
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92535092"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96022699"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Problembehandlung bei einem langsamen oder fehlerhaften Auftrag auf einem HDInsight-Cluster
 
@@ -78,11 +78,11 @@ Jeder HDInsight-Cluster basiert auf verschiedenen Azure-Diensten und auf Open-So
 
 ### <a name="view-cluster-configuration-settings-with-the-ambari-ui"></a>Anzeigen von Einstellungen zur Clusterkonfiguration mit der Ambari-Benutzeroberfläche
 
-Apache Ambari ermöglicht die Verwaltung und Überwachung eines HDInsight-Clusters mit einer Webbenutzeroberfläche und einer REST-API. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Cluster-Dashboard** .  Wählen Sie den Bereich **HDInsight-Cluster-Dashboard** , um die Ambari-Benutzeroberfläche zu öffnen, und geben Sie die Anmeldeinformationen für die Anmeldung am Cluster ein.  
+Apache Ambari ermöglicht die Verwaltung und Überwachung eines HDInsight-Clusters mit einer Webbenutzeroberfläche und einer REST-API. Ambari ist in Linux-basierten HDInsight-Clustern enthalten. Wählen Sie im Azure-Portal auf der Seite „HDInsight“ den Bereich **Cluster-Dashboard**.  Wählen Sie den Bereich **HDInsight-Cluster-Dashboard**, um die Ambari-Benutzeroberfläche zu öffnen, und geben Sie die Anmeldeinformationen für die Anmeldung am Cluster ein.  
 
 ![Apache Ambari-Dashboard – Übersicht](./media/hdinsight-troubleshoot-failed-cluster/apache-ambari-overview.png)
 
-Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portalseite die Option **Ambari Views** .  Der Inhalt dieser Liste richtet sich danach, welche Bibliotheken installiert sind. Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.
+Wählen Sie zum Öffnen einer Liste mit den Dienstansichten auf der Azure-Portalseite die Option **Ambari Views**.  Der Inhalt dieser Liste richtet sich danach, welche Bibliotheken installiert sind. Beispielsweise werden ggf. YARN Queue Manager, Hive View und Tez View angezeigt.  Wählen Sie einen Dienstlink aus, um die Konfigurations- und Dienstinformationen anzuzeigen.
 
 #### <a name="check-for-azure-service-outages"></a>Durchführen einer Prüfung auf Ausfälle von Azure-Diensten
 
@@ -115,7 +115,7 @@ Das [Dashboard der Ambari-Benutzeroberfläche](#view-cluster-configuration-setti
 
 ### <a name="check-your-webhcat-service"></a>Überprüfen Ihres WebHCat-Diensts
 
-Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton* ). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in Apache Hadoop-YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
+Ein allgemeines Szenario für Fehler bei Apache Hive-, Apache Pig- oder Apache Sqoop-Aufträgen ist ein Ausfall des [WebHCat](hdinsight-hadoop-templeton-webhcat-debug-errors.md)-Diensts (oder *Templeton*). WebHCat ist eine REST-Schnittstelle für die Remoteausführung von Aufträgen, z.B. Hive, Pig, Scoop und MapReduce. WebHCat übersetzt die Anforderungen zur Auftragsübermittlung in Apache Hadoop-YARN-Anwendungen und gibt einen Status zurück, der vom YARN-Anwendungsstatus abgeleitet wird.  In den folgenden Abschnitten werden allgemeine WebHCat-HTTP-Statuscodes beschrieben.
 
 #### <a name="badgateway-502-status-code"></a>BadGateway (Statuscode 502)
 
@@ -228,7 +228,7 @@ Die Skriptaktionsprotokolle befinden sich im Verzeichnis `\STORAGE_ACCOUNT_NAME\
 
 ### <a name="view-hdinsight-logs-using-ambari-quick-links"></a>Anzeigen von HDInsight-Protokollen mit Ambari-Quicklinks
 
-Die HDInsight Ambari-Benutzeroberfläche enthält mehrere Abschnitte mit **Quicklinks** .  Öffnen Sie zum Zugreifen auf die Protokolllinks für einen bestimmten Dienst in Ihrem HDInsight-Cluster die Ambari-Benutzeroberfläche für den Cluster, und wählen Sie anschließend in der Liste auf der linken Seite den Dienstlink aus. Wählen Sie das Dropdownmenü **Quicklinks** , den gewünschten HDInsight-Knoten und dann den Link für das zugeordnete Protokoll aus.
+Die HDInsight Ambari-Benutzeroberfläche enthält mehrere Abschnitte mit **Quicklinks**.  Öffnen Sie zum Zugreifen auf die Protokolllinks für einen bestimmten Dienst in Ihrem HDInsight-Cluster die Ambari-Benutzeroberfläche für den Cluster, und wählen Sie anschließend in der Liste auf der linken Seite den Dienstlink aus. Wählen Sie das Dropdownmenü **Quicklinks**, den gewünschten HDInsight-Knoten und dann den Link für das zugeordnete Protokoll aus.
 
 Beispiel für Hadoop Distributed File System-Protokolle:
 
