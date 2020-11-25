@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 09206b8189f03a37f8bd7d073238609a3f1bd3ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88816098"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95901552"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
 
@@ -71,7 +71,7 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumH
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>Schritt 3: Erstellen eines virtuellen Azure-Netzwerks (VNet)
 
-Ihr Speicherkonto muss in einem VNet sein. Ein VNet ermöglicht Clients eine sichere Verbindung mit Ihrem Speicherkonto. Weitere Informationen zum VNet und wie Sie eins erstellen, finden Sie in der [Dokumentation zu virtuellen Netzwerken](https://docs.microsoft.com/azure/virtual-network/).
+Ihr Speicherkonto muss in einem VNet sein. Ein VNet ermöglicht Clients eine sichere Verbindung mit Ihrem Speicherkonto. Weitere Informationen zum VNet und wie Sie eins erstellen, finden Sie in der [Dokumentation zu virtuellen Netzwerken](../../virtual-network/index.yml).
 
 > [!NOTE]
 > Clients im selben VNet können Container in Ihr Konto einbinden. Sie können auch einen Container von einem Client aus einbinden, der in einem lokalen Netzwerk ausgeführt wird, doch Sie müssen zunächst Ihr lokales Netzwerk mit Ihrem VNet verbinden. Siehe [Unterstützte Netzwerkverbindungen](network-file-system-protocol-support.md#supported-network-connections).
@@ -113,7 +113,7 @@ Erstellen Sie einen Container in Ihrem Speicherkonto, indem Sie eins dieser Tool
 |[AzCopy](../common/storage-use-azcopy-blobs.md#create-a-container)|[Java](data-lake-storage-directory-file-acl-java.md#create-a-container)|
 |[PowerShell](data-lake-storage-directory-file-acl-powershell.md#create-a-container)|[Python](data-lake-storage-directory-file-acl-python.md#create-a-container)|
 |[Azure-Befehlszeilenschnittstelle](data-lake-storage-directory-file-acl-cli.md#create-a-container)|[JavaScript](data-lake-storage-directory-file-acl-javascript.md)|
-||[REST](https://docs.microsoft.com/rest/api/storageservices/create-container)|
+||[REST](/rest/api/storageservices/create-container)|
 
 ## <a name="step-7-mount-the-container"></a>Schritt 7: Einbinden des Containers
 
@@ -144,7 +144,7 @@ Erstellen Sie ein Verzeichnis auf Ihrem Windows- oder Linux-System, und binden S
 
    ![Feature „Client für NFS“](media/network-file-system-protocol-how-to/client-for-network-files-system-feature.png)
 
-2. Binden Sie einen Container mithilfe des [mount](https://docs.microsoft.com/windows-server/administration/windows-commands/mount)-Befehls ein.
+2. Binden Sie einen Container mithilfe des [mount](/windows-server/administration/windows-commands/mount)-Befehls ein.
 
    ```
    mount -o nolock <storage-account-name>.blob.core.windows.net:/<storage-account-name>/<container-name> *
@@ -175,10 +175,3 @@ Erstellen Sie ein Verzeichnis auf Ihrem Windows- oder Linux-System, und binden S
 ## <a name="see-also"></a>Weitere Informationen
 
 [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md)
-
-
-
-
-
-
-

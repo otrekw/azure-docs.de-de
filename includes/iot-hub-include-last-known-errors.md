@@ -8,19 +8,19 @@ ms.topic: conceptual
 ms.date: 04/22/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: d8583a1fee96d0a6eb3300882b2b115f057cbeec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 54f4835a904b897370cf9f075ae3c005b1114992
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135474"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95564351"
 ---
-[Get Endpoint Health](https://docs.microsoft.com/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) in der REST-API gibt den Integritätsstatus der Endpunkte sowie den letzten bekannten Fehler an, um den Grund zu nennen, warum ein Endpunkt nicht fehlerfrei ist. In der folgenden Tabelle werden die häufigsten Fehler aufgeführt.
+[Get Endpoint Health](/rest/api/iothub/iothubresource/getendpointhealth#iothubresource_getendpointhealth) in der REST-API gibt den Integritätsstatus der Endpunkte sowie den letzten bekannten Fehler an, um den Grund zu nennen, warum ein Endpunkt nicht fehlerfrei ist. In der folgenden Tabelle werden die häufigsten Fehler aufgeführt.
 
 |Letzter bekannter Fehler|Beschreibung/Auftreten|Mögliche Entschärfung|
 |-----|-----|-----|
-|Kurzlebig|Ein vorübergehender Fehler ist aufgetreten, und IoT Hub wiederholt den Vorgang.|Beobachten Sie [Ressourcenprotokolle zu Routen](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
-|InternalError|Fehler bei der Übermittlung einer Nachricht an einen Endpunkt.|Dies ist eine interne Ausnahme, untersuchen Sie aber auch die [Ressourcenprotokolle zu Routen](https://docs.microsoft.com/azure/iot-hub/monitor-iot-hub-reference#routes).|
+|Kurzlebig|Ein vorübergehender Fehler ist aufgetreten, und IoT Hub wiederholt den Vorgang.|Beobachten Sie [Ressourcenprotokolle zu Routen](../articles/iot-hub/monitor-iot-hub-reference.md#routes).|
+|InternalError|Fehler bei der Übermittlung einer Nachricht an einen Endpunkt.|Dies ist eine interne Ausnahme, untersuchen Sie aber auch die [Ressourcenprotokolle zu Routen](../articles/iot-hub/monitor-iot-hub-reference.md#routes).|
 |Nicht autorisiert|IoT Hub ist nicht zum Senden von Nachrichten an den angegebenen Endpunkt autorisiert.|Überprüfen Sie, ob die Verbindungszeichenfolge für den Endpunkt auf dem neuesten Stand ist. Wenn sie sich geändert hat, sollten Sie ein Update für Ihre IoT Hub in Erwägung ziehen. Wenn der Endpunkt eine verwaltete Identität verwendet, überprüfen Sie, ob der IoT Hub-Prinzipal über die erforderlichen Berechtigungen für das Ziel verfügt.|
 |Gedrosselt|IoT Hub wird beim Schreiben von Nachrichten in den Endpunkt gedrosselt.|Überprüfen Sie die Drosselungslimits für den betroffenen Endpunkt. Ändern Sie die Konfigurationen, damit der Endpunkt bei Bedarf hochskaliert wird.|
 |Timeout|Timeout bei Vorgang.|Wiederholen Sie den Vorgang.|

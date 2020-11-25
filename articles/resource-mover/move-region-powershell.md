@@ -7,12 +7,12 @@ ms.service: resource-move
 ms.topic: how-to
 ms.date: 09/10/2020
 ms.author: raynew
-ms.openlocfilehash: 3236e0a95c6a4b4f57ac38ed067011c3d6848b5a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 176f12a0a06a5bcae601463e30189bc139d3531f
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89670097"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543849"
 ---
 # <a name="move-resources-across-regions-in-powershell"></a>Verschieben von Ressourcen zwischen Regionen mithilfe von PowerShell
 
@@ -25,7 +25,7 @@ Hier erfahren Sie, wie Sie Azure-Ressourcen in eine andere Region mithilfe von P
 
 ## <a name="before-you-start"></a>Vorbereitung
 
-- Ihr Azure-Abonnement erfordert Zugriffsrechte auf Resource Mover. Zudem müssen Sie über Berechtigungen als [Besitzer](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#owner) oder [Benutzerzugriffsadministrator](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#user-access-administrator) für das Abonnement verfügen.
+- Ihr Azure-Abonnement erfordert Zugriffsrechte auf Resource Mover. Zudem müssen Sie über Berechtigungen als [Besitzer](../role-based-access-control/built-in-roles.md#owner) oder [Benutzerzugriffsadministrator](../role-based-access-control/built-in-roles.md#user-access-administrator) für das Abonnement verfügen.
 - Resource Mover verfolgt keine Änderungen und Upgrades, also nehmen Sie alle erforderlichen Änderungen an den Ressourcen vor, bevor Sie sie verschieben.
 - Wenn Sie Ressourcen mit PowerShell verschieben, können Sie derzeit keine Einstellungen für die Zielregion bearbeiten. Ändern Sie diese Einstellungen direkt über das Portal.
 - Wenn Sie einer zu verschiebenden Sammlung Ressourcen hinzufügen, um für das Verschieben in eine andere Region vorzubereiten, werden die Metadaten zur Verschiebung in einer Ressourcengruppe gespeichert, die zu diesem Zweck erstellt wird. Diese Ressourcengruppe kann sich derzeit in den Regionen „USA, Osten 2“ oder „Europa, Norden“ befinden. Azure-Ressourcen können zwischen beliebigen öffentlichen Regionen mithilfe von Metadaten, die in einer dieser Regionen vorhanden sind, verschoben werden.

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/05/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 5d14068f6be4717f74e4917d6fccf1082cd0efd3
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 48a7912b1a6375111b6f9af1496cbbd41966202c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331757"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95553733"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Welche Regionen sind verfügbar?
 
@@ -89,7 +89,7 @@ Eine Sitzung darf nur über das Azure-Portal initiiert werden. Melden Sie sich b
 
 ### <a name="how-do-i-handle-deployment-failures"></a><a name="udr"></a>Behandeln von Bereitstellungsfehlern
 
-Überprüfen Sie die Fehlermeldungen, und stellen Sie bei Bedarf eine [Supportanfrage im Azure-Portal](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Bereitstellungsfehler können durch [Einschränkungen für Azure-Abonnements, Kontingente und sonstige Einschränkungen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) verursacht werden. Insbesondere können Kunden eine Beschränkung der Anzahl von zulässigen öffentlichen IP-Adressen pro Abonnement feststellen, die zu einem Fehler bei der Azure Bastion-Bereitstellung führen.
+Überprüfen Sie die Fehlermeldungen, und stellen Sie bei Bedarf eine [Supportanfrage im Azure-Portal](../articles/azure-portal/supportability/how-to-create-azure-support-request.md). Bereitstellungsfehler können durch [Einschränkungen für Azure-Abonnements, Kontingente und sonstige Einschränkungen](../articles/azure-resource-manager/management/azure-subscription-service-limits.md) verursacht werden. Insbesondere können Kunden eine Beschränkung der Anzahl von zulässigen öffentlichen IP-Adressen pro Abonnement feststellen, die zu einem Fehler bei der Azure Bastion-Bereitstellung führen.
 
 ### <a name="how-do-i-incorporate-azure-bastion-in-my-disaster-recovery-plan"></a><a name="dr"></a>Wie integriere ich Azure Bastion in meinen Plan zur Notfallwiederherstellung?
 

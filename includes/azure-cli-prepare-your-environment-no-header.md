@@ -5,14 +5,14 @@ author: dbradish-microsoft
 ms.author: dbradish
 manager: barbkess
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a462f27befbe226496f0ffebd3f57c7058664c38
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fc18ddcb44a016348baed79ada273416e159aed5
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93354090"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95971440"
 ---
-- Verwenden Sie [Azure Cloud Shell](/azure/cloud-shell/quickstart) unter Nutzung der Bash-Umgebung.
+- Verwenden Sie [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/quickstart) unter Nutzung der Bash-Umgebung.
 
    [![Start einbetten](https://shell.azure.com/images/launchcloudshell.png "Starten von Azure Cloud Shell")](https://shell.azure.com)   
 - Wenn Sie möchten, können Sie auch die Azure CLI [installieren](/cli/azure/install-azure-cli), um CLI-Verweisbefehle auszuführen.

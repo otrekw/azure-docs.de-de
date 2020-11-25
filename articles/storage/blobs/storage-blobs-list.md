@@ -9,12 +9,12 @@ ms.date: 11/16/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 906df01587201561fbbfea0661d0885864042925
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddd19c90c8c47016497e2c3b00e04595a94e7715
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701312"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95543067"
 ---
 # <a name="list-blobs-with-net"></a>Auflisten von Blobs mit .NET
 
@@ -61,7 +61,7 @@ Um die Liste der Blobs zu filtern, geben Sie für den `prefix`-Parameter eine Ze
 
 Sie können zusammen mit den Ergebnissen Blobmetadaten zurückgeben.
 
-- Wenn Sie das .NET v12 SDK verwenden, geben Sie den Wert **Metadaten** für die [BlobTraits](https://docs.microsoft.com/dotnet/api/azure.storage.blobs.models.blobtraits)-Enumeration an.
+- Wenn Sie das .NET v12 SDK verwenden, geben Sie den Wert **Metadaten** für die [BlobTraits](/dotnet/api/azure.storage.blobs.models.blobtraits)-Enumeration an.
 
 - Wenn Sie das .NET v11 SDK verwenden, geben Sie für die Enumeration [BlobListingDetails](/dotnet/api/microsoft.azure.storage.blob.bloblistingdetails) den Wert **Metadata** an. Weil Azure Storage Metadaten für jedes zurückgegebene Blob enthält, müssen Sie in diesem Kontext keine der **FetchAttributes**-Methoden aufrufen, um die Blobmetadaten abzurufen.
 

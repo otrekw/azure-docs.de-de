@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/28/2020
 ms.author: normesta
 ms.reviewer: jamesbak
-ms.openlocfilehash: 909d64d3d32e8b9a314f7afb06b9c0121f624cec
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 32f8ab3f7e222108bec4ec81b14c113705370096
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913061"
 ---
 # <a name="known-issues-with-azure-data-lake-storage-gen2"></a>Bekannte Probleme mit Azure Data Lake Storage Gen2
 
@@ -41,21 +41,21 @@ Blob-APIs und Data Lake Storage Gen2-APIs können mit denselben Daten arbeiten.
 
 In diesem Abschnitt werden Probleme und Einschränkungen bei der Verwendung von Blob-APIs und Data Lake Storage Gen2-APIs für dieselben Daten beschrieben.
 
-* Sie können keine Blob-APIs und Data Lake Storage-APIs zum Schreiben in dieselbe Instanz einer Datei verwenden. Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](https://docs.microsoft.com/rest/api/storageservices/get-block-list)-Blob-API nicht sichtbar. Die einzige Ausnahme ist, wenn Sie bei der Verwendung überschreiben. Sie können eine Datei/ein Blob mithilfe einer der beiden APIs überschreiben.
+* Sie können keine Blob-APIs und Data Lake Storage-APIs zum Schreiben in dieselbe Instanz einer Datei verwenden. Wenn Sie in eine Datei schreiben, indem Sie Data Lake Storage Gen2-APIs verwenden, sind die Blöcke dieser Datei für Aufrufe der [Get Block List](/rest/api/storageservices/get-block-list)-Blob-API nicht sichtbar. Die einzige Ausnahme ist, wenn Sie bei der Verwendung überschreiben. Sie können eine Datei/ein Blob mithilfe einer der beiden APIs überschreiben.
 
-* Wenn Sie den Vorgang [List Blobs](https://docs.microsoft.com/rest/api/storageservices/list-blobs) verwenden, ohne ein Trennzeichen anzugeben, enthalten die Ergebnisse sowohl Verzeichnisse als auch Blobs. Wenn Sie sich für Trennzeichen entscheiden, sollten Sie nur einen Schrägstrich (`/`) verwenden. Dies ist das einzige Trennzeichen, das unterstützt wird.
+* Wenn Sie den Vorgang [List Blobs](/rest/api/storageservices/list-blobs) verwenden, ohne ein Trennzeichen anzugeben, enthalten die Ergebnisse sowohl Verzeichnisse als auch Blobs. Wenn Sie sich für Trennzeichen entscheiden, sollten Sie nur einen Schrägstrich (`/`) verwenden. Dies ist das einzige Trennzeichen, das unterstützt wird.
 
-* Wenn Sie die [Delete Blob](https://docs.microsoft.com/rest/api/storageservices/delete-blob)-API zum Löschen eines Verzeichnisses verwenden, wird es nur gelöscht, sofern es leer ist. Dies bedeutet, dass Sie die Blob-API zum Löschen von Verzeichnissen nicht rekursiv verwenden können.
+* Wenn Sie die [Delete Blob](/rest/api/storageservices/delete-blob)-API zum Löschen eines Verzeichnisses verwenden, wird es nur gelöscht, sofern es leer ist. Dies bedeutet, dass Sie die Blob-API zum Löschen von Verzeichnissen nicht rekursiv verwenden können.
 
 Diese Blob-Rest-APIs werden nicht unterstützt:
 
-* [Put Blob (Page)](https://docs.microsoft.com/rest/api/storageservices/put-blob)
-* [Put Page](https://docs.microsoft.com/rest/api/storageservices/put-page)
-* [Get Page Ranges](https://docs.microsoft.com/rest/api/storageservices/get-page-ranges)
-* [Incremental Copy Blob](https://docs.microsoft.com/rest/api/storageservices/incremental-copy-blob)
-* [Put Page from URL](https://docs.microsoft.com/rest/api/storageservices/put-page-from-url)
-* [Append Block](https://docs.microsoft.com/rest/api/storageservices/append-block)
-* [Append Block from URL](https://docs.microsoft.com/rest/api/storageservices/append-block-from-url)
+* [Put Blob (Page)](/rest/api/storageservices/put-blob)
+* [Put Page](/rest/api/storageservices/put-page)
+* [Get Page Ranges](/rest/api/storageservices/get-page-ranges)
+* [Incremental Copy Blob](/rest/api/storageservices/incremental-copy-blob)
+* [Put Page from URL](/rest/api/storageservices/put-page-from-url)
+* [Append Block](/rest/api/storageservices/append-block)
+* [Append Block from URL](/rest/api/storageservices/append-block-from-url)
 
 
 Nicht verwaltete VM-Datenträger werden für Konten, die über einen hierarchischen Namespace verfügen, nicht unterstützt. Wenn Sie einen hierarchischen Namespace für ein Speicherkonto aktivieren möchten, sollten Sie verwaltete VM-Datenträger in einem Speicherkonto anordnen, für das die Funktion für hierarchische Namespaces nicht aktiviert ist.
@@ -70,7 +70,7 @@ Die Möglichkeit, ACL-Änderungen aus dem übergeordneten Verzeichnis rekursiv a
 
 ## <a name="azcopy"></a>AzCopy
 
-Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.
+Verwenden Sie nur die neueste Version von AzCopy ([AzCopy v10](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ftables%2ftoc.json)). Frühere Versionen von AzCopy wie z. B. AzCopy v8.1 werden nicht unterstützt.
 
 <a id="storage-explorer"></a>
 
@@ -92,7 +92,7 @@ Drittanbieteranwendungen, die REST-APIs verwenden, funktionieren auch weiterhin,
 
 ## <a name="access-control-lists-acl-and-anonymous-read-access"></a>Zugriffssteuerungslisten (Access Control Lists, ACLs) und anonymer Lesezugriff
 
-Wenn [anonymer Lesezugriff](storage-manage-access-to-resources.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
+Wenn [anonymer Lesezugriff](./anonymous-read-access-configure.md) für einen Container gewährt wurde, haben ACLs keine Auswirkungen auf diesen Container oder die darin enthaltenen Dateien.
 
 ## <a name="diagnostic-logs"></a>Diagnoseprotokolle
 

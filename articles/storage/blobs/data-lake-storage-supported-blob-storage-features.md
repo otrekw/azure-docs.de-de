@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: b670ec3cee2ebd1cc98ea2e04fb2b0dfd90e4e1a
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94594214"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95912585"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -31,7 +31,7 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Zugriffsebene „Cool“|Allgemein verfügbar|Nicht unterstützt|[Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)|
 |Events|Allgemein verfügbar|Allgemein verfügbar|[Reacting to Blob storage events (preview)](storage-blob-event-overview.md) (Reagieren auf Blob Storage-Ereignisse (Vorschauversion))|
 |Metriken (klassisch)|Allgemein verfügbar|Allgemein verfügbar|[Metriken von Azure Storage Analytics (klassisch)](../common/storage-analytics-metrics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Metriken in Azure Monitor|Allgemein verfügbar|Vorschau|[Azure Storage-Metriken in Azure Monitor](../common/storage-metrics-in-azure-monitor.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
+|Metriken in Azure Monitor|Allgemein verfügbar|Vorschau|[Azure Storage-Metriken in Azure Monitor](./monitor-blob-storage.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blob Storage-PowerShell-Befehle|Allgemein verfügbar|Allgemein verfügbar|[Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit PowerShell](storage-quickstart-blobs-powershell.md)|
 |Blob Storage-Azure CLI-Befehle|Allgemein verfügbar|Allgemein verfügbar|[Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle](storage-quickstart-blobs-cli.md)|
 |Blob Storage-APIs|Allgemein verfügbar|Allgemein verfügbar|[Schnellstart: Azure Blob Storage-Clientbibliothek v12 für .NET](storage-quickstart-blobs-dotnet.md)<br>[Schnellstart: Verwalten von Blobs per Java v12 SDK](storage-quickstart-blobs-java.md)<br>[Schnellstart: Verwalten von Blobs per Python v12 SDK](storage-quickstart-blobs-python.md)<br>[Schnellstart: Verwalten von Blobs per JavaScript v12 SDK in Node.js](storage-quickstart-blobs-nodejs.md)|
@@ -39,12 +39,12 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Zugriffsebene „Archiv“|Allgemein verfügbar|Nicht unterstützt|[Azure Blob Storage: Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“](storage-blob-storage-tiers.md)|
 |Lebenszyklusverwaltung (Tiering)|Allgemein verfügbar|Noch nicht unterstützt|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
 |Richtlinien für die Lebenszyklusverwaltung (Blob löschen)|Allgemein verfügbar|Allgemein verfügbar|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
-|Protokollierung in Azure Monitor|Vorschau |Vorschau|[Überwachen von Azure Storage](../common/monitor-storage.md)|
+|Protokollierung in Azure Monitor|Vorschau |Vorschau|[Überwachen von Azure Storage](./monitor-blob-storage.md)|
 |Momentaufnahmen|Vorschau|Vorschau|[Blobmomentaufnahmen](snapshots-overview.md)|
 |Statische Websites|Vorschau|Vorschau|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
 |Unveränderlicher Speicher|Vorschau|Vorschau|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |Vorläufiges Löschen von Containern|Vorschau|Vorschau|[Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)|
-|Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](storage-blob-soft-delete.md)|
+|Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](./soft-delete-blob-overview.md)|
 |blobfuse|Allgemein verfügbar|Allgemein verfügbar|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
 |Failover des Kontos|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Blobcontainer-ACL|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Siehe entsprechende Anmerkung unter dieser Tabelle.|

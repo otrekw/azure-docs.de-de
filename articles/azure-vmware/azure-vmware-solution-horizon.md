@@ -3,12 +3,12 @@ title: Bereitstellen von Horizon in Azure VMware Solution
 description: Es wird beschrieben, wie Sie VMware Horizon in Azure VMware Solution bereitstellen.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: fb5e5b4c5f5da4c140f8d3575b963545f3a57db8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 6d5d8e12e358e2289128af9840660be18f5f217a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423102"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537440"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Bereitstellen von Horizon in Azure VMware Solution 
 
@@ -139,22 +139,6 @@ In den Tabellen sind die allgemeinen Workloads für Login VSI-Knowledge Worker-W
 #### <a name="power-worker-workloads"></a>Power Worker-Workloads
 
 :::image type="content" source="media/horizon/common-vdi-profiles-vsi-workloads-power.png" alt-text="Tabelle mit allgemeinen VDI-Profilen für VMware Horizon für Login VSI-Power Worker-Workloads" lightbox="media/horizon/common-vdi-profiles-vsi-workloads-power.png" border="false":::
-
-### <a name="azure-vmware-solution-host-instance"></a>Azure VMware Solution-Hostinstanz
-
-* PowerEdge R640 Server: EUS-EINSCHRÄNKUNG
-
-* 36 Kerne \@2,3 GHz
-
-* 576 GB RAM
-
-* HBA330 12 GBit/s SAS HBA Controller (KEIN RAID)
-
-* 1,92 TB SSD SATA Mix Use 6 GBit/s 512 2,5 Zoll Hot-Plug-AG-Laufwerk, 3 DWPD, 10.512 TBW
-
-* Intel 1,6 TB, NVMe, Mixed Use Express Flash, 2,5 SFF-Laufwerk, U.2, P4600 mit Carrier
-
-* 2 vSAN-Datenträgergruppen: 1,6 x 4 (1,92 TB)
 
 ### <a name="horizon-sizing-inputs"></a>Eingaben für Horizon-Dimensionierung
 

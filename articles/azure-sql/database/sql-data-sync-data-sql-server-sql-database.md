@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: fdeddfb0a09151ea010d4e95a2954200dd9371dc
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791425"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736475"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -44,7 +44,7 @@ Für die Datensynchronisierung wird eine Topologie der Art „Nabe und Speiche�
 Eine Synchronisierungsgruppe hat die folgenden Eigenschaften:
 
 - Im **Synchronisierungsschema** wird beschrieben, welche Daten synchronisiert werden.
-- Die **Synchronisierungsrichtung** kann bidirektional oder unidirektional sein. Für die Synchronisierungsrichtung kann also *Vom Hub zum Mitglied* , *Vom Mitglied zum Hub* oder beides gelten.
+- Die **Synchronisierungsrichtung** kann bidirektional oder unidirektional sein. Für die Synchronisierungsrichtung kann also *Vom Hub zum Mitglied*, *Vom Mitglied zum Hub* oder beides gelten.
 - Mit dem **Synchronisierungsintervall** wird die Häufigkeit der Synchronisierung angegeben.
 - Die **Richtlinie zur Konfliktlösung** ist eine Richtlinie auf Gruppenebene, die den Typ *Hub gewinnt* oder *Mitglied gewinnt* haben kann.
 
@@ -72,7 +72,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 
 - **Nachverfolgen von Datenänderungen:** Bei der Datensynchronisierung werden Änderungen mithilfe von Auslösern für Einfügen, Aktualisieren und Löschen nachverfolgt. Die Änderungen werden in der Benutzerdatenbank in einer Nebentabelle aufgezeichnet. Beachten Sie, dass BULK INSERT standardmäßig keine Trigger auslöst. Wenn FIRE_TRIGGERS nicht angegeben ist, werden keine Einfügungstrigger ausgeführt. Fügen Sie die Option FIRE_TRIGGERS hinzu, damit die Datensynchronisierung diese Einfügungen verfolgen kann. 
 - **Synchronisieren von Daten:** Für die Datensynchronisierung wird ein Hub-and-Spoke-Modell genutzt. Der Hub wird einzeln mit jedem Mitglied synchronisiert. Änderungen auf dem Hub werden für das Mitglied heruntergeladen, und anschließend werden Änderungen vom Mitglied auf den Hub hochgeladen.
-- **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt* .
+- **Beheben von Konflikten:** Die Datensynchronisierung bietet zwei Optionen für die Lösung von Konflikten, und zwar *Hub gewinnt* und *Mitglied gewinnt*.
   - Wenn Sie *Hub gewinnt* wählen, werden die Änderungen auf dem Mitglied immer durch die Änderungen des Hub überschrieben.
   - Bei Auswahl von *Mitglied gewinnt* werden die Änderungen auf dem Hub durch die Änderungen auf dem Mitglied überschrieben. Falls mehr als ein Mitglied vorhanden ist, hängt der endgültige Wert davon ab, welches Mitglied zuerst synchronisiert wird.
 
@@ -81,7 +81,7 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 | | Datensynchronisierung | Transaktionsreplikation |
 |---|---|---|
 | **Vorteile** | – Aktiv/Aktiv-Unterstützung<br/>– Bidirektional zwischen lokaler und Azure SQL-Datenbank | – Niedrigere Latenzzeiten<br/>– Transaktionskonsistenz<br/>– Wiederverwendung vorhandener Topologie nach der Migration <br/>– Unterstützung von Azure SQL Managed Instance |
-| **Nachteile** | – 5 Minuten Mindestfrequenz zwischen den Synchronisierungen<br/>– Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
+| **Nachteile** | – Keine Transaktionskonsistenz<br/>– Größere Auswirkung auf die Leistung | – Keine Veröffentlichung aus Azure SQL-Datenbank <br/>– Hohe Wartungskosten |
 
 ## <a name="get-started"></a>Erste Schritte 
 
@@ -166,7 +166,6 @@ Mit der Datensynchronisierung können keine schreibgeschützten oder vom System 
 | Tabellen in einer Synchronisierungsgruppe                                          | 500                    | Erstellen mehrerer Synchronisierungsgruppen |
 | Spalten in einer Tabelle einer Synchronisierungsgruppe                              | 1000                   |                             |
 | Größe von Datenzeilen in einer Tabelle                                        | 24 Mb                  |                             |
-| Minimales Synchronisierungsfrequenzintervall                                 | 5 Minuten              |                             |
 
 > [!NOTE]
 > Es können bis zu 30 Endpunkte in einer einzelnen Synchronisierungsgruppe vorhanden sein, wenn es nur eine Synchronisierungsgruppe gibt. Wenn mehr als eine Synchronisierungsgruppe vorhanden ist, darf die Gesamtanzahl der Endpunkte in allen Synchronisierungsgruppen 30 nicht überschreiten. Wenn eine Datenbank mehreren Synchronisierungsgruppen angehört, wird sie als mehrere Endpunkte und nicht als einer gezählt.

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
-ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d42eabe3afeb738b0cbb011881678839fe0ba2d7
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "84194316"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95539055"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business Continuity & Disaster Recovery (BCDR): Azure-Regionspaare
 
@@ -43,7 +43,7 @@ Nein. Während sich ein bestimmter Azure-Dienst auf ein Regionspaar stützen kan
 
 ## <a name="must-i-use-azure-regional-pairs"></a>Muss ich Azure-Regionspaare verwenden?
 
-Nein. Kunden können Azure-Dienste nutzen, um einen robusten Dienst zu entwerfen, ohne Azure-Regionspaare zu verwenden.  Wir empfehlen jedoch das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionspaaren, um von [Isolierung](./security/fundamentals/isolation-choices.md) zu profitieren und die und [Verfügbarkeit](./availability-zones/az-overview.md) zu verbessern. Bei Anwendungen, die mehrere aktive Regionen unterstützen, empfehlen wir nach Möglichkeit die Verwendung beider Regionen in einem Regionspaar. Dadurch wird eine optimale Verfügbarkeit für Anwendungen sowie eine minimierte Wiederherstellungszeit in einem Notfall sichergestellt. Entwerfen Sie Ihre Anwendung nach Möglichkeit für [maximale Resilienz](https://docs.microsoft.com/azure/architecture/framework/resiliency/overview) und einfache [Wiederherstellung im Notfall](https://docs.microsoft.com/azure/architecture/framework/resiliency/backup-and-recovery).
+Nein. Kunden können Azure-Dienste nutzen, um einen robusten Dienst zu entwerfen, ohne Azure-Regionspaare zu verwenden.  Wir empfehlen jedoch das Konfigurieren von Business Continuity Disaster Recovery (BCDR) zwischen Regionspaaren, um von [Isolierung](./security/fundamentals/isolation-choices.md) zu profitieren und die und [Verfügbarkeit](./availability-zones/az-overview.md) zu verbessern. Bei Anwendungen, die mehrere aktive Regionen unterstützen, empfehlen wir nach Möglichkeit die Verwendung beider Regionen in einem Regionspaar. Dadurch wird eine optimale Verfügbarkeit für Anwendungen sowie eine minimierte Wiederherstellungszeit in einem Notfall sichergestellt. Entwerfen Sie Ihre Anwendung nach Möglichkeit für [maximale Resilienz](/azure/architecture/framework/resiliency/overview) und einfache [Wiederherstellung im Notfall](/azure/architecture/framework/resiliency/backup-and-recovery).
 
 ## <a name="azure-regional-pairs"></a>Azure-Regionspaare
 
@@ -94,9 +94,9 @@ Wie in Abbildung 2 dargestellt.
 
 1. **Azure Compute (IaaS)** : Sie müssen im Voraus zusätzliche Computeressourcen bereitstellen, um sicherzustellen, dass Ressourcen während eines Notfalls in einer anderen Region zur Verfügung stehen. Weitere Informationen finden Sie unter [Technischer Leitfaden zur Resilienz in Azure](https://github.com/uglide/azure-content/blob/master/articles/resiliency/resiliency-technical-guidance.md). 
 
-2. **Azure Storage**: Wenn Sie verwaltete Datenträger verwenden, machen Sie sich mit [regionsübergreifenden Sicherungen](https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) mit Azure Backup und der [Replikation von VMs](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication) aus einer Region in eine andere mit Azure Site Recovery vertraut. Wenn Sie Speicherkonten verwenden, wird georedundanter Speicher (GRS) beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
+2. **Azure Storage**: Wenn Sie verwaltete Datenträger verwenden, machen Sie sich mit [regionsübergreifenden Sicherungen](/azure/architecture/resiliency/recovery-loss-azure-region#virtual-machines) mit Azure Backup und der [Replikation von VMs](./site-recovery/azure-to-azure-tutorial-enable-replication.md) aus einer Region in eine andere mit Azure Site Recovery vertraut. Wenn Sie Speicherkonten verwenden, wird georedundanter Speicher (GRS) beim Erstellen eines Azure Storage-Kontos standardmäßig konfiguriert. Mithilfe von GRS werden Ihre Daten dreimal in der primären Region und dreimal im Regionspaar automatisch repliziert. Weitere Informationen finden Sie unter [Redundanzoptionen für Azure Storage](storage/common/storage-redundancy.md).
 
-3. **Azure SQL Datenbank**: Mit der Georeplikation von Azure SQL-Datenbank können Sie die asynchrone Replikation von Transaktionen in jede Region der Welt konfigurieren. Es wird jedoch empfohlen, diese Ressourcen für die meisten Notfallwiederherstellungsszenarien in einem Regionspaar bereitzustellen. Weitere Informationen finden Sie unter [Georeplikation in Azure SQL-Datenbank](sql-database/sql-database-geo-replication-overview.md).
+3. **Azure SQL Datenbank**: Mit der Georeplikation von Azure SQL-Datenbank können Sie die asynchrone Replikation von Transaktionen in jede Region der Welt konfigurieren. Es wird jedoch empfohlen, diese Ressourcen für die meisten Notfallwiederherstellungsszenarien in einem Regionspaar bereitzustellen. Weitere Informationen finden Sie unter [Georeplikation in Azure SQL-Datenbank](./azure-sql/database/auto-failover-group-overview.md).
 
 4. **Azure Resource Manager**: Resource Manager bietet grundsätzlich regionsübergreifende logische Isolierung von Komponenten. Dies bedeutet, dass sich logische Fehler in einer Region weniger wahrscheinlich auf eine andere auswirken.
 

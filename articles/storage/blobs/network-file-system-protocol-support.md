@@ -9,12 +9,12 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 41ad20de6b7a800ff1f97a7ff371c8e0012fed27
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88166976"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95908811"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)
 
@@ -64,13 +64,13 @@ Ein Client kann über einen öffentlichen oder einen [privaten Endpunkt](../comm
 
   Sie müssen Ihr Speicherkonto so konfigurieren, dass es den Zugriff auf dieses Peer-VNet zulässt. Weitere Informationen finden Sie unter [Gewähren des Zugriffs aus einem virtuellen Netzwerk](../common/storage-network-security.md#grant-access-from-a-virtual-network).
 
-- Ein lokales Netzwerk, das mit Ihrem primären VNet über ein [VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) oder ein [ExpressRoute-Gateway](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) verbunden ist. 
+- Ein lokales Netzwerk, das mit Ihrem primären VNet über ein [VPN Gateway](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder ein [ExpressRoute-Gateway](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) verbunden ist. 
 
   Weitere Informationen finden Sie unter [Konfigurieren des Zugriffs aus lokalen Netzwerken](../common/storage-network-security.md#configuring-access-from-on-premises-networks).
 
 - Ein lokales Netzwerk, das mit einem Peer-Netzwerk verbunden ist.
 
-  Dies kann mithilfe eines [VPN Gateways](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways) oder eines [ExpressRoute-Gateways](https://docs.microsoft.com/azure/expressroute/expressroute-howto-add-gateway-portal-resource-manager) zusammen mit [Gatewaytransit](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit) erfolgen. 
+  Dies kann mithilfe eines [VPN Gateways](../../vpn-gateway/vpn-gateway-about-vpngateways.md) oder eines [ExpressRoute-Gateways](../../expressroute/expressroute-howto-add-gateway-portal-resource-manager.md) zusammen mit [Gatewaytransit](/azure/architecture/reference-architectures/hybrid-networking/vnet-peering#gateway-transit) erfolgen. 
 
 > [!IMPORTANT]
 > Wenn Sie eine Verbindung aus einem lokalen Netzwerk heraus herstellen, stellen Sie sicher, dass Ihr Client die ausgehende Kommunikation über die Ports 111 und 2048 zulässt. Das NFS 3.0-Protokoll verwendet diese Ports.
@@ -114,8 +114,3 @@ Für eine Transaktion fallen während der Vorschauphase keine Kosten an. Die Pre
 ## <a name="next-steps"></a>Nächste Schritte
 
 Informationen zu den ersten Schritten finden Sie unter [Einbinden von Blob-Speicher mithilfe des NFS 3.0-Protokolls (Network File System) (Vorschau)](network-file-system-protocol-support-how-to.md).
-
-
-
-
-
