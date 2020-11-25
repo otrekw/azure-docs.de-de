@@ -8,12 +8,12 @@ ms.topic: conceptual
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: a14ccb74e6f0ac2454255d609662706cb53ede31
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 433875e52e77a8992197b47fe0424cd0b7e9f50c
+ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129591"
+ms.lasthandoff: 11/14/2020
+ms.locfileid: "94628287"
 ---
 # <a name="how-to-plan-a-virtual-machine-offer"></a>Planen eines VM-Angebots
 
@@ -47,7 +47,7 @@ Für VM-Angebote gelten die folgenden technischen Anforderungen:
 
 Eine VM verfügt über zwei Komponenten:
 
-- **Betriebs-VHD** : Enthält das Betriebssystem und die Lösung, die mit Ihrem Angebot bereitgestellt wird. Der Prozess zur Vorbereitung der VHD unterscheidet sich abhängig davon, ob es sich um eine Linux-VM, eine Windows-VM oder eine benutzerdefinierte VM handelt.
+- **Betriebs-VHD**: Enthält das Betriebssystem und die Lösung, die mit Ihrem Angebot bereitgestellt wird. Der Prozess zur Vorbereitung der VHD unterscheidet sich abhängig davon, ob es sich um eine Linux-VM, eine Windows-VM oder eine benutzerdefinierte VM handelt.
 - **Datenträger-VHDs** (optional): Hierbei handelt es sich um dedizierten beständigen Speicher für eine VM. Verwenden Sie nicht die Betriebssystem-VHD (z. B. das Laufwerk C), um beständige Informationen zu speichern. 
     - Sie können bis zu 16 Datenträger hierfür verwenden.
     - Verwenden Sie eine VHD pro Datenträger, auch wenn der Datenträger leer ist.
@@ -100,7 +100,7 @@ Das folgende Beispiel zeigt ein VM-Angebot im Azure Marketplace mit nutzungsbasi
 
 Sie können die Auffindbarkeit und Bereitstellung Ihrer VM auf eine bestimmte Gruppe von Kunden beschränken, indem Sie das Image und die Preise als privaten Plan veröffentlichen. Mit privaten Plänen können Sie exklusive Angebote für Ihre wertvollsten Kunden erstellen und benutzerdefinierte Software und Bedingungen anbieten. Benutzerdefinierte Bestimmungen ermöglichen Ihnen die Schaffung vielfältiger Szenarios, wie etwa vom Vertrieb erzielte Geschäftsabschlüsse mit Sonderpreisen und -bestimmungen sowie ein frühzeitiger Zugang zu Software, die in limitierter Anzahl veröffentlicht wird. Private Pläne ermöglichen es Ihnen, einer begrenzten Gruppe von Kunden bestimmte Preise oder Produkte anzubieten.
 
-Weitere Informationen finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](plans-pricing.md) und [Private Angebote im Azure Marketplace](https://azure.microsoft.com/blog/private-offers-on-azure-marketplace).
+Weitere Informationen finden Sie unter [Pläne und Preise für Angebote im kommerziellen Marketplace](plans-pricing.md) und [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md).
 
 ## <a name="test-drives"></a>Testversionen
 

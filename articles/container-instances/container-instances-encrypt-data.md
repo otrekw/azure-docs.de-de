@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 01/17/2020
 author: macolso
 ms.author: macolso
-ms.openlocfilehash: d2cad98267ef1654c4f2d9ad2db75f769dbc0780
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 1b73ce5c994231a1c7b2f26ad702f2ad5880ba44
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091354"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94686275"
 ---
 # <a name="encrypt-deployment-data"></a>Verschlüsseln von Bereitstellungsdaten
 
@@ -59,7 +59,7 @@ Falls Sie den Dienstprinzipal nicht erfolgreich erstellen können:
 
 ### <a name="create-a-key-vault-resource"></a>Erstellen einer Key Vault-Ressource
 
-Erstellen Sie eine Azure Key Vault-Ressource. Hierzu können Sie das [Azure-Portal](../key-vault/secrets/quick-create-portal.md#create-a-vault), die [Befehlszeilenschnittstelle](../key-vault/secrets/quick-create-cli.md) oder [PowerShell](../key-vault/secrets/quick-create-powershell.md) verwenden. 
+Sie können eine Azure Key Vault-Instanz im [Azure-Portal](../key-vault/general/quick-create-portal.md), mit der [Azure-Befehlszeilenschnittstelle](../key-vault/general/quick-create-cli.md) oder mit [Azure PowerShell](../key-vault/general/quick-create-powershell.md) erstellen.
 
 Berücksichtigen Sie bei den Eigenschaften Ihres Schlüsseltresors die folgenden Richtlinien: 
 * Name: Es ist ein eindeutiger Name erforderlich. 

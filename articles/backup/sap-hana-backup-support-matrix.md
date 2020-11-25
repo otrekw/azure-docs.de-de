@@ -4,12 +4,12 @@ description: Dieser Artikel enthält Informationen zu den unterstützten Szenari
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.custom: references_regions
-ms.openlocfilehash: 641bba6b947731e0f55bc79828101f84d5b780fd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 181d006d0d1f0e5c2f099507be493ced2ce9280b
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92515779"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94659742"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Unterstützungsmatrix für die Sicherung von SAP HANA-Datenbanken auf virtuellen Azure-Computern
 
@@ -30,7 +30,7 @@ Azure Backup unterstützt die Sicherung von SAP HANA-Datenbanken in Azure. In d
 | **HANA-Instanzen**         | Eine einzelne SAP HANA-Instanz auf einem einzelnen virtuellen Azure-Computer: nur Hochskalieren | Mehrere SAP HANA-Instanzen auf einem einzelnen virtuellen Computer                  |
 | **HANA-Datenbanktypen**    | Container mit Einzeldatenbank (Single Database Container, SDC) unter 1.x, Container mit mehreren Datenbanken (Multi-Database Container, MDC) unter 2.x | MDC unter HANA 1.x                                              |
 | **HANA-Datenbankgröße**     | HANA-Datenbanken mit einer Größe von <= 2 TB (dies ist nicht die Arbeitsspeichergröße des HANA-Systems)               |                                                              |
-| **Sicherungstypen**           | Vollständige Sicherungen, differenzielle Sicherungen und Protokollsicherungen                          | Inkrementelle Sicherungen, Momentaufnahmen                                       |
+| **Sicherungstypen**           | Vollständig, Differenziell, Inkrementell (Vorschau) und Protokollsicherungen                          |  Momentaufnahmen                                       |
 | **Wiederherstellungstypen**          | Informationen zu den unterstützten Wiederherstellungstypen finden Sie im SAP HANA-Hinweis [1642148](https://launchpad.support.sap.com/#/notes/1642148). |                                                              |
 | **Grenzwerte für Sicherungen**          | Vollständige Sicherungen bis zu einer Größe von 2 TB pro SAP HANA-Instanz (weicher Grenzwert)         |                                                              |
 | **Besondere Konfigurationen** |                                                              | SAP HANA + Dynamic Tiering <br>  Klonen über LaMa        |

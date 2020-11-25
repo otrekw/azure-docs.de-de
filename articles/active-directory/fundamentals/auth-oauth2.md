@@ -1,6 +1,6 @@
 ---
 title: OAUTH 2.0-Authentifizierung mit Azure Active Directory
-description: Architekturleitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Erzielen der OAUTH 2.0-Authentifizierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ea22c4e5b363eaa3ecc2a736dfef714666310062
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: daf40a2ced3f753619e9c4723dbe78cd7e51ff21
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113930"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94577905"
 ---
 # <a name="oauth-20-authentication-with-azure-active-directory"></a>OAuth 2.0-Authentifizierung mit Azure Active Directory
 
@@ -38,9 +38,9 @@ Für Rich Client-Szenarien und Szenarien mit modernen Apps sowie den RESTful-We
 
 * **Webbrowser:** Der Webbrowser, mit dem der Benutzer interagiert, ist der OAuth-Client. 
 
-* **Web-App** : Die Web-App oder der Ressourcenserver ist der Ort, an dem die Ressourcen oder die Daten abgelegt sind. Er vertraut auf die sichere Authentifizierung und Autorisierung des OAuth-Clients durch den Autorisierungsserver. 
+* **Web-App**: Die Web-App oder der Ressourcenserver ist der Ort, an dem die Ressourcen oder die Daten abgelegt sind. Er vertraut auf die sichere Authentifizierung und Autorisierung des OAuth-Clients durch den Autorisierungsserver. 
 
-* **Azure AD** : Azure AD ist der Autorisierungsserver, der auch als Identitätsanbieter (Identity Provider, IdP) bezeichnet wird. Er verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen. Er ist für die Ausgabe der Token zuständig, mit denen der Zugriff auf Ressourcen gewährt und widerrufen wird.
+* **Azure AD**: Azure AD ist der Autorisierungsserver, der auch als Identitätsanbieter (Identity Provider, IdP) bezeichnet wird. Er verarbeitet auf sichere Weise alles im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen. Er ist für die Ausgabe der Token zuständig, mit denen der Zugriff auf Ressourcen gewährt und widerrufen wird.
 
 ## <a name="implement-oauth-20-with-azure-ad"></a>Implementieren von OAuth 2.0 mit Azure AD
 

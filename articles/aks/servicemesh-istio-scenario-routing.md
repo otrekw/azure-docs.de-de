@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
-ms.openlocfilehash: 69541ec652188bc3826b7829fbc5c182193d6ba9
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: d66f3099ba225fbdd2bfc3d54db56ffd8ed2c43f
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670932"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94684031"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Verwenden von intelligentem Routing und Canary-Releases mit Istio in Azure Kubernetes Service (AKS)
 
@@ -33,13 +33,13 @@ In diesem Artikel werden folgende Vorgehensweisen behandelt:
 > [!NOTE]
 > Dieses Szenario wurde mit der Istio-Version `1.3.2` getestet.
 
-Bei den in diesem Artikel beschriebenen Schritten wird vorausgesetzt, dass Sie einen AKS-Cluster (Kubernetes `1.13` und höher mit aktivierter rollenbasierter Zugriffssteuerung [RBAC]) erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Ferner muss Istio in Ihrem Cluster installiert sein.
+Bei den in diesem Artikel beschriebenen Schritten wird vorausgesetzt, dass Sie einen AKS-Cluster (ab Kubernetes `1.13`, Kubernetes RBAC aktiviert) erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Ferner muss Istio in Ihrem Cluster installiert sein.
 
 Wenn Sie Hilfe bei einem dieser Elemente benötigen, lesen Sie den [AKS-Schnellstart][aks-quickstart] und die Anleitung [Installieren und Verwenden von Istio in Azure Kubernetes Service (AKS)][istio-install].
 
 ## <a name="about-this-application-scenario"></a>Informationen zu diesem Anwendungsszenario
 
-In der als Beispiel dienenden AKS-Abstimmungs-App können Benutzer zwischen zwei Abstimmungsoptionen ( **Katzen** oder **Hunde** ) wählen. Es gibt eine Speicherkomponente, die die Anzahl der abgegebenen Stimmen für die einzelne Optionen persistent speichert. Darüber hinaus gibt es eine Analysekomponente, die Details zu den für jede Option abgegebenen Stimmen bereitstellt.
+In der als Beispiel dienenden AKS-Abstimmungs-App können Benutzer zwischen zwei Abstimmungsoptionen (**Katzen** oder **Hunde**) wählen. Es gibt eine Speicherkomponente, die die Anzahl der abgegebenen Stimmen für die einzelne Optionen persistent speichert. Darüber hinaus gibt es eine Analysekomponente, die Details zu den für jede Option abgegebenen Stimmen bereitstellt.
 
 In diesem Anwendungsszenario stellen Sie zunächst Version `1.0` der Abstimmungs-App und Version `1.0` der Analysekomponente bereit. Die Analysekomponente bietet einfache Zähler für die Anzahl der Stimmen. Die Abstimmungs-App und die Analysekomponente interagieren mit Version `1.0` der durch Redis unterstützten Speicherkomponente.
 

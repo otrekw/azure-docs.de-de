@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/22/2020
 ms.author: memildin
-ms.openlocfilehash: 4f83500e539ff5254db290d156dfcf50ea60de14
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 236a604c2c1cecfb18a2d82c3796a88cc4341a34
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372556"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636383"
 ---
 # <a name="azure-defender-for-sql-servers-on-machines"></a>Azure Defender für SQL-Server auf Computern 
 
@@ -48,14 +48,14 @@ Diese beiden Schritte werden nachfolgend beschrieben.
 
 ### <a name="step-1-provision-the-log-analytics-agent-on-your-sql-servers-host"></a>Schritt 1: Bereitstellen des Log Analytics-Agents auf dem Host Ihrer SQL Server-Instanz:
 
-- **SQL Server auf einer Azure-VM:** Wenn Ihr SQL-Computer auf einer Azure-VM gehostet wird, können Sie [den Log Analytics-Agent automatisch bereitstellen](security-center-enable-data-collection.md#workspace-configuration). Alternativ können Sie das manuelle Verfahren zum [Hinzufügen von virtuellen Azure Stack-Computern](quickstart-onboard-machines.md#onboard-your-azure-stack-vms) befolgen.
-- **SQL Server unter Azure Arc** : Wenn Ihre SQL Server-Instanz auf [Azure Arc](../azure-arc/index.yml)-fähigen Servern gehostet wird, können Sie den Log Analytics-Agent unter Verwendung der Security Center-Empfehlung „Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein (Vorschau)“ bereitstellen. Alternativ können Sie die Installationsmethoden befolgen, die in der [Azure Arc-Dokumentation](../azure-arc/servers/manage-vm-extensions.md) beschrieben sind.
+- **SQL Server auf einer Azure-VM:** Wenn Ihr SQL-Computer auf einer Azure-VM gehostet wird, können Sie [die automatische Bereitstellung des Log Analytics-Agents aktivieren<a name="auto-provision-mma"></a>](security-center-enable-data-collection.md#auto-provision-mma). Alternativ können Sie das manuelle Verfahren zum [Hinzufügen von virtuellen Azure Stack-Computern](quickstart-onboard-machines.md#onboard-your-azure-stack-vms) befolgen.
+- **SQL Server unter Azure Arc**: Wenn Ihre SQL Server-Instanz auf [Azure Arc](../azure-arc/index.yml)-fähigen Servern gehostet wird, können Sie den Log Analytics-Agent unter Verwendung der Security Center-Empfehlung „Log Analytics-Agent muss auf Ihren Windows-basierten Azure Arc-Computern installiert sein (Vorschau)“ bereitstellen. Alternativ können Sie die Installationsmethoden befolgen, die in der [Azure Arc-Dokumentation](../azure-arc/servers/manage-vm-extensions.md) beschrieben sind.
 
-- **Lokale SQL Server-Instanz** : Wenn Ihre SQL Server-Instanz auf einem lokalen Windows-Computer ohne Azure Arc gehostet wird, haben Sie zwei Möglichkeiten, ihn mit Azure zu verbinden:
+- **Lokale SQL Server-Instanz**: Wenn Ihre SQL Server-Instanz auf einem lokalen Windows-Computer ohne Azure Arc gehostet wird, haben Sie zwei Möglichkeiten, ihn mit Azure zu verbinden:
     
-    - **Bereitstellen von Azure Arc** : Sie können jeden Windows-Computer mit Security Center verbinden. Azure Arc bietet jedoch eine tiefere Integration über Ihre *gesamte* Azure-Umgebung. Wenn Sie Azure Arc einrichten, wird die Seite **SQL Server – Azure Arc** im Portal angezeigt, und Ihre Sicherheitswarnungen werden auf dieser Seite auf einer dedizierten Registerkarte **Sicherheit** angezeigt. Die erste und empfohlene Option ist also, [Azure Arc auf dem Host einzurichten](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) und den Anweisungen für **SQL-Server unter Azure Arc** (siehe oben) zu folgen.
+    - **Bereitstellen von Azure Arc**: Sie können jeden Windows-Computer mit Security Center verbinden. Azure Arc bietet jedoch eine tiefere Integration über Ihre *gesamte* Azure-Umgebung. Wenn Sie Azure Arc einrichten, wird die Seite **SQL Server – Azure Arc** im Portal angezeigt, und Ihre Sicherheitswarnungen werden auf dieser Seite auf einer dedizierten Registerkarte **Sicherheit** angezeigt. Die erste und empfohlene Option ist also, [Azure Arc auf dem Host einzurichten](../azure-arc/servers/onboard-portal.md#install-and-validate-the-agent-on-windows) und den Anweisungen für **SQL-Server unter Azure Arc** (siehe oben) zu folgen.
         
-    - **Verbinden des Windows-Computers ohne Azure Arc** : Wenn Sie sich dafür entscheiden, eine auf einem Windows-Computer ausgeführte SQL Server-Instanz ohne Azure Arc zu verbinden, folgen Sie den Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/platform/agent-windows.md).
+    - **Verbinden des Windows-Computers ohne Azure Arc**: Wenn Sie sich dafür entscheiden, eine auf einem Windows-Computer ausgeführte SQL Server-Instanz ohne Azure Arc zu verbinden, folgen Sie den Anweisungen unter [Verbinden von Windows-Computern mit Azure Monitor](../azure-monitor/platform/agent-windows.md).
 
 
 ### <a name="step-2-enable-the-optional-plan-in-security-centers-pricing-and-settings-page"></a>Schritt 2: Aktivieren des optionalen Plans auf der Security Center-Seite „Preise und Einstellungen“:
@@ -91,7 +91,7 @@ Das Sicherheitsrisikobewertungs-Dashboard bietet einen Überblick über Ihre Bew
 
 Sie können die Ergebnisse der Sicherheitsrisikobewertung direkt aus Security Center anzeigen.
 
-1. Öffnen Sie in der Security Center-Seitenleiste die Seite **Empfehlungen** , und wählen Sie die Empfehlung **Sicherheitsrisiken für SQL Server-Instanzen auf Ihren Computern müssen entschärft werden (Vorschau)** aus. Weitere Informationen finden Sie unter [Security Center-Empfehlungen](security-center-recommendations.md). 
+1. Öffnen Sie in der Security Center-Seitenleiste die Seite **Empfehlungen**, und wählen Sie die Empfehlung **Sicherheitsrisiken für SQL Server-Instanzen auf Ihren Computern müssen entschärft werden (Vorschau)** aus. Weitere Informationen finden Sie unter [Security Center-Empfehlungen](security-center-recommendations.md). 
 
     :::image type="content" source="./media/security-center-advanced-iaas-data/data-and-storage-sqldb-vulns-on-vm.png" alt-text="Ergebnisse der Sicherheitsrisikobewertung auf Ihren SQL-Servern auf Computern müssen beseitigt werden. (Vorschau)":::
 

@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, rarayudu, logicappspm
 ms.topic: conceptual
 ms.date: 03/11/2020
-ms.openlocfilehash: d9f25fc419a92d125dffe5c14b9b4c19cd795c6e
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 30b09d43cbe510318ac4f48e0655d5483491c215
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92318448"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94682773"
 ---
 # <a name="set-up-customer-managed-keys-to-encrypt-data-at-rest-for-integration-service-environments-ises-in-azure-logic-apps"></a>Einrichten von kundenseitig verwalteten Schlüsseln zum Verschlüsseln von ruhenden Daten für Integrationsdienstumgebungen (Integration Service Environment, ISE) in Azure Logic Apps
 
@@ -39,7 +39,7 @@ In diesem Thema erfahren Sie, wie Sie Ihren eigenen Verschlüsselungsschlüssel 
 
 * Ein Azure-Schlüsseltresor mit aktivierten Eigenschaften **Vorläufiges Löschen** und **Do Not Purge** (Nicht bereinigen)
 
-  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Wenn Sie noch nicht mit Azure Key Vault vertraut sind, informieren Sie sich, wie Sie mithilfe des Azure-Portals oder des Azure PowerShell-Befehls [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault) [einen Schlüsseltresor erstellen](../key-vault/secrets/quick-create-portal.md#create-a-vault).
+  Weitere Informationen zum Aktivieren dieser Eigenschaften finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) und [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault](../storage/common/customer-managed-keys-configure-key-vault.md). Wenn Sie noch keine Erfahrung mit [Azure Key Vault](../key-vault/general/overview.md) haben, informieren Sie sich, wie Sie einen Schlüsseltresor über das [Azure-Portal](../key-vault/general/quick-create-portal.md), mithilfe der [Azure-Befehlszeilenschnittstelle](../key-vault/general/quick-create-cli.md) oder per [Azure PowerShell](../key-vault/general/quick-create-powershell.md) erstellen.
 
 * Ein Schlüssel in Ihrem Schlüsseltresor, der mit diesen Eigenschaftswerten erstellt wurde:
 

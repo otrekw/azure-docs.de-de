@@ -15,23 +15,23 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0e74b540610d3b6520f4c8e25ca2df7bf628706f
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410333"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698754"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
 
-## <a name="role-based-access-control"></a>Rollenbasierte Access Control
+## <a name="azure-role-based-access-control"></a>Rollenbasierte Zugriffssteuerung in Azure
 
-Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) ermöglicht eine detaillierte Verwaltung des Zugriffs für Azure-Ressourcen. Mit RBAC können Sie den Benutzern beispielsweise nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Außerdem können Sie mit RBAC sicherstellen, dass Personen, die das Unternehmen verlassen, keinen Zugriff mehr auf die Ressourcen in der Cloud haben.
+Die rollenbasierte Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) ermöglicht eine detaillierte Verwaltung des Zugriffs für Azure-Ressourcen. Mit Azure RBAC können Sie den Benutzern beispielsweise nur die Zugriffsrechte gewähren, die diese zum Ausführen ihrer Aufgaben benötigen. Außerdem können Sie mit Azure RBAC sicherstellen, dass Personen, die das Unternehmen verlassen, keinen Zugriff mehr auf die Ressourcen in der Cloud haben.
 
 Weitere Informationen:
 
-* [Active Directory Team Blog zum Thema RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
+* [Blog des Active Directory-Teams zu Azure RBAC](https://cloudblogs.microsoft.com/enterprisemobility/?product=azure-active-directory)
 * [Rollenbasierte Zugriffssteuerung von Azure (Azure-RBAC)](../../role-based-access-control/role-assignments-portal.md)
 
 ## <a name="antimalware"></a>Antimalware

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 7c68bb9c7a94cf32bd1d9342660a9f0029f5d10d
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 9b9a83cf71dfa7658c34c3c98f8d12a056adad0c
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410401"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698783"
 ---
 # <a name="security-best-practices-for-iaas-workloads-in-azure"></a>Bewährte Sicherheitsmethoden für IaaS-Workloads in Azure
 Dieser Artikel beschreibt bewährte Best Practices für die Sicherheit von virtuellen Computern und Betriebssystemen.
@@ -37,16 +37,16 @@ Der erste Schritt zum Schutz Ihrer virtuellen Computer ist, sicherzustellen, das
 >
 >
 
-**Bewährte Methode** : Steuern des VM-Zugriffs.   
-**Detail** : Verwenden Sie [Azure-Richtlinien](../../governance/policy/overview.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../../azure-resource-manager/management/overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
+**Bewährte Methode**: Steuern des VM-Zugriffs.   
+**Detail**: Verwenden Sie [Azure-Richtlinien](../../governance/policy/overview.md), um Konventionen für Ressourcen in Ihrer Organisation einzurichten und benutzerdefinierte Richtlinien zu erstellen. Wenden Sie diese Richtlinien auf Ressourcen wie z.B. [Ressourcengruppen](../../azure-resource-manager/management/overview.md) an. Virtuelle Computer, die einer Ressourcengruppe angehören, erben deren Richtlinien.
 
 Wenn Ihre Organisation über viele Abonnements verfügt, benötigen Sie möglicherweise eine Möglichkeit zur effizienten Verwaltung von Zugriff, Richtlinien und Konformität für diese Abonnements. [Azure-Verwaltungsgruppen](../../governance/management-groups/overview.md) stellen einen abonnementübergreifenden Bereich bereit. Sie organisieren Abonnements in Verwaltungsgruppen (Containern) und wenden Ihre Governancebedingungen auf diese Gruppen an. Alle Abonnements in einer Verwaltungsgruppe erben automatisch die auf die Gruppe angewendeten Bedingungen. Verwaltungsgruppen ermöglichen Ihnen – unabhängig von den Arten Ihrer Abonnements – die unternehmenstaugliche Verwaltung in großem Umfang.
 
-**Bewährte Methode** : Verringern Sie die Variabilität in Ihrer Installation und Bereitstellung von virtuellen Computern.   
-**Detail** : Verwenden Sie [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)-Vorlagen, um Ihre Bereitstellungsoptionen zu verdeutlichen und das Verstehen und Inventarisieren der virtuellen Computer in Ihrer Umgebung zu vereinfachen.
+**Bewährte Methode**: Verringern Sie die Variabilität in Ihrer Installation und Bereitstellung von virtuellen Computern.   
+**Detail**: Verwenden Sie [Azure Resource Manager](../../azure-resource-manager/templates/template-syntax.md)-Vorlagen, um Ihre Bereitstellungsoptionen zu verdeutlichen und das Verstehen und Inventarisieren der virtuellen Computer in Ihrer Umgebung zu vereinfachen.
 
-**Bewährte Methode** : Schützen des privilegierten Zugriffs.   
-**Detail** : Verwenden Sie den [Ansatz der geringsten Rechte](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) und integrierte Azure-Rollen, um Benutzern den Zugriff auf virtuelle Computer und deren Einrichtung zu ermöglichen:
+**Bewährte Methode**: Schützen des privilegierten Zugriffs.   
+**Detail**: Verwenden Sie den [Ansatz der geringsten Rechte](/windows-server/identity/ad-ds/plan/security-best-practices/implementing-least-privilege-administrative-models) und integrierte Azure-Rollen, um Benutzern den Zugriff auf virtuelle Computer und deren Einrichtung zu ermöglichen:
 
 - [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor): Kann virtuelle Computer verwalten, jedoch nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
 - [Mitwirkender von klassischen virtuellen Computern](../../role-based-access-control/built-in-roles.md#classic-virtual-machine-contributor): Kann virtuelle Computer verwalten, die mit dem klassischen Bereitstellungsmodell erstellt wurden, aber nicht das virtuelle Netzwerk oder Speicherkonto, mit dem sie verbunden sind.
@@ -74,17 +74,17 @@ Microsoft-Antischadsoftware umfasst Features wie Echtzeitschutz, geplante Überp
 
 Sie können Microsoft Antimalware und Partnerlösungen zur Vereinfachung der Bereitstellung und für integrierte Erkennungen (Warnungen und Vorfälle) in [Azure Security Center](../../security-center/index.yml) integrieren.
 
-**Bewährte Methode** : Installieren Sie eine Antischadsoftware-Lösung zum Schutz vor Malware.   
-**Detail** : [Installieren Sie eine Microsoft-Partnerlösung oder Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-).
+**Bewährte Methode**: Installieren Sie eine Antischadsoftware-Lösung zum Schutz vor Malware.   
+**Detail**: [Installieren Sie eine Microsoft-Partnerlösung oder Microsoft Antimalware](../../security-center/security-center-services.md#supported-endpoint-protection-solutions-).
 
-**Bewährte Methode** : Integrieren Sie Ihre Antischadsoftware-Lösung zum Überwachen des Status Ihres Schutzes in Security Center.   
-**Detail** : [Verwalten Sie Endpunktschutz-Probleme mit Security Center](../../security-center/security-center-partner-integration.md)
+**Bewährte Methode**: Integrieren Sie Ihre Antischadsoftware-Lösung zum Überwachen des Status Ihres Schutzes in Security Center.   
+**Detail**: [Verwalten Sie Endpunktschutz-Probleme mit Security Center](../../security-center/security-center-partner-integration.md)
 
 ## <a name="manage-your-vm-updates"></a>Verwalten Ihrer Updates für virtuelle Computer
 Azure-VMs sollen wie alle lokalen VMs vom Benutzer verwaltet werden. Azure führt bei ihnen keine Pushübertragungen von Windows-Updates durch. Sie müssen Ihre Updates für virtuelle Computer verwalten.
 
-**Bewährte Methode** : Halten Sie Ihre virtuellen Computer auf dem neuesten Stand.   
-**Detail** : Sie können die Lösung für die [Updateverwaltung](../../automation/update-management/overview.md) in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
+**Bewährte Methode**: Halten Sie Ihre virtuellen Computer auf dem neuesten Stand.   
+**Detail**: Sie können die Lösung für die [Updateverwaltung](../../automation/update-management/overview.md) in Azure Automation für Betriebssystemupdates für Ihre Windows- und Linux-Computer verwalten, die in Azure, in lokalen Umgebungen oder bei anderen Cloudanbietern bereitgestellt werden. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren.
 
 Verwenden Sie für Computer, die mit der Updateverwaltung verwaltet werden, die folgenden Konfigurationen, um Bewertungen und Updatebereitstellungen durchzuführen:
 
@@ -95,20 +95,20 @@ Verwenden Sie für Computer, die mit der Updateverwaltung verwaltet werden, die 
 
 Wenn Sie Windows Update verwenden, lassen Sie die Einstellung für automatische Windows-Updates aktiviert.
 
-**Bewährte Methode** : Stellen Sie bei der Bereitstellung sicher, dass Images, die Sie erstellt haben, die neueste Zusammenstellung der Windows-Updates enthalten.   
-**Detail** : Suchen Sie bei jeder Bereitstellung zuerst alle Windows-Updates, und installieren Sie diese. Dies ist besonders wichtig, wenn Sie Images bereitstellen, die von Ihnen selbst oder aus Ihrer eigenen Bibliothek stammen. Obwohl Images aus dem Azure Marketplace standardmäßig automatisch aktualisiert werden, kann nach einem öffentlichen Release eine Verzögerung (bis zu ein paar Wochen) eintreten.
+**Bewährte Methode**: Stellen Sie bei der Bereitstellung sicher, dass Images, die Sie erstellt haben, die neueste Zusammenstellung der Windows-Updates enthalten.   
+**Detail**: Suchen Sie bei jeder Bereitstellung zuerst alle Windows-Updates, und installieren Sie diese. Dies ist besonders wichtig, wenn Sie Images bereitstellen, die von Ihnen selbst oder aus Ihrer eigenen Bibliothek stammen. Obwohl Images aus dem Azure Marketplace standardmäßig automatisch aktualisiert werden, kann nach einem öffentlichen Release eine Verzögerung (bis zu ein paar Wochen) eintreten.
 
-**Bewährte Methode** : Stellen Sie in regelmäßigen Abständen Ihre virtuellen Computer erneut bereit, um eine neue Version des Betriebssystems zu erzwingen.   
-**Detail** : Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
+**Bewährte Methode**: Stellen Sie in regelmäßigen Abständen Ihre virtuellen Computer erneut bereit, um eine neue Version des Betriebssystems zu erzwingen.   
+**Detail**: Definieren Sie Ihren virtuellen Computer mit einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/template-syntax.md), sodass Sie sie problemlos erneut bereitstellen können. Mithilfe einer Vorlage erhalten Sie bei Bedarf eine gepatchte und sichere VM.
 
-**Bewährte Methode** : Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
-**Detail** : Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../../security-center/asset-inventory.md).
+**Bewährte Methode**: Wenden Sie Sicherheitsupdates zügig auf virtuelle Computer an.   
+**Detail**: Aktivieren Sie Azure Security Center (Free-Tarif oder Standard-Tarif), um [fehlende Sicherheitsupdates zu erkennen und anzuwenden](../../security-center/asset-inventory.md).
 
-**Bewährte Methode** : Installieren Sie die neuesten Sicherheitsupdates.   
-**Detail** : Zu den Workloads, die von Kunden als erste in Azure verschoben werden, zählen unter anderem Labs und Systeme mit externer Verbindung. Wenn Ihre in Azure gehosteten virtuellen Computer Anwendungen oder Dienste hosten, die über das Internet zugänglich sein sollen, müssen Sie beim Patchen aufmerksam sein. Beschränken Sie sich beim Patchen nicht nur auf das Betriebssystem. Ungepatchte Sicherheitsrisiken in Partneranwendungen können ebenfalls zu Problemen führen, die mit einer guten Patchverwaltung vermeidbar sind.
+**Bewährte Methode**: Installieren Sie die neuesten Sicherheitsupdates.   
+**Detail**: Zu den Workloads, die von Kunden als erste in Azure verschoben werden, zählen unter anderem Labs und Systeme mit externer Verbindung. Wenn Ihre in Azure gehosteten virtuellen Computer Anwendungen oder Dienste hosten, die über das Internet zugänglich sein sollen, müssen Sie beim Patchen aufmerksam sein. Beschränken Sie sich beim Patchen nicht nur auf das Betriebssystem. Ungepatchte Sicherheitsrisiken in Partneranwendungen können ebenfalls zu Problemen führen, die mit einer guten Patchverwaltung vermeidbar sind.
 
-**Bewährte Methode** : Stellen Sie eine Sicherungslösung bereit und testen Sie diese.   
-**Detail** : Eine Sicherung muss in gleicher Weise behandelt werden wie alle anderen Vorgänge. Dies gilt für alle Systeme in Ihrer Produktionsumgebung, die sich bis in die Cloud erstreckt.
+**Bewährte Methode**: Stellen Sie eine Sicherungslösung bereit und testen Sie diese.   
+**Detail**: Eine Sicherung muss in gleicher Weise behandelt werden wie alle anderen Vorgänge. Dies gilt für alle Systeme in Ihrer Produktionsumgebung, die sich bis in die Cloud erstreckt.
 
 Für Test- und Entwicklungssysteme müssen Sicherungsstrategien mit Wiederherstellungsfunktionen verwendet werden, die sich an den Erfahrungen orientieren, die Benutzer bereits mit lokalen Umgebungen gemacht haben. In Azure verschobene Workloads sollten sich möglichst in die vorhandenen Sicherheitslösungen integrieren lassen. Alternativ können Sie sich bei der Erfüllung ihrer Sicherungsanforderungen von [Azure Backup](../../backup/backup-azure-vms-first-look-arm.md) unterstützen lassen.
 
@@ -151,17 +151,17 @@ Mit [Azure Disk Encryption](./azure-disk-encryption-vms-vmss.md) können Sie die
 
 Folgende Methoden haben sich bei der Verwendung von Azure Disk Encryption bewährt:
 
-**Bewährte Methode** : Aktivieren Sie Verschlüsselung auf virtuellen Computern.   
-**Detail** : Azure Disk Encryption generiert die Verschlüsselungsschlüssel und schreibt sie in Ihren Schlüsseltresor. Das Verwalten von Verschlüsselungsschlüsseln im Schlüsseltresor erfordert eine Azure AD-Authentifizierung. Erstellen Sie dafür eine Azure AD-Anwendung. Zu Authentifizierungszwecken können Sie entweder die auf einem geheimen Clientschlüssel basierende Authentifizierung oder die [auf einem Clientzertifikat basierende Azure AD-Authentifizierung](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verwenden.
+**Bewährte Methode**: Aktivieren Sie Verschlüsselung auf virtuellen Computern.   
+**Detail**: Azure Disk Encryption generiert die Verschlüsselungsschlüssel und schreibt sie in Ihren Schlüsseltresor. Das Verwalten von Verschlüsselungsschlüsseln im Schlüsseltresor erfordert eine Azure AD-Authentifizierung. Erstellen Sie dafür eine Azure AD-Anwendung. Zu Authentifizierungszwecken können Sie entweder die auf einem geheimen Clientschlüssel basierende Authentifizierung oder die [auf einem Clientzertifikat basierende Azure AD-Authentifizierung](../../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) verwenden.
 
-**Bewährte Methode** : Sorgen Sie mit einem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) für zusätzlichen Schutz für Verschlüsselungsschlüssel. Fügen Sie Ihrem Schlüsseltresor einen KEK hinzu.   
-**Detail** : Verwenden Sie das Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../../key-vault/keys/hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
+**Bewährte Methode**: Sorgen Sie mit einem Schlüsselverschlüsselungsschlüssel (Key Encryption Key, KEK) für zusätzlichen Schutz für Verschlüsselungsschlüssel. Fügen Sie Ihrem Schlüsseltresor einen KEK hinzu.   
+**Detail**: Verwenden Sie das Cmdlet [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey), um im Schlüsseltresor einen Schlüsselverschlüsselungsschlüssel zu erstellen. Sie können den KEK auch aus Ihrem lokalen Hardwaresicherheitsmodul (HSM) für die Schlüsselverwaltung importieren. Weitere Informationen finden Sie in der [Key Vault](../../key-vault/keys/hsm-protected-keys.md)-Dokumentation. Wenn ein Schlüsselverschlüsselungsschlüssel angegeben wird, verwendet Azure Disk Encryption diesen, um Verschlüsselungsgeheimnisse vor dem Schreiben in Key Vault zu umschließen. Zusätzlichen Schutz vor versehentlichem Löschen von Schlüsseln bietet das Hinterlegen einer Kopie dieses Schlüssels in einem lokalen Schlüsselverwaltungs-HSM.
 
-**Bewährte Methode** : Erstellen Sie eine [Momentaufnahme](../../virtual-machines/windows/snapshot-copy-managed-disk.md), und/oder sichern Sie die Datenträger, bevor diese verschlüsselt werden. Sicherungen bieten eine Wiederherstellungsoption, wenn während der Verschlüsselung ein unerwarteter Fehler auftritt.   
-**Detail** : Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet **Set-AzVMDiskEncryptionExtension** verwenden, um verwaltete Datenträger durch das Angeben des Parameters *-skipVmBackup* zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../../backup/backup-azure-vms-encryption.md).
+**Bewährte Methode**: Erstellen Sie eine [Momentaufnahme](../../virtual-machines/windows/snapshot-copy-managed-disk.md), und/oder sichern Sie die Datenträger, bevor diese verschlüsselt werden. Sicherungen bieten eine Wiederherstellungsoption, wenn während der Verschlüsselung ein unerwarteter Fehler auftritt.   
+**Detail**: Für VMs mit verwalteten Datenträgern ist eine Sicherung erforderlich, bevor die Verschlüsselung durchgeführt wird. Nach dem Erstellen einer Sicherung können Sie das Cmdlet **Set-AzVMDiskEncryptionExtension** verwenden, um verwaltete Datenträger durch das Angeben des Parameters *-skipVmBackup* zu verschlüsseln. Weitere Informationen zum Sichern und Wiederherstellen von verschlüsselten VMs finden Sie im Artikel [Azure Backup](../../backup/backup-azure-vms-encryption.md).
 
-**Bewährte Methode** : Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen der Schlüsseltresor und die VMs sich für Azure Disk Encryption in derselben Region befinden.   
-**Detail** : Erstellen und verwenden Sie einen Schlüsseltresor, der sich in derselben Region wie die zu verschlüsselnde VM befindet.
+**Bewährte Methode**: Um sicherzustellen, dass die Verschlüsselungsgeheimnisse die Regionsgrenzen nicht verlassen, müssen der Schlüsseltresor und die VMs sich für Azure Disk Encryption in derselben Region befinden.   
+**Detail**: Erstellen und verwenden Sie einen Schlüsseltresor, der sich in derselben Region wie die zu verschlüsselnde VM befindet.
 
 Mit Azure Disk Encryption können Sie die folgenden geschäftlichen Anforderungen erfüllen:
 
@@ -171,14 +171,14 @@ Mit Azure Disk Encryption können Sie die folgenden geschäftlichen Anforderunge
 ## <a name="restrict-direct-internet-connectivity"></a>Einschränken der direkten Internetverbindung
 Überwachen Sie die direkte Internetverbindung von VMs und schränken Sie diese ein. Angreifer scannen ständig öffentliche Cloud-IP-Adressbereiche nach offenen Verwaltungsports und probieren „einfache“ Angriffe mittels häufig verwendeter Kennwörter und bekannter ungepatchter Sicherheitslücken. Die folgende Tabelle enthält bewährte Methoden zum Schutz vor diesen Angriffen:
 
-**Bewährte Methode** : Verhindern Sie eine unbeabsichtigte Offenlegung von Netzwerkrouting und -sicherheit.   
-**Detail** : Verwenden Sie RBAC, um sicherzustellen, dass nur die zentrale Netzwerkgruppe berechtigten Zugang zu Netzwerkressourcen hat.
+**Bewährte Methode**: Verhindern Sie eine unbeabsichtigte Offenlegung von Netzwerkrouting und -sicherheit.   
+**Detail**: Verwenden Sie Azure RBAC, um sicherzustellen, dass nur die zentrale Netzwerkgruppe über Berechtigungen für Netzwerkressourcen verfügt.
 
-**Bewährte Methode** : Identifizieren und korrigieren Sie exponierte VMs, die einen Zugriff über „alle“ Quell-IP-Adressen zulassen.   
-**Detail** : Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-network-recommendations.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
+**Bewährte Methode**: Identifizieren und korrigieren Sie exponierte VMs, die einen Zugriff über „alle“ Quell-IP-Adressen zulassen.   
+**Detail**: Verwenden Sie Azure Security Center. Azure Security Center empfiehlt, den Zugriff über Endpunkte mit Internetzugriff einzuschränken, wenn für beliebige Ihrer Netzwerksicherheitsgruppen mindestens eine Eingangsregel gilt, die den Zugriff über „alle“ Quell-IP-Adressen zulässt. Azure Security Center empfiehlt, diese Eingangsregeln so zu ändern, dass der [Zugriff eingeschränkt](../../security-center/security-center-network-recommendations.md) wird auf Quell-IP-Adressen, die tatsächlich Zugriff benötigen.
 
-**Bewährte Methode** : Beschränken Sie Verwaltungsports (RDP, SSH).   
-**Detail** : Mit einem [JIT-VM-Zugriff](../../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Azure Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.
+**Bewährte Methode**: Beschränken Sie Verwaltungsports (RDP, SSH).   
+**Detail**: Mit einem [JIT-VM-Zugriff](../../security-center/security-center-just-in-time.md) (Just-In-Time-VM-Zugriff) kann eingehender Datenverkehr auf den Azure-VMs gesperrt werden, um die Gefährdung durch Angriffe zu reduzieren und dennoch bei Bedarf einen einfachen Zugriff auf Verbindungen zu virtuellen Computern bereitzustellen. Wenn JIT aktiviert ist, sperrt Azure Security Center eingehenden Datenverkehr für Ihre Azure-VMs, indem eine Netzwerksicherheitsgruppen-Regel erstellt wird. Sie wählen die Ports auf dem virtuellen Computer aus, für die eingehender Datenverkehr gesperrt wird. Diese Ports werden durch die JIT-Lösung gesteuert.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere bewährte Methoden für die Sicherheit, die Sie beim Entwerfen, Bereitstellen und Verwalten Ihrer Cloudlösungen mithilfe von Azure verwenden können, finden Sie unter [Sicherheit in Azure: bewährte Methoden und Muster](best-practices-and-patterns.md).

@@ -1,7 +1,7 @@
 ---
 title: Verwenden von Studio zum Bereitstellen von Modellen, die im Designer trainiert wurden
 titleSuffix: Azure Machine Learning
-description: Verwenden Sie Azure Machine Learning Studio, um Modelle bereitzustellen, die im Designer trainiert wurden.
+description: Verwenden Sie Azure Machine Learning Studio, um Machine Learning-Modelle bereitzustellen, ohne eine einzige Codezeile schreiben zu müssen.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 10/29/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy, studio
-ms.openlocfilehash: 0d98d5103e26eb0b4ee0d31b95f1d07cdaa396ae
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 23c6417741d0753fcdaaf30c89c8f51348cc5dc5
+ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927582"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94554681"
 ---
 # <a name="use-the-studio-to-deploy-models-trained-in-the-designer"></a>Verwenden von Studio zum Bereitstellen von Modellen, die im Designer trainiert wurden
 
@@ -90,7 +90,7 @@ Alternativ können Sie die Dateien auf der Ressourcenseite **Modelle** herunterl
     ![Screenshot des Herunterladens von Dateien für die Bereitstellung auf der Detailseite „Modelle“](./media/how-to-deploy-model-designer/download-artifacts-in-models-page.png)
 
 > [!NOTE]
-> Die Datei `score.py` bietet nahezu die gleiche Funktionalität wie die **Score Model** -Module. Einige Module wie [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) und [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) weisen jedoch Parameter für unterschiedliche Bewertungsmodi auf. Sie können diese Parameter auch im Eingabeskript ändern.
+> Die Datei `score.py` bietet nahezu die gleiche Funktionalität wie die **Score Model**-Module. Einige Module wie [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md), [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md) und [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) weisen jedoch Parameter für unterschiedliche Bewertungsmodi auf. Sie können diese Parameter auch im Eingabeskript ändern.
 >
 >Weitere Informationen zum Festlegen von Parametern in der Datei `score.py` finden Sie im Abschnitt [Konfigurieren des Eingabeskripts](#configure-the-entry-script).
 
@@ -206,7 +206,7 @@ Einige Module im Designer wie [Score SVD Recommender](./algorithm-module-referen
 
 In diesem Abschnitt erfahren Sie, wie Sie diese Parameter auch in der Eingabeskriptdatei aktualisieren.
 
-Im folgenden Beispiel wird das Standardverhalten für ein trainiertes **Wide & Deep recommender** -Modell aktualisiert. Standardmäßig weist die Datei `score.py` den Webdienst an, Bewertungen zwischen Benutzern und Elementen vorherzusagen. 
+Im folgenden Beispiel wird das Standardverhalten für ein trainiertes **Wide & Deep recommender**-Modell aktualisiert. Standardmäßig weist die Datei `score.py` den Webdienst an, Bewertungen zwischen Benutzern und Elementen vorherzusagen. 
 
 Sie können die Eingabeskriptdatei so ändern, dass Elementempfehlungen abgegeben und empfohlene Elemente zurückgegeben werden, indem Sie den Parameter `recommender_prediction_kind` ändern.
 
@@ -266,7 +266,7 @@ Für die Modelle **Wide & Deep recommender** und **Vowpal Wabbit** können Sie d
 - Die Parameternamen bestehen aus Kombinationen aus Kleinbuchstaben und Unterstrichen von Parameternamen für [Score Vowpal Wabbit Model](./algorithm-module-reference/score-vowpal-wabbit-model.md) und [Score Wide and Deep Recommender](./algorithm-module-reference/score-wide-and-deep-recommender.md).
 - Die Parameterwerte für den Modustyp sind Zeichenfolgen der entsprechenden Optionsnamen. In den obigen Codebeispielen kann **Recommender prediction kind** als Beispiel dienen: Der Wert hierbei kann `'Rating Prediction'` oder `'Item Recommendation'` sein. Andere Werte sind nicht zulässig.
 
-Für trainierte **SVD recommender** -Modelle sind die Parameternamen und -Werte weniger offensichtlich, und Sie können die Parameter für die Festlegung in den folgenden Tabellen nachschlagen.
+Für trainierte **SVD recommender**-Modelle sind die Parameternamen und -Werte weniger offensichtlich, und Sie können die Parameter für die Festlegung in den folgenden Tabellen nachschlagen.
 
 | Parametername in [Score SVD Recommender](./algorithm-module-reference/score-svd-recommender.md)                           | Parametername in der Eingabeskriptdatei |
 | ------------------------------------------------------------ | --------------------------------------- |

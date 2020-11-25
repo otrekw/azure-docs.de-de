@@ -4,19 +4,19 @@ description: Azure Functions unterstützt mehrere Versionen der Runtime. Lernen 
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 12/09/2019
-ms.openlocfilehash: 6641461e63d7c9452351f3b0b99a274d2714a92e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: c67708b5c23667a7b0a1603b756d564b35fa0c3f
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88208107"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94533734"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Übersicht über die Runtimeversionen von Azure Functions
 
 Azure Functions unterstützt derzeit drei Versionen des Laufzeithosts: 1.x, 2.x und 3.x. Alle drei Versionen werden für Produktionsszenarios unterstützt.  
 
 > [!IMPORTANT]
-> Version 1.x befindet sich im Wartungsmodus und unterstützt nur die Entwicklung im Azure-Portal oder lokal auf Windows-Computern. Erweiterungen werden nur in höheren Versionen bereitgestellt. 
+> Version 1.x befindet sich im Wartungsmodus und unterstützt nur die Entwicklung im Azure-Portal, um Azure Stack Hub-Portal oder lokal auf Windows-Computern. Erweiterungen werden nur in höheren Versionen bereitgestellt. 
 
 In diesem Artikel werden einige Unterschiede zwischen den verschiedenen Versionen, das Erstellen der einzelnen Versionen und das Ändern von Versionen erläutert.
 

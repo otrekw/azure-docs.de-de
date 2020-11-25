@@ -1,6 +1,6 @@
 ---
 title: OpenID Connect-Authentifizierung mit Azure Active Directory
-description: Architekturleitfaden zum Erreichen dieses Authentifizierungsmusters
+description: Architekturleitfaden zum Erzielen der OpenID Connect-Authentifizierung mit Azure Active Directory
 services: active-directory
 author: BarbaraSelden
 manager: daveba
@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c6f2ad3b5e86eebfc2d6f1f42f8a2ab0520144b5
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: f38da0dd2dc2adc8049e2b307c861651a55ed700
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92113929"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576987"
 ---
 # <a name="openid-connect-authentication-with-azure-active-directory"></a>OpenID Connect-Authentifizierung mit Azure Active Directory
 
@@ -40,11 +40,11 @@ Benutzereinwilligung und Webanmeldung sind erforderlich.
 
 * **Benutzer:** Der Benutzer fordert einen Dienst von der Anwendung an.
 
-* **Vertrauenswürdiger Agent** : Die Komponente, mit der der Benutzer interagiert. Dieser vertrauenswürdige Agent ist in der Regel ein Webbrowser.
+* **Vertrauenswürdiger Agent**: Die Komponente, mit der der Benutzer interagiert. Dieser vertrauenswürdige Agent ist in der Regel ein Webbrowser.
 
-* **Anwendung** : Die Anwendung – der Ressourcenserver – ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Die Anwendung vertraut darauf, dass der Identitätsanbieter den vertrauenswürdigen Agent sicher authentifiziert und autorisiert. 
+* **Anwendung**: Die Anwendung – der Ressourcenserver – ist der Ort, an dem die Ressource oder die Daten abgelegt sind. Die Anwendung vertraut darauf, dass der Identitätsanbieter den vertrauenswürdigen Agent sicher authentifiziert und autorisiert. 
 
-* **Azure AD** : Der OIDC-Anbieter – auch als Identitätsanbieter bezeichnet – verarbeitet auf sichere Weise sämtliche Vorgänge im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Flow. Der Anbieter authentifiziert die Identität des Benutzers, gewährt und widerruft Zugriff auf Ressourcen und stellt Token aus. 
+* **Azure AD**: Der OIDC-Anbieter – auch als Identitätsanbieter bezeichnet – verarbeitet auf sichere Weise sämtliche Vorgänge im Zusammenhang mit den Informationen des Benutzers, dessen Zugriff und den Vertrauensstellungen zwischen den Beteiligten in einem Flow. Der Anbieter authentifiziert die Identität des Benutzers, gewährt und widerruft Zugriff auf Ressourcen und stellt Token aus. 
 
 ## <a name="implement-oidc-with-azure-ad"></a>Implementieren von OIDC mit Azure AD
 

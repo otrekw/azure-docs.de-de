@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: d93a43a44a9ccff4e7918e556b9d759e270d2f42
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92072083"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94698069"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -78,27 +78,28 @@ az aks nodepool add --name ubuntu1804 --cluster-name myAKSCluster --resource-gro
 
 Wenn Sie Knotenpools mit dem AKS Ubuntu 16.04-Image erstellen möchten, lassen Sie dazu das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
+## <a name="container-runtime-configuration"></a>Konfiguration der Containerruntime
 
-## <a name="container-runtime-configuration-preview"></a>Konfiguration der Containerruntime (Vorschau)
+Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. AKS-Cluster, die Knotenpools mit Version 1.19 und höheren Versionen von Kubernetes verwenden, nutzen `containerd` als Containerruntime. AKS-Cluster, die Knotenpools mit älteren Kubernetes-Versionen als 1.19 verwenden, nutzen [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime.
 
-Eine Containerruntime ist eine Software, die Container ausführt und Containerimages auf einem Knoten verwaltet. Die Runtime erleichtert die Abstraktion von sys-Aufrufen oder betriebssystemspezifischen Funktionen zum Ausführen von Containern unter Linux oder Windows. Heute verwendet AKS [Moby](https://mobyproject.org/) (Upstream-Docker) als Containerruntime. 
-    
 ![Docker CRI 1](media/cluster-configuration/docker-cri.png)
 
-[`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version, die AKS heute verwendet, baut bereits auf `containerd` auf, wie oben dargestellt. 
+[`Containerd`](https://containerd.io/) ist eine mit [OCI](https://opencontainers.org/) (Open Container Initiative) kompatible Kerncontainerruntime, die den Mindestsatz erforderlicher Funktionen zum Ausführen von Containern und zum Verwalten von Images auf einem Knoten bereitstellt. Sie wurde im März 2017 an die Cloud Native Compute Foundation (CNCF) [übergeben](https://www.cncf.io/announcement/2017/03/29/containerd-joins-cloud-native-computing-foundation/). Die aktuelle Moby-Version, die AKS verwendet, baut bereits auf `containerd` auf, wie oben dargestellt.
 
-Bei Knoten und Knotenpools, die auf containerd basieren, kommuniziert das Kubelet statt mit `dockershim` direkt über das CRI-Plug-In (Container Runtime Interface) mit `containerd`. Gegenüber der Docker CRI-Implementierung benötigt der Flow so weniger Hops. Daraus ergibt sich eine verringerte Latenz beim Podstart und eine geringere Ressourcenauslastung (CPU und Arbeitsspeicher).
+Bei Knoten und Knotenpools, die auf `containerd` basieren, kommuniziert das Kubelet statt mit `dockershim` direkt über das CRI-Plug-In (Container Runtime Interface) mit `containerd`. Gegenüber der Docker CRI-Implementierung benötigt der Flow so weniger Hops. Daraus ergibt sich eine verringerte Latenz beim Podstart und eine geringere Ressourcenauslastung (CPU und Arbeitsspeicher).
 
 Durch die Verwendung von `containerd` für AKS-Knoten werden die Podstartlatenz und der Ressourcenverbrauch durch die Containerlaufzeit auf dem Knoten verringert. Diese Verbesserungen sind eine Folge der neuen Architektur, bei der das Kubelet direkt über das CRI-Plug-In mit `containerd` kommuniziert. Bei der Moby/Docker-Architektur kommuniziert das Kubelet hingegen mit `dockershim` und der Docker-Engine, bevor `containerd` erreicht wird, was zu zusätzlichen Hops im Flow führt.
 
 ![Docker CRI 2](media/cluster-configuration/containerd-cri.png)
 
-`Containerd` funktioniert mit jeder allgemein verfügbaren Version von Kubernetes in AKS und mit jeder Upstream-Kubernetes-Version ab 1.10 und unterstützt alle Features von Kubernetes und AKS.
+`Containerd` funktioniert mit jeder allgemein verfügbaren Version von Kubernetes in AKS und mit jeder Upstream-Kubernetes-Version ab 1.19 und unterstützt alle Features von Kubernetes und AKS.
 
 > [!IMPORTANT]
-> Mit der allgemeinen Verfügbarkeit von `containerd` in AKS wird es die Standard und einzig verfügbare Option für die Containerruntime auf neuen Clustern. Sie können Moby-Knotenpools und -Cluster unter älteren unterstützten Versionen verwenden, solange diese noch unterstützt werden. 
+> Cluster mit Knotenpools, die unter Kubernetes 1.19 oder höher erstellt wurden, verwenden standardmäßig `containerd` für die Containerruntime. Cluster mit Knotenpools unter einer unterstützten Kubernetes-Version vor 1.19 erhalten `Moby` als Containerruntime, werden jedoch auf `ContainerD` aktualisiert, sobald die Kubernetes-Version des Knotenpools auf 1.19 oder höher aktualisiert wird. Sie können `Moby`-Knotenpools und -Cluster unter älteren unterstützten Versionen verwenden, solange diese noch unterstützt werden.
 > 
-> Es wird empfohlen, Workloads auf `containerd`-Knotenpools zu testen, bevor Sie ein Upgrade durchführen oder neue Cluster mit dieser Containerruntime erstellen.
+> Es wird dringend empfohlen, Ihre Workloads in AKS-Knotenpools mit `containerD` zu testen, bevor Sie Cluster unter 1.19 oder höher verwenden.
+
+Im folgenden Abschnitt wird erläutert, wie Sie AKS mit `containerD` in Clustern, die noch nicht Kubernetes-Version 1.19 oder höher verwenden oder die erstellt wurden, bevor diese Funktion allgemein verfügbar wurde, mithilfe der Vorschau der Containerruntimekonfiguration verwenden und testen.
 
 ### <a name="use-containerd-as-your-container-runtime-preview"></a>Verwenden von `containerd` als Containerruntime (Vorschau)
 
@@ -137,7 +138,7 @@ Wenn der Status als registriert angezeigt wird, können Sie die Registrierung de
 az provider register --namespace Microsoft.ContainerService
 ```  
 
-### <a name="use-containerd-on-new-clusters-preview"></a>Verwenden von `containerd` auf neuen Clustern (Vorschau)
+### <a name="use-containerd-on-new-clusters-preview"></a>Verwenden von `containerd` in neuen Clustern (Vorschau)
 
 Konfigurieren Sie den Cluster bei der Erstellen so, dass `containerd` verwendet wird. Legen Sie die Containerruntime mit dem Flag `--aks-custom-headers` auf `containerd` fest.
 
@@ -150,7 +151,7 @@ az aks create --name myAKSCluster --resource-group myResourceGroup --aks-custom-
 
 Wenn Sie Cluster mit der Moby-(Docker-)Runtime erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
-### <a name="use-containerd-on-existing-clusters-preview"></a>Verwenden von `containerd` auf vorhandenen Clustern (Vorschau)
+### <a name="use-containerd-on-existing-clusters-preview"></a>Verwenden von `containerd` in vorhandenen Clustern (Vorschau)
 
 Konfigurieren Sie einen neuen Knotenpool so, dass er `containerd` verwendet. Legen Sie die Runtime für den Knotenpool mit dem Flag `--aks-custom-headers` auf `containerd` fest.
 

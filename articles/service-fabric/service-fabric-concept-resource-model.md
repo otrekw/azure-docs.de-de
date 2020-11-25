@@ -4,12 +4,12 @@ description: Dieser Artikel bietet eine Übersicht über die Verwaltung einer Az
 ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
-ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3968fde0222dcee8047e7490dba78879ab6110e2
+ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86258741"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94681685"
 ---
 # <a name="service-fabric-application-resource-model"></a>Service Fabric: Anwendungsressourcenmodell
 
@@ -55,7 +55,7 @@ Nach dem Erstellen des Speicherkontos müssen Sie einen Blobcontainer erstellen,
 Ressourcen in Ihrem Cluster können geschützt werden, indem die öffentliche Zugriffsebene auf **privat** festgelegt wird. Sie können auf verschiedene Arten Zugriff gewähren:
 
 * Autorisieren des Zugriffs auf Blobs und Warteschlangen mit [Azure Active Directory](../storage/common/storage-auth-aad-app.md)
-* Gewähren von Zugriff auf Azure-Blob- und -Warteschlangendaten mithilfe von [RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
+* Gewähren von Zugriff auf Azure-Blobdaten und -Warteschlangendaten mithilfe von [Azure RBAC im Azure-Portal](../storage/common/storage-auth-aad-rbac-portal.md)
 * Delegieren des Zugriffs mithilfe einer [Shared Access Signature](/rest/api/storageservices/delegate-access-with-shared-access-signature)
 
 Das Beispiel im folgenden Screenshot verwendet den anonymen Lesezugriff für Blobs.
