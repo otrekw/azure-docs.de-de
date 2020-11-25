@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.author: tamram
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: c9797024315a8fdc744d08863a42fba0b0b16420
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: fa502f5ca95b1726da7f00f987b35be362ae865a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660337"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021757"
 ---
 # <a name="quickstart-create-download-and-list-blobs-with-azure-cli"></a>Schnellstart: Erstellen, Herunterladen und Auflisten von Blobs mit der Azure-Befehlszeilenschnittstelle
 
@@ -35,7 +35,7 @@ Die Azure CLI ist die Befehlszeilenumgebung von Azure und dient zum Verwalten vo
 
 Der Zugriff auf Blobspeicher kann über die Azure-Befehlszeilenschnittstelle autorisiert werden. Hierzu können Sie entweder Azure AD-Anmeldeinformationen oder den Speicherkonto-Zugriffsschlüssel verwenden. Es wird empfohlen, Azure AD-Anmeldeinformationen zu verwenden. In diesem Artikel wird die Autorisierung von Blobspeichervorgängen mithilfe von Azure AD gezeigt.
 
-Bei Azure CLI-Befehlen für blobspeicherbezogene Datenvorgänge können Sie mithilfe des Parameters `--auth-mode` die Art der Autorisierung für einen Vorgang angeben. Legen Sie den Parameter `--auth-mode` auf `login` fest, um die Autorisierung mit Azure AD-Anmeldeinformationen zu verwenden. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](../common/authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+Bei Azure CLI-Befehlen für blobspeicherbezogene Datenvorgänge können Sie mithilfe des Parameters `--auth-mode` die Art der Autorisierung für einen Vorgang angeben. Legen Sie den Parameter `--auth-mode` auf `login` fest, um die Autorisierung mit Azure AD-Anmeldeinformationen zu verwenden. Weitere Informationen finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 Der Parameter `--auth-mode` wird nur von blobspeicherbezogenen Datenvorgängen unterstützt. Bei Verwaltungsvorgängen wie etwa dem Erstellen einer Ressourcengruppe oder eines Speicherkontos werden automatisch Azure AD-Anmeldeinformationen für die Autorisierung verwendet.
 
@@ -89,7 +89,7 @@ az storage container create \
 > [!IMPORTANT]
 > Die Azure-Rollenzuweisungen können einige Minuten dauern.
 
-Sie können auch den Schlüssel des Speicherkontos nutzen, um den Vorgang zur Erstellung des Containers zu autorisieren. Weitere Informationen zum Autorisieren von Datenvorgängen mithilfe der Azure CLI finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](../common/authorize-data-operations-cli.md?toc=/azure/storage/blobs/toc.json).
+Sie können auch den Schlüssel des Speicherkontos nutzen, um den Vorgang zur Erstellung des Containers zu autorisieren. Weitere Informationen zum Autorisieren von Datenvorgängen mithilfe der Azure CLI finden Sie unter [Autorisieren des Zugriffs auf Blob- oder Warteschlangendaten mit der Azure-Befehlszeilenschnittstelle](./authorize-data-operations-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 ## <a name="upload-a-blob"></a>Hochladen eines Blobs
 
@@ -169,4 +169,4 @@ az group delete \
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie Dateien zwischen einem lokalen Dateisystem und einem Container in Azure Blobspeicher übertragen. Weitere Informationen zur Verwendung des Blobspeichers mit der Azure CLI finden Sie im Artikel mit den Azure CLI-Beispielen für Blobspeicher.
 
 > [!div class="nextstepaction"]
-> [Azure CLI-Beispiele für Azure Blob Storage](/azure/storage/blobs/storage-samples-blobs-cli?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
+> [Azure CLI-Beispiele für Azure Blob Storage](./storage-samples-blobs-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)

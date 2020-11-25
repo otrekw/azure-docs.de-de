@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9f57d435134bffbb8e7576adffeacb92bf687124
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2ffc524c14b9ba281d7e386f7f8c726093f11dbf
+ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93310313"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94661017"
 ---
 # <a name="query-azure-cosmos-db-data-with-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 
@@ -25,7 +25,7 @@ Zum Abfragen von Azure Cosmos DB wird die vollständige [SELECT](/sql/t-sql/quer
 In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool erstellen, die Daten aus Azure Cosmos DB-Containern mit Synapse Link-Aktivierung abfragt. Anschließend erfahren Sie in [diesem Tutorial](./tutorial-data-analyst.md) mehr über das Erstellen von serverlosen SQL-Poolsichten über Azure Cosmos DB-Container und das Verbinden dieser Sichten mit Power BI-Modellen. 
 
 > [!IMPORTANT]
-> In diesem Tutorial wird ein Container mit einem [wohl definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet. Die Abfrageerfahrung, die der serverlose SQL-Pool für das [Azure Cosmos DB-Schema mit vollständiger Genauigkeit](#full-fidelity-schema) bereitstellt, ist ein temporäres Verhalten, das sich auf der Grundlage des Vorschaufeedbacks ändern wird. Verlassen Sie sich nicht auf das Resultset-Schema der `OPENROWSET`-Funktion ohne `WITH`-Klausel, das Daten aus einem Container mit vollständigem Genauigkeitsschema liest, weil die Abfrageerfahrung möglicherweise noch geändert und an ein wohl definiertes Schema angepasst wird. Stellen Sie Ihr Feedback im [Feedbackforum für Azure Synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) bereit, oder wenden Sie sich an das [Synapse Link-Produktteam](mailto:cosmosdbsynapselink@microsoft.com), um Feedback zu geben.
+> In diesem Tutorial wird ein Container mit einem [genau definierten Azure Cosmos DB-Schema](../../cosmos-db/analytical-store-introduction.md#schema-representation) verwendet. Das Verhalten der Abfrageoberfläche, die vom serverlosen SQL-Pool für das [Azure Cosmos DB-Schema mit vollständiger Genauigkeit](#full-fidelity-schema) bereitgestellt wird, gilt nur vorübergehend und wird sich basierend auf dem Feedback zur Vorschauversion noch ändern. Verlassen Sie sich nicht auf das Resultset-Schema der `OPENROWSET`-Funktion ohne `WITH`-Klausel, das Daten aus einem Container mit einem vollständigem Genauigkeitsschema ausliest. Der Grund ist, dass die Abfrageoberfläche unter Umständen noch geändert und an ein genau definiertes Schema angepasst wird. Stellen Sie Ihr Feedback im [Feedbackforum für Azure Synapse Analytics](https://feedback.azure.com/forums/307516-azure-synapse-analytics) bereit, oder wenden Sie sich an das [Synapse Link-Produktteam](mailto:cosmosdbsynapselink@microsoft.com), um Feedback zu geben.
 
 ## <a name="overview"></a>Übersicht
 
@@ -42,7 +42,9 @@ OPENROWSET(
 Die Azure Cosmos DB-Verbindungszeichenfolge übergibt den Namen des Azure Cosmos DB-Kontos, den Datenbanknamen, den Hauptschlüssel des Datenbankkontos sowie optional einen Regionsnamen an die `OPENROWSET`-Funktion. 
 
 > [!IMPORTANT]
-> Stellen Sie sicher, dass Sie einen Alias nach `OPENROWSET` verwenden. Es gibt ein [bekanntes Problem](#known-issues), das Verbindungsprobleme mit dem Synapse SQL Serverless-Endpunkt verursacht, wenn Sie den Alias nach der `OPENROWSET`-Funktion nicht angeben.
+> Achten Sie darauf, dass Sie eine UTF-8-Datenbanksortierung (z. B. `Latin1_General_100_CI_AS_SC_UTF8`) verwenden, weil Zeichenfolgenwerte im Cosmos DB-Analysespeicher als UTF-8-Text codiert werden.
+> Ein Konflikt zwischen der Textcodierung in der Datei und der Sortierung kann zu unerwarteten Fehlern bei der Textkonvertierung führen.
+> Die Standardsortierung der aktuellen Datenbank kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`.
 
 Die Verbindungszeichenfolge weist das folgende Format auf:
 ```sql
@@ -338,8 +340,8 @@ In diesem Beispiel wird die Anzahl von Fällen entweder als `int32`-, als `int64
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
-- Der Alias **MUSS** nach der `OPENROWSET`-Funktion angegeben werden (z. B. `OPENROWSET (...) AS function_alias`). Das Weglassen des Alias kann zu Verbindungsproblemen führen, und der Synapse SQL Serverless-Endpunkt ist möglicherweise vorübergehend nicht verfügbar. Dieses Problem wird im November 2020 gelöst.
 - Die Abfrageerfahrung, die der serverlose SQL-Pool für das [Azure Cosmos DB-Schema mit vollständiger Genauigkeit](#full-fidelity-schema) bereitstellt, ist ein temporäres Verhalten, das sich auf der Grundlage des Vorschaufeedbacks ändern wird. Verlassen Sie sich nicht auf das Schema, dass die `OPENROWSET`-Funktion ohne `WITH`-Klausel während der öffentlichen Vorschauphase bereitstellt, da die Abfrageerfahrung möglicherweise noch auf Grundlage von Kundenfeedback an ein wohl definiertes Schema angepasst wird. Wenden Sie sich an das [Synapse Link-Produktteam](mailto:cosmosdbsynapselink@microsoft.com), um Feedback zu geben.
+- Vom serverlosen SQL-Pool wird kein Kompilierzeitfehler zurückgegeben, wenn die `OPENROSET`-Spaltensortierung nicht über die UTF-8-Codierung verfügt. Die Standardsortierung für alle `OPENROWSET`-Funktionen, die in der aktuellen Datenbank ausgeführt werden, kann mit der folgenden T-SQL-Anweisung problemlos geändert werden: `alter database current collate Latin1_General_100_CI_AI_SC_UTF8`.
 
 In der folgenden Tabelle werden mögliche Fehler, und Problembehebungsmaßnahmen aufgelistet:
 

@@ -2,25 +2,25 @@
 title: Konzepte – Identität und Zugriff
 description: Informationen zu den Identitäts- und Zugriffskonzepten von Azure VMware Solution
 ms.topic: conceptual
-ms.date: 05/04/2020
-ms.openlocfilehash: 7127109801d92d2177f6edac3efcaf76ddf217e6
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.date: 11/11/2020
+ms.openlocfilehash: e9c0d62968d94e2b018186f67072b6ae7078db02
+ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674643"
+ms.lasthandoff: 11/12/2020
+ms.locfileid: "94536097"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Identitätskonzepte von Azure VMware Solution
 
-Wenn Sie eine private Cloud bereitstellen, werden eine vCenter Server-Instanz und eine NSX T-Manager-Instanz bereitgestellt. vCenter dient zum Verwalten der Workloads virtueller Computer (virtual machines, VMs). NSX-T Manager wird verwendet, um das softwaredefinierte Netzwerk der privaten Cloud zu erweitern.
+Private Azure VMware Solution-Clouds werden mit einem vCenter-Server und mit NSX-T Manager bereitgestellt. vCenter dient zum Verwalten der Workloads virtueller Computer (virtual machines, VMs). Sie verwenden NSX-T Manager, um die private Cloud zu erweitern.
 
 Bei der Zugriffs- und Identitätsverwaltung werden CloudAdmin-Gruppenberechtigungen für vCenter und eingeschränkte Administratorrechte für NSX-T Manager verwendet. Dadurch wird sichergestellt, dass die Plattform Ihrer privaten Cloud automatisch mit den neuesten Features und Patches aktualisiert wird.  Weitere Informationen finden Sie im Artikel [Azure VMware Solution: Updates und Upgrades für private Clouds][concepts-upgrades].
 
 ## <a name="vcenter-access-and-identity"></a>vCenter – Zugriff und Identität
 
-Berechtigungen in vCenter werden über die CloudAdmin-Gruppe bereitgestellt. Diese Gruppe kann lokal in vCenter verwaltet werden, oder indem LDAP Single Sign-On von vCenter in Azure Active Directory integriert wird. Sie können diese Integration durchführen, nachdem Sie eine private Cloud bereitgestellt haben.
+Über die Gruppe „CloudAdmin“ werden die Berechtigungen in vCenter bereitgestellt. Sie verwalten die Gruppe lokal in vCenter. Eine andere Möglichkeit ist die Integration von LDAP Single Sign-On von vCenter mit Azure Active Directory. Sie aktivieren diese Integration, nachdem Sie Ihre private Cloud bereitgestellt haben. 
 
-Die CloudAdmin- und CloudGlobalAdmin-Berechtigungen sind in der folgenden Tabelle aufgeführt.
+In der Tabelle sind die Berechtigungen **CloudAdmin** und **CloudGlobalAdmin** aufgeführt.
 
 |  Festgelegte Berechtigung           | CloudAdmin | CloudGlobalAdmin | Comment |
 | :---                     |    :---:   |       :---:      |   :--:  |

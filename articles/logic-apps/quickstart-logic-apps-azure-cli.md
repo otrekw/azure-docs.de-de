@@ -5,21 +5,21 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli
-ms.date: 10/28/2020
-ms.openlocfilehash: 0d7f455e748a52595839cc509720bf7ad5b9b617
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.date: 11/23/2020
+ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099061"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95509471"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
 In dieser Schnellstartanleitung erfahren Sie, wie Sie Logik-Apps mithilfe der [Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle](/cli/azure/ext/logic/logic) (`az logic`) erstellen und verwalten. Über die Befehlszeile können Sie eine Logik-App erstellen und dabei die JSON-Datei für eine Logik-App-Workflowdefinition verwenden. Anschließend können Sie Ihre Logik-App durch Ausführen von Vorgängen wie `list`, `show` (`get`), `update` und `delete` über die Befehlszeile verwalten.
 
 > [!WARNING]
-> Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung* , für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
+> Die Logic Apps-Erweiterung für die Azure-Befehlszeilenschnittstelle ist derzeit eine *experimentelle Erweiterung*, für die *kein Kundensupport* bereitgestellt wird. Verwenden Sie diese CLI-Erweiterung mit Bedacht – insbesondere in Produktionsumgebungen.
 
 Wenn Sie noch nicht mit Logic Apps vertraut sind, können Sie sich auch darüber informieren, wie Sie Ihre ersten Logik-Apps [über das Azure-Portal](quickstart-create-first-logic-app-workflow.md), [in Visual Studio](quickstart-create-logic-apps-with-visual-studio.md) und [in Visual Studio Code](quickstart-create-logic-apps-visual-studio-code.md) erstellen.
 

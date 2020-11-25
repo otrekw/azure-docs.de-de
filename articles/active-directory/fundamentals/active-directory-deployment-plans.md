@@ -12,12 +12,12 @@ ms.date: 08/20/2019
 ms.author: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: acd2f49f009a8bd71d8cfc9f442e579bb1ad396b
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: c2a7c2813919321227bfcdc4ee43ca15186b89df
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371884"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836817"
 ---
 # <a name="azure-active-directory-deployment-plans"></a>Azure Active Directory-Bereitstellungspläne
 Sie suchen nach umfassenden Anleitungen für die Bereitstellung von Azure Active Directory-Funktionen (Azure AD)? In Azure AD-Bereitstellungsplänen werden der Geschäftswert, Planungsüberlegungen und Betriebsverfahren erläutert, die Sie zur erfolgreichen Bereitstellung gängiger Azure AD-Funktionen benötigen.
@@ -61,7 +61,7 @@ Die Erweiterung des Rollouts auf größere Benutzergruppen sollte durch eine Aus
 
 | Funktion | BESCHREIBUNG|
 | -| -|
-| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig das Ziel eines einfachen Anmeldevorgangs erreicht wird. |
+| [Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)| Azure AD Multi-Factor Authentication (MFA) ist die Lösung von Microsoft für die zweistufige Überprüfung. Mit vom Administrator genehmigten Authentifizierungsmethoden trägt Azure AD MFA zum Schutz des Zugriffs auf Ihre Daten und Anwendungen bei, während gleichzeitig die Forderung nach einem einfachen Anmeldevorgang erfüllt wird. |
 | [Bedingter Zugriff](../conditional-access/plan-conditional-access.md)| Mit dem bedingten Zugriff können Sie basierend auf bestimmten Bedingungen automatisierte Entscheidungen hinsichtlich der Zugriffssteuerung für den Zugriff auf Ihre Cloud-Apps implementieren. |
 | [Self-Service-Kennwortzurücksetzung](../authentication/howto-sspr-deployment.md)| Mit der Self-Service-Kennwortzurücksetzung können Ihre Benutzer jederzeit ihr Kennwort zurücksetzen, ohne dass ein Administrator eingreifen muss. |
 | [Kennwortlos](../authentication/howto-authentication-passwordless-deployment.md) | Implementieren Sie kennwortlose Authentifizierung mit der Microsoft Authenticator-App oder mit FIDO2-Sicherheitsschlüsseln in Ihrer Organisation. |

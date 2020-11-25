@@ -6,12 +6,12 @@ ms.topic: include
 ms.date: 10/14/2020
 ms.author: olayemio
 ms.custom: include file
-ms.openlocfilehash: b17480c1a2a0bd8588289627a51780999e1f311c
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 29cbb2f6a7f0faf91852e520f15b779b3fe229c8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897740"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96027563"
 ---
 Katalog mit freigegebenen Images ist ein Dienst, der Ihnen hilft, Ihre Images zu strukturieren und organisieren. Kataloge mit freigegebenen Images stellen Folgendes bereit:
 
@@ -45,7 +45,7 @@ Die Funktion „Katalog mit geteilten Images“ verfügt über mehrere Ressource
 
 Eine Imagedefinition ist eine logische Gruppierung für Versionen eines Images. Die Imagedefinition enthält Informationen dazu, warum das Image erstellt wurde, für welches Betriebssystem es vorgesehen ist und wie es verwendet wird. Eine Imagedefinition ist wie ein Plan für alle Details rund um das Erstellen eines bestimmten Image. Sie stellen eine VM nicht aus einer Imagedefinition, sondern aus den Imageversionen bereit, die aus der Definition erstellt wurden.
 
-Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet werden **Herausgeber** , **Angebot** und **SKU** . Diese Parameter werden verwendet, um eine spezielle Imagedefinition zu finden. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei.  Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
+Es gibt drei Parameter für jede Imagedefinition, die in Kombination verwendet werden **Herausgeber**, **Angebot** und **SKU**. Diese Parameter werden verwendet, um eine spezielle Imagedefinition zu finden. Bei einzelnen Imageversionen können ein oder zwei Werte identisch sein, aber nicht alle drei.  Hier werden z.B. drei Imagedefinitionen und deren Werte gezeigt:
 
 |Imagedefinition|Herausgeber|Angebot|Sku|
 |---|---|---|---|
@@ -71,7 +71,7 @@ Die folgenden Parameter sind weitere Parameter, die für Ihre Imagedefinition fe
 - Tag: Sie können Tags hinzufügen, wenn Sie Ihre Imagedefinition erstellen. Weitere Informationen zu Tags finden Sie unter [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../articles/azure-resource-manager/management/tag-resources.md).
 - Mindest- und Maximalempfehlungen zu vCPU und Arbeitsspeicher: Wenn es für Ihr Image vCPU- und Arbeitsspeicherempfehlungen gibt, können Sie diese Informationen zu Ihrer Imagedefinition hinzufügen.
 - Unzulässige Datenträgertypen: Sie können Informationen über die Speicheranforderungen für Ihren virtuellen Computer bereitstellen. Wenn Ihr Image z. B. nicht für normale Festplattenlaufwerke geeignet ist, fügen Sie diese zur Liste „Nicht zulassen“ hinzu.
-- Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher`, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](https://docs.microsoft.com/azure/virtual-machines/windows/cli-ps-findimage) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
+- Erwerbsplaninformationen für Marketplace-Images: `-PurchasePlanPublisher`, `-PurchasePlanName` und `-PurchasePlanProduct`. Weitere Informationen zu den Erwerbsplaninformationen finden Sie unter [Suchen nach Images in Azure Marketplace](../articles/virtual-machines/windows/cli-ps-findimage.md) und [Bereitstellen von Azure Marketplace-Erwerbsplaninformationen beim Erstellen von Images](../articles/virtual-machines/marketplace-images.md).
 
 
 ## <a name="image-versions"></a>Imageversionen
@@ -110,7 +110,7 @@ Pro Abonnement gibt es Einschränkungen hinsichtlich der Bereitstellung von Ress
 - 10 Replikate der Imageversionen pro Abonnement und Region
 - Alle an das Image angefügten Datenträger dürfen höchstens 1 TB groß sein.
 
-Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](https://docs.microsoft.com/azure/networking/check-usage-against-limits) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
+Weitere Informationen finden Sie unter [Vergleichen der Ressourcennutzung mit Grenzwerten](../articles/networking/check-usage-against-limits.md) in Beispielen dazu, wie Sie Ihre aktuelle Nutzung überprüfen.
  
 ## <a name="scaling"></a>Skalierung
 Im Katalog mit freigegebenen Images können Sie die Anzahl der Replikate angeben, die Azure für die Images verwalten soll. Dies ist in Szenarien mit mehreren VM-Bereitstellungen hilfreich, da die VM-Bereitstellungen auf verschiedene Replikate verteilt werden können. Dadurch wird die Wahrscheinlichkeit verringert, dass der Instanzerstellungsprozess durch die Überlastung eines einzelnen Replikats gedrosselt wird.
@@ -128,7 +128,7 @@ Wir empfehlen Ihnen stets, die Anzahl der Replikate überdimensioniert bereitzus
 
 [Zonenredundanter Azure-Speicher (ZRS)](https://azure.microsoft.com/blog/azure-zone-redundant-storage-in-public-preview/) bietet Resilienz vor einem Ausfall der Verfügbarkeitszone in der Region. Mit der allgemeinen Verfügbarkeit des Katalogs mit freigegebenen Images können Sie sich entschließen, Ihre Images in ZRS-Konten in Regionen mit Verfügbarkeitszonen zu speichern. 
 
-Sie können außerdem den Kontotyp für jede der Zielregionen auswählen. Der Standardtyp des Speicherkontos ist „Standard_LRS“, aber Sie können „Standard_ZRS“ für Regionen mit Verfügbarkeitszonen auswählen. Überprüfen Sie die regionale Verfügbarkeit von ZRS [hier](https://docs.microsoft.com/azure/storage/common/storage-redundancy-zrs).
+Sie können außerdem den Kontotyp für jede der Zielregionen auswählen. Der Standardtyp des Speicherkontos ist „Standard_LRS“, aber Sie können „Standard_ZRS“ für Regionen mit Verfügbarkeitszonen auswählen. Überprüfen Sie die regionale Verfügbarkeit von ZRS [hier](../articles/storage/common/storage-redundancy.md).
 
 ![Grafik mit ZRS](./media/shared-image-galleries/zrs.png)
 
@@ -183,11 +183,11 @@ Imageversion:
 
 Die folgenden SDKs unterstützen das Erstellen von Katalogen mit freigegebenen Images:
 
-- [.NET](https://docs.microsoft.com/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
-- [Java](https://docs.microsoft.com/java/azure/?view=azure-java-stable)
-- [Node.js](https://docs.microsoft.com/javascript/api/@azure/arm-compute)
-- [Python](https://docs.microsoft.com/python/api/overview/azure/virtualmachines?view=azure-python)
-- [Go](https://docs.microsoft.com/azure/go/)
+- [.NET](/dotnet/api/overview/azure/virtualmachines/management?view=azure-dotnet)
+- [Java](/java/azure/?view=azure-java-stable)
+- [Node.js](/javascript/api/@azure/arm-compute)
+- [Python](/python/api/overview/azure/virtualmachines?view=azure-python)
+- [Go](/azure/go/)
 
 ## <a name="templates"></a>Vorlagen
 
@@ -224,7 +224,7 @@ Um alle Ressourcen eines Katalogs mit geteilten Images über Abonnements hinweg 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 1. Scrollen Sie auf der Seite nach unten, und wählen Sie **Alle Ressourcen** aus.
 1. Wählen Sie alle Abonnements aus, von denen Sie alle Ressourcen auflisten möchten.
-1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery** .
+1. Suchen Sie nach Ressourcen vom Typ **Shared Image Gallery**.
   
 Um alle Ressourcen eines Katalogs mit freigegebenen Images für die Abonnements, auf die Sie Zugriff haben, aufzulisten, verwenden Sie den folgenden Befehl in der Azure-Befehlszeilenschnittstelle:
 
@@ -244,8 +244,8 @@ Ja. Es gibt 3 Szenarien, die auf den Typen von Images basieren, die Sie haben k�
 
  Szenario 3: Wenn Sie eine VHD in Ihrem lokalen Dateisystem haben, müssen Sie die VHD in ein verwaltetes Image hochladen, und dann können Sie daraus eine Imagedefinition und eine Imageversion erstellen.
 
-- Wenn die VHD von einer Windows-VM stammt, lesen Sie [Hochladen einer generalisierten VHD](https://docs.microsoft.com/azure/virtual-machines/windows/upload-generalized-managed).
-- Wenn die VHD für eine Linux-VM ist, lesen Sie [Hochladen einer VHD](https://docs.microsoft.com/azure/virtual-machines/linux/upload-vhd#option-1-upload-a-vhd).
+- Wenn die VHD von einer Windows-VM stammt, lesen Sie [Hochladen einer generalisierten VHD](../articles/virtual-machines/windows/upload-generalized-managed.md).
+- Wenn die VHD für eine Linux-VM ist, lesen Sie [Hochladen einer VHD](../articles/virtual-machines/linux/upload-vhd.md#option-1-upload-a-vhd).
 
 ### <a name="can-i-create-an-image-version-from-a-specialized-disk"></a>Kann ich eine Imageversion von einem speziellen Datenträger erstellen?
 
@@ -310,4 +310,4 @@ Für Bereitstellungen von VMs und VM-Skalierungsgruppen mithilfe einer Imagevers
 
 ### <a name="can-i-update-my-virtual-machine-scale-set-created-using-managed-image-to-use-shared-image-gallery-images"></a>Kann ich meine VM-Skalierungsgruppe aktualisieren, die mithilfe eines verwalteten Images erstellt wurde, um Shared Image Gallery-Images zu verwenden?
 
-Ja, Sie können die Imagereferenz der Skalierungsgruppe von einem verwalteten Image in ein Shared Image Gallery-Image aktualisieren, sofern der Betriebssystemtyp, die Hyper-V-Generation und das Datenträgerlayout zwischen den Images übereinstimmen. 
+Ja, Sie können die Imagereferenz der Skalierungsgruppe von einem verwalteten Image in ein Shared Image Gallery-Image aktualisieren, sofern der Betriebssystemtyp, die Hyper-V-Generation und das Datenträgerlayout zwischen den Images übereinstimmen.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.author: jingwang
-ms.openlocfilehash: 454bdaeb83e329ae059d6450b928d1286cd9552a
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9d3c3dc3b9a83973e41bf5d7dd204316508c2cb4
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555735"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96013393"
 ---
 # <a name="quickstart-create-a-data-factory-by-using-the-azure-data-factory-ui"></a>Schnellstart: Erstellen einer Data Factory über die Azure Data Factory-Benutzeroberfläche 
 
@@ -156,6 +156,7 @@ In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Ak
 1. Geben Sie im Bereich „Allgemein“ unter **Eigenschaften** die Eigenschaft **CopyPipeline** für **Name** an. Reduzieren Sie dann den Bereich, indem Sie in der oberen rechten Ecke auf das Symbol „Eigenschaften“ klicken.
 
 1. Erweitern Sie in der Toolbox **Aktivitäten** die Option **Move & Transform** (Verschieben und transformieren). Ziehen Sie die **Copy Data**-Aktivität aus der Toolbox **Aktivitäten** auf die Oberfläche des Pipeline-Designers. Sie können in der Toolbox **Aktivitäten** auch nach Aktivitäten suchen. Geben Sie unter **Name** den Namen **CopyFromBlobToBlob** ein.
+
    ![Erstellen einer Aktivität zum Kopieren von Daten](./media/quickstart-create-data-factory-portal/copy-activity.png)
 
 1. Wechseln Sie in den Einstellungen der Copy-Aktivität zur Registerkarte **Quelle**, und wählen Sie für **Quelldataset** die Option **InputDataset** aus.
@@ -163,6 +164,7 @@ In diesem Schritt erstellen und überprüfen Sie eine Pipeline mit einer Copy-Ak
 1. Wechseln Sie in den Einstellungen der Copy-Aktivität zur Registerkarte **Senke**, und wählen Sie für **Senkendataset** die Option **OutputDataset** aus.
 
 1. Klicken Sie zum Überprüfen der Pipelineeinstellungen oberhalb der Canvas auf der Symbolleiste für die Pipeline auf **Überprüfen**. Vergewissern Sie sich, dass die Pipeline überprüft wurde. Klicken Sie auf die Schaltfläche **>>** (Pfeil nach rechts), um die Ausgabe der Überprüfung zu schließen. 
+
    ![Überprüfen einer Pipeline](./media/quickstart-create-data-factory-portal/pipeline-validate.png)
 
 ## <a name="debug-the-pipeline"></a>Debuggen der Pipeline
@@ -180,6 +182,7 @@ In diesem Schritt debuggen Sie die Pipeline, bevor Sie sie in Data Factory berei
 In diesem Verfahren stellen Sie Entitäten (verknüpfte Dienste, Datasets, Pipelines) in Azure Data Factory bereit. Anschließend lösen Sie manuell eine Pipelineausführung aus. 
 
 1. Vor dem Auslösen einer Pipeline müssen Sie Entitäten in Data Factory veröffentlichen. Klicken Sie zum Veröffentlichen im oberen Bereich auf **Alle veröffentlichen**. 
+
     ![Alle veröffentlichen](./media/quickstart-create-data-factory-portal/publish-all.png)
 
 1. Klicken Sie zum manuellen Auslösen der Pipeline auf der Symbolleiste für die Pipeline auf **Trigger hinzufügen** und dann auf **Trigger Now** (Jetzt auslösen). Wählen Sie auf der Seite **Pipelineausführung** die Option **Fertig stellen** aus.

@@ -11,12 +11,12 @@ ms.date: 12/06/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cf072ae9544cd479aeca02d9b9fcd670b8eb5fe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
+ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89226895"
+ms.lasthandoff: 11/17/2020
+ms.locfileid: "94695179"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -90,6 +90,26 @@ Führen Sie diese Schritte aus, um TLS 1.2 zu aktivieren.
     ```
 
 1. Starten Sie den Server neu.
+
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+Es gelten die folgenden bekannten Einschränkungen:
+
+### <a name="delta-synchronization"></a>Deltasynchronisierung
+
+- Bei der Gruppenbereichsfilterung für die Deltasynchronisierung werden nicht mehr als 1.500 Mitglieder unterstützt.
+- Wenn Sie eine Gruppe löschen, die für einen Gruppenbereichsfilter verwendet wird, werden Benutzer, die Mitglieder der Gruppe sind, nicht gelöscht. 
+- Wenn Sie die im Bereich befindliche Organisationseinheit oder Gruppe umbenennen, werden die Benutzer bei der Deltasynchronisierung nicht entfernt.
+
+### <a name="provisioning-logs"></a>Bereitstellungsprotokolle
+- In den Bereitstellungsprotokollen wird nicht eindeutig zwischen Erstellungs- und Aktualisierungsvorgängen unterschieden.  Es kann sein, dass ein Erstellungsvorgang für eine Aktualisierung und ein Aktualisierungsvorgang für eine Erstellung angezeigt wird.
+
+### <a name="cross-domain-references"></a>Domänenübergreifende Verweise
+- Falls Sie über Benutzer mit Mitgliedsverweisen einer anderen Domäne verfügen, werden diese im Rahmen der aktuellen Domänensynchronisierung für diesen Benutzer nicht synchronisiert. 
+- (Beispiel: Ein Manager des zu synchronisierenden Benutzers befindet sich in Domäne B, und der Benutzer in Domäne A. Wenn Sie die Synchronisierung für Domäne A und Domäne B durchführen, ist dieser Vorgang erfolgreich, aber der Manager des Benutzers wird nicht übernommen.)
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Umbenennen von Gruppen oder Organisationseinheiten
+- Wenn Sie eine Gruppe oder Organisationseinheit in AD umbenennen, die sich im Bereich einer bestimmten Konfiguration befindet, wird die Namensänderung in AD vom Cloudbereitstellungsauftrag nicht erkannt. Der Auftrag wird nicht unter Quarantäne gestellt und bleibt im fehlerfreien Zustand.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

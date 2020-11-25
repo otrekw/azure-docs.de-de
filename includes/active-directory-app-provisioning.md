@@ -1,26 +1,25 @@
 ---
-ms.openlocfilehash: 475a468977a976e2e7399c14df9329b31446d404
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c400856546142353a7294a03fce6bbff1c258cc0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93135054"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95562824"
 ---
-
-In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ( [SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) und anderen.
+In Azure Active Directory (Azure AD) bezieht sich der Ausdruck **App-Bereitstellung** auf die automatische Erstellung von Benutzeridentitäten und Rollen in den Cloudanwendungen ([SaaS](https://azure.microsoft.com/overview/what-is-saas/)), auf die Benutzer Zugriff benötigen. Zusätzlich zur Erstellung von Benutzeridentitäten umfasst die automatische Bereitstellung auch die Wartung und Entfernung von Benutzeridentitäten, wenn sich der Status oder die Rollen ändern. Gängige Szenarien sind die Bereitstellung eines Azure AD-Benutzers in Anwendungen wie [Dropbox](../articles/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial.md), [Salesforce](../articles/active-directory/saas-apps/salesforce-provisioning-tutorial.md), [ServiceNow](../articles/active-directory/saas-apps/servicenow-provisioning-tutorial.md) und anderen.
 
 ![Diagramm mit einer Übersicht über die Bereitstellung](./media/active-directory-app-provisioning/provisioning-overview.png)
 
 Dieses Feature ermöglicht Ihnen Folgendes:
 
-- **Automatisieren der Bereitstellung** : Automatisches Erstellen neuer Konten in den richtigen Systemen für neue Benutzer, wenn diese Ihr Team oder Ihre Organisation verstärken
-- **Automatisieren der Aufhebung der Bereitstellung** : Automatisches Deaktivieren von Konten in den richtigen Systemen, wenn Benutzer das Team oder die Organisation verlassen
-- **Synchronisieren von Daten zwischen Systemen** : Sicherstellen, dass die Identitäten in Ihren Apps und Systemen bei Änderungen im Verzeichnis oder in Ihrem Personalsystem auf den neuesten Stand gebracht werden
-- **Bereitstellen von Gruppen** : Bereitstellen von Gruppen für Anwendungen, die diese unterstützen
-- **Steuern des Zugriffs** : Überwachen und Überprüfen, wer Bereitstellungen für Ihre Anwendungen durchgeführt hat
-- **Nahtloses Bereitstellen bei Brownfield-Szenarien** : Abgleichen von vorhandenen Identitäten zwischen Systemen und Ermöglichen einer einfachen Integration, auch wenn Benutzer im Zielsystem bereits vorhanden sind
-- **Nutzen der umfassenden Anpassung** : Nutzen von anpassbaren Attributzuordnungen, die definieren, welche Benutzerdaten vom Quellsystem an das Zielsystem fließen sollen
-- **Erhalten von Warnungen zu kritischen Ereignissen** : Senden von Warnungen zu kritischen Ereignissen durch den Bereitstellungsdienst und Ermöglichen der Log Analytics-Integration, damit Sie benutzerdefinierte Warnungen zur Erfüllung Ihrer geschäftlichen Anforderungen definieren können
+- **Automatisieren der Bereitstellung**: Automatisches Erstellen neuer Konten in den richtigen Systemen für neue Benutzer, wenn diese Ihr Team oder Ihre Organisation verstärken
+- **Automatisieren der Aufhebung der Bereitstellung**: Automatisches Deaktivieren von Konten in den richtigen Systemen, wenn Benutzer das Team oder die Organisation verlassen
+- **Synchronisieren von Daten zwischen Systemen**: Sicherstellen, dass die Identitäten in Ihren Apps und Systemen bei Änderungen im Verzeichnis oder in Ihrem Personalsystem auf den neuesten Stand gebracht werden
+- **Bereitstellen von Gruppen**: Bereitstellen von Gruppen für Anwendungen, die diese unterstützen
+- **Steuern des Zugriffs**: Überwachen und Überprüfen, wer Bereitstellungen für Ihre Anwendungen durchgeführt hat
+- **Nahtloses Bereitstellen bei Brownfield-Szenarien**: Abgleichen von vorhandenen Identitäten zwischen Systemen und Ermöglichen einer einfachen Integration, auch wenn Benutzer im Zielsystem bereits vorhanden sind
+- **Nutzen der umfassenden Anpassung**: Nutzen von anpassbaren Attributzuordnungen, die definieren, welche Benutzerdaten vom Quellsystem an das Zielsystem fließen sollen
+- **Erhalten von Warnungen zu kritischen Ereignissen**: Senden von Warnungen zu kritischen Ereignissen durch den Bereitstellungsdienst und Ermöglichen der Log Analytics-Integration, damit Sie benutzerdefinierte Warnungen zur Erfüllung Ihrer geschäftlichen Anforderungen definieren können
 
 ## <a name="benefits-of-automatic-provisioning"></a>Vorteile der automatischen Bereitstellung
 
@@ -46,9 +45,9 @@ Azure AD umfasst eine vorab integrierte Unterstützung für viele beliebte SaaS-
 
    ![Salesforce-Logo](./media/active-directory-app-provisioning/gallery-app-logos.png)
 
-   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](../articles/active-directory/azuread-dev/howto-app-gallery-listing.md). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
+   Wenn Sie eine neue Anwendung für die Bereitstellung anfordern möchten, können Sie [anfordern, dass Ihre Anwendung in unseren App-Katalog integriert wird](../articles/active-directory/develop/v2-howto-app-gallery-listing.md). Für die Anforderung der Benutzerbereitstellung muss die Anwendung über einen SCIM-konformen Endpunkt verfügen. Bitten Sie den Anwendungsanbieter darum, den SCIM-Standard einzuhalten, damit wir das Onboarding der App für unsere Plattform schnell durchführen können.
 
-* **Anwendungen mit SCIM 2.0-Unterstützung** : Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte Benutzerverwaltungs-APIs implementieren, finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md).
+* **Anwendungen mit SCIM 2.0-Unterstützung**: Informationen zum generischen Verbinden von Anwendungen, die SCIM 2.0-basierte Benutzerverwaltungs-APIs implementieren, finden Sie unter [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung](../articles/active-directory/app-provisioning/use-scim-to-provision-users-and-groups.md).
 
 ## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Was ist das System für domänenübergreifendes Identitätsmanagement (SCIM)?
 

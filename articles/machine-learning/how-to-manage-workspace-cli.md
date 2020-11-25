@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 9b55c4873c4d7ee430e7d9ce84d2782a37e522ae
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
+ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442139"
+ms.lasthandoff: 11/13/2020
+ms.locfileid: "94576273"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 
@@ -78,7 +78,7 @@ Der Azure Machine Learning-Arbeitsbereich basiert auf den folgenden Azure-Dienst
 
 ### <a name="create-a-resource-group"></a>Erstellen einer Ressourcengruppe
 
-Der Azure Machine Learning-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__ , verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
+Der Azure Machine Learning-Arbeitsbereich muss innerhalb einer Ressourcengruppe erstellt werden. Sie können eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen. Um __eine neue Ressourcengruppe zu erstellen__, verwenden Sie den folgenden Befehl. Ersetzen Sie `<resource-group-name>` durch den Namen, der für diese Ressourcengruppe verwendet werden soll. Ersetzen Sie `<location>` durch die Azure-Region, die für diese Ressourcengruppe verwendet werden soll:
 
 > [!TIP]
 > Wählen Sie eine Region aus, in der Azure Machine Learning verfügbar ist. Weitere Informationen finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-service).
@@ -103,11 +103,11 @@ Die Antwort dieses Befehls ähnelt dem folgenden JSON-Code:
 }
 ```
 
-Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az group](//cli/azure/group?preserve-view=true&view=azure-cli-latest).
+Weitere Informationen zum Arbeiten mit Ressourcengruppen finden Sie unter [az group](/cli/azure/group?preserve-view=true&view=azure-cli-latest).
 
 ### <a name="automatically-create-required-resources"></a>Automatisches Erstellen der erforderlichen Ressourcen
 
-Um einen neuen Arbeitsbereich zu erstellen, in dem die __Dienste automatisch erstellt werden__ , verwenden Sie den folgenden Befehl:
+Um einen neuen Arbeitsbereich zu erstellen, in dem die __Dienste automatisch erstellt werden__, verwenden Sie den folgenden Befehl:
 
 ```azurecli-interactive
 az ml workspace create -w <workspace-name> -g <resource-group-name>
@@ -156,9 +156,12 @@ Weitere Informationen zur Verwendung eines privaten Endpunkts und eines virtuell
 
 ### <a name="customer-managed-key-and-high-business-impact-workspace"></a>Kundenseitig verwalteter Schlüssel und Arbeitsbereich mit starken geschäftlichen Auswirkungen
 
-Standardmäßig werden Metriken und Metadaten für den Arbeitsbereich in einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt. 
+Standardmäßig werden Metadaten für den Arbeitsbereich auf einer Azure Cosmos DB-Instanz gespeichert, die von Microsoft verwaltet wird. Diese Daten werden mit von Microsoft verwalteten Schlüsseln verschlüsselt.
 
-Anstatt den von Microsoft verwalteten Schlüssel zu verwenden, können Sie Ihren eigenen Schlüssel bereitstellen. Hierdurch wird die Azure Cosmos DB-Instanz erstellt, die Metriken und Metadaten in Ihrem Azure-Abonnement speichert. Verwenden Sie den `--cmk-keyvault`-Parameter, um den Azure Key Vault anzugeben, der den Schlüssel enthält, und `--resource-cmk-uri`, um die URL des Schlüssels innerhalb des Tresors anzugeben.
+> [!NOTE]
+> Azure Cosmos DB wird __nicht__ verwendet, um Daten zur Modellleistung oder bei Experimenten oder Ihren Modellimplementierungen protokollierte Informationen zu speichern. Weitere Informationen zur Überwachung dieser Elemente finden Sie im Abschnitt [Überwachung und Protokollierung](concept-azure-machine-learning-architecture.md) des Artikels zur Architektur und zu den Konzepten.
+
+Anstatt den von Microsoft verwalteten Schlüssel zu verwenden, können Sie Ihren eigenen Schlüssel bereitstellen. Hierbei wird die Azure Cosmos DB-Instanz erstellt, die Metadaten in Ihrem Azure-Abonnement speichert. Verwenden Sie den `--cmk-keyvault`-Parameter, um den Azure Key Vault anzugeben, der den Schlüssel enthält, und `--resource-cmk-uri`, um die URL des Schlüssels innerhalb des Tresors anzugeben.
 
 Bevor Sie die Parameter `--cmk-keyvault` und `--resource-cmk-uri` verwenden, müssen Sie zunächst die folgenden Aktionen ausführen:
 
@@ -186,7 +189,7 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
 > [!IMPORTANT]
 > Sie müssen nicht alle vorhandenen Ressourcen angeben. Sie können eine oder mehrere angeben. Beispielsweise können Sie ein vorhandenes Speicherkonto angeben, und der Arbeitsbereich erstellt die sonstigen Ressourcen.
 
-+ **Azure Storage-Konto** : `az storage account show --name <storage-account-name> --query "id"`
++ **Azure Storage-Konto**: `az storage account show --name <storage-account-name> --query "id"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für Ihr Speicherkonto:
 
@@ -195,7 +198,7 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
     > [!IMPORTANT]
     > Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standard_ speicherkonto des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
 
-+ **Azure Application Insights** :
++ **Azure Application Insights**:
 
     1. Installieren Sie die Erweiterung Application Insights:
 
@@ -213,13 +216,13 @@ Um einen Arbeitsbereich zu erstellen, der vorhandene Ressourcen verwendet, müss
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault** : `az keyvault show --name <key-vault-name> --query "ID"`
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für Ihren Schlüsseltresor:
 
     `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/Microsoft.KeyVault/vaults/<key-vault-name>"`
 
-+ **Azure Container Registry** : `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
++ **Azure Container Registry**: `az acr show --name <acr-name> -g <resource-group-name> --query "id"`
 
     Die Antwort dieses Befehls ähnelt dem folgenden Text und ist die ID für die Containerregistrierung:
 

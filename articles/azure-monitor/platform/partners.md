@@ -4,12 +4,12 @@ description: Erfahren Sie mehr über die Partnerlösungen für Azure Monitor und
 ms.subservice: ''
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: b56b2386422d9f7f2fa598ff804a2206bf4b4d83
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d603e130d4e65667edb34121a4c89b7b0e02b819
+ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91460089"
+ms.lasthandoff: 11/15/2020
+ms.locfileid: "94636740"
 ---
 # <a name="azure-monitor-partner-integrations"></a>Azure Monitor – integrierte Partnerlösungen
 
@@ -46,6 +46,16 @@ Application Performance Management (APM) von AppDynamics ermöglicht Anwendungsb
 Sie können für Azure Monitor-Warnungen JIRA-Tickets erstellen.
 
 [Atlassian-Dokumentation für Azure Monitor](https://azure.microsoft.com/blog/automated-notifications-from-azure-monitor-for-atlassian-jira/)
+
+## <a name="bmc-helix"></a>BMC Helix
+
+![BMC Helix-Logo](./media/partners/BMCHelix.png)
+
+BMC Helix ist eine autonome SaaS-Plattform für Unternehmensdienste und -abläufe. Dank der umfassenden Intelligence-Funktionen können Unternehmen proaktiv und vorhersagbar mehrkanalige Umgebungen für IT und andere Branchen ermitteln, überwachen, warten, reparieren, optimieren und bereitstellen.
+Da BMC Helix zudem über eine nahtlose ITSM- und ITOM-Integration (IT Operations Management) verfügt, können IT- und Business-Benutzer IT-Silos beseitigen, datengesteuerte Geschäftsentscheidungen treffen und branchenführende Kundenumgebungen bereitstellen.
+Kunden können für die BMC Helix-Plattform die bevorzugte Cloudbereitstellung wählen: öffentlich, privat oder hybrid. Darüber hinaus können Kunden zwischen verschiedenen KI/ML-Lösungen führender Anbieter wählen.
+
+[Erfahren Sie mehr zu BMC Helix](https://www.bmc.com/it-solutions/bmc-helix.html?vu=helix).
 
 ## <a name="botmetric"></a>Botmetric
 
@@ -300,6 +310,7 @@ Sumo Logic ist ein sicherer, nativ cloudbasierter Dienst für die Computerdatena
 Turbonomic automatisiert Workloads für Hybrid Clouds durch gleichzeitige Optimierung von Leistung, Kosten und Compliance in Echtzeit. Turbonomic unterstützt Unternehmen dabei, in ihrer Azure-Umgebung flexibel zu bleiben, indem der Bestand kontinuierlich optimiert wird. So wird sichergestellt, dass Anwendungen stets nur die Ressourcen für Computing, Speicher und Netzwerk auf IaaS- und PaaS-Ebene erhalten, die sie für die Erfüllung ihrer SLAs benötigen. Organisationen können Migrationen simulieren, Workloads richtig skalieren und lokale Rechenzentren außer Betrieb nehmen, um im Rahmen des Zeitplans und des Budgets verlässlich zu Azure zu migrieren – und gleichzeitig können sie sicher sein, dass die Leistung stimmt und alle Standards und gesetzlichen Vorgaben eingehalten werden. Turbonomic ist API-gesteuert und wird als virtueller Computer ohne Agents in Azure und im lokalen System ausgeführt.
 
 [Einführung in Turbonomic](https://turbonomic.com/)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

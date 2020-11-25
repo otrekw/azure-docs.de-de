@@ -9,12 +9,12 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.date: 10/19/2020
 ms.author: tamram
-ms.openlocfilehash: 0bf9d6eb68536588b35df93e13b04841d7868d31
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: edadcc4025913052e048ea94d47cac253e4bcd1a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547151"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523330"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-the-azure-portal"></a>Schnellstart: Hochladen, Herunterladen und Auflisten von Blobs mit dem Azure-Portal
 
@@ -29,9 +29,9 @@ In dieser Schnellstartanleitung erfahren Sie, wie Sie über das [Azure-Portal](h
 Führen Sie die folgenden Schritte aus, um einen Container über das Azure-Portal zu erstellen:
 
 1. Navigieren Sie im Azure-Portal zu Ihrem neuen Speicherkonto.
-2. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Blob-Dienst** , und wählen Sie **Container** aus.
-3. Wählen Sie die Schaltfläche **+ Container** .
-4. Geben Sie einen Namen für den neuen Container ein. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
+2. Scrollen Sie im linken Menü für das Speicherkonto zum Abschnitt **Blob-Dienst**, und wählen Sie **Container** aus.
+3. Wählen Sie die Schaltfläche **+ Container**.
+4. Geben Sie einen Namen für den neuen Container ein. Der Containername muss klein geschrieben werden, mit einem Buchstaben oder einer Zahl beginnen und darf nur Buchstaben, Zahlen und Bindestriche (-) enthalten. Weitere Informationen zu Container- und Blobnamen finden Sie unter [Naming and Referencing Containers, Blobs, and Metadata](/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata) (Benennen von Containern, Blobs und Metadaten und Verweisen auf diese).
 5. Legen Sie die öffentliche Zugriffsebene für den Container fest. Die Standardebene ist **Private (no anonymous access)** (Privat (kein anonymer Zugriff)).
 6. Wählen Sie **OK** aus, um den Container zu erstellen.
 
@@ -47,7 +47,7 @@ Gehen Sie wie folgt vor, um über das Azure-Portal ein Blockblob in Ihren neuen 
 1. Wählen Sie den Container aus, um eine Liste mit den darin enthaltenen Blobs anzuzeigen. Da dieser Container neu ist, enthält er noch keine Blobs.
 1. Wählen Sie die Schaltfläche **Hochladen** aus, um das Uploadblatt zu öffnen, und navigieren Sie in Ihrem lokalen Dateisystem zu einer Datei, um sie als Blockblob hochzuladen. Im Abschnitt **Erweitert** können optional weitere Einstellungen für den Uploadvorgang konfiguriert werden.
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="Screenshot: Erstellen eines Containers über das Azure-Portal":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/upload-blob.png" alt-text="Screenshot: Hochladen eines Blobs von Ihrem lokalen Laufwerk über das Azure-Portal":::
 
 1. Wählen Sie die Schaltfläche **Hochladen** aus, um das Blob hochzuladen.
 1. Laden Sie auf diese Weise beliebig viele Blobs hoch. Wie Sie sehen, werden die neuen Blobs nun innerhalb des Containers aufgeführt.
@@ -59,7 +59,7 @@ Sie können ein Blockblob herunterladen, um es im Browser anzuzeigen oder in Ihr
 1. Navigieren Sie zu der Liste mit den Blobs, die Sie im vorherigen Abschnitt hochgeladen haben.
 1. Klicken Sie mit der rechten Maustaste auf den Blob, den Sie herunterladen möchten, und wählen Sie **Herunterladen** aus.
 
-    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="Screenshot: Erstellen eines Containers über das Azure-Portal":::
+    :::image type="content" source="media/storage-quickstart-blobs-portal/download-blob.png" alt-text="Screenshot: Herunterladen eines Blobs über das Azure-Portal":::
 
 ## <a name="delete-a-block-blob"></a>Löschen eines Blockblobs
 
@@ -71,7 +71,7 @@ Führen Sie zum Löschen von Blobs über das Azure-Portal die folgenden Schritte
 1. Wählen Sie die Schaltfläche **Löschen** aus, um die ausgewählten Blobs zu löschen.
 1. Bestätigen Sie im Dialogfeld den Löschvorgang, und geben Sie an, ob Blobmomentaufnahmen ebenfalls gelöscht werden sollen.
 
-:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="Screenshot: Erstellen eines Containers über das Azure-Portal":::
+:::image type="content" source="media/storage-quickstart-blobs-portal/delete-blobs.png" alt-text="Screenshot: Löschen von Blobs über das Azure-Portal":::
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -81,7 +81,7 @@ So löschen Sie den Container:
 
 1. Navigieren Sie im Azure-Portal zu der Liste mit den Containern in Ihrem Speicherkonto.
 1. Wählen Sie den zu löschenden Container aus.
-1. Wählen Sie die Schaltfläche **Mehr** ( **...** ) und dann **Löschen** .
+1. Wählen Sie die Schaltfläche **Mehr** ( **...** ) und dann **Löschen**.
 1. Bestätigen Sie, dass Sie den Container löschen möchten.
 
 ## <a name="next-steps"></a>Nächste Schritte
