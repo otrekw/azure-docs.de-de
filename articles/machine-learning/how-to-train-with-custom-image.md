@@ -10,12 +10,12 @@ author: saachigopal
 ms.date: 10/20/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 4b4a1e601a5a0dbf5e56fc1d930e14150f27fee3
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: a441d1d22f938e1d1e05aea547929fa3b315d406
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398231"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012897"
 ---
 # <a name="train-a-model-by-using-a-custom-docker-image"></a>Trainieren eines Modells mithilfe eines benutzerdefinierten Docker-Images
 
@@ -29,7 +29,7 @@ Führen Sie den Code in einer der folgenden Umgebungen aus:
 
 * Azure Machine Learning-Compute-Instanz (weder Download noch Installation erforderlich):
   * Führen Sie die Schritte im Tutorial zum [Einrichten der Umgebung und des Arbeitsbereichs](tutorial-1st-experiment-sdk-setup.md) aus, um einen dedizierten Notebookserver zu erstellen, der bereits über das SDK und das Beispielrepository verfügt.
-  * Navigieren Sie im [Azure Machine Learning-Beispielrepository](https://github.com/Azure/azureml-examples) zum Verzeichnis **notebooks** > **fastai** > **train-pets-resnet34.ipynb** , um dort nach einem fertigen Notebook zu suchen. 
+  * Navigieren Sie im [Azure Machine Learning-Beispielrepository](https://github.com/Azure/azureml-examples) zum Verzeichnis **notebooks** > **fastai** > **train-pets-resnet34.ipynb**, um dort nach einem fertigen Notebook zu suchen. 
 * Auf Ihrem eigenen Jupyter Notebook-Server:
   * Erstellen Sie eine [Konfigurationsdatei für den Arbeitsbereich](how-to-configure-environment.md#workspace).
   * Installieren Sie das [Azure Machine Learning SDK.](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py) 
@@ -138,7 +138,7 @@ print(compute_target.get_status().serialize())
 
 ## <a name="configure-your-training-job"></a>Konfigurieren Ihres Trainingsauftrags
 
-Verwenden Sie für dieses Tutorial das auf [GitHub](https://github.com/Azure/azureml-examples/blob/main/code/train/fastai/pets-resnet34/train.py) verfügbare Trainingsskript *train.py*. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript verwenden und so, wie es ist, mit Azure Machine Learning ausführen.
+Verwenden Sie für dieses Tutorial das auf [GitHub](https://github.com/Azure/azureml-examples/blob/main/workflows/train/fastai/pets/src/train.py) verfügbare Trainingsskript *train.py*. In der Praxis können Sie jedes benutzerdefinierte Trainingsskript verwenden und so, wie es ist, mit Azure Machine Learning ausführen.
 
 Erstellen Sie eine `ScriptRunConfig`-Ressource, um den Auftrag für die Ausführung auf dem gewünschten [Computeziel](how-to-set-up-training-targets.md) zu konfigurieren.
 

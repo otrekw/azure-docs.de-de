@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 47733f4b141b0064e966d0c083fd6414405f65f9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e2f5528fde977520dc0aa0215a480a40ef8f1e7d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095542"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989614"
 ---
 # <a name="quickstart-create-and-configure-azure-ddos-protection-standard-using-azure-cli"></a>Schnellstart: Erstellen und Konfigurieren eines Azure DDoS Protection Standard-Plans über die Azure CLI
 
@@ -39,7 +39,7 @@ Wenn Sie die CLI lokal installieren und verwenden möchten, müssen Sie für die
 
 In Azure ordnen Sie verwandte Ressourcen einer Ressourcengruppe zu. Sie können entweder eine vorhandene Ressourcengruppe verwenden oder eine neue erstellen.
 
-Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az-group-create&preserve-view=true). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_ :
+Verwenden Sie zum Erstellen einer Ressourcengruppe [az group create](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az-group-create). In diesem Beispiel legen wir für die Ressourcengruppe den Namen _MyResourceGroup_ fest, und wir verwenden den Standort _USA, Osten_:
 
 ```azurecli-interactive
 az group create \
@@ -47,7 +47,7 @@ az group create \
     --location eastus
 ```
 
-Erstellen Sie nun einen DDoS-Schutzplan mit dem Namen _MyDdosProtectionPlan_ :
+Erstellen Sie nun einen DDoS-Schutzplan mit dem Namen _MyDdosProtectionPlan_:
 
 ```azurecli-interactive
 az network ddos-protection create \
@@ -109,9 +109,9 @@ Stellen Sie sicher, dass der Befehl die korrekten Details Ihres DDoS-Schutzplans
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_ , wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. 
+Sie können Ihre Ressourcen für das nächste Tutorial beibehalten. Löschen Sie die Ressourcengruppe _MyResourceGroup_, wenn Sie sie nicht mehr benötigen. Wenn Sie die Ressourcengruppe löschen, werden auch der DDoS-Schutzplan und alle zugehörigen Ressourcen gelöscht. 
 
-Führen Sie [az group delete](https://docs.microsoft.com/cli/azure/group?view=azure-cli-latest#az_group_delete&preserve-view=true) aus, um die Ressourcengruppe zu löschen:
+Führen Sie [az group delete](/cli/azure/group?preserve-view=true&view=azure-cli-latest#az_group_delete) aus, um die Ressourcengruppe zu löschen:
 
 ```azurecli-interactive
 az group delete \

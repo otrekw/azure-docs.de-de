@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 594a7e2a6977cc2a7052a15e1a007c68c08da259
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 66c1ab1cb5ed478aa34825fb6903e4d06f834097
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904869"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989472"
 ---
 # <a name="fundamental-best-practices"></a>Grundlegende bewährte Methoden
 
@@ -35,16 +35,16 @@ Es ist von größter Wichtigkeit sicherzustellen, dass eine Anwendung stabil gen
 
 Die Skalierbarkeit zeigt, wie gut ein System eine höhere Last verarbeiten kann. Entwerfen der Anwendungen für eine [horizontale Skalierung](/azure/architecture/guide/design-principles/scale-out), um die Anforderungen einer verstärkten Auslastung zu erfüllen – insbesondere im Falle eines DDoS-Angriffs. Wenn Ihre Anwendung von einer einzelnen Instanz eines Diensts abhängig ist, entsteht dadurch ein Single Point of Failure. Durch Bereitstellen mehrerer Instanzen wird Ihr System stabiler und besser skalierbar.
 
-Wählen Sie für [Azure App Service](/azure/app-service/app-service-value-prop-what-is) einen [App Service-Plan](/azure/app-service/overview-hosting-plans) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](/azure/cloud-services/cloud-services-choose-me) verwenden. Stellen Sie für [Azure Virtual Machines](../virtual-machines/index.yml) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) gehört. Sie sollten [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) für Funktionen zur automatischen Skalierung verwenden.
+Wählen Sie für [Azure App Service](../app-service/overview.md) einen [App Service-Plan](../app-service/overview-hosting-plans.md) aus, der mehrere Instanzen bietet. Konfigurieren Sie für Azure Cloud Services alle Rollen so, dass sie [mehrere Instanzen](../cloud-services/cloud-services-choose-me.md) verwenden. Stellen Sie für [Azure Virtual Machines](../virtual-machines/index.yml) (VMs) sicher, dass die VM-Architektur mehr als eine VM enthält und dass jede VM zu einer [Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) gehört. Sie sollten [Virtual Machine Scale Sets](../virtual-machine-scale-sets/overview.md) für Funktionen zur automatischen Skalierung verwenden.
 
 ## <a name="defense-in-depth"></a>Tiefgehende Verteidigung
 
 Hinter der tiefgehenden Verteidigung steht die Idee, dem Risiko mit verschiedenen Verteidigungsstrategien zu begegnen. Abwehrmaßnahmen in die Schichten einer Anwendung zu integrieren reduziert die Wahrscheinlichkeit eines erfolgreichen Angriffs. Sie sollten sichere Entwürfe für Ihre Anwendungen mithilfe der integrierten Funktionen der Azure-Plattform implementieren.
 
-Das Risiko von Angriffen steigt z.B. mit der Größe ( *Oberflächenbereich* ) der Anwendung. Sie können den Oberflächenbereich durch Verwendung einer Genehmigungsliste verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](/azure/load-balancer/load-balancer-get-started-internet-portal) und [Azure Application Gateway](/azure/application-gateway/application-gateway-create-probe-portal)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](/azure/virtual-network/security-overview) kann die angreifbare Oberfläche ebenfalls reduziert werden.
-Sie können mit [Diensttags](/azure/virtual-network/security-overview#service-tags) und [Anwendungssicherheitsgruppen](/azure/virtual-network/security-overview#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
+Das Risiko von Angriffen steigt z.B. mit der Größe (*Oberflächenbereich*) der Anwendung. Sie können den Oberflächenbereich durch Verwendung einer Genehmigungsliste verringern, um den verfügbar gemachten IP-Adressraum und die Überwachungsports zu schließen, die im Lastenausgleichsmodul ([Azure Load Balancer](../load-balancer/quickstart-load-balancer-standard-public-portal.md) und [Azure Application Gateway](../application-gateway/application-gateway-create-probe-portal.md)) nicht mehr benötigt werden. Durch [Netzwerksicherheitsgruppen (NSGs)](../virtual-network/network-security-groups-overview.md) kann die angreifbare Oberfläche ebenfalls reduziert werden.
+Sie können mit [Diensttags](../virtual-network/network-security-groups-overview.md#service-tags) und [Anwendungssicherheitsgruppen](../virtual-network/network-security-groups-overview.md#application-security-groups) das Erstellen von Sicherheitsregeln weniger komplex machen und Netzwerksicherheit als natürliche Erweiterung der Struktur einer Anwendung konfigurieren.
 
-Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](/azure/virtual-network/virtual-networks-overview) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](/azure/virtual-network/virtual-network-service-endpoints-overview) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
+Sie sollten Azure-Dienste nach Möglichkeit in einem [virtuellen Netzwerk](../virtual-network/virtual-networks-overview.md) bereitstellen. Mit dieser Methode können Dienstressourcen über private IP-Adressen kommunizieren. Standardmäßig werden für Datenverkehr von Azure-Diensten aus einem virtuellen Netzwerk öffentliche IP-Adressen als Quell-IP-Adressen verwendet. Bei Verwendung von [Dienstendpunkten](../virtual-network/virtual-network-service-endpoints-overview.md) wechselt der Dienstdatenverkehr zu privaten Adressen im virtuellen Netzwerk als Quell-IP-Adressen, wenn aus einem virtuellen Netzwerk auf den Azure-Dienst zugegriffen wird.
 
 Häufig werden lokale Ressourcen von Kunden zusammen mit ihren Azure-Ressourcen angegriffen. Wenn Sie die Verbindung einer lokalen Umgebung mit Azure herstellen, sollten Sie dem öffentlichen Internet lokale Ressourcen so wenig wie möglich verfügbar machen. Sie können die Skalierungsfunktionen und erweiterten Funktionen zum DDoS-Schutz von Azure durch Bereitstellung Ihrer gut bekannten öffentlichen Entitäten in Azure verwenden. Da diese öffentlich zugänglichen Entitäten häufig ein Ziel von DDoS-Angriffen sind, reduziert ihre Unterbringung in Azure die Auswirkungen auf Ihre lokalen Ressourcen.
 

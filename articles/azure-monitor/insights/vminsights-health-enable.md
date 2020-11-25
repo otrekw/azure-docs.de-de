@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 6033ca5b0eaf6845d14407832c776dd8e006226b
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686496"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318132"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
 Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -24,12 +24,18 @@ Das Feature „Gastintegrität“ von Azure Monitor für VMs verfügt in der öf
   - Ubuntu 16.04 LTS, Ubuntu 18.04 LTS
   - Windows Server 2012 oder höher
 - Der virtuelle Computer muss sich in einer der folgenden Regionen befinden:
+  - Australien (Osten)
   - Australien, Südosten
+  - Indien, Mitte
   - USA (Mitte)
   - East US
   - USA (Ost) 2
   - USA, Osten 2 (EUAP)
+  - Deutschland, Westen-Mitte
+  - Japan, Osten
+  - USA Nord Mitte
   - Nordeuropa
+  - USA Süd Mitte
   - Asien, Südosten
   - UK, Süden
   - Europa, Westen

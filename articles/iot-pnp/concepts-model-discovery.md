@@ -7,12 +7,12 @@ ms.date: 07/23/2020
 ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: dda0e3d6739e94df4ce5910938c164e3db336bce
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 5f82206a7c86c5ae1e6477419faee0dca88ef883
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445573"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495286"
 ---
 # <a name="use-iot-plug-and-play-models-in-an-iot-solution"></a>Verwenden von IoT Plug & Play-Modellen in einer IoT-Lösung
 
@@ -125,7 +125,7 @@ Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, 
 
 1. Mithilfe der Modelldefinition des verbundenen Geräts können Sie die Funktionen des Geräts auflisten.
 
-1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service-node.md).
+1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service.md).
 
 ### <a name="custom-store"></a>Benutzerdefinierter Speicher
 
@@ -137,12 +137,12 @@ Nachdem Sie die Modell-ID für eine neue Geräteverbindung identifiziert haben, 
 
 1. Mithilfe der Modelldefinition des verbundenen Geräts können Sie die Funktionen des Geräts auflisten. 
 
-1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service-node.md).  
+1. Mithilfe der aufgelisteten Funktionen des Geräts können Sie Benutzern gestatten, [mit dem Gerät zu interagieren](quickstart-service.md).  
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nachdem Sie gelernt haben, wie IoT Plug & Play-Modelle in eine IoT-Lösung integriert werden, finden Sie hier einige der empfohlenen nächsten Schritte:
 
-- [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service-node.md)
+- [Interagieren mit einem Gerät über Ihre Lösung](quickstart-service.md)
 - [IoT-REST-API für digitale Zwillinge](/rest/api/iothub/service/digitaltwin)
 - [Azure IoT-Explorer](howto-use-iot-explorer.md)

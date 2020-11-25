@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/15/2020
-ms.openlocfilehash: fd131798352aaccaea66c242e92d550c98d7c86f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2bbc57d8ddc004c1926da7e0037efdc1fcf2d76e
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686510"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95318098"
 ---
 # <a name="configure-monitoring-in-azure-monitor-for-vms-guest-health-using-data-collection-rules-preview"></a>Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs mit Datensammlungsregeln (Vorschau)
 Mit dem [Feature „Gastintegrität“ von Azure Monitor für VMs](vminsights-health-overview.md) können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie die Standardüberwachung übergreifend für mehrere virtuelle Computer mit Datensammlungsregeln ändern können.
@@ -57,7 +57,7 @@ In der folgenden Tabelle ist die Standardkonfiguration für jeden Monitor angege
 ## <a name="overrides"></a>Überschreibt
 Mit einer *Außerkraftsetzung* wird mindestens eine Eigenschaft eines Monitors geändert. Beispielsweise kann mit einer Außerkraftsetzung ein Monitor deaktiviert werden, der standardmäßig aktiviert ist. Weitere Möglichkeiten sind das Definieren von Warnungskriterien oder das Ändern des Schwellenwerts für den Status „Kritisch“ für den Monitor. 
 
-Außerkraftsetzungen werden in einer [Datensammlungsregel](../platform/data-collection-rule-overview.md) definiert. Sie können mehrere Datensammlungsregeln mit verschiedenen Gruppen von Außerkraftsetzungen erstellen und diese auf mehrere virtuelle Computer anwenden. Sie wenden eine Datensammlungsregel auf einen virtuellen Computer an, indem Sie eine Zuordnung erstellen. Dies ist unter [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](../platform/data-collection-rule-azure-monitor-agent.md#dcr-associations) beschrieben.
+Außerkraftsetzungen werden in einer [Datensammlungsregel](../platform/data-collection-rule-overview.md) definiert. Sie können mehrere Datensammlungsregeln mit verschiedenen Gruppen von Außerkraftsetzungen erstellen und diese auf mehrere virtuelle Computer anwenden. Sie wenden eine Datensammlungsregel auf einen virtuellen Computer an, indem Sie eine Zuordnung erstellen. Dies ist unter [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](../platform/data-collection-rule-azure-monitor-agent.md#data-collection-rule-associations) beschrieben.
 
 
 ## <a name="multiple-overrides"></a>Mehrere Außerkraftsetzungen

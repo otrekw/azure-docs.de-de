@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 211ad590ab01d0be26d799064e1227accc619585
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 2c143c299cec1d48dd5438d5350c818d5cc93800
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496420"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023717"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Migrationsübersicht: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -63,7 +63,7 @@ Im Folgenden finden Sie einige allgemeine Richtlinien, die Ihnen bei der Auswahl
 Während der Bereitstellung können Sie Compute- und Speicherressourcen auswählen und anschließend mithilfe des [Azure-Portals](../../database/scale-resources.md) ändern, ohne dass es zu Downtime Ihrer Anwendung kommt. 
 
 > [!IMPORTANT]
-> Jede Abweichung in den [Anforderungen an virtuelle Netzwerke für verwaltete Instanzen](/../../managed-instance/connectivity-architecture-overview.md#network-requirements) kann Sie am Erstellen neuer Instanzen oder Verwenden vorhandener Instanzen hindern. Erfahren Sie mehr über das  [Erstellen neuer](/../../managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data) und [Konfigurieren vorhandener](/../../managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data) Netzwerke. 
+> Jede Abweichung in den [Anforderungen an virtuelle Netzwerke für verwaltete Instanzen](/azure/azure-sql/managed-instance/connectivity-architecture-overview#network-requirements) kann Sie am Erstellen neuer Instanzen oder Verwenden vorhandener Instanzen hindern. Erfahren Sie mehr über das  [Erstellen neuer](/azure/azure-sql/managed-instance/virtual-network-subnet-create-arm-template?branch=release-ignite-arc-data) und [Konfigurieren vorhandener](/azure/azure-sql/managed-instance/vnet-existing-add-subnet?branch=release-ignite-arc-data) Netzwerke. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternative für SQL Server-VMs
 

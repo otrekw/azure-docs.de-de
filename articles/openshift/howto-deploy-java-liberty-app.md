@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/30/2020
 keywords: java, jakartaee, javaee, microprofile, open-liberty, websphere-liberty, aro, openshift, red hat
-ms.openlocfilehash: ee4baf8eed26a43728fa52289bce86108c9e8c4a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 41891b58942efbfd705747cc16219185f2a2daa2
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413564"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018391"
 ---
 # <a name="deploy-a-java-application-with-open-libertywebsphere-liberty-on-an-azure-red-hat-openshift-4-cluster"></a>Bereitstellen einer Java-Anwendung mit Open Liberty/WebSphere Liberty in Azure Red Hat OpenShift 4-Clustern
 
@@ -126,7 +126,7 @@ Um die Anwendung auf Open Liberty auszuführen, müssen Sie eine Open Liberty-Se
    [INFO] Source compilation was successful.
    ```
 
-1. Öffnen Sie [http://localhost:9080/](http://localhost:9080/) in Ihrem Browser, um die Startseite der Anwendung aufzurufen. Die Anwendung sieht etwa wie folgt aus:
+1. Öffnen Sie `http://localhost:9080/` in Ihrem Browser, um die Startseite der Anwendung aufzurufen. Die Anwendung sieht etwa wie folgt aus:
 
    ![JavaEE Cafe Web UI](./media/howto-deploy-java-liberty-app/javaee-cafe-web-ui.png)
 1. Drücken Sie **STRG+C**, um die Anwendung und den Open Liberty-Server anzuhalten.
@@ -164,7 +164,7 @@ Führen Sie die Containeranwendung vor dem Bereitstellen in einem Remotecluster 
 
 1. Führen Sie `docker run -it --rm -p 9080:9080 javaee-cafe-simple:1.0.0` in Ihrer Konsole aus.
 2. Warten Sie, bis der Liberty-Server startet und die Anwendung erfolgreich bereitgestellt wird.
-3. Öffnen Sie [http://localhost:9080/](http://localhost:9080/) in Ihrem Browser, um die Startseite der Anwendung aufzurufen.
+3. Öffnen Sie `http://localhost:9080/` in Ihrem Browser, um die Startseite der Anwendung aufzurufen.
 4. Drücken Sie **STRG+C**, um die Anwendung und den Liberty-Server anzuhalten.
 
 ### <a name="push-the-image-to-the-container-image-registry"></a>Pushen des Images zur Containerregistrierung

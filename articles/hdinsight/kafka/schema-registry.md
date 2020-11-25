@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 05/18/2020
-ms.openlocfilehash: 7e17cdca508db81551d988c795bd1235fa729e82
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bb46bc18469638416ff76f84516498e0076c85fd
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636859"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95500321"
 ---
 # <a name="apache-kafka-with-confluent-schema-registry-in-azure-hdinsight"></a>Apache Kafka mit Schemaregistrierung von Confluent in Azure HDInsight
 
@@ -34,11 +34,11 @@ In diesem Abschnitt stellen wir einen von HDInsight verwalteten Kafka-Cluster mi
 
 1. Wählen Sie unten die Schaltfläche **In Azure bereitstellen** aus, um sich bei Azure anzumelden und die Resource Manager-Vorlage zu öffnen.
 
-    <a href="https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json" target="_blank">:::image type="icon" source="media/schema-registry/hdi-deploy-to-azure1.png":::</a>
+    [![In Azure bereitstellen](./media/schema-registry/hdi-deploy-to-azure1.png)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Farnabganguly%2FKafkaschemaregistry%2Fmaster%2Fazuredeploy.json)
 
 1. Füllen Sie die Felder in der Vorlage für die benutzerdefinierte Bereitstellung wie unten beschrieben aus:
 
-    |Eigenschaft |BESCHREIBUNG |
+    |Eigenschaft |Beschreibung |
     |---|---|
     |Subscription|Wählen Sie in der Dropdownliste das Azure-Abonnement aus, das für den Cluster verwendet wird.|
     |Resource group|Wählen Sie in der Dropdownliste Ihre vorhandene Ressourcengruppe oder die Option **Neu erstellen** aus.|

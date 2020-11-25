@@ -9,20 +9,20 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
-ms.openlocfilehash: 4fd7a24edffbfb63adc830ddb83b45997743ad42
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: d6cba4bcb76094ed156ef35b1ea76cea7001c372
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421633"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486295"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Was ist IoT Plug & Play?
 
-IoT Plug & Play ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_ , mit dessen Hilfe ein Gerät einer IoT Plug & Play-fähigen Anwendung seine Funktionen verfügbar macht. Dieses Modell ist als ein Satz von Elementen strukturiert, die Folgendes definieren:
+IoT Plug & Play ermöglicht es Lösungsentwicklern, intelligente Geräte ohne manuelle Konfiguration in ihre Lösungen zu integrieren. Das Herzstück von IoT Plug & Play ist ein _Gerätemodell_, mit dessen Hilfe ein Gerät einer IoT Plug & Play-fähigen Anwendung seine Funktionen verfügbar macht. Dieses Modell ist als ein Satz von Elementen strukturiert, die Folgendes definieren:
 
-- _Eigenschaften_ , die den schreibgeschützten oder schreibbaren Status eines Geräts oder einer anderen Entität darstellen. Beispielsweise kann eine Geräteseriennummer eine schreibgeschützte Eigenschaft sein und die Zieltemperatur eines Thermostats eine schreibbare Eigenschaft.
-- _Telemetriedaten_ , d. h. die von einem Gerät ausgegebenen Daten – unabhängig davon, ob es sich bei den Daten um einen regulären Datenstrom von Sensormesswerten, einen gelegentlichen Fehler oder eine Informationsmeldung handelt.
-- _Befehle_ , die eine Funktion oder einen Vorgang beschreiben, die bzw. der auf einem Gerät ausgeführt werden kann. Durch einen Befehl kann beispielsweise ein Gateway neu gestartet oder ein Foto mit einer Remotekamera aufgenommen werden.
+- _Eigenschaften_, die den schreibgeschützten oder schreibbaren Status eines Geräts oder einer anderen Entität darstellen. Beispielsweise kann eine Geräteseriennummer eine schreibgeschützte Eigenschaft sein und die Zieltemperatur eines Thermostats eine schreibbare Eigenschaft.
+- _Telemetriedaten_, d. h. die von einem Gerät ausgegebenen Daten – unabhängig davon, ob es sich bei den Daten um einen regulären Datenstrom von Sensormesswerten, einen gelegentlichen Fehler oder eine Informationsmeldung handelt.
+- _Befehle_, die eine Funktion oder einen Vorgang beschreiben, die bzw. der auf einem Gerät ausgeführt werden kann. Durch einen Befehl kann beispielsweise ein Gateway neu gestartet oder ein Foto mit einer Remotekamera aufgenommen werden.
 
 Sie können diese Elemente in Schnittstellen zur modellübergreifenden Wiederverwendung gruppieren, um die Zusammenarbeit zu vereinfachen und die Entwicklung zu beschleunigen.
 
@@ -72,5 +72,5 @@ Mit dem [IoT Plug & Play-Gerätezertifizierungsprogramm](howto-certify-device.md
 
 Nachdem Sie sich nun einen Überblick über IoT Plug & Play verschafft haben, empfehlen wir Ihnen als Nächstes einen der folgenden Schnellstarts:
 
-- [Verbinden eines Geräts mit IoT Hub (C)](./quickstart-connect-device-c.md)
-- [Interagieren mit einem Gerät über Ihre Lösung (Node.js)](./quickstart-service-node.md)
+- [Verbinden eines Geräts mit IoT Hub](./quickstart-connect-device.md)
+- [Interagieren mit einem Gerät über Ihre Lösung](./quickstart-service.md)

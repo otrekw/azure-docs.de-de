@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 3/16/2020
-ms.openlocfilehash: 7e455565a0cd5e1fc96a6fe7d9e0502da3214fcf
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 73705434aef3ee438c02fbfd6502d30e7620b695
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92909912"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026453"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-postgresql---hyperscale-citus"></a>Verwenden des Azure-Portals zum Einrichten von Warnungen zu Metriken für Azure Database for PostgreSQL – Hyperscale (Citus)
 
@@ -53,7 +53,7 @@ Sie haben folgende Möglichkeiten zum Konfigurieren von Warnungsregeln und Abruf
 
     * **Operator** (Beispiel: „Größer als“)
     * **Schwellenwert** (Beispiel: 85 Prozent)
-    * **Aggregationsgranularität** : Der Zeitraum, in dem die Metrikregel erfüllen werden muss, bevor die Warnung ausgelöst wird (Beispiel: „Innerhalb der letzten 30 Minuten“)
+    * **Aggregationsgranularität**: Der Zeitraum, in dem die Metrikregel erfüllen werden muss, bevor die Warnung ausgelöst wird (Beispiel: „Innerhalb der letzten 30 Minuten“)
     * und **Häufigkeit der Auswertung** (Beispiel: „1 Minute“)
    
    Wählen Sie anschließend **Fertig** aus.
@@ -88,7 +88,7 @@ Nachdem Sie eine Warnung erstellt haben, können Sie sie auswählen und folgende
 
 * Ein Diagramm anzeigen, das den Schwellenwert der Metrik und die tatsächlichen Werte vom Vortag zeigt, die für diese Warnung relevant sind.
 * Die Warnungsregel **bearbeiten** oder **löschen**.
-* Die Warnung **deaktivieren** oder **aktivieren** , wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
+* Die Warnung **deaktivieren** oder **aktivieren**, wenn Sie den Empfang von Benachrichtigungen vorübergehend beenden oder fortsetzen möchten.
 
 ## <a name="suggested-alerts"></a>Warnungsvorschläge
 
@@ -101,8 +101,8 @@ Es empfiehlt sich, Speicherplatzwarnungen für jeden Knoten in jeder Servergrupp
 Wenn auf dem Datenträger nur noch wenig Speicherplatz zur Verfügung steht, versuchen Sie Folgendes, um mehr Speicherplatz freizugeben:
 
 * Überprüfen Sie die Datenaufbewahrungsrichtlinie. Verschieben Sie ältere Daten nach Möglichkeit in Cold Storage.
-* Erwägen Sie das [Hinzufügen von Knoten](howto-hyperscale-scaling.md#add-worker-nodes) zur Servergruppe sowie eine Neuverteilung von Shards. Durch die Neuverteilung werden die Daten auf mehr Computer verteilt.
-* Erwägen Sie das [Erhöhen der Kapazität](howto-hyperscale-scaling.md#increase-or-decrease-vcores-on-nodes) von Workerknoten. Jeder Worker kann über bis zu 2 TiB Speicher verfügen. Vor dem Anpassen der Knotengröße sollten Sie jedoch zunächst versuchen, Knoten hinzuzufügen, da das Hinzufügen von Knoten weniger Zeit beansprucht.
+* Erwägen Sie das [Hinzufügen von Knoten](howto-hyperscale-scale-grow.md#add-worker-nodes) zur Servergruppe sowie eine Neuverteilung von Shards. Durch die Neuverteilung werden die Daten auf mehr Computer verteilt.
+* Erwägen Sie das [Erhöhen der Kapazität](howto-hyperscale-scale-grow.md#increase-or-decrease-vcores-on-nodes) von Workerknoten. Jeder Worker kann über bis zu 2 TiB Speicher verfügen. Vor dem Anpassen der Knotengröße sollten Sie jedoch zunächst versuchen, Knoten hinzuzufügen, da das Hinzufügen von Knoten weniger Zeit beansprucht.
 
 ### <a name="cpu-usage"></a>CPU-Auslastung
 

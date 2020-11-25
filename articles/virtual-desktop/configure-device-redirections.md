@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 00a3c1d0a2a905e6435b811d5f2611c16a5de502
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: b60a6e53e8fecd71885204690231776ff69fc08f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92328878"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018374"
 ---
 # <a name="configure-device-redirections"></a>Konfigurieren von Geräteumleitungen
 
@@ -19,11 +19,11 @@ Durch Konfigurieren von Geräteumleitungen für Ihre Windows Virtual Desktop-Umg
 
 ## <a name="supported-device-redirections"></a>Unterstützte Geräteumleitungen
 
-Unterschiedliche Clients unterstützen jeweils andere Geräteumleitungen. Eine vollständige Liste der von den einzelnen Clients unterstützten Geräteumleitungen finden Sie unter [Vergleichen der Clients](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare).
+Unterschiedliche Clients unterstützen jeweils andere Geräteumleitungen. Eine vollständige Liste der von den einzelnen Clients unterstützten Geräteumleitungen finden Sie unter [Vergleichen der Clients](/windows-server/remote/remote-desktop-services/clients/remote-desktop-app-compare).
 
 ## <a name="customizing-rdp-properties-for-a-host-pool"></a>Anpassen von RDP-Eigenschaften für einen Hostpool
 
-Weitere Informationen zum Anpassen von RDP-Eigenschaften für einen Hostpool mit PowerShell oder dem Azure-Portal finden Sie unter [RDP-Eigenschaften](customize-rdp-properties.md). Die vollständige Liste der unterstützten RDP-Eigenschaften finden Sie unter [Unterstützte RDP-Dateieinstellungen](https://docs.microsoft.com/windows-server/remote/remote-desktop-services/clients/rdp-files?context=/azure/virtual-desktop/context/context).
+Weitere Informationen zum Anpassen von RDP-Eigenschaften für einen Hostpool mit PowerShell oder dem Azure-Portal finden Sie unter [RDP-Eigenschaften](customize-rdp-properties.md). Die vollständige Liste der unterstützten RDP-Eigenschaften finden Sie unter [Unterstützte RDP-Dateieinstellungen](/windows-server/remote/remote-desktop-services/clients/rdp-files?context=%2fazure%2fvirtual-desktop%2fcontext%2fcontext).
 
 ## <a name="setup-device-redirections"></a>Einrichten von Geräteumleitungen
 
@@ -78,10 +78,10 @@ Legen Sie zunächst die folgende RDP-Eigenschaft fest, um die Umleitung von USB-
 
 Legen Sie dann die folgende Gruppenrichtlinie auf dem lokalen Gerät des Benutzers fest:
 
-- Wechseln Sie zu **Computerkonfiguration** > **Richtlinien**> **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopverbindungs-Client** > **RemoteFX USB-Geräteumleitung** .
+- Wechseln Sie zu **Computerkonfiguration** > **Richtlinien**> **Administrative Vorlagen** > **Windows-Komponenten** > **Remotedesktopdienste** > **Remotedesktopverbindungs-Client** > **RemoteFX USB-Geräteumleitung**.
 - Wählen Sie **RDP-Umleitung für andere unterstützte RemoteFX USB-Geräte auf diesem Computer zulassen** aus.
-- Wählen Sie die Option **Aktiviert** aus, und aktivieren Sie anschließend unter „Zugriffsrechte für RemoteFX USB-Umleitung“ das Kontrollkästchen **Administratoren und Benutzer** .
-- Klicken Sie auf **OK** .
+- Wählen Sie die Option **Aktiviert** aus, und aktivieren Sie anschließend unter „Zugriffsrechte für RemoteFX USB-Umleitung“ das Kontrollkästchen **Administratoren und Benutzer**.
+- Klicken Sie auf **OK**.
 
 ### <a name="plug-and-play-device-redirection"></a>Umleitung von Plug & Play-Geräten
 

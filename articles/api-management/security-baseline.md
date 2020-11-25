@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 78a882378becda8c381ac036d786b32a2b42a5f1
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379467"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024567"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -506,7 +506,7 @@ Administratoren können benutzerdefinierte Gruppen erstellen oder externe Gruppe
 
 * [Verwalten von Benutzerkonten in Azure API Management](./api-management-howto-create-or-invite-developers.md)
 
-* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuse)
+* [Abrufen einer Liste mit API Management-Benutzern](/powershell/module/az.apimanagement/get-azapimanagementuser)
 
 * [Erstellen und Verwenden von Gruppen für Entwicklerkonten in Azure API Management](./api-management-howto-create-groups.md)
 
@@ -700,7 +700,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -708,7 +708,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 ### <a name="53-deploy-automated-third-party-software-patch-management-solution"></a>5.3: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Drittanbietersoftware
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -846,7 +846,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="610-implement-approved-application-list"></a>6.10: Implementieren einer Liste genehmigter Anwendungen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -866,7 +866,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="612-limit-users-ability-to-execute-scripts-within-compute-resources"></a>6.12: Einschränken der Möglichkeiten der Benutzer, Skripte innerhalb von Computeressourcen auszuführen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -898,7 +898,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="72-establish-secure-operating-system-configurations"></a>7.2: Einrichten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -918,7 +918,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="74-maintain-secure-operating-system-configurations"></a>7.4: Verwalten sicherer Betriebssystemkonfigurationen
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -940,7 +940,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="76-securely-store-custom-operating-system-images"></a>7.6: Sicheres Speichern von benutzerdefinierten Betriebssystemimages
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -960,7 +960,7 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 ### <a name="78-deploy-system-configuration-management-tools-for-operating-systems"></a>7.8: Bereitstellen von Verwaltungstools für Systemkonfigurationen für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -984,7 +984,7 @@ Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherhei
 
 ### <a name="710-implement-automated-configuration-monitoring-for-operating-systems"></a>7.10: Implementieren der automatisierten Konfigurationsüberwachung für Betriebssysteme
 
-**Leitfaden**: Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
+**Anleitung:** Nicht zutreffend. Diese Empfehlung ist für Computeressourcen vorgesehen.
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

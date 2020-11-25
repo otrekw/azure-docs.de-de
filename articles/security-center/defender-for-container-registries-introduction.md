@@ -7,18 +7,20 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 989115224489ff8fff360a34b27c338ea3e33058
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: d587c4dbdd8f46d6e098ff96f464d456fffc9ccf
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145819"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95529983"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Einführung in Azure Defender für Containerregistrierungen
 
 Azure Container Registry (ACR) ist ein verwalteter, privater Docker-Registrierungsdienst, der Ihre Containerimages für Azure-Bereitstellungen in einer zentralen Registrierung speichert und verwaltet. Er basiert auf der Open-Source-Docker-Registrierung 2.0.
 
 Aktivieren Sie **Azure Defender für Containerregistrierungen** auf Abonnementebene, um alle auf Azure Resource Manager basierenden Registrierungen in Ihrem Abonnement zu schützen. Mit Security Center werden dann Images gescannt, die in die Registrierung gepusht oder importiert werden oder innerhalb der letzten 30 Tage gepullt wurden. Dieses Feature wird pro Image abgerechnet.
+
+[!INCLUDE [Defender for container registries availability info](../../includes/security-center-availability-defender-for-container-registries.md)]
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-container-registries"></a>Welche Vorteile hat die Nutzung von Azure Defender für Containerregistrierungen?
 

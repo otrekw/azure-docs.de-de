@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 08/12/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 90db861a4ef4fc951844d3ae82a51d20cf9dc8c5
-ms.sourcegitcommit: fbb620e0c47f49a8cf0a568ba704edefd0e30f81
+ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91875103"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023172"
 ---
 # <a name="safe-url-list"></a>Liste der sicheren URLs
 
@@ -34,7 +34,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |mrsglobalsteus2prod.blob.core.windows.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
 |wvdportalstorageblob.blob.core.windows.net|443|Unterstützung des Azure-Portals|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
-| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/security-overview.md#azure-platform-considerations) | – |
+| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 >[!IMPORTANT]
 >Windows Virtual Desktop unterstützt jetzt das FQDN-Tag. Weitere Informationen finden Sie unter [Verwenden von Azure Firewall zum Schutz von Windows Virtual Desktop-Bereitstellungen](../firewall/protect-windows-virtual-desktop.md).
@@ -56,7 +56,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |mrsglobalstugviffx.core.usgovcloudapi.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Unterstützung des Azure-Portals|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
-| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/security-overview.md#azure-platform-considerations) | – |
+| 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
 
 In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuellen Azure-Computer Zugriff haben können:
 

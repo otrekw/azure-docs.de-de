@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
-ms.openlocfilehash: 64884f07bc59e5ff2b29eac645ddb469ef3db465
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6b3fdf052ce7f0d6a5c3497aa1ac971d9249546a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325184"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015591"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Abfragen von Protokollen aus Azure Monitor für VMs
 
@@ -475,5 +475,5 @@ In der folgenden Tabelle sind die Leistungsindikatoren aufgeführt, die zurzeit 
 
 * Wenn Sie noch nicht mit dem Schreiben von Protokollabfragen vertraut sind, finden Sie Informationen zur Verwendung von Log Analytics im Azure-Portal zum Schreiben von Protokollabfragen unter [Erste Schritte mit Azure Monitor Log Analytics](../log-query/get-started-portal.md).
 
-* Erfahren Sie mehr über das [Schreiben von Suchabfragen](../log-query/search-queries.md).
+* Erfahren Sie mehr über das [Schreiben von Suchabfragen](/azure/azure-monitor/log-query/get-started-queries).
 

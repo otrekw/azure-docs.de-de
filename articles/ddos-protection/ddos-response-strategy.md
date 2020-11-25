@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 23822ce5b311dc479824128d66bc18a15473862d
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 0a80f03ee82e8d1216353482dc867402adcf7d09
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904870"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94992232"
 ---
 # <a name="components-of-a-ddos-response-strategy"></a>Komponenten einer DDoS-Reaktionsstrategie
 
@@ -44,9 +44,9 @@ Es ist zwingend notwendig, dass Sie durchgehend Ihr Risiko für DDoS-Angriffe ei
 
 - Sind meine Dienste mehrere Regionen übergreifend aktiv / aktiv mit Failover?
 
-Es ist von entscheidender Bedeutung, das normale Verhalten einer Anwendung zu kennen und sich auf den Fall vorzubereiten, dass sich die Anwendung während eines DDoS-Angriffs nicht erwartungsgemäß verhält. Sie sollten Monitore für Ihre unternehmenskritischen Anwendungen konfigurieren, die das Clientverhalten imitieren und Sie benachrichtigen, wenn relevante Anomalien erkannt werden. Unter [Bewährte Methoden für Überwachung und Diagnose](https://docs.microsoft.com/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) erfahren Sie, wie Sie Erkenntnisse über die Integrität Ihrer Anwendung erhalten.
+Es ist von entscheidender Bedeutung, das normale Verhalten einer Anwendung zu kennen und sich auf den Fall vorzubereiten, dass sich die Anwendung während eines DDoS-Angriffs nicht erwartungsgemäß verhält. Sie sollten Monitore für Ihre unternehmenskritischen Anwendungen konfigurieren, die das Clientverhalten imitieren und Sie benachrichtigen, wenn relevante Anomalien erkannt werden. Unter [Bewährte Methoden für Überwachung und Diagnose](/azure/architecture/best-practices/monitoring#monitoring-and-diagnostics-scenarios) erfahren Sie, wie Sie Erkenntnisse über die Integrität Ihrer Anwendung erhalten.
 
-[Azure Application Insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
+[Azure Application Insights](../azure-monitor/app/app-insights-overview.md) ist ein erweiterbarer, für Webentwickler konzipierter Dienst zur Verwaltung der Anwendungsleistung (Application Performance Management, APM) auf mehreren Plattformen. Sie können mit Application Insights Ihre Live-Web-App überwachen. Der Dienst erkennt automatisch Leistungsanomalien. Er verfügt über Analysetools, mit denen Sie Probleme diagnostizieren und nachvollziehen können, wie Ihre App von Benutzern verwendet wird. Der Dienst unterstützt Sie bei der kontinuierlichen Verbesserung der Leistung und Benutzerfreundlichkeit Ihrer App.
 
 ## <a name="customer-ddos-response-team"></a>Kunden-DDoS-Reaktionsteam
 

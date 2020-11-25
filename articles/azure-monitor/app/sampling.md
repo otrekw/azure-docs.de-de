@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: e4c5000adb2339d3fd0f828781a60f75c75894b5
-ms.sourcegitcommit: 419c8c8061c0ff6dc12c66ad6eda1b266d2f40bd
+ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/18/2020
-ms.locfileid: "92168595"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024414"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -25,7 +25,7 @@ Bei der Anzeige im Portal werden die Metrikergebnisse zur Berücksichtigung der 
 * Die Stichprobenerstellung mit festem Prozentsatz ist in den neuesten Versionen der Application Insights-SDKs für ASP.NET, ASP.NET Core, Java (sowohl Agent als auch SDK) und Python verfügbar.
 * Die Erfassungs-Stichprobenerstellung wird auf dem Application Insights-Dienstendpunkt vorgenommen. Sie wird nur angewendet, wenn keine andere Stichprobenerstellung aktiv ist. Wenn das SDK Stichproben Ihrer Telemetriedaten erstellt, ist die Erfassungs-Stichprobenerstellung deaktiviert.
 * Wenn Sie im Fall von Webanwendungen benutzerdefinierte Ereignisse protokollieren und dabei sicherstellen müssen, dass eine Gruppe von Ereignissen gemeinsam beibehalten oder verworfen wird, müssen die Ereignisse den gleichen Wert für `OperationId` aufweisen.
-* Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](../log-query/aggregations.md). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
+* Wenn Sie Analytics-Abfragen schreiben, sollten Sie die [Stichprobenerstellung berücksichtigen](/azure/data-explorer/kusto/query/samples?&pivots=azuremonitor#aggregations). Insbesondere sollten Sie nicht einfach nur Datensätze zählen, sondern stattdessen `summarize sum(itemCount)`verwenden.
 * Einige Telemetrietypen, einschließlich Leistungsmetriken und benutzerdefinierten Metriken, werden immer beibehalten, unabhängig davon, ob die Stichprobenerstellung aktiviert ist.
 
 In der folgenden Tabelle sind die für die jeweiligen SDKs und Anwendungstypen verfügbaren Arten der Stichprobenerstellung zusammengefasst:

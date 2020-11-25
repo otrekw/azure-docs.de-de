@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 1681217c9e55b67ee2a6737aeece5303256bc1e6
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: 654d7b4ddb332906aba330da20d42a0e16ec79e6
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92461803"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021438"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -126,7 +126,6 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Verwaltete Anwendungen  | Nein | Nein | Nein |  |
 |Karten  | Nein | Nein | Nein |  |
 |Media Services | Ja | Ja | Nein |  |
-|Microsoft Flow | Nein | Nein | Nein |  |
 |Microsoft Managed Desktop | Nein | Nein | Nein |  |
 |Microsoft PowerApps | Nein | Nein | Nein |  |
 |Microsoft Social Engagement | Nein | Nein | Nein |  |
@@ -137,6 +136,7 @@ In der folgenden Tabelle sind Azure-Dienste und die damit in Azure Monitor erfas
 |Notification Hubs | Ja | Nein | Nein |  |
 |Open Datasets | Nein | Nein | Nein |  |
 |Richtlinie | Nein | Nein | Nein |  |
+|Power Automate | Nein | Nein | Nein |  |
 |Power BI Embedded | Ja | Ja | Nein |  |
 |Private Link | Nein | Nein | Nein |  |
 |Project Spool Communication Platform | Nein | Nein | Nein |  |

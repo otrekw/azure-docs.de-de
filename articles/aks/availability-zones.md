@@ -5,12 +5,12 @@ services: container-service
 ms.custom: fasttrack-edit, references_regions, devx-track-azurecli
 ms.topic: article
 ms.date: 09/04/2020
-ms.openlocfilehash: 2f7132ffa1fa55d1dfd8043677bf9695a589b7af
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 43b57d0b58c9268482ca27fd51040c7152ecdc25
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93043023"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026050"
 ---
 # <a name="create-an-azure-kubernetes-service-aks-cluster-that-uses-availability-zones"></a>Erstellen eines Azure Kubernetes Service-Clusters (AKS), der Verfügbarkeitszonen verwendet
 
@@ -31,11 +31,14 @@ AKS-Cluster können derzeit über Verfügbarkeitszonen in den folgenden Regionen
 * Australien (Osten)
 * Kanada, Mitte
 * USA (Mitte)
+* East US 
 * USA (Ost) 2
-* East US
 * Frankreich, Mitte
+* Deutschland, Westen-Mitte
 * Japan, Osten
 * Nordeuropa
+* Südafrika, Norden
+* USA Süd Mitte
 * Asien, Südosten
 * UK, Süden
 * Europa, Westen
@@ -72,7 +75,7 @@ Wenn Sie einen Cluster mit dem Befehl [az aks create][az-aks-create] erstellen, 
 
 Wenn Sie beim Erstellen eines AKS-Clusters keine Zonen für den Standard-Agentpool definieren, ist die Verteilung der Steuerungsebenenkomponenten auf Verfügbarkeitszonen nicht garantiert. Sie können zwar zusätzliche Knotenpools mit dem Befehl [az aks nodepool add][az-aks-nodepool-add] hinzufügen und `--zones` für neue Knoten angeben, doch ändert dies nichts an der Verteilung der Steuerungsebene auf Zonen. Verfügbarkeitszoneneinstellungen können nur zum Zeitpunkt der Erstellung des Clusters oder Knotenpools definiert werden.
 
-Das folgende Beispiel erstellt einen AKS-Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup*. Es werden insgesamt *3* Knoten angelegt – ein Agent in Zone *1* , einer in *2* und dann ein weiterer in *3*.
+Das folgende Beispiel erstellt einen AKS-Cluster namens *myAKSCluster* in der Ressourcengruppe namens *myResourceGroup*. Es werden insgesamt *3* Knoten angelegt – ein Agent in Zone *1*, einer in *2* und dann ein weiterer in *3*.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location eastus2

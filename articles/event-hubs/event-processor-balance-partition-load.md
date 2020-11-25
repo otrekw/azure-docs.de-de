@@ -3,12 +3,12 @@ title: 'Ausgleichen der Partitionsauslastung über mehrere Instanzen hinweg: Azu
 description: Beschreibt, wie Sie die Partitionsauslastung über mehrere Instanzen Ihrer Anwendung hinweg mithilfe eines Ereignisprozessors und des Azure Event Hubs SDK ausgleichen können.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 03aeebb376c74e62a1bd935ac1fec4f178b63f4f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: af307058d0eda6b96c0811bccc245c09e2bdd27d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685136"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025043"
 ---
 # <a name="balance-partition-load-across-multiple-instances-of-your-application"></a>Ausgleichen der Partitionsauslastung über mehrere Instanzen der Anwendung hinweg
 Um die Ereignisverarbeitungsanwendung zu skalieren, können Sie mehrere Instanzen der Anwendung ausführen und die Auslastung zwischen diesen untereinander ausgleichen. In älteren Versionen konnte [EventProcessorHost](event-hubs-event-processor-host.md) die Last zwischen mehreren Instanzen Ihres Programms und Prüfpunktereignissen bei deren Empfang ausgleichen. In den neueren Versionen (5.0 oder höher) ermöglichen **EventProcessorClient** (.NET und Java) oder **EventHubConsumerClient** (Python und JavaScript) die gleiche Funktionalität. Das Entwicklungsmodell wird durch die Verwendung von-Ereignissen vereinfacht. Sie abonnieren die Ereignisse, an denen Sie interessiert sind, indem Sie einen Ereignishandler registrieren. Wenn Sie die alte Version der Clientbibliothek verwenden, finden Sie weitere Informationen in den folgenden Migrationsleitfäden: [.NET](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MigrationGuide.md), [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md), [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md) und [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md).
@@ -76,7 +76,7 @@ Wenn der Prüfpunkt ausgeführt wird, um ein Ereignis als verarbeitet zu markier
 
 > [!NOTE]
 > Wenn Sie Azure Blob Storage als Prüfpunktspeicher in einer Umgebung verwenden, die eine andere Version des Storage Blob SDK unterstützt als diejenigen, die in der Regel in Azure verfügbar sind, müssen Sie Code verwenden, um die Version der Speicherdienst-API in die von dieser Umgebung unterstützte Version zu ändern. Wenn Sie z. B. [Event Hubs mit einer Azure Stack Hub-Version 2002](/azure-stack/user/event-hubs-overview) ausführen, ist die höchste verfügbare Version für den Speicherdienst Version 2017-11-09. In diesem Fall müssen Sie Code verwenden, um Version 2017-11-09 der Storage Service-API als Ziel zu nutzen. Ein Beispiel für die Verwendung einer bestimmten Storage-API-Version als Ziel finden Sie in den folgenden Beispielen auf GitHub: 
-> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/Sample10_RunningWithDifferentStorageVersion.cs). 
+> - [.NET](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/eventhub/Azure.Messaging.EventHubs.Processor/samples/). 
 > - [Java](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs-checkpointstore-blob/src/samples/java/com/azure/messaging/eventhubs/checkpointstore/blob/)
 > - [JavaScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/javascript) oder [TypeScript](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/eventhubs-checkpointstore-blob/samples/typescript)
 > - [Python](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub-checkpointstoreblob-aio/samples/)
