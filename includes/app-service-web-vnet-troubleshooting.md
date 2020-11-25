@@ -5,16 +5,16 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: ccompy
 ms.openlocfilehash: cec44bbabdb7d528c30a8d3396b819f2eb3c5386
-ms.sourcegitcommit: bbd66b477d0c8cb9adf967606a2df97176f6460b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93235901"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999435"
 ---
 Die Funktion ist zwar einfach einzurichten, dies bedeutet jedoch nicht, dass keinerlei Probleme auftreten. Sollten beim Zugreifen auf den gewünschten Endpunkt Probleme auftreten, können Sie einige Hilfsprogramme verwenden, um die Verbindung über die App-Konsole zu testen. Sie können zwei Konsolen verwenden. Eine ist die Kudu-Konsole, und die andere ist die Konsole im Azure-Portal. Greifen Sie in der App auf **Tools** > **Kudu** zu, um zur Kudu-Konsole zu gelangen. Sie können auch die Kudo-Konsole unter „[sitename].scmn.azurewebsites.net“ erreichen. Wechseln Sie nach dem Laden der Website zur Registerkarte **Debugging-Konsole**. Um auf die über das Azure-Portal gehostete Konsole zuzugreifen, greifen Sie in der App auf **Tools** > **Konsole** zu.
 
 #### <a name="tools"></a>Tools
-In nativen Windows-Apps funktionieren die Tools **ping** , **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole (sie funktionieren in [benutzerdefinierten Windows-Containern](../articles/app-service/quickstart-custom-container.md)). Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen **nameresolver.exe** hinzugefügt. Die Syntax ist:
+In nativen Windows-Apps funktionieren die Tools **ping**, **nslookup** und **tracert** funktionieren aufgrund von Sicherheitseinschränkungen nicht über die Konsole (sie funktionieren in [benutzerdefinierten Windows-Containern](../articles/app-service/quickstart-custom-container.md)). Es wurden zwei separate Tools hinzugefügt, um diese Lücke zu füllen. Zum Testen der DNS-Funktionalität haben wir ein Tool mit dem Namen **nameresolver.exe** hinzugefügt. Die Syntax ist:
 
 ```console
 nameresolver.exe hostname [optional: DNS Server]
@@ -32,12 +32,12 @@ Mit dem nächsten Tool können Sie die TCP-Verbindung mit einer Host-Port-Kombin
 tcpping.exe hostname [optional: port]
 ```
 
-Das **tcpping** -Hilfsprogramm teilt Ihnen mit, ob Sie einen bestimmten Host und Port erreichen können. Es kann nur unter folgenden Bedingungen erfolgreich ausgeführt werden: Eine Anwendung lauscht auf der Host- und Portkombination, und von Ihrer App aus ist Netzwerkzugriff auf den angegebenen Host und Port möglich.
+Das **tcpping**-Hilfsprogramm teilt Ihnen mit, ob Sie einen bestimmten Host und Port erreichen können. Es kann nur unter folgenden Bedingungen erfolgreich ausgeführt werden: Eine Anwendung lauscht auf der Host- und Portkombination, und von Ihrer App aus ist Netzwerkzugriff auf den angegebenen Host und Port möglich.
 
 #### <a name="debug-access-to-virtual-network-hosted-resources"></a>Debuggen des Zugriffs auf im virtuellen Netzwerk gehostete Ressourcen
 Es gibt verschiedene Gründe, aus denen Ihre App einen bestimmten Host und Port nicht erreichen kann. In den meisten Fällen liegt eine der drei folgenden Ursachen vor:
 
-* **Eine Firewall.** Falls eine Firewall den Zugriff verhindert, wird das TCP-Timeout ausgelöst. Das TCP-Timeout entspricht hier 21 Sekunden. Überprüfen Sie die Verbindung mithilfe des **tcpping** -Tools. TCP-Timeouts können zwar auch viele andere Ursachen haben, es empfiehlt sich jedoch, bei der Firewall zu beginnen.
+* **Eine Firewall.** Falls eine Firewall den Zugriff verhindert, wird das TCP-Timeout ausgelöst. Das TCP-Timeout entspricht hier 21 Sekunden. Überprüfen Sie die Verbindung mithilfe des **tcpping**-Tools. TCP-Timeouts können zwar auch viele andere Ursachen haben, es empfiehlt sich jedoch, bei der Firewall zu beginnen.
 * **Kein DNS-Zugriff.** Das DNS-Timeout beträgt 3 Sekunden pro DNS-Server. Wenn Sie zwei DNS-Server besitzen, beträgt das Timeout 6 Sekunden. Überprüfen Sie mithilfe des nameresolver-Tools, ob DNS funktioniert. Das nslookup-Tool kann nicht verwendet werden, da es nicht das DNS verwendet, mit dem Ihr virtuelles Netzwerk konfiguriert ist. Dieses Problem kann darauf zurückzuführen sein, dass eine Firewall oder Netzwerksicherheitsgruppe den Zugriff auf das DNS blockiert.
 
 Sollte das Problem weiterhin bestehen, überprüfen Sie zunächst Folgendes:
@@ -78,7 +78,7 @@ test-netconnection hostname [optional: -Port]
 
 #### <a name="on-premises-resources"></a>Lokale Ressourcen ####
 
-Wenn Ihre App eine Ressource lokal nicht erreichen kann, überprüfen Sie, ob Sie die Ressource über Ihr virtuelles Netzwerk erreichen können. Verwenden Sie den PowerShell-Befehl **test-netconnection** , um den TCP-Zugriff zu überprüfen. Wenn Ihre VM die lokale Ressource nicht erreichen kann, ist Ihre VPN- oder ExpressRoute-Verbindung möglicherweise nicht richtig konfiguriert.
+Wenn Ihre App eine Ressource lokal nicht erreichen kann, überprüfen Sie, ob Sie die Ressource über Ihr virtuelles Netzwerk erreichen können. Verwenden Sie den PowerShell-Befehl **test-netconnection**, um den TCP-Zugriff zu überprüfen. Wenn Ihre VM die lokale Ressource nicht erreichen kann, ist Ihre VPN- oder ExpressRoute-Verbindung möglicherweise nicht richtig konfiguriert.
 
 Wenn die im virtuellen Netzwerk gehostete VM auf ein lokales System zugreifen kann, die App jedoch nicht, trifft wahrscheinlich einer der folgenden Gründe zu:
 

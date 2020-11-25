@@ -11,11 +11,11 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: df7d2278487c1b098615a14562c498b9187c56eb
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321199"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000027"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>Aufgaben für die Teamleitung in einem Team Data Science-Prozessteam
 
@@ -33,14 +33,14 @@ Die folgende Abbildung zeigt den Workflow für die Aufgaben, die die Teamleitung
   
 1. Benennen Sie das standardmäßige Teamrepository in **TeamUtilities** um.
   
-1. Erstellen Sie ein neues **TeamTemplate** -Repository im Teamprojekt. 
+1. Erstellen Sie ein neues **TeamTemplate**-Repository im Teamprojekt. 
   
 1. Importieren Sie den Inhalt der Repositorys **GroupUtilities** und **GroupProjectTemplate** der Gruppe in die Repositorys **TeamUtilities** und **TeamTemplate**. 
   
 1. Richten Sie eine **Sicherheitskontrolle** ein, indem Sie Teammitglieder hinzufügen und die zugehörigen Berechtigungen konfigurieren.
   
 1. Erstellen Sie bei Bedarf Ressourcen für Teamdaten und Analysen:
-   - Fügen Sie teamspezifische Hilfsprogramme zum **TeamUtilities** -Repository hinzu. 
+   - Fügen Sie teamspezifische Hilfsprogramme zum **TeamUtilities**-Repository hinzu. 
    - Erstellen Sie einen **Azure-Dateispeicher** zum Speichern von Datenassets, die für das gesamte Team nützlich sein können. 
    - Stellen Sie den Azure-Dateispeicher auf der **Data Science Virtual Machine** (DSVM) des Teamleiters bereit, und fügen Sie ihr Datenassets hinzu.
 
@@ -53,8 +53,8 @@ Das folgende Tutorial führt ausführlich durch die entsprechenden Schritte.
 
 In diesem Tutorial wird davon ausgegangen, dass die folgenden Ressourcen und Berechtigungen von Ihrem [Gruppenleiter](group-manager-tasks.md) eingerichtet wurden:
 
-- Die Azure DevOps- **Organisation** für Ihre Dateneinheit
-- Die Repositorys **GroupProjectTemplate** und **GroupUtilities** , die mit dem Inhalt der Repositorys des Microsoft TDSP-Teams **ProjectTemplate** und **Utilities** gefüllt sind.
+- Die Azure DevOps-**Organisation** für Ihre Dateneinheit
+- Die Repositorys **GroupProjectTemplate** und **GroupUtilities**, die mit dem Inhalt der Repositorys des Microsoft TDSP-Teams **ProjectTemplate** und **Utilities** gefüllt sind.
 - Berechtigungen für Ihr Organisationskonto, damit Sie Projekte und Repositorys für Ihr Team erstellen können
 
 Damit Sie Repositorys klonen und deren Inhalt auf Ihrem lokalen Computer oder Ihrer DSVM ändern können, oder um Azure-Dateispeicher einzurichten und auf Ihrer DSVM einzubinden, benötigen Sie Folgendes:
@@ -62,7 +62,7 @@ Damit Sie Repositorys klonen und deren Inhalt auf Ihrem lokalen Computer oder Ih
 - Ein Azure-Abonnement.
 - Git muss auf Ihrem Computer installiert sein. Wenn Sie eine DSVM verwenden, ist Git vorinstalliert. Andernfalls helfen Ihnen die Informationen im [Anhang von Plattformen und Tools](platforms-and-tools.md#appendix) weiter.
 - Wenn Sie eine DSVM verwenden möchten, wird die Windows- oder Linux-DSVM in Azure erstellt und konfiguriert. Weitere Informationen und Anweisungen finden Sie in der Dokumentation zur [Data Science Virtual Machine](../data-science-virtual-machine/index.yml).
-- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation** , und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
+- Für eine Windows DSVM muss [Git Credential Manager (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) auf Ihrem Computer installiert sein. Scrollen Sie in der Datei *README.md* nach unten zum Abschnitt für **Download und Installation**, und wählen Sie dann das **neueste Installationsprogramm** aus. Laden Sie das Installationsprogramm mit der Erweiterung *EXE* von der Installationsprogrammseite herunter, und führen Sie es aus. 
 - Für eine Linux-DSVM muss ein öffentlicher SSH-Schlüssel auf Ihrer DSVM eingerichtet und in Azure DevOps hinzugefügt werden. Weitere Informationen und Anweisungen finden Sie im [Anhang zu Plattformen und Tools](platforms-and-tools.md#appendix) im Abschnitt **Erstellen eines öffentlichen SSH-Schlüssels**. 
 
 ## <a name="create-a-team-project-and-repositories"></a>Erstellen eines Teamprojekts und von Repositorys
@@ -89,7 +89,7 @@ So erstellen Sie ein separates Projekt für Ihr Team
    
    ![„Neues Projekt“ auswählen](./media/team-lead-tasks/team-leads-2-create-new-team.png)
    
-1. Geben Sie im Dialogfeld **Projekt erstellen** unter **Projektname** Ihren Teamnamen ein, z. B. *MyTeam* , und wählen Sie dann **Erweitert** aus. 
+1. Geben Sie im Dialogfeld **Projekt erstellen** unter **Projektname** Ihren Teamnamen ein, z. B. *MyTeam*, und wählen Sie dann **Erweitert** aus. 
    
 1. Wählen Sie unter **Versionskontrolle** die Option **Git** und dann unter **Arbeitselementprozess** die Option **Agile** aus. Klicken Sie anschließend auf **Erstellen**. 
    
@@ -99,11 +99,11 @@ Die Seite **Zusammenfassung** des Teamprojekts wird mit der Seiten-URL *https:\/
 
 ### <a name="rename-the-myteam-default-repository-to-teamutilities"></a>Umbenennen des standardmäßigen Repositorys „MyTeam“ in „TeamUtilities“
 
-1. Wählen Sie auf der Seite **Zusammenfassung** des **MyTeam** -Projekts unter **Mit welchem Dienst möchten Sie starten?** die Option **Repos** aus. 
+1. Wählen Sie auf der Seite **Zusammenfassung** des **MyTeam**-Projekts unter **Mit welchem Dienst möchten Sie starten?** die Option **Repos** aus. 
    
    ![„Repos“ auswählen](./media/team-lead-tasks/team-leads-6-rename-team-project-repo.png)
    
-1. Wählen Sie auf der **MyTeam** -Repositoryseite das **MyTeam** -Repository oben auf der Seite aus. Anschließend wählen Sie **Repositorys verwalten** aus der Dropdownliste aus. 
+1. Wählen Sie auf der **MyTeam**-Repositoryseite das **MyTeam**-Repository oben auf der Seite aus. Anschließend wählen Sie **Repositorys verwalten** aus der Dropdownliste aus. 
    
    ![„Repositorys verwalten“ auswählen](./media/team-lead-tasks/team-leads-7-rename-team-project-repo-2.png)
 1. Wählen Sie auf der Seite **Projekteinstellungen** die Auslassungspunkte ( **...** ) neben **MyTeam** und dann **Repository umbenennen** aus. 
@@ -118,7 +118,7 @@ Die Seite **Zusammenfassung** des Teamprojekts wird mit der Seiten-URL *https:\/
    
    ![Auswählen von „Neues Repository“](./media/team-lead-tasks/team-leads-9-create-team-utilities.png)
    
-   Alternativ können Sie auch **Repos** aus dem linken Navigationsbereich der Seite **Zusammenfassung** des **MyTeam** -Projekts auswählen, oben auf der Seite ein Repository und dann **Neues Repository** aus der Dropdownliste auswählen.
+   Alternativ können Sie auch **Repos** aus dem linken Navigationsbereich der Seite **Zusammenfassung** des **MyTeam**-Projekts auswählen, oben auf der Seite ein Repository und dann **Neues Repository** aus der Dropdownliste auswählen.
    
 1. Stellen Sie im Dialogfeld **Neues Repository erstellen** sicher, dass **Git** unter **Typ** ausgewählt ist. Geben Sie *TeamTemplate* unter **Repository-Name** ein, und wählen Sie dann **Erstellen** aus.
    
@@ -132,7 +132,7 @@ Die Seite **Zusammenfassung** des Teamprojekts wird mit der Seiten-URL *https:\/
 
 So füllen Sie Ihre Teamrepositorys mit dem Inhalt der von Ihrem Gruppenleiter eingerichteten allgemeinen Gruppenrepositorys
 
-1. Wählen Sie auf der Startseite des **MyTeam** -Projekts auf der linken Navigationsleiste **Repos** aus. Wenn Sie die Meldung erhalten, dass die Vorlage **MyTeam** nicht gefunden wurde, wählen Sie den Link in **Andernfalls zum standardmäßigen TeamTemplate-Repository navigieren** aus. 
+1. Wählen Sie auf der Startseite des **MyTeam**-Projekts auf der linken Navigationsleiste **Repos** aus. Wenn Sie die Meldung erhalten, dass die Vorlage **MyTeam** nicht gefunden wurde, wählen Sie den Link in **Andernfalls zum standardmäßigen TeamTemplate-Repository navigieren** aus. 
    
    Das Standardrepository **TeamTemplate** wird geöffnet. 
    
@@ -148,7 +148,7 @@ So füllen Sie Ihre Teamrepositorys mit dem Inhalt der von Ihrem Gruppenleiter e
    
 1. Wählen Sie oben auf der Seite **Repos** Ihres Projekts das Dropdownmenü und dann das Repository **TeamUtilities** aus.
    
-1. Wiederholen Sie den Importvorgang, um den Inhalt des Utilities-Repositorys der allgemeinen Gruppe, z. B. *GroupUtilities* , in Ihr **TeamUtilities** -Repository zu importieren. 
+1. Wiederholen Sie den Importvorgang, um den Inhalt des Utilities-Repositorys der allgemeinen Gruppe, z. B. *GroupUtilities*, in Ihr **TeamUtilities**-Repository zu importieren. 
    
 Jedes der beiden Teamrepositorys enthält jetzt die Dateien aus dem entsprechenden allgemeinen Gruppenrepository. 
 
@@ -184,7 +184,7 @@ Um mit Repositorys auf Ihrem lokalen Computer oder Ihrer DSVM zu arbeiten, kopie
 
 So klonen Sie Repositorys
 
-1. Wählen Sie auf der Seite **Zusammenfassung** des **MyTeam** -Projekts die Option **Repos** und dann oben auf der Seite das zu klonende Repository aus.
+1. Wählen Sie auf der Seite **Zusammenfassung** des **MyTeam**-Projekts die Option **Repos** und dann oben auf der Seite das zu klonende Repository aus.
    
 1. Wählen Sie auf der Repositoryseite oben rechts **Klonen** aus.
    
@@ -238,7 +238,7 @@ git push
 
 So fügen Sie dem Team Mitglieder hinzu
 
-1. Wählen Sie in Azure DevOps auf der Startseite des **MyTeam** -Projekts die Option **Projekteinstellungen** im linken Navigationsbereich aus. 
+1. Wählen Sie in Azure DevOps auf der Startseite des **MyTeam**-Projekts die Option **Projekteinstellungen** im linken Navigationsbereich aus. 
    
 1. Wählen Sie unter **Projekteinstellungen** die Option **Teams** und dann auf der Seite **Teams** die Option **MyTeam-Team** aus. 
    
@@ -296,7 +296,7 @@ Informationen zum Freigeben anderer Ressourcen für Ihr Team, z. B. Azure HDInsi
    
 1. Wählen Sie das zu verwendende Speicherkonto aus, oder erstellen Sie unter dem ausgewählten Abonnement ein neues Speicherkonto: Sie können Kleinbuchstaben, Zahlen und Bindestriche für den Namen des Azure-Dateispeichers verwenden.
    
-1. Um das Einbinden und Freigeben des Speichers zu vereinfachen, drücken Sie die EINGABETASTE oder geben Sie *J* ein, um die Informationen für den Azure-Dateispeicher in einer Textdatei in Ihrem aktuellen Verzeichnis zu speichern. Sie können diese Textdatei in Ihr **TeamTemplate** -Repository einchecken, idealerweise unter **Docs\DataDictionaries** , sodass alle Projekte in Ihrem Team darauf zugreifen können. Sie benötigen die Dateiinformationen auch, um Ihren Azure-Dateispeicher im nächsten Abschnitt auf Ihrer Azure DSVM einzubinden. 
+1. Um das Einbinden und Freigeben des Speichers zu vereinfachen, drücken Sie die EINGABETASTE oder geben Sie *J* ein, um die Informationen für den Azure-Dateispeicher in einer Textdatei in Ihrem aktuellen Verzeichnis zu speichern. Sie können diese Textdatei in Ihr **TeamTemplate**-Repository einchecken, idealerweise unter **Docs\DataDictionaries**, sodass alle Projekte in Ihrem Team darauf zugreifen können. Sie benötigen die Dateiinformationen auch, um Ihren Azure-Dateispeicher im nächsten Abschnitt auf Ihrer Azure DSVM einzubinden. 
    
 ### <a name="mount-azure-file-storage-on-your-local-machine-or-dsvm"></a>Einbinden von Azure-Dateispeicher auf Ihrem lokalen Computer oder Ihrer DSVM
 

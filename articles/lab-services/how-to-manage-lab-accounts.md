@@ -4,11 +4,11 @@ description: Erfahren Sie, wie Sie in einem Azure-Abonnement ein Lab-Konto erste
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 33e5e42f65fdd34bb37b12947b5173700ad7970c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251659"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999500"
 ---
 # <a name="create-and-manage-lab-accounts"></a>Erstellen und Verwalten von Labkonten
 In Azure Lab Services ist ein Lab-Konto ein Container für verwaltete Labtypen (beispielsweise Classroom-Labs). Ein Administrator richtet ein Lab-Konto mit Azure Lab Services ein und gewährt Lab-Besitzern Zugriff, sodass sie Labs unter dem Konto erstellen können. In diesem Artikel erfahren Sie, wie Sie ein Lab-Konto erstellen, alle Lab-Konten anzeigen oder ein Lab-Konto löschen.

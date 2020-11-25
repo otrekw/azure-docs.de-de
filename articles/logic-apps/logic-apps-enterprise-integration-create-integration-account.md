@@ -9,11 +9,11 @@ ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.openlocfilehash: 191832ab227e854b40938183e335c1b6ea52199c
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347844"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000051"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Erstellen und Verwalten von Integrationskonten für die B2B-Unternehmensintegration in Azure Logic Apps
 
@@ -63,7 +63,7 @@ Für diese Aufgabe können Sie das Azure-Portal verwenden, indem Sie die Schritt
    | **Abonnement** | Ja | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements |
    | **Ressourcengruppe** | Ja | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md), die zum Organisieren verwandter Ressourcen verwendet werden soll. Erstellen Sie für dieses Beispiel eine neue Ressourcengruppe mit dem Namen „FabrikamIntegration-RG“. |
    | **Tarif** | Ja | <*Preisstufe*> | Der Tarif für das Integrationskonto – diesen können Sie später ändern. Wählen Sie für dieses Beispiel die Option **Free** aus. Weitere Informationen finden Sie in den folgenden Themen: <p>- [Logic Apps – Preismodell](../logic-apps/logic-apps-pricing.md#integration-accounts) <p>- [Logic Apps – Grenzwerte und Konfiguration](../logic-apps/logic-apps-limits-and-config.md#integration-account-limits) <p>- [Logic Apps – Preise](https://azure.microsoft.com/pricing/details/logic-apps/) |
-   | **Location** | Ja | <*Azure-Region*> | Die Region, in der die Metadaten zu Ihrem Integrationskonto gespeichert werden sollen. Wählen Sie entweder den gleichen Standort wie für die Logik-App aus, oder erstellen Sie Ihre Logik-Apps am gleichen Standort, an dem sich das Integrationskonto befindet. Verwenden Sie für dieses Beispiel „USA, Westen“. <p>**Hinweis** : Um ein Integrationskonto in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (ISE) zu erstellen, wählen Sie diese ISE als Standort aus. Weitere Informationen finden Sie unter [Erstellen von Integrationskonten in einer ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
+   | **Location** | Ja | <*Azure-Region*> | Die Region, in der die Metadaten zu Ihrem Integrationskonto gespeichert werden sollen. Wählen Sie entweder den gleichen Standort wie für die Logik-App aus, oder erstellen Sie Ihre Logik-Apps am gleichen Standort, an dem sich das Integrationskonto befindet. Verwenden Sie für dieses Beispiel „USA, Westen“. <p>**Hinweis**: Um ein Integrationskonto in einer [Integrationsdienstumgebung](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) (ISE) zu erstellen, wählen Sie diese ISE als Standort aus. Weitere Informationen finden Sie unter [Erstellen von Integrationskonten in einer ISE](../logic-apps/add-artifacts-integration-service-environment-ise.md#create-integration-account-environment). |
    | **Log Analytics** | Nein | Aus, Ein | Behalten Sie für dieses Beispiel die Einstellung **Aus** bei. |
    |||||
 
@@ -289,7 +289,7 @@ Wenn Sie Ihre Logik-App mit einem anderen Integrationskonto verknüpfen oder kei
 
    ![Suchen des integrationAccount-Objekts](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-delete-integration-account.png)
 
-1. Klicken Sie auf der Registerkarte **Daten** auf **PUT** , um die Änderungen zu speichern.
+1. Klicken Sie auf der Registerkarte **Daten** auf **PUT**, um die Änderungen zu speichern.
 
    ![Speichern der Änderungen über „PUT“](./media/logic-apps-enterprise-integration-create-integration-account/resource-explorer-save-changes.png)
 

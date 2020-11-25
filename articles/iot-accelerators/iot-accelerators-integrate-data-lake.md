@@ -9,11 +9,11 @@ ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.openlocfilehash: fce4da9cc9577bc9805289473d3df7647b1b0934
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92670931"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96000469"
 ---
 # <a name="integrate-the-remote-monitoring-solution-with-azure-data-lake-store"></a>Integrieren der Remoteüberwachungslösung in Azure Data Lake Store
 
@@ -57,7 +57,7 @@ az iot hub consumer-group create --hub-name contoso-rm30263 --name streamanalyti
 
 Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ihrem IoT Hub in Ihren Azure Data Lake Store.
 
-1. Klicken Sie auf **Ressource erstellen** , wählen Sie Internet der Dinge (IoT) aus Marketplace aus, und klicken Sie dann auf **Stream Analytics-Auftrag**.
+1. Klicken Sie auf **Ressource erstellen**, wählen Sie Internet der Dinge (IoT) aus Marketplace aus, und klicken Sie dann auf **Stream Analytics-Auftrag**.
 
     ![Neuer Stream Analytics-Auftrag](./media/iot-accelerators-integrate-data-lake/new-stream-analytics-job.png)
 
@@ -79,7 +79,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
     ![Seite „Übersicht“](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview.png)
 
-1. Klicken Sie auf **Datenstromeingabe hinzufügen** , und wählen Sie dann **IoT Hub** aus der Dropdownliste aus.
+1. Klicken Sie auf **Datenstromeingabe hinzufügen**, und wählen Sie dann **IoT Hub** aus der Dropdownliste aus.
 
     ![Hinzufügen der Eingabe](./media/iot-accelerators-integrate-data-lake/stream-analytics-add-input.png)
 
@@ -95,7 +95,7 @@ Erstellen Sie einen Azure Stream Analytics-Auftrag zum Streamen der Daten aus Ih
 
     ![Hinzufügen von Data Lake Store](./media/iot-accelerators-integrate-data-lake/stream-analytics-overview-2.png)
 
-1. Klicken Sie auf **Hinzufügen** , und wählen Sie **Data Lake Store** aus der Dropdownliste aus.
+1. Klicken Sie auf **Hinzufügen**, und wählen Sie **Data Lake Store** aus der Dropdownliste aus.
 
     ![Hinzufügen der Ausgabe](./media/iot-accelerators-integrate-data-lake/stream-analytics-output.png)
 

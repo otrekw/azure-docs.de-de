@@ -3,16 +3,17 @@ title: Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer | Mic
 description: Richten Sie in Ihrer Azure-Umgebung schnell Oracle ASM ein.
 author: dbakevlar
 ms.service: virtual-machines-linux
+ms.subservice: workloads
 ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: b9653cded11edd36602caea0ecd50cfb8dd05ebe
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: e5593d530891e39404e0b9760861f2f22ae333d3
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92547179"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95999993"
 ---
 # <a name="set-up-oracle-asm-on-an-azure-linux-virtual-machine"></a>Einrichten von Oracle ASM auf einem virtuellen Azure Linux-Computer  
 
@@ -135,7 +136,7 @@ Weitere Informationen zum Installieren von Oracle ASM finden Sie unter [Oracle A
     uid=3000(grid) gid=54321(oinstall) groups=54321(oinstall),54322(dba),54345(asmadmin),54346(asmdba),54347(asmoper)
     ```
  
-6. Erstellen Sie einen Ordner für den Benutzer *grid* , und ändern Sie den Besitzer:
+6. Erstellen Sie einen Ordner für den Benutzer *grid*, und ändern Sie den Besitzer:
 
    ```bash
    mkdir /u01/app/grid 
@@ -144,7 +145,7 @@ Weitere Informationen zum Installieren von Oracle ASM finden Sie unter [Oracle A
 
 ## <a name="set-up-oracle-asm"></a>Einrichten von Oracle ASM
 
-In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asmadmin* verwendet. Stellen Sie sicher, dass der *oracle* -Benutzer Mitglied der Gruppe „asmadmin“ ist. Führen Sie zum Einrichten der Oracle ASM-Installation die folgenden Schritte aus:
+In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asmadmin* verwendet. Stellen Sie sicher, dass der *oracle*-Benutzer Mitglied der Gruppe „asmadmin“ ist. Führen Sie zum Einrichten der Oracle ASM-Installation die folgenden Schritte aus:
 
 1. Die Einrichtung des Oracle ASM-Bibliothekstreibers umfasst die Definition des Standardbenutzers (grid) und der Standardgruppe (asmadmin) sowie die Konfiguration des Datenträgers, der beim Systemstart gestartet werden soll (wählen Sie „y“) und der Suche nach Datenträgern beim Systemstart (wählen Sie „y“). Sie müssen die Eingabeaufforderungen beim folgenden Befehl beantworten:
 
@@ -191,7 +192,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
    11       0       1152 sr0
    ```
 
-3. Formatieren Sie den Datenträger */dev/sdc* , indem Sie den folgenden Befehl ausführen und die Eingabeaufforderungen beantworten:
+3. Formatieren Sie den Datenträger */dev/sdc*, indem Sie den folgenden Befehl ausführen und die Eingabeaufforderungen beantworten:
    - *n* für eine neue Partition
    - *p* für die primäre Partition
    - *1* zum Auswählen der ersten Partition
@@ -317,7 +318,7 @@ In diesem Tutorial wird als Standardbenutzer *grid* und als Standardgruppe *asma
     FRA
    ```
 
-9. Ändern Sie die Kennwörter für die Root-, Oracle- und Grid-Benutzer. **Notieren Sie sich diese neuen Kennwörter** , da Sie diese später bei der Installation benötigen.
+9. Ändern Sie die Kennwörter für die Root-, Oracle- und Grid-Benutzer. **Notieren Sie sich diese neuen Kennwörter**, da Sie diese später bei der Installation benötigen.
 
    ```bash
    passwd oracle 
