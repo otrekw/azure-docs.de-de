@@ -8,11 +8,11 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 05/15/2019
 ms.openlocfilehash: c05db2d9ba184da89665a236994c851355cc2644
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127432"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019853"
 ---
 # <a name="use-the-azure-stream-analytics-cicd-nuget-package-for-integration-and-development"></a>Verwenden des CI/CD-NuGet-Pakets von Azure Stream Analytics für die Integration und Entwicklung 
 In diesem Artikel wird beschrieben, wie Sie Continuous Integration und Continuous Deployment mithilfe des Azure Stream Analytics CI/CD NuGet-Pakets einrichten.
@@ -32,7 +32,7 @@ Wie bei der standardmäßigen Visual Studio MSBuild-Benutzeroberfläche können 
 
 ```
 
-Wenn ein Stream Analytics Visual Studio-Projekt erfolgreich erstellt wurde, generiert es die folgenden beiden Azure Resource Manager-Vorlagendateien im Ordner **bin/[Debug/Retail]/Deploy** : 
+Wenn ein Stream Analytics Visual Studio-Projekt erfolgreich erstellt wurde, generiert es die folgenden beiden Azure Resource Manager-Vorlagendateien im Ordner **bin/[Debug/Retail]/Deploy**: 
 
 * Resource Manager-Vorlagendatei
 

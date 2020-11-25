@@ -9,11 +9,11 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 06/13/2019
 ms.openlocfilehash: 6abdb3cc6981a4fbdd52b88a75457c37709597f5
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534327"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020788"
 ---
 # <a name="use-hdinsight-spark-cluster-to-analyze-data-in-data-lake-storage-gen1"></a>Verwenden des HDInsight Spark-Clusters zum Analysieren von Daten in Data Lake Storage Gen1
 
@@ -58,24 +58,24 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
     Copy Completed. 1 file copied.
     ```
 
-    Die Datendatei ( **HVAC.csv** ) wird in den Ordner **/hvac** im Data Lake Storage-Konto kopiert.
+    Die Datendatei (**HVAC.csv**) wird in den Ordner **/hvac** im Data Lake Storage-Konto kopiert.
 
 ## <a name="use-an-hdinsight-spark-cluster-with-data-lake-storage-gen1"></a>Verwenden eines HDInsight Spark-Clusters mit Data Lake Storage Gen1
 
 1. Klicken Sie im [Azure-Portal](https://portal.azure.com/)im Startmenü auf die Kachel für Ihren Apache Spark-Cluster (sofern die Kachel ans Startmenü angeheftet ist). Sie können auch unter **Alle durchsuchen** > **HDInsight-Cluster** zu Ihrem Cluster navigieren.
 
-2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster-Dashboard** auf **Jupyter Notebook** . Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
+2. Klicken Sie auf dem Blatt für den Spark-Cluster auf **Quicklinks** und anschließend auf dem Blatt **Cluster-Dashboard** auf **Jupyter Notebook**. Geben Sie die Administratoranmeldeinformationen für den Cluster ein, wenn Sie dazu aufgefordert werden.
 
    > [!NOTE]  
    > Sie können auch das Jupyter Notebook für Ihren Cluster aufrufen, indem Sie in Ihrem Browser die folgende URL öffnen. Ersetzen Sie **CLUSTERNAME** durch den Namen Ihres Clusters:
    >
    > `https://CLUSTERNAME.azurehdinsight.net/jupyter`
 
-3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **PySpark** .
+3. Erstellen Sie ein neues Notebook. Klicken Sie auf **Neu** und dann auf **PySpark**.
 
     ![Erstellen eines neuen Jupyter Notebooks](./media/apache-spark-use-with-data-lake-store/hdinsight-create-jupyter-notebook.png "Erstellen eines neuen Jupyter Notebooks")
 
-4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE** .
+4. Da Sie ein Notebook mit dem PySpark-Kernel erstellt haben, müssen Sie keine Kontexte explizit erstellen. Die Spark- und Hive-Kontexte werden automatisch für Sie erstellt, wenn Sie die erste Codezelle ausführen. Sie können zunächst die Typen importieren, die für dieses Szenario erforderlich sind. Fügen Sie dazu den folgenden Codeausschnitt in eine Zelle ein, und drücken Sie **UMSCHALT+EINGABE**.
 
     ```scala
     from pyspark.sql.types import *
@@ -85,7 +85,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
      ![Status eines Jupyter Notebook-Auftrags](./media/apache-spark-use-with-data-lake-store/hdinsight-jupyter-job-status.png "Status eines Jupyter Notebook-Auftrags")
 
-5. Verwenden Sie die Datei **HVAC.csv** , die Sie in das Data Lake Storage Gen1-Konto kopiert haben, um Beispieldaten in eine temporäre Tabelle zu laden. Sie können mithilfe des folgenden URL-Musters auf die Daten im Data Lake Storage-Konto zugreifen.
+5. Verwenden Sie die Datei **HVAC.csv**, die Sie in das Data Lake Storage Gen1-Konto kopiert haben, um Beispieldaten in eine temporäre Tabelle zu laden. Sie können mithilfe des folgenden URL-Musters auf die Daten im Data Lake Storage-Konto zugreifen.
 
    * Wenn Sie Data Lake Storage Gen1 als Standardspeicher verwenden, befindet sich „HVAC.csv“ in dem Pfad, der folgender URL entspricht:
 
@@ -105,7 +105,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
         adl://<data_lake_store_name>.azuredatalakestore.net/<path_to_file>
         ```
 
-     Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake Storage-Kontos, und drücken Sie **UMSCHALT+EINGABETASTE** . Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac** registriert.
+     Fügen Sie das folgende Codebeispiel in eine leere Zelle ein, ersetzen Sie **MYDATALAKESTORE** durch den Namen Ihres Data Lake Storage-Kontos, und drücken Sie **UMSCHALT+EINGABETASTE**. Mit diesem Beispielcode werden die Daten in einer temporären Tabelle mit dem Namen **hvac** registriert.
 
       ```scala
       # Load the data. The path below assumes Data Lake Storage is   default storage for the Spark cluster
@@ -138,7 +138,7 @@ Wenn Sie einen HDInsight-Cluster mit Data Lake Storage als zusätzlichen Speiche
 
      ![Bereichsdiagramm des Abfrageergebnisses](./media/apache-spark-use-with-data-lake-store/jupyter-area-output1.png "Bereichsdiagramm des Abfrageergebnisses")
 
-8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten** . Dadurch wird das Notebook heruntergefahren und geschlossen.
+8. Nach Ausführen der Anwendung empfiehlt es sich, das Notebook herunterzufahren, um die Ressourcen freizugeben. Klicken Sie hierzu im Menü **Datei** des Notebooks auf die Option zum **Schließen und Anhalten**. Dadurch wird das Notebook heruntergefahren und geschlossen.
 
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,11 +6,11 @@ services: container-service
 ms.topic: article
 ms.date: 09/21/2020
 ms.openlocfilehash: ad51bfdf8c494e763921de880926b839cdb7be62
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92900754"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96021638"
 ---
 # <a name="dynamically-create-and-use-a-persistent-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Dynamisches Erstellen und Verwenden eines persistenten Volumes mit Azure-Datenträgern in Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Jeder AKS-Cluster enthält vier vorab erstellte Speicherklassen, von denen zwei 
 * Die Speicherklasse *default* stellt einen Azure SSD Standard-Datenträger bereit.
     * Der Standardspeicher basiert auf SSD Standard-Laufwerken und stellt eine kostengünstige Speicherlösung mit zuverlässiger Leistung dar. 
 * Die Speicherklasse *managed-premium* stellt einen Azure Premium-Datenträger bereit.
-    * Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium* -Klasse aus.
+    * Premium-Datenträger zeichnen sich durch SSD-basierte hohe Leistung und geringe Wartezeit aus. Sie eignen sich hervorragend für virtuelle Computer, auf denen die Produktionsworkload ausgeführt wird. Wenn die AKS-Knoten in dem Cluster Storage Premium verwenden, wählen Sie die *managed-premium*-Klasse aus.
     
 Wenn Sie eine der Standardspeicherklassen verwenden, können Sie die Volumegröße nicht mehr aktualisieren, nachdem die Speicherklasse erstellt wurde. Wenn Sie die Volumegröße auch nach der Erstellung einer Speicherklasse noch ändern können möchten, fügen Sie einer der Standardspeicherklassen die Zeile `allowVolumeExpansion: true` hinzu, oder Sie erstellen Ihre eigene, benutzerdefinierte Speicherklasse. Beachten Sie, dass eine Reduzierung der PVC-Größe nicht unterstützt wird (zur Vermeidung von Datenverlusten). Sie können eine vorhandene Speicherklasse mit dem Befehl `kubectl edit sc` bearbeiten. 
 
@@ -61,7 +61,7 @@ managed-premium     kubernetes.io/azure-disk   1h
 
 Ein Anspruch auf ein persistentes Volume (Persistent Volume Claim, PVC) wird verwendet, um basierend auf einer Speicherklasse automatisch Speicher bereitzustellen. In diesem Fall kann ein PVC eine der zuvor erstellten Speicherklassen verwenden, um einen verwalteten Azure Standard- oder Premium-Datenträger zu erstellen.
 
-Erstellen Sie eine Datei namens `azure-premium.yaml`, und fügen Sie das folgende Manifest ein. Der Anspruch erfordert einen Datenträger namens `azure-managed-disk` mit einer Größe von *5 GB* und *ReadWriteOnce* -Zugriff. Als Speicherklasse ist *managed-premium* angegeben.
+Erstellen Sie eine Datei namens `azure-premium.yaml`, und fügen Sie das folgende Manifest ein. Der Anspruch erfordert einen Datenträger namens `azure-managed-disk` mit einer Größe von *5 GB* und *ReadWriteOnce*-Zugriff. Als Speicherklasse ist *managed-premium* angegeben.
 
 ```yaml
 apiVersion: v1
@@ -78,7 +78,7 @@ spec:
 ```
 
 > [!TIP]
-> Verwenden Sie zum Erstellen eines Datenträgers, der den Standardspeicher verwendet, `storageClassName: default` statt *managed-premium* .
+> Verwenden Sie zum Erstellen eines Datenträgers, der den Standardspeicher verwendet, `storageClassName: default` statt *managed-premium*.
 
 Erstellen Sie mit dem Befehl [kubectl apply][kubectl-apply] einen Anspruch auf ein persistentes Volume, und geben Sie die Datei *azure-premium.yaml* an:
 
@@ -159,7 +159,7 @@ Informationen zum Nutzen von Ultra-Datenträgern finden Sie unter [Verwenden von
 
 Um die Daten in Ihrem persistenten Volume zu sichern, erstellen Sie eine Momentaufnahme von dem verwalteten Datenträger für das Volume. Als Möglichkeit zum Wiederherstellen der Daten können Sie dann mithilfe dieser Momentaufnahme einen wiederhergestellten Datenträger erstellen und diesen an Pods anfügen.
 
-Rufen Sie zuerst mit dem Befehl `kubectl get pvc` den Volumenamen ab, z.B. für den PVC mit dem Namen *azure-managed-disk* :
+Rufen Sie zuerst mit dem Befehl `kubectl get pvc` den Volumenamen ab, z.B. für den PVC mit dem Namen *azure-managed-disk*:
 
 ```console
 $ kubectl get pvc azure-managed-disk
@@ -176,7 +176,7 @@ $ az disk list --query '[].id | [?contains(@,`pvc-faf0f176-8b8d-11e8-923b-deb28c
 /subscriptions/<guid>/resourceGroups/MC_MYRESOURCEGROUP_MYAKSCLUSTER_EASTUS/providers/MicrosoftCompute/disks/kubernetes-dynamic-pvc-faf0f176-8b8d-11e8-923b-deb28c58d242
 ```
 
-Verwenden Sie die Datenträger-ID, um mit [az snapshot create][az-snapshot-create] einen Momentaufnahmedatenträger zu erstellen. Im folgenden Beispiel wird in der gleichen Ressourcengruppe wie der AKS-Cluster ( *MC_myResourceGroup_myAKSCluster_eastus* ) eine Momentaufnahme mit dem Namen *pvcSnapshot* erstellt. Es können möglicherweise Berechtigungsprobleme auftreten, wenn Sie Momentaufnahmen erstellen und Datenträger in Ressourcengruppen wiederherstellen, auf die der AKS-Cluster keinen Zugriff hat.
+Verwenden Sie die Datenträger-ID, um mit [az snapshot create][az-snapshot-create] einen Momentaufnahmedatenträger zu erstellen. Im folgenden Beispiel wird in der gleichen Ressourcengruppe wie der AKS-Cluster (*MC_myResourceGroup_myAKSCluster_eastus*) eine Momentaufnahme mit dem Namen *pvcSnapshot* erstellt. Es können möglicherweise Berechtigungsprobleme auftreten, wenn Sie Momentaufnahmen erstellen und Datenträger in Ressourcengruppen wiederherstellen, auf die der AKS-Cluster keinen Zugriff hat.
 
 ```azurecli-interactive
 $ az snapshot create \

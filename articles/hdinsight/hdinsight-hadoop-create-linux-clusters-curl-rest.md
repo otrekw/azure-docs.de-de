@@ -9,11 +9,11 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-azurecli
 ms.date: 12/10/2019
 ms.openlocfilehash: 3ce104e9340c3e93d64b68dcab6f5bd6d2f62493
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748727"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96020625"
 ---
 # <a name="create-apache-hadoop-clusters-using-the-azure-rest-api"></a>Erstellen von Apache Hadoop-Clustern mithilfe der Azure-REST-API
 
@@ -205,7 +205,7 @@ Das folgende JSON-Dokument ist eine Kombination aus den Vorlagen- und Parameterd
    }
    ```
 
-Dieses Beispiel wird in den Schritten im vorliegenden Dokument verwendet. Ersetzen Sie die *value* -Beispiele im Abschnitt **Parameters** mit den Werten für Ihren Cluster.
+Dieses Beispiel wird in den Schritten im vorliegenden Dokument verwendet. Ersetzen Sie die *value*-Beispiele im Abschnitt **Parameters** mit den Werten für Ihren Cluster.
 
 > [!IMPORTANT]  
 > Bei dieser Vorlage wird die Standardanzahl von Workerknoten (4) für einen HDInsight-Cluster verwendet. Wenn Sie mehr als 32 Workerknoten planen, müssen Sie eine Hauptknotengröße von mindestens 8 Kernen und 14 GB Arbeitsspeicher (RAM) auswählen.
@@ -227,7 +227,7 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](/cli/azure/get-started-wit
    az account list --query '[].{Subscription_ID:id,Tenant_ID:tenantId,Name:name}'  --output table
    ```
 
-    Wählen Sie in der Liste das Abonnement aus, das Sie verwenden möchten, und notieren Sie sich die Werte in den Spalten **Subscription_ID** und __Tenant_ID__ . Speichern Sie diese Werte.
+    Wählen Sie in der Liste das Abonnement aus, das Sie verwenden möchten, und notieren Sie sich die Werte in den Spalten **Subscription_ID** und __Tenant_ID__. Speichern Sie diese Werte.
 
 2. Führen Sie den folgenden Befehl zum Erstellen einer Anwendung in Azure Active Directory aus.
 
@@ -248,9 +248,9 @@ Führen Sie die in [Erste Schritte mit der Azure CLI](/cli/azure/get-started-wit
    az ad sp create --id <App ID> --query 'objectId'
    ```
 
-     Der von diesem Befehl zurückgegebene Wert ist die __Objekt-ID__ . Speichern Sie diesen Wert.
+     Der von diesem Befehl zurückgegebene Wert ist die __Objekt-ID__. Speichern Sie diesen Wert.
 
-4. Weisen Sie dem Dienstprinzipal mit dem **Objekt-ID** -Wert die Rolle **Besitzer** zu. Verwenden Sie die **Abonnement-ID** , die Sie zuvor erhalten haben.
+4. Weisen Sie dem Dienstprinzipal mit dem **Objekt-ID**-Wert die Rolle **Besitzer** zu. Verwenden Sie die **Abonnement-ID**, die Sie zuvor erhalten haben.
 
    ```azurecli
    az role assignment create --assignee <Object ID> --role Owner --scope /subscriptions/<Subscription ID>/
@@ -274,7 +274,7 @@ Legen Sie `$TENANTID`, `$APPID` und `$PASSWORD` auf die zuvor abgerufenen oder v
 
 Wenn die Anforderung erfolgreich ist, erhalten Sie eine 2xx-Antwort, deren Text ein JSON-Dokument enthält.
 
-Das von dieser Anforderung zurückgegebene JSON-Dokument enthält ein Element mit dem Namen **access_token** . Der Wert von **access_token** wird verwendet, um Anforderungen an die REST-API zu authentifizieren.
+Das von dieser Anforderung zurückgegebene JSON-Dokument enthält ein Element mit dem Namen **access_token**. Der Wert von **access_token** wird verwendet, um Anforderungen an die REST-API zu authentifizieren.
 
 ```json
 {
