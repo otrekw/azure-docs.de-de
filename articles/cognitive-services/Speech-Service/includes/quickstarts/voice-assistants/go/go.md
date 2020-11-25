@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 05/25/2020
 ms.author: trrwilson
-ms.openlocfilehash: b05e63dc549fdf1fec4485e27086bb32251b41d8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c37637ba1cb5154bbd56f7fd22bbbca62b8c3438
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93136277"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95098062"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -18,7 +18,7 @@ Bevor Sie beginnen:
 > [!div class="checklist"]
 > * [Erstellen einer Azure Speech-Ressource](../../../../overview.md#try-the-speech-service-for-free)
 > * [Einrichten Ihrer Entwicklungsumgebung und Erstellen eines leeren Projekts](../../../../quickstarts/setup-platform.md)
-> * Erstellen eines Bots, der mit dem [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech) verbunden ist
+> * Erstellen eines Bots, der mit dem [Direct Line Speech-Kanal](/azure/bot-service/bot-service-channel-connect-directlinespeech) verbunden ist
 > * Stellen Sie sicher, dass Sie Zugriff auf ein Mikrofon für die Audioaufnahme haben.
 >
   > [!NOTE]
@@ -108,7 +108,7 @@ Ersetzen Sie die Werte `YOUR_SUBSCRIPTION_KEY` und `YOUR_BOT_REGION` durch tats�
    > Beachten Sie [die Liste mit den unterstützten Regionen für Sprach-Assistenten](~/articles/cognitive-services/speech-service/regions.md#voice-assistants), und stellen Sie sicher, dass Ihre Ressourcen in einer dieser Regionen bereitgestellt werden.
 
    > [!NOTE]
-   > Informationen zum Konfigurieren Ihres Bots finden Sie in der Bot Framework-Dokumentation zum [Direct Line Speech-Kanal](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-directlinespeech).
+   > Informationen zum Konfigurieren Ihres Bots finden Sie in der Bot Framework-Dokumentation zum [Direct Line Speech-Kanal](/azure/bot-service/bot-service-channel-connect-directlinespeech).
 
 ## <a name="code-explanation"></a>Erläuterung zum Code
 Für die Erstellung eines Sprachkonfigurationsobjekts sind der Speech-Abonnementschlüssel und die Region erforderlich. Das Konfigurationsobjekt wird zum Instanziieren eines Spracherkennungsobjekts benötigt.

@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 08/08/2019
 ms.author: pafarley
-ms.openlocfilehash: 87cb0f93201b5111e4d5e954ee62451405436fa0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 46cead6f7b9362dc9b48fda15c0d04b13c2f989c
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538729"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013657"
 ---
 # <a name="detect-popular-brands-in-images"></a>Erkennen von bekannten Marken in Bildern
 
@@ -23,7 +23,7 @@ Markenerkennung ist ein spezieller Modus der [Objekterkennung](concept-object-de
 
 Der Dienst „Maschinelles Sehen“ erkennt, ob in einem bestimmten Bild Markenlogos vorhanden sind. Falls ja, gibt er den Markennamen, eine Zuverlässigkeitsbewertung und die Koordinaten eines Begrenzungsrahmens um das Logo zurück.
 
-Die integrierte Logodatenbank deckt bekannte Marken aus Bereichen wie u.a. Unterhaltungselektronik und Bekleidung ab. Wenn Sie feststellen, dass die gesuchte Marke nicht vom Dienst „Maschinelles Sehen“ erkannt wird, ist es möglicherweise besser, mit dem Dienst [Custom Vision](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/) einen eigenen Logodetektor zu erstellen und zu trainieren.
+Die integrierte Logodatenbank deckt bekannte Marken aus Bereichen wie u.a. Unterhaltungselektronik und Bekleidung ab. Wenn Sie feststellen, dass die gesuchte Marke nicht vom Dienst „Maschinelles Sehen“ erkannt wird, ist es möglicherweise besser, mit dem Dienst [Custom Vision](../custom-vision-service/index.yml) einen eigenen Logodetektor zu erstellen und zu trainieren.
 
 ## <a name="brand-detection-example"></a>Beispiel für die Markenerkennung
 

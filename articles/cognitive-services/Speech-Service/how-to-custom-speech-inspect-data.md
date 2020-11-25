@@ -10,17 +10,17 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: erhopf
-ms.openlocfilehash: c55d69e99715a0c646c4e836df06cf105f9770bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a3ff2a1f92cabb61f58d70b732738e613afa7cd9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025632"
 ---
 # <a name="inspect-custom-speech-data"></a>Überprüfen von Custom Speech-Daten
 
 > [!NOTE]
-> Auf dieser Seite wird vorausgesetzt, dass Sie [Prepare data for Custom Speech](how-to-custom-speech-test-data.md) (Vorbereiten von Testdaten für Custom Speech) gelesen und ein Dataset für die Überprüfung hochgeladen haben.
+> Auf dieser Seite wird vorausgesetzt, dass Sie [Prepare data for Custom Speech](./how-to-custom-speech-test-and-train.md) (Vorbereiten von Testdaten für Custom Speech) gelesen und ein Dataset für die Überprüfung hochgeladen haben.
 
 Custom Speech bietet Tools zur visuellen Überprüfung der Erkennungsqualität eines Modells durch Vergleichen von Audiodaten mit dem entsprechenden Erkennungsergebnis. Über das [Custom Speech-Portal](https://speech.microsoft.com/customspeech) können Sie hochgeladene Audiodaten wiedergeben und bestimmen, ob das angegebene Erkennungsergebnis korrekt ist. Mit diesem Tool können Sie die Qualität des Baselinemodells von Microsoft für die Spracherkennung überprüfen, ein trainiertes benutzerdefiniertes Modell untersuchen oder die Aufzeichnungen von zwei Modellen vergleichen.
 
@@ -104,4 +104,4 @@ Die nach „Daten“ exportierten Dateien werden mithilfe eines völlig neuen Da
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Prepare data for Custom Speech](how-to-custom-speech-test-data.md) (Vorbereiten von Daten für Custom Speech)
+- [Prepare data for Custom Speech](./how-to-custom-speech-test-and-train.md) (Vorbereiten von Daten für Custom Speech)

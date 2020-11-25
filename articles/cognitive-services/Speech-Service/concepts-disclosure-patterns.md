@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: shlo
-ms.openlocfilehash: 7df082cd5044f142d8d5900ec1fff6c182262bd9
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 348277d42c543bc45cf98bfeaf7ea8313afe8f6f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92425112"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021982"
 ---
 # <a name="disclosure-design-patterns"></a>Entwurfsmuster für die Offenlegung
 Nachdem Sie die richtige [Offenlegungsstufe](concepts-disclosure-guidelines.md#disclosure-assessment) für die Erfahrung mit Ihrer synthetischen Stimme festgelegt haben, ist es an der Zeit, mögliche Entwurfsmuster zu untersuchen.
@@ -241,17 +241,17 @@ Nutzen Sie die Offenlegung als Gelegenheit, um in angemessener Weise zu scheiter
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 - [Microsoft Bot-Richtlinien](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
-- [Cortana-Entwurfsrichtlinien](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
-- [Microsoft Windows UWP Speech – Entwurfsrichtlinien](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)
-- [Microsoft Windows Mixed Reality – Richtlinien zur Sprachsteuerung](https://docs.microsoft.com/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
+- [Cortana-Entwurfsrichtlinien](/cortana/voice-commands/voicecommand-design-guidelines)
+- [Microsoft Windows UWP Speech – Entwurfsrichtlinien](/windows/uwp/design/input/speech-interactions)
+- [Microsoft Windows Mixed Reality – Richtlinien zur Sprachsteuerung](/windows/mixed-reality/voice-design#top-things-users-should-know-about-speech-in-mixed-reality)
 
 ## <a name="reference-docs"></a>Referenz
 
-* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
+* [Offenlegung für Sprecher](/legal/cognitive-services/speech-service/disclosure-voice-talent)
 * [Richtlinien für die verantwortungsvolle Bereitstellung von Technologien mit künstlicher Sprache](concepts-guidelines-responsible-deployment-synthetic.md)
 * [Kontrollübersicht](concepts-gating-overview.md)
 * [Vorgehensweise zum Offenlegen](concepts-disclosure-guidelines.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* [Offenlegung für Sprecher](https://aka.ms/disclosure-voice-talent)
+* [Offenlegung für Sprecher](/legal/cognitive-services/speech-service/disclosure-voice-talent)

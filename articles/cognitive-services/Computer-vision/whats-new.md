@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: overview
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: e4c56700e75eb5bc7e5e7faec073fe7157e5df88
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 1ef317ee3917172d0de204adafe5d5bf21a2a9ac
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91976367"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014508"
 ---
 # <a name="whats-new-in-computer-vision"></a>Neuerungen beim maschinellen Sehen
 
@@ -80,7 +80,7 @@ Sie haben nun die Möglichkeit, die Version 3.0 der Lese-API zu verwenden, um g
 * Konfidenzbewertung für jedes extrahierte Wort
 * Unterstützung der Sprachen Spanisch und Englisch mit dem zusätzlichen Sprachparameter
 
-Informationen zu den ersten Schritten mit der API-Version 3.0 finden Sie in einer [Schnellstartanleitung zur Textextraktion](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text?tabs=version-3).
+Informationen zu den ersten Schritten mit der API-Version 3.0 finden Sie in einer [Schnellstartanleitung zur Textextraktion](./quickstarts/csharp-hand-text.md?tabs=version-3).
 
 ## <a name="cognitive-service-updates"></a>Cognitive Services-Updates
 

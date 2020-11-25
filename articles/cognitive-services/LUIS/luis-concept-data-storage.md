@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 12693fb11556380e62df277be093ce20c02ff372
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: fd7499bd5e216f2a625d87ea13996da851a1889e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018031"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019210"
 ---
 # <a name="data-storage-and-removal-in-language-understanding-luis-cognitive-services"></a>Speicherung und Entfernung von Daten in Language Understanding (LUIS) Cognitive Services
 LUIS speichert Daten verschlüsselt in einem Azure-Datenspeicher für die im Schlüssel angegebene Region. Diese Daten werden für 30 Tage gespeichert. 
@@ -55,7 +55,7 @@ Wenn Sie nicht migriert werden, können Sie Ihr Konto löschen und alle Ihre App
 Das Löschen von Konten erfolgt über die Seite **Einstellungen**. Wählen Sie Ihren Kontonamen rechts oben auf der Navigationsleiste aus, um die Seite **Einstellungen** anzuzeigen.
 
 ## <a name="delete-an-authoring-resource"></a>Löschen einer Erstellungsressource
-Wenn Sie die [Migration zu einer Erstellungsressource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-authoring) durchgeführt haben, löscht das Löschen der Ressource selbst aus dem Azure-Portal alle Ihre Anwendungen, die mit dieser Ressource verbunden sind, zusammen mit ihren Beispieläußerungen und Protokollen. Die Daten werden 90 Tage lang gespeichert und erst danach dauerhaft gelöscht.    
+Wenn Sie die [Migration zu einer Erstellungsressource](./luis-migration-authoring.md) durchgeführt haben, löscht das Löschen der Ressource selbst aus dem Azure-Portal alle Ihre Anwendungen, die mit dieser Ressource verbunden sind, zusammen mit ihren Beispieläußerungen und Protokollen. Die Daten werden 90 Tage lang gespeichert und erst danach dauerhaft gelöscht.    
 
 Wechseln Sie zum Löschen Ihrer Ressource zum [Azure-Portal](https://ms.portal.azure.com/#home), und wählen Sie Ihre LUIS-Erstellungsressource aus. Wechseln Sie zur Registerkarte **Übersicht**, und klicken Sie oben auf der Seite auf die Schaltfläche **Löschen**. Bestätigen Sie dann, dass die Ressource gelöscht wurde. 
 

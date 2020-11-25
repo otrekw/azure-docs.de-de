@@ -8,20 +8,20 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 539f6fe35a2d6eb0566871dbab4e9758a300e999
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 582cb055e363e96467dac18ba0afae9b9596a0b4
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541877"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95745774"
 ---
 # <a name="quickstart-extract-printed-text-ocr-using-the-computer-vision-rest-api-and-python"></a>Schnellstart: Extrahieren von gedrucktem Text (OCR) mithilfe der Maschinelles Sehen-REST-API und Python
 
 > [!NOTE]
-> Wenn Sie englischsprachigen Text extrahieren, sollten Sie den neuen [Lesevorgang](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) verwenden. Es steht ein [Python-Schnellstart](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/python-hand-text) zur Verfügung. 
+> Wenn Sie englischsprachigen Text extrahieren, sollten Sie den neuen [Lesevorgang](../concept-recognizing-text.md) verwenden. Es steht ein [Python-Schnellstart](./python-hand-text.md) zur Verfügung. 
 
 In dieser Schnellstartanleitung verwenden Sie die Maschinelles Sehen-REST-API, um mittels optischer Zeichenerkennung (Optical Character Recognition, OCR) gedruckten Text aus einem Bild zu extrahieren. Mit der [OCR](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d)-Methode können Sie gedruckten Text in einem Bild erkennen und erkannte Zeichen als computerlesbare Zeichenfolge extrahieren.
 
@@ -37,7 +37,7 @@ Sie können diese Schnellstartanleitung Schritt für Schritt mit einem Jupyter-N
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* [Erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` nennen.
+* [Erstellen Sie Umgebungsvariablen](../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` nennen.
 
 ## <a name="create-and-run-the-sample"></a>Erstellen und Ausführen des Beispiels
 
@@ -232,6 +232,6 @@ Eine erfolgreiche Antwort wird im JSON-Format zurückgegeben. Die Beispielwebsei
 Lernen Sie als Nächstes eine Python-Anwendung kennen, die maschinelles Sehen verwendet, um eine optische Zeichenerkennung (Optical Character Recognition, OCR) durchzuführen, intelligent zugeschnittene Miniaturansichten zu erstellen sowie visuelle Merkmale in Bildern zu erkennen, zu kategorisieren, zu markieren und zu beschreiben.
 
 > [!div class="nextstepaction"]
-> [Tutorial zur Maschinelles Sehen-API in Python](../Tutorials/PythonTutorial.md)
+> [Tutorial zur Maschinelles Sehen-API in Python](https://github.com/Microsoft/Cognitive-Vision-Python)
 
 * Um schnell mit der Maschinelles Sehen-API zu experimentieren, probieren Sie die [Open API-Testkonsole](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b/console) aus.

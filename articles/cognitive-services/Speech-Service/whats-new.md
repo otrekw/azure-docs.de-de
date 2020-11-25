@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 87832057e955f8408b369e2f55096a713780e965
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410775"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024788"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Sprachdienst: Neues in der Dokumentation
 
@@ -38,17 +38,17 @@ Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices S
 
 * [Informationen zur API für Audioeingabestreams des Speech SDK](how-to-use-audio-input-streams.md): Die zulässigen Beispiele pro Sekunde wurden aktualisiert.
 * [Automatische Spracherkennung zur Umwandlung von Sprache in Text](how-to-automatic-language-detection.md): Objective-C-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Auswählen eines Spracherkennungsmodus](how-to-choose-recognition-mode.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Auswählen eines Spracherkennungsmodus](./get-started-speech-to-text.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Konfigurieren von RHEL/CentOS 7 für das Speech SDK](how-to-configure-rhel-centos-7.md): Die Setupanweisungen wurden verbessert.
-* [Begriffslisten für Spracherkennung](how-to-phrase-lists.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Synchrone Synthese für lange Audioinhalte in Python (Vorschau)](quickstarts/text-to-speech/async-synthesis-long-form-audio.md): Die Unterstützung für öffentliche neuronale Stimmen und zugehörige Parameter wurde hinzugefügt.
-* [Schnellstart: Erkennen von Sprache aus einer Audiodatei](quickstarts/speech-to-text-from-file.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Erkennen von Spracheingaben per Mikrofon](quickstarts/speech-to-text-from-microphone.md ): Go- sowie JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Begriffslisten für Spracherkennung](./get-started-speech-to-text.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Schnellstart: Synchrone Synthese für lange Audioinhalte in Python (Vorschau)](./long-audio-api.md): Die Unterstützung für öffentliche neuronale Stimmen und zugehörige Parameter wurde hinzugefügt.
+* [Schnellstart: Erkennen von Sprache aus einer Audiodatei](./get-started-speech-to-text.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Schnellstart: Erkennen von Spracheingaben per Mikrofon](./get-started-speech-to-text.md): Go- sowie JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Erkennen von Sprache aus einem Blobspeicher](quickstarts/from-blob.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * [Schnellstart: Einrichten der Entwicklungsumgebung](quickstarts/setup-platform.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Synthetisieren von Sprache in eine Audiodatei](quickstarts/text-to-speech-audio-file.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Synthetisieren von Sprache über einen Lautsprecher](quickstarts/text-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Schnellstart: Synthetisieren von Sprache in eine Audiodatei](./get-started-text-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Schnellstart: Synthetisieren von Sprache über einen Lautsprecher](./get-started-text-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Was ist ein Schlüsselwort?](custom-keyword-overview.md): Der Abschnitt zu den ersten Schritten sowie die Links wurden aktualisiert.
 * [Angeben der Quellsprache für die Spracherkennung](how-to-specify-source-language.md): JavaScript- und Objective-C-Anweisungen wurden zur Dokumentation hinzugefügt.
 

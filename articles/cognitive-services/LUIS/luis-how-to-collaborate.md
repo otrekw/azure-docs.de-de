@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/19/2019
-ms.openlocfilehash: 30b4256b37dc3329801a730192e25f7c24a45594
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91540903"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018904"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
@@ -66,7 +66,7 @@ Wenn Sie Mitwirkende/Projektmitarbeiter zu einer LUIS-App hinzufügen, geben Sie
 
 ### <a name="azure-active-directory-resources"></a>Azure Active Directory-Ressourcen
 
-Wenn Sie in Ihrer Organisation [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) (Azure AD) verwenden, benötigt LUIS (Language Understanding) die Berechtigung für Informationen über Ihre Benutzer, wenn diese LUIS verwenden möchten. Die von LUIS benötigten Ressourcen sind minimal.
+Wenn Sie in Ihrer Organisation [Azure Active Directory](../../active-directory/index.yml) (Azure AD) verwenden, benötigt LUIS (Language Understanding) die Berechtigung für Informationen über Ihre Benutzer, wenn diese LUIS verwenden möchten. Die von LUIS benötigten Ressourcen sind minimal.
 
 Die detaillierte Beschreibung wird angezeigt, wenn Sie sich mit einem Konto zu registrieren versuchen, für das eine Administratoreinwilligung vorliegt oder keine Administratoreinwilligung erforderlich ist:
 
@@ -87,7 +87,7 @@ Der Administrator des Mandanten sollte direkt mit dem Benutzer zusammenarbeiten,
 
 Wenn der Mandantenadministrator nur bestimmten Benutzern die Verwendung von LUIS gestatten möchte, gibt es mehrere mögliche Lösungen:
 * Erteilen der „Administratoreinwilligung“ (Einwilligung für alle Benutzer von Azure AD) und anschließendes Festlegen von „Benutzerzuweisung erforderlich“ unter den Eigenschaften der Unternehmensanwendung auf „Ja“ und Zuweisen/Hinzufügen nur der gewünschten Benutzer zur Anwendung. Mit dieser Methode erteilt der Administrator immer noch „Administratoreinwilligung“ für die App, es ist jedoch möglich, die Benutzer zu steuern, die darauf zugreifen können.
-* Eine zweite Lösung ist die Verwendung der [Identitäts- und Zugriffsverwaltungs-API von Azure AD in Microsoft Graph](https://docs.microsoft.com/graph/azuread-identity-access-management-concept-overview), um jedem einzelnen Benutzer die Einwilligung zu erteilen.
+* Eine zweite Lösung ist die Verwendung der [Identitäts- und Zugriffsverwaltungs-API von Azure AD in Microsoft Graph](/graph/azuread-identity-access-management-concept-overview), um jedem einzelnen Benutzer die Einwilligung zu erteilen.
 
 Weitere Informationen zu Azure Active Directory-Benutzern und Einwilligung:
 * [Einschränken Ihrer App](../../active-directory/develop/howto-restrict-your-app-to-a-set-of-users.md) auf eine Gruppe von Benutzern

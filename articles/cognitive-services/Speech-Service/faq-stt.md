@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 0fe5b1350fdcf53eeda11f6de430d8d02a24fdbf
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91397758"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024329"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
-Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](support.md) an.
+Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext) an.
 
 ## <a name="general"></a>Allgemein
 
@@ -29,7 +29,7 @@ Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen fin
 
 **F: Wo fange ich an, wenn ich ein Basismodell verwenden möchte?**
 
-**A:** Rufen Sie zunächst einen [Abonnementschlüssel](overview.md#try-the-speech-service-for-free) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](rest-apis.md). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
+**A:** Rufen Sie zunächst einen [Abonnementschlüssel](overview.md#try-the-speech-service-for-free) ab. Informationen zum Ausführen von REST-Aufrufen an die vorab bereitgestellten Basismodelle finden Sie in den [REST-APIs](./overview.md#reference-docs). Wenn Sie WebSockets verwenden möchten, [laden Sie das SDK herunter](speech-sdk.md).
 
 **F: Muss ich immer ein benutzerdefiniertes Sprachmodell erstellen?**
 
@@ -156,7 +156,7 @@ Weitere Informationen finden Sie unter [Kontingente und Grenzwerte für Speech S
 
 **F: Welche Informationen sind im Mandantenmodell enthalten, und wie wird es erstellt?**
 
-**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe ](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können.
+**A:** Ein Mandantenmodell wird mit E-Mails und Dokumenten der [öffentlichen Gruppe](https://support.microsoft.com/office/learn-about-microsoft-365-groups-b565caa1-5c40-40ef-9915-60fdb2d97fa2) erstellt, die von allen Personen in Ihrer Organisation eingesehen werden können.
 
 **F: Welche Sprachfunktion wird durch das Mandantenmodell verbessert?**
 

@@ -7,18 +7,18 @@ ms.date: 02/08/2020
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-python
 ms.topic: how-to
-ms.openlocfilehash: 9bad04b060eafcdfea52668237d2d4e0547ce0a0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29e6f3634ab723cbcba948d6f8c35ac66732c2f9
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777565"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023649"
 ---
 # <a name="quickstart-get-answers-to-a-question-from-a-knowledge-base-with-python"></a>Schnellstart: Abrufen von Antworten auf Fragen aus einer Wissensdatenbank mit Python
 
 In diesem Schnellstart wird Schritt für Schritt erläutert, wie Sie programmgesteuert eine Antwort auf eine Frage aus einer veröffentlichten QnA Maker-Wissensdatenbank abrufen. Die Wissensdatenbank enthält Fragen und Antworten aus [Datenquellen](../Concepts/knowledge-base.md) (beispielsweise häufig gestellte Fragen). Die [Frage](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) wird an den QnA Maker-Dienst gesendet. Die [Antwort](../how-to/metadata-generateanswer-usage.md#generateanswer-response-properties) enthält die Antwort mit der bestbewerteten Vorhersage.
 
-[Referenzdokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime) | [Beispiel](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
+[Referenzdokumentation](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker4.0/Runtime) | [Beispiel](https://github.com/Azure-Samples/cognitive-services-qnamaker-python/blob/master/documentation-samples/quickstarts/get-answer/get-answer-3x.py)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 089c59c041110209e55cc3fb10b1c5adf54bd13e
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 6d85498b0e76997a1f0f989f4ea0f30acc0e8443
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538273"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013722"
 ---
 # <a name="face-detection-with-computer-vision"></a>Gesichtserkennung mit maschinellem Sehen
 
 Maschinelles Sehen erkennt menschliche Gesichter auf einem Bild und generiert für jedes erkannte Gesicht das Alter, Geschlecht und Rechteck. 
 
 > [!NOTE]
-> Dieses Feature wird auch vom Azure-Dienst [Gesichtserkennung](/azure/cognitive-services/face/) geboten. Diese Alternative bietet eine detailliertere Gesichtsanalyse, einschließlich Gesichtsidentifikation und Posenerkennung. 
+> Dieses Feature wird auch vom Azure-Dienst [Gesichtserkennung](../face/index.yml) geboten. Diese Alternative bietet eine detailliertere Gesichtsanalyse, einschließlich Gesichtsidentifikation und Posenerkennung. 
 
 ## <a name="face-detection-examples"></a>Beispiele für die Gesichtserkennung
 

@@ -12,12 +12,12 @@ ms.date: 11/03/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
 zone_pivot_groups: keyword-quickstart
-ms.openlocfilehash: 2d15da55c0bab42571d2a9660156a780c5d27881
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 49ac70b6881085f48c8bc3a12e31e4a1aa220c6a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93305848"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95021948"
 ---
 # <a name="get-started-with-custom-keyword"></a>Erste Schritte mit dem benutzerdefinierten Schlüsselwort
 
@@ -49,11 +49,11 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 1. Klicken Sie zum Erstellen eines neuen Schlüsselwortmodells auf **Modell trainieren**.
 
-1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](speech-devices-sdk-kws-guidelines.md#choose-an-effective-keyword).
+1. Geben Sie einen **Namen** für das Modell, eine optionale **Beschreibung** und das **Schlüsselwort** Ihrer Wahl ein, und klicken Sie dann auf **Weiter**. Weitere Informationen zum Auswählen eines effektiven Schlüsselworts finden Sie in den [Richtlinien](./custom-keyword-overview.md#choose-an-effective-keyword).
 
     ![Eingeben Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-new-model.png)
 
-1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, klicken Sie auf **Trainieren** , um mit dem Generieren des Schlüsselwortmodells zu beginnen. 
+1. Im Portal werden nun Kandidaten für die Aussprache Ihres Schlüsselworts erstellt. Hören Sie sich die einzelnen Kandidaten an, indem Sie auf die Wiedergabeschaltflächen klicken. Deaktivieren Sie dann alle nicht ordnungsgemäßen Aussprachevarianten. Wenn nur noch geeignete Aussprachen aktiviert sind, klicken Sie auf **Trainieren**, um mit dem Generieren des Schlüsselwortmodells zu beginnen. 
 
     ![Der Screenshot zeigt, wo Sie die richtigen Aussprachen auswählen.](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
@@ -61,7 +61,7 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
     ![Überprüfen Ihres Schlüsselworts](media/custom-keyword/custom-kws-portal-download-model.png)
 
-1. Die heruntergeladene Datei ist ein `.zip`-Archiv. Extrahieren Sie das Archiv, und Sie erhalten eine Datei mit der Erweiterung `.table`. Dies ist die Datei, die Sie mit dem SDK im nächsten Abschnitt verwenden, sodass Sie sich unbedingt den Pfad notieren sollten. Der Dateiname spiegelt Ihren Schlüsselwortnamen wider, z. B. hat ein **Gerät aktivieren** -Schlüsselwort den Dateinamen `Activate_device.table`.
+1. Die heruntergeladene Datei ist ein `.zip`-Archiv. Extrahieren Sie das Archiv, und Sie erhalten eine Datei mit der Erweiterung `.table`. Dies ist die Datei, die Sie mit dem SDK im nächsten Abschnitt verwenden, sodass Sie sich unbedingt den Pfad notieren sollten. Der Dateiname spiegelt Ihren Schlüsselwortnamen wider, z. B. hat ein **Gerät aktivieren**-Schlüsselwort den Dateinamen `Activate_device.table`.
 
 ## <a name="use-a-keyword-model-with-the-sdk"></a>Verwenden eines Schlüsselwortmodells mit dem SDK
 
@@ -79,4 +79,4 @@ Bevor Sie ein benutzerdefiniertes Schlüsselwort verwenden können, müssen Sie 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Testen Ihres benutzerdefinierten Schlüsselworts mit dem [Schnellstart zum Speech Devices SDK](https://aka.ms/sdsdk-quickstart).
+Testen Ihres benutzerdefinierten Schlüsselworts mit dem [Schnellstart zum Speech Devices SDK](./speech-devices-sdk-quickstart.md?pivots=platform-android).

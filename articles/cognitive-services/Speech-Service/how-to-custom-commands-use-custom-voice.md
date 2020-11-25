@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.author: sausin
-ms.openlocfilehash: b1e488653f210089ee5ed6757fb2f3d1e4fb0fe4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4a5c14909606dcb862fcf53d99bc5bc00fba63bd
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87293789"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025683"
 ---
 # <a name="use-custom-commands-with-custom-voice"></a>Verwenden benutzerdefinierter Befehle mit Custom Voice
 
@@ -32,7 +32,7 @@ In diesem Artikel erfahren Sie, wie Sie eine benutzerdefinierte Ausgabesprache f
 > ![Beispielsätze mit Parametern](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - Bei den **öffentlichen Stimmen** sind **neuronale Typen** nur für bestimmte Regionen verfügbar. Informationen zur Verfügbarkeit finden Sie unter [Standardstimmen und neuronale Stimmen nach Region/Endpunkt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
+> - Bei den **öffentlichen Stimmen** sind **neuronale Typen** nur für bestimmte Regionen verfügbar. Informationen zur Verfügbarkeit finden Sie unter [Standardstimmen und neuronale Stimmen nach Region/Endpunkt](./regions.md#standard-and-neural-voices).
 > - Für **benutzerdefinierte Stimmen** können sie auf der Custom Voice-Projektseite erstellt werden. Mehr dazu erfahren Sie unter [Erste Schritte mit Custom Voice](./how-to-custom-voice.md)
 
 Die Anwendung antwortet nun in der ausgewählten Stimme statt in der Standardstimme.

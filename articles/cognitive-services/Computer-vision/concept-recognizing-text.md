@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 4eb2835bd09e6548149ee90cb7232bf230de0300
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94538749"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95013750"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -138,7 +138,7 @@ Beginnen Sie mit den [Read-OCR-SDK-Schnellstartanleitungen für maschinelles Seh
 ## <a name="supported-languages-for-print-text"></a>Unterstützte Sprachen für Drucktext
 Mit der [Lese-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) kann gedruckter Text in englischer, spanischer, deutscher, französischer, italienischer, portugiesischer und niederländischer Sprache extrahiert werden.
 
-Eine vollständige Liste der für OCR unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr).
+Eine vollständige Liste der für OCR unterstützten Sprachen finden Sie unter [Unterstützte Sprachen](./language-support.md#optical-character-recognition-ocr).
 
 ### <a name="read-32-preview-adds-simplified-chinese-and-japanese"></a>Chinesisch (vereinfacht) und Japanisch in der Vorschauversion von Read 3.2
 Die [öffentliche Vorschau der Read 3.2-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) unterstützt jetzt Chinesisch (vereinfacht) und Japanisch. Wenn Sie für Ihr Szenario Unterstützung für weitere Sprachen benötigen, finden Sie entsprechende Informationen im Abschnitt [OCR-API](#ocr-api). 
@@ -150,7 +150,7 @@ Der Read-Vorgang unterstützt zurzeit das Extrahieren von handschriftlichem Text
 Die [Read 3.x-REST-API](./QuickStarts/CSharp-hand-text.md) ist die bevorzugte Option der meisten Kunden, da sie sich einfach integrieren und schnell vorgefertigt produktiv einsetzen lässt. Azure und der Dienst für maschinelles Sehen verarbeiten Skalierungs-, Leistungs-, Datensicherheits- und Complianceanforderungen, während Sie sich auf die Erfüllung der Anforderungen Ihrer Kunden konzentrieren.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Lokales Bereitstellen mit Docker-Containern
-Der [Read-Docker-Container (Vorschau)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-how-to-install-containers) ermöglicht Ihnen die Bereitstellung der neuen OCR-Funktionen in Ihrer eigenen lokalen Umgebung. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
+Der [Read-Docker-Container (Vorschau)](./computer-vision-how-to-install-containers.md) ermöglicht Ihnen die Bereitstellung der neuen OCR-Funktionen in Ihrer eigenen lokalen Umgebung. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
 
 ## <a name="example-outputs"></a>Beispielausgaben
 
@@ -186,7 +186,7 @@ Die Read-API unterstützt Bilder und Dokumente, die mehrere verschiedene Sprache
 
 ## <a name="ocr-api"></a>OCR-API
 
-Die [OCR-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) verwendet ein älteres Erkennungsmodell, unterstützt nur Bilder und wird synchron ausgeführt, sodass der erkannte Text direkt zurückgegeben wird. Informationen finden Sie unter [Für OCR unterstützte Sprachen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/language-support#optical-character-recognition-ocr) in der Read-API.
+Die [OCR-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f20d) verwendet ein älteres Erkennungsmodell, unterstützt nur Bilder und wird synchron ausgeführt, sodass der erkannte Text direkt zurückgegeben wird. Informationen finden Sie unter [Für OCR unterstützte Sprachen](./language-support.md#optical-character-recognition-ocr) in der Read-API.
 
 ## <a name="data-privacy-and-security"></a>Datenschutz und Sicherheit
 

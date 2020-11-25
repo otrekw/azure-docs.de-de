@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: sausin
-ms.openlocfilehash: 8c7cb1e9f39b1de7897da29467a607953b42bb24
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 77ade17803a35491712ec6df70aed9eb7b4883eb
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565737"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025873"
 ---
 # <a name="export-custom-commands-application-as-a-remote-skill"></a>Exportieren einer Benutzerdefinierte Befehle-Anwendung als Remoteskill
 
@@ -23,9 +23,9 @@ In diesem Artikel wird erläutert, wie Sie eine Benutzerdefinierte Befehle-Anwen
 
 ## <a name="prerequisites"></a>Voraussetzungen
 > [!div class="checklist"]
-> * [Kenntnisse über Bot Framework-Skills](https://aka.ms/speech/cc-skill-overview)
+> * [Kenntnisse über Bot Framework-Skills](/azure/bot-service/skills-conceptual)
 > * [Kenntnisse über Skillmanifeste](https://aka.ms/speech/cc-skill-manifest)
-> * [Aufrufen eines Skills über einen Bot Framework-Bot](https://aka.ms/speech/cc-skill-consumer)
+> * [Aufrufen eines Skills über einen Bot Framework-Bot](/azure/bot-service/skills-about-skill-consumers)
 > * vorhandene Benutzerdefinierte Befehle-Anwendung. Wenn Sie über keine Benutzerdefinierte Befehle-Anwendung verfügen, können Sie Folgendes testen: [ Erstellen eines Sprachassistenten mithilfe von benutzerdefinierten Befehlen](quickstart-custom-commands-application.md)
 
 ## <a name="custom-commands-as-remote-skills"></a>Benutzerdefinierte Befehle als Remoteskills

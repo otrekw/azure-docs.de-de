@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
-ms.openlocfilehash: 8154ef7a90011da8c15f52870eebb6c80ebaebca
-ms.sourcegitcommit: d6a739ff99b2ba9f7705993cf23d4c668235719f
+ms.openlocfilehash: dd1b6d216f6225a13d86aa2435b5b1c807547ec3
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92496103"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95014576"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetrie und Problembehandlung
 
@@ -51,7 +51,7 @@ Eingaben:
 Ausgaben:
 1. Azure Monitor
 
-Das bereitgestellte Telegraf-Modul für räumliche Analysen veröffentlicht alle Telemetriedaten, die vom Container für räumliche Analysen ausgegeben werden, in Azure Monitor. Weitere Informationen zum Hinzufügen von Azure Monitor zu Ihrem Abonnement finden Sie unter [Azure Monitor](https://docs.microsoft.com/azure/azure-monitor/overview).
+Das bereitgestellte Telegraf-Modul für räumliche Analysen veröffentlicht alle Telemetriedaten, die vom Container für räumliche Analysen ausgegeben werden, in Azure Monitor. Weitere Informationen zum Hinzufügen von Azure Monitor zu Ihrem Abonnement finden Sie unter [Azure Monitor](../../azure-monitor/overview.md).
 
 Nachdem Sie Azure Monitor eingerichtet haben, müssen Sie Anmeldeinformationen erstellen, die es dem Modul ermöglichen, Telemetriedaten zu senden. Sie können einen neuen Dienstprinzipal über das Azure-Portal oder mit dem folgenden Azure CLI-Befehl erstellen.
 
@@ -68,7 +68,7 @@ az iot hub list
 az ad sp create-for-rbac --role="Monitoring Metrics Publisher" --name "<principal name>" --scopes="<resource ID of IoT Hub>"
 ```
 
-Suchen Sie im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) nach dem Modul *Telegraf* , ersetzen Sie die folgenden Werte durch die Informationen zum Dienstprinzipal aus dem vorherigen Schritt, und führen Sie eine erneute Bereitstellung aus.
+Suchen Sie im Bereitstellungsmanifest für Ihr [Azure Stack Edge-Gerät](https://go.microsoft.com/fwlink/?linkid=2142179) oder anderen [Desktopcomputer](https://github.com/Azure-Samples/cognitive-services-sample-data-files/blob/master/ComputerVision/spatial-analysis/DeploymentManifest_for_non_ASE_devices.json) nach dem Modul *Telegraf*, ersetzen Sie die folgenden Werte durch die Informationen zum Dienstprinzipal aus dem vorherigen Schritt, und führen Sie eine erneute Bereitstellung aus.
 
 ```json
 
@@ -216,10 +216,10 @@ Die Protokolle werden bedarfsgesteuert mit der IoT Edge-Methode `getRTCVLogs` im
 
 
 1. Navigieren Sie zur Portalseite Ihres IoT-Hubs, und wählen Sie **Edgegeräte** und dann Ihr Gerät und Ihr diagnostics-Modul aus. 
-2. Wechseln Sie zur Detailseite des Moduls, und klicken Sie auf die Registerkarte * *_Direkte Methode_* _.
+2. Wechseln Sie zur Detailseite des Moduls, und klicken Sie auf die Registerkarte **_Direkte Methode_* _.
 3. Geben Sie für den Methodennamen `getRTCVLogs` und als Nutzlast eine Zeichenfolge im JSON-Format ein. Sie können auch `{}` eingeben. Dabei handelt es sich um eine leere Nutzlast. 
 4. Legen Sie die Timeouts für Verbindungen und Methoden fest, und klicken Sie auf _*Methode aufrufen**.
-5. Wählen Sie den Zielcontainer aus, und erstellen Sie eine Zeichenfolge für die JSON-Nutzlast mit den im Abschnitt **Protokollierungssyntax** beschriebenen Parametern. Klicken Sie auf **Methode aufrufen** , um die Anforderung auszuführen.
+5. Wählen Sie den Zielcontainer aus, und erstellen Sie eine Zeichenfolge für die JSON-Nutzlast mit den im Abschnitt **Protokollierungssyntax** beschriebenen Parametern. Klicken Sie auf **Methode aufrufen**, um die Anforderung auszuführen.
 
 >[!NOTE]
 > Wenn Sie die `getRTCVLogs`-Methode mit einer leeren Nutzlast aufrufen, wird eine Liste aller auf dem Gerät bereitgestellten Container zurückgegeben. Beim Methodennamen muss die Groß-/Kleinschreibung beachtet werden. Wenn ein falscher Methodenname angegeben wurde, erhalten Sie einen 501-Fehler.
@@ -245,7 +245,7 @@ Die Attribute in der Antwort auf die Abfrage sind in der folgenden Tabelle aufge
 
 | Stichwort | Beschreibung|
 |--|--|
-|DoPost| Entweder *true* oder *false*. Gibt an, ob Protokolle hochgeladen wurden. Wenn Sie keine Protokolle hochladen, gibt die API Informationen * **synchron** _ zurück. Wenn Sie Protokolle hochladen, gibt die API „200“ zurück, sofern die Anforderung gültig ist, und beginnt damit, die Protokolle _*_asynchron_*_ hochzuladen.|
+|DoPost| Entweder *true* oder *false*. Gibt an, ob Protokolle hochgeladen wurden. Wenn Sie keine Protokolle hochladen, gibt die API Informationen ***synchron** _ zurück. Wenn Sie Protokolle hochladen, gibt die API „200“ zurück, sofern die Anforderung gültig ist, und beginnt damit, die Protokolle _*_asynchron_*_ hochzuladen.|
 |TimeFilter| Der auf die Protokolle angewandte Zeitfilter.|
 |ValueFilters| Die auf die Protokolle angewandten Schlüsselwortfilter. |
 |TimeStamp| Startzeit der Methodenausführung. |
@@ -316,7 +316,7 @@ Der folgende Abschnitt bietet Hilfe beim Debuggen und Überprüfen des Status Ih
 
 ### <a name="access-the-kubernetes-api-endpoint"></a>Greifen Sie auf den Kubernetes-API-Endpunkt zu. 
 
-1. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zur Seite _ *Geräte* *. 
+1. Navigieren Sie auf der lokalen Benutzeroberfläche Ihres Geräts zur Seite _ *Geräte**. 
 2. Kopieren Sie unter **Geräteendpunkte** den Dienstendpunkt der Kubernetes-API. Dieser Endpunkt ist eine Zeichenfolge im folgenden Format: `https://compute..[device-IP-address]`.
 3. Speichern Sie die Endpunktzeichenfolge. Sie nutzen sie später, wenn Sie `kubectl` für den Zugriff auf den Kubernetes-Cluster konfigurieren.
 
@@ -326,7 +326,7 @@ Stellen Sie eine Remoteverbindung von einem Windows-Client her. Nachdem der Kube
 
 > [!TIP]
 > * Vergewissern Sie sich vor dem Beginn, dass auf Ihrem Windows-Client Windows PowerShell 5.0 oder höher ausgeführt wird.
-> * PowerShell ist auch [unter Linux verfügbar](https://docs.microsoft.com/powershell/scripting/install/installing-powershell-core-on-linux).
+> * PowerShell ist auch [unter Linux verfügbar](/powershell/scripting/install/installing-powershell-core-on-linux).
 
 1. Führen Sie eine Windows PowerShell-Sitzung als Administrator aus. 
     1. Stellen Sie sicher, dass der Dienst Windows-Remoteverwaltung auf dem Client ausgeführt wird. Geben Sie an der Eingabeaufforderung `winrm quickconfig` ein:

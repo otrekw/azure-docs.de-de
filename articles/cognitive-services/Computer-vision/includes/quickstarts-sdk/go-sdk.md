@@ -10,12 +10,12 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: e415e0979e7f45531093993b0524a1bb556d339b
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 4eb92e499a1381516ae6bbc33383963155df371f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92886573"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95095112"
 ---
 <a name="HOLTop"></a>
 
@@ -28,7 +28,7 @@ ms.locfileid: "92886573"
 * Sobald Sie über Ihr Azure-Abonnement verfügen, sollten Sie über <a href="https://portal.azure.com/#create/Microsoft.CognitiveServicesComputerVision"  title="Erstellen einer Ressource für maschinelles Sehen"  target="_blank"> im Azure-Portal eine Ressource für maschinelles Sehen <span class="docon docon-navigate-external x-hidden-focus"></span></a> erstellen, um Ihren Schlüssel und Endpunkt abzurufen. Klicken Sie nach Abschluss der Bereitstellung auf **Zu Ressource wechseln**.
     * Sie benötigen den Schlüssel und Endpunkt der von Ihnen erstellten Ressource, um eine Verbindung Ihrer Anwendung mit dem Dienst für maschinelles Sehen herzustellen. Der Schlüssel und der Endpunkt werden weiter unten in der Schnellstartanleitung in den Code eingefügt.
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
-* [Erstellen Sie Umgebungsvariablen](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` benennen.
+* [Erstellen Sie Umgebungsvariablen](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) für den Schlüssel und die Endpunkt-URL, die Sie `COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT` benennen.
 
 ## <a name="setting-up"></a>Einrichten
 
@@ -43,9 +43,9 @@ cd my-app
 
 Ihr Arbeitsbereich enthält drei Ordner:
 
-* **src** : Das Verzeichnis für Quellcode und Pakete. Alle mit dem Befehl `go get` installierten Pakete werden in diesem Verzeichnis platziert.
-* **pkg** : Das Verzeichnis für die kompilierten Go-Paketobjekte. Diese Dateien haben alle die Erweiterung `.a`.
-* **bin** : Das Verzeichnis für die ausführbaren Binärdateien, die bei der Ausführung von `go install` erstellt werden.
+* **src**: Das Verzeichnis für Quellcode und Pakete. Alle mit dem Befehl `go get` installierten Pakete werden in diesem Verzeichnis platziert.
+* **pkg**: Das Verzeichnis für die kompilierten Go-Paketobjekte. Diese Dateien haben alle die Erweiterung `.a`.
+* **bin**: Das Verzeichnis für die ausführbaren Binärdateien, die bei der Ausführung von `go install` erstellt werden.
 
 > [!TIP]
 > Weitere Informationen zur Struktur eines Go-Arbeitsbereichs finden Sie in der [Dokumentation zur Go-Sprache](https://golang.org/doc/code.html#Workspaces). Dieses Handbuch enthält Informationen zum Festlegen von `$GOPATH` und `$GOROOT`.
@@ -105,7 +105,7 @@ In den Codeausschnitten weiter unten wird gezeigt, wie die folgenden Aufgaben mi
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
 > [!NOTE]
-> In diesem Schritt wird vorausgesetzt, dass Sie für den Schlüssel und den Endpunkt für maschinelles Sehen (`COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`) [Umgebungsvariablen erstellt](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) haben.
+> In diesem Schritt wird vorausgesetzt, dass Sie für den Schlüssel und den Endpunkt für maschinelles Sehen (`COMPUTER_VISION_SUBSCRIPTION_KEY` bzw. `COMPUTER_VISION_ENDPOINT`) [Umgebungsvariablen erstellt](../../../cognitive-services-apis-create-account.md#configure-an-environment-variable-for-authentication) haben.
 
 Erstellen Sie eine Funktion vom Typ `main`, und fügen Sie ihr den folgenden Code hinzu, um einen Client mit Ihrem Endpunkt und Schlüssel zu instanziieren:
 
@@ -221,7 +221,7 @@ Definieren Sie die neue Funktion zum Lesen von Text (`RecognizeTextReadAPIRemote
 
 ### <a name="get-read-results"></a>Abrufen der Leseergebnisse
 
-Rufen Sie als Nächstes die Vorgangs-ID ab, die durch Aufrufen von **BatchReadFile** zurückgegeben wurde, und verwenden Sie sie mit der Methode **GetReadOperationResult** , um die Vorgangsergebnisse vom Dienst abzufragen. Der folgende Code überprüft den Vorgang in Intervallen von einer Sekunde, bis die Ergebnisse zurückgegeben werden. Anschließend werden die extrahierten Textdaten in der Konsole ausgegeben.
+Rufen Sie als Nächstes die Vorgangs-ID ab, die durch Aufrufen von **BatchReadFile** zurückgegeben wurde, und verwenden Sie sie mit der Methode **GetReadOperationResult**, um die Vorgangsergebnisse vom Dienst abzufragen. Der folgende Code überprüft den Vorgang in Intervallen von einer Sekunde, bis die Ergebnisse zurückgegeben werden. Anschließend werden die extrahierten Textdaten in der Konsole ausgegeben.
 
 [!code-go[](~/cognitive-services-quickstart-code/go/ComputerVision/ComputerVisionQuickstart.go?name=snippet_read_response)]
 

@@ -10,12 +10,12 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 95cb4aa5827190abf125669f2423c808cf8c92a5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 9c4410cb2b9550bc111da96204ada15313867fb1
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94368932"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238087"
 ---
 # <a name="customize-your-text-translations"></a>Anpassen von Textübersetzungen
 
@@ -38,28 +38,6 @@ Das benutzerdefinierte System ist dann über einen regulären Aufruf von Transla
 Mit dem entsprechenden Typ und der Menge von Trainingsdaten ist es nicht ungewöhnlich, unter Verwendung des benutzerdefinierten Translators Gewinne von fünf bis zehn oder sogar mehr BLEU-Punkten für die Übersetzungsqualität zu erwarten.
 
 Weitere Informationen über die verschiedenen Anpassungsstufen basierend auf verfügbaren Daten finden Sie im [Benutzerleitfaden für den benutzerdefinierten Translator](./custom-translator/overview.md).
-
-
-## <a name="microsoft-translator-hub"></a>Microsoft Translator-Hub
-
-> [!NOTE]
-> Der veraltete Microsoft Translator-Hub wird am 17. April 2019 eingestellt. [Anzeigen von wichtigen Migrationsinformationen und Datumsangaben](https://www.microsoft.com/translator/business/hub/).  
-
-## <a name="custom-translator-versus-hub"></a>Benutzerdefinierter Translator im Vergleich zum Hub
-
-| Funktion | Hub | Benutzerdefinierter Translator |
-| ------- | :-: | :---------------: |
-|Status des Anpassungsfeatures    | Allgemeine Verfügbarkeit    | Allgemeine Verfügbarkeit |
-| Version der Text-API    | Nur V2    | Nur V3 |
-| SMT-Anpassung    | Ja    | Nein |
-| NMT-Anpassung    | Nein    | Ja |
-| Neue einheitliche Anpassung der Sprachdienste    | Nein    | Ja |
-| [No Trace (Keine Ablaufverfolgung)](https://www.aka.ms/notrace) | Ja    | Ja |
-
-## <a name="collaborative-translations-framework"></a>Framework für kollaborative Übersetzungen
-
-> [!NOTE]
-> Seit dem 1. Februar 2018 sind „AddTranslation()“ und „AddTranslationArray()“ nicht mehr für die Verwendung mit Translator v2.0 verfügbar. Diese Methoden schlagen fehl, und nichts wird geschrieben. Translator v3.0 unterstützt diese Methoden nicht.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

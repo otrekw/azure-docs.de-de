@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
 ms.date: 10/13/2020
-ms.openlocfilehash: 60151e97c64a3d61044e4b82299573ee59951d46
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 2048079a9b1eb5234d03c6fe57073228bd892d53
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128150"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019159"
 ---
 # <a name="quickstart-use-prebuilt-home-automation-app"></a>Schnellstart: Verwenden der vordefinierten Home Automation-App
 
@@ -64,7 +64,7 @@ Wählen Sie **Fertig** aus.
     > [!div class="mx-imgBorder"]
     > [![Screenshot: Absicht „HomeAutomation.TurnOff“](media/luis-quickstart-new-app/home-automation-turnoff.png "Screenshot: Absicht „HomeAutomation.TurnOff“")](media/luis-quickstart-new-app/home-automation-turnoff.png)
 
-1. Wählen Sie **Entitäten** aus, wenn Sie Entitäten für die App anzeigen möchten. Wenn Sie auf eine der Entitäten klicken, z. B. **HomeAutomation.DeviceName** , wird eine Liste mit den zugeordneten Werten angezeigt. 
+1. Wählen Sie **Entitäten** aus, wenn Sie Entitäten für die App anzeigen möchten. Wenn Sie auf eine der Entitäten klicken, z. B. **HomeAutomation.DeviceName**, wird eine Liste mit den zugeordneten Werten angezeigt. 
  
     :::image type="content" source="media/luis-quickstart-new-app/entities-page.png" alt-text="Alternativer Bildtext" lightbox="media/luis-quickstart-new-app/entities-page.png":::
 
@@ -223,4 +223,4 @@ Damit Sie eine LUIS-Vorhersage in einem Chatbot oder einer anderen Clientanwendu
 Sie können den Endpunkt im Code aufrufen:
 
 > [!div class="nextstepaction"]
-> [Aufrufen eines LUIS-Endpunkts mithilfe von Code](luis-get-started-cs-get-intent.md)
+> [Aufrufen eines LUIS-Endpunkts mithilfe von Code](./luis-get-started-get-intent-from-rest.md)

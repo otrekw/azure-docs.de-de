@@ -1,20 +1,20 @@
 ---
 title: Authentifizierung und Autorisierung
 description: Lernen Sie die verschiedenen Möglichkeiten kennen, mit denen eine App oder ein Dienst sich bei Azure Spatial Anchors authentifizieren kann, und erfahren Sie, auf welchen Ebenen Sie den Zugriff auf Spatial Anchors steuern können.
-author: craigktreasure
-manager: vriveras
+author: msftradford
+manager: MehranAzimi-msft
 services: azure-spatial-anchors
-ms.author: crtreasu
-ms.date: 10/08/2020
+ms.author: parkerra
+ms.date: 11/20/2020
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a3d88c8d5d42e3dec2142df1ede7a9ee50898e92
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 0166a3b6031f9e1d364a37db99be5bc5a65267df
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242346"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95484609"
 ---
 # <a name="authentication-and-authorization-to-azure-spatial-anchors"></a>Authentifizierung und Autorisierung bei Azure Spatial Anchors
 
@@ -195,8 +195,8 @@ Das Azure AD-Zugriffstoken wird mithilfe von [MSAL](../../active-directory/deve
 >[!NOTE]
 > Sie können das auf GitHub verfügbare Dienstbeispiel verwenden.
 
-1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID** , **Geheimnis** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
-2.    Legen Sie die Mandanten-ID im **authority** -Parameter in MSAL auf Ihre eigene Azure AD-Mandanten-ID fest.
+1.    Stellen Sie sicher, dass Sie die Anwendungs-ID, das Anwendungsgeheimnis und den Umleitungs-URI Ihrer eigenen Azure AD-Anwendung als Parameter für **Client-ID**, **Geheimnis** und **RedirectUri** (Umleitungs-URI) in MSAL verwenden.
+2.    Legen Sie die Mandanten-ID im **authority**-Parameter in MSAL auf Ihre eigene Azure AD-Mandanten-ID fest.
 3.    Legen Sie für Ihre Tokenanforderung für **scope** den Wert **"`https://sts.<account-domain>//.default`"** fest, wobei `<account-domain>` durch die **Kontodomäne** für Ihr Azure Spatial Anchors-Konto ersetzt wird. Ein Beispiel für ein Azure Spatial Anchors-Konto in der Kontodomäne „USA, Osten 2“ ist **"`https://sts.mixedreality.azure.com//.default`"** .
 
 Nachdem Sie diese Schritte durchgeführt haben, kann Ihr Back-End-Dienst ein Azure AD-Token abrufen. Der Dienst kann dieses Token gegen ein MR-Token austauschen, das er dann an den Client zurückgibt. Der Abruf eines MR-Tokens mithilfe eines Azure AD-Tokens erfolgt über einen REST-Aufruf. Hier sehen Sie einen Beispielaufruf:

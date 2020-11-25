@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/11/2020
 ms.author: trbye
-ms.openlocfilehash: 34c0703ee7c335ca904a21bcce6ed44abc6dc13f
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 9193da2f3841bb94aa395399c31d7fe826c395e0
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555786"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025598"
 ---
 # <a name="train-and-deploy-a-custom-speech-model"></a>Trainieren und Bereitstellen eines Custom Speech-Modells
 
@@ -33,7 +33,7 @@ Wenn Sie bei einem Basismodell auf Erkennungsprobleme stoßen, kann die Verwendu
 
 ## <a name="train-and-evaluate-a-model"></a>Trainieren und Bewerten eines Modells
 
-Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsdaten. Unter [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md) finden Sie schrittweise Anweisungen zum Vorbereiten von menschenmarkierten Transkriptionen und zugehörigem Text (Äußerungen und Aussprache). Nachdem Sie Trainingsdaten hochgeladen haben, folgen Sie diesen Anweisungen, um mit dem Trainieren Ihres Modells zu beginnen:
+Der erste Schritt beim Trainieren eines Modells ist das Hochladen von Trainingsdaten. Unter [Vorbereiten und Testen Ihrer Daten](./how-to-custom-speech-test-and-train.md) finden Sie schrittweise Anweisungen zum Vorbereiten von menschenmarkierten Transkriptionen und zugehörigem Text (Äußerungen und Aussprache). Nachdem Sie Trainingsdaten hochgeladen haben, folgen Sie diesen Anweisungen, um mit dem Trainieren Ihres Modells zu beginnen:
 
 1. Melden Sie sich beim [Custom Speech-Portal](https://speech.microsoft.com/customspeech) an.
 2. Navigieren Sie zu **Spracherkennung > Custom Speech > [Projektname] > Training**.
@@ -77,6 +77,6 @@ Protokolldaten stehen unter **Endpunkt > Details** zum Download zur Verfügung.
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Vorbereiten und Testen Ihrer Daten](how-to-custom-speech-test-data.md)
+- [Vorbereiten und Testen Ihrer Daten](./how-to-custom-speech-test-and-train.md)
 - [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
 - [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)

@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: a74ad7b995f0112346e2212866655107f72c03e7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91324806"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95025975"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continuous Integration- und Continuous Delivery-Workflows für LUIS DevOps
 
@@ -27,9 +27,9 @@ Konfigurieren Sie in Ihrem Quellcodeverwaltungssystem (SCM) automatisierte Build
 
 Im **CI/CD-Workflow** werden zwei komplementäre Entwicklungsprozesse vereinigt:
 
-* [Continuous Integration](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Code in einem freigegebenen Repository regelmäßig committet wird und daraufhin ein automatisierter Build erfolgt. In Kombination mit einem automatisierten [Testansatz](luis-concept-devops-testing.md) kann durch die Continuous Integration für jede Aktualisierung sichergestellt werden, dass die LUDown-Quelle immer noch gültig ist und in eine LUIS-App importiert werden kann; außerdem wird eine Gruppe von Tests übergeben, in denen überprüft wird, ob die trainierte App die erforderlichen Intents und Entitäten für die Lösung erkennen kann.
+* [Continuous Integration](/azure/devops/learn/what-is-continuous-integration) (CI) ist das Entwicklungsverfahren, bei dem Code in einem freigegebenen Repository regelmäßig committet wird und daraufhin ein automatisierter Build erfolgt. In Kombination mit einem automatisierten [Testansatz](luis-concept-devops-testing.md) kann durch die Continuous Integration für jede Aktualisierung sichergestellt werden, dass die LUDown-Quelle immer noch gültig ist und in eine LUIS-App importiert werden kann; außerdem wird eine Gruppe von Tests übergeben, in denen überprüft wird, ob die trainierte App die erforderlichen Intents und Entitäten für die Lösung erkennen kann.
 
-* [Continuous Delivery](https://docs.microsoft.com/azure/devops/learn/what-is-continuous-delivery) (CD) führt das Konzept der Continuous Integration weiter: Die Anwendung wird automatisch in einer Umgebung bereitgestellt, in der Sie umfassendere Tests durchführen können. Anhand von CD werden wir frühzeitig und schnellstmöglich auf unvorhergesehene Probleme aufmerksam gemacht, die im Zusammenhang mit den Änderungen entstehen können. Außerdem werden wir über Lücken in unserer Testabdeckung benachrichtigt.
+* [Continuous Delivery](/azure/devops/learn/what-is-continuous-delivery) (CD) führt das Konzept der Continuous Integration weiter: Die Anwendung wird automatisch in einer Umgebung bereitgestellt, in der Sie umfassendere Tests durchführen können. Anhand von CD werden wir frühzeitig und schnellstmöglich auf unvorhergesehene Probleme aufmerksam gemacht, die im Zusammenhang mit den Änderungen entstehen können. Außerdem werden wir über Lücken in unserer Testabdeckung benachrichtigt.
 
 Continuous Integration und Continuous Delivery sollen sicherstellen, dass der „Master zu jedem Zeitpunkt bereitstellbar ist“. Für eine LUIS-App bedeutet dies, dass wir bei Bedarf eine beliebige Version aus der Masterbranch-LUIS-App in die Produktionsumgebung überführen können.
 
@@ -41,7 +41,7 @@ Verwenden Sie die folgenden Tools, um Automatisierungs-Workflows für LUIS zu er
 
 * [LUIS CLI mit Bot Framework-Tools](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) zum Arbeiten mit LUIS-Apps und -Versionen, und zum Trainieren, Testen und Veröffentlichen der Apps und Versionen im LUIS-Dienst.
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), um Azure-Abonnements abzufragen, LUIS-Schlüssel für Erstellung und Vorhersage abzurufen und einen Azure-[Dienstprinzipal](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung zu erstellen.
+* [Azure CLI](/cli/azure/?view=azure-cli-latest), um Azure-Abonnements abzufragen, LUIS-Schlüssel für Erstellung und Vorhersage abzurufen und einen Azure-[Dienstprinzipal](/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung zu erstellen.
 
 * [NLU.DevOps](https://github.com/microsoft/NLU.DevOps)-Tool zum [Testen einer LUIS-App](luis-concept-devops-testing.md) und zum Analysieren der Testergebnisse.
 
@@ -70,7 +70,7 @@ Mit diesem Workflow sollen folgende Aktionen ausgeführt werden:
 * Trainieren und Veröffentlichen der LUIS-App-Version.
 
   > [!NOTE]
-  > Wie in [Ausführen von Tests in einem automatisierten Buildworkflow](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) erläutert, müssen Sie die getestete LUIS-App-Version veröffentlichen, damit Tools wie NLU.DevOps darauf zugreifen können. LUIS unterstützt nur zwei benannte Veröffentlichungsslots (*Staging* und *Produktion*) für eine LUIS-App, Sie können [eine Version jedoch auch direkt veröffentlichen](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) und [nach Versionen abfragen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-migration-api-v3#changes-by-slot-name-and-version-name). Verwenden Sie die direkte Versionsveröffentlichung in ihren Automatisierungsworkflows, damit Sie sich nicht nur auf die benannten Veröffentlichungsslots beschränken müssen.
+  > Wie in [Ausführen von Tests in einem automatisierten Buildworkflow](luis-concept-devops-testing.md#running-tests-in-an-automated-build-workflow) erläutert, müssen Sie die getestete LUIS-App-Version veröffentlichen, damit Tools wie NLU.DevOps darauf zugreifen können. LUIS unterstützt nur zwei benannte Veröffentlichungsslots (*Staging* und *Produktion*) für eine LUIS-App, Sie können [eine Version jedoch auch direkt veröffentlichen](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish) und [nach Versionen abfragen](./luis-migration-api-v3.md#changes-by-slot-name-and-version-name). Verwenden Sie die direkte Versionsveröffentlichung in ihren Automatisierungsworkflows, damit Sie sich nicht nur auf die benannten Veröffentlichungsslots beschränken müssen.
 
 * Führen Sie alle [Komponententests](luis-concept-devops-testing.md) aus.
 
@@ -84,13 +84,13 @@ Mit diesem Workflow sollen folgende Aktionen ausgeführt werden:
 
 Der CD-Auftrag in einem CI/CD-Workflow wird bedingt bei Erfolg des Buildprozesses und der automatisierten Komponententests ausgeführt. Dabei wird die LUIS-Anwendung automatisch in einer Umgebung bereitgestellt, in der Sie weitere Tests ausführen können.
 
-Es wird keine bestimmte Lösung für die Bereitstellung Ihrer LUIS-App empfohlen, und Sie müssen den Prozess implementieren, der für Ihr Projekt geeignet ist. Die Repository [LUIS-DevOps-Template](https://github.com/Azure-Samples/LUIS-DevOps-Template) implementiert hierfür eine einfache Lösung. Dabei wird [die neue LUIS-App-Version](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app) im Veröffentlichungsslot *Produktion* veröffentlicht. Diese Vorgehensweise eignet sich für ein einfaches Setup. Wenn Sie jedoch eine Reihe von verschiedenen Produktionsumgebungen gleichzeitig unterstützen müssen (wie *Entwicklung*, *Staging* und *UAT*), erweist sich die Beschränkung auf zwei benannte Veröffentlichungsslots pro App als unzureichend.
+Es wird keine bestimmte Lösung für die Bereitstellung Ihrer LUIS-App empfohlen, und Sie müssen den Prozess implementieren, der für Ihr Projekt geeignet ist. Die Repository [LUIS-DevOps-Template](https://github.com/Azure-Samples/LUIS-DevOps-Template) implementiert hierfür eine einfache Lösung. Dabei wird [die neue LUIS-App-Version](./luis-how-to-publish-app.md) im Veröffentlichungsslot *Produktion* veröffentlicht. Diese Vorgehensweise eignet sich für ein einfaches Setup. Wenn Sie jedoch eine Reihe von verschiedenen Produktionsumgebungen gleichzeitig unterstützen müssen (wie *Entwicklung*, *Staging* und *UAT*), erweist sich die Beschränkung auf zwei benannte Veröffentlichungsslots pro App als unzureichend.
 
 Weitere Optionen zum Bereitstellen einer App-Version:
 
 * Belassen Sie die App-Version veröffentlicht auf dem direkten Versionsendpunkt, und implementieren Sie einen entsprechenden Prozess zum Konfigurieren von Downstream-Produktionsumgebungen mit dem direkten Versionsendpunkt.
 * Verwalten Sie unterschiedliche LUIS-Apps für jede Produktionsumgebung, und schreiben Sie Automatisierungsschritte zum Importieren von `.lu` in eine neue Version der LUIS-App für die Ziel-Produktionsumgebung, um sie zu trainieren und zu veröffentlichen.
-* Exportieren Sie die getestete LUIS-App-Version in einen [LUIS-Docker-Container](https://docs.microsoft.com/azure/cognitive-services/luis/luis-container-howto?tabs=v3), und stellen Sie den LUIS-Container in Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) bereit.
+* Exportieren Sie die getestete LUIS-App-Version in einen [LUIS-Docker-Container](./luis-container-howto.md?tabs=v3), und stellen Sie den LUIS-Container in Azure [Container Instances](../../container-instances/index.yml) bereit.
 
 ## <a name="release-management"></a>Releaseverwaltung
 

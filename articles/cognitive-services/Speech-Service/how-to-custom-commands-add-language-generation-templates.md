@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
-ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 40c5e3474d3992108ef61d34e745bc63c1f7a713
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85307241"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020945"
 ---
 # <a name="add-language-generation-templates-for-speech-responses"></a>Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
 
@@ -34,7 +34,7 @@ Sie müssen die Schritte in den folgenden Artikeln durchgeführt haben:
 
 ## <a name="language-generation-templates-overview"></a>Übersicht über Sprachgenerierungsvorlagen
 
-Vorlagen für benutzerdefinierte Befehle basieren auf den [LG-Vorlagen](https://aka.ms/speech/cc-lg-format) des BotFrameworks. Da benutzerdefinierte Befehle bei Bedarf eine neue LG-Vorlage erstellen (d. h. für Sprachantworten in Parametern oder Aktionen), müssen Sie den Namen der LG-Vorlage nicht angeben. Anstatt also Ihre Vorlage wie folgt zu definieren:
+Vorlagen für benutzerdefinierte Befehle basieren auf den [LG-Vorlagen](/azure/bot-service/file-format/bot-builder-lg-file-format#templates) des BotFrameworks. Da benutzerdefinierte Befehle bei Bedarf eine neue LG-Vorlage erstellen (d. h. für Sprachantworten in Parametern oder Aktionen), müssen Sie den Namen der LG-Vorlage nicht angeben. Anstatt also Ihre Vorlage wie folgt zu definieren:
 
  ```
     # CompletionAction
@@ -51,7 +51,7 @@ Müssen Sie den Text der Vorlage nur wie folgt ohne den Namen definieren.
 
 Diese Änderung führt eine Variation in den Sprachantworten ein, die an den Client gesendet werden. Also würde für dieselbe Äußerung die entsprechende Sprachantwort zufällig aus den angebotenen Optionen ausgewählt werden.
 
-Die Nutzung der LG-Vorlagen ermöglicht es Ihnen auch, komplexe Sprachantworten für Befehle mit adaptiven Ausdrücken zu definieren. Weitere Informationen finden Sie unter [LG-Vorlagenformat](https://aka.ms/speech/cc-lg-format). Benutzerdefinierte Befehle unterstützen standardmäßig alle Funktionen mit den folgenden geringfügigen Unterschieden:
+Die Nutzung der LG-Vorlagen ermöglicht es Ihnen auch, komplexe Sprachantworten für Befehle mit adaptiven Ausdrücken zu definieren. Weitere Informationen finden Sie unter [LG-Vorlagenformat](/azure/bot-service/file-format/bot-builder-lg-file-format#templates). Benutzerdefinierte Befehle unterstützen standardmäßig alle Funktionen mit den folgenden geringfügigen Unterschieden:
 
 * In den LG-Vorlagen werden Entitäten als ${entityName} dargestellt. In den benutzerdefinierten Befehlen verwenden wir keine Entitäten, aber Parameter können als Variablen mit einer der beiden Darstellungen ${parameterName} oder {parameterName} verwendet werden.
 * Vorlagenkomposition und -erweiterung werden in benutzerdefinierten Befehlen nicht unterstützt. Der Grund dafür ist, dass Sie nie die `.lg`-Datei direkt bearbeiten, sondern nur die Antworten von automatisch erstellten Vorlagen.
@@ -110,7 +110,7 @@ Eine weitere Möglichkeit zum Anpassen von Antworten auf benutzerdefinierte Befe
 > ![Beispielsätze mit Parametern](media/custom-commands/select-custom-voice.png)
 
 > [!NOTE]
-> - Bei den **öffentlichen Stimmen** sind **neuronale Typen** nur für bestimmte Regionen verfügbar. Informationen zur Verfügbarkeit finden Sie unter [Standardstimmen und neuronale Stimmen nach Region/Endpunkt](https://docs.microsoft.com/azure/cognitive-services/speech-service/regions#standard-and-neural-voices).
+> - Bei den **öffentlichen Stimmen** sind **neuronale Typen** nur für bestimmte Regionen verfügbar. Informationen zur Verfügbarkeit finden Sie unter [Standardstimmen und neuronale Stimmen nach Region/Endpunkt](./regions.md#standard-and-neural-voices).
 > - Für **benutzerdefinierte Stimmen** können sie auf der Custom Voice-Projektseite erstellt werden. Mehr dazu erfahren Sie unter [Erste Schritte mit Custom Voice](./how-to-custom-voice.md)
 
 Die Anwendung antwortet nun in der ausgewählten Stimme statt in der Standardstimme.
