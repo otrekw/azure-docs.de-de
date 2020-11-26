@@ -4,13 +4,13 @@ description: Erfahren Sie, wie Sie Ihre Language Understanding-App (LUIS) mit ei
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 05/28/2020
-ms.openlocfilehash: 25f2c4f4698785326f80c24d3749e7585e85d5bb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/18/2020
+ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91309505"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95535553"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-Methoden für LUIS
 
@@ -18,7 +18,7 @@ Softwareentwickler, die eine Language Understanding-App (LUIS) entwickeln, könn
 
 ## <a name="source-control-and-branch-strategies-for-luis"></a>Quellcodeverwaltungs- und Branchstrategien für LUIS
 
-Einer der wichtigsten Faktoren für den Erfolg von DevOps ist die [Quellcodeverwaltung](https://docs.microsoft.com/azure/devops/user-guide/source-control?view=azure-devops). Ein Quellcodeverwaltungssystem ermöglicht Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von Änderungen. Durch die Verwendung von Branches können Entwickler zwischen verschiedenen Versionen der Codebasis wechseln und unabhängig von anderen Mitgliedern des Teams arbeiten. Wenn Entwickler einen [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) auslösen, um Updates aus einem Branch für andere Branches vorzuschlagen, oder wenn Änderungen zusammengeführt werden, können diese Vorgänge [automatisierte Builds](luis-concept-devops-automation.md) auslösen, um Code zu erstellen und fortlaufend zu testen.
+Einer der wichtigsten Faktoren für den Erfolg von DevOps ist die [Quellcodeverwaltung](/azure/devops/user-guide/source-control?view=azure-devops). Ein Quellcodeverwaltungssystem ermöglicht Entwicklern die Zusammenarbeit an Code und das Nachverfolgen von Änderungen. Durch die Verwendung von Branches können Entwickler zwischen verschiedenen Versionen der Codebasis wechseln und unabhängig von anderen Mitgliedern des Teams arbeiten. Wenn Entwickler einen [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) auslösen, um Updates aus einem Branch für andere Branches vorzuschlagen, oder wenn Änderungen zusammengeführt werden, können diese Vorgänge [automatisierte Builds](luis-concept-devops-automation.md) auslösen, um Code zu erstellen und fortlaufend zu testen.
 
 Mithilfe der in diesem Dokument beschriebenen Konzepte und Anleitungen können Sie eine LUIS-App entwickeln, gleichzeitig Änderungen in einem Quellcodeverwaltungssystem nachverfolgen und dabei die folgenden bewährten Methoden für die Softwareentwicklung befolgen:
 
@@ -42,25 +42,25 @@ Mithilfe der in diesem Dokument beschriebenen Konzepte und Anleitungen können S
 
 ## <a name="source-control"></a>Quellcodeverwaltung
 
-Um die [App-Schemadefinition](https://docs.microsoft.com/azure/cognitive-services/luis/app-schema-definition) einer LUIS-App in einem Quellcodeverwaltungssystem zu verwalten, verwenden Sie die Darstellung der App im [LUDown-Format (`.lu`)](https://docs.microsoft.com/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0). Das `.lu`-Format ist dem `.json`-Format vorzuziehen, da es für Menschen lesbar ist, sodass das Erstellen und Überprüfen von Änderungen in PRs vereinfacht wird.
+Um die [App-Schemadefinition](./app-schema-definition.md) einer LUIS-App in einem Quellcodeverwaltungssystem zu verwalten, verwenden Sie die Darstellung der App im [LUDown-Format (`.lu`)](/azure/bot-service/file-format/bot-builder-lu-file-format?view=azure-bot-service-4.0). Das `.lu`-Format ist dem `.json`-Format vorzuziehen, da es für Menschen lesbar ist, sodass das Erstellen und Überprüfen von Änderungen in PRs vereinfacht wird.
 
 ### <a name="save-a-luis-app-using-the-ludown-format"></a>Speichern einer LUIS-App im LUDown-Format
 
 So speichern Sie eine LUIS-App im `.lu`-Format und platzieren sie in der Quellcodeverwaltung
 
-- ENTWEDER: [Exportieren Sie die App-Version](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#other-actions) als `.lu` im [LUIS-Portal](https://www.luis.ai/), und fügen Sie sie Ihrem Quellcodeverwaltungsrepository hinzu.
+- ENTWEDER: [Exportieren Sie die App-Version](./luis-how-to-manage-versions.md#other-actions) als `.lu` im [LUIS-Portal](https://www.luis.ai/), und fügen Sie sie Ihrem Quellcodeverwaltungsrepository hinzu.
 
 - ODER: Erstellen Sie mit einem Text-Editor eine `.lu`-Datei für eine LUIS-App, und fügen Sie sie Ihrem Quellcodeverwaltungsrepository hinzu.
 
 > [!TIP]
-> Wenn Sie den JSON-Export einer LUIS-App verwenden, können Sie diesen mithilfe der [Bot Builder-Tools für die LUIS CLI](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) in [LUDown konvertieren](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert). Mithilfe der Option `--sort` stellen Sie sicher, dass Absichten und Äußerungen alphabetisch sortiert werden.  
+> Wenn Sie den JSON-Export einer LUIS-App verwenden, können Sie [diesen in LUDown konvertieren](https://github.com/microsoft/botframework-cli/tree/master/packages/luis#bf-luisconvert).  Mithilfe der Option `--sort` stellen Sie sicher, dass Absichten und Äußerungen alphabetisch sortiert werden.  
 > Beachten Sie, dass die **.lu**-Exportfunktion, die im LUIS-Portal integriert ist, die Ausgabe bereits sortiert.
 
 ### <a name="build-the-luis-app-from-source"></a>Erstellen der LUIS-App aus der Quelle
 
-Das Erstellen einer LUIS-App *aus der Quelle* bedeutet das [Erstellen einer neuen Version der LUIS-App durch Importieren der `.lu`-Quelle](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version), das [Trainieren dieser Version](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) und das [Veröffentlichen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app). Sie können diese Schritte im LUIS-Portal oder über die Befehlszeile ausführen:
+Das Erstellen einer LUIS-App *aus der Quelle* bedeutet das [Erstellen einer neuen Version der LUIS-App durch Importieren der `.lu`-Quelle](./luis-how-to-manage-versions.md#import-version), das [Trainieren dieser Version](./luis-how-to-train.md) und das [Veröffentlichen](./luis-how-to-publish-app.md). Sie können diese Schritte im LUIS-Portal oder über die Befehlszeile ausführen:
 
-- Verwenden Sie das LUIS-Portal, um [die `.lu`-Version der App aus der Quellcodeverwaltung zu importieren](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions#import-version) und die App zu [trainieren](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-train) und zu [veröffentlichen](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-publish-app).
+- Verwenden Sie das LUIS-Portal, um [die `.lu`-Version der App aus der Quellcodeverwaltung zu importieren](./luis-how-to-manage-versions.md#import-version) und die App zu [trainieren](./luis-how-to-train.md) und zu [veröffentlichen](./luis-how-to-publish-app.md).
 
 - Verwenden Sie die [Befehlszeilenschnittstelle von Bot Framework für LUIS](https://github.com/microsoft/botbuilder-tools/tree/master/packages/LUIS) über die Befehlszeile oder in einem CI/CD-Workflow, um die `.lu`-Version der App aus der Quellcodeverwaltung in eine LUIS-Anwendung zu [importieren](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisversionimport) und diese App zu [trainieren](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luistrainrun) und zu [veröffentlichen](https://github.com/microsoft/botframework-cli/blob/master/packages/luis/README.md#bf-luisapplicationpublish).
 
@@ -72,16 +72,16 @@ Die folgenden Dateitypen für Ihre LUIS-Anwendung sollten mit einer Quellcodever
 
 - [Definitionsdateien für Komponententests](luis-concept-devops-testing.md#writing-tests) (Äußerungen und erwartete Ergebnisse)
 
-- [Batchtestdateien](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-batch-test#batch-file-format) (Äußerungen und erwartete Ergebnisse) für Leistungstests
+- [Batchtestdateien](./luis-concept-batch-test.md#batch-file-format) (Äußerungen und erwartete Ergebnisse) für Leistungstests
 
-### <a name="credentialsand-keys-are-not-checked-in"></a>Ausschließen von Anmeldeinformationen und Schlüsseln
+### <a name="credentials-and-keys-are-not-checked-in"></a>Ausschließen von Anmeldeinformationen und Schlüsseln
 
 Schließen Sie keine Abonnementschlüssel oder ähnliche vertrauliche Werte in die Dateien ein, die Sie in Ihr Repository einchecken, da sie dort möglicherweise für nicht autorisierte Mitarbeiter einsehbar sind. Zu den Schlüsseln und anderen Werten, die Sie nicht einchecken sollten, zählen:
 
 - LUIS-Schlüssel für Erstellung und Vorhersage
 - LUIS-Endpunkte für Erstellung und Vorhersage
 - Azure-Abonnementschlüssel
-- Zugriffstoken, z. B. das Token für einen Azure-[Dienstprinzipal](https://docs.microsoft.com/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung
+- Zugriffstoken, z. B. das Token für einen Azure-[Dienstprinzipal](/cli/azure/ad/sp?view=azure-cli-latest) für die Automation-Authentifizierung
 
 #### <a name="strategies-for-securely-managing-secrets"></a>Strategien für die sichere Verwaltung von Geheimnissen
 
@@ -92,7 +92,7 @@ Zu den Strategien für die sichere Verwaltung von Geheimnissen gehören:
 
 ## <a name="branching-and-merging"></a>Branchen und Zusammenführen
 
-Verteilte Versionskontrollsysteme wie Git bieten viel Flexibilität bei der Veröffentlichung, Freigabe, Überprüfung und Iteration von Codeänderungen durch die Teammitglieder über Entwicklungsbranches, die für andere Benutzer freigegeben werden. Nutzen Sie eine [Git-Branchstrategie](https://docs.microsoft.com/azure/devops/repos/git/git-branching-guidance), die für Ihr Team geeignet ist.
+Verteilte Versionskontrollsysteme wie Git bieten viel Flexibilität bei der Veröffentlichung, Freigabe, Überprüfung und Iteration von Codeänderungen durch die Teammitglieder über Entwicklungsbranches, die für andere Benutzer freigegeben werden. Nutzen Sie eine [Git-Branchstrategie](/azure/devops/repos/git/git-branching-guidance), die für Ihr Team geeignet ist.
 
 Unabhängig von Ihrer Verzweigungsstrategie besteht das Hauptprinzip darin, dass die Teammitglieder an der Lösung innerhalb eines *Featurebranches* arbeiten können – und zwar unabhängig von der Arbeit, die in anderen Branches ausgeführt wird.
 
@@ -110,7 +110,7 @@ Entwickler können wie folgt unabhängig von anderen Branches an Updates für ei
 
 1. Erstellen Sie einen Featurebranch aus dem Hauptbranch (abhängig von der Verzweigungsstrategie, in der Regel Master- oder Entwicklungsbranch).
 
-1. [Erstellen Sie eine neue LUIS-App im LUIS-Portal](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-start-new-app) (die *„Entwicklungsbranch-App“* ), die ausschließlich der Unterstützung der Arbeit in diesem Featurebranch dient.
+1. [Erstellen Sie eine neue LUIS-App im LUIS-Portal](./luis-how-to-start-new-app.md) (die *„Entwicklungsbranch-App“* ), die ausschließlich der Unterstützung der Arbeit in diesem Featurebranch dient.
 
    * Wenn die `.lu`-Quelle für die Projektmappe bereits in Ihrem Branch vorhanden ist, da sie nach der Arbeit in einem anderen Branch zuvor im Projekt gespeichert wurde, erstellen Sie Ihren eigenen Entwicklungsbranch der LUIS-App, indem Sie die `.lu`-Datei importieren.
 
@@ -120,11 +120,11 @@ Entwickler können wie folgt unabhängig von anderen Branches an Updates für ei
 
 1. Testen Sie die Updates. Ausführliche Informationen zum Testen Ihrer Entwicklungsbranch-App finden Sie unter [Testen für LUIS DevOps](luis-concept-devops-testing.md).
 
-1. Exportieren Sie die aktive Version der Entwicklungsbranch-App als `.lu` aus der [Versionsliste](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions).
+1. Exportieren Sie die aktive Version der Entwicklungsbranch-App als `.lu` aus der [Versionsliste](./luis-how-to-manage-versions.md).
 
 1. Checken Sie Ihre Updates ein, und laden Sie zum Peer Review Ihrer Updates ein. Wenn Sie GitHub verwenden, lösen Sie einen [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) aus.
 
-1. Wenn die Änderungen genehmigt werden, führen Sie die Updates im Masterbranch zusammen. An diesem Punkt erstellen Sie eine neue [Version](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions) der LUIS-*Master*-App, für die Sie die aktualisierte `.lu` im Masterbranch verwenden. Überlegungen zum Festlegen von Versionsnamen finden Sie unter [Versionsverwaltung](#versioning).
+1. Wenn die Änderungen genehmigt werden, führen Sie die Updates im Masterbranch zusammen. An diesem Punkt erstellen Sie eine neue [Version](./luis-how-to-manage-versions.md) der LUIS-*Master*-App, für die Sie die aktualisierte `.lu` im Masterbranch verwenden. Überlegungen zum Festlegen von Versionsnamen finden Sie unter [Versionsverwaltung](#versioning).
 
 1. Wenn der Featurebranch gelöscht wird, empfiehlt es sich, auch den Entwicklungsbranch der LUIS-App zu löschen, den Sie für die Arbeit am Featurebranch erstellt haben.
 
@@ -144,9 +144,9 @@ Sie können es mehreren Entwicklern ermöglichen, gleichzeitig am selben Feature
 
 - Wenn Sie das oben unter [Arbeiten in unabhängigen Branches für die Entwickler](#developers-can-work-from-independent-branches) beschriebene Muster befolgen, verwendet dieser Branch eine eigene LUIS-Anwendung für die Entwicklung. Dieser Entwicklungsbranch der LUIS-App wird vom ersten Mitglied des Entwicklungsteams erstellt, das mit der Arbeit in diesem Featurebranch beginnt.
 
-- Fügen Sie dem Entwicklungsbranch der LUIS-App [Teammitglieder als Mitwirkende](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate) hinzu.
+- Fügen Sie dem Entwicklungsbranch der LUIS-App [Teammitglieder als Mitwirkende](./luis-how-to-collaborate.md) hinzu.
 
-- Wenn die Arbeit am Featurebranch abgeschlossen ist, exportieren Sie die aktive Version der LUIS-App im Entwicklungsbranch als `.lu` aus der [Versionsliste](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-manage-versions), speichern die aktualisierte `.lu`-Datei im Repository, checken die Änderungen ein und führen einen Pull Request aus.
+- Wenn die Arbeit am Featurebranch abgeschlossen ist, exportieren Sie die aktive Version der LUIS-App im Entwicklungsbranch als `.lu` aus der [Versionsliste](./luis-how-to-manage-versions.md), speichern die aktualisierte `.lu`-Datei im Repository, checken die Änderungen ein und führen einen Pull Request aus.
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Integrieren von Änderungen aus einem Branch in einen anderen per Rebase oder Merge
 
@@ -183,7 +183,7 @@ Eine LUIS-App im LUDown-Format ist für Menschen lesbar. Damit unterstützt sie 
 
 ## <a name="versioning"></a>Versionsverwaltung
 
-Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](https://docs.microsoft.com/azure/cognitive-services/speech-service/overview) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](https://docs.microsoft.com/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
+Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
 
 Auf die LUIS-App im Masterbranch sollte ein Versionsverwaltungsschema angewandt werden. Wenn Sie Updates an der `.lu`-Datei für eine LUIS-App im Masterbranch zusammenführen, importieren Sie dann diese aktualisierte Quelle in eine neue Version der LUIS-App für den Masterbranch.
 
@@ -195,7 +195,7 @@ Bei jedem Update wird die letzte Ziffer der Versionsnummer erhöht.
 
 Über die Haupt-/Nebenversion kann der Umfang der Änderungen an der Funktionalität der LUIS-App angegeben werden:
 
-* Hauptversion: Eine bedeutende Änderung, z. B. Unterstützung einer neuen [Absicht](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-intent) oder [Entität](https://docs.microsoft.com/azure/cognitive-services/luis/luis-concept-entity-types)
+* Hauptversion: Eine bedeutende Änderung, z. B. Unterstützung einer neuen [Absicht](./luis-concept-intent.md) oder [Entität](./luis-concept-entity-types.md)
 * Nebenversion: Eine kleinere, abwärtskompatible Änderung, z. B. nach einem bedeutenden neuen Training
 * Build: Keine Funktionsänderung, sondern nur ein anderer Build
 

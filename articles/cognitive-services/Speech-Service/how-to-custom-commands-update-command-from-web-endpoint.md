@@ -1,7 +1,7 @@
 ---
 title: Aktualisieren eines Befehls über einen Webendpunkt
 titleSuffix: Azure Cognitive Services
-description: Aktualisieren eines Befehls über einen Webendpunkt
+description: Erfahren Sie, wie Sie den Zustand eines Befehls aktualisieren, indem Sie einen Aufruf an einen Webendpunkt verwenden.
 services: cognitive-services
 author: encorona-ms
 manager: yetian
@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: 4432843ac93002bc92068db191706352234d76e6
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94572651"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963605"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Aktualisieren eines Befehls über einen Webendpunkt
 
-Wenn Ihre Clientanwendung es erfordert, den Zustand eines laufenden Befehls ohne Spracheingabe zu aktualisieren, können Sie einen Aufruf für einen Webendpunkt verwenden, um den Befehl zu aktualisieren.
+Wenn Ihre Clientanwendung die Aktualisierung des Zustands eines laufenden Befehls ohne Spracheingabe erfordert, können Sie einen Aufruf für einen Webendpunkt verwenden, um den Befehl zu aktualisieren.
 
 In diesem Artikel erfahren Sie, wie Sie einen laufenden Befehl über einen Webendpunkt aktualisieren.
 
@@ -27,9 +27,9 @@ In diesem Artikel erfahren Sie, wie Sie einen laufenden Befehl über einen Weben
 > [!div class = "checklist"]
 > * Eine zuvor [erstellte Anwendung für benutzerdefinierte Befehle](quickstart-custom-commands-application.md)
 
-## <a name="create-an-azure-function"></a>Erstellen einer Azure Function 
+## <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion 
 
-Für dieses Beispiel benötigen wir eine über HTTP ausgelöste [Azure-Funktion](https://docs.microsoft.com/azure/azure-functions/), die die folgende Eingabe (oder eine Teilmenge dieser Eingabe) unterstützt.
+Für dieses Beispiel benötigen Sie eine über HTTP ausgelöste [Azure-Funktion](https://docs.microsoft.com/azure/azure-functions/), die die folgende Eingabe (oder eine Teilmenge dieser Eingabe) unterstützt:
 
 ```JSON
 {
@@ -48,16 +48,16 @@ Für dieses Beispiel benötigen wir eine über HTTP ausgelöste [Azure-Funktion]
 }
 ```
 
-Lassen Sie uns die Schlüsselattribute dieser Eingabe überprüfen.
+Lassen Sie uns die Schlüsselattribute dieser Eingabe überprüfen:
 
 | attribute | Erklärung |
 | ---------------- | --------------------------------------------------------------------------------------------------------------------------- |
-| **conversationId** | „conversationId“ ist der eindeutige Bezeichner der Unterhaltung. Beachten Sie, dass diese ID von der Client-App generiert werden kann. |
-| **currentCommand** | „currentCommand“ ist der aktuell aktive Befehl in der Unterhaltung. |
-| **name** | „name“ ist der Name des Befehls und „parameters“ ist eine Zuordnung mit den aktuellen Werten der Parameter. |
-| **currentGlobalParameters** | „currentGlobalParameters“ ist ebenfalls eine Zuordnung wie „parameters“, wird aber für globale Parameter verwendet. |
+| **conversationId** | Der eindeutige Bezeichner der Unterhaltung. Beachten Sie, dass diese ID aus der Client-App generiert werden kann. |
+| **currentCommand** | Der aktuell aktive Befehl in der Unterhaltung. |
+| **name** | Der Name des Befehls. Das Attribut `parameters` ist eine Zuordnung mit den aktuellen Werten der Parameter. |
+| **currentGlobalParameters** | Eine Zuordnung wie `parameters`, aber für globale Parameter verwendet. |
 
-Die Ausgabe der Azure-Funktion muss das folgende Format unterstützen.
+Die Ausgabe der Azure-Funktion muss das folgende Format unterstützen:
 
 ```JSON
 {
@@ -74,9 +74,9 @@ Die Ausgabe der Azure-Funktion muss das folgende Format unterstützen.
 }
 ```
 
-Möglicherweise erkennen Sie dieses Format, da es dasselbe ist, das beim [Aktualisieren eines Befehls vom Client](./how-to-custom-commands-update-command-from-client.md) verwendet wird. 
+Möglicherweise erkennen Sie dieses Format, da es dasselbe ist, das Sie beim [Aktualisieren eines Befehls vom Client](./how-to-custom-commands-update-command-from-client.md) verwendet haben. 
 
-Erstellen Sie jetzt eine Azure-Funktion auf der Basis von NodeJS. Anschließend kopieren Sie diesen Code und fügen ihn ein.
+Erstellen Sie jetzt eine Azure-Funktion auf der Basis von NodeJS. Kopieren Sie diesen Code, und fügen Sie ihn ein:
 
 ```nodejs
 module.exports = async function (context, req) {
@@ -94,35 +94,35 @@ module.exports = async function (context, req) {
 }
 ```
 
-Wenn wir diese Azure-Funktion über benutzerdefinierte Befehle aufrufen, senden wir die aktuellen Werte der Unterhaltung und geben die Parameter zurück, die wir aktualisieren möchten oder wenn wir den aktuellen Befehl abbrechen möchten.
+Wenn Sie diese Azure-Funktion aus „Benutzerdefinierte Befehle“ aufrufen, senden Sie die aktuellen Werte der Unterhaltung. Sie geben die Parameter zurück, die Sie aktualisieren möchten, oder ob Sie den aktuellen Befehl abbrechen möchten.
 
 ## <a name="update-the-existing-custom-commands-app"></a>Aktualisieren der vorhandenen App „Benutzerdefinierte Befehle“
 
-Jetzt wollen wir die Azure-Funktion mit der vorhandenen App „Benutzerdefinierte Befehle“ verbinden.
+Jetzt wollen wir die Azure-Funktion mit der vorhandenen App „Benutzerdefinierte Befehle“ verbinden:
 
-1. Fügen Sie einen neuen Befehl mit dem Namen „IncrementCounter“ hinzu.
-1. Fügen Sie nur einen Beispielsatz mit dem Wert „increment“ hinzu.
-1. Fügen Sie einen neuen Parameter namens „Counter“ (gleicher Name wie oben in der Azure-Funktion angegeben) vom Typ „Number“ mit einem Standardwert von „0“ hinzu.
-1. Fügen Sie einen neuen Webendpunkt namens „IncrementEndpoint“ mit der URL Ihrer Azure-Funktion und mit aktivierten Remoteupdates hinzu.
+1. Fügen Sie einen neuen Befehl namens `IncrementCounter` hinzu.
+1. Fügen Sie nur einen Beispielsatz mit dem Wert `increment` hinzu.
+1. Fügen Sie einen neuen Parameter namens `Counter` (selber Name wie in der Azure-Funktion angegeben) vom Typ `Number` mit einem Standardwert von `0` hinzu.
+1. Fügen Sie einen neuen Webendpunkt namens `IncrementEndpoint` mit der URL Ihrer Azure-Funktion und mit auf **Aktiviert** festgelegten **Remoteupdates** hinzu.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="Festlegen des Webendpunkts mit Remoteupdates":::
-1. Erstellen Sie eine neue Interaktionsregel namens „IncrementRule“, und fügen Sie eine Aktion zum Aufrufen des Webendpunkts hinzu.
+    > :::image type="content" source="./media/custom-commands/set-web-endpoint-with-remote-updates.png" alt-text="Screenshot, der das Festlegen eines Webendpunkts mit Remoteupdates zeigt.":::
+1. Erstellen Sie eine neue Interaktionsregel namens **IncrementRule**, und fügen Sie eine Aktion **Webendpunkt aufrufen** hinzu.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="Inkrementregel":::
-1. Wählen Sie in der Aktionskonfiguration den „IncrementEndpunkt“ aus, konfigurieren Sie „Bei Erfolg“, um eine Sprachantwort mit dem Wert von „Counter“ zu senden, und „Bei Fehler“, um eine Fehlermeldung zu senden.
+    > :::image type="content" source="./media/custom-commands/increment-rule-web-endpoint.png" alt-text="Screenshot, der das Erstellen einer Interaktionsregel zeigt.":::
+1. Wählen Sie in der Aktionskonfiguration `IncrementEndpoint` aus. Konfigurieren Sie **Bei Erfolg** auf **Sprachantwort senden** mit dem Wert `Counter`, und konfigurieren Sie **Bei Fehler** mit einer Fehlermeldung.
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="Festlegen des Aufrufendpunkts des Inkrementzählers":::
-1. Legen Sie den Zustand nach der Ausführung der Regel so fest, dass auf die Benutzereingabe gewartet wird.
+    > :::image type="content" source="./media/custom-commands/set-increment-counter-call-endpoint.png" alt-text="Screenshot, der das Festlegen eines Inkrementzählers für das Aufrufen eines Webendpunkts zeigt.":::
+1. Legen Sie den Zustand nach der Ausführung der Regel auf **Auf Benutzereingabe warten** fest.
 
 ## <a name="test-it"></a>Testen
 
-1. Speichern und Trainieren Sie Ihre App.
-1. Klicken Sie auf „Testen“.
-1. Senden Sie mehrmals „increment“ (dies ist der Beispielsatz für den Befehl „IncrementCounter“).
+1. Speichern und trainieren Sie Ihre App.
+1. Klicken Sie auf **Test**.
+1. Senden Sie mehrmals `increment` (dies ist der Beispielsatz für den Befehl `IncrementCounter`).
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Beispiel für Inkrementzähler":::
+    > :::image type="content" source="./media/custom-commands/increment-counter-example.png" alt-text="Screenshot, der ein Beispiel für einen Inkrementzähler zeigt.":::
 
-Beachten Sie, wie der Wert des Counter-Parameters bei jedem Durchgang von der Azure-Funktion inkrementiert wird.
+Beachten Sie, wie der Wert des `Counter`-Parameters bei jedem Durchgang von der Azure-Funktion inkrementiert wird.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

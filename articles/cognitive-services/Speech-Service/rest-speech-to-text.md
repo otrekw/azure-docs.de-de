@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 98c42a61e65935446f948e35cb08ed2893dd0b7b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91532516"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015357"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -30,7 +30,7 @@ Beachten Sie Folgendes, bevor Sie die Spracherkennungs-REST-API verwenden:
 Wenn das Senden von längerem Audio eine Anforderung für Ihre Anwendung ist, verwenden Sie das [Speech SDK](speech-sdk.md) oder eine dateibasierte REST-API wie die [Batchtranskription](batch-transcription.md).
 
 > [!TIP]
-> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der [Azure Government-Dokumentation](https://docs.microsoft.com/azure/azure-government/compare-azure-government-global-azure).
+> Informationen zu Endpunkten zur Government-Cloud (FairFax) finden Sie in der [Azure Government-Dokumentation](../../azure-government/compare-azure-government-global-azure.md).
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-rest-auth.md)]
 
@@ -90,10 +90,10 @@ Audiodaten werden im Text der HTTP-`POST`-Anforderung gesendet. Sie müssen in e
 
 In dieser Tabelle sind die erforderlichen und optionalen Parameter für die Aussprachebewertung aufgeführt.
 
-| Parameter | BESCHREIBUNG | Erforderlich/optional |
+| Parameter | BESCHREIBUNG | Erforderlich? |
 |-----------|-------------|---------------------|
 | ReferenceText | Der Text, für den die Aussprache ausgewertet wird. | Erforderlich |
-| GradingSystem | Das Punktesystem zur Kalibrierung der Bewertung. Zulässige Werte sind `FivePoint` und `HundredMark`. Die Standardeinstellung ist `FivePoint`. | Optional |
+| GradingSystem | Das Punktesystem zur Kalibrierung der Bewertung. Das `FivePoint`-System gibt eine 0-5-Gleitkommabewertung und `HundredMark` eine 0-100-Gleitkommabewertung aus. Standardwert: `FivePoint`. | Optional |
 | Granularität | Die Granularität der Auswertung. Akzeptierte Werte sind `Phoneme`, für das die Bewertung auf Volltext-, Wort- und Phonemebene, `Word`, für das die Bewertung auf Volltext und Wortebene und `FullText`, für das nur die Bewertung auf der Volltextebene angezeigt wird. Die Standardeinstellung ist `Phoneme`. | Optional |
 | Dimension | Definiert die Ausgabekriterien. Die akzeptierten Werte sind `Basic`, das nur die Genauigkeitsbewertung anzeigt, und `Comprehensive`, für das Bewertungen in weiteren Dimensionen angezeigt wird (z. B. Flüssigkeitsbewertung und Vollständigkeitsbewertung auf der Volltextebene, Fehlertyp auf der Wortebene). In den [Antwortparametern](#response-parameters) finden Sie Definitionen verschiedener Bewertungsdimensionen und Wortfehlertypen. Die Standardeinstellung ist `Basic`. | Optional |
 | EnableMiscue | Aktiviert die Fehlschlagsberechnung. Wenn diese Option aktiviert ist, werden die ausgesprochenen Wörter mit dem Referenztext verglichen und auf der Grundlage des Vergleichs mit Auslassung/Einfügung gekennzeichnet. Zulässige Werte sind `False` und `True`. Die Standardeinstellung ist `False`. | Optional |
@@ -307,5 +307,5 @@ Eine typische Antwort für Erkennung mit Bewertung der Aussprache:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Erstellen Sie ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/cognitive-services/)
-- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](how-to-customize-acoustic-models.md)
-- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](how-to-customize-language-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Akustikmodells](./how-to-custom-speech-train-model.md)
+- [Tutorial: Erstellen eines benutzerdefinierten Sprachmodells](./how-to-custom-speech-train-model.md)

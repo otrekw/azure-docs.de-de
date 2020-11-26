@@ -7,18 +7,18 @@ ms.author: baanders
 ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 12eed6aeccffe854810e9c2ddc8a5c4e59b8c312
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 0a38f9b8135fed08a95df68f108e44c34fec6325
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337932"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955326"
 ---
 # <a name="understand-twin-models-in-azure-digital-twins"></a>Grundlegendes zu Zwillingsmodellen in Azure Digital Twins
 
 Ein Hauptmerkmal von Azure Digital Twins ist die Fähigkeit, Ihr eigenes Vokabular zu definieren und Ihren Zwillingsgraph in den selbstdefinierten Begriffen Ihres Unternehmens zu erstellen. Dies wird mittels benutzerdefinierter **Modelle** ermöglicht. Sie können sich Modelle in einer Beschreibung Ihrer Umgebung als die Nomen vorstellen. 
 
-Ein Modell ähnelt einer **Klasse** einer objektorientierten Programmiersprache und definiert eine Datenform für ein bestimmtes Konzept in Ihrer realen Arbeitsumgebung. Modelle haben Namen (wie z. B. *Raum* oder *Temperatursensor* ) und enthalten Elemente wie Eigenschaften, Telemetrie/Ereignisse und Befehle, die beschreiben, welche Möglichkeiten dieser Entitätstyp in Ihrer Umgebung hat. Später nutzen Sie diese Modelle, um [**Digital Twins**](concepts-twins-graph.md) zu erstellen, die bestimmte dieser Typbeschreibung entsprechende Entitäten darstellen.
+Ein Modell ähnelt einer **Klasse** einer objektorientierten Programmiersprache und definiert eine Datenform für ein bestimmtes Konzept in Ihrer realen Arbeitsumgebung. Modelle haben Namen (wie z. B. *Raum* oder *Temperatursensor*) und enthalten Elemente wie Eigenschaften, Telemetrie/Ereignisse und Befehle, die beschreiben, welche Möglichkeiten dieser Entitätstyp in Ihrer Umgebung hat. Später nutzen Sie diese Modelle, um [**Digital Twins**](concepts-twins-graph.md) zu erstellen, die bestimmte dieser Typbeschreibung entsprechende Entitäten darstellen.
 
 Azure Digital Twins-Modelle werden in der auf JSON-LD basierenden Sprache **Digital Twin Definition Language (DTDL)** dargestellt.  
 
@@ -38,18 +38,18 @@ Azure Digital Twins arbeitet mit **DTDL _Version 2_**. Weitere Informationen zu
 Innerhalb einer Modelldefinition ist das Element auf oberster Codeebene eine **Schnittstelle**. Damit wird das gesamte Modell gekapselt, während der Rest des Modells innerhalb der Schnittstelle definiert wird. 
 
 Eine DTDL-Modellschnittstelle kann keines, eines oder mehrere der folgenden Felder enthalten:
-* **Eigenschaft** : Eigenschaften sind Datenfelder, die den Zustand einer Entität repräsentieren (wie die Eigenschaften in vielen objektorientierten Programmiersprachen). Eigenschaften haben Sicherungsspeicher und können jederzeit gelesen werden.
-* **Telemetrie** : Telemetriefelder stellen Messungen oder Ereignisse dar und dienen häufig zur Beschreibung von Sensormesswerten von Geräten. Im Gegensatz zu Eigenschaften wird Telemetrie nicht in einem digitalen Zwilling gespeichert. Telemetrie ist eine Reihe von zeitgebundenen Datenereignissen, die bei ihrem Auftreten verarbeitet werden müssen. Weitere Informationen zu den Unterschieden zwischen Eigenschaft und Telemetrie finden Sie unten im Abschnitt [*Eigenschaften im Vergleich zu Telemetrie*](#properties-vs-telemetry).
-* **Komponenten** : Komponenten ermöglichen Ihnen nach Wunsch das Erstellen Ihrer Modellschnittstelle als Zusammensetzung anderer Schnittstellen. Ein Beispiel einer Komponente ist die Schnittstelle *Frontkamera* (und die weitere Komponentenschnittstelle *Rückkamera* ), die bei der Definition eines Modells für ein *Smartphone* verwendet werden. Sie müssen zunächst eine Schnittstelle für *Frontkamera* so definieren, als wäre sie ihr eigenes Modell. Danach können Sie beim Definieren von *Smartphone* darauf verweisen.
+* **Eigenschaft**: Eigenschaften sind Datenfelder, die den Zustand einer Entität repräsentieren (wie die Eigenschaften in vielen objektorientierten Programmiersprachen). Eigenschaften haben Sicherungsspeicher und können jederzeit gelesen werden.
+* **Telemetrie**: Telemetriefelder stellen Messungen oder Ereignisse dar und dienen häufig zur Beschreibung von Sensormesswerten von Geräten. Im Gegensatz zu Eigenschaften wird Telemetrie nicht in einem digitalen Zwilling gespeichert. Telemetrie ist eine Reihe von zeitgebundenen Datenereignissen, die bei ihrem Auftreten verarbeitet werden müssen. Weitere Informationen zu den Unterschieden zwischen Eigenschaft und Telemetrie finden Sie unten im Abschnitt [*Eigenschaften im Vergleich zu Telemetrie*](#properties-vs-telemetry).
+* **Komponenten**: Komponenten ermöglichen Ihnen nach Wunsch das Erstellen Ihrer Modellschnittstelle als Zusammensetzung anderer Schnittstellen. Ein Beispiel einer Komponente ist die Schnittstelle *Frontkamera* (und die weitere Komponentenschnittstelle *Rückkamera*), die bei der Definition eines Modells für ein *Smartphone* verwendet werden. Sie müssen zunächst eine Schnittstelle für *Frontkamera* so definieren, als wäre sie ihr eigenes Modell. Danach können Sie beim Definieren von *Smartphone* darauf verweisen.
 
     Beschreiben Sie mit einer Komponente etwas, das ein integraler Bestandteil Ihrer Lösung ist, aber keine separate Identität benötigt und im Digital Twin-Graph nicht unabhängig erstellt, gelöscht oder neu angeordnet werden muss. Wenn Sie möchten, dass Entitäten im Zwillingsgraphen unabhängig voneinander existieren, stellen Sie sie als separate Digital Twins verschiedener Modelle dar, die durch *Beziehungen* verbunden sind (siehe den nächsten Punkt).
     
     >[!TIP] 
     >Komponenten können auch zur Organisation verwendet werden, um Sätze verwandter Eigenschaften innerhalb einer Modellschnittstelle zu gruppieren. In diesem Fall können Sie sich jede Komponente als einen Namespace oder „Ordner“ innerhalb der Schnittstelle vorstellen.
-* **Beziehung** : Anhand von Beziehungen können Sie darstellen, wie ein Digital Twin mit anderen Digital Twins zusammenarbeiten kann. Beziehungen können verschiedene semantische Bedeutungen darstellen, wie z. B. *enthält* („Raum enthält Boden“), *kühlt* („Klimaanlage kühlt Raum“), *Rechnungsempfänger* („Kompressor wird Benutzer in Rechnung gestellt“) usw. Beziehungen ermöglichen der Lösung, einen Graphen miteinander verbundener Entitäten zu erstellen.
+* **Beziehung**: Anhand von Beziehungen können Sie darstellen, wie ein Digital Twin mit anderen Digital Twins zusammenarbeiten kann. Beziehungen können verschiedene semantische Bedeutungen darstellen, wie z. B. *enthält* („Raum enthält Boden“), *kühlt* („Klimaanlage kühlt Raum“), *Rechnungsempfänger* („Kompressor wird Benutzer in Rechnung gestellt“) usw. Beziehungen ermöglichen der Lösung, einen Graphen miteinander verbundener Entitäten zu erstellen.
 
 > [!NOTE]
-> Die [Spezifikation für DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert auch **Befehle** , d. h. Methoden, die auf einem Digital Twin ausgeführt werden können (z. B. ein Rücksetzbefehl oder ein Befehl zum Ein- oder Ausschalten eines Lüfters). Allerdings werden *Befehle in Azure Digital Twins derzeit nicht unterstützt*.
+> Die [Spezifikation für DTDL](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md) definiert auch **Befehle**, d. h. Methoden, die auf einem Digital Twin ausgeführt werden können (z. B. ein Rücksetzbefehl oder ein Befehl zum Ein- oder Ausschalten eines Lüfters). Allerdings werden *Befehle in Azure Digital Twins derzeit nicht unterstützt*.
 
 ### <a name="properties-vs-telemetry"></a>Eigenschaften im Vergleich zu Telemetrie
 
@@ -144,10 +144,10 @@ Die Felder des Modells sind wie folgt:
 | `@type` | Gibt die Art der beschriebenen Informationen an. Bei einer Schnittstelle ist der Typ *Schnittstelle*. |
 | `@context` | Legt den [Kontext](https://niem.github.io/json/reference/json-ld/context/) für das JSON-Dokument fest. Für Modelle muss `dtmi:dtdl:context;2` verwendet werden. |
 | `displayName` | [optional] Ermöglicht Ihnen, dem Modell auf Wunsch einen Anzeigenamen zu geben. |
-| `contents` | Alle übrigen Schnittstellendaten werden hier als ein Array von Attributdefinitionen platziert. Jedes Attribut muss einen `@type` (eine *Eigenschaft* , *Telemetrie* , einen *Befehl* , eine *Beziehung* oder *Komponente* ) enthalten, um die Art der Schnittstelleninformationen zu bestimmen, die beschrieben werden, und dann eine Reihe von Eigenschaften, die das eigentliche Attribut definieren (z. B. `name` und `schema` zur Definition einer *Eigenschaft* ). |
+| `contents` | Alle übrigen Schnittstellendaten werden hier als ein Array von Attributdefinitionen platziert. Jedes Attribut muss einen `@type` (eine *Eigenschaft*, *Telemetrie*, einen *Befehl*, eine *Beziehung* oder *Komponente*) enthalten, um die Art der Schnittstelleninformationen zu bestimmen, die beschrieben werden, und dann eine Reihe von Eigenschaften, die das eigentliche Attribut definieren (z. B. `name` und `schema` zur Definition einer *Eigenschaft*). |
 
 > [!NOTE]
-> Beachten Sie, dass die Komponentenschnittstelle (in diesem Beispiel *Crater* ) im gleichen Array definiert ist wie die Schnittstelle, die sie verwendet ( *Planet* ). Komponenten müssen auf diese Weise in API-Aufrufen definiert werden, damit die Schnittstelle gefunden werden kann.
+> Beachten Sie, dass die Komponentenschnittstelle (in diesem Beispiel *Crater*) im gleichen Array definiert ist wie die Schnittstelle, die sie verwendet (*Planet*). Komponenten müssen auf diese Weise in API-Aufrufen definiert werden, damit die Schnittstelle gefunden werden kann.
 
 ### <a name="possible-schemas"></a>Mögliche Schemas
 
@@ -224,7 +224,11 @@ Nach Anwendung der Vererbung macht die erweiternde Schnittstelle alle Eigenschaf
 
 Die erweiternde Schnittstelle kann keine Definitionen der übergeordneten Schnittstellen ändern, sondern sie nur ergänzen. Sie kann auch keine Fähigkeit neu definieren, die bereits in einer ihrer übergeordneten Schnittstellen definiert ist (selbst wenn die Fähigkeiten als gleich definiert sind). Wenn beispielsweise eine übergeordnete Schnittstelle die `double`-Eigenschaft *Masse* definiert, kann die erweiternde Schnittstelle keine Deklaration von *Masse* enthalten, selbst wenn es sich ebenfalls um eine `double`-Eigenschaft handelt.
 
-## <a name="validating-models"></a>Validieren von Modellen
+## <a name="best-practices-for-designing-models"></a>Bewährte Methoden für das Entwerfen von Modellen
+
+Wenn Sie beim Entwerfen von Modellen die Entitäten in Ihrer Umgebung wiedergeben möchten, kann es hilfreich sein, vorauszuschauen und die Implikationen zu betrachten, die Ihr Entwurf hinsichtlich [Abfragen](concepts-query-language.md) beinhaltet. Sie können Eigenschaften so entwerfen, dass Diagrammdurchläufe bei großen Resultsets vermieden werden. Sie können Beziehungen, die in einer einzelnen Abfrage beantwortet werden müssen, auch als einstufige Beziehungen modellieren.
+
+### <a name="validating-models"></a>Validieren von Modellen
 
 [!INCLUDE [Azure Digital Twins: validate models info](../../includes/digital-twins-validate.md)]
 
@@ -232,11 +236,11 @@ Die erweiternde Schnittstelle kann keine Definitionen der übergeordneten Schnit
 
 Die Verwendung von Modellen, die auf Branchenstandards basieren oder eine standardmäßige Ontologiedarstellung nutzen (z. B. RDF oder OWL), bietet einen guten Ausgangspunkt für den Entwurf Ihrer Azure Digital Twins-Modelle. Die Verwendung von Branchenmodellen unterstützt außerdem die Standardisierung und Informationsfreigabe.
 
-Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)** ](concepts-models.md) dargestellt werden. Deshalb wird in diesem Artikel beschrieben, wie Sie die Branchenstandardmodelle in DTDL darstellen und die vorhandenen Branchenkonzepte in die DTDL-Semantik integrieren, sodass diese von Azure Digital Twins verwendet werden können. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
+Für die Verwendung in Azure Digital Twins muss ein Modell in der auf JSON-LD basierenden Sprache [**DTDL (Digital Twins Definition Language)**](concepts-models.md) dargestellt werden. Deshalb wird in diesem Artikel beschrieben, wie Sie die Branchenstandardmodelle in DTDL darstellen und die vorhandenen Branchenkonzepte in die DTDL-Semantik integrieren, sodass diese von Azure Digital Twins verwendet werden können. Das DTDL-Modell dient dann als allgemeingültige Datenbasis für das Modell in Azure Digital Twins.
 
 Es gibt zwei Hauptmethoden zur Integration von Branchenstandardmodellen in DTDL, die von Ihrer jeweiligen Situation abhängen:
 * Wenn Sie die Modelle noch nicht erstellt haben, können Sie diese auf Grundlage **vorhandener DTDL-Anfangsontologien** entwerfen, die eine für Ihre Branche spezifische Sprache enthalten.
-* Wenn Sie bereits über vorhandene Modelle verfügen, die auf einem Branchenstandard basieren, müssen Sie diese **in DTDL konvertieren** , um Sie in Azure Digital Twins zu übernehmen.
+* Wenn Sie bereits über vorhandene Modelle verfügen, die auf einem Branchenstandard basieren, müssen Sie diese **in DTDL konvertieren**, um Sie in Azure Digital Twins zu übernehmen.
 
 Weitere Informationen zu diesen beiden Prozessen finden Sie unter [*Vorgehensweise: Integrieren von Branchenstandardmodellen*](how-to-integrate-models.md).
 

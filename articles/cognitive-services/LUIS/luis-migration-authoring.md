@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 08/13/2020
-ms.openlocfilehash: 926b79e672c14249ec7c2b053dba7eb3a31443a7
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 455c7d66748740ae6e2cc11c6a44bbf30c1cbced
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91536041"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95018836"
 ---
 # <a name="migrate-to-an-azure-resource-authoring-key"></a>Migrieren zu einem Schlüssel einer Azure-Erstellungsressource
 
@@ -40,7 +40,7 @@ Eine Migration muss über das LUIS-Portal erfolgen. Wenn Sie die Erstellungsschl
 * Besitzer werden aufgefordert, E-Mails an Projektmitarbeiter zu senden, um sie über die Migration zu informieren.
 * Anwendungen werden nicht zusammen mit Ihnen migriert, wenn Sie ein Projektmitarbeiter der Anwendung sind.
 * Es gibt keine Möglichkeit für einen Besitzer, herauszufinden, ob Projektmitarbeiter migriert wurden.
-* Eine Migration sammelt nicht automatisch Projektmitarbeiter und verschiebt diese in die Azure-Erstellungsressource oder fügt sie dieser hinzu. Der App-Besitzer ist derjenige, der diesen Schritt nach der Migration ausführen muss. Dieser Schritt erfordert [Berechtigungen für die Azure-Erstellungsressource](https://docs.microsoft.com/azure/cognitive-services/luis/luis-how-to-collaborate).
+* Eine Migration sammelt nicht automatisch Projektmitarbeiter und verschiebt diese in die Azure-Erstellungsressource oder fügt sie dieser hinzu. Der App-Besitzer ist derjenige, der diesen Schritt nach der Migration ausführen muss. Dieser Schritt erfordert [Berechtigungen für die Azure-Erstellungsressource](./luis-how-to-collaborate.md).
 * Nachdem Projektmitarbeiter der Azure-Ressource zugewiesen wurden, müssen sie eine Migration durchführen, um auf Anwendungen zugreifen zu können. Andernfalls haben sie keinen Zugriff, um die Anwendungen zu erstellen.
 * Ein migrierter Benutzer kann nicht als Projektmitarbeiter der Anwendung hinzugefügt werden.
 * Wenn Sie Vorhersageschlüssel besitzen, die Anwendungen zugewiesen sind, die sich im Besitz eines anderen Benutzers befinden, blockiert dies die Migration für sowohl den Besitzer als auch die Projektmitarbeiter. Weitere Informationen finden Sie in den Empfehlungen weiter unten in diesem Artikel.
@@ -174,7 +174,7 @@ Wenn Sie Ihre Apps programmgesteuert bearbeiten möchten, benötigen Sie die Ers
 
 Erfahren Sie, wie Sie in Ihrer Erstellungsressource [Projektmitarbeiter hinzufügen](luis-how-to-collaborate.md). Projektmitarbeiter erhalten Zugriff auf alle Anwendungen unter dieser Ressource.
 
-Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im Azure-Portal zur Seite **Zugriffssteuerung (IAM)** für diese Ressource wechseln. Weitere Informationen finden Sie unter [Hinzufügen von Mitwirkendenzugriff](luis-migration-authoring-steps.md#after-the-migration-process-add-contributors-to-your-authoring-resource).
+Sie können einer Erstellungsressource Mitwirkende hinzufügen, indem Sie im Azure-Portal zur Seite **Zugriffssteuerung (IAM)** für diese Ressource wechseln. Weitere Informationen finden Sie unter [Hinzufügen von Mitwirkenden zu Ihrer App](luis-how-to-collaborate.md).
 
 > [!Note]
 > Wenn der Besitzer der LUIS-App migriert ist und den Projektmitarbeiter als Mitwirkenden an der Azure-Ressource hinzugefügt hat, hat der Mitwirkende bis zur eigenen Migration noch keinen Zugriff auf die App.
@@ -229,7 +229,7 @@ Wenn Sie eine Migration versuchen, aber Ihr Azure-Abonnement in der Dropdownlist
 * Stellen Sie sicher, dass Sie sich im richtigen Mandanten befinden, der Ihrem gültigen Abonnement zugeordnet ist. Über den Avatar links von Ihren Initialen auf der Symbolleiste können Sie die Mandanten wechseln: ![Symbolleiste, auf der Sie Mandanten wechseln können](./media/migrate-authoring-key/switch-user-tenant-2.png)
 
 Wenn Sie über eine Erstellungsressource verfügen, diese jedoch nicht finden können, wenn Sie die Option **Vorhandene Erstellungsressource verwenden** auswählen:
-* Ihre Ressource wurde wahrscheinlich an einem anderen Speicherort als dem Portal erstellt, in dem Sie angemeldet sind. Überprüfen Sie die [LUIS-Erstellungsregionen und die Portale](https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-authoring-regions).
+* Ihre Ressource wurde wahrscheinlich an einem anderen Speicherort als dem Portal erstellt, in dem Sie angemeldet sind. Überprüfen Sie die [LUIS-Erstellungsregionen und die Portale](./luis-reference-regions.md#luis-authoring-regions).
 * Erstellen Sie eine neue Ressource stattdessen über das LUIS-Portal.
 
 Wenn Sie die Option **Neue Erstellungsressource erstellen** auswählen und bei der Migration die Fehlermeldung „Fehler beim Abrufen der Azure-Informationen des Benutzers. Versuchen Sie es später noch mal.“ angezeigt wird:

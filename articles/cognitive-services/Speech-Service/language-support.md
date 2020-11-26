@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/26/2020
 ms.author: trbye
 ms.custom: references_regions
-ms.openlocfilehash: 569808d8a3c84d7d5455ebcdca6d2701cc14db5c
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: a430333f57b3734e5977db5c104c8f6d37bfd3c4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685527"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94949087"
 ---
 # <a name="language-and-voice-support-for-the-speech-service"></a>Sprach- und Stimmunterstützung für den Speech-Dienst
 
@@ -141,9 +141,9 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Bulgarisch (Bulgarien) | `bg-BG` | Female | `bg-BG-KalinaNeural` <sup>Neu</sup> | Allgemein |
 | Katalanisch (Spanien) | `ca-ES` | Female | `ca-ES-AlbaNeural` | Allgemein |
 | Chinesisch (Kantonesisch, traditionell) | `zh-HK` | Female | `zh-HK-HiuGaaiNeural` | Allgemein |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Allgemein, mehrere Stimmstile verfügbar |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoxiaoNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoyouNeural` | Kinderstimme, optimiert für das Erzählen von Geschichten |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | Optimiert für die Ansage von Nachrichten,<br /> mehrere Stimmen und Stile verfügbar |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Male   | `zh-CN-YunyangNeural` | Optimiert für die Ansage von Nachrichten,<br /> mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Male   | `zh-CN-YunyeNeural` | Optimiert für das Erzählen von Geschichten |
 | Chinesisch (Taiwanesisch, Mandarin) | `zh-TW` | Female | `zh-TW-HsiaoYuNeural` | Allgemein |
 | Kroatisch (Kroatien) | `hr-HR` | Female | `hr-HR-GabrijelaNeural` <sup>Neu</sup> | Allgemein |
@@ -158,9 +158,9 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-LibbyNeural` | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Female | `en-GB-MiaNeural` | Allgemein |
 | Walisisch (Großbritannien) | `en-GB` | Male | `en-GB-RyanNeural` <sup>Neu</sup> | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-AriaNeural` | Allgemein, mehrere Stimmstile verfügbar |
+| Englisch (USA) | `en-US` | Female | `en-US-AriaNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Englisch (USA) | `en-US` | Male | `en-US-GuyNeural` | Allgemein |
-| Englisch (USA) | `en-US` | Female | `en-US-JennyNeural` <sup>Neu</sup> | Allgemein, mehrere Stimmstile verfügbar |
+| Englisch (USA) | `en-US` | Female | `en-US-JennyNeural` <sup>Neu</sup> | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Finnisch (Finnland) | `fi-FI` | Female | `fi-FI-NooraNeural` | Allgemein |
 | Französisch (Kanada) | `fr-CA` | Female | `fr-CA-SylvieNeural` | Allgemein |
 | Französisch (Kanada) | `fr-CA` | Male | `fr-CA-JeanNeural` <sup>Neu</sup> | Allgemein |
@@ -186,7 +186,7 @@ Gestalten Sie mit neuronalen Stimmen Interaktionen mit Chatbots und Sprachassist
 | Malaiisch (Malaysia) | `ms-MY` | Female | `ms-MY-YasminNeural` <sup>Neu</sup> | Allgemein |
 | Norwegisch, Bokmål (Norwegen) | `nb-NO` | Female | `nb-NO-IselinNeural` | Allgemein |
 | Polnisch (Polen) | `pl-PL` | Female | `pl-PL-ZofiaNeural` | Allgemein |
-| Portugiesisch (Brasilien) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Allgemein, mehrere Stimmstile verfügbar |
+| Portugiesisch (Brasilien) | `pt-BR` | Female | `pt-BR-FranciscaNeural` | Allgemein, mehrere Stimmstile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Portugiesisch (Brasilien) | `pt-BR` | Male | `pt-BR-AntonioNeural` <sup>Neu</sup> | Allgemein |
 | Portugiesisch (Portugal) | `pt-PT` | Female | `pt-PT-FernandaNeural` | Allgemein |
 | Rumänisch (Rumänien) | `ro-RO` | Female | `ro-RO-AlinaNeural` <sup>Neu</sup> | Allgemein |
@@ -211,11 +211,11 @@ Die folgenden neuronalen Stimmen sind in der öffentlichen Vorschau verfügbar.
 
 | Sprache                         | Gebietsschema  | Geschlecht | Name der Stimme                             | Stilunterstützung |
 |----------------------------------|---------|--------|----------------------------------------|---------------|
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>Neu</sup> | Allgemein, mehrere Stimmen und Stile verfügbar |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>Neu</sup> | Allgemein, mehrere Stimmen und Stile verfügbar |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>Neu</sup> | Allgemein, mehrere Rollen und Stile verfügbar |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>Neu</sup> | Allgemein, mehrere Rollen und Stile verfügbar |
-| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>Neu</sup> | Erwachsene Stimme, mehrere Stile verfügbar |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Male   | `zh-CN-YunxiNeural` <sup>Neu</sup> | Allgemein, mehrere Stile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaohanNeural` <sup>Neu</sup> | Allgemein, mehrere Stile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoxuanNeural` <sup>Neu</sup> | Allgemein, mehrere Rollen und [Stile verfügbar mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaomoNeural` <sup>Neu</sup> | Allgemein, mehrere Rollen und [Stile verfügbar mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
+| Chinesisch (Mandarin, vereinfacht) | `zh-CN` | Female | `zh-CN-XiaoruiNeural` <sup>Neu</sup> | Erwachsene Stimme, mehrere Stile verfügbar [mittels SSML](speech-synthesis-markup.md#adjust-speaking-styles) |
 | Estnisch (Estland) | `et-EE` | Female | `et-EE-AnuNeural` <sup>Neu</sup> | Allgemein |
 | Gälisch (Irland) | `ga-IE` | Female | `ga-IE-OrlaNeural` <sup>Neu</sup> | Allgemein |
 | Litauisch (Litauen) | `lt-LT` | Female | `lt-LT-OnaNeural` <sup>Neu</sup> | Allgemein |
