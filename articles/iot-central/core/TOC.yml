@@ -47,12 +47,8 @@
   items:
     - name: Verbinden und Entwickeln von Geräten
       items:
-        - name: Herstellen einer Verbindung mit einem Gerät (Node.js)
-          href: tutorial-connect-device-nodejs.md
-        - name: Herstellen einer Verbindung mit einem Gerät (Python)
-          href: tutorial-connect-device-python.md
-        - name: Herstellen einer Verbindung mit einem Gerät (Java)
-          href: tutorial-connect-device-java.md
+        - name: Erstellen eines Geräts und Herstellen einer Verbindung mit ihm
+          href: tutorial-connect-device.md
         - name: Erstellen einer Gatewaygerätevorlage
           href: tutorial-define-gateway-device-type.md
         - name: Verbinden mit einem IoT Edge-Gerät

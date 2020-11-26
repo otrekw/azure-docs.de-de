@@ -454,7 +454,9 @@
               href: ../iot-edge/tutorial-deploy-machine-learning.md?context=%2fazure%2fmachine-learning%2fservice%2fcontext%2fml-context
             - name: FPGA-Rückschluss
               href: how-to-deploy-fpga-web-service.md
-        - name: Problembehandlung und Debuggen
+        - name: Problembehandlung und Debuggen (lokal)
+          href: how-to-troubleshoot-deployment-local.md
+        - name: Problembehandlung und Debuggen (remote)
           href: how-to-troubleshoot-deployment.md
         - name: Verwenden eines Webdiensts
           displayName: create client consume request response synchronous

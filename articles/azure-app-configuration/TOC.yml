@@ -17,7 +17,7 @@
           href: quickstart-aspnet-core-app.md
         - name: .NET Core
           href: quickstart-dotnet-core-app.md
-        - name: ".NET\_Framework"
+        - name: .NET Framework
           href: quickstart-dotnet-app.md
         - name: Azure Functions in .NET Core
           href: quickstart-azure-functions-csharp.md
@@ -70,6 +70,8 @@
       items:
         - name: Pushvorgänge mithilfe von Azure Pipelines
           href: push-kv-devops-pipeline.md
+        - name: Pullvorgänge mithilfe von Azure Pipelines
+          href: pull-key-value-devops-pipeline.md
         - name: Pushvorgänge mithilfe von GitHub Actions
           href: concept-github-action.md
         - name: Erstellen von Projekten mithilfe einer exportierten Konfiguration
