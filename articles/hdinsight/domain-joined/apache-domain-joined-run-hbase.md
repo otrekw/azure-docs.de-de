@@ -8,11 +8,11 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 5747de399e7ae0cfe99ba013f8da376be0ba1b2a
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92544952"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95993634"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Tutorial: Konfigurieren von Apache HBase-Richtlinien in HDInsight mit dem Enterprise-Sicherheitspaket
 
@@ -93,13 +93,13 @@ Sie können SSH verwenden, um eine Verbindung mit Apache HBase-Clustern herzuste
 
 ## <a name="create-ranger-policies"></a>Erstellen von Ranger-Richtlinien
 
-Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1** .
+Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1**.
 
-1. Öffnen Sie die **Ranger-Administratoroberfläche** . Klicken Sie unter **HBase** auf **\<ClusterName>_hbase** .
+1. Öffnen Sie die **Ranger-Administratoroberfläche**. Klicken Sie unter **HBase** auf **\<ClusterName>_hbase**.
 
    ![Apache Ranger-Administratoroberfläche in HDInsight](./media/apache-domain-joined-run-hbase/apache-ranger-admin-login.png)
 
-2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen** .
+2. Auf dem Bildschirm **Liste der Richtlinien** werden alle Ranger-Richtlinien angezeigt, die für diesen Cluster erstellt wurden. Möglicherweise ist eine vorkonfigurierte Richtlinie aufgelistet. Klicken Sie auf **Neue Richtlinie hinzufügen**.
 
     ![Liste der Apache Ranger HBase-Richtlinien](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policies-list.png)
 
@@ -125,9 +125,9 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
    >[!NOTE]
    >Warten Sie kurz, bis Ranger mit AAD synchronisiert ist, wenn unter **Benutzer auswählen** nicht automatisch ein Domänenbenutzer eingetragen wird.
 
-4. Klicken Sie auf **Hinzufügen** , um die Richtlinie zu speichern.
+4. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
 
-5. Klicken Sie auf **Neue Richtlinie hinzufügen** , und geben Sie die folgenden Werte ein:
+5. Klicken Sie auf **Neue Richtlinie hinzufügen**, und geben Sie die folgenden Werte ein:
 
    |**Einstellung**  |**Empfohlener Wert**  |
    |---------|---------|
@@ -141,7 +141,7 @@ Erstellen Sie eine Ranger-Richtlinie für **sales_user1** und **marketing_user1*
 
    ![Apache Ranger-Richtlinienerstellung: „marketing“](./media/apache-domain-joined-run-hbase/apache-ranger-hbase-policy-create-marketing.png)  
 
-6. Klicken Sie auf **Hinzufügen** , um die Richtlinie zu speichern.
+6. Klicken Sie auf **Hinzufügen**, um die Richtlinie zu speichern.
 
 ## <a name="test-the-ranger-policies"></a>Testen der Ranger-Richtlinien
 
@@ -239,7 +239,7 @@ Wenn Sie diese Anwendung nicht mehr benötigen, gehen Sie wie folgt vor, um den 
 2. Geben Sie oben im **Suchfeld** den Suchbegriff **HDInsight** ein. 
 1. Wählen Sie unter **Dienste** die Option **HDInsight-Cluster** aus.
 1. Klicken Sie in der daraufhin angezeigten Liste mit den HDInsight-Clustern neben dem Cluster, den Sie für dieses Tutorial erstellt haben, auf die Auslassungspunkte ( **...** ). 
-1. Klicken Sie auf **Löschen** . Klicken Sie auf **Ja** .
+1. Klicken Sie auf **Löschen**. Klicken Sie auf **Ja**.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

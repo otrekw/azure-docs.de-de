@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: d504cbe9c2ac9046a34187d4a5576385b1f73bbe
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 982ca04237d16979d65260a040f5aed783822ac7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518108"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023223"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-gen1-environment"></a>Tutorial: Erstellen einer Azure Time Series Insights Gen1-Umgebung
 
@@ -101,7 +101,7 @@ Erstellen Sie als Nächstes in Ihrem Azure-Abonnement eine Azure Time Series Ins
 
    Parameter|BESCHREIBUNG
    ---|---
-   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Azure Time Series Insights-Umgebung aus. Die Namen werden vom Azure Time Series Insights-Explorer und von den [Abfrage-APIs](https://docs.microsoft.com/rest/api/time-series-insights/gen1-query) verwendet.
+   **Umgebungsname** | Wählen Sie einen eindeutigen Namen für die Azure Time Series Insights-Umgebung aus. Die Namen werden vom Azure Time Series Insights-Explorer und von den [Abfrage-APIs](/rest/api/time-series-insights/gen1-query) verwendet.
    **Abonnement** | Abonnements sind Container für Azure-Ressourcen. Wählen Sie ein Abonnement aus, um die Azure Time Series Insights-Umgebung zu erstellen.
    **Ressourcengruppe** | Eine Ressourcengruppe ist ein Container für Azure-Ressourcen. Wählen Sie eine vorhandene Ressourcengruppe für die Azure Time Series Insights-Umgebungsressource aus, oder erstellen Sie eine neue.
    **Location** | Wählen Sie eine Rechenzentrumsregion für Ihre Azure Time Series Insights-Umgebung aus. Erstellen Sie die Azure Time Series Insights-Umgebung in derselben Region wie andere IoT-Ressourcen, um zusätzliche Wartezeit zu vermeiden.
@@ -128,7 +128,7 @@ Füllen Sie nach Abschluss der Bereitstellung und anfänglichen Konfiguration di
 
 Zusammen mit dem IoT-Hub wurde eine Azure App Service-Webanwendung generiert, um Telemetriedaten für simulierte Geräte zu erstellen und zu übertragen.
 
-1. Wechseln Sie zurück zum [Solution Accelerators-Dashboard](https://www.azureiotsolutions.com/Accelerators#dashboard). Melden Sie sich an, falls dies erforderlich ist, indem Sie dasselbe Azure-Konto wie im gesamten bisherigen Tutorial verwenden. Wählen Sie Ihre „Gerätelösung“ aus, und **wechseln Sie anschließend zu Ihrem Solution Accelerator** , um die bereitgestellte Lösung zu starten.
+1. Wechseln Sie zurück zum [Solution Accelerators-Dashboard](https://www.azureiotsolutions.com/Accelerators#dashboard). Melden Sie sich an, falls dies erforderlich ist, indem Sie dasselbe Azure-Konto wie im gesamten bisherigen Tutorial verwenden. Wählen Sie Ihre „Gerätelösung“ aus, und **wechseln Sie anschließend zu Ihrem Solution Accelerator**, um die bereitgestellte Lösung zu starten.
 
    [![Solution Accelerators-Dashboard](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerator-ready.png#lightbox)
 
@@ -170,11 +170,11 @@ In diesem letzten Abschnitt überprüfen Sie, ob die Telemetriedaten in der Azur
 
    [![Azure Time Series Insights-Explorer: Zeitbereichsfilter](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
-1. Durch das Eingrenzen des Zeitbereichs kann das Diagramm auf die einzelnen Datenübertragungsspitzen (Bursts) für den IoT-Hub und die Azure Time Series Insights-Umgebung vergrößert werden. Beachten Sie auch oben rechts den Text **Das Streaming wurde abgeschlossen** , unter dem die Gesamtzahl von gefundenen Ereignissen angezeigt wird. Sie können auch den Schieberegler für die **Intervallgröße** verschieben, um die Granularität im Diagramm zu steuern:
+1. Durch das Eingrenzen des Zeitbereichs kann das Diagramm auf die einzelnen Datenübertragungsspitzen (Bursts) für den IoT-Hub und die Azure Time Series Insights-Umgebung vergrößert werden. Beachten Sie auch oben rechts den Text **Das Streaming wurde abgeschlossen**, unter dem die Gesamtzahl von gefundenen Ereignissen angezeigt wird. Sie können auch den Schieberegler für die **Intervallgröße** verschieben, um die Granularität im Diagramm zu steuern:
 
    [![Azure Time Series Insights-Explorer: Nach Zeitbereich gefilterte Ansicht](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range.png#lightbox)
 
-1. Darüber hinaus können Sie auch mit der linken Maustaste auf eine Region klicken, um nach einem Bereich zu filtern. Klicken Sie dann mit der rechten Maustaste, und verwenden Sie die Option **Ereignisse untersuchen** , um Ereignisdetails in der tabellarischen Ansicht **Ereignisse** anzuzeigen:
+1. Darüber hinaus können Sie auch mit der linken Maustaste auf eine Region klicken, um nach einem Bereich zu filtern. Klicken Sie dann mit der rechten Maustaste, und verwenden Sie die Option **Ereignisse untersuchen**, um Ereignisdetails in der tabellarischen Ansicht **Ereignisse** anzuzeigen:
 
    [![Azure Time Series Insights-Explorer: Nach Zeitbereich gefilterte Ansicht mit Ereignissen](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png)](media/tutorial-create-populate-tsi-environment/tsie-view-time-range-events.png#lightbox)
 

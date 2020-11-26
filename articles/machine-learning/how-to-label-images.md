@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 4392086146642e18b1fdef28a9e602bdbb5b0b18
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94542183"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984446"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
@@ -133,7 +133,7 @@ Ist Ihr Projekt vom Typ „Instanzsegmentierung (Polygon)“, geben Sie im Bild 
 
 1. Wählen Sie ein Tag für das Polygon aus, das Sie erstellen möchten.
 1. Wählen Sie das Tool **Polygonbereich zeichnen** ![Tool „Polygonbereich zeichnen“](./media/how-to-label-images/polygon-tool.png) oder „P“ aus.
-3. Klicken Sie für jeden Punkt im Polygon.  Wenn Sie die Form abgeschlossen haben, doppelklicken Sie zum Fertigstellen.
+1. Klicken Sie für jeden Punkt im Polygon.  Wenn Sie die Form abgeschlossen haben, doppelklicken Sie zum Fertigstellen.
 
     :::image type="content" source="media/how-to-label-images/polygon.gif" alt-text="Erstellen von Polygonen für Katze und Hund":::
 
@@ -158,3 +158,5 @@ Wenn Sie mit dem Anwenden von Bezeichnungen fertig sind, wählen Sie in der rech
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Erfahren Sie, wie Sie [Bildklassifizierungsmodelle in Azure trainieren](./tutorial-train-models-with-aml.md).
+
+
