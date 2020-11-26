@@ -244,7 +244,7 @@
     - name: Betaversion der Microsoft Graph-REST-API
       href: /graph/api/resources/authenticationmethods-overview?view=graph-rest-beta
     - name: Dienstgrenzwerte und Einschränkungen
-      href: ../users-groups-roles/directory-service-limits-restrictions.md
+      href: ../enterprise-users/directory-service-limits-restrictions.md
 - name: Ressourcen
   items:
     - name: Azure-Feedbackforum
