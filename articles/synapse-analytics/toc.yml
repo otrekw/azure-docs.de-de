@@ -90,6 +90,10 @@
                   href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Wartungszeitplan
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Quellcodeverwaltung
+          href: ./cicd/source-control.md
+        - name: Continuous Integration und Continuous Delivery
+          href: ./cicd/continuous-integration-deployment.md
         - name: Sicherheit
           items:
             - name: Sicherheitsbaseline
@@ -990,7 +994,7 @@
       items:
         - name: Trainieren von Modellen
           href: ./spark/apache-spark-machine-learning-training.md
-    - name: Lernprogramme
+    - name: Tutorials
       items:
         - name: Visualisieren von Daten mit Apache Spark
           href: ./spark/apache-spark-data-visualization-tutorial.md
@@ -1068,7 +1072,5 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Systemintegration
           href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-        - name: "Public\_Preview-Partner"
-          href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Kompatibilitätsprobleme mit Drittanbieteranwendungen
           href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
