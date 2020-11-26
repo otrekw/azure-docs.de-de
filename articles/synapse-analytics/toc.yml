@@ -445,61 +445,72 @@
           href: quickstart-create-apache-spark-pool-studio.md
     - name: Tutorials
       items:
-        - name: "Ausführen von Apache\_Spark-Anwendungen"
-          href: ./spark/intellij-tool-synapse.md
-          displayname: intellij
-        - name: Ausführen von PySpark-Anwendungen für Spark-Pools
-          href: ./spark/vscode-tool-synapse.md
-        - name: Spark-Auftragsdefinitionen
+        - name: "Datenvisualisierung mit Synapse\_Studio-Notebooks"
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+        - name: Analysieren von Daten mit Apache Spark und Power BI
+          href: ./spark/apache-spark-to-power-bi.md
+        - name: Erstellen von Machine Learning-Modellen
+          href: ./spark/apache-spark-machine-learning-mllib-notebook.md
+        - name: Übermitteln von Spark-Auftragsdefinitionen
           href: ./spark/apache-spark-job-definitions.md
     - name: Konzepte
       items:
-        - name: 'Apache Spark: Konzepte'
+        - name: Apache Spark
           href: ./spark/apache-spark-concepts.md
-        - name: Was ist Delta Lake?
+        - name: Delta Lake
           href: ./spark/apache-spark-what-is-delta-lake.md
-        - name: Übersicht über Delta Lake-Funktionen
-          href: ./spark/apache-spark-delta-lake-overview.md
-        - name: 'Apache Spark: Leistung'
-          href: ./spark/apache-spark-performance.md
-        - name: Leistungsoptimierung für Apache Spark unter Verwendung von Hyperspace-Indizes
-          href: ./spark/apache-spark-performance-hyperspace.md
-        - name: 'Apache Spark: Verhalten der automatischen Skalierung'
+        - name: 'Apache Spark: Verhalten der Autoskalierung'
           href: ./spark/apache-spark-autoscale.md
-        - name: Entwicklung
+        - name: Synapse-Laufzeiten
+          href: ./spark/apache-spark-version-support.md
+        - name: Machine Learning
+          href: ./spark/apache-spark-machine-learning-concept.md
+        - name: Notebooks
+          href: ./spark/apache-spark-notebook-concept.md
+        - name: Überwachungstools
+          href: monitoring/how-to-monitor-spark-applications.md
+    - name: Anleitungen
+      items:
+        - name: Arbeiten mit Delta Lake
+          href: ./spark/apache-spark-delta-lake-overview.md
+        - name: Verwalten von Bibliotheken
+          href: ./spark/apache-spark-azure-portal-add-libraries.md
+        - name: Verwenden von Notebooks
           items:
-            - name: Bibliotheken
-              items:
-                - name: Hinzufügen und Verwalten von Bibliotheken
-                  href: ./spark/apache-spark-azure-portal-add-libraries.md
-                - name: Unterstützung für Runtimesprache und Bibliothek
-                  href: ./spark/apache-spark-version-support.md
-            - name: Azure Synapse Studio-Notebooks
+            - name: Verwalten von Notebooks
               href: ./spark/apache-spark-development-using-notebooks.md
-            - name: Schützen von Anmeldeinformationen mithilfe von TokenLibrary
-              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+            - name: Visualisieren von Daten
+              href: ./spark/apache-spark-data-visualization.md
+            - name: Herstellen einer Verbindung mit Spark mit dem IntelliJ-Plug-In
+              href: ./spark/intellij-tool-synapse.md
+            - name: Herstellen einer Verbindung mit Spark-Pools mit VSCode
+              href: ./spark/vscode-tool-synapse.md
+        - name: Erkunden von Sprachen
+          items:
             - name: .NET für Apache Spark
               href: ./spark/spark-dotnet.md
-        - name: Überwachung
+        - name: Sicherheit
+          items:
+            - name: Schützen von Anmeldeinformationen mithilfe von TokenLibrary
+              href: ./spark/apache-spark-secure-credentials-with-tokenlibrary.md
+        - name: Optimieren der Leistung
+          items:
+            - name: 'Apache Spark: Leistung'
+              href: ./spark/apache-spark-performance.md
+            - name: Leistungsoptimierung für Apache Spark unter Verwendung von Hyperspace-Indizes
+              href: ./spark/apache-spark-performance-hyperspace.md
+        - name: Verwalten und Überwachen
           items:
             - name: Spark-Verlaufsserver für Pools
               href: ./spark/apache-spark-history-server.md
-    - name: Anleitungen
-      items:
-        - name: Verwalten und Überwachen
-          items:
-            - name: Apache Spark-Anwendungen
-              href: monitoring/how-to-monitor-spark-applications.md
-            - name: Apache Spark-Anwendungsdetails
+            - name: Überwachen von Spark-Anwendungen
               href: monitoring/apache-spark-applications.md
-            - name: Analysieren von JSON mit Apache Spark
-              href: how-to-analyze-complex-schema.md
         - name: Erfassen und Vorbereiten von Daten
           items:
-            - name: In Data Warehouse
-              items:
-                - name: Importieren und Exportieren von Daten mit Apache Spark
-                  href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: SQL Data Warehouse
+              href: ./spark/synapse-spark-sql-pool-import-export.md
+            - name: Analysieren von JSON
+              href: how-to-analyze-complex-schema.md
 - name: Synapse Link
   items:
     - name: Übersicht
@@ -616,6 +627,8 @@
               href: ../data-factory/connector-azure-database-for-mysql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure Database for PostgreSQL
               href: ../data-factory/connector-azure-database-for-postgresql.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Azure Databricks Delta Lake
+              href: ../data-factory/connector-azure-databricks-delta-lake.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Azure File Storage
               href: ../data-factory/connector-azure-file-storage.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: "Azure\_SQL-Datenbank"
@@ -959,8 +972,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problembehandlung des Connectors
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
-            - name: Problembehandlung für das Tool zum Kopieren von Daten
-              href: ../data-factory/copy-data-tool-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Sicherheit und Zugriffssteuerung
+              href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problembehandlung für selbstgehostete Integration Runtimes
               href: ../data-factory/self-hosted-integration-runtime-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
 - name: Machine Learning
@@ -973,15 +986,22 @@
       items:
         - name: Erstellen eines neuen verknüpften Azure Machine Learning-Diensts
           href: machine-learning/quickstart-integrate-azure-machine-learning.md
-    - name: Tutorials
+    - name: Konzepte
       items:
+        - name: Trainieren von Modellen
+          href: ./spark/apache-spark-machine-learning-training.md
+    - name: Lernprogramme
+      items:
+        - name: Visualisieren von Daten mit Apache Spark
+          href: ./spark/apache-spark-data-visualization-tutorial.md
+          displayname: machine learning
         - name: Modellbewertungs-Assistent für SQL-Pools
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
         - name: Ausführen eines Regressionsexperiments mithilfe von Azure AutoML
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
-        - name: Erstellen einer Apache Spark-Machine Learning-App
+        - name: "Erstellen eines Machine\_Learning-Modells mit Apache Spark MLlib"
           href: ./spark/apache-spark-machine-learning-mllib-notebook.md
           displayname: machine learning
 - name: Verweis
@@ -1046,5 +1066,9 @@
           href: ./sql-data-warehouse/sql-data-warehouse-partner-data-management.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Machine Learning und KI
           href: ./sql-data-warehouse/sql-data-warehouse-partner-machine-learning-ai.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Systemintegration
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-system-integration.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: "Public\_Preview-Partner"
           href: ./sql-data-warehouse/sql-data-warehouse-partner-launch.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+        - name: Kompatibilitätsprobleme mit Drittanbieteranwendungen
+          href: ./sql-data-warehouse/sql-data-warehouse-partner-compatibility-issues.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json

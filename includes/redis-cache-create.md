@@ -8,21 +8,21 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: cauribeg
 ms.custom: include file
-ms.openlocfilehash: 07a80fcd1ec62b051a660bdac696f89e3b7c42b7
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: da36cb5c5d2db20b89f80d381f48632c7528c193
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93353968"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002454"
 ---
 1. Melden Sie sich zum Erstellen eines Caches beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Ressource erstellen** aus.
 
-    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+    :::image type="content" source="media/redis-cache-create/create-resource.png" alt-text="Im linken Navigationsbereich ist „Ressource erstellen“ hervorgehoben.":::
 
    
 1. Wählen Sie auf der Seite **Neu** die Option **Datenbanken** und dann **Azure Cache for Redis** aus.
 
-    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Auswählen von „Azure Cache for Redis“.":::
+    :::image type="content" source="media/redis-cache-create/select-cache.png" alt-text="Unter „Neu“ sind die Optionen „Datenbanken“ und „Azure Cache for Redis“ hervorgehoben.":::
    
 1. Konfigurieren Sie auf der Seite **Neuer Redis Cache** die Einstellungen für den neuen Cache.
    

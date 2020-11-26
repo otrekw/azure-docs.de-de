@@ -9,7 +9,7 @@
     - name: Hinzufügen von Benutzern zu Azure AD
       href: ../fundamentals/add-users-azure-active-directory.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Zuweisen von Lizenzen zu Benutzern
-      href: /azure/active-directory/fundamentals/license-users-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+      href: ../fundamentals/license-users-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Festlegen des Gruppenablaufs
       href: groups-quickstart-expiration.md
     - name: Festlegen einer Benennungsrichtlinie für Gruppen
@@ -57,13 +57,13 @@
         - name: Schließen eines Kontos in einem nicht verwalteten Verzeichnis
           href: users-close-account.md
         - name: Hinzufügen von Gastbenutzern
-          href: /azure/active-directory/b2b/what-is-b2b?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/what-is-b2b.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Zuweisen einer Rolle zu einem Gastbenutzer
-          href: /azure/active-directory/b2b/add-guest-to-role?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/add-guest-to-role.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
         - name: Einschränken des Zugriffs durch Gastbenutzer
           href: users-restrict-guest-permissions.md
         - name: Dynamische Gruppen und Gäste
-          href: /azure/active-directory/b2b/use-dynamic-groups?context=%2fazure/active-directory/enterprise-users/context/ugr-context
+          href: ../external-identities/use-dynamic-groups.md?context=%2fazure%2factive-directory%2fenterprise-users%2fcontext%2fugr-context
     - name: Verwalten Ihrer Organisation
       items:
         - name: Azure AD-Organisationen

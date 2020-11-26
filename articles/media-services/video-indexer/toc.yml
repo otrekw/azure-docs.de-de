@@ -54,6 +54,7 @@
     - name: Überprüfen der Video Indexer-Ausgabe
       href: video-indexer-output-json-v2.md
     - name: Suchen bestimmter Momente in Videos
+      displayName: search
       href: video-indexer-search.md
     - name: 'Erkennen von Szenen, Aufnahmen, Keyframes'
       href: scenes-shots-keyframes.md

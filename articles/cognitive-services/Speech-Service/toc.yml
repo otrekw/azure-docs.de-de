@@ -37,6 +37,8 @@
           href: how-to-automatic-language-detection.md
         - name: Verwenden der Batch-Transkriptions-API
           href: batch-transcription.md
+        - name: Bewerten der Aussprache
+          href: how-to-pronunciation-assessment.md
     - name: Tutorials
       items:
         - name: Verbessern der Genauigkeit mithilfe von Mandantenmodellen
