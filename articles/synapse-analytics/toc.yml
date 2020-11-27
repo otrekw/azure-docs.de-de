@@ -98,6 +98,8 @@
           items:
             - name: Sicherheitsbaseline
               href: security-baseline.md
+            - name: Verschlüsselung
+              href: ./security/workspaces-encryption.md
             - name: Netzwerksicherheit
               items:
                 - name: 'Synapse-Arbeitsbereich: IP-Firewallregeln'
@@ -976,6 +978,8 @@
               href: ../data-factory/data-factory-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problembehandlung des Connectors
               href: ../data-factory/connector-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Continuous Integration und Continuous Deployment
+              href: ../data-factory/ci-cd-github-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Sicherheit und Zugriffssteuerung
               href: ../data-factory/security-and-access-control-troubleshoot-guide.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Problembehandlung für selbstgehostete Integration Runtimes
@@ -1028,6 +1032,9 @@
       href: 'https://github.com/Azure-Samples/Synapse'
     - name: Systemsichten
       href: sql/reference-tsql-system-views.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+    - name: Azure Policy-Integrationen
+      displayName: 'samples, policies, definitions'
+      href: ./policy-reference.md
     - name: T-SQL
       items:
         - name: Vollständige Referenz
