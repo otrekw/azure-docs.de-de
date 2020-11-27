@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 08/05/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 1648bd9a073bca696299e9ed703536db745e7edb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: ad689c746a0f4d7232e7f61982fb8c4f735cbe34
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912836"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95737801"
 ---
 # <a name="tutorial-video-and-transcript-moderation"></a>Tutorial: Video- und Transkriptmoderation
 
@@ -35,7 +35,7 @@ Dieses Tutorial veranschaulicht folgende Vorgehensweisen:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](./review-tool-user-guide/configure.md#tags).
+- Registrieren Sie sich für das [Content Moderator-Prüfungstool](https://contentmoderator.cognitive.microsoft.com/), und erstellen Sie benutzerdefinierte Tags für die Features, die Sie identifizieren möchten. Weitere Informationen zu diesem Schritt finden Sie bei Bedarf unter [Erstellen und Verwenden von Moderationstags](./review-tool-user-guide/configure.md#tags).
 
     ![Screenshot: Benutzerdefinierte Tags für die Videomoderation](images/video-tutorial-custom-tags.png)
 - Um die Beispielanwendung ausführen zu können, benötigen Sie ein Azure-Konto, eine Azure Media Services-Ressource, eine Azure Content Moderator-Ressource sowie Azure Active Directory-Anmeldeinformationen. Wie Sie diese Ressourcen erhalten, erfahren Sie im [Leitfaden für die Videomoderations-API](video-moderation-api.md).
@@ -57,7 +57,7 @@ Bearbeiten Sie die Datei `App.config`, und fügen Sie den Active Directory-Mand
 
 ## <a name="examine-the-main-code"></a>Untersuchen des Hauptcodes
 
-Die `Program`-Klasse in `Program.cs` ist der Haupteinstiegspunkt in die Anwendung für die Videomoderation.
+Die **Program**-Klasse in _Program.cs_ ist der Haupteinstiegspunkt in die Anwendung für die Videomoderation.
 
 ### <a name="methods-of-program-class"></a>Methoden der Program-Klasse
 
@@ -116,7 +116,7 @@ In den folgenden Abschnitten werden einige individuelle Prozesse, die von `Proce
 Zur Reduzierung des Netzwerkdatenverkehrs konvertiert die Anwendung Videodateien in das Format „H.264 (MPEG-4 AVC)“ und skaliert sie auf eine maximale Breite von 640 Pixel. Die Verwendung des H.264-Codecs wird aufgrund seiner hohen Effizienz (Komprimierungsrate) empfohlen. Die Komprimierung wird mit dem kostenlosen Befehlszeilentool `ffmpeg` durchgeführt, das im Ordner `Lib` der Visual Studio-Lösung enthalten ist. Die Eingabedateien können ein beliebiges Format haben, das von `ffmpeg` unterstützt wird, z.B. die gängigsten Videodateiformate und -codecs.
 
 > [!NOTE]
-> Wenn Sie das Programm mit Befehlszeilenoptionen starten, geben Sie ein Verzeichnis mit den Videodateien an, die für die Moderation übermittelt werden sollen. Alle Dateien in diesem Verzeichnis, die über die Dateinamenerweiterung `.mp4` verfügen, werden verarbeitet. Aktualisieren Sie zum Verarbeiten von anderen Dateinamenerweiterungen die `Main()`-Methode in der Datei `Program.cs`, damit sie die gewünschten Erweiterungen enthält.
+> Wenn Sie das Programm mit Befehlszeilenoptionen starten, geben Sie ein Verzeichnis mit den Videodateien an, die für die Moderation übermittelt werden sollen. Alle Dateien in diesem Verzeichnis, die über die Dateinamenerweiterung `.mp4` verfügen, werden verarbeitet. Aktualisieren Sie zum Verarbeiten von anderen Dateinamenerweiterungen die `Main()`-Methode in _Program.cs_, damit sie die gewünschten Erweiterungen enthält.
 
 Der Code, mit dem eine einzelne Videodatei komprimiert wird, ist die `AmsComponent`-Klasse in `AMSComponent.cs`. Die für diese Funktionalität zuständige Methode ist `CompressVideo()` (hier dargestellt).
 
@@ -138,7 +138,7 @@ Die Methode gibt den Dateinamen der komprimierten Ausgabedatei zurück.
 
 ## <a name="upload-and-moderate-the-video"></a>Hochladen und Moderieren des Videos
 
-Das Video muss in Azure Media Services gespeichert werden, bevor es vom Content Moderation-Dienst verarbeitet werden kann. Die `Program`-Klasse in `Program.cs` verfügt über eine kleine `CreateVideoStreamingRequest()`-Methode, mit der ein Objekt zurückgegeben wird, das für die Streaminganforderung zum Hochladen des Videos steht.
+Das Video muss in Azure Media Services gespeichert werden, bevor es vom Content Moderation-Dienst verarbeitet werden kann. Die **Program**-Klasse in _Program.cs_ verfügt über eine kurze `CreateVideoStreamingRequest()`-Methode, die ein Objekt zurückgibt, das die Streaminganforderung zum Hochladen des Videos darstellt.
 
 [!code-csharp[CreateVideoStreamingRequest](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/Program.cs?range=120-133)]
 
@@ -228,7 +228,7 @@ Eine Transkription der Audiodaten aus dem Video wird auch produziert, wenn das `
 
 ## <a name="create-a-human-review"></a>Erstellen einer Überprüfung durch Personen
 
-Der Moderationsprozess gibt eine Liste mit Keyframes aus dem Video zurück – zusammen mit einem Transkript der Audiotitel. Der nächste Schritt ist das Erstellen einer Überprüfung im Content Moderator-Prüfungstool für menschliche Moderatoren. Wenn Sie zurück zur `ProcessVideo()`-Methode in `Program.cs` navigieren, sehen Sie den Aufruf der `CreateVideoReviewInContentModerator()`-Methode. Diese Methode befindet sich in der `videoReviewApi`-Klasse, die in `VideoReviewAPI.cs` enthalten ist. Sie ist hier dargestellt.
+Der Moderationsprozess gibt eine Liste mit Keyframes aus dem Video zurück – zusammen mit einem Transkript der Audiotitel. Der nächste Schritt ist das Erstellen einer Überprüfung im Content Moderator-Prüfungstool für menschliche Moderatoren. Wenn Sie nun zur `ProcessVideo()`-Methode in _Program.cs_ zurückkehren, sehen Sie den Aufruf der `CreateVideoReviewInContentModerator()`-Methode. Diese Methode befindet sich in der `videoReviewApi`-Klasse, die in `VideoReviewAPI.cs` enthalten ist. Sie ist hier dargestellt.
 
 [!code-csharp[CreateVideoReviewInContentModerator](~/VideoReviewConsoleApp/Microsoft.ContentModerator.AMSComponent/AMSComponentClient/VideoReviewAPI.cs?range=42-69)]
 
@@ -319,7 +319,7 @@ Als Nächstes untersuchen wir die analysierten Textuntertitel mit der Text-API v
 
 Da `TextScreen()` eine etwas umfangreichere Methode ist, schlüsseln wir sie hier auf.
 
-1. Zuerst liest die Methode die Transkriptdatei Zeile für Zeile. Leere Zeilen und Zeilen mit einer Anmerkung (`NOTE`) und zugehöriger Zuverlässigkeitsbewertung werden ignoriert. Die Zeitstempel und Textelemente werden aus den Hinweisen ( *Cues* ) in der Datei extrahiert. Ein „Cue“ steht für Text aus dem Audiotitel und enthält die Start- und Endzeit. Der „Cue“ beginnt mit der Zeitstempelzeile mit der Zeichenfolge `-->`. Es folgen eine oder mehrere Textzeilen.
+1. Zuerst liest die Methode die Transkriptdatei Zeile für Zeile. Leere Zeilen und Zeilen mit einer Anmerkung (`NOTE`) und zugehöriger Zuverlässigkeitsbewertung werden ignoriert. Die Zeitstempel und Textelemente werden aus den Hinweisen (*Cues*) in der Datei extrahiert. Ein „Cue“ steht für Text aus dem Audiotitel und enthält die Start- und Endzeit. Der „Cue“ beginnt mit der Zeitstempelzeile mit der Zeichenfolge `-->`. Es folgen eine oder mehrere Textzeilen.
 
 1. Instanzen von `CaptionScreentextResult` (in `TranscriptProfanity.cs` definiert) enthalten die Informationen, die für die einzelnen „Cues“ analysiert werden.  Wenn eine neue Zeitstempelzeile erkannt oder eine maximale Textlänge von 1.024 Zeichen erreicht wird, wird der `csrList` ein neues `CaptionScreentextResult`-Element hinzugefügt. 
 

@@ -13,12 +13,12 @@ ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug-2020
 zone_pivot_groups: programming-languages-text-analytics
-ms.openlocfilehash: 6d69c47c4833247ac259f9dcc166d7ab2696c117
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 5a0856df71f87e49c1a7d627ba92419352c796d5
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91977805"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94980958"
 ---
 # <a name="quickstart-use-the-text-analytics-client-library"></a>Schnellstart: Verwenden der Textanalyse-Clientbibliothek
 
@@ -38,6 +38,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 > * Die neueste stabile Version der Textanalyse-API ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+> * Wenn Sie die Textanalyse für Gesundheit oder asynchrone Vorgänge verwenden möchten, sehen Sie sich auf GitHub die Beispiele für [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) oder [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) an.
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
@@ -50,6 +51,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 > [!IMPORTANT]
 > * Die neueste stabile Version der Textanalyse-API ist `3.0`.
 > * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten.
+Wenn Sie die Textanalyse für Gesundheit oder asynchrone Vorgänge verwenden möchten, sehen Sie sich auf GitHub die Beispiele für [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) oder [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) an.
 
 [!INCLUDE [Java quickstart](../includes/quickstarts/java-sdk.md)]
 
@@ -72,7 +74,7 @@ Verwenden Sie die Textanalyse-Clientbibliothek für folgende Zwecke:
 > [!IMPORTANT]
 > * Die neueste stabile Version der Textanalyse-API ist `3.0`.
 >    * Befolgen Sie nur die Anweisungen für die von Ihnen verwendete Version.
-> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten. 
+> * Im Code dieses Artikels werden der Einfachheit halber synchrone Methoden und ein ungeschützter Anmeldeinformationsspeicher verwendet. Für Produktionsszenarien wird aus Leistungs- und Skalierbarkeitsgründen die Verwendung der asynchronen Batchmethoden empfohlen. Informationen finden Sie in der Referenzdokumentation weiter unten. Wenn Sie die Textanalyse für Gesundheit oder asynchrone Vorgänge verwenden möchten, sehen Sie sich auf GitHub die Beispiele für [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics), [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/) oder [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics) an.
 
 [!INCLUDE [Python quickstart](../includes/quickstarts/python-sdk.md)]
 

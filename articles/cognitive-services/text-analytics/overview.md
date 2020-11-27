@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: overview
-ms.date: 11/02/2020
+ms.date: 11/17/2020
 ms.author: aahi
 keywords: Textmining, Stimmungsanalyse, Textanalyse
 ms.custom: cog-serv-seo-aug-2020
-ms.openlocfilehash: 6d10161609abda321ed1be9dfda0acabf2030c9e
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 14dfa6111bbda8750b175c8c9b2a96321e1af2c5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94365294"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95519403"
 ---
 # <a name="what-is-the-text-analytics-api"></a>Worum handelt es sich bei der Textanalyse-API?
 
@@ -47,9 +47,18 @@ Die Spracherkennung kann eine Vielzahl von Sprachen, Varianten und Dialekten sow
 
 Die Erkennung benannter Entitäten (NER) kann in Ihrem Text [Entitäten identifizieren und kategorisieren](how-tos/text-analytics-how-to-entity-linking.md), die als Personen, Orte, Organisationen und Mengen erkannt werden. Bekannte Entitäten werden ebenfalls erkannt, und es werden Links zu weiteren Informationen im Internet bereitgestellt.
 
-## <a name="use-containers"></a>Verwenden von Containern
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
-[Verwenden Sie die Textanalysecontainer](how-tos/text-analytics-how-to-install-containers.md) als lokale Lösung für das Textmining und die Verwendung der API. Mithilfe dieser Docker-Container können Sie in Ihren Daten Schlüsselbegriffe extrahieren, Sprachen erkennen und die Stimmung erkennen.
+[Verwenden Sie Container für die Textanalyse](how-tos/text-analytics-how-to-install-containers.md), um API-Features lokal bereitzustellen. Mithilfe dieser Docker-Container können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. Die Textanalyse bietet folgende Container:
+
+* Stimmungsanalyse
+* Schlüsselbegriffserkennung (Vorschauversion)
+* Sprachenerkennung (Vorschauversion)
+* Textanalyse für Gesundheit (Vorschauversion)
+
+## <a name="asynchronous-operations"></a>Asynchrone Vorgänge
+
+Der Endpunkt `/analyze` ermöglicht die [asynchrone](how-tos/text-analytics-how-to-call-api.md) Verwendung ausgewählter Features der Textanalyse-API. Hierzu zählen beispielsweise die Erkennung benannter Entitäten und die Schlüsselbegriffserkennung.
 
 ## <a name="typical-workflow"></a>Typischer Workflow
 

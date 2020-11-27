@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: overview
-ms.date: 11/13/2020
+ms.date: 11/23/2020
 ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: aeaa10870b8b40b907da1d1660e77ebf0271c300
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629749"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95532289"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -64,7 +64,7 @@ Generieren Sie eine Beschreibung eines gesamten Bilds mit vollständigen Sätzen
 
 ### <a name="detect-faces"></a>Erkennen von Gesichtern
 
-Erkennen Sie Gesichter in einem Bild, und stellen Sie Informationen zu den einzelnen Gesichtern bereit. Maschinelles Sehen gibt für jedes erkannte Gesicht die Koordinaten, ein Rechteck, das Geschlecht und das Alter zurück.<br/>Maschinelles Sehen bietet einige Funktionen des Diensts [Gesichtserkennung](/azure/cognitive-services/face/). Der Gesichtserkennungsdienst kann für eine eingehendere Analyse (Gesichtsausdruck, Kopfhaltung und Ähnliches) verwendet werden. [Erkennen von Gesichtern](concept-detecting-faces.md)
+Erkennen Sie Gesichter in einem Bild, und stellen Sie Informationen zu den einzelnen Gesichtern bereit. Maschinelles Sehen gibt für jedes erkannte Gesicht die Koordinaten, ein Rechteck, das Geschlecht und das Alter zurück.<br/>Maschinelles Sehen bietet einige Funktionen des Diensts [Gesichtserkennung](../face/index.yml). Der Gesichtserkennungsdienst kann für eine eingehendere Analyse (Gesichtsausdruck, Kopfhaltung und Ähnliches) verwendet werden. [Erkennen von Gesichtern](concept-detecting-faces.md)
 
 ### <a name="detect-image-types"></a>Erkennen von Bildtypen
 
@@ -90,13 +90,12 @@ Analysieren Sie den Inhalt eines Bilds, um die Koordinaten des *relevanten Berei
 
 Maschinelles Sehen ermöglicht die [Erkennung nicht jugendfreier Inhalte](concept-detecting-adult-content.md) in einem Bild sowie die Rückgabe einer Zuverlässigkeitsbewertung für verschiedene Klassifizierungen. Der Schwellenwert für die Kennzeichnung von Inhalten kann mithilfe eines Schiebereglers nach Bedarf angepasst werden.
 
-## <a name="use-containers"></a>Verwenden von Containern
+## <a name="deploy-on-premises-using-docker-containers"></a>Lokales Bereitstellen unter Verwendung von Docker-Containern
 
-Nutzen Sie Docker-Container für maschinelles Sehen, um den Dienst lokal zu verwenden. Aktuell stehen zwei Container zur Verfügung:
+Verwenden Sie Container für maschinelles Sehen, um API-Features lokal bereitzustellen. Mithilfe dieser Docker-Container können Sie den Dienst näher an Ihre Daten heranbringen, um Compliance- oder Sicherheitsanforderungen zu erfüllen oder anderen betrieblichen Anforderungen gerecht zu werden. Maschinelles Sehen bietet folgende Container:
 
-* Der [Lesecontainer für maschinelles Sehen](computer-vision-how-to-install-containers.md) ermöglicht die Erkennung von gedrucktem und handschriftlichem Text in Bildern.
-
-* Mithilfe des [Containers zur räumlichen Analyse für maschinelles Sehen](spatial-analysis-container.md) können Sie in Echtzeit gestreamte Videodaten analysieren, um zu ermitteln, wie Personen räumlich zueinander in Beziehung stehen und wie sie sich durch physische Umgebungen bewegen.
+* Der [Read OCR-Container für maschinelles Sehen (Vorschauversion)](computer-vision-how-to-install-containers.md) ermöglicht die Erkennung von gedrucktem und handschriftlichem Text in Bildern.
+* Mithilfe des [Containers zur räumlichen Analyse für maschinelles Sehen (Vorschauversion)](spatial-analysis-container.md) können Sie in Echtzeit gestreamte Videodaten analysieren, um zu ermitteln, wie Personen räumlich zueinander in Beziehung stehen und wie sie sich durch physische Umgebungen bewegen.
 
 ## <a name="image-requirements"></a>Bildanforderungen
 
