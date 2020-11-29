@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f0c19e33ab6f91e69f9c7dbc5bc29fef1fd53bb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964875"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839572"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -67,9 +67,9 @@ Für eine kennwortlose Bereitstellung müssen Organisationen die folgenden Vorau
 
 | Voraussetzung | Authenticator-App | FIDO2-Sicherheitsschlüssel |
 | --- | --- | --- |
-| [Kombinierte Registrierung für Azure MFA und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](howto-registration-mfa-sspr-combined.md) ist aktiviert. | √ | √ |
-| [Benutzer können Azure MFA (Multi-Factor Authentication) nutzen.](howto-mfa-getstarted.md) | √ | √ |
-| [Benutzer haben sich für Azure MFA und SSPR registriert.](howto-registration-mfa-sspr-combined.md) | √ | √ |
+| [Kombinierte Registrierung für Azure AD Multi-Factor Authentication und Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR)](howto-registration-mfa-sspr-combined.md) ist aktiviert. | √ | √ |
+| [Benutzer können Azure AD Multi-Factor Authentication nutzen.](howto-mfa-getstarted.md) | √ | √ |
+| [Benutzer haben sich für Azure AD Multi-Factor Authentication und SSPR registriert.](howto-registration-mfa-sspr-combined.md) | √ | √ |
 | [Benutzer haben ihre mobilen Geräte für Azure Active Directory registriert](../devices/overview.md) | √ |   |
 | Windows 10, Version 1809 oder höher, mit einem unterstützten Browser wie Microsoft Edge oder Mozilla Firefox <br> (Version 67 oder höher). <br> *Microsoft empfiehlt Version 1903 oder höher für native Unterstützung*. |   | √ |
 | Kompatible FIDO2-Sicherheitsschlüssel. Stellen Sie sicher, dass Sie ein [von Microsoft getestetes und verifiziertes](./concept-authentication-passwordless.md) FIDO2-Sicherheitsgerät oder ein anderes kompatibles FIDO2-Sicherheitsgerät verwenden. |   | √ |
@@ -78,9 +78,9 @@ Für eine kennwortlose Bereitstellung müssen Organisationen die folgenden Vorau
 
 Die Voraussetzungen für Windows Hello for Business sind stark davon abhängig, ob Sie die Bereitstellung in einer lokalen Konfiguration, in einer Hybridkonfiguration oder in einer reinen Cloudkonfiguration durchführen. Weitere Informationen finden Sie in der [vollständigen Liste der Voraussetzungen für Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification).
 
-### <a name="azure-multi-factor-authentication"></a>Azure Multi-Factor Authentication
+### <a name="azure-ad-multi-factor-authentication"></a>Azure AD Multi-Factor Authentication
 
-Benutzer registrieren ihre kennwortlose Methode als Teil des Azure MFA-Registrierungsflows. Die mehrstufige Authentifizierung mit einem Benutzernamen und einem Kennwort sowie einer anderen registrierten Methode kann ersatzweise in Szenarios verwendet werden, in denen sie ihr Smartphone oder ihren Sicherheitsschlüssel nicht verwenden können.
+Benutzer registrieren ihre kennwortlose Methode als Teil des Azure AD Multi-Factor Authentication-Registrierungsflows. Die mehrstufige Authentifizierung mit einem Benutzernamen und einem Kennwort sowie einer anderen registrierten Methode kann ersatzweise in Szenarios verwendet werden, in denen sie ihr Smartphone oder ihren Sicherheitsschlüssel nicht verwenden können.
 
 ### <a name="licensing"></a>Lizenzierung 
 Es fallen keine zusätzlichen Kosten für die kennwortlose Authentifizierung an, obwohl einige Voraussetzungen möglicherweise ein Premium-Abonnement erfordern. Ausführliche Informationen zu Features und Lizenzen finden Sie unter [Azure Active Directory – Preise](https://azure.microsoft.com/pricing/details/active-directory/). 
@@ -140,7 +140,7 @@ Sie wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinfor
 
 **Integration der Active Directory-Verbunddienste (AD FS)** : Wenn ein Benutzer die kennwortlosen Microsoft Authenticator-Anmeldeinformationen aktiviert, wird die Authentifizierung für diesen Benutzer standardmäßig auf das Senden einer Genehmigungsbenachrichtigung festgelegt. Benutzer in einem hybriden Mandanten werden für die Anmeldung nicht zu AD FS weitergeleitet, es sei denn, sie wählen „Stattdessen Ihr Kennwort verwenden“ aus. Bei diesem Prozess werden auch alle lokalen Richtlinien für bedingten Zugriff und Passthrough-Authentifizierungsflüsse umgangen. Wenn jedoch ein *Anmeldehinweis* (login_hint) angegeben ist, wird ein Benutzer zu AD FS weitergeleitet, und die Option zur Verwendung von kennwortlosen Anmeldeinformationen wird umgangen.
 
-**Azure MFA-Server:** Für die mehrstufige Authentifizierung über den lokalen Azure MFA-Server einer Organisation aktivierte Endbenutzer können einen einzelnen Satz von Anmeldeinformationen für die kennwortlose Anmeldung per Telefon erstellen und verwenden. Wenn der Benutzer versucht, mehrere Installationen (fünf oder mehr) von Microsoft Authenticator mit den Anmeldeinformationen zu aktualisieren, kann diese Änderung zu einem Fehler führen.
+**Azure AD MFA-Server**: Für die mehrstufige Authentifizierung über den lokalen Azure MFA-Server einer Organisation aktivierte Endbenutzer können einen einzelnen Satz von Anmeldeinformationen für die kennwortlose Anmeldung per Telefon erstellen und verwenden. Wenn der Benutzer versucht, mehrere Installationen (fünf oder mehr) von Microsoft Authenticator mit den Anmeldeinformationen zu aktualisieren, kann diese Änderung zu einem Fehler führen.
 
 **Geräteregistrierung**: Um die Authenticator-App für die kennwortlose Authentifizierung zu verwenden, muss das Gerät im Azure AD-Mandanten registriert sein und darf kein gemeinsam genutztes Gerät sein. Ein Gerät kann nur bei einem einzigen Mandanten registriert werden. Das bedeutet, dass nur ein einzelnes Geschäfts-, Schul- oder Unikonto für die Anmeldung per Telefon über die Authenticator-App unterstützt wird.
 

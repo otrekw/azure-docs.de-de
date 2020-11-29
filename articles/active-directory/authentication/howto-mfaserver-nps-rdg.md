@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 261a7033737e0d7be9974ca80ca6844b50a19973
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 9959ce1c88fb595dedd4174a9185f801168ecb0d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968615"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994178"
 ---
 # <a name="remote-desktop-gateway-and-azure-multi-factor-authentication-server-using-radius"></a>Remotedesktopgateway und Azure Multi-Factor Authentication-Server mithilfe von RADIUS
 
@@ -27,9 +27,9 @@ Verwenden Sie das RD-Gateway und RADIUS für die Integration in MFA-Server, da d
 Installieren Sie den Multi-Factor Authentication-Server auf einem separaten Server, von dem die RADIUS-Anforderung per Proxy an NPS auf dem Remotedesktop-Gatewayserver zurückgegeben wird. Nachdem NPS den Benutzernamen und das Kennwort überprüft hat, wird eine Antwort an den Multi-Factor Authentication-Server zurückgegeben. Der MFA-Server führt dann den zweiten Authentifizierungsschritt aus und gibt ein Ergebnis an das Gateway zurück.
 
 > [!IMPORTANT]
-> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer eine mehrstufige Authentifizierung anfordern möchten, sollten die cloudbasierte Multi-Factor Authentication von Azure verwenden.
+> Seit dem 1. Juli 2019 bietet Microsoft für neue Bereitstellungen keine MFA-Server mehr an. Neue Kunden, die für die Anmeldung der Benutzer mehrstufige Authentifizierung (MFA) anfordern möchten, sollten cloudbasierte Multi-Factor Authentication von Azure AD verwenden.
 >
-> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+> Informationen zu den ersten Schritten mit der cloudbasierten MFA finden Sie im [Tutorial: Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 >
 > Wenn Sie die cloudbasierte mehrstufige Authentifizierung verwenden, informieren Sie sich über das [Integrieren der RADIUS-Authentifizierung für Azure Multi-Factor Authentication](howto-mfa-nps-extension.md).
 >
@@ -67,7 +67,7 @@ Das RD-Gateway verwendet den NPS, um die RADIUS-Anforderung an Azure Multi-Facto
 
 ### <a name="prepare-nps-to-receive-authentications-from-the-mfa-server"></a>Vorbereiten von NPS zum Empfangen von Authentifizierungen vom MFA-Server
 
-1. Klicken Sie unter „RADIUS-Clients und -Server“ in der linken Spalte auf **RADIUS-Clients**, und wählen Sie die Option**Neu**.
+1. Klicken Sie unter „RADIUS-Clients und -Server“ in der linken Spalte auf **RADIUS-Clients**, und wählen Sie die Option **Neu**.
 2. Fügen Sie den Azure Multi-Factor Authentication-Server als RADIUS-Client hinzu. Wählen Sie einen Anzeigenamen und geben Sie einen gemeinsamen geheimen Schlüssel an.
 3. Öffnen Sie in der linken Spalte das Menü **Richtlinien**, und wählen Sie die Option **Verbindungsanforderungsrichtlinien**. Es sollte eine Richtlinie mit dem Namen „TS GATEWAY AUTHORIZATION POLICY“ angezeigt werden, die beim Konfigurieren des RD-Gateways erstellt wurde. Diese Richtlinie leitet RADIUS-Anforderungen an den Multi-Factor Authentication-Server weiter.
 4. Klicken Sie mit der rechten Maustaste auf **TS GATEWAY AUTHORIZATION POLICY**, und wählen Sie die Option **Richtlinie duplizieren**.

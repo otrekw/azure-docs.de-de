@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: a35c34a08dba625b16940d7ec5fb870952dba36b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630242"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011701"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -133,16 +133,16 @@ Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen 
 Wenn eine Dateifreigabe als Premium- oder als Standard-Dateifreigabe erstellt wurde, können Sie sie nicht automatisch in den anderen Tarif konvertieren. Wenn Sie zum anderen Tarif wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Es wird empfohlen, `robocopy` für Windows oder `rsync` für macOS und Linux zu verwenden, um diesen Kopiervorgang auszuführen.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Grundlegendes zur Bereitstellung für Premium-Dateifreigaben
-Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für jedes bereitgestellte GiB erhält die Freigabe 1 IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für IOPS/Durchsatz.
+Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für alle Freigaben wird Mindestgrundwert/-durchsatz angeboten, und Burst ist zulässig. Für jedes bereitgestellte GiB erhält die Freigabe Mindest-IOPS/-durchsatz sowie ein IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für Mindest-IOPS/-durchsatz. 
 
-Auf einer Best-Effort-Basis können alle Freigaben für 60 Minuten oder länger (je nach Größe der Freigabe) auf bis zu 3 IOPS pro GiB an bereitgestelltem Speicher erhöht werden (Burst). Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
+Für alle Premium-Freigaben werden nach bestem Bemühen kostenlose Bursts angeboten. Alle Freigabegrößen können Bursts bis zu 4.000 IOPS oder bis zu drei IOPS pro bereitgestellter GiB-Größe ausführen, je nachdem, welcher Wert einen größeren Burst-IOPS-Wert für die Freigabe bereitstellt. Alle Freigaben unterstützen für Bursts eine maximale Dauer von 60 Minuten bei einem Spitzenburstgrenzwert. Neue Freigaben beginnen mit dem vollständigen Burstguthaben, basierend auf der bereitgestellten Kapazität.
 
 Freigaben müssen in Schritten von 1GiB bereitgestellt werden. Die Mindestgröße beträgt 100 GiB, die nächste Größe ist 101 GiB usw.
 
 > [!TIP]
-> IOPS-Grundwert = 1 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).
+> IOPS-Grundwert = 400 + 1 * bereitgestellte GiB. (Bis zu 100.000 IOPS).
 >
-> Burstgrenzwert = 3 * IOPS-Grundwert. (Bis zu 100.000 IOPS).
+> Burstgrenzwert = MAX (4.000, 3 * IOPS-Grundwert). (je nachdem, welcher Grenzwert größer ist, bis zu einem Maximum von 100.000 IOPS).
 >
 > Ausgangsrate = 60MiB/s + 0,06 * bereitgestellte GiB
 >
@@ -156,33 +156,29 @@ Die folgende Tabelle zeigt einige Beispiele dieser Formeln für die bereitgestel
 
 |Kapazität (GiB) | IOPS-Grundwert | Burst-IOPS | Ausgehend (MiB/s) | Eingehend (MiB/s) |
 |---------|---------|---------|---------|---------|
-|100         | 100     | Bis zu 300     | 66   | 44   |
-|500         | 500     | Bis zu 1.500   | 90   | 60   |
-|1\.024       | 1\.024   | Bis zu 3.072   | 122   | 81   |
-|5\.120       | 5\.120   | Bis zu 15.360  | 368   | 245   |
-|10.240      | 10.240  | Bis zu 30.720  | 675 | 450   |
-|33.792      | 33.792  | Bis zu 100.000 | 2\.088 | 1\.392   |
-|51.200      | 51.200  | Bis zu 100.000 | 3\.132 | 2\.088   |
+|100         | 500     | Bis zu 4.000     | 66   | 44   |
+|500         | 900     | Bis zu 4.000  | 90   | 60   |
+|1\.024       | 1\.424   | Bis zu 4.000   | 122   | 81   |
+|5\.120       | 5\.520   | Bis zu 15.360  | 368   | 245   |
+|10.240      | 10.640  | Bis zu 30.720  | 675   | 450   |
+|33.792      | 34.192  | Bis zu 100.000 | 2\.088 | 1\.392   |
+|51.200      | 51.600  | Bis zu 100.000 | 3\.132 | 2\.088   |
 |102.400     | 100.000 | Bis zu 100.000 | 6\.204 | 4\.136   |
 
-> [!NOTE]
-> Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Um eine maximale Leistung zu erreichen, können Sie die Last auf mehrere VMs verteilen. Weitere Informationen zu gängigen Leistungsproblemen und deren Lösungen finden Sie im [Handbuch zur Problembehandlung](storage-troubleshooting-files-performance.md).
+Wichtiger Hinweis: Die Leistung der Dateifreigabe hängt unter anderem von den Computernetzwerklimits, der verfügbaren Netzwerkbandbreite, den E/A-Größen und der Parallelität ab. Beispielsweise kann ein einzelner virtueller Windows-Computer ohne aktivierte Funktion SMB Multichannel namens *Standard F16s_v2*, der mit einer Premium-Dateifreigabe über SMB verbunden ist, laut internen Tests mit Lese-/Schreibvorgängen mit einer E/A-Größe von 8 KiB 20 K Lese-IOPS und 15 K Schreib-IOPS erzielen. Bei Lese-/Schreibvorgängen mit einer E/A-Größe von 512 MiB kann derselbe virtuelle Computer einen Durchsatz von 1,1 GiB/s ausgehend und 370 MiB/s eingehend erzielen. Der gleiche Client kann eine bis zu \~dreifache Leistung erzielen, wenn SMB Multichannel für die Premium-Freigaben aktiviert ist. Um eine maximale Leistung zu erreichen, [aktivieren Sie SMB Multichannel](storage-files-enable-smb-multichannel.md), und verteilen Sie die Last auf mehrere VMs. Weitere Informationen zur [Leistung von SMB Multichannel](storage-troubleshooting-files-performance.md) und gängigen Leistungsproblemen sowie deren Lösungen finden Sie im [Leitfaden zur Problembehandlung](storage-files-smb-multichannel-performance.md).
 
 #### <a name="bursting"></a>Bursting
-Premium-Dateifreigaben können ihren IOPS-Wert bis zu Faktor drei erhöhen. Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie; bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert möglich.
+Wenn Ihre Workload die zusätzliche Leistung benötigt, um den Spitzenbedarf zu erfüllen, kann Ihre Freigabe Burstgutschriften verwenden, um den IOPS-Grundwert für die Freigabe zu überschreiten und die erforderliche Freigabeleistung bereitzustellen. Premium-Dateifreigaben können ihren IOPS-Wert bis auf 4.000 oder um den Faktor drei erhöhen (je nachdem, welcher Wert höher ist). Bursting wird automatisiert und funktioniert auf Basis eines Guthabensystems. Die Burstübertragung funktioniert auf Best-Effort-Basis, und der Burstgrenzwert ist keine Garantie. Bei Dateifreigaben ist eine Burstübertragung *bis zum* Grenzwert für eine maximale Dauer von 60 Minuten möglich.
 
-Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise hat eine 100GiB-Freigabe 100 IOPS-Grundwerte. Wenn der eigentliche Datenverkehr auf der Freigabe 40IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 60 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
+Guthaben sammeln sich in einem Burstbucket an, wenn Datenverkehr für Ihre Dateifreigabe unterhalb des IOPS-Grundwerts liegt. Beispielsweise weist eine Freigabe mit 100 GiB 500 IOPS-Grundwerte auf. Wenn der tatsächliche Datenverkehr auf der Freigabe 100 IOPS für ein bestimmtes 1-Sekunden-Intervall betrug, werden die 400 nicht verwendeten IOPS einem Burstbucket gutgeschrieben. Auf ähnliche Weise fällt eine Burstgutschrift in Höhe von 1.424 IOPS für eine 1-TiB-Leerlauffreigabe an. Diese Guthaben werden dann später verwendet, wenn Vorgänge die IOPS-Grundwerte überschreiten.
 
-> [!TIP]
-> Größe des Burstbuckets = IOPS-Grundwert * 2 * 3600.
-
-Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen durch. Freigaben können solange Burstübertragungen durchführen, wie Guthaben übrig sind, aber Freigaben, die kleiner sind als 50TiB, bleiben nur bis zu einer Stunde auf dem Burstgrenzwert. Freigaben, die größer sind als 50TiB, können dieses einstündige Limit technisch überschreiten, bis zu zwei Stunden, aber dies basiert auf der Anzahl der gesammelten Burstguthaben. Jede EA über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
+Wenn eine Freigabe den IOPS-Grundwert überschreitet und Guthaben in einem Burstbucket hat, führt sie Burstübertragungen mit der maximal zulässigen Spitzenburstrate durch. Freigaben können bis zu einer Dauer von maximal 60 Minuten weiterhin Bursts ausführen, solange Guthaben verbleibt. Dies hängt aber von der Höhe des aufgelaufenen Burstguthabens ab. Jede E/A über dem IOPS-Grundwert verbraucht ein Guthaben, und wenn alle Guthaben verbraucht sind, kehrt die Freigabe zum IOPS-Grundwert zurück.
 
 Freigabeguthaben können drei Zustände aufweisen:
 
 - Anwachsend, wenn die Dateifreigabe weniger als den IOPS-Grundwert verwendet.
-- Sinkend, wenn die Dateifreigabe Burstübertragungen durchführt.
-- Konstant verbleibend, wenn entweder keine Guthaben vorhanden sind oder der IOPS-Grundwert verwendet wird.
+- Abnehmend, wenn die Dateifreigabe mehr als den IOPS-Grundwert verwendet und sich im Burstmodus befindet.
+- Konstant, wenn die Dateifreigabe genau den IOPS-Grundwert verwendet. Es sind keine Guthaben aufgelaufen oder werden verwendet.
 
 Neue Dateifreigaben beginnen mit der vollen Anzahl von Guthaben im Burstbucket. Burstguthaben werden nicht angesammelt, wenn der Freigabe-IOPS aufgrund einer Einschränkung durch den Server unter den IOPS-Grundwert fällt.
 

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 26dd255e6edff7c339ab9766bb71889cf4e2deaa
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577642"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95903711"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -66,7 +66,7 @@ Während Ihres Ermittlungsprozesses haben Sie ggf. Anwendungen ermittelt, die vo
 - Einsparung von Kosten, indem die lokale Benutzerbereitstellung und -authentifizierung sowie die Lizenzierungsgebühren wegfallen, die an andere Cloudidentitätsanbieter für den gleichen Dienst gezahlt werden müssen
 - Reduzierung des Verwaltungsaufwands und Ermöglichung von strengeren Sicherheitsmaßnahmen mit weniger Redundanzen für Ihren Prozess zur Identitäts- und Zugriffsverwaltung
 - Ermöglichung des Zugriffs mit sicherem einmaligem Anmelden auf ALLE benötigten Anwendungen für Mitarbeiter über das [MyApps-Portal](../manage-apps/access-panel-collections.md)
-- Verbesserung der Intelligence-Ebene der Dienste für [Identity Protection](../identity-protection/overview-identity-protection.md) von Azure AD, z. B. bedingter Zugriff, indem die Datenmenge zur App-Nutzung erhöht wird und die erzielten Vorteile auf neu hinzugefügte Apps ausgedehnt werden
+- Verbesserung der Intelligence-Ebene der Dienste für [Identity Protection](../identity-protection/overview-identity-protection.md) von Azure AD, z. B. bedingter Zugriff, indem die Datenmenge zur App-Nutzung erhöht wird und die erzielten Vorteile auf neu hinzugefügte Apps ausgedehnt werden.
 
 Wir haben einen Leitfaden zur Verwaltung des Geschäftsprozesses für die Integration von Apps in Azure AD veröffentlicht. Darin sind beispielsweise ein [Poster](https://aka.ms/AppOnePager) und eine [Präsentation](https://aka.ms/AppGuideline) enthalten, damit Sie die für Geschäftsprozesse und Anwendungen verantwortlichen Personen informieren und deren Interesse wecken können. Sie können diese Beispiele mit Ihrem eigenen Branding versehen und für Ihre Organisation veröffentlichen, indem Sie Ihr Unternehmensportal, einen Newsletter oder ein anderes Medium verwenden, während Sie diesen Prozess durchführen.
 
