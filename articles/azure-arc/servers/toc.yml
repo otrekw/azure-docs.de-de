@@ -62,7 +62,7 @@
         - name: Durchführen des Onboardings in Azure Sentinel
           href: scenario-onboard-azure-sentinel.md
         - name: Durchführen des Onboardings in Azure Security Center
-          href: /security-center/quickstart-onboard-machines
+          href: ../../security-center/quickstart-onboard-machines.md
     - name: Problembehandlung
       items:
         - name: Agent-Verbindungsprobleme
