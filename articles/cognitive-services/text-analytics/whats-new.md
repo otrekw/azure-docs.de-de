@@ -8,18 +8,35 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 10/16/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: f0204f5b923cf3363d85be9642d2866436df155a
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.custom: references_regions
+ms.openlocfilehash: 8743e765a050bfc4a2ba93a1b3e0344a960edb76
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369459"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94966886"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>Neuigkeiten bei der Textanalyse-API
 
 Die Textanalyse-API wird fortlaufend aktualisiert. Damit Sie bezüglich der aktuellen Entwicklungen auf dem neuesten Stand bleiben, bietet dieser Artikel Informationen zu neuen Releases und Funktionen.
+
+## <a name="november-2020"></a>November 2020
+
+* Ein [neuer Endpunkt](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Analyze) mit der Textanalyse-API-Version v3.1-preview.3 für die neue asynchrone [Analyse-API](how-tos/text-analytics-how-to-call-api.md?tabs=analyze), die Batchverarbeitung bei NER (Named Entity Recognition, Erkennung benannter Entitäten), personenbezogenen Informationen und Schlüsselwortextraktionsvorgängen unterstützt.
+* Ein [neuer Endpunkt](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Health) mit der Textanalyse-API-Version v3.1-preview.3 für die neue gehostete asynchrone API für [Textanalyse im Gesundheitsbereich](how-tos/text-analytics-for-health.md), mit Unterstützung für Batchverarbeitung.
+* Beide oben aufgeführten neuen Features sind nur in den folgenden Regionen verfügbar: `West US 2`, `East US 2`, `Central US`, `North Europe` und `West Europe`.
+* Portugiesisch (Brasilien) `pt-BR` wird jetzt in [Standpunktanalyse](how-tos/text-analytics-how-to-sentiment-analysis.md) v3.x unterstützt, und zwar ab Modellversion `2020-04-01`. Es wird der bereits vorhandenen `pt-PT`-Unterstützung für Portugiesisch hinzugefügt.
+* Aktualisierte Clientbibliotheken, die asynchrone Analyse und Textanalyse für Vorgänge im Gesundheitsbereich enthalten. Beispiele dazu finden Sie auf GitHub:
+
+    * [C#](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/textanalytics/Azure.AI.TextAnalytics)
+    * [Python](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/textanalytics/azure-ai-textanalytics/)
+    * [Java](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/textanalytics/azure-ai-textanalytics)
+
+
+> [!div class="nextstepaction"]
+> [Weitere Informationen zur Textanalyse-API-Version v3.1-Preview.3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Languages)
 
 ## <a name="october-2020"></a>Oktober 2020
 
@@ -147,7 +164,7 @@ Die Namen der folgenden Eigenschaften in der JSON-Antwort wurden geändert (sowe
 
 ### <a name="text-analytics-api-v31-public-preview"></a>Textanalyse-API v3.1: Public Preview
    * Neues Feature für die Standpunktanalyse: [Opinion Mining](how-tos/text-analytics-how-to-sentiment-analysis.md#opinion-mining)
-   * Neuer [Filter für den persönlichen Bereich (`PII`)](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) für geschützte Informationen zur Gesundheit (`PHI`).
+   * Neuer Filter für den persönlichen Bereich (`PII`) für geschützte Informationen zur Gesundheit (`PHI`).
 
 > [!div class="nextstepaction"]
 > [Weitere Informationen zur Textanalyse-API v3.1 (Vorschau)](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-1/operations/Languages)
@@ -162,7 +179,7 @@ Als Teil der [vereinheitlichten Azure SDK-Veröffentlichung](https://techcommuni
    * [JavaScript (Node.js)](./quickstarts/text-analytics-sdk.md?pivots=programming-language-javascript&tabs=version-3)
    * [Java](./quickstarts/text-analytics-sdk.md?pivots=programming-language-java&tabs=version-3)
    
-   > [!div class="nextstepaction"]
+> [!div class="nextstepaction"]
 > [Weitere Informationen zum Textanalyse-API v3 SDK](./quickstarts/text-analytics-sdk.md?tabs=version-3)
 
 ### <a name="named-entity-recognition-v3-public-preview"></a>Named Entity Recognition v3 – öffentliche Vorschau
@@ -185,9 +202,6 @@ Weitere Entitätstypen stehen jetzt in der öffentlichen Vorschauversion des Die
     * Telefonnummer (nur USA)
     * URL
     * IP-Adresse
-
-> [!div class="nextstepaction"]
-> [Weitere Informationen zu Named Entity Recognition v3](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features)
 
 ### <a name="october-2019"></a>Oktober 2019
 

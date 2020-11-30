@@ -8,47 +8,53 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/11/2020
+ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: cabde27591159b5751435a97a909a5f6f8c3081b
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94518225"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94957094"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
-Mit der Textanalyse-API kann aus unstrukturiertem Text eine Liste mit eindeutig unterscheidbaren Entitäten und Links zu weiteren Informationen im Web zurückgegeben werden. Die API unterstützt sowohl die Erkennung benannter Entitäten (Named Entity Recognition, NER) als auch die Entitätsverknüpfung.
+Mit der Textanalyse-API kann aus unstrukturiertem Text eine Liste mit eindeutig unterscheidbaren Entitäten und Links zu weiteren Informationen im Web zurückgegeben werden. Die API unterstützt sowohl benannte Entitätserkennung (Named Entity Recognition, NER) für mehrere Entitätskategorien als auch Entitätsverknüpfung.
 
-### <a name="entity-linking"></a>Entitätsverknüpfung
+## <a name="entity-linking"></a>Entitätsverknüpfung
 
 Die Entitätsverknüpfung ist die Möglichkeit, die Identität einer im Text gefundenen Entität zu identifizieren und eindeutig zu machen (um beispielsweise zu ermitteln, ob das Wort „Mars“ den Planeten oder den römischen Kriegsgott bezeichnet). Um in diesem Prozess erkannte Entitäten im Text zu verknüpfen, ist eine Wissensdatenbank in der entsprechenden Sprache erforderlich. Die Entitätsverknüpfung verwendet [Wikipedia](https://www.wikipedia.org/) als diese Wissensdatenbank.
 
+## <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
 
-### <a name="named-entity-recognition-ner"></a>Erkennung benannter Entitäten (NER)
+NER (Named Entity Recognition) ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen oder Typen zu kategorisieren wie z. B.: „Person“, „Standort“, „Ereignis“, „Produkt“ und „Organisation“.  
 
-Die NER ist die Möglichkeit, unterschiedliche Entitäten im Text zu identifizieren und sie in vordefinierte Klassen oder Typen zu kategorisieren, z. B. Person, Standort, Ereignis, Produkt und Organisation.  
+## <a name="personally-identifiable-information-pii"></a>Personenbezogene Informationen (Personally Identifiable Information, PII)
 
-## <a name="named-entity-recognition-versions-and-features"></a>Versionen und Features der Erkennung benannter Entitäten
+Das Feature PII ist ein Bestandteil von NER und kann vertrauliche Entitäten in Text identifizieren und bearbeiten, die einer einzelnen Person zugeordnet sind, wie z. B.: Telefonnummer, E-Mail-Adresse, Postanschrift, Reisepassnummer.  
+
+## <a name="named-entity-recognition-features-and-versions"></a>Features und Versionen der Erkennung benannter Entitäten
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funktion                                                         | NER v3.0 | NER v3.1-preview.2 |
+| Funktion                                                         | NER v3.0 | NER v3.1-preview.3 |
 |-----------------------------------------------------------------|--------|----------|
 | Methoden für Einzel- und Batchabfragen                          | X      | X        |
 | Erweiterte Entitätserkennung in verschiedenen Kategorien           | X      | X        |
 | Separate Endpunkte zum Senden von Entitätsverknüpfungs- und NER-Anforderungen. | X      | X        |
 | Erkennung von Entitäten mit personenbezogenen (`PII`) und gesundheitsbezogenen (`PHI`) Informationen        |        | X        |
+| Bearbeitung von `PII`        |        | X        |
 
 Weitere Informationen finden Sie unter [Sprachunterstützung](../language-support.md).
 
-## <a name="entity-types"></a>Entitätstypen
-
 Named Entity Recognition v3 bietet erweiterte Erkennung über mehrere Typen hinweg. Derzeit können mit NER v3.0 Entitäten der [Kategorie mit den allgemeinen Entitäten](../named-entity-types.md) erkannt werden.
 
-Version 3.1-preview.2 der Erkennung benannter Entitäten enthält die Erkennungsfunktionen von Version 3.0, und personenbezogene Informationen (`PII`) können über den Endpunkt `v3.1-preview.2/entities/recognition/pii` erkannt werden. Sie können den optionalen Parameter `domain=phi` verwenden, um vertrauliche Gesundheitsinformationen (`PHI`) zu erkennen. Weitere Informationen finden Sie im Artikel zu [Entitätskategorien](../named-entity-types.md) und unten im Abschnitt [Anforderungsendpunkte](#request-endpoints).
+Named Entity Recognition v3.1-preview.3 enthält die Erkennungsfunktionen von v3.0 sowie Folgendes: 
+* Die Möglichkeit zur Erkennung personenbezogener Informationen (`PII`) mithilfe des Endpunkts `v3.1-preview.3/entities/recognition/pii`. 
+* Einen optionalen Parameter `domain=phi` zur Erkennung vertraulicher gesundheitsbezogener Informationen (`PHI`).
+* Einen [asynchronen Vorgang](text-analytics-how-to-call-api.md) mithilfe des Endpunkts `/analyze`.
 
+Weitere Informationen finden Sie im Artikel zu [Entitätskategorien](../named-entity-types.md) und unten im Abschnitt [Anforderungsendpunkte](#request-endpoints). 
 
 ## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung
 
@@ -68,41 +74,41 @@ Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturiere
 
 ### <a name="request-endpoints"></a>Anforderungsendpunkte
 
-#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-preview)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-preview)
 
-In „Named Entity Recognition `v3.1-preview.2`„ werden separate Endpunkte für NER-, PII- und Entitätsverknüpfungsanforderungen verwendet. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
+In „Erkennung benannter Entitäten“ `v3.1-preview.3` werden separate Endpunkte für NER, personenbezogene Informationen und Entitätsverknüpfungsanforderungen verwendet. Verwenden Sie basierend auf Ihrer Anforderung eines der URL-Formate unten.
 
-Entitätsverknüpfung
-* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/linking`
+**Entitätsverknüpfung**
+* `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/linking`
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesLinking)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesLinking)
 
-NER
-* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/general`
+**Erkennung benannter Entitäten**
+* Allgemeine Entitäten: `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/general`
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionGeneral)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionGeneral)
 
-Personenbezogene Informationen (Personally Identifiable Information, PII)
-* Personenbezogene Informationen (`PII`): `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii`
+**Personenbezogene Informationen (Personally Identifiable Information, PII)**
+* Personenbezogene Informationen (`PII`): `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii`
 
 Sie können auch den optionalen Parameter `domain=phi` verwenden, um im Text Informationen zur Gesundheit (`PHI`) zu erkennen. 
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/entities/recognition/pii?domain=phi`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/entities/recognition/pii?domain=phi`
 
-Beachten Sie auch die in der JSON-Antwort hinzugefügte `redactedText`-Eigenschaft, die den geänderten Eingabetext enthält, in dem die erkannten Entitäten mit personenbezogenen Informationen durch ein * für jedes Zeichen der Entitäten ersetzt wurden.
+Ab `v3.1-preview.3` enthält die JSON-Antwort eine Eigenschaft `redactedText` mit dem geänderten Eingabetext, in dem die erkannten Entitäten personenbezogener Informationen durch ein `*` für jedes Zeichen in den Entitäten ersetzt werden.
 
-[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-2/operations/EntitiesRecognitionPii)
+[Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen und Entitätsverknüpfungsanforderungen. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
 
-Entitätsverknüpfung
+**Entitätsverknüpfung**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/linking`
 
 [Referenz zur Version 3.0 der Erkennung benannter Entitäten für `Linking`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
 
-NER
+**Erkennung benannter Entitäten**
 * `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.0/entities/recognition/general`
 
 [Referenz zur Version 3.0 der Erkennung benannter Entitäten für `General`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-0/operations/EntitiesRecognitionGeneral)
@@ -113,7 +119,7 @@ Legen Sie einen Anforderungsheader fest, um Ihren Textanalyse-API-Schlüssel ein
 
 ### <a name="example-ner-request"></a>Beispiel für eine NER-Anforderung 
 
-Das folgende Beispiel zeigt Inhalte, die Sie ggf. an die API senden können: Das Anforderungsformat ist für beide Versionen der API identisch.
+Das folgende JSON-Beispiel zeigt Inhalte, die Sie ggf. an die API senden können. Das Anforderungsformat ist für beide Versionen der API identisch.
 
 ```json
 {
@@ -138,11 +144,11 @@ Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeich
 
 Alle POST-Anforderungen geben eine Antwort im JSON-Format mit den IDs und erkannten Entitätseigenschaften zurück.
 
-Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
+Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei auf dem lokalen System speichern und sie anschließend in eine Anwendung importieren, in der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Verarbeiten von Textversätzen](../concepts/text-offsets.md).
 
 ### <a name="example-responses"></a>Beispielantworten
 
-Version 3 bietet separate Endpunkte für die allgemeine Erkennung benannter Entitäten (NER), personenbezogene Informationen und Entitätsverknüpfungen. Die Antworten für beide Vorgänge sind unten aufgeführt. 
+Version 3 stellt separate Endpunkte für die allgemeine Erkennung benannter Entitäten (NER), personenbezogene Informationen und Entitätsverknüpfung bereit. Die Antworten für beide Vorgänge sind unten aufgeführt. 
 
 #### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 
