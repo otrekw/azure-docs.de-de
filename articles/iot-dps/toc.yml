@@ -47,6 +47,8 @@
           href: how-to-legacy-device-symm-key.md
         - name: Verwenden benutzerdefinierter Zuordnungsrichtlinien
           href: tutorial-custom-allocation-policies.md
+        - name: Bereitstellen mehrerer X.509-Geräte
+          href: tutorial-custom-hsm-enrollment-group-x509.md
     - name: 2. Bereitstellen von Geräten für mehrere Hubs
       items:
         - name: Verknüpfen mehrerer Hubs mit DPS

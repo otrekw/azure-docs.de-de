@@ -453,7 +453,7 @@
                       href: ../image-version-vm-powershell.md
                     - name: Von einem verwalteten Datenträger oder von einer Momentaufnahme
                       href: ../image-version-snapshot-powershell.md
-                    - name: Migrieren von einem verwalteten Image
+                    - name: Klonen eines verwalteten Images
                       href: ../image-version-managed-image-powershell.md
                     - name: Kopieren aus einem anderen Katalog
                       href: ../image-version-another-gallery-powershell.md
@@ -475,7 +475,7 @@
                       href: ../image-version-vm-cli.md
                     - name: Von einem verwalteten Datenträger oder von einer Momentaufnahme
                       href: ../image-version-snapshot-cli.md
-                    - name: Migrieren von einem verwalteten Image
+                    - name: Klonen eines verwalteten Images
                       href: ../image-version-managed-image-cli.md
                     - name: Kopieren aus einem anderen Katalog
                       href: ../image-version-another-gallery-cli.md
@@ -701,7 +701,7 @@
           items:
             - name: Übersicht
               href: ../maintenance-control.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
-            - name: Befehlszeilenschnittstelle (CLI)
+            - name: CLI
               href: ../maintenance-control-cli.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
             - name: PowerShell
               href: ../maintenance-control-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json

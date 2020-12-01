@@ -124,6 +124,8 @@
           href: concepts-supported-versions.md
         - name: Einschränkungen
           href: concepts-limits.md
+        - name: Bewährte Methoden für den Betrieb
+          href: concept-operation-excellence-best-practices.md
         - name: Tarife
           items:
             - name: Tarife
@@ -195,6 +197,10 @@
             - name: Empfehlungen zur Leistung
               href: concepts-performance-recommendations.md
               displayName: recommendation
+            - name: Bewährte Methoden für die Überwachung
+              href: concept-monitoring-best-practices.md
+            - name: Bewährte Methoden für Leistung
+              href: concept-performance-best-practices.md
         - name: Anwendungsentwicklung
           items:
             - name: 'Anwendungsentwicklung: Übersicht'
