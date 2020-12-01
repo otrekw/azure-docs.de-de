@@ -1,5 +1,5 @@
 ---
-title: Konfigurieren der NPS-Erweiterung für Azure MFA – Azure Active Directory
+title: Konfigurieren der NPS-Erweiterung für Azure AD MFA – Azure Active Directory
 description: Befolgen Sie nach dem Installieren der NPS-Erweiterung diese Schritte für die erweiterte Konfigurierung wie zulässige IP-Listen und UPN-Ersetzung.
 services: multi-factor-authentication
 ms.service: active-directory
@@ -11,22 +11,22 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a9156f84e5189b38a2c15f257bd6a47ac3db130
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 55c6457ec73c9fe9b39d607f26ffe2a577cc200d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964399"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95994212"
 ---
 # <a name="advanced-configuration-options-for-the-nps-extension-for-multi-factor-authentication"></a>Erweiterte Konfigurationsoptionen für die NPS-Erweiterung für Multi-Factor Authentication
 
-Die Erweiterung für den Netzwerkrichtlinienserver (Network Policy Server, NPS) erweitert Ihre cloudbasierten Funktionen von Azure Multi-Factor Authentication in Ihre lokale Infrastruktur. In diesem Artikel wird davon ausgegangen, dass Sie die Erweiterung bereits installiert haben und sie nun an Ihre Anforderungen anpassen möchten. 
+Die Erweiterung für den Netzwerkrichtlinienserver (Network Policy Server, NPS) erweitert Ihre cloudbasierten Funktionen von Azure AD Multi-Factor Authentication auf Ihre lokale Infrastruktur. In diesem Artikel wird davon ausgegangen, dass Sie die Erweiterung bereits installiert haben und sie nun an Ihre Anforderungen anpassen möchten. 
 
 ## <a name="alternate-login-id"></a>Alternative Anmelde-ID
 
 Da die NPS-Erweiterung eine Verbindung zu Ihren lokalen Verzeichnissen und zu Ihren Cloudverzeichnissen herstellt, tritt möglicherweise ein Problem auf, wenn Ihre lokalen Benutzerprinzipalnamen (User Principal Names, UPNs) nicht mit den Namen in der Cloud übereinstimmen. Verwenden Sie alternative Anmelde-IDs, um dieses Problem zu beheben. 
 
-In der NPS-Erweiterung können Sie ein Active Directory-Attribut festlegen, das anstatt des UPN für Multi-Factor Authentication verwendet wird. Dadurch können Sie Ihre lokalen Ressourcen mit einer zweistufigen Überprüfung schützen, ohne Ihre lokalen UPNs zu ändern. 
+In der NPS-Erweiterung können Sie ein Active Directory-Attribut festlegen, das anstelle des UPN für Azure AD Multi-Factor Authentication verwendet wird. Dadurch können Sie Ihre lokalen Ressourcen mit einer zweistufigen Überprüfung schützen, ohne Ihre lokalen UPNs zu ändern. 
 
 Wechseln Sie zum Konfigurieren alternativer Anmelde-IDs zu `HKLM\SOFTWARE\Microsoft\AzureMfa`, und bearbeiten Sie die folgenden Registrierungswerte:
 
@@ -55,4 +55,4 @@ Wenn eine Anforderung von einer IP-Adresse eingeht, die in `IP_WHITELIST` enthal
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)
+[Auflösen von Fehlermeldungen in der NPS-Erweiterung für Azure AD Multi-Factor Authentication](howto-mfa-nps-extension-errors.md)

@@ -7,12 +7,12 @@ ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: fef949e9285264ef46fbaed05a4385a15b27e65e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 70acc696f1cb366d25299f616744e52491a54471
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354467"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95024176"
 ---
 # <a name="tutorial-analyze-phone-call-data-with-stream-analytics-and-visualize-results-in-power-bi-dashboard"></a>Tutorial: Analysieren von Telefonanrufdaten mit Stream Analytics und Visualisieren der Ergebnisse in einem Power BI-Dashboard
 
@@ -129,7 +129,7 @@ Nachdem Sie nun über einen Datenstrom mit Anrufereignissen verfügen, können S
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com/), um einen Stream Analytics-Auftrag zu erstellen.
 
-2. Wählen Sie **Ressource erstellen** aus, und suchen Sie nach **Stream Analytics-Auftrag**. Wählen Sie die Kachel **Stream Analytics-Auftrag** und dann *Erstellen** aus.
+2. Wählen Sie **Ressource erstellen** aus, und suchen Sie nach **Stream Analytics-Auftrag**. Wählen Sie die Kachel **Stream Analytics-Auftrag** und dann **Erstellen** aus.
 
 3. Fügen Sie die folgenden Werte in das Formular **Neuer Stream Analytics-Auftrag** ein:
 

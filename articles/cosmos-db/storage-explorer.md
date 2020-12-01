@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 9260f2892bdcc6a694e1e54e29cb06bae90298eb
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93074470"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96010570"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage-Explorer
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -60,7 +60,7 @@ Informationen zum Installieren der neuesten Komponenten für Azure Storage-Explo
 
 Sie können eine Verbindungszeichenfolge verwenden, um eine Verbindung mit Azure Cosmos DB herzustellen. Diese Methode unterstützt nur SQL- und Tabellen-APIs. Führen Sie diese Schritte aus, um eine Verbindung mithilfe einer Verbindungszeichenfolge herzustellen:
 
-1. Suchen Sie in der linken Struktur nach **Lokal und angefügt** , klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten** , und wählen Sie dann **Verbindung mit Cosmos DB herstellen** aus.
+1. Suchen Sie in der linken Struktur nach **Lokal und angefügt**, klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie dann **Verbindung mit Cosmos DB herstellen** aus.
 
     :::image type="content" source="./media/storage-explorer/connect-to-db-by-connection-string.png" alt-text="Screenshot des Dropdownmenüs nach dem Klicken mit der rechten Maustaste mit hervorgehobener Option „Verbindung mit Azure Cosmos DB herstellen“":::
 
@@ -72,13 +72,16 @@ Sie können eine Verbindungszeichenfolge verwenden, um eine Verbindung mit Azure
 
       :::image type="content" source="./media/storage-explorer/connection-string.png" alt-text="Screenshot des Fensters „Verbindung mit Cosmos DB herstellen“ mit dem Dropdownmenü „API“, dem Feld „Verbindungszeichenfolge“ und dem Feld „Kontobezeichnung“":::
 
+> [!NOTE]
+> Wenn der Azure Storage-Explorer anzeigt, dass die Azure Cosmos DB-Verbindungszeichenfolge ein ungültiges Format hat, stellen Sie sicher, dass die Verbindungszeichenfolge mit einem Semikolon (`;`) endet. Ein Beispiel für eine gültige Azure Cosmos DB-Verbindungszeichenfolge lautet wie folgt: `AccountEndpoint=https://accountname.documents.azure.com:443;AccountKey=accountkey==;`
+
 ## <a name="use-a-local-emulator-to-connect-to-azure-cosmos-db"></a>Herstellen einer Verbindung mit Azure Cosmos DB über einen lokalen Emulator
 
 Führen Sie die folgenden Schritte aus, um mit einem Emulator eine Verbindung mit Azure Cosmos DB herzustellen. Diese Methode unterstützt nur SQL-Konten.
 
 1. Installieren Sie den Cosmos DB-Emulator, und öffnen Sie ihn. Informationen zum Installieren des Emulators finden Sie unter [Cosmos DB-Emulator](./local-emulator.md).
 
-1. Suchen Sie in der linken Struktur nach **Lokal und angefügt** , klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten** , und wählen Sie dann **Connect to Cosmos DB Emulator** (Verbindung mit Cosmos DB-Emulator herstellen) aus.
+1. Suchen Sie in der linken Struktur nach **Lokal und angefügt**, klicken Sie mit der rechten Maustaste auf **Cosmos DB-Konten**, und wählen Sie dann **Connect to Cosmos DB Emulator** (Verbindung mit Cosmos DB-Emulator herstellen) aus.
 
     :::image type="content" source="./media/storage-explorer/emulator-entry.png" alt-text="Screenshot des Menüs nach dem Klicken mit der rechten Maustaste mit hervorgehobener Option zum Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator":::
 
@@ -141,7 +144,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
    :::image type="content" source="./media/storage-explorer/create-collection.png" alt-text="Screenshot des Menüs nach dem Klicken mit der rechten Maustaste mit hervorgehobener Option „Sammlung erstellen“":::
 
-1. Geben Sie im Fenster „Sammlung erstellen“ die geforderten Informationen wie **Sammlungs-ID** , **Speicherkapazität** usw. ein. Klicken Sie auf **OK** , um den Vorgang abzuschließen.
+1. Geben Sie im Fenster „Sammlung erstellen“ die geforderten Informationen wie **Sammlungs-ID**, **Speicherkapazität** usw. ein. Klicken Sie auf **OK**, um den Vorgang abzuschließen.
 
    :::image type="content" source="./media/storage-explorer/create-collection2.png" alt-text="Screenshot des Fensters „Sammlung erstellen“ mit dem Feld „Sammlungs-ID“ und der Schaltfläche „Speicherkapazität“":::
 
@@ -164,7 +167,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 #### <a name="create-and-modify-documents"></a>Erstellen und Ändern von Dokumenten
 
-- Öffnen Sie im linken Bereich die Option **Dokumente** , und wählen Sie **Neues Dokument** aus. Bearbeiten Sie den Inhalt im rechten Bereich, und wählen Sie dann **Speichern** aus.
+- Öffnen Sie im linken Bereich die Option **Dokumente**, und wählen Sie **Neues Dokument** aus. Bearbeiten Sie den Inhalt im rechten Bereich, und wählen Sie dann **Speichern** aus.
 - Sie können auch ein vorhandenes Dokument aktualisieren und dann auf **Speichern** klicken. Um Ihre Änderungen zu verwerfen, wählen Sie **Verwerfen** aus.
 
   :::image type="content" source="./media/storage-explorer/document.png" alt-text="Screenshot mit hervorgehobener Option „Dokumente“ im linken Bereich. Im rechten Bereich sind „Neues Dokument“, „Speichern“ und „Verwerfen“ hervorgehoben.":::
@@ -183,7 +186,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 
 #### <a name="create-and-modify-a-vertex"></a>Erstellen und Ändern eines Scheitelpunkts
 
-* Öffnen Sie zum Erstellen eines neuen Scheitelpunkts im linken Bereich die Option **Graph** , und wählen Sie **Neuer Vertex** aus. Bearbeiten Sie den Inhalt, und wählen Sie dann **OK** aus.
+* Öffnen Sie zum Erstellen eines neuen Scheitelpunkts im linken Bereich die Option **Graph**, und wählen Sie **Neuer Vertex** aus. Bearbeiten Sie den Inhalt, und wählen Sie dann **OK** aus.
 * Wählen Sie im rechten Bereich das Stiftsymbol aus, um einen vorhandenen Scheitelpunkt zu ändern.
 
    :::image type="content" source="./media/storage-explorer/vertex.png" alt-text="Screenshot mit ausgewähltem Graph im linken Bereich. Die Optionen „Neuer Vertex“ und das Stiftsymbol im rechten Bereich sind hervorgehoben.":::
@@ -203,7 +206,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 #### <a name="create-and-modify-a-table"></a>Erstellen und Ändern einer Tabelle
 
 * So erstellen Sie eine neue Tabelle
-   1. Öffnen Sie im linken Bereich **Entitäten** , und wählen Sie dann **Hinzufügen** aus.
+   1. Öffnen Sie im linken Bereich **Entitäten**, und wählen Sie dann **Hinzufügen** aus.
    1. Bearbeiten Sie den Inhalt im Dialogfeld **Entität hinzufügen**.
    1. Wählen Sie die Schaltfläche **Eigenschaft hinzufügen** aus, um eine Eigenschaft hinzuzufügen.
    1. Wählen Sie **Einfügen** aus.
@@ -236,7 +239,7 @@ Indem Sie mit der rechten Maustaste auf ein Abonnement im Explorer-Bereich klick
 ### <a name="manage-stored-procedures-triggers-and-udfs"></a>Verwalten von gespeicherten Prozeduren, Triggern und UDFs
 
 * So erstellen Sie eine gespeicherte Prozedur
-  1. Klicken Sie in der linken Struktur mit der rechten Maustaste auf **Gespeicherte Prozeduren** , und wählen Sie dann **Gespeicherte Prozedur erstellen** aus.
+  1. Klicken Sie in der linken Struktur mit der rechten Maustaste auf **Gespeicherte Prozeduren**, und wählen Sie dann **Gespeicherte Prozedur erstellen** aus.
   
      :::image type="content" source="./media/storage-explorer/stored-procedure.png" alt-text="Screenshot des linken Bereichs mit dem Menü, das nach dem Klicken mit der rechten Maustaste angezeigt wird. Die Option „Gespeicherte Prozedur erstellen“ ist hervorgehoben.":::
   

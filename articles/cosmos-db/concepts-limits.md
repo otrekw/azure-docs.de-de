@@ -5,15 +5,16 @@ author: abhijitpai
 ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: cac14687c6193d58069240529955e69fc680b2e8
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.date: 11/19/2020
+ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491816"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94964659"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
+
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
 Dieser Artikel enthält eine Übersicht über die Standardkontingente für unterschiedliche Ressourcen in Azure Cosmos DB.
@@ -41,26 +42,48 @@ Sie können Durchsatz auf einer Container- oder Datenbankebene in Form von [Anfo
 > [!NOTE]
 > Informationen zu bewährten Methoden für die Verwaltung von Workloads, bei denen Partitionsschlüssel höhere Grenzwerte für Speicher oder Durchsatz erfordern, finden Sie unter [Erstellen eines synthetischen Partitionsschlüssels](synthetic-partition-keys.md).
 
-Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RU/s haben. Mit zunehmendem Wachstum des Containers hängt der unterstützte Mindestdurchsatz auch von folgenden Faktoren ab:
+### <a name="minimum-throughput-limits"></a>Mindestdurchsatzwerte
 
-* Der maximale Durchsatz, der jemals im Container bereitgestellt wurde. Wenn der Durchsatz beispielsweise auf 50.000 RU/s erhöht wurde, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 500 RU/s.
-* Der aktuelle Speicher im Container (in GB). Wenn Ihr Container beispielsweise über 100 GB Speicher verfügt, liegt der niedrigstmögliche bereitgestellte Durchsatz bei 1.000 RU/s. **Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
-* Der Mindestdurchsatz für eine Datenbank mit gemeinsam genutztem Durchsatz hängt von der Gesamtanzahl von Containern ab, die Sie jemals in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben (gemessen in 100 RU/s pro Container). Wenn Sie also beispielsweise fünf Container in einer Datenbank mit gemeinsam genutztem Durchsatz erstellt haben, muss der Durchsatz mindestens 500 RU/s betragen.
+Ein Cosmos-Container (oder eine Datenbank mit gemeinsam genutztem Durchsatz) muss einen Mindestdurchsatz von 400 RU/s haben. Mit zunehmendem Wachstum des Containers erfordert Cosmos DB einen Mindestdurchsatz, um sicherzustellen, dass die Datenbank oder der Container über genügend Ressourcen für die jeweiligen Vorgänge verfügt.
 
 Der aktuelle und minimale Durchsatz eines Containers oder einer Datenbank kann über das Azure-Portal oder die SDKs abgerufen werden. Weitere Informationen finden Sie unter [Bereitstellen des Durchsatzes für Container und Datenbanken](set-throughput.md). 
 
-> [!NOTE]
-> In einigen Fällen kann der Durchsatz auf weniger als 10 % gesenkt werden. Verwenden Sie die API, um die genaue Mindestanzahl von Rus pro Container abzurufen.
+Der tatsächliche Mindestwert an RU/s kann je nach Kontokonfiguration variieren. Sie können [Azure Monitor-Metriken](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) verwenden, um den Verlauf des bereitgestellten Durchsatzes (RU/s) und des Speichers für eine Ressource anzuzeigen. 
+
+#### <a name="minimum-throughput-on-container"></a>Mindestdurchsatz für Container 
+
+Um den Mindestdurchsatz zu schätzen, der für einen Container mit manuellem Durchsatz erforderlich ist, ermitteln Sie die folgenden Maximalwerte:
+
+* 400 RU/s 
+* Aktueller Speicher in GB * 10 RU/s
+* Höchstwert bereitgestellter RU/s für den Container / 100
+
+Beispiel: Angenommen, Sie verfügen über einen Container, für den 400 RU/s und 0 GB Speicher bereitgestellt werden. Sie erhöhen den Durchsatz auf 50.000 RU/s und importieren 20 GB an Daten. Die minimale Anzahl von RU/s beträgt jetzt `MAX(400, 20 * 10 RU/s per GB, 50,000 RU/s / 100)` = 500 RU/s. Im Laufe der Zeit wächst der Speicher auf 200 GB an. Die minimale Anzahl von RU/s beträgt jetzt `MAX(400, 200 * 10 RU/s per GB, 50,000 / 100)` = 2000 RU/s. 
+
+**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
+
+#### <a name="minimum-throughput-on-shared-throughput-database"></a>Mindestdurchsatz für eine Datenbank mit gemeinsam genutztem Durchsatz 
+Um den Mindestdurchsatz zu schätzen, der für eine Datenbank mit gemeinsam genutztem Durchsatz erforderlich ist, ermitteln Sie die folgenden Maximalwerte:
+
+* 400 RU/s 
+* Aktueller Speicher in GB * 10 RU/s
+* Höchstwert bereitgestellter RU/s für die Datenbank / 100
+* 400 + MAX(Containeranzahl - 25, 0) * 100 RU/s
+
+Beispiel: Angenommen, Sie verfügen über eine Datenbank, für die 400 RU/s, 15 GB Speicher und 10 Container bereitgestellt werden. Die minimale Anzahl von RU/s beträgt `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s. Wenn in der Datenbank 30 Container vorhanden sind, beträgt die minimale Anzahl von RU/s `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 RU/s. 
+
+**Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
 
 Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte. 
 
 | Resource | Standardlimit |
 | --- | --- |
-| Minimale Anzahl RUs pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimale Anzahl RUs pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimale Anzahl RUs pro Container in einer Datenbank mit gemeinsam genutztem Durchsatz | 100 |
+| Minimale Anzahl RU/s pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimale Anzahl RU/s pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s für die ersten 25 Container. Zusätzliche 100 RU/s für jeden weiteren Container. |
 
-Cosmos DB unterstützt flexible Skalierung von Durchsatz (RUs) pro Container bzw. Datenbank über die SDKs oder das Portal. Jeder Container kann synchron und sofort innerhalb eines Skalierungsbereichs von 10 bis 100 Mal zwischen Minimal- und Maximalwert skaliert werden. Wenn der angeforderte Durchsatzwert außerhalb des Bereichs liegt, wird die Skalierung asynchron durchgeführt. Die asynchrone Skalierung kann je nach angefordertem Durchsatz und Datenspeichergröße im Container Minuten bis Stunden dauern.  
+Cosmos DB unterstützt die programmgesteuerte Skalierung von Durchsatz (RU/s) pro Container bzw. Datenbank über die SDKs oder das Portal.    
+
+Je nach aktuell bereitgestellten RU/s und Ressourceneinstellungen kann jede Ressource synchron und sofort zwischen der minimalen Anzahl von RU/s und dem hundertfachen der minimalen Anzahl von RU/s skaliert werden. Wenn der angeforderte Durchsatzwert außerhalb des Bereichs liegt, wird die Skalierung asynchron durchgeführt. Die asynchrone Skalierung kann je nach angefordertem Durchsatz und Datenspeichergröße im Container Minuten bis Stunden dauern.  
 
 ### <a name="serverless"></a>Serverlos
 
@@ -172,9 +195,9 @@ Azure Cosmos DB verwaltet Systemmetadaten für jedes Konto. Diese Metadaten erm�
 
 | Resource | Standardlimit |
 | --- | --- |
-|Maximale Sammlungserstellungsrate pro Minute| 5|
-|Maximale Datenbankerstellungsrate pro Minute|   5|
-|Maximal Aktualisierungsrate des bereitgestellten Durchsatzes pro Minute| 5|
+|Maximale Sammlungserstellungsrate pro Minute|    100|
+|Maximale Datenbankerstellungsrate pro Minute|    100|
+|Maximal Aktualisierungsrate des bereitgestellten Durchsatzes pro Minute|    5|
 
 ## <a name="limits-for-autoscale-provisioned-throughput"></a>Grenzwerte für den per Autoskalierung bereitgestellten Durchsatz
 

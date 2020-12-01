@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 7acd287964d25cc7e98c11ec1986c73d8ae265da
-ms.sourcegitcommit: ae6e7057a00d95ed7b828fc8846e3a6281859d40
+ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92104137"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536675"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -23,7 +23,7 @@ In diesem Artikel erfahren Sie, wie Sie den Zugriff auf Protokolle sowie die Arb
 * Benutzer, die Zugriff auf Protokolldaten von bestimmten Ressourcen benötigen: mithilfe der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), auch [Ressourcenkontext](design-logs-deployment.md#access-mode) genannt
 * Benutzer, die Zugriff auf Protokolldaten in einer bestimmten Tabelle im Arbeitsbereich benötigen (mithilfe von Azure RBAC)
 
-Weitere Informationen zu den Protokollkonzepten bei RBAC und den Zugriffsstrategien finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](design-logs-deployment.md).
+Weitere Informationen zu den Protokollkonzepten bei Azure RBAC und den Zugriffsstrategien finden Sie unter [Entwerfen Ihrer Azure Monitor-Protokollbereitstellung](design-logs-deployment.md).
 
 ## <a name="configure-access-control-mode"></a>Konfigurieren des Zugriffssteuerungsmodus
 
@@ -196,7 +196,7 @@ Wenn Benutzer Protokolle aus einem Arbeitsbereich mit Zugriff im Ressourcenkonte
 
 Die `/read`-Berechtigung wird in der Regel von einer Rolle erteilt, die _\*/read or_ _\*_ -Berechtigungen enthält, beispielsweise von den integrierten Rollen [Leser](../../role-based-access-control/built-in-roles.md#reader) und [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor). Benutzerdefinierte Rollen, die bestimmte Aktionen umfassen, oder dedizierte integrierte Rollen enthalten diese Berechtigung möglicherweise nicht.
 
-Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weiter unten, wenn Sie für verschiedene Tabellen eine unterschiedliche Zugriffssteuerung erstellen möchten.
+Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-azure-rbac) weiter unten, wenn Sie für verschiedene Tabellen eine unterschiedliche Zugriffssteuerung erstellen möchten.
 
 ## <a name="custom-role-examples"></a>Beispiele für benutzerdefinierte Rollen
 
@@ -239,9 +239,9 @@ Lesen Sie [Definieren von Zugriffssteuerung pro Tabelle](#table-level-rbac) weit
 
     * Erteilen Sie den Benutzern die folgenden Berechtigungen für ihre Ressourcen: `*/read`, die der Leserrolle zugewiesen ist, oder `Microsoft.Insights/logs/*/read`. 
 
-## <a name="table-level-rbac"></a>RBAC auf Tabellenebene
+## <a name="table-level-azure-rbac"></a>Azure RBAC auf Tabellenebene
 
-**RBAC auf Tabellenebene** ermöglicht zusätzlich zu den anderen Berechtigungen eine präzisere Steuerung von Daten in einem Log Analytics-Arbeitsbereich. Mit diesem Steuerelement können Sie bestimmte Datentypen definieren, auf die nur eine bestimmte Gruppe von Benutzern Zugriff besitzt.
+**Azure RBAC auf Tabellenebene** ermöglicht zusätzlich zu den anderen Berechtigungen eine präzisere Steuerung von Daten in einem Log Analytics-Arbeitsbereich. Mit diesem Steuerelement können Sie bestimmte Datentypen definieren, auf die nur eine bestimmte Gruppe von Benutzern Zugriff besitzt.
 
 Sie implementieren die Tabellenzugriffssteuerung mit [benutzerdefinierten Azure-Rollen](../../role-based-access-control/custom-roles.md), um den Zugriff auf bestimmte [Tabellen](./data-platform-logs.md) im Arbeitsbereich zu gewähren. Diese Rollen gelten für Arbeitsbereiche mit dem [Zugriffssteuerungsmodus](design-logs-deployment.md#access-control-mode) für den Arbeitsbereichskontxt oder Ressourcenkontext, und zwar unabhängig vom [Zugriffsmodus](design-logs-deployment.md#access-mode) des Benutzers.
 

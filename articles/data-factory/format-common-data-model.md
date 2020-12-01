@@ -1,18 +1,18 @@
 ---
 title: Common Data Model-Format
 description: Transformieren von Daten mit dem Common Data Model-Metadatensystem
-author: djpmsft
+author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 10/13/2020
-ms.author: daperlov
-ms.openlocfilehash: 452aa3406ac09dd8342d8ade0b56b126067b7582
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/20/2020
+ms.author: makromer
+ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636407"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015170"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -52,7 +52,11 @@ In der folgenden Tabelle sind die von einer CDM-Quelle unterstützten Eigenschaf
 | Korpusentität | Der Pfad zum Entitätsverweis. | ja | String | entity |
 | Finden keiner Dateien zulässig | „true“ gibt an, dass kein Fehler ausgelöst wird, wenn keine Dateien gefunden werden. | nein | `true` oder `false` | ignoreNoFilesFound |
 
-Wenn sich die Entitätsdefinition, die Sie in Ihrer Quelltransformation verwenden möchten, im selben Verzeichnis wie Ihr Datenordner befindet, können Sie „Use entity from corpus“ (Entität aus dem Korpus verwenden) deaktivieren und einfach die Entität eingeben, die Sie als Entitätsverweis verwenden möchten.
+Bei Auswahl von „Entitätsverweis“ in den Quell- und Senkentransformationen können Sie zwischen den drei folgenden Optionen für den Speicherort Ihres Entitätsverweises wählen:
+
+* Bei der Option „Lokal“ wird die Entität verwendet, die in der bereits von ADF verwendeten Manifestdatei definiert ist.
+* Bei der Option „Benutzerdefiniert“ werden Sie aufgefordert, auf eine Entitätsmanifestdatei zu verweisen, die sich von der von ADF verwendeten Manifestdatei unterscheidet.
+* Bei der Option „Standard“ wird ein Entitätsverweis aus der Standardbibliothek der in ```Github``` verwalteten CDM-Entitäten verwendet.
 
 ### <a name="sink-settings"></a>Senkeneinstellungen
 
@@ -71,7 +75,7 @@ Wenn sich die Entitätsdefinition, die Sie in Ihrer Quelltransformation verwende
 
 #### <a name="import-schema"></a>Importieren des Schemas
 
-CDM ist nur als Inlinedataset verfügbar und weist standardmäßig kein zugeordnetes Schema auf. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren** . Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
+CDM ist nur als Inlinedataset verfügbar und weist standardmäßig kein zugeordnetes Schema auf. Zum Abrufen von Spaltenmetadaten klicken Sie auf der Registerkarte **Projektion** auf die Schaltfläche **Schema importieren**. Auf diese Weise können Sie auf die Spaltennamen und Datentypen verweisen, die durch den Korpus angegeben sind. Zum Importieren des Schemas muss eine [Datenfluss-Debugsitzung](concepts-data-flow-debug-mode.md) aktiv sein, und es muss eine CDM-Entitätsdefinitionsdatei vorhanden sein, auf die verwiesen werden kann.
 
 Wenn Sie Entitätseigenschaften in der Senkentransformation Spalten für Zuordnungsdatenflüsse zuordnen möchten, klicken Sie erst auf die Registerkarte „Zuordnen“ und dann auf „Schema importieren“. ADF liest den Entitätsverweis, auf den Sie in den Senkenoptionen verwiesen haben, und ermöglicht es Ihnen, das CDM-Zielschema zuzuordnen.
 

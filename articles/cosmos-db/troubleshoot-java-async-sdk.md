@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-java
-ms.openlocfilehash: eca64411ccb61e5dcbac5e988f12096550eaaa2c
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 4ec2deaf3149e174cce201d0bbad8a55d156d30f
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93100999"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95998333"
 ---
 # <a name="troubleshoot-issues-when-you-use-the-azure-cosmos-db-async-java-sdk-v2-with-sql-api-accounts"></a>Behandeln von Problemen bei der Verwendung des Azure Cosmos DB Async Java SDK v2 mit SQL-API-Konten
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -181,9 +181,9 @@ Durch die Verwendung von `observeOn(customScheduler)` geben Sie den Netty-E/A-Th
 ### <a name="request-rate-too-large"></a>Anforderungsrate zu groß
 Hierbei handelt es sich um einen serverseitigen Fehler. Er gibt an, dass Sie den bereitgestellten Durchsatz verbraucht haben. Wiederholen Sie den Vorgang zu einem späteren Zeitpunkt. Sollte dieser Fehler häufiger auftreten, empfiehlt sich unter Umständen eine Erhöhung des Sammlungsdurchsatzes.
 
-### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
+### <a name="failure-connecting-to-azure-cosmos-db-emulator"></a>Fehler beim Herstellen einer Verbindung mit dem Azure Cosmos DB-Emulator
 
-Das HTTPS-Zertifikat des Azure Cosmos DB-Emulators ist selbstsigniert. Importieren Sie das Emulatorzertifikat in eine Java TrustStore-Instanz, damit das SDK mit dem Emulator verwendet werden kann. Weitere Informationen finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java, Python und Node.js](local-emulator-export-ssl-certificates.md).
+Das HTTPS-Zertifikat des Azure Cosmos DB-Emulators ist selbstsigniert. Importieren Sie das Emulatorzertifikat in eine Java TrustStore-Instanz, damit das SDK mit dem Emulator verwendet werden kann. Weitere Informationen finden Sie unter [Exportieren der Azure Cosmos DB-Emulatorzertifikate](local-emulator-export-ssl-certificates.md).
 
 ### <a name="dependency-conflict-issues"></a>Probleme durch Abhängigkeitskonflikte
 

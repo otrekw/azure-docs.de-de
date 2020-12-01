@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/08/2020
-ms.openlocfilehash: 0812716ab9d952969ccfc14fc0a1e833fae1c9e1
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 391d9562bc73265a10976f485c78e3966aa4fe83
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653792"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536284"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Häufig gestellte Fragen zu Azure Monitor
 
@@ -81,7 +81,7 @@ Azure-Daten-Explorer ist ein schneller und hochgradig skalierbarer Dienst zur Un
 
 ### <a name="how-do-i-retrieve-log-data"></a>Wie rufe ich Protokolldaten ab?
 Alle Daten werden mithilfe einer in der Kusto-Abfragesprache (KQL) geschriebenen Protokollabfrage aus einem Log Analytics-Arbeitsbereich abgerufen. Sie können eigene Abfragen schreiben oder Lösungen und Erkenntnisse verwenden, die Protokollabfragen für eine bestimmte Anwendung oder einen bestimmten Dienst enthalten. Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](log-query/log-query-overview.md).
-
+p
 ### <a name="can-i-delete-data-from-a-log-analytics-workspace"></a>Kann ich Daten aus einem Log Analytics-Arbeitsbereich löschen?
 Daten werden gemäß ihrer [Beibehaltungsdauer](platform/manage-cost-storage.md#change-the-data-retention-period) aus einem Arbeitsbereich entfernt. Sie können bestimmte Daten aus Datenschutz- oder Compliancegründen löschen. Weitere Informationen finden Sie unter [Exportieren und Löschen personenbezogener Daten](platform/personal-data-mgmt.md#how-to-export-and-delete-private-data).
 
@@ -412,7 +412,7 @@ Eindeutige Anpassungen, die für die Ressource in der neuen Region normalerweise
 - Neuerstellen von benutzerdefinierten Dashboards und Arbeitsmappen 
 - Neuerstellen oder Aktualisieren des Umfangs von benutzerdefinierten Protokoll-/Metrikwarnungen 
 - Neuerstellen von Verfügbarkeitswarnungen
-- Neuerstellen aller benutzerdefinierten Einstellungen für die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC), die Ihre Benutzer für den Zugriff auf die neue Ressource benötigen 
+- Neuerstellen aller benutzerdefinierten Einstellungen für die rollenbasierte Zugriffssteuerung in Azure (Azure RBAC), die Ihre Benutzer für den Zugriff auf die neue Ressource benötigen 
 - Replizieren der Einstellungen, bei denen es um die Aktivierung für die Erfassungs-Stichprobenerstellung, Datenaufbewahrung, tägliche Obergrenze und benutzerdefinierten Metriken geht Diese Einstellungen werden über den Bereich **Nutzungs- und geschätzte Kosten** gesteuert.
 - Alle Integrationen mit API-Schlüsseln, z. B. [Versionsanmerkungen](/azure/azure-monitor/app/annotations), [Livemetriken und sicherer Steuerkanal](app/live-stream.md#secure-the-control-channel) usw. Sie müssen neue API-Schlüssel generieren und die zugeordnete Integration aktualisieren. 
 - Der fortlaufende Export auf klassischen Ressourcen muss neu konfiguriert werden.
@@ -595,10 +595,6 @@ Der OpenTelemetry-Collector wird in der zugehörigen [GitHub-Infodatei](https://
 
 ## <a name="azure-monitor-for-containers"></a>Azure Monitor für Container
 
-### <a name="health-feature-is-in-private-preview"></a>Integritätsfeature in privater Vorschau
-
-Wir planen eine Reihe von Änderungen, um den Funktionsumfang zu erweitern und Ihr Feedback umzusetzen. Das Integritätsfeature geht Ende Juni 2020 in eine private Vorschau über. Weitere Informationen finden Sie in der [Azure-Updateankündigung](https://azure.microsoft.com/updates/ci-health-limited-preview/).
-
 ### <a name="what-does-other-processes-represent-under-the-node-view"></a>Wofür steht *Andere Prozesse* unter der Knotenansicht?
 
 **Andere Prozesse** soll Ihnen dabei helfen, die zugrunde liegende Ursache für die hohe Ressourcennutzung auf dem Knoten zu verstehen. Dadurch können Sie zwischen der Nutzung durch Containerprozesse und Nicht-Containerprozesse unterscheiden.
@@ -684,9 +680,9 @@ Die Tabelle „ContainerInventory“ enthält Informationen zu beendeten und aus
 
 Wenn Sie die Fehlermeldung **Abonnementregistrierung für Microsoft.OperationsManagement fehlt** erhalten, können Sie den Fehler beheben, indem Sie den Ressourcenanbieter **Microsoft.OperationsManagement** in dem Abonnement registrieren, in dem der Arbeitsbereich definiert ist. Die Dokumentation für diesen Vorgang finden Sie [hier](../azure-resource-manager/templates/error-register-resource-provider.md).
 
-### <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Gibt es Unterstützung für RBAC-fähige AKS-Cluster?
+### <a name="is-there-support-for-kubernetes-rbac-enabled-aks-clusters"></a>Gibt es Unterstützung für Kubernetes RBAC-fähige AKS-Cluster?
 
-Die Containerüberwachungslösung bietet keine Unterstützung für RBAC, doch ist dies bei Azure Monitor für Container der Fall. Die Seite mit den Lösungsdetails zeigt möglicherweise nicht die richtigen Informationen auf den Blättern an, die Daten für diese Cluster anzeigen.
+Die Containerüberwachungslösung bietet keine Unterstützung für Kubernetes RBAC, doch ist dies bei Azure Monitor für Container der Fall. Die Seite mit den Lösungsdetails zeigt möglicherweise nicht die richtigen Informationen auf den Blättern an, die Daten für diese Cluster anzeigen.
 
 ### <a name="how-do-i-enable-log-collection-for-containers-in-the-kube-system-namespace-through-helm"></a>Wie aktiviere ich die Protokollsammlung für Container im Kube-System-Namespace über Helm?
 

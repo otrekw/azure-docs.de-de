@@ -11,12 +11,12 @@ ms.reviewer: sawinark
 manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
-ms.openlocfilehash: 4c817194bbe0e4cf211992920bad9deb40bf05f4
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: b4902e1fb7a2a181d3d5b2ce2ac6d1d458500fce
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92632208"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844181"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>Behandeln von Problemen bei der Paketausführung in der SSIS Integration Runtime
 
@@ -38,7 +38,7 @@ Hier sind mögliche Ursachen und empfohlenen Maßnahmen:
 * Die Datenquelle oder das Ziel ist überlastet. Überprüfen Sie die Auslastung Ihrer Datenquelle oder Ihres Ziels, und prüfen Sie, ob diese über genügend Kapazität verfügen. Wenn Sie beispielsweise Azure SQL-Datenbank verwendet haben, erwägen Sie eine zentrale Hochskalierung, wenn bei der Datenbank wahrscheinlich ein Timeout auftreten wird.
 * Das Netzwerk zwischen der SSIS Integration Runtime und der Datenquelle oder dem Ziel ist instabil, insbesondere wenn die Verbindung regionsübergreifend oder zwischen lokalen Standorten und Azure besteht. Wenden Sie das Wiederholungsmuster im SSIS-Paket an, indem Sie diese Schritte ausführen:
   * Stellen Sie sicher, dass Ihre SSIS-Pakete bei einem Ausfall ohne Nebenwirkungen (z. B. Datenverlust oder -duplizierung) erneut ausgeführt werden können.
-  * Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen** . ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+  * Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen**. ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
   * Legen Sie im Verbindungs-Manager im SSIS-Paket oder in der SSIS-Aktivität für eine ADO.NET- und OLE DB-Quell- oder Zielkomponente **ConnectRetryCount** und **ConnectRetryInterval** fest.
 
 ### <a name="error-message-ado-net-source-has-failed-to-acquire-the-connection--with-a-network-related-or-instance-specific-error-occurred-while-establishing-a-connection-to-sql-server-the-server-was-not-found-or-was-not-accessible"></a>Fehlermeldung: „Fehler beim Abrufen der ‚...‘-Verbindung durch die ADO .NET-Quelle.“ mit „Netzwerkbezogener oder instanzspezifischer Fehler beim Herstellen einer Verbindung mit der SQL Server-Instanz. Der Server wurde nicht gefunden oder ist nicht zugänglich.“
@@ -108,7 +108,7 @@ Wenn in der SSIS Integration Runtime viele Pakete parallel ausgeführt werden, k
 Der Fehler wird hauptsächlich durch ein vorübergehendes Problem verursacht. Wiederholen Sie die Paketausführung. Wenden Sie das Wiederholungsmuster im SSIS-Paket an, indem Sie diese Schritte ausführen:
 
 * Stellen Sie sicher, dass Ihre SSIS-Pakete bei einem Ausfall ohne Nebenwirkungen (z. B. Datenverlust oder -duplizierung) erneut ausgeführt werden können.
-* Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen** . ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
+* Konfigurieren Sie auf der Registerkarte **Allgemein** die Optionen **Wiederholen** und **Wiederholungsintervall** der Aktivität **SSIS-Paket ausführen**. ![Festlegen von Eigenschaften auf der Registerkarte „Allgemein“](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-general.png)
 * Legen Sie im Verbindungs-Manager im SSIS-Paket oder in der SSIS-Aktivität für eine ADO.NET- und OLE DB-Quell- oder Zielkomponente **ConnectRetryCount** und **ConnectRetryInterval** fest.
 
 ### <a name="error-message-there-is-no-active-worker"></a>Fehlermeldung: „Es ist kein aktiver Worker vorhanden.“
@@ -121,10 +121,10 @@ Dieser Fehler tritt auf, wenn die SSIS Integration Runtime nicht auf den für da
 
 ### <a name="error-message-microsoft-ole-db-provider-for-analysis-services-hresult-0x80004005-description-com-error-com-error-mscorlib-exception-has-been-thrown-by-the-target-of-an-invocation"></a>Fehlermeldung: „Microsoft OLE DB-Anbieter für Analysis Services. 'Hresult: 0 x 80004005 Beschreibung:' COM-Fehler: COM-Fehler: mscorlib; Ein Aufrufziel hat einen Ausnahmefehler verursacht“
 
-Eine mögliche Ursache ist, dass der Benutzername oder das Kennwort mit aktivierter Azure Multi-Factor-Authentifizierung für die Authentifizierung bei Azure Analysis Services konfiguriert ist. Diese Authentifizierung wird in der SSIS Integration Runtime nicht unterstützt. Versuchen Sie, ein Dienstprinzipal für die Authentifizierung bei Azure Analysis Services zu verwenden:
+Eine mögliche Ursache ist, dass der Benutzername oder das Kennwort mit aktivierter Azure AD Multi-Factor Authentication für die Authentifizierung bei Azure Analysis Services konfiguriert ist. Diese Authentifizierung wird in der SSIS Integration Runtime nicht unterstützt. Versuchen Sie, ein Dienstprinzipal für die Authentifizierung bei Azure Analysis Services zu verwenden:
 
 1. Bereiten Sie ein Dienstprinzipal vor, wie in [Automatisierung mit Dienstprinzipalen](../analysis-services/analysis-services-service-principal.md) beschrieben.
-2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden** . Legen Sie **AppID** als Benutzernamen und **clientSecret** als Kennwort fest.
+2. Konfigurieren Sie im Connection Manager die Option **SQL-Server-Authentifizierung verwenden**. Legen Sie **AppID** als Benutzernamen und **clientSecret** als Kennwort fest.
 
 ### <a name="error-message-adonet-source-has-failed-to-acquire-the-connection-guid-with-the-following-error-message-login-failed-for-user-nt-authorityanonymous-logon-when-using-a-managed-identity"></a>Fehlermeldung: „Fehler beim Abrufen der {GUID}-Verbindung durch die ADO .NET-Quelle. Fehlermeldung: Die Anmeldung für den Benutzer 'NT AUTHORITY\ANONYMOUS LOGON'“ ist fehlgeschlagen, wenn eine verwaltete Identität verwendet wird
 

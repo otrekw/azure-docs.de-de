@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: 626f5b67905e5dd89cf8f12460bc2378451614de
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92078305"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "96010213"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Aktualisieren und Skalieren einer Azure API Management-Instanz  
 
@@ -78,6 +78,10 @@ Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim U
 
 ## <a name="downtime-during-scaling-up-and-down"></a>Ausfallzeiten beim zentralen Hoch- und Herunterskalieren
 Wenn Sie die Skalierung von oder auf den Developer-Tarif durchführen, kommt es zu Ausfallzeiten. Andernfalls treten keine Ausfallzeiten auf. 
+
+## <a name="compute-isolation"></a>Computeisolation
+Wenn Ihre Sicherheitsanforderungen [Compute-Isolation](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation) umfassen, können Sie den Tarif **Isoliert** verwenden. Dieser Tarif stellt sicher, dass Computeressourcen einer API Management-Dienstinstanz den gesamten physischen Host nutzen, und bietet damit die erforderliche Isolationsstufe, die für die Unterstützung von z. B. Workloads gemäß IL5 (Impact Level 5) des US-Verteidigungsministeriums erforderlich ist. Um Zugriff auf den Tarif „Isoliert“ zu erhalten, [erstellen Sie ein Supportticket](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

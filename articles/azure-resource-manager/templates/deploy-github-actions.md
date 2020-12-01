@@ -3,13 +3,13 @@ title: Bereitstellen von Resource Manager-Vorlagen mithilfe von GitHub Actions
 description: In diesem Artikel wird beschrieben, wie Sie Azure Resource Manager-Vorlagen mithilfe von GitHub Actions bereitstellen.
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.custom: github-actions-azure
-ms.openlocfilehash: 69974a8db30f12b255a4bab57ebfa32ba78f67ed
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.custom: github-actions-azure, devx-track-azurecli
+ms.openlocfilehash: 3dcb246956aae274f17cf938ee3d406562b22941
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92746102"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905258"
 ---
 # <a name="deploy-azure-resource-manager-templates-by-using-github-actions"></a>Bereitstellen von Azure Resource Manager-Vorlagen mithilfe von GitHub Actions
 
@@ -112,7 +112,7 @@ Die Workflowdatei muss am Repositorystamm im Ordner **.github/workflows** gespei
         steps:
 
           # Checkout code
-        - uses: actions/checkout@master
+        - uses: actions/checkout@main
 
           # Log into Azure
         - uses: azure/login@v1
@@ -137,10 +137,10 @@ Die Workflowdatei muss am Repositorystamm im Ordner **.github/workflows** gespei
     Der erste Abschnitt der Workflowdatei enthält Folgendes:
 
     - **name:** Der Name des Workflows.
-    - **on:** Der Name der GitHub-Ereignisse, die den Workflow auslösen. Der Workflow wird ausgelöst, wenn ein Pushereignis für den Masterbranch auftritt, durch das mindestens eine der beiden angegebenen Dateien geändert wird. Bei den beiden Dateien handelt es sich um die Workflow- und die Vorlagendatei.
+    - **on:** Der Name der GitHub-Ereignisse, die den Workflow auslösen. Der Workflow wird ausgelöst, wenn ein Pushereignis für den Hauptbranch auftritt, durch das mindestens eine der beiden angegebenen Dateien geändert wird. Bei den beiden Dateien handelt es sich um die Workflow- und die Vorlagendatei.
 
 1. Klicken Sie auf **Start commit** (Commit starten).
-1. Klicken Sie auf **Commit directly to the master branch** (Direkt im Masterbranch committen).
+1. Wählen Sie **Direkten Commit zum Hauptbranch ausführen** aus.
 1. Klicken Sie auf **Commit new file** (Neue Datei committen) (oder **Commit changes** [Änderungen committen]).
 
 Da der Workflow so konfiguriert ist, dass er entweder von der Workflow- oder der Vorlagendatei ausgelöst wird, die gerade aktualisiert wird, startet der Workflow direkt nach dem Committen der Änderungen.
@@ -152,7 +152,6 @@ Da der Workflow so konfiguriert ist, dass er entweder von der Workflow- oder der
 1. Wählen Sie im Menü die Option **Run ARM deploy** (ARM-Bereitstellung ausführen) aus, um die Bereitstellung zu überprüfen.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
 Wenn Ihre Ressourcengruppe und das Repository nicht mehr benötigt werden, bereinigen Sie die bereitgestellten Ressourcen, indem Sie die Ressourcengruppe und Ihr GitHub-Repository löschen. 
 
 ## <a name="next-steps"></a>Nächste Schritte

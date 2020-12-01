@@ -17,12 +17,12 @@ ms.date: 11/05/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 98b9a2da11ad32e35704a49cfcf1788f95276dda
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: bc5f902d75084d649f211d589e53041f1eb37f0e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393454"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96012713"
 ---
 # <a name="how-long-does-azure-ad-store-reporting-data"></a>Wie lange speichert Azure AD die Berichtsdaten?
 
@@ -65,7 +65,7 @@ Die Erfassung von Sicherheitssignalen beginnt, wenn Sie sich für die Verwendung
 | :--                    | :--           | :--                 | :--                 |
 | Überwachungsprotokolle             | 7 Tage        | 30 Tage             | 30 Tage             |
 | Anmeldungen               | 7 Tage        | 30 Tage             | 30 Tage             |
-| Azure MFA-Nutzung        | 30 Tage       | 30 Tage             | 30 Tage             |
+| Verwendung von Azure AD MFA        | 30 Tage       | 30 Tage             | 30 Tage             |
 
 Sie können die Aktivitätsdaten zu Überwachung und Anmeldung länger als den oben beschriebenen Standardaufbewahrungszeitraum speichern, indem Sie sie mit Azure Monitor an ein Azure Storage-Konto weiterleiten. Weitere Informationen finden Sie unter [Archivieren von Azure AD-Protokollen in einem Azure Storage-Konto](quickstart-azure-monitor-route-logs-to-storage-account.md).
 

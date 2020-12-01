@@ -12,12 +12,12 @@ ms.topic: how-to
 ms.date: 02/27/2019
 ms.author: billmath
 author: billmath
-ms.openlocfilehash: ce438ad0725aff677f897a635a0cd32d92bbbdbe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: cb828eeb408a170b93ffc73b58f14b3f7a883cc4
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265468"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95247233"
 ---
 # <a name="configure-group-claims-for-applications-with-azure-active-directory"></a>Konfigurieren von Gruppenansprüchen für Anwendungen mit Azure Active Directory
 
@@ -146,6 +146,7 @@ Gültige Werte sind:
 | **„SecurityGroup“** | Gibt im Gruppenanspruch Sicherheitsgruppen aus, in denen der Benutzer Mitglied ist. |
 | **„DirectoryRole“** | Wenn dem Benutzer Verzeichnisrollen zugewiesen sind, werden diese als „wids“-Anspruch ausgegeben (Gruppenansprüche werden nicht ausgegeben). |
 | **„ApplicationGroup“** | Gibt nur die Gruppen aus, die der Anwendung explizit zugewiesen sind und in denen der Benutzer Mitglied ist |
+| **„Keine“** | Es werden keine Gruppen zurückgegeben. (Groß-/Kleinschreibung wird nicht beachtet, sodass auch „keine“ verwendet und direkt im Anwendungsmanifest festgelegt werden kann.) |
 
    Beispiel:
 

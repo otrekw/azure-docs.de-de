@@ -5,14 +5,14 @@ author: timsander1
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 03/16/2020
+ms.date: 11/23/2020
 ms.author: tisande
-ms.openlocfilehash: 7c988f379e94bf2f69854c90d45af42fe2a7ec4f
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: f04590e78b5f1ea9d5e00c9f3d42c2fc32bebc5f
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93332779"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96001778"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Aggregatfunktionen in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -20,6 +20,8 @@ ms.locfileid: "93332779"
 Aggregatfunktionen führen eine Berechnung für eine Gruppe von Werten in der `SELECT`-Klausel durch und geben einen einzelnen Wert zurück. Bei der folgenden Abfrage wird beispielsweise die Anzahl von Elementen im `Families`-Container zurückgegeben:
 
 ## <a name="examples"></a>Beispiele
+
+Bei Verwendung von `COUNT()` können Sie einen beliebigen gültigen Skalarausdruck (z. B. `1`) als Eingabe verwenden.
 
 ```sql
     SELECT COUNT(1)
@@ -65,7 +67,7 @@ Die Ergebnisse sind:
 
 Die SQL-API unterstützt die folgenden Aggregatfunktionen. `SUM` und `AVG` werden für numerische Werte verwendet. `COUNT`, `MIN` und `MAX` werden für Zahlen, Zeichenfolgen, boolesche Werte und NULL-Werte verwendet.
 
-| Funktion | BESCHREIBUNG |
+| Funktion | Beschreibung |
 |-------|-------------|
 | COUNT | Gibt die Anzahl der Elemente im Ausdruck zurück. |
 | SUM   | Gibt die Summe aller Werte im Ausdruck zurück. |
@@ -78,7 +80,7 @@ Sie können auch die Ergebnisse einer Array-Iteration aggregieren.
 > [!NOTE]
 > Im Daten-Explorer des Azure-Portals geben Aggregationsabfragen möglicherweise die teilweise aggregierten Ergebnisse für nur eine Abfrageseite zurück. Das SDK erzeugt einen einzelnen kumulativen Wert für alle Seiten. Zum Durchführen von Aggregationsabfragen mithilfe von Code benötigen Sie .NET SDK 1.12.0, .NET Core SDK 1.1.0 oder Java SDK 1.9.5 oder höher.
 
-## <a name="remarks"></a>Bemerkungen
+## <a name="remarks"></a>Hinweise
 
 Diese Aggregatsystemfunktionen profitierten von einem [Bereichsindex](index-policy.md#includeexclude-strategy). Wenn Sie `COUNT`, `SUM`, `MIN`, `MAX` oder `AVG` für eine Eigenschaft erwarten, sollten Sie [den relevanten Pfad in die Indizierungsrichtlinie einfügen](index-policy.md#includeexclude-strategy).
 

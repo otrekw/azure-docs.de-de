@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 11/17/2020
 ms.author: banders
-ms.openlocfilehash: 7cbb628f6af286141fb1c7b330117ded33142c4f
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 4cc213db19a567f18c5ff483b64a75e3bbeef892
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94744237"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94962109"
 ---
 # <a name="transfer-azure-subscriptions-between-subscribers-and-csps"></a>Übertragen von Azure-Abonnements zwischen Abonnenten und CSPs
 
@@ -58,7 +58,7 @@ Um andere Abonnements von einem CSP-Partner auf ein anderes Azure-Angebot zu üb
 
 1. Erstellen Sie Azure-Zielabonnements.
 1. Stellen Sie sicher, dass sich Quell- und Zielabonnement im gleichen Azure Active Directory-Mandanten (Azure AD) befinden. Weitere Informationen zum Ändern eines Azure AD-Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
-    Beachten Sie, dass das Änderungsverzeichnis nicht das CSP-Abonnement ist. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
+    Hinweis: Die Option „Verzeichnis ändern“ wird für das CSP-Abonnement nicht unterstützt. Sie nehmen beispielsweise eine Übertragung von einem CSP-Abonnement zu einem Abonnement mit nutzungsbasierter Bezahlung vor. Sie müssen das Verzeichnis des Abonnements mit nutzungsbasierter Bezahlung so ändern, dass es dem Verzeichnis entspricht.
 
     > [!IMPORTANT]
     >  - Wenn Sie ein Abonnement einem anderen Verzeichnis zuordnen, verlieren Benutzer, denen Rollen über [Azure RBAC](../../role-based-access-control/role-assignments-portal.md) zugewiesen wurden, ihren Zugriff. Klassische Abonnementadministratoren (Dienstadministrator und Co-Admin) verlieren ebenfalls ihren Zugriff.

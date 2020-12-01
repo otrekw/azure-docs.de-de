@@ -10,12 +10,12 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: 57213e228359fd6c201d501d3bb75f7267054277
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0314f5e55a476cd1cd1f8a31bd918e0ebb64c75f
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685425"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95254237"
 ---
 # <a name="explore-the-synapse-knowledge-center"></a>Überblick über Synapse Knowledge Center
 
@@ -33,8 +33,8 @@ Wählen Sie eine der beiden Methoden aus, und öffnen Sie das **Knowledge Center
 ## <a name="overview"></a>Übersicht
 
 In **Knowledge Center** haben Sie drei Möglichkeiten:
-* **Use samples immediately** (Beispiele sofort verwenden). Diese Option ist dafür optimiert, dass Sie Analysen so schnell wie möglich in Aktion sehen können. Wenn Sie ein kurzes Beispiel für die Funktionsweise von Synapse sehen möchten, wählen Sie diese Option aus.
-* **Browse available samples** (Verfügbare Beispiele durchsuchen). Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
+* **Use samples immediately** (Beispiele sofort verwenden). Wenn Sie ein kurzes Beispiel für die Funktionsweise von Synapse sehen möchten, wählen Sie diese Option aus.
+* **Katalog durchsuchen** Mit dieser Option können Sie Beispieldatasets verknüpfen und Beispielcode in Form von SQL-Skripts, Notebooks und Pipelines hinzufügen.
 * **Tour Synapse studio** (Einführung in Synapse Studio). Mit dieser Option können Sie sich einen kurzen Überblick über die Hauptbereiche von Synapse Studio verschaffen. Dies ist hilfreich, wenn Sie Synapse Studio noch nie verwendet haben.
 
 ## <a name="exploring-blob-storage-with-serverless-sql-pool"></a>Untersuchen von Blobspeicher mit einem serverlosen SQL-Pool
@@ -47,7 +47,7 @@ In **Knowledge Center** haben Sie drei Möglichkeiten:
 1. Klicken Sie auf "Ausführen". Der ausgewählte Text wird ausgeführt.
 
 ## <a name="loading-more-nyc-taxi-data"></a>Laden von weiteren NYC Taxi-Daten
-1. Navigieren Sie zum **Knowledge Center**, und klicken Sie auf **Browse available samples** (Verfügbare Beispiele durchsuchen). 
+1. Navigieren Sie zum **Knowledge Center**, und klicken Sie auf **Katalog durchsuchen**. 
 1. Wählen Sie oben die Registerkarte **SQL scripts** (SQL-Skripts) aus.
 1. Wählen Sie **Load the New York Taxicab dataset** (New York Taxicab-Dataset laden) aus.
 1. Wählen Sie unter **Inputs** (Eingabe) **Select an existing pool** (Vorhandenen Pool auswählen) und dann **SQLDB1** aus.

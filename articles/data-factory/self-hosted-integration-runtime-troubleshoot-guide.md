@@ -2,17 +2,17 @@
 title: Problembehandlung bei der selbstgehosteten Integration Runtime in Azure Data Factory
 description: Hier erfahren Sie, wie Sie eine Problembehandlung im Fall von Problemen bei der selbstgehosteten Integration Runtime in Azure Data Factory durchführen können.
 services: data-factory
-author: nabhishek
+author: lrtoyou1223
 ms.service: data-factory
 ms.topic: troubleshooting
-ms.date: 10/29/2020
+ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: ca8d359638d97f77377f02d47d824fa216acdcc8
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928109"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96013454"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -30,7 +30,7 @@ Bei fehlgeschlagenen Aktivitäten in selbstgehosteter IR/freigegebener IR unters
 
     ![Seite „Aktivitätsausführungen“](media/self-hosted-integration-runtime-troubleshoot-guide/activity-runs-page.png)
 
-1. Verwandte Protokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt. Klicken Sie auf die Schaltfläche **Protokolle senden** , um weitere Hilfe zu erhalten.
+1. Verwandte Protokolle für die fehlgeschlagene Aktivitätsausführung werden angezeigt. Klicken Sie auf die Schaltfläche **Protokolle senden**, um weitere Hilfe zu erhalten.
 
     ![Protokolle senden](media/self-hosted-integration-runtime-troubleshoot-guide/send-logs.png)
 
@@ -47,6 +47,21 @@ Bei fehlgeschlagenen Aktivitäten in selbstgehosteter IR/freigegebener IR unters
 
 
 ## <a name="self-hosted-ir-general-failure-or-error"></a>Allgemeiner Fehler oder Fehler bei der selbstgehosteten IR
+
+### <a name="out-of-memory-issue"></a>Arbeitsspeicherproblem
+
+#### <a name="symptoms"></a>Symptome
+
+Das Problem „OutOfMemoryException“ tritt auf, wenn Sie versuchen, die Lookup-Aktivität mit der verknüpften IR oder der selbstgehosteten IR auszuführen.
+
+#### <a name="cause"></a>Ursache
+
+Eine neue Aktivität kann auf ein OOM-Problem (OutOfMemory) stoßen, wenn der IR-Computer momentan eine hohe Speicherauslastung aufweist. Das Problem kann durch eine große Anzahl gleichzeitiger Aktivitätsausführungen verursacht werden, und der Fehler ist beabsichtigt.
+
+#### <a name="resolution"></a>Lösung
+
+Überprüfen Sie die Ressourcennutzung und gleichzeitige Aktivitätsausführung auf dem IR-Knoten. Passen Sie die interne und die Auslösezeit von Aktivitätsausführungen an, um zu viele gleichzeitige Ausführungen auf demselben IR-Knoten zu vermeiden.
+
 
 ### <a name="tlsssl-certificate-issue"></a>Problem bei TLS/SSL-Zertifikat
 
@@ -65,7 +80,7 @@ Dies ist ein bekanntes Problem in WCF: Die WCF-TLS/SSL-Überprüfung überprüft
 #### <a name="resolution"></a>Lösung
 
 In der selbstgehosteten IR von Azure Data Factory v2 wird ein Platzhalterzertifikat unterstützt. Dieses Problem tritt normalerweise auf, weil das SSL-Zertifikat falsch ist. Das letzte „DNSName“ im SAN muss gültig sein. Führen Sie die folgenden Schritte aus, um dies zu überprüfen. 
-1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername*. In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername* , „DNS Name = microsoft.com.com“, nicht legitim.
+1.  Öffnen Sie die Verwaltungskonsole, und überprüfen Sie in den „Zertifikatdetails“ sowohl *Betreff* als auch *Alternativer Antragstellername*. In diesem Fall ist beispielsweise das letzte Element in *Alternativer Antragstellername*, „DNS Name = microsoft.com.com“, nicht legitim.
 2.  Bitten Sie das Unternehmen, von dem das Zertifikat ausgestellt wurde, den falschen DNS-Namen zu entfernen.
 
 ### <a name="concurrent-jobs-limit-issue"></a>Problem beim Limit für gleichzeitige Aufträge
@@ -165,13 +180,13 @@ Wenn Sie den Prozessmonitor verwenden, wird folgendes Ergebnis angezeigt:
 > [!TIP] 
 > Sie können den Filter so wie im folgenden Screenshot festlegen.
 > Sie werden dadurch informiert, dass sich die DLL-Datei **System.ValueTuple** nicht im GAC-bezogenen Ordner, im Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway* oder im Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Shared* befindet.
-> Im Grunde genommen wird die DLL zuerst aus dem Ordner *GAC* , dann aus *Freigegeben* und schließlich aus dem Ordner *Gateway* geladen. Deshalb können Sie die DLL in jeden beliebigen Pfad einfügen, was hilfreich sein kann.
+> Im Grunde genommen wird die DLL zuerst aus dem Ordner *GAC*, dann aus *Freigegeben* und schließlich aus dem Ordner *Gateway* geladen. Deshalb können Sie die DLL in jeden beliebigen Pfad einfügen, was hilfreich sein kann.
 
 ![Filter einrichten](media/self-hosted-integration-runtime-troubleshoot-guide/set-filters.png)
 
 #### <a name="resolution"></a>Lösung
 
-Sie können feststellen, dass sich die Datei **System.ValueTuple.dll** unter dem Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway\DataScan* befindet. Kopieren Sie die Datei **System.ValueTuple.dll** in den Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway* , um das Problem zu lösen.
+Sie können feststellen, dass sich die Datei **System.ValueTuple.dll** unter dem Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway\DataScan* befindet. Kopieren Sie die Datei **System.ValueTuple.dll** in den Ordner *C:\Programme\Microsoft Integration Runtime\4.0\Gateway*, um das Problem zu lösen.
 
 Mit derselben Methode können Sie andere Probleme des Typs „Datei oder Assembly fehlt“ lösen.
 
@@ -210,7 +225,7 @@ Wenn keiner der vorstehenden Gründe zutrifft, können Sie zum Ordner *%ProgramD
 
 #### <a name="symptoms"></a>Symptome
 
-Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden* ; *die Ziel-IR kann auf die Quelle nicht zugreifen*.
+Nachdem Sie selbstgehostete IRs für Quell- und Zieldatenspeicher erstellt haben, möchten Sie die beiden IRs miteinander verbinden, um einen Kopiervorgang abzuschließen. Wenn die Datenspeicher in unterschiedlichen VNETs konfiguriert wurden oder den Gatewaymechanismus nicht verstehen können, treten Fehler auf wie: *der Treiber für die Quelle wird in der Ziel-IR nicht gefunden*; *die Ziel-IR kann auf die Quelle nicht zugreifen*.
  
 #### <a name="cause"></a>Ursache
 
@@ -305,7 +320,7 @@ Wenn der Fehler wie oben als *UnauthorizedAccessException* angezeigt wird, führ
         1. Führen Sie eine saubere Deinstallation der aktuellen selbstgehosteten IR durch.
         1. Installieren Sie die selbstgehosteten IR-Bits.
         1. Führen Sie die Anweisungen unten zum Ändern des Dienstkontos aus: 
-            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner: *Microsoft Integration Runtime\4.0\Shared*.
+            1. Wechseln Sie zum Installationsordner für die selbstgehostete IR und darin zum Ordner *Microsoft Integration Runtime\4.0\Shared*.
             1. Starten Sie eine Befehlszeile mit erhöhten Rechten. Ersetzen Sie *\<user>* und *\<password>* durch Ihren eigenen Benutzernamen und Ihr Kennwort, und führen Sie dann den folgenden Befehl aus:
                        
                 ```
@@ -404,6 +419,47 @@ Die Installation ist abhängig vom Windows Installer-Dienst. Es gibt verschieden
 - Auf einige Systemdateien oder Registrierungen wurde versehentlich zugegriffen
 
 
+### <a name="ir-service-account-failed-to-fetch-certificate-access"></a>Fehler des IR-Dienstkontos beim Zertifikatszugriff
+
+#### <a name="symptoms"></a>Symptome
+
+Beim Installieren der selbstgehosteten IR über den Konfigurations-Manager für Microsoft Integration Runtime wird ein Zertifikat mit einer vertrauenswürdigen Zertifizierungsstelle generiert. Das Zertifikat konnte nicht angewendet werden, um die Kommunikation zwischen zwei Knoten zu verschlüsseln. 
+
+Die Fehlerinformationen werden wie folgt angezeigt: 
+
+`Failed to change Intranet communication encryption mode: Failed to grant Integration Runtime service account the access of to the certificate 'XXXXXXXXXX'. Error code 103`
+
+![Fehler beim Gewähren des Zertifikatszugriffs für das IR-Dienstkonto](media/self-hosted-integration-runtime-troubleshoot-guide/integration-runtime-service-account-certificate-error.png)
+
+#### <a name="cause"></a>Ursache
+
+Das Zertifikat verwendet KSP (Schlüsselspeicheranbieter), was noch nicht unterstützt wird. Die selbstgehostete Integration Runtime unterstützt bisher nur das CSP-Zertifikat (Kryptografiedienstanbieter).
+
+#### <a name="resolution"></a>Lösung
+
+In diesem Fall wird das CSP-Zertifikat empfohlen.
+
+**Lösung 1:** Verwenden Sie den folgenden Befehl, um das Zertifikat zu importieren:
+
+```
+Certutil.exe -CSP "CSP or KSP" -ImportPFX FILENAME.pfx 
+```
+
+![Verwenden von „certutil“](media/self-hosted-integration-runtime-troubleshoot-guide/use-certutil.png)
+
+**Lösung 2:** Konvertierung von Zertifikaten:
+
+openssl pkcs12 -in .\xxxx.pfx -out .\xxxx_new.pem -password pass: *\<EnterPassword>*
+
+openssl pkcs12 -export -in .\xxxx_new.pem -out xxxx_new.pfx
+
+Vor und nach der Konvertierung:
+
+![Vor der Zertifikatänderung](media/self-hosted-integration-runtime-troubleshoot-guide/before-certificate-change.png)
+
+![Nach der Zertifikatänderung](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
+
+
 ## <a name="self-hosted-ir-connectivity-issues"></a>Konnektivitätsprobleme bei der selbstgehosteten Integration Runtime
 
 ### <a name="self-hosted-integration-runtime-cant-connect-to-cloud-service"></a>Selbstgehostete Integration Runtime kann keine Verbindung mit dem Clouddienst herstellen
@@ -441,7 +497,7 @@ Die selbstgehostete Integration Runtime kann keine Verbindung zum Azure Data Fac
             
     * Wenn Sie die Meldung erhalten, dass der Remotename nicht aufgelöst werden konnte, gibt es ein Problem mit dem Domain Name System (DNS). Wenden Sie sich an das Netzwerkteam, um dieses Problem zu beheben.
     * Wenn Sie die Meldung erhalten, dass das SSL/TLS-Zertifikat ist nicht vertrauenswürdig ist, überprüfen Sie, ob das Zertifikat für https://wu2.frontend.clouddatahub.net/ auf dem Computer vertrauenswürdig ist, und installieren Sie dann das öffentliche Zertifikat mit dem Zertifikat-Manager. Durch diese Aktion sollte das Problem behoben werden.
-    * Wechseln Sie zu **Windows** > **Ereignisanzeige (Protokolle)**  > **Anwendungs- und Dienstprotokolle** > **Integration Runtime** , und prüfen Sie, ob Fehler auftreten, die durch DNS, eine Firewallregel oder Unternehmensnetzwerkeinstellungen verursacht werden. (Wenn Sie einen solchen Fehler feststellen, müssen Sie die Verbindung zwangsbeenden.) Da jedes Unternehmen über angepasste Netzwerkeinstellungen verfügt, wenden Sie sich an das Netzwerkteam, um diese Probleme zu beheben.
+    * Wechseln Sie zu **Windows** > **Ereignisanzeige (Protokolle)**  > **Anwendungs- und Dienstprotokolle** > **Integration Runtime**, und prüfen Sie, ob Fehler auftreten, die durch DNS, eine Firewallregel oder Unternehmensnetzwerkeinstellungen verursacht werden. (Wenn Sie einen solchen Fehler feststellen, müssen Sie die Verbindung zwangsbeenden.) Da jedes Unternehmen über angepasste Netzwerkeinstellungen verfügt, wenden Sie sich an das Netzwerkteam, um diese Probleme zu beheben.
 
 1. Wenn „Proxy“ in der selbstgehosteten Integration Runtime konfiguriert wurde, überprüfen Sie, ob Ihr Proxyserver auf den Dienstendpunkt zugreifen kann. Ein Beispiel für einen Befehl finden Sie unter [PowerShell, Webanforderungen und Proxys](https://stackoverflow.com/questions/571429/powershell-web-requests-and-proxies).    
                 
@@ -549,7 +605,7 @@ Führen Sie eine weitere Analyse der Netmon-Ablaufverfolgung durch.
 - Anschließend können Sie die Konvertierung zwischen Client und Data Factory-Server abrufen, indem Sie den Filter entfernen.
 
     ![Abrufen der Konversation](media/self-hosted-integration-runtime-troubleshoot-guide/get-conversation.png)
-- Basierend auf der erfassten Netmon-Ablaufverfolgung ist zu erkennen, dass die Gültigkeitsdauer (TimeToLive, TTL) 64 beträgt. Gemäß den **Standardwerten für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen** , die in [diesem Artikel](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) erwähnt werden (siehe unten), sehen wir, dass das Linux-System dafür verantwortlich ist, dass das Paket zurückgesetzt und die Verbindung getrennt wird.
+- Basierend auf der erfassten Netmon-Ablaufverfolgung ist zu erkennen, dass die Gültigkeitsdauer (TimeToLive, TTL) 64 beträgt. Gemäß den **Standardwerten für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen**, die in [diesem Artikel](https://packetpushers.net/ip-time-to-live-and-hop-limit-basics/) erwähnt werden (siehe unten), sehen wir, dass das Linux-System dafür verantwortlich ist, dass das Paket zurückgesetzt und die Verbindung getrennt wird.
 
     Die Standardwerte für die Gültigkeitsdauer und maximale Anzahl an Weiterleitungen variieren je nach Betriebssystem. Im Folgenden finden Sie einige Standardwerte:
     - Linux-Kernel 2.4 (etwa 2001): 255 für TCP, UDP und ICMP
@@ -569,7 +625,7 @@ Führen Sie eine weitere Analyse der Netmon-Ablaufverfolgung durch.
  
     *Netzwerkpaket von Linux-System A mit TTL 64-> B TTL 64 minus 1 = 63-> C TTL 63 minus 1 = 62-> TTL 62 minus 1 = 61 selbstgehostete IR*
 
-- Idealerweise ist die Gültigkeitsdauer 128, was bedeutet, dass die Data Factory vom Windows-System ausgeführt wird. *128 - 107 = 21 Hops* , wie im obigen Beispiel gezeigt, bedeutet, dass 21 Hops für das Paket während des TCP 3-Handshakes von Data Factory an die selbstgehostete IR gesendet wurden.
+- Idealerweise ist die Gültigkeitsdauer 128, was bedeutet, dass die Data Factory vom Windows-System ausgeführt wird. *128 - 107 = 21 Hops*, wie im obigen Beispiel gezeigt, bedeutet, dass 21 Hops für das Paket während des TCP 3-Handshakes von Data Factory an die selbstgehostete IR gesendet wurden.
  
     ![TTL 107](media/self-hosted-integration-runtime-troubleshoot-guide/ttl-107.png)
 
@@ -587,7 +643,7 @@ Wenn Sie versuchen, Telnet **8.8.8.8 888** mit der erfassten Netmon-Ablaufverfol
 ![Netmon-Ablaufverfolgung 2](media/self-hosted-integration-runtime-troubleshoot-guide/netmon-trace-2.png)
  
 
-Dies bedeutet, dass Sie keine TCP-Verbindung mit der Serverseite **8.8.8.8** basierend auf Port **888** herstellen können. Daher sehen Sie zwei zusätzliche **SynReTransmit** -Pakete. Da die Quelle **SELF-HOST2** keine Verbindung mit **8.8.8.8** beim ersten Paket herstellen konnte, wird die Verbindung weiterhin hergestellt.
+Dies bedeutet, dass Sie keine TCP-Verbindung mit der Serverseite **8.8.8.8** basierend auf Port **888** herstellen können. Daher sehen Sie zwei zusätzliche **SynReTransmit**-Pakete. Da die Quelle **SELF-HOST2** keine Verbindung mit **8.8.8.8** beim ersten Paket herstellen konnte, wird die Verbindung weiterhin hergestellt.
 
 > [!TIP]
 > - Klicken Sie auf **Filter laden** -> **Standard Filter (Standardfilter)**  -> **Adressen** -> **IPv4-Adressen**.
@@ -675,7 +731,7 @@ Es gibt zwei mögliche Gründe für dieses Problem:
 - Auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, gilt die Stammzertifizierungsstelle des Serverzertifikats des ADF-Diensts nicht als vertrauenswürdig. 
 - Sie verwenden einen Proxy in Ihrer Umgebung, und das Serverzertifikat des ADF-Diensts wird durch den Proxy ersetzt, während das ersetzte Serverzertifikat auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als nicht vertrauenswürdig eingestuft wird.
 
-#### <a name="solution"></a>Lösung
+#### <a name="resolution"></a>Lösung
 
 - Stellen Sie für Grund 1 sicher, dass das ADF-Serverzertifikat und die dazugehörige Zertifikatkette auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als vertrauenswürdig gelten.
 - Stellen Sie für Grund 2 entweder auf dem Computer mit der selbstgehosteten Integration Runtime eine Vertrauensstellung zur ersetzten Stammzertifizierungsstelle her, oder konfigurieren Sie den Proxy so, dass das ADF-Serverzertifikat nicht ersetzt wird.
@@ -688,6 +744,7 @@ Wir führen ein Rollout eines neuem SSL-Zertifikats aus, das von DigiCert signie
   ![DigiCert Global Root G2](media/self-hosted-integration-runtime-troubleshoot-guide/trusted-root-ca-check.png)
 
 Falls dem nicht so ist, können Sie es [hier](http://cacerts.digicert.com/DigiCertGlobalRootG2.crt ) herunterladen. 
+
 
 ## <a name="self-hosted-ir-sharing"></a>Freigabe der selbstgehosteten Integration Runtime
 

@@ -6,11 +6,11 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 02/09/2018
 ms.openlocfilehash: e7da5454581e0e414dc832d4fcec50277f3b7f40
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221246"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96019054"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Verwenden von Azure Data Lake Tools für Visual Studio Code
 
@@ -76,7 +76,7 @@ Sie müssen eine U-SQL-Datei oder einen entsprechenden Ordner öffnen, um mit U-
                  D( DepID, DepName );
    ```
 
-   OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
+   OUTPUT @departments     TO "/Output/departments.csv" USING Outputters.Csv();
 
     Das Skript erstellt eine Datei mit dem Namen „departments.csv“ mit einigen Daten im Ordner „/Output“.
 
@@ -410,7 +410,7 @@ Nach der Anmeldung werden im linken Bereich unter **AZURE DATALAKE** alle Abonne
 
 ### <a name="data-lake-analytics-metadata-navigation"></a>Navigation in den Data Lake Analytics-Metadaten
 
-Erweitern Sie Ihr Azure-Abonnement. Unter dem Knoten **U-SQL Databases** können Sie Ihre U-SQL-Datenbank durchsuchen und Ordner anzeigen wie**Schemas**, **Credentials**, **Assemblies**, **Tables** und **Index**.
+Erweitern Sie Ihr Azure-Abonnement. Unter dem Knoten **U-SQL Databases** können Sie Ihre U-SQL-Datenbank durchsuchen und Ordner anzeigen wie **Schemas**, **Credentials**, **Assemblies**, **Tables** und **Index**.
 
 ### <a name="data-lake-analytics-metadata-entity-management"></a>Entitätsverwaltung in Azure Data Lake Analytics-Metadaten
 

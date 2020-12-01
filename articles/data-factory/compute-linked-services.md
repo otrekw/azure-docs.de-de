@@ -10,12 +10,12 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.date: 05/08/2019
-ms.openlocfilehash: 6c0604e306333567628b4c71629699a718f02369
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: a454c1297b0f25c64b11217811999d4331148205
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638260"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96022461"
 ---
 # <a name="compute-environments-supported-by-azure-data-factory"></a>Von Azure Data Factory unterstützte Compute-Umgebungen
 
@@ -106,7 +106,7 @@ Die folgende JSON definiert einen bedarfsgesteuerten Linux-basierten mit HDInsig
 ```
 
 > [!IMPORTANT]
-> Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben ( **linkedServiceName** ). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster ( **timeToLive** ) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist. 
+> Der HDInsight-Cluster erstellt einen **Standardcontainer** im Blobspeicher, den Sie im JSON-Code angegeben haben (**linkedServiceName**). HDInsight löscht diesen Container nicht, wenn der Cluster gelöscht wird. Dieses Verhalten ist beabsichtigt. Durch den bedarfsgesteuerten, mit HDInsight verknüpften Dienst wird jedes Mal ein HDInsight-Cluster erstellt, wenn ein Slice verarbeitet werden muss, es sei denn, ein aktiver Cluster (**timeToLive**) ist vorhanden und wird gelöscht, nachdem die Verarbeitung abgeschlossen ist. 
 >
 > Wenn weitere Aktivitäten ausgeführt werden, werden in Azure Blob Storage viele Container angezeigt. Falls Sie diese für die Problembehandlung der Aufträge nicht benötigen, sollten Sie sie ggf. löschen, um die Speicherkosten zu verringern. Die Namen dieser Container folgen einem Muster: `adf**yourdatafactoryname**-**linkedservicename**-datetimestamp`. Verwenden Sie Tools wie den [Microsoft Azure Storage-Explorer](https://storageexplorer.com/), um Container in Ihrem Azure-Blobspeicher zu löschen.
 
@@ -240,7 +240,7 @@ Sie können die Größe der Head-, Daten- und Zookeeper-Knoten mit den folgenden
 
 | Eigenschaft          | Beschreibung                              | Erforderlich |
 | :---------------- | :--------------------------------------- | :------- |
-| headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert lautet: Standard_D3. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben** . | Nein       |
+| headNodeSize      | Gibt die Größe des Hauptknotens an. Der Standardwert lautet: Standard_D3. Weitere Details finden Sie im Abschnitt **Knotengrößen angeben**. | Nein       |
 | dataNodeSize      | Gibt die Größe des Datenknotens an. Der Standardwert lautet: Standard_D3. | Nein       |
 | zookeeperNodeSize | Gibt die Größe des Zoo Keeper-Knotens an. Der Standardwert lautet: Standard_D3. | Nein       |
 
@@ -253,7 +253,7 @@ Wenn Sie Hauptknoten und Workerknoten der Größe D4 erstellen möchten, geben S
 "dataNodeSize": "Standard_D4",
 ```
 
-Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler** : Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/sizes.md) verwenden.          
+Wenn Sie einen falschen Wert für diese Eigenschaften angeben, erhalten Sie möglicherweise den folgenden **Fehler**: Der Cluster wurde nicht erstellt. Ausnahme: Vorgang der Clustererstellung kann nicht abgeschlossen werden. Vorgang mit Code ‚400‘ fehlgeschlagen. Cluster hinterließ folgenden Status: 'Error'. Meldung: 'PreClusterCreationValidationFailure'. Wenn Sie diesen Fehler erhalten, achten Sie darauf, dass Sie den Namen der **Cmdlets und APIs** aus der Tabelle im Artikel [Größen für virtuelle Computer](../virtual-machines/sizes.md) verwenden.          
 
 ### <a name="bring-your-own-compute-environment"></a>Eigene Compute-Umgebung
 Bei dieser Konfiguration können Benutzer eine bereits vorhandene Compute-Umgebung als verknüpften Dienst in Data Factory registrieren. Die Compute-Umgebung wird vom Benutzer verwaltet und von Data Factory zum Ausführen von Aktivitäten verwendet.
@@ -304,7 +304,7 @@ Sie können einen verknüpften Azure HDInsight-Dienst erstellen, um Ihren eigene
 | username          | Geben Sie den Namen des Benutzers ein, der mit einem vorhandenen HDInsight-Cluster verbunden werden soll. | Ja      |
 | password          | Geben Sie ein Kennwort für das Benutzerkonto an.                       | Ja      |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts für die von diesem HDInsight-Cluster verwendete Azure Blob Storage-Instanz. <p>Derzeit können Sie keinen verknüpften Azure Data Lake Storage (Gen 2)-Dienst für diese Eigenschaft angeben. Wenn der HDInsight-Cluster Zugriff auf den Data Lake Store hat, können Sie auf Daten im Azure Data Lake Storage (Gen 2) über Hive-/Pig-Skripts zugreifen. </p> | Ja      |
-| isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](../hdinsight/domain-joined/apache-domain-joined-architecture.md) aktiviert ist. Die Standardeinstellung lautet *FALSE* . | Nein       |
+| isEspEnabled      | Geben Sie *TRUE* an, wenn der HDInsight-Cluster für das [Enterprise-Sicherheitspaket](../hdinsight/domain-joined/apache-domain-joined-architecture.md) aktiviert ist. Die Standardeinstellung lautet *FALSE*. | Nein       |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. <br />Verwenden Sie für einen für das Enterprise-Sicherheitspaket (ESP) aktivierten HDInsight-Cluster eine selbstgehostete Integration Runtime, die auf den Cluster zugreifen kann oder in demselben virtuellen Netzwerk wie der ESP-HDInsight-Cluster bereitgestellt werden muss. | Nein       |
 
 > [!IMPORTANT]
@@ -362,7 +362,7 @@ Lesen Sie die folgenden Artikel, wenn Sie noch nicht mit dem Azure Batch-Dienst 
 | type              | Legen Sie die Typeigenschaft auf **AzureBatch** fest. | Ja      |
 | .<Name der Region       | Der Name des Azure Batch-Kontos.         | Ja      |
 | accessKey         | Der Zugriffsschlüssel für das Azure Batch-Konto.  | Ja      |
-| batchUri          | URL zu Ihrem Azure Batch-Konto im Format „https:// *batchaccountname.region* . batch.azure.com“. | Ja      |
+| batchUri          | URL zu Ihrem Azure Batch-Konto im Format „https://*batchaccountname.region*. batch.azure.com“. | Ja      |
 | poolName          | Der Name des Pools mit virtuellen Computern.    | Ja      |
 | linkedServiceName | Der Name des verknüpften Azure Storage-Diensts, der diesem verknüpften Azure Batch-Dienst zugeordnet ist. Dieser verknüpfte Dienst wird für Stagingdateien verwendet, die für die Ausführung der Aktivität benötigt werden. | Ja      |
 | connectVia        | Die Integration Runtime, mit der die Aktivitäten diesem verknüpften Dienst zugeteilt werden. Sie können Azure Integration Runtime oder selbstgehostete Integration Runtime verwenden. Wenn keine Option angegeben ist, wird die standardmäßige Azure Integration Runtime verwendet. | Nein       |
@@ -439,7 +439,7 @@ Sie können einen mit Azure Machine Learning verknüpften Dienst erstellen, um e
 ### <a name="properties"></a>Eigenschaften
 | Eigenschaft               | Beschreibung                              | Erforderlich                                 |
 | ---------------------- | ---------------------------------------- | ---------------------------------------- |
-| type                   | Legen Sie die type-Eigenschaft auf **AzureMLService** . | Ja                                      |
+| type                   | Legen Sie die type-Eigenschaft auf **AzureMLService**. | Ja                                      |
 | subscriptionId         | Azure-Abonnement-ID              | Ja                                      |
 | resourceGroupName      | name | Ja                                      |
 | mlWorkspaceName        | Name des Azure Machine Learning-Arbeitsbereichs | Ja  |
@@ -497,7 +497,7 @@ Sie erstellen einen mit **Azure Data Lake Analytics** verknüpften Dienst, um ei
 ## <a name="azure-databricks-linked-service"></a>Mit Azure Databricks verknüpfter Dienst
 Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den Databricks-Arbeitsbereich zu registrieren, den Sie für die Ausführung der Databricks-Workloads (Notebook, JAR, Python) verwenden möchten. 
 > [!IMPORTANT]
-> Mit Databricks verknüpfte Dienste unterstützen [Instanzenpools](https://aka.ms/instance-pools). 
+> Mit Databricks verknüpfte Dienste unterstützen [Instanzenpools](https://aka.ms/instance-pools) und die Authentifizierung der systemseitig zugewiesenen verwalteten Identität.
 
 ### <a name="example---using-new-job-cluster-in-databricks"></a>Beispiel: Verwenden eines neuen Auftragsclusters in Databricks
 
@@ -545,9 +545,10 @@ Sie können einen **mit Azure Databricks verknüpften Dienst** erstellen, um den
 | Eigenschaft             | Beschreibung                              | Erforderlich                                 |
 | -------------------- | ---------------------------------------- | ---------------------------------------- |
 | name                 | Name des verknüpften Diensts               | Ja   |
-| type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks** : | Ja                                      |
+| type                 | Legen Sie die type-Eigenschaft auf **Azure Databricks**: | Ja                                      |
 | Domäne               | Geben Sie die Azure-Region entsprechend der Region des Databricks-Arbeitsbereichs an. Beispiel: https://eastus.azuredatabricks.net | Ja                                 |
-| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Ja                                       |
+| accessToken          | Für die Authentifizierung bei Azure Databricks ist ein Zugriffstoken erforderlich. Das Zugriffstoken muss im Databricks-Arbeitsbereich generiert werden. Ausführlichere Informationen zum Auffinden des Zugriffstokens finden Sie [hier](https://docs.azuredatabricks.net/api/latest/authentication.html#generate-token).  | Nein                                       |
+| MSI          | Verwenden Sie die verwaltete Identität von Data Factory (systemseitig zugewiesen) zur Authentifizierung bei Azure Databricks. Wenn Sie die MSI-Authentifizierung verwenden, benötigen Sie kein Zugriffstoken.  | Nein                                       |
 | existingClusterId    | Cluster-ID eines vorhandenen Clusters, in dem alle Aufträge ausgeführt werden. Dabei sollte es sich um einen bereits erstellten interaktiven Cluster handeln. Möglicherweise müssen Sie den Cluster manuell neu starten, falls er nicht mehr reagiert. Databricks empfiehlt, Aufträge in neuen Clustern auszuführen, um die Zuverlässigkeit zu erhöhen. Sie finden die Cluster-ID eines interaktiven Clusters unter: Databricks-Arbeitsbereich -> Cluster -> Name des interaktiven Clusters -> Konfiguration -> Tags. [Weitere Informationen](https://docs.databricks.com/user-guide/clusters/tags.html) | Nein 
 | instancePoolId    | Instanzenpool-ID eines vorhandenen Pools im Databricks-Arbeitsbereich.  | Nein  |
 | newClusterVersion    | Die Spark-Version des Clusters. Damit wird ein Auftragscluster in Databricks erstellt. | Nein  |
@@ -571,13 +572,13 @@ Sie erstellen einen mit SQL Server verknüpften Dienst und verwenden ihn mit der
 
 ## <a name="azure-function-linked-service"></a>Verknüpfter Dienst der Azure-Funktion
 
-Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject* .
+Sie erstellen einen verknüpften Dienst der Azure-Funktion und verwenden ihn mit der [Aktivität „Azure Function“](control-flow-azure-function-activity.md), um Azure Functions in einer Data Factory-Pipeline auszuführen. Der Rückgabetyp der Azure-Funktion muss ein gültiges `JObject` sein. (Beachten Sie, dass [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm)*kein*`JObject` ist.) Jeder andere Rückgabetyp als `JObject` führt zu dem Benutzerfehler *Antwortinhalt ist kein gültiges JObject*.
 
 | **Eigenschaft** | **Beschreibung** | **Erforderlich** |
 | --- | --- | --- |
 | type   | Die type-Eigenschaft muss auf Folgendes festgelegt werden: **AzureFunction** | ja |
-| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL** , wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | ja |
-| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel** . Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
+| Funktions-App-URL | URL für die Azure-Funktions-App. Das Format lautet `https://<accountname>.azurewebsites.net`. Diese URL ist der Wert unter dem Abschnitt **URL**, wenn Sie Ihre Funktions-App im Azure-Portal anzeigen.  | ja |
+| Funktionsschlüssel | Der Zugriffsschlüssel für die Azure-Funktion. Klicken Sie in den Abschnitt **Verwalten** der jeweiligen Funktion, und kopieren Sie entweder den **Funktionsschlüssel** oder den **Hostschlüssel**. Weitere Informationen finden Sie hier: [HTTP-Trigger und -Bindungen in Azure Functions](../azure-functions/functions-bindings-http-webhook-trigger.md#authorization-keys) | ja |
 |   |   |   |
 
 ## <a name="next-steps"></a>Nächste Schritte

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a5d685e49d941d7b6febbc220cdbfbcb631c4496
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 17e01844463b6d18bd7d2c3b56ee86d938682b8e
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94746362"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95536318"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Erstellen und Verwalten von Aktionsgruppen im Azure-Portal
 Eine Aktionsgruppe ist eine Sammlung von Benachrichtigungseinstellungen, die vom Besitzer eines Azure-Abonnements definiert wurden. Azure Monitor- und Service Health-Warnungen verwenden Aktionsgruppen, um Benutzer zu benachrichtigen, dass eine Warnung ausgelöst wurde. Verschiedene Warnungen können je nach den Bedürfnissen des Benutzers die gleiche Aktionsgruppe oder verschiedene Aktionsgruppen verwenden. Sie können in einem Abonnement bis zu 2.000 Aktionsgruppen konfigurieren.
@@ -149,6 +149,10 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von IT
 Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Logik-App-Aktionen verfügen.
 
 ### <a name="secure-webhook"></a>Sicherer Webhook
+
+> [!NOTE]
+> Zur Verwendung der Webhookaktion ist es erforderlich, dass der Webhookendpunkt des Ziels entweder keine Details der Warnung zum erfolgreichen Funktionieren benötigt oder die Warnungskontextinformationen, die als Teil des POST-Vorgangs bereitgestellt werden, analysieren kann. Wenn der Webhookendpunkt die Warnungskontextinformationen nicht selbst verarbeiten kann, können Sie eine Lösung wie eine [Logik-App-Aktion](./action-groups-logic-app.md) zur benutzerdefinierten Bearbeitung der Warnungskontextinformationen verwenden, um sie an das erwartete Datenformat des Webhooks anzupassen.
+
 Mithilfe der Aktion „Aktionsgruppenwebhook“ können Sie Azure Active Directory nutzen, um die Verbindung zwischen Ihrer Aktionsgruppe und Ihrer geschützten Web-API (Webhookendpunkt) zu sichern. Der gesamte Workflow für das Nutzen dieser Funktionalität wird unten beschrieben. Eine Übersicht über Azure AD-Anwendungen und -Dienstprinzipale finden Sie unter [Microsoft Identity Platform (v2.0): Übersicht](../../active-directory/develop/v2-overview.md).
 
 1. Erstellen Sie eine Azure AD-Anwendung für ihre geschützte Web-API. Weitere Informationen finden Sie unter [Geschützte Web-API: App-Registrierung](../../active-directory/develop/scenario-protected-web-api-app-registration.md).
@@ -259,6 +263,10 @@ Es kann sein, dass Sie in einer Aktionsgruppe über eine begrenzte Anzahl von Sp
 Die Preise für unterstützte Länder/Regionen sind auf der [Seite mit der Preisübersicht für Azure Monitor](https://azure.microsoft.com/pricing/details/monitor/) aufgeführt.
 
 ### <a name="webhook"></a>Webhook
+
+> [!NOTE]
+> Zur Verwendung der Webhookaktion ist es erforderlich, dass der Webhookendpunkt des Ziels entweder keine Details der Warnung zum erfolgreichen Funktionieren benötigt oder die Warnungskontextinformationen, die als Teil des POST-Vorgangs bereitgestellt werden, analysieren kann. Wenn der Webhookendpunkt die Warnungskontextinformationen nicht selbst verarbeiten kann, können Sie eine Lösung wie eine [Logik-App-Aktion](./action-groups-logic-app.md) zur benutzerdefinierten Bearbeitung der Warnungskontextinformationen verwenden, um sie an das erwartete Datenformat des Webhooks anzupassen.
+
 Webhooks werden mithilfe der folgenden Regeln verarbeitet:
 - Ein Webhookaufruf wird maximal dreimal versucht.
 - Der Aufruf wird wiederholt, wenn innerhalb des Timeoutzeitraums keine Antwort empfangen wird oder einer der folgenden HTTP-Statuscodes zurückgegeben wird: 408, 429, 503 oder 504

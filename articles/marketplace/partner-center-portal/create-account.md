@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: e15937797077e3fa46a12e726a3ce690c3979cbd
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628780"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542285"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -67,7 +67,7 @@ Ihr Herausgeberprofil umfasst den Namen Ihres Unternehmens und die MPN-ID. Sie m
 
     Nachdem Sie sich registriert haben, gelangen Sie zur Übersichtsseite für den kommerziellen Marketplace. Das Konto für den kommerziellen Marketplace wird im linken Bereich angezeigt.
 
-1. Wählen Sie oben rechts die Option **Einstellungen** (Zahnradsymbol) und dann **Entwicklereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert angegeben ist.
+1. Wählen Sie oben rechts die Option **Einstellungen** (Zahnradsymbol) und dann **Kontoeinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert angegeben ist.
 
 Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Fahren Sie mit dem [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program) fort.
 
@@ -91,7 +91,7 @@ Bei Verwendung Ihres Microsoft Partner Network-Kontos wird die E-Mail-Kontodom
 > Sie müssen über die Rolle eines **Kontoadministrators** oder **globalen Administrators** verfügen, um sich bei Microsoft Partner Network anzumelden.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/) mit Ihrem Microsoft Partner Network-Konto an.
-1. Wählen Sie **Einstellungen** > **Entwicklereinstellungen** > **Programme** > **Erste Schritte** aus.
+1. Wählen Sie **Einstellungen** > **Kontoeinstellungen** > **Programme** > **Erste Schritte** aus.
 
    Microsoft Partner Network erkennt Ihr Abonnement und zeigt den Bereich **Herausgeberprofil** an.
 
@@ -103,7 +103,7 @@ Bei Verwendung Ihres Microsoft Partner Network-Kontos wird die E-Mail-Kontodom
 
     Nachdem Sie sich registriert haben, gelangen Sie zur Übersichtsseite für den kommerziellen Marketplace. Das Konto für den kommerziellen Marketplace wird im linken Bereich angezeigt.
 
-1. Wählen Sie **Einstellungen** > **Entwicklereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
+1. Wählen Sie **Einstellungen** > **Kontoeinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
 
 Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Fahren Sie mit dem [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program) fort.
 
@@ -119,7 +119,7 @@ Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center e
 Wenn Sie sich für den kommerziellen Marketplace mit dem gleichen Konto registrieren wie für Ihr Entwicklerprogramm, werden im linken Bereich von Partner Center alle Ihre vorhandenen Programmregistrierungen angezeigt.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard/) mit Ihren vorhandenen Anmeldeinformationen an.
-1. Wählen Sie **Einstellungen** > **Entwicklereinstellungen** > **Programme** > **Erste Schritte** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
+1. Wählen Sie **Einstellungen** > **Kontoeinstellungen** > **Programme** > **Erste Schritte** aus, und geben Sie Ihre geschäftliche E-Mail-Adresse ein.
 1. Geben Sie auf der Seite **Herausgeberprofil** die erforderlichen Details an.
 2. Lesen Sie die Bestimmungen der [Microsoft-Herausgebervereinbarung](https://go.microsoft.com/fwlink/?LinkID=699560), und wählen Sie dann **Zustimmen und fortfahren** aus, um die Registrierung abzuschließen.
 
@@ -128,7 +128,7 @@ Wenn Sie sich für den kommerziellen Marketplace mit dem gleichen Konto registri
 
     Nachdem Sie sich registriert haben, gelangen Sie zur Übersichtsseite für den kommerziellen Marketplace. Das Konto für den kommerziellen Marketplace wird im linken Bereich angezeigt.
 
-1. Wählen Sie **Einstellungen** > **Entwicklereinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
+1. Wählen Sie **Einstellungen** > **Kontoeinstellungen** > **Programme** aus, um zu überprüfen, ob das Konto für den kommerziellen Marketplace als registriert aufgeführt ist.
 
 Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center erstellt. Unterstützung beim Hinzufügen von Herausgebern erhalten Sie unter [Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“](#add-new-publishers-to-the-commercial-marketplace-program).
 
@@ -142,7 +142,7 @@ Die Herausgebervereinbarung und die Unternehmensprofilinformationen gehen zusamm
 
 ## <a name="add-new-publishers-to-the-commercial-marketplace-program"></a>Hinzufügen neuer Herausgeber zum Programm „Kommerzieller Marketplace“
 
-Eine Organisation kann über mehrere Herausgeber verfügen, die einem Konto für den kommerziellen Marketplace zugeordnet sind. Nach der Anmeldung bei Partner Center kann ein vorhandener Benutzer weitere Herausgeber hinzufügen, indem er die Option **Einstellungen** > **Entwicklereinstellungen** > **Herausgeber** > **Herausgeber hinzufügen** auswählt.
+Eine Organisation kann über mehrere Herausgeber verfügen, die einem Konto für den kommerziellen Marketplace zugeordnet sind. Nach der Anmeldung bei Partner Center kann ein bestehender Benutzer weitere Herausgeber hinzufügen, indem er **Einstellungen** > **Kontoeinstellungen** > **Organisationsprofil** > **Bezeichner** > **Herausgeber hinzufügen** auswählt.
 
 >[!NOTE]
 >Überprüfen Sie vor dem Hinzufügen eines neuen Herausgebers die Liste der vorhandenen Herausgeber, indem Sie sich bei Partner Center anmelden und **Kontoeinstellungen** > **Herausgeber** auswählen.

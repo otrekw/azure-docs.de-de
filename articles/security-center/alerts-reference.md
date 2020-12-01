@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/01/2020
+ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 3cc64d2721f73da36fdc4fce009cccb5fdfd6b6b
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372692"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96014600"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
@@ -160,6 +160,9 @@ Am Ende dieser Seite finden Sie eine Tabelle, in der die Azure Security Center-K
 |**Ausnutzung des Xorg-Sicherheitsrisikos [mehrfach aufgetreten]**|Bei der Analyse der Hostdaten auf %{Compromised Host} wurde die Verwendung von Xorg mit verdächtigen Argumenten erkannt. Angreifer können dieses Verfahren bei Versuchen der Rechteausweitung anwenden. Dieses Verhalten wurde heute [x] mal auf den folgenden Computern erkannt: [Computernamen]|-|Medium|
 |**Exposed Docker daemon detected** (Verfügbar gemachten Docker-Daemon erkannt)|Computerprotokolle deuten darauf hin, dass Ihr Docker-Daemon (dockerd) einen TCP-Socket verfügbar macht. Standardmäßig verwendet die Docker-Konfiguration keine Verschlüsselung oder Authentifizierung, wenn ein TCP-Socket aktiviert ist. Dadurch hat jeder mit Zugriff auf den entsprechenden Port uneingeschränkten Zugriff auf den Docker-Daemon.|-|Medium|
 |**Erfolgloser SSH-Brute-Force-Angriff**|Erfolglose Brute-Force-Angriffe wurden von folgenden Angreifern erkannt: %{Attacker}. Die Angreifer haben versucht, auf den Host mit den folgenden Benutzernamen zuzugreifen: %{Accounts used on failed sign in to host attempts}.|-|Medium|
+| **Verhaltensweise eines dateilosen Angriffs erkannt**<br>(AppServices_FilelessAttackBehaviorDetection)| Der Arbeitsspeicher des unten angegebenen Prozesses enthält Verhaltensweisen, die häufig bei dateilosen Angriffen verwendet werden.<br>Beispiele für spezifisches Verhalten: {Liste der beobachteten Verhaltensweisen}                                                                                                                                                                                                                                                                                                                             | Ausführung                             | Medium   |
+| **Dateilose Angriffstechnik erkannt**<br>(VM_FilelessAttackTechnique.Linux)| Der Arbeitsspeicher des unten angegebenen Prozesses enthält einen Beweis für einen dateilosen Angriff. Dateilose Angriffe werden von Angreifern genutzt, um Code auszuführen, ohne dass dies von Sicherheitssoftware erkannt wird.<br>Beispiele für spezifisches Verhalten: {Liste der beobachteten Verhaltensweisen}                                                                                                                                                                                                                            | Ausführung                             | High     |
+| **Toolkit für dateilosen Angriff erkannt**<br>(VM_FilelessAttackToolkit.Linux)| Der Arbeitsspeicher des unten angegebenen Prozesses enthält ein Toolkit für einen dateilosen Angriff: {Name des Toolkits}. Toolkits für dateilose Angriffe sind in der Regel nicht im Dateisystem vorhanden und somit für herkömmliche Antivirensoftware nur schwer zu erkennen.<br>Beispiele für spezifisches Verhalten: {Liste der beobachteten Verhaltensweisen}                                                                                                                                                                                    | DefenseEvasion, Ausführung             | Hoch     |
 |**Verborgene Dateiausführung erkannt**|Die Analyse der Hostdaten zeigt an, dass eine verborgene Datei von „%{user name}“ ausgeführt wurde. Diese Aktivität könnte entweder eine legitime Aktivität oder ein Hinweis auf einen kompromittierten Host sein.|-|Informational|
 |**Mit dem DDOS-Toolkit verbundene Indikatoren erkannt [mehrfach aufgetreten]**|Bei der Analyse der Hostdaten auf %{Compromised Host} wurden Dateinamen erkannt, die Teil eines Toolkits sind, das mit Schadsoftware verbunden ist, die DDoS-Angriffe starten, Ports und Dienste öffnen sowie die vollständige Kontrolle über das infizierte System übernehmen kann. Dies könnte möglicherweise auch eine legitime Aktivität sein. Dieses Verhalten wurde heute [x] mal auf den folgenden Computern erkannt: [Computernamen]|-|Medium|
 |**Mit dem DDOS-Toolkit verbundene Indikatoren erkannt**|Bei der Analyse der Hostdaten auf %{Compromised Host} wurden Dateinamen erkannt, die Teil eines Toolkits sind, das mit Schadsoftware verbunden ist, die DDoS-Angriffe starten, Ports und Dienste öffnen sowie die vollständige Kontrolle über das infizierte System übernehmen kann. Dies könnte möglicherweise auch eine legitime Aktivität sein.|-|Medium|

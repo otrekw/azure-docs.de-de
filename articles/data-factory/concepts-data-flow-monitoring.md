@@ -7,13 +7,13 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 08/19/2020
-ms.openlocfilehash: a9636e7227671cd5a8ed31904e6bc27782d3bd6a
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 11/22/2020
+ms.openlocfilehash: 9ca5ea5cdebe297af5081ae6e219935c56ba942e
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93025832"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96004868"
 ---
 # <a name="monitor-data-flows"></a>Überwachen von Datenflüssen
 
@@ -81,6 +81,16 @@ Wenn Sie die JSON-Ausgabe Ihrer Datenflussaktivität in der ADF-Pipelineüberwac
 
 Wenn Sie in der Zuordnung ein Symbol für eine Senkentransformation auswählen, zeigt das Flyout-Panel auf der rechten Seite unten einen zusätzlichen Datenpunkt namens „Nachbearbeitungszeit“. Dies ist die Zeitspanne, die für die Ausführung des Auftrags im Spark-Cluster benötigt wurde, *nachdem* die Daten geladen, transformiert und geschrieben wurden. Dieser Zeitraum kann das Schließen von Verbindungspools, das Herunterfahren von Treibern, das Löschen von Dateien, dass Zusammenfügen von Dateien und weitere Aufgaben umfassen. Wenn Sie in Ihrem Flow Aktionen wie „Dateien verschieben“ und „Ausgabe in einer einzelnen Datei“ ausführen, werden Sie vermutlich einen Anstieg des Werts für die Nachbearbeitungszeit bemerken.
   
+## <a name="error-rows"></a>Fehlerzeilen
+
+Die Aktivierung der Fehlerzeilenbehandlung in der Datenflusssenke wird in der Überwachungsausgabe berücksichtigt. Wenn Sie die Senke auf „Bericht bei Fehler als erfolgreich markieren“ festlegen, wird in der Überwachungsausgabe die Anzahl der erfolgreichen und fehlerhaften Zeilen angezeigt, wenn Sie auf den Überwachungsknoten der Senke klicken.
+
+![Screenshot mit Fehlerzeilen](media/data-flow/error-row-2.png "Fehlerzeilenüberwachung (erfolgreich)")
+
+Wenn Sie „Bericht bei Fehler als erfolgreich markieren“ auswählen, wird dieselbe Ausgabe nur im Ausgabetext der Aktivitätsüberwachung angezeigt. Dies liegt daran, dass die Datenflussaktivität für die Ausführung einen Fehler zurückgibt und die ausführliche Überwachungsansicht nicht verfügbar ist.
+
+![Screenshot mit Fehlerzeilen in Aktivität](media/data-flow/error-rows-4.png "Fehlerzeilenüberwachung (fehlerhaft)")
+
 ## <a name="monitor-icons"></a>Symbole für die Überwachung
 
 Dieses Symbol bedeutet, dass die Transformationsdaten bereits auf dem Cluster zwischengespeichert wurden, sodass die Zeitangaben und der Ausführungspfad dies berücksichtigt haben:

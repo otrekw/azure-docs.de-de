@@ -6,23 +6,21 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 4949db646c54d75f60d29d3c631d0f4ee8d7c26e
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e63b48f2119c48cd43717acee7b13b1701e0032
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423756"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241266"
 ---
 # <a name="locks"></a>Sperren
 
-api-version: 1.0
-
-Diese API stellt die Semantik zum Sperren/Entsperren für die Schlüssel-Wert-Ressource bereit. Sie unterstützt die folgenden Vorgänge:
+Diese API (Version 1.0) stellt die Semantik zum Sperren und Entsperren für die Schlüssel-Wert-Ressource bereit. Sie unterstützt die folgenden Vorgänge:
 
 - Sperre platzieren
 - Sperre entfernen
 
-Wenn vorhanden, muss `label` ein expliziter Bezeichnungswert sein (**kein** Platzhalter). Dies ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird impliziert, dass keine Bezeichnung vorhanden ist.
+Wenn vorhanden, muss `label` ein expliziter Bezeichnungswert sein (kein Platzhalter). Dies ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird impliziert, dass keine Bezeichnung vorhanden ist.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -30,8 +28,8 @@ Wenn vorhanden, muss `label` ein expliziter Bezeichnungswert sein (**kein** Plat
 
 ## <a name="lock-key-value"></a>Sperren eines Schlüssel-Wert-Paars
 
-- **Erforderlich**: ``{key}``, ``{api-version}``  
-- *Optional*: ``label``
+- Erforderlich: ``{key}``, ``{api-version}``  
+- Optional: ``label``
 
 ```http
 PUT /locks/{key}?label={label}&api-version={api-version} HTTP/1.1
@@ -65,8 +63,8 @@ HTTP/1.1 404 Not Found
 
 ## <a name="unlock-key-value"></a>Entsperren des Schlüssel-Wert-Paars
 
-- **Erforderlich**: ``{key}``, ``{api-version}``  
-- *Optional*: ``label``
+- Erforderlich: ``{key}``, ``{api-version}``  
+- Optional: ``label``
 
 ```http
 DELETE /locks/{key}?label={label}?api-version={api-version} HTTP/1.1
@@ -98,7 +96,7 @@ Wenn das Schlüssel-Wert-Paar nicht vorhanden ist, wird folgende Antwort zurück
 HTTP/1.1 404 Not Found
 ```
 
-## <a name="conditional-lockunlock"></a>Bedingtes Sperren/Entsperren
+## <a name="conditional-lock-and-unlock"></a>Bedingtes Sperren und Entsperren
 
 Um Racebedingungen zu verhindern, verwenden Sie Anforderungsheader vom Typ `If-Match` oder `If-None-Match`. Das `etag`-Argument gehört zur Schlüsseldarstellung. Wenn `If-Match` oder `If-None-Match` ausgelassen werden, ist der Vorgang nicht bedingt.
 

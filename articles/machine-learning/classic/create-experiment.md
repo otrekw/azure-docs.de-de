@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: seodec18
 ms.date: 02/06/2019
-ms.openlocfilehash: b7ec7273848b9e8bb5be809b9cf48cdc919d3949
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 81842fb3a9a68e818a3e8c94aa6db690cb1d94f5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93307969"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486278"
 ---
 # <a name="quickstart-create-your-first-data-science-experiment-in-machine-learning-studio-classic"></a>Schnellstart: Erstellen Ihres ersten Data Science-Experiments in Machine Learning Studio (Classic)
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 [!INCLUDE [Designer notice](../../../includes/designer-notice.md)]
@@ -51,7 +51,7 @@ Studio (klassisch) enthält bereits einige Beispieldatasets, die Sie verwenden k
 Dieses Dataset enthält Einträge für eine Reihe verschiedener Automobile, einschließlich Informationen wie Marke, Modell, technische Angaben und Preis.
 
 > [!TIP]
-> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen** , um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich (klassisch) herunterzuladen.
+> Eine Arbeitskopie des folgenden Experiments finden Sie im [Azure KI-Katalog](https://gallery.azure.ai). Wechseln Sie zu **[Ihr erstes Data Science-Experiment – Vorhersage von Automobilpreisen](https://gallery.azure.ai/Experiment/Your-first-data-science-experiment-Automobile-price-prediction-1)** , und klicken Sie auf **In Studio öffnen**, um eine Kopie des Experiments in Ihren Machine Learning Studio-Arbeitsbereich (klassisch) herunterzuladen.
 
 Hier wird erklärt, wie Sie das Dataset in Ihr Experiment importieren.
 
@@ -78,7 +78,7 @@ In diesem Dataset steht jede Zeile für ein Fahrzeug, und die Variablen, die den
 
 ![Anzeigen der Fahrzeugdaten im Fenster für die Datenvisualisierung](./media/create-experiment/visualize-auto-data.png)
 
-Schließen Sie das Visualisierungsfenster, indem Sie auf das " **X** " in der oberen rechten Ecke klicken.
+Schließen Sie das Visualisierungsfenster, indem Sie auf das "**X**" in der oberen rechten Ecke klicken.
 
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
@@ -148,7 +148,7 @@ Wir werden ein Modell erstellen, das eine Teilmenge der Funktionen in unserem Da
 
 1. Klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**.
 
-1. Klicken Sie auf **With rules** (Mit Regeln).
+1. Klicken Sie auf **With rules**(Mit Regeln).
 
 1. Klicken Sie unter **Begin With** (Beginnen mit) auf **No columns** (Alle Spalten). Wählen Sie in der Filterzeile **Include** (Einbeziehen) und **column names** (Spaltennamen) aus, und wählen Sie im Textfeld unsere Liste mit Spaltennamen aus. Mit diesem Filter wird das Modul angewiesen, keine Spalten (Funktionen) außer den angegebenen zu übergeben.
 
@@ -189,7 +189,7 @@ Wir verwenden unsere Daten sowohl für das Trainieren als auch das Testen des Mo
 
     ![Verbinden des Moduls „Train Model“mit den Modulen „Linear Regression“ und „Split Data“](./media/create-experiment/connect-train-model.png)
 
-1. Klicken Sie auf das Modul [Train Model][train-model] (Modell trainieren), klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten** , und wählen Sie dann die Spalte **price** aus. **price** ist der Wert, den unser Modell vorhersagen wird.
+1. Klicken Sie auf das Modul [Train Model][train-model] (Modell trainieren), klicken Sie im Bereich **Eigenschaften** auf **Spaltenauswahl starten**, und wählen Sie dann die Spalte **price** aus. **price** ist der Wert, den unser Modell vorhersagen wird.
 
     Wählen Sie die Spalte **Price** in der Spaltenauswahl aus, indem Sie sie aus der Liste **Available columns** (Verfügbare Spalten) in die Liste **Selected columns** (Ausgewählte Spalten) verschieben.
 
@@ -227,9 +227,9 @@ Die folgenden Statistiken werden für unser Modell angezeigt:
 
 - **Mean Absolute Error** (MAE): Der Mittelwert der absoluten Fehler. (Ein *Fehler* ist die Differenz zwischen dem prognostizierten und dem tatsächlichen Wert.)
 - **Root Mean Squared Error** (RMSE): Die Quadratwurzel des Durchschnitts des Quadrats der Prognosefehler für das Testdataset.
-- **Relative Absolute Error** : Der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Relative Squared Error** : Der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
-- **Coefficient of Determination** : Dieser auch als **R-Quadrat** bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
+- **Relative Absolute Error**: Der Mittelwert der absoluten Fehler relativ zur absoluten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Relative Squared Error**: Der Durchschnitt der quadrierten Fehler relativ zur quadrierten Differenz zwischen tatsächlichen Werten und dem Durchschnitt aller tatsächlichen Werte.
+- **Coefficient of Determination**: Dieser auch als **R-Quadrat** bezeichnete Wert ist eine statistische Kenngröße, die angibt, wie gut ein Modell zu den Daten passt.
 
 Für jede Fehlerstatistik sind kleinere Werte besser. Ein kleinerer Wert gibt an, dass die Vorhersagen genauer mit den tatsächlichen Werten übereinstimmen. Für den **Bestimmungskoeffizienten** gilt: Je näher der Bestimmungskoeffizient am Wert eins (1,0) liegt, desto besser die Vorhersage.
 

@@ -10,17 +10,17 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/28/2020
-ms.openlocfilehash: 8937cfa5a48903ab53f3015b056a4915240bc525
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.date: 11/24/2020
+ms.openlocfilehash: 3eb43c98ae2697ece5ded8ae0df451a6cf5f272d
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92633126"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96007204"
 ---
 # <a name="copy-data-to-and-from-azure-databricks-delta-lake-by-using-azure-data-factory"></a>Kopieren von Daten in und aus Azure Databricks Delta Lake mithilfe von Azure Data Factory
 
-[!INCLUDE[appliesto-adf-xxx-md](includes/appliesto-adf-xxx-md.md)]
+[!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
 In diesem Artikel wird beschrieben, wie Sie die Kopieraktivität in Azure Data Factory verwenden, um Daten nach und aus Azure Databricks Delta Lake zu kopieren. Er baut auf dem Artikel zur [Kopieraktivität in Azure Data Factory](copy-activity-overview.md) auf, der eine allgemeine Übersicht über die Kopieraktivität enthält.
 
@@ -31,7 +31,7 @@ Dieser Azure Databricks Delta Lake-Connector wird für die folgenden Aktivitäte
 - [Kopieraktivität](copy-activity-overview.md) mit einer Tabelle zur [unterstützten Quellen/Senken-Matrix](copy-activity-overview.md)
 - [Lookup-Aktivität](control-flow-lookup-activity.md)
 
-Im Allgemeinen unterstützt Azure Data Factory Delta Lake mit den folgenden Funktionen, um Ihren verschiedenen Anforderungen zu entsprechen.
+Im Allgemeinen bietet Azure Data Factory Unterstützung für Delta Lake mit den folgenden Funktionen, um Ihren verschiedenen Anforderungen zu entsprechen.
 
 - Die Kopieraktivität unterstützt den Azure Databricks Delta Lake-Connector beim Kopieren von Daten aus einem beliebigen unterstützten Quelldatenspeicher in die Azure Databricks Delta Lake-Tabelle und aus der Delta Lake-Tabelle in einen beliebigen unterstützten Senkendatenspeicher. Sie nutzt Ihren Databricks-Cluster zur Durchführung der Datenverschiebung. Weitere Informationen finden Sie im Abschnitt [Voraussetzungen](#prerequisites).
 - Der [Zuordnungsdatenfluss](concepts-data-flow-overview.md) unterstützt das generische [Delta-Format](format-delta.md) für Azure Storage als Quelle und Senke zum Lesen und Schreiben von Delta-Dateien für ETL-Vorgänge ohne Code und wird unter der verwalteten Azure Integration Runtime ausgeführt.
@@ -77,7 +77,7 @@ Die folgenden Abschnitte enthalten Details zu Eigenschaften, die zum Definieren 
 
 ## <a name="linked-service-properties"></a>Eigenschaften des verknüpften Diensts
 
-Folgende Eigenschaften werden für den mit Azure Databricks Delta Lake verknüpften Dienst unterstützt:
+Die folgenden Eigenschaften werden für einen mit Azure Databricks Delta Lake verknüpften Dienst unterstützt.
 
 | Eigenschaft    | Beschreibung                                                  | Erforderlich |
 | :---------- | :----------------------------------------------------------- | :------- |
@@ -162,14 +162,14 @@ Wenn der Senkendatenspeicher und das Format die in diesem Abschnitt beschriebene
 
 - Der **verknüpfte Senkendienst** ist [Azure-Blobspeicher](connector-azure-blob-storage.md) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). Die Anmeldeinformation für das Konto sollten in der Clusterkonfiguration von Azure Databricks vorkonfiguriert sein. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
 
-- Das **Senkendatenformat** lautet **Parquet** , **Durch Trennzeichen getrennter Text** oder **Avro** mit den folgenden Konfigurationen und verweist auf einen Ordner anstatt auf eine Datei.
+- Das **Senkendatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **Avro** mit den folgenden Konfigurationen und verweist auf einen Ordner anstatt auf eine Datei.
 
-    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None** , **Snappy** oder **GZIP** verwendet.
-    - Beim Format **Durch Trennzeichen getrennter Text** :
+    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None**, **Snappy** oder **GZIP** verwendet.
+    - Beim Format **Durch Trennzeichen getrennter Text**:
         - `rowDelimiter` ist ein beliebiges einzelnes Zeichen.
-        - `compression` kann **None** , **BZIP2** , **GZIP** sein.
+        - `compression` kann **None**, **BZIP2**, **GZIP** sein.
         - `encodingName` UTF-7 wird nicht unterstützt.
-    - Beim Format **Avro** wird einer der Komprimierungscodecs **None** , **Deflate** oder **Snappy** verwendet.
+    - Beim Format **Avro** wird einer der Komprimierungscodecs **None**, **Deflate** oder **Snappy** verwendet.
 
 - In der Quelle der Kopieraktivität ist `additionalColumns` nicht angegeben.
 - Wenn Daten in durch Trennzeichen getrennter Text kopiert werden, muss `fileExtension` in der Kopieraktivitätssenke „.csv“ sein.
@@ -276,14 +276,14 @@ Wenn der Quelldatenspeicher und das Format die in diesem Abschnitt beschriebenen
 
 - Der **verknüpfte Quelldienst** ist [Azure-Blobspeicher](connector-azure-blob-storage.md) oder [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md). Die Anmeldeinformation für das Konto sollten in der Clusterkonfiguration von Azure Databricks vorkonfiguriert sein. Weitere Informationen finden Sie unter [Voraussetzungen](#prerequisites).
 
-- Das **Quelldatenformat** lautet **Parquet** , **Durch Trennzeichen getrennter Text** oder **Avro** mit den folgenden Konfigurationen und verweist auf einen Ordner anstatt auf eine Datei.
+- Das **Quelldatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **Avro** mit den folgenden Konfigurationen und verweist auf einen Ordner anstatt auf eine Datei.
 
-    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None** , **Snappy** oder **GZIP** verwendet.
-    - Beim Format **Durch Trennzeichen getrennter Text** :
+    - Beim Format **Parquet** wird einer der Komprimierungscodecs **None**, **Snappy** oder **GZIP** verwendet.
+    - Beim Format **Durch Trennzeichen getrennter Text**:
         - `rowDelimiter` ist „default“ oder ein beliebiges einzelnes Zeichen.
-        - `compression` kann **None** , **BZIP2** , **GZIP** sein.
+        - `compression` kann **None**, **BZIP2**, **GZIP** sein.
         - `encodingName` UTF-7 wird nicht unterstützt.
-    - Beim Format **Avro** wird einer der Komprimierungscodecs **None** , **Deflate** oder **Snappy** verwendet.
+    - Beim Format **Avro** wird einer der Komprimierungscodecs **None**, **Deflate** oder **Snappy** verwendet.
 
 - In der Quelle der Kopieraktivität: 
 

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/07/2020
-ms.openlocfilehash: bd6ba091b3715741af929613600a59511e7cdb0b
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 16292999bf8c01615a9125ffaa9f93fc4b2a8ec2
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94495363"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95756212"
 ---
 # <a name="log-analytics-tutorial"></a>Log Analytics-Tutorial
 Log Analytics ist ein Tool im Azure-Portal, mit dem Protokollabfragen aus den von Azure Monitor-Protokollen erfassten Daten bearbeitet und ausgeführt sowie deren Ergebnisse interaktiv analysiert werden können. Mit Log Analytics-Abfragen können Sie Datensätze abrufen, die bestimmte Kriterien erfüllen, Trends identifizieren, Muster analysieren und eine Vielzahl von Erkenntnissen aus Ihren Daten gewinnen. 
@@ -23,7 +23,7 @@ In diesem Tutorial werden die Log Analytics-Benutzeroberfläche, die ersten Sch
 > * Einfache Abfragen schreiben und ausführen sowie den Zeitbereich für Abfragen ändern
 > * Abfrageergebnisse filtern, sortieren und gruppieren
 > * Visuelle Elemente der Abfrageergebnisse anzeigen, ändern und teilen
-> * Abfragen und Ergebnisse speichern, laden, exportieren und kopieren
+> * Abfragen und Ergebnisse laden, exportieren und kopieren
 
 > [!IMPORTANT]
 > In diesem Tutorial werden Features von Log Analytics zum Erstellen und Ausführen einer Abfrage verwendet, anstatt mit der Abfrage selbst zu arbeiten. Sie nutzen Log Analytics-Features, um eine Abfrage zu erstellen, und verwenden eine weitere Beispielabfrage. Wenn Sie sich über die Syntax von Abfragen informieren und direkt mit dem Bearbeiten der Abfrage selbst beginnen möchten, schauen Sie sich das [Tutorial zur Kusto-Abfragesprache](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor) an. In diesem Tutorial werden mehrere Beispielabfragen erläutert, die Sie in Log Analytics mit einigen der hier vorgestellten Features bearbeiten und ausführen können.

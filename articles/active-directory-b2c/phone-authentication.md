@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 09/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d044be923e5d7a621b72a926db0b4ce9a09b72
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9d4fa80f669493e4dc47a9ad0f9bfe9390d4ab24
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93122723"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94953575"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>Einrichten von Telefonregistrierung und -anmeldung mit benutzerdefinierten Richtlinien in Azure AD B2C
 
@@ -64,7 +64,7 @@ Ein Einmalprüfcode wird an die Telefonnummer des Benutzers gesendet. Der Benutz
 
 ![Überprüfung des Codes während der Telefonregistrierung durch den Benutzer](media/phone-authentication/phone-signup-verify-code.png)
 
- Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. den **Anzeigenamen** , den **Vornamen** und den **Nachnamen** (das Land/die Region und die Telefonnummer sind bereits eingefügt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
+ Der Benutzer gibt auf der Registrierungsseite alle weiteren erforderlichen Informationen ein, z. B. den **Anzeigenamen**, den **Vornamen** und den **Nachnamen** (das Land/die Region und die Telefonnummer sind bereits eingefügt). Wenn der Benutzer eine andere Telefonnummer verwenden möchte, kann er **Nummer ändern** auswählen, um die Registrierung neu zu starten. Wenn der Benutzer fertig ist, wählt er **Weiter** aus.
 
 ![Der Benutzer gibt zusätzliche Informationen an.](media/phone-authentication/phone-signup-additional-info.png)
 
@@ -82,7 +82,7 @@ Wenn der Benutzer über ein bestehendes Konto mit der Telefonnummer als Bezeichn
 
 ## <a name="deleting-a-user-account"></a>Löschen eines Benutzerkontos
 
-In bestimmten Fällen müssen Sie möglicherweise einen Benutzer und die zugehörigen Daten aus Ihrem Azure AD B2C-Verzeichnis löschen. Ausführliche Informationen zum Löschen eines Benutzerkontos im Azure-Portal finden Sie [hier](https://docs.microsoft.com/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete). 
+In bestimmten Fällen müssen Sie möglicherweise einen Benutzer und die zugehörigen Daten aus Ihrem Azure AD B2C-Verzeichnis löschen. Ausführliche Informationen zum Löschen eines Benutzerkontos im Azure-Portal finden Sie [hier](/microsoft-365/compliance/gdpr-dsr-azure#step-5-delete). 
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 
@@ -153,7 +153,7 @@ GET https://graph.microsoft.com/v1.0/users?$filter=identities/any(c:c/issuerAssi
 ## <a name="next-steps"></a>Nächste Schritte
 
 Sie finden das Starter Pack für die benutzerdefinierte Richtlinie für Telefonregistrierung und -anmeldung (und andere Starter Packs) auf GitHub: [Azure-Samples/active-directory-b2c-custom-policy-starterpack/scenarios/phone-number-passwordless][starter-pack-phone]. Die Richtliniendateien des Starter Packs verwenden technische Multi-Factor Authentication-Profile und Telefonnummern-Anspruchstransformationen:
-* [Definieren eines technischen Azure Multi-Factor Authentication-Profils](multi-factor-auth-technical-profile.md)
+* [Definieren eines technischen Azure AD Multi-Factor Authentication-Profils](multi-factor-auth-technical-profile.md)
 * [Definieren von Telefonnummern-Anspruchstransformationen](phone-number-claims-transformations.md)
 
 <!-- LINKS - External -->
