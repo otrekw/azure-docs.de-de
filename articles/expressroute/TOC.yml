@@ -101,7 +101,7 @@
         - name: Sicherheitsbaseline
           href: security-baseline.md
     - name: Sicherheitsattribute
-      href: expressroute-security-controls.md
+      href: ./security-baseline.md
     - name: BFD über ExpressRoute
       href: expressroute-bfd.md
     - name: QoS-Anforderungen
