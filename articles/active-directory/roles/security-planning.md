@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 69428898ca123bf5b5fa96cf041818cc15f5ac40
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378634"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834454"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -80,7 +80,7 @@ Gehen Sie nach dem Aktivieren von Azure AD Privileged Identity Management wie fo
 
 3. Wählen Sie im Menü des Azure-Portals **Alle Dienste** aus, und filtern Sie die Liste nach **Azure AD Privileged Identity Management**.
 
-4. Öffnen Sie Privileged Identity Management in der Liste **Alle Dienste** , und heften Sie Privileged Identity Management an Ihr Dashboard.
+4. Öffnen Sie Privileged Identity Management in der Liste **Alle Dienste**, und heften Sie Privileged Identity Management an Ihr Dashboard.
 
 Stellen Sie sicher, dass der Person in Ihrer Organisation, die PIM zum ersten Mal verwendet, automatisch die Rollen **Sicherheitsadministrator** und **Administrator für privilegierte Rollen** zugewiesen werden. Nur Administratoren für privilegierte Rollen können die Azure AD-Verzeichnisrollenzuweisungen von Benutzern verwalten. Der PIM-Sicherheitsassistent führt Sie durch die anfängliche Erkennungs- und Zuweisungsumgebung. Sie können den Assistenten zu diesem Zeitpunkt ohne weitere Änderungen beenden.
 
@@ -114,7 +114,7 @@ Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler A
 
 #### <a name="turn-on-multi-factor-authentication-and-register-all-other-highly-privileged-single-user-non-federated-admin-accounts"></a>Aktivieren Sie die mehrstufige Authentifizierung (MFA), und registrieren Sie alle anderen nicht verbundenen Einzelbenutzer-Administratorkonten mit hohen Privilegien.
 
-Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) von Azure für alle Benutzer vor, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, Administrator für privilegierte Rollen, Exchange-Administrator und SharePoint-Administrator. Nutzen Sie den Leitfaden zum Aktivieren [einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](../authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) registriert sind. Weitere Informationen finden Sie unter Schritt 2 und 3 des Handbuchs [Zugriffsschutz für Daten und Dienste in Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
+Legen Sie Azure AD MFA bei der Anmeldung für alle Benutzer als erforderlich fest, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, Administrator für privilegierte Rollen, Exchange-Administrator und SharePoint-Administrator. Nutzen Sie den Leitfaden zum Aktivieren [einer zweistufigen Überprüfung für einen Benutzer oder eine Gruppe](../authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer unter [https://aka.ms/mfasetup](https://aka.ms/mfasetup) registriert sind. Weitere Informationen finden Sie unter Schritt 2 und 3 des Handbuchs [Zugriffsschutz für Daten und Dienste in Microsoft 365](https://support.office.com/article/Protect-access-to-data-and-services-in-Office-365-a6ef28a4-2447-4b43-aae2-f5af6d53c68e). 
 
 ## <a name="stage-2-mitigate-frequently-used-attacks"></a>Phase 2: Gegenmaßnahmen für gängige Angriffsstrategien
 
@@ -135,7 +135,7 @@ Mit der Zunahme von BYOD- (Bring Your Own Device) und Homeoffice-Richtlinien sow
 * Stellen Sie sicher, dass für Ihre Konten, die zu Verwaltungszwecken verwendet werden, Folgendes gilt:
 
   * Den Konten sind geschäftliche E-Mail-Adressen zugeordnet
-  * Die Konten sind für Azure Multi-Factor Authentication registriert oder verwenden lokale MFA
+  * Die Konten sind für Azure AD Multi-Factor Authentication registriert oder verwenden lokale MFA
 * Fragen Sie Benutzer nach der geschäftlichen Begründung für den Administratorzugriff.
 * Entfernen Sie den Administratorzugriff für Personen und Dienste, die diesen nicht benötigen.
 
@@ -240,7 +240,7 @@ Wir empfehlen Folgendes:
 
 #### <a name="continue-rollout-of-stronger-authentication-for-all-users"></a>Fortsetzen der Einführung einer sichereren Authentifizierung für alle Benutzer
 
-Fordern Sie besonders gefährdete Benutzer auf, eine moderne, starke Authentifizierung wie Azure MFA oder Windows Hello zu verwenden. Zu den besonders gefährdeten Benutzern zählen zum Beispiel:
+Fordern Sie besonders gefährdete Benutzer auf, eine moderne, starke Authentifizierung wie Azure AD MFA oder Windows Hello zu verwenden. Zu den besonders gefährdeten Benutzern zählen zum Beispiel:
 
 * Führungskräfte auf Vorstandsebene
 * Hochrangige Manager

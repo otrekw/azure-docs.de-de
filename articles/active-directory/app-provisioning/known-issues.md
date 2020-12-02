@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: app-provisioning
 ms.workload: identity
 ms.topic: troubleshooting
-ms.date: 09/11/2020
+ms.date: 11/19/2020
 ms.reviewer: arvinh
-ms.openlocfilehash: 4b4c02efffb39e88a01c35d3c818930a0f6fd9cf
-ms.sourcegitcommit: a92fbc09b859941ed64128db6ff72b7a7bcec6ab
+ms.openlocfilehash: 8a1c789759f1119a6170fffc2c70874cd9a32fde
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/15/2020
-ms.locfileid: "92069754"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94919680"
 ---
 # <a name="known-issues-application-provisioning"></a>Bekannte Probleme: Bereitstellung von Anwendungen
 In diesem Artikel werden bekannte Probleme behandelt, die Sie bei der App-Bereitstellung berücksichtigen sollten. Sie können Ihr Feedback zum Anwendungsbereitstellungsdienst über UserVoice angeben. Weitere Informationen finden Sie auf der [UserVoice-Seite zur Azure AD-Anwendungsbereitstellung](https://aka.ms/appprovisioningfeaturerequest). Wir beobachten UserVoice genau, damit wir den Dienst verbessern können. 
@@ -86,6 +86,9 @@ Beim Festlegen von `enabled = off` für die Bereitstellung oder beim Beenden wir
 
 Wenn sich eine Gruppe im Gültigkeitsbereich und ein Mitglied außerhalb des Gültigkeitsbereichs befindet, wird die Gruppe bereitgestellt. Der unzulässige Benutzer wird nicht bereitgestellt. Wenn das Mitglied den Gültigkeitsbereich wieder betritt, erkennt der Dienst die Änderung nicht sofort. Dieses Problem wird durch einen Neustart der Bereitstellung behoben. Es wird empfohlen, den Dienst regelmäßig neu zu starten, um sicherzustellen, dass alle Benutzer ordnungsgemäß bereitgestellt werden.  
 
+**Verwalter nicht bereitgestellt**
+
+Wenn sich ein Benutzer und der entsprechende Verwalter im Gültigkeitsbereich für die Bereitstellung befinden, stellt der Dienst den Benutzer bereit und aktualisiert dann den Verwalter. Sollte sich jedoch am ersten Tag der Benutzer im Gültigkeitsbereich befinden, der Verwalter aber nicht, stellen wir den Benutzer ohne Verwalterverweis bereit. Wenn der Verwalter sich dann zu einem späteren Zeitpunkt im Gültigkeitsbereich befindet, wird der Verwalterverweis erst aktualisiert, wenn Sie die Bereitstellung neu starten und den Dienst veranlassen, alle Benutzer erneut zu bewerten. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Funktionsweise der Bereitstellung](how-provisioning-works.md)

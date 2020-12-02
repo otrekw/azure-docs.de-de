@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: 352c057a74d1be5f440041b9f13127e8730edf82
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 88774450fb196da5de24bcad047ecdb8c424f653
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698069"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95736530"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -237,47 +237,28 @@ az aks nodepool add --name gen2 --cluster-name myAKSCluster --resource-group myR
 Wenn Sie einen herkömmlichen Gen1-Knotenpool erstellen möchten, lassen Sie das benutzerdefinierte Tag `--aks-custom-headers` weg.
 
 
-## <a name="ephemeral-os-preview"></a>Kurzlebiges Betriebssystem (Vorschauversion)
+## <a name="ephemeral-os"></a>Kurzlebiges Betriebssystem
 
-Standardmäßig wird der Betriebssystemdatenträger für einen virtuellen Azure-Computer automatisch in Azure Storage repliziert, um Datenverluste zu vermeiden, wenn der virtuelle Computer auf einen anderen Host verschoben werden muss. Da Container jedoch nicht für die Speicherung des lokalen Zustands vorgesehen sind, hat dieses Verhalten einen begrenzten Nutzen und einige Nachteile wie etwa eine langsamere Knotenbereitstellung und eine höhere Wartezeit bei Lese-/Schreibvorgängen.
+Standardmäßig repliziert Azure den Betriebssystemdatenträger automatisch für einen virtuellen Computer in Azure Storage, um Datenverluste zu vermeiden, wenn der virtuelle Computer auf einen anderen Host verschoben werden muss. Da Container jedoch nicht für die Speicherung des lokalen Zustands vorgesehen sind, hat dieses Verhalten einen begrenzten Nutzen und einige Nachteile wie etwa eine langsamere Knotenbereitstellung und eine höhere Wartezeit bei Lese-/Schreibvorgängen.
 
 Im Gegensatz dazu werden kurzlebige Betriebssystemdatenträger genau wie ein temporärer Datenträger nur auf dem Hostcomputer gespeichert. Dies führt zu einer geringeren Wartezeit bei Lese-/Schreibvorgängen und ermöglicht eine schnellere Knotenskalierung sowie schnellere Clusterupgrades.
 
 Ein kurzlebiger Betriebssystemdatenträger ist genau wie der temporäre Datenträger im Preis des virtuellen Computers enthalten. Es entstehen also keine zusätzlichen Speicherkosten.
 
-Registrieren Sie das Feature `EnableEphemeralOSDiskPreview`:
+> [!IMPORTANT]
+>Wenn ein Benutzer nicht explizit verwaltete Datenträger für das Betriebssystem anfordert, verwendet AKS standardmäßig nach Möglichkeit das kurzlebige Betriebssystem für eine bestimmte Knotenpoolkonfiguration.
 
-```azurecli
-az feature register --name EnableEphemeralOSDiskPreview --namespace Microsoft.ContainerService
-```
+Wenn das kurzlebige Betriebssystem verwendet wird, muss der Betriebssystemdatenträger in den VM-Cache passen. Die Größen für den VM-Cache sind in der [Azure-Dokumentation](../virtual-machines/dv3-dsv3-series.md) in Klammern neben dem E/A-Durchsatz („Cachegröße in GiB“) aufgeführt.
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
+Beispiel: Standard_DS2_v2, die Standard-VM-Größe für AKS mit der standardmäßigen Betriebssystemdatenträger-Größe von 100 GB unterstützt das kurzlebige Betriebssystem, hat aber nur eine Cachegröße von 86 GB. Diese Konfiguration ist standardmäßig auf verwaltete Datenträger festgelegt, wenn der Benutzer nicht explizit etwas anderes angibt. Wenn ein Benutzer das kurzlebige Betriebssystem explizit angefordert hat, erhält er eine Validierungsfehlermeldung.
 
-```azurecli
-az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/EnableEphemeralOSDiskPreview')].{Name:name,State:properties.state}"
-```
+Wenn ein Benutzer dieselbe Größe Standard_DS2_v2 mit einem 60-GB-Betriebssystemdatenträger anfordert, würde diese Konfiguration standardmäßig das kurzlebige Betriebssystem unterstützen: die angeforderte Größe von 60 GB liegt unter der maximalen Cachegröße von 86 GB.
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
+Wenn Sie Standard_D8s_v3 mit 100-GB-Betriebssystemdatenträger verwenden, unterstützt diese VM-Größe das kurzlebige Betriebssystem und hat 200 GB Cachespeicher. Wenn ein Benutzer den Betriebssystemdatenträger-Typ nicht angibt, erhält der Knotenpool standardmäßig das kurzlebige Betriebssystem. 
 
-```azurecli
-az provider register --namespace Microsoft.ContainerService
-```
+Ein kurzlebiges Betriebssystem erfordert mindestens Version 2.15.0 der Azure CLI.
 
-Ein kurzlebiges Betriebssystem erfordert mindestens Version 0.4.63 der aks-preview-CLI-Erweiterung.
-
-Verwenden Sie zum Installieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension add --name aks-preview
-```
-
-Verwenden Sie zum Aktualisieren der aks-preview-CLI-Erweiterung die folgenden Azure CLI-Befehle:
-
-```azurecli
-az extension update --name aks-preview
-```
-
-### <a name="use-ephemeral-os-on-new-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in neuen Clustern (Vorschauversion)
+### <a name="use-ephemeral-os-on-new-clusters"></a>Verwenden eines kurzlebigen Betriebssystems in neuen Clustern
 
 Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdatenträger bei der Clustererstellung. Verwenden Sie das Flag `--node-osdisk-type`, um die Art des Betriebssystemdatenträgers für den neuen Cluster auf ein kurzlebiges Betriebssystem festzulegen.
 
@@ -285,9 +266,9 @@ Konfigurieren Sie den Cluster für die Verwendung kurzlebiger Betriebssystemdate
 az aks create --name myAKSCluster --resource-group myResourceGroup -s Standard_DS3_v2 --node-osdisk-type Ephemeral
 ```
 
-Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--node-osdisk-type` aus oder geben `--node-osdisk-type=Managed` an. Sie können auch weitere kurzlebige Betriebssystemknotenpools hinzufügen, wie im Anschluss beschrieben.
+Wenn Sie einen herkömmlichen Cluster mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, geben Sie hierzu `--node-osdisk-type=Managed` an. Sie können auch weitere kurzlebige Betriebssystemknotenpools hinzufügen, wie im Anschluss beschrieben.
 
-### <a name="use-ephemeral-os-on-existing-clusters-preview"></a>Verwenden eines kurzlebigen Betriebssystems in vorhandenen Clustern (Vorschauversion)
+### <a name="use-ephemeral-os-on-existing-clusters"></a>Verwenden eines kurzlebigen Betriebssystems in vorhandenen Clustern
 Konfigurieren Sie einen neuen Knotenpool für die Verwendung kurzlebiger Betriebssystemdatenträger. Verwenden Sie das Flag `--node-osdisk-type`, um die Art des Betriebssystemdatenträgers für diesen Knotenpool festzulegen.
 
 ```azurecli
@@ -295,9 +276,9 @@ az aks nodepool add --name ephemeral --cluster-name myAKSCluster --resource-grou
 ```
 
 > [!IMPORTANT]
-> Mit einem kurzlebigen Betriebssystem können Sie VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Im Fall von AKS werden in der Betriebssystemdatenträger-Konfiguration des Standardknotens 100 GiB verwendet. Sie benötigen also eine VM-Größe, deren Cache größer als 100 GiB ist. Die Cachegröße von „Standard_DS2_v2“ beträgt 86 GiB und ist somit nicht ausreichend. Standard_DS3_v2 weist eine Cachegröße von 172 GiB auf und ist damit groß genug. Sie können auch `--node-osdisk-size` verwenden, um die Standardgröße des Betriebssystemdatenträgers zu verringern. Die Mindestgröße für AKS-Images beträgt 30 GiB. 
+> Mit einem kurzlebigen Betriebssystem können Sie VM- und Instanzimages bis zur Größe des VM-Caches bereitstellen. Im Fall von AKS werden in der Betriebssystemdatenträger-Konfiguration des Standardknotens 128 GB verwendet. Sie benötigen also eine VM-Größe, deren Cache größer als 128 GB ist. Die Cachegröße von Standard_DS2_v2 beträgt standardmäßig 86 GB und ist somit nicht ausreichend. Standard_DS3_v2 weist eine Cachegröße von 172 GB auf und ist damit groß genug. Sie können auch `--node-osdisk-size` verwenden, um die Standardgröße des Betriebssystemdatenträgers zu verringern. Die Mindestgröße für AKS-Images beträgt 30 GB. 
 
-Wenn Sie Knotenpools mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, lassen Sie das benutzerdefinierte Tag `--node-osdisk-type` weg.
+Wenn Sie Knotenpools mit netzwerkbasierten Betriebssystemdatenträgern erstellen möchten, geben Sie `--node-osdisk-type Managed` an.
 
 ## <a name="custom-resource-group-name"></a>Name der benutzerdefinierten Ressourcengruppe
 

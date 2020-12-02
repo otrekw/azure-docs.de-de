@@ -1,6 +1,6 @@
 ---
-title: Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist | Microsoft-Dokumentation
-description: Dieser Artikel enthält Anweisungen zum Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist.
+title: Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist
+description: Dieser Artikel enthält Anweisungen zum Ändern der Größe eines Betriebssystemdatenträgers mit einer GPT-Partition (GUID-Partitionstabelle) unter Linux.
 services: virtual-machines-linux
 documentationcenter: ''
 author: kailashmsft
@@ -14,17 +14,17 @@ ms.devlang: azurecli
 ms.date: 05/03/2020
 ms.author: kaib
 ms.custom: seodec18
-ms.openlocfilehash: 99b723322ce7636edce3ae5b59a69b96e288ca24
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 3565b165c669af3566667d9bdfa401d15fcce101
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93392689"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95544155"
 ---
 # <a name="resize-an-os-disk-that-has-a-gpt-partition"></a>Ändern der Größe eines Betriebssystem-Datenträgers, der eine GPT-Partition aufweist
 
 > [!NOTE]
-> Dieses Szenario gilt nur für Betriebssystem Datenträger mit einer GPT-Partition (GUID-Partitionstabelle).
+> Dieser Artikel ist nur für Betriebssystemdatenträger mit einer GPT-Partition (GUID-Partitionstabelle) relevant.
 
 In diesem Artikel wird beschrieben, wie Sie die Größe eines Betriebssystem-Datenträgers heraufsetzen, der eine GPT-Partition unter Linux aufweist. 
 
@@ -78,14 +78,14 @@ Die folgenden Anweisungen betreffen Linux-gestützte Verteilungen.
 
 ### <a name="ubuntu"></a>Ubuntu
 
-So setzen Sie die Größe des Betriebssystem-Datenträgers in Ubuntu 16.x und 18.x herauf:
+So setzen Sie die Größe des Betriebssystemdatenträgers in Ubuntu 16.*x* und 18.*x* herauf:
 
 1. Beenden Sie den virtuellen Computer.
 1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
 1. Führen Sie einen Neustart der VM aus, und melden Sie sich dann bei der VM als **Root**-Benutzer an.
 1. Vergewissern Sie sich, dass der Betriebssystem-Datenträger jetzt ein größeres Dateisystem anzeigt.
 
-Wie im folgenden Beispiel gezeigt, wurde der Betriebssystem-Datenträger im Portal auf 100 GB vergrößert. Das auf **/** eingebundene Dateisystem **/dev/sda1** zeigt jetzt 97 GB an.
+Wie im folgenden Beispiel gezeigt, wurde der Betriebssystemdatenträger im Portal auf 100 GB vergrößert. Das auf **/** eingebundene Dateisystem **/dev/sda1** zeigt jetzt 97 GB an.
 
 ```
 user@myvm:~# df -Th
@@ -110,9 +110,9 @@ So setzen Sie die Größe des Betriebssystem-Datenträgers in SUSE 12 SP4, SUS
 1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
 1. Starten Sie den virtuellen Computer neu.
 
-Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
+Wenn der virtuelle Computer neu gestartet wurde, führen Sie diese Schritte aus:
 
-1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
+1. Greifen Sie als **Root**-Benutzer mit folgendem Befehl auf Ihre VM zu:
 
    ```
    # sudo -i
@@ -124,7 +124,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    # zypper install growpart
    ```
 
-1. Verwenden Sie den Befehl `lsblk`, um die Partition zu suchen, die im Stammverzeichnis des Dateisystems („/“) eingebunden ist. In diesem Fall sehen Sie, dass Partition 4 des Geräts „sda“ unter „/“ eingebunden ist:
+1. Verwenden Sie den Befehl `lsblk`, um die Partition zu suchen, die im Stammverzeichnis des Dateisystems ( **/** ) eingebunden ist. In diesem Fall sehen Sie, dass Partition 4 des Geräts **sda** unter **/** eingebunden ist:
 
    ```
    # lsblk
@@ -138,7 +138,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    └─sdb1   8:17   0    4G  0 part /mnt/resource
    ```
 
-1. Ändern Sie die Größe der erforderlichen Partition mit dem Befehl `growpart` unter Verwendung der im vorherigen Schritt gefundenen Partitionsnummer.
+1. Ändern Sie die Größe der erforderlichen Partition mit dem Befehl `growpart` und der im vorherigen Schritt bestimmten Partitionsnummer:
 
    ```
    # growpart /dev/sda 4
@@ -177,7 +177,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
 
 1. Verwenden Sie die für den Typ des Dateisystems passenden Befehle, um die Größe des Dateisystems zu ändern.
    
-   Verwenden Sie für **xfs** den folgenden Befehl:
+   Verwenden Sie für **xfs** diesen Befehl:
    
    ```
    #xfs_growfs /
@@ -200,13 +200,13 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    data blocks changed from 7470331 to 12188923
    ```
    
-   Verwenden Sie für **ext4** den folgenden Befehl:
+   Verwenden Sie für **ext4** diesen Befehl:
    
    ```
    #resize2fs /dev/sda4
    ```
    
-1. Überprüfen Sie die heraufgesetzte Größe des Dateisystems für **df -Th** mit dem folgenden Befehl:
+1. Überprüfen Sie die heraufgesetzte Größe des Dateisystems für **df -Th** mit diesem Befehl:
    
    ```
    #df -Thl
@@ -233,13 +233,13 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
 
 ### <a name="rhel-with-lvm"></a>RHEL mit LVM
 
-1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
+1. Greifen Sie als **Root**-Benutzer mit diesem Befehl auf Ihre VM zu:
 
    ```bash
    [root@dd-rhel7vm ~]# sudo -i
    ```
 
-1. Verwenden Sie den Befehl `lsblk`, um das logische Volume (LV) zu suchen, das im Stammverzeichnis des Dateisystems („/“) eingebunden ist. In diesem Fall sehen Sie, dass **_rootvg-rootlv_ *_ unter _* /** eingebunden ist.  Wenn Sie ein anderes Dateisystem verwenden möchten, ersetzen Sie das LV und den Bereitstellungspunkt mithilfe dieses Dokuments.
+1. Verwenden Sie den Befehl `lsblk`, um das logische Volume (LV) zu suchen, das im Stammverzeichnis des Dateisystems ( **/** ) eingebunden ist. In diesem Fall sehen Sie, dass **rootvg-rootlv** unter **/** eingebunden ist. Wenn Sie ein anderes Dateisystem benötigen, ersetzen Sie den LV- und Bereitstellungspunkt in diesem Artikel durchgängig.
 
    ```shell
    [root@dd-rhel7vm ~]# lsblk -f
@@ -258,7 +258,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
       └─rootvg-rootlv     xfs                 4f3e6f40-61bf-4866-a7ae-5c6a94675193   /
    ```
 
-1. Überprüfen Sie, ob in der LVM-Volumegruppe mit der Stammpartition freier Speicherplatz verfügbar ist.  Wenn freier Speicherplatz verfügbar ist, fahren Sie mit **Schritt 12** fort.
+1. Überprüfen Sie, ob in der LVM-Volumegruppe (VG) mit der Stammpartition freier Speicherplatz verfügbar ist. Wenn freier Speicherplatz verfügbar ist, fahren Sie mit Schritt 12 fort.
 
    ```bash
    [root@dd-rhel7vm ~]# vgdisplay rootvg
@@ -284,17 +284,15 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    VG UUID               lPUfnV-3aYT-zDJJ-JaPX-L2d7-n8sL-A9AgJb
    ```
 
-   In diesem Beispiel gibt die Zeile **Free PE / Size** an, dass in der Volumegruppe 38,02 GB frei sind.  Keine Größenänderung des Datenträgers vor dem Hinzufügen von Speicherplatz zur Volumegruppe erforderlich
+   In diesem Beispiel gibt die Zeile **Free PE / Size** an, dass in der Volumegruppe 38,02 GB frei sind. Sie müssen die Größe des Datenträgers nicht ändern, bevor Sie der Volumegruppe Speicherplatz hinzufügen.
 
-1. So setzen Sie die Größe des Betriebssystem-Datenträgers in RHEL 7.x mit LVM herauf:
+1. So setzen Sie die Größe des Betriebssystemdatenträgers in RHEL 7.*x* mit LVM herauf:
 
    1. Beenden Sie den virtuellen Computer.
    1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
    1. Starten Sie den virtuellen Computer.
 
-1. Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
-
-   1. Installieren Sie das Paket **cloud-utils-growpart**, um den Befehl **growpart** bereitzustellen, der zum Vergrößern der Größe des Betriebssystemdatenträgers erforderlich ist.
+1. Installieren Sie nach dem Neustart der VM das Paket **cloud-utils-growpart**, um den Befehl `growpart` abzurufen, der zum Vergrößern des Betriebssystemdatenträgers erforderlich ist.
 
       Dieses Paket ist auf den meisten Azure Marketplace-Images vorinstalliert.
 
@@ -302,14 +300,14 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
       [root@dd-rhel7vm ~]# yum install cloud-utils-growpart
       ```
 
-1. Ermitteln Sie mit dem Befehl **pvscan**, auf welchem Datenträger und welcher Partition die physischen LVM-Volumes (PV) in der Volumegruppe (VG) mit dem Namen „rootvg“ enthalten sind.  Notieren Sie sich die Größe und den freien Speicherplatz, die zwischen den eckigen Klammern **[]** angegeben sind.
+1. Ermitteln Sie mit dem Befehl `pvscan`, auf welchem Datenträger und welcher Partition das physische LVM-Volume bzw. die Volumes (PV) in der Volumegruppe mit dem Namen **rootvg** enthalten sind. Notieren Sie sich die Größe und den freien Speicherplatz, die zwischen den Klammern ( **[** und **]** ) angegeben sind.
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
      PV /dev/sda4   VG rootvg          lvm2 [<63.02 GiB / <38.02 GiB free]
    ```
 
-1. Überprüfen Sie die Größe der Partition mit **lsblk**.  Überprüfen Sie die Ausgabe: 
+1. Überprüfen Sie die Größe der Partition mit `lsblk`. 
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -323,14 +321,14 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Erweitern Sie die Partition mit dieser PV mit **growpart**, und verwenden Sie den Gerätenamen und die Partitionsnummer.  Dadurch wird die angegebene Partition so erweitert, dass der gesamte freie zusammenhängende Speicherplatz auf dem Gerät verwendet wird.
+1. Erweitern Sie die Partition mit dieser PV mit `growpart`, dem Gerätenamen und der Partitionsnummer. Dadurch wird die angegebene Partition so erweitert, dass der gesamte freie zusammenhängende Speicherplatz auf dem Gerät verwendet wird.
 
    ```bash
    [root@dd-rhel7vm ~]# growpart /dev/sda 4
    CHANGED: partition=4 start=2054144 old: size=132161536 end=134215680 new: size=199272414 end=201326558
    ```
 
-1. Überprüfen Sie erneut mit dem Befehl **lsblk**, ob die Größe der Partition wie erwartet geändert wurde.  Beachten Sie, dass in diesem Beispiel sda4 von 63 GB in 95 GB geändert wurde.
+1. Überprüfen Sie erneut mit dem Befehl `lsblk`, ob die Größe der Partition wie erwartet geändert wurde. Beachten Sie, dass in diesem Beispiel **sda4** von 63 GB in 95 GB geändert wurde.
 
    ```bash
    [root@dd-rhel7vm ~]# lsblk /dev/sda4
@@ -344,7 +342,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    └─rootvg-rootlv 253:6    0   2G  0 lvm  /
    ```
 
-1. Erweitern des PV zur Verwendung der restlichen neu erweiterten Partition
+1. Erweitern Sie das PV zur Verwendung der restlichen neu erweiterten Partition:
 
    ```bash
    [root@dd-rhel7vm ~]# pvresize /dev/sda4
@@ -352,14 +350,14 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    1 physical volume(s) resized or updated / 0 physical volume(s) not resized
    ```
 
-1. Überprüfen Sie die neue Größe des PV, und vergleichen Sie dabei die ursprünglichen Werte für **[Größe/freien Speicherplatz]** .
+1. Überprüfen Sie, ob die neue Größe des PV der erwarteten Größe entspricht, und vergleichen Sie dabei die ursprünglichen Werte für **[Größe/freien Speicherplatz]** :
 
    ```bash
    [root@dd-rhel7vm ~]# pvscan
    PV /dev/sda4   VG rootvg          lvm2 [<95.02 GiB / <70.02 GiB free]
    ```
 
-1. Erweitern Sie das logische Volume (LV) um den gewünschten Betrag. Dieser darf nicht den gesamten freien Speicherplatz in der Volumegruppe ausmachen.  Im folgenden Beispiel wird die Größe von **/dev/mapper/rootvg-rootlv** von 2 GB auf 12 GB heraufgesetzt (eine Erhöhung um 10 GB), mit dem folgenden Befehl. Mit diesem Befehl wird außerdem die Größe des Dateisystems heraufgesetzt.
+1. Erweitern Sie das gewünschte logische Volume (LV) um die gewünschte Menge. Die Menge muss nicht der gesamte freie Speicherplatz in der Volumegruppe sein. Im folgenden Beispiel wird die Größe von **/dev/mapper/rootvg-rootlv** von 2 GB auf 12 GB heraufgesetzt (um 10 GB). Mit diesem Befehl wird außerdem die Größe des Dateisystems heraufgesetzt.
 
    ```bash
    [root@dd-rhel7vm ~]# lvresize -r -L +10G /dev/mapper/rootvg-rootlv
@@ -383,7 +381,7 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    data blocks changed from 524288 to 3145728
    ```
 
-1. Mit dem Befehl „lvresize“ wird automatisch der entsprechende Befehl zum Ändern der Größe für das Dateisystem im LV aufgerufen. Überprüfen Sie mithilfe des folgenden Befehls, ob die Größe des Dateisystems unter **/dev/mapper/rootvg-rootlv** (unter **/** eingebunden) erweitert wurde:
+1. Mit dem Befehl `lvresize` wird automatisch der entsprechende Befehl zum Ändern der Größe für das Dateisystem im LV aufgerufen. Überprüfen Sie mithilfe des folgenden Befehls, ob die Größe des Dateisystems unter **/dev/mapper/rootvg-rootlv** (unter **/** eingebunden) erweitert wurde:
 
    ```shell
    [root@dd-rhel7vm ~]# df -Th /
@@ -399,100 +397,102 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    ```
 
 > [!NOTE]
-> Um die gleiche Vorgehensweise zum Ändern der Größe jedes beliebigen anderen logischen Volumes zu verwenden, ändern Sie in **Schritt 12** den **lv**-Namen.
+> Um die gleiche Vorgehensweise zum Ändern der Größe jedes beliebigen anderen logischen Volumes zu verwenden, ändern Sie in Schritt 12 den LV-Namen.
 
 ### <a name="rhel-raw"></a>RHEL RAW
 >[!NOTE]
 >Erstellen Sie immer eine Momentaufnahme des virtuellen Computers, bevor Sie den Betriebssystemdatenträger vergrößern.
 
-So setzen Sie die Größe des Betriebssystemdatenträgers in RHEL mit RAW-Partition herauf
+So setzen Sie die Größe des Betriebssystemdatenträgers in einer RHEL-RAW-Partition herauf:
 
-Beenden Sie den virtuellen Computer.
-Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
-Starten Sie den virtuellen Computer.
-Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
+1. Beenden Sie den virtuellen Computer.
+1. Heraufsetzen der Größe des Betriebssystem-Datenträgers im Portal.
+1. Starten Sie den virtuellen Computer.
 
-1. Greifen Sie als **Root**-Benutzer auf Ihre VM zu, und verwenden Sie dazu den folgenden Befehl:
+Wenn der virtuelle Computer neu gestartet wurde, führen Sie diese Schritte aus:
+
+1. Greifen Sie als **Root**-Benutzer mit diesem Befehl auf Ihre VM zu:
  
    ```
    sudo su
    ```
 
-1. Installieren Sie das **gptfdisk**-Paket, das erforderlich ist, um die Größe des Betriebssystem-Datenträgers heraufzusetzen.
+1. Installieren Sie das **gptfdisk**-Paket, das erforderlich ist, um die Größe des Betriebssystemdatenträgers heraufzusetzen:
 
    ```
    yum install gdisk -y
    ```
 
-1.  Um alle Sektoren anzuzeigen, die auf dem Datenträger verfügbar sind, führen Sie den folgenden Befehl aus:
+1.  Um alle Sektoren anzuzeigen, die auf dem Datenträger verfügbar sind, führen Sie diesen Befehl aus:
     ```
     gdisk -l /dev/sda
     ```
 
-1. Es werden die Informationen zum Partitionstyp angezeigt. Stellen Sie sicher, dass es sich um GPT handelt. Identifizieren Sie die Stammpartition. Ändern oder löschen Sie nicht die Startpartition (BIOS-Startpartition) und die Systempartition („EFI-Systempartition“).
+1. Es werden die Informationen zum Partitionstyp angezeigt. Stellen Sie sicher, dass „GPT“ zurückgegeben wird. Identifizieren Sie die Stammpartition. Ändern oder löschen Sie nicht die Startpartition (BIOS-Startpartition) und die Systempartition (EFI-Systempartition).
 
-1. Verwenden Sie den folgenden Befehl, um die Partitionierung zum ersten Mal zu starten. 
+1. Verwenden Sie diesen Befehl, um die Partitionierung zum ersten Mal zu starten: 
     ```
     gdisk /dev/sda
     ```
 
-1. Jetzt wird eine Nachricht angezeigt, die zur Eingabe des nächsten Befehls auffordert („Befehl: ? für Hilfe“). 
+1. Sie sehen eine Meldung, in der Sie aufgefordert werden, den nächsten Befehl einzugeben: `Command: ? for help`. Wählen Sie die Taste **w** aus:
 
    ```
    w
    ```
 
-1. Sie erhalten eine Warnung mit der Meldung „Warnung! Der sekundäre Header wird zu früh auf dem Datenträger platziert! Möchten Sie dieses Problem beheben? (J/N):“. Sie müssen „J“ drücken.
+1. Diese Meldung wird angezeigt: `Warning! Secondary header is placed too early on the disk! Do you want to
+correct this problem? (Y/N)`. Wählen Sie die Taste **y** aus: 
 
    ```
    Y
    ```
 
-1. Es sollte eine Meldung angezeigt werden, die Sie darüber informiert, dass die abschließenden Prüfungen abgeschlossen sind, und Sie zur Bestätigung auffordert. Drücken Sie „J“.
+1. Es sollte eine Meldung angezeigt werden, die Sie darüber informiert, dass die abschließenden Prüfungen abgeschlossen sind, und Sie zur Bestätigung auffordert. Wählen Sie die Taste **y** aus:
 
    ```
    Y
    ```
 
-1. Überprüfen Sie mit dem Befehl „partprobe“, ob alles ordnungsgemäß abgelaufen ist.
+1. Verwenden Sie den Befehl `partprobe`, um zu überprüfen, ob alles ordnungsgemäß passiert:
 
    ```
    partprobe
    ```
 
-1. Die obigen Schritte haben sichergestellt, dass der sekundäre GPT-Header am Ende platziert wird. Der nächste Schritt besteht darin, den Prozess der Größenänderung mithilfe des Tools „gdisk“ erneut zu starten. Verwenden Sie den folgenden Befehl.
+1. Sie haben die vorherigen Schritte ausgeführt, um sicherzustellen, dass der sekundäre GPT-Header am Ende platziert wird. Starten Sie als Nächstes den Prozess der Größenänderung, indem Sie das Tool `gdisk` erneut verwenden. Verwenden Sie den folgenden Befehl:
 
    ```
    gdisk /dev/sda
    ```
-1. Drücken Sie im Befehlsmenü auf „p“, um die Liste der Partition anzuzeigen. Identifizieren Sie die Stammpartition (in den Schritten wird „sda2“ als Stammpartition betrachtet) und die Startpartition (in den Schritten wird „sda3“ als Startpartition betrachtet). 
+1. Wählen Sie im Befehlsmenü die Taste **p** aus, um eine Liste der Partitionen anzuzeigen. Identifizieren Sie die Stammpartition. (In diesen Schritten wird **sda2** als Stammpartition betrachtet.) Identifizieren Sie die Startpartition. (In diesen Schritten wird **sda3** als Startpartition betrachtet.) 
 
    ```
    p
    ```
-    ![Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
+    ![Screenshot mit Stammpartition und Startpartition.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw1.png)
 
-1. Drücken Sie „d“, um die Partition zu löschen, und wählen Sie die dem Startvorgang zugewiesene Partitionsnummer aus (in diesem Beispiel ist es „3“).
+1. Wählen Sie die Taste **d** aus, um die Partition zu löschen. Wählen Sie dann die Partitionsnummer aus, die der Startpartition zugewiesen ist. (In diesem Beispiel ist es **3**.)
    ```
    d
    3
    ```
-1. Drücken Sie „d“, um die Partition zu löschen, und wählen Sie die dem Startvorgang zugewiesene Partitionsnummer aus (in diesem Beispiel ist es „2“).
+1. Wählen Sie die Taste **d** aus, um die Partition zu löschen. Wählen Sie die Partitionsnummer aus, die der Startpartition zugewiesen ist. (In diesem Beispiel ist es **2**.)
    ```
    d
    2
    ```
-    ![Löschen der Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
+    ![Screenshot, der die Schritte zum Löschen der Stamm- und Startpartition zeigt.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw2.png)
 
-1. Um eine vergrößerte Stammpartition neu zu erstellen, drücken Sie „n“, geben Sie die Partitionsnummer ein, die Sie zuvor für Root gelöscht haben („2“ für dieses Beispiel), und wählen Sie den ersten Sektor als „Standardwert“, den letzten Sektor als „Letzter Sektorwert – Startgrößensektor“ („4096 in diesem Fall“ entspricht einem 2 MB Start) und den Hexadezimalcode als „8300“ aus.
+1. Wählen Sie zum erneuten Erstellen der Stammpartition mit heraufgesetzter Größe die Taste **n** aus, und geben Sie dann die Partitionsnummer ein, die Sie zuvor für den Stamm gelöscht haben (in diesem Beispiel **2**). Wählen Sie `Default Value` für den ersten Sektor aus. Wählen Sie `Last sector value -  boot size sector` für den letzten Sektor aus (in diesem Fall `4096` entsprechend dem 2-MB-Start). Wählen Sie `8300` für den Hexadezimalcode aus.
    ```
    n
    2
    (Enter default)
-   (Calculateed value of Last sector value - 4096)
+   (Calculated value of Last sector value - 4096)
    8300
    ```
-1. Um eine Startpartition neu zu erstellen, drücken Sie „n“, geben Sie die Partitionsnummer ein, die Sie zuvor für das Starten gelöscht haben („3“ für dieses Beispiel), und wählen Sie den ersten Sektor als „Standardwert“, den letzten Sektor als „Standardwert“ und den Hexadezimalcode „EF02“ aus.
+1. Wählen Sie zum erneuten Erstellen der Stammpartition die Taste **n** aus, und geben Sie dann die Partitionsnummer ein, die Sie zuvor für den Stamm gelöscht haben (in diesem Beispiel **3**). Wählen Sie `Default Value` für den ersten und den letzten Sektor aus. Wählen Sie `EF02` für den Hexadezimalcode aus.
    ```
    n
    3
@@ -501,28 +501,28 @@ Wenn der Neustart der VM erfolgt ist, führen Sie die folgenden Schritte aus:
    EF02
    ```
 
-1. Schreiben Sie die Änderungen mit dem Befehl „w“, und drücken Sie zur Bestätigung „J“.
+1. Schreiben Sie die Änderungen mit dem Befehl `w`, und wählen Sie dann `Y` aus, um die Änderungen zu bestätigen:
    ```
    w
    Y
    ```
-1. Führen Sie den Befehl „partprobe“ aus, um die Datenträgerstabilität zu prüfen.
+1. Führen Sie den Befehl `partprobe` aus, um die Datenträgerstabilität zu prüfen:
    ```
    partprobe
    ```
-1. Starten Sie den virtuellen Computer neu, und die Stammpartition sollte vergrößert sein.
+1. Starten Sie die VM neu. Die Größe der Stammpartition muss heraufgesetzt werden.
    ```
    reboot
    ```
 
-   ![Neue Stammpartition und Startpartition](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
+   ![Screenshot, der die Schritte zum erneuten Erstellen der Startpartition zeigt.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw3.png)
 
-1. Führen Sie den Befehl „xfs_growfs“ für die Partition aus, um ihre Größe zu ändern.
+1. Führen Sie den Befehl `xfs_growfs` für die Partition aus, um ihre Größe zu ändern:
    ```
    xfs_growfs /dev/sda2
    ```
 
-   ![XFS Grow FS](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
+   ![Screenshot, der das Ergebnis der Ausführung von „xfs_growfs“ zeigt.](./media/resize-os-disk-rhelraw/resize-os-disk-rhelraw4.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

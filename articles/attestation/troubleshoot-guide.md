@@ -7,12 +7,12 @@ ms.service: attestation
 ms.topic: reference
 ms.date: 07/20/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 46e3521a54f6bfdfbfb25634a09b8c8e0cfdcac0
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: fe347983e2143c7a4bdf00ca0207356c881c66ac
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93342811"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95891281"
 ---
 # <a name="microsoft-azure-attestation-troubleshooting-guide"></a>Microsoft Azure Attestation: Leitfaden zur Problembehandlung
 
@@ -27,7 +27,7 @@ Unten sind einige Beispiele für die Fehler angegeben, die von Azure Attestation
 ### <a name="http-status-code"></a>HTTP-Statuscode
 401
 
-**Fehlercode** : Nicht autorisiert
+**Fehlercode**: Nicht autorisiert
 
 **Szenariobeispiele**
   - Nachweisfehler, wenn dem Benutzer die Attestation-Rolle „Leser“ nicht zugewiesen ist
@@ -64,7 +64,7 @@ Führen Sie die folgenden Schritte aus, um die Rollen in PowerShell zu überprü
 
 a. Starten Sie PowerShell, und melden Sie sich über das Cmdlet „Connect-AzAccount“ bei Azure an.
 
-b. Überprüfen Sie Ihre Einstellungen für die RBAC-Rollenzuweisung.
+b. Überprüfen Sie Ihre Einstellungen für die Azure-Rollenzuweisung.
 
 
   ```powershell
@@ -108,7 +108,7 @@ Es gibt verschiedene Gründe, warum für eine Anforderung der Fehler 400 zurüc
 
 Eine Nachweisrichtlinie umfasst Autorisierungs- und Ausstellungsregeln. Die Enklavenbeweise werden basierend auf den Autorisierungsregeln ausgewertet. Mit Ausstellungsregeln werden die Ansprüche definiert, die in das Nachweistoken eingeschlossen werden sollen. Wenn Ansprüche in den Enklavenbeweisen nicht mit den Autorisierungsregeln konform sind, wird bei Nachweisaufrufen für die Richtlinienauswertung ein Fehler zurückgegeben. 
 
-**Fehlercode** : PolicyEvaluationError
+**Fehlercode**: PolicyEvaluationError
 
 **Szenariobeispiele** Wenn Ansprüche im Enklavenangebot nicht mit den Autorisierungsregeln der Nachweisrichtlinie übereinstimmen
 
@@ -127,7 +127,7 @@ Sehen Sie sich die [Beispiele für Nachweisrichtlinien](/azure/attestation/polic
 
 ### <a name="22-attestation-failure-due-to-invalid-input"></a>2.2. Nachweisfehler aufgrund einer ungültigen Eingabe
 
-**Fehlercode** : InvalidParameter
+**Fehlercode**: InvalidParameter
 
 **Szenariobeispiele** SGX-Nachweisfehler aufgrund einer ungültigen Eingabe. Hier sind einige Beispiele für Fehlermeldungen angegeben:
 - Das angegebene Angebot war aufgrund eines Fehlers im Begleitmaterial des Angebots ungültig. 
@@ -142,7 +142,7 @@ Sehen Sie sich die [Codebeispiele](/samples/browse/?expanded=azure&terms=attesta
 
 ### <a name="23-invalid-certificate-chain-error-while-uploading-policypolicy-signer"></a>2.3. Fehler aufgrund einer ungültigen Zertifikatkette beim Hochladen der Richtlinie bzw. des Richtliniensignaturgebers
 
-**Fehlercode** : InvalidParameter
+**Fehlercode**: InvalidParameter
 
 **Szenariobeispiele** Konfigurieren einer signierten Richtlinie oder Hinzufügen/Löschen eines Richtliniensignaturgebers, wenn zum Signieren eine ungültige Zertifikatkette verwendet wurde (z. B. wenn die Erweiterung für Basiseinschränkungen des Stammzertifikats nicht auf „Subject Type = CA“ festgelegt ist)
 
@@ -167,7 +167,7 @@ Sehen Sie sich die Beispiele für [Richtliniensignaturgeber](/azure/attestation/
 
 ### <a name="24-adddelete-policy-signer-failure"></a>2.4. Fehler beim Hinzufügen/Löschen des Richtliniensignaturgebers
 
-**Fehlercode** : InvalidOperation
+**Fehlercode**: InvalidOperation
 
 **Szenariobeispiele**
 
@@ -213,7 +213,7 @@ At line:1 char:1
 
 ### <a name="25-attestation-policy-configuration-failure"></a>2.5. Fehler bei der Konfiguration der Nachweisrichtlinie
 
-**Fehlercode** : PolicyParsingError
+**Fehlercode**: PolicyParsingError
 
 **Szenariobeispiele** Bereitstellung der Richtlinie mit fehlerhafter Syntax (z. B. Semikolon/gültige JWT-Richtlinie fehlt)
 
@@ -231,7 +231,7 @@ At line:1 char:1
     + FullyQualifiedErrorId : Microsoft.Azure.Commands.Attestation.SetAzureAttestationPolicy
 ```
 
-**Fehlercode** : InvalidOperation
+**Fehlercode**: InvalidOperation
 
 **Szenariobeispiele** Bereitstellung ungültiger Inhalte (z. B. Richtlinienupload/unsignierte Richtlinie, obwohl erforderlich)
 

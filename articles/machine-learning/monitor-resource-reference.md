@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2020
-ms.openlocfilehash: bab74a1db04bb557aa6604fe76c05ba3d087f8c0
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: d231de8e262194cd7dda2462a3f54d7d531eb63c
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540789"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95542081"
 ---
 # <a name="monitoring-azure-machine-learning-data-reference"></a>Überwachen von Azure Machine Learning-Daten – Referenz
 
@@ -79,7 +79,7 @@ Den Metriken in Azure Machine Learning sind die folgenden Dimensionen zugeordnet
 
 | Dimension | Beschreibung |
 | ---- | ---- |
-| Clustername | Der Name der Compute-Instanz Diese Dimension ist für alle Kontingentmetriken verfügbar. |
+| Clustername | Der Name der Computeclusterressource. Diese Dimension ist für alle Kontingentmetriken verfügbar. |
 | Vm Family Name (Name der VM-Familie) | Der Name der vom Cluster verwendeten VM-Familie Diese Dimension ist für die Metrik „Quota Utilization Percentage“ (Prozentsatz der Kontingentnutzung) verfügbar. |
 | Vm Priority (VM-Priorität) | Die Priorität des virtuellen Computers (VM) Diese Dimension ist für die Metrik „Quota Utilization Percentage“ (Prozentsatz der Kontingentnutzung) verfügbar.
 | CreatedTime | Diese Dimension ist nur für CpuUtilization und GpuUtilization verfügbar. |

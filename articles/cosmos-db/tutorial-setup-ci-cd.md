@@ -8,12 +8,12 @@ ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2b74198f83ef972540038269d83048bfd1adda62
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a5b8842718aa2d9f90ac06283abc5fe2fdd925cb
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93073892"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95997000"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>Einrichten einer CI/CD-Pipeline mit dem Buildtask des Azure Cosmos DB-Emulators in Azure DevOps
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -26,7 +26,7 @@ In diesem Artikel wird gezeigt, wie Sie für eine ASP.NET-Anwendung eine CI-Pipe
 
 ## <a name="install-the-emulator-build-task"></a>Installieren des Emulator-Buildtasks
 
-Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator** , und klicken Sie auf **Kostenlos erhalten**.
+Damit der Buildtask verwendet werden kann, muss er zunächst in der Azure DevOps-Organisation installiert werden. Suchen Sie im [Marketplace](https://marketplace.visualstudio.com/items?itemName=azure-cosmosdb.emulator-public-preview) nach **Azure Cosmos DB-Emulator**, und klicken Sie auf **Kostenlos erhalten**.
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_1.png" alt-text="Suchen und Installieren des Buildtasks des Azure Cosmos DB-Emulators im Azure DevOps-Marketplace":::
 
@@ -45,7 +45,7 @@ Nachdem die Erweiterung installiert ist, melden Sie sich bei Ihrer Azure DevOps-
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_1.png" alt-text="Erstellen einer neuen Buildpipeline":::
 
-2. Wählen Sie die gewünschte **Quelle** , das **Teamprojekt** , das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
+2. Wählen Sie die gewünschte **Quelle**, das **Teamprojekt**, das **Repository** und den **Standardbranch für manuelle und geplante Builds** aus. Wählen Sie **Weiter** aus, nachdem Sie alle erforderlichen Optionen ausgewählt haben.
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png" alt-text="Auswählen von Teamprojekt, Repository und Branch für die Buildpipeline":::
 
@@ -65,7 +65,7 @@ Start-CosmosDbEmulator
 
 1. Bevor Sie der Buildpipeline einen Task hinzufügen, müssen Sie einen Agent-Auftrag hinzufügen. Navigieren Sie zu Ihrer Buildpipeline. Wählen Sie **...** und anschließend **Agentauftrag hinzufügen** aus.
 
-1. Wählen Sie als Nächstes das Symbol **+** neben dem Agent-Auftrag aus, um den Emulator-Buildtask hinzuzufügen. Suchen Sie über das Suchfeld nach **cosmos** , wählen Sie den **Azure Cosmos DB-Emulator** aus, und fügen Sie ihn dem Agent-Auftrag hinzu. Der Buildtask startet einen Container, in dem bereits eine Instanz des Cosmos DB-Emulators ausgeführt wird. Der Azure Cosmos DB-Emulator-Task muss vor allen anderen Tasks platziert werden, die darauf angewiesen sind, dass der Emulator bereits aktiv ist.
+1. Wählen Sie als Nächstes das Symbol **+** neben dem Agent-Auftrag aus, um den Emulator-Buildtask hinzuzufügen. Suchen Sie über das Suchfeld nach **cosmos**, wählen Sie den **Azure Cosmos DB-Emulator** aus, und fügen Sie ihn dem Agent-Auftrag hinzu. Der Buildtask startet einen Container, in dem bereits eine Instanz des Cosmos DB-Emulators ausgeführt wird. Der Azure Cosmos DB-Emulator-Task muss vor allen anderen Tasks platziert werden, die darauf angewiesen sind, dass der Emulator bereits aktiv ist.
 
    :::image type="content" source="./media/tutorial-setup-ci-cd/addExtension_3.png" alt-text="Hinzufügen des Emulator-Buildtasks zur Builddefinition":::
 
@@ -95,7 +95,7 @@ Sie konfigurieren die Tests nun zur Verwendung des Emulators. Der Emulator-Build
 
 In diesem Tutorial führen Sie mithilfe des [Visual Studio-Testtasks](https://github.com/Microsoft/azure-pipelines-tasks/blob/master/Tasks/VsTestV2/README.md) Komponententests aus, die über eine Datei vom Typ **.runsettings** konfiguriert wurden. Weitere Informationen zur Komponententesteinrichtung finden Sie in der [Dokumentation](/visualstudio/test/configure-unit-tests-by-using-a-dot-runsettings-file?preserve-view=true&view=vs-2017). Das in diesem Dokument verwendete vollständige Codebeispiel für die To-Do-Anwendung ist auf [GitHub](https://github.com/Azure-Samples/documentdb-dotnet-todo-app) verfügbar.
 
-Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings** , die Parameter definiert, die an die Komponententests einer Anwendung übergeben werden sollen. Beachten Sie, dass die Variable `authKey` der [bekannte Schlüssel](./local-emulator.md#authenticate-requests) für den Emulator ist. Dieses `authKey`-Element ist der vom Emulator-Buildtask erwartete Schlüssel. Er muss in der Datei vom Typ **.runsettings** definiert sein.
+Nachfolgend sehen Sie ein Beispiel einer Datei vom Typ **.runsettings**, die Parameter definiert, die an die Komponententests einer Anwendung übergeben werden sollen. Beachten Sie, dass die Variable `authKey` der [bekannte Schlüssel](./local-emulator.md#authenticate-requests) für den Emulator ist. Dieses `authKey`-Element ist der vom Emulator-Buildtask erwartete Schlüssel. Er muss in der Datei vom Typ **.runsettings** definiert sein.
 
 ```csharp
 <RunSettings>
@@ -164,7 +164,7 @@ Navigieren Sie zu den Ausführungsoptionen im Visual Studio-Testtask. Geben Sie 
 
 ## <a name="run-the-build"></a>Führen Sie den Buildvorgang durch.
 
-Verwenden Sie nun die Option **Speichern und in Warteschlange einreihen** , um den Build zu speichern und in die Warteschlange einzureihen. 
+Verwenden Sie nun die Option **Speichern und in Warteschlange einreihen**, um den Build zu speichern und in die Warteschlange einzureihen. 
 
 :::image type="content" source="./media/tutorial-setup-ci-cd/runBuild_1.png" alt-text="Screenshot eines Builds mit ausgewählter Option „Speichern und in Warteschlange einreihen“":::
 

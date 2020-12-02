@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 82220a63cfe470344951e4276bc9eaccd9600428
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 2011fa8e85f10f12ae914b02710bbd65f5700403
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677345"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95913044"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Optimieren von Azure Data Lake Storage Gen2 im Hinblick auf Leistung
 
@@ -47,7 +47,7 @@ Nachdem Sie die oben genannten Engpässe bei der Quellhardware und der Netzwerkk
 |--------------------|------------------------------------------------------|------------------------------|
 | DistCp            | -m (Mapper)   | [Link](data-lake-storage-use-distcp.md#performance-considerations-while-using-distcp)                             |
 | Azure Data Factory| parallelCopies    | [Link](../../data-factory/copy-activity-performance.md)                          |
-| Sqoop           | fs.azure.block.size, -m (Mapper)    |   [Link](https://docs.microsoft.com/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
+| Sqoop           | fs.azure.block.size, -m (Mapper)    |   [Link](/archive/blogs/shanyu/performance-tuning-for-hdinsight-storm-and-microsoft-azure-eventhubs)        |
 
 ## <a name="structure-your-data-set"></a>Strukturieren Ihres Datasets
 
@@ -57,7 +57,7 @@ Beim Speichern von Daten in Data Lake Storage Gen2 sind für die Leistung die Da
 
 In der Regel erzeugen Analyse-Engines wie HDInsight und Azure Data Lake Analytics Overhead pro Datei. Wenn Sie Ihre Daten in zahlreichen kleinen Dateien speichern, kann sich dies negativ auf die Leistung auswirken. Zur Verbesserung der Leistung empfiehlt es sich grundsätzlich, Daten in größeren Dateien (256 MB bis 100 GB) zu organisieren. Dateien mit einer Größe von mehr als 100 GB können von einigen Engines und Anwendungen unter Umständen nicht effizient verarbeitet werden.
 
-Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen. Es wird empfohlen, bei der Erstellung größere Dateien für die Verwendung bei Downstreamanwendungen zu generieren.
+Mitunter können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt nutzen. Im Allgemeinen sollte Ihr System einen Prozess zum Aggregieren kleiner Dateien zu großen zur Verwendung durch nachgelagerte Anwendungen aufweisen.
 
 ### <a name="organizing-time-series-data-in-folders"></a>Organisieren von Zeitreihendaten in Ordnern
 
@@ -79,9 +79,9 @@ Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen
 
 Aufträge lassen sich in einer der folgenden drei Kategorien unterteilen:
 
-* **CPU-intensive Aufträge** :  Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf.  Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.  
-* **Speicherintensive Aufträge** :  Solche Aufträge belegen viel Speicher,  z.B. PageRank- und Echtzeitanalyseaufträge.  
-* **E/A-intensive Aufträge** :  Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht.  Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nicht nur Lesevorgänge, sondern auch Schreibvorgänge durchgeführt werden.  Ein weiteres Beispiel sind Datenvorbereitungsaufträge, die eine große Menge an Daten lesen, Datentransformationen durchführen und die Daten dann wieder in den Speicher schreiben.  
+* **CPU-intensive Aufträge**:  Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf.  Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.  
+* **Speicherintensive Aufträge**:  Solche Aufträge belegen viel Speicher,  z.B. PageRank- und Echtzeitanalyseaufträge.  
+* **E/A-intensive Aufträge**:  Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht.  Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nicht nur Lesevorgänge, sondern auch Schreibvorgänge durchgeführt werden.  Ein weiteres Beispiel sind Datenvorbereitungsaufträge, die eine große Menge an Daten lesen, Datentransformationen durchführen und die Daten dann wieder in den Speicher schreiben.  
 
 Die folgende Anleitung gilt nur für E/A-intensive Aufträge.
 
@@ -92,8 +92,8 @@ Verwenden Sie daher nach Möglichkeit E/A-Vorgänge mit einer Größe zwischen 4
 
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>Allgemeine Überlegungen zu HDInsight-Clustern
 
-* **HDInsight-Versionen** : Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
-* **Regionen** : Platzieren Sie das Data Lake Storage Gen2-Konto in der gleichen Region wie den HDInsight-Cluster.  
+* **HDInsight-Versionen**: Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
+* **Regionen**: Platzieren Sie das Data Lake Storage Gen2-Konto in der gleichen Region wie den HDInsight-Cluster.  
 
 Ein HDInsight-Cluster besteht aus zwei Hauptknoten und einigen Workerknoten. Jeder Workerknoten stellt eine bestimmte Anzahl von Kernen und eine bestimmte Menge an Speicher bereit, die durch den VM-Typ festgelegt wird.  Bei der Ausführung eines Auftrags ist YARN der Verhandlungspartner für Ressourcen, der den verfügbaren Speicher und die Kerne zur Erstellung von Containern zuordnet.  Jeder Container führt die für den Auftrag erforderlichen Aufgaben durch.  Zur schnellen Verarbeitung von Aufgaben werden Container parallel ausgeführt. Aus diesem Grund wird eine bessere Leistung erzielt, indem Sie so viele Container wie möglich parallel ausführen.
 

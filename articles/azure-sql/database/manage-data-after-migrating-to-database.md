@@ -12,12 +12,12 @@ author: joesackmsft
 ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
-ms.openlocfilehash: f0f9d2affe39eaf74d4c0a537658d655a0c150d7
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: fe49dce276a15d9d7bc8ddaa5618c0e43dec62e9
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789572"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841222"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Neuer DBA in der Cloud – Verwalten von Azure SQL-Datenbank nach der Migration
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -49,7 +49,7 @@ Nachdem Sie diese Metriken hinzugefügt haben, können Sie sie im Diagramm **Üb
 
 ![Tarifbezogenes Überwachen der Datenbankleistung.](./media/manage-data-after-migrating-to-database/sqldb_service_tier_monitoring.png)
 
-Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen** . Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
+Sie können zudem Benachrichtigungen für die Leistungsmetriken konfigurieren. Klicken Sie im Fenster **Metrik** auf die Schaltfläche **Warnung hinzufügen**. Befolgen Sie die Anweisungen des Assistenten, um die Benachrichtigung zu konfigurieren. Sie haben die Möglichkeit, Benachrichtigungen für den Fall zu konfigurieren, dass Metriken einen Schwellenwert überschreiten oder unterschreiten.
 
 Wenn Sie beispielsweise einen Anstieg der Workload Ihrer Datenbank erwarten, können Sie eine E-Mail-Benachrichtigung konfigurieren, die immer dann gesendet wird, wenn eine der Leistungsmetriken der Datenbank 80 % erreicht. Sie können dies als Frühwarnung verwenden, um zu ermitteln, wann Sie eventuell zur nächsthöheren Computegröße wechseln müssen.
 
@@ -106,7 +106,7 @@ SQL-Datenbank bietet zwei Authentifizierungsmethoden:
 
 Die herkömmliche Windows-Authentifizierung wird nicht unterstützt. Azure Active Directory (Azure AD) ist ein Dienst für die zentrale Identitäts- und Zugriffsverwaltung. Er ermöglicht sämtlichen Mitarbeitern Ihrer Organisation den bequemen Zugriff per einmaliger Anmeldung (SSO, Single Sign-On). Dies vereinfacht die Authentifizierung, da die Anmeldeinformationen für alle Azure-Dienste gemeinsam genutzt werden. 
 
-Azure AD unterstützt [Azure Multi-Factor Authentication](authentication-mfa-ssms-overview.md) und lässt sich mit [wenigen Klicks](../../active-directory/hybrid/how-to-connect-install-express.md) mit Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten Server authentifizieren. Dadurch können SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse) außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
+Azure AD unterstützt [Azure AD Multi-Factor Authentication](authentication-mfa-ssms-overview.md) und lässt sich mit [wenigen Klicks](../../active-directory/hybrid/how-to-connect-install-express.md) mit Windows Server Active Directory integrieren. Die SQL-Authentifizierung funktioniert genau so, wie Sie es aus der Vergangenheit gewohnt sind. Benutzer können sich mit ihrem Benutzernamen und Kennwort bei beliebigen Datenbanken auf einem bestimmten Server authentifizieren. Dadurch können SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse) außerdem eine mehrstufige Authentifizierung und Benutzerkonten für Gäste innerhalb einer Azure AD-Domäne anbieten. Wenn Sie bereits über eine lokale Active Directory verfügen, können Sie dieses Verzeichnis mit Azure Active Directory verbinden und es auf Azure erweitern.
 
 |**Wenn Sie...**|**SQL-Datenbank/Azure Synapse Analytics**|
 |---|---|
@@ -320,11 +320,11 @@ SQL-Datenbank nutzt intelligente Technologien, mit denen bestimmte Datenbeschäd
 
 ### <a name="how-do-i-export-and-import-data-as-bacpac-files-from-sql-database-using-the-azure-portal"></a>Wie werden Daten als BACPAC-Dateien in SQL-Datenbank mithilfe des Azure-Portals exportiert und importiert?
 
-- **Export** : Sie können Ihre Datenbank in Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
+- **Export**: Sie können Ihre Datenbank in Azure SQL-Datenbank als BACPAC-Datei aus dem Azure-Portal exportieren.
 
    ![Datenbankexport](./media/manage-data-after-migrating-to-database/database-export1.png)
 
-- **Import** : Sie können Daten im Azure-Portal auch als BACPAC-Datei in Ihre Datenbank in Azure SQL-Datenbank importieren.
+- **Import**: Sie können Daten im Azure-Portal auch als BACPAC-Datei in Ihre Datenbank in Azure SQL-Datenbank importieren.
 
    ![Datenbankimport](./media/manage-data-after-migrating-to-database/import1.png)
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 886597e5490acb94f43d840dc5a3d22092e45849
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698758"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832601"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -157,7 +157,7 @@ Wenn Sie mehrere Mandanten verwenden oder Benutzern das [Zurücksetzen ihres Ken
 
 Sie sollten die zweistufige Überprüfung für alle Benutzer fordern. Dies schließt Administratoren und andere Personen in Ihrer Organisation ein, bei denen die Gefährdung ihrer Konten einen besonders schädlichen Einfluss haben kann (z.B. Finanzchefs).
 
-Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die beste Option für Sie hängt von Ihren Zielen ab, der Azure AD-Edition, die Sie ausführen, und Ihrem Lizenzierungsprogramm. Bestimmen Sie mithilfe des Artikels [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../../active-directory/authentication/howto-mfa-userstates.md) die beste Option für Sie. Weitere Informationen zu Lizenzen und Preisen finden Sie auf den Preisgestaltungsseiten von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) und [Multi-Factor Authentication – Preise](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
+Es gibt mehrere Optionen, um eine zweistufige Überprüfung zu erzwingen. Die beste Option für Sie hängt von Ihren Zielen ab, der Azure AD-Edition, die Sie ausführen, und Ihrem Lizenzierungsprogramm. Bestimmen Sie mithilfe des Artikels [Vorgehensweise zum Erzwingen einer zweistufigen Überprüfung für einen Benutzer](../../active-directory/authentication/howto-mfa-userstates.md) die beste Option für Sie. Weitere Informationen zu Lizenzen und Preisen finden Sie auf den Preisgestaltungsseiten von [Azure AD](https://azure.microsoft.com/pricing/details/active-directory/) und [Azure AD Multi-Factor Authentication](https://azure.microsoft.com/pricing/details/multi-factor-authentication/).
 
 Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschrieben:
 
@@ -170,14 +170,14 @@ Im Folgenden werden Optionen und Vorteile der zweistufigen Überprüfung beschri
 Diese Methode ist für alle Lizenzierungsstufen verfügbar, kann jedoch nicht mit vorhandenen Richtlinien für den bedingten Zugriff kombiniert werden. Weitere Informationen finden Sie unter [Azure AD-Sicherheitsstandardwerte](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 **Option 2**: [Aktivieren Sie Azure Multi-Factor Authentication durch Ändern des Benutzerstatus](../../active-directory/authentication/howto-mfa-userstates.md).   
-**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md). Bei dieser Methode müssen sich Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
+**Vorteil**: Dies ist die herkömmliche Methode, die zweistufige Überprüfung zu anzufordern. Sie funktioniert sowohl mit der [mehrstufigen Azure AD-Authentifizierung in der Cloud als auch mit Azure Multi-Factor Authentication Server](../../active-directory/authentication/concept-mfa-howitworks.md). Bei dieser Methode müssen sich Benutzer jedes Mal, wenn sie sich anmelden, die zweistufige Überprüfung durchführen. Die Richtlinien für bedingten Zugriff werden außer Kraft gesetzt.
 
-Um zu bestimmen, wann Multi-Factor Authentication aktiviert werden muss, lesen Sie den Artikel [Welche Version von Azure MFA ist für meine Organisation die richtige?](../../active-directory/authentication/concept-mfa-howitworks.md).
+Um zu bestimmen, wann Multi-Factor Authentication aktiviert werden muss, lesen Sie den Artikel [Welche Version von Azure AD MFA ist für meine Organisation die richtige?](../../active-directory/authentication/concept-mfa-howitworks.md).
 
 **Option 3**: [Aktivieren Sie Multi-Factor Authentication mithilfe einer Richtlinie für bedingten Zugriff](../../active-directory/authentication/howto-mfa-getstarted.md).
 **Vorteil**: Mit dieser Option können Sie die zweistufige Überprüfung unter bestimmten Bedingungen mithilfe des [bedingten Zugriffs](../../active-directory/conditional-access/concept-conditional-access-policy-common.md) anfordern. Bestimmte Bedingungen können sein: Benutzeranmeldung von verschiedenen Standorten, nicht vertrauenswürdige Geräte oder Anwendungen, die Sie als risikoreich betrachten. Durch Definieren von bestimmten Bedingungen, in denen Sie die zweistufige Überprüfung erfordern, können Sie die konstante Aufforderung Ihrer Benutzer vermeiden, die eine unangenehme Benutzererfahrung sein kann.
 
-Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
+Dies ist die flexibelste Möglichkeit, die zweistufige Überprüfung für Ihre Benutzer zu aktivieren. Die Aktivierung einer Richtlinie für bedingten Zugriff funktioniert jedoch nur bei Azure AD Multi-Factor Authentication in der Cloud und ist eine Premium-Funktion von Azure AD. Weitere Informationen zu dieser Methode finden Sie unter [Bereitstellen von cloudbasierter Azure AD Multi-Factor Authentication](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 **Option 4**: Aktivieren Sie die Multi-Factor Authentication mit Richtlinien für den bedingten Zugriff durch Auswertung von [risikobasierten Richtlinien für den bedingten Zugriff](../../active-directory/conditional-access/howto-conditional-access-policy-risk.md).   
 **Vorteil**: Diese Option ermöglicht Ihnen Folgendes:
@@ -269,7 +269,7 @@ Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler A
 **Bewährte Methode**: Fordern Sie, dass alle wichtigen Administratorkonten kennwortlos sind (bevorzugt), oder fordern Sie die Verwendung von Multi-Factor Authentication.
 **Detail**: Melden Sie sich mit der [Microsoft Authenticator-App](../../active-directory/authentication/howto-authentication-passwordless-phone.md) bei jedem beliebigen Azure AD-Konto an, ohne ein Kennwort zu verwenden. Wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischer Authentifizierung oder einer PIN beruhen.
 
-Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) von Azure für alle Benutzer vor, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Aktivieren Sie [Multi-Factor Authentication für Ihre Administratorkonten](../../active-directory/authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer registriert sind.
+Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) von Azure AD für alle Benutzer vor, die dauerhaft einzelnen oder mehreren der Azure AD-Administratorrollen zugewiesen sind: globaler Administrator, privilegierter Rollenadministrator, Exchange Online-Administrator und SharePoint Online-Administrator. Aktivieren Sie [Multi-Factor Authentication für Ihre Administratorkonten](../../active-directory/authentication/howto-mfa-userstates.md), und stellen Sie sicher, dass alle Benutzer registriert sind.
 
 **Bewährte Methode**: Richten Sie für wichtige Administratorkonten eine Administrator-Arbeitsstation ein, auf der keine Produktionsaufgaben (wie Webbrowsen und E-Mail) ausgeführt werden dürfen. Dies schützt Ihre Administratorkonten vor Angriffsvektoren, die Webbrowsen und E-Mail ausnutzen, und Sie mindern das Risiken schwerwiegender Vorfälle erheblich.
 **Detail**: Verwenden Sie eine Administrator-Arbeitsstation. Wählen Sie ein Sicherheitsniveau für die Arbeitsstation aus:

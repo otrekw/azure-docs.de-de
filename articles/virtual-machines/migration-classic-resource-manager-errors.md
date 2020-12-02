@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: f196fc1fc88b36538f7427d30ef16d2af158aace
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 110d7186db97f6fac91b8fd785384a1c2ed7a8cd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904646"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301665"
 ---
 # <a name="errors-that-commonly-occur-during-classic-to-azure-resource-manager-migration"></a>Fehler, die häufig bei der Migration von einer klassischen Bereitstellung zu einer Azure Resource Manager-Bereitstellung auftreten
 
@@ -41,7 +41,7 @@ In diesem Artikel werden die Fehler aufgeführt und beschrieben, die bei der Mig
 | Die Bereitstellung „{deployment-name}“ im HostedService „{hosted-service-name}“ enthält den virtuellen Computer „{vm-name}“ mit dem Datenträger „{data-disk-name}“, dessen physische Blobgröße ({size-of-the-vhd-blob-backing-the-data-disk} Bytes) nicht der logischen VM-Datenträgergröße ({size-of-the-data-disk-specified-in-the-vm-api} Bytes) entspricht. Die Migration wird ohne Angabe einer Größe für den Datenträger für den virtuellen Azure Resource Manager-Computer fortgesetzt. | Dieser Fehler kann auftreten, wenn Sie die VHD-Blobgröße angepasst haben, ohne die Größe im VM-API-Modell zu aktualisieren. Ausführliche Schritte zur Behebung finden Sie [weiter unten](#vm-with-data-disk-whose-physical-blob-size-bytes-does-not-match-the-vm-data-disk-logical-size-bytes).|
 | Beim Überprüfen von Datenträger "<Name des Datenträgers>" mit dem Medienlink "<Datenträger-URI>" für den virtuellen Computer "<Name des virtuellen Computers>" im Clouddienst "<Name des Clouddiensts>" ist eine Speicherausnahme aufgetreten. Stellen Sie sicher, dass dieser virtuelle Computer Zugriff auf den Medienlink der virtuellen Festplatte hat. | Dieser Fehler kann auftreten, wenn die Datenträger des virtuellen Computers gelöscht wurden oder der Zugriff auf sie nicht mehr möglich ist. Vergewissern Sie sich, dass die Datenträger des virtuellen Computers vorhanden sind.|
 | Die VM "<VM-Name>" im HostedService "<Name des Clouddiensts>" enthält einen Datenträger mit dem MediaLink "<VHD-URI>". Dieser weist einen Blobnamen "<VHD-Blobname>" auf, der in Azure Resource Manager nicht unterstützt wird. | Dieser Fehler tritt auf, wenn der Name des Blobs einen Schrägstrich (/) enthält. Dies wird vom Compute-Ressourcenanbieter derzeit nicht unterstützt. |
-| Für die Bereitstellung „{Bereitstellungsname}“ im HostedService „{Clouddienstname}“ ist eine Migration nicht zulässig, da sie sich nicht im regionalen Bereich befindet. Informationen zum Verschieben dieser Bereitstellung in den regionalen Bereich finden Sie unter „http:\//aka.ms/regionalscope“. | 2014 wurde für Azure angekündigt, dass Netzwerkressourcen aus dem Clusterebenenbereich in den regionalen Bereich verschoben werden. Ausführlichere Informationen finden Sie unter [https://aka.ms/regionalscope](https://aka.ms/regionalscope). Dieser Fehler tritt auf, wenn für die zu migrierende Bereitstellung kein Updatevorgang durchgeführt wurde, bei dem sie automatisch in einen regionalen Bereich verschoben wird. Die beste Problemumgehung besteht darin, einem virtuellen Computer entweder einen Endpunkt oder einen Datenträger hinzuzufügen und dann zu versuchen, den Migrationsvorgang erneut durchzuführen. <br> Informationen hierzu finden Sie unter [Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) bzw. [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](/previous-versions/azure/virtual-machines/windows/classic//attach-disk.md).|
+| Für die Bereitstellung „{Bereitstellungsname}“ im HostedService „{Clouddienstname}“ ist eine Migration nicht zulässig, da sie sich nicht im regionalen Bereich befindet. Informationen zum Verschieben dieser Bereitstellung in den regionalen Bereich finden Sie unter „http:\//aka.ms/regionalscope“. | 2014 wurde für Azure angekündigt, dass Netzwerkressourcen aus dem Clusterebenenbereich in den regionalen Bereich verschoben werden. Ausführlichere Informationen finden Sie unter [https://aka.ms/regionalscope](https://aka.ms/regionalscope). Dieser Fehler tritt auf, wenn für die zu migrierende Bereitstellung kein Updatevorgang durchgeführt wurde, bei dem sie automatisch in einen regionalen Bereich verschoben wird. Die beste Problemumgehung besteht darin, einem virtuellen Computer entweder einen Endpunkt oder einen Datenträger hinzuzufügen und dann zu versuchen, den Migrationsvorgang erneut durchzuführen. <br> Informationen hierzu finden Sie unter [Gewusst wie: Einrichten von Endpunkten auf einem klassischen virtuellen Windows-Computer in Azure](/previous-versions/azure/virtual-machines/windows/classic/setup-endpoints#create-an-endpoint) bzw. [Anfügen eines Datenträgers an einen virtuellen Windows-Computer, der mit dem klassischen Bereitstellungsmodell erstellt wurde](/azure/virtual-machines/linux/attach-disk-portal).|
 | Eine Migration wird für das virtuelle Netzwerk „{VNET-Name}“ nicht unterstützt, weil es PaaS-Bereitstellungen ohne Gateway umfasst. | Dieser Fehler tritt auf, wenn Sie PaaS-Bereitstellungen ohne Gateway wie Application Gateway- oder API Management-Dienste haben, die mit dem virtuellen Netzwerk verbunden sind.|
 
 
@@ -179,7 +179,7 @@ Remove-AzVMSecret -VM $vm
 Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 
 ```azurecli
 az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]

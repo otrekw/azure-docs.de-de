@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: b31931af7b8d1442a66333622a23d017ab7fb5a9
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658688"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96003972"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -636,6 +636,14 @@ Wenn Sie eine Factory in der Produktionsumgebung bereitstellen und ein sofort zu
 Das folgende Video ist ein ausführliches Videotutorial, in dem Sie erfahren, wie Sie ein Hotfix in Ihren Umgebungen anwenden. 
 
 > [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4I7fi]
+
+## <a name="exposure-control-and-feature-flags"></a>Anzeigesteuerungs- und Featureflags
+
+Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
+
+Informationen zum Einrichten eines Featureflags finden Sie im folgenden Videotutorial:
+
+> [!VIDEO https://www.microsoft.com/videoplayer/embed/RE4IxdW]
 
 ## <a name="best-practices-for-cicd"></a>Bewährte Methoden für CI/CD
 

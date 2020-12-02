@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/08/2020
 ms.author: terrylan
-ms.openlocfilehash: 779330d7881040026f45a031f95f44d770f39a56
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e9eabc73c244526f0ea15b9c72b5377545f662b2
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94412764"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94844862"
 ---
 # <a name="security-management-in-azure"></a>Sicherheitsverwaltung in Azure
 Azure-Abonnenten können ihre Cloudumgebungen über verschiedene Geräte verwalten. Hierzu zählen etwa Arbeitsstationen für die Verwaltung, Entwickler-PCs und sogar geeignete Endbenutzergeräte, die über die aufgabenspezifischen Berechtigungen verfügen. In einigen Fällen werden Administratorfunktionen über webbasierte Konsolen ausgeführt, z. B. das [Azure-Portal](https://azure.microsoft.com/features/azure-portal/). In anderen Fällen können auch direkte Verbindungen mit Azure von lokalen Systemen über Virtual Private Networks (VPNs), Terminal Services, Clientanwendungsprotokolle oder (programmgesteuert) die Azure-Dienstverwaltungs-API (SMAPI) bestehen. Außerdem können Clientendpunkte entweder Mitglied einer Domäne oder isoliert und unverwaltet sein, z.B. Tablets oder Smartphones.
@@ -112,7 +112,7 @@ Ein Remotedesktopgateway ist ein richtlinienbasierter RDP-Proxydienst, mit dem S
 * Verknüpfen Sie das RD-Gateway mit derselben [Verwaltungsdomäne](/previous-versions/windows/it-pro/windows-2000-server/bb727085(v=technet.10)) wie die Administratorarbeitsstationen. Dies ist erforderlich, wenn Sie eine Site-to-Site-IPsec-VPN- oder ExpressRoute-Verbindung in einer Domäne verwenden, die über eine unidirektionale Vertrauensstellung mit Azure AD verfügt, oder wenn Sie für Anmeldeinformationen zwischen Ihrer lokalen AD DS-Instanz und Azure AD einen Verbund erstellen.
 * Konfigurieren Sie eine [Client-Verbindungsautorisierungsrichtlinie](/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc753324(v=ws.11)), damit das RD-Gateway überprüfen kann, ob der Name des Clientcomputers gültig ist (der Domäne angehört) und über die Berechtigung zum Zugreifen auf das Azure-Portal verfügt.
 * Verwenden Sie IPsec für [Azure VPN](https://azure.microsoft.com/documentation/services/vpn-gateway/), um den Verwaltungsdatenverkehr besser vor Mithören und Tokendiebstahl zu schützen, oder erwägen Sie die Verwendung einer isolierten Internetverknüpfung per [Azure ExpressRoute](https://azure.microsoft.com/documentation/services/expressroute/).
-* Aktivieren Sie Multi-Factor Authentication (siehe [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) oder die Smartcard-Authentifizierung für Administratoren, die sich über das Remotedesktopgateway anmelden.
+* Aktivieren Sie Multi-Factor Authentication (siehe [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)) oder die Smartcard-Authentifizierung für Administratoren, die sich über das Remotedesktopgateway anmelden.
 * Konfigurieren Sie [Einschränkungen für IP-Adressen](https://azure.microsoft.com/blog/2013/08/27/confirming-dynamic-ip-address-restrictions-in-windows-azure-web-sites/) oder [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md) in Azure, um die Anzahl von zulässigen Verwaltungsendpunkten zu verringern.
 
 ## <a name="security-guidelines"></a>Sicherheitsrichtlinien

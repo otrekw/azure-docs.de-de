@@ -16,12 +16,12 @@ ms.date: 06/09/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6db477a288ef41c2946cd550af6ff87999eff2f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb9d9e7c60344a2a4c538c6d3bf59e337e4569c
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91461273"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836324"
 ---
 # <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory-Passthrough-Authentifizierung: Häufig gestellte Fragen
 
@@ -37,7 +37,7 @@ Die Passthrough-Authentifizierung ist ein kostenloses Feature. Sie benötigen f�
 
 ## <a name="does-conditional-access-work-with-pass-through-authentication"></a>Funktioniert der [bedingte Zugriff](../conditional-access/overview.md) mit der Passthrough-Authentifizierung?
 
-Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
+Ja. Alle Funktionen mit bedingtem Zugriff, einschließlich Azure AD Multi-Factor Authentication, funktionieren mit der Passthrough-Authentifizierung.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Unterstützt die Passthrough-Authentifizierung eine alternative Anmelde-ID (Alternate ID) anstelle von „UserPrincipalName“ als Benutzernamen?
 Ja. Die Anmeldung mit einem UPN-fremden Wert (etwa mit einer alternativen E-Mail-Adresse) wird sowohl für die Passthrough-Authentifizierung (PTA) als auch für die Kennworthashsynchronisierung (Password Hash Sync, PHS) unterstützt. Weitere Informationen zur alternativen Anmelde-ID finden Sie [hier](../authentication/howto-authentication-use-email-signin.md).

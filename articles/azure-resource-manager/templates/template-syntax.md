@@ -2,13 +2,13 @@
 title: Vorlagenstruktur und -syntax
 description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 06/22/2020
-ms.openlocfilehash: ae2c5a5fe1440c3adbae475cd4c7652a3b01c285
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.date: 11/24/2020
+ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86116538"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95911497"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
@@ -45,6 +45,62 @@ In der einfachsten Struktur weist eine Vorlage die folgenden Elemente auf:
 | [outputs](#outputs) |Nein |Werte, die nach der Bereitstellung zurückgegeben werden. |
 
 Jedes Element weist Eigenschaften auf, die Sie festlegen können. In diesem Artikel werden die Abschnitte der Vorlage ausführlicher beschrieben.
+
+## <a name="data-types"></a>Datentypen
+
+In einer ARM-Vorlage können Sie die folgenden Datentypen verwenden:
+
+* Zeichenfolge
+* securestring
+* INT
+* bool
+* object
+* secureObject
+* array
+
+Die folgende Vorlage zeigt das Format für die Datentypen. Jeder Typ verfügt über einen Standardwert im richtigen Format.
+
+```json
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "stringParameter": {
+      "type": "string",
+      "defaultValue": "option 1"
+    },
+    "intParameter": {
+      "type": "int",
+      "defaultValue": 1
+    },
+    "boolParameter": {
+        "type": "bool",
+        "defaultValue": true
+    },
+    "objectParameter": {
+      "type": "object",
+      "defaultValue": {
+        "one": "a",
+        "two": "b"
+      }
+    },
+    "arrayParameter": {
+      "type": "array",
+      "defaultValue": [ 1, 2, 3 ]
+    }
+  },
+  "resources": [],
+  "outputs": {}
+}
+```
+
+Die sichere Zeichenfolge verwendet das gleiche Format wie die Zeichenfolge, und das sichere Objekt verwendet das gleiche Format wie das Objekt. Wenn Sie einen Parameter auf eine sichere Zeichenfolge oder ein sicheres Objekt festlegen, wird der Wert des-Parameters weder im Bereitstellungsverlauf gespeichert noch protokolliert. Wenn Sie diesen sicheren Wert jedoch auf eine Eigenschaft festlegen, die keinen sicheren Wert erwartet, wird der Wert nicht geschützt. Wenn Sie z. B. eine sichere Zeichenfolge auf ein Tag festlegen, wird dieser Wert als reiner Text gespeichert. Verwenden Sie sichere Zeichenfolgen für Kennwörter und Geheimnisse.
+
+Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen einer Vorlage verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
+
+Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungszeichen ein. Beginnen und beenden Sie Zeichenfolgenwerte mit doppelten Anführungszeichen.
+
+Objekte beginnen mit einer linken geschweiften Klammer und enden mit einer rechten geschweiften Klammer. Arrays beginnen mit einer linken eckigen Klammer und enden mit einer rechten eckigen Klammer.
 
 ## <a name="parameters"></a>Parameter
 
@@ -83,21 +139,9 @@ Folgende Eigenschaften sind für einen Parameter verfügbar:
 
 Beispiele für die Verwendung von Parametern finden Sie unter [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).
 
-### <a name="data-types"></a>Datentypen
-
-Für Integer, die als Inlineparameter übergeben werden, ist der Wertebereich möglicherweise durch das SDK oder Befehlszeilentool, das Sie zur Bereitstellung verwenden, eingeschränkt. Wenn Sie beispielsweise PowerShell zum Bereitstellen einer Vorlage verwenden, können Integertypen im Bereich von -2147483648 bis 2147483647 liegen. Um diese Einschränkung zu vermeiden, geben Sie große Werte in einer [Parameterdatei](parameter-files.md) an. Ressourcentypen wenden ihre eigenen Grenzwerte für Integereigenschaften an.
-
-Schließen Sie Boolesche und Integerwerte in Ihrer Vorlage nicht in Anführungszeichen ein. Beginnen und beenden Sie Zeichenfolgenwerte mit doppelten Anführungszeichen.
-
-Objekte beginnen mit einer linken geschweiften Klammer und enden mit einer rechten geschweiften Klammer. Arrays beginnen mit einer linken eckigen Klammer und enden mit einer rechten eckigen Klammer.
-
-Wenn Sie einen Parameter auf eine sichere Zeichenfolge oder ein sicheres Objekt festlegen, wird der Wert des-Parameters weder im Bereitstellungsverlauf gespeichert noch protokolliert. Wenn Sie diesen sicheren Wert jedoch auf eine Eigenschaft festlegen, die keinen sicheren Wert erwartet, wird der Wert nicht geschützt. Wenn Sie z. B. eine sichere Zeichenfolge auf ein Tag festlegen, wird dieser Wert als reiner Text gespeichert. Verwenden Sie sichere Zeichenfolgen für Kennwörter und Geheimnisse.
-
-Beispiele zum Formatieren von Datentypen finden Sie unter [Parametertypformate](parameter-files.md#parameter-type-formats).
-
 ## <a name="variables"></a>Variables
 
-Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden.
+Im Abschnitt „variables“ erstellen Sie Werte, die in der ganzen Vorlage verwendet werden können. Sie müssen nicht unbedingt Variablen definieren, aber häufig bewirken sie eine Vereinfachung Ihrer Vorlage, indem komplexe Ausdrücke reduziert werden. Das Format der einzelnen Variablen entspricht einem der [Datentypen](#data-types).
 
 Im folgenden Beispiel werden die verfügbaren Optionen zum Definieren einer Variable angezeigt:
 

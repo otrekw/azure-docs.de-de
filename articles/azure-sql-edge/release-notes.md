@@ -9,17 +9,32 @@ ms.subservice: ''
 author: VasiyaKrishnan
 ms.author: vakrishn
 ms.reviewer: sstein
-ms.date: 09/22/2020
-ms.openlocfilehash: 543a71bc2a77f0a31f8ddaa0de13135b93db48ec
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.date: 11/24/2020
+ms.openlocfilehash: bb0c176ee8c145e1268827d79b453628e6f1bc28
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93395035"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808628"
 ---
 # <a name="azure-sql-edge-release-notes"></a>Azure SQL Edge: Versionshinweise 
 
 In diesem Artikel erhalten Sie Informationen zu Neuerungen und Änderungen für neue Azure SQL Edge-Builds.
+
+## <a name="azure-sql-edge---101"></a>Azure SQL Edge – 1.0.1
+
+### <a name="sql-engine-build-number---15020001553"></a>SQL-Engine-Buildnummer – 15.0.2000.1553
+
+### <a name="whats-new"></a>Neuigkeiten
+
+- In berechneten Spalten definierter Datebucket-Ausdruck wird zugelassen.
+
+### <a name="fixes"></a>Fehlerbehebungen
+
+- Korrektur der Aufbewahrungsrichtlinie für das Löschen einer Tabelle mit aktivierter Aufbewahrungsrichtlinie mit unbegrenztem Timeout
+- Unterstützung von Streaming- und Aufbewahrungsrichtlinienfeatures durch die DacFx-Bereitstellung 
+- Korrektur der DacFx-Bereitstellung zum Aktivieren der Bereitstellung aus einem geschachtelten Ordner in der SAS-URL 
+- PREDICT-Korrektur zur Unterstützung langer Spaltennamen in Fehlermeldungen
 
 ## <a name="azure-sql-edge---100-rtm"></a>Azure SQL Edge – 1.0.0 (RTM)
 

@@ -5,19 +5,19 @@ description: Mit Autofailover-Gruppen können Sie die Replikation und das automa
 services: sql-database
 ms.service: sql-db-mi
 ms.subservice: high-availability
-ms.custom: sqldbrb=2
+ms.custom: sqldbrb=2, devx-track-azurecli
 ms.devlang: ''
 ms.topic: conceptual
 author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 11/16/2020
-ms.openlocfilehash: 35856a0d414e288fcd184164733e9430a6bee296
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 0d2248b9c0a289f5e4f9f2f8e987365ab58c49c0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94653741"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94988543"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Verwenden von Autofailover-Gruppen für ein transparentes und koordiniertes Failover mehrerer Datenbanken
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -142,15 +142,15 @@ Berechtigungen für eine Failovergruppe werden über die [rollenbasierte Zugriff
 
 ### <a name="create-failover-group"></a>Erstellen einer Failovergruppe
 
-Zum Erstellen einer Failovergruppe benötigen Sie RBAC-Schreibzugriff auf den primären und die sekundären Server sowie auf alle Datenbanken in der Failovergruppe. Bei einer SQL Managed Instance benötigen Sie RBAC-Schreibzugriff auf die primäre und sekundäre SQL Managed Instance. Berechtigungen für einzelne Datenbanken sind dabei nicht relevant, da einzelne Datenbanken der SQL Managed Instance nicht zu einer Failovergruppe hinzugefügt bzw. aus einer Failovergruppe entfernt werden können.
+Zum Erstellen einer Failovergruppe benötigen Sie Azure RBAC-Schreibzugriff auf den primären und die sekundären Server sowie auf alle Datenbanken in der Failovergruppe. Bei einer SQL Managed Instance benötigen Sie Azure RBAC-Schreibzugriff auf die primäre und sekundäre SQL Managed Instance. Berechtigungen für einzelne Datenbanken sind dabei nicht relevant, da einzelne Datenbanken der SQL Managed Instance nicht zu einer Failovergruppe hinzugefügt bzw. aus einer Failovergruppe entfernt werden können.
 
 ### <a name="update-a-failover-group"></a>Aktualisieren einer Failovergruppe
 
-Zum Aktualisieren einer Failovergruppe benötigen Sie RBAC-Schreibzugriff auf die Failovergruppe und auf alle Datenbanken auf dem aktuellen primären Server bzw. in der aktuellen verwalteten Instanz.  
+Zum Aktualisieren einer Failovergruppe benötigen Sie Azure RBAC-Schreibzugriff auf die Failovergruppe und auf alle Datenbanken auf dem aktuellen primären Server bzw. in der aktuellen verwalteten Instanz.  
 
 ### <a name="fail-over-a-failover-group"></a>Ausführen des Failovers einer Failovergruppe
 
-Zum Erstellen eines Failovers für eine Failovergruppe benötigen Sie RBAC-Schreibzugriff auf die Failovergruppe auf dem neuen primären Server bzw. in der neuen verwalteten Instanz.
+Zum Erstellen eines Failovers für eine Failovergruppe benötigen Sie Azure RBAC-Schreibzugriff auf die Failovergruppe auf dem neuen primären Server bzw. in der neuen verwalteten Instanz.
 
 ## <a name="best-practices-for-sql-database"></a>Bewährte Methoden für SQL-Datenbank
 
@@ -409,7 +409,7 @@ Bedenken Sie dabei folgende Einschränkungen:
 
 ## <a name="programmatically-managing-failover-groups"></a>Programmgesteuertes Verwalten von Failovergruppen
 
-Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](/rest/api/sql/) und [Azure PowerShell-Cmdlets](/powershell/azure/). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen rollenbasierte Sicherheit (RBAC). Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md).
+Wie bereits zuvor erwähnt, können Gruppen für automatisches Failover und aktive Georeplikation auch programmgesteuert mit Azure PowerShell und der REST-API verwaltet werden. Die folgenden Tabellen beschreiben den verfügbaren Satz von Befehlen. Die aktive Georeplikation umfasst eine Reihe von Azure Resource Manager-APIs für die Verwaltung. Hierzu zählen unter anderem die [Azure SQL-Datenbank-REST-API](/rest/api/sql/) und [Azure PowerShell-Cmdlets](/powershell/azure/). Diese APIs erfordern die Verwendung von Ressourcengruppen und unterstützen die rollenbasierte Zugriffssteuerung (Azure RBAC) in Azure. Weitere Informationen zur Implementierung von Zugriffsrollen finden Sie unter [Rollenbasierte Zugriffssteuerung in Azure (Azure RBAC)](../../role-based-access-control/overview.md).
 
 ### <a name="manage-sql-database-failover"></a>Verwalten des Failovers von SQL-Datenbank
 

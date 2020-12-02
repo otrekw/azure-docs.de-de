@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 7cdd70a44a090b03a3f11626805565469c7c04e7
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: df4d777ad78240b3ca84c51152b37861c4ccc486
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554664"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94960001"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -90,7 +90,7 @@ Azure Machine Learning verwendet [Datenspeicher](concept-data.md#datastores), um
 1. Wählen Sie in den Datenspeichereinstellungen __Ja__ für __Allow Azure Machine Learning service to access the storage using workspace managed identity__ (Azure Machine Learning Service den Zugriff auf den Speicher über die vom Arbeitsbereich verwaltete Identität erlauben).
 
 
-Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung von Azure (Azure Resource-Based Access Control, Azure RBAC) dem Speicherdienst als __Leser__ hinzugefügt. Mit __Reader__-Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
+Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe der ressourcenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC) dem Speicherdienst als __Leser__ hinzugefügt. Mit __Reader__-Zugriff kann der Arbeitsbereich Firewalleinstellungen abrufen und sicherstellen, dass die Daten das virtuelle Netzwerk nicht verlassen.
 
 > [!NOTE]
 > Diese Änderungen können bis zu 10 Minuten dauern.

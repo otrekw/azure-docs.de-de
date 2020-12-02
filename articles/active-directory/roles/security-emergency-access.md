@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 966d264cc338487dd1a8c04f2efd0825dfccdef0
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 10d93b92f3bb0adfe734ad439079afdfcaa6270e
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378753"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94834437"
 ---
 # <a name="manage-emergency-access-accounts-in-azure-ad"></a>Verwalten von Konten für den Notfallzugriff in Azure AD
 
@@ -33,7 +33,7 @@ Dieser Artikel enthält Richtlinien zum Verwalten von Konten für den Notfallzug
 Eine Organisation könnte beispielsweise in den folgenden Situationen auf ein Konto für den Notfallzugriff zurückgreifen:
 
 - Die Benutzerkonten befinden sich in einem Verbund, und der Verbund ist aktuell nicht verfügbar, weil ein Mobilfunknetz oder ein Identitätsanbieter ausgefallen ist. Wenn beispielsweise der Identitätsanbieterhost in Ihrer Umgebung nicht erreichbar ist, können sich die Benutzer möglicherweise nicht anmelden, wenn sie von Azure AD an ihren Identitätsanbieter umgeleitet werden.
-- Die Administratoren sind über Azure Multi-Factor Authentication registriert, und keines der von ihnen verwendeten Geräte ist verfügbar, oder der Dienst ist nicht verfügbar. Benutzer können möglicherweise keine mehrstufige Authentifizierung durchführen, um eine Rolle zu aktivieren. Beispielsweise können bei einem Ausfall des Mobilfunknetzes keine Anrufe entgegengenommen oder SMS empfangen werden, womit die einzigen registrierten Authentifizierungsmechanismen für ihr Gerät wegfallen.
+- Die Administratoren sind über Azure AD Multi-Factor Authentication registriert, und keines der von ihnen verwendeten Geräte ist verfügbar, oder der Dienst ist nicht verfügbar. Benutzer können möglicherweise keine mehrstufige Authentifizierung durchführen, um eine Rolle zu aktivieren. Beispielsweise können bei einem Ausfall des Mobilfunknetzes keine Anrufe entgegengenommen oder SMS empfangen werden, womit die einzigen registrierten Authentifizierungsmechanismen für ihr Gerät wegfallen.
 - Die Person, die zuletzt über globalen Administratorzugriff verfügte, hat die Organisation verlassen. Azure AD verhindert, dass das letzte globale Administratorkonto gelöscht wird, aber das lokale Löschen oder Deaktivieren des Kontos wird nicht verhindert. Beide Situationen können dazu führen, dass die Organisation nicht in der Lage ist, das Konto wiederherzustellen.
 - Bei unvorhersehbaren Ereignissen wie Naturkatastrophen, die dazu führen, dass Mobiltelefone oder andere Netzwerke nicht verfügbar sind. 
 
@@ -44,7 +44,7 @@ Erstellen Sie mindestens zwei Konten für den Notfallzugriff. Bei diesen Konten 
 Beim Konfigurieren dieser Konten müssen die folgenden Anforderungen erfüllt werden:
 
 - Die Konten für den Notfallzugriff dürfen keinem Einzelbenutzer in der Organisation zugeordnet werden. Stellen Sie sicher, dass Ihre Konten nicht mit Mobiltelefonen von Mitarbeitern, Hardwaretoken einzelner Mitarbeiter oder anderen mitarbeiterspezifischen Anmeldeinformationen verbunden sind. Durch diese Vorsichtsmaßnahme werden Fälle abgedeckt, in denen einzelne Mitarbeiter nicht erreichbar sind, wenn die Anmeldeinformationen benötigt werden. Es muss unbedingt sichergestellt werden, dass alle registrierten Geräte an einem bekannten, sicheren Ort aufbewahrt werden, die über verschiedene Wege mit Azure AD kommunizieren können.
-- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, würde Azure MFA einen anderen Mechanismus darstellen.  Wenn jedoch Azure MFA Ihr primäres Authentifizierungselement für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen, z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über benutzerdefinierte Steuerelemente.
+- Der für ein Konto für den Notfallzugriff verwendete Authentifizierungsmechanismus sollte sich von dem unterscheiden, der für Ihre anderen Administratorkonten einschließlich anderer Konten für den Notfallzugriff verwendet wird.  Erfolgt beispielsweise die normale Administratoranmeldung über lokale MFA, wäre Azure AD MFA ein anderer Mechanismus.  Wenn jedoch Azure AD MFA die primäre Authentifizierungsmethode für Ihre Administratorkonten ist, sollten Sie einen anderen Ansatz für diese Konten in Betracht ziehen. Hier käme z. B. die Verwendung von bedingtem Zugriff mit einem MFA-Drittanbieter über benutzerdefinierte Steuerelemente infrage.
 - Die jeweiligen Geräte oder die Anmeldeinformationen dürfen nicht ablaufen oder aufgrund mangelnder Verwendung in den Bereich der automatisierten Bereinigung fallen.  
 - Sie sollten die Rolle „Globaler Administrator“ für Ihre Konten für den Notfallzugriff dauerhaft zuweisen. 
 
@@ -90,7 +90,7 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 1. Wählen Sie **Alle Dienste** aus, geben Sie „Log Analytics“ in „Suchen“ ein, und wählen Sie dann **Log Analytics-Arbeitsbereiche** aus.
 1. Wählen Sie einen Arbeitsbereich aus.
 1. Wählen Sie in Ihrem Arbeitsbereich **Warnungen** > **Neue Warnungsregel** aus.
-    1. Überprüfen Sie unter **Ressource** , ob es sich bei dem Abonnement um das Abonnement handelt, dem Sie die Warnungsregel zuordnen möchten.
+    1. Überprüfen Sie unter **Ressource**, ob es sich bei dem Abonnement um das Abonnement handelt, dem Sie die Warnungsregel zuordnen möchten.
     1. Wählen Sie unter **Bedingung** die Option **Hinzufügen** aus.
     1. Wählen Sie **Benutzerdefinierte Protokollsuche** unter **Signalname** aus.
     1. Geben Sie unter **Suchabfrage** die folgende Abfrage ein, und fügen Sie die Objekt-IDs der beiden Konten für den Notfallzugriff ein.
@@ -115,7 +115,7 @@ Organisationen sollten die von den Notfallkonten ausgehenden Anmelde- und Überw
 1. Geben Sie unter **Warnungsdetails** den Namen der Warnungsregel an, und fügen Sie eine optionale Beschreibung hinzu.
 1. Legen Sie den **Schweregrad** des Ereignisses fest. Sie sollten ihn auf **Kritisch (Schweregrad 0)** festlegen.
 1. Behalten Sie unter **Regel beim Erstellen aktivieren** die Einstellung **ja** bei.
-1. Wenn Sie Warnungen für eine Weile deaktivieren möchten, aktivieren Sie das Kontrollkästchen **Warnungen unterdrücken** , geben Sie die Wartezeit vor der Warnung erneut ein, und wählen Sie dann **Speichern** aus.
+1. Wenn Sie Warnungen für eine Weile deaktivieren möchten, aktivieren Sie das Kontrollkästchen **Warnungen unterdrücken**, geben Sie die Wartezeit vor der Warnung erneut ein, und wählen Sie dann **Speichern** aus.
 1. Klicken Sie auf **Warnungsregel erstellen**.
 
 ### <a name="create-an-action-group"></a>Erstellen einer Aktionsgruppe

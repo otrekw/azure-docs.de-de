@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 11/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: a0d474208f11c203ca65e9ac296fa381d8633a8b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12c9fd43933f9f54e013752c5fe482ce31650536
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94663263"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95238393"
 ---
 # <a name="create-an-app-service-environment"></a>Erstellen einer App Service-Umgebung
 
@@ -34,7 +34,7 @@ Nachdem die ASE erstellt wurde, können Sie Folgendes nicht mehr ändern:
 
 - Standort
 - Subscription
-- Resource group
+- Ressourcengruppe
 - Verwendetes Azure Virtual Network (VNET)
 - Verwendete Subnetze
 - Subnetzgröße
@@ -48,7 +48,7 @@ Die ASEv3 wird nur in ausgewählten Regionen angeboten. Weitere Regionen werden 
 
 ## <a name="creating-an-ase-in-the-portal"></a>Erstellen einer ASE im Portal
 
-1. Um eine ASEv3 zu erstellen, suchen Sie im Marketplace nach **App Service-Umgebung v3**.  
+1. Um eine ASEv3 zu erstellen, suchen Sie im Marketplace nach **App Service-Umgebung (Vorschau)** .  
 2. Grundlegendes:  Wählen Sie das Abonnement aus, wählen Sie die Ressourcengruppe aus, bzw. erstellen Sie sie, und geben Sie den Namen Ihrer ASE ein.  Der ASE-Name wird auch für das Domänensuffix Ihrer ASE verwendet.  Wenn Ihr ASE-Name *contoso* ist, lautet das Domänensuffix *contoso.appserviceenvironment.net*.  Dieser Name wird automatisch in Ihrer privaten Azure DNS-Zone festgelegt, die von dem VNET verwendet wird, in dem die ASE bereitgestellt wird. 
 
     ![App Service-Umgebung: Registerkarte „Grundlagen“ zur Erstellung](./media/creation/creation-basics.png)

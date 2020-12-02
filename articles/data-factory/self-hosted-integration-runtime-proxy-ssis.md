@@ -11,13 +11,13 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
-ms.date: 11/15/2020
-ms.openlocfilehash: 48bd32569b7eb7fa09f83f81190bf96baa42fae0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.date: 11/19/2020
+ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659980"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916779"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -175,8 +175,10 @@ Gehen Sie wie folgt vor, um Ihren benutzerdefinierten Komponenten/Drittanbieterk
 
 1. Installieren Sie Ihre auf SQL Server 2017 ausgerichteten benutzerdefinierten Komponenten/Drittanbieterkomponenten in Azure-SSIS IR, und berücksichtigen Sie dabei die Informationen unter [Anpassen des Setups für eine Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
 
-1. Erstellen Sie die folgenden DTSPath-Registrierungsschlüssel für eine selbstgehostete Integration Runtime, falls sie noch nicht vorhanden sind: `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` und `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath`.
- 
+1. Erstellen Sie die folgenden DTSPath-Registrierungsschlüssel für eine selbstgehostete Integration Runtime, falls sie noch nicht vorhanden sind:
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` auf `C:\Program Files\Microsoft SQL Server\140\DTS\` festgelegt.
+   1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` auf `C:\Program Files (x86)\Microsoft SQL Server\140\DTS\` festgelegt.
+   
 1. Installieren Sie Ihre auf SQL Server 2017 ausgerichteten benutzerdefinierten Komponenten/Drittanbieterkomponenten in der selbstgehosteten Integration Runtime unter dem obigen DTS-Pfad, und stellen Sie sicher, dass Ihr Installationsprozess Folgendes umfasst:
 
    1. Erstellen der Ordner `<DTSPath>`, `<DTSPath>/Connections`, `<DTSPath>/PipelineComponents` und `<DTSPath>/UpgradeMappings` (sofern noch nicht vorhanden)
@@ -185,7 +187,7 @@ Gehen Sie wie folgt vor, um Ihren benutzerdefinierten Komponenten/Drittanbieterk
    
    1. Installieren aller Assemblys, auf die von den Assemblys Ihrer benutzerdefinierten Komponenten/Drittanbieterkomponenten im globalen Assemblycache (GAC) verwiesen wird
 
-[Hier](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir) finden Sie ein Beispiel für eine Drittanbieterkomponente mit benutzerdefiniertem Express-Setup und selbstgehosteter Integration Runtime als Proxy für Azure-SSIS IR.
+Im Folgenden finden Sie Beispiele von unseren Partnern [Theobald Software](https://kb.theobald-software.com/xtract-is/XIS-for-Azure-SHIR) und [Aecorsoft](https://www.aecorsoft.com/blog/2020/11/8/using-azure-data-factory-to-bring-sap-data-to-azure-via-self-hosted-ir-and-ssis-ir), die ihre Komponenten zur Verwendung unserer benutzerdefinierten Expressinstallation und der selbstgehosteten IR als Proxy für Azure-SSIS IR angepasst haben.
 
 ## <a name="enforce-tls-12"></a>Erzwingen von TLS 1.2
 

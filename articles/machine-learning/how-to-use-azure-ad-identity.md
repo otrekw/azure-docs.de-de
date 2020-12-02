@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/16/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 7b76c81a78bfd3eb57a54f1d23ba1b154b09b3e6
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bcf5f75cf5cabe42f530a6a179c2cafd43b5520d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660150"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94952538"
 ---
 # <a name="use-azure-ad-identity-with-your-machine-learning-web-service-in-azure-kubernetes-service"></a>Verwenden der Azure AD-Identität mit Ihrem Machine Learning-Webdienst in Azure Kubernetes Service
 
@@ -32,13 +32,13 @@ In dieser Schrittanleitung wird beschrieben, wie Sie eine Azure AD-Identität (A
 
 ## <a name="create-and-install-an-azure-identity"></a>Erstellen und Installieren einer Azure-Identität
 
-1. Verwenden Sie den folgenden Befehl, um zu ermitteln, ob für Ihren AKS-Cluster RBAC aktiviert ist:
+1. Verwenden Sie den folgenden Befehl, um zu ermitteln, ob für Ihren AKS-Cluster Kubernetes RBAC aktiviert ist:
 
     ```azurecli-interactive
     az aks show --name <AKS cluster name> --resource-group <resource group name> --subscription <subscription id> --query enableRbac
     ```
 
-    Dieser Befehl gibt den Wert `true` zurück, wenn RBAC aktiviert ist. Anhand dieses Werts wird der Befehl bestimmt, der im nächsten Schritt verwendet werden soll.
+    Dieser Befehl gibt den Wert `true` zurück, wenn Kubernetes RBAC aktiviert ist. Anhand dieses Werts wird der Befehl bestimmt, der im nächsten Schritt verwendet werden soll.
 
 1. Installieren Sie die [Azure AD-Podidentität](https://azure.github.io/aad-pod-identity/docs/getting-started/installation/) in Ihrem AKS-Cluster.
 

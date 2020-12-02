@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: 7fa6beacf4456145e312494a72dad321dfef3754
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843926"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447020"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -67,7 +67,7 @@ Die einfachste Art der Erstellung eines Dienstprinzipals und Gewährung von Zugr
 
     Die CLI öffnet Ihren Standardbrowser, sofern sie dazu in der Lage ist, und lädt eine Anmeldeseite. Andernfalls müssen Sie einen Browser öffnen und die Anweisungen in der Befehlszeile befolgen. Die Anweisungen umfassen das Navigieren zu [https://aka.ms/devicelogin](https://aka.ms/devicelogin) und Eingeben eines Autorisierungscodes.
 
-    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](https://docs.microsoft.com/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
+    Wenn Sie über mehrere Azure-Abonnements verfügen, können Sie den Befehl `az account set -s <subscription name or ID>` verwenden, um das Abonnement festzulegen. Weitere Informationen finden Sie unter [Verwenden mehrerer Azure-Abonnements](/cli/azure/manage-azure-subscriptions-azure-cli?view=azure-cli-latest).
 
     Andere Methoden zur Authentifizierung finden Sie unter [Anmelden mit der Azure CLI](/cli/azure/authenticate-azure-cli?preserve-view=true&view=azure-cli-latest).
 
@@ -184,7 +184,7 @@ In den meisten Beispielen in der Dokumentation und Verwendungsbeispielen wird in
 > interactive_auth = InteractiveLoginAuthentication(tenant_id="your-tenant-id")
 > ```
 
-Bei Verwendung der Azure CLI wird der Befehl `az login` zur Authentifizierung der CLI-Sitzung verwendet. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Bei Verwendung der Azure CLI wird der Befehl `az login` zur Authentifizierung der CLI-Sitzung verwendet. Weitere Informationen finden Sie unter [Erste Schritte mit der Azure-Befehlszeilenschnittstelle](/cli/azure/get-started-with-azure-cli).
 
 > [!TIP]
 > Wenn Sie das SDK von einer Umgebung aus verwenden, in der Sie sich zuvor interaktiv mit der Azure CLI authentifiziert haben, können Sie die Klasse `AzureCliAuthentication` verwenden, um sich beim Arbeitsbereich mithilfe der von der CLI zwischengespeicherten Anmeldeinformationen zu authentifizieren:

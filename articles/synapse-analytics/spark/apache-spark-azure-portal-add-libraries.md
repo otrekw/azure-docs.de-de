@@ -6,20 +6,23 @@ author: euangMS
 ms.service: synapse-analytics
 ms.topic: conceptual
 ms.date: 10/16/2020
-ms.author: euang
+ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: fbcc7ffbde49acfd9afc180418d618060eb923c1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313528"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95917124"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
 Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie eine Bibliothek in einem Ihrer serverlosen Apache Spark-Pools (Vorschau) installieren. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
 
+## <a name="before-you-begin"></a>Voraussetzungen
+- Um Bibliotheken zu installieren und zu aktualisieren, müssen Sie über die Berechtigung **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** für das primäre Gen2-Speicherkonto verfügen, das mit dem Azure Synapse Analytics-Arbeitsbereich verknüpft ist.
+  
 ## <a name="default-installation"></a>Standardinstallation
 Apache Spark in Azure Synapse Analytics verfügt über eine vollständige Anacondas-Installation und zusätzliche Bibliotheken. Die vollständige Liste der Bibliotheken finden Sie unter [Apache Spark-Versionsunterstützung](apache-spark-version-support.md). 
 
@@ -29,12 +32,13 @@ Wenn eine Spark-Instanz gestartet wird, werden diese Bibliotheken automatisch ei
 ## <a name="manage-python-packages"></a>Verwalten von Python-Paketen
 Nachdem Sie die Bibliotheken identifiziert haben, die Sie für Ihre Spark-Anwendung verwenden möchten, können Sie sie in einem Spark-Pool (Vorschau) installieren. 
 
- Sie können eine *requirements.txt* -Datei (Ausgabe des Befehls `pip freeze`) verwenden, um die virtuelle Umgebung zu aktualisieren. Die in dieser Datei für Installation oder Upgrade aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird.
+ Sie können eine *requirements.txt*-Datei (Ausgabe des Befehls `pip freeze`) verwenden, um die virtuelle Umgebung zu aktualisieren. Die in dieser Datei für Installation oder Upgrade aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird.
 
 > [!IMPORTANT]
 > - Wenn das Paket, das Sie installieren, groß ist oder seine Installation lange dauert, wirkt sich dies auf die Startzeit der Spark-Instanz aus.
 > - Pakete, die zur Installationszeit Compilerunterstützung erfordern, z. B. GCC, werden nicht unterstützt.
 > - Pakete können nicht herabgestuft, sondern nur hinzugefügt oder aktualisiert werden.
+> - Zum Installieren von Bibliotheken benötigen Sie für das primäre Gen2-Speicherkonto, das mit dem Arbeitsbereich „Synapse“ verknüpft ist, die Berechtigung „Mitwirkender an Storage-Blobdaten“ oder „Besitzer von Speicherblobdaten“.
 
 ### <a name="requirements-format"></a>Anforderungsformat
 
@@ -92,9 +96,9 @@ So installieren Sie eine Bibliothek direkt aus dem Azure-Portal in einem Spark-P
 Führen Sie den folgenden Code aus, um zu überprüfen, ob die richtigen Versionen der richtigen Bibliotheken installiert sind
 
 ```python
-import pip #needed to use the pip functions
-for i in pip.get_installed_distributions(local_only=True):
-    print(i)
+import pkg_resources
+for d in pkg_resources.working_set:
+     print(d)
 ```
 ### <a name="update-python-packages"></a>Aktualisieren von Python-Paketen
 Pakete können jederzeit zwischen Sitzungen hinzugefügt oder geändert werden. Wenn eine neue Paketkonfigurationsdatei hochgeladen wird, überschreibt dies die vorhandenen Pakete und Versionen.  
@@ -104,7 +108,7 @@ So aktualisieren oder deinstallieren Sie eine Bibliothek
 
 2. Wählen Sie im Azure-Portal oder im Azure Synapse-Arbeitsbereich den **Apache Spark-Pool** aus, den Sie aktualisieren möchten.
 
-3. Navigieren Sie zum Abschnitt **Pakete** , und laden Sie eine neue Umgebungskonfigurationsdatei hoch.
+3. Navigieren Sie zum Abschnitt **Pakete**, und laden Sie eine neue Umgebungskonfigurationsdatei hoch.
    
 4. Nachdem Sie Ihre Änderungen gespeichert haben, müssen Sie aktive Sitzungen beenden und den Pool neu starten lassen. Optional können Sie das Beenden aktiver Sitzungen erzwingen, indem Sie das Kontrollkästchen **Neue Einstellungen erzwingen** aktivieren.
 

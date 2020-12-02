@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 0429eec2a84c22f3d998baa4dde4f543d4927f16
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 77a2a32b9a6358c39a14cfe37eeb44f7cb90af0a
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695332"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841987"
 ---
 # <a name="securing-paas-deployments"></a>Schützen von PaaS-Bereitstellungen
 
@@ -82,14 +82,14 @@ Mit der nachfolgenden bewährten Methode können Sie den identitätsorientierten
 **Bewährte Methode**: Schützen Sie Ihre VM-Verwaltungsschnittstellen in hybriden PaaS- und IaaS-Diensten mithilfe einer Verwaltungsschnittstelle, über die Sie diese virtuellen Computer remote verwalten können.   
 **Detail**: Sie können Remoteverwaltungsprotokolle wie [SSH](https://en.wikipedia.org/wiki/Secure_Shell), [RDP](https://support.microsoft.com/kb/186607) und [PowerShell-Remoting](/powershell/module/microsoft.powershell.core/enable-psremoting) verwenden. Im Allgemeinen empfiehlt es sich, über das Internet keinen direkten Remotezugriff auf virtuelle Computer zu ermöglichen.
 
-Verwenden Sie nach Möglichkeit alternative Konzepte wie die Verwendung von virtuellen privaten Netzwerken in einem Azure Virtual Network. Sollten keine Alternativen verfügbar sein, verwenden Sie unbedingt komplexe Passphrasen und eine zweistufige Authentifizierung (beispielsweise [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)).
+Verwenden Sie nach Möglichkeit alternative Konzepte wie die Verwendung von virtuellen privaten Netzwerken in einem Azure Virtual Network. Sollten keine Alternativen verfügbar sein, verwenden Sie unbedingt komplexe Passphrasen und eine zweistufige Authentifizierung (beispielsweise [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)).
 
 **Bewährte Methode**: Verwenden Sie sichere Authentifizierungs- und Autorisierungsplattformen.   
 **Detail**: Verwenden Sie Verbundidentitäten in Azure AD anstelle von benutzerdefinierten Benutzerspeichern. Bei Verbundidentitäten profitieren Sie von einem plattformbasierten Konzept und delegieren die Verwaltung autorisierter Identitäten an Ihre Partner. Das Verbundidentitätskonzept ist besonders wichtig, wenn Mitarbeiter gekündigt werden und diese Information in mehreren Identitäts- und Autorisierungssystemen berücksichtigt werden müssen.
 
 Verwenden Sie von der Plattform bereitgestellte Authentifizierungs- und Autorisierungsmechanismen anstelle von benutzerdefiniertem Code. Der Grund: Bei der Entwicklung von benutzerdefiniertem Authentifizierungscode können Ihnen unter Umständen Fehler unterlaufen. Die meisten Ihrer Entwickler sind keine Sicherheitsexperten und deshalb wahrscheinlich nicht mit den Feinheiten und neuesten Entwicklungen im Authentifizierungs- und Autorisierungsbereich vertraut. Die Sicherheit von kommerziellem Code (etwa von Microsoft) wird häufig intensiv geprüft.
 
-Verwenden Sie eine zweistufige Authentifizierung. Die zweistufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf Azure-Verwaltungsschnittstellen (Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) konzipiert und konfiguriert sein.
+Verwenden Sie eine zweistufige Authentifizierung. Die zweistufige Authentifizierung ist der aktuelle Standard für die Authentifizierung und Autorisierung, da sie die Sicherheitsprobleme eliminiert, die für Authentifizierungsmethoden mit Benutzername und Kennwort typisch sind. Der Zugriff auf Azure-Verwaltungsschnittstellen (Portal/Remote-PowerShell) und auf kundenorientierte Dienste sollte für die Verwendung von [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) konzipiert und konfiguriert sein.
 
 Verwenden Sie standardmäßige Authentifizierungsprotokolle wie OAuth2 und Kerberos. Diese Protokolle wurden umfassend überprüft und sind wahrscheinlich Teil Ihrer Plattformbibliotheken für die Authentifizierung und Autorisierung.
 

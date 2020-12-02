@@ -2,14 +2,14 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 07/27/2020
+ms.date: 11/20/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 3ffcb4a0f2f5dc64b165fcdec03f7c3ced258cc1
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90086758"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95972560"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -240,107 +240,200 @@ Remove-AzTag -ResourceId "/subscriptions/$subscription"
 
 ### <a name="apply-tags"></a>Anwenden von Tags
 
-Beim Hinzufügen von Tags zu einer Ressourcengruppe oder Ressource können Sie entweder die vorhandenen Tags überschreiben oder neue Tags an vorhandene Tags anfügen.
+Azure CLI bietet zwei Befehle zum Anwenden von Tags: [az tag create](/cli/azure/tag#az_tag_create) und [az tag update](/cli/azure/tag#az_tag_update). Sie müssen Azure CLI 2.10.0 oder höher verwenden. Sie können die Version mit `az version` überprüfen. Informationen zur Aktualisierung oder Installation finden Sie unter [Installieren der Azure CLI](/cli/azure/install-azure-cli).
 
-Verwenden Sie Folgendes, um die Tags einer Ressource zu überschreiben:
+Mit dem Befehl **az tag create** werden alle Tags für die Ressource, die Ressourcengruppe oder das Abonnement ersetzt. Übergeben Sie beim Aufrufen des Befehls die Ressourcen-ID der Entität, die markiert werden soll.
 
-```azurecli-interactive
-az resource tag --tags 'Dept=IT' 'Environment=Test' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
-```
-
-Verwenden Sie Folgendes, um ein Tag zu vorhandenen Tags einer Ressource anzufügen:
+Im folgenden Beispiel wird eine Gruppe von Tags auf ein Speicherkonto angewandt:
 
 ```azurecli-interactive
-az resource update --set tags.'Status'='Approved' -g examplegroup -n examplevnet --resource-type "Microsoft.Network/virtualNetworks"
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag create --resource-id $resource --tags Dept=Finance Status=Normal
 ```
 
-Verwenden Sie Folgendes, um die vorhandenen Tags einer Ressourcengruppe zu überschreiben:
+Beachten Sie, dass die Ressource nach Abschluss des Befehls zwei Tags enthält.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Status": "Normal"
+  }
+},
+```
+
+Wenn Sie den Befehl erneut ausführen, jedoch dieses Mal mit anderen Tags, werden Sie feststellen, dass die früheren Tags entfernt wurden.
 
 ```azurecli-interactive
-az group update -n examplegroup --tags 'Environment=Test' 'Dept=IT'
+az tag create --resource-id $resource --tags Team=Compliance Environment=Production
 ```
 
-Verwenden Sie Folgendes, um ein Tag zu vorhandenen Tags einer Ressourcengruppe anzufügen:
+```output
+"properties": {
+  "tags": {
+    "Environment": "Production",
+    "Team": "Compliance"
+  }
+},
+```
+
+Um einer Ressource, die bereits Tags enthält, Tags hinzuzufügen, verwenden Sie **az tag update**. Legen Sie den Parameter **--operation** auf **Merge** fest.
 
 ```azurecli-interactive
-az group update -n examplegroup --set tags.'Status'='Approved'
+az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
 ```
 
-Die Azure-Befehlszeilenschnittstelle verfügt derzeit nicht über einen Befehl zum Anwenden von Tags auf Abonnements. Sie können die Befehlszeilenschnittstelle jedoch zum Bereitstellen einer ARM-Vorlage verwenden, mit der die Tags auf ein Abonnement angewendet werden. Weitere Informationen finden Sie unter [Anwenden von Tags auf Ressourcengruppen oder Abonnements](#apply-tags-to-resource-groups-or-subscriptions).
+Beachten Sie, dass die beiden neuen Tags den beiden vorhandenen Tags hinzugefügt wurden.
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Normal",
+    "Team": "Compliance"
+  }
+},
+```
+
+Jeder Tagname kann nur einen Wert enthalten. Wenn Sie einen neuen Wert für ein Tag angeben, wird der alte Wert auch dann ersetzt, wenn Sie den Zusammenführungsvorgang verwenden. Im folgenden Beispiel wird das Tag „Status“ von „Normal“ in „Green“ geändert.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Merge --tags Status=Green
+```
+
+```output
+"properties": {
+  "tags": {
+    "Dept": "Finance",
+    "Environment": "Production",
+    "Status": "Green",
+    "Team": "Compliance"
+  }
+},
+```
+
+Wenn Sie den Parameter **--operation** auf **Replace** festlegen, werden die vorhandenen Tags durch die neue Gruppe von Tags ersetzt.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
+```
+
+Nur die neuen Tags verbleiben in der Ressource.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123",
+    "Project": "ECommerce",
+    "Team": "Web"
+  }
+},
+```
+
+Diese Befehle können auch für Ressourcengruppen und Abonnements verwendet werden. Sie übergeben den Bezeichner für die Ressourcengruppe oder das Abonnement, die Sie markieren möchten.
+
+Verwenden Sie zum Hinzufügen einer neuen Gruppe von Tags zu einer Ressourcengruppe Folgendes:
+
+```azurecli-interactive
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag create --resource-id $group --tags Dept=Finance Status=Normal
+```
+
+Verwenden Sie zum Aktualisieren der Tags für eine Ressourcengruppe Folgendes:
+
+```azurecli-interactive
+az tag update --resource-id $group --operation Merge --tags CostCenter=00123 Environment=Production
+```
+
+Verwenden Sie zum Hinzufügen einer neuen Gruppe von Tags zu einem Abonnement Folgendes:
+
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag create --resource-id /subscriptions/$sub --tags CostCenter=00123 Environment=Dev
+```
+
+Verwenden Sie zum Aktualisieren der Tags für ein Abonnement Folgendes:
+
+```azurecli-interactive
+az tag update --resource-id /subscriptions/$sub --operation Merge --tags Team="Web Apps"
+```
 
 ### <a name="list-tags"></a>Auflisten von Tags
 
-Verwenden Sie zum Anzeigen der vorhandenen Tags für eine Ressource Folgendes:
+Um die Tags für eine Ressource, eine Ressourcengruppe oder ein Abonnement abzurufen, verwenden Sie den Befehl [az tag list](/cli/azure/tag#az_tag_list), und übergeben Sie die Ressourcen-ID für die Entität.
+
+Verwenden Sie zum Anzeigen der Tags für eine Ressource Folgendes:
 
 ```azurecli-interactive
-az resource show -n examplevnet -g examplegroup --resource-type "Microsoft.Network/virtualNetworks" --query tags
+resource=$(az resource show -g demoGroup -n demoStorage --resource-type Microsoft.Storage/storageAccounts --query "id" --output tsv)
+az tag list --resource-id $resource
 ```
 
-Verwenden Sie zum Anzeigen der vorhandenen Tags für eine Ressourcengruppe Folgendes:
+Verwenden Sie zum Anzeigen der Tags für eine Ressourcengruppe Folgendes:
 
 ```azurecli-interactive
-az group show -n examplegroup --query tags
+group=$(az group show -n demoGroup --query id --output tsv)
+az tag list --resource-id $group
 ```
 
-Das Skript gibt das folgende Format zurück:
+Verwenden Sie zum Anzeigen der Tags für ein Abonnement Folgendes:
 
-```json
-{
-  "Dept"        : "IT",
-  "Environment" : "Test"
-}
+```azurecli-interactive
+sub=$(az account show --subscription "Demo Subscription" --query id --output tsv)
+az tag list --resource-id /subscriptions/$sub
 ```
 
 ### <a name="list-by-tag"></a>Auflisten nach Tag
 
-Zum Abrufen aller Ressourcen mit einem bestimmten Tag und Wert verwenden Sie `az resource list`:
+Verwenden Sie zum Abrufen von Ressourcen mit einem bestimmten Tagnamen und -wert Folgendes:
 
 ```azurecli-interactive
-az resource list --tag Dept=Finance
+az resource list --tag CostCenter=00123 --query [].name
 ```
 
-Verwenden Sie `az group list`, um Ressourcengruppen mit einem bestimmten Tag abzurufen:
+Verwenden Sie zum Abrufen von Ressourcen mit einem bestimmten Tagnamen und einem beliebigen Tagwert Folgendes:
 
 ```azurecli-interactive
-az group list --tag Dept=IT
+az resource list --tag Team --query [].name
+```
+
+Verwenden Sie zum Abrufen von Ressourcengruppen mit einem bestimmten Tagnamen und -wert Folgendes:
+
+```azurecli-interactive
+az group list --tag Dept=Finance
+```
+
+### <a name="remove-tags"></a>Entfernen von Tags
+
+Um bestimmte Tags zu entfernen, verwenden Sie den Befehl **az tag update**, und legen Sie **--operation** auf **Delete** fest. Übergeben Sie die Tags, die gelöscht werden sollen.
+
+```azurecli-interactive
+az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web
+```
+
+Die angegebenen Tags werden entfernt.
+
+```output
+"properties": {
+  "tags": {
+    "CostCenter": "00123"
+  }
+},
+```
+
+Um alle Tags zu entfernen, verwenden Sie den Befehl [az tag delete](/cli/azure/tag#az_tag_delete).
+
+```azurecli-interactive
+az tag delete --resource-id $resource
 ```
 
 ### <a name="handling-spaces"></a>Behandeln von Leerzeichen
 
-Wenn die Namen oder Werte der Tags Leerzeichen enthalten, müssen Sie einige zusätzliche Schritte ausführen. 
-
-Die `--tags`-Parameter in der Azure CLI können eine Zeichenfolge akzeptieren, die aus einem Array von Zeichenfolgen besteht. Im folgenden Beispiel werden die Tags in einer Ressourcengruppe überschrieben, in der Tags Leerzeichen und Bindestriche aufweisen: 
+Wenn die Tagnamen oder -werte Leerzeichen enthalten, umschließen Sie sie mit doppelten Anführungszeichen.
 
 ```azurecli-interactive
-TAGS=("Cost Center=Finance-1222" "Location=West US")
-az group update --name examplegroup --tags "${TAGS[@]}"
-```
-
-Sie können dieselbe Syntax verwenden, wenn Sie eine Ressourcengruppe oder Ressourcen erstellen oder aktualisieren, indem Sie den `--tags`-Parameter verwenden.
-
-Um die Tags mithilfe des `--set`-Parameters zu aktualisieren, müssen Sie den Schlüssel und den Wert als Zeichenfolge übergeben. Im folgenden Beispiel wird ein einzelnes Tag an eine Ressourcengruppe angefügt:
-
-```azurecli-interactive
-TAG="Cost Center='Account-56'"
-az group update --name examplegroup --set tags."$TAG"
-```
-
-In diesem Fall wird der Tagwert mit einfachen Anführungszeichen gekennzeichnet, da der Wert einen Bindestrich aufweist.
-
-Möglicherweise müssen Sie auch Tags auf viele Ressourcen anwenden. Im folgenden Beispiel werden alle Tags aus einer Ressourcengruppe auf ihre Ressourcen angewendet, wenn die Tags möglicherweise Leerzeichen enthalten:
-
-```azurecli-interactive
-jsontags=$(az group show --name examplegroup --query tags -o json)
-tags=$(echo $jsontags | tr -d '{}"' | sed 's/: /=/g' | sed "s/\"/'/g" | sed 's/, /,/g' | sed 's/ *$//g' | sed 's/^ *//g')
-origIFS=$IFS
-IFS=','
-read -a tagarr <<< "$tags"
-resourceids=$(az resource list -g examplegroup --query [].id --output tsv)
-for id in $resourceids
-do
-  az resource tag --tags "${tagarr[@]}" --id $id
-done
-IFS=$origIFS
+az tag update --resource-id $group --operation Merge --tags "Cost Center"=Finance-1222 Location="West US"
 ```
 
 ## <a name="templates"></a>Vorlagen

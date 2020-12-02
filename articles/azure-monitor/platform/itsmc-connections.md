@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 05/12/2020
-ms.openlocfilehash: a75dd24769a4f1af018981ffcec279afc2a88b5a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f7980ca7bc6f23c383ea013c2b017b3bd61e2d25
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682417"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842293"
 ---
 # <a name="connect-itsm-productsservices-with-it-service-management-connector"></a>Verbinden von ITSM-Produkten/-Diensten mit dem ITSM-Connector
 Dieser Artikel bietet Informationen dazu, wie Sie die Verbindung zwischen Ihrem ITSM-Produkt bzw. -Dienst und dem ITSM-Connector (ITSMC) in Log Analytics konfigurieren, um Arbeitselemente zentral zu verwalten. Weitere Informationen zu ITSMC finden Sie in der [Übersicht](./itsmc-overview.md).
@@ -41,6 +41,7 @@ Stellen Sie sicher, dass die folgenden Voraussetzungen erfüllt werden:
 - Hybridverbindung wurde erstellt und konfiguriert. Weitere Informationen: [Konfigurieren der Hybridverbindung](#configure-the-hybrid-connection).
 - Unterstützte Versionen von Service Manager:  2012 R2 oder 2016.
 - Benutzerrolle:  [Erweiterter Operator](/previous-versions/system-center/service-manager-2010-sp1/ff461054(v=technet.10)).
+- Aktuell können durch die Warnungen, die von Azure Monitor gesendet werden, in System Center Service Manager Incidents erstellt werden.
 
 > [!NOTE]
 > 

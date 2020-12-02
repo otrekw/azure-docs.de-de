@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916490"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492011"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -196,7 +196,7 @@ Letzte Änderungen an SMB Multichannel-Konfigurationseinstellungen ohne eine ern
 
 ### <a name="cause"></a>Ursache  
 
-Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Bei jeder Änderung ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) für die Freigabe, für die der SMB-Client registriert ist, wird eine Änderungsbenachrichtigung vom Dateidienst an den Client gepusht. Dadurch werden Systemressourcen beansprucht, und das Problem verschlimmert sich mit zunehmender Anzahl von Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
+Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Bei jeder Änderung ([ReadDirectoryChangesW](/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) für die Freigabe, für die der SMB-Client registriert ist, wird eine Änderungsbenachrichtigung vom Dateidienst an den Client gepusht. Dadurch werden Systemressourcen beansprucht, und das Problem verschlimmert sich mit zunehmender Anzahl von Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
 
 Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwenden: 
 

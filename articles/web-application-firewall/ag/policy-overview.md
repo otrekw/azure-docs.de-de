@@ -5,14 +5,14 @@ services: web-application-firewall
 ms.topic: article
 author: winthrop28
 ms.service: web-application-firewall
-ms.date: 10/14/2020
+ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: 0f7fec997ec6d0c73fe6d1039ab1033752e0cedf
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566570"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94990124"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Übersicht über die Azure Web Application Firewall (WAF)-Richtlinien
 
@@ -43,7 +43,7 @@ Für eine noch bessere Anpassung bis auf URI-Ebene können Sie eine WAF-Richtlin
 
 Wie bei den Pro-Website-WAF-Richtlinien setzen spezifischere Richtlinien weniger spezifische Richtlinien außer Kraft. Das bedeutet, dass eine Pro-URI-Richtlinie auf einer URL-Pfadkarte jede Pro-Website- oder globale WAF-Richtlinie darüber außer Kraft setzt.
 
-## <a name="example"></a>Beispiel
+### <a name="example"></a>Beispiel
 
 Angenommen, Sie verfügen über drei Websites („contoso.com“, „fabrikam.com“ und „adatum.com“) hinter demselben Anwendungsgateway. Sie möchten eine WAF auf alle drei Websites anwenden, aber Sie benötigen zusätzliche Sicherheit für „adatum.com“, da Kunden hier Produkte anzeigen, suchen und kaufen.
 
@@ -53,7 +53,7 @@ Diese globale Richtlinie eignet sich für „contoso.com“ und „fabrikam.com�
 
 Für den URI „adatum.com/payments“ müssen Sie größere Vorsicht walten lassen. Wenden Sie daher eine andere Richtlinie auf diesen URI an, lassen Sie alle Regeln aktiviert, und entfernen Sie alle Ausschlüsse.
 
-In diesem Beispiel sehen Sie eine globale Richtlinie, die für zwei Websites gilt. Sie verfügen über eine Pro-Website-Richtlinie, die auf einen Standort angewendet wird, und eine Pro-URI-Richtlinie, die für eine bestimmte pfadbasierte Regel gilt. Weitere Informationen zum Erstellen von Pro-Website- und Pro-URI-Richtlinien für die entsprechende PowerShell für dieses Beispiel finden Sie unter (Link hier einfügen, wenn vorhanden).
+In diesem Beispiel sehen Sie eine globale Richtlinie, die für zwei Websites gilt. Sie verfügen über eine Pro-Website-Richtlinie, die auf einen Standort angewendet wird, und eine Pro-URI-Richtlinie, die für eine bestimmte pfadbasierte Regel gilt. Weitere Informationen zur PowerShell-Konfiguration für dieses Beispiel finden Sie unter [Konfigurieren von websitespezifischen WAF-Richtlinien mithilfe von Azure PowerShell](per-site-policies.md).
 
 ## <a name="existing-waf-configurations"></a>Vorhandene WAF-Konfigurationen
 

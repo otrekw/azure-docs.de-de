@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 29c378d40e3a4f92852f433677125a9e8a6d1133
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540126"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012952"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -27,6 +27,10 @@ Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisieru
 
 * Ein Azure-Abonnement. Wenn Sie nicht über ein Azure-Abonnement verfügen, können Sie ein kostenloses Konto erstellen, bevor Sie beginnen. Probieren Sie die [kostenlose oder kostenpflichtige Version von Azure Machine Learning](https://aka.ms/AMLFree) noch heute aus.
 * Wenn Sie das Python SDK verwenden, [installieren Sie das SDK](/python/api/overview/azure/ml/install?preserve-view=true&view=azure-ml-py).
+
+## <a name="limitations"></a>Einschränkungen
+
+* Beim Erstellen eines neuen Arbeitsbereichs können Sie entweder zulassen, dass die für den Arbeitsbereich erforderlichen Azure-Dienste automatisch erstellt werden, oder vorhandene Dienste bereitstellen. Wenn Sie vorhandene Dienste bereitstellen, müssen sich alle diese Dienste im gleichen Azure-Abonnement wie der Arbeitsbereich befinden.
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 
@@ -131,8 +135,12 @@ Wenn Sie Probleme beim Zugriff auf Ihr Abonnement haben, finden Sie weitere Info
    Subscription |Wählen Sie das gewünschte Azure-Abonnement aus.
    Resource group | Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe enthält verwandte Ressourcen für eine Azure-Lösung. In diesem Beispiel verwenden wir **docs-aml**. Die Rolle *Mitwirkender* oder *Besitzer* ist für die Verwendung einer vorhandenen Ressourcengruppe erforderlich.  Weitere Informationen zum Zugriff finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).
    Region | Wählen Sie die Azure-Region aus, die Ihren Benutzern und den Datenressourcen am nächsten ist, um Ihren Arbeitsbereich zu erstellen.
+   | Speicherkonto | Das Standardspeicherkonto für den Arbeitsbereich. Standardmäßig wird ein neues erstellt. |
+   | Key Vault | Die Azure Key Vault-Instanz, die vom Arbeitsbereich verwendet wird. Standardmäßig wird eine neue erstellt. |
+   | Application Insights | Die Application Insights-Instanz für den Arbeitsbereich. Standardmäßig wird eine neue erstellt. |
+   | Container Registry | Die Azure Container Registry-Instanz für den Arbeitsbereich. Standardmäßig wird _keine_ neue anfänglich für den Arbeitsbereich erstellt. Stattdessen wird sie einmal erstellt, sobald Sie sie benötigen, wenn Sie während Training oder Bereitstellung ein Docker-Image erstellen. |
 
-    ![Konfigurieren des Arbeitsbereichs](./media/how-to-manage-workspace/create-workspace-form.png)
+   :::image type="content" source="media/how-to-manage-workspace/create-workspace-form.png" alt-text="Konfigurieren Sie Ihren Arbeitsbereich.":::
 
 1. Wählen Sie **Überprüfen + erstellen** aus, nachdem die Konfiguration des Arbeitsbereichs abgeschlossen ist. Verwenden Sie optional die Abschnitte [Netzwerk](#networking) und [Erweitert](#advanced), um weitere Einstellungen für den Arbeitsbereich zu konfigurieren.
 

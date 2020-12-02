@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/24/2020
 ms.author: memildin
-ms.openlocfilehash: ee2582d25477d9b9f4fe0bac6b230132a797fd0f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6c0e92c566dd69cdea14c9c7d346a5ec65f892bf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896593"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487948"
 ---
 # <a name="pricing-of-azure-security-center"></a>Preise für Azure Security Center
 Azure Security Center ermöglicht eine einheitliche Sicherheitsverwaltung und erweiterten Schutz vor Bedrohungen für Workloads, die in Azure, lokal und in anderen Clouds ausgeführt werden. Security Center bietet Transparenz und Kontrolle für Hybridcloud-Workloads, aktive Abwehrmaßnahmen zur Verringerung Ihrer Anfälligkeit für Bedrohungen sowie eine intelligente Erkennung, damit Sie mit der schnellen Entwicklung bei Cyberrisiken Schritt halten können.
@@ -83,12 +83,12 @@ Für Security Center gibt es zwei Angebote:
 ### <a name="how-do-i-enable-azure-defender-for-my-subscription"></a>Wie kann ich Azure Defender für mein Abonnement aktivieren? 
 Sie können die folgenden Methoden verwenden, um Azure Defender für Ihr Abonnement zu aktivieren: 
 
-|Methode  |Instructions  |
+|Methode  |Anweisungen  |
 |---------|---------|
 |Azure Security Center-Seiten im Azure-Portal|[Aktivieren von Azure Defender](#enable-azure-defender)|
-|REST-API|[Pricings-API](https://docs.microsoft.com/rest/api/securitycenter/pricings)|
-|Azure CLI|[az security pricing](https://docs.microsoft.com/cli/azure/security/pricing)|
-|PowerShell|[Set-AzSecurityPricing](https://docs.microsoft.com/powershell/module/az.security/set-azsecuritypricing)|
+|REST-API|[Pricings-API](/rest/api/securitycenter/pricings)|
+|Azure-Befehlszeilenschnittstelle|[az security pricing](/cli/azure/security/pricing)|
+|PowerShell|[Set-AzSecurityPricing](/powershell/module/az.security/set-azsecuritypricing)|
 |Azure Policy|[Bundle-Preise](https://github.com/Azure/Azure-Security-Center/tree/master/Pricing%20%26%20Settings/Azure%20Policy%20definitions/Bundle%20Pricings)|
 |||
 

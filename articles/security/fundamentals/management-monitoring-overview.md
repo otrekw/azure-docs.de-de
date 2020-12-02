@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 3520cbafc0e9eebfd6057fe92579a45873b25734
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 038f30ee186a5b3a9d87d64054726324051c37b4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698754"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842752"
 ---
 # <a name="azure-security-management-and-monitoring-overview"></a>Azure-Sicherheitsverwaltung und -Überwachung – Übersicht
 Dieser Artikel enthält eine Übersicht über die Sicherheitsfeatures und -dienste in Azure, die als Hilfe bei der Verwaltung und Überwachung von Azure-Clouddiensten und virtuellen Azure-Computern dienen.
@@ -54,15 +54,15 @@ Weitere Informationen:
 
 ## <a name="multi-factor-authentication"></a>Multi-Factor Authentication
 
-Azure Multi-Factor Authentication ist eine Authentifizierungsmethode, für die mehrere Überprüfungsmethoden erforderlich sind. Der Dienst fügt eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen hinzu.
+Azure AD Multi-Factor Authentication ist eine Authentifizierungsmethode, für die mehrere Überprüfungsmethoden erforderlich sind. Der Dienst fügt eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und -transaktionen hinzu.
 
 Multi-Factor Authentication trägt zum Schutz des Zugriffs auf Daten und Anwendungen bei und bietet gleichzeitig ein einfaches Anmeldeverfahren für Benutzer. Der Dienst bietet eine leistungsfähige Authentifizierung mit verschiedenen Überprüfungsoptionen (Telefonanruf, SMS oder Benachrichtigung bzw. Überprüfungscode in einer mobilen App) sowie OATH-Token von Drittanbietern.
 
 Weitere Informationen:
 
 * [Multi-Factor Authentication](https://azure.microsoft.com/documentation/services/multi-factor-authentication/)
-* [Was ist Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
-* [Funktionsweise von Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Was ist Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md)
+* [Funktionsweise von Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)
 
 ## <a name="expressroute"></a>ExpressRoute
 

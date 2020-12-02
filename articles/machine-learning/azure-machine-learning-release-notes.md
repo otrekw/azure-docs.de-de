@@ -9,12 +9,12 @@ ms.topic: reference
 ms.author: jmartens
 author: j-martens
 ms.date: 09/10/2020
-ms.openlocfilehash: 53a30f92adaf25d87897e98834cda2d5f92b874c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 03825e0f091df01b98355dd6789eb5c9cb2897b0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012270"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444538"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning: Anmerkungen zu dieser Version
 
@@ -43,7 +43,7 @@ Sehen Sie die [Liste der bekannten Probleme](resource-known-issues.md) an, um me
     + Die Dokumentation für `OutputDatasetConfig.register_on_complete` wurde verbessert, sodass das Verhalten eingeschlossen wird, das angewendet wird, wenn der Name bereits vorhanden ist.
     + Wenn Namen für Dataseteingabe und -ausgabe angegeben werden, die möglicherweise zu Konflikten mit allgemeinen Umgebungsvariablen führen könnten, führt dies nun zu einer Warnung.
     + Der Zweck des `grant_workspace_access`-Parameters beim Registrieren von Datenspeichern wurde neu bestimmt. Legen Sie ihn auf `True` fest, um auf Daten in einem virtuellen Netzwerk in Machine Learning Studio zuzugreifen.
-      [Weitere Informationen](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
+      [Erfahren Sie mehr](./how-to-enable-studio-virtual-network.md)
     + Die verknüpfte Dienst-API wurde optimiert. Anstatt eine Ressourcen-ID anzugeben, verfügen Sie über die drei eigenständigen Parameter sub_id, rg und name, die in der Konfiguration definiert sind.
     + Damit Kunden Probleme mit beschädigten Token selbst lösen können, aktivieren Sie die Synchronisierung für Arbeitsbereichstoken als öffentliche Methode.
     + Diese Änderung ermöglicht es, dass eine leere Zeichenfolge als Wert für scrip_param verwendet werden kann.
@@ -109,8 +109,8 @@ Weitere Informationen zum [Taggen von Bildern in einem Bezeichnungsprojekt](how-
 
 ### <a name="azure-machine-learning-studio-notebooks-experience-october-update"></a>Azure Machine Learning Studio Notebooks-Oberfläche (Aktualisierung vom Oktober)
 + **Neue Features**
-  + [Volle Unterstützung für virtuelle Netzwerke](https://docs.microsoft.com/azure/machine-learning/how-to-enable-studio-virtual-network)
-  + [Fokusmodus](https://docs.microsoft.com/azure/machine-learning/how-to-run-jupyter-notebooks#focus-mode)
+  + [Volle Unterstützung für virtuelle Netzwerke](./how-to-enable-studio-virtual-network.md)
+  + [Fokusmodus](./how-to-run-jupyter-notebooks.md#focus-mode)
   + Notebooks speichern Strg-S
   + Zeilennummern
 

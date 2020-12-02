@@ -3,12 +3,12 @@ title: Azure-Sicherheitsbaseline für Azure DevTest Labs
 description: Azure-Sicherheitsbaseline für Azure DevTest Labs
 ms.topic: conceptual
 ms.date: 07/23/2020
-ms.openlocfilehash: 64e5ac46fbeb71706f7b1ae2d3682260e3cbc651
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ae3886e1c47b1d6835dc348b474e3d9e82a8f41
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95993651"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348822"
 ---
 # <a name="azure-security-baseline-for-azure-devtest-labs"></a>Azure-Sicherheitsbaseline für Azure DevTest Labs
 
@@ -379,7 +379,7 @@ Microsoft führt die Verwaltung der Sicherheitsrisiken für die zugrunde liegend
 ### <a name="52-deploy-automated-operating-system-patch-management-solution"></a>5.2: Bereitstellen der automatisierten Lösung für die Patchverwaltung von Betriebssystemen
 **Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um sicherzustellen, dass auf Ihren Windows- und Linux-VMs, die in DevTest Labs gehostet werden, die aktuellen Sicherheitsupdates installiert sind. Stellen Sie bei virtuellen Windows-Computern sicher, dass Windows Update aktiviert wurde und auf „Automatisch Aktualisieren“ festgelegt ist. Diese Einstellung kann derzeit nicht über DevTest Labs konfiguriert werden, der Lab-/Abonnementadministrator kann diese Einstellung jedoch auf den zugrunde liegenden Compute-VMs in seinem Abonnement konfigurieren. 
 
-- [Konfigurieren der Updateverwaltung für VMs in Azure](../automation/update-management/update-mgmt-overview.md)
+- [Konfigurieren der Updateverwaltung für VMs in Azure](../automation/update-management/overview.md)
 - [Grundlegendes zu von Security Center überwachten Azure-Sicherheitsrichtlinien](../security-center/policy-reference.md)
 
 **Azure Security Center-Überwachung:** Nicht verfügbar
@@ -393,8 +393,8 @@ Erfahren Sie mehr über [DevTest Labs Image Factory](image-factory-create.md), e
 
 Als Abonnementadministrator können Sie die Azure-Updateverwaltung verwenden, um Updates und Patches für DevTest Labs-VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-- [Updateverwaltung in Azure](../automation/update-management/update-mgmt-overview.md)
-- [Verwalten von Updates und Patches für Ihre VMs](../automation/update-management/update-mgmt-overview.md)
+- [Updateverwaltung in Azure](../automation/update-management/overview.md)
+- [Verwalten von Updates und Patches für Ihre VMs](../automation/update-management/overview.md)
 
 _ *Azure Security Center Überwachung:* * Nicht zutreffend
 

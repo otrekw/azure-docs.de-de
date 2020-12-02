@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 64334b17060879a2e587b13b062c81e86df33831
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: a910edfbbe1ad07dca806026396c506f7e90e6e7
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94743421"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95019431"
 ---
 # <a name="migration-overview-sql-server-to-sql-server-on-azure-vms"></a>Migrationsübersicht: SQL Server zu SQL Server auf Azure-VMs
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -57,6 +57,8 @@ Der geeignete Ansatz für Ihr Unternehmen hängt in der Regel von den folgenden 
 - Lebenszyklus der Unterstützbarkeit Ihrer vorhandenen Produkte
 - Fenster für Anwendungsdowntime während der Migration
 
+:::image type="content" source="media/sql-server-to-sql-on-azure-vm-individual-databases-guide/virtual-machine-migration-downtime.png" alt-text="Downtime während der Migration virtueller Computer":::
+
 In der folgenden Tabelle werden die Unterschiede zwischen den beiden Migrationsstrategien beschrieben:
 <br />
 
@@ -71,9 +73,9 @@ In der folgenden Tabelle werden die Unterschiede zwischen den beiden Migrationss
 In der folgenden Tabelle wird die verfügbare Methode für die **Lift & Shift**-Migrationsstrategie zum Migrieren Ihrer SQL Server-Datenbank zu SQL Server auf Azure-VMs beschrieben:
 <br />
 
-|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** |  **Hinweise** |
+|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** |  **Notizen** |
 | --- | --- | --- | --- | --- |
-| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Vorhandene SQL Server-Instanz, die unverändert in eine Instanz von SQL Server auf einer Azure-VM verschoben werden soll. Kann Migrationsworkloads von bis zu 35.000 VMs skalieren. <br /><br /> Quellserver bleiben online und bearbeiten Anforderungen während der Synchronisierung der Serverdaten, wodurch die Downtime minimiert wird. <br /><br /> **Automatisierung und Skripterstellung**: [Azure Site Recovery-Skripts](../../../migrate/how-to-migrate-at-scale.md) und [Beispiel für skalierte Migration und Planung für Azure](/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
+| [Azure Migrate](../../../migrate/index.yml) | SQL Server 2008 SP4| SQL Server 2008 SP4| [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Vorhandene SQL Server-Instanz, die unverändert in eine Instanz von SQL Server auf einer Azure-VM verschoben werden soll. Kann Migrationsworkloads von bis zu 35.000 VMs skalieren. <br /><br /> Quellserver bleiben online und bearbeiten Anforderungen während der Synchronisierung der Serverdaten, wodurch die Downtime minimiert wird. <br /><br /> **Automatisierung und Skripterstellung**: [Azure Site Recovery-Skripts](../../../migrate/how-to-migrate-at-scale.md) und [Beispiel für skalierte Migration und Planung für Azure](/azure/cloud-adoption-framework/migrate/azure-best-practices/contoso-migration-scale)|
 
 ## <a name="migrate"></a>Migrieren  
 
@@ -84,11 +86,11 @@ Bei der Migration von SQL Server-Datenbanken zu einer Instanz von SQL Server auf
 In der folgenden Tabelle sind alle verfügbaren Methoden zur Migration Ihrer SQL Server-Datenbank zu SQL Server auf Azure-VMs aufgeführt:
 <br />
 
-|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** | **Hinweise** |
+|**Methode** | **Minimale Quellversion** | **Minimale Zielversion** | **Größenbeschränkung für Quellsicherung** | **Notizen** |
 | --- | --- | --- | --- | --- |
 | **[Sicherung in einer Datei](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 | SQL Server 2008 SP4| [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Dies ist eine einfache und ausführlich getestete Methode zum Verschieben von Datenbanken auf verschiedene Computer. Verwenden Sie die Komprimierung, um die Größe der Sicherung für die Übertragung zu minimieren. <br /><br /> **Automatisierung und Skripterstellung**: [Transact-SQL (T-SQL)](/sql/t-sql/statements/backup-transact-sql) und [AzCopy in Blobspeicher](../../../storage/common/storage-use-azcopy-v10.md)  |
 | **[Erstellen von Sicherungen über URLs](/sql/relational-databases/backup-restore/sql-server-backup-to-url)** | SQL Server 2012 SP1 CU2 | SQL Server 2012 SP1 CU2| 12,8 TB für SQL Server 2016, andernfalls 1 TB | Eine alternative Möglichkeit, die Sicherungsdatei mithilfe von Azure-Speicher auf die VM zu verschieben. Verwenden Sie die Komprimierung, um die Größe der Sicherung für die Übertragung zu minimieren. <br /><br /> **Automatisierung und Skripterstellung**:  [T-SQL oder Wartungsplan](/sql/relational-databases/backup-restore/sql-server-backup-to-url) |
-| **[Datenbankmigrations-Assistent (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Der [DMA](/sql/dma/dma-overview) bewertet SQL Server lokal und führt dann nahtlos ein Upgrade auf spätere Versionen von SQL Server durch oder migriert zu SQL Server auf Azure-VMs, Azure SQL-Datenbank oder Azure SQL Managed Instance. <br /><br /> Sollte nicht für Filestream-fähige Benutzerdatenbanken verwendet werden.<br /><br /> Der DMA umfasst auch die Möglichkeit, [SQL- und Windows-Anmeldungen](/sql/dma/dma-migrateserverlogins) zu migrieren und [SSIS-Pakete](/sql/dma/dma-assess-ssis) zu bewerten. <br /><br /> **Automatisierung und Skripterstellung**: [Befehlszeilenschnittstelle](/sql/dma/dma-commandline) |
+| **[Datenbankmigrations-Assistent (DMA)](/sql/dma/dma-overview)** | SQL Server 2005| SQL Server 2008 SP4| [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Der [DMA](/sql/dma/dma-overview) bewertet SQL Server lokal und führt dann nahtlos ein Upgrade auf spätere Versionen von SQL Server durch oder migriert zu SQL Server auf Azure-VMs, Azure SQL-Datenbank oder Azure SQL Managed Instance. <br /><br /> Sollte nicht für Filestream-fähige Benutzerdatenbanken verwendet werden.<br /><br /> Der DMA umfasst auch die Möglichkeit, [SQL- und Windows-Anmeldungen](/sql/dma/dma-migrateserverlogins) zu migrieren und [SSIS-Pakete](/sql/dma/dma-assess-ssis) zu bewerten. <br /><br /> **Automatisierung und Skripterstellung**: [Befehlszeilenschnittstelle](/sql/dma/dma-commandline) |
 | **[Trennen und Anfügen](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#detach-and-attach-from-a-url)** | SQL Server 2008 SP4 | SQL Server 2014 | [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Verwenden Sie diese Methode, wenn Sie planen, [diese Dateien mithilfe des Azure Blob Storage-Diensts](/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure) zu speichern und sie an eine Instanz von SQL Server auf einer Azure-VM anzufügen, was besonders bei sehr großen Datenbanken nützlich ist oder wenn die Zeit für Sicherung und Wiederherstellung zu lang ist. <br /><br /> **Automatisierung und Skripterstellung**:  [T-SQL](/sql/relational-databases/databases/detach-a-database#TsqlProcedure) und [AzCopy in Blobspeicher](../../../storage/common/storage-use-azcopy-v10.md)|
 |**[Protokollversand](sql-server-to-sql-on-azure-vm-individual-databases-guide.md#migrate)** | SQL Server 2008 SP4 (nur Windows) | SQL Server 2008 SP4 (nur Windows) | [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) | Der Protokollversand repliziert Transaktionsprotokolldateien von lokalen Speicherorten auf eine Instanz von SQL Server auf einer Azure-VM. <br /><br /> Dies ermöglicht eine minimale Downtime während des Failovers und erfordert einen geringeren Konfigurationsaufwand als die Einrichtung einer Always On-Verfügbarkeitsgruppe. <br /><br /> **Automatisierung und Skripterstellung**: [T-SQL](/sql/database-engine/log-shipping/log-shipping-tables-and-stored-procedures)  |
 | **[Verteilte Verfügbarkeitsgruppe](../../virtual-machines/windows/business-continuity-high-availability-disaster-recovery-hadr-overview.md#hybrid-it-disaster-recovery-solutions)** | SQL Server 2016| SQL Server 2016 | [Azure VM-Speichergrenze](https://azure.microsoft.com/documentation/articles/azure-resource-manager/management/azure-subscription-service-limits/) |  Eine [verteilte Verfügbarkeitsgruppe](/sql/database-engine/availability-groups/windows/distributed-availability-groups) ist ein spezieller Typ einer Verfügbarkeitsgruppe, der zwei separate Verfügbarkeitsgruppen umfasst. Die Verfügbarkeitsgruppen, die Teil einer verteilten Verfügbarkeitsgruppe sind, müssen sich weder am selben Ort befinden noch die domänenübergreifende Unterstützung umfassen. <br /><br /> Diese Methode minimiert die Downtime und wird verwendet, wenn Sie eine Verfügbarkeitsgruppe lokal konfiguriert haben. <br /><br /> **Automatisierung und Skripterstellung**: [T-SQL](/sql/t-sql/statements/alter-availability-group-transact-sql)  |
@@ -117,8 +119,8 @@ Bei der Migration von SQL Server Business Intelligence-Diensten außerhalb des B
 
 Zu diesen Diensten gehören:
 
-- [**SQL Server Integration Services (SSIS)** ](/sql/integration-services/install-windows/upgrade-integration-services)
-- [**SQL Server Reporting Services (SSRS)** ](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
+- [**SQL Server Integration Services (SSIS)**](/sql/integration-services/install-windows/upgrade-integration-services)
+- [**SQL Server Reporting Services (SSRS)**](/sql/reporting-services/install-windows/upgrade-and-migrate-reporting-services)
 - [**SQL Server Analysis Services (SSAS)**](/sql/database-engine/install-windows/upgrade-analysis-services)
 
 ## <a name="supported-versions"></a>Unterstützte Versionen

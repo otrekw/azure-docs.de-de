@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 2c2b7de65e7ac22ebe648ce98633d5ae88818324
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94628389"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95999874"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -251,11 +251,7 @@ foreach ($deployment in $deployments){
 
 ## <a name="report"></a>Bericht
 
-Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie im Partner Center-Dashboard ([https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure](https://partner.microsoft.com/dashboard/mpn/analytics/CPP/MicrosoftAzure)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn Sie Probleme mit dem Bericht oder der Anmeldung haben, erstellen Sie eine Supportanfrage gemäß der Anleitung im Abschnitt „Support“.
-
-Wählen Sie in der Dropdownliste für den Partnerzuordnungstyp „Tracked Template“ (Nachverfolgte Vorlage) aus, um den Bericht anzuzeigen.
-
-![Bericht für die Zuordnung der Nutzung durch Kunden](media/marketplace-publishers-guide/customer-usage-attribution-report.png)
+Den Bericht für die Zuordnung der Nutzung durch Kunden finden Sie im Partner Center-Dashboard ([https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview](https://partner.microsoft.com/dashboard/partnerinsights/analytics/overview)). Um den Bericht anzuzeigen, müssen Sie sich mit Ihren Anmeldeinformationen für das Partner Center anmelden. Wenn beim Berichten oder Anmelden Probleme auftreten, erstellen Sie eine [Supportanfrage](#get-support).
 
 ## <a name="notify-your-customers"></a>Benachrichtigen der Kunden
 
