@@ -10,16 +10,16 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: panosper
-ms.openlocfilehash: 7c0b399f84e793d9e762c89dbbd1901bb5a95f26
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 32f6a9dae1a5b0be604b53d814ebc85cb7813b91
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024329"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353764"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Häufig gestellte Fragen zur Spracherkennung
 
-Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](../cognitive-services-support-options.md?context=%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext%253fcontext%253d%252fazure%252fcognitive-services%252fspeech-service%252fcontext%252fcontext) an.
+Wenn Sie in diesen häufig gestellten Fragen keine Antworten auf Ihre Fragen finden, sehen Sie sich [weitere Supportoptionen](../cognitive-services-support-options.md?context=%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext%253fcontext%253d%2fazure%2fcognitive-services%2fspeech-service%2fcontext%2fcontext) an.
 
 ## <a name="general"></a>Allgemein
 
@@ -71,7 +71,7 @@ Wenn Sie ein Modell mit Baseline v1.0 angepasst und bereitgestellt haben, bleibt
 
 **F: Werden meine Anforderungen protokolliert?**
 
-**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Beim [Erstellen eines benutzerdefinierten Endpunkts](how-to-custom-speech-deploy-model.md) kann bei Bedarf die Option *Log content from this endpoint* (Inhalte dieses Endpunkts protokollieren) aktiviert werden, um die Nachverfolgung zu ermöglichen. Anforderungen werden dann in Azure in einem sicheren Speicher protokolliert.
+**A:** Standardmäßig werden Anforderungen nicht protokolliert (weder Audio noch Transkription). Beim [Erstellen eines benutzerdefinierten Endpunkts](./how-to-custom-speech-train-model.md) kann bei Bedarf die Option *Log content from this endpoint* (Inhalte dieses Endpunkts protokollieren) aktiviert werden, um die Nachverfolgung zu ermöglichen. Anforderungen werden dann in Azure in einem sicheren Speicher protokolliert.
 
 **F: Werden meine Anforderungen gedrosselt?**
 

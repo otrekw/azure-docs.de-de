@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: b489964e5ef8ea483cbe203be1ff665078a6d66a
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 60ef490bbba4dca4f01b82967ad6ea8636e7bd4e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95741728"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353696"
 ---
 # <a name="form-recognizer-layout-service"></a>Layoutdienst für die Formularerkennung
 
-Die Azure-Formularerkennung kann Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten mithilfe ihres Layoutdiensts extrahieren. Die Layout-API ermöglicht es Kunden, aus Dokumenten in vielen verschiedenen Formaten strukturierte Daten und eine strukturierte Darstellung des Dokuments zurückzugeben. Sie kombiniert unsere leistungsstarken Funktionen für [optische Zeichenerkennung (Optical Character Recognition, OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) mit Deep Learning-Modellen für Dokumentenverständnis zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Struktur von Dokumenten. 
+Die Azure-Formularerkennung kann Text, Tabellen, Auswahlmarkierungen und Strukturinformationen aus Dokumenten mithilfe ihres Layoutdiensts extrahieren. Die Layout-API ermöglicht es Kunden, aus Dokumenten in vielen verschiedenen Formaten strukturierte Daten und eine strukturierte Darstellung des Dokuments zurückzugeben. Sie kombiniert unsere leistungsstarken Funktionen für [optische Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit Deep Learning-Modellen für Dokumentenverständnis zum Extrahieren von Text, Tabellen, Auswahlmarkierungen und der Struktur von Dokumenten. 
 
 ## <a name="what-does-the-layout-service-do"></a>Welche Aufgaben führt der Layoutdienst aus?
 
@@ -96,7 +96,3 @@ Layout extrahiert auch Auswahlmarkierungen aus Dokumenten. Extrahierte Auswahlma
 
 * [Was ist die Formularerkennung?](./overview.md)
 * [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeLayoutAsync)
-
-
-
-

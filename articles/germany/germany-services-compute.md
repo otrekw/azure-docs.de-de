@@ -7,19 +7,19 @@ author: gitralf
 ms.author: ralfwi
 ms.service: germany
 ms.custom: bfdocs
-ms.openlocfilehash: 122920b02070be5d87e93e8bd37b1fa1e77491ea
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e6c2e89f1ddce1bd88d3b8ce0ccf7e82364afa32
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018563"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351751"
 ---
 # <a name="azure-germany-compute-services"></a>Computedienste von Microsoft Azure Deutschland
 
 [!INCLUDE [closureinfo](../../includes/germany-closure-info.md)]
 
 ## <a name="virtual-machines"></a>Virtual Machines
-Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+Ausführliche Informationen zum Azure Virtual Machines-Dienst und seiner Verwendung finden Sie unter [Größen für virtuelle Windows-Computer in Azure](../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 ### <a name="variations"></a>Abweichungen
 Diese Produkte (virtuelle Computer) sind in Azure Deutschland verfügbar:

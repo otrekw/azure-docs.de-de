@@ -131,7 +131,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Alerts
+    - name: Warnungen
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -209,7 +209,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure CLI
+                - name: Azure-Befehlszeilenschnittstelle
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -1143,6 +1143,8 @@
               href: platform/workbooks-tree-visualizations.md
             - name: Graph
               href: platform/workbooks-graph-visualizations.md
+            - name: Zuordnung
+              href: platform/workbooks-map-visualizations.md
             - name: Wabenförmig
               href: platform/workbooks-honey-comb.md
             - name: Gestapelte Säule
