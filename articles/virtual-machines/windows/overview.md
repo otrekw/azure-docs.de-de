@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 11/14/2019
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 9ff05f2cf9f29ef86a6db9955e7d28c9035e1bf4
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 26905b746efb0bfcc877e0fa8fad797672bb6447
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376960"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483214"
 ---
 # <a name="windows-virtual-machines-in-azure"></a>Virtuelle Windows-Computer in Azure
 
@@ -50,7 +50,7 @@ Die folgende Tabelle enthält einige Methoden, mit denen Sie eine Liste verfügb
 | Azure-Portal |Wählen Sie beim Erstellen eines virtuellen Computers einen Standort aus der Liste aus. |
 | Azure PowerShell |Verwenden Sie den Befehl [Get-AzLocation](/powershell/module/az.resources/get-azlocation). |
 | REST-API |Verwenden Sie den Vorgang [List locations](/rest/api/resources/subscriptions) (Standorte auflisten). |
-| Azure-Befehlszeilenschnittstelle |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
+| Azure CLI |Verwenden Sie den Vorgang [az account list-locations](/cli/azure/account?view=azure-cli-latest). |
 
 ### <a name="singapore-data-residency"></a>Data Residency in Singapur
 
@@ -69,7 +69,7 @@ Bei Azure wird auf der Grundlage von Größe und Betriebssystem des virtuellen C
 Für Ihr Abonnement gelten standardmäßig bestimmte [Kontingentgrenzen](../../azure-resource-manager/management/azure-subscription-service-limits.md), die die Bereitstellung einer hohen Anzahl virtueller Computer für Ihr Projekt beeinträchtigen können. Der derzeitige Grenzwert pro Abonnement liegt bei 20 VMs pro Region. Zur Erhöhung der Grenzwerte können Sie [ein Supportticket erstellen und eine Erhöhung beantragen](../../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
 ### <a name="operating-system-disks-and-images"></a>Betriebssystem-Datenträger und Images
-Betriebssystem (Operating System, OS) und Daten werden bei virtuellen Computern auf [virtuellen Festplatten (Virtual Hard Disks, VHDs)](../managed-disks-overview.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) gespeichert. VHDs werden auch für die Images verwendet, die Sie auswählen können, um ein Betriebssystem zu installieren. 
+Betriebssystem (Operating System, OS) und Daten werden bei virtuellen Computern auf [virtuellen Festplatten (Virtual Hard Disks, VHDs)](../managed-disks-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) gespeichert. VHDs werden auch für die Images verwendet, die Sie auswählen können, um ein Betriebssystem zu installieren. 
 
 Azure bietet zahlreiche [Marketplace-Images](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images%3Bwindows&page=1) für verschiedene Versionen und Arten von Windows Server-Betriebssystemen. Marketplace-Images werden anhand von Herausgeber, Angebot, SKU und Version (üblicherweise die aktuelle Version) identifiziert. Es werden nur 64-Bit-Betriebssysteme unterstützt. Weitere Informationen zu den unterstützten Gastbetriebssystemen, Rollen und Features finden Sie unter [Microsoft-Serversoftwaresupport für virtuelle Microsoft Azure-Computer](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).
 
@@ -80,7 +80,7 @@ Die folgende Tabelle enthält einige Methoden zur Ermittlung von Informationen z
 | Azure-Portal |Die Werte werden automatisch angegeben, wenn Sie ein zu verwendendes Image auswählen. |
 | Azure PowerShell |[Get-AzVMImagePublisher](/powershell/module/az.compute/get-azvmimagepublisher) -Location *Speicherort*<BR>[Get-AzVMImageOffer](/powershell/module/az.compute/get-azvmimageoffer) -Location *Speicherort* -Publisher *Herausgebername*<BR>[Get-AzVMImageSku](/powershell/module/az.compute/get-azvmimagesku) -Location *Speicherort* -Publisher *Herausgebername* -Offer *Angebotsname* |
 | REST-APIs |[List image publishers](/rest/api/compute/platformimages/platformimages-list-publishers) (Imageherausgeber auflisten)<BR>[List image offers](/rest/api/compute/platformimages/platformimages-list-publisher-offers) (Imageangebote auflisten)<BR>[List image skus](/rest/api/compute/platformimages/platformimages-list-publisher-offer-skus) (Image-SKUs auflisten) |
-| Azure-Befehlszeilenschnittstelle |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
+| Azure CLI |[az vm image list-publishers](/cli/azure/vm/image?view=azure-cli-latest) --location *location*<BR>[az vm image list-offers](/cli/azure/vm/image?view=azure-cli-latest) --location *location* --publisher *publisherName*<BR>[az vm image list-skus](/cli/azure/vm?view=azure-cli-latest) --location *location* --publisher *publisherName* --offer *offerName*|
 
 Sie können auch [ein eigenes Image hochladen und verwenden](upload-generalized-managed.md). In diesem Fall werden Herausgebername, Angebot und SKU nicht verwendet.
 

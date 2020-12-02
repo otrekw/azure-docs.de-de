@@ -8,12 +8,12 @@ ms.service: virtual-machines-linux
 ms.subservice: workloads
 ms.assetid: 7aa21ef8-9cfb-43e0-bfda-3f10a2a2f3ef
 ms.date: 10/23/2020
-ms.openlocfilehash: 842913b8e9f83ff3b188976da55aef7c909518ca
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: ddd6f277bc71467060aa2279d93f9410a1327dde
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93359917"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486605"
 ---
 # <a name="quickstart-wildfly-on-centos-8"></a>Schnellstart: WildFly in CentOS 8
 
@@ -63,7 +63,7 @@ Das Azure CentOS 8-Image ist ein VM-Image mit nutzungsbasierter Zahlung (Pay-As-
 
 Sie können die Vorlage auf die folgenden drei Arten bereitstellen:
 
-- PowerShell verwenden – Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit: (Informationen zur Installation und Konfiguration von Azure PowerShell finden Sie unter [Azure PowerShell](https://docs.microsoft.com/powershell/azure/)).
+- PowerShell verwenden – Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit: (Informationen zur Installation und Konfiguration von Azure PowerShell finden Sie unter [Azure PowerShell](/powershell/azure/)).
 
     ```
     New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -73,7 +73,7 @@ Sie können die Vorlage auf die folgenden drei Arten bereitstellen:
     New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/wildfly-standalone-centos8/azuredeploy.json
     ```
     
-- Azure CLI verwenden – Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit: (Informationen zur Installation und Konfiguration der plattformübergreifenden Azure-Befehlszeilenschnittstelle finden Sie unter [Plattformübergreifende Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/install-azure-cli)).
+- Azure CLI verwenden – Stellen Sie die Vorlage mithilfe der folgenden Befehle bereit: (Informationen zur Installation und Konfiguration der plattformübergreifenden Azure-Befehlszeilenschnittstelle finden Sie unter [Plattformübergreifende Azure-Befehlszeilenschnittstelle](/cli/azure/install-azure-cli)).
 
     ```
     az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new Resource Group for your deployment
@@ -92,7 +92,7 @@ Sie können die Vorlage auf die folgenden drei Arten bereitstellen:
 ## <a name="resource-links"></a>Ressourcenlinks
 
 * Weitere Informationen zu [WildFly 18](https://docs.wildfly.org/18/)
-* Weitere Informationen zu [Linux-Distributionen in Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros)
+* Weitere Informationen zu [Linux-Distributionen in Azure](../../linux/endorsed-distros.md)
 * [Azure-Dokumentation für Java-Entwickler](https://github.com/JasonFreeberg/jboss-on-app-service)
 
 ## <a name="next-steps"></a>Nächste Schritte

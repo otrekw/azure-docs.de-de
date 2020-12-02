@@ -4,16 +4,16 @@ description: In diesem Schnellstart erfahren Sie, wie mithilfe der Azure Blob St
 author: mhopkins-msft
 ms.custom: devx-track-java
 ms.author: mhopkins
-ms.date: 09/10/2020
+ms.date: 12/01/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
-ms.openlocfilehash: dc8df24c1ad20aa3380009fe4c0abb29e31823e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 02752af77d443e19278a96206bb7516fedd59d7f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96021723"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501123"
 ---
 # <a name="quickstart-manage-blobs-with-java-v12-sdk"></a>Schnellstart: Verwalten von Blobs per Java v12 SDK
 
@@ -45,13 +45,29 @@ Erstellen Sie eine Java-Anwendung mit dem Namen *blob-quickstart-v12*.
 
 1. Verwenden Sie in einem Konsolenfenster (z. B. cmd, PowerShell oder Bash) Maven zum Erstellen einer neuen Konsolen-App mit dem Namen *blob-quickstart-v12*. Geben Sie den folgenden **mvn**-Befehl ein, um ein „Hallo Welt!“ -Java-Projekt zu erstellen.
 
-   ```console
-   mvn archetype:generate -DgroupId=com.blobs.quickstart \
-                          -DartifactId=blob-quickstart-v12 \
-                          -DarchetypeArtifactId=maven-archetype-quickstart \
-                          -DarchetypeVersion=1.4 \
-                          -DinteractiveMode=false
-   ```
+    # <a name="powershell"></a>[PowerShell](#tab/powershell)
+
+    ```powershell
+    mvn archetype:generate `
+        --define interactiveMode=n `
+        --define groupId=com.blobs.quickstart `
+        --define artifactId=blob-quickstart-v12 `
+        --define archetypeArtifactId=maven-archetype-quickstart `
+        --define archetypeVersion=1.4
+    ```
+
+    # <a name="bash"></a>[Bash](#tab/bash)
+
+    ```bash
+    mvn archetype:generate \
+        --define interactiveMode=n \
+        --define groupId=com.blobs.quickstart \
+        --define artifactId=blob-quickstart-v12 \
+        --define archetypeArtifactId=maven-archetype-quickstart \
+        --define archetypeVersion=1.4
+    ```
+
+    ---
 
 1. Die Ausgabe der Erstellung des Projekts sollte in etwa wie folgt aussehen:
 

@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: a460d77a032f36505c8036bc60aa37017f630e55
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888877"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501140"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -91,6 +91,7 @@ Für [IoT Hub besteht eine Vereinbarung zum Servicelevel](https://azure.microsof
 Verwenden Sie die Bibliotheken des [Azure IoT-Geräte-SDK](./iot-hub-devguide-sdks.md), um Anwendungen zu erstellen, die auf Ihren Geräten ausgeführt werden und mit IoT Hub interagieren. Zu den unterstützten Plattformen gehören verschiedene Linux-Distributionen, Windows und Echtzeit-Betriebssysteme. Unterstützte Sprachen:
 
 * C
+* Embedded C
 * C#
 * Java
 * Python

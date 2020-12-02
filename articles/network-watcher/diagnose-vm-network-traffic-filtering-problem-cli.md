@@ -18,12 +18,12 @@ ms.workload: infrastructure
 ms.date: 04/20/2018
 ms.author: kumud
 ms.custom: mvc, devx-track-azurecli
-ms.openlocfilehash: be6c815994a88c459045d246a8064306d7ff33ea
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bd99fe0ea8a92ad05ad258dcf4d8da6e4685f263
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966121"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492521"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem---azure-cli"></a>Schnellstart: Diagnostizieren von Problemen mit dem Filter für Netzwerkdatenverkehr eines virtuellen Computers – Azure CLI
 
@@ -253,6 +253,6 @@ az group delete --name myResourceGroup --yes
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md?toc=%252fazure%252fnetwork-watcher%252ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
+In dieser Schnellstartanleitung haben Sie einen virtuellen Computer erstellt sowie Filter für ein- und ausgehenden Netzwerkdatenverkehr diagnostiziert. Sie haben gelernt, dass Netzwerksicherheitsgruppen-Regeln den ein- und ausgehenden Datenverkehr eines virtuellen Computers zulassen oder verweigern. Erfahren Sie mehr über [Sicherheitsregeln](../virtual-network/network-security-groups-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) und das [Erstellen von Sicherheitsregeln](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule).
 
 Auch wenn für den Netzwerkdatenverkehr die richtigen Filter vorhanden sind, kann die Kommunikation mit einem virtuellen Computer aufgrund der Routingkonfiguration fehlschlagen. Informationen zum Diagnostizieren von Routingproblemen in VM-Netzwerken finden Sie unter [Diagnostizieren von VM-Routingproblemen](diagnose-vm-network-routing-problem-cli.md). Unter [Problembehandlung für Verbindungen](network-watcher-connectivity-cli.md) erfahren Sie außerdem, wie Sie mit nur einem Tool Probleme mit Ausgangsrouting und Wartezeiten sowie Probleme mit dem Filtern des Datenverkehrs diagnostizieren.
