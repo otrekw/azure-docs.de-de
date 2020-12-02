@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 6ddce9bd8eaa57571cd3c3eac660806340db4b74
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: b6aaad9cce330d755fb69f8be48737f9a8f6c4a7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408667"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487744"
 ---
 # <a name="security-control-v2-network-security"></a>Sicherheitskontrolle V2: Netzwerksicherheit
 
@@ -40,9 +40,9 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 
 - [Arbeitsmappe für unsichere Protokolle in Azure Sentinel](../../sentinel/quickstart-get-visibility.md#use-built-in-workbooks)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -68,9 +68,9 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 - [Azure Private Link](../../private-link/private-link-service-overview.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -92,9 +92,9 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 - [Grundlegendes zu VNET-Dienstendpunkten](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -120,11 +120,11 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 
 - [Bereitstellen von Azure WAF](../../web-application-firewall/overview.md)
 
-- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../../virtual-network/manage-ddos-protection.md)
+- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../../ddos-protection/manage-ddos-protection.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 Keine
 
@@ -144,9 +144,9 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 - [ATP-EDR-Funktion von Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -170,9 +170,9 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 - [Grundlegendes zu Anwendungssicherheitsgruppen und deren Verwendung](../../virtual-network/network-security-groups-overview.md#application-security-groups)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 
@@ -196,9 +196,9 @@ Wenn Azure DNS als autorisierender DNS-Dienst verwendet wird, stellen Sie sicher
 
 - [Verhindern verwaister DNS-Einträge und Vermeiden von Unterdomänenübernahmen](../fundamentals/subdomain-takeover.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

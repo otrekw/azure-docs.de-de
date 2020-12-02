@@ -72,7 +72,7 @@
     - name: Bewährte Methoden
       href: network-best-practices.md
     - name: Best Practices für DDoS Protection
-      href: 'https://docs.microsoft.com/azure/ddos-protection/fundamental-best-practices'
+      href: ../../ddos-protection/fundamental-best-practices.md
     - name: DDoS Protection-Sicherheitsbaseline
       href: ddos-protection-security-baseline.md
     - name: Verbleibende DNS- und Subdomainübernahme

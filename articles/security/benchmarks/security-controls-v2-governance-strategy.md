@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: ae0930e0845e8e8bd6dc4571dc3e8e27491a7be6
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: e4da0b288bca2517e4e0f58569215709a5f71a5e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408791"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487761"
 ---
 # <a name="security-control-v2-governance-and-strategy"></a>Sicherheitskontrolle V2: Governance und Strategie
 
@@ -45,19 +45,19 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 - Geeignete Verschlüsselungsstandards
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
-- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%252fsecurity%252fcompass%252fbreadcrumb%252ftoc.json&toc=%252fsecurity%252fcompass%252ftoc.json)
+- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Grundlegende Azure-Sicherheitsinformationen: Sicherheit, Verschlüsselung und Speicherung von Azure-Daten](../fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](../fundamentals/data-encryption-best-practices.md?amp;bc=%252fazure%252fcloud-adoption-framework%252f_bread%252ftoc.json&toc=%252fazure%252fcloud-adoption-framework%252ftoc.json)
+- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](../fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure-Sicherheitsvergleichstest: Ressorcenverwaltung](security-controls-v2-asset-management.md)
 
 - [Azure-Sicherheitsvergleichstest: Datenschutz](security-controls-v2-data-protection.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -79,9 +79,9 @@ Stellen Sie sicher, dass die Segmentierungsstrategie einheitlich für alle Steue
 
 - [Ausrichten der Netzwerksegmentierung an der Segmentierungsstrategie des Unternehmens](/security/compass/network-security-containment#align-network-segmentation-with-enterprise-segmentation-strategy)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -95,9 +95,9 @@ Führen Sie kontinuierliche Messungen durch, und Mindern Sie die Risiken für Ih
 
 - [Azure-Sicherheitsvergleichstest: Verwaltung von Status und Sicherheitsrisiken](security-controls-v2-posture-vulnerability-management.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -115,9 +115,9 @@ Stellen Sie sicher, dass Sie eine klare Strategie für Rollen und Zuständigkeit
 
 - [Azure Security Best Practice 3 – Process: Assign Accountability for Cloud Security Decisions](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (Bewährte Methoden für die Sicherheit von Azure 1 – Prozess: Zuweisen von Verantwortlichkeit für Cloudsicherheitsentscheidungen)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -153,9 +153,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 - [Strategie für die Unternehmensnetzwerkarchitektur](/azure/cloud-adoption-framework/ready/enterprise-scale/architecture)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -189,9 +189,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 - [Übersicht über die Sicherheit der Azure-Identitätsverwaltung](../fundamentals/identity-management-overview.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -230,9 +230,9 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 - [Azure auf Unternehmensebene, Verwaltung und Überwachung](/azure/cloud-adoption-framework/ready/enterprise-scale/management-and-monitoring)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)
 
@@ -259,8 +259,8 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 - [Azure Adoption Framework: Geschäftskontinuität und Notfallwiederherstellung](/azure/cloud-adoption-framework/ready/enterprise-scale/business-continuity-and-disaster-recovery)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Alle Projektbeteiligten](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)

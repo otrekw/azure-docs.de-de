@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 10/05/2020
 ms.author: depadia
-ms.openlocfilehash: 17b978d3f4faebd3870868bceeea4572288ecb07
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 647009854ef5a0c0811fc303914f724272f1a3f5
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965356"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96486656"
 ---
 # <a name="sap-businessobjects-bi-platform-deployment-guide-for-linux-on-azure"></a>Bereitstellungsleitfaden für die SAP BusinessObjects BI-Plattform für Linux in Azure
 
@@ -615,7 +615,7 @@ Weitere Informationen zur Bereitstellung von DBMS für CMS-Datenbanken finden Si
 
 File Repository Server (FRS) bezieht sich auf die Datenträgerverzeichnisse, in denen Inhalte wie Berichte, Universen und Verbindungen gespeichert werden. Es wird von allen Anwendungsservern dieses Systems gemeinsam genutzt. Daher müssen Sie sicherstellen, dass es über Hochverfügbarkeit verfügt.
 
-In Azure können Sie für die Dateifreigabe entweder [Azure Files Premium](../../../storage/files/storage-files-introduction.md) oder [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) auswählen, die für Hochverfügbarkeit und Langlebigkeit konzipiert sind. Weitere Informationen finden Sie im Abschnitt [Redundanz](https://docs.microsoft.com/azure/storage/files/storage-files-planning#redundancy) für Azure Files.
+In Azure können Sie für die Dateifreigabe entweder [Azure Files Premium](../../../storage/files/storage-files-introduction.md) oder [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) auswählen, die für Hochverfügbarkeit und Langlebigkeit konzipiert sind. Weitere Informationen finden Sie im Abschnitt [Redundanz](../../../storage/files/storage-files-planning.md#redundancy) für Azure Files.
 
 > [!NOTE]
 > Das SMB-Protokoll für Azure Files ist allgemein verfügbar, aber die Unterstützung des NFS-Protokolls für Azure Files befindet sich derzeit in der Vorschauversion. Weitere Informationen finden Sie unter [Unterstützung von NFS 4.1 für Azure Files befindet sich jetzt in der Vorschau](https://azure.microsoft.com/en-us/blog/nfs-41-support-for-azure-files-is-now-in-preview/)
@@ -667,7 +667,7 @@ Der Azure Site Recovery-Dienst kann verwendet werden, um virtuelle Computer, die
 
   Sie können die regionsübergreifende Replikation von Azure NetApp Files verwenden, die sich derzeit in der [Vorschauversion](https://azure.microsoft.com/en-us/blog/azure-netapp-files-cross-region-replication-and-new-enhancements-in-preview/) befindet und die NetApp SnapMirror®-Technologie verwendet. Daher werden nur geänderte Blöcke in einem komprimierten, effizienten Format über das Netzwerk gesendet. Diese proprietäre Technologie minimiert die Menge an Daten, die regionsübergreifend repliziert werden muss, wodurch Datenübertragungskosten eingespart werden. Auch die Replikationszeit verkürzt sich dadurch, sodass Sie eine kürzere Recovery Point Objective (RPO) erreichen können. Weitere Informationen finden Sie unter [Regionsübergreifende Replikation: Anforderungen und Überlegungen](../../../azure-netapp-files/cross-region-replication-requirements-considerations.md).
 
-- **Azure Files Premium** unterstützt nur lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS). Für die Azure Files Premium-Strategie zur Notfallwiederherstellung können Sie [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) oder [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.storage/) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](../../../storage/common/storage-disaster-recovery-guidance.md).
+- **Azure Files Premium** unterstützt nur lokal redundanten Speicher (LRS) und zonenredundanten Speicher (ZRS). Für die Azure Files Premium-Strategie zur Notfallwiederherstellung können Sie [AzCopy](../../../storage/common/storage-use-azcopy-v10.md) oder [Azure PowerShell](/powershell/module/az.storage/) verwenden, um die Dateien in ein anderes Speicherkonto in einer anderen Region zu kopieren. Weitere Informationen finden Sie unter [Notfallwiederherstellung und Speicherkontofailover](../../../storage/common/storage-disaster-recovery-guidance.md).
 
 #### <a name="cms-database"></a>CMS-Datenbank
 
@@ -695,4 +695,4 @@ Nachfolgend ist die Empfehlung für eine Notfallwiederherstellung der einzelnen 
 - [Einrichten der Notfallwiederherstellung für die Bereitstellung einer SAP-App mit mehreren Ebenen](../../../site-recovery/site-recovery-sap.md)
 - [Azure Virtual Machines – Planung und Implementierung für SAP](planning-guide.md)
 - [Azure Virtual Machines – Bereitstellung für SAP](deployment-guide.md)
-- [Azure Virtual Machines – DBMS-Bereitstellung für SAP](dbms-guide.md)
+- [Azure Virtual Machines – DBMS-Bereitstellung für SAP](./dbms_guide_general.md)

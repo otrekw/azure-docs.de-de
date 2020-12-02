@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: bd69f239a1c65040c44da776186ab8d955f5e333
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3a232f8e8c35e265a8243ac79e465c03f6b9650e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693181"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487863"
 ---
 # <a name="security-control-network-security"></a>Sicherheitskontrolle: Netzwerksicherheit
 
@@ -76,7 +76,7 @@ Verwenden Sie den Just-in-Time-Netzwerkzugriff in Azure Security Center, um NSGs
 
 Verwenden Sie die adaptive Netzwerkhärtung in Azure Security Center, um NSG-Konfigurationen zu empfehlen, die Ports und Quell-IPs basierend auf tatsächlichem Datenverkehr und Threat Intelligence einschränken.
 
-- [Konfigurieren von DDoS-Schutz](../../virtual-network/manage-ddos-protection.md)
+- [Konfigurieren von DDoS-Schutz](../../ddos-protection/manage-ddos-protection.md)
 
 - [Bereitstellen von Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
