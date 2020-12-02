@@ -3,12 +3,12 @@ title: Sichern und Wiederherstellen von verschlüsselten virtuellen Azure-Comput
 description: Beschreibt, wie verschlüsselte virtuelle Azure-Computer (VMs) mit dem Azure Backup-Dienst gesichert und wiederhergestellt werden.
 ms.topic: conceptual
 ms.date: 08/18/2020
-ms.openlocfilehash: 67c0e879fe2acf241b1ed08a5658209bf70b1b9c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c4760a54d0200e48b2d6a38c963e9fc23925f7ff
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95978113"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324923"
 ---
 # <a name="back-up-and-restore-encrypted-azure-virtual-machines"></a>Sichern und Wiederherstellen verschlüsselter virtueller Azure-Computer
 
@@ -16,13 +16,13 @@ In diesem Artikel wird beschrieben, wie Sie virtuelle Azure-Computer (VMs) unter
 
 ## <a name="encryption-using-platform-managed-keys"></a>Verschlüsselung mithilfe plattformseitig verwalteter Schlüssel
 
-Standardmäßig werden alle Datenträger in Ihren VMs automatisch im Ruhezustand mit plattformseitig verwalteten Schlüsseln (PMK) verschlüsselt, die [Speicherdienstverschlüsselung (SSE)](../storage/common/storage-service-encryption.md) verwenden. Sie können diese VMs mit Azure Backup sichern, ohne dass spezifische Aktionen zur Unterstützung der Verschlüsselung auf Ihrer Seite erforderlich sind. Weitere Informationen zur Verschlüsselung mit plattformseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](../virtual-machines/windows/disk-encryption.md#platform-managed-keys).
+Standardmäßig werden alle Datenträger in Ihren VMs automatisch im Ruhezustand mit plattformseitig verwalteten Schlüsseln (PMK) verschlüsselt, die [Speicherdienstverschlüsselung (SSE)](../storage/common/storage-service-encryption.md) verwenden. Sie können diese VMs mit Azure Backup sichern, ohne dass spezifische Aktionen zur Unterstützung der Verschlüsselung auf Ihrer Seite erforderlich sind. Weitere Informationen zur Verschlüsselung mit plattformseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](../virtual-machines/disk-encryption.md#platform-managed-keys).
 
 ![Verschlüsselte Datenträger](./media/backup-encryption/encrypted-disks.png)
 
 ## <a name="encryption-using-customer-managed-keys"></a>Verschlüsselung mithilfe kundenseitig verwalteter Schlüssel
 
-Wenn Sie Datenträger mit kundenseitig verwalteten Schlüsseln (CMK) verschlüsseln, wird der für die Verschlüsselung der Datenträger verwendete Schlüssel im Azure Key Vault gespeichert und von Ihnen verwaltet. Speicherdienstverschlüsselung (SSE) mit CMK unterscheidet sich von der Azure Disk Encryption (ADE)-Verschlüsselung. ADE verwendet die Verschlüsselungstools des Betriebssystems. SSE verschlüsselt Daten im Speicherdienst, sodass Sie beliebige Betriebssysteme oder Images für Ihre VMs verwenden können. Weitere Informationen zur Verschlüsselung verwalteter Datenträger mit kundenseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](../virtual-machines/windows/disk-encryption.md#customer-managed-keys).
+Wenn Sie Datenträger mit kundenseitig verwalteten Schlüsseln (CMK) verschlüsseln, wird der für die Verschlüsselung der Datenträger verwendete Schlüssel im Azure Key Vault gespeichert und von Ihnen verwaltet. Speicherdienstverschlüsselung (SSE) mit CMK unterscheidet sich von der Azure Disk Encryption (ADE)-Verschlüsselung. ADE verwendet die Verschlüsselungstools des Betriebssystems. SSE verschlüsselt Daten im Speicherdienst, sodass Sie beliebige Betriebssysteme oder Images für Ihre VMs verwenden können. Weitere Informationen zur Verschlüsselung verwalteter Datenträger mit kundenseitig verwalteten Schlüsseln [finden Sie in diesem Artikel](../virtual-machines/disk-encryption.md#customer-managed-keys).
 
 ## <a name="encryption-support-using-ade"></a>Verschlüsselungsunterstützung mit ADE
 

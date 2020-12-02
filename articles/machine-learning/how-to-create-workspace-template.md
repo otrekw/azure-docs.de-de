@@ -10,12 +10,12 @@ ms.custom: how-to, devx-track-azurecli, devx-track-azurepowershell
 ms.author: larryfr
 author: Blackmist
 ms.date: 09/30/2020
-ms.openlocfilehash: 2c415fc92d2d338c568c422b1db2579563527839
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: bd9199bc73e56ec36343b30d9b24f0b48799835e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94442054"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445176"
 ---
 # <a name="use-an-azure-resource-manager-template-to-create-a-workspace-for-azure-machine-learning"></a>Verwenden einer Azure Resource Manager-Vorlage zum Erstellen eines Arbeitsbereichs für Azure Machine Learning
 
@@ -39,6 +39,10 @@ Weitere Informationen finden Sie unter [Bereitstellen einer Anwendung mit einer 
 
     Weitere Informationen finden Sie unter [Verwalten und Erhöhen von Kontingenten](how-to-manage-quotas.md#private-endpoint-and-private-dns-quota-increases).
 
+## <a name="limitations"></a>Einschränkungen
+
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
+
 ## <a name="workspace-resource-manager-template"></a>Verwenden von Arbeitsbereich-Resource Manager-Vorlagen
 
 Die in diesem Dokument verwendete Azure Resource Manager-Vorlage finden Sie im GitHub-Repository für Azure-Schnellstartvorlagen im [201-machine-learning-advanced](https://github.com/Azure/azure-quickstart-templates/blob/master/201-machine-learning-advanced/azuredeploy.json)-Verzeichnis.
@@ -59,7 +63,7 @@ Die Beispielvorlage verfügt über zwei **erforderliche** Parameter:
 
     Die Vorlage verwendet den von Ihnen ausgewählten Ort für die meisten Ressourcen. Die Ausnahme ist hierbei der Application Insights-Dienst, der nicht an allen Orten verfügbar ist, an denen die anderen Dienste verfügbar sind. Wenn Sie einen Ort auswählen, an dem er nicht verfügbar ist, wird der Dienst am Ort „USA, Süden-Mitte“ erstellt.
 
-* Parameter **workspaceName** , den Anzeigenamen des Azure Machine Learning-Arbeitsbereichs.
+* Parameter **workspaceName**, den Anzeigenamen des Azure Machine Learning-Arbeitsbereichs.
 
     > [!NOTE]
     > Für den Namen des Arbeitsbereichs wird die Groß-/Kleinschreibung nicht beachtet.
@@ -124,7 +128,7 @@ New-AzResourceGroupDeployment `
 
 ---
 
-Standardmäßig sind alle als Teil der Vorlage erstellten Ressourcen neu. Sie haben jedoch auch die Möglichkeit, vorhandene Ressourcen zu verwenden. Durch die Bereitstellung zusätzlicher Parameter für die Vorlage können Sie vorhandene Ressourcen verwenden. Wenn Sie z. B. ein vorhandenes Speicherkonto verwenden möchten, legen Sie den **storageAccountOption** -Wert auf **existing** fest, und geben Sie den Namen Ihres Speicherkontos im Parameter **storageAccountName** an.
+Standardmäßig sind alle als Teil der Vorlage erstellten Ressourcen neu. Sie haben jedoch auch die Möglichkeit, vorhandene Ressourcen zu verwenden. Durch die Bereitstellung zusätzlicher Parameter für die Vorlage können Sie vorhandene Ressourcen verwenden. Wenn Sie z. B. ein vorhandenes Speicherkonto verwenden möchten, legen Sie den **storageAccountOption**-Wert auf **existing** fest, und geben Sie den Namen Ihres Speicherkontos im Parameter **storageAccountName** an.
 
 > [!IMPORTANT]
 > Wenn Sie ein vorhandenes Azure Storage-Konto verwenden möchten, darf es sich nicht um ein Premium-Konto (Premium_LRS oder Premium_GRS) handeln. Es darf auch keinen hierarchischen Namespace aufweisen (mit Azure Data Lake Storage Gen2 verwendet). Weder Storage Premium noch hierarchische Namespaces werden mit dem Standardspeicherkonto des Arbeitsbereichs unterstützt. Weder Storage Premium noch hierarchische Namespaces werden mit dem _Standardspeicherkonto_ des Arbeitsbereichs unterstützt. Sie können Storage Premium noch hierarchische Namespaces mit _nicht standardmäßigen_ Speicherkonten verwenden.
@@ -254,7 +258,7 @@ New-AzResourceGroupDeployment `
 
 Wenn ein vom Kunden verwalteter Schlüssel verwendet wird, erstellt Azure Machine Learning eine sekundäre Ressourcengruppe, die die Cosmos DB-Instanz enthält. Weitere Informationen finden Sie unter [Verschlüsselung ruhender Daten](concept-data-encryption.md#encryption-at-rest).
 
-Als zusätzliche Konfiguration für Ihre Daten können Sie den **confidential_data** -Parameter auf **true** festlegen. Daraus resultiert Folgendes:
+Als zusätzliche Konfiguration für Ihre Daten können Sie den **confidential_data**-Parameter auf **true** festlegen. Daraus resultiert Folgendes:
 
 * Die Verschlüsselung des lokalen Scratch-Datenträgers in Ihren Azure Machine Learning-Computeclustern wird gestartet, sofern Sie in Ihrem Abonnement keine vorherigen Cluster erstellt haben. Wenn Sie zuvor einen Cluster im Abonnement erstellt haben, öffnen Sie ein Supportticket, um die Verschlüsselung des für Ihre Computecluster aktivierten Scratch-Datenträgers zu aktivieren.
 * Ihre lokalen Scratch-Datenträger werden zwischen den Ausführungen bereinigt.
@@ -424,7 +428,7 @@ New-AzResourceGroupDeployment `
 
 ### <a name="use-an-existing-virtual-network--resources"></a>Verwenden eines vorhandenen virtuellen Netzwerks und vorhandener Ressourcen
 
-Wenn Sie einen Arbeitsbereich mit vorhandenen zugeordneten Ressourcen bereitstellen möchten, müssen Sie den **vnetOption** -Parameter zusammen mit Subnetzparametern auf **vorhanden** festlegen. Sie müssen jedoch im virtuellen Netzwerk für alle Ressourcen **vor** der Bereitstellung Dienstendpunkte erstellen. Wie bei Bereitstellungen neuer virtueller Netzwerke können sich eine oder alle Ihre Ressourcen hinter einem virtuellen Netzwerk befinden.
+Wenn Sie einen Arbeitsbereich mit vorhandenen zugeordneten Ressourcen bereitstellen möchten, müssen Sie den **vnetOption**-Parameter zusammen mit Subnetzparametern auf **vorhanden** festlegen. Sie müssen jedoch im virtuellen Netzwerk für alle Ressourcen **vor** der Bereitstellung Dienstendpunkte erstellen. Wie bei Bereitstellungen neuer virtueller Netzwerke können sich eine oder alle Ihre Ressourcen hinter einem virtuellen Netzwerk befinden.
 
 > [!IMPORTANT]
 > Das Subnetz sollte den `Microsoft.Storage`-Dienstendpunkt aufweisen
@@ -542,7 +546,7 @@ New-AzResourceGroupDeployment `
 ## <a name="use-the-azure-portal"></a>Verwenden des Azure-Portals
 
 1. Befolgen Sie die Schritte in [Bereitstellen von Ressourcen mithilfe einer benutzerdefinierten Vorlage](../azure-resource-manager/templates/deploy-portal.md#deploy-resources-from-custom-template). Wählen Sie auf dem Bildschirm __Vorlage auswählen__ in der Dropdownliste die Vorlage **201-machine-learning-advanced** aus.
-1. Wählen Sie __Vorlage auswählen__ , um die Vorlage zu verwenden. Geben Sie abhängig von Ihrem Bereitstellungsszenario die folgenden erforderlichen Informationen und sonstige Parameter an.
+1. Wählen Sie __Vorlage auswählen__, um die Vorlage zu verwenden. Geben Sie abhängig von Ihrem Bereitstellungsszenario die folgenden erforderlichen Informationen und sonstige Parameter an.
 
    * Abonnement: Wählen Sie aus, welches Azure-Abonnement für diese Ressourcen verwendet werden soll.
    * Ressourcengruppe: Wählen Sie eine Ressourcengruppe für die Aufnahme der Dienste aus, oder erstellen Sie eine.
@@ -580,7 +584,7 @@ Folgende Ansätze werden empfohlen, um dieses Problem zu umgehen:
 
 * Überprüfen Sie, ob die Key Vault-Ressource bereits vorhanden ist. Wenn dies der Fall ist, erstellen Sie sie nicht mithilfe der Vorlage neu. Wenn Sie z. B. den vorhandenen Key Vault verwenden möchten, anstatt einen neuen zu erstellen, nehmen Sie die folgenden Änderungen an der Vorlage vor:
 
-    * **Fügen Sie einen Parameter hinzu** , der die ID einer vorhandenen Key Vault-Ressource annimmt:
+    * **Fügen Sie einen Parameter hinzu**, der die ID einer vorhandenen Key Vault-Ressource annimmt:
 
         ```json
         "keyVaultId":{

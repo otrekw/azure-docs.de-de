@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: c64ab815572af0f6c76a5076c9d4cf03586f242d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 57e9c82e5685171cff994aca7985f6a4211f00e7
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92784999"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327286"
 ---
 # <a name="pricing-guidance-for-sql-server-on-azure-vms"></a>Preisinformationen für Azure-VMs mit SQL Server
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -71,9 +71,9 @@ Die Kosten sind für alle SQL Server-Versionen (2012 SP3 bis 2019) gleich. Die 
 
 Die nutzungsbasierte Bezahlung der SQL Server-Lizenzierung empfiehlt sich in folgenden Fällen:
 
-- **Temporär oder regelmäßig auftretende Arbeitsauslastungen** . Beispiele: eine App, die jedes Jahr einige Monate lang ein Ereignis unterstützen muss, oder Geschäftsanalysen, die jeden Montag ausgeführt werden.
+- **Temporär oder regelmäßig auftretende Arbeitsauslastungen**. Beispiele: eine App, die jedes Jahr einige Monate lang ein Ereignis unterstützen muss, oder Geschäftsanalysen, die jeden Montag ausgeführt werden.
 
-- **Arbeitsauslastungen mit unbekannter Lebensdauer oder unbekanntem Umfang** . Beispiele: eine App, die einige Monate lang nicht benötigt wird, oder eine App, die je nach Bedarf mehr oder weniger Computeleistung benötigt.
+- **Arbeitsauslastungen mit unbekannter Lebensdauer oder unbekanntem Umfang**. Beispiele: eine App, die einige Monate lang nicht benötigt wird, oder eine App, die je nach Bedarf mehr oder weniger Computeleistung benötigt.
 
 Informationen zum Erstellen einer Azure-VM mit SQL Server 2017 mit einem dieser Images mit nutzungsbasierter Bezahlung finden Sie unter den folgenden Links:
 
@@ -106,9 +106,9 @@ Das Konzept der **Verwendung eigener SQL-Lizenzen über die „Lizenzmobilität�
 
 Die Verwendung eigener SQL Server-Lizenzen über die „Lizenzmobilität“ empfiehlt sich in folgenden Fällen:
 
-- **Kontinuierliche Arbeitsauslastungen** . Beispiel: eine App, die rund um die Uhr Geschäftsabläufe unterstützen muss.
+- **Kontinuierliche Arbeitsauslastungen**. Beispiel: eine App, die rund um die Uhr Geschäftsabläufe unterstützen muss.
 
-- **Arbeitsauslastungen mit bekannter Lebensdauer und bekanntem Umfang** . Beispiel: eine App mit prognostizierten Anforderungen, die das ganze Jahr über benötigt wird.
+- **Arbeitsauslastungen mit bekannter Lebensdauer und bekanntem Umfang**. Beispiel: eine App mit prognostizierten Anforderungen, die das ganze Jahr über benötigt wird.
 
 Um BYOL mit einem virtuellen SQL Server-Computer zu verwenden, müssen Sie über eine Lizenz für SQL Server Standard oder Enterprise sowie über [Software Assurance](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default.aspx#tab=1) verfügen. Software Assurance ist in einigen Programmen zur Volumenlizenzierung erforderlich und in anderen Programmen optional. Die Preisstufen, die in den verschiedenen Volumenlizenzprogrammen angeboten werden, unterscheiden sich je nach Art der Vereinbarung sowie nach Umfang und Nutzungsdauer von SQL Server. Generell bietet das BYOL-Modell für kontinuierliche Arbeitsauslastungen in der Produktion folgende Vorteile:
 
@@ -136,7 +136,7 @@ Um unnötige Kosten zu vermeiden, wählen Sie eine optimale Größe für virtuel
 
 ### <a name="correctly-size-your-vm"></a><a id="machinesize"></a>Richtige Größe Ihres virtuellen Computers
 
-Die Kosten der Lizenzierung für SQL Server sind direkt von der Anzahl der vCPUs abhängig. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](../../../virtual-machines/sizes.md) und [Größen virtueller Linux-Computer](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+Die Kosten der Lizenzierung für SQL Server sind direkt von der Anzahl der vCPUs abhängig. Wählen Sie eine Größe der virtuellen Computer aus, die mit den erwarteten Anforderungen für CPU, Arbeitsspeicher, Speicher und E/A-Bandbreite übereinstimmt. Eine vollständige Liste der Computergrößenoptionen finden Sie unter [Größen virtueller Windows-Computer](../../../virtual-machines/sizes.md) und [Größen virtueller Linux-Computer](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Es sind neue Größen für Computer verfügbar, die für bestimmte Arten von SQL Server-Arbeitsauslastungen gut geeignet sind. Dieser Computergrößen verwalten einen hohen Grad an Arbeitsspeicher, Speicher und E/A-Bandbreite, verfügen jedoch über eine niedrigere Anzahl virtualisierter Kerne. Betrachten Sie etwa das folgende Beispiel:
 

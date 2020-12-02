@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: db81f8b60cf4883223f6fc084c19c8da1d07bc9a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 282d60b1894ffa186a6b5b6b5630aefa9e961572
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388101"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345132"
 ---
 # <a name="set-up-sign-in-with-a-microsoft-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem Microsoft-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -100,7 +100,7 @@ Sie können Azure AD als Anspruchsanbieter definieren, indem Sie in der Erweiter
             <Item Key="response_mode">form_post</Item>
             <Item Key="scope">openid profile email</Item>
             <Item Key="HttpBinding">POST</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your Microsoft application client ID</Item>
           </Metadata>
           <CryptographicKeys>

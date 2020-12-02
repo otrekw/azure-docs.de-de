@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 10/29/2020
 ms.author: alkohli
 ms.subservice: common
-ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: d23560e8ee387ca8bc9cb4bba4211f6c8272addd
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: devx-track-azurepowershell, devx-track-azurecli
+ms.openlocfilehash: 07f1a6ff5d15ee552680c59c86a194aeabe5b866
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490881"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326385"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Verwenden des Azure Import/Export-Diensts zum Importieren von Daten in Azure Blob Storage
 
@@ -52,7 +52,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
 1. Stellen Sie die Verbindung Ihrer Laufwerke mit dem Windows-System über SATA-Anschlüsse her.
 2. Erstellen Sie ein einzelnes NTFS-Volume auf jedem Laufwerk. Weisen Sie dem Volume einen Laufwerkbuchstaben zu. Verwenden Sie keine Bereitstellungspunkte.
 3. Aktivieren Sie die BitLocker-Verschlüsselung auf dem NTFS-Volume. Wenn Sie ein Windows Server-System verwenden, lesen Sie die Anweisungen unter [Aktivieren von BitLocker auf Windows Server 2012 R2](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
-4. Kopieren Sie Daten in das verschlüsselte Volume. Verwenden Sie Drag & Drop oder Robocopy oder ein ähnliches Kopiertool. Eine Journaldatei ( *JRN* ) wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben.
+4. Kopieren Sie Daten in das verschlüsselte Volume. Verwenden Sie Drag & Drop oder Robocopy oder ein ähnliches Kopiertool. Eine Journaldatei (*JRN*) wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben.
 
    Wenn das Laufwerk gesperrt ist und Sie es entsperren müssen, können sich die Schritte zum Entsperren je nach Anwendungsfall unterscheiden.
 
@@ -74,7 +74,7 @@ Führen Sie zum Vorbereiten der Laufwerke die folgenden Schritte aus.
     ./WAImportExport.exe PrepImport /j:<journal file name> /id:session<session number> /t:<Drive letter> /bk:<BitLocker key> /srcdir:<Drive letter>:\ /dstdir:<Container name>/ /blobtype:<BlockBlob or PageBlob> /skipwrite
     ```
 
-    Eine Journaldatei wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben. Es werden noch zwei weitere Dateien erstellt: eine *XML* -Datei (im Ordner, in dem Sie das Tool ausführen) und die Datei *LaufwerkManifest.xml* (im Ordner, in dem sich die Daten befinden).
+    Eine Journaldatei wird in demselben Ordner erstellt, in dem Sie das Tool ausgeführt haben. Es werden noch zwei weitere Dateien erstellt: eine *XML*-Datei (im Ordner, in dem Sie das Tool ausführen) und die Datei *LaufwerkManifest.xml* (im Ordner, in dem sich die Daten befinden).
 
     Die verwendeten Parameter werden in der folgenden Tabelle beschrieben:
 
@@ -142,7 +142,7 @@ Führen Sie die folgenden Schritte aus, um einen Importauftrag im Azure-Portal z
 7. Gehen Sie unter **Zusammenfassung** wie folgt vor:
 
    * Überprüfen Sie die in der Zusammenfassung bereitgestellten Informationen zum Auftrag. Notieren Sie sich den Namen des Auftrags und die Versandadresse des Azure-Rechenzentrums, damit Sie Datenträger an Azure zurücksenden können. Diese Informationen werden später auf dem Adressetikett verwendet.
-   * Klicken Sie auf **OK** , um den Importauftrag zu erstellen.
+   * Klicken Sie auf **OK**, um den Importauftrag zu erstellen.
 
      ![Importauftrag erstellen – Schritt 4](./media/storage-import-export-data-to-blobs/import-to-blob6.png)
 

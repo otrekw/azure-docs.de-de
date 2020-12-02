@@ -4,12 +4,12 @@ description: Wiederherstellen eines virtuellen Azure-Computers mithilfe eines Wi
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 08/02/2020
-ms.openlocfilehash: 335dfc665cc7fb9727e4eff3e65a18a2aa5c3f94
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 1c28de679bd957a472e543489a2dd15b3883aed5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002986"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327184"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Wiederherstellen von Azure-VM-Daten im Azure-Portal
 
@@ -203,7 +203,7 @@ Es gibt eine Reihe von häufigen Szenarien, in denen Sie möglicherweise VMs wie
 **Netzwerksicherheitsgruppe (NSG) für Netzwerkadapter oder Subnetz** | Die Azure-VM-Sicherung unterstützt die Sicherung und Wiederherstellung von NSG-Informationen auf Vnet-, Subnetz- und NIC-Ebene.
 **Zonenkonfigurierte angeheftete VMs** | Wenn Sie einen an eine Zone angehefteten virtuellen Azure-Computer (mit Azure Backup) sichern, können Sie ihn in derselben Zone wiederherstellen, der er angeheftet war. [Weitere Informationen](../availability-zones/az-overview.md)
 **Wiederherstellen eines virtuellen Computers in einer beliebigen Verfügbarkeitsgruppe** | Beim Wiederherstellen eines virtuellen Computers über das Portal gibt es keine Möglichkeit, eine Verfügbarkeitsgruppe auszuwählen. Für eine wiederhergestellte VM gibt es keine Verfügbarkeitsgruppe. Falls Sie aber die Option „Datenträger wiederherstellen“ verwenden, können Sie [eine Verfügbarkeitsgruppe](../virtual-machines/windows/tutorial-availability-sets.md) angeben, wenn Sie eine VM vom Datenträger aus mithilfe der bereitgestellten Vorlage oder von PowerShell erstellen.
-**Wiederherstellen spezieller VMs wie SQL-VMs** | Wenn Sie eine SQL-VM mithilfe der Azure-VM-Sicherung sichern und dann die Option zum Wiederherstellen der VM verwenden oder eine VM nach dem Wiederherstellen von Datenträgern erstellen, muss die neu erstellte VM beim SQL-Anbieter registriert werden. Die Vorgehensweise ist [hier](../azure-sql/virtual-machines/windows/sql-vm-resource-provider-register.md?tabs=azure-cli%2Cbash) beschrieben. Dadurch wird die wiederhergestellte VM in eine SQL-VM konvertiert.
+**Wiederherstellen spezieller VMs wie SQL-VMs** | Wenn Sie eine SQL-VM mithilfe der Azure-VM-Sicherung sichern und dann die Option zum Wiederherstellen der VM verwenden oder eine VM nach dem Wiederherstellen von Datenträgern erstellen, muss die neu erstellte VM beim SQL-Anbieter registriert werden. Die Vorgehensweise ist [hier](../azure-sql/virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md?tabs=azure-cli%2cbash) beschrieben. Dadurch wird die wiederhergestellte VM in eine SQL-VM konvertiert.
 
 ### <a name="restore-domain-controller-vms"></a>Wiederherstellen von virtuellen Computern mit Domänencontroller
 

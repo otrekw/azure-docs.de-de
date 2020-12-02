@@ -12,12 +12,12 @@ ms.custom:
 - amqp
 - mqtt
 - devx-track-js
-ms.openlocfilehash: 78600b7b57a7c30fc609434a700f13fa21e079ce
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 35bb17a5cdfcc6aff4a513a594a08283ab1f1305
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019258"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437030"
 ---
 # <a name="connect-a-downstream-device-to-an-azure-iot-edge-gateway"></a>Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway
 
@@ -100,7 +100,7 @@ Es sollte die Meldung „Updating certificates in /etc/ssl/certs 1 added, 0 remo
 
 Die folgenden Schritte sind ein Beispiel für die Installation eines ZS-Zertifikats auf einem Windows-Host. In diesem Beispiel wird davon ausgegangen, dass Sie das Zertifikat **azure-iot-test-only.root.ca.cert.pem** aus den Artikeln über die Voraussetzungen verwenden und das Zertifikat an einen Speicherort auf dem nachgeschalteten Gerät kopiert haben.
 
-Sie können Zertifikate mit [Import-Certificate](/powershell/module/pkiclient/import-certificate?view=win10-ps) von PowerShell als Administrator installieren:
+Sie können Zertifikate mit [Import-Certificate](/powershell/module/pkiclient/import-certificate) von PowerShell als Administrator installieren:
 
 ```powershell
 import-certificate  <file path>\azure-iot-test-only.root.ca.cert.pem -certstorelocation cert:\LocalMachine\root

@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 06/03/2020
-ms.openlocfilehash: c5392c822c42c2e0ee3f6ce9edffc6229d572165
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c805bacbd4a2219fb79168ad6426efd8b0a390df
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782415"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324515"
 ---
 # <a name="machine-learning-services-in-azure-sql-managed-instance-preview"></a>Machine Learning Services in Azure SQL Managed Instance (Vorschauversion)
 
@@ -56,7 +56,7 @@ Wenn Sie am Vorschauprogramm teilnehmen möchten und diese Bedingungen akzeptier
 
 1. Klicken Sie auf der Seite **Supportticket erstellen** auf **Create an Incident** (Incident erstellen).
 
-1. Klicken Sie auf der Seite **Hilfe und Support** auf **Neue Supportanfrage** , um ein neues Ticket zu erstellen.
+1. Klicken Sie auf der Seite **Hilfe und Support** auf **Neue Supportanfrage**, um ein neues Ticket zu erstellen.
 
 1. Wählen Sie die folgenden Optionen:
    - Problemtyp: **Technisch**
@@ -85,6 +85,6 @@ Es ist nicht empfehlenswert, Machine Learning Services in SQL Managed Instance w
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Lesen Sie [Key differences from SQL Server Machine Learning Services](machine-learning-services-differences.md) (Wichtige Unterschiede zwischen Machine Learning Services in Azure SQL Server).
-- Informationen zur Verwendung von Python in Machine Learning Services finden Sie unter [Schnellstart: Ausführen einfacher Python-Skripts mit SQL Server Machine Learning Services](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
-- Informationen zur Verwendung von R in Machine Learning Services finden Sie unter [Schnellstart: Ausführen einfacher R-Skripts mit SQL Machine Learning](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%252fazure%252fazure-sql%252fmanaged-instance%252fcontext%252fml-context&view=sql-server-ver15).
+- Informationen zur Verwendung von Python in Machine Learning Services finden Sie unter [Schnellstart: Ausführen einfacher Python-Skripts mit SQL Server Machine Learning Services](/sql/machine-learning/tutorials/quickstart-python-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
+- Informationen zur Verwendung von R in Machine Learning Services finden Sie unter [Schnellstart: Ausführen einfacher R-Skripts mit SQL Machine Learning](/sql/machine-learning/tutorials/quickstart-r-create-script?context=%2fazure%2fazure-sql%2fmanaged-instance%2fcontext%2fml-context&view=sql-server-ver15).
 - Weitere Informationen zu Machine Learning auf anderen SQL-Plattformen finden Sie in der [SQL Machine Learning-Dokumentation](/sql/machine-learning/).

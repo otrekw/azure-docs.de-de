@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f1a7ffc8225ea20b48df4e1d9a049655ca4776a4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964659"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349128"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -78,8 +78,8 @@ Hier sehen Sie eine Zusammenfassung der RU-Mindestgrenzwerte.
 
 | Resource | Standardlimit |
 | --- | --- |
-| Minimale Anzahl RU/s pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 |
-| Minimale Anzahl RU/s pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s für die ersten 25 Container. Zusätzliche 100 RU/s für jeden weiteren Container. |
+| Minimale Anzahl RU/s pro Container ([Bereitstellungsmodus für dedizierten Durchsatz](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 |
+| Minimale Anzahl RU/s pro Datenbank ([Bereitstellungsmodus für gemeinsam genutzten Durchsatz](./account-databases-containers-items.md#azure-cosmos-containers)) | 400 RU/s für die ersten 25 Container. Zusätzliche 100 RU/s für jeden weiteren Container. |
 
 Cosmos DB unterstützt die programmgesteuerte Skalierung von Durchsatz (RU/s) pro Container bzw. Datenbank über die SDKs oder das Portal.    
 
@@ -91,7 +91,6 @@ Mit der Option [Serverlos](serverless.md) können Sie Ihre Azure Cosmos DB-Resso
 
 | Resource | Begrenzung |
 | --- | --- |
-| Maximale Anzahl RU/s pro Container | 5\.000 |
 | Maximale Anzahl RU/s pro (logischer) Partition | 5\.000 |
 | Maximale Speicherkapazität aller Elemente pro (logischer) Partition | 20 GB |
 | Maximale Anzahl unterschiedlicher (logischer) Partitionsschlüssel | Unbegrenzt |

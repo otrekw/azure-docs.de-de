@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ed1c183281aea830e9cd61c1d95c6c092adbe05c
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6ad91b7cf8cd8a79654774b1b5463bc661a981d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960681"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348176"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure-Sicherheitsbaseline für Azure DNS
 
@@ -64,7 +64,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/get-started-portal.md)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
@@ -308,7 +308,7 @@ Obwohl klassische Azure-Ressourcen über Azure Resource Graph Explorer ermittelt
 
 **Leitfaden**: Verwenden Sie Richtlinienname, Beschreibung und Kategorie, um Ressourcen gemäß einer Taxonomie logisch zu organisieren.
 
-- [Weitere Informationen zum Kennzeichnen von Ressourcen finden Sie im „Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung“.](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%252fazure%252fazure-resource-manager%252fmanagement%252ftoc.json)
+- [Weitere Informationen zum Kennzeichnen von Ressourcen finden Sie im „Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung“.](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

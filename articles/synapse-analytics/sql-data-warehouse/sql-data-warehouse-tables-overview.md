@@ -10,13 +10,13 @@ ms.subservice: sql-dw
 ms.date: 03/15/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
-ms.custom: seo-lt-2019
-ms.openlocfilehash: 3bdf234156c55e3c30df74c672866a118fd2f4f1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.custom: seo-lt-2019, azure-synapse
+ms.openlocfilehash: ec62724b7aedbad4111a4882dd89f86d116b2a96
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323503"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448053"
 ---
 # <a name="design-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Entwerfen von Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -111,7 +111,7 @@ Die Tabellenkategorie bestimmt oftmals, welche Option für das Verteilen der Tab
 
 ## <a name="table-partitions"></a>Tabellenpartitionen
 
-In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen gespeichert und Vorgänge entsprechend ausgeführt. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird. Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten in Azure Synapse Analytics bereits verteilt wurden, können zu viele Partitionen zu einer Beeinträchtigung der Abfrageleistung führen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).  Beim Wechseln der Partitionen zu Tabellenpartitionen, die nicht leer sind, sollten Sie die Option TRUNCATE_TARGET in Ihrer [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisung in Erwägung ziehen, wenn die vorhandenen Daten abgeschnitten werden sollen. Der folgende Code fügt die transformierten Tagesdaten in SalesFact ein und überschreibt alle vorhandenen Daten.
+In einer partitionierten Tabelle werden die Tabellenzeilen nach Datenbereichen gespeichert und Vorgänge entsprechend ausgeführt. Beispielsweise könnte eine Tabelle nach Tag, Monat oder Jahr partitioniert werden. Sie können die Abfrageleistung durch eine Partitionsbeseitigung verbessern, wobei ein Abfragescan auf Daten in einer Partition begrenzt wird. Auch können Sie die Daten durch Partitionswechsel verwalten. Da die Daten im SQL-Pool bereits verteilt sind, können zu viele Partitionen die Abfrageleistung beeinträchtigen. Weitere Informationen finden Sie unter [Partitionieren von Tabellen in SQL Data Warehouse](sql-data-warehouse-tables-partition.md).  Beim Wechseln der Partitionen zu Tabellenpartitionen, die nicht leer sind, sollten Sie die Option TRUNCATE_TARGET in Ihrer [ALTER TABLE](/sql/t-sql/statements/alter-table-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)-Anweisung in Erwägung ziehen, wenn die vorhandenen Daten abgeschnitten werden sollen. Der folgende Code fügt die transformierten Tagesdaten in SalesFact ein und überschreibt alle vorhandenen Daten.
 
 ```sql
 ALTER TABLE SalesFact_DailyFinalLoad SWITCH PARTITION 256 TO SalesFact PARTITION 256 WITH (TRUNCATE_TARGET = ON);  

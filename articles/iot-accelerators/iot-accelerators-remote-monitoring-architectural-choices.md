@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
-ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 27a65d8a499f6eba130dc9537de3cb2b3dc3abe8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "61447171"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446767"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Optionen für die Remoteüberwachungsarchitektur
 
@@ -23,7 +23,7 @@ Der Azure IoT-Solution Accelerator für die Remoteüberwachung ist ein Open Sour
 - Geräteverwaltung
 - Datenstromverarbeitung
 
-Die Remoteüberwachungslösung folgt der empfohlenen [Azure IoT-Referenzarchitektur](https://aka.ms/iotrefarchitecture).
+Die Remoteüberwachungslösung folgt der empfohlenen [Azure IoT-Referenzarchitektur](/azure/architecture/reference-architectures/iot).
 
 Dieser Artikel beschreibt die wichtigen technischen Auswahlmöglichkeiten für jedes Subsystem der Remoteüberwachungslösung. Die technischen Optionen, die Microsoft für die Remoteüberwachungslösung auswählt, sind nicht die einzige Möglichkeit, eine IoT-Remoteüberwachungslösung zu implementieren. Betrachten Sie die technische Implementierung als Grundlage für die Erstellung einer erfolgreichen Anwendung, und passen Sie sie an Folgendes an:
 
@@ -86,4 +86,4 @@ Alternativ zu Docker können Microservices in PaaS-Diensten wie Azure App Servic
 
 * Stellen Sie Ihre Remoteüberwachungslösung [hier](https://www.azureiotsolutions.com/) bereit.
 * Erkunden Sie [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/)- und [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/)-Code in GitHub.  
-* Erfahren Sie [hier](https://aka.ms/iotrefarchitecture) mehr über die IoT-Referenzarchitektur.
+* Erfahren Sie [hier](/azure/architecture/reference-architectures/iot) mehr über die IoT-Referenzarchitektur.

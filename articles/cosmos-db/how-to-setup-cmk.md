@@ -6,17 +6,17 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 08/05/2020
 ms.author: thweiss
-ms.openlocfilehash: 21bb594f4e374d41cfc4184f3a72aea1717c85d8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: e87f6f158265fd8ac210a0a071e35b0bb77df4d9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93086141"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338269"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-account-with-azure-key-vault"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für Ihr Azure Cosmos-Konto mit Azure Key Vault
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln ( **vom Dienst verwaltete Schlüssel** ) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln ( **vom Kunden verwaltete Schlüssel** ) hinzufügen.
+Die in Ihrem Azure Cosmos-Konto gespeicherten Daten werden automatisch und nahtlos mit von Microsoft verwalteten Schlüsseln (**vom Dienst verwaltete Schlüssel**) verschlüsselt. Sie können optional eine zweite Verschlüsselungsschicht mit von Ihnen verwalteten Schlüsseln (**vom Kunden verwaltete Schlüssel**) hinzufügen.
 
 :::image type="content" source="./media/how-to-setup-cmk/cmk-intro.png" alt-text="Verschlüsselungsschicht um Kundendaten":::
 
@@ -45,8 +45,8 @@ Wenn Sie eine neue Azure Key Vault-Instanz erstellen, aktivieren Sie diese Eigen
 
 Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfen, ob diese Eigenschaften aktiviert sind, indem Sie sich im Azure-Portal den Abschnitt **Eigenschaften** ansehen. Ist eine dieser Eigenschaften nicht aktiviert, finden Sie in den Abschnitten „Aktivieren des vorläufigen Löschens“ und „Aktivieren des Bereinigungsschutzes“ in einem der folgenden Artikel weitere Informationen:
 
-- [Verwenden des vorläufigen Löschens mit PowerShell](../key-vault/general/soft-delete-powershell.md)
-- [Verwenden des vorläufigen Löschens mit Azure CLI](../key-vault/general/soft-delete-cli.md)
+- [Verwenden des vorläufigen Löschens mit PowerShell](../key-vault/general/key-vault-recovery.md)
+- [Verwenden des vorläufigen Löschens mit Azure CLI](../key-vault/general/key-vault-recovery.md)
 
 ## <a name="add-an-access-policy-to-your-azure-key-vault-instance"></a>Hinzufügen einer Zugriffsrichtlinie zu Ihrer Azure Key Vault-Instanz
 
@@ -56,11 +56,11 @@ Bei Verwendung einer vorhandenen Azure Key Vault-Instanz können Sie überprüfe
 
 1. Wählen Sie **+ Zugriffsrichtlinie hinzufügen** aus.
 
-1. Wählen Sie im Dropdownmenü **Schlüsselberechtigungen** die Berechtigungen **Abrufen** , **Schlüssel entpacken** und **Schlüssel packen** aus:
+1. Wählen Sie im Dropdownmenü **Schlüsselberechtigungen** die Berechtigungen **Abrufen**, **Schlüssel entpacken** und **Schlüssel packen** aus:
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png" alt-text="Auswählen der richtigen Berechtigungen":::
 
-1. Wählen Sie unter **Prinzipal auswählen** die Option **Nichts ausgewählt** aus. Suchen Sie dann nach dem **Azure Cosmos DB** -Prinzipal, und wählen Sie ihn aus (um ihn leichter zu finden, können Sie auch nach der Prinzipal-ID suchen: `a232010e-820c-4083-83bb-3ace5fc29d0b` für alle Azure-Regionen, mit Ausnahme der Azure Government-Regionen, bei denen die Prinzipal-ID `57506a73-e302-42a9-b869-6f12d9ec29e9` lautet). Wählen Sie schließlich im unteren Bereich **Auswählen** aus. Wenn der Prinzipal **Azure Cosmos DB** nicht in der Liste aufgeführt ist, müssen Sie möglicherweise den Ressourcenanbieter **Microsoft.DocumentDB** erneut registrieren (wie im Abschnitt [Registrieren des Ressourcenanbieters](#register-resource-provider) in diesem Artikel beschrieben).
+1. Wählen Sie unter **Prinzipal auswählen** die Option **Nichts ausgewählt** aus. Suchen Sie dann nach dem **Azure Cosmos DB**-Prinzipal, und wählen Sie ihn aus (um ihn leichter zu finden, können Sie auch nach der Prinzipal-ID suchen: `a232010e-820c-4083-83bb-3ace5fc29d0b` für alle Azure-Regionen, mit Ausnahme der Azure Government-Regionen, bei denen die Prinzipal-ID `57506a73-e302-42a9-b869-6f12d9ec29e9` lautet). Wählen Sie schließlich im unteren Bereich **Auswählen** aus. Wenn der Prinzipal **Azure Cosmos DB** nicht in der Liste aufgeführt ist, müssen Sie möglicherweise den Ressourcenanbieter **Microsoft.DocumentDB** erneut registrieren (wie im Abschnitt [Registrieren des Ressourcenanbieters](#register-resource-provider) in diesem Artikel beschrieben).
 
    :::image type="content" source="./media/how-to-setup-cmk/portal-akv-add-ap.png" alt-text="Auswählen des Azure Cosmos DB-Prinzipals":::
 

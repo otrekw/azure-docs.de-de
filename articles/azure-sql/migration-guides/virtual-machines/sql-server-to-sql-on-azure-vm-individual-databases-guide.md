@@ -10,12 +10,12 @@ author: markjones-msft
 ms.author: markjon
 ms.reviewer: mathoma
 ms.date: 11/06/2020
-ms.openlocfilehash: 1558c396566b2fcfc098a749407d5e7a28316b6f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3b0fdccd3eaf6e6bd94b595107022f738bdd8382
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95019448"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325915"
 ---
 # <a name="migration-guide-sql-server-to-sql-server-on-azure-vms"></a>Migrationsleitfaden: SQL Server zu SQL Server auf Azure-VMs 
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlvm.md)]
@@ -38,8 +38,8 @@ Informationen zu anderen Migrationsstrategien finden Sie in der [Übersicht zur 
 Für die Migration zu SQL Server auf Azure-VMs benötigen Sie Folgendes: 
 
 - den [Datenmigrations-Assistenten (DMA)](https://www.microsoft.com/download/details.aspx?id=53595)
-- ein [Azure Migrate-Projekt](/azure/migrate/create-manage-projects)
-- eine vorbereitete Zielinstanz für [SQL Server auf Azure-VMs](/azure/azure-sql/virtual-machines/windows/create-sql-vm-portal), deren Version identisch mit oder höher als die der SQL Server-Quellinstanz ist
+- ein [Azure Migrate-Projekt](../../../migrate/create-manage-projects.md)
+- eine vorbereitete Zielinstanz für [SQL Server auf Azure-VMs](../../virtual-machines/windows/create-sql-vm-portal.md), deren Version identisch mit oder höher als die der SQL Server-Quellinstanz ist
 - [Konnektivität zwischen Azure und einer lokalen Umgebung](/azure/architecture/reference-architectures/hybrid-networking)
 - eine [geeignete Migrationsstrategie](sql-server-to-sql-on-azure-vm-migration-overview.md#migrate)
 
@@ -157,8 +157,8 @@ Die folgende Tabelle enthält Komponenten und empfohlene Migrationsmethoden, die
 || Benutzerdatenbanken mit Filestream |  Wenden Sie die [Sicherungs- und Wiederherstellungsmethode](../../virtual-machines/windows/migrate-to-vm-from-sql-server.md#back-up-and-restore) für die Migration an. DMA unterstützt keine Datenbanken mit Filestream. |
 | **Security** | SQL Server- und Windows-Anmeldungen | Verwenden Sie DMA zum [Migrieren von Benutzeranmeldungen](/sql/dma/dma-migrateserverlogins). |
 || SQL Server-Rollen | Skript mit SQL Server Management Studio |
-|| Kryptografieanbieter | Eine [Konvertierung](../../virtual-machines/windows/azure-key-vault-integration-configure.md) wird empfohlen, damit Sie Azure Key Vault verwenden können. Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-vm-resource-provider-register.md) verwendet. |
-| **Serverobjekte** | Sicherungsmedien | Ersetzen Sie die Datenbanksicherung mit [Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md), oder schreiben Sie Sicherungen in [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 und höher). Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-vm-resource-provider-register.md) verwendet.|
+|| Kryptografieanbieter | Eine [Konvertierung](../../virtual-machines/windows/azure-key-vault-integration-configure.md) wird empfohlen, damit Sie Azure Key Vault verwenden können. Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) verwendet. |
+| **Serverobjekte** | Sicherungsmedien | Ersetzen Sie die Datenbanksicherung mit [Azure Backup](../../../backup/backup-sql-server-database-azure-vms.md), oder schreiben Sie Sicherungen in [Azure Storage](../../virtual-machines/windows/azure-storage-sql-server-backup-restore-use.md) (SQL Server 2012 SP1 CU2 und höher). Hierfür wird der Ressourcenanbieter [Microsoft.SqlVirtualMachine](../../virtual-machines/windows/sql-agent-extension-manually-register-single-vm.md) verwendet.|
 || Verbindungsserver | Skript mit SQL Server Management Studio |
 || Servertrigger | Skript mit SQL Server Management Studio |
 | **Replikation** | Lokale Veröffentlichungen | Skript mit SQL Server Management Studio |

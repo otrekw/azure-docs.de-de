@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 06/19/2020
-ms.openlocfilehash: 02772ff6279ee813b86f92984742ba8301bdf74e
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 78829ae52d74cf6ec58c12779c51bca9a98e0af1
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93357945"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450798"
 ---
 # <a name="regenerate-storage-account-access-keys"></a>Neugenerieren der Zugriffsschlüssel für Speicherkonten
 
@@ -27,7 +27,7 @@ Aus Sicherheitsgründen müssen Sie möglicherweise die Zugriffsschlüssel für 
 
 > [!IMPORTANT]
 
-> Anmeldeinformationen, die bei Datenspeichern registriert sind, werden in Ihrer Azure Key Vault-Instanz gespeichert, die dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview) für Ihren Schlüsseltresor aktiviert haben, finden Sie in diesem Artikel Informationen zum Aktualisieren von Anmeldeinformationen. Wenn Sie die Registrierung des Datenspeichers aufheben und versuchen, ihn unter demselben Namen erneut zu registrieren, tritt bei dieser Aktion ein Fehler auf. Informationen zum Aktivieren des vorläufigen Löschens in diesem Szenario finden Sie unter [Aktivieren des vorläufigen Löschens für einen vorhandenen Schlüsseltresor]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
+> Anmeldeinformationen, die bei Datenspeichern registriert sind, werden in Ihrer Azure Key Vault-Instanz gespeichert, die dem Arbeitsbereich zugeordnet ist. Wenn Sie das [vorläufige Löschen](../key-vault/general/soft-delete-overview.md) für Ihren Schlüsseltresor aktiviert haben, finden Sie in diesem Artikel Informationen zum Aktualisieren von Anmeldeinformationen. Wenn Sie die Registrierung des Datenspeichers aufheben und versuchen, ihn unter demselben Namen erneut zu registrieren, tritt bei dieser Aktion ein Fehler auf. Informationen zum Aktivieren des vorläufigen Löschens in diesem Szenario finden Sie unter [Aktivieren des vorläufigen Löschens für einen vorhandenen Schlüsseltresor]( https://docs.microsoft.com/azure/key-vault/general/soft-delete-change#turn-on-soft-delete-for-an-existing-key-vault).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: conceptual
 ms.date: 10/10/2020
 ms.author: alkohli
-ms.openlocfilehash: 8957d8982a3bfe1da2811dc10d0c3e77a72fc288
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: ec7a32739940d53d976e73a7e170df96a0acc245
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92367600"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449525"
 ---
 # <a name="azure-key-vault-integration-with-azure-stack-edge"></a>Integration von Azure Key Vault in Azure Stack Edge 
 
@@ -31,7 +31,7 @@ Eines der für den Azure Stack Edge-Dienst verwendeten Geheimnisse ist der Chann
 
 Bei der Generierung von Aktivierungsschlüsseln wird eine Key Vault-Instanz für eine Azure Stack Edge-Ressource erstellt. 
 
-- Wenn Sie eine Azure Stack Edge-Ressource erstellen, müssen Sie den *Microsoft.KeyVault* -Ressourcenanbieter registrieren. Der Ressourcenanbieter wird automatisch registriert, wenn Sie als Besitzer oder Mitwirkender Zugriff auf das Abonnement haben. Die Key Vault-Instanz wird im gleichen Abonnement und der gleichen Ressourcengruppe erstellt wie die Azure Stack Edge-Ressource. 
+- Wenn Sie eine Azure Stack Edge-Ressource erstellen, müssen Sie den *Microsoft.KeyVault*-Ressourcenanbieter registrieren. Der Ressourcenanbieter wird automatisch registriert, wenn Sie als Besitzer oder Mitwirkender Zugriff auf das Abonnement haben. Die Key Vault-Instanz wird im gleichen Abonnement und der gleichen Ressourcengruppe erstellt wie die Azure Stack Edge-Ressource. 
 
 - Beim Erstellen einer Azure Stack Edge-Ressource wird auch eine verwaltete Dienstidentität (Managed Service Identity, MSI) erstellt, die für die Lebensdauer der Ressource beibehalten wird und mit dem Ressourcenanbieter in der Cloud kommuniziert. 
 
@@ -45,11 +45,11 @@ Bei der Generierung von Aktivierungsschlüsseln wird eine Key Vault-Instanz für
 
     ![Während der Erstellung der Azure Stack Edge-Ressource erstellte MSI](media/azure-stack-edge-gpu-deploy-prep/create-resource-8.png)
 
-- Um den Azure-Schlüsseltresor anzuzeigen, navigieren Sie in Ihrer Azure Stack Edge-Ressource zu **Eigenschaften** , und wählen Sie den Namen des gewünschten Schlüsseltresors aus. 
+- Um den Azure-Schlüsseltresor anzuzeigen, navigieren Sie in Ihrer Azure Stack Edge-Ressource zu **Eigenschaften**, und wählen Sie den Namen des gewünschten Schlüsseltresors aus. 
 
 - Um ein versehentliches Löschen zu verhindern, wird eine Ressourcensperre für die Key Vault-Instanz aktiviert. Außerdem wird ein vorläufiges Löschen für die Key Vault-Instanz aktiviert, wodurch sie im Fall eines versehentlichen Löschens innerhalb von 90 Tagen wiederhergestellt werden kann. Weitere Informationen finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../key-vault/general/soft-delete-overview.md).
 
-    Wenn die Key Vault-Instanz versehentlich gelöscht wird und die Löschschutzphase von 90 Tagen nicht verstrichen ist, führen Sie die Schritte zum [Wiederherstellen der Key Vault-Instanz](../key-vault/general/soft-delete-powershell.md#recovering-a-key-vault) aus. 
+    Wenn die Key Vault-Instanz versehentlich gelöscht wird und die Löschschutzphase von 90 Tagen nicht verstrichen ist, führen Sie die Schritte zum [Wiederherstellen der Key Vault-Instanz](../key-vault/general/key-vault-recovery.md#list-recover-or-purge-soft-deleted-secrets-keys-and-certificates) aus. 
 
 - Wenn Sie bereits vor der Integration der Azure Key Vault-Instanz in die Azure Stack Edge-Ressource über eine Azure Stack Edge-Ressource verfügten, sind Sie nicht betroffen. Sie können weiterhin die vorhandene Azure Stack Edge-Ressource verwenden. 
 
@@ -73,4 +73,3 @@ When you generate an activation key, the following events occur:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Erfahren Sie mehr über das [Generieren eines Aktivierungsschlüssels](azure-stack-edge-gpu-deploy-prep.md#get-the-activation-key).
-

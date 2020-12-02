@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 03/18/2020
-ms.openlocfilehash: 76ecd811ab0bffe20b4bddcc4dc2eacaffaed588
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 2a7d77579eaebd3ee951d0184e25937783420806
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93308342"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325195"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL Transparent Data Encryption mithilfe eines kundenseitig verwalteten Schlüssels
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -78,7 +78,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Der Schlüsseltresor und die (verwaltete) SQL-Datenbank-Instanz müssen demselben Azure Active Directory-Mandanten angehören. Mandantenübergreifende Interaktionen zwischen Schlüsseltresor und Server werden nicht unterstützt. Damit Ressourcen später verschoben werden können, muss die TDE mit AKV neu konfiguriert werden. Erfahren Sie mehr über das [Verschieben von Ressourcen](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-- Die Funktion zum [vorläufigen Löschen](../../key-vault/general/soft-delete-overview.md) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](../../key-vault/general/soft-delete-powershell.md#enabling-soft-delete) oder die [CLI](../../key-vault/general/soft-delete-cli.md#enabling-soft-delete) aktiviert werden. Die Aktivierung über das Azure-Portal ist nicht möglich.  
+- Die Funktion zum [vorläufigen Löschen](../../key-vault/general/soft-delete-overview.md) muss im Schlüsseltresor aktiviert sein, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie nicht in der Zwischenzeit vom Kunden wiederhergestellt oder endgültig gelöscht werden. Den Aktionen *Wiederherstellen* und *Endgültig löschen* sind über Zugriffsrichtlinien für den Schlüsseltresor eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert und kann über [PowerShell](../../key-vault/general/key-vault-recovery.md?tabs=azure-powershell) oder die [CLI](../../key-vault/general/key-vault-recovery.md?tabs=azure-cli) aktiviert werden. Die Aktivierung über das Azure-Portal ist nicht möglich.  
 
 - Gewähren Sie dem Server oder der verwalteten Instanz über die entsprechende Azure Active Directory-Identität Zugriff auf den Schlüsseltresor (get, wrapKey, unwrapKey). Wenn Sie das Azure-Portal verwenden, wird die Azure AD-Identität automatisch erstellt. Bei der Verwendung von PowerShell oder der CLI muss die Azure AD-Identität explizit erstellt werden, und der Abschluss des Vorgangs sollte überprüft werden. Unter [Konfigurieren von TDE mit BYOK](transparent-data-encryption-byok-configure.md) und [Konfigurieren von TDE mit BYOK für SQL Managed Instance](../managed-instance/scripts/transparent-data-encryption-byok-powershell.md) finden Sie ausführliche Anleitungen für die Verwendung von PowerShell.
 
@@ -118,7 +118,7 @@ Prüfer können Azure Monitor verwenden, um die AuditEvent-Protokolle von Key Va
 
 - Erstellen Sie immer eine neue Sicherung, wenn Änderungen am Schlüssel vorgenommen werden (z. B. Schlüsselattribute, Tags, ACLs).
 
-- **Lassen Sie frühere Versionen** des Schlüssels beim Rotieren von Schlüsseln im Schlüsseltresor, damit ältere Datenbanksicherungen wiederhergestellt werden können. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert** , um die aktuelle TDE-Schutzvorrichtung zu verwenden. Bei der Wiederherstellung ist für jede Sicherung die TDE-Schutzvorrichtung erforderlich, mit der sie zum Erstellungszeitpunkt verschlüsselt wurde. Schlüsselrotationen können anhand der Anweisungen unter [Rotieren der Transparent Data Encryption-Schutzvorrichtung mithilfe von PowerShell](transparent-data-encryption-byok-key-rotation.md) durchgeführt werden.
+- **Lassen Sie frühere Versionen** des Schlüssels beim Rotieren von Schlüsseln im Schlüsseltresor, damit ältere Datenbanksicherungen wiederhergestellt werden können. Wenn die TDE-Schutzvorrichtung für eine Datenbank geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden. Bei der Wiederherstellung ist für jede Sicherung die TDE-Schutzvorrichtung erforderlich, mit der sie zum Erstellungszeitpunkt verschlüsselt wurde. Schlüsselrotationen können anhand der Anweisungen unter [Rotieren der Transparent Data Encryption-Schutzvorrichtung mithilfe von PowerShell](transparent-data-encryption-byok-key-rotation.md) durchgeführt werden.
 
 - Bewahren Sie alle zuvor verwendeten Schlüssel in AKV auf, auch nachdem Sie zu dienstseitig verwalteten Schlüsseln gewechselt haben. Dadurch wird sichergestellt, dass Datenbanksicherungen mit den in AKV gespeicherten TDE-Schutzvorrichtungen wiederhergestellt werden können.  Mit Azure Key Vault erstellte TDE-Schutzvorrichtungen müssen beibehalten werden, bis alle gespeicherte Sicherungen mit dienstseitig verwalteten Schlüsseln erstellt wurden. Erstellen Sie mithilfe von [Backup-AzKeyVaultKey](/powershell/module/az.keyvault/backup-azkeyvaultkey) wiederherstellbare Sicherungskopien dieser Schlüssel.
 
@@ -146,7 +146,7 @@ Nachfolgend sehen Sie die zusätzlichen Schritte, die im Portal ausgeführt werd
 
 Es kann vorkommen, dass ein Benutzer mit ausreichenden Zugriffsrechten für den Schlüsseltresor den Serverzugriff auf den Schlüssel versehentlich durch eine der folgende Aktionen deaktiviert:
 
-- Widerrufen der Berechtigungen *get* , *wrapKey* , *unwrapKey* des Schlüsseltresors vom Server
+- Widerrufen der Berechtigungen *get*, *wrapKey*, *unwrapKey* des Schlüsseltresors vom Server
 
 - Löschen des Schlüssels
 
@@ -168,7 +168,7 @@ Konfigurieren Sie die folgenden Azure-Features, um den Datenbankzustand zu über
 
 ## <a name="database-backup-and-restore-with-customer-managed-tde"></a>Datenbanksicherung und -wiederherstellung mit der kundenseitig verwalteten TDE
 
-Nachdem eine Datenbank mithilfe eines Schlüssels aus Key Vault mit TDE verschlüsselt wurde, werden alle neu generierten Sicherungen ebenfalls mit der gleichen TDE-Schutzvorrichtung verschlüsselt. Wenn die TDE-Schutzvorrichtung geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert** , um die aktuelle TDE-Schutzvorrichtung zu verwenden.
+Nachdem eine Datenbank mithilfe eines Schlüssels aus Key Vault mit TDE verschlüsselt wurde, werden alle neu generierten Sicherungen ebenfalls mit der gleichen TDE-Schutzvorrichtung verschlüsselt. Wenn die TDE-Schutzvorrichtung geändert wird, werden alte Sicherungen der Datenbank **nicht aktualisiert**, um die aktuelle TDE-Schutzvorrichtung zu verwenden.
 
 Zum Wiederherstellen einer Sicherung, die mit einer TDE-Schutzvorrichtung aus Key Vault verschlüsselt ist, stellen Sie sicher, dass das Schlüsselmaterial für den Zielserver verfügbar ist. Es wird daher empfohlen, alle alten Versionen der TDE-Schutzvorrichtung im Schlüsseltresor beizubehalten, damit Datenbanksicherungen wiederhergestellt werden können.
 

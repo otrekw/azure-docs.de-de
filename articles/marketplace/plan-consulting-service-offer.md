@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: dfc812771f0eeb8dcb0d95bdad1e76ed0b12297e
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: c56d83e551265f3fb4de106cb8fa77efd6dcbabc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754219"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452119"
 ---
 # <a name="how-to-plan-a-consulting-service-offer-in-the-commercial-marketplace"></a>Planen eines Angebots für einen Beratungsdienst im kommerziellen Marketplace
 
@@ -36,7 +36,7 @@ Weitere Informationen zu den Unterschieden zwischen AppSource und dem Azure Mark
 
 ## <a name="eligibility-requirements"></a>Qualifizierungsanforderungen
 
-Sie müssen vor dem Veröffentlichen eines Angebots für einen Beratungsdienst mehrere Eignungsanforderungen erfüllen, um den Kunden gegenüber Ihr Fachwissen auf einem Gebiet nachzuweisen. Die Anforderungen hängen vom Kernprodukt Ihres Angebots ab. Die komplette Liste der Eignungsanforderungen für die einzelnen primären Produkte finden Sie in den [Zertifizierungsrichtlinien für Beratungsdienste](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services).
+Sie müssen vor dem Veröffentlichen eines Angebots für einen Beratungsdienst mehrere Eignungsanforderungen erfüllen, um den Kunden gegenüber Ihr Fachwissen auf einem Gebiet nachzuweisen. Die Anforderungen hängen vom Kernprodukt Ihres Angebots ab. Die komplette Liste der Eignungsanforderungen für die einzelnen primären Produkte finden Sie in den [Zertifizierungsrichtlinien für Beratungsdienste](/legal/marketplace/certification-policies#800-consulting-services).
 
 > [!NOTE]
 > Für einige primäre Produkte benötigen Sie die Microsoft-Kompetenz „Gold“ oder „Silver“ in ihrem Lösungsbereich. Weitere Informationen finden Sie unter [Kompetenzen für das Microsoft Partner Network](https://partner.microsoft.com/membership/competencies).
@@ -84,7 +84,7 @@ Wenn Sie ein Angebot für einen Beratungsdienst in Partner Center erstellen, fü
 
 Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab vorbereiten. Die folgenden Elemente sind erforderlich, sofern nicht anders angegeben:
 
-**Name** : Dieser Name wird als Titel Ihrer Angebotsliste im kommerziellen Marketplace angezeigt. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und ist auf 50 Zeichen begrenzt. Der Name muss die Dauer und den Typ des angebotenen Beratungsdiensts angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: *Name: Dauer + Typ*. Fügen Sie den Namen Ihres Unternehmens nur dann ein, wenn es sich auch um den Produktnamen handelt. Im Folgenden finden Sie einige Beispiele:
+**Name**: Dieser Name wird als Titel Ihrer Angebotsliste im kommerziellen Marketplace angezeigt. Der Name ist möglicherweise markenrechtlich geschützt. Er darf keine Emojis (mit Ausnahme des Markenzeichen- und Copyrightsymbols) enthalten und ist auf 50 Zeichen begrenzt. Der Name muss die Dauer und den Typ des angebotenen Beratungsdiensts angeben, um eine maximale Suchmaschinenoptimierung zu erzielen. Das erforderliche Format ist wie folgt: *Name: Dauer + Typ*. Fügen Sie den Namen Ihres Unternehmens nur dann ein, wenn es sich auch um den Produktnamen handelt. Im Folgenden finden Sie einige Beispiele:
 
 |Nicht zulässig |Sagen Sie: . |
 |---|---|
@@ -92,9 +92,9 @@ Um das Angebot einfacher zu gestalten, können Sie einige dieser Elemente vorab 
 |Workshop zu intelligenten Toastern |Intelligente Toaster: Woche-1 Workshop |
 |PoC für SQL Server-Migration von Contoso |SQL-Migration: 3-tägige Proof of Concept-Verifizierung |
 
-**Zusammenfassung der Suchergebnisse** : Beschreiben Sie den Zweck oder das Ziel Ihres Angebots in höchstens 200 Zeichen. Diese Zusammenfassung wird in den Suchergebnissen verwendet, die aus den Angeboten im kommerziellen Marketplace erfasst werden. Sie sollte nicht mit dem Titel identisch sein. Fügen Sie ggf. Ihre wichtigsten SEO-Schlüsselwörter ein.
+**Zusammenfassung der Suchergebnisse**: Beschreiben Sie den Zweck oder das Ziel Ihres Angebots in höchstens 200 Zeichen. Diese Zusammenfassung wird in den Suchergebnissen verwendet, die aus den Angeboten im kommerziellen Marketplace erfasst werden. Sie sollte nicht mit dem Titel identisch sein. Fügen Sie ggf. Ihre wichtigsten SEO-Schlüsselwörter ein.
 
-**Beschreibung** : Diese Beschreibung wird im Angebot im kommerziellen Marketplace angezeigt. Fügen Sie gegebenenfalls auch ein Nutzenversprechen, die wichtigsten Vorteile, die beabsichtigte Benutzerbasis und alle Kategorie- oder Branchenverbände hinzu.
+**Beschreibung**: Diese Beschreibung wird im Angebot im kommerziellen Marketplace angezeigt. Fügen Sie gegebenenfalls auch ein Nutzenversprechen, die wichtigsten Vorteile, die beabsichtigte Benutzerbasis und alle Kategorie- oder Branchenverbände hinzu.
 
 Halten Sie sich beim Verfassen der Beschreibung für die jeweiligen Diensttypen an die folgenden Kriterien:
 

@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: cafb32e5bd91c6b7f3cfef4641828963e0731797
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 46216fe06e3d3425d5b237cdbb7326eed596945a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496425"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326929"
 ---
 # <a name="migration-overview-sql-server-to-sql-database"></a>Migrationsübersicht: SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -183,7 +183,7 @@ Die einzigen in Azure SQL-Datenbank anwendbaren Systemdatenbanken sind die [Mast
 
 Sie sollten unbedingt die Vorteile der erweiterten cloudbasierten Features nutzen, die von SQL-Datenbank angeboten werden. Beispielsweise müssen Sie sich nicht mehr um die Verwaltung der Sicherungen sorgen, da der Dienst sich darum kümmert. Sie können den Datenbankzustand [zu einem beliebigen Zeitpunkt innerhalb des Aufbewahrungszeitraums](../../database/recovery-using-backups.md#point-in-time-restore) wiederherstellen. 
 
-Sie sollten außerdem die  [Azure Active Directory-Authentifizierung](../../database/authentication-aad-overview.md), die [Überwachung](../../database/auditing-overview.md), die  [Bedrohungserkennung](../../database/advanced-data-security.md), die  [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) und die  [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) verwenden, um die Sicherheit zu erhöhen.
+Sie sollten außerdem die  [Azure Active Directory-Authentifizierung](../../database/authentication-aad-overview.md), die [Überwachung](../../database/auditing-overview.md), die  [Bedrohungserkennung](../../database/azure-defender-for-sql.md), die  [Sicherheit auf Zeilenebene](/sql/relational-databases/security/row-level-security) und die  [dynamische Datenmaskierung](/sql/relational-databases/security/dynamic-data-masking) verwenden, um die Sicherheit zu erhöhen.
 
 Zusätzlich zu den erweiterten Verwaltungs- und Sicherheitsfeatures stellt SQL-Datenbank eine Reihe von erweiterten Tools bereit, die Sie beim [Überwachen und Optimieren Ihrer Arbeitsauslastung](../../database/monitor-tune-overview.md) unterstützen. Die [Azure SQL-Analyse (Vorschauversion)](../../../azure-monitor/insights/azure-sql.md) ist eine erweiterte Cloudüberwachungslösung, mit der Sie die Leistung aller Ihrer Datenbanken in Azure SQL-Datenbank im großen Stil und abonnementübergreifend in einer zentralen Ansicht überwachen können. Azure SQL-Analyse erfasst und visualisiert wichtige Leistungsmetriken und umfasst integrierte Logik für die Problembehandlung in Bezug auf die Leistung.
 

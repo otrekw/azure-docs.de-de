@@ -10,12 +10,12 @@ author: Blackmist
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-azurecli
-ms.openlocfilehash: 7de78a52482b2f07cb4e5e036509e0f9e402a3f4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 66a9c9d605911a9d3b30a55d47e16026e26e502a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576273"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447250"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Erstellen eines Arbeitsbereichs für Azure Machine Learning mit der Azure CLI
 
@@ -29,6 +29,10 @@ In diesem Artikel erlernen Sie das Erstellen eines Azure Machine Learning-Arbeit
 * Um die CLI-Befehle in diesem Dokument aus Ihrer **lokalen Umgebung** zu verwenden, benötigen Sie die [Azure CLI](/cli/azure/install-azure-cli?preserve-view=true&view=azure-cli-latest).
 
     Wenn Sie die [Azure Cloud Shell](https://azure.microsoft.com//features/cloud-shell/) verwenden, befindet sich die CLI in der Cloud, und der Zugriff erfolgt über den Browser.
+
+## <a name="limitations"></a>Einschränkungen
+
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="connect-the-cli-to-your-azure-subscription"></a>Herstellen einer Verbindung zwischen der CLI und Ihrem Azure-Abonnement
 

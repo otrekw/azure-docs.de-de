@@ -3,12 +3,12 @@ title: 'Übersicht über die Features: Azure Event Hubs | Microsoft-Dokumentatio
 description: Dieser Artikel enthält Details zu Features und Terminologie von Azure Event Hubs.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: db7c0244fd4e9e04f9cfbcbba8748ec8190fc5c5
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a38cf4ba6a06dc6e977f9ea168fcf67ce83ff5de
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96007431"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96339981"
 ---
 # <a name="features-and-terminology-in-azure-event-hubs"></a>Features und Terminologie in Azure Event Hubs
 
@@ -33,7 +33,7 @@ Jede Entität, die Daten an einen Event Hub sendet, ist ein Ereigniserzeuger bzw
 
 ### <a name="publishing-an-event"></a>Veröffentlichen eines Ereignisses
 
-Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Der Event Hubs-Dienst stellt eine [REST-API](https://docs.microsoft.com/rest/api/eventhub/) sowie [.NET](event-hubs-dotnet-standard-getstarted-send.md)-, [Java](event-hubs-java-get-started-send.md)-, [Python](event-hubs-python-get-started-send.md)-, [JavaScript](event-hubs-node-get-started-send.md)- und [Go](event-hubs-go-get-started-send.md)-Clientbibliotheken für die Veröffentlichung von Ereignissen in einem Event Hub bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). 
+Sie können ein Ereignis über AMQP 1.0, Kafka 1.0 (und höher) oder HTTPS veröffentlichen. Der Event Hubs-Dienst stellt eine [REST-API](/rest/api/eventhub/) sowie [.NET](event-hubs-dotnet-standard-getstarted-send.md)-, [Java](event-hubs-java-get-started-send.md)-, [Python](event-hubs-python-get-started-send.md)-, [JavaScript](event-hubs-node-get-started-send.md)- und [Go](event-hubs-go-get-started-send.md)-Clientbibliotheken für die Veröffentlichung von Ereignissen in einem Event Hub bereit. Für andere Runtimes und Plattformen können beliebige AMQP 1.0-Clients verwendet werden, z.B. [Apache Qpid](https://qpid.apache.org/). 
 
 Sie können Ereignisse einzeln oder als Batch veröffentlichen. Jede Veröffentlichung (Ereignisdateninstanz) ist auf 1 MB beschränkt, unabhängig davon, ob es sich um ein einzelnes Ereignis oder einen Batch handelt. Das Veröffentlichen von Ereignissen, die größer als dieser Schwellenwert sind, führt zu einem Fehler. Es ist eine bewährte Methode für Herausgeber, die Partitionen innerhalb des Event Hubs nicht zu beachten und nur einen *Partitionsschlüssel* (im nächsten Abschnitt beschrieben) oder die eigene Identität über das SAS-Token anzugeben.
 

@@ -12,12 +12,12 @@ ms.author: garye
 ms.reviewer: sstein, davidph
 manager: cgronlun
 ms.date: 10/26/2020
-ms.openlocfilehash: adf454ac697f8cabf4256ebfc5baa5d0d1c76264
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: c806c0a13f9f5f13588b780054d1f285beb44802
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782466"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324532"
 ---
 # <a name="key-differences-between-machine-learning-services-in-azure-sql-managed-instance-and-sql-server"></a>Wichtige Unterschiede zwischen Machine Learning Services in Azure SQL Managed Instance und SQL Server
 
@@ -55,7 +55,7 @@ Das [Erweiterbarkeitsframework](/sql/advanced-analytics/concepts/extensibility-f
 Die Paketverwaltung von Python und R unterscheidet sich zwischen SQL Managed Instance und SQL Server. Die folgenden Unterschiede bestehen:
 
 - Es gibt keine Unterstützung für Pakete, die von externen Runtimes (z.B. Java) abhängig sind oder Zugriff auf Betriebssystem-APIs für die Installation oder Verwendung benötigen.
-- Pakete können ausgehende Netzwerkaufrufe tätigen (Änderung einer früheren Version der Vorschau). Sie können die entsprechenden Sicherheitsregeln für ausgehenden Datenverkehr auf Ebene von [Netzwerksicherheitsgruppen](/azure/virtual-network/network-security-groups-overview) festlegen, um ausgehende Netzwerkaufrufe zuzulassen.
+- Pakete können ausgehende Netzwerkaufrufe tätigen (Änderung einer früheren Version der Vorschau). Sie können die entsprechenden Sicherheitsregeln für ausgehenden Datenverkehr auf Ebene von [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md) festlegen, um ausgehende Netzwerkaufrufe zuzulassen.
 
 Weitere Informationen zum Verwalten von Python- und R-Paketen finden Sie unter:
 

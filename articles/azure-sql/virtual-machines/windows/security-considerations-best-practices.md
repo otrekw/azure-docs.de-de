@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: e6f6d1960c07dc23c584dec5bb424f91630fc1bb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 92cd20f9e636c50416a72ec974a33c87da1ae2cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92785067"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327269"
 ---
 # <a name="security-considerations-for-sql-server-on-azure-virtual-machines"></a>Überlegungen zur Sicherheit von SQL Server auf Azure Virtual Machines
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -59,7 +59,7 @@ Erwägen Sie schließlich die Aktivierung von verschlüsselten Verbindungen für
 
 ## <a name="encryption"></a>Verschlüsselung
 
-Verwaltete Datenträger bieten serverseitige Verschlüsselung und Azure Disk Encryption. Die [serverseitige Verschlüsselung](../../../virtual-machines/windows/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt entweder BitLocker- oder DM-Crypt-Technologie und lässt sich mit Azure Key Vault integrieren, um sowohl das Betriebssystem als auch die Datenträger zu verschlüsseln. 
+Verwaltete Datenträger bieten serverseitige Verschlüsselung und Azure Disk Encryption. Die [serverseitige Verschlüsselung](../../../virtual-machines/disk-encryption.md) bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. [Azure Disk Encryption](../../../security/fundamentals/azure-disk-encryption-vms-vmss.md) nutzt entweder BitLocker- oder DM-Crypt-Technologie und lässt sich mit Azure Key Vault integrieren, um sowohl das Betriebssystem als auch die Datenträger zu verschlüsseln. 
 
 ## <a name="use-a-non-default-port"></a>Verwenden eines Ports, der kein Standardport ist
 
@@ -88,14 +88,14 @@ Sie möchten verhindern, dass Angreifer Kontonamen oder Kennwörter leicht errat
 
 - Verwenden Sie komplexe, sichere Kennwörter für alle Konten. Weitere Informationen zum Erstellen eines sicheren Kennworts finden Sie im Artikel [Erstellen eines sicheren Kennworts](https://support.microsoft.com/instantanswers/9bd5223b-efbe-aa95-b15a-2fb37bef637d/create-a-strong-password).
 
-- Standardmäßig wird für Azure während des Einrichtens von virtuellen Computern mit SQL Server die Windows-Authentifizierung ausgewählt. Aus diesem Grund wird beim Einrichten die **SA** -Anmeldung deaktiviert und ein Kennwort zugewiesen. Es wird empfohlen, die **SA** -Anmeldung nicht zu verwenden oder zu aktivieren. Verwenden Sie eine der folgenden Strategien, falls Sie eine SQL-Anmeldung benötigen:
+- Standardmäßig wird für Azure während des Einrichtens von virtuellen Computern mit SQL Server die Windows-Authentifizierung ausgewählt. Aus diesem Grund wird beim Einrichten die **SA** -Anmeldung deaktiviert und ein Kennwort zugewiesen. Es wird empfohlen, die **SA**-Anmeldung nicht zu verwenden oder zu aktivieren. Verwenden Sie eine der folgenden Strategien, falls Sie eine SQL-Anmeldung benötigen:
 
-  - Erstellen Sie ein SQL-Konto mit einem eindeutigen Namen, das über eine **sysadmin** -Mitgliedschaft verfügt. Hierfür können Sie das Portal verwenden, indem Sie während der Bereitstellung die Option **SQL-Authentifizierung** aktivieren.
+  - Erstellen Sie ein SQL-Konto mit einem eindeutigen Namen, das über eine **sysadmin**-Mitgliedschaft verfügt. Hierfür können Sie das Portal verwenden, indem Sie während der Bereitstellung die Option **SQL-Authentifizierung** aktivieren.
 
     > [!TIP] 
     > Wenn Sie die SQL-Authentifizierung während der Bereitstellung nicht aktivieren, müssen Sie den Authentifizierungsmodus manuell in **SQL Server- und Windows-Authentifizierungsmodus** ändern. Weitere Informationen finden Sie unter [Ändern des Serverauthentifizierungsmodus](/sql/database-engine/configure-windows/change-server-authentication-mode).
 
-  - Falls Sie die **SA** -Anmeldung verwenden müssen, sollten Sie die Anmeldung nach der Bereitstellung aktivieren und ein neues sicheres Kennwort zuweisen.
+  - Falls Sie die **SA**-Anmeldung verwenden müssen, sollten Sie die Anmeldung nach der Bereitstellung aktivieren und ein neues sicheres Kennwort zuweisen.
 
 ## <a name="additional-best-practices"></a>Weitere Best Practices
 

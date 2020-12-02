@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: effa0d3ba9f7098b691605bfbd76bff9ea3d5e66
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7936699832a09f535729c42b12fec2d5c49a11a0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023430"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350941"
 ---
 # <a name="create-an-azure-ssis-integration-runtime-in-azure-data-factory"></a>Erstellen einer Azure-SSIS Integration Runtime in Azure Data Factory | Microsoft-Dokumentation
 
@@ -167,7 +167,7 @@ Wenn Sie das Kontrollkästchen aktivieren, führen Sie die folgenden Schritte au
 Wählen Sie ggf. **Verbindung testen** und – bei erfolgreichem Test – **Weiter** aus.
 
 > [!NOTE]
-   > Wenn Sie den Azure SQL-Datenbankserver zum Hosten von SSISDB verwenden, werden Ihre Daten standardmäßig im georedundanten Speicher für Sicherungen gespeichert. Wenn Sie nicht möchten, dass Ihre Daten in anderen Regionen repliziert werden, befolgen Sie die Anweisungen zum [Konfigurieren der Redundanz für Sicherungsspeicher mithilfe von PowerShell](https://docs.microsoft.com/azure/azure-sql/database/automated-backups-overview?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
+   > Wenn Sie den Azure SQL-Datenbankserver zum Hosten von SSISDB verwenden, werden Ihre Daten standardmäßig im georedundanten Speicher für Sicherungen gespeichert. Wenn Sie nicht möchten, dass Ihre Daten in anderen Regionen repliziert werden, befolgen Sie die Anweisungen zum [Konfigurieren der Redundanz für Sicherungsspeicher mithilfe von PowerShell](../azure-sql/database/automated-backups-overview.md?tabs=single-database#configure-backup-storage-redundancy-by-using-powershell).
    
 ##### <a name="creating-azure-ssis-ir-package-stores"></a>Erstellen von Azure-SSIS IR-Paketspeichern
 

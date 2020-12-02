@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9a074b872ed19a7d3e6b3e410c69da0f2b78e85e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3eced4e727954906d8ff67e7afe2279100f8f1cc
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96012577"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349060"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-sync-java-sdk-v2"></a>Leistungstipps für das Sync Java SDK v2 von Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -141,7 +141,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](/azure/cosmos-db/index-policy).
+    Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](./index-policy.md).
 
 ## <a name="throughput"></a>Throughput
 <a id="measure-rus"></a>

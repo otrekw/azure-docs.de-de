@@ -11,12 +11,12 @@ ms.topic: reference
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/15/2020
-ms.openlocfilehash: 262e15754ba481ee37b6af9783e5a3bc82d9450c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: ff4e6e0451b57046fb8f07f5a1051235e1f6d0f5
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556351"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325722"
 ---
 # <a name="documentation-changes-for-sql-server-on-azure-virtual-machines"></a>Dokumentationsänderungen für SQL Server auf virtuellen Azure-Computern
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -96,7 +96,7 @@ In Azure können Sie einen virtuellen Computer (VM) mit einem integrierten SQL 
 | **Unterstützung für benannte Instanzen** | Sie können jetzt die [SQL Server-IaaS-Erweiterung](sql-server-iaas-agent-extension-automate-management.md#installation) mit einer benannten Instanz verwenden, wenn die Standardinstanz ordnungsgemäß deinstalliert wurde. | 
 | **Portalerweiterung** | Die Azure-Portal-Benutzeroberfläche zur Bereitstellung einer SQL Server-VM wurde überarbeitet, um die Benutzerfreundlichkeit zu verbessern. Weitere Informationen finden Sie in Kurzform im [Schnellstart](sql-vm-create-portal-quickstart.md) und ausführlicher in der [Schrittanleitung](create-sql-vm-portal.md) zum Bereitstellen einer SQL Server-VM.|
 | **Verbesserung beim Portal** | Es ist jetzt möglich, mithilfe des [Azure-Portals](licensing-model-azure-hybrid-benefit-ahb-change.md#change-license-model) das Lizenzierungsmodell für einen virtuellen SQL Server-Computer von nutzungsbasierter Bezahlung in Bring-Your-Own-License zu ändern.|
-| **Vereinfachung der Bereitstellung von Verfügbarkeitsgruppen auf einem virtuellen SQL Server-Computer über die Azure-Befehlszeilenschnittstelle** | Es ist jetzt einfacher denn je, eine Verfügbarkeitsgruppe auf einer SQL Server-VM in Azure bereitzustellen. Sie können die [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) verwenden, um den Windows-Failovercluster, den internen Lastenausgleich und die Verfügbarkeitsgruppenlistener über die Befehlszeile zu erstellen. Weitere Informationen finden Sie unter [Konfigurieren einer Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer mithilfe der Azure CLI](availability-group-az-cli-configure.md). | 
+| **Vereinfachung der Bereitstellung von Verfügbarkeitsgruppen auf einem virtuellen SQL Server-Computer über die Azure-Befehlszeilenschnittstelle** | Es ist jetzt einfacher denn je, eine Verfügbarkeitsgruppe auf einer SQL Server-VM in Azure bereitzustellen. Sie können die [Azure-Befehlszeilenschnittstelle](/cli/azure/sql/vm?view=azure-cli-2018-03-01-hybrid&preserve-view=true) verwenden, um den Windows-Failovercluster, den internen Lastenausgleich und die Verfügbarkeitsgruppenlistener über die Befehlszeile zu erstellen. Weitere Informationen finden Sie unter [Konfigurieren einer Always On-Verfügbarkeitsgruppe für SQL Server auf einem virtuellen Azure-Computer mithilfe der Azure CLI](./availability-group-az-commandline-configure.md). | 
 | &nbsp; | &nbsp; |
 
 ## <a name="2018"></a>2018 

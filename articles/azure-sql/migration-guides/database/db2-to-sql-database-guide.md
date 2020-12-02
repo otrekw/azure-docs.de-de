@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: bc7db167ed1d1d8823e90bf422f17428a7ed4e48
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 369f17a39b9d7b2f85fffb8b72a293558d16416e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94496266"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325161"
 ---
 # <a name="migration-guide-db2-to-sql-database"></a>Migrationsleitfaden: Db2 zu SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../../includes/appliesto-sqldb.md)]
@@ -149,7 +149,7 @@ Das Testvorgehen für die Datenbankmigration umfasst die folgenden Aktivitäten:
 
 ## <a name="leverage-advanced-features"></a>Nutzen der erweiterten Features 
 
-Sie sollten unbedingt die erweiterten cloudbasierten Features von Azure SQL-Datenbank nutzen, z. B. die [integrierte Hochverfügbarkeit](../../database/high-availability-sla.md), die [Bedrohungserkennung](../../database/advanced-data-security.md) und die [Überwachung und Optimierung Ihrer Workloads](../../database/monitor-tune-overview.md). 
+Sie sollten unbedingt die erweiterten cloudbasierten Features von Azure SQL-Datenbank nutzen, z. B. die [integrierte Hochverfügbarkeit](../../database/high-availability-sla.md), die [Bedrohungserkennung](../../database/azure-defender-for-sql.md) und die [Überwachung und Optimierung Ihrer Workloads](../../database/monitor-tune-overview.md). 
 
 
 Einige SQL Server-Features sind nur verfügbar, wenn der [Datenbank-Kompatibilitätsgrad](/sql/relational-databases/databases/view-or-change-the-compatibility-level-of-a-database) in den neuesten Kompatibilitätsgrad (150) geändert wurde. 

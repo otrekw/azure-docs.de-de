@@ -3,12 +3,12 @@ title: Onboarding als Azure Event Grid-Partner im Azure-Portal
 description: Verwenden Sie das Azure-Portal, um das Onboarding eines Azure Event Grid-Partners durchzuführen.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 36fab35923b8a536a9054e5dc4bfa4c5b82172a7
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 8344fcd822bfcdc67e2c27b200d97fa70dfefdf2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93102677"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349385"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner-using-the-azure-portal"></a>Onboarding als Azure Event Grid-Partner im Azure-Portal
 In diesem Artikel wird beschrieben, wie das Onboarding für SaaS-Drittanbieter (auch als Ereignisherausgeber oder Partner bezeichnet) in Event Grid durchgeführt wird, damit Ereignisse aus den zugehörigen Diensten veröffentlicht werden können, und wie diese Ereignisse von Endbenutzern genutzt werden.
@@ -19,7 +19,7 @@ In diesem Artikel wird beschrieben, wie das Onboarding für SaaS-Drittanbieter (
 ## <a name="onboarding-process-for-event-publishers-partners"></a>Onboardingprozess für Ereignisherausgeber (Partner)
 Damit Benutzer die Ereignisse Ihres Diensts nutzen können, ist zusammengefasst in der Regel folgende Vorgehensweise erforderlich:
 
-1. **Kommunizieren Sie zunächst Ihr Interesse** , Partner zu werden, an das Event Grid-Team, bevor Sie mit den nächsten Schritten fortfahren.
+1. **Kommunizieren Sie zunächst Ihr Interesse**, Partner zu werden, an das Event Grid-Team, bevor Sie mit den nächsten Schritten fortfahren.
 1. Erstellen Sie einen Partnerthementyp durch Erstellen einer **Registrierung**. 
 1. Erstellen Sie einen **Namespace**.
 1. Erstellen Sie einen **Ereigniskanal** und ein **Partnerthema** (ein Schritt).
@@ -82,7 +82,7 @@ Vergewissern Sie sich für die weiteren Schritte, dass Sie über Folgendes verf�
     :::image type="content" source="./media/onboard-partner/add-partner-namespace-link.png" alt-text="Partnernamespaces: Link „Hinzufügen“":::
 1. Geben Sie auf der Seite **Partnernamespace erstellen** auf der Registerkarte „Basisinformationen“ die folgenden Informationen an.
     1. Gehen Sie im Abschnitt **Projektdetails** wie folgt vor: 
-        1. Wählen Sie ein Azure- **Abonnement** aus.
+        1. Wählen Sie ein Azure-**Abonnement** aus.
         1. Wählen Sie eine vorhandene **Ressourcengruppe** aus, oder erstellen Sie eine Ressourcengruppe. 
     1. Führen Sie im Abschnitt **Details zum Namespace** die folgenden Schritte aus:
         1. Geben Sie einen **Namen** für den Namespace ein. 
@@ -97,7 +97,7 @@ Vergewissern Sie sich für die weiteren Schritte, dass Sie über Folgendes verf�
 1. Fügen Sie auf der Seite **Tags** Tags hinzu (optional).
     1. Geben Sie einen **Namen** und einen **Wert** für das Tag ein, das Sie hinzufügen möchten. Dieser Schritt ist **optional**.
     1. Wählen Sie am unteren Rand der Seite die Option **Bewerten + erstellen** aus.         
-1. Überprüfen Sie die Details auf der Seite **Überprüfen + erstellen** , und wählen Sie **Erstellen** aus. 
+1. Überprüfen Sie die Details auf der Seite **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus. 
 
 ## <a name="create-an-event-channel"></a>Erstellen von Ereigniskanälen
 > [!IMPORTANT]
@@ -135,7 +135,7 @@ Vergewissern Sie sich für die weiteren Schritte, dass Sie über Folgendes verf�
 1. Überprüfen Sie auf der Seite **Überprüfen + erstellen** die Einstellungen, und wählen Sie dann **Erstellen** aus, um den Ereigniskanal zu erstellen. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- [Partnerthemen in Azure Event Grid (Vorschau)](partner-topics-overview.md)
+- [Partnerthemen in Azure Event Grid (Vorschau)](./partner-events-overview.md)
 - [Onboarding-Formular für Partnerthemen](https://aka.ms/gridpartnerform)
 - [Auth0-Partnerthema](auth0-overview.md)
 - [Verwenden des Auth0-Partnerthemas](auth0-how-to.md)

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 91efdac9d17e679226f10012bbff9b5b6676ff0e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: bf4d0a845b7f26c82ba3940d6613a33bcacf9187
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92205577"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96448331"
 ---
 # <a name="recover-from-a-failed-azure-stack-edge-pro-gpu-device"></a>Wiederherstellung nach Ausfall eines „Azure Stack Edge Pro mit GPU“-Geräts 
 
@@ -81,7 +81,7 @@ Zur Vorbereitung auf einen möglichen Geräteausfall sollten Sie eine der folgen
 
 | Sicherungslösungen        | Unterstütztes Betriebssystem   | Referenz                                                                |
 |-------------------------|----------------|--------------------------------------------------------------------------|
-| MARS-Agent (Microsoft Azure Recovery Services) für Azure Backup | Windows        | [Informationen zum MARS-Agent](/azure/backup/backup-azure-about-mars)    |
+| MARS-Agent (Microsoft Azure Recovery Services) für Azure Backup | Windows        | [Informationen zum MARS-Agent](../backup/backup-azure-about-mars.md)    |
 | Cohesity                | Windows, Linux | [Lösungsübersicht zur Microsoft Azure-Integration, Sicherung und Wiederherstellung](https://www.cohesity.com/solution/cloud/azure) <br>Weitere Informationen erhalten Sie bei Cohesity.                          |
 | Commvault               | Windows, Linux | https://www.commvault.com/azure <br> Weitere Informationen erhalten Sie bei Commvault.
 | Veritas                 | Windows, Linux | http://veritas.com/azure <br> Weitere Informationen erhalten Sie bei Veritas.                    |

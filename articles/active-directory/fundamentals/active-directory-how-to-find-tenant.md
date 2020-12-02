@@ -11,14 +11,14 @@ ms.topic: how-to
 ms.date: 10/30/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
-ms.custom: it-pro
+ms.custom: it-pro, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: bbf23a32fdf5515402e18f70fe032a1a589dbcbe
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 910e68e5b8933875f252faf65fb58e514dee8254
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423744"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326589"
 ---
 # <a name="how-to-find-your-azure-active-directory-tenant-id"></a>Ermitteln Ihrer Azure Active Directory-Mandanten-ID
 
@@ -77,4 +77,4 @@ Weitere Informationen finden Sie in der Microsoft 365-Referenz zum Befehl [tena
 
 - Informationen zum Zuordnen oder Hinzufügen eines Abonnements zu einem Mandanten finden Sie unter [Zuordnen oder Hinzufügen eines Azure-Abonnements zu Ihrem Azure Active Directory-Mandanten](active-directory-how-subscriptions-associated-directory.md).
 
-- Informationen zum Ermitteln der Objekt-ID finden Sie unter [Suchen der Benutzerobjekt-ID](https://docs.microsoft.com/partner-center/find-ids-and-domain-names#find-the-user-object-id).
+- Informationen zum Ermitteln der Objekt-ID finden Sie unter [Suchen der Benutzerobjekt-ID](/partner-center/find-ids-and-domain-names#find-the-user-object-id).

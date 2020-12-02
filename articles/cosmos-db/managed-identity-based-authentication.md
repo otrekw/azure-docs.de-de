@@ -9,12 +9,12 @@ ms.date: 03/20/2020
 ms.author: justipat
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: b3bd6a71898576ac23cdd10c1eb52e1ef3a39b95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: cfef6ce0fb38f074f854d5ceb77677843e44b91b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93336587"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345728"
 ---
 # <a name="use-system-assigned-managed-identities-to-access-azure-cosmos-db-data"></a>Verwenden von systemseitig zugewiesenen verwalteten Identitäten für den Zugriff auf Azure Cosmos DB-Daten
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -29,9 +29,9 @@ Zur Vereinfachung des Szenarios wurde die Einstellung [Gültigkeitsdauer](./time
 
 In diesem Schritt weisen Sie Ihrer Funktions-App eine vom System zugewiesene verwaltete Identität zu.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Bereich **Azure-Funktion** , und wechseln Sie zu Ihrer Funktions-App. 
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com/) den Bereich **Azure-Funktion**, und wechseln Sie zu Ihrer Funktions-App. 
 
-1. Öffnen Sie die Registerkarte **Plattformfeatures** > **Identität** : 
+1. Öffnen Sie die Registerkarte **Plattformfeatures** > **Identität**: 
 
    :::image type="content" source="./media/managed-identity-based-authentication/identity-tab-selection.png" alt-text="Screenshot von Plattformfeatures und Identitätsoptionen für die Funktions-App.":::
 
@@ -58,7 +58,7 @@ In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schr
 
 ### <a name="assign-the-role-using-azure-portal"></a>Zuweisen der Rolle über das Azure-Portal
 
-1. Melden Sie sich beim Azure-Portal an, und wechseln Sie zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Zugriffssteuerung (IAM)** und dann die Registerkarte **Rollenzuweisungen** :
+1. Melden Sie sich beim Azure-Portal an, und wechseln Sie zu Ihrem Azure Cosmos DB-Konto. Öffnen Sie den Bereich **Zugriffssteuerung (IAM)** und dann die Registerkarte **Rollenzuweisungen**:
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab.png" alt-text="Screenshot des Bereichs „Zugriffssteuerung“ und der Registerkarte „Rollenzuweisungen“.":::
 
@@ -68,9 +68,9 @@ In diesem Szenario liest die Funktions-App die Temperatur des Aquariums und schr
 
    :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane.png" alt-text="Screenshot des Bereichs „Rollenzuweisung hinzufügen“.":::
 
-   * **Rolle** : Wählen Sie **DocumentDB-Kontomitwirkender** aus.
-   * **Zugriff zuweisen zu** : Wählen Sie im Unterabschnitt **Systemseitig zugewiesene verwaltete Identität** die Option **Funktions-App** aus.
-   * **Select** : Im Bereich werden alle Funktions-Apps in Ihrem Abonnement eingetragen, die über eine **verwaltete Systemidentität** verfügen. Wählen Sie in diesem Fall die Funktions-App **FishTankTemperatureService** aus: 
+   * **Rolle**: Wählen Sie **DocumentDB-Kontomitwirkender** aus.
+   * **Zugriff zuweisen zu**: Wählen Sie im Unterabschnitt **Systemseitig zugewiesene verwaltete Identität** die Option **Funktions-App** aus.
+   * **Select**: Im Bereich werden alle Funktions-Apps in Ihrem Abonnement eingetragen, die über eine **verwaltete Systemidentität** verfügen. Wählen Sie in diesem Fall die Funktions-App **FishTankTemperatureService** aus: 
 
       :::image type="content" source="./media/managed-identity-based-authentication/cosmos-db-iam-tab-add-role-pane-filled.png" alt-text="Screenshot des Bereichs „Rollenzuweisung hinzufügen“ mit Beispielen.":::
 
@@ -214,7 +214,7 @@ namespace Monitor
 }
 ```
 
-Jetzt können Sie [Ihre Funktions-App bereitstellen](../azure-functions/functions-create-first-function-vs-code.md).
+Jetzt können Sie [Ihre Funktions-App bereitstellen](../azure-functions/create-first-function-vs-code-csharp.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

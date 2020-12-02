@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/11/2019
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: 351a9742e9d839a8e217fdea35cad922acc3339f
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: ede4e5dd781851c781407a8acea640e3e501f259
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93095671"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436384"
 ---
 # <a name="handling-review-feedback-for-azure-application-offers"></a>Behandeln von Überprüfungsfeedback zu Azure-Anwendungsangeboten
 
@@ -39,9 +39,9 @@ Gehen Sie wie folgt vor, um die im Pull Request dokumentierten Probleme zu prüf
     [![Pull Request-Startseite](./media/pr-home-page-thumb.png)](./media/pr-home-page.png)
     <br/> *Klicken Sie auf diese Abbildung, um sie zu vergrößern.*
 
-1. (Optional) Wählen Sie rechts im Fenster im Abschnitt **Richtlinien** die Problemmeldung (in diesem Beispiel: **Fehler bei Validierung der Richtlinie** ) aus, um die untergeordneten Details des Problems einschließlich der zugehörigen Protokolldateien zu untersuchen. Fehler werden in der Regel am unteren Rand der Protokolldateien angezeigt.
+1. (Optional) Wählen Sie rechts im Fenster im Abschnitt **Richtlinien** die Problemmeldung (in diesem Beispiel: **Fehler bei Validierung der Richtlinie**) aus, um die untergeordneten Details des Problems einschließlich der zugehörigen Protokolldateien zu untersuchen. Fehler werden in der Regel am unteren Rand der Protokolldateien angezeigt.
 
-1. Wählen Sie im Menü auf der linken Seite der Startseite **Dateien** , um die Listendateien anzuzeigen, die die technischen Ressourcen für dieses Angebot darstellen. Die Microsoft-Prüfer sollten Kommentare hinzugefügt haben, die die ermittelten kritischen Probleme beschreiben. Im folgenden Beispiel wurden zwei Probleme ermittelt.
+1. Wählen Sie im Menü auf der linken Seite der Startseite **Dateien**, um die Listendateien anzuzeigen, die die technischen Ressourcen für dieses Angebot darstellen. Die Microsoft-Prüfer sollten Kommentare hinzugefügt haben, die die ermittelten kritischen Probleme beschreiben. Im folgenden Beispiel wurden zwei Probleme ermittelt.
 
     [![Screenshot mit hervorgehobener Option „Dateien“ und den beiden ermittelten Problemen](./media/pr-files-page-thumb.png)](./media/pr-files-page.png)
     <br/> *Klicken Sie auf diese Abbildung, um sie zu vergrößern.*
@@ -57,4 +57,4 @@ Gehen Sie wie folgt vor, um die im Pull Request dokumentierten Probleme zu prüf
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die kritischen Probleme korrigiert haben, die in den Pull Requests der Prüfung dokumentiert sind, müssen Sie [Ihr Azure-App-Angebot erneut veröffentlichen](./create-new-azure-apps-offer.md#publish).
+Nachdem Sie die kritischen Probleme korrigiert haben, die in den Pull Requests der Prüfung dokumentiert sind, müssen Sie [Ihr Azure-App-Angebot erneut veröffentlichen](../create-new-azure-apps-offer.md).

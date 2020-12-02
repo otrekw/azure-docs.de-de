@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: jodowns
-ms.openlocfilehash: 58efeaebcc9f643c725cde54fcbda6f65c4bd700
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 24a8a559d72eae4dab0b6e740b34890f1d7ff114
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413700"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350782"
 ---
 # <a name="ddos-protection-on-front-door"></a>DDoS-Schutz unter Front Door
 
@@ -36,7 +36,7 @@ Front Door ist ein hochgradig skalierter, global verteilter Dienst. Wir haben v
 
 ## <a name="caching"></a>Zwischenspeicherung
 
-Die [Zwischenspeicherungsfunktionen von Front Door](./front-door-caching.md) können verwendet werden, um Back-Ends vor durch einen Angriff generierten großen Datenverkehrsvolumen zu schützen. Zwischengespeicherte Ressourcen werden von den Front Door-Edgeknoten zurückgegeben, sodass sie nicht an Ihr Back-End weitergeleitet werden. Sogar kurze Cacheablaufzeiten (Sekunden oder Minuten) bei dynamischen Antworten können die Auslastung von Back-End-Diensten erheblich verringern. Weitere Informationen zum Zwischenspeichern von Konzepten und Mustern finden Sie unter [Caching](https://docs.microsoft.com/azure/architecture/best-practices/caching) und [Cachefremdes Muster](https://docs.microsoft.com/azure/architecture/patterns/cache-aside).
+Die [Zwischenspeicherungsfunktionen von Front Door](./front-door-caching.md) können verwendet werden, um Back-Ends vor durch einen Angriff generierten großen Datenverkehrsvolumen zu schützen. Zwischengespeicherte Ressourcen werden von den Front Door-Edgeknoten zurückgegeben, sodass sie nicht an Ihr Back-End weitergeleitet werden. Sogar kurze Cacheablaufzeiten (Sekunden oder Minuten) bei dynamischen Antworten können die Auslastung von Back-End-Diensten erheblich verringern. Weitere Informationen zum Zwischenspeichern von Konzepten und Mustern finden Sie unter [Caching](/azure/architecture/best-practices/caching) und [Cachefremdes Muster](/azure/architecture/patterns/cache-aside).
 
 ## <a name="web-application-firewall-waf"></a>Web Application Firewall (WAF)
 

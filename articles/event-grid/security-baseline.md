@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ccc39513505f299e85cbc270e2daeafeac6ca6fd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 575742ab0d886a69dc5acccf4a65ac8c91b5a871
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94845185"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341034"
 ---
 # <a name="azure-security-baseline-for-event-grid"></a>Azure-Sicherheitsbaseline für Event Grid
 
@@ -74,7 +74,7 @@ Aktivieren Sie DDoS Protection Standard für diese virtuellen Netzwerke, um sie 
 
 - [Konfigurieren privater Endpunkte für Azure Event Grid-Themen oder -Domänen](configure-private-endpoints.md)
 
-- [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
+- [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 - [Weitere Informationen zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
@@ -227,7 +227,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/get-started-portal.md)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 

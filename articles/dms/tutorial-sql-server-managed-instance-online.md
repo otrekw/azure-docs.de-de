@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
-ms.openlocfilehash: 3674c6a0579eb901cc490d08bb8a4893296884c4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0041779abcd97901fb9315125a287a1d45cff133
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020652"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350108"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Tutorial: Onlinemigration von SQL Server zu Azure SQL Managed Instance mithilfe von DMS
 
@@ -220,7 +220,7 @@ Nachdem eine Instanz des Diensts erstellt wurde, suchen Sie diesen im Azure-Port
     ![Konfigurieren von Migrationseinstellungen](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
     > [!NOTE]
-    > Wird in Azure Database Migration Service der Fehler „Systemfehler 53“ oder „Systemfehler 57“ anzeigt, rührt das unter Umständen daher, dass Azure Database Migration Service nicht auf die Azure-Dateifreigabe zugreifen kann. Sollte einer dieser Fehler auftreten, gewähren Sie Speicherkontozugriff über das virtuelle Netzwerk. Eine entsprechende Anleitung finden Sie [hier](../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
+    > Wird in Azure Database Migration Service der Fehler „Systemfehler 53“ oder „Systemfehler 57“ anzeigt, rührt das unter Umständen daher, dass Azure Database Migration Service nicht auf die Azure-Dateifreigabe zugreifen kann. Sollte einer dieser Fehler auftreten, gewähren Sie Speicherkontozugriff über das virtuelle Netzwerk. Eine entsprechende Anleitung finden Sie [hier](../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
     > [!IMPORTANT]
     > Wenn die Loopback-Funktionalität aktiviert ist und sich die SQL Server-Quellinstanz und die Dateifreigabe auf demselben Computer befinden, kann die Quelle nicht mithilfe des FQDN auf die Dateifreigabe zugreifen. Um dieses Problem zu beheben, deaktivieren Sie die Loopback-Funktionalität anhand [dieser Anweisungen](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd).

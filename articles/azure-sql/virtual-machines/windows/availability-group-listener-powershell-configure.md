@@ -13,12 +13,12 @@ ms.workload: iaas-sql-server
 ms.date: 02/06/2019
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: cb55274800b239cf0e1e942647ae0c65b321b862
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 147c507cde9abf2ef97098c6b41fbbd4d67f02d2
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790048"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324804"
 ---
 # <a name="configure-one-or-more-always-on-availability-group-listeners---resource-manager"></a>Konfigurieren von Always On-Verfügbarkeitsgruppenlistenern – Resource Manager
 
@@ -64,7 +64,7 @@ Wenn Sie den Zugriff mit einer Azure-Netzwerksicherheitsgruppe einschränken, st
 Die aktuelle [Microsoft-Vorlage](./availability-group-quickstart-template-configure.md) für eine Verfügbarkeitsgruppe verwendet Load Balancer Basic mit grundlegenden IP-Adressen.
 
    > [!NOTE]
-   > Sie müssen einen [Dienstendpunkt](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network) konfigurieren, wenn Sie einen Standardlastenausgleich und Azure Storage als Cloudzeugen verwenden. 
+   > Sie müssen einen [Dienstendpunkt](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network) konfigurieren, wenn Sie einen Standardlastenausgleich und Azure Storage als Cloudzeugen verwenden. 
    > 
 
 In den Beispielen in diesem Artikel wird Load Balancer Standard angegeben. In den Beispielen ist `-sku Standard` im Skript enthalten.
@@ -195,7 +195,7 @@ $ILB | Add-AzLoadBalancerRuleConfig -Name $LBConfigRuleName -FrontendIpConfigura
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit dem primären Replikat her.
 
-1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener** . 
+1. Navigieren Sie zu **Hochverfügbarkeit mit Always On** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**. 
 
 1. Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und wählen Sie **Eigenschaften** aus.
 
@@ -236,7 +236,7 @@ Für Verfügbarkeitsgruppenlistener in Azure mit internem Load Balancer gelten f
   - Die Floating IP-Adressen des Lastenausgleichs für den Verfügbarkeitsgruppenlistener
   - Die IP-Adresse der Hauptressource des Clusters, falls zutreffend
 
-* Erstellen Sie einen Dienstendpunkt, wenn Sie einen Standardlastenausgleich mit Azure Storage als Cloudzeugen verwenden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs über ein virtuelles Netzwerk](../../../storage/common/storage-network-security.md?toc=%252fazure%252fvirtual-network%252ftoc.json#grant-access-from-a-virtual-network).
+* Erstellen Sie einen Dienstendpunkt, wenn Sie einen Standardlastenausgleich mit Azure Storage als Cloudzeugen verwenden. Weitere Informationen finden Sie unter [Gewähren des Zugriffs über ein virtuelles Netzwerk](../../../storage/common/storage-network-security.md?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network).
 
 ## <a name="for-more-information"></a>Weitere Informationen finden Sie unter
 

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: 5124e7084a8e878e54e594424ec0926410f002ca
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682484"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452680"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -474,7 +474,7 @@ Wenn alle Images aus Azure Marketplace wiederverwendet werden sollen, muss die B
 
 * Unter **Windows** generalisieren Sie Windows-Images mithilfe von `sysreptool`.
 
-  Weitere Informationen zum Tool `sysreptool` finden Sie unter [Übersicht über Sysprep (Systemvorbereitung)](https://docs.microsoft.com/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
+  Weitere Informationen zum Tool `sysreptool` finden Sie unter [Übersicht über Sysprep (Systemvorbereitung)](/windows-hardware/manufacture/desktop/sysprep--system-preparation--overview).
 
 ## <a name="datadisk-errors"></a>DataDisk-Fehler
 

@@ -3,12 +3,12 @@ title: 'Azure Event Hubs: Ausnahmen (Legacy)'
 description: Dieser Artikel stellt eine Liste von Azure Event Hubs-Messagingausnahmen und vorgeschlagenen Aktionen zur Verfügung.
 ms.topic: article
 ms.date: 11/02/2020
-ms.openlocfilehash: adaf7242530727a1f77a9662110a43341e57e80a
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 357a87c53023962dd9195a616bd9ce9e01c55bf9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289332"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340966"
 ---
 # <a name="event-hubs-messaging-exceptions---net-legacy"></a>Event Hubs-Messagingausnahmen: .NET (Legacy)
 In diesem Abschnitt werden die von .NET Framework-APIs generierten .NET-Ausnahmen aufgelistet. 
@@ -123,7 +123,7 @@ Dieser Fehler kann aus zwei Gründen auftreten:
     
     Wechseln Sie auf der Seite **Übersicht** im Abschnitt **Metriken anzeigen** zur Registerkarte **Durchsatz**. Wählen Sie das Diagramm aus, um es in einem größeren Fenster mit 1-Minuten-Intervallen auf der X-Achse zu öffnen. Sehen Sie sich die Spitzenwerte an, und teilen Sie sie durch 60, um eingehende Bytes/Sekunde oder ausgehende Bytes/Sekunde zu erhalten. Verwenden Sie einen ähnlichen Ansatz, um die Anzahl von Anforderungen pro Sekunde zu Spitzenzeiten auf der Registerkarte **Anforderungen** zu berechnen. 
 
-    Wenn Sie Werte sehen, die höher sind als die Anzahl von Durchsatzeinheiten * Grenzwerte (1 MB pro Sekunde für eingehenden Datenverkehr oder 1.000 Anforderungen für eingehende Anforderungen/Sekunde, 2 MB pro Sekunde für ausgehenden Datenverkehr), erhöhen Sie die Anzahl der Durchsatzeinheiten, indem Sie die Seite **Skalierung** (im linken Menü) eines Event Hubs-Namespace verwenden, um manuell hochzuskalieren, oder verwenden Sie das Feature [Automatische Vergrößerung](event-hubs-auto-inflate.md) von Event Hubs. Beachten Sie, dass die automatische Vergrößerung nur auf bis zu 20 Durchsatzeinheiten vergrößern kann. Wenn Sie den Wert auf genau 40 TUs erhöhen möchten, übermitteln Sie eine [Supportanfrage](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
+    Wenn Sie Werte sehen, die höher sind als die Anzahl von Durchsatzeinheiten * Grenzwerte (1 MB pro Sekunde für eingehenden Datenverkehr oder 1.000 Anforderungen für eingehende Anforderungen/Sekunde, 2 MB pro Sekunde für ausgehenden Datenverkehr), erhöhen Sie die Anzahl der Durchsatzeinheiten, indem Sie die Seite **Skalierung** (im linken Menü) eines Event Hubs-Namespace verwenden, um manuell hochzuskalieren, oder verwenden Sie das Feature [Automatische Vergrößerung](event-hubs-auto-inflate.md) von Event Hubs. Beachten Sie, dass die automatische Vergrößerung nur auf bis zu 20 Durchsatzeinheiten vergrößern kann. Wenn Sie den Wert auf genau 40 TUs erhöhen möchten, übermitteln Sie eine [Supportanfrage](../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 ### <a name="error-code-50001"></a>Fehlercode 50001
 

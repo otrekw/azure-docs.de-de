@@ -14,12 +14,12 @@ ms.date: 11/07/2019
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 347948734da439691bced01cf3693d0990567748
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: ca632a643215b689a9bbb825959e5c5c052d73cb
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146227"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326062"
 ---
 # <a name="how-to-use-the-azure-portal-to-provision-a-windows-virtual-machine-with-sql-server"></a>Bereitstellen einer Windows-VM mit SQL Server im Azure-Portal
 
@@ -83,7 +83,7 @@ Geben Sie auf der Registerkarte **Grundeinstellungen** die folgenden Information
     ![Instanzendetails](./media/create-sql-vm-portal/basics-instance-details.png)
 
 > [!IMPORTANT]
-> Bei den voraussichtlichen monatlichen Kosten im Fenster **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Bei dieser Schätzung handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server umfasst die Schätzung die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. Siehe auch die [Preisinformationen für virtuelle Azure-Computer unter SQL Server](pricing-guidance.md) und [Größen für virtuelle Windows-Computer in Azure](../../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json).
+> Bei den voraussichtlichen monatlichen Kosten im Fenster **Größe auswählen** sind SQL Server-Lizenzierungskosten nicht berücksichtigt. Bei dieser Schätzung handelt es sich ausschließlich um die Kosten für den virtuellen Computer. Bei der Express Edition und der Developer Edition von SQL Server umfasst die Schätzung die voraussichtlichen Gesamtkosten. Bei anderen Editionen können Sie auf der Seite [Virtuelle Windows-Computer – Preise](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) Ihre Zieledition von SQL Server auswählen. Siehe auch die [Preisinformationen für virtuelle Azure-Computer unter SQL Server](pricing-guidance.md) und [Größen für virtuelle Windows-Computer in Azure](../../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 * Geben Sie unter **Administratorkonto** einen Benutzernamen und ein Kennwort an. Das Kennwort muss mindestens zwölf Zeichen lang sein und die [definierten Anforderungen an die Komplexität](../../../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm) erfüllen.
 
@@ -113,7 +113,7 @@ Konfigurieren Sie auf der Registerkarte **Datenträger** die Datenträgeroptione
 
 Konfigurieren Sie auf der Registerkarte **Netzwerk** Ihre Netzwerkoptionen. 
 
-* Erstellen Sie ein neues **virtuelles Netzwerk** , oder verwenden Sie für Ihre SQL Server-VM ein bereits vorhandenes VNET. Legen Sie ebenfalls ein **Subnetz** fest. 
+* Erstellen Sie ein neues **virtuelles Netzwerk**, oder verwenden Sie für Ihre SQL Server-VM ein bereits vorhandenes VNET. Legen Sie ebenfalls ein **Subnetz** fest. 
 
 * Wählen Sie unter **NIC-Netzwerksicherheitsgruppe** entweder eine grundlegende Sicherheitsgruppe oder die erweiterte Sicherheitsgruppe aus. Die Wahl der grundlegenden Option ermöglicht Ihnen die Auswahl eingehender Ports für die SQL Server-VM. Dies sind die gleichen Werte, die auf der Registerkarte **Standard** konfiguriert wurden. Die Auswahl der erweiterten Option ermöglicht Ihnen, eine vorhandene Netzwerksicherheitsgruppe auszuwählen oder eine neue zu erstellen. 
 
@@ -188,7 +188,7 @@ In der folgenden Tabelle sind die Parameter aufgeführt, die zum Konfigurieren d
 | **Schlüsseltresor-URL** |Gibt den Speicherort des Schlüsseltresors an. |`https://contosokeyvault.vault.azure.net/` |
 | **Prinzipalname** |Gibt den Namen des Azure Active Directory-Dienstprinzipals an. Dieser Name wird auch als Client-ID bezeichnet. |`fde2b411-33d5-4e11-af04eb07b669ccf2` |
 | **Geheimer Schlüssel des Prinzipals** |Der geheime Schlüssel des Azure Active Directory-Dienstprinzipals. Dieser geheime Schlüssel wird auch als geheimer Clientschlüssel bezeichnet. |`9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=` |
-| **Name der Anmeldeinformationen** |**Name der Anmeldeinformationen** : Die Azure Key Vault-Integration erstellt Anmeldeinformationen in SQL Server, damit die VM Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation. |`mycred1` |
+| **Name der Anmeldeinformationen** |**Name der Anmeldeinformationen**: Die Azure Key Vault-Integration erstellt Anmeldeinformationen in SQL Server, damit die VM Zugriff auf den Schlüsseltresor hat. Wählen Sie einen Namen für diese Anmeldeinformation. |`mycred1` |
 
 Weitere Informationen finden Sie unter [Konfigurieren der Azure-Schlüsseltresor-Integration für SQL Server auf virtuellen Azure-Computern](azure-key-vault-integration-configure.md).
 
@@ -248,7 +248,7 @@ Sie können [Machine Learning Services](/sql/advanced-analytics/) aktivieren. Mi
 
 ## <a name="4-review--create"></a>4. Bewerten + erstellen
 
-Auf der Registerkarte **Überprüfen und erstellen** :
+Auf der Registerkarte **Überprüfen und erstellen**:
 1. Überprüfen Sie die Zusammenfassung.
 1. Wählen Sie **Erstellen** aus, um SQL Server, die Ressourcengruppe und die für diese VM angegebenen Ressourcen zu erstellen.
 

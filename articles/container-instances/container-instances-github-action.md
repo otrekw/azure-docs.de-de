@@ -4,12 +4,12 @@ description: Konfigurieren Sie eine GitHub Actions-Aktion, die die Schritte für
 ms.topic: article
 ms.date: 08/20/2020
 ms.custom: github-actions-azure, devx-track-azurecli
-ms.openlocfilehash: 221ecbe5fbe2cdea4105362c43a5765bcc298d46
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0068b9869e5ef7a3b6c0fd21c1b69cdae1d4ab4b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843654"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454825"
 ---
 # <a name="configure-a-github-action-to-create-a-container-instance"></a>Konfigurieren einer GitHub Actions-Aktion zum Erstellen einer Containerinstanz
 
@@ -56,7 +56,7 @@ Im GitHub-Workflow müssen Sie die Azure-Anmeldeinformationen bereitstellen, um 
 Rufen Sie zunächst die Ressourcen-ID Ihrer Ressourcengruppe ab: Ersetzen Sie den Namen Ihrer Gruppe im folgenden [az group show][az-group-show]-Befehl:
 
 ```azurecli
-groupId=$(az group show \
+$groupId=$(az group show \
   --name <resource-group-name> \
   --query id --output tsv)
 ```

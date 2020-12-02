@@ -6,12 +6,12 @@ ms.topic: article
 ms.author: stevelas
 ms.date: 10/29/2020
 ms.custom: ''
-ms.openlocfilehash: 261604b66d393723b35b472415b8840b047bc36e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 4fba6290b4973e797c13943fc9be4fadb19f3274
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133436"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349281"
 ---
 # <a name="how-to-consume-and-maintain-public-content-with-azure-container-registry-tasks"></a>Verwenden und Verwalten von öffentlichen Inhalten mit Azure Container Registry Tasks
 
@@ -39,7 +39,7 @@ Sie können für diese exemplarische Vorgehensweise Azure Cloud Shell oder eine 
 
 Bei dieser exemplarischen Vorgehensweise wird Folgendes eingerichtet:
 
-1. Drei **Containerregistrierungen** , nämlich:
+1. Drei **Containerregistrierungen**, nämlich:
    * Ein simulierter [Docker Hub][docker-hub] (`publicregistry`), um die Änderung des Basisimages zu unterstützen
    * Teamregistrierung (`contoso`) zur gemeinsamen Nutzung von Images
    * Freigegebene Unternehmens-/Teamregistrierung (`baseartifacts`) für importierte öffentliche Inhalte
@@ -47,10 +47,10 @@ Bei dieser exemplarischen Vorgehensweise wird Folgendes eingerichtet:
    1. Erstellen eines simulierten öffentlichen `node`-Images
    1. Importieren und Überprüfen des `node`-Images für die freigegebene Unternehmens-/Teamregistrierung
    1. Erstellen und Bereitstellen des `hello-world`-Images
-1. **Definitionen des ACR-Tasks** , einschließlich Konfigurationen für:
-1. Eine Sammlung mit **Anmeldeinformationen für die Registrierung** , bei denen es sich um Verweise auf einen Schlüsseltresor handelt
+1. **Definitionen des ACR-Tasks**, einschließlich Konfigurationen für:
+1. Eine Sammlung mit **Anmeldeinformationen für die Registrierung**, bei denen es sich um Verweise auf einen Schlüsseltresor handelt
 1. Eine Sammlung mit **Geheimnissen** in der Datei `acr-task.yaml`, bei denen es sich um Verweise auf einen Schlüsseltresor handelt
-1. Eine Sammlung mit **konfigurierten Werten** , die in der Datei `acr-task.yaml` verwendet werden
+1. Eine Sammlung mit **konfigurierten Werten**, die in der Datei `acr-task.yaml` verwendet werden
 1. Ein **Azure-Schlüsseltresor** als Schutz für alle Geheimnisse
 1. Eine **Azure-Containerinstanz** zum Hosten der Buildanwendung `hello-world`
 
@@ -388,7 +388,7 @@ RUN ID    TASK      PLATFORM    STATUS     TRIGGER    STARTED               DURA
 ca4       hub-node  linux       Succeeded  Commit     2020-10-24T05:02:29Z  00:00:22
 ```
 
-Drücken Sie **STRG+C** , um den watch-Befehl zu beenden, und zeigen Sie anschließend die Protokolle für die letzte Ausführung an:
+Drücken Sie **STRG+C**, um den watch-Befehl zu beenden, und zeigen Sie anschließend die Protokolle für die letzte Ausführung an:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_PUBLIC
@@ -408,7 +408,7 @@ RUN ID    TASK         PLATFORM    STATUS     TRIGGER       STARTED             
 dau       hello-world  linux       Succeeded  Image Update  2020-10-24T05:08:45Z  00:00:31
 ```
 
-Drücken Sie **STRG+C** , um den watch-Befehl zu beenden, und zeigen Sie anschließend die Protokolle für die letzte Ausführung an:
+Drücken Sie **STRG+C**, um den watch-Befehl zu beenden, und zeigen Sie anschließend die Protokolle für die letzte Ausführung an:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY
@@ -440,7 +440,7 @@ In diesem Abschnitt erstellen Sie einen ACR-Task für folgende Zwecke:
 
 * Erstellen eines Testimages
 * Ausführen des Funktionstestskripts `./test.sh` für das Testimage
-* Importieren des öffentlichen Images in die Registrierung **baseimages** , wenn der Test des Images erfolgreich war
+* Importieren des öffentlichen Images in die Registrierung **baseimages**, wenn der Test des Images erfolgreich war
 
 ### <a name="add-automation-testing"></a>Hinzufügen eines Automatisierungstests
 
@@ -630,31 +630,31 @@ Committen Sie die Änderung, und überwachen Sie die Updatesequenz:
 watch -n1 az acr task list-runs -r $REGISTRY_PUBLIC -o table
 ```
 
-Drücken Sie nach dem Beginn der Ausführung **STRG+C** , und überwachen Sie die Protokolle:
+Drücken Sie nach dem Beginn der Ausführung **STRG+C**, und überwachen Sie die Protokolle:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_PUBLIC
 ```
 
-Überwachen Sie nach Abschluss des Vorgangs den Task **base-image-import** :
+Überwachen Sie nach Abschluss des Vorgangs den Task **base-image-import**:
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY_BASE_ARTIFACTS -o table
 ```
 
-Drücken Sie nach dem Beginn der Ausführung **STRG+C** , und überwachen Sie die Protokolle:
+Drücken Sie nach dem Beginn der Ausführung **STRG+C**, und überwachen Sie die Protokolle:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_BASE_ARTIFACTS
 ```
 
-Überwachen Sie nach Abschluss des Vorgangs den Task **hello-world** :
+Überwachen Sie nach Abschluss des Vorgangs den Task **hello-world**:
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY -o table
 ```
 
-Drücken Sie nach dem Beginn der Ausführung **STRG+C** , und überwachen Sie die Protokolle:
+Drücken Sie nach dem Beginn der Ausführung **STRG+C**, und überwachen Sie die Protokolle:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY
@@ -692,19 +692,19 @@ Committen Sie die Änderung, und überwachen Sie die Updatesequenz:
 watch -n1 az acr task list-runs -r $REGISTRY_PUBLIC -o table
 ```
 
-Drücken Sie nach dem Beginn der Ausführung **STRG+C** , und überwachen Sie die Protokolle:
+Drücken Sie nach dem Beginn der Ausführung **STRG+C**, und überwachen Sie die Protokolle:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_PUBLIC
 ```
 
-Überwachen Sie nach Abschluss des Vorgangs den Task **base-image-import** :
+Überwachen Sie nach Abschluss des Vorgangs den Task **base-image-import**:
 
 ```azurecli-interactive
 watch -n1 az acr task list-runs -r $REGISTRY_BASE_ARTIFACTS -o table
 ```
 
-Drücken Sie nach dem Beginn der Ausführung **STRG+C** , und überwachen Sie die Protokolle:
+Drücken Sie nach dem Beginn der Ausführung **STRG+C**, und überwachen Sie die Protokolle:
 
 ```azurecli-interactive
 az acr task logs -r $REGISTRY_BASE_ARTIFACTS
@@ -751,11 +751,11 @@ In diesem Artikel haben Sie ACR-Tasks verwendet, um einen automatisierten Workfl
 
 [install-cli]:                  /cli/azure/install-azure-cli
 [acr]:                          https://aka.ms/acr
-[acr-repo-permissions]:         https://aka.ms/acr/repo-permissions
-[acr-task]:                     https://aka.ms/acr/tasks
+[acr-repo-permissions]:         ./container-registry-repository-scoped-permissions.md
+[acr-task]:                     ./container-registry-tasks-overview.md
 [acr-task-triggers]:            container-registry-tasks-overview.md#task-scenarios
 [acr-task-credentials]:       container-registry-tasks-authentication-managed-identity.md#4-optional-add-credentials-to-the-task
-[acr-tokens]:                   https://aka.ms/acr/tokens
+[acr-tokens]:                   ./container-registry-repository-scoped-permissions.md
 [aci]:                          https://aka.ms/aci
 [alpine-public-image]:          https://hub.docker.com/_/alpine
 [docker-hub]:                   https://hub.docker.com
@@ -766,11 +766,7 @@ In diesem Artikel haben Sie ACR-Tasks verwendet, um einen automatisierten Workfl
 [helm-charts]:                  https://helm.sh
 [mcr]:                          https://aka.ms/mcr
 [nginx-public-image]:           https://hub.docker.com/_/nginx
-[oci-artifacts]:                https://aka.ms/acr/artifacts
+[oci-artifacts]:                ./container-registry-oci-artifacts.md
 [oci-consuming-public-content]: https://opencontainers.org/posts/blog/2020-10-30-consuming-public-content/
 [opa]:                          https://www.openpolicyagent.org/
 [quay]:                         https://quay.io
-
-
-
-

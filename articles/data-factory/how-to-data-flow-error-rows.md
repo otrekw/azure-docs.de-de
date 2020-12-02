@@ -8,12 +8,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: makromer
-ms.openlocfilehash: 49d11dfe3d42d99c610fae9fa64079a5fd87501f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: c8b0ae7058aecc1813d720a3fbb2a1a1f967cf40
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96006785"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352599"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>Beheben von SQL-Kürzungsfehlern in Zeilen in Data Factory-Zuordnungsdatenflüssen
 
@@ -23,7 +23,7 @@ Als gängiges Szenario in Data Factory bei der Verwendung von Zuordnungsdatenfl�
 
 Es gibt zwei Hauptmethoden, um Fehler beim Schreiben von Daten in die Datenbanksenke in ADF-Datenflüssen ordnungsgemäß zu behandeln:
 
-* Legen Sie beim Verarbeiten von Datenbankdaten die [Fehlerzeilenbehandlung](https://docs.microsoft.com/azure/data-factory/connector-azure-sql-database#error-row-handling) der Senke auf „Bei Fehler fortsetzen“ fest. Dies ist eine automatisierte Catch-All-Methode, für die keine benutzerdefinierte Logik im Datenfluss erforderlich ist.
+* Legen Sie beim Verarbeiten von Datenbankdaten die [Fehlerzeilenbehandlung](./connector-azure-sql-database.md#error-row-handling) der Senke auf „Bei Fehler fortsetzen“ fest. Dies ist eine automatisierte Catch-All-Methode, für die keine benutzerdefinierte Logik im Datenfluss erforderlich ist.
 * Alternativ können Sie die folgenden Schritte ausführen, um die Protokollierung von Spalten zu ermöglichen, die nicht in eine Zielzeichenfolgenspalte passen, sodass der Datenfluss fortgesetzt werden kann.
 
 > [!NOTE]

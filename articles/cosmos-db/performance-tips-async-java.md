@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 05/11/2020
 ms.author: anfeldma
 ms.custom: devx-track-java, contperfq2
-ms.openlocfilehash: 4285571ead30f74f9136ad81687e52d92fdd1c47
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 1f57e14893e6f43b98b0e45cc2bd2d49e31271d0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341755"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350346"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-async-java-sdk-v2"></a>Leistungstipps für das Azure Cosmos DB Async Java SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -48,7 +48,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
   
   Der Gatewaymodus wird auf allen SDK-Plattformen unterstützt und ist als Standardoption konfiguriert. Wenn Ihre Anwendung in einem Unternehmensnetzwerk mit strengen Firewalleinschränkungen ausgeführt wird, ist der Gatewaymodus die beste Wahl, da er den HTTPS-Standardport und einen einzelnen Endpunkt verwendet.   Im Gatewaymodus ist jedoch jeweils ein zusätzlicher Netzwerkhop erforderlich, wenn Daten in Azure Cosmos DB geschrieben oder daraus gelesen werden, was sich negativ auf die Leistung auswirkt. Aus diesem Grund bietet der direkte Modus die bessere Leistung, da weniger Netzwerkhops erforderlich sind.
   
-  *ConnectionMode* wird im Zuge der Erstellung der *DocumentClient* -Instanz mit dem *ConnectionPolicy* -Parameter konfiguriert.
+  *ConnectionMode* wird im Zuge der Erstellung der *DocumentClient*-Instanz mit dem *ConnectionPolicy*-Parameter konfiguriert.
 
 ### <a name="async-java-sdk-v2-maven-commicrosoftazureazure-cosmosdb"></a><a id="asyncjava2-connectionpolicy"></a>Async Java SDK V2 (Maven com.microsoft.azure::azure-cosmosdb)
 
@@ -90,7 +90,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
   :::image type="content" source="./media/performance-tips-async-java/rntbdtransportclient.png" alt-text="Darstellung der Architektur im direkten Modus" border="false":::
   
-  Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10 _ *Kanäle* * pro Datenbankreplikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
+  Die clientseitige Architektur, die im direkten Modus eingesetzt wird, ermöglicht vorhersagbare Netzwerkauslastungen und Multiplexzugriff auf Azure Cosmos DB-Replikate. Das obige Diagramm zeigt, wie Clientanforderungen im direkten Modus an Replikate im Cosmos DB-Back-End weitergeleitet werden. Bei der Architektur für den direkten Modus werden auf der Clientseite bis zu 10 _ *Kanäle** pro Datenbankreplikat zugeordnet. Ein Kanal ist eine TCP-Verbindung mit einem vorgeschalteten Anforderungspuffer, der 30 Anforderungen aufnehmen kann. Die zu einem Replikat gehörenden Kanäle werden nach Bedarf dynamisch vom **Dienstendpunkt** des Replikats zugeordnet. Wenn der Benutzer eine Anforderung im direkten Modus übermittelt, leitet der **TransportClient** die Anforderung basierend auf dem Partitionsschlüssel an den richtigen Dienstendpunkt weiter. In der **Anforderungswarteschlange** werden die Anforderungen vor dem Dienstendpunkt gepuffert.
 
   * ***ConnectionPolicy-Konfigurationsoptionen für den direkten Modus** _
 
@@ -123,7 +123,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
   
   _ **Verwenden Sie Multithreading in der Anwendung für eine effiziente TCP-Datenübertragung:** Nachdem Sie eine Anforderung übermittelt haben, sollte Ihre Anwendung den Empfang von Daten in einem anderen Thread abonnieren. Andernfalls wird ein unbeabsichtigter „Halbduplexvorgang“ erzwungen, und die nachfolgenden Anforderungen werden blockiert, um auf die Antwort der vorherigen Anforderung zu warten.
   
-  * **Führen Sie rechenintensive Workloads in einem dedizierten Thread aus** : Aus ähnlichen Gründen wie beim vorherigen Tipp sollten Vorgänge wie komplexe Datenverarbeitungen am besten in einem separaten Thread ausgeführt werden. Wenn eine Anforderung Daten aus einem anderen Datenspeicher abruft (z. B. wenn der Thread Azure Cosmos DB und Spark-Datenspeicher gleichzeitig verwendet), kann dies zu einer längeren Wartezeit führen. Es empfiehlt sich daher, einen zusätzlichen Thread zu erzeugen, der auf eine Antwort vom anderen Datenspeicher wartet.
+  * **Führen Sie rechenintensive Workloads in einem dedizierten Thread aus**: Aus ähnlichen Gründen wie beim vorherigen Tipp sollten Vorgänge wie komplexe Datenverarbeitungen am besten in einem separaten Thread ausgeführt werden. Wenn eine Anforderung Daten aus einem anderen Datenspeicher abruft (z. B. wenn der Thread Azure Cosmos DB und Spark-Datenspeicher gleichzeitig verwendet), kann dies zu einer längeren Wartezeit führen. Es empfiehlt sich daher, einen zusätzlichen Thread zu erzeugen, der auf eine Antwort vom anderen Datenspeicher wartet.
   
     * Die zugrunde liegenden Netzwerk-E/A im Azure Cosmos DB Async Java SDK v2 wird von Netty verwaltet. Lesen Sie daher auch diese [Tipps zur Vermeidung von Codierungsmustern, die Netty-E/A-Threads blockieren](troubleshoot-java-async-sdk.md#invalid-coding-pattern-blocking-netty-io-thread).
   
@@ -139,7 +139,7 @@ Im Anschluss finden Sie einige Optionen zur Optimierung der Datenbankleistung:
 
     Es ist wichtig zu beachten, dass sich für parallele Abfragen die größten Vorteile ergeben, wenn die Daten in Bezug auf die Abfrage gleichmäßig auf alle Partitionen verteilt werden. Wenn die partitionierte Auflistung so partitioniert ist, dass sich alle Daten bzw. die meisten Daten, die von einer Abfrage zurückgegeben werden, auf einigen wenigen Partitionen befinden (schlimmstenfalls nur auf einer Partition), können aufgrund dieser Partitionierung Engpässe bei der Leistung auftreten.
 
-  _* **Optimieren von setMaxBufferedItemCount\:** _
+  _***Optimieren von setMaxBufferedItemCount\:** _
     
     Parallele Abfragen sind so konzipiert, dass Ergebnisse vorab abgerufen werden, während der Client den aktuellen Batch der Ergebnisse verarbeitet. Diese Art des Abrufs führt zu einer Verbesserung der Latenz einer Abfrage. setMaxBufferedItemCount begrenzt die Anzahl von vorab abgerufenen Ergebnissen. Wenn Sie „setMaxBufferedItemCount“ auf die erwartete Anzahl von zurückgegebenen Ergebnissen (oder eine höhere Anzahl) festlegen, ist der Vorteil durch das vorherige Abrufen für die Abfrage am größten.
 
@@ -260,7 +260,7 @@ _ **Implementieren von Backoff in getRetryAfterInMilliseconds-Intervallen**
     collectionDefinition.setIndexingPolicy(indexingPolicy);
     ```
 
-    Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](/azure/cosmos-db/index-policy).
+    Weitere Informationen finden Sie unter [Indizierungsrichtlinien für Azure Cosmos DB](./index-policy.md).
 
 ## <a name="throughput"></a><a id="measure-rus"></a>Durchsatz
 

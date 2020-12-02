@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/03/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: f06ae55dc48152c2c10183cc60cb098b6c3786fa
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89433754"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345115"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -90,7 +90,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | UsePolicyInRedirectUri | Nein | Gibt an, ob beim Erstellen des Umleitungs-URI eine Richtlinie verwendet werden soll. Wenn Sie Ihre Anwendung im Identitätsanbieter konfigurieren, müssen Sie den Umleitungs-URI angeben. Der Umleitungs-URI verweist auf Azure AD B2C, `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/oauth2/authresp`.  Bei Angabe von `false` müssen Sie einen Umleitungs-URI für jede verwendete Richtlinie hinzufügen. Beispiel: `https://{your-tenant-name}.b2clogin.com/{your-tenant-name}.onmicrosoft.com/{policy-name}/oauth2/authresp`. |
 | MarkAsFailureOnStatusCode5xx | Nein | Gibt an, ob eine Anforderung an einen externen Dienst als fehlerhaft gekennzeichnet werden soll, wenn der HTTP-Statuscode im Bereich 5xx liegt. Der Standardwert lautet `false`. |
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
-| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
+| IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 |token_endpoint_auth_method| Nein| Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte sind `client_secret_post` (Standardwert) und `client_secret_basic` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
 
 
@@ -102,7 +102,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
   <Item Key="response_mode">form_post</Item>
   <Item Key="scope">openid profile email</Item>
   <Item Key="HttpBinding">POST</Item>
-  <Item Key="UsePolicyInRedirectUri">0</Item>
+  <Item Key="UsePolicyInRedirectUri">false</Item>
   <Item Key="client_id">Your Microsoft application client ID</Item>
 </Metadata>
 ```

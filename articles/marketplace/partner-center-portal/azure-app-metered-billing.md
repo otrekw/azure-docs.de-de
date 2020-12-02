@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: mingshen
 author: mingshen-ms
-ms.openlocfilehash: b82478338603750a76718da956d74e23d242692e
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d015cec30e516541b50c2acfac38fad898965e1b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896533"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436350"
 ---
 # <a name="managed-application-metered-billing"></a>Getaktete Abrechnung für verwaltete Anwendungen 
 
@@ -22,7 +22,7 @@ Mit dem Marketplace-Messungsdienst können Sie verwaltete Anwendungspläne für 
 
 Damit ein verwalteter Anwendungsplan die getaktete Abrechnung verwenden kann, ist Folgendes erforderlich:
 
-* Es müssen alle Angebotsanforderungen erfüllt sein, die unter [Erstellen eines Azure-Anwendungsangebots](create-new-azure-apps-offer.md) beschrieben sind.
+* Es müssen alle Angebotsanforderungen erfüllt sein, die unter [Erstellen eines Azure-Anwendungsangebots](../create-new-azure-apps-offer.md) beschrieben sind.
 * Der **Preis** muss so konfiguriert sein, dass den Kunden die Kosten pro Monat für Ihren Dienst berechnet werden. Der Preis kann null sein, wenn Sie keine feste Gebühr berechnen möchten und stattdessen ausschließlich die getaktete Abrechnung verwenden.
 * Es müssen **Abrechnungsdimensionen** für die Messungsereignisse festgelegt werden, die der Kunde zusätzlich zum Pauschalpreis bezahlen soll.
 * Es muss in die [Marketplace-Messungsdienst-APIs](./marketplace-metering-service-apis.md) integriert werden, um Microsoft über abrechenbare Ereignisse zu informieren.
@@ -56,11 +56,11 @@ Ein Azure-Kunde, der den CoA-Dienst abonniert, kann Berichte pro Monat basierend
 
 Abrechnungsdimensionen werden verwendet, um Kunden über die Abrechnung der Softwarenutzung zu informieren.  Diese Dimensionen werden auch verwendet, um Nutzungsereignisse an Microsoft zu übermitteln. Sie sind wie folgt definiert:
 
-* **Dimensionsbezeichner** : Die unveränderliche Kennung, auf die bei der Ausgabe von Nutzungsereignissen verwiesen wird.
-* **Dimensionsname** : Der der Dimension zugeordnete Anzeigename (z. B. „Gesendete SMS“).
-* **Maßeinheit** : Die Beschreibung der Abrechnungseinheit (z. B. „pro SMS“ oder „pro 100 E-Mails“).
-* **Preis pro Einheit** : Der Preis für eine Einheit der Dimension.
-* **Enthaltene Menge für monatliche Laufzeit** : Die Menge der pro Monat enthaltenen Dimension für Kunden, die die wiederkehrende monatliche Gebühr bezahlen. Muss eine ganze Zahl sein.
+* **Dimensionsbezeichner**: Die unveränderliche Kennung, auf die bei der Ausgabe von Nutzungsereignissen verwiesen wird.
+* **Dimensionsname**: Der der Dimension zugeordnete Anzeigename (z. B. „Gesendete SMS“).
+* **Maßeinheit**: Die Beschreibung der Abrechnungseinheit (z. B. „pro SMS“ oder „pro 100 E-Mails“).
+* **Preis pro Einheit**: Der Preis für eine Einheit der Dimension.
+* **Enthaltene Menge für monatliche Laufzeit**: Die Menge der pro Monat enthaltenen Dimension für Kunden, die die wiederkehrende monatliche Gebühr bezahlen. Muss eine ganze Zahl sein.
 
 Abrechnungsdimensionen werden in allen Plänen für ein Angebot verwendet. Manche Attribute gelten für die Dimension über alle Pläne hinweg, andere Attribute sind dagegen planspezifisch.
 
@@ -79,7 +79,7 @@ Die anderen Attribute einer Dimension sind planspezifisch und können von Plan z
 Dimensionen verfügen auch über zwei spezielle Konzepte: „aktiviert“ und „unbegrenzt“:
 
 * **Aktiviert** gibt an, dass dieser Plan Teil dieser Dimension ist.  Lassen Sie diese Option ggf. deaktiviert, wenn Sie einen neuen Plan erstellen, der keine auf dieser Dimension basierenden Nutzungsereignisse sendet. Außerdem werden alle neuen Dimensionen, die nach der ersten Veröffentlichung eines Plans hinzugefügt wurden, für den bereits veröffentlichten Plan als „nicht aktiviert“ angezeigt.  Eine deaktivierte Dimension wird in keiner Dimensionenliste für einen Plan angezeigt, der für Kunden sichtbar ist.
-* **Unbegrenzt** , dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass dieser Plan Teil dieser Dimension ist, jedoch ohne gemessene Nutzung für diese Dimension. Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan angezeigt, der für Kunden sichtbar ist.  Für diesen Plan fällt niemals eine Gebühr an.
+* **Unbegrenzt**, dargestellt durch das Unendlichkeitssymbol „∞“, gibt an, dass dieser Plan Teil dieser Dimension ist, jedoch ohne gemessene Nutzung für diese Dimension. Dadurch können Sie Ihren Kunden vermitteln, dass die durch diese Dimension dargestellte Funktion im Plan enthalten und die Nutzung nicht begrenzt ist.  Eine Dimension mit unbegrenzter Nutzung wird in Dimensionenlisten für einen Plan angezeigt, der für Kunden sichtbar ist.  Für diesen Plan fällt niemals eine Gebühr an.
 
 >[!Note] 
 >Folgende Szenarien werden explizit unterstützt:  <br> - Sie können einem neuen Plan eine neue Dimension hinzufügen.  Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert. <br> - Sie können einen Plan mit einer festen Monatsgebühr und ohne Dimensionen veröffentlichen und anschließend einen neuen Plan hinzufügen und eine neue Dimension für diesen Plan konfigurieren. Die neue Dimension wird nicht für bereits veröffentlichte Pläne aktiviert.

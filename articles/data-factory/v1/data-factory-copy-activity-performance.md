@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 1ac55dcb9b9b2fff42e66d496dfa8ac64603d955
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 5910b94dba03f105197a94cf1ea1805f45249f3f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636203"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451351"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Handbuch zur Leistung und Optimierung der Kopieraktivität
 
@@ -32,7 +32,7 @@ Die Azure Data Factory-Kopieraktivität bietet eine erstklassige, sichere und zu
 
 Azure bietet eine Reihe von Datenspeicher- und Data Warehouse-Lösungen der Unternehmensklasse, und mit der Kopieraktivität führen Sie ein hochgradig optimiertes und benutzerfreundliches Datenladen durch, das Sie mühelos konfigurieren und einrichten können. Mit einer einzelnen Kopieraktivität können Sie Folgendes erreichen:
 
-* Laden von Daten in **Azure Synapse Analytics** mit **1,2 GBit/s** . Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics (ehemals SQL Data Warehouse) in weniger als 15 Minuten mit Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+* Laden von Daten in **Azure Synapse Analytics** mit **1,2 GBit/s**. Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](data-factory-load-sql-data-warehouse.md).
 * Laden von Daten in **Azure Blob Storage** mit **1,0 GBit/s**
 * Laden von Daten in **Azure Data Lake Store** mit **1,0 GBit/s**
 
@@ -82,7 +82,7 @@ Als Referenz ist in der nachfolgenden Tabelle der Durchsatzwert beim Kopieren in
 ## <a name="parallel-copy"></a>Parallele Kopie
 Daten können **innerhalb einer Kopieraktivitätsausführung parallel** aus der Quelle gelesen oder am Ziel geschrieben werden. Dieses Feature erhöht den Durchsatz eines Kopiervorgangs und verringert den Zeitaufwand bei der Datenverschiebung.
 
-Diese Einstellung unterscheidet sich von der **concurrency** -Eigenschaft in der Aktivitätsdefinition. Die **concurrency** -Eigenschaft bestimmt die Anzahl **gleichzeitiger Kopieraktivitätsausführungen** für die Verarbeitung von Daten aus unterschiedlichen Aktivitätsfenstern (1:00 bis 2:00 Uhr, 2:00 bis 3:00 Uhr, 3:00 bis 4:00 Uhr usw.). Dies ist beim Laden historischer Daten hilfreich. Die Funktion für parallele Kopien gilt hingegen für eine **einzelne Aktivitätsausführung** .
+Diese Einstellung unterscheidet sich von der **concurrency** -Eigenschaft in der Aktivitätsdefinition. Die **concurrency**-Eigenschaft bestimmt die Anzahl **gleichzeitiger Kopieraktivitätsausführungen** für die Verarbeitung von Daten aus unterschiedlichen Aktivitätsfenstern (1:00 bis 2:00 Uhr, 2:00 bis 3:00 Uhr, 3:00 bis 4:00 Uhr usw.). Dies ist beim Laden historischer Daten hilfreich. Die Funktion für parallele Kopien gilt hingegen für eine **einzelne Aktivitätsausführung**.
 
 Ein Beispiel: Angenommen, es müssen mehrere Slices aus der Vergangenheit verarbeitet werden. Data Factory führt für jeden Slice eine Instanz der Kopieraktivität (eine Aktivitätsausführung) aus:
 
@@ -104,7 +104,7 @@ Eine **Einheit für Clouddatenverschiebungen** (Data Movement Unit, DMU) ist ein
 | Kopieren von Daten zwischen dateibasierten Speichern | Zwischen 4 und 16, abhängig von der Anzahl und Größe der Dateien |
 | Alle anderen Kopierszenarios | 4 |
 
-Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs** , die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
+Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss beschrieben einen Wert für die **cloudDataMovementUnits** -Eigenschaft angeben. Die **zulässigen Werte** für die Eigenschaft **cloudDataMovementUnits** sind: 2, 4, 8, 16, 32. Die **tatsächliche Anzahl von Cloud-DMUs**, die der Kopiervorgang zur Laufzeit verwendet, entspricht maximal dem konfigurierten Wert. Dies ist abhängig von Ihrem Datenmuster. Informationen zum Umfang des möglichen Leistungsgewinns durch Konfigurieren weiterer Einheiten für eine bestimmte Kopierquelle und -senke finden Sie in der [Leistungsreferenz](#performance-reference).
 
 ```json
 "activities":[
@@ -128,7 +128,7 @@ Sie können diese Standardeinstellung überschreiben, indem Sie wie im Anschluss
 ```
 
 > [!NOTE]
-> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus „Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP“ in „Blob Storage/Data Lake Store/Azure SQL-Datenbank“ kopieren** .
+> Sollten Sie zur Steigerung des Durchsatzes weitere Cloud-DMUs benötigen, wenden Sie sich an den [Azure-Support](https://azure.microsoft.com/support/). Der Wert 8 und höher kann derzeit nur verwendet werden, wenn Sie **mehrere Dateien aus „Blob Storage/Data Lake Store/Amazon S3/Cloud-FTP/Cloud-SFTP“ in „Blob Storage/Data Lake Store/Azure SQL-Datenbank“ kopieren**.
 >
 
 ### <a name="parallelcopies"></a>parallelCopies
@@ -167,7 +167,7 @@ In der Regel sollten Sie mit dem Standardverhalten den besten Durchsatz erzielen
 Beachten Sie Folgendes:
 
 * Beim Kopieren von Daten zwischen dateibasierten Speichern bestimmt **parallelCopies** die Parallelität auf Dateiebene. Die Segmentierung innerhalb einer einzelnen Datei erfolgt automatisch und transparent. Dadurch wird die am besten geeignete Segmentgröße für einen angegebenen Quelldatenspeichertyp verwendet, um Daten parallel und orthogonal in parallelCopies zu laden. Die tatsächliche Anzahl paralleler Kopien, die der Datenverschiebungsdienst zur Laufzeit für den Kopiervorgang verwendet, entspricht maximal der Anzahl vorhandener Dateien. Bei Verwendung des Kopierverhaltens **mergeFile** kann die Kopieraktivität keine Parallelität auf Dateiebene nutzen.
-* Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies** -Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher (und ggf. des Gateways, falls es sich um eine Hybridkopie handelt). Dies gilt insbesondere, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder Gateways feststellen, verringern Sie den **parallelCopies** -Wert, um die Last zu reduzieren.
+* Berücksichtigen Sie beim Angeben eines Werts für die **parallelCopies**-Eigenschaft die höhere Auslastung Ihrer Quell- und Senkendatenspeicher (und ggf. des Gateways, falls es sich um eine Hybridkopie handelt). Dies gilt insbesondere, wenn Sie über mehrere Aktivitäten oder gleichzeitige Ausführungen der gleichen Aktivitäten verfügen, die für den gleichen Datenspeicher ausgeführt werden. Sollten Sie eine Überlastung des Datenspeichers oder Gateways feststellen, verringern Sie den **parallelCopies**-Wert, um die Last zu reduzieren.
 * Beim Kopieren von Daten aus nicht dateibasierten Speichern in dateibasierte Speicher ignoriert der Datenverschiebungsdienst die **parallelCopies** -Eigenschaft. Die Parallelität wird in diesem Fall also nicht angewendet, auch wenn sie angegeben wurde.
 
 > [!NOTE]
@@ -183,9 +183,9 @@ Informationen zur optimalen Verwendung dieser beiden Eigenschaften sowie zur Erh
 ## <a name="staged-copy"></a>gestaffeltem Kopieren
 Beim Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher können Sie ggf. Blob Storage als Stagingzwischenspeicher verwenden. Staging ist besonders in folgenden Fällen hilfreich:
 
-1. **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in Azure Synapse Analytics erfassen** . Azure Synapse Analytics nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in Azure Synapse Analytics zu laden. Die Quelldaten müssen sich jedoch in Blob Storage befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Blog Storage-Stagingzwischenspeicher aktivieren. In diesem Fall führt Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase in Azure Synapse Analytics geladen. Ausführlichere Informationen finden Sie unter [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](data-factory-load-sql-data-warehouse.md).
-2. **Hybriddatenverschiebungen (also das Kopieren zwischen einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern** . Zur Verbesserung der Leistung können Sie die Daten lokal komprimieren und dadurch die Verschiebung in den Stagingdatenspeicher in der Cloud beschleunigen. Anschließend können Sie die Daten im Stagingspeicher wieder dekomprimieren, bevor Sie sie in den Zieldatenspeicher laden.
-3. **Aufgrund der IT-Richtlinien des Unternehmens möchten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen** . Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario können Sie mithilfe des Gateways zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Laden Sie dann die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in Azure Synapse Analytics. Dadurch muss der Port 1433 nicht geöffnet werden.
+1. **Sie möchten Daten aus verschiedenen Datenspeichern über PolyBase in Azure Synapse Analytics erfassen**. Azure Synapse Analytics nutzt PolyBase als Mechanismus mit hohem Durchsatz, um große Datenmengen in Azure Synapse Analytics zu laden. Die Quelldaten müssen sich jedoch in Blob Storage befinden und einige andere Kriterien erfüllen. Wenn Sie Daten aus einem Blob Storage-fremden Datenspeicher laden, können Sie das Kopieren von Daten über einen Blog Storage-Stagingzwischenspeicher aktivieren. In diesem Fall führt Data Factory die erforderlichen Datentransformationen durch, um die Anforderungen von PolyBase zu erfüllen. Anschließend werden die Daten mithilfe von PolyBase in Azure Synapse Analytics geladen. Ausführlichere Informationen finden Sie unter [Verwenden von PolyBase zum Laden von Daten in Azure Synapse Analytics](data-factory-azure-sql-data-warehouse-connector.md#use-polybase-to-load-data-into-azure-synapse-analytics). Eine exemplarische Vorgehensweise mit einem Anwendungsfall finden Sie unter [Laden von 1 TB in Azure Synapse Analytics in weniger als 15 Minuten mit Azure Data Factory](data-factory-load-sql-data-warehouse.md).
+2. **Hybriddatenverschiebungen (also das Kopieren zwischen einem lokalen Datenspeicher in einen Clouddatenspeicher) können bei einer langsamen Netzwerkverbindung eine Weile dauern**. Zur Verbesserung der Leistung können Sie die Daten lokal komprimieren und dadurch die Verschiebung in den Stagingdatenspeicher in der Cloud beschleunigen. Anschließend können Sie die Daten im Stagingspeicher wieder dekomprimieren, bevor Sie sie in den Zieldatenspeicher laden.
+3. **Aufgrund der IT-Richtlinien des Unternehmens möchten Sie mit Ausnahme der Ports 80 und 443 keine weiteren Ports in der Firewall öffnen**. Ein Beispiel: Beim Kopieren von Daten aus einem lokalen Datenspeicher an eine Azure SQL-Datenbank- oder Azure Synapse Analytics-Senke muss die ausgehende TCP-Kommunikation über den Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall ermöglicht werden. In diesem Szenario können Sie mithilfe des Gateways zunächst Daten per HTTP oder HTTPS über den Port 443 an eine Blob Storage-Staginginstanz kopieren. Laden Sie dann die Daten aus dem Blob Storage-Stagingspeicher in SQL-Datenbank oder in Azure Synapse Analytics. Dadurch muss der Port 1433 nicht geöffnet werden.
 
 ### <a name="how-staged-copy-works"></a>Funktionsweise des gestaffelten Kopierens
 Bei aktiviertem Stagingfeature werden die Daten zunächst aus dem Quelldatenspeicher in den (von Ihnen bereitgestellten) Stagingdatenspeicher kopiert. Anschließend werden die Daten dann aus dem Stagingdatenspeicher in den Senkendatenspeicher kopiert. Dieser zweistufige Prozess wird automatisch von Data Factory verwaltet. Nach Abschluss der Datenverschiebung bereinigt Data Factory außerdem temporäre Daten im Stagingspeicher.
@@ -203,7 +203,7 @@ Wenn Sie die Datenverschiebung unter Verwendung des Stagingspeichers aktivieren,
 Derzeit ist es nicht möglich, Daten unter Verwendung eines Stagingspeichers zwischen zwei lokalen Datenspeichern zu kopieren. Diese Option wird aber voraussichtlich in Kürze verfügbar.
 
 ### <a name="configuration"></a>Konfiguration
-Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging** , um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf „TRUE“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, falls noch nicht vorhanden.
+Konfigurieren Sie für die Kopieraktivität die Einstellung **enableStaging**, um anzugeben, ob die Daten vor dem Laden in einen Zielspeicher in Blobspeicher bereitgestellt werden sollen. Wenn Sie **enableStaging** auf „TRUE“ festlegen, müssen Sie zusätzliche Eigenschaften angeben. Diese sind in der folgenden Tabelle aufgeführt. Außerdem müssen Sie für das Staging einen verknüpften Azure Storage- oder Storage-SAS-Dienst erstellen, falls noch nicht vorhanden.
 
 | Eigenschaft | BESCHREIBUNG | Standardwert | Erforderlich |
 | --- | --- | --- | --- |
@@ -248,9 +248,9 @@ Die Abrechnung basiert auf zwei Aspekten: Dauer des Kopiervorgangs und Art der K
 ## <a name="performance-tuning-steps"></a>Schritte zur Optimierung der Leistung
 Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Factory-Diensts mit der Kopieraktivität zu verbessern:
 
-1. **Einrichten einer Baseline** . Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Mithilfe des [Slicing-Modells](data-factory-scheduling-and-execution.md) von Data Factory können Sie die verwendete Datenmenge beschränken.
+1. **Einrichten einer Baseline**. Testen Sie Ihre Pipeline mit der Kopieraktivität in der Entwicklungsphase mit repräsentativen Beispieldaten. Mithilfe des [Slicing-Modells](data-factory-scheduling-and-execution.md) von Data Factory können Sie die verwendete Datenmenge beschränken.
 
-   Erfassen Sie mithilfe der **App „Überwachung und Verwaltung“** die Ausführungszeit und die Leistungsmerkmale. Wählen Sie auf Ihrer Data Factory-Startseite die Option **Überwachen und verwalten** aus. Wählen Sie in der Strukturansicht das **Ausgabedataset** aus. Wählen Sie in der Liste **Activity Windows** (Aktivitätsfenster) die ausgeführte Kopieraktivität aus. **Activity Windows** (Aktivitätsfenster) werden die Dauer der Kopieraktivität und die Größe der kopierten Daten aufgeführt. Der Durchsatz ist im **Activity Window Explorer** (Aktivitätsfenster-Explorer) angegeben. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)erfahren Sie mehr über die App.
+   Erfassen Sie mithilfe der **App „Überwachung und Verwaltung“** die Ausführungszeit und die Leistungsmerkmale. Wählen Sie auf Ihrer Data Factory-Startseite die Option **Überwachen und verwalten** aus. Wählen Sie in der Strukturansicht das **Ausgabedataset** aus. Wählen Sie in der Liste **Activity Windows** (Aktivitätsfenster) die ausgeführte Kopieraktivität aus. **Activity Windows** (Aktivitätsfenster) werden die Dauer der Kopieraktivität und die Größe der kopierten Daten aufgeführt. Der Durchsatz ist im **Activity Window Explorer**(Aktivitätsfenster-Explorer) angegeben. Unter [Überwachen und Verwalten von Azure Data Factory-Pipelines mit der neuen App „Überwachung und Verwaltung“](data-factory-monitor-manage-app.md)erfahren Sie mehr über die App.
 
    ![Aktivitätsausführung – Details](./media/data-factory-copy-activity-performance/mmapp-activity-run-details.png)
 
@@ -272,9 +272,9 @@ Wir empfehlen, die folgenden Schritte auszuführen, um die Leistung des Data Fac
 3. **Erweitern der Konfiguration auf das gesamte Dataset** Wenn Sie mit den Ausführungsergebnissen und mit der Leistung zufrieden sind, können Sie die Definition und den aktiven Zeitraum der Pipeline auf Ihr gesamtes Dataset erweitern.
 
 ## <a name="considerations-for-data-management-gateway"></a>Hinweise zum Datenverwaltungsgateway
-**Gatewaysetup** : Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).
+**Gatewaysetup**: Es wird empfohlen, das Datenverwaltungsgateway auf einem dedizierten Computer zu hosten. Siehe [Hinweise zum Datenverwaltungsgateway](data-factory-data-management-gateway.md#considerations-for-using-gateway).
 
-**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways** : In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das Hochskalieren oder Aufskalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen.
+**Überwachung und zentrales Hochskalieren/horizontales Skalieren des Gateways**: In einem einzelnen logischen Gateway mit einem oder mehreren Gatewayknoten können mehrere Kopieraktivitäten gleichzeitig parallel ausgeführt werden. Sie können auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk [Eingang/Ausgang] usw.) sowie die Anzahl gleichzeitig ausführbarer Aufträge im Vergleich zur Begrenzung im Azure-Portal anzeigen. Entsprechende Informationen finden Sie unter [Überwachen des Gateways im Portal](data-factory-data-management-gateway.md#monitor-gateway-in-the-portal). Wenn Sie einen hohen Bedarf an Hybriddatenverschiebungen mit einer großen Anzahl an gleichzeitigen Ausführungen der Kopieraktivität oder einem umfangreichen Volumen an zu kopierenden Daten haben, sollten Sie [das Hochskalieren oder Aufskalieren des Gateways](data-factory-data-management-gateway-high-availability-scalability.md#scale-considerations) erwägen, um zur Optimierung der Kopieraktivität die Ressourcen optimaler zu nutzen oder weitere Ressourcen bereitzustellen.
 
 ## <a name="considerations-for-the-source"></a>Hinweise zur Quelle
 ### <a name="general"></a>Allgemein
@@ -288,14 +288,14 @@ Wenn Sie Daten aus Blob Storage in Azure Synapse Analytics kopieren, können Sie
 *(Einschließlich Blobspeicher, Data Lake Store, Amazon S3, lokale Dateisysteme und lokales HDFS)*
 
 * **Durchschnittliche Größe und Anzahl von Dateien:** Die Kopieraktivität überträgt Daten als einzelne Dateien. Aufgrund der Bootstrap-Phase für die einzelnen Dateien ist der Gesamtdurchsatz bei gleicher zu verschiebender Datenmenge geringer, wenn die Daten nicht aus einer geringen Anzahl großer Dateien, sondern aus zahlreichen kleinen Dateien bestehen. Kombinieren Sie kleine Dateien daher möglichst zu größeren Dateien, um einen höheren Durchsatz zu erzielen.
-* **Dateiformat und Komprimierung** : Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
-* Informationen zum Szenario mit **lokalem Dateisystem** , bei dem das **Datenverwaltungsgateway** benötigt wird, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
+* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
+* Informationen zum Szenario mit **lokalem Dateisystem**, bei dem das **Datenverwaltungsgateway** benötigt wird, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
 *(Einschließlich SQL-Datenbank, Azure Synapse Analytics, Amazon Redshift, SQL Server-Datenbanken sowie Oracle-, MySQL-, DB2-, Teradata-, Sybase- und PostgreSQL-Datenbanken usw.)*
 
-* **Datenmuster** : Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
-* **Abfrage oder gespeicherte Prozedur** : Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
+* **Datenmuster**: Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Eine hohe Zeilengröße liefert zum Kopieren derselben Datenmenge eine bessere Leistung als eine niedrige. Der Grund ist, dass die Datenbank weniger Batches von Daten mit weniger Zeilen effizienter abrufen kann.
+* **Abfrage oder gespeicherte Prozedur**: Optimieren Sie die Logik der Abfrage oder gespeicherten Prozedur, die Sie in der Quelle der Kopieraktivität angeben, um Daten effizienter abzurufen.
 * Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt „Hinweise zum Datenverwaltungsgateway“.
 
 ## <a name="considerations-for-the-sink"></a>Hinweise zur Senke
@@ -309,10 +309,10 @@ Wenn Sie Daten aus **Blob Storage** in **Azure Synapse Analytics** kopieren, kö
 ### <a name="file-based-data-stores"></a>Dateibasierte Datenspeicher
 *(Einschließlich Blobspeicher, Data Lake Store, Amazon S3, lokale Dateisysteme und lokales HDFS)*
 
-* **Kopierverhalten:** Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior** -Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung. Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
-* **Dateiformat und Komprimierung** : Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
-* **Blob Storage** : Blob Storage unterstützt derzeit nur Blockblobs für die Optimierung von Datenübertragung und Durchsatz.
-* Informationen zu Szenarien mit **lokalem Dateisystem** , in denen das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
+* **Kopierverhalten:** Wenn Sie Daten aus einem anderen dateibasierten Datenspeicher kopieren, stehen über die **copyBehavior**-Eigenschaft drei Optionen für die Kopieraktivität zur Verfügung. Das Beibehalten oder Abflachen der Hierarchie verursacht nur einen geringen oder gar keinen Zusatzaufwand. Das Zusammenführen von Dateien ist hingegen mit einem gesteigerten Zusatzaufwand verbunden.
+* **Dateiformat und Komprimierung**: Weitere Methoden zur Verbesserung der Leistung finden Sie in den Abschnitten [Hinweise zur Serialisierung/Deserialisierung](#considerations-for-serialization-and-deserialization) und [Hinweise zur Komprimierung](#considerations-for-compression).
+* **Blob Storage**: Blob Storage unterstützt derzeit nur Blockblobs für die Optimierung von Datenübertragung und Durchsatz.
+* Informationen zu Szenarien mit **lokalem Dateisystem**, in denen das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
 
 ### <a name="relational-data-stores"></a>Relationale Datenspeicher
 *(Einschließlich SQL-Datenbank, Azure Synapse Analytics, SQL Server-Datenbanken und Oracle-Datenbanken)*
@@ -321,7 +321,7 @@ Wenn Sie Daten aus **Blob Storage** in **Azure Synapse Analytics** kopieren, kö
   * Standardmäßig verwendet der Datenverschiebungsdienst die API für Massenkopieren, um Daten im Anfügemodus einzufügen. Damit wird die beste Leistung erzielt.
   * Wenn Sie in der Senke eine gespeicherte Prozedur konfigurieren, wendet die Datenbank die Daten nicht mittels Massenladen, sondern zeilenweise an. Dadurch verschlechtert sich die Leistung erheblich. Bei umfangreichen Datasets empfiehlt sich daher die Verwendung der **sqlWriterCleanupScript** -Eigenschaft (sofern möglich).
   * Wenn Sie die **sqlWriterCleanupScript** -Eigenschaft für jede Kopieraktivitätsausführung konfigurieren, löst der Dienst das Skript aus, und Sie fügen die Daten über die API für Massenkopieren ein. Beispiel: Um die gesamte Tabelle mit den neuesten Daten zu überschreiben, können Sie zunächst ein Skript zum Löschen aller Datensätze angeben und dann die neuen Daten durch Massenladen aus der Quelle einfügen.
-* **Datenmuster und Batchgröße** :
+* **Datenmuster und Batchgröße**:
   * Ihr Tabellenschema hat Auswirkungen auf den Durchsatz beim Kopieren. Beim Kopieren der gleichen Datenmenge erzielen Sie mit großen Zeilen eine bessere Leistung als mit kleinen Zeilen, da die Datenbank eine geringere Anzahl von Datenbatches effizienter committen kann.
   * Die Kopieraktivität fügt Daten in einer Folge von Batches ein. Die Anzahl von Zeilen in einem Batch kann dabei mithilfe der **writeBatchSize** -Eigenschaft festgelegt werden. Wenn Ihre Daten kleine Zeilen enthalten, können Sie für die **writeBatchSize** -Eigenschaft einen höheren Wert festlegen, um den Batchaufwand zu verringern und den Durchsatz zu erhöhen. Bei umfangreichen Zeilen müssen Sie vorsichtig sein, wenn Sie den Wert von **writeBatchSize** erhöhen. Ein hoher Wert kann zu einer Datenbanküberlastung und dadurch zu Kopierfehlern führen.
 * Informationen zu **lokalen relationalen Datenbanken** wie SQL Server und Oracle, für die das **Datenverwaltungsgateway** verwendet werden muss, finden Sie im Abschnitt [Hinweise zum Datenverwaltungsgateway](#considerations-for-data-management-gateway).
@@ -330,9 +330,9 @@ Wenn Sie Daten aus **Blob Storage** in **Azure Synapse Analytics** kopieren, kö
 *(Einschließlich Table Storage und Azure Cosmos DB)*
 
 * **Table Storage:**
-  * **Partition** : Das Schreiben von Daten in überlappende Partitionen beeinträchtigt die Leistung erheblich. Sortieren Sie Ihre Daten anhand des Partitionsschlüssels, sodass sie effizient partitionsweise eingefügt werden. Sie können die Logik auch so anpassen, dass die Daten in eine einzelne Partition geschrieben werden.
-* Für **Azure Cosmos DB** :
-  * **Batchgröße** : Mit der Eigenschaft **writeBatchSize** wird die Anzahl paralleler Anforderungen festgelegt, die zum Erstellen von Dokumenten an den Azure Cosmos DB-Dienst gesendet werden. Sie können eine bessere Leistung erzielen, wenn Sie **writeBatchSize** heraufsetzen, da mehr parallele Anforderungen an Azure Cosmos DB gesendet werden. Achten Sie jedoch darauf, dass beim Schreiben in Azure Cosmos DB keine Drosselung (Fehlermeldung: „Anforderungsrate ist groß“) auftritt. Eine Drosselung kann verschiedene Ursachen haben. Hierzu zählen etwa die Dokumentgröße, die Anzahl von Begriffen in Dokumenten und die Indizierungsrichtlinie der Zielsammlung. Verwenden Sie ggf. eine bessere Sammlung (beispielsweise S3), um einen höheren Durchsatz zu erzielen.
+  * **Partition**: Das Schreiben von Daten in überlappende Partitionen beeinträchtigt die Leistung erheblich. Sortieren Sie Ihre Daten anhand des Partitionsschlüssels, sodass sie effizient partitionsweise eingefügt werden. Sie können die Logik auch so anpassen, dass die Daten in eine einzelne Partition geschrieben werden.
+* Für **Azure Cosmos DB**:
+  * **Batchgröße**: Mit der Eigenschaft **writeBatchSize** wird die Anzahl paralleler Anforderungen festgelegt, die zum Erstellen von Dokumenten an den Azure Cosmos DB-Dienst gesendet werden. Sie können eine bessere Leistung erzielen, wenn Sie **writeBatchSize** heraufsetzen, da mehr parallele Anforderungen an Azure Cosmos DB gesendet werden. Achten Sie jedoch darauf, dass beim Schreiben in Azure Cosmos DB keine Drosselung (Fehlermeldung: „Anforderungsrate ist groß“) auftritt. Eine Drosselung kann verschiedene Ursachen haben. Hierzu zählen etwa die Dokumentgröße, die Anzahl von Begriffen in Dokumenten und die Indizierungsrichtlinie der Zielsammlung. Verwenden Sie ggf. eine bessere Sammlung (beispielsweise S3), um einen höheren Durchsatz zu erzielen.
 
 ## <a name="considerations-for-serialization-and-deserialization"></a>Hinweise zur Serialisierung und Deserialisierung
 Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist. Weitere Informationen zu den unterstützten Dateiformaten für Kopieraktivitäten finden Sie unter [Unterstützte Datei- und Komprimierungsformate](data-factory-supported-file-and-compression-formats.md).
@@ -350,16 +350,16 @@ Serialisierung und Deserialisierung können auftreten, wenn Ihr Eingabe- oder Au
 ## <a name="considerations-for-compression"></a>Hinweise zur Komprimierung
 Wenn Ihr Eingabe- oder Ausgabedataset eine Datei ist, können Sie die Kopieraktivität so konfigurieren, dass beim Schreiben von Daten in das Ziel eine Komprimierung oder Dekomprimierung ausgeführt wird. Wenn Sie sich für eine Komprimierung entscheiden, gehen Sie einen Kompromiss zwischen Eingabe/Ausgabe (E/A) und CPU ein. Das Komprimieren der Daten verursacht zusätzliche Kosten für die Computeressourcen. Im Gegenzug verringern sich aber die Kosten für Netzwerk-E/A und Speicher. Abhängig von Ihren Daten ergibt sich dadurch möglicherweise eine Verbesserung des Gesamtdurchsatzes.
 
-**Codec** : Die Kopieraktivität unterstützt folgende Komprimierungstypen: GZIP, BZIP2 und Deflate. Alle drei Typen können von Azure HDInsight für die Verarbeitung verwendet werden. Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
+**Codec**: Die Kopieraktivität unterstützt folgende Komprimierungstypen: GZIP, BZIP2 und Deflate. Alle drei Typen können von Azure HDInsight für die Verarbeitung verwendet werden. Jeder Komprimierungscodec hat seine Vorteile. BZIP2 bietet etwa den geringsten Durchsatz, im Gegenzug aber die beste Hive-Abfrageleistung, da sich dieser Typ für die Verarbeitung aufteilen lässt. GZIP ist die ausgewogenste Option und wird am häufigsten verwendet. Entscheiden Sie sich für den Codec, der am besten für Ihr End-to-End-Szenario geeignet ist.
 
-**Ebene** : Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
+**Ebene**: Für jeden Komprimierungscodec stehen zwei Optionen zur Verfügung: schnellste Komprimierung und optimale Komprimierung. Bei der schnellsten Komprimierung werden die Daten schnellstmöglich komprimiert, auch wenn die resultierende Datei nicht optimal komprimiert ist. Die optimale Komprimierung dauert länger, liefert aber die kleinstmögliche Datenmenge. Sie können beide Optionen testen, um die in Ihrem Fall beste Gesamtleistung zu ermitteln.
 
-**Hinweis** : Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen: Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
+**Hinweis**: Verwenden Sie beim Kopieren umfangreicher Daten zwischen einem lokalen Datenspeicher und der Cloud ggf. einen Blobzwischenspeicher mit Komprimierung. einen Blobzwischenspeicher mit Komprimierung. Dies ist hilfreich, wenn die Bandbreite Ihres Unternehmensnetzwerks und Ihrer Azure-Dienste einen limitierenden Faktor darstellt und sowohl das Eingabe- als auch das Ausgabedataset in unkomprimierter Form vorliegen sollen. Um genau zu sein, können Sie eine einzelne Kopieraktivität in zwei Kopieraktivitäten aufteilen: Die erste Kopieraktivität kopiert Daten aus der Quelle in komprimierter Form in ein Zwischen- oder Stagingblob. Die zweite Kopieraktivität kopiert die komprimierten Daten aus der Stagingumgebung und dekomprimiert sie beim Schreiben in die Senke.
 
 ## <a name="considerations-for-column-mapping"></a>Hinweise zur Spaltenzuordnung
 Mit der **columnMappings** -Eigenschaft der Kopieraktivität können Eingabespalten ganz oder teilweise den Ausgabespalten zugeordnet werden. Nach dem Lesen der Daten aus der Quelle muss der Datenverschiebungsdienst eine Spaltenzuordnung für die Daten vornehmen, bevor sie in die Senke geschrieben werden. Dieser zusätzliche Verarbeitungsaufwand reduziert den Kopierdurchsatz.
 
-Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie die SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder Azure Cosmos DB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query** -Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
+Falls es sich bei Ihrem Quelldatenspeicher um einen abfragbaren Speicher (beispielsweise um einen relationalen Speicher wie die SQL-Datenbank oder SQL Server) oder um einen NoSQL-Speicher (etwa um Table Storage oder Azure Cosmos DB) handelt, empfiehlt es sich unter Umständen, die Logik für Filterung und Neuanordnung von Spalten in die **query**-Eigenschaft auszulagern, anstatt die Spaltenzuordnung zu verwenden. Dadurch erfolgt die Projektion, während der Datenverschiebungsdienst Daten aus dem Quelldatenspeicher liest, was deutlich effizienter ist.
 
 ## <a name="other-considerations"></a>Weitere Überlegungen
 Wenn die zu kopierenden Daten sehr umfangreich sind, können Sie Ihre Geschäftslogik so anpassen, dass die Daten mithilfe des Aufteilungsmechanismus von Data Factory weiter partitioniert werden. Planen Sie anschließend eine häufigere Ausführung der Kopieraktivität, um die Datengröße für die einzelnen Kopieraktivitätsausführungen zu verringern.
@@ -369,13 +369,13 @@ Seien Sie vorsichtig bei der Anzahl von Datasets und Kopieraktivitäten, für di
 ## <a name="sample-scenario-copy-from-a-sql-server-database-to-blob-storage"></a>Beispielszenario: Kopieren von einer SQL Server-Datenbank in Blob Storage
 **Szenario:** Eine Pipeline wird zum Kopieren von Daten im CSV-Format aus einer SQL Server-Datenbank in Blob Storage erstellt. Zur Beschleunigung des Kopierauftrags sollen die CSV-Dateien im BZIP2-Format komprimiert werden.
 
-**Test und Analyse** : Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
+**Test und Analyse**: Der Durchsatz der Kopieraktivität beträgt weniger als 2 MB/s und liegt damit deutlich unter dem Leistungsbenchmark.
 
-**Leistungsanalyse und -optimierung** : Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden.
+**Leistungsanalyse und -optimierung**: Zur Behebung des Leistungsproblems sehen wir uns zunächst einmal an, wie die Daten verarbeitet und verschoben werden.
 
-1. **Lesen der Daten** : Das Gateway stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an das Gateway.
-2. **Serialisieren und Komprimieren der Daten** : Das Gateway serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
-3. **Schreiben der Daten** : Das Gateway lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
+1. **Lesen der Daten**: Das Gateway stellt eine Verbindung mit SQL Server her und sendet die Abfrage. SQL Server sendet daraufhin den Datenstrom über das Intranet an das Gateway.
+2. **Serialisieren und Komprimieren der Daten**: Das Gateway serialisiert den Datenstrom im CSV-Format und komprimiert die Daten zu einem BZIP2-Datenstrom.
+3. **Schreiben der Daten**: Das Gateway lädt den BZIP2-Datenstrom über das Internet in Blob Storage hoch.
 
 Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und verschoben: SQL Server > LAN > Gateway > WAN > Blob Storage. **Die Gesamtleistung wird durch den minimalen Durchsatz der gesamten Pipeline begrenzt.**
 
@@ -383,14 +383,14 @@ Wie Sie sehen, werden die Daten sequenziell mittels Streaming verarbeitet und ve
 
 Der Leistungsengpass kann auf folgende Faktoren zurückzuführen sein:
 
-* **Quelle** : SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
+* **Quelle**: SQL Server selbst hat aufgrund einer hohen Auslastung einen geringen Durchsatz.
 * **Datenverwaltungsgateway:**
-  * **LAN** : Das Gateway ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
-  * **Gateway** : Für folgende Vorgänge wurde das Auslastungslimit des Gateways erreicht:
-    * **Serialisierung** : Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
-    * **Komprimierung** : Sie haben sich für einen langsamen Komprimierungscodec entschieden (z. B. für BZIP2, das 2,8 MB/s mit Core i7 entspricht).
-  * **WAN** : Zwischen dem Unternehmensnetzwerk und Ihren Azure-Diensten steht nur eine geringe Bandbreite zur Verfügung. (Beispiele: T1 = 1,544 KBit/s; T2 = 6,312 KBit/s).
-* **Senke** : Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
+  * **LAN**: Das Gateway ist weit vom SQL Server-Computer entfernt, und es wird eine Verbindung mit geringer Bandbreite verwendet.
+  * **Gateway**: Für folgende Vorgänge wurde das Auslastungslimit des Gateways erreicht:
+    * **Serialisierung**: Der Datenstrom lässt sich nur mit geringem Durchsatz in das CSV-Format serialisieren.
+    * **Komprimierung**: Sie haben sich für einen langsamen Komprimierungscodec entschieden (z. B. für BZIP2, das 2,8 MB/s mit Core i7 entspricht).
+  * **WAN**: Zwischen dem Unternehmensnetzwerk und Ihren Azure-Diensten steht nur eine geringe Bandbreite zur Verfügung. (Beispiele: T1 = 1,544 KBit/s; T2 = 6,312 KBit/s).
+* **Senke**: Der Durchsatz von Blob Storage ist gering. (Dieses Szenario ist eher unwahrscheinlich, da das entsprechende SLA mindestens 60 MB/s garantiert.)
 
 In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die gesamte Pipeline. Dieser Engpass lässt sich möglicherweise durch einen Wechsel zum GZIP-Komprimierungscodec beheben.
 
@@ -401,15 +401,15 @@ In diesem Fall verlangsamt unter Umständen die BZIP2-Datenkomprimierung die ges
 
 ![Szenario 1](./media/data-factory-copy-activity-performance/scenario-1.png)
 
-**Szenario II** : Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
+**Szenario II**: Kopieren von 20 Blobs mit jeweils 500 MB aus Blob Storage in Data Lake Store Analytics mit anschließender Leistungsoptimierung
 
-**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie ( **parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).
+**Analyse und Leistungsoptimierung:** In diesem Szenario kopiert Data Factory die Daten unter Verwendung einer einzelnen Kopie (**parallelCopies** = 1) und einzelner Einheiten für Clouddatenverschiebungen aus Blob Storage in Data Lake Store. Der Durchsatz entspricht in etwa den Angaben im Abschnitt [Leistungsreferenz](#performance-reference).
 
 ![Szenario 2](./media/data-factory-copy-activity-performance/scenario-2.png)
 
-**Szenario III** : Große Einzeldateien und hoher Gesamtumfang
+**Szenario III**: Große Einzeldateien und hoher Gesamtumfang
 
-**Analyse und Leistungsoptimierung** : Die Erhöhung des Werts für **parallelCopies** führt angesichts der Ressourcenbeschränkungen, die bei nur einer Cloud-DMU gelten, nicht zu einer Verbesserung der Leistung. Stattdessen müssen weitere Cloud-DMUs angegeben werden, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die **parallelCopies** -Eigenschaft an. Die Parallelität wird von Data Factory gehandhabt. Wenn Sie **cloudDataMovementUnits** im vorliegenden Fall auf „4“ festlegen, lässt sich der Durchsatz ungefähr vervierfachen.
+**Analyse und Leistungsoptimierung**: Die Erhöhung des Werts für **parallelCopies** führt angesichts der Ressourcenbeschränkungen, die bei nur einer Cloud-DMU gelten, nicht zu einer Verbesserung der Leistung. Stattdessen müssen weitere Cloud-DMUs angegeben werden, um weitere Ressourcen zum Ausführen der Datenverschiebung zu erhalten. Geben Sie keinen Wert für die **parallelCopies** -Eigenschaft an. Die Parallelität wird von Data Factory gehandhabt. Wenn Sie **cloudDataMovementUnits** im vorliegenden Fall auf „4“ festlegen, lässt sich der Durchsatz ungefähr vervierfachen.
 
 ![Szenario 3](./media/data-factory-copy-activity-performance/scenario-3.png)
 
