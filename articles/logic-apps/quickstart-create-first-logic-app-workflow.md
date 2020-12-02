@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/30/2020
-ms.openlocfilehash: 7433c51b45b0d8459ad1959b29f61660537b8851
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 9d402599c4d6732ce92b8c64af6f660bcedbc4ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337456"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96455065"
 ---
 # <a name="quickstart-create-your-first-logic-apps-workflow---azure-portal"></a>Schnellstart: Erstellen Ihres ersten Logic Apps-Workflows – Azure-Portal
 
@@ -58,7 +58,7 @@ Verwenden Sie die folgenden weiteren Logic Apps-Schnellstartanleitungen, um zu e
    | **Abonnement** | <*Name des Azure-Abonnements*> | Der Name Ihres Azure-Abonnements. |
    | **Ressourcengruppe** | <*Name der Azure-Ressourcengruppe*> | Der Name der [Azure-Ressourcengruppe](../azure-resource-manager/management/overview.md#terminology), in der Sie die Logik-App erstellen. Der Name der Ressourcengruppe muss regionsübergreifend eindeutig sein. In diesem Beispiel wird „My-First-LA-RG“ verwendet. |
    | **Location** | <*Azure-Region*> | Die Azure-Region, in der die Informationen zu Ihrer Logik-App gespeichert werden sollen. In diesem Beispiel wird „USA, Westen“ verwendet. |
-   | **Log Analytics** | Aus | Die Einstellung für die Diagnoseprotokollierung (Standardeinstellung: **Aus** ). Behalten Sie für dieses Beispiel die Einstellung **Aus** bei. |
+   | **Log Analytics** | Aus | Die Einstellung für die Diagnoseprotokollierung (Standardeinstellung: **Aus**). Behalten Sie für dieses Beispiel die Einstellung **Aus** bei. |
    ||||
 
    ![Screenshot: Seite für Logic Apps-Erstellung und Bereich mit den Details für die neue Logik-App](./media/quickstart-create-first-logic-app-workflow/create-logic-app-settings.png)
@@ -112,7 +112,7 @@ Ihre Logik-App befindet sich jetzt im Livemodus, aber vorerst wird nur der RSS-F
 
 ## <a name="add-the-send-email-action"></a>Hinzufügen der Aktion „E-Mail senden“
 
-Nachdem Sie [einen Trigger für Ihre Logik-App hinzugefügt haben](#add-rss-trigger), müssen Sie eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzufügen. Mit dieser Aktion wird bestimmt, welche Reaktion erfolgt, wenn der RSS-Feed von Ihrer Logik-App überprüft und ein neues Element angezeigt wird. Sie können auch Logik-Apps mit deutlich komplexeren Aktionen erstellen, z. B. im Tutorial für die [Verarbeitung von E-Mails mit Logic Apps, Azure Functions und Azure Storage](/azure/logic-apps/tutorial-process-email-attachments-workflow).
+Nachdem Sie [einen Trigger für Ihre Logik-App hinzugefügt haben](#add-rss-trigger), müssen Sie eine [Aktion](../logic-apps/logic-apps-overview.md#logic-app-concepts) hinzufügen. Mit dieser Aktion wird bestimmt, welche Reaktion erfolgt, wenn der RSS-Feed von Ihrer Logik-App überprüft und ein neues Element angezeigt wird. Sie können auch Logik-Apps mit deutlich komplexeren Aktionen erstellen, z. B. im Tutorial für die [Verarbeitung von E-Mails mit Logic Apps, Azure Functions und Azure Storage](./tutorial-process-email-attachments-workflow.md).
 
 > [!NOTE]
 > In diesem Beispiel wird Office 365 Outlook als E-Mail-Dienst verwendet. Wenn Sie einen anderen unterstützten E-Mail-Dienst in Ihrer Logik-App verwenden, sieht die Benutzeroberfläche ggf. anders aus. Die grundlegenden Konzepte für das Herstellen einer Verbindung mit einem anderen E-Mail-Dienst bleiben aber unverändert.
@@ -169,7 +169,7 @@ Nachdem Sie [einen Trigger für Ihre Logik-App hinzugefügt haben](#add-rss-trig
 
       Wenn im Designer eine „For each“-Schleife angezeigt wird, haben Sie ein Token für ein Array ausgewählt, z. B. das Token **categories-Item**. Für diese Art von Token fügt der Designer automatisch diese Schleife für die Aktion hinzu, die auf das Token verweist. Auf diese Weise führt Ihre Logik-App die gleiche Aktion für jedes Arrayelement durch. Wählen Sie zum Entfernen der Schleife auf der Titelleiste der Schleife die **Auslassungspunkte** ( **...** ) und dann **Löschen** aus.
 
-   1. Geben Sie im Feld **Body** (Text) Inhalt für den E-Mail-Text ein. In diesem Beispiel umfasst der Inhalt drei Eigenschaften jeweils mit beschreibendem Text: `Title:` (Eigenschaft **Feedtitel** ), `Date published:` (Eigenschaft **Feed veröffentlicht am** ) und `Link:` (Eigenschaft **Link zum primären Feed** ). Drücken Sie UMSCHALT+EINGABETASTE, um in einem Bearbeitungsfeld leere Zeilen hinzuzufügen.
+   1. Geben Sie im Feld **Body** (Text) Inhalt für den E-Mail-Text ein. In diesem Beispiel umfasst der Inhalt drei Eigenschaften jeweils mit beschreibendem Text: `Title:` (Eigenschaft **Feedtitel**), `Date published:` (Eigenschaft **Feed veröffentlicht am**) und `Link:` (Eigenschaft **Link zum primären Feed**). Drücken Sie UMSCHALT+EINGABETASTE, um in einem Bearbeitungsfeld leere Zeilen hinzuzufügen.
 
       | Eigenschaft | BESCHREIBUNG |
       |----------|-------------|

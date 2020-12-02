@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 212e5fb62043c2ffe2b8876249a6aad1d224411d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 3d7e6357fd8f1091509cbf27875c028d3af310cb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685850"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445919"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-the-azure-portal"></a>Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals
 
@@ -45,13 +45,13 @@ Führen Sie zum Hinzufügen eines Geheimnisses zum Tresor die folgenden Schritte
 1. Klicken Sie auf **Generieren/Importieren**.
 1. Wählen Sie auf dem Bildschirm **Geheimnis erstellen** folgende Werte aus:
     - **Uploadoptionen**: Manuell
-    - **Name**: Geben Sie einen Namen für das Geheimnis ein. Der Geheimnisname muss innerhalb einer Key Vault-Instanz eindeutig sein. Der Name muss eine Zeichenfolge mit 1 bis 127 Zeichen sein und mit einem Buchstaben beginnen und darf nur die Zeichen „0 - 9“, „a - z“, „A - Z“ und „-“ enthalten. Weitere Informationen zur Benennung finden Sie unter [Objekte, Bezeichner und Versionsverwaltung](https://docs.microsoft.com/azure/key-vault/general/about-keys-secrets-certificates#objects-identifiers-and-versioning).
+    - **Name**: Geben Sie einen Namen für das Geheimnis ein. Der Geheimnisname muss innerhalb einer Key Vault-Instanz eindeutig sein. Der Name muss eine Zeichenfolge mit 1 bis 127 Zeichen sein und mit einem Buchstaben beginnen und darf nur die Zeichen „0 - 9“, „a - z“, „A - Z“ und „-“ enthalten. Weitere Informationen zur Benennung finden Sie unter [Objekte, Bezeichner und Versionsverwaltung](../general/about-keys-secrets-certificates.md#objects-identifiers-and-versioning).
     - **Value**: Geben Sie einen Wert für das Geheimnis ein. Key Vault-APIs akzeptieren geheime Werte als Zeichenfolge und geben sie auch in dieser Form zurück. 
     - Behalten Sie bei den anderen Optionen die Standardwerte bei. Klicken Sie auf **Erstellen**.
 
 Nachdem Sie die Meldung erhalten haben, dass das Geheimnis erfolgreich erstellt wurde, können Sie in der Liste auf das Geheimnis klicken. 
 
-Weitere Informationen zu Geheimnisattributen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](https://docs.microsoft.com/azure/key-vault/secrets/about-secrets).
+Weitere Informationen zu Geheimnisattributen finden Sie unter [Informationen zu Azure Key Vault-Geheimnissen](./about-secrets.md).
 
 ## <a name="retrieve-a-secret-from-key-vault"></a>Abrufen eines Geheimnisses aus Key Vault
 
@@ -75,7 +75,7 @@ Wenn Sie die Ressourcen nicht mehr benötigen, löschen Sie die Ressourcengruppe
 3. Geben Sie im Feld **GEBEN SIE DEN RESSOURCENGRUPPENNAMEN EIN:** den Namen der Ressourcengruppe ein, und klicken Sie anschließend auf **Löschen**.
 
 > [!NOTE]
-> Wichtig ist hierbei Folgendes: Sobald Geheimnisse, Schlüssel, Zertifikate oder Schlüsseltresore gelöscht wurden, können sie wiederhergestellt werden. Dies ist je nach Ihrer Konfiguration für einen Zeitraum von sieben bis 90 Kalendertagen möglich. Wenn keine Konfiguration angegeben wird, wird der Standardwiederherstellungszeitraum von 90 Tagen festgelegt. So haben Benutzer ausreichend Zeit, ein versehentliches Löschen eines Geheimnisses zu erkennen und darauf zu reagieren. Weitere Informationen zum Löschen und Wiederherstellen von Schlüsseltresoren und Schlüsseltresorobjekten finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](https://docs.microsoft.com/azure/key-vault/general/soft-delete-overview).
+> Wichtig ist hierbei Folgendes: Sobald Geheimnisse, Schlüssel, Zertifikate oder Schlüsseltresore gelöscht wurden, können sie wiederhergestellt werden. Dies ist je nach Ihrer Konfiguration für einen Zeitraum von sieben bis 90 Kalendertagen möglich. Wenn keine Konfiguration angegeben wird, wird der Standardwiederherstellungszeitraum von 90 Tagen festgelegt. So haben Benutzer ausreichend Zeit, ein versehentliches Löschen eines Geheimnisses zu erkennen und darauf zu reagieren. Weitere Informationen zum Löschen und Wiederherstellen von Schlüsseltresoren und Schlüsseltresorobjekten finden Sie unter [Übersicht über die Azure Key Vault-Funktion für vorläufiges Löschen](../general/soft-delete-overview.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

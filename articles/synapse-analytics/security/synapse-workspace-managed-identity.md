@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 10/16/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4100640fd619d9d971ac1c7083eedef8e2125fc3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 5506a54193efc813927663533ddfd89be3ddf40a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92738289"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461303"
 ---
-# <a name="azure-synapse-workspace-managed-identity-preview"></a>Azure Synapse-Arbeitsbereich – verwaltete Identität (Vorschau)
+# <a name="azure-synapse-workspace-managed-identity"></a>Azure Synapse-Arbeitsbereich – verwaltete Identität
 
 In diesem Artikel lernen Sie das Konzept der verwalteten Identität im Azure Synapse-Arbeitsbereich kennen.
 
@@ -44,7 +44,7 @@ Sie können die verwaltete Identität im Azure-Portal abrufen. Öffnen Sie Ihren
 
 Die Informationen zur verwalteten Identität werden auch angezeigt, wenn Sie einen verknüpften Dienst erstellen, der die Authentifizierung der verwalteten Identität über Azure Synapse Studio unterstützt.
 
-Starten Sie **Azure Synapse Studio** , und wählen Sie im linken Navigationsbereich die Registerkarte **Verwalten** aus. Wählen Sie dann **Verknüpfter Dienst** aus, und klicken Sie auf die Option **+ Neu** , um einen neuen verknüpften Dienst zu erstellen.
+Starten Sie **Azure Synapse Studio**, und wählen Sie im linken Navigationsbereich die Registerkarte **Verwalten** aus. Wählen Sie dann **Verknüpfter Dienst** aus, und klicken Sie auf die Option **+ Neu**, um einen neuen verknüpften Dienst zu erstellen.
 
 ![Erstellen eines verknüpften Diensts 1](./media/synapse-workspace-managed-identity/workspace-managed-identity-2.png)
 

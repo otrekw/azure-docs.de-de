@@ -7,16 +7,16 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 01/22/2020
 ms.author: yegu
-ms.openlocfilehash: 7b57bfbd09cd2b528b5a879acdb41b4716289aa6
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 5f9e0a18db0920acd35ebd7b133ed3fe5d0eaee9
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92372003"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352948"
 ---
 # <a name="how-the-reservation-discount-is-applied-to-azure-cache-for-redis"></a>Anwendung des Reservierungsrabatts auf Azure Cache for Redis
 
-Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](/azure/azure-cache-for-redis/quickstart-create-redis) zur Verfügung.
+Nachdem Sie eine reservierte Azure Cache for Redis-Kapazität erworben haben, wird der Reservierungsrabatt automatisch auf Cache-Instanzen angewendet, die den Attributen und der Menge der Reservierung entsprechen. Eine Reservierung deckt nur die Computekosten Ihrer Azure Cache for Redis-Instanz ab. Kosten für Speicher und Netzwerk werden zum regulären Satz abgerechnet. Reservierte Kapazität steht nur für Caches im [Premium-Tarif](../../azure-cache-for-redis/quickstart-create-redis.md) zur Verfügung.
 
 ## <a name="how-reservation-discount-is-applied"></a>Wie der Reservierungsrabatt angewendet wird
 
@@ -30,7 +30,7 @@ Der Rabatt für reservierter Azure Cache for Redis-Kapazität wird auf Stunde
 
 Die folgenden Beispiele veranschaulichen, wie der Rabatt für reservierte Azure Cache for Redis-Kapazität angewendet wird – abhängig davon, wie viele Cache-Instanzen Sie erworben haben und wann sie ausgeführt werden.
 
-**Beispiel 1** : Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
+**Beispiel 1**: Sie erwerben reservierte Azure Cache for Redis-Kapazität für einen 6-GB-Cache. Wenn Sie einen 13-GB-Cache verwenden, der den restlichen Attributen der Reservierung entspricht, werden 7 GB Ihrer Azure Cache for Redis-Nutzung zum Preis für die nutzungsbasierte Bezahlung abgerechnet, und Sie erhalten den Reservierungsrabatt für eine Computenutzungsstunde des 6-GB-Caches.
 
 Bei den übrigen Beispielen wird davon ausgegangen, dass die von Ihnen erworbene reservierte Azure Cache for Redis-Kapazität für einen 26-GB-Cache gilt und die restlichen Reservierungsattribute dem aktiven Cache entsprechen.
 

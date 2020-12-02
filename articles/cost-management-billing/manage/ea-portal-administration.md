@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bb8a52a2258143e1c68ca46ac31a8c986b1bcfe7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893357"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457127"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -282,13 +282,13 @@ Das Azure EA-Portal unterstützt Sie bei der Verwaltung Ihrer Azure EA-Kosten un
 
 Jede Rolle verfügt über eine andere Zugriffs- und Autorisierungsebene.
 
-Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
+Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](./understand-ea-roles.md#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Hinzufügen eines Azure EA-Kontos
 
 Das Azure EA-Konto ist eine Organisationseinheit im Azure EA Portal. Sie wird zur Abonnementverwaltung und auch für die Berichterstellung verwendet. Für den Zugriff auf Azure-Dienste und ihre Verwendung müssen Sie ein Konto erstellen oder erstellen lassen.
 
-Weitere Informationen zu Azure-Konten finden Sie unter [Hinzufügen eines Kontos](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-administration#add-an-account).
+Weitere Informationen zu Azure-Konten finden Sie unter [Hinzufügen eines Kontos](#add-an-account).
 
 ## <a name="enterprise-devtest-offer"></a>Enterprise Dev/Test-Angebot
 
@@ -361,7 +361,7 @@ Löschen Sie ein Abonnement, für das Sie als Kontobesitzer fungieren, wie folgt
 
 Abonnements können nur von Kontoadministratoren gekündigt werden.
 
-Weitere Informationen finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](cancel-azure-subscription.md#what-happens-after-i-cancel-my-subscription).
+Weitere Informationen finden Sie unter [Was geschieht, nachdem ich mein Abonnement gekündigt habe?](cancel-azure-subscription.md#what-happens-after-subscription-cancellation).
 
 ## <a name="delete-an-account"></a>Löschen eines Kontos
 

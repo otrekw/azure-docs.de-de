@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: e84afc949a84da90a4799d7db3b3e7ad3e0057a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3fc7a7f137701590e4bddd791a3fdd2d1eaeca4a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323534"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461607"
 ---
 # <a name="quickstart-create-a-new-serverless-apache-spark-pool-using-the-azure-portal"></a>Schnellstart: Erstellen eines neuen serverlosen Apache Spark-Pools über das Azure-Portal
 
@@ -89,7 +89,7 @@ Führen Sie die folgenden Schritte aus, um den Apache Spark-Pool aus dem Arbeit
 Gehen Sie zum Löschen des Apache Spark-Pools wie folgt vor:
 
 1. Navigieren Sie im Arbeitsbereich zum Blatt mit den Apache Spark-Pools.
-2. Wählen Sie den zu löschenden Apache Spark-Pool aus (in diesem Fall **contosospark** ).
+2. Wählen Sie den zu löschenden Apache Spark-Pool aus (in diesem Fall **contosospark**).
 3. Klicken Sie auf **Löschen**.
  ![Liste der Apache Spark-Pools, der soeben erstellte Pool ist ausgewählt.](media/quickstart-create-apache-spark-pool/create-spark-pool-portal-08.png)
 4. Bestätigen Sie den Löschvorgang, und klicken Sie auf die Schaltfläche **Löschen**.
@@ -99,4 +99,4 @@ Gehen Sie zum Löschen des Apache Spark-Pools wie folgt vor:
 ## <a name="next-steps"></a>Nächste Schritte
 
 - Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines Apache Spark-Notebooks](quickstart-apache-spark-notebook.md).
-- Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines dedizierten Synapse SQL-Pools mithilfe des Azure-Portals](quickstart-create-sql-pool-portal.md).
+- Weitere Informationen finden Sie unter [Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals](quickstart-create-sql-pool-portal.md).
