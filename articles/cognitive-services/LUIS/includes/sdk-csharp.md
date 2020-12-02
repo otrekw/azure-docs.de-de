@@ -8,12 +8,12 @@ ms.subservice: language-understanding
 ms.date: 09/01/2020
 ms.topic: include
 ms.custom: include file, devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 0703c85b15ab2bc9967d78f8ec1ecb499a22ca05
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a79f164a1733c46a4cca807403a7ead8df446f0a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95098348"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303671"
 ---
 Verwenden Sie die LUIS-Clientbibliotheken (Language Understanding) für .NET für Folgendes:
 * Erstellen einer App
@@ -82,7 +82,7 @@ Der LUIS-Erstellungsclient (Language Understanding) ist ein Objekt vom Typ [LUIS
 Nach der Erstellung des Clients können Sie damit unter anderem auf folgende Funktionen zugreifen:
 
 * Apps: [Erstellen](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.addasync?view=azure-dotnet), [Löschen](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.deleteasync?view=azure-dotnet), [Veröffentlichen](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.appsextensions.publishasync?view=azure-dotnet)
-* Beispieläußerungen: [Hinzufügen](//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet), [Löschen anhand der ID](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet)
+* Beispieläußerungen: [Hinzufügen](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions?view=azure-dotnet), [Löschen anhand der ID](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.deleteasync?view=azure-dotnet)
 * Features: Verwalten von [Ausdruckslisten](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.featuresextensions.addphraselistasync?view=azure-dotnet)
 * Modell: Verwalten von [Absichten](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.modelextensions?view=azure-dotnet) und Entitäten
 * Muster: Verwalten von [Mustern](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.patternextensions?view=azure-dotnet)
@@ -180,7 +180,7 @@ Fügen Sie Beispieläußerungen hinzu, indem Sie eine Liste mit Objekten vom Typ
 
 :::image type="content" source="../media/quickstart-sdk/labeled-example-machine-learned-entity.png" alt-text="Ausschnitt eines Screenshots mit der bezeichneten Beispieläußerung im Portal":::
 
-Rufen Sie [Examples.AddAsync](//dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions.addasync?view=azure-dotnet) mit der App-ID, der Versions-ID und dem Beispiel auf.
+Rufen Sie [Examples.AddAsync](/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring.examplesextensions?view=azure-dotnet) mit der App-ID, der Versions-ID und dem Beispiel auf.
 
 [!code-csharp[Add example utterance to intent](~/cognitive-services-quickstart-code/dotnet/LanguageUnderstanding/sdk-3x//Program.cs?name=AuthoringAddLabeledExamples)]
 

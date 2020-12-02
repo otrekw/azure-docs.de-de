@@ -6,15 +6,15 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 8169b277dfae918e86ac493259325ff84d0b6a4e
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92427482"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95998531"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Erstellen eines Azure Remote Rendering-Kontos
 
-Dieses Kapitel führt Sie durch die Schritte zum Erstellen eines Kontos für den **Azure Remote Rendering** -Dienst. Zum Abschließen der Schnellstarts oder Tutorials ist ein gültiges Konto zwingend erforderlich.
+Dieses Kapitel führt Sie durch die Schritte zum Erstellen eines Kontos für den **Azure Remote Rendering**-Dienst. Zum Abschließen der Schnellstarts oder Tutorials ist ein gültiges Konto zwingend erforderlich.
 
 ## <a name="create-an-account"></a>Erstellen eines Kontos
 
@@ -38,7 +38,7 @@ Der Standort, der bei der Kontoerstellung eines Kontos angegeben wird, bestimmt,
 
 ### <a name="retrieve-the-account-information"></a>Abrufen der Kontoinformationen
 
-In den Beispielen und Tutorials müssen Sie die Konto-ID und einen Schlüssel angeben. Beispielsweise in der Datei **arrconfig.json** , die für die PowerShell-Beispielskripts verwendet wird:
+In den Beispielen und Tutorials müssen Sie die Konto-ID und einen Schlüssel angeben. Beispielsweise in der Datei **arrconfig.json**, die für die PowerShell-Beispielskripts verwendet wird:
 
 ```json
 "accountSettings": {
@@ -85,14 +85,14 @@ Es wird davon ausgegangen, dass Sie jetzt über ein Speicherkonto verfügen. Nav
 
 ![Speicherkonto (IAM): Rollenzuweisung hinzufügen](./media/azure-add-role-assignment.png)
 
-* Die erste zuzuweisende Rolle ist **Besitzer** , wie im Screenshot oben gezeigt.
+* Die erste zuzuweisende Rolle ist **Besitzer**, wie im Screenshot oben gezeigt.
 * Wählen Sie **Remote Rendering-Konto** aus der Dropdownliste **Zugriff zuweisen zu** aus.
 * Wählen Sie in den letzten Dropdownlisten Ihr Abonnement und das Remote Rendering-Konto aus.
 
 > [!WARNING]
 > Wenn Ihr Remote Rendering-Konto nicht aufgeführt ist, lesen Sie den [Abschnitt zur Problembehandlung](../resources/troubleshoot.md#cant-link-storage-account-to-arr-account).
 
-Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle** :
+Wiederholen Sie das Hinzufügen neuer Rollen zwei weitere Male für die jeweilige Auswahl aus der Dropdownliste **Rolle**:
 
 * **Mitwirkender von Speicherkonto**
 * **Mitwirkender an Speicherblobdaten**

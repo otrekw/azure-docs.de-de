@@ -10,16 +10,16 @@ ms.subservice: computer-vision
 ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
-ms.openlocfilehash: ecb0b6a6577161a5349d9d701dd6c116f69411f0
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b734f54f39b0f442f398a60ad25a846b0f9a6322
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "80876082"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "96021808"
 ---
 # <a name="deploy-the-computer-vision-container-to-azure-container-instances"></a>Bereitstellen des Containers für maschinelles Sehen in Azure Container Instances
 
-Erfahren Sie, wie Sie Container für [maschinelles Sehen](computer-vision-how-to-install-containers.md) von Cognitive Services für Azure [Container Instances](https://docs.microsoft.com/azure/container-instances/) bereitstellen. Dieses Verfahren veranschaulicht die Erstellung der Ressource für maschinelles Sehen. Anschließend wird das Abrufen des dazugehörigen Containerimages erläutert. Abschließend erklären wir, wie Sie die Orchestrierung von Ressource und Image über einen Browser ausführen können. Die Verwendung von Containern kann die Aufmerksamkeit der Entwickler von der Verwaltung der Infrastruktur auf die Anwendungsentwicklung lenken.
+Erfahren Sie, wie Sie Container für [maschinelles Sehen](computer-vision-how-to-install-containers.md) von Cognitive Services für Azure [Container Instances](../../container-instances/index.yml) bereitstellen. Dieses Verfahren veranschaulicht die Erstellung der Ressource für maschinelles Sehen. Anschließend wird das Abrufen des dazugehörigen Containerimages erläutert. Abschließend erklären wir, wie Sie die Orchestrierung von Ressource und Image über einen Browser ausführen können. Die Verwendung von Containern kann die Aufmerksamkeit der Entwickler von der Verwaltung der Infrastruktur auf die Anwendungsentwicklung lenken.
 
 [!INCLUDE [Prerequisites](../containers/includes/container-preview-prerequisites.md)]
 

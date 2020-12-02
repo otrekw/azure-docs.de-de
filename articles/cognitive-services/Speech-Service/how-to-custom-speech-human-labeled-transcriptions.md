@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
-ms.openlocfilehash: d1d62d36d5cc48edc198e5d7bfc49f7f31b89a2c
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4516bbddd3fda593021288a440e1b354d4d7f1e3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025615"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96340236"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Erstellen von menschenmarkierten Transkriptionen
 
@@ -168,4 +168,4 @@ Es folgen einige Beispiele für die Normalisierung, die automatisch für die Tra
 - [Überprüfen Ihrer Daten](how-to-custom-speech-inspect-data.md)
 - [Bewerten Ihrer Daten](how-to-custom-speech-evaluate-data.md)
 - [Trainieren Ihres Modells](how-to-custom-speech-train-model.md)
-- [Bereitstellen Ihres Modells](how-to-custom-speech-deploy-model.md)
+- [Bereitstellen Ihres Modells](./how-to-custom-speech-train-model.md)

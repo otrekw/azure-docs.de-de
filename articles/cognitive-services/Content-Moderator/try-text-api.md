@@ -11,11 +11,11 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 05/29/2019
 ms.openlocfilehash: 664c4289cbfa1f6ce2fce9f9f83b0240bd2d592c
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912870"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96001999"
 ---
 # <a name="moderate-text-from-the-api-console"></a>Moderieren von Text über die API-Konsole
 
@@ -50,7 +50,7 @@ Wählen Sie die Abfrageparameter aus, die Sie für Ihre Textüberprüfung verwen
 >
 > Verwenden Sie für die Erkennung **anstößiger Begriffe** den [ISO 639-3-Code](http://www-01.sil.org/iso639-3/codes.asp) der unterstützten Sprachen aus diesem Artikel, oder lassen Sie ihn leer.
 
-Wählen Sie für **autocorrect** , **PII** und **classify (preview)** die Option **true**. Lassen Sie das Feld **ListId** leer.
+Wählen Sie für **autocorrect**, **PII** und **classify (preview)** die Option **true**. Lassen Sie das Feld **ListId** leer.
 
   ![Konsole „Text – Screen“ (Text – Überprüfen) – Abfrageparameter](images/text-api-console-inputs.PNG)
 

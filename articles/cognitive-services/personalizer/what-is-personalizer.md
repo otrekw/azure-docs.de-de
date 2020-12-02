@@ -8,11 +8,11 @@ ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: Personalisierung, Azure Personalisierung, Machine Learning
 ms.openlocfilehash: f843e7bfa014ad8391e20efff83a3c21a9de11b9
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94363900"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96171958"
 ---
 # <a name="what-is-personalizer"></a>Was ist die Personalisierung?
 
@@ -29,14 +29,14 @@ Bevor Sie beginnen, können Sie die [Personalisierung mit dieser interaktiven De
 
 ## <a name="how-does-personalizer-select-the-best-content-item"></a>Wie wählt die Personalisierung das beste Inhaltselement aus?
 
-Für die Personalisierung wird das **vertiefende Lernen** verwendet, um anhand des gesamten Verhaltens und der Relevanzbewertungen aller Benutzer das beste Element ( _Aktion_ ) auswählen zu können. Aktionen sind die Inhaltselemente, z. B. Nachrichtenartikel, bestimmte Filme oder Produkte.
+Für die Personalisierung wird das **vertiefende Lernen** verwendet, um anhand des gesamten Verhaltens und der Relevanzbewertungen aller Benutzer das beste Element (_Aktion_) auswählen zu können. Aktionen sind die Inhaltselemente, z. B. Nachrichtenartikel, bestimmte Filme oder Produkte.
 
-Beim **Rangfolge** -Aufruf werden das Aktionselement, einschließlich der zugehörigen Features, und die Kontextfeatures verwendet, um das oberste Aktionselement auszuwählen:
+Beim **Rangfolge**-Aufruf werden das Aktionselement, einschließlich der zugehörigen Features, und die Kontextfeatures verwendet, um das oberste Aktionselement auszuwählen:
 
-* **Aktionen mit Features** : Inhaltselemente mit spezifischen Features für jedes Element.
-* **Kontextfeatures** : Features Ihrer Benutzer, des Kontexts oder der Umgebung bei der Nutzung Ihrer App.
+* **Aktionen mit Features**: Inhaltselemente mit spezifischen Features für jedes Element.
+* **Kontextfeatures**: Features Ihrer Benutzer, des Kontexts oder der Umgebung bei der Nutzung Ihrer App.
 
-Im Feld für die **Relevanzaktion-ID** gibt der Rangfolge-Aufruf die ID dazu zurück, welches Inhaltselement ( __Aktion__ ) dem Benutzer angezeigt werden soll.
+Im Feld für die **Relevanzaktion-ID** gibt der Rangfolge-Aufruf die ID dazu zurück, welches Inhaltselement (__Aktion__) dem Benutzer angezeigt werden soll.
 
 Die dem Benutzer angezeigte __Aktion__ wird mithilfe von Machine Learning-Modellen ausgewählt, um zu versuchen, die Relevanz im Laufe der Zeit möglichst stark zu erhöhen.
 
@@ -57,9 +57,9 @@ Für die Personalisierung wird das vertiefende Lernen genutzt, um die beste Akti
 
 ## <a name="when-to-use-personalizer"></a>Verwendung der Personalisierung
 
-Die **Rangfolge** - [API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird jedes Mal aufgerufen, wenn Ihre Anwendung Inhalte darstellt. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
+Die **Rangfolge**-[API](https://go.microsoft.com/fwlink/?linkid=2092082) der Personalisierung wird jedes Mal aufgerufen, wenn Ihre Anwendung Inhalte darstellt. Dies wird als **Ereignis** bezeichnet und durch eine _Ereignis-ID_ gekennzeichnet.
 
-Die **Relevanz** - [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Die Relevanzbewertung liegt zwischen 0 und 1. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
+Die **Relevanz**-[API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) der Personalisierung kann in Echtzeit oder verzögert aufgerufen werden, um die jeweils am besten geeignete Anpassung an Ihre Infrastruktur zu erzielen. Sie bestimmen die Relevanzbewertung basierend auf Ihren Geschäftsanforderungen. Die Relevanzbewertung liegt zwischen 0 und 1. Dies kann ein einzelner Wert sein, z. B. „1“ für „Gut“ und „0“ für „Schlecht“. Sie können auch eine Zahl verwenden, die von einem Algorithmus ermittelt wird, den Sie anhand Ihrer Geschäftsziele und Metriken erstellt haben.
 
 ## <a name="content-requirements"></a>Inhaltsanforderungen
 
@@ -86,7 +86,7 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
     |Free, `F0`| Ausprobieren des Onlinelernverhaltens in einer Nichtproduktionsumgebung|
 
 1. Fügen Sie die Personalisierung Ihrer Anwendung, der Website oder dem System hinzu:
-    1. Fügen Sie der Personalisierung in Ihrer Anwendung, der Website oder dem System einen **Rangfolge** -Aufruf hinzu, um das am besten geeignete _Inhaltselement_ zu ermitteln, bevor der Inhalt dem Benutzer angezeigt wird.
+    1. Fügen Sie der Personalisierung in Ihrer Anwendung, der Website oder dem System einen **Rangfolge**-Aufruf hinzu, um das am besten geeignete _Inhaltselement_ zu ermitteln, bevor der Inhalt dem Benutzer angezeigt wird.
     1. Zeigen Sie dem Benutzer das am besten geeignete _Inhaltselement_ an, das anhand der zurückgegebenen _Relevanzaktion-ID_ gekennzeichnet ist.
     1. Wenden Sie die _Geschäftslogik_ auf die gesammelten Informationen an, die das Verhalten des Benutzers angeben, um die **Relevanzbewertung** zu ermitteln. Beispiel:
 
@@ -96,7 +96,7 @@ Da für die Personalisierung die gesamten Informationen nahezu in Echtzeit genut
     |Benutzer hat anderen Inhalt ausgewählt|**0**|
     |Benutzer hat innegehalten und zunächst gescrollt, bevor er das am besten geeignete _Inhaltselement_ (Relevanzaktion-ID) ausgewählt hat|**0,5**|
 
-    1. Fügen Sie einen **Relevanz** -Aufruf hinzu, bei dem eine Relevanzbewertung zwischen 0 und 1 gesendet wird.
+    1. Fügen Sie einen **Relevanz**-Aufruf hinzu, bei dem eine Relevanzbewertung zwischen 0 und 1 gesendet wird.
         * Unmittelbar nach dem Anzeigen Ihrer Inhalte
         * Oder später in einem Offlinesystem
     1. [Werten Sie Ihre Schleife aus](concepts-offline-evaluation.md), indem Sie nach einer gewissen Nutzungsdauer eine Offlineauswertung durchführen. Bei der Offlineauswertung können Sie die Wirksamkeit des Personalisierungsdiensts testen und bewerten, ohne Ihren Code zu ändern oder die Benutzererfahrung zu beeinträchtigen.

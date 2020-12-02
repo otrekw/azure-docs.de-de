@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 10/29/2020
 ms.author: aahi
 ms.openlocfilehash: cedcf8a3fcd656c4af0ca7493c598791d35d20d9
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130560"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95996123"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>Verwenden von Docker Compose zum Bereitstellen mehrerer Container
 
@@ -39,7 +39,7 @@ Für dieses Verfahren müssen mehrere Tools lokal installiert und ausgeführt we
 
 ## <a name="docker-compose-file"></a>Docker Compose-Datei
 
-Die YAML-Datei definiert alle bereitzustellenden Dienste. Diese Dienste basieren entweder auf einer `DockerFile` oder einem vorhandenen Containerimage. In diesem Fall verwenden wir zwei Vorschauimages. Kopieren Sie die folgende YAML-Datei, fügen Sie sie ein, und speichern Sie sie als *docker-compose.yaml*. Geben Sie die entsprechenden Werte für **apikey** , **billing** und **EndpointUri** in die Datei ein.
+Die YAML-Datei definiert alle bereitzustellenden Dienste. Diese Dienste basieren entweder auf einer `DockerFile` oder einem vorhandenen Containerimage. In diesem Fall verwenden wir zwei Vorschauimages. Kopieren Sie die folgende YAML-Datei, fügen Sie sie ein, und speichern Sie sie als *docker-compose.yaml*. Geben Sie die entsprechenden Werte für **apikey**, **billing** und **EndpointUri** in die Datei ein.
 
 ```yaml
 version: '3.7'
@@ -165,7 +165,7 @@ IMAGE ID            REPOSITORY                                                  
 
 ### <a name="test-containers"></a>Testcontainer
 
-Öffnen Sie einen Browser auf dem Hostcomputer, und navigieren Sie zu **localhost** , indem Sie den angegebenen Port aus der Datei *docker-compose.yaml* verwenden, z. B. http://localhost:5021/swagger/index.html. Sie können z. B. das Feature **Testen** in der API verwenden, um den Endpunkt der Formularerkennung zu testen. Beide Container sollten verfügbar und testbar sein.
+Öffnen Sie einen Browser auf dem Hostcomputer, und navigieren Sie zu **localhost**, indem Sie den angegebenen Port aus der Datei *docker-compose.yaml* verwenden, z. B. http://localhost:5021/swagger/index.html. Sie können z. B. das Feature **Testen** in der API verwenden, um den Endpunkt der Formularerkennung zu testen. Beide Container sollten verfügbar und testbar sein.
 
 ![Container „Formularerkennung“](media/form-recognizer-swagger-page.png)
 

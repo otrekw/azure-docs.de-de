@@ -11,19 +11,19 @@ ms.topic: quickstart
 ms.date: 05/08/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0abd03338982c866c92a8462e1e840651a9c2759
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: b892194a0e716aa3de218bc6edb6c38cdc898935
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93101781"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338655"
 ---
 # <a name="quickstart-call-your-bing-custom-search-endpoint-using-c"></a>Schnellstart: Aufrufen Ihres Endpunkts für die benutzerdefinierte Bing-Suche mit C# 
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Verwenden Sie diese Schnellstartanleitung, um zu lernen, wie Sie Suchergebnisse von Ihrer Instanz der benutzerdefinierten Bing-Suche anfordern. Diese Anwendung ist zwar in C# geschrieben, aber die API für die benutzerdefinierte Bing-Suche ist ein RESTful-Webdienst, der mit den meisten Programmiersprachen kompatibel ist. Den Quellcode des Beispiels finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/dotnet/Search/BingCustomSearchv7.cs).
 
@@ -37,7 +37,7 @@ Verwenden Sie diese Schnellstartanleitung, um zu lernen, wie Sie Suchergebnisse 
 
    So installieren Sie das Paket in Visual Studio: 
      1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **NuGet-Pakete verwalten** aus. 
-     2. Suchen Sie nach *Microsoft.Azure.CognitiveServices.Search.CustomSearch* , wählen Sie das Paket aus, und installieren Sie es.
+     2. Suchen Sie nach *Microsoft.Azure.CognitiveServices.Search.CustomSearch*, wählen Sie das Paket aus, und installieren Sie es.
 
    Wenn Sie das NuGet-Paket für die benutzerdefinierte Bing-Suche installieren, werden von Visual Studio außerdem die folgenden Pakete installiert:
      - **Microsoft.Rest.ClientRuntime**

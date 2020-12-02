@@ -5,12 +5,12 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 6/9/2020
 ms.author: baanders
-ms.openlocfilehash: fe3c737e0cbf6831e3abc37443e27926ed5e62b8
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 183d12b5e9d32c777c8acf01177c8cbbe1b6ca00
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93091774"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026046"
 ---
 ### <a name="functional-limits"></a>Funktionale Grenzwerte
 
@@ -29,7 +29,7 @@ In der folgenden Tabelle werden die funktionalen Grenzwerte von Azure Digital Tw
 | Modelle | Anzahl von Modellen innerhalb einer einzelnen Azure Digital Twins-Instanz | 10.000 | Ja |
 | Modelle | Anzahl der Modelle, die in einem einzigen API-Aufruf hochgeladen werden können | 250 | Nein |
 | Modelle | Anzahl der auf einer einzelnen Seite zurückgegebenen Elemente | 100 | Nein |
-| Abfrage | Anzahl der auf einer einzelnen Seite zurückgegebenen Elemente | 100 | Nein |
+| Abfrage | Anzahl der auf einer einzelnen Seite zurückgegebenen Elemente | 100 | Ja |
 | Abfrage | Anzahl von `AND` / `OR`-Ausdrücken in einer Abfrage | 50 | Ja |
 | Abfrage | Anzahl von Arrayelementen in einer `IN` / `NOT IN`-Klausel | 50 | Ja |
 | Abfrage | Anzahl von Zeichen in einer Abfrage | 8\.000 | Ja |
