@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 08a15e6f8cad4068415cec3353544829f2218fb0
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888979"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "95529728"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -48,7 +48,7 @@ Identifizieren Sie die Größenhosts, die Sie beim Bereitstellen von Azure VMwar
 
 ## <a name="number-of-hosts"></a>Anzahl von Hosts
 
-Definieren Sie die Anzahl von Hosts, die Sie in der privaten Azure VMware Solution-Cloud bereitstellen möchten.  Die minimale Anzahl von Knoten pro Cluster beträgt 3, und der Höchstwert ist 16.  Weitere Informationen finden Sie unter [Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster](concepts-private-clouds-clusters.md#clusters).
+Definieren Sie die Anzahl von Hosts, die Sie in der privaten Azure VMware Solution-Cloud bereitstellen möchten.  Die Mindestanzahl von Hosts beträgt 3, und der Höchstwert beträgt  16 pro Cluster.  Weitere Informationen finden Sie unter [Azure VMware Solution (Vorschau): Konzepte – Private Clouds und Cluster](concepts-private-clouds-clusters.md#clusters).
 
 Sie können den Cluster später jederzeit erweitern, wenn Sie die anfängliche Bereitstellungsanzahl erhöhen möchten.
 

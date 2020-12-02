@@ -9,23 +9,24 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ec7337ad798d586cb93bd13e60ead1ef9f2a4abe
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857247"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959304"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Tutorial: Senden von Daten per transparentem Gateway
-
-> [!NOTE]
-> Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
 
 In diesem Artikel verwenden wir wieder die Entwicklungs-VM als simuliertes Gerät. Anstatt Daten direkt an IoT Hub zu senden, sendet das Gerät aber Daten an das IoT Edge-Gerät, das als transparentes Gateway konfiguriert ist.
 
 Wir überwachen den Vorgang auf dem IoT Edge-Gerät, während das simulierte Gerät Daten sendet. Nachdem die Ausführung des Geräts abgeschlossen ist, sehen wir uns die Daten in unserem Speicherkonto an, um sicherzustellen, dass alles wie erwartet funktioniert hat.
 
 Dieser Schritt wird normalerweise von einem Cloud- oder Geräteentwickler ausgeführt.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
 
 ## <a name="review-device-harness"></a>Überprüfen der Geräteumgebung
 

@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 42ec826ab95363c2599be541fe451473be5ca08d
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: f65fb37a4cc6640bc998af1c56e7852cccaba234
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441952"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94955515"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -33,7 +33,7 @@ Führen Sie diese Schritte aus, um auf die Funktion **Zuordnungen** für die Ben
 1. Wählen Sie im linken Bereich die Option **Unternehmensanwendungen** aus. Eine Liste mit allen konfigurierten Apps wird angezeigt, einschließlich Apps, die aus dem Katalog hinzugefügt wurden.
 1. Wählen Sie eine beliebige App aus, um den App-Verwaltungsbereich zu laden, in dem Sie Berichte anzeigen und App-Einstellungen verwalten können.
 1. Wählen Sie **Bereitstellung** aus, um die Einstellungen für die Bereitstellung von Benutzerkonten für die ausgewählte App zu verwalten.
-1. Erweitern Sie **Zuordnungen** , um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
+1. Erweitern Sie **Zuordnungen**, um die Benutzerattribute anzuzeigen und zu bearbeiten, die zwischen Azure AD und Zielanwendung übertragen werden. Wenn die Zielanwendung dies unterstützt, können Sie in diesem Abschnitt auch optional die Bereitstellung von Gruppen und Benutzerkonten konfigurieren.
 
    ![Verwenden von Zuordnungen zum Anzeigen und Bearbeiten von Benutzerattributen](./media/customize-application-attributes/21.png)
 
@@ -53,7 +53,7 @@ Mit Attributzuordnungen steuern Sie, wie die Attribute in einer SaaS-Anwendung e
 Vier verschiedene Zuordnungstypen werden unterstützt:
 
 - **Direkt** : Das Zielattribut wird mit dem Wert eines Attributs des verknüpften Objekts in Azure AD aufgefüllt.
-- **Konstante** : Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
+- **Konstante**: Das Zielattribut wird mit einer bestimmten Zeichenfolge aufgefüllt, die Sie angegeben haben.
 - **Ausdruck** : Das Zielattribut wird abhängig vom Ergebnis eines skriptähnlichen Ausdrucks mit Daten aufgefüllt.
   Weitere Informationen finden Sie unter [Schreiben von Ausdrücken für Attributzuordnungen in Azure Active Directory](../app-provisioning/functions-for-customizing-application-data.md).
 - **Kein** : Das Zielattribut bleibt unverändert. Wenn das Zielattribut allerdings leer ist, wird es mit dem von Ihnen angegebenen Standardwert aufgefüllt.
@@ -66,13 +66,13 @@ Im vorherigen Abschnitt haben Sie bereits die Attributzuordnungstyp-Eigenschaft 
 Zusätzlich zu dieser Eigenschaft unterstützen Attributzuordnungen auch die folgenden Attribute:
 
 - **Quellattribut:** Das Benutzerattribut aus dem Quellsystem (Beispiel: Azure Active Directory).
-- **Zielattribut** : Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
+- **Zielattribut**: Das Benutzerattribut im Zielsystem (Beispiel: ServiceNow).
 - **Standardwert bei Null (optional)** : Der Wert, der an das Zielsystem übermittelt wird, wenn das Quellattribut den Wert NULL hat. Dieser Wert wird nur beim Erstellen eines Benutzers bereitgestellt. Beim Aktualisieren eines vorhandenen Benutzers wird „Standardwert bei Null“ nicht bereitgestellt. Wenn Sie z. B. alle vorhandenen Benutzer im Zielsystem mit einer bestimmten Position (die im Quellsystem den Wert NULL hat) bereitstellen möchten, können Sie den folgenden [Ausdruck](../app-provisioning/functions-for-customizing-application-data.md)verwenden: Switch(IsPresent([jobTitle]), "DefaultValue", "True", [jobTitle]). Stellen Sie sicher, dass Sie „Default Value“ durch den Wert ersetzen, den Sie beim Wert NULL im Quellsystem bereitstellen möchten. 
-- **Objekte mit diesem Attribut abgleichen** : Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
-- **Rangfolge für Abgleich** : Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet. Obwohl Sie beliebig viele übereinstimmende Attribute festlegen können, sollten Sie berücksichtigen, ob die Attribute, die Sie als übereinstimmende Attribute verwenden, tatsächlich eindeutig sind und übereinstimmen müssen. Im Allgemeinen verfügen Kunden in Ihrer Konfiguration über 1 oder 2 übereinstimmende Attribute. 
+- **Objekte mit diesem Attribut abgleichen**: Gibt an, ob diese Zuordnung zum eindeutigen Bestimmen von Benutzern zwischen Quell- und Zielsystem verwendet werden soll. Diese Einstellung wird in der Regel auf das „userPrincipalName“- oder „mail“-Attribut in Azure AD festgelegt, das üblicherweise einem Benutzernamenfeld in einer Zielanwendung zugeordnet ist.
+- **Rangfolge für Abgleich**: Es können mehrere Attribute für den Abgleich festgelegt werden. Falls mehrere vorhanden sind, werden sie entsprechend der in diesem Feld festgelegten Reihenfolge ausgewertet. Sobald eine Übereinstimmung gefunden wird, werden keine weiteren Attribute für den Abgleich mehr ausgewertet. Obwohl Sie beliebig viele übereinstimmende Attribute festlegen können, sollten Sie berücksichtigen, ob die Attribute, die Sie als übereinstimmende Attribute verwenden, tatsächlich eindeutig sind und übereinstimmen müssen. Im Allgemeinen verfügen Kunden in Ihrer Konfiguration über 1 oder 2 übereinstimmende Attribute. 
 - **Diese Zuordnung anwenden**
-  - **Immer** : Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
-  - **Nur während der Erstellung** : Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
+  - **Immer**: Wenden Sie diese Zuordnung sowohl bei der Aktion zum Erstellen eines Benutzers als auch bei der zum Aktualisieren eines Benutzers an.
+  - **Nur während der Erstellung**: Wenden Sie diese Zuordnung nur bei der Aktion zum Erstellen eines Benutzers an.
 
 ## <a name="matching-users-in-the-source-and-target--systems"></a>Abgleichen von Benutzern im Quell- und Zielsystem
 Der Azure AD-Bereitstellungsdienst kann sowohl in „Greenfield“-Szenarien (Benutzer sind im Zielsystem nicht vorhanden) als auch in „Brownfield“-Szenarien (Benutzer sind im Zielsystem bereits vorhanden) bereitgestellt werden. Zur Unterstützung beider Szenarien verwendet der Bereitstellungsdienst das Konzept des Attributabgleichs. Anhand eines oder mehrerer übereinstimmender Attribute können Sie bestimmen, wie ein Benutzer im Quellsystem eindeutig identifiziert und mit dem Benutzer im Zielsystem abgeglichen wird. Identifizieren Sie im Rahmen der Planung Ihrer Bereitstellung das Attribut, das zur eindeutigen Identifizierung eines Benutzers im Quell-und Zielsystem verwendet werden kann. Hinweise:
@@ -119,8 +119,8 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 
-- **Name** : Der im Schema des Zielobjekts definierte Systemname des Attributs.
-- **Typ** : Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Möglich ist einer der folgenden Typen:
+- **Name**: Der im Schema des Zielobjekts definierte Systemname des Attributs.
+- **Typ**: Der im Schema des Zielobjekts definierte Datentyp, den das Attribut speichert. Möglich ist einer der folgenden Typen:
   - *Binary* – Das Attribut enthält Binärdaten.
   - *Boolean* – Das Attribut enthält einen Wert „True“ oder „False“.
   - *DateTime* – Das Attribut enthält eine Datumszeichenfolge.
@@ -131,12 +131,12 @@ Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaf
 - **Erforderlich?** Gibt an, ob das Attribut in der Zielanwendung oder im Zielsystem aufgefüllt werden muss.
 - **Mehrwertig?** : Gibt an, ob das Attribut mehrere Werte unterstützt.
 - **Exact case?** (Groß-/Kleinschreibung beachten?): Gibt an, ob die Attributwerte unter Berücksichtigung der Groß-/Kleinschreibung ausgewertet werden.
-- **API-Ausdruck** : Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
+- **API-Ausdruck**: Verwenden Sie diese Eigenschaft nur, wenn Sie in der Dokumentation für einen bestimmten Bereitstellungsconnector (z. B. Workday) dazu aufgefordert werden.
 - **Referenced Object Attribute** (Referenziertes Objektattribut): Im Fall eines Attributs vom Typ „Reference“ können Sie in diesem Menü die Tabelle und das Attribut in der Zielanwendung auswählen, die den zugehörigen Wert für das Attribut enthält. Bei einem Attribut mit dem Namen „Abteilung“, dessen gespeicherter Wert auf ein Objekt in einer separaten Tabelle „Abteilungen“ verweist, würden Sie beispielsweise „Abteilungen.Name“ auswählen. Die unterstützten Verweistabellen und Felder für die primäre ID für eine bestimmte Anwendung sind vorkonfiguriert und können derzeit nicht im Azure-Portal, aber mit der [Microsoft Graph-API](/graph/api/resources/synchronization-configure-with-custom-target-attributes) bearbeitet werden.
 
 #### <a name="provisioning-a-custom-extension-attribute-to-a-scim-compliant-application"></a>Bereitstellen eines benutzerdefinierten Erweiterungsattributs für eine SCIM-konforme Anwendung
 Die SCIM-RFC definiert ein zentrales Benutzer- und Gruppenschema, erlaubt aber gleichzeitig die Erweiterung des Schemas, um spezifische Anwendungsanforderungen zu erfüllen. So fügen Sie einer SCIM-Anwendung ein benutzerdefiniertes Attribut hinzu
-   1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an, wählen Sie **Unternehmensanwendungen** , anschließend Ihre Anwendung und dann **Bereitstellung** aus.
+   1. Melden Sie sich beim [Azure Active Directory-Portal](https://aad.portal.azure.com) an, wählen Sie **Unternehmensanwendungen**, anschließend Ihre Anwendung und dann **Bereitstellung** aus.
    2. Wählen Sie unter **Zuordnungen** das Objekt (Benutzer oder Gruppe) aus, für das Sie ein benutzerdefiniertes Attribut hinzufügen möchten.
    3. Wählen Sie am unteren Rand der Seite die Option **Erweiterte Optionen anzeigen** aus.
    4. Wählen Sie **Attributliste für Anwendungsname bearbeiten** aus.
@@ -202,7 +202,7 @@ Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen
   - **Zu beachtende Aspekte**
     - Stellen Sie sicher, dass einem Benutzer nicht mehrere Rollen zugeordnet sind. Wir können nicht garantieren, welche Rolle bereitgestellt wird.
     
-  - **Beispielausgabe** 
+  - **Beispielanforderung (POST)** 
 
    ```json
     {
@@ -226,6 +226,21 @@ Führen Sie die folgenden Schritte aus, um für Ihre Anwendung Rollen für einen
    }
    ```
   
+  - **Beispielausgabe (PATCH)** 
+    
+   ```
+   "Operations": [
+   {
+   "op": "Add",
+   "path": "roles",
+   "value": [
+   {
+   "value": "{\"id\":\"06b07648-ecfe-589f-9d2f-6325724a46ee\",\"value\":\"25\",\"displayName\":\"Role1234\"}"
+   }
+   ]
+   ```  
+Die PATCH- und die POST-Anforderung haben ein unterschiedliches Anforderungsformat. Um sicherzustellen, dass die PATCH- und die POST-Anforderung im selben Format gesendet werden, können Sie das Featureflag verwenden, das [hier](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility#flags-to-alter-the-scim-behavior) beschrieben ist. 
+
 - **AppRoleAssignmentsComplex** 
   - **Einsatzgebiete:** Verwenden Sie den Ausdruck „AppRoleAssignmentsComplex“, um mehrere Rollen für einen Benutzer bereitzustellen. 
   - **Vorgehensweise zur Konfiguration:** Bearbeiten Sie die Liste der unterstützten Attribute, wie oben beschrieben, um ein neues Attribut für Rollen einzubeziehen: 

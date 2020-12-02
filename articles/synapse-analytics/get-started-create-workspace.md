@@ -9,13 +9,13 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
-ms.date: 10/07/2020
-ms.openlocfilehash: 862d2a93058c63dbfad1db49346edcbfe3c02ad1
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 11/21/2020
+ms.openlocfilehash: 42b586062378c59b66ca945880bf723418264071
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592446"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95241929"
 ---
 # <a name="creating-a-synapse-workspace"></a>Erstellen eines Synapse-Arbeitsbereichs
 
@@ -65,9 +65,9 @@ Ein dedizierter SQL-Pool nutzt abrechenbare Ressourcen, solange er aktiv ist. Si
 
 Der Spark-Pool informiert Azure Synapse, wie viele Spark-Ressourcen verwendet werden sollen. Sie zahlen nur für die Ressourcen, die Sie verwenden. Wenn Sie die Verwendung des Pools aktiv beenden, erfolgt automatisch ein Timeout für die Ressourcen, und sie werden wiederverwendet.
 
-## <a name="the-serverless-sql-pool"></a>Serverloser SQL-Pool
+## <a name="the-built-in-serverless-sql-pool"></a>Der serverlose SQL-Pool „Built-in“
 
-Jeder Arbeitsbereich verfügt über einen vordefinierten Pool mit dem Namen **Integriert**. Dieser Pool kann nicht gelöscht werden. Der serverlose SQL-Pool ermöglicht es Ihnen, mit SQL zu arbeiten, ohne dass Sie einen serverlosen SQL-Pool in Azure Synapse erstellen oder sich über seine Verwaltung Gedanken machen müssen. Im Gegensatz zu dedizierten SQL-Pools basiert die Abrechnung für einen serverlosen SQL-Pool auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Anzahl von Ressourcen, die zum Ausführen der Abfrage verwendet werden.
+Jeder Arbeitsbereich wird mit einem bereits erstellten serverlosen SQL-Pool namens **Built-in** (Integriert) bereitgestellt. Dieser Pool kann nicht gelöscht werden. Mit serverlosen SQL-Pools können Sie SQL verwenden, ohne dass Sie Kapazität über dedizierte SQL-Pools reservieren müssen. Im Gegensatz zu dedizierten SQL-Pools basiert die Abrechnung für einen serverlosen SQL-Pool auf der Menge der Daten, die zum Ausführen der Abfrage durchsucht werden, und nicht auf der Kapazität, die dem Pool zugeordnet ist.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -8,12 +8,12 @@ ms.service: cognitive-search
 ms.topic: overview
 ms.date: 11/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4c1284c13d1516ac4061319287adb64ab7e14ff5
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 73902cf53d9995f7dfc1991e3b7ed7c7c469bf2a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579469"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026660"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Neuerungen in der kognitiven Azure-Suche
 
@@ -23,7 +23,7 @@ Informieren Sie sich über die Neuerungen im Dienst. Legen Sie ein Lesezeichen f
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |------------------------------|----------|-------------|---------------|
-|[Verschlüsselung mit kundenseitig verwalteten Schlüsseln über Indexer, Datenquellen und Skillsets](search-security-manage-encryption-keys.md) | Sicherheit | Diese Ergänzung erweitert die kundenseitig verwaltete Verschlüsselung für alle Ressourcen, die von einem Suchdienst erstellt und verwaltet werden. Beachten Sie, dass bei der CMK-Unterstützung zusätzlich zu der von Microsoft ausgeführten und verwalteten Basisverschlüsselung eine Verschlüsselungsschicht hinzugefügt wird. | Allgemein verfügbar mit der REST-API-Version 2020-06-30 |  
+|[Verschlüsselung mit kundenseitig verwalteten Schlüsseln über Indexer, Datenquellen und Skillsets](search-security-manage-encryption-keys.md) | Sicherheit | Diese Ergänzung erweitert die kundenseitig verwaltete Verschlüsselung für alle Ressourcen, die von einem Suchdienst erstellt und verwaltet werden. Beachten Sie, dass bei der Unterstützung kundenseitig verwalteter Schlüssel zusätzlich zu der von Microsoft ausgeführten und verwalteten Basisverschlüsselung eine Verschlüsselungsschicht hinzugefügt wird. | Allgemein verfügbar mit der REST-API-Version 2020-06-30 |  
 
 ## <a name="september-2020"></a>September 2020
 
@@ -41,7 +41,7 @@ Erstellen Sie eine Identität für einen Suchdienst in Azure Active Directory, u
 
 |Funktion&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;  | Category | BESCHREIBUNG | Verfügbarkeit  |
 |---------|------------------|-------------|---------------|
-| [Doppelte Verschlüsselung](search-security-overview.md#encryption) | Sicherheit | Aktivieren Sie die doppelte Verschlüsselung auf Speicherebene, indem Sie die CMK-Verschlüsselung (Customer Managed Key, kundenseitig verwalteter Schlüssel) für neue Suchdienste konfigurieren. Erstellen Sie einen neuen Dienst, [konfigurieren sie kundenseitig verwaltete Schlüssel, und wenden Sie sie auf Indizes oder Synonymzuordnungen an](search-security-manage-encryption-keys.md), und profitieren Sie von doppelter Verschlüsselung für diesen Inhalt. | Allgemein verfügbar für alle Suchdienste, die nach dem 1. August 2020 in den folgenden Regionen erstellt wurden: USA, Westen 2; USA, Osten; USA, Süden-Mitte; US Gov Virginia; US Gov Arizona. Verwenden Sie zum Erstellen des Diensts das Portal, die Verwaltungs-REST-APIs oder SDKs. |
+| [Doppelte Verschlüsselung](search-security-overview.md#encryption) | Sicherheit | Aktivieren Sie die doppelte Verschlüsselung auf Speicherebene, indem Sie die Verschlüsseln kundenseitig verwalteter Schlüssel für neue Suchdienste konfigurieren. Erstellen Sie einen neuen Dienst, [konfigurieren sie kundenseitig verwaltete Schlüssel, und wenden Sie sie auf Indizes oder Synonymzuordnungen an](search-security-manage-encryption-keys.md), und profitieren Sie von doppelter Verschlüsselung für diesen Inhalt. | Allgemein verfügbar für alle Suchdienste, die nach dem 1. August 2020 in den folgenden Regionen erstellt wurden: USA, Westen 2; USA, Osten; USA, Süden-Mitte; US Gov Virginia; US Gov Arizona. Verwenden Sie zum Erstellen des Diensts das Portal, die Verwaltungs-REST-APIs oder SDKs. |
 
 ## <a name="july-2020"></a>Juli 2020
 

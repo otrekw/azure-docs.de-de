@@ -10,12 +10,12 @@ ms.author: vanto
 ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
-ms.openlocfilehash: b9afb35a0e8a1c2513ce032030271599d181cd14
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 77ed71d74e75abfdf7f84aee9b116f1d9d2ccc9d
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792683"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985857"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Tutorial: Schützen einer Datenbank in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -78,7 +78,7 @@ So richten Sie eine Firewallregel auf Serverebene ein:
     ![Serverfirewallregel](./media/secure-database-tutorial/server-name.png)
 
     > [!NOTE]
-    > Kopieren Sie Ihren vollqualifizierten Servernamen (Beispiel: *<Ihr Server>.database.windows.net* ). Er wird im weiteren Verlauf dieses Tutorials benötigt.
+    > Kopieren Sie Ihren vollqualifizierten Servernamen (Beispiel: *<Ihr Server>.database.windows.net*). Er wird im weiteren Verlauf dieses Tutorials benötigt.
 
 1. Wählen Sie auf der Seite **Übersicht** die Option **Serverfirewall festlegen** aus. Die Seite **Firewalleinstellungen** für den Server wird geöffnet.
 
@@ -86,7 +86,7 @@ So richten Sie eine Firewallregel auf Serverebene ein:
 
       ![Festlegen der Serverfirewallregel](./media/secure-database-tutorial/server-firewall-rule2.png)
 
-   1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen** .
+   1. Wählen Sie **OK** aus, und schließen Sie die Seite **Firewalleinstellungen**.
 
 Sie können nun eine Verbindung zu einer beliebigen Datenbank auf dem Server mit der angegebenen IP-Adresse oder dem angegebenen IP-Adressbereich herstellen.
 
@@ -131,7 +131,7 @@ So legen Sie den Azure AD-Administrator fest:
     ![Auswählen des Administrators](./media/secure-database-tutorial/admin-select.png)
 
     > [!IMPORTANT]
-    > Die rollenbasierte Zugriffssteuerung (Role-Based Access Control, RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
+    > Rollenbasierte Zugriffssteuerung in Azure (Azure Role-Based Access Control, Azure RBAC) gilt nur für das Portal und wird nicht an SQL Server weitergegeben.
 
 1. Wählen Sie oben auf der Seite **Active Directory-Administrator** die Option **Speichern** aus.
 
@@ -187,7 +187,7 @@ So fügen Sie einen Benutzer mit SQL-Authentifizierung hinzu:
 
 ### <a name="azure-ad-authentication"></a>Azure AD-Authentifizierung
 
-Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank* . Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
+Für die Azure Active Directory-Authentifizierung müssen Datenbankbenutzer als Benutzer für eigenständige Datenbanken erstellt werden. Benutzer für eigenständige Datenbanken sind einer Identität im Azure AD-Verzeichnis zugeordnet, die wiederum mit der Datenbank verknüpft ist, und verfügen über keine Anmeldung in der *Masterdatenbank*. Die Azure AD-Identität kann entweder für einen einzelnen Benutzer oder für eine Gruppe verwendet werden. Weitere Informationen finden Sie unter [Eigenständige Datenbankbenutzer - machen Sie Ihre Datenbank portabel](/sql/relational-databases/security/contained-database-users-making-your-database-portable). Im Tutorial [Konfigurieren und Verwalten der Azure Active Directory-Authentifizierung mit SQL](authentication-aad-configure.md) finden Sie außerdem Informationen zur Authentifizierung mithilfe von Azure AD.
 
 > [!NOTE]
 > Datenbankbenutzer (mit Ausnahme von Administratoren) können nicht über das Azure-Portal erstellt werden. Azure-Rollen werden nicht an SQL-basierte Server, Datenbanken oder Data Warehouses weitergegeben. Sie dienen lediglich zur Verwaltung von Azure-Ressourcen und gelten nicht für Datenbankberechtigungen.
@@ -248,9 +248,9 @@ So aktivieren Sie Azure Defender für SQL
 
 1. Wählen Sie auf der Seite **Übersicht** den Link **Servername** aus. Die Serverseite wird geöffnet.
 
-1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit** , und wählen Sie **Security Center** aus.
+1. Navigieren Sie auf der Seite **SQL Server** zum Abschnitt **Sicherheit**, und wählen Sie **Security Center** aus.
 
-   1. Wählen Sie **EIN** unter **Azure Defender für SQL** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern** .
+   1. Wählen Sie **EIN** unter **Azure Defender für SQL** aus, um das Feature zu aktivieren. Wählen Sie ein Speicherkonto zum Speichern der Ergebnisse der Sicherheitsrisikobewertung aus. Klicken Sie dann auf **Speichern**.
 
       ![Navigationsbereich](./media/secure-database-tutorial/threat-settings.png)
 
