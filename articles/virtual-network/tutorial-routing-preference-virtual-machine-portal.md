@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
-ms.openlocfilehash: b2f3635c8280bdd95e8ad1259fe4ae35f8b531a4
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: dd9c1c23bddf78eb1bdb8fc07f2cb6f8a7faa859
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042822"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491212"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-the-azure-portal"></a>Konfigurieren der Routingpräferenz für einen virtuellen Computer mithilfe des Azure-Portals
 
@@ -29,12 +29,6 @@ In diesem Artikel wird gezeigt, wie Sie einen virtuellen Computer mit einer öff
 > „Routingpräferenz“ ist zurzeit als öffentliche Vorschauversion verfügbar.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-## <a name="register-the-feature-for-your-subscription"></a>Registrieren des Features für Ihr Abonnement
-Das Feature für die Routingpräferenz befindet sich derzeit in der Vorschauphase. Sie müssen das Feature mithilfe von Azure PowerShell wie folgt für Ihr Abonnement registrieren:
-```azurepowershell
-Register-AzProviderFeature -FeatureName AllowRoutingPreferenceFeature ProviderNamespace Microsoft.Network
-```
-
 ## <a name="sign-in-to-azure"></a>Anmelden bei Azure
 
 Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
@@ -43,7 +37,7 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 
 1. Klicken Sie im Azure-Portal links oben auf **+ Ressource erstellen**.
 2. Wählen Sie **Compute** und dann **Windows Server 2016-VM** oder ein anderes Betriebssystem Ihrer Wahl aus.
-3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK** :
+3. Geben Sie die folgenden Informationen ein, oder wählen Sie sie aus, übernehmen Sie die Standardwerte für die übrigen Einstellungen, und klicken Sie auf **OK**:
 
     |Einstellung|Wert|
     |---|---|
@@ -56,7 +50,7 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 
 4. Wählen Sie eine Größe für den virtuellen Computer aus, und klicken Sie dann auf **Auswählen**.
 5. Klicken Sie unter der Registerkarte **Netzwerk** auf **Neu erstellen** für **Öffentliche IP-Adresse**.
-6. Geben Sie *myPublicIpAddress* ein, wählen Sie „sku“ als **Standard** und dann die Routingpräferenz vom Typ **Internet** aus, und drücken Sie dann **OK** , wie in der folgenden Abbildung gezeigt:
+6. Geben Sie *myPublicIpAddress* ein, wählen Sie „sku“ als **Standard** und dann die Routingpräferenz vom Typ **Internet** aus, und drücken Sie dann **OK**, wie in der folgenden Abbildung gezeigt:
 
    ![Auswählen der Option „Statisch“](./media/tutorial-routing-preference-virtual-machine-portal/routing-preference-internet-new.png)
 
@@ -71,7 +65,7 @@ Melden Sie sich beim [Azure-Portal](https://preview.portal.azure.com/) an.
 
     ![Screenshot der öffentlichen IP-Adresse der NIC für die Netzwerkschnittstelle mynic.](./media/tutorial-routing-preference-virtual-machine-portal/pip-properties-new.png)
 
-11. Wählen Sie **Netzwerk** aus, klicken Sie dann auf die NIC **mynic** , und wählen Sie dann die öffentliche IP-Adresse aus, um zu bestätigen, dass die Routingpräferenz vom Typ **Internet** zugewiesen ist.
+11. Wählen Sie **Netzwerk** aus, klicken Sie dann auf die NIC **mynic**, und wählen Sie dann die öffentliche IP-Adresse aus, um zu bestätigen, dass die Routingpräferenz vom Typ **Internet** zugewiesen ist.
 
     ![Screenshot der öffentlichen IP-Adresse und Routingeinstellung für eine öffentliche IP-Adresse.](./media/tutorial-routing-preference-virtual-machine-portal/pip-routing-internet-new.png)
 

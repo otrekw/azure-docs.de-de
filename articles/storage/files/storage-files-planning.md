@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: e60ba773c5ef750f027c2e0b1528409c71eeb4b8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96011701"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492113"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -99,13 +99,13 @@ Es wird empfohlen, das vorläufige Löschen für die meisten Dateifreigaben zu a
 Weitere Informationen zum vorläufigen Löschen finden Sie unter [Verhindern eines versehentlichen Löschens von Azure-Dateifreigaben](./storage-files-prevent-file-share-deletion.md).
 
 ### <a name="backup"></a>Backup
-Sie können Ihre Azure-Dateifreigabe mithilfe von [Freigabemomentaufnahmen](./storage-snapshots-files.md) sichern, die schreibgeschützte Zeitpunktwiederherstellungskopien Ihrer Freigaben sind. Momentaufnahmen sind inkrementell, d. h., sie enthalten nur so viele Daten, wie seit der vorherigen Momentaufnahme geändert wurden. Sie können bis zu 200 Momentaufnahmen pro Dateifreigabe machen und diese bis zu zehn Jahre lang aufbewahren. Sie können die Momentaufnahmen entweder manuell im Azure-Portal, über PowerShell oder die Befehlszeilenschnittstelle (CLI) machen oder [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) verwenden. Momentaufnahmen werden in der Dateifreigabe gespeichert. Wenn Sie die Dateifreigabe also löschen, werden die Momentaufnahmen ebenfalls gelöscht. Stellen Sie sicher, dass das vorläufige Löschen für Ihre Dateifreigabe aktiviert ist, um Ihre Momentaufnahmensicherungen vor dem unbeabsichtigten Löschen zu schützen.
+Sie können Ihre Azure-Dateifreigabe mithilfe von [Freigabemomentaufnahmen](./storage-snapshots-files.md) sichern, die schreibgeschützte Zeitpunktwiederherstellungskopien Ihrer Freigaben sind. Momentaufnahmen sind inkrementell, d. h., sie enthalten nur so viele Daten, wie seit der vorherigen Momentaufnahme geändert wurden. Sie können bis zu 200 Momentaufnahmen pro Dateifreigabe machen und diese bis zu zehn Jahre lang aufbewahren. Sie können die Momentaufnahmen entweder manuell im Azure-Portal, über PowerShell oder die Befehlszeilenschnittstelle (CLI) machen oder [Azure Backup](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) verwenden. Momentaufnahmen werden in der Dateifreigabe gespeichert. Wenn Sie die Dateifreigabe also löschen, werden die Momentaufnahmen ebenfalls gelöscht. Stellen Sie sicher, dass das vorläufige Löschen für Ihre Dateifreigabe aktiviert ist, um Ihre Momentaufnahmensicherungen vor dem unbeabsichtigten Löschen zu schützen.
 
-Im Artikel [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) finden Sie Informationen zum Planen und Aufbewahren von Momentaufnahmen. Durch die Generationenprinzipfunktionen (grandfather-father-son, GFS) können Sie täglich, wöchentlich, monatlich oder jährlich Momentaufnahmen machen, die jeweils einen eigenen Aufbewahrungszeitraum haben. Azure Backup orchestriert außerdem die Aktivierung des vorläufigen Löschens und übernimmt eine Löschsperre für ein Speicherkonto, sobald eine beliebige Dateifreigabe für die Sicherung konfiguriert ist. Schließlich stellt Azure Backup bestimmte wichtige Überwachungs- und Warnungsfunktionen bereit, durch die Kunden eine konsolidierte Ansicht ihres Sicherungsbestands haben.
+Im Artikel [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) finden Sie Informationen zum Planen und Aufbewahren von Momentaufnahmen. Durch die Generationenprinzipfunktionen (grandfather-father-son, GFS) können Sie täglich, wöchentlich, monatlich oder jährlich Momentaufnahmen machen, die jeweils einen eigenen Aufbewahrungszeitraum haben. Azure Backup orchestriert außerdem die Aktivierung des vorläufigen Löschens und übernimmt eine Löschsperre für ein Speicherkonto, sobald eine beliebige Dateifreigabe für die Sicherung konfiguriert ist. Schließlich stellt Azure Backup bestimmte wichtige Überwachungs- und Warnungsfunktionen bereit, durch die Kunden eine konsolidierte Ansicht ihres Sicherungsbestands haben.
 
 Mithilfe von Azure Backup können Sie im Azure-Portal Wiederherstellungen sowohl auf Element- als auch auf Freigabeebene durchführen. Sie müssen lediglich den Wiederherstellungspunkt (eine bestimmte Momentaufnahme), die bestimmte Datei oder das bestimmte Verzeichnis und dann den Speicherort (ursprünglich oder alternativ) auswählen, in dem die Ressourcen wiederhergestellt werden sollen. Der Sicherungsdienst übernimmt das Kopieren der Momentaufnahmedaten und zeigt den Wiederherstellungsfortschritt im Portal an.
 
-Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Weitere Informationen zur Sicherung finden Sie unter [Informationen zum Sichern von Azure-Dateifreigaben](../../backup/azure-file-share-backup-overview.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ### <a name="advanced-threat-protection-for-azure-files-preview"></a>Advanced Threat Protection für Azure Files (Vorschauversion)
 Advanced Threat Protection (ATP) für Azure Storage bietet eine zusätzliche Ebene der Sicherheitsintelligenz, durch die Warnungen ausgegeben werden, wenn in Ihrem Speicherkonto anomale Aktivitäten wie beispielsweise ungewöhnliche Zugriffsversuche auf das Speicherkonto erkannt werden. ATP führt außerdem eine Analyse in Bezug auf die Malwarehashzuverlässigkeit durch und benachrichtigt Sie über bekannte Schadsoftware. Sie können ATP über das Azure Security Center auf Abonnement- oder Speicherkontoebene konfigurieren. 

@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 05/22/2018
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 53111ccd634c516d0db10c0e2dd41768aba43f41
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: a0415133bf3168c846e1105efe992c2c48c57ff2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629239"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492181"
 ---
 # <a name="how-to-deploy-azure-files"></a>Bereitstellen von Azure Files
 [Azure Files](storage-files-introduction.md) bietet vollständig verwaltete Dateifreigaben in der Cloud, auf die über das Branchenstandardprotokoll SMB zugegriffen werden kann. In diesem Artikel erfahren Sie, wie Sie Azure Files praktisch in Ihrer Organisation bereitstellen.
@@ -22,7 +22,7 @@ Es wird dringend empfohlen, vor dem Ausführen der Schritte in dieser Anleitung 
 ## <a name="prerequisites"></a>Voraussetzungen
 In diesem Artikel wird davon ausgegangen, dass Sie die folgenden Schritte bereits ausgeführt haben:
 
-- Sie haben ein Azure Storage-Konto mit den gewünschten Resilienz- und Verschlüsselungsoptionen in der gewünschten Region erstellt. Eine Schritt-für-Schritt-Anleitung zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+- Sie haben ein Azure Storage-Konto mit den gewünschten Resilienz- und Verschlüsselungsoptionen in der gewünschten Region erstellt. Eine Schritt-für-Schritt-Anleitung zum Erstellen eines Speicherkontos finden Sie unter [Erstellen eines Speicherkontos](../common/storage-account-create.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 - Sie haben eine Azure-Dateifreigabe mit Ihrem gewünschten Kontingent in Ihrem Speicherkonto erstellt. Eine Schritt-für-Schritt-Anleitung zum Erstellen einer Dateifreigabe finden Sie unter [Erstellen einer Dateifreigabe](storage-how-to-create-file-share.md).
 
 ## <a name="transfer-data-into-azure-files"></a>Übertragen von Daten in Azure Files
@@ -63,7 +63,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
     "F:\shares\scratch\","MyAzureFileShare/",file,rename,"None",None
     ```
 
-    Es können mehrere Freigaben für ein Speicherkonto angegeben werden. Weitere Informationen finden Sie unter [Vorbereiten der Dataset-CSV-Datei](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+    Es können mehrere Freigaben für ein Speicherkonto angegeben werden. Weitere Informationen finden Sie unter [Vorbereiten der Dataset-CSV-Datei](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 5. Erstellen Sie die Driveset-CSV-Datei. In der Driveset-CSV-Datei sind die Datenträger aufgeführt, die für den lokalen Export-Agent verfügbar sind. In der folgenden Driveset-CSV-Datei sind z.B. die Laufwerke `X:`, `Y:` und `Z:` aufgeführt, die für den lokalen Exportauftrag verwendet werden sollen:
 
@@ -74,7 +74,7 @@ Mithilfe der folgenden Schritte importieren Sie Daten von einem lokalen Speicher
     Z,Format,SilentMode,Encrypt,
     ```
     
-    Weitere Informationen finden Sie unter [Vorbereiten der Driveset-CSV-Datei](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+    Weitere Informationen finden Sie unter [Vorbereiten der Driveset-CSV-Datei](/previous-versions/azure/storage/common/storage-import-export-tool-preparing-hard-drives-import?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 6. Kopieren Sie Ihre Daten mithilfe des [WAImportExport-Tools](https://www.microsoft.com/download/details.aspx?id=55280) auf eine oder mehrere Festplatten.
 
@@ -120,7 +120,7 @@ AzCopy ist ein Befehlszeilenprogramm, das zum Kopieren von Daten in und aus Azur
     azcopy --source <path-to-local-share> --destination https://<storage-account>.file.core.windows.net/<file-share>/ --dest-key <storage-account-key> --recursive
     ```
 
-    AzCopy verfügt über eine Vielzahl von Optionen, mit denen Sie das Kopierverhalten nach Bedarf ändern können. Weitere Informationen finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+    AzCopy verfügt über eine Vielzahl von Optionen, mit denen Sie das Kopierverhalten nach Bedarf ändern können. Weitere Informationen finden Sie unter [Erste Schritte mit AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 ## <a name="automatically-mount-on-needed-pcsservers"></a>Automatische Bereitstellung auf den benötigten PCs/Servern
 Um eine lokale Dateifreigabe zu ersetzen, sollten Sie die Freigaben auf den Computern vorab bereitzustellen, auf denen sie verwendet werden sollen. Dies kann automatisch für eine Liste von Computern erfolgen.

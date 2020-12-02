@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 095a97d27439c54e2ade96e3a40349a0d95b9c11
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843093"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492232"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Azure-Sicherheitsbaseline für Site Recovery
 
@@ -52,7 +52,7 @@ Fügen Sie eine der integrierten Azure Policy-Definitionen für das Tagging, z.�
 
 Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden, um Ressourcen basierend auf ihren Tags zu suchen oder Aktionen für diese Ressourcen auszuführen. 
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags) 
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md) 
 
 - [Erstellen eines virtuellen Azure-Netzwerks](../virtual-network/quick-create-portal.md) 
 
@@ -164,9 +164,9 @@ Visualisieren Sie Protokollergebnisse, fragen Sie diese ab, und konfigurieren Si
 
 **Leitfaden**: Standardmäßig werden keine Rollen zugewiesen. Sie müssen explizit nach geschäftlichen Bedarf zugewiesen werden. Alle Rollenzuweisungen können mit der PowerShell-Befehlszeilenschnittstelle oder mit Azure Active Directory (Azure AD) überprüft werden, um Konten zu ermitteln, die Mitglieder von administrativen Gruppen sind.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -270,7 +270,7 @@ Verwalten Sie Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen u
 
 Erstellen Sie einen Prozess zur regulären Überprüfung des Benutzerzugriffs, um sicherzustellen, dass nur Benutzer mit abgeschlossenen Zugriffsüberprüfungen über langfristigen Zugriff verfügen. 
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring/)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -286,7 +286,7 @@ Sie verfügen über Zugriff auf die Azure AD-Anmeldeaktivitäten, die Überwachu
 
 Optimieren Sie diesen Prozess weiter, indem Sie Diagnoseeinstellungen für Azure AD-Benutzerkonten erstellen und die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich senden. Sie können gewünschte Warnungen in einem Log Analytics-Arbeitsbereich konfigurieren.
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -431,7 +431,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -505,7 +505,7 @@ Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel m
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples)
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -530,7 +530,7 @@ Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel m
 **Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für Ihren Recovery Services-Tresor mit Azure Policy. 
 
 Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.RecoveryServices“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration der Recovery Services-Tresorressourcen des Site Recovery-Diensts zu erstellen.
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.RecoveryServices“,
 
 **Leitfaden**: Nutzen Sie Azure Repos, um Ihren Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure Policy-Definitionen für Ihre Recovery Services-Tresore und verwandte Ressourcen verwenden.
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -608,7 +608,7 @@ Verwenden Sie verwaltete Identitäten, um Azure-Dienste mit einer automatisch ve
 
 Mithilfe verwalteter Identitäten können Sie die Authentifizierung bei jedem Dienst durchführen, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein.
 
-- [Integrieren mit verwalteten Azure-Identitäten](https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity?tabs=core2x)
+- [Integrieren mit verwalteten Azure-Identitäten](../azure-app-configuration/howto-integrate-azure-managed-service-identity.md?tabs=core2x)
 
 - [Aktivieren der vom System verwalteten Identität für Recovery Services-Tresore](azure-to-azure-how-to-enable-replication-private-endpoints.md#enable-the-managed-identity-for-the-vault)
 
@@ -638,7 +638,7 @@ Mithilfe der Bedrohungserkennung für Datendienste in Security Center können Si
 
 - [Grundlegendes zu Microsoft Antimalware für Azure Cloud Services und Virtual Machines](../security/fundamentals/antimalware.md)
 
-- [Grundlegendes zur Bedrohungserkennung für Datendienste in Azure Security Center](/azure/security-center/threat-protection)
+- [Grundlegendes zur Bedrohungserkennung für Datendienste in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -656,7 +656,7 @@ Alle Speicherressourcen werden von den Metadaten von Site Recovery-Diensten mit 
 
 Hierfür ist das Site Recovery-Team zuständig. Kunden können Key Vault-Schlüssel in Azure sichern.
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -666,7 +666,7 @@ Hierfür ist das Site Recovery-Team zuständig. Kunden können Key Vault-Schlüs
 
 **Leitfaden**: Testen Sie Wiederherstellungen von gesicherten kundenseitig verwalteten Schlüsseln regelmäßig.
 
-- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-4.8.0&amp;preserve-view=true)
+- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -676,7 +676,7 @@ Hierfür ist das Site Recovery-Team zuständig. Kunden können Key Vault-Schlüs
 
 **Leitfaden**: Ruhende Daten werden mithilfe der Speicherdienstverschlüsselung mit IaaS-basierten VMs von Azure verschlüsselt. Aktivieren von vorläufigem Löschen in Key Vault, um Schlüssel vor dem versehentlichen oder böswilligen Löschen zu schützen.
 
-- [Vorläufiges Löschen für Azure Storage-Blobs](https://docs.microsoft.com/azure/storage/blobs/soft-delete-blob-overview?tabs=azure-portal)
+- [Vorläufiges Löschen für Azure Storage-Blobs](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -712,7 +712,7 @@ Markieren Sie Abonnements aussagekräftig (z. B. „Produktion“, „Nicht-Pro
 
 - [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md) 
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](/azure/azure-resource-manager/resource-group-using-tags)
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -778,5 +778,5 @@ Verwenden Sie den Security Center-Datenconnector zum Streamen der Warnungen an A
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

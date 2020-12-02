@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: how-to
 ms.date: 10/26/2020
-ms.openlocfilehash: cd2d3363b9c035987280eb27632c470c012b8bbb
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d33734dc7404e49aed94dffae8644b2bc4386925
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92795003"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492827"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mysql-flexible-server-using-the-azure-portal"></a>Erstellen und Verwalten von Lesereplikaten auf flexiblen Azure Database for MySQL-Servern mithilfe des Azure-Portals
 
@@ -51,7 +51,7 @@ Ein Lesereplikatserver kann mit den folgenden Schritten erstellt werden:
 6. Wählen Sie **OK** aus, um die Erstellung des Replikats zu bestätigen.
 
 > [!NOTE]
-> Lesereplikate werden mit der gleichen Serverkonfiguration wie die Quelle erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Der Replikatserver wird immer in derselben Ressourcengruppe, am selben Standort und im selben Abonnement wie der Quellserver erstellt. Wenn Sie einen Replikatserver in einer anderen Ressourcengruppe oder einem anderen Abonnement erstellen möchten, können Sie nach der Erstellung den [Replikatserver verschieben](https://docs.microsoft.com/azure/azure-resource-manager/management/move-resource-group-and-subscription). Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
+> Lesereplikate werden mit der gleichen Serverkonfiguration wie die Quelle erstellt. Die Replikatserverkonfiguration kann nach der Erstellung geändert werden. Der Replikatserver wird immer in derselben Ressourcengruppe, am selben Standort und im selben Abonnement wie der Quellserver erstellt. Wenn Sie einen Replikatserver in einer anderen Ressourcengruppe oder einem anderen Abonnement erstellen möchten, können Sie nach der Erstellung den [Replikatserver verschieben](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Für die Konfiguration des Replikatservers sollten mindestens die gleichen Werte verwendet werden wie für den Quellserver, damit das Replikat über genügend Kapazität verfügt.
 
 Nach der Erstellung des Replikatservers kann dieser auf dem Blatt **Replikation** angezeigt werden.
 
@@ -76,7 +76,7 @@ Führen Sie die folgenden Schritte aus, um die Replikation zwischen einem Quells
 
    [:::image type="content" source="./media/how-to-read-replica-portal/stop-replication.png" alt-text="Azure Database for MySQL: Replikation beenden":::](./media/how-to-read-replica-portal/stop-replication.png#lightbox)
 
-5. Klicken Sie auf **OK** , um zu bestätigen, dass Sie die Replikation beenden möchten.
+5. Klicken Sie auf **OK**, um zu bestätigen, dass Sie die Replikation beenden möchten.
 
    [:::image type="content" source="./media/how-to-read-replica-portal/stop-replication-confirm.png" alt-text="Azure Database for MySQL: Bestätigen, dass die Replikation beendet werden soll":::](./media/how-to-read-replica-portal/stop-replication-confirm.png#lightbox)
 
@@ -96,7 +96,7 @@ Führen Sie die folgenden Schritte aus, um einen Lesereplikatserver im Azure-Por
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica.png" alt-text="Azure Database for MySQL: Replikat löschen":::
 
-5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen** , um das Löschen des Replikats zu bestätigen.  
+5. Geben Sie den Namen des Replikats ein, und klicken Sie auf **Löschen**, um das Löschen des Replikats zu bestätigen.  
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-replica-confirm.png" alt-text="Azure Database for MySQL: Bestätigen der Replikatlöschung":::
 
@@ -113,7 +113,7 @@ Führen Sie die folgenden Schritte aus, um einen Quellserver im Azure-Portal zu 
 
    [:::image type="content" source="./media/how-to-read-replica-portal/delete-master-overview.png" alt-text="Azure Database for MySQL – Quelle löschen":::](./media/how-to-read-replica-portal/delete-master-overview.png#lightbox)
 
-3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen** , um das Löschen des Quellservers zu bestätigen.  
+3. Geben Sie den Namen des Quellservers ein, und klicken Sie auf **Löschen**, um das Löschen des Quellservers zu bestätigen.  
 
    :::image type="content" source="./media/how-to-read-replica-portal/delete-master-confirm.png" alt-text="Azure Database for MySQL – Löschen der Quelle bestätigen":::
 

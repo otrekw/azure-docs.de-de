@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: troubleshooting
 author: jovanpop-msft
 ms.author: jovanpop
-ms.reviewer: jrasnick, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: ce5bf86073b2c478108e264010bb3c213c214368
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6ea17f04538e3444b1baddaa8862add2cfbbaa9c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791748"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493422"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>Erkennbare Typen von Problemen mit Engpässen bei der Abfrageleistung in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -27,8 +27,8 @@ Sie können [Intelligent Insights](database/intelligent-insights-troubleshoot-pe
 
 ![Workload-Status](./media/identify-query-performance-issues/workload-states.png)
 
-**Ausführungsbezogene Probleme** : Ausführungsbezogene Probleme sind im Allgemeinen mit Kompilierungsproblemen verbunden, die zu einem suboptimalen Abfrageplan oder Ausführungsproblemen aufgrund unzureichender oder überbeanspruchter Ressourcen führen.
-**Wartebezogene Probleme** : Wartebezogene Probleme beziehen sich im Allgemeinen auf Folgendes:
+**Ausführungsbezogene Probleme**: Ausführungsbezogene Probleme sind im Allgemeinen mit Kompilierungsproblemen verbunden, die zu einem suboptimalen Abfrageplan oder Ausführungsproblemen aufgrund unzureichender oder überbeanspruchter Ressourcen führen.
+**Wartebezogene Probleme**: Wartebezogene Probleme beziehen sich im Allgemeinen auf Folgendes:
 
 - Sperren (Blockieren)
 - E/A

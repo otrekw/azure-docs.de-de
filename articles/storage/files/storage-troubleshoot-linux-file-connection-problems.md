@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 19fe6be0487772524516172bd32e0562512c4e3c
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: e680ba10c507ef83591b56652ee8e95c4d665dda
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630174"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492062"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux-smb"></a>Behandeln von Azure Files-Problemen unter Linux (SMB)
 
@@ -107,7 +107,7 @@ Verwenden Sie das PowerShell-Cmdlet [Close-AzStorageFileHandle](/powershell/modu
 
 - Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MiB als E/A-Größe.
 - Verwenden Sie die richtige Kopiermethode:
-    - Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
+    - Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
     - Durch die Verwendung von „cp“ oder „dd“ mit „parallel“ lässt sich die Kopiergeschwindigkeit ggf. verbessern. Die Anzahl der Threads richtet sich nach Ihrem Anwendungsfall und der Workload. Die folgenden Beispiele verwenden sechs Befehle: 
     - cp-Beispiel (cp verwendet die Standardblockgröße des Dateisystems als Segmentgröße): `find * -type f | parallel --will-cite -j 6 cp {} /mntpremium/ &`.
     - dd-Beispiel (mit diesem Befehl wird die Blockgröße explizit auf 1 MiB festgelegt): `find * -type f | parallel --will-cite-j 6 dd if={} of=/mnt/share/{} bs=1M`

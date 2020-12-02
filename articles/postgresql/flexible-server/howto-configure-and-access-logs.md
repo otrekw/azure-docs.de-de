@@ -6,12 +6,12 @@ ms.author: lufittl
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 319b7a40a87d29454b22a26088df313ef524dc56
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 3b54fe1ffd49c12db82a038ad449190a0049133f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92545819"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492351"
 ---
 # <a name="configure-and-access-logs-in-azure-database-for-postgresql---flexible-server"></a>Konfiguration und Zugriffsprotokolle für Azure Database for PostgreSQL – Flexible Server
 
@@ -22,11 +22,11 @@ PostgreSQL-Protokolle sind auf allen Knoten eines flexiblen Servers verfügbar. 
 
 ## <a name="configure-diagnostic-settings"></a>Konfigurieren von Diagnoseeinstellungen
 
-Sie können die Diagnoseeinstellungen für Ihren Postgres-Server über Azure-Portal, die CLI, die REST-API und PowerShell aktivieren. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs** .
+Sie können die Diagnoseeinstellungen für Ihren Postgres-Server über Azure-Portal, die CLI, die REST-API und PowerShell aktivieren. Die auszuwählende Protokollkategorie ist **PostgreSQLLogs**.
 
 So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 
-1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen* .
+1. Wechseln Sie im Portal im Navigationsmenü Ihres Postgres-Servers zu *Diagnoseeinstellungen*.
    
 2. Wählen Sie *Diagnoseeinstellung hinzufügen*  aus.
    :::image type="content" source="media/howto-logging/diagnostic-settings.png" alt-text="Schaltfläche „Diagnoseeinstellungen hinzufügen“":::
@@ -36,7 +36,7 @@ So aktivieren Sie Ressourcenprotokolle über das Azure-Portal:
 4. Wählen Sie Ihren bevorzugten Endpunkt aus (Speicherkonto, Event Hub, Log Analytics). 
 
 5. Wählen Sie den Protokolltyp **PostgreSQLLogs** aus.
-   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="Schaltfläche „Diagnoseeinstellungen hinzufügen“":::
+   :::image type="content" source="media/howto-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-Protokolle auswählen":::
 
 7. Speichern Sie die Einstellungen.
 
@@ -71,5 +71,5 @@ In der oben stehenden Abfrage werden die Ergebnisse in den letzten 6 Stunden fü
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/get-started-portal.md)
+- [Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md)
 - Weitere Informationen zu [Azure Event Hubs](../../event-hubs/event-hubs-about.md)
