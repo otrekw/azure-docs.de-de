@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/09/2017
 ms.author: cawa
-ms.openlocfilehash: f9a828b78dc5ba6bdbc77e22daa75be4182015f0
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 84f6473c25a5be11eeda7cd2b311d93a7226a78c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805691"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488390"
 ---
 # <a name="using-storage-explorer-with-azure-file-storage"></a>Verwenden des Storage-Explorers mit Azure File Storage
 
@@ -31,7 +31,7 @@ Damit Sie die in diesem Artikel aufgeführten Schritte ausführen können, benö
 
 - [Herunterladen und Installieren des Storage-Explorers](https://www.storageexplorer.com/)
 
-- [Herstellen der Verbindung mit einem Azure Storage-Konto oder -Dienst](/azure/vs-azure-tools-storage-manage-with-storage-explorer#connect-to-a-storage-account-or-service)
+- [Herstellen der Verbindung mit einem Azure Storage-Konto oder -Dienst](./vs-azure-tools-storage-manage-with-storage-explorer.md#connect-to-a-storage-account-or-service)
 
 ## <a name="create-a-file-share"></a>Erstellen einer Dateifreigabe
 
@@ -47,7 +47,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
     ![Erstellen einer Dateifreigabe](media/vs-azure-tools-storage-explorer-files/image1.png)
 
-1. Unter dem Ordner **Dateifreigaben** wird ein Textfeld angezeigt. Geben Sie den Namen für Ihre Dateifreigabe ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Dateifreigaben finden Sie unter [Erstellen eines Containers](/azure/storage/storage-dotnet-how-to-use-blobs).
+1. Unter dem Ordner **Dateifreigaben** wird ein Textfeld angezeigt. Geben Sie den Namen für Ihre Dateifreigabe ein. Eine Liste mit den Regeln und Einschränkungen für die Benennung von Dateifreigaben finden Sie unter [Erstellen eines Containers](./storage/blobs/storage-quickstart-blobs-dotnet.md).
 
     ![Benennen der Freigabe](media/vs-azure-tools-storage-explorer-files/image2.png)
 
@@ -77,7 +77,7 @@ Die folgenden Schritte veranschaulichen, wie Sie den Inhalt einer Dateifreigabe 
 
 ## <a name="delete-a-file-share"></a>Löschen einer Dateifreigabe
 
-Dateifreigaben können nach Bedarf leicht erstellt und gelöscht werden. (Informationen zum Löschen von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Dateifreigaben können nach Bedarf leicht erstellt und gelöscht werden. (Informationen zum Löschen von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container).)
 
 Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-Explorer löschen:
 
@@ -97,7 +97,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe im Storage-E
 
 ## <a name="copy-a-file-share"></a>Kopieren einer Dateifreigabe
 
-Mit dem Storage-Explorer können Sie eine Dateifreigabe in die Zwischenablage kopieren und die Dateifreigabe dann in ein anderes Speicherkonto einfügen. (Informationen zum Kopieren von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](/azure/vs-azure-tools-storage-explorer-blobs#managing-blobs-in-a-blob-container).)
+Mit dem Storage-Explorer können Sie eine Dateifreigabe in die Zwischenablage kopieren und die Dateifreigabe dann in ein anderes Speicherkonto einfügen. (Informationen zum Kopieren von einzelnen Dateien finden Sie im Abschnitt [Verwalten von Dateien auf einer Dateifreigabe](./vs-azure-tools-storage-explorer-blobs.md#managing-blobs-in-a-blob-container).)
 
 Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe aus einem Speicherkonto in ein anderes kopieren.
 
@@ -117,7 +117,7 @@ Die folgenden Schritte veranschaulichen, wie Sie eine Dateifreigabe aus einem Sp
 
 ## <a name="get-the-sas-for-a-file-share"></a>Abrufen der SAS für eine Dateifreigabe
 
-[Shared Access Signatures (SAS)](/azure/storage/storage-dotnet-shared-access-signature-part-1) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen.
+[Shared Access Signatures (SAS)](./storage/common/storage-sas-overview.md) ermöglichen den delegierten Zugriff auf Ressourcen in Ihrem Speicherkonto. Sie haben die Möglichkeit, einem Client für einen bestimmten Zeitraum spezielle eingeschränkte Berechtigungen für Objekte in Ihrem Speicherkonto zu erteilen, ohne Ihre Konto-Zugriffsschlüssel weitergeben zu müssen.
 
 Die folgenden Schritte veranschaulichen, wie Sie eine SAS für eine Dateifreigabe erstellen:
 

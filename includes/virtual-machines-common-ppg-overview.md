@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/30/2019
 ms.author: zivr
 ms.custom: include file
-ms.openlocfilehash: b5827d60b5968eb9f5e9e0a2ca5ec884366aea3d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e2be62180907e94401548774b3403db0f36caca3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377143"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488465"
 ---
 Wenn Sie VMs in einer einzelnen Region anordnen, verringert sich der physische Abstand zwischen den Instanzen. Wenn Sie sie in einer einzelnen Verfügbarkeitszone anordnen, verringert sich ebenfalls ihr physischer Abstand. Wenn jedoch Ihre Ressourcen in Azure zunehmen, kann eine einzige Verfügbarkeitszone auch mehrere physische Rechenzentren umspannen. Dies kann zu Netzwerklatenzen führen, die sich auf die Anwendung auswirken. 
 
@@ -82,7 +82,7 @@ Wenn eine Näherungsplatzierungsgruppe `Not Aligned` ist, können Sie die betrof
 Wenn es aufgrund von Einschränkungen der Bereitstellung zu Zuordnungsfehlern kommt, müssen Sie möglicherweise alle Ressourcen (einschließlich der ausgerichteten Ressourcen) in der betroffenen Näherungsplatzierungsgruppe beenden bzw. ihre Zuordnung aufheben und sie dann erneut starten, um die Ausrichtung wiederherzustellen.
 
 ## <a name="best-practices"></a>Bewährte Methoden 
-- Verwenden Sie für die niedrigste Latenz Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](https://docs.microsoft.com/azure/virtual-network/create-vm-accelerated-networking-cli?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](/azure/virtual-network/create-vm-accelerated-networking-powershell?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
+- Verwenden Sie für die niedrigste Latenz Näherungsplatzierungsgruppen zusammen mit beschleunigtem Netzwerkbetrieb. Weitere Informationen finden Sie unter [Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb](../articles/virtual-network/create-vm-accelerated-networking-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) oder [Erstellen eines virtuellen Windows-Computers mit beschleunigtem Netzwerkbetrieb](../articles/virtual-network/create-vm-accelerated-networking-powershell.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 - Stellen Sie alle VM-Größen in einer einzelnen Vorlage bereit. Um die Verwendung von Hardware zu vermeiden, die nicht alle erforderlichen VM-SKUs und -Größen unterstützt, schließen Sie alle Logikschichten in eine einzelne Vorlage ein, damit diese alle gleichzeitig bereitgestellt werden.
 - Wenn Sie mit PowerShell, der CLI oder dem SDK ein Bereitstellungsskript erstellen, erhalten Sie möglicherweise den Zuordnungsfehler `OverconstrainedAllocationRequest`. In diesem Fall sollten Sie alle vorhandenen VMs beenden bzw. ihre Zuordnung aufheben und die Sequenz im Bereitstellungsskript so ändern, dass es mit den fehlgeschlagenen VM-SKUs/-Größen beginnt. 
 - Wenn Sie eine vorhandene Platzierungsgruppe wiederverwenden, aus der VMs gelöscht wurden, warten Sie, bis der Löschvorgang vollständig durchgeführt wurde, bevor Sie der Gruppe VMs hinzufügen.

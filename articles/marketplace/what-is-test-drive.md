@@ -7,12 +7,12 @@ ms.topic: article
 author: trkeya
 ms.author: trkeya
 ms.date: 06/19/2020
-ms.openlocfilehash: 304e1ab475213bde2644c8241905408ade5672ed
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 193e7bd78046a1d73cb55171c15c9cb6a7278297
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489963"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490039"
 ---
 # <a name="what-is-a-test-drive"></a>Worum handelt es sich bei einer Testversion?
 
@@ -24,7 +24,7 @@ Ihre Kunden profitieren auch von einer Testversion. Indem Sie ihnen die Möglich
 
 Testversionen sind verwaltete Instanzen, die Ihre Lösung oder Anwendung interessierten Kunden zur Bereitstellung auf Anforderung zur Verfügung stellen. Sobald eine Testversionsinstanz zugewiesen ist, steht sie dem Kunden für einen festgelegten Zeitraum zur Verfügung. Nach Ablauf des Zeitraums wird sie gelöscht, um Platz für einen anderen Kunden zu schaffen.
 
-Als Herausgeber verwalten und konfigurieren Sie die Testversionseinstellungen im Partner Center. Die Einzelheiten der technischen Konfiguration hängen von der Art Ihres Angebots ab. Eine detaillierte Anleitung finden Sie unter [Technische Konfiguration der Testversion](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Als Herausgeber verwalten und konfigurieren Sie die Testversionseinstellungen im Partner Center. Die Einzelheiten der technischen Konfiguration hängen von der Art Ihres Angebots ab. Eine detaillierte Anleitung finden Sie unter [Technische Konfiguration der Testversion](./test-drive-technical-configuration.md).
 
 Potenzielle Kunden entdecken Ihre Testversion als Handlungsaufforderung in Ihrem Angebot in [AppSource](https://appsource.microsoft.com/en-US/). Sie stellen ihre Kontaktinformationen zur Verfügung und erklären sich mit den Bedingungen Ihres Angebots und der Datenschutzrichtlinie einverstanden. Anschließend erhalten sie Zugriff auf Ihre vorkonfigurierte Umgebung, um sie für einen bestimmten Zeitraum auszuprobieren. Kunden erhalten einen praktischen, interaktiven Test der wichtigen Features und Leistungen Ihres Produkts, während Sie einen vielversprechenden Vertriebslead erhalten.
 
@@ -43,7 +43,7 @@ Im kommerziellen Marketplace stehen verschiedene Testversionen für ausgewählte
 - Logik-App (nur im Supportmodus)
 - Power BI
 
-Weitere Informationen zum Konfigurieren einer dieser Testversionen finden Sie unter [Technische Konfiguration der Testversion](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration). 
+Weitere Informationen zum Konfigurieren einer dieser Testversionen finden Sie unter [Technische Konfiguration der Testversion](./test-drive-technical-configuration.md). 
 
 ### <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager-Testversion
 
@@ -65,7 +65,7 @@ Bei einer gehosteten Testversion entfällt die Komplexität der Einrichtung, da 
 
 ### <a name="logic-app-test-drive"></a>Testversion für Logik-Apps
 
-Diese Art von Testversion wird nicht von Microsoft gehostet und verwendet Azure Resource Manager-Vorlagen (ARM) für Dynamics AX/CRM-Angebotstypen. Sie müssen die ARM-Vorlage ausführen, um die erforderlichen Ressourcen in Ihrem Azure-Abonnement zu erstellen. Die Testversion von Logik-Apps ist derzeit nur im Supportmodus verfügbar und wird von Microsoft nicht empfohlen. Einzelheiten zum Konfigurieren einer Testversion von Logik-Apps finden Sie unter [Technische Konfiguration der Testversion](https://docs.microsoft.com/azure/marketplace/test-drive-technical-configuration).
+Diese Art von Testversion wird nicht von Microsoft gehostet und verwendet Azure Resource Manager-Vorlagen (ARM) für Dynamics AX/CRM-Angebotstypen. Sie müssen die ARM-Vorlage ausführen, um die erforderlichen Ressourcen in Ihrem Azure-Abonnement zu erstellen. Die Testversion von Logik-Apps ist derzeit nur im Supportmodus verfügbar und wird von Microsoft nicht empfohlen. Einzelheiten zum Konfigurieren einer Testversion von Logik-Apps finden Sie unter [Technische Konfiguration der Testversion](./test-drive-technical-configuration.md).
 
 ### <a name="power-bi-test-drive"></a>Power BI-Testversion
 

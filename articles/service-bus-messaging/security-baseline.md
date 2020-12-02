@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: a6d4e7f4ca7288b36f6801b9ddb362b7e936862d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9dda02e483f3437237837a9b3b8bdcbcf84fcd1d
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843620"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489597"
 ---
 # <a name="azure-security-baseline-for-service-bus"></a>Azure-Sicherheitsbaseline für Service Bus
 
@@ -60,7 +60,7 @@ Verwenden Sie Azure Security Center, und befolgen Sie die Empfehlungen für den 
 
 **Leitfaden**: Aktivieren Sie in den virtuellen Netzwerken, die Ihren Service Bus-Namespaces zugeordnet sind, DDoS Protection Standard, um sich vor DDoS-Angriffen (Distributed Denial-of-Service) zu schützen. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-- [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
+- [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 - [Integrierte Informationen zu Bedrohungen in Azure Security Center](../security-center/azure-defender.md)
 
@@ -197,7 +197,7 @@ Sie können Azure PowerShell oder die Azure-Befehlszeilenschnittstelle verwenden
 
 **Leitfaden**: Analysieren und überwachen Sie Protokolle auf anormales Verhalten, und prüfen Sie die Ergebnisse regelmäßig, die sich auf Ihre Service Bus-Entitäten beziehen. Verwenden Sie Azure Monitor, um Protokolle zu überprüfen und Abfragen für Protokolldaten zu Service Bus auszuführen.
 
-- [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
+- [Weitere Informationen zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
