@@ -9,12 +9,12 @@ ms.devlang: rest-api
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 07/11/2020
-ms.openlocfilehash: aed1aa03527481014a63c636181725b91b17a1e8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: be7c6ec9dbc577143e6c7219580f42c876f536bc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003887"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499967"
 ---
 # <a name="how-to-index-cosmos-db-data-using-an-indexer-in-azure-cognitive-search"></a>Indizieren von Cosmos DB-Daten mithilfe eines Indexers in der kognitiven Azure-Suche 
 
@@ -24,13 +24,13 @@ ms.locfileid: "96003887"
 > Diese Features werden von den [Vorschauversionen der REST-API](search-api-preview.md) bereitgestellt. Die Portalunterstützung ist momentan eingeschränkt, und das .NET SDK wird nicht unterstützt.
 
 > [!WARNING]
-> Nur Cosmos DB-Sammlungen, deren [Indizierungsrichtlinie](/azure/cosmos-db/index-policy) auf [Konsistent](/azure/cosmos-db/index-policy#indexing-mode) festgelegt ist, werden von Azure Cognitive Search unterstützt. Das Indizieren von Sammlungen mit der Indizierungsrichtlinie „Verzögert“ wird nicht empfohlen, da es zu fehlenden Daten führen kann. Sammlungen mit deaktivierter Indizierung werden nicht unterstützt.
+> Nur Cosmos DB-Sammlungen, deren [Indizierungsrichtlinie](../cosmos-db/index-policy.md) auf [Konsistent](../cosmos-db/index-policy.md#indexing-mode) festgelegt ist, werden von Azure Cognitive Search unterstützt. Das Indizieren von Sammlungen mit der Indizierungsrichtlinie „Verzögert“ wird nicht empfohlen, da es zu fehlenden Daten führen kann. Sammlungen mit deaktivierter Indizierung werden nicht unterstützt.
 
 In diesem Artikel erfahren Sie, wie Sie einen Azure Cosmos DB-[Indexer](search-indexer-overview.md) zum Extrahieren von Inhalten konfigurieren und dafür sorgen, dass er in der kognitiven Azure-Suche durchsucht werden kann. Mit diesem Workflow erstellen Sie einen Index der kognitiven Azure-Suche und laden ihn mit vorhandenem aus Azure Cosmos DB extrahiertem Text. 
 
-Da die Begrifflichkeiten etwas verwirrend sind, soll hier darauf hingewiesen werden, dass die [Indizierung in Azure Cosmos DB](/azure/cosmos-db/index-overview) und die [Indizierung in der kognitiven Azure-Suche](search-what-is-an-index.md) zwei verschiedene Vorgänge sind, die jedem Dienst eigen sind. Wenn Sie mit der Indizierung in der kognitiven Azure-Suche beginnen, muss Ihre Azure Cosmos DB-Datenbank bereits vorhanden sein und Daten enthalten.
+Da die Begrifflichkeiten etwas verwirrend sind, soll hier darauf hingewiesen werden, dass die [Indizierung in Azure Cosmos DB](../cosmos-db/index-overview.md) und die [Indizierung in der kognitiven Azure-Suche](search-what-is-an-index.md) zwei verschiedene Vorgänge sind, die jedem Dienst eigen sind. Wenn Sie mit der Indizierung in der kognitiven Azure-Suche beginnen, muss Ihre Azure Cosmos DB-Datenbank bereits vorhanden sein und Daten enthalten.
 
-Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos DB-Elemente](../cosmos-db/databases-containers-items.md#azure-cosmos-items) durchforsten, auf die über verschiedene Protokolle zugegriffen wird. 
+Mit dem Cosmos DB-Indexer in Azure Cognitive Search können Sie [Azure Cosmos DB-Elemente](../cosmos-db/account-databases-containers-items.md#azure-cosmos-items) durchforsten, auf die über verschiedene Protokolle zugegriffen wird. 
 
 + Für die allgemein verfügbare [SQL-API](../cosmos-db/sql-query-getting-started.md) können Sie das [Portal](#cosmos-indexer-portal), die [REST-API](/rest/api/searchservice/indexer-operations) oder das [.NET SDK](/dotnet/api/azure.search.documents.indexes.models.searchindexer) verwenden, um die Datenquelle und den Indexer zu erstellen.
 
@@ -130,7 +130,7 @@ Sie können die REST-API für die Indizierung von Azure Cosmos DB-Daten in eine
 > [!NOTE]
 > Wenn Sie Daten per Cosmos DB-Gremlin-API oder Cosmos DB-Cassandra-API indizieren möchten, müssen Sie zunächst [dieses Formular](https://aka.ms/azure-cognitive-search/indexer-preview) ausfüllen, um Zugriff auf die geschlossene Vorschau anzufordern. Nachdem Ihre Anforderung bearbeitet wurde, erhalten Sie Anweisungen für die Erstellung der Datenquelle unter Verwendung der [REST-API-Version 2020-06-30-Preview](search-api-preview.md).
 
-Wie bereits weiter oben in diesem Artikel erwähnt, sind [Azure Cosmos DB-Indizierung](/azure/cosmos-db/index-overview) und [Azure Cognitive Search-Indizierung](search-what-is-an-index.md) zwei unterschiedliche Vorgänge. Bei der Cosmos DB-Indizierung werden standardmäßig alle Dokumente automatisch indiziert (außer bei Verwendung der Cassandra-API). Wenn Sie die automatische Indizierung deaktivieren, kann auf die Dokumente nur über ihre Self-Links oder über Abfragen mit der entsprechenden Dokument-ID zugegriffen werden. Bei der Azure Cognitive Search-Indizierung muss die automatische Cosmos DB-Indizierung für die Sammlung aktiviert sein, die von Azure Cognitive Search indiziert wird. Wenn Sie sich für die Vorschauversion des Indexers der Cosmos DB-Cassandra-API registrieren, erhalten Sie eine Einrichtungsanleitung für die Cosmos DB-Indizierung.
+Wie bereits weiter oben in diesem Artikel erwähnt, sind [Azure Cosmos DB-Indizierung](../cosmos-db/index-overview.md) und [Azure Cognitive Search-Indizierung](search-what-is-an-index.md) zwei unterschiedliche Vorgänge. Bei der Cosmos DB-Indizierung werden standardmäßig alle Dokumente automatisch indiziert (außer bei Verwendung der Cassandra-API). Wenn Sie die automatische Indizierung deaktivieren, kann auf die Dokumente nur über ihre Self-Links oder über Abfragen mit der entsprechenden Dokument-ID zugegriffen werden. Bei der Azure Cognitive Search-Indizierung muss die automatische Cosmos DB-Indizierung für die Sammlung aktiviert sein, die von Azure Cognitive Search indiziert wird. Wenn Sie sich für die Vorschauversion des Indexers der Cosmos DB-Cassandra-API registrieren, erhalten Sie eine Einrichtungsanleitung für die Cosmos DB-Indizierung.
 
 > [!WARNING]
 > Azure Cosmos DB ist die nächste Generation von DocumentDB. Zuvor konnten Sie mit der API-Version **2017-11-11** die `documentdb`-Syntax verwenden. Das bedeutete, dass Sie den Datenquellentyp als `cosmosdb` oder `documentdb` angeben konnten. Ab API-Version **2019-05-06** wird mit den APIs der kognitiven Azure-Suche sowie im Portal nur die `cosmosdb`-Syntax wie in diesem Artikel beschrieben unterstützt. Das bedeutet, dass der Datenquellentyp `cosmosdb` sein muss, wenn Sie eine Verbindung mit einem Cosmos DB-Endpunkt herstellen möchten.

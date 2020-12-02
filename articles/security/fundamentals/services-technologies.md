@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
-ms.openlocfilehash: 553cfe0c1a5e7d569c127f23a11f25f4d150b0bc
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 8a33e9d462f3105bfee295ac82384a38325f7c7c
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94700758"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498794"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Bei Azure verfügbare Sicherheitsdienste und -technologien
 
@@ -71,7 +71,7 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)|Ein cloudbasiertes Authentifizierungsrepository, das ein cloudbasiertes Verzeichnis mit mehreren Mandanten sowie Verwaltungsdienste für mehrere Identitäten in Azure unterstützt  |
 | [Azure Active Directory B2C](../../active-directory-b2c/overview.md)|Ein Identitätsverwaltungsdienst, mit dem Sie die Registrierung und Anmeldung von Kunden und deren Verwaltung ihrer Profile bei der Verwendung von Azure-Anwendungen steuern können   |
 | [Azure Active Directory-Domänendienste](../../active-directory-domain-services/overview.md)| Eine cloudbasierte und verwaltete Version von Active Directory Domain Services |
-| [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
+| [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md)| Ein Sicherheitsmechanismus, der verschiedene Formen der Authentifizierung und Überprüfung anwendet, bevor der Zugriff auf abgesicherte Informationen zugelassen wird |
 
 ## <a name="backup-and-disaster-recovery"></a>Backup und Notfallwiederherstellung
 |Dienst|BESCHREIBUNG|
@@ -91,5 +91,5 @@ Im Laufe der Zeit wird sich diese Liste – ebenso wie Azure – ändern und wac
 | [Azure Traffic Manager](../../traffic-manager/traffic-manager-overview.md)| Ein globaler DNS-Lastenausgleich|
 | [Azure Anwendungsproxy](../../active-directory/manage-apps/application-proxy.md)| Ein Authentifizierungs-Front-End für den sicheren Remotezugriff auf lokal gehostete Webanwendungen |
 |[Azure Firewall](../../firewall/overview.md)|Ein verwalteter, cloudbasierter Netzwerksicherheitsdienst, der Ihre Azure Virtual Network-Ressourcen schützt.|
-|[Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
+|[Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md)|Schützt in Kombination mit bewährten Anwendungsentwurfsmethoden vor DDoS-Angriffen.|
 |[Virtual Network-Dienstendpunkte](../../virtual-network/virtual-network-service-endpoints-overview.md)|Erweitern den privaten Adressraum Ihres virtuellen Netzwerks und die Identität Ihres VNET über eine direkte Verbindung auf die Azure-Dienste.|

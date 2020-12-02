@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: b0871b6365d78129cd6fdaec82fee14e2b0a7a4b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94693442"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499610"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
@@ -96,7 +96,7 @@ Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azu
 
 ### <a name="using-azure-cli"></a>Verwenden der Azure-Befehlszeilenschnittstelle
 
-+ Wenn Sie die [Azure CLI installiert](https://docs.microsoft.com/cli/azure/install-azure-cli) haben, können Sie den folgenden Befehl ausführen, um die erforderlichen Eigenschaften zu aktivieren.
++ Wenn Sie die [Azure CLI installiert](/cli/azure/install-azure-cli) haben, können Sie den folgenden Befehl ausführen, um die erforderlichen Eigenschaften zu aktivieren.
 
    ```azurecli-interactive
    az keyvault update -n <vault_name> -g <resource_group> --enable-soft-delete --enable-purge-protection
@@ -173,7 +173,7 @@ Die Zugriffsberechtigungen können jederzeit aufgehoben werden. Nach dem Aufhebe
 
 ## <a name="5---encrypt-content"></a>5: Verschlüsseln von Inhalten
 
-Wenn Sie einen kundenseitig verwalteten Schlüssel für einen Index, eine Datenquelle, ein Skillset, einen Indexer oder eine Synonymzuordnung hinzufügen möchten, müssen Sie die [Search-REST-API](https://docs.microsoft.com/rest/api/searchservice/) oder ein SDK verwenden. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. Wenn Sie eine gültige API verwenden, unterstützen Indizes, Datenquellen, Skillsets, Indexer oder Synonymzuordnungen eine **encryptionKey**-Eigenschaft auf oberster Ebene.
+Wenn Sie einen kundenseitig verwalteten Schlüssel für einen Index, eine Datenquelle, ein Skillset, einen Indexer oder eine Synonymzuordnung hinzufügen möchten, müssen Sie die [Search-REST-API](/rest/api/searchservice/) oder ein SDK verwenden. Das Portal macht keine Synonymzuordnungen oder Verschlüsselungseigenschaften verfügbar. Wenn Sie eine gültige API verwenden, unterstützen Indizes, Datenquellen, Skillsets, Indexer oder Synonymzuordnungen eine **encryptionKey**-Eigenschaft auf oberster Ebene.
 
 In diesem Beispiel wird die REST-API mit den folgenden Werten für Azure Key Vault und Azure Active Directory verwendet:
 
@@ -196,7 +196,7 @@ In diesem Beispiel wird die REST-API mit den folgenden Werten für Azure Key Vau
 
 ## <a name="example-index-encryption"></a>Beispiel: Indexverschlüsselung
 
-Erstellen Sie einen verschlüsselten Index mit der [Azure Cognitive Search-REST-API „Index erstellen“](https://docs.microsoft.com/rest/api/searchservice/create-index). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie einen verschlüsselten Index mit der [Azure Cognitive Search-REST-API „Index erstellen“](/rest/api/searchservice/create-index). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 > [!Note]
 > Keine dieser Key Vault-Details gelten als geheim. Diese Angaben können durch Navigieren zu der entsprechenden Seite des Azure Key Vault-Schlüssels im Azure-Portal einfach abgerufen werden.
 
@@ -239,7 +239,7 @@ Dann können Sie die Anforderung zur Indexerstellung senden und anschließend de
 
 ### <a name="synonym-map-encryption"></a>Verschlüsselung einer Synonymzuordnung
 
-Erstellen Sie eine verschlüsselte Synonymzuordnung mit der [Azure Cognitive Search-REST-API „Synonymzuordnung erstellen“](https://docs.microsoft.com/rest/api/searchservice/create-synonym-map). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie eine verschlüsselte Synonymzuordnung mit der [Azure Cognitive Search-REST-API „Synonymzuordnung erstellen“](/rest/api/searchservice/create-synonym-map). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
@@ -263,7 +263,7 @@ Dann können Sie die Anforderung zum Erstellen der Synonymzuordnung senden und a
 
 ## <a name="example-data-source-encryption"></a>Beispiel: Datenquellenverschlüsselung
 
-Erstellen Sie eine verschlüsselte Datenquelle mit der [Azure Cognitive Search-REST-API „Datenquelle erstellen“](https://docs.microsoft.com/rest/api/searchservice/create-data-source). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie eine verschlüsselte Datenquelle mit der [Azure Cognitive Search-REST-API „Datenquelle erstellen“](/rest/api/searchservice/create-data-source). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
@@ -289,7 +289,7 @@ Dann können Sie die Anforderung zum Erstellen der Datenquelle senden und anschl
 
 ## <a name="example-skillset-encryption"></a>Beispiel: Skillsetverschlüsselung
 
-Erstellen Sie ein verschlüsseltes Skillset mit der [Azure Cognitive Search-REST-API „Skillset erstellen“](https://docs.microsoft.com/rest/api/searchservice/create-skillset). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie ein verschlüsseltes Skillset mit der [Azure Cognitive Search-REST-API „Skillset erstellen“](/rest/api/searchservice/create-skillset). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {
@@ -315,7 +315,7 @@ Dann können Sie die Anforderung zum Erstellen des Skillsets senden und anschlie
 
 ## <a name="example-indexer-encryption"></a>Beispiel: Indexerverschlüsselung
 
-Erstellen Sie einen verschlüsselten Indexer mit der [Azure Cognitive Search-REST-API „Indexer erstellen“](https://docs.microsoft.com/rest/api/searchservice/create-indexer). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
+Erstellen Sie einen verschlüsselten Indexer mit der [Azure Cognitive Search-REST-API „Indexer erstellen“](/rest/api/searchservice/create-indexer). Verwenden Sie die `encryptionKey`-Eigenschaft, um den zu verwendenden Verschlüsselungsschlüssel anzugeben.
 
 ```json
 {

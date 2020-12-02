@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.date: 11/27/2018
 ms.author: cynthn
 ms.topic: conceptual
-ms.openlocfilehash: 83d291ae72e79ec3600015fac07ee4ab80fe5df4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b7f6d30ffa849f78b0f7baa2d84e4fb01f3bf192
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843552"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500341"
 ---
 # <a name="secure-and-use-policies-on-virtual-machines-in-azure"></a>Sichern und Verwenden von Richtlinien auf virtuellen Computern in Azure
 
@@ -41,7 +41,7 @@ Die Verschlüsselung wirkt sich nicht auf die Leistung verwalteter Datenträger 
 
 Sie können von der Plattform verwaltete Schlüssel für die Verschlüsselung der verwalteten Datenträger verwenden oder die Verschlüsselung mit eigenen Schlüsseln verwalten. Wenn Sie die Verschlüsselung mit eigenen Schlüsseln verwalten möchten, können Sie einen *vom Kunden verwalteten Schlüssel* angeben, der zum Verschlüsseln und Entschlüsseln aller Daten in verwalteten Datenträgern verwendet werden soll. 
 
-Weitere Informationen zur serverseitigen Verschlüsselung finden Sie in den Artikeln für [Windows](windows/disk-encryption.md) oder [Linux](linux/disk-encryption.md).
+Weitere Informationen zur serverseitigen Verschlüsselung finden Sie in den Artikeln für [Windows](./disk-encryption.md) oder [Linux](./disk-encryption.md).
 
 ### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
@@ -73,4 +73,4 @@ Mithilfe der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Acce
 
 
 ## <a name="next-steps"></a>Nächste Schritte
-- Führen Sie die Schritte aus, um die VM-Sicherheit mit dem Azure Security Center für [Linux](../security/fundamentals/overview.md) oder [Windows](windows/tutorial-azure-security.md) zu überwachen.
+- Führen Sie die Schritte aus, um die VM-Sicherheit mit dem Azure Security Center für [Linux](../security/fundamentals/overview.md) oder [Windows](./tutorial-azure-security.md) zu überwachen.

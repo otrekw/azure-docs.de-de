@@ -3,19 +3,19 @@ title: Ausdrücke und Funktionen in Azure Data Factory
 description: Dieser Artikel enthält Informationen zu Ausdrücken und Funktionen, die Sie bei der Erstellung von Data Factory-Entitäten verwenden können.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/25/2019
-ms.openlocfilehash: 24347d86a99251d0bf02d5ea5cb6985df5814b29
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 3c966f0efc51a3b2fa8908e060b4031ae1ad1e50
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635183"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500018"
 ---
 # <a name="expressions-and-functions-in-azure-data-factory"></a>Ausdrücke und Funktionen in Azure Data Factory | Microsoft-Dokumentation
 
@@ -68,10 +68,10 @@ Ausdrücke können an beliebiger Stelle in einem JSON-Zeichenfolgenwert verwende
 ### <a name="complex-expression-example"></a>Beispiel für komplexen Ausdruck
 Das folgende Beispiel zeigt einen komplexen Ausdruck, der auf ein tiefes Unterfeld der Aktivitätsausgabe verweist. Wenn Sie auf einen Pipelineparameter verweisen möchten, der als ein Unterfeld ausgewertet wird, verwenden Sie die Syntax „[]“ statt des Punktoperators „(.)“ (wie bei „subfield1“ und „subfield2“).
 
-@activity(' *activityName* ').output. *subfield1* . *subfield2* [pipeline().parameters. *subfield3* ]. *subfield4*
+@activity('*activityName*').output.*subfield1*.*subfield2*[pipeline().parameters.*subfield3*].*subfield4*
 
 ### <a name="a-dataset-with-a-parameter"></a>Ein Dataset mit einem Parameter
-Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path** . Der Wert wird unter Verwendung des folgenden Ausdrucks zum Festlegen eines Werts für die Eigenschaft **folderPath** verwendet: `dataset().path`. 
+Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path**. Der Wert wird unter Verwendung des folgenden Ausdrucks zum Festlegen eines Werts für die Eigenschaft **folderPath** verwendet: `dataset().path`. 
 
 ```json
 {
@@ -95,7 +95,7 @@ Im folgenden Beispiel nutzt „BlobDataset“ einen Parameter namens **path** . 
 ```
 
 ### <a name="a-pipeline-with-a-parameter"></a>Eine Pipeline mit einem Parameter
-Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outputPath** . Der Parameter **path** für das parametrisierte Blobdataset wird mithilfe der Werte dieser Parameter festgelegt. Die hier verwendete Syntax lautet `pipeline().parameters.parametername`. 
+Im folgenden Beispiel nutzt die Pipeline die Parameter **inputPath** und **outputPath**. Der Parameter **path** für das parametrisierte Blobdataset wird mithilfe der Werte dieser Parameter festgelegt. Die hier verwendete Syntax lautet `pipeline().parameters.parametername`. 
 
 ```json
 {
@@ -243,7 +243,7 @@ Diese Funktionen können innerhalb von Bedingungen zur Auswertung einer beliebig
 | [xpath](control-flow-expression-language-functions.md#xpath) | Überprüft die XML auf Knoten oder Werte, die mit einem XPath-Ausdruck (XML Path Language) übereinstimmen, und gibt die übereinstimmenden Knoten oder Werte zurück. |
 
 ## <a name="math-functions"></a>Mathematische Funktionen  
- Diese Funktionen können für folgende Arten von Zahlen verwendet werden: **ganze Zahlen** und **Gleitkommazahlen** .  
+ Diese Funktionen können für folgende Arten von Zahlen verwendet werden: **ganze Zahlen** und **Gleitkommazahlen**.  
 
 | Mathematische Funktion | Aufgabe |
 | ------------- | ---- |
@@ -298,7 +298,7 @@ add(<summand_1>, <summand_2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*summand_1* >, < *summand_2*> | Ja | Integer, Float oder kombiniert | Die zu addierenden Zahlen |
+| <*summand_1*>, <*summand_2*> | Ja | Integer, Float oder kombiniert | Die zu addierenden Zahlen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -541,7 +541,7 @@ and(<expression1>, <expression2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1* >, < *expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -599,7 +599,7 @@ array('<value>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [< *value* >] | Array | Ein Array, das die einzelne angegebene Eingabe enthält |
+| [<*value*>] | Array | Ein Array, das die einzelne angegebene Eingabe enthält |
 ||||
 
 *Beispiel*
@@ -785,7 +785,7 @@ coalesce(<object_1>, <object_2>, ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object_1* >, < *object_2* >, ... | Ja | Beliebig, Typen können kombiniert sein | Ein oder mehrere Elemente, die auf NULL geprüft werden sollen |
+| <*object_1*>, <*object_2*>, ... | Ja | Beliebig, Typen können kombiniert sein | Ein oder mehrere Elemente, die auf NULL geprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -821,7 +821,7 @@ concat('<text1>', '<text2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*text1* >, < *text2* >, ... | Ja | String | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
+| <*text1*>, <*text2*>, ... | Ja | String | Mindestens zwei Zeichenfolgen, die kombiniert werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -854,9 +854,9 @@ contains([<collection>], '<value>')
 
 Diese Funktion ist insbesondere für diese Sammlungstypen vorgesehen:
 
-* Eine *Zeichenfolge* , in der nach einer *Teilzeichenfolge* gesucht werden soll
-* Ein *Array* , in dem nach einem *Wert* gesucht werden soll
-* Ein *Wörterbuch* , in dem nach einem *Schlüssel* gesucht werden soll
+* Eine *Zeichenfolge*, in der nach einer *Teilzeichenfolge* gesucht werden soll
+* Ein *Array*, in dem nach einem *Wert* gesucht werden soll
+* Ein *Wörterbuch*, in dem nach einem *Schlüssel* gesucht werden soll
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
@@ -1025,12 +1025,12 @@ createArray('<object1>', '<object2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2* >, ... | Ja | Beliebig, aber nicht kombiniert | Mindestens zwei Elemente, mit denen das Array erstellt wird |
+| <*object1*>, <*object2*>, ... | Ja | Beliebig, aber nicht kombiniert | Mindestens zwei Elemente, mit denen das Array erstellt wird |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [< *object1* >, < *object2* >, ...] | Array | Das Array, das aus allen Eingabeelemente erstellt wurde |
+| [<*object1*>, <*object2*>, ...] | Array | Das Array, das aus allen Eingabeelemente erstellt wurde |
 ||||
 
 *Beispiel*
@@ -1486,7 +1486,7 @@ equals('<object1>', '<object2>')
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*object1* >, < *object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
+| <*object1*>, <*object2*> | Ja | Verschiedene | Die Werte, Ausdrücke oder Objekte, die verglichen werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -1980,7 +1980,7 @@ intersection('<collection1>', '<collection2>', ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
+| <*collection1*>, <*collection2*>, ... | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *nur* die gemeinsame Elemente wünschen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2016,7 +2016,7 @@ join([<collection>], '<delimiter>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*char1*><*delimiter*><*char2*><*delimiter* >... | String | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
+| <*char1*><*delimiter*><*char2*><*delimiter*>... | String | Die resultierende Zeichenfolge, die aus allen Elementen im angegebenen Array erstellt wurde |
 ||||
 
 *Beispiel*
@@ -2215,8 +2215,8 @@ max([<number1>, <number2>, ...])
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
-| [< *number1* >, < *number2* >, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
+| <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den größten Wert abrufen möchten |
+| [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den größten Wert abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2248,8 +2248,8 @@ min([<number1>, <number2>, ...])
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*number1* >, < *number2* >, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
-| [< *number1* >, < *number2* >, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
+| <*number1*>, <*number2*>, ... | Ja | Integer, Float oder beide | Die Menge der Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
+| [<*number1*>, <*number2*>, ...] | Ja | Array: Integer, Float oder beide | Das Array mit den Zahlen, aus denen Sie den kleinsten Wert abrufen möchten |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2397,7 +2397,7 @@ or(<expression1>, <expression2>)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*expression1* >, < *expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
+| <*expression1*>, <*expression2*> | Ja | Boolean | Die Ausdrücke, die überprüft werden sollen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -2482,7 +2482,7 @@ range(<startIndex>, <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [< *range-result* >] | Array | Das Array mit ganzen Zahlen ab dem angegebenen Index |
+| [<*range-result*>] | Array | Das Array mit ganzen Zahlen ab dem angegebenen Index |
 ||||
 
 *Beispiel*
@@ -2545,7 +2545,7 @@ skip([<collection>], <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [< *updated-collection* >] | Array | Die aktualisierte Auflistung, nachdem die angegebenen Elemente entfernt wurden |
+| [<*updated-collection*>] | Array | Die aktualisierte Auflistung, nachdem die angegebenen Elemente entfernt wurden |
 ||||
 
 *Beispiel*
@@ -2576,7 +2576,7 @@ split('<text>', '<delimiter>')
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| [< *substring1* >,< *substring2* >,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
+| [<*substring1*>,<*substring2*>,...] | Array | Ein Array mit Teilzeichenfolgen aus der ursprünglichen Zeichenfolge, das durch Trennzeichen getrennt ist |
 ||||
 
 *Beispiel*
@@ -2892,7 +2892,7 @@ take([<collection>], <count>)
 
 | Rückgabewert | type | BESCHREIBUNG |
 | ------------ | ---- | ----------- |
-| <*subset* > oder [< *subset* >] | Zeichenfolge bzw. Array | Eine Zeichenfolge oder ein Array, die oder das die angegebene Anzahl von Elementen ab dem Anfang der ursprünglichen Sammlung enthält |
+| <*subset*> oder [<*subset*>] | Zeichenfolge bzw. Array | Eine Zeichenfolge oder ein Array, die oder das die angegebene Anzahl von Elementen ab dem Anfang der ursprünglichen Sammlung enthält |
 ||||
 
 *Beispiel*
@@ -3034,7 +3034,7 @@ union([<collection1>], [<collection2>], ...)
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
-| <*collection1* >, < *collection2* >, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
+| <*collection1*>, <*collection2*>, ...  | Ja | Array oder Objekt, aber nicht beide | Die Sammlungen, aus denen Sie *alle* Elemente wünschen |
 |||||
 
 | Rückgabewert | type | BESCHREIBUNG |
@@ -3159,7 +3159,7 @@ Gibt den aktuellen Zeitstempel zurück.
 utcNow('<format>')
 ```
 
-Optional können Sie mit dem < *format* >-Parameter ein anderes Format angeben.
+Optional können Sie mit dem <*format*>-Parameter ein anderes Format angeben.
 
 | Parameter | Erforderlich | type | BESCHREIBUNG |
 | --------- | -------- | ---- | ----------- |
@@ -3271,7 +3271,7 @@ xpath('<xml>', '<xpath>')
 | ------------ | ---- | ----------- |
 | <*xml-node*> | XML | Ein XML-Knoten, wenn nur ein einziger Knoten mit dem angegebenen XPath-Ausdruck übereinstimmt |
 | <*value*> | Any | Der Wert aus einem XML-Knoten, wenn nur ein einziger Wert mit dem angegebenen XPath-Ausdruck übereinstimmt |
-| [< *xml-node1* >, < *xml-node2* >, ...] </br>Oder </br>[< *value1* >, < *value2* >, ...] | Array | Ein Array mit XML-Knoten oder -Werten, die mit den angegebenen XPath-Ausdruck übereinstimmen |
+| [<*xml-node1*>, <*xml-node2*>, ...] </br>Oder </br>[<*value1*>, <*value2*>, ...] | Array | Ein Array mit XML-Knoten oder -Werten, die mit den angegebenen XPath-Ausdruck übereinstimmen |
 ||||
 
 *Beispiel 1*

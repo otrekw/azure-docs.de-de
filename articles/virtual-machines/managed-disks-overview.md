@@ -8,12 +8,12 @@ ms.date: 04/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
-ms.openlocfilehash: 839ba1f8a5215c9059cfeff6e2158165b154f1f7
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 3b0acd683309ceb105c49dc5b0bd493ce2e461b9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289347"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500426"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Einführung in verwaltete Azure-Datenträger
 
@@ -31,7 +31,7 @@ Verwaltete Datenträger sind auf eine Verfügbarkeit von 99,999% ausgelegt. Hier
 
 ### <a name="simple-and-scalable-vm-deployment"></a>Einfache und skalierbare VM-Bereitstellung
 
-Mit verwalteten Datenträgern können Sie für ein Abonnement pro Region bis zu 50.000VM- **Datenträger** eines Typs erstellen – Sie können also Tausende von **VMs** in einem einzigen Abonnement erstellen. Außerdem wird mit diesem Feature die Skalierbarkeit von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) weiter erhöht, sodass Sie mit einem Marketplace-Image bis zu 1.000VMs in einer VM-Skalierungsgruppe erstellen können.
+Mit verwalteten Datenträgern können Sie für ein Abonnement pro Region bis zu 50.000VM-**Datenträger** eines Typs erstellen – Sie können also Tausende von **VMs** in einem einzigen Abonnement erstellen. Außerdem wird mit diesem Feature die Skalierbarkeit von [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) weiter erhöht, sodass Sie mit einem Marketplace-Image bis zu 1.000VMs in einer VM-Skalierungsgruppe erstellen können.
 
 ### <a name="integration-with-availability-sets"></a>Integration in Verfügbarkeitsgruppen
 
@@ -71,7 +71,7 @@ Verwaltete Datenträger bieten zwei verschiedene Arten der Verschlüsselung. Die
 
 Die serverseitige Verschlüsselung bietet eine Verschlüsselung ruhender Daten und schützt Ihre Daten, um die Sicherheits- und Compliancevorgaben Ihrer Organisation zu erfüllen. Die serverseitige Verschlüsselung ist standardmäßig für alle verwalteten Datenträger, Momentaufnahmen und Images in allen Regionen aktiviert, in denen Managed Disks verfügbar ist. (Temporäre Datenträger werden dagegen nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung beim Host. Siehe [Datenträgerrollen: temporäre Datenträger](#temporary-disk)).
 
-Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Informationen finden Sie im Artikel [Serverseitige Verschlüsselung von Azure Disk Storage](windows/disk-encryption.md).
+Sie können zulassen, dass Azure die Schlüssel für Sie verwaltet. Dies sind von der Plattform verwaltete Schlüssel. Alternativ können Sie die Schlüssel selbst verwalten. Dabei handelt es sich um vom Kunden verwaltete Schlüssel. Weitere Informationen finden Sie im Artikel [Serverseitige Verschlüsselung von Azure Disk Storage](./disk-encryption.md).
 
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
@@ -96,7 +96,7 @@ Dieser Datenträger weist eine maximale Kapazität von 4.095 GiB auf.
 
 ### <a name="temporary-disk"></a>Temporärer Datenträger
 
-Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](./manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.md).
+Die meisten VMs enthalten einen temporären Datenträger, der kein verwalteter Datenträger ist. Der temporäre Datenträger bietet kurzfristigen Speicher für Anwendungen und Prozesse und ist ausschließlich dafür ausgelegt, Daten wie z. B. Seiten- oder Auslagerungsdateien zu speichern. Daten auf dem temporären Datenträger können während eines [Wartungsereignisses](./manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) verloren gehen, oder wenn Sie [eine VM erneut bereitstellen](troubleshooting/redeploy-to-new-node-windows.md?toc=/azure/virtual-machines/windows/toc.json). Während eines erfolgreichen standardmäßigen Neustarts der VM bleiben die Daten auf dem temporären Datenträger erhalten. Weitere Informationen zu VMs ohne temporäre Datenträger finden Sie unter [Azure-VM-Größen ohne lokalen temporären Datenträger](azure-vms-no-temp-disk.md).
 
 Bei Azure Linux-VMs ist der temporäre Datenträger standardmäßig „/dev/sdb“, und bei Windows-VMs wird standardmäßig „D:“ verwendet. Der temporäre Datenträger wird nicht durch serverseitige Verschlüsselung verschlüsselt, es sei denn, Sie aktivieren die Verschlüsselung auf dem Host.
 

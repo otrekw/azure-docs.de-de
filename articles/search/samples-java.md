@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: 26e30b42906a3d8d7a3fcdc013537104a85f32fe
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c1d21d88ed49cb14aa9f964791154f001a40fbe2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701856"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499576"
 ---
 # <a name="java-code-samples-for-azure-cognitive-search"></a>Java-Codebeispiele für Azure Cognitive Search
 
@@ -43,7 +43,7 @@ Das Azure SDK für Java enthält zahlreiche Beispiele und eine [Seite „Erste S
 
 ## <a name="documentation-samples"></a>Dokumentationsbeispiele
 
-Zu den folgenden Beispielen ist ein entsprechender Artikel in der [Dokumentation zu Azure Cognitive Search](https://docs.microsoft.com/azure/search/) vorhanden.
+Zu den folgenden Beispielen ist ein entsprechender Artikel in der [Dokumentation zu Azure Cognitive Search](./index.yml) vorhanden.
 
 | Beispiele | BESCHREIBUNG | 
 |---------|-------------|

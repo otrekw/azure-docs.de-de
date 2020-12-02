@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/30/2017
 ms.author: vikdesai
-ms.openlocfilehash: 5df56b304463ab981026fbe0c82d831d83d702c3
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: f23d1fb0162abf05fba97c2f6fb02be9238fabd2
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93380054"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500358"
 ---
 # <a name="save-costs-with-azure-reserved-vm-instances-linux"></a>Einsparen von Kosten mit Azure Reserved VM Instances (Linux)
 
@@ -78,15 +78,15 @@ Reservierte VM-Instanzen sind bis auf wenige Ausnahmen für die meisten VM-Grö�
 
 - **Vorschau- oder Promo-VMs** – Jede VM-Serie oder -Größe in der Vorschauversion oder die Werbeverbrauchseinheiten verwendet.
 
-- **Clouds**  – Reservierungen können in den Regionen Deutschland und China nicht käuflich erworben werden.
+- **Clouds** – Reservierungen können in den Regionen Deutschland und China nicht käuflich erworben werden.
 
-- **Nicht genügend Kontingent**  – Für eine Reservierung, die einem einzelnen Abonnement zugeordnet ist, muss im Abonnement vCPU-Kontingent für die neue reservierte Instanz (RI) verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von zehn vCPUs für die D-Serie gilt, können Sie keine Reservierung für elf Standard_D1-Instanzen erwerben. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer berücksichtigt. Beispiel: Wenn im Abonnement ein Kontingent von zehn vCPUs für die D-Serie enthalten ist und zwei Standard_D1-Instanzen bereitgestellt sind, können Sie eine Reservierung für zehn Standard_D1-Instanzen in diesem Abonnement erwerben. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](../azure-portal/supportability/resource-manager-core-quotas-request.md).
+- **Nicht genügend Kontingent** – Für eine Reservierung, die einem einzelnen Abonnement zugeordnet ist, muss im Abonnement vCPU-Kontingent für die neue reservierte Instanz (RI) verfügbar sein. Beispiel: Wenn für das Zielabonnement eine Kontingentgrenze von zehn vCPUs für die D-Serie gilt, können Sie keine Reservierung für elf Standard_D1-Instanzen erwerben. Bei der Kontingentüberprüfung für Reservierungen werden die im Abonnement bereits bereitgestellten virtuellen Computer berücksichtigt. Beispiel: Wenn im Abonnement ein Kontingent von zehn vCPUs für die D-Serie enthalten ist und zwei Standard_D1-Instanzen bereitgestellt sind, können Sie eine Reservierung für zehn Standard_D1-Instanzen in diesem Abonnement erwerben. Um dieses Problem zu beheben, können Sie eine [Anforderung zur Kontingenterhöhung erstellen](../azure-portal/supportability/resource-manager-core-quotas-request.md).
 
-- **Kapazitätsbeschränkungen**  – In seltenen Fällen beschränkt Azure den Kauf neuer Reservierungen für eine Teilmenge der VM-Größen wegen geringer Kapazität in einer Region.
+- **Kapazitätsbeschränkungen** – In seltenen Fällen beschränkt Azure den Kauf neuer Reservierungen für eine Teilmenge der VM-Größen wegen geringer Kapazität in einer Region.
 
 ## <a name="buy-a-reserved-vm-instance"></a>Kaufen einer reservierten VM-Instanz
 
-Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/monthly-payments-reservations.md).
+Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/prepare-buy-reservation.md).
 Diese Anforderungen gelten für den Erwerb einer reservierten VM-Instanz:
 
 - Sie müssen in einer „Besitzer“-Rolle für mindestens ein EA-Abonnement oder ein Abonnement mit einem Satz für nutzungsbasierte Bezahlung sein.
@@ -97,7 +97,7 @@ So kaufen Sie ein Instanz:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Klicken Sie auf **Alle Dienste** > **Reservierungen**.
-1. Klicken Sie auf **Hinzufügen** , um eine neue Reservierung zu erwerben, und klicken Sie dann auf **Virtueller Computer**.
+1. Klicken Sie auf **Hinzufügen**, um eine neue Reservierung zu erwerben, und klicken Sie dann auf **Virtueller Computer**.
 1. Geben Sie die erforderlichen Felder ein. Ausgeführte VM-Instanzen, die den ausgewählten Attributen entsprechen, sind für den Reservierungsrabatt berechtigt. Die tatsächliche Anzahl der VM-Instanzen, die den Rabatt erhalten, hängt vom ausgewählten Bereich und von der ausgewählten Menge ab.
 
 Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere hinzufügen** verwenden, um schnell weitere Instanzen hinzuzufügen. Die Option ist für andere Abonnementtypen nicht verfügbar.
@@ -106,10 +106,10 @@ Wenn Sie über eine EA-Vereinbarung verfügen, können Sie die Option **Weitere 
 | Feld      | BESCHREIBUNG|
 |------------|--------------|
 |Subscription|Das zum Bezahlen für die Reservierung verwendete Abonnement. Die Zahlungsmethode für das Abonnement wird mit Zahlungen für die Reservierung belastet. Der Abonnementtyp muss „Enterprise Agreement“ (Angebotsnummern: MS-AZR-0017P oder MS-AZR-0148P) oder „Microsoft-Kundenvereinbarung“ oder ein einzelnes Abonnement mit Sätzen für nutzungsbasierte Bezahlung (Angebotsnummern: MS-AZR-0003P oder MS-AZR-0023P) sein. Die Gebühren werden vom Guthaben in Bezug auf den Mindestverbrauch abgezogen oder als Überschreitung belastet. Bei einem Abonnement mit Sätzen für nutzungsbasierte Zahlung wird die Kreditkarte mit den Gebühren belastet, oder die Gebühren werden für Zahlung auf Rechnung in Rechnung gestellt.|    
-|`Scope`       |Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe** : Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement** : Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt** : Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>|
+|`Scope`       |Der Bereich der Reservierung kann ein Abonnement oder mehrere Abonnements (freigegebener Bereich) umfassen. Optionen: <ul><li>**Einzelne Ressourcengruppe**: Wendet den Reservierungsrabatt nur auf die entsprechenden Ressourcen in der ausgewählten Ressourcengruppe an.</li><li>**Einzelnes Abonnement**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen im ausgewählten Abonnement an.</li><li>**Gemeinsam genutzt**: Wendet den Reservierungsrabatt auf die entsprechenden Ressourcen in berechtigten Abonnements innerhalb des Abrechnungskontexts an. Für EA-Kunden ist der Abrechnungskontext die Registrierung. Für Kunden mit individuellen Abonnements mit nutzungsbasierten Tarifen handelt es sich beim Abrechnungsbereich um alle berechtigten Abonnements, die vom Kontoadministrator erstellt wurden.</li></ul>|
 |Region    |Die Azure-Region, die durch die Reservierung abgedeckt wird|    
 |Größe des virtuellen Computers     |Die Größe der VM-Instanzen|
-|Optimiert für     |„Flexibilität bei der VM-Instanzgröße“ ist standardmäßig ausgewählt. Klicken Sie auf **Erweiterte Einstellungen** , um den Wert der Instanzgrößenflexibilität zu ändern und den Reservierungsrabatt auf weitere VMs in derselben [VM-Größengruppe](reserved-vm-instance-size-flexibility.md) anzuwenden. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. So erhalten Sie zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn Sie sie benötigen. Die Kapazitätspriorität ist nur für den Reservierungsumfang „Einzelabonnement“ verfügbar. |
+|Optimiert für     |„Flexibilität bei der VM-Instanzgröße“ ist standardmäßig ausgewählt. Klicken Sie auf **Erweiterte Einstellungen**, um den Wert der Instanzgrößenflexibilität zu ändern und den Reservierungsrabatt auf weitere VMs in derselben [VM-Größengruppe](reserved-vm-instance-size-flexibility.md) anzuwenden. Die Option „Kapazitätspriorität“ priorisiert Rechenzentrumskapazität für Ihre Bereitstellungen. So erhalten Sie zusätzliche Sicherheit, dass die VM-Instanzen gestartet werden können, wenn Sie sie benötigen. Die Kapazitätspriorität ist nur für den Reservierungsumfang „Einzelabonnement“ verfügbar. |
 |Begriff        |Ein Jahr oder drei Jahre Es ist auch eine Laufzeit von 5 Jahren nur für HBv2-VMs verfügbar.|
 |Menge    |Die Anzahl von Instanzen, die innerhalb der Reservierung erworben werden. Die Menge ist die Anzahl der ausgeführten VM-Instanzen, auf die der Abrechnungsrabatt angewendet werden kann. Beispiel: Wenn Sie zehn VMs vom Typ „10 Standard_D2“ in der Region „USA, Osten“ ausführen, geben Sie als Menge „10“ an, um den Vorteil für alle ausgeführten VMs zu maximieren. |
 
@@ -138,7 +138,7 @@ Folgendes können Sie nach dem Kauf nicht direkt ändern:
 - Menge
 - Duration
 
-Sie können jedoch eine Reservierung *umtauschen* , wenn Sie Änderungen vornehmen möchten.
+Sie können jedoch eine Reservierung *umtauschen*, wenn Sie Änderungen vornehmen möchten.
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Stornieren, Umtauschen oder Rückerstatten von Reservierungen
 
@@ -158,6 +158,4 @@ Wenn Sie weitere Fragen haben oder Hilfe benötigen, [erstellen Sie eine Support
     - [Grundlegendes zur Reservierungsnutzung bei einem Abonnement mit Sätzen für nutzungsbasierte Bezahlung](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
     - [Grundlegendes zur Nutzung von Azure-Reservierungen für den Konzernbeitritt](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
     - [Nicht in Azure-Reservierungen enthaltene Windows-Softwarekosten](../cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
-    - [Verkaufen Microsoft Azure Reserved Instances](https://docs.microsoft.com/partner-center/azure-reservations)
-
-
+    - [Verkaufen Microsoft Azure Reserved Instances](/partner-center/azure-reservations)

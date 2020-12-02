@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 357f44149cb17976556c1e4609f6f2af531b80ee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9f36502eb464f051cd50b51245db69fa76daa915
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88935771"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499542"
 ---
 # <a name="partial-term-search-and-patterns-with-special-characters-wildcard-regex-patterns"></a>Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Platzhalter, reguläre Ausdrücke, Muster)
 
@@ -160,7 +160,7 @@ Unabhängig davon, ob Sie Analysetools auswerten oder eine bestimmte Konfigurati
 
 Integrierte oder vordefinierte Analysetools können anhand des Namens in einer `analyzer`-Eigenschaft einer Felddefinition angegeben werden, ohne dass im Index eine zusätzliche Konfiguration erforderlich ist. Im folgenden Beispiel wird veranschaulicht, wie Sie das Analysetool `whitespace` für ein Feld festlegen. 
 
-Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Vordefinierte Analysetoolreferenz](/azure/search/index-add-custom-analyzers#predefined-analyzers-reference). 
+Weitere Szenarios und weitere Informationen zu anderen integrierten Analysemodulen finden Sie unter [Vordefinierte Analysetoolreferenz](./index-add-custom-analyzers.md#predefined-analyzers-reference). 
 
 ```json
     {

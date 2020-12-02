@@ -8,20 +8,20 @@ ms.service: media-services
 ms.topic: conceptual
 ms.date: 11/04/2020
 ms.author: inhenkel
-ms.openlocfilehash: a0ded2a1ad5cd590ab5715edebde2ab19e399e8d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d0811e8f9183ee334d413bcad69f2c7b32023be3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686436"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499355"
 ---
 # <a name="managed-identities-and-trusted-storage-with-media-services"></a>Verwaltete Identitäten und vertrauenswürdiger Speicher mit Media Services
 
-Media Services können mit [verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) verwendet werden, um die Verwendung von vertrauenswürdigem Speicher zu ermöglichen. Wenn Sie ein Media Services-Konto erstellen, müssen Sie es einem Speicherkonto zuordnen. Von Media Services kann per Systemauthentifizierung auf dieses Speicherkonto zugegriffen werden. Media Services überprüft, ob sich das Media Services-Konto und das Speicherkonto im gleichen Abonnement befinden und ob der Benutzer, der die Zuordnung hinzufügt, Zugriff auf das Speicherkonto hat (mittels rollenbasierter Zugriffssteuerung für Azure Resource Manager).
+Media Services können mit [verwalteten Identitäten](../../active-directory/managed-identities-azure-resources/overview.md) verwendet werden, um die Verwendung von vertrauenswürdigem Speicher zu ermöglichen. Wenn Sie ein Media Services-Konto erstellen, müssen Sie es einem Speicherkonto zuordnen. Von Media Services kann per Systemauthentifizierung auf dieses Speicherkonto zugegriffen werden. Media Services überprüft, ob sich das Media Services-Konto und das Speicherkonto im gleichen Abonnement befinden und ob der Benutzer, der die Zuordnung hinzufügt, Zugriff auf das Speicherkonto hat (mittels rollenbasierter Zugriffssteuerung für Azure Resource Manager).
 
 ## <a name="trusted-storage"></a>Vertrauenswürdiger Speicher
 
-Wenn Sie zum Schutz Ihres Speicherkontos jedoch eine Firewall verwenden möchten, müssen Sie die Authentifizierung der verwalteten Identität verwenden. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.  Weitere Informationen zu vertrauenswürdigen Microsoft-Diensten finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](https://docs.microsoft.com/azure/storage/common/storage-network-security#trusted-microsoft-services).
+Wenn Sie zum Schutz Ihres Speicherkontos jedoch eine Firewall verwenden möchten, müssen Sie die Authentifizierung der verwalteten Identität verwenden. Dadurch kann von Media Services per vertrauenswürdigem Speicherzugriff auf das Speicherkonto zugegriffen werden, das mit einer Firewall oder mit einer VNET-Einschränkung konfiguriert wurde.  Weitere Informationen zu vertrauenswürdigen Microsoft-Diensten finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../../storage/common/storage-network-security.md#trusted-microsoft-services).
 
 ## <a name="media-services-managed-identity-scenarios"></a>Szenarien mit verwalteter Media Services-Identität
 
@@ -57,4 +57,4 @@ Die folgenden Tutorials enthalten beide oben erwähnten Szenarien:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Funktionen verwalteter Identitäten für Sie und Ihre Azure-Anwendungen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
+Weitere Informationen zu den Funktionen verwalteter Identitäten für Sie und Ihre Azure-Anwendungen finden Sie unter [Was sind verwaltete Identitäten für Azure-Ressourcen?](../../active-directory/managed-identities-azure-resources/overview.md).

@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: sttsinar
-ms.openlocfilehash: dc6706d4ec9090c59d4dd668d2ae1dd3ce7d188a
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 819654ef88584cb91d6032e46256258aaed524fd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92928041"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500307"
 ---
 # <a name="b-series-burstable-virtual-machine-sizes"></a>Größen von virtuellen Burstable-Computern der B-Serie
 
@@ -21,7 +21,7 @@ Virtuelle Computer der B-Serie sind ideal für Workloads, die nicht kontinuierli
 
 Die B-Serie ist in den folgenden VM-Größen erhältlich:
 
-[Azure-Compute-Einheit (ACU)](./acu.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json): Variiert*<br>
+[Azure-Compute-Einheit (ACU)](./acu.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json): Variiert*<br>
 [Storage Premium:](premium-storage-performance.md) Unterstützt<br>
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Nicht unterstützt<br>
 [Livemigration:](maintenance-and-updates.md) Unterstützt<br>
@@ -136,7 +136,7 @@ In der obigen Instanz ist Ihre Baseline z. B. 20 %. Wenn Sie 10 % der CPU nut
 
 ### <a name="q-what-happens-if-i-deploy-an-unsupported-os-image-on-b1ls"></a>F: Was geschieht, wenn ein nicht unterstütztes Betriebssystemimage auf B1ls bereitgestellt wird?
 
-**A** : B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
+**A**: B1ls unterstützt nur Linux-Images, und wenn Sie ein Image eines anderen Betriebssystems bereitstellen, erhalten Sie möglicherweise keine optimale Benutzererfahrung.
 
 ## <a name="other-sizes-and-information"></a>Weitere Größen und Informationen
 

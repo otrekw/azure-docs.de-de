@@ -3,20 +3,20 @@ title: Aktivität „Filter“ in Azure Data Factory
 description: Die Aktivität „Filter“ filtert die Eingaben.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 05/04/2018
-ms.openlocfilehash: 2c8ada22b4492bef0239b6f811d5a7bd58e58510
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 650d55ede8e6099252858c9118c8705f59ab6780
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "81417222"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498539"
 ---
 # <a name="filter-activity-in-azure-data-factory"></a>Aktivität „Filter“ in Azure Data Factory
 Sie können eine Filter-Aktivität in einer Pipeline verwenden, um einen Filterausdruck auf ein Eingabearray anzuwenden. 

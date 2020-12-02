@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/12/2018
 ms.author: cawa
-ms.openlocfilehash: a53f947eb2a44cc8773be8ee2b2bd03ca899be22
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7c250f1351d83d213c5c7af5b00d7a648c5d8bc6
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95521001"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499661"
 ---
 # <a name="microsoft-azure-storage-explorer-release-notes"></a>Versionshinweise zu Microsoft Azure Storage-Explorer
 
@@ -559,7 +559,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
         
 ### <a name="new"></a>Neu
 
-* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
   * Erstellen und Löschen von Containern
   * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
@@ -628,7 +628,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
         
 ### <a name="new"></a>Neu
 
-* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
   * Erstellen und Löschen von Containern
   * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)
@@ -683,7 +683,7 @@ Das Hochladen, Herunterladen und regionsübergreifende Kopieren von Datenträger
 
 ### <a name="new"></a>Neu
 
-* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
+* Sie können Storage-Explorer jetzt für den Zugriff auf Ihre Blobdaten per [RBAC](./storage/common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) verwenden. Wenn Sie angemeldet sind und Storage-Explorer die Schlüssel für Ihr Speicherkonto nicht abrufen kann, wird für die Authentifizierung bei der Interaktion mit Ihren Daten ein OAuth-Token verwendet.
 * Storage-Explorer unterstützt jetzt ADLS Gen2-Speicherkonten. Wenn Storage-Explorer erkennt, dass ein hierarchischer Namespace für ein Speicherkonto aktiviert wurde, wird neben dem Namen Ihres Speicherkontos „(ADLS Gen2 Preview)“ angezeigt. Storage-Explorer kann erkennen, ob ein hierarchischer Namespace aktiviert wurde, wenn Sie sich anmelden oder Ihr Speicherkonto mit Namen und Schlüssel angefügt haben. Sie können den Storage-Explorer auch für ADLS Gen2-Speicherkonten verwenden:
   * Erstellen und Löschen von Containern
   * Verwalten von Containereigenschaften und -berechtigungen (linke Seite)

@@ -12,12 +12,12 @@ ms.date: 09/01/2020
 ms.author: trbye
 ms.custom: cog-serv-seo-aug-2020
 keywords: Spracherkennung, Spracherkennungssoftware
-ms.openlocfilehash: f26d896397a950bc2c5f5d1f66dca6a01da045d7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 102289fd233a744952f37568abf77a753953637e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015221"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96499644"
 ---
 # <a name="what-is-speech-to-text"></a>Was ist die Spracherkennung?
 
@@ -48,7 +48,7 @@ Beispielcode für das Speech SDK finden Sie auf GitHub. In den Beispielen werden
 
 ## <a name="customization"></a>Anpassung
 
-Zusätzlich zum Standardmodell des Speech-Diensts können Sie auch benutzerdefinierte Modelle erstellen. Mithilfe von Anpassungen überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. Weitere Informationen finden Sie unter [Custom Speech](how-to-custom-speech.md). Die Anpassungsoptionen variieren je nach Sprache/Gebietsschema. Weitere Informationen zur Unterstützung erhalten Sie unter [Unterstützte Sprachen](./language-support.md).
+Zusätzlich zum Standardmodell des Speech-Diensts können Sie auch benutzerdefinierte Modelle erstellen. Mithilfe von Anpassungen überwinden Sie Grenzen der Spracherkennung wie z. B. Sprachstil, Vokabular und Hintergrundgeräusche. Weitere Informationen finden Sie unter [Custom Speech](./custom-speech-overview.md). Die Anpassungsoptionen variieren je nach Sprache/Gebietsschema. Weitere Informationen zur Unterstützung erhalten Sie unter [Unterstützte Sprachen](./language-support.md).
 
 ## <a name="batch-transcription"></a>Batch-Transkription
 

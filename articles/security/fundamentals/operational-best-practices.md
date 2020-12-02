@@ -16,12 +16,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/06/2019
 ms.author: terrylan
-ms.openlocfilehash: 98ba7c63e057e1f6b1f37a6529b6e94e2f514d6d
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 86874a60d48ddcbdaca5ae779ad554ee58cc233b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701030"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498845"
 ---
 # <a name="azure-operational-security-best-practices"></a>Bewährte Methoden für Azure Operational Security
 Dieser Artikel enthält eine Reihe von bewährten Methoden für den Schutz Ihrer Daten, Anwendungen und anderen Ressourcen in Azure.
@@ -195,7 +195,7 @@ Bei Verwendung von [Dienstendpunkten](../../virtual-network/virtual-network-serv
 
 Häufig werden lokale Ressourcen von Kunden zusammen mit ihren Azure-Ressourcen angegriffen. Wenn Sie die Verbindung einer lokalen Umgebung mit Azure herstellen, machen Sie lokale Ressourcen so wenig wie möglich im öffentlichen Internet verfügbar.
 
-Azure bietet zwei [DDoS-Dienstangebote](../../virtual-network/ddos-protection-overview.md), die vor Netzwerkangriffen schützen:
+Azure bietet zwei [DDoS-Dienstangebote](../../ddos-protection/ddos-protection-overview.md), die vor Netzwerkangriffen schützen:
 
 - Basic-Schutz ist standardmäßig und ohne zusätzliche Kosten in der Azure-Plattform integriert. Die Skalierung und Kapazität des global bereitgestellten Azure-Netzwerks bietet Schutz vor häufigen Vermittlungsschichtangriffen durch Always On-Datenverkehrsüberwachung und Risikominderung in Echtzeit. Für den Basic-Schutz sind keine weiteren Konfigurationen oder Anwendungsänderungen von Seiten des Benutzers erforderlich. Mit diesem Schutz können Sie alle Azure-Dienste schützen, u.a. PaaS-Dienste wie Azure DNS.
 - Der Standard-Schutz bietet erweiterte DDoS-Abwehrfunktionen gegen Netzwerkangriffe. Es wird automatisch optimiert, um Ihre spezifischen Azure-Ressourcen zu schützen. Der Schutz lässt sich einfach während der Erstellung virtueller Netzwerke aktivieren. Dies ist auch nach der Erstellung möglich und erfordert keine Änderungen der Anwendung oder Ressourcen.

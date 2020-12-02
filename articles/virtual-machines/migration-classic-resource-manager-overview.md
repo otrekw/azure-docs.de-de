@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.author: tagore
-ms.openlocfilehash: 952fbcac27e1d44c9417066549261d878d02b6b7
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 219fe2d9d8ac46ba3dbeebe6aaae9dddc0883aa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94904645"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500409"
 ---
 # <a name="platform-supported-migration-of-iaas-resources-from-classic-to-azure-resource-manager-in-linux"></a>Plattformgestützte Migration von IaaS-Ressourcen vom klassischen Bereitstellungsmodell zu Azure Resource Manager in Linux
 
@@ -47,7 +47,7 @@ Bei der Migration werden folgende klassische IaaS-Ressourcen unterstützt:
 
 | Dienst | Konfiguration |
 | --- | --- |
-| Azure AD Domain Services | [Virtuelle Netzwerke, die Azure AD Domain Services enthalten](https://docs.microsoft.com/azure/active-directory-domain-services/migrate-from-classic-vnet) |
+| Azure AD Domain Services | [Virtuelle Netzwerke, die Azure AD Domain Services enthalten](../active-directory-domain-services/migrate-from-classic-vnet.md) |
 
 ## <a name="supported-scopes-of-migration"></a>Unterstützte Migrationsbereiche
 Es gibt vier verschiedene Möglichkeiten, Compute-, Netzwerk- und Speicherressourcen zu migrieren:
@@ -136,7 +136,7 @@ Die folgenden Konfigurationen werden derzeit nicht unterstützt:
 | Compute | Clouddienste, die Web-/Workerrollen enthalten | Dies wird derzeit nicht unterstützt. |
 | Compute | Clouddienste mit mehreren Verfügbarkeitsgruppen. |Dies wird derzeit nicht unterstützt. Verschieben Sie die virtuellen Computer vor der Migration in dieselbe Verfügbarkeitsgruppe. |
 | Compute | Virtueller Computer mit Azure Security Center-Erweiterung | Azure Security Center installiert die Erweiterungen automatisch auf Ihren virtuellen Computern, um deren Sicherheit zu überwachen und Warnungen auszulösen. Diese Erweiterungen werden in der Regel automatisch installiert, wenn die Azure Security Center-Richtlinie für das Abonnement aktiviert ist. Um die virtuellen Computer zu migrieren, deaktivieren Sie die Security Center-Richtlinie in dem Abonnement, in dem die Security Center-Überwachungserweiterung von den virtuellen Computern entfernt wird. |
-| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](/azure/virtual-machines/windows/migration-classic-resource-manager-faq#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
+| Compute | Virtueller Computer mit Sicherungs- oder Momentaufnahmeerweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Backup-Dienst konfigurierten wurde. Auch wenn die Migration dieser virtuellen Computer nicht unterstützt wird, befolgen Sie [diese Anleitung](./migration-classic-resource-manager-faq.md#i-backed-up-my-classic-vms-in-a-vault-can-i-migrate-my-vms-from-classic-mode-to-resource-manager-mode-and-protect-them-in-a-recovery-services-vault), um Sicherungen beizubehalten, die vor der Migration ausgeführt wurden.  |
 | Compute | VM mit Azure Site Recovery-Erweiterung | Diese Erweiterungen werden auf einem virtuellen Computer installiert, der mit dem Azure Site Recovery-Dienst konfigurierten wurde. Während die Migration des mit Site Recovery verwendeten Speichers funktioniert, wird die aktuelle Replikation beeinträchtigt. Sie müssen die VM-Replikation nach der Speichermigration deaktivieren und dann erneut aktivieren. |
 | Netzwerk |Virtuelle Netzwerke, die virtuelle Computer und Web-/Workerrollen enthalten |Dies wird derzeit nicht unterstützt. Verschieben Sie die Web-/Workerrollen vor der Migration in ein eigenes virtuelles Netzwerk. Nach der Migration des klassischen virtuellen Netzwerks kann ein Peering des migrierten virtuellen Azure Resource Manager-Netzwerks mit dem klassischen virtuellen Netzwerk eingerichtet werden, um eine ähnliche Konfiguration wie zuvor zu erhalten.|
 | Netzwerk | Klassische ExpressRoute-Verbindungen |Dies wird derzeit nicht unterstützt. Diese Verbindungen müssen vor dem Beginn der IaaS-Migration zu Azure Resource Manager migriert werden. Weitere Informationen finden Sie unter [Verschieben von ExpressRoute-Verbindungen vom klassischen zum Resource Manager-Bereitstellungsmodell](../expressroute/expressroute-move.md).|

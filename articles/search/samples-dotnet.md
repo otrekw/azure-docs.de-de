@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d068365cc8197a579c0b043d3fff2da3d54eb803
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: ab6408621616a4be62631391456f73e90fced752
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686525"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498998"
 ---
 # <a name="net-c-code-samples-for-azure-cognitive-search"></a>.NET-Codebeispiele (C#) für Azure Cognitive Search
 
@@ -44,7 +44,7 @@ Das Azure SDK für .NET enthält zahlreiche Beispiele sowie [Informationen zu d
 
 ## <a name="documentation-samples"></a>Dokumentationsbeispiele
 
-Für die folgenden Beispiele ist ein entsprechender Artikel in der [Dokumentation zu Azure Cognitive Search](https://docs.microsoft.com/azure/search/) enthalten.
+Für die folgenden Beispiele ist ein entsprechender Artikel in der [Dokumentation zu Azure Cognitive Search](./index.yml) enthalten.
 
 | Beispiele | BESCHREIBUNG |
 |---------|-------------|
@@ -63,6 +63,6 @@ Für die folgenden Beispiele ist ein entsprechender Artikel in der [Dokumentatio
 | Beispiele | BESCHREIBUNG |
 |---------|-------------|
 | [azure-search-power-skills](https://github.com/Azure-Samples/azure-search-power-skills)  | Quellcode für nutzbare benutzerdefinierte Skills, die Sie in Ihre eigenen Lösungen integrieren können.  |
-| [Solution Accelerator für Knowledge Mining](https://docs.microsoft.com/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Umfasst Vorlagen, Unterstützungsdateien und Analyseberichte, die Sie bei der Erstellung eines Prototyps einer End-to-End-Lösung für Knowledge Mining unterstützen.  |
+| [Solution Accelerator für Knowledge Mining](/samples/azure-samples/azure-search-knowledge-mining/azure-search-knowledge-mining/) | Umfasst Vorlagen, Unterstützungsdateien und Analyseberichte, die Sie bei der Erstellung eines Prototyps einer End-to-End-Lösung für Knowledge Mining unterstützen.  |
 | [Repository für Covid-19-Such-App](https://github.com/liamca/covid19search) | Quellcoderepository für die auf Cognitive Search basierende [Covid-19-Such-App](https://covid19search.azurewebsites.net/) |
 | [JFK](https://github.com/Microsoft/AzureSearch_JFK_Files) | Weitere Informationen zur JFK-Lösung finden Sie [hier](https://www.microsoft.com/ai/ai-lab-jfk-files). |

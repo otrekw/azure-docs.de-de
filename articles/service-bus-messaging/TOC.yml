@@ -19,7 +19,7 @@
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: service-bus-quickstart-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -50,7 +50,7 @@
           items:
             - name: Azure-Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM-Vorlage
               href: service-bus-resource-manager-namespace-topic.md
@@ -256,35 +256,35 @@
         - name: Migrieren von Microsoft.Azure.ServiceBus zu Azure.Messaging.ServiceBus
           href: 'https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/servicebus/Azure.Messaging.ServiceBus/MigrationGuide.md'
         - name: 'Azure.Messaging.ServiceBus (.NET Standard, aktuelle Version)'
-          href: 'https://docs.microsoft.com/dotnet/api/azure.messaging.servicebus'
+          href: /dotnet/api/azure.messaging.servicebus
         - name: Microsoft.Azure.ServiceBus (.NET Standard)
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus'
+          href: /dotnet/api/microsoft.azure.servicebus
         - name: Microsoft.ServiceBus.Messaging (.NET Framework)
-          href: 'https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging'
+          href: /dotnet/api/microsoft.servicebus.messaging
     - name: Java
       items:
         - name: Migrieren von azure-servicebus zu azure-messaging-servicebus
           href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/migration-guide.md'
         - name: azure-messaging-servicebus (aktuelle Version)
-          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview'
+          href: /java/api/overview/azure/servicebus?view=azure-java-preview
         - name: azure-servicebus
-          href: 'https://docs.microsoft.com/java/api/overview/azure/servicebus'
+          href: /java/api/overview/azure/servicebus
     - name: Python
       items:
         - name: "Migrieren der Version\_0.50 von azure-servicebus zur Version\_7"
           href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/servicebus/azure-servicebus/migration_guide.md'
         - name: "Version\_7 von azure-servicebus"
-          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus?view=azure-python-preview'
+          href: /python/api/overview/azure/servicebus?view=azure-python-preview
         - name: "Version\_0.50 von azure-servicebus"
-          href: 'https://docs.microsoft.com/python/api/overview/azure/servicebus'
+          href: /python/api/overview/azure/servicebus
     - name: JavaScript
       items:
         - name: "Migrieren von Version\_1 zu Version\_7"
           href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/servicebus/service-bus/migrationguide.md'
         - name: azure/service-bus (Version 7)
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node--preview'
+          href: /javascript/api/overview/azure/service-bus?view=azure-node--preview
         - name: azure/service-bus (Version 1)
-          href: 'https://docs.microsoft.com/javascript/api/overview/azure/service-bus?view=azure-node-latest'
+          href: /javascript/api/overview/azure/service-bus?view=azure-node-latest
     - name: PHP
       href: 'https://github.com/Azure/azure-sdk-for-php'
     - name: Ruby
