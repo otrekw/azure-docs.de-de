@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: af5af26a8970409b07eda6195b0853c3fa931b3f
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: c1c6478948aaf207f0ca1adf367840ca3db34649
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506226"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325292"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -134,7 +134,7 @@ In einigen Fällen können Sie Zugriffstoken explizit widerrufen. Beispielsweise
 
 ```javascript  
 await identityClient.revokeTokens(identityResponse);
-console.log(`\nSuccessfully revoked all access tokens for identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nSuccessfully revoked all access tokens for identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="delete-an-identity"></a>Löschen einer Identität
@@ -143,12 +143,12 @@ Wird eine Identität gelöscht, werden alle aktiven Zugriffstoken widerrufen, un
 
 ```javascript
 await identityClient.deleteUser(identityResponse);
-console.log(`\nDeleted the identity with Id: ${identityResponse.communicationUserId}`);
+console.log(`\nDeleted the identity with ID: ${identityResponse.communicationUserId}`);
 ```
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.js* , und führen Sie anschließend den folgenden Befehl vom Typ `node` aus, um die App auszuführen.
+Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.js*, und führen Sie anschließend den folgenden Befehl vom Typ `node` aus, um die App auszuführen.
 
 ```console
 node ./issue-access-token.js

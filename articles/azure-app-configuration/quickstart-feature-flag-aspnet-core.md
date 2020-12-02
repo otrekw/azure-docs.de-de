@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 88481346f22176b8e307b53774b42d753838f90b
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94554822"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182695"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App
 
@@ -106,7 +106,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
     ---
 
-    Mit der vorherigen Änderung wurde der [Konfigurationsanbieter für App Configuration](https://go.microsoft.com/fwlink/?linkid=2074664) bei der .NET Core-Konfigurations-API registriert.
+    Mit der vorherigen Änderung wurde der [Konfigurationsanbieter für App Configuration](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) bei der .NET Core-Konfigurations-API registriert.
 
 1. Fügen Sie in *Startup.cs* einen Verweis auf den .NET Core-Feature-Manager hinzu:
 
@@ -235,7 +235,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher erstellt und diesen zur Verwaltung von Features in einer ASP.NET Core-Web-App über die [Feature-Manager-Bibliotheken](https://go.microsoft.com/fwlink/?linkid=2074664) verwendet.
+In dieser Schnellstartanleitung haben Sie einen neuen App Configuration-Speicher erstellt und diesen zur Verwaltung von Features in einer ASP.NET Core-Web-App über die [Feature-Manager-Bibliotheken](/dotnet/api/Microsoft.Extensions.Configuration.AzureAppConfiguration) verwendet.
 
 * Weitere Informationen über die [Featureverwaltung](./concept-feature-management.md)
 * [Verwalten von Featureflags](./manage-feature-flags.md)

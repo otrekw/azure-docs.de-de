@@ -6,12 +6,12 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 11/11/2020
-ms.openlocfilehash: 4fa00bffc35c4ed67ce70751c8882b74ad6b01a1
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534499"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185894"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
@@ -230,7 +230,7 @@ Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure 
 - [Kundenseitig verwaltete Schlüssel in Azure Monitor](platform/customer-managed-keys.md): Fehlermeldung und Abschnitt mit Informationen zur CMK-Konfiguration für Abfragen hinzugefügt
 - [Senden von Protokolldaten an Azure Monitor mit der HTTP-Datensammler-API (Public Preview)](platform/data-collector-api.md): Python 3-Beispiel hinzugefügt
 - [Optimieren von Protokollabfragen in Azure Monitor](log-query/query-optimization.md): Abschnitt hinzugefügt, in dem erläutert wird, wie sich bei Verwendung von Unterabfragen mehrere Datenscans vermeiden lassen
-- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](log-query/get-started-portal.md): Video hinzugefügt
+- [Tutorial: Erste Schritte mit Log Analytics-Abfragen](./log-query/log-analytics-tutorial.md): Video hinzugefügt
 
 ### <a name="platform-logs"></a>Plattformprotokolle
 - [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](platform/diagnostic-settings.md): Video hinzugefügt

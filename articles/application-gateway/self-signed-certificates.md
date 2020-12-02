@@ -265,7 +265,7 @@ Set-AzApplicationGateway -ApplicationGateway $gw
 
 ### <a name="verify-the-application-gateway-backend-health"></a>Überprüfen der Back-End-Integrität eines Anwendungsgateways
 
-1. Klicken Sie auf die **Back-End-Integrität** -Ansicht Ihres Anwendungsgateways, um zu prüfen, ob der Test fehlerfrei ist.
+1. Klicken Sie auf die **Back-End-Integrität**-Ansicht Ihres Anwendungsgateways, um zu prüfen, ob der Test fehlerfrei ist.
 1. Sie sollten sehen, dass für den HTTPS-Test der Status **Fehlerfrei** angezeigt wird.
 
 ![HTTPS-Test](media/self-signed-certificates/https-probe.png)
