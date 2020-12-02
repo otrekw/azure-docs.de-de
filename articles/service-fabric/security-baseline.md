@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: dc66de09a5918b19c60aaa0d3e9ab662876dc31a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 9eab908d2767bcdc9305daa625c70be9b63b9756
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684320"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485545"
 ---
 # <a name="azure-security-baseline-for-service-fabric"></a>Azure-Sicherheitsbaseline für Service Fabric
 
@@ -76,7 +76,7 @@ Stellen Sie die Azure Web Application Firewall (WAF) vor kritischen Webanwendung
 
 **Leitfaden**: Aktivieren Sie als Schutz vor DDoS-Angriffen den Azure-DDoS-Standardschutz für das virtuelle Netzwerk, in dem Ihr Azure Service Fabric-Cluster bereitgestellt wurde. Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um die Kommunikation mit bekannten schädlichen oder nicht genutzten IP-Adressen zu verweigern.
 
-* [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
+* [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 * [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
@@ -626,7 +626,7 @@ Verwenden Sie alternativ den manuellen Trigger für Betriebssystemimageupgrades 
 
 * [Aktualisieren von virtuellen Computern auf das aktuelle Skalierungsgruppenmodell](../virtual-machine-scale-sets/virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)
 
-* [Übersicht über die Updateverwaltung](../automation/update-management/update-mgmt-overview.md)
+* [Übersicht über die Updateverwaltung](../automation/update-management/overview.md)
 
 **Azure Security Center-Überwachung:** Zurzeit nicht verfügbar
 
