@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 09/13/2019
 ms.custom: references_regions
-ms.openlocfilehash: 5988cc7bdc34521bfa75e9f179f88bfbe881b882
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 2c38af9a2e1c4c71bb2d5661758f663efe13a946
+ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925644"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95414078"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Unterstützungsmatrix für die Sicherung virtueller Azure-Computer
 
@@ -50,7 +50,7 @@ Monatliche oder jährliche Sicherung| Wird bei der Sicherung mit der Azure-VM-Er
 Automatische Uhrzeitanpassung | Wird nicht unterstützt.<br/><br/> Azure Backup passt Änderungen an der Sommer- oder Winterzeit bei der Sicherung einer VM nicht automatisch an.<br/><br/>  Ändern Sie die Richtlinie nach Bedarf manuell.
 [Sicherheitsfunktionen für Hybridsicherungen](./backup-azure-security-feature.md) |Die Sicherheitsfunktionen können nicht deaktiviert werden.
 Sichern von virtuellen Computern mit geänderter Computerzeit | Wird nicht unterstützt.<br/><br/> Eine erfolgreiche Sicherung nicht garantiert werden, wenn die Computerzeit nach dem Aktivieren der Sicherung für diesen virtuellen Computer in ein zukünftiges Datum bzw. eine zukünftige Uhrzeit geändert wird. Dies gilt auch, wenn diese Änderung wieder rückgängig gemacht wird.
-Azure-VMs in [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) | Sicherung und Wiederherstellung wird für VMs mit auf 3 festgelegtem [Orchestrierungsmodus](../virtual-machine-scale-sets/orchestration-modes.md#orchestration-modes) unterstützt. <br><br>Verfügbarkeitsgruppen werden nicht unterstützt.
+Azure-VMs in [VM-Skalierungsgruppen](../virtual-machine-scale-sets/overview.md) |Verfügbarkeitsgruppen werden nicht unterstützt.
 
 ## <a name="operating-system-support-windows"></a>Unterstützte Betriebssysteme (Windows)
 
@@ -109,7 +109,7 @@ Wiederherstellungspunkte auf DPM-/MABS-Datenträger | 64 für Dateiserver und 44
 
 **Wiederherstellen** | **Unterstützt**
 --- | ---
-Wiederherstellen von Dateien unter verschiedenen Betriebssystemen | Sie können Dateien auf allen Computern wiederherstellen, die dasselbe (oder ein kompatibles) Betriebssystem wie der gesicherte virtuelle Computer haben. Weitere Informationen finden Sie in der Tabelle mit [kompatiblen Betriebssystemen](backup-azure-restore-files-from-vm.md#system-requirements).
+Wiederherstellen von Dateien unter verschiedenen Betriebssystemen | Sie können Dateien auf allen Computern wiederherstellen, die dasselbe (oder ein kompatibles) Betriebssystem wie der gesicherte virtuelle Computer haben. Weitere Informationen finden Sie in der Tabelle mit [kompatiblen Betriebssystemen](backup-azure-restore-files-from-vm.md#step-3-os-requirements-to-successfully-run-the-script).
 Wiederherstellen von Dateien von verschlüsselten virtuellen Computern | Wird nicht unterstützt.
 Wiederherstellen von Dateien von Speicherkonten mit Netzwerkbeschränkung | Wird nicht unterstützt.
 Wiederherstellen von Dateien auf virtuellen Computern mit Windows-Speicherplätzen | Die Wiederherstellung auf demselben Computer wird nicht unterstützt.<br/><br/> Führen Sie stattdessen die Wiederherstellung der Dateien auf einem kompatiblen virtuellen Computer durch.
@@ -140,7 +140,7 @@ Wiederherstellen einer VM in einem anderen virtuellen Netzwerk |Unterstützt.<br
 Größe des virtuellen Computers |Jede Größe von virtuellen Azure-Computern mit mindestens 2 CPU-Kernen und 1 GB RAM<br/><br/> [Weitere Informationen.](../virtual-machines/sizes.md)
 Sicherung virtueller Computer in [Verfügbarkeitsgruppen](../virtual-machines/availability.md#availability-sets) | Unterstützt.<br/><br/> Sie können eine VM in einer Verfügbarkeitsgruppe nicht mit der Option zum schnellen Erstellen einer VM wiederherstellen. Stattdessen müssen Sie bei der Wiederherstellung der VM den Datenträger wiederherstellen und damit entweder eine VM bereitstellen oder einen vorhandenen Datenträger ersetzen.
 Sicherung von mit [Hybridvorteil (HUB)](../virtual-machines/windows/hybrid-use-benefit-licensing.md) bereitgestellten VMs | Unterstützt.
-Sicherung von in einer [Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) bereitgestellten VMs |Unterstützt. Für die Fehlerdomäne sollte der [Orchestrierungsmodus](../virtual-machine-scale-sets/orchestration-modes.md) auf 2 festgelegt werden. Verfügbarkeitsgruppen werden nicht unterstützt.
+Sicherung von in einer [Skalierungsgruppe](../virtual-machine-scale-sets/overview.md) bereitgestellten VMs |Unterstützt. Verfügbarkeitsgruppen werden nicht unterstützt.
 Sicherung von auf dem [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?filters=virtual-machine-images) bereitgestellten VMs<br/><br/> (Veröffentlicht von Microsoft oder Drittanbietern) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden. Als VMs gesicherte Azure Marketplace-VMs werden nicht wiederhergestellt, da dafür Kaufinformationen erforderlich sind. Sie werden als Datenträger wiederhergestellt.
 Sicherung von über ein benutzerdefiniertes Image bereitgestellten VMs (Drittanbieter) |Unterstützt.<br/><br/> Auf dem virtuellen Computer muss ein unterstütztes Betriebssystem ausgeführt werden.<br/><br/> Die Wiederherstellung von Dateien auf dem virtuellen Computer kann nur unter einem kompatiblen Betriebssystem (kein früheres oder späteres Betriebssystem) durchgeführt werden.
 Sicherung von zu Azure migrierten VMs| Unterstützt.<br/><br/> Für die Sicherung des virtuellen Computers muss der VM-Agent auf dem migrierten Computer installiert werden.
@@ -160,7 +160,7 @@ Datenträgergröße | Die Größe einzelner Datenträger kann bis zu 32 TB und m
 Speichertyp | HDD Standard, SSD Standard, SSD Premium.
 Verwaltete Datenträger | Unterstützt.
 Verschlüsselte Datenträger | Unterstützt.<br/><br/> Virtuelle Azure-Computer mit aktiviertem Azure Disk Encryption können (mit oder ohne Azure AD-App) gesichert werden.<br/><br/> Verschlüsselte VMs können nicht auf Datei- oder Ordnerebene wiederhergestellt werden. Stattdessen muss die gesamte VM wiederhergestellt werden.<br/><br/> Sie können die Verschlüsselung auf virtuellen Computern aktivieren, die bereits durch Azure Backup geschützt werden.
-Datenträger mit aktivierter Schreibbeschleunigung | Wird nicht unterstützt.<br/><br/> Azure Backup schließt Datenträger mit aktivierter Schreibbeschleunigung (Write Accelerator, WA) bei der Sicherung automatisch aus. Da sie nicht gesichert werden, können Sie diese Datenträger nicht über Wiederherstellungspunkte der VM wiederherstellen. <br><br> **Wichtiger Hinweis** : Virtuelle Computer mit WA-Datenträgern benötigen eine Internetverbindung für eine erfolgreiche Sicherung (auch wenn diese Datenträger von der Sicherung ausgeschlossen sind).
+Datenträger mit aktivierter Schreibbeschleunigung | Ab dem 23. November 2020 wird dies in den Regionen „Südkorea, Mitte“ (KRC) und „Südafrika, Norden“ (SAN) unterstützt.<br/><br/> Azure Backup sichert die VMs mit Datenträgern mit aktivierter Schreibbeschleunigung während der Sicherung.  
 Sichern und Wiederherstellen von deduplizierten VMs/Datenträgern | Azure Backup unterstützt die Deduplizierung nicht. Weitere Informationen finden Sie in [diesem Artikel](./backup-support-matrix.md#disk-deduplication-support). <br/> <br/>  – Azure Backup dedupliziert nicht VM-übergreifend im Recovery Services-Tresor. <br/> <br/>  – Wenn es während der Wiederherstellung VMs im Deduplizierungsstatus gibt, können die Dateien nicht wiederhergestellt werden, da der Tresor das Format nicht verarbeiten kann. Allerdings können Sie die vollständige VM-Wiederherstellung erfolgreich ausführen.
 Hinzufügen eines Datenträgers zu geschütztem virtuellen Computer | Unterstützt.
 Ändern der Datenträgergröße auf geschütztem virtuellen Computer | Unterstützt.

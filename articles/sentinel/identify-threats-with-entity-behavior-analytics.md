@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/19/2020
 ms.author: yelevin
-ms.openlocfilehash: 657221a2acbf592a56cb4659ced2199023bc5e5b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a0a677342534cd92d5530199076e3d2e7084134d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658790"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95494776"
 ---
 # <a name="identify-advanced-threats-with-user-and-entity-behavior-analytics-ueba-in-azure-sentinel"></a>Erkennen komplexerer Bedrohungen mit User and Entity Behavior Analytics (UEBA) in Azure Sentinel
 
@@ -205,7 +205,7 @@ Zur Visualisierung der Metadaten der Peers des Benutzers können Sie [Jupyter No
 
 Mit der Berechtigungsanalyse können Sie die potenziellen Auswirkungen der Kompromittierung einer Ressource in einer Organisation durch einen Angreifer ermitteln. Diese Auswirkung wird auch als „Auswirkungsgrad“ der Ressource bezeichnet. Sicherheitsanalysten können mit diesen Informationen die Untersuchung und Behandlung von Vorfällen priorisieren.
 
-Azure Sentinel bestimmt die direkten und transitiven Zugriffsrechte eines bestimmten Benutzers für Azure-Ressourcen durch die Auswertung der Azure-Abonnements, auf die der Benutzer direkt ober über Gruppen oder Dienstprinzipale zugreifen kann. Diese Informationen sowie eine umfassende Liste mit der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers werden in der Tabelle **UserAccessAnalytics** gespeichert. Im folgenden Screenshot ist ein Beispiel für eine Zeile in der Tabelle „UserAccessAnalytics“ für den Benutzer Alex Johnson dargestellt. Die **Quellentität** ist das Benutzer- oder Dienstprinzipalkonto, während die **Zielentität** die Ressource ist, auf die die Quellentität Zugriff hat. Die Werte von **Zugriffsebene** und **Zugriffstyp** hängen vom Zugriffssteuerungsmodell der Zielentität ab. Wie Sie sehen, hat Alex die Zugriffsberechtigung „Mitwirkender“ für das Azure-Abonnement *Contoso Hotels Tenant*. Für das Abonnement wird das Zugriffssteuerungsmodell RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwendet.   
+Azure Sentinel bestimmt die direkten und transitiven Zugriffsrechte eines bestimmten Benutzers für Azure-Ressourcen durch die Auswertung der Azure-Abonnements, auf die der Benutzer direkt ober über Gruppen oder Dienstprinzipale zugreifen kann. Diese Informationen sowie eine umfassende Liste mit der Azure AD-Sicherheitsgruppenmitgliedschaft des Benutzers werden in der Tabelle **UserAccessAnalytics** gespeichert. Im folgenden Screenshot ist ein Beispiel für eine Zeile in der Tabelle „UserAccessAnalytics“ für den Benutzer Alex Johnson dargestellt. Die **Quellentität** ist das Benutzer- oder Dienstprinzipalkonto, während die **Zielentität** die Ressource ist, auf die die Quellentität Zugriff hat. Die Werte von **Zugriffsebene** und **Zugriffstyp** hängen vom Zugriffssteuerungsmodell der Zielentität ab. Wie Sie sehen, hat Alex die Zugriffsberechtigung „Mitwirkender“ für das Azure-Abonnement *Contoso Hotels Tenant*. Für das Abonnement wird das Zugriffssteuerungsmodell Azure RBAC (Role-Based Access Control, rollenbasierte Zugriffssteuerung) verwendet.   
 
 :::image type="content" source="./media/identify-threats-with-entity-behavior-analytics/user-access-analytics.png" alt-text="Screenshot: Tabelle der Benutzerzugriffsanalyse":::
 

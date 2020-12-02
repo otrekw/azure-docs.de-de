@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 5a646f7f42a2af8dcf15f7b7b2cd700e159fe88d
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94734394"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917544"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -104,7 +104,26 @@ Eine CRM-Verbindung kann während der Angebotserstellung zu einem beliebigen Zei
 
 ## <a name="selecting-an-online-store"></a>Auswählen eines Onlineshops
 
-Wenn Sie ein SaaS-Angebot veröffentlichen, wird es in Microsoft AppSource, Azure Marketplace oder beidem aufgelistet. Jeder Onlineshop erfüllt bestimmte Kundenanforderungen. AppSource ist für Geschäftslösungen und Azure Marketplace für IT-Lösungen vorgesehen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorien bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf dem Lösungstyp zugeordnet. Ausführliche Informationen zu Auflistungsoptionen, die von Onlineshops unterstützt werden, finden Sie unter [Auslistungs- und Preisoptionen nach Onlineshop](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Weitere Informationen zu Kategorien und Unterkategorien finden Sie unter [Kategorien und Unterkategorien im kommerziellen Marketplace](categories.md).
+Wenn Sie ein SaaS-Angebot veröffentlichen, wird es in Microsoft AppSource, Azure Marketplace oder beidem aufgelistet. Jeder Onlineshop erfüllt bestimmte Kundenanforderungen. AppSource ist für Geschäftslösungen und Azure Marketplace für IT-Lösungen vorgesehen. Ihr Angebotstyp, Ihre Transaktionsfunktionen und Ihre Kategorien bestimmen, wo Ihr Angebot veröffentlicht wird. Kategorien und Unterkategorien werden den einzelnen Onlineshops basierend auf dem Lösungstyp zugeordnet. 
+
+Wenn Ihr SaaS-Angebot eine IT-Lösung (Azure Marketplace) *und* eine Geschäftslösung (AppSource) ist, wählen Sie eine Kategorie und Unterkategorie aus, die für jeden Onlineshop gilt. Bei Angeboten, die in beiden Onlineshops veröffentlicht werden, sollte sich das Nutzenversprechen auf eine IT-Lösung *und* auf eine Geschäftslösung beziehen.
+
+> [!IMPORTANT]
+> SaaS-Angebote mit [getakteter Abrechnung](partner-center-portal/saas-metered-billing.md) sind über den Azure Marketplace und das Azure-Portal verfügbar. SaaS-Angebote, die nur private Pläne umfassen, sind über das Azure-Portal verfügbar.
+
+| Getaktete Abrechnung | Öffentlicher Plan | Privater Tarif | Verfügbar in: |
+|---|---|---|---|
+| Ja             | Ja         | Nein           | Azure Marketplace und Azure-Portal |
+| Ja             | Ja         | Ja          | Azure Marketplace und Azure-Portal* |
+| Ja             | Nein          | Ja          | Nur Azure-Portal |
+| Nein              | Nein          | Ja          | Nur Azure-Portal |
+|||||
+
+&#42; Der private Plan des Angebots ist nur über das Azure-Portal verfügbar.
+
+Beispielsweise wird ein Angebot mit getakteter Abrechnung, das nur einen privaten Plan (keinen öffentlichen Plan) umfasst, von Kunden im Azure-Portal erworben. Erfahren Sie mehr über [Private Angebote im kommerziellen Microsoft-Marketplace](private-offers.md).
+
+Ausführliche Informationen zu Auflistungsoptionen, die von Onlineshops unterstützt werden, finden Sie unter [Auslistungs- und Preisoptionen nach Onlineshop](determine-your-listing-type.md#listing-and-pricing-options-by-online-store). Weitere Informationen zu Kategorien und Unterkategorien finden Sie unter [Kategorien und Unterkategorien im kommerziellen Marketplace](categories.md).
 
 ## <a name="legal-contracts"></a>Verträge
 

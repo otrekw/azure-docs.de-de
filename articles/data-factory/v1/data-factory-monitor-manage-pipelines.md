@@ -3,20 +3,20 @@ title: Überwachen und Verwalten von Pipelines mit dem Azure-Portal und PowerShe
 description: Es wird beschrieben, wie Sie von Ihnen erstellte Azure Data Factorys und Pipelines mithilfe des Azure-Portals und Azure PowerShell überwachen und verwalten.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
-ms.openlocfilehash: 4473df318f65c0e0097aed298d0be57e3bca382b
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2a30c755bc19849ad3a821cbbc75b787a3b0bb98
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92636934"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495853"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Überwachen und Verwalten von Azure Data Factory-Pipelines mit dem Azure-Portal und PowerShell
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ In diesem Abschnitt wird auch beschrieben, wie ein Slice eines Datasets von eine
 
 ### <a name="navigate-to-your-data-factory"></a>Navigieren zu Ihrer Data Factory
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Klicken Sie im Menü auf der linken Seite auf **Data Factorys** . Wenn die Option nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys** .
+2. Klicken Sie im Menü auf der linken Seite auf **Data Factorys**. Wenn die Option nicht angezeigt wird, klicken Sie auf **Weitere Dienste** und anschließend unter der Kategorie **INTELLIGENCE + ANALYSE** auf **Data Factorys**.
 
    ![Alle durchsuchen > Data Factorys](./media/data-factory-monitor-manage-pipelines/browseall-data-factories.png)
 3. Wählen Sie auf dem Blatt **Data Factorys** die gewünschte Data Factory aus.
@@ -59,14 +59,14 @@ In diesem Abschnitt wird auch beschrieben, wie ein Slice eines Datasets von eine
    ![Blatt "Data Factory"](./media/data-factory-monitor-manage-pipelines/data-factory-blade.png)
 
 #### <a name="diagram-view-of-your-data-factory"></a>Diagrammansicht Ihrer Data Factory
-Die Ansicht **Diagramm** einer Data Factory bietet eine zentrale Konsole zum Überwachen und Verwalten der Data Factory und ihrer Ressourcen. Klicken Sie auf der Data Factory-Startseite auf **Diagramm** , um die Ansicht **Diagramm** Ihrer Data Factory anzuzeigen.
+Die Ansicht **Diagramm** einer Data Factory bietet eine zentrale Konsole zum Überwachen und Verwalten der Data Factory und ihrer Ressourcen. Klicken Sie auf der Data Factory-Startseite auf **Diagramm**, um die Ansicht **Diagramm** Ihrer Data Factory anzuzeigen.
 
 ![Diagrammansicht](./media/data-factory-monitor-manage-pipelines/diagram-view.png)
 
 Sie können die Optionen „Vergrößern“, „Verkleinern“, „Mit Zoom anpassen“, „Auf 100 % vergrößern“ verwenden und das Layout des Diagramms sperren sowie Pipelines und Datasets automatisch positionieren. Außerdem können Sie die Informationen zur Datenherkunft anzeigen (also vor- und nachgeschaltete Elemente von ausgewählten Elementen).
 
 ### <a name="activities-inside-a-pipeline"></a>Aktivitäten innerhalb einer Pipeline
-1. Klicken Sie mit der rechten Maustaste auf die Pipeline, und klicken Sie dann auf **Pipeline öffnen** , um alle Aktivitäten in der Pipeline sowie Ein- und Ausgabedatasets für die Aktivitäten anzuzeigen. Diese Funktion ist hilfreich, wenn Ihre Pipeline mehr als eine Aktivität enthält und Sie die operative Herkunft einer einzelnen Pipeline verstehen möchten.
+1. Klicken Sie mit der rechten Maustaste auf die Pipeline, und klicken Sie dann auf **Pipeline öffnen**, um alle Aktivitäten in der Pipeline sowie Ein- und Ausgabedatasets für die Aktivitäten anzuzeigen. Diese Funktion ist hilfreich, wenn Ihre Pipeline mehr als eine Aktivität enthält und Sie die operative Herkunft einer einzelnen Pipeline verstehen möchten.
 
     ![Menü "Pipeline öffnen"](./media/data-factory-monitor-manage-pipelines/open-pipeline-menu.png)     
 2. Im folgenden Beispiel befindet sich eine Kopieraktivität mit einer Eingabe und einer Ausgabe in der Pipeline. 
@@ -152,7 +152,7 @@ Wenn der Slice mehrere Male ausgeführt wurde, enthält die Liste **Aktivitätsa
 
 ![Aktivitätsausführung – Details](./media/data-factory-monitor-manage-pipelines/activity-run-details.png)
 
-Wenn der Slice nicht den Status **Bereit** hat, sehen Sie die vorgelagerten Slices, die nicht bereit sind und das Ausführen des aktuellen Slice blockieren, in der Liste **Vorgelagerte Slices, die nicht bereit sind** . Diese Funktion ist nützlich, wenn der Slice den Status **Warten** hat und Sie die vorgelagerten Abhängigkeiten verstehen möchten, auf die der Slice wartet.
+Wenn der Slice nicht den Status **Bereit** hat, sehen Sie die vorgelagerten Slices, die nicht bereit sind und das Ausführen des aktuellen Slice blockieren, in der Liste **Vorgelagerte Slices, die nicht bereit sind**. Diese Funktion ist nützlich, wenn der Slice den Status **Warten** hat und Sie die vorgelagerten Abhängigkeiten verstehen möchten, auf die der Slice wartet.
 
 ![Vorgelagerte Slices, die nicht bereit sind](./media/data-factory-monitor-manage-pipelines/upstream-slices-not-ready.png)
 
@@ -163,7 +163,7 @@ Nachdem Sie eine Data Factory bereitgestellt haben und die Pipelines einen gült
 
 Der Statusübergang für das Dataset in der Data Factory läuft wie folgt ab: Warten > In Bearbeitung/In Bearbeitung (Wird überprüft) > Bereit/Fehler.
 
-Der Slice startet im Status **Warten** . Es wird gewartet, bis die Vorbedingungen erfüllt sind, bevor die Ausführung beginnen kann. Anschließend beginnt die Ausführung der Aktivität, und der Slice wechselt in den Status **In Bearbeitung** . Die Ausführung der Aktivität kann erfolgreich oder nicht erfolgreich sein. Der Slice wird basierend auf dem Ergebnis der Ausführung als **Bereit** oder **Fehler** markiert.
+Der Slice startet im Status **Warten**. Es wird gewartet, bis die Vorbedingungen erfüllt sind, bevor die Ausführung beginnen kann. Anschließend beginnt die Ausführung der Aktivität, und der Slice wechselt in den Status **In Bearbeitung**. Die Ausführung der Aktivität kann erfolgreich oder nicht erfolgreich sein. Der Slice wird basierend auf dem Ergebnis der Ausführung als **Bereit** oder **Fehler** markiert.
 
 Sie können den Slice vom Status **Bereit** oder **Fehler** in den Status **Warten** zurücksetzen. Außerdem können Sie als Status für den Slice auch **Überspringen** angeben, wodurch die Aktivität nicht ausgeführt und der Slice nicht verarbeitet wird.
 
@@ -211,12 +211,12 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
 2. Klicken Sie auf dem Blatt **Datenslice** auf die fehlerhafte Aktivitätsausführung.
 
    ![Datenslice mit einem Fehler](./media/data-factory-monitor-manage-pipelines/dataslice-with-error.png)
-3. Auf dem Blatt **Aktivitätsausführung – Details** können Sie die mit der Verarbeitung von HDInsight verknüpften Dateien herunterladen. Klicken Sie für „Status/stderr“ auf **Download** , um die Fehlerprotokolldatei herunterzuladen, die Einzelheiten zum Fehler enthält.
+3. Auf dem Blatt **Aktivitätsausführung – Details** können Sie die mit der Verarbeitung von HDInsight verknüpften Dateien herunterladen. Klicken Sie für „Status/stderr“ auf **Download**, um die Fehlerprotokolldatei herunterzuladen, die Einzelheiten zum Fehler enthält.
 
    ![Blatt "Aktivitätsausführung – Details" mit Fehler](./media/data-factory-monitor-manage-pipelines/activity-run-details-with-error.png)     
 
 #### <a name="use-powershell-to-debug-an-error"></a>Verwenden von PowerShell zum Debuggen eines Fehlers
-1. Starten Sie **PowerShell** .
+1. Starten Sie **PowerShell**.
 2. Führen Sie den Befehl **Get-AzDataFactorySlice** aus, um die Slices und deren Status anzuzeigen. Ein Slice mit dem Status **Fehler** sollte angezeigt werden.        
 
     ```powershell   
@@ -229,7 +229,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     ```
 
    Ersetzen Sie **StartDateTime** durch die Startzeit der Pipeline. 
-3. Führen Sie nun das **Get-AzDataFactoryRun** -Cmdlet zum Abrufen von Details zur Aktivitätsausführung für den Slice aus.
+3. Führen Sie nun das **Get-AzDataFactoryRun**-Cmdlet zum Abrufen von Details zur Aktivitätsausführung für den Slice aus.
 
     ```powershell   
     Get-AzDataFactoryRun [-ResourceGroupName] <String> [-DataFactoryName] <String> [-DatasetName] <String> [-StartDateTime]
@@ -267,7 +267,7 @@ Wenn eine Aktivitätsausführung in einer Pipeline nicht erfolgreich ist, hat da
     PipelineName            : EnrichGameLogsPipeline
     Type                    :
     ```
-5. Sie können das **Save-AzDataFactoryLog** -Cmdlet mit dem ID-Wert ausführen, den Sie in der Ausgabe finden, und die Protokolldateien mithilfe der Option **-DownloadLogsoption** für das Cmdlet herunterladen.
+5. Sie können das **Save-AzDataFactoryLog**-Cmdlet mit dem ID-Wert ausführen, den Sie in der Ausgabe finden, und die Protokolldateien mithilfe der Option **-DownloadLogsoption** für das Cmdlet herunterladen.
 
     ```powershell
     Save-AzDataFactoryLog -ResourceGroupName "ADF" -DataFactoryName "LogProcessingFactory" -Id "841b77c9-d56c-48d1-99a3-8c16c3e77d39" -DownloadLogs -Output "C:\Test"
@@ -288,7 +288,7 @@ Für den Fall, dass der Slice die Überprüfung aufgrund eines Richtlinienfehler
 ![Beheben von Fehlern und Überprüfen](./media/data-factory-monitor-manage-pipelines/fix-error-and-validate.png)
 
 ### <a name="use-azure-powershell"></a>Mithilfe von Azure PowerShell
-Sie können Ausführungen, bei denen Fehler aufgetreten sind, mit dem **Set-AzDataFactorySliceStatus** -Cmdlet wiederholen. Im Thema [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) finden Sie die Syntax und ausführliche Informationen zum Cmdlet.
+Sie können Ausführungen, bei denen Fehler aufgetreten sind, mit dem **Set-AzDataFactorySliceStatus**-Cmdlet wiederholen. Im Thema [Set-AzDataFactorySliceStatus](/powershell/module/az.datafactory/set-azdatafactoryslicestatus) finden Sie die Syntax und ausführliche Informationen zum Cmdlet.
 
 **Beispiel:**
 
@@ -309,7 +309,7 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Erstellen einer neuen Warnung](media/data-factory-monitor-manage-pipelines/v1alerts-image2.png)
 
-3.  Definieren Sie die **Warnungsbedingung** . (Achten Sie darauf, im Feld **Nach Ressourcentyp filtern** die Option **Data Factorys** auszuwählen.) Sie können auch Werte für **Dimensionen** angeben.
+3.  Definieren Sie die **Warnungsbedingung**. (Achten Sie darauf, im Feld **Nach Ressourcentyp filtern** die Option **Data Factorys** auszuwählen.) Sie können auch Werte für **Dimensionen** angeben.
 
     ![Warnungsbedingung definieren – Ziel auswählen](media/data-factory-monitor-manage-pipelines/v1alerts-image3.png)
 
@@ -317,11 +317,11 @@ Set-AzDataFactorySliceStatus -ResourceGroupName ADF -DataFactoryName WikiADF -Da
 
     ![Warnungsbedingung definieren – Warnungslogik hinzufügen](media/data-factory-monitor-manage-pipelines/v1alerts-image5.png)
 
-4.  Definieren Sie die **Warnungsdetails** .
+4.  Definieren Sie die **Warnungsdetails**.
 
     ![Definieren der Warnungsdetails](media/data-factory-monitor-manage-pipelines/v1alerts-image6.png)
 
-5.  Definieren Sie die **Aktionsgruppe** .
+5.  Definieren Sie die **Aktionsgruppe**.
 
     ![Definieren der Aktionsgruppe – neue Aktionsgruppe erstellen](media/data-factory-monitor-manage-pipelines/v1alerts-image7.png)
 

@@ -11,23 +11,23 @@ ms.author: nigup
 author: nishankgu
 ms.date: 11/09/2020
 ms.custom: how-to, seodec18, devx-track-azurecli, contperfq2
-ms.openlocfilehash: dd8eff01cd52f8d80eb56f3a1ebe924763c8b70c
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 90abd46e73ecb50b5e6de40218571d0ec899752e
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441698"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95012962"
 ---
 # <a name="manage-access-to-an-azure-machine-learning-workspace"></a>Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich
 
 In diesem Artikel erfahren Sie, wie Sie den Zugriff (Autorisierung) auf einen Azure Machine Learning-Arbeitsbereich verwalten können. [Die rollenbasierte Zugriffssteuerung von Azure (Azure RBAC)](../role-based-access-control/overview.md) wird verwendet, um den Zugriff auf Azure-Ressourcen zu verwalten, z. B. die Möglichkeit, neue Ressourcen zu erstellen oder vorhandene zu verwenden. Benutzer in Ihrer Azure Active Directory-Instanz (Azure AD) erhalten bestimmte Rollen, anhand derer sie Zugriff auf Ressourcen erhalten. Azure bietet sowohl integrierte Rollen als auch die Möglichkeit, benutzerdefinierte Rollen zu erstellen.
 
 > [!TIP]
-> Während sich dieser Artikel auf Azure Machine Learning konzentriert, stellen einzelne Dienste, auf die Azure ML angewiesen ist, ihre eigenen RBAC-Einstellungen zur Verfügung. Mithilfe der Informationen in diesem Artikel können Sie z. B. konfigurieren, wer Anforderungen zur Bewertung an ein Modell übermitteln kann, das als Webdienst in Azure Kubernetes Service bereitgestellt wird. Azure Kubernetes Service bietet aber einen eigenen Satz von Azure RBAC-Rollen. Dienstspezifische RBAC-Informationen, die für Azure Machine Learning hilfreich sein können, finden Sie unter den folgenden Links:
+> Während sich dieser Artikel auf Azure Machine Learning konzentriert, stellen einzelne Dienste, auf die Azure ML angewiesen ist, ihre eigenen RBAC-Einstellungen zur Verfügung. Mithilfe der Informationen in diesem Artikel können Sie z. B. konfigurieren, wer Anforderungen zur Bewertung an ein Modell übermitteln kann, das als Webdienst in Azure Kubernetes Service bereitgestellt wird. Azure Kubernetes Service bietet aber einen eigenen Satz von Azure-Rollen. Dienstspezifische RBAC-Informationen, die für Azure Machine Learning hilfreich sein können, finden Sie unter den folgenden Links:
 >
 > * [Steuern des Zugriffs auf Azure Kubernetes-Clusterressourcen](../aks/azure-ad-rbac.md)
 > * [Verwenden von Azure RBAC für die Kubernetes-Autorisierung](../aks/manage-azure-rbac.md)
-> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](/storage/common/storage-auth-aad-rbac-portal.md)
+> * [Verwenden von Azure RBAC für den Zugriff auf Blobdaten](/azure/storage/common/storage-auth-aad-rbac-portal)
 
 > [!WARNING]
 > Die Anwendung einiger Rollen kann die Funktionalität der Benutzeroberfläche in Azure Machine Learning Studio für andere Benutzer einschränken. Wenn z. B. die Rolle eines Benutzers nicht die Möglichkeit hat, eine Compute-Instanz zu erstellen, ist die Option zum Erstellen einer Compute-Instanz im Studio nicht verfügbar. Dieses Verhalten wird erwartet und verhindert, dass der Benutzer Vorgänge versucht, die einen Fehler vom Typ „Zugriff verweigert“ zurückgeben würden.

@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: troubleshooting
-ms.date: 11/17/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 6fbb9b054433905d41d0171ab08b4647618be466
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: b30ed0cca680013b85efe064d59fb7cb73d753d2
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94745682"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95239549"
 ---
 # <a name="troubleshoot-cross-region-replication"></a>Problembehandlung für die regionsübergreifende Replikation
 
@@ -50,6 +50,12 @@ In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Si
 |-|-|
 |     `Replication   cannot be deleted, mirror state needs to be in status: Broken before deleting`    |     Überprüfen Sie, ob die Replikation entweder unterbrochen oder deinitialisiert wurde und sich im Leerlauf befindet (Initialisierungsfehler).    |
 |     `Cannot delete   source replication`    |     Das Löschen der Replikation auf Quellseite ist nicht zulässig. Sorgen Sie dafür, dass die Replikation auf Zielseite gelöscht wird.    |
+
+## <a name="errors-deleting-volume"></a>Fehler beim Löschen des Volumes
+
+|     Fehlermeldung    |     Lösung    |
+|-|-|
+| `Volume is a member of an active volume replication relationship`  |  Löschen Sie die Replikation, bevor Sie das Volume löschen. Weitere Informationen finden Sie unter [Löschen von Replikationen](cross-region-replication-delete.md). Für diesen Vorgang müssen Sie das Peering unterbrechen, bevor Sie die Replikation für das Volume löschen. |
 | `Volume with replication cannot be deleted`  |  Löschen Sie die Replikation, bevor Sie das Volume löschen. Weitere Informationen finden Sie unter [Löschen von Replikationen](cross-region-replication-delete.md). Für diesen Vorgang müssen Sie das Peering unterbrechen, bevor Sie die Replikation für das Volume löschen. 
 
 ## <a name="errors-resyncing-volume"></a>Fehler bei Neusynchronisierung eines Volumes
@@ -69,7 +75,7 @@ In diesem Artikel werden Fehlermeldungen und Lösungen beschrieben, mit denen Si
 
 * [Regionsübergreifende Replikation](cross-region-replication-introduction.md)
 * [Regionsübergreifende Replikation: Anforderungen und Überlegungen](cross-region-replication-requirements-considerations.md)
-* [Erstellen eines Replikationspeerings](cross-region-replication-create-peering.md)
+* [Erstellen der Volumereplikation](cross-region-replication-create-peering.md)
 * [Anzeigen des Integritätsstatus der Replikationsbeziehung](cross-region-replication-display-health-status.md)
 * [Verwalten der Notfallwiederherstellung](cross-region-replication-manage-disaster-recovery.md)
 * [Problembehandlung für die regionsübergreifende Replikation](troubleshoot-cross-region-replication.md)

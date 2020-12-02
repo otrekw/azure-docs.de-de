@@ -3,20 +3,20 @@ title: Aktualisieren von Machine Learning-Modellen mithilfe von Azure Data Facto
 description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory v1 und Azure Machine Learning Studio (klassisch).
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: c456c7eb31e1e8e66aa3276a0cb5f6f8b39efa9a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 556936eb6e8c1c1c2dd1fab4ce7dfc1b648710b7
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631749"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496601"
 ---
 # <a name="updating-azure-machine-learning-studio-classic-models-using-update-resource-activity"></a>Aktualisieren von Azure Machine Learning Studio (klassisch)-Modellen mithilfe der Ressourcenaktualisierungsaktivität
 
@@ -42,12 +42,12 @@ Dieser Artikel ergänzt den Hauptartikel zu Azure Data Factory: Integration von 
 Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten für Azure Machine Learning Studio (klassisch) mit neuen Eingabedatasets neu trainiert werden. Wenn Sie mit dem erneuten Trainieren fertig sind, sollten Sie den Bewertungswebdienst mit dem neu trainierten ML-Modell aktualisieren. Typische Schritte, um das erneute Trainieren und das Aktualisieren von Modellen für Studio (klassisch) über Webdienste zu ermöglichen:
 
 1. Erstellen Sie ein Experiment in [Azure Machine Learning Studio (klassisch)](https://studio.azureml.net).
-2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie Azure Machine Learning Studio (klassisch), um Webdienste für das **Trainingsexperiment** und das Bewertungs-/ **Vorhersageexperiment** zu veröffentlichen.
+2. Wenn Sie mit dem Modell zufrieden sind, verwenden Sie Azure Machine Learning Studio (klassisch), um Webdienste für das **Trainingsexperiment** und das Bewertungs-/**Vorhersageexperiment** zu veröffentlichen.
 
 In der folgenden Tabelle werden die in diesem Beispiel verwendeten Webdienste beschrieben.  Details finden Sie unter [Erneutes Trainieren und Bereitstellen eines Machine Learning-Modells](../../machine-learning/classic/retrain-machine-learning-model.md).
 
-- **Trainingswebdienst** : Empfängt Trainingsdaten und erzeugt trainierte Modelle. Die Ausgabe des erneuten Trainierens ist eine ILEARNER-Datei in Azure Blob Storage. Der **Standardendpunkt** wird automatisch erstellt, wenn Sie das Trainingsexperiment als Webdienst veröffentlichen. Sie können weitere Endpunkte erstellen, aber im Beispiel wird nur der Standardendpunkt verwendet.
-- **Bewertungswebdienst** : Empfängt Datenbeispiele ohne Bezeichnung und macht Vorhersagen. Die Ausgabe der Vorhersage kann verschiedene Formen aufweisen, z. B. eine CSV-Datei oder Zeilen in Azure SQL-Datenbank. Dies ist abhängig von der Konfiguration des Experiments. Der Standardendpunkt wird automatisch erstellt, wenn Sie das Vorhersageexperiment als Webdienst veröffentlichen. 
+- **Trainingswebdienst**: Empfängt Trainingsdaten und erzeugt trainierte Modelle. Die Ausgabe des erneuten Trainierens ist eine ILEARNER-Datei in Azure Blob Storage. Der **Standardendpunkt** wird automatisch erstellt, wenn Sie das Trainingsexperiment als Webdienst veröffentlichen. Sie können weitere Endpunkte erstellen, aber im Beispiel wird nur der Standardendpunkt verwendet.
+- **Bewertungswebdienst**: Empfängt Datenbeispiele ohne Bezeichnung und macht Vorhersagen. Die Ausgabe der Vorhersage kann verschiedene Formen aufweisen, z. B. eine CSV-Datei oder Zeilen in Azure SQL-Datenbank. Dies ist abhängig von der Konfiguration des Experiments. Der Standardendpunkt wird automatisch erstellt, wenn Sie das Vorhersageexperiment als Webdienst veröffentlichen. 
 
 Die folgende Abbildung zeigt die Beziehung zwischen Trainings- und Bewertungsendpunkten in Azure Machine Learning Studio (klassisch):
 
@@ -60,8 +60,8 @@ Sie können den **Bewertungswebdienst** aufrufen, indem Sie die **Ressourcenaktu
 ## <a name="scoring-web-service-is-a-classic-web-service"></a>Der Bewertungswebdienst ist ein klassischer Webdienst.
 Wenn der Bewertungswebdienst ein **klassischer Webdienst** ist, erstellen Sie den zweiten **nicht standardmäßigen und aktualisierbaren Endpunkt** mithilfe des Azure-Portals. Die erforderlichen Schritte finden Sie im Artikel [Erstellen von Endpunkten](../../machine-learning/classic/create-endpoint.md). Führen Sie folgende Schritte aus, nachdem Sie den nicht standardmäßigen aktualisierbaren Endpunkt erstellt haben:
 
-* Klicken Sie auf **BATCHAUSFÜHRUNG** , um den URI-Wert für die **mlEndpoint** -JSON-Eigenschaft zu erhalten.
-* Klicken Sie auf den Link **RESSOURCE AKTUALISIEREN** , um den URI-Wert für die **updateResourceEndpoint** -JSON-Eigenschaft abzurufen. Den API-Schlüssel finden Sie auf der Seite des Endpunkts (unten rechts).
+* Klicken Sie auf **BATCHAUSFÜHRUNG**, um den URI-Wert für die **mlEndpoint**-JSON-Eigenschaft zu erhalten.
+* Klicken Sie auf den Link **RESSOURCE AKTUALISIEREN**, um den URI-Wert für die **updateResourceEndpoint**-JSON-Eigenschaft abzurufen. Den API-Schlüssel finden Sie auf der Seite des Endpunkts (unten rechts).
 
 ![Aktualisierbarer Endpunkt](./media/data-factory-azure-ml-batch-execution-activity/updatable-endpoint.png)
 
@@ -82,7 +82,7 @@ Das folgende Beispiel enthält eine JSON-Beispieldefinition für den mit AzureML
 ```
 
 ## <a name="scoring-web-service-is-azure-resource-manager-web-service"></a>Der Bewertungswebdienst ist ein Azure Resource Manager-Webdienst. 
-Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-Endpunkt verfügbar macht, müssen Sie den zweiten **nicht standardmäßigen** Endpunkt nicht hinzufügen. Das **updateResourceEndpoint** -Element im verknüpften Dienst hat das Format: 
+Wenn der Webdienst der neue Webdiensttyp ist, der einen Azure Resource Manager-Endpunkt verfügbar macht, müssen Sie den zweiten **nicht standardmäßigen** Endpunkt nicht hinzufügen. Das **updateResourceEndpoint**-Element im verknüpften Dienst hat das Format: 
 
 ```
 https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resource-group-name}/providers/Microsoft.MachineLearning/webServices/{web-service-name}?api-version=2016-05-01-preview. 
@@ -214,7 +214,7 @@ Führen Sie in **Azure Machine Learning Studio (klassisch)** folgende Schritte a
 2. Klicken Sie in der Liste der Webdienste auf den **Trainingswebdienst** .
 3. Klicken Sie neben dem Textfeld **API-Schlüssel** auf „Kopieren“. Fügen Sie den Schlüssel aus der Zwischenablage in den Data Factory-JSON-Editor ein.
 4. Klicken Sie in **Azure Machine Learning Studio (klassisch)** auf den Link **BATCHAUSFÜHRUNG**.
-5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung** , und fügen Sie ihn in den Data Factory-JSON-Editor ein.   
+5. Kopieren Sie den **Anforderungs-URI** im Abschnitt **Anforderung**, und fügen Sie ihn in den Data Factory-JSON-Editor ein.   
 
 ### <a name="linked-service-for-studio-classic-updatable-scoring-endpoint"></a>Verknüpfter Dienst für den aktualisierbaren Bewertungsendpunkt von Studio (klassisch):
 Der folgende JSON-Codeausschnitt definiert einen mit Studio (klassisch) verknüpften Dienst, der auf den nicht standardmäßigen aktualisierbaren Endpunkt des Bewertungswebdiensts verweist.  

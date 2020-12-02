@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: c54c4608f04c8f98e21309ca531452ae0a34fdf2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2391a4056d5c0c952677b57e7d37a181ef0eacc0
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646371"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95808860"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -113,6 +113,9 @@ SUSE Linux Enterprise Server 11 | SP3<br/><br/> Ein Upgrade von replizierenden C
 SUSE Linux Enterprise Server 11 | SP4
 Oracle Linux | 6.4, 6.5, 6.6, 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, [7.7](https://support.microsoft.com/en-us/help/4531426/update-rollup-42-for-azure-site-recovery), [7.8](https://support.microsoft.com/help/4573888/), [8.0](https://support.microsoft.com/help/4573888/), [8.1](https://support.microsoft.com/help/4573888/)  <br/> Mit einem Red Hat-kompatiblen Kernel oder Unbreakable Enterprise Kernel Release 3, 4 und 5 (UEK3, UEK4, UEK5)<br/><br/>8.1<br/>Die Ausführung wird auf allen UEK-Kernels und RedHat-Kernels vom Typ „<= 3.10.0-1062.*“ in [9.35](https://support.microsoft.com/help/4573888/) unterstützt. Die Unterstützung für die restlichen RedHat-Kernels ist in [9.36](https://support.microsoft.com/help/4578241/) verfügbar.
 
+> [!NOTE]
+> Stellen Sie sicher, dass Azure Site Recovery für Linux-Versionen keine benutzerdefinierten Betriebssystemimages unterstützt. Es werden nur die vordefinierten Kernel unterstützt, die bei Veröffentlichungen/Updates von Nebenversionen der Distribution enthalten sind.
+
 ** Hinweis: Zusätzlich zur neuesten Version des Mobilitäts-Agents gibt es ein Azure Site Recovery-Rollout eines Hotfix-Patches, um die neuesten Linux-Kernel innerhalb von 15 Tagen nach Veröffentlichung zu unterstützen. Der Rollout dieses Fixes erfolgt zwischen zwei Hauptversionen. Befolgen Sie zum Aktualisieren auf die aktuelle Version von Mobility Agent (einschließlich des Hotfix-Patches) die Schritte in [diesem Artikel](service-updates-how-to.md#azure-vm-disaster-recovery-to-azure). Ein Rollout dieses Patches erfolgt derzeit für Mobility Agent-Instanzen im Azure-zu-Azure DR-Szenario.
 
 #### <a name="supported-ubuntu-kernel-versions-for-azure-virtual-machines"></a>Unterstützte Ubuntu-Kernelversionen für virtuelle Azure-Computer
@@ -172,7 +175,7 @@ SUSE Linux Enterprise Server 15 und 15 SP1 | [9.34](https://support.microsoft.c
 * Volume-Manager: LVM2
 
 > [!NOTE]
-> Multipfadsoftware wird nicht unterstützt. 
+> Multipfadsoftware wird nicht unterstützt.
 
 
 ## <a name="replicated-machines---compute-settings"></a>Replizierte Computer – Compute-Einstellungen
@@ -213,7 +216,7 @@ In dieser Tabelle ist die Unterstützung für den Betriebssystemdatenträger, Da
 --- | --- | ---
 Maximale Größe des Betriebssystemdatenträgers | 2\.048 GB | [Erfahren Sie mehr](../virtual-machines/managed-disks-overview.md) zu VM-Datenträgern.
 Temporärer Datenträger | Nicht unterstützt | Der temporäre Datenträger ist immer von der Replikation ausgeschlossen.<br/><br/> Speichern Sie auf dem temporären Datenträger keine persistenten Daten. [Weitere Informationen](../virtual-machines/managed-disks-overview.md)
-Maximale Größe des Datenträgers | 8\.192 GB für verwaltete Datenträger<br></br>4\.095 GB für nicht verwaltete Datenträger|
+Maximale Größe des Datenträgers | 32 TB für verwaltete Datenträger<br></br>4 TB für nicht verwaltete Datenträger|
 Minimale Größe des Datenträgers | Keine Einschränkung für nicht verwaltete Datenträger. 2 GB für verwaltete Datenträger |
 Maximale Anzahl von Datenträgern | Bis zu 64, gemäß der Unterstützung für eine bestimmte Azure-VM-Größe | [Erfahren Sie mehr](../virtual-machines/sizes.md) zu VM-Größen.
 Änderungsrate für Datenträger | Maximal 20 MBit/s pro Datenträger für Storage Premium. Maximal 2 MBit/s pro Datenträger für Standardspeicher. | Wenn die durchschnittliche Datenänderungsrate auf dem Datenträger dauerhaft über dem Maximalwert liegt, kann dies durch die Replikation nicht aufgeholt werden.<br/><br/>  Falls der Maximalwert aber nur sporadisch überschritten wird, kann die Replikation aufholen, aber es kommt ggf. zu einer leichten Verzögerung bei den Wiederherstellungspunkten.

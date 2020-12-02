@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 95139c862b82a85dbf7f50aef021ad71c5c8210f
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: cffa6b1200b7236b3c0a3e48b50c58275cf4c57b
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629443"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95316619"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Proxy- und Firewalleinstellungen der Azure-Dateisynchronisierung
 Die Azure-Dateisynchronisierung verbindet Ihre lokalen Server mit Azure Files, wodurch Synchronisierung für mehrere Standorte und Cloudtiering-Funktionalität ermöglicht werden. Daher muss ein lokaler Server eine Verbindung mit dem Internet haben. Ein IT-Administrator muss den besten Weg festlegen, auf dem der Server zu den Azure-Clouddiensten gelangt.
@@ -100,6 +100,7 @@ In der folgenden Tabelle sind die für eine Kommunikation erforderlichen Domäne
 | **Azure Storage (in englischer Sprache)** | &ast;.core.windows.net | &ast;.core.usgovcloudapi.net | Beim Herunterladen einer Datei auf dem Server wird diese Datenverschiebung effizienter ausgeführt, wenn eine direkte Verbindung zwischen dem Server und der Azure-Dateifreigabe im Speicherkonto besteht. Der Server hat einen SAS-Schlüssel, der nur gezielten Dateifreigabezugriff zulässt. |
 | **Azure-Dateisynchronisierung** | &ast;.one.microsoft.com<br>&ast;.afs.azure.net | &ast;.afs.azure.us | Nach der erstmaligen Serverregistrierung erhält der Server eine regionale URL für die Azure-Dateisynchronisierungs-Dienstinstanz in dieser Region. Der Server kann über die URL direkt und effizient mit der Instanz kommunizieren, die seine Synchronisierung verwaltet. |
 | **Microsoft PKI** | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | https://www.microsoft.com/pki/mscorp/cps<br><http://ocsp.msocsp.com> | Sobald der Agent für die Azure-Dateisynchronisierung installiert ist, werden über die PKI-URL Zwischenzertifikate heruntergeladen, die für die Kommunikation mit dem Azure-Dateisynchronisierungsdienst und der Azure-Dateifreigabe erforderlich sind. Mithilfe der OCSP-URL wird der Status eines Zertifikats überprüft. |
+| **Microsoft Update** | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | &ast;.update.microsoft.com<br>&ast;.download.windowsupdate.com<br>&ast;.dl.delivery.mp.microsoft.com<br>&ast;.emdl.ws.microsoft.com | Nachdem der Azure-Dateisynchronisierungs-Agent installiert wurde, werden Updates für diesen über die Microsoft Update-URLs heruntergeladen. |
 
 > [!Important]
 > Wenn Datenverkehr über „&ast;.afs.azure.net“ zugelassen wird, ist er nur für den Synchronisierungsdienst möglich. Es gibt keine anderen Microsoft-Dienste, die diese Domäne verwenden.

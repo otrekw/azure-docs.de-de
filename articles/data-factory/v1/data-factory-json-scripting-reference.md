@@ -3,20 +3,20 @@ title: Azure Data Factory – JSON-Skiptreferenz
 description: Stellt JSON-Schemas für Data Factory-Entitäten bereit.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6372976d85c7fdce2a729047d3ae36911412ecf1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3b4795a47f0e6dbf945bd4a1f9aaaa0df2137f91
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96019666"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495581"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-Skiptreferenz
 > [!NOTE]
@@ -377,7 +377,7 @@ Klicken Sie auf den Link für den Speicher, an dem Sie interessiert sind, um die
 | &nbsp; |Azure Data Lake Store |
 | &nbsp; |[Azure Cosmos DB](#azure-cosmos-db) |
 | &nbsp; |[Azure SQL-Datenbank](#azure-sql-database) |
-| &nbsp; |[Azure Synapse Analytics (ehemals SQL Data Warehouse)](#azure-synapse-analytics) |
+| &nbsp; |[Azure Synapse Analytics](#azure-synapse-analytics) |
 | &nbsp; |[Azure Cognitive Search](#azure-cognitive-search) |
 | &nbsp; |[Azure Table Storage](#azure-table-storage) |
 | **Datenbanken** |[Amazon Redshift](#amazon-redshift) |
@@ -1224,7 +1224,7 @@ Legen Sie beim Kopieren von Daten in Azure Synapse Analytics den **Senkentyp** d
 | Eigenschaft | BESCHREIBUNG | Zulässige Werte | Erforderlich |
 | --- | --- | --- | --- |
 | sqlWriterCleanupScript |Geben Sie eine Abfrage für die Kopieraktivität an, bei deren Ausführung die Daten eines bestimmten Slice bereinigt werden. |Eine Abfrageanweisung. |Nein |
-| allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus verwendet werden soll. <br/><br/> **Zum Laden von Daten in Synapse Analytics wird die Verwendung von PolyBase empfohlen.** |True <br/>False (Standardwert) |Nein |
+| allowPolyBase |Gibt an, ob (falls zutreffend) PolyBase anstelle des BULKINSERT-Mechanismus verwendet werden soll. <br/><br/> **Zum Laden von Daten in Azure Synapse Analytics wird die Verwendung von PolyBase empfohlen.** |True <br/>False (Standardwert) |Nein |
 | polyBaseSettings |Eine Gruppe von Eigenschaften, die angegeben werden können, wenn die **allowPolybase**-Eigenschaft auf **true** festgelegt ist. |&nbsp; |Nein |
 | rejectValue |Gibt die Anzahl oder den Prozentsatz von Zeilen an, die abgelehnt werden können, bevor für die Abfrage ein Fehler auftritt. <br/><br/>Weitere Informationen zu den PolyBase-Ablehnungsoptionen finden Sie im Abschnitt **Argumente** des Themas [CREATE EXTERNAL TABLE (Transact-SQL)](/sql/t-sql/statements/create-external-table-transact-sql) . |0 (Standardwert), 1, 2, … |Nein |
 | rejectType |Gibt an, ob die rejectValue-Option als Literalwert oder Prozentsatz angegeben ist. |Value (Standardwert), Percentage |Nein |

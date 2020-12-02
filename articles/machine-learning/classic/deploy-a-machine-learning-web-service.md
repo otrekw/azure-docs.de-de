@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
-ms.openlocfilehash: 5a588195f2095b2d0cb261e1573eeb9ec881f2fd
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: f77c0fb09dddd884335d31d630904ea6aeafeaf5
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93322838"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95495201"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Bereitstellen eines (klassischen) Azure Machine Learning Studio-Webdiensts
 
-**GILT FÜR:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 Azure Machine Learning Studio (klassisch) ermöglicht Ihnen, Vorhersageanalyselösungen zu erstellen und zu testen. Dann können Sie die Lösung als Webdienst bereitstellen.
@@ -34,9 +34,9 @@ Die Eingabe für BES gleicht der für RRS verwendeten Dateneingabe. BES liest im
 
 Allgemein betrachtet stellen Sie Ihr Modell in drei Schritten bereit:
 
-* **[Erstellen eines Trainingsexperiments]** : In Studio (klassisch) können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
-* **[Konvertieren in ein Vorhersageexperiment]** : Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
-* **Bereitstellung** als **[Neuer Webdienst]** oder **[Klassischer Webdienst]** : Wenn Sie Ihr Vorhersageexperiment als Azure-Webdienst bereitstellen, können Benutzer Daten an Ihr Modell senden und dessen Vorhersagen empfangen.
+* **[Erstellen eines Trainingsexperiments]**: In Studio (klassisch) können Sie ein Vorhersageanalysemodell mit Trainingsdaten, die Sie angeben, unter Verwendung eines großen Satzes von integrierten Machine Learning-Algorithmen trainieren und testen.
+* **[Konvertieren in ein Vorhersageexperiment]**: Sobald Ihr Modell mit vorhandenen Daten trainiert wurde, können Sie es verwenden, um neue Daten zu bewerten. Sie bereiten das Experiment auf Vorhersagen vor und optimieren es.
+* **Bereitstellung** als **[Neuer Webdienst]** oder **[Klassischer Webdienst]**: Wenn Sie Ihr Vorhersageexperiment als Azure-Webdienst bereitstellen, können Benutzer Daten an Ihr Modell senden und dessen Vorhersagen empfangen.
 
 ## <a name="create-a-training-experiment"></a>Erstellen eines Trainingsexperiments
 
@@ -83,15 +83,15 @@ Die Module in diesem Experiment führen im Wesentlichen vier verschiedene Funkti
 
 Wenn Sie dieses Trainingsexperiment in ein Vorhersageexperiment konvertieren, werden einige dieser Module nicht mehr benötigt oder dienen nun einem anderen Zweck:
 
-* **Data** : Die Daten in diesem Beispieldataset werden nicht während der Bewertung verwendet. Der Benutzer des Webdiensts stellt die Daten für die Bewertung bereit. Die Metadaten aus dem DataSet, z. B. Datentypen, werden jedoch vom trainierten Modell verwendet. Daher müssen Sie das DataSet im Vorhersageexperiment beibehalten, damit diese Metadaten bereitgestellt werden können.
+* **Data**: Die Daten in diesem Beispieldataset werden nicht während der Bewertung verwendet. Der Benutzer des Webdiensts stellt die Daten für die Bewertung bereit. Die Metadaten aus dem DataSet, z. B. Datentypen, werden jedoch vom trainierten Modell verwendet. Daher müssen Sie das DataSet im Vorhersageexperiment beibehalten, damit diese Metadaten bereitgestellt werden können.
 
-* **Prep** : Abhängig von den zum Bewerten übermittelten Benutzerdaten können diese Module zum Verarbeiten der eingehenden Daten erforderlich sein oder auch nicht. Die **Set Up Web Service** -Schaltfläche berührt diese nicht – Sie müssen entscheiden, wie sie mit Ihnen umgehen möchten.
+* **Prep**: Abhängig von den zum Bewerten übermittelten Benutzerdaten können diese Module zum Verarbeiten der eingehenden Daten erforderlich sein oder auch nicht. Die **Set Up Web Service**-Schaltfläche berührt diese nicht – Sie müssen entscheiden, wie sie mit Ihnen umgehen möchten.
   
     In diesem Beispiel könnten im Beispieldataset Werte fehlen, sodass ein [Clean Missing Data][clean-missing-data]-Modul für den Umgang mit ihnen einbezogen wurde. Darüber hinaus enthält das Beispieldataset Spalten, die zum Trainieren des Modells nicht benötigt werden. Daher wurde ein [Select Columns in Dataset][select-columns]-Modul einbezogen, um diese zusätzlichen Spalten aus dem Datenfluss auszuschließen. Wenn Sie wissen, dass in den zum Bewerten durch den Webdienst übermittelten Daten keine Werte fehlen, können Sie das Modul [Clean Missing Data][clean-missing-data] entfernen. Da das Modul [Select Columns in Dataset][select-columns] beim Festlegen der Datenspalten hilft, die das trainierte Modells erwartet, muss dieses Modul beibehalten werden.
 
 * **Train** – Diese Module werden zum Trainieren des Modells verwendet. Wenn Sie auf **Set Up Web Service** klicken, werden diese Module durch ein einzelnes Modul ersetzt, das das von Ihnen trainierte Modell enthält. Dieses neue Modul wird im Abschnitt **Trained Models** der Modulpalette gespeichert.
 
-* **Score** : In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in Testdaten und Trainingsdaten verwendet. Im Vorhersageexperiment trainieren wir nicht mehr, sodass [Split Data][split] entfernt werden kann. Ebenso werden das zweite [Score Model][score-model]-Modul und das [Evaluate Model][evaluate-model]-Modul verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und daher im Vorhersageexperiment nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
+* **Score**: In diesem Beispiel wird das Modul [Split Data][split] zum Unterteilen des Datenstroms in Testdaten und Trainingsdaten verwendet. Im Vorhersageexperiment trainieren wir nicht mehr, sodass [Split Data][split] entfernt werden kann. Ebenso werden das zweite [Score Model][score-model]-Modul und das [Evaluate Model][evaluate-model]-Modul verwendet, um Ergebnisse aus den Testdaten zu vergleichen, und daher im Vorhersageexperiment nicht benötigt. Das verbleibende Modul [Score Model][score-model] ist jedoch erforderlich, um über den Webdienst ein Bewertungsergebnis zurückzugeben.
 
 So sieht das Beispiel nach dem Klicken auf **Webdienst einrichten** aus:
 
@@ -102,7 +102,7 @@ Die Arbeit von **Set Up Web Service** kann ausreichend sein, um das Experiment z
 #### <a name="adjust-input-and-output-modules"></a>Anpassen von Eingabe- und Ausgabemodulen
 Im Trainingsexperiment haben Sie einen Satz von Trainingsdaten verwendet und dann durch Verarbeitung die Daten in einem Formular abgerufen, die für den Algorithmus für maschinelles Lernen erforderlich sind. Wenn für die voraussichtlich über den Webdienst empfangenen Daten keine Verarbeitung erforderlich ist, können Sie dies umgehen: stellen Sie die Verbindung der Ausgabe des Moduls **Web service input** mit einem anderen Knoten im Experiment her. Die Benutzerdaten werden jetzt im Modell an dieser Stelle eingehen.
 
-Beispielsweise setzt **Set Up Web Service** standardmäßig das **Web service input** -Modul an den Beginn des Datenflusses, wie in der Abbildung oben dargestellt. Aber wir können das **Web service input** -Modul manuell hinter den Datenverarbeitungsmodulen positionieren:
+Beispielsweise setzt **Set Up Web Service** standardmäßig das **Web service input**-Modul an den Beginn des Datenflusses, wie in der Abbildung oben dargestellt. Aber wir können das **Web service input**-Modul manuell hinter den Datenverarbeitungsmodulen positionieren:
 
 ![Verschieben des Web Service Input](./media/convert-training-experiment-to-scoring-experiment/figure4.png)
 
@@ -138,7 +138,7 @@ Die folgenden Schritte zeigen, wie Sie ein Vorhersageexperiment als neuen Webdie
 
 Nachdem das Vorhersageexperiment vorbereitet wurde, können Sie es als neuen Azure-Webdienst (auf Resource Manager-Basis) bereitstellen. Mithilfe des Webdiensts können Benutzer Daten an das Modell senden, und das Modell gibt seine Vorhersagen zurück.
 
-Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service** , und wählen Sie **Deploy Web Service [neuen]** aus.  Die Bereitstellungsseite des Webdienstportals von Machine Learning Studio (klassisch) wird geöffnet.
+Um das Vorhersageexperiment bereitzustellen, klicken Sie unten im Experimentbereich auf **Run** . Sobald das Experiment ausgeführt wurde, klicken Sie auf **Deploy Web Service**, und wählen Sie **Deploy Web Service [neuen]** aus.  Die Bereitstellungsseite des Webdienstportals von Machine Learning Studio (klassisch) wird geöffnet.
 
 > [!NOTE] 
 > Zum Bereitstellen eines neuen Webdiensts müssen Sie über ausreichende Berechtigungen in dem Abonnement verfügen, an das Sie den Webdienst bereitstellen. Weitere Informationen finden Sie unter [Verwalten eines Webdiensts im Azure Machine Learning Web Services-Portal](manage-new-webservice.md). 
@@ -250,7 +250,7 @@ Klicken Sie zum Testen des Stapelausführungsdiensts auf den Vorschaulink **Test
 
 Auf der Registerkarte **CONFIGURATION** können Sie den Anzeigenamen des Diensts ändern und eine Beschreibung eingeben. Der Name und die Beschreibung werden im [Azure-Portal](https://portal.azure.com/) angezeigt, in dem Sie Ihre Webdienste verwalten.
 
-Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **INPUT SCHEMA** , **OUTPUT SCHEMA** und **WEB SERVICE PARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet.
+Sie können eine Beschreibung für die Eingabedaten, Ausgabedaten und Webdienstparameter bereitstellen, indem Sie Zeichenfolgen für jede Spalte unter **INPUT SCHEMA**, **OUTPUT SCHEMA** und **WEB SERVICE PARAMETER** eingeben. Diese Beschreibungen werden in der Beispielcodedokumentation für den Webdienst verwendet.
 
 Sie können die Protokollierung aktivieren, um Fehler zu diagnostizieren, die angezeigt werden, wenn auf den Webdienst zugegriffen wird. Weitere Informationen hierzu finden Sie unter [Aktivieren der Protokollierung für (klassische) Machine Learning Studio-Webdienste](web-services-logging.md).
 
@@ -275,7 +275,7 @@ Weitere Informationen finden Sie unter [Verwalten eines (klassischen) Azure Mach
 ## <a name="update-the-web-service"></a>Aktualisieren des Webdiensts
 Sie können Änderungen am Webdienst vornehmen, z. B. das Modell mit zusätzlichen Trainingsdaten aktualisieren, und ihn dann erneut bereitstellen, wobei der ursprüngliche Webdienst überschrieben wird.
 
-Um den Webdienst zu aktualisieren, öffnen Sie das ursprüngliche Vorhersageexperiment, das Sie zum Bereitstellen des Webdiensts verwendet haben, und klicken Sie auf **SPEICHERN UNTER** , um eine bearbeitbare Kopie zu erstellen. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Webdienst bereitstellen**.
+Um den Webdienst zu aktualisieren, öffnen Sie das ursprüngliche Vorhersageexperiment, das Sie zum Bereitstellen des Webdiensts verwendet haben, und klicken Sie auf **SPEICHERN UNTER**, um eine bearbeitbare Kopie zu erstellen. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Webdienst bereitstellen**.
 
 Da Sie dieses Experiment zuvor bereitgestellt haben, werden Sie gefragt, ob Sie den vorhandenen Dienst überschreiben (klassischer Webdienst) oder aktualisieren (neuer Webdienst) möchten. Wenn Sie auf **YES** oder **Update** klicken, wird der vorhandene Webdienst beendet und das neue Vorhersageexperiment an seiner Stelle bereitgestellt.
 

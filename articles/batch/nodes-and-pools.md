@@ -2,13 +2,13 @@
 title: Knoten und Pools in Azure Batch
 description: Erfahren Sie mehr über Computeknoten und Pools und deren Verwendung in einem Azure Batch-Workflow aus Entwicklersicht.
 ms.topic: conceptual
-ms.date: 11/10/2020
-ms.openlocfilehash: 77f3a1c954f5591537436c9ee747052b3a642ec4
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.date: 11/20/2020
+ms.openlocfilehash: 880a956a2d839483c59578afad1b62146799578a
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537610"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95243068"
 ---
 # <a name="nodes-and-pools-in-azure-batch"></a>Knoten und Pools in Azure Batch
 
@@ -40,7 +40,7 @@ Jedem Knoten, der einem Pool hinzugefügt wird, werden ein eindeutiger Name und 
 
 Ein Pool kann nur von dem Batch-Konto verwendet werden, unter dem er erstellt wurde. In einem Batch-Konto können mehrere Pools erstellt werden, um die Ressourcenanforderungen der Anwendungen zu erfüllen, die ausgeführt werden sollen.
 
-Der Pool kann manuell oder automatisch vom Batch-Dienst erstellt werden, wenn Sie die zu erledigenden Aufgaben angeben. Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
+Der Pool kann manuell oder [automatisch vom Batch-Dienst](#autopools) erstellt werden, wenn Sie die zu erledigenden Aufgaben angeben. Wenn Sie einen Pool erstellen, können Sie die folgenden Attribute angeben:
 
 - [Betriebssystem und Version von Knoten](#operating-system-and-version)
 - [Knotentyp und Zielanzahl der Knoten](#node-type-and-target)
@@ -184,6 +184,10 @@ An einem Ende des Spektrums können Sie einen Pool für jeden Auftrag erstellen,
 Falls dagegen der sofortige Start von Aufträgen höchste Priorität hat, können Sie bereits vorab einen Pool erstellen und die zugehörigen Knoten vor der Auftragsübermittlung verfügbar machen. Dieses Szenario ermöglicht zwar den sofortigen Start von Tasks, führt aber unter Umständen auch dazu, dass sich Knoten im Leerlauf befinden, während sie auf die Zuteilung warten.
 
 Zur Bewältigung einer variablen, kontinuierlichen Auslastung wird in der Regel ein kombinierter Ansatz verfolgt. Sie können über einen Pool verfügen, an den mehrere Aufträge übermittelt werden, und die Anzahl von Knoten mittels Skalierung flexibel an die jeweilige Auftragslast anpassen. Dies kann reaktiv auf der Grundlage der aktuellen Auslastung oder proaktiv erfolgen, sofern die Auslastung vorausgesagt werden kann. Weitere Informationen finden Sie unter [Richtlinie für automatische Skalierung](#automatic-scaling-policy).
+
+## <a name="autopools"></a>Automatische Pools
+
+Ein [automatischer Pool](/rest/api/batchservice/job/add#autopoolspecification) ist ein Pool, der vom Batch-Dienst erstellt wird, wenn ein Auftrag übermittelt wird. Er wird also nicht vor den Pool ausgeführten Aufträgen erstellt. Der Batch-Dienst verwaltet die Lebensdauer eines automatischen Pools gemäß den angegebenen Eigenschaften. In den meisten Fällen sind diese Pools auch so festgelegt, dass sie nach Abschluss ihrer Aufträge automatisch gelöscht werden.
 
 ## <a name="security-with-certificates"></a>Sicherheit mit Zertifikaten
 

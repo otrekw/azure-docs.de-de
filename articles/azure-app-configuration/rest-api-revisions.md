@@ -6,23 +6,22 @@ ms.author: lcozzens
 ms.service: azure-app-configuration
 ms.topic: reference
 ms.date: 08/17/2020
-ms.openlocfilehash: 7d1990d6bc524a69de2b22b4f7c5aeec88c3ce9d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 668345da8bb89412f7b1dd36975c5bed6f229580
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423748"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95246383"
 ---
 # <a name="key-value-revisions"></a>Revisionen von Schlüssel-Wert-Paaren
 
-api-version: 1.0
+Eine *Revision von Schlüssel-Wert-Paaren* definiert die historische Darstellung einer Schlüssel-Wert-Ressource. Revisionen laufen für Speicher im Free-Tarif nach 7 Tagen und für Speicher im Standard-Tarif nach 30 Tagen ab. Revisionen unterstützen den `List`-Vorgang.
 
-Eine **Revision von Schlüssel-Wert-Paaren** definiert die historische Darstellung einer Schlüssel-Wert-Ressource. Revisionen laufen für Speicher im Free-Tarif nach 7 Tagen und für Speicher im Standard-Tarif nach 30 Tagen ab. Revisionen unterstützen die folgenden Vorgänge:
+``key`` ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird ein beliebiger Schlüssel impliziert.
 
-- List
+``label`` ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird eine beliebige Bezeichnung impliziert.
 
-``key`` ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird ein **beliebiger** Schlüssel impliziert.
-``label`` ist ein optionaler Parameter für alle Vorgänge. Ohne Angabe dieses Parameters wird eine **beliebige** Bezeichnung impliziert.
+Dieser Artikel bezieht sich auf die API-Version 1.0.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -62,7 +61,7 @@ Accept-Ranges: items
 
 ## <a name="pagination"></a>Paginierung
 
-Das Ergebnis ist paginiert, wenn die Anzahl der zurückgegebenen Elemente das Antwortlimit überschreitet. Folgen Sie dem optionalen ``Link``-Antwortheader, und verwenden Sie ``rel="next"`` zur Navigation.  Alternativ dazu stellt der Inhalt in Form der Eigenschaft ``@nextLink`` einen Link zu weiteren Elementen bereit.
+Das Ergebnis ist paginiert, wenn die Anzahl der zurückgegebenen Elemente das Antwortlimit überschreitet. Folgen Sie dem optionalen ``Link``-Antwortheader, und verwenden Sie ``rel="next"`` zur Navigation. Alternativ dazu stellt der Inhalt in Form der ``@nextLink``-Eigenschaft einen Link zu weiteren Elementen bereit.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -88,7 +87,7 @@ Link: <{relative uri}>; rel="next"
 
 ## <a name="list-subset-of-revisions"></a>Auflisten einer Teilmenge von Revisionen
 
-Verwenden Sie den `Range`-Anforderungsheader. Die Antwort enthält einen `Content-Range`-Header. Wenn der Server den angeforderten Bereich nicht erfüllen kann, antwortet er mit „HTTP `416` (RangeNotSatisfiable)“.
+Verwenden Sie den `Range`-Anforderungsheader. Die Antwort enthält einen `Content-Range`-Header. Wenn der Server den angeforderten Bereich nicht erfüllen kann, lautet die Antwort „HTTP `416` (`RangeNotSatisfiable`)“.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1
@@ -135,6 +134,8 @@ GET /revisions?key={key}&label={label}&api-version={api-version}
 
 ### <a name="reserved-characters"></a>Reservierte Zeichen
 
+Folgende Zeichen sind reservierte Zeichen:
+
 `*`, `\`, `,`
 
 Wenn ein Wert ein reserviertes Zeichen enthält, muss dieses mit einem Escapezeichen versehen werden: `\{Reserved Character}`. Nicht reservierten Zeichen können ebenfalls mit Escapezeichen versehen werden.
@@ -160,19 +161,19 @@ Content-Type: application/problem+json; charset=utf-8
 
 ### <a name="examples"></a>Beispiele
 
-- All
+- Alle:
 
     ```http
     GET /revisions
     ```
 
-- Elemente, deren Schlüsselname mit **abc** beginnt
+- Elemente, deren Schlüsselname mit **abc** beginnt:
 
     ```http
     GET /revisions?key=abc*&api-version={api-version}
     ```
 
-- Elemente, deren Schlüsselname **abc** oder **xyz** lautet und deren Bezeichnungen **prod** enthalten
+- Elemente, deren Schlüsselname **abc** oder **xyz** lautet und deren Bezeichnungen **prod** enthalten:
 
     ```http
     GET /revisions?key=abc,xyz&label=*prod*&api-version={api-version}
@@ -188,7 +189,7 @@ GET /revisions?$select=value,label,last_modified&api-version={api-version} HTTP/
 
 ## <a name="time-based-access"></a>Zeitbasierter Zugriff
 
-Rufen Sie eine Darstellung des Ergebnisses ab, so wie es zu einem bestimmten Zeitpunkt in der Vergangenheit war. Siehe Abschnitt [2.1.1](https://tools.ietf.org/html/rfc7089#section-2.1).
+Rufen Sie eine Darstellung des Ergebnisses ab, so wie es zu einem bestimmten Zeitpunkt in der Vergangenheit war. Weitere Informationen finden Sie unter [HTTP Framework for Time-Based Access to Resource States -- Memento](https://tools.ietf.org/html/rfc7089#section-2.1) (HTTP-Framework für den zeitbasierten Zugriff auf Ressourcenzustände – Memento) in Abschnitt 2.1.1.
 
 ```http
 GET /revisions?api-version={api-version} HTTP/1.1

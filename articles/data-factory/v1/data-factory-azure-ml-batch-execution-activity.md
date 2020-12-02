@@ -3,20 +3,20 @@ title: Erstellen von Datenpipelines für die Vorhersage mithilfe von Azure Data 
 description: Dieser Artikel beschreibt das Erstellen von Vorhersagepipelines mithilfe von Azure Data Factory und Azure Machine Learning Studio (klassisch).
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
-ms.openlocfilehash: ce3175a015b7a5813f62c639fdadbeea367bbc22
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 481b801d481f32ef84279be2d8bd6089670a01b1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92631766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96496518"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-studio-classic-and-azure-data-factory"></a>Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (klassisch) und Azure Data Factory
 
@@ -75,12 +75,12 @@ Mit Azure Data Factory können Sie die Verschiebung und Verarbeitung von Daten o
       ![Batch-URI](./media/data-factory-azure-ml-batch-execution-activity/batch-uri.png)
 
 ### <a name="scenario-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>Szenario: Experimente mit Eingaben/Ausgaben für den Webdienst, die auf Daten in Azure Blob Storage verweisen
-In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webdienst (klassisch) anhand der Daten aus einer Datei in Azure Blob Storage erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabe an den Webdienst übergeben, indem die **webServiceInput** -JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabe an den Webdienst übergeben, indem die **webServiceOutputs** -JSON-Eigenschaft verwendet wird.
+In diesem Szenario werden Vorhersagen mit dem Azure Machine Learning Studio-Webdienst (klassisch) anhand der Daten aus einer Datei in Azure Blob Storage erstellt und die Vorhersageergebnisse in Blob Storage gespeichert. Das folgende JSON-Skript definiert eine Data Factory-Pipeline mit einer AzureMLBatchExecution-Aktivität. Die Aktivität enthält das Dataset **DecisionTreeInputBlob** als Eingabe und **DecisionTreeResultBlob** als Ausgabe. **DecisionTreeInputBlob** wird als Eingabe an den Webdienst übergeben, indem die **webServiceInput**-JSON-Eigenschaft verwendet wird. **DecisionTreeResultBlob** wird als Ausgabe an den Webdienst übergeben, indem die **webServiceOutputs**-JSON-Eigenschaft verwendet wird.
 
 > [!IMPORTANT]
 > Wenn der Webdienst mehrere Eingaben akzeptiert, verwenden Sie die Eigenschaft **webServiceInputs** anstatt **webServiceInput**. Im Abschnitt [Webdienst erfordert mehrere Eingaben](#web-service-requires-multiple-inputs) finden Sie ein Beispiel für die Verwendung der webServiceInputs-Eigenschaft.
 >
-> Datasets, auf die die Eigenschaften **webServiceInput**/**webServiceInputs** und **webServiceOutputs** (in **typeProperties** ) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
+> Datasets, auf die die Eigenschaften **webServiceInput**/**webServiceInputs** und **webServiceOutputs** (in **typeProperties**) verweisen, müssen auch in den Aktivitäten **inputs** und **outputs** enthalten sein.
 >
 > In Ihrem Azure Machine Learning Studio-Experiment (klassisch) haben Eingabe- und Ausgabeports von Webdiensten und globale Parameter Standardnamen („input1“, „input2“), die Sie anpassen können. Die Namen, die Sie für die Einstellungen webServiceInputs, webServiceOutputs und globalParameters verwenden, müssen den Namen in den Experimenten genau entsprechen. Sie können die Beispiel-Anforderungsnutzlast auf der Hilfeseite für die Batchausführung für Ihren Azure Machine Learning Studio-Endpunkt (klassisch) anzeigen, um die erwartete Zuordnung zu überprüfen.
 >
@@ -234,7 +234,7 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
       }
     }
     ```
-4. Erstellen Sie einen **verknüpften Dienst** vom Typ **AzureMLLinkedService** , der den API-Schlüssel und die URL für die Modellbatchausführung bereitstellt.
+4. Erstellen Sie einen **verknüpften Dienst** vom Typ **AzureMLLinkedService**, der den API-Schlüssel und die URL für die Modellbatchausführung bereitstellt.
 
     ```JSON
     {
@@ -301,7 +301,7 @@ Wir empfehlen Ihnen, das Tutorial zum [Erstellen der ersten Pipeline mit Data Fa
       }
       ```
 
-      Die **Start** - und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end** -Eigenschaft kein Wert angegeben wird, wird sie als „ **start + 48 Stunden** “ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end** -Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
+      Die **Start**- und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
 
       > [!NOTE]
       > Das Festlegen der Eingaben für die AzureMLBatchExecution-Aktivität erfolgt optional.
@@ -347,7 +347,7 @@ Sie können auch [Data Factory-Funktionen](data-factory-functions-variables.md) 
 ### <a name="using-a-reader-module-to-read-data-from-multiple-files-in-azure-blob"></a>Lesen von Daten aus mehreren Dateien im Azure-Blob mithilfe eines Reader-Moduls
 Große Datenpipelines mit Aktivitäten wie Pig und Hive können eine oder mehrere Ausgabedateien ohne Erweiterungen produzieren. Wenn Sie beispielsweise eine externe Hive-Tabelle angeben, können die Daten für die externe Hive-Tabelle in Azure Blob Storage unter dem Namen „000000_0“ gespeichert werden. Mithilfe des Reader-Moduls in einem Experiment können Sie mehrere Dateien lesen und für Vorhersagen verwenden.
 
-Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (klassisch) verwenden, können Sie das Azure-Blob als Eingabe angeben. Bei den Dateien in Azure Blob Storage kann es sich um die Ausgabedateien (Beispiel: 000000_0) handeln, die von einem Pig- und Hive-Skript unter HDInsight erstellt werden. Mit dem Reader-Modul können Sie Dateien lesen (ohne Erweiterungen), indem Sie **Path to container, directory/blob** (Pfad zum Container, Verzeichnis/Blob) konfigurieren. **Path to container** verweist auf den Container, und **directory/blob** verweist auf den Ordner, der die Dateien enthält, wie in der folgenden Abbildung dargestellt. Das Sternchen (\*) **gibt an, dass alle Dateien im Container/Ordner (d.h. „data/aggregateddata/year=2014/month=6/\*“)** als Teil des Experiments gelesen werden.
+Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (klassisch) verwenden, können Sie das Azure-Blob als Eingabe angeben. Bei den Dateien in Azure Blob Storage kann es sich um die Ausgabedateien (Beispiel: 000000_0) handeln, die von einem Pig- und Hive-Skript unter HDInsight erstellt werden. Mit dem Reader-Modul können Sie Dateien lesen (ohne Erweiterungen), indem Sie **Path to container, directory/blob**(Pfad zum Container, Verzeichnis/Blob) konfigurieren. **Path to container** verweist auf den Container, und **directory/blob** verweist auf den Ordner, der die Dateien enthält, wie in der folgenden Abbildung dargestellt. Das Sternchen (\*) **gibt an, dass alle Dateien im Container/Ordner (d.h. „data/aggregateddata/year=2014/month=6/\*“)** als Teil des Experiments gelesen werden.
 
 ![Azure-Blobeigenschaften](./media/data-factory-create-predictive-pipelines/azure-blob-properties.png)
 
@@ -405,7 +405,7 @@ Wenn Sie das Reader-Modul in einem Azure Machine Learning Studio-Experiment (kla
 Im obigen JSON-Beispiel:
 
 * Der bereitgestellte Azure Machine Learning Studio-Webdienst (klassisch) verwendet ein Reader- und ein Writer-Modul zum Lesen/Schreiben von Daten aus/an eine Azure SQL-Datenbank-Instanz. Dieser Webdienst stellt die vier folgenden Parameter bereit:  „Database server name“, „Database name“, „Server user account name“ und „Server user account password“.
-* Die **Start** - und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end** -Eigenschaft kein Wert angegeben wird, wird sie als „ **start + 48 Stunden** “ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end** -Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
+* Die **Start**- und **Endzeit** von Datums-/Uhrzeitangaben müssen im [ISO-Format](https://en.wikipedia.org/wiki/ISO_8601) angegeben werden. Beispiel: 2014-10-14T16:32:41Z. Die Zeit für **end** ist optional. Wenn für die **end**-Eigenschaft kein Wert angegeben wird, wird sie als „**start + 48 Stunden**“ berechnet. Um die Pipeline auf unbestimmte Zeit auszuführen, geben Sie als Wert für die **end**-Eigenschaft **9999-09-09** an. Informationen zu JSON-Eigenschaften finden Sie in der [JSON-Skriptreferenz](/previous-versions/azure/dn835050(v=azure.100)) .
 
 ### <a name="other-scenarios"></a>Andere Szenarien
 #### <a name="web-service-requires-multiple-inputs"></a>Webdienst erfordert mehrere Eingaben
@@ -558,7 +558,7 @@ Ausführliche Informationen zu Azure-Blob/Azure SQL Reader/Writer finden Sie in 
 **A:** Ja. Ausführliche Informationen dazu finden Sie im Abschnitt **Lesen von Daten aus mehreren Dateien im Azure-Blob mithilfe eines Reader-Moduls** .
 
 ## <a name="azure-machine-learning-studio-classic-batch-scoring-activity"></a>Batchbewertungsaktivität von Azure Machine Learning Studio (klassisch)
-Wenn Sie derzeit die Aktivität **AzureMLBatchScoring** für die Integration in Azure Machine Learning Studio (klassisch) verwenden, empfiehlt es sich, die neueste **AzureMLBatchExecution** -Aktivität zu verwenden.
+Wenn Sie derzeit die Aktivität **AzureMLBatchScoring** für die Integration in Azure Machine Learning Studio (klassisch) verwenden, empfiehlt es sich, die neueste **AzureMLBatchExecution**-Aktivität zu verwenden.
 
 Die AzureMLBatchExecution-Aktivität wird in den Azure SDK- und Azure PowerShell-Versionen von August 2015 eingeführt.
 

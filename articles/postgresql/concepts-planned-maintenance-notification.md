@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/21/2020
-ms.openlocfilehash: 1ed2929dc5dc79c30f2a9583966e32d81b63ba2e
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 0691411f57944f8203120ec2a6ed19013135458c
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92487907"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920252"
 ---
 # <a name="planned-maintenance-notification-in-azure-database-for-postgresql---single-server"></a>Benachrichtigung über geplante Wartungen in Azure Database for PostgreSQL (Einzelserver)
 
@@ -21,34 +21,34 @@ Erfahren Sie, wie Sie sich auf die geplante Wartung für Ihre Azure Database for
 
 Der Azure Database for PostgreSQL-Dienst führt automatisiertes Patchen für die zugrunde liegende Hardware, das Betriebssystem und die Datenbank-Engine durch. Der Patch umfasst neue Dienstfeatures, Verbesserungen bei der Sicherheit und Softwareupdates. Bei der PostgreSQL-Engine werden Upgrades von Nebenversionen automatisch ausgeführt und sind im Patchzyklus enthalten. Für das Patchen sind keine Benutzeraktionen oder Konfigurationseinstellungen erforderlich. Der Patch wird ausgiebig getestet und mithilfe von sicheren Bereitstellungsmethoden eingeführt.
 
-Eine geplante Wartung stellt ein Wartungsfenster dar, in dem diese Dienstupdates auf Servern in einer bestimmten Azure-Region bereitgestellt werden. Während einer geplanten Wartung wird ein Benachrichtigungsereignis erstellt, um Kunden zu informieren, wann das Dienstupdate in der Azure-Region bereitgestellt wird, in der ihre Server gehostet werden. Zwischen zwei geplanten Wartungen liegen immer mindestens 30 Tage. Sie werden 72 Stunden im Voraus über das nächste Wartungsfenster informiert.
+Eine geplante Wartung ist ein Wartungsfenster, in dem diese Dienstupdates auf Servern in einer bestimmten Azure-Region bereitgestellt werden. Während einer geplanten Wartung wird ein Benachrichtigungsereignis erstellt, um Kunden zu informieren, wann das Dienstupdate in der Azure-Region bereitgestellt wird, in der ihre Server gehostet werden. Zwischen zwei geplanten Wartungen liegen immer mindestens 30 Tage. Sie werden 72 Stunden im Voraus über das nächste Wartungsfenster informiert.
 
 ## <a name="planned-maintenance---duration-and-customer-impact"></a>Geplante Wartung: Dauer und Beeinträchtigung für Kunden
 
 Eine geplante Wartung für eine bestimmte Azure-Region dauert in der Regel 15 Stunden. Das Fenster umfasst auch Pufferzeit zum Ausführen eines Rollbackplans, falls dies erforderlich wird. Während einer geplanten Wartung können Datenbankserver neu gestartet oder Failover ausgeführt werden. Dies kann dazu führen, dass die Datenbankserver kurzzeitig nicht für Endbenutzer verfügbar sind. Azure Database for PostgreSQL-Server werden in Containern ausgeführt, sodass Neustarts von Datenbankservern meist schnell abgeschlossen sind – in der Regel innerhalb von 60–120 Sekunden. Das gesamte geplante Wartungsereignis, einschließlich der einzelnen Serverneustarts, wird vom Technikerteam sorgfältig überwacht. Die Zeit für Serverfailover hängt von der Wiederherstellungszeit der Datenbank ab. Es kann daher länger dauern, die Datenbank wieder online zu schalten, wenn während des Failovers auf dem Server extrem viele Transaktionsaktivitäten auftreten. Um längere Neustarts zu vermeiden, empfiehlt es sich, zeitintensive Transaktionen (Massenladen) während geplanter Wartungsereignisse zu vermeiden.
 
-Zusammenfassend gilt: Auch wenn das geplante Wartungsereignis 15 Stunden lang ist, sind die einzelnen Server in der Regel je nach den Transaktionsaktivitäten auf dem Server nur etwa 60 Sekunden lang beeinträchtigt. 72 Kalenderstunden vor dem Start der geplanten Wartung wird eine Benachrichtigung gesendet. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
+Zusammenfassend gilt: Auch wenn das geplante Wartungsereignis 15 Stunden dauert, sind die einzelnen Server in der Regel je nach den Transaktionsaktivitäten auf dem Server nur etwa 60 Sekunden lang beeinträchtigt. 72 Stunden vor dem Start der geplanten Wartung wird eine Benachrichtigung gesendet. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
 
 ## <a name="how-can-i-get-notified-of-planned-maintenance"></a>Wie werde ich über eine geplante Wartung benachrichtigt?
 
-Sie können das Benachrichtigungsfeature zu geplanten Wartungen nutzen, um Warnungen zu anstehenden geplanten Wartungsereignissen zu erhalten. Sie erhalten 72 Kalenderstunden vor dem Start der geplanten Wartung eine Benachrichtigung. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
+Sie können das Benachrichtigungsfeature zu geplanten Wartungen nutzen, um Warnungen zu anstehenden geplanten Wartungsereignissen zu erhalten. Sie erhalten 72 Stunden vor dem Start der geplanten Wartung eine Benachrichtigung. Eine weitere Benachrichtigung erfolgt, wenn die Wartung für eine bestimmte Region ausgeführt wird.
 
 ### <a name="planned-maintenance-notification"></a>Benachrichtigungen zu geplanten Wartungen
 
 > [!IMPORTANT]
 > Benachrichtigungen für geplante Wartungen sind derzeit in allen Regionen **mit Ausnahme von** „USA, Westen-Mitte“ als Vorschau verfügbar.
 
-**Benachrichtigungen zu geplanten Wartungen** ermöglichen Ihnen das Empfangen von Warnungen zu anstehenden geplanten Wartungsereignissen an Azure Database for PostgreSQL. Diese Benachrichtigungen sind in die geplante Wartung von [Service Health](../service-health/overview.md) integriert, sodass Sie alle geplanten Wartungsarbeiten für Ihre Abonnements an zentraler Stelle anzeigen können. Außerdem ist es hilfreich, die Benachrichtigungen an die richtigen Zielgruppen für verschiedene Ressourcengruppen zu richten, da möglicherweise unterschiedliche Ansprechpartner für verschiedene Ressourcen zuständig sind. Sie erhalten die Benachrichtigung über die anstehende Wartung 72 Kalenderstunden vor dem Ereignis.
+**Benachrichtigungen zu geplanten Wartungen** ermöglichen Ihnen das Empfangen von Warnungen zu anstehenden geplanten Wartungsereignissen an Azure Database for PostgreSQL. Diese Benachrichtigungen sind in die geplante Wartung von [Service Health](../service-health/overview.md) integriert, sodass Sie alle geplanten Wartungsarbeiten für Ihre Abonnements an zentraler Stelle anzeigen können. Außerdem ist es hilfreich, die Benachrichtigungen an die richtigen Zielgruppen für verschiedene Ressourcengruppen zu richten, da möglicherweise unterschiedliche Ansprechpartner für verschiedene Ressourcen zuständig sind. Sie erhalten die Benachrichtigung über die anstehende Wartung 72 Stunden vor dem Ereignis.
 
 Es wird jeder Versuch unternommen, die **Benachrichtigung zur geplanten Wartung** für alle Ereignisse 72 Stunden im Voraus bereitzustellen. Im Fall von kritischen oder Sicherheitspatches können Benachrichtigungen jedoch zeitlich näher am Ereignis gesendet werden oder ganz entfallen.
 
-Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen oder Warnungen für den Empfang von Benachrichtigungen konfigurieren. 
+Sie können die Benachrichtigung zur geplanten Wartung im Azure-Portal einsehen oder Warnungen konfigurieren, um eine Benachrichtigung zu erhalten. 
 
 ### <a name="check-planned-maintenance-notification-from-azure-portal"></a>Überprüfen von Benachrichtigungen über geplante Wartungen im Azure-Portal
 
 1. Wählen Sie im [Azure-Portal](https://portal.azure.com) die Option **Service Health** aus.
 2. Wählen Sie die Registerkarte **Geplante Wartung** aus.
-3. Wählen Sie das **Abonnement** , die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
+3. Wählen Sie das **Abonnement**, die **Region** und den **Dienst** aus, für die Sie die Benachrichtigung zu geplanten Wartungen überprüfen möchten. 
    
 ### <a name="to-receive-planned-maintenance-notification"></a>Empfangen von Benachrichtigungen zu geplanten Wartungen
 
@@ -69,7 +69,7 @@ Wartungen sind erforderlich, um Ihren Server sicher, stabil und auf dem neuesten
 
 ## <a name="are-all-the-azure-regions-patched-at-the-same-time"></a>Werden alle Azure-Regionen gleichzeitig gepatcht?
 
-Nein, alle Azure-Regionen werden gemäß den Zeitfenstern für die Bereitstellung gepatcht. Das Zeitfenster für die Bereitstellung liegt in einer bestimmten Azure-Region in der Regel zwischen 5:00 Uhr und 8:00 Uhr Ortszeit am Folgetag. Geografisch gekoppelte Azure-Regionen werden an verschiedenen Tagen gepatcht. Um Hochverfügbarkeit und Geschäftskontinuität von Datenbankservern zu gewährleisten, wird die Verwendung [regionsübergreifender Lesereplikate](./concepts-read-replicas.md#cross-region-replication) empfohlen.
+Nein. Die verschiedenen Azure-Regionen werden in den jeweiligen Zeitfenstern für die Bereitstellung gepatcht. Das Zeitfenster für die Bereitstellung in einer bestimmten Azure-Region liegt in der Regel zwischen 17:00 Uhr und 8:00 Uhr Ortszeit am Folgetag. Geografisch gekoppelte Azure-Regionen werden an unterschiedlichen Tagen gepatcht. Um Hochverfügbarkeit und Geschäftskontinuität von Datenbankservern zu gewährleisten, wird die Verwendung [regionsübergreifender Lesereplikate](./concepts-read-replicas.md#cross-region-replication) empfohlen.
 
 ## <a name="retry-logic"></a>Wiederholungslogik
 
@@ -78,7 +78,7 @@ Bei einem vorübergehenden Fehler handelt es sich um einen Fehler, der sich von 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for PostgreSQL haben, senden Sie eine E-Mail an das Azure Database for PostgreSQL-Team ( *AskAzureDBforMySQL@service.microsoft.com* ).
+- Sollten Sie Fragen oder Vorschläge im Zusammenhang mit der Verwendung von Azure Database for PostgreSQL haben, senden Sie eine E-Mail an das zuständige Team (AskAzureDBforPostgreSQL@service.microsoft.com).
 - Anleitungen zum Erstellen einer Warnung zu einer Metrik finden Sie unter [Einrichten von Warnungen](howto-alert-on-metric.md).
 - [Beheben von Verbindungsproblemen mit Azure Database for PostgreSQL – Einzelserver](howto-troubleshoot-common-connection-issues.md)
 - [Behandeln vorübergehender Fehler und effizientes Verbinden mit Azure Database for PostgreSQL-Einzelservern](concepts-connectivity.md)

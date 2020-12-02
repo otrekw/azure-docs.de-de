@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05f3d422c9a504a0089290f3c2e1e68d809366ac
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 9da0c00bd8498e3f43d5f8258308fbc010a6a274
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592956"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839521"
 ---
 # <a name="enable-passwordless-sign-in-with-the-microsoft-authenticator-app-preview"></a>Aktivieren der kennwortlosen Anmeldung mit der Microsoft Authenticator-App (Vorschauversion)
 
@@ -36,7 +36,7 @@ Personen, die die Anmeldung per Telefon über die Microsoft Authenticator-App ak
 
 Die folgenden Voraussetzungen müssen erfüllt sein, damit die kennwortlose Anmeldung per Telefon mit der Microsoft Authenticator-App verwendet werden kann:
 
-- Azure Multi-Factor Authentication mit Pushbenachrichtigungen als Überprüfungsmethode zulässig
+- Azure AD Multi-Factor Authentication ist mit Pushbenachrichtigungen als Überprüfungsmethode zulässig.
 - Aktuelle Version von Microsoft Authenticator auf Geräten mit iOS 8.0 oder höher oder Android 6.0 oder höher installieren.
 
 > [!NOTE]
@@ -141,4 +141,4 @@ Weitere Informationen zur Azure AD-Authentifizierung und kennwortlosen Methoden 
 
 - [Wie funktioniert die kennwortlose Authentifizierung?](concept-authentication-passwordless.md)
 - [Informationen zur Geräteregistrierung](../devices/overview.md#getting-devices-in-azure-ad)
-- [Informationen zu Microsoft Azure Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)
+- [Informationen zu Azure AD Multi-Factor Authentication](../authentication/howto-mfa-getstarted.md)

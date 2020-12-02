@@ -5,18 +5,18 @@ description: Beschrieben werden die Einschränkungen, die für das Format des Um
 author: SureshJa
 ms.author: sureshja
 manager: CelesteDG
-ms.date: 10/29/2020
+ms.date: 11/23/2020
 ms.topic: conceptual
 ms.subservice: develop
 ms.custom: aaddev
 ms.service: active-directory
 ms.reviewer: marsma, lenalepa, manrath
-ms.openlocfilehash: a2838e40844b83d1e90789439ce286f2738e22c4
-ms.sourcegitcommit: 46c5ffd69fa7bc71102737d1fab4338ca782b6f1
+ms.openlocfilehash: 30ea74b249937544a0bf9811cad60f02c1ca45c7
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94331854"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95752784"
 ---
 # <a name="redirect-uri-reply-url-restrictions-and-limitations"></a>Einschränkungen für Umleitungs-URI/Antwort-URL
 
@@ -51,25 +51,32 @@ Um Umleitungs-URIs mit einem HTTP-Schema zu App-Registrierungen hinzuzufügen, d
 
 Gemäß [RFC 8252, Abschnitte 8.3](https://tools.ietf.org/html/rfc8252#section-8.3) und [7.3](https://tools.ietf.org/html/rfc8252#section-7.3), gelten für die Umleitungs-URIs „loopback“ und „localhost“ zwei Besonderheiten:
 
-1. `http`-URI-Schemas sind akzeptabel, da die Umleitung das Gerät niemals verlässt. Daher ist beides akzeptabel:
-    - `http://127.0.0.1/myApp`
-    - `https://127.0.0.1/myApp`
-1. Aufgrund kurzlebiger Portbereiche, die häufig von nativen Anwendungen benötigt werden, wird die Portkomponente (z. B. `:5001` oder `:443`) beim Abgleich eines Umleitungs-URI ignoriert. Folglich werden alle als gleichwertig betrachtet:
-    - `http://127.0.0.1/MyApp`
-    - `http://127.0.0.1:1234/MyApp`
-    - `http://127.0.0.1:5000/MyApp`
-    - `http://127.0.0.1:8080/MyApp`
+1. `http`-URI-Schemas sind akzeptabel, da die Umleitung das Gerät niemals verlässt. Daher sind die beiden folgenden URIs akzeptabel:
+    - `http://localhost/myApp`
+    - `https://localhost/myApp`
+1. Aufgrund kurzlebiger Portbereiche, die häufig von nativen Anwendungen benötigt werden, wird die Portkomponente (z. B. `:5001` oder `:443`) beim Abgleich eines Umleitungs-URI ignoriert. Folglich werden alle diese URIs als gleichwertig betrachtet:
+    - `http://localhost/MyApp`
+    - `http://localhost:1234/MyApp`
+    - `http://localhost:5000/MyApp`
+    - `http://localhost:8080/MyApp`
 
 Aus Entwicklersicht bedeutet dies Folgendes:
 
 * Registrieren Sie nicht mehrere Umleitungs-URIs, wenn sich nur der Port unterscheidet. Der Anmeldeserver wählt willkürlich einen Umleitungs-URI aus und verwendet das diesem zugeordnete Verhalten (z. B. entsprechend dem Umleitungstyp `web`, `native` oder `spa`).
 
     Dies ist besonders dann wichtig, wenn Sie in ein und derselben Anwendungsregistrierung verschiedene Authentifizierungsflows verwenden möchten, beispielsweise die Autorisierungscodegenehmigung und den impliziten Flow. Um jedem Umleitungs-URI das richtige Antwortverhalten zuzuordnen, muss der Anmeldeserver zwischen den verschiedenen URIs unterscheiden können. Dies ist nur mit unterschiedlichen Ports möglich.
-* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://127.0.0.1/MyWebApp` nicht mit `http://127.0.0.1/MyNativeApp` überein.
+* Wenn Sie mehrere Umleitungs-URIs für Localhost registrieren möchten, um während der Entwicklung verschiedene Flows zu testen, unterscheiden Sie diese mithilfe der *path*-Komponente des URI. Beispielsweise stimmt `http://localhost/MyWebApp` nicht mit `http://localhost/MyNativeApp` überein.
 * Die IPv6-Loopback Adresse (`[::1]`) wird derzeit nicht unterstützt.
-* Um Fehler in Ihrer App aufgrund falsch konfigurierter Firewalls oder umbenannter Netzwerkschnittstellen zu vermeiden, verwenden Sie anstelle von `localhost` die tatsächliche IP-Loopbackadresse `127.0.0.1` in Ihrem Umleitungs-URI.
 
-    Zur Verwendung des `http`-Schemas mit der tatsächlichen IP-Loopbackadresse `127.0.0.1` müssen Sie derzeit das [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)-Attribut im [Anwendungsmanifest](reference-app-manifest.md) ändern.
+#### <a name="prefer-127001-over-localhost"></a>127.0.0.1 anstelle von localhost
+
+Um Fehler in Ihrer App aufgrund falsch konfigurierter Firewalls oder umbenannter Netzwerkschnittstellen zu vermeiden, verwenden Sie anstelle von `localhost` die tatsächliche IP-Loopbackadresse `127.0.0.1` in Ihrem Umleitungs-URI. Beispiel: `https://127.0.0.1`.
+
+Sie können jedoch nicht das Textfeld **Umleitungs-URIs** im Azure-Portal verwenden, um einen loopbackbasierten Umleitungs-URI mit dem `http`-Schema hinzuzufügen:
+
+:::image type="content" source="media/reply-url/portal-01-no-http-loopback-redirect-uri.png" alt-text="Fehlerdialogfeld im Azure-Portal mit unzulässigem HTTP-basiertem Loopback-Umleitungs-URI":::
+
+Zum Hinzufügen eines Umleitungs-URI, der das `http`-Schema verwendet, mit der tatsächlichen Loopbackadresse `127.0.0.1` müssen Sie derzeit das [replyUrlsWithType](reference-app-manifest.md#replyurlswithtype-attribute)-Attribut im [Anwendungsmanifest](reference-app-manifest.md) ändern.
 
 ## <a name="restrictions-on-wildcards-in-redirect-uris"></a>Einschränkungen für Platzhalter in Umleitungs-URIs
 
