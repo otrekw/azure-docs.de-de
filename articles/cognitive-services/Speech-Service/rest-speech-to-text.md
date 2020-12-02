@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 05/13/2020
 ms.author: trbye
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 89e5fa180b011cbedebc25a5e5d555a2190805f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: dff7ff0afd6c236645731dc7edd936b0b808716b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015357"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483919"
 ---
 # <a name="speech-to-text-rest-api"></a>Spracherkennungs-REST-API
 
@@ -58,7 +58,7 @@ Diese Parameter können in der Abfragezeichenfolge der REST-Anforderung enthalte
 | `language` | Identifiziert die gesprochene Sprache, die erkannt wird. Siehe [Unterstützte Sprachen](language-support.md#speech-to-text). | Erforderlich |
 | `format` | Gibt das Ergebnisformat an. Zulässige Werte sind `simple` und `detailed`. Einfache Ergebnisse enthalten `RecognitionStatus`, `DisplayText`, `Offset` und `Duration`. Ausführliche Antworten enthalten vier verschiedene Darstellungen des Anzeigetexts. Die Standardeinstellung ist `simple`. | Optional |
 | `profanity` | Gibt den Umgang mit Obszönitäten in Erkennungsergebnissen an. Zulässige Werte sind `masked` (Obszönitäten werden durch Sternchen ersetzt), `removed` (Obszönitäten werden aus dem Ergebnis entfernt) und `raw` (Obszönitäten sind im Ergebnis enthalten). Die Standardeinstellung ist `masked`. | Optional |
-| `cid` | Wenn Sie das [Custom Speech-Portal](how-to-custom-speech.md) zum Erstellen von benutzerdefinierten Modellen verwenden, können Sie benutzerdefinierte Modelle über ihre **Endpunkt-ID** verwenden, die Sie auf der Seite **Bereitstellung** finden. Verwenden Sie die **Endpunkt-ID** als Argument für den Parameter `cid` der Abfragezeichenfolge. | Optional |
+| `cid` | Wenn Sie das [Custom Speech-Portal](./custom-speech-overview.md) zum Erstellen von benutzerdefinierten Modellen verwenden, können Sie benutzerdefinierte Modelle über ihre **Endpunkt-ID** verwenden, die Sie auf der Seite **Bereitstellung** finden. Verwenden Sie die **Endpunkt-ID** als Argument für den Parameter `cid` der Abfragezeichenfolge. | Optional |
 
 ## <a name="request-headers"></a>Anforderungsheader
 

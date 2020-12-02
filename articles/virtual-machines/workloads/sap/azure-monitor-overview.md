@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/30/2020
 ms.author: radeltch
 ms.reviewer: cynthn
-ms.openlocfilehash: 5bb40ec930731b58d457500d83b66c7a187b44d8
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bcb912a24dfb2a5e78719cf9010fd23afe0df185
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957434"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484395"
 ---
 # <a name="azure-monitor-for-sap-solutions-preview"></a>Azure Monitor für SAP-Lösungen (Vorschauversion)
 
@@ -35,7 +35,7 @@ Unterstützte Datenbanken:
 - SAP HANA-Datenbank
 - Microsoft SQL Server
 
-Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md), um zusätzliche Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/platform/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/log-query/get-started-portal.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/learn/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
+Azure Monitor für SAP-Lösungen nutzt die Leistungsfähigkeit bestehender [Azure Monitor](../../../azure-monitor/overview.md)-Funktionen wie Log Analytics und [Arbeitsmappen](../../../azure-monitor/platform/workbooks-overview.md), um zusätzliche Überwachungsfunktionen anzubieten. Kunden können [benutzerdefinierte Visualisierungen](../../../azure-monitor/platform/workbooks-overview.md#getting-started) erstellen, indem sie die von Azure Monitor für SAP-Lösungen bereitgestellten Standardarbeitsmappen bearbeiten, [benutzerdefinierte Abfragen](../../../azure-monitor/log-query/log-analytics-tutorial.md) und [benutzerdefinierte Warnungen](../../../azure-monitor/learn/tutorial-response.md) erstellen, indem sie den Azure Log Analytics-Arbeitsbereich verwenden, die Vorteile der [flexiblen Beibehaltungsdauer](../../../azure-monitor/platform/manage-cost-storage.md#change-the-data-retention-period) nutzen und Überwachungsdaten mit ihrem Ticketsystem verbinden.
 
 ## <a name="what-data-does-azure-monitor-for-sap-solutions-collect"></a>Welche Daten sammelt Azure Monitor für SAP-Lösungen?
 

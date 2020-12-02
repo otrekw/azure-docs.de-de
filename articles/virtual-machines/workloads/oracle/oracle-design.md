@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: kegorman
 ms.reviewer: cynthn
-ms.openlocfilehash: 6b7c280d9ff5f4d8a3c35eb11e080bf2f9f287c0
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5e9ddecd694a9051e746d07cbc1bee4d98bf5829
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959168"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484429"
 ---
 # <a name="design-and-implement-an-oracle-database-in-azure"></a>Entwerfen und Implementieren einer Oracle-Datenbank in Azure
 
@@ -138,7 +138,7 @@ Je nach Ihren Anforderungen an die Netzwerkbandbreite können Sie aus verschiede
 - Die Netzwerklatenz ist höher als bei einer lokalen Bereitstellung. Eine Verringerung der Netzwerkroundtrips kann die Leistung deutlich verbessern.
 - Zur Reduzierung von Roundtrips sollten Anwendungen, die ein hohes Transaktionsaufkommen aufweisen oder kommunikationsintensiv sind, auf demselben virtuellen Computer konsolidiert werden.
 - Verwenden Sie Virtual Machines mit [beschleunigtem Netzwerkbetrieb](../../../virtual-network/create-vm-accelerated-networking-cli.md), um eine bessere Netzwerkleistung zu erzielen.
-- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](../../linux/configure-lvm.md#trimunmap-support).
+- Erwägen Sie für bestimmte Linux-Distributionen die Aktivierung der [TRIM/UNMAP-Unterstützung](/previous-versions/azure/virtual-machines/linux/configure-lvm#trimunmap-support).
 - Installieren Sie [Oracle Enterprise Manager](https://www.oracle.com/technetwork/oem/enterprise-manager/overview/index.html) auf einem separaten virtuellen Computer.
 - Große Seiten sind unter Linux nicht standardmäßig aktiviert. Erwägen Sie das Aktivieren großer Seiten, und legen Sie `use_large_pages = ONLY` für die Oracle Database fest. Dies kann helfen, die Leistung zu steigern. Weitere Informationen finden Sie [hier](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/refrn/USE_LARGE_PAGES.html#GUID-1B0F4D27-8222-439E-A01D-E50758C88390).
 

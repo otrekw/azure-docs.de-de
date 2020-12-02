@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: erhopf
-ms.openlocfilehash: 5c4f02eff06c08f1829f9f1c74d1dcb09ee57905
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a562c28235608d4a2425455b5543a76c99374f80
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024788"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483813"
 ---
 # <a name="speech-service-whats-new-in-docs"></a>Sprachdienst: Neues in der Dokumentation
 
@@ -32,7 +32,7 @@ Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices S
 
 ### <a name="new-articles"></a>Neue Artikel
 
-* [Verbessern der Custom Speech-Genauigkeit](how-to-custom-speech-improve-accuracy.md)
+* [Verbessern der Custom Speech-Genauigkeit](./how-to-custom-speech-evaluate-data.md)
 
 ### <a name="updated-articles"></a>Aktualisierte Artikel
 
@@ -44,7 +44,7 @@ Informationen zu Updates des Sprachdiensts, des Speech SDK, des Speech Devices S
 * [Schnellstart: Synchrone Synthese für lange Audioinhalte in Python (Vorschau)](./long-audio-api.md): Die Unterstützung für öffentliche neuronale Stimmen und zugehörige Parameter wurde hinzugefügt.
 * [Schnellstart: Erkennen von Sprache aus einer Audiodatei](./get-started-speech-to-text.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Erkennen von Spracheingaben per Mikrofon](./get-started-speech-to-text.md): Go- sowie JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
-* [Schnellstart: Erkennen von Sprache aus einem Blobspeicher](quickstarts/from-blob.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
+* [Schnellstart: Erkennen von Sprache aus einem Blobspeicher](./batch-transcription.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Erkennen von Sprache, Absichten und Entitäten mit Language Understanding (LUIS)](quickstarts/intent-recognition.md)
 * [Schnellstart: Einrichten der Entwicklungsumgebung](quickstarts/setup-platform.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.
 * [Schnellstart: Synthetisieren von Sprache in eine Audiodatei](./get-started-text-to-speech.md): JavaScript-Anweisungen wurden zur Dokumentation hinzugefügt.

@@ -300,7 +300,7 @@
         - name: Reservierte Instanzen
           items:
             - name: Vorauszahlung für virtuelle Computer
-              href: prepay-reserved-vm-instances.md
+              href: ../prepay-reserved-vm-instances.md
             - name: Was sind Azure-Reservierungen?
               href: ../../cost-management-billing/reservations/save-compute-costs-reservations.md
             - name: Flexibilität bei der VM-Instanzgröße
@@ -570,7 +570,7 @@
             - name: Erstellen eines Bastion-Hosts
               items:
                 - name: Portal
-                  href: ../../bastion/bastion-create-host-portal.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
+                  href: ../../bastion/tutorial-create-host-portal.md?bc=%2fazure%2fvirtual-machines%2fwindows%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
                 - name: PowerShell
                   href: ../../bastion/bastion-create-host-powershell.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
                 - name: Befehlszeilenschnittstelle (CLI)
@@ -650,6 +650,7 @@
         - name: Austauschen des Betriebssystemdatenträgers
           href: os-disk-swap.md
         - name: Kennzeichnen eines virtuellen Computers
+          href: time-sync.md
           items:
             - name: Portal
               href: ../tag-portal.md
@@ -660,7 +661,6 @@
             - name: Vorlage
               href: ../tag-template.md
             - name: Zeitsynchronisierung
-          href: time-sync.md
         - name: Ausführen von Skripts für einen virtuellen Computer
           href: run-scripts-in-vm.md
           items:
@@ -863,8 +863,6 @@
           href: install-mongodb.md
         - name: SAP in Azure
           href: ../workloads/sap/get-started.md
-        - name: MATLAB-Cluster
-          href: matlab-mdcs-cluster.md
         - name: Visual Studio
           href: using-visual-studio-vm.md
         - name: High Performance Computing (HPC)
@@ -1069,7 +1067,7 @@
   href: ../troubleshooting/index.yml
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/vm
     - name: Azure PowerShell
       href: /powershell/azure/

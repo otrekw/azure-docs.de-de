@@ -11,12 +11,12 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/19/2020
   ms.author: trbye
-  ms.openlocfilehash: dc82146235db449bdfea9e72bda1a70f53a102d5
-  ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+  ms.openlocfilehash: e79798adf31a0d1e4f9880f0dac81ba27e33756d
+  ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 11/21/2020
-  ms.locfileid: "95015428"
+  ms.lasthandoff: 12/02/2020
+  ms.locfileid: "96483876"
 landingContent:
 - title: Informationen zur Spracherkennung
   linkLists:
@@ -43,7 +43,7 @@ landingContent:
     - text: Ändern der Ausgangssprache für die Spracherkennung
       url: how-to-specify-source-language.md
     - text: Verbessern der Genauigkeit mit Custom Speech
-      url: how-to-custom-speech.md
+      url: ./custom-speech-overview.md
     - text: Verwenden komprimierter Audioeingabeformate
       url: how-to-use-codec-compressed-audio-input-streams.md
   - linkListType: tutorial

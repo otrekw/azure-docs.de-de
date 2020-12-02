@@ -12,12 +12,12 @@ ms.date: 06/29/2020
 tags: ''
 keywords: ''
 ms.service: multiple
-ms.openlocfilehash: bd8da9ae7e31fb60ba0ca553f5aa304ccd3621d2
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d9e5f9b531fc28caf8f3162a70318927d40bb923
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127177"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483061"
 ---
 # <a name="install-micro-focus-enterprise-server-50-and-enterprise-developer-50-on-azure"></a>Installieren von Micro Focus Enterprise Server 5.0 und Enterprise Developer 5.0 in Azure
 
@@ -42,7 +42,7 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
     > [!Note]
     > Es gibt einige Optionen, mit denen Sie Zugriff auf Ihre VMs steuern können:
     > -   Eine bewährte Methode ist das Einrichten von [Azure Bastion](https://azure.microsoft.com/services/azure-bastion/).
-    > -   Ein [Site-to-Site-VPN-Tunnel](../../../../vpn-gateway/vpn-gateway-tutorial-vpnconnection-powershell.md) (virtuelles privates Netzwerk).
+    > -   Ein [Site-to-Site-VPN-Tunnel](../../../../vpn-gateway/vpn-gateway-create-site-to-site-rm-powershell.md) (virtuelles privates Netzwerk).
     > -   Eine Jumpbox-VM.
 
 ## <a name="install-enterprise-server"></a>Installieren von Enterprise Server
@@ -63,7 +63,7 @@ Die entsprechende Entwicklungsumgebung für Enterprise Server ist Enterprise Dev
 
 6.  Wenn die virtuellen Computer erstellt wurden, öffnen Sie die eingehenden Ports **9003, 86** und **80** für HTTP, **3389** für Remote Desktop Protocol (RDP) auf dem Enterprise Server-Computer sowie **3389** auf dem Developer-Computer.
 
-7.  Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Abschnitt **Übersicht** , und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+7.  Um sich bei der Enterprise Server-VM anzumelden, wählen Sie im Azure-Portal die ES2 v3 VM aus. Navigieren Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus, um eine RDP-Sitzung zu starten. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
 8.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien. Da Sie Windows verwenden, können Sie die Dateien per Drag & Drop in die RDP-Sitzung ziehen:
 
@@ -97,9 +97,9 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
 ## <a name="install-enterprise-developer-on-the-developer-machine"></a>Installieren von Enterprise Developer auf dem Entwicklercomputer
 
-1.  Wählen Sie die zuvor erstellte Ressourcengruppe (beispielsweise **RGMicroFocusEntServer** ) und dann das Entwicklerimage aus.
+1.  Wählen Sie die zuvor erstellte Ressourcengruppe (beispielsweise **RGMicroFocusEntServer**) und dann das Entwicklerimage aus.
 
-2.  Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Abschnitt **Übersicht** , und wählen Sie **Verbinden** aus. Durch diese Anmeldung wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
+2.  Um sich beim virtuellen Computer anzumelden, wechseln Sie zum Abschnitt **Übersicht**, und wählen Sie **Verbinden** aus. Durch diese Anmeldung wird eine RDP-Sitzung gestartet. Melden Sie sich mit den Anmeldeinformationen an, die Sie für die VM erstellt haben.
 
 3.  Laden Sie aus der RDP-Sitzung die beiden folgenden Dateien (per Drag & Drop, wenn Sie möchten):
 
@@ -107,7 +107,7 @@ Achten Sie nach der Installation darauf, auf eventuell verfügbare Updates zu pr
 
     -   `mflic`, die entsprechende Lizenzdatei (Enterprise Developer lädt ohne sie nicht).
 
-4.  Doppelklicken Sie auf die **edvs2017.exe** -Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu. Wenn gewünscht, wählen Sie **Rumba 9.5 installieren** aus, um diesen Terminalemulator zu installieren, den Sie wahrscheinlich benötigen.
+4.  Doppelklicken Sie auf die **edvs2017.exe**-Datei, um die Installation zu starten. Wählen Sie im ersten Fenster den Installationsspeicherort aus, und stimmen Sie dem Endbenutzer-Lizenzvertrag zu. Wenn gewünscht, wählen Sie **Rumba 9.5 installieren** aus, um diesen Terminalemulator zu installieren, den Sie wahrscheinlich benötigen.
 
     ![Micro Focus Enterprise Developer für Visual Studio 2017-Setupdialogfeld](media/install-image-5.png)
 

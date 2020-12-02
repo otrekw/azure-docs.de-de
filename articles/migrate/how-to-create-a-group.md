@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 07/17/2019
 ms.author: hamusa
-ms.openlocfilehash: 867124a08bbad88b7dac5386ee6bc1c9c4d99c12
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 420259929afc50b2884bf075212402d80b6b52f4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85549902"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483537"
 ---
 # <a name="create-a-group-for-assessment"></a>Erstellen einer Gruppe für die Bewertung
 
@@ -37,7 +37,7 @@ Gehen Sie wie folgt vor, wenn Sie eine Gruppe unabhängig von der Erstellung ein
 
 1. Klicken Sie im Azure Migrate-Projekt unter **Übersicht** auf **Server bewerten und migrieren**. Klicken Sie in **Azure Migrate: Serverbewertung** auf **Gruppen**.
     - Falls Sie das Tool „Azure Migrate: Server Assessment“ (Azure Migrate-Serverbewertung) noch nicht hinzugefügt haben, können Sie darauf klicken, um dies nachzuholen. [Weitere Informationen](how-to-assess.md)
-    - Lesen Sie [diese Informationen](how-to-add-tool-first-time.md), falls Sie noch kein Azure Migrate-Projekt erstellt haben.
+    - Lesen Sie [diese Informationen](./create-manage-projects.md), falls Sie noch kein Azure Migrate-Projekt erstellt haben.
 
     ![Auswählen von Gruppen](./media/how-to-create-a-group/select-groups.png)
 
@@ -89,4 +89,3 @@ Gehen Sie wie folgt vor, falls Sie die [Abhängigkeitszuordnung bereits eingeric
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie mehr über das Einrichten und Verwenden der [Abhängigkeitszuordnung](how-to-create-group-machine-dependencies.md) mit dem Ziel, Gruppen mit hoher Vertrauenswürdigkeit zu erstellen.
-

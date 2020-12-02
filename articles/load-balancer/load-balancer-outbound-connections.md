@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 5a2d7f9f60253916eae808a7f65bc4b4b289bd67
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94694779"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483588"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Verwenden von SNAT für ausgehende Verbindungen
 
@@ -182,8 +182,6 @@ Weitere Informationen zu Azure Virtual Network NAT finden Sie unter [Was ist Azu
 
 ## <a name="constraints"></a>Einschränkungen
 
-*   Ports werden nach 15 Sekunden freigegeben, wenn **TCP RST** empfangen oder gesendet wird.
-*   Ports werden nach 240 Sekunden freigegeben, wenn **FINACK** empfangen oder gesendet wird.
 *   Wenn sich eine Verbindung im Leerlauf befindet und keine neuen Pakete gesendet werden, werden die Ports nach 4 bis 120 Minuten freigegeben.
   * Dieser Schwellenwert kann über Ausgangsregeln konfiguriert werden.
 *   Jede IP-Adresse stellt 64.000 Ports bereit, die für SNAT verwendet werden können.

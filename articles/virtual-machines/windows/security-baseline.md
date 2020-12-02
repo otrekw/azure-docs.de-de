@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 385f747999bbdb408dd1c5d2f5f12717834e94da
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: af7cc9d83b87c8a772a190c431d6946eec4dda86
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94844215"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483129"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Azure-Sicherheitsbaseline für virtuelle Windows-Computer
 
@@ -76,7 +76,7 @@ Sie können auch Azure Web Application Firewall (WAF) vor kritischen Webanwendun
 
 Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Verfügbarkeit von Windows-VMs auf genehmigte IP-Adressen und einen begrenzten Zeitraum einschränken. Verwenden Sie außerdem die adaptive Netzwerkhärtung in Azure Security Center, um NSG-Konfigurationen zu empfehlen, die Ports und Quell-IP-Adressen basierend auf tatsächlichem Datenverkehr und Threat Intelligence einschränken.
 
-* [Konfigurieren von DDoS-Schutz](../../virtual-network/manage-ddos-protection.md)
+* [Konfigurieren von DDoS-Schutz](../../ddos-protection/manage-ddos-protection.md)
 
 * [Bereitstellen von Azure Firewall](../../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -274,7 +274,7 @@ Alternativ dazu können Sie zum Überwachen und Überprüfen Ihrer Protokolle au
 
 * [Durchführen des Onboardings für Azure Sentinel](../../sentinel/quickstart-onboard.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../../azure-monitor/log-query/get-started-queries.md)
 
@@ -452,7 +452,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 **Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory, um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -580,7 +580,7 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Virtuelle Datenträger auf virtuellen Windows-Computern werden mithilfe der serverseitigen Verschlüsselung oder von Azure Disk Encryption (ADE) im Ruhezustand verschlüsselt. Azure Disk Encryption nutzt das BitLocker-Feature von Windows zum Verschlüsseln verwalteter Datenträger mit vom Kunden verwalteten Schlüsseln innerhalb der Gast-VM. Die serverseitige Verschlüsselung mit vom Kunden verwalteten Schlüsseln bewirkt eine ADE-Verbesserung, indem Sie beliebige Betriebssystemtypen und Images für Ihre VMs verwenden können, indem Daten im Speicherdienst verschlüsselt werden.
 
-* [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](./disk-encryption.md)
+* [Serverseitige Verschlüsselung von verwalteten Azure-Datenträgern](../disk-encryption.md)
 
 * [Azure Disk Encryption für Windows-VMs](./disk-encryption-overview.md)
 
@@ -620,9 +620,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Verwenden Sie die Azure-Updateverwaltung, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
+* [Updateverwaltung in Azure](../../automation/update-management/overview.md)
 
-* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -632,9 +632,9 @@ Microsoft verwendet das TLS-Protokoll (Transport Layer Security) zum Schutz von 
 
 **Leitfaden**: Sie können eine Lösung für die Patchverwaltung von Drittanbietern verwenden. Sie können die Azure-Updateverwaltung verwenden, um Updates und Patches für Ihre VMs zu verwalten. In der Updateverwaltung wird das lokal konfigurierte Updaterepository verwendet, um unterstützte Windows-Systeme zu patchen. Mit Tools wie System Center Updates Publisher (Updates Publisher) können Sie benutzerdefinierte Updates in Windows Server Update Services (WSUS) veröffentlichen. Dadurch kann die Updateverwaltung Computer, auf denen Configuration Manager als Updaterepository verwendet wird, mit Software von Drittanbietern patchen.
 
-* [Updateverwaltung in Azure](../../automation/update-management/update-mgmt-overview.md)
+* [Updateverwaltung in Azure](../../automation/update-management/overview.md)
 
-* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/update-mgmt-manage-updates-for-vm.md)
+* [Verwalten von Updates und Patches für Ihre VMs](../../automation/update-management/manage-updates-for-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar.
 
