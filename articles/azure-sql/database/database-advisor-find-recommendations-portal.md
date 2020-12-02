@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 6ad8f3e146c13e7b88752b8ef6d514346542ce26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 748ac448ad8bf5c06e5be8b7a4a8b00a9b7af84b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672270"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500885"
 ---
 # <a name="find-and-apply-performance-recommendations"></a>Suchen und Anwenden von Empfehlungen zur Leistung
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -30,8 +30,8 @@ Zum Anzeigen und Anwenden von Empfehlungen zur Leistung benötigen Sie die richt
 Führen Sie die folgenden Schritte aus, um Empfehlungen zur Leistung im Azure-Portal zu suchen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
-2. Wechseln Sie zu **Alle Dienste** > **SQL-Datenbanken** , und wählen Sie Ihre Datenbank aus.
-3. Navigieren Sie zu **Empfehlungen zur Leistung** , um die verfügbaren Empfehlungen für die ausgewählte Datenbank anzuzeigen.
+2. Wechseln Sie zu **Alle Dienste** > **SQL-Datenbanken**, und wählen Sie Ihre Datenbank aus.
+3. Navigieren Sie zu **Empfehlungen zur Leistung**, um die verfügbaren Empfehlungen für die ausgewählte Datenbank anzuzeigen.
 
 Empfehlungen zur Leistung werden in einer Tabelle angezeigt, ähnlich wie in folgender Abbildung dargestellt:
 
@@ -62,7 +62,7 @@ Azure SQL-Datenbank gibt Ihnen vollständige Kontrolle darüber, wie Empfehlunge
 * Aktivieren Sie die automatische Optimierung, um die Empfehlungen automatisch anzuwenden.
 * Führen Sie das empfohlene T-SQL-Skript für Ihre Datenbank aus, um eine Empfehlung manuell zu implementieren.
 
-Wählen Sie eine beliebige Empfehlung aus, um die zugehörigen Details anzuzeigen. Klicken Sie dann auf **Skript anzeigen** , um genaue Informationen dazu anzuzeigen, wie die Empfehlung erstellt wird.
+Wählen Sie eine beliebige Empfehlung aus, um die zugehörigen Details anzuzeigen. Klicken Sie dann auf **Skript anzeigen**, um genaue Informationen dazu anzuzeigen, wie die Empfehlung erstellt wird.
 
 Die Datenbank bleibt online, während die Empfehlung angewendet wird. Eine Empfehlungen zur Leistung bzw. die automatischen Optimierung führen nie dazu, dass eine Datenbank offline geschaltet wird.
 
@@ -71,7 +71,7 @@ Die Datenbank bleibt online, während die Empfehlung angewendet wird. Eine Empfe
 Sie können Empfehlungen nacheinander anzeigen und akzeptieren.
 
 1. Wählen Sie auf der Seite **Empfehlungen** eine Empfehlung aus.
-2. Klicken Sie auf der Seite **Details** auf die Schaltfläche **Anwenden** .
+2. Klicken Sie auf der Seite **Details** auf die Schaltfläche **Anwenden**.
 
    ![Anwenden einer Empfehlung](./media/database-advisor-find-recommendations-portal/apply.png)
 
@@ -82,13 +82,13 @@ Die ausgewählten Empfehlungen werden auf die Datenbank angewendet.
 Wenn die Liste der Empfehlungen Einträge enthält, die Sie aus der Liste entfernen möchten, können Sie die Empfehlung verwerfen:
 
 1. Wählen Sie in der Liste **Empfehlungen** eine Empfehlung aus, um die Details zu öffnen.
-2. Klicken Sie auf der Seite **Details** auf **Verwerfen** .
+2. Klicken Sie auf der Seite **Details** auf **Verwerfen**.
 
 Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlungen** hinzufügen:
 
-1. Klicken Sie auf der Seite **Empfehlungen** auf **Verworfene anzeigen** .
+1. Klicken Sie auf der Seite **Empfehlungen** auf **Verworfene anzeigen**.
 2. Wählen Sie einen verworfenen Eintrag aus der Liste, um dessen Details anzuzeigen.
-3. Klicken Sie optional auf **"Verwerfen" rückgängig machen** , um den Eintrag wieder der Hauptliste der **Empfehlungen** hinzuzufügen.
+3. Klicken Sie optional auf **"Verwerfen" rückgängig machen**, um den Eintrag wieder der Hauptliste der **Empfehlungen** hinzuzufügen.
 
 > [!NOTE]
 > Beachten Sie, dass bei Aktivierung von [Automatische Optimierung](automatic-tuning-overview.md) für die SQL-Datenbank eine Empfehlung nie automatisch angewendet wird, wenn Sie diese einmal manuell in der Liste verworfen haben. Das Verwerfen einer Empfehlung ist eine praktische Möglichkeit für Benutzer, die automatische Optimierung auch in Fällen aktiviert zu halten, in denen eine bestimmte Empfehlung nicht angewendet werden sollte.
@@ -98,7 +98,7 @@ Falls gewünscht, können Sie verworfene Einträge wieder zur Liste **Empfehlung
 
 Sie können Ihre Datenbank so konfigurieren, dass Empfehlungen automatisch implementiert werden. Sobald Empfehlungen zur Verfügung stehen, werden sie automatisch angewendet. Wie bei allen vom Dienst verwalteten Empfehlungen wird eine Empfehlung rückgängig gemacht, wenn sie sich negativ auf die Leistung auswirkt.
 
-1. Klicken Sie auf der Seite **Empfehlungen** auf **Automatisieren** :
+1. Klicken Sie auf der Seite **Empfehlungen** auf **Automatisieren**:
 
    ![Advisor-Einstellungen](./media/database-advisor-find-recommendations-portal/settings.png)
 2. Zu automatisierende Aktionen auswählen:
@@ -112,13 +112,13 @@ Klicken Sie nach der Auswahl der gewünschten Konfiguration auf „Übernehmen�
 
 ### <a name="manually-apply-recommendations-through-t-sql"></a>Manuelles Anwenden von Empfehlungen über T-SQL
 
-Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen** . Führen Sie dieses Skript für Ihre Datenbank aus, um die Empfehlung manuell anzuwenden.
+Wählen Sie eine beliebige Empfehlung aus, und klicken Sie auf **Skript anzeigen**. Führen Sie dieses Skript für Ihre Datenbank aus, um die Empfehlung manuell anzuwenden.
 
-*Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft* . Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Darüber hinaus bleiben manuell angewandte Empfehlungen aktiv und werden 24 bis 48 Stunden lang in der Liste der Empfehlungen angezeigt. Danach zieht sie das System automatisch zurück. Wenn Sie eine Empfehlung früher entfernen möchten, können Sie sie manuell verwerfen.
+*Indizes, die manuell erstellt wurden, werden nicht durch den Dienst überwacht und auf ihre tatsächlichen Auswirkungen auf die Leistung überprüft*. Es empfiehlt sich daher, diese Indizes nach der Erstellung zu überwachen. So können Sie sicherstellen, dass sie Leistungssteigerungen bieten, und sie gegebenenfalls anpassen oder löschen. Ausführliche Informationen zum Erstellen von Indizes finden Sie unter [CREATE INDEX (Transact-SQL)](/sql/t-sql/statements/create-index-transact-sql). Darüber hinaus bleiben manuell angewandte Empfehlungen aktiv und werden 24 bis 48 Stunden lang in der Liste der Empfehlungen angezeigt. Danach zieht sie das System automatisch zurück. Wenn Sie eine Empfehlung früher entfernen möchten, können Sie sie manuell verwerfen.
 
 ### <a name="canceling-recommendations"></a>Abbrechen von Empfehlungen
 
-Empfehlungen, die den Status **Ausstehend** , **Wird geprüft** oder **Erfolg** aufweisen, können verworfen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
+Empfehlungen, die den Status **Ausstehend**, **Wird geprüft** oder **Erfolg** aufweisen, können verworfen werden. Empfehlungen mit dem Status **Wird ausgeführt** können nicht abgebrochen werden.
 
 1. Wählen Sie im Bereich **Optimierungsverlauf** eine Empfehlung aus, um die Seite **Empfehlungsdetails** zu öffnen.
 2. Klicken Sie auf **Abbrechen** , um den Vorgang zum Anwenden der Empfehlung abzubrechen.
@@ -146,7 +146,7 @@ Klicken Sie auf eine in Bearbeitung befindliche Empfehlung in der Liste, um weit
 Wenn Sie die Empfehlungen zur Leistung verwendet haben, um die Empfehlung anzuwenden (also nicht das T-SQL-Skript manuell ausgeführt haben), wird die Empfehlung automatisch rückgängig gemacht, wenn die Änderung sich negativ auf die Leistung auswirkt. Wenn Sie eine Empfehlung aus irgendeinem Grund einfach zurücksetzen möchten, können Sie folgendermaßen vorgehen:
 
 1. Wählen Sie eine erfolgreich angewendete Empfehlung im Bereich **Optimierungsverlauf** aus.
-2. Klicken Sie auf der Seite **Details zur Empfehlung** auf **Zurücksetzen** .
+2. Klicken Sie auf der Seite **Details zur Empfehlung** auf **Zurücksetzen**.
 
 ![Empfohlene Indizes](./media/database-advisor-find-recommendations-portal/details.png)
 

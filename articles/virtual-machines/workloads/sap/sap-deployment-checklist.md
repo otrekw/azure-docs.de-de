@@ -16,12 +16,12 @@ ms.workload: infrastructure
 ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ac75ab31f8c9cdd9405115db4f5c35d28707e29f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 06d20dd47ceb71b51e226d662892eab06b072685
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94950362"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500936"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>Prüfliste für die Planung und Bereitstellung von SAP-Workloads in Azure
 
@@ -243,8 +243,8 @@ Sammeln Sie in dieser Phase alle Ihre Erkenntnisse aus den Nicht-Produktionsbere
     - Azure Storage Premium wird für Datenträger mit spezifischen Anforderungen an die Latenz oder mit einer [SLA von 99,9 % für Einzel-VMs](https://azure.microsoft.com/support/legal/sla/virtual-machines/v1_8/) verwendet.
     - Azure Schreibbeschleunigung wurde ordnungsgemäß bereitgestellt.
         - Vergewissern Sie sich, dass Speicherplätze in den VMs oder Stripesets für Datenträger, die Schreibbeschleunigung benötigen, ordnungsgemäß erstellt wurden.
-        - Überprüfen Sie die [Konfiguration von Software-RAID unter Linux](../../linux/configure-raid.md).
-        - Überprüfen Sie die [Konfiguration von LVM unter Linux VMs in Azure](../../linux/configure-lvm.md).
+        - Überprüfen Sie die [Konfiguration von Software-RAID unter Linux](/previous-versions/azure/virtual-machines/linux/configure-raid).
+        - Überprüfen Sie die [Konfiguration von LVM unter Linux VMs in Azure](/previous-versions/azure/virtual-machines/linux/configure-lvm).
     - Es werden ausschließlich [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) verwendet.
     - Die VMs wurden in den richtigen Verfügbarkeitsgruppen und -zonen bereitgestellt.
     - Auf den virtuellen Computern, die in der SAP-Anwendungsschicht und der SAP-DBMS-Schicht verwendet werden, ist der [beschleunigte Azure-Netzwerkbetrieb](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) aktiviert.

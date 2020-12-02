@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: PowerShell
 ms.topic: sample
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 06/06/2020
-ms.openlocfilehash: 9674b7188251312056812ac8e1dcae5885579e2a
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: d7a57f98551cf91ed87858caba0907471bcf6b12
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791306"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501225"
 ---
 # <a name="event-file-target-code-for-extended-events-in-azure-sql-database"></a>Code des Ziels „Ereignisdatei“ für erweiterte Ereignisse in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -44,7 +44,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 - Ein Azure-Konto und ein Azure-Abonnement. Sie können sich für eine [kostenlose Testversion](https://azure.microsoft.com/pricing/free-trial/)registrieren.
 - Jede Datenbank, in der eine Tabelle erstellt werden kann.
   
-  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT** -Demodatenbank erstellen](single-database-create-quickstart.md).
+  - Optional können Sie in wenigen Minuten [eine **AdventureWorksLT**-Demodatenbank erstellen](single-database-create-quickstart.md).
 
 - SQL Server Management Studio („ssms.exe“), im Idealfall die aktuelle monatliche Updateversion.
   Sie können "ssms.exe" in der neuesten Version wie folgt herunterladen:
@@ -54,7 +54,7 @@ In diesem Thema wird ein Codebeispiel in zwei Phasen vorgestellt:
 
 - Die [Azure PowerShell-Module](https://go.microsoft.com/?linkid=9811175) müssen installiert sein.
 
-  - Die Module umfassen verschiedene Befehle, z.B. **New-AzStorageAccount** .
+  - Die Module umfassen verschiedene Befehle, z.B. **New-AzStorageAccount**.
 
 ## <a name="phase-1-powershell-code-for-azure-storage-container"></a>Phase 1: PowerShell-Code für den Azure-Speichercontainer
 
@@ -62,7 +62,7 @@ Dieser PowerShell-Code wird in Phase 1 des zweiphasigen Codebeispiels erstellt.
 
 Das Skript beginnt mit Befehlen zum Bereinigen nach einer möglichen vorherigen Ausführung und kann darum erneut ausgeführt werden.
 
-1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z.B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1** .
+1. Fügen Sie das PowerShell-Skript in einem einfachen Texteditor (z.B. Editor) ein, und speichern Sie es als Datei mit der Erweiterung **.ps1**.
 2. Starten Sie PowerShell ISE als Administrator.
 3. Geben Sie an der Eingabeaufforderung<br/>`Set-ExecutionPolicy -ExecutionPolicy Unrestricted -Scope CurrentUser`<br/>ein, und drücken Sie dann die EINGABETASTE.
 4. Öffnen Sie in PowerShell ISE Ihre Datei mit der Erweiterung **.ps1** . Führen Sie das Skript aus.
@@ -258,7 +258,7 @@ Beim Beenden des PowerShell-Skripts wurden einige benannte Werte ausgegeben. Sie
 6. Speichern Sie die Änderungen, und führen Sie dann das Skript aus.
 
 > [!WARNING]
-> Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen* . Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
+> Der durch das vorangehende PowerShell-Skript generierte SAS-Schlüsselwert beginnt unter Umständen mit einem Fragezeichen. Wenn Sie den SAS-Schlüssel im folgenden T-SQL-Skript verwenden, müssen Sie *das vorangestellte Fragezeichen entfernen*. Andernfalls kann die Ausführung des Skripts aus Sicherheitsgründen blockiert werden.
 
 ### <a name="transact-sql-code"></a>Transact-SQL-Code
 
@@ -451,7 +451,7 @@ GO
 
 ## <a name="output"></a>Output
 
-Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML** , nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **\<event>** -Element mit einer UPDATE-Anweisung angezeigt.
+Klicken Sie auf eine Zelle unter der Spaltenüberschrift **event_data_XML**, nachdem das Transact-SQL-Skript abgeschlossen ist. Es wird ein **\<event>** -Element mit einer UPDATE-Anweisung angezeigt.
 
 Hier sehen Sie ein **\<event>** -Element, das beim Testen generiert wurde:
 
@@ -506,9 +506,9 @@ Eine Erläuterung der erweiterten Optionen zum Anzeigen von Daten aus erweiterte
 
 Angenommen, Sie möchten das vorhergehende Transact-SQL-Codebeispiel in Microsoft SQL Server ausführen.
 
-- Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch *C:\myeventdata.xel* . Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
-- Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL** .
-- In der **ADD TARGET** -Klausel der **CREATE EVENT SESSION** -Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. *C:\myfile.xel* .
+- Der Einfachheit halber möchten Sie die Verwendung des Azure-Speichercontainers vollständig durch eine einfache Datei ersetzen, z.B. durch *C:\myeventdata.xel*. Die Datei wird auf die lokale Festplatte des Computers geschrieben, der SQL Server hostet.
+- Sie benötigen keine Transact-SQL-Anweisungen für **CREATE MASTER KEY** und **CREATE CREDENTIAL**.
+- In der **ADD TARGET**-Klausel der **CREATE EVENT SESSION**-Anweisung ersetzen Sie den für **filename=** zugewiesenen HTTP-Wert durch eine vollständige Pfadzeichenfolge wie z.B. *C:\myfile.xel*.
   
   - Es wird kein Azure-Speicherkonto benötigt.
 

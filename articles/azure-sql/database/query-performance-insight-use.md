@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: how-to
 author: danimir
 ms.author: danil
-ms.reviewer: jrasnik, sstein
+ms.reviewer: wiassaf, sstein
 ms.date: 03/10/2020
-ms.openlocfilehash: c88b777e08bc165caefa14fe28d43c498e3fefcd
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: a016781e5b05c8f43c043bf1f3368a58064e43ad
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790371"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501259"
 ---
 # <a name="query-performance-insight-for-azure-sql-database"></a>Query Performance Insight für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -41,21 +41,21 @@ Um Query Performance Insight nutzen zu können, muss der [Abfragespeicher](/sql/
 
 Sie benötigen die folgenden Berechtigungen der [rollenbasierten Zugriffssteuerung von Azure (Azure Role-Based Access Control, Azure RBAC)](../../role-based-access-control/overview.md), um Query Performance Insight verwenden zu können:
 
-* Die Berechtigungen **Leser** , **Besitzer** , **Mitwirkender** , **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind erforderlich, um die Abfragen und Diagramme mit dem höchsten Ressourcenverbrauch anzuzeigen.
-* Die Berechtigungen **Besitzer** , **Mitwirkender** , **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind zum Anzeigen von Abfragetext erforderlich.
+* Die Berechtigungen **Leser**, **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind erforderlich, um die Abfragen und Diagramme mit dem höchsten Ressourcenverbrauch anzuzeigen.
+* Die Berechtigungen **Besitzer**, **Mitwirkender**, **Mitwirkender von SQL DB** oder **Mitwirkender von SQL Server** sind zum Anzeigen von Abfragetext erforderlich.
 
 ## <a name="use-query-performance-insight"></a>Verwenden der Statistik zur Abfrageleistung
 
 Query Performance Insight ist einfach zu verwenden:
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com/), und suchen Sie eine Datenbank, die Sie untersuchen möchten.
-2. Öffnen Sie im linken Menü **Intelligente Leistung** > **Query Performance Insight** .
+2. Öffnen Sie im linken Menü **Intelligente Leistung** > **Query Performance Insight**.
   
    ![Query Performance Insight im Menü](./media/query-performance-insight-use/tile.png)
 
 3. Überprüfen Sie auf der ersten Registerkarte die Liste mit den Abfragen, die den höchsten Ressourcenverbrauch aufweisen.
 4. Wählen Sie eine einzelne Abfrage aus, um die Details anzuzeigen.
-5. Öffnen Sie **Intelligente Leistung** > **Leistungsempfehlungen** , und überprüfen Sie, ob Leistungsempfehlungen zur Verfügung stehen. Weitere Informationen zu integrierten Leistungsempfehlungen finden Sie unter [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md).
+5. Öffnen Sie **Intelligente Leistung** > **Leistungsempfehlungen**, und überprüfen Sie, ob Leistungsempfehlungen zur Verfügung stehen. Weitere Informationen zu integrierten Leistungsempfehlungen finden Sie unter [Azure SQL Database Advisor](database-advisor-implement-performance-recommendations.md).
 6. Verwenden Sie Schieberegler oder Zoomsymbole, um das beobachtete Intervall zu ändern.
 
    ![Leistungsdashboard](./media/query-performance-insight-use/performance.png)
@@ -86,7 +86,7 @@ Query Performance Insight zeigt beim ersten Öffnen standardmäßig die fünf Ab
    > Erstellen Sie für einen genaueren Vergleich (bis zu einer Minute) ein benutzerdefiniertes Diagramm der DTU-Auslastung:
    >
    > 1. Wählen Sie im Azure-Portal **Azure SQL-Datenbank** > **Überwachung** aus.
-   > 2. Klicken Sie auf **Metriken** .
+   > 2. Klicken Sie auf **Metriken**.
    > 3. Wählen Sie **+ Diagramm hinzufügen** aus.
    > 4. Wählen Sie den DTU-Prozentsatz im Diagramm aus.
    > 5. Wählen Sie außerdem **Letzte 24 Stunden** im Menü links oben aus, und ändern Sie die Option in eine Minute.
@@ -160,7 +160,7 @@ Abfragen mit langer Ausführungsdauer besitzen das größte Potenzial, Ressource
 So ermitteln Sie Abfragen mit langer Ausführungsdauer:
 
 1. Öffnen Sie in Query Performance Insight die Registerkarte **Benutzerdefiniert** für die ausgewählte Datenbank.
-2. Ändern Sie die Metrik zu **Dauer** .
+2. Ändern Sie die Metrik zu **Dauer**.
 3. Wählen Sie die Anzahl von Abfragen und das Beobachtungsintervall aus.
 4. Wählen Sie die Aggregationsfunktion aus:
 
@@ -178,7 +178,7 @@ So ermitteln Sie Abfragen mit langer Ausführungsdauer:
    > Um die Datenbank-DTU-Nutzung detaillierter (bis auf die Minute genau) kennen zu lernen, erstellen Sie ein benutzerdefiniertes Diagramm im Azure-Portal:
    >
    > 1. Wählen Sie **Azure SQL-Datenbank** > **Überwachung** aus.
-   > 2. Klicken Sie auf **Metriken** .
+   > 2. Klicken Sie auf **Metriken**.
    > 3. Wählen Sie **+ Diagramm hinzufügen** aus.
    > 4. Wählen Sie den DTU-Prozentsatz im Diagramm aus.
    > 5. Wählen Sie außerdem **Letzte 24 Stunden** im Menü links oben aus, und ändern Sie die Option in eine Minute.
@@ -197,7 +197,7 @@ Viele datengesteuerte Websites greifen beispielsweise bei jeder Benutzeranforder
 So identifizieren Sie häufig ausgeführte Abfragen
 
 1. Öffnen Sie in Query Performance Insight die Registerkarte **Benutzerdefiniert** für die ausgewählte Datenbank.
-2. Ändern Sie die Metrik zu **Ausführungsanzahl** .
+2. Ändern Sie die Metrik zu **Ausführungsanzahl**.
 3. Wählen Sie die Anzahl von Abfragen und das Beobachtungsintervall aus.
 4. Wählen Sie die Schaltfläche **Los >** aus, um die angepasste Ansicht anzuzeigen.
 
@@ -238,13 +238,13 @@ Der zweite Fall tritt ein, wenn der Abfragespeicher deaktiviert ist oder die Par
 
 Es gibt zwei Arten von Aufbewahrungsrichtlinien:
 
-* **Größenbasiert** : Bei Festlegung dieser Richtlinie auf **AUTO** werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
-* **Zeitbasiert** : Diese Richtlinie ist standardmäßig auf 30 Tage festgelegt. Wenn kein Speicherplatz mehr für den Abfragespeicher zur Verfügung steht, werden alle Abfrageinformationen gelöscht, die älter als 30 Tage sind.
+* **Größenbasiert**: Bei Festlegung dieser Richtlinie auf **AUTO** werden Daten automatisch bereinigt, wenn die maximale Größe fast erreicht ist.
+* **Zeitbasiert**: Diese Richtlinie ist standardmäßig auf 30 Tage festgelegt. Wenn kein Speicherplatz mehr für den Abfragespeicher zur Verfügung steht, werden alle Abfrageinformationen gelöscht, die älter als 30 Tage sind.
 
 Sie können für die Erfassungsrichtlinie Folgendes festlegen:
 
-* **All** : Der Abfragespeicher erfasst alle Abfragen.
-* **Automatisch** : Der Abfragespeicher ignoriert seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer. Die Schwellenwerte für Ausführungszahl, Kompilierungs- und Ausführungsdauer werden intern bestimmt. Dies ist die Standardoption.
+* **All**: Der Abfragespeicher erfasst alle Abfragen.
+* **Automatisch**: Der Abfragespeicher ignoriert seltene Abfragen und Abfragen mit unbedeutender Erstellungs- und Ausführungsdauer. Die Schwellenwerte für Ausführungszahl, Kompilierungs- und Ausführungsdauer werden intern bestimmt. Dies ist die Standardoption.
 * **Keine:** Der Abfragespeicher beendet die Erfassung neuer Abfragen, die Laufzeitstatistiken für bereits erfasste Abfragen werden jedoch weiter gesammelt.
 
 Sie sollten für alle Richtlinien **AUTOMATISCH** und für die Bereinigungsrichtlinie 30 Tage festlegen, indem Sie die folgenden Befehle aus [SSMS](/sql/ssms/download-sql-server-management-studio-ssms) oder Azure-Portal ausführen. (Ersetzen Sie `YourDB` mit dem Datenbanknamen.)

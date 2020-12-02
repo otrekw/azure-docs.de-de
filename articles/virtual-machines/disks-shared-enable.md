@@ -8,12 +8,12 @@ ms.date: 09/30/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 661d4ba575eafa4e261a1c92c1112a259b95eac7
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e8bb97196fcceea0c86f58fe4a63146e681c427e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683590"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500732"
 ---
 # <a name="enable-shared-disk"></a>Aktivieren freigegebener Datenträger
 
@@ -27,7 +27,7 @@ Informationen zum Konzept verwalteter Datenträger mit aktivierten freigegebenen
 
 ## <a name="supported-operating-systems"></a>Unterstützte Betriebssysteme
 
-Freigegebene Datenträger unterstützen verschiedene Betriebssysteme. Informationen zu den unterstützten Betriebssystemen finden Sie im Konzeptartikel in den Abschnitten [Windows](windows/disks-shared.md#windows) und [Linux](linux/disks-shared.md#linux).
+Freigegebene Datenträger unterstützen verschiedene Betriebssysteme. Informationen zu den unterstützten Betriebssystemen finden Sie im Konzeptartikel in den Abschnitten [Windows](./disks-shared.md#windows) und [Linux](./disks-shared.md#linux).
 
 ## <a name="disk-sizes"></a>Datenträgergrößen
 

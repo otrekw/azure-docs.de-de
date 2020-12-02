@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 640d51de6dac1d175f9b46f327b72f293cf025cb
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94849127"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301837"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azure-Sicherheitsbaseline für App Service
 
@@ -47,7 +47,7 @@ Erwägen Sie auch die Implementierung von Azure Firewall. Damit können Sie Rich
 
 - [Schutz vor den wichtigsten 10 OWASP-Sicherheitsrisiken (Open Web Application Security Project)](https://owasp.org/www-project-top-ten/)
 
-- [Netzwerksicherheitsgruppen](/azure/virtual-network/security-overview)
+- [Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md)
 
 - [Integrieren Ihrer App in ein Azure Virtual Network](web-sites-integrate-with-vnet.md)
 
@@ -71,7 +71,7 @@ Nutzen Sie Azure Firewall für das Weiterleiten von Datenverkehr und das Erstell
 
 - [Grundlegendes zu der von Azure Security Center bereitgestellten Netzwerksicherheit](../security-center/security-center-network-recommendations.md)
 
-- [Aktivieren der Überwachung und des Schutzes von App Service](/azure/security-center/security-center-app-services)
+- [Aktivieren der Überwachung und des Schutzes von App Service](/azure/security-center/defender-for-app-service-intro)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie unter den angegebenen Links.
 
 - [Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -205,7 +205,7 @@ Weitere Informationen finden Sie unter den angegebenen Links.
 
 - [Konfigurieren von End-to-End-TLS mit Application Gateway im Azure-Portal](../application-gateway/end-to-end-ssl-portal.md)
 
-- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](https://review.docs.microsoft.com/azure/app-service/environment/firewall-integrationEnvironment:)
+- [Schützen der ASE wie unter „Sperren einer App Service-Umgebung“ beschrieben](/azure/app-service/environment/firewall-integration)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -219,9 +219,9 @@ Verwenden Sie für einzelne Netzwerksicherheitsgruppen-Regeln das Feld „Beschr
 
 Wenden Sie eine der integrierten Azure Policy-Definitionen für das Tagging an (z. B. „Tag und zugehörigen Wert erzwingen“), um sicherzustellen, dass alle Ressourcen mit Tags erstellt werden und Sie über vorhandene nicht markierte Ressourcen benachrichtigt werden. Verwenden Sie Azure PowerShell oder die Azure CLI, um nach Ressourcen basierend auf ihren Tags zu suchen oder Aktionen für diese Ressourcen auszuführen.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
-- [Azure App Service-Zugriffseinschränkungen](/azure/app-service/app-service-ip-restriction)
+- [Azure App Service-Zugriffseinschränkungen](/azure/app-service/app-service-ip-restrictions)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -241,7 +241,7 @@ Wenden Sie eine der zahlreichen integrierten Azure Policy-Definitionen für App 
 
 Es wird empfohlen, einen Prozess mit automatisierten Tools zu erstellen, um Konfigurationen von Netzwerkressourcen zu überwachen und Änderungen schnell zu erkennen.
 
-- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](/azure/azure-monitor/platform/activity-log-view)
+- [Anzeigen und Abrufen von Azure-Aktivitätsprotokollereignissen](../azure-monitor/platform/activity-log.md#view-the-activity-log)
 
 - [Erstellen von Warnungen in Azure Monitor](../azure-monitor/platform/alerts-activity-log.md)
 
@@ -280,7 +280,7 @@ Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvo
 
 Darüber hinaus bietet Azure Key Vault eine zentrale Verwaltung von Geheimnissen mit Zugriffsrichtlinien und Überprüfungsverlauf. 
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
 - [Aktivieren der Diagnoseeinstellungen für Azure App Service](troubleshoot-diagnostic-logs.md)
 
@@ -309,7 +309,7 @@ Wenn Sie eine Web Application Firewall (WAF) bereitgestellt haben, können Sie A
 
 Verwenden Sie die skalierbare und cloudnative SIEM-Lösung (Security Information & Event Management) Azure Sentinel, um je nach Anforderungen verschiedene Datenquellen und Connectors zu integrieren. In Azure Marketplace können Sie optional auch SIEM-Lösungen von Drittanbietern aktivieren und ein Onboarding Ihrer Daten durchführen.
 
-- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](/azure/azure-monitor/platform/diagnostic-settings-legacy)
+- [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../azure-monitor/platform/activity-log.md)
 
 - [Was ist Application Insights?](../azure-monitor/app/app-insights-overview.md)
 
@@ -343,7 +343,7 @@ Wenn Sie Azure Web Application Firewall (WAF) bereitgestellt haben, können Sie 
 
 **Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](https://docs.microsoft.com/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0&amp;preserve-view=true)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
 
 - [Verwenden verwalteter Identitäten für App Service und Azure Functions](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -422,7 +422,7 @@ Wenn Sie die Authentifizierung und Autorisierung mit einem dieser Anbieter aktiv
 
 Implementieren der mehrstufigen Authentifizierung für Azure AD. Administratoren müssen sicherstellen, dass die Abonnementkonten im Portal geschützt sind. Das Abonnement ist für Angriffe anfällig, da es die von Ihnen erstellten Ressourcen verwaltet. 
 
-- [Azure Security: mehrstufige Authentifizierung](/azure/security/develop/secure-aad-app)
+- [Azure Security: mehrstufige Authentifizierung](/previous-versions/azure/security/develop/secure-aad-app)
 
 - [Aktivieren von MFA in Azure](../active-directory/authentication/howto-mfa-getstarted.md)
 
@@ -454,9 +454,9 @@ Der Bedrohungsschutz in Security Center bietet umfassende Schutzmaßnahmen für 
 
 - [Bereitstellen von Azure AD Privileged Identity Management (PIM)](../active-directory/privileged-identity-management/pim-deployment-plan.md)
 
-- [Azure Active Directory-Risikoerkennungen](/azure/active-directory/reports-monitoring/concept-risk-events)
+- [Azure Active Directory-Risikoerkennungen](../active-directory/identity-protection/overview-identity-protection.md)
 
-- [Bedrohungsschutz für Azure-Computeressourcen](/azure/security-center/threat-protection)
+- [Bedrohungsschutz für Azure-Computeressourcen](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -488,7 +488,7 @@ Der Bedrohungsschutz in Security Center bietet umfassende Schutzmaßnahmen für 
 
 **Leitfaden**: Ermitteln Sie veraltete Konten anhand von Protokollen in Azure Active Directory (Azure AD). Verwenden Sie Zugriffsüberprüfungen für Azure-Identitäten, um Gruppenmitgliedschaften, den Zugriff auf Unternehmensanwendungen sowie Rollenzuweisungen effizient zu verwalten. Überprüfen Sie den Benutzerzugriff in regelmäßigen Abständen, um sicherzustellen, dass nur die vorgesehenen Benutzer weiterhin Zugriff haben. 
 
-- [Grundlegendes zur Azure AD-Berichterstellung](/azure/active-directory/reports-monitoring)
+- [Grundlegendes zur Azure AD-Berichterstellung](../active-directory/reports-monitoring/index.yml)
 
 - [Verwenden von Zugriffsüberprüfungen für Azure-Identitäten](../active-directory/governance/access-reviews-overview.md)
 
@@ -504,7 +504,7 @@ Der Zugriff auf Azure AD-Anmeldeaktivitäten sowie Quellen für Überwachungs- 
 
 - [Konfigurieren Ihrer Azure App Service-Apps zur Verwendung der Azure AD-Anmeldung](configure-authentication-provider-aad.md)
 
-- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](/azure/active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics)
+- [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
 - [Schnellstart: Ausführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
@@ -520,7 +520,7 @@ Verwenden Sie Azure AD Identity Protection, um automatisierte Reaktionen auf er
 
 - [Konfigurieren Ihrer Azure App Service-App zur Verwendung der Azure AD-Anmeldung](configure-authentication-provider-aad.md)
 
-- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins)
+- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md)
 
 - [Konfigurieren und Aktivieren von Risikorichtlinien für den Identitätsschutz](../active-directory/identity-protection/howto-identity-protection-configure-risk-policies.md)
 
@@ -546,7 +546,7 @@ Verwenden Sie Azure AD Identity Protection, um automatisierte Reaktionen auf er
 
 **Leitfaden**: Verwenden Sie Tags für die Nachverfolgung von App Service-Ressourcen, die vertrauliche Informationen speichern oder verarbeiten.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -628,7 +628,7 @@ Die Kundengeheimnisse werden im Ruhezustand verschlüsselt, während sie in App 
 
 Beachten Sie, dass von Websites optional zwar lokal angefügte Datenträger als temporärer Speicher verwendet werden können (z. B. „D:\local“ und „%TMP%“), diese aber nicht im Ruhezustand verschlüsselt werden.
 
-- [Grundlegendes zu Datenschutzkontrollen für Azure App Service](app-service-security-controls.md)
+- [Grundlegendes zu Datenschutzkontrollen für Azure App Service]()
 
 - [Grundlegendes zur Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md)
 
@@ -656,9 +656,9 @@ Beachten Sie, dass von Websites optional zwar lokal angefügte Datenträger als 
 
 Lesen und befolgen Sie die Empfehlungen von Security Center zum Schützen Ihrer App Service-Apps.
 
-- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](https://docs.microsoft.com/azure/devops/migrate/security-validation-cicd-pipeline?view=azure-devops&amp;preserve-view=true)
+- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
 
-- [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](/azure/security-center/security-center-vulnerability-assessment-recommendations)
+- [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -686,7 +686,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](https://docs.microsoft.com/powershell/module/az.accounts/get-azsubscription?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -698,7 +698,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 **Leitfaden**: Wenden Sie Tags auf Ihre Azure-Ressourcen mithilfe von Metadaten an, um sie logisch in einer Taxonomie zu organisieren.
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -715,11 +715,11 @@ Verwenden Sie Azure Policy, um Einschränkungen für den Typ der Ressourcen anzu
 
 Weitere Informationen finden Sie unter den angegebenen Links.
 
-- [Erstellen zusätzlicher Azure-Abonnements](/azure/billing/billing-create-subscription)
+- [Erstellen zusätzlicher Azure-Abonnements](../cost-management-billing/manage/create-subscription.md)
 
-- [Erstellen von Verwaltungsgruppen](/azure/governance/management-groups/create)
+- [Erstellen von Verwaltungsgruppen](../governance/management-groups/create-management-group-portal.md)
 
-- [Erstellen und Verwenden von Tags](/azure/azure-resource-manager/resource-group-using-tags)
+- [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -891,7 +891,7 @@ Wenden Sie integrierte Richtliniendefinitionen wie die folgenden an:
 
 Es wird empfohlen, den Prozess zum Anwenden der integrierten Richtliniendefinitionen für die standardisierte Verwendung zu dokumentieren.   
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](https://docs.microsoft.com/powershell/module/az.resources/get-azpolicyalias?view=azps-4.8.0&amp;preserve-view=true)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Es wird empfohlen, den Prozess zum Anwenden der integrierten Richtliniendefiniti
 
 Verwenden Sie Ihre vorhandene CI/CD-Pipeline (Continuous Integration und Continuous Delivery), um eine als sicher bekannte Konfiguration bereitzustellen.
 
-- [Speichern von Code in Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops&amp;preserve-view=true)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](https://docs.microsoft.com/azure/devops/repos/?view=azure-devops&amp;preserve-view=true)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -951,11 +951,11 @@ Wenden Sie die Azure Policy-Auswirkungen [audit] (Überwachen), [deny] (Verweige
 
 **Leitfaden**: Verwenden Sie verwaltete Identitäten, um App Service-Apps mit einer automatisch verwalteten Identität in Azure Active Directory (Azure AD) bereitzustellen. Mithilfe verwalteter Identitäten können Sie die Authentifizierung bei jedem Dienst durchführen, der die Azure AD-Authentifizierung unterstützt, einschließlich Key Vault. Hierfür müssen keine Anmeldeinformationen im Code enthalten sein. Stellen Sie sicher, dass das vorläufige Löschen in Azure Key Vault aktiviert ist.
 
-- [Aktivieren des vorläufigen Löschens in Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Aktivieren des vorläufigen Löschens in Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 - [Verwenden von verwalteten Identitäten für App Service](overview-managed-identity.md)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity)
+- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -967,7 +967,7 @@ Wenden Sie die Azure Policy-Auswirkungen [audit] (Überwachen), [deny] (Verweige
 
 - [Verwenden von verwalteten Identitäten für App Service](overview-managed-identity.md)
 
-- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](/azure/key-vault/managed-identity)
+- [Bereitstellen der Key Vault-Authentifizierung mit einer verwalteten Identität](../key-vault/general/assign-access-policy-portal.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1000,7 +1000,7 @@ Stellen Sie sicher, dass reguläre und automatisierte Sicherungen so oft ausgef�
 
 - [Grundlegendes zur Azure App Service-Sicherungsfunktion](manage-backup.md)
 
-- [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](https://docs.microsoft.com/azure/storage/common/customer-managed-keys-overview?toc=/azure/storage/blobs/toc.json)
+- [Kundenseitig verwaltete Schlüssel für die Azure Storage-Verschlüsselung](../storage/common/customer-managed-keys-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -1053,7 +1053,7 @@ Standardmäßig werden Daten in einem Speicherkonto mit von Microsoft verwaltete
 
 - [Azure Storage-Verschlüsselung für ruhende Daten](../storage/common/storage-service-encryption.md)
 
-- [Aktivieren des vorläufigen Löschens in Azure Key Vault](/azure/key-vault/key-vault-soft-delete-powershell)
+- [Aktivieren des vorläufigen Löschens in Azure Key Vault](../key-vault/general/key-vault-recovery.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -1149,5 +1149,5 @@ Informieren Sie sich über die Microsoft-Strategie im Zusammenhang mit Red Team-
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](/azure/security/benchmarks/overview).
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Lesen Sie den [Vergleichstest für die Azure-Sicherheit](../security/benchmarks/overview.md).
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

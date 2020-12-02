@@ -8,12 +8,12 @@ author: vhorne
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: f164418c29e9838928f3d03519342ebef40e16e7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b14bd60ab744be5a1735abc073f32f8ebc3e1ab1
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015696"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301698"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Erstellen und Verwenden von benutzerdefinierten Regeln für Web Application Firewall v2 auf Application Gateway
 
@@ -21,7 +21,7 @@ Web Application Firewall (WAF) v2 auf Azure Application Gateway bietet Schutz f�
 
 Dieser Artikel enthält einige Beispiele für benutzerdefinierte Regeln, die Sie erstellen und mit Ihrer WAF v2 nutzen können. Informationen zur Bereitstellung einer WAF mit einer benutzerdefinierten Regel mithilfe von Azure PowerShell finden Sie unter [Configure Web Application Firewall v2 with a custom rule using Azure PowerShell](configure-waf-custom-rules.md) (Konfigurieren der Web Application Firewall v2 mit einer benutzerdefinierten Regel per Azure PowerShell).
 
-Die in diesem Artikel gezeigten JSON-Codeausschnitte wurden von einer [ApplicationGatewayWebApplicationFirewallPolicies](/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies)-Ressource abgeleitet.
+Die in diesem Artikel gezeigten JSON-Codeausschnitte wurden von einer [ApplicationGatewayWebApplicationFirewallPolicies](/azure/templates/microsoft.network/applicationgatewaywebapplicationfirewallpolicies)-Ressource abgeleitet.
 
 >[!NOTE]
 > Wenn Ihr Anwendungsgateway nicht auf die WAF-Ebene zurückgreift, wird die Option zum Aktualisieren des Anwendungsgateways auf die WAF-Ebene im rechten Bereich angezeigt.

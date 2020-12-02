@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 07/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3932a1dee0eee16e7d64ff4c6085919d85b431ab
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5c00d08fcaeed8eba5b9732c9196b9abddc32b36
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843263"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500715"
 ---
 # <a name="azure-security-baseline-for-virtual-machine-scale-sets"></a>Azure-Sicherheitsbaseline für VM-Skalierungsgruppen
 
@@ -76,7 +76,7 @@ Sie können auch Azure Web Application Firewall (WAF) vor kritischen Webanwendun
 
 Sie können mit dem Just-in-Time-Netzwerkzugriff in Azure Security Center die Verfügbarkeit von Windows-VMs auf genehmigte IP-Adressen und einen begrenzten Zeitraum einschränken. Verwenden Sie außerdem die adaptive Netzwerkhärtung in Azure Security Center, um NSG-Konfigurationen zu empfehlen, die Ports und Quell-IP-Adressen basierend auf tatsächlichem Datenverkehr und Threat Intelligence einschränken.
 
-* [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
+* [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 * [Bereitstellen von Azure Firewall](../firewall/tutorial-firewall-deploy-portal.md)
 
@@ -284,7 +284,7 @@ Alternativ dazu können Sie zum Überwachen und Überprüfen Ihrer Protokolle au
 
 * [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
@@ -318,7 +318,7 @@ Alternativ dazu können Sie zum Einrichten von Warnungen für anomale Aktivität
 
 * [Anweisungen für das Onboarding von Linux-Servern in Azure Security Center](../security-center/quickstart-onboard-machines.md)
 
-* [Der folgende Link enthält die empfohlenen Sicherheitsrichtlinien von Microsoft, die als Kriterienliste für die ausgewählte Sicherheitsrisikosoftware dienen können.](../virtual-machines/linux/security-recommendations.md)
+* [Der folgende Link enthält die empfohlenen Sicherheitsrichtlinien von Microsoft, die als Kriterienliste für die ausgewählte Sicherheitsrisikosoftware dienen können.](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -472,7 +472,7 @@ Bei Linux-VMs können Sie die Konsolenprotokollierung pro Knoten manuell konfigu
 
 **Leitfaden**: Konfigurieren Sie Diagnoseeinstellungen für Azure Active Directory, um die Überwachungs- und Anmeldeprotokolle an einen Log Analytics-Arbeitsbereich zu senden. Verwenden Sie außerdem Azure Monitor, um Protokolle zu überprüfen und Abfragen für Daten von Azure-VMs auszuführen.
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Integrieren von Azure-Aktivitätsprotokollen in Azure Monitor](../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 
@@ -756,7 +756,7 @@ Derzeit ist die adaptive Anwendungssteuerung für VM-Skalierungsgruppen nicht ve
 
 * [Einführung in Azure Automation](../automation/automation-intro.md)
 
-* [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Änderungsnachverfolgung](../automation/change-tracking.md)
+* [Nachverfolgen von Änderungen in Ihrer Umgebung mit der Änderungsnachverfolgung](../automation/change-tracking/overview.md)
 
 * [Übersicht über Azure Automation State Configuration](../automation/automation-dsc-overview.md)
 
@@ -1036,7 +1036,7 @@ Sie benötigen ein Drittanbietertool für den Schutz vor Schadsoftware auf dem v
 
 * [Microsoft Defender Advanced Threat Protection](/windows/security/threat-protection/microsoft-defender-atp/onboard-configure)
 
-* [Konfigurieren von Microsoft Antimalware für Cloud Services und Virtual Machines](../virtual-machines/linux/security-recommendations.md)
+* [Konfigurieren von Microsoft Antimalware für Cloud Services und Virtual Machines](../virtual-machines/security-recommendations.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -6,12 +6,12 @@ author: yunjchoi
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 9d06ad2f740394a4959f3665c5d6311e71841241
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e8921152177d3e4534ca9fb48cf209aed6e1b27c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94960834"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183361"
 ---
 # <a name="azure-kubernetes-service-diagnostics-preview-overview"></a>Übersicht über die Azure Kubernetes Service-Diagnose (Vorschau)
 
@@ -83,6 +83,6 @@ Die Identitäts- und Sicherheitsverwaltung erkennt Authentifizierungs- und Autor
 
 Verwenden Sie [AKS Periscope](https://aka.ms/aksperiscope), um Protokolle zu erfassen, anhand derer Sie Clusterprobleme beheben können.
 
-Lesen Sie den Abschnitt [Selektierungsverfahren](https://docs.microsoft.com/azure/architecture/operator-guides/aks/aks-triage-practices) der AKS-Anleitung für die Betriebsvorgänge am 2. Tag.
+Lesen Sie den Abschnitt [Selektierungsverfahren](/azure/architecture/operator-guides/aks/aks-triage-practices) der AKS-Anleitung für die Betriebsvorgänge am 2. Tag.
 
 Posten Sie Ihre Fragen oder Ihr Feedback auf [UserVoice](https://feedback.azure.com/forums/914020-azure-kubernetes-service-aks), indem Sie dem Titel „[Diag]“ hinzufügen.

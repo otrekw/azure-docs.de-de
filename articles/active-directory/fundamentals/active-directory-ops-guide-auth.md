@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 5f529e6148463ae384791985659378cb9d0a5046
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836987"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168864"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -160,7 +160,7 @@ Ein standardisiertes Verfahren für das einmalige Anmelden im gesamten Unternehm
 > [!NOTE]
 > Wenn Sie nicht über einen Mechanismus zum Ermitteln nicht verwalteter Anwendungen in Ihrer Organisation verfügen, empfehlen wir Ihnen, einen Ermittlungsprozess mithilfe einer CASB-Lösung (Cloud Access Security Broker) wie [Microsoft Cloud App Security](https://www.microsoft.com/enterprise-mobility-security/cloud-app-security) zu implementieren.
 
-Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../azuread-dev/howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
+Letztlich wird empfohlen, dass Sie Ihre [Anwendungen im App-Katalog aufführen](../develop/v2-howto-app-gallery-listing.md), wenn Sie über einen Azure AD-App-Katalog verfügen und Anwendungen verwenden, die SSO mit Azure AD unterstützen.
 
 #### <a name="single-sign-on-recommended-reading"></a>Empfohlene Artikel zu SSO
 
@@ -255,7 +255,7 @@ Der bedingte Zugriff ist ein wichtiges Tool zur Verbesserung der Sicherheit Ihre
 
 #### <a name="conditional-access-recommended-reading"></a>Empfohlene Artikel zum bedingten Zugriff
 
-- [Best Practices für den bedingten Zugriff in Azure Active Directory](../conditional-access/best-practices.md)
+- [Best Practices für den bedingten Zugriff in Azure Active Directory](../conditional-access/overview.md)
 - [Konfigurationen für den Identitäts- und Gerätezugriff](/microsoft-365/enterprise/microsoft-365-policies-configurations)
 - [Referenz zu den Einstellungen für den bedingten Azure Active Directory-Zugriff](../conditional-access/concept-conditional-access-conditions.md)
 - [Allgemeine Richtlinien für bedingten Zugriff](../conditional-access/concept-conditional-access-policy-common.md)

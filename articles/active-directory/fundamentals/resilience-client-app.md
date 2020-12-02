@@ -11,12 +11,12 @@ author: knicholasa
 ms.author: nichola
 manager: martinco
 ms.date: 11/23/2020
-ms.openlocfilehash: 69967035f98d7ec2fcedff173dcf481455014ac2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9189d4d8cda5f9fcfce7e6ac2097414aa29f0a68
+ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919070"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96317468"
 ---
 # <a name="increase-the-resilience-of-authentication-and-authorization-in-client-applications-you-develop"></a>Erhöhen der Resilienz bei Authentifizierung und Autorisierung in von Ihnen entwickelten Clientanwendungen
 
@@ -75,7 +75,7 @@ Apps müssen von Microsoft Identity empfangene Token ordnungsgemäß zwischenspe
 
 ![Eine Anwendung ruft Microsoft Identity auf, der Aufruf durchläuft jedoch einen Tokencache auf dem Gerät, auf dem die Anwendung ausgeführt wird.](media/resilience-client-app/token-cache.png)
 
-Die Verwendung des zwischengespeicherten Tokens vermeidet unnötigen Datenverkehr zwischen Ihrer App und Microsoft Identity. Durch die Reduzierung der Aufrufe zum Abrufen von Token ist Ihre App weniger anfällig für Fehler beim Tokenabruf. Zwischengespeicherte Token verbessern außerdem die Leistung Ihrer Anwendung, da die App das Abrufen von Token weniger blockieren muss. Der Benutzer kann für die gesamte Gültigkeitsdauer des Tokens bei Ihrer Anwendung angemeldet bleiben.
+Die Verwendung des zwischengespeicherten Tokens vermeidet unnötigen Datenverkehr zwischen Ihrer App und Microsoft Identity. Durch die Reduzierung der Aufrufe zum Abrufen von Token ist Ihre App weniger anfällig für Fehler beim Tokenabruf. Zwischengespeicherte Token verbessern außerdem die Leistung Ihrer Anwendung, da die App das Abrufen von Token weniger blockieren muss. Der Benutzer kann für die Länge der Lebensdauer des Tokens bei Ihrer Anwendung angemeldet bleiben.
 
 ### <a name="serialize-and-persist-tokens"></a>Serialisieren und Beibehalten von Token
 
@@ -98,11 +98,11 @@ Das automatische Abrufen eines Tokens beginnt mit der Verwendung eines gültigen
 
 ## <a name="handle-service-responses-properly"></a>Ordnungsgemäßes Verarbeiten von Dienstantworten
 
-Auch wenn die Anwendungen alle Fehlerantworten verarbeiten sollten, gibt es einige Antworten, die sich auf die Resilienz auswirken können. Wenn Ihre Anwendung einen HTTP-Antwortcode 429 (zu viele Anforderungen) empfängt, drosselt Microsoft Identity Ihre Anforderungen. Wenn Ihre App weiterhin zu viele Anforderungen ausgibt, wird sie weiter gedrosselt, wodurch Ihre App keine Token mehr empfängt. Ihre Anwendung sollte nicht versuchen, vor der im Antwortfeld „Retry-After“ angegebenen Zeit (in Sekunden) erneut ein Token abzurufen. Das Empfangen einer Antwort vom Typ 429 ist häufig ein Hinweis darauf, dass die Anwendung Token nicht ordnungsgemäß zwischenspeichert und wiederverwendet. Entwickler sollten überprüfen, wie Token in der Anwendung zwischengespeichert und wiederverwendet werden.
+Auch wenn die Anwendungen alle Fehlerantworten verarbeiten sollten, gibt es einige Antworten, die sich auf die Resilienz auswirken können. Wenn Ihre Anwendung einen HTTP-Antwortcode 429 (zu viele Anforderungen) empfängt, drosselt Microsoft Identity Ihre Anforderungen. Wenn Ihre App weiterhin zu viele Anforderungen vornimmt, wird sie weiterhin gedrosselt, damit Ihre App keine Token empfängt. Ihre Anwendung sollte nicht versuchen, vor der im Antwortfeld „Retry-After“ angegebenen Zeit (in Sekunden) erneut ein Token abzurufen. Das Empfangen einer Antwort vom Typ 429 ist häufig ein Hinweis darauf, dass die Anwendung Token nicht ordnungsgemäß zwischenspeichert und wiederverwendet. Entwickler sollten überprüfen, wie Token in der Anwendung zwischengespeichert und wiederverwendet werden.
 
 Wenn eine Anwendung einen HTTP-Antwortcode 5xx empfängt, darf die App nicht in eine schnelle Wiederholungsschleife eintreten. Wenn dies der Fall ist, sollte für die Anwendung dieselbe „Retry-After“-Behandlung gelten wie bei einer Antwort vom Typ 429. Wenn von der Antwort kein „Retry-After“-Header bereitgestellt wird, empfehlen wir die Implementierung einer Wiederholung mit exponentiellem Backoff. Dabei sollte der erste Wiederholungsversuch mindestens 5 Sekunden nach der Antwort erfolgen.
 
-Wenn für eine Anforderung ein Timeout auftritt, sollten Anwendungen nicht sofort Wiederholungsversuche ausführen. Implementieren Sie eine Wiederholung mit exponentiellem Backoff, wobei der erste Wiederholungsversuch mindestens 5 Sekunden nach der Antwort erfolgen sollte.
+Wenn für eine Anforderung ein Timeout auftritt, sollten Anwendungen nicht sofort Wiederholungsversuche ausführen. Implementieren Sie einen exponentiellen Backoff-Wiederholungsversuch mit dem ersten Wiederholungsversuch mindestens 5 Sekunden nach der Antwort.
 
 ## <a name="evaluate-options-for-retrieving-authorization-related-information"></a>Auswerten von Optionen zum Abrufen von autorisierungsbezogenen Informationen
 
@@ -157,4 +157,4 @@ Wenn Sie Ressourcen-APIs entwickeln, regen wir an, sich an der Arbeitsgruppe [Sh
 - [Verwenden von CAE-fähigen APIs in Ihren Anwendungen](../develop/app-resilience-continuous-access-evaluation.md)
 - [Erzielen von Resilienz in Daemon-Anwendungen](resilience-daemon-app.md)
 - [Erzielen von Resilienz in Ihrer Identitäts- und Zugriffsverwaltungsinfrastruktur](resilience-in-infrastructure.md)
-- [Erzielen von Resilienz in der Kundenidentitäts- und Zugriffsverwaltung mit Azure Active Directory B2C](resilience-b2c.md)
+- [Erzielen von Resilienz für Ihre CIAM-Systeme](resilience-b2c.md)

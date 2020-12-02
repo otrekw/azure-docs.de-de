@@ -7,16 +7,16 @@ ms.subservice: performance
 ms.custom: sqldbrb=1
 ms.devlang: ''
 ms.topic: reference
-author: MightyPen
-ms.author: genemi
-ms.reviewer: jrasnik
+author: WilliamDAssafMSFT
+ms.author: wiassaf
+ms.reviewer: sstein
 ms.date: 12/19/2018
-ms.openlocfilehash: 0c89dc28a330e319e18a6289e5f6759c56e46ae8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 139673e46421aa0dc19298697872fbff5fe587af
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791272"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501208"
 ---
 # <a name="extended-events-in-azure-sql-database"></a>Erweiterte Ereignisse in Azure SQL-Datenbank 
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -63,10 +63,10 @@ In verwandten Themen werden zwei Codebeispiele geboten:
 
 ## <a name="transact-sql-differences"></a>Transact-SQL-Unterschiede
 
-- Beim Ausführen des [CREATE EVENT SESSION](/sql/t-sql/statements/create-event-session-transact-sql) -Befehls für SQL Server verwenden Sie die **ON SERVER** -Klausel. Für Azure SQL-Datenbank verwenden Sie jedoch stattdessen die Klausel **ON DATABASE** .
-- Die **ON DATABASE** -Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](/sql/t-sql/statements/alter-event-session-transact-sql) und [DROP EVENT SESSION](/sql/t-sql/statements/drop-event-session-transact-sql).
+- Beim Ausführen des [CREATE EVENT SESSION](/sql/t-sql/statements/create-event-session-transact-sql) -Befehls für SQL Server verwenden Sie die **ON SERVER** -Klausel. Für Azure SQL-Datenbank verwenden Sie jedoch stattdessen die Klausel **ON DATABASE**.
+- Die **ON DATABASE**-Klausel gilt auch für die Transact-SQL-Befehle [ALTER EVENT SESSION](/sql/t-sql/statements/alter-event-session-transact-sql) und [DROP EVENT SESSION](/sql/t-sql/statements/drop-event-session-transact-sql).
 
-- Eine bewährte Methode ist das Einschließen der Ereignissitzungsoption von **STARTUP_STATE = ON** in Ihre Anweisungen **CREATE EVENT SESSION** oder **ALTER EVENT SESSION** .
+- Eine bewährte Methode ist das Einschließen der Ereignissitzungsoption von **STARTUP_STATE = ON** in Ihre Anweisungen **CREATE EVENT SESSION** oder **ALTER EVENT SESSION**.
   - Der Wert **= ON** unterstützt einen automatischen Neustart nach einer Neukonfiguration der logischen Datenbank aufgrund eines Failovers.
 
 ## <a name="new-catalog-views"></a>Neue Katalogsichten
@@ -97,7 +97,7 @@ Azure SQL-Datenbank hat [dynamische Verwaltungsansichten (DMVs)](/sql/relational
 
 In Microsoft SQL Server werden ähnliche Katalogsichten ohne den Teil *\_database* des Namens benannt, wie z.B.:
 
-- **sys.dm_xe_sessions** , anstelle von Namen<br/>**sys.dm_xe_database_sessions** .
+- **sys.dm_xe_sessions**, anstelle von Namen<br/>**sys.dm_xe_database_sessions**.
 
 ### <a name="dmvs-common-to-both"></a>DMVs, die Azure SQL-Datenbank und Microsoft SQL Server gemeinsam haben
 
@@ -151,11 +151,11 @@ Die [ETW](/dotnet/framework/wcf/samples/etw-tracing)-API (Event Tracing for Wind
 Es gibt einige sicherheitsbezogene Unterschiede, die für die Cloudumgebung von Azure SQL-Datenbank angemessen sind:
 
 - Erweiterte Ereignisse beruhen auf dem Modell der Isolation einzelner Mandanten. Eine Ereignissitzung in einer Datenbank kann nicht auf Daten oder Ereignisse in einer anderen Datenbank zugreifen.
-- Sie können keine **CREATE EVENT SESSION** -Anweisung im Kontext der **master** -Datenbank angeben.
+- Sie können keine **CREATE EVENT SESSION**-Anweisung im Kontext der **master**-Datenbank angeben.
 
 ## <a name="permission-model"></a>Berechtigungsmodell
 
-Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE EVENT SESSION** -Anweisung angeben zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control** .
+Sie benötigen die Berechtigung **Control** für die Datenbank, um eine **CREATE EVENT SESSION**-Anweisung angeben zu können. Der Datenbankbesitzer (dbo) hat die Berechtigung **Control** .
 
 ### <a name="storage-container-authorizations"></a>Speichercontainerautorisierungen
 
@@ -172,7 +172,7 @@ Es gibt Szenarien, in denen durch die intensive Nutzung erweiterter Ereignisse m
 Wenn Sie eine Fehlermeldung erhalten, die besagt, dass ein Arbeitsspeichermaximum erzwungen wurde, können Sie z. B. die folgenden Maßnahmen ergreifen:
 
 - Führen Sie weniger gleichzeitige Ereignissitzungen durch.
-- Verringern Sie über die Anweisungen **CREATE** und **ALTER** für Ereignissitzungen die Arbeitsspeichermenge, die Sie für die **MAX\_MEMORY** -Klausel angeben.
+- Verringern Sie über die Anweisungen **CREATE** und **ALTER** für Ereignissitzungen die Arbeitsspeichermenge, die Sie für die **MAX\_MEMORY**-Klausel angeben.
 
 ### <a name="network-latency"></a>Netzwerklatenz
 
