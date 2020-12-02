@@ -9,17 +9,14 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857434"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959440"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
-
-> [!NOTE]
-> Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
 
 In diesem Artikel werden drei IoT Edge-Module erstellt, die Nachrichten von IoT-Blattgeräten empfangen, die Daten in Ihrem Machine Learning-Modell verarbeiten lassen und dann Erkenntnisse an IoT Hub weiterleiten.
 
@@ -54,6 +51,10 @@ Das folgende Diagramm zeigt die Module, Eingaben, Ausgaben und die IoT Edge Hu
 ![IoT Edge-Architekturdiagramm mit drei Modulen](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Die Schritte in diesem Artikel werden normalerweise von einem Cloudentwickler ausgeführt.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
 
 ## <a name="create-a-new-iot-edge-solution"></a>Erstellen einer neuen IoT Edge-Projektmappe
 

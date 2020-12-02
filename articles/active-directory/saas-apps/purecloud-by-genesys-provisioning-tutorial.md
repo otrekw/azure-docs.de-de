@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2020
 ms.author: Zhchia
-ms.openlocfilehash: df1b3f81c1d8f9ead6d5773de6b6d1cd9517235e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: bbb9b47e42ce195a98801ee08d177efd409c597e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357484"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181661"
 ---
 # <a name="tutorial-configure-purecloud-by-genesys-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von PureCloud by Genesys für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in PureCloud 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Eine PureCloud-[Organisation](https://help.mypurecloud.com/?p=81984).
 * Ein Benutzer mit [Berechtigungen](https://help.mypurecloud.com/?p=24360) zum Erstellen eines Oauth-Clients.
 
@@ -86,7 +86,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie unter dem Abschnitt **Administratoranmeldeinformationen** die URL Ihrer PureCloud by Genesys-API und das OAuth-Token in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Die API-URL wird als `{{API Url}}/api/v2/scim/v2` strukturiert, wobei die API-URL für Ihre PureCloud-Region aus dem [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html) verwendet wird. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit PureCloud by Genesys herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr PureCloud by Genesys-Konto über Administratorberechtigungen verfügt, und versuchen Sie es erneut.
+5. Geben Sie unter dem Abschnitt **Administratoranmeldeinformationen** die URL Ihrer PureCloud by Genesys-API und das OAuth-Token in die Felder **Mandanten-URL** bzw. **Geheimes Token** ein. Die API-URL wird als `{{API Url}}/api/v2/scim/v2` strukturiert, wobei die API-URL für Ihre PureCloud-Region aus dem [PureCloud Developer Center](https://developer.mypurecloud.com/api/rest/index.html) verwendet wird. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit PureCloud by Genesys herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr PureCloud by Genesys-Konto über Administratorberechtigungen verfügt, und versuchen Sie es erneut.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/purecloud-by-genesys-provisioning-tutorial/provisioning.png)
 
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit PureCloud by Genesys synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in PureCloud by Genesys für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die PureCloud by Genesys-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in PureCloud by Genesys für Aktualisierungsvorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die PureCloud by Genesys-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
      |attribute|type|
      |---|---|
@@ -116,7 +116,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit PureCloud by Genesys synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in PureCloud by Genesys für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen. PureCloud by Genesys unterstützt nicht das Erstellen oder Löschen von Gruppen, sondern nur das Aktualisieren von Gruppen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit PureCloud by Genesys synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in PureCloud by Genesys für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen. PureCloud by Genesys unterstützt nicht das Erstellen oder Löschen von Gruppen, sondern nur das Aktualisieren von Gruppen.
 
       |attribute|type|
       |---|---|

@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
 ms.author: joflore
-ms.openlocfilehash: a66268c0cd0c2382b412873ec7f78b87d3491594
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: aae665b5982ab2b5c1163bb9297eda5f2e5d344a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968173"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175371"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 
@@ -360,7 +360,7 @@ Nachdem Ihre verwaltete Domäne zum Resource Manager-Bereitstellungsmodell migri
 [notifications]: notifications.md
 [password-policy]: password-policy.md
 [secure-ldap]: tutorial-configure-ldaps.md
-[migrate-iaas]: ../virtual-machines/windows/migration-classic-resource-manager-overview.md
+[migrate-iaas]: ../virtual-machines/migration-classic-resource-manager-overview.md
 [join-windows]: join-windows-vm.md
 [tutorial-create-management-vm]: tutorial-create-management-vm.md
 [troubleshoot-domain-join]: troubleshoot-domain-join.md

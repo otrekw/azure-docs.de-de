@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 11/13/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 563cd14d0eccdbe6d91ae09029da766dacbceb87
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 9bdd70baa906d9dc03a37eecb0388eee5638f153
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616874"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184279"
 ---
 # <a name="add-azure-role-assignments-using-azure-resource-manager-templates"></a>Hinzufügen von Azure-Rollenzuweisungen mithilfe von Azure Resource Manager-Vorlagen
 
@@ -380,7 +380,7 @@ Wenn Sie in Azure RBAC Zugriff auf eine Azure-Ressource entfernen möchten, entf
 
 - [Azure portal](role-assignments-portal.md#remove-a-role-assignment)
 - [Azure PowerShell](role-assignments-powershell.md#remove-a-role-assignment)
-- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-role-assignment)
+- [Azure-Befehlszeilenschnittstelle](role-assignments-cli.md#remove-a-role-assignment)
 - [REST-API](role-assignments-rest.md#remove-a-role-assignment)
 
 ## <a name="next-steps"></a>Nächste Schritte

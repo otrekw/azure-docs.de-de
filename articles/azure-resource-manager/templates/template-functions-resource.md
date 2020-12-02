@@ -3,12 +3,12 @@ title: Vorlagenfunktionen – Ressourcen
 description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Abrufen von Werten zu Ressourcen verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 0d118b80439579b0c8be45fdf1180b9a03b54c1d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: b7bb726250c6d1ef8a597481b5f7e95f024a56d4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95994133"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183990"
 ---
 # <a name="resource-functions-for-arm-templates"></a>Ressourcenfunktionen für ARM-Vorlagen
 
@@ -1030,7 +1030,7 @@ Die Eigenschaft **managedBy** wird nur für Ressourcengruppen zurückgegeben, di
 
 ### <a name="remarks"></a>Bemerkungen
 
-Die Funktion `resourceGroup()` kann nicht in einer Vorlage verwendet werden, die [auf der Abonnementebene bereitgestellt](deploy-to-subscription.md) wird. Sie kann nur in Vorlagen verwendet werden, die in einer Ressourcengruppe bereitgestellt werden. Sie können die `resourceGroup()`-Funktion in einer [verknüpften oder geschachtelten Vorlage (mit innerem Bereich)](linked-templates.md) verwenden, deren Ziel eine Ressourcengruppe ist, auch wenn die übergeordnete Vorlage im Abonnement bereitgestellt wurde. In diesem Szenario wird die verknüpfte oder geschachtelte Vorlage auf Ressourcengruppenebene bereitgestellt. Weitere Informationen zum Einrichten einer Ressourcengruppe als Ziel in einer Bereitstellung auf Ressourcenebene finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
+Die Funktion `resourceGroup()` kann nicht in einer Vorlage verwendet werden, die [auf der Abonnementebene bereitgestellt](deploy-to-subscription.md) wird. Sie kann nur in Vorlagen verwendet werden, die in einer Ressourcengruppe bereitgestellt werden. Sie können die `resourceGroup()`-Funktion in einer [verknüpften oder geschachtelten Vorlage (mit innerem Bereich)](linked-templates.md) verwenden, deren Ziel eine Ressourcengruppe ist, auch wenn die übergeordnete Vorlage im Abonnement bereitgestellt wurde. In diesem Szenario wird die verknüpfte oder geschachtelte Vorlage auf Ressourcengruppenebene bereitgestellt. Weitere Informationen zum Einrichten einer Ressourcengruppe als Ziel in einer Bereitstellung auf Ressourcenebene finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](./deploy-to-resource-group.md).
 
 Die Funktion „resourceGroup“ wird häufig verwendet, um Ressourcen am gleichen Speicherort wie die Ressourcengruppe zu erstellen. Das folgende Beispiel nutzt den Speicherort der Ressourcengruppe als einen Parameterstandardwert.
 
@@ -1055,7 +1055,7 @@ param location string = resourceGroup().location
 
 Die Funktion „resourceGroup“ kann auch verwendet werden, um Tags aus einer Ressourcengruppe auf eine Ressource anzuwenden. Weitere Informationen finden Sie unter [Apply tags from resource group](../management/tag-resources.md#apply-tags-from-resource-group) (Anwenden von Tags aus einer Ressourcengruppe).
 
-Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der resourceGroup-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
+Wenn Sie für die Bereitstellung in mehreren Ressourcengruppen geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der resourceGroup-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](./deploy-to-resource-group.md).
 
 ### <a name="resource-group-example"></a>resourceGroup-Beispiel
 
@@ -1372,7 +1372,7 @@ Die Funktion gibt das folgende Format zurück:
 
 ### <a name="remarks"></a>Bemerkungen
 
-Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der subscription-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](cross-scope-deployment.md).
+Wenn Sie für die Bereitstellung in mehreren Abonnements geschachtelte Vorlagen verwenden, können Sie den Bereich zum Auswerten der subscription-Funktion angeben. Weitere Informationen finden Sie unter [Bereitstellen von Azure-Ressourcen für mehrere Abonnements oder Ressourcengruppen](./deploy-to-resource-group.md).
 
 ### <a name="subscription-example"></a>subscription-Beispiel
 

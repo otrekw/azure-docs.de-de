@@ -9,12 +9,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: nichola
-ms.openlocfilehash: 8f184de8953e8e8bfe982d2502ca476fb54a66c9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7fd9e504448d55b4a2ef8c10b4ba1176cb2e3402
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95903711"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172634"
 ---
 # <a name="five-steps-for-integrating-all-your-apps-with-azure-ad"></a>Fünf Schritte zum Integrieren Ihrer gesamten Apps in Azure AD
 
@@ -38,7 +38,7 @@ Azure Active Directory (Azure AD) enthält einen Katalog mit Tausenden von vorab
 - [AWS](../saas-apps/amazon-web-service-tutorial.md)
 - [Puffer](../saas-apps/slack-tutorial.md)
 
-Darüber hinaus können Sie auch [nicht im Katalog enthaltene Anwendungen integrieren](../manage-apps/view-applications-portal.md). Beispiele hierfür sind alle Anwendungen, die in Ihrer Organisation bereits vorhanden sind, oder alle Drittanbieteranwendungen von einem Anwender, der nicht bereits im Azure AD-Katalog enthalten ist. Sie haben auch die Möglichkeit, [Ihre App dem Katalog hinzuzufügen](../azuread-dev/howto-app-gallery-listing.md), falls sie darin noch nicht enthalten ist.
+Darüber hinaus können Sie auch [nicht im Katalog enthaltene Anwendungen integrieren](../manage-apps/view-applications-portal.md). Beispiele hierfür sind alle Anwendungen, die in Ihrer Organisation bereits vorhanden sind, oder alle Drittanbieteranwendungen von einem Anwender, der nicht bereits im Azure AD-Katalog enthalten ist. Sie haben auch die Möglichkeit, [Ihre App dem Katalog hinzuzufügen](../develop/v2-howto-app-gallery-listing.md), falls sie darin noch nicht enthalten ist.
 
 Außerdem können Sie die von Ihnen intern entwickelten Apps integrieren. Dies wird in Schritt 5 dieses Handbuchs beschrieben.
 

@@ -6,18 +6,18 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 07/29/2019
 ms.subservice: alerts
-ms.openlocfilehash: 0842efe304faa9a0d94fbf71075f1bc16ff34014
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 61aba3e5792d1cc20da16686d052de91744dab76
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018204"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186778"
 ---
 # <a name="create-view-and-manage-log-alerts-using-azure-monitor"></a>Erstellen, Anzeigen und Verwalten von Protokollwarnungen mithilfe von Azure Monitor
 
 ## <a name="overview"></a>Übersicht
 
-Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../log-query/get-started-portal.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Frequenz auszuwerten und eine Warnung auf der Grundlage der Ergebnisse auszulösen. Durch Regeln können über [Aktionsgruppen](./action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](alerts-unified-log.md).
+Mithilfe von Protokollwarnungen können Benutzer eine [Log Analytics](../log-query/log-analytics-tutorial.md)-Abfrage verwenden, um Ressourcenprotokolle mit einer bestimmten Frequenz auszuwerten und eine Warnung auf der Grundlage der Ergebnisse auszulösen. Durch Regeln können über [Aktionsgruppen](./action-groups.md) einzelne oder mehrere Aktionen ausgelöst werden. Weitere Informationen zu Funktionen und zur Terminologie von Protokollwarnungen finden Sie [hier](alerts-unified-log.md).
 
 In diesem Artikel erfahren Sie, wie Sie Protokollwarnungen mithilfe von Azure Monitor erstellen und verwalten. Warnungsregeln werden durch drei Komponenten definiert:
 - Ziel: Eine bestimmte zu überwachende Azure-Ressource
@@ -27,7 +27,7 @@ In diesem Artikel erfahren Sie, wie Sie Protokollwarnungen mithilfe von Azure Mo
 Sie können auch Protokollwarnungsregeln mithilfe von Azure Resource Manager-Vorlagen erstellen. Diese werden in einem [separaten Artikel](alerts-log-create-templates.md) beschrieben.
 
 > [!NOTE]
-> Protokolldaten aus einem [Log Analytics-Arbeitsbereich](../log-query/get-started-portal.md) können an den Azure Monitor-Metrikspeicher gesendet werden. Metrikwarnungen weisen ein [anderes Verhalten](alerts-metric-overview.md) auf. Je nach den Daten, mit denen Sie arbeiten, kann dies wünschenswert sein. Informationen zu den Protokollen, die Sie an Metriken weiterleiten können, und der zugehörigen Vorgehensweise finden Sie unter [Metrikwarnungen für Protokolle](alerts-metric-logs.md).
+> Protokolldaten aus einem [Log Analytics-Arbeitsbereich](../log-query/log-analytics-tutorial.md) können an den Azure Monitor-Metrikspeicher gesendet werden. Metrikwarnungen weisen ein [anderes Verhalten](alerts-metric-overview.md) auf. Je nach den Daten, mit denen Sie arbeiten, kann dies wünschenswert sein. Informationen zu den Protokollen, die Sie an Metriken weiterleiten können, und der zugehörigen Vorgehensweise finden Sie unter [Metrikwarnungen für Protokolle](alerts-metric-logs.md).
 
 ## <a name="create-a-log-alert-rule-with-the-azure-portal"></a>Erstellen einer Protokollwarnungsregel mit dem Azure-Portal
 
@@ -35,7 +35,7 @@ Zum Schreiben von Abfragen für Warnungen müssen folgende erste Schritte ausgef
 
 1. Navigieren Sie zu der Ressource, für die Sie eine Warnung einrichten möchten.
 1. Wählen Sie unter **Monitor** die Option **Protokolle** aus.
-1. Fragen Sie die Protokolldaten ab, die ggf. einen Hinweis auf das Problem enthalten. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../log-query/saved-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../log-query/get-started-portal.md). Informieren Sie sich auch über das [Erstellen von optimierten Warnungsabfragen](alerts-log-query.md).
+1. Fragen Sie die Protokolldaten ab, die ggf. einen Hinweis auf das Problem enthalten. Unter [Gespeicherte Abfragen in Azure Monitor Log Analytics](../log-query/example-queries.md) können Sie sich anhand von Beispielen mit den Ermittlungsoptionen vertraut machen. Alternativ können Sie [mit dem Schreiben einer eigenen Abfrage beginnen](../log-query/log-analytics-tutorial.md). Informieren Sie sich auch über das [Erstellen von optimierten Warnungsabfragen](alerts-log-query.md).
 1. Klicken Sie auf die Schaltfläche „+ Neue Warnungsregel“, um mit der Warnungserstellung zu beginnen.
 
     ![Log Analytics – Warnung festlegen](media/alerts-log/AlertsAnalyticsCreate.png)
@@ -327,4 +327,3 @@ Bei erfolgreicher Erstellung wird 201 zurückgegeben. Bei erfolgreicher Aktualis
 * Erstellen Sie Protokollwarnungen mithilfe von [Azure Resource Manager-Vorlagen](./alerts-log-create-templates.md).
 * Machen Sie sich mit [Webhookaktionen für Protokollwarnungen](./alerts-log-webhook.md) vertraut.
 * Weitere Informationen zum [Analysieren von Protokolldaten in Azure Monitor](../log-query/log-query-overview.md).
-

@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 02/20/2020
-ms.openlocfilehash: 99aa4d9ed6552075b0da4d451201f48ba6adfb1b
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 9931dd9acb51e74c34a57b0475bca79fb9ba79cf
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578704"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184177"
 ---
 # <a name="prepay-for-azure-cache-for-redis-compute-resources-with-reserved-capacity"></a>Vorauszahlung für Azure Cache for Redis-Computeressourcen mit reservierter Kapazität
 
@@ -37,7 +37,7 @@ Angenommen, Sie führen zwei Caches aus: einen mit 13 GB und den anderen mit 26
 
 ## <a name="buy-azure-cache-for-redis-reserved-capacity"></a>Kaufen von reservierter Azure Cache for Redis-Kapazität
 
-Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/monthly-payments-reservations.md).
+Sie können eine reservierte VM-Instanz im [Azure-Portal](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/) erwerben. Bezahlen Sie die Reservierung [im Voraus oder monatlich](../cost-management-billing/reservations/prepare-buy-reservation.md).
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Klicken Sie auf **Alle Dienste** > **Reservierungen**.

@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 11/05/2020
 ms.author: alsin
-ms.openlocfilehash: 226a23bfdacb0f7423c7dafb8cae36af7333699d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 4694fa679c7bbff309a0452219ff39bacf2488c4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681838"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183701"
 ---
 # <a name="repair-an-automanage-account"></a>Reparieren eines Automanage-Kontos
 Ihr [Azure Automanage-Konto](./automanage-virtual-machines.md#automanage-account) ist der Sicherheitskontext bzw. die Identität, unter dem bzw. unter der die automatisierten Vorgänge ausgeführt werden. Wenn Sie vor kurzem ein Abonnement mit einem Automanage-Konto in einen neuen Mandanten verschoben haben, müssen Sie das Konto neu konfigurieren. Hierzu müssen Sie den Identitätstyp zurücksetzen und die entsprechenden Rollen für das Konto zuweisen.
@@ -22,8 +22,8 @@ Ihr [Azure Automanage-Konto](./automanage-virtual-machines.md#automanage-accoun
 Setzen Sie den Identitätstyp des Automanage-Kontos mithilfe der folgenden ARM-Vorlage (Azure Resource Manager) zurück. Speichern Sie die Datei lokal unter „armdeploy.json“ oder unter einem ähnlichen Namen. Notieren Sie sich Name und Ort Ihres Automanage-Kontos, da es sich bei diesen Angaben um erforderliche Parameter in der ARM-Vorlage handelt.
 
 1. Erstellen Sie mithilfe der folgenden Vorlage eine Resource Manager-Bereitstellung. Verwenden Sie `identityType = None`.
-    * Die Bereitstellung kann über die Azure CLI mithilfe von `az deployment sub create` erstellt werden. Weitere Informationen finden Sie unter [az deployment sub](https://docs.microsoft.com/cli/azure/deployment/sub).
-    * Die Bereitstellung kann per PowerShell mithilfe des Moduls `New-AzDeployment` erstellt werden. Weitere Informationen finden Sie unter [New-AzDeployment](https://docs.microsoft.com/powershell/module/az.resources/new-azdeployment).
+    * Die Bereitstellung kann über die Azure CLI mithilfe von `az deployment sub create` erstellt werden. Weitere Informationen finden Sie unter [az deployment sub](/cli/azure/deployment/sub).
+    * Die Bereitstellung kann per PowerShell mithilfe des Moduls `New-AzDeployment` erstellt werden. Weitere Informationen finden Sie unter [New-AzDeployment](/powershell/module/az.resources/new-azdeployment).
 
 1. Führen Sie die gleiche ARM-Vorlage noch einmal mit `identityType = SystemAssigned` aus.
 
@@ -63,7 +63,7 @@ Das Automanage-Konto muss für das Abonnement mit den virtuellen Computern, die 
 
 Bei Verwendung einer ARM-Vorlage oder der Azure CLI benötigen Sie die Prinzipal-ID (oder auch Objekt-ID) Ihres Automanage-Kontos. (Bei Verwendung des Azure-Portals wird diese ID nicht benötigt.) Diese ID finden Sie wie folgt:
 
-- [Azure CLI](https://docs.microsoft.com/cli/azure/ad/sp): Verwenden Sie den Befehl `az ad sp list --display-name <name of your Automanage Account>`.
+- [Azure CLI](/cli/azure/ad/sp): Verwenden Sie den Befehl `az ad sp list --display-name <name of your Automanage Account>`.
 
 - Azure-Portal: Navigieren Sie zu **Azure Active Directory**, und suchen Sie anhand des Namens nach Ihrem Automanage-Konto. Wählen Sie unter **Unternehmensanwendungen** den Namen des Automanage-Kontos aus, wenn es angezeigt wird.
 

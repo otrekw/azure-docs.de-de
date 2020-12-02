@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 10/29/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: e8e3df77df53b887c4367e46b05d8a7ea4eed2f6
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 946ff043828034340ae3273fc0629e32de755540
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93061611"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026354"
 ---
 ## <a name="create-a-self-signed-root-certificate"></a><a name="rootcert"></a>Erstellen eines selbstsignierten Stammzertifikats
 
-Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsigniertes Stammzertifikat zu erstellen. Zusätzliche Informationen zu den Parametern finden Sie in der Beschreibung zu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+Verwenden Sie das Cmdlet „New-SelfSignedCertificate“, um ein selbstsigniertes Stammzertifikat zu erstellen. Zusätzliche Informationen zu den Parametern finden Sie in der Beschreibung zu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 1. Öffnen Sie auf einem Computer unter Windows 10 oder Windows Server 2016 eine Windows PowerShell-Konsole mit erhöhten Rechten. Diese Beispiele funktionieren nicht in der Testversion von Azure Cloud Shell. Sie müssen diese Beispiele lokal ausführen.
 1. Verwenden Sie das folgende Beispiel, um das selbstsignierte Stammzertifikat zu erstellen. Das folgende Beispiel erstellt ein selbstsigniertes Stammzertifikat mit dem Namen P2SRootCert, das automatisch in „Certificates-Current User\Personal\Certificates“ installiert wird. Sie können das Zertifikat anzeigen, indem Sie *certmgr.msc* öffnen oder die Option *Benutzerzertifikate verwalten* auswählen.
@@ -39,7 +39,7 @@ Auf jedem Clientcomputer, der per Punkt-zu-Standort eine Verbindung mit einem VN
 
 Die folgenden Schritte führen Sie durch das Generieren eines Clientzertifikats aus einem selbstsignierten Stammzertifikat. Sie können mehrere Clientzertifikate aus demselben Stammzertifikat generieren. Wenn Sie mithilfe der folgenden Schritte Clientzertifikate generieren, wird das Clientzertifikat automatisch auf dem Computer installiert, mit dem Sie das Zertifikat generiert haben. Falls Sie ein Clientzertifikat auf einem anderen Clientcomputer installieren möchten, können Sie es exportieren.
 
-In den Beispielen wird das Cmdlet „New-SelfSignedCertificate“ zum Generieren eines Clientzertifikats verwendet, das in einem Jahr abläuft. Zusätzliche Informationen zu den Parametern, z.B. Festlegen eines anderen Ablaufwerts für das Clientzertifikat, finden Sie in der Beschreibung zu [New-SelfSignedCertificate](https://technet.microsoft.com/itpro/powershell/windows/pkiclient/new-selfsignedcertificate).
+In den Beispielen wird das Cmdlet „New-SelfSignedCertificate“ zum Generieren eines Clientzertifikats verwendet, das in einem Jahr abläuft. Zusätzliche Informationen zu den Parametern, z.B. Festlegen eines anderen Ablaufwerts für das Clientzertifikat, finden Sie in der Beschreibung zu [New-SelfSignedCertificate](/powershell/module/pkiclient/new-selfsignedcertificate).
 
 ### <a name="example-1---powershell-console-session-still-open"></a>Beispiel 1: PowerShell-Konsolensitzung weiterhin geöffnet.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1a0ec8393e3c5ea40cb53fc101040441a5ca15bb
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 7419f5f8b519b8c3e978e358afb9f15a61132769
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359033"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177819"
 ---
 # <a name="tutorial-configure-linkedin-learning-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von LinkedIn Learning für die automatische Benutzerbereitstellung
 
@@ -40,7 +40,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in LinkedIn 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Genehmigung und SCIM-Aktivierung für LinkedIn Learning (Kontakt per E-Mail)
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
@@ -98,7 +98,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.linkedin.com/scim` ein. Geben Sie den Wert für das Zugriffstoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit LinkedIn Learning herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr LinkedIn Learning-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** im Feld **Mandanten-URL** die Zeichenfolge `https://api.linkedin.com/scim` ein. Geben Sie den Wert für das Zugriffstoken ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit LinkedIn Learning herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr LinkedIn Learning-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/linkedin-learning-provisioning-tutorial/provisioning.png)
 
@@ -110,7 +110,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer bereitstellen** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit LinkedIn Learning synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in LinkedIn Learning für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die LinkedIn Learning-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit LinkedIn Learning synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in LinkedIn Learning für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die LinkedIn Learning-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|Unterstützung für das Filtern|
    |---|---|---|
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen bereitstellen** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit LinkedIn Learning synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in LinkedIn Learning für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit LinkedIn Learning synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in LinkedIn Learning für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     |attribute|type|Unterstützung für das Filtern|
     |---|---|---|

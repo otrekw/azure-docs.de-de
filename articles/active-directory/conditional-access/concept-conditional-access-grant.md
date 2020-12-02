@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5ef2d233024ab3e9cd086e8285e681dc9f42f3f7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a8915ae349e33390ce5bb687d7c07a21665a0258
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "95904017"
+ms.locfileid: "96029403"
 ---
 # <a name="conditional-access-grant"></a>Bedingter Zugriff: Erteilen
 
@@ -108,7 +108,7 @@ Diese Einstellung gilt für die folgenden iOS- und Android-Apps:
 - Die genehmigten Client-Apps unterstützen das Intune-Feature für die mobile Anwendungsverwaltung.
 - Anforderung **Genehmigte Client-App erforderlich**:
    - Unterstützt als Geräteplattformbedingung nur iOS und Android.
-   - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Bei iOS ist Microsoft Authenticator die Broker-App, und bei Android ist es die Intune-Unternehmensportal-App.
+   - Zum Registrieren des Geräts ist eine Broker-App erforderlich. Die Broker-App kann entweder Microsoft Authenticator für iOS, Microsoft Authenticator oder das Microsoft-Unternehmensportal für Android-Geräte sein.
 - Der bedingte Zugriff kann Microsoft Edge im InPrivate-Modus einer genehmigten Client-App nicht berücksichtigen.
 
 Konfigurationsbeispiele finden Sie im Artikel [Gewusst wie: Vorschreiben der Verwendung von genehmigten Client-Apps für den Zugriff auf Cloud-Apps mithilfe des bedingten Zugriffs](app-based-conditional-access.md).

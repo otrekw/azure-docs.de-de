@@ -3,12 +3,12 @@ title: Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 description: In diesem Artikel wird beschrieben, wie Sie Azure Arc-fähige Server über Windows Admin Center verwenden, um den Agent zu installieren und Computer mit Azure zu verbinden.
 ms.date: 10/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: d47e3dd4434d719f890b64e4cdfb12a189c0632a
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 8fa118a254689feade2897f083bb3aa2dc9db02c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93133439"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183412"
 ---
 # <a name="connect-hybrid-machines-to-azure-from-windows-admin-center"></a>Verbinden von Hybridcomputern mit Azure über Windows Admin Center
 
@@ -55,7 +55,7 @@ Führen Sie die folgenden Schritte aus, um den Windows-Server mit Arc-fähigen S
 
 Der Windows-Server stellt eine Verbindung mit Azure her, lädt den Connected Machine-Agent herunter und installiert ihn und führt die Registrierung bei Azure Arc-fähigen Servern durch. Wählen Sie im Menü die Option **Benachrichtigungen** aus, um Informationen zum Status zu erhalten.
 
-Wählen Sie in Windows Admin Center im linken Bereich die Option [**Ereignisse**](/windows-server/manage/windows-admin-center/use/manage-servers#events) aus, um die *MsiInstaller* -Ereignisse im Anwendungsereignisprotokoll anzuzeigen und sicherzustellen, dass die Installation des Connected Machine-Agents erfolgreich war.
+Wählen Sie in Windows Admin Center im linken Bereich die Option [**Ereignisse**](/windows-server/manage/windows-admin-center/use/manage-servers#events) aus, um die *MsiInstaller*-Ereignisse im Anwendungsereignisprotokoll anzuzeigen und sicherzustellen, dass die Installation des Connected Machine-Agents erfolgreich war.
 
 ## <a name="verify-the-connection-with-azure-arc"></a>Überprüfen der Verbindung mit Azure Arc
 
@@ -69,4 +69,4 @@ Vergewissern Sie sich im Azure-Portal, dass die Serververbindung erfolgreich her
 
 * Erfahren Sie, wie Sie Ihren Computer mithilfe von [Azure Policy](../../governance/policy/overview.md) verwalten, wie z. B. bei der VM-[Gastkonfiguration](../../governance/policy/concepts/guest-configuration.md), dem Überprüfen, ob der Computer dem erwarteten Log Analytics-Arbeitsbereich Bericht erstattet, beim Aktivieren der Überwachung mit [Azure Monitor mit VMs](../../azure-monitor/insights/vminsights-enable-policy.md) und vieles mehr.
 
-* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-intro.md) nutzen möchten.
+* Weitere Informationen zum [Log Analytics-Agent](../../azure-monitor/platform/log-analytics-agent.md). Der Log Analytics-Agent für Windows und Linux ist erforderlich, wenn Sie Daten zur Betriebssystem- und Workloadüberwachung erfassen, diese mithilfe von Automation Runbooks oder Funktionen wie Updateverwaltung oder andere Azure-Dienste wie [Azure Security Center](../../security-center/security-center-introduction.md) nutzen möchten.

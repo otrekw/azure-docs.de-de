@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 507ef55a6fa3976475dbf08f88ee36cd1977464d
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4436385b07dd4f1da81f17eb19b38e922e21a1ef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421021"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180420"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Erstellen und Zuweisen einer benutzerdefinierten Rolle in Azure Active Directory
 
@@ -45,7 +45,7 @@ Benutzerdefinierte Rollen können auf der Übersichtsseite für Azure AD auf der
       ![Auswählen der Berechtigungen für eine benutzerdefinierte Rolle auf der Registerkarte „Berechtigungen“](./media/custom-create/permissions-tab.png)
 
    1. Dann geben Sie „basic“ in die Suchleiste ein, wählen die Berechtigung `microsoft.directory/applications/basic/update` aus und klicken anschließend auf **Weiter**.
-1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen** , und wählen Sie **Erstellen** aus.
+1. Überprüfen Sie die Berechtigungen auf der Registerkarte **Überprüfen + erstellen**, und wählen Sie **Erstellen** aus.
 
 Die benutzerdefinierte Rolle wird in der Liste der für die Zuweisung verfügbaren Rollen angezeigt.
 
@@ -183,4 +183,4 @@ Wie integrierte Rollen werden benutzerdefinierte Rollen standardmäßig im organ
 
 - Im [Forum für Azure AD-Administratorrollen](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) können Sie sich gerne mit uns in Verbindung setzen.
 - Weitere Informationen zu Rollen und zur Zuweisung von Administratorrollen finden Sie unter [Zuweisen von Administratorrollen](permissions-reference.md).
-- Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](/azure/active-directory/fundamentals/users-default-permissions?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).
+- Informationen zu Standardbenutzerberechtigungen finden Sie unter [Vergleich von Standardbenutzerberechtigungen für Gäste und Mitglieder](../fundamentals/users-default-permissions.md?context=azure%2factive-directory%2froles%2fcontext%2fugr-context).

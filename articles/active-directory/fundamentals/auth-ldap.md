@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5314758acecae2a9d68f2405fc1c3d2196950b4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: f209d394e1a0c2c4ddde9cbf8df2704647e2822a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94577055"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168711"
 ---
 # <a name="ldap-authentication-with-azure-active-directory"></a>LDAP-Authentifizierung mit Azure Active Directory
 
@@ -60,12 +60,11 @@ Eine Anwendung oder ein Dienst muss die LDAP-Authentifizierung verwenden.
 
 ## <a name="implement-ldap-authentication-with-azure-ad"></a>Implementieren der LDAP-Authentifizierung mit Azure AD
 
-* [Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-instance) 
+* [Tutorial: Erstellen und Konfigurieren einer verwalteten Azure Active Directory Domain Services-Domäne](../../active-directory-domain-services/tutorial-create-instance.md) 
 
-* [Tutorial: Konfigurieren Sie virtuelle Netzwerke für eine verwaltete Azure Active Directory Domain Services-Domäne.](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-networking) 
+* [Tutorial: Konfigurieren Sie virtuelle Netzwerke für eine verwaltete Azure Active Directory Domain Services-Domäne.](../../active-directory-domain-services/tutorial-configure-networking.md) 
 
-* [Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-configure-ldaps) 
+* [Tutorial: Konfigurieren von Secure LDAP (LDAPS) für eine verwaltete Azure AD Domain Services-Domäne](../../active-directory-domain-services/tutorial-configure-ldaps.md) 
 
-* [Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services](https://docs.microsoft.com/azure/active-directory-domain-services/tutorial-create-forest-trust)
+* [Tutorial: Erstellen einer ausgehenden Gesamtstruktur-Vertrauensstellung zu einer lokalen Domäne in Azure Active Directory Domain Services](../../active-directory-domain-services/tutorial-create-forest-trust.md)
 
- 

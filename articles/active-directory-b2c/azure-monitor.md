@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.author: mimart
 ms.subservice: B2C
 ms.date: 11/12/2020
-ms.openlocfilehash: b41f5e9a3bd4d3cbe52cf2e1c567d24de8a661f4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6d40eab12c9726459543d0b69e27b73178eba99f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95992842"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170615"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Überwachen von Azure AD B2C mit Azure Monitor
 
@@ -140,9 +140,9 @@ Nachdem Sie die Vorlage bereitgestellt und einige Minuten auf den Abschluss der 
 
 Diagnoseeinstellungen definieren, wohin Protokolle und Metriken für eine Ressource gesendet werden sollen. Mögliche Ziele:
 
-- [Azure-Speicherkonto](../azure-monitor/platform/resource-logs-collect-storage.md)
-- [Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md)-Lösungen
-- [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Azure-Speicherkonto](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
+- [Event Hubs](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)-Lösungen
+- [Log Analytics-Arbeitsbereich](../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace)
 
 In diesem Beispiel verwenden Sie den Log Analytics-Arbeitsbereich, um ein Dashboard zu erstellen.
 
@@ -180,7 +180,7 @@ Nun können Sie Ihren Log Analytics-Arbeitsbereich zum Visualisieren Ihrer Daten
 Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Protokollen erfasst werden, in vollem Umfang nutzen. Eine leistungsstarke Abfragesprache ermöglicht es Ihnen, Daten aus mehreren Tabellen zusammenzufügen, größere Mengen an Daten zu aggregieren und komplexe Vorgänge mit möglichst wenig Code auszuführen. Beinahe jede Frage kann beantwortet und jede Analyse durchgeführt werden, solange unterstützende Daten erfasst wurden und Sie wissen, wie die richtige Abfrage erstellt werden muss. Weitere Informationen finden Sie unter [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md).
 
 1. Wählen Sie im **Log Analytics-Arbeitsbereich** die Option **Protokolle** aus.
-1. Fügen Sie im Abfrage-Editor die folgende Abfrage in der [Kusto-Abfragesprache](https://docs.microsoft.com/azure/data-explorer/kusto/query/) ein. Mit dieser Abfrage wird die Richtlinienverwendung in den letzten x Tagen nach Vorgang angezeigt. Der Standardzeitraum ist auf 90 Tage (90T) festgelegt. Beachten Sie, dass die Abfrage nur auf den Vorgang fokussiert ist, bei dem von der Richtlinie ein Token bzw. ein Code ausgegeben wird.
+1. Fügen Sie im Abfrage-Editor die folgende Abfrage in der [Kusto-Abfragesprache](/azure/data-explorer/kusto/query/) ein. Mit dieser Abfrage wird die Richtlinienverwendung in den letzten x Tagen nach Vorgang angezeigt. Der Standardzeitraum ist auf 90 Tage (90T) festgelegt. Beachten Sie, dass die Abfrage nur auf den Vorgang fokussiert ist, bei dem von der Richtlinie ein Token bzw. ein Code ausgegeben wird.
 
     ```kusto
     AuditLogs
@@ -205,7 +205,7 @@ Mithilfe von Protokollabfragen können Sie die Daten, die in Azure Monitor-Proto
 
 1. Wählen Sie **Speichern** aus.
 
-Sie können die Abfrage auch ändern, um die Daten mithilfe des [render](https://docs.microsoft.com/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor)-Operators zu visualisieren.
+Sie können die Abfrage auch ändern, um die Daten mithilfe des [render](/azure/data-explorer/kusto/query/renderoperator?pivots=azuremonitor)-Operators zu visualisieren.
 
 ```kusto
 AuditLogs

@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 10/07/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python, github-actions-azure
-ms.openlocfilehash: a2d5234b3c80456a98fde4547b9665ca1b0a83dd
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 651c1913491952c53af42abec5ce5d5009da06a0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913544"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168065"
 ---
 # <a name="continuous-delivery-by-using-github-action"></a>Continuous Delivery mit GitHub Actions
 
@@ -34,7 +34,7 @@ Bei einem Azure Functions-Workflow umfasst die Datei drei Abschnitte:
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 - Ein GitHub-Konto. Falls Sie noch nicht über ein Konto verfügen, können Sie sich [kostenlos](https://github.com/join) registrieren.  
 - Eine funktionierende Funktions-App, die in Azure mit einem GitHub-Repository gehostet wird.   
-    - [Schnellstart: Erstellen einer Funktion in Azure mit Visual Studio Code](functions-create-first-function-vs-code.md)
+    - [Schnellstart: Erstellen einer Funktion in Azure mit Visual Studio Code](./create-first-function-vs-code-csharp.md)
 
 ## <a name="generate-deployment-credentials"></a>Generieren von Anmeldeinformationen für die Bereitstellung
 

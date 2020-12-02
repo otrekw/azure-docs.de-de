@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e617d7ccc14e65c18eb86877b1c7fb1aeef74cd0
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1f34e734b315c7c05ce77f5e168a452fc1c1c547
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578891"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168677"
 ---
 # <a name="ldap-synchronization-with-azure-active-directory"></a>LDAP-Synchronisierung mit Azure Active Directory
 
@@ -52,13 +52,12 @@ Sie müssen Identitätsdaten zwischen Ihren lokalen LDAP v3-Verzeichnissen und 
 
 ## <a name="implement-ldap-synchronization-with-azure-ad"></a>Implementieren der LDAP-Synchronisierung mit Azure AD
 
-* [Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [Vergleich von Tools für die Verzeichnisintegration für Hybrid-Identitäten](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Installationsübersicht: Azure AD Connect und Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap) 
+* [Installationsübersicht: Azure AD Connect und Azure AD Connect Health](../hybrid/how-to-connect-install-roadmap.md) 
 
-* [Technische Referenz für den generischen LDAP-Connector](https://docs.microsoft.com/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
+* [Technische Referenz für den generischen LDAP-Connector](/microsoft-identity-manager/reference/microsoft-identity-manager-2016-connector-genericldap) 
 
    > [!NOTE]
    > Bei LDAP-Connectors handelt es sich um eine erweiterte Konfiguration, die eine gewisse Vertrautheit mit Forefront Identity Manager und/oder Microsoft Identity Manager voraussetzt. Falls Sie diese Konfiguration in der Produktion verwenden und Fragen haben, wenden Sie sich an den [Premier Support](https://support.microsoft.com/premier) oder an das Microsoft Partner Network.
 
- 

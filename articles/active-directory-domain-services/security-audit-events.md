@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: how-to
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: b9656b62e2c689d0993fb16c1f1d66b14d3430c6
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b4fb5c1dcb2bb34b472c2a3eda88ca4c219303d0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91967731"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175167"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Aktivieren von Sicherheitsüberwachungen für Azure AD Domain Services
 
@@ -65,11 +65,11 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
     * **Azure Storage**
         * Wählen Sie **In einem Speicherkonto archivieren** und dann **Konfigurieren** aus.
         * Wählen Sie das **Abonnement** und dann das **Speicherkonto** aus, das Sie zum Archivieren von Sicherheitsüberwachungsereignissen verwenden möchten.
-        * Wählen Sie abschließend **OK**aus.
+        * Wählen Sie abschließend **OK** aus.
     * **Azure Event Hubs**
         * Wählen Sie **An einen Event Hub streamen** und dann **Konfigurieren** aus.
         * Wählen Sie das **Abonnement** und dann den **Event Hub-Namespace** aus. Geben Sie bei Bedarf auch unter **Event Hub-Name** und **Event Hub-Richtlinienname** einen Namen ein.
-        * Wählen Sie abschließend **OK**aus.
+        * Wählen Sie abschließend **OK** aus.
     * **Azure Log Analytics-Arbeitsbereiche**
         * Wählen Sie **An Log Analytics senden** aus, und wählen Sie dann das **Abonnement**  und den **Log Analytics Arbeitsbereich** aus, den Sie zum Speichern von Sicherheitsüberwachungsereignissen verwenden möchten.
 
@@ -141,7 +141,7 @@ Führen Sie die folgenden Schritte aus, um Azure AD DS-Sicherheitsüberwachungse
 Log Analytics-Arbeitsbereiche ermöglichen das Anzeigen und Analysieren der Sicherheitsüberwachungsereignisse mithilfe von Azure Monitor und der Kusto-Abfragesprache. Diese Abfragesprache ist für die schreibgeschützte Verwendung konzipiert und bietet leistungsstarke Analysefunktionen mit einer leicht verständlichen Syntax. Weitere Informationen zu den ersten Schritten mit Kusto-Abfragesprachen finden Sie in den folgenden Artikeln:
 
 * [Azure Monitor-Dokumentation](../azure-monitor/index.yml)
-* [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/get-started-portal.md)
+* [Erste Schritte mit Log Analytics in Azure Monitor](../azure-monitor/log-query/log-analytics-tutorial.md)
 * [Erste Schritte mit Protokollabfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 * [Erstellen und Freigeben von Dashboards von Log Analytics-Daten](../azure-monitor/learn/tutorial-logs-dashboards.md)
 

@@ -3,12 +3,12 @@ title: Automatisieren von Azure Application Insights mit PowerShell | Microsoft-
 description: Automatisieren Sie die Erstellung und Verwaltung von Ressourcen, Warnungen und Verfügbarkeitstests in PowerShell mithilfe einer Azure Resource Manager-Vorlage.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 58ed537a8fa6622756e7bcddceb6e9321cfbd82e
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: c380880845c162a1e8fb38e699a439ac04fb3b5a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94741075"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186268"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Verwalten von Application Insights-Ressourcen mithilfe von PowerShell
 
@@ -469,7 +469,6 @@ Die Ressourcen sollten in Azure in strikter Reihenfolge eingerichtet werden. Um 
 Andere Artikel zu Automation:
 
 * [Erstellen einer Application Insights-Ressource](./create-new-resource.md#creating-a-resource-automatically) : Schnellverfahren ohne Verwendung einer Vorlage.
-* [Erstellen von Webtests](https://docs.microsoft.com/azure/azure-monitor/samples/resource-manager-alerts-metric#availability-test-with-metric-alert)
+* [Erstellen von Webtests](../samples/resource-manager-alerts-metric.md#availability-test-with-metric-alert)
 * [Senden von Azure-Diagnosedaten an Application Insights](powershell-azure-diagnostics.md)
 * [Erstellen von Versionsanmerkungen](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
-

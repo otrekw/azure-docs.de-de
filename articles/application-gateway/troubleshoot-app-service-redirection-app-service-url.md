@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: troubleshooting
 ms.date: 11/14/2019
 ms.author: absha
-ms.openlocfilehash: 51249c68407f6b4ca7793b2fdeceab5aa4f7bc5c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 1cc7df755198461643703cac988c8c31f2ac25db
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94575984"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182885"
 ---
 # <a name="troubleshoot-app-service-issues-in-application-gateway"></a>Behandeln von App Service-Problemen in Application Gateway
 
@@ -93,7 +93,7 @@ Der App-Dienst führt die Umleitung (falls zutreffend) dann nicht mit dem eigene
 
 Sie müssen über eine benutzerdefinierte Domäne verfügen und diesen Prozess verwenden:
 
-- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](/azure/app-service/app-service-web-tutorial-custom-domain).
+- Tragen Sie die Domäne in die Liste mit den benutzerdefinierten Domänen des App-Diensts ein. Sie benötigen in Ihrer benutzerdefinierten Domäne einen CNAME-Eintrag, der auf den FQDN des App-Diensts verweist. Weitere Informationen finden Sie unter [Zuordnen eines vorhandenen benutzerdefinierten DNS-Namens zu Azure App Service](../app-service/app-service-web-tutorial-custom-domain.md).
 
     ![Liste mit benutzerdefinierten Domänen für App-Dienst](./media/troubleshoot-app-service-redirection-app-service-url/appservice-2.png)
 

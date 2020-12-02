@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 6643ec72ec5126866b0ad6e924a92f02170bd278
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359645"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180879"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -45,7 +45,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in G Suite a
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * [Einen G Suite-Mandanten](https://gsuite.google.com/pricing.html)
 * Ein Benutzerkonto in G Suite mit Administratorberechtigungen.
 
@@ -95,7 +95,7 @@ Bevor Sie G Suite für die automatische Benutzerbereitstellung mit Azure AD kon
 
     ![G Suite, Administrator](./media/google-apps-provisioning-tutorial/gapps-admin.png)
 
-6. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen** , damit dieses Konto für die Bereitstellung verwendet werden kann.
+6. Bearbeiten Sie für die **Administratorrolle** des Kontos die **Berechtigungen** für diese Rolle. Aktivieren Sie alle **Admin-API-Berechtigungen**, damit dieses Konto für die Bereitstellung verwendet werden kann.
 
     ![G Suite, Administratorberechtigungen](./media/google-apps-provisioning-tutorial/gapps-admin-privileges.png)
 
@@ -149,7 +149,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
      ![G Suite, Mandantenberechtigungen](./media/google-apps-provisioning-tutorial/gapps-auth.png)
 
-7. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit G Suite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr G Suite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang. Führen Sie dann erneut den Schritt **Autorisieren** aus.
+7. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit G Suite herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr G Suite-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang. Führen Sie dann erneut den Schritt **Autorisieren** aus.
 
 6. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -159,7 +159,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer bereitstellen** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in G Suite für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die G Suite-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit G Suite synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in G Suite für Updatevorgänge verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die G Suite-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -240,7 +240,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen bereitstellen** aus.
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit G Suite synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden verwendet, um die Gruppen in G Suite für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 04399dc82a3bd2d70b8b472b121e95a73ca43136
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9c27139e2dca37c1ff8d963e1e8cdb5de682d39d
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96009601"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302948"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-carlson-wagonlit-travel"></a>Tutorial: Azure Active Directory-Integration in Carlson Wagonlit Travel
 
@@ -119,7 +119,7 @@ Führen Sie zum Konfigurieren des einmaligen Anmeldens von Azure AD mit Carlson
 
 ### <a name="configure-carlson-wagonlit-travel-single-sign-on"></a>Konfigurieren des einmaligen Anmeldens für Carlson Wagonlit Travel
 
-Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Carlson Wagonlit Travel** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Carlson Wagonlit Travel](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
+Zum Konfigurieren des einmaligen Anmeldens aufseiten von **Carlson Wagonlit Travel** müssen Sie die heruntergeladene **Verbundmetadaten-XML** und die kopierten URLs aus dem Azure-Portal an das [Supportteam von Carlson Wagonlit Travel](https://www.mycwt.com/traveler-help/) senden. Es führt die Einrichtung durch, damit die SAML-SSO-Verbindung auf beiden Seiten richtig festgelegt ist.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -174,7 +174,7 @@ In diesem Abschnitt ermöglichen Sie Britta Simon die Verwendung des einmaligen 
 
 ### <a name="create-carlson-wagonlit-travel-test-user"></a>Erstellen eines Carlson Wagonlit Travel-Testbenutzers
 
-In diesem Abschnitt erstellen Sie in Carlson Wagonlit Travel einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Carlson Wagonlit Travel-Supportteam](http://www.carlsonwagonlit.in/content/cwt/in/en/technical-assistance.html) zusammen, um die Benutzer in der Carlson Wagonlit Travel-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
+In diesem Abschnitt erstellen Sie in Carlson Wagonlit Travel einen Benutzer namens Britta Simon. Arbeiten Sie mit dem [Carlson Wagonlit Travel-Supportteam](https://www.mycwt.com/traveler-help/) zusammen, um die Benutzer in der Carlson Wagonlit Travel-Plattform hinzuzufügen. Benutzer müssen erstellt und aktiviert werden, damit Sie einmaliges Anmelden verwenden können.
 
 ### <a name="test-single-sign-on"></a>Testen des einmaligen Anmeldens 
 

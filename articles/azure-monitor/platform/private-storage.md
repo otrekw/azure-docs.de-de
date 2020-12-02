@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: 7cb427c83345a4603c6fe7727c1cc42c1943c456
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908250"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184092"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -64,7 +64,7 @@ Azure Storage verschlüsselt alle ruhenden Daten in einem Speicherkonto. Standar
 Das Speicherkonto und der Schlüsseltresor müssen sich in derselben Region befinden, dürfen aber zu verschiedenen Abonnements gehören. Weitere Informationen zur Azure Storage-Verschlüsselung und -Schlüsselverwaltung finden Sie unter [Azure Storage-Verschlüsselung für ruhende Daten](../../storage/common/storage-service-encryption.md).
 
 ##### <a name="apply-cmk-to-your-storage-accounts"></a>Anwenden von CMKs auf Ihre Speicherkonten
-Verwenden Sie das [Azure-Portal](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json), [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json) oder die [CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%252fazure%252fstorage%252fblobs%252ftoc.json), um Ihr Azure Storage-Konto für die Verwendung von kundenseitig verwalteten Schlüsseln mit Azure Key Vault zu konfigurieren. 
+Verwenden Sie das [Azure-Portal](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), [PowerShell](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json) oder die [CLI](../../storage/common/customer-managed-keys-configure-key-vault.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json), um Ihr Azure Storage-Konto für die Verwendung von kundenseitig verwalteten Schlüsseln mit Azure Key Vault zu konfigurieren. 
 
 ## <a name="managing-linked-storage-accounts"></a>Verwalten von verknüpften Speicherkonten
 

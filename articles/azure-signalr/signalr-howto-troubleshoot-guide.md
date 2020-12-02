@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/06/2020
 ms.author: yajin1
-ms.openlocfilehash: 11ea348a80bc226b6a96bea1e7c023ee9c06b13a
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: cc17dcef7a554bee2715c79ba7d0c2356db2c6b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684116"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185656"
 ---
 # <a name="troubleshooting-guide-for-azure-signalr-service-common-issues"></a>Problembehandlungsleitfaden für häufig bei Azure SignalR Service auftretende Probleme
 
@@ -148,7 +148,7 @@ Fehler 429 wird zurückgegeben, wenn die Anzahl der **gleichzeitigen** Verbindun
 
 Bei **Free**-Instanzen beträgt der Grenzwert für die Anzahl der **gleichzeitigen** Verbindungen 20 für **Standard** Instanzen. Der Grenzwert für die Anzahl **gleichzeitiger** Verbindungen **pro Einheit** beträgt 1 K, d. h., Unit100 erlaubt 100 K gleichzeitige Verbindungen.
 
-Die Anzahl der Verbindungen schließt Client- und Serververbindungen mit ein. [Hier](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-messages-and-connections#how-connections-are-counted) erfahren Sie, wie Verbindungen gezählt werden.
+Die Anzahl der Verbindungen schließt Client- und Serververbindungen mit ein. [Hier](./signalr-concept-messages-and-connections.md#how-connections-are-counted) erfahren Sie, wie Verbindungen gezählt werden.
 
 ## <a name="500-error-when-negotiate-azure-signalr-service-is-not-connected-yet-please-try-again-later"></a>Fehler 500 bei Aushandlung: Der Azure SignalR Service ist noch nicht verbunden. Versuchen Sie es später noch mal.
 
@@ -162,7 +162,7 @@ Aktivieren Sie die serverseitige Ablaufverfolgung, um die Fehlerdetails zu ermit
 
 #### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivieren der serverseitigen Protokollierung für ASP.NET Core SignalR
 
-Die serverseitige Protokollierung für ASP.NET Core SignalR ist in `ILogger` integriert und beruht auf der [Protokollierung](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x), die im ASP.NET Core-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
+Die serverseitige Protokollierung für ASP.NET Core SignalR ist in `ILogger` integriert und beruht auf der [Protokollierung](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1), die im ASP.NET Core-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
         {

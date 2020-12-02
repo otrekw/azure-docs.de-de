@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c340f973193f9c46735423c86112816003fecfcd
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 748f91b2fe77667969e9736f8084a9dd24018425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578908"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172468"
 ---
 # <a name="directory-synchronization"></a>Verzeichnissynchronisierung
 
@@ -54,8 +54,8 @@ Sie müssen Identitätsdaten aus Ihren lokalen Active Directory-Umgebungen mit 
 
 ## <a name="implement-directory-synchronization-with-azure-ad"></a>Implementieren der Verzeichnissynchronisierung mit Azure AD
 
-* [Was ist die Identitätsbereitstellung?](https://docs.microsoft.com/azure/active-directory/cloud-provisioning/what-is-provisioning) 
+* [Was ist die Identitätsbereitstellung?](../cloud-provisioning/what-is-provisioning.md) 
 
-* [Tools für die Verzeichnisintegration für Hybrididentitäten](https://docs.microsoft.com/azure/active-directory/hybrid/plan-hybrid-identity-design-considerations-tools-comparison) 
+* [Tools für die Verzeichnisintegration für Hybrididentitäten](../hybrid/plan-hybrid-identity-design-considerations-tools-comparison.md) 
 
-* [Roadmap für die Installation von Azure AD Connect](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-install-roadmap)
+* [Roadmap für die Installation von Azure AD Connect](../hybrid/how-to-connect-install-roadmap.md)

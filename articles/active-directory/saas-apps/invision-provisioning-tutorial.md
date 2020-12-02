@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: Zhchia
-ms.openlocfilehash: f6a03a65b18d09000e93a1e0fa4a194321912211
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 75da1e2b2f1954b0126b08232046fe09b1c2b6e7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94354250"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96177939"
 ---
 # <a name="tutorial-configure-invision-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von InVision für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in InVision a
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Ein SSO-aktiviertes [InVision Enterprise-Konto](https://www.invisionapp.com/enterprise)
 * Ein Benutzerkonto in InVision mit Administratorberechtigungen
 
@@ -62,7 +62,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
    ![So aktivieren Sie die Bereitstellung von SCIM](./media/invision-provisioning-tutorial/enable-scim-provisioning.png)
 
-4. Kopieren Sie die **SCIM-API-URL** , und fügen Sie `/scim/v2` an die URL an. Kopieren Sie das **Authentifizierungstoken**. Speichern Sie diese Werte zur späteren Verwendung im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer InVision-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token**.
+4. Kopieren Sie die **SCIM-API-URL**, und fügen Sie `/scim/v2` an die URL an. Kopieren Sie das **Authentifizierungstoken**. Speichern Sie diese Werte zur späteren Verwendung im Azure-Portal auf der Registerkarte „Bereitstellung“ Ihrer InVision-Anwendung in das Feld **Mandanten-URL** bzw. **Geheimes Token**.
 
    ![SCIM-Zugriffstoken](./media/invision-provisioning-tutorial/invision-access-token.png)
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Bereitstellungsmodus](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den Wert für die SCIM-API-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert des Authentifizierungstokens ein, den Sie zuvor in **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit InVision herstellen kann. Wenn keine Verbindung möglich ist, stellen Sie sicher, dass Ihr InVision-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** den Wert für die SCIM-API-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert des Authentifizierungstokens ein, den Sie zuvor in **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit InVision herstellen kann. Wenn keine Verbindung möglich ist, stellen Sie sicher, dass Ihr InVision-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Administratoranmeldeinformationen](./media/inVision-provisioning-tutorial/provisioning.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer bereitstellen** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit InVision synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in InVision für Updatevorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die InVision-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die aus Azure AD mit InVision synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in InVision für Updatevorgänge verwendet. Wenn Sie das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) ändern möchten, müssen Sie sicherstellen, dass die InVision-API das Filtern von Benutzern nach diesem Attribut unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|Unterstützung für das Filtern|
    |---|---|---|

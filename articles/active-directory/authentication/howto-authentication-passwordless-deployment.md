@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0143da9c1961b4123467120210135f7db2c582c8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b4c06e53d3ddfb5f344a759e31d83cb22ce6d4d3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839572"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174135"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Planen einer Bereitstellung mit kennwortloser Authentifizierung in Azure Active Directory
 
@@ -126,7 +126,7 @@ Wenn Sie die kennwortlose Authentifizierung bereitstellen, sollten Sie zunächst
 
 Gruppen können aus einem lokalen Verzeichnis oder Azure AD synchronisiert werden. Sobald Sie mit den Ergebnissen Ihres Pilotversuchs zufrieden sind, können Sie die kennwortlose Authentifizierung für alle Benutzer aktivieren.
 
-Weitere Informationen finden Sie auf der Bereitstellungspläneseite unter [Bewährte Methoden für einen Pilotversuch](https://aka.ms/deploymentplans).
+Weitere Informationen finden Sie auf der Bereitstellungspläneseite unter [Bewährte Methoden für einen Pilotversuch](../fundamentals/active-directory-deployment-plans.md).
 
 ## <a name="plan-passwordless-authentication-with-the-microsoft-authenticator-app"></a>Planen der kennwortlosen Authentifizierung mit der Microsoft Authenticator-App
 

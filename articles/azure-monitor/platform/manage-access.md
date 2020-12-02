@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
-ms.openlocfilehash: 79e5b1ddde0ff5f0d09dc1c20e3b20ec4de3d925
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 234ef58920a9f896d3e8ebcc561562ea7ceb2708
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95536675"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186421"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Verwalten des Zugriffs auf Protokolldaten und Arbeitsbereiche in Azure Monitor
 
@@ -285,7 +285,7 @@ In den Beispielen oben wird eine Liste mit Tabellen definiert, die zulässig sin
 
 ### <a name="custom-logs"></a>Benutzerdefinierte Protokolle
 
- Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](../log-query/get-started-portal.md#understand-the-schema) aufgeführten Tabellen zu überprüfen.
+ Benutzerdefinierte Protokolle werden aus Datenquellen wie etwa benutzerdefinierten Protokollen und der HTTP-Datensammler-API erstellt. Die einfachste Möglichkeit, den Typ des Protokolls zu identifizieren, besteht darin, die unter [Benutzerdefinierte Protokolle im Protokollschema](../log-query/log-analytics-tutorial.md#table-schema) aufgeführten Tabellen zu überprüfen.
 
  Sie können keinen Zugriff auf einzelne benutzerdefinierte Protokolle gewähren, aber Sie können Zugriff auf alle benutzerdefinierten Protokolle gewähren. Um eine Rolle mit Zugriff auf alle benutzerdefinierten Protokolle zu erstellen, erstellen Sie eine benutzerdefinierte Rolle mit den folgenden Aktionen:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1b603dc4c31cb608a0840da78a2e987b3edd3c1e
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353593"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182061"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MediusFlow für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in MediusFlow
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Ein aktives Media Flow-Abonnement mit einem Qualitätssicherungs- oder Produktionsmandanten.
 * Ein Benutzerkonto in MediusFlow mit Administratorrugriffsrechten, um die Konfiguration in MediusFlow ausführen zu können.
 * Die Unternehmen, die im MediusFlow-Mandanten hinzugefügt werden, in dem die Benutzer bereitgestellt werden sollen.
@@ -98,7 +98,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
     :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Screenshot: Fenster „Add new configuration“ (Neue Konfiguration hinzufügen) in MediusFlow. Viele Einstellungen sind sichtbar, einschließlich Gebietsschemaeinstellungen, ein Filter und Benutzerrollen." border="false":::
 
-10. Klicken Sie auf **Speichern** , um die Konfiguration zu speichern.
+10. Klicken Sie auf **Speichern**, um die Konfiguration zu speichern.
 
     :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Screenshot: Registerkarte „User provisioning configuration“ (Konfiguration der Benutzerbereitstellung) in der MediusFlow-Verwaltungskonsole. Die Schaltfläche „Speichern“ ist hervorgehoben." border="false":::
 
@@ -141,7 +141,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für die Mandanten-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit MediusFlow herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr MediusFlow-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für die Mandanten-URL ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für das geheime Token ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit MediusFlow herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr MediusFlow-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
       ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/mediusflow-provisioning-tutorial/provisioning.png)
 
@@ -153,7 +153,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit MediusFlow synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute zum Abgleichen der Benutzerkonten in MediusFlow bei Updatevorgängen verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die MediusFlow-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute zum Abgleichen der Benutzerkonten in MediusFlow bei Updatevorgängen verwendet werden. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die MediusFlow-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -170,7 +170,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Gruppen mit MediusFlow synchronisieren** aus.
 
-11. Überprüfen Sie im Abschnitt **Gruppenattribute** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MediusFlow für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Gruppenattribute** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MediusFlow für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
       |attribute|type|
       |---|---|

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: Zhchia
-ms.openlocfilehash: 10b7b79ba5081e6133f2e5e94840eddfe403caef
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4d877468e87edb11b606668739d8d539ef0cc1dd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013172"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180847"
 ---
 # <a name="tutorial-configure-ideo-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von IDEO für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte erläutert, die in IDEO und Azure Active 
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * [Einen IDEO-Mandanten](https://www.shape.space/product/pricing)
 * Ein Benutzerkonto in IDEO | Shape mit Administratorberechtigungen.
 

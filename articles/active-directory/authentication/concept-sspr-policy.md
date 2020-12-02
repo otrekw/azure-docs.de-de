@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 695d47c839a9436f4fad9399f7995b3197e1c0eb
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964994"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174380"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -180,4 +180,4 @@ Nachdem das Modul installiert wurde, können Sie jede Aufgabe nach Bedarf mit de
 
 Informationen zu den ersten Schritten mit SSPR finden Sie im [Tutorial: Ermöglichen der Kontoentsperrung oder Kennwortzurücksetzung für Benutzer mit der Self-Service-Kennwortzurücksetzung von Azure Active Directory](tutorial-enable-sspr.md).
 
-Wenn Sie oder Ihre Benutzer Probleme mit SSPR haben, finden Sie weitere Informationen unter [Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung](active-directory-passwords-troubleshoot.md).
+Wenn Sie oder Ihre Benutzer Probleme mit SSPR haben, finden Sie weitere Informationen unter [Behandeln von Problemen mit der Self-Service-Kennwortzurücksetzung](./troubleshoot-sspr.md).

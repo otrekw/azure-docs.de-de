@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: f5b1b00c534abf1e7f82d2aca69dd4763b40d5ad
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833077"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175745"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
@@ -230,7 +230,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 
 Damit eine Funktionen-App Daten an Application Insights senden kann, muss sie den Instrumentierungsschlüssel einer Application Insights-Ressource kennen. Der Schlüssel muss in der App-Einstellung **APPINSIGHTS_INSTRUMENTATIONKEY** angegeben werden.
 
-Unabhängig davon, ob Sie Ihre Funktions-App [im Azure-Portal](functions-create-first-azure-function.md), über die Befehlszeile mithilfe der [Azure Functions Core Tools](functions-create-first-azure-function-azure-cli.md) oder mit [Visual Studio Code](functions-create-first-function-vs-code.md) erstellen, wird die Integration mit Application Insights automatisch aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
+Unabhängig davon, ob Sie Ihre Funktions-App [im Azure-Portal](functions-create-first-azure-function.md), über die Befehlszeile mithilfe der [Azure Functions Core Tools](./create-first-function-cli-csharp.md) oder mit [Visual Studio Code](./create-first-function-vs-code-csharp.md) erstellen, wird die Integration mit Application Insights automatisch aktiviert. Die Application Insights-Ressource hat den gleichen Namen wie Ihre Funktions-App und wird entweder in der gleichen oder nächstgelegenen Region erstellt.
 
 ### <a name="new-function-app-in-the-portal"></a>Neue Funktions-App im Azure-Portal
 

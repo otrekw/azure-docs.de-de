@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 2317e61111c3ad328e8f112e7d9567f3f5d47990
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997041"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183191"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Tutorial: Überwachen von veröffentlichten APIs
 
@@ -149,7 +149,7 @@ Wenn Sie die Sammlung von Gatewayprotokollen (GatewayLogs) oder Metriken in eine
 
     :::image type="content" source="media/api-management-howto-use-azure-monitor/logs-menu-item.png" alt-text="Screenshot: Element „Protokolle“ im Menü „Überwachung“":::
 
-Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/log-query/saved-queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
+Führen Sie Abfragen aus, um die Daten anzuzeigen. Es stehen mehrere [Beispielabfragen](../azure-monitor/log-query/example-queries.md) zur Verfügung. Sie können aber auch eine eigene Abfrage verwenden. Mit der folgenden Abfrage werden beispielsweise die Daten der letzten 24 Stunden aus der Tabelle „GatewayLogs“ abgerufen:
 
 ```kusto
 ApiManagementGatewayLogs
@@ -158,7 +158,7 @@ ApiManagementGatewayLogs
 
 Weitere Informationen zur Verwendung von Ressourcenprotokollen für API Management finden Sie hier:
 
-* [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/log-query/get-started-portal.md) oder in der [Demoumgebung von Log Analytics](https://portal.loganalytics.io/demo).
+* [Erste Schritte mit Azure Monitor Log Analytics](../azure-monitor/log-query/log-analytics-tutorial.md) oder in der [Demoumgebung von Log Analytics](https://portal.loganalytics.io/demo).
 
 * [Übersicht über Protokollabfragen in Azure Monitor](../azure-monitor/log-query/log-query-overview.md)
 

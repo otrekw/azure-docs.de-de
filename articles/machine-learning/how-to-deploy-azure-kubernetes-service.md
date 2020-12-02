@@ -11,15 +11,14 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 09/01/2020
-ms.openlocfilehash: e041b69d8fc256ff5fe759be9716db032540f2cb
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d314c285057950ebaecb2e3f75a83948c8bf3cc2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873793"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182443"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Bereitstellen eines Modells in einem Azure Kubernetes Service-Cluster
-
 
 Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azure Kubernetes Service (AKS) bereitstellen. Azure Kubernetes Service ist gut für umfangreiche Produktionsbereitstellungen geeignet. Verwenden Sie Azure Kubernetes Service, wenn Sie eine oder mehrere der folgenden Funktionen benötigen:
 
@@ -34,7 +33,7 @@ Erfahren Sie, wie Sie ein Modell mit Azure Machine Learning als Webdienst in Azu
 Bei der Bereitstellung in Azure Kubernetes Service führen Sie die Bereitstellung in einem AKS-Cluster durch, der __mit Ihrem Arbeitsbereich verbunden ist__. Informationen zum Verbinden eines AKS-Clusters mit Ihrem Arbeitsbereich finden Sie unter [Erstellen und Anfügen eines Azure Kubernetes Service-Clusters](how-to-create-attach-kubernetes.md).
 
 > [!IMPORTANT]
-> Es wird empfohlen, Debugvorgänge vor der Bereitstellung im Webdienst lokal durchzuführen. Weitere Informationen finden Sie unter [Lokal debuggen](./how-to-troubleshoot-deployment.md#debug-locally).
+> Es wird empfohlen, Debugvorgänge vor der Bereitstellung im Webdienst lokal durchzuführen. Weitere Informationen finden Sie unter [Lokal debuggen](./how-to-troubleshoot-deployment-local.md).
 >
 > Weitere Informationen finden Sie auch unter Azure Machine Learning – [Bereitstellung auf lokalem Notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/deployment/deploy-to-local)
 

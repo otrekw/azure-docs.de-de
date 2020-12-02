@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/17/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: ca4bd3d3b40934323bab8036f3ce72e9281f1de4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d4b93685160250a5abe7c050db89978ae8ceb1a9
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "67178527"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96026764"
 ---
 > [!div class="op_single_selector"]
 > * [C unter Windows](../articles/iot-accelerators/iot-accelerators-connecting-devices.md)
@@ -21,7 +21,7 @@ ms.locfileid: "67178527"
 > * [C auf Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-c.md)
 > * [Node.js (generisch)](../articles/iot-accelerators/iot-accelerators-connecting-devices-node.md)
 > * [Node.js auf Raspberry Pi](../articles/iot-accelerators/iot-accelerators-connecting-pi-node.md)
-> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoringV2.md)
+> * [MXChip IoT DevKit](../articles/iot-accelerators/iot-accelerators-arduino-iot-devkit-az3166-devkit-remote-monitoring-v2.md)
 
 In diesem Tutorial implementieren Sie ein **Kühlgerät**, das die folgenden Telemetriedaten an den [Solution Accelerator](../articles/iot-accelerators/about-iot-accelerators.md) für Remoteüberwachung sendet:
 
@@ -54,7 +54,7 @@ Wenn der Bereitstellungsvorgang für die Remoteüberwachungslösung abgeschlosse
 ### <a name="add-your-device-to-the-remote-monitoring-solution"></a>Hinzufügen des Geräts zur Remoteüberwachungslösung
 
 > [!NOTE]
-> Wenn Sie der Lösung bereits ein Gerät hinzugefügt haben, können Sie diesen Schritt überspringen. Für den nächsten Schritt ist jedoch die Verbindungszeichenfolge Ihres Geräts erforderlich. Sie können die Verbindungszeichenfolge eines Geräts im [Azure-Portal](https://portal.azure.com) oder über das CLI-Tool [az iot](https://docs.microsoft.com/cli/azure/iot?view=azure-cli-latest) abrufen.
+> Wenn Sie der Lösung bereits ein Gerät hinzugefügt haben, können Sie diesen Schritt überspringen. Für den nächsten Schritt ist jedoch die Verbindungszeichenfolge Ihres Geräts erforderlich. Sie können die Verbindungszeichenfolge eines Geräts im [Azure-Portal](https://portal.azure.com) oder über das CLI-Tool [az iot](/cli/azure/iot?view=azure-cli-latest) abrufen.
 
 Damit ein Gerät eine Verbindung mit dem Solution Accelerator herstellen kann, muss es sich mit gültigen Anmeldeinformationen bei IoT Hub identifizieren können. Sie haben die Möglichkeit, die Verbindungszeichenfolge mit den Anmeldeinformationen zu speichern, wenn Sie das Gerät der Lösung hinzufügen. Die Geräte-Verbindungszeichenfolge wird zu einem späteren Zeitpunkt in diesem Lernprogramm in Ihre Clientanwendung einbezogen.
 

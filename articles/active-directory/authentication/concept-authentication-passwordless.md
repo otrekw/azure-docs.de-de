@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b308b47ff813237bdf90637334f20ac6b5490a19
-ms.sourcegitcommit: 83610f637914f09d2a87b98ae7a6ae92122a02f1
+ms.openlocfilehash: dbe22a1af8fbf61629fa9df1267416ca3822884b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91992835"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840082"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>Optionen für die kennwortlose Authentifizierung für Azure Active Directory
 
@@ -62,7 +62,7 @@ Sie können auch das Smartphone von Mitarbeitern als kennwortlose Authentifizier
 
 Die Authenticator-App wandelt jedes iOS- oder Android-Telefon in sichere kennwortlose Anmeldeinformationen um. Benutzer können sich bei jeder beliebigen Plattform oder jedem beliebigen Browser anmelden, indem sie eine Benachrichtigung auf ihrem Telefon erhalten, eine auf dem Bildschirm angezeigte Zahl mit der Zahl auf dem Telefon abgleichen und dann ihre biometrischen Daten (Touch oder Gesicht) oder ihre PIN zur Bestätigung verwenden. Weitere Informationen zur Installation finden Sie unter [Herunterladen und Installieren der Microsoft Authenticator-App](../user-help/user-help-auth-app-download-install.md).
 
-Die kennwortlose Anmeldung mit der Microsoft Authenticator-App bei Azure AD befindet sich derzeit in der Vorschauphase. Die Verwendung der Microsoft Authenticator-App für die sekundäre Authentifizierung für Azure Multi-Factor Authentication, Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) oder OATH-Softwaretoken ist allgemein verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+Die kennwortlose Anmeldung mit der Microsoft Authenticator-App bei Azure AD befindet sich derzeit in der Vorschauphase. Die Verwendung der Microsoft Authenticator-App für die sekundäre Authentifizierung für Azure AD Multi-Factor Authentication, Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) oder OATH-Softwaretoken ist allgemein verfügbar. Weitere Informationen zu Vorschauversionen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Das Grundprinzip der kennwortlosen Authentifizierung mit der Authenticator-App ist dasselbe wie bei Windows Hello for Business. Sie ist etwas komplizierter, da der Benutzer identifiziert werden muss, damit Azure AD die verwendete Version der Microsoft Authenticator-App herausfinden kann:
 

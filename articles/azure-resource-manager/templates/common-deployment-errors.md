@@ -4,12 +4,12 @@ description: Informationen zum Beheben gängiger Fehler beim Bereitstellen von R
 tags: top-support-issue
 ms.topic: troubleshooting
 ms.date: 09/09/2020
-ms.openlocfilehash: fb7e476a5b4416282546d321a5e9a0127b7a4364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 785a74184cae8523b99da7f647ca87fda53c8648
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96000707"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185826"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Beheben gängiger Azure-Bereitstellungsfehler mit Azure Resource Manager
 
@@ -76,10 +76,10 @@ Wenn Sie Informationen zu einem Fehlercode suchen und diese Informationen in die
 | StorageAccountAlreadyTaken | Geben Sie einen eindeutigen Namen für das Speicherkonto an. | [Resolve errors for storage account names](error-storage-account-name.md) (Beheben von Fehlern für Namen von Speicherkonten) |
 | StorageAccountNotFound | Überprüfen Sie das Abonnement, die Ressourcengruppe und den Namen des Speicherkontos, das Sie verwenden möchten. | |
 | SubnetsNotInSameVnet | Ein virtueller Computer kann nur über ein virtuelles Netzwerk verfügen. Stellen Sie beim Bereitstellen von mehreren NICs sicher, dass diese demselben virtuellen Netzwerk angehören. | [Mehrere NICs](../../virtual-machines/windows/multiple-nics.md) |
-| SubscriptionNotFound | Der Zugriff auf ein angegebenes Abonnement für die Bereitstellung ist nicht möglich. Möglicherweise ist die Abonnement-ID falsch, der Benutzer, der die Vorlage bereitstellt, verfügt nicht über die erforderlichen Berechtigungen zur Bereitstellung des Abonnements, oder die Abonnement-ID weist das falsche Format auf. Wenn Sie für die [bereichsübergreifende Bereitstellung](cross-scope-deployment.md) geschachtelte Bereitstellungen verwenden, geben Sie die GUID für das Abonnement an. | |
+| SubscriptionNotFound | Der Zugriff auf ein angegebenes Abonnement für die Bereitstellung ist nicht möglich. Möglicherweise ist die Abonnement-ID falsch, der Benutzer, der die Vorlage bereitstellt, verfügt nicht über die erforderlichen Berechtigungen zur Bereitstellung des Abonnements, oder die Abonnement-ID weist das falsche Format auf. Wenn Sie für die [bereichsübergreifende Bereitstellung](./deploy-to-resource-group.md) geschachtelte Bereitstellungen verwenden, geben Sie die GUID für das Abonnement an. | |
 | SubscriptionNotRegistered | Wenn Sie eine Ressource bereitstellen, muss der Ressourcenanbieter für Ihr Abonnement registriert sein. Wenn Sie eine Azure Resource Manager-Vorlage für die Bereitstellung verwenden, wird der Ressourcenanbieter automatisch im Abonnement registriert. Manchmal wird die automatische Registrierung nicht rechtzeitig abgeschlossen. Um diesen zeitweiligen Fehler zu vermeiden, registrieren Sie den Ressourcenanbieter vor der Bereitstellung. | [Lösen von Registrierungsfehlern](error-register-resource-provider.md) |
 | TemplateResourceCircularDependency | Entfernen Sie unnötige Abhängigkeiten. | [Beheben von Ringabhängigkeiten](error-invalid-template.md#circular-dependency) |
-| TooManyTargetResourceGroups | Verringern Sie die Anzahl von Ressourcengruppen für eine einzelne Bereitstellung. | [Bereichsübergreifende Bereitstellungen](cross-scope-deployment.md) |
+| TooManyTargetResourceGroups | Verringern Sie die Anzahl von Ressourcengruppen für eine einzelne Bereitstellung. | [Bereichsübergreifende Bereitstellungen](./deploy-to-resource-group.md) |
 
 ## <a name="find-error-code"></a>Ermitteln des Fehlercodes
 

@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58f0ffa8bd43a8428603334b6c89fa1cf36315b5
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94987336"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176000"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -38,7 +38,7 @@ Wenn Sie ein Azure AD Identity Protection-Kunde sind, wechseln Sie zur Ansicht 
 ## <a name="why-was-my-sign-in-blocked-but-identity-protection-didnt-generate-a-risk-detection"></a>Warum wurde meine Anmeldung blockiert, ohne dass Identity Protection eine Risikoerkennung generiert?
 Anmeldungen können aus verschiedenen Gründen blockiert werden. Hierbei ist Folgendes wichtig: Identity Protection generiert nur dann eine Risikoerkennung, wenn bei der Authentifizierungsanforderung korrekte Anmeldeinformationen verwendet werden. Wenn ein Benutzer falsche Anmeldeinformationen verwendet, wird dies von Identity Protection nicht gekennzeichnet, da kein Risiko einer Kompromittierung von Anmeldeinformationen besteht. Ein solches entsteht nur, wenn ein böswilliger Akteur die richtigen Informationen verwendet. Im Folgenden finden Sie einige Gründe, aus denen die Anmeldung eines Benutzers blockiert werden kann, ohne dass Identity Protection eine Erkennung generiert:
 * Eine **IP-Adresse kann blockiert werden**, wenn schädliche Aktivitäten von dieser Adresse erkannt werden. In der Meldung zur Blockierung der IP-Adresse wird nicht unterschieden, ob die Anmeldeinformationen richtig waren oder nicht. Wenn eine IP-Adresse blockiert ist und keine richtigen Anmeldeinformationen verwendet werden, wird keine Identity Protection-Erkennung generiert.
-* **[Smart Lockout](https://docs.microsoft.com/azure/active-directory/authentication/howto-password-smart-lockout)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
+* **[Smart Lockout](../authentication/howto-password-smart-lockout.md)** kann nach mehreren Fehlversuchen die Anmeldung eines Kontos blockieren.
 * Es kann eine **Richtlinie für bedingten Zugriff** in Kraft sein, die andere Bedingungen als Risikostufen verwendet, um eine Authentifizierungsanforderung zu blockieren.
 
 ### <a name="how-can-i-get-a-report-of-detections-of-a-specific-type"></a>Wie kann ich einen Bericht mit Erkennungen eines bestimmten Typs abrufen?
@@ -93,6 +93,4 @@ Da das Benutzerrisiko naturgemäß kumulativ zunimmt und nicht abläuft, kann f�
 
 ### <a name="why-does-a-sign-in-have-a-sign-in-risk-aggregate-score-of-high-when-the-detections-associated-with-it-are-of-low-or-medium-risk"></a>Warum liegt die Bewertung „Hoch“ für „Anmelderisiko (aggregiert)“ vor, wenn die zugehörigen Erkennungen ein niedriges oder mittleres Risiko aufweisen?
 
-Die hohe aggregierte Risikobewertung könnte auf anderen Faktoren der Anmeldung oder darauf basieren, dass für diese Anmeldung mehrere Erkennungen ausgelöst wurden. Umgekehrt kann die aggregierte Risikobewertung „Mittel“ vorliegen, obwohl die mit der Anmeldung verknüpften Erkennungen ein hohes Risiko aufweisen. 
-
-
+Die hohe aggregierte Risikobewertung könnte auf anderen Faktoren der Anmeldung oder darauf basieren, dass für diese Anmeldung mehrere Erkennungen ausgelöst wurden. Umgekehrt kann die aggregierte Risikobewertung „Mittel“ vorliegen, obwohl die mit der Anmeldung verknüpften Erkennungen ein hohes Risiko aufweisen.

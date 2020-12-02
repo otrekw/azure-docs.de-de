@@ -6,18 +6,18 @@ ms.service: signalr
 ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: yajin1
-ms.openlocfilehash: 4b0b85b08c3f813440d556c61ba5e290ac200049
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 413bb88deac96c1ca12e8a9d25fc9cd16edf4616
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686445"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183956"
 ---
 # <a name="how-to-troubleshoot-connectivity-and-message-delivery-issues"></a>Behandeln von Konnektivitätsproblemen und von Problemen bei der Nachrichtenübermittlung
 
 In diesem Leitfaden werden verschiedene Methoden zur Selbstdiagnose vorgestellt, mit denen Sie direkt die Ursache ermitteln oder das Problem zumindest eingrenzen können. Das Ergebnis der Selbstdiagnose ist auch hilfreich, wenn Sie das Problem zur weiteren Untersuchung an uns melden.
 
-Überprüfen Sie als Erstes im Azure-Portal, mit welchem Dienstmodus ([ServiceMode](https://docs.microsoft.com/azure/azure-signalr/concept-service-mode)) Azure SignalR Service (auch **ASRS** genannt) konfiguriert ist.
+Überprüfen Sie als Erstes im Azure-Portal, mit welchem Dienstmodus ([ServiceMode](./concept-service-mode.md)) Azure SignalR Service (auch **ASRS** genannt) konfiguriert ist.
 
 :::image type="content" source="./media/signalr-howto-troubleshoot-method/service-mode.png" alt-text="ServiceMode":::
 
@@ -49,13 +49,13 @@ Das Problem kann auf verschiedene Arten eingegrenzt werden.
 
 ### <a name="how-to-view-the-traffic-and-narrow-down-the-issue"></a>Anzeigen des Datenverkehrs und Eingrenzen des Problems
 
-Die Erfassung des aktuellen Datenverkehrs ist die einfachste Möglichkeit zur Eingrenzung des Problems. Die [Netzwerkablaufverfolgungen](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces) können mithilfe der unten beschriebenen Optionen erfasst werden:
+Die Erfassung des aktuellen Datenverkehrs ist die einfachste Möglichkeit zur Eingrenzung des Problems. Die [Netzwerkablaufverfolgungen](/aspnet/core/signalr/diagnostics#network-traces) können mithilfe der unten beschriebenen Optionen erfasst werden:
 
-* [Erfassen einer Netzwerkablaufverfolgung mit Fiddler (bevorzugte Option)](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#network-traces)
+* [Erfassen einer Netzwerkablaufverfolgung mit Fiddler (bevorzugte Option)](/aspnet/core/signalr/diagnostics#network-traces)
 
-* [Erfassen einer Netzwerkablaufverfolgung mit tcpdump (nur macOS und Linux)](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
+* [Erfassen einer Netzwerkablaufverfolgung mit tcpdump (nur macOS und Linux)](/aspnet/core/signalr/diagnostics#collect-a-network-trace-with-tcpdump-macos-and-linux-only)
 
-* [Erfassen einer Netzwerkablaufverfolgung im Browser](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
+* [Erfassen einer Netzwerkablaufverfolgung im Browser](/aspnet/core/signalr/diagnostics#collect-a-network-trace-in-the-browser)
 
 <a name="view_traffic_client"></a>
 
@@ -63,7 +63,7 @@ Die Erfassung des aktuellen Datenverkehrs ist die einfachste Möglichkeit zur Ei
 
 Für eine dauerhafte SignalR-Verbindung wird zunächst eine Aushandlung (`/negotiate`) mit dem Server Ihrer gehosteten App durchgeführt. Anschließend erfolgt eine Umleitung zum Azure SignalR-Dienst, bevor schließlich die eigentliche dauerhafte Verbindung mit dem Azure SignalR-Dienst hergestellt wird. Die detaillierten Schritte finden Sie in den [ausführlichen Informationen zu Azure SignalR Service](https://github.com/Azure/azure-signalr/blob/dev/docs/internal.md).
 
-Überprüfen Sie anhand der clientseitigen Netzwerkablaufverfolgung, welche Anforderung nicht erfolgreich war und welcher Statuscode und welche Antwort zurückgegeben wurde, und suchen Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide) nach Lösungen.
+Überprüfen Sie anhand der clientseitigen Netzwerkablaufverfolgung, welche Anforderung nicht erfolgreich war und welcher Statuscode und welche Antwort zurückgegeben wurde, und suchen Sie im [Leitfaden zur Problembehandlung](./signalr-howto-troubleshoot-guide.md) nach Lösungen.
 
 #### <a name="server-requests"></a>Serveranforderungen
 
@@ -71,7 +71,7 @@ Der *Server* von SignalR verwaltet die *Serververbindung* zwischen *Server* und 
 
 *Serververbindungen* können aufgrund von Netzwerkinstabilität oder regulärer Wartungsmaßnahmen für Azure SignalR Service oder aufgrund von Updates/Wartungsmaßnahmen für den Server Ihrer gehosteten App ausfallen. Solange die Clientseite über den Mechanismus zum Trennen und Wiederherstellen der Verbindung verfügt, sind die Auswirkungen minimal (wie bei jeder clientseitig verursachten Verbindungstrennung/-wiederherstellung).
 
-Sehen Sie sich die serverseitige Netzwerkablaufverfolgung an, um anhand des Statuscodes und der Fehlerdetails zu ermitteln, warum die *Serververbindung* ausfällt oder vom *Dienst* abgelehnt wird, und suchen Sie im [Leitfaden zur Problembehandlung](https://docs.microsoft.com/azure/azure-signalr/signalr-howto-troubleshoot-guide) nach der Grundursache.
+Sehen Sie sich die serverseitige Netzwerkablaufverfolgung an, um anhand des Statuscodes und der Fehlerdetails zu ermitteln, warum die *Serververbindung* ausfällt oder vom *Dienst* abgelehnt wird, und suchen Sie im [Leitfaden zur Problembehandlung](./signalr-howto-troubleshoot-guide.md) nach der Grundursache.
 
 
 ### <a name="how-to-add-logs"></a>Hinzufügen von Protokollen
@@ -86,18 +86,18 @@ Die clientseitige Protokollierung ist die gleiche wie bei der selbstgehosteten V
 
 ##### <a name="enable-client-side-logging-for-aspnet-core-signalr"></a>Aktivieren der clientseitigen Protokollierung für `ASP.NET Core SignalR`
 
-* [JavaScript-Clientprotokollierung](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#javascript-client-logging)
+* [JavaScript-Clientprotokollierung](/aspnet/core/signalr/diagnostics#javascript-client-logging)
 
-* [.NET-Clientprotokollierung](https://docs.microsoft.com/aspnet/core/signalr/diagnostics#net-client-logging)
+* [.NET-Clientprotokollierung](/aspnet/core/signalr/diagnostics#net-client-logging)
 
 
 ##### <a name="enable-client-side-logging-for-aspnet-signalr"></a>Aktivieren der clientseitigen Protokollierung für `ASP.NET SignalR`
 
-* [.NET-Client](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
+* [.NET-Client](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-net-client-windows-desktop-apps)
 
-* [Aktivieren der Ablaufverfolgung in Windows Phone 8-Clients](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
+* [Aktivieren der Ablaufverfolgung in Windows Phone 8-Clients](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-windows-phone-8-clients)
 
-* [Aktivieren der Ablaufverfolgung im JavaScript-Client](https://docs.microsoft.com/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
+* [Aktivieren der Ablaufverfolgung im JavaScript-Client](/aspnet/signalr/overview/testing-and-debugging/enabling-signalr-tracing#enabling-tracing-in-the-javascript-client)
 
 <a name="add_logs_server"></a>
 
@@ -105,7 +105,7 @@ Die clientseitige Protokollierung ist die gleiche wie bei der selbstgehosteten V
 
 ##### <a name="enable-server-side-logging-for-aspnet-core-signalr"></a>Aktivieren der serverseitigen Protokollierung für `ASP.NET Core SignalR`
 
-Die serverseitige Protokollierung für `ASP.NET Core SignalR` wird in die `ILogger`-basierte [Protokollierung](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1&tabs=aspnetcore2x) integriert, der im `ASP.NET Core`-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
+Die serverseitige Protokollierung für `ASP.NET Core SignalR` wird in die `ILogger`-basierte [Protokollierung](/aspnet/core/fundamentals/logging/?tabs=aspnetcore2x&view=aspnetcore-2.1) integriert, der im `ASP.NET Core`-Framework bereitgestellt wird. Sie können die serverseitige Protokollierung mithilfe von `ConfigureLogging` aktivieren, wie im folgenden Beispiel gezeigt:
 
 ```cs
 .ConfigureLogging((hostingContext, logging) =>
@@ -162,7 +162,7 @@ Ab der SDK-Version `1.0.0` können Sie Ablaufverfolgungen aktivieren, indem Sie 
 
 #### <a name="how-to-enable-logs-inside-azure-signalr-service"></a>Aktivieren von Protokollen in Azure SignalR Service
 
-Sie können auch für Azure SignalR Service [Diagnoseprotokolle aktivieren](https://docs.microsoft.com/azure/azure-signalr/signalr-tutorial-diagnostic-logs). Diese Protokolle enthalten ausführliche Informationen zu jeder Verbindung mit Azure SignalR Service.
+Sie können auch für Azure SignalR Service [Diagnoseprotokolle aktivieren](./signalr-howto-diagnostic-logs.md). Diese Protokolle enthalten ausführliche Informationen zu jeder Verbindung mit Azure SignalR Service.
 
 <a name="serverless_mode_tsg"></a>
 
@@ -194,7 +194,7 @@ Die Dienstintegrität kann mithilfe der Integritäts-API überprüft werden.
     * Starten Sie die Instanz neu.
     * Sollte keine der obigen Optionen funktionieren, fügen Sie im Azure-Portal eine neue Supportanfrage hinzu.
 
-Weitere Informationen zur Notfallwiederherstellung finden Sie [hier](https://docs.microsoft.com/azure/azure-signalr/signalr-concept-disaster-recovery).
+Weitere Informationen zur Notfallwiederherstellung finden Sie [hier](./signalr-concept-disaster-recovery.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie das Feature zur Authentifizierung und Autoris
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad83e7ad5e1ffc03bf7c62df9b28512e19a62100
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0e07dc42a45a697b293e2ebc90bdd92aa924f071
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010196"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302021"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>Erweiterte Verwendung der Authentifizierung und Autorisierung in Azure App Service
 
@@ -172,7 +172,7 @@ Wenn das Zugriffstoken Ihres Anbieters (nicht das [Sitzungstoken](#extend-sessio
 
 - **Google**: Fügen Sie einen Abfragezeichenfolgen-Parameter vom Typ `access_type=offline` an Ihren `/.auth/login/google`-API-Aufruf an. Bei Verwendung des Mobile Apps SDK können Sie den Parameter einer der `LogicAsync`-Überladungen hinzufügen (siehe [Google-Aktualisierungstoken](https://developers.google.com/identity/protocols/OpenIDConnect#refresh-tokens)).
 - **Facebook**: Stellt keine Aktualisierungstoken bereit. Langlebige Token laufen nach 60 ab (siehe [Verlängern von Zugriffsschlüsseln für Seiten](https://developers.facebook.com/docs/facebook-login/access-tokens/expiration-and-extension)).
-- **Twitter**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/basics/authentication/FAQ)).
+- **Twitter**: Zugriffstoken laufen nicht ab (siehe [Häufig gestellte Fragen zu OAuth für Twitter](https://developer.twitter.com/en/docs/authentication/faq)).
 - **Microsoft-Konto**: Wählen Sie beim [Konfigurieren der Authentifizierungseinstellungen für das Microsoft-Konto](configure-authentication-provider-microsoft.md) den Bereich `wl.offline_access` aus.
 - **Azure Active Directory:** Führen Sie in [https://resources.azure.com](https://resources.azure.com) folgende Schritte aus:
     1. Wählen Sie am oberen Seitenrand die Option **Lesen/Schreiben** aus.

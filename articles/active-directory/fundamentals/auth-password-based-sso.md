@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 74815976036abafc56f97e622351a1018fe30504
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 5bd6a5c8af117bf6cb39969a5f1b1f17ff08681c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576931"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172821"
 ---
 # <a name="password-based-authentication-with-azure-active-directory"></a>Kennwortbasierte Authentifizierung mit Azure Active Directory
 
@@ -45,10 +45,9 @@ Sie müssen Ihre Anwendung mit Vorauthentifizierung schützen und SSO über Kenn
 
 ## <a name="implement-password-based-sso-with-azure-ad"></a>Implementieren des kennwortbasierten einmaligen Anmeldens mit Azure AD
 
-* [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on) 
+* [Worum handelt es sich beim einmaligen Anmelden (Single Sign-On, SSO)?](../manage-apps/what-is-single-sign-on.md) 
 
-* [Grundlegendes zum kennwortbasierten einmaligen Anmelden](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-password-single-sign-on-non-gallery-applications)
+* [Grundlegendes zum kennwortbasierten einmaligen Anmelden](../manage-apps/configure-password-single-sign-on-non-gallery-applications.md)
 
-* [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-password-vaulting)
+* [Kennworttresore (Password Vaulting) für einmaliges Anmelden mit Anwendungsproxy](../manage-apps/application-proxy-configure-single-sign-on-password-vaulting.md)
 
- 

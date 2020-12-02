@@ -11,12 +11,12 @@ ms.workload: integration
 ms.topic: article
 ms.date: 04/20/2020
 ms.author: apimpm
-ms.openlocfilehash: c7f0e98b5ea2fdd13b1daa9fd9737998eb6cfaf1
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 466af29a3f073f73d4a0fc62d74709cd59f82425
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "96010213"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183786"
 ---
 # <a name="upgrade-and-scale-an-azure-api-management-instance"></a>Aktualisieren und Skalieren einer Azure API Management-Instanz  
 
@@ -80,7 +80,7 @@ Sie können für alle Tarife ein Upgrade oder ein Downgrade durchführen. Beim U
 Wenn Sie die Skalierung von oder auf den Developer-Tarif durchführen, kommt es zu Ausfallzeiten. Andernfalls treten keine Ausfallzeiten auf. 
 
 ## <a name="compute-isolation"></a>Computeisolation
-Wenn Ihre Sicherheitsanforderungen [Compute-Isolation](https://docs.microsoft.com/azure/azure-government/azure-secure-isolation-guidance#compute-isolation) umfassen, können Sie den Tarif **Isoliert** verwenden. Dieser Tarif stellt sicher, dass Computeressourcen einer API Management-Dienstinstanz den gesamten physischen Host nutzen, und bietet damit die erforderliche Isolationsstufe, die für die Unterstützung von z. B. Workloads gemäß IL5 (Impact Level 5) des US-Verteidigungsministeriums erforderlich ist. Um Zugriff auf den Tarif „Isoliert“ zu erhalten, [erstellen Sie ein Supportticket](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). 
+Wenn Ihre Sicherheitsanforderungen [Compute-Isolation](../azure-government/azure-secure-isolation-guidance.md#compute-isolation) umfassen, können Sie den Tarif **Isoliert** verwenden. Dieser Tarif stellt sicher, dass Computeressourcen einer API Management-Dienstinstanz den gesamten physischen Host nutzen, und bietet damit die erforderliche Isolationsstufe, die für die Unterstützung von z. B. Workloads gemäß IL5 (Impact Level 5) des US-Verteidigungsministeriums erforderlich ist. Um Zugriff auf den Tarif „Isoliert“ zu erhalten, [erstellen Sie ein Supportticket](../azure-portal/supportability/how-to-create-azure-support-request.md). 
 
 
 

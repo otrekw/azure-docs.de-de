@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: f97d04ca40e69ba2516744adfc9f1f455cba97c0
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 0bb252e227e4f23388929f2fca18769e0bd02e19
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896343"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187033"
 ---
 # <a name="tutorial---migrate-web-service-from-google-maps"></a>Tutorial: Migrieren von Webdiensten aus Google Maps
 
@@ -219,7 +219,7 @@ In der folgenden Tabelle werden die API-Parameter von Google Maps den vergleichb
 | `mode`                         | `travelMode`                       |
 | `optimize`                     | `computeBestOrder`                 |
 | `origin`                       | `query`                            |
-| `region`                       | *Nicht verfügbar:* Dieses Feature hängt mit der Geocodierung zusammen. Verwenden Sie den Parameter *countrySet* , wenn Sie die Geocodierung-API von Azure Maps verwenden.  |
+| `region`                       | *Nicht verfügbar:* Dieses Feature hängt mit der Geocodierung zusammen. Verwenden Sie den Parameter *countrySet*, wenn Sie die Geocodierung-API von Azure Maps verwenden.  |
 | `traffic_model`               | *Nicht verfügbar:* Es kann nur angegeben werden, ob Verkehrsinfos mit dem Parameter *traffic* verwendet werden sollen. |
 | `transit_mode`                | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten](/rest/api/maps/mobility). |
 | `transit_routing_preference` | Weitere Informationen finden Sie in der [Dokumentation zu den Mobilitätsdiensten](/rest/api/maps/mobility). |
@@ -501,10 +501,10 @@ Weitere Informationen zu den Azure Maps-REST-Diensten:
 > [Bewährte Methoden für den Azure Maps-Routendienst](how-to-use-best-practices-for-routing.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps-REST-Dienste-API – Referenzdokumentation](https://docs.microsoft.com/rest/api/maps/)
+> [Azure Maps-REST-Dienste-API – Referenzdokumentation](/rest/api/maps/)
 
 > [!div class="nextstepaction"]
-> [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-maps)
+> [Codebeispiele](/samples/browse/?products=azure-maps)
 
 > [!div class="nextstepaction"]
 > [Verwenden des Dienstmoduls (Web SDK)](how-to-use-best-practices-for-routing.md)

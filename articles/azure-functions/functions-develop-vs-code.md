@@ -4,12 +4,12 @@ description: In diesem Artikel erhalten Sie Informationen über das Entwickeln u
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
-ms.openlocfilehash: c851f5284b87f224932b027fd10ce720327639c2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 573177615ff898326eb29649a7f766b5df34b587
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010519"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168429"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Entwickeln von Azure Functions mithilfe von Visual Studio Code
 
@@ -34,7 +34,7 @@ Die Erweiterung kann mit den folgenden Sprachen verwendet werden, die ab Version
 
 In diesem Artikel stehen Beispiele derzeit nur für JavaScript- (Node.js) und C#-Klassenbibliotheksfunktionen zur Verfügung.  
 
-Dieser Artikel erläutert detailliert, wie Sie die Azure Functions-Erweiterung verwenden, um Funktionen zu entwickeln und in Azure zu veröffentlichen. Bevor Sie diesen Artikel lesen, sollten Sie [Ihre erste Funktion mit Visual Studio Code erstellen](functions-create-first-function-vs-code.md).
+Dieser Artikel erläutert detailliert, wie Sie die Azure Functions-Erweiterung verwenden, um Funktionen zu entwickeln und in Azure zu veröffentlichen. Bevor Sie diesen Artikel lesen, sollten Sie [Ihre erste Funktion mit Visual Studio Code erstellen](./create-first-function-vs-code-csharp.md).
 
 > [!IMPORTANT]
 > Kombinieren Sie lokale Entwicklung und Portalentwicklung nicht in einer Funktions-App. Bei der Veröffentlichung aus einem lokalen Projekt in einer Funktions-App überschreibt der Bereitstellungsprozess alle Funktionen, die Sie im Portal entwickelt haben.
@@ -233,7 +233,7 @@ Wenn Sie aus Visual Studio Code veröffentlichen, nutzen Sie die [ZIP Deploy](fu
 
 ### <a name="quick-function-app-create"></a>Schnelle Erstellung von Funktions-Apps
 
-Wenn Sie **+ Neue Funktions-App in Azure erstellen...** auswählen, generiert die Erweiterung automatisch Werte für die Azure-Ressourcen, die von ihrer Funktions-App benötigt werden. Diese Werte basieren auf dem von Ihnen ausgewählten Namen der Funktions-App. Ein Beispiel für die Verwendung von Standardwerten zum Veröffentlichen Ihres Projekts in einer neuen Funktions-App in Azure finden Sie im [Artikel zum Schnellstart für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure).
+Wenn Sie **+ Neue Funktions-App in Azure erstellen...** auswählen, generiert die Erweiterung automatisch Werte für die Azure-Ressourcen, die von ihrer Funktions-App benötigt werden. Diese Werte basieren auf dem von Ihnen ausgewählten Namen der Funktions-App. Ein Beispiel für die Verwendung von Standardwerten zum Veröffentlichen Ihres Projekts in einer neuen Funktions-App in Azure finden Sie im [Artikel zum Schnellstart für Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure).
 
 Wenn Sie für die erstellten Ressourcen aussagekräftige Namen bereitstellen möchten, müssen Sie den erweiterten Erstellungspfad auswählen.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/31/2019
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: bc3352dd57a76cbb0b38455adfa11987ec93781a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d73cf3336afad83fadf6f56606161f523e202280
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003020"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180539"
 ---
 # <a name="using-azure-ad-application-proxy-to-publish-on-premises-apps-for-remote-users"></a>Veröffentlichen von lokalen Apps für Remotebenutzer mit dem Azure AD-Anwendungsproxy
 
@@ -95,7 +95,7 @@ Der Anwendungsproxy eignet sich für Apps, die das folgende Protokoll für die n
 
 Der Anwendungsproxy unterstützt auch die folgenden Authentifizierungsprotokolle mit Drittanbieterintegration oder in bestimmten Konfigurationsszenarien:
 
-* [**Headerbasierte Authentifizierung**](/azure/active-directory/manage-apps/application-proxy-configure-single-sign-on-with-headers). Bei dieser Anmeldungsmethode wird ein Drittanbieter-Authentifizierungsdienst mit dem Namen PingAccess verwendet, wenn die Authentifizierung für die Anwendung mithilfe von Headern erfolgt. In diesem Szenario erfolgt die Authentifizierung durch PingAccess.
+* [**Headerbasierte Authentifizierung**](./application-proxy-configure-single-sign-on-with-headers.md). Bei dieser Anmeldungsmethode wird ein Drittanbieter-Authentifizierungsdienst mit dem Namen PingAccess verwendet, wenn die Authentifizierung für die Anwendung mithilfe von Headern erfolgt. In diesem Szenario erfolgt die Authentifizierung durch PingAccess.
 * [**Formular- oder kennwortbasierte Authentifizierung**](application-proxy-configure-single-sign-on-password-vaulting.md). Bei dieser Authentifizierungsmethode melden sich Benutzer mit einem Benutzernamen und einem Kennwort bei der Anwendung an, wenn sie zum ersten Mal darauf zugreifen. Nach der ersten Anmeldung werden der Benutzername und das Kennwort von Azure AD für die Anwendung bereitgestellt. In diesem Szenario erfolgt die Authentifizierung durch Azure AD.
 * [**SAML-Authentifizierung**](application-proxy-configure-single-sign-on-on-premises-apps.md). SAML-basiertes einmaliges Anmelden wird für Anwendungen unterstützt, die das SAML 2.0- oder das WS-Verbundprotokoll verwenden. Mit SAML-SSO nimmt Azure AD die Authentifizierung bei der Anwendung mithilfe des Azure AD-Kontos des Benutzers vor.
 

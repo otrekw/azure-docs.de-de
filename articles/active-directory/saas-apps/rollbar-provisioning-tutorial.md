@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 544e01ef96165cd6c96a97761a3e758b93b1b15b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 79076db9de4122c19fcb03bbfc938214097e19f6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014345"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181593"
 ---
 # <a name="tutorial-configure-rollbar-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Rollbar für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Rollbar al
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Einen [Rollbar-Mandanten](https://rollbar.com/pricing/) mit einem Enterprise-Plan
 * Ein Benutzerkonto in Rollbar mit Administratorrechten
 

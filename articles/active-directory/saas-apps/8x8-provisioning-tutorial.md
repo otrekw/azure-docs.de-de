@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 25767a7ddb83acf3ad10698f9f2ff8949a0ad55f
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0ed56d200c2b5a472dbf93d45ad25156ea02a884
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357197"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181151"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 8x8 für automatische Benutzerbereitstellung
 
@@ -34,7 +34,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in 8x8 Config
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Ein Abonnement der 8x8 X-Serie einer beliebigen Ebene.
 * Ein 8x8-Benutzerkonto mit Administratorberechtigung in [Configuration Manager](https://vo-cm.8x8.com).
 * [Einmaliges Anmelden mit Azure AD](./8x8virtualoffice-tutorial.md) wurde bereits konfiguriert.
@@ -54,7 +54,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren von 8x8 für di
 
    ![Identitätsverwaltung](./media/8x8-provisioning-tutorial/8x8-identity-management.png)
 
-2. Klicken Sie auf den Link **Benutzerbereitstellungsinformationen anzeigen** , um ein Token zu generieren.
+2. Klicken Sie auf den Link **Benutzerbereitstellungsinformationen anzeigen**, um ein Token zu generieren.
 
    ![Anzeigen der Benutzerbereitstellung](./media/8x8-provisioning-tutorial/8x8-show-user-provisioning.png)
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Kopieren Sie im Abschnitt **Administratoranmeldeinformationen** die **8x8-URL** aus Configuration Manager in das Feld **Mandanten-URL**. Kopieren Sie das **8x8-API-Token** aus Configuration Manager in das Feld **Geheimes Token**. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit 8x8 herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 8x8-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Kopieren Sie im Abschnitt **Administratoranmeldeinformationen** die **8x8-URL** aus Configuration Manager in das Feld **Mandanten-URL**. Kopieren Sie das **8x8-API-Token** aus Configuration Manager in das Feld **Geheimes Token**. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit 8x8 herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 8x8-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/8x8-provisioning-tutorial/provisioning.png)
 
@@ -114,7 +114,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 8. Wählen Sie im Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer bereitstellen** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 8x8 synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 8x8 für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die 8x8-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit 8x8 synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in 8x8 für Updatevorgänge verwendet. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die 8x8-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|Notizen|
    |---|---|---|

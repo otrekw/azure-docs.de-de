@@ -5,11 +5,11 @@ ms.service: azure-app-configuration
 ms.topic: include
 ms.date: 1/31/2020
 ms.openlocfilehash: 48bf5d5df3c54e8b2894ad28fa08553d5add0437
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001468"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182693"
 ---
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, um einen neuen App Configuration-Speicher zu erstellen. Wählen Sie links oben auf der Startseite die Option **Ressource erstellen** aus. Geben Sie im Feld **Marketplace durchsuchen** den Suchbegriff *App Configuration* ein, und drücken Sie die <kbd>EINGABETASTE</kbd>.
 

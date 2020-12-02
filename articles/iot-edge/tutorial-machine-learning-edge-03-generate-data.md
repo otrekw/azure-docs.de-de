@@ -8,17 +8,14 @@ ms.date: 1/20/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: c40f7d988f2b5f206f42eae787efcdce786948a8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ef6e86bbb55a2c51779f2dcf60f802ce549516cb
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91857077"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959678"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Tutorial: Generieren simulierter Gerätedaten
-
-> [!NOTE]
-> Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
 
 In diesem Artikel verwenden wir Machine Learning-Trainingsdaten, um ein Gerät zu simulieren, das Telemetriedaten an Azure IoT Hub sendet. Wie eingangs erwähnt, wird in diesem Tutorial das [Turbofan Engine Degradation Simulation-Dataset](https://c3.nasa.gov/dashlink/resources/139/) genutzt, um Flugzeugtriebwerk-Daten für das Trainieren und Testen zu simulieren.
 
@@ -45,6 +42,10 @@ Das DeviceHarness-Projekt ist ein .NET Core-Projekt in C#, das aus vier Klassen 
 Die Abarbeitung der in diesem Artikel beschriebenen Aufgaben sollte ungefähr 20 Minuten dauern.
 
 Die realen Abläufe dieses Schritts werden meist von Geräte- und Cloudentwicklern durchgeführt.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
 
 ## <a name="configure-visual-studio-code-and-build-deviceharness-project"></a>Konfigurieren von Visual Studio Code und Erstellen des DeviceHarness-Projekts
 

@@ -4,12 +4,12 @@ description: Informationen zum Skalieren Ihrer Ressource Web-App, Clouddienst, v
 ms.topic: conceptual
 ms.date: 07/07/2017
 ms.subservice: autoscale
-ms.openlocfilehash: 543ecc80abeb9a437a895224de6ade679698c4d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5af60befeda9f0ed4ed76f7ab8449e94950352fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020907"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186574"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Erste Schritte mit der automatischen Skalierung in Azure
 In diesem Artikel wird beschrieben, wie Sie Ihre automatische Skalierungseinstellung für Ihre Ressource im Microsoft Azure-Portal einrichten.
@@ -151,12 +151,12 @@ In diesem Abschnitt wird beschrieben, wie Sie die Autoskalierung von Azure in ei
 1. Stellen Sie sicher, dass die Autoskalierung von Azure in der [Azure-Zielregion für das Verschieben](https://azure.microsoft.com/global-infrastructure/services/?products=monitor&regions=all) verfügbar ist.
 
 ### <a name="move"></a>Move
-Erstellen Sie mithilfe der [REST-API](https://docs.microsoft.com/rest/api/monitor/autoscalesettings/createorupdate) eine Autoskalierungseinstellung in der neuen Umgebung. Die in der Zielregion erstellte Einstellung für die Autoskalierung ist eine Kopie der Autoskalierungseinstellung in der Quellregion.
+Erstellen Sie mithilfe der [REST-API](/rest/api/monitor/autoscalesettings/createorupdate) eine Autoskalierungseinstellung in der neuen Umgebung. Die in der Zielregion erstellte Einstellung für die Autoskalierung ist eine Kopie der Autoskalierungseinstellung in der Quellregion.
 
-[Diagnoseeinstellungen](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings), die in Verbindung mit der Autoskalierungseinstellung in der Quellregion erstellt wurden, können nicht verschoben werden. Sie müssen die Diagnoseeinstellungen nach Abschluss der Erstellung der Autoskalierungseinstellungen in der Zielregion neu erstellen. 
+[Diagnoseeinstellungen](./diagnostic-settings.md), die in Verbindung mit der Autoskalierungseinstellung in der Quellregion erstellt wurden, können nicht verschoben werden. Sie müssen die Diagnoseeinstellungen nach Abschluss der Erstellung der Autoskalierungseinstellungen in der Zielregion neu erstellen. 
 
 ### <a name="learn-more-about-moving-resources-across-azure-regions"></a>Weitere Informationen zum Verschieben von Ressourcen zwischen Azure-Regionen
-Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
+Weitere Informationen zum Verschieben von Ressourcen zwischen Regionen und zur Notfallwiederherstellung in Azure finden Sie unter [Verschieben von Ressourcen in eine neue Ressourcengruppe oder ein neues Abonnement](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 - [Erstellen einer Aktivitätsprotokollwarnung, um alle Vorgänge der Engine für die automatische Skalierung für Ihr Abonnement zu überwachen](https://github.com/Azure/azure-quickstart-templates/tree/master/monitor-autoscale-alert)

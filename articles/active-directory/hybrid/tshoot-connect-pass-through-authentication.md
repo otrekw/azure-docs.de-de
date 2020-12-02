@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 224ccaeace91288171db42d2b8b8cf8c21a352e0
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99da9b787bfe06bece8b8dafdafc257336dddf63
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652517"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96176187"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Behandlung von Problemen bei der Azure Active Directory-Passthrough-Authentifizierung
 
@@ -72,7 +72,7 @@ Dieser Fall kann eintreten, wenn sich der lokale Benutzerprinzipalname (User Pri
  ``` 
 4. Wenn Sie zur Eingabe von Anmeldeinformationen aufgefordert werden, geben Sie den für die Anmeldung verwendeten Benutzernamen und das entsprechende Kennwort ein (https://login.microsoftonline.com).
 
-Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID]( /windows-server/identity/ad-fs/operations/configuring-alternate-login-id#:~:text=%20Configuring%20Alternate%20Login%20ID,See%20Also.%20%20More).
+Sollte der gleiche Benutzernamen-/Kennwortfehler auftreten, funktioniert der Agent für die Passthrough-Authentifizierung ordnungsgemäß, und das Problem ist möglicherweise auf einen nicht routingfähigen lokalen UPN zurückzuführen. Weitere Informationen finden Sie unter [Konfigurieren einer alternativen Anmelde-ID](/windows-server/identity/ad-fs/operations/configuring-alternate-login-id).
 
 > [!IMPORTANT]
 > Wenn der Azure AD Connect-Server nicht in die Domäne eingebunden ist, eine Anforderung, die unter [Azure AD Connect: Voraussetzungen für die Installation](./how-to-connect-install-prerequisites.md#installation-prerequisites) erwähnt wird, tritt das Problem mit dem ungültigen Benutzernamen/Kennwort auf.

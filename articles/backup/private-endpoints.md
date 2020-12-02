@@ -4,11 +4,11 @@ description: Erfahren Sie mehr über den Prozess zum Erstellen privater Endpunkt
 ms.topic: conceptual
 ms.date: 05/07/2020
 ms.openlocfilehash: 0ca4e7a83e18ac72e25131d320737ce9578b1cf3
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92172237"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184745"
 ---
 # <a name="private-endpoints-for-azure-backup"></a>Private Endpunkte für Azure Backup
 
@@ -51,11 +51,11 @@ In [diesem Abschnitt](#create-a-recovery-services-vault-using-the-azure-resource
 
 Verwaltete Identitäten ermöglichen dem Tresor, private Endpunkte zu erstellen und zu nutzen. In diesem Abschnitt wird das Aktivieren der verwalteten Identität für Ihren Tresor erläutert.
 
-1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität** .
+1. Navigieren Sie zu Ihrem Recovery Services-Tresor und dann zu **Identität**.
 
     ![Ändern von „Identitätsstatus“ in „Ein“](./media/private-endpoints/identity-status-on.png)
 
-1. Ändern Sie den **Status** in **Ein** , und klicken Sie auf **Speichern** .
+1. Ändern Sie den **Status** in **Ein**, und klicken Sie auf **Speichern**.
 
 1. Es wird eine **Objekt-ID** generiert, die die verwaltete Identität des Tresors darstellt.
 
@@ -73,11 +73,11 @@ Um die erforderlichen privaten Endpunkte für Azure Backup zu erstellen, muss de
 Wir empfehlen, dem Tresor (der verwalteten Identität) die Rolle **Mitwirkender** für diese drei Ressourcengruppen zu gewähren. Die folgenden Schritte beschreiben, wie dies für eine bestimmte Ressourcengruppe erfolgt (was für jede der drei Ressourcengruppen erfolgen muss):
 
 1. Wechseln Sie zur Ressourcengruppe und dann auf der linken Leiste zu **Zugriffssteuerung (IAM)** .
-1. Wechseln Sie in **Zugriffssteuerung (IAM)** zu **Rollenzuweisung hinzufügen** .
+1. Wechseln Sie in **Zugriffssteuerung (IAM)** zu **Rollenzuweisung hinzufügen**.
 
     ![Hinzufügen einer Rollenzuweisung](./media/private-endpoints/add-role-assignment.png)
 
-1. Wählen Sie im Bereich **Rollenzuweisung hinzufügen** die Option **Mitwirkender** als **Rolle** aus, und verwenden Sie den **Namen** des Tresors als **Prinzipal** . Wählen Sie Ihren Tresor und dann **Speichern** aus, wenn Sie fertig sind.
+1. Wählen Sie im Bereich **Rollenzuweisung hinzufügen** die Option **Mitwirkender** als **Rolle** aus, und verwenden Sie den **Namen** des Tresors als **Prinzipal**. Wählen Sie Ihren Tresor und dann **Speichern** aus, wenn Sie fertig sind.
 
     ![Wählen von „Rolle“ und „Prinzipal“](./media/private-endpoints/choose-role-and-principal.png)
 
@@ -89,17 +89,17 @@ Informationen zum Verwalten von Berechtigungen auf detaillierterer Ebene finden 
 
 In diesem Abschnitt wird das Erstellen eines privaten Endpunkts für Ihren Tresor beschrieben.
 
-1. Suchen Sie in der Suchleiste nach **Private Link** , und wählen Sie die Option aus. Dadurch gelangen Sie zum Abschnitt **Private Link-Center** .
+1. Suchen Sie in der Suchleiste nach **Private Link**, und wählen Sie die Option aus. Dadurch gelangen Sie zum Abschnitt **Private Link-Center**.
 
     ![Suchen nach „Private Link“](./media/private-endpoints/search-for-private-link.png)
 
-1. Klicken Sie auf der linken Navigationsleiste auf **Private Endpunkte** . Sobald Sie sich im Bereich **Private Endpunkte** befinden, wählen Sie **+Hinzufügen** aus, um mit der Erstellung eines privaten Endpunkts für Ihren Tresor zu beginnen.
+1. Klicken Sie auf der linken Navigationsleiste auf **Private Endpunkte**. Sobald Sie sich im Bereich **Private Endpunkte** befinden, wählen Sie **+Hinzufügen** aus, um mit der Erstellung eines privaten Endpunkts für Ihren Tresor zu beginnen.
 
     ![Hinzufügen eines privaten Endpunkts im Private Link-Center](./media/private-endpoints/add-private-endpoint.png)
 
 1. Sobald Sie sich im Prozess **Privaten Endpunkt erstellen** befinden, müssen Sie Details für die Herstellung der Verbindung mit Ihrem privaten Endpunkt angeben.
 
-    1. **Grundlagen** : Geben Sie die grundlegenden Details für Ihre privaten Endpunkte ein. Die Region muss mit der des Tresors und der Ressource identisch sein.
+    1. **Grundlagen**: Geben Sie die grundlegenden Details für Ihre privaten Endpunkte ein. Die Region muss mit der des Tresors und der Ressource identisch sein.
 
         ![Grundlegende Informationen eingeben](./media/private-endpoints/basic-details.png)
 
@@ -115,7 +115,7 @@ In diesem Abschnitt wird das Erstellen eines privaten Endpunkts für Ihren Treso
 
     1. Optional können Sie für Ihren privaten Endpunkt **Tags** hinzufügen.
 
-    1. Fahren Sie mit **Überprüfen + erstellen** fort, nachdem Sie die Details eingegeben haben. Klicken Sie nach Abschluss der Validierung auf **Erstellen** , um den privaten Endpunkt zu erstellen.
+    1. Fahren Sie mit **Überprüfen + erstellen** fort, nachdem Sie die Details eingegeben haben. Klicken Sie nach Abschluss der Validierung auf **Erstellen**, um den privaten Endpunkt zu erstellen.
 
 ## <a name="approving-private-endpoints"></a>Genehmigen privater Endpunkte
 
@@ -123,7 +123,7 @@ Wenn der Benutzer, der den privaten Endpunkt erstellt, auch der Besitzer des Rec
 
 Weitere Informationen zum Genehmigen privater Endpunkte mithilfe des Azure Resource Manager-Clients finden Sie unter [Manuelle Genehmigung privater Endpunkte mithilfe des Azure Resource Manager-Clients](#manual-approval-of-private-endpoints-using-the-azure-resource-manager-client).
 
-1. Navigieren Sie in Ihrem Recovery Services-Tresor auf der linken Leiste zu **Verbindungen mit privatem Endpunkt** .
+1. Navigieren Sie in Ihrem Recovery Services-Tresor auf der linken Leiste zu **Verbindungen mit privatem Endpunkt**.
 1. Wählen Sie die Verbindung mit dem privaten Endpunkt aus, die Sie genehmigen möchten.
 1. Wählen Sie auf der oberen Leiste **Genehmigen** aus. Sie können auch **Ablehnen** oder **Entfernen** auswählen, wenn Sie die Verbindung mit dem Endpunkt ablehnen oder löschen möchten.
 
@@ -297,7 +297,7 @@ Erstellen Sie die folgenden JSON-Dateien, und legen Sie anschließend mit dem Po
 
 #### <a name="use-a-script"></a>Verwenden eines Skripts
 
-1. Starten Sie im Azure-Portal die **Cloud Shell** , und wählen Sie im PowerShell-Fenster **Datei hochladen** aus.
+1. Starten Sie im Azure-Portal die **Cloud Shell**, und wählen Sie im PowerShell-Fenster **Datei hochladen** aus.
 
     ![„Datei hochladen“ im PowerShell-Fenster auswählen](./media/private-endpoints/upload-file-in-powershell.png)
 
@@ -313,13 +313,13 @@ Erstellen Sie die folgenden JSON-Dateien, und legen Sie anschließend mit dem Po
 
     Die Parameter lauten wie folgt:
 
-    - **subscription** : **SubscriptionId mit der Ressourcengruppe, in der der private Endpunkt für den Tresor erstellt werden soll, und dem Subnetz, an das der private Endpunkt des Tresors angefügt werden soll
+    - **subscription**: **SubscriptionId mit der Ressourcengruppe, in der der private Endpunkt für den Tresor erstellt werden soll, und dem Subnetz, an das der private Endpunkt des Tresors angefügt werden soll
 
-    - **vaultPEResourceGroup** : Ressourcengruppe, in der die privaten Endpunkte für den Tresor erstellt werden sollen
+    - **vaultPEResourceGroup**: Ressourcengruppe, in der die privaten Endpunkte für den Tresor erstellt werden sollen
 
-    - **vaultPESubnetResourceGroup** : Ressourcengruppe des Subnetzes, mit dem der private Endpunkt verknüpft wird
+    - **vaultPESubnetResourceGroup**: Ressourcengruppe des Subnetzes, mit dem der private Endpunkt verknüpft wird
 
-    - **vaultMsiName** : MSI-Name des Tresors, der mit **VaultName** übereinstimmt
+    - **vaultMsiName**: MSI-Name des Tresors, der mit **VaultName** übereinstimmt
 
 1. Vervollständigen Sie die Authentifizierung. Das Skript berücksichtigt den Kontext des oben angegebenen Abonnements. Es erstellt die entsprechenden Rollen, falls sie im Mandanten fehlen, und weist dem MSI des Tresors Rollen zu.
 
@@ -358,7 +358,7 @@ $privateEndpoint = New-AzPrivateEndpoint `
 
     `privateendpointconnectionid = {peName}.{vaultId}.backup.{guid}`
 
-1. Rufen Sie die **Verbindungs-ID des privaten Endpunkts** (und den **Namen des privaten Endpunkts** , sofern erforderlich) aus der Antwort ab. Ersetzen Sie sie im folgenden JSON-Code und Azure Resource Manager-URI, und versuchen Sie, den Status in „Approved/Rejected/Disconnected“ zu ändern, wie im folgenden Beispiel veranschaulicht:
+1. Rufen Sie die **Verbindungs-ID des privaten Endpunkts** (und den **Namen des privaten Endpunkts**, sofern erforderlich) aus der Antwort ab. Ersetzen Sie sie im folgenden JSON-Code und Azure Resource Manager-URI, und versuchen Sie, den Status in „Approved/Rejected/Disconnected“ zu ändern, wie im folgenden Beispiel veranschaulicht:
 
     ```rest
     armclient PUT /subscriptions/<subscriptionid>/resourceGroups/<rgname>/providers/Microsoft.RecoveryServices/Vaults/<vaultname>/privateEndpointConnections/<privateendpointconnectionid>?api-version=2020-02-02-preview @C:\<filepath>\BackupAdminApproval.json

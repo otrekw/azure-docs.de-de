@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 10/13/2017
 ms.author: alkohli
-ms.openlocfilehash: 6d98f1a1dfb575f4af8b666d173f9354b5eeac6b
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: e2d89718d953f05b3e5500db412ac8ac03bfa00b
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966240"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96301947"
 ---
 # <a name="automated-disaster-recovery-solution-using-azure-site-recovery-for-file-shares-hosted-on-storsimple"></a>Automatische Lösung zur Notfallwiederherstellung mithilfe von Azure Site Recovery für auf StorSimple gehostete Dateifreigaben
 
@@ -44,7 +44,7 @@ Für das Implementieren einer Lösung zur Notfallwiederherstellung, die Azure Si
    - Ein lokales StorSimple-Speichergerät, das bei Azure StorSimple Manager registriert ist
    - StorSimple Cloud Appliance-Version, die im Azure StorSimple Manager erstellt wurde Die Anwendung kann in einem heruntergefahrenen Zustand beibehalten werden.
    - Dateifreigaben, die auf den vom StorSimple-Speichergerät konfigurierten Volumes gehostet werden.
-   - [Ein Azure Site Recovery Services-Tresor](/azure/storsimple/hyper-v-vmm-disaster-recovery) , der in einem Microsoft Azure-Abonnement erstellt wurde.
+   - [Ein Azure Site Recovery Services-Tresor](/azure/site-recovery/hyper-v-vmm-azure-tutorial) , der in einem Microsoft Azure-Abonnement erstellt wurde.
 
 Falls Azure Ihr Wiederherstellungsstandort ist, führen Sie zusätzlich das [Bereitschaftsbewertungstool für virtuelle Computer](https://azure.microsoft.com/downloads/vm-readiness-assessment/) auf VMs aus, um sicherzustellen, dass diese mit Azure VMs und Azure Site Recovery Services kompatibel sind.
 
@@ -112,7 +112,7 @@ Dieser Schritt erfordert, dass Sie die lokale Dateiserverumgebung vorbereiten, e
    1. Verwenden Sie die Rolle „Datei- und Speicherdienste“, um Dateifreigaben auf diesen Volumes zu erstellen.
 
 #### <a name="to-create-and-prepare-an-azure-site-recovery-vault"></a>So erstellen Sie einen Azure Site Recovery-Tresor und bereiten diesen vor
-Sehen Sie sich die [Azure Site Recovery-Dokumentation](/azure/storsimple/hyper-v-azure-tutorial) an, um die ersten Schritte mit Azure Site Recovery auszuführen, bevor Sie die Dateiserver-VM schützen.
+Sehen Sie sich die [Azure Site Recovery-Dokumentation](/azure/site-recovery/) an, um die ersten Schritte mit Azure Site Recovery auszuführen, bevor Sie die Dateiserver-VM schützen.
 
 #### <a name="to-enable-protection"></a>So aktivieren Sie den Schutz
 1. Trennen Sie das iSCSI-Ziel/die iSCSI-Ziele von den lokalen VMs, die Sie durch Azure Site Recovery schützen möchten:
@@ -124,7 +124,7 @@ Sehen Sie sich die [Azure Site Recovery-Dokumentation](/azure/storsimple/hyper-v
    > [!NOTE]
    > Dies bewirkt, dass die Dateifreigaben vorübergehend nicht verfügbar sind.
    
-1. [Aktivieren Sie den Schutz für virtuelle Computer](/azure/storsimple/hyper-v-azure-tutorial) der Dateiserver-VM im Azure Site Recovery-Portal.
+1. [Aktivieren Sie den Schutz für virtuelle Computer](/azure/site-recovery/hyper-v-azure-tutorial) der Dateiserver-VM im Azure Site Recovery-Portal.
 1. Wenn die erste Synchronisierung beginnt, können Sie die Verbindung mit dem Ziel wieder herstellen. Wechseln Sie zum iSCSI-Initiator, wählen Sie das StorSimple-Gerät, und klicken Sie auf **Verbinden**.
 1. Wenn die Synchronisierung abgeschlossen und der Status der VM **Geschützt** ist, wählen Sie die VM und die Registerkarte **Konfigurieren** aus, und aktualisieren Sie entsprechend das Netzwerk der VM (die VM[s], für die ein Failover ausgeführt wurde, werden Teil dieses Netzwerks). Falls das Netzwerk nicht angezeigt wird, bedeutet dies, dass die Synchronisierung immer noch ausgeführt wird.
 

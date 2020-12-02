@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 7a7a3669c5462adba3828bb1fd6c2fc9c4b3213c
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 9d1aa54ba1e3f3a589df8f694e340909c4e24ecc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566162"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183684"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Tutorial: Aktivieren des Application Gateway-Eingangscontroller-Add-Ons für einen vorhandenen AKS-Cluster mit einem vorhandenen Application Gateway über die Azure CLI (Vorschau)
 
@@ -35,16 +35,16 @@ In diesem Tutorial lernen Sie Folgendes:
 
  - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
- - Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon*, indem Sie den Befehl [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register) verwenden, wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet:
+ - Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon*, indem Sie den Befehl [az feature register](/cli/azure/feature#az-feature-register) verwenden, wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet:
      ```azurecli-interactive
      az feature register --name AKS-IngressApplicationGatewayAddon --namespace microsoft.containerservice
      ```
-    Es dauert einige Minuten, bis der Status „Registriert“ angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) überprüfen:
+    Es dauert einige Minuten, bis der Status „Registriert“ angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-register) überprüfen:
      ```azurecli-interactive
      az feature list -o table --query "[?contains(name, 'microsoft.containerservice/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
      ```
 
- - Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register) die Registrierung des Microsoft.ContainerService-Ressourcenanbieters:
+ - Wenn Sie so weit sind, aktualisieren Sie mithilfe des Befehls [az provider register](/cli/azure/provider#az-provider-register) die Registrierung des Microsoft.ContainerService-Ressourcenanbieters:
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```

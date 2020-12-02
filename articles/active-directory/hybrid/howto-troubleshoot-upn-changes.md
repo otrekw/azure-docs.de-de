@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6a1acdbeb29091bae0be214b740023f13928506a
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 46ecc2cba96b07d9105020e69ae3198a3765be7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91319842"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172230"
 ---
 # <a name="plan-and-troubleshoot-user-principal-name-changes-in-azure-active-directory"></a>Planung und Problembehandlung von Änderungen des Azure-Benutzerprinzipalnamens in Azure Active Directory
 
@@ -174,7 +174,7 @@ Die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) h
 
 * Mehrstufige Authentifizierung über eine Pushbenachrichtigung oder einen Überprüfungscode
 
-* Authentifizierungsbroker auf iOS- und Android-Geräten, um einmaliges Anmelden für Anwendungen bereitzustellen, in denen die [Brokerauthentifizierung](../develop/brokered-auth.md) verwendet wird
+* Authentifizierungsbroker auf iOS- und Android-Geräten, um einmaliges Anmelden für Anwendungen bereitzustellen, in denen die [Brokerauthentifizierung](../develop/msal-android-single-sign-on.md) verwendet wird
 
 * Die Geräteregistrierung in Azure AD (auch bekannt als „Workplace Join“), die für andere Features wie dem Intune-App-Schutz und der Geräteregistrierung/-verwaltung erforderlich ist
 

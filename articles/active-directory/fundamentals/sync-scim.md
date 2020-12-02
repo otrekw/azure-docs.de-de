@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f957070ec94fc4c61089f31fe91261a2f52c4ee4
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: b95aac504bc6ee72c353faecad25384e2dc90840
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578857"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172417"
 ---
 # <a name="scim-synchronization-with-azure-active-directory"></a>SCIM-Synchronisierung mit Azure Active Directory
 
@@ -45,11 +45,10 @@ Sie möchten Benutzerinformationen aus einem HCM-System automatisch für Azure 
 
 ## <a name="implement-scim-with-azure-ad"></a>Implementieren von SCIM mit Azure AD 
 
-* [Funktionsweise der Bereitstellung in Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/how-provisioning-works)
+* [Funktionsweise der Bereitstellung in Azure AD](../app-provisioning/how-provisioning-works.md)
 
-* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](https://docs.microsoft.com/azure/active-directory/app-provisioning/configure-automatic-user-provisioning-portal)
+* [Verwalten der Benutzerkontobereitstellung für Unternehmens-Apps im Azure-Portal](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
-* [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups)
+* [Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD](../app-provisioning/use-scim-to-provision-users-and-groups.md)
 
-* [Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts](https://docs.microsoft.com/azure/active-directory/app-provisioning/application-provisioning-config-problem-scim-compatibility)
-
+* [Bekannte Probleme und Lösungen bei der Einhaltung des SCIM 2.0-Protokolls des Azure AD-Benutzerbereitstellungsdiensts](../app-provisioning/application-provisioning-config-problem-scim-compatibility.md)

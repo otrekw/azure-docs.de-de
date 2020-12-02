@@ -13,16 +13,16 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 57466cccb71444d5711a9221c324a107757c5e82
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 4baaf2de6fbe4a56f64d449644b8594217dc432c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576794"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172736"
 ---
 # <a name="remote-desktop-gateway-services"></a>Remotedesktop-Gatewaydienste
 
-Eine standardmäßige RDS-Bereitstellung (Remote Desktop Services) umfasst verschiedene [Remotedesktop-Rollendienste](https://technet.microsoft.com/windows-server-docs/compute/remote-desktop-services/desktop-hosting-logical-architecture), die unter Windows Server ausgeführt werden. Die RDS-Bereitstellung mit dem Azure AD-Anwendungsproxy verfügt über eine permanente ausgehende Verbindung von dem Server, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen. Mit diesem Authentifizierungsmuster können Sie mehr Arten von Anwendung anbieten, indem Sie lokale Anwendungen über Remotedesktopdienste veröffentlichen. Das Muster verringert zudem die Angriffsfläche der Bereitstellung, da der Azure AD-Anwendungsproxy verwendet wird.
+Eine standardmäßige RDS-Bereitstellung (Remote Desktop Services) umfasst verschiedene [Remotedesktop-Rollendienste](/windows-server/remote/remote-desktop-services/Desktop-hosting-logical-architecture), die unter Windows Server ausgeführt werden. Die RDS-Bereitstellung mit dem Azure AD-Anwendungsproxy verfügt über eine permanente ausgehende Verbindung von dem Server, auf dem der Connectordienst ausgeführt wird. Bei anderen Bereitstellungen werden eingehende Verbindungen durch einen Lastenausgleich offen gelassen. Mit diesem Authentifizierungsmuster können Sie mehr Arten von Anwendung anbieten, indem Sie lokale Anwendungen über Remotedesktopdienste veröffentlichen. Das Muster verringert zudem die Angriffsfläche der Bereitstellung, da der Azure AD-Anwendungsproxy verwendet wird.
 
 ## <a name="use-when"></a>Wenn folgende Bedingungen vorliegen
 
@@ -44,8 +44,7 @@ Sie müssen Remotezugriff bereitstellen und Ihre Remotedesktopdienste-Bereitstel
 
 ## <a name="implement-remote-desktop-gateway-services-with-azure-ad"></a>Implementieren von Remotedesktop-Gatewaydiensten mit Azure AD
 
-* [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-integrate-with-remote-desktop-services) 
+* [Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy](../manage-apps/application-proxy-integrate-with-remote-desktop-services.md) 
 
-* [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application)
+* [Hinzufügen einer lokalen Anwendung für den Remotezugriff über den Anwendungsproxy in Azure AD](../manage-apps/application-proxy-add-on-premises-application.md)
 
- 

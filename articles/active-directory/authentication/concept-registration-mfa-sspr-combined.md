@@ -1,6 +1,6 @@
 ---
-title: Kombinierte Registrierung für SSPR und Azure Multi-Factor Authentication – Azure Active Directory
-description: Erfahren Sie mehr über die Umgebung für die kombinierte Registrierung für Azure Active Directory, mit der sich Benutzer sowohl für Azure Multi-Factor Authentication (MFA) als auch für die Self-Service-Kennwortzurücksetzung registrieren können
+title: Kombinierte Registrierung für SSPR und Azure AD Multi-Factor Authentication – Azure Active Directory
+description: Hier erfahren Sie mehr über die Umgebung für die kombinierte Registrierung für Azure Active Directory, mit der sich Benutzer sowohl für Azure AD Multi-Factor Authentication (MFA) als auch für die Self-Service-Kennwortzurücksetzung registrieren können.
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7e1036e63b4fdef241350786fa3a246946a9223c
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 22f43c5f9848670b9df4b061c5abb6cc30912172
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378005"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839793"
 ---
 # <a name="combined-security-information-registration-for-azure-active-directory-overview"></a>Übersicht über die kombinierte Registrierung von Sicherheitsinformationen in Azure Active Directory
 
-Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen.
+Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure AD Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von mehrstufiger Authentifizierung und SSPR nutzen.
 
 > [!NOTE]
 > Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert.
@@ -142,8 +142,8 @@ Ein Benutzer, der zuvor mindestens eine Methode eingerichtet hat, die für die m
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erste Informationen finden Sie unter [Aktivieren der Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Aktivieren der Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
+Erste Informationen finden Sie unter [Aktivieren der Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Aktivieren der Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md).
 
 Erfahren Sie, wie Sie die [kombinierte Registrierung in Ihrem Mandanten aktivieren](howto-registration-mfa-sspr-combined.md) oder [die erneute Registrierung von Authentifizierungsmethoden durch Benutzer erzwingen](howto-mfa-userdevicesettings.md#manage-user-authentication-options).
 
-Sie können auch den Artikel [Verfügbare Methoden für Multi-Factor Authentication und SSPR](concept-authentication-methods.md) lesen.
+Sie können auch den Artikel [Verfügbare Methoden für Azure AD Multi-Factor Authentication und SSPR](concept-authentication-methods.md) lesen.

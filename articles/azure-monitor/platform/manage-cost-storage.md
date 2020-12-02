@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/22/2020
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 940955c8ace956354a2747f5ad21430620c2a9d1
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b84d24174771e8395677874c9dac863fa6f27a54
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95744567"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185911"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>Verwalten von Nutzung und Kosten mit Azure Monitor-Protokollen    
 
@@ -78,7 +78,7 @@ Die Gebühren für Log Analytics fließen in Ihre Azure-Rechnung ein. Die Detail
 
 ## <a name="viewing-log-analytics-usage-on-your-azure-bill"></a>Anzeigen des Log Analytics-Verbrauchs auf Ihrer Azure-Rechnung 
 
-Azure bietet im Hub [Azure Cost Management und Abrechnung](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%252fazure%252fbilling%252fTOC.json) eine Vielzahl nützlicher Funktionen. Mithilfe der Funktion „Kostenanalyse“ können Sie beispielsweise Ihre Ausgaben für Azure-Ressourcen überprüfen. Fügen Sie zunächst einen Filter nach „Ressourcentyp“ (zu „microsoft.operationalinsights/workspace“ für Log Analytics und „microsoft.operationalinsights/workspace“ für Log Analytics-Cluster) hinzu, damit Sie Ihre Log Analytics-Ausgaben verfolgen können. Wählen Sie anschließend unter „Gruppieren nach“ die Option „Kategorie der Verbrauchseinheit“ oder „Verbrauchseinheit“ aus.  Beachten Sie, dass andere Dienste wie Azure Security Center und Azure Sentinel die jeweilige Nutzung ebenfalls für Log Analytics-Arbeitsbereichsressourcen berechnen. Um die Zuordnung zu Dienstnamen zu sehen, können Sie die Tabellenansicht anstelle eines Diagramms auswählen. 
+Azure bietet im Hub [Azure Cost Management und Abrechnung](../../cost-management-billing/costs/quick-acm-cost-analysis.md?toc=%2fazure%2fbilling%2fTOC.json) eine Vielzahl nützlicher Funktionen. Mithilfe der Funktion „Kostenanalyse“ können Sie beispielsweise Ihre Ausgaben für Azure-Ressourcen überprüfen. Fügen Sie zunächst einen Filter nach „Ressourcentyp“ (zu „microsoft.operationalinsights/workspace“ für Log Analytics und „microsoft.operationalinsights/workspace“ für Log Analytics-Cluster) hinzu, damit Sie Ihre Log Analytics-Ausgaben verfolgen können. Wählen Sie anschließend unter „Gruppieren nach“ die Option „Kategorie der Verbrauchseinheit“ oder „Verbrauchseinheit“ aus.  Beachten Sie, dass andere Dienste wie Azure Security Center und Azure Sentinel die jeweilige Nutzung ebenfalls für Log Analytics-Arbeitsbereichsressourcen berechnen. Um die Zuordnung zu Dienstnamen zu sehen, können Sie die Tabellenansicht anstelle eines Diagramms auswählen. 
 
 Ein umfassenderes Verständnis Ihres Verbrauchs erlangen Sie, indem Sie [Ihre Verbrauchsdaten aus dem Azure-Portal herunterladen](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md#download-usage-in-azure-portal). In der heruntergeladenen Tabelle wird der Verbrauch pro Azure-Ressource (z. B. Log Analytics-Arbeitsbereich) pro Tag aufgeführt. In dieser Excel-Tabelle können Sie den Verbrauch für Ihre Log Analytics-Arbeitsbereiche ermitteln, indem Sie zuerst nach der Spalte „Kategorie der Verbrauchseinheit“ filtern, um „Log Analytics“, „Insights & Analytics“ (von einigen der Legacy-Tarife verwendet) und „Azure Monitor“ (von Tarifen für Kapazitätsreservierung verwendet) anzuzeigen und dann in der Spalte „Instanz-ID“ einen Filter namens „contains workspace“ (enthält Arbeitsbereich) oder „contains cluster“ (enthält Cluster) hinzufügen (Letzterer dient zum Einbeziehen der Log Analytics-Clusternutzung). Der Verbrauch wird in der Spalte „Verbrauchte Menge“ aufgeführt, und die Einheit für jeden Eintrag wird in der Spalte „Maßeinheit“ angegeben.  Es sind weitere Einzelheiten verfügbar, anhand derer Sie [Ihre Microsoft Azure-Rechnung verstehen](../../cost-management-billing/understand/review-individual-bill.md). 
 
@@ -128,7 +128,7 @@ Keiner der Legacytarife bietet regionsbezogene Preise.
 
 ## <a name="log-analytics-and-security-center"></a>Log Analytics und Security Center
 
-Die [Azure Security Center](https://docs.microsoft.com/azure/security-center/)-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet eine Zuordnung von 500 MB/Knoten/Tag für eine Reihe von [Sicherheitsdatentypen](https://docs.microsoft.com/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen Update und UpdateSummary, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Wenn der Arbeitsbereich den Legacytarif „Pro Knoten“ aufweist, werden die Security Center- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
+Die [Azure Security Center](../../security-center/index.yml)-Abrechnung ist eng mit der Log Analytics-Abrechnung verbunden. Security Center bietet eine Zuordnung von 500 MB/Knoten/Tag für eine Reihe von [Sicherheitsdatentypen](/azure/azure-monitor/reference/tables/tables-category#security) (WindowsEvent, SecurityAlert, SecurityBaseline, SecurityBaselineSummary, SecurityDetection, SecurityEvent, WindowsFirewall, MaliciousIPCommunication, LinuxAuditLog, SysmonEvent, ProtectionStatus) und die Datentypen Update und UpdateSummary, wenn die Lösung für die Updateverwaltung nicht im Arbeitsbereich ausgeführt wird oder die Zielgruppenadressierung aktiviert ist. Wenn der Arbeitsbereich den Legacytarif „Pro Knoten“ aufweist, werden die Security Center- und Log Analytics-Zuordnungen kombiniert und gemeinsam auf alle abrechenbaren erfassten Daten angewendet.  
 
 ## <a name="change-the-data-retention-period"></a>Ändern des Datenaufbewahrungszeitraums
 
@@ -481,7 +481,7 @@ Hier finden Sie einige Vorschläge zum Verringern der erfassten Protokolle:
 | Leistungsindikatoren       | Ändern Sie [Leistungsindikatoren-Konfiguration](data-sources-performance-counters.md) in: <br> - Reduzieren der Sammlungshäufigkeit <br> - Reduzieren der Anzahl von Leistungsindikatoren |
 | Ereignisprotokolle                 | Ändern Sie die [Ereignisprotokollkonfiguration](data-sources-windows-events.md) in: <br> - Reduzieren der Anzahl von erfassten Ereignisprotokollen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebene *Informationen*. |
 | syslog                     | Ändern Sie die [syslog-Konfiguration](data-sources-syslog.md) in: <br> - Reduzieren der Anzahl von erfassten Einrichtungen <br> - Ausschließliches Erfassen von erforderlichen Ereignisebenen. Erfassen Sie beispielsweise keine Ereignisse der Ebenen *Informationen* und *Debuggen*. |
-| AzureDiagnostics           | Ändern Sie die [Ressourcenprotokollsammlung](https://docs.microsoft.com/azure/azure-monitor/platform/diagnostic-settings#create-in-azure-portal), um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
+| AzureDiagnostics           | Ändern Sie die [Ressourcenprotokollsammlung](./diagnostic-settings.md#create-in-azure-portal), um Folgendes zu erreichen: <br> - Verringern der Anzahl von Ressourcen, die Protokolle an Log Analytics senden <br> - Ausschließliches Erfassen von erforderlichen Protokollen |
 | Lösungsdaten von Computern, für die die Lösung nicht erforderlich ist | Verwenden Sie die [Zielgruppenadressierung für Lösungen](../insights/solution-targeting.md), um Daten nur für erforderliche Gruppen mit Computern zu erfassen. |
 
 ### <a name="getting-nodes-as-billed-in-the-per-node-pricing-tier"></a>Abrufen von Knoten gemäß der Abrechnung im Tarif „Pro Knoten“

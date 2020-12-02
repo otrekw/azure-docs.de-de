@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/27/2020
 ms.author: Zhchia
-ms.openlocfilehash: 5f26746cbe88a01503c1d6c481a9a938a660c05a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 0362f0d69581c252170b4f37f8564caa7acd3d29
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359322"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182239"
 ---
 # <a name="tutorial-configure-teamviewer-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von TeamViewer für die automatische Benutzerbereitstellung
 
@@ -35,7 +35,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in TeamViewer
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * Eine gültige [Tensor-Lizenz](https://www.teamviewer.com/de/teamviewer-tensor/) für TeamViewer.
 * Ein gültiger benutzerdefinierter Bezeichner aus der verfügbaren Konfiguration für [Einmaliges Anmelden](https://community.teamviewer.com/t5/Knowledge-Base/Single-Sign-On-with-Azure-Active-Directory/ta-p/60209#toc-hId--473669723).
 
@@ -58,7 +58,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
     ![TeamViewer-Tokenname](./media/teamviewer-provisioning-tutorial/tokenname.png)
 
-4. Kopieren Sie das **Token** , und klicken Sie auf **OK**. Dieser Wert wird im Feld **Geheimes Token** Ihrer TeamViewer-Anwendung im Azure-Portal eingegeben.
+4. Kopieren Sie das **Token**, und klicken Sie auf **OK**. Dieser Wert wird im Feld **Geheimes Token** Ihrer TeamViewer-Anwendung im Azure-Portal eingegeben.
 
     ![TeamViewer-Token](./media/teamviewer-provisioning-tutorial/token.png)
 
@@ -97,7 +97,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** `ttps://webapi.teamviewer.com/scim/v2` im Feld **Mandanten-URL** ein, und geben Sie das zuvor erstellte Skripttoken in das **Geheime Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit TeamViewer herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr TeamViewer-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** `ttps://webapi.teamviewer.com/scim/v2` im Feld **Mandanten-URL** ein, und geben Sie das zuvor erstellte Skripttoken in das **Geheime Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit TeamViewer herstellen kann. Vergewissern Sie sich im Fall eines Verbindungsfehlers, dass Ihr TeamViewer-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/teamViewer-provisioning-tutorial/provisioning.png)
 
@@ -109,7 +109,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 8. Wählen Sie unter dem Abschnitt **Zuordnungen** die Option **Azure Active Directory-Benutzer mit TeamViewer synchronisieren** aus.
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit TeamViewer synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Benutzerkonten in TeamViewer für Updatevorgänge abzugleichen. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die TeamViewer-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit TeamViewer synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Benutzerkonten in TeamViewer für Updatevorgänge abzugleichen. Wenn Sie sich dafür entscheiden, das [übereinstimmende Zielattribut](../app-provisioning/customize-application-attributes.md) zu ändern, müssen Sie sicherstellen, dass die TeamViewer-API das Filtern von Benutzern anhand dieses Attributs unterstützt. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|

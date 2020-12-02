@@ -14,12 +14,12 @@ ms.custom:
 - it-pro
 - seo-update-azuread-jan"
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 646bd2b6a8e22698e6fbcb44d2442e921c7850a5
-ms.sourcegitcommit: 9b8425300745ffe8d9b7fbe3c04199550d30e003
+ms.openlocfilehash: e7a77c110c12fd6b42e8defbe43a40579b9c6588
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92441503"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96168762"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Problembehandlung für die Azure Active Directory B2B-Zusammenarbeit
 
@@ -93,15 +93,15 @@ Ein Benutzer mit einem Gastkonto kann sich nicht anmelden und erhält die folgen
 
 Der Benutzer verfügt über ein Azure-Benutzerkonto und ist ein viraler Mandant, der verworfen wurde oder nicht verwaltet wird. Darüber hinaus stehen im Mandanten keine globalen Administratoren oder Unternehmensadministratoren zur Verfügung.
 
-Um dieses Problem zu beheben, müssen Sie den verworfenen Mandanten übernehmen. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../users-groups-roles/domains-admin-takeover.md). Darüber hinaus müssen Sie für das betreffende Domänensuffix auf den DNS mit Internetzugriff zugreifen, um direkt nachzuweisen, dass Sie Kontrolle über den Namespace haben. Nachdem der Mandant wieder einen verwalteten Zustand aufweist, sollten Sie mit dem Kunden erörtern, ob die beste Option für seine Organisation darin besteht, die Benutzer und den überprüften Domänennamen zu belassen.
+Um dieses Problem zu beheben, müssen Sie den verworfenen Mandanten übernehmen. Weitere Informationen finden Sie unter [Übernehmen eines nicht verwalteten Verzeichnisses als Administrator in Azure Active Directory](../enterprise-users/domains-admin-takeover.md). Darüber hinaus müssen Sie für das betreffende Domänensuffix auf den DNS mit Internetzugriff zugreifen, um direkt nachzuweisen, dass Sie Kontrolle über den Namespace haben. Nachdem der Mandant wieder einen verwalteten Zustand aufweist, sollten Sie mit dem Kunden erörtern, ob die beste Option für seine Organisation darin besteht, die Benutzer und den überprüften Domänennamen zu belassen.
 
 ## <a name="a-guest-user-with-a-just-in-time-or-viral-tenant-is-unable-to-reset-their-password"></a>Ein Gastbenutzer mit einem Just-in-Time-Mandanten oder „viralen“ Mandanten kann sein Kennwort nicht zurücksetzen
 
-Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen. In einigen Fällen [übernimmt die Organisation die Verwaltung der viralen Mandanten](../users-groups-roles/domains-admin-takeover.md), die erstellt werden, wenn Mitarbeiter ihre geschäftliche E-Mail-Adresse für die Anmeldung bei Diensten verwenden. Wenn die Organisation einen viralen Mandanten übernommen hat, kann nur ein Administrator in dieser Organisation das Kennwort des Benutzers zurücksetzen oder SSPR aktivieren. Bei Bedarf können Sie als einladende Organisation das Gastkonto für den Benutzer aus dem Verzeichnis entfernen und erneut eine Einladung senden.
+Wenn der Identitätsmandant ein Just-In-Time-Mandant (JIT) oder ein „viraler“ Mandant ist (es sich also um einen separaten, nicht verwalteten Azure-Mandanten handelt), kann nur der Gastbenutzer sein Kennwort zurücksetzen. In einigen Fällen [übernimmt die Organisation die Verwaltung der viralen Mandanten](../enterprise-users/domains-admin-takeover.md), die erstellt werden, wenn Mitarbeiter ihre geschäftliche E-Mail-Adresse für die Anmeldung bei Diensten verwenden. Wenn die Organisation einen viralen Mandanten übernommen hat, kann nur ein Administrator in dieser Organisation das Kennwort des Benutzers zurücksetzen oder SSPR aktivieren. Bei Bedarf können Sie als einladende Organisation das Gastkonto für den Benutzer aus dem Verzeichnis entfernen und erneut eine Einladung senden.
 
 ## <a name="a-guest-user-is-unable-to-use-the-azuread-powershell-v1-module"></a>Das Azure AD PowerShell V1-Modul kann von Gastbenutzern nicht verwendet werden.
 
-Ab dem 18. November 2019 ist für Gastbenutzer in Ihrem Verzeichnis (Benutzerkonten, deren **userType** -Eigenschaft **Guest** lautet) die Verwendung des AzureAD PowerShell V1-Moduls blockiert. In Zukunft muss ein Benutzer entweder Mitglied sein (wobei der **userType** gleich **Member** ist) oder das AzureAD PowerShell V2-Modul verwenden.
+Ab dem 18. November 2019 ist für Gastbenutzer in Ihrem Verzeichnis (Benutzerkonten, deren **userType**-Eigenschaft **Guest** lautet) die Verwendung des AzureAD PowerShell V1-Moduls blockiert. In Zukunft muss ein Benutzer entweder Mitglied sein (wobei der **userType** gleich **Member** ist) oder das AzureAD PowerShell V2-Modul verwenden.
 
 ## <a name="in-an-azure-us-government-tenant-i-cant-invite-a-b2b-collaboration-guest-user"></a>In einem Mandanten der Azure-Cloud für US-Behörden kann ich keinen Gastbenutzer der B2B-Zusammenarbeit einladen
 

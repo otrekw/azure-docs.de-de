@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08abd6938990f5300639a56fb487d910bf8000b3
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: f8680c1d24fe3c1ed840def40c1c3abdd2fdaf24
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95488860"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121787"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Zuweisen von Vertraulichkeitsbezeichnungen zu Microsoft 365-Gruppen in Azure Active Directory
 
-Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Microsoft 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Dieses Feature ist aktuell in der allgemein verfügbaren Version erhältlich. Weitere Informationen zur Unterstützung von Microsoft 365-Apps finden Sie unter [Microsoft 365-Unterstützung für Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
+Azure Active Directory (Azure AD) unterstützt das Anwenden von Vertraulichkeitsbezeichnungen, die vom [Microsoft 365 Compliance Center](https://sip.protection.office.com/homepage) für Microsoft 365-Gruppen veröffentlicht werden. Vertraulichkeitsbezeichnungen gelten für Gruppen über Dienste wie Outlook, Microsoft Teams und SharePoint hinweg. Weitere Informationen zur Unterstützung von Microsoft 365-Apps finden Sie unter [Microsoft 365-Unterstützung für Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels-teams-groups-sites#support-for-the-sensitivity-labels).
 
 > [!IMPORTANT]
 > Um dieses Feature zu konfigurieren, muss mindestens eine aktive Azure Active Directory Premium P1-Lizenz in Ihrer Azure AD-Organisation vorhanden sein.

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90987206"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182800"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -63,7 +63,7 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 
 ### <a name="target-the-start-and-stop-actions-against-a-subscription-and-resource-group"></a>Festlegen der Aktionen zum Starten und Beenden für ein Abonnement und eine Ressourcengruppe
 
-1. Fügen Sie den Ziel-VMs aus `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` die Tags `sequencestart` und `sequencestop` mit einem positiven ganzzahligen Wert hinzu. Die Aktionen zum Starten und Beenden werden in aufsteigender Reihenfolge durchgeführt. Informationen zum Kennzeichnen von VMs finden Sie unter [Markieren eines virtuellen Windows-Computers in Azure](../virtual-machines/windows/tag.md) und [Markieren eines virtuellen Linux-Computers in Azure](../virtual-machines/linux/tag.md).
+1. Fügen Sie den Ziel-VMs aus `External_Start_ResourceGroupNames` und `External_Stop_ResourceGroupNames` die Tags `sequencestart` und `sequencestop` mit einem positiven ganzzahligen Wert hinzu. Die Aktionen zum Starten und Beenden werden in aufsteigender Reihenfolge durchgeführt. Informationen zum Kennzeichnen von VMs finden Sie unter [Markieren eines virtuellen Windows-Computers in Azure](../virtual-machines/tag-portal.md) und [Markieren eines virtuellen Linux-Computers in Azure](../virtual-machines/tag-cli.md).
 
 2. Ändern Sie die Zeitpläne **Sequenced-StartVM** und **Sequenced-StopVM** in das Datum und den Zeitpunkt, die Ihren Anforderungen entsprechen, und aktivieren Sie die Zeitpläne.
 
@@ -143,13 +143,13 @@ Um E-Mail-Benachrichtigungen nach dem Bereitstellen von „VMs außerhalb der Ge
 
 2. Klicken Sie auf der Seite „StartStop_VM_Notification“ unter **Details** auf **Details bearbeiten**. Dadurch wird die Seite „Email/SMS/Push/Voice“ geöffnet. Aktualisieren Sie die E-Mail-Adresse, und klicken Sie auf **OK**, um Ihre Änderungen zu speichern.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Screenshot der Seite „E-Mail/SMS/Push/Sprache“ mit aktualisierter Beispiel-E-Mail-Adresse":::
 
     Alternativ können Sie der Aktionsgruppe weitere Aktionen hinzufügen. Weitere Informationen über Aktionsgruppen finden Sie unter [Aktionsgruppen](../azure-monitor/platform/action-groups.md)
 
 Die folgende Beispiel-E-Mail wird gesendet, wenn das Feature virtuelle Computer herunterfährt.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Screenshot der Seite „Azure Monitor-Aktionsgruppen“":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Screenshot einer Beispiel-E-Mail, die gesendet wird, wenn das Feature virtuelle Computer herunterfährt":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Hinzufügen oder Ausschließen von VMs
 

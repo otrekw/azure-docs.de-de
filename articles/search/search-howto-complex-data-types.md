@@ -8,17 +8,17 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 1d380a41f5b20c52fefca9e68bb4ed858b3bf3a1
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/27/2020
+ms.openlocfilehash: b0b2dd9904682121c83b22b9029097e7ee57fb11
+ms.sourcegitcommit: 6b16e7cc62b29968ad9f3a58f1ea5f0baa568f02
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422054"
+ms.lasthandoff: 11/28/2020
+ms.locfileid: "96303751"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Modellieren komplexer Datentypen in der kognitiven Azure-Suche
 
-Externe Datasets zum Auffüllen eines Index der kognitiven Azure-Suche können in vielen Formen vorliegen. Manchmal enthalten sie hierarchische oder geschachtelte Unterstrukturen. Beispiele sind mehrere Adressen für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch usw. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe* , *zusammengesetzte* , *verbundene* oder *aggregierte* Datentypen bezeichnet. Bei der kognitiven Azure-Suche wird für dieses Konzept der Begriff **komplexer Typ** verwendet. Komplexe Typen werden in Azure Cognitive Search mithilfe **komplexer Felder** modelliert. Ein komplexes Feld ist ein Feld, das untergeordnete Elemente (untergeordnete Felder) enthält, die einen beliebigen Datentyp aufweisen können – einschließlich anderer komplexer Typen. Dies funktioniert auf ähnliche Weise wie bei strukturierten Datentypen in einer Programmiersprache.
+Externe Datasets zum Auffüllen eines Index der kognitiven Azure-Suche können in vielen Formen vorliegen. Manchmal enthalten sie hierarchische oder geschachtelte Unterstrukturen. Beispiele sind mehrere Adressen für einen einzelnen Kunden, mehrere Farben und Größen für eine einzelne SKU, mehrere Autoren für ein einzelnes Buch usw. In der Modelliersprache werden diese Strukturen bisweilen als *komplexe*, *zusammengesetzte*, *verbundene* oder *aggregierte* Datentypen bezeichnet. Bei der kognitiven Azure-Suche wird für dieses Konzept der Begriff **komplexer Typ** verwendet. Komplexe Typen werden in Azure Cognitive Search mithilfe **komplexer Felder** modelliert. Ein komplexes Feld ist ein Feld, das untergeordnete Elemente (untergeordnete Felder) enthält, die einen beliebigen Datentyp aufweisen können – einschließlich anderer komplexer Typen. Dies funktioniert auf ähnliche Weise wie bei strukturierten Datentypen in einer Programmiersprache.
 
 Komplexe Felder stellen je nach Datentyp entweder ein einzelnes Objekt im Dokument oder ein Array von Objekten dar. Felder vom Typ `Edm.ComplexType` stellen einzelne Objekte dar, während Felder vom Typ `Collection(Edm.ComplexType)` für Arrays von Objekten stehen.
 
@@ -62,8 +62,6 @@ Das folgende JSON-Dokument besteht aus einfachen und komplexen Feldern. Komplexe
   ]
 }
 ```
-
-<a name="indexing-complex-types></a>
 
 ## <a name="indexing-complex-types"></a>Indizieren von komplexen Typen
 
@@ -160,7 +158,7 @@ Um nach einem Feld in einer komplexen Sammlung zu filtern, können Sie einen **L
 
 > `$filter=Rooms/any(room: room/Type eq 'Deluxe Room') and Rooms/all(room: not room/SmokingAllowed)`
 
-Wie schon bei einfachen Feldern der obersten Ebene können auch einfache untergeordnete Felder von komplexen Feldern nur in Filtern verwendet werden, wenn Ihr **filterable** -Attribut in der Indexdefinition auf `true` festgelegt wurde. Weitere Informationen finden Sie in der [Referenz zur API zur Indexerstellung](/rest/api/searchservice/create-index).
+Wie schon bei einfachen Feldern der obersten Ebene können auch einfache untergeordnete Felder von komplexen Feldern nur in Filtern verwendet werden, wenn Ihr **filterable**-Attribut in der Indexdefinition auf `true` festgelegt wurde. Weitere Informationen finden Sie in der [Referenz zur API zur Indexerstellung](/rest/api/searchservice/create-index).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

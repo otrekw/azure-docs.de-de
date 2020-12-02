@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: 3b9f744e414e83c103f6b9249a0ccf5020588463
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 6374164bb5049742d63a669b4c1e552c93967977
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93356347"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173378"
 ---
 # <a name="publish-your-app-to-the-azure-ad-app-gallery"></a>Veröffentlichen Ihrer App im Azure AD-App-Katalog
 
@@ -36,7 +36,7 @@ Außerdem gibt es viele Vorteile, wenn Ihre Kunden Azure AD als Identitätsanbi
 - Bereitstellen des einmaligen Anmeldens für Ihre Benutzer. Mit dem einmaligen Anmelden reduzieren Sie die Supportkosten, da Sie durch einmaliges Anmelden die Benutzerfreundlichkeit erhöhen. Die IT-Administratoren müssen sich bei Aktivierung von 1-Klick-SSO nicht in die Konfiguration Ihrer Anwendung für die Nutzung in ihrer Organisation einarbeiten. Weitere Informationen zum einmaligen Anmelden finden Sie unter [Worum handelt es sich beim einmaligen Anmelden?](../manage-apps/what-is-single-sign-on.md).
 - Ihre App kann im Microsoft 365-App-Katalog, im Microsoft 365-App-Startfeld und in Microsoft Search auf Office.com aufgefunden werden. 
 - Integrierte App-Verwaltung. Weitere Informationen zur App-Verwaltung in Azure AD finden Sie unter [Worum handelt es sich bei der Anwendungsverwaltung?](../manage-apps/what-is-application-management.md)
-- Ihre App kann mithilfe der [Graph-API](https://docs.microsoft.com/graph/) auf Daten zugreifen, die die Benutzerproduktivität im Microsoft-Ökosystem erhöhen.
+- Ihre App kann mithilfe der [Graph-API](/graph/) auf Daten zugreifen, die die Benutzerproduktivität im Microsoft-Ökosystem erhöhen.
 - Die gemeinsam mit dem Azure AD-Team erstellte anwendungsspezifische Dokumentation fördert die Akzeptanz bei den gemeinsamen Kunden.
 - Bieten Sie Ihren Kunden die Möglichkeit, die Authentifizierung und Autorisierung ihrer Mitarbeiter- und Gastidentitäten umfassend zu verwalten.
 - Die gesamte Verantwortung für Kontoverwaltung und Compliance wird dem Zuständigen für die betreffenden Identitäten auf Kundenseite übertragen.
@@ -47,7 +47,7 @@ Außerdem gibt es viele Vorteile, wenn Ihre Kunden Azure AD als Identitätsanbi
 - Mit dem einmaligen Anmelden (SSO) von Azure AD und dem Verzicht auf die Eingabe separater Anmeldeinformationen erhöhen Sie Sicherheit und Benutzerfreundlichkeit, wenn sich Benutzer bei Ihren Anwendungen anmelden.
 
 > [!TIP]
-> Wenn Sie Ihre Anwendung per Kauf oder Abonnement für andere Unternehmen zur Nutzung anbieten, machen Sie die Anwendung für Kunden in deren eigenen Azure-Mandanten verfügbar. Sie erstellen also eine mehrinstanzenfähige Anwendung. Eine Übersicht über dieses Konzept finden Sie unter [Mehrinstanzenfähige Anwendungen in Azure](https://docs.microsoft.com/azure/dotnet-develop-multitenant-applications) und [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md).
+> Wenn Sie Ihre Anwendung per Kauf oder Abonnement für andere Unternehmen zur Nutzung anbieten, machen Sie die Anwendung für Kunden in deren eigenen Azure-Mandanten verfügbar. Sie erstellen also eine mehrinstanzenfähige Anwendung. Eine Übersicht über dieses Konzept finden Sie unter [Mehrinstanzenfähige Anwendungen in Azure](../../dotnet-develop-multitenant-applications.md) und [Mandanten in Azure Active Directory](single-and-multi-tenant-apps.md).
 
 > [!IMPORTANT]
 > Wenn Sie Ihre App im Azure AD-Katalog veröffentlichen möchten, müssen Sie den speziellen Geschäftsbedingungen zustimmen. Lesen Sie vor dem Start unbedingt die [Geschäftsbedingungen](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/), und erklären Sie sich mit diesen einverstanden.
@@ -162,7 +162,7 @@ Wenn Ihre App SAML 2.0 unterstützt, können Sie sie direkt in einen Azure AD-M
 Microsoft stellt keine Bibliotheken für die SAML-Implementierung bereit und empfiehlt auch keine Bibliotheken. Es stehen viele Open Source-Bibliotheken zur Verfügung.
 
 ### <a name="implement-ws-fed"></a>Implementieren von WS-Fed
-Weitere Informationen zu WS-Fed in ASP.NET Core finden Sie unter [Authentifizieren von Benutzern mit WS-Fed in ASP.NET Core](https://docs.microsoft.com/aspnet/core/security/authentication/ws-federation).
+Weitere Informationen zu WS-Fed in ASP.NET Core finden Sie unter [Authentifizieren von Benutzern mit WS-Fed in ASP.NET Core](/aspnet/core/security/authentication/ws-federation).
 
 ### <a name="implement-password-vaulting"></a>Implementieren des Kennworttresors
 
@@ -173,7 +173,7 @@ Erstellen Sie eine Webanwendung, die über eine HTML-Anmeldeseite verfügt. Stel
 
 Sie benötigen einen Azure AD Mandanten, um Ihre App zu testen. Informationen zum Einrichten Ihrer Entwicklungsumgebung finden Sie unter [Schnellstart: Einrichten eines Mandanten](quickstart-create-new-tenant.md).
 
-Alternativ wird zusammen mit jedem Microsoft 365-Abonnement ein Azure AD-Mandant eingerichtet. Informationen zum Einrichten einer kostenlosen Microsoft 365-Entwicklungsumgebung finden Sie unter [Teilnehmen am Microsoft 365-Entwicklerprogramm](https://docs.microsoft.com/office/developer-program/microsoft-365-developer-program).
+Alternativ wird zusammen mit jedem Microsoft 365-Abonnement ein Azure AD-Mandant eingerichtet. Informationen zum Einrichten einer kostenlosen Microsoft 365-Entwicklungsumgebung finden Sie unter [Teilnehmen am Microsoft 365-Entwicklerprogramm](/office/developer-program/microsoft-365-developer-program).
 
 Sobald Sie über einen Mandanten verfügen, müssen Sie den Zugriff mit einmaligem Anmelden aktivieren und testen. 
 
@@ -209,7 +209,7 @@ Die Dokumentation auf Ihrer Website sollte mindestens die folgenden Punkte entha
 
 ### <a name="documentation-on-the-microsoft-site"></a>Dokumentation auf der Microsoft-Website
 
-Wenn Sie Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten, der Ihre Anwendung auch im Azure Marketplace veröffentlicht, generiert Microsoft eine Dokumentation für unsere gemeinsamen Kunden, die den schrittweisen Prozess erklärt. [Hier](https://aka.ms/appstutorial) sehen Sie ein Beispiel. Diese Dokumentation wird auf der Grundlage Ihrer Eingliederung in den Katalog erstellt und kann leicht aktualisiert werden, wenn Sie mit Ihrem GitHub-Konto Änderungen an Ihrer Anwendung vornehmen.
+Wenn Sie Ihre Anwendung im Azure Active Directory-Anwendungskatalog auflisten, der Ihre Anwendung auch im Azure Marketplace veröffentlicht, generiert Microsoft eine Dokumentation für unsere gemeinsamen Kunden, die den schrittweisen Prozess erklärt. [Hier](../saas-apps/tutorial-list.md) sehen Sie ein Beispiel. Diese Dokumentation wird auf der Grundlage Ihrer Eingliederung in den Katalog erstellt und kann leicht aktualisiert werden, wenn Sie mit Ihrem GitHub-Konto Änderungen an Ihrer Anwendung vornehmen.
 
 
 ## <a name="step-5---submit-your-app"></a>Schritt 5: Übermitteln der App
@@ -262,7 +262,7 @@ Wenn Sie Ihre im Katalog aufzulistende Anwendung mithilfe von Kennwort-SSO hinzu
 
 ![Auflisten einer Kennwort-SSO-Anwendung im Katalog](./media/howto-app-gallery-listing/passwordsso.png)
 
-Wenn Sie einen [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups) 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. 
+Wenn Sie einen [SCIM](../app-provisioning/use-scim-to-provision-users-and-groups.md) 2.0-Endpunkt für die Benutzerbereitstellung implementieren, wählen Sie die dargestellte Option aus. 
 
    ![Anfordern der Benutzerbereitstellung](./media/howto-app-gallery-listing/user-provisioning.png)
 

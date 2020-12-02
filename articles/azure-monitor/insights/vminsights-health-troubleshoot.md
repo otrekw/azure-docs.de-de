@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/08/2020
-ms.openlocfilehash: 048230bb85d2ac599efc6bd3fb326f98038cce57
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 2aa83a861697882127c75eb696807f604c3061f0
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686511"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184551"
 ---
 # <a name="troubleshoot-azure-monitor-for-vms-guest-health-preview"></a>Problembehandlung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
 Dieser Artikel enthält eine Beschreibung der Problembehandlungsschritte, die Sie ausführen können, wenn Sie bei Azure Monitor für VMs Probleme mit der Integrität haben.
@@ -42,7 +42,7 @@ Vergewissern Sie sich, dass die Bereitstellung der Azure Monitor-Agent-Erweiteru
 Vergewissern Sie sich, dass die Datensammlungsregel, mit der die Integritätserweiterung als Datenquelle angegeben wird, dem virtuellen Computer zugeordnet ist.
 
 ## <a name="error-message-for-bad-request-due-to-insufficient-permissions"></a>Fehlermeldung: Ungültige Anforderung aufgrund von unzureichenden Berechtigungen
-Dieser Fehler ist ein Hinweis darauf, dass der Ressourcenanbieter **Microsoft.WorkloadMonitor** unter dem Abonnement nicht registriert wurde. Ausführliche Informationen zum Registrieren dieses Ressourcenanbieters finden Sie unter [Azure-Ressourcenanbieter und -typen](/azure/azure-resource-manager/management/resource-providers-and-types#register-resource-provider). 
+Dieser Fehler ist ein Hinweis darauf, dass der Ressourcenanbieter **Microsoft.WorkloadMonitor** unter dem Abonnement nicht registriert wurde. Ausführliche Informationen zum Registrieren dieses Ressourcenanbieters finden Sie unter [Azure-Ressourcenanbieter und -typen](../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider). 
 
 ![Ungültige Anforderung](media/vminsights-health-troubleshoot/bad-request.png)
 

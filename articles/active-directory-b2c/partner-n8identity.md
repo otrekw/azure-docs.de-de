@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/26/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: dd6e760fe8052463491f249b54c3af3d2636d46d
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 337275cef0f2159cb5fac40ac0435408baf3bbef
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93376883"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96170921"
 ---
 # <a name="tutorial-for-configuring-theaccesshub-admin-tool-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren des TheAccessHub-Verwaltungstools mit Azure Active Directory B2C
 
@@ -38,13 +38,13 @@ Zunächst benötigen Sie Folgendes:
 
 - Ein Azure AD-Abonnement Falls Sie über kein Abonnement verfügen, können Sie ein [kostenloses Azure-Konto](https://azure.microsoft.com/free/) verwenden.
 
-- Einen [Azure AD B2C-Mandanten](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-create-tenant). Der Mandant muss mit Ihrem Azure-Abonnement verknüpft sein.
+- Einen [Azure AD B2C-Mandanten](./tutorial-create-tenant.md). Der Mandant muss mit Ihrem Azure-Abonnement verknüpft sein.
 
 - Eine Umgebung für das TheAccessHub-Verwaltungstool: Wenden Sie sich an [N8 Identity](https://n8id.com/contact/), um eine neue Umgebung bereitzustellen.
 
 - [Optional] Verbindungs- und Anmeldeinformationen für beliebige Datenbanken oder LDAPs (Lightweight Directory Access Protocols), aus denen Sie Kundendaten migrieren möchten.
 
-- [Optional] Eine für die Verwendung von [benutzerdefinierten Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started) konfigurierte Azure AD B2C-Umgebung, wenn Sie das TheAccessHub-Verwaltungstool in Ihren Anmelderichtlinienflow integrieren möchten.
+- [Optional] Eine für die Verwendung von [benutzerdefinierten Richtlinien](./custom-policy-get-started.md) konfigurierte Azure AD B2C-Umgebung, wenn Sie das TheAccessHub-Verwaltungstool in Ihren Anmelderichtlinienflow integrieren möchten.
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
@@ -358,7 +358,7 @@ So synchronisieren Sie Daten von Azure AD B2C mit dem TheAccessHub-Verwaltungs
 
 ## <a name="configure-azure-ad-b2c-policies"></a>Konfigurieren von Azure AD B2C-Richtlinien
 
-Bei gelegentlichen Synchronisierungen sind die Möglichkeiten des TheAccessHub-Verwaltungstools begrenzt, mit Azure AD B2C auf dem aktuellen Stand zu sein. Mithilfe der API des TheAccessHub-Verwaltungstools und Azure AD B2C-Richtlinien können Sie das TheAccessHub-Verwaltungstool über Änderungen informieren, sobald sie auftreten. Für diese Lösung sind technische Kenntnisse in Bezug auf [Benutzerdefinierte Azure AD B2C-Richtlinien](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started#:~:text=%20Get%20started%20with%20custom%20policies%20in%20Azure,Experience%20Framework%20applications.%20Azure%20AD%20B2C...%20More%20) erforderlich. Im nächsten Abschnitt lernen Sie die Schritte für eine Beispielrichtlinie und ein sicheres Zertifikat kennen, um das TheAccessHub-Verwaltungstool über neue Konten in Ihren benutzerdefinierten Registrierungsrichtlinien zu benachrichtigen.
+Bei gelegentlichen Synchronisierungen sind die Möglichkeiten des TheAccessHub-Verwaltungstools begrenzt, mit Azure AD B2C auf dem aktuellen Stand zu sein. Mithilfe der API des TheAccessHub-Verwaltungstools und Azure AD B2C-Richtlinien können Sie das TheAccessHub-Verwaltungstool über Änderungen informieren, sobald sie auftreten. Für diese Lösung sind technische Kenntnisse in Bezug auf [Benutzerdefinierte Azure AD B2C-Richtlinien](./custom-policy-get-started.md) erforderlich. Im nächsten Abschnitt lernen Sie die Schritte für eine Beispielrichtlinie und ein sicheres Zertifikat kennen, um das TheAccessHub-Verwaltungstool über neue Konten in Ihren benutzerdefinierten Registrierungsrichtlinien zu benachrichtigen.
 
 ### <a name="create-a-secure-credential-to-invoke-theaccesshub-admin-tools-api"></a>Erstellen sicherer Anmeldeinformationen zum Aufrufen der API des TheAccessHub-Verwaltungstools
 
@@ -372,7 +372,7 @@ Bei gelegentlichen Synchronisierungen sind die Möglichkeiten des TheAccessHub-V
 
 5. Wählen Sie **Herunterladen** aus, um das Clientzertifikat abzurufen.
 
-6. Absolvieren Sie dieses [Tutorial](https://docs.microsoft.com/azure/active-directory-b2c/secure-rest-api#https-client-certificate-authentication ), um das Clientzertifikat in Azure AD B2C hinzuzufügen.
+6. Absolvieren Sie dieses [Tutorial](./secure-rest-api.md#https-client-certificate-authentication ), um das Clientzertifikat in Azure AD B2C hinzuzufügen.
 
 ### <a name="retrieve-your-custom-policy-examples"></a>Abrufen der Beispiele für benutzerdefinierte Richtlinien
 
@@ -386,12 +386,12 @@ Bei gelegentlichen Synchronisierungen sind die Möglichkeiten des TheAccessHub-V
 
 5. Wählen Sie **Herunterladen** aus, um eine ZIP-Datei mit grundlegenden Richtlinien abzurufen, mit denen Kunden beim Registrieren im TheAccessHub-Verwaltungstool als Kunden hinzugefügt werden.
 
-6. Absolvieren Sie dieses [Tutorial](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started), um mit dem Entwerfen von benutzerdefinierten Richtlinien in Azure AD B2C zu beginnen.
+6. Absolvieren Sie dieses [Tutorial](./custom-policy-get-started.md), um mit dem Entwerfen von benutzerdefinierten Richtlinien in Azure AD B2C zu beginnen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen finden Sie in den folgenden Artikeln:
 
-- [Benutzerdefinierte Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-overview)
+- [Benutzerdefinierte Richtlinien in Azure AD B2C](./custom-policy-overview.md)
 
-- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](https://docs.microsoft.com/azure/active-directory-b2c/custom-policy-get-started?tabs=applications)
+- [Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C](./custom-policy-get-started.md?tabs=applications)

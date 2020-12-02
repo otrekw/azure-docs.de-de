@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/3/2019
 ms.author: Zhchia
-ms.openlocfilehash: 280083ccbd732e95796013bf2b2c08e96564c24c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c87c3692d7e1106e0952b85791da663e03c6001d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020482"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182477"
 ---
 # <a name="tutorial-configure-zoom-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zoom für die automatische Benutzerbereitstellung
 
@@ -35,7 +35,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in Zoom als a
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
 * [Einen Zoom-Mandanten](https://zoom.us/pricing)
 * Ein Benutzerkonto in Zoom mit Administratorberechtigungen
 

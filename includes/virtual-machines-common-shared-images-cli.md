@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file, devx-track-azurecli
-ms.openlocfilehash: 58f38f5fe5544f01636d5fd2b2393025e5cb01ab
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9556b20ba0ceac2d4c1ad92897e6f9d46293387f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92755981"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96025739"
 ---
 ## <a name="create-an-image-gallery"></a>Erstellen eines Imagekatalogs 
 
@@ -50,4 +50,4 @@ az role assignment create \
    --scope <gallery ID>
 ```
 
-Weitere Informationen zum Teilen von Ressourcen mittels RBAC finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und der Azure CLI](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-cli).
+Weitere Informationen zum Teilen von Ressourcen mittels RBAC finden Sie unter [Verwalten des Zugriffs mithilfe von RBAC und der Azure CLI](../articles/role-based-access-control/role-assignments-cli.md).

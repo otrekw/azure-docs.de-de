@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: arvinh
-ms.openlocfilehash: 58fe99164c390d8a9435e5aa65e55fe7fca5d6db
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 92c2ae13b840d7a73d86365ce88584bcafc878e8
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359475"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181457"
 ---
 # <a name="tutorial-configure-slack-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Slack für die automatische Benutzerbereitstellung
 
@@ -36,7 +36,7 @@ Dieses Tutorial zeigt Ihnen die Schritte, die Sie in Slack und Azure AD ausführ
 Das in diesem Tutorial verwendete Szenario setzt voraus, dass Sie bereits über die folgenden Elemente verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Einen Slack-Mandanten, für den mindestens der [Plus-Plan](https://aadsyncfabric.slack.com/pricing) aktiviert ist.
 * Ein Benutzerkonto mit Teamadministratorberechtigungen in Slack.
 
@@ -88,7 +88,7 @@ Dieser Abschnitt führt Sie durch das Herstellen einer Verbindung von Azure AD m
 
     ![Autorisierungsdialogfeld](./media/slack-provisioning-tutorial/slackauthorize.png)
 
-7. Klicken Sie im Azure-Portal auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Slack-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Slack-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt zum Autorisieren.
+7. Klicken Sie im Azure-Portal auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Ihrer Slack-App herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Slack-Konto über Teamadministratorberechtigungen verfügt, und wiederholen Sie den Schritt zum Autorisieren.
 
 8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
@@ -166,7 +166,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
 ## <a name="troubleshooting-tips"></a>Tipps zur Problembehandlung
 
-* Beachten Sie beim Konfigurieren des **displayName** -Attributs in Slack das folgende Verhalten:
+* Beachten Sie beim Konfigurieren des **displayName**-Attributs in Slack das folgende Verhalten:
 
   * Werte sind nicht ganz eindeutig (z.B. können 2 Benutzer denselben Anzeigenamen haben).
 
@@ -178,7 +178,7 @@ Nachdem Sie die Bereitstellung konfiguriert haben, können Sie mit den folgenden
 
   * Nehmen Sie nur Änderungen vor, wenn diese beiden Einstellungen im Arbeitsbereich bzw. der Organisation von Slack konfiguriert sind: **Profile syncing is enabled** (Profil Synchronisierung ist aktiviert) und **Users cannot change their display name** (Benutzer können den Anzeigenamen nicht ändern).
 
-* Das **userName** -Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
+* Das **userName**-Attribut von Slack muss weniger als 21 Zeichen lang und eindeutig sein.
 
 * Slack ermöglicht nur das Abgleichen mit den Attributen **userName** und **email**.  
   

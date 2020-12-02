@@ -12,12 +12,12 @@ ms.date: 11/04/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 31c9dcaf6c6f26d28d70e3d1664665c2dbc37ce6
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 48188adfc3648db76f2ca362f59de6986c7c1339
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93393080"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174950"
 ---
 # <a name="how-provisioning-works"></a>Funktionsweise der Bereitstellung
 
@@ -43,7 +43,7 @@ Wenn Sie einen automatischen Azure AD-Bereitstellungsconnector für eine App anf
 
 ## <a name="authorization"></a>Authorization
 
-Damit Azure AD eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herstellen kann, sind Anmeldeinformationen erforderlich. Wenn Sie die automatische Benutzerbereitstellung für eine Anwendung konfigurieren, müssen Sie gültige Anmeldeinformationen eingeben. Bei Kataloganwendungen finden Sie die Anmeldeinformationstypen und die Anforderungen für die Anwendung im entsprechenden App-Tutorial. Bei nicht im Katalog enthaltenen Anwendungen finden Sie Informationen zu den Anmeldeinformationstypen und Anforderungen in der Dokumentation zu [SCIM](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#authorization-for-provisioning-connectors-in-the-application-gallery). Im Azure-Portal können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
+Damit Azure AD eine Verbindung mit der Benutzerverwaltungs-API der Anwendung herstellen kann, sind Anmeldeinformationen erforderlich. Wenn Sie die automatische Benutzerbereitstellung für eine Anwendung konfigurieren, müssen Sie gültige Anmeldeinformationen eingeben. Bei Kataloganwendungen finden Sie die Anmeldeinformationstypen und die Anforderungen für die Anwendung im entsprechenden App-Tutorial. Bei nicht im Katalog enthaltenen Anwendungen finden Sie Informationen zu den Anmeldeinformationstypen und Anforderungen in der Dokumentation zu [SCIM](./use-scim-to-provision-users-and-groups.md#authorization-for-provisioning-connectors-in-the-application-gallery). Im Azure-Portal können Sie die Anmeldeinformationen testen, indem Sie Azure AD versuchen lassen, mit den angegebenen Anmeldeinformationen eine Verbindung mit der Bereitstellungs-App der App herzustellen.
 
 ## <a name="mapping-attributes"></a>Zuordnen von Attributen
 

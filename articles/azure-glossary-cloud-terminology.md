@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: 2e183ad8a6e25c12f073f51e9416b4fc0ed9365f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 33672e90406b94a1b5788803911c072cdc2577f7
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530402"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186387"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure-Glossar: Ein Wörterbuch der Cloudterminologie auf der Azure Platform
 
@@ -41,7 +41,7 @@ Die Computeressourcen, die [Azure App Service](app-service/overview.md) zum Host
 
 ## <a name="availability-set"></a>Verfügbarkeitsgruppe
 Eine Sammlung virtueller Computer, die gemeinsam verwaltet werden, um Anwendungsredundanz und -zuverlässigkeit zu bieten. Durch die Verwendung einer Verfügbarkeitsgruppe wird sichergestellt, dass während eines geplanten oder ungeplanten Wartungsereignisses mindestens ein virtueller Computer verfügbar ist.  
-Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-classic-deployment-model"></a><a name="classic-model"></a>Klassisches Azure-Bereitstellungsmodell
 Eines der zwei [Bereitstellungsmodelle](./azure-resource-manager/management/deployment-models.md), die in Azure zum Bereitstellen von Ressourcen verwendet werden. (Das neue Modell ist Azure Resource Manager.) Einige Azure-Dienste unterstützen nur das Resource Manager-Bereitstellungsmodell, andere nur das klassische Bereitstellungsmodell und wieder andere unterstützen beide Modelle. Welches Modell bzw. welche Modelle der jeweilige Azure-Dienst unterstützt, können Sie der Dokumentation des entsprechenden Diensts entnehmen.
@@ -58,7 +58,7 @@ Eines der zwei [Bereitstellungsmodelle](./azure-resource-manager/management/depl
 
 ## <a name="fault-domain"></a>Fehlerdomäne
 Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die theoretisch zur selben Zeit ausfallen können. Ein Beispiel ist eine Gruppe von Computern in einem Rack, die gemeinsam eine Stromquelle und denselben Netzwerkswitch verwenden. In Azure werden die virtuellen Computer in einer Verfügbarkeitsgruppe automatisch auf mehrere Fehlerdomänen verteilt.  
-Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).  
+Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="geo"></a>Geografischer Raum
 Eine definierte Grenze für den Speicherort von Daten, der typischerweise zwei oder mehr Regionen umfasst. Die Grenzen können innerhalb nationaler Grenzen liegen oder über diese hinausgehen und verschiedenen steuerlichen Bestimmungen unterliegen. Jeder geografische Raum umfasst mindestens eine Region. Beispiele für geografische Räume sind Asien-Pazifik und Japan. Auch bezeichnet als *Geografie*.  
@@ -135,7 +135,7 @@ Weitere Informationen finden Sie unter [Verwenden von Tags zum Organisieren von 
 
 ## <a name="update-domain"></a>Updatedomäne
 Die Sammlung virtueller Computer in einer Verfügbarkeitsgruppe, die gleichzeitig aktualisiert werden. Virtuelle Computer in derselben Updatedomäne werden während einer geplanten Wartung gemeinsam neu gestartet. Azure startet nie mehr als eine Updatedomäne gleichzeitig. Wird auch als Upgradedomäne bezeichnet.  
-Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+Weitere Informationen finden Sie unter [Verwalten der Verfügbarkeit virtueller Windows-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) sowie unter [Verwalten der Verfügbarkeit virtueller Linux-Computer](./virtual-machines/manage-availability.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="virtual-machine"></a><a name="vm"></a>Virtueller Computer
 Die Softwareimplementierung eines physischen Computers, der ein Betriebssystem ausführt. Auf derselben Hardware können mehrere virtuelle Computer gleichzeitig ausgeführt werden. In Azure stehen virtuelle Computer in unterschiedlichsten Größen zur Verfügung.  
@@ -144,7 +144,7 @@ Weitere Informationen finden Sie in der [Dokumentation zu virtuellen Computern](
 ## <a name="virtual-machine-extension"></a><a name="vm-extension"></a>VM-Erweiterung
 Eine Ressource, die Verhalten oder Features implementiert, die entweder andere Programme bei der Arbeit unterstützen oder Ihnen die Möglichkeit bieten, mit einem ausgeführten Computer zu interagieren. Beispielsweise können Sie die VM-Erweiterung für den Zugriff dazu verwenden, die Werte für den Remotezugriff auf einem virtuellen Azure-Computer zurückzusetzen oder zu ändern.
 <!-- This definition seems obscure to me; maybe a list of examples would work better than a conceptual definition? -->
-Weitere Informationen finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Windows)](./virtual-machines/extensions/features-windows.md?toc=%252fazure%252fvirtual-machines%252fwindows%252ftoc.json) sowie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Linux)](./virtual-machines/extensions/features-linux.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json).
+Weitere Informationen finden Sie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Windows)](./virtual-machines/extensions/features-windows.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) sowie unter [Informationen zu Erweiterungen und Features für virtuelle Computer (Linux)](./virtual-machines/extensions/features-linux.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="virtual-network"></a><a name="vnet"></a>Virtuelles Netzwerk
 Ein Netzwerk, das für Konnektivität zwischen Ihren Azure-Ressourcen sorgt und von allen anderen Azure-Mandanten isoliert ist. Mit einem [Azure-VPN-Gateway](vpn-gateway/vpn-gateway-about-vpngateways.md) können Sie Verbindungen zwischen virtuellen Netzwerken und zwischen einem virtuellen und einem lokalen Netzwerk herstellen. Sie haben uneingeschränkte Kontrolle über die IP-Adressblöcke, DNS-Einstellungen, Sicherheitsrichtlinien und Routentabellen innerhalb eines virtuellen Netzwerks.  

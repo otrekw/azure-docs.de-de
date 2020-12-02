@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 79fa480e0cca590446a0251f43c45b2e04c97cd5
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: aa4e8c2baaaa0c8ccc9bcdda595f040fac72682f
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013155"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181440"
 ---
 # <a name="tutorial-configure-smartsheet-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Smartsheet für die automatische Benutzerbereitstellung
 
@@ -38,7 +38,7 @@ In diesem Tutorial werden die Schritte erläutert, die in Smartsheet und Azure A
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator)
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator)
 * [Einen Smartsheet-Mandanten](https://www.smartsheet.com/pricing)
 * Ein Benutzerkonto in einem Smartsheet Enterprise- oder Enterprise Premier-Plan mit Systemadministratorberechtigungen
 

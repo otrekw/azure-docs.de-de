@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6ac568e56d201ef43e40428085b226608e83973a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 62b4629d258f8779dc53b4b8e00684d3b793291d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024567"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96183752"
 ---
 # <a name="azure-security-baseline-for-api-management"></a>Azure-Sicherheitsbaseline für API Management
 
@@ -98,7 +98,7 @@ Verwenden Sie die in Azure Security Center integrierte Threat Intelligence, um d
 
 * [Dokumentation zu Azure Application Gateway](../application-gateway/index.yml)
 
-* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../virtual-network/manage-ddos-protection.md)
+* [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../ddos-protection/manage-ddos-protection.md)
 
 * [Grundlegendes zur integrierten Threat Intelligence in Azure Security Center](../security-center/azure-defender.md)
 
@@ -301,7 +301,7 @@ Optional können Sie API Management in Azure Application Insights integrieren un
 
 * [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
-* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/get-started-portal.md)
+* [Grundlegendes zum Log Analytics-Arbeitsbereich](../azure-monitor/log-query/log-analytics-tutorial.md)
 
 * [Vorgehensweise beim Integrieren von Azure API Management in Azure Application Insights](./api-management-howto-app-insights.md)
 
@@ -614,7 +614,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Aufrufe auf Verwaltungsebene erfolgen über Azure Resource Manager und TLS. Ein gültiges JSON Web Token (JWT) ist erforderlich. Aufrufe auf Datenebene können mit TLS und einem der unterstützten Authentifizierungsmechanismen (z. B. Clientzertifikat oder JWT) geschützt werden.
 
-* [Schutz von Daten](./api-management-security-controls.md#data-protection)
+* [Schutz von Daten](#data-protection)
 
 * [Verwalten von Protokollen und Verschlüsselungen in Azure API Management](./api-management-howto-manage-protocols-ciphers.md)
 
@@ -664,7 +664,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 **Leitfaden**: Vertrauliche Daten, z. B. Zertifikate, Schlüssel und als geheim gekennzeichnete Werte, werden mit vom Dienst verwalteten Schlüsseln für die jeweilige Dienstinstanz verschlüsselt. Alle Verschlüsselungsschlüssel gelten pro Dienstinstanz und werden vom Dienst verwaltet.
 
-* [Schutz von Daten](./api-management-security-controls.md#data-protection)
+* [Schutz von Daten](#data-protection)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -692,7 +692,7 @@ Microsoft verwaltet die zugrunde liegende Infrastruktur für Azure API Managemen
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Überprüfen Sie die verfügbaren Sicherheitsfunktionen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
+* [Sicherheitskontrollen für API Management]()
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -728,7 +728,7 @@ Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Üb
 
 Die zugrunde liegende Plattform wird von Microsoft überprüft und gepatcht. Kunden sollten die für sie verfügbaren Sicherheitsfunktionen überprüfen, um Sicherheitsrisiken im Zusammenhang mit der Dienstkonfiguration zu minimieren.
 
-* [Sicherheitskontrollen für API Management](./api-management-security-controls.md)
+* [Sicherheitskontrollen für API Management]()
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -932,8 +932,6 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 
 * [Dokumentation zu Azure Repos](/azure/devops/repos/index)
 
-* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
-
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
 **Verantwortlichkeit**: Kunde
@@ -971,8 +969,6 @@ Verwenden Sie Azure Resource Graph, um Ressourcen in ihren Abonnements abzufrage
 **Leitfaden**: Verwenden Sie das Azure API Management DevOps Resource Kit, um die Konfigurationsverwaltung für Azure API Management durchzuführen.
 
 Definieren und implementieren Sie zusätzlich mit Azure Policy Standardsicherheitskonfigurationen für Ihre Azure API Management-Dienste. Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.ApiManagement“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration von Azure API Management-Instanzen zu erstellen. Verwenden Sie die Azure-Richtlinien [Verweigern] und [Bereitstellen, falls nicht vorhanden], um sichere Einstellungen in den Azure-Ressourcen zu erzwingen.
-
-* [Konfigurationsverwaltung](./api-management-security-controls.md#configuration-management)
 
 * [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 

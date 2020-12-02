@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 01/11/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 09af5d9af749d43f9d15f42daee6b562a877397b
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 358e92d8e43473c168e24be9f4af504e6ffcc37a
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94633384"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96028282"
 ---
 *Auffüllen des Caches*  
 Der Datenträger mit der Hostcache-Einstellung „ReadOnly“ bietet eine IOPS-Rate, die höher als das Datenträgerlimit ist. Um diese maximale Leseleistung aus dem Hostcache zu erzielen, müssen zuerst Sie den Cache dieses Datenträgers mit gültigen Daten auffüllen. Dies stellt sicher, dass die Lese-E/As, die das Benchmarktool auf dem Volume „CacheReads“ erzeugt, tatsächlich den Cache und nicht direkt den Datenträger abfragen. Die Cachetreffer führen zu weiteren IOPS auf dem einzelnen Datenträger mit aktiviertem Cache.
@@ -123,17 +123,9 @@ direct=1
 iodepth=256
 ioengine=libaio
 bs=8k
+numjobs=4
 
 [writer1]
-rw=randwrite
-directory=/mnt/nocache
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-[writer4]
 rw=randwrite
 directory=/mnt/nocache
 ```
@@ -164,17 +156,9 @@ direct=1
 iodepth=256
 ioengine=libaio
 bs=8k
+numjobs=4
 
 [reader1]
-rw=randread
-directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
 rw=randread
 directory=/mnt/readcache
 ```
@@ -205,33 +189,13 @@ direct=1
 iodepth=128
 ioengine=libaio
 bs=4k
+numjobs=4
 
 [reader1]
 rw=randread
 directory=/mnt/readcache
-[reader2]
-rw=randread
-directory=/mnt/readcache
-[reader3]
-rw=randread
-directory=/mnt/readcache
-[reader4]
-rw=randread
-directory=/mnt/readcache
 
 [writer1]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer2]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer3]
-rw=randwrite
-directory=/mnt/nocache
-rate_iops=12500
-[writer4]
 rw=randwrite
 directory=/mnt/nocache
 rate_iops=12500

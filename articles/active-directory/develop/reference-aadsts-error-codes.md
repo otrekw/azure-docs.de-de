@@ -12,12 +12,12 @@ ms.date: 11/09/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 59ed397f3bd54a324f8fa375a3ea870860c31142
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: fa6fc11441811589967ddd7728501b521f9f9155
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410928"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169272"
 ---
 # <a name="azure-ad-authentication-and-authorization-error-codes"></a>Fehlercodes für die Azure AD-Authentifizierung und -Autorisierung
 
@@ -315,7 +315,7 @@ Wenn Sie beispielsweise den Fehlercode „AADSTS50058“ erhalten haben, suchen 
 | AADSTS700022 | InvalidMultipleResourcesScope: Der angegebene Wert für den Eingabeparameterbereich ist nicht gültig, weil er mehr als eine Ressource enthält. |
 | AADSTS700023 | InvalidResourcelessScope: Der angegebene Wert für den Eingabeparameterbereich ist beim Anfordern eines Zugriffstokens nicht gültig. |
 | AADSTS7000215 | Es wurde ein ungültiger geheimer Clientschlüssel bereitgestellt. Entwicklerfehler: Die App versucht, sich ohne die erforderlichen oder richtigen Authentifizierungsparameter anzumelden.|
-| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided: Die angegebenen geheimen Clientschlüssel sind abgelaufen. Erstellen Sie im Azure-Portal neue Schlüssel für Ihre App, oder verwenden Sie Zertifikatanmeldeinformationen, um die Sicherheit zu erhöhen: [https://aka.ms/certCreds](https://aka.ms/certCreds) |
+| AADSTS7000222 | InvalidClientSecretExpiredKeysProvided: Die angegebenen geheimen Clientschlüssel sind abgelaufen. Erstellen Sie im Azure-Portal neue Schlüssel für Ihre App, oder verwenden Sie Zertifikatanmeldeinformationen, um die Sicherheit zu erhöhen: [https://aka.ms/certCreds](./active-directory-certificate-credentials.md) |
 | AADSTS700005 | InvalidGrantRedeemAgainstWrongTenant: Der angegebene Autorisierungscode ist für einen anderen Mandanten bestimmt und wird daher abgelehnt. Der OAuth2-Autorisierungscode muss für denselben Mandanten verwendet werden, für den er bezogen wurde („/common“ oder „/{Mandanten-ID}“). |
 | AADSTS1000000 | UserNotBoundError: Die Bindungs-API erfordert, dass sich der Azure AD-Benutzer auch bei einem externen Identitätsanbieter authentifiziert, was noch nicht geschehen ist. |
 | AADSTS1000002 | BindCompleteInterruptError: Die Bindung wurde erfolgreich abgeschlossen, aber der Benutzer muss informiert werden. |

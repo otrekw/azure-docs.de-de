@@ -8,19 +8,20 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 99a0805239ee2437ad6ec9ceb40cf45496a07850
-ms.sourcegitcommit: 2e72661f4853cd42bb4f0b2ded4271b22dc10a52
+ms.openlocfilehash: 3a3518ba68c9474fc4a34390e6fd9a7d1e88f6c6
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92047657"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94959593"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
-> [!NOTE]
-> Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Falls Sie direkt zu diesem Artikel navigiert sind, ist es ratsam, mit dem [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) der Reihe zu beginnen.
-
 Dieser Artikel enthält Informationen dazu, wie Sie Ihre Umgebung für die Entwicklung und Bereitstellung vorbereiten. Richten Sie zuerst einen Entwicklungscomputer mit allen benötigten Tools ein. Erstellen Sie anschließend die erforderlichen Cloudressourcen in Azure.
+
+## <a name="prerequisites"></a>Voraussetzungen
+
+Dieser Artikel ist Teil einer Tutorialreihe zur Verwendung von Azure Machine Learning für IoT Edge. Jeder Artikel in der Reihe baut auf der Arbeit im vorherigen Artikel auf. Wenn Sie diesen Artikel direkt aufgerufen haben, wechseln Sie zum [ersten Artikel](tutorial-machine-learning-edge-01-intro.md) in der Reihe.
 
 ## <a name="set-up-the-development-vm"></a>Einrichten des virtuellen Entwicklungscomputers
 
@@ -30,7 +31,7 @@ Wir haben ein PowerShell-Skript zusammengestellt, mit dem ein virtueller Azure-C
 
 Für die Einrichtung des virtuellen Entwicklungscomputers wird Folgendes verwendet:
 
-* Windows 10
+* Windows 10
 * [Chocolatey](https://chocolatey.org/)
 * [Docker Desktop für Windows](https://www.docker.com/products/docker-desktop)
 * [Git für Windows](https://gitforwindows.org/)

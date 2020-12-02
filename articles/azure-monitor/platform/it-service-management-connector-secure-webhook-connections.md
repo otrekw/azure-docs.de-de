@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
-ms.openlocfilehash: 85ff3bed2a648f852c311fefa8513622c2a48285
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 4d12a7ec76f3390aabc7b45aeb0cd8cedcc6febd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376535"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186472"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export
 
@@ -60,8 +60,8 @@ Führen Sie die folgenden Schritte aus, um den ITSM-Connector zu verwenden:
 3. Konfigurieren Sie Ihre Partnerumgebung. 
 
 Von Secure Export werden Verbindungen mit den folgenden ITSM-Tools unterstützt:
-* [ServiceNow](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-servicenow-to-azure-monitor)
-* [BMC Helix](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#connect-bmc-helix-to-azure-monitor)
+* [ServiceNow](#connect-servicenow-to-azure-monitor)
+* [BMC Helix](#connect-bmc-helix-to-azure-monitor)
 
 ## <a name="register-with-azure-active-directory"></a>Registrieren bei Azure Active Directory
 
@@ -90,7 +90,7 @@ Befolgen Sie diese Anweisungen für sichere Webhooks, um einen Webhook zu einer 
 5. Wählen Sie **Sicherer Webhook** aus.
 6. Legen Sie folgende Einstellungen fest:
    1. Wählen Sie die Objekt-ID der Azure Active Directory-Instanz aus, die Sie registriert haben.
-   2. Fügen Sie für den URI die Webhook-URL ein, die Sie aus der [ITSM-Toolumgebung](https://docs.microsoft.com/azure/azure-monitor/platform/it-service-management-connector-secure-webhook-connections#configure-the-partner-environment) kopiert haben.
+   2. Fügen Sie für den URI die Webhook-URL ein, die Sie aus der [ITSM-Toolumgebung](#configure-the-itsm-tool-environment) kopiert haben.
    3. Legen Sie für **Allgemeines Warnungsschema aktivieren** die Option **Ja** fest. 
 
    Die folgende Abbildung zeigt die Konfiguration einer „Sicherer Webhook“-Beispielaktion:

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 43b430ffe1eb9b074eedea3d977523589bc4606a
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 00e3b40b0e3f4c799c54308b35ce3e810cde118c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94359253"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181086"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Apple School Manager für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie in Apple School Mana
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) zur Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder globaler Administrator) 
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) zur Konfiguration von Bereitstellungen (z. B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder globaler Administrator) 
 * Ein Apple School Manager-Konto mit der Rolle „Administrator“, „Standortmanager“ oder „Personenmanager“
 
 > [!NOTE]
@@ -92,7 +92,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
     ![Registerkarte „Bereitstellung“, Bereitstellungsmodus „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor in Apple School Manager abgerufenen Werte für **die SCIM 2.0-Basis-URL und das Zugriffstoken** in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Apple School Manager herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Apple School Manager-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die zuvor in Apple School Manager abgerufenen Werte für **die SCIM 2.0-Basis-URL und das Zugriffstoken** in die Felder **Mandanten-URL** und **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Apple School Manager herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Apple School Manager-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -107,7 +107,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 8. Klicken Sie im Abschnitt **Zuordnungen** auf **Synchronize Azure Active Directory Users to Apple School Manager** (Azure Active Directory-Benutzer mit Apple School Manager synchronisieren).
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Apple School Manager synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Apple School Manager für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Apple School Manager synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Apple School Manager für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
    |attribute|type|
    |---|---|
@@ -126,7 +126,7 @@ Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwe
 
 10. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein** , um den Azure AD-Bereitstellungsdienst für Apple School Manager zu aktivieren.
+11. Ändern Sie den **Bereitstellungsstatus** im Abschnitt „Einstellungen“ in **Ein**, um den Azure AD-Bereitstellungsdienst für Apple School Manager zu aktivieren.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

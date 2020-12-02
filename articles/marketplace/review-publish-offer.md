@@ -9,11 +9,11 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 10/27/2020
 ms.openlocfilehash: b038834df3889a8b4b7f4a749568635e99f8408e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129574"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96188750"
 ---
 # <a name="how-to-review-and-publish-an-offer-to-the-commercial-marketplace"></a>Überprüfen und Veröffentlichen eines Angebots im kommerziellen Marketplace
 
@@ -38,9 +38,9 @@ Sie können den Status Ihres Angebots im [Partner Center](https://partner.micros
 
 Wenn Sie bereit sind, ein Angebot für die Veröffentlichung zu übermitteln, wählen Sie oben rechts im Portal **Überprüfen und veröffentlichen** aus. Auf der Seite **Überprüfen und veröffentlichen** wird der Status jeder Seite für Ihr Angebot angezeigt. Folgende Werte sind möglich:
 
-   - **Nicht gestartet** : Die Seite ist unvollständig.
-   - **Unvollständig** : Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
-   - **Abgeschlossen** : Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
+   - **Nicht gestartet**: Die Seite ist unvollständig.
+   - **Unvollständig**: Auf der Seite fehlen erforderliche Informationen, oder sie enthält Fehler, die korrigiert werden müssen. Sie müssen zur Seite zurückkehren und diese aktualisieren.
+   - **Abgeschlossen**: Die Seite ist vollständig. Alle erforderlichen Daten wurden angegeben, und es liegen keine Fehler vor.
 
 Wenn eine der Seiten einen anderen Status als **Abgeschlossen** aufweist, müssen Sie das Problem auf dieser Seite beheben und dann zur Seite **Überprüfen und veröffentlichen** zurückkehren, um sich zu vergewissern, dass der Status nun **Abgeschlossen** lautet. Einige Angebotstypen müssen getestet werden. In diesem Fall wird ein Feld **Hinweise zur Zertifizierung** angezeigt, in dem Sie Testanweisungen für das Zertifizierungsteam und ergänzende Hinweise angeben müssen, die das Verständnis Ihrer App erleichtern.
 

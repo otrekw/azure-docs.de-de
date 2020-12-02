@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: fcbfd3eb805e046647a2c28cef8c378b44026bd0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ac6981d998f25b8df7cea553fe152d68cd43fee5
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013189"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181423"
 ---
 # <a name="tutorial-configure-snowflake-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Snowflake für die automatische Benutzerbereitstellung
 
@@ -39,7 +39,7 @@ In diesem Tutorial werden die Schritte erläutert, die in Snowflake und Azure Ac
 Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits über die folgenden Voraussetzungen verfügen:
 
 * [Einen Azure AD-Mandanten](../develop/quickstart-create-new-tenant.md)
-* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../users-groups-roles/directory-assign-admin-roles.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
+* Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * [Einen Snowflake-Mandanten](https://www.Snowflake.com/pricing/)
 * Ein Benutzerkonto in Snowflake mit Administratorberechtigungen
 

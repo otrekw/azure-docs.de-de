@@ -4,12 +4,12 @@ description: Macht Sie auf ungewöhnliche Änderungen bei der Rate fehlgeschlage
 ms.topic: conceptual
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 0f93c7b185b292f8d9792a11807b7c99ad846d37
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 329f5bc6f5c3523bc76876f946474eaeb897cfe9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89565836"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186965"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Smart Detection – ungewöhnliche fehlgeschlagene Anforderungen
 [Application Insights](./app-insights-overview.md) warnt Sie automatisch und nahezu in Echtzeit, wenn es für Ihre Web-App zu einer ungewöhnlichen Häufung bei den fehlgeschlagenen Anforderungen kommt. Die Lösung erkennt eine ungewöhnliche Zunahme der Rate fehlerhafter HTTP-Anforderungen oder Abhängigkeitsaufrufen. Nicht erfolgreiche Anforderungen weisen normalerweise Antwortcodes im Bereich 400 oder höher auf. Um Sie bei der Selektierung und Diagnose des Problems zu unterstützen, wird in den Warnungsdetails eine Analyse der Merkmale der Fehler und der zugehörigen Anwendungsdaten angegeben. Außerdem werden Links zum Application Insights-Portal zur weiteren Diagnose bereitgestellt. Diese Funktion muss nicht eingerichtet oder konfiguriert werden, da sie Machine Learning-Algorithmen verwendet, um die normale Fehlerrate zu bestimmen.
@@ -73,11 +73,11 @@ Diese Warnungsregel wird mit einer zugehörigen [Aktionsgruppe](../platform/acti
 
 Öffnen Sie die Seite „Warnungen“. Warnungsregeln vom Typ „Fehleranomalien“ werden zusammen mit allen Warnungen aufgeführt, die Sie ggf. manuell festgelegt haben, und Sie können sehen, ob diese derzeit den Status „Warnung“ aufweisen.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/021.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/021.png" alt-text="Klicken Sie auf der Application Insights-Ressourcenseite auf die Kachel „Warnungen“ und dann auf „Warnungsregeln verwalten“." lightbox="./media/proactive-failure-diagnostics/021.png":::
 
 Klicken Sie auf die Warnung, um sie zu konfigurieren.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/032.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/032.png" alt-text="Bildschirm „Regelkonfiguration“." lightbox="./media/proactive-failure-diagnostics/032.png":::
 
 Beachten Sie, dass Sie eine Warnungsregel vom Typ „Fehleranomalien“ deaktivieren oder löschen können, aber das Erstellen einer weiteren Warnungsregel unter derselben Application Insights-Ressource nicht möglich ist.
 
@@ -299,7 +299,7 @@ Sie können auch das [Azure-Portal](https://portal.azure.com) öffnen, zur Appli
 
 Wenn Sie auf „Fehlerdiagnose“ klicken, erhalten Sie weitere Details und können das Problem leichter beheben.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
+:::image type="content" source="./media/proactive-failure-diagnostics/051.png" alt-text="Diagnosesuche." lightbox="./media/proactive-failure-diagnostics/051.png#lightbox":::
 
 Anhand des Prozentsatzes der Anforderungen und der Anzahl der betroffenen Benutzer können Sie entscheiden, wie dringend das Problem ist. Im Beispiel oben verdeutlicht die Fehlerrate von 78,5 %, die einer normalen Fehlerrate von 2,2 % gegenübersteht, dass ganz offensichtlich Probleme bestehen. Allerdings sind nur 46 Benutzer betroffen. Wenn es sich um Ihre App handeln würde, könnten Sie beurteilen, wie schwerwiegend dies ist.
 
@@ -307,13 +307,13 @@ In vielen Fällen können Sie das Problem über den Anforderungsnamen, die Ausna
 
 In diesem Beispiel ist eine Ausnahme für die SQL-Datenbank aufgetreten, weil das Anforderungslimit erreicht wurde.
 
-:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/052.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/052.png" alt-text="Details zu Anforderungen mit Fehlern." lightbox="./media/proactive-failure-diagnostics/052.png":::
 
 ## <a name="review-recent-alerts"></a>Überprüfen aktueller Warnungen
 
 Klicken Sie auf der Application Insights-Ressourcenseite auf **Warnungen**, um die zuletzt ausgelösten Warnungen anzuzeigen:
 
-:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Beispiel für eine intelligente Erkennung mit Clusteranalyse im Umfeld des Fehlers" lightbox="./media/proactive-failure-diagnostics/070.png":::
+:::image type="content" source="./media/proactive-failure-diagnostics/070.png" alt-text="Zusammenfassung von Warnungen." lightbox="./media/proactive-failure-diagnostics/070.png":::
 
 ## <a name="whats-the-difference-"></a>Wo liegt der Unterschied?
 Smart Detection für ungewöhnliche fehlgeschlagene Anforderungen ergänzt andere ähnliche, aber doch verschiedene Features von Application Insights.
@@ -356,10 +356,9 @@ Mit den folgenden Diagnosetools können Sie die Daten Ihrer App untersuchen:
 
 * [Metrik-Explorer](../platform/metrics-charts.md)
 * [Suchexplorer](./diagnostic-search.md)
-* [Analytics: Leistungsfähige Abfragesprache](../log-query/get-started-portal.md)
+* [Analytics: Leistungsfähige Abfragesprache](../log-query/log-analytics-tutorial.md)
 
 Intelligente Erkennungen laufen automatisch ab. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
 * [Verfügbarkeitswebtests](./monitor-web-app-availability.md)
-

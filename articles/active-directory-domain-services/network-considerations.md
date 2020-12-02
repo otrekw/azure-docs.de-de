@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: joflore
-ms.openlocfilehash: 4ced7331daa116e237d9628d12d16a67687db5b9
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968088"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96175218"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 
@@ -104,7 +104,7 @@ Eine verwaltete Domäne erstellt während der Bereitstellung einige Netzwerkress
 
 ## <a name="network-security-groups-and-required-ports"></a>Netzwerksicherheitsgruppen und erforderliche Ports
 
-Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/security-overview.md) enthält eine Liste von Regeln, die den Netzwerkdatenverkehr für den Datenverkehr in einem virtuellen Azure-Netzwerk gestatten oder ablehnen. Eine Netzwerksicherheitsgruppe wird erstellt, wenn Sie eine verwaltete Domäne bereitstellen, die einen Satz von Regeln enthält, mit denen der Dienst Authentifizierungs- und Verwaltungsfunktionen bereitstellen kann. Diese standardmäßige Netzwerksicherheitsgruppe ist dem virtuellen Subnetz zugeordnet, in dem Ihre verwaltete Domäne bereitgestellt wird.
+Eine [Netzwerksicherheitsgruppe (NSG)](../virtual-network/network-security-groups-overview.md) enthält eine Liste von Regeln, die den Netzwerkdatenverkehr für den Datenverkehr in einem virtuellen Azure-Netzwerk gestatten oder ablehnen. Eine Netzwerksicherheitsgruppe wird erstellt, wenn Sie eine verwaltete Domäne bereitstellen, die einen Satz von Regeln enthält, mit denen der Dienst Authentifizierungs- und Verwaltungsfunktionen bereitstellen kann. Diese standardmäßige Netzwerksicherheitsgruppe ist dem virtuellen Subnetz zugeordnet, in dem Ihre verwaltete Domäne bereitgestellt wird.
 
 Die folgenden Regeln für die Netzwerksicherheitsgruppe sind erforderlich, damit die verwaltete Domäne Authentifizierungs- und Verwaltungsdienste bereitstellen kann. Bearbeiten oder löschen Sie diese Regeln für die Netzwerksicherheitsgruppe nicht für das virtuelle Subnetz, in dem Ihre verwaltete Domäne bereitgestellt wird.
 
@@ -176,4 +176,4 @@ Weitere Informationen zu einigen der von Azure AD DS verwendeten Netzwerkressour
 
 * [Peering in virtuellen Azure-Netzwerken](../virtual-network/virtual-network-peering-overview.md)
 * [Azure-VPN-Gateways](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
-* [Azure-Netzwerksicherheitsgruppen](../virtual-network/security-overview.md)
+* [Azure-Netzwerksicherheitsgruppen](../virtual-network/network-security-groups-overview.md)

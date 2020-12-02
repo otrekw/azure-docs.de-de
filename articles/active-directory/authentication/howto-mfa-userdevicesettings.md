@@ -1,6 +1,6 @@
 ---
-title: Verwalten von Authentifizierungsmethoden für Azure Multi-Factor Authentication – Azure Active Directory
-description: Erfahren Sie, wie Sie Azure Active Directory-Benutzereinstellungen für Azure Multi-Factor Authentication konfigurieren können.
+title: Verwalten von Authentifizierungsmethoden für Azure AD Multi-Factor Authentication – Azure Active Directory
+description: Hier erfahren Sie, wie Sie Azure Active Directory-Benutzereinstellungen für Azure AD Multi-Factor Authentication konfigurieren können.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,21 +11,21 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: michmcla, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6309ef6793858051ceaf3c3b33edb9f830b26710
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 1117b5194dae92a8025594ed71fc629670d875cf
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378044"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838926"
 ---
-# <a name="manage-user-authentication-methods-for-azure-multi-factor-authentication"></a>Verwalten von Authentifizierungsmethoden für Azure Multi-Factor Authentication
+# <a name="manage-user-authentication-methods-for-azure-ad-multi-factor-authentication"></a>Verwalten von Benutzerauthentifizierungsmethoden für Azure AD Multi-Factor Authentication
 
 Kontaktinformationen der Benutzer in Azure AD fallen in zwei unterschiedliche Kategorien:  
 
 - Kontaktinformationen für öffentliche Profile, die im Benutzerprofil verwaltet werden und für Mitglieder Ihrer Organisation sichtbar sind. Bei Benutzern, die aus dem lokalen Active Directory synchronisiert werden, werden diese Informationen in den lokalen Windows Server Active Directory-Domänendiensten verwaltet.
 - Authentifizierungsmethoden, die immer privat sind und nur für die Authentifizierung verwendet werden, einschließlich Multi-Factor Authentication (MFA). Administratoren können diese Methoden auf dem Blatt zur Authentifizierungsmethode eines Benutzers verwalten, und Benutzer können Ihre Methoden auf der Seite „Sicherheitsinformationen“ von MyAccount verwalten.
 
-Bei der Verwaltung von Azure Multi-Factor Authentication-Methoden für Ihre Benutzer können Authentifizierungsadministratoren folgende Aktionen ausführen: 
+Bei der Verwaltung von Azure AD Multi-Factor Authentication-Methoden für Ihre Benutzer können Authentifizierungsadministratoren folgende Aktionen ausführen: 
 
 1. Hinzufügen von Authentifizierungsmethoden für einen bestimmten Benutzer, einschließlich der für MFA verwendeten Telefonnummern.
 1. Setzt das Kennwort eines Benutzers zurück.
@@ -116,6 +116,6 @@ Um die App-Kennwörter eines Benutzers zu löschen, führen Sie die folgenden Sc
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel lernten Sie, wie Sie die Konfiguration individueller Benutzereinstellungen unterstützen. Informationen zum Konfigurieren der Azure Multi-Factor Authentication-Diensteinstellungen finden Sie unter [Konfigurieren von Azure Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
+In diesem Artikel lernten Sie, wie Sie die Konfiguration individueller Benutzereinstellungen unterstützen. Informationen zum Konfigurieren der Azure AD Multi-Factor Authentication-Diensteinstellungen insgesamt finden Sie unter [Konfigurieren von Azure AD Multi-Factor Authentication-Einstellungen](howto-mfa-mfasettings.md).
 
-Wenn Ihre Benutzer Hilfe benötigen, finden Sie weitere Informationen im [Benutzerhandbuch für Azure Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).
+Wenn Ihre Benutzer Hilfe benötigen, finden Sie weitere Informationen im [Benutzerhandbuch für Azure AD Multi-Factor Authentication](../user-help/multi-factor-authentication-end-user-first-time.md).

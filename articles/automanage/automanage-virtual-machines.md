@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: a51a4a95d3580912d9b727d1580e6f278831f677
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: ffbf3fa3e2d404b7bc5888ef01707cbd816600b3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891501"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182851"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Automatische Azure-Verwaltung für virtuelle Computer
 
@@ -28,7 +28,7 @@ Dieser Artikel enthält Informationen zur automatischen Azure-Verwaltung für vi
 
 ## <a name="overview"></a>Übersicht
 
-Die automatische Azure-Verwaltung für virtuelle Computer ist ein Dienst, der die Anforderung beseitigt, bestimmte Dienste in Azure zu entdecken, zu integrieren und zu konfigurieren, die Ihrem virtuellen Computer zugute kommen würden. Diese Dienste tragen zur Verbesserung der Zuverlässigkeit, Sicherheit und Verwaltung virtueller Computer bei und gelten als bewährte Azure-Dienste, z. B. [Azure-Updateverwaltung](../automation/update-management/update-mgmt-overview.md) und [Azure Backup](../backup/backup-overview.md), um nur einige zu nennen.
+Die automatische Azure-Verwaltung für virtuelle Computer ist ein Dienst, der die Anforderung beseitigt, bestimmte Dienste in Azure zu entdecken, zu integrieren und zu konfigurieren, die Ihrem virtuellen Computer zugute kommen würden. Diese Dienste tragen zur Verbesserung der Zuverlässigkeit, Sicherheit und Verwaltung virtueller Computer bei und gelten als bewährte Azure-Dienste, z. B. [Azure-Updateverwaltung](../automation/update-management/overview.md) und [Azure Backup](../backup/backup-overview.md), um nur einige zu nennen.
 
 Nachdem Sie das Onboarding Ihrer virtuellen Computer für die automatische Azure-Verwaltung durchgeführt haben, konfiguriert diese automatisch jeden bewährten Dienst mit den empfohlenen Einstellungen. Die bewährten Methoden sind für jeden Dienst unterschiedlich. Ein Beispiel hierfür könnte Azure Backup sein, bei dem die bewährte Methode darin bestehen könnte, den virtuellen Computer einmal täglich zu sichern und einen Aufbewahrungszeitraum von sechs Monaten einzuhalten.
 
@@ -69,7 +69,7 @@ Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie 
 
 Im Azure-Portal können Sie die automatische Verwaltung auf einem vorhandenen virtuellen Computer oder beim Erstellen eines neuen virtuellen Computers aktivieren. Eine kurze Anleitung zu diesem Prozess finden Sie unter [Schnellstart zur automatischen Verwaltung für virtuelle Computer](quick-create-virtual-machines-portal.md).
 
-Wenn Sie zum ersten Mal die automatische Verwaltung für Ihre VM aktivieren, können Sie im Azure-Portal nach **Automatische Verwaltung – Bewährte Methoden für Azure-VMs** suchen. Klicken Sie auf **Für vorhandene VM aktivieren** , wählen Sie die VMs aus, für die Sie das Onboarding durchführen möchten, klicken Sie auf **Auswählen** und dann auf **Aktivieren** , dann sind Sie fertig.
+Wenn Sie zum ersten Mal die automatische Verwaltung für Ihre VM aktivieren, können Sie im Azure-Portal nach **Automatische Verwaltung – Bewährte Methoden für Azure-VMs** suchen. Klicken Sie auf **Für vorhandene VM aktivieren**, wählen Sie die VMs aus, für die Sie das Onboarding durchführen möchten, klicken Sie auf **Auswählen** und dann auf **Aktivieren**, dann sind Sie fertig.
 
 Die einzige Zeit, in der Sie möglicherweise mit dieser VM interagieren müssen, um diese Dienste zu verwalten, ist für den Fall, dass wir versucht haben, Ihre VM zu reparieren, dies jedoch nicht gelungen ist. Wenn wir Ihre VM erfolgreich korrigieren, stellen wir die Compliance wieder her, ohne Sie überhaupt zu warnen.
 
@@ -82,8 +82,8 @@ Wenn Sie die automatische Verwaltung für Ihren virtuellen Computer aktivieren, 
 
 Es sind derzeit zwei Konfigurationsprofile verfügbar.
 
-- **Bewährte Methoden für virtuelle Azure-Computer – Dev/Test** : Das Konfigurationsprofil ist für Dev/Test-Computer konzipiert.
-- **Bewährte Methoden für virtuelle Azure-Computer – Produktion** : Das Konfigurationsprofil ist für die Produktion konzipiert.
+- **Bewährte Methoden für virtuelle Azure-Computer – Dev/Test**: Das Konfigurationsprofil ist für Dev/Test-Computer konzipiert.
+- **Bewährte Methoden für virtuelle Azure-Computer – Produktion**: Das Konfigurationsprofil ist für die Produktion konzipiert.
 
 Der Grund für diese Differenzierung liegt darin, dass bestimmte Dienste auf der Grundlage der aktiven Workload empfohlen werden. Auf einem Computer in der Produktion werden wir für Sie z. B. automatisch das Onboarding für Azure Backup durchführen. Für einen Dev/Test-Computer wäre ein Sicherungsdienst jedoch ein unnötiger Kostenfaktor, da Dev/Test-Computer in der Regel geringere geschäftliche Auswirkungen haben.
 
@@ -104,7 +104,7 @@ Sie können die Einstellungen eines Standardkonfigurationsprofils über Voreinst
 
 Das Konto für die automatische Verwaltung ist der Sicherheitskontext oder die Identität, unter der die automatisierten Vorgänge auftreten. Normalerweise brauchen Sie die Option für die automatische Verwaltung nicht auszuwählen, aber wenn es ein Delegierungsszenario gab, in dem Sie die automatische Verwaltung aufteilen wollten (vielleicht zwischen zwei Systemadministratoren), können Sie mit dieser Option eine Azure-Identität für jeden dieser Administratoren definieren.
 
-Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs aktivieren, gibt es eine Dropdownliste „Erweitert“ auf dem Blatt **Bewährte Methode zum Aktivieren einer Azure-VM** , mit der Sie das Konto für die automatische Verwaltung zuweisen oder manuell erstellen können.
+Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs aktivieren, gibt es eine Dropdownliste „Erweitert“ auf dem Blatt **Bewährte Methode zum Aktivieren einer Azure-VM**, mit der Sie das Konto für die automatische Verwaltung zuweisen oder manuell erstellen können.
 
 > [!NOTE]
 > Sie müssen über die Rolle **Mitwirkender** für die Ressourcengruppe verfügen, die Ihre VMs enthält, um Automanage auf virtuellen Computern mit einem vorhandenen Automanage-Konto zu aktivieren. Wenn Sie Automanage mit einem neuen Automanage-Konto aktivieren, benötigen Sie die folgenden Berechtigungen in Ihrem Abonnement: Rolle **Besitzer** oder **Mitwirkender** sowie Rollen vom Typ **Benutzerzugriffsadministrator**
@@ -112,7 +112,7 @@ Wenn Sie in der Azure-Portalerfahrung die automatische Verwaltung auf Ihren VMs 
 
 ## <a name="status-of-vms"></a>Status von VMs
 
-Navigieren Sie im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs** , auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Hier wird der Gesamtstatus der einzelnen virtuellen Computer angezeigt.
+Navigieren Sie im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Hier wird der Gesamtstatus der einzelnen virtuellen Computer angezeigt.
 
 :::image type="content" source="media\automanage-virtual-machines\configured-status.png" alt-text="Liste der konfigurierten virtuellen Computer":::
 
@@ -123,14 +123,14 @@ Die Spalte **Status** kann die folgenden Zustände anzeigen:
 - *Konfiguriert* – Die VM ist konfiguriert und es wurde kein Datendrift erkannt
 - *Fehler* – Die VM weist einen Datendrift auf und wir konnten das Problem nicht beheben
 
-Wenn der **Status** *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen** , wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen** , und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
+Wenn der **Status** *Fehler* angezeigt wird, können Sie die Bereitstellung über die Ressourcengruppe beheben, in der sich Ihre VM befindet. Wechseln Sie zu **Ressourcengruppen**, wählen Sie Ihre Ressourcengruppe aus, klicken Sie auf **Bereitstellungen**, und beachten Sie dort den Status *Fehler* zusammen mit Fehlerdetails.
 
 
 ## <a name="disabling-automanage-for-vms"></a>Deaktivieren der automatischen Verwaltung für VMs
 
 Möglicherweise entscheiden Sie sich eines Tages dafür, die automatische Verwaltung für bestimmte VMs zu deaktivieren. Auf Ihrem Computer wird z. B. eine hochgradig vertrauliche, sichere Workload ausgeführt, und Sie müssen sie noch weiter sperren, als es Azure von sich aus vorgenommen hätte, sodass Sie den Computer außerhalb der bewährten Methoden von Azure konfigurieren müssen.
 
-Navigieren Sie dazu im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs** , auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie über die automatische Verwaltung deaktivieren möchten, und klicken Sie dann auf die Schaltfläche zum **Deaktivieren der automatischen Verwaltung**.
+Navigieren Sie dazu im Azure-Portal zur Seite **Automatische Verwaltung – Bewährte Methoden für Azure-VMs**, auf der alle automatisch verwalteten virtuellen Computer aufgeführt sind. Aktivieren Sie das Kontrollkästchen neben dem virtuellen Computer, den Sie über die automatische Verwaltung deaktivieren möchten, und klicken Sie dann auf die Schaltfläche zum **Deaktivieren der automatischen Verwaltung**.
 
 :::image type="content" source="media\automanage-virtual-machines\disable-step-1.png" alt-text="Deaktivieren der automatischen Verwaltung auf einem virtuellen Computer":::
 

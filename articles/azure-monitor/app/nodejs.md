@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie die Leistung überwachen und Probleme 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: 982adf6c6d7cd825d185802321ce30a04bd2f216
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4c350cbfdf92d19a084940941351cf1f028c93d2
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020890"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186278"
 ---
 # <a name="monitor-your-nodejs-services-and-apps-with-application-insights"></a>Überwachen Ihrer Node.js-Dienste und -Apps mit Application Insights
 
@@ -416,10 +416,9 @@ Diese Eigenschaften sind clientspezifisch, d. h. dass Sie `appInsights.defaultC
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Überwachen Ihrer Telemetriedaten im Portal](./overview-dashboard.md)
-* [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](../log-query/get-started-portal.md)
+* [Schreiben von Analytics-Abfragen über Ihre Telemetriedaten](../log-query/log-analytics-tutorial.md)
 
 <!--references-->
 
 [portal]: https://portal.azure.com/
 [FAQ]: ../faq.md
-

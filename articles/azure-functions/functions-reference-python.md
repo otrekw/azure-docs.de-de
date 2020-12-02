@@ -4,12 +4,12 @@ description: Entwickeln von Funktionen mit Python
 ms.topic: article
 ms.date: 11/4/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 7d97405a0b75129ddb0da581955728b393bf49ca
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 8254abda68949e6884143316d4b29b07ade129dc
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94539072"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96167844"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Python-Entwicklerhandbuch für Azure Functions
 
@@ -19,7 +19,7 @@ Für Python-Entwickler sind möglicherweise auch folgende Artikel interessant:
 
 | Erste Schritte | Konzepte| Szenarien/Beispiele |
 | -- | -- | -- | 
-| <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./functions-create-first-function-vs-code.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
+| <ul><li>[Python-Funktion unter Verwendung von Visual Studio Code](./create-first-function-vs-code-csharp.md?pivots=programming-language-python)</li><li>[Python-Funktion mit Terminal/Eingabeaufforderung](./create-first-function-cli-csharp.md?pivots=programming-language-python)</li></ul> | <ul><li>[Entwicklerhandbuch](functions-reference.md)</li><li>[Hostingoptionen](functions-scale.md)</li><li>[Überlegungen&nbsp;zur Leistung](functions-best-practices.md)</li></ul> | <ul><li>[Imageklassifizierung mit PyTorch](machine-learning-pytorch.md)</li><li>[Azure-Automatisierungsbeispiel](/samples/azure-samples/azure-functions-python-list-resource-groups/azure-functions-python-sample-list-resource-groups/)</li><li>[Maschinelles Lernen mit TensorFlow](functions-machine-learning-tensorflow.md)</li><li>[Durchsuchen von Python-Beispielen](/samples/browse/?products=azure-functions&languages=python)</li></ul> |
 
 ## <a name="programming-model"></a>Programmiermodell
 
@@ -491,7 +491,7 @@ func azure functionapp publish <APP_NAME>
 
 Denken Sie daran, `<APP_NAME>` durch den Namen Ihrer Funktions-App in Azure zu ersetzen.
 
-Die [Azure Functions-Erweiterung für Visual Studio Code](functions-create-first-function-vs-code.md#publish-the-project-to-azure) fordert ebenfalls standardmäßig einen Remotebuild an.
+Die [Azure Functions-Erweiterung für Visual Studio Code](./create-first-function-vs-code-csharp.md#publish-the-project-to-azure) fordert ebenfalls standardmäßig einen Remotebuild an.
 
 ### <a name="local-build"></a>Lokaler Build
 

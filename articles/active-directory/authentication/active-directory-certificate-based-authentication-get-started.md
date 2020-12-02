@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: 96f1e3983f3c093cdf643e7674221b04631eeabd
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965623"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174563"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -31,7 +31,7 @@ Wenn Sie dieses Feature konfigurieren, ist es bei bestimmten E-Mail- und Microso
 Dieses Thema:
 
 - Informiert Sie über die Schritte zum Konfigurieren und Nutzen zertifikatbasierter Authentifizierung für Benutzer von Mandanten in Office 365 Enterprise-, Business-, Education- und US Government-Plänen. Dieses Feature ist als Vorversion in Office 365 China-, US Government Defense- und US Government Federal-Plänen verfügbar.
-- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) verfügen und [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfiguriert haben.
+- Setzt voraus, dass Sie bereits über eine [Public Key-Infrastruktur (PKI)](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/hh831740(v=ws.11)) verfügen und [AD FS](../hybrid/how-to-connect-fed-whatis.md) konfiguriert haben.
 
 ## <a name="requirements"></a>Requirements (Anforderungen)
 
@@ -154,7 +154,7 @@ Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-Azur
 
 ## <a name="step-3-configure-revocation"></a>Schritt 3: Konfigurieren der Sperrung
 
-Zum Sperren eines Clientzertifikats ruft Azure Active Directory die Zertifikatsperrliste von den URLs ab, die als Teil der Informationen zur Zertifizierungsstelle hochgeladen wurden, und platziert diese Liste im Zwischenspeicher. Anhand des Zeitstempels der letzten Veröffentlichung (Eigenschaft**Effective Date** ) in der Zertifikatsperrliste wird sichergestellt, dass die Liste noch gültig ist. Der Verweis auf die Zertifikatsperrliste erfolgt regelmäßig, um den Zugriff auf Zertifikate zu sperren, die in dieser Liste enthalten sind.
+Zum Sperren eines Clientzertifikats ruft Azure Active Directory die Zertifikatsperrliste von den URLs ab, die als Teil der Informationen zur Zertifizierungsstelle hochgeladen wurden, und platziert diese Liste im Zwischenspeicher. Anhand des Zeitstempels der letzten Veröffentlichung (Eigenschaft **Effective Date** ) in der Zertifikatsperrliste wird sichergestellt, dass die Liste noch gültig ist. Der Verweis auf die Zertifikatsperrliste erfolgt regelmäßig, um den Zugriff auf Zertifikate zu sperren, die in dieser Liste enthalten sind.
 
 Wenn eine schnellere Sperrung erforderlich ist (beispielsweise beim Verlust eines Geräts), kann der Autorisierungstoken des Benutzers für ungültig erklärt werden. Um das Autorisierungstoken für ungültig zu erklären, legen Sie das Feld **StsRefreshTokenValidFrom** für diesen Benutzer über Windows PowerShell fest. Das Feld **StsRefreshTokenValidFrom** muss für jeden Benutzer aktualisiert werden, für den der Zugriff gesperrt werden soll.
 

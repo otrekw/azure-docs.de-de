@@ -4,12 +4,12 @@ description: Application Insights führt eine intelligente Analyse Ihrer App-Tel
 ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
-ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 28a32c714618a3b6b0c3126d8060295f134ddc7c
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87321308"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186234"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligente Erkennung – Leistungsabweichungen
 
@@ -175,11 +175,10 @@ Mit den folgenden Diagnosetools können Sie die Telemetrie Ihrer App untersuchen
 
 * [Profiler](profiler.md) 
 * [Momentaufnahmedebugger](./snapshot-debugger.md)
-* [Analyse](../log-query/get-started-portal.md)
+* [Analyse](../log-query/log-analytics-tutorial.md)
 * [Intelligente Analysediagnose](../log-query/log-query-overview.md)
 
 Intelligente Erkennungen sind vollkommen automatisch. Vielleicht möchten Sie aber weitere Warnungen einrichten?
 
 * [Einrichten von Warnungen in Application Insights](../platform/alerts-log.md)
 * [Verfügbarkeitswebtests](./monitor-web-app-availability.md)
-

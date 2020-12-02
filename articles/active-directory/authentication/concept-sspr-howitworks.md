@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8fa1c2627917bfe386c488470f6a78db4c51f2ec
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994263"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96174529"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -195,9 +195,9 @@ Azure AD überprüft Ihre aktuelle Hybridverbindung und zeigt eine der folgende
 * Ihr lokaler Client für das Rückschreiben ist einsatzbereit.
 * Azure AD Connect ist online und mit Ihrem lokalen Client für das Rückschreiben verbunden. Die installierte Version von Azure AD Connect ist jedoch offenbar veraltet. Ziehen Sie ein [Upgrade von Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) in Betracht, um sicherzustellen, dass Sie über die neuesten Konnektivitätsfeatures und wichtige Fehlerbehebungen verfügen.
 * Unfortunately, we can't check your on-premises writeback client status because the installed version of Azure AD Connect is out-of-date. (Der Status Ihres lokalen Rückschreibeclients kann nicht überprüft werden, weil die installierte Version von Azure AD Connect veraltet ist.) [Aktualisieren Sie Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md), um den Verbindungsstatus überprüfen zu können.
-* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. [Führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. [Führen Sie eine Problembehandlung für Azure AD Connect durch](./troubleshoot-sspr-writeback.md), um die Verbindung wiederherzustellen.
 * Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen, weil das Kennwortrückschreiben nicht ordnungsgemäß konfiguriert wurde. [Konfigurieren Sie das Kennwortrückschreiben](./tutorial-enable-sspr-writeback.md), um die Verbindung wiederherzustellen.
-* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. Möglicherweise liegen auf unserer Seite vorübergehende Probleme vor. Wenn das Problem weiterhin besteht, [führen Sie eine Problembehandlung für Azure AD Connect durch](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity), um die Verbindung wiederherzustellen.
+* Leider können wir keine Verbindung mit Ihrem lokalen Client für das Rückschreiben herstellen. Möglicherweise liegen auf unserer Seite vorübergehende Probleme vor. Wenn das Problem weiterhin besteht, [führen Sie eine Problembehandlung für Azure AD Connect durch](./troubleshoot-sspr-writeback.md), um die Verbindung wiederherzustellen.
 
 Nutzen Sie das folgende Tutorial, um sich mit dem SSPR-Rückschreiben vertraut zu machen:
 

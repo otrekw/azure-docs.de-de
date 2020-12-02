@@ -14,12 +14,12 @@ ms.date: 04/01/2020
 ms.author: kenwith
 ms.reviewer: baselden
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1012ae32f679d23f16a7483415657596d027cc01
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: ab3b655d59e2cb8c6773fa1a34a08638e6926475
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658824"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180658"
 ---
 # <a name="moving-application-authentication-from-active-directory-federation-services-to-azure-active-directory"></a>Verschieben der Anwendungsauthentifizierung von Active Directory-Verbunddiensten (AD FS) in Azure Active Directory
 
@@ -320,7 +320,7 @@ Beim Selektor „Benutzer und Gruppen“ handelt es sich um eine Regel, mit der 
 
 Angeben von MFA-Regeln für einen Benutzer oder eine Gruppe in Azure AD:
 
-1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Klicken Sie auf **Zuweisungen**. Fügen Sie die Benutzer oder Gruppen hinzu, für die Sie die MFA erzwingen möchten.
 
@@ -333,7 +333,7 @@ Angeben von MFA-Regeln für einen Benutzer oder eine Gruppe in Azure AD:
 
 Angeben der MFA-Regeln für nicht registrierte Geräte in Azure AD:
 
-1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 2. Legen Sie die **Zuweisungen** auf **Alle Benutzer** fest.
 
@@ -348,7 +348,7 @@ Wenn Sie für „Eine der ausgewählten Steuerungen anfordern“ die Option „F
 
 Angeben von MFA-Regeln basierend auf dem Standort eines Benutzers in Azure AD:
 
-1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json).
+1. Erstellen Sie eine [neue Richtlinie für bedingten Zugriff](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json).
 
 1. Legen Sie die **Zuweisungen** auf **Alle Benutzer** fest.
 
@@ -386,7 +386,7 @@ AD FS 2016 verfügt über mehrere integrierte Zugriffssteuerungsrichtlinien, di
 ![Integrierte Azure AD-Zugriffssteuerung](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-1.png)
 
 
-Sie können eine [neue bedingte Zugriffsrichtlinie](../authentication/tutorial-enable-azure-mfa.md?bc=%252fazure%252factive-directory%252fconditional-access%252fbreadcrumb%252ftoc.json&toc=%252fazure%252factive-directory%252fconditional-access%252ftoc.json) verwenden und die Zugriffssteuerungen konfigurieren, um integrierte Richtlinien in Azure AD zu implementieren. Sie können auch den benutzerdefinierten Richtlinien-Designer in AD FS 2016 für die Konfiguration von Zugriffssteuerungsrichtlinien verwenden. Der Regel-Editor enthält eine vollständige Liste der Optionen „Permit“ („Zulassen“) und „Except“ („außer“), mit denen Sie alle Arten von Permutationen durchführen können.
+Sie können eine [neue bedingte Zugriffsrichtlinie](../authentication/tutorial-enable-azure-mfa.md?bc=%2fazure%2factive-directory%2fconditional-access%2fbreadcrumb%2ftoc.json&toc=%2fazure%2factive-directory%2fconditional-access%2ftoc.json) verwenden und die Zugriffssteuerungen konfigurieren, um integrierte Richtlinien in Azure AD zu implementieren. Sie können auch den benutzerdefinierten Richtlinien-Designer in AD FS 2016 für die Konfiguration von Zugriffssteuerungsrichtlinien verwenden. Der Regel-Editor enthält eine vollständige Liste der Optionen „Permit“ („Zulassen“) und „Except“ („außer“), mit denen Sie alle Arten von Permutationen durchführen können.
 
 ![Zugriffssteuerungsrichtlinien in Azure AD](media/migrate-adfs-apps-to-azure/map-builtin-access-control-policies-2.png)
 
