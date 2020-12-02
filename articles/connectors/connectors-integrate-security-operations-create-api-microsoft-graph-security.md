@@ -3,18 +3,18 @@ title: Integrieren und Verwalten von Sicherheitsvorgängen und Microsoft Graph-S
 description: Verbessern von Bedrohungsschutz, -erkennung und -reaktion mit Microsoft Graph-Sicherheit und Azure Logic Apps
 services: logic-apps
 ms.suite: integration
-author: preetikr
+author: ecfan
 ms.author: preetikr
 ms.reviewer: v-ching, estfan, logicappspm
 ms.topic: article
 ms.date: 02/21/2020
 tags: connectors
-ms.openlocfilehash: 0f121caddc6b629920479a34bef7b284dea117a4
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: a83cd68df2f1d722517d6239bf6959075860d0b8
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92677499"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888537"
 ---
 # <a name="improve-threat-protection-by-integrating-security-operations-with-microsoft-graph-security--azure-logic-apps"></a>Verbessern des Bedrohungsschutzes durch Integrieren von Sicherheitsvorgängen mit der Sicherheits-API von Microsoft Graph und Azure Logic Apps
 
@@ -30,7 +30,7 @@ Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Sicherheit
 
 Der Workflow Ihrer Logik-App kann Aktionen verwenden, die Antworten vom Sicherheits-API-Connector von Microsoft Graph erhalten, und diese Ausgabe weiteren Aktionen in Ihrem Workflow zur Verfügung stellen. Sie können die Ausgabe der Aktionen des Sicherheits-API-Connectors von Microsoft Graph auch von anderen Aktionen in Ihrem Workflow verwenden lassen. Wenn Sie z.B. Warnungen mit hohem Schweregrad über den Sicherheits-API-Connector von Microsoft Graph erhalten haben, können Sie diese Warnungen in einer E-Mail-Nachricht mithilfe des Outlook-Connectors senden. 
 
-Weitere Informationen zu Microsoft Graph-Sicherheit finden Sie in der [Übersicht über die Sicherheits-API von Microsoft Graph](/graph/security-concept-overview). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Wenn Sie sich für Microsoft Flow oder PowerApps interessieren, lesen Sie [Was ist Flow?](https://flow.microsoft.com/) oder [Was ist PowerApps?](https://powerapps.microsoft.com/).
+Weitere Informationen zu Microsoft Graph-Sicherheit finden Sie in der [Übersicht über die Sicherheits-API von Microsoft Graph](/graph/security-concept-overview). Falls Sie noch nicht mit Logik-Apps vertraut sind, finden Sie weitere Informationen unter [Was ist Azure Logic Apps?](../logic-apps/logic-apps-overview.md). Informationen zu Power Automate oder Power Apps finden Sie bei Bedarf in der [Übersicht über Power Automate](https://flow.microsoft.com/) bzw. in der [Übersicht über Power Apps](https://powerapps.microsoft.com/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -94,7 +94,7 @@ Dieses Beispiel zeigt, wie Sie einen Logik-App-Workflow starten können, wenn ne
    | Eigenschaft | Eigenschaft (JSON) | Erforderlich | type | BESCHREIBUNG |
    |----------|-----------------|----------|------|-------------|
    | **Intervall** | `interval` | Ja | Integer | Eine positive ganze Zahl, die beschreibt, wie oft der Workflow basierend auf der Häufigkeit ausgeführt wird. Zulässige Mindest- und Maximalintervalle: <p><p>– Monat: 1–16 Monate <br>– Tag: 1–500 Tage <br>– Stunde: 1–12.000 Stunden <br>– Minute: 1–72.000 Minuten <br>- Sekunde: 1–9.999.999 Sekunden <p>Wenn das Intervall also beispielsweise auf „6“ und die Häufigkeit auf „Month“ festgelegt ist, erfolgt die Wiederholung alle sechs Monate. |
-   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde** , **Minute** , **Stunde** , **Tag** , **Woche** oder **Monat** |
+   | **Frequency** | `frequency` | Ja | String | Die Zeiteinheit für die Wiederholung: **Sekunde**, **Minute**, **Stunde**, **Tag**, **Woche** oder **Monat** |
    | **Zeitzone** | `timeZone` | Nein | String | Nur relevant, wenn Sie eine Startzeit angeben, da dieser Trigger keine [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset) akzeptiert. Wählen Sie die anzuwendende Zeitzone aus. |
    | **Startzeit** | `startTime` | Nein | String | Geben Sie Startdatum und -uhrzeit im folgenden Format an: <p><p>JJJJ-MM-TTThh:mm:ss (bei Auswahl einer Zeitzone) <p>Oder <p>JJJJ-MM-TTThh:mm:ssZ (wenn keine Zeitzone ausgewählt wird) <p>Für den 18. September 2017 um 14:00 Uhr würden Sie also „2017-09-18T14:00:00“ angeben und eine Zeitzone (z. B. „Pacific Standard Time“) auswählen. Alternativ können Sie „2017-09-18T14:00:00Z“ ohne Zeitzone angeben. <p>**Hinweis:** Diese Startzeit kann maximal 49 Jahre in der Zukunft liegen und muss dem [ISO 8601-Format für Datums-/Uhrzeitangaben](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) entsprechen und im [UTC-Datums-/Zeitformat](https://en.wikipedia.org/wiki/Coordinated_Universal_Time) angegeben werden, jedoch ohne [UTC-Abweichung](https://en.wikipedia.org/wiki/UTC_offset). Wenn Sie keine Zeitzone auswählen, müssen Sie den Buchstaben „Z“ ohne Leerzeichen anhängen. „Z“ bezieht sich auf die entsprechende [nautische Zeit](https://en.wikipedia.org/wiki/Nautical_time). <p>Bei einfachen Zeitpläne ist die Startzeit das erste Vorkommen. Bei komplexeren Zeitplänen wird der Trigger nicht vor der Startzeit ausgelöst. [*Wie kann ich Startdatum und -uhrzeit verwenden?*](../logic-apps/concepts-schedule-automated-recurring-tasks-workflows.md#start-time) |
    ||||||
@@ -109,7 +109,7 @@ Hier finden Sie ausführlichere Informationen zur Verwendung der verschiedenen v
 
 ### <a name="manage-alerts"></a>Warnungen verwalten
 
-Um zu filtern, sortieren, oder die neuesten Ergebnisse zu erhalten, geben Sie *nur* die [von Microsoft Graph unterstützten ODATA-Abfrageparameter](/graph/query-parameters) ein. *Geben Sie nicht* die vollständige Basis-URL oder die HTTP-Aktion an, z.B. den `https://graph.microsoft.com/v1.0/security/alerts`-, `GET`- oder `PATCH`-Vorgang. Dieses spezifische Beispiel zeigt die Parameter für eine **Warnungen abrufen** -Aktion, wenn Sie eine Liste mit Warnungen mit hohem Schweregrad wünschen:
+Um zu filtern, sortieren, oder die neuesten Ergebnisse zu erhalten, geben Sie *nur* die [von Microsoft Graph unterstützten ODATA-Abfrageparameter](/graph/query-parameters) ein. *Geben Sie nicht* die vollständige Basis-URL oder die HTTP-Aktion an, z.B. den `https://graph.microsoft.com/v1.0/security/alerts`-, `GET`- oder `PATCH`-Vorgang. Dieses spezifische Beispiel zeigt die Parameter für eine **Warnungen abrufen**-Aktion, wenn Sie eine Liste mit Warnungen mit hohem Schweregrad wünschen:
 
 `Filter alerts value as Severity eq 'high'`
 
@@ -138,7 +138,7 @@ Microsoft Graph unterstützt [*Abonnements*](/graph/api/resources/subscription) 
 
 ### <a name="manage-threat-intelligence-indicators"></a>Verwalten von Threat Intelligence-Indikatoren
 
-Um zu filtern, sortieren, oder die neuesten Ergebnisse zu erhalten, geben Sie *nur* die [von Microsoft Graph unterstützten ODATA-Abfrageparameter](/graph/query-parameters) ein. *Geben Sie nicht* die vollständige Basis-URL oder die HTTP-Aktion an, z.B. den `https://graph.microsoft.com/beta/security/tiIndicators`-, `GET`- oder `PATCH`-Vorgang. Dieses spezifische Beispiel zeigt die Parameter für eine **Get tiIndicators** -Aktion, wenn Sie eine Liste mit dem Bedrohungstyp `DDoS` benötigen:
+Um zu filtern, sortieren, oder die neuesten Ergebnisse zu erhalten, geben Sie *nur* die [von Microsoft Graph unterstützten ODATA-Abfrageparameter](/graph/query-parameters) ein. *Geben Sie nicht* die vollständige Basis-URL oder die HTTP-Aktion an, z.B. den `https://graph.microsoft.com/beta/security/tiIndicators`-, `GET`- oder `PATCH`-Vorgang. Dieses spezifische Beispiel zeigt die Parameter für eine **Get tiIndicators**-Aktion, wenn Sie eine Liste mit dem Bedrohungstyp `DDoS` benötigen:
 
 `Filter threat intelligence indicator value as threatType eq 'DDoS'`
 

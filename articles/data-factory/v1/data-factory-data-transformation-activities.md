@@ -3,20 +3,20 @@ title: 'Datentransformation: Verarbeiten und Transformieren von Daten '
 description: Erfahren Sie, wie Sie Daten in Azure Data Factory mit Hadoop, Azure Machine Learning Studio (Classic) oder Azure Data Lake Analytics transformieren oder verarbeiten.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 91755dd1b5eea9f72978e09a605fc47d41ff3dee
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 587e8eaf36a8e9d0be86237e2db72f952853a0ff
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371714"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96495683"
 ---
 # <a name="transform-data-in-azure-data-factory-version-1"></a>Transformieren von Daten in Azure Data Factory Version 1
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Im Laufe der Zeit müssen die Vorhersagemodelle in den Bewertungsexperimenten vo
 Ausführliche Informationen zu diesen Aktivitäten in Studio (Classic) finden Sie unter [Erstellen einer Vorhersagepipeline mithilfe von Azure Machine Learning Studio (Classic) und Azure Data Factory](data-factory-azure-ml-batch-execution-activity.md). 
 
 ## <a name="stored-procedure-activity"></a>Aktivität „Gespeicherte Prozedur“
-Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics (ehemals SQL Data Warehouse), SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer. Unter [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) finden Sie Details.  
+Sie können die SQL Server-Aktivität „Gespeicherte Prozedur“ in einer Data Factory-Pipeline verwenden, um eine gespeicherte Prozedur in einem der folgenden Datenspeicher aufzurufen: Azure SQL-Datenbank, Azure Synapse Analytics, SQL Server-Datenbank in Ihrem Unternehmen oder auf einem virtuellen Azure-Computer. Unter [Aktivität „Gespeicherte Prozedur“](data-factory-stored-proc-activity.md) finden Sie Details.  
 
 ## <a name="data-lake-analytics-u-sql-activity"></a>U-SQL-Aktivität für Data Lake Analytics
 Die U-SQL-Aktivität für Data Lake Analytics wendet ein U-SQL-Skript auf einen Azure Data Lake Analytics-Cluster an. Unter [U-SQL-Aktivität für Data Lake Analytics](data-factory-usql-activity.md) finden Sie Details. 

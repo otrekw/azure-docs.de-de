@@ -2,19 +2,19 @@
 title: Konfigurieren von Linux-Python-Apps
 description: Es wird beschrieben, wie Sie den Python-Container konfigurieren, in dem Web-Apps ausgeführt werden, indem Sie sowohl das Azure-Portal als auch die Azure CLI verwenden.
 ms.topic: quickstart
-ms.date: 11/06/2020
+ms.date: 11/16/2020
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python, devx-track-azurecli
-ms.openlocfilehash: 9e0e9098959231d4283608e8191081ae2df6737a
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 149f8deb8839b3adce3555300c94b8ebdf587100
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425914"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94873844"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Konfigurieren einer Linux-Python-App für Azure App Service
 
-In diesem Artikel erfahren Sie, wie Python-Apps mit [Azure App Service](overview.md) ausgeführt werden und wie Sie das Verhalten von App Service bei Bedarf anpassen können. Python-Apps müssen mit allen erforderlichen [pip](https://pypi.org/project/pip/)-Modulen bereitgestellt werden.
+In diesem Artikel wird beschrieben, wie Python-Apps mit [Azure App Service](overview.md) ausgeführt werden und wie Sie vorhandene Apps zu Azure migrieren und das Verhalten von App Service bei Bedarf anpassen können. Python-Apps müssen mit allen erforderlichen [pip](https://pypi.org/project/pip/)-Modulen bereitgestellt werden.
 
 Die App Service-Bereitstellungs-Engine aktiviert automatisch eine virtuelle Umgebung und führt `pip install -r requirements.txt` für Sie aus, wenn Sie ein [Git-Repository](deploy-local-git.md) oder ein [ZIP-Paket](deploy-zip.md) bereitstellen.
 
@@ -94,7 +94,31 @@ Weitere Informationen zur Ausführung und Erstellung von Python-Apps unter Linux
 > [!NOTE]
 > Verwenden Sie in allen Prä- und Postbuildskripts immer relative Pfade, da sich der Buildcontainer, in dem Oryx ausgeführt wird, von dem Runtimecontainer unterscheidet, in dem die App ausgeführt wird. Verlassen Sie sich niemals auf die genaue Platzierung Ihres App-Projektordners im Container (z. B. die Platzierung unter *site/wwwroot*).
 
-## <a name="production-settings-for-django-apps"></a>Produktionseinstellungen für Django-Apps
+## <a name="migrate-existing-applications-to-azure"></a>Migrieren von vorhandenen Anwendungen zu Azure
+
+Vorhandene Webanwendungen können in Azure wie folgt erneut bereitgestellt werden:
+
+1. **Quellrepository**: Verwalten Sie Ihren Quellcode in einem geeigneten Repository wie GitHub, damit Sie zu einem späteren Zeitpunkt dieses Prozesses Continuous Deployment einrichten können.
+    1. Ihre Datei *requirements.txt* muss sich im Stammverzeichnis Ihres Repositorys für App Service befinden, damit die erforderlichen Pakete automatisch installiert werden können.    
+
+1. **Datenbank**: Falls Ihre App von einer Datenbank abhängig ist, sollten Sie die erforderlichen Ressourcen auch in Azure bereitstellen. Siehe [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Erstellen einer Postgres-Datenbankinstanz in Azure](tutorial-python-postgresql-app.md#create-postgres-database-in-azure), um ein Beispiel anzuzeigen.
+
+1. **App Service-Ressourcen**: Erstellen Sie eine Ressourcengruppe, einen App Service-Plan und eine App Service-Web-App zum Hosten Ihrer Anwendung. Dies lässt sich am einfachsten erreichen, indem Sie eine anfängliche Bereitstellung Ihres Codes über den Azure CLI-Befehl `az webapp up` verwenden. Dies wird unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Bereitstellen des Codes in Azure App Service](tutorial-python-postgresql-app.md#deploy-the-code-to-azure-app-service) veranschaulicht. Ersetzen Sie die Namen der Ressourcengruppe, des App Service-Plans und der Web-App durch Namen, die für Ihre Anwendung besser geeignet sind.
+
+1. **Environment variables** (Umgebungsvariablen): Falls für Ihre Anwendung Umgebungsvariablen benötigt werden, müssen Sie entsprechende [App Service-Anwendungseinstellungen](configure-common.md#configure-app-settings) erstellen. Diese App Service-Einstellungen werden für Ihren Code als Umgebungsvariablen angezeigt. Dies ist im Abschnitt mit den Informationen zum [Zugreifen auf Umgebungsvariablen](#access-app-settings-as-environment-variables) beschrieben.
+    - Datenbankverbindungen werden beispielsweise häufig mit Einstellungen dieser Art verwaltet. Dis wird unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Konfigurieren der Umgebungsvariablen für die Datenbankverbindung](tutorial-python-postgresql-app.md#configure-environment-variables-to-connect-the-database) veranschaulicht.
+    - Informationen zu spezifischen Einstellungen für typische Django-Apps finden Sie unter [Produktionseinstellungen für Django-Apps](#production-settings-for-django-apps).
+
+1. **App-Start**: Lesen Sie den Abschnitt [Startprozess des Containers](#container-startup-process) weiter unten in diesem Artikel, um sich damit vertraut zu machen, wie App Service versucht, Ihre App auszuführen. Von App Service wird standardmäßig der Gunicorn-Webserver verwendet. Dieser muss dazu in der Lage sein, auf Ihr App-Objekt oder den Ordner *wsgi.py* zuzugreifen. Bei Bedarf können Sie den [Startbefehl anpassen](#customize-startup-command).
+
+1. **Continuous Deployment:** Richten Sie Continuous Deployment so ein, wie dies unter [Continuous Deployment in Azure App Service](deploy-continuous-deployment.md) beschrieben ist, wenn Sie die Azure Pipelines- oder Kudu-Bereitstellung verwenden. Bei Verwendung von GitHub Actions helfen Ihnen die Informationen unter [Bereitstellen in App Service mithilfe von GitHub Actions](deploy-github-actions.md) weiter.
+
+1. **Benutzerdefinierte Aktionen**: Zum Durchführen von Aktionen in dem App Service-Container, von dem Ihre App gehostet wird, z. B. Django-Datenbankmigrationen, können Sie eine [Verbindung mit dem Container per SSH herstellen](configure-linux-open-ssh-session.md). Ein Beispiel für die Ausführung von Django-Datenbankmigrationen finden Sie unter [Tutorial: Bereitstellen einer Django-Web-App mit PostgreSQL in Azure App Service: Ausführen von Django-Datenbankmigrationen](tutorial-python-postgresql-app.md#run-django-database-migrations).
+    - Bei Verwendung von Continuous Deployment können Sie diese Aktionen mit Postbuildbefehlen durchführen. Dies ist weiter oben unter [Anpassen der Buildautomatisierung](#customize-build-automation) beschrieben.
+
+Nachdem Sie diese Schritte abgeschlossen haben, sollten Sie Änderungen für Ihr Quellrepository committen können, und diese Aktualisierungen sollten dann automatisch in App Service bereitgestellt werden.
+
+### <a name="production-settings-for-django-apps"></a>Produktionseinstellungen für Django-Apps
 
 Für eine Produktionsumgebung wie Azure App Service sollten bei Django-Apps die Vorgaben in der [Bereitstellungsprüfliste](https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/) von Django (djangoproject.com) erfüllt werden.
 

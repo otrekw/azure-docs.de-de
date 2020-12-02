@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 08/28/2020
+ms.date: 11/17/2020
 ms.author: alkohli
-ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 5e5cb077868a224620d1a23e1ff1aac9c8d9f095
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90891096"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874473"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Erstellen von Zertifikaten für Azure Stack Edge Pro-Geräte mit dem Azure Stack Hub Readiness Checker-Tool 
 
@@ -42,7 +42,7 @@ Mit dem Azure Stack Hub Readiness Checker-Tool (AzsReadinessChecker) können Sie
 Stellen Sie Folgendes sicher, um Zertifikatsignieranforderungen für die Azure Stack Edge Pro-Gerätebereitstellung zu erstellen: 
 
 - Sie haben einen Client, auf dem Windows 10 oder Windows Server 2016 oder höher ausgeführt wird. 
-- Sie haben das Microsoft Azure Stack Hub Readiness Checker-Tool 1.2002.1133.85 [aus dem PowerShell-Katalog](https://aka.ms/AzsReadinessChecker) auf dieses System heruntergeladen. Möglicherweise müssen Sie nach diesem Paket suchen. Nur mit dieser Version des Tools können Sie Zertifikate für Azure Stack Edge Pro-Geräte erstellen.
+- Sie haben das Microsoft Azure Stack Hub Readiness Checker-Tool [aus dem PowerShell-Katalog](https://aka.ms/AzsReadinessChecker) auf dieses System heruntergeladen.
 - Halten Sie die folgenden Informationen für die Zertifikate bereit:
   - Mediumname
   - Knotenseriennummer
@@ -56,7 +56,7 @@ Führen Sie die folgenden Schritte aus, um die Azure Stack Edge Pro-Gerätezerti
 2. Installieren Sie das Azure Stack Hub Readiness Checker-Tool. Geben Sie an der PowerShell-Eingabeaufforderung Folgendes ein: 
 
     ```azurepowershell
-    Install-Module -Name Microsoft.AzureStack.ReadinessChecker -RequiredVersion 1.2002.1133.85 -Force
+    Install-Module -Name Microsoft.AzureStack.ReadinessChecker
     ```
 
     Um zu überprüfen, welche Version installiert ist, geben Sie Folgendes ein:  
@@ -113,10 +113,10 @@ Führen Sie die folgenden Schritte aus, um die Azure Stack Edge Pro-Gerätezerti
     |Dateinamen  |Typ der Zertifikatanforderung  |
     |---------|---------|
     |Beginnend mit Ihrem `DeviceName`     |Zertifikatanforderung für lokale Webbenutzeroberfläche      |
-    |Beginnend mit Ihrer `NodeSerialNumber`     |Knotenzertifikatanforderung         |
+    |Beginnend mit Ihrem `NodeSerialNumber`     |Knotenzertifikatanforderung         |
     |Seit `login`     |Zertifikatanforderung für Azure Resource Manager-Endpunkt       |
-    |Seit      |Blobspeicher-Zertifikatanforderung; sie enthält einen Platzhalter, da sie alle Speicherkonten abdeckt, die Sie möglicherweise auf dem Gerät erstellen.          |
-    |Seit `AzureStackEdgeVPNCertificate`     |VPN-Client-Zertifikatanforderung.         |
+    |Seit `wildcard`     |Blobspeicher-Zertifikatanforderung; sie enthält einen Platzhalter, da sie alle Speicherkonten abdeckt, die Sie möglicherweise auf dem Gerät erstellen.          |
+    |Seit      |VPN-Client-Zertifikatanforderung.         |
 
     Außerdem wird ein INF-Ordner angezeigt. Dieser enthält eine management.<Name des Edge-Geräts>-Informationsdatei in Klartext, in der die Zertifikatdetails erläutert werden.  
 

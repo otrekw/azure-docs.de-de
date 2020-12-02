@@ -17,12 +17,12 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
-ms.openlocfilehash: 3f52b8d4e56ec854f93940ea77f09c3dff1d362e
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 423a879889402d5d3df70a7fadae6451c8418238
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93096001"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95743156"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Was sind Azure AD-Zugriffsüberprüfungen?
 
@@ -74,10 +74,18 @@ Je nachdem, was Sie überprüfen möchten, erstellen Sie Ihre Zugriffsüberprüf
 
 Sie benötigen für Ihr Verzeichnis mindestens so viele Azure AD Premium P2-Lizenzen wie Mitarbeiter, die mit den folgenden Aufgaben betraut sind:
 
-- Mitglieder und Gastbenutzer, die als Reviewer zugewiesen sind
-- Mitglieder und Gastbenutzer, die eine Selbstüberprüfung ausführen
-- Gruppenbesitzer, die eine Zugriffsüberprüfung durchführen
-- Anwendungsbesitzer, die eine Zugriffsüberprüfung durchführen
+-   Mitgliedsbenutzer, die als Prüfer zugewiesen sind
+-   Mitgliedsbenutzer, die eine Selbstüberprüfung durchführen
+-   Als Gruppenbesitzer fungierende Mitgliedsbenutzer, die eine Zugriffsüberprüfung durchführen
+-   Als Anwendungsbesitzer fungierende Mitgliedsbenutzer, die eine Zugriffsüberprüfung durchführen
+
+Bei Gastbenutzern hängen die Lizenzierungsanforderungen vom verwendeten Lizenzierungsmodell ab. Die folgenden Gastbenutzeraktivitäten werden jedoch als Azure AD Premium P2-Nutzung betrachtet:
+
+-   Gastbenutzer, die als Prüfer zugewiesen sind
+-   Gastbenutzer, die eine Selbstüberprüfung durchführen
+-   Als Gruppenbesitzer fungierende Gastbenutzer, die eine Zugriffsüberprüfung durchführen
+-   Als Anwendungsbesitzer fungierende Gastbenutzer, die eine Zugriffsüberprüfung durchführen
+
 
 Azure AD Premium P2-Lizenzen sind **nicht** für Benutzer mit den Rollen „Globaler Administrator“ oder „Benutzeradministrator“ erforderlich, von denen Zugriffsüberprüfungen eingerichtet, Einstellungen konfiguriert oder die Entscheidungen aus den Überprüfungen umgesetzt werden.
 

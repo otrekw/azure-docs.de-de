@@ -15,13 +15,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/07/2020
 ms.author: blehr
-ms.custom: references_regions
-ms.openlocfilehash: a1bd303390626eaea71e588e325fedbd2d8fa4b9
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.custom: references_regions , devx-track-azurecli
+ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94353355"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94843739"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Ausführen eines Upgrades für öffentliche IP-Adressen
 
@@ -148,24 +148,14 @@ Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der m
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Diese Funktionalität ist derzeit nur in den folgenden Regionen verfügbar:<br>
-USA, Westen-Mitte<br>
-USA Nord Mitte<br>
-USA (Westen)<br>
-USA, Westen 2<br>
-Norwegen, Osten<br>
-Südafrika, Norden<br>
-East US<br>
-Nordeuropa<br>
-Korea, Mitte<br>
-Indien, Mitte<br>
-USA (Ost) 2<br>
-Schweiz, Norden<br>
-Indien, Westen<br>
-Deutschland, Norden<br>
-Kanada, Mitte<br>
-Frankreich, Süden<br>
-Indien, Westen
+* Diese Funktionalität ist aktuell in den folgenden Regionen nicht verfügbar:<br>
+US Government, Virginia<br>
+US DoD, Osten<br>
+US DoD, Mitte<br>
+China, Osten<br>
+China, Osten 2<br>
+China, Norden<br>
+China, Norden 2
 
 * Damit ein Upgrade der öffentlichen IP-Adresse mit Basic-SKU durchgeführt werden kann, darf diese keiner Azure-Ressource zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von öffentlichen IP-Adressen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address).  Ebenso darf eine reservierte IP, die migriert werden soll, keinem Clouddienst zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von reservierten IPs finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm).  
 * Öffentliche IP-Adressen, für die ein Upgrade von der Basic-SKU auf die Standard-SKU durchgeführt wird, haben weiterhin keine [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) und können daher keinen Azure-Ressourcen zugeordnet werden, die zonenredundant oder zonal sind.  Beachten Sie, dass dies nur für Regionen gilt, in denen Verfügbarkeitszonen angeboten werden.

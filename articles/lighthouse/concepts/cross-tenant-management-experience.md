@@ -1,14 +1,14 @@
 ---
 title: Mandantenübergreifende Verwaltungsmöglichkeiten
 description: Die delegierte Azure-Ressourcenverwaltung ermöglicht eine mandantenübergreifende Verwaltungserfahrung.
-ms.date: 11/09/2020
+ms.date: 11/19/2020
 ms.topic: conceptual
-ms.openlocfilehash: dfb92e3f4f02e693ae5e4bba57e5344288c4615a
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 95b9bcf6bb9530afc9f6a23c323b6931e8975ad1
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413121"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905122"
 ---
 # <a name="cross-tenant-management-experiences"></a>Mandantenübergreifende Verwaltungsmöglichkeiten
 
@@ -81,6 +81,8 @@ Die meisten Aufgaben und Dienste können auf delegierten Ressourcen über verwal
 [Azure Kubernetes Service (AKS)](../../aks/index.yml):
 
 - Verwalten gehosteter Kubernetes-Umgebungen und Bereitstellen und Verwalten von Containeranwendungen innerhalb von Kundenmandanten
+- Bereitstellen und Verwalten von Clustern in Kundenmandanten
+-   Verwenden von Azure Monitor für Container zum Überwachen der Leistung in Kundenmandanten
 
 [Azure Migrate](../../migrate/index.yml):
 

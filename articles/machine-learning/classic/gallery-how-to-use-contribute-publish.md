@@ -9,16 +9,16 @@ author: likebupt
 ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 01/11/2019
-ms.openlocfilehash: fc405c56538ab305d6e0b8a22c1095458cb1264e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: eacc7adae16785049022cd05f04904d97b0b3a6d
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93309873"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95486125"
 ---
 # <a name="share-and-discover-resources-in-the-azure-ai-gallery"></a>Freigeben und Entdecken von Ressourcen im Azure KI-Katalog
 
-**BETRIFFT:** ![Ja](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic) ![Nein ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
+**GILT FÜR:**  ![Dies ist ein Häkchen, d. h., dieser Artikel bezieht sich auf Machine Learning Studio (Classic). ](../../../includes/media/aml-applies-to-skus/yes.png)Machine Learning Studio (Classic)   ![Dies ist ein X, d. h., dieser Artikel bezieht sich auf Azure Machine Learning. ](../../../includes/media/aml-applies-to-skus/no.png)[Azure Machine Learning](../overview-what-is-machine-learning-studio.md#ml-studio-classic-vs-azure-machine-learning-studio)
 
 
 
@@ -30,10 +30,10 @@ Der Katalog enthält viele Ressourcen, mit denen Sie Ihre eigenen Analytics-Lös
 
 Der Azure KI-Katalog enthält verschiedene Ressourcen, die von Microsoft und Mitgliedern der Data Science-Community bereitgestellt wurden. Dazu gehören:
 
-* **Experimente** : Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
-* **Tutorials** : Es sind mehrere Tutorials verfügbar, in denen Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben werden.
-* **Sammlungen** : Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
-* **Benutzerdefinierte Module** : Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
+* **Experimente**: Die Gallery enthält eine Vielzahl von Experimenten, die in Azure Machine Learning Studio (klassisch) entwickelt wurden. Diese reichen von kurzen Machbarkeitsexperimenten, bei denen ein bestimmtes Machine Learning-Verfahren veranschaulicht wird, bis zu vollständig entwickelten Lösungen für komplexe Machine Learning-Probleme.
+* **Tutorials**: Es sind mehrere Tutorials verfügbar, in denen Machine Learning-Technologien und -Konzepte oder erweiterte Methoden zum Lösen verschiedener Machine Learning-Probleme beschrieben werden.
+* **Sammlungen**: Mit einer Sammlung können Sie Experimente, APIs und andere Ressourcen gruppieren, die eine bestimmte Lösung oder ein Konzept betreffen.
+* **Benutzerdefinierte Module**: Sie können benutzerdefinierte Module in Ihren (klassischen) Studio-Arbeitsbereich herunterladen und in Ihren eigenen Experimenten verwenden.
 
 ## <a name="discover-and-contribute"></a>Entdecken und Mitwirken
 
@@ -49,7 +49,7 @@ Außerdem können Sie eine Ressource auch mit Freunden oder Kollegen teilen, ind
 Wenn Sie sich registrieren, werden Sie Mitglied der Katalog-Community. Sie können dann Ressourcen herunterladen oder eigene Gallery-Elemente bereitstellen, damit andere Benutzer von Ihren Lösungen profitieren können.
 
 Sie können **Experimente** und **benutzerdefinierte Module** herunterladen und zur Entwicklung Ihrer eigenen Analyselösungen verwenden.
-Sie können mit **Experimenten** , **Tutorials** und **Sammlungen** zur Gallery beitragen.
+Sie können mit **Experimenten**, **Tutorials** und **Sammlungen** zur Gallery beitragen.
 
 ## <a name="download-experiments-modules"></a>Herunterladen von Experimenten und Modulen
 
@@ -65,7 +65,7 @@ So laden Sie eine Ressource aus dem Azure KI-Katalog herunter:
 So laden Sie eine Ressource aus Studio (klassisch) herunter:
 
 1. Wählen Sie in Studio (klassisch) **NEU** aus.
-1. Wählen Sie **Modul** , **Experiment** oder **Notebook**.
+1. Wählen Sie **Modul**, **Experiment** oder **Notebook**.
 1. Suchen Sie eine Gallery-Ressource.
 1. Zeigen Sie mit der Maus auf eine Ressource, und wählen Sie dann **In Studio öffnen**.
     ![Öffnen des Gallery-Experiments in Machine Learning Studio (klassisch)](./media/gallery-how-to-use-contribute-publish/open-experiment-from-studio.png)
@@ -80,7 +80,7 @@ So verwenden Sie ein importiertes benutzerdefiniertes Modul:
 
 ## <a name="contribute-experiments"></a>Beitragen mit Experimenten
 
-Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente** , die Sie in Studio (klassisch) entwickelt haben, beitragen.
+Wenn Sie Ihre Analysemethode zeigen oder andere Mitglieder beim Einstieg unterstützen möchten, können Sie **Experimente**, die Sie in Studio (klassisch) entwickelt haben, beitragen.
 Sie können verfolgen, wie viele andere Benutzer Ihren Beitrag in der Gallery aufrufen und herunterladen.
 Benutzer können auch Kommentare hinzufügen und Ihre Beiträge mit anderen Mitgliedern der Data Science-Community teilen.
 Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachrichtigungen über Kommentare zu Ihrem Beitrag erhalten.
@@ -108,12 +108,12 @@ Zudem können Sie sich mit einem Diskussionstool wie Disqus anmelden und Benachr
 
 1. Wählen Sie auf der Seite **Bildauswahl** ein Miniaturbild für Ihr Experiment aus. Die Miniaturansicht wird oben auf der Detailseite des Experiments und in dessen Kachel angezeigt. Andere Benutzer sehen die Miniaturansicht, wenn sie den Katalog durchsuchen. Sie können Bilder von Ihrem Computer hochladen oder ein vorgefertigtes Bild aus dem Katalog auswählen.
 
-1. Auf der Seite **Einstellungen** wählen Sie unter **Sichtbarkeit** aus, ob Sie Ihre Inhalte zur öffentlichen Verfügbarkeit veröffentlichen möchten ( **Öffentlich** ) oder nur für Personen, die über einen Link zur Seite verfügen ( **Nicht aufgeführt** ).
+1. Auf der Seite **Einstellungen** wählen Sie unter **Sichtbarkeit** aus, ob Sie Ihre Inhalte zur öffentlichen Verfügbarkeit veröffentlichen möchten (**Öffentlich**) oder nur für Personen, die über einen Link zur Seite verfügen (**Nicht aufgeführt**).
 
    > [!TIP]
    > Wenn Sie sicherstellen möchten, dass Ihre Dokumentation fehlerfrei ist, bevor Sie sie öffentlich freigeben, können Sie das Experiment als **Nicht aufgeführt** veröffentlichen. Sie können die Sichtbarkeit später auf der Detailseite des Experiments in **Öffentlich** ändern. Hinweis: Wenn Sie ein Experiment als **Öffentlich** festlegen, können Sie es nicht später nicht in **Nicht aufgeführt** ändern.
 
-1. Klicken Sie auf das Kontrollkästchen **OK** , um das Experiment im Katalog zu veröffentlichen.
+1. Klicken Sie auf das Kontrollkästchen **OK**, um das Experiment im Katalog zu veröffentlichen.
 
 ### <a name="update-your-experiment"></a>Aktualisieren Sie Ihr Experiment
 
@@ -125,13 +125,13 @@ Sie können die folgenden Informationen Ihres Experiments direkt im Katalog änd
 * Zusammenfassung oder Beschreibung
 * `Tags`
 * Image
-* Sichtbarkeitseinstellung ( **Öffentlich** oder **Nicht aufgeführt** )
+* Sichtbarkeitseinstellung (**Öffentlich** oder **Nicht aufgeführt**)
 
 Sie können das Experiment auch aus dem Katalog löschen.
 
 Sie können diese Änderungen über die Detailseite des Experiments oder Ihre Profilseite im Katalog vornehmen oder es dort löschen.
 
-* Wählen Sie auf der Detailseite des Experiments **Bearbeiten** aus, um die Details für das Experiment zu ändern. Die Detailseite wechselt in den Bearbeitungsmodus. Um Änderungen vorzunehmen, wählen Sie neben dem Namen, der Zusammenfassung oder den Tags des Experiments **Bearbeiten** aus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Um die Sichtbarkeitseinstellungen des Experiments ( **Öffentlich** oder **Nicht aufgeführt** ) zu ändern oder um das Experiment aus dem Katalog zu löschen, wählen Sie das Symbol **Einstellungen** aus.
+* Wählen Sie auf der Detailseite des Experiments **Bearbeiten** aus, um die Details für das Experiment zu ändern. Die Detailseite wechselt in den Bearbeitungsmodus. Um Änderungen vorzunehmen, wählen Sie neben dem Namen, der Zusammenfassung oder den Tags des Experiments **Bearbeiten** aus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Um die Sichtbarkeitseinstellungen des Experiments (**Öffentlich** oder **Nicht aufgeführt**) zu ändern oder um das Experiment aus dem Katalog zu löschen, wählen Sie das Symbol **Einstellungen** aus.
 
 * Wählen Sie auf Ihrer Profilseite den Pfeil nach unten für das Experiment aus, und wählen Sie dann **Bearbeiten** aus. Daraufhin gelangen Sie zur Detailseite des Experiments im Bearbeitungsmodus. Wenn Sie alle gewünschten Änderungen vorgenommen haben, klicken Sie auf **Fertig**. Wählen Sie **Löschen** aus, um das Experiment aus dem Katalog zu löschen.
 
@@ -169,9 +169,9 @@ Ihre Sammlung befindet sich nun im Azure KI-Katalog Ihre Beiträge werden auf Ih
 
 Sie haben zwei Möglichkeiten, um Ihrer Sammlung Elemente hinzufügen:
 
-* Öffnen Sie die Sammlung, wählen **Bearbeiten** und dann **Element hinzufügen**. Sie können Elemente hinzufügen, die Sie zur Gallery beigetragen haben, oder Sie können die Gallery nach Elementen durchsuchen, die hinzugefügt werden sollen. Klicken Sie auf **Hinzufügen** , wenn Sie die Elemente ausgewählt haben, die Sie hinzufügen möchten.
+* Öffnen Sie die Sammlung, wählen **Bearbeiten** und dann **Element hinzufügen**. Sie können Elemente hinzufügen, die Sie zur Gallery beigetragen haben, oder Sie können die Gallery nach Elementen durchsuchen, die hinzugefügt werden sollen. Klicken Sie auf **Hinzufügen**, wenn Sie die Elemente ausgewählt haben, die Sie hinzufügen möchten.
 
-* Wenn Sie beim Durchsuchen der Gallery ein Element finden, das Sie hinzufügen möchten, wählen Sie **Der Sammlung hinzufügen** , um dieses Element zu öffnen. Wählen Sie die Sammlung aus, der das Element hinzugefügt werden soll.
+* Wenn Sie beim Durchsuchen der Gallery ein Element finden, das Sie hinzufügen möchten, wählen Sie **Der Sammlung hinzufügen**, um dieses Element zu öffnen. Wählen Sie die Sammlung aus, der das Element hinzugefügt werden soll.
 
 Sie können die Elemente in Ihrer Sammlung bearbeiten, indem Sie die **Bearbeiten** wählen.
 
@@ -202,6 +202,6 @@ Nachdem Sie ein Tag eingegeben haben, drücken Sie die TAB-TASTE, um ein weitere
 
 Der Katalog soll von unseren Benutzern für unsere Benutzer gestaltet werden. Teilen Sie uns mit dem Smiley auf der rechten Seite mit, was Sie am Katalog schätzen oder daran ändern möchten.  
 
-![Feedback](./media/gallery-how-to-use-contribute-publish/feedback.png)
+![In einem Feedbackfenster können Sie ein Lächeln oder ein Stirnrunzeln übermitteln bzw. einen Text eingeben. Es gibt eine Schaltfläche zum Übermitteln.](./media/gallery-how-to-use-contribute-publish/feedback.png)
 
 **[ZUM KATALOG &gt;&gt;](https://gallery.azure.ai)**

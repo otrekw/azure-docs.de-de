@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/11/2020
 ms.author: mohitku
 ms.reviewer: tyao
-ms.openlocfilehash: a24f9e78de34b17977a1876cbefb473cc2610db0
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 4c710792dd7966fad76b33954fdf7c2253cf18f0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95547927"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488237"
 ---
 # <a name="tuning-web-application-firewall-waf-for-azure-front-door"></a>Optimieren von Web Application Firewall (WAF) für Azure Front Door
  
@@ -136,7 +136,7 @@ Ein Vorteil der Verwendung einer Ausschlussliste besteht darin, dass nur die Üb
  
 Beachten Sie, dass es sich bei den Ausschlüssen um eine globale Einstellung handelt. Das bedeutet, dass der konfigurierte Ausschluss für den gesamten Datenverkehr gilt, der WAF durchläuft, nicht nur für eine bestimmte Web-App oder einen URI. Dies kann beispielsweise ein Problem sein, wenn *1=1* eine gültige Anforderung im Text für eine bestimmte Web-App ist, nicht aber für andere Web-Apps mit der gleichen WAF-Richtlinie. Wenn es sinnvoll ist, unterschiedliche Ausschlusslisten für verschiedene Anwendungen zu verwenden, sollten Sie verschiedene WAF-Richtlinien für die einzelnen Anwendungen verwenden und auf das Front-End der jeweiligen Anwendung anwenden.
  
-Wenn Sie Ausschlusslisten für verwaltete Regeln konfigurieren, können Sie auswählen, ob alle Regeln innerhalb eines Regelsatzes, alle Regeln innerhalb einer Regelgruppe oder einzelne Regeln ausgeschlossen werden sollen. Eine Ausschlussliste kann mit [PowerShell](https://docs.microsoft.com/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), der [Azure-Befehlszeilenschnittstelle](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), der [REST-API](https://docs.microsoft.com/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) oder im Azure-Portal konfiguriert werden.
+Wenn Sie Ausschlusslisten für verwaltete Regeln konfigurieren, können Sie auswählen, ob alle Regeln innerhalb eines Regelsatzes, alle Regeln innerhalb einer Regelgruppe oder einzelne Regeln ausgeschlossen werden sollen. Eine Ausschlussliste kann mit [PowerShell](/powershell/module/az.frontdoor/New-AzFrontDoorWafManagedRuleExclusionObject?view=azps-4.7.0&viewFallbackFrom=azps-3.5.0), der [Azure-Befehlszeilenschnittstelle](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/exclusion?view=azure-cli-latest#ext_front_door_az_network_front_door_waf_policy_managed_rules_exclusion_add), der [REST-API](/rest/api/frontdoorservice/webapplicationfirewall/policies/createorupdate) oder im Azure-Portal konfiguriert werden.
 
 * Ausschlüsse auf Regelebene
   * Die Anwendung von Ausschlüssen auf Regelebene bedeutet, dass die angegebenen Ausschlüsse nur für die jeweilige einzelne Regel nicht analysiert werden, jedoch durch alle anderen Regeln im Regelsatz weiterhin analysiert werden. Dies ist die präziseste Ebene für Ausschlüsse. Damit können Sie den verwalteten Regelsatz basierend auf den Informationen optimieren, die Sie bei der Problembehandlung eines Ereignisses in den WAF-Protokollen finden.
@@ -193,7 +193,7 @@ Das Deaktivieren einer Regel ist von Vorteil, wenn Sie sicher sind, dass alle An
  
 Die Deaktivierung einer Regel ist jedoch eine globale Einstellung, die für alle Front-End-Hosts gilt, die der WAF-Richtlinie zugeordnet sind. Wenn Sie eine Regel deaktivieren, werden Sicherheitsrisiken möglicherweise ohne Schutz oder Erkennung für andere Front-End-Hosts offengelegt, die der WAF-Richtlinie zugeordnet sind.
  
-Wenn Sie eine verwaltete Regel mithilfe von Azure PowerShell deaktivieren möchten, finden Sie weitere Informationen in der Dokumentation zum [`PSAzureManagedRuleOverride`](https://docs.microsoft.com/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?view=azps-4.7.0&preserve-view=true)-Objekt. Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, finden Sie weitere Informationen in der Dokumentation zu [`az network front-door waf-policy managed-rules override`](https://docs.microsoft.com/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?view=azure-cli-latest&preserve-view=true).
+Wenn Sie eine verwaltete Regel mithilfe von Azure PowerShell deaktivieren möchten, finden Sie weitere Informationen in der Dokumentation zum [`PSAzureManagedRuleOverride`](/powershell/module/az.frontdoor/new-azfrontdoorwafmanagedruleoverrideobject?preserve-view=true&view=azps-4.7.0)-Objekt. Wenn Sie die Azure-Befehlszeilenschnittstelle verwenden möchten, finden Sie weitere Informationen in der Dokumentation zu [`az network front-door waf-policy managed-rules override`](/cli/azure/ext/front-door/network/front-door/waf-policy/managed-rules/override?preserve-view=true&view=azure-cli-latest).
 
 ![WAF-Regeln](../media/waf-front-door-tuning/waf-rules.png)
 

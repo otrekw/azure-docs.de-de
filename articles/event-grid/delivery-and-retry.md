@@ -3,18 +3,21 @@ title: Azure Event Grid – Übermittlung und Wiederholung
 description: Beschreibt, wie Azure Event Grid Ereignisse übermittelt und wie nicht übermittelte Nachrichten verarbeitet werden.
 ms.topic: conceptual
 ms.date: 10/29/2020
-ms.openlocfilehash: 483a868022d4ae8f7c564e51344dfbede4314232
-ms.sourcegitcommit: 4f4a2b16ff3a76e5d39e3fcf295bca19cff43540
+ms.openlocfilehash: 7bf8fd3a647e28d18a7ca1e658761f9226d1153a
+ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93042952"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94981101"
 ---
 # <a name="event-grid-message-delivery-and-retry"></a>Event Grid – Übermittlung und Wiederholung von Nachrichten
 
 In diesem Artikel wird beschrieben, wie Azure Event Grid Ereignisse verarbeitet, wenn die Übermittlung nicht bestätigt wird.
 
-Event Grid bietet permanente Übermittlung. Jede Nachricht wird für jedes Abonnement mindestens einmal übermittelt. Ereignisse werden sofort an den registrierten Endpunkt des jeweiligen Abonnements gesendet. Wenn ein Endpunkt den Eingang eines Ereignisses nicht bestätigt, wiederholt Event Grid die Übermittlung des Ereignisses.
+Event Grid bietet permanente Übermittlung. Jede Nachricht wird für jedes Abonnement **mindestens einmal** übermittelt. Ereignisse werden sofort an den registrierten Endpunkt des jeweiligen Abonnements gesendet. Wenn ein Endpunkt den Eingang eines Ereignisses nicht bestätigt, wiederholt Event Grid die Übermittlung des Ereignisses.
+
+> [!NOTE]
+> Bei der Ereignisübermittlung durch Event Grid wird unter Umständen die Reihenfolge nicht eingehalten, sodass der Abonnent die Ereignisse ggf. nicht in der richtigen Reihenfolge erhält. 
 
 ## <a name="batched-event-delivery"></a>Batchübermittlung von Ereignissen
 
@@ -33,8 +36,8 @@ Die Batchübermittlung wird pro Ereignisabonnement über das Portal, eine Befehl
 ### <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
 Wenn Sie ein Ereignisabonnement erstellen, verwenden Sie die folgenden Parameter: 
 
-- **max-events-per-batch** : maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
-- **preferred-batch-size-in-kilobytes** : bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
+- **max-events-per-batch**: maximale Anzahl von Ereignissen in einem Batch. Muss eine Zahl im Bereich 1 bis 5.000 sein.
+- **preferred-batch-size-in-kilobytes**: bevorzugte Batchgröße in Kilobyte. Muss eine Zahl im Bereich 1 bis 1.024 sein.
 
 ```azurecli
 storageid=$(az storage account show --name <storage_account_name> --resource-group <resource_group_name> --query id --output tsv)

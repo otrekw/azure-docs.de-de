@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 315dfcb10b11278401d6cc0abd42b40b5f55f72a
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 6efcadf85816bb6aa014893bb9b20476a0701990
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968360"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94886752"
 ---
 # <a name="monitor-and-review-logs-for-on-premises-azure-ad-password-protection-environments"></a>Überwachen und Überprüfen der Protokolle für lokale Umgebungen mit Azure AD-Kennwortschutz
 
@@ -70,11 +70,15 @@ Die wichtigsten auf die Kennwortüberprüfung bezogenen Ereignisse sind wie folg
 |Fehler (aufgrund der Kundenkennwortrichtlinie)| 10016, 30002| 10017, 30003|
 |Fehler (aufgrund der Microsoft-Kennwortrichtlinie)| 10016, 30004| 10017, 30005|
 |Fehler (aufgrund einer Kombination aus der Microsoft- und der Kundenkennwortrichtlinie)| 10016, 30026| 10017, 30027|
+|Fehler (aufgrund des Benutzernamens)| 10016, 30021| 10017, 30022|
 |Im ausschließlichen Überwachungsmodus bestanden (würde Kundenkennwortrichtlinie nicht bestehen)| 10024, 30008| 10025, 30007|
 |Im ausschließlichen Überwachungsmodus bestanden (würde Kennwortrichtlinie von Microsoft nicht bestehen)| 10024, 30010| 10025, 30009|
 |Im Nur-Überprüfungsmodus bestanden (würde Kombination aus Microsoft- und Kundenkennwortrichtlinie nicht bestehen)| 10024, 30028| 10025, 30029|
+|Im ausschließlichen Überwachungsmodus bestanden (Benutzername hätte zu einem Fehler geführt)| 10016, 30024| 10017, 30023|
 
 Wenn in der obigen Tabelle auf „kombinierte Richtlinien“ verwiesen wird, bezieht sich das auf Situationen, in denen das Kennwort eines Benutzers mindestens ein Token enthält, das sowohl in der Microsoft-Kennwortsperrliste als auch in der Kunden-Kennwortsperrliste auftritt.
+
+Die Fälle in der obigen Tabelle, in denen auf den Benutzernamen verwiesen wird, beziehen sich auf Situationen, in denen das Kennwort eines Benutzers entweder den Kontonamen des Benutzers und/oder einen der Anzeigenamen des Benutzers enthielt. In diesen Szenarien wird das Kennwort des Benutzers jeweils abgelehnt, wenn die Richtlinie auf „Erzwingen“ festgelegt ist, oder zugelassen, wenn sich die Richtlinie im Überwachungsmodus befindet.
 
 Wenn ein Paar von Ereignissen gemeinsam protokolliert wird, sind beide Ereignisse explizit über dieselbe CorrelationId zugeordnet.
 

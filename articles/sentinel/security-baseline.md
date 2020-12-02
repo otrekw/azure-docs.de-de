@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ab28c7c592c270cb7b5ba6afa6145bdcfed89099
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: bf249046a30e023a2d7b596fb6424c7005c2a875
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94658926"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841936"
 ---
 # <a name="azure-security-baseline-for-azure-sentinel"></a>Azure-Sicherheitsbaseline für Azure Sentinel
 
@@ -163,11 +163,11 @@ Zusätzlich können Sie, um den Überblick über dedizierte Verwaltungskonten zu
 
 ### <a name="36-use-secure-azure-managed-workstations-for-administrative-tasks"></a>3.6: Verwenden von sicheren, von Azure verwalteten Arbeitsstationen für Verwaltungsaufgaben
 
-**Leitfaden**: Verwenden Sie eine Privileged Access Workstation (PAW) mit Azure Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration Ihrer Azure Sentinel-fähigen Ressourcen konfiguriert ist. 
+**Leitfaden**: Verwenden Sie eine Privileged Access Workstation (PAW) mit Azure AD Multi-Factor Authentication (MFA), die für die Anmeldung und Konfiguration Ihrer Azure Sentinel-fähigen Ressourcen berechtigt ist. 
 
 - [Privileged Access Workstations](/windows-server/identity/securing-privileged-access/privileged-access-workstations)
 
-- [Planen einer cloudbasierten Azure Multi-Factor Authentication-Bereitstellung](../active-directory/authentication/howto-mfa-getstarted.md)
+- [Planen einer cloudbasierten Azure AD Multi-Factor Authentication-Bereitstellung](../active-directory/authentication/howto-mfa-getstarted.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

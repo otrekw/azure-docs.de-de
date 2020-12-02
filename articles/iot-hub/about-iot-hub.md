@@ -13,12 +13,12 @@ ms.custom:
 - 'role: System Architecture'
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: aaf803d463e03f2de7814fed4b20a0b4312fa1ef
-ms.sourcegitcommit: dbe434f45f9d0f9d298076bf8c08672ceca416c6
+ms.openlocfilehash: 7f1acc44a80d5ef70145997698a928e6f9ce0d48
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/17/2020
-ms.locfileid: "92148838"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888877"
 ---
 # <a name="what-is-azure-iot-hub"></a>Was ist Azure IoT Hub?
 
@@ -120,11 +120,17 @@ Für jedes Azure-Abonnement gelten standardmäßig bestimmte Kontingentgrenzen, 
 
 * [IoT Hub throttling and you](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/)
 
+## <a name="iot-hub-on-azure-stack-hub-preview"></a>IoT Hub in Azure Stack Hub (Vorschau)
+
+Mit IoT Hub in Azure Stack Hub (Vorschau) können Sie hybride IoT-Lösungen erstellen. IoT Hub ist ein verwalteter Dienst, der als zentraler Nachrichtenhub für die bidirektionale Kommunikation zwischen Ihrer IoT-Anwendung und den Geräten fungiert, die von der Anwendung verwaltet werden. Sie können IoT Hub in Azure Stack Hub verwenden, um IoT-Lösungen mit zuverlässiger und sicherer Kommunikation zwischen IoT-Geräten und Ihren lokalen Lösungen zu erstellen.
+
+Während der Public Preview-Phase ist IoT Hub in Azure Stack Hub kostenlos. Weitere Informationen finden Sie in der [Übersicht über IoT Hub in Azure Stack Hub](/azure-stack/operator/iot-hub-rp-overview).
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Um eine umfassende IoT-Lösung zu testen, lesen Sie die Schnellstartanleitungen zu IoT Hub:
 
-* [Schnellstart: Senden von Telemetriedaten von einem Gerät an einen IoT-Hub](quickstart-send-telemetry-node.md)
+* [Schnellstart: Senden von Telemetriedaten von einem Gerät an eine IoT Hub-Instanz](quickstart-send-telemetry-node.md)
 
 Weitere Informationen zu den Möglichkeiten, wie Sie IoT-Lösungen mit Azure IoT erstellen und bereitstellen können, finden Sie unter:
 

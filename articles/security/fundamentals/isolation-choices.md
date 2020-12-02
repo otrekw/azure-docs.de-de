@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 3141d9937591467870ee4a88d16a96cbdb24a05b
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: c06fb0830ae709918b668ed60efbaaf47a63ce84
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94696216"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842837"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Isolation in der öffentlichen Azure-Cloud
 
@@ -90,7 +90,7 @@ Weitere Beispiele für Azure Active Directory-Funktionen sind:
 
 - Azure AD bietet Identity-as-a-Service durch Verbund (unter Verwendung der [Active Directory-Verbunddienste](/windows-server/identity/ad-fs/deployment/how-to-connect-fed-azure-adfs)) sowie Synchronisierung und Replikation mit lokalen Verzeichnissen.
 
-- [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ist der Dienst für die mehrstufige Authentifizierung, bei der Benutzer Anmeldevorgänge über eine mobile App, einen Telefonanruf oder per SMS bestätigen müssen. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Azure Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
+- [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) ist der Dienst für die mehrstufige Authentifizierung, bei der Benutzer Anmeldevorgänge über eine mobile App, einen Telefonanruf oder per SMS bestätigen müssen. Er kann mit Azure AD verwendet werden, um lokale Ressourcen mit dem Azure Multi-Factor Authentication-Server zu schützen, eignet sich aber auch für benutzerdefinierte Anwendungen und Verzeichnisse, die das SDK verwenden.
 
 - Mit [Azure AD Domain Services](https://azure.microsoft.com/services/active-directory-ds/) können Sie virtuelle Azure-Computer in eine Active Directory-Domäne einbinden, ohne Domänencontroller bereitzustellen. Sie können sich bei diesen virtuellen Computern mithilfe Ihrer Active Directory-Unternehmensanmeldeinformationen anmelden und in die Domäne eingebundene virtuelle Computer mithilfe von Gruppenrichtlinien verwalten, um Sicherheitsbaselines für alle Ihre virtuellen Azure-Computer zu erzwingen.
 

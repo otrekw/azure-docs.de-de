@@ -11,17 +11,17 @@ author: GithubMirek
 ms.author: MirekS
 ms.reviewer: vanto
 ms.date: 04/23/2020
-ms.openlocfilehash: bef6e6c5ef795c192a846700fc046aa20274502d
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 93831ec4c1dc3e34c2ea144e71b67dae711ee870
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92673400"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94841647"
 ---
-# <a name="connect-to-azure-sql-database-with-azure-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure Multi-Factor Authentication
+# <a name="connect-to-azure-sql-database-with-azure-ad-multi-factor-authentication"></a>Herstellen einer Verbindung zu Azure SQL-Datenbank mit Azure AD Multi-Factor Authentication
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
 
-Dieser Artikel enthält ein C#-Programm, das eine Verbindung mit einer Azure SQL-Datenbank herstellt. Das Programm nutzt den interaktiven Authentifizierungsmodus, der die [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) unterstützt.
+Dieser Artikel enthält ein C#-Programm, das eine Verbindung mit einer Azure SQL-Datenbank herstellt. Das Programm nutzt den interaktiven Authentifizierungsmodus, der die [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) unterstützt.
 
 Weitere Informationen zur Unterstützung der Multi-Factor Authentication für SQL-Tools finden Sie unter [Azure Active Directory-Unterstützung in SQL Server Data Tools (SSDT)](/sql/ssdt/azure-active-directory).
 
@@ -35,11 +35,11 @@ Ab .NET Framework, Version 4.7.2, verfügt die Enumeration [`SqlAuthenticationMe
 
    Wenn der Benutzer gemäß der Azure AD-Richtlinie die Multi-Factor Authentication verwenden muss, werden die nächsten beiden Dialogfelder angezeigt.
 
-* Wenn ein Benutzer die Multi-Factor Authentication zum ersten Mal ausführt, wird er in einem Dialogfeld zur Angabe einer Mobiltelefonnummer für den Empfang von SMS aufgefordert. Jede Nachricht enthält den *Prüfcode* , den der Benutzer im nächsten Dialogfeld eingeben muss.
+* Wenn ein Benutzer die Multi-Factor Authentication zum ersten Mal ausführt, wird er in einem Dialogfeld zur Angabe einer Mobiltelefonnummer für den Empfang von SMS aufgefordert. Jede Nachricht enthält den *Prüfcode*, den der Benutzer im nächsten Dialogfeld eingeben muss.
 
 * Ein weiteres Dialogfeld fordert die Eingabe des Multi-Factor Authentication-Überprüfungscodes an, den das System an ein Mobiltelefon gesendet hat.
 
-Informationen zum Konfigurieren von Azure AD, sodass Multi-Factor Authentication erforderlich ist, finden Sie unter [Erste Schritte mit Azure Multi-Factor Authentication in der Cloud](../../active-directory/authentication/howto-mfa-getstarted.md).
+Informationen zum Konfigurieren von Azure AD, sodass Multi-Factor Authentication erforderlich ist, finden Sie unter [Erste Schritte mit Azure AD Multi-Factor Authentication in der Cloud](../../active-directory/authentication/howto-mfa-getstarted.md).
 
 Screenshots zu diesen Dialogfeldern finden Sie unter [Konfigurieren der mehrstufigen Authentifizierung für SQL Server Management Studio und Azure AD](authentication-mfa-ssms-configure.md).
 
@@ -106,7 +106,7 @@ Das C#-Beispiel basiert auf dem [`System.Data.SqlClient`](/dotnet/api/system.dat
 
 * `SqlAuthenticationMethod.ActiveDirectoryIntegrated`
 
-  Verwenden Sie diesen Wert für ein *Verbundkonto* . Bei einem Verbundkonto ist der Benutzername der Windows-Domäne bekannt. Diese Authentifizierungsmethode unterstützt keine Multi-Factor Authentication.
+  Verwenden Sie diesen Wert für ein *Verbundkonto*. Bei einem Verbundkonto ist der Benutzername der Windows-Domäne bekannt. Diese Authentifizierungsmethode unterstützt keine Multi-Factor Authentication.
 
 * `SqlAuthenticationMethod.ActiveDirectoryPassword`
 
@@ -152,7 +152,7 @@ Weitere Informationen finden Sie unter [Konfigurieren der Multi-Factor Authentic
 
 Das C#-Beispielprogramm basiert auf der DLL-Assembly [*Microsoft.IdentityModel.Clients.ActiveDirectory*](/dotnet/api/microsoft.identitymodel.clients.activedirectory).
 
-Um das Paket zu installieren, wählen Sie in Visual Studio **Projekt** > **NuGet-Pakete verwalten** aus. Suchen und installieren Sie **Microsoft.IdentityModel.Clients.ActiveDirectory** .
+Um das Paket zu installieren, wählen Sie in Visual Studio **Projekt** > **NuGet-Pakete verwalten** aus. Suchen und installieren Sie **Microsoft.IdentityModel.Clients.ActiveDirectory**.
 
 Dies ist ein Beispiel für C#-Quellcode.
 

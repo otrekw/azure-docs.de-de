@@ -4,15 +4,15 @@ description: Die Azure Front Door-Sicherheitsbaseline enthält Anweisungen zur V
 author: msmbaldwin
 ms.service: frontdoor
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2b5995478d1c9e65916f76c70c8af374ce82ca54
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 6d6a392d25aa96ab9b4dbb7763b37c1021db71aa
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94631316"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95026283"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure-Sicherheitsbaseline für Azure Front Door
 
@@ -23,22 +23,6 @@ Zum Anzeigen der vollständigen Zuordnung von Azure Front Door zum Vergleichstes
 ## <a name="network-security"></a>Netzwerksicherheit
 
 *Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-controls-v2-network-security).*
-
-### <a name="ns-2-connect-private-networks-together"></a>NS-2: Verbinden privater Netzwerke
-
-**Leitfaden**: Nicht zutreffend. Azure Front Door ist nicht für die Bereitstellung in einem privaten Netzwerk oder für die Sicherung in einem solchen konzipiert. Diese Kontrolle dient der Beschreibung der Netzwerkkonnektivität und ist nicht anwendbar.
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
-**Verantwortlichkeit**: Nicht festgelegt. Geben Sie einen Wert im Arbeitselement an.
-
-### <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Einrichten des Zugriffs über das private Netzwerk auf Azure-Dienste
-
-**Leitfaden**: Nicht zutreffend. Azure Front Door ist nicht für die Bereitstellung in einem virtuellen Netzwerk für den privaten Netzwerkzugang konzipiert oder durch dieses gesichert.
-
-**Azure Security Center-Überwachung**: Nicht verfügbar
-
-**Verantwortlichkeit**: Nicht festgelegt. Geben Sie einen Wert im Arbeitselement an.
 
 ### <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: Schützen von Anwendungen und Diensten vor externen Netzwerkangriffen.
 
@@ -134,19 +118,21 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und nur benutzerd
 
 ### <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Verschlüsseln vertraulicher Informationen während der Übertragung
 
-**Leitfaden**: Verwenden Sie Verschlüsselung, um den Datenverkehr in externen und öffentlichen Netzwerken zu schützen, da dies für den Datenschutz wichtig ist. Außerdem zu beachten:
+**Leitfaden**: Als Ergänzung zu Zugriffssteuerungen sollten die Daten während der Übertragung durch Verschlüsselung vor Out-of-Band-Angriffen (z. B. Erfassung des Datenverkehrs) geschützt werden, um sicherzustellen, dass Angreifer die Daten nicht einfach lesen oder ändern können.
 
-- Verwenden Sie Zugriffssteuerungen,
+Front Door unterstützt die TLS-Versionen 1.0, 1.1 und 1.2. TLS 1.3 wird noch nicht unterstützt. Alle Front Door-Profile, die nach September 2019 erstellt wurden, verwenden standardmäßig TLS 1.2 als Mindestvoraussetzung.
 
-- und schützen Sie die Daten während der Übertragung durch Verschlüsselung vor Out-of-Band-Angriffen (z. B. Erfassung des Datenverkehrs), um sicherzustellen, dass Angreifer die Daten nicht einfach lesen oder ändern können.
-- Stellen Sie für HTTP-Datenverkehr sicher, dass alle Clients, die Verbindungen mit Ihren Azure-Ressourcen herstellen, TLS 1.2 oder höher aushandeln können.
-- Verwenden Sie für die Remoteverwaltung SSH (für Linux) bzw. RDP/TLS (für Windows) anstelle von unverschlüsselten Protokollen.
+Obwohl dies bei Datenverkehr in privaten Netzwerken optional ist, ist es für den Datenverkehr in externen und öffentlichen Netzwerken von entscheidender Bedeutung. Stellen Sie bei HTTP-Datenverkehr sicher, dass alle Clients, die Verbindungen mit Ihren Azure-Ressourcen herstellen, TLS 1.2 oder höher aushandeln können. Verwenden Sie für die Remoteverwaltung SSH (für Linux) bzw. RDP/TLS (für Windows) anstelle eines unverschlüsselten Protokolls. Veraltete SSL-, TLS- und SSH-Versionen und -Protokolle sowie schwache Verschlüsselungsverfahren sollten deaktiviert werden.
 
-- Deaktivieren Sie veraltete SSL-/TLS-/SSH-Versionen und -Protokolle sowie schwache Verschlüsselungsverfahren.
-
-Azure stellt standardmäßig Verschlüsselung von Datenverkehr während der Übertragung zwischen Azure-Rechenzentren bereit. 
+Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Übertragung zwischen Azure-Rechenzentren.
 
 - [Tutorial: Konfigurieren von HTTPS für eine benutzerdefinierte Front Door-Domäne](front-door-custom-domain-https.md)
+
+- [Grundlegendes zur Verschlüsselung während der Übertragung mit Azure](../security/fundamentals/encryption-overview.md#encryption-of-data-in-transit) 
+
+- [Informationen zur TLS-Sicherheit](/security/engineering/solving-tls1-problem) 
+
+- [Doppelte Verschlüsselung für Azure-Daten während der Übertragung](../security/fundamentals/double-encryption.md#data-in-transit)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -206,7 +192,7 @@ Verwenden Sie Azure Monitor, um Regeln zu erstellen, mit denen Warnungen ausgel�
 
 ### <a name="am-4-ensure-security-of-asset-lifecycle-management"></a>AM-4: Gewährleisten der Sicherheit der bei der Lebenszyklusverwaltung von Ressourcen
 
-**Leitfaden**: Nicht zutreffend. Azure Front Door kann nicht verwendet werden, um die Sicherheit von Ressourcen in einem Lebenszyklusverwaltungsprozess sicherzustellen. Es liegt in der Verantwortung des Kunden, die Attribute und Netzwerkkonfigurationen von Ressourcen zu verwalten, die als besonders wichtig erachtet werden. 
+**Leitfaden**: Es liegt in der Verantwortung des Kunden, die Attribute und Netzwerkkonfigurationen von Azure Front Door-Ressourcen zu verwalten, die als besonders wichtig erachtet werden.
 
 Es wird empfohlen, dass der Kunde einen Prozess erstellt, um die Attribut- und Netzwerkkonfigurationsänderungen zu erfassen, die Auswirkungen der Änderung zu messen und ggf. Abhilfemaßnahmen zu treffen.
 
@@ -216,7 +202,7 @@ Es wird empfohlen, dass der Kunde einen Prozess erstellt, um die Attribut- und N
 
 ## <a name="logging-and-threat-detection"></a>Protokollierung und Bedrohungserkennung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivieren der Protokollierung für Azure-Netzwerkaktivitäten
 
@@ -352,7 +338,7 @@ Markieren Sie Ressourcen außerdem mithilfe von Tags, und erstellen Sie ein Bene
 
 ## <a name="posture-and-vulnerability-management"></a>Status- und Sicherheitsrisikoverwaltung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Status- und Sicherheitsrisikoverwaltung](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Status- und Sicherheitsrisikoverwaltung](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: Einrichten sicherer Konfigurationen für Computeressourcen
 
@@ -423,7 +409,7 @@ Weitere Informationen finden Sie unter den aufgeführten Links.
 
 - [Grundlegende Azure-Sicherheitsinformationen: Sicherheit, Verschlüsselung und Speicherung von Azure-Daten](../security/fundamentals/encryption-overview.md)
 
-- [Azure-Sicherheitsvergleichstest: Datenschutz](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure-Sicherheitsvergleichstest: Datenschutz](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -451,7 +437,7 @@ Stellen Sie sicher, dass die Segmentierungsstrategie einheitlich für alle Steue
 
 **Leitfaden**: Führen Sie kontinuierliche Messungen durch, und Mindern Sie die Risiken für Ihre individuellen Ressourcen und die Umgebung, in der diese gehostet werden. Priorisieren Sie Ressourcen mit hohem Wert und hoch exponierte Angriffsflächen, wie z. B. veröffentlichte Anwendungen, Eingangs- und Ausgangspunkte für Netzwerke, Benutzer- und Administratorendpunkte usw.
 
-- [Azure-Sicherheitsvergleichstest: Verwaltung von Status und Sicherheitsrisiken](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure-Sicherheitsvergleichstest: Verwaltung von Status und Sicherheitsrisiken](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -493,7 +479,7 @@ Weitere Informationen finden Sie unter den aufgeführten Links.
 
 - [Azure Security Best Practice 11 – Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (Bewährte Methoden für die Sicherheit von Azure 11 – Architektur: Zentralisierte einheitliche Sicherheitsstrategie)
 
-- [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Die Netzwerksicherheit in Azure in der Übersicht](../security/fundamentals/network-overview.md)
 
@@ -519,9 +505,9 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
 
-- [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure Security Best Practice 11 – Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (Bewährte Methoden für die Sicherheit von Azure 11 – Architektur: Zentralisierte einheitliche Sicherheitsstrategie)
 
@@ -553,9 +539,9 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 Weitere Informationen finden Sie unter den aufgeführten Links.
 
-- [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure Security Best Practice 4 – Process. Update Incident Response Processes for Cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (Bewährte Methoden für die Sicherheit von Azure 4 – Prozess: Aktualisieren der Prozesse zur Reaktion auf Vorfälle für die Cloud)
 

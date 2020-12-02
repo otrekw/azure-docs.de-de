@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 3952736af9cf7c3b720769cee6a58e3fc52a6111
-ms.sourcegitcommit: 7dacbf3b9ae0652931762bd5c8192a1a3989e701
+ms.openlocfilehash: b62a0da7074676787b7e1c0182ca7588b83cdbe0
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92127402"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94985041"
 ---
 # <a name="what-is-azure-iot-central"></a>Was ist Azure IoT Central?
 
@@ -58,7 +58,7 @@ Als Lösungsentwickler können Sie mithilfe der webbasierten Tools eine _Geräte
 
 Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 
-- Ein _Gerätefunktionsmodell_, mit dem die Funktionen beschrieben werden, die von einem Gerät implementiert werden sollten. Die Gerätefunktionen umfassen Folgendes:
+- Ein _Gerätemodell_ zur Beschreibung der Funktionen, die von einem Gerät implementiert werden sollen. Die Gerätefunktionen umfassen Folgendes:
 
   - Die Telemetriedaten, die an IoT Central gestreamt werden.
   - Die schreibgeschützten Eigenschaften, die zum Melden des Status an IoT Central verwendet werden.
@@ -72,9 +72,9 @@ Diese [Gerätevorlage](howto-set-up-template.md) enthält Folgendes:
 
 Als Lösungsentwickler haben Sie mehrere Möglichkeiten zum Erstellen von Gerätevorlagen:
 
-- Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätefunktionsmodell in Ihrem Gerätecode.
-- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio-Code, und veröffentlichen Sie das Modell in einem Repository. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr Gerät mit Ihrer IoT Central-Anwendung. IoT Central verwendet das Gerätefunktionsmodell aus dem Repository und erstellt eine einfache Gerätevorlage für Sie.
-- Erstellen Sie ein Gerätefunktionsmodell mit Visual Studio Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätefunktionsmodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die ihre IoT Central-Anwendung benötigt.
+- Entwerfen Sie die Gerätevorlage in IoT Central, und implementieren Sie dann das entsprechende Gerätemodell in Ihrem Gerätecode.
+- Erstellen Sie ein Gerätemodell mit Visual Studio-Code, und veröffentlichen Sie es in einem Repository. Implementieren Sie den Gerätecode aus dem Modell, und verbinden Sie Ihr Gerät mit Ihrer IoT Central-Anwendung. IoT Central verwendet das Gerätemodell aus dem Repository und erstellt eine einfache Gerätevorlage für Sie.
+- Erstellen Sie ein Gerätemodell mit Visual Studio-Code. Implementieren Sie Ihren Gerätecode aus dem Modell. Importieren Sie das Gerätemodell manuell in Ihre IoT Central-Anwendung, und fügen Sie dann alle Cloudeigenschaften, Anpassungen und Dashboards hinzu, die Ihre IoT Central-Anwendung benötigt.
 
 Als Lösungsentwickler können Sie mit IoT Central Code für Testgeräte generieren, um Ihre Gerätevorlagen zu überprüfen.
 
@@ -151,7 +151,6 @@ Für jedes Azure-Abonnement gelten Standardkontingente, die den Umfang Ihrer IoT
 - Array-Schematypen werden nicht unterstützt.
 - Nur das C-Geräte-SDK und die Node.js-Geräte-SDKs und -Dienst-SDKs werden unterstützt.
 - IoT Central ist derzeit in den Regionen USA, Europa, Asien-Pazifik, Australien, Vereinigtes Königreich und Japan verfügbar.
-- Für die Gerätefunktionsmodelle müssen alle Schnittstellen inline in derselben Datei definiert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

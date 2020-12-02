@@ -3,16 +3,16 @@ title: SQL-Filtersyntax für Azure Service Bus-Abonnementregeln | Microsoft-Doku
 description: Dieser Artikel enthält Details zur SQL-Filtersyntax. SQL-Filter unterstützen eine Teilmenge des SQL-92-Standards.
 ms.topic: article
 ms.date: 11/24/2020
-ms.openlocfilehash: bd263e8177652165376d4f6fe9e231af71ebdcbe
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 9bff18b2161e419d728c360c9ed950ac2867fea8
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95805633"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498675"
 ---
 # <a name="subscription-rule-sql-filter-syntax"></a>SQL-Filtersyntax für Abonnementregeln
 
-*SQL-Filter* ist einer der verfügbaren Filtertypen für Service Bus-Themenabonnements. Es handelt sich dabei um einen Textausdruck, der auf einer Teilmenge des SQL-92-Standards basiert. Filterausdrücke werden mit dem `sqlExpression`-Element der sqlFilter-Eigenschaft einer Service Bus-`Rule` in einer [Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md) oder dem [`--filter-sql-expression`](https://docs.microsoft.com/cli/azure/servicebus/topic/subscription/rule?view=azure-cli-latest&preserve-view=true#az_servicebus_topic_subscription_rule_create)-Argument eines `az servicebus topic subscription rule create`-Befehls in der Azure-Befehlszeilenschnittstelle sowie mehreren SDK-Funktionen für das Verwalten von Abonnementregeln verwendet.
+*SQL-Filter* ist einer der verfügbaren Filtertypen für Service Bus-Themenabonnements. Es handelt sich dabei um einen Textausdruck, der auf einer Teilmenge des SQL-92-Standards basiert. Filterausdrücke werden mit dem `sqlExpression`-Element der sqlFilter-Eigenschaft einer Service Bus-`Rule` in einer [Azure Resource Manager-Vorlage](service-bus-resource-manager-namespace-topic-with-rule.md) oder dem [`--filter-sql-expression`](/cli/azure/servicebus/topic/subscription/rule?preserve-view=true&view=azure-cli-latest#az_servicebus_topic_subscription_rule_create)-Argument eines `az servicebus topic subscription rule create`-Befehls in der Azure-Befehlszeilenschnittstelle sowie mehreren SDK-Funktionen für das Verwalten von Abonnementregeln verwendet.
 
 Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](https://docs.oracle.com/javaee/7/api/javax/jms/Message.html) über die JMS 2.0-API.
 
@@ -52,7 +52,7 @@ Service Bus Premium unterstützt auch die [JMS-SQL-Nachrichtenselektorsyntax](ht
   
 -   `<scope>` ist eine optionale Zeichenfolge, die den Bereich von `<property_name>` angibt. Gültige Werte sind `sys` und `user`. Der Wert `sys` gibt den Systembereich an, in dem `<property_name>` ein öffentlicher Eigenschafgenname der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. `user` gibt den Benutzerbereich an, in dem `<property_name>` ein Schlüssel des Wörterbuchs der [BrokeredMessage-Klasse](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) ist. Der `user`-Bereich ist der Standardbereich, wenn `<scope>` nicht angegeben wird.  
   
-## <a name="remarks"></a>Hinweise
+## <a name="remarks"></a>Bemerkungen
 
 Der Versuch, auf eine nicht existierende Systemeigenschaft zuzugreifen, löst einen Fehler aus, während der Versuch, auf eine nicht existierende Benutzereigenschaft zuzugreifen, keinen Fehler auslöst. Stattdessen wird eine nicht vorhandene Benutzereigenschaft intern als unbekannter Wert ausgewertet. Ein unbekannter Wert wird während der Operatorauswertung speziell behandelt.  
   
@@ -105,7 +105,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       <expression>  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
 `<pattern>` muss ein Ausdruck sein, der als Zeichenfolge ausgewertet wird. Es wird als ein Muster für den LIKE-Operator verwendet.      Es kann die folgenden Platzhalterzeichen enthalten:  
   
@@ -120,7 +120,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       <expression>  
 ```  
   
-### <a name="remarks"></a>Hinweise  
+### <a name="remarks"></a>Bemerkungen  
 
 `<escape_char>` muss ein Ausdruck sein, der als Zeichenfolge der Länge 1 ausgewertet wird. Es wird als Escapezeichen für den LIKE-Operator verwendet.  
   
@@ -169,7 +169,7 @@ Ein `<regular_identifier>` kann kein reserviertes Schlüsselwort sein.
       TRUE | FALSE  
 ```  
   
-### <a name="remarks"></a>Hinweise  
+### <a name="remarks"></a>Bemerkungen  
 
 Boolesche Konstanten werden durch die Schlüsselwörter **TRUE** oder **FALSE** dargestellt. Die Werte werden als `System.Boolean` gespeichert.  
   
@@ -179,7 +179,7 @@ Boolesche Konstanten werden durch die Schlüsselwörter **TRUE** oder **FALSE** 
 <string_constant>  
 ```  
   
-### <a name="remarks"></a>Hinweise  
+### <a name="remarks"></a>Bemerkungen  
 
 Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und enthalten beliebige, gültige Unicodezeichen. Ein einfaches Anführungszeichen, das in eine Zeichenfolgenkonstante eingebettet ist, wird als zwei einfache Anführungszeichen dargestellt.  
   
@@ -191,7 +191,7 @@ Zeichenfolgenkonstanten werden in einfache Anführungszeichen eingeschlossen und
       property(name) | p(name)  
 ```  
   
-### <a name="remarks"></a>Hinweise
+### <a name="remarks"></a>Bemerkungen
   
 Die `newid()`-Funktion gibt ein `System.Guid` zurück, das von der `System.Guid.NewGuid()`-Methode generiert wird.  
   

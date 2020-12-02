@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: genemi, jrasnick, vanto
 ms.date: 06/26/2019
-ms.openlocfilehash: 4be3f8c6cd416743c2d1118cf2de01073c3022ff
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 25c2157a8de237d0ec66caa72d59c810d419ac76
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790490"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989121"
 ---
 # <a name="dns-alias-for-azure-sql-database"></a>DNS-Alias für Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -60,8 +60,8 @@ Die folgenden Eigenschaften gelten für sämtliche DNS-Aliase Ihres Servers:
 - *Server ist erforderlich:* Ein DNS-Alias kann nur dann erstellt werden, wenn er auf genau einen Server verweist und der Server bereits vorhanden ist. Ein aktualisierter Alias muss immer genau auf einen vorhandenen Server verweisen.
   - Wenn Sie einen Server löschen, löscht das Azure-System auch alle DNS-Aliase, die auf den Server verweisen.
 - *Nicht an eine beliebige Region gebunden:* DNS-Aliase sind nicht an eine Region gebunden. DNS-Aliase können dahingehend aktualisiert werden, dass sie auf einen Server in einer beliebigen geografischen Region verweisen.
-  - Wenn ein Alias jedoch für den Verweis auf einen anderen Server aktualisiert wird, müssen beide Server im selben Azure- *Abonnement* vorhanden sein.
-- *Berechtigungen:* Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung im Azure-Portal](../../role-based-access-control/overview.md).
+  - Wenn ein Alias jedoch für den Verweis auf einen anderen Server aktualisiert wird, müssen beide Server im selben Azure-*Abonnement* vorhanden sein.
+- *Berechtigungen:* Für die Verwaltung eines DNS-Alias benötigt der Benutzer die Berechtigungen *Servermitwirkender* oder höhere Berechtigungen. Weitere Informationen finden Sie unter [Erste Schritte mit der rollenbasierten Zugriffssteuerung in Azure im Azure-Portal](../../role-based-access-control/overview.md).
 
 ## <a name="manage-your-dns-aliases"></a>Verwalten von DNS-Aliase
 

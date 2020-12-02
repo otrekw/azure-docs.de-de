@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python,contperfq1, automl
-ms.openlocfilehash: b49b9f710a98495342687c4ce1dc702078b27246
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: f4546433f5bd20e2f001d6d868d8adfb4b9bf8c0
+ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94535332"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94920371"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Konfigurieren automatisierter ML-Experimente in Python
 
@@ -130,26 +130,24 @@ Beispiele hierfür sind:
 1. Ein Klassifizierungsexperiment, in dem AUC gewichtet als primäre Metrik verwendet wird, wobei das Experimentzeitlimit auf 30 Minuten festgelegt ist und 2 Kreuzvalidierungfolds verwendet werden.
 
    ```python
-       automl_classifier=AutoMLConfig(
-       task='classification',
-       primary_metric='AUC_weighted',
-       experiment_timeout_minutes=30,
-       blocked_models=['XGBoostClassifier'],
-       training_data=train_data,
-       label_column_name=label,
-       n_cross_validations=2)
+       automl_classifier=AutoMLConfig(task='classification',
+                                      primary_metric='AUC_weighted',
+                                      experiment_timeout_minutes=30,
+                                      blocked_models=['XGBoostClassifier'],
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=2)
    ```
 1. Beim folgenden Beispiel handelt es sich um ein Regressionsexperiment, das nach 60 Minuten mit fünf Kreuzvalidierungsfolds endet.
 
    ```python
-      automl_regressor = AutoMLConfig(
-      task='regression',
-      experiment_timeout_minutes=60,
-      allowed_models=['KNN'],
-      primary_metric='r2_score',
-      training_data=train_data,
-      label_column_name=label,
-      n_cross_validations=5)
+      automl_regressor = AutoMLConfig(task='regression',
+                                      experiment_timeout_minutes=60,
+                                      allowed_models=['KNN'],
+                                      primary_metric='r2_score',
+                                      training_data=train_data,
+                                      label_column_name=label,
+                                      n_cross_validations=5)
    ```
 
 
@@ -301,6 +299,18 @@ automl_classifier = AutoMLConfig(
         )
 ```
 
+<a name="exit"></a> 
+
+### <a name="exit-criteria"></a>Exit Criteria (Beendigungskriterien)
+
+Es gibt einige Optionen, die Sie in Ihrer AutoMLConfig definieren können, um Ihr Experiment zu beenden.
+
+|Kriterien| description
+|----|----
+No&nbsp;criteria (Keine Kriterien) | Wenn Sie keine Beendigungsparameter definieren, wird das Experiment fortgesetzt, bis kein weiterer Fortschritt bei Ihrer primären Metrik erzielt wird.
+After&nbsp;a&nbsp;length&nbsp;of&nbsp;time (Nach einem Zeitraum)| Verwenden Sie `experiment_timeout_minutes` in Ihren Einstellungen, um zu definieren, wie lange Ihr Experiment in Minuten weiterhin ausgeführt werden soll. <br><br> Es liegt ein Mindestwert von 15 Minuten vor (oder 60 Minuten, wenn die Zeile nach Spaltengröße 10 Millionen überschreitet), um Fehler aufgrund von Zeitüberschreitungen beim Experiment zu vermeiden.
+A&nbsp;score&nbsp;has&nbsp;been&nbsp;reached (Eine Bewertung wurde erzielt)| Wenn Sie `experiment_exit_score` verwenden, wird das Experiment abgeschlossen, nachdem der angegebene primäre metrischer Bewertungswert erreicht wurde.
+
 ## <a name="run-experiment"></a>Ausführen des Experiments
 
 Für automatisierte ML-Experimente erstellen Sie ein `Experiment`-Objekt, wobei es sich um ein benanntes Objekt in einem `Workspace` handelt, das zur Ausführung von Experimenten verwendet wird.
@@ -327,17 +337,15 @@ run = experiment.submit(automl_config, show_output=True)
 >Abhängigkeiten werden zunächst auf einem neuen Computer installiert.  Es dauert bis zu 10 Minuten, bevor die Ausgabe angezeigt wird.
 >Wenn Sie `show_output` auf `True` festlegen, wird die Ausgabe auf der Konsole angezeigt.
 
- <a name="exit"></a> 
+### <a name="multiple-child-runs-on-clusters"></a>Mehrere untergeordnete Ausführungen auf Clustern
 
-### <a name="exit-criteria"></a>Exit Criteria (Beendigungskriterien)
+Untergeordnete Ausführungen von automatisierten ML-Experimenten können auf einem Cluster durchgeführt werden, auf dem bereits ein anderes Experiment ausgeführt wird. Das Timing hängt jedoch davon ab, über wie viele Knoten der Cluster verfügt und ob diese Knoten zur Ausführung eines anderen Experiments zur Verfügung stehen.
 
-Es gibt einige Optionen, die Sie definieren können, um Ihr Experiment zu beenden.
+Jeder Knoten im Cluster fungiert als einzelner virtueller Computer (VM), der eine einzelne Trainingsausführung durchführen kann. Für automatisiertes ML bedeutet dies eine untergeordnete Ausführung. Wenn alle Knoten ausgelastet sind, wird das neue Experiment in die Warteschlange gestellt. Wenn es jedoch freie Knoten gibt, führt das neue Experiment untergeordnete Ausführungen von automatisiertem ML parallel auf den verfügbaren Knoten/VMs aus.
 
-|Kriterien| description
-|----|----
-No&nbsp;criteria (Keine Kriterien) | Wenn Sie keine Beendigungsparameter definieren, wird das Experiment fortgesetzt, bis kein weiterer Fortschritt bei Ihrer primären Metrik erzielt wird.
-After&nbsp;a&nbsp;length&nbsp;of&nbsp;time (Nach einem Zeitraum)| Verwenden Sie `experiment_timeout_minutes` in Ihren Einstellungen, um zu definieren, wie lange Ihr Experiment in Minuten weiterhin ausgeführt werden soll. <br><br> Es liegt ein Mindestwert von 15 Minuten vor (oder 60 Minuten, wenn die Zeile nach Spaltengröße 10 Millionen überschreitet), um Fehler aufgrund von Zeitüberschreitungen beim Experiment zu vermeiden.
-A&nbsp;score&nbsp;has&nbsp;been&nbsp;reached (Eine Bewertung wurde erzielt)| Wenn Sie `experiment_exit_score` verwenden, wird das Experiment abgeschlossen, nachdem der angegebene primäre metrischer Bewertungswert erreicht wurde.
+Um die Verwaltung von untergeordneten Ausführungen und deren Zeitpunkt der Durchführung zu erleichtern, empfehlen wir Ihnen, einen dedizierten Cluster pro Experiment zu erstellen und die Anzahl von `max_concurrent_iterations` Ihres Experiments an die Anzahl der Knoten im Cluster anzupassen. Auf diese Weise verwenden Sie alle Clusterknoten gleichzeitig mit der von Ihnen gewünschten Anzahl von gleichzeitigen untergeordneten Ausführungen/Iterationen.
+
+Konfigurieren Sie `max_concurrent_iterations` in Ihrem `AutoMLConfig`-Objekt. Wenn es nicht konfiguriert ist, ist standardmäßig nur eine gleichzeitige untergeordnete Ausführung/Iteration pro Experiment zulässig.  
 
 ## <a name="explore-models-and-metrics"></a>Untersuchen von Modellen und Metriken
 

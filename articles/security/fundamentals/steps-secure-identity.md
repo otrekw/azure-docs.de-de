@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: 4fa5ba935e77055936b2abc4faab49b5d10cb5c0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4703a76ff0a0b55a438f9f0d164cd7f2d3242a02
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410061"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94842021"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Fünf Schritte zum Sichern Ihrer Identitätsinfrastruktur
 
@@ -48,7 +48,7 @@ Die Empfehlungen in diesem Dokument beziehen sich auf die [Identity Secure Score
 
 Bevor Sie damit beginnen, diese Checkliste durchzuarbeiten, stellen Sie sicher, dass Ihre Organisation nicht bereits gefährdet ist, bevor Sie mit der Checkliste fertig sind. Als Erstes müssen Sie privilegierte Konten schützen.
 
-Angreifer, die Kontrolle über privilegierte Konten erhalten, können enormen Schaden anrichten. Daher ist es ausgesprochen wichtig, zuerst diese Konten zu schützen. Verwenden Sie die [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) oder den [bedingten Zugriff](../../active-directory/conditional-access/plan-conditional-access.md), um die [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (mehrstufige Authentifizierung, MFA) für alle Administratoren in Ihrer Organisation zu aktivieren und zu erzwingen. Wenn Sie MFA noch nicht implementiert haben, tun Sie das sofort! Dieses Feature hat oberste Priorität.
+Angreifer, die Kontrolle über privilegierte Konten erhalten, können enormen Schaden anrichten. Daher ist es ausgesprochen wichtig, zuerst diese Konten zu schützen. Verwenden Sie die [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) oder den [bedingten Zugriff](../../active-directory/conditional-access/plan-conditional-access.md), um die [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md) (mehrstufige Authentifizierung, MFA) für alle Administratoren in Ihrer Organisation zu aktivieren und zu erzwingen. Wenn Sie MFA noch nicht implementiert haben, tun Sie das sofort! Dieses Feature hat oberste Priorität.
 
 Alles fertig? Dann beginnen wir mit der Checkliste.
 
@@ -59,9 +59,9 @@ Die meisten Sicherheitsverletzungen in Unternehmen rühren daher, dass ein Konto
 
 ### <a name="make-sure-your-organization-uses-strong-authentication"></a>Sicherstellen, dass Ihre Organisation eine starke Authentifizierung verwendet
 
-Angesichts der Häufigkeit, mit der Kennwörter erraten, per Phishing herausgefunden, mithilfe von Schadsoftware gestohlen oder einfach wiederverwendet werden, ist es von entscheidender Bedeutung, Kennwörter mit sicheren Anmeldeinformationen zu stärken. Erfahren Sie mehr über die [Azure Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
+Angesichts der Häufigkeit, mit der Kennwörter erraten, per Phishing herausgefunden, mithilfe von Schadsoftware gestohlen oder einfach wiederverwendet werden, ist es von entscheidender Bedeutung, Kennwörter mit sicheren Anmeldeinformationen zu stärken. Erfahren Sie mehr über die [Azure AD Multi-Factor Authentication](../../active-directory/authentication/concept-mfa-howitworks.md).
 
-Die allgemeine Ebene der Identitätssicherheit können Sie mit den [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) mit nur einem Klick aktivieren. Sicherheitsstandards erzwingen Azure MFA für alle Benutzer in einem Mandanten und blockieren mandantenweite Anmeldungen über ältere Protokolle.
+Die allgemeine Ebene der Identitätssicherheit können Sie mit den [Azure AD-Sicherheitsstandards](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) mit nur einem Klick aktivieren. Sicherheitsstandards erzwingen Azure AD MFA für alle Benutzer in einem Mandanten und blockieren mandantenweite Anmeldungen über ältere Protokolle.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Schluss mit herkömmlichen Komplexitätsanforderungen und Ablaufregeln – sperren Sie stattdessen angriffsanfällige Kennwörter.
 

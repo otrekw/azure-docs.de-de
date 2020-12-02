@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 08/03/2020
 ms.author: matjazl
-ms.openlocfilehash: 8f4d16931f09f94af81dd4e0f178ce6e0f990881
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 744bcfe196629f76c5505f36ef9c8c224fefe601
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426203"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95909066"
 ---
 # <a name="frequently-asked-questions-about-the-azure-api-for-fhir"></a>Häufig gestellte Fragen zu Azure API for FHIR
 
@@ -65,6 +65,10 @@ Informationen zu den Funktionen, die in Azure API for FHIR veröffentlicht werde
 
 Bei SMART (Substitutable Medical Applications and Reusable Technology) on FHIR handelt es sich um eine Reihe offener Spezifikationen für die Integration von Partneranwendungen in FHIR-Server und andere IT-Systeme im Gesundheitswesen, wie elektronische Patientenakten und den Austausch von Gesundheitsinformationen. Indem Sie eine SMART on FHIR-Anwendung erstellen, können Sie sicherstellen, dass auf Ihre Anwendung zugegriffen und diese von einer Vielzahl unterschiedlicher Systeme genutzt werden kann.
 Authentifizierung und Azure API for FHIR. Weitere Informationen zu SMART finden Sie unter [SMART Health IT](https://smarthealthit.org/).
+
+### <a name="where-can-i-find-what-version-of-fhir-is-running-on-my-database"></a>Wo sehe ich, welche Version von FHIR für meine Datenbank ausgeführt wird? 
+
+Die genaue FHIR-Version finden Sie in der Funktionsbestätigung unter der Eigenschaft „fhirVersion“.
 
 ## <a name="fhir-implementations-and-specifications"></a>FHIR-Implementierungen and -Spezifikationen
 

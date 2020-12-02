@@ -8,12 +8,12 @@ ms.workload: infrastructure
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
-ms.openlocfilehash: 2b8009d6d571a9daf7163d2126b6d52edfc4bfdd
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 001721ac0fdbbaaf808b962a79353369ab1dddb5
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92521083"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95521953"
 ---
 # <a name="azure-automanage-for-virtual-machines-best-practices"></a>Bewährte Methoden für die automatische Azure-Verwaltung von virtuellen Computern
 
@@ -33,6 +33,7 @@ Bei all diesen Diensten werden wir das Onboarding automatisch durchführen, sie 
 |Microsoft Antimalware    |Microsoft Antimalware für Azure ist eine kostenlose Echtzeit-Schutzfunktion zum Erkennen und Entfernen von Viren, Spyware und anderer Schadsoftware. Das Tool generiert Warnungen, wenn bekannte schädliche oder unerwünschte Software versucht, sich selbst auf Ihren Azure-Systemen zu installieren oder dort auszuführen. [Weitere Informationen](../security/fundamentals/antimalware.md). |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Ja    |
 |Updateverwaltung    |Sie können die Updateverwaltung in Azure Automation verwenden, um Betriebssystemupdates für Ihre virtuellen Computer zu verwalten. Sie können den Status der verfügbaren Updates auf allen Agent-Computern schnell auswerten und die Installation der für den Server erforderlichen Updates initiieren. [Weitere Informationen](../automation/update-management/update-mgmt-overview.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 |Änderungsnachverfolgung und Bestand    |„Änderungsnachverfolgung und Bestand“ kombiniert Änderungsnachverfolgungs- und Bestandsfunktionen, mit denen Sie Änderungen an virtuellen Computern und Serverinfrastrukturen nachverfolgen können. Da der Dienst auch eine Änderungsnachverfolgung für Dienste, Daemons, Software, Registrierung und Dateien in Ihrer Umgebung unterstützt, können Sie unerwünschte Änderungen ermitteln und entsprechende Warnungen auslösen. Durch die Unterstützung einer Bestandserfassung ist es zudem möglich, Ressourcen auf Gastsystemen abzurufen, um sich über die installierten Anwendungen und andere Konfigurationselemente zu informieren.  [Weitere Informationen](../automation/change-tracking/overview.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
+|Azure-Gastkonfiguration    | Die Gastkonfigurationsrichtlinie dient zur Überwachung der Konfiguration sowie zur Generierung von Berichten zur Konformität des Computers. Der Automanage-Dienst installiert die [Windows-Sicherheitsbaselines](https://docs.microsoft.com/windows/security/threat-protection/windows-security-baselines) mithilfe der Gastkonfigurationserweiterung. [Weitere Informationen](../governance/policy/concepts/guest-configuration.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 |Azure Automation-Konto    |Azure Automation unterstützt die Verwaltung des gesamten Lebenszyklus Ihrer Infrastruktur und Anwendungen. [Weitere Informationen](../automation/automation-intro.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 |Log Analytics-Arbeitsbereich    |Azure Monitor speichert Protokolldaten in einem Log Analytics-Arbeitsbereich, bei dem es sich um eine Azure-Ressource und einen Container handelt, in dem Daten gesammelt und aggregiert werden und der als eine administrative Grenze dient. [Weitere Informationen](../azure-monitor/platform/design-logs-deployment.md).    |Bewährte Methoden für Azure-VMs – Produktion, Bewährte Methoden für Azure-VMs – Dev/Test    |Nein    |
 

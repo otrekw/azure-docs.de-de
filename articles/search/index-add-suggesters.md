@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/10/2020
+ms.date: 11/19/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 498934c01970b296c1491e7ccd36ad947324306a
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445335"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96013580"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Erstellen einer Vorschlagsfunktion zum Ermöglichen von AutoVervollständigen und vorgeschlagenen Ergebnissen in einer Abfrage
 
@@ -41,6 +41,8 @@ Bei einer Vorschlagsfunktion handelt es sich um eine interne Datenstruktur, die 
 Um eine Vorschlagsfunktion zu erstellen, fügen Sie sie einer [Indexdefinition](/rest/api/searchservice/create-index) hinzu. Eine Vorschlagsfunktion erhält einen Namen und eine Sammlung von Feldern, über die Typeahead aktiviert wird. [Legen Sie die einzelnen Eigenschaften fest](#property-reference). Der beste Zeitpunkt zum Erstellen einer Vorschlagsfunktion ist bei der Definition des Felds, für das sie verwendet wird.
 
 + Verwenden Sie nur Zeichenfolgenfelder.
+
++ Wenn das Zeichenfolgenfeld Teil eines komplexen Typs ist (z. B. ein Ort-Feld innerhalb einer Adresse), schließen Sie das übergeordnete Element in das Feld ein: `"Address/City"` (REST und C# und Python) oder `["Address"]["City"]` (JavaScript).
 
 + Verwenden Sie für das Feld das standardmäßige Lucene-Standardanalysetool (`"analyzer": null`) oder ein [Sprachanalysetool](index-add-language-analyzers.md) (z. B. `"analyzer": "en.Microsoft"`).
 
@@ -117,7 +119,7 @@ Fügen Sie Vorschlagsfunktionen in der REST-API über [Index erstellen](/rest/ap
 
 ## <a name="create-using-net"></a>Erstellen mit .NET
 
-Definieren Sie in C# ein [SearchSuggester-Objekt](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` ist eine Sammlung für ein SearchIndex-Objekt, es akzeptiert aber nur ein Element. 
+Definieren Sie in C# ein [SearchSuggester-Objekt](/dotnet/api/azure.search.documents.indexes.models.searchsuggester). `Suggesters` ist eine Sammlung für ein SearchIndex-Objekt, es akzeptiert aber nur ein Element. Fügen Sie eine Vorschlagsfunktion zur Indexdefinition hinzu.
 
 ```csharp
 private static void CreateIndex(string indexName, SearchIndexClient indexClient)
@@ -125,12 +127,9 @@ private static void CreateIndex(string indexName, SearchIndexClient indexClient)
     FieldBuilder fieldBuilder = new FieldBuilder();
     var searchFields = fieldBuilder.Build(typeof(Hotel));
 
-    //var suggester = new SearchSuggester("sg", sourceFields = "HotelName", "Category");
-
     var definition = new SearchIndex(indexName, searchFields);
 
-    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category"});
-
+    var suggester = new SearchSuggester("sg", new[] { "HotelName", "Category", "Address/City", "Address/StateProvince" });
     definition.Suggesters.Add(suggester);
 
     indexClient.CreateOrUpdateIndex(definition);

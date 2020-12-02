@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, sstein
 ms.date: 04/14/2020
-ms.openlocfilehash: 42f6badabd27ceaa302f635a7a33b0161b870dc5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3cab3b262f9116903d0b423cd5e4a0ebd03c46fa
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782857"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94984429"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Verwalten der langfristigen Aufbewahrung von Sicherungen in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -39,7 +39,7 @@ Sie können SQL-Datenbank [zur Aufbewahrung von automatisierten Sicherungen](lon
 
    ![Konfigurieren von Richtlinien](./media/long-term-backup-retention-configure/ltr-configure-policies.png)
 
-3. Klicken Sie auf **Anwenden** , wenn Sie fertig sind.
+3. Klicken Sie auf **Anwenden**, wenn Sie fertig sind.
 
 > [!IMPORTANT]
 > Wenn Sie eine Richtlinie für die Langzeitaufbewahrung von Sicherungen aktivieren, kann es bis zu 7 Tage dauern, bevor die erste Sicherung angezeigt wird und wiederhergestellt werden kann. Weitere Informationen dazu, in welchen Intervallen Sicherungskopien für die Langzeitaufbewahrung erstellt werden, finden Sie unter [Langzeitaufbewahrung von Sicherungen](long-term-retention-overview.md).
@@ -60,13 +60,13 @@ Zeigen Sie die Sicherungen an, die für eine bestimmte Datenbank mit einer LTR-R
 
    ![Wiederherstellen](./media/long-term-backup-retention-configure/ltr-restore.png)
 
-1. Klicken Sie auf **OK** , um Ihre Datenbank aus der Sicherung in Azure Storage in der neuen Datenbank wiederherzustellen.
+1. Klicken Sie auf **OK**, um Ihre Datenbank aus der Sicherung in Azure Storage in der neuen Datenbank wiederherzustellen.
 
 1. Klicken Sie auf der Symbolleiste auf das Benachrichtigungssymbol, um den Status des Wiederherstellungsauftrags anzuzeigen.
 
    ![Status des Wiederherstellungsauftrags](./media/long-term-backup-retention-configure/restore-job-progress-long-term.png)
 
-1. Öffnen Sie nach Abschluss des Wiederherstellungsauftrags die Seite **SQL-Datenbanken** , um die neu wiederhergestellte Datenbank anzuzeigen.
+1. Öffnen Sie nach Abschluss des Wiederherstellungsauftrags die Seite **SQL-Datenbanken**, um die neu wiederhergestellte Datenbank anzuzeigen.
 
 > [!NOTE]
 > Auf diesem Blatt können Sie mithilfe von SQL Server Management Studio eine Verbindung mit der wiederhergestellten Datenbank herstellen, um erforderliche Aufgaben durchzuführen. Sie können beispielsweise [einen Teil der Daten aus der wiederhergestellten Datenbank extrahieren und in die vorhandene Datenbank kopieren oder die vorhandene Datenbank löschen und die wiederhergestellte Datenbank in den vorhandenen Datenbanknamen umbenennen](recovery-using-backups.md#point-in-time-restore).
@@ -100,7 +100,7 @@ Für **Remove-AzSqlDatabaseLongTermRetentionBackup** müssen Sie über eine der 
 > [!NOTE]
 > Die Rolle „Mitwirkender von SQL Server“ besitzt keine Berechtigung zum Löschen von LTR-Sicherungen.
 
-RBAC-Berechtigungen können im Bereich *Abonnement* oder *Ressourcengruppe* erteilt werden. Für den Zugriff auf LTR-Sicherungen, die zu einem gelöschten Server gehören, muss die Berechtigung jedoch im Bereich *Abonnement* dieses Servers erteilt werden.
+Azure RBAC-Berechtigungen können im Bereich *Abonnement* oder *Ressourcengruppe* erteilt werden. Für den Zugriff auf LTR-Sicherungen, die zu einem gelöschten Server gehören, muss die Berechtigung jedoch im Bereich *Abonnement* dieses Servers erteilt werden.
 
 - Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
 

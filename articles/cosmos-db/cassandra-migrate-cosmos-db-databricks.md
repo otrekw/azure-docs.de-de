@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/16/2020
 ms.author: thvankra
 ms.reviewer: thvankra
-ms.openlocfilehash: 877aa96b189de47d158721df6585cb94ace4a855
-ms.sourcegitcommit: 03c0a713f602e671b278f5a6101c54c75d87658d
+ms.openlocfilehash: 827abcdb9eb2eb8b7328eb3e3a78f49d51e87e6b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94932866"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96349179"
 ---
 # <a name="migrate-data-from-cassandra-to-azure-cosmos-db-cassandra-api-account-using-azure-databricks"></a>Migrieren von Daten aus Cassandra zum Azure Cosmos DB-Cassandra-API-Konto mithilfe von Azure Databricks
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -114,7 +114,7 @@ DFfromNativeCassandra
 ```
 
 > [!NOTE]
-> Die Konfigurationen `spark.cassandra.output.concurrent.writes` und `connections_per_executor_max` sind wichtig, um eine [Ratenbegrenzung](https://docs.microsoft.com/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/) zu vermeiden. Diese erfolgt, wenn Anforderungen an Cosmos DB den bereitgestellten Durchsatz ([Anforderungseinheiten](https://docs.microsoft.com/azure/cosmos-db/request-units)) überschreiten. Sie müssen diese Einstellungen möglicherweise abhängig von der Anzahl der Executors im Spark-Cluster und eventuell der Größe (und somit der RU-Kosten) jedes in die Zieltabellen geschriebenen Datensatzes anpassen.
+> Die Konfigurationen `spark.cassandra.output.concurrent.writes` und `connections_per_executor_max` sind wichtig, um eine [Ratenbegrenzung](/samples/azure-samples/azure-cosmos-cassandra-java-retry-sample/azure-cosmos-db-cassandra-java-retry-sample/) zu vermeiden. Diese erfolgt, wenn Anforderungen an Cosmos DB den bereitgestellten Durchsatz ([Anforderungseinheiten](./request-units.md)) überschreiten. Sie müssen diese Einstellungen möglicherweise abhängig von der Anzahl der Executors im Spark-Cluster und eventuell der Größe (und somit der RU-Kosten) jedes in die Zieltabellen geschriebenen Datensatzes anpassen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

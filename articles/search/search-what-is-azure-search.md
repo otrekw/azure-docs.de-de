@@ -7,38 +7,47 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: overview
-ms.date: 10/22/2020
+ms.date: 11/24/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 0062caff7d8d25b263a9b1202f61691c056469af
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 19be1155476ca7c295e2d0311e8285bc2128dd1d
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701081"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030763"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Was ist Azure Cognitive Search?
 
-Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet.
+Azure Cognitive Search ([früher „Azure Search“](whats-new.md#new-service-name)) ist ein Cloudsuchdienst, der Entwicklern APIs und Tools zum Erstellen umfangreicher Suchfunktionen für private, heterogene Inhalte in Web- und Unternehmensanwendungen sowie in mobilen Anwendungen bietet. 
 
-Wenn Sie einen Cognitive Search-Dienst erstellen, erhalten Sie eine Suchmaschine, die die Indizierung und Abfrageausführung übernimmt, eine beständige Speicherung der von Ihnen erstellten und verwalteten Indizes sowie eine Abfragesprache zum Verfassen einfacher und komplexer Abfragen. Ein Suchdienst kann optional in andere Azure-Dienste integriert werden. Dies geschieht in Form von *Indexern*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Qualifikationsgruppen*, mit denen nutzbare KI aus Cognitive Services (z. B. die Bild- und Textanalyse) oder benutzerdefinierte KI, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden, einbezogen wird.
+Wenn Sie einen Cognitive Search-Dienst erstellen, erhalten Sie Folgendes:
+
++ Eine Suchmaschine für die Indizierung und Abfrageausführung
++ KI-basierte Analyse und Transformation von Bildern und undifferenziertem Text bei der Indizierung
++ Dauerhafte Speicherung der von Ihnen erstellten und verwalteten Suchindizes
++ Eine Abfragesprache für einfache und komplexe Abfragen
+
+Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und einer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.
 
 ![Architektur von Azure Cognitive Search](media/search-what-is-azure-search/azure-search-diagram.svg "Architektur von Azure Cognitive Search")
 
-Aus architektonischer Sicht befindet sich ein Suchdienst zwischen den externen Datenspeichern, die Ihre nicht indizierten Daten enthalten, und einer Client-App, die Abfrageanforderungen an einen Suchindex sendet und die Antwort verarbeitet.  Ein Indexschema bestimmt die Struktur von durchsuchbarem Inhalt. 
+Ein Suchdienst kann in andere Azure-Dienste integriert werden. Dies geschieht in Form von *Indexern*, die das Erfassen/Abrufen von Daten aus Azure-Datenquellen automatisieren, und *Qualifikationsgruppen*, mit denen nutzbare KI aus Cognitive Services (z. B. die Bild- und Textanalyse) oder benutzerdefinierte KI, die Sie in Azure Machine Learning erstellen oder in Azure Functions einbinden, einbezogen wird.
 
-Die beiden primären Workloads eines Suchdiensts sind *Indizierung* und *Abfrage*.
+Die beiden primären Workloads des eigentlichen Suchdiensts sind *Indizierung* und *Abfrage*. 
 
-+ Durch Indizierung wird Text in Ihren Suchdienst integriert und durchsuchbar. Intern wird eingehender Text in Token verarbeitet und für schnelle Scans in invertierten Indizes gespeichert. Während der Indizierung haben Sie die Möglichkeit, *kognitive Skills* hinzuzufügen. Dabei kann es sich entweder um von Microsoft vordefinierte oder von Ihnen erstellte benutzerdefinierte Skills handeln. Die anschließenden Analysen und Transformationen können zu neuen Informationen und Strukturen führen, die zuvor nicht vorhanden waren und für viele Such- und Knowledge Mining-Szenarien von großem Nutzen sind.
++ Durch Indizierung wird Text in Ihren Suchdienst integriert und durchsuchbar. Intern wird eingehender Text in Token verarbeitet und für schnelle Scans in invertierten Indizes gespeichert. 
+
+  Im Rahmen der Indizierung haben Sie die Möglichkeit, *KI-Anreicherungen* über [kognitive Skills](cognitive-search-working-with-skillsets.md) hinzuzufügen. Dabei kann es sich um vordefinierte Skills von Microsoft oder um benutzerdefinierte (also selbst erstellte) Skills handeln. Die anschließenden Analysen und Transformationen können zu neuen Informationen und Strukturen führen, die zuvor nicht vorhanden waren und für viele Such- und Knowledge Mining-Szenarien von großem Nutzen sind.
 
 + Sobald ein Index mit durchsuchbaren Daten aufgefüllt wurde, sendet Ihre Client-App Abfrageanforderungen an einen Suchdienst und verarbeitet die Antworten. Die gesamte Abfrageausführung erfolgt über einem Suchindex, den Sie erstellen, besitzen und in Ihrem Dienst speichern. In Ihrer Client-App wird die Suchfunktion mithilfe von APIs aus Azure Cognitive Search definiert und kann Relevanzoptimierung, automatische Vervollständigung, Synonymabgleich, Fuzzyübereinstimmung, Musterabgleich, Filter und Sortierung umfassen.
 
 Die Funktionalität wird über eine einfache [REST-API](/rest/api/searchservice/) oder ein [.NET SDK](search-howto-dotnet-sdk.md) bereitgestellt, sodass die inhärente Komplexität des Informationsabrufs verborgen bleibt. Sie können auch das Azure-Portal für die Dienst- und Inhaltsverwaltung mit Tools für die Prototyperstellung und Abfrage Ihrer Indizes und Qualifikationsgruppen verwenden. Da der Dienst in der Cloud ausgeführt wird, werden die Infrastruktur und Verfügbarkeit von Microsoft verwaltet.
 
-## <a name="when-to-use-cognitive-search"></a>Einsatzgebiete von Cognitive Search
+## <a name="why-use-cognitive-search"></a>Gründe für die Verwendung von Cognitive Search
 
-Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenarien:
+Azure Cognitive Search eignet sich sehr gut für folgende Anwendungsszenarien:
 
-+ Konsolidierung von heterogenen Inhaltstypen in einem privaten, benutzerdefinierten Suchindex. Sie können einen Suchindex mit Streams aus JSON-Dokumenten aus jeder beliebigen Quelle auffüllen. Verwenden Sie für unterstützte Quellen in Azure einen *Indexer*, um die Indizierung zu automatisieren. Die Steuerung des Indexschemas und des Aktualisierungszeitplans ist ein Hauptgrund für die Verwendung von Cognitive Search.
++ Konsolidierung heterogener Inhalte in einem privaten, benutzerdefinierten Suchindex. Sie können einen Suchindex mit Streams aus JSON-Dokumenten aus jeder beliebigen Quelle auffüllen. Verwenden Sie für unterstützte Quellen in Azure einen *Indexer*, um die Indizierung zu automatisieren. Die Steuerung des Indexschemas und des Aktualisierungszeitplans ist ein Hauptgrund für die Verwendung von Cognitive Search.
 
 + Einfache Implementierung von Features in Zusammenhang mit der Suche. Such-APIs vereinfachen Abfrageerstellung, Facettennavigation, Filter (einschließlich geografisch-räumlicher Suche), Synonymzuordnung, automatische Vervollständigung und Relevanzoptimierung. Mithilfe von integrierten Features können Sie die Erwartungen von Endbenutzern an einen Suchdienst erfüllen, der der Funktionalität von kommerziellen Suchmaschinen in nichts nachsteht.
 
@@ -48,39 +57,20 @@ Azure Cognitive Search eignet sich sehr gut für die folgenden Anwendungsszenari
 
 Weitere Informationen zu bestimmten Funktionen finden Sie unter [Azure Cognitive Search-Features](search-features-list.md).
 
-## <a name="how-to-use-cognitive-search"></a>Verwendung von Cognitive Search
+## <a name="how-to-get-started"></a>Erste Schritte
 
-### <a name="step-1-provision-service"></a>Schritt 1: Bereitstellen des Diensts
+Mithilfe der folgenden vier Schritte können Sie sich umfassend mit den wichtigsten Suchfunktionen vertraut machen:
 
-Sie können einen [kostenlosen Dienst erstellen](search-create-service-portal.md), der gemeinsam mit anderen Abonnenten genutzt wird, oder einen [kostenpflichtigen Tarif](https://azure.microsoft.com/pricing/details/search/) auswählen, bei dem Ressourcen zur ausschließlichen Nutzung für Ihren Dienst reserviert werden. Alle Schnellstartanleitungen und Tutorials können mit dem kostenlosen Dienst abgeschlossen werden.
+1. [**Erstellen Sie einen Suchdienst**](search-create-service-portal.md) im Free-Tarif, der gemeinsam mit anderen Abonnenten genutzt wird, oder verwenden Sie einen [kostenpflichtigen Tarif](https://azure.microsoft.com/pricing/details/search/) mit dedizierten Ressourcen, die ausschließlich Ihrem Dienst vorbehalten sind. Alle Schnellstartanleitungen und Tutorials können mit dem kostenlosen Dienst abgeschlossen werden.
 
-Bei kostenpflichtigen Tarifen können Sie einen Dienst in zwei Dimensionen skalieren und so die Ressourcen entsprechend den Produktionsanforderungen abstimmen:
+1. [**Erstellen Sie einen Suchindex**](search-what-is-an-index.md) über das Portal, mithilfe der [REST-API](/rest/api/searchservice/create-index), per [.NET SDK](search-howto-dotnet-sdk.md) oder mithilfe eines anderen SDK. Das Indexschema definiert die Struktur von durchsuchbarem Inhalt.
 
-+ Hinzufügen von Replikaten, um die Kapazität für ein hohes Abfrageaufkommen zu erhöhen
-+ Hinzufügen von Partitionen, um den Speicher für weitere Dokumente zu vergrößern
+1. [**Laden Sie Inhalte in den Index hoch.** ](search-what-is-data-import.md) Verwenden Sie das [Pushmodell](tutorial-optimize-indexing-push-api.md), um JSON-Dokumente aus einer beliebigen Quelle zu pushen, oder verwenden Sie das [Pullmodell (Indexer)](search-indexer-overview.md), wenn sich Ihre Quelldaten in Azure befinden.
 
-### <a name="step-2-create-an-index"></a>Schritt 2: Erstellen eines Index
-
-Definieren Sie ein zuzuordnendes Indexschema, um die Struktur der Dokumente widerzuspiegeln, die Sie durchsuchen möchten (ähnlich wie bei Feldern in einer Datenbank). Ein Suchindex ist eine spezialisierte Datenstruktur, die für die schnelle Abfrageausführung optimiert ist.
-
-Häufig wird das [Indexschema im Azure-Portal erstellt](search-what-is-an-index.md) oder programmgesteuert mithilfe des [.NET SDK](search-howto-dotnet-sdk.md) oder der [REST-API](/rest/api/searchservice/).
+1. [**Fragen Sie einen Index ab.** ](search-query-overview.md) Verwenden Sie dazu den [Suchexplorer](search-explorer.md) im Portal, die [REST-API](search-get-started-rest.md), das [.NET SDK](/dotnet/api/azure.search.documents.searchclient.search) oder ein anderes SDK.
 
 > [!TIP]
-> Beginnen Sie mit [Schnellstart: Datenimport-Assistent](search-get-started-portal.md), um einen Index innerhalb weniger Minuten zu erstellen, zu laden und abzufragen.
-
-### <a name="step-3-load-data"></a>Schritt 3: Laden der Daten
-
-Nachdem Sie einen Index definiert haben, können Sie Inhalte hochladen. Sie können entweder ein Push- oder Pullmodell verwenden.
-
-Das Pushmodell überträgt JSON-Dokumente mithilfe von APIs aus einem [SDK](search-howto-dotnet-sdk.md) oder [REST](/rest/api/searchservice/addupdate-or-delete-documents) in einen Index. Beim externen Dataset kann es sich praktisch um jede Datenquelle handeln, solange es JSON-Dokumente sind.
-
-Das Pullmodell ruft Daten aus Quellen in Azure ab und sendet sie an einen Suchindex. Das Pullmodell wird über [*Indexer*](/rest/api/searchservice/Indexer-operations) implementiert, die Aspekte der Datenerfassung optimieren und automatisieren, z. B. das Herstellen einer Verbindung mit Daten, Lesen und Serialisieren von Daten. Zu den unterstützten Datenquellen gehören Azure Cosmos DB, Azure SQL und Azure Storage.
-
-### <a name="step-4-send-queries-and-handle-responses"></a>Schritt 4: Senden von Abfragen und Verarbeiten von Antworten
-
-Nach dem Füllen eines Indexes können Sie über einfache HTTP-Anforderungen mit der [REST-API](/rest/api/searchservice/Search-Documents) oder dem [.NET-SDK](/dotnet/api/azure.search.documents.searchclient.search)[Suchabfragen](search-query-overview.md) an Ihren Dienstendpunkt richten.
-
-Führen Sie die Schritte zum [Erstellen Ihrer ersten Such-App](tutorial-csharp-create-first-app.md) aus, um eine Webseite zu erstellen und anschließend zu erweitern, die Benutzereingaben sammelt und Ergebnisse verarbeitet. Sie können auch [Postman oder Visual Studio Code](search-get-started-rest.md) für interaktive REST-Aufrufe oder den integrierten [Suchexplorer](search-explorer.md) im Azure-Portal verwenden, um einen vorhandenen Index abzufragen.
+> Konsolidieren Sie die Schritte, indem Sie mit dem [**Datenimport-Assistenten**](search-get-started-portal.md) und einer Azure-Datenquelle beginnen, um innerhalb weniger Minuten einen Index zu erstellen, zu laden und abzufragen.
 
 ## <a name="how-it-compares"></a>Im Vergleich
 

@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
-ms.date: 7/14/2020
-ms.openlocfilehash: 653e6aad7f57b4d683f2f71ed22e402ed5d1fca8
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.date: 11/19/2020
+ms.openlocfilehash: a20c495553dfe9a16c34a2972575d21cc95eef44
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630293"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95537134"
 ---
 # <a name="microsoft-business-applications-independent-software-vendor-isv-connect-program-onboarding-guide"></a>Onboardingleitfaden für das Microsoft Business Applications-ISV-Connect-Programm
 
@@ -38,7 +38,7 @@ Wenn Sie an diesem Programm teilnehmen möchten, müssen Sie den [Business Appl
 > Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um rechtliche Vereinbarungen unterzeichnen zu können.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
-1. Wählen Sie **Einstellungen** (Zahnradsymbol) und dann **Entwicklereinstellungen** aus.
+1. Wählen Sie **Einstellungen** (Zahnradsymbol) > **Kontoeinstellungen** aus.
 1. Wählen Sie **Vereinbarungen** aus.
 1. Klicken Sie auf den Versionslink, und sehen Sie sich die Vereinbarung an.
 1. Wählen Sie **Accept Agreement** (Vereinbarung akzeptieren) aus, um der Vereinbarung zuzustimmen und sie zu akzeptieren.
@@ -51,8 +51,8 @@ Richten Sie die Abrechnungsinformationen für das Business Applications ISV Conn
 > Für diesen Schritt müssen Sie in Partner Center über eine Rolle vom Typ *Besitzer* oder *Manager* für Ihr Konto verfügen, um Abrechnungsinformationen aktualisieren zu können.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
-1. Wählen Sie **Einstellungen** (Zahnradsymbol) und dann **Entwicklereinstellungen** aus.
-1. Wählen Sie unter **Kontoeinstellungen** die Option **Abrechnungsprofil** aus.
+1. Wählen Sie **Einstellungen** (Zahnradsymbol) > **Kontoeinstellungen** aus.
+1. Wählen Sie unter **Organisationsprofil** die Option **Abrechnungsprofil** und anschließend die Registerkarte **Entwickler** aus.
 1. Überprüfen Sie die primären Kontakt- und Abrechnungsinformationen, die auf der Grundlage Ihrer juristischen Person aufgefüllt wurden.
 1. Wenn Sie Änderungen vornehmen möchten, wählen Sie **Aktualisieren** aus.
 1. Nehmen Sie ggf. Eingaben für die Steuernummer/USt-IdNr. vor.

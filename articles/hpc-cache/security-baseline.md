@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 3e040146673ba16c07856f30b88771d0063713e9
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e7f6cf905613866041e72433328ea742706a8c49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95896882"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453875"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure-Sicherheitsbaseline für Azure HPC Cache
 
@@ -22,7 +22,7 @@ Zum Anzeigen der vollständigen Zuordnung von Azure HPC Cache zum Vergleichstest
 
 ## <a name="network-security"></a>Netzwerksicherheit
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-controls-v2-network-security).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](../security/benchmarks/security-controls-v2-network-security.md).*
 
 ### <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: Implementieren der Sicherheit für internen Datenverkehr
 
@@ -104,9 +104,9 @@ Azure bietet native Funktionen für diesen Schutz:
 
 Azure HPC Cache ist nicht zum Ausführen von Webanwendungen gedacht und erfordert nicht, dass Sie zusätzliche Einstellungen konfigurieren oder zusätzliche Netzwerkdienste bereitstellen, um sie vor externen Netzwerkangriffen zu schützen, die auf Webanwendungen ausgerichtet sind.
 
-- [Azure Firewall-Dokumentation](/azure/firewall/) 
+- [Azure Firewall-Dokumentation](../firewall/index.yml) 
 
-- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](/azure/virtual-network/manage-ddos-protection) 
+- [Verwalten von Azure DDoS Protection Standard mithilfe des Azure-Portals](../ddos-protection/manage-ddos-protection.md) 
 
 - [Azure Security Center-Empfehlungen](../security-center/recommendations-reference.md#recs-network)
 
@@ -126,7 +126,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 - [IDS-Funktionen von Drittanbietern im Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace?search=IDS) 
 
-- [ATP-EDR-Funktion von Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/overviewendpoint-detection-response)
+- [ATP-EDR-Funktion von Microsoft Defender](/windows/security/threat-protection/microsoft-defender-atp/overview-endpoint-detection-response)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -170,7 +170,7 @@ Wenn Sie einen eigenen DNS-Server konfigurieren, achten Sie darauf, dass Sie die
 
 ## <a name="identity-management"></a>Identitätsverwaltung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](/azure/security/benchmarks/security-controls-v2-identity-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](../security/benchmarks/security-controls-v2-identity-management.md).*
 
 ### <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisieren von Azure Active Directory als zentrales Identitäts- und Authentifizierungssystem
 
@@ -190,7 +190,7 @@ Hinweis: Azure AD unterstützt externe Identitäten, die es Benutzern ohne Micr
 
 - [Erstellen und Konfigurieren einer Azure AD-Instanz](../active-directory/fundamentals/active-directory-access-create-new-tenant.md) 
 
-- [Verwenden externer Identitätsanbieter für eine Anwendung](/azure/active-directory/b2b/identity-providers) 
+- [Verwenden externer Identitätsanbieter für eine Anwendung](../active-directory/external-identities/identity-providers.md) 
 
 - [Was ist der Identity Secure Score in Azure Active Directory?](../active-directory/fundamentals/identity-secure-score.md)
 
@@ -216,7 +216,7 @@ HPC Cache kann sich gegenüber Azure-Diensten/-Ressourcen, die die Azure AD-Auth
 
 **Leitfaden**: Azure HPC Cache wird für interne Vorgänge nicht mit Azure AD integriert. Azure AD kann jedoch zur Authentifizierung von Benutzern im Azure-Portal oder der Befehlszeilenschnittstelle verwendet werden, um HPC Cache-Bereitstellungen und zugehörige Komponenten zu erstellen, anzuzeigen und zu verwalten.
 
-Azure Active Directory bietet Identitäts- und Zugriffsverwaltung für Azure-Ressourcen, Cloudanwendungen und lokale Anwendungen. Dies umfasst sowohl Unternehmensidentitäten wie Mitarbeiter als auch externe Identitäten wie Partner, Anbieter und Zulieferer. Auf diese Weise kann der Zugriff auf die Daten und Ressourcen Ihrer Organisation lokal und in der Cloud durch einmaliges Anmelden (Single Sign-On, SSO) verwaltet und geschützt werden. Verbinden Sie all Ihre Benutzer, Anwendungen und Geräte mit Azure AD, um einen nahtlosen, sicheren Zugriff sowie mehr Transparenz und Kontrolle zu ermöglichen.
+Azure Active Directory bietet Identitäts- und Zugriffsverwaltung für Azure-Ressourcen, Cloudanwendungen und lokale Anwendungen. Dies umfasst sowohl Unternehmensidentitäten wie Mitarbeiter als auch externe Identitäten wie Partner, Anbieter und Zulieferer. Dies ermöglicht SSO (Single Sign-On, einmaliges Anmelden) die Verwaltung und den Schutz des Zugriffs auf die Daten und Ressourcen Ihrer Organisation, die lokal und in der Cloud gespeichert sind. Verbinden Sie all Ihre Benutzer, Anwendungen und Geräte mit Azure AD, um einen nahtlosen, sicheren Zugriff sowie mehr Transparenz und Kontrolle zu ermöglichen.
 
 - [Grundlegendes zu Anwendungs-SSO mit Azure AD](../active-directory/manage-apps/what-is-single-sign-on.md)
 
@@ -273,9 +273,9 @@ Azure Advanced Threat Protection (ATP) ist eine Sicherheitslösung, die Active 
 
 - [Berichte zu Überwachungsaktivitäten in Azure Active Directory](../active-directory/reports-monitoring/concept-audit-logs.md)
 
-- [Anzeigen riskanter Azure AD-Anmeldungen](/azure/active-directory/reports-monitoring/concept-risky-sign-ins) 
+- [Anzeigen riskanter Azure AD-Anmeldungen](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](/azure/active-directory/reports-monitoring/concept-user-at-risk) 
+- [Identifizieren von Azure AD-Benutzern, die aufgrund riskanter Aktivitäten gekennzeichnet wurden](../active-directory/identity-protection/overview-identity-protection.md) 
 
 - [Überwachen der identitäts- und zugriffsbezogenen Aktivitäten von Benutzern in Azure Security Center](../security-center/security-center-identity-access.md)
 
@@ -299,7 +299,7 @@ Azure Advanced Threat Protection (ATP) ist eine Sicherheitslösung, die Active 
 
 ## <a name="privileged-access"></a>Privilegierter Zugriff
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](/azure/security/benchmarks/security-controls-v2-privileged-access).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](../security/benchmarks/security-controls-v2-privileged-access.md).*
 
 ### <a name="pa-2-restrict-administrative-access-to-business-critical-systems"></a>PA-2: Einschränken des administrativen Zugriffs auf unternehmenskritische Systeme
 
@@ -351,7 +351,7 @@ Wenn Sie NFS-Speicherziele verwenden, müssen Sie mit Ihren Netzwerkadministrato
 
 Sie sollten sicherstellen, dass die Anmeldeinformationen (z. B. Kennwort, Zertifikat oder Smartcard) für Konten für den Notfallzugriff sicher aufbewahrt werden und nur den Personen bekannt sind, die für deren Verwendung im Notfall autorisiert sind.
 
-- [Verwalten von Konten für den Notfallzugriff in Azure AD](/azure/active-directory/users-groups-roles/directory-emergency-access)
+- [Verwalten von Konten für den Notfallzugriff in Azure AD](../active-directory/roles/security-emergency-access.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -391,7 +391,7 @@ Verwenden Sie integrierte Rollen, um Berechtigungen zuzuweisen und benutzerdefin
 
 ## <a name="data-protection"></a>Datenschutz
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz von Daten](/azure/security/benchmarks/security-controls-v2-data-protection).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Schutz von Daten](../security/benchmarks/security-controls-v2-data-protection.md).*
 
 ### <a name="dp-1-discover-classify-and-label-sensitive-data"></a>DP-1: Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Daten 
 
@@ -453,11 +453,11 @@ Alle in Azure gespeicherten Daten, einschließlich auf Cachedatenträgern, werde
 
 Wenn aus Compliancegründen für Computeressourcen erforderlich, implementieren Sie ein Drittanbietertool, z. B. eine automatisierte Lösung für die hostbasierte Verhinderung von Datenverlust, um Zugriffssteuerungen für Daten auch dann zu erzwingen, wenn Daten von einem System kopiert werden.
 
-- [Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln mit Azure HPC Cache](https://docs.microsoft.com/azure/hpc-cache/hpc-cache-create?tabs=azure-portal#enable-azure-key-vault-encryption-optional)
+- [Verwenden von kundenseitig verwalteten Verschlüsselungsschlüsseln mit Azure HPC Cache](./hpc-cache-create.md?tabs=azure-portal#enable-azure-key-vault-encryption-optional)
 
 - [Grundlegendes zur Verschlüsselung ruhender Daten in Azure](../security/fundamentals/encryption-atrest.md#encryption-at-rest-in-microsoft-cloud-services) 
 
-- [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](/azure/storage/common/storage-encryption-keys-portal) 
+- [Konfigurieren von kundenseitig verwalteten Schlüsseln mit Azure Key Vault über das Azure-Portal](../storage/common/customer-managed-keys-configure-key-vault.md) 
 
 - [Tabelle für Verschlüsselungsmodell und Schlüsselverwaltung](../security/fundamentals/encryption-atrest.md)
 
@@ -471,7 +471,7 @@ Wenn aus Compliancegründen für Computeressourcen erforderlich, implementieren 
 
 ## <a name="asset-management"></a>Ressourcenverwaltung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Ressourcenverwaltung](/azure/security/benchmarks/security-controls-v2-asset-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Ressourcenverwaltung](../security/benchmarks/security-controls-v2-asset-management.md).*
 
 ### <a name="am-1-ensure-security-team-has-visibility-into-risks-for-assets"></a>AM-1: Sicherstellen, dass das Sicherheitsteam Risiken für Ressourcen einsehen kann
 
@@ -504,7 +504,7 @@ HPC Cache lässt die Ausführung einer Anwendung oder Installation von Software 
 
 - [Verwalten des Ressourcenbestands in Azure Security Center](../security-center/asset-inventory.md) 
 
-- [Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung](https://docs.microsoft.com/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=/azure/azure-resource-manager/management/toc.json) 
+- [Leitfaden zur Entscheidungsfindung für Ressourcenbenennung und -markierung](/azure/cloud-adoption-framework/decision-guides/resource-tagging/?toc=%2fazure%2fazure-resource-manager%2fmanagement%2ftoc.json) 
 
 - [Aktivieren des Bestands an virtuellen Azure-Computern](../automation/automation-tutorial-installed-software.md)
 
@@ -518,7 +518,7 @@ HPC Cache lässt die Ausführung einer Anwendung oder Installation von Software 
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md) 
 
-- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](/azure/governance/policy/samples/not-allowed-resource-types) 
+- [Ablehnen eines bestimmten Ressourcentyps mit Azure Policy](../governance/policy/samples/index.md) 
 
 - [Schnellstart: Ausführen Ihrer ersten Resource Graph-Abfrage mithilfe des Azure Resource Graph-Explorers](../governance/resource-graph/first-query-portal.md)
 
@@ -538,7 +538,7 @@ Es wird empfohlen, dass der Kunde einen Prozess erstellt, um die Attribut- und N
 
 ## <a name="logging-and-threat-detection"></a>Protokollierung und Bedrohungserkennung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-protection).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-detection).*
 
 ### <a name="lt-1-enable-threat-detection-for-azure-resources"></a>LT-1: Aktivieren der Bedrohungserkennung für Azure-Ressourcen
 
@@ -546,7 +546,7 @@ Es wird empfohlen, dass der Kunde einen Prozess erstellt, um die Attribut- und N
 
 Leiten Sie alle Protokolle aus HPC Cache an Ihr SIEM weiter, das zur Einrichtung benutzerdefinierter Bedrohungserkennungen verwendet werden kann. Stellen Sie sicher, dass Sie unterschiedliche Arten von Azure-Ressourcen nach potenziellen Bedrohungen und Anomalien überwachen. Das Ziel sollten möglichst hochwertige Warnungen sein. Damit verringern Sie die Anzahl falsch positiver Ergebnisse, die später von Analysten aussortiert werden müssen. Die Quellen von Warnungen können Protokolldaten, Agents oder andere Daten darstellen.
 
-- [Bedrohungsschutz in Azure Security Center](/azure/security-center/threat-protection) 
+- [Bedrohungsschutz in Azure Security Center](../security-center/azure-defender.md) 
 
 - [Sicherheitswarnungen von Azure Security Center (Referenzhandbuch)](../security-center/alerts-reference.md) 
 
@@ -575,7 +575,7 @@ Auch Azure Security Center kann bestimmte verdächtige Aktivitäten melden, wie
 
 - [Aktivieren von Azure Identity Protection](../active-directory/identity-protection/overview-identity-protection.md) 
 
-- [Bedrohungsschutz in Azure Security Center](/azure/security-center/threat-protection)
+- [Bedrohungsschutz in Azure Security Center](../security-center/azure-defender.md)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -611,7 +611,7 @@ Implementieren Sie eine Drittanbieterlösung aus Azure Marketplace für die DNS-
 
 **Leitfaden**: Azure HPC Cache-Ressourcen erstellen automatisch Aktivitätsprotokolle. Diese Protokolle enthalten alle Schreibvorgänge (PUT, POST, DELETE), aber nicht die Lesevorgänge (GET). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-Sie können auch Azure Security Center und Azure Policy verwenden, um Azure-Ressourcenprotokolle für HPC Cache zu aktivieren und die Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
+Sie können auch Azure Security Center und Azure Policy verwenden, um Azure-Ressourcenprotokolle für HPC Cache zu aktivieren und die Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsincidents und die Durchführung forensischer Maßnahmen von entscheidender Bedeutung sein.
 
 - [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -643,7 +643,7 @@ Viele Unternehmen verwenden Azure Sentinel für „heiße“ Daten, die häufig 
 
 ## <a name="incident-response"></a>Reaktion auf Vorfälle
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](/azure/security/benchmarks/security-controls-v2-incident-response).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](../security/benchmarks/security-controls-v2-incident-response.md).*
 
 ### <a name="ir-1-preparation--update-incident-response-process-for-azure"></a>IR-1: Vorbereitung – Aktualisieren des Prozesses zur Reaktion auf Vorfälle für Azure
 
@@ -725,7 +725,7 @@ Markieren Sie Ressourcen außerdem mithilfe von Tags, und erstellen Sie ein Bene
 
 - [Sicherheitswarnungen in Azure Security Center](../security-center/security-center-alerts-overview.md)
 
-- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](/azure/azure-resource-manager/resource-group-using-tags)
+- [Verwenden von Tags zum Organisieren von Azure-Ressourcen](../azure-resource-manager/management/tag-resources.md)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -747,7 +747,7 @@ Markieren Sie Ressourcen außerdem mithilfe von Tags, und erstellen Sie ein Bene
 
 ## <a name="posture-and-vulnerability-management"></a>Status- und Sicherheitsrisikoverwaltung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Status- und Sicherheitsrisikoverwaltung](/azure/security/benchmarks/security-controls-v2-vulnerability-management).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Status- und Sicherheitsrisikoverwaltung](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management).*
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: Einrichten sicherer Konfigurationen für Computeressourcen
 
@@ -778,7 +778,7 @@ Befolgen Sie die Einsatzregeln für Penetrationstests für die Microsoft Cloud, 
 
 ## <a name="backup-and-recovery"></a>Sicherung und Wiederherstellung
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Sicherung und Wiederherstellung](/azure/security/benchmarks/security-controls-v2-backup-recovery).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Sicherung und Wiederherstellung](../security/benchmarks/security-controls-v2-backup-recovery.md).*
 
 ### <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
@@ -814,7 +814,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 - [Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln](../backup/encryption-at-rest-with-cmk.md)  
 
-- [Sichern von Key Vault-Schlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey?view=azps-5.1.0&amp;preserve-view=true)
+- [Sichern von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -824,7 +824,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 **Leitfaden**: Stellen Sie regelmäßig sicher, dass gesicherte, kundenseitig verwaltete Schlüssel wiederhergestellt werden können.
 
-- [Wiederherstellen von Key Vault-Schlüsseln in Azure](https://docs.microsoft.com/powershell/module/az.keyvault/restore-azkeyvaultkey?view=azps-5.1.0&amp;preserve-view=true)
+- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -834,7 +834,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 **Leitfaden**: Stellen Sie sicher, dass Sie über Maßnahmen verfügen, um den Verlust von Schlüsseln zu verhindern bzw. sich von den daraus resultierenden Folgen zu erholen. Aktivieren Sie vorläufiges Löschen und den Löschschutz in Azure Key Vault, um Schlüssel vor versehentlichem oder böswilligem Löschen zu schützen.
 
-- [Aktivieren des vorläufigen Löschens und des Löschschutzes in Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [Aktivieren des vorläufigen Löschens und des Löschschutzes in Key Vault](../storage/blobs/soft-delete-blob-overview.md?tabs=azure-portal)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -842,7 +842,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 ## <a name="governance-and-strategy"></a>Governance und Strategie
 
-*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Governance und Strategie](/azure/security/benchmarks/security-controls-v2-governance-strategy).*
+*Weitere Informationen finden Sie unter [Azure-Sicherheitsvergleichstest: Governance und Strategie](../security/benchmarks/security-controls-v2-governance-strategy.md).*
 
 ### <a name="gs-1-define-asset-management-and-data-protection-strategy"></a>GS-1: Definieren der Strategie für Ressourcenverwaltung und Datenschutz 
 
@@ -867,15 +867,15 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 -   Geeignete Verschlüsselungsstandards
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
-- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](https://docs.microsoft.com/azure/architecture/framework/security/storage-data-encryption?toc=/security/compass/toc.json&amp;bc=/security/compass/breadcrumb/toc.json)
+- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Grundlegende Azure-Sicherheitsinformationen: Sicherheit, Verschlüsselung und Speicherung von Azure-Daten](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](https://docs.microsoft.com/azure/security/fundamentals/data-encryption-best-practices?toc=/azure/cloud-adoption-framework/toc.json&amp;bc=/azure/cloud-adoption-framework/_bread/toc.json)
+- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
-- [Azure-Sicherheitsvergleichstest: Ressorcenverwaltung](/azure/security/benchmarks/security-benchmark-v2-asset-management)
+- [Azure-Sicherheitsvergleichstest: Ressorcenverwaltung](/azure/security/benchmarks/security-controls-v2-asset-management)
 
-- [Azure-Sicherheitsvergleichstest: Datenschutz](/azure/security/benchmarks/security-benchmark-v2-data-protection)
+- [Azure-Sicherheitsvergleichstest: Datenschutz](/azure/security/benchmarks/security-controls-v2-data-protection)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -903,7 +903,7 @@ Stellen Sie sicher, dass die Segmentierungsstrategie einheitlich für alle Steue
 
 **Leitfaden**: Führen Sie kontinuierliche Messungen durch, und Mindern Sie die Risiken für Ihre individuellen Ressourcen und die Umgebung, in der diese gehostet werden. Priorisieren Sie Ressourcen mit hohem Wert und hoch exponierte Angriffsflächen, wie z. B. veröffentlichte Anwendungen, Eingangs- und Ausgangspunkte für Netzwerke, Benutzer- und Administratorendpunkte usw.
 
-- [Azure-Sicherheitsvergleichstest: Verwaltung von Status und Sicherheitsrisiken](/azure/security/benchmarks/security-benchmark-v2-posture-vulnerability-management)
+- [Azure-Sicherheitsvergleichstest: Verwaltung von Status und Sicherheitsrisiken](/azure/security/benchmarks/security-controls-v2-posture-vulnerability-management)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -944,7 +944,7 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 Weitere Informationen finden Sie in den folgenden Referenzen:
 - [Azure Security Best Practice 11 – Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (Bewährte Methoden für die Sicherheit von Azure 11 – Architektur: Zentralisierte einheitliche Sicherheitsstrategie)
 
-- [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-benchmark-v2-network-security)
+- [Azure-Sicherheitsvergleichstest: Netzwerksicherheit](/azure/security/benchmarks/security-controls-v2-network-security)
 
 - [Die Netzwerksicherheit in Azure in der Übersicht](../security/fundamentals/network-overview.md)
 
@@ -972,9 +972,9 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
 
-- [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](/azure/security/benchmarks/security-benchmark-v2-identity-management)
+- [Azure-Sicherheitsvergleichstest: Identitätsverwaltung](/azure/security/benchmarks/security-controls-v2-identity-management)
 
-- [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](/azure/security/benchmarks/security-benchmark-v2-privileged-access)
+- [Azure-Sicherheitsvergleichstest: Privilegierter Zugriff](/azure/security/benchmarks/security-controls-v2-privileged-access)
 
 - [Azure Security Best Practice 11 – Architecture. Single unified security strategy](/azure/cloud-adoption-framework/security/security-top-10#11-architecture-establish-a-single-unified-security-strategy) (Bewährte Methoden für die Sicherheit von Azure 11 – Architektur: Zentralisierte einheitliche Sicherheitsstrategie)
 
@@ -986,7 +986,7 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 ### <a name="gs-7-define-logging-and-threat-response-strategy"></a>GS-7: Definieren einer Strategie für Protokollierung und Reaktion auf Bedrohungen
 
-**Leitfaden**: Richten Sie eine Strategie für Protokollierung und Reaktion auf Bedrohungen zur schnellen Erkennung und Behebung von Bedrohungen bei gleichzeitiger Erfüllung von Complianceanforderungen ein. Priorisieren Sie, indem Sie Analysten qualitativ hochwertige Warnungen und nahtlose Umgebungen bereitstellen, sodass sie sich auf Bedrohungen konzentrieren können und sich nicht um Integration und manuelle Schritte kümmern müssen. 
+**Leitfaden**: Richten Sie eine Strategie für Protokollierung und Reaktion auf Bedrohungen zur schnellen Erkennung und Behebung von Bedrohungen bei gleichzeitiger Erfüllung von Complianceanforderungen ein. Priorisieren Sie die Bereitstellung wertvoller Warnungen und nahtloser Funktionen für Analysten, damit sie sich auf Bedrohungen konzentrieren können, anstatt mit der Integration und der Ausführung manueller Schritte. 
 
 Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für die folgenden Elemente umfassen: 
 
@@ -1006,9 +1006,9 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
 
-- [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-benchmark-v2-logging-threat-detection)
+- [Azure-Sicherheitsvergleichstest: Protokollierung und Bedrohungserkennung](/azure/security/benchmarks/security-controls-v2-logging-threat-detection)
 
-- [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](/azure/security/benchmarks/security-benchmark-v2-incident-response)
+- [Azure-Sicherheitsvergleichstest: Reaktion auf Vorfälle](/azure/security/benchmarks/security-controls-v2-incident-response)
 
 - [Azure Security Best Practice 4 – Process. Update Incident Response Processes for Cloud](/azure/cloud-adoption-framework/security/security-top-10#4-process-update-incident-response-ir-processes-for-cloud) (Bewährte Methoden für die Sicherheit von Azure 4 – Prozess: Aktualisieren der Prozesse zur Reaktion auf Vorfälle für die Cloud)
 
@@ -1022,5 +1022,5 @@ Weitere Informationen finden Sie in den folgenden Referenzen:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](/azure/security/benchmarks/overview) an.
-- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](/azure/security/benchmarks/security-baselines-overview).
+- Sehen Sie sich die [Übersicht über Version 2 des Azure-Sicherheitsvergleichstests](../security/benchmarks/overview.md) an.
+- Erfahren Sie mehr über [Azure-Sicherheitsbaselines](../security/benchmarks/security-baselines-overview.md).

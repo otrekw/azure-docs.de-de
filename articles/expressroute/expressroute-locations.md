@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 10/26/2020
 ms.author: duau
-ms.openlocfilehash: 064c9e77876423d0c46f5f9890497a76331481ae
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 30d1fb62b661d898ba06548e5e3a2c7d31b97794
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94336759"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95906482"
 ---
 # <a name="expressroute-connectivity-partners-and-peering-locations"></a>ExpressRoute-Konnektivitätspartner und Peeringstandorte
 
@@ -105,7 +105,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **du datamena** |Unterstützt |Unterstützt | Dubai2 |
 | **eir** |Unterstützt |Unterstützt |Dublin|
 | **[Epsilon Global Communications](https://www.epsilontel.com/solutions/direct-cloud-connect)** |Unterstützt |Unterstützt |Singapur, Singapur2 |
-| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Berlin, Chicago, Dallas, Dublin, Frankfurt, Genf, Hongkong SAR, London, London2, Los Angeles, Los Angeles2, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Silicon Valley, Singapur, Stockholm, Sydney, Tokyo, Toronto, Washington DC, Zürich |
+| **[Equinix](https://www.equinix.com/partners/microsoft-azure/)** |Unterstützt |Unterstützt |Amsterdam, Atlanta, Berlin, Canberra2, Chicago, Dallas, Dubai2, Dublin, Frankfurt, Genf, Hongkong SAR, London, Canberra2, Los Angeles, Los Dubai2, Melbourne, Miami, Mailand, New York, Osaka, Paris, São Paulo, Seattle, Seoul, Silicon Valley, Singapur, Stockholm, Sydney, Tokyo, Toronto, Washington DC, Zürich |
 | **Etisalat (VAE)** |Unterstützt |Unterstützt |Dubai|
 | **[euNetworks](https://eunetworks.com/services/solutions/cloud-connect/microsoft-azure-expressroute/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Dublin, Frankfurt, London |
 | **FarEasTone** |Unterstützt |Unterstützt |Taipeh|
@@ -121,7 +121,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Internet Solutions – Cloud Connect](https://www.is.co.za/solution/cloud-connect/)** |Unterstützt |Unterstützt |Kapstadt, Johannesburg, London |
 | **[Interxion](https://www.interxion.com/why-interxion/colocate-with-the-clouds/Microsoft-Azure/)** |Unterstützt |Unterstützt |Amsterdam, Amsterdam2, Kopenhagen, Dublin, Frankfurt, London, Marseille, Paris, Zürich |
 | **[IX Reach](https://www.ixreach.com/partners/cloud-partners/microsoft-azure/)**|Unterstützt |Unterstützt | Amsterdam, London2, Silicon Valley, Toronto, Washington DC |
-| **Jaguar Network** |Unterstützt |Unterstützt |Marseille|
+| **Jaguar Network** |Unterstützt |Unterstützt |Marseille, Paris |
 | **[Jisc](https://www.jisc.ac.uk/microsoft-azure-expressroute)** |Unterstützt |Unterstützt |London, Newport (Wales) |
 | **[KINX](https://www.kinx.net/service/network/cloudhub/ms-expressroute/?lang=en)** |Unterstützt |Unterstützt |Seoul |
 | **[Kordia](https://www.kordia.co.nz/cloudconnect)** | Unterstützt |Unterstützt |Auckland, Sydney |
@@ -138,7 +138,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[NOS](https://www.nos.pt/empresas/corporate/cloud/cloud/Pages/nos-cloud-connect.aspx)** |Unterstützt |Unterstützt |Amsterdam2 |
 | **[NTT Communications](https://www.ntt.com/en/services/network/virtual-private-network.html)** |Unterstützt |Unterstützt |Amsterdam, Hongkong (SAR), London, Los Angeles, Osaka, Singapur, Sydney, Tokio, Washington DC |
 | **[NTT EAST](https://business.ntt-east.co.jp/service/crossconnect/)** |Unterstützt |Unterstützt |Tokio |
-| **[NTT Global DataCenters EMEA](https://www.ntt.com/en/services/data-center.html)** |Unterstützt |Unterstützt |Berlin |
+| **[NTT Global DataCenters EMEA](https://hello.global.ntt/)** |Unterstützt |Unterstützt |Amsterdam2, Berlin |
 | **[NTT SmartConnect](https://cloud.nttsmc.com/cxc/azure.html)** |Unterstützt |Unterstützt |Osaka |
 | **[Ooredoo Cloud Connect](https://www.ooredoo.qa/portal/OoredooQatar/cloud-connect-expressroute)** |Unterstützt |Unterstützt |Marseille |
 | **[Optus](https://www.optus.com.au/enterprise/)** |Unterstützt |Unterstützt |Melbourne, Sydney |
@@ -152,6 +152,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[SIFY](http://telecom.sify.com/azure-expressroute.html)** |Unterstützt |Unterstützt |Chennai, Mumbai2 |
 | **[SingTel](https://www.singtel.com/about-us/news-releases/singtel-provide-secure-private-access-microsoft-azure-public-cloud)** |Unterstützt |Unterstützt |Hongkong2, Singapur, Singapur2 |
 | **[Softbank](https://www.softbank.jp/biz/cloud/cloud_access/direct_access_for_az/)** |Unterstützt |Unterstützt |Osaka, Tokio |
+| **[Sohonet](https://www.sohonet.com/fastlane/)** |Unterstützt |Unterstützt |London2 |
 | **[Spark NZ](https://www.sparkdigital.co.nz/solutions/connectivity/cloud-connect/)** |Unterstützt |Unterstützt |Auckland, Sydney |
 | **[Sprint](https://business.sprint.com/solutions/cloud-networking/)** |Unterstützt |Unterstützt |Chicago, Silicon Valley, Washington, D.C. |
 | **[Swisscom](https://www.swisscom.ch/en/business/enterprise/offer/cloud-data-center/microsoft-cloud-services/microsoft-azure-von-swisscom.html)** | Unterstützt | Unterstützt | Zürich |
@@ -160,6 +161,7 @@ Die folgende Tabelle enthält die Standorte nach Service Provider. [Hier](expres
 | **[Telehouse - KDDI](https://www.telehouse.net/solutions/cloud-services/cloud-link)** |Unterstützt |Unterstützt |London, London2 |
 | **Telenor** |Unterstützt |Unterstützt |Amsterdam, London, Oslo |
 | **[Telia Carrier](https://www.teliacarrier.com/)** | Unterstützt | Unterstützt |Amsterdam, Chicago, Dallas, Frankfurt, Hongkong, London, Oslo, Paris, Silicon Valley, Stockholm, Washington DC |
+| **[Telin](https://www.telin.net/)** | Unterstützt | Unterstützt |Jakarta |
 | **Telmex Uninet**| Unterstützt | Unterstützt | Dallas |
 | **[Telstra Corporation](https://www.telstra.com.au/business-enterprise/network-services/networks/cloud-direct-connect/)** |Unterstützt |Unterstützt |Melbourne, Singapur, Sydney |
 | **[Telus](https://www.telus.com)** |Unterstützt |Unterstützt |Montreal, Seattle, Toronto, Vancouver |

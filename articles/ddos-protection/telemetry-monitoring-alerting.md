@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 050533151b927efc8a4f1fd2d0245accdba424ec
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: 5c80e5e611c275c2a2262963aa0759075fca836b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92904957"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989393"
 ---
 # <a name="view-and-configure-ddos-protection-telemetry"></a>Anzeigen und Konfigurieren der DDoS Protection-Telemetrie
 
-Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
+Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -42,14 +42,14 @@ Mithilfe der Warnungskonfiguration von Azure Monitor können Sie jede der verfü
 1. Wählen Sie oben im Portal auf der linken Seite **Alle Dienste** aus.
 2. Geben Sie *Monitor* in das Feld **Filter** ein. Wenn **Monitor** in den Ergebnissen angezeigt wird, wählen Sie diese Angabe aus.
 3. Wählen Sie unter **GEMEINSAME DIENSTE** die Option **Metriken** aus.
-4. Geben Sie Ihre eigenen Werte bzw. die folgenden Beispielwerte ein, übernehmen Sie die restlichen Standardwerte, und klicken Sie dann auf **OK** :
+4. Geben Sie Ihre eigenen Werte bzw. die folgenden Beispielwerte ein, übernehmen Sie die restlichen Standardwerte, und klicken Sie dann auf **OK**:
 
     |Einstellung                  |Wert                                                                                               |
     |---------                |---------                                                                                           |
     |Name                     | Geben Sie _MyDdosAlert_ ein.                                                                                |
     |Subscription             | Wählen Sie das Abonnement aus, das die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.        |
     |Resource group           | Wählen Sie die Ressourcengruppe aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten.      |
-    |Resource                 | Wählen Sie die öffentliche IP-Adresse aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten. DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller unter [virtuelles Netzwerk für Azure-Dienste](https://docs.microsoft.com/azure/virtual-network/virtual-network-for-azure-services#services-that-can-be-deployed-into-a-virtual-network) aufgeführter Ressourcen überwachen, die über den Resource Manager (nicht klassisch), ausgenommen Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.                   |
+    |Resource                 | Wählen Sie die öffentliche IP-Adresse aus, die die öffentliche IP-Adresse enthält, für die Sie Warnungen erhalten möchten. DDoS überwacht öffentliche IP-Adressen, die Ressourcen in einem virtuellen Netzwerk zugewiesen sind. Wenn Sie keine Ressourcen mit öffentlichen IP-Adressen im virtuellen Netzwerk besitzen, müssen Sie zunächst eine Ressource mit einer öffentlichen IP-Adresse erstellen. Sie können die öffentliche IP-Adresse aller unter [virtuelles Netzwerk für Azure-Dienste](../virtual-network/virtual-network-for-azure-services.md#services-that-can-be-deployed-into-a-virtual-network) aufgeführter Ressourcen überwachen, die über den Resource Manager (nicht klassisch), ausgenommen Azure App Service-Umgebungen und Azure VPN Gateway. Um mit diesem Tutorial fortzufahren, können Sie schnell einen virtuellen [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)- oder [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json)-Computer erstellen.                   |
     |Metrik                   | Wählen Sie **Unter DDoS-Angriff oder nicht** aus.                                                                |
     |Schwellenwert                | 1 – **1** bedeutet, dass Sie angegriffen werden. **0** bedeutet, dass Sie nicht angegriffen werden.                         |
     |Zeitraum                   | Wählen Sie einen beliebigen Wert aus.                                                                   |
@@ -79,11 +79,11 @@ Die Telemetrie für einen Angriff wird in Echtzeit durch Azure Monitor bereitges
 
 Die Metriknamen stellen verschiedene Pakettypen und Bytes im Vergleich zu Paketen mit einem grundlegenden Konstrukt von Tagnamen für jede Metrik dar:
 
-- **Gelöschter Tagname** (Beispiel: **Als DDoS eingehende gelöschte Pakete** ): Die Anzahl der durch das DDoS-Schutzsystem gelöschten/bereinigten Pakete.
-- **Weitergeleiteter Tagname** (Beispiel: **Weitergeleitete als DDoS eingehende Pakete** ): Die Anzahl der durch das DDoS-System an das Ziel-VIP weitergeleiteten Pakete – Datenverkehr, der nicht gefiltert wurde.
-- **Kein Tagname** (Beispiel: **Als DDoS eingehende Pakete** ): Die gesamte Anzahl von Paketen, die in das Bereinigungssystem gelangt sind, welche die Summe der gelöschten und bereinigten Pakete darstellt.
+- **Gelöschter Tagname** (Beispiel: **Als DDoS eingehende gelöschte Pakete**): Die Anzahl der durch das DDoS-Schutzsystem gelöschten/bereinigten Pakete.
+- **Weitergeleiteter Tagname** (Beispiel: **Weitergeleitete als DDoS eingehende Pakete**): Die Anzahl der durch das DDoS-System an das Ziel-VIP weitergeleiteten Pakete – Datenverkehr, der nicht gefiltert wurde.
+- **Kein Tagname** (Beispiel: **Als DDoS eingehende Pakete**): Die gesamte Anzahl von Paketen, die in das Bereinigungssystem gelangt sind, welche die Summe der gelöschten und bereinigten Pakete darstellt.
 
-Um zur Überprüfung der Telemetriedaten einen DDoS-Angriff zu simulieren, lesen Sie [Überprüfen der DDoS-Erkennung](test-through-simulations.md).
+Diese [Azure Monitor-Warnregel](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Azure%20Monitor%20Alert%20-%20DDoS%20Mitigation%20Started) führt eine einfache Abfrage aus, um festzustellen, wann eine aktive DDoS-Entschärfung auftritt. Um zur Überprüfung der Telemetriedaten einen DDoS-Angriff zu simulieren, lesen Sie [Überprüfen der DDoS-Erkennung](test-through-simulations.md). 
 
 ## <a name="view-ddos-mitigation-policies"></a>Anzeigen von DDoS-Entschärfungsrichtlinien
 
@@ -95,7 +95,7 @@ Die Schwellenwerte der Richtlinien werden automatisch über unsere auf Machine L
 
 ## <a name="view-ddos-protection-alerts-in-azure-security-center"></a>Anzeigen der DDoS-Schutzwarnungen im Azure Security Center
 
-Im Azure Security Center sind zahlreiche [Sicherheitswarnungen](/azure/security-center/security-center-managing-and-responding-alerts) vorhanden, die Informationen zum Untersuchen und Beheben von Problemen enthalten. Dieses Feature bietet eine einheitliche Ansicht für die Warnungen, einschließlich Warnungen für DDoS-Angriffe und Aktionen zum zeitnahen Abwehren dieser Angriffe.
+Im Azure Security Center sind zahlreiche [Sicherheitswarnungen](../security-center/security-center-managing-and-responding-alerts.md) vorhanden, die Informationen zum Untersuchen und Beheben von Problemen enthalten. Dieses Feature bietet eine einheitliche Ansicht für die Warnungen, einschließlich Warnungen für DDoS-Angriffe und Aktionen zum zeitnahen Abwehren dieser Angriffe.
 Für die Erkennung und Abwehr von DDoS-Angriffen werden insbesondere zwei Warnungen ausgelöst:
 
 - **DDoS Attack detected for Public IP** (DDoS-Angriff für öffentliche IP-Adresse erkannt): Diese Warnung wird generiert, wenn der DDoS-Schutzdienst einen DDoS-Angriff auf eine Ihrer öffentlichen IP-Adressen erkennt.

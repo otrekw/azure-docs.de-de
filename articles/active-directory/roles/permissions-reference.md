@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dd88f6e8eb2ce95c1aa68c63f3d14a14e079d19
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 2cdf89fa3281e070d6b1ac762d30d7c391f4126f
+ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93396514"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94963639"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Berechtigungen der Administratorrolle in Azure Active Directory
 
@@ -707,10 +707,11 @@ Vollzugriff zum Verwalten von Geräten in Azure AD.
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Lesen der devices.bitLockerRecoveryKeys-Eigenschaft in Azure Active Directory |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/devices/delete | Löschen von Geräten in Azure Active Directory |
 | microsoft.directory/devices/disable | Deaktivieren von Geräten in Azure Active Directory |
 | microsoft.directory/devices/enable | Aktivieren von Geräten in Azure Active Directory |
+| microsoft.directory/devices/extensionAttributes/update | Aktualisieren aller Werte für die Eigenschaft „devices.extensionAttributes“ in Azure Active Directory |
 | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Anmeldeberichte (signInReports) in Azure Active Directory |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
@@ -731,6 +732,7 @@ Verwalten sämtlicher Aspekte von Azure AD und Microsoft-Diensten, die Azure AD-
 | microsoft.directory/applications/allProperties/allTasks | Erstellen und Löschen von Anwendungen und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/appRoleAssignments/allProperties/allTasks | Erstellen und Löschen von appRoleAssignments und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/contacts/allProperties/allTasks | Erstellen und Löschen von Kontakten und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/contracts/allProperties/allTasks | Erstellen und Löschen von Verträgen und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
 | microsoft.directory/devices/allProperties/allTasks | Erstellen und Löschen von Geräten und Lesen und Aktualisieren aller Eigenschaften in Azure Active Directory |
@@ -1087,6 +1089,7 @@ Benutzer mit dieser Rolle können alles lesen, was ein globaler Administrator le
 | microsoft.directory/applications/basic/read    | Lesen der Basiseigenschaften für Anwendungen in Azure Active Directory |
 | microsoft.directory/applications/owners/read    | Lesen der applications.owners-Eigenschaft in Azure Active Directory |
 | microsoft.directory/applications/policies/read    | Lesen der applications.policies-Eigenschaft in Azure Active Directory |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/contacts/basic/read    | Lesen der Basiseigenschaften für Kontakte in Azure Active Directory |
 | microsoft.directory/contacts/memberOf/read    | Lesen der contacts.memberOf-Eigenschaft in Azure Active Directory |
 | microsoft.directory/contracts/basic/read    | Lesen der Basiseigenschaften für Verträge in Azure Active Directory |
@@ -1267,13 +1270,16 @@ Verwalten sämtlicher Aspekte des Produkts Intune.
 
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/contacts/basic/update | Aktualisieren der Basiseigenschaften für Kontakte in Azure Active Directory |
 | microsoft.directory/contacts/create | Erstellen von Kontakten in Azure Active Directory |
 | microsoft.directory/contacts/delete | Löschen von Kontakten in Azure Active Directory |
 | microsoft.directory/devices/basic/update | Aktualisieren der Basiseigenschaften für Geräte in Azure Active Directory |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Lesen der devices.bitLockerRecoveryKeys-Eigenschaft in Azure Active Directory |
 | microsoft.directory/devices/create | Erstellen von Geräten in Azure Active Directory |
 | microsoft.directory/devices/delete | Löschen von Geräten in Azure Active Directory |
+| microsoft.directory/devices/disable | Deaktivieren von Geräten in Azure Active Directory |
+| microsoft.directory/devices/enable | Aktivieren von Geräten in Azure Active Directory |
+| microsoft.directory/devices/extensionAttributes/update | Aktualisieren aller Werte für die Eigenschaft „devices.extensionAttributes“ in Azure Active Directory |
 | microsoft.directory/devices/registeredOwners/update | Aktualisieren der devices.registeredOwners-Eigenschaft in Azure Active Directory |
 | microsoft.directory/devices/registeredUsers/update | Aktualisieren der devices.registeredUsers-Eigenschaft in Azure Active Directory |
 | microsoft.directory/groups/appRoleAssignments/update | Aktualisieren der groups.appRoleAssignments-Eigenschaft in Azure Active Directory |
@@ -1513,7 +1519,7 @@ Verwalten sämtlicher Aspekte des Produkts Power BI.
 
 ### <a name="power-platform-administrator-permissions"></a>Power Platform-Administratorberechtigungen
 
-Kann alle Aspekte von Microsoft Dynamics 365, PowerApps und Microsoft Flow erstellen und verwalten. 
+Kann alle Aspekte von Microsoft Dynamics 365, PowerApps und Power Automate erstellen und verwalten.
 
 > [!NOTE]
 > Diese Rolle verfügt über zusätzliche Berechtigungen außerhalb von Azure Active Directory. Weitere Informationen finden Sie in der Rollenbeschreibung oben.
@@ -1524,7 +1530,7 @@ Kann alle Aspekte von Microsoft Dynamics 365, PowerApps und Microsoft Flow erste
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets für Dienste auf Verzeichnisebene. |
 | microsoft.dynamics365/allEntities/allTasks | Verwalten sämtlicher Aspekte von Dynamics 365. |
-| microsoft.flow/allEntities/allTasks | Verwalten aller Aspekte von Microsoft Flow. |
+| microsoft.flow/allEntities/allTasks | Verwalten aller Aspekte von Power Automate. |
 | microsoft.powerApps/allEntities/allTasks | Verwalten aller Aspekte von PowerApps. |
 | microsoft.office365.webPortal/allEntities/basic/read | Lesen der Basiseigenschaften für alle Ressourcen in microsoft.office365.webPortal. |
 | microsoft.office365.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren des Microsoft 365-Dienststatus. |
@@ -1654,9 +1660,9 @@ Leseberechtigung für Sicherheitsinformationen und -berichte und Konfigurationsb
 | --- | --- |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Lesen und Konfigurieren von Azure Service Health |
 | microsoft.azure.supportTickets/allEntities/allTasks | Erstellen und Verwalten von Azure-Supporttickets für Dienste auf Verzeichnisebene. |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/applications/policies/update | Aktualisieren der applications.policies-Eigenschaft in Azure Active Directory |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Lesen der devices.bitLockerRecoveryKeys-Eigenschaft in Azure Active Directory |
 | microsoft.directory/identityProtection/allProperties/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.directory/identityProtection/allProperties/update | Aktualisieren aller Ressourcen in microsoft.aad.identityProtection |
 | microsoft.directory/policies/basic/update | Aktualisieren der Basiseigenschaften für Richtlinien in Azure Active Directory |
@@ -1706,7 +1712,7 @@ Lesen von Sicherheitsinformationen und Berichten in Azure AD und Microsoft 365.
 | **Aktionen** | **Beschreibung** |
 | --- | --- |
 | microsoft.directory/auditLogs/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Überwachungsprotokolle (auditLogs) in Azure Active Directory |
-| microsoft.directory/devices/bitLockerRecoveryKeys/read | Lesen der devices.bitLockerRecoveryKeys-Eigenschaft in Azure Active Directory |
+| microsoft.directory/bitlockerKeys/key/read | Lesen von BitLocker-Schlüsselobjekten und -eigenschaften (einschließlich Wiederherstellungsschlüssel) in Azure Active Directory |
 | microsoft.directory/policies/conditionalAccess/basic/read | Lesen der policies.conditionalAccess-Eigenschaft in Azure Active Directory |
 | microsoft.directory/signInReports/allProperties/read | Lesen aller Eigenschaften (einschließlich der privilegierten Eigenschaften) für Anmeldeberichte (signInReports) in Azure Active Directory |
 | microsoft.aad.identityProtection/allEntities/read | Lesen aller Ressourcen in microsoft.aad.identityProtection |

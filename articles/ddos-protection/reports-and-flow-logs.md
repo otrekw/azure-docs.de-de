@@ -11,16 +11,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/08/2020
 ms.author: yitoh
-ms.openlocfilehash: 5a6fc8e9b316f7c4740ee27fe72c5f056f071d73
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 96e22beb9f9b088e698f0db12104f526af2b936b
+ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912693"
+ms.lasthandoff: 11/20/2020
+ms.locfileid: "94989452"
 ---
 # <a name="configure-ddos-attack-mitigation-reports-and-flow-logs"></a>Konfigurieren der Berichte und Datenflussprotokolle zur Entschärfung von DDoS-Angriffen 
 
-Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
+Die Standardversion von Azure DDoS Protection liefert per Analyse von DDoS-Angriffen ausführliche Erkenntnisse zu Angriffen und ermöglicht eine Visualisierung. Kunden, die ihre virtuellen Netzwerke vor DDoS-Angriffen schützen, verfügen über detaillierte Einblicke in den Datenverkehr von Angriffen und die Aktionen, die zur Eindämmung des Angriffs durchgeführt werden. Hierfür werden Berichte zur Angriffsentschärfung und Protokolle zum Verlauf der Entschärfung genutzt. Über Azure Monitor werden umfangreiche Telemetriedaten bereitgestellt. Diese umfassen u. a. detaillierte Metriken während der Dauer eines DDoS-Angriffs. Warnungen können für beliebige durch den DDoS-Schutz verfügbar gemachte Azure Monitor-Metriken konfiguriert werden. Die Protokollierung kann zudem mit [Azure Sentinel](../sentinel/connect-azure-ddos-protection.md), Splunk (Azure Event Hubs), OMS Log Analytics und Azure Storage für die erweiterte Analyse über die Schnittstelle für die Azure Monitor-Diagnose integriert werden.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -44,9 +44,9 @@ Für Berichte zur Entschärfung von Angriffen werden die NetFlow-Protokolldaten 
 5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Metriken protokolliert werden sollen.
 6. Wählen Sie **Turn on diagnostics to collect the DDoSMitigationReports log** (Diagnose zum Erfassen des DDoSMitigationReports-Protokolls aktivieren) und dann so viele der folgenden Optionen aus, wie Sie benötigen:
 
-    - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
+    - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
+    - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace).
 
 Sowohl der inkrementelle Bericht als auch der Abschlussbericht zur Entschärfung enthält Felder zu den folgenden Bereichen:
 - Angriffsvektoren
@@ -66,13 +66,15 @@ Mit Datenflussprotokollen zur Entschärfung von Angriffen können Sie den verwor
 5. Wählen Sie **Öffentliche IP-Adresse** für **Ressourcentyp** aus, wählen Sie dann die jeweilige öffentliche IP-Adresse aus, für die Metriken protokolliert werden sollen.
 6. Wählen Sie **Turn on diagnostics to collect the DDoSMitigationFlowLogs log** (Diagnose zum Erfassen des DDoSMitigationFlowLogs-Protokolls aktivieren) und dann so viele der folgenden Optionen aus, wie Sie benötigen:
 
-    - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/platform/archive-diagnostic-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/platform/resource-logs-stream-event-hubs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/platform/collect-azure-metrics-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - **In einem Speicherkonto archivieren:** Daten werden in einem Azure Storage-Konto gespeichert. Weitere Informationen zu dieser Option finden Sie unter [Archivieren von Ressourcenprotokollen](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-storage).
+    - **An einen Event Hub streamen:** Erlaubt einem Protokollempfänger das Erfassen von Protokollen mithilfe eines Azure-Event Hubs. Event Hubs ermöglichen die Integration in Splunk oder andere SIEM-Systeme. Weitere Informationen zu dieser Option finden Sie unter [Streamen von Ressourcenprotokollen an Event Hubs](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-azure-event-hubs).
+    - **An Log Analytics senden:** Schreibt Protokolle in den Azure Monitor-Dienst. Weitere Informationen zu dieser Option finden Sie unter [Sammeln von Azure-Dienstprotokollen und Metriken zur Verwendung in Azure Monitor-Protokollen](../azure-monitor/platform/resource-logs.md?toc=%2fazure%2fvirtual-network%2ftoc.json#send-to-log-analytics-workspace).
+
+Diese [Vorlage](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20DDoS%20Protection/Enable%20Diagnostic%20Logging/Azure%20Policy) erstellt eine Azure Policy-Definition, um die diagnostische Protokollierung zu aktivieren.
 
 ### <a name="azure-sentinel-data-connector"></a>Azure Sentinel-Datenconnector
 
-Sie können eine Verbindung mit Azure Sentinel herstellen, Ihre Daten in Arbeitsmappen anzeigen und analysieren, benutzerdefinierte Warnungen erstellen und diese in Untersuchungsprozesse integrieren. Informationen zum Herstellen einer Verbindung mit Azure Sentinel finden Sie unter [Herstellen einer Verbindung mit Azure Sentinel](https://docs.microsoft.com/azure/sentinel/connect-azure-ddos-protection). 
+Sie können eine Verbindung mit Azure Sentinel herstellen, Ihre Daten in Arbeitsmappen anzeigen und analysieren, benutzerdefinierte Warnungen erstellen und diese in Untersuchungsprozesse integrieren. Informationen zum Herstellen einer Verbindung mit Azure Sentinel finden Sie unter [Herstellen einer Verbindung mit Azure Sentinel](../sentinel/connect-azure-ddos-protection.md). 
 
 ![Azure Sentinel-DDoS-Connector](./media/ddos-attack-telemetry/azure-sentinel-ddos.png)
 
@@ -119,4 +121,3 @@ Informationen zum Testen und Simulieren eines DDoS-Angriffs finden Sie in der An
 
 > [!div class="nextstepaction"]
 > [Durchführen von Simulationstests](test-through-simulations.md)
-

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 3be1d404d0cac7f9e5c9b1c2f7350cf05c5fe794
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93358115"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94887398"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -31,7 +31,7 @@ Dazu gehen Sie wie folgt vor:
 
 Falls Sie wenig Erfahrung mit Code haben, lesen Sie das [Tutorial: Vorhersage des Bedarfs mithilfe von automatisiertem maschinellem Lernen](tutorial-automated-ml-forecast.md) für ein Zeitreihenvorhersagebeispiel mit automatisiertem maschinellen Lernen im [Azure Machine Learning-Studio](https://ml.azure.com/).
 
-Im Gegensatz zu klassischen Methoden für Zeitreihen werden beim automatisierten maschinellen Lernen Zeitreihenwerte aus der Vergangenheit „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz umfasst mehrere Kontextvariablen und deren Beziehung zueinander beim Training. Da sich mehrere Faktoren auf eine Vorhersage auswirken können, richtet sich diese Methode gut an realen Vorhersageszenarios aus. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Interaktionen von Trends aus der Vergangenheit, des Wechselkurses und des Preises berechnet. 
+Im Gegensatz zu klassischen Methoden für Zeitreihen werden beim automatisierten maschinellen Lernen Zeitreihenwerte aus der Vergangenheit „pivotiert“ und dienen so zusammen mit anderen Vorhersageelementen als zusätzliche Dimensionen für den Regressor. Dieser Ansatz umfasst mehrere Kontextvariablen und deren Beziehung zueinander beim Training. Da sich mehrere Faktoren auf eine Vorhersage auswirken können, richtet sich diese Methode gut an realen Vorhersageszenarios aus. Wenn z. B. Verkaufszahlen vorhergesagt werden sollen, wird das Ergebnis auf der Grundlage von Wechselwirkungen zwischen historischen Trends, des Wechselkurses und des Preises berechnet. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -138,7 +138,7 @@ ForecastTCN (Preview)| ForecastTCN ist ein neuronales Netzwerkmodell, das für d
 
 Sie definieren Standardtrainingsparameter wie Aufgabentyp, Iterationsanzahl, Trainingsdaten und Anzahl von Kreuzvalidierungen (ähnlich wie bei einem Regressionsproblem). Bei Vorhersageaufgaben müssen allerdings noch weitere Parameter für das Experiment festgelegt werden. 
 
-Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Syntaxentwurfsmuster finden Sie in der [Referenzdokumentation](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?preserve-view=true&view=azure-ml-py).
+Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Syntaxentwurfsmuster finden Sie in der [Referenzdokumentation zur ForecastingParameter-Klasse](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py).
 
 | Parametername&nbsp; | BESCHREIBUNG | Erforderlich |
 |-------|-------|-------|
@@ -149,11 +149,11 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. ||
 |`feature_lags`| Welche Features verzögert werden, wird automatisch durch automatisiertes ML festgelegt, wenn `target_lags` festgelegt und `feature_lags` auf `auto` festgelegt ist. Das Aktivieren von Featureverzögerungen kann zur Verbesserung der Genauigkeit beitragen. Featureverzögerungen sind standardmäßig deaktiviert. ||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten. Erfahren Sie mehr über [rollierende Zeitfensteraggregationen als Ziel](#target-rolling-window-aggregation).||
-|`short_series_handling`| Ermöglicht die Verarbeitung kurzer Zeitreihen, um zu vermeiden, dass diese während des Trainings aufgrund unzureichender Daten fehlschlagen. Die Verarbeitung kurzer Reihen ist standardmäßig auf „True“ festgelegt.|
+|`short_series_handling_config`| Ermöglicht die Verarbeitung kurzer Zeitreihen, um zu vermeiden, dass diese während des Trainings aufgrund unzureichender Daten fehlschlagen. Die Verarbeitung kurzer Reihen ist standardmäßig auf `auto` festgelegt. Erfahren Sie mehr über die [Verarbeitung kurzer Reihen](#short-series-handling).|
 
 
 Für den folgenden Code gilt: 
-* Er nutzt die Klasse `ForecastingParameters`, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
+* Er nutzt die [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)-Klasse, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
 * Er legt `time_column_name` auf das Feld `day_datetime` im Dataset fest. 
 * Er definiert den Parameter `time_series_id_column_names` als `"store"`. Dadurch wird sichergestellt, dass **zwei separate Zeitreihengruppen** für die Daten erstellt werden: eine für Geschäft A und eine für B.
 * Er legt `forecast_horizon` auf 50 fest, um die Prognose für den gesamten Testsatz durchzuführen. 
@@ -164,13 +164,12 @@ Für den folgenden Code gilt:
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
-forecasting_parameters = ForecastingParameters(
-    time_column_name='day_datetime', 
-    forecast_horizon=50,
-    time_series_id_column_names=["store"],
-    target_lags='auto',
-    target_rolling_window_size=10
-)
+forecasting_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                               forecast_horizon=50,
+                                               time_series_id_column_names=["store"],
+                                               target_lags='auto',
+                                               target_rolling_window_size=10)
+                                              
 ```
 
 Diese `forecasting_parameters` werden dann zusammen mit dem `forecasting`-Aufgabentyp, der primären Metrik, den Beendigungskriterien und den Trainingsdaten an das standardmäßige `AutoMLConfig`-Objekt weitergeleitet. 
@@ -190,12 +189,12 @@ automl_config = AutoMLConfig(task='forecasting',
                              n_cross_validations=5,
                              enable_ensembling=False,
                              verbosity=logging.INFO,
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 
 ### <a name="featurization-steps"></a>Featurisierungsschritte
 
-Standardmäßig werden in jedem Experiment mit automatisiertem maschinellem Lernen automatische Skalierungs- und Normalisierungstechniken auf Ihre Daten angewandt. Bei diesen Techniken handelt es sich um Formen der **Featurisierung** , die für *bestimmte* Algorithmen hilfreich sind, die auf Features unterschiedlicher Größenordnungen reagieren. Weitere Informationen zu den Standardfeaturisierungsschritten finden Sie unter [Featurisierung in AutoML](how-to-configure-auto-features.md#automatic-featurization).
+Standardmäßig werden in jedem Experiment mit automatisiertem maschinellem Lernen automatische Skalierungs- und Normalisierungstechniken auf Ihre Daten angewandt. Bei diesen Techniken handelt es sich um Formen der **Featurisierung**, die für *bestimmte* Algorithmen hilfreich sind, die auf Features unterschiedlicher Größenordnungen reagieren. Weitere Informationen zu den Standardfeaturisierungsschritten finden Sie unter [Featurisierung in AutoML](how-to-configure-auto-features.md#automatic-featurization).
 
 Die folgenden Schritte werden jedoch nur für `forecasting`-Aufgabentypen ausgeführt:
 
@@ -226,12 +225,16 @@ Um die Featurisierung mit dem SDK anzupassen, geben Sie `"featurization": Featur
 
 ```python
 featurization_config = FeaturizationConfig()
+
 # `logQuantity` is a leaky feature, so we remove it.
 featurization_config.drop_columns = ['logQuantitity']
+
 # Force the CPWVOL5 feature to be of numeric type.
 featurization_config.add_column_purpose('CPWVOL5', 'Numeric')
+
 # Fill missing values in the target column, Quantity, with zeroes.
 featurization_config.add_transformer_params('Imputer', ['Quantity'], {"strategy": "constant", "fill_value": 0})
+
 # Fill mising values in the `INCOME` column with median value.
 featurization_config.add_transformer_params('Imputer', ['INCOME'], {"strategy": "median"})
 ```
@@ -260,7 +263,7 @@ Um Deep Learning zu aktivieren, legen Sie `enable_dnn=True` im `AutoMLConfig`-Ob
 automl_config = AutoMLConfig(task='forecasting',
                              enable_dnn=True,
                              ...
-                             **time_series_settings)
+                             **forecasting_parameters)
 ```
 > [!Warning]
 > Wenn Sie DNN für mit dem SDK erstellte Experimente aktivieren, sind [Erläuterungen des besten Modells](how-to-machine-learning-interpretability-automl.md) deaktiviert.
@@ -279,6 +282,35 @@ In der Tabelle wird das resultierende Feature Engineering dargestellt, das auftr
 ![Ziel für rollierendes Zeitfenster](./media/how-to-auto-train-forecast/target-roll.svg)
 
 Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende Zeitfensteraggregationen als Ziel](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand/auto-ml-forecasting-energy-demand.ipynb) verwendet wird.
+
+### <a name="short-series-handling"></a>Verarbeitung kurzer Reihen
+
+Beim automatisierten maschinellen Lernen gilt eine Zeitreihe als **kurze Reihe**, wenn nicht genügend Datenpunkte vorhanden sind, um die Trainings- und Validierungsphasen der Modellentwicklung durchzuführen. Die Anzahl von Datenpunkten variiert je nach Experiment und hängt vom „max_horizon“-Wert, der Anzahl von Kreuzvalidierungsteilungen und der Länge des Rückblickzeitraums des Modells ab, d. h. dem maximalen Verlauf, der zum Erstellen der Zeitreihenfeatures erforderlich ist. Die genaue Berechnung finden Sie in der [Referenzdokumentation zu „short_series_handling_config“](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+
+Automatisiertes maschinelles Lernen bietet mit dem `short_series_handling_config`-Parameter im `ForecastingParameters`-Objekt standardmäßig eine Verarbeitung kurzer Reihen. 
+
+Zum Aktivieren der Verarbeitung kurzer Reihen muss auch der `freq`-Parameter definiert werden. Wenn Sie das Standardverhalten (`short_series_handling_config = auto`) ändern möchten, aktualisieren Sie den `short_series_handling_config`-Parameter in Ihrem `ForecastingParameter`-Objekt.  
+
+```python
+from azureml.automl.core.forecasting_parameters import ForecastingParameters
+
+forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
+                                            forecast_horizon=50,
+                                            short_series_handling_config='auto',
+                                            freq = 50
+                                            target_lags='auto')
+```
+In der folgenden Tabelle finden Sie eine Zusammenfassung der verfügbaren Einstellungen für `short_series_handling_config`.
+ 
+|Einstellung|Beschreibung
+|---|---
+|`auto`| Folgendes ist das Standardverhalten für die Verarbeitung kurzer Reihen: <li> *Wenn alle Reihen kurz sind*, werden die Daten aufgefüllt. <br> <li> *Wenn nicht alle Reihen kurz sind*, werden die kurzen Reihen gelöscht. 
+|`pad`| Wenn `short_series_handling_config = pad` festgelegt ist, fügt das automatisierte maschinelle Lernen allen gefundenen kurzen Reihen Platzhalterwerte hinzu. Im Folgenden sind die Spaltentypen und die Werte aufgeführt, mit denen sie aufgefüllt werden: <li>Objektspalten mit NaN-Werten (Not a Number, keine Zahl) <li> Numerische Spalten mit 0 <li> Boolesche/logische Spalten mit „False“ <li> Die Zielspalte wird mit Zufallswerten mit dem Mittelwert 0 und der Standardabweichung 1 aufgefüllt. 
+|`drop`| Wenn `short_series_handling_config = drop` festgelegt ist, werden die kurzen Reihen vom automatisierten maschinellen Lernen gelöscht und nicht für Trainings- oder Vorhersagezwecke verwendet. Bei Vorhersagen für diese Reihen werden NaN-Werte zurückgegeben.
+|`None`| Es werden keine Reihen aufgefüllt oder gelöscht.
+
+>[!WARNING]
+>Das Auffüllen kann sich auf die Genauigkeit des resultierenden Modells auswirken, da künstliche Daten genutzt werden, um vergangene Trainings ohne Fehler abzurufen. <br> <br> Wenn viele der Reihen kurz sind, kann sich dies auch auf die Erklärbarkeit der Ergebnisse auswirken.
 
 ## <a name="run-the-experiment"></a>Ausführen des Experiments 
 

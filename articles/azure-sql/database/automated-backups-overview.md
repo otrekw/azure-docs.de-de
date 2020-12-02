@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 10/30/2020
-ms.openlocfilehash: a97e39314b4dc15a360a01408f183a3f9a19c76f
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/18/2020
+ms.openlocfilehash: c6754e6f0e3f0d6208bd34c96c8bc473429c943c
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131359"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917901"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatisierte Sicherungen – Azure SQL-Datenbank und SQL Managed Instance
 
@@ -36,9 +36,9 @@ Wenn Sie eine Datenbank wiederherstellen, bestimmt der Dienst, welche vollständ
 
 ### <a name="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
 
-Standardmäßig speichern SQL-Datenbank und SQL Managed Instance Daten in georedundanten (RA-GRS) [Blobspeichern](../../storage/common/storage-redundancy.md), die in ein [Regionspaar](../../best-practices-availability-paired-regions.md) repliziert werden. Dies dient zum Schutz vor Ausfällen, die sich auf den Sicherungsspeicher in der primären Region auswirken, und ermöglicht es Ihnen, Ihren Server bei einem Notfall in einer anderen Region wiederherzustellen. 
+Standardmäßig speichern SQL-Datenbank und SQL Managed Instance Daten in georedundanten [Speicherblobs](../../storage/common/storage-redundancy.md), die in einem [Regionspaar](../../best-practices-availability-paired-regions.md) repliziert werden. Dies dient zum Schutz vor Ausfällen, die sich auf den Sicherungsspeicher in der primären Region auswirken, und ermöglicht es Ihnen, Ihren Server bei einem Notfall in einer anderen Region wiederherzustellen. 
 
-Die Option zum Konfigurieren der Redundanz für Sicherungsspeicher bietet Flexibilität bei der Auswahl zwischen lokal redundanten, zonenredundanten oder georedundanten Speicherblobs für eine SQL Managed Instance-Instanz oder eine SQL-Datenbank-Instanz. Damit Ihre Daten in derselben Region verbleiben, in der Ihre verwaltete Instanz oder SQL-Datenbank bereitgestellt wurde, können Sie den Standardwert für Redundanz (georedundanter Sicherungsspeicher) ändern. Nehmen Sie in diesem Fall eine Konfiguration entweder als lokal redundante (LRS) oder zonenredundante (ZRS) Speicherblobs für Sicherungen vor. Mechanismen der Speicherredundanz speichern mehrere Kopien Ihrer Daten, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Die konfigurierte Redundanz für Sicherungsspeicher wird sowohl auf die Einstellungen für kurzfristige Sicherungsaufbewahrung angewendet, die für die Zeitpunktwiederherstellung (Point In Time Restore, PITR) verwendet werden, als auch auf die Langzeitaufbewahrung von Sicherungen (Long-Term Retention, LTR), die für langfristige Sicherungen verwendet wird. 
+Die Option zum Konfigurieren der Redundanz für Sicherungsspeicher bietet Flexibilität bei der Auswahl zwischen lokal redundanten, zonenredundanten oder georedundanten Speicherblobs für eine SQL Managed Instance-Instanz oder eine SQL-Datenbank-Instanz. Damit Ihre Daten in der Region bleiben, in der auch Ihre verwaltete Instanz oder SQL-Datenbank bereitgestellt wurde, können Sie den Standardwert für Redundanz (georedundanter Sicherungsspeicher) ändern und entweder lokal redundante oder zonenredundante Speicherblobs für Sicherungen konfigurieren. Mechanismen der Speicherredundanz speichern mehrere Kopien Ihrer Daten, damit sie vor geplanten und ungeplanten Ereignissen geschützt sind – von vorübergehend auftretenden Hardwarefehlern über Netzwerk- oder Stromausfälle bis hin zu schweren Naturkatastrophen. Die konfigurierte Redundanz für Sicherungsspeicher wird sowohl auf die Einstellungen für kurzfristige Sicherungsaufbewahrung angewendet, die für die Zeitpunktwiederherstellung (Point In Time Restore, PITR) verwendet werden, als auch auf die Langzeitaufbewahrung von Sicherungen (Long-Term Retention, LTR), die für langfristige Sicherungen verwendet wird. 
 
 Die Sicherungsspeicherredundanz für eine SQL-Datenbank-Instanz kann entweder beim Erstellen der Datenbank konfiguriert oder für vorhandene Datenbanken aktualisiert werden. Die an einer vorhandenen Datenbank vorgenommenen Änderungen gelten jedoch nur für zukünftige Sicherungen. Nachdem die Redundanz für Sicherungsspeicher einer vorhandenen Datenbank aktualisiert wurde, kann es bis zu 48 Stunden dauern, bis die Änderungen angewendet werden. Beachten Sie, dass die Geowiederherstellung deaktiviert wird, sobald die Datenbank so aktualisiert wurde, dass lokaler oder zonenredundanter Speicher verwendet wird. 
 
@@ -179,9 +179,9 @@ Sie können den gesamten Sicherungsspeicherverbrauch für jeden Sicherungstyp (v
 ### <a name="backup-storage-redundancy"></a>Redundanz für Sicherungsspeicher
 
 Die Redundanz für Sicherungsspeicher wirkt sich auf Sicherungskosten folgendermaßen aus:
-- LRS-Preis = x
-- ZRS-Preis = 1,25x
-- RA-GRS-Preis = 2x
+- Preis für lokale Redundanz: x
+- Preis für Zonenredundanz: 1,25x
+- Preis für Georedundanz: 2x
 
 Weitere Informationen zu den Preisen für Sicherungsspeicher finden Sie auf der [Seite mit der Preisübersicht für Azure SQL-Datenbank](https://azure.microsoft.com/pricing/details/sql-database/single/) und der [Seite mit der Preisübersicht für Azure SQL Managed Instance](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
@@ -192,7 +192,7 @@ Weitere Informationen zu den Preisen für Sicherungsspeicher finden Sie auf der 
 
 Um die Kosten für Sicherungsspeicher zu verstehen, wechseln Sie im Azure-Portal zu **Kostenverwaltung + Abrechnung**. Wählen Sie **Kostenverwaltung** und dann **Kostenanalyse** aus. Wählen Sie das gewünschte Abonnement als **Bereich** aus, und filtern Sie dann nach dem gewünschten Zeitraum und Dienst.
 
-Fügen Sie einen Filter für **Dienstname** hinzu, und wählen Sie dann in der Dropdownliste **SQL-Datenbank** aus. Verwenden Sie den Filter **Unterkategorie der Verbrauchseinheit** , um den Abrechnungszähler für Ihren Dienst auszuwählen. Wählen Sie für eine einzelne Datenbank oder einen Pool für elastische Datenbanken den **PITR-Sicherungsspeicher für eine einzelne Datenbank/einen Pool für elastische Datenbanken** aus. Wählen Sie für eine verwaltete Instanz **MI-PITR-Sicherungsspeicher** aus. Die Unterkategorien **Speicher** und **Compute** können für Sie auch von Interesse sein, obwohl sie nicht im Zusammenhang mit den Sicherungsspeicherkosten stehen.
+Fügen Sie einen Filter für **Dienstname** hinzu, und wählen Sie dann in der Dropdownliste **SQL-Datenbank** aus. Verwenden Sie den Filter **Unterkategorie der Verbrauchseinheit**, um den Abrechnungszähler für Ihren Dienst auszuwählen. Wählen Sie für eine einzelne Datenbank oder einen Pool für elastische Datenbanken den **PITR-Sicherungsspeicher für eine einzelne Datenbank/einen Pool für elastische Datenbanken** aus. Wählen Sie für eine verwaltete Instanz **MI-PITR-Sicherungsspeicher** aus. Die Unterkategorien **Speicher** und **Compute** können für Sie auch von Interesse sein, obwohl sie nicht im Zusammenhang mit den Sicherungsspeicherkosten stehen.
 
 ![Analyse der Kosten für Sicherungsspeicher](./media/automated-backups-overview/check-backup-storage-cost-sql-mi.png)
 
@@ -233,7 +233,7 @@ Um die PITR-Aufbewahrungsdauer von Sicherungen für aktive Datenbanken im Azure-
 
 #### <a name="sql-database"></a>[SQL-Datenbank](#tab/single-database)
 
-Bei SQL-Datenbank wird die Aufbewahrung der Sicherungen für Point-in-Time-Wiederherstellung auf der Seite für den Server im Portal geändert. Wenn Sie die PITR-Aufbewahrung für Datenbanken auf einem Server ändern möchten, navigieren Sie zum Blatt mit der Übersicht für diesen Server. Wählen Sie im linken Bereich **Sicherungen verwalten** , dann die Datenbanken für Ihre Änderung und dann oben auf dem Bildschirm **Aufbewahrung konfigurieren** aus:
+Bei SQL-Datenbank wird die Aufbewahrung der Sicherungen für Point-in-Time-Wiederherstellung auf der Seite für den Server im Portal geändert. Wenn Sie die PITR-Aufbewahrung für Datenbanken auf einem Server ändern möchten, navigieren Sie zum Blatt mit der Übersicht für diesen Server. Wählen Sie im linken Bereich **Sicherungen verwalten**, dann die Datenbanken für Ihre Änderung und dann oben auf dem Bildschirm **Aufbewahrung konfigurieren** aus:
 
 ![Ändern der PITR-Aufbewahrung, Serverebene](./media/automated-backups-overview/configure-backup-retention-sqldb.png)
 
@@ -373,7 +373,7 @@ Weitere Informationen finden Sie unter [REST-API für die Aufbewahrung von Siche
 > [!NOTE]
 > Konfigurierbare Speicherredundanz für Sicherungen steht nur für SQL Managed Instance zur Verfügung und kann nur während des Prozesses zum Erstellen einer verwalteten Instanz angegeben werden. Nachdem die Ressource bereitgestellt wurde, können Sie die Option für die Redundanz für Sicherungsspeicher nicht mehr ändern. Für SQL-Datenbank ist die Public Preview dieses Features aktuell nur in „Brasilien, Süden“ und die allgemein verfügbare Version nur in der Azure-Region „Asien, Südosten“ verfügbar. 
 
-Eine Redundanz für Sicherungsspeicher für eine verwaltete Instanz kann nur während der Instanzerstellung festgelegt werden. Für eine SQL-Datenbank-Instanz kann sie beim Erstellen der Datenbank festgelegt oder für eine vorhandene Datenbank aktualisiert werden. Der Standardwert ist „georedundanter Speicher (RA-GRS)“. Unterschiede bei den Preisen zwischen lokal redundantem (LRS), zonenredundantem (ZRS) und georedundantem Sicherungsspeicher (RA-GRS) finden Sie auf der [Seite mit der Preisübersicht für verwaltete Instanzen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
+Eine Redundanz für Sicherungsspeicher für eine verwaltete Instanz kann nur während der Instanzerstellung festgelegt werden. Für eine SQL-Datenbank-Instanz kann sie beim Erstellen der Datenbank festgelegt oder für eine vorhandene Datenbank aktualisiert werden. Standardmäßig wird georedundanter Speicher verwendet. Informationen zu den Preisunterschieden zwischen lokal redundantem, zonenredundantem und georedundantem Sicherungsspeicher finden Sie auf der [Seite mit der Preisübersicht für verwaltete Instanzen](https://azure.microsoft.com/pricing/details/azure-sql/sql-managed-instance/single/).
 
 ### <a name="configure-backup-storage-redundancy-by-using-the-azure-portal"></a>Konfigurieren der Redundanz für Sicherungsspeicher über das Azure-Portal
 

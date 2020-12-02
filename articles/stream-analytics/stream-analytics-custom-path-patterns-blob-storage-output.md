@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.custom: seodec18
-ms.openlocfilehash: 72718285ff83a23acd21a5e29001ea96e1f061c8
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9763a0ac3cba15dcfd66b8fad83230e2b0eb356b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95531354"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96491671"
 ---
 # <a name="azure-stream-analytics-custom-blob-output-partitioning"></a>Benutzerdefinierte Blobausgabepartitionierung in Azure Stream Analytics
 
@@ -25,7 +25,7 @@ Durch Verwendung eines benutzerdefinierten Felds oder von Eingabeattributen ist 
 
 ### <a name="partition-key-options"></a>Optionen für den Partitionsschlüssel
 
-Der für die Partitionierung von Eingabedaten verwendete Partitionsschlüssel oder Spaltenname kann alphanumerische Zeichen mit Bindestrichen, Unterstrichen und Leerzeichen enthalten. Es ist nicht möglich, geschachtelte Felder als Partitionsschlüssel zu verwenden, es sei denn, sie werden in Verbindung mit Aliasen verwendet. Der Partitionsschlüssel muss einen der Typen NVARCHAR(MAX), BIGINT, FLOAT oder BIT (Kompatibilitätsgrad 1.2 oder höher) aufweisen. Weitere Informationen finden Sie unter [Azure Stream Analytics-Datentypen](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+Der für die Partitionierung von Eingabedaten verwendete Partitionsschlüssel oder Spaltenname kann alphanumerische Zeichen mit Bindestrichen, Unterstrichen und Leerzeichen enthalten. Es ist nicht möglich, geschachtelte Felder als Partitionsschlüssel zu verwenden, es sei denn, sie werden in Verbindung mit Aliasen verwendet. Der Partitionsschlüssel muss einen der Typen NVARCHAR(MAX), BIGINT, FLOAT oder BIT (Kompatibilitätsgrad 1.2 oder höher) aufweisen. Weitere Informationen finden Sie unter [Azure Stream Analytics-Datentypen](/stream-analytics-query/data-types-azure-stream-analytics).
 
 ### <a name="example"></a>Beispiel
 

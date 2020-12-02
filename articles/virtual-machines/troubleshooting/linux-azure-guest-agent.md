@@ -11,16 +11,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 11/17/2020
 ms.author: axelg
-ms.openlocfilehash: 9e3b376cfaf5379acaf92713c42509471200d066
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: fc609b60c9d5d4d4734c3d73cbda87935b533caf
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95547896"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500256"
 ---
 # <a name="troubleshooting-azure-linux-guest-agent"></a>Problembehandlung beim Azure Linux-Gast-Agent
 
-Der [Azure Linux-Gast-Agent](https://docs.microsoft.com/azure/virtual-machines/extensions/agent-linux) ist ein VM-Agent (virtuelle Computer). Er ermöglicht dem virtuellen Computer die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem der virtuelle Computer gehostet wird) über die IP-Adresse 168.63.129.16. Dies ist eine virtuelle öffentliche IP-Adresse für die Kommunikation. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu.
+Der [Azure Linux-Gast-Agent](../extensions/agent-linux.md) ist ein VM-Agent (virtuelle Computer). Er ermöglicht dem virtuellen Computer die Kommunikation mit dem Fabric Controller (dem zugrunde liegenden physischen Server, auf dem der virtuelle Computer gehostet wird) über die IP-Adresse 168.63.129.16. Dies ist eine virtuelle öffentliche IP-Adresse für die Kommunikation. Unter [Was ist die IP-Adresse 168.63.129.16?](../../virtual-network/what-is-ip-address-168-63-129-16.md) finden Sie weitere Informationen dazu.
 
 ## <a name="checking-agent-status-and-version"></a>Überprüfen des Agent-Status und der -Version
 

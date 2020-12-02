@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 6e4eb37477a335ae93b9982692c238d05c81000b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: a49dbdace01396656c3114df0bc0d4589aff57c1
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94660286"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94916490"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -196,7 +196,7 @@ Letzte Änderungen an SMB Multichannel-Konfigurationseinstellungen ohne eine ern
 
 ### <a name="cause"></a>Ursache  
 
-Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Jede Änderung (ReadDirectoryChangesW) auf der Freigabe, für die der SMB-Client registriert ist, pusht eine Änderungsbenachrichtigung vom Dateidienst an den Client, der Systemressourcen übernimmt, und das Problem verschlechtert sich mit der Anzahl der Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
+Eine hohe Anzahl von Dateiänderungsbenachrichtigungen für Dateifreigaben kann zu erheblichen hohen Latenzen führen. Dieses Problem tritt normalerweise bei Websites auf, die auf Dateifreigaben mit einer tief geschachtelten Verzeichnisstruktur gehostet werden. Ein typisches Szenario ist eine IIS-gehostete Webanwendung, bei der eine Dateiänderungsbenachrichtigung für jedes Verzeichnis in der Standardkonfiguration eingerichtet wird. Bei jeder Änderung ([ReadDirectoryChangesW](https://docs.microsoft.com/windows/win32/api/winbase/nf-winbase-readdirectorychangesw)) für die Freigabe, für die der SMB-Client registriert ist, wird eine Änderungsbenachrichtigung vom Dateidienst an den Client gepusht. Dadurch werden Systemressourcen beansprucht, und das Problem verschlimmert sich mit zunehmender Anzahl von Änderungen. Dies kann eine Freigabedrosselung verursachen und folglich zu einer höheren clientseitigen Latenz führen. 
 
 Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwenden: 
 
@@ -213,10 +213,8 @@ Zur Überprüfung können Sie die Azure-Metriken im Portal folgendermaßen verwe
     - Aktualisieren Sie das Abrufintervall des IIS-Workerprozesses (W3WP) auf „0“, indem Sie in Ihrer Registrierung `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` festlegen. Starten Sie dann den W3WP-Prozess neu. Informationen zu dieser Einstellung finden Sie unter [Common registry keys that are used by many parts of IIS](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) (Allgemeine Registrierungsschlüssel, die von vielen Teilen von IIS verwendet werden).
 - Erhöhen Sie die Häufigkeit des Abrufintervalls für Dateiänderungsbenachrichtigungen, um das Volumen zu verringern.
     - Aktualisieren Sie das Abrufintervall für den W3WP-Workerprozess je nach Anforderung auf einen höheren Wert (z. B. 10 Minuten oder 30 Minuten). Legen Sie `HKEY_LOCAL_MACHINE\System\CurrentControlSet\Services\W3SVC\Parameters\ConfigPollMilliSeconds ` [in Ihrer Registrierung](/troubleshoot/iis/use-registry-keys#registry-keys-that-apply-to-iis-worker-process-w3wp) fest, und starten Sie den W3WP-Prozess neu.
-- Wenn das zugeordnete physische Verzeichnis Ihrer Website eine geschachtelte Verzeichnisstruktur hat, können Sie versuchen, den Bereich der Dateiänderungsbenachrichtigung einzuschränken, um das Benachrichtigungsvolumen zu verringern.
-    - IIS verwendet standardmäßig die Konfiguration aus „Web.config“-Dateien in dem physischen Verzeichnis, dem das virtuelle Verzeichnis zugeordnet ist, sowie in allen untergeordneten Verzeichnissen in diesem physischen Verzeichnis. Wenn Sie keine „Web.config“-Dateien in untergeordneten Verzeichnissen verwenden möchten, geben Sie für das „allowSubDirConfig“-Attribut im virtuellen Verzeichnis den Wert „false“ an. Weitere Informationen finden Sie [hier](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories). 
-
-Legen Sie in „Web.config“ die Einstellung „allowSubDirConfig“ für das virtuelle IIS-Verzeichnis auf „false“ fest, um zugeordnete physische untergeordnete Verzeichnisse aus dem Bereich auszuschließen.  
+- Wenn das zugeordnete physische Verzeichnis Ihrer Website eine geschachtelte Verzeichnisstruktur hat, können Sie versuchen, den Bereich der Dateiänderungsbenachrichtigung einzuschränken, um das Benachrichtigungsvolumen zu verringern. IIS verwendet standardmäßig die Konfiguration aus „Web.config“-Dateien in dem physischen Verzeichnis, dem das virtuelle Verzeichnis zugeordnet ist, sowie in allen untergeordneten Verzeichnissen in diesem physischen Verzeichnis. Wenn Sie keine „Web.config“-Dateien in untergeordneten Verzeichnissen verwenden möchten, geben Sie für das „allowSubDirConfig“-Attribut im virtuellen Verzeichnis den Wert „false“ an. Weitere Informationen finden Sie [hier](/iis/get-started/planning-your-iis-architecture/understanding-sites-applications-and-virtual-directories-on-iis#virtual-directories). 
+    - Legen Sie in „Web.config“ die Einstellung „allowSubDirConfig“ für das virtuelle IIS-Verzeichnis auf *false* fest, um zugeordnete physische Unterverzeichnisse aus dem Bereich auszuschließen.  
 
 ## <a name="how-to-create-an-alert-if-a-file-share-is-throttled"></a>Erstellen einer Warnung, wenn eine Dateifreigabe gedrosselt ist
 

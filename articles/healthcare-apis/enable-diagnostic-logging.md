@@ -1,5 +1,5 @@
 ---
-title: Aktivieren der Diagnoseprotokollierung in Azure API for FHIR®
+title: Aktivieren der Diagnoseprotokollierung in Azure API for FHIR
 description: In diesem Artikel wird das Aktivieren der Diagnoseprotokollierung in Azure API for FHIR® erläutert.
 services: healthcare-apis
 ms.service: healthcare-apis
@@ -9,19 +9,19 @@ ms.reviewer: dseven
 ms.author: cavoeg
 author: CaitlinV39
 ms.date: 11/01/2019
-ms.openlocfilehash: 262509df98b93c7902d83f90756872a16d84198f
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 54119585d4f1377b60b85fbad01fe90f097a304f
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93398129"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95905173"
 ---
-# <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivieren der Diagnoseprotokollierung in Azure API for FHIR®
+# <a name="enable-diagnostic-logging-in-azure-api-for-fhir"></a>Aktivieren der Diagnoseprotokollierung in Azure API for FHIR
 
-In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API for FHIR® aktivieren und einige Beispiele von Abfragen dieser Protokolle einsehen können. Der Zugriff auf Diagnoseprotokolle ist für jeden Dienst im Gesundheitswesen unerlässlich, bei dem die Einhaltung gesetzlicher Vorschriften (wie z. B. HIPAA) zwingend erforderlich ist. Eine Option in Azure API for FHIR®, die Diagnoseprotokolle aktiviert, ist [**Diagnoseeinstellungen**](../azure-monitor/platform/diagnostic-settings.md) im Azure-Portal. 
+In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API for FHIR aktivieren und einige Beispiele von Abfragen dieser Protokolle einsehen können. Der Zugriff auf Diagnoseprotokolle ist für jeden Dienst im Gesundheitswesen unerlässlich, bei dem die Einhaltung gesetzlicher Vorschriften (wie z. B. HIPAA) zwingend erforderlich ist. Eine Option in Azure API for FHIR, die Diagnoseprotokolle aktiviert, ist [**Diagnoseeinstellungen**](../azure-monitor/platform/diagnostic-settings.md) im Azure-Portal. 
 
 ## <a name="enable-audit-logs"></a>Aktivieren von Überwachungsprotokollen
-1. Um die Diagnoseprotokollierung in der Azure API for FHIR® zu aktivieren, wählen Sie Ihren Dienst „Azure API for FHIR®“ im Azure-Portal aus. 
+1. Um die Diagnoseprotokollierung in der Azure API for FHIR zu aktivieren, wählen Sie Ihren Dienst „Azure API for FHIR“ im Azure-Portal aus. 
 2. Navigieren Sie zu **Diagnoseeinstellungen** 
 ![Diagnoseeinstellungen](media/diagnostic-logging/diagnostic-settings-screen.png). 
 
@@ -32,12 +32,15 @@ In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API
 5. Wählen Sie die Methode aus, die Sie für den Zugriff auf Ihre Diagnoseprotokolle verwenden möchten:
 
     1. **Archivieren Sie Protokolle zur (manuellen) Überprüfung in einem Speicherkonto**. Das Speicherkonto, das Sie verwenden möchten, muss bereits erstellt worden sein.
-    2. **Streamen Sie die Protokolle zu Event Hub** , damit sie von einem Dienst eines Drittanbieters oder einer benutzerdefinierten Analyselösung erfasst werden können. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, ehe Sie diesen Schritt konfigurieren können.
+    2. **Streamen Sie die Protokolle zu Event Hub**, damit sie von einem Dienst eines Drittanbieters oder einer benutzerdefinierten Analyselösung erfasst werden können. Sie müssen einen Event Hub-Namespace und eine Event Hub-Richtlinie erstellen, ehe Sie diesen Schritt konfigurieren können.
     3. **Streamen Sie die Protokolle zum Log Analytics-Arbeitsbereich** in Azure Monitor. Sie müssen zuvor Ihren Log Analytics-Arbeitsbereich erstellen, bevor Sie diese Option auswählen können.
 
-6. Wählen Sie **AuditLogs** und alle Metriken aus, die Sie erfassen möchten.
+6. Wählen Sie **AuditLogs** und alle Metriken aus, die Sie erfassen möchten. Wenn Sie den Azure IoT-Konnektor für FHIR verwenden, stellen Sie sicher, dass Sie als Metriken **Fehler, Datenverkehr und Wartezeit** auswählen. 
 
-7. Klicken Sie auf „Speichern“.
+   :::image type="content" source="media/iot-metrics-export/diagnostic-setting-add.png" alt-text="IoT-Konnektor2" lightbox="media/iot-metrics-export/diagnostic-setting-add.png":::
+
+7. Wählen Sie **Speichern** aus.
+
 
 > [!Note] 
 > Es kann bis zu 15 Minuten dauern, bis die ersten Protokolle in Log Analytics angezeigt werden.  
@@ -45,7 +48,7 @@ In diesem Artikel erfahren Sie, wie Sie die Diagnoseprotokollierung in Azure API
 Weitere Informationen zum Arbeiten mit Diagnoseprotokollen finden Sie in der Dokumentation zu [Azure-Ressourcenprotokollen](../azure-monitor/platform/platform-logs-overview.md).
 
 ## <a name="audit-log-details"></a>Überwachungsprotokolldetails
-Derzeit gibt der Dienst „Azure API for FHIR®“ im Überwachungsprotokoll die folgenden Felder zurück: 
+Derzeit gibt der Dienst „Azure API for FHIR“ im Überwachungsprotokoll die folgenden Felder zurück: 
 
 |Feldname  |type  |Notizen  |
 |---------|---------|---------|
@@ -60,7 +63,7 @@ Derzeit gibt der Dienst „Azure API for FHIR®“ im Überwachungsprotokoll die
 |OperationDuration|Int|Der Zeitaufwand für die Bearbeitung dieser Anforderung in Sekunden
 |Vorgangsname|String| Beschreibt den Typ des Vorgangs (z. b. Aktualisierung, Suchtyp)
 |RequestUri|String|Der Anforderungs-URI 
-|ResultType|String|Die derzeit verfügbaren Werte sind **Started** , **Succeeded** oder **Failed**.
+|ResultType|String|Die derzeit verfügbaren Werte sind **Started**, **Succeeded** oder **Failed**.
 |StatusCode|Int|Der HTTP-Statuscode. (Beispiel: 200) 
 |TimeGenerated|Datetime|Datum und Uhrzeit des Ereignisses|
 |Eigenschaften|String| Beschreibt die Eigenschaften von fhirResourceType
@@ -95,12 +98,12 @@ MicrosoftHealthcareApisAuditLogs
 ```
 
 ## <a name="conclusion"></a>Zusammenfassung 
-Der Zugriff auf Diagnoseprotokolle ist für die Überwachung eines Diensts und die Bereitstellung von Berichten zur Compliance unerlässlich. Azure API for FHIR® ermöglicht Ihnen diese Aufgaben mithilfe von Diagnoseprotokollen. 
+Der Zugriff auf Diagnoseprotokolle ist für die Überwachung eines Diensts und die Bereitstellung von Berichten zur Compliance unerlässlich. Azure API for FHIR ermöglicht Ihnen diese Aufgaben mithilfe von Diagnoseprotokollen. 
  
-FHIR® ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.
+FHIR ist ein eingetragenes Markenzeichen von HL7 und wird mit Erlaubnis von HL7 verwendet.
 
 ## <a name="next-steps"></a>Nächste Schritte
-In diesem Artikel haben Sie erfahren, wie Überwachungsprotokolle für Azure API for FHIR® aktiviert werden können. Im nächsten Artikel lernen Sie weitere Einstellungen kennen, die Sie in Azure API for FHIR konfigurieren können.
+In diesem Artikel haben Sie erfahren, wie Überwachungsprotokolle für Azure API for FHIR aktiviert werden können. Im nächsten Artikel lernen Sie weitere Einstellungen kennen, die Sie in Azure API for FHIR konfigurieren können.
  
 >[!div class="nextstepaction"]
 >[Zusätzliche Einstellungen](azure-api-for-fhir-additional-settings.md)

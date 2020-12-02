@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 06/10/2020
 author: mingshen-ms
 ms.author: mingshen
-ms.openlocfilehash: 06a2a5bbe637cd2366dbdf218c0278cd683635df
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: c2679be2ca1db9017cbc37219402fa4e1c0666a5
+ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130033"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94874422"
 ---
 # <a name="saas-fulfillment-apis-version-2-in-the-commercial-marketplace"></a>SaaS-Fulfillment-APIs (Version 2) im kommerziellen Marketplace
 
@@ -28,7 +28,7 @@ Die Zustände eines SaaS-Abonnements und anwendbare Aktionen werden angezeigt.
 
 ![Lebenszyklus eines SaaS-Abonnements im Marketplace](./media/saas-subscription-lifecycle-api-v2.png)
 
-#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Gekauft, aber noch nicht aktiviert ( *PendingFulfillmentStart* )
+#### <a name="purchased-but-not-yet-activated-pendingfulfillmentstart"></a>Gekauft, aber noch nicht aktiviert (*PendingFulfillmentStart*)
 
 Nachdem ein Endkunde (oder CSP) ein SaaS-Angebot im Marketplace erworben hat, sollte der Herausgeber über den Kauf benachrichtigt werden, damit ein neues SaaS-Konto für den Endkunden auf Herausgeberseite erstellt und konfiguriert wird.
 
@@ -63,7 +63,7 @@ Dadurch wird der Abrechnungszeitraum des Kunden gestartet. Wird die API zum Akti
 
 Dieser Status ist der stabile Zustand eines bereitgestellten SaaS-Abonnements. Nachdem der Aufruf der [API zum Aktivieren des Abonnements](#activate-a-subscription) auf Microsoft-Seite verarbeitet wurde, wird das SaaS-Abonnement als abonniert gekennzeichnet. Der SaaS-Dienst kann jetzt vom Kunden auf der Website des Herausgebers verwendet werden und wird dem Kunden in Rechnung gestellt.
 
-Wenn das SaaS-Abonnement bereits aktiv ist und der Kunde die SaaS-Funktion **Verwalten** im Azure-Portal oder M365 Admin Center auswählt, wird die **URL der Angebotsseite** erneut von Microsoft mit demselben *token* -Parameter wie beim Aktivierungsablauf aufgerufen.  Der Herausgeber sollte zwischen neuen Käufen und der Verwaltung vorhandener SaaS-Konten unterscheiden und diesen Aufruf der URL der Angebotsseite entsprechend handhaben.
+Wenn das SaaS-Abonnement bereits aktiv ist und der Kunde die SaaS-Funktion **Verwalten** im Azure-Portal oder M365 Admin Center auswählt, wird die **URL der Angebotsseite** erneut von Microsoft mit demselben *token*-Parameter wie beim Aktivierungsablauf aufgerufen.  Der Herausgeber sollte zwischen neuen Käufen und der Verwaltung vorhandener SaaS-Konten unterscheiden und diesen Aufruf der URL der Angebotsseite entsprechend handhaben.
 
 #### <a name="being-updated-subscribed"></a>Wird aktualisiert (Subscribed)
 
@@ -82,11 +82,14 @@ Nur ein aktives Abonnement kann aktualisiert werden. Während das Abonnement akt
 
 ##### <a name="update-initiated-from-the-marketplace"></a>Über den Marketplace initiierte Aktualisierung
 
-Bei diesem Ablauf ändert der Kunde den Abonnementplan oder die Menge der Arbeitsplätze über das M365 Admin Center.  
+Bei diesem Ablauf ändert der Kunde den Abonnementplan oder die Anzahl von Arbeitsplätzen über das Azure-Portal oder über das M365 Admin Center.  
 
 1. Nachdem eine Aktualisierung eingegeben wurde, ruft Microsoft die Webhook-URL des Herausgebers, die im Feld **Verbindungswebhook** im Partner Center konfiguriert ist, mit einem geeigneten Wert für *action* und anderen relevanten Parametern auf.  
 1. Auf Herausgeberseite müssen die erforderlichen Änderungen am SaaS-Dienst vorgenommen werden, und Microsoft muss durch Aufrufen der [API zum Aktualisieren des Vorgangsstatus](#update-the-status-of-an-operation) benachrichtigt werden, sobald die Änderung abgeschlossen ist.
 1. Wenn der Patch mit dem Status „Fehler“ gesendet wird, wird der Aktualisierungsvorgang auf Microsoft-Seite nicht abgeschlossen.  Das SaaS-Abonnement weist weiterhin den vorhandenen Plan und die vorhandene Menge von Arbeitsplätzen auf.
+
+> [!NOTE]
+> Der Herausgeber muss *innerhalb eines zehnsekündigen Zeitfensters* nach Empfang der Webhookbenachrichtigung „PATCH“ für die [API zum Aktualisieren des Vorgangsstatus](#update-the-status-of-an-operation) mit einer Fehler-/Erfolgsantwort aufrufen. Wird „PATCH“ für den Vorgangsstatus nicht innerhalb von zehn Sekunden empfangen, wird der Änderungsplan *automatisch als Erfolg gepatcht*. 
 
 Die Abfolge der API-Aufrufe für ein über den Marketplace initiiertes Aktualisierungsszenario ist nachfolgend dargestellt.
 
@@ -106,9 +109,9 @@ Die Abfolge der API-Aufrufe für das über die Herausgeberseite initiierte Aktua
 
 ![API-Aufrufe für eine über die Herausgeberseite initiierte Aktualisierung](./media/saas-update-status-api-v2-calls-publisher-side.png)
 
-#### <a name="suspended-suspended"></a>Ausgesetzt ( *Suspended* )
+#### <a name="suspended-suspended"></a>Ausgesetzt (*Suspended*)
 
-Dieser Status gibt an, dass die Zahlung eines Kunden für den SaaS-Dienst noch nicht eingegangen ist. Der Herausgeber wird von Microsoft über diese Änderung des SaaS-Abonnementstatus benachrichtigt. Die Benachrichtigung erfolgt über einen Aufruf an den Webhook, wobei der *action* -Parameter auf *Suspended* festgelegt ist.
+Dieser Status gibt an, dass die Zahlung eines Kunden für den SaaS-Dienst noch nicht eingegangen ist. Der Herausgeber wird von Microsoft über diese Änderung des SaaS-Abonnementstatus benachrichtigt. Die Benachrichtigung erfolgt über einen Aufruf an den Webhook, wobei der *action*-Parameter auf *Suspended* festgelegt ist.
 
 Der Herausgeber kann auf Wunsch Änderungen am SaaS-Dienst auf Herausgeberseite vornehmen. Es wird empfohlen, dass der Herausgeber diese Informationen dem jeweiligen Kunden bereitstellt und den Zugriff des Kunden auf den SaaS-Dienst einschränkt oder blockiert.  Es besteht die Möglichkeit, dass die Zahlung niemals eingeht.
 
@@ -119,13 +122,13 @@ Microsoft gewährt dem Kunden eine Karenzzeit von 30 Tagen, bevor das Abonnemen
 
 Der Abonnementstatus wird auf Microsoft-Seite in „Ausgesetzt“ geändert, bevor der Herausgeber eine Aktion ausführt. Nur aktive Abonnements können ausgesetzt werden.
 
-#### <a name="reinstated-suspended"></a>Reaktiviert ( *Suspended* )
+#### <a name="reinstated-suspended"></a>Reaktiviert (*Suspended*)
 
 Das Abonnement wird reaktiviert.
 
 Diese Aktion gibt an, dass die Zahlungsmethode des Kunden wieder gültig ist und eine Zahlung für das SaaS-Abonnement erfolgt.  Das Abonnement wird reaktiviert. In diesem Fall: 
 
-1. Microsoft ruft den Webhook mit einem *action* -Parameter auf, der auf den Wert *Reinstate* festgelegt ist.  
+1. Microsoft ruft den Webhook mit einem *action*-Parameter auf, der auf den Wert *Reinstate* festgelegt ist.  
 1. Der Herausgeber stellt sicher, dass dieses Abonnement auf Herausgeberseite wieder voll funktionsfähig ist.
 1. Der Herausgeber ruft die [Patchvorgang-API](#update-the-status-of-an-operation) mit dem Status „Erfolgreich“ auf.  
 1. Die Reaktivierung ist nun erfolgreich, und dem Kunden wird das SaaS-Abonnement wieder in Rechnung gestellt. 
@@ -135,7 +138,7 @@ Wenn der Patch mit dem Status „Fehler“ gesendet wird, wird der Reaktivierung
 
 Nur ein ausgesetztes Abonnement kann reaktiviert werden.  Während der Reaktivierung eines SaaS-Abonnements verbleibt der Status auf „Ausgesetzt“.  Sobald dieser Vorgang abgeschlossen ist, lautet der Status des Abonnements wieder „Aktiv“.
 
-#### <a name="renewed-subscribed"></a>Verlängert ( *Subscribed* )
+#### <a name="renewed-subscribed"></a>Verlängert (*Subscribed*)
 
 Am Ende der Abonnementlaufzeit (nach einem Monat oder einem Jahr) wird das SaaS-Abonnement automatisch von Microsoft verlängert.  Die Standardeinstellung für die automatische Verlängerung lautet *true* für alle SaaS-Abonnements. Aktive SaaS-Abonnements werden weiter in regelmäßigen Abständen verlängert. Microsoft benachrichtigt den Herausgeber nicht, wenn ein Abonnement verlängert wird. Ein Kunde kann die automatische Verlängerung für ein SaaS-Abonnement über das M365-Verwaltungsportal oder das Azure-Portal deaktivieren.  In diesem Fall wird das SaaS-Abonnement am Ende des aktuellen Abrechnungszeitraums automatisch gekündigt.  Kunden können das SaaS-Abonnement auch zu jedem beliebigen Zeitpunkt kündigen.
 
@@ -143,7 +146,7 @@ Nur aktive Abonnements werden automatisch verlängert.  Abonnements bleiben wäh
 
 Wenn bei einer automatischen Verlängerung aufgrund eines Zahlungsproblems ein Fehler auftritt, wird das Abonnement ausgesetzt.  Der Herausgeber wird benachrichtigt.
 
-#### <a name="canceled-unsubscribed"></a>Gekündigt ( *Unsubscribed* ) 
+#### <a name="canceled-unsubscribed"></a>Gekündigt (*Unsubscribed*) 
 
 Abonnements erreichen diesen Status entweder als Reaktion auf eine explizite Aktion des Kunden oder CSP oder durch Kündigung eines Abonnements über die Website des Herausgebers, das Azure-Portal oder das M365 Admin Center.  Ein Abonnement kann auch implizit bei Nichtbezahlung der fälligen Beträge gekündigt werden, nachdem es 30 Tage lang den ausgesetzten Status aufwies.
 
@@ -172,7 +175,7 @@ Die TLS-Version 1.2 wird bald als Mindestversion für die HTTPS-Kommunikation e
 
 Der Auflösungsendpunkt ermöglicht es dem Herausgeber, das Identifizierungstoken für den Marketplace-Kauf (im Abschnitt [Gekauft, aber noch nicht aktiviert](#purchased-but-not-yet-activated-pendingfulfillmentstart) als *Token* bezeichnet) gegen eine persistente ID für das erworbene SaaS-Abonnement und dessen Details auszutauschen.
 
-Wenn ein Kunde an die URL der Angebotsseite des Partners weitergeleitet wird, wird das Identifizierungstoken des Kunden in diesem URL-Aufruf als *token* -Parameter übergeben. Es wird erwartet, dass der Partner dieses Token verwendet und dessen Auflösung anfordert. Die Antwort der Auflösungs-API enthält die SaaS-Abonnement-ID und andere Details zur eindeutigen Identifizierung des Kaufs. Das mit dem Aufruf der URL der Angebotsseite angegebene *Token* ist in der Regel 24 Stunden gültig. Wenn das von Ihnen erhaltene *Token* bereits abgelaufen ist, wird empfohlen, dem Endkunden die folgenden Anweisungen bereitzustellen:
+Wenn ein Kunde an die URL der Angebotsseite des Partners weitergeleitet wird, wird das Identifizierungstoken des Kunden in diesem URL-Aufruf als *token*-Parameter übergeben. Es wird erwartet, dass der Partner dieses Token verwendet und dessen Auflösung anfordert. Die Antwort der Auflösungs-API enthält die SaaS-Abonnement-ID und andere Details zur eindeutigen Identifizierung des Kaufs. Das mit dem Aufruf der URL der Angebotsseite angegebene *Token* ist in der Regel 24 Stunden gültig. Wenn das von Ihnen erhaltene *Token* bereits abgelaufen ist, wird empfohlen, dem Endkunden die folgenden Anweisungen bereitzustellen:
 
 „Dieser Kauf konnte nicht identifiziert werden. Öffnen Sie dieses SaaS-Abonnement noch einmal im Azure-Portal oder im M365 Admin Center, und klicken Sie erneut auf die Schaltfläche „Konto konfigurieren“ oder „Konto verwalten“.“
 
@@ -194,7 +197,7 @@ Durch das Aufrufen der Auflösungs-API werden Abonnementdetails und der Status f
 |  `x-ms-requestid`    |  Ein eindeutiger Zeichenfolgenwert für die Nachverfolgung der Anforderung vom Client, vorzugsweise eine GUID. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt. |
 |  `x-ms-correlationid` |  Ein eindeutiger Zeichenfolgenwert für den Vorgang auf dem Client. Dieser Parameter korreliert alle Ereignisse des Clientvorgangs mit serverseitigen Ereignissen. Wenn dieser Wert nicht angegeben wird, wird einer generiert und in den Antwortheadern bereitgestellt.  |
 |  `authorization`     |  Ein eindeutiges Zugriffstoken, das den Herausgeber identifiziert, der diesen API-Aufruf sendet. Das Format ist `"Bearer <accessaccess_token>"`, wenn der Tokenwert vom Herausgeber abgerufen wird, wie es unter [Abrufen eines Tokens basierend auf der Azure AD-App](./pc-saas-registration.md#get-the-token-with-an-http-post) beschrieben ist. |
-|  `x-ms-marketplace-token`  | Der aufzulösende *token* -Parameter zur Identifizierung des Marketplace-Kaufs.  Das Token wird im Aufruf der URL der Angebotsseite übergegeben, wenn der Kunde zur Website des SaaS-Partners weitergeleitet wird (z. B. `https://contoso.com/signup?token=<token><authorization_token>`). <br> <br>  *Hinweis:* Der *token* -Wert ist als Teil der URL der Angebotsseite codiert und muss daher decodiert werden, bevor er als Parameter in diesem API-Aufruf verwendet wird.  <br> <br> Ein Beispiel für eine codierte Zeichenfolge in der URL sieht wie folgt aus: `contoso.com/signup?token=ab%2Bcd%2Fef`. Hierbei ist `ab%2Bcd%2Fef` das Token.  Das gleiche Token sieht decodiert wie folgt aus: `Ab+cd/ef` |
+|  `x-ms-marketplace-token`  | Der aufzulösende *token*-Parameter zur Identifizierung des Marketplace-Kaufs.  Das Token wird im Aufruf der URL der Angebotsseite übergegeben, wenn der Kunde zur Website des SaaS-Partners weitergeleitet wird (z. B. `https://contoso.com/signup?token=<token><authorization_token>`). <br> <br>  *Hinweis:* Der *token*-Wert ist als Teil der URL der Angebotsseite codiert und muss daher decodiert werden, bevor er als Parameter in diesem API-Aufruf verwendet wird.  <br> <br> Ein Beispiel für eine codierte Zeichenfolge in der URL sieht wie folgt aus: `contoso.com/signup?token=ab%2Bcd%2Fef`. Hierbei ist `ab%2Bcd%2Fef` das Token.  Das gleiche Token sieht decodiert wie folgt aus: `Ab+cd/ef` |
 | | |
 
 *Antwortcodes:*
@@ -962,7 +965,7 @@ Wenn der Herausgeber für End-to-End-Tests bereit ist, sollten folgende Schritte
 
 Je nachdem, wo das Angebot veröffentlicht wird, kann ein Kaufablauf über das Azure-Portal oder Microsoft AppSource ausgelöst werden.
 
-Die Aktionen *Plan ändern* , *Menge ändern* und *Kündigen* werden auf Herausgeberseite getestet.  Von Microsoft-Seite kann *Kündigen* sowohl über das Azure-Portal als auch das Admin Center (das Portal, in dem Microsoft AppSource-Käufe verwaltet werden) ausgelöst werden.  *Menge und Plan ändern* kann nur über das Admin Center ausgelöst werden.
+Die Aktionen *Plan ändern*, *Menge ändern* und *Kündigen* werden auf Herausgeberseite getestet.  Von Microsoft-Seite kann *Kündigen* sowohl über das Azure-Portal als auch das Admin Center (das Portal, in dem Microsoft AppSource-Käufe verwaltet werden) ausgelöst werden.  *Menge und Plan ändern* kann nur über das Admin Center ausgelöst werden.
 
 ## <a name="get-support"></a>Support
 

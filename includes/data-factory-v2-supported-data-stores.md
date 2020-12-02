@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/28/2020
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: 1d621d39ac6f7c296286f7a3b06d5cc32c513170
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 2b1e9527b5f876b1509422cc19b63db29c35c5a2
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96003061"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96500075"
 ---
 | Category | Datenspeicher | Als Quelle unterstützt | Als Senke unterstützt | Von [Azure-Integrationslaufzeit](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) unterstützt | Von [selbstgehosteter IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) unterstützt |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -31,7 +31,7 @@ ms.locfileid: "96003061"
 | &nbsp; |[Azure File Storage](../articles/data-factory/connector-azure-file-storage.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure SQL-Datenbank](../articles/data-factory/connector-azure-sql-database.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Verwaltete Azure SQL-Datenbank-Instanz](../articles/azure-sql/managed-instance/sql-managed-instance-paas-overview.md) |✓ |✓ |✓ |✓  |
-| &nbsp; |[Azure Synapse Analytics (ehemals SQL Data Warehouse)](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
+| &nbsp; |[Azure Synapse Analytics](../articles/data-factory/connector-azure-sql-data-warehouse.md) |✓ |✓ |✓ |✓  |
 | &nbsp; |[Azure Table Storage](../articles/data-factory/connector-azure-table-storage.md) |✓ |✓ |✓ |✓  |
 | **Datenbank** |[Amazon Redshift](../articles/data-factory/connector-amazon-redshift.md) |✓ | |✓ |✓  |
 | &nbsp; |[DB2](../articles/data-factory/connector-db2.md) |✓ | |✓ |✓  |

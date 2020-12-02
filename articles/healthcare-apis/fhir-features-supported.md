@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: reference
 ms.date: 02/07/2019
 ms.author: cavoeg
-ms.openlocfilehash: 3aea2322129c383a385168c54001464da5dae276
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 9a4c331d82695aecb53990fd604ade82f3361959
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520083"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452923"
 ---
 # <a name="features"></a>Features
 
@@ -135,7 +135,7 @@ Derzeit werden die zulässigen Aktionen für eine bestimmte Rolle *global* auf d
 
 ## <a name="service-limits"></a>Diensteinschränkungen
 
-* [**Anforderungseinheiten (Request Units, RUs):** ](https://docs.microsoft.com/azure/cosmos-db/concepts-limits) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 10 RUs/GB (je nachdem, welcher Wert größer ist). Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
+* [**Anforderungseinheiten (Request Units, RUs):** ](../cosmos-db/concepts-limits.md) Sie können bis zu 10.000 RUs im Portal für Azure API for FHIR konfigurieren. Sie benötigen mindestens 400 RUs oder 10 RUs/GB (je nachdem, welcher Wert größer ist). Wenn Sie mehr als 10.000 RUs benötigen, können Sie über ein Supportticket eine Erhöhung des Werts anfordern. Maximal sind 1.000.000 RUs verfügbar.
 
 * **Gleichzeitige Verbindungen** und **Instanzen**: Standardmäßig verfügen Sie über fünf gleichzeitige Verbindungen auf zwei Instanzen im Cluster (und somit insgesamt 10 gleichzeitige Anforderungen). Wenn Sie weitere gleichzeitige Anforderungen benötigen, öffnen Sie ein Supportticket mit Details zu Ihren Anforderungen.
 

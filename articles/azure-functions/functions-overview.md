@@ -1,94 +1,61 @@
 ---
 title: Übersicht zu Azure Functions
-description: Hier erfahren Sie, wie Sie mithilfe von Azure Functions in wenigen Minuten asynchrone Workloads optimieren.
-author: mattchenderson
+description: Es wird beschrieben, wie Ihnen Azure Functions beim Entwickeln von skalierbaren serverlosen Apps als Hilfe dient.
+author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
-ms.date: 01/16/2020
-ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: 0583b68df603b04d47ac6104f0cf127b3c4bedd0
-ms.sourcegitcommit: 2989396c328c70832dcadc8f435270522c113229
+ms.date: 11/20/2020
+ms.author: cshoe
+ms.custom: contperfq2
+ms.openlocfilehash: 6713c0d45a8b5363122c726d1d31e5c479ba8fff
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92173725"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95504640"
 ---
-# <a name="an-introduction-to-azure-functions"></a>Einführung in Azure Functions
+# <a name="introduction-to-azure-functions"></a>Einführung in Azure Functions
 
-Azure Functions ermöglicht das Ausführen kleiner Codeelemente (sogenannter Funktionen), ohne sich Gedanken über die Anwendungsinfrastruktur machen zu müssen. Mit Azure Functions stellt die Cloudinfrastruktur alle aktuellen Server bereit, die Sie zur skalierten Ausführung Ihrer Anwendung benötigen.
+Systeme werden häufig entwickelt, um auf eine Reihe von kritischen Ereignissen zu reagieren. Unabhängig davon, ob Sie eine Web-API entwickeln, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten oder auch Nachrichtenwarteschlangen verwalten, gilt Folgendes: Für jede Anwendung muss es eine Möglichkeit zum Ausführen von Code geben, wenn diese Ereignisse eintreten.
 
-Eine Funktion wird durch eine bestimmte Art von Ereignis ausgelöst. Zu den [unterstützten Triggern](./functions-triggers-bindings.md) zählen unter anderem Reaktionen auf Datenänderungen, die Beantwortung von Nachrichten, ein Zeitplan oder das Ergebnis einer HTTP-Anforderung.
+Zur Erfüllung dieser Anforderung verfügt Azure Functions über zwei Optionen für bedarfsgesteuertes Computing (Compute On-Demand).
 
-Sie können zwar auch direkt für eine Vielzahl von Diensten programmieren, die Integration mit anderen Diensten wird jedoch durch Bindungen optimiert. Mit Bindungen erhalten Sie [deklarativen Zugriff auf ein breites Spektrum an Azure- und Drittanbieterdiensten](./functions-triggers-bindings.md).
+Erstens können Sie mit Azure Functions die Logik Ihres Systems in schnell verfügbaren Codeblöcken implementieren. Diese Codeblöcke werden als „Funktionen“ bezeichnet. Die verschiedenen Funktionen können jederzeit ausgeführt werden, wenn Sie auf kritische Ereignisse reagieren müssen.
 
-## <a name="features"></a>Features
+Zweitens stellt Azure Functions bei einem Anstieg der Anforderungen so viele Ressourcen und Funktionsinstanzen bereit, wie dies zur Erfüllung der Nachfrage erforderlich ist – aber jeweils nur so lange, wie die Nachfrage besteht. Wenn die Anzahl von Anforderungen abnimmt, wird die Bereitstellung aller zusätzlichen Ressourcen und Anwendungsinstanzen automatisch rückgängig gemacht.
 
-Azure Functions bietet unter anderem folgende zentrale Features:
+Woher kommen all diese Computeressourcen? Von Azure Functions werden [so viele bzw. wenige Computeressourcen wie nötig bereitgestellt](./functions-scale.md), um die Nachfrage Ihrer Anwendung zu erfüllen.
 
-- **Serverlose Anwendungen:** Mit Functions können Sie [serverlose](https://azure.microsoft.com/solutions/serverless/) Anwendungen für Microsoft Azure entwickeln.
+Die bedarfsgesteuerte Bereitstellung von Computeressourcen ist die Grundlage des [serverlosen Computings](https://azure.microsoft.com/solutions/serverless/) in Azure Functions.
 
-- **Verschiedene Programmiersprachen:** Schreiben Sie Funktionen wahlweise mit [C#, Java, JavaScript, Python oder PowerShell](supported-languages.md).
+## <a name="scenarios"></a>Szenarien
 
-- **Preismodell mit nutzungsbasierter Bezahlung:** Bezahlen Sie nur für die Zeit, in der Ihr Code ausgeführt wird. Informationen hierzu finden Sie unter der Hostingoption „Verbrauchstarif“ im [Preisabschnitt](#pricing).  
+In vielen Fällen wird eine Funktion [in ein Array mit Clouddiensten integriert](./functions-triggers-bindings.md), um Implementierungen mit großem Funktionsumfang zu erzielen.
 
-- **Eigene Abhängigkeiten:** Functions unterstützt NuGet und NPM, sodass Sie Ihre bevorzugten Bibliotheken verwenden können.
+Unten sind einige häufige Szenarien für Azure Functions aufgeführt (_keine umfassende Liste_).
 
-- **Integrierte Sicherheit:** Schützen Sie per HTTP ausgelöste Funktionen mit OAuth-Anbietern wie Azure Active Directory, Facebook, Google, Twitter und Microsoft-Konto.
+| Zweck | Aktion |
+| --- | --- |
+| **Entwickeln einer Web-API** | Implementieren eines Endpunkts für Ihre Webanwendungen mit dem [HTTP-Trigger](./functions-bindings-http-webhook.md) |
+| **Verarbeiten von Dateiuploads** | Ausführen von Code, wenn eine Datei im [Blobspeicher](./functions-bindings-storage-blob.md) hochgeladen oder geändert wird |
+| **Entwickeln eines serverlosen Workflows** | Verketten einer Reihe von Funktionen mit [Durable Functions](./durable-functions-overview.md) |
+| **Reagieren auf Datenbankänderungen** | Ausführen von benutzerdefinierter Logik beim Erstellen oder Aktualisieren eines Dokuments in [Cosmos DB](./functions-bindings-cosmosdb-v2.md) |
+| **Ausführen von geplanten Aufgaben** | Ausführen von Code zu [festen Zeiten](./functions-bindings-timer.md) |
+| **Erstellen zuverlässiger Systeme für Nachrichtenwarteschlangen** | Verarbeiten von Nachrichtenwarteschlangen mit [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md) oder [Event Hubs](./functions-bindings-event-hubs.md) |
+| **Analysieren von IoT-Datenströmen** | Sammeln und Verarbeiten der [Daten von IoT-Geräten](./functions-bindings-event-iot.md) |
+| **Verarbeiten von Daten in Echtzeit** | Verwenden von [Functions und Signal R](./functions-bindings-signalr-service.md) zum schnellen Reagieren auf Datenvorgänge |
 
-- **Vereinfachte Integration:** Profitieren Sie von der einfachen Integration für Azure-Dienste und SaaS-Angebote (Software-as-a-Service).
+Beim Entwickeln Ihrer Funktionen stehen Ihnen die folgenden Optionen und Ressourcen zur Verfügung:
 
-- **Flexible Entwicklung:** Richten Sie Continuous Integration ein, und stellen Sie Ihren Code über [GitHub](../app-service/scripts/cli-continuous-deployment-github.md), [Azure DevOps Services](../app-service/scripts/cli-continuous-deployment-vsts.md) und andere [unterstützte Entwicklungstools](../app-service/deploy-local-git.md) bereit.
+- **Nutzung der bevorzugten Sprache**: Schreiben Sie Funktionen in [C#, Java, JavaScript, PowerShell oder Python](./supported-languages.md), oder verwenden Sie einen [benutzerdefinierten Handler](./functions-custom-handlers.md), um nahezu alle anderen Sprachen zu verwenden.
 
-- **Zustandsbehaftete serverlose Architektur:** Orchestrieren Sie serverlose Anwendungen mit [Durable Functions](durable/durable-functions-overview.md).
+- **Automatisierung der Bereitstellung**: Von einem toolbasierten Ansatz bis zur Verwendung von externen Pipelines sind [viele verschiedene Bereitstellungsoptionen](./functions-deployment-technologies.md) verfügbar.
 
-- **Open Source:** Die Functions-Runtime ist Open-Source-Software und [auf GitHub verfügbar](https://github.com/azure/azure-webjobs-sdk-script).
+- **Problembehandlung für eine Funktion**: Verwenden Sie [Überwachungstools](./functions-monitoring.md) und [Teststrategien](./functions-test-a-function.md), um Einblicke in Ihre Apps zu erhalten.
 
-## <a name="what-can-i-do-with-functions"></a>Welche Möglichkeiten bestehen mit Functions?
-
-Functions ist eine hervorragende Lösung zur Verarbeitung von Massendaten, zur Integration von Systemen, zur Nutzung des Internets der Dinge (Internet of Things, IoT) sowie zur Erstellung einfacher APIs und Microservices.
-
-Es steht eine Reihe von Vorlagen zur Verfügung, um Sie bei den ersten Schritten in Schlüsselszenarien zu unterstützen:
-
-- **HTTP**: Führen Sie Code auf der Grundlage von [HTTP-Anforderungen](functions-create-first-azure-function.md) aus.
-
-- **Timer**: Planen Sie die [Ausführung von Code zu vorgegebenen Zeiten](./functions-create-scheduled-function.md).
-
-- **Azure Cosmos DB**: Verarbeiten Sie [neue und geänderte Azure Cosmos DB-Dokumente](./functions-create-cosmos-db-triggered-function.md).
-
-- **Blob Storage**: Verarbeiten Sie [neue und geänderte Azure Storage-Blobs](./functions-create-storage-blob-triggered-function.md).
-
-- **Queue Storage**: Reagieren Sie auf [Azure Storage-Warteschlangennachrichten](./functions-create-storage-queue-triggered-function.md).
-
-- **Event Grid**: Reagieren Sie auf [Azure Event Grid-Ereignisse über Abonnements und Filter](../event-grid/resize-images-on-storage-blob-upload-event.md).
-
-- **Event Hub**: Reagieren Sie auf [große Mengen von Azure Event Hub-Ereignissen](./functions-bindings-event-hubs.md).
-
-- **Service Bus-Warteschlange**: Stellen Sie eine Verbindung mit anderen Azure-Diensten oder lokalen Diensten her, indem Sie [auf Service Bus-Warteschlangennachrichten reagieren](./functions-bindings-service-bus.md).
-
-- **Service Bus-Thema**: Verbinden Sie andere Azure-Dienste oder lokale Diensten, indem Sie [auf Service Bus-Themennachrichten reagieren](./functions-bindings-service-bus.md).
-
-## <a name="how-much-does-functions-cost"></a><a name="pricing"></a>Was kostet Functions?
-
-Für Azure Functions stehen drei Arten von Tarifen zur Verfügung. Wählen Sie den, der Ihren Anforderungen am besten entspricht:
-
-- **Verbrauchsplan**: Azure stellt alle erforderlichen Rechenressourcen bereit. Sie müssen sich nicht um die Ressourcenverwaltung kümmern und bezahlen nur für die Zeit, in der Ihr Code ausgeführt wird.
-
-- **Premium-Plan**: Sie geben eine Anzahl vorab aufgewärmter Instanzen an, die immer online sind und sofort reagieren können. Wenn Ihre Funktion ausgeführt wird, bietet Azure alle zusätzlichen erforderlichen Rechenressourcen. Sie bezahlen für die fortlaufend ausgeführten vorab aufgewärmten Instanzen und alle zusätzlichen Instanzen, die Sie verwenden, wenn Azure Ihre App zentral hoch- und herunter skaliert.
-
-- **App Service-Plan**: Funktionen werden auf die gleiche Weise ausgeführt wie Ihre Web-Apps. Wenn Sie App Service für Ihre anderen Anwendungen verwenden, können Ihre Funktionen ohne zusätzliche Kosten unter dem gleichen Plan ausgeführt werden.
-
-Weitere Informationen zu Hostingplänen finden Sie unter [Vergleich von Hostingplänen für Azure Functions](functions-scale.md). Ausführliche Preisinformationen finden Sie auf der Seite [Functions – Preise](https://azure.microsoft.com/pricing/details/functions/).
+- **Flexible Preisoptionen**: Beim [Verbrauchstarif](./pricing.md) zahlen Sie nur, während Ihre Funktionen ausgeführt werden, und die Tarife [Premium](./pricing.md) und [App Service](./pricing.md) verfügen über Features für besondere Anforderungen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Erstellen Sie Ihre erste Funktion in Azure Functions](functions-create-first-function-vs-code.md)  
-  Verwenden Sie [Visual Studio Code](functions-create-first-function-vs-code.md), die [Befehlszeile](functions-create-first-azure-function-azure-cli.md) oder das [Azure-Portal](functions-create-first-azure-function.md).
-
-- [Entwicklerreferenz zu Azure Functions](functions-reference.md)  
-   Enthält weitere technische Informationen zur Azure Functions-Laufzeit sowie eine Referenz für das Programmieren von Funktionen sowie für das Festlegen von Triggern und Bindungen.
-
-- [Skalieren von Azure Functions](functions-scale.md)  
-  Beschreibt die für Azure Functions verfügbaren Servicepläne (einschließlich des Hostingplans „Verbrauchstarif“) und enthält Informationen zur Wahl des geeigneten Plans.
-
-- [Was ist Azure App Service?](../app-service/overview.md)  
-  Azure Functions nutzt Azure App Service für Kernfunktionen wie Bereitstellungen, Umgebungsvariablen und Diagnosen.
+> [!div class="nextstepaction"]
+> [Erste Schritte mit Lektionen, Beispielen und interaktiven Tutorials](./functions-get-started.md)

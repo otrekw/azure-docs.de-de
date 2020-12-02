@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1ae4e2a1e0d67a0a09c19b517245ffc6d92d17df
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 03874f76772d8722c7161ef43a2297c2e01b7da9
+ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629919"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95748834"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -25,16 +25,16 @@ Azure HDInsight ist unter Enterprisekunden einer der beliebtesten Dienste für O
 
 Wenn Sie die Anmerkungen zu dieser Version abonnieren möchten, sehen Sie sich die Releases auf [diesem GitHub-Repository](https://github.com/hdinsight/release-notes/releases) an.
 
-## <a name="release-date-11092020"></a>Veröffentlichungsdatum: 09.11.2020
+## <a name="release-date-11182020"></a>Veröffentlichungsdatum: 11/18/2020
 
 Diese Version gilt sowohl für HDInsight 3.6 als auch für HDInsight 4.0. Das HDInsight-Release wird über mehrere Tage für alle Regionen verfügbar gemacht. Das hier angegebene Veröffentlichungsdatum entspricht dem Veröffentlichungsdatum in der ersten Region. Es kann sein, dass die unten angegebenen Änderungen bei Ihnen erst ein paar Tage später verfügbar werden.
 
 ## <a name="new-features"></a>Neue Funktionen
-### <a name="hdinsight-identity-broker-hib-is-now-ga"></a>HDInsight Identity Broker (HIB) ist jetzt GA
-Der HDInsight Identity Broker (HIB), der die OAuth-Authentifizierung für ESP-Cluster ermöglicht, ist jetzt mit diesem Release allgemein verfügbar. HIB-Cluster, die nach diesem Release erstellt werden, verfügen über die neuesten HIB-Features:
-- Hochverfügbarkeit (High Availability, HA)
-- Unterstützung von Multi-Factor Authentication (MFA)
-- Verbundbenutzer melden sich ohne Kennworthashsynchronisierung bei AAD-DS an. Weitere Informationen finden Sie in der [HIB-Dokumentation](https://docs.microsoft.com/azure/hdinsight/domain-joined/identity-broker).
+### <a name="auto-key-rotation-for-customer-managed-key-encryption-at-rest"></a>Automatische Schlüsselrotation für kundenseitig verwaltete Schlüsselverschlüsselung ruhender Daten
+Ab dieser Version können Kunden die versionslosen Verschlüsselungsschlüssel-URLs von Azure Key Vault für die Verschlüsselung ruhender Daten mit kundenseitig verwalteten Schlüsseln verwenden. HDInsight rotiert die Schlüssel automatisch, wenn sie ablaufen oder durch neue Versionen ersetzt werden. Ausführlichere Informationen finden Sie [hier](https://docs.microsoft.com/azure/hdinsight/disk-encryption).
+
+### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Möglichkeit zum Auswählen anderer Größen virtueller Zookeeper-Computer für Spark, Hadoop und ML Services
+HDInsight unterstützte bisher nicht die Anpassung der Zookeeper-Knotengröße für die Clustertypen „Spark“, „Hadoop“ und „ML Services“. Standardmäßig wird A2_v2/A2 für die Größen virtueller Computer verwendet, die kostenlos zur Verfügung gestellt werden. Ab dieser Version können Sie die Größe der virtuellen Zookeeper-Computer auswählen, die für Ihr Szenario am besten geeignet ist. Für Zookeeper-Knoten mit einer anderen Größe der virtuellen Computer als A2_v2/A2 fallen Gebühren an. Die virtuellen Computer vom Typ A2_v2 und A2 werden weiterhin kostenlos angeboten.
 
 ### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Wechsel zu Azure-VM-Skalierungsgruppen
 HDInsight verwendet jetzt virtuelle Azure-Computer für die Bereitstellung des Clusters. Ab dieser Version wird der Dienst schrittweise zu [Azure-VM-Skalierungsgruppen](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview) migriert. Der gesamte Prozess kann Monate dauern. Nachdem Ihre Regionen und Abonnements migriert wurden, werden neu erstellte HDInsight-Cluster ohne Kundenaktionen in VM-Skalierungsgruppen ausgeführt. Es wird kein Breaking Change erwartet.
@@ -46,14 +46,11 @@ Der Support für den Clustertyp „HDInsight 3.6 ML Services“ wird am 31. Dez
 ### <a name="disabled-vm-sizes"></a>Deaktivierte VM-Größen
 Ab dem 16. November 2020 hindert HDInsight neue Kunden daran, Cluster mit den VM-Größen standand_A8, standand_A9, standand_A10 und standand_A11 zu erstellen. Bestandskunden, die diese VM-Größen in den letzten drei Monaten verwendet haben, sind nicht betroffen. Ab dem 9. Januar 2021 hindert HDInsight alle Kunden daran, Cluster mit den VM-Größen standand_A8, standand_A9, standand_A10 und standand_A11 zu erstellen. Vorhandene Cluster werden unverändert ausgeführt. Sie sollten zu HDInsight 4.0 wechseln, um potenzielle System-/Supportunterbrechungen zu vermeiden.
 
-## <a name="behavior-changes"></a>Verhaltensänderungen
+### <a name="behavior-changes"></a>Verhaltensänderungen
 Keine Verhaltensänderung für diese Version.
 
 ## <a name="upcoming-changes"></a>Bevorstehende Änderungen
 Die folgenden Änderungen werden in kommenden Versionen durchgeführt.
-
-### <a name="ability-to-select-different-zookeeper-virtual-machine-sizes-for-spark-hadoop-and-ml-services"></a>Möglichkeit zum Auswählen anderer Größen virtueller Zookeeper-Computer für Spark, Hadoop und ML Services
-HDInsight unterstützt derzeit keine Anpassung der Zookeeper-Knotengröße für die Clustertypen „Spark“, „Hadoop“ und „ML Services“. Standardmäßig wird A2_v2/A2 für die Größen virtueller Computer verwendet, die kostenlos zur Verfügung gestellt werden. In der kommenden Version können Sie die Größe der virtuellen Zookeeper-Computer auswählen, die für Ihr Szenario am besten geeignet ist. Für Zookeeper-Knoten mit einer anderen Größe der virtuellen Computer als A2_v2/A2 fallen Gebühren an. Die virtuellen Computer vom Typ A2_v2 und A2 werden weiterhin kostenlos angeboten.
 
 ### <a name="default-cluster-version-will-be-changed-to-40"></a>Standardclusterversion wird in 4.0 geändert
 Ab Februar 2021 wird die Standardversion des HDInsight-Clusters von 3.6 in 4.0 geändert. Weitere Informationen zu verfügbaren Versionen finden Sie unter [Verfügbare Versionen](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning#available-versions). Erfahren Sie mehr über die Neuerungen in [HDInsight 4.0](https://docs.microsoft.com/azure/hdinsight/hdinsight-version-release).
@@ -63,8 +60,6 @@ Die Unterstützung von HDInsight 3.6 endet bald. Ab dem 30. Juni 2021 können
 
 ## <a name="bug-fixes"></a>Behebung von Programmfehlern
 HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit und -leistung. 
-### <a name="fix-issue-for-restarting-vms-in-cluster"></a>Problembehebung beim Neustarten von VMs im Cluster
-Das Problem beim Neustarten von VMs im Cluster wurde behoben. Sie können [PowerShell oder die REST-API verwenden, um die Knoten im Cluster](https://docs.microsoft.com/azure/hdinsight/cluster-reboot-vm) erneut zu starten.
 
 ## <a name="component-version-change"></a>Änderung der Komponentenversion
 Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](./hdinsight-component-versioning.md).

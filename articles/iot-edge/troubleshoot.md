@@ -8,12 +8,12 @@ ms.date: 11/12/2020
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: daae45c9eca45022225ea47aa048815d5eff70c4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 035cf5be4471cad7ac11eb8ce9a8a0ecb13a68da
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94964506"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462368"
 ---
 # <a name="troubleshoot-your-iot-edge-device"></a>Behandeln von Problemen bei Ihrem IoT Edge-Gerät
 
@@ -81,7 +81,7 @@ Anleitungen zum Aktualisieren Ihres Geräts finden Sie unter [Aktualisieren des 
 
 ## <a name="verify-the-installation-of-iot-edge-on-your-devices"></a>Überprüfen der Installation von IoT Edge auf Ihren Geräten
 
-Sie können die Installation von IoT Edge auf Ihren Geräten überprüfen, indem Sie [den edgeAgent-Modulzwilling überwachen](https://docs.microsoft.com/azure/iot-edge/how-to-monitor-module-twins).
+Sie können die Installation von IoT Edge auf Ihren Geräten überprüfen, indem Sie [den edgeAgent-Modulzwilling überwachen](./how-to-monitor-module-twins.md).
 
 Führen Sie den folgenden Befehl in [Azure Cloud Shell](https://shell.azure.com/) aus, um den neuesten edgeAgent-Modulzwilling abzurufen:
 
@@ -89,7 +89,7 @@ Führen Sie den folgenden Befehl in [Azure Cloud Shell](https://shell.azure.com/
    az iot hub module-twin show --device-id <edge_device_id> --module-id $edgeAgent --hub-name <iot_hub_name>
    ```
 
-Mit diesem Befehl werden alle [gemeldeten edgeAgent-Eigenschaften](https://docs.microsoft.com/azure/iot-edge/module-edgeagent-edgehub) ausgegeben. Hier einige nützliche Eigenschaften zum Überwachen des Gerätestatus:
+Mit diesem Befehl werden alle [gemeldeten edgeAgent-Eigenschaften](./module-edgeagent-edgehub.md) ausgegeben. Hier einige nützliche Eigenschaften zum Überwachen des Gerätestatus:
 
 * runtime status
 * runtime start time
