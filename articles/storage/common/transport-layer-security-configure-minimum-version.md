@@ -10,12 +10,12 @@ ms.date: 11/03/2020
 ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 5f772bd996b126a4cd7182a2ce088c2d3edc8e7d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 683f0e070ad77add62ed76eabd70b42ba15f012e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312015"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498131"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Erzwingen der erforderliche Mindestversion der Transport Layer Security (TLS) für Anforderungen an ein Speicherkonto
 
@@ -35,7 +35,7 @@ Wenn Sie für Ihr Speicherkonto eine TLS-Mindestversion erzwingen, werden Anford
 
 Für die Protokollierung der Anforderungen an Ihr Azure Storage-Konto und die Ermittlung der vom Client verwendeten TLS-Version können Sie die Azure Storage-Protokollierung in Azure Monitor (Vorschau) verwenden. Weitere Informationen finden Sie unter [Überwachen von Azure Storage](../blobs/monitor-blob-storage.md).
 
-Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/get-started-portal.md).
+Die Azure Storage-Protokollierung in Azure Monitor unterstützt die Verwendung von Protokollabfragen für die Analyse von Protokolldaten. Für die Abfrage von Protokollen können Sie einen Azure Log Analytics-Arbeitsbereich verwenden. Weitere Informationen zu Protokollabfragen finden Sie unter [Tutorial: Erste Schritte mit Log Analytics-Abfragen](../../azure-monitor/log-query/log-analytics-tutorial.md).
 
 Wenn Sie Azure Storage-Daten mit Azure Monitor protokollieren und mit Azure Log Analytics analysieren möchten, müssen Sie zunächst eine Diagnoseeinstellung erstellen, die angibt, welche Anforderungstypen und für welche Speicherdienste Daten protokolliert werden sollen. Führen Sie zum Erstellen einer Diagnoseeinstellung im Azure-Portal die folgenden Schritte aus:
 
@@ -89,7 +89,7 @@ Wenn Sie sicher sind, dass der Datenverkehr von Clients, die ältere Versionen v
 
 ### <a name="configure-the-minimum-tls-version-for-a-storage-account"></a>Konfigurieren der TLS-Mindestversion für ein Speicherkonto
 
-Legen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto die **MinimumTlsVersion** -Version für das Konto fest. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
+Legen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto die **MinimumTlsVersion**-Version für das Konto fest. Diese Eigenschaft ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen zum Azure Resource Manager-Bereitstellungsmodell finden Sie unter [Speicherkontoübersicht](storage-account-overview.md).
 
 Die Eigenschaft **MinimumTlsVersion** wird nicht standardmäßig festgelegt und gibt erst dann einen Wert zurück, nachdem Sie sie explizit festgelegt haben.  Wenn der Eigenschaftswert **NULL** ist, lässt das Speicherkonto Anforderungen zu, die mit TLS Version 1.0 oder höher gesendet werden.
 
@@ -169,7 +169,7 @@ az storage account show \
 
 # <a name="template"></a>[Vorlage](#tab/template)
 
-Erstellen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto mit einer Vorlage eine Vorlage mit der Eigenschaft **MinimumTLSVersion** , die auf `TLS1_0`, `TLS1_1` oder `TLS1_2` festgelegt ist. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
+Erstellen Sie zum Konfigurieren der TLS-Mindestversion für ein Speicherkonto mit einer Vorlage eine Vorlage mit der Eigenschaft **MinimumTLSVersion**, die auf `TLS1_0`, `TLS1_1` oder `TLS1_2` festgelegt ist. Die folgenden Schritte beschreiben, wie eine Vorlage im Azure-Portal erstellt wird.
 
 1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 1. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.

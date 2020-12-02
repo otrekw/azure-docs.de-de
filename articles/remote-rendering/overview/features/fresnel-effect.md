@@ -6,12 +6,12 @@ ms.author: jumeder
 ms.date: 11/09/2020
 ms.topic: article
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 0596d118d1f3c09bc295891f023fe9990f3f1e05
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: c8ecd3afc95cf4b8054cd7db3530c15afebea3ce
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94558117"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498233"
 ---
 # <a name="fresnel-effect"></a>Fresnel-Effekt
 
@@ -21,7 +21,7 @@ Der Fresnel-Effekt verleiht den betroffenen Objekten an ihren Kanten einen farbi
 
 ## <a name="enabling-the-fresnel-effect"></a>Aktivieren des Fresnel-Effekts
 
-Damit das Fresnel-Effektefeature verwendet werden kann, muss es für die betreffenden Materialien aktiviert werden. Sie können es aktivieren, indem Sie das FresnelEffekt-Bit von [PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) für das [PBR-Material](../../overview/features/pbr-materials.md) festlegen. Dasselbe Muster gilt für [ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering) und [ColorMaterial](../../overview/features/color-materials.md). Eine Veranschaulichung der Verwendung finden Sie im Abschnitt der Codebeispiele.
+Damit das Fresnel-Effektefeature verwendet werden kann, muss es für die betreffenden Materialien aktiviert werden. Sie können es aktivieren, indem Sie das FresnelEffekt-Bit von [PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures) für das [PBR-Material](../../overview/features/pbr-materials.md) festlegen. Dasselbe Muster gilt für [ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering) und [ColorMaterial](../../overview/features/color-materials.md). Eine Veranschaulichung der Verwendung finden Sie im Abschnitt der Codebeispiele.
 
 Nach der Aktivierung ist der Fresnel-Effekt sofort sichtbar. Standardmäßig ist der Glanz weiß (1, 1, 1, 1, 1) und weist einen Exponenten von 1 auf. Sie können diese Einstellungen mithilfe der folgenden Parameter-Setter anpassen.
 
@@ -93,10 +93,10 @@ void SetFresnelEffect(ApiHandle<AzureSession> session, ApiHandle<Material> mater
 
 ## <a name="api-documentation"></a>API-Dokumentation
 
-* [C# PbrMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
-* [C++ PbrMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/pbrmaterialfeatures)
-* [C# ColorMaterialFeatures](https://docs.microsoft.com/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
-* [C++ ColorMaterialFeatures](https://docs.microsoft.com/cpp/api/remote-rendering/colormaterialfeatures)
+* [C# PbrMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.pbrmaterialfeatures)
+* [C++ PbrMaterialFeatures](/cpp/api/remote-rendering/pbrmaterialfeatures)
+* [C# ColorMaterialFeatures](/dotnet/api/microsoft.azure.remoterendering.colormaterialfeatures)
+* [C++ ColorMaterialFeatures](/cpp/api/remote-rendering/colormaterialfeatures)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

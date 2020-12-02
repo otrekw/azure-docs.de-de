@@ -3,20 +3,20 @@ title: Überwachen von Data Factorys mit Azure Monitor
 description: Erfahren Sie, wie Sie Azure Data Factory-Pipelines mit Azure Monitor überwachen können, indem Sie Diagnoseprotokolle mit Informationen aus Data Factory aktivieren.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 manager: jroth
 ms.reviewer: maghan
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
-ms.openlocfilehash: af274c9c50b514befb4a3ce5930877edf964d976
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 35d2073dca21b4a0d48a43bed9933bb7549cf8f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92638090"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497893"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Durchführen der Überwachung und Verwenden von Warnungen für Data Factory mit Azure Monitor
 
@@ -35,8 +35,8 @@ Weitere Informationen finden Sie unter [Übersicht über Azure Monitor](../azure
 Data Factory speichert Pipelineausführungsdaten nur 45 Tage lang. Verwenden Sie Azure Monitor, wenn Sie diese Daten für einen längeren Zeitraum aufbewahren möchten. Mit Monitor können Sie Diagnoseprotokolle zu Analysezwecken an mehrere unterschiedliche Ziele weiterleiten.
 
 * **Storage Account** (Speicherkonto): Speichern Sie Diagnoseprotokolle zur Überwachung oder manuellen Überprüfung in einem Speicherkonto. In den Diagnoseeinstellungen können Sie eine Aufbewahrungsdauer (in Tagen) angeben.
-* **Event Hub** : Streamen Sie die Protokolle in Azure Event Hubs. Die Protokolle werden zu Eingaben für einen Partnerdienst oder eine benutzerdefinierte Analyselösung wie Power BI.
-* **Log Analytics** : Analysieren Sie die Protokolle mit Log Analytics. Die Data Factory-Integration in Azure Monitor ist für die folgenden Szenarien hilfreich:
+* **Event Hub**: Streamen Sie die Protokolle in Azure Event Hubs. Die Protokolle werden zu Eingaben für einen Partnerdienst oder eine benutzerdefinierte Analyselösung wie Power BI.
+* **Log Analytics**: Analysieren Sie die Protokolle mit Log Analytics. Die Data Factory-Integration in Azure Monitor ist für die folgenden Szenarien hilfreich:
   * Sie möchten komplexe Abfragen für einen umfangreichen Satz von Metriken schreiben, die von Data Factory für Monitor veröffentlicht werden. Sie können eigene Benachrichtigungen zu diesen Abfragen über Monitor erstellen.
   * Sie möchten Data Factorys übergreifend überwachen. Sie können Daten aus mehreren Data Factorys an einen einzigen Monitor-Arbeitsbereich weiterleiten.
 
@@ -50,11 +50,11 @@ Erstellen Sie Diagnoseeinstellungen für Ihre Data Factory, oder fügen Sie dies
 
 1. Wählen Sie die Data Factory aus, für die Sie eine Diagnoseeinstellung festlegen möchten.
 
-1. Sollten für die ausgewählte Data Factory keine Einstellungen vorhanden sein, werden Sie aufgefordert, eine Einstellung zu erstellen. Wählen Sie **Diagnose aktivieren** .
+1. Sollten für die ausgewählte Data Factory keine Einstellungen vorhanden sein, werden Sie aufgefordert, eine Einstellung zu erstellen. Wählen Sie **Diagnose aktivieren**.
 
    ![Erstellen einer Diagnoseeinstellung, wenn keine Einstellungen vorhanden sind](media/data-factory-monitor-oms/monitor-oms-image1.png)
 
-   Sind Einstellungen für die Data Factory vorhanden, wird eine Liste mit den Einstellungen angezeigt, die bereits für die Data Factory konfiguriert sind. Klicken Sie auf **Diagnoseeinstellung hinzufügen** .
+   Sind Einstellungen für die Data Factory vorhanden, wird eine Liste mit den Einstellungen angezeigt, die bereits für die Data Factory konfiguriert sind. Klicken Sie auf **Diagnoseeinstellung hinzufügen**.
 
    ![Hinzufügen einer Diagnoseeinstellung, wenn Einstellungen vorhanden sind](media/data-factory-monitor-oms/add-diagnostic-setting.png)
 
@@ -80,7 +80,7 @@ Erstellen Sie Diagnoseeinstellungen für Ihre Data Factory, oder fügen Sie dies
    ![Benennen Ihrer Einstellungen und Auswählen eines Log Analytics-Arbeitsbereichs](media/data-factory-monitor-oms/monitor-oms-image2.png)
 
     > [!NOTE]
-    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend** , den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
+    > Da eine Azure-Protokolltabelle nicht mehr als 500 Spalten enthalten darf, **empfehlen wir Ihnen dringend**, den _Modus „Ressourcenspezifisch“_ auszuwählen. Weitere Informationen finden Sie unter [Bekannte Einschränkung: Spaltenlimit in Azure-Diagnose](../azure-monitor/platform/resource-logs.md#column-limit-in-azurediagnostics).
 
 1. Wählen Sie **Speichern** aus.
 
@@ -94,7 +94,7 @@ Diese Lösung liefert Ihnen eine Zusammenfassung der Gesamtintegrität Ihrer Dat
 * Drilldown in Data Factory-Aktivitätsausführungen nach Typ
 * Zusammenfassung mit Informationen zur wichtigsten Data Factory-Pipeline und zu Aktivitätsfehlern
 
-1. Navigieren Sie zu **Azure Marketplace** , wählen Sie den Filter **Analysen** aus, und suchen Sie nach **Azure Data Factory-Analyse (Vorschau)** .
+1. Navigieren Sie zu **Azure Marketplace**, wählen Sie den Filter **Analysen** aus, und suchen Sie nach **Azure Data Factory-Analyse (Vorschau)** .
 
    ![Navigieren Sie zu „Azure Marketplace“, geben Sie „Analysefilter“ ein, und wählen Sie „Azure Data Factory-Analyse (Vorschau)“ aus.](media/data-factory-monitor-oms/monitor-oms-image3.png)
 
@@ -102,7 +102,7 @@ Diese Lösung liefert Ihnen eine Zusammenfassung der Gesamtintegrität Ihrer Dat
 
    ![Details zu „Azure Data Factory-Analyse (Vorschau)“](media/data-factory-monitor-oms/monitor-oms-image4.png)
 
-1. Wählen Sie **Erstellen** aus, und erstellen Sie dann den **Log Analytics-Arbeitsbereich** .
+1. Wählen Sie **Erstellen** aus, und erstellen Sie dann den **Log Analytics-Arbeitsbereich**.
 
    ![Erstellen einer neuen Lösung](media/data-factory-monitor-oms/monitor-log-analytics-image-5.png)
 
@@ -127,7 +127,7 @@ Sie können u.a. die voranstehenden Metriken visualisieren, die Abfragen hinter 
 ![Grafische Darstellung von Pipelineausführungen durch Data Factory](media/data-factory-monitor-oms/monitor-oms-image8.png)
 
 > [!NOTE]
-> Azure Data Factory Analytics (Vorschau) sendet Diagnoseprotokolle an _ressourcenspezifische_ Zieltabellen. Sie können Abfragen für die folgenden Tabellen schreiben: _ADFPipelineRun_ , _ADFTriggerRun_ und _ADFActivityRun_ .
+> Azure Data Factory Analytics (Vorschau) sendet Diagnoseprotokolle an _ressourcenspezifische_ Zieltabellen. Sie können Abfragen für die folgenden Tabellen schreiben: _ADFPipelineRun_, _ADFTriggerRun_ und _ADFActivityRun_.
 
 ## <a name="data-factory-metrics"></a>Data Factory-Metriken
 
@@ -850,7 +850,7 @@ Um Ihre SSIS-Workloads per Lift & Shift zu verschieben, können Sie [die SSIS�
 - Ausführen von Paketen, die im SSIS-Katalog (SSISDB) bereitgestellt werden, wobei zum Hosten ein Azure SQL-Datenbank-Server/eine verwaltete Instanz verwendet wird (Projektbereitstellungsmodell)
 - Ausführen von Paketen, die im Dateisystem, in Azure Files oder in SQL Server-Datenbank (MSDB) bereitgestellt werden, wobei zum Hosten Azure SQL Managed Instance verwendet wird (Paketbereitstellungsmodell)
 
-Nach der Bereitstellung können Sie den [SSIS IR-Betriebsstatus mit Azure PowerShell oder im **Monitor** -Hub des ADF-Portals überprüfen](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Beim Projektbereitstellungsmodell werden Protokolle für SSIS-Paketausführungen in internen SSISDB-Tabellen oder -Sichten gespeichert, damit sie mit geeigneten Tools wie SSMS abgefragt, analysiert und visuell dargestellt werden können. Beim Paketbereitstellungsmodell können Protokolle für SSIS-Paketausführungen im Dateisystem oder in Azure Files als CSV-Dateien gespeichert werden, die noch mit anderen geeigneten Tools analysiert und verarbeitet werden müssen, bevor sie abgefragt, analysiert und visuell dargestellt werden können.
+Nach der Bereitstellung können Sie den [SSIS IR-Betriebsstatus mit Azure PowerShell oder im **Monitor**-Hub des ADF-Portals überprüfen](./monitor-integration-runtime.md#azure-ssis-integration-runtime). Beim Projektbereitstellungsmodell werden Protokolle für SSIS-Paketausführungen in internen SSISDB-Tabellen oder -Sichten gespeichert, damit sie mit geeigneten Tools wie SSMS abgefragt, analysiert und visuell dargestellt werden können. Beim Paketbereitstellungsmodell können Protokolle für SSIS-Paketausführungen im Dateisystem oder in Azure Files als CSV-Dateien gespeichert werden, die noch mit anderen geeigneten Tools analysiert und verarbeitet werden müssen, bevor sie abgefragt, analysiert und visuell dargestellt werden können.
 
 Mit der [Azure Monitor](../azure-monitor/platform/data-platform.md)-Integration können nun alle Metriken und Protokolle, die bei SSIS IR-Vorgängen und SSIS-Paketausführungen generiert werden, über das Azure-Portal abgefragt, analysiert und visuell dargestellt werden. Darüber hinaus können Sie auch Warnungen für sie ausgeben.
 
@@ -868,11 +868,11 @@ Beim Konfigurieren der Diagnoseeinstellungen und des Arbeitsbereichs für Ihre A
 
 ### <a name="ssis-operational-alerts"></a>Warnungen zum SSIS-Betrieb
 
-[Wählen Sie die Seite **Warnungen und Metriken** im **Monitor** -Hub von ADF aus, und befolgen Sie die angegebene Schritt-für-Schritt-Anleitung](./monitor-visually.md#alerts), um über das ADF-Portal Warnungen zu SSIS-Betriebsmetriken auszulösen.
+[Wählen Sie die Seite **Warnungen und Metriken** im **Monitor**-Hub von ADF aus, und befolgen Sie die angegebene Schritt-für-Schritt-Anleitung](./monitor-visually.md#alerts), um über das ADF-Portal Warnungen zu SSIS-Betriebsmetriken auszulösen.
 
 ![Auslösen von Warnungen zum SSIS-Betrieb über das ADF-Portal](media/data-factory-monitor-oms/data-factory-monitor-alerts-ssis.png)
 
-[Wählen Sie die Seite **Warnungen** im **Azure Monitor** -Hub aus, und befolgen Sie die angegebene Schritt-für-Schritt-Anleitung](#data-factory-alerts), um über das Azure-Portal Warnungen zu SSIS-Betriebsmetriken auszulösen.
+[Wählen Sie die Seite **Warnungen** im **Azure Monitor**-Hub aus, und befolgen Sie die angegebene Schritt-für-Schritt-Anleitung](#data-factory-alerts), um über das Azure-Portal Warnungen zu SSIS-Betriebsmetriken auszulösen.
 
 ![Auslösen von Warnungen zum SSIS-Betrieb über das Azure-Portal](media/data-factory-monitor-oms/azure-monitor-alerts-ssis.png)
 
