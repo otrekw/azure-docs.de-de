@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu, calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d33721a70f0a9d4cfb26516d2f252424cc924f8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 6deb0c005b5ed7daf5b30bea8a65ee70d8b460c5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92503809"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837463"
 ---
 # <a name="configure-authentication-session-management-with-conditional-access"></a>Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff
 
@@ -90,7 +90,7 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
 > [!WARNING]
 > Wenn Sie die derzeit in der Public Preview verfügbare Funktion für die [konfigurierbare Tokengültigkeitsdauer](../develop/active-directory-configurable-token-lifetimes.md) verwenden, sollten Sie beachten, dass die Erstellung von zwei verschiedenen Richtlinien für dieselbe Benutzer- oder App-Kombination nicht unterstützt wird: eine mit dieser Funktion und eine andere mit der konfigurierbaren Tokengültigkeitsdauer. Microsoft beabsichtigt, die Funktion für die konfigurierbare Tokengültigkeitsdauer bei den Lebensdauern von Aktualisierungs- und Sitzungstoken am 30. Januar 2021 außer Betrieb zu nehmen und durch die Funktion für die Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff zu ersetzen.  
 >
-> Stellen Sie vor dem Aktivieren der Anmeldehäufigkeit sicher, dass andere Einstellungen für die erneute Authentifizierung in Ihrem Mandanten deaktiviert sind. Wenn „MFA auf vertrauenswürdigen Geräten speichern“ aktiviert ist, deaktivieren Sie diese Option vor dem Verwenden der Anmeldehäufigkeit, da die Verwendung dieser beiden Einstellungen dazu führen kann, dass Benutzer unerwartet aufgefordert werden. Weitere Informationen zu Eingabeaufforderungen für die erneute Authentifizierung und zur Sitzungslebensdauer finden Sie im Artikel [Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
+> Stellen Sie vor dem Aktivieren der Anmeldehäufigkeit sicher, dass andere Einstellungen für die erneute Authentifizierung in Ihrem Mandanten deaktiviert sind. Wenn „MFA auf vertrauenswürdigen Geräten speichern“ aktiviert ist, deaktivieren Sie diese Option vor dem Verwenden der Anmeldehäufigkeit, da die Verwendung dieser beiden Einstellungen dazu führen kann, dass Benutzer unerwartet aufgefordert werden. Weitere Informationen zu Eingabeaufforderungen für die erneute Authentifizierung und zur Sitzungslebensdauer finden Sie im Artikel [Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication](../authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime.md).
 
 ### <a name="policy-1-sign-in-frequency-control"></a>Richtlinie 1: Steuerung der Anmeldehäufigkeit
 
@@ -100,7 +100,7 @@ Der bedingte Zugriff ist eine Azure AD Premium-Funktion und erfordert eine Premi
    > [!NOTE]
    > Es wird empfohlen, für Authentifizierungsaufforderungen bei wichtigen Microsoft Office-Apps wie Exchange Online und SharePoint Online dieselbe Häufigkeit festzulegen, um eine optimale Benutzererfahrung zu gewährleisten.
 
-1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung** , und klicken Sie auf **Anmeldehäufigkeit**.
+1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung**, und klicken Sie auf **Anmeldehäufigkeit**.
 1. Geben Sie den erforderlichen Wert in Tagen und Stunden in das erste Textfeld ein.
 1. Wählen Sie einen Wert für **Stunden** oder **Tage** aus der Dropdownliste aus.
 1. Speichern Sie die Richtlinie.
@@ -117,7 +117,7 @@ Auf Windows-Geräten, die in Azure AD registriert sind, gilt die Anmeldung beim 
    > [!NOTE]
    > Beachten Sie, dass die Auswahl von „Alle Cloud-Apps“ als Bedingung bei dieser Steuerung erforderlich ist. Die Browsersitzungspersistenz wird durch das Token der Authentifizierungssitzung gesteuert. Da alle Registerkarten in einer Browsersitzung über dasselbe Sitzungstoken verfügen, müssen sie alle denselben Persistenzzustand aufweisen.
 
-1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung** , und klicken Sie auf **Persistente Browsersitzung**.
+1. Wechseln Sie zu **Zugriffskontrollen** > **Sitzung**, und klicken Sie auf **Persistente Browsersitzung**.
 1. Wählen Sie einen Wert aus der Dropdownliste aus.
 1. Speichern Sie die Richtlinie.
 

@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 10/20/2020
-ms.openlocfilehash: 66d420a902cbfb56ece75646ee39bbba774b6208
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.date: 11/21/2020
+ms.openlocfilehash: 30521e85feda0fc19329364dcb710d322ae8cfc1
+ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92312412"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "95323235"
 ---
 # <a name="overview-of-azure-monitor-agents"></a>Übersicht über Azure Monitor-Agents
 
@@ -34,7 +34,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 
 | | Azure Monitor-Agent (Vorschau) | Diagnose<br>erweiterung (WAD) | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|
-| **Unterstützte Umgebungen** | Azure | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
+| **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc)  | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | 
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | Ereignisprotokolle<br>Leistung | Ereignisprotokolle<br>ETW-Ereignisse<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>.NET-App-Protokolle<br>Absturzabbilder<br>Agent-Diagnoseprotokolle | Ereignisprotokolle<br>Leistung<br>Dateibasierte Protokolle<br>IIS-Protokolle<br>Erkenntnisse und Lösungen<br>Sonstige Dienste | Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Azure Monitor-Metriken<br>Event Hub | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
@@ -44,7 +44,7 @@ Die folgenden Tabellen enthalten eine kurze Gegenüberstellung der Azure Monito
 
 | | Azure Monitor-Agent (Vorschau) | Diagnose<br>erweiterung (LAD) | Telegraf-<br>Agent | Log Analytics<br>Agent | Abhängigkeit<br>Agent |
 |:---|:---|:---|:---|:---|:---|
-| **Unterstützte Umgebungen** | Azure | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
+| **Unterstützte Umgebungen** | Azure<br>Andere Cloud (Azure Arc)<br>Lokal (Azure Arc) | Azure | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal | Azure<br>Andere Cloud<br>Lokal |
 | **Agent-Anforderungen**  | Keine | Keine | Keine | Keine | Erfordert Log Analytics-Agent |
 | **Gesammelte Daten** | syslog<br>Leistung | syslog<br>Leistung | Leistung | syslog<br>Leistung| Prozessabhängigkeiten<br>Netzwerkverbindungsmetriken |
 | **Senden von Daten an** | Azure Monitor-Protokolle<br>Azure Monitor-Metriken | Azure Storage<br>Event Hub | Azure Monitor-Metriken | Azure Monitor-Protokolle | Azure Monitor-Protokolle<br>(über den Log Analytics-Agent) |
@@ -56,7 +56,7 @@ Der [Azure Monitor-Agent](azure-monitor-agent-overview.md) befindet sich derzeit
 
 Verwenden Sie den Azure Monitor-Agent zu folgenden Zwecken:
 
-- Sammeln von Gastprotokollen und Metriken von einem beliebigen virtuellen Computer in Azure, in anderen Clouds oder lokal. (Azure nur in der Vorschau.)
+- Sammeln von Gastprotokollen und Metriken von einem beliebigen virtuellen Computer in Azure, in anderen Clouds oder lokal. (Azure Arc ist für VMs außerhalb von Azure erforderlich.) 
 - Senden von Daten an Azure Monitor-Protokolle und Azure Monitor- Metriken zur Analyse mit Azure Monitor. 
 - Senden von Daten an Azure Storage zur Archivierung.
 - Senden von Daten an Drittanbietertools mithilfe von [Azure Event Hubs](diagnostics-extension-stream-event-hubs.md)

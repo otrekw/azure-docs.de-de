@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 66df1bbe531c072ff5aa2bebe7b197201e6931a2
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 0b0b34ce55a0896fb804a48779c9c1007c8c340f
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077726"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838211"
 ---
 # <a name="plan-and-deploy-on-premises-azure-active-directory-password-protection"></a>Planen und Bereitstellen des lokalen Azure AD-Kennwortschutzes
 
@@ -142,8 +142,8 @@ Der Microsoft Azure AD Connect Agent Updater-Dienst wird zusammen mit dem Azure
 
 Es gibt zwei erforderliche Installationsprogramme für lokale Bereitstellungen des Azure AD-Kennwortschutzes:
 
-* Azure AD-Kennwortschutz-DC-Agent ( *AzureADPasswordProtectionDCAgentSetup.msi* )
-* Azure AD-Kennwortschutz-Proxy ( *AzureADPasswordProtectionProxySetup.exe* )
+* Azure AD-Kennwortschutz-DC-Agent (*AzureADPasswordProtectionDCAgentSetup.msi*)
+* Azure AD-Kennwortschutz-Proxy (*AzureADPasswordProtectionProxySetup.exe*)
 
 Laden Sie beide Installationsprogramme vom [Microsoft Download Center](https://www.microsoft.com/download/details.aspx?id=57071) herunter.
 
@@ -201,7 +201,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
 
     Nachdem dieser Befehl einmal für einen Azure AD-Kennwortschutz-Proxydienst erfolgreich war, sind weitere Aufrufe erfolgreich, aber nicht erforderlich.
 
-    Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht.
+    Das Cmdlet `Register-AzureADPasswordProtectionProxy` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure AD Multi-Factor Authentication, der dritte hingegen nicht.
 
     > [!TIP]
     > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
@@ -231,11 +231,11 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
         ```
 
         > [!NOTE]
-        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        > Diese Modus ist nicht erfolgreich, wenn Azure AD Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
         >
         > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieser Anforderung können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdiensts vorübergehend lockern.
         >
-        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
+        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
         >
         > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
@@ -252,7 +252,7 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
     
     Dieser Schritt wird pro Gesamtstruktur einmal ausgeführt.
 
-    Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure Multi-Factor Authentication, der dritte hingegen nicht.
+    Das Cmdlet `Register-AzureADPasswordProtectionForest` unterstützt die folgenden drei Authentifizierungsmodi. Die ersten beiden Modi unterstützen Azure AD Multi-Factor Authentication, der dritte hingegen nicht.
 
     > [!TIP]
     > Es kann zu einer spürbaren Verzögerung bis zum Abschluss kommen, wenn dieses Cmdlet zum ersten Mal für einen bestimmten Azure-Mandanten ausgeführt wird. Wenn kein Fehler gemeldet wird, müssen Sie sich keine Gedanken über diese Verzögerung machen.
@@ -282,11 +282,11 @@ Befolgen Sie zum Installieren des Azure AD-Kennwortschutz-Proxydiensts die folg
         ```
 
         > [!NOTE]
-        > Diese Modus ist nicht erfolgreich, wenn Azure Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
+        > Diese Modus ist nicht erfolgreich, wenn Azure AD Multi-Factor Authentication für Ihr Konto erforderlich ist. Verwenden Sie in diesem Fall einen der beiden vorherigen Authentifizierungsmodi oder ein anderes Konto, für das keine mehrstufige Authentifizierung erforderlich ist.
         >
         > Eine mehrstufige Authentifizierung kann auch erforderlich sein, wenn der (im Hintergrund durch den Azure AD-Kennwortschutz verwendete) Azure-Geräteregistrierungsdienst so konfiguriert wurde, dass global eine mehrstufige Authentifizierung erzwungen wird. Zur Umgehung dieser Anforderung können Sie ein anderes Konto verwenden, das die mehrstufige Authentifizierung mit einem der beiden vorherigen Authentifizierungsmodi unterstützt, oder die MFA-Anforderung des Azure-Geräteregistrierungsdiensts vorübergehend lockern.
         >
-        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory** , und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
+        > Wenn Sie diese Änderung vornehmen möchten, suchen Sie im Azure-Portal nach **Azure Active Directory**, und wählen Sie den Dienst und dann **Geräte > Geräteeinstellungen** aus. Legen Sie **Mehrstufige Authentifizierung zum Hinzufügen von Geräten erforderlich** auf *Nein* fest. Denken Sie daran, diese Einstellung nach Abschluss der Registrierung wieder auf *Ja* zurückzusetzen.
         >
         > MFA-Anforderungen sollten ausschließlich zu Testzwecken umgangen werden.
 
@@ -313,7 +313,7 @@ Erstellen Sie die Datei *AzureADPasswordProtectionProxy.exe.config* im Ordner `%
    </configuration>
    ```
 
-Wenn Ihr HTTP-Proxy Authentifizierung erfordert, fügen Sie das *useDefaultCredentials* -Tag hinzu:
+Wenn Ihr HTTP-Proxy Authentifizierung erfordert, fügen Sie das *useDefaultCredentials*-Tag hinzu:
 
    ```xml
    <configuration>

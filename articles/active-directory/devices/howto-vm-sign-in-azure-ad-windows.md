@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions, devx-track-azurecli
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85bbdff2f7e67434a3e21aaf51af96c1e851eb0d
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 134148fa3ea73212d85393cc433d60f7ddeecd17
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92740188"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94837123"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Anmelden bei einem virtuellen Windows-Computer in Azure mit der Azure Active Directory-Authentifizierung (Vorschau)
 
@@ -83,9 +83,9 @@ So erstellen Sie einen virtuellen Windows Server 2019 Datacenter-Computer in Az
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) mit einem Konto an, das Zugriff zum Erstellen von virtuellen Computern hat, und wählen Sie **+ Ressource erstellen** aus.
 1. Geben Sie **Windows Server** auf der Suchleiste „Marketplace durchsuchen“ ein.
-   1. Klicken Sie auf **Windows Server** , und wählen Sie in der Dropdownliste „Softwareplan auswählen“ den Eintrag **Windows Server 2019 Datacenter** aus.
-   1. Klicken Sie auf **Erstellen** .
-1. Ändern Sie auf der Registerkarte „Verwaltung“ im Bereich „Azure Active Directory“ die Option für **Mit AAD-Anmeldeinformationen anmelden (Vorschau)** von „Aus“ in **Ein** .
+   1. Klicken Sie auf **Windows Server**, und wählen Sie in der Dropdownliste „Softwareplan auswählen“ den Eintrag **Windows Server 2019 Datacenter** aus.
+   1. Klicken Sie auf **Erstellen**.
+1. Ändern Sie auf der Registerkarte „Verwaltung“ im Bereich „Azure Active Directory“ die Option für **Mit AAD-Anmeldeinformationen anmelden (Vorschau)** von „Aus“ in **Ein**.
 1. Stellen Sie sicher, dass **Systemseitig zugewiesene verwaltete Identität** im Bereich „Identität“ auf **Ein** festgelegt ist. Dies sollte automatisch erfolgen, nachdem Sie „Mit AAD-Anmeldeinformationen anmelden“ aktiviert haben.
 1. Führen Sie die weiteren Schritte zum Erstellen eines virtuellen Computers aus. Während dieser Vorschauphase müssen Sie einen Administratorbenutzernamen und ein Administratorkennwort für den virtuellen Computer erstellen.
 
@@ -164,7 +164,7 @@ So konfigurieren Sie Rollenzuweisungen für Azure AD-fähige virtuelle Computer
 1. Navigieren Sie zur Übersichtsseite des jeweiligen virtuellen Computers.
 1. Wählen Sie **Zugriffssteuerung (IAM)** in den Menüoptionen aus.
 1. Wählen Sie **Hinzufügen** und dann **Rollenzuweisung hinzufügen** aus, um den Bereich „Rollenzuweisung hinzufügen“ zu öffnen.
-1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, z. B. **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung** .
+1. Wählen Sie in der Dropdownliste **Rolle** eine Rolle aus, z. B. **VM-Administratoranmeldung** oder **VM-Benutzeranmeldung**.
 1. Wählen Sie im Feld **Auswählen** einen Benutzer, eine Gruppe, einen Dienstprinzipal oder eine verwaltete Identität aus. Wird der Sicherheitsprinzipal in der Liste nicht angezeigt, können Sie im Feld **Auswählen** einen Begriff eingeben, um das Verzeichnis nach Anzeigenamen, E-Mail-Adressen und Objektbezeichner zu durchsuchen.
 1. Wählen Sie **Speichern** aus, um die Rolle zuzuweisen.
 
@@ -203,7 +203,7 @@ Sie können Richtlinien für bedingten Zugriff erzwingen, z. B. die mehrstufige
 > Wenn Sie „Mehrstufige Authentifizierung erforderlich“ als Zugriffssteuerung für das Anfordern des Zugriffs auf die App Azure Windows VM Sign-In verwenden, müssen Sie den Anspruch der mehrstufigen Authentifizierung als Teil des Clients angeben, der die RDP-Sitzung für den virtuellen Windows-Zielcomputer in Azure initiiert. Dies kann auf einem Windows 10-Client nur durch Verwendung der Windows Hello for Business-PIN oder der biometrischen Authentifizierung mit dem RDP-Client erreicht werden. Die Unterstützung für die biometrische Authentifizierung wurde dem RDP-Client in Windows 10 Version 1809 hinzugefügt. Remotedesktop unter Verwendung der Windows Hello for Business-Authentifizierung ist nur für Bereitstellungen verfügbar, die das Modell der Zertifikatvertrauensstellung verwenden und derzeit nicht für das Modell der schlüsselbasierten Vertrauensstellung verfügbar sind.
 
 > [!WARNING]
-> Eine aktivierte/erzwungene Authentifizierung über Microsoft Azure Multi-Factor Authentication pro Benutzer wird für VM-Anmeldungen nicht unterstützt.
+> Eine aktivierte/erzwungene Authentifizierung über Azure AD Multi-Factor Authentication pro Benutzer wird für VM-Anmeldungen nicht unterstützt.
 
 ## <a name="log-in-using-azure-ad-credentials-to-a-windows-vm"></a>Anmelden bei einem virtuellen Windows-Computer mithilfe von Azure AD-Anmeldeinformationen
 

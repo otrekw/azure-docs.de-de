@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: f91928812dd2f9f850b5e4c3af16ce5c82608e05
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: baa0aa01c94c4deb35db8a59f7b4f81224ae1fd3
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371051"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836987"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>Referenzleitfaden zur Authentifizierungsverwaltung von Azure Active Directory-Vorgänge
 
@@ -95,7 +95,7 @@ Kennwörter allein sind nicht sicher genug, um böswillige Akteure davon abzuhal
 
 ### <a name="on-premises-outage-authentication-resiliency"></a>Lokale Authentifizierungsresilienz für Ausfälle
 
-Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Microsoft 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
+Abgesehen von der Einfachheit und der Aktivierung der Ermittlung kompromittierter Anmeldeinformationen, bieten die Azure AD-Kennworthashsynchronisierung und Azure AD MFA Benutzern die vorteilhafte Möglichkeit, trotz Ausfällen aufgrund von Cyberangriffen wie [NotPetya](https://www.microsoft.com/security/blog/2018/02/05/overview-of-petya-a-rapid-cyberattack/) auf SaaS-Anwendungen und Microsoft 365 zugreifen zu können. Es ist auch möglich, die Kennworthashsynchronisierung im Zusammenhang mit Verbunddiensten zu aktivieren. Das Aktivieren der Kennworthashsynchronisierung ermöglicht ein Fallback für die Authentifizierung, wenn Verbunddienste nicht verfügbar sind.
 
 Wenn Ihre lokale Organisation nicht über eine Resilienzstrategie für Ausfälle oder über eine Strategie verfügt, die nicht mit Azure AD integriert ist, sollten Sie die Azure AD-Kennworthashsynchronisierung bereitstellen und einen Notfallwiederherstellungsplan definieren, der die Kennworthashsynchronisierung enthält. Indem Sie die Azure AD-Kennworthashsynchronisierung aktivieren, ermöglichen Sie Benutzern die Authentifizierung bei Azure AD, wenn Ihre lokale Active Directory-Lösung nicht verfügbar ist.
 

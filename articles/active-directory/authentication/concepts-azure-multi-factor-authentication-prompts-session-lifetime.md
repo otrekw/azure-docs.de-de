@@ -1,6 +1,6 @@
 ---
-title: Azure Multi-Factor Authentication-Aufforderungen und Sitzungslebensdauer
-description: Erfahren Sie mehr über die empfohlene Konfiguration für Aufforderungen für die erneute Authentifizierung mit Azure Multi-Factor Authentication und die Anwendung der Sitzungslebensdauer.
+title: Azure AD Multi-Factor Authentication-Aufforderungen und Sitzungslebensdauer
+description: Erfahren Sie mehr über die empfohlene Konfiguration für Aufforderungen zur erneuten Authentifizierung mit Azure AD Multi-Factor Authentication und über die Anwendung der Sitzungslebensdauer.
 services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
@@ -11,14 +11,14 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8a759d4e686f43133716cc1c40237db74a015210
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: 87b30b12e75a583ccee9780f97a6492961365cca
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91964943"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94839674"
 ---
-# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-multi-factor-authentication"></a>Optimieren von Aufforderungen für die erneute Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure Multi-Factor Authentication
+# <a name="optimize-reauthentication-prompts-and-understand-session-lifetime-for-azure-ad-multi-factor-authentication"></a>Optimieren von Aufforderungen zur erneuten Authentifizierung und Grundlegendes zur Sitzungslebensdauer für Azure AD Multi-Factor Authentication
 
 Azure Active Directory (Azure AD) verfügt über mehrere Einstellungen, mit denen bestimmt wird, wie oft Benutzer sich erneut authentifizieren müssen. Diese erneute Authentifizierung kann einstufig wie etwa mit einem Kennwort, mit FIDO oder mit Microsoft Authenticator (kennwortlos) oder mithilfe der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA) erfolgen. Sie können diese Einstellungen für die erneute Authentifizierung nach Bedarf für Ihre Umgebung und die gewünschte Benutzererfahrung konfigurieren.
 
@@ -136,4 +136,4 @@ In der folgenden Tabelle werden die Empfehlungen auf Grundlage von Lizenzen zusa
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Führen Sie als Erstes die Tutorials [Schützen von Benutzeranmeldeereignissen mit Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md) oder [Verwenden von Risikoerkennungen für Benutzeranmeldungen, um Azure Multi-Factor Authentication oder Kennwortänderungen auszulösen](tutorial-risk-based-sspr-mfa.md) durch.
+Führen Sie als Erstes die Tutorials [Schützen von Benutzeranmeldeereignissen mit Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md) oder [Verwenden von Risikoerkennungen für Benutzeranmeldungen, um Azure AD Multi-Factor Authentication oder Kennwortänderungen auszulösen](tutorial-risk-based-sspr-mfa.md) durch.

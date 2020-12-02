@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 02/07/2017
 ms.author: jegeib
 ms.custom: has-adal-ref, devx-track-js, devx-track-csharp
-ms.openlocfilehash: e9a1afd1d998fcb3ba715c890cc4deac1f0a7da5
-ms.sourcegitcommit: 5831eebdecaa68c3e006069b3a00f724bea0875a
+ms.openlocfilehash: ee4dd70faab9ed44b1aa6ca8ca0ec517c7746f66
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94517715"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94832529"
 ---
 # <a name="security-frame-authentication--mitigations"></a>Sicherheitsrahmen: Authentifizierung | Gegenmaßnahmen
 
@@ -30,7 +30,7 @@ ms.locfileid: "94517715"
 | **Web Application**    | <ul><li>[Verwenden Sie ggf. einen Standardauthentifizierungsmechanismus zur Authentifizierung bei Webanwendungen.](#standard-authn-web-app)</li><li>[Anwendungen müssen Szenarien mit nicht erfolgreicher Authentifizierung sicher behandeln.](#handle-failed-authn)</li><li>[Aktivieren Sie Step-up-Authentifizierung oder adaptive Authentifizierung.](#step-up-adaptive-authn)</li><li>[Stellen Sie sicher, dass Administratoroberflächen angemessen gesperrt sind.](#admin-interface-lockdown)</li><li>[Implementieren Sie sichere Funktionen für vergessene Kennwörter.](#forgot-pword-fxn)</li><li>[Stellen Sie sicher, dass die Kennwort- und die Kontorichtlinie implementiert werden.](#pword-account-policy)</li><li>[Implementieren Sie Kontrollen, um die Enumeration von Benutzernamen zu verhindern.](#controls-username-enum)</li></ul> |
 | **Datenbank** | <ul><li>[Verwenden Sie beim Herstellen einer SQL Server-Verbindung nach Möglichkeit die Windows-Authentifizierung.](#win-authn-sql)</li><li>[Verwenden Sie beim Herstellen einer SQL-Datenbank-Verbindung nach Möglichkeit die Azure Active Directory-Authentifizierung.](#aad-authn-sql)</li><li>[Stellen Sie bei Verwendung des SQL-Authentifizierungsmodus sicher, dass die Konto- und die Kennwortrichtlinie für SQL Server erzwungen werden.](#authn-account-pword)</li><li>[Verwenden Sie für eigenständige Datenbanken keine SQL-Authentifizierung.](#autn-contained-db)</li></ul> |
 | **Azure Event Hub** | <ul><li>[Verwenden Sie gerätespezifische Authentifizierungsanmeldeinformationen mit SAS-Token.](#authn-sas-tokens)</li></ul> |
-| **Azure-Vertrauensstellungsgrenze** | <ul><li>[Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.](#multi-factor-azure-admin)</li></ul> |
+| **Azure-Vertrauensstellungsgrenze** | <ul><li>[Aktivieren Sie Azure AD Multi-Factor Authentication für Azure-Administratoren.](#multi-factor-azure-admin)</li></ul> |
 | **Service Fabric-Vertrauensstellungsgrenze** | <ul><li>[Beschränken Sie den anonymen Zugriff auf den Service Fabric-Cluster.](#anon-access-cluster)</li><li>[Stellen Sie sicher, dass sich das Client-zu-Knoten-Zertifikat von Service Fabric vom Knoten-zu-Knoten-Zertifikat unterscheidet.](#fabric-cn-nn)</li><li>[Verwenden Sie AAD, um Clients bei Service Fabric-Clustern zu authentifizieren.](#aad-client-fabric)</li><li>[Stellen Sie sicher, dass Service Fabric-Zertifikate von einer genehmigten Zertifizierungsstelle (Certificate Authority, CA) bezogen werden.](#fabric-cert-ca)</li></ul> |
 | **Identity Server** | <ul><li>[Verwenden Sie von Identity Server unterstützte Standardauthentifizierungsszenarien.](#standard-authn-id)</li><li>[Überschreiben Sie den standardmäßigen Identity Server-Tokencache mit einer skalierbaren Alternative.](#override-token)</li></ul> |
 | **Computer-Vertrauensstellungsgrenze** | <ul><li>[Stellen Sie sicher, dass die Binärdateien der bereitgestellten Anwendung digital signiert sind.](#binaries-signed)</li></ul> |
@@ -173,7 +173,7 @@ ms.locfileid: "94517715"
 | **Referenzen**              | [Event Hubs-Authentifizierung und -Sicherheitsmodell (Übersicht)](../../event-hubs/authenticate-shared-access-signature.md) |
 | **Schritte** | <p>Das Event Hubs-Sicherheitsmodell basiert auf einer Kombination aus SAS-Token (Shared Access Signature) und Ereignisherausgebern. Der Herausgebername stellt die Geräte-ID dar, die das Token erhält. Dadurch lassen sich die generierten Token leichter den entsprechenden Geräten zuordnen.</p><p>Alle Nachrichten werden dienstseitig mit dem Ursprung markiert, was die Erkennung nutzlastbasierter Spoofingversuche ermöglicht. Generieren Sie beim Authentifizieren von Geräten ein gerätespezifisches SAS-Token, das einem eindeutigen Herausgeber zugeordnet ist.</p>|
 
-## <a name="enable-azure-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Aktivieren Sie Azure Multi-Factor Authentication für Azure-Administratoren.
+## <a name="enable-azure-ad-multi-factor-authentication-for-azure-administrators"></a><a id="multi-factor-azure-admin"></a>Aktivieren Sie Azure AD Multi-Factor Authentication für Azure-Administratoren.
 
 | Titel                   | Details      |
 | ----------------------- | ------------ |
@@ -181,7 +181,7 @@ ms.locfileid: "94517715"
 | **SDL-Phase**               | Bereitstellung |
 | **Zutreffende Technologien** | Allgemein |
 | **Attribute**              | –  |
-| **Referenzen**              | [Was ist Azure Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md) |
+| **Referenzen**              | [Was ist Azure AD Multi-Factor Authentication?](../../active-directory/authentication/concept-mfa-howitworks.md) |
 | **Schritte** | <p>Die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) ist eine Authentifizierungsmethode, die die Verwendung mehrerer Überprüfungsmethoden erfordert und eine wichtige zweite Sicherheitsebene für Benutzeranmeldungen und Transaktionen bietet. Dies funktioniert durch das Anfordern von zwei oder mehr der folgenden Verifizierungsmethoden:</p><ul><li>Etwas, das Sie wissen (in der Regel ein Kennwort)</li><li>Etwas, das Sie besitzen (ein vertrauenswürdiges Gerät, das sich nicht leicht duplizieren lässt, z. B. ein Telefon)</li><li>Etwas, das Sie sind (biometrisch)</li><ul>|
 
 ## <a name="restrict-anonymous-access-to-service-fabric-cluster"></a><a id="anon-access-cluster"></a>Beschränken Sie den anonymen Zugriff auf den Service Fabric-Cluster.

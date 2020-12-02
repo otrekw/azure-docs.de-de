@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/14/2019
 ms.author: kenwith
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ee1734e61ffe59fccf3ad35c1f0c607882f7f40
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 1245010ae0b21c5bb8e3ebd93a9fe851d48c858b
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94659196"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94835508"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Verwenden Sie den AD FS-Anwendungsaktivitätsbericht (Vorschau), um Anwendungen zu Azure AD zu migrieren.
 
@@ -76,7 +76,7 @@ In der folgenden Tabelle sind alle Konfigurationstests aufgeführt, die für AD 
 
 |Ergebnis  |Bestanden/Warnung/Fehler  |BESCHREIBUNG  |
 |---------|---------|---------|
-|Test-ADFSRPAdditionalAuthenticationRules <br> Für „AdditionalAuthentication“ wurde mindestens eine nicht migrierbare Regel erkannt.       | Bestanden/Warnung          | Die vertrauende Seite verfügt über Regeln zum Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Um zu Azure AD zu wechseln, übersetzen Sie diese Regeln in Richtlinien für bedingten Zugriff. Wenn Sie eine lokale MFA verwenden, empfehlen wir, dass Sie zu Azure MFA wechseln. [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).        |
+|Test-ADFSRPAdditionalAuthenticationRules <br> Für „AdditionalAuthentication“ wurde mindestens eine nicht migrierbare Regel erkannt.       | Bestanden/Warnung          | Die vertrauende Seite verfügt über Regeln zum Anfordern der mehrstufigen Authentifizierung (Multi-Factor Authentication, MFA). Um zu Azure AD zu wechseln, übersetzen Sie diese Regeln in Richtlinien für bedingten Zugriff. Wenn Sie eine lokale MFA verwenden, empfehlen wir, dass Sie zu Azure AD MFA wechseln. [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).        |
 |Test-ADFSRPAdditionalWSFedEndpoint <br> Für die vertrauende Seite ist „AdditionalWSFedEndpoint“ auf „true“ festgelegt.       | Erfolgreich/Fehler          | Die vertrauende Seite in AD FS unterstützt mehrere WS-Fed-Assertionsendpunkte. Zurzeit unterstützt Azure AD nur einen. Wenn Sie ein Szenario haben, in dem dieses Ergebnis die Migration blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695621-allow-multiple-ws-fed-assertion-endpoints).     |
 |Test-ADFSRPAllowedAuthenticationClassReferences <br> Für die vertrauende Seite ist „AllowedAuthenticationClassReferences“ festgelegt.       | Erfolgreich/Fehler          | Mit dieser Einstellung in AD FS können Sie angeben, ob die Anwendung so konfiguriert ist, dass nur bestimmte Authentifizierungstypen zugelassen werden. Wir empfehlen, den bedingten Zugriff zu verwenden, um diese Funktion zu erzielen.  Wenn Sie ein Szenario haben, in dem dieses Ergebnis die Migration blockiert, [geben Sie uns Feedback](https://feedback.azure.com/forums/169401-azure-active-directory/suggestions/38695672-allow-in-azure-ad-to-specify-certain-authentication).  [Weitere Informationen über bedingten Zugriff](../authentication/concept-mfa-howitworks.md).          |
 |Test-ADFSRPAlwaysRequireAuthentication <br> AlwaysRequireAuthenticationCheckResult      | Erfolgreich/Fehler          | Mit dieser Einstellung in AD FS können Sie angeben, ob die Anwendung so konfiguriert ist, dass SSO-Cookies ignoriert werden und **immer eine Authentifizierung angefordert** wird. In Azure AD können Sie die Authentifizierungssitzung mithilfe von Richtlinien für bedingten Zugriff verwalten, um ein ähnliches Verhalten zu erzielen. [Weitere Informationen zum Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../conditional-access/howto-conditional-access-session-lifetime.md).          |

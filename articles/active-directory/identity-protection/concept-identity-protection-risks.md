@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 32d9683012a5900569740080d61ac21b464a5cd4
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d0da8755199645b12e9c6ed75a42881fe86e70b5
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94490609"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95023036"
 ---
 # <a name="what-is-risk"></a>Was bedeutet Risiko?
 
@@ -74,7 +74,7 @@ Diese Risiken können in Echtzeit oder offline anhand interner und externer Thre
 
 ### <a name="risk-levels"></a>Risikostufen
 
-Mit Identity Protection werden Risiken in drei Stufen eingeteilt: niedrig, mittel und hoch. 
+Mit Identity Protection werden Risiken in drei Stufen eingeteilt: niedrig, mittel und hoch. Wenn Sie [benutzerdefinierte Richtlinien für den Identitätsschutz](https://docs.microsoft.com/azure/active-directory/identity-protection/concept-identity-protection-policies#custom-conditional-access-policy) konfigurieren, können Sie diese auch so konfigurieren, dass sie auf der Ebene **Kein Risiko** ausgelöst werden. „Kein Risiko“ bedeutet, dass es keine aktiven Hinweise auf eine Kompromittierung der Identität des Benutzers gibt.
 
 Microsoft macht zwar keine spezifischen Angaben zur Berechnung von Risiken, mit den einzelnen Stufen wird jedoch jeweils eine höhere Zuverlässigkeit bei der Einschätzung erreicht, ob eine Kompromittierung des Benutzers oder der Anmeldung vorliegt. Beispielsweise sind einmalige ungewöhnliche Anmeldeeigenschaften eines Benutzers unter Umständen nicht so riskant wie kompromittierte Anmeldeinformationen eines anderen Benutzers.
 

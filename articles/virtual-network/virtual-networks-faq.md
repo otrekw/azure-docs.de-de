@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/26/2020
 ms.author: kumud
-ms.openlocfilehash: 7ab9b5166aab07e0629cdd280f8cdccbd0702c99
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 00ef685c755c0fa6f5217d567bfa255ea940d72a
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927718"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95015968"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Azure Virtual Network – häufig gestellte Fragen
 
@@ -282,14 +282,17 @@ Ja. Sie können Peeringverbindungen zwischen VNETs Abonnements und Regionen übe
 ### <a name="can-i-peer-two-vnets-with-matching-or-overlapping-address-ranges"></a>Kann ich eine Peeringverbindung zwischen zwei VNETs mit übereinstimmenden oder sich überlappenden Adressbereichen herstellen?
 Nein. Bei sich überlappenden Adressbereichen ist kein VNET-Peering möglich.
 
+### <a name="can-i-peer-a-vnet-to-two-different-vnets-with-the-the-use-remote-gateway-option-enabled-on-both-the-peerings"></a>Kann ich ein VNET per Peering mit zwei verschiedenen VNETs koppeln, wenn die Option „Remotegateway verwenden“ für beide Peerings aktiviert ist?
+Nein. Sie können die Option „Remotegateway verwenden“ nur bei einem Peering in einem der VNETs aktivieren.
+
 ### <a name="how-much-do-vnet-peering-links-cost"></a>Was kosten Links für das VNET-Peering?
 Für das Erstellen einer VNET-Peeringverbindung fallen keine Gebühren an. Die Datenübertragung über Peeringverbindungen wird in Rechnung gestellt. [Siehe hier](https://azure.microsoft.com/pricing/details/virtual-network/).
 
 ### <a name="is-vnet-peering-traffic-encrypted"></a>Wird VNET-Peeringdatenverkehr verschlüsselt?
 Wenn Azure-Datenverkehr zwischen Rechenzentren (außerhalb physischer Grenzen, die nicht von Microsoft oder im Auftrag von Microsoft kontrolliert werden) bewegt wird, wird auf der zugrunde liegenden Netzwerkhardware eine [MACsec-Verschlüsselung der Sicherungsschicht](https://docs.microsoft.com/azure/security/fundamentals/encryption-overview#encryption-of-data-in-transit) verwendet.  Dies gilt für VNET-Peeringdatenverkehr.
 
-### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Warum hat meine Peeringverbindung den Status *Getrennt* ?
-VNET-Peeringverbindungen wechseln in den Status *Getrennt* , wenn ein VNET-Peeringlink gelöscht wird. Sie müssen beide Links löschen, um erfolgreich eine Peeringverbindung wiederherzustellen.
+### <a name="why-is-my-peering-connection-in-a-disconnected-state"></a>Warum hat meine Peeringverbindung den Status *Getrennt*?
+VNET-Peeringverbindungen wechseln in den Status *Getrennt*, wenn ein VNET-Peeringlink gelöscht wird. Sie müssen beide Links löschen, um erfolgreich eine Peeringverbindung wiederherzustellen.
 
 ### <a name="if-i-peer-vneta-to-vnetb-and-i-peer-vnetb-to-vnetc-does-that-mean-vneta-and-vnetc-are-peered"></a>Wenn ich eine Peeringverbindung zwischen VNetA und VNetB sowie VNetB und VNetC herstelle, bedeutet dies, dass eine Peeringverbindung zwischen VNetA und VNetC besteht?
 Nein. Transitives Peering wird nicht unterstützt. Sie müssen hierzu eine Peeringverbindung zwischen VNetA und VNetC herstellen.

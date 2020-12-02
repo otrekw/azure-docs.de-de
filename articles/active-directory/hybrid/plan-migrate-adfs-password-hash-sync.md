@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b5a22c904d72f09656480be6009e3832fde72b89
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408633"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836375"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -59,13 +59,13 @@ Jetzt ist ein guter Zeitpunkt, um zu überprüfen, ob diese Berechtigungen für 
 
 Sie können zwischen zwei Methoden wählen, um die Migration von der Verbundidentitätsverwaltung zur Kennworthashsynchronisierung und zum einmaligen Anmelden (Single Sign-On, SSO) durchzuführen. Welche Methode Sie verwenden, hängt davon ab, wie Ihre AD FS-Instanz ursprünglich konfiguriert wurde.
 
-* **Azure AD Connect** : Wenn Sie AD FS ursprünglich mit Azure AD Connect konfiguriert haben, *müssen* Sie zur Kennworthashsynchronisierung wechseln, indem Sie den Azure AD Connect-Assistenten verwenden.
+* **Azure AD Connect**: Wenn Sie AD FS ursprünglich mit Azure AD Connect konfiguriert haben, *müssen* Sie zur Kennworthashsynchronisierung wechseln, indem Sie den Azure AD Connect-Assistenten verwenden.
 
    ‎Azure AD Connect führt automatisch das Cmdlet **Set-MsolDomainAuthentication** aus, wenn Sie die Anmeldemethode für Benutzer ändern. Azure AD Connect hebt den Verbund aller verifizierten Verbunddomänen Ihres Azure AD-Mandanten automatisch auf.
 
    > [!NOTE]
    > Falls Sie zum Konfigurieren von AD FS ursprünglich Azure AD Connect genutzt haben, können Sie es derzeit nicht vermeiden, dass alle Domänen Ihres Mandanten aus dem Verbund entfernt werden, wenn Sie die Benutzeranmeldung auf Kennworthashsynchronisierung umstellen. ‎
-* **Azure AD Connect mit PowerShell** : Sie können diese Methode nur verwenden, wenn Sie für die ursprüngliche Konfiguration von AD FS nicht Azure AD Connect verwendet haben. Bei dieser Option müssen Sie noch so vorgehen, dass Sie die Methode für die Benutzeranmeldung über den Azure AD Connect-Assistenten ändern. Der Hauptunterschied bei dieser Option ist, dass der Assistent das Cmdlet **Set-MsolDomainAuthentication** nicht automatisch ausführt. Sie haben bei dieser Option die volle Kontrolle darüber, welche Domänen konvertiert werden und in welcher Reihenfolge dies durchgeführt wird.
+* **Azure AD Connect mit PowerShell**: Sie können diese Methode nur verwenden, wenn Sie für die ursprüngliche Konfiguration von AD FS nicht Azure AD Connect verwendet haben. Bei dieser Option müssen Sie noch so vorgehen, dass Sie die Methode für die Benutzeranmeldung über den Azure AD Connect-Assistenten ändern. Der Hauptunterschied bei dieser Option ist, dass der Assistent das Cmdlet **Set-MsolDomainAuthentication** nicht automatisch ausführt. Sie haben bei dieser Option die volle Kontrolle darüber, welche Domänen konvertiert werden und in welcher Reihenfolge dies durchgeführt wird.
 
 Führen Sie die Schritte in den folgenden Abschnitten aus, um sich darüber zu informieren, welche Methode Sie verwenden sollten.
 
@@ -110,7 +110,7 @@ Beispiel:
 Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 ```
 
-Überprüfen Sie alle Einstellungen, die für Ihren Verbundentwurf ggf. angepasst wurden, und die Bereitstellungsdokumentation. Suchen Sie vor allem nach Anpassungen in **PreferredAuthenticationProtocol** , **SupportsMfa** und **PromptLoginBehavior**.
+Überprüfen Sie alle Einstellungen, die für Ihren Verbundentwurf ggf. angepasst wurden, und die Bereitstellungsdokumentation. Suchen Sie vor allem nach Anpassungen in **PreferredAuthenticationProtocol**, **SupportsMfa** und **PromptLoginBehavior**.
 
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
@@ -120,7 +120,7 @@ Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 > [!NOTE]
 > Wenn **SupportsMfa** auf **True** festgelegt ist, verwenden Sie eine lokale Lösung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine zweite Faktorabfrage in den Benutzerauthentifizierungsflow einzufügen. Dieses Setup funktioniert nach der Konvertierung dieser Domäne von der Verbund- zur verwalteten Authentifizierung nicht mehr bei Azure AD-Authentifizierungsszenarien. Nach der Deaktivierung des Verbunds lösen Sie die Beziehung zu Ihrem lokalen Verbund, und dazu zählen auch lokale MFA-Adapter. 
 >
-> Verwenden Sie stattdessen den cloudbasierten Dienst „Azure Multi-Factor Authentication“, um dieselbe Funktion zu erzielen. Evaluieren Sie Ihre Anforderungen an die mehrstufige Authentifizierung sorgfältig, bevor Sie fortfahren. Stellen Sie vor dem Konvertieren Ihrer Domänen sicher, dass Sie wissen, wie Sie Azure Multi-Factor Authentication nutzen, welche Auswirkungen mit der Lizenzierung verbunden sind und wie der Prozess der Benutzerregistrierung abläuft.
+> Verwenden Sie stattdessen den cloudbasierten Dienst Azure AD Multi-Factor Authentication, um dieselbe Funktion zu erzielen. Evaluieren Sie Ihre Anforderungen an die mehrstufige Authentifizierung sorgfältig, bevor Sie fortfahren. Stellen Sie vor dem Konvertieren Ihrer Domänen sicher, dass Sie wissen, wie Sie Azure AD Multi-Factor Authentication nutzen, welche Auswirkungen mit der Lizenzierung verbunden sind und wie der Prozess der Benutzerregistrierung abläuft.
 
 #### <a name="back-up-federation-settings"></a>Sichern von Verbundeinstellungen
 
@@ -145,7 +145,7 @@ Bevor Sie die Umstellung von der Verbundidentität auf die verwaltete Identität
 | Sie planen, AD FS weiterhin für andere Anwendungen (als Azure AD und Microsoft 365) zu verwenden. | Nachdem Sie Ihre Domänen konvertiert haben, verwenden Sie sowohl AD FS als auch Azure AD. Berücksichtigen Sie die Benutzerfreundlichkeit. In einigen Szenarien müssen sich Benutzer unter Umständen zweimal authentifizieren: einmal für Azure AD (worüber ein Benutzer SSO-Zugriff auf andere Anwendungen wie Microsoft 365 erhält) und erneut für alle Anwendungen, die noch an AD FS als Vertrauensstellung der vertrauenden Seite gebunden sind. |
 | Ihre AD FS-Instanz wurde stark angepasst und nutzt in der Datei „onload.js“ spezifische Anpassungseinstellungen (z.B. wenn Sie die Anmeldung so geändert haben, dass Benutzer nur das Format **SamAccountName** für ihren Benutzernamen verwenden, anstatt einen Benutzerprinzipalnamen (UPN), oder wenn Ihre Organisation die Anmeldung mit umfangreichem Branding versehen hat). Die Datei „onload.js“ kann in Azure AD nicht dupliziert werden. | Vor dem Fortfahren müssen Sie sich vergewissern, dass mit Azure AD Ihre derzeitigen Anpassungsanforderungen erfüllt werden können. Weitere Informationen und Anleitungen finden Sie in den Abschnitten zum AD FS-Branding und zur AD FS-Anpassung.|
 | Sie können AD FS zum Blockieren von früheren Versionen von Clients mit Authentifizierung verwenden.| Erwägen Sie die Ersetzung von AD FS-Steuerungen, mit denen frühere Versionen von Authentifizierungsclients blockiert werden, indem Sie eine Kombination aus [Steuerungen des bedingten Zugriffs](../conditional-access/concept-conditional-access-conditions.md) und [Clientzugriffsregeln in Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules) verwenden. |
-| Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst „Azure Multi-Factor Authentication“ aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
+| Bei Ihnen ist es erforderlich, dass Benutzer eine mehrstufige Authentifizierung über eine entsprechende lokale Serverlösung durchführen, um sich für AD FS zu authentifizieren.| In einer Domäne mit verwalteter Identität können Sie über die lokale Lösung für die mehrstufige Authentifizierung keine MFA-Abfrage in den Authentifizierungsablauf einfügen. Sie können den Dienst Azure AD Multi-Factor Authentication aber für die mehrstufige Authentifizierung nutzen, nachdem die Domäne konvertiert wurde.<br /><br /> Falls Ihre Benutzer Azure AD Multi-Factor Authentication derzeit nicht verwenden, ist ein einmaliger Registrierungsschritt für die Benutzer erforderlich. Sie müssen sich auf die geplante Registrierung für Ihre Benutzer vorbereiten und dies kommunizieren. |
 | Sie verwenden derzeit Zugriffssteuerungsrichtlinien (AuthZ-Regeln) in AD FS, um den Zugriff auf Microsoft 365 zu steuern.| Erwägen Sie, die Richtlinien durch die entsprechenden [Azure AD-Richtlinien für den bedingten Zugriff](../conditional-access/overview.md) und die [Clientzugriffsregeln für Exchange Online](/exchange/clients-and-mobile-in-exchange-online/client-access-rules/client-access-rules) zu ersetzen.|
 
 ### <a name="common-ad-fs-customizations"></a>Häufige AD FS-Anpassungen
@@ -257,8 +257,8 @@ Führen Sie die Aufgabe **Problembehandlung** im Azure AD Connect-Assistenten du
 1. Öffnen Sie mit der Option „Als Administrator ausführen“ eine neue Windows PowerShell-Sitzung auf Ihrem Azure AD Connect-Server.
 2. Führen Sie `Set-ExecutionPolicy RemoteSigned` oder `Set-ExecutionPolicy Unrestricted` aus.
 3. Starten Sie den Azure AD Connect-Assistenten.
-4. Navigieren Sie zur Seite **Weitere Aufgaben** , und wählen Sie **Problembehandlung** und dann **Weiter**.
-5. Wählen Sie auf der Seite **Problembehandlung** die Option **Starten** , um das Menü für die Problembehandlung in PowerShell zu starten.
+4. Navigieren Sie zur Seite **Weitere Aufgaben**, und wählen Sie **Problembehandlung** und dann **Weiter**.
+5. Wählen Sie auf der Seite **Problembehandlung** die Option **Starten**, um das Menü für die Problembehandlung in PowerShell zu starten.
 6. Wählen Sie im Hauptmenü die Option **Problembehandlung bei der Kennworthashsynchronisierung**.
 7. Wählen Sie im Untermenü die Option **Die Kennworthashsynchronisierung funktioniert überhaupt nicht**.
 
@@ -311,7 +311,7 @@ Verwenden Sie diese Methode, wenn Sie Ihre AD FS-Umgebung ursprünglich mit Azur
    > 2. Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird auf sichere Weise für Azure AD freigegeben.
    > 3. Es werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
-6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** , dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.
+6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.
 
       ![Screenshot: Seite „Bereit zur Konfiguration“](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image10.png)<br />
 
@@ -356,7 +356,7 @@ Verwenden Sie diese Option, wenn Sie Ihre Verbunddomänen ursprünglich nicht mi
    > 2. Der Kerberos-Entschlüsselungsschlüssel des Computerkontos wird auf sichere Weise für Azure AD freigegeben.
    > 3. Es werden zwei Kerberos-Dienstprinzipalnamen (SPNs) erstellt, um die zwei URLs darzustellen, die während der Azure AD-Anmeldung verwendet werden.
 
-6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration** , dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.
+6. Vergewissern Sie sich auf der Seite **Bereit zur Konfiguration**, dass das Kontrollkästchen **Starten Sie den Synchronisierungsvorgang, nachdem die Konfiguration abgeschlossen wurde** aktiviert ist. Wählen Sie anschließend **Konfigurieren**.
 
    ![Screenshot: Schaltfläche „Konfigurieren“ auf der Seite „Bereit zur Konfiguration“](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image15.png)<br />
    Wenn Sie die Schaltfläche **Konfigurieren** wählen, wird nahtloses einmaliges Anmelden wie im vorherigen Schritt beschrieben konfiguriert. Die Konfiguration der Kennworthashsynchronisierung wird nicht geändert, da sie früher aktiviert wurde.
@@ -453,7 +453,7 @@ Wenn ein größeres Problem besteht, das nicht schnell behoben werden kann, kön
 
 ### <a name="sync-userprincipalname-updates"></a>Synchronisieren von userPrincipalName-Updates
 
-Updates des Attributs **UserPrincipalName** , für das der Synchronisierungsdienst aus der lokalen Umgebung verwendet wird, werden generell blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt sind:
+Updates des Attributs **UserPrincipalName**, für das der Synchronisierungsdienst aus der lokalen Umgebung verwendet wird, werden generell blockiert, sofern nicht die beiden folgenden Bedingungen erfüllt sind:
 
 * Der Benutzer befindet sich in einer Domäne mit verwalteter Identität (kein Verbund).
 * Dem Benutzer wurde keine Lizenz zugewiesen.

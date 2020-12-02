@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.author: b-juche
-ms.openlocfilehash: 4fa2c724906c8a6bfb294541b6616ddc7ae22df6
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 06885e3f6a1ceeebc7c0bb1053e36e9e95a0043e
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94591647"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94888775"
 ---
 # <a name="create-a-dual-protocol-nfsv3-and-smb-volume-for-azure-netapp-files"></a>Erstellen eines Volumes mit dualem Protokoll (NFSv3 und SMB) für Azure NetApp Files
 
@@ -51,6 +51,8 @@ Azure NetApp Files unterstützt das Erstellen von Volumes mithilfe von NFS (NFSv
     |-  |-  |-  |-  |-  |
     | UNIX  | NFS   | NFSv3-Modusbits   | UNIX  | NFS und Windows   |
     | NTFS  | Windows   | NTFS-ACLs     | NTFS  |NFS und Windows|
+* UNIX-Benutzer, die das NTFS-Sicherheitsvolume mithilfe von NFS einbinden, werden für den UNIX-Benutzer `root` als Windows-Benutzer `root` und für allen anderen Benutzer als `pcuser` authentifiziert. Stellen Sie bei Verwendung von NFS sicher, dass diese Benutzerkonten in Ihrem Active Directory vorhanden sind, bevor Sie das Volume einbinden. 
+
 
 ## <a name="create-a-dual-protocol-volume"></a>Erstellen eines Dual-Protokoll-Volumes
 

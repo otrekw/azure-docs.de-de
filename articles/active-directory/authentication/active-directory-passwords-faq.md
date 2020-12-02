@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 078b24e7fc3668e9b5832f0bfa46024db9b33848
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91965555"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94840099"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung
 
@@ -38,7 +38,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 
   > **A:** Ja. Wenn die Kennwortzurücksetzung aktiviert ist und die Benutzer lizenziert sind, können diese das Kennwortregistrierungsportal (https://aka.ms/ssprsetup) öffnen und ihre Authentifizierungsdaten registrieren. Benutzer können sich auch über den Zugriffsbereich (https://myapps.microsoft.com) registrieren. Bei der Registrierung über den Zugriffsbereich müssen die Benutzer ihr Profilbild auswählen. Anschließend wählen sie **Profil** und dann die Option **Für das Zurücksetzen des Kennworts registrieren** aus.
   >
-  > Wenn Sie die [kombinierte Registrierung](concept-registration-mfa-sspr-combined.md) aktivieren, können sich Benutzer gleichzeitig per SSPR und Azure Multi-Factor Authentication registrieren.
+  > Wenn Sie die [kombinierte Registrierung](concept-registration-mfa-sspr-combined.md) aktivieren, können sich Benutzer gleichzeitig für SSPR und Azure AD Multi-Factor Authentication registrieren.
 * **F:  Wenn ich Kennwortzurücksetzung für eine Gruppe aktiviere und mich anschließend entscheide, sie für alle zu aktivieren, müssen sich meine Benutzer dann erneut registrieren?**
 
   > **A:** Nein. Benutzer mit aufgefüllten Authentifizierungsdaten müssen sich nicht erneut registrieren.

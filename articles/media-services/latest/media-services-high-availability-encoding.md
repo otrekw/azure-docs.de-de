@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.custom: ''
 ms.date: 08/31/2020
 ms.author: inhenkel
-ms.openlocfilehash: d2493a3a1e4fbb49c0b7f6dad29771b6e9faae8e
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 15a23ab5b05ad1093069b4297ad1d292beeb3a42
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146806"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494952"
 ---
 # <a name="high-availability-with-media-services-and-video-on-demand-vod"></a>Hochverfügbarkeit bei Media Services und Video on Demand (VoD)
 
@@ -26,7 +26,7 @@ ms.locfileid: "93146806"
 
 ## <a name="high-availability-for-vod"></a>Hochverfügbarkeit bei VoD
 
-In der Dokumentation zur Azure-Architektur gibt es das Entwurfsmuster für Hochverfügbarkeit, [Geodes](https://docs.microsoft.com/azure/architecture/patterns/geodes). Es wird beschrieben, wie doppelte Ressourcen in verschiedenen geografischen Regionen bereitgestellt werden, um Skalierbarkeit und Resilienz zu bieten.  Sie können mithilfe von Azure-Diensten eine solche Architektur erstellen, um viele Überlegungen zum Entwurf von Hochverfügbarkeit wie Redundanz, Integritätsüberwachung, Lastenausgleich sowie Datensicherung und -wiederherstellung abzudecken.  Eine solche Architektur wird nachstehend mit Details zu den einzelnen Diensten beschrieben, die in der Lösung verwendet werden. Außerdem erfahren Sie, wie die einzelnen Dienste genutzt werden können, um eine Hochverfügbarkeitsarchitektur für Ihre VoD-Anwendung zu erstellen.
+In der Dokumentation zur Azure-Architektur gibt es das Entwurfsmuster für Hochverfügbarkeit, [Geodes](/azure/architecture/patterns/geodes). Es wird beschrieben, wie doppelte Ressourcen in verschiedenen geografischen Regionen bereitgestellt werden, um Skalierbarkeit und Resilienz zu bieten.  Sie können mithilfe von Azure-Diensten eine solche Architektur erstellen, um viele Überlegungen zum Entwurf von Hochverfügbarkeit wie Redundanz, Integritätsüberwachung, Lastenausgleich sowie Datensicherung und -wiederherstellung abzudecken.  Eine solche Architektur wird nachstehend mit Details zu den einzelnen Diensten beschrieben, die in der Lösung verwendet werden. Außerdem erfahren Sie, wie die einzelnen Dienste genutzt werden können, um eine Hochverfügbarkeitsarchitektur für Ihre VoD-Anwendung zu erstellen.
 
 ### <a name="sample"></a>Beispiel
 
@@ -87,4 +87,4 @@ Dieses allgemeine Diagramm zeigt die Architektur des Beispiels, das für Ihren E
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Schauen Sie sich [Codebeispiele](https://docs.microsoft.com/samples/browse/?products=azure-media-services) an
+* Schauen Sie sich [Codebeispiele](/samples/browse/?products=azure-media-services) an

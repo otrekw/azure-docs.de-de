@@ -7,33 +7,38 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 12/06/2019
+ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6dbdd5153186ee47e37856637eac16d6d450cc5a
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 5f6c5985c16875e263f2494f56636abb4d4e980d
+ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695179"
+ms.lasthandoff: 11/22/2020
+ms.locfileid: "95237254"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
 
-
-
 ## <a name="cloud-provisioning-agent-requirements"></a>Anforderungen des Agents für die Cloudbereitstellung
 Für die Verwendung der Azure AD Connect-Cloudbereitstellung benötigen Sie Folgendes:
-    
+
+- Anmeldeinformationen eines Domänenadministrators oder Unternehmensadministrators zum Erstellen des gMSA (group Managed Service Account, gruppenverwaltetes Dienstkonto) für die Azure AD Connect-Cloudsynchronisierung zum Ausführen des-Agent-Diensts 
 - Ein Hybrididentität-Administratorkonto für Ihren Azure AD-Mandanten, das kein Gastbenutzer ist.
 - einen lokalen Server für den Bereitstellungs-Agent mit Windows 2012 R2 oder höher  Bei diesem Server sollte es sich um einen Server der Ebene 0 im [Active Directory-Verwaltungsebenenmodell](/windows-server/identity/securing-privileged-access/securing-privileged-access-reference-material) handeln.
 - lokale Firewallkonfigurationen
 
->[!NOTE]
->Der Bereitstellungs-Agent kann derzeit nur auf englischsprachigen Servern installiert werden. Das Installieren eines englischen Sprachpakets auf einem nicht englischsprachigen Server ist als Problemumgehung ungültig und führt dazu, dass der Agent nicht installiert wird. 
+## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
+Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Die Azure AD Connect-Cloudsynchronisierung unterstützt und verwendet ein gMSA zum Ausführen des Agents.  Sie werden während des Setups zur Eingabe administrativer Anmeldeinformationen aufgefordert, um das Konto zu erstellen.  Das Konto wird als (domain\provAgentgMSA$) angezeigt.  Weitere Informationen zu einem gMSA finden Sie unter [Gruppenverwaltete Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
 
-Im Weiteren finden Sie schrittweise Anleitungen für diese Voraussetzungen.
+### <a name="prerequisites-for-gmsa"></a>Voraussetzungen für das gMSA:
+1.  Das Active Directory-Schema in der Gesamtstruktur der gMSA-Domäne muss auf Windows Server 2012 aktualisiert werden.
+2.  [PowerShell-RSAT-Module](https://docs.microsoft.com/windows-server/remote/remote-server-administration-tools) auf einem Domänencontroller
+3.  Auf mindestens einem Domänencontroller in der Domäne muss Windows Server 2012 ausgeführt werden.
+4.  Ein in eine Domäne eingebundener Server, auf dem der Agent installiert ist, muss Windows Server 2012 oder höher aufweisen.
+
+Die Schritte zum Aktualisieren eines vorhandenen Agents für die Verwendung eines gMSA-Kontos finden Sie unter [Gruppenverwaltete Dienstkonten](how-to-install.md#group-managed-service-accounts).
 
 ### <a name="in-the-azure-active-directory-admin-center"></a>Im Azure Active Directory Admin Center
 
@@ -57,7 +62,9 @@ Führen Sie das [IdFix-Tool](/office365/enterprise/prepare-directory-attributes-
         | --- | --- |
         | **80** | Herunterladen der Zertifikatsperrlisten (CRLs) bei der Überprüfung des TLS/SSL-Zertifikats.  |
         | **443** | Verarbeiten der gesamten ausgehenden Kommunikation mit dem Dienst |
+        |**8082**|Erforderlich für die Installation und wenn Sie die HIS-Verwaltungs-API konfigurieren möchten.  Dieser Port kann entfernt werden, nachdem der Agent installiert ist und Sie nicht mehr beabsichtigen, die API zu verwenden.   |
         | **8080** (optional) | Agents melden ihren Status alle zehn Minuten über den Port 8080, wenn der Port 443 nicht verfügbar ist. Dieser Status wird im Azure AD-Portal angezeigt. |
+   
      
    - Wenn Ihre Firewall Regeln gemäß Ursprungsbenutzern erzwingt, öffnen Sie diese Ports für den Datenverkehr aus Windows-Diensten, die als Netzwerkdienst ausgeführt werden.
    - Wenn Ihre Firewall oder Ihr Proxy das Angeben sicherer Suffixe zulässt, fügen Sie Verbindungen zu \*.msappproxy.net\* und „.servicebus.windows.net“ hinzu. Aktivieren Sie andernfalls den Zugriff auf die [IP-Adressbereiche für das Azure-Rechenzentrum](https://www.microsoft.com/download/details.aspx?id=41653), die wöchentlich aktualisiert werden.
@@ -66,6 +73,8 @@ Führen Sie das [IdFix-Tool](/office365/enterprise/prepare-directory-attributes-
 
 >[!NOTE]
 > Die Installation des Agents für die Cloudbereitstellung unter Windows Server Core wird nicht unterstützt.
+
+
 
 
 ### <a name="additional-requirements"></a>Zusätzliche Anforderungen
@@ -91,24 +100,6 @@ Führen Sie diese Schritte aus, um TLS 1.2 zu aktivieren.
 
 1. Starten Sie den Server neu.
 
-## <a name="known-limitations"></a>Bekannte Einschränkungen
-Es gelten die folgenden bekannten Einschränkungen:
-
-### <a name="delta-synchronization"></a>Deltasynchronisierung
-
-- Bei der Gruppenbereichsfilterung für die Deltasynchronisierung werden nicht mehr als 1.500 Mitglieder unterstützt.
-- Wenn Sie eine Gruppe löschen, die für einen Gruppenbereichsfilter verwendet wird, werden Benutzer, die Mitglieder der Gruppe sind, nicht gelöscht. 
-- Wenn Sie die im Bereich befindliche Organisationseinheit oder Gruppe umbenennen, werden die Benutzer bei der Deltasynchronisierung nicht entfernt.
-
-### <a name="provisioning-logs"></a>Bereitstellungsprotokolle
-- In den Bereitstellungsprotokollen wird nicht eindeutig zwischen Erstellungs- und Aktualisierungsvorgängen unterschieden.  Es kann sein, dass ein Erstellungsvorgang für eine Aktualisierung und ein Aktualisierungsvorgang für eine Erstellung angezeigt wird.
-
-### <a name="cross-domain-references"></a>Domänenübergreifende Verweise
-- Falls Sie über Benutzer mit Mitgliedsverweisen einer anderen Domäne verfügen, werden diese im Rahmen der aktuellen Domänensynchronisierung für diesen Benutzer nicht synchronisiert. 
-- (Beispiel: Ein Manager des zu synchronisierenden Benutzers befindet sich in Domäne B, und der Benutzer in Domäne A. Wenn Sie die Synchronisierung für Domäne A und Domäne B durchführen, ist dieser Vorgang erfolgreich, aber der Manager des Benutzers wird nicht übernommen.)
-
-### <a name="group-re-naming-or-ou-re-naming"></a>Umbenennen von Gruppen oder Organisationseinheiten
-- Wenn Sie eine Gruppe oder Organisationseinheit in AD umbenennen, die sich im Bereich einer bestimmten Konfiguration befindet, wird die Namensänderung in AD vom Cloudbereitstellungsauftrag nicht erkannt. Der Auftrag wird nicht unter Quarantäne gestellt und bleibt im fehlerfreien Zustand.
 
 
 

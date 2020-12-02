@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 4539709dbac992979af6a56e3dae81725a35739d
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 97be3bf0ecec20c4bf2e1633f893c9aa0d9ba49d
+ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93325003"
+ms.lasthandoff: 11/21/2020
+ms.locfileid: "95020281"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -55,7 +55,7 @@ Bei der Verwaltung der VNET-Dienstendpunkte erfolgt eine Trennung von Sicherheit
 - **Netzwerkadministrator:** &nbsp;Aktivieren des Endpunkts.
 - **Datenbankadministrator:** &nbsp;Aktualisieren der Zugriffssteuerungsliste durch Hinzufügen des angegebenen Subnetzes zum Server.
 
-*Alternative zur rollenbasierten Zugriffssteuerung:*
+*Alternative zur rollenbasierten Zugriffssteuerung von Azure (Azure RBAC):*
 
 Die Rollen „Netzwerkadministrator“ und „Datenbankadministrator“ haben mehr Zugriffsrechte, als für die Verwaltung von VNET-Regeln erforderlich ist. Es wird nur eine Teilmenge der Zugriffsrechte benötigt.
 
@@ -80,6 +80,7 @@ Bei Azure SQL-Datenbank gelten für VNET-Regeln folgende Einschränkungen:
 
 - Durch das Aktivieren von VNET-Dienstendpunkten für Azure SQL-Datenbank werden auch die Endpunkte für die Azure-Dienste MySQL und PostgreSQL aktiviert. Jedoch treten bei Verbindungen von den Endpunkten mit den MySQL- oder PostgreSQL-Instanzen möglicherweise Fehler auf, wenn Endpunkte aktiviert sind.
   - Der Grund dafür ist, dass für MySQL und PostgreSQL wahrscheinlich keine VNET-Regel konfiguriert wurde. Sie müssen für Azure Database for MySQL und PostgreSQL eine VNET-Regel konfigurieren, damit die Verbindung erfolgreich hergestellt wird.
+  - Legen Sie zum Definieren von VNET-Firewallregeln auf einem logischen SQL-Server, der bereits mit privaten Endpunkten konfiguriert wurde, die Einstellung **Zugriff auf öffentliches Netzwerk verweigern** auf **Nein** fest.
 
 - In der Firewall gelten zwar IP-Adressbereiche für die folgenden Netzwerkelemente, VNET-Regeln jedoch nicht:
   - [Virtuelles privates S2S-Netzwerk (Site-to-Site-VPN)][vpn-gateway-indexmd-608y]
@@ -89,7 +90,7 @@ Bei Azure SQL-Datenbank gelten für VNET-Regeln folgende Einschränkungen:
 
 Stellen Sie bei der Verwendung von Dienstendpunkten für die Azure SQL-Datenbank folgende Überlegungen an:
 
-- **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich** : Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
+- **Ausgehend zu öffentlichen IP-Adressen der Azure SQL-Datenbank ist erforderlich**: Netzwerksicherheitsgruppen (NSGs) müssen für IP-Adressen der Azure SQL-Datenbank geöffnet werden, um Verbindungen zuzulassen. Sie erreichen dies, indem Sie [Diensttags](../../virtual-network/network-security-groups-overview.md#service-tags) der Netzwerksicherheitsgruppe für die Azure SQL-Datenbank verwenden.
 
 ### <a name="expressroute"></a>ExpressRoute
 
@@ -121,7 +122,7 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 
 #### <a name="steps"></a>Schritte
 
-1. **Registrieren Sie Ihren Server** , der Azure Synapse hostet, in PowerShell bei Azure Active Directory (AAD):
+1. **Registrieren Sie Ihren Server**, der Azure Synapse hostet, in PowerShell bei Azure Active Directory (AAD):
 
    ```powershell
    Connect-AzAccount
@@ -188,7 +189,7 @@ Verwenden Sie PowerShell, um das Flag **IgnoreMissingVNetServiceEndpoint** festz
 
 ## <a name="errors-40914-and-40615"></a>Fehler 40914 und 40615
 
-Der Verbindungsfehler 40914 bezieht sich auf *VNET-Regeln* , die im Azure-Portal im Bereich „Firewall“ angegeben werden. Beim Fehler 40615 verhält es sich ähnlich, nur dass sich dieser Fehler auf *IP-Adressregeln* in der Firewall bezieht.
+Der Verbindungsfehler 40914 bezieht sich auf *VNET-Regeln*, die im Azure-Portal im Bereich „Firewall“ angegeben werden. Beim Fehler 40615 verhält es sich ähnlich, nur dass sich dieser Fehler auf *IP-Adressregeln* in der Firewall bezieht.
 
 ### <a name="error-40914"></a>Fehler 40914
 
@@ -229,7 +230,7 @@ Intern rufen die PowerShell-Cmdlets für SQL-VNet-Aktionen REST-APIs auf. Sie k�
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dienstendpunkt gekennzeichnet ist, *geben Sie den Namen ein* , der zur Azure SQL-Datenbank-Instanz gehört.
+Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dienstendpunkt gekennzeichnet ist, *geben Sie den Namen ein*, der zur Azure SQL-Datenbank-Instanz gehört.
 
 - Der Typname dieses Endpunkts ist **Microsoft.Sql**.
 - Wenn Ihr Subnetz nicht mit dem Typnamen gekennzeichnet werden kann, lesen Sie unter [Überprüfen, ob Ihr Subnetz ein Endpunkt ist][sql-db-vnet-service-endpoint-rule-powershell-md-a-verify-subnet-is-endpoint-ps-100] nach.
@@ -240,7 +241,7 @@ Falls Sie bereits ein Subnetz haben, das mit dem bestimmten Virtual Network-Dien
 
 1. Melden Sie sich beim [Azure-Portal][http-azure-portal-link-ref-477t] an.
 
-2. Suchen Sie nach **SQL-Server** , und wählen Sie dann Ihren Server aus. Wählen Sie unter **Sicherheit** die Option **Firewalls und virtuelle Netzwerke** aus.
+2. Suchen Sie nach **SQL-Server**, und wählen Sie dann Ihren Server aus. Wählen Sie unter **Sicherheit** die Option **Firewalls und virtuelle Netzwerke** aus.
 
 3. Legen Sie das Steuerelement **Zugriff auf Azure-Dienste erlauben** auf AUS fest.
 

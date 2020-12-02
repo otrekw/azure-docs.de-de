@@ -3,12 +3,12 @@ title: host.json-Referenz für Azure Functions 2.x
 description: Referenzdokumentation für die host.json-Datei von Azure Functions mit der v2 Runtime.
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: aaea37b100d6fadd271f48490628b38cba6cf822
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: c12a9244cdc1a76f678578e281532c73bc9385ba
+ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377121"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94917238"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>host.json-Referenz für Azure Functions 2.x oder höher 
 
@@ -161,6 +161,8 @@ Die vollständige JSON-Struktur finden Sie in der obigen [Beispieldatei „host.
 | snapshotConfiguration | – | Siehe [applicationInsights.snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights.samplingSettings
+
+Weitere Informationen zu diesen Einstellungen finden Sie unter [Erstellen von Stichproben in Application Insights](../azure-monitor/app/sampling.md). 
 
 |Eigenschaft | Standard | BESCHREIBUNG |
 | --------- | --------- | --------- | 

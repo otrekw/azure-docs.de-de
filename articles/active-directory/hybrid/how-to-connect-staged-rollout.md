@@ -10,16 +10,16 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 24eb7ac7c4490c8d27d141f6417ae157a7a9c65b
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94646575"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94836392"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
-Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen (wie Azure Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.) vor der Umstellung Ihrer Domänen.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
+Gestaffelte Rollouts ermöglichen Ihnen das selektive Testen von Benutzergruppen mit Cloudauthentifizierungsfunktionen (wie Azure AD Multi-Factor Authentication (MFA), bedingter Zugriff, Identity Protection für kompromittierte Anmeldeinformationen, Identity Governance usw.) vor der Umstellung Ihrer Domänen.  In diesem Artikel wird erläutert, wie Sie den Umstieg vornehmen. Bevor Sie mit dem gestaffelten Rollout beginnen, sollten Sie jedoch die Auswirkungen berücksichtigen, wenn mindestens eine der folgenden Bedingungen zutrifft:
     
 -  Sie verwenden zurzeit einen lokalen Server für mehrstufige Authentifizierung. 
 -  Sie verwenden Smartcards für die Authentifizierung. 
@@ -45,7 +45,7 @@ Einen Überblick über das Feature finden Sie hier: „Azure Active Directory: W
 
 -   Sie haben alle geeigneten Richtlinien für Mandantenbranding und für bedingten Zugriff konfiguriert, die Sie für Benutzer benötigen, die zur Cloudauthentifizierung migriert werden.
 
--   Wenn Sie Azure Multi-Factor Authentication verwenden möchten, empfehlen wir die Verwendung der [kombinierten Registrierung für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) und Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md), damit Ihre Benutzer ihre Authentifizierungsmethoden einmalig registrieren können. Hinweis: Bei Verwendung von SSPR zum Zurücksetzen oder Ändern des Kennworts mithilfe der Seite MyProfile im gestaffeltem Rollout muss Azure AD Connect den neuen Kennworthash synchronisieren, was nach dem Zurücksetzen bis zu 2 Minuten dauern kann.
+-   Wenn Sie Azure AD Multi-Factor Authentication verwenden möchten, wird empfohlen, die [kombinierte Registrierung für die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) und Multi-Factor Authentication](../authentication/concept-registration-mfa-sspr-combined.md) zu verwenden, damit Ihre Benutzer ihre Authentifizierungsmethoden einmalig registrieren können. Hinweis: Bei Verwendung von SSPR zum Zurücksetzen oder Ändern des Kennworts mithilfe der Seite MyProfile im gestaffeltem Rollout muss Azure AD Connect den neuen Kennworthash synchronisieren, was nach dem Zurücksetzen bis zu 2 Minuten dauern kann.
 
 -   Um dieses Feature für gestaffelten Rollout verwenden zu können, müssen Sie globaler Administrator für Ihren Mandanten sein.
 

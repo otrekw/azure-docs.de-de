@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 0b0b2cbf3fc637d7ad53be911c0171f6bb971bc6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bccbfed96dd6cd87bdfe986baf4b52817a160ac0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896122"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95533360"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking-using-azure-cli"></a>Erstellen eines virtuellen Linux-Computers mit beschleunigtem Netzwerkbetrieb mithilfe der Azure CLI
 
@@ -48,10 +48,10 @@ Die folgenden Distributionen werden standardmäßig aus dem Azure-Katalog unters
 * **RHEL 7.4 oder höher**
 * **CentOS 7.4 oder höher**
 * **CoreOS Linux**
-* **Debian „Stretch“ mit Backports-Kernel**
+* **Debian „Stretch“ mit Backports-Kernel, Debian „Buster“ oder höher**
 * **Oracle Linux 7.4 und höher mit Red Hat Compatible Kernel (RHCK)**
 * **Oracle Linux 7.5 und höher mit UEK-Version 5**
-* **FreeBSD 10.4, 11.1 und 12.0**
+* **FreeBSD 10.4, 11.1 und 12.0 oder höher**
 
 ## <a name="limitations-and-constraints"></a>Einschränkungen
 
@@ -87,7 +87,7 @@ Nach dem Erstellen des virtuellen Computers können Sie sich vergewissern, dass 
 ## <a name="cli-creation"></a>CLI-Erstellung
 ### <a name="create-a-virtual-network"></a>Erstellen eines virtuellen Netzwerks
 
-Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup* , *myNic* und *myVm*.
+Installieren Sie die neueste Version der [Azure CLI](/cli/azure/install-azure-cli), und melden Sie sich mit [az login](/cli/azure/reference-index) bei einem Azure-Konto an. Ersetzen Sie in den folgenden Beispielen die Beispielparameternamen durch Ihre eigenen Werte. Zu Parameternamen zählen z.B. *myResourceGroup*, *myNic* und *myVm*.
 
 Erstellen Sie mit [az group create](/cli/azure/group) eine Ressourcengruppe. Im folgenden Beispiel wird am Standort *centralus* eine Ressourcengruppe namens *myResourceGroup* erstellt:
 
@@ -160,7 +160,7 @@ az network nic create \
 ### <a name="create-a-vm-and-attach-the-nic"></a>Erstellen einer VM und Anfügen der NIC
 Geben Sie bei der Erstellung der VM mit `--nics` die NIC an, die Sie erstellt haben. Wählen Sie aus der Auflistung unter [Beschleunigter Netzwerkbetrieb für Linux](https://azure.microsoft.com/updates/accelerated-networking-in-expanded-preview) eine Größe und eine Distribution aus. 
 
-Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt ( *Standard_DS4_v2* ):
+Erstellen Sie mit [az vm create](/cli/azure/vm) einen virtuellen Computer. Im folgenden Beispiel wird eine VM namens *myVM* mit dem UbuntuLTS-Image und einer Größe erstellt, die beschleunigten Netzwerkbetrieb unterstützt (*Standard_DS4_v2*):
 
 ```azurecli
 az vm create \
@@ -192,7 +192,7 @@ Nachdem die VM erstellt wurde, wird eine ähnliche Ausgabe wie die folgende Beis
 
 ### <a name="confirm-that-accelerated-networking-is-enabled"></a>Bestätigen der Aktivierung des beschleunigten Netzwerkbetriebs
 
-Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie `<your-public-ip-address>` durch die öffentliche IP-Adresse, die dem von Ihnen erstellten virtuellen Computer zugewiesen wurde, und ersetzen Sie *azureuser* , wenn Sie für `--admin-username` einen anderen Wert als bei der VM-Erstellung verwendet haben.
+Erstellen Sie mit dem folgenden Befehl eine SSH-Sitzung mit dem virtuellen Computer. Ersetzen Sie `<your-public-ip-address>` durch die öffentliche IP-Adresse, die dem von Ihnen erstellten virtuellen Computer zugewiesen wurde, und ersetzen Sie *azureuser*, wenn Sie für `--admin-username` einen anderen Wert als bei der VM-Erstellung verwendet haben.
 
 ```bash
 ssh azureuser@<your-public-ip-address>
@@ -200,10 +200,10 @@ ssh azureuser@<your-public-ip-address>
 
 Geben Sie in der Bash-Shell `uname -r` ein, und vergewissern Sie sich, dass es sich bei der Kernelversion um eine der folgenden Versionen oder eine höhere Version handelt:
 
-* **Ubuntu 16.04** : 4.11.0-1013
-* **SLES SP3** : 4.4.92-6.18
-* **RHEL** : 7.4.2017120423
-* **CentOS** : 7.4.20171206
+* **Ubuntu 16.04**: 4.11.0-1013
+* **SLES SP3**: 4.4.92-6.18
+* **RHEL**: 7.4.2017120423
+* **CentOS**: 7.4.20171206
 
 
 Vergewissern Sie sich, dass mithilfe des Befehls `lspci` das Mellanox VF-Gerät für die VM verfügbar gemacht wurde. Die zurückgegebene Ausgabe sieht in etwa wie folgt aus:

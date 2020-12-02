@@ -10,18 +10,19 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/30/2020
+ms.date: 11/23/2020
 ms.author: vinigam
-ms.openlocfilehash: 532f045233f26a9a2933a19ae7a0a893195ad33f
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 1a554177bf7084b9a7f4c413dbe82271b3ab6b3a
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94384055"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95545532"
 ---
 # <a name="create-a-connection-monitor-using-powershell"></a>Erstellen eines Verbindungsmonitors mithilfe von PowerShell
 
 Hier erfahren Sie, wie Sie mithilfe von PowerShell einen Verbindungsmonitor erstellen, um die Kommunikation zwischen Ihren Ressourcen zu überwachen.
+
 
 ## <a name="before-you-begin"></a>Voraussetzungen 
 
@@ -80,7 +81,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 
 * Endpunkte
     * name: Der eindeutige Name für jeden Endpunkt.
-    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Nicht-Azure-Agents verknüpft ist.
+    * resourceId: Bei Azure-Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für virtuelle Computer. Bei Azure-fremden Endpunkten bezieht sich die Ressourcen-ID auf die ID der Azure Resource Manager-Ressource für den Log Analytics-Arbeitsbereich, der mit Azure-fremden Agents verknüpft ist.
     * address: Dies trifft nur zu, wenn entweder keine Ressourcen-ID angegeben oder die Ressourcen-ID der Log Analytics-Arbeitsbereich ist. Bei Verwendung mit Log Analytics-Ressourcen-ID bezieht sich dies auf den FQDN des Agents, der für die Überwachung verwendet werden kann. Bei Verwendung ohne Ressourcen-ID kann dies die URL oder IP-Adresse eines beliebigen öffentlichen Endpunkts sein.
     * filter: Bei Azure-fremden Endpunkten verwenden Sie Filter, um Agents aus dem Log Analytics-Arbeitsbereich auszuwählen, die für die Überwachung in der Verbindungsmonitorressource verwendet werden. Wenn keine Filter festgelegt sind, können alle Agents, die zum Log Analytics-Arbeitsbereich gehören, für die Überwachung verwendet werden.
         * type: Legen Sie den Typ auf „Agent Address“ fest.
@@ -89,7 +90,7 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
 * Testgruppen
     * name: Geben Sie der Testgruppe einen Namen.
     * testConfigurations: Die Testkonfigurationen, die darauf basieren, welche Quellendpunkte mit Zielendpunkten verbunden sind.
-    * sources: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Auf Azure-basierten Quellendpunkten muss die Azure Network Watcher-Erweiterung installiert sein, und bei nicht auf Azure basierenden Quellendpunkten muss der Azure Log Analytics-Agent installiert sein. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#install-monitoring-agents).
+    * sources: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Auf Azure-basierten Quellendpunkten muss die Azure Network Watcher-Erweiterung installiert sein, und bei nicht auf Azure basierenden Quellendpunkten muss der Azure Log Analytics-Agent installiert sein. Informationen zum Installieren eines Agents für Ihre Quelle finden Sie unter [Installieren von Überwachungs-Agents](./connection-monitor-overview.md#install-monitoring-agents).
     * destinations: Treffen Sie eine Auswahl aus den oben erstellten Endpunkten. Sie können die Konnektivität mit Azure-VMs oder anderen Endpunkten (öffentliche IP-Adresse, URL oder FQDN) überwachen, indem Sie diese als Ziele festlegen. In einer einzelnen Testgruppe können Sie Azure-VMs, Office 365-URLs, Dynamics 365-URLs und benutzerdefinierte Endpunkte hinzufügen.
     * disable: Verwenden Sie dieses Feld, um die Überwachung für alle in der Testgruppe angegebenen Quellen und Ziele zu deaktivieren.
 
@@ -100,6 +101,10 @@ New-AzNetworkWatcherConnectionMonitor -NetworkWatcherName $nw -ResourceGroupName
         * preferHTTPS: Geben Sie an, ob vorzugsweise HTTPS statt HTTP verwendet werden soll.
         * port: Geben Sie den Zielport Ihrer Wahl an.
         * disableTraceRoute: Dies betrifft Testgruppen mit TCP- oder ICMP-Protokoll. Dadurch werden von Quellen weder Topologie noch Hop-by-Hop-Roundtripzeit ermittelt.
+        * method: Dies betrifft Testkonfigurationen mit dem HTTP-Protokoll. Wählen Sie die HTTP-Anforderungsmethode (GET oder POST) aus.
+        * path: Geben Sie Pfadparameter an, die an die URL angefügt werden sollen.
+        * validStatusCodes: Wählen Sie die anwendbaren Statuscodes aus. Wenn der Antwortcode nicht mit dieser Liste übereinstimmt, erhalten Sie eine Diagnosemeldung.
+        * requestHeaders: Geben Sie benutzerdefinierte Zeichenfolgen für Anforderungsheader an, die an das Ziel übermittelt werden.
     * successThreshold: Sie können Schwellenwerte für die folgenden Netzwerkparameter festlegen:
         * checksFailedPercent: Legen Sie den Prozentsatz der Überprüfungen fest, die Fehler aufweisen können, wenn Quellen die Konnektivität mit Zielen anhand der von Ihnen angegebenen Kriterien überprüfen. Beim TCP- oder ICMP-Protokoll kann der Prozentsatz der Überprüfungen mit Fehlern dem Prozentsatz der Paketverluste gleichgesetzt werden. Beim HTTP-Protokoll stellt dieses Feld den Prozentsatz von HTTP-Anforderungen dar, die keine Antwort erhielen.
         * roundTripTimeMs: Legen Sie die Roundtripzeit in Millisekunden fest, die von Quellen zum Herstellen einer Verbindung mit dem Ziel über die Testkonfiguration benötigt werden darf.
@@ -115,5 +120,5 @@ Für Verbindungsmonitore gelten die folgenden Skalierungslimits:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#analyze-monitoring-data-and-set-alerts).
-* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](https://docs.microsoft.com/azure/network-watcher/connection-monitor-preview#diagnose-issues-in-your-network).
+* Erfahren Sie, wie Sie [Überwachungsdaten analysieren und Warnungen festlegen](./connection-monitor-overview.md#analyze-monitoring-data-and-set-alerts).
+* Erfahren Sie, wie Sie [Probleme in Ihrem Netzwerk diagnostizieren](./connection-monitor-overview.md#diagnose-issues-in-your-network).

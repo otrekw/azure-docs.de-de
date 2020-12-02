@@ -11,16 +11,16 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e22e4cdbfaf90eb9bba30fc26dc3495f767216f1
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+ms.openlocfilehash: c8c67f72a7f0d77284dbb34104754793b36bb8d4
+ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91968338"
+ms.lasthandoff: 11/18/2020
+ms.locfileid: "94838143"
 ---
 # <a name="enable-combined-security-information-registration-in-azure-active-directory"></a>Aktivieren der kombinierten Registrierung von Sicherheitsinformationen in Azure Active Directory
 
-Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Azure Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von Azure Multi-Factor Authentication und SSPR nutzen.
+Vor der kombinierten Registrierung registrierten Benutzer Authentifizierungsmethoden für Azure AD Multi-Factor Authentication (MFA) und die Self-Service-Kennwortzurücksetzung (Self-Service Password Reset, SSPR) getrennt voneinander. Benutzer waren verwirrt, dass ähnliche Methoden für Azure AD Multi-Factor Authentication und für SSPR verwendet wurden, sie sich jedoch für beide Funktionen registrieren mussten. Mit der kombinierten Registrierung können sich Benutzer jetzt einmalig registrieren und die Vorteile von Azure AD Multi-Factor Authentication und SSPR nutzen.
 
 > [!NOTE]
 > Ab dem 15. August 2020 werden alle neuen Azure AD-Mandanten automatisch für die kombinierte Registrierung aktiviert.
@@ -40,7 +40,7 @@ Führen Sie die folgenden Schritte aus, um die kombinierte Registrierung zu akti
    ![Aktivieren der kombinierten Oberfläche zur Registrierung von Sicherheitsinformationen für Benutzer](media/howto-registration-mfa-sspr-combined/enable-the-combined-security-info.png)
 
 > [!NOTE]
-> Nachdem Sie die kombinierte Registrierung aktiviert haben, können Benutzer, die ihre Telefonnummer oder mobile App durch die neue Funktion registrieren oder bestätigen, diese für Azure Multi-Factor Authentication und SSPR verwenden, wenn diese Methoden in den MFA- und SSPR-Richtlinien aktiviert sind.
+> Nachdem Sie die kombinierte Registrierung aktiviert haben, können Benutzer, die ihre Telefonnummer oder mobile App durch die neue Funktion registrieren oder bestätigen, diese für Azure AD Multi-Factor Authentication und SSPR verwenden, wenn diese Methoden in den Azure AD MFA- und SSPR-Richtlinien aktiviert sind.
 >
 > Wenn Sie diese Funktion dann deaktivieren, müssen Benutzer, die zur vorherigen SSPR-Registrierungsseite unter `https://aka.ms/ssprsetup` navigieren, die mehrstufige Authentifizierung durchführen, bevor sie auf die Seite zugreifen können.
 
@@ -52,7 +52,7 @@ Wenn Sie die *Liste der Site-zu-Zonen-Zuweisungen* in Internet Explorer konfigur
 
 ## <a name="conditional-access-policies-for-combined-registration"></a>Richtlinien für bedingten Zugriff für die kombinierte Registrierung
 
-Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Funktionalität kann in Organisationen aktiviert werden, in denen sich Benutzer an einem zentralen Ort, z. B. einem vertrauenswürdigen Netzwerkspeicherort während des Onboardings von Personal, für Azure Multi-Factor Authentication und SSPR registrieren sollen.
+Mit Benutzeraktionen in der Richtlinie für bedingten Zugriff kann sichergestellt werden, wann und wie sich Benutzer für Azure AD Multi-Factor Authentication registrieren, und auch die Self-Service-Kennwortzurücksetzung ist möglich. Diese Funktionalität kann in Organisationen aktiviert werden, in denen sich Benutzer an einem zentralen Ort, z. B. einem vertrauenswürdigen Netzwerkspeicherort während des Onboardings von Personal, für Azure AD Multi-Factor Authentication und SSPR registrieren sollen.
 
 > [!NOTE]
 > Diese Richtlinie gilt nur, wenn ein Benutzer auf eine kombinierte Registrierungsseite zugreift. Diese Richtlinie erzwingt keine MFA-Registrierung, wenn ein Benutzer auf andere Anwendungen zugreift.
@@ -90,6 +90,6 @@ Führen Sie die folgenden Schritte aus, um eine Richtlinie für alle ausgewählt
 
 Wenn Sie Hilfe benötigen, finden Sie unter [Problembehandlung für die kombinierte Registrierung von Sicherheitsinformationen](howto-registration-mfa-sspr-combined-troubleshoot.md) sowie unter [Was sind Standortbedingungen beim bedingten Zugriff in Azure AD?](../conditional-access/location-condition.md) weitere Informationen.
 
-Nachdem Benutzer für die kombinierte Registrierung aktiviert wurden, können Sie die [Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Azure Multi-Factor Authentication](tutorial-enable-azure-mfa.md) aktivieren.
+Nachdem Benutzer für die kombinierte Registrierung aktiviert wurden, können Sie die [Self-Service-Kennwortzurücksetzung](tutorial-enable-sspr.md) und [Azure AD Multi-Factor Authentication](tutorial-enable-azure-mfa.md) aktivieren.
 
 Informieren Sie sich bei Bedarf, wie Sie [die erneute Registrierung von Authentifizierungsmethoden durch Benutzer erzwingen](howto-mfa-userdevicesettings.md#manage-user-authentication-options).

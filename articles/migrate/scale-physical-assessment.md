@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 01/19/2020
 ms.author: hamusa
-ms.openlocfilehash: 227e27d25ad5d0c61ed4f36c234222a079315619
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 6009975337f8f4caaf43e4b8b715e42c6ce2ffdc
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92317135"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96494578"
 ---
 # <a name="assess-large-numbers-of-physical-servers-for-migration-to-azure"></a>Bewerten einer großen Anzahl physischer Server für die Migration zu Azure
 
@@ -73,7 +73,7 @@ Führen Sie in Übereinstimmung mit Ihren Planungsanforderungen folgende Schritt
 1. Erstellen eines Azure Migrate-Projekts
 2. Fügen Sie den Projekten das Azure Migrate-Serverbewertungstool hinzu.
 
-[Weitere Informationen](how-to-add-tool-first-time.md)
+[Weitere Informationen](./create-manage-projects.md)
 
 ## <a name="create-and-review-an-assessment"></a>Erstellen und Überprüfen einer Bewertung
 

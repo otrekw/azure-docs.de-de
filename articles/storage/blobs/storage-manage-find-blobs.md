@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: klaasl
 ms.custom: references_regions
-ms.openlocfilehash: 8f1ea67605be3aee6257c293aea3db617d885645
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: 4f84c3c2f6fc671a8cb6ac70313361540e3dd815
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92370252"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95523279"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-tags-preview"></a>Verwalten und Finden von Azure-Blobdaten mit Blobindextags (Vorschau)
 
@@ -51,7 +51,7 @@ Diese Blobs werden durch ein Präfix getrennt, das aus *Containername/Name des v
 Bei Blobindextags handelt es sich um Schlüssel-Wert-Attribute, die auf neue oder vorhandene Objekte innerhalb Ihres Speicherkontos angewendet werden können. Sie können Indextags während des Uploadvorgangs angeben, indem Sie die Vorgänge [Put Blob](/rest/api/storageservices/put-blob), [Put Block List](/rest/api/storageservices/put-block-list) oder [Copy Blob](/rest/api/storageservices/copy-blob) und den optionalen Header `x-ms-tags` verwenden. Falls Sie in Ihrem Speicherkonto bereits über Blobs verfügen, können Sie [Set Blob Tags](/rest/api/storageservices/set-blob-tags) aufrufen und ein formatiertes XML-Dokument mit den Indextags im Anforderungstext übergeben.
 
 > [!IMPORTANT]
-> Das Festlegen von Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Zugreifen auf die Tags des Blobs verfügt (SAS-Berechtigung `t`), durchgeführt werden.
+> Das Festlegen von Blobindextags kann vom [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Zugreifen auf die Tags des Blobs verfügt (SAS-Berechtigung `t`), durchgeführt werden.
 >
 > Auch RBAC-Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/write` können diesen Vorgang durchführen.
 
@@ -87,7 +87,7 @@ Die nachstehenden Einschränkungen gelten für Blobindextags:
 Blobindextags werden als Unterressource gemeinsam mit den Blobdaten gespeichert und können unabhängig von den zugrunde liegenden Blobdateninhalten abgerufen werden. Blobindextags für ein einzelnes Blob können mit dem Vorgang [Get Blob Tags](/rest/api/storageservices/get-blob-tags) abgerufen werden. Auch der Vorgang [List Blobs](/rest/api/storageservices/list-blobs) mit dem Parameter `include:tags` gibt alle Blobs innerhalb eines Containers und die zugehörigen Blobindextags zurück.
 
 > [!IMPORTANT]
-> Das Abrufen und Festlegen von Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Zugreifen auf die Tags des Blobs verfügt (SAS-Berechtigung `t`), durchgeführt werden.
+> Das Abrufen und Festlegen von Blobindextags kann vom [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Zugreifen auf die Tags des Blobs verfügt (SAS-Berechtigung `t`), durchgeführt werden.
 >
 > Auch RBAC-Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read` können diesen Vorgang durchführen.
 
@@ -100,7 +100,7 @@ Mit dem Indizierungsmodul werden Ihre Schlüssel-Wert-Attribute in einem mehrdim
 Über den Vorgang [Find Blobs by Tags](/rest/api/storageservices/find-blobs-by-tags) können Sie eine gefilterte Gruppe mit Blobs abrufen, deren Indextags einem bestimmten Abfrageausdruck entsprechen. `Find Blobs by Tags` unterstützt das Filtern von Daten innerhalb aller Container oder innerhalb eines einzelnen Containers in Ihrem Speicherkonto. Da alle Indextagschlüssel und -werte Zeichenfolgen sind, wird für relationale Operatoren eine lexikografische Sortierung verwendet.
 
 > [!IMPORTANT]
-> Das Suchen nach Daten anhand von Blobindextags kann vom [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Suchen nach Blobs per Tag verfügt (SAS-Berechtigung `f`), durchgeführt werden.
+> Das Suchen nach Daten anhand von Blobindextags kann vom [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) und allen anderen Benutzern mit einer Shared Access Signature, die über die Berechtigung zum Suchen nach Blobs per Tag verfügt (SAS-Berechtigung `f`), durchgeführt werden.
 >
 > Auch RBAC-Benutzer mit der Berechtigung `Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action` können diesen Vorgang durchführen.
 
@@ -235,7 +235,7 @@ Benutzern, die eine [Azure AD-Identität](../common/storage-auth-aad.md) verwend
 | [Abrufen von Blobtags](/rest/api/storageservices/get-blob-tags)           | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/tags/read     |
 | [Suchen nach Blobs anhand von Tags](/rest/api/storageservices/find-blobs-by-tags) | Microsoft.Storage/storageAccounts/blobServices/containers/blobs/filter/action |
 
-Für Vorgänge von Indextags sind zusätzliche Berechtigungen erforderlich, die über die Berechtigungen für die zugrunde liegenden Blobdaten hinausgehen. Die Rolle [Besitzer von Speicherblobdaten](/azure/role-based-access-control/built-in-roles#storage-blob-data-owner) verfügt über Berechtigungen für alle drei Blobindextag-Vorgänge. [Storage-Blobdatenleser](/azure/role-based-access-control/built-in-roles#storage-blob-data-reader) verfügt nur über Berechtigungen für die Vorgänge `Find Blobs by Tags` und `Get Blob Tags`.
+Für Vorgänge von Indextags sind zusätzliche Berechtigungen erforderlich, die über die Berechtigungen für die zugrunde liegenden Blobdaten hinausgehen. Die Rolle [Besitzer von Speicherblobdaten](../../role-based-access-control/built-in-roles.md#storage-blob-data-owner) verfügt über Berechtigungen für alle drei Blobindextag-Vorgänge. [Storage-Blobdatenleser](../../role-based-access-control/built-in-roles.md#storage-blob-data-reader) verfügt nur über Berechtigungen für die Vorgänge `Find Blobs by Tags` und `Get Blob Tags`.
 
 ### <a name="sas-permissions"></a>SAS-Berechtigungen
 
@@ -327,6 +327,7 @@ In diesem Abschnitt sind bekannte Probleme und Bedingungen der öffentlichen Vor
 - Wenn die Filterung auf einen einzelnen Container beschränkt ist, kann `@container` nur übergeben werden, wenn alle Indextags im Filterausdruck Gleichheitsprüfungen sind (Schlüssel=Wert).
 - Wenn der Bereichsoperator mit der `AND`-Bedingung verwendet wird, muss derselbe Indextag-Schlüsselname angegeben werden (`"Age" > '013' AND "Age" < '100'`).
 - Die Versionsverwaltung und der Blobindex werden nicht unterstützt. Blobindextags werden für verschiedene Versionen beibehalten, aber nicht an das Blobindexmodul übermittelt.
+- Es gibt keine API, mit der Sie ermitteln können, ob Indextags indiziert wurden.
 - Ein Failover des Kontos wird nicht unterstützt. Der Blobindex wird nach einem Failover möglicherweise nicht ordnungsgemäß aktualisiert.
 - Die Lebenszyklusverwaltung unterstützt bei einem Blobindexabgleich nur Gleichheitsprüfungen.
 - Bei `Copy Blob` werden keine Blobindextags vom Quellblob in das neue Zielblob kopiert. Sie können während des Kopiervorgangs die Tags angeben, die auf das Zielblob angewendet werden sollen.
