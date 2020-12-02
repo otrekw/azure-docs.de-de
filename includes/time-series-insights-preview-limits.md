@@ -9,16 +9,16 @@ author: deepakpalled
 ms.author: dpalled
 manager: diviso
 ms.custom: include file
-ms.openlocfilehash: 5ec1f71d13d5d2fb3af86c1c63d5e61ce13d2c82
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e7b5dfe9380612d56e591c3f619dfcb8582f8dee
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94553142"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95558892"
 ---
 ### <a name="property-limits"></a>Eigenschaftsgrenzwerte
 
-Azure Time Series Insights-Eigenschaftsgrenzwerte sind für Warm Storage auf 1.000 gestiegen und für Cold Storage gibt es keinen Eigenschaftsgrenzwert. Die bereitgestellten Ereigniseigenschaften verfügen über entsprechende JSON-, CSV- und Diagrammspalten, die Sie im [Azure Time Series Insights Gen2-Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart) anzeigen können.
+Azure Time Series Insights-Eigenschaftsgrenzwerte sind für Warm Storage auf 1.000 gestiegen und für Cold Storage gibt es keinen Eigenschaftsgrenzwert. Die bereitgestellten Ereigniseigenschaften verfügen über entsprechende JSON-, CSV- und Diagrammspalten, die Sie im [Azure Time Series Insights Gen2-Explorer](../articles/time-series-insights/quickstart-explore-tsi.md) anzeigen können.
 
 | SKU | Maximale Eigenschaften |
 | --- | --- |
@@ -36,4 +36,4 @@ Azure Time Series Insights-Eigenschaftsgrenzwerte sind für Warm Storage auf 1.0
 
 ### <a name="api-limits"></a>API-Grenzwerte
 
-REST-API-Grenzwerte für Azure Time Series Insights Gen2 sind in der [Referenzdokumentation zur REST-API](https://docs.microsoft.com/rest/api/time-series-insights/preview#limits-1) angegeben.
+REST-API-Grenzwerte für Azure Time Series Insights Gen2 sind in der [Referenzdokumentation zur REST-API](/rest/api/time-series-insights/preview#limits-1) angegeben.

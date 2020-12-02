@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
 ms.custom: contperfq1
-ms.openlocfilehash: edcc94050880544a6c2de54ff27f833f1c60f99f
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f18f1184f921aca4f2c1e33ac00dcf14c63b24eb
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94683644"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95893357"
 ---
 # <a name="azure-ea-portal-administration"></a>Azure EA-Portalverwaltung
 
@@ -146,7 +146,7 @@ Machen Sie sich vor der Besitzübertragung mit den folgenden Azure RBAC-Richtli
 - Wenn Sie Besitzübertragungen für Abonnements oder Konten zwischen zwei Organisations-IDs im gleichen Mandanten durchführen, werden Azure RBAC-Richtlinien und vorhandene Dienstadministrator- und Co-Admin-Rollen beibehalten.
 - Bei mandantenübergreifenden Besitzübertragungen für Abonnements oder Konten gehen Ihre Azure RBAC-Richtlinien und Rollenzuweisungen verloren.
 - Richtlinien und Administratorrollen werden nicht über verschiedene Verzeichnisse hinweg übertragen. Dienstadministratoren werden auf den Besitzer des Zielkontos aktualisiert.
-- Wenn Sie den Verlust der RBAC-Richtlinien und Rollenzuweisungen bei der Abonnementübertragung zwischen Mandanten vermeiden möchten, achten Sie darauf, dass das Kontrollkästchen **Move the subscriptions to the recipient’s Azure AD tenant** (Abonnements in den Azure AD-Mandanten des Empfängers verschieben) **deaktiviert** ist. Dadurch bleiben die Dienste, RBAC-Rollen und Richtlinien im aktuellen Azure AD-Mandanten erhalten, und es wird lediglich der Abrechnungsbesitz für das Konto übertragen.  
+- Wenn Sie den Verlust der Azure RBAC-Richtlinien und Rollenzuweisungen bei der Abonnementübertragung zwischen Mandanten vermeiden möchten, achten Sie darauf, dass das Kontrollkästchen **Move the subscriptions to the recipient’s Azure AD tenant** (Abonnements in den Azure AD-Mandanten des Empfängers verschieben) **deaktiviert** ist. Dadurch bleiben die Dienste, Azure-Rollen und Richtlinien im aktuellen Azure AD-Mandanten erhalten, und es wird lediglich der Abrechnungsbesitz für das Konto übertragen.  
     :::image type="content" source="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" alt-text="Abbildung: Deaktiviertes Kontrollkästchen für die Verschiebung von Abonnements an einen Azure AD-Mandanten" lightbox="./media/ea-portal-administration/unselected-checkbox-move-subscriptions-to-recipients-tenant.png" :::
 
 
@@ -282,7 +282,7 @@ Das Azure EA-Portal unterstützt Sie bei der Verwaltung Ihrer Azure EA-Kosten un
 
 Jede Rolle verfügt über eine andere Zugriffs- und Autorisierungsebene.
 
-Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](https://docs.microsoft.com/azure/manage/understand-ea-roles#enterprise-user-roles).
+Weitere Informationen zu Benutzerrollen finden Sie unter [Unternehmensbenutzerrollen](/azure/cost-management-billing/manage/understand-ea-roles#enterprise-user-roles).
 
 ## <a name="add-an-azure-ea-account"></a>Hinzufügen eines Azure EA-Kontos
 

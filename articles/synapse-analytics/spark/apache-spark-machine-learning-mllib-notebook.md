@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: d7c5bd2d1918ecebe2d2aabc213de43e7cdb1fef
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306966"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "95900419"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Tutorial: Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
 In diesem Artikel erfahren Sie, wie Sie mithilfe von Apache Spark [MLlib](https://spark.apache.org/mllib/) eine Machine-Learning-Anwendung erstellt, die eine einfache Vorhersageanalyse für ein Azure Open Dataset ausführt. Spark bietet integrierte Machine Learning-Bibliotheken. In diesem Beispiel wird eine *Klassifizierung* mittels logistischer Regression verwendet.
 
-MLLib ist eine Spark-Kernbibliothek, die viele Hilfsprogramme enthält, die nützlich für Aufgaben aus dem Bereich des Machine Learning sind, darunter befinden sich auch Hilfsprogramme für folgende Aufgaben:
+SparkML und MLLib sind Spark-Kernbibliotheken, die viele Hilfsprogramme enthalten, die nützlich für Aufgaben aus dem Bereich des Machine Learning sind. Darunter befinden sich auch Hilfsprogramme für folgende Aufgaben:
 
 - Klassifizierung
 - Regression
@@ -31,7 +31,7 @@ MLLib ist eine Spark-Kernbibliothek, die viele Hilfsprogramme enthält, die nüt
 
 ## <a name="understand-classification-and-logistic-regression"></a>Grundlegendes zu Klassifizierung und logistischer Regression
 
-*Klassifizierung* , eine Aufgabe im Bereich des Machine Learning, ist der Prozess, bei dem Eingabedaten in Kategorien sortiert werden. Der Klassifizierungsalgorithmus hat die Aufgabe, herauszufinden, wie *Labels* den von Ihnen bereitgestellten Eingabedaten zugeordnet werden. So kann ein Machine-Learning-Algorithmus beispielsweise Börsendaten als Eingabe akzeptieren und die Daten in zwei Kategorien einteilen: Aktien, die Sie verkaufen sollten, und solche, die Sie behalten sollten.
+*Klassifizierung*, eine Aufgabe im Bereich des Machine Learning, ist der Prozess, bei dem Eingabedaten in Kategorien sortiert werden. Der Klassifizierungsalgorithmus hat die Aufgabe, herauszufinden, wie *Labels* den von Ihnen bereitgestellten Eingabedaten zugeordnet werden. So kann ein Machine-Learning-Algorithmus beispielsweise Börsendaten als Eingabe akzeptieren und die Daten in zwei Kategorien einteilen: Aktien, die Sie verkaufen sollten, und solche, die Sie behalten sollten.
 
 *Logistische Regression* ist ein Algorithmus, den Sie für die Klassifizierung verwenden können. Die API für die logistische Regression von Spark ist nützlich für eine *binäre Klassifizierung* oder für die Klassifizierung der Eingabedaten in einer von zwei Gruppen. Weitere Informationen zur logistischen Regression finden Sie in [Wikipedia](https://en.wikipedia.org/wiki/Logistic_regression).
 
@@ -46,10 +46,10 @@ In diesem Beispiel verwenden Sie Spark, um ein paar Vorhersageanalysen zu Trinkg
 
 In den folgenden Schritten entwickeln Sie ein Modell, um vorherzusagen, ob eine bestimmte Fahrt ein Trinkgeld enthält oder nicht.
 
-## <a name="create-an-apache-spark-mllib-machine-learning-app"></a>Erstellen einer Apache Spark-MLlib-Machine Learning-App
+## <a name="create-an-apache-spark--machine-learning-model"></a>Erstellen eines Apache Spark-Machine Learning-Modells
 
 1. Erstellen Sie ein Notebook unter Verwendung des PySpark-Kernels. Eine entsprechende Anleitung finden Sie unter [Erstellen eines Notebooks](../quickstart-apache-spark-notebook.md#create-a-notebook).
-2. Importieren Sie die Typen, die für diese Anwendung benötigt werden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine leere Zelle ein, und drücken Sie dann **UMSCHALT+EINGABE** , oder führen Sie die Zelle aus, indem Sie das blaue Wiedergabesymbol links neben dem Code verwenden.
+2. Importieren Sie die Typen, die für diese Anwendung benötigt werden. Kopieren Sie den folgenden Code, fügen Sie ihn in eine leere Zelle ein, und drücken Sie dann **UMSCHALT+EINGABE**, oder führen Sie die Zelle aus, indem Sie das blaue Wiedergabesymbol links neben dem Code verwenden.
 
     ```python
     import matplotlib.pyplot as plt
@@ -110,44 +110,6 @@ Das Erstellen einer temporären Tabelle oder Ansicht bietet unterschiedliche Zug
 sampled_taxi_df.createOrReplaceTempView("nytaxi")
 ```
 
-## <a name="understand-the-data"></a>Grundlegendes zu den Daten
-
-Normalerweise würden Sie an dieser Stelle eine Phase der *explorativen Datenanalyse* (EDA) durchlaufen, um ein Verständnis für die Daten zu entwickeln. Der folgende Code zeigt drei verschiedene Visualisierungen der Daten im Zusammenhang mit Trinkgeldern, die zu Schlussfolgerungen über den Zustand und die Qualität der Daten führen.
-
-```python
-# The charting package needs a Pandas dataframe or numpy array do the conversion
-sampled_taxi_pd_df = sampled_taxi_df.toPandas()
-
-# Look at tips by amount count histogram
-ax1 = sampled_taxi_pd_df['tipAmount'].plot(kind='hist', bins=25, facecolor='lightblue')
-ax1.set_title('Tip amount distribution')
-ax1.set_xlabel('Tip Amount ($)')
-ax1.set_ylabel('Counts')
-plt.suptitle('')
-plt.show()
-
-# How many passengers tipped by various amounts
-ax2 = sampled_taxi_pd_df.boxplot(column=['tipAmount'], by=['passengerCount'])
-ax2.set_title('Tip amount by Passenger count')
-ax2.set_xlabel('Passenger count')
-ax2.set_ylabel('Tip Amount ($)')
-plt.suptitle('')
-plt.show()
-
-# Look at the relationship between fare and tip amounts
-ax = sampled_taxi_pd_df.plot(kind='scatter', x= 'fareAmount', y = 'tipAmount', c='blue', alpha = 0.10, s=2.5*(sampled_taxi_pd_df['passengerCount']))
-ax.set_title('Tip amount by Fare amount')
-ax.set_xlabel('Fare Amount ($)')
-ax.set_ylabel('Tip Amount ($)')
-plt.axis([-2, 80, -2, 20])
-plt.suptitle('')
-plt.show()
-```
-
-![Histogramm](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-histogram.png)
-![Kastengrafikplot](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-box-whisker.png)
-![Punktdiagramm](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-eda-scatter.png)
-
 ## <a name="prepare-the-data"></a>Vorbereiten der Daten
 
 Die Daten im Rohformat sind häufig nicht für die direkte Übergabe an ein Modell geeignet. Eine Reihe von Aktionen muss an den Daten ausgeführt werden, um sie in einen Zustand zu versetzen, in dem das Modell sie verwenden kann.
@@ -193,7 +155,7 @@ taxi_featurised_df = taxi_df.select('totalAmount', 'fareAmount', 'tipAmount', 'p
 
 ## <a name="create-a-logistic-regression-model"></a>Erstellen eines logistischen Regressionsmodells
 
-Die letzte Aufgabe besteht darin, die Daten mit Label in ein Format zu konvertieren, das mit der logistische Regression analysiert werden kann. Die Eingabe für einen logistischen Regressionsalgorithmus muss ein Satz von *Bezeichnung-Merkmals-Vektorpaaren* (Label-Feature) sein, wobei der *Merkmalsvektor* aus Zahlen besteht, die den Eingabepunkt darstellen. Somit müssen wir die Kategoriespalten in Zahlen konvertieren. Die Spalten `trafficTimeBins` und `weekdayString` müssen in ganzzahlige Darstellungen konvertiert werden. Es gibt mehrere Ansätze zum Durchführen der Konvertierung, der in diesem Beispiel verwendete Ansatz ist jedoch *OneHotEncoding* , ein gängiger Ansatz.
+Die letzte Aufgabe besteht darin, die Daten mit Label in ein Format zu konvertieren, das mit der logistische Regression analysiert werden kann. Die Eingabe für einen logistischen Regressionsalgorithmus muss ein Satz von *Bezeichnung-Merkmals-Vektorpaaren* (Label-Feature) sein, wobei der *Merkmalsvektor* aus Zahlen besteht, die den Eingabepunkt darstellen. Somit müssen wir die Kategoriespalten in Zahlen konvertieren. Die Spalten `trafficTimeBins` und `weekdayString` müssen in ganzzahlige Darstellungen konvertiert werden. Es gibt mehrere Ansätze zum Durchführen der Konvertierung, der in diesem Beispiel verwendete Ansatz ist jedoch *OneHotEncoding*, ein gängiger Ansatz.
 
 ```python
 # Since the sample uses an algorithm that only works with numeric features, convert them so they can be consumed
@@ -272,7 +234,7 @@ plt.ylabel('True Positive Rate')
 plt.show()
 ```
 
-![ROC-Kurve für logistisches Regressionsmodell für Trinkgelder](./media/apache-spark-machine-learning-mllib-notebook/apache-spark-mllib-nyctaxi-roc.png "ROC-Kurve für logistisches Regressionsmodell für Trinkgelder")
+![ROC-Kurve für logistisches Regressionsmodell für Trinkgelder](./media/apache-spark-machine-learning-mllib-notebook/nyc-taxi-roc.png)
 
 ## <a name="shut-down-the-spark-instance"></a>Herunterfahren der Spark-Instanz
 

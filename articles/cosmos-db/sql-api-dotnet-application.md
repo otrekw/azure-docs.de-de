@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: e4e2ba15dad7459ba3f7926a965292be37249054
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 528cab915a1ac3918146e428e9ae6b3c401324c8
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097361"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96010356"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Tutorial: Entwickeln einer ASP.NET Core MVC-Webanwendung mit Azure Cosmos DB unter Verwendung des .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -70,11 +70,11 @@ Im nächsten Abschnitt erstellen Sie eine neue ASP.NET Core MVC-Anwendung.
 
 1. Öffnen Sie Visual Studio, und wählen Sie **Neues Projekt erstellen** aus.
 
-1. Suchen Sie unter **Neues Projekt erstellen** nach der Option **ASP.NET Core-Webanwendung**  für C#, und wählen Sie sie aus. Klicken Sie auf **Weiter** , um fortzufahren.
+1. Suchen Sie unter **Neues Projekt erstellen** nach der Option **ASP.NET Core-Webanwendung**  für C#, und wählen Sie sie aus. Klicken Sie auf **Weiter**, um fortzufahren.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Erstellen eines neuen ASP.NET Core-Webanwendungsprojekts":::
 
-1. Geben Sie dem Projekt unter **Neues Projekt konfigurieren** den Namen *todo* , und wählen Sie **Erstellen** aus.
+1. Geben Sie dem Projekt unter **Neues Projekt konfigurieren** den Namen *todo*, und wählen Sie **Erstellen** aus.
 
 1. Wählen Sie unter **Neue ASP.NET Core-Webanwendung erstellen** die Option **Webanwendung (Model-View-Controller)** aus. Klicken Sie auf **Erstellen** , um fortzufahren.
 
@@ -88,7 +88,7 @@ Nachdem Sie nun über den Großteil des ASP.NET Core MVC-Frameworkcodes verfüge
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf das Projekt, und wählen Sie **NuGet-Pakete verwalten** aus.
 
-1. Suchen Sie im **NuGet-Paket-Manager** nach der Option **Microsoft.Azure.Cosmos** , und wählen Sie sie aus. Wählen Sie **Installieren** aus.
+1. Suchen Sie im **NuGet-Paket-Manager** nach der Option **Microsoft.Azure.Cosmos**, und wählen Sie sie aus. Wählen Sie **Installieren** aus.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Installieren des NuGet-Pakets":::
 
@@ -106,11 +106,11 @@ Fügen Sie der MVC-Anwendung als Nächstes die Modelle, Ansichten und Controller
 
 ### <a name="add-a-model"></a><a name="add-a-model"></a> Hinzufügen eines Modells
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Modelle** , und wählen Sie **Hinzufügen** > **Klasse** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Modelle**, und wählen Sie **Hinzufügen** > **Klasse** aus.
 
-1. Geben Sie Ihrer neuen Klasse im Feld **Neues Element hinzufügen** den Namen *Item.cs* , und wählen Sie die Option **Hinzufügen**.
+1. Geben Sie Ihrer neuen Klasse im Feld **Neues Element hinzufügen** den Namen *Item.cs*, und wählen Sie die Option **Hinzufügen**.
 
-1. Ersetzen Sie den Inhalt der *Item.cs* -Klasse durch den folgenden Code:
+1. Ersetzen Sie den Inhalt der *Item.cs*-Klasse durch den folgenden Code:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Models/Item.cs":::
 
@@ -128,9 +128,9 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
 
 #### <a name="create-item-view"></a><a name="AddNewIndexView"></a>Erstellen einer Elementansicht
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Ansichten** , und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Geben Sie dem Ordner den Namen *Element*.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Ansichten**, und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Geben Sie dem Ordner den Namen *Element*.
 
-1. Klicken Sie mit der rechten Maustaste auf den leeren Ordner **Element** , und wählen Sie anschließend **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie mit der rechten Maustaste auf den leeren Ordner **Element**, und wählen Sie anschließend **Hinzufügen** > **Ansicht** aus.
 
 1. Nehmen Sie unter **Add MVC View** (MVC-Ansicht hinzufügen) die folgenden Änderungen vor:
 
@@ -148,7 +148,7 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
 
 #### <a name="delete-item-view"></a><a name="AddEditIndexView"></a>Löschen einer Elementansicht
 
-1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element** , und wählen Sie **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
 
 1. Nehmen Sie unter **Add MVC View** (MVC-Ansicht hinzufügen) die folgenden Änderungen vor:
 
@@ -164,7 +164,7 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
 
 #### <a name="add-a-view-to-get-an-item-details"></a><a name="AddItemIndexView"></a>Hinzufügen einer Ansicht zum Abrufen der Details eines Elements
 
-1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element** , und wählen Sie **Hinzufügen** > **Ansicht**.
+1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht**.
 
 1. Geben Sie unter **Add MVC View** (MVC-Ansicht hinzufügen) die folgenden Werte an:
 
@@ -179,7 +179,7 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
 
 #### <a name="add-an-edit-item-view"></a><a name="AddEditIndexView"></a>Hinzufügen einer Ansicht zum Bearbeiten von Elementen
 
-1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element** , und wählen Sie **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
 
 1. Nehmen Sie unter **Add MVC View** (MVC-Ansicht hinzufügen) die folgenden Änderungen vor:
 
@@ -197,7 +197,7 @@ Als Nächstes fügen wir die folgenden Ansichten hinzu.
 
 Fügen Sie abschließend eine Ansicht zum Abrufen aller Elemente mit den folgenden Schritten hinzu:
 
-1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element** , und wählen Sie **Hinzufügen** > **Ansicht** aus.
+1. Klicken Sie im **Projektmappen-Explorer** erneut mit der rechten Maustaste auf den Ordner **Element**, und wählen Sie **Hinzufügen** > **Ansicht** aus.
 
 1. Nehmen Sie unter **Add MVC View** (MVC-Ansicht hinzufügen) die folgenden Änderungen vor:
 
@@ -211,7 +211,7 @@ Fügen Sie abschließend eine Ansicht zum Abrufen aller Elemente mit den folgend
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Views/Item/Index.cshtml":::
 
-Schließen Sie nach dem Ausführen dieser Schritte alle *CSHTML* -Dokumente in Visual Studio.
+Schließen Sie nach dem Ausführen dieser Schritte alle *CSHTML*-Dokumente in Visual Studio.
 
 ### <a name="declare-and-initialize-services"></a><a name="initialize-services"></a>Dienste deklarieren und initialisieren
 
@@ -219,19 +219,19 @@ Zunächst fügen wir eine Klasse hinzu, die die Logik zur Verbindungsherstellung
 
 1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf Ihr Projekt, und wählen Sie **Hinzufügen** > **Neuer Ordner** aus. Geben Sie dem Ordner den Namen *Dienste*.
 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste** , und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *CosmosDbService* , und wählen Sie **Hinzufügen** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *CosmosDbService*, und wählen Sie **Hinzufügen** aus.
 
 1. Ersetzen Sie den Inhalt von *CosmosDbService.cs* durch den folgenden Code:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/CosmosDbService.cs":::
 
-1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste** , und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *ICosmosDbService* , und wählen Sie **Hinzufügen** aus.
+1. Klicken Sie mit der rechten Maustaste auf den Ordner **Dienste**, und wählen Sie **Hinzufügen** > **Klasse** aus. Nennen Sie die neue Klasse *ICosmosDbService*, und wählen Sie **Hinzufügen** aus.
 
-1. Fügen Sie der *ICosmosDbService* -Klasse den folgenden Code hinzu:
+1. Fügen Sie der *ICosmosDbService*-Klasse den folgenden Code hinzu:
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Services/ICosmosDbService.cs":::
 
-1. Öffnen Sie die Datei *Startup.cs* in Ihrer Lösung, und fügen Sie die **InitializeCosmosClientInstanceAsync** -Methode hinzu, mit der die Konfiguration gelesen und der Client initialisiert wird.
+1. Öffnen Sie die Datei *Startup.cs* in Ihrer Lösung, und fügen Sie die **InitializeCosmosClientInstanceAsync**-Methode hinzu, mit der die Konfiguration gelesen und der Client initialisiert wird.
 
    :::code language="csharp" source="~/samples-cosmosdb-dotnet-core-web-app/src/Startup.cs" id="InitializeCosmosClientInstanceAsync" :::
 
@@ -259,7 +259,7 @@ Zunächst fügen wir eine Klasse hinzu, die die Logik zur Verbindungsherstellung
 
 ### <a name="add-a-controller"></a><a name="add-a-controller"></a>Hinzufügen eines Controllers
 
-1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller** , und wählen Sie **Hinzufügen** > **Controller** aus.
+1. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf den Ordner **Controller**, und wählen Sie **Hinzufügen** > **Controller** aus.
 
 1. Wählen Sie unter **Gerüst hinzufügen** die Option **MVC-Controller – leer** und dann **Hinzufügen** aus.
 
@@ -287,11 +287,11 @@ Gehen Sie wie folgt vor, um die Anwendung auf Ihrem lokalen Computer zu testen:
 
 1. Wählen Sie den Link **Neu erstellen** aus, und fügen Sie Werte in die Felder **Name** und **Beschreibung** ein. Lassen Sie das Kontrollkästchen **Abgeschlossen** deaktiviert. Wenn Sie es aktivieren, fügt die App das neue Element im abgeschlossenen Zustand hinzu. Das Element wird dann nicht mehr in der ursprünglichen Liste angezeigt.
 
-1. Klicken Sie auf **Erstellen**. Sie erhalten von der App die Ansicht **Index** , und Ihr Element wird in der Liste angezeigt. Sie können Ihrer **Aufgabenliste** noch einige weitere Elemente hinzufügen.
+1. Klicken Sie auf **Erstellen**. Sie erhalten von der App die Ansicht **Index**, und Ihr Element wird in der Liste angezeigt. Sie können Ihrer **Aufgabenliste** noch einige weitere Elemente hinzufügen.
 
     :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Screenshot der Ansicht „Index“":::
   
-1. Wählen Sie neben einem **Element** in der Liste die Option **Bearbeiten** aus. Die App öffnet die Ansicht **Bearbeiten** , in der Sie alle Eigenschaften Ihres Objekts aktualisieren können, einschließlich des Flags **Abgeschlossen**. Wenn Sie **Abgeschlossen** und dann **Speichern** auswählen, zeigt die App das **Element** in der Liste als „Abgeschlossen“ an.
+1. Wählen Sie neben einem **Element** in der Liste die Option **Bearbeiten** aus. Die App öffnet die Ansicht **Bearbeiten**, in der Sie alle Eigenschaften Ihres Objekts aktualisieren können, einschließlich des Flags **Abgeschlossen**. Wenn Sie **Abgeschlossen** und dann **Speichern** auswählen, zeigt die App das **Element** in der Liste als „Abgeschlossen“ an.
 
    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Screenshot der Ansicht „Index“ mit aktiviertem Feld „Abgeschlossen“":::
 

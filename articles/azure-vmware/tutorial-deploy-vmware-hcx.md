@@ -3,18 +3,21 @@ title: 'Tutorial: Bereitstellen und Konfigurieren von VMware HCX'
 description: Erfahren Sie, wie Sie eine VMware HCX-Lösung für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren.
 ms.topic: tutorial
 ms.date: 11/18/2020
-ms.openlocfilehash: 57bcf1bd3023e56f6a64b5d82d8f1fc90be9dd47
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: afb5c653ce7c4b4a453a4031c5664042357de6c0
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888741"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95999625"
 ---
 # <a name="deploy-and-configure-vmware-hcx"></a>Bereitstellen und Konfigurieren von VMware HCX
 
 In diesem Artikel erfahren Sie, wie Sie den lokalen VMware HCX-Connector für Ihre private Azure VMware Solution-Cloud bereitstellen und konfigurieren. Mit VMware HCX können Sie Ihre VMware-Workloads zu Azure VMware Solution und zu anderen verbundenen Standorten über verschiedene Migrationstypen migrieren. Da Azure VMware Solution den HCX-Cloud-Manager bereitstellt und konfiguriert, müssen Sie den HCX-Connector in Ihr lokales VMware-Rechenzentrum herunterladen und ihn aktivieren und konfigurieren.
 
 VMware HCX Advanced Connector wird in Azure VMware Solution vorab bereitgestellt. Er unterstützt bis zu drei Standortverbindungen (lokal-zu-Cloud oder Cloud-zu-Cloud). Wenn Sie mehr als drei Standortverbindungen benötigen, senden Sie eine [Supportanfrage](https://portal.azure.com/#create/Microsoft.Support), um das Add-On [VMware HCX Enterprise](https://cloud.vmware.com/community/2019/08/08/introducing-hcx-enterprise/) zu aktivieren. Das Add-On befindet sich derzeit in der Vorschauphase. 
+
+>[!Note]
+>Obwohl das Tool VMware Configuration Maximum angibt, dass die maximale Anzahl von Standortpaaren zwischen dem lokalen Connector und Cloud Manager gleich 25 ist, schränkt die Lizenzierung dies wieder auf 3 für Advanced und 10 für Enterprise Edition ein.
 
 >[!NOTE]
 >VMware HCX Enterprise ist mit Azure VMware Solution als Vorschaudienst verfügbar. Der Dienst ist kostenlos und unterliegt den Nutzungsbedingungen für einen Vorschaudienst. Wenn der VMware HCX Enterprise-Dienst allgemein verfügbar ist, erhalten Sie eine Benachrichtigung, dass in 30 Tagen die Abrechnung umgestellt wird. Sie haben auch die Möglichkeit, den Dienst zu deaktivieren bzw. abzuwählen. Es gibt keinen einfachen Downgradepfad von VMware HCX Enterprise zu VMware HCX Advanced. Wenn Sie ein Downgrade durchführen möchten, ist eine erneute Bereitstellung erforderlich, was mit Downtime einhergeht.

@@ -5,12 +5,12 @@ ms.subservice: B2C
 ms.topic: include
 ms.date: 03/19/2020
 ms.author: mimart
-ms.openlocfilehash: 9b660bf20c90a84780175e70573c96a0ce1b0b7d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cb4cdef227c786b12790903037fdc02649592e3
+ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91377074"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "95990881"
 ---
 ## <a name="use-custom-page-content"></a>Verwenden benutzerdefinierter Seiteninhalte
 
@@ -56,7 +56,7 @@ In der folgenden Tabelle sind die von Azure AD B2C bereitgestellten Standardseit
 
 ## <a name="hosting-the-page-content"></a>Hosten des Seiteninhalts
 
-Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwenden, hosten Sie Ihre Inhalte für die Benutzeroberfläche auf einem beliebigen öffentlich verfügbaren HTTPS-Endpunkt, der CORS unterstützt. Beispiele sind [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure App Services](/azure/app-service/), Webserver, CDNs, AWS S3 oder Dateifreigabesysteme.
+Wenn Sie eigene HTML- und CSS-Dateien zum Anpassen der Benutzeroberfläche verwenden, hosten Sie Ihre Inhalte für die Benutzeroberfläche auf einem beliebigen öffentlich verfügbaren HTTPS-Endpunkt, der CORS unterstützt. Beispiele sind [Azure Blob Storage](../articles/storage/blobs/storage-blobs-introduction.md), [Azure App Services](../articles/app-service/index.yml), Webserver, CDNs, AWS S3 oder Dateifreigabesysteme.
 
 ## <a name="guidelines-for-using-custom-page-content"></a>Richtlinien zum Verwenden benutzerdefinierter Seiteninhalte
 
