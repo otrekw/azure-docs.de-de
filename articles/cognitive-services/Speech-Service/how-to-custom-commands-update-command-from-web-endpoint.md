@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/20/2020
 ms.author: encorona
-ms.openlocfilehash: a24f1337a68f38db273688e9a91c65ac2f4736b4
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 737b6e0534111924a31204d4548dfa59805c2fe5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94963605"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352574"
 ---
 # <a name="update-a-command-from-a-web-endpoint"></a>Aktualisieren eines Befehls über einen Webendpunkt
 
@@ -29,7 +29,7 @@ In diesem Artikel erfahren Sie, wie Sie einen laufenden Befehl über einen Weben
 
 ## <a name="create-an-azure-function"></a>Erstellen einer Azure-Funktion 
 
-Für dieses Beispiel benötigen Sie eine über HTTP ausgelöste [Azure-Funktion](https://docs.microsoft.com/azure/azure-functions/), die die folgende Eingabe (oder eine Teilmenge dieser Eingabe) unterstützt:
+Für dieses Beispiel benötigen Sie eine über HTTP ausgelöste [Azure-Funktion](../../azure-functions/index.yml), die die folgende Eingabe (oder eine Teilmenge dieser Eingabe) unterstützt:
 
 ```JSON
 {

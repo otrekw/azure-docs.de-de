@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 2f87f5c7e43757db476153db93d6ecc5082dde89
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: ee8d838ba315c2e261a61699948b71a710341165
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376756"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346357"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>Best Practices für eine QnA Maker-Wissensdatenbank
 
@@ -18,7 +18,7 @@ Die Anleitungen zum [Entwicklungszyklus einer Wissensdatenbank](../Concepts/deve
 
 ## <a name="extraction"></a>Extraktion
 
-Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../Concepts/content-types.md) für die Datenextraktion basierend auf Ihrem Dokumenttyp.
+Der QnA Maker-Dienst optimiert kontinuierlich die Algorithmen zum Extrahieren von Fragen und Antworten (QnA) aus Inhalten und erweitert die Liste der unterstützten Datei- und HTML-Formate. Befolgen Sie die [Richtlinien](../index.yml) für die Datenextraktion basierend auf Ihrem Dokumenttyp.
 
 Ganz allgemein sollten die Seiten mit häufig gestellten Fragen eigenständig bereitgestellt und nicht mit anderen Informationen kombiniert werden. Produkthandbücher sollten klare Überschriften und vorzugsweise eine Indexseite aufweisen.
 
@@ -117,10 +117,10 @@ Mit [Metadaten](../How-To/edit-knowledge-base.md) kann einer Clientanwendung mit
 
 ### <a name="use-synonyms"></a>Verwenden von Synonymen
 # <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
-Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und **für alle Wissensdatenbanken des Diensts gemeinsam verwendet**.
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme werden auf QnA Maker-Dienstebene hinzugefügt und **für alle Wissensdatenbanken des Diensts gemeinsam verwendet**.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
-Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme in QnA Maker verwaltet (Vorschau) werden **pro Wissensdatenbank hinzugefügt**.
+Für die englische Sprache werden Synonyme zwar teilweise unterstützt, aber Sie sollten Wortvarianten über die [Alterations-API](/rest/api/cognitiveservices/qnamaker/alterations/replace) verwenden (ohne Berücksichtigung der Groß- und Kleinschreibung), um Synonyme für Schlüsselwörter hinzuzufügen, die unterschiedliche Formen aufweisen. Synonyme in QnA Maker verwaltet (Vorschau) werden **pro Wissensdatenbank hinzugefügt**.
 
 |Ursprüngliches Wort|Synonyme|
 |--|--|
@@ -141,7 +141,7 @@ Beispielsweise könnten Sie zwei separate QnAs mit den folgenden Fragen haben:
 Da diese beiden QnAs sehr ähnliche Wörter verwenden, könnte diese Ähnlichkeit für viele Benutzeranfragen sehr ähnliche Bewertungen verursachen, die als *„Wo ist der Standort des `<x>`“* formuliert sind. Versuchen Sie stattdessen, mit Abfragen wie *„Wo ist der Parkplatz?“* und *„Wo ist der Geldautomat?“* klar zu unterscheiden, indem Sie Wörter wie „Standort“ vermeiden, die in vielen Fragen in Ihrer Wissensdatenbank vorkommen könnten.
 
 ## <a name="collaborate"></a>Zusammenarbeiten
-QnA Maker ermöglicht Benutzern das [Zusammenarbeiten](../How-to/collaborate-knowledge-base.md) an einer Knowledge Base. Benutzer benötigen Zugriff auf die Azure QnA Maker-Ressourcengruppe, um auf Wissensdatenbanken zugreifen zu können. Einige Organisationen lagern die Bearbeitung und Verwaltung ihrer Knowledge Base aus, möchten aber eventuell trotzdem weiterhin den Zugriff auf ihre Azure-Ressourcen schützen. Dieses Modell aus bearbeitenden und genehmigenden Personen erfolgt durch das Einrichten von zwei identischen [QnA Maker-Diensten](../How-to/set-up-qnamaker-service-azure.md) in unterschiedlichen Abonnements, von denen einer für den Bearbeitungs- und Testzyklus ausgewählt wird. Nach Abschluss der Tests werden die Inhalte der Wissensdatenbank mit einem [Import-/Export](../Tutorials/migrate-knowledge-base.md)vorgang an den QnA Maker-Dienst der genehmigenden Person übertragen, die die Wissensdatenbank schließlich veröffentlicht und den Endpunkt aktualisiert.
+QnA Maker ermöglicht Benutzern das [Zusammenarbeiten](../index.yml) an einer Knowledge Base. Benutzer benötigen Zugriff auf die Azure QnA Maker-Ressourcengruppe, um auf Wissensdatenbanken zugreifen zu können. Einige Organisationen lagern die Bearbeitung und Verwaltung ihrer Knowledge Base aus, möchten aber eventuell trotzdem weiterhin den Zugriff auf ihre Azure-Ressourcen schützen. Dieses Modell aus bearbeitenden und genehmigenden Personen erfolgt durch das Einrichten von zwei identischen [QnA Maker-Diensten](../How-to/set-up-qnamaker-service-azure.md) in unterschiedlichen Abonnements, von denen einer für den Bearbeitungs- und Testzyklus ausgewählt wird. Nach Abschluss der Tests werden die Inhalte der Wissensdatenbank mit einem [Import-/Export](../Tutorials/migrate-knowledge-base.md)vorgang an den QnA Maker-Dienst der genehmigenden Person übertragen, die die Wissensdatenbank schließlich veröffentlicht und den Endpunkt aktualisiert.
 
 
 

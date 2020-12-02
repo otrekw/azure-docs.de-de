@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: 0be2fecfad4d2a2b829266fa1d9574bcc4c50eee
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 048b53186aa0be388d9d801cd6590d4295a4faa7
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376676"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353169"
 ---
 # <a name="plan-your-qna-maker-app"></a>Planen Ihrer QnA Maker-App
 
@@ -59,7 +59,7 @@ Die Abfragevorhersageanforderung der Wissensdatenbank wird durch den Web-App-Pla
 
 Wenn Sie bereits einige dieser Ressourcen verwenden, können Sie die Freigabe von Ressourcen in Erwägung ziehen. Schauen Sie, welche Ressourcen [gemeinsam genutzt](azure-resources.md#share-services-with-qna-maker) werden können, wobei hierbei das Verständnis zugrunde liegt, dass die gemeinsame Nutzung von Ressourcen ein fortgeschrittenes Szenario ist.
 
-Alle Wissensdatenbanken, die in derselben QnA Maker-Ressource erstellt wurden, verwenden denselben **Test** -Abfragevorhersage-Endpunkt.
+Alle Wissensdatenbanken, die in derselben QnA Maker-Ressource erstellt wurden, verwenden denselben **Test**-Abfragevorhersage-Endpunkt.
 
 ### <a name="understand-the-impact-of-resource-selection"></a>Grundlegendes zu den Auswirkungen der Ressourcenauswahl
 
@@ -94,13 +94,13 @@ Sie haben jetzt die Möglichkeit, Wissensdatenbanken in verschiedenen Sprachen i
 
 ### <a name="ingest-data-sources"></a>Erfassen von Datenquellen
 
-Sie können eine der folgenden erfassten [Datenquellen](knowledge-base.md) verwenden, um eine Wissensdatenbank zu erstellen:
+Sie können eine der folgenden erfassten [Datenquellen](../index.yml) verwenden, um eine Wissensdatenbank zu erstellen:
 
 * Öffentliche URL
 * Private SharePoint-URL
 * Datei
 
-Beim Erfassungsprozess werden [unterstützte Inhaltstypen](content-types.md) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
+Beim Erfassungsprozess werden [unterstützte Inhaltstypen](../index.yml) in Markdown konvertiert. Die weitere Bearbeitung der *Antwort* erfolgt mit Markdown. Nachdem Sie eine Wissensdatenbank erstellt haben, können Sie [QnA-Paare](question-answer-set.md) im QnA Maker-Portal mit [Rich Text Authoring](../how-to/edit-knowledge-base.md#rich-text-editing-for-answer) bearbeiten.
 
 ### <a name="data-format-considerations"></a>Überlegungen zum Datenformat
 
@@ -124,17 +124,17 @@ Sie sollten beim Entwurf Ihres Konversationsflusses an eine Schleife denken, dam
 
 Projektmitarbeiter sind möglicherweise andere Entwickler, für die der vollständige Entwicklungsstapel der Wissensdatenbankanwendung freigeben ist, oder die nur auf die Erstellung der Wissensdatenbank beschränkt sind.
 
-Die Erstellung der Wissensdatenbank unterstützt mehrere [rollenbasierte Zugriffsberechtigungen](../how-to/collaborate-knowledge-base.md), die Sie im Azure-Portal anwenden, um den Handlungsspielraum eines Projektmitarbeiters einzuschränken.
+Die Erstellung der Wissensdatenbank unterstützt mehrere [rollenbasierte Zugriffsberechtigungen](../index.yml), die Sie im Azure-Portal anwenden, um den Handlungsspielraum eines Projektmitarbeiters einzuschränken.
 
 ## <a name="integration-with-client-applications"></a>Integration in Clientanwendungen
 
-Integration in [Clientanwendungen](integration-with-other-applications.md) wird durch Senden einer Abfrage an den Vorhersage-Runtimeendpunkt erreicht. Eine Abfrage wird mit einem SDK oder einer REST-basierten Anforderung an den Web-App-Endpunkt Ihres QnA Maker an Ihre bestimmte Wissensdatenbank gesendet.
+Integration in [Clientanwendungen](../index.yml) wird durch Senden einer Abfrage an den Vorhersage-Runtimeendpunkt erreicht. Eine Abfrage wird mit einem SDK oder einer REST-basierten Anforderung an den Web-App-Endpunkt Ihres QnA Maker an Ihre bestimmte Wissensdatenbank gesendet.
 
 Damit eine Clientanforderung ordnungsgemäß authentifiziert werden kann, muss die Clientanwendung die richtigen Anmeldeinformationen und die ID der Wissensdatenbank senden. Wenn Sie einen Azure Bot Service verwenden, konfigurieren Sie diese Einstellungen als Teil der Botkonfiguration im Azure-Portal.
 
 ### <a name="conversation-flow-in-a-client-application"></a>Konversationsfluss in einer Clientanwendung
 
-Der Konversationsfluss in einer [Clientanwendungs](integration-with-other-applications.md) wie einem Azure-Bot erfordert möglicherweise vor und nach der Interaktion mit der Wissensdatenbank Funktionalität.
+Der Konversationsfluss in einer [Clientanwendungs](../index.yml) wie einem Azure-Bot erfordert möglicherweise vor und nach der Interaktion mit der Wissensdatenbank Funktionalität.
 
 Unterstützt Ihre Clientanwendung den Konversationsfluss, entweder durch die Bereitstellung alternativer Mittel zur Bearbeitung von Folgeaufforderungen oder durch Smalltalk? Sofern dies der Fall ist, entwerfen Sie diese frühzeitig und stellen Sie sicher, dass die Abfrage der Clientanwendung von einem anderen Dienst oder bei der Übermittlung an Ihre Wissensdatenbank ordnungsgemäß bearbeitet wird.
 
@@ -148,11 +148,11 @@ In einem solchen Szenario mit [gemeinsam genutzter Architektur](../choose-natura
 
 ### <a name="active-learning-from-a-client-application"></a>Aktives Lernen über eine Clientanwendung
 
-QnA Maker nutzt _aktives Lernen_ , um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann anhand von Konversationseingabeaufforderungen feststellen, dass die Wissensdatenbank eine Antwort zurückgegeben hat, die für den Benutzer nicht hilfreich ist, und sie kann eine bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
+QnA Maker nutzt _aktives Lernen_, um Ihre Wissensdatenbank durch Vorschlagen alternativer Fragen zu einer Antwort zu verbessern. Die Clientanwendung ist für einen Teil dieses [aktiven Lernens](active-learning-suggestions.md) verantwortlich. Die Clientanwendung kann anhand von Konversationseingabeaufforderungen feststellen, dass die Wissensdatenbank eine Antwort zurückgegeben hat, die für den Benutzer nicht hilfreich ist, und sie kann eine bessere Antwort ermitteln. Die Clientanwendung muss [diese Informationen an die Wissensdatenbank zurücksenden](active-learning-suggestions.md#how-you-give-explicit-feedback-with-the-train-api), um die Vorhersagequalität zu verbessern.
 
 ### <a name="providing-a-default-answer"></a>Bereitstellen einer Standardantwort
 
-Wenn Ihre Wissensdatenbank keine Antwort findet, wird die _Standardantwort_ zurückgegeben. Diese Antwort kann auf der Seite **Einstellungen** im QnA Maker-Portal oder in den [APIs](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) konfiguriert werden.
+Wenn Ihre Wissensdatenbank keine Antwort findet, wird die _Standardantwort_ zurückgegeben. Diese Antwort kann auf der Seite **Einstellungen** im QnA Maker-Portal oder in den [APIs](/rest/api/cognitiveservices/qnamaker/knowledgebase/update#request-body) konfiguriert werden.
 
 Diese Standardantwort unterscheidet sich von der Standardantwort des Azure-Bots. Sie konfigurieren die Standardantwort für Ihren Azure-Bot im Azure-Portal als Teil der Konfigurationseinstellungen. Sie wird zurückgegeben, wenn der Schwellenwert für den Score nicht erreicht wird.
 
@@ -197,7 +197,7 @@ Alle Abfragen Ihrer Wissensdatenbank werden in Application Insights gespeichert.
 
 # <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
 
-In der verwalteten Bereitstellung wird Telemetrie über den [Azure Monitor-Dienst](https://docs.microsoft.com/azure/azure-monitor/) bereitgestellt. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
+In der verwalteten Bereitstellung wird Telemetrie über den [Azure Monitor-Dienst](../../../azure-monitor/index.yml) bereitgestellt. Verwenden Sie unsere [wichtigsten Abfragen](../how-to/get-analytics-knowledge-base.md), um Ihre Metriken zu verstehen.
 
 
 ---
@@ -217,7 +217,7 @@ Jedes Paar kann Folgendes enthalten:
 
 ### <a name="devops-development"></a>DevOps-Entwicklung
 
-Zum Entwickeln einer Wissensdatenbank, die in eine DevOps-Pipeline eingefügt werden soll, muss die Wissensdatenbank in [Batchtests](../quickstarts/batch-testing.md) isoliert sein.
+Zum Entwickeln einer Wissensdatenbank, die in eine DevOps-Pipeline eingefügt werden soll, muss die Wissensdatenbank in [Batchtests](../index.yml) isoliert sein.
 
 Eine Wissensdatenbank teilt den Cognitive Search-Index mit allen anderen Wissensdatenbanken der QnA Maker-Ressource. Obwohl die Wissensdatenbank durch Partition isoliert ist, kann die Freigabe des Indexes im Vergleich zur veröffentlichten Wissensdatenbank einen Unterschied im Ergebnis verursachen.
 

@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 10/16/2020
 ms.custom: devx-track-java, cog-serv-seo-aug-2020
 ms.author: pafarley
-ms.openlocfilehash: 6f5d1fd8a179f88677ddd6d7b1875f60836ade51
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 30360253c0b1aa34c4af1e5efdf3cf9b4d8baaa0
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918709"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96356493"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Azure Content Moderator-Clientbibliothek für Java. Führen Sie die nachfolgenden Schritte zum Installieren des Maven-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. 
 
@@ -48,7 +48,7 @@ Erstellen Sie in einem Konsolenfenster (etwa cmd, PowerShell oder Bash) ein neue
 mkdir myapp && cd myapp
 ```
 
-Führen Sie den Befehl `gradle init` in Ihrem Arbeitsverzeichnis aus. Mit diesem Befehl werden grundlegende Builddateien für Gradle, u. a. die Datei *build.gradle.kts* , erstellt. Diese Datei wird zur Laufzeit zum Erstellen und Konfigurieren Ihrer Anwendung verwendet.
+Führen Sie den Befehl `gradle init` in Ihrem Arbeitsverzeichnis aus. Mit diesem Befehl werden grundlegende Builddateien für Gradle, u. a. die Datei *build.gradle.kts*, erstellt. Diese Datei wird zur Laufzeit zum Erstellen und Konfigurieren Ihrer Anwendung verwendet.
 
 ```console
 gradle init --type basic
@@ -58,7 +58,7 @@ Wenn Sie zur Auswahl einer **DSL** aufgefordert werden, wählen Sie **Kotlin** a
 
 ## <a name="install-the-client-library"></a>Installieren der Clientbibliothek
 
-Navigieren Sie zur Datei *build.gradle.kts* , und öffnen Sie sie in Ihrer bevorzugten IDE bzw. Ihrem bevorzugten Text-Editor. Kopieren Sie anschließend die folgende Buildkonfiguration. Diese Konfiguration definiert das Projekt als Java-Anwendung, deren Einstiegspunkt die Klasse **ContentModeratorQuickstart** ist. Dabei werden die Content Moderator-Clientbibliothek sowie das GSON SDK für die JSON-Serialisierung importiert.
+Navigieren Sie zur Datei *build.gradle.kts*, und öffnen Sie sie in Ihrer bevorzugten IDE bzw. Ihrem bevorzugten Text-Editor. Kopieren Sie anschließend die folgende Buildkonfiguration. Diese Konfiguration definiert das Projekt als Java-Anwendung, deren Einstiegspunkt die Klasse **ContentModeratorQuickstart** ist. Dabei werden die Content Moderator-Clientbibliothek sowie das GSON SDK für die JSON-Serialisierung importiert.
 
 ```kotlin
 plugins {
@@ -103,9 +103,9 @@ Erstellen Sie in der Klasse **ContentModeratorQuickstart** der Anwendung Variabl
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte [Produktname]-Ressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
 >
-> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-security).
+> Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
 
-Fügen Sie in der **main** -Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert.
+Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu, die in dieser Schnellstartanleitung verwendet werden. Diese werden später definiert.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_maincalls)]
 
@@ -173,7 +173,7 @@ Speichern Sie abschließend die zurückgegebenen Informationen in der Liste `Eva
 
 ### <a name="print-results"></a>Ausgeben der Ergebnisse
 
-Fügen Sie nach der Schleife `while` den folgenden Code hinzu. Dieser gibt die Ergebnisse in der Konsole und in einer Ausgabedatei ( *src/main/resources/ModerationOutput.json* ) aus.
+Fügen Sie nach der Schleife `while` den folgenden Code hinzu. Dieser gibt die Ergebnisse in der Konsole und in einer Ausgabedatei (*src/main/resources/ModerationOutput.json*) aus.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_imagemod_printdata)]
 
@@ -191,7 +191,7 @@ Definieren Sie am Anfang der Klasse **ContentModeratorQuickstart** einen Verweis
 
 ### <a name="analyze-text"></a>Analysieren von Text
 
-Erstellen Sie eine neue Methode, die die TXT-Datei liest und die **screenText** -Methode für jede Zeile aufruft.
+Erstellen Sie eine neue Methode, die die TXT-Datei liest und die **screenText**-Methode für jede Zeile aufruft.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ContentModerator/src/main/java/ContentModeratorQuickstart.java?name=snippet_textmod)]
 
@@ -220,7 +220,7 @@ Führen Sie die Anwendung mit Befehl `gradle run` aus:
 gradle run
 ```
 
-Navigieren Sie dann zur Datei *src/main/resources/ModerationOutput.json* , und zeigen Sie die Ergebnisse der Inhaltsmoderation an.
+Navigieren Sie dann zur Datei *src/main/resources/ModerationOutput.json*, und zeigen Sie die Ergebnisse der Inhaltsmoderation an.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 

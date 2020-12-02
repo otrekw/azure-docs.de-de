@@ -10,19 +10,19 @@ ms.subservice: bing-video-search
 ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
-ms.openlocfilehash: 2fab4a57a939f9516140562cb8b8508b2ba69dc0
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 10277efe1f06de3633b2d614e2ee5ec0cc351c76
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379887"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351928"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Suchen nach Videos mit der Bing-Videosuche-API
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst geschieht).
-> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Bing-Suchdienste](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die Bing-Videosuche-API vereinfacht das Integrieren der Funktionen der kognitiven Bing-News-Suche in Anwendungen. Die API dient zwar in erster Linie zum Suchen und Zurückgeben von Videos aus dem Web, sie bietet jedoch auch verschiedene Funktionen für den intelligenten und gezielten Abruf von Videos im Web.
 
@@ -149,9 +149,9 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="expanding-the-query"></a>Erweitern der Abfrage
 
-Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Dachrinne reinigen* war, können die erweiterten Abfragen Folgendes sein: Dachrinnenreinigung **Werkzeuge** , Dachrinne reinigen **vom Boden aus** , Dachrinnenreinigung **Maschine** und **einfache** Dachrinnenreinigung.
+Wenn Bing die Abfrage erweitern kann, um die ursprüngliche Suche einzugrenzen, enthält das Objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `queryExpansions`. Wenn die Abfrage beispielsweise *Dachrinne reinigen* war, können die erweiterten Abfragen Folgendes sein: Dachrinnenreinigung **Werkzeuge**, Dachrinne reinigen **vom Boden aus**, Dachrinnenreinigung **Maschine** und **einfache** Dachrinnenreinigung.
 
-Das folgende Beispiel zeigt die erweiterten Abfragen für *Dachrinne reinigen* :
+Das folgende Beispiel zeigt die erweiterten Abfragen für *Dachrinne reinigen*:
 
 ```json
 {
@@ -180,9 +180,9 @@ Das Feld `queryExpansions` enthält eine Liste mit Objekten vom Typ [Query](/res
 
 ## <a name="pivoting-the-query"></a>Pivotieren der Abfrage
 
-Wenn Bing die ursprüngliche Suchabfrage segmentieren kann, enthält das Objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `pivotSuggestions`. Lautet die ursprüngliche Abfrage also beispielsweise *Dachrinne reinigen* , kann Bing die Abfrage in *Reinigen* und *Dachrinne* segmentieren.
+Wenn Bing die ursprüngliche Suchabfrage segmentieren kann, enthält das Objekt [Videos](/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videos) das Feld `pivotSuggestions`. Lautet die ursprüngliche Abfrage also beispielsweise *Dachrinne reinigen*, kann Bing die Abfrage in *Reinigen* und *Dachrinne* segmentieren.
 
-Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Dachrinne reinigen* :
+Das folgende Beispiel veranschaulicht die Pivotvorschläge für *Dachrinne reinigen*:
 
 ```json
 {

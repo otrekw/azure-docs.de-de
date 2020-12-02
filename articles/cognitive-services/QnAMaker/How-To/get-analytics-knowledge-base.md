@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/09/2020
-ms.openlocfilehash: f58fe342d66c328bdadf41fc965c2952605aea8e
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: 5f149dd6db82b66b45a4c995e2004936481af786
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376574"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352421"
 ---
 # <a name="get-analytics-on-your-knowledge-base"></a>Abrufen von Analysen zu Ihrer Wissensdatenbank
 
@@ -44,7 +44,7 @@ QnA Maker speichert alle Chatprotokolle und anderen Telemetriedaten, wenn Sie Ap
     | project timestamp, resultCode, duration, id, question, answer, score, performanceBucket,KbId
     ```
 
-    Klicken Sie auf **Ausführen** , um die Abfrage auszuführen.
+    Klicken Sie auf **Ausführen**, um die Abfrage auszuführen.
 
     [![Ausführen einer Abfrage zum Ermitteln von Fragen, Antworten und Bewertungen von Benutzern](../media/qnamaker-how-to-analytics-kb/run-query.png)](../media/qnamaker-how-to-analytics-kb/run-query.png#lightbox)
 
@@ -52,7 +52,7 @@ QnA Maker speichert alle Chatprotokolle und anderen Telemetriedaten, wenn Sie Ap
 
 QnA Maker verwaltet (Vorschau) verwendet Azure-Diagnoseprotokollierung, um die Telemetriedaten und Chatprotokolle zu speichern. Führen Sie die folgenden Schritte aus, um Beispielabfragen auszuführen, um Analysen zur Verwendung ihrer QnA Maker-Wissensdatenbank zu erhalten.
 
-1. [Aktivieren Sie die Diagnoseprotokollierung](https://docs.microsoft.com/azure/cognitive-services/diagnostic-logging) für Ihren QnA Maker verwaltet (Vorschau)-Dienst.
+1. [Aktivieren Sie die Diagnoseprotokollierung](../../diagnostic-logging.md) für Ihren QnA Maker verwaltet (Vorschau)-Dienst.
 
 2. Wählen Sie im vorherigen Schritt zusätzlich zu **Audit, RequestResponse und AllMetrics** noch **Trace** für die Protokollierung aus.
 

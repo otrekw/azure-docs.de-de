@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/09/2020
-ms.openlocfilehash: b22c73b3f0626b9938608e88c3382e3f5e8d97fc
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: f1712a51fcd35c348f6177b670a7686898a0c78b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94427478"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96346137"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Schnellstart: Erstellen, Trainieren und Veröffentlichen der QnA Maker-Wissensdatenbank
 
@@ -30,7 +30,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 2. Wählen Sie im QnA Maker-Portal die Option **Wissensdatenbank erstellen** aus.
 
-3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen** , wenn Sie bereits über eine QnA Maker-Ressource verfügen.
+3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen**, wenn Sie bereits über eine QnA Maker-Ressource verfügen.
 
     Wenn Sie die Ressource noch nicht erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
@@ -63,7 +63,7 @@ Sie können eine QnA Maker-Wissensdatenbank (KB) aus Ihren eigenen Inhalten erst
 
 2. Wählen Sie im QnA Maker-Portal die Option **Wissensdatenbank erstellen** aus.
 
-3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen** , wenn Sie bereits über eine QnA Maker-Ressource verfügen.
+3. Überspringen Sie **Schritt 1** auf der Seite **Erstellen**, wenn Sie bereits über eine QnA Maker-Ressource verfügen.
 
     Wenn Sie die Ressource noch nicht erstellt haben, wählen Sie **Create a QnA service** (QnA-Dienst erstellen) aus. Sie werden an das [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker) weitergeleitet, um einen QnA Maker-Dienst in Ihrem Abonnement einzurichten. Merken Sie sich die Azure Active Directory-ID, das Abonnement und den QnA-Ressourcennamen, die Sie beim Erstellen der Ressource ausgewählt haben.
 
@@ -163,7 +163,7 @@ Wenn Sie eine Wissensdatenbank veröffentlichen, werden die Inhalte Ihrer Wissen
 Nach der Veröffentlichung können Sie auf der Seite **Veröffentlichen** einen Bot erstellen:
 
 * Sie können schnell mehrere Bots erstellen, die alle auf die gleiche Wissensdatenbank verweisen, und dabei verschiedene Regionen oder Tarife für die einzelnen Bots verwenden.
-* Wenn Sie nur einen einzelnen Bot für die Wissensdatenbank erstellen möchten, verwenden Sie den Link zum **Anzeigen Ihrer Bots im Azure-Portal** , um eine Liste mit Ihren derzeitigen Bots anzuzeigen.
+* Wenn Sie nur einen einzelnen Bot für die Wissensdatenbank erstellen möchten, verwenden Sie den Link zum **Anzeigen Ihrer Bots im Azure-Portal**, um eine Liste mit Ihren derzeitigen Bots anzuzeigen.
 
 Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffentlichen, müssen Sie keine weiteren Schritte für den Bot ausführen. Er ist bereits für die Verwendung mit der Wissensdatenbank konfiguriert und funktioniert auch nach späteren Änderungen. Nach jeder Veröffentlichung einer Wissensdatenbank werden alle mit ihr verbundenen Bots automatisch aktualisiert.
 
@@ -182,7 +182,7 @@ Wenn Sie Änderungen an der Wissensdatenbank vornehmen und sie erneut veröffent
            * App Service-Plan und Standort
 
 
-1. Öffnen Sie nach der Erstellung des Bots die **Bot Service** -Ressource.
+1. Öffnen Sie nach der Erstellung des Bots die **Bot Service**-Ressource.
 1. Wählen Sie unter **Botverwaltung** die Option **Testen im Webchat** aus.
 1. Geben Sie bei der Chataufforderung **Nachricht eingeben** Folgendes ein:
 
@@ -212,5 +212,4 @@ Wenn Sie nicht mit der nächsten Schnellstartanleitung fortfahren, löschen Sie 
 Weitere Informationen finden Sie unter:
 
 * [Markdownformat in Antworten](../reference-markdown-format.md)
-* [Datenquellen](../concepts/knowledge-base.md) für QnA Maker-Inhalt
-
+* [Datenquellen](../index.yml) für QnA Maker-Inhalt

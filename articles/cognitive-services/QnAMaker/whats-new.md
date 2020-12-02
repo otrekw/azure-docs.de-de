@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 07/16/2020
-ms.openlocfilehash: 2016d6dfedef68c334758660e9affa0ad9b9d4a3
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 2c159e25195c5f144187268b4355c1078695e809
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94505239"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345524"
 ---
 # <a name="whats-new-in-qna-maker"></a>Neuerungen in QnA Maker
 
@@ -56,17 +56,17 @@ Informieren Sie sich über Neuigkeiten zu QnA Maker.
 
 ### <a name="november-2019"></a>November 2019
 
-* [US Government-Cloudunterstützung](https://docs.microsoft.com/azure/azure-government/documentation-government-services-aiandcognitiveservices#qna-maker) für QnA Maker
-* [Mehrfachdurchlauf](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/multiturn-conversation) allgemein verfügbar
-* [Geplauderunterstützung](https://docs.microsoft.com/azure/cognitive-services/qnamaker/how-to/chit-chat-knowledge-base#language-support) in Sprachen der Ebene 1 verfügbar
+* [US Government-Cloudunterstützung](../../azure-government/compare-azure-government-global-azure.md#guidance-for-developers) für QnA Maker
+* [Mehrfachdurchlauf](./how-to/multiturn-conversation.md) allgemein verfügbar
+* [Geplauderunterstützung](./how-to/chit-chat-knowledge-base.md#language-support) in Sprachen der Ebene 1 verfügbar
 
 ### <a name="october-2019"></a>Oktober 2019
 
-* [Explizites Festlegen der Sprache](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) für alle Wissensdatenbanken im QnA Maker-Dienst
+* [Explizites Festlegen der Sprache](./index.yml) für alle Wissensdatenbanken im QnA Maker-Dienst
 
 ### <a name="september-2019"></a>September 2019
 
-* Importieren und Exportieren mit dem [XLS-Dateiformat](concepts/content-types.md)
+* Importieren und Exportieren mit dem [XLS-Dateiformat](./index.yml)
 
 ### <a name="june-2019"></a>Juni 2019
 

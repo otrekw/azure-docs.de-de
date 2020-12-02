@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8c13dc0854fb29467b0fe8a1ce5f2dfc1c19bd78
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91777733"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352336"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Erstellen einer Wissensdatenbank und Verwalten der Einstellungen
 
@@ -65,7 +65,7 @@ ms.locfileid: "91777733"
 
 1. Wählen Sie eine bestimmte Wissensdatenbank aus, um Änderungen daran vorzunehmen.
 
-1.  Wählen Sie **Settings**aus. Die folgende Liste enthält Felder, die Sie ändern können:
+1.  Wählen Sie **Settings** aus. Die folgende Liste enthält Felder, die Sie ändern können:
 
        |Zielsetzung|Aktion|
        |--|--|
@@ -107,7 +107,7 @@ Wenn Sie Ihre Wissensdatenbank für [Mitwirkende](collaborate-knowledge-base.md)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich über das [Verwalten der Sprache](language-knowledge-base.md) aller Wissensdatenbanken in einer Ressource.
+Informieren Sie sich über das [Verwalten der Sprache](../index.yml) aller Wissensdatenbanken in einer Ressource.
 
 * Bearbeiten von Frage-Antwort-Paaren
 * Verwalten der von QnA Maker verwendeten Azure-Ressourcen

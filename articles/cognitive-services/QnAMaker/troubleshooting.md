@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: troubleshooting
 ms.date: 11/09/2020
-ms.openlocfilehash: 6bf9eb5fbb8604bca67279f5f41c8aed19a510c0
-ms.sourcegitcommit: 051908e18ce42b3b5d09822f8cfcac094e1f93c2
+ms.openlocfilehash: e8b1d985fcb2852df52382e005ec0f0266e23d9d
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94376875"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345643"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>Problembehandlung für QnA Maker
 
@@ -84,7 +84,7 @@ Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/A
 <details>
 <summary><b>Wie groß darf eine von mir erstellte Wissensdatenbank sein?</b></summary>
 
-**Antwort:** Die Größe der Wissensdatenbank hängt von der beim Erstellen des QnA Maker-Diensts ausgewählten SKU für Azure Search ab. Ausführlichere Informationen finden Sie [hier](./Tutorials/choosing-capacity-qnamaker-deployment.md).
+**Antwort:** Die Größe der Wissensdatenbank hängt von der beim Erstellen des QnA Maker-Diensts ausgewählten SKU für Azure Search ab. Ausführlichere Informationen finden Sie [hier](./concepts/azure-resources.md).
 
 </details>
 
@@ -98,7 +98,7 @@ Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/A
 <details>
 <summary><b>Wie gebe ich eine Wissensdatenbank für andere Personen frei?</b></summary>
 
-**Antwort:** Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./How-To/collaborate-knowledge-base.md) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
+**Antwort:** Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./index.yml) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
 
 </details>
 
@@ -137,7 +137,7 @@ Alle Löschvorgänge sind endgültig, dazu gehört auch das Löschen von Frage/A
 <details>
 <summary><b>Warum wird mein SharePoint-Link nicht extrahiert?</b></summary>
 
-**Antwort:** Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concepts/knowledge-base.md#data-source-locations).
+**Antwort:** Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./concepts/data-sources-and-content.md#data-source-locations).
 
 </details>
 
@@ -167,7 +167,7 @@ Wenn die QnA-Paare in der Wissensdatenbank hinzugefügt wurden, können Sie den 
 <details>
 <summary><b>Unterstützt QnA Maker andere Sprachen als Englisch?</b></summary>
 
-**Antwort:** Weitere Informationen hierzu finden Sie unter [Unterstützte Sprachen](./Overview/languages-supported.md).
+**Antwort:** Weitere Informationen hierzu finden Sie unter [Unterstützte Sprachen](./overview/language-support.md).
 
 Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, dass Sie für jede Sprache einen separaten Dienst erstellen.
 
@@ -185,7 +185,7 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Wie groß darf eine von mir erstellte Wissensdatenbank sein?</b></summary>
 
-**Antwort:** Die Größe der Wissensdatenbank hängt von der beim Erstellen des QnA Maker-Diensts ausgewählten SKU für Azure Search ab. Ausführlichere Informationen finden Sie [hier](./Tutorials/choosing-capacity-qnamaker-deployment.md).
+**Antwort:** Die Größe der Wissensdatenbank hängt von der beim Erstellen des QnA Maker-Diensts ausgewählten SKU für Azure Search ab. Ausführlichere Informationen finden Sie [hier](./concepts/azure-resources.md).
 
 </details>
 
@@ -199,7 +199,7 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Wie gebe ich eine Wissensdatenbank für andere Personen frei?</b></summary>
 
-**Antwort:** Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./How-To/collaborate-knowledge-base.md) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
+**Antwort:** Die Freigabe erfolgt auf der Ebene eines QnA Maker-Diensts, was bedeutet, dass alle Wissensdatenbanken in diesem Dienst freigegeben werden. [Hier](./index.yml) finden Sie Informationen zum Zusammenarbeiten an einer Wissensdatenbank.
 
 </details>
 
@@ -220,7 +220,7 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Warum wird mein SharePoint-Link nicht extrahiert?</b></summary>
 
-**Antwort:** Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./Concepts/knowledge-base.md#data-source-locations).
+**Antwort:** Weitere Informationen finden Sie unter [Speicherorte von Datenquellen](./concepts/data-sources-and-content.md#data-source-locations).
 
 </details>
 
@@ -250,7 +250,7 @@ Wenn die QnA-Paare in der Wissensdatenbank hinzugefügt wurden, können Sie den 
 <details>
 <summary><b>Unterstützt QnA Maker andere Sprachen als Englisch?</b></summary>
 
-**Antwort:** Weitere Informationen hierzu finden Sie unter [Unterstützte Sprachen](./Overview/languages-supported.md).
+**Antwort:** Weitere Informationen hierzu finden Sie unter [Unterstützte Sprachen](./overview/language-support.md).
 
 Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, dass Sie für jede Sprache einen separaten Dienst erstellen.
 
@@ -366,7 +366,7 @@ Wenn Sie über Inhalte in verschiedenen Sprachen verfügen, stellen Sie sicher, 
 <details>
 <summary><b>Muss ich Bot Framework nutzen, um QnA Maker verwenden zu können?</b></summary>
 
-**Antwort:** Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird jedoch als eine von mehreren Vorlagen in [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0&preserve-view=true) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
+**Antwort:** Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird jedoch als eine von mehreren Vorlagen in [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
 
 </details>
 
@@ -405,7 +405,7 @@ Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` g
 **Antwort:** Führen Sie die folgenden Schritte aus, um den QnA Maker-Dienst als Webchat-Steuerelement in Ihre Website einzubetten:
 
 1. Erstellen Sie Ihren FAQ-Bot, indem Sie den [hier](./Quickstarts/create-publish-knowledge-base.md) angegebenen Anweisungen folgen.
-2. Aktivieren Sie den Webchat, indem Sie die [hier](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
+2. Aktivieren Sie den Webchat, indem Sie die [hier](/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
 
 </details>
 
@@ -415,7 +415,7 @@ Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` g
 <details>
 <summary><b>Muss ich Bot Framework nutzen, um QnA Maker verwenden zu können?</b></summary>
 
-**Antwort:** Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird jedoch als eine von mehreren Vorlagen in [Azure Bot Service](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0&preserve-view=true) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
+**Antwort:** Nein. Sie müssen [Bot Framework](https://github.com/Microsoft/botbuilder-dotnet) nicht in Verbindung mit QnA Maker verwenden. QnA Maker wird jedoch als eine von mehreren Vorlagen in [Azure Bot Service](/azure/bot-service/?preserve-view=true&view=azure-bot-service-4.0) angeboten. Bot Service ermöglicht die schnelle, intelligente Botentwicklung über Microsoft Bot Framework und wird in einer serverlosen Umgebung ausgeführt.
 
 </details>
 
@@ -454,7 +454,7 @@ Der Endpunktschlüssel der Wissensdatenbank ist im ABS-Dienst mit `QnAAuthkey` g
 **Antwort:** Führen Sie die folgenden Schritte aus, um den QnA Maker-Dienst als Webchat-Steuerelement in Ihre Website einzubetten:
 
 1. Erstellen Sie Ihren FAQ-Bot, indem Sie den [hier](./Quickstarts/create-publish-knowledge-base.md) angegebenen Anweisungen folgen.
-2. Aktivieren Sie den Webchat, indem Sie die [hier](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
+2. Aktivieren Sie den Webchat, indem Sie die [hier](/azure/bot-service/bot-service-channel-connect-webchat) aufgeführten Schritte ausführen.
 
 ---
 
