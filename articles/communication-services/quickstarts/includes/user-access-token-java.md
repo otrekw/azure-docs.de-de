@@ -10,17 +10,17 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: tchladek
-ms.openlocfilehash: de578ec286a8232ee8d4e259b2f37fb76101f7a5
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 6be69a1ec20ed859769c944a2f66de1310c09507
+ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506216"
+ms.lasthandoff: 11/19/2020
+ms.locfileid: "94915248"
 ---
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-- [Java Development Kit (JDK)](https://docs.microsoft.com/java/azure/jdk/?view=azure-java-stable&preserve-view=true), Version 8 oder höher.
+- [Java Development Kit (JDK)](/java/azure/jdk/?preserve-view=true&view=azure-java-stable), Version 8 oder höher.
 - [Apache Maven](https://maven.apache.org/download.cgi).
 - Eine bereitgestellte Communication Services-Ressource und eine Verbindungszeichenfolge. [Erstellen Sie eine Communication Services-Ressource.](../create-communication-resource.md)
 
@@ -44,7 +44,7 @@ Wie Sie sehen, wurde durch die Aufgabe „generate“ ein Verzeichnis erstellt, 
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-communication-administration</artifactId>
-    <version>1.0.0-beta.2</version> 
+    <version>1.0.0-beta.3</version> 
 </dependency>
 ```
 
@@ -98,12 +98,22 @@ HttpClient httpClient = new NettyAsyncHttpClientBuilder().build();
 
 CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
     .endpoint(endpoint)
-    .credential(new CommunicationClientCredential(accessKey))
+    .accessKey(accessKey)
     .httpClient(httpClient)
     .buildClient();
 ```
 
-Sie können den Client mit einem beliebigen benutzerdefinierten HTTP-Client initialisieren, der die Schnittstelle `com.azure.core.http.HttpClient`implementiert. Im obigen Code wird die Verwendung des von `azure-core` bereitgestellten [Azure Core-Netty-HTTP-Clients](https://docs.microsoft.com/java/api/overview/azure/core-http-netty-readme?view=azure-java-stable&preserve-view=true) gezeigt.
+Sie können den Client mit einem beliebigen benutzerdefinierten HTTP-Client initialisieren, der die Schnittstelle `com.azure.core.http.HttpClient`implementiert. Im obigen Code wird die Verwendung des von `azure-core` bereitgestellten [Azure Core-Netty-HTTP-Clients](/java/api/overview/azure/core-http-netty-readme?preserve-view=true&view=azure-java-stable) gezeigt.
+
+Anstelle des Endpunkts und des Zugriffsschlüssels können Sie mithilfe der ConnectionString()-Funktion auch die gesamte Verbindungszeichenfolge bereitstellen. 
+```java
+// Your can find your connection string from your resource in the Azure Portal
+String connectionString = "<connection_string>";
+CommunicationIdentityClient communicationIdentityClient = new CommunicationIdentityClientBuilder()
+    .connectionString(connectionString)
+    .httpClient(httpClient)
+    .buildClient();
+```
 
 ## <a name="create-an-identity"></a>Erstellen einer Identität
 

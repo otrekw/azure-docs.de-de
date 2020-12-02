@@ -10,10 +10,10 @@ ms.date: 05/11/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: b70beb90fae794eb5512cb8b466524169c4c7b53
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
+ms.lasthandoff: 11/29/2020
 ms.locfileid: "92792989"
 ---
 # <a name="move-an-azure-storage-account-to-another-region"></a>Verschieben eines Azure Storage-Kontos in eine andere Region
@@ -101,19 +101,19 @@ So exportieren Sie eine Vorlage mithilfe von PowerShell
 
 So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
 
-1. Klicken Sie im Azure-Portal auf **Ressource erstellen** .
+1. Klicken Sie im Azure-Portal auf **Ressource erstellen**.
 
-2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE** .
+2. Geben Sie in **Marketplace durchsuchen** den Begriff **Vorlagenbereitstellung** ein, und drücken Sie dann die **EINGABETASTE**.
 
 3. Wählen Sie **Vorlagenbereitstellung** aus.
 
     ![Azure Resource Manager-Vorlagenbibliothek](./media/storage-account-move/azure-resource-manager-template-library.png)
 
-4. Klicken Sie auf **Erstellen** .
+4. Klicken Sie auf **Erstellen**.
 
-5. Wählen Sie **Eigene Vorlage im Editor erstellen** .
+5. Wählen Sie **Eigene Vorlage im Editor erstellen**.
 
-6. Wählen Sie **Datei laden** aus, und befolgen Sie dann die Anweisungen zum Laden der Datei **template.json** , die Sie im vorherigen Abschnitt heruntergeladen haben.
+6. Wählen Sie **Datei laden** aus, und befolgen Sie dann die Anweisungen zum Laden der Datei **template.json**, die Sie im vorherigen Abschnitt heruntergeladen haben.
 
 7. Benennen Sie in der Datei **template.json** das Zielspeicherkonto, indem Sie den Standardwert des Speicherkontonamens festlegen. In diesem Beispiel wird der Standardwert des Speicherkontonamens auf `mytargetaccount` festgelegt.
     
@@ -137,7 +137,7 @@ So stellen Sie die Vorlage mithilfe des Azure-Portals bereit
          "location": "centralus"
          }]          
     ```
-    Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus** .
+    Informationen zum Abrufen von Regionsstandortcodes finden Sie unter [Azure-Standorte](https://azure.microsoft.com/global-infrastructure/locations/).  Der Code für eine Region ist der Regionsname ohne Leerzeichen, **USA, Mitte** = **centralus**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -156,7 +156,7 @@ So stellen Sie die Vorlage mithilfe von PowerShell bereit
     },
     ``` 
 
-2. Bearbeiten Sie die **location** -Eigenschaft in der Datei **template.json** in der Zielregion. Dieses Beispiel legt den Zielbereich auf `eastus` fest.
+2. Bearbeiten Sie die **location**-Eigenschaft in der Datei **template.json** in der Zielregion. Dieses Beispiel legt den Zielbereich auf `eastus` fest.
 
     ```json
     "resources": [{
@@ -182,17 +182,17 @@ Stellen Sie die Vorlage bereit, um ein neues Speicherkonto in der Zielregion zu 
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)
 
-1. Speichern Sie die Datei **template.json** .
+1. Speichern Sie die Datei **template.json**.
 
 2. Geben Sie die Eigenschaftswerte ein oder wählen Sie sie aus:
 
-- **Abonnement** : Wählen Sie ein Azure-Abonnement aus.
+- **Abonnement**: Wählen Sie ein Azure-Abonnement aus.
 
-- **Ressourcengruppe** : Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
+- **Ressourcengruppe**: Wählen Sie **Neu erstellen** aus, und benennen Sie die Ressourcengruppe.
 
-- **Standort** : Wählen Sie einen Azure-Standort aus.
+- **Standort**: Wählen Sie einen Azure-Standort aus.
 
-3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen** .
+3. Klicken Sie auf das Kontrollkästchen **Ich stimme den oben genannten Geschäftsbedingungen zu** und dann auf die Schaltfläche **Kauf auswählen**.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -253,7 +253,7 @@ Um die Änderungen zu übernehmen und das Verschieben eines Speicherkonto abzusc
 
 So entfernen Sie ein Speicherkonto über das Azure-Portal
 
-1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Speicherkonten** , um die Liste mit Ihren Speicherkonten anzuzeigen.
+1. Erweitern Sie im Azure-Portal das Menü auf der linken Seite, um das Menü mit den Diensten zu öffnen, und klicken Sie auf **Speicherkonten**, um die Liste mit Ihren Speicherkonten anzuzeigen.
 
 2. Suchen Sie das zu löschende Zielspeicherkonto, und klicken Sie mit der rechten Maustaste rechts neben der Liste auf die Schaltfläche **Mehr** ( **...** ).
 
