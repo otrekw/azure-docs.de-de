@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 10/27/2020
-ms.openlocfilehash: 0267d09bc23f9aa5c1f5981ddf9386f3827c75d3
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: b40144079304b6981ff8faf251a345dbb163ecac
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92754255"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459307"
 ---
 # <a name="how-to-configure-your-consulting-service-offer-properties"></a>Konfigurieren der Eigenschaften eines Beratungsdienstangebots
 
@@ -33,10 +33,10 @@ Wählen Sie in der Dropdownliste **Primäres Produkt** das Microsoft-Produkt aus
 Wählen Sie in der Dropdownliste **Typ des Beratungsdiensts** den Typ des Beratungsdiensts aus, den Sie Kunden anbieten. Diese Typen sind verfügbar:
 
 * **Bewertung:** Hierbei handelt es sich um eine Auswertung der Umgebung eines Kunden, bei der die Eignung einer Lösung bestimmt und die Kosten sowie der Zeitrahmen für die Implementierung geschätzt wird.
-* **Einweisung** : Hierbei handelt es sich um eine Einführung in eine Lösung oder einen Dienst mithilfe von Frameworks, Demos und Beispielen von Kunden.
-* **Implementierung** : Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird.
-* **Proof of Concept** : Dies bezieht sich auf eine Implementierung in einem begrenzten Umfang, um zu ermitteln, ob eine Lösung die Anforderungen des Kunden erfüllt.
-* **Workshop** : Dieses interaktive Angebot wird beim Kunden vor Ort durchgeführt. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
+* **Einweisung**: Hierbei handelt es sich um eine Einführung in eine Lösung oder einen Dienst mithilfe von Frameworks, Demos und Beispielen von Kunden.
+* **Implementierung**: Eine umfassende Installation, durch die eine vollständig funktionierenden Lösung erstellt wird.
+* **Proof of Concept**: Dies bezieht sich auf eine Implementierung in einem begrenzten Umfang, um zu ermitteln, ob eine Lösung die Anforderungen des Kunden erfüllt.
+* **Workshop**: Dieses interaktive Angebot wird beim Kunden vor Ort durchgeführt. Dabei kann es sich um Schulungen, Einweisungen, Bewertungen oder Demos handeln, die auf den Daten oder der Umgebung des Kunden aufbauen.
 
 ## <a name="select-relevant-industries"></a>Auswählen relevanter Branchen
 
@@ -50,7 +50,7 @@ Die Informationen in diesem Abschnitt helfen dabei, Ihr Angebot zu kategorisiere
 Wählen Sie bis zu drei Kompetenzen aus, die für den Dienstbereich Ihres Angebots relevant sind. Ihre Auswahl wird Kunden in der Angebotsliste angezeigt.
 
 > [!IMPORTANT]
-> Abhängig von Ihrem primären Produkt kann es erforderlich sein, dass Sie über mindestens eine Kompetenz verfügen. Details finden Sie in den [Zertifizierungsrichtlinien](https://docs.microsoft.com/legal/marketplace/certification-policies#800-consulting-services).
+> Abhängig von Ihrem primären Produkt kann es erforderlich sein, dass Sie über mindestens eine Kompetenz verfügen. Details finden Sie in den [Zertifizierungsrichtlinien](/legal/marketplace/certification-policies#800-consulting-services).
 
 Speichern Sie den Entwurf, bevor Sie fortfahren.
 

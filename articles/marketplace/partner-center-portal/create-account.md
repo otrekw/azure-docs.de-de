@@ -8,12 +8,12 @@ ms.date: 11/02/2020
 author: parthpandyaMSFT
 ms.author: parthp
 ms.custom: contperfq2
-ms.openlocfilehash: ccdc87d03181bad1aba4dd362a651fa42381343a
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 39a9b363c847b615bfbe049b4b47628e8688c607
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95542285"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458109"
 ---
 # <a name="create-a-commercial-marketplace-account-in-partner-center"></a>Erstellen eines Kontos im kommerziellen Marketplace in Partner Center
 
@@ -114,7 +114,7 @@ Sie haben jetzt ein Konto für den kommerziellen Marketplace in Partner Center e
 >
 >Persönliche Konten sind für Entwickler gedacht, die selbstständig arbeiten. Unternehmenskonten sind für Organisationen und Unternehmen vorgesehen. Mit Unternehmenskonten können Sie Anwendungen mit zusätzlichen Funktionen übermitteln.
 >
-> Um zu ermitteln, ob Sie berechtigt sind, das Konto für Ihr Unternehmen einzurichten, führen wir eine zusätzliche Überprüfung durch, nachdem Sie sich registriert haben. Diese Überprüfung kann einige Tage bis zu ein paar Wochen dauern und beinhaltet häufig einen Anruf bei Ihrem Unternehmen. Mit beiden Kontotypen können Sie Anwendungen, Add-Ins und Dienste übermitteln. Weitere Informationen finden Sie unter  [Kontotypen, Standorte und Gebühren](https://docs.microsoft.com/windows/uwp/publish/account-types-locations-and-fees).
+> Um zu ermitteln, ob Sie berechtigt sind, das Konto für Ihr Unternehmen einzurichten, führen wir eine zusätzliche Überprüfung durch, nachdem Sie sich registriert haben. Diese Überprüfung kann einige Tage bis zu ein paar Wochen dauern und beinhaltet häufig einen Anruf bei Ihrem Unternehmen. Mit beiden Kontotypen können Sie Anwendungen, Add-Ins und Dienste übermitteln. Weitere Informationen finden Sie unter  [Kontotypen, Standorte und Gebühren](/windows/uwp/publish/account-types-locations-and-fees).
 
 Wenn Sie sich für den kommerziellen Marketplace mit dem gleichen Konto registrieren wie für Ihr Entwicklerprogramm, werden im linken Bereich von Partner Center alle Ihre vorhandenen Programmregistrierungen angezeigt.
 

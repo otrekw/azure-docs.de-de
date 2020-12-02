@@ -10,16 +10,16 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: af3935bab5cd4d6a2aa4a9e3250f6beec19a8ea4
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736674"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458389"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
-Die Azure-Formularerkennung kann Informationen aus Verkaufsrechnungen mithilfe seiner vordefinierten Rechnungsmodelle analysieren und extrahieren. Mit der Rechnungs-API können Kunden Rechnungen in verschiedenen Formaten verwenden und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](https://docs.microsoft.com/azure/cognitive-services/computer-vision/concept-recognizing-text) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Sie extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse und mehr. Die vordefinierte Rechnungs-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
+Die Azure-Formularerkennung kann Informationen aus Verkaufsrechnungen mithilfe seiner vordefinierten Rechnungsmodelle analysieren und extrahieren. Mit der Rechnungs-API können Kunden Rechnungen in verschiedenen Formaten verwenden und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Sie kombiniert unsere leistungsstarken Funktionen zur [optischen Zeichenerkennung (Optical Character Recognition, OCR)](../computer-vision/concept-recognizing-text.md) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Sie extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse und mehr. Die vordefinierte Rechnungs-API ist in der Vorschauversion der Formularerkennung (v2.1) öffentlich verfügbar.
 
 ## <a name="what-does-the-invoice-service-do"></a>Welche Aufgaben führt der Rechnungsdienst aus?
 
@@ -45,7 +45,7 @@ Zum Ausprobieren des Rechnungsdiensts „Formularerkennung“ benötigen Sie ein
 
 ## <a name="the-analyze-invoice-operation"></a>Der Vorgang „Analysieren der Rechnung“
 
-Der Vorgang [Analysieren der Rechnung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync) verwendet ein Bild oder eine PDF-Datei einer Rechnung als Eingabe und extrahiert die relevanten Werte. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
+Der Vorgang [Analysieren der Rechnung](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291) verwendet ein Bild oder eine PDF-Datei einer Rechnung als Eingabe und extrahiert die relevanten Werte. Bei diesem Aufruf wird ein Antwortheaderfeld namens `Operation-Location` zurückgegeben. Der `Operation-Location`-Wert ist eine URL, die die Ergebnis-ID enthält, die im nächsten Schritt verwendet werden soll.
 
 |Antwortheader| Ergebnis-URL |
 |:-----|:----|
@@ -53,7 +53,7 @@ Der Vorgang [Analysieren der Rechnung](https://westcentralus.dev.cognitive.micro
 
 ## <a name="the-get-analyze-invoice-result-operation"></a>Der Vorgang „Abrufen des Ergebnisses der Rechnungsanalyse“
 
-Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Rechnungsanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/GetAnalyzeInvoiceResult) aufgerufen. Dieser Vorgang verwendet als Eingabe die Ergebnis-ID, die durch den Vorgang „Analysieren der Rechnung“ erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
+Im zweiten Schritt wird der Vorgang zum [Abrufen des Ergebnisses der Rechnungsanalyse](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9acb78c40a2533aee83) aufgerufen. Dieser Vorgang verwendet als Eingabe die Ergebnis-ID, die durch den Vorgang „Analysieren der Rechnung“ erstellt wurde. Er gibt eine JSON-Antwort zurück, die ein **Status**-Feld mit den folgenden möglichen Werten enthält. Sie rufen diesen Vorgang iterativ auf, bis er mit dem Wert **succeeded** (erfolgreich) zurückgegeben wird. Verwenden Sie ein Intervall von 3 bis 5 Sekunden, um zu vermeiden, dass die Rate der Anforderungen pro Sekunde (RPS) überschritten wird.
 
 |Feld| type | Mögliche Werte |
 |:-----|:----:|:----|
@@ -113,4 +113,3 @@ Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. N
 
 * [Was ist die Formularerkennung?](./overview.md)
 * [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
-

@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 003bf5241611df450fa6d0ecadff264c4d5de243
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 891366060cddaf2a046de36fa9300432977ec903
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842854"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457734"
 ---
 # <a name="azure-security-baseline-for-azure-iot-hub"></a>Azure-Sicherheitsbaseline für Azure IoT Hub
 
@@ -33,7 +33,7 @@ Es empfiehlt sich, die Konnektivität mit Ihren Azure-Ressourcen (einschließlic
 Beschränken Sie geöffnete Hardwareanschlüsse in Ihren Geräten auf ein absolutes Minimum, um unerwünschten Zugriff zu vermeiden. Entwickeln Sie darüber hinaus Mechanismen, um physische Manipulationen am Gerät zu verhindern oder zu erkennen.
 
 - [Unterstützung für virtuelle IoT-Netzwerke](virtual-network-support.md)
-- [Bewährte Methoden für IoT-Netzwerke](../iot-fundamentals/security-recommendations.md?context=azure%252fiot-hub%252frc%252frc#networking)
+- [Bewährte Methoden für IoT-Netzwerke](../iot-fundamentals/security-recommendations.md?context=azure%2fiot-hub%2frc%2frc#networking)
 - [Übersicht über Azure Private Link](../private-link/private-link-overview.md)
 - [Azure-Netzwerksicherheitsgruppe](../virtual-network/network-security-groups-overview.md)
 
@@ -73,7 +73,7 @@ Azure DDoS Protection Basic ist bereits aktiviert und steht im Rahmen von IoT Hu
 
 - [Azure Security Center für verdächtige IoT-IP-Adressenkommunikation](../defender-for-iot/concept-security-alerts.md)
 
-- [Verwalten von Azure DDoS Protection Basic](../virtual-network/ddos-protection-overview.md)
+- [Verwalten von Azure DDoS Protection Basic](../ddos-protection/ddos-protection-overview.md)
 
 - [Bedrohungsschutz in Azure Security Center](../security-center/azure-defender.md)
 
@@ -220,7 +220,7 @@ Alternativ können Sie auch Daten in Azure Sentinel oder einer SIEM-Drittanbiete
 - [Überwachen der Azure IoT-Integrität](monitor-iot-hub.md)
 - [Durchführen des Onboardings für Azure Sentinel](../sentinel/quickstart-onboard.md)
   
-- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/get-started-portal.md)
+- [Erste Schritte mit Log Analytics-Abfragen](../azure-monitor/log-query/log-analytics-tutorial.md)
    
 - [Ausführen benutzerdefinierter Abfragen in Azure Monitor](../azure-monitor/log-query/get-started-queries.md)
 
