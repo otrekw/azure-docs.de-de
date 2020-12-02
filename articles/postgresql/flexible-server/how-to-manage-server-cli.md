@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 06341f8630684519a456d5ef89144ae3c0934b23
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 278f8f816909a7e365d7e45d04c5169950e79a65
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423146"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96493677"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-by-using-the-azure-cli"></a>Verwalten von Azure Database for PostgreSQL – flexibler Server mithilfe der Azure CLI
 
@@ -43,7 +43,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Skalieren von Compute und Speicher
 
-Mit dem folgenden Befehl können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher ganz einfach hochskalieren. Eine Liste aller ausführbaren Servervorgänge finden Sie in der Übersicht zu [az postgres flexible-server](https://docs.microsoft.com/cli/azure/postgres/flexible-server).
+Mit dem folgenden Befehl können Sie Ihren Computetarif, Ihre virtuelle Kerne und Ihren Speicher ganz einfach hochskalieren. Eine Liste aller ausführbaren Servervorgänge finden Sie in der Übersicht zu [az postgres flexible-server](/cli/azure/postgres/flexible-server).
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -131,7 +131,7 @@ az postgres flexible-server update --resource-group myresourcegroup --name mydem
 
 ## <a name="delete-a-server"></a>Löschen eines Servers
 
-Um Azure Database for PostgreSQL – flexibler Server zu löschen, führen Sie den Befehl [az postgres flexible-server delete](https://docs.microsoft.com/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) aus.
+Um Azure Database for PostgreSQL – flexibler Server zu löschen, führen Sie den Befehl [az postgres flexible-server delete](/cli/azure/postgres/flexible-server#az-PostgreSQL-flexible-server-delete) aus.
 
 ```azurecli-interactive
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
