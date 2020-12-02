@@ -8,11 +8,11 @@ ms.date: 11/02/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: 3225fff1c82822dee990804f934ada86068841e8
-ms.sourcegitcommit: 58f12c358a1358aa363ec1792f97dae4ac96cc4b
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93280254"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96011301"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Tutorial: Codieren mit den Azure Digital Twins-APIs
 
@@ -43,7 +43,7 @@ Zum Einstieg benötigen Sie Folgendes:
 
 Sobald Ihre Azure Digital Twins-Instanz bereit ist, können Sie mit der Einrichtung des Client-App-Projekts beginnen. 
 
-Öffnen Sie eine Eingabeaufforderung oder ein anderes Konsolenfenster auf Ihrem Rechner, und erstellen Sie ein leeres Projektverzeichnis, in dem Sie Ihre Arbeit während dieses Tutorials speichern möchten. Geben Sie dem Verzeichnis einen beliebigen Namen (z. B. *DigitalTwinsCodeTutorial* ).
+Öffnen Sie eine Eingabeaufforderung oder ein anderes Konsolenfenster auf Ihrem Rechner, und erstellen Sie ein leeres Projektverzeichnis, in dem Sie Ihre Arbeit während dieses Tutorials speichern möchten. Geben Sie dem Verzeichnis einen beliebigen Namen (z. B. *DigitalTwinsCodeTutorial*).
 
 Navigieren Sie zum neuen Verzeichnis.
 
@@ -53,11 +53,11 @@ Navigieren Sie zum neuen Verzeichnis.
 dotnet new console
 ```
 
-Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs* , in der Sie den Großteil Ihres Codes schreiben werden.
+Auf diese Weise werden verschiedene Dateien in Ihrem Verzeichnis erstellt, darunter eine Datei mit dem Namen *Program.cs*, in der Sie den Großteil Ihres Codes schreiben werden.
 
 Lassen Sie das Befehlsfenster geöffnet, da Sie es während des gesamten Tutorials weiter verwenden werden.
 
-Als nächstes **fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu** , die für die Arbeit mit Azure Digital Twins erforderlich sind. Sie können die nachfolgenden Links verwenden, um zu den Paketen auf NuGet zu navigieren, wo Sie die Konsolenbefehle (einschließlich für .NET CLI) finden, um die jeweils neueste Version zu Ihrem Projekt hinzuzufügen.
+Als nächstes **fügen Sie Ihrem Projekt zwei Abhängigkeiten hinzu**, die für die Arbeit mit Azure Digital Twins erforderlich sind. Sie können die nachfolgenden Links verwenden, um zu den Paketen auf NuGet zu navigieren, wo Sie die Konsolenbefehle (einschließlich für .NET CLI) finden, um die jeweils neueste Version zu Ihrem Projekt hinzuzufügen.
 * [**Azure.DigitalTwins.Core**](https://www.nuget.org/packages/Azure.DigitalTwins.Core). Dies ist das Paket für das [Azure Digital Twins-SDK für .NET](/dotnet/api/overview/azure/digitaltwins/client?view=azure-dotnet&preserve-view=true). 
 * [**Azure.Identity**](https://www.nuget.org/packages/Azure.Identity). Diese Bibliothek stellt Tools bereit, die die Authentifizierung bei Azure unterstützen.
 
@@ -132,7 +132,7 @@ Azure Digital Twins umfasst kein intrinsisches Domänenvokabular. Die Elementtyp
 
 Beim Erstellen einer Azure Digital Twins-Lösung wird im ersten Schritt mindestens ein Modell in einer DTDL-Datei definiert.
 
-Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine neue *JSON* -Datei mit dem Namen *SampleModel.json*. Fügen Sie den folgenden Dateitext ein: 
+Erstellen Sie in dem Verzeichnis, in dem Sie Ihr Projekt erstellt haben, eine neue *JSON*-Datei mit dem Namen *SampleModel.json*. Fügen Sie den folgenden Dateitext ein: 
 
 ```json
 {
@@ -213,7 +213,7 @@ await foreach (DigitalTwinsModelData md in modelDataList)
 }
 ```
 
-Bedenken Sie **vor der Ausführung des Programms zum Testen dieses neuen Codes** , dass Sie Ihr Modell bei der letzten Programmausführung bereits hochgeladen haben. Mit Azure Digital Twins ist es nicht möglich, das gleiche Modell zweimal hochzuladen. Wenn Sie also versuchen, das gleiche Modell erneut hochzuladen, wird voraussichtlich eine Ausnahme ausgelöst.
+Bedenken Sie **vor der Ausführung des Programms zum Testen dieses neuen Codes**, dass Sie Ihr Modell bei der letzten Programmausführung bereits hochgeladen haben. Mit Azure Digital Twins ist es nicht möglich, das gleiche Modell zweimal hochzuladen. Wenn Sie also versuchen, das gleiche Modell erneut hochzuladen, wird voraussichtlich eine Ausnahme ausgelöst.
 
 Führen Sie das Programm mit diesem Wissen in Ihrem Befehlsfenster jetzt mit diesem Befehl erneut aus:
 
@@ -267,11 +267,11 @@ for(int i=0; i<3; i++) {
 }
 ```
 
-Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Suchen Sie in der Ausgabe nach den Ausgabemeldungen zur Erstellung von *sampleTwin-0* , *sampleTwin-1* und *sampleTwin-2*. 
+Führen Sie in Ihrem Befehlsfenster das Programm mit `dotnet run` aus. Suchen Sie in der Ausgabe nach den Ausgabemeldungen zur Erstellung von *sampleTwin-0*, *sampleTwin-1* und *sampleTwin-2*. 
 
 Führen Sie das Programm anschließend erneut aus. 
 
-Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT* -Aufruf mit *upsert* -Semantik. Dies bedeutet Folgendes: Wenn bereits ein Zwilling vorhanden ist, wird beim Versuch, den gleichen Zwilling erneut zu erstellen, lediglich der ursprüngliche Zwilling ersetzt. Es wird kein Fehler ausgelöst.
+Beachten Sie, dass beim zweiten Erstellen der digitalen Zwillinge kein Fehler ausgegeben wird, obwohl die Zwillinge bereits nach der ersten Ausführung vorhanden sind. Im Gegensatz zur Modellerstellung erfolgt die Erstellung der Zwillinge auf REST-Ebene über einen *PUT*-Aufruf mit *upsert*-Semantik. Dies bedeutet Folgendes: Wenn bereits ein Zwilling vorhanden ist, wird beim Versuch, den gleichen Zwilling erneut zu erstellen, lediglich der ursprüngliche Zwilling ersetzt. Es wird kein Fehler ausgelöst.
 
 ### <a name="create-relationships"></a>Erstellen von Beziehungen
 

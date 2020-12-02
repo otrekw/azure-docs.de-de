@@ -11,19 +11,19 @@ ms.topic: tutorial
 ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
-ms.openlocfilehash: c47a4fbf51b14d9a13237f77c75dbf2839fb5f80
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: ff54d605fd81fa640314d99359f1aabacf7a469e
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381285"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350380"
 ---
 # <a name="tutorial-create-a-single-page-app-using-the-bing-web-search-api"></a>Tutorial: Erstellen einer Single-Page-Webanwendung mit der Bing-Websuche-API
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Diese einseitige App zeigt, wie Sie Suchergebnisse aus der Bing-Websuche-API abrufen, analysieren und anzeigen. Das Tutorial verwendet Standard-HTML und -CSS und konzentriert sich auf den JavaScript-Code. HTML-, CSS- und JS-Dateien sind in [GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/tree/master/Tutorials/Bing-Web-Search) mit Schnellstartanweisungen verfügbar.
 
@@ -138,7 +138,7 @@ function bingSearchOptions(form) {
 
 Wenn eines der Kontrollkästchen **Hochstufen** aktiviert ist, wird der Abfrage der `answerCount`-Parameter hinzugefügt. Bei der Verwendung des Parameters `promote` ist `answerCount` erforderlich. In diesem Ausschnitt wird der Wert auf `9` gesetzt, um alle verfügbaren Ergebnistypen zurückzugeben.
 > [!NOTE]
-> Das Höherstufen eines Ergebnistyps *garantiert nicht* , dass er in den Suchergebnissen enthalten ist. Vielmehr erhöht sich dadurch die Relevanz dieser Ergebnistypen ausgehend von den üblichen Relevanzwerten. Wenn Sie Suchergebnisse auf bestimmte Ergebnisse einschränken möchten, können Sie dazu den `responseFilter`-Abfrageparameter verwenden oder einen anderen Endpunkt wie die Bing-Bildersuche-API oder die Bing-News-Suche-API verwenden.
+> Das Höherstufen eines Ergebnistyps *garantiert nicht*, dass er in den Suchergebnissen enthalten ist. Vielmehr erhöht sich dadurch die Relevanz dieser Ergebnistypen ausgehend von den üblichen Relevanzwerten. Wenn Sie Suchergebnisse auf bestimmte Ergebnisse einschränken möchten, können Sie dazu den `responseFilter`-Abfrageparameter verwenden oder einen anderen Endpunkt wie die Bing-Bildersuche-API oder die Bing-News-Suche-API verwenden.
 
 Die Abfrageparameter `textDecoration` und `textFormat` sind im Skript hartcodiert und bewirken, dass der Suchbegriff in den Suchergebnissen fett gedruckt wird. Diese Parameter sind nicht erforderlich.
 
@@ -289,7 +289,7 @@ function handleBingResponse() {
 ```
 
 > [!IMPORTANT]
-> Eine erfolgreiche HTTP-Anforderung *bedeutet nicht* , dass die Suche erfolgreich war. Wenn bei einem Suchvorgang ein Fehler auftritt, gibt die Bing-Websuche-API einen HTTP-Statuscode zurück, der vom Code 200 abweicht und Fehlerinformationen in der JSON-Antwort enthält. Wenn die Anzahl von Anforderungen begrenzt war, gibt die API eine leere Antwort zurück.
+> Eine erfolgreiche HTTP-Anforderung *bedeutet nicht*, dass die Suche erfolgreich war. Wenn bei einem Suchvorgang ein Fehler auftritt, gibt die Bing-Websuche-API einen HTTP-Statuscode zurück, der vom Code 200 abweicht und Fehlerinformationen in der JSON-Antwort enthält. Wenn die Anzahl von Anforderungen begrenzt war, gibt die API eine leere Antwort zurück.
 
 Ein Großteil des Codes in den beiden vorangehenden Funktionen ist für die Fehlerbehandlung zuständig. In folgenden Phasen können Fehler auftreten:
 

@@ -10,19 +10,19 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: 25d716513c7ceb9311588b75b0fad1c68bf71bfd
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: a789cb3fde05d12a8793196043f1c246bbab6559
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93081109"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96342412"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Tutorial: Erstellen einer benutzerdefinierten Suchwebseite
 
 > [!WARNING]
-> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](https://aka.ms/cogsvcs/bingmove) dokumentierten Prozess bereitgestellt werden.
+> Die APIs der Bing-Suche werden von Cognitive Services auf Bing-Suchdienste umgestellt. Ab dem **30. Oktober 2020** müssen alle neuen Instanzen der Bing-Suche mit dem [hier](/bing/search-apis/bing-web-search/create-bing-search-service-resource) dokumentierten Prozess bereitgestellt werden.
 > APIs der Bing-Suche, die mit Cognitive Services bereitgestellt wurden, werden noch drei Jahre lang bzw. bis zum Ablauf Ihres Enterprise Agreement unterstützt (je nachdem, was zuerst eintritt).
-> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](https://aka.ms/cogsvcs/bingmigration).
+> Eine Anleitung zur Migration finden Sie unter [Erstellen einer Ressource für die Bing-Suche über Azure Marketplace](/bing/search-apis/bing-web-search/create-bing-search-service-resource).
 
 Die benutzerdefinierte Bing-Suche ermöglicht das Erstellen einer maßgeschneiderten Suchbenutzeroberfläche für Themen, die Sie interessieren. Wenn Sie beispielsweise Besitzer einer Kampfsportwebsite sind, die eine Suchbenutzeroberfläche bietet, können Sie die Domänen, Unterwebsites und Webseiten angeben, die Bing durchsucht. Ihre Benutzer sehen Suchergebnisse, die auf den Inhalt zugeschnitten sind, für den sie sich interessieren, anstatt durch allgemeine Suchergebnisse blättern zu müssen, die möglicherweise irrelevante Inhalte enthalten. 
 
@@ -50,7 +50,7 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
   
 2. Navigieren Sie zum benutzerdefinierten Such[portal](https://customsearch.ai).  
   
-3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Klicken Sie auf **Microsoft-Konto erstellen** , wenn Sie kein MSA besitzen. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
+3. Melden Sie sich mit einem Microsoft-Konto (MSA) am Portal an. Klicken Sie auf **Microsoft-Konto erstellen**, wenn Sie kein MSA besitzen. Wenn Sie das Portal zum ersten Mal nutzen, werden Sie nach Berechtigungen für den Zugriff auf Ihre Daten gefragt. Klicken Sie auf **Ja**.  
   
 4. Klicken Sie nach der Anmeldung auf **Neue benutzerdefinierte Suche**. Geben Sie im Fenster **Neue benutzerdefinierte Suchinstanz erstellen** einen Namen ein, der sinnvoll ist und den Typ des Inhalts beschreibt, den die Suche zurückgibt. Sie können den Namen jederzeit ändern.  
   
@@ -65,7 +65,7 @@ Erstellen Sie wie folgt eine Instanz für die benutzerdefinierte Bing-Suche:
 
 Um Ergebnisse von bestimmten Websites oder URLs einzuschließen, fügen Sie diese der Registerkarte **Aktiv** hinzu.
 
-1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv** , und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
+1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Aktiv**, und geben Sie die URL mindestens einer Website ein, die Sie in die Suche einbeziehen möchten.
 
     ![Screenshot der Registerkarte „Aktiv“ des Definitions-Editors](../media/customSrchEditor.png)
 
@@ -75,7 +75,7 @@ Um Ergebnisse von bestimmten Websites oder URLs einzuschließen, fügen Sie dies
 
 Um Ergebnisse von bestimmten Websites oder URLs auszuschließen, fügen Sie diese der Registerkarte **Blockiert** hinzu.
 
-1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Blockiert** , und geben Sie die URL mindestens einer Website ein, die Sie von der Suche ausschließen möchten.
+1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Blockiert**, und geben Sie die URL mindestens einer Website ein, die Sie von der Suche ausschließen möchten.
 
     ![Screenshot der Registerkarte „Blockiert“ des Definitions-Editors](../media/blockedCustomSrch.png)
 
@@ -86,7 +86,7 @@ Um Ergebnisse von bestimmten Websites oder URLs auszuschließen, fügen Sie dies
 
 Um eine bestimmte Webseite am Anfang der Suchergebnisse anzuheften, fügen Sie auf der Registerkarte **Angeheftet** die Webseite und den Abfragebegriff hinzu. Die Registerkarte **Angeheftet** enthält eine Liste mit Webseiten- und Abfragebegriffpaaren, die die Webseite angeben, die als oberstes Ergebnis für eine bestimmte Abfrage angezeigt wird. Die Webseite wird nur dann angeheftet, wenn die Abfragezeichenfolge des Benutzers basierend auf der Übereinstimmungsbedingung der Pin mit der Abfragezeichenfolge der Pin übereinstimmt. Nur indizierte Webseiten werden in Suchvorgängen angezeigt. Weitere Informationen finden Sie unter [Konfigurieren der Benutzeroberfläche für die benutzerdefinierte Bing-Suche](../define-your-custom-view.md#pin-slices-to-the-top-of-search-results).
 
-1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Angeheftet** , und geben Sie die Webseite und den Abfragebegriff der Webseite ein, die als oberstes Ergebnis zurückgegeben werden soll.  
+1. Klicken Sie auf der Seite **Konfiguration** auf die Registerkarte **Angeheftet**, und geben Sie die Webseite und den Abfragebegriff der Webseite ein, die als oberstes Ergebnis zurückgegeben werden soll.  
   
 2. Standardmäßig muss die Abfragezeichenfolge des Benutzers exakt mit der Abfragezeichenfolge Ihrer Pin für Bing übereinstimmen, damit die Webseite als oberstes Suchergebnis zurückgegeben wird. Um die Übereinstimmungsbedingung zu ändern, bearbeiten Sie die Pin (klicken Sie auf das Bleistiftsymbol), klicken Sie in der Spalte **Abfrageübereinstimmungsbedingung** auf „Genau“, und wählen Sie die für Ihre Anwendung geeignete Übereinstimmungsbedingung aus.  
   
@@ -153,7 +153,7 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
 
 ## <a name="edit-indexcshtml"></a>Bearbeiten von „Index.cshtml“
 
-1. Erweitern Sie im **Projektmappen-Explorer** die Option **Seiten** , und doppelklicken Sie auf **index.cshtml** , um die Datei zu öffnen.  
+1. Erweitern Sie im **Projektmappen-Explorer** die Option **Seiten**, und doppelklicken Sie auf **index.cshtml**, um die Datei zu öffnen.  
   
    ![Screenshot des Projektmappen-Explorers mit erweiterten Seiten und ausgewählter Datei „index.cshtml“](./media/custom-search-visual-studio-webapp-solution-explorer-index.png)  
   
@@ -179,7 +179,7 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
    <div id="customSearch"></div>
    ```  
   
-4. Scrollen Sie auf der Seite **Gehostete Benutzeroberfläche** zum Abschnitt mit dem Titel **Nutzen der Benutzeroberfläche**. Klicken Sie auf die *Endpunkte* , um auf den JavaScript-Codeausschnitt zuzugreifen. Sie können den Codeausschnitt auch abrufen, indem Sie auf **Produktion** und dann die Registerkarte **Gehostete Benutzeroberfläche** klicken.
+4. Scrollen Sie auf der Seite **Gehostete Benutzeroberfläche** zum Abschnitt mit dem Titel **Nutzen der Benutzeroberfläche**. Klicken Sie auf die *Endpunkte*, um auf den JavaScript-Codeausschnitt zuzugreifen. Sie können den Codeausschnitt auch abrufen, indem Sie auf **Produktion** und dann die Registerkarte **Gehostete Benutzeroberfläche** klicken.
   
    <!-- Get new screenshot after prod gets new bits
    ![Screenshot of the Hosted UI save button](./media/custom-search-hosted-ui-consuming-ui.png)  
@@ -202,7 +202,7 @@ Im weiteren Verlauf dieses Tutorials wird **Option 1: JavaScript-Codeausschnitt*
    </div>
    ```  
   
-6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **wwwroot** , und klicken Sie auf **Im Browser anzeigen**.  
+6. Klicken Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf **wwwroot**, und klicken Sie auf **Im Browser anzeigen**.  
   
    ![Screenshot des Projektmappen-Explorers: Auswählen der Option „Ansicht“ aus dem wwwroot-Kontextmenü im Browser](./media/custom-search-webapp-view-in-browser.png)  
 
