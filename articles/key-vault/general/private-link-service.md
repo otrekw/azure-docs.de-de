@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: ec619681f1eebc51da85d31ad15f1db25cfd3cbc
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 570281e31c70b2f5f85a858f9dd424f93ee86029
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917918"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460051"
 ---
 # <a name="integrate-key-vault-with-azure-private-link"></a>Integrieren von Key Vault in Azure Private Link
 
@@ -226,14 +226,14 @@ Aliases:  <your-key-vault-name>.vault.azure.net
 
 * Vergewissern Sie sich, dass Sie über eine Ressource vom Typ „Private DNS-Zone“ verfügen. 
     1. Sie müssen über eine Ressource vom Typ „Private DNS-Zone“ mit exakt dem folgenden Namen verfügen: privatelink.vaultcore.azure.net. 
-    2. Entsprechende Einrichtungsinformationen finden Sie unter folgendem Link: [Was ist eine private Azure DNS-Zone?](https://docs.microsoft.com/azure/dns/private-dns-privatednszone)
+    2. Entsprechende Einrichtungsinformationen finden Sie unter folgendem Link: [Was ist eine private Azure DNS-Zone?](../../dns/private-dns-privatednszone.md)
     
 * Vergewissern Sie sich, dass die private DNS-Zone nicht mit dem virtuellen Netzwerk verknüpft ist. Dieses Problem kann vorliegen, wenn weiterhin die öffentliche IP-Adresse zurückgegeben wird. 
     1. Ist die private DNS-Zone nicht mit dem virtuellen Netzwerk verknüpft, wird bei der DNS-Abfrage aus dem virtuellen Netzwerk die öffentliche IP-Adresse des Schlüsseltresors zurückgegeben. 
     2. Navigieren Sie im Azure-Portal zur Ressource „Private DNS-Zone“, und klicken Sie auf die Option „Verknüpfungen virtueller Netzwerke“. 
     4. Das virtuelle Netzwerk, von dem Aufrufe an den Schlüsseltresor gesendet werden, muss aufgeführt werden. 
     5. Ist dies nicht der Fall, fügen Sie es hinzu. 
-    6. Eine ausführliche Anleitung finden Sie unter [Verknüpfen des virtuellen Networks](https://docs.microsoft.com/azure/dns/private-dns-getstarted-portal#link-the-virtual-network).
+    6. Eine ausführliche Anleitung finden Sie unter [Verknüpfen des virtuellen Networks](../../dns/private-dns-getstarted-portal.md#link-the-virtual-network).
 
 * Vergewissern Sie sich, dass in der privaten DNS-Zone kein A-Eintrag für den Schlüsseltresor fehlt. 
     1. Navigieren Sie zur Seite „Private DNS-Zone“. 

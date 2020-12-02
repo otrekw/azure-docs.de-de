@@ -1,5 +1,5 @@
 ---
-title: Verbessern der Columnstore-Indexleistung (Vorschau der Arbeitsbereiche)
+title: Verbessern der Columnstore-Indexleistung
 description: Reduzieren Sie Arbeitsspeicheranforderungen, oder erhöhen Sie den verfügbaren Arbeitsspeicher, um die Anzahl von Zeilen zu maximieren, die ein Columnstore-Index in jede Zeilengruppe komprimieren kann.
 services: synapse-analytics
 author: kevinvngo
@@ -11,12 +11,12 @@ ms.date: 04/15/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: fecb78b240f5c983580d4bdb34535a879ffe3e2e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: e4656531f1424c3414ab00afbbe241a532738400
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96022546"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462271"
 ---
 # <a name="maximize-rowgroup-quality-for-columnstore-index-performance"></a>Maximieren der Zeilengruppenqualität für die Columnstore-Indexleistung
 

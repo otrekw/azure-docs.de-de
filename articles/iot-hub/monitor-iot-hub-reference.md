@@ -6,12 +6,12 @@ ms.author: robinsh
 ms.topic: reference
 ms.service: iot-hub
 ms.date: 10/22/2020
-ms.openlocfilehash: 03941c3abe833deb218844cc60e2f04556fccc22
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 609c44991e7deca183321758fabdef80b71210c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93078202"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460859"
 ---
 # <a name="monitoring-azure-iot-hub-data-reference"></a>Referenz zu Azure IoT Hub-Überwachungsdaten
 
@@ -19,13 +19,13 @@ Ausführliche Informationen zum Erfassen und Analysieren von Überwachungsdaten 
 
 ## <a name="metrics"></a>Metriken
 
-In diesem Abschnitt werden alle automatisch gesammelten Plattformmetriken für Azure IoT Hub aufgeführt. Der Ressourcenanbieter-Namespace für IoT Hub-Metriken ist **Microsoft.Devices** , und der Namespacetyp lautet **IoTHubs**.
+In diesem Abschnitt werden alle automatisch gesammelten Plattformmetriken für Azure IoT Hub aufgeführt. Der Ressourcenanbieter-Namespace für IoT Hub-Metriken ist **Microsoft.Devices**, und der Namespacetyp lautet **IoTHubs**.
 
 In den folgenden Unterabschnitten werden die IoT Hub-Plattformmetriken nach allgemeiner Kategorie beschrieben. Außerdem werden sie nach dem Anzeigenamen aufgelistet, mit dem sie im Azure-Portal angezeigt werden. Darüber hinaus erhalten Sie relevante Informationen zu den Metriken, die in den einzelnen Unterabschnitten enthalten sind.
 
-Außerdem wird eine einzelne Tabelle bereitgestellt, in der alle IoT Hub-Plattformmetriken nach dem Metriknamen unter [Microsoft.Devices/IotHubs](/azure/azure-monitor/platform/metrics-supported#microsoftdevicesiothubs) in der Azure Monitor-Dokumentation aufgeführt sind. Beachten Sie, dass diese Tabelle nicht alle in diesem Artikel beschriebenen Informationen enthält, z. B. [unterstützte Aggregationen](#supported-aggregations) für bestimmte Metriken.
+Außerdem wird eine einzelne Tabelle bereitgestellt, in der alle IoT Hub-Plattformmetriken nach dem Metriknamen unter [Microsoft.Devices/IotHubs](../azure-monitor/platform/metrics-supported.md#microsoftdevicesiothubs) in der Azure Monitor-Dokumentation aufgeführt sind. Beachten Sie, dass diese Tabelle nicht alle in diesem Artikel beschriebenen Informationen enthält, z. B. [unterstützte Aggregationen](#supported-aggregations) für bestimmte Metriken.
 
-Informationen zu den von anderen Azure-Diensten unterstützten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](/azure/azure-monitor/platform/metrics-supported).
+Informationen zu den von anderen Azure-Diensten unterstützten Metriken finden Sie unter [Unterstützte Metriken von Azure Monitor](../azure-monitor/platform/metrics-supported.md).
 
 **Themen in diesem Abschnitt**
 
@@ -51,9 +51,9 @@ Die Spalte **Aggregationstyp** in jeder Tabelle entspricht der Standardaggregati
 
 Bei den meisten Metriken sind alle Aggregationstypen zulässig. Bei Metriken vom Typ „Anzahl“ mit dem Wert **Anzahl** in der Spalte **Einheit** sind jedoch nur einige Aggregationen gültig. Metriken vom Typ „Anzahl“ können einen von zwei Typen aufweisen:
 
-* Bei Metriken vom Typ „Anzahl“ für **Einzelpunkte** registriert IoT Hub jedes Mal einen einzelnen Datenpunkt (eine „1“), wenn der gemessene Vorgang stattfindet. Azure Monitor addiert diese Datenpunkte dann gemäß der angegebenen Granularität. Beispiele für **Einzelpunkt** -Metriken sind *Gesendete Telemetrienachrichten* und *Abgeschlossene C2D-Nachrichtenübermittlungen*. Für diese Metriken ist der einzig relevante Aggregationstyp „Gesamt“ (Summe). Sie können im Portal zwar den Mindest-, Höchst- und Durchschnittswert auswählen, diese Werte sind jedoch immer 1.
+* Bei Metriken vom Typ „Anzahl“ für **Einzelpunkte** registriert IoT Hub jedes Mal einen einzelnen Datenpunkt (eine „1“), wenn der gemessene Vorgang stattfindet. Azure Monitor addiert diese Datenpunkte dann gemäß der angegebenen Granularität. Beispiele für **Einzelpunkt**-Metriken sind *Gesendete Telemetrienachrichten* und *Abgeschlossene C2D-Nachrichtenübermittlungen*. Für diese Metriken ist der einzig relevante Aggregationstyp „Gesamt“ (Summe). Sie können im Portal zwar den Mindest-, Höchst- und Durchschnittswert auswählen, diese Werte sind jedoch immer 1.
 
-* Bei Metriken vom Typ „Anzahl“ für **Momentaufnahmen** registriert IoT Hub eine Gesamtanzahl, wenn der gemessene Vorgang stattfindet. Derzeit gibt es drei **Momentaufnahme** -Metriken, die von IoT Hub ausgegeben werden: *Gesamtzahl verwendeter Nachrichten* , *Geräte gesamt (Vorschau)* und *Verbundene Geräte (Vorschau)* . Da diese Metriken bei jeder Ausgabe eine Gesamtmenge darstellen, ergibt ihre Addition für die angegebene Granularität keinen Sinn. Azure Monitor schränkt die Auswahl von Durchschnitts-, Mindest- und Höchstwert als Aggregationstyp für diese Metriken ein.
+* Bei Metriken vom Typ „Anzahl“ für **Momentaufnahmen** registriert IoT Hub eine Gesamtanzahl, wenn der gemessene Vorgang stattfindet. Derzeit gibt es drei **Momentaufnahme**-Metriken, die von IoT Hub ausgegeben werden: *Gesamtzahl verwendeter Nachrichten*, *Geräte gesamt (Vorschau)* und *Verbundene Geräte (Vorschau)* . Da diese Metriken bei jeder Ausgabe eine Gesamtmenge darstellen, ergibt ihre Addition für die angegebene Granularität keinen Sinn. Azure Monitor schränkt die Auswahl von Durchschnitts-, Mindest- und Höchstwert als Aggregationstyp für diese Metriken ein.
 
 ### <a name="cloud-to-device-command-metrics"></a>Metriken zu Cloud-zu-Gerät-Befehlen
 
@@ -219,17 +219,17 @@ In Azure IoT Hub weisen einige der Routing- und Event Grid-Metriken die folgende
 |---|---|
 ||
 |**EndpointName**| Der Endpunktname.|
-|**EndpointType**|Einer der folgenden: **eventHubs** , **serviceBusQueues** , **cosmosDB** , **serviceBusTopics**. **builtin** oder **blobStorage**.|
-|**EventType**| Einer der folgenden Event Grid-Ereignistypen: **Microsoft.Devices.DeviceCreated**. **Microsoft.Devices.DeviceDeleted** , **Microsoft.Devices.DeviceConnected** , **Microsoft.Devices.DeviceDisconnected** oder **Microsoft.Devices.DeviceTelemetry**. Weitere Informationen finden Sie unter [Ereignistypen](iot-hub-event-grid.md#event-types).|
-|**FailureReasonCategory**| Eine der folgenden: **invalid** , **dropped** , **orphaned** oder **null**.|
+|**EndpointType**|Einer der folgenden: **eventHubs**, **serviceBusQueues**, **cosmosDB**, **serviceBusTopics**. **builtin** oder **blobStorage**.|
+|**EventType**| Einer der folgenden Event Grid-Ereignistypen: **Microsoft.Devices.DeviceCreated**. **Microsoft.Devices.DeviceDeleted**, **Microsoft.Devices.DeviceConnected**, **Microsoft.Devices.DeviceDisconnected** oder **Microsoft.Devices.DeviceTelemetry**. Weitere Informationen finden Sie unter [Ereignistypen](iot-hub-event-grid.md#event-types).|
+|**FailureReasonCategory**| Eine der folgenden: **invalid**, **dropped**, **orphaned** oder **null**.|
 |**Ergebnis**| Entweder **success** (Erfolg) oder **failure** (Fehler).|
 |**RoutingSource**| Gerätemeldungen<br>Änderungsereignisse für Zwillinge<br>Ereignisse zum Gerätelebenszyklus|
 
-Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](/azure/azure-monitor/platform/data-platform-metrics#multi-dimensional-metrics).
+Weitere Informationen zu Metrikdimensionen finden Sie unter [Mehrdimensionale Metriken](../azure-monitor/platform/data-platform-metrics.md#multi-dimensional-metrics).
 
 ## <a name="resource-logs"></a>Ressourcenprotokolle
 
-In diesem Abschnitt werden alle Typen und Schemas für die Kategorie der Ressourcenprotokolle aufgelistet, die für Azure IoT Hub erfasst werden. Der Ressourcenanbieter und der Typ lauten für alle IoT Hub-Protokolle [Microsoft.Devices/IotHubs](/azure/azure-monitor/platform/resource-logs-categories#microsoftdevicesiothubs).
+In diesem Abschnitt werden alle Typen und Schemas für die Kategorie der Ressourcenprotokolle aufgelistet, die für Azure IoT Hub erfasst werden. Der Ressourcenanbieter und der Typ lauten für alle IoT Hub-Protokolle [Microsoft.Devices/IotHubs](../azure-monitor/platform/resource-logs-categories.md#microsoftdevicesiothubs).
 
 **Themen in diesem Abschnitt**
 
@@ -384,7 +384,7 @@ Diese Kategorie kann keine Fehler abfangen, die auftreten, während das Gerät e
 
 ### <a name="routes"></a>Routen
 
-Die Kategorie [Nachrichtenweiterleitung](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c) verfolgt Fehler, die während der Auswertung der Nachrichtenweiterleitung auftreten, und die durch IoT Hub wahrgenommene Endpunktintegrität. Diese Kategorie umfasst z. B. folgende Ereignisse:
+Die Kategorie [Nachrichtenweiterleitung](./iot-hub-devguide-messages-d2c.md) verfolgt Fehler, die während der Auswertung der Nachrichtenweiterleitung auftreten, und die durch IoT Hub wahrgenommene Endpunktintegrität. Diese Kategorie umfasst z. B. folgende Ereignisse:
 
 * Eine Regel wird zu „nicht definiert“ ausgewertet,
 * IoT Hub markiert einen Endpunkt für unzustellbare Nachrichten, oder
@@ -689,4 +689,4 @@ Eine Referenz zu allen Azure Monitor-Protokollen und Log Analytics-Tabellen find
 ## <a name="see-also"></a>Weitere Informationen
 
 * Unter [Überwachen von Azure IoT Hub](monitor-iot-hub.md) finden Sie eine Beschreibung der Überwachung von Azure IoT Hub.
-* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](/azure/azure-monitor/insights/monitor-azure-resource).
+* Ausführliche Informationen zur Überwachung von Azure-Ressourcen finden Sie unter [Überwachen von Azure-Ressourcen mit Azure Monitor](../azure-monitor/insights/monitor-azure-resource.md).

@@ -7,12 +7,12 @@ ms.topic: how-to
 author: keferna
 ms.author: keferna
 ms.date: 06/17/2020
-ms.openlocfilehash: 76211e2aaf27fd28500bb539c94fa409b239e785
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: bcb334074d842fa5c35e4619f1c5d654405388a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95758682"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459569"
 ---
 # <a name="create-an-azure-container-offer-in-azure-marketplace"></a>Erstellen eines Azure-Containerangebots in Azure Marketplace
 
@@ -291,7 +291,7 @@ Auf dieser Registerkarte können Sie auswählen, in welchen Clouds der Plan verf
 
 Alle Pläne für Angebote für Azure-Container werden automatisch in **Azure Global** verfügbar gemacht.  Ihr Plan kann von Kunden in allen Azure-Regionen weltweit verwendet werden, die den kommerziellen Marketplace nutzen. Details finden Sie unter [Geografische Verfügbarkeit und Unterstützung von Währungen](marketplace-geo-availability-currencies.md).
 
-Wählen Sie [Azure Government](/azure/azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](/azure/azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
+Wählen Sie [Azure Government](../azure-government/documentation-government-welcome.md) aus, um Ihre Lösung dort zu veröffentlichen. Dies ist eine Government-Community-Cloud mit kontrolliertem Zugriff für Kunden der US-Behörden auf Bundes-, Bundesstaats-, Gemeinde- und Stammesgebietsebene sowie für Partner, die Kunden erbringen. Als Herausgeber sind Sie für alle Kompatibilitätskontrollen, Sicherheitsmaßnahmen und bewährten Methoden für diese Cloudcommunity verantwortlich. Azure Government verwendet physisch isolierte Rechenzentren und Netzwerke (die sich ausschließlich in den USA befinden). Testen und bestätigen Sie Ihre Lösung vor dem [Veröffentlichen](../azure-government/documentation-government-manage-marketplace-partners.md) innerhalb dieses Gebiets, da sich die Ergebnisse unterscheiden können. Beantragen Sie zum Erstellen und Testen Ihrer Lösung ein Testkonto für die [Microsoft Azure Government-Testversion](https://azure.microsoft.com/global-infrastructure/government/request/).
 
 > [!NOTE]
 > Nachdem Ihr Plan veröffentlicht und in einer bestimmten Region verfügbar gemacht wurde, können Sie diese Region nicht mehr entfernen.
@@ -357,11 +357,11 @@ Geben Sie auf der Registerkarte **Image repository details** (Details des Imager
 
 **Azure-Abonnement-ID**: Geben Sie die Abonnement-ID an, unter der der Verbrauch gemeldet und Dienste für die Azure Container Registry-Instanz mit Ihrem Containerimage abgerechnet werden. Sie finden diese ID auf der Seite [Abonnements](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) im Azure-Portal.
 
-**Azure-Ressourcengruppenname**: Geben Sie den Namen der [Ressourcengruppe](/azure/azure-resource-manager/management/manage-resource-groups-portal.md) an, die die Azure Container Registry-Instanz mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
+**Azure-Ressourcengruppenname**: Geben Sie den Namen der [Ressourcengruppe](../azure-resource-manager/management/manage-resource-groups-portal.md) an, die die Azure Container Registry-Instanz mit Ihrem Containerimage enthält. Der Zugriff auf die Ressourcengruppe muss über die Abonnement-ID (oben) möglich sein. Sie finden den Namen im Azure-Portal auf der Seite [Ressourcengruppen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceGroups).
 
-**Azure Container Registry-Name**: Geben Sie den Namen der [Azure Container Registry](/azure/container-registry/container-registry-intro.md)-Instanz an, die Ihr Containerimage enthält. Die Containerregistrierung muss der Azure-Ressourcengruppe zugeordnet sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungsnamen an, nicht den vollständigen Namen des Anmeldeservers. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
+**Azure Container Registry-Name**: Geben Sie den Namen der [Azure Container Registry](../container-registry/container-registry-intro.md)-Instanz an, die Ihr Containerimage enthält. Die Containerregistrierung muss der Azure-Ressourcengruppe zugeordnet sein, die Sie zuvor angegeben haben. Geben Sie nur den Registrierungsnamen an, nicht den vollständigen Namen des Anmeldeservers. Achten Sie unbedingt darauf, **azurecr.io** nicht in den Namen einzuschließen. Sie finden den Registrierungsnamen auf der Seite [Containerregistrierungen](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) im Azure-Portal.
 
-**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](/azure/container-registry/container-registry-authentication.md#admin-account) an, der mit der Azure Container Registry-Instanz mit Ihrem Containerimage verknüpft ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
+**Administratorbenutzername für die Azure Container Registry**: Geben Sie den [Administratorbenutzernamen](../container-registry/container-registry-authentication.md#admin-account) an, der mit der Azure Container Registry-Instanz mit Ihrem Containerimage verknüpft ist. Benutzername und Kennwort sind erforderlich, um sicherzustellen, dass Ihr Unternehmen Zugriff auf die Registrierung hat. Um den Administratorbenutzernamen und das zugeordnete Kennwort abzurufen, legen Sie die Eigenschaft **admin-enabled** (Von Administrator aktiviert) an der Azure-Befehlszeilenschnittstelle auf **True** fest. Optional können Sie im Azure-Portal **Administratorbenutzer** auf **Aktivieren** festlegen.
 
  :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-12-update-container-registry-edit.png" alt-text="Darstellung des Dialogfelds „Containerregistrierung aktualisieren“.":::
 
@@ -369,7 +369,7 @@ Geben Sie auf der Registerkarte **Image repository details** (Details des Imager
 
 :::image type="content" source="./partner-center-portal/media/azure-create-container-offer-images/azure-create-13-access-keys.png" alt-text="Menü „Zugriffsschlüssel“.":::
 
-**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image in die Registrierung pushen. Sie finden den Namen des Repositorys auf der Seite [Containerregistrierung](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Containerregistrierungsrepositorys im Azure-Portal](/azure/container-registry/container-registry-repositories.md).
+**Repositoryname innerhalb der Azure Container Registry**. Geben Sie den Namen des Azure Container Registry-Repositorys ein, das Ihr Image enthält. Sie geben den Namen des Repositorys an, wenn Sie das Image in die Registrierung pushen. Sie finden den Namen des Repositorys auf der Seite [Containerregistrierung](https://azure.microsoft.com/services/container-registry/) > **Repositorys**. Weitere Informationen finden Sie unter [Anzeigen von Containerregistrierungsrepositorys im Azure-Portal](../container-registry/container-registry-repositories.md).
 
 > [!NOTE]
 > Nachdem der Name festgelegt wurde, kann er nicht mehr geändert werden. Verwenden Sie für jedes Angebot in Ihrem Konto einen eindeutigen Namen.

@@ -8,12 +8,12 @@ ms.date: 4/24/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: 158d22ffb3bc5486e0523c07cc2c022c49f2ee9c
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c1dbdc4761c107a8e5028a43ead9710d45526016
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145598"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461176"
 ---
 # <a name="create-custom-sdks-for-azure-digital-twins-using-autorest"></a>Erstellen von benutzerdefinierten SDKs für Azure Digital Twins mit AutoRest
 
@@ -55,7 +55,7 @@ AutoRest unterstützt eine breite Palette von Sprachcodegeneratoren.
 
 Sie können die von AutoRest generierten Dateien direkt in eine .NET-Projektmappe einschließen. Wahrscheinlich möchten Sie das Azure Digital Twins SDK jedoch in mehrere separate Projekte (Ihre Client-Apps, Azure Functions-Apps usw.) einbinden. Aus diesem Grund kann es hilfreich sein, ein separates Projekt (eine .NET-Klassenbibliothek) aus den generierten Dateien zu erstellen. Sie können dieses Klassenbibliotheksprojekt dann als Projektverweis in mehrere Projektmappen einbinden.
 
-Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ( [hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
+Dieser Abschnitt enthält Anweisungen zum Erstellen des SDK als Klassenbibliothek, wobei es sich um ein eigenes Projekt handelt, das in andere Projekte eingebunden werden kann. Diese Schritte basieren auf **Visual Studio** ([hier](https://visualstudio.microsoft.com/downloads/) können Sie die neueste Version installieren).
 
 Im Folgenden werden die Schritte aufgeführt:
 
@@ -64,9 +64,9 @@ Im Folgenden werden die Schritte aufgeführt:
 3. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt *ADTApi* der generierten Lösung, und wählen Sie *Hinzufügen > Vorhandenes Element*.
 4. Suchen Sie den Ordner, in dem Sie das SDK generiert haben, und wählen Sie die Dateien auf der Stammebene aus.
 5. Klicken Sie auf „OK“.
-6. Fügen Sie dem Projekt einen Ordner hinzu (klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie *Hinzufügen > Neuer Ordner* ).
+6. Fügen Sie dem Projekt einen Ordner hinzu (klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf das Projekt, und wählen Sie *Hinzufügen > Neuer Ordner*).
 7. Geben Sie dem Ordner den Namen *Models*.
-8. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner *Models* , und wählen Sie *Hinzufügen > Vorhandenes Element* aus.
+8. Klicken Sie im Projektmappen-Explorer mit der rechten Maustaste auf den Ordner *Models*, und wählen Sie *Hinzufügen > Vorhandenes Element* aus.
 9. Wählen Sie die Dateien im Ordner *Models* des generierten SDK aus, und klicken Sie auf „OK“.
 
 Um das SDK erfolgreich zu erstellen, benötigt das Projekt die folgenden Verweise:
@@ -102,7 +102,7 @@ Hier sehen Sie einen Codeausschnitt, der versucht, einen Zwilling hinzuzufügen 
 ```csharp
 try
 {
-    await client.DigitalTwins.AddAsync(id, initData);
+    await client.CreateOrReplaceDigitalTwinAsync<BasicDigitalTwin>(id, initData);
     Console.WriteLine($"Created a twin successfully: {id}");
 }
 catch (ErrorResponseException e)

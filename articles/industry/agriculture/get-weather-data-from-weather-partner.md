@@ -5,12 +5,12 @@ author: sunasing
 ms.topic: article
 ms.date: 03/31/2020
 ms.author: sunasing
-ms.openlocfilehash: 2705e3d724530e879dd02346392f17fda274913a
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: bb28c517e353af6b8c1ee0cad788ff41b971918c
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675318"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460873"
 ---
 # <a name="get-weather-data-from-weather-partners"></a>Abrufen von Wetterdaten von Partnern für Wetterdaten
 
@@ -96,16 +96,16 @@ So beginnen Sie mit dem Abrufen von Wetterdaten auf Ihrem FarmBeats-Datenhub:
 
 3. Überprüfen Sie den Status des /Partner-Objekts, das Sie im vorherigen Schritt erstellt haben. Führen Sie hierzu eine GET-Anforderung in der /Partner-API aus, und überprüfen Sie den Status des /Partner-Objekts. Nachdem der Partner von FarmBeats erfolgreich bereitgestellt wurde, wird der Status auf **Aktiv** festgelegt.
 
-4. Führen Sie in der /JobType-API eine GET-Anforderung aus. Suchen Sie nach den Wetteraufträgen, die Sie zuvor beim Hinzufügen des Partners erstellt haben. Das Feld **pipelineName** in den Wetteraufträgen weist das folgende Format auf: **Partnername_Partnertyp_Auftragsname** .
+4. Führen Sie in der /JobType-API eine GET-Anforderung aus. Suchen Sie nach den Wetteraufträgen, die Sie zuvor beim Hinzufügen des Partners erstellt haben. Das Feld **pipelineName** in den Wetteraufträgen weist das folgende Format auf: **Partnername_Partnertyp_Auftragsname**.
 
       Jetzt verfügt Ihre FarmBeats-Instanz über einen aktiven Partner für Wetterdaten. Sie können Aufträge ausführen, um Wetterdaten für einen bestimmten Standort (Breiten- und Längengrad) und einen bestimmten Datumsbereich anzufordern. Die Auftragstypen enthalten Details dazu, welche Parameter für die Ausführung von Wetteraufträgen benötigt werden.
 
       Für DTN werden beispielsweise die folgenden Auftragstypen erstellt:
    
-      - **get_dtn_daily_observations** : Hiermit werden tägliche Beobachtungen für einen bestimmten Standort und Zeitraum abgerufen.
-      - **get_dtn_daily_forecasts** : Hiermit werden tägliche Vorhersagen für einen bestimmten Standort und Zeitraum abgerufen.
-      - **get_dtn_hourly_observations** : Hiermit werden stündliche Beobachtungen für einen bestimmten Standort und Zeitraum abgerufen.
-      - **get_dtn_hourly_forecasts** : Hiermit werden stündliche Vorhersagen für einen bestimmten Standort und Zeitraum abgerufen.
+      - **get_dtn_daily_observations**: Hiermit werden tägliche Beobachtungen für einen bestimmten Standort und Zeitraum abgerufen.
+      - **get_dtn_daily_forecasts**: Hiermit werden tägliche Vorhersagen für einen bestimmten Standort und Zeitraum abgerufen.
+      - **get_dtn_hourly_observations**: Hiermit werden stündliche Beobachtungen für einen bestimmten Standort und Zeitraum abgerufen.
+      - **get_dtn_hourly_forecasts**: Hiermit werden stündliche Vorhersagen für einen bestimmten Standort und Zeitraum abgerufen.
 
 6. Notieren Sie sich die ID und die Parameter der Auftragstypen.
 
@@ -141,7 +141,7 @@ So beginnen Sie mit dem Abrufen von Wetterdaten auf Ihrem FarmBeats-Datenhub:
    }
    ```
 
-8. Im obigen Schritt werden die Wetteraufträge gemäß der Definition auf der Docker-Instanz des Partners ausgeführt, und die Wetterdaten werden in FarmBeats erfasst. Sie können den Status des Auftrags überprüfen, indem Sie eine GET-Anforderung in /Jobs ausführen. Suchen Sie in der Antwort nach **currentState** . Nach Abschluss des Vorgangs wird **currentState** auf **Succeeded** (Erfolgreich) festgelegt.
+8. Im obigen Schritt werden die Wetteraufträge gemäß der Definition auf der Docker-Instanz des Partners ausgeführt, und die Wetterdaten werden in FarmBeats erfasst. Sie können den Status des Auftrags überprüfen, indem Sie eine GET-Anforderung in /Jobs ausführen. Suchen Sie in der Antwort nach **currentState**. Nach Abschluss des Vorgangs wird **currentState** auf **Succeeded** (Erfolgreich) festgelegt.
 
 ## <a name="query-ingested-weather-data"></a>Abfragen von erfassten Wetterdaten
 
@@ -221,7 +221,7 @@ Zum Beheben von Auftragsfehlern [überprüfen Sie die Auftragsprotokolle](troubl
 |     DockerDetails – imageName         |          Name des Docker-Images. Beispielsweise „docker.io/mydockerimage“ (Image in „hub.docker.com“) oder „myazureacr.azurecr.io/mydockerimage“ (Image in Azure Container Registry) usw. Wenn keine Registrierung angegeben wird, lautet der Wert standardmäßig „hub.docker.com“.      |
 |          DockerDetails – imageTag             |         Der Tagname des Docker-Images. Der Standardwert ist „latest“.     |
 |  DockerDetails – credentials      |  Die Anmeldeinformationen zum Zugriff auf die private Docker-Instanz. Diese Anmeldeinformationen werden vom Partner bereitgestellt.   |
-|  DockerDetails – azureBatchVMDetails – batchVMSKU     |    Azure Batch-VM-SKU. Weitere Informationen finden Sie unter [Alle verfügbaren Linux-VMs](../../virtual-machines/sizes.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json). <BR> <BR> Gültige Werte sind „Small“, „ExtraLarge“, „Large“, „A8“, „A9“, „Medium“, „A5“, „A6“, „A7“, „STANDARD_D1“, „STANDARD_D2“, „STANDARD_D3“, „STANDARD_D4“, „STANDARD_D11“, „STANDARD_D12“, „STANDARD_D13“, „STANDARD_D14“, „A10“, „A11“, „STANDARD_D1_V2“, „STANDARD_D2_V2“, „STANDARD_D3_V2“, „STANDARD_D4_V2“, „STANDARD_D11_V2“, „STANDARD_D12_V2“, „STANDARD_D13_V2“, „STANDARD_D14_V2“, „STANDARD_G1“, „STANDARD_G2“, „STANDARD_G3“, „STANDARD_G4“, „STANDARD_G5“, „STANDARD_D5_V2“, „BASIC_A1“, „BASIC_A2“, „BASIC_A3“, „BASIC_A4“, „STANDARD_A1“, „STANDARD_A2“, „STANDARD_A3“, „STANDARD_A4“, „STANDARD_A5“, „STANDARD_A6“, „STANDARD_A7“, „STANDARD_A8“, „STANDARD_A9“, „STANDARD_A10“, „STANDARD_A11“, „STANDARD_D15_V2“, „STANDARD_F1“, „STANDARD_F2“, „STANDARD_F4“, „STANDARD_F8“, „STANDARD_F16“, „STANDARD_NV6“, „STANDARD_NV12“, „STANDARD_NV24“, „STANDARD_NC6“, „STANDARD_NC12“, „STANDARD_NC24“, „STANDARD_NC24r“, „STANDARD_H8“, „STANDARD_H8m“, „STANDARD_H16“, „STANDARD_H16m“, „STANDARD_H16mr“, „STANDARD_H16r“, „STANDARD_A1_V2“, „STANDARD_A2_V2“, „STANDARD_A4_V2“, „STANDARD_A8_V2“, „STANDARD_A2m_V2“, „STANDARD_A4m_V2“, „STANDARD_A8m_V2“, „STANDARD_M64ms“, „STANDARD_M128s“ und „STANDARD_D2_V3“. *Der Standardwert ist „STANDARD_D2_V2“.*  |
+|  DockerDetails – azureBatchVMDetails – batchVMSKU     |    Azure Batch-VM-SKU. Weitere Informationen finden Sie unter [Alle verfügbaren Linux-VMs](../../virtual-machines/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). <BR> <BR> Gültige Werte sind „Small“, „ExtraLarge“, „Large“, „A8“, „A9“, „Medium“, „A5“, „A6“, „A7“, „STANDARD_D1“, „STANDARD_D2“, „STANDARD_D3“, „STANDARD_D4“, „STANDARD_D11“, „STANDARD_D12“, „STANDARD_D13“, „STANDARD_D14“, „A10“, „A11“, „STANDARD_D1_V2“, „STANDARD_D2_V2“, „STANDARD_D3_V2“, „STANDARD_D4_V2“, „STANDARD_D11_V2“, „STANDARD_D12_V2“, „STANDARD_D13_V2“, „STANDARD_D14_V2“, „STANDARD_G1“, „STANDARD_G2“, „STANDARD_G3“, „STANDARD_G4“, „STANDARD_G5“, „STANDARD_D5_V2“, „BASIC_A1“, „BASIC_A2“, „BASIC_A3“, „BASIC_A4“, „STANDARD_A1“, „STANDARD_A2“, „STANDARD_A3“, „STANDARD_A4“, „STANDARD_A5“, „STANDARD_A6“, „STANDARD_A7“, „STANDARD_A8“, „STANDARD_A9“, „STANDARD_A10“, „STANDARD_A11“, „STANDARD_D15_V2“, „STANDARD_F1“, „STANDARD_F2“, „STANDARD_F4“, „STANDARD_F8“, „STANDARD_F16“, „STANDARD_NV6“, „STANDARD_NV12“, „STANDARD_NV24“, „STANDARD_NC6“, „STANDARD_NC12“, „STANDARD_NC24“, „STANDARD_NC24r“, „STANDARD_H8“, „STANDARD_H8m“, „STANDARD_H16“, „STANDARD_H16m“, „STANDARD_H16mr“, „STANDARD_H16r“, „STANDARD_A1_V2“, „STANDARD_A2_V2“, „STANDARD_A4_V2“, „STANDARD_A8_V2“, „STANDARD_A2m_V2“, „STANDARD_A4m_V2“, „STANDARD_A8m_V2“, „STANDARD_M64ms“, „STANDARD_M128s“ und „STANDARD_D2_V3“. *Der Standardwert ist „STANDARD_D2_V2“.*  |
 |    DockerDetails – azureBatchVMDetails – dedicatedComputerNodes   |  Anzahl von dedizierten Computerknoten pro Batchpool. Der Standardwert ist 1. |
 |    DockerDetails – azureBatchVMDetails – nodeAgentSKUID          |    SKU-ID des Azure Batch-Knoten-Agents. Derzeit wird nur der Batch-Knoten-Agent „batch.node.ubuntu 18.04“ unterstützt.    |
 | DockerDetails – partnerCredentials | Anmeldeinformationen für das Aufrufen der Partner-API in Docker. Der Partner stellt diese Informationen basierend auf dem unterstützten Autorisierungsmechanismus bereit, beispielsweise Benutzername und Kennwort oder ein API-Schlüssel. |

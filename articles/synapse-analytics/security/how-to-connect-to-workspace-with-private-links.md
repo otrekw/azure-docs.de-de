@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: ee915346a93a600ea352be42dc14e0464525c025
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 699a7321646167b0a9fb20a77a40999ec33b14f0
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93312263"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461326"
 ---
-# <a name="connect-to-your-azure-synapse-workspace-using-private-links-preview"></a>Herstellen einer Verbindung mit Ihrem Azure Synapse-Arbeitsbereich mit privaten Links (Vorschau)
+# <a name="connect-to-your-azure-synapse-workspace-using-private-links"></a>Herstellen einer Verbindung mit Ihrem Azure Synapse-Arbeitsbereich mit privaten Links
 
 In diesem Artikel erfahren Sie, wie Sie in Ihrem Azure Synapse-Arbeitsbereich einen privaten Endpunkt erstellen. Weitere Informationen finden Sie unter [private Links und private Endpunkte](https://docs.microsoft.com/azure/private-link/).
 
@@ -43,7 +43,7 @@ Private Endpunkte werden in einem Subnetz erstellt. Durch die Auswahl des Abonne
 
 Wählen Sie auf der Registerkarte **Ressource** die Option **Mit einer Azure-Ressource in meinem Verzeichnis verbinden** aus. Wählen Sie das **Abonnement** aus, das Ihren Azure Synapse-Arbeitsbereich enthält. Der **Ressourcentyp** zum Erstellen privater Endpunkte in einem Azure Synapse-Arbeitsbereich ist *Microsoft.synapse/workspaces*.
 
-Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen** , für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
+Wählen Sie Ihren Azure Synapse-Arbeitsbereich als die **Ressource** aus Jeder Azure Synapse-Arbeitsbereich verfügt über drei **untergeordnete Zielressourcen**, für die Sie einen privaten Endpunkt erstellen können: „Sql“, „SqlOnDemand“ und „Dev“.
 
 Klicken Sie auf **Weiter: Konfiguration>** , um mit dem nächsten Teil der Einrichtung fortzufahren.
 ![Auswählen von Abonnement und Regionsdetails 2](./media/how-to-connect-to-workspace-with-private-links/private-endpoint-3.png)
