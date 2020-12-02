@@ -12,12 +12,12 @@ ms.reviewer: douglasl
 manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 11/19/2020
-ms.openlocfilehash: a79055a77ec73ce2b267bb4f16fa91f37e22ea75
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 82cc58d46061ec7b623d062ab0b0e5a1fdae7ddd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94916779"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96352217"
 ---
 # <a name="configure-a-self-hosted-ir-as-a-proxy-for-an-azure-ssis-ir-in-azure-data-factory"></a>Konfigurieren einer selbstgehosteten IR als Proxy für eine Azure-SSIS IR in Azure Data Factory
 
@@ -70,7 +70,7 @@ Erstellen Sie einen mit Azure Blob Storage verknüpften Dienst in der gleichen D
 - Wählen Sie unter **Authentifizierungsmethode** die Option **Kontoschlüssel**, **SAS-URI**, **Dienstprinzipal** oder **Verwaltete Identität** aus.  
 
 >[!TIP]
->Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität geeignete Rollen für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
+>Wenn Sie die Methode **Dienstprinzipal** auswählen, gewähren Sie dem Dienstprinzipal mindestens die Rolle *Mitwirkender an Storage-Blobdaten*. Weitere Informationen finden Sie unter [Eigenschaften des verknüpften Diensts](connector-azure-blob-storage.md#linked-service-properties). Wenn Sie die Methode **Verwaltete Identität** auswählen, erteilen Sie Ihrer verwalteten ADF-Identität geeignete Rollen für den Zugriff auf Azure Blob Storage. Weitere Informationen finden Sie unter [Verwaltete Identitäten für die Authentifizierung von Azure-Ressourcen](/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
 ![Vorbereiten des mit Azure Blob Storage verknüpften Diensts für das Staging](media/self-hosted-integration-runtime-proxy-ssis/shir-azure-blob-storage-linked-service.png)
 
@@ -157,7 +157,7 @@ Sie können diese Eigenschaft auch aktivieren, wenn Sie vorhandene Pakete ausfü
 
 ## <a name="debug-the-on-premises-and-cloud-staging-tasks"></a>Debuggen der lokalen und cloudbasierten Stagingtasks
 
-In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*.  Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](https://docs.microsoft.com/azure/data-factory/monitor-using-azure-monitor#monitor-ssis-operations-with-azure-monitor) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
+In Ihrer selbstgehosteten IR finden Sie die Laufzeitprotokolle im Ordner *C:\ProgramData\SSISTelemetry* und die Ausführungsprotokolle der lokalen Stagingtasks im Ordner *C:\ProgramData\SSISTelemetry\ExecutionLog*.  Die Ausführungsprotokolle von Cloudstagingtasks finden Sie in Ihrer SSISDB, an den angegebenen Protokollierungsdateipfaden oder in Azure Monitor. Dies ist unter anderem abhängig davon, ob Sie Ihre Pakete in SSISDB speichern oder die [Azure Monitor-Integration](./monitor-using-azure-monitor.md#monitor-ssis-operations-with-azure-monitor) aktivieren. Die eindeutigen IDs der lokalen Stagingtasks finden Sie auch in den Ausführungsprotokollen der Cloudstagingtasks. 
 
 ![Eindeutige ID des ersten Stagingtasks](media/self-hosted-integration-runtime-proxy-ssis/shir-first-staging-task-guid.png)
 
@@ -173,7 +173,7 @@ Die in Ihrer selbstgehosteten IR ausgeführten Cloudstagingtasks werden nicht se
 
 Gehen Sie wie folgt vor, um Ihren benutzerdefinierten Komponenten/Drittanbieterkomponenten den lokalen Zugriff auf Daten zu ermöglichen und dabei die selbstgehostete Integration Runtime als Proxy für Azure-SSIS IR zu verwenden:
 
-1. Installieren Sie Ihre auf SQL Server 2017 ausgerichteten benutzerdefinierten Komponenten/Drittanbieterkomponenten in Azure-SSIS IR, und berücksichtigen Sie dabei die Informationen unter [Anpassen des Setups für eine Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/how-to-configure-azure-ssis-ir-custom-setup).
+1. Installieren Sie Ihre auf SQL Server 2017 ausgerichteten benutzerdefinierten Komponenten/Drittanbieterkomponenten in Azure-SSIS IR, und berücksichtigen Sie dabei die Informationen unter [Anpassen des Setups für eine Azure-SSIS Integration Runtime](./how-to-configure-azure-ssis-ir-custom-setup.md).
 
 1. Erstellen Sie die folgenden DTSPath-Registrierungsschlüssel für eine selbstgehostete Integration Runtime, falls sie noch nicht vorhanden sind:
    1. `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft SQL Server\140\SSIS\Setup\DTSPath` auf `C:\Program Files\Microsoft SQL Server\140\DTS\` festgelegt.
@@ -197,7 +197,7 @@ Wenn Sie starke Kryptografie und ein sichereres Netzwerkprotokoll (TLS 1.2) ver
 
 ## <a name="current-limitations"></a>Aktuelle Einschränkungen
 
-- Aktuell werden nur Datenflusskomponenten unterstützt, die in Azure-SSIS IR Standard Edition integriert/vorinstalliert sind (mit Ausnahme von Hadoop/HDFS/DQS-Komponenten). Weitere Informationen finden Sie unter [Integrierte und vorinstallierte Komponenten für Azure-SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/built-in-preinstalled-components-ssis-integration-runtime).
+- Aktuell werden nur Datenflusskomponenten unterstützt, die in Azure-SSIS IR Standard Edition integriert/vorinstalliert sind (mit Ausnahme von Hadoop/HDFS/DQS-Komponenten). Weitere Informationen finden Sie unter [Integrierte und vorinstallierte Komponenten für Azure-SSIS Integration Runtime](./built-in-preinstalled-components-ssis-integration-runtime.md).
 - Aktuell werden nur benutzerdefinierte/von Drittanbietern erstellte Datenflusskomponenten unterstützt, die in verwaltetem Code (.NET Framework) geschrieben sind. In nativem Code (C++) geschriebene Komponenten werden aktuell nicht unterstützt.
 - Das Ändern von Variablenwerten in lokalen und cloudbasierten Stagingtasks wird aktuell nicht unterstützt.
 - In lokalen Stagingtasks geänderte Variablenwerte vom Typ „Objekt“ werden in anderen Tasks nicht berücksichtigt.

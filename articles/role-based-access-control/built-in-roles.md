@@ -7,14 +7,14 @@ ms.topic: reference
 ms.workload: identity
 author: rolyon
 ms.author: rolyon
-ms.date: 11/03/2020
+ms.date: 11/18/2020
 ms.custom: generated
-ms.openlocfilehash: a48a13fa18025254ee31344868d10181ae87c65e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e18dc7e16eb0b114bd279d53b7dcc895bd62f338
+ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685476"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96002730"
 ---
 # <a name="azure-built-in-roles"></a>Integrierte Azure-Rollen
 
@@ -237,6 +237,7 @@ Hiermit wird Vollzugriff zum Verwalten aller Ressourcen gewährt, allerdings nic
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/elevateAccess/Action | Gewährt dem Aufrufer Zugriff vom Typ „Benutzerzugriffsadministrator“ auf der Mandantenebene. |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/write | Erstellt oder aktualisiert alle Blaupausenzuweisungen |
 > | [Microsoft.Blueprint](resource-provider-operations.md#microsoftblueprint)/blueprintAssignments/delete | Löscht alle Blaupausenzuweisungen |
+> | [Microsoft.Compute](resource-provider-operations.md#microsoftcompute)/galleries/share/action | Gibt einen Katalog in verschiedenen Bereichen frei. |
 > | **DataActions** |  |
 > | *keine* |  |
 > | **NotDataActions** |  |
@@ -260,7 +261,8 @@ Hiermit wird Vollzugriff zum Verwalten aller Ressourcen gewährt, allerdings nic
         "Microsoft.Authorization/*/Write",
         "Microsoft.Authorization/elevateAccess/Action",
         "Microsoft.Blueprint/blueprintAssignments/write",
-        "Microsoft.Blueprint/blueprintAssignments/delete"
+        "Microsoft.Blueprint/blueprintAssignments/delete",
+        "Microsoft.Compute/galleries/share/action"
       ],
       "dataActions": [],
       "notDataActions": []
@@ -4889,7 +4891,7 @@ Ein Log Analytics-Leser kann alle Überwachungsdaten anzeigen und durchsuchen so
 Lesen, Schreiben und Löschen von Schemaregistrierungsgruppen und Schemas.
 
 > [!div class="mx-tableFixed"]
-> | Aktionen | BESCHREIBUNG |
+> | Aktionen | Beschreibung |
 > | --- | --- |
 > | [Microsoft.EventHub](resource-provider-operations.md#microsofteventhub)/namespaces/schemagroups/* |  |
 > | **NotActions** |  |
@@ -6551,6 +6553,7 @@ Azure Sentinel-Mitwirkender [Weitere Informationen](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/* |  |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
@@ -6583,6 +6586,7 @@ Azure Sentinel-Mitwirkender [Weitere Informationen](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/*",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6620,6 +6624,7 @@ Azure Sentinel-Leser [Weitere Informationen](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
@@ -6656,6 +6661,7 @@ Azure Sentinel-Leser [Weitere Informationen](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
@@ -6699,13 +6705,15 @@ Azure Sentinel-Antwortender [Weitere Informationen](../sentinel/roles.md)
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/query/*/read |  |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/dataSources/read | Dient zum Abrufen von Datenquellen unter einem Arbeitsbereich. |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/workbooks/read | Lesen einer Arbeitsmappe |
+> | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/myworkbooks/read | Liest eine private Arbeitsmappe |
 > | [Microsoft.Authorization](resource-provider-operations.md#microsoftauthorization)/*/read | Lesen von Rollen und Rollenzuweisungen |
 > | [Microsoft.Insights](resource-provider-operations.md#microsoftinsights)/alertRules/* | Erstellen und Verwalten einer klassischen Metrikwarnung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/deployments/* | Erstellen und Verwalten einer Bereitstellung |
 > | [Microsoft.Resources](resource-provider-operations.md#microsoftresources)/subscriptions/resourceGroups/read | Ruft Ressourcengruppen ab oder listet sie auf. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
 > | **NotActions** |  |
-> | *keine* |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/cases/*/Delete |  |
+> | [Microsoft.SecurityInsights](resource-provider-operations.md#microsoftsecurityinsights)/incidents/*/Delete |  |
 > | **DataActions** |  |
 > | *keine* |  |
 > | **NotDataActions** |  |
@@ -6741,13 +6749,17 @@ Azure Sentinel-Antwortender [Weitere Informationen](../sentinel/roles.md)
         "Microsoft.OperationalInsights/workspaces/query/*/read",
         "Microsoft.OperationalInsights/workspaces/dataSources/read",
         "Microsoft.Insights/workbooks/read",
+        "Microsoft.Insights/myworkbooks/read",
         "Microsoft.Authorization/*/read",
         "Microsoft.Insights/alertRules/*",
         "Microsoft.Resources/deployments/*",
         "Microsoft.Resources/subscriptions/resourceGroups/read",
         "Microsoft.Support/*"
       ],
-      "notActions": [],
+      "notActions": [
+        "Microsoft.SecurityInsights/cases/*/Delete",
+        "Microsoft.SecurityInsights/incidents/*/Delete"
+      ],
       "dataActions": [],
       "notDataActions": []
     }
@@ -7004,7 +7016,7 @@ Lesen von Metadaten von Schlüsseln und Ausführen von Vorgängen zum Packen/Ent
 > | *keine* |  |
 > | **DataActions** |  |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/read | Listet Schlüssel im angegebenen Tresor auf oder liest Eigenschaften und öffentliche Informationen eines Schlüssels. Bei asymmetrischen Schlüsseln legt dieser Vorgang den öffentlichen Schlüssel offen und beinhaltet die Fähigkeit, Algorithmen für öffentliche Schlüssel durchzuführen, z. B. Verschlüsselung und Überprüfung der Signatur. Private Schlüssel und symmetrische Schlüssel werden nie offengelegt. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit Lesezugriff durchgeführt werden. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Hebt die Umschließung eines symmetrischen Schlüssels mit einem Key Vault-Schlüssel auf. |
 > | **NotDataActions** |  |
 > | *keine* |  |
@@ -7051,10 +7063,10 @@ Ausführen kryptografischer Vorgänge mithilfe von Schlüsseln. Funktioniert nur
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/backup/action | Erstellt die Sicherungsdatei eines Schlüssels. Die Datei kann verwendet werden, um den Schlüssel in einem Key Vault desselben Abonnements wiederherzustellen. Es können Einschränkungen gelten. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/encrypt/action | Verschlüsselt Klartext mit einem Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/decrypt/action | Entschlüsselt Chiffretext mit einem Schlüssel. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit Lesezugriff durchgeführt werden. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/wrap/action | Umschließt einen symmetrischen Schlüssel mit einem Key Vault-Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Key Vault-Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/unwrap/action | Hebt die Umschließung eines symmetrischen Schlüssels mit einem Key Vault-Schlüssel auf. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | Signiert einen Hash mit einem Schlüssel. |
-> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | Überprüft einen Hash. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/sign/action | Signiert einen Nachrichtenhash (Hash) mit einem Schlüssel. |
+> | [Microsoft.KeyVault](resource-provider-operations.md#microsoftkeyvault)/vaults/keys/verify/action | Überprüft die Signatur eines Nachrichtenhashs (Hash) mit einem Schlüssel. Hinweis: Wenn es sich um einen asymmetrischen Schlüssel handelt, kann dieser Vorgang mit einem Prinzipal mit Lesezugriff durchgeführt werden. |
 > | **NotDataActions** |  |
 > | *keine* |  |
 
@@ -7760,7 +7772,7 @@ Kann sämtliche Überwachungsdaten lesen und Überwachungseinstellungen bearbeit
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/sharedKeys/action | Ruft die gemeinsam verwendeten Schlüssel für den Arbeitsbereich ab. Diese Schlüssel werden verwendet, um Microsoft Operational Insights-Agents mit dem Arbeitsbereich zu verbinden. |
 > | [Microsoft.OperationalInsights](resource-provider-operations.md#microsoftoperationalinsights)/workspaces/storageinsightconfigs/* | Lesen/Schreiben/Löschen von Log Analytics-Speicherdetailinformationen. |
 > | [Microsoft.Support](resource-provider-operations.md#microsoftsupport)/* | Erstellen und Aktualisieren eines Supporttickets |
-> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | Erhalten Sie Informationen zu Integritätsmonitoren für Gast-VMs.  |
+> | [Microsoft.WorkloadMonitor](resource-provider-operations.md#microsoftworkloadmonitor)/monitors/* | Erhalten Sie Informationen zu Integritätsmonitoren für Gast-VMs. |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartDetectorAlertRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/actionRules/* |  |
 > | [Microsoft.AlertsManagement](resource-provider-operations.md#microsoftalertsmanagement)/smartGroups/* |  |

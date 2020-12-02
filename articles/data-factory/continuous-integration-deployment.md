@@ -5,18 +5,18 @@ services: data-factory
 documentationcenter: ''
 ms.service: data-factory
 ms.workload: data-services
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 09/23/2020
-ms.openlocfilehash: 93aeb088f82cae6dde215792e399997b592a5c14
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: a7d392412aa481d9541cd4987cfb4c18d04dafa0
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003972"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500154"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Continuous Integration und Continuous Delivery in Azure Data Factory
 
@@ -639,7 +639,7 @@ Das folgende Video ist ein ausführliches Videotutorial, in dem Sie erfahren, wi
 
 ## <a name="exposure-control-and-feature-flags"></a>Anzeigesteuerungs- und Featureflags
 
-Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](https://docs.microsoft.com/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
+Wenn Sie in einem Team arbeiten, gibt es Instanzen, für die Sie Änderungen zusammenführen können, aber nicht möchten, dass sie in Umgebungen mit erhöhten Rechten wie PROD und QA ausgeführt werden. Für dieses Szenario empfiehlt das ADF-Team [das DevOps-Konzept der Verwendung von Featureflags](/azure/devops/migrate/phase-features-with-feature-flags?view=azure-devops). In ADF können Sie [globale Parameter](author-global-parameters.md) und die [Aktivität „IfCondition“](control-flow-if-condition-activity.md) kombinieren, um Logiksätze auf der Grundlage dieser Umgebungsflags auszublenden.
 
 Informationen zum Einrichten eines Featureflags finden Sie im folgenden Videotutorial:
 

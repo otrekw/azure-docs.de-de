@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie, wie Sie Fehler beheben können, die
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 343ad80a6b68de352424fa8f16686fcece921954
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: cb25d9263648fbd92bc075751c1a8e627d03bd44
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840915"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325212"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Problembehandlung bei Sicherungsfehlern auf virtuellen Azure-Computern
 
@@ -125,7 +125,7 @@ REG ADD "HKLM\SOFTWARE\Microsoft\BcdrAgentPersistentKeys" /v SnapshotWithoutThre
 Schritt 3: Falls das Problem mit den Schritten 1 und 2 nicht behoben werden konnte, kann der Grund für den Fehler sein, dass für die VSS Writer-Instanzen aufgrund einer IOPS-Begrenzung ein Timeout auftritt.<br>
 
 Navigieren Sie zur Überprüfung zu ***System- und Ereignisanzeige-Anwendungsprotokolle** _, und suchen Sie nach der folgenden Fehlermeldung:<br>
-_Für den Schattenkopieanbieter ist ein Timeout aufgetreten, während für das Volume für den Schattenkopiervorgang die Schreibvorgänge angehalten wurden. Der Grund ist wahrscheinlich ein übermäßig hoher Aktivitätsgrad auf dem Volume, der von einer Anwendung oder einem Systemdienst verursacht wird. Wiederholen Sie den Vorgang später, wenn der Aktivitätsgrad auf dem Volume nicht mehr so hoch ist.*<br>
+_Für den Schattenkopieanbieter ist ein Timeout aufgetreten, während für das Volume für den Schattenkopiervorgang die Schreibvorgänge angehalten wurden. This is probably due to excessive activity on the volume by an application or a system service. Wiederholen Sie den Vorgang später, wenn der Aktivitätsgrad auf dem Volume nicht mehr so hoch ist.*<br>
 
 Lösung:
 
@@ -246,7 +246,7 @@ So wird sichergestellt, dass die Momentaufnahmen nicht über den Gast, sondern �
 
 **Schritt 2:** Versuchen Sie, den Sicherungszeitplan auf einen Zeitpunkt zu ändern, zu dem die VM eine geringere Auslastung (wie z. B. weniger CPU oder IOPS) aufweist.
 
-**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](https://docs.microsoft.com/azure/virtual-machines/windows/resize-vm) und den Vorgang dann erneut durchzuführen.
+**Schritt 3:** Versuchen Sie, [die Größe der VM zu erhöhen](../virtual-machines/windows/resize-vm.md) und den Vorgang dann erneut durchzuführen.
 
 ### <a name="320001-resourcenotfound---could-not-perform-the-operation-as-vm-no-longer-exists--400094-bcmv2vmnotfound---the-virtual-machine-doesnt-exist--an-azure-virtual-machine-wasnt-found"></a>320001, ResourceNotFound: Der Vorgang konnte nicht ausgeführt werden, weil der virtuelle Computer nicht mehr vorhanden ist./400094, BCMV2VMNotFound: Der virtuelle Computer ist nicht vorhanden/Der virtuelle Azure-Computer wurde nicht gefunden.
 

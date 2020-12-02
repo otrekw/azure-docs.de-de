@@ -11,12 +11,12 @@ author: barbaraselden
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06c37eaf63b79b171e5a21d807262cfb359d416c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 765bfe0f805ae4219110d689e8f7f8fd54a26cf3
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994161"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96173935"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Planen der Bereitstellung einer Self-Service-Kennwortzurücksetzung (SSPR) von Azure Active Directory
 
@@ -123,7 +123,7 @@ Berücksichtigen Sie die Anforderungen Ihrer Organisation, während Sie die Stra
 
 ### <a name="engage-the-right-stakeholders"></a>Einbeziehen der richtigen Beteiligten
 
-Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, [achten Sie darauf, die richtigen Beteiligten einzubeziehen](https://aka.ms/deploymentplans) und die Rolle der Beteiligten präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
+Fehler in Technologieprojekten sind in der Regel auf nicht erfüllte Erwartungen auf den Gebieten Auswirkungen, Ergebnisse und Zuständigkeiten zurückzuführen. Um diese Fallstricke zu vermeiden, [achten Sie darauf, die richtigen Beteiligten einzubeziehen](../fundamentals/active-directory-deployment-plans.md) und die Rolle der Beteiligten präzise zu definieren, indem Sie die Beteiligten, ihren Projektbeitrag und ihre Zuständigkeiten dokumentieren.
 
 #### <a name="required-administrator-roles"></a>Erforderliche Administratorrollen
 
@@ -325,7 +325,7 @@ Mithilfe der Funktion [Nutzung und Erkenntnisse](./howto-authentication-methods-
 
 ### <a name="troubleshoot"></a>Problembehandlung
 
-* Siehe [Problembehandlung für die Self-Service-Kennwortzurücksetzung](./active-directory-passwords-troubleshoot.md) 
+* Siehe [Problembehandlung für die Self-Service-Kennwortzurücksetzung](./troubleshoot-sspr.md) 
 
 * Folgen Sie [Häufig gestellte Fragen zur Kennwortverwaltung](./active-directory-passwords-faq.md) 
 

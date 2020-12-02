@@ -10,12 +10,12 @@ ms.reviewer: veyalla
 ms.service: iot-edge
 ms.custom: devx-track-azurecli
 services: iot-edge
-ms.openlocfilehash: 97cdc4ad0b1d5e7dfb6642fa0163f810be5d7171
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dccb734ef4eaa9f22b70488918f14ad94f723453
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94966920"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96437132"
 ---
 # <a name="retrieve-logs-from-iot-edge-deployments"></a>Abrufen von Protokollen aus IoT Edge-Bereitstellungen
 
@@ -33,7 +33,7 @@ Es ist zwar nicht erforderlich, für die bestmögliche Kompatibilität mit diese
 <{Log Level}> {Timestamp} {Message Text}
 ```
 
-`{Log Level}` sollte dem [Syslog-Schweregradformat](https://wikipedia.org/wiki/Syslog#Severity_lnevel) entsprechen und `{Timestamp}` muss als `yyyy-mm-dd hh:mm:ss.fff zzz` formatiert werden.
+`{Log Level}` sollte dem [Syslog-Schweregradformat](https://wikipedia.org/wiki/Syslog#Severity_level) entsprechen und `{Timestamp}` muss als `yyyy-mm-dd hh:mm:ss.fff zzz` formatiert werden.
 
 Die [Protokollierungsklasse in IoT Edge](https://github.com/Azure/iotedge/blob/master/edge-util/src/Microsoft.Azure.Devices.Edge.Util/Logger.cs) fungiert als kanonische Implementierung.
 
@@ -50,10 +50,10 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -159,10 +159,10 @@ Diese Methode akzeptiert eine JSON-Nutzlast, die **GetModuleLogs** ähnelt, wobe
           {
              "id": "regex string",
              "filter": {
-                "tail": int,
-                "since": int,
-                "until": int,
-                "loglevel": int,
+                "tail": "int",
+                "since": "int",
+                "until": "int",
+                "loglevel": "int",
                 "regex": "regex string"
              }
           }
@@ -172,7 +172,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast, die **GetModuleLogs** ähnelt, wobe
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 |-|-|-|
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
 
@@ -192,7 +192,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 Der folgende Aufruf lädt die letzten 100 Protokollzeilen aus allen Modulen im komprimierten JSON-Format hoch:
 
@@ -289,7 +289,7 @@ Diese Methode akzeptiert eine JSON-Nutzlast mit dem folgenden Schema:
     }
 ```
 
-| Name | type | Beschreibung |
+| Name | type | BESCHREIBUNG |
 |-|-|-|
 | schemaVersion | Zeichenfolge | Legen Sie den Wert `1.0` |
 | sasURL | Zeichenfolge (URI) | [Shared Access Signature-URL mit Schreibzugriff auf den Azure Blob Storage-Container](/archive/blogs/jpsanders/easily-create-a-sas-to-download-a-file-from-azure-storage-using-azure-storage-explorer) |
@@ -316,7 +316,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'UploadSupportBundle' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \
@@ -374,7 +374,7 @@ Bei einer erfolgreichen Anforderung zum Hochladen von Protokollen wird der **Sta
 | message | Zeichenfolge | Meldung bei einem Fehler, andernfalls leere Zeichenfolge |
 | correlationId | Zeichenfolge   | ID zum Abfragen des Status der Uploadanforderung |
 
-Beispiel:
+Zum Beispiel:
 
 ```azurecli
 az iot hub invoke-module-method --method-name 'GetTaskStatus' -n <hub name> -d <device id> -m '$edgeAgent' --method-payload \

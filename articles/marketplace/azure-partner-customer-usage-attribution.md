@@ -8,12 +8,12 @@ author: vikrambmsft
 ms.author: vikramb
 ms.date: 11/4/2020
 ms.custom: devx-track-terraform
-ms.openlocfilehash: 3728fdd07172f2402ddb1dc7434ddb1993b984b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9e630f4199e0bfb67509f008f403c0a7a490887
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999874"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436690"
 ---
 # <a name="commercial-marketplace-partner-and-customer-usage-attribution"></a>Zuordnung der Nutzung durch Partner und Kunden des kommerziellen Marketplace
 
@@ -32,7 +32,7 @@ Die Zuordnung der Nutzung durch Kunden unterstützt drei Bereitstellungsmethoden
 >
 >- Die Zuordnung der Nutzung durch Kunden gilt für neue Bereitstellungen und unterstützt NICHT das Tagging vorhandener, bereits bereitgestellter Ressourcen.
 >
->- Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](./partner-center-portal/create-new-azure-apps-offer.md) erforderlich, die in Azure Marketplace veröffentlicht werden.
+>- Die Zuordnung der Nutzung durch Kunden ist für [Azure-Anwendungsangebote](./create-new-azure-apps-offer.md) erforderlich, die in Azure Marketplace veröffentlicht werden.
 >
 >- Nicht alle Azure-Dienste sind mit der Zuordnung der Nutzung durch Kunden kompatibel. Bei Azure Kubernetes Services (AKS) und VM Scale Sets sind zum jetzigen Zeitpunkt Probleme bekannt, die zu einer unzureichenden Meldung der Nutzung führen.
 
@@ -64,7 +64,7 @@ Die GUIDs müssen in Partner Center registriert werden, um die Zuordnung der Nut
 Nachdem Sie Ihrer Vorlage oder im Benutzer-Agent eine GUID hinzugefügt und die GUID in Partner Center registriert haben, werden zukünftige Bereitstellungen nachverfolgt.
 
 > [!NOTE]
-> Wenn Sie Ihr [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md) im Azure Marketplace über Partner Center veröffentlichen, wird jede neue GUID, die in Ihrer Vorlage verwendet wird, beim Hochladen der Vorlage automatisch im Partner Center-Profil registriert.  
+> Wenn Sie Ihr [Azure-Anwendungsangebot](./create-new-azure-apps-offer.md) im Azure Marketplace über Partner Center veröffentlichen, wird jede neue GUID, die in Ihrer Vorlage verwendet wird, beim Hochladen der Vorlage automatisch im Partner Center-Profil registriert.  
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com/dashboard) an.
 
@@ -90,7 +90,7 @@ Viele Partnerlösungen werden mithilfe von Azure Resource Manager-Vorlagen berei
 > [!NOTE]
 > Weitere Informationen zum Erstellen und Veröffentlichen von Lösungsvorlagen finden Sie unter:
 > * [Erstellen und Bereitstellen Ihrer ersten Resource Manager-Vorlage](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
->* [Azure-Anwendungsangebot](./partner-center-portal/create-new-azure-apps-offer.md)
+>* [Azure-Anwendungsangebot](./create-new-azure-apps-offer.md)
 >* Video: [Erstellen von Lösungsvorlagen und verwalteten Anwendungen für den Azure Marketplace](https://channel9.msdn.com/Events/Build/2018/BRK3603).
 
 

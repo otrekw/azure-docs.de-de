@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 11/19/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: cd9f4ad6b6831b2b15c09b37edc569b3f2d247f7
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f75907dc1fa079cebb3b80874090c658fd7b8174
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958077"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302835"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Verwenden kundenseitig verwalteter Schlüssel in Azure Key Vault für Azure Data Box
 
@@ -103,7 +103,7 @@ Um einen kundenseitig verwalteten Schlüssel für Ihre vorhandene Data Box-Beste
 
     ![Auswählen einer zu verwendenden Identität](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-14.png)
 
-    Sie können hier keine neue Benutzeridentität erstellen. Wie Sie eine erstellen können, erfahren Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](/azure-docs/blob/master/articles/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
+    Sie können hier keine neue Benutzeridentität erstellen. Wie Sie eine erstellen können, erfahren Sie unter [Erstellen, Auflisten, Löschen oder Zuweisen einer Rolle zu einer vom Benutzer zugewiesenen verwalteten Identität über das Azure-Portal](/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal).
 
     Die ausgewählte Benutzeridentität wird in den Einstellungen unter **Verschlüsselungstyp** angezeigt.
 

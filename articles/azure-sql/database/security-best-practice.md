@@ -10,12 +10,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 09/21/2020
 ms.reviewer: ''
-ms.openlocfilehash: b309ce01595e2e62bea7f78ae728d83bc7d9b9be
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1217d3af855e96b6d6a0f403c2ff351a6b957d9a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992164"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459669"
 ---
 # <a name="playbook-for-addressing-common-security-requirements-with-azure-sql-database-and-azure-sql-managed-instance"></a>Playbook für den Umgang mit allgemeinen Sicherheitsanforderungen für Azure SQL-Datenbank und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqldb-sqlmi](../includes/appliesto-sqldb-sqlmi.md)]
@@ -33,7 +33,7 @@ Dieses Dokument enthält Anleitungen zur Lösung allgemeiner Sicherheitsanforder
 
 ### <a name="deployment-offers-not-covered-in-this-guide"></a>Bereitstellungsangebote, die in diesem Leitfaden nicht behandelt werden
 
-- Azure Synapse Analytics (ehemals SQL Data Warehouse)
+- Azure Synapse Analytics
 - Azure SQL-VMs (IaaS)
 - SQL Server
 
@@ -614,7 +614,7 @@ DDoS-Angriffe (verteilte Denial-of-Service-Angriffe) werden von böswilligen Ben
 
 DDoS-Schutz wird im Rahmen der Azure-Plattform automatisch aktiviert. Er umfasst ununterbrochene Datenverkehrsüberwachung sowie Risikominderung in Echtzeit von Angriffen auf öffentliche Endpunkte auf Netzwerkebene.
 
-- Verwenden Sie [Azure DDoS Protection](../../virtual-network/ddos-protection-overview.md), um öffentliche IP-Adressen zu überwachen, die in virtuellen Netzwerken bereitgestellten Ressourcen zugeordnet sind.
+- Verwenden Sie [Azure DDoS Protection](../../ddos-protection/ddos-protection-overview.md), um öffentliche IP-Adressen zu überwachen, die in virtuellen Netzwerken bereitgestellten Ressourcen zugeordnet sind.
 
 - Verwenden Sie [Advanced Threat Protection für Azure SQL-Datenbank](threat-detection-overview.md), um DOS-Angriffe (Denial-of-Service) auf Datenbanken zu erkennen.
 

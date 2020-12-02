@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/16/2020
 ms.author: alsin
 ms.reviewer: cynthn
-ms.openlocfilehash: 4487aeba72cc71a31871169c0647efbff34ee068
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 9b35a3cbe23af91f7f0b8aceecfb8ba3c9720461
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968620"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484412"
 ---
 # <a name="red-hat-enterprise-linux-in-place-upgrades"></a>Direkte Upgrades für Red Hat Enterprise Linux
 
@@ -35,7 +35,7 @@ Bevor Sie das Upgrade starten, beachten Sie die folgenden Überlegungen.
 >[!Important] 
 > Erstellen Sie eine Momentaufnahme des Images, bevor Sie das Upgrade starten.
 
-* Stellen Sie sicher, dass Sie die neueste RHEL 7-Version verwenden. Derzeit ist RHEL 7.9 die neueste Version. Wenn Sie eine gesperrte Version verwenden und kein Upgrade auf RHEL 7.9 durchführen können, [befolgen Sie diese Schritte, um zu einem Nicht-EUS-Repository (Extended Update Support) zu wechseln](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/redhat-rhui#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
+* Stellen Sie sicher, dass Sie die neueste RHEL 7-Version verwenden. Derzeit ist RHEL 7.9 die neueste Version. Wenn Sie eine gesperrte Version verwenden und kein Upgrade auf RHEL 7.9 durchführen können, [befolgen Sie diese Schritte, um zu einem Nicht-EUS-Repository (Extended Update Support) zu wechseln](./redhat-rhui.md#switch-a-rhel-7x-vm-back-to-non-eus-remove-a-version-lock).
 
 * Führen Sie den folgenden Befehl aus, um das Upgrade zu überprüfen und festzustellen, ob es erfolgreich ausgeführt werden kann. Der Befehl sollte diese Datei generieren: */var/log/leapp/leapp-report.txt*. Dieser Datei erläutert, wie der Prozess funktioniert, welche Vorgänge ausgeführt werden können und ob das Upgrade möglich ist.
 

@@ -3,12 +3,12 @@ title: Azure Lab Services – Administratorhandbuch | Microsoft-Dokumentation
 description: Dieses Handbuch hilft Administratoren, die Lab-Konten mit Azure Lab Services erstellen und verwalten.
 ms.topic: article
 ms.date: 10/20/2020
-ms.openlocfilehash: 08d2fea719ad67f666ea9da09721dc3f7ab54768
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 3ad3ee38a6c08a6af85822d76012cc6dfc34ff4e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999279"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462471"
 ---
 # <a name="azure-lab-services---administrator-guide"></a>Azure Lab Services – Administratorhandbuch
 IT-Administratoren, die die Cloudressourcen einer Universität verwalten, sind in der Regel auch dafür verantwortlich, das Lab-Konto für diese Universität einzurichten. Nachdem sie ein Lab-Konto eingerichtet haben, erstellen Administratoren oder Dozenten Labs, die im Lab-Konto enthalten sind. Dieser Artikel bietet eine allgemeine Übersicht über die beteiligten Azure-Ressourcen und die Anleitungen zu deren Erstellung.
@@ -129,7 +129,7 @@ Weitere Informationen zur Benennung anderer Azure-Ressourcen finden Sie unter [N
 
 Beim Einrichten Ihrer Azure Lab Services-Ressourcen müssen Sie eine Region oder einen Standort des Rechenzentrums angeben, in dem die Ressourcen gehostet werden sollen. In den nächsten Abschnitten wird beschrieben, wie sich eine Region oder ein Standort auf die einzelnen Ressourcen auswirken kann, die mit dem Einrichten eines Labs verbunden sind.
 
-### <a name="resource-group"></a>Ressourcengruppe
+### <a name="resource-group"></a>Resource group
 
 Die Region gibt das Rechenzentrum an, in dem Informationen über die Ressourcengruppe gespeichert werden. In der Ressourcengruppe enthaltene Azure-Ressourcen können sich in anderen Regionen befinden als ihre übergeordneten Ressourcen.
 
@@ -167,14 +167,14 @@ Wenn Administratoren oder Ersteller von Labs ein Lab erstellen, können sie basi
 
 | Size | Spezifikationen | Reihen | Vorgeschlagene Verwendung |
 | ---- | ----- | ------ | ------------- |
-| Klein| <ul><li>2&nbsp;Kerne</li><li>3,5 Gigabyte (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Am besten geeignet für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
-| Medium | <ul><li>4&nbsp;Kerne</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen. |
-| Mittel (geschachtelte Virtualisierung) | <ul><li>4&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen.
+| Klein| <ul><li>2&nbsp;Kerne</li><li>3,5 Gigabyte (GB) RAM</li> | [Standard_A2_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Am besten geeignet für die Befehlszeile, das Öffnen von Webbrowsern, Webserver mit geringem Datenverkehr und kleine bis mittelgroße Datenbanken. |
+| Medium | <ul><li>4&nbsp;Kerne</li><li>7&nbsp;GB&nbsp;RAM</li> | [Standard_A4_v2](../virtual-machines/av2-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen. |
+| Mittel (geschachtelte Virtualisierung) | <ul><li>4&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul> | [Standard_D4s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Am besten geeignet für relationale Datenbanken, speicherinternes Zwischenspeichern und Analysen.
 | Groß | <ul><li>8&nbsp;Kerne</li><li>16&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_A8_v2](../virtual-machines/av2-series.md) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern.  Sie unterstützt auch die geschachtelte Virtualisierung. |
-| Groß (geschachtelte Virtualisierung) | <ul><li>8&nbsp;Kerne</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#dsv3-series) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern. |
+| Groß (geschachtelte Virtualisierung) | <ul><li>8&nbsp;Kerne</li><li>32&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_D8s_v3](../virtual-machines/dv3-dsv3-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#dsv3-series) | Eignet sich am besten für Anwendungen, die schnellere CPUs, eine höhere lokale Datenträgerleistung, große Datenbanken und Caches erfordern. |
 | Kleine GPU (Visualisierung) | <ul><li>6&nbsp;Kerne</li><li>56&nbsp;GB&nbsp;RAM</li>  | [Standard_NV6](../virtual-machines/nv-series.md) | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
 | Kleine GPU (Compute) | <ul><li>6&nbsp;Kerne</li><li>56&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NC6](../virtual-machines/nc-series.md) |Eignet sich am besten für rechenintensive Anwendungen wie KI und Deep Learning. |
-| Mittlere GPU (Visualisierung) | <ul><li>12&nbsp;Kerne</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
+| Mittlere GPU (Visualisierung) | <ul><li>12&nbsp;Kerne</li><li>112&nbsp;GB&nbsp;RAM</li></ul>  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
 
 ## <a name="manage-identity"></a>Verwalten der Identität
 

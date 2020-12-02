@@ -3,12 +3,12 @@ title: Aktivieren einer Azure VMware Solution-Ressource
 description: Erfahren Sie, wie Sie eine Supportanfrage einreichen, um Ihre Azure VMware Solution-Ressource zu aktivieren. Sie können auch weitere Hosts in Ihrer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 68f8fe38c67ec5ddad7cf662a7996330ee2a1e73
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95794713"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96325076"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Aktivieren einer Azure VMware Solution-Ressource
 Hier erfahren Sie, wie Sie eine Supportanfrage einreichen, um Ihre Ressource vom Typ [Azure VMware Solution](introduction.md) zu aktivieren. Sie können auch weitere Hosts in Ihrer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
@@ -76,13 +76,13 @@ CSPs müssen [Microsoft Partner Center](https://partner.microsoft.com) verwenden
 
 1. Wählen Sie **Azure-Plan** und anschließend **Zu Warenkorb hinzufügen** aus. 
 
-1. Überprüfen Sie die allgemeine Einrichtung des Azure-Planabonnements für Ihren Kunden, und schließen Sie sie ab. Weitere Informationen finden Sie in der [Dokumentation zu Microsoft Partner Center](https://docs.microsoft.com/partner-center/azure-plan-manage).
+1. Überprüfen Sie die allgemeine Einrichtung des Azure-Planabonnements für Ihren Kunden, und schließen Sie sie ab. Weitere Informationen finden Sie in der [Dokumentation zu Microsoft Partner Center](/partner-center/azure-plan-manage).
 
 Nachdem Sie den Azure-Plan konfiguriert und die erforderlichen vSphere-RBAC-Berechtigungen als CSP eingerichtet haben, wenden Sie sich an Microsoft, um das Kontingent für ein Azure-Planabonnement zu aktivieren. Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin on Behalf Of, AOBO) von Partner Center aus auf das Azure-Portal zu.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com) an.
 
-1. Wählen Sie **CSP** aus, um auf den Bereich **Kunden** zuzugreifen.
+1. Wählen Sie **CSP** aus, um auf den **Kundenbereich** zuzugreifen.
 
 1. Erweitern Sie die Kundendetails, und wählen Sie **Microsoft Azure-Verwaltungsportal** aus.
 

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: terrylan
-ms.openlocfilehash: 94cb40522a9e463fea2efae329daf910b5386cdd
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: bf593eab54233ab65435585485dd8e3940f5addb
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832601"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489818"
 ---
 # <a name="azure-identity-management-and-access-control-security-best-practices"></a>Azure-Identitätsverwaltung und Sicherheit der Zugriffssteuerung – Bewährte Methoden
 
@@ -229,12 +229,12 @@ Das Sichern des privilegierten Zugriffs ist ein entscheidender erster Schritt, u
 
 Mit privilegierten Konten werden IT-Systeme verwaltet. Cyberkriminelle versuchen diese Konten anzugreifen, um Zugriff auf die Daten und Systeme eines Unternehmens zu erhalten. Zum Schutz des privilegierten Zugriffs empfiehlt es sich, Konten und Systeme zu isolieren, um sie vor dem Zugriff durch böswillige Benutzer zu schützen.
 
-Wir empfehlen Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gegenüber Cyberangreifern zu entwickeln und zu befolgen. Informationen zum Erstellen eines detaillierten Plans zum Schützen von Identitäten und Zugriff, die in Azure AD, Microsoft Azure, Microsoft 365 und anderen Clouddiensten verwaltet oder berichtet werden, finden Sie unter [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md).
+Wir empfehlen Ihnen, eine Roadmap zum Schützen des privilegierten Zugriffs gegenüber Cyberangreifern zu entwickeln und zu befolgen. Informationen zum Erstellen eines detaillierten Plans zum Schützen von Identitäten und Zugriff, die in Azure AD, Microsoft Azure, Microsoft 365 und anderen Clouddiensten verwaltet oder berichtet werden, finden Sie unter [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/roles/security-planning.md).
 
-Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) zusammengefasst:
+Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/roles/security-planning.md) zusammengefasst:
 
 **Bewährte Methode**: Verwalten, steuern und überwachen Sie den Zugriff auf privilegierte Konten.   
-**Detail**: Aktivieren Sie [Azure AD Privileged Identity Management](../../active-directory/users-groups-roles/directory-admin-roles-secure.md). Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
+**Detail**: Aktivieren Sie [Azure AD Privileged Identity Management](../../active-directory/roles/security-planning.md). Nach der Aktivierung von Privileged Identity Management erhalten Sie Benachrichtigungs-E-Mails zu Rollenänderungen bei privilegiertem Zugriff. Diese Benachrichtigungen sind eine frühzeitige Warnung, wenn zusätzliche Benutzer hoch privilegierten Rollen in Ihrem Verzeichnis hinzugefügt werden.
 
 **Bewährte Methode**: Stellen Sie sicher, dass alle wichtigen Administratorkonten verwaltete Azure AD-Konten sind.
 **Detail**: Entfernen Sie alle Consumer-Konten aus wichtigen Administratorrollen (z.B. Microsoft-Konten wie „hotmail.com“, „live.com“ und „outlook.com“).
@@ -261,10 +261,10 @@ Im Folgenden werden die Best Practices in [Schützen des privilegierten Zugriffs
 **Bewährte Methode**: Definieren Sie mindestens zwei Notfallzugriffskonten.   
 **Detail**: Notfallzugriffskonten unterstützen Organisationen dabei, den privilegierten Zugriff innerhalb einer vorhandenen Azure Active Directory-Umgebung einzuschränken. Diese Konten verfügen über weitreichende Privilegien und werden keinen Einzelpersonen zugewiesen. Konten für den Notfallzugriff sind auf Szenarios beschränkt, in denen normale Administratorkonten nicht verwendet werden können. Organisationen müssen die Notfallkontennutzung auf die erforderliche Zeitspanne begrenzen.
 
-Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der `*.onmicrosoft.com`-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](../../active-directory/users-groups-roles/directory-emergency-access.md).
+Bewerten Sie die Konten, die zugewiesen werden oder für die Rolle „globaler Administrator“ berechtigt sind. Wenn Ihnen keine ausschließlichen Cloudkonten mit der `*.onmicrosoft.com`-Domäne (vorgesehen für den Notfallzugriff) angezeigt werden, erstellen Sie sie. Weitere Informationen finden Sie unter [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](../../active-directory/roles/security-emergency-access.md).
 
 **Bewährte Methode**: Richten Sie einen Notfallprozess für Notfallsituationen ein.
-**Detail**: Führen Sie die Schritte in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) aus.
+**Detail**: Führen Sie die Schritte in [Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD](../../active-directory/roles/security-planning.md) aus.
 
 **Bewährte Methode**: Fordern Sie, dass alle wichtigen Administratorkonten kennwortlos sind (bevorzugt), oder fordern Sie die Verwendung von Multi-Factor Authentication.
 **Detail**: Melden Sie sich mit der [Microsoft Authenticator-App](../../active-directory/authentication/howto-authentication-passwordless-phone.md) bei jedem beliebigen Azure AD-Konto an, ohne ein Kennwort zu verwenden. Wie die Technologie von [Windows Hello for Business](/windows/security/identity-protection/hello-for-business/hello-identity-verification) nutzt Microsoft Authenticator die schlüsselbasierte Authentifizierung, um die Verwendung von Benutzeranmeldeinformationen zu ermöglichen, die an ein Gerät gebunden sind und auf biometrischer Authentifizierung oder einer PIN beruhen.
@@ -284,25 +284,25 @@ Schreiben Sie bei der Anmeldung die mehrstufige Authentifizierung (Multi-Factor 
 **Detail**: Verwenden Sie den Angriffssimulator von Microsoft 365 oder ein Angebot eines Drittanbieters, um realistische Angriffsszenarien in Ihrer Organisation durchzuspielen. Damit können Sie gefährdete Benutzer identifizieren, bevor ein tatsächlicher Angriff stattfindet.
 
 **Bewährte Methode**: Führen Sie Maßnahmen zum Abwehren der am häufigsten verwendeten Angriffstechniken durch.  
-**Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
+**Detail**: [Identifizieren Sie Microsoft-Konten in Administratorrollen, die auf Geschäfts-, Schul- oder Unikonten umgestellt werden müssen.](../../active-directory/roles/security-planning.md#identify-microsoft-accounts-in-administrative-roles-that-need-to-be-switched-to-work-or-school-accounts)  
 
-[Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md)  
+[Stellen Sie separate Benutzerkonten und E-Mail-Weiterleitung für globale Administratorkonten sicher.](../../active-directory/roles/security-planning.md)  
 
-[Stellen Sie sicher, dass die Kennwörter von Administratorkonten kürzlich geändert wurden.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
+[Stellen Sie sicher, dass die Kennwörter von Administratorkonten kürzlich geändert wurden.](../../active-directory/roles/security-planning.md#ensure-the-passwords-of-administrative-accounts-have-recently-changed)  
 
-[Aktivieren Sie die Kennworthashsynchronisierung.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)  
+[Aktivieren Sie die Kennworthashsynchronisierung.](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)  
 
-[Fordern Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#require-multi-factor-authentication-mfa-for-users-in-all-privileged-roles-as-well-as-exposed-users)  
+[Fordern Sie die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA) sowohl für Benutzer in allen privilegierten Rollen als auch für Benutzer mit hoher Gefährdung.](../../active-directory/roles/security-planning.md#require-multi-factor-authentication-for-users-in-privileged-roles-and-exposed-users)  
 
-[Abrufen Ihres Microsoft 365 Secure Score (bei Verwendung von Microsoft 365)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#obtain-your-office-365-secure-score-if-using-office-365)  
+[Abrufen Ihres Microsoft 365 Secure Score (bei Verwendung von Microsoft 365)](../../active-directory/roles/security-planning.md#obtain-your-microsoft-365-secure-score-if-using-microsoft-365)  
 
-[Überprüfen des Microsoft 365-Sicherheitsleitfadens (bei Verwendung von Microsoft 365)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#review-the-office-365-security-and-compliance-guidance-if-using-office-365)  
+[Überprüfen des Microsoft 365-Sicherheitsleitfadens (bei Verwendung von Microsoft 365)](../../active-directory/roles/security-planning.md#review-the-microsoft-365-security-and-compliance-guidance-if-using-microsoft-365)  
 
-[Konfigurieren der Microsoft 365-Aktivitätsüberwachung (bei Verwendung von Microsoft 365)](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#configure-office-365-activity-monitoring-if-using-office-365)  
+[Konfigurieren der Microsoft 365-Aktivitätsüberwachung (bei Verwendung von Microsoft 365)](../../active-directory/roles/security-planning.md#configure-microsoft-365-activity-monitoring-if-using-microsoft-365)  
 
-[Richten Sie Notfallreaktionsplan-Besitzer ein.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#establish-incidentemergency-response-plan-owners)  
+[Richten Sie Notfallreaktionsplan-Besitzer ein.](../../active-directory/roles/security-planning.md#establish-incidentemergency-response-plan-owners)  
 
-[Schützen Sie lokale privilegierte Administratorkonten.](../../active-directory/users-groups-roles/directory-admin-roles-secure.md#turn-on-password-hash-synchronization)
+[Schützen Sie lokale privilegierte Administratorkonten.](../../active-directory/roles/security-planning.md#turn-on-password-hash-synchronization)
 
 Wenn Sie privilegierten Zugriff nicht schützen, verfügen Sie möglicherweise über zu viele Benutzer in stark privilegierten Rollen und sind anfälliger für Angriffe. Böswillige Akteure einschließlich Cyberangreifern haben häufig Administratorkonten und andere Elemente des privilegierten Zugriffs im Visier, um mit Angriffen, deren Ziel der Diebstahl von Anmeldeinformationen ist, Zugriff auf sensible Daten und Systeme zu erhalten.
 

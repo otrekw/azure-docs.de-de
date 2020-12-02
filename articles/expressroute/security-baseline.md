@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 99594ad5fe07f18f639b4870f4e0faa59a697afc
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: a92802f0b121a332afccf7f6c12e876b3263bd82
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843178"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96343942"
 ---
 # <a name="azure-security-baseline-for-expressroute"></a>Azure-Sicherheitsbaseline für ExpressRoute
 
@@ -56,9 +56,9 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Nicht zutreffend, denn die ExpressRoute-Instanzen der einzelnen Kunden befinden sich in deren eigenen Routingdomänen und werden in deren eigenen virtuellen Netzwerken getunnelt. Obwohl ExpressRoute-Instanzen isoliert sind, können Sie für andere Ressourcen, die dasselbe virtuelle Netzwerk nutzen, DDoS Protection Standard aktivieren, um diese zusätzlich vor DDoS-Angriffen zu schützen.
 
-* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute](./expressroute-security-controls.md)
+* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute]()
 
-* [Konfigurieren von DDoS-Schutz](../virtual-network/manage-ddos-protection.md)
+* [Konfigurieren von DDoS-Schutz](../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -76,7 +76,7 @@ Weitere Informationen finden Sie in der [Übersicht über Azure-Sicherheitsbasel
 
 **Leitfaden**: Nicht zutreffend, denn die ExpressRoute-Instanzen der einzelnen Kunden befinden sich in deren eigenen Routingdomänen und werden in deren eigenen virtuellen Netzwerken getunnelt.
 
-* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute](./expressroute-security-controls.md)
+* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute]()
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -447,7 +447,7 @@ So konfigurieren Sie Site-to-Site-IPsec über ExpressRoute: https://docs.microso
 
 **Leitfaden**: Nicht zutreffend, da Azure ExpressRoute keine Kundendaten speichert.
 
-* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute](./expressroute-security-controls.md)
+* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute]()
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -861,7 +861,7 @@ Es liegt in Ihrer Verantwortung, alle Inhalte vorab zu überprüfen, die auf com
 
 **Leitfaden**: Nicht zutreffend, da Azure ExpressRoute keine Kundendaten speichert.
 
-* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute](./expressroute-security-controls.md)
+* [Grundlegendes zu Sicherheitskontrollen für Azure ExpressRoute]()
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

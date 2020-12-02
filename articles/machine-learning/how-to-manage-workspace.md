@@ -10,12 +10,12 @@ author: sdgilley
 ms.date: 09/30/2020
 ms.topic: conceptual
 ms.custom: how-to, fasttrack-edit
-ms.openlocfilehash: 9524577d40c3b6b65bb3c3c8ff9e257b015ed90d
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 4425fdf488665ad555c73c59682041cb23a9ca66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95012952"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447332"
 ---
 # <a name="create-and-manage-azure-machine-learning-workspaces"></a>Erstellen und Verwalten von Azure Machine Learning-Arbeitsbereichen 
 
@@ -30,7 +30,7 @@ Wenn sich Ihre Anforderungen ändern oder die Anforderungen an die Automatisieru
 
 ## <a name="limitations"></a>Einschränkungen
 
-* Beim Erstellen eines neuen Arbeitsbereichs können Sie entweder zulassen, dass die für den Arbeitsbereich erforderlichen Azure-Dienste automatisch erstellt werden, oder vorhandene Dienste bereitstellen. Wenn Sie vorhandene Dienste bereitstellen, müssen sich alle diese Dienste im gleichen Azure-Abonnement wie der Arbeitsbereich befinden.
+[!INCLUDE [register-namespace](../../includes/machine-learning-register-namespace.md)]
 
 ## <a name="create-a-workspace"></a>Erstellen eines Arbeitsbereichs
 

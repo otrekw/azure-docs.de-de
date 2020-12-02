@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: c57ad181f35d3c0498804f65390792d0e600f1ff
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 1c1a5a96742d380ce42c0aea8c77a199083df47f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843416"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492249"
 ---
 # <a name="azure-security-baseline-for-azure-ddos-protection-standard"></a>Azure-Sicherheitsbaseline für Azure DDoS Protection Standard
 
@@ -38,7 +38,7 @@ Diese Sicherheitsbaseline wendet Empfehlungen des [Azure-Sicherheitsvergleichste
 
 Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle zwecks Archivierung an einen Log Analytics-Arbeitsbereich, eine Azure Event Hub-Instanz oder ein Azure-Speicherkonto. Aktivitätsprotokolle geben Einblick in die Vorgänge, die für Ihre Azure Cache for Redis-Instanzen auf Steuerungsebene erfolgen. Mit Azure-Aktivitätsprotokollen können Sie die Antworten auf die Fragen „Was“, „Wer“ und „Wann“ für alle Schreibvorgänge (PUT, POST, DELETE) auf Steuerungsebene ermitteln, die für Ihre Azure DDoS Protection-Instanzen stattfinden.
 
-- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
 
@@ -60,7 +60,7 @@ Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, un
 
 **Leitfaden**: Aktivieren Sie die Diagnoseeinstellungen für das Azure-Aktivitätsprotokoll, und senden Sie die Protokolle an einen Log Analytics-Arbeitsbereich. Außerdem können Sie Abfragen in Log Analytics durchführen, um Suchbegriffe zu ermitteln, Trends auszumachen, Muster zu analysieren und viele weitere Erkenntnisse auf Grundlage der Aktivitätsprotokolldaten zu gewinnen, die möglicherweise für Recovery Services-Tresore gesammelt wurden.
 
-- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [ Informationen über den Zugriff auf Telemetrie, Protokolle und Angriffsanalysen für den DDoS Protection Standard-Dienst](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [Erfassen und Analysieren des Azure-Aktivitätsprotokolls in Azure Monitor](../../azure-monitor/platform/activity-log.md)
 
@@ -96,7 +96,7 @@ Integrieren Sie einen Log Analytics-Arbeitsbereich in Azure Sentinel, da er eine
 
 Außerdem umfasst Azure Active Directory (AAD) integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-- [Grundlegendes zu Berechtigungen in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md#permissions-and-restrictions)
+- [Grundlegendes zu Berechtigungen in Azure DDoS Protection](../../ddos-protection/manage-permissions.md)
 
 - [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
 
@@ -266,7 +266,7 @@ Sie können diesen Prozess optimieren, indem Sie Diagnoseeinstellungen für Azur
 
 **Leitfaden**: Zum Arbeiten mit Azure DDoS Protection-Plänen muss Ihr Konto der Rolle „Netzwerkmitwirkender“ oder einer benutzerdefinierten Rolle zugewiesen sein, der bestimmte Aktionen zugewiesen wurden.
 
-- [Verwalten rollenbasierter Zugriffssteuerung in Azure (Azure RBAC) in Azure DDoS Protection](../../virtual-network/manage-ddos-protection.md)
+- [Verwalten rollenbasierter Zugriffssteuerung in Azure (Azure RBAC) in Azure DDoS Protection](../../ddos-protection/manage-ddos-protection.md)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -524,7 +524,7 @@ Testen Sie Ihre Annahmen darüber, wie Ihre Dienste auf einen Angriff reagieren,
 
 Wählen Sie mithilfe der Warnungskonfiguration von Azure Monitor jede der verfügbaren DDoS-Schutzmetriken zum Warnen aus, wenn während eines Angriffs eine aktive Entschärfung vorhanden ist. Wenn die Bedingungen erfüllt sind, wird eine E-Mail mit einer Warnung an die angegebene Adresse gesendet
 
-- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../virtual-network/manage-ddos-protection.md#configure-alerts-for-ddos-protection-metrics)
+- [Konfigurieren von Warnungen für DDoS-Schutzmetriken](../../ddos-protection/telemetry-monitoring-alerting.md#configure-alerts-for-ddos-protection-metrics)
 
 - [Konfigurieren des fortlaufenden Exports](../../security-center/continuous-export.md)
 

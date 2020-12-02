@@ -6,12 +6,12 @@ ms.author: jiangma
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0a6449e6b728ee690dd6ddee192868aaeb3511ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 9ed53721b66dc03bad24e0510e0c8a970c61aec1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911038"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492419"
 ---
 # <a name="configure-built-in-container-registry-for-azure-red-hat-openshift-4"></a>Konfigurieren der integrierten Containerregistrierung für Azure Red Hat OpenShift 4
 
@@ -26,9 +26,9 @@ In diesem Artikel konfigurieren Sie die integrierte Containerimageregistrierung 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 
-In diesem Artikel wird vorausgesetzt, dass ein ARO-Cluster vorhanden ist. Wenn Sie einen ARO-Cluster, erhalten Sie die notwendigen Informationen im ARO-Tutorial [Erstellen eines Azure Red Hat OpenShift 4-Clusters](/azure/openshift/tutorial-create-cluster). Erstellen Sie den Cluster unbedingt mit dem `--pull-secret`-Argument für `az aro create`.  Dies ist notwendig, um die Azure Active Directory-Authentifizierung und die integrierte Containerregistrierung zu konfigurieren.
+In diesem Artikel wird vorausgesetzt, dass ein ARO-Cluster vorhanden ist. Wenn Sie einen ARO-Cluster, erhalten Sie die notwendigen Informationen im ARO-Tutorial [Erstellen eines Azure Red Hat OpenShift 4-Clusters](./tutorial-create-cluster.md). Erstellen Sie den Cluster unbedingt mit dem `--pull-secret`-Argument für `az aro create`.  Dies ist notwendig, um die Azure Active Directory-Authentifizierung und die integrierte Containerregistrierung zu konfigurieren.
 
-Wenn der Cluster vorhanden ist, stellen Sie eine Verbindung mit dem Cluster her, indem Sie die Schritte im Tutorial[Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster](/azure/openshift/tutorial-connect-cluster) ausführen.
+Wenn der Cluster vorhanden ist, stellen Sie eine Verbindung mit dem Cluster her, indem Sie die Schritte im Tutorial[Herstellen einer Verbindung mit einem Azure Red Hat OpenShift 4-Cluster](./tutorial-connect-cluster.md) ausführen.
    * Stellen Sie sicher, dass Sie die Schritte unter „Installieren der OpenShift-CLI“ ausführen, da der `oc`-Befehl weiter unten in diesem Artikel verwendet wird.
    * Notieren Sie sich die URL der Clusterkonsole, die wie `https://console-openshift-console.apps.<random>.<region>.aroapp.io/`aussieht. Die Werte für `<random>` und `<region>` werden später in diesem Artikel verwendet.
    * Notieren Sie sich die `kubeadmin`-Anmeldeinformationen. Sie werden ebenfalls später in diesem Artikel verwendet.

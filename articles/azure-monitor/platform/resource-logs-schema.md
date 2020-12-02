@@ -4,12 +4,12 @@ description: Erläuterung der unterstützten Dienste und Ereignisschemas für Az
 ms.subservice: logs
 ms.topic: reference
 ms.date: 09/01/2020
-ms.openlocfilehash: 2a66f90043e0f544dd86d2ab1245a3d8cbaff3d5
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f8754245e394ecdffbb045d7f4cc96ec8a3ff78
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95534567"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96184500"
 ---
 # <a name="common-and-service-specific-schema-for-azure-resource-logs"></a>Allgemeines und dienstspezifisches Schema für Azure-Ressourcenprotokolle
 
@@ -76,7 +76,7 @@ Das Schema für Ressourcenprotokolle variiert abhängig von der Ressource und de
 | Load Balancer |[Protokollanalysen für den Azure Load Balancer](../../load-balancer/load-balancer-monitor-log.md) |
 | Logic Apps |[Benutzerdefiniertes Logic Apps-B2B-Nachverfolgungsschema](../../logic-apps/logic-apps-track-integration-account-custom-tracking-schema.md) |
 | Netzwerksicherheitsgruppen |[Protokollanalysen für Netzwerksicherheitsgruppen (NSGs)](../../virtual-network/virtual-network-nsg-manage-log.md) |
-| DDoS-Schutz | [Verwalten von Azure DDoS Protection Standard](../../virtual-network/manage-ddos-protection.md) |
+| DDoS-Schutz | [Verwalten von Azure DDoS Protection Standard](../../ddos-protection/manage-ddos-protection.md) |
 | Power BI Dedicated | [Protokollierung für Power BI Embedded in Azure](/power-bi/developer/azure-pbie-diag-logs) |
 | Recovery Services | [Datenmodell für Azure Backup](../../backup/backup-azure-reports-data-model.md)|
 | Suchen, |[Aktivieren und Verwenden von „Datenverkehrsanalyse durchsuchen“](../../search/search-traffic-analytics.md) |
