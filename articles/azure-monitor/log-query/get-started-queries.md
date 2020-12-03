@@ -6,17 +6,17 @@ ms.topic: tutorial
 author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
-ms.openlocfilehash: 8b3b6a41da6e3100739da920472d582711d1e9b1
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: a949c9b34e299e0dc4eccbb62f4b4ebb38d6ccb9
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024380"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186710"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Erste Schritte mit Protokollabfragen in Azure Monitor
 
 > [!NOTE]
-> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](saved-queries.md) weiter.
+> Sie können diese Übung in Ihrer eigenen Umgebung durcharbeiten, wenn Sie Daten von mindestens einem virtuellen Computer sammeln. Andernfalls verwenden Sie die [Demoumgebung](https://ms.portal.azure.com/#blade/Microsoft_Azure_Monitoring_Logs/DemoLogsBlade), die eine Vielzahl von Beispieldaten enthält.  Falls Sie bereits wissen, wie Sie Abfragen in KQL ausführen, und nur schnell nützliche Abfragen basierend auf Ressourcentypen erstellen möchten, hilft Ihnen der [Bereich mit den gespeicherten Beispielabfragen](./example-queries.md) weiter.
 
 In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schreiben. Es wird Folgendes vermittelt:
 
@@ -28,7 +28,7 @@ In diesem Tutorial erfahren Sie, wie Sie Protokollabfragen in Azure Monitor schr
 - Definieren und Verwenden von benutzerdefinierten Feldern
 - Aggregieren und Gruppieren von Ergebnissen
 
-Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](get-started-portal.md).<br>
+Ein Tutorial zur Verwendung von Log Analytics im Azure-Portal finden Sie unter [Erste Schritte mit Azure Monitor Log Analytics](./log-analytics-tutorial.md).<br>
 Weitere Informationen zu Protokollabfragen in Azure Monitor finden Sie unter [Übersicht über Protokollabfragen in Azure Monitor](log-query-overview.md).
 
 Sehen Sie sich die Videoversion dieses Tutorials an:

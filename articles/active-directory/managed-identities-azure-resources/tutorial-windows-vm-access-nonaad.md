@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 11/03/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 85da26c9ff302c526ea6210dde776f3a34929ccd
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360351"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96180505"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Key Vault 
 
@@ -40,7 +40,7 @@ Folgendes wird vermittelt:
 - Ein Azure-Konto. [Registrieren Sie sich für ein kostenloses Azure-Konto.](https://azure.microsoft.com/free/)
 - Berechtigungen vom Typ „Besitzer“ für den entsprechenden Bereich (Ihr Abonnement oder die Ressourcengruppe), um die erforderlichen Schritte zur Ressourcenerstellung und Rollenverwaltung durchführen zu können. Wenn Sie Unterstützung bei der Rollenzuweisung benötigen, finden Sie weitere Informationen unter [Verwenden der rollenbasierten Zugriffssteuerung zum Verwalten des Zugriffs auf Ihre Azure-Abonnementressourcen](../../role-based-access-control/role-assignments-portal.md).
 - Außerdem benötigen Sie einen virtuellen Windows-Computer, auf dem systemseitig zugewiesene verwaltete Identitäten aktiviert sind.
-  - Wenn Sie einen virtuellen Computer für dieses Tutorial erstellen müssen, können Sie den Artikel [Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen eines virtuellen Computers](/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm#system-assigned-managed-identity) durcharbeiten.
+  - Wenn Sie einen virtuellen Computer für dieses Tutorial erstellen müssen, können Sie den Artikel [Aktivieren einer vom System zugewiesenen verwalteten Identität beim Erstellen eines virtuellen Computers](./qs-configure-portal-windows-vm.md#system-assigned-managed-identity) durcharbeiten.
 
 ## <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors  
 
@@ -78,7 +78,7 @@ Der vom virtuellen Computer verwalteten Identität muss Zugriff gewährt werden,
 
 ## <a name="create-a-secret"></a>Erstellen eines Geheimnisses
 
-Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
+Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
 
 1. Navigieren Sie zur neu erstellten Key Vault-Instanz.
 1. Wählen Sie **Geheimnisse** aus, und klicken Sie auf **Hinzufügen**.

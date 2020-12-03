@@ -12,11 +12,11 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: d9c9ac87e655cf9178d58f04b502f7e781d1fef7
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520539"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181406"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Spotinst
 
@@ -39,7 +39,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
-* Spotinst unterstützt **SP- und IDP** -initiiertes einmaliges Anmelden.
+* Spotinst unterstützt **SP- und IDP**-initiiertes einmaliges Anmelden.
 
 ## <a name="adding-spotinst-from-the-gallery"></a>Hinzufügen von Spotinst aus dem Katalog
 
@@ -47,14 +47,14 @@ Zum Konfigurieren der Integration von Spotinst in Azure AD müssen Sie Keylight 
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Spotinst** in das Suchfeld ein.
 1. Wählen Sie im Ergebnisbereich **Spotinst** aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>Konfigurieren und Testen des einmaligen Anmeldens von Azure AD für Spotinst
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Spotinst mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Spotinst eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Spotinst mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Spotinst eingerichtet werden.
 
 Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD mit Spotinst die folgenden Schritte aus:
 
@@ -69,9 +69,9 @@ Führen Sie zum Konfigurieren und Testen des einmaligen Anmeldens von Azure AD 
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Spotinst** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Spotinst** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -81,7 +81,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
    1. Geben Sie unter **Relayzustand** die Spotinst-Organisations-ID an, die Sie auch auf der Registerkarte **SSO** überprüfen können.
    1. Das Feld **Anmelde-URL** muss leer sein.
 
-1. Klicken Sie auf **Speichern** .
+1. Klicken Sie auf **Speichern**.
 
 1. Spotinst erwartet die SAML-Assertionen in einem bestimmten Format. Daher müssen Sie Ihrer Konfiguration der SAML-Tokenattribute benutzerdefinierte Attributzuordnungen hinzufügen. Der folgende Screenshot zeigt die Liste der Standardattribute.
 
@@ -95,7 +95,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     | FirstName | user.givenname |
     | LastName | user.surname |
 
-1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML** , und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
+1. Navigieren Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** im Abschnitt **SAML-Signaturzertifikat** zu **Verbundmetadaten-XML**, und wählen Sie **Herunterladen** aus, um das Zertifikat herunterzuladen und auf Ihrem Computer zu speichern.
 
     ![Downloadlink für das Zertifikat](common/metadataxml.png)
 
@@ -112,16 +112,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihr Zugriff auf Spotinst gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste den Eintrag **Spotinst** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -129,41 +129,41 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ## <a name="configure-spotinst-sso"></a>Konfigurieren des einmaligen Anmeldens für Spotinst
 
 1. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Spotinst an.
 
-2. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen** .
+2. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen**.
 
     ![Screenshot, in dem die Option „Einstellungen“ über das Benutzersymbol ausgewählt ist.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. Klicken Sie auf die Registerkarte **SICHERHEIT** am oberen Rand, wählen Sie **Identitätsanbieter** , und führen Sie die folgenden Schritte aus:
+3. Klicken Sie auf die Registerkarte **SICHERHEIT** am oberen Rand, wählen Sie **Identitätsanbieter**, und führen Sie die folgenden Schritte aus:
 
     ![Spotinst-Sicherheit](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
     a. Kopieren Sie den Wert für den **Relayzustand** Ihrer Instanz, und fügen Sie ihn im Azure-Portal unter **Grundlegende SAML-Konfiguration** in das Textfeld **Relayzustand** ein.
 
-    b. Klicken Sie dann zum Hochladen der XML-Metadatendatei, die Sie aus dem Azure-Portal heruntergeladen haben, auf **DURCHSUCHEN** .
+    b. Klicken Sie dann zum Hochladen der XML-Metadatendatei, die Sie aus dem Azure-Portal heruntergeladen haben, auf **DURCHSUCHEN**.
 
-    c. Klicken Sie auf **SPEICHERN** .
+    c. Klicken Sie auf **SPEICHERN**.
 
 ### <a name="create-spotinst-test-user"></a>Erstellen eines Spotinst-Testbenutzers
 
 Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon in Spotinst.
 
-1. Wenn Sie die Anwendung im **SP** -initiierten Modus konfiguriert haben, führen Sie die folgenden Schritte aus:
+1. Wenn Sie die Anwendung im **SP**-initiierten Modus konfiguriert haben, führen Sie die folgenden Schritte aus:
 
    a. Melden Sie sich in einem anderen Webbrowserfenster als Sicherheitsadministrator bei Spotinst an.
 
-   b. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen** .
+   b. Klicken Sie auf das **Benutzersymbol** in der oberen rechten Ecke und dann auf **Einstellungen**.
 
     ![Screenshot, in dem über das Benutzersymbol die Option „Einstellungen“ ausgewählt ist.](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-    c. Klicken Sie auf **Benutzer** , und wählen Sie **BENUTZER HINZUFÜGEN** .
+    c. Klicken Sie auf **Benutzer**, und wählen Sie **BENUTZER HINZUFÜGEN**.
 
     ![Screenshot, in dem über „Benutzer“ die Option „BENUTZER HINZUFÜGEN“ ausgewählt ist.](./media/spotinst-tutorial/adduser1.png)
 
@@ -171,13 +171,13 @@ Das Ziel dieses Abschnitts ist das Erstellen eines Benutzers namens Britta Simon
 
     ![Screenshot des Abschnitts „Benutzer hinzufügen“, in dem Sie die beschriebenen Werte eingeben können.](./media/spotinst-tutorial/adduser2.png)
 
-    * Geben Sie im Textfeld **Vollständiger Name** den vollständigen Namen des Benutzers ein, z.B. **BrittaSimon** .
+    * Geben Sie im Textfeld **Vollständiger Name** den vollständigen Namen des Benutzers ein, z.B. **BrittaSimon**.
 
     * Geben Sie im Textfeld **Email** (E-Mail-Adresse) die E-Mail-Adresse des Benutzers ein, z. B. `brittasimon\@contoso.com`.
 
-    * Wählen Sie Ihre organisationsspezifischen Details für die **Organisationsrolle, Kontorolle und Konten** .
+    * Wählen Sie Ihre organisationsspezifischen Details für die **Organisationsrolle, Kontorolle und Konten**.
 
-2. Wenn Sie die Anwendung im **IDP** -initiierten Modus konfiguriert haben, finden Sie in diesem Abschnitt kein Aktionselement. Spotinst unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Spotinst ein neuer Benutzer erstellt.
+2. Wenn Sie die Anwendung im **IDP**-initiierten Modus konfiguriert haben, finden Sie in diesem Abschnitt kein Aktionselement. Spotinst unterstützt die Just-In-Time-Bereitstellung, die standardmäßig aktiviert ist. Wenn noch kein Benutzer vorhanden ist, wird beim Zugreifen auf Spotinst ein neuer Benutzer erstellt.
 
 ## <a name="test-sso"></a>Testen des einmaligen Anmeldens 
 

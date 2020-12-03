@@ -6,12 +6,12 @@ ms.author: cshoe
 ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
-ms.openlocfilehash: e367e4f2a704d8c718551fb031164520b3ff5bb3
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 75e3886e31592b0672487bacd5ff2266e07e39cd
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579129"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182501"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Tutorial: Einrichten von privatem Websitezugriff für Azure Functions
 
@@ -113,7 +113,7 @@ Im ersten Schritt dieses Tutorials wird ein neuer virtueller Computer in einem v
     | _Subnetz_ | AzureBastionSubnet | Das Subnetz in Ihrem virtuellen Netzwerk, in dem die neue Bastion-Hostressource bereitgestellt wird. Sie müssen ein Subnetz mit dem Namen **AzureBastionSubnet** erstellen. Dadurch weiß Azure, in welchem Subnetz die Bastion-Ressourcen bereitgestellt werden sollen. Sie müssen ein Subnetz von mindestens **/27** oder größer („/27“, „/26“ usw.) verwenden. |
 
     > [!NOTE]
-    > Eine ausführliche Schritt-für-Schritt-Anleitung zum Erstellen einer Azure Bastion-Ressource finden Sie im Tutorial [Erstellen eines Azure Bastion-Hosts](../bastion/bastion-create-host-portal.md).
+    > Eine ausführliche Schritt-für-Schritt-Anleitung zum Erstellen einer Azure Bastion-Ressource finden Sie im Tutorial [Erstellen eines Azure Bastion-Hosts](../bastion/tutorial-create-host-portal.md).
 
 1. Erstellen Sie ein Subnetz, in dem Azure den Azure Bastion-Host bereitstellen kann. Wenn Sie **Subnetzkonfiguration verwalten** auswählen, wird ein neuer Bereich geöffnet, in dem Sie ein neues Subnetz definieren können.  Wählen Sie **+ Subnetz** aus, um ein neues Subnetz zu erstellen.
 1. Das Subnetz muss den Namen **AzureBastionSubnet** haben, und das Subnetzpräfix muss mindestens **/27** sein.  Klicken Sie auf **OK**, um das Subnetz zu erstellen.
@@ -194,9 +194,9 @@ Im nächsten Schritt dieses Tutorials wird eine Azure-Funktion mit HTTP-Trigger 
 
 1. Verwenden Sie eine der folgenden Schnellstartanleitungen, um Ihre Azure Functions-App zu erstellen und bereitzustellen:
 
-    * [Visual Studio Code](./functions-create-first-function-vs-code.md)
+    * [Visual Studio Code](./create-first-function-vs-code-csharp.md)
     * [Visual Studio](./functions-create-your-first-function-visual-studio.md)
-    * [Befehlszeile](./functions-create-first-azure-function-azure-cli.md)
+    * [Befehlszeile](./create-first-function-cli-csharp.md)
     * [Maven (Java)](./create-first-function-cli-java.md?tabs=bash,browser)
 
 1. Wählen Sie beim Veröffentlichen Ihres Azure Functions-Projekts die Funktions-App-Ressource aus, die Sie weiter oben in diesem Tutorial erstellt haben.

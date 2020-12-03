@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/28/2020
 ms.author: jeedes
-ms.openlocfilehash: 26424106098a8385faff5ab6d3de33d98576ef4e
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: a7f4682be2f7fbf308aba32768efa932f27b7a87
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94381302"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96181701"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-roadmunk"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Roadmunk
 
@@ -171,12 +171,10 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden (SSO) über den Zugriffsbereich.
 
-Wenn Sie im Portal „Meine Apps“ die Kachel **Roadmunk** auswählen, sollten Sie automatisch bei dem Roadmunk-Konto angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](https://docs.microsoft.com/azure/active-directory/user-help/my-apps-portal-end-user-access).
+Wenn Sie im Portal „Meine Apps“ die Kachel **Roadmunk** auswählen, sollten Sie automatisch bei dem Roadmunk-Konto angemeldet werden, für das Sie einmaliges Anmelden eingerichtet haben. Weitere Informationen finden Sie unter [Anmelden beim Portal „Meine Apps“ und Starten von Apps über dieses](../user-help/my-apps-portal-end-user-access.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 Nach dem Konfigurieren von Roadmunk können Sie die Sitzungssteuerung erzwingen. Die Sitzungssteuerung schützt in Echtzeit vor der Exfiltration und Infiltration vertraulicher Unternehmensdaten. Die Sitzungssteuerung basiert auf bedingtem Zugriff. 
 
-Erfahren Sie, wie Sie die [Sitzungssteuerung mit Microsoft Cloud App Security erzwingen](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
-
-
+Erfahren Sie, wie Sie die [Sitzungssteuerung mit Microsoft Cloud App Security erzwingen](/cloud-app-security/proxy-deployment-any-app).

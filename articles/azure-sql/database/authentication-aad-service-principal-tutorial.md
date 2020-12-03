@@ -9,12 +9,12 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 10/21/2020
-ms.openlocfilehash: 6231e4631c19aa3595fa85ca0aa7997861de65a3
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e068ad01c07af4e5833399c0053da3362cd6aaa6
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92675033"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96185639"
 ---
 # <a name="tutorial-create-azure-ad-users-using-azure-ad-applications"></a>Tutorial: Erstellen von Azure AD-Benutzern mithilfe von Azure AD-Anwendungen
 
@@ -44,7 +44,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 ## <a name="assign-an-identity-to-the-azure-sql-logical-server"></a>Zuweisen einer Identität zum logischen Azure SQL-Server
 
-1. Stellen Sie eine Verbindung mit Azure Active Directory her. Sie müssen Ihre Mandanten-ID ermitteln. Sie finden diese, indem Sie zum [Azure-Portal](https://portal.azure.com) navigieren und dann zu Ihrer **Azure Active Directory** -Ressource navigieren. Im Bereich **Übersicht** sollte die **Mandanten-ID** angezeigt werden. Führen Sie den folgenden PowerShell-Befehl aus:
+1. Stellen Sie eine Verbindung mit Azure Active Directory her. Sie müssen Ihre Mandanten-ID ermitteln. Sie finden diese, indem Sie zum [Azure-Portal](https://portal.azure.com) navigieren und dann zu Ihrer **Azure Active Directory**-Ressource navigieren. Im Bereich **Übersicht** sollte die **Mandanten-ID** angezeigt werden. Führen Sie den folgenden PowerShell-Befehl aus:
 
     - Ersetzen Sie `<TenantId>` durch Ihre **Mandanten-ID**.
 
@@ -65,7 +65,7 @@ In diesem Tutorial lernen Sie Folgendes:
     Weitere Informationen finden Sie unter dem [AzSqlServer](/powershell/module/az.sql/set-azsqlserver)-Befehl.
 
     > [!IMPORTANT]
-    > Wenn eine Azure AD-Identität für den logischen Azure SQL-Server eingerichtet wird, muss der Identität die Berechtigung [**Verzeichnisleser**](../../active-directory/roles/permissions-reference.md#directory-readers) erteilt werden. Dieser Schritt wird im folgenden Abschnitt ausführlich erläutert. **Überspringen Sie diesen Schritt nicht** , weil die Azure AD-Authentifizierung nicht mehr funktioniert.
+    > Wenn eine Azure AD-Identität für den logischen Azure SQL-Server eingerichtet wird, muss der Identität die Berechtigung [**Verzeichnisleser**](../../active-directory/roles/permissions-reference.md#directory-readers) erteilt werden. Dieser Schritt wird im folgenden Abschnitt ausführlich erläutert. **Überspringen Sie diesen Schritt nicht**, weil die Azure AD-Authentifizierung nicht mehr funktioniert.
 
     - Wenn Sie in der Vergangenheit den Befehl [New-AzSqlServer](/powershell/module/az.sql/new-azsqlserver) mit dem Parameter `AssignIdentity` für das Erstellen eines neuen SQL-Servers verwendet haben, müssen Sie anschließend den Befehl [Set-AzSqlServer](/powershell/module/az.sql/set-azsqlserver) als separaten Befehl ausführen, um diese Eigenschaft im Azure-Fabric zu aktivieren.
 
@@ -82,7 +82,7 @@ In diesem Tutorial lernen Sie Folgendes:
 
 1. Sie können die Identität auch überprüfen, indem Sie zum [Azure-Portal](https://portal.azure.com) navigieren.
 
-    - Navigieren Sie unter der **Azure Active Directory** -Ressource zu **Unternehmensanwendungen**. Geben Sie den Namen Ihres logischen SQL-Servers ein. Sie sehen, dass eine **Objekt-ID** an die Ressource angefügt wurde.
+    - Navigieren Sie unter der **Azure Active Directory**-Ressource zu **Unternehmensanwendungen**. Geben Sie den Namen Ihres logischen SQL-Servers ein. Sie sehen, dass eine **Objekt-ID** an die Ressource angefügt wurde.
     
     :::image type="content" source="media/authentication-aad-service-principals-tutorial/enterprise-applications-object-id.png" alt-text="object-id":::
 
@@ -171,7 +171,7 @@ Eine ähnliche Vorgehensweise zum Festlegen der Berechtigung **Verzeichnisleser*
 
 3. Notieren Sie sich die folgenden Informationen aus ihrer Anwendungsregistrierung. Sie sollten im Bereich **Übersicht** verfügbar sein:
     - **Anwendungs-ID**
-    - **Mandanten-ID** : Dieser Wert sollte identisch mit dem vorherigen Wert sein.
+    - **Mandanten-ID**: Dieser Wert sollte identisch mit dem vorherigen Wert sein.
 
 In diesem Tutorial verwenden wir *AppSP* als Hauptdienstprinzipal und *myapp* als zweiten Dienstprinzipalbenutzer, der in Azure SQL durch *AppSP* erstellt wird. Sie müssen zwei Anwendungen erstellen: *AppSP* und *myapp*.
 
@@ -179,7 +179,7 @@ Weitere Informationen zum Erstellen einer Azure AD-Anwendung finden Sie unter [
 
 ### <a name="permissions-required-to-set-or-unset-the-azure-ad-admin"></a>Erforderliche Berechtigungen zum Festlegen oder zum Aufheben der Festlegung des Azure AD-Administrators
 
-Damit der Dienstprinzipal einen Azure AD-Administrator für Azure SQL festlegen oder dessen Festlegung aufheben kann, ist eine zusätzliche API-Berechtigung erforderlich. Die [Directory.Read.All](https://docs.microsoft.com/graph/permissions-reference#application-permissions-18)-Berechtigung der Anwendungs-API muss zu Ihrer Anwendung in Azure AD hinzugefügt werden.
+Damit der Dienstprinzipal einen Azure AD-Administrator für Azure SQL festlegen oder dessen Festlegung aufheben kann, ist eine zusätzliche API-Berechtigung erforderlich. Die [Directory.Read.All](/graph/permissions-reference#application-permissions-18)-Berechtigung der Anwendungs-API muss zu Ihrer Anwendung in Azure AD hinzugefügt werden.
 
 :::image type="content" source="media/authentication-aad-service-principals-tutorial/aad-directory-reader-all-permissions.png" alt-text="Directory.Reader.All-Berechtigungen in Azure AD":::
 
@@ -199,7 +199,7 @@ Nachdem ein Dienstprinzipal in Azure AD erstellt wurde, erstellen Sie den Benut
     GO
     ```
 
-2. Erteilen Sie die `db_owner`-Berechtigung für *AppSP* , wodurch der Benutzer andere Azure AD-Benutzer in der Datenbank erstellen kann.
+2. Erteilen Sie die `db_owner`-Berechtigung für *AppSP*, wodurch der Benutzer andere Azure AD-Benutzer in der Datenbank erstellen kann.
 
     ```sql
     EXEC sp_addrolemember 'db_owner', [AppSP]
