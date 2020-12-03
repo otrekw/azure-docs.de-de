@@ -8,12 +8,12 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 5489feeeec64c7b3d4b5fc28eddfe8b780308796
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 09e922ffddcce732d9213eb91026561528c0728a
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94979877"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96169136"
 ---
 # <a name="tutorial-sign-in-users-and-call-a-protected-api-from-a-blazor-webassembly-app"></a>Tutorial: Anmelden von Benutzern und Aufrufen einer geschützten API über eine Blazor WebAssembly-App
 
@@ -26,7 +26,7 @@ Dieses Tutorial umfasst folgende Punkte:
 > [!div class="checklist"]
 >
 > * Erstellen einer neuen Blazor WebAssembly-App, die für die Verwendung von Azure Active Directory (Azure AD) für die [Authentifizierung und Autorisierung](authentication-vs-authorization.md) mithilfe der Microsoft Identity Platform konfiguriert ist
-> * Abrufen von Daten aus einer geschützten Web-API, in diesem Fall [Microsoft Graph](https://docs.microsoft.com/graph/overview)
+> * Abrufen von Daten aus einer geschützten Web-API, in diesem Fall [Microsoft Graph](/graph/overview)
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
