@@ -146,6 +146,8 @@
           href: reduce-latency-ppg.md
         - name: Aktualisieren des Knotenimages
           href: node-image-upgrade.md
+        - name: Automatisches Upgrade des Knotenimages mit GitHub Actions
+          href: node-upgrade-github-actions.md
         - name: Verarbeiten von Betriebssystemupdates für Knoten
           href: node-updates-kured.md
         - name: Konfigurieren eines AKS-Clusters
@@ -387,7 +389,7 @@
           href: aks-resource-health.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

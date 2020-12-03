@@ -39,6 +39,8 @@
       href: restart-resize-error-troubleshooting.md
     - name: 'Neustarten, Herunterfahren oder Beenden von Diensten'
       href: boot-error-troubleshoot-windows.md
+    - name: Probleme mit einem vollen Betriebssystemdatenträger auf einer Linux-VM
+      href: os-disk-full-linux.md
 - name: Unerwarteter Neustart
   items:
     - name: Unerwartete Neustarts von virtuellen Computern mit angefügten VHDs
