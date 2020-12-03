@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
-ms.openlocfilehash: 20a3337ab054ca1feefc2f5f08f8e6398417fb9e
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 6f96b74726684d37795c94be74e48611b4145402
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94441612"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350210"
 ---
 # <a name="deploy-static-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Bereitstellen von statisch gerenderten Next.js-Websites in Azure Static Web Apps (Vorschauversion)
 
@@ -29,9 +29,9 @@ In diesem Tutorial erfahren Sie, wie Sie eine mit [Next.js](https://nextjs.org) 
 
 Anstatt die Next.js-CLI zum Erstellen einer App zu verwenden, können Sie auch ein Startrepository nutzen, in dem eine Next.js-App vorhanden ist. Dieses Repository enthält eine Next.js-App mit dynamischen Routen, die zu einem häufigen Bereitstellungsproblem führen können. Für dynamische Routen muss eine zusätzliche Bereitstellungskonfiguration durchgeführt werden. Dies ist weiter unten genauer beschrieben.
 
-Erstellen Sie zunächst aus einem Vorlagenrepository unter Ihrem GitHub-Konto ein neues Repository. 
+Erstellen Sie zunächst aus einem Vorlagenrepository unter Ihrem GitHub-Konto ein neues Repository.
 
-1. Navigieren Sie zu <http://github.com/staticwebdev/nextjs-starter/generate>.
+1. Navigieren Sie zu [https://github.com/staticwebdev/nextjs-starter/generate](https://github.com/login?return_to=/staticwebdev/nextjs-starter/generate).
 1. Geben Sie dem Repository den Namen **nextjs-starter**.
 1. Klonen Sie das neue Repository anschließend auf Ihrem Computer. Ersetzen Sie `<YOUR_GITHUB_ACCOUNT_NAME>` durch Ihren Kontonamen.
 

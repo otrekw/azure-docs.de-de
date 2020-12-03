@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: jeedes
-ms.openlocfilehash: e706649957bf427cd577d7995fb9ce104c687f4b
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: ef1ca41f54a15554a04fa3edf608bb13f5fb3398
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93378991"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96182018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday-mobile-application"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday Mobile Application
 
@@ -33,13 +33,13 @@ In diesem Tutorial erfahren Sie, wie Sie Azure Active Directory (Azure AD), bed
 Erste Schritte:
 
 * Integrieren von Workday mit Azure AD.
-* Lesen Sie [Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+* Lesen Sie [Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday](./workday-tutorial.md).
 
 ## <a name="scenario-description"></a>Beschreibung des Szenarios
 
 In diesem Tutorial werden Azure AD-Richtlinien für den bedingten Zugriff sowie Intune mit Workday Mobile Application konfiguriert und getestet.
 
-Zum Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO) können Sie die Workday-Verbundanwendung mit Azure AD konfigurieren. Weitere Informationen finden Sie unter [Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-tutorial).
+Zum Aktivieren des einmaligen Anmeldens (Single Sign-On, SSO) können Sie die Workday-Verbundanwendung mit Azure AD konfigurieren. Weitere Informationen finden Sie unter [Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Workday](./workday-tutorial.md).
 
 > [!NOTE] 
 > Von Workday werden die App-Schutzrichtlinien von Intune nicht unterstützt. Für die Nutzung des bedingten Zugriffs müssen Sie die mobile Geräteverwaltung verwenden.
@@ -182,4 +182,3 @@ Um sicherzustellen, dass die Anmeldung für iOS-Geräte nur über eine Workday-I
 6. Wählen Sie unter **Plattform** die Option **Android** aus.
 7. Wählen Sie unter **Zugeordnete App** die von Ihnen hinzugefügte Workday-App für Android aus.
 8. Wählen Sie **Konfigurationseinstellungen** aus. Wählen Sie unter **Format der Konfigurationseinstellungen** die Option **JSON-Daten eingeben** aus.
-
