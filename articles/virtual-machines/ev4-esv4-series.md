@@ -9,12 +9,12 @@ ms.service: virtual-machines
 ms.subservice: sizes
 ms.topic: conceptual
 ms.date: 6/8/2020
-ms.openlocfilehash: b8f6768ebf988ff568739c86303b52ea5b0a9234
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 6d8ec3633fec79fc4fdc04986c8b94c671ae9d1a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92018711"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96460319"
 ---
 # <a name="ev4-and-esv4-series"></a>Ev4- und Esv4-Serie
 
@@ -58,7 +58,7 @@ Die Größen der Esv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 [Storage Premium-Zwischenspeicherung:](premium-storage-performance.md) Unterstützt<br>
 [Livemigration](maintenance-and-updates.md): Unterstützt<br>
 [Updates mit Speicherbeibehaltung](maintenance-and-updates.md): Unterstützt<br>
-[Unterstützung von VM-Generationen](generation-2.md): Generation 1<br>
+[Unterstützung von VM-Generationen](generation-2.md): Generation 1 und 2<br>
 <br>
 
 | Size | vCPU | Memory: GiB | Temporärer Speicher (SSD): GiB | Max. Anzahl Datenträger | Maximaler Durchsatz des Datenträgers ohne Cache: IOPS/MBit/s | Maximale Anzahl NICs|Erwartete Netzwerkbandbreite (MBit/s) |
@@ -71,8 +71,11 @@ Die Größen der Esv4-Serie laufen auf dem Intel&reg; Xeon&reg; Platinum 8272CL 
 | Standard_E32s_v4 | 32 | 256 | Nur Remotespeicher | 32 | 51200/768  | 8|16000 |
 | Standard_E48s_v4 | 48 | 384 | Nur Remotespeicher | 32 | 76800/1152 | 8|24.000 |
 | Standard_E64s_v4 <sup>1</sup> | 64 | 504| Nur Remotespeicher | 32 | 80000/1200 | 8|30.000 |
+| Standard_E80is_v4 <sup>1,2</sup> | 80 | 504 | Nur Remotespeicher | 32 | 80000/1200 | 8|30.000 |
 
 <sup>1</sup> [Eingeschränkte Kerngrößen verfügbar](./constrained-vcpu.md).
+
+<sup>2</sup> Instanz wird isoliert auf dedizierter Hardware ausgeführt, die für einen einzigen Kunden bereitgestellt wird.
 
 [!INCLUDE [virtual-machines-common-sizes-table-defs](../../includes/virtual-machines-common-sizes-table-defs.md)]
 

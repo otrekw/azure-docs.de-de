@@ -9,7 +9,7 @@
 - name: Schnellstarts
   expanded: true
   items:
-    - name: Erstellen eines AKS-Clusters
+    - name: Bereitstellen eines AKS-Clusters
       expanded: true
       items:
         - name: Verwenden der Azure-CLI
@@ -252,6 +252,8 @@
           href: kubernetes-service-principal.md
         - name: Verwenden verwalteter Identitäten
           href: use-managed-identity.md
+        - name: Verwenden der AAD-Podidentität (Vorschau)
+          href: use-azure-ad-pod-identity.md
         - name: Beschränken des Zugriffs auf die Clusterkonfigurationsdatei
           href: control-kubeconfig-access.md
         - name: Schützen des Datenverkehrs zwischen Pods mit Netzwerkrichtlinien
@@ -385,7 +387,7 @@
           href: aks-resource-health.md
 - name: Verweis
   items:
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/aks
     - name: REST
       href: /rest/api/aks

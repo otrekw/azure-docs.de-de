@@ -617,7 +617,7 @@
                           items:
                             - name: Mit SQL-Datenbank
                               href: database/saas-tenancy-tenant-analytics.md
-                            - name: Mit Azure Synapse Analytics (vormals SQL Data Warehouse)
+                            - name: Mit Azure Synapse Analytics
                               href: database/saas-tenancy-tenant-analytics-adf.md
                     - name: Notfallwiederherstellung mithilfe der Geowiederherstellung
                       href: database/saas-dbpertenant-dr-geo-restore.md
@@ -639,7 +639,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -964,7 +964,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure CLI
+        - name: Azure-Befehlszeilenschnittstelle
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1136,7 +1136,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure CLI
+            - name: Azure-Befehlszeilenschnittstelle
               href: /cli/azure/
             - name: T-SQL
               href: /sql/t-sql/language-reference
@@ -1209,7 +1209,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure CLI
+    - name: Azure-Befehlszeilenschnittstelle
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

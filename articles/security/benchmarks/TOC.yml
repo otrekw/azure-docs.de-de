@@ -129,6 +129,8 @@
       href: ../../load-balancer/security-baseline.md
     - name: Azure Machine Learning-Sicherheitsbaseline
       href: ../../machine-learning/security-baseline.md
+    - name: Azure Managed Applications-Sicherheitsbaseline
+      href: ../../azure-resource-manager/managed-applications/security-baseline.md
     - name: Azure Monitor-Sicherheitsbaseline
       href: ../../azure-monitor/security-baseline.md
     - name: Azure Migrate-Sicherheitsbaseline
@@ -201,7 +203,7 @@
       href: ../../site-recovery/security-baseline.md
     - name: Stream Analytics-Baseline
       href: ../../stream-analytics/security-baseline.md
-    - name: Synapse Analytics-Sicherheitsbaseline
+    - name: Azure Synapse Analytics-Sicherheitsbaseline
       href: ../../synapse-analytics/security-baseline.md
     - name: Traffic Manager-Sicherheitsbaseline
       href: ../../traffic-manager/security-baseline.md

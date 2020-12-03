@@ -151,9 +151,9 @@
           href: security-center-network-recommendations.md
         - name: Schützen von Identität und Zugriff
           href: security-center-identity-access.md
-    - name: Azure Defender-Warnungen
+    - name: Informationen zu Sicherheitswarnungen
       items:
-        - name: 'Azure Defender-Warnungen: Übersicht'
+        - name: Übersicht zu Sicherheitswarnungen
           href: security-center-alerts-overview.md
         - name: Referenzliste der Warnungen
           href: alerts-reference.md
@@ -244,7 +244,7 @@
           href: continuous-export.md
         - name: Herunterladen eines CSV-Berichts aller Warnungen
           href: continuous-export.md#manual-one-time-export-of-alerts-and-recommendations
-    - name: Verarbeiten von Azure Defender-Warnungen
+    - name: Behandeln von Sicherheitswarnungen
       items:
         - name: Verwalten von Sicherheitswarnungen
           href: security-center-managing-and-responding-alerts.md

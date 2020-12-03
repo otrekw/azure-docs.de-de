@@ -45,7 +45,7 @@
       items:
         - name: Freigeben aus Azure Storage
           href: how-to-share-from-storage.md
-        - name: Freigeben aus Azure SQL-Datenbank oder Synapse Analytics
+        - name: Freigeben aus Azure SQL-Datenbank oder Azure Synapse Analytics
           href: how-to-share-from-sql.md
         - name: Freigeben über Azure Data Explorer
           href: /azure/data-explorer/data-share
