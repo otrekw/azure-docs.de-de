@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: 97795b2a693b68d1bd73a00f7b3e5ee3d4679545
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: eefef0eb61df9aa0597206b537f3d58e8b8b3213
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522123"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484820"
 ---
 # <a name="tutorial-connect-to-a-storage-account-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einem Speicherkonto mithilfe eines privaten Endpunkts in Azure
 
@@ -162,7 +162,7 @@ In diesem Abschnitt erstellen Sie ein Speicherkonto und konfigurieren den privat
 
     | Einstellung | Wert                                          |
     |-----------------------|----------------------------------|
-    | Abonnement | Auswählen des Azure-Abonnements |
+    | Subscription | Auswählen des Azure-Abonnements |
     | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
     | Standort | Wählen Sie **USA, Osten** aus. |
     | Name | Geben Sie **myPrivateEndpoint** ein. |
@@ -222,7 +222,7 @@ In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen
 
     Als Name des Speicherkontos wird eine private IP-Adresse **10.1.0.5** zurückgegeben.  Diese Adresse befindet sich in dem Subnetz des virtuellen Netzwerks, das Sie zuvor erstellt haben.
 
-9. Installieren Sie die [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) auf dem virtuellen Computer.
+9. Installieren Sie die [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) auf dem virtuellen Computer.
 
 10. Nachdem **Microsoft Azure Storage-Explorer** installiert wurde, wählen Sie **Fertigstellen** aus.  Lassen Sie das Kontrollkästchen aktiviert, um die Anwendung zu öffnen.
 

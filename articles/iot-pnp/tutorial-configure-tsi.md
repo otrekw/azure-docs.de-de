@@ -7,16 +7,16 @@ ms.date: 10/14/2020
 ms.topic: tutorial
 ms.service: iot-pnp
 services: iot-pnp
-ms.openlocfilehash: ca2319a78fb4c0c720a21e97944d5b75ada9d008
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ad5c6f205fc832eb125e52b4135990fc58742e62
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96014990"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96453243"
 ---
 # <a name="preview-tutorial-create-and-connect-to-time-series-insights-gen2-to-store-visualize-and-analyze-iot-plug-and-play-device-telemetry"></a>Tutorial für die Vorschauversion: Durchführen der Erstellung und Verbindungsherstellung für Time Series Insights Gen2 zum Speichern, Visualisieren und Analysieren der Telemetriedaten von IoT Plug & Play-Geräten
 
-In diesem Tutorial wird beschrieben, wie Sie eine Umgebung vom Typ [Azure Time Series Insights Gen2](https://docs.microsoft.com/azure/time-series-insights/overview-what-is-tsi) (TSI) erstellen und richtig konfigurieren, um sie in Ihre IoT Plug & Play-Lösung zu integrieren. Verwenden Sie TSI, um Zeitreihendaten für das Internet der Dinge (Internet of Things, IoT) zu erfassen, zu verarbeiten, zu speichern, abzufragen und zu visualisieren.
+In diesem Tutorial wird beschrieben, wie Sie eine Umgebung vom Typ [Azure Time Series Insights Gen2](../time-series-insights/overview-what-is-tsi.md) (TSI) erstellen und richtig konfigurieren, um sie in Ihre IoT Plug & Play-Lösung zu integrieren. Verwenden Sie TSI, um Zeitreihendaten für das Internet der Dinge (Internet of Things, IoT) zu erfassen, zu verarbeiten, zu speichern, abzufragen und zu visualisieren.
 
 Zunächst stellen Sie eine TSI-Umgebung bereit und verbinden Ihren IoT-Hub als Ereignisquelle für das Streaming. Anschließend führen Sie die Modellsynchronisierung durch, um Ihr [Zeitreihenmodell](../time-series-insights/concepts-model-overview.md) zu erstellen. Es basiert auf den Modelldateien des [DTDL-Beispiels (Digital Twins Definition Language)](https://github.com/Azure/opendigitaltwins-dtdl), die Sie für den Temperaturregler und das Thermostat verwendet haben.
 
@@ -39,7 +39,7 @@ Damit Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) nicht lokal installie
 
 ## <a name="prepare-your-event-source"></a>Vorbereiten Ihrer Ereignisquelle
 
-Der von Ihnen zuvor erstellte IoT-Hub ist die [Ereignisquelle](https://docs.microsoft.com/azure/time-series-insights/concepts-streaming-ingestion-event-sources) Ihrer TSI-Umgebung.
+Der von Ihnen zuvor erstellte IoT-Hub ist die [Ereignisquelle](../time-series-insights/concepts-streaming-ingestion-event-sources.md) Ihrer TSI-Umgebung.
 
 > [!IMPORTANT]
 > Deaktivieren Sie alle vorhandenen IoT Hub-Routen. Es besteht ein bekanntes Problem, wenn Sie einen IoT-Hub als TSI-Ereignisquelle mit konfiguriertem [Routing](../iot-hub/iot-hub-devguide-messages-d2c.md#routing-endpoints) verwenden. Deaktivieren Sie vorübergehend alle Routingendpunkte. Wenn für Ihren IoT-Hub die Verbindung mit TSI hergestellt wurde, können Sie sie wieder aktivieren.
@@ -67,7 +67,7 @@ In diesem Abschnitt wird beschrieben, wie Sie Ihre Azure Time Series Insights Ge
 
 Der unten angegebene Befehl bewirkt Folgendes:
 
-* Erstellt ein Azure-Speicherkonto für den [kalten Speicher](https://docs.microsoft.com/azure/time-series-insights/concepts-storage#cold-store) (Cold Storage) Ihrer Umgebung, der für die Langzeitaufbewahrung und die Analyse von Verlaufsdaten ausgelegt ist.
+* Erstellt ein Azure-Speicherkonto für den [kalten Speicher](../time-series-insights/concepts-storage.md#cold-store) (Cold Storage) Ihrer Umgebung, der für die Langzeitaufbewahrung und die Analyse von Verlaufsdaten ausgelegt ist.
   * Ersetzen Sie `mytsicoldstore` durch einen eindeutigen Namen für Ihr Cold Storage-Konto.
 * Erstellt eine Azure Time Series Insights Gen2-Umgebung, einschließlich Warm Storage mit einem Aufbewahrungszeitraum von sieben Tagen und Cold Storage für die Aufbewahrung mit unbegrenzter Dauer.
   * Ersetzen Sie `my-tsi-env` durch einen eindeutigen Namen für Ihre TSI-Umgebung.

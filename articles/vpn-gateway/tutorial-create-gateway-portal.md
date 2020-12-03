@@ -5,13 +5,13 @@ author: cherylmc
 ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
-ms.date: 10/23/2020
-ms.openlocfilehash: 74000322372652b90e0d0db07d687f8e57c4f88e
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.date: 12/01/2020
+ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92518244"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510477"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways über das Azure-Portal
 
@@ -41,9 +41,9 @@ Erstellen Sie ein VNet unter Verwendung der folgenden Werte:
 * **Ressourcengruppe:** TestRG1
 * **Name:** VNet1
 * **Region:** (USA) USA, Osten
-* **IPv4-Adressraum:** 10.1.0.0/16
+* **IPv4-Adressraum**: 10.1.0.0/16
 * **Subnetzname:** FrontEnd
-* **Subnetzadressraum:** 10.1.0.0/24
+* **Subnetzadressraum**: 10.1.0.0/24
 
 [!INCLUDE [Create a virtual network](../../includes/vpn-gateway-basic-vnet-rm-portal-include.md)]
 
@@ -55,15 +55,15 @@ Erstellen Sie ein virtuelles Netzwerkgateway mit den folgenden Werten:
 
 * **Name:** VNet1GW
 * **Region:** East US
-* **Gatewaytyp** : VPN
+* **Gatewaytyp**: VPN
 * **VPN-Typ:** routenbasiert
-* **SKU:** VpnGw1
-* **Generation:** Generation1
+* **SKU**: VpnGw1
+* **Generation**: Generation1
 * **Virtuelles Netzwerk:** VNet1
-* **Adressbereich für Gatewaysubnetz** : 10.1.255.0/27
-* **Öffentliche IP-Adresse** : Neu erstellen
+* **Adressbereich für Gatewaysubnetz**: 10.1.255.0/27
+* **Öffentliche IP-Adresse**: Neu erstellen
 * **Öffentliche IP-Adresse:** VNet1GWpip
-* **Aktiv/Aktiv-Modus aktivieren:** Disabled
+* **Aktiv/Aktiv-Modus aktivieren**: Disabled
 * **BGP konfigurieren:** Disabled
 
 [!INCLUDE [Create a vpn gateway](../../includes/vpn-gateway-add-gw-rm-portal-include.md)]
@@ -76,7 +76,7 @@ Sie können die öffentliche IP-Adresse des Gateways auf der Seite **Übersicht*
 
 :::image type="content" source="./media/tutorial-create-gateway-portal/address.png" alt-text="Seite „Übersicht“":::
 
-Klicken Sie auf den Link „Name/IP-Adresse“ neben **Öffentliche IP-Adresse** , um zusätzliche Informationen zum öffentlichen IP-Adressobjekt anzuzeigen.
+Klicken Sie auf den Link „Name/IP-Adresse“ neben **Öffentliche IP-Adresse**, um zusätzliche Informationen zum öffentlichen IP-Adressobjekt anzuzeigen.
 
 ## <a name="resize-a-gateway-sku"></a><a name="resize"></a>Ändern der Größe einer Gateway-SKU
 

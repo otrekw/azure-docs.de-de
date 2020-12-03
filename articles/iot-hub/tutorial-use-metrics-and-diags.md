@@ -12,12 +12,12 @@ ms.custom:
 - mqtt
 - devx-track-azurecli
 - devx-track-csharp
-ms.openlocfilehash: d59e37cdcb6f530b08e980cf75d8834aed332252
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a16dbeedc2362f4a263d59a673dbb4358f7ba034
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93315328"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436486"
 ---
 # <a name="tutorial-set-up-and-use-metrics-and-logs-with-an-iot-hub"></a>Tutorial: Einrichten und Verwenden von Metriken und Protokollen mit einem IoT-Hub
 
@@ -42,9 +42,9 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
+- Ein Azure-Abonnement. Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-* Sie benötigen auf Ihrem Entwicklungscomputer das .NET Core SDK 2.1 oder höher. Sie können das .NET Core SDK für mehrere Plattformen von [.NET](https://www.microsoft.com/net/download/all) herunterladen.
+- Sie benötigen auf Ihrem Entwicklungscomputer das .NET Core SDK 2.1 oder höher. Sie können das .NET Core SDK für mehrere Plattformen von [.NET](https://www.microsoft.com/net/download/all) herunterladen.
 
   Mit dem folgenden Befehl können Sie die aktuelle C#-Version auf Ihrem Entwicklungscomputer überprüfen:
 
@@ -52,11 +52,11 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
   dotnet --version
   ```
 
-* Ein E-Mail-Konto für den Empfang von E-Mails.
+- Ein E-Mail-Konto für den Empfang von E-Mails.
 
-* Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
+- Stellen Sie sicher, dass der Port 8883 in Ihrer Firewall geöffnet ist. Für das Beispielgerät in diesem Tutorial wird das MQTT-Protokoll verwendet, das über Port 8883 kommuniziert. In einigen Netzwerkumgebungen von Unternehmen oder Bildungseinrichtungen ist dieser Port unter Umständen blockiert. Weitere Informationen und Problemumgehungen finden Sie unter [Herstellen einer Verbindung mit IoT Hub (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="set-up-resources"></a>Einrichten von Ressourcen
 
@@ -162,7 +162,7 @@ Führen Sie die folgenden Schritte aus, um eine Diagnoseeinstellung zu erstellen
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/add-diagnostic-setting.png" alt-text="Screenshot: Fertig eingerichtete Diagnoseprotokolleinstellungen":::
 
-1. Klicken Sie auf **Speichern** , um die Einstellungen zu speichern. Schließen Sie den Bereich **Diagnoseeinstellungen**. Sie können die neue Einstellung in der Liste der Diagnoseeinstellungen sehen.
+1. Klicken Sie auf **Speichern**, um die Einstellungen zu speichern. Schließen Sie den Bereich **Diagnoseeinstellungen**. Sie können die neue Einstellung in der Liste der Diagnoseeinstellungen sehen.
 
 ## <a name="set-up-metrics"></a>Einrichten von Metriken
 
@@ -194,7 +194,7 @@ Wir verwenden nun den Metrik-Explorer, um ein Diagramm zu erstellen, das Metrike
 
 ## <a name="set-up-metric-alerts"></a>Einrichten von Metrikwarnungen
 
-Jetzt richten wir Warnungen ein, die für zwei Metriken ( *Gesendete Telemetrienachrichten* und *Gesamtzahl verwendeter Nachrichten* ) ausgelöst werden.
+Jetzt richten wir Warnungen ein, die für zwei Metriken (*Gesendete Telemetrienachrichten* und *Gesamtzahl verwendeter Nachrichten*) ausgelöst werden.
 
 *Gesendete Telemetrienachrichten* ist eine gute Metrik zum Nachverfolgen des Nachrichtendurchsatzes und Vermeiden von Drosselung. Für einen IoT-Hub im Free-Tarif beträgt der Drosselungsgrenzwert 100 Nachrichten/Sek. Mit einem einzelnen Gerät können wir diese Art von Durchsatz nicht erreichen. Daher richten wir die Warnung so ein, dass sie ausgelöst wird, wenn die Anzahl der Nachrichten in einem Zeitraum von fünf Minuten 1.000 überschreitet. In der Produktion können Sie das Signal basierend auf dem Tarif, der Edition und der Anzahl von Einheiten Ihres IoT-Hubs auf einen signifikanteren Wert festlegen.
 
@@ -225,17 +225,17 @@ Einrichten von Metrikwarnungen:
 
     1. Legen Sie im Bereich **Signallogik konfigurieren** die folgenden Felder unter **Warnungslogik** fest, oder bestätigen Sie sie (Sie können das Diagramm ignorieren):
 
-       **Schwellenwert** :  *Statisch*
+       **Schwellenwert**:  *Statisch*
 
-       **Operator** : *Größer als*.
+       **Operator**: *Größer als*.
 
-       **Aggregationstyp** : *Gesamt*.
+       **Aggregationstyp**: *Gesamt*.
 
-       **Schwellenwert** : 1.000.
+       **Schwellenwert**: 1.000.
 
        **Aggregationsgranularität (Zeitraum)** : *5 Minuten*.
 
-       **Häufigkeit der Auswertung** : *Jede Minute*
+       **Häufigkeit der Auswertung**: *Jede Minute*
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/configure-signal-logic-set-conditions.png" alt-text="Screenshot der Einstellungen für Warnungsbedingungen.":::
 
@@ -269,7 +269,7 @@ Einrichten von Metrikwarnungen:
 
         :::image type="content" source="media/tutorial-use-metrics-and-diags/create-action-group-review-and-create.png" alt-text="Screenshot des Bereichs „Überprüfen und erstellen“.":::
 
-    1. Beachten Sie im Bereich **Warnungsregel erstellen** , dass die neue Aktionsgruppe den Aktionen für die Warnung hinzugefügt wurde.  
+    1. Beachten Sie im Bereich **Warnungsregel erstellen**, dass die neue Aktionsgruppe den Aktionen für die Warnung hinzugefügt wurde.  
 
 1. Konfigurieren Sie schließlich die Details der Warnungsregel, und speichern Sie die Warnungsregel.
 
@@ -285,17 +285,17 @@ Einrichten von Metrikwarnungen:
 
     * Legen Sie im Bereich **Signallogik konfigurieren** die folgenden Felder fest, oder bestätigen Sie sie (Sie können das Diagramm ignorieren):
 
-       **Schwellenwert** :  *Statisch*
+       **Schwellenwert**:  *Statisch*
 
-       **Operator** : *Größer als*.
+       **Operator**: *Größer als*.
 
-       **Aggregationstyp** : *Maximum*.
+       **Aggregationstyp**: *Maximum*.
 
-       **Schwellenwert** : 4.000.
+       **Schwellenwert**: 4.000.
 
        **Aggregationsgranularität (Zeitraum)** : *1 Minute*.
 
-       **Häufigkeit der Auswertung** : *Jede Minute*
+       **Häufigkeit der Auswertung**: *Jede Minute*
 
        Diese Einstellungen legen das Signal fest,das ausgelöst wird, wenn die Anzahl der Nachrichten 4.000 erreicht. Die Metrik wird jede Minute ausgewertet.
 
@@ -392,9 +392,9 @@ Wählen Sie eine der Warnungen aus, um die Warnungsdetails anzuzeigen.
 
 Im Abschnitt [Protokolle für Verbindungen und Gerätetelemetrie erfassen](#collect-logs-for-connections-and-device-telemetry) haben Sie eine Diagnoseeinstellung zum Senden von Ressourcenprotokollen erstellt, die von Ihrem IoT-Hub für Verbindungen und Gerätetelemetrievorgänge an Azure Monitor-Protokolle ausgegeben werden. In diesem Abschnitt führen Sie eine Kusto-Abfrage für Azure Monitor-Protokolle aus, um aufgetretene Fehler zu beobachten.
 
-1. Wählen Sie im linken Bereich Ihres IoT-Hubs unter **Überwachung** im Azure-Portal die Option **Protokolle** aus. Schließen Sie das zunächst angezeigte Fenster **Abfragen** , wenn es geöffnet werden sollte.
+1. Wählen Sie im linken Bereich Ihres IoT-Hubs unter **Überwachung** im Azure-Portal die Option **Protokolle** aus. Schließen Sie das zunächst angezeigte Fenster **Abfragen**, wenn es geöffnet werden sollte.
 
-1. Wählen Sie im Bereich „Neue Abfrage“ die Registerkarte **Abfragen** aus, und erweitern Sie dann **IoT Hub** , um die Liste der Standardabfragen anzuzeigen.
+1. Wählen Sie im Bereich „Neue Abfrage“ die Registerkarte **Abfragen** aus, und erweitern Sie dann **IoT Hub**, um die Liste der Standardabfragen anzuzeigen.
 
    :::image type="content" source="media/tutorial-use-metrics-and-diags/new-query-pane.png" alt-text="Screenshot der Standardabfragen von IoT Hub.":::
 

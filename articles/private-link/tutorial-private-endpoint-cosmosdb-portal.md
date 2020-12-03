@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: private-link
 ms.topic: tutorial
 ms.date: 9/25/2020
-ms.openlocfilehash: a544d0c5fafbdaf9d272fed552fb38eda613292f
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: c9866ac2c14e4deb29326ffdd1a93a7d8eae1ea3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522140"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96484803"
 ---
 # <a name="tutorial-connect-to-an-azure-cosmos-account-using-an-azure-private-endpoint"></a>Tutorial: Herstellen einer Verbindung mit einem Azure Cosmos-Konto mithilfe eines privaten Endpunkts in Azure
 
@@ -171,7 +171,7 @@ In diesem Abschnitt erstellen Sie ein Cosmos DB-Konto und konfigurieren den pri
 
     | Einstellung | Wert                                          |
     |-----------------------|----------------------------------|
-    | Abonnement | Auswählen des Azure-Abonnements |
+    | Subscription | Auswählen des Azure-Abonnements |
     | Ressourcengruppe | Wählen Sie **myResourceGroup** aus. |
     | Standort | Wählen Sie **USA, Osten** aus. |
     | Name | Geben Sie **myPrivateEndpoint** ein. |
@@ -248,7 +248,7 @@ In diesem Abschnitt verwenden Sie den virtuellen Computer, den Sie im vorherigen
 
     Als Name des Cosmos DB-Kontos wird die private IP-Adresse **10.1.0.5** zurückgegeben.  Diese Adresse befindet sich in dem Subnetz des virtuellen Netzwerks, das Sie zuvor erstellt haben.
 
-9. Installieren Sie die [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%252fazure%252fstorage%252fblobs%252ftoc.json) auf dem virtuellen Computer.
+9. Installieren Sie die [Microsoft Azure Storage-Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md?tabs=windows&toc=%2fazure%2fstorage%2fblobs%2ftoc.json) auf dem virtuellen Computer.
 
 10. Nachdem **Microsoft Azure Storage-Explorer** installiert wurde, wählen Sie **Fertigstellen** aus.  Lassen Sie das Kontrollkästchen aktiviert, um die Anwendung zu öffnen.
 

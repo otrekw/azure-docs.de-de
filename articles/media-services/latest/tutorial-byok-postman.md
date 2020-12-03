@@ -6,12 +6,12 @@ ms.author: inhenkel
 ms.service: media-services
 ms.topic: tutorial
 ms.date: 10/18/2020
-ms.openlocfilehash: 93bbd84c25f02ac1653a46ebb4a70c1dfa90c744
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c8a5b682e2ac4879d2181bdb069cf554bad512d9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686360"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498284"
 ---
 # <a name="tutorial-use-customer-managed-keys-or-byok-with-media-services-rest-api"></a>Tutorial: Verwenden von kundenseitig verwalteten Schlüsseln (BYOK) mit der Media Services-REST-API
 
@@ -43,8 +43,8 @@ Falls Sie noch nicht über ein Azure-Abonnement verfügen, können Sie ein [kost
 
 ### <a name="register-a-service-principal-with-the-needed-permissions"></a>Registrieren Sie einen Dienstprinzipal mit den erforderlichen Berechtigungen
 
-1. [Erstellen Sie einen Dienstprinzipal](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-1. Gehen Sie zu [Option 2: Erstellen eines neuen Anwendungsgeheimnisses](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#authentication-two-options), um das Geheimnis des Dienstprinzipals abzurufen.
+1. [Erstellen Sie einen Dienstprinzipal](../../active-directory/develop/howto-create-service-principal-portal.md).
+1. Gehen Sie zu [Option 2: Erstellen eines neuen Anwendungsgeheimnisses](../../active-directory/develop/howto-create-service-principal-portal.md#authentication-two-options), um das Geheimnis des Dienstprinzipals abzurufen.
 
    > [!IMPORTANT]
    >Kopieren und speichern Sie das Geheimnis zur späteren Verwendung. Nachdem Sie die Geheimnisseite im Portal verlassen haben, können Sie nicht mehr auf das Geheimnis zugreifen.
