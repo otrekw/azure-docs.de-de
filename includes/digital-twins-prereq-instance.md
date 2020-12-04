@@ -5,15 +5,17 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 10/29/2020
 ms.author: baanders
-ms.openlocfilehash: f56cc5b028f07964236fc42a1ca468aa28aae440
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 8ea371e25f149c52412153aa0b9c3b7475dc77fd
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94358076"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96303587"
 ---
-Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst eine Azure Digital Twins-Instanz einrichten und die für die Nutzung erforderlichen Berechtigungen gewähren. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen.
+Für die Arbeit mit Azure Digital Twins in diesem Artikel müssen Sie zuerst **eine Azure Digital Twins-Instanz einrichten** und die für die Nutzung erforderlichen Berechtigungen gewähren. Wenn Sie zuvor bereits eine Azure Digital Twins-Instanz eingerichtet haben, können Sie diese nutzen.
 
 Befolgen Sie andernfalls die Anleitung unter [Einrichten einer Instanz und der Authentifizierung](../articles/digital-twins/how-to-set-up-instance-portal.md). Die Anleitung enthält auch Schritte zur Überprüfung, ob Sie jeden Schritt erfolgreich abgeschlossen haben und für die Nutzung Ihrer neuen Instanz bereit sind.
 
-Nach dem Einrichten der Azure Digital Twins-Instanz benötigen Sie den *_Hostnamen_* für die Instanz. Sie können im [Azure-Portal](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values) nach dem Namen suchen. Notieren Sie sich diesen Wert, damit Sie ihn später zum Herstellen einer Verbindung mit der Instanz verwenden können.
+Nachdem Sie Ihre Azure Digital Twins-Instanz eingerichtet haben, notieren Sie sich die folgenden Werte, die Sie benötigen, um später eine Verbindung mit der Instanz herzustellen:
+* **_Hostname_** der Instanz. Sie finden diesen Wert im Azure-Portal ([Anweisungen](../articles/digital-twins/how-to-set-up-instance-portal.md#verify-success-and-collect-important-values)).
+* das **Azure-Abonnement**, das Sie zum Erstellen der Instanz verwendet haben (entweder Name oder ID). Sie können sehen, in welchem Abonnement sich eine Instanz von Azure Digital Twins befindet, indem Sie die gleiche *Übersichtsseite* für Ihre Instanz im [Azure-Portal](https://portal.azure.com)anzeigen.

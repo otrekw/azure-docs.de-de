@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/07/2019
 ms.author: Zhchia
-ms.openlocfilehash: a93e2a88201f32ed99698f2bfbab631c81ed8b35
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: da3ad4f70e0cc41fe95327eb74093c1471c877bd
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357707"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96351570"
 ---
 # <a name="tutorial-configure-zscaler-private-access-zpa-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Private Access (ZPA) für die automatische Benutzerbereitstellung
 
@@ -37,7 +37,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 ## <a name="assigning-users-to-zscaler-private-access-zpa"></a>Zuweisen von Benutzern zu Zscaler Private Access (ZPA)
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Zscaler Private Access (ZPA) benötigen. Anschließend können Sie diese Benutzer und/oder Gruppen Zscaler Private Access (ZPA) wie folgt zuweisen:
 * [Zuweisen eines Benutzers oder einer Gruppe zu einer Unternehmens-App](../manage-apps/assign-user-or-group-access-portal.md)
@@ -58,15 +58,15 @@ Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung m�
 
     ![Zscaler Private Access (ZPA): Hinzufügen von SCIM](media/zscaler-private-access-provisioning-tutorial/plusicon.png)
 
-3. Folgen Sie dem Assistenten zum **Hinzufügen von IdP-Konfigurationen** , um einen IdP hinzuzufügen. Übernehmen Sie im Feld **Einmaliges Anmelden** die Einstellung **Benutzer**. Geben Sie einen **Namen** an, und wählen Sie in der Dropdownliste die **Domänen** aus. Klicken Sie auf **Weiter** , um zum nächsten Fenster zu navigieren.
+3. Folgen Sie dem Assistenten zum **Hinzufügen von IdP-Konfigurationen**, um einen IdP hinzuzufügen. Übernehmen Sie im Feld **Einmaliges Anmelden** die Einstellung **Benutzer**. Geben Sie einen **Namen** an, und wählen Sie in der Dropdownliste die **Domänen** aus. Klicken Sie auf **Weiter**, um zum nächsten Fenster zu navigieren.
 
     ![Zscaler Private Access (ZPA): Hinzufügen von IdP](media/zscaler-private-access-provisioning-tutorial/addidp.png)
 
-4. Laden Sie das **Zertifikat des Dienstanbieters** herunter. Klicken Sie auf **Weiter** , um zum nächsten Fenster zu navigieren.
+4. Laden Sie das **Zertifikat des Dienstanbieters** herunter. Klicken Sie auf **Weiter**, um zum nächsten Fenster zu navigieren.
 
     ![Zscaler Private Access (ZPA): Zertifikat des Dienstanbieters](media/zscaler-private-access-provisioning-tutorial/spcertificate.png)
 
-5. Laden Sie im nächsten Fenster das **Zertifikat des Dienstanbieters**  hoch, das Sie zuvor heruntergeladen haben.
+5. Laden Sie im nächsten Fenster das **Zertifikat des Dienstanbieters** hoch, das Sie zuvor heruntergeladen haben.
 
     ![Zscaler Private Access (ZPA): Hochladen des Zertifikats](media/zscaler-private-access-provisioning-tutorial/uploadfile.png)
 
@@ -97,15 +97,15 @@ Bevor Sie Zscaler Private Access (ZPA) für die automatische Benutzerbereitstell
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie in das Suchfeld **Zscaler Private Access (ZPA)** ein, wählen Sie im Ergebnisbereich **Zscaler Private Access (ZPA)** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie in das Suchfeld **Zscaler Private Access (ZPA)** ein, wählen Sie im Ergebnisbereich **Zscaler Private Access (ZPA)** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Zscaler Private Access (ZPA) in der Ergebnisliste](common/search-new-app.png)
 
@@ -137,7 +137,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für **SCIM Service Provider Endpoint** (SCIM-Dienstanbieter-Endpunkt) ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für **Bearertoken** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Private Access (ZPA) herstellen kann. Falls beim Verbindungsaufbau ein Fehler auftritt, stellen Sie sicher, dass Ihr Zscaler Private Access (ZPA)-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen**  den Wert für **SCIM Service Provider Endpoint** (SCIM-Dienstanbieter-Endpunkt) ein, den Sie zuvor in **Mandanten-URL** abgerufen haben. Geben Sie den Wert für **Bearertoken** ein, den Sie zuvor unter **Geheimes Token** abgerufen haben. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Private Access (ZPA) herstellen kann. Falls beim Verbindungsaufbau ein Fehler auftritt, stellen Sie sicher, dass Ihr Zscaler Private Access (ZPA)-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -151,7 +151,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zscaler Private Access (ZPA): Benutzerzuordnungen](media/zscaler-private-access-provisioning-tutorial/usermappings.png)
 
-9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Zscaler Private Access (ZPA) synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Private Access (ZPA) für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+9. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Zscaler Private Access (ZPA) synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Private Access (ZPA) für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Zscaler Private Access (ZPA): Benutzerattribute](media/zscaler-private-access-provisioning-tutorial/userattributes.png)
 
@@ -159,13 +159,13 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Zscaler Private Access (ZPA): Gruppenzuordnungen](media/zscaler-private-access-provisioning-tutorial/groupmappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Zscaler Private Access (ZPA) synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Private Access (ZPA) für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Zscaler Private Access (ZPA) synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Private Access (ZPA) für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Zscaler Private Access (ZPA): Gruppenattribute](media/zscaler-private-access-provisioning-tutorial/groupattributes.png)
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-13. Ändern Sie im Bereich **Einstellungen** den **Bereitstellungsstatus** in **Ein** , um den Azure AD-Bereitstellungsdienst für Zscaler Private Access (ZPA) zu aktivieren.
+13. Ändern Sie im Bereich **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für Zscaler Private Access (ZPA) zu aktivieren.
 
     ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 

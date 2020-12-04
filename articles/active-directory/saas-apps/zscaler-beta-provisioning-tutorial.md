@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: de42230639351c0dc1e7986156a33b178386d1a4
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 59784b6e618e875a6eedc947ce75afdf3bd1df74
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357741"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327388"
 ---
 # <a name="tutorial-configure-zscaler-beta-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Zscaler Beta für die automatische Benutzerbereitstellung
 
@@ -48,15 +48,15 @@ Bevor Sie Zscaler Beta für die automatische Benutzerbereitstellung mit Azure AD
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen** aus.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Dialogfeld auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Zscaler Beta** ein, wählen Sie im Ergebnisbereich **Zscaler Beta** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Zscaler Beta** ein, wählen Sie im Ergebnisbereich **Zscaler Beta** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Zscaler Beta in der Ergebnisliste](common/search-new-app.png)
 
@@ -83,7 +83,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 ### <a name="to-configure-automatic-user-provisioning-for-zscaler-beta-in-azure-ad"></a>So konfigurieren Sie die automatische Benutzerbereitstellung für Zscaler Beta in Azure AD:
 
-1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen** , **Alle Anwendungen** und dann **Zscaler Beta** aus.
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an, und wählen Sie **Unternehmensanwendungen**, **Alle Anwendungen** und dann **Zscaler Beta** aus.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
@@ -93,63 +93,63 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 3. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
+    ![Es gibt eine Liste von Registerkarten, die in Kategorien angeordnet sind, und den Titel „ZScaler Beta – Bereitstellung/Unternehmensanwendung“ haben. Die Registerkarte „Bereitstellung“ der Kategorie „Verwalten“ ist ausgewählt.](./media/zscaler-beta-provisioning-tutorial/provisioning-tab.png)
 
 4. Legen Sie den **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
+    ![Der automatische Modus wurde in der Dropdownliste „Bereitstellungsmodus“ ausgewählt. Es gibt Felder für Administratoranmeldeinformationen, die zum Herstellen einer Verbindung mit der Zscaler Beta-API verwendet werden, und die Schaltfläche „Verbindung testen“.](./media/zscaler-beta-provisioning-tutorial/provisioning-credentials.png)
 
 5. Geben Sie im Abschnitt **Admin Credentials** (Administratoranmeldeinformationen) wie in Schritt 6 beschrieben die **Mandanten-URL** und das **geheime Token** Ihres Zscaler Beta-Kontos ein.
 
-6. Navigieren Sie in der Benutzeroberfläche des Zscaler Beta-Portals zu **Administration (Verwaltung) > Authentication Settings (Authentifizierungseinstellungen)** , und klicken Sie unter **Authentifizierungstyp** auf **SAML** , um die **Mandanten-URL** und das **geheime Token** abzurufen.
+6. Navigieren Sie in der Benutzeroberfläche des Zscaler Beta-Portals zu **Administration (Verwaltung) > Authentication Settings (Authentifizierungseinstellungen)**, und klicken Sie unter **Authentifizierungstyp** auf **SAML**, um die **Mandanten-URL** und das **geheime Token** abzurufen.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
+    ![Unter „Authentifizierungseinstellungen“ sind im Authentifizierungsprofil der Verzeichnistyp „Hosted DB“ und der Authentifizierungstyp „SAML“ ausgewählt.](./media/zscaler-beta-provisioning-tutorial/secret-token-1.png)
 
     Klicken Sie auf **Configure SAML** (SAML konfigurieren), um die Optionen zur **SAML-Konfiguration** zu öffnen.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
+    ![Unter „SAML konfigurieren“ sind die Optionen „Automatische SAML-Bereitstellung aktivieren“ und „SCIM-basierte Bereitstellung aktivieren“ ausgewählt. Die Textfelder „Basis-URL“ und „Bearertoken“ sind hervorgehoben.](./media/zscaler-beta-provisioning-tutorial/secret-token-2.png)
 
     Wählen Sie **Enable SCIM-Based Provisioning** (SCIM-basierte Bereitstellung aktivieren) aus, um die **Basis-URL** und das **Bearertoken** abzurufen, und speichern Sie anschließend die Einstellungen. Kopieren Sie im Azure-Portal die **Basis-URL** in das Feld **Mandanten-URL** und das **Bearertoken** in das Feld **Geheimes Token**.
 
-7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Beta herstellen kann. Falls beim Verbindungsaufbau ein Fehler auftritt, stellen Sie sicher, dass Ihr Zscaler Beta-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
+7. Klicken Sie nach dem Auffüllen der in Schritt 5 gezeigten Felder auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Zscaler Beta herstellen kann. Falls beim Verbindungsaufbau ein Fehler auftritt, stellen Sie sicher, dass Ihr Zscaler Beta-Konto über Administratorberechtigungen verfügt, und versuchen Sie es noch einmal.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
+    ![Unter „Administratoranmeldeinformationen“ enthalten die Felder „Mandanten-URL“ und „Geheimes Token“ Werte, und die Schaltfläche „Verbindung testen“ ist hervorgehoben.](./media/zscaler-beta-provisioning-tutorial/test-connection.png)
 
 8. Geben Sie im Feld **Benachrichtigungs-E-Mail** die E-Mail-Adresse einer Person oder einer Gruppe ein, die Benachrichtigungen zu Bereitstellungsfehlern erhalten soll, und aktivieren Sie das Kontrollkästchen **Bei Fehler E-Mail-Benachrichtigung senden**.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/notification.png)
+    ![Das Textfeld „E-Mail-Benachrichtigung“ ist leer, und das Kontrollkästchen „Bei Fehler E-Mail-Benachrichtigung senden“ ist deaktiviert.](./media/zscaler-beta-provisioning-tutorial/notification.png)
 
 9. Klicken Sie auf **Speichern**.
 
 10. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Users to Zscaler Beta** (Azure Active Directory-Benutzer mit Zscaler Beta synchronisieren) aus.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
+    ![„Synchronisieren von Azure Active Directory-Benutzern in ZScalerBeta“ ist ausgewählt und aktiviert.](./media/zscaler-beta-provisioning-tutorial/user-mappings.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Zscaler Beta synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Beta für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnung** die Benutzerattribute, die von Azure AD mit Zscaler Beta synchronisiert werden. Beachten Sie, dass die als **übereinstimmende** Eigenschaften ausgewählten Attribute für den Abgleich der Benutzerkonten in Zscaler Beta für Updatevorgänge verwendet werden. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
+    ![Im Abschnitt „Attributzuordnungen“ für Benutzerattribute werden die Active Directory Attribute neben den Zscaler Beta-Attributen angezeigt, mit denen Sie synchronisiert werden. Ein Attributpaar wird als übereinstimmend angezeigt.](./media/zscaler-beta-provisioning-tutorial/user-attribute-mappings.png)
 
 12. Wählen Sie im Abschnitt **Zuordnungen** die Option **Synchronize Azure Active Directory Groups to Zscaler Beta** (Azure Active Directory-Gruppen mit Zscaler Beta synchronisieren) aus.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
+    ![„Synchronisieren von Azure Active Directory-Gruppen in ZScalerBeta“ ist ausgewählt und aktiviert.](./media/zscaler-beta-provisioning-tutorial/group-mappings.png)
 
-13. Überprüfen Sie im Abschnitt **Attributzuordnung** die Gruppenattribute, die von Azure AD mit Zscaler Beta synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Beta für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Zscaler Beta synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in Zscaler Beta für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
+    ![Im Abschnitt „Attributzuordnungen“ für Gruppenattribute werden die Active Directory Attribute neben den Zscaler Beta-Attributen angezeigt, mit denen Sie synchronisiert werden. Ein Attributpaar wird als übereinstimmend angezeigt.](./media/zscaler-beta-provisioning-tutorial/group-attribute-mappings.png)
 
 14. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 
-15. Ändern Sie im Bereich **Einstellungen** den **Bereitstellungsstatus** in **Ein** , um den Azure AD-Bereitstellungsdienst für Zscaler Beta zu aktivieren.
+15. Ändern Sie im Bereich **Einstellungen** den **Bereitstellungsstatus** in **Ein**, um den Azure AD-Bereitstellungsdienst für Zscaler Beta zu aktivieren.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
+    ![Der Bereitstellungsstatus wird angezeigt und ist aktiviert.](./media/zscaler-beta-provisioning-tutorial/provisioning-status.png)
 
 16. Legen Sie die Benutzer und/oder Gruppen fest, die in Zscaler Beta bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/scoping.png)
+    ![Die Dropdownliste „Bereich“ wird angezeigt, und „Nur zugewiesene Benutzer und Gruppen synchronisieren“ ist ausgewählt. Der andere verfügbare Wert ist „Alle Benutzer und Gruppen synchronisieren“.](./media/zscaler-beta-provisioning-tutorial/scoping.png)
 
 17. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-    ![Zscaler Beta-Bereitstellung](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
+    ![Die Schaltfläche „Speichern“ am oberen Rand von „Zscaler Beta – Bereitstellung“ ist hervorgehoben. Die Schaltfläche „Verwerfen“ ist ebenfalls vorhanden.](./media/zscaler-beta-provisioning-tutorial/save-provisioning.png)
 
 Dadurch wird die Erstsynchronisierung aller Benutzer und/oder Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert sind. Die Erstsynchronisierung dauert länger als nachfolgende Synchronisierungen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. Im Abschnitt **Synchronization Details** (Synchronisierungsdetails) können Sie den Fortschritt überwachen und Links zu Berichten zur Bereitstellungsaktivität aufrufen. Darin sind alle Aktionen aufgeführt, die vom Azure AD-Bereitstellungsdienst in Zscaler Beta ausgeführt werden.
 

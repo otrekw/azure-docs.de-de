@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/30/2018
-ms.openlocfilehash: 262c54c3eb47c8539dce89c01f32c7feb1884b7c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 800592b7a8b263fea2883fdd3e030f78f72647dd
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92792734"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459917"
 ---
 # <a name="run-ad-hoc-analytics-queries-across-multiple-databases-azure-sql-database"></a>Ausführen von Ad-hoc-Analyseabfragen für mehrere Datenbanken (Azure SQL-Datenbank)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -45,9 +45,9 @@ Stellen Sie zum Durchführen dieses Tutorials sicher, dass die folgenden Vorauss
 
 SaaS-Anwendungen können die gewaltige Menge von Mandantendaten analysieren, die zentral in der Cloud gespeichert sind. Diese Daten vermitteln Einblicke in Betrieb und Nutzung Ihrer Anwendung. An diesen gewonnenen Erkenntnissen können Sie sich bei der Entwicklung von Funktionen, Verbesserungen der Benutzerfreundlichkeit und anderen Investitionen in Ihre Apps und Dienste orientieren.
 
-Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung von [Elastic Query](elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Diese Datenbanken können auf verschiedene Ressourcengruppen und Abonnements verteilt werden. Allerdings muss ein Anmeldename vorhanden sein, der allgemeinen Zugriff hat, um Daten aus allen Datenbanken zu extrahieren. Flexible Abfragen verwenden eine einzige *Hauptdatenbank* , in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Elastische Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort aller Mandantendatenbanken festzulegen. Für Setup und Abfragen wird einfach gewöhnlicher [Transact-SQL](/sql/t-sql/language-reference)-Code verwendet, und Ad-hoc-Abfragen von Tools wie Power BI und Excel werden unterstützt.
+Es ist einfach, auf diese Daten in einer Datenbank mit mehreren Mandanten zuzugreifen, aber weniger einfach bei einer Verteilung über potentiell Tausende von Datenbanken. Ein Ansatz besteht in der Verwendung von [Elastic Query](elastic-query-overview.md), wodurch Abfragen für einen verteilten Satz von Datenbanken mit gemeinsamem Schema ermöglicht werden. Diese Datenbanken können auf verschiedene Ressourcengruppen und Abonnements verteilt werden. Allerdings muss ein Anmeldename vorhanden sein, der allgemeinen Zugriff hat, um Daten aus allen Datenbanken zu extrahieren. Flexible Abfragen verwenden eine einzige *Hauptdatenbank*, in der externe Tabellen definiert werden, die Tabellen oder Sichten in den verteilten Datenbanken (Mandantendatenbanken) spiegeln. Abfragen, die an diese Hauptdatenbank übermittelt werden, werden kompiliert, um einen Plan der verteilten Abfrage zu erzeugen, bei dem Teile der Abfrage nach Bedarf per Push an die Mandantendatenbanken übertragen werden. Elastische Abfragen verwenden die Shardzuordnung in der Katalogdatenbank, um den Speicherort aller Mandantendatenbanken festzulegen. Für Setup und Abfragen wird einfach gewöhnlicher [Transact-SQL](/sql/t-sql/language-reference)-Code verwendet, und Ad-hoc-Abfragen von Tools wie Power BI und Excel werden unterstützt.
 
-Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, können Sie dem [Ausführungsplan](/sql/relational-databases/performance/display-an-actual-execution-plan) entnehmen, welcher Teil der Abfrage per Push in die Remotedatenbank übertragen wurde. Bewerten Sie außerdem, wie viele Daten zurückgegeben werden. Für Abfragen, die eine komplexe analytische Verarbeitung erfordern, ist es möglicherweise besser, wenn die extrahierten Mandantendaten in einer Datenbank gespeichert werden, die für Analyseabfragen optimiert ist. SQL-Datenbank und Azure Synapse Analytics (früher SQL Data Warehouse) könnten als Host für eine solche Analysedatenbank fungieren.
+Durch das Verteilen von Abfragen über Mandantendatenbanken bietet Elastic Query schnellen Einblick in Liveproduktionsdaten. Dadurch dass es möglich ist, das Elastic Query Daten aus vielen Datenbanken abruft, kann die Abfragewartezeit manchmal länger sein als für äquivalente Abfragen, die an eine einzelne Datenbank mit mehreren Mandanten ausgestellt werden. Achten Sie darauf, Ihre Abfragen so zu entwerfen, dass ein Minimum an Daten zurückgegeben wird. Elastic Query ist häufig optimal für das Abfragen kleiner Mengen von Echtzeitdaten und weniger für das Erstellen von häufig verwendeten oder komplexen Analyseabfragen oder -berichten. Wenn Abfragen nicht optimal ausgeführt werden, können Sie dem [Ausführungsplan](/sql/relational-databases/performance/display-an-actual-execution-plan) entnehmen, welcher Teil der Abfrage per Push in die Remotedatenbank übertragen wurde. Bewerten Sie außerdem, wie viele Daten zurückgegeben werden. Für Abfragen, die eine komplexe analytische Verarbeitung erfordern, ist es möglicherweise besser, wenn die extrahierten Mandantendaten in einer Datenbank gespeichert werden, die für Analyseabfragen optimiert ist. SQL-Datenbank und Azure Synapse Analytics könnten als Host für eine solche Analysedatenbank fungieren.
 
 Dieses Muster für die Analyse wird im [Tutorial zu Mandantenanalysen](saas-multitenantdb-tenant-analytics.md) erklärt.
 
@@ -59,24 +59,24 @@ Die Skripts und der Anwendungsquellcode der mehrinstanzenfähigen Wingtip Ticket
 
 Um Abfragen mit einem interessanteren Dataset auszuführen, erstellen Sie Ticketverkaufsdaten mit dem Ticketgenerator.
 
-1. Öffnen Sie nun in der *PowerShell ISE* das Skript ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1* , und legen Sie folgende Werte fest:
-   * **$DemoScenario** = 1, **Tickets für Events an allen Veranstaltungsorten kaufen** .
-2. Drücken Sie **F5** , um das Skript auszuführen und Ticketverkaufsdaten zu generieren. Während das Skript ausgeführt wird, können Sie die nächsten Schritte des Tutorials ausführen. Sie können die Ticketdaten im Abschnitt *Ausführen von verteilten Ad-hoc-Abfragen* abfragen. Warten Sie zunächst, bis der Ticketgenerator abgeschlossen wurde.
+1. Öffnen Sie nun in der *PowerShell ISE* das Skript ...\\Learning Modules\\Operational Analytics\\Adhoc Reporting\\*Demo-AdhocReporting.ps1*, und legen Sie folgende Werte fest:
+   * **$DemoScenario** = 1, **Tickets für Events an allen Veranstaltungsorten kaufen**.
+2. Drücken Sie **F5**, um das Skript auszuführen und Ticketverkaufsdaten zu generieren. Während das Skript ausgeführt wird, können Sie die nächsten Schritte des Tutorials ausführen. Sie können die Ticketdaten im Abschnitt *Ausführen von verteilten Ad-hoc-Abfragen* abfragen. Warten Sie zunächst, bis der Ticketgenerator abgeschlossen wurde.
 
 ## <a name="explore-the-tenant-tables"></a>Untersuchen der Mandantentabellen 
 
 In der Anwendung Wingtip Tickets SaaS Multi-tenant Database sind Mandanten in einem hybriden Mandantenverwaltungsmodell gespeichert. Die Mandantendaten werden dabei entweder in einer Datenbank mit mehreren Mandanten oder aber in einer Einzelmandanten-Datenbank gespeichert und können zwischen diesen beiden verschoben werden. Wenn Sie alle Mandantendatenbanken abfragen, ist darauf zu achten, dass Elastic Query die Daten so behandeln kann, als seien sie Teil einer einzigen logischen Datenbank, die vom Mandanten freigegeben wurde. 
 
-Um dieses Muster umzusetzen, enthalten alle Mandantentabellen eine *VenueId* -Spalte, die angibt, zu welchem Mandanten die Daten gehören. *VenueId* wird als Hash des Namens des Veranstaltungsorts berechnet. Für die Einführung eines eindeutigen Werts für diese Spalte kann jedoch ein beliebiger Ansatz verwendet werden. Dieser Ansatz ähnelt der Berechnung des Mandantenschlüssels zur Verwendung im Katalog. Tabellen mit *VenueId* werden von Elastic Query zum Parallelisieren von Abfragen und zu deren Übertragung an die jeweilige Remote-Mandantendatenbank verwendet. Dadurch wird die Menge der zurückgegebenen Daten erheblich reduziert, was insbesondere dann zu einem Leistungsanstieg führt, wenn mehrere Mandanten vorhanden sind, deren Daten in einzelnen Mandantendatenbanken gespeichert werden.
+Um dieses Muster umzusetzen, enthalten alle Mandantentabellen eine *VenueId*-Spalte, die angibt, zu welchem Mandanten die Daten gehören. *VenueId* wird als Hash des Namens des Veranstaltungsorts berechnet. Für die Einführung eines eindeutigen Werts für diese Spalte kann jedoch ein beliebiger Ansatz verwendet werden. Dieser Ansatz ähnelt der Berechnung des Mandantenschlüssels zur Verwendung im Katalog. Tabellen mit *VenueId* werden von Elastic Query zum Parallelisieren von Abfragen und zu deren Übertragung an die jeweilige Remote-Mandantendatenbank verwendet. Dadurch wird die Menge der zurückgegebenen Daten erheblich reduziert, was insbesondere dann zu einem Leistungsanstieg führt, wenn mehrere Mandanten vorhanden sind, deren Daten in einzelnen Mandantendatenbanken gespeichert werden.
 
 ## <a name="deploy-the-database-used-for-ad-hoc-distributed-queries"></a>Bereitstellen der für verteilte Ad-hoc-Abfragen verwendeten Datenbank
 
 In dieser Übung wird die Datenbank *adhocreporting* bereitgestellt. Dies ist die Hauptdatenbank, die das Schema enthält, das zum Abfragen aller Mandantendatenbanken verwendet wird. Die Datenbank wird auf dem vorhandenen Katalogserver bereitgestellt. Dies ist der Server, der für alle verwaltungsbezogenen Datenbanken in der Beispielanwendung verwendet wird.
 
 1. Öffnen Sie ...\\Learning Modules\\Operational Analytics *Adhoc Reporting* *Demo-AdhocReporting.ps1* in der \\PowerShell ISE\\, und legen Sie folgende Werte fest:
-   * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen** .
+   * **$DemoScenario** = 2, **Ad-hoc-Analysedatenbank bereitstellen**.
 
-2. Drücken Sie **F5** , um das Skript auszuführen und die Datenbank *adhocreporting* zu erstellen.
+2. Drücken Sie **F5**, um das Skript auszuführen und die Datenbank *adhocreporting* zu erstellen.
 
 Im nächsten Abschnitt fügen Sie das Schema in der Datenbank hinzu, damit es zum Ausführen von verteilten Abfragen verwendet werden kann.
 
@@ -84,7 +84,7 @@ Im nächsten Abschnitt fügen Sie das Schema in der Datenbank hinzu, damit es zu
 
 In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabellendefinitionen) in die Ad-hoc-Berichterstellungs-Datenbank eingefügt, wodurch die Abfrage aller Mandantendatenbanken ermöglicht wird.
 
-1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der Ad-hoc-Berichterstellungs-Datenbank her, die Sie im vorherigen Schritt erstellt haben. Der Name der Datenbank lautet *adhocreporting* .
+1. Öffnen Sie SQL Server Management Studio, und stellen Sie eine Verbindung mit der Ad-hoc-Berichterstellungs-Datenbank her, die Sie im vorherigen Schritt erstellt haben. Der Name der Datenbank lautet *adhocreporting*.
 2. Öffnen Sie ...\Learning Modules\Operational Analytics\Adhoc Reporting\ *Initialize-AdhocReportingDB.sql* in SSMS.
 3. Prüfen Sie das SQL-Skript, und achten Sie auf Folgendes:
 
@@ -100,13 +100,13 @@ In dieser Übung wird ein Schema (die externe Datenquelle und die externen Tabel
 
     ![erstellen externer tabellen](./media/saas-multitenantdb-adhoc-reporting/external-tables.png)
 
-   Die lokale Tabelle *VenueTypes* , die erstellt und mit Daten gefüllt wird. Diese Verweisdatentabelle kommt in allen Mandantendatenbanken vor. Daher kann sie hier als lokale Tabelle dargestellt werden, die mit den gemeinsamen Daten aufgefüllt ist. Bei einigen Abfragen kann dies die Menge an Daten, die zwischen den Mandantendatenbanken und der Datenbank *adhocreporting* bewegt werden, verringern.
+   Die lokale Tabelle *VenueTypes*, die erstellt und mit Daten gefüllt wird. Diese Verweisdatentabelle kommt in allen Mandantendatenbanken vor. Daher kann sie hier als lokale Tabelle dargestellt werden, die mit den gemeinsamen Daten aufgefüllt ist. Bei einigen Abfragen kann dies die Menge an Daten, die zwischen den Mandantendatenbanken und der Datenbank *adhocreporting* bewegt werden, verringern.
 
     ![tabelle erstellen](./media/saas-multitenantdb-adhoc-reporting/create-table.png)
 
    Wenn Sie so Verweistabellen einbeziehen, achten Sie darauf, dass Sie das Tabellenschema und die Tabellendaten aktualisieren, immer wenn Sie die Mandantendatenbank aktualisieren.
 
-4. Drücken Sie **F5** , um das Skript auszuführen und die Datenbank *adhocreporting* zu initialisieren. 
+4. Drücken Sie **F5**, um das Skript auszuführen und die Datenbank *adhocreporting* zu initialisieren. 
 
 Jetzt können Sie verteilte Abfragen ausführen und Einblicke in alle Mandanten erhalten.
 
@@ -116,10 +116,10 @@ Jetzt wo die Datenbank *adhocreporting* eingerichtet ist, können Sie testweise 
 
 Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan auf die Plansymbole zeigen. 
 
-1. Öffnen Sie in *SSMS* „...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocReportingQueries.sql* .
+1. Öffnen Sie in *SSMS* „...\\Learning Modules\\Operational Analytics\\Adhoc Analytics\\*Demo-AdhocReportingQueries.sql*.
 2. Stellen Sie sicher, dass Sie mit der Datenbank **adhocreporting** verbunden sind.
 3. Klicken Sie auf das Menü **Abfrage** und dann auf **Include Actual Execution Plan** (Tatsächlichen Ausführungsplan einschließen).
-4. Markieren Sie die Abfrage *Which venues are currently registered?* (Welche Veranstaltungsorte sind aktuell registriert?), und drücken Sie **F5** .
+4. Markieren Sie die Abfrage *Which venues are currently registered?* (Welche Veranstaltungsorte sind aktuell registriert?), und drücken Sie **F5**.
 
    Die Abfrage gibt die gesamte Liste an Veranstaltungsorten zurück. Dies zeigt, wie schnell und unkompliziert Sie alle Mandanten abfragen und Daten jedes Mandanten zurückgeben können.
 
@@ -127,15 +127,15 @@ Um ausführlichere Informationen zu erhalten, können Sie im Ausführungsplan au
 
    ![SELECT * FROM dbo.Venues](./media/saas-multitenantdb-adhoc-reporting/query1-plan.png)
 
-5. Wählen Sie die nächste Abfrage aus, und drücken Sie **F5** .
+5. Wählen Sie die nächste Abfrage aus, und drücken Sie **F5**.
 
-   Diese Abfrage verknüpft Daten der Mandantendatenbank mit Daten der lokalen *VenueTypes* -Tabelle (lokal, da es sich dabei um eine Tabelle in der Datenbank *adhocreporting* handelt).
+   Diese Abfrage verknüpft Daten der Mandantendatenbank mit Daten der lokalen *VenueTypes*-Tabelle (lokal, da es sich dabei um eine Tabelle in der Datenbank *adhocreporting* handelt).
 
-   Schauen Sie sich den Plan an, und beachten Sie, dass der Hauptteil der Kosten die remote Abfrage ist, weil wir die Informationen zum Veranstaltungsort jedes Mandanten abfragen und anschließend eine schnelle lokale Verknüpfung mit der lokalen *VenueTypes* -Tabelle durchführen, um den Anzeigenamen anzuzeigen.
+   Schauen Sie sich den Plan an, und beachten Sie, dass der Hauptteil der Kosten die remote Abfrage ist, weil wir die Informationen zum Veranstaltungsort jedes Mandanten abfragen und anschließend eine schnelle lokale Verknüpfung mit der lokalen *VenueTypes*-Tabelle durchführen, um den Anzeigenamen anzuzeigen.
 
    ![Verknüpfung von remoten und lokalen Daten](./media/saas-multitenantdb-adhoc-reporting/query2-plan.png)
 
-6. Wählen Sie nun die Abfrage *On which day were the most tickets sold?* (An welchem Tag wurden die meisten Tickets verkauft?) aus, und drücken Sie **F5** .
+6. Wählen Sie nun die Abfrage *On which day were the most tickets sold?* (An welchem Tag wurden die meisten Tickets verkauft?) aus, und drücken Sie **F5**.
 
    Diese Abfrage führt etwas komplexere Verknüpfungen und Aggregationen durch. Wesentlich ist zu beachten, dass der Hauptteil der Verarbeitung remote erfolgt. Erneut erhalten wir nur die Zeilen, die wir benötigen. Für die aggregierten Ticketverkaufszahlen jedes Veranstaltungsorts pro Tag wird jeweils nur eine Zeile zurückgegeben.
 

@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 3a2de9b167fcbe9dc603d33fd816e70d5c3705e5
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: 7aa65cb8e37ce48a59c276fdf2631f75397d3236
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372777"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122513"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>Herstellen einer Verbindung zwischen Ihren AWS-Konten und Azure Security Center
 
@@ -66,8 +66,8 @@ Im folgenden Screenshot sehen Sie AWS-Konten, die auf dem Übersichtsdashboard v
 
 Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu erlauben:
 
-- **Erstellen einer IAM-Rolle für Security Center** : Dies ist die sicherste Methode und wird empfohlen.
-- **AWS-Benutzer für Security Center** : Diese Option ist weniger sicher und kann genutzt werden, wenn IAM nicht aktiviert ist.
+- **Erstellen einer IAM-Rolle für Security Center**: Dies ist die sicherste Methode und wird empfohlen.
+- **AWS-Benutzer für Security Center**: Diese Option ist weniger sicher und kann genutzt werden, wenn IAM nicht aktiviert ist.
 
 #### <a name="create-an-iam-role-for-security-center"></a>Erstellen einer IAM-Rolle für Security Center
 1. Wählen Sie in Ihrer Amazon Web Services-Konsole unter **Security, Identity & Compliance** (Sicherheit, Identität und Compliance) die Option **IAM** aus.
@@ -77,7 +77,7 @@ Es gibt zwei Möglichkeiten, um Security Center die Authentifizierung bei AWS zu
 1. Wählen Sie **Another AWS account** (Ein anderes AWS-Konto) aus.
 1. Geben Sie die folgenden Details ein:
 
-    - **Account ID** (Konto-ID): Geben Sie die Microsoft-Konto-ID ( **158177204117** ) ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird.
+    - **Account ID** (Konto-ID): Geben Sie die Microsoft-Konto-ID (**158177204117**) ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird.
     - **Require External ID** (Externe ID erforderlich): Diese Option sollte ausgewählt werden.
     - **External ID** (Externe ID): Geben Sie die Abonnement-ID ein, wie sie auf der AWS-Connectorseite in Security Center angezeigt wird. 
 

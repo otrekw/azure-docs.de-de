@@ -11,12 +11,12 @@ ms.date: 09/30/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Verarbeiten von Dokumenten
-ms.openlocfilehash: 5df8ced885768308369599d94c5734fa0620c507
-ms.sourcegitcommit: 6a902230296a78da21fbc68c365698709c579093
+ms.openlocfilehash: 7671d8d58ffbd0fca444eefe53c46c99a4e76d37
+ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93360869"
+ms.lasthandoff: 11/23/2020
+ms.locfileid: "96009329"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-the-sample-labeling-tool"></a>Trainieren eines Formularerkennungsmodells mit Beschriftungen mithilfe des Tools für die Beschriftung von Beispielen
 
@@ -42,8 +42,17 @@ Für diesen Schnellstart benötigen Sie Folgendes:
 
 Um das Tool für die Beschriftung von Beispielen für die Formularerkennung online auszuprobieren, wechseln Sie zur [FOTT-Website](https://fott-preview.azurewebsites.net/).
 
+# <a name="v20"></a>[v2.0](#tab/v2-0)
 > [!div class="nextstepaction"]
-> [Tool für die Beschriftung von Beispielen für die Formularerkennung](https://fott-preview.azurewebsites.net/)
+> [Vordefinierte Modelle ausprobieren](https://fott.azurewebsites.net/)
+
+# <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)
+> [!div class="nextstepaction"]
+> [Vordefinierte Modelle ausprobieren](https://fott-preview.azurewebsites.net/)
+
+---
+
+Zum Ausprobieren des Formularerkennungsdiensts benötigen Sie ein Azure-Abonnement (kann [hier](https://azure.microsoft.com/free/cognitive-services) kostenlos erstellt werden), einen Endpunkt für eine [Formularerkennungsressource](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesFormRecognizer) und einen entsprechenden Schlüssel. 
 
 
 ## <a name="set-up-the-sample-labeling-tool"></a>Einrichten des Tools für die Beschriftung von Beispielen
@@ -68,8 +77,6 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
 
 
 
-
-
 1. Rufen Sie mit dem `docker pull`-Befehl den Container für das Tool für die Beschriftung von Beispielen ab.
 
     # <a name="v20"></a>[v2.0](#tab/v2-0)    
@@ -78,7 +85,7 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     ```
     # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
     ```
-    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview
+    docker pull mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview
     ```
 
     ---
@@ -91,7 +98,7 @@ Sie verwenden die Docker-Engine, um das Tool für die Beschriftung von Beispiele
     ```
     # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)    
     ```
-    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview eula=accept    
+    docker run -it -p 3000:80 mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview eula=accept    
     ```
 
     --- 
@@ -193,7 +200,7 @@ Als Nächstes erstellen Sie Beschriftungen (Tags) und wenden sie auf die Textele
    1. Klicken Sie auf **+** , um ein neues Tag zu erstellen.
    1. Geben Sie den Tagnamen ein.
    1. Drücken Sie die EINGABETASTE, um das Tag zu speichern.
-1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In der _Vorschauversion v2.1_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
+1. Klicken Sie im Hauptbereich des Editors, um Wörter in den markierten Textelementen auszuwählen. In _v2.1 preview.2_ können Sie auch klicken, um _Auswahlmarkierungen_ wie Optionsfelder und Kontrollkästchen als Schlüssel-Wert-Paare auszuwählen. Die Formularerkennung ermittelt, ob für die Auswahlmarkierung der Wert „ausgewählt“ oder „nicht ausgewählt“ angegeben ist.
 1. Klicken Sie auf das Tag, das Sie anwenden möchten, oder drücken Sie die entsprechende Taste auf der Tastatur. Die Zifferntasten sind als Schnellzugriffstasten für die ersten zehn Tags zugewiesen. Sie können die Beschriftungen mithilfe der nach oben und unten weisenden Pfeilsymbole im Bearbeitungsbereich neu anordnen.
     > [!Tip]
     > Beachten Sie beim Beschriften Ihrer Formulare die folgenden Tipps.

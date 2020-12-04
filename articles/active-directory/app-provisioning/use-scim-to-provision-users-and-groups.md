@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: kenwith
 ms.reviewer: arvinh
 ms.custom: contperfq2
-ms.openlocfilehash: 5e2f323f705a891f06cee1d25779351d02a91572
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: ddce982f43a3c730d8c25527f4354983c36e89e8
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695264"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530822"
 ---
 # <a name="tutorial---build-a-scim-endpoint-and-configure-user-provisioning-with-azure-ad"></a>Tutorial: Erstellen eines SCIM-Endpunkts und Konfigurieren der Benutzerbereitstellung mit Azure AD
 
@@ -154,7 +154,7 @@ Im Rahmen der [SCIM 2.0-Protokollspezifikation](http://www.simplecloud.info/#Spe
 * Unterstützt das Abfragen von Benutzern bzw. Gruppen gemäß [Abschnitt 3.4.2 des SCIM-Protokolls](https://tools.ietf.org/html/rfc7644#section-3.4.2).  Standardmäßig werden Benutzer anhand ihrer `id` abgerufen und nach `username` und `externalId` abgefragt. Gruppen werden nach `displayName` abgefragt.  
 * Unterstützt das Abfragen von Benutzern nach ID und nach Manager gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
 * Unterstützt das Abfragen von Gruppen nach ID und nach Mitglied gemäß Abschnitt 3.4.2 des SCIM-Protokolls.  
-* Unterstützt den Filter [excludedAttributes=members](https://docs.microsoft.com/azure/active-directory/app-provisioning/use-scim-to-provision-users-and-groups#get-group) beim Abfragen der Gruppenressource gemäß Abschnitt 3.4.2.5 des SCIM-Protokolls.
+* Unterstützt den Filter [excludedAttributes=members](#get-group) beim Abfragen der Gruppenressource gemäß Abschnitt 3.4.2.5 des SCIM-Protokolls.
 * Akzeptiert ein einzelnes Bearertoken für die Authentifizierung und Autorisierung von Azure AD für Ihre Anwendung.
 * Unterstützt das vorläufige Löschen eines Benutzers `active=false` und das Wiederherstellen des Benutzers `active=true` (das Benutzerobjekt sollte in einer Anforderung zurückgegeben werden, unabhängig davon, ob der Benutzer aktiv ist oder nicht). Der Benutzer sollte nur dann nicht zurückgegeben werden, wenn er endgültig aus der Anwendung gelöscht wurde. 
 
@@ -199,29 +199,21 @@ Dieser Abschnitt enthält vom Azure AD-SCIM-Client ausgegebene SCIM-Beispielanfo
   - [Benutzer erstellen](#create-user) ([Anforderung](#request) / [Antwort](#response))
   - [Benutzer abrufen](#get-user) ([Anforderung](#request-1) / [Antwort](#response-1))
   - [Benutzer nach Abfrage abrufen](#get-user-by-query) ([Anforderung](#request-2) / [Antwort](#response-2))
-  - [Benutzer nach Abfrage abrufen – keine Ergebnisse](#get-user-by-query---zero-results) ([Anforderung](#request-3)
-/ [Antwort](#response-3))
-  - [Benutzer aktualisieren [mehrwertige Eigenschaften]](#update-user-multi-valued-properties) ([Anforderung](#request-4) /  [Antwort](#response-4))
-  - [Benutzer aktualisieren [einwertige Eigenschaften]](#update-user-single-valued-properties) ([Anforderung](#request-5)
-/ [Antwort](#response-5)) 
-  - [Benutzer deaktivieren](#disable-user) ([Anforderung](#request-14) / 
-[Antwort](#response-14))
-  - [Benutzer löschen](#delete-user) ([Anforderung](#request-6) / 
-[Antwort](#response-6))
+  - [Benutzer nach Abfrage abrufen – keine Ergebnisse](#get-user-by-query---zero-results) ([Anforderung](#request-3) / [Antwort](#response-3))
+  - [Benutzer aktualisieren [mehrwertige Eigenschaften]](#update-user-multi-valued-properties) ([Anforderung](#request-4) / [Antwort](#response-4))
+  - [Benutzer aktualisieren [einwertige Eigenschaften]](#update-user-single-valued-properties) ([Anforderung](#request-5) / [Antwort](#response-5)) 
+  - [Benutzer deaktivieren](#disable-user) ([Anforderung](#request-14) / [Antwort](#response-14))
+  - [Benutzer löschen](#delete-user) ([Anforderung](#request-6) / [Antwort](#response-6))
 
 
 [Vorgänge für Gruppen](#group-operations)
   - [Gruppe erstellen](#create-group) ([Anforderung](#request-7) / [Antwort](#response-7))
   - [Gruppe abrufen](#get-group) ([Anforderung](#request-8) / [Antwort](#response-8))
   - [Gruppe nach „displayName“ abrufen](#get-group-by-displayname) ([Anforderung](#request-9) / [Antwort](#response-9))
-  - [Gruppe aktualisieren [Nichtmitglieder-Attribute]](#update-group-non-member-attributes) ([Anforderung](#request-10) /
- [Antwort](#response-10))
-  - [Gruppe aktualisieren [Mitglieder hinzufügen]](#update-group-add-members) ([Anforderung](#request-11) /
-[Antwort](#response-11))
-  - [Gruppe aktualisieren [Mitglieder entfernen]](#update-group-remove-members) ([Anforderung](#request-12) /
-[Antwort](#response-12))
-  - [Gruppe löschen](#delete-group) ([Anforderung](#request-13) /
-[Antwort](#response-13))
+  - [Gruppe aktualisieren [Nichtmitglieder-Attribute]](#update-group-non-member-attributes) ([Anforderung](#request-10) / [Antwort](#response-10))
+  - [Gruppe aktualisieren [Mitglieder hinzufügen]](#update-group-add-members) ([Anforderung](#request-11) / [Antwort](#response-11))
+  - [Gruppe aktualisieren [Mitglieder entfernen]](#update-group-remove-members) ([Anforderung](#request-12) / [Antwort](#response-12))
+  - [Gruppe löschen](#delete-group) ([Anforderung](#request-13) / [Antwort](#response-13))
 
 ### <a name="user-operations"></a>Vorgänge für Benutzer
 
@@ -1173,7 +1165,7 @@ Nachdem der erste Zyklus gestartet wurde, können Sie im linken Bereich die Opti
 
 ## <a name="step-5-publish-your-application-to-the-azure-ad-application-gallery"></a>Schritt 5: Veröffentlichen Ihrer Anwendung im Azure AD-Anwendungskatalog
 
-Wenn Sie eine Anwendung erstellen, die von mehreren Mandanten verwendet wird, können Sie sie im Azure AD-Anwendungskatalog zur Verfügung stellen. Dies erleichtert Organisationen das Auffinden der Anwendung und das Konfigurieren der Bereitstellung. Das Veröffentlichen Ihrer App im Azure AD-Katalog und das Verfügbarmachen der Bereitstellung für andere ist einfach. Die entsprechenden Schritte sind [hier](../azuread-dev/howto-app-gallery-listing.md) angegeben. Microsoft wird mit Ihnen zusammenarbeiten, um Ihre Anwendung in unseren Katalog zu integrieren, Ihren Endpunkt zu testen und die [Dokumentation](../saas-apps/tutorial-list.md) zum Onboarding für Kunden freizugeben. 
+Wenn Sie eine Anwendung erstellen, die von mehreren Mandanten verwendet wird, können Sie sie im Azure AD-Anwendungskatalog zur Verfügung stellen. Dies erleichtert Organisationen das Auffinden der Anwendung und das Konfigurieren der Bereitstellung. Das Veröffentlichen Ihrer App im Azure AD-Katalog und das Verfügbarmachen der Bereitstellung für andere ist einfach. Die entsprechenden Schritte sind [hier](../develop/v2-howto-app-gallery-listing.md) angegeben. Microsoft wird mit Ihnen zusammenarbeiten, um Ihre Anwendung in unseren Katalog zu integrieren, Ihren Endpunkt zu testen und die [Dokumentation](../saas-apps/tutorial-list.md) zum Onboarding für Kunden freizugeben.
 
 ### <a name="gallery-onboarding-checklist"></a>Onboardingprüfliste für den Katalog
 Verwenden Sie die folgende Prüfliste, um ein schnelles Onboarding Ihrer Anwendung zu gewährleisten und den Kunden eine reibungslose Bereitstellung zu bieten. Die Informationen werden beim Onboarding für den Katalog von Ihnen erfasst. 
@@ -1248,3 +1240,4 @@ Es empfiehlt sich, die vorhandene Dokumentation zu aktualisieren und unsere geme
 * [Bereichsfilter für die Benutzerbereitstellung](define-conditional-rules-for-provisioning-user-accounts.md)
 * [Kontobereitstellungsbenachrichtigungen](user-provisioning.md)
 * [Liste der Tutorials zur Integration von SaaS-Apps](../saas-apps/tutorial-list.md)
+

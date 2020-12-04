@@ -4,13 +4,13 @@ description: In dieser Schnellstartanleitung erstellen Sie die grundlegenden Kom
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 05/19/2020
-ms.openlocfilehash: 74866c65111fae9e6fb3b79d9b59819b14b03c16
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 11/30/2020
+ms.openlocfilehash: a5443dce9fc8bc028232f66f45b537a46858f35a
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131471"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436673"
 ---
 # <a name="quickstart-create-a-new-app-in-the-luis-portal"></a>Schnellstart: Erstellen einer neuen App im LUIS-Portal
 
@@ -20,7 +20,7 @@ In diesem Schnellstart erstellen Sie eine neue App im LUIS-Portal. Erstellen Sie
 
 ## <a name="create-an-app"></a>Erstellen einer App
 
-Klicken Sie zum Erstellen einer Anwendung auf **+ Neue App**. 
+Wählen Sie zum Erstellen einer Anwendung die Option **+ Neue App**. 
 
 Geben Sie im angezeigten Fenster die folgenden Informationen ein:
 

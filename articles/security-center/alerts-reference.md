@@ -1,5 +1,5 @@
 ---
-title: Referenztabelle für alle Azure Defender-Warnungen in Azure Security Center
+title: Referenztabelle für alle Sicherheitswarnungen in Azure Security Center
 description: In diesem Artikel sind die Sicherheitswarnungen aufgeführt, die im Azure Defender-Dashboard von Azure Security Center angezeigt werden.
 services: security-center
 documentationcenter: na
@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/22/2020
 ms.author: memildin
-ms.openlocfilehash: 6d001e638b00cace1dd81d9631f498a911ca19a4
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: c5ee275fb92ff2c3787bef7868665c19fea2109c
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "96014600"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436775"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Sicherheitswarnungen (Referenzhandbuch)
 
-Dieser Artikel listet die Sicherheitswarnungen auf, die von Azure Defender angezeigt werden könnten. Welche Warnungen in Ihrer Umgebung angezeigt werden, hängt von den Ressourcen und Diensten, die Sie schützen, sowie von Ihrer angepassten Konfiguration ab.
+In diesem Artikel werden die Sicherheitswarnungen aufgeführt, die Sie von Azure Security Center und den von Ihnen aktivierten Azure Defender-Plänen erhalten können. Welche Warnungen in Ihrer Umgebung angezeigt werden, hängt von den Ressourcen und Diensten, die Sie schützen, sowie von Ihrer angepassten Konfiguration ab.
 
 Informationen dazu, wie Sie auf diese Warnungen reagieren, finden Sie unter [Verwalten von und Reagieren auf Sicherheitswarnungen in Azure Security Center](security-center-managing-and-responding-alerts.md).
 

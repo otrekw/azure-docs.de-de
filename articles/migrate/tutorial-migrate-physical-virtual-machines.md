@@ -4,12 +4,12 @@ description: In diesem Artikel wird beschrieben, wie Sie physische Computer mit 
 ms.topic: tutorial
 ms.date: 04/15/2020
 ms.custom: MVC
-ms.openlocfilehash: 67ea5800885b4edb16581f22c199d139053af495
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c783cb22ce8a31d346e98c53dee365fa59b73b8a
+ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96018935"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96302903"
 ---
 # <a name="migrate-machines-as-physical-servers-to-azure"></a>Migrieren von Computern als physische Server zu Azure
 
@@ -52,7 +52,7 @@ Bereiten Sie Azure für die Migration mit der Servermigration vor.
 
 **Aufgabe** | **Details**
 --- | ---
-**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum Erstellen eines Projekts Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
+**Erstellen eines Azure Migrate-Projekts** | Ihr Azure-Konto benötigt zum [Erstellen eines neuen Projekts](https://docs.microsoft.com/azure/migrate/create-manage-projects) Berechtigungen vom Typ „Mitwirkender“ oder „Besitzer“.
 **Überprüfen der Berechtigungen für Ihr Azure-Konto** | Ihr Azure-Konto benötigt Berechtigungen zum Erstellen eines virtuellen Computers sowie zum Schreiben auf einen verwalteten Azure-Datenträger.
 
 
@@ -110,28 +110,6 @@ Bereiten Sie die Bereitstellung der Appliance wie folgt vor:
 
 > [!NOTE]
 > Die Replikationsappliance sollte nicht auf einem zu replizierenden Quellcomputer oder auf der Ermittlungs- und Bewertungsappliance von Azure Migrate installiert werden, die Sie unter Umständen bereits installiert haben.
-
-## <a name="add-the-server-migration-tool"></a>Hinzufügen des Tools für die Servermigration
-
-Richten Sie ein Azure Migrate-Projekt ein, und fügen Sie diesem dann das Tool für die Servermigration hinzu.
-
-1. Wählen Sie im Azure-Portal **Alle Dienste** aus, und suchen Sie nach **Azure Migrate**.
-2. Wählen Sie unter **Dienste** die Option **Azure Migrate** aus.
-3. Klicken Sie in der **Übersicht** auf **Server bewerten und migrieren**.
-4. Klicken Sie unter **Server ermitteln, bewerten und migrieren** auf **Server bewerten und migrieren**.
-
-    ![Ermitteln und Bewerten von Servern](./media/tutorial-migrate-physical-virtual-machines/assess-migrate.png)
-
-5. Klicken Sie unter **Server ermitteln, bewerten und migrieren** auf **Tools hinzufügen**.
-6. Wählen Sie unter **Projekt migrieren** Ihr Azure-Abonnement aus, und erstellen Sie bei Bedarf eine Ressourcengruppe.
-7. Geben Sie unter **Projektdetails** den Projektnamen und die geografische Region an, in der Sie das Projekt erstellen möchten. Klicken Sie anschließend auf **Weiter**. Beachten Sie die unterstützten geografischen Regionen für [öffentliche](migrate-support-matrix.md#supported-geographies-public-cloud) und [behördliche Clouds](migrate-support-matrix.md#supported-geographies-azure-government).
-
-    ![Erstellen eines Azure Migrate-Projekts](./media/tutorial-migrate-physical-virtual-machines/migrate-project.png)
-
-8. Wählen Sie unter **Bewertungstool auswählen** die Option **Hinzufügen eines Bewertungstools vorerst überspringen** >  und anschließend **Weiter** aus.
-9. Wählen Sie unter **Migrationstool auswählen** Folgendes aus: **Azure Migrate: Servermigration** > **Weiter**.
-10. Überprüfen Sie die Einstellungen unter **Überprüfen + Tools hinzufügen**, und klicken Sie auf **Tools hinzufügen**.
-11. Nachdem Sie das Tool hinzugefügt haben, wird es im Azure Migrate-Projekt unter **Server** > **Migrationstools** angezeigt.
 
 ## <a name="set-up-the-replication-appliance"></a>Einrichten der Replikationsappliance
 

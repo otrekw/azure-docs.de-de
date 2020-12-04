@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Datenspeicher mit einem serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Artikel wird beschrieben, wie Sie Azure-Speicher mit der Ressource für einen serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics abfragen.
+title: Abfragen von Datenspeicher mit einem serverlosen SQL-Pool
+description: In diesem Artikel wird beschrieben, wie Sie Azure-Speicher mit der Ressource für einen serverlosen SQL-Pool in Azure Synapse Analytics abfragen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: c7a8fb63f775a76342849957f070861fd200a9d3
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 967250cf29d1f0248f296cb545a764bd8e611773
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95998922"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462652"
 ---
-# <a name="query-storage-files-with-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
+# <a name="query-storage-files-with-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von Speicherdateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-Ein serverloser SQL-Pool (Vorschauversion) ermöglicht Ihnen das Abfragen von Daten in Ihrem Data Lake. Dieses Feature bietet eine T-SQL-Abfrageoberfläche, die semistrukturierte und unstrukturierte Datenabfragen verarbeiten kann. Für Abfragen werden die folgenden T-SQL-Aspekte unterstützt:
+Ein serverloser SQL-Pool ermöglicht Ihnen das Abfragen von Daten in Ihrem Data Lake. Dieses Feature bietet eine T-SQL-Abfrageoberfläche, die semistrukturierte und unstrukturierte Datenabfragen verarbeiten kann. Für Abfragen werden die folgenden T-SQL-Aspekte unterstützt:
 
 - Vollständige [SELECT](/sql/t-sql/queries/select-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest)-Oberfläche, einschließlich der meisten [SQL-Funktionen und -Operatoren](overview-features.md).
 - CREATE EXTERNAL TABLE AS SELECT ([CETAS](develop-tables-cetas.md)) erstellt eine [externe Tabelle](develop-tables-external-tables.md) und exportiert parallel die Ergebnisse einer Transact-SQL-SELECT-Anweisung in Azure Storage.
@@ -47,7 +47,7 @@ Um Parquet-Quelldaten abzufragen, verwenden Sie FORMAT = 'PARQUET'.
 ```syntaxsql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net//mycontainer/mysubfolder/data.parquet', FORMAT = 'PARQUET') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 Beispiele zur Verwendung finden Sie im Artikel [Abfragen von Parquet-Dateien](query-parquet-files.md).
@@ -59,7 +59,7 @@ Um CSV-Quelldaten abzufragen, verwenden Sie FORMAT = 'CSV'. Sie können das Sche
 ```sql
 SELECT * FROM
 OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolder/data.csv', FORMAT = 'CSV', PARSER_VERSION='2.0') 
-WITH (C1 int, C2 varchar(20), C3 as varchar(max)) as rows
+WITH (C1 int, C2 varchar(20), C3 varchar(max)) as rows
 ```
 
 Es gibt noch einige zusätzliche Optionen, die Sie verwenden können, um Analyseregeln an das benutzerdefinierte CSV-Format anzupassen:
@@ -85,7 +85,7 @@ OPENROWSET( BULK N'https://myaccount.dfs.core.windows.net/mycontainer/mysubfolde
 WITH (
       C1 int, 
       C2 varchar(20),
-      C3 as varchar(max)
+      C3 varchar(max)
 ) as rows
 ```
 
@@ -222,7 +222,7 @@ Sie können sich weiter über das Abfragen verschiedener Datentypen informieren,
 ### <a name="tools"></a>Tools
 
 Für Abfragen erforderliche Tools:
-    - Azure Synapse Studio (Vorschauversion)
+    - Azure Synapse Studio 
     - Azure Data Studio
     - SQL Server Management Studio
 

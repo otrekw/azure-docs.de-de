@@ -9,12 +9,12 @@ ms.subservice: machine-learning
 ms.date: 06/30/2020
 ms.author: midesa
 ms.reviewer: jrasnick
-ms.openlocfilehash: e6708874fee3e15349b4389f1ecafa3d48a628dd
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b2fbc74304cdb71d9cb3e1ea476af8c92eb99b7e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917202"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458827"
 ---
 # <a name="tutorial-run-experiments-using-azure-automated-ml-and-apache-spark"></a>Tutorial: Ausführen von Experimenten mit automatisiertem Azure ML und Apache Spark
 
@@ -72,7 +72,7 @@ df = spark.read.parquet(wasbs_path)
 
 ```
 
-3. Abhängig von der Größe Ihres Spark-Pools (Vorschau) können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern, indem Sie die Filter ```start_date``` und ```end_date``` verwenden. Hierdurch wird ein Filter angewendet, der Daten eines Monats zurückgibt. Sobald wir das gefilterte Dataframe haben, führen wir auch die ```describe()```-Funktion für das neue Dataframe aus, um zusammenfassende Statistiken für jedes Feld anzuzeigen. 
+3. Je nach Größe Ihres Spark-Pools können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern, indem Sie die Filter ```start_date``` und ```end_date``` verwenden. Hierdurch wird ein Filter angewendet, der Daten eines Monats zurückgibt. Sobald wir das gefilterte Dataframe haben, führen wir auch die ```describe()```-Funktion für das neue Dataframe aus, um zusammenfassende Statistiken für jedes Feld anzuzeigen. 
 
    Basierend auf den Zusammenfassungsstatistiken können wir erkennen, dass es einige Unregelmäßigkeiten und Ausreißer in den Daten gibt. Beispielsweise zeigt die Statistik, dass die minimale Fahrtstrecke kleiner als 0 ist. Diese unregelmäßigen Datenpunkte müssen herausgefiltert werden.
    

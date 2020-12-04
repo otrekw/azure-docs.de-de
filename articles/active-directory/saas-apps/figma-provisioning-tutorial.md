@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 789dafc61c89515f4b2ef64933262252d1232f16
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: ec509cc04db87602b3e29230253d9b363a5e30d5
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94357027"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353917"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Figma für die automatische Benutzerbereitstellung
 
@@ -79,15 +79,15 @@ Bevor Sie Figma für die automatische Benutzerbereitstellung mit Azure AD konfig
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Figma** ein, wählen Sie im Ergebnisbereich **Figma** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Figma** ein, wählen Sie im Ergebnisbereich **Figma** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Figma in der Ergebnisliste](common/search-new-app.png)
 
@@ -116,7 +116,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die URL `https://www.figma.com/scim/v2/<TenantID>` als **Mandanten-URL** ein. **TenantID** ist hierbei der Wert, den Sie zuvor von Figma abgerufen haben. Geben Sie den Wert für das **API-Token** im Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Figma herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Figma-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Geben Sie im Abschnitt **Administratoranmeldeinformationen** die URL `https://www.figma.com/scim/v2/<TenantID>` als **Mandanten-URL** ein. **TenantID** ist hierbei der Wert, den Sie zuvor von Figma abgerufen haben. Geben Sie den Wert für das **API-Token** im Feld **Geheimes Token** ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Figma herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Figma-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Mandanten-URL + Token](common/provisioning-testconnection-tenanturltoken.png)
 
@@ -130,7 +130,7 @@ In diesem Abschnitt werden die Schritte erläutert, mit denen Sie den Azure AD-B
 
     ![Benutzerzuordnungen in Figma](media/Figma-provisioning-tutorial/figma05.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Figma synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Figma für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Figma synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Figma für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Benutzerattribute von Figma](media/Figma-provisioning-tutorial/figma06.png)
 

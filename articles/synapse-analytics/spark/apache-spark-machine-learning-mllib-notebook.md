@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.subservice: machine-learning
 ms.date: 04/15/2020
 ms.author: euang
-ms.openlocfilehash: 595b3a57594401df6b61db1fcf8ee16be98ef364
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 50429696c4cbe10c4723f6d4bb9c9499d9b775c5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95900419"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450426"
 ---
 # <a name="tutorial-build-a-machine-learning-app-with-apache-spark-mllib-and-azure-synapse-analytics"></a>Tutorial: Erstellen einer Machine Learning-App mit Apache Spark MLlib und Azure Synapse Analytics
 
@@ -71,7 +71,7 @@ In den folgenden Schritten entwickeln Sie ein Modell, um vorherzusagen, ob eine 
 
 Da die Rohdaten im Parquet-Format vorliegen, können Sie den Spark-Kontext verwenden, um die Datei als Dataframe direkt in den Arbeitsspeicher zu lesen. Während der unten stehende Code die Standardoptionen verwendet, ist es möglich, bei Bedarf die Zuordnung von Datentypen und anderen Schemaattributen zu erzwingen.
 
-1. Führen Sie die folgenden Zeilen aus, um einen Spark-Dataframe zu erstellen, indem Sie den Code in eine neue Zelle einfügen. Dadurch werden die Daten über die Open Datasets-API abgerufen. Das Abrufen aller dieser Daten generiert ungefähr 1,5 Milliarden Zeilen. Abhängig von der Größe Ihres serverlosen Apache Spark-Pools (Vorschauversion) können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern. Das folgende Codebeispiel verwendet „start_date“ und „end_date“, um einen Filter anzuwenden, der Daten für einen einzelnen Monat zurückgibt.
+1. Führen Sie die folgenden Zeilen aus, um einen Spark-Dataframe zu erstellen, indem Sie den Code in eine neue Zelle einfügen. Dadurch werden die Daten über die Open Datasets-API abgerufen. Das Abrufen aller dieser Daten generiert ungefähr 1,5 Milliarden Zeilen. Je nach Größe Ihres serverlosen Apache Spark-Pools können die Rohdaten zu umfangreich sein oder zu viel Verarbeitungszeit in Anspruch nehmen. Sie können diese Daten zu einer kleineren Menge filtern. Das folgende Codebeispiel verwendet „start_date“ und „end_date“, um einen Filter anzuwenden, der Daten für einen einzelnen Monat zurückgibt.
 
     ```python
     from azureml.opendatasets import NycTlcYellow

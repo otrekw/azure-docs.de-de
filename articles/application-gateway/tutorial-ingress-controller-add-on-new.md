@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
-ms.openlocfilehash: 3cae4591a5da53683c965d7c6ba3ec169249c87e
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 627d5b15a861c3d564cb4db33b366d3227092d37
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94566128"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296249"
 ---
 # <a name="tutorial-enable-the-ingress-controller-add-on-preview-for-a-new-aks-cluster-with-a-new-application-gateway-instance"></a>Tutorial: Aktivieren des Eingangscontroller-Add-Ons (Vorschau) für einen neuen AKS-Cluster mit einer neuen Azure Application Gateway-Instanz
 
@@ -34,19 +34,22 @@ In diesem Tutorial lernen Sie Folgendes:
 
 [!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
- - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
+ - Für dieses Tutorial ist mindestens Version 2.0.4 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert. Wenn Sie Azure CLI verwenden, müssen Sie mit dem folgenden Befehl die Vorschauerweiterung für CLI installieren, sofern dies nicht bereits geschehen ist:
+    ```azurecli-interactive
+    az extension add --name aks-preview
+    ```
 
- - Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon* mit dem Befehl [az feature register](https://docs.microsoft.com/cli/azure/feature#az-feature-register), wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet.
+ - Registrieren Sie das Featureflag *AKS-IngressApplicationGatewayAddon* mit dem Befehl [az feature register](/cli/azure/feature#az-feature-register), wie im folgenden Beispiel gezeigt. Sie müssen dies nur einmal pro Abonnement durchführen, während sich das Add-On noch in der Vorschauphase befindet.
     ```azurecli-interactive
     az feature register --name AKS-IngressApplicationGatewayAddon --namespace Microsoft.ContainerService
     ```
 
-   Es dauert ein paar Minuten, bis der Status `Registered` angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](https://docs.microsoft.com/cli/azure/feature#az-feature-register) überprüfen:
+   Es dauert ein paar Minuten, bis der Status `Registered` angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-register) überprüfen:
     ```azurecli-interactive
     az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKS-IngressApplicationGatewayAddon')].{Name:name,State:properties.state}"
     ```
 
- - Wenn Sie bereit sind, aktualisieren Sie Registrierung des „Microsoft.ContainerService“-Ressourcenanbieters mit dem Befehl [az provider register](https://docs.microsoft.com/cli/azure/provider#az-provider-register):
+ - Wenn Sie bereit sind, aktualisieren Sie Registrierung des „Microsoft.ContainerService“-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register):
     ```azurecli-interactive
     az provider register --namespace Microsoft.ContainerService
     ```
