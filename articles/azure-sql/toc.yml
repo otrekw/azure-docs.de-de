@@ -639,7 +639,7 @@
                       href: database/saas-multitenantdb-tenant-analytics.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=single-database
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=single-database
@@ -964,7 +964,7 @@
           href: managed-instance/user-initiated-failover.md
     - name: Beispiele
       items:
-        - name: Azure-Befehlszeilenschnittstelle
+        - name: Azure CLI
           href: database/az-cli-script-samples-content-guide.md?tabs=managed-instance
         - name: Azure PowerShell
           href: database/powershell-script-content-guide.md?tabs=managed-instance
@@ -1055,6 +1055,8 @@
                   href: virtual-machines/windows/azure-key-vault-integration-configure.md
                 - name: Migrieren von Speicher zu Azure
                   href: virtual-machines/windows/storage-migrate-to-ultradisk.md
+                - name: SQL-Sicherheitsrisikobewertung aktivieren
+                  href: virtual-machines/windows/sql-vulnerability-assessment-enable.md
                 - name: Installieren der Erweiterung für den SQL-IaaS-Agent
                   displayName: 'resource provider, registration, sql vm rp'
                   items:
@@ -1136,7 +1138,7 @@
           items:
             - name: Azure PowerShell
               href: /powershell/azure/
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: /cli/azure/
             - name: T-SQL
               href: /sql/t-sql/language-reference
@@ -1209,7 +1211,7 @@
   items:
     - name: Referenz zur T-SQL-Sprache
       href: /sql/t-sql/language-reference
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/sql
     - name: Azure PowerShell
       href: /powershell/module/az.sql

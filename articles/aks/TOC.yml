@@ -152,6 +152,8 @@
           href: node-updates-kured.md
         - name: Konfigurieren eines AKS-Clusters
           href: cluster-configuration.md
+        - name: Konfiguration von benutzerdefinierten Knoten (Vorschau)
+          href: custom-node-configuration.md
         - name: Integrieren eines ACR mit einem AKS-Cluster
           href: cluster-container-registry-integration.md
         - name: Erstellen von virtuellen Knoten

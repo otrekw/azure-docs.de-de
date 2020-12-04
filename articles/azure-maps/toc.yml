@@ -134,6 +134,8 @@
           href: how-to-request-real-time-data.md
         - name: Anfordern von Echtzeitwetterdaten und prognostizierten Wetterdaten
           href: how-to-request-weather-data.md
+        - name: Höhenangabedaten anfordern
+          href: how-to-request-elevation-data.md
     - name: Entwickeln mit dem Web SDK
       items:
         - name: Kartensteuerelement

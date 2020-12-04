@@ -1,5 +1,5 @@
-- name: "Dokumentation zu Azure Stack\_Edge Pro und Data\_Box\_Gateway"
-  href: ./index.yml
+- name: Dokumentation zu Azure Stack Edge Pro
+  href: /azure/databox-online/
   expanded: true
 - name: 'Azure Stack Edge Pro: GPU'
   items:
@@ -372,15 +372,15 @@
     - name: Versionshinweise
       items:
         - name: '2007: Aktuell'
-          href: data-box-gateway-2007-release-notes.md
+          href: ../databox-gateway/data-box-gateway-2007-release-notes.md
         - name: 1911
-          href: data-box-gateway-1911-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1911-release-notes.md
         - name: 1906
-          href: data-box-gateway-1906-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1906-release-notes.md
         - name: 1905
-          href: data-box-gateway-1905-release-notes.md
+          href: ../databox-gateway/data-box-gateway-1905-release-notes.md
         - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
-          href: data-box-gateway-release-notes.md
+          href: ../databox-gateway/data-box-gateway-release-notes.md
     - name: Verweis
       items:
         - name: Azure PowerShell
@@ -389,68 +389,6 @@
           href: /rest/api/databoxedgegateway
         - name: .NET SDK
           href: /dotnet/api/overview/azure/databoxedge/databoxgateway?view=azure-dotnet
-- name: Data Box Gateway
-  items:
-    - name: Übersicht
-      items:
-        - name: Was ist Data Box Gateway?
-          href: data-box-gateway-overview.md
-    - name: Tutorials
-      items:
-        - name: 1 – Vorbereiten
-          href: data-box-gateway-deploy-prep.md
-        - name: 2A – Bereitstellen in Hyper-V
-          href: data-box-gateway-deploy-provision-hyperv.md
-        - name: 2B – Bereitstellen in VMware
-          href: data-box-gateway-deploy-provision-vmware.md
-        - name: '3 – Herstellen der Verbindung, Einrichten, Aktivieren'
-          href: data-box-gateway-deploy-connect-setup-activate.md
-        - name: '4 – Hinzufügen, Herstellen der Verbindung zum Freigeben'
-          href: data-box-gateway-deploy-add-shares.md
-    - name: Konzepte
-      items:
-        - name: Überprüfen der Anforderungen
-          href: data-box-gateway-system-requirements.md
-        - name: Grundlegendes zu den Beschränkungen
-          href: data-box-gateway-limits.md
-        - name: Sicherheitsübersicht
-          href: data-box-gateway-security.md
-        - name: Anzeigen von Anwendungsfällen
-          href: data-box-gateway-use-cases.md
-    - name: Anleitung
-      items:
-        - name: Aktualisieren
-          href: data-box-gateway-apply-updates.md
-        - name: Verwalten
-          items:
-            - name: Freigaben
-              href: data-box-gateway-manage-shares.md
-            - name: Benutzer
-              href: data-box-gateway-manage-users.md
-            - name: Bandbreitenzeitpläne
-              href: data-box-gateway-manage-bandwidth-schedules.md
-            - name: 'Zugriff, Stromversorgung, Konnektivität'
-              href: data-box-gateway-manage-access-power-connectivity-mode.md
-            - name: Über PowerShell
-              href: data-box-gateway-connect-powershell-interface.md
-        - name: Überwachen
-          href: data-box-gateway-monitor.md
-        - name: Problembehandlung
-          href: data-box-gateway-troubleshoot.md
-        - name: Microsoft-Support kontaktieren
-          href: azure-stack-edge-contact-microsoft-support.md
-    - name: Versionshinweise
-      items:
-        - name: '2007: Aktuell'
-          href: data-box-gateway-2007-release-notes.md
-        - name: 1911
-          href: data-box-gateway-1911-release-notes.md
-        - name: 1906
-          href: data-box-gateway-1906-release-notes.md
-        - name: 1905
-          href: data-box-gateway-1905-release-notes.md
-        - name: 'Allgemeine Verfügbarkeit (General Availability, GA)'
-          href: data-box-gateway-release-notes.md
 - name: Ressourcen
   items:
     - name: "Beispiele für ein Azure Stack\_Edge Pro-C#-Modul (.NET)"

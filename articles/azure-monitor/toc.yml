@@ -131,7 +131,7 @@
           href: platform/personal-data-mgmt.md
         - name: 'Anwendungsdatensammlung, -vermerkdauer und -speicherung'
           href: app/data-retention-privacy.md
-    - name: Warnungen
+    - name: Alerts
       items:
         - name: Übersicht
           href: platform/alerts-overview.md
@@ -209,7 +209,7 @@
               items:
                 - name: Azure-Portal
                   href: learn/quick-create-workspace.md
-                - name: Azure-Befehlszeilenschnittstelle
+                - name: Azure CLI
                   href: learn/quick-create-workspace-cli.md
                 - name: PowerShell
                   href: platform/powershell-workspace-configuration.md
@@ -274,6 +274,8 @@
                   href: log-query/resource-expression.md
                 - name: Vereinheitlichen von Anwendungsressourcendaten
                   href: log-query/unify-app-resource-data.md
+                - name: Azure Data Explorer von Azure Monitor abfragen
+                  href: platform/azure-monitor-data-explorer-proxy.md
         - name: Datenexport
           items:
             - name: Exportieren von Arbeitsbereichsdaten
@@ -550,7 +552,7 @@
               href: platform/it-service-management-connector-secure-webhook-connections.md
             - name: Erstellen von Service Manager-Web-Apps
               href: platform/itsmc-service-manager-script.md
-            - name: Beheben von ServiceNow-ITSM-Synchronisierungsproblemen
+            - name: Problembehandlung in ITSM-Connector
               href: platform/itsmc-resync-servicenow.md
         - name: Migrieren klassischer Warnungsregeln
           items:

@@ -61,7 +61,7 @@
           href: load-balancer-insights.md
         - name: Metriken und Diagnosen für den Lastenausgleich im Standard-Tarif
           href: load-balancer-standard-diagnostics.md
-        - name: Azure Monitor-Protokolle für Load Balancer vom Typ „Basic“
+        - name: Azure Monitor-Protokolle für Load Balancer
           href: load-balancer-monitor-log.md
         - name: Abrufen von Load Balancer-Metriken mit REST
           href: load-balancer-query-metrics-rest-api.md
