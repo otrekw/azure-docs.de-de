@@ -12,17 +12,17 @@ author: VanMSFT
 ms.author: vanto
 ms.reviewer: sstein
 ms.date: 06/17/2020
-ms.openlocfilehash: 72af066cbff809521c34bb8db88ab0b3e5092fc4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ce528e268e0ed1e34f53e32196bceef5ad8a2fcb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841123"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452489"
 ---
 # <a name="azure-sql-database-and-azure-synapse-ip-firewall-rules"></a>Azure SQL-Datenbank- und Azure Synapse-IP-Firewallregeln
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
 
-Wenn Sie z. B. einen neuen Server in Azure SQL-Datenbank oder Azure Synapse Analytics namens *mysqlserver* erstellen, blockiert eine Firewall auf Serverebene alle Zugriffe auf den öffentlichen Endpunkt für den Server (auf den unter *mysqlserver.database.windows.net* zugegriffen werden kann). Der Einfachheit halber wird *SQL-Datenbank* als Sammelbegriff für SQL-Datenbank und Azure Synapse Analytics (vormals SQL Data Warehouse) verwendet.
+Wenn Sie z. B. einen neuen Server in Azure SQL-Datenbank oder Azure Synapse Analytics namens *mysqlserver* erstellen, blockiert eine Firewall auf Serverebene alle Zugriffe auf den öffentlichen Endpunkt für den Server (auf den unter *mysqlserver.database.windows.net* zugegriffen werden kann). Der Einfachheit halber wird *SQL-Datenbank* verwendet, um sowohl auf SQL-Datenbank als auch auf Azure Synapse Analytics zu verweisen.
 
 > [!IMPORTANT]
 > Dieser Artikel gilt *nicht* für *Azure SQL Managed Instance*. Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung zwischen einer Anwendung und einer verwalteten Azure SQL-Instanz](../managed-instance/connect-application-instance.md).

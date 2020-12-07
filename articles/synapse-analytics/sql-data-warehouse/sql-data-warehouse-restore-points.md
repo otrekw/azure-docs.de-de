@@ -1,6 +1,6 @@
 ---
 title: Benutzerdefinierte Wiederherstellungspunkte
-description: Vorgehensweise zum Erstellen eines Wiederherstellungspunkts für den dedizierten SQL-Pool.
+description: Vorgehensweise zum Erstellen eines Wiederherstellungspunkts für den dedizierten SQL-Pool (früher SQL DW)
 services: synapse-analytics
 author: anumjs
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 07/03/2019
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 9d7266e0b84ae57682ddcfe7195be9574a702c74
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5b8888a29d7dda94e4fc9c35b27056036bc6c463
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313247"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449781"
 ---
-# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-in-azure-synapse-analytics"></a>Benutzerdefinierte Wiederherstellungspunkte für einen dedizierten SQL-Pool in Azure Synapse Analytics
+# <a name="user-defined-restore-points-for-a-dedicated-sql-pool-formerly-sql-dw"></a>Benutzerdefinierte Wiederherstellungspunkte für einen dedizierten SQL-Pool (früher SQL DW)
 
-In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell und dem Azure-Portal einen neuen benutzerdefinierten Wiederherstellungspunkt für einen dedizierten SQL-Pool in Azure Synapse Analytics erstellen.
+In diesem Artikel erfahren Sie, wie Sie mithilfe von PowerShell und über das Azure-Portal einen neuen benutzerdefinierten Wiederherstellungspunkt für einen dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics erstellen.
 
 ## <a name="create-user-defined-restore-points-through-powershell"></a>Erstellen benutzerdefinierter Wiederherstellungspunkte mit PowerShell
 
@@ -62,9 +62,9 @@ Benutzerdefinierte Wiederherstellungspunkte können auch mit dem Azure-Portal er
 
 1. Melden Sie sich bei Ihrem [Azure-Portal](https://portal.azure.com/)-Konto an.
 
-2. Navigieren Sie zum dedizierten SQL-Pool, für den Sie einen Wiederherstellungspunkt erstellen möchten.
+2. Navigieren Sie zum dedizierten SQL-Pool (früher SQL DW), für den Sie einen Wiederherstellungspunkt erstellen möchten.
 
-3. Wählen Sie im linken Bereich **Übersicht** aus, und wählen Sie **+ Neuer Wiederherstellungspunkt** aus. Wenn die Schaltfläche „Neuer Wiederherstellungspunkt“ nicht aktiviert wird, stellen Sie sicher, dass der dedizierte SQL-Pool nicht angehalten wird.
+3. Wählen Sie im linken Bereich **Übersicht** aus, und wählen Sie **+ Neuer Wiederherstellungspunkt** aus. Wenn die Schaltfläche „Neuer Wiederherstellungspunkt“ nicht aktiviert wurde, stellen Sie sicher, dass der dedizierte SQL-Pool (früher SQL DW) nicht angehalten wird.
 
     ![Neuer Wiederherstellungspunkt](./media/sql-data-warehouse-restore-points/creating-restore-point-01.png)
 
@@ -74,7 +74,6 @@ Benutzerdefinierte Wiederherstellungspunkte können auch mit dem Azure-Portal er
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- [Wiederherstellen eines vorhandenen dedizierten SQL-Pools](sql-data-warehouse-restore-active-paused-dw.md)
-- [Wiederherstellen eines gelöschten dedizierten SQL-Pools](sql-data-warehouse-restore-deleted-dw.md)
-- [Wiederherstellen eines dedizierten SQL-Pools aus einer Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)
-
+- [Wiederherstellen eines vorhandenen dedizierten SQL-Pools (früher SQL DW)](sql-data-warehouse-restore-active-paused-dw.md)
+- [Wiederherstellen eines gelöschten dedizierten SQL-Pools (früher SQL DW)](sql-data-warehouse-restore-deleted-dw.md)
+- [Wiederherstellen eines dedizierten SQL-Pools (früher SQL DW) aus einer Geosicherung](sql-data-warehouse-restore-from-geo-backup.md)

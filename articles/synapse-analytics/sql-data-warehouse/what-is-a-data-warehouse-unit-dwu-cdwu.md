@@ -1,5 +1,5 @@
 ---
-title: Data Warehouse-Einheiten (DWUs) in Azure Synapse Analytics (früher SQL DW)
+title: Data Warehouse-Einheiten (DWUs) für den dedizierten SQL-Pool (früher SQL DW)
 description: Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Data Warehouse Units, DWUs) sowie zum Ändern der Anzahl der Einheiten.
 services: synapse-analytics
 author: mlee3gsd
@@ -11,20 +11,20 @@ ms.date: 11/22/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: bfcd9c6430deea948804ba8c1d37e404b1897c5f
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 3d9d5d4009ad40eecee26271b726c6a3e9aeb8b6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93311888"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459200"
 ---
-# <a name="data-warehouse-units-dwus"></a>Data Warehouse-Einheiten (DWUs)
+# <a name="data-warehouse-units-dwus-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Data Warehouse-Einheiten (DWUs) für den dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 
 Empfehlungen zum Auswählen der idealen Anzahl von Data Warehouse-Einheiten (Data Warehouse Units, DWUs) sowie zum Ändern der Anzahl der Einheiten.
 
 ## <a name="what-are-data-warehouse-units"></a>Was sind Data Warehouse-Einheiten?
 
-Ein [Synapse SQL-Pool](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analyseressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert.
+Ein [dedizierter SQL-Pool (früher SQL DW)](sql-data-warehouse-overview-what-is.md) ist eine Sammlung von Analyseressourcen, die bereitgestellt werden. Analyseressourcen werden als eine Kombination aus CPU, Arbeitsspeicher und E/A definiert.
 
 Diese drei Ressourcen werden in Computeskalierungseinheiten gebündelt, die als „Data Warehouse-Einheiten“ (Data Warehouse Units, DWUs) bezeichnet werden. Eine DWU stellt ein abstraktes, normalisiertes Maß für Computeressourcen und -leistung dar.
 
@@ -34,8 +34,8 @@ Um die Leistung zu steigern, können Sie die Anzahl von Data Warehouse-Einheiten
 
 Die Leistung für Data Warehouse-Einheiten basiert auf den folgenden Data Warehouse-Workloadmetriken:
 
-- Wie schnell eine Standardabfrage im dedizierten SQL-Pool eine große Anzahl von Zeilen überprüfen und anschließend eine komplexe Aggregation ausführen kann. Dies ist ein Vorgang mit hohem E/A- und CPU-Aufwand.
-- Wie schnell der dedizierte SQL-Pool Daten aus Azure Storage Blob-Instanzen oder Azure Data Lake erfassen kann. Dies ist ein Vorgang mit hohem Netzwerk- und CPU-Aufwand.
+- Wie schnell eine Standardabfrage im dedizierten SQL-Pool (früher SQL DW) eine große Anzahl von Zeilen überprüfen und dann eine komplexe Aggregation ausführen kann. Dies ist ein Vorgang mit hohem E/A- und CPU-Aufwand.
+- Wie schnell der dedizierte SQL-Pool (früher SQL DW) Daten aus Azure Storage Blob-Instanzen oder Azure Data Lake erfassen kann. Dies ist ein Vorgang mit hohem Netzwerk- und CPU-Aufwand.
 - Wie schnell mit dem T-SQL-Befehl [`CREATE TABLE AS SELECT`](/sql/t-sql/statements/create-table-as-select-azure-sql-data-warehouse) eine Tabelle kopiert werden kann. Dieser Vorgang umfasst das Lesen von Daten aus dem Speicher, das Verteilen auf die Knoten der Anwendung und das erneute Schreiben in den Speicher. Dies ist ein Vorgang mit hohem CPU-, E/A- und Netzwerkaufwand.
 
 Erhöhen der Anzahl der DWUs:
@@ -48,12 +48,12 @@ Erhöhen der Anzahl der DWUs:
 
 Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres Data Warehouse festlegt. Die Servicelevel für Gen2 werden in cDWU (Compute-Data Warehouse-Einheiten) gemessen, z.B. DW2000c. Gen1-Servicelevel werden in DWUs gemessen, z.B. DW2000.
 
-Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres dedizierten SQL-Pools festlegt. Die Servicelevel für einen dedizierten Gen2-SQL-Pool werden in DWU (Data Warehouse-Einheiten) gemessen, z. B. DW2000c.
+Das Servicelevelziel (Service Level Objective, SLO) ist die Skalierbarkeitseinstellung, die die Kosten und Leistungsstufe Ihres dedizierten SQL-Pools (früher SQL DW) festlegt. Die Servicelevel für einen dedizierten Gen2-SQL-Pool (früher SQL DW) werden in Data Warehouse-Einheiten (DWUs) gemessen, z. B. DW2000c.
 
 > [!NOTE]
-> Azure Synapse Analytics Gen2 wurden kürzlich zusätzliche Skalierungsfunktionen zur Unterstützung von Computeebenen bis zu 100 cDWU hinzugefügt. Vorhandene Data Warehouses mit derzeit Gen1, die die niedrigeren Computeebenen erfordern, können jetzt in den Regionen, die derzeit ohne zusätzliche Kosten zur Verfügung stehen, auf Gen2 upgraden.  Wenn Ihre Region noch nicht unterstützt wird, können Sie weiterhin auf eine unterstützte Region upgraden. Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+> Der dedizierte Gen2-SQL-Pool (früher SQL DW) hat kürzlich zusätzliche Skalierungsfunktionen zur Unterstützung von Computeebenen bis zu 100 cDWU hinzugefügt. Vorhandene Data Warehouses mit derzeit Gen1, die die niedrigeren Computeebenen erfordern, können jetzt in den Regionen, die derzeit ohne zusätzliche Kosten zur Verfügung stehen, auf Gen2 upgraden.  Wenn Ihre Region noch nicht unterstützt wird, können Sie weiterhin auf eine unterstützte Region upgraden. Weitere Informationen finden Sie unter [Optimieren der Leistung durch ein Upgrade von SQL Data Warehouse](../sql-data-warehouse/upgrade-to-latest-generation.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
-In T-SQL bestimmt die Einstellung SERVICE_OBJECTIVE den Servicelevel und die Leistungsstufe für Ihren dedizierten SQL-Pool.
+In T-SQL bestimmt die Einstellung „SERVICE_OBJECTIVE“ den Servicelevel und die Leistungsstufe für Ihren dedizierten SQL-Pool (früher SQL DW).
 
 ```sql
 CREATE DATABASE mySQLDW
@@ -88,7 +88,7 @@ Schritte zum Ermitteln der besten DWU-Anzahl für Ihre Arbeitsauslastung:
 2. Überwachen Sie die Anwendungsleistung, wenn Sie Datenmengen im System testen, und beobachten Sie dabei die Anzahl der ausgewählten DWUs im Vergleich zur beobachteten Leistung.
 3. Identifizieren Sie zusätzliche Anforderungen für periodische Zeiten mit Spitzenauslastung. Workloads, bei denen die Aktivität erhebliche Spitzen und Täler aufweist, müssen unter Umständen häufig skaliert werden.
 
-Ein dedizierter SQL-Pool ist ein horizontal skalierbares System, das große Mengen von Compute- und Abfragedaten bereitstellen kann.
+Ein dedizierter SQL-Pool (früher SQL DW) ist ein horizontal skalierbares System, das große Mengen von Compute- und Abfragedaten bereitstellen kann.
 
 Wenn Sie seine wahren Skalierungsfunktionen (insbesondere bei größeren DWUs) in Aktion sehen möchten, wird empfohlen, bei der Skalierung das Dataset zu skalieren, um sicherzustellen, dass genügend Daten zum Übertragen an die CPUs verfügbar sind. Es wird empfohlen, für die Skalierungstests mindestens 1 TB zu verwenden.
 
@@ -141,7 +141,7 @@ Zum Ändern der DWUs verwenden Sie das PowerShell-Cmdlet [Set-AzSqlDatabase](/po
 Set-AzSqlDatabase -DatabaseName "MySQLDW" -ServerName "MyServer" -RequestedServiceObjectiveName "DW1000c"
 ```
 
-Weitere Informationen finden Sie unter [PowerShell-Cmdlets für Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere Informationen finden Sie unter [PowerShell-Cmdlets für einen dedizierten SQL-Pool (früher SQL DW)](../sql-data-warehouse/sql-data-warehouse-reference-powershell-cmdlets.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ### <a name="t-sql"></a>T-SQL
 
@@ -173,7 +173,7 @@ Content-Type: application/json; charset=UTF-8
 }
 ```
 
-Weitere REST-API-Beispiele finden Sie unter [REST-APIs für Azure Synapse Analytics](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
+Weitere REST-API-Beispiele finden Sie unter [REST-APIs für einen dedizierten SQL-Pool (früher SQL DW)](../sql-data-warehouse/sql-data-warehouse-manage-compute-rest-api.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).
 
 ## <a name="check-status-of-dwu-changes"></a>Überprüfen des Status von DWU-Änderungen
 
@@ -204,7 +204,7 @@ FROM      sys.databases
     ;
     ```
 
-Diese DMV gibt Informationen zu verschiedenen Verwaltungsvorgängen in Ihrem dedizierten SQL-Pool zurück. Dazu gehören etwa der Vorgang und der Status des Vorgangs, der IN_PROGRESS oder COMPLETED lauten kann.
+Diese DMV gibt Informationen zu verschiedenen Verwaltungsvorgängen in Ihrem dedizierten SQL-Pool (früher SQL DW) zurück. Dazu gehören beispielsweise der Vorgang und der Status des Vorgangs, der „IN_PROGRESS“ oder „COMPLETED“ lauten kann.
 
 ## <a name="the-scaling-workflow"></a>Der Skalierungsworkflow
 

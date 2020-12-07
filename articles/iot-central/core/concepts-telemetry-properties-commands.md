@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: 24fbe347aeb0b47ffd1ba694f761d909ff2950f8
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 5b1bbce68be19c2dbb08f7d69611b719b450a370
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94989546"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96121762"
 ---
 # <a name="telemetry-property-and-command-payloads"></a>Telemetrie-, Eigenschaften- und Befehlsnutzlasten
 
@@ -36,7 +36,7 @@ Jedes Beispiel zeigt einen Ausschnitt aus dem Gerätemodell, das den Typ und die
 
 Die JSON-Datei mit der Definition des Gerätemodells verwendet [Digital Twin Definition Language (DTDL) v2](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/dtdlv2.md).
 
-Ein Beispiel für Gerätecode, der einige dieser gerade verwendeten Nutzlasten zeigt, finden Sie in den Tutorials [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device-nodejs.md) und [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)](tutorial-connect-device-python.md).
+Ein Beispiel für einen Gerätecode, der einige dieser verwendeten Nutzlasten anzeigt, finden Sie im Tutorial [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 ## <a name="view-raw-data"></a>Anzeigen von Rohdaten
 

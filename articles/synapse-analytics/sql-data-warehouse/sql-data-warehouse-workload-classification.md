@@ -1,6 +1,6 @@
 ---
-title: Workloadklassifizierung
-description: Leitfaden zur Verwendung der Klassifizierung, um Parallelität, Priorität und Computeressourcen für Abfragen in Azure Synapse Analytics zu verwalten
+title: Workloadklassifizierung für dedizierte SQL-Pools
+description: Leitfaden zur Verwendung der Klassifizierung, um Abfrageparallelität, Priorität und Computeressourcen für dedizierte SQL-Pools in Azure Synapse Analytics zu verwalten
 services: synapse-analytics
 author: ronortloff
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6b66b8a9fb3b5eb7dc78c00ba084e8609877dec7
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: bf19e2d1674d0a0c2102280b28b5549505c1dfab
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323878"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447765"
 ---
-# <a name="azure-synapse-analytics-workload-classification"></a>Azure Synapse Analytics-Workloadklassifizierung
+# <a name="workload-classification-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Workloadklassifizierung für dedizierte SQL-Pools in Azure Synapse Analytics
 
 In diesem Artikel wird der Workloadklassifizierungsprozess beim Zuweisen einer Workloadgruppe und Priorität für eingehende Anforderungen mit dedizierten SQL-Pools in Azure Synapse erläutert.
 
@@ -36,7 +36,7 @@ Nicht alle Anweisungen sind klassifiziert, da sie keine Ressourcen oder Bedeutun
 
 ## <a name="classification-process"></a>Klassifizierungsprozess
 
-Die Klassifizierung für dedizierte SQL-Pools in Azure Synapse erfolgt derzeit, indem Benutzern mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) einer Rolle zugewiesen werden, der wiederum eine entsprechende Ressourcenklasse zugewiesen wurde. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können Benutzer dedizierter SQL-Pools Priorität zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden.
+Die Klassifizierung für dedizierte SQL-Pools erfolgt zurzeit, indem Benutzern mithilfe von [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) einer Rolle zugewiesen werden, der wiederum eine entsprechende Ressourcenklasse zugewiesen wurde. Die Möglichkeit, andere Anforderungen als eine Anmeldung bei einer Ressourcenklasse zu charakterisieren, ist bei dieser Funktion beschränkt. Mit der [CREATE WORKLOAD CLASSIFIER-Syntax](/sql/t-sql/statements/create-workload-classifier-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) steht nun eine leistungsfähigere Klassifizierungsmethode zur Verfügung.  Mit dieser Syntax können Benutzer dedizierter SQL-Pools Priorität zuweisen und angeben, wie viele Systemressourcen einer Anforderung über den Parameter `workload_group` zugewiesen werden.
 
 > [!NOTE]
 > Die Klassifizierung wird für jede Anforderung einzeln ausgewertet. Mehrere Anforderungen in einer einzelnen Sitzung können separat klassifiziert werden.
