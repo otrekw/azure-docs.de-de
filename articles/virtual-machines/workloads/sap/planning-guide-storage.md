@@ -14,15 +14,15 @@ ms.subservice: workloads
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 06/23/2020
+ms.date: 11/26/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1cd6f5f7865d18461ac7a635530e9aabfde380a6
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 6982b782fdd6b5b269c1562c54be3478c58bbce9
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955411"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500996"
 ---
 # <a name="azure-storage-types-for-sap-workload"></a>Azure Storage-Typen für die SAP-Workload
 Azure umfasst zahlreiche Speichertypen, die sich in den Funktionen, dem Durchsatz, der Latenz und den Preisen stark unterscheiden. Einige der Speichertypen sind für SAP-Szenarien nicht oder nur eingeschränkt verwendbar. Dagegen sind verschiedene Azure-Speichertypen für spezifische SAP-Workloadszenarien gut geeignet und optimiert. Speziell für SAP HANA wurden einige Azure-Speichertypen für die Verwendung mit SAP HANA zertifiziert. In diesem Dokument werden die verschiedenen Speichertypen erläutert und ihre Funktionen und Verwendbarkeit mit SAP-Workloads und SAP-Komponenten beschrieben.
@@ -34,6 +34,8 @@ Anmerkung zu den in diesem Artikel verwendeten Einheiten: Die Anbieter von öffe
 Bei der Microsoft Azure-Speicherung von HDD Standard, SSD Standard, Azure Storage Premium und Disk Ultra werden die Basis-VHD (mit dem Betriebssystem) und die an VMs angefügten Datenträger oder Daten-VHDs in drei Kopien in drei verschiedenen Speicherknoten aufbewahrt. Das Failover zu einem anderen Replikat und das Seeding eines neuen Replikats bei einem Ausfall eines Speicherknotens erfolgt transparent. Aufgrund dieser Redundanz ist es **NICHT** erforderlich, eine Speicherredundanzschicht für mehrere Azure-Datenträger zu verwenden. Das wird als „lokaler redundanter Speicher „ (LRS) bezeichnet. LRS ist die Standardeinstellung für diese Azure-Speichertypen. [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) bietet ausreichend Redundanz, um die gleichen SLAs wie bei anderen nativen Azure-Speichern zu erreichen.
 
 Es gibt mehrere weitere Redundanzmethoden, die im Artikel [Azure Storage-Replikation](../../../storage/common/storage-redundancy.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json) beschrieben werden und für einige der verschiedenen Speichertypen von Azure gelten. 
+
+Beachten Sie auch, dass sich unterschiedliche Azure-Speichertypen auf die SLAs zur Verfügbarkeit einzelner VMs auswirken (wie unter [SLA für Virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines) beschrieben).
 
 ### <a name="azure-managed-disks"></a>Verwaltete Azure-Datenträger
 
@@ -131,7 +133,6 @@ Dieser Speichertyp ist auf DBMS-Workloads, Speicherdatenverkehr, der eine niedri
 - Der E/A-Durchsatz für diesen Speicher ist nicht linear zur Größe der Datenträgerkategorie. Bei kleineren Datenträgern, z. B. der Kategorie mit einer Kapazität zwischen 65 GiB und 128 GiB, beträgt der Durchsatz ungefähr 780 KB/GiB. Bei den extrem großen Datenträgern, z. B. mit 32.767 GiB, liegt der Durchsatz hingegen bei etwa 28 KB/GiB.
 - Die IOPS- und Durchsatz-SLAs können nicht geändert werden, ohne die Kapazität des Datenträgers zu ändern.
 
-Azure umfasst eine SLA für Einzelinstanz-VMs von 99,9 %, die an die Verwendung von Azure Storage Premium oder Azure Disk Storage Ultra gebunden ist. Die SLA ist unter [SLA für virtuelle Computer](https://azure.microsoft.com/support/legal/sla/virtual-machines/) dokumentiert. Um dieser SLA für Einzelinstanz-VMs zu entsprechen, müssen sowohl der Basis-VHD-Datenträger als auch **alle** angefügten Datenträger Azure Storage Premium- oder Azure Disk Storage Ultra-Datenträger sein.
 
 Die Funktionsmatrix für die SAP-Workload sieht folgendermaßen aus:
 
@@ -163,7 +164,7 @@ Azure Storage Premium erfüllt nicht die Speicherlatenz-KPIs für SAP HANA mit d
 
 
 ### <a name="azure-burst-functionality-for-premium-storage"></a>Azure-Burstfunktionalität für Storage Premium
-Für Azure Premium-Datenträger mit einer Kapazität bis 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../linux/disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
+Für Azure Premium-Datenträger mit einer Kapazität bis 512 GiB wird eine Burstfunktionalität angeboten. Die genaue Funktionsweise des Datenträgerbursting wird in dem Artikel [Datenträgerbursting](../../disk-bursting.md) beschrieben. Wenn Sie den Artikel lesen, verstehen Sie das Konzept des Anfallens von IOPS und Durchsatz in den Zeiten, in denen Ihre E/A-Workload unter den nominalen IOPS und unter dem Durchsatz der Datenträger liegt (Einzelheiten zum nominalen Durchsatz finden Sie unter [Verwaltete Datenträger – Preise](https://azure.microsoft.com/pricing/details/managed-disks/)). Sie werden das Delta von IOPS und Durchsatz zwischen Ihrer aktuellen Nutzung und den Nennwerten des Datenträgers ansammeln. Die Bursts sind auf maximal 30 Minuten begrenzt.
 
 Die idealen Fälle, in denen diese Burstfunktionalität eingeplant werden kann, werden wahrscheinlich die Volumes oder Datenträger sein, die Datendateien für die verschiedenen DBMS enthalten. Die für diese Volumen zu erwartende E/A-Workload, insbesondere bei kleinen bis mittleren Systemen, wird voraussichtlich wie folgt aussehen:
 
@@ -375,4 +376,3 @@ Lesen Sie die folgenden Artikel:
 
 - [Azure Virtual Machines – DBMS-Bereitstellung für SAP-Workload](./dbms_guide_general.md)
 - [SAP HANA: Speicherkonfigurationen für virtuelle Azure-Computer](./hana-vm-operations-storage.md)
- 

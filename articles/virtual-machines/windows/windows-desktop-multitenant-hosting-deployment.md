@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010248"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96482942"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Weitere Informationen finden Sie unter [Mehrinstanzenfähiges Hosting für Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -24,7 +24,7 @@ Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual De
 >
 
 ## <a name="deploying-windows-10-image-from-azure-marketplace"></a>Bereitstellen des Windows 10-Image aus dem Azure Marketplace 
-Für PowerShell-, CLI- und Azure Resource Manager-Vorlagenbereitstellungen enthält das Windows 10-Image folgende Angaben zu Herausgebernamen, Angebot und SKU.
+Für PowerShell-, CLI- und Azure Resource Manager-Vorlagenbereitstellungen enthält das Windows 10-Image folgende Angaben zu Herausgebername, Angebot und SKU.
 
 | OS  |      PublisherName      |  Angebot | Sku |
 |:----------|:-------------:|:------|:------|
@@ -33,6 +33,17 @@ Für PowerShell-, CLI- und Azure Resource Manager-Vorlagenbereitstellungen enth�
 | Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
 | Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
+## <a name="qualify-for-multi-tenant-hosting-rights"></a>Qualifizieren für Rechte für mehrinstanzenfähiges Hosten 
+Benutzer müssen über eines der folgenden Abonnements verfügen, um sich für Rechte für das mehrinstanzenfähige Hosten und für die Ausführung von Windows 10-Images in Azure zu qualifizieren: 
+
+-   Microsoft 365 E3/E5 
+-   Microsoft 365 F3 
+-   Microsoft 365 A3/A5 
+-   Windows 10 Enterprise E3/E5
+-   Windows 10 Education A3/A5 
+-   Windows VDA E3/E5
+
+
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Hochladen der Windows 10-VHD in Azure
 Beachten Sie beim Hochladen einer generalisierten Windows 10-VHD, dass das integrierte Administratorkonto bei Windows 10 standardmäßig nicht aktiviert ist. Um das integrierte Administratorkonto zu aktivieren, schließen Sie den folgenden Befehl als Teil der benutzerdefinierten Skripterweiterung ein.
 
@@ -40,7 +51,7 @@ Beachten Sie beim Hochladen einer generalisierten Windows 10-VHD, dass das integ
 Net user <username> /active:yes
 ```
 
-Mit dem folgenden PowerShell-Ausschnitt werden alle Administratorkonten als aktiv markiert, einschließlich des integrierten Administratorkontos. Dieses Beispiel ist hilfreich, wenn der Benutzername des integrierten Administratorkontos unbekannt ist.
+Mit dem folgenden PowerShell-Ausschnitt werden alle Administratorkonten als aktiv markiert, einschließlich des integrierten Administrators. Dieses Beispiel ist hilfreich, wenn der Benutzername des integrierten Administratorkontos unbekannt ist.
 ```powershell
 $adminAccount = Get-WmiObject Win32_UserAccount -filter "LocalAccount=True" | ? {$_.SID -Like "S-1-5-21-*-500"}
 if($adminAccount.Disabled)

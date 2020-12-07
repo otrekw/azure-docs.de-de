@@ -11,16 +11,16 @@ ms.date: 04/19/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.custom: ''
-ms.openlocfilehash: b3e1c4b8dec0e62bb2a77939a36e38b61837033a
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 52e3ea3e07a81495f64f70f72686154a02a654af
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638851"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451792"
 ---
 # <a name="statistics-in-synapse-sql"></a>Statistiken in Synapse SQL
 
-In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken mithilfe folgender Synapse SQL-Ressourcen: dedizierter SQL-Pool und serverloser SQL-Pool (Vorschauversion).
+In diesem Artikel finden Sie Empfehlungen und Beispiele für die Erstellung und Aktualisierung von Abfrageoptimierungsstatistiken mithilfe folgender Synapse SQL-Ressourcen: dedizierter SQL-Pool und serverloser SQL-Pool.
 
 ## <a name="statistics-in-dedicated-sql-pool"></a>Statistiken im dedizierten SQL-Pool
 
@@ -557,7 +557,7 @@ DBCC SHOW_STATISTICS (dbo.table1, stats_col1)
 - Benutzerdefinierter Fehler 2767 wird nicht unterstützt.
 
 
-## <a name="statistics-in-serverless-sql-pool-preview"></a>Statistiken im serverlosen SQL-Pool (Vorschauversion)
+## <a name="statistics-in-serverless-sql-pool"></a>Statistiken im serverlosen SQL-Pool
 
 Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spalte erstellt.
 
@@ -566,7 +566,7 @@ Statistiken werden für ein bestimmtes Dataset (Speicherpfad) pro bestimmter Spa
 
 ### <a name="why-use-statistics"></a>Gründe für die Verwendung von Statistiken
 
-Je mehr Informationen zu Ihren Daten der serverlose SQL-Pool (Vorschauversion) hat, desto schneller kann er Abfragen dafür ausführen. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
+Je mehr Informationen zu Ihren Daten der serverlose SQL-Pool hat, desto schneller kann er Abfragen dafür ausführen. Das Erfassen von Statistiken über Ihre Daten ist eine der wichtigsten Maßnahmen, die Sie zur Optimierung von Abfragen ergreifen können. 
 
 Der Abfrageoptimierer im serverlosen SQL-Pool arbeitet kostenorientiert. Die Kosten der verschiedenen Abfragepläne werden verglichen, und dann wird der Plan mit den geringsten Kosten gewählt. In den meisten Fällen wird der Plan gewählt, der am schnellsten ausgeführt wird. 
 

@@ -1,18 +1,18 @@
 ---
 title: Ausgaben in Vorlagen
-description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage definiert werden.
+description: Beschreibt, wie Ausgabewerte in einer Azure Resource Manager-Vorlage (ARM-Vorlage) definiert werden.
 ms.topic: conceptual
 ms.date: 11/24/2020
-ms.openlocfilehash: 8f782a78e523ebc55faac98344643982172476fa
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 6a375dfbc767bcbbfd8ec6b7f8cb9e942e275582
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911429"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353526"
 ---
-# <a name="outputs-in-azure-resource-manager-template"></a>Ausgaben in einer Azure Resource Manager-Vorlage
+# <a name="outputs-in-arm-templates"></a>Ausgaben in ARM-Vorlagen
 
-Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
+Dieser Artikel beschreibt, wie Sie Ausgabewerte in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) definieren. Sie verwenden Ausgaben, wenn Werte von den bereitgestellten Ressourcen zurückgegeben werden müssen.
 
 Das Format der einzelnen Ausgabewerte muss mit einem der [Datentypen](template-syntax.md#data-types) identisch sein.
 
@@ -112,7 +112,7 @@ az deployment group show \
 
 In den folgenden Beispielen werden Szenarien für die Verwendung von Ausgaben veranschaulicht.
 
-|Vorlage  |Beschreibung  |
+|Vorlage  |BESCHREIBUNG  |
 |---------|---------|
 |[Variablen kopieren](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/copyvariables.json) | Erstellt komplexe Variablen und gibt die entsprechenden Werte aus. Stellt keine Ressourcen bereit. |
 |[Öffentliche IP-Adresse](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/linkedtemplates/public-ip.json) | Erstellt eine öffentliche IP-Adresse und gibt die Ressourcen-ID aus. |
@@ -120,4 +120,4 @@ In den folgenden Beispielen werden Szenarien für die Verwendung von Ausgaben ve
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Weitere Informationen zu den verfügbaren Eigenschaften für Ausgaben finden Sie unter [Verstehen der Struktur und Syntax von Azure Resource Manager-Vorlagen](template-syntax.md).
+* Weitere Informationen zu den verfügbaren Eigenschaften für Ausgaben finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

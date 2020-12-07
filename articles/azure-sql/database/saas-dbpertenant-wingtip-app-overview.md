@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 09/24/2018
-ms.openlocfilehash: 3abfffcfb47a9530b6a04762624eee9d6ee9bc81
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 09651ed5c7472c12d82108fdbd450cca6e84349f
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780460"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447089"
 ---
 # <a name="introduction-to-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-azure-sql-database"></a>Einführung in eine mehrinstanzenfähige SaaS-App, die das Muster mit einer Datenbank pro Mandant mit Azure SQL-Datenbank verwendet.
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -37,7 +37,7 @@ Wenn Sie die Tutorials durchgehen und mit der App arbeiten, legen Sie den Schwer
 
 ## <a name="sql-database-wingtip-saas-tutorials"></a>Tutorials zur SaaS-App Wingtip für die SQL-Datenbank
 
-Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Features von SQL-Datenbank, Azure Synapse Analytics (vormals SQL Data Warehouse) und anderen Azure-Diensten nutzen. Die Tutorials enthalten PowerShell-Skripts mit ausführlichen Erklärungen. Die Erklärungen erleichtern das Verständnis und die Implementierung der gleichen SaaS-Verwaltungsmuster in Ihren Anwendungen.
+Sehen Sie sich nach der Bereitstellung der App die folgenden Tutorials an, die auf der erstmaligen Bereitstellung aufbauen. In diesen Tutorials werden allgemeine SaaS-Muster behandelt, die die integrierten Features der SQL-Datenbank sowie von Azure Synapse Analytics und anderen Azure-Diensten nutzen. Die Tutorials enthalten PowerShell-Skripts mit ausführlichen Erklärungen. Die Erklärungen erleichtern das Verständnis und die Implementierung der gleichen SaaS-Verwaltungsmuster in Ihren Anwendungen.
 
 
 | Lernprogramm | BESCHREIBUNG |

@@ -1,6 +1,6 @@
 ---
-title: Abfragen von geschachtelten Parquet-Typen mit einem serverlosen SQL-Pool (Vorschau)
-description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen mit einem serverlosen SQL-Pool (Vorschau) abfragen können.
+title: Abfragen von geschachtelten Parquet-Typen mit einem serverlosen SQL-Pool
+description: In diesem Artikel erfahren Sie, wie Sie geschachtelte Parquet-Typen mit einem serverlosen SQL-Pool abfragen können.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 426c95638422fa4260508aa81bb47a7c9565e6eb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 91f612ba7f19deb739dbb6004e275ea044a5a3d3
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685714"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462558"
 ---
-# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics
+# <a name="query-nested-types-in-parquet-and-json-files-by-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von geschachtelten Typen in Parquet und JSON-Dateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics schreiben können. Die Abfrage liest geschachtelte Parquet-Typen.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool in Azure Synapse Analytics schreiben können. Die Abfrage liest geschachtelte Parquet-Typen.
 Bei geschachtelten Typen handelt es sich um komplexe Strukturen zur Darstellung von Objekten oder Arrays. Geschachtelte Typen können in folgenden Formaten gespeichert werden: 
 - In [Parquet](query-parquet-files.md). Dabei können mehrere komplexe Spalten mit Arrays und Objekten vorhanden sein.
 - In hierarchischen [JSON-Dateien](query-json-files.md). Dabei können komplexe JSON-Dokumente als einzelne Spalte gelesen werden.

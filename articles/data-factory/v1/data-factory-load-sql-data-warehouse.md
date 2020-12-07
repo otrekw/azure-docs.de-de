@@ -12,26 +12,26 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 4e6b0afab5c86131575d0e3d12b9984a8463f5a3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 68c9e594201f0d0689a289e13f2c4ebf909c2f87
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321103"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457109"
 ---
 # <a name="load-1-tb-into-azure-synapse-analytics-under-15-minutes-with-data-factory"></a>Laden von 1 TB Daten in Azure Synapse Analytics in weniger als 15 Minuten mit Data Factory
 > [!NOTE]
-> Dieser Artikel gilt für Version 1 von Data Factory. Informationen zur aktuellen Version des Data Factory-Diensts finden Sie unter [Kopieren von Daten mithilfe von Azure Data Factory in und aus Azure Synapse Analytics (ehemals SQL Data Warehouse)](../connector-azure-sql-data-warehouse.md).
+> Dieser Artikel gilt für Version 1 von Data Factory. Informationen für die aktuelle Version des Data Factory-Diensts finden Sie unter [Kopieren und Transformieren von Daten in Azure Synapse Analytics (ehemals SQL Data Warehouse) mithilfe von Azure Data Factory](../connector-azure-sql-data-warehouse.md).
 
 
 [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) ist eine cloudbasierte Datenbank mit horizontaler Skalierung, mit der sehr große volumen sowohl relationaler als auch nicht relationaler Daten verarbeitet werden können.  Azure Synapse Analytics basiert auf der MPP-Architektur (Massively Parallel Processing), die für Data-Warehouse-Workloads in Großunternehmen optimiert ist.  Es bietet Cloudelastizität mit der Flexibilität, Speicher zu skalieren und unabhängig zu berechnen.
 
 Die ersten Schritte mit Azure Synapse Analytics sind jetzt mithilfe von **Azure Data Factory** einfacher als je zuvor.  Azure Data Factory ist ein vollständig verwalteter cloudbasierter Datenintegrationsdienst, der verwendet werden kann, um Azure Synapse Analytics mit den Daten Ihres bestehenden Systems aufzufüllen. Der Dienst spart Ihnen wertvolle Zeit beim Bewerten von Azure Synapse Analytics und Erstellen von Analyselösungen. Die wichtigsten Vorteile beim Laden von Daten in Azure Synapse Analytics mithilfe von Azure Data Factory sind wie folgt:
 
-* **Mühelose Einrichtung** : Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
-* **Unterstützung für umfangreiche Datenspeicher** : Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher.
-* **Sicher und kompatibel** : Daten werden über HTTPS oder ExpressRoute übertragen, und globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
-* **Beispiellose Leistung mithilfe von PolyBase** : Die Verwendung von PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure Synapse Analytics. Mit der Funktion „Stagingblob“ sinkt die Ladezeit für alle Arten von Datenspeicher drastisch. Dies gilt nicht für Azure Blob Storage, da dies von Polybase standardmäßig unterstützt wird.
+* **Mühelose Einrichtung**: Intuitiver Assistent mit fünf Schritten. Keine Skripterstellung erforderlich.
+* **Unterstützung für umfangreiche Datenspeicher**: Integrierte Unterstützung für umfangreiche lokale und cloudbasierte Datenspeicher.
+* **Sicher und kompatibel**: Daten werden über HTTPS oder ExpressRoute übertragen, und globale Dienste stellen sicher, dass Ihre Daten nie die geografische Grenze verlassen.
+* **Beispiellose Leistung mithilfe von PolyBase**: Die Verwendung von PolyBase ist die effizienteste Methode zum Verschieben von Daten in Azure Synapse Analytics. Mit der Funktion „Stagingblob“ sinkt die Ladezeit für alle Arten von Datenspeicher drastisch. Dies gilt nicht für Azure Blob Storage, da dies von Polybase standardmäßig unterstützt wird.
 
 In diesem Artikel wird gezeigt, wie der Assistenten zum Kopieren in Data Factory verwendet wird, um 1 TB Daten aus Azure Blob Storage in Azure Synapse Analytics in unter 15 Minuten mit über 1,2 GBit/s Durchsatz zu laden.
 
@@ -120,24 +120,24 @@ Dieser Artikel enthält detaillierte Anleitungen zum Verschieben von Daten in Az
    2. Wählen Sie Ihr Azure- **Abonnement** aus.
    3. Führen Sie unter „Ressourcengruppe“ einen der folgenden Schritte aus:
       1. Wählen Sie **Use existing** (Vorhandene verwenden), um eine vorhandene Ressourcengruppe auszuwählen.
-      2. Wählen Sie **Neu erstellen** , um einen Namen für eine Ressourcengruppe einzugeben.
+      2. Wählen Sie **Neu erstellen**, um einen Namen für eine Ressourcengruppe einzugeben.
    4. Wählen Sie einen **Standort** für die Data Factory aus.
    5. Aktivieren Sie unten auf dem Blatt das Kontrollkästchen **An Dashboard anheften**.  
    6. Klicken Sie auf **Erstellen**.
 4. Nach Abschluss der Erstellung wird das Blatt **Data Factory** wie in der folgenden Abbildung dargestellt angezeigt:
 
    ![Data Factory-Startseite](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
-5. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren** , um den **Kopier-Assistenten** zu starten.
+5. Klicken Sie auf der Data Factory-Startseite auf die Kachel **Daten kopieren**, um den **Kopier-Assistenten** zu starten.
 
    > [!NOTE]
-   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren** , oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
+   > Wenn Sie feststellen, dass der Webbrowser bei der Autorisierung hängen bleibt, deaktivieren Sie die Einstellung **Cookies und Websitedaten von Drittanbietern blockieren**, oder lassen Sie die Einstellung aktiviert, und erstellen Sie eine Ausnahme für **login.microsoftonline.com**. Versuchen Sie anschließend erneut, den Assistenten zu starten.
    >
    >
 
 ## <a name="step-1-configure-data-loading-schedule"></a>Schritt 1: Konfigurieren des Zeitplans für das Laden von Daten
 Der erste Schritt ist das Konfigurieren des Zeitplans für das Laden von Daten.  
 
-Auf der Seite **Eigenschaften** :
+Auf der Seite **Eigenschaften**:
 
 1. Geben Sie unter **Aufgabenname** den Namen **CopyFromBlobToAzureSqlDataWarehouse** ein.
 2. Wählen Sie die Option **Run once now (Einmalig ausführen)** aus.   
@@ -192,7 +192,7 @@ Dieser Abschnitt beschreibt das Konfigurieren des Ziels (Tabelle `lineitem`) in 
 
     ![Kopier-Assistent: Seite 1 der Zusammenfassung](media/data-factory-load-sql-data-warehouse/summary-page.png)
 
-2. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen. Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows** -Liste erstellt haben.
+2. Nachdem die Bereitstellung abgeschlossen ist, klicken Sie auf `Click here to monitor copy pipeline` um Ausführung und Fortschritt des Kopiervorgangs zu überwachen. Wählen Sie die Kopierpipeline aus, die Sie in der **Activity Windows**-Liste erstellt haben.
 
     ![Kopier-Assistent: Seite 2 der Zusammenfassung](media/data-factory-load-sql-data-warehouse/select-pipeline-monitor-manage-app.png)
 

@@ -1,6 +1,6 @@
 ---
-title: Continuous Integration und Continuous Deployment
-description: Professionelle DevOps-Datenbankumgebung für Data Warehousing mit integrierter Unterstützung für Continuous Integration und Continuous Deployment mithilfe von Azure Pipelines
+title: Continuous Integration und Continuous Deployment für einen dedizierten SQL-Pool
+description: Professionelle DevOps-Datenbankumgebung für dedizierten SQL-Pool in Azure Synapse Analytics mit integrierter Unterstützung für Continuous Integration und Continuous Deployment mithilfe von Azure Pipelines
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,14 +11,14 @@ ms.date: 02/04/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 061be5addd0c236db5d982e6103e3cf455b9c361
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: 35f503e7214fa91962c91c35611fc9447302f9fc
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92480529"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462810"
 ---
-# <a name="continuous-integration-and-deployment-for-data-warehousing"></a>Continuous Integration und Continuous Deployment für Data Warehousing
+# <a name="continuous-integration-and-deployment-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Continuous Integration und Continuous Deployment für dedizierten SQL-Pool in Azure Synapse Analytics
 
 In diesem einfachen Tutorial wird erläutert, wie Sie Ihr SSDT-Datenbankprojekt (SQL Server Data Tools) in Azure DevOps integrieren und Azure Pipelines zum Einrichten von Continuous Integration und Continuous Deployment nutzen. Dieses Tutorial ist der zweite Schritt beim Erstellen Ihrer Continuous Integration- und Continuous Deployment-Pipeline für Data Warehousing.
 
@@ -60,7 +60,7 @@ Nun verfügen Sie über eine einfache Umgebung, in der jeder Check-In bei Ihrem 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erkunden der [Architektur des Synapse SQL-Pools](massively-parallel-processing-mpp-architecture.md)
-- Führen Sie eine schnelle [Erstellung eines SQL-Pools](create-data-warehouse-portal.md) durch.
+- Lesen Sie [Architektur des dedizierten SQL-Pools (früher SQL DW)](massively-parallel-processing-mpp-architecture.md).
+- Führen Sie das schnelle [Erstellen eines dedizierten SQL-Pools (früher SQL DW)](create-data-warehouse-portal.md) durch.
 - [Laden von Stichprobendaten](load-data-from-azure-blob-storage-using-polybase.md)
 - Ansehen von [Videos](sql-data-warehouse-videos.md)

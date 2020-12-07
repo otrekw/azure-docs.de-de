@@ -7,12 +7,12 @@ ms.date: 09/17/2020
 author: deborahc
 ms.author: dech
 ms.custom: devx-track-python, devx-track-java, contperfq1
-ms.openlocfilehash: 23d9c6730857cf4ed7f8b8062d5529bedd8e2740
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 1825dd34855b356367722eefbfb5eb6dd9c78ae3
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95997170"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029182"
 ---
 # <a name="export-the-azure-cosmos-db-emulator-certificates-for-use-with-java-python-and-nodejs-apps"></a>Exportieren der Azure Cosmos DB-Emulatorzertifikate für die Verwendung mit Java-, Python- und Node.js-Apps
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -67,7 +67,7 @@ Sie müssen das Emulatorzertifikat exportieren, um den Emulatorendpunkt aus Spra
 
 Wenn Sie Java- oder MongoDB-Anwendungen ausführen, die den auf Java basierenden Client verwenden, ist es einfacher, das Zertifikat im Java-Standardzertifikatspeicher zu installieren, als die Flags `-Djavax.net.ssl.trustStore=<keystore> -Djavax.net.ssl.trustStorePassword="<password>"` zu übergeben. Die enthaltene Java-Demoanwendung (`https://localhost:8081/_explorer/index.html`) ist beispielsweise vom Standardzertifikatspeicher abhängig.
 
-Befolgen Sie die Anweisungen unter [Hinzufügen eines Stammzertifikats zum Java-ZS-Zertifikatspeicher](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store), um das X.509-Zertifikat in den Java-Standardzertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis *%JAVA_HOME%* arbeiten, wenn Sie „keytool“ ausführen. Nachdem das Zertifikat in den Zertifikatsspeicher importiert wurde, können sich Clients für SQL und die API für MongoDB von Azure Cosmos DB mit dem Azure Cosmos-Emulator verbinden.
+Befolgen Sie die Anweisungen unter [Hinzufügen eines Stammzertifikats zum Java-ZS-Zertifikatspeicher](/azure/developer/java/sdk/java-sdk-add-certificate-ca-store), um das X.509-Zertifikat in den Java-Standardzertifikatspeicher zu importieren. Denken Sie daran, dass Sie im Verzeichnis *%JAVA_HOME%* arbeiten, wenn Sie „keytool“ ausführen. Nachdem das Zertifikat in den Zertifikatspeicher importiert wurde, können Clients für SQL und die API für MongoDB von Azure Cosmos DB eine Verbindung mit dem Azure Cosmos DB-Emulator herstellen.
 
 Alternativ können Sie das folgende Bash-Skript ausführen, um das Zertifikat zu importieren:
 

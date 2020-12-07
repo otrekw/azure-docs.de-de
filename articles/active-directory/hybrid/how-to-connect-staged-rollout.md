@@ -10,12 +10,12 @@ ms.date: 06/03/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a79ec9a54ae597bc7e9795029dc4292c2c82345
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: fd1c7f5dec57127f92da52be908bd6faa2c90e85
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836392"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500222"
 ---
 # <a name="migrate-to-cloud-authentication-using-staged-rollout-preview"></a>Migrieren zur Cloudauthentifizierung mithilfe eines gestaffelten Rollouts (Vorschau)
 
@@ -66,6 +66,8 @@ Die folgenden Szenarien werden für gestaffelten Rollout unterstützt. Das Featu
 ## <a name="unsupported-scenarios"></a>Nicht unterstützte Szenarien
 
 Die folgenden Szenarien werden für gestaffelten Rollout nicht unterstützt:
+
+- Für Anwendungen oder Clouddienste wird die Legacyauthentifizierung verwendet, z. B. POP3 und SMTP.
 
 - Bestimmte Anwendungen senden bei der Authentifizierung den Abfrageparameter „domain_hint“ an Azure AD. Diese Flows werden fortgesetzt, und für den gestaffelten Rollout aktivierte Benutzer verwenden weiterhin den Verbund für die Authentifizierung.
 

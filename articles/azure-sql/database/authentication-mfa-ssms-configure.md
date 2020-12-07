@@ -12,20 +12,20 @@ author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
 ms.date: 08/27/2019
-ms.openlocfilehash: 094e40fe55e1ba51b0539d740ecb449a8327d6a6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4f90299daed46d06dad9ab37103e3b8f53763ed4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841239"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454385"
 ---
 # <a name="configure-multi-factor-authentication-for-sql-server-management-studio-and-azure-ad"></a>Konfigurieren der mehrstufigen Authentifizierung für SQL Server Management Studio und Azure AD
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
 
-In diesem Artikel wird beschrieben, wie Sie die mehrstufige Authentifizierung (MFA) von Azure Active Directory (Azure AD) mit SQL Server Management Studio (SSMS) verwenden. Die mehrstufige Azure AD-Authentifizierung kann bei Verbindungen von SSMS oder „SqlPackage.exe“ mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics (früher SQL Data Warehouse)](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwendet werden. Eine Übersicht über die mehrstufige Authentifizierung finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md).
+In diesem Artikel wird beschrieben, wie Sie die mehrstufige Authentifizierung (MFA) von Azure Active Directory (Azure AD) mit SQL Server Management Studio (SSMS) verwenden. Die mehrstufige Azure AD-Authentifizierung kann bei Verbindungen von SSMS oder „SqlPackage.exe“ mit [Azure SQL-Datenbank](sql-database-paas-overview.md), [Azure SQL Managed Instance](../managed-instance/sql-managed-instance-paas-overview.md) und [Azure Synapse Analytics](../../synapse-analytics/sql-data-warehouse/sql-data-warehouse-overview-what-is.md) verwendet werden. Eine Übersicht über die mehrstufige Authentifizierung finden Sie unter [Universelle Authentifizierung bei SQL-Datenbank, SQL Managed Instance und Azure Synapse (SSMS-Unterstützung für MFA)](../database/authentication-mfa-ssms-overview.md).
 
 > [!IMPORTANT]
-> Datenbanken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse (früher SQL Data Warehouse) werden im restlichen Teil dieses Artikels gemeinsam als Datenbanken bezeichnet. Server bezieht sich auf den [Server](logical-servers.md), der Datenbanken für Azure SQL-Datenbank und Azure Synapse hostet.
+> Datenbanken in Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse werden im restlichen Teil dieses Artikels gemeinsam als Datenbanken bezeichnet. Server bezieht sich auf den [Server](logical-servers.md), der Datenbanken für Azure SQL-Datenbank und Azure Synapse hostet.
 
 ## <a name="configuration-steps"></a>Konfigurationsschritte
 

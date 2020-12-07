@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 2ea9fdcb11bd88755c0972fa166d1d94068ce60e
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: 64fa6c72e3bc37276dd108e3981bbefb5a2021a7
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638813"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444513"
 ---
 # <a name="faq---questions-about-data-collection-agents-and-workspaces"></a>Häufig gestellte Fragen: Datensammlung, Agents und Arbeitsbereiche
 
@@ -86,9 +86,9 @@ Der Speicherort des standardmäßigen Arbeitsbereichs hängt von Ihrer Azure-Reg
 - Bei virtuellen Computern in Australien befindet sich der Arbeitsbereich in Australien.
 
 
-## <a name="what-data-is-collected-by-the-log-analytics-agent"></a>Welche Daten erfasst der Log Analytics-Agent?
+## <a name="what-security-events-are-collected-by-the-log-analytics-agent"></a>Welche Sicherheitsereignisse werden vom Log Analytics-Agent erfasst?
 
-Eine vollständige Liste der vom Agent überwachten Anwendungen und Dienste finden Sie unter [Was wird von Azure Monitor überwacht?](../azure-monitor/monitor-reference.md#azure-services).
+Eine vollständige Liste mit den Sicherheitsereignissen, die vom Agent gesammelt werden, finden Sie unter [Welche Ereignistypen werden für die Einstellungen „Allgemein“ und „Minimal“ gespeichert?](security-center-enable-data-collection.md#what-event-types-are-stored-for-common-and-minimal).
 
 > [!IMPORTANT]
 > Wenn Sie die Protokollierung aktiviert und eine sehr aktive Ressource zum Protokollieren ausgewählt haben (z. B. das Protokoll auf *ausführlich* festgelegt haben), könnte dies bei einigen Diensten wie Azure-Firewall erhebliche Auswirkungen auf die Speicheranforderungen Ihres Log Analytics-Arbeitsbereichs haben. 

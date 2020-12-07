@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 920cc5142d14308fce412ad44543ddc46dc1663e
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 0ab0e64d9a088a332ba037dccf01dc445998ebfb
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324368"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457563"
 ---
 # <a name="azure-analysis-services-samples"></a>Azure Analysis Services – Beispiele
 
@@ -28,7 +28,7 @@ Das [Analysis Services](https://github.com/Microsoft/Analysis-Services)-Reposito
 
 ## <a name="sample-database-on-azure"></a>Beispieldatenbank in Azure
 
-Azure Synapse Analytics (früher als SQL Data Warehouse bezeichnet) bietet eine AdventureWorksDW-Beispieldatenbank, die in eine bereitgestellte Ressource einbezogen werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools in Azure Synapse Analytics](/azure/sql-data-warehouse/create-data-warehouse-portal).
+Azure Synapse Analytics bietet eine AdventureWorksDW-Beispieldatenbank, die in eine bereitgestellte Ressource einbezogen werden kann. Weitere Informationen finden Sie unter [Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools in Azure Synapse Analytics](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md).
 
 ## <a name="sample-databases-on-github"></a>Beispieldatenbanken auf GitHub
 

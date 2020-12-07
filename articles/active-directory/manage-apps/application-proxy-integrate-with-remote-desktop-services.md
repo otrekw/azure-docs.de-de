@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.subservice: app-mgmt
 ms.workload: identity
 ms.topic: how-to
-ms.date: 07/22/2020
+ms.date: 11/30/2020
 ms.author: kenwith
 ms.reviewer: japere
-ms.openlocfilehash: 03e89b0da25a915a00c70a9a87bd0f675b8e12d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bfe8af8c30bbc2bc66c363fbd85f6764a48c28a1
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997527"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96488067"
 ---
 # <a name="publish-remote-desktop-with-azure-ad-application-proxy"></a>Veröffentlichen des Remotedesktops per Azure AD-Anwendungsproxy
 
@@ -130,9 +130,11 @@ Die in diesem Artikel erläuterte Konfiguration dient dem Zugriff auf RDS über 
 
 | Authentifizierungsmethode | Unterstützte Clientkonfiguration |
 | --------------------- | ------------------------------ |
-| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit Internet Explorer oder [Microsoft Edge Chromium IE-Modus](/deployedge/edge-ie-mode) + RDS-ActiveX-Add-On |
+| Vorauthentifizierung    | Web Access für Remotedesktop: Windows 7/10 mit Internet Explorer* oder [Edge Chromium IE-Modus](/deployedge/edge-ie-mode) + RDS-ActiveX-Add-On |
 | Vorauthentifizierung    | Remotedesktop-Webclient: HTML5-kompatibler Webbrowser, z. B. Microsoft Edge, Internet Explorer 11, Google Chrome, Safari oder Mozilla Firefox (mindestens Version 55.0) |
 | Passthrough | Alle anderen Betriebssysteme, die die Microsoft-Remotedesktopanwendung unterstützen |
+
+*Der Edge Chromium IE-Modus ist erforderlich, wenn das Portal „Meine Apps“ zum Zugreifen auf die Remotedesktop-App verwendet wird.  
 
 Der Vorauthentifizierungsflow bietet weitere Vorteile im Hinblick auf Sicherheit als die der Passthroughflow. Mit der Vorauthentifizierung können Sie Authentifizierungsfeatures von Azure AD nutzen, z.B. das einmalige Anmelden, den bedingten Zugriff und die zweistufige Überprüfung für Ihre lokalen Ressourcen. Sie stellen Sie sicher, dass nur authentifizierter Datenverkehr Ihr Netzwerk erreicht.
 

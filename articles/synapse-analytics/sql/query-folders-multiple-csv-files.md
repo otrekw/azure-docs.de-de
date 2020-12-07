@@ -1,6 +1,6 @@
 ---
-title: Abfragen von Ordnern und mehreren Dateien mithilfe des serverlosen SQL-Pools (Vorschauversion)
-description: Der serverlose SQL-Pool (Vorschauversion) unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind.
+title: Abfragen von Ordnern und mehreren Dateien mit dem serverlosen SQL-Pool
+description: Der serverlose SQL-Pool unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d15d681a114b0f364e8e33adc786b4d0ba7df0e
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 83c4d88e1a87f6b546e26dd55da338a36f16ebe4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684558"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462631"
 ---
 # <a name="query-folders-and-multiple-files"></a>Abfragen von Ordnern und mehreren Dateien  
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics schreiben können.
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool in Azure Synapse Analytics schreiben können.
 
 Der serverlose SQL-Pool unterstützt das Lesen mehrerer Dateien/Ordner durch die Verwendung von Platzhalterzeichen, die den in Windows-Betriebssystemen verwendeten Platzhalterzeichen ähnlich sind. Allerdings ist die Flexibilität größer, da mehrere Platzhalterzeichen erlaubt sind.
 

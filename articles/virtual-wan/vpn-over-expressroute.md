@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
-ms.openlocfilehash: 6c6f71277c276bed603989774637bd95999de333
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b8dde3ed76587e2343edaec8626287853ec6ef9b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96023522"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96487506"
 ---
 # <a name="expressroute-encryption-ipsec-over-expressroute-for-virtual-wan"></a>ExpressRoute-Verschlüsselung: IPsec über ExpressRoute für Virtual WAN
 
@@ -95,7 +95,7 @@ Die Standortressource stimmt mit den Nicht-ExpressRoute-VPN-Standorten für ein 
 
    Wenn BGP aktiviert ist, wird BGP für alle Verbindungen verwendet, die für diesen Standort in Azure erstellt werden. Die Vorgehensweise zum Konfigurieren von BGP für eine Virtual WAN-Instanz ist dieselbe wie beim Konfigurieren von BGP für ein Azure-VPN-Gateway. 
    
-   Die lokale BGP-Peeradresse darf *nicht* mit der IP-Adresse Ihres VPN-Geräts oder dem Adressraum des virtuellen Netzwerks des VPN-Standorts übereinstimmen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Es kann aber auch *keine* APIPA-Adresse (169.254.*x*.*x*) sein. Geben Sie diese Adresse im entsprechenden lokalen Netzwerkgateway an, das den Standort darstellt. Informationen zu den Voraussetzungen für BGP finden Sie unter [Übersicht über BGP mit Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
+   Die lokale BGP-Peeradresse darf *nicht* mit der IP-Adresse Ihres VPN-Geräts oder dem Adressraum des virtuellen Netzwerks des VPN-Standorts übereinstimmen. Verwenden Sie als BGP-Peer-IP-Adresse eine andere IP-Adresse für das VPN-Gerät. Dabei kann es sich um eine Adresse handeln, die der Loopback-Schnittstelle des Geräts zugewiesen ist. Es kann aber auch *keine* APIPA-Adresse (169.254.*x*.*x*) sein. Geben Sie diese Adresse im entsprechenden VPN-Standort an, der den Speicherort darstellt. Informationen zu den Voraussetzungen für BGP finden Sie unter [Übersicht über BGP mit Azure VPN Gateway](../vpn-gateway/vpn-gateway-bgp-overview.md).
 
 1. Klicken Sie auf **Weiter: Überprüfen + Erstellen >** , um die festgelegten Werte zu überprüfen und die VPN-Site zu erstellen. Wenn Sie **Hubs** für die Verbindung ausgewählt haben, wird die Verbindung zwischen dem lokalen Netzwerk und dem VPN-Gateway des Hubs hergestellt.
 

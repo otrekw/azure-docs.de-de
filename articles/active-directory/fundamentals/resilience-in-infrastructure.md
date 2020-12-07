@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ad97a822aaa6477616a6661a579df6c4ec82729
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: f65ab02e06319519548eaa2c02120691a0ceef02
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919045"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498556"
 ---
 # <a name="build-resilience-in-your-identity-and-access-management-infrastructure"></a>Erzielen von Resilienz in einer Identitäts- und Zugriffsverwaltungsinfrastruktur
 
@@ -40,11 +40,11 @@ Im Zusammenhang mit Ihrer Identitätsinfrastruktur ist Resilienz die Fähigkeit,
 
 ## <a name="why-worry-about-disruption"></a>Warum sollte über Unterbrechungen nachgedacht werden?
 
-Für jeden Aufruf des Authentifizierungssystems können Unterbrechungen auftreten, wenn eine Komponente in der Aufrufkette von Azure AD fehlschlägt. Das bedeutet, dass der Zugriff unterbrochen werden kann, wenn ein Teil Ihrer Infrastruktur ein Problem aufweist, weil Benutzer nicht auf die benötigten Anwendungen zugreifen können. Daher ist die Reduzierung der Anzahl von Authentifizierungsaufrufen und der Anzahl von Abhängigkeiten in diesen Aufrufen wichtig für die Resilienz. Anwendungsentwickler können eine gewisse Kontrolle darüber erlangen, wie häufig Token angefordert werden. Arbeiten Sie z. B. mit ihren Entwicklern zusammen, um sicherzustellen, dass Sie nach Möglichkeit verwaltete Azure AD-Identitäten für ihre Anwendungen verwenden. 
+Für jeden Aufruf des Authentifizierungssystems können Unterbrechungen auftreten, wenn für eine Komponente des Aufrufs ein Fehler auftritt. Wenn die Authentifizierung aufgrund der Fehler für die zugrunde liegenden Komponenten gestört wird, können Ihre Benutzer nicht auf ihre Anwendungen zugreifen. Daher ist die Reduzierung der Anzahl von Authentifizierungsaufrufen und der Anzahl von Abhängigkeiten in diesen Aufrufen wichtig für die Resilienz. Anwendungsentwickler können eine gewisse Kontrolle darüber erlangen, wie häufig Token angefordert werden. Arbeiten Sie z. B. mit ihren Entwicklern zusammen, um sicherzustellen, dass Sie nach Möglichkeit verwaltete Azure AD-Identitäten für ihre Anwendungen verwenden. 
 
 In einem tokenbasierten Authentifizierungssystem wie Azure AD muss die Anwendung eines Benutzers (der Client) ein Sicherheitstoken aus dem Identitätssystem abrufen, bevor auf eine Anwendung oder eine andere Ressource zugegriffen werden kann. Während der Gültigkeitsdauer kann ein Client das gleiche Token mehrmals verwenden, um auf die Anwendung zuzugreifen.
 
-Wenn das Token, das für die Anwendung bereitgestellt wird, abläuft, weist die Anwendung das Token zurück, und der Client muss ein neues Token von Azure AD abrufen. Das Abrufen eines neuen Tokens erfordert möglicherweise eine Benutzerinteraktion, z. B. das Eingeben von Anmeldeinformationen. Das Reduzieren der Häufigkeit von Authentifizierungsaufrufen mit langlebigeren Token verringert dieses Risiko. Sie müssen jedoch die Lebensdauer des Tokens gegen das Risiko abwägen, das durch weniger Richtlinienauswertungen entsteht. Weitere Informationen zum Verwalten der Tokenlebensdauer finden Sie in diesem Artikel zum [Optimieren von Eingabeaufforderungen für erneute Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
+Wenn das Token, das für die Anwendung bereitgestellt wird, abläuft, weist die Anwendung das Token zurück, und der Client muss ein neues Token von Azure AD abrufen. Zur Beschaffung eines neuen Tokens ist ggf. ein Benutzereingriff erforderlich, z. B. das Angeben von Anmeldeinformationen oder die Erfüllung von anderen Anforderungen des Authentifizierungssystems. Indem die Häufigkeit von Authentifizierungsaufrufen durch die Nutzung von Token mit längerer Lebensdauer reduziert wird, wird die Anzahl von unnötigen Interaktionen verringert. Sie müssen jedoch die Lebensdauer des Tokens gegen das Risiko abwägen, das durch weniger Richtlinienauswertungen entsteht. Weitere Informationen zum Verwalten der Tokenlebensdauer finden Sie in diesem Artikel zum [Optimieren von Eingabeaufforderungen für erneute Authentifizierung](https://docs.microsoft.com/azure/active-directory/authentication/concepts-azure-multi-factor-authentication-prompts-session-lifetime).
 
 ## <a name="ways-to-increase-resilience"></a>Möglichkeiten zum Verbessern der Resilienz
 Die folgende Abbildung zeigt sechs konkrete Möglichkeiten, die Resilienz zu steigern. Jede Methode wird ausführlich in den Artikeln erläutert, die im Abschnitt „Nächste Schritte“ dieses Artikels genannt werden.

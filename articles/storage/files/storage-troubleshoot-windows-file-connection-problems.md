@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 09/13/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: b684123068889e422080605fb9c50ef9aed0cb76
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: aef332e54fa650e1abbebe671560238d7eb318de
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94630157"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492045"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows-smb"></a>Behandeln von Azure Files-Problemen unter Windows (SMB)
 
@@ -147,7 +147,7 @@ Der Fehler 1816 tritt auf, wenn Sie die Obergrenze der parallelen offenen Handle
 
 ### <a name="solution"></a>Lösung
 
-Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Microsoft Azure Storage](../blobs/storage-performance-checklist.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json).
+Reduzieren Sie die Anzahl der gleichzeitig geöffneten Handles, indem Sie einige Handles schließen und es anschließend erneut versuchen. Weitere Informationen finden Sie unter [Checkliste zur Leistung und Skalierbarkeit von Microsoft Azure Storage](../blobs/storage-performance-checklist.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 
 Verwenden Sie das PowerShell-Cmdlet [Get-AzStorageFileHandle](/powershell/module/az.storage/get-azstoragefilehandle), um geöffnete Handles für eine Dateifreigabe, ein Verzeichnis oder eine Datei anzuzeigen.  
 
@@ -176,7 +176,7 @@ Stellen Sie sicher, dass virtuelle Netzwerk- und Firewallregeln für das Speiche
 Navigieren Sie zu dem Speicherkonto, in dem sich die Azure-Dateifreigabe befindet, klicken Sie auf **Zugriffssteuerung (IAM)** , und überprüfen Sie, ob Ihr Benutzerkonto Zugriff auf das Speicherkonto besitzt. Weitere Informationen finden Sie unter [Schützen Ihres Speicherkontos mit rollenbasierter Zugriffssteuerung (Azure RBAC)](../blobs/security-recommendations.md#data-protection).
 
 <a id="open-handles"></a>
-## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Eine Datei oder ein Verzeichnis in einer Azure-Dateifreigabe kann nicht gelöscht werden
+## <a name="unable-to-modify-moverename-or-delete-a-file-or-directory"></a>Datei oder Verzeichnis kann nicht geändert, verschoben/umbenannt oder gelöscht werden
 Einer der Hauptzwecke einer Dateifreigabe ist, dass mehrere Benutzer und Anwendungen gleichzeitig mit Dateien und Verzeichnissen in der Freigabe interagieren können. Um diese Interaktion zu unterstützen, bieten Dateifreigaben verschiedene Methoden zur Vermittlung des Zugriffs auf Dateien und Verzeichnisse.
 
 Wenn Sie eine Datei aus einer bereitgestellten Azure-Dateifreigabe über SMB öffnen, fordert die Anwendung bzw. das Betriebssystem ein Dateihandle an, bei dem es sich um einen Verweis auf die Datei handelt. Unter anderem gibt die Anwendung beim Anfordern eines Dateihandles einen Dateifreigabemodus an, der die Exklusivitätsebene des Zugriffs auf die Datei bestimmt, die durch Azure Files erzwungen wird: 
@@ -262,7 +262,7 @@ Die Leistung ist möglicherweise langsam, wenn Sie versuchen, Dateien in den Azu
 - Wenn Sie keine bestimmte Anforderung für die Mindest-E/A-Größe haben, empfehlen wir Ihnen für eine optimale Leistung die Verwendung von 1 MiB als E/A-Größe.
 -   Wenn Sie die endgültige Größe einer Datei kennen, die Sie mit Schreibvorgängen erweitern, und Ihre Software keine Kompatibilitätsprobleme aufweist, wenn das noch nicht geschriebene Fragment in der Datei Nullen enthält, legen Sie die Dateigröße im Voraus fest (anstatt jeden Schreibvorgang zu einem Erweiterungsschreibvorgang zu machen).
 -   Verwenden Sie die richtige Kopiermethode:
-    -   Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%252fazure%252fstorage%252ffiles%252ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
+    -   Verwenden Sie [AzCopy](../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) für Übertragungen zwischen zwei Dateifreigaben.
     -   Verwenden Sie [Robocopy](./storage-files-deployment-guide.md#robocopy) zwischen Dateifreigaben auf einem lokalen Computer.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>Überlegungen zu Windows 8.1 oder Windows Server 2012 R2
@@ -401,7 +401,7 @@ Debug-AzStorageAccountAuth -StorageAccountName $StorageAccountName -ResourceGrou
 Das Cmdlet führt diese nachfolgenden Überprüfungen der Reihe nach durch und bietet Anleitungen zu Fehlern:
 1. CheckADObjectPasswordIsCorrect: Sicherstellen, dass das für die AD-Identität konfigurierte Kennwort, das das Speicherkonto darstellt, mit dem kerb1- oder kerb2-Schlüssel des Speicherkontos übereinstimmt. Wenn das Kennwort falsch ist, können Sie [Update-AzStorageAccountADObjectPassword](./storage-files-identity-ad-ds-update-password.md) ausführen, um das Kennwort zurückzusetzen. 
 2. CheckADObject: Vergewissern Sie sich, dass in Active Directory ein Objekt vorhanden ist, das das Speicherkonto darstellt und den richtigen SPN (Dienstprinzipalnamen) aufweist. Wenn der SPN nicht ordnungsgemäß eingerichtet ist, führen Sie das Cmdlet „Set-AD“ aus, das im Debug-Cmdlet zurückgegeben wird, um den SPN zu konfigurieren.
-3. CheckDomainJoined: Überprüfen Sie, ob der Clientcomputer Mitglied der AD-Domäne ist. Wenn Ihr Computer nicht in die AD-Domäne eingebunden ist, finden Sie weitere Informationen in diesem [Artikel](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain#:~:text=To%20join%20a%20computer%20to%20a%20domain&text=Navigate%20to%20System%20and%20Security,join%2C%20and%20then%20click%20OK) mit Anweisungen zum Domänenbeitritt.
+3. CheckDomainJoined: Überprüfen Sie, ob der Clientcomputer Mitglied der AD-Domäne ist. Wenn Ihr Computer nicht in die AD-Domäne eingebunden ist, finden Sie weitere Informationen in diesem [Artikel](/windows-server/identity/ad-fs/deployment/join-a-computer-to-a-domain) mit Anweisungen zum Domänenbeitritt.
 4. CheckPort445Connectivity: Überprüfen Sie, ob Port 445 für SMB-Verbindungen geöffnet ist. Wenn der erforderliche Port nicht geöffnet ist, finden Sie im Tool zur Problembehandlung [AzFileDiagnostics.ps1](https://github.com/Azure-Samples/azure-files-samples/tree/master/AzFileDiagnostics/Windows) Informationen zu Konnektivitätsproblemen mit Azure Files.
 5. CheckSidHasAadUser: Überprüfung, ob der angemeldete AD-Benutzer mit Azure AD synchronisiert ist. Wenn Sie nachschlagen möchten, ob ein bestimmter AD-Benutzer mit Azure AD synchronisiert ist, können Sie den Benutzernamen und die Domäne in den Eingabeparametern angeben. 
 6. CheckGetKerberosTicket: Versuch, ein Kerberos-Ticket für die Verbindung mit dem Speicherkonto zu erhalten. Wenn kein gültiges Kerberos-Token vorhanden ist, führen Sie das Cmdlet „klist get cifs/storage-account-name.file.core.windows.net“ aus, und betrachten Sie den Fehlercode, um die Ursache für den Fehler beim Ticketabruf zu ermitteln.

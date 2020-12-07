@@ -7,12 +7,12 @@ ms.date: 07/16/2020
 ms.service: storage
 ms.subservice: common
 ms.topic: how-to
-ms.openlocfilehash: b51746326c2df81e2dd2bdc72bf2a9ab72b649b5
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d9e0e63a3586be139620c154616acfcba2ab10f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92790558"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96498216"
 ---
 # <a name="use-the-azure-storage-emulator-for-development-and-testing"></a>Verwenden des Azure-Speicheremulators für Entwicklung und Tests
 
@@ -44,7 +44,7 @@ Es bestehen einige Unterschiede in der Funktionsweise zwischen dem Speicheremula
 
 So starten Sie den Azure-Speicheremulator
 
-1. Wählen Sie die Schaltfläche **Start** aus, oder drücken Sie die **Windows-Taste** .
+1. Wählen Sie die Schaltfläche **Start** aus, oder drücken Sie die **Windows-Taste**.
 2. Geben Sie `Azure Storage Emulator` ein.
 3. Wählen Sie den Emulator in der Liste der angezeigten Anwendungen aus.
 
@@ -184,11 +184,11 @@ Geben Sie zum Anzeigen der Liste der Optionen an der Eingabeaufforderung `/help`
 
 | Option | BESCHREIBUNG | Befehl | Argumente |
 | --- | --- | --- | --- |
-| **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess* : Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
+| **Starten** |Startet den Speicheremulator. |`AzureStorageEmulator.exe start [-inprocess]` |*-Reprocess*: Startet den Emulator im aktuellen Prozess, anstatt einen neuen Prozess zu erstellen. |
 | **Beenden** |Beendet den Speicheremulator. |`AzureStorageEmulator.exe stop` | |
 | **Status** |Zeigt den Status des Speicheremulators an. |`AzureStorageEmulator.exe status` | |
-| **Clear** |Löscht die Daten in allen Diensten, die an der Befehlszeile angegeben werden. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob* : Löscht Blobdaten. <br/>*queue* : Löscht Warteschlangendaten. <br/>*table* : Löscht Tabellendaten. <br/>*all* : Löscht sämtliche Daten in allen Diensten. |
-| **Init** |Führt eine einmalige Initialisierung zur Einrichtung des Emulators durch. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName* : Gibt den Server an, der die SQL-Instanz hostet. <br/>*-sqlinstance instanceName* : Gibt den Namen der zu verwendenden SQL-Instanz in der Standardserverinstanz an. <br/>*-forcecreate* : Erzwingt die Erstellung der SQL-Datenbank, auch wenn diese bereits vorhanden ist. <br/>*-skipcreate* : Überspringt das Erstellen der SQL-Datenbank. Dies hat Vorrang vor „-forcecreate“.<br/>*-reserveports* : Versucht, die den Diensten zugeordneten HTTP-Ports zu reservieren.<br/>*-unreserveports* : Versucht, Reservierungen für die den Diensten zugeordneten HTTP-Ports zu entfernen. Dies hat Vorrang vor „-reserveports“.<br/>*-inprocess* : Führt die Initialisierung im aktuellen Prozess aus, anstatt einen neuen Prozess zu erstellen. Der aktuelle Prozess muss mit erhöhten Rechten gestartet werden, wenn Portreservierungen geändert werden. |
+| **Clear** |Löscht die Daten in allen Diensten, die an der Befehlszeile angegeben werden. |`AzureStorageEmulator.exe clear [blob] [table] [queue] [all]` |*blob*: Löscht Blobdaten. <br/>*queue*: Löscht Warteschlangendaten. <br/>*table*: Löscht Tabellendaten. <br/>*all*: Löscht sämtliche Daten in allen Diensten. |
+| **Init** |Führt eine einmalige Initialisierung zur Einrichtung des Emulators durch. |<code>AzureStorageEmulator.exe init [-server serverName] [-sqlinstance instanceName] [-forcecreate&#124;-skipcreate] [-reserveports&#124;-unreserveports] [-inprocess]</code> |*-server serverName\instanceName*: Gibt den Server an, der die SQL-Instanz hostet. <br/>*-sqlinstance instanceName*: Gibt den Namen der zu verwendenden SQL-Instanz in der Standardserverinstanz an. <br/>*-forcecreate*: Erzwingt die Erstellung der SQL-Datenbank, auch wenn diese bereits vorhanden ist. <br/>*-skipcreate*: Überspringt das Erstellen der SQL-Datenbank. Dies hat Vorrang vor „-forcecreate“.<br/>*-reserveports*: Versucht, die den Diensten zugeordneten HTTP-Ports zu reservieren.<br/>*-unreserveports*: Versucht, Reservierungen für die den Diensten zugeordneten HTTP-Ports zu entfernen. Dies hat Vorrang vor „-reserveports“.<br/>*-inprocess*: Führt die Initialisierung im aktuellen Prozess aus, anstatt einen neuen Prozess zu erstellen. Der aktuelle Prozess muss mit erhöhten Rechten gestartet werden, wenn Portreservierungen geändert werden. |
 
 ## <a name="differences-between-the-storage-emulator-and-azure-storage"></a>Unterschiede zwischen dem Speicheremulator und Azure Storage
 
@@ -250,7 +250,7 @@ Es bestehen keine Unterschiede beim Warteschlangenspeicher im Emulator.
 ### <a name="version-55"></a>Version 5.5
 
 * Der Speicheremulator unterstützt nun die Version vom 09.11.2017 der Speicherdienste für Blob-, Warteschlangen- und Tabellenspeicherdienst-Endpunkte.
-* Unterstützung für die Blobeigenschaft **Created** , die die Bloberstellungszeit zurückgibt, wurde hinzugefügt.
+* Unterstützung für die Blobeigenschaft **Created**, die die Bloberstellungszeit zurückgibt, wurde hinzugefügt.
 
 ### <a name="version-54"></a>Version 5.4
 

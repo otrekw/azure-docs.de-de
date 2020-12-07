@@ -7,18 +7,24 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 11/24/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 81bcfdf5e63d49280fb798773559310cbd912a26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4390291eb96c11b8fb7fdb48eb92abaf802b80c0
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013580"
+ms.locfileid: "96030780"
 ---
 # <a name="create-a-suggester-to-enable-autocomplete-and-suggested-results-in-a-query"></a>Erstellen einer Vorschlagsfunktion zum Ermöglichen von AutoVervollständigen und vorgeschlagenen Ergebnissen in einer Abfrage
 
-In Azure Cognitive Search wird die Suche während der Eingabe über ein Konstrukt mit einer **Vorschlagsfunktion** ermöglicht, das einem [Suchindex](search-what-is-an-index.md) hinzugefügt wird. Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge*, die einen direkten Aufruf eines bestimmten Ergebnisses ermöglichen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
+In Azure Cognitive Search ermöglicht eine *Vorschlagsfunktion* die Suche während der Eingabe. Ein Vorschlag ist eine interne Datenstruktur, die aus einer Feldsammlung besteht. Die Felder werden einer zusätzlichen Tokenisierung unterzogen, wobei Präfixsequenzen zur Unterstützung von Übereinstimmungen bei Teilausdrücken generiert werden.
+
+Wenn eine Vorschlagsfunktion z. B. ein Feld „Stadt“ enthält, werden resultierende Präfixkombinationen von „Sea“, „Seat“, „seatt“ und „seattl“ für den Begriff „Seattle“ erstellt. Präfixe werden in invertierten Indizes gespeichert – eines für jedes Feld, das in der Feldsammlung der Vorschlagsfunktion angegeben ist.
+
+## <a name="typeahead-experiences-in-cognitive-search"></a>Vorschlagssuche in Cognitive Search
+
+Eine Vorschlagsfunktion unterstützt zwei Umgebungen: *AutoVervollständigen* zum Vervollständigen einer partiellen Eingabe zu einem Gesamtbegriff für eine Abfrage und *Vorschläge*, die einen direkten Aufruf eines bestimmten Ergebnisses ermöglichen. AutoVervollständigen führt zu einer Abfrage. Vorschläge führen zu einem übereinstimmenden Dokument.
 
 Der folgende Screenshot aus dem Beispiel [Erstellen Ihrer ersten App in C#](tutorial-csharp-type-ahead-and-suggestions.md) veranschaulicht beide Varianten. AutoVervollständigen erwartet einen potenziellen Begriff und ergänzt etwa „Zw“ mit „illing“. Vorschläge sind Minisuchergebnisse, bei denen ein Feld wie „Hotelname“ für ein entsprechendes Hotelsuchdokument aus dem Index steht. Für Vorschläge können Sie alle Felder bereitstellen, die beschreibende Informationen enthalten.
 
@@ -31,10 +37,6 @@ Sie können diese Features einzeln oder zusammen verwenden. Um dieses Verhalten 
 + Sie können eine Abfrage, die eine Vorschlagsfunktion unterstützt, mit einer der [unten aufgeführten APIs](#how-to-use-a-suggester) in Form einer Vorschlags- oder AutoVervollständigen-Anforderung aufrufen.
 
 Die Unterstützung der Suche während der Eingabe wird auf Feldebene für Zeichenfolgenfelder aktiviert. Sie können beide Verhaltensweisen für Eingabevorschläge in derselben Suchlösung implementieren, wenn Sie ein ähnliches Erlebnis wie im Screenshot wünschen. Beide Anforderungen zielen auf die *Dokumentensammlung* eines bestimmten Index ab, und die Antworten werden zurückgegeben, nachdem ein Benutzer eine Zeichenfolge aus mindestens 3 Zeichen eingegeben hat.
-
-## <a name="what-is-a-suggester"></a>Was ist eine Vorschlagsfunktion?
-
-Bei einer Vorschlagsfunktion handelt es sich um eine interne Datenstruktur, die das Verhalten einer Suche während der Eingabe unterstützt, indem Präfixe für die Übereinstimmungssuche bei partiellen Abfragen gespeichert werden. Ähnlich wie bei tokenisierten Begriffen werden Präfixe in invertierten Indizes gespeichert – eines für jedes Feld, das in der Feldsammlung der Vorschlagsfunktion angegeben ist.
 
 ## <a name="how-to-create-a-suggester"></a>Erstellen einer Vorschlagsfunktion
 

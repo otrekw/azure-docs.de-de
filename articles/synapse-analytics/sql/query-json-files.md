@@ -1,5 +1,5 @@
 ---
-title: Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau)
+title: Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool
 description: In diesem Abschnitt wird erläutert, wie JSON-Dateien mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics gelesen werden.
 services: synapse-analytics
 author: azaricstefan
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: d071bbabf630dd326ae46f4c840f8e60f957f9fe
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 5703e4ac3d4a545041c7d258f0b1f0e7c79a33b5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685629"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462601"
 ---
-# <a name="query-json-files-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics
+# <a name="query-json-files-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Abfragen von JSON-Dateien mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool (Vorschau) in Azure Synapse Analytics schreiben können. Das Ziel der Abfrage ist das Lesen von JSON-Dateien mithilfe von [OPENROWSET](develop-openrowset.md). 
+In diesem Artikel erfahren Sie, wie Sie eine Abfrage mit einem serverlosen SQL-Pool in Azure Synapse Analytics schreiben können. Das Ziel der Abfrage ist das Lesen von JSON-Dateien mithilfe von [OPENROWSET](develop-openrowset.md). 
 - JSON-Standarddateien, in denen mehrere JSON-Dokumente als JSON-Array gespeichert sind.
 - Durch Zeilen getrennte JSON-Dateien, in denen JSON-Dokumente durch Zeilenumbruchzeichen getrennt sind. Gängige Erweiterungen für diese Dateitypen sind `jsonl`, `ldjson`und `ndjson`.
 
