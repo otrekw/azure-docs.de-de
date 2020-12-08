@@ -87,10 +87,12 @@
       href: supported-map-styles.md
     - name: Zoomfaktoren und Linienraster
       href: zoom-levels-and-tile-grid.md
-    - name: Mobility Service-Datenstruktur
+    - name: Mobility Services
       href: mobility-service-data-structure.md
-    - name: Konzepte des Wetterdiensts
+    - name: Konzepte von Wetterdiensten
       href: weather-services-concepts.md
+    - name: Häufig gestellte Fragen zu Wetterdiensten
+      href: weather-services-faq.md
 - name: Anleitungen
   items:
     - name: Verwalten von Azure Maps-Konten

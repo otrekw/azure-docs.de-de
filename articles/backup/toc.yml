@@ -66,6 +66,8 @@
           href: sap-hana-backup-support-matrix.md
         - name: Supportmatrix für Sicherungen von Azure-Dateifreigaben
           href: azure-file-share-support-matrix.md
+        - name: Active Directory-Domänencontroller
+          href: active-directory-backup-restore.md
         - name: Unterstützte VM-SKUs für Azure Policy
           href: backup-azure-policy-supported-skus.md
     - name: Häufig gestellte Fragen (FAQ)
@@ -460,7 +462,7 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
-    - name: Compliance
+    - name: Kompatibilität
       href: compliance-offerings.md
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/'
