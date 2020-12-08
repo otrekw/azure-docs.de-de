@@ -890,8 +890,6 @@
               items:
                 - name: Eingehende Diagnose für Web-Apps und Dienste
                   href: app/devops.md
-                - name: Leistung in Webanwendungen überwachen
-                  href: app/web-monitor-performance.md
                 - name: 'Trennen von Entwicklung, Test und Produktion'
                   href: app/separate-resources.md
                 - name: Gewusst wie – in Application Insights
