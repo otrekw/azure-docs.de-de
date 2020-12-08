@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 18d228af5c162159d52b5583613d4449d1195af2
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95894234"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96483953"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
 
@@ -40,14 +40,13 @@ ms.locfileid: "95894234"
 
 **Neue Features**
 - **Linux:** Unterstützung für Debian 10 und Ubuntu 20.04 LTS wurde hinzugefügt.
-- **Python/Objective-C**: Die Unterstützung für die `KeywordRecognizer`-API wurde hinzugefügt. Die Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/custom-keyword-basics).
+- **Python/Objective-C**: Die Unterstützung für die `KeywordRecognizer`-API wurde hinzugefügt. Die Dokumentation finden Sie [hier](./custom-keyword-basics.md).
 - **C++/Java/C#** : Die Unterstützung zum Festlegen beliebiger `HttpHeader`-Schlüssel/-Werte über `ServicePropertyChannel::HttpHeader` wurde hinzugefügt.
-- **JavaScript:** Die Unterstützung für die `ConversationTranscriber`-API wurde hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-use-conversation-transcription?pivots=programming-language-javascript). 
-- **C++/C#** : Die neue `AudioDataStream FromWavFileInput`-Methode (zum Lesen von WAV-Dateien) wurde [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/audiodatastream) und [hier (C#)](
-https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) hinzugefügt.
--  **C++/C#/Java/Python/Objective-C/Swift**: Es wurde eine `stopSpeakingAsync()`-Methode zum Beenden der Sprachsynthese hinzugefügt. Die Referenzdokumentation finden Sie [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech), [hier (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python) und [hier (Objective-C/Swift)](https://docs.microsoft.com/objectivec/cognitive-services/speech/).
-- **C#, C++, Java**: Es wurde eine `FromDialogServiceConnector()`-Funktion zur Klasse `Connection` hinzugefügt, mit der Ereignisse für `DialogServiceConnector` zum Herstellen oder Aufheben von Verbindungen überwacht werden können. Die Referenzdokumentation finden Sie [hier (C#)](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [hier (C++)](https://docs.microsoft.com/cpp/cognitive-services/speech/connection) und [hier (Java)](https://docs.microsoft.com/java/api/com.microsoft.cognitiveservices.speech.connection).
-<!-- - **C++/C#/Java/Python/Objective-C/Swift**: Added support for Pronunciation Assessment, which evaluates speech pronunciation and gives speakers feedback on the accuracy and fluency of spoken audio. Read the documentation [here](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-pronunciation-assessment). -->
+- **JavaScript:** Die Unterstützung für die `ConversationTranscriber`-API wurde hinzugefügt. Die zugehörige Dokumentation finden Sie [hier](./how-to-use-conversation-transcription.md?pivots=programming-language-javascript). 
+- **C++/C#** : Die neue `AudioDataStream FromWavFileInput`-Methode (zum Lesen von WAV-Dateien) wurde [hier (C++)](/cpp/cognitive-services/speech/audiodatastream) und [hier (C#)](/dotnet/api/microsoft.cognitiveservices.speech.audiodatastream?view=azure-dotnet) hinzugefügt.
+-  **C++/C#/Java/Python/Objective-C/Swift**: Es wurde eine `stopSpeakingAsync()`-Methode zum Beenden der Sprachsynthese hinzugefügt. Die Referenzdokumentation finden Sie [hier (C++)](/cpp/cognitive-services/speech/microsoft-cognitiveservices-speech-namespace), [hier (C#)](/dotnet/api/microsoft.cognitiveservices.speech?view=azure-dotnet), [hier (Java)](/java/api/com.microsoft.cognitiveservices.speech), [hier (Python)](/python/api/azure-cognitiveservices-speech/azure.cognitiveservices.speech?view=azure-python) und [hier (Objective-C/Swift)](/objectivec/cognitive-services/speech/).
+- **C#, C++, Java**: Es wurde eine `FromDialogServiceConnector()`-Funktion zur Klasse `Connection` hinzugefügt, mit der Ereignisse für `DialogServiceConnector` zum Herstellen oder Aufheben von Verbindungen überwacht werden können. Die Referenzdokumentation finden Sie [hier (C#)](/dotnet/api/microsoft.cognitiveservices.speech.connection?view=azure-dotnet), [hier (C++)](/cpp/cognitive-services/speech/connection) und [hier (Java)](/java/api/com.microsoft.cognitiveservices.speech.connection).
+- **C++/C#/Java/Python/Objective-C/Swift**: Die Unterstützung für die Aussprachebewertung wurde hinzugefügt. Diese bewertet die Aussprache und gibt den Rednern Feedback zur Genauigkeit und zum Redefluss der gesprochenen Audioinformationen. Lesen Sie die [Dokumentation](how-to-pronunciation-assessment.md).
 
 **Wichtige Änderung**
 - **JavaScript:** Der Rückgabetyp von PullAudioOutputStream.read() wurde von einer internen Zusage in eine native JavaScript-Zusage geändert.
@@ -73,7 +72,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 **Beispiele**
 - **ObjectiveC**: Ein Beispiel für die Schlüsselworterkennung wurde [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/objective-c/ios/speech-samples) hinzugefügt.
 - **C#/JavaScript**: Ein Schnellstart für die Unterhaltungstranskription wurde [hier (C#)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/dotnet/conversation-transcription) und [hier (JavaScript)](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/javascript/node/conversation-transcription) hinzugefügt.
-<!-- - **C++/C#/Java/Python/Swift/ObjectiveC**: Added sample for pronunciation assessment [here](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) -->
+- **C++/C#/Java/Python/Swift/ObjectiveC**: [Hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples) wurde ein Beispiel für die Bewertung der Aussprache hinzugefügt.
 - **Xamarin**: Der Schnellstart wurde [hier](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/csharp/xamarin) auf die neueste Visual Studio-Vorlage aktualisiert.
 
 **Bekanntes Problem**
@@ -83,7 +82,7 @@ https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.audioda
 Bleiben Sie gesund!
 
 ## <a name="speech-cli-also-known-as-spx-2020-october-release"></a>Speech-Befehlszeilenschnittstelle (auch als SPX bezeichnet): Release vom Oktober 2020
-SPX ist die Befehlszeilenschnittstelle, um den Azure Speech-Dienst ohne das Schreiben von Code zu verwenden. Laden Sie die neueste Version [hier](https://docs.microsoft.com/azure/cognitive-services/speech-service/spx-basics) herunter. <br>
+SPX ist die Befehlszeilenschnittstelle, um den Azure Speech-Dienst ohne das Schreiben von Code zu verwenden. Laden Sie die neueste Version [hier](./spx-basics.md) herunter. <br>
 
 **Neue Features**
 - `spx csr dataset upload --kind audio|language|acoustic` – Erstellen Sie Datasets aus lokalen Daten, nicht nur aus URLs.

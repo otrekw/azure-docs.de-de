@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/21/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9e00e0e5a34eecd6974e8919ce0d0e16f48757f3
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: ba444a497fa4fccab6b8dec1fadb3383420e4d49
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94540967"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452966"
 ---
 # <a name="manage-digital-twins"></a>Verwalten digitaler Zwillinge
 
@@ -99,7 +99,7 @@ Sie können auf die Details jedes digitalen Zwillings zugreifen, indem Sie die M
 ```csharp
 object result = await client.GetDigitalTwin(id);
 ```
-Dieser Aufruf gibt Zwillingsdaten als einen stark typisierten Objekttyp (z. B. `BasicDigitalTwin`) zurück. Hier folgt ein Beispiel zur Vorgehensweise beim Anzeigen der Zwillingsdetails:
+Dieser Aufruf gibt Zwillingsdaten als einen stark typisierten Objekttyp (z. B. `BasicDigitalTwin`) zurück. `BasicDigitalTwin` ist eine Serialisierungshilfsklasse, die im SDK enthalten ist und die die zentralen Zwillingsmetadaten und -eigenschaften in einem vorab analysierten Format zurückgibt. Hier folgt ein Beispiel zur Vorgehensweise beim Anzeigen der Zwillingsdetails:
 
 ```csharp
 Response<BasicDigitalTwin> twin = client.GetDigitalTwin("myRoomId");
@@ -176,21 +176,7 @@ Die definierten Eigenschaften des digitalen Zwillings werden als Eigenschaften d
     - Der Synchronisierungsstatus für jede schreibbare Eigenschaft. Dies ist besonders hilfreich für Geräte, bei denen es möglich ist, dass der Dienst und das Gerät abweichende Status aufweisen (z. B. wenn ein Gerät offline ist). Derzeit gilt diese Eigenschaft nur für physische Geräte, die mit IoT Hub verbunden sind. Mit den Daten im Metadatenabschnitt erfahren Sie den vollständigen Status einer Eigenschaft sowie die Zeitstempel der letzten Änderung. Weitere Informationen zum Synchronisierungsstatus erhalten Sie in [diesem IoT Hub-Tutorial](../iot-hub/tutorial-device-twins.md) zum Synchronisieren des Gerätestatus.
     - Dienstspezifische Metadaten, wie z. B. aus IoT Hub oder Azure Digital Twins 
 
-Sie können den zurückgegebenen JSON-Code für den Zwilling mithilfe einer JSON-Analysebibliothek Ihrer Wahl analysieren, wie z. B. mit `System.Text.Json`.
-
-Sie können auch die Serialisierungshilfsklasse `BasicDigitalTwin` verwenden, die im SDK enthalten ist und die die zentralen Zwillingsmetadaten und -eigenschaften in einem vorab analysierten Format zurückgibt. Beispiel:
-
-```csharp
-Response<BasicDigitalTwin> twin = client.GetDigitalTwin(twin_Id);
-Console.WriteLine($"Model id: {twin.Metadata.ModelId}");
-foreach (string prop in twin.Contents.Keys)
-{
-    if (twin.Contents.TryGetValue(prop, out object value))
-        Console.WriteLine($"Property '{prop}': {value}");
-}
-```
-
-Weitere Informationen zu den Serialisierungshilfsklassen finden Sie unter [*Gewusst wie: Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
+Weitere Informationen zu den Serialisierungshilfsklassen wie `BasicDigitalTwin` finden Sie unter [ *Verwenden der Azure Digital Twins-APIs und SDKs*](how-to-use-apis-sdks.md).
 
 ## <a name="view-all-digital-twins"></a>Anzeigen aller digitalen Zwillinge
 

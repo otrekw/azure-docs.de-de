@@ -37,6 +37,8 @@
           href: how-to-automatic-language-detection.md
         - name: Verwenden der Batch-Transkriptions-API
           href: batch-transcription.md
+        - name: Migrieren von v2.0 zu v3.0
+          url: migrate-v2-to-v3.md
         - name: Bewerten der Aussprache
           href: how-to-pronunciation-assessment.md
     - name: Tutorials
@@ -581,7 +583,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

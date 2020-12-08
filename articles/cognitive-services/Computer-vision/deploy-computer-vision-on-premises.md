@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: conceptual
-ms.date: 10/30/2020
+ms.date: 11/23/2020
 ms.author: aahi
-ms.openlocfilehash: 1e77b5ea2bbd5bae79295a5680fa6e143efa5e99
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: dce8893cac156ce2941652e32409357cb8ec3b1a
+ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131529"
+ms.lasthandoff: 11/24/2020
+ms.locfileid: "96015314"
 ---
 # <a name="use-computer-vision-container-with-kubernetes-and-helm"></a>Verwenden eines Containers für maschinelles Sehen mit Kubernetes und Helm
 
@@ -76,7 +76,7 @@ read:
     name: cognitive-services-read
     registry:  mcr.microsoft.com/
     repository: azure-cognitive-services/vision/read
-    tag: 3.1-preview
+    tag: 3.2-preview.1
     args:
       eula: accept
       billing: # {ENDPOINT_URI}
@@ -105,7 +105,7 @@ read:
 > [!IMPORTANT]
 > - Ohne Angabe der Werte `billing` und `apikey` laufen die Dienste nach 15 Minuten ab. Ebenso führt die Überprüfung zu Fehlern, da die Dienste nicht verfügbar sind.
 > 
-> - Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](https://docs.microsoft.com/azure/cognitive-services/computer-vision/computer-vision-resource-container-config).
+> - Wenn Sie mehrere Lesecontainer hinter einem Lastenausgleich bereitstellen (z. B. unter Docker Compose oder Kubernetes), benötigen Sie einen externen Cache. Da der Verarbeitungscontainer und der GET-Anforderungscontainer möglicherweise nicht identisch sind, werden die Ergebnisse in einem externen Cache gespeichert und dort für die Container freigegeben. Ausführliche Informationen zu Cacheeinstellungen finden Sie unter [Konfigurieren von Docker-Containern für maschinelles Sehen](./computer-vision-resource-container-config.md).
 >
 
 Erstellen Sie den Ordner *templates* unter dem Verzeichnis *read*. Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Die `deployment.yaml`-Datei dient als Helm-Vorlage.
@@ -243,6 +243,106 @@ deployment.apps/read   1/1     1            1           17s
 NAME                              DESIRED   CURRENT   READY   AGE
 replicaset.apps/read-57cb76bcf7   1         1         1       17s
 ```
+
+## <a name="deploy-multiple-v3-containers-on-the-kubernetes-cluster"></a>Bereitstellen mehrerer V3-Container auf dem Kubernetes-Cluster
+
+Ab V3 des Containers können Sie die Container parallel auf Aufgaben- und Seitenebene verwenden.
+
+Entwurfsbedingt verfügt jeder V3-Container über einen Verteiler und einen Erkennungsworker. Der Verteiler ist dafür verantwortlich, eine mehrseitige Aufgabe in mehrere einzelne Unteraufgaben mit nur einer Seite aufzuteilen. Der Erkennungsworker ist für die Erkennung eines Dokuments mit nur einer Seite optimiert. Um Parallelität auf Seitenebene zu erreichen, stellen Sie mehrere V3-Container hinter einem Load Balancer bereit, und lassen Sie die Container einen universellen Speicher und eine universelle Warteschlange freigeben. 
+
+> [!NOTE] 
+> Zurzeit werden nur Azure Storage und die Azure-Warteschlange unterstützt. 
+
+Der Container, der die Anforderung empfängt, kann die Aufgabe in einseitige untergeordnete Aufgaben aufteilen und sie der universellen Warteschlange hinzufügen. Jeder Erkennungsworker aus einem Container mit geringerer Auslastung kann einseitige Unteraufgaben aus der Warteschlange nutzen, eine Erkennung durchführen und das Ergebnis in den Speicher hochladen. Der Durchsatz kann je nach Anzahl der bereitgestellten Container bis zu `n` Mal verbessert werden.
+
+Kopieren Sie den folgenden YAML-Code, und fügen Sie ihn in eine Datei mit dem Namen `deployment.yaml` ein. Ersetzen Sie die Kommentare `# {ENDPOINT_URI}` und `# {API_KEY}` durch Ihre eigenen Werte. Ersetzen Sie den `# {AZURE_STORAGE_CONNECTION_STRING}`-Kommentar durch Ihre Azure Storage-Verbindungszeichenfolge. Konfigurieren Sie `replicas` auf die gewünschte Anzahl, die im folgenden Beispiel auf `3` festgelegt ist.
+
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: read
+  labels:
+    app: read-deployment
+spec:
+  selector:
+    matchLabels:
+      app: read-app
+  replicas: # {NUMBER_OF_READ_CONTAINERS}
+  template:
+    metadata:
+      labels:
+        app: read-app
+    spec:
+      containers:
+      - name: cognitive-services-read
+        image: mcr.microsoft.com/azure-cognitive-services/vision/read
+        ports:
+        - containerPort: 5000
+        env:
+        - name: EULA
+          value: accept
+        - name: billing
+          value: # {ENDPOINT_URI}
+        - name: apikey
+          value: # {API_KEY}
+        - name: Storage__ObjectStore__AzureBlob__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+        - name: Queue__Azure__ConnectionString
+          value: # {AZURE_STORAGE_CONNECTION_STRING}
+--- 
+apiVersion: v1
+kind: Service
+metadata:
+  name: azure-cognitive-service-read
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 5000
+    targetPort: 5000
+  selector:
+    app: read-app
+```
+
+Führen Sie den folgenden Befehl aus. 
+
+```console
+kubectl apply -f deployment.yaml
+```
+
+Nachfolgend finden Sie eine Beispielausgabe, die bei erfolgreicher Bereitstellungsausführung angezeigt werden kann:
+
+```console
+deployment.apps/read created
+service/azure-cognitive-service-read created
+```
+
+Der Kubernetes-Bereitstellungsvorgang kann mehrere Minuten dauern. Vergewissern Sie sich, dass die Pods und Dienste ordnungsgemäß bereitgestellt wurden und verfügbar sind, und führen Sie dann den folgenden Befehl aus:
+
+```console
+kubectl get all
+```
+
+Eine Konsolenausgabe ähnlich der folgenden sollte angezeigt werden:
+
+```console
+kubectl get all
+NAME                       READY   STATUS    RESTARTS   AGE
+pod/read-6cbbb6678-58s9t   1/1     Running   0          3s
+pod/read-6cbbb6678-kz7v4   1/1     Running   0          3s
+pod/read-6cbbb6678-s2pct   1/1     Running   0          3s
+
+NAME                                   TYPE           CLUSTER-IP   EXTERNAL-IP    PORT(S)          AGE
+service/azure-cognitive-service-read   LoadBalancer   10.0.134.0   <none>         5000:30846/TCP   17h
+service/kubernetes                     ClusterIP      10.0.0.1     <none>         443/TCP          78d
+
+NAME                   READY   UP-TO-DATE   AVAILABLE   AGE
+deployment.apps/read   3/3     3            3           3s
+
+NAME                             DESIRED   CURRENT   READY   AGE
+replicaset.apps/read-6cbbb6678   3         3         3       3s
+```
+
 <!--  ## Validate container is running -->
 
 [!INCLUDE [Container's API documentation](../../../includes/cognitive-services-containers-api-documentation.md)]
@@ -257,7 +357,7 @@ Ausführlichere Informationen zum Installieren von Anwendungen mit Helm in Azure
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free
 [git-download]: https://git-scm.com/downloads
-[azure-cli]: https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest
+[azure-cli]: /cli/azure/install-azure-cli?view=azure-cli-latest
 [docker-engine]: https://www.docker.com/products/docker-engine
 [kubernetes-cli]: https://kubernetes.io/docs/tasks/tools/install-kubectl
 [helm-install]: https://helm.sh/docs/using_helm/#installing-helm

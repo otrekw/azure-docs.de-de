@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: d349d07a66b21766ea529661c2f27d0c76ea4d3b
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: cac0d8cb8a910b735454c9270060364cab2db5fb
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024720"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187237"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Verwenden der Azure Digital Twins-APIs und SDKs
 
@@ -20,7 +20,7 @@ Azure Digital Twins ist sowohl mit **Steuerungsebenen-APIs** als auch mit **Date
 * Die Steuerungsebenen-APIs sind [Azure Resource Manager (ARM)](../azure-resource-manager/management/overview.md)-APIs, die Vorgänge zur Ressourcenverwaltung wie das Erstellen und Löschen von Instanzen abdecken. 
 * Bei den Datenebenen-APIs handelt es sich um Azure Digital Twins-APIs, die für Vorgänge zur Datenverwaltung wie die Verwaltung von Modellen, Zwillingen und des Graphen verwendet werden.
 
-Dieser Artikel bietet eine Übersicht über die verfügbaren APIs und die Methoden zur Interaktion mit ihnen. Sie können die REST-APIs entweder direkt mit den zugehörigen Swagger-Dateien oder über ein SDK verwenden.
+Dieser Artikel bietet eine Übersicht über die verfügbaren APIs und die Methoden zur Interaktion mit ihnen. Sie können die REST-APIs entweder direkt mit den zugehörigen Swagger-Dateien (über ein Tool wie [Postman](how-to-use-postman.md)) oder über ein SDK verwenden.
 
 ## <a name="overview-control-plane-apis"></a>Übersicht: Steuerungsebenen-APIs
 
@@ -32,7 +32,7 @@ So verwenden Sie die Steuerungsebenen-APIs
 * Sie können die APIs direkt aufrufen, indem Sie auf den neuesten Swagger im [Swagger-Ordner der Steuerungsebene](https://github.com/Azure/azure-rest-api-specs/tree/master/specification/digitaltwins/resource-manager/Microsoft.DigitalTwins) verweisen. Dieses Repository enthält auch einen Ordner mit Beispielen, die die Verwendung veranschaulichen.
 * Sie können derzeit auf SDKs für Steuerungs-APIs in Folgendem zugreifen...
   - [ **.NET (C#)**](https://www.nuget.org/packages/Microsoft.Azure.Management.DigitalTwins/) ([Referenz [automatisch generiert]](/dotnet/api/overview/azure/digitaltwins/management?view=azure-dotnet&preserve-view=true)) ([Quelle](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Microsoft.Azure.Management.DigitalTwins))
-  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([Referenz [automatisch generiert]](/java/api/overview/azure/digitaltwins?view=azure-java-stable)) ([Quelle](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
+  - [**Java**](https://search.maven.org/artifact/com.microsoft.azure.digitaltwins.v2020_10_31/azure-mgmt-digitaltwins/1.0.0/jar) ([Referenz [automatisch generiert]](/java/api/overview/azure/digitaltwins?view=azure-java-stable&preserve-view=true)) ([Quelle](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/digitaltwins/mgmt-v2020_10_31))
   - [**JavaScript**](https://www.npmjs.com/package/@azure/arm-digitaltwins) ([Quelle](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/digitaltwins/arm-digitaltwins))
   - [**Python**](https://pypi.org/project/azure-mgmt-digitaltwins/) ([Quelle](https://github.com/Azure/azure-sdk-for-python/tree/release/v3/sdk/digitaltwins/azure-mgmt-digitaltwins))
   - [**Go**](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/digitaltwins/mgmt/2020-10-31/digitaltwins) ([Quelle](https://github.com/Azure/azure-sdk-for-go/tree/master/services/digitaltwins/mgmt/2020-10-31/digitaltwins))
@@ -279,6 +279,7 @@ client.UpdateDigitalTwin("myTwin", updateTwinData);
 
 Die folgende Liste enthält zusätzliche Details und allgemeine Richtlinien für die Verwendung der APIs und SDKs.
 
+* Sie können ein HTTP REST-Testtool wie Postman verwenden, um direkte Aufrufe an die APIs von Azure Digital Twins durchzuführen. Weitere Informationen zu diesem Vorgang finden Sie unter [ *Senden von Anforderungen mit Postman*](how-to-use-postman.md).
 * Instanziieren Sie die Klasse `DigitalTwinsClient`, um das SDK zu verwenden. Der Konstruktor erfordert Anmeldeinformationen, die mit einer Vielzahl von Authentifizierungsmethoden im `Azure.Identity`-Paket abgerufen werden können. Weitere Informationen zu `Azure.Identity` finden Sie in der [Dokumentation zu Namespaces](/dotnet/api/azure.identity?preserve-view=true&view=azure-dotnet). 
 * Möglicherweise finden Sie das `InteractiveBrowserCredential` zu Beginn nützlich, aber es gibt noch verschiedene andere Optionen, einschließlich Anmeldeinformationen für die [verwaltete Identität](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet), die Sie wahrscheinlich zur Authentifizierung von [mit MSI eingerichteten Azure-Funktionen](../app-service/overview-managed-identity.md?tabs=dotnet) für Azure Digital Twins verwenden werden. Weitere Informationen über `InteractiveBrowserCredential` finden Sie in dessen [Klassendokumentation](/dotnet/api/azure.identity.interactivebrowsercredential?preserve-view=true&view=azure-dotnet).
 * Alle Aufrufe von Dienst-APIs werden als Memberfunktionen für die `DigitalTwinsClient`-Klasse verfügbar gemacht.
@@ -303,8 +304,8 @@ Von hier aus können Sie die Metriken für Ihre Instanz anzeigen und benutzerdef
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-So verwenden Sie APIs zum Einrichten einer Azure Digital Twins-Instanz und -Authentifizierung:
-* [*Verwenden Einrichten einer Instanz und Authentifizierung*](how-to-set-up-instance-cli.md)
+Informationen zum Ausführen direkter Anforderungen an die APIs mithilfe von Postman:
+* [*Vorgehensweise: Senden von Anforderungen mit Postman*](how-to-use-postman.md)
 
-Oder durchlaufen Sie die Schritte zur Erstellung einer Client-App, wie sie in dieser Anleitung verwendet wird:
+Verwenden Sie alternativ das .NET SDK, indem Sie eine Client-App mithilfe dieses Tutorials erstellen:
 * [*Tutorial: Codieren einer Client-App*](tutorial-code.md)

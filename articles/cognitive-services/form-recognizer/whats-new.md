@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 10ae9e1356cea954435d15441d74f4f86a804578
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 929aed28df2725ccde62c348a18ef7b41334e233
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95893979"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96172128"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -37,6 +37,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
  
   > [Weitere Informationen zur Layoutextraktion](concept-layout.md)
 
+- **Update der Clientbibliothek:** Die [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript sind nun allgemein verfügbar.
 - **Neue unterstützte Sprache: Japanisch** – Die folgenden neuen Sprachen werden jetzt unterstützt: für `AnalyzeLayout` und `AnalyzeCustomForm`: Japanisch (`ja`). [Sprachunterstützung](language-support.md)
 - **Textzeilenstilanzeige (handschriftlich/anders) (nur lateinische Sprachen)**  – Die Formularerkennung gibt jetzt ein `appearance`-Objekt aus, das – zusammen mit einer Zuverlässigkeitsbewertung – klassifiziert, ob jede Textzeile von Hand geschrieben wurde oder nicht. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 - **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
@@ -46,8 +47,8 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 
   ![Beispiel für FOTT](./media/ui-preview.jpg)
   
-- **Feedbackschleife** – Wenn Sie Dateien über das Tool für die Beschriftung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
-- **Automatisches Bezeichnen von Dokumenten** – Bezeichnet zusätzliche Dokumente automatisch basierend auf zuvor bezeichneten Dokumenten im Projekt. 
+- **Feedbackschleife:** Wenn Sie Dateien über das Tool für die Beschriftung von Beispielen analysieren, können Sie es jetzt auch dem Trainingssatz hinzufügen und die Bezeichnungen bei Bedarf anpassen und trainieren, um das Modell zu verbessern.
+- **Automatisches Bezeichnen von Dokumenten:** Bezeichnet zusätzliche Dokumente automatisch basierend auf zuvor bezeichneten Dokumenten im Projekt
 
 ## <a name="august-2020"></a>August 2020
 

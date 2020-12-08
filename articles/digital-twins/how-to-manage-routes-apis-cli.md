@@ -4,15 +4,15 @@ titleSuffix: Azure Digital Twins
 description: Erfahren Sie, wie Sie Endpunkte und Ereignisrouten für Azure Digital Twins-Daten einrichten und verwalten.
 author: alexkarcher-msft
 ms.author: alkarche
-ms.date: 10/12/2020
+ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 0b8bd9006482daf7c9218f0f3dbb16d2e08359bf
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94533751"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452904"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -90,18 +90,31 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmten Anzahl von Übermittlungsversuchen nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung **unzustellbarer Nachrichten** bezeichnet.
 
-Zum Erstellen eines Endpunkts mit aktivierten unzustellbaren Nachrichten müssen Sie die [ARM-APIs](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) verwenden, um den Endpunkt zu erstellen. 
-
-Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein Speicherkonto mit einem Container. Sie geben die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die unzustellbaren Nachrichten werden als Container-URL mit einem SAS-Token bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
-
-Weitere Informationen zu SAS-Token finden Sie hier: [Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)](/azure/storage/common/storage-sas-overview)
-
 Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md#dead-letter-events).
 
-#### <a name="configuring-the-endpoint"></a>Konfigurieren des Endpunkts
+#### <a name="set-up-storage-resources"></a>Einrichten von Speicherressourcen
 
-Wenn Sie einen Endpunkt erstellen, fügen Sie dem `properties`-Objekt im Text der Anforderungs ein `deadLetterSecret` hinzu, das eine Container-URL und ein SAS-Token für Ihr Speicherkonto enthält.
+Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein [Speicherkonto](../storage/common/storage-account-create.md?tabs=azure-portal) mit einem [Containersetup](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) in Ihrem Azure-Konto. Später geben Sie die URL für diesen Container an, wenn Sie den Endpunkt erstellen.
+Die unzustellbaren Nachrichten werden als Container-URL mit einem [SAS-Token](../storage/common/storage-sas-overview.md) bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
 
+Führen Sie die folgenden Schritte aus, um diese Speicherressourcen in Ihrem Azure-Konto einzurichten, um so die Einrichtung der Endpunktverbindung im nächsten Abschnitt vorzubereiten.
+
+1. Befolgen Sie [diesem Artikel](../storage/common/storage-account-create.md?tabs=azure-portal), um ein Speicherkonto zu erstellen und den Namen des Speicherkontos zu speichern, um ihn später zu verwenden.
+2. Erstellen Sie mithilfe von [diesem Artikel](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) einen Container, und speichern Sie den Containernamen, um ihn später zu verwenden, wenn Sie die Verbindung zwischen dem Container und dem Endpunkt einrichten.
+3. Als Nächstes erstellen Sie ein SAS-Token für Ihr Speicherkonto. Navigieren Sie zunächst zu Ihrem Speicherkonto im [Azure-Portal](https://ms.portal.azure.com/#home) (Sie finden es über die Suchleiste im Portal).
+4. Wählen Sie auf der Seite „Speicherkonto“ den Link _Shared Access Signature_ in der linken Navigationsleiste aus, um die richtigen Berechtigungen zum Generieren des SAS-Tokens auszuwählen.
+5. Wählen Sie für _Zulässige Dienste_ und _Zulässige Ressourcentypen_ aus. Wählen Sie anschließend die gewünschten Einstellungen aus. Sie müssen mindestens ein Feld in jeder Kategorie auswählen. Wählen Sie für „Zulässige Berechtigungen“ die Option **Schreiben** aus (Sie können auch andere Berechtigungen auswählen).
+Legen Sie die restlichen Einstellungen fest, wie Sie möchten.
+6. Klicken Sie dann auf die Schaltfläche _SAS und Verbindungszeichenfolge generieren_, um das SAS-Token zu generieren. Hierdurch werden im unteren Bereich der gleichen Seite unter der Einstellungsauswahl mehrere Werte für die SAS und Verbindungszeichenfolgen generiert. Scrollen Sie nach unten, um die Werte anzuzeigen, und klicken Sie auf das Symbol „In Zwischenablage kopieren“, um den Wert des **SAS-Tokens** zu kopieren. Speichern Sie ihn zur späteren Verwendung.
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Die Seite „Speicherkonto“ im Azure-Portal mit der gesamten Einstellungsauswahl zum Generieren eines SAS-Tokens" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+
+:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopieren des SAS-Tokens zum Verwenden des Geheimnisses für unzustellbare Nachrichten" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+
+#### <a name="configure-the-endpoint"></a>Konfigurieren des Endpunkts
+
+Endpunkte für unzustellbare Nachrichten werden mithilfe Azure Resource Manager-APIs erstellt. Wenn Sie einen Endpunkt erstellen, können Sie die [Dokumentation zu Azure Resource Manager-APIs](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) verwenden, um die erforderlichen Anforderungsparameter aufzufüllen. Fügen Sie zusätzlich `deadLetterSecret` dem Eigenschaftsobjekt „properties“ im **Text** der Anforderung hinzu, das eine Container-URL und ein SAS-Token für Ihr Speicherkonto enthält.
+      
 ```json
 {
   "properties": {
@@ -113,8 +126,7 @@ Wenn Sie einen Endpunkt erstellen, fügen Sie dem `properties`-Objekt im Text de
   }
 }
 ```
-
-Weitere Informationen finden Sie in der Dokumentation zur Azure Digital Twins-REST-API: [Endpunkte: DigitalTwinsEndpoint und CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
+Weitere Informationen zur Strukturierung dieser Anforderung finden Sie in der Dokumentation zur Azure Digital Twins-REST-API: [Endpunkte: DigitalTwinsEndpoint und CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>Nachrichtenspeicherschema
 
@@ -158,8 +170,8 @@ Die Beispiele in diesem Abschnitt verwenden das [.NET (C#) SDK](/dotnet/api/over
 
 **Voraussetzung**: Sie müssen wie weiter oben in diesem Artikel beschrieben Endpunkte erstellen, bevor Sie mit dem Erstellen einer Route fortfahren können. Nachdem die Einrichtung Ihrer Endpunkte abgeschlossen ist, können Sie mit dem Erstellen einer Ereignisroute fortfahren.
 
->[!NOTE]
->Wenn Sie Ihre Endpunkte gerade erst bereitgestellt haben, vergewissern Sie sich, dass die Bereitstellung abgeschlossen ist, **bevor** Sie versuchen, die Endpunkte für eine neue Ereignisroute zu verwenden. Wenn die Routenbereitstellung fehlschlägt, weil die Endpunkte noch nicht bereit sind, warten Sie einige Minuten, und versuchen Sie es dann erneut.
+> [!NOTE]
+> Wenn Sie Ihre Endpunkte gerade erst bereitgestellt haben, vergewissern Sie sich, dass die Bereitstellung abgeschlossen ist, **bevor** Sie versuchen, die Endpunkte für eine neue Ereignisroute zu verwenden. Wenn die Routenbereitstellung fehlschlägt, weil die Endpunkte noch nicht bereit sind, warten Sie einige Minuten, und versuchen Sie es dann erneut.
 >
 > Wenn Sie eine Skripterstellung für diesen Flow durchführen, sollten Sie dies berücksichtigen, indem Sie eine Wartezeit von zwei bis drei Minuten vorsehen, damit der Endpunktdienst die Bereitstellung abschließen kann, bevor mit der Routeneinrichtung fortgefahren wird.
 
@@ -181,7 +193,7 @@ Eine Route sollte es ermöglichen, mehrere Benachrichtigungen und Ereignistypen 
 ```csharp
 string eventFilter = "$eventType = 'DigitalTwinTelemetryMessages' or $eventType = 'DigitalTwinLifecycleNotification'";
 var er = new DigitalTwinsEventRoute("<your-endpointName>", eventFilter);
-await CreateOrReplaceEventRouteAsync(client, "routeName", er);
+await client.CreateOrReplaceEventRouteAsync("routeName", er);
 ```
     
 > [!TIP]
@@ -229,7 +241,7 @@ Ohne Filterung erhalten die Endpunkte eine Vielzahl von Ereignissen von Azure Di
 
 Sie können die gesendeten Ereignisse einschränken, indem Sie der Ereignisroute einen **Filter** für einen Endpunkt hinzufügen.
 
-Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für *https://{IhrHost}/EventRoutes/myNewRoute?api-version=2020-10-31* mit folgendem Hauptteil verwenden:
+Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für *https://{Your-azure-digital-twins-hostname}/eventRoutes/{event-route-name}?api-version=2020-10-31* mit folgendem Textkörper verwenden:
 
 ```json  
 {
@@ -237,7 +249,6 @@ Um einen Filter hinzuzufügen, können Sie eine PUT-Anforderung für *https://{I
     "filter": "<filter-text>"
 }
 ``` 
-
 Dies sind die unterstützten Routenfilter. Verwenden Sie die Details in der Spalte *Filtertextschema*, um den Platzhalter `<filter-text>` im Anforderungstext oben zu ersetzen.
 
 [!INCLUDE [digital-twins-route-filters](../../includes/digital-twins-route-filters.md)]
