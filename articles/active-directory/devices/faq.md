@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 77ecc23e2969ce4ce26eef7b9a3a485389d08ce0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dd438a09b929274808984322981f6d21da0bf68f
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837106"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860948"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory: Häufig gestellte Fragen zur Geräteverwaltung
 
@@ -25,7 +25,7 @@ ms.locfileid: "94837106"
 ### <a name="q-i-registered-the-device-recently-why-cant-i-see-the-device-under-my-user-info-in-the-azure-portal-or-why-is-the-device-owner-marked-as-na-for-hybrid-azure-active-directory-azure-ad-joined-devices"></a>F: Ich habe das Gerät vor Kurzem registriert. Warum kann ich das Gerät nicht in meinen Benutzerinformationen im Azure-Portal sehen? Oder warum ist der Gerätebesitzer für in Azure Active Directory (Azure AD) eingebundene Hybridgeräte als „N/V“ markiert?
 
 **A:** Windows 10-Geräte, die in Azure AD eingebundene Hybridgeräte sind, werden nicht unter den **BENUTZER-Geräten** angezeigt.
-Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice?view=azureadps-1.0) verwenden.
+Verwenden Sie die Ansicht **Alle Geräte** im Azure-Portal. Sie können auch das PowerShell-Cmdlet [Get-MsolDevice](/powershell/module/msonline/get-msoldevice) verwenden.
 
 Nur die folgenden Geräte werden unter den **BENUTZER-Geräten** aufgeführt:
 

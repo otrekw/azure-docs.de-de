@@ -12,12 +12,12 @@ ms.date: 05/29/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4c058f74bb4e390fe7a5003d6ab5d963c56ef2d5
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: dca888bf9e3dc75e80764949a11d95efe3514635
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94836375"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861815"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Migrieren vom Verbund zur Kennworthashsynchronisierung für Azure Active Directory
 
@@ -115,7 +115,7 @@ Get-MsolDomainFederationSettings -DomainName Contoso.com | fl *
 Weitere Informationen und Beispiele finden Sie in diesen Artikeln:
 
 * [Active Directory Federation Services prompt=login parameter support](/windows-server/identity/ad-fs/operations/ad-fs-prompt-login) (Active Directory-Verbunddienste: Unterstützung für Parameter „prompt=login“)
-* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication?view=azureadps-1.0)
+* [Set-MsolDomainAuthentication](/powershell/module/msonline/set-msoldomainauthentication)
 
 > [!NOTE]
 > Wenn **SupportsMfa** auf **True** festgelegt ist, verwenden Sie eine lokale Lösung für die mehrstufige Authentifizierung (Multi-Factor Authentication, MFA), um eine zweite Faktorabfrage in den Benutzerauthentifizierungsflow einzufügen. Dieses Setup funktioniert nach der Konvertierung dieser Domäne von der Verbund- zur verwalteten Authentifizierung nicht mehr bei Azure AD-Authentifizierungsszenarien. Nach der Deaktivierung des Verbunds lösen Sie die Beziehung zu Ihrem lokalen Verbund, und dazu zählen auch lokale MFA-Adapter. 

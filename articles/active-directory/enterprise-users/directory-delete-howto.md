@@ -6,19 +6,20 @@ documentationcenter: ''
 author: curtand
 manager: mtillman
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: addimitu
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: be40a3cea5aa7abfa257c4e5a2db61c514892dd5
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 2edc6fb98359c5360836bc369e5ae1928464df92
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95503636"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861029"
 ---
 # <a name="delete-a-tenant-in-azure-active-directory"></a>Löschen eines Mandanten in Azure Active Directory
 
@@ -84,7 +85,7 @@ Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereits
 
    ![Link „Löschen“ zum Löschen des Abonnements](./media/directory-delete-howto/delete-command.png)
 
-6. Wählen Sie **Abonnement löschen** aus, um das Abonnement zu löschen und die Geschäftsbedingungen zu akzeptieren. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Innerhalb der dreitägigen Frist können Sie das [Abonnement reaktivieren](/office365/admin/subscriptions-and-billing/reactivate-your-subscription?view=o365-worldwide), sollten Sie Ihre Meinung ändern.
+6. Wählen Sie **Abonnement löschen** aus, um das Abonnement zu löschen und die Geschäftsbedingungen zu akzeptieren. Alle Daten werden innerhalb von drei Tagen dauerhaft gelöscht. Innerhalb der dreitägigen Frist können Sie das [Abonnement reaktivieren](/office365/admin/subscriptions-and-billing/reactivate-your-subscription), sollten Sie Ihre Meinung ändern.
   
    ![Lesen Sie sich die Geschäftsbedingungen sorgfältig durch.](./media/directory-delete-howto/delete-terms.png)
 
@@ -96,7 +97,7 @@ Sie können ein Abonnement im Microsoft 365 Admin Center in den Status **Bereits
 
 ## <a name="i-have-a-trial-subscription-that-blocks-deletion"></a>Ich habe ein Testabonnement, das die Löschung blockiert
 
-Es gibt [Produkte zur Self-Service-Registrierung](/office365/admin/misc/self-service-sign-up?view=o365-worldwide) wie Microsoft Power BI, Rights Management Services, Microsoft Power Apps oder Dynamics 365, für die sich einzelne Benutzer über Microsoft 365 registrieren können. Dadurch wird auch ein Gastbenutzer zur Authentifizierung in Ihrer Azure AD-Organisation erstellt. Um einen Datenverlust zu vermeiden, blockieren diese Produkte zur Self-Service-Registrierung Organisationslöschungen so lange, bis sie vollständig aus dem Verzeichnis gelöscht wurden. Sie können nur vom Azure AD-Administrator gelöscht werden – unabhängig davon, ob der Benutzer einzeln registriert oder ihm das Produkt zugewiesen wurde.
+Es gibt [Produkte zur Self-Service-Registrierung](/office365/admin/misc/self-service-sign-up) wie Microsoft Power BI, Rights Management Services, Microsoft Power Apps oder Dynamics 365, für die sich einzelne Benutzer über Microsoft 365 registrieren können. Dadurch wird auch ein Gastbenutzer zur Authentifizierung in Ihrer Azure AD-Organisation erstellt. Um einen Datenverlust zu vermeiden, blockieren diese Produkte zur Self-Service-Registrierung Organisationslöschungen so lange, bis sie vollständig aus dem Verzeichnis gelöscht wurden. Sie können nur vom Azure AD-Administrator gelöscht werden – unabhängig davon, ob der Benutzer einzeln registriert oder ihm das Produkt zugewiesen wurde.
 
 Es gibt zwei Typen von Produkten zur Self-Service-Registrierung aufgrund der Art, wie sie zugewiesen werden: 
 
@@ -105,9 +106,9 @@ Es gibt zwei Typen von Produkten zur Self-Service-Registrierung aufgrund der Art
 
 Wenn Sie mit dem Löschen des Produkts zur Self-Service-Registrierung beginnen, löscht diese Aktion die Daten dauerhaft und entfernt den gesamten Benutzerzugriff auf den Dienst. Dann wird jeder Benutzer blockiert, dem das Angebot einzeln oder auf Organisationsebene zugewiesen wurde, sodass er sich nicht mehr anmelden oder auf vorhandene Daten zugreifen kann. Wenn Sie bei dem Produkt zur Self-Service-Registrierung wie [Microsoft Power BI-Dashboards](/power-bi/service-export-to-pbix) oder [Rights Management Services-Richtlinienkonfiguration](/azure/information-protection/configure-policy#how-to-configure-the-azure-information-protection-policy) einen Datenverlust verhindern möchten, sorgen Sie dafür, dass die Daten gesichert und an einem anderen Ort gespeichert werden.
 
-Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Self-Service-Registrierung finden Sie unter [Verfügbare Self-Service-Programme](/office365/admin/misc/self-service-sign-up?view=o365-worldwide#available-self-service-programs).
+Weitere Informationen zu den derzeit verfügbaren Produkten und Diensten zur Self-Service-Registrierung finden Sie unter [Verfügbare Self-Service-Programme](/office365/admin/misc/self-service-sign-up#available-self-service-programs).
 
-Informationen dazu, was zu erwarten ist, wenn ein Microsoft 365-Testabonnement abläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Microsoft 365 Business-Abonnement endet?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires?view=o365-worldwide) finden Sie weitere Informationen zur Datenaufbewahrung und zum Abonnementlebenszyklus von Microsoft 365.
+Informationen dazu, was zu erwarten ist, wenn ein Microsoft 365-Testabonnement abläuft (ohne bezahlte Partner/CSP-, Enterprise Agreement- oder Volumenlizenzen), finden Sie in der folgenden Tabelle. Unter [Was geschieht mit meinen Daten und dem Zugriff darauf, wenn mein Microsoft 365 Business-Abonnement endet?](/office365/admin/subscriptions-and-billing/what-if-my-subscription-expires) finden Sie weitere Informationen zur Datenaufbewahrung und zum Abonnementlebenszyklus von Microsoft 365.
 
 Produktstatus | Daten | Zugriff auf Daten
 ------------- | ---- | --------------

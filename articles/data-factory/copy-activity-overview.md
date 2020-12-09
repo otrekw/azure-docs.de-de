@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 10/12/2020
 ms.author: jingwang
-ms.openlocfilehash: ef7f7ba659d874d4514c45e9391912f3027e2265
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.openlocfilehash: 0b10a4de78c44e4c0a113a1f1a46c316b13a1f78
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592055"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96902158"
 ---
 # <a name="copy-activity-in-azure-data-factory"></a>Kopieraktivität in Azure Data Factory
 
@@ -199,7 +199,7 @@ Auf der Registerkarte „Quelle der Kopieraktivität“ finden Sie die folgende 
 
 Wenn es programmgesteuert konfiguriert werden soll, fügen Sie in Ihrer Quelle für die Kopieraktivität die Eigenschaft `additionalColumns` hinzu:
 
-| Eigenschaft | Beschreibung | Erforderlich |
+| Eigenschaft | BESCHREIBUNG | Erforderlich |
 | --- | --- | --- |
 | additionalColumns | Fügen Sie zusätzliche Datenspalten zum Kopieren in die Senke hinzu.<br><br>Jedes Objekt unter dem Array `additionalColumns` stellt eine zusätzliche Spalte dar. `name` definiert den Spaltennamen, und `value` gibt den Datenwert dieser Spalte an.<br><br>Zulässige Datenwerte sind:<br>-  **`$$FILEPATH`** – eine reservierte Variable, die angibt, dass der relative Pfad der Quelldateien in dem im Dataset angegebenen Ordnerpfad gespeichert werden soll. Auf dateibasierte Quelle anwenden.<br>-  **`$$COLUMN:<source_column_name>`** – ein reserviertes Variablenmuster gibt an, dass die angegebene Quellspalte als eine andere Spalte dupliziert wird.<br>- **Ausdruck**<br>- **Statischer Wert** | Nein |
 
@@ -254,7 +254,7 @@ Diese Funktion wird unterstützt, wenn Daten aus einer beliebigen Quelle in die 
 
 - [Azure SQL-Datenbank](connector-azure-sql-database.md)
 - [Verwaltete Azure SQL-Datenbank-Instanz](connector-azure-sql-managed-instance.md)
-- [Azure Synapse Analytics (ehemals SQL Data Warehouse)](connector-azure-sql-data-warehouse.md)
+- [Azure Synapse Analytics](connector-azure-sql-data-warehouse.md)
 - [SQL Server](connector-sql-server.md)
 
 ![Erstellen von Senkentabellen](media/copy-activity-overview/create-sink-table.png)

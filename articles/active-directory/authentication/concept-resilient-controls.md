@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 06/08/2020
 ms.author: martinco
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6b5b83d75df734c667c365f20fad2e1f62f997d7
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 95f70005f2c7f53833163dcd5f0d2ee89b3db37c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994280"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861288"
 ---
 # <a name="create-a-resilient-access-control-management-strategy-with-azure-active-directory"></a>Erstellen einer robusten Verwaltungsstrategie für die Zugriffssteuerung in Azure Active Directory
 
@@ -266,7 +266,7 @@ Machen Sie die Änderungen, die Sie als Teil des aktivierten Notfallplans vorgen
 3. Setzen Sie alle anderen Änderungen zurück, die Sie während der Unterbrechung vorgenommen und dokumentiert haben.
 4. Wenn Sie ein Konto für den Notfallzugriff verwendet haben, müssen Sie die Anmeldeinformationen neu generieren und die Details der neuen Anmeldeinformationen physisch als Teil Ihrer Notfallzugriffskonto-Verfahren sichern.
 5. Setzen Sie nach der Unterbrechung die [Selektierung aller gemeldeten Risikoerkennungen](../reports-monitoring/concept-sign-ins.md) nach verdächtigen Aktivitäten fort.
-6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
+6. Widerrufen Sie alle Aktualisierungstoken, die [mithilfe von PowerShell](/powershell/module/azuread/revoke-azureaduserallrefreshtoken) für eine Gruppe von Benutzern ausgegeben wurden. Das Widerrufen aller Aktualisierungstoken ist wichtig für privilegierte Konten, die während der Unterbrechung verwendet wurden, und so wird erzwungen, dass sie sich erneut authentifizieren und die Steuerungsanforderungen der wiederhergestellten Richtlinien erfüllen.
 
 ## <a name="emergency-options"></a>Notfalloptionen
 
@@ -287,7 +287,7 @@ Wenn Ihre Organisation ältere, pro Benutzer geltende MFA-Richtlinien verwendet,
 * [Dokumentation zur Azure AD-Authentifizierung](./howto-mfaserver-iis.md)
 * [Verwalten von Administratorkonten für den Notfallzugriff in Azure AD](../roles/security-emergency-access.md)
 * [Konfigurieren benannter Orte in Azure Active Directory](../reports-monitoring/quickstart-configure-named-locations.md)
-  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings?view=azureadps-1.0)
+  * [Set-MsolDomainFederationSettings](/powershell/module/msonline/set-msoldomainfederationsettings)
 * [Konfigurieren von in Azure Active Directory eingebundenen Hybridgeräten](../devices/hybrid-azuread-join-plan.md)
 * [Windows Hello for Business– Bereitstellungshandbuch](/windows/security/identity-protection/hello-for-business/hello-deployment-guide)
   * [Password Guidance (Kennwortleitfaden) – Microsoft Research](https://research.microsoft.com/pubs/265143/microsoft_password_guidance.pdf)

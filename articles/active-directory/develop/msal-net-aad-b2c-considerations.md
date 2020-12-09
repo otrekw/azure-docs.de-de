@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: b683eaaf4c93ef0dcf74680e1e174e0f867a7041
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173395"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860965"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -165,7 +165,7 @@ Wenn sich Änderungen ergeben, werden wir ein Update zu diesem [Problem](https:/
 
 ### <a name="known-issue-with-azure-ad-b2c"></a>Bekanntes Problem mit Azure AD B2C
 
-MSAL.NET unterstützt einen [Tokencache](/dotnet/api/microsoft.identity.client.tokencache?view=azure-dotnet). Der Schlüssel für den Tokencache basiert auf den Ansprüchen, die vom Identitätsanbieter (IdP) zurückgegeben werden.
+MSAL.NET unterstützt einen [Tokencache](/dotnet/api/microsoft.identity.client.tokencache). Der Schlüssel für den Tokencache basiert auf den Ansprüchen, die vom Identitätsanbieter (IdP) zurückgegeben werden.
 
 Derzeit benötigt MSAL.NET zwei Ansprüche, um einen Tokencacheschlüssel zu erstellen:
 

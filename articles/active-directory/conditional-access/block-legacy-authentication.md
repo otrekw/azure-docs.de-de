@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, dawoo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e85f36f1b970a4848ee132fe37bd1b0f4f4fdc82
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: d8bc1a96109eda9cc2ee1f86cec892cc5ce9308d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489521"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860319"
 ---
 # <a name="how-to-block-legacy-authentication-to-azure-ad-with-conditional-access"></a>Gewusst wie: Blockieren der Legacyauthentifizierung bei Azure AD mit bedingtem Zugriff   
 
@@ -119,7 +119,7 @@ Sie können alle verfügbaren Gewährungssteuerelemente für die Bedingung **And
 
 ### <a name="sharepoint-online-and-b2b-guest-users"></a>SharePoint Online-und B2B-Gastbenutzer
 
-Zum Blockieren des B2B-Benutzerzugriffs über die Legacyauthentifizierung auf SharePoint Online müssen Organisationen die Legacyauthentifizierung in SharePoint mit dem PowerShell-Befehl `Set-SPOTenant` deaktivieren und den `-LegacyAuthProtocolsEnabled`-Parameter auf `$false` festlegen. Weitere Informationen zum Festlegen dieses Parameters finden Sie im SharePoint-PowerShell-Referenzdokument zu [Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant?view=sharepoint-ps).
+Zum Blockieren des B2B-Benutzerzugriffs über die Legacyauthentifizierung auf SharePoint Online müssen Organisationen die Legacyauthentifizierung in SharePoint mit dem PowerShell-Befehl `Set-SPOTenant` deaktivieren und den `-LegacyAuthProtocolsEnabled`-Parameter auf `$false` festlegen. Weitere Informationen zum Festlegen dieses Parameters finden Sie im SharePoint-PowerShell-Referenzdokument zu [Set-SPOTenant](/powershell/module/sharepoint-online/set-spotenant).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

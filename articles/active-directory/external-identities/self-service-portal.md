@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4f9cd421224ad134b4df853b06b3bc34333a0613
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8a5b800e78448afcc970010535ba12b543d3cc74
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896105"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860506"
 ---
 # <a name="self-service-for-azure-ad-b2b-collaboration-sign-up"></a>Self-Service-Registrierung für Azure AD B2B Collaboration
 
@@ -28,7 +28,7 @@ Als einladende Organisation wissen Sie möglicherweise im Vorfeld nicht, welche 
 
 ## <a name="azure-active-directory-b2b-invitation-api"></a>Einladungs-API von Azure Active Directory B2B
 
-Organisationen können die [Einladungs-Manager-API von Microsoft Graph](/graph/api/resources/invitation?view=graph-rest-1.0) verwenden, um ihre eigenen Onboardingumgebungen für B2B-Gastbenutzer zu erstellen. Wenn Sie eine Self-Service-B2B-Gastbenutzerregistrierung anbieten möchten, empfehlen wir die Verwendung der [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md). Wenn Sie dagegen eine eigene Umgebung erstellen möchten, können Sie die [API zum Erstellen von Einladungen](/graph/api/invitation-post?tabs=http&view=graph-rest-1.0) verwenden, um beispielsweise Ihre angepasste Einladungs-E-Mail automatisch direkt an den B2B-Benutzer zu senden. Alternativ kann Ihre App die in der Erstellungsantwort zurückgegebene URL vom Typ „inviteRedeemUrl“ verwenden, um Ihre eigene Einladung (über den von Ihnen bevorzugten Kommunikationsweg) für den eingeladenen Benutzer zu erstellen.
+Organisationen können die [Einladungs-Manager-API von Microsoft Graph](/graph/api/resources/invitation) verwenden, um ihre eigenen Onboardingumgebungen für B2B-Gastbenutzer zu erstellen. Wenn Sie eine Self-Service-B2B-Gastbenutzerregistrierung anbieten möchten, empfehlen wir die Verwendung der [Azure AD-Berechtigungsverwaltung](../governance/entitlement-management-overview.md). Wenn Sie dagegen eine eigene Umgebung erstellen möchten, können Sie die [API zum Erstellen von Einladungen](/graph/api/invitation-post?tabs=http) verwenden, um beispielsweise Ihre angepasste Einladungs-E-Mail automatisch direkt an den B2B-Benutzer zu senden. Alternativ kann Ihre App die in der Erstellungsantwort zurückgegebene URL vom Typ „inviteRedeemUrl“ verwenden, um Ihre eigene Einladung (über den von Ihnen bevorzugten Kommunikationsweg) für den eingeladenen Benutzer zu erstellen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

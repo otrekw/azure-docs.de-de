@@ -11,12 +11,12 @@ ms.subservice: msi
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.custom: references_regions
-ms.openlocfilehash: c77f0e93e9f0084f335df39d2878871d66af0aac
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2da0407f848b0795414b071b9e082c7ed60a633d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498029"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861883"
 ---
 # <a name="services-that-support-managed-identities-for-azure-resources"></a>Dienste, die verwaltete Identitäten für Azure-Ressourcen unterstützen
 
@@ -45,8 +45,8 @@ Konfigurieren Sie die verwaltete Identität für Azure API Management anhand der
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. |
-| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | Nicht verfügbar.  | Nicht verfügbar. |
+| Vom System zugewiesen | ![Verfügbar][check] | ![Verfügbar][check] | Nicht verfügbar. | ![Verfügbar][check] |
+| Vom Benutzer zugewiesen | ![Verfügbar][check] | ![Verfügbar][check]  | Nicht verfügbar.  | ![Verfügbar][check] |
 
 Konfigurieren Sie die verwaltete Identität für Azure App Configuration anhand der folgenden Liste (in Regionen, in denen sie verfügbar ist):
 
@@ -252,7 +252,7 @@ Konfigurieren Sie die verwaltete Identität für Azure Policy anhand der folgend
 
 - [Azure portal](../../governance/policy/tutorials/create-and-manage.md#assign-a-policy)
 - [PowerShell](../../governance/policy/how-to/remediate-resources.md#create-managed-identity-with-powershell)
-- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment?view=azure-cli-latest#az-policy-assignment-create)
+- [Azure-Befehlszeilenschnittstelle](/cli/azure/policy/assignment#az-policy-assignment-create)
 - [Azure-Ressourcen-Manager-Vorlagen](/azure/templates/microsoft.authorization/policyassignments)
 - [REST](/rest/api/resources/policyassignments/create)
 
@@ -274,7 +274,7 @@ Informationen zum Konfigurieren der verwalteten Identität für Azure Service 
 
 | Typ der verwalteten Identität | Allgemein verfügbar<br>Globale Azure-Regionen | Azure Government | Azure Deutschland | Azure China 21Vianet |
 | --- | :-: | :-: | :-: | :-: |
-| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
+| Vom System zugewiesen | ![Verfügbar][check] | Nicht verfügbar. | Nicht verfügbar. | ![Verfügbar][check] |
 | Vom Benutzer zugewiesen | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. | Nicht verfügbar. |
 
 

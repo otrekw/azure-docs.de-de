@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: videor, jeevanb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 607df39833a5ae787e9acb8d3b4df3c52dd7709d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6d4dd6e64053af41d66e3accbb7fc9b21d951fc6
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173684"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860212"
 ---
 # <a name="conditional-access-programmatic-access"></a>Bedingter Zugriff: Programmgesteuerter Zugriff
 
@@ -96,6 +96,6 @@ Diese Beispiele finden Sie in unserem [GitHub-Repository](https://github.com/Azu
 
 - [Übersicht über Microsoft Graph](/graph/overview)
 
-- [API für bedingten Zugriff](/graph/api/resources/conditionalaccesspolicy?view=graph-rest-1.0)
+- [API für bedingten Zugriff](/graph/api/resources/conditionalaccesspolicy)
 
-- [API für benannten Standort](/graph/api/resources/namedlocation?view=graph-rest-1.0)
+- [API für benannten Standort](/graph/api/resources/namedlocation)

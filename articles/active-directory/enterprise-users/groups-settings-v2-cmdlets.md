@@ -7,19 +7,19 @@ author: curtand
 manager: daveba
 ms.service: active-directory
 ms.workload: identity
-ms.subservice: users-groups-roles
+ms.subservice: enterprise-users
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 61c445a7df05eda578fb6b3de6de915a94402049
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 12613362d9fc67dea14b41ece19a34febb489dda
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647068"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860642"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory-Cmdlets Version 2 für die Gruppenverwaltung
 
@@ -50,7 +50,7 @@ Verwenden Sie die folgenden Befehle, um das Azure AD PowerShell-Modul zu install
     Binary     2.0.0.115    azuread                      {Add-AzureADAdministrati...}
 ```
 
-Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+Sie können die Cmdlets jetzt im Modul verwenden. Eine ausführliche Beschreibung der Cmdlets im Azure AD-Modul finden Sie in der Onlinereferenzdokumentation für [Azure Active Directory PowerShell Version 2](/powershell/azure/active-directory/install-adv2).
 
 > [!NOTE]
 > Die Azure AD PowerShell-Cmdlets funktionieren nicht mit der neuen Version von PowerShell (Version 7), da diese auf .NET Core basiert. Wir arbeiten derzeit an einem Update, um dieses Problem zu beheben. In der Zwischenzeit verwenden Sie am besten das Windows PowerShell 5.x-Modul für Azure AD PowerShell-Vorgänge. 
@@ -338,7 +338,7 @@ Microsoft 365-Gruppenrückschreiben ist eine Funktion in der öffentlichen Vors
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+Weitere Informationen zu Azure Active Directory PowerShell finden Sie unter [Azure Active Directory-Cmdlets](/powershell/azure/active-directory/install-adv2).
 
 * [Verwalten des Zugriffs auf Ressourcen mit Azure Active Directory-Gruppen](../fundamentals/active-directory-manage-groups.md?context=azure/active-directory/users-groups-roles/context/ugr-context)
 * [Integrieren lokaler Identitäten in Azure Active Directory](../hybrid/whatis-hybrid-identity.md?context=azure/active-directory/users-groups-roles/context/ugr-context)

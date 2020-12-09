@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
-ms.openlocfilehash: ddff11caba9d83e9ed21748fd50a3480d866d8a9
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3ba84bb3ee38981217e72f8372a836b03647083d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174563"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861339"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Erste Schritte mit zertifikatbasierter Authentifizierung in Azure Active Directory
 
@@ -93,7 +93,7 @@ So sieht das Schema für eine Zertifizierungsstelle aus:
     }
 ```
 
-Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0) verwenden:
+Für die Konfiguration können Sie [Azure Active Directory PowerShell, Version 2](/powershell/azure/active-directory/install-adv2) verwenden:
 
 1. Starten Sie Windows PowerShell mit Administratorrechten.
 2. Installieren Sie das Azure AD-Modul Version [2.0.0.33](https://www.powershellgallery.com/packages/AzureAD/2.0.0.33) oder höher.
@@ -106,7 +106,7 @@ Im ersten Konfigurationsschritt müssen Sie eine Verbindung mit Ihrem Mandanten 
 
 ### <a name="connect"></a>Verbinden
 
-Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/powershell/module/azuread/connect-azuread?view=azureadps-2.0)-Cmdlet her:
+Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/powershell/module/azuread/connect-azuread)-Cmdlet her:
 
 ```azurepowershell
     Connect-AzureAD
@@ -114,7 +114,7 @@ Stellen Sie eine Verbindung mit Ihrem Mandanten mit dem [Connect-AzureAD](/power
 
 ### <a name="retrieve"></a>Gerätehandle
 
-Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen mit dem [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet ab.
+Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierungsstellen mit dem [Get-AzureADTrustedCertificateAuthority](/powershell/module/azuread/get-azureadtrustedcertificateauthority)-Cmdlet ab.
 
 ```azurepowershell
     Get-AzureADTrustedCertificateAuthority
@@ -122,7 +122,7 @@ Rufen Sie die in Ihrem Verzeichnis definierten vertrauenswürdigen Zertifizierun
 
 ### <a name="add"></a>Hinzufügen
 
-Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) zu erstellen, legen Sie das Attribut **crlDistributionPoint** auf den richtigen Wert fest:
+Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority) zu erstellen, legen Sie das Attribut **crlDistributionPoint** auf den richtigen Wert fest:
 
 ```azurepowershell
     $cert=Get-Content -Encoding byte "[LOCATION OF THE CER FILE]"
@@ -135,7 +135,7 @@ Um eine vertrauenswürdige Zertifizierungsstelle mit dem Cmdlet [New-AzureADTrus
 
 ### <a name="remove"></a>Remove (Entfernen)
 
-Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
+Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-AzureADTrustedCertificateAuthority](/powershell/module/azuread/remove-azureadtrustedcertificateauthority)-Cmdlet:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority
@@ -144,7 +144,7 @@ Entfernen Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Remove-Azur
 
 ### <a name="modify"></a>Ändern
 
-Ändern Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority?view=azureadps-2.0)-Cmdlet:
+Ändern Sie eine vertrauenswürdige Zertifizierungsstelle mit dem [Set-AzureADTrustedCertificateAuthority](/powershell/module/azuread/set-azureadtrustedcertificateauthority)-Cmdlet:
 
 ```azurepowershell
     $c=Get-AzureADTrustedCertificateAuthority

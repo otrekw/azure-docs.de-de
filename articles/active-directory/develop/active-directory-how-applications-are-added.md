@@ -13,12 +13,12 @@ ms.date: 12/01/2020
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: lenalepa, sureshja
-ms.openlocfilehash: 0e37065e6fa61f3784d1a6165bd88c515bdfc29f
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 1f6fd0160988802e198ff9388cfeb3232b34b100
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96484106"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861118"
 ---
 # <a name="how-and-why-applications-are-added-to-azure-ad"></a>Wie und warum werden Anwendungen zu Azure AD hinzugefügt?
 
@@ -104,7 +104,7 @@ Zu Anwendungen, die Sie selbst hinzufügen (dargestellt als **Ihre App** im Diag
   * Transformationsregeln für Ansprüche
   * Attributzuordnungen (Benutzerbereitstellung)
 * Ausführlichere Informationen zu Dienstprinzipalen und Anwendungsobjekten finden Sie in der Referenzdokumentation zur Microsoft Graph-API:
-  * [Anwendung](/graph/api/resources/application?view=graph-rest-1.0)
+  * [Anwendung](/graph/api/resources/application)
   * [Dienstprinzipal](/graph/api/resources/serviceprincipal?view=graph-rest-beta)
 
 ## <a name="why-do-applications-integrate-with-azure-ad"></a>Weshalb werden Anwendung in Azure AD integriert?

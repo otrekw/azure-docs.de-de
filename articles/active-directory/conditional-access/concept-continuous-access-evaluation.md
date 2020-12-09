@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jlu
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 706fa1666dc327955294fb350b673aed40d6bf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: b7519b6c7e1f3381be77b9a0734ddda250228e7d
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95520661"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860302"
 ---
 # <a name="continuous-access-evaluation"></a>Fortlaufende Zugriffsevaluierung
 
@@ -28,7 +28,7 @@ Die rechtzeitige Reaktion auf Richtlinienverstöße oder Sicherheitsprobleme erf
 
 Die anfängliche Implementierung der fortlaufenden Zugriffsevaluierung konzentriert sich auf Exchange, Teams und SharePoint Online.
 
-Informationen zum Vorbereiten Ihrer Anwendungen auf die Verwendung der fortlaufenden Zugriffsevaluierung finden Sie unter [Verwenden von APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen](/develop/app-resilience-continuous-access-evaluation.md).
+Informationen zum Vorbereiten Ihrer Anwendungen auf die Verwendung der fortlaufenden Zugriffsevaluierung finden Sie unter [Verwenden von APIs mit aktivierter fortlaufender Zugriffsevaluierung in Ihren Anwendungen](/azure/active-directory/develop/app-resilience-continuous-access-evaluation).
 
 ### <a name="key-benefits"></a>Hauptvorteile
 
@@ -105,7 +105,7 @@ Wenn Sie keine CAE-fähigen Clients verwenden, beträgt die Standardgültigkeits
 
 1. Ein CAE-fähiger Client stellt Anmeldeinformationen oder ein Aktualisierungstoken für Azure AD bereit und fordert ein Zugriffstoken für eine Ressource an.
 1. Ein Zugriffstoken wird zusammen mit anderen Artefakten an den Client zurückgegeben.
-1. Ein Administrator [sperrt explizit alle Aktualisierungstoken für den Benutzer](/powershell/module/azuread/revoke-azureaduserallrefreshtoken?view=azureadps-2.0). Von Azure AD wird ein Sperrereignis an den Ressourcenanbieter gesendet.
+1. Ein Administrator [sperrt explizit alle Aktualisierungstoken für den Benutzer](/powershell/module/azuread/revoke-azureaduserallrefreshtoken). Von Azure AD wird ein Sperrereignis an den Ressourcenanbieter gesendet.
 1. Dem Ressourcenanbieter wird ein Zugriffstoken präsentiert. Der Ressourcenanbieter wertet die Gültigkeit des Tokens aus und überprüft, ob für den Benutzer ein Sperrereignis vorliegt. Der Ressourcenanbieter verwendet diese Informationen, um den Zugriff auf die Ressource zu gewähren oder zu untersagen.
 1. In diesem Fall verweigert der Ressourcenanbieter den Zugriff und sendet die Anspruchsaufforderung „401+“ an den Client zurück.
 1. Der CAE-fähige Client versteht die Anspruchsaufforderung „401+“. Er umgeht die Caches, geht zurück zu Schritt 1 und sendet das Aktualisierungstoken zusammen mit der Anspruchsaufforderung zurück an Azure AD. Azure AD wertet dann alle Bedingungen erneut aus und fordert in diesem Fall den Benutzer auf, sich erneut zu authentifizieren.

@@ -14,12 +14,12 @@ ms.subservice: roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a62aafd8073b5f1a35ba340c48c80f498be2c2
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3a7304ffbb7718205ead48e27989d4a169375997
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94834454"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861985"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Schützen des privilegierten Zugriffs für hybride und Cloudbereitstellungen in Azure AD
 
@@ -93,7 +93,7 @@ Nachdem Sie Azure AD Privileged Identity Management aktiviert haben, können Sie
 * Exchange-Administrator
 * SharePoint-Administrator
 
-Wenn in Ihrer Organisation Azure AD Privileged Identity Management nicht verwendet wird, können Sie die [PowerShell-API](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0) nutzen. Beginnen Sie mit der Rolle „Globaler Administrator“, da ein globaler Administrator bei allen Clouddiensten, die Ihre Organisation abonniert hat, über gleiche Berechtigungen verfügt. Diese Berechtigungen werden unabhängig vom Ort der Zuweisung (Microsoft 365 Admin Center, Azure-Portal oder Azure AD-Modul für Microsoft PowerShell) erteilt.
+Wenn in Ihrer Organisation Azure AD Privileged Identity Management nicht verwendet wird, können Sie die [PowerShell-API](/powershell/module/azuread/get-azureaddirectoryrolemember) nutzen. Beginnen Sie mit der Rolle „Globaler Administrator“, da ein globaler Administrator bei allen Clouddiensten, die Ihre Organisation abonniert hat, über gleiche Berechtigungen verfügt. Diese Berechtigungen werden unabhängig vom Ort der Zuweisung (Microsoft 365 Admin Center, Azure-Portal oder Azure AD-Modul für Microsoft PowerShell) erteilt.
 
 Entfernen Sie alle Konten, die in diesen Rollen nicht mehr benötigt werden. Kategorisieren Sie anschließend die restlichen Konten, die Administratorrollen zugewiesen sind:
 

@@ -7,18 +7,19 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.topic: how-to
 ms.workload: identity
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: sumitp
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 30d268b116b35ede5741179c3f60da909c792ba8
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: daf03ab7608357e80705403889a41895e63d07a4
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96168967"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96859792"
 ---
 # <a name="powershell-and-graph-examples-for-group-based-licensing-in-azure-ad"></a>PowerShell- und Microsoft Graph-Beispiele für die gruppenbasierte Lizenzierung in Azure AD
 
@@ -70,7 +71,7 @@ location: https://graph.microsoft.com/v2/d056d009-17b3-4106-8173-cd3978ada898/di
 
 ## <a name="view-product-licenses-assigned-to-a-group"></a>Anzeigen der einer Gruppe zugewiesenen Produktlizenzen
 
-Mit dem Cmdlet [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0) können Sie das Gruppenobjekt abrufen und die Eigenschaft *Licenses* überprüfen: Dadurch werden alle Produktlizenzen aufgeführt, die der Gruppe zurzeit zugewiesen sind.
+Mit dem Cmdlet [Get-MsolGroup](/powershell/module/msonline/get-msolgroup) können Sie das Gruppenobjekt abrufen und die Eigenschaft *Licenses* überprüfen: Dadurch werden alle Produktlizenzen aufgeführt, die der Gruppe zurzeit zugewiesen sind.
 
 ```powershell
 (Get-MsolGroup -ObjectId 99c4216a-56de-42c4-a4ac-e411cd8c7c41).Licenses

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/09/2020
 ms.author: mbaldwin
-ms.openlocfilehash: a00dc5beb2bde02f71b40f6eb374502136c37c67
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 141daa485fae5aba2db23647fada30ba5b621cd0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94410486"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854613"
 ---
 # <a name="data-encryption-models"></a>Datenverschlüsselungsmodelle
 
@@ -159,7 +159,7 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Textübersetzung                  | Ja                | Ja                | -                  |
 | Power BI                         | Ja                | Ja, RSA 4.096 Bit  | -                  |
 | **Analyse**                    |                    |                    |                    |
-| Azure Stream Analytics           | Ja                | N/V\*              | -                  |
+| Azure Stream Analytics           | Ja                | Ja\*\*            | -                  |
 | Event Hubs                       | Ja                | Ja                | -                  |
 | Functions                        | Ja                | Ja                | -                  |
 | Azure Analysis Services          | Ja                | -                  | -                  |
@@ -215,7 +215,7 @@ Die Azure-Dienste, die die einzelnen Verschlüsselungsmodelle unterstützen:
 | Azure Site Recovery              | Ja                | -                  | -                  |
 | Azure Migrate                    | Ja                | Ja                | -                  |
 | **Medien**                        |                    |                    |                    |
-| Media Services                   | Ja                | -                  | Ja                |
+| Media Services                   | Ja                | Ja                | Ja                |
 | **Security**                     |                    |                    |                    |
 | Azure Security Center für IoT    | Ja                | Ja                | -                  |
 | Azure Sentinel                   | Ja                | Ja                | -                  |

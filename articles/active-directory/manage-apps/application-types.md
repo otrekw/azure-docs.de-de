@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/11/2017
 ms.author: kenwith
-ms.openlocfilehash: d83b69ea7c2a4459d30c4ceb90f62ab6a1a10cc2
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 49dd8b65db771a182138f13218adda2f0e7f7396
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94648173"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96858228"
 ---
 # <a name="viewing-apps-using-your-azure-ad-tenant-for-identity-management"></a>Anzeigen von Apps mithilfe Ihres Azure AD-Mandanten für die Identitätsverwaltung
 Die [Schnellstartserie zur Anwendungsverwaltung](view-applications-portal.md) enthält grundlegende Informationen. Darin erfahren Sie, wie Sie alle Apps anzeigen, die Ihren Azure AD-Mandanten für die Identitätsverwaltung verwenden. In diesem Artikel wird etwas ausführlicher auf die angezeigten App-Typen eingegangen.
@@ -31,7 +31,7 @@ Bei einer Filterung nach **Alle Anwendungen** zeigt die **Liste** **Alle Anwendu
 - Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über die [Anwendungsregistrierung](../develop/quickstart-register-app.md).
 - Beim Hinzufügen einer neuen Anwendungsregistrierung durch Erstellen einer benutzerdefiniert entwickelten Anwendung über das [Anwendungsregistrierungsportal v2.0](../develop/quickstart-register-app.md).
 - Beim Hinzufügen einer Anwendung, die Sie mithilfe von [ASP.NET-Authentifizierungsmethoden](https://www.asp.net/visual-studio/overview/2013/creating-web-projects-in-visual-studio#orgauthoptions) oder [verbundenen Diensten](https://devblogs.microsoft.com/visualstudio/connecting-to-cloud-services/) von Visual Studio entwickeln
-- Beim Erstellen eines Dienstprinzipalobjekts mithilfe des [Azure AD-PowerShell-Moduls](/powershell/azure/active-directory/install-adv2?view=azureadps-2.0).
+- Beim Erstellen eines Dienstprinzipalobjekts mithilfe des [Azure AD-PowerShell-Moduls](/powershell/azure/active-directory/install-adv2).
 - Beim [Zustimmen zu einer Anwendung](../develop/howto-convert-app-to-be-multi-tenant.md) durch einen Administrator, damit in Ihrem Mandanten Daten verwendet werden können.
 - Beim [Zustimmen zu einer Anwendung durch einen Benutzer](../develop/howto-convert-app-to-be-multi-tenant.md), damit in Ihrem Mandanten Daten verwendet werden können.
 - Beim Aktivieren bestimmter Dienste, die Daten in Ihrem Mandanten speichern. Ein Beispiel hierfür ist die Kennwortzurücksetzung, die als Dienstprinzipal modelliert ist, um Ihre Richtlinie für das Zurücksetzen von Kennwörtern sicher zu speichern.

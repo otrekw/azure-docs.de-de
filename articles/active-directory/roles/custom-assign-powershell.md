@@ -13,16 +13,16 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7cd9148f1084727141f725d76f7ae756f44e210e
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: d4695d0844ef8b707edce53a05de611c91223a46
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93379518"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861951"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Zuweisen benutzerdefinierter Rollen mit Ressourcengeltungsbereich unter Verwendung von PowerShell in Azure Active Directory
 
-In diesem Artikel erfahren Sie, wie Sie eine Rollenzuweisung mit organisationsweitem Geltungsbereich in Azure Active Directory (Azure AD) erstellen. Durch Zuweisen einer Rolle mit organisationsweitem Geltungsbereich wird Zugriff innerhalb der gesamten Azure AD-Organisation gewährt. Informationen zum Erstellen einer Rollenzuweisung mit einem Geltungsbereich für eine einzelne Azure AD-Ressource finden Sie unter [Create a custom role and assign at resource scope in Azure Active Directory](custom-create.md) (Erstellen einer benutzerdefinierten Rolle und Zuweisen der Rolle im Ressourcengeltungsbereich in Azure Active Directory). In diesem Artikel wird das Modul [Azure Active Directory PowerShell Version 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles) verwendet.
+In diesem Artikel erfahren Sie, wie Sie eine Rollenzuweisung mit organisationsweitem Geltungsbereich in Azure Active Directory (Azure AD) erstellen. Durch Zuweisen einer Rolle mit organisationsweitem Geltungsbereich wird Zugriff innerhalb der gesamten Azure AD-Organisation gewährt. Informationen zum Erstellen einer Rollenzuweisung mit einem Geltungsbereich für eine einzelne Azure AD-Ressource finden Sie unter [Create a custom role and assign at resource scope in Azure Active Directory](custom-create.md) (Erstellen einer benutzerdefinierten Rolle und Zuweisen der Rolle im Ressourcengeltungsbereich in Azure Active Directory). In diesem Artikel wird das Modul [Azure Active Directory PowerShell Version 2](/powershell/module/azuread/#directory_roles) verwendet.
 
 Weitere Informationen zu Azure AD-Administratorrollen finden Sie unter [Zuweisen von Administratorrollen in Azure Active Directory](permissions-reference.md).
 
@@ -69,7 +69,7 @@ $resourceScope = '/' + $appRegistration.objectId
 $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -RoleDefinitionId $roleDefinition.Id -PrincipalId $user.objectId
 ```
 
-Falls Sie die Rolle keinem Benutzer, sondern einem Dienstprinzipal zuweisen möchten, verwenden Sie das Cmdlet [Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal?view=azureadps-2.0).
+Falls Sie die Rolle keinem Benutzer, sondern einem Dienstprinzipal zuweisen möchten, verwenden Sie das Cmdlet [Get-AzureADMSServicePrincipal](/powershell/module/azuread/get-azureadserviceprincipal).
 
 ## <a name="operations-on-roledefinition"></a>Vorgänge für „RoleDefinition“
 

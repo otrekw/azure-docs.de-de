@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 08/15/2020
-ms.openlocfilehash: 5be6a2d73be35b3d637df9364364784d373dabb3
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 08d30fb72398c4b43422eb21f132d5fddd5502b7
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186693"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853141"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Was wird von Azure Monitor überwacht?
 In diesem Artikel werden die verschiedenen Anwendungen und Dienste beschrieben, die von Azure Monitor überwacht werden. 
@@ -194,7 +194,7 @@ Die in der folgenden Tabelle aufgeführten Dienste und Lösungen speichern ihre 
 | [Azure Security Center](../security-center/index.yml) | Sammeln und Analysieren von Sicherheitsereignissen und Durchführen einer Bedrohungsanalyse. Informationen finden Sie unter [Datensammlung in Azure Security Center](../security-center/security-center-enable-data-collection.md). |
 | [Azure Sentinel](../sentinel/index.yml) | Stellt eine Verbindung mit verschiedenen Quellen her, einschließlich Office 365 und Amazon Web Services CloudTrail. Lesen Sie dazu [Herstellen einer Verbindung mit Datenquellen](../sentinel/connect-data-sources.md). |
 | [Microsoft Intune](/intune/) | Erstellen einer Diagnoseeinstellung zum Senden von Protokollen an Azure Monitor. Informationen finden Sie unter [Senden von Daten an den Speicher, an Event Hubs oder Log Analytics in Intune (Vorschauversion)](/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
+| Netzwerk  | [Netzwerkleistungsmonitor](insights/network-performance-monitor.md): Überwachen der Netzwerkkonnektivität und -leistung für Dienst- und Anwendungsendpunkte.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics): Analysieren der Protokolle und Metriken von Azure Application Gateway.<br>[Traffic Analytics](../network-watcher/traffic-analytics.md): Analysiert Flussprotokolle von Network Watcher für Netzwerksicherheitsgruppen (NSGs), um Einblicke in den Datenfluss in Ihrer Azure-Cloud zu ermöglichen. |
 | [Office 365](insights/solution-office-365.md) | Überwachen Ihrer Office 365-Umgebungen. Aktualisierte Version mit verbessertem Onboarding über Azure Sentinel verfügbar. |
 | [Azure SQL-Analyse](insights/azure-sql.md) | Bedarfsorientiertes und abonnementübergreifendes Überwachen der Leistung von Azure SQL-Datenbanken und verwalteten SQL-Instanzen. |
 | [Surface Hub](insights/surface-hubs.md) | Nachverfolgen der Integrität und Nutzung von Surface Hub-Geräten. |

@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e46dabc665d383279a12fc6bd8eb67475d88a2ea
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 82f0408b7e46493f6c3ec62d48a992e87f196f78
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896071"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96860608"
 ---
 # <a name="add-a-custom-approval-workflow-to-self-service-sign-up"></a>Hinzufügen eines benutzerdefinierten Genehmigungsworkflows zur Self-Service-Registrierung
 
@@ -44,18 +44,18 @@ Sie müssen Ihr Genehmigungssystem als Anwendung in Ihrem Azure AD-Mandanten re
 
 6. Wählen Sie unter **Verwalten** im linken Menü **API-Berechtigungen** und dann **Berechtigung hinzufügen** aus.
 7. Wählen Sie auf der Seite **API-Berechtigungen anfordern** die Option **Microsoft Graph** aus, und wählen Sie **Anwendungsberechtigungen** aus.
-8. Erweitern Sie unter **Berechtigungen auswählen** den Eintrag **Benutzer** , und aktivieren Sie dann das Kontrollkästchen **User.ReadWrite.All**. Diese Berechtigung ermöglicht dem Genehmigungssystem, den Benutzer nach der Genehmigung zu erstellen. Klicken Sie dann auf **Berechtigungen hinzufügen**.
+8. Erweitern Sie unter **Berechtigungen auswählen** den Eintrag **Benutzer**, und aktivieren Sie dann das Kontrollkästchen **User.ReadWrite.All**. Diese Berechtigung ermöglicht dem Genehmigungssystem, den Benutzer nach der Genehmigung zu erstellen. Klicken Sie dann auf **Berechtigungen hinzufügen**.
 
    ![Seite für das Registrieren einer Anwendung](media/self-service-sign-up-add-approvals/request-api-permissions.png)
 
 9. Wählen Sie auf der Seite **API-Berechtigungen** die Option **Administratorzustimmung für (Ihr Mandantenname) erteilen** und dann **Ja**.
 10. Wählen Sie im linken Menü unter **Verwalten** die Option **Zertifikate & Geheimnisse** und anschließend **Neuer geheimer Clientschlüssel** aus.
-11. Geben Sie eine **Beschreibung** für das Geheimnis ein, z. B. _Genehmigungen für geheimen Clientschlüssel_ , und wählen Sie den Zeitraum bis zum Ablauf des geheimen Clientschlüssels mit einem Eintrag in **Läuft ab**. Wählen Sie anschließend **Hinzufügen**.
+11. Geben Sie eine **Beschreibung** für das Geheimnis ein, z. B. _Genehmigungen für geheimen Clientschlüssel_, und wählen Sie den Zeitraum bis zum Ablauf des geheimen Clientschlüssels mit einem Eintrag in **Läuft ab**. Wählen Sie anschließend **Hinzufügen**.
 12. Kopieren Sie den Wert des geheimen Clientschlüssels.
 
     ![Kopieren des geheimen Clientschlüssels für die Verwendung im Genehmigungssystem](media/self-service-sign-up-add-approvals/client-secret-value-copy.png)
 
-13. Konfigurieren Sie das Genehmigungssystem für die Verwendung der **Anwendungs-ID** als Client-ID und des **geheimen Clientschlüssels** , den Sie für die Authentifizierung mit Azure AD generiert haben.
+13. Konfigurieren Sie das Genehmigungssystem für die Verwendung der **Anwendungs-ID** als Client-ID und des **geheimen Clientschlüssels**, den Sie für die Authentifizierung mit Azure AD generiert haben.
 
 ## <a name="create-the-api-connectors"></a>Erstellen der API-Connectors
 
@@ -65,7 +65,7 @@ Als nächstes [erstellen Sie die API-Connectors](self-service-sign-up-add-api-co
 
   ![Genehmigungsstatus überprüfen – API-Connector-Konfiguration](./media/self-service-sign-up-add-approvals/check-approval-status-api-connector-config-alt.png)
 
-- **Genehmigung anfordern** : Senden Sie einen Aufruf an das Genehmigungssystem, nachdem ein Benutzer die Attributsammlungseite abgeschlossen hat, aber bevor das Benutzerkonto erstellt wird, um die Genehmigung anzufordern. Die Genehmigungsanforderung kann automatisch erteilt oder manuell überprüft werden. Beispiel für API-Conncector „Genehmigung anfordern“. 
+- **Genehmigung anfordern**: Senden Sie einen Aufruf an das Genehmigungssystem, nachdem ein Benutzer die Attributsammlungseite abgeschlossen hat, aber bevor das Benutzerkonto erstellt wird, um die Genehmigung anzufordern. Die Genehmigungsanforderung kann automatisch erteilt oder manuell überprüft werden. Beispiel für API-Conncector „Genehmigung anfordern“. 
 
   ![Genehmigung anfordern – API-Connector-Konfiguration](./media/self-service-sign-up-add-approvals/create-approval-request-api-connector-config-alt.png)
 
@@ -81,8 +81,8 @@ Nun fügen Sie die API-Connectors mit folgenden Schritten einem Self-Service-Reg
 4. Wählen Sie **Benutzerflows (Vorschau)** aus und dann den Benutzerflow, für den Sie den API-Connector aktivieren möchten.
 5. Wählen Sie mit folgenden Schritte **API-Connectors** aus und dann die API-Endpunkte, die Sie im Benutzerflow aufrufen möchten:
 
-   - **Nach der Anmeldung mit einem Identitätsanbieter** : Wählen Sie den API-Connector für den Genehmigungsstatus aus, z. B. _Genehmigungsstatus überprüfen_.
-   - **Vor dem Erstellen des Benutzers** : Wählen Sie den API-Connector für Ihre Genehmigungsanforderung aus, z. B. _Genehmigung anfordern_.
+   - **Nach der Anmeldung mit einem Identitätsanbieter**: Wählen Sie den API-Connector für den Genehmigungsstatus aus, z. B. _Genehmigungsstatus überprüfen_.
+   - **Vor dem Erstellen des Benutzers**: Wählen Sie den API-Connector für Ihre Genehmigungsanforderung aus, z. B. _Genehmigung anfordern_.
 
    ![Hinzufügen von APIs zum Benutzerflow](./media/self-service-sign-up-add-approvals/api-connectors-user-flow-api.png)
 
@@ -120,7 +120,7 @@ Die genauen Ansprüche, die an die API gesendet werden, hängen von den Informat
 
 #### <a name="continuation-response-for-check-approval-status"></a>Fortsetzungsantwort für „Genehmigungsstatus überprüfen“
 
-Der **Genehmigungsstatus überprüfen** -API-Endpunkt sollte unter folgender Voraussetzung eine Fortsetzungsantwort zurückgeben:
+Der **Genehmigungsstatus überprüfen**-API-Endpunkt sollte unter folgender Voraussetzung eine Fortsetzungsantwort zurückgeben:
 
 - Der Benutzer hat zuvor keine Genehmigung angefordert.
 
@@ -138,7 +138,7 @@ Content-type: application/json
 
 #### <a name="blocking-response-for-check-approval-status"></a>Blockierungsantwort für „Genehmigungsstatus überprüfen“
 
-Der **Genehmigungsstatus überprüfen** -API-Endpunkt sollte unter folgender Voraussetzung eine Blockierungsantwort zurückgeben:
+Der **Genehmigungsstatus überprüfen**-API-Endpunkt sollte unter folgender Voraussetzung eine Blockierungsantwort zurückgeben:
 
 - Die Benutzergenehmigung steht aus.
 - Der Benutzer wurde abgelehnt und er sollte die Genehmigung nicht erneut anfordern dürfen.
@@ -205,7 +205,7 @@ Die genauen Ansprüche, die an die API gesendet werden, hängen von den Informat
 
 #### <a name="continuation-response-for-request-approval"></a>Fortsetzungsantwort für „Genehmigung anfordern“
 
-Der **Genehmigung anfordern** -API-Endpunkt sollte unter folgenden Voraussetzungen eine Fortsetzungsantwort zurückgeben:
+Der **Genehmigung anfordern**-API-Endpunkt sollte unter folgenden Voraussetzungen eine Fortsetzungsantwort zurückgeben:
 
 - Der Benutzer kann **_automatisch genehmigt_** werden.
 
@@ -226,7 +226,7 @@ Content-type: application/json
 
 #### <a name="blocking-response-for-request-approval"></a>Blockierungsantwort für „Genehmigung anfordern“
 
-Der **Genehmigung anfordern** -API-Endpunkt sollte unter folgenden Voraussetzungen eine Blockierungsantwort zurückgeben:
+Der **Genehmigung anfordern**-API-Endpunkt sollte unter folgenden Voraussetzungen eine Blockierungsantwort zurückgeben:
 
 - Eine Benutzergenehmigungsanforderung wurde erstellt und steht nun aus.
 - Eine Benutzergenehmigungsanforderung wurde automatisch abgelehnt.
@@ -270,7 +270,7 @@ Nach dem Erhalt der manuellen Genehmigung erstellt das benutzerdefinierte Genehm
 > [!IMPORTANT]
 > Das Genehmigungssystem sollte explizit prüfen, ob `identities`, `identities[0]` und `identities[0].issuer` vorhanden sind und `identities[0].issuer` „facebook“ oder „google“ ist, um diese Methode zu verwenden.
 
-Wenn sich Ihr Benutzer mit einem Google- oder Facebook-Konto angemeldet hat, können Sie die [Benutzererstellungs-API](/graph/api/user-post-users?tabs=http&view=graph-rest-1.0) verwenden.
+Wenn sich Ihr Benutzer mit einem Google- oder Facebook-Konto angemeldet hat, können Sie die [Benutzererstellungs-API](/graph/api/user-post-users?tabs=http) verwenden.
 
 1. Das Genehmigungssystem verwendet die HTTP-Anforderung aus dem Benutzerflow.
 
@@ -330,7 +330,7 @@ Content-type: application/json
 
 ### <a name="for-a-federated-azure-active-directory-user"></a>Für einen verbundenen Azure Active Directory-Benutzer
 
-Wenn ein Benutzer sich mit einem verbundenen Azure Active Directory-Konto anmeldet, müssen Sie den Benutzer mit der [Einladungs-API](/graph/api/invitation-post?view=graph-rest-1.0) erstellen und ihm dann optional mit der [Benutzeraktualisierungs-API](/graph/api/user-update?view=graph-rest-1.0) weitere Attribute zuweisen.
+Wenn ein Benutzer sich mit einem verbundenen Azure Active Directory-Konto anmeldet, müssen Sie den Benutzer mit der [Einladungs-API](/graph/api/invitation-post) erstellen und ihm dann optional mit der [Benutzeraktualisierungs-API](/graph/api/user-update) weitere Attribute zuweisen.
 
 1. Das Genehmigungssystem empfängt die HTTP-Anforderung aus dem Benutzerflow.
 

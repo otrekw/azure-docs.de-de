@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 11/21/2019
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6aa093411e40b2fc60c52c2a22434658bab78e59
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: c9ee81abd7cd0268a7cbd6b16aa6065ec7b54bef
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94839249"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861305"
 ---
 # <a name="plan-an-azure-ad-multi-factor-authentication-deployment"></a>Planen einer Bereitstellung von Azure AD Multi-Factor Authentication
 
@@ -165,7 +165,7 @@ Mithilfe der folgenden Schritte kann eine Richtlinie für bedingten Zugriff Benu
 2. Erzwingen Sie mit dem bedingten Zugriff die Multi-Factor Authentication für diese Gruppe für den Zugriff auf alle Ressourcen.
 3. Werten Sie in regelmäßigen Abständen erneut die Gruppenmitgliedschaft aus, und entfernen Sie Benutzer, die sich registriert haben, aus der Gruppe.
 
-Sie können registrierte und nicht registrierte Azure AD MFA-Benutzer mit PowerShell-Befehlen identifizieren, die auf dem PowerShell-Modul [MSOnline](/powershell/azure/active-directory/install-msonlinev1?view=azureadps-1.0) basieren.
+Sie können registrierte und nicht registrierte Azure AD MFA-Benutzer mit PowerShell-Befehlen identifizieren, die auf dem PowerShell-Modul [MSOnline](/powershell/azure/active-directory/install-msonlinev1) basieren.
 
 #### <a name="identify-registered-users"></a>Identifizieren registrierter Benutzer
 

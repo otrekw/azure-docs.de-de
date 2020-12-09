@@ -12,12 +12,12 @@ author: urosmil
 ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
-ms.openlocfilehash: 092981f9d74a3f9f18c491ca6cee539a29e73c83
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 342491178d55dacbdc68e6c9042623d381dff898
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782500"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861543"
 ---
 # <a name="canceling-azure-sql-managed-instance-management-operations"></a>Abbrechen von Verwaltungsvorgängen für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -54,14 +54,14 @@ Category  |Vorgang  |Kann abgebrochen werden  |Geschätzte Abbruchdauer  |
 Führen Sie die folgenden Schritte aus, um einen Verwaltungsvorgang über das Azure-Portal abzubrechen:
 
 1. Navigieren Sie zum [Azure-Portal](https://portal.azure.com).
-1. Wechseln Sie zum **Übersicht** -Blatt Ihrer verwalteten SQL-Instanz. 
+1. Wechseln Sie zum **Übersicht**-Blatt Ihrer verwalteten SQL-Instanz. 
 1. Wählen Sie unter **Benachrichtigungen** das Feld für den laufenden Vorgang aus, um die Seite **Laufende Vorgänge** zu öffnen. 
 
    :::image type="content" source="media/management-operations-cancel/open-ongoing-operation.png" alt-text="Wählen Sie das Feld für den laufenden Vorgang aus, um die Seite „Laufende Vorgänge“ zu öffnen.":::
 
 1. Wählen Sie **Diesen Vorgang abbrechen** unten auf der Seite aus. 
 
-   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="Wählen Sie das Feld für den laufenden Vorgang aus, um die Seite „Laufende Vorgänge“ zu öffnen.":::
+   :::image type="content" source="media/management-operations-cancel/cancel-operation.png" alt-text="„Diesen Vorgang abbrechen“ auswählen, um den Vorgang abzubrechen.":::
 
 1. Bestätigen Sie, dass Sie den Vorgang abbrechen möchten. 
 
@@ -116,13 +116,12 @@ Eine ausführliche Beschreibung der Befehle finden Sie unter [az sql mi op](/cli
 
 ## <a name="canceled-deployment-request"></a>Abgebrochene Bereitstellungsanforderung
 
-In der API-Version 2020-02-02 ist eine Instanz, sobald deren Erstellungsanforderung akzeptiert wurde, als Ressource vorhanden, unabhängig vom Status des Bereitstellungsprozesses (der Status der verwalteten Instanz ist **Provisioning** ). Wenn Sie die Instanzbereitstellungsanforderung abbrechen (neue Instanzerstellung), wird der Status der verwalteten Instanz von **Provisioning** in **FailedToCreate** geändert.
+In der API-Version 2020-02-02 ist eine Instanz, sobald deren Erstellungsanforderung akzeptiert wurde, als Ressource vorhanden, unabhängig vom Status des Bereitstellungsprozesses (der Status der verwalteten Instanz ist **Provisioning**). Wenn Sie die Instanzbereitstellungsanforderung abbrechen (neue Instanzerstellung), wird der Status der verwalteten Instanz von **Provisioning** in **FailedToCreate** geändert.
 
 Instanzen, die nicht erstellt werden konnten, sind weiterhin als Ressource vorhanden, und es gilt Folgendes: 
 
 - Sie werden nicht geändert.
 - Sie tragen nicht zu den Ressourcengrenzwerten bei (Subnetzkontingent oder Kontingent für virtuelle Kerne).
-- Ihre Instanznamen bleiben reserviert: um eine Instanz mit demselben Namen bereitzustellen, löschen Sie die fehlerhafte Instanz, um den Namen freizugeben.
 
 
 > [!NOTE]

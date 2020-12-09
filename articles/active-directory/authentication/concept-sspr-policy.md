@@ -6,18 +6,18 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
 ms.date: 10/05/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: b1583307771dd58053128d71cb0ae5dd7e709f68
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a53b193d16a2cefbde7877fd930e5fa73b0c6a36
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174380"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861271"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Kennwortrichtlinien und Kontoeinschränkungen in Azure Active Directory
 
@@ -95,7 +95,7 @@ Eine Zwei-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus zwei Elemen
 * eine benutzerdefinierte Domäne für Ihren Azure AD-Mandanten konfiguriert wurde, z. B. *contoso.com*, oder
 * Azure AD Connect synchronisiert Identitäten aus Ihrem lokalen Verzeichnis.
 
-Sie können die Verwendung der Self-Service-Kennwortzurücksetzung für Administratorkonten über das PowerShell-Cmdlet[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) deaktivieren. Mithilfe des Parameters `-SelfServePasswordResetEnabled $False` wird die Self-Service-Kennwortzurücksetzung für Administratoren deaktiviert.
+Sie können die Verwendung der Self-Service-Kennwortzurücksetzung für Administratorkonten über das PowerShell-Cmdlet[Set-MsolCompanySettings](/powershell/module/msonline/set-msolcompanysettings) deaktivieren. Mithilfe des Parameters `-SelfServePasswordResetEnabled $False` wird die Self-Service-Kennwortzurücksetzung für Administratoren deaktiviert.
 
 ### <a name="exceptions"></a>Ausnahmen
 
@@ -107,7 +107,7 @@ Eine Ein-Gate-Richtlinie erfordert Authentifizierungsdaten, die aus einem Elemen
 
 ## <a name="password-expiration-policies"></a><a name="set-password-expiration-policies-in-azure-ad"></a>Richtlinien zum Kennwortablauf
 
-Ein *globaler Administrator* oder *Benutzeradministrator* kann mit dem [Microsoft Azure AD-Modul für Windows PowerShell](/powershell/module/Azuread/?view=azureadps-2.0) festlegen, dass Benutzerkennwörter nicht ablaufen.
+Ein *globaler Administrator* oder *Benutzeradministrator* kann mit dem [Microsoft Azure AD-Modul für Windows PowerShell](/powershell/module/Azuread/) festlegen, dass Benutzerkennwörter nicht ablaufen.
 
 Sie können auch PowerShell-Cmdlets verwenden, um die Konfiguration für niemals ablaufende Kennwörter zu entfernen oder um anzuzeigen, für welche Benutzerkennwörter festgelegt ist, dass sie nie ablaufen.
 
@@ -118,13 +118,13 @@ Diese Anleitung gilt für andere Anbieter wie Intune und Microsoft 365, die ebe
 
 ### <a name="set-or-check-the-password-policies-by-using-powershell"></a>Festlegen oder Überprüfen der Kennwortrichtlinien mithilfe von PowerShell
 
-Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](/powershell/module/Azuread/?view=azureadps-2.0). [Verbinden Sie es anschließend mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples).
+Um zu beginnen, [laden Sie das Azure AD PowerShell-Modul herunter und installieren es](/powershell/module/Azuread/). [Verbinden Sie es anschließend mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread#examples).
 
 Nachdem das Modul installiert wurde, können Sie jede Aufgabe nach Bedarf mit den folgenden Schritten abschließen.
 
 ### <a name="check-the-expiration-policy-for-a-password"></a>Überprüfen der Ablaufrichtlinie für ein Kennwort
 
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread#examples) her.
 1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
    * Führen Sie das folgende Cmdlet aus, um zu ermitteln, ob für das Kennwort eines einzelnen Benutzers festgelegt ist, dass es nie abläuft. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*:
@@ -141,7 +141,7 @@ Nachdem das Modul installiert wurde, können Sie jede Aufgabe nach Bedarf mit de
 
 ### <a name="set-a-password-to-expire"></a>Festlegen, dass ein Kennwort abläuft
 
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread#examples) her.
 1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es abläuft, führen Sie das folgende Cmdlet aus. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*.
@@ -158,7 +158,7 @@ Nachdem das Modul installiert wurde, können Sie jede Aufgabe nach Bedarf mit de
 
 ### <a name="set-a-password-to-never-expire"></a>Festlegen, dass ein Kennwort nicht abläuft
 
-1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread?view=azureadps-2.0#examples) her.
+1. Öffnen Sie eine PowerShell-Eingabeaufforderung, und stellen Sie mithilfe des Kontos eines *globalen Administrators* oder *Benutzeradministrators* eine [Verbindung mit Ihrem Azure AD-Mandanten](/powershell/module/azuread/connect-azuread#examples) her.
 1. Führen Sie einen der folgenden Befehle für einen einzelnen Benutzer oder für alle Benutzer aus:
 
    * Um für das Kennwort eines Benutzers festzulegen, dass es nie abläuft, führen Sie das folgende Cmdlet aus. Ersetzen Sie `<user ID>` durch die Benutzer-ID des Benutzers, den Sie überprüfen möchten, z. B. *driley\@contoso.onmicrosoft.com*.

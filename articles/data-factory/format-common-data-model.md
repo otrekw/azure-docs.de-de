@@ -5,14 +5,14 @@ author: kromerm
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/07/2020
 ms.author: makromer
-ms.openlocfilehash: 7fc3a63f841a88451746d088a527a41d756e711f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e3152f1dff4a80ce3ae8bd121215ceb2595b9ee2
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95015170"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854004"
 ---
 # <a name="common-data-model-format-in-azure-data-factory"></a>Common Data Model-Format in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -20,9 +20,6 @@ ms.locfileid: "95015170"
 Das Common Data Model-Metadatensystem ermöglicht es, dass Daten und deren Bedeutung problemlos von allen Anwendungen und Geschäftsprozessen gemeinsam genutzt werden können. Weitere Informationen finden Sie in der Übersicht zum [Common Data Model](/common-data-model/).
 
 In Azure Data Factory können Benutzer Daten aus CDM-Entitäten sowohl in MODEL.JSON-Dateien als auch in Manifestdateien transformieren, die in [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md) (ADLS Gen2) mithilfe von Zuordnungsdatenflüssen gespeichert werden. Sie können Daten mithilfe von Verweisen auf CDM-Entitäten auch als Senken in das CDM-Format transformieren. Dann werden diese im CSV- oder PARQUET-Format in partitionierten Ordnern gespeichert. 
-
-> [!NOTE]
-> Der Common Data Model-Formatconnector für ADF-Datenflüsse ist zurzeit als öffentliche Vorschauversion verfügbar.
 
 ## <a name="mapping-data-flow-properties"></a>Eigenschaften von Zuordnungsdatenflüssen
 
@@ -37,7 +34,7 @@ In der folgenden Tabelle sind die von einer CDM-Quelle unterstützten Eigenschaf
 
 | Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
-| Format | Das Format muss `cdm` sein. | ja | `cdm` | format |
+| Format | Das Format muss `cdm` sein | ja | `cdm` | format |
 | Metadatenformat | Gibt an, wo sich der Entitätsverweis auf die Daten befindet. Bei Verwendung von CDM-Version 1.0 wählen Sie „manifest“ aus. Bei Verwendung einer früheren CDM-Version als 1.0 wählen Sie „model.json“ aus. | Ja | `'manifest'` oder `'model'` | manifestType |
 | Stammspeicherort: Container | Der Containername des CDM-Ordners. | ja | String | fileSystem |
 | Stammspeicherort: Ordnerpfad | Der Stammspeicherort des CDM-Ordners. | ja | String | folderPath |
@@ -88,7 +85,6 @@ Wenn Sie Entitätseigenschaften in der Senkentransformation Spalten für Zuordnu
 2. Suchen Sie nach der Eigenschaft „partitions.Location“. 
 3. Ändern Sie „blob.core.windows.net“ in „dfs.core.windows.net“.
 4. Korrigieren Sie eine „%2F“-Codierung in der URL in „/“.
- 
 
 ### <a name="cdm-source-data-flow-script-example"></a>Beispiel eines Datenflussskripts für eine CDM-Quelle
 
@@ -118,7 +114,7 @@ source(output(
 
 In der folgenden Tabelle sind die von einer CDM-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Format | Das Format muss `cdm` sein | ja | `cdm` | format |
 | Stammspeicherort: Container | Der Containername des CDM-Ordners. | ja | String | fileSystem |
