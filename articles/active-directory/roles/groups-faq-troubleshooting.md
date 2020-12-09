@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0f80f67ac695c17cc760e0e87fb9b11384fb7585
-ms.sourcegitcommit: 0d171fe7fc0893dcc5f6202e73038a91be58da03
+ms.openlocfilehash: 8735a0d34b9fcf5b86b6592980ffc5c7c3e3073c
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93377733"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861934"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>Problembehandlung bei Rollen, die Cloudgruppen zugewiesen sind
 
@@ -40,8 +40,8 @@ Nachfolgend sind einige häufig gestellte Fragen und Tipps zur Problembehandlung
 
 **A:** Der Benutzer kann ein Besitzer einer Gruppe sein, der Rollen zugewiesen werden können. Besitzer von Gruppen mit Rollenzuweisung sind geschützt, um Rechteerweiterungen zu vermeiden. Hier ein Beispiel: Die Gruppe „Contoso_Security_Admins“ ist der Rolle „Sicherheitsadministrator“ zugewiesen, wobei Bob der Gruppenbesitzer und Alice die Kennwortadministratorin in der Organisation ist. Wäre dieser Schutz nicht vorhanden, könnte Alice die Anmeldeinformationen von Bob zurücksetzen und seine Identität übernehmen. Anschließend könnte Alice sich selbst oder andere Benutzer der Gruppe „Contoso_Security_Admins“ hinzufügen, um ein Sicherheitsadministrator in der Organisation zu werden. Wenn Sie herausfinden möchten, ob ein Benutzer ein Gruppenbesitzer ist, können Sie die Liste der im Besitz dieses Benutzers befindlichen Objekte abrufen und überprüfen, ob für eine der Gruppen „isAssignableToRole“ auf „true“ festgelegt ist. Wenn das der Fall ist, ist dieser Benutzer geschützt, und das Verhalten ist beabsichtigt. Informationen zum Abrufen von in Besitz befindlichen Objekten finden Sie in den folgenden Dokumentationen:
 
-- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject?view=azureadps-2.0)  
-- [Auflisten von ownedObjects](/graph/api/user-list-ownedobjects?tabs=http&view=graph-rest-1.0)
+- [Get-AzureADUserOwnedObject](/powershell/module/azuread/get-azureaduserownedobject)  
+- [Auflisten von ownedObjects](/graph/api/user-list-ownedobjects?tabs=http)
 
 **F:** Kann ich eine Zugriffsüberprüfung für Gruppen erstellen, die Azure AD-Rollen zugewiesen werden können (insbesondere Gruppen, bei denen die Eigenschaft „isAssignableToRole“ auf „true“ festgelegt ist)?  
 
