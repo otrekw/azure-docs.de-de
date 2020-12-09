@@ -3,18 +3,18 @@ title: 'Azure Data Factory: Häufig gestellte Fragen '
 description: Hier finden Sie Antworten auf häufig gestellte Fragen zu Azure Data Factory.
 services: data-factory
 documentationcenter: ''
-author: djpmsft
-ms.author: daperlov
+author: dcstwh
+ms.author: weetok
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 02/10/2020
-ms.openlocfilehash: ba3cc376edef1e6dc8fbf859e456219a1fd3ca60
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2d1b9f0e25c460b7f26c31c3d2c6ebe51d958017
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635761"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96485013"
 ---
 # <a name="azure-data-factory-faq"></a>Azure Data Factory: Häufig gestellte Fragen
 
@@ -190,7 +190,7 @@ Wenn Microsoft Hilfe oder eine Problembehandlung für Datenflüsse bereitstellt,
 
 ### <a name="how-do-i-access-data-by-using-the-other-90-dataset-types-in-data-factory"></a>Wie kann ich mit den anderen 90 Datasettypen in Data Factory auf Daten zugreifen?
 
-Mit dem Feature „Zuordnungsdatenfluss“ können aktuell Azure SQL-Datenbank, Azure Synapse Analytics (früher SQL Data Warehouse), durch Trennzeichen getrennte Textdateien aus Azure Blob Storage oder Azure Data Lake Storage Gen2 sowie Parquet-Dateien aus Blob Storage oder Data Lake Storage Gen2 nativ für Quelle und Senke verwendet werden. 
+Mit dem Feature „Zuordnungsdatenfluss“ können aktuell Azure SQL-Datenbank, Azure Synapse Analytics, durch Trennzeichen getrennte Textdateien aus Azure Blob Storage oder Azure Data Lake Storage Gen2 sowie Parquet-Dateien aus Blob Storage oder Data Lake Storage Gen2 nativ für Quelle und Senke verwendet werden. 
 
 Verwenden Sie die Kopieraktivität, um Daten aus einem der anderen Connectors bereitzustellen, und führen Sie dann eine Datenflussaktivität aus, um Daten nach der Bereitstellung zu transformieren. So führt Ihre Pipeline beispielsweise zuerst einen Kopiervorgang nach Blob Storage aus, und anschließend verwendet eine Datenflussaktivität ein Dataset in der Quelle, um diese Daten zu transformieren.
 

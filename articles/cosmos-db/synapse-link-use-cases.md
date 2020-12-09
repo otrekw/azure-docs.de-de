@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: ramkris
-ms.openlocfilehash: 7621a19b510d302454465f9fcbacec27a14dddf9
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9855a53ebdf7501907b3e1e63d59823d3a0b0209
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340174"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463123"
 ---
 # <a name="azure-synapse-link-for-azure-cosmos-db-near-real-time-analytics-use-cases"></a>Azure Synapse Link für Azure Cosmos DB: Anwendungsfälle für Analysen in Quasi-Echtzeit
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -53,9 +53,9 @@ Basierend auf der vorherigen Architektur sind die folgenden Anwendungsfälle mit
 
   Synapse Link für Azure Cosmos DB ermöglicht umfassende Szenarien für Business Intelligence (BI) und die Berichterstellung:
 
-  * Fragen Sie operative Daten aus dem Azure Cosmos DB-Analysespeicher mithilfe der nativen Integration in Synapse SQL (serverlos) und der vollständigen Ausdrucksfähigkeit von T-SQL ab.
+  * Fragen Sie operative Daten aus dem Azure Cosmos DB-Analysespeicher mithilfe der nativen Integration mit serverlosen SQL-Pools und der vollständigen Ausdrucksfähigkeit von T-SQL ab.
 
-  * Modellieren und veröffentlichen Sie automatisch aktualisierte BI-Dashboards über Azure Cosmos DB mit Unterstützung für Synapse SQL (serverlos) für vertraute BI-Tools, wie beispielsweise Azure Analysis Services, Power BI Premium usw.
+  * Modellieren und veröffentlichen Sie automatisch aktualisierte BI-Dashboards über Azure Cosmos DB mit Unterstützung für serverlose SQL-Pools für vertraute BI-Tools, wie beispielsweise Azure Analysis Services, Power BI Premium usw.
 
 Im Folgenden finden Sie eine Anleitung für die Datenintegration für Batch- und Streamingdaten in Azure Cosmos DB:
 
@@ -143,4 +143,4 @@ Weitere Informationen finden Sie in den folgenden Dokumenten:
 
 * [Apache Spark in Azure Synapse Analytics](../synapse-analytics/spark/apache-spark-concepts.md)
 
-* [Laufzeitunterstützung für serverloses SQL in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)
+* [Laufzeitunterstützung für serverlose SQL-Pools in Azure Synapse Analytics](../synapse-analytics/sql/on-demand-workspace-overview.md)

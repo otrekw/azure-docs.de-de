@@ -11,14 +11,14 @@ ms.topic: conceptual
 author: DavidTrigano
 ms.author: datrigan
 ms.reviewer: vanto
-ms.date: 09/21/2020
+ms.date: 12/01/2020
 tags: azure-synapse
-ms.openlocfilehash: ab974b0f68e831e672329f8af5ae1cb6a5fdbd4c
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: c3f1209c2c903399617bd60258cc152a6ce90b80
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92672084"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462090"
 ---
 # <a name="data-discovery--classification"></a>Datenermittlung und -klassifizierung
 [!INCLUDE[appliesto-sqldb-sqlmi-asa](../includes/appliesto-sqldb-sqlmi-asa.md)]
@@ -77,7 +77,9 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
 1. Öffnen Sie das [Azure-Portal](https://portal.azure.com).
 
-1. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift „Sicherheit“ zu **Datenermittlung und -klassifizierung** . Die Registerkarte „Übersicht“ enthält eine Zusammenfassung des aktuellen Klassifizierungsstatus der Datenbank. Die Zusammenfassung enthält eine ausführliche Liste aller klassifizierten Spalten, die Sie auch filtern können, um nur bestimmte Schemateile, Informationstypen und Bezeichnungen anzuzeigen. Wenn Sie noch keine Spalten klassifiziert haben, [fahren Sie mit Schritt 4 fort](#step-4).
+1. Navigieren Sie im Bereich von Azure SQL-Datenbank unter der Überschrift **Sicherheit** zu **Datenermittlung und -klassifizierung**. Die Registerkarte „Übersicht“ enthält eine Zusammenfassung des aktuellen Klassifizierungsstatus der Datenbank. Die Zusammenfassung enthält eine ausführliche Liste aller klassifizierten Spalten, die Sie auch filtern können, um nur bestimmte Schemateile, Informationstypen und Bezeichnungen anzuzeigen. Wenn Sie noch keine Spalten klassifiziert haben, [fahren Sie mit Schritt 4 fort](#step-4).
+
+    ![Übersicht](./media/data-discovery-and-classification-overview/data-discovery-and-classification.png)
 
 1. Um einen Bericht im Excel-Format herunterzuladen, wählen Sie oben im Fenster im Menü die Option **Exportieren** aus.
 
@@ -93,6 +95,8 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
    - Wählen Sie zum Anwenden der ausgewählten Empfehlungen die Option **Ausgewählte Empfehlungen annehmen** aus.
 
+   ![Empfehlungen für die Klassifizierung](./media/data-discovery-and-classification-overview/recommendation.png)
+
 1. Alternativ oder zusätzlich zur empfehlungsbasierten Klassifizierung können Sie Spalten auch manuell klassifizieren:
 
    1. Wählen Sie im oberen Menü des Bereichs **Klassifizierung hinzufügen** aus.
@@ -101,7 +105,10 @@ Nachdem die organisationsweite Richtlinie definiert wurde, können Sie die Klass
 
    1. Wählen Sie dann am unteren Rand des Kontextfensters die Option **Klassifizierung hinzufügen** aus.
 
-1. Wählen Sie im oberen Menü des Fensters **Speichern** aus, um Ihre Klassifizierung abzuschließen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten (Tags) zu bezeichnen.
+   ![Manuelles Hinzufügen einer Klassifizierung](./media/data-discovery-and-classification-overview/manually-add-classification.png)
+
+
+1. Wählen Sie auf der Seite **Klassifizierung** die Option **Speichern** aus, um Ihre Klassifizierung abzuschließen und die Datenbankspalten dauerhaft mit den neuen Klassifizierungsmetadaten (Tags) zu bezeichnen.
 
 ## <a name="audit-access-to-sensitive-data"></a><a id="audit-sensitive-data"></a>Überwachen des Zugriffs auf vertrauliche Daten
 

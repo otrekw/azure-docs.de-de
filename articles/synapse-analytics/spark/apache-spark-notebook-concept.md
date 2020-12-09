@@ -9,15 +9,16 @@ ms.date: 11/18/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 4387aadd70ddb373df1bdfa61cbe9ed7f2af283d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: bad71cfeb8f15f463bb9659be704374325d1f50a
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919193"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96461992"
 ---
 # <a name="azure-synapse-analytics-notebooks"></a>Azure Synapse Analytics-Notebooks
-Ein Synapse Studio-Notebook (Vorschauversion) ist eine Weboberfläche, mit der Sie Dateien erstellen können, die Livecode, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. 
+
+Ein Synapse Studio-Notebook ist eine Weboberfläche zum Erstellen von Dateien, die Livecode, Visualisierungen und beschreibenden Text enthalten. Notebooks sind ein guter Ausgangspunkt, um Ideen zu überprüfen und schnelle Experimente zu verwenden, um Erkenntnisse aus Ihren Daten zu gewinnen. 
 
 Mit einem Azure Synapse Studio-Notebook können Sie:
 

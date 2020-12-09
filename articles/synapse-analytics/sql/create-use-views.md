@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwenden von Ansichten in einem serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Abschnitt erfahren Sie, wie Sie Ansichten zum Umschließen von Abfragen eines serverlosen SQL-Pools (Vorschauversion) erstellen und verwenden. Ansichten ermöglichen Ihnen die erneute Verwendung dieser Abfragen. Ansichten sind ebenfalls erforderlich, wenn Sie Tools wie Power BI zusammen mit einem serverlosen SQL-Pool verwenden möchten.
+title: Erstellen und Verwenden von Ansichten in einem serverlosen SQL-Pool
+description: In diesem Abschnitt erfahren Sie, wie Sie Ansichten erstellen und zum Umschließen von Abfragen für einen serverlosen SQL-Pool verwenden. Ansichten ermöglichen Ihnen die erneute Verwendung dieser Abfragen. Ansichten sind ebenfalls erforderlich, wenn Sie Tools wie Power BI zusammen mit einem serverlosen SQL-Pool verwenden möchten.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 302cf97db7c1d2ba489a84b6be912816d20f6091
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 0948c7c82d7577bae07057bff9d1be4d7e09f978
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685561"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462285"
 ---
-# <a name="create-and-use-views-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics
+# <a name="create-and-use-views-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden von Ansichten mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-In diesem Abschnitt erfahren Sie, wie Sie Ansichten zum Umschließen von Abfragen eines serverlosen SQL-Pools (Vorschauversion) erstellen und verwenden. Ansichten ermöglichen Ihnen die erneute Verwendung dieser Abfragen. Ansichten sind ebenfalls erforderlich, wenn Sie Tools wie Power BI zusammen mit einem serverlosen SQL-Pool verwenden möchten.
+In diesem Abschnitt erfahren Sie, wie Sie Ansichten erstellen und zum Umschließen von Abfragen für einen serverlosen SQL-Pool verwenden. Ansichten ermöglichen Ihnen die erneute Verwendung dieser Abfragen. Ansichten sind ebenfalls erforderlich, wenn Sie Tools wie Power BI zusammen mit einem serverlosen SQL-Pool verwenden möchten.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

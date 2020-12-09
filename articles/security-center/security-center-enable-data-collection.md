@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: quickstart
 ms.date: 11/15/2020
 ms.author: memildin
-ms.openlocfilehash: 7d96b03598f90b45b7ecf88027be7408d8f161ea
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: f5cf432e3824ca0bb441a458a08fc7353291cf1f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638766"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490056"
 ---
 # <a name="auto-provisioning-agents-and-extensions-from-azure-security-center"></a>Automatische Bereitstellung von Agents und Erweiterungen aus Azure Security Center
 
@@ -138,7 +138,7 @@ Zum Speichern von Daten zu sicherheitsrelevanten Windows-Ereignissen ist Azure 
 Für das Speichern von Daten in Log Analytics fallen möglicherweise zusätzliche Gebühren für die Datenspeicherung an. Weitere Informationen hierzu finden Sie in der [Preisübersicht](https://azure.microsoft.com/pricing/details/security-center/).
 
 ### <a name="information-for-azure-sentinel-users"></a>Informationen für Azure Sentinel-Benutzer 
-Benutzer von Azure Sentinel: Beachten Sie, dass das Erfassen von sicherheitsrelevanten Ereignissen für einen einzelnen Arbeitsbereich entweder in Azure Security Center oder in Azure Sentinel konfiguriert werden kann, aber nicht in beiden Diensten. Wenn Sie Azure Sentinel zu einem Arbeitsbereich hinzufügen möchten, der bereits Azure Defender-Benachrichtigungen aus Azure Security Center empfängt und für das Erfassen sicherheitsrelevanter Ereignisse konfiguriert ist, haben Sie zwei Möglichkeiten:
+Benutzer von Azure Sentinel: Beachten Sie, dass das Erfassen von sicherheitsrelevanten Ereignissen für einen einzelnen Arbeitsbereich entweder in Azure Security Center oder in Azure Sentinel konfiguriert werden kann, aber nicht in beiden Diensten. Wenn Sie Azure Sentinel zu einem Arbeitsbereich hinzufügen möchten, der bereits Benachrichtigungen aus Azure Security Center empfängt und für das Erfassen sicherheitsrelevanter Ereignisse konfiguriert ist, haben Sie zwei Möglichkeiten:
 - Behalten Sie das Erfassen von sicherheitsrelevanten Ereignissen im Azure Security Center bei. Sie können diese Ereignisse sowohl in Azure Sentinel als auch in Azure Defender abfragen und analysieren. Allerdings können Sie in Azure Sentinel weder den Verbindungsstatus des Connectors überwachen noch dessen Konfiguration ändern. Wenn dies wichtig für Sie ist, ziehen Sie die zweite Möglichkeit in Betracht.
 - Deaktivieren Sie die Sammlung von sicherheitsrelevanten Ereignissen in Azure Security Center (indem Sie in der Konfiguration des Log Analytics-Agents **Windows-Sicherheitsereignisse** auf **Keine** festlegen). Fügen Sie dann den Connector für sicherheitsrelevante Ereignisse in Azure Sentinel hinzu. Wie bei der ersten Möglichkeit können Sie Ereignisse sowohl in Azure Sentinel als auch in Azure Defender/ASC abfragen und analysieren. Nun können Sie allerdings in Azure Sentinel – und nur dort – den Verbindungsstatus des Connectors überwachen und dessen Konfiguration ändern.
 
@@ -211,8 +211,8 @@ So installieren Sie den Log Analytics-Agent manuell:
 
 1. Wenn Sie die Agents mithilfe von PowerShell bereitstellen möchten, folgen Sie den Anweisungen in der Dokumentation zu VMs:
 
-    - [Für Windows-Computer](../virtual-machines/extensions/oms-windows.md?toc=%252fazure%252fazure-monitor%252ftoc.json#powershell-deployment)
-    - [Für Linux-Computer](../virtual-machines/extensions/oms-linux.md?toc=%252fazure%252fazure-monitor%252ftoc.json#azure-cli-deployment)
+    - [Für Windows-Computer](../virtual-machines/extensions/oms-windows.md?toc=%2fazure%2fazure-monitor%2ftoc.json#powershell-deployment)
+    - [Für Linux-Computer](../virtual-machines/extensions/oms-linux.md?toc=%2fazure%2fazure-monitor%2ftoc.json#azure-cli-deployment)
 
 > [!TIP]
 > Anweisungen für das Onboarding von Security Center mit PowerShell finden Sie unter [Automatisieren des Onboardings von Azure Security Center mit PowerShell](security-center-powershell-onboarding.md).

@@ -1,5 +1,5 @@
 ---
-title: Serverloser SQL-Pool (Vorschauversion)
+title: Serverloser SQL-Pool
 description: Hier erfahren Sie mehr über den serverlosen SQL-Pool in Azure Synapse Analytics.
 services: synapse analytics
 author: filippopovic
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: e0d47567c3bc0b05c47efafa3bdc8b297a7bdbea
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 34ce36f0ff348f896b7c2ea680c113b5e9e4ea09
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93306877"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463164"
 ---
-# <a name="serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Serverloser SQL-Pool (Vorschauversion) in Azure Synapse Analytics 
+# <a name="serverless-sql-pool-in-azure-synapse-analytics"></a>Serverloser SQL-Pool in Azure Synapse Analytics 
 
-Jeder Azure Synapse Analytics-Arbeitsbereich (Vorschauversion) enthält Endpunkte für serverlose SQL-Pools (Vorschauversion), die Sie zum Abfragen von Daten im Data Lake verwenden können.
+Jeder Azure Synapse Analytics-Arbeitsbereich enthält Endpunkte für serverlose SQL-Pools, die Sie zum Abfragen von Daten im Data Lake verwenden können.
 
 Ein serverloser SQL-Pool ist ein Abfragedienst für die Daten in Ihrem Data Lake. Er ermöglicht den Zugriff auf Ihre Daten über folgende Funktionen:
  
@@ -123,7 +123,7 @@ Die Authentifizierung mit einem serverlosen SQL-Pool bezieht sich darauf, auf we
 
   Diese Authentifizierungsmethode verwendet einen Benutzernamen und ein Kennwort.
 
-- **Azure Active Directory-Authentifizierung** :
+- **Azure Active Directory-Authentifizierung**:
 
   Bei dieser Authentifizierungsmethode werden von Azure Active Directory verwaltete Identitäten verwendet. Für Azure AD-Benutzer kann die mehrstufige Authentifizierung aktiviert werden. Verwenden Sie immer die Active Directory-Authentifizierung (integrierte Sicherheit), [sofern dies möglich ist](/sql/relational-databases/security/choose-an-authentication-mode?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest).
 

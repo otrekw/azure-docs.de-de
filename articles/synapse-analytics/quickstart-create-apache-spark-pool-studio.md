@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines serverlosen Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio'
+title: 'Schnellstart: Erstellen eines serverlosen Apache Spark-Pools mithilfe von Synapse Studio'
 description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen serverlosen Apache Spark-Pool mithilfe von Synapse Studio.
 services: synapse-analytics
 author: saveenr
@@ -9,14 +9,14 @@ ms.subservice: spark
 ms.date: 10/16/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 313ad0c620fe06158e96c208ae265702134b58d1
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d280e96b354f38a86545ed5f6bcaa6c9a314c46b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93324205"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462032"
 ---
-# <a name="quickstart-create-a-serverless-apache-spark-pool-preview-using-synapse-studio"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools (Vorschau) mithilfe von Synapse Studio
+# <a name="quickstart-create-a-serverless-apache-spark-pool-using-synapse-studio"></a>Schnellstart: Erstellen eines serverlosen Apache Spark-Pools mithilfe von Synapse Studio
 
 Azure Synapse Analytics beinhaltet verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren, analysieren und bereitstellen können. Ein Apache Spark-Pool bietet Open-Source-Computefunktionen für Big Data. Nach der Erstellung eines Apache Spark-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und bereitgestellt werden, um Erkenntnisse zu gewinnen.  
 
@@ -57,7 +57,7 @@ Wählen Sie in der Arbeitsbereichsübersicht die **Web-URL für den Arbeitsberei
 
     ![Die Synapse Studio-Startseite mit hervorgehobenem Abschnitt „Verwaltungshub“.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-21.png)
 
-1. Navigieren Sie, nachdem Sie sich im Verwaltungshub befinden, zum Abschnitt **Apache Spark-Pools** , um die aktuelle Liste der Apache Spark-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
+1. Navigieren Sie, nachdem Sie sich im Verwaltungshub befinden, zum Abschnitt **Apache Spark-Pools**, um die aktuelle Liste der Apache Spark-Pools anzuzeigen, die im Arbeitsbereich verfügbar sind.
     
     ![Synapse Studio-Verwaltungshub mit ausgewählter Navigation für „Apache Spark-Pools“.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-22.png)
 
@@ -81,7 +81,7 @@ Wählen Sie in der Arbeitsbereichsübersicht die **Web-URL für den Arbeitsberei
 
 1. Wir fügen vorerst keine Tags hinzu. Wählen Sie also **Überprüfen + erstellen** aus.
 
-1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen** , dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
+1. Vergewissern Sie sich auf der Grundlage der vorherigen Eingaben auf der Registerkarte **Überprüfen + erstellen**, dass die Details korrekt sind, und klicken Sie auf **Erstellen**. 
 
     ![Erstellen eine neuen Apache Spark-Pools in Synapse Studio](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-26.png)
 
@@ -100,7 +100,7 @@ Führen Sie die folgenden Schritte aus, um den Apache Spark-Pool mithilfe von S
 Gehen Sie zum Löschen des Apache Spark-Pools wie folgt vor:
 
 1. Navigieren Sie zu den Apache Spark-Pools im Verwaltungshub in Synapse Studio.
-1. Wählen Sie das Auslassungszeichen (drei Punkte) neben dem zu löschenden Apache Spark-Pool aus (in diesem Fall **contosospark** ), um die Befehle für den Apache Spark-Pool anzuzeigen.
+1. Wählen Sie das Auslassungszeichen (drei Punkte) neben dem zu löschenden Apache Spark-Pool aus (in diesem Fall **contosospark**), um die Befehle für den Apache Spark-Pool anzuzeigen.
 
     ![Liste der Apache Spark-Pools, der soeben erstellte Pool ist ausgewählt.](media/quickstart-create-apache-spark-pool/create-spark-pool-studio-29.png)
 

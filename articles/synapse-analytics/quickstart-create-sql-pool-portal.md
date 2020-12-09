@@ -1,5 +1,5 @@
 ---
-title: 'Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal'
+title: 'Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals'
 description: Erstellen Sie anhand der Schritte in diesem Leitfaden einen neuen dedizierten SQL-Pool über das Azure-Portal.
 services: synapse-analytics
 author: julieMSFT
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
-ms.openlocfilehash: b558e34d3f5d224515eee669dfa7b8f2c6bbb3cd
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 3537b126adf082c8b00a02d999789d8a32b3f51d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541010"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462014"
 ---
-# <a name="quickstart-create-a-dedicated-sql-pool-preview-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools (Vorschau) über das Azure-Portal
+# <a name="quickstart-create-a-dedicated-sql-pool-using-the-azure-portal"></a>Schnellstart: Erstellen eines dedizierten SQL-Pools mithilfe des Azure-Portals
 
 Azure Synapse Analytics enthält verschiedene Analysemodule, mit denen Sie Ihre Daten erfassen, transformieren, modellieren und analysieren können. Ein dedizierter SQL-Pool bietet T-SQL-basierte Compute- und Speicherfunktionen. Nach der Erstellung eines dedizierten SQL-Pools in Ihrem Synapse-Arbeitsbereich können Daten geladen, modelliert, verarbeitet und für einen schnelleren analytischen Einblick bereitgestellt werden.
 

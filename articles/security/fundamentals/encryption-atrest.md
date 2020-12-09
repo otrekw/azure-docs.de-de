@@ -1,6 +1,6 @@
 ---
 title: Datenverschlüsselung ruhender Azure-Daten – Azure Security
-description: In diesem Artikel erhalten Sie einen Überblick über die Datenverschlüsselung ruhender Daten von Azure, die Hauptfunktionen und allgemeine Überlegungen.
+description: In diesem Artikel erhalten Sie einen Überblick über die Azure-Datenverschlüsselung ruhender Daten, die Hauptfunktionen und allgemeine Überlegungen.
 services: security
 documentationcenter: na
 author: msmbaldwin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
-ms.openlocfilehash: c9a68661a89f53c5aa27bdd046b5bc09a47db400
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 092320db9b7fe2b1f3fe142f84ad201d40dc6e2e
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94556623"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96492283"
 ---
-# <a name="azure-data-encryption-at-rest"></a>Datenverschlüsselung ruhender Azure-Daten
+# <a name="azure-data-encryption-at-rest"></a>Azure-Datenverschlüsselung ruhender Daten
 
 Microsoft Azure bietet Tools, um Daten den Sicherheits- und Konformitätsanforderungen Ihres Unternehmens entsprechend zu schützen. In diesem Artikel geht es um folgende Themen:
 

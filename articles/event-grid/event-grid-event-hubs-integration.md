@@ -4,15 +4,15 @@ description: 'Tutorial: Hier wird erläutert, wie Daten mithilfe von Azure Event
 ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: e6dfcac17d79edd417af07179224fdf922906c4e
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 42a2f7fd557970328f6d88b08e296317cecd8c66
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841353"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462146"
 ---
 # <a name="tutorial-stream-big-data-into-a-data-warehouse"></a>Tutorial: Streamen von Big Data in ein Data Warehouse
-Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für die Integration von Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einer Azure Synapse Analytics-Instanz (vormals SQL Data Warehouse) verwenden.
+Bei Azure [Event Grid](overview.md) handelt es sich um einen intelligenten Ereignisroutingdienst, der es Ihnen ermöglicht, auf Benachrichtigungen (Ereignisse) von Apps und Diensten zu reagieren. Er kann beispielsweise eine Azure-Funktion auslösen, um Event Hubs-Daten zu verarbeiten, die in Azure Blob Storage oder Azure Data Lake Storage erfasst wurden, und die Daten zu anderen Datenrepositorys migrieren. Das [Beispiel für die Integration von Event Hubs und Event Grid](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo) veranschaulicht, wie Sie Event Hubs mit Event Grid für die nahtlose Migration von erfassten Event Hubs-Daten vom Blobspeicher zu einer Azure Synapse Analytics-Instanz verwenden.
 
 ![Anwendungsübersicht](media/event-grid-event-hubs-integration/overview.png)
 
@@ -27,8 +27,8 @@ Dieses Diagramm zeigt den Workflow der Lösung, die Sie in diesem Tutorial erste
 In diesem Artikel führen Sie die folgenden Schritte aus:
 
 > [!div class="checklist"]
-> * Verwenden Sie eine Azure Resource Manager-Vorlage für die Bereitstellung der Infrastruktur: einen Event-Hub, ein Speicherkonto, eine Funktions-App, eine Synapse Analytics-Instanz.
-> * Erstellen Sie eine Tabelle im Data Warehouse.
+> * Verwenden Sie eine Azure Resource Manager-Vorlage für die Bereitstellung der Infrastruktur: einen Event Hub, ein Speicherkonto, eine Funktions-App, einen dedizierten SQL-Pool.
+> * Erstellen Sie eine Tabelle im dedizierten SQL-Pool.
 > * Fügen Sie Code zur Funktions-App hinzu.
 > * Abonnieren Sie das Ereignis. 
 > * Führen Sie die App aus, die Daten an den Event Hub sendet

@@ -5,18 +5,19 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 11/09/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: a91ed2a358a9595a4d22dd629b8d470423b786d6
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 041229ffb047c922e1f1f97993fada3841133d35
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95909525"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96489648"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-java"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (Java)
 In dieser Schnellstartanleitung erstellen Sie eine Java-App zum Senden und Empfangen von Nachrichten für eine Azure Service Bus-Warteschlange. 
 
 > [!IMPORTANT]
-> In dieser Schnellstartanleitung wird das neue Paket „azure-messaging-servicebus“ verwendet, das sich in der **Vorschauphase** befindet. Eine Schnellstartanleitung, in der das aktuelle allgemein verfügbare Paket „azure-servicebus“ verwendet wird, finden Sie im Artikel zum [Senden und Empfangen von Nachrichten mit „azure-servicebus“](service-bus-java-how-to-use-queues-legacy.md).
+> In dieser Schnellstartanleitung wird das neue Paket „azure-messaging-servicebus“ verwendet. Eine Schnellstartanleitung mit dem alten Paket „azure-servicebus“ finden Sie im Artikel zum [Senden und Empfangen von Nachrichten mit „azure-servicebus“](service-bus-java-how-to-use-queues-legacy.md).
+
 
 ## <a name="prerequisites"></a>Voraussetzungen
 - Ein Azure-Abonnement. Um dieses Tutorial abzuschließen, benötigen Sie ein Azure-Konto. Sie können Ihre [MSDN-Abonnentenvorteile](https://azure.microsoft.com/pricing/member-offers/credit-for-visual-studio-subscribers/?WT.mc_id=A85619ABF) aktivieren oder sich für ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A85619ABF) registrieren.
@@ -37,7 +38,7 @@ Fügen Sie einen Verweis auf die Azure Service Bus-Bibliothek hinzu. Die Java-Cl
 <dependency>
     <groupId>com.azure</groupId>
     <artifactId>azure-messaging-servicebus</artifactId>
-    <version>7.0.0-beta.7</version>
+    <version>7.0.0</version>
 </dependency>
 ```
 
@@ -220,7 +221,7 @@ Weitere Informationen finden Sie in der folgenden Dokumentation bzw. unter den f
 
 - [Azure Service Bus-Clientbibliothek für Java: Infodatei](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/servicebus/azure-messaging-servicebus/README.md)
 - [Beispiele bei GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus/src/samples)
-- [Java-API-Referenz](https://docs.microsoft.com/java/api/overview/azure/servicebus?view=azure-java-preview&preserve-view=true)
+- [Java-API-Referenz](/java/api/overview/azure/servicebus?preserve-view=true&view=azure-java-preview)
 
 [Weitere Beispiele finden Sie auf GitHub](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/servicebus/azure-messaging-servicebus). 
 

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/21/2020
+ms.date: 11/10/2020
 ms.author: memildin
-ms.openlocfilehash: b7c4c0565d17e62226a518bc443223df8339faec
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3cd536d051f3e227ba86429ae3f1633bf6c2e82f
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949376"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96490532"
 ---
 # <a name="secure-score-in-azure-security-center"></a>Secure Score in Azure Security Center
 
@@ -70,8 +70,6 @@ Zur Wiederholung: Ihre Sicherheitsbewertung wird auf Seiten des Security Center-
 
     :::image type="content" source="./media/secure-score-security-controls/score-on-recommendations-page.png" alt-text="Die Sicherheitsbewertung auf der Security Center-Seite „Empfehlungen“":::
 
-
-
 ### <a name="get-your-secure-score-from-the-rest-api"></a>Abrufen ihrer Sicherheitsbewertung über die REST-API
 
 Sie können auf Ihre Bewertung über die Sicherheitsbewertungs-API (derzeit in der Vorschau) zugreifen. Die API-Methoden bieten die Flexibilität, die Daten abzufragen und im Laufe der Zeit einen eigenen Berichtsmechanismus für Ihre Sicherheitsbewertungen zu erstellen. Beispielsweise können Sie die API [Sicherheitsbewertungen](/rest/api/securitycenter/securescores) verwenden, um die Bewertung für ein bestimmtes Abonnement zu erhalten. Darüber hinaus können Sie die API [Sicherheitsbewertungs-Steuerelemente](/rest/api/securitycenter/securescorecontrols) verwenden, um die Sicherheitssteuerelemente und die aktuelle Bewertung Ihrer Abonnements aufzulisten.
@@ -80,11 +78,9 @@ Sie können auf Ihre Bewertung über die Sicherheitsbewertungs-API (derzeit in d
 
 Beispiele für Tools, die auf der Sicherheitsbewertungs-API basieren, finden Sie im [Bereich zu den Sicherheitsbewertungen in unserer GitHub-Community](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score). 
 
-
-
 ### <a name="get-your-secure-score-from-azure-resource-graph-arg"></a>Abrufen der Sicherheitsbewertung aus Azure Resource Graph
 
-Azure Resource Graph bietet mit zuverlässigen Funktionen zum Filtern, Gruppieren und Sortieren sofortigen Zugriff auf Ressourceninformationen in Ihren Cloudumgebungen. Es ist eine schnelle und effiziente Möglichkeit, Informationen über Azure-Abonnements programmgesteuert oder aus dem Azure-Portal heraus abzufragen. [Erfahren Sie mehr über Azure Resource Graph](https://docs.microsoft.com/azure/governance/resource-graph/).
+Azure Resource Graph bietet mit zuverlässigen Funktionen zum Filtern, Gruppieren und Sortieren sofortigen Zugriff auf Ressourceninformationen in Ihren Cloudumgebungen. Es ist eine schnelle und effiziente Möglichkeit, Informationen über Azure-Abonnements programmgesteuert oder aus dem Azure-Portal heraus abzufragen. [Erfahren Sie mehr über Azure Resource Graph](../governance/resource-graph/index.yml).
 
 So greifen Sie mithilfe von Azure Resource Graph auf Sicherheitsbewertungen für mehrere Abonnements zu:
 
@@ -114,13 +110,34 @@ So greifen Sie mithilfe von Azure Resource Graph auf Sicherheitsbewertungen für
 
 1. Wählen Sie **Abfrage ausführen** aus.
 
+
+
+
+## <a name="tracking-your-secure-score-over-time"></a>Nachverfolgen Ihrer Sicherheitsbewertung im zeitlichen Verlauf
+
+Wenn Sie ein Power BI-Benutzer sind und über ein Pro-Konto verfügen, können Sie das Power BI-Dashboard **Sicherheitsbewertung im zeitlichen Verlauf** verwenden, um Ihre Sicherheitsbewertung nachzuverfolgen und Änderungen zu untersuchen.
+
+> [!TIP]
+> Sie finden dieses Dashboard sowie andere Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen im dedizierten Bereich der Azure Security Center-Community auf GitHub: https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score
+
+Das Dashboard enthält die folgenden zwei Berichte, anhand derer Sie Ihren Sicherheitsstatus analysieren können:
+
+- **Zusammenfassung der Ressourcen**: Dieser Bericht enthält zusammengefasste Daten zur Integrität Ihrer Ressourcen.
+- **Zusammenfassung der Sicherheitsbewertung**: Dieser Bericht enthält zusammengefasste Daten zu Ihrem Bewertungsfortschritt. Verwenden Sie das Diagramm „Sicherheitsbewertung im zeitlichen Verlauf pro Abonnement“, um Änderungen in der Bewertung anzuzeigen. Wenn Sie eine drastische Änderung in der Bewertung feststellen, überprüfen Sie die Tabelle „Erkannte Änderungen, die sich auf Ihre Sicherheitsbewertung auswirken können“ auf mögliche Änderungen, die dazu geführt haben könnten. In dieser Tabelle werden gelöschte Ressourcen, neu bereitgestellte Ressourcen oder Ressourcen dargestellt, deren Sicherheitsstatus aufgrund einer der Empfehlungen geändert wurde.
+
+:::image type="content" source="./media/secure-score-security-controls/power-bi-secure-score-dashboard.png" alt-text="Das optionale Power BI-Dashboard für die Sicherheitsbewertung im zeitlichen Verlauf zum Nachverfolgen Ihrer Sicherheitsbewertung und zum Untersuchen von Änderungen":::
+
+
+
+
+
 ## <a name="how-your-secure-score-is-calculated"></a>Berechnen Ihrer Sicherheitsbewertung 
 
 Der jeweilige Beitrag der einzelnen Sicherheitskontrollen zur gesamten Sicherheitsbewertung ist auf der Seite mit Empfehlungen eindeutig angegeben.
 
 [![Mit dem erweiterten Secure Score (Vorschauversion) werden Sicherheitskontrollen eingeführt](media/secure-score-security-controls/security-controls.png)](media/secure-score-security-controls/security-controls.png#lightbox)
 
-Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müssen alle Ihre Ressourcen allen Sicherheitsempfehlungen innerhalb der Sicherheitskontrolle entsprechen. Beispielsweise enthält Security Center mehrere Empfehlungen zum Schützen Ihrer Verwaltungsports. In der Vergangenheit konnten Sie einige dieser zusammengehörigen und voneinander abhängigen Empfehlungen umsetzen, während andere nicht berücksichtigt wurden, und Ihre Sicherheitsbewertung verbesserte sich trotzdem. Bei objektiver Betrachtung kann man sagen, dass sich die Sicherheit erst dann verbessert hat, wenn alle Empfehlungen umgesetzt wurden. Zum jetzigen Zeitpunkt müssen alle Empfehlungen umgesetzt werden, um eine Änderung bei der Sicherheitsbewertung zu erzielen.
+Um alle zu erzielenden Punkte für eine Sicherheitskontrolle zu erhalten, müssen alle Ihre Ressourcen allen Sicherheitsempfehlungen innerhalb der Sicherheitskontrolle entsprechen. Beispielsweise enthält Security Center mehrere Empfehlungen zum Schützen Ihrer Verwaltungsports. Sie müssen alle Empfehlungen umsetzen, um eine Änderung der Sicherheitsbewertung zu erzielen.
 
 Beispielsweise wird die Sicherheitskontrolle „Systemupdates anwenden“ mit maximal sechs Punkten bewertet. Dieser Wert ist in der QuickInfo zur potenziellen Steigerung der Sicherheitskontrolle angegeben:
 
@@ -137,9 +154,9 @@ Der maximal mögliche Wert für das Steuerelement „Systemupdates anwenden“ i
 
 |Metrik|Formel und Beispiel|
 |-|-|
-|**Aktuelle Bewertung der Sicherheitskontrolle**|<br>![Gleichung zum Berechnen der aktuellen Bewertung einer Sicherheitskontrolle](media/secure-score-security-controls/security-control-scoring-equation.png)<br><br>Jede einzelne Sicherheitskontrolle trägt zur Sicherheitsbewertung bei. Jede Ressource, die von einer Empfehlung innerhalb des Kontrollelements betroffen ist, trägt zur aktuellen Bewertung des Kontrollelements bei. Die aktuelle Bewertung für jedes Kontrollelement ist ein Maß für den Status der Ressourcen *innerhalb* des Kontrollelements.<br>![QuickInfos mit den Werten, die beim Berechnen der aktuellen Bewertung der Sicherheitskontrolle verwendet werden](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In diesem Beispiel wird die maximale Bewertung von 6 durch 78 dividiert, da dies die Summe aus fehlerfreien und fehlerhaften Ressourcen ist.<br>6 / 78 = 0,0769<br>Die Multiplikation dieses Ergebnisses mit der Anzahl der fehlerfreien Ressourcen (4) ergibt die aktuelle Bewertung:<br>0,0769 * 4 = **0,31**<br><br>|
-|**Sicherheitsbewertung**<br>Ein Abonnement|<br>![Gleichung zum Berechnen der aktuellen Sicherheitsbewertung](media/secure-score-security-controls/secure-score-equation.png)<br><br>![Sicherheitsbewertung eines einzelnen Abonnements, wenn alle Kontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In diesem Beispiel gibt es ein einzelnes Abonnement, für das alle Sicherheitskontrollen verfügbar sind (potenzielle Höchstbewertung sind 60 Punkte). Die Bewertung gibt 28 Punkte der möglichen 60 Punkte an. Die verbleibenden 32 Punkte sind in den Zahlen für die potenzielle Bewertungssteigerung der Sicherheitskontrollen enthalten.<br>![Liste der Kontrollen und potenziellen Bewertungssteigerung](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
-|**Sicherheitsbewertung**<br>Mehrere Abonnements|<br>Die aktuellen Bewertungen für alle Ressourcen in allen Abonnements werden addiert. Der anschließende Berechnungsweg entspricht dem für ein einzelnes Abonnement.<br><br>Beim Anzeigen mehrerer Abonnements werden von Secure Score alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Sicherheitskontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
+|**Aktuelle Bewertung der Sicherheitskontrolle**|<br>![Gleichung zum Berechnen der Bewertung einer Sicherheitskontrolle](media/secure-score-security-controls/secure-score-equation-single-control.png)<br><br>Jede einzelne Sicherheitskontrolle trägt zur Sicherheitsbewertung bei. Jede Ressource, die von einer Empfehlung innerhalb des Kontrollelements betroffen ist, trägt zur aktuellen Bewertung des Kontrollelements bei. Die aktuelle Bewertung für jedes Kontrollelement ist ein Maß für den Status der Ressourcen *innerhalb* des Kontrollelements.<br>![QuickInfos mit den Werten, die beim Berechnen der aktuellen Bewertung der Sicherheitskontrolle verwendet werden](media/secure-score-security-controls/security-control-scoring-tooltips.png)<br>In diesem Beispiel wird die maximale Bewertung von 6 durch 78 dividiert, da dies die Summe aus fehlerfreien und fehlerhaften Ressourcen ist.<br>6 / 78 = 0,0769<br>Die Multiplikation dieses Ergebnisses mit der Anzahl der fehlerfreien Ressourcen (4) ergibt die aktuelle Bewertung:<br>0,0769 * 4 = **0,31**<br><br>|
+|**Sicherheitsbewertung**<br>Ein Abonnement|<br>![Gleichung zum Berechnen der Sicherheitsbewertung eines Abonnements](media/secure-score-security-controls/secure-score-equation-single-sub.png)<br><br>![Sicherheitsbewertung eines einzelnen Abonnements, wenn alle Kontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-single-sub.png)<br>In diesem Beispiel gibt es ein einzelnes Abonnement, für das alle Sicherheitskontrollen verfügbar sind (potenzielle Höchstbewertung sind 60 Punkte). Die Bewertung gibt 28 Punkte der möglichen 60 Punkte an. Die verbleibenden 32 Punkte sind in den Zahlen für die potenzielle Bewertungssteigerung der Sicherheitskontrollen enthalten.<br>![Liste der Kontrollen und potenziellen Bewertungssteigerung](media/secure-score-security-controls/secure-score-example-single-sub-recs.png)|
+|**Sicherheitsbewertung**<br>Mehrere Abonnements|<br>![Gleichung zum Berechnen der Sicherheitsbewertung für mehrere Abonnements](media/secure-score-security-controls/secure-score-equation-multiple-subs.png)<br><br>Wenn Sie die kombinierte Bewertung für mehrere Abonnements berechnen, enthält Security Center eine *Gewichtung* für jedes Abonnement. Die relativen Gewichtungen für Ihre Abonnements werden von Security Center basierend auf Faktoren wie der Anzahl der Ressourcen bestimmt.<br>Die aktuelle Bewertung für die einzelnen Abonnements wird auf die gleiche Weise berechnet wie für ein einziges Abonnement, aber dann wird die Gewichtung wie in der Gleichung dargestellt angewendet.<br>Beim Anzeigen mehrerer Abonnements werden von Secure Score alle Ressourcen in allen aktivierten Richtlinien ausgewertet und nach deren kombinierter Auswirkung auf die Höchstbewertung der einzelnen Sicherheitskontrollen gruppiert.<br>![Sicherheitsbewertung für mehrere Abonnements, wenn alle Sicherheitskontrollen aktiviert sind](media/secure-score-security-controls/secure-score-example-multiple-subs.png)<br>Die kombinierte Bewertung ist **kein** Durchschnittswert, sondern vielmehr die Auswertung des Status aller Ressourcen in allen Abonnements.<br>Wenn Sie die Seite mit den Empfehlungen aufrufen und die potenziell verfügbaren Punkte addieren, werden Sie feststellen, dass es sich hierbei um die Differenz zwischen der aktuellen Bewertung (24) und der verfügbaren Höchstbewertung (60) handelt.|
 ||||
 
 ### <a name="which-recommendations-are-included-in-the-secure-score-calculations"></a>Welche Empfehlungen sind in den Berechnungen zur Sicherheitsbewertung enthalten?
@@ -271,3 +288,4 @@ In diesem Artikel wurden Secure Score und die damit eingeführten Sicherheitskon
 
 - [Sicherheitsempfehlungen in Azure Security Center](security-center-recommendations.md)
 - [Umsetzen von Empfehlungen in Azure Security Center](security-center-remediate-recommendations.md)
+- [Anzeigen der GitHub-basierten Tools für die programmgesteuerte Arbeit mit Sicherheitsbewertungen](https://github.com/Azure/Azure-Security-Center/tree/master/Secure%20Score)

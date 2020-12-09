@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 55a27dbb6c2ec3569bae9d6fb96fcd8087f08daf
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 99c7490c4bf842da119a3a0abd4623c64d720ac8
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96001676"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462223"
 ---
 # <a name="azure-data-factory-copy-wizard"></a>Kopier-Assistent in Azure Data Factory
 
@@ -48,7 +48,7 @@ Sie können eine Vorschau für einen Teil der Daten aus der ausgewählten Datenq
 Das Schema der Eingabedaten stimmt nicht in jedem Fall mit dem Schema der Ausgabedaten überein. In diesem Szenario müssen die Spalten des Quellschemas den Spalten des Zielschemas zugeordnet werden.
 
 > [!TIP]
-> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics (vormals SQL Data Warehouse) unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
+> Beim Kopieren von Daten aus SQL Server oder Azure SQL-Datenbank in Azure Synapse Analytics unterstützt Data Factory die automatische Tabellenerstellung anhand des Quellschemas, wenn die Tabelle im Zielspeicher nicht vorhanden ist. Weitere Informationen finden Sie unter [Verschieben von Daten in und aus Azure Synapse Analytics mithilfe von Azure Data Factory](./data-factory-azure-sql-data-warehouse-connector.md).
 
 Verwenden Sie eine Dropdownliste, um eine Spalte aus dem Quellschema auszuwählen, die einer Spalte im Zielschema zugeordnet werden soll. Der Kopier-Assistent versucht, das Muster für die Spaltenzuordnung zu verstehen. Er wendet das gleiche Muster auf die restlichen Spalten an, damit Sie nicht jede Spalte einzeln auswählen müssen, um die Schemazuordnung abzuschließen. Falls gewünscht, können Sie diese Zuordnungen überschreiben, indem Sie mithilfe der Dropdownlisten die Spalten einzeln zuordnen. Das Muster wird genauer, wenn Sie mehr Spalten zugeordnet haben. Der Kopier-Assistent aktualisiert das Muster ständig und erreicht letztlich das richtige Muster für die Spaltenzuordnung, die Sie erreichen möchten.     
 
@@ -94,7 +94,7 @@ Ein einmaliger Kopiervorgang ermöglicht nur einmal das Verschieben von Daten au
 In diesem Abschnitt werden die gängigen Problembehandlungsmethoden für den Kopier-Assistenten in Azure Data Factory beschrieben.
 
 > [!NOTE] 
-> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Informationen für Data Factory-Version 2 finden Sie im Leitfaden zur Problembehandlung unter [Problembehandlung für Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-ux-troubleshoot-guide).
+> Diese Tipps zur Problembehandlung beziehen sich auf den Kopier-Assistenten in Version 1 von Data Factory. Informationen für Data Factory-Version 2 finden Sie im Leitfaden zur Problembehandlung unter [Problembehandlung für Azure Data Factory](../data-factory-ux-troubleshoot-guide.md).
 
 ### <a name="error-code-unable-to-validate-in-copy-wizard"></a>Fehlercode: Unable to validate in Copy Wizard (Kann nicht im Kopier-Assistenten überprüft werden)
 

@@ -1,6 +1,6 @@
 ---
-title: Abfragen von CSV-Dateien mithilfe eines serverlosen SQL-Pools (Vorschauversion)
-description: In diesem Artikel erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools (Vorschauversion) einzelne CSV-Dateien mit verschiedenen Dateiformaten abfragen können.
+title: Abfragen von CSV-Dateien mithilfe eines serverlosen SQL-Pools
+description: In diesem Artikel erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools einzelne CSV-Dateien mit verschiedenen Dateiformaten abfragen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9faff6589466c7cbe78a11c283139acb72bce4bb
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: f2f0cdf307e91fb40c55d4a98139bad1a5eca886
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685646"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462589"
 ---
 # <a name="query-csv-files"></a>Abfragen von CSV-Dateien
 
-In diesem Artikel erfahren Sie, wie Sie in Azure Synapse Analytics eine einzelne CSV-Datei mithilfe eines serverlosen SQL-Pools (Vorschauversion) abfragen können. CSV-Dateien können unterschiedliche Formate aufweisen: 
+In diesem Artikel erfahren Sie, wie Sie in Azure Synapse Analytics eine einzelne CSV-Datei mithilfe eines serverlosen SQL-Pools abfragen. CSV-Dateien können unterschiedliche Formate aufweisen: 
 
 - Mit und ohne Kopfzeile
 - Werte mit Kommas und Tabstopps als Trennzeichen

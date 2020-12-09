@@ -1,6 +1,6 @@
 ---
-title: Erstellen und Verwenden externer Tabellen in einem serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in einem serverlosen SQL-Pool (Vorschauversion) erstellen und verwenden.
+title: Erstellen und Verwenden externer Tabellen in einem serverlosen SQL-Pool
+description: In diesem Abschnitt erfahren Sie, wie Sie externe Tabellen in einem serverlosen SQL-Pool erstellen und verwenden.
 services: synapse-analytics
 author: vvasic-msft
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: vvasic
 ms.reviewer: jrasnick
-ms.openlocfilehash: 0a52db131311d9956cf7217d910f22c3a4f07738
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 5dcd4b7b76752ca5396fc68afc8d4c8e4e1edca5
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93314720"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96462295"
 ---
-# <a name="create-and-use-external-tables-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Erstellen und Verwenden externer Tabellen mithilfe eines serverlosen SQL-Pools (Vorschauversion) in Azure Synapse Analytics
+# <a name="create-and-use-external-tables-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Erstellen und Verwenden externer Tabellen mithilfe eines serverlosen SQL-Pools in Azure Synapse Analytics
 
-In diesem Abschnitt erfahren Sie, wie Sie [externe Tabellen](develop-tables-external-tables.md) in einem serverlosen SQL-Pool (Vorschauversion) erstellen und verwenden. Externe Tabellen sind nützlich, wenn Sie den Zugriff auf externe Daten in einem serverlosen SQL-Pool steuern und Tools wie Power BI in Verbindung mit einem serverlosen SQL-Pool verwenden möchten. Externe Tabellen können auf zwei Speichertypen zugreifen:
+In diesem Abschnitt erfahren Sie, wie Sie [externe Tabellen](develop-tables-external-tables.md) in einem serverlosen SQL-Pool erstellen und verwenden. Externe Tabellen sind nützlich, wenn Sie den Zugriff auf externe Daten in einem serverlosen SQL-Pool steuern und Tools wie Power BI in Verbindung mit einem serverlosen SQL-Pool verwenden möchten. Externe Tabellen können auf zwei Speichertypen zugreifen:
 - Öffentlicher Speicher, in dem Benutzer auf öffentliche Speicherdateien zugreifen.
 - Geschützter Speicher, in dem Benutzer mithilfe von SAS-Anmeldeinformationen, Azure AD-Identität oder verwalteter Identität des Synapse-Arbeitsbereichs auf Speicherdateien zugreifen.
 
@@ -112,7 +112,7 @@ CREATE EXTERNAL TABLE Taxi (
 
 Sie können [externe Tabellen](develop-tables-external-tables.md) in Ihren Abfragen genauso wie in SQL Server-Abfragen verwenden.
 
-Die folgende Abfrage veranschaulicht dies anhand der externen Tabelle *population* , die Sie im vorhergehenden Abschnitt erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
+Die folgende Abfrage veranschaulicht dies anhand der externen Tabelle *population*, die Sie im vorhergehenden Abschnitt erstellt haben. Sie gibt Länder-/Regionsnamen mit der entsprechenden Bevölkerung im Jahr 2019 in absteigender Reihenfolge zurück.
 
 > [!NOTE]
 > Ändern Sie die erste Zeile in der Abfrage (d. h. [mydbname]), sodass die von Ihnen erstellte Datenbank verwendet wird.

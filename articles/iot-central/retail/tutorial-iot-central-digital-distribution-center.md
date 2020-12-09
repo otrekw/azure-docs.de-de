@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
-ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d19310dbd54c8bd5f9854ff86af051b68c5cd378
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90980749"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96463301"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Tutorial: Bereitstellen und Durchlaufen einer Anwendungsvorlage für digitale Verteilzentren
 
@@ -34,8 +34,7 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
 
 1. Navigieren Sie zur Anwendungs-Manager-Website von Azure IoT Central. Wählen Sie auf der linken Navigationsleiste **Erstellen** aus, und klicken Sie dann auf die Registerkarte **Einzelhandel**.
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Auswählen der Anwendungsvorlage für digitale Verteilzentren](./media/tutorial-iot-central-ddc/iotc-retail-homepage.png)
+    :::image type="content" source="media/tutorial-iot-central-ddc/iotc-retail-homepage.png" alt-text="Anwendungsvorlage für digitale Verteilzentren":::
 
 2. Wählen Sie die Registerkarte **Einzelhandel** aus, und wählen Sie unter **Digital Distribution Center-Anwendung** die Option **App erstellen** aus.
 
@@ -45,11 +44,9 @@ Mithilfe der folgenden Schritte können Sie eine Anwendung erstellen.
    **Abrechnungsinfo**: Die Detailangaben zum Verzeichnis, dem Azure-Abonnement und der Region sind für die Bereitstellung der Ressourcen erforderlich.
    **Erstellen**: Wählen Sie unten auf der Seite „Erstellen“ aus, um Ihre Anwendung bereitzustellen.
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für digitale Verteilzentren](./media/tutorial-iot-central-ddc/ddc-create.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create.png" alt-text="Screenshot: Erstellen einer App auf der Grundlage der Anwendungsvorlage für digitale Verteilzentren":::
 
-    > [!div class="mx-imgBorder"]
-    > ![Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung](./media/tutorial-iot-central-ddc/ddc-create-billinginfo.png)
+   :::image type="content" source="media/tutorial-iot-central-ddc/ddc-create-billinginfo.png" alt-text="Screenshot: Abrechnungsoptionen beim Erstellen der Anwendung":::
 
 ## <a name="walk-through-the-application-dashboard"></a>Einführung in das Anwendungsdashboard 
 
