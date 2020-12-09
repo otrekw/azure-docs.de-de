@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 82818c8db326889079948cd2b32b2ed0be6ab50d
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: e33f48c9496ffa3cca9d8b1aa71d524be9a311bb
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990753"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122252"
 ---
 # <a name="iot-central-device-development-overview"></a>Übersicht über die Geräteentwicklung für IoT Central
 
@@ -135,7 +135,7 @@ Mithilfe eines der [Azure IoT-Geräte-SDKs](#languages-and-sdks) können Sie das
 
 Weitere Informationen zur Aufgabe von Gerätevorlagen finden Sie unter [Was sind Gerätevorlagen?](./concepts-device-templates.md).
 
-Mehr Beispielcode finden Sie unter [Erstellen und Verbinden einer Node.js-Clientanwendung](./tutorial-connect-device-nodejs.md) bzw. unter [Erstellen und Verbinden einer Python-Clientanwendung](./tutorial-connect-device-python.md).
+Beispielcode finden Sie unter [Tutorial: Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung](./tutorial-connect-device.md).
 
 ### <a name="languages-and-sdks"></a>Sprachen und SDKs
 
@@ -143,6 +143,6 @@ Weitere Informationen zu den unterstützten Sprachen und SDKs finden Sie unter [
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Wenn Sie Geräteentwickler sind und sich näher mit dem Code beschäftigen möchten, wird als nächster Schritt das [Erstellen und Verbinden einer Clientanwendung mit Ihrer Azure IoT Central-Anwendung](./tutorial-connect-device-nodejs.md) empfohlen.
+Wenn Sie Geräteentwickler sind und sich näher mit dem Code beschäftigen möchten, wird als nächster Schritt das [Erstellen und Verbinden einer Clientanwendung mit Ihrer Azure IoT Central-Anwendung](./tutorial-connect-device.md) empfohlen.
 
 Wenn Sie mehr zur Verwendung von IoT Central erfahren möchten, sollten Sie als Nächstes die Schnellstarts ausprobieren, beginnend mit dem [Erstellen einer Azure IoT Central-Anwendung](./quick-deploy-iot-central.md).
