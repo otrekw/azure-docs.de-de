@@ -2,13 +2,13 @@
 title: Einschränkungen bei Ressourcennamen
 description: Zeigt die Benennungsregeln und -einschränkungen für Azure-Ressourcen
 ms.topic: conceptual
-ms.date: 10/01/2020
-ms.openlocfilehash: 206bd6604ecd9dfece9c946c653b2720e75ff1e3
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.date: 12/04/2020
+ms.openlocfilehash: a6aac03277a11cf671f5a618bc85ff987cfdc2dd
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93347793"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608315"
 ---
 # <a name="naming-rules-and-restrictions-for-azure-resources"></a>Benennungsregeln und -einschränkungen für Azure-Ressourcen
 
@@ -596,6 +596,7 @@ In den folgenden Tabellen bezieht sich der Begriff alphanumerisch auf:
 > | resourcegroups | Abonnement | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche, Punkte und Unicode-Zeichen entsprechend der [Dokumentation zu regulären Ausdrücken](/rest/api/resources/resourcegroups/createorupdate).<br><br>Darf nicht mit einem Punkt enden. |
 > | tagNames | resource | 1–512 | Verwendung nicht möglich:<br>`<>%&\?/` |
 > | tagNames/tagValues | Tagname | 1–256 | Alle Zeichen. |
+> | templateSpecs | Ressourcengruppe | 1-90 | Alphanumerische Zeichen, Unterstriche, Klammern, Bindestriche und Punkte. |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 

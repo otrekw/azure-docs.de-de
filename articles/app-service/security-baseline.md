@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 691bb538ea0f46e26c318a68e9f66a9a986eb5d4
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.openlocfilehash: 3d84f0df44f17bdc7dd68aa9cae1f01b06d261b4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96301837"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96601640"
 ---
 # <a name="azure-security-baseline-for-app-service"></a>Azure-Sicherheitsbaseline für App Service
 
@@ -71,7 +71,7 @@ Nutzen Sie Azure Firewall für das Weiterleiten von Datenverkehr und das Erstell
 
 - [Grundlegendes zu der von Azure Security Center bereitgestellten Netzwerksicherheit](../security-center/security-center-network-recommendations.md)
 
-- [Aktivieren der Überwachung und des Schutzes von App Service](/azure/security-center/defender-for-app-service-intro)
+- [Aktivieren der Überwachung und des Schutzes von App Service](/azure/security-center/defender-for-app-service-introduction)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -343,7 +343,7 @@ Wenn Sie Azure Web Application Firewall (WAF) bereitgestellt haben, können Sie 
 
 **Leitfaden**: Azure Active Directory (Azure AD) umfasst integrierte Rollen, die explizit zugewiesen werden müssen und abgefragt werden können. Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder von administrativen Gruppen sind.
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 - [Verwenden verwalteter Identitäten für App Service und Azure Functions](overview-managed-identity.md?context=azure%2Factive-directory%2Fmanaged-identities-azure-resources%2Fcontext%2Fmsi-context&amp;tabs=dotnet)
 
@@ -656,7 +656,7 @@ Beachten Sie, dass von Websites optional zwar lokal angefügte Datenträger als 
 
 Lesen und befolgen Sie die Empfehlungen von Security Center zum Schützen Ihrer App Service-Apps.
 
-- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?amp;preserve-view=true&view=azure-devops)
+- [Hinzufügen einer ständigen Sicherheitsüberprüfung zu Ihrer CI/CD-Pipeline](/azure/devops/migrate/security-validation-cicd-pipeline?preserve-view=true&view=azure-devops)
 
 - [Implementieren von Empfehlungen für die Sicherheitsrisikobewertung aus Azure Security Center](../security-center/deploy-vulnerability-assessment-vm.md)
 
@@ -686,7 +686,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Resource Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -891,7 +891,7 @@ Wenden Sie integrierte Richtliniendefinitionen wie die folgenden an:
 
 Es wird empfohlen, den Prozess zum Anwenden der integrierten Richtliniendefinitionen für die standardisierte Verwendung zu dokumentieren.   
 
-- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -917,9 +917,9 @@ Es wird empfohlen, den Prozess zum Anwenden der integrierten Richtliniendefiniti
 
 Verwenden Sie Ihre vorhandene CI/CD-Pipeline (Continuous Integration und Continuous Delivery), um eine als sicher bekannte Konfiguration bereitzustellen.
 
-- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -2,20 +2,20 @@
 title: Netzwerkplanung und Verbindungen für Azure AD Domain Services | Microsoft-Dokumentation
 description: Hier erhalten Sie Informationen zu einigen der Überlegungen zum Entwurf virtueller Netzwerke und zu den für die Konnektivität verwendeten Ressourcen, wenn Sie Azure Active Directory Domain Services ausführen.
 services: active-directory-ds
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
 ms.date: 07/06/2020
-ms.author: joflore
-ms.openlocfilehash: 43731f84066943b991b566ff5936e4288aa669eb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 246da3a35396430bbda86e5a5e927a456618ac05
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175218"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619282"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-active-directory-domain-services"></a>Überlegungen zum Entwurf virtueller Netzwerke und Konfigurationsoptionen für Azure Active Directory Domain Services
 

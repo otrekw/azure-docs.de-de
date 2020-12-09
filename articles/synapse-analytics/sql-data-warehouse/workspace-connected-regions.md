@@ -10,12 +10,12 @@ ms.subservice: sql-dw
 ms.date: 11/11/2020
 ms.author: anvang
 ms.reviewer: jrasnick
-ms.openlocfilehash: 13716210ae967c9d4a7f21fb5a6c4afdb9033be1
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 8a345c2feaeea933af3fdce591283716443fbfda
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465697"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621670"
 ---
 # <a name="enabling-synapse-workspace-features-on-a-dedicated-sql-pool-formerly-sql-dw-in-your-region"></a>Aktivieren von Synapse-Arbeitsbereichsfunktionen für einen dedizierten SQL-Pool (früher SQL DW)
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle sind die Regionen zusammengefasst, in denen die Möglic
 | Indien, Süden |31. März 2021 |
 | Indien, Westen |31. März 2021 |
 | Schweiz, Westen |31. März 2021 |
-| Vereinigte Arabische Emirate, Norden |1\. Juni 2020 |1\. Juli 2020 |
+| Vereinigte Arabische Emirate, Norden |31. März 2021 |
 
 ## <a name="next-steps"></a>Nächste Schritte
 Machen Sie sich mit [Synapse-Arbeitsbereich und Studio](../get-started.md) vertraut.

@@ -1,20 +1,20 @@
 ---
 title: Migrieren von Azure AD Domain Services aus einem klassischen virtuellen Netzwerk | Microsoft-Dokumentation
 description: Erfahren Sie, wie Sie eine vorhandene verwaltete Azure AD Domain Services-Domäne vom klassischen virtuellen Netzwerkmodell zu einem Resource Manager-basierten virtuellen Netzwerk migrieren.
-author: MicrosoftGuyJFlo
+author: justinha
 manager: daveba
 ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: how-to
 ms.date: 09/24/2020
-ms.author: joflore
-ms.openlocfilehash: aae665b5982ab2b5c1163bb9297eda5f2e5d344a
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: justinha
+ms.openlocfilehash: 1fcd46870a4f85d1b88d22d77de5c201404c3a09
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175371"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96619367"
 ---
 # <a name="migrate-azure-active-directory-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Migrieren von Azure Active Directory Domain Services vom klassischen virtuellen Netzwerkmodell zu Resource Manager
 

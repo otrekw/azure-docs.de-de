@@ -13,12 +13,12 @@ ms.author: baselden
 ms.reviewer: ajburnle
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4075cb71cb4dae7ac506c16e3987070cfa10bb09
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: faa334c21e23ecddad287846d34aaf0d72af66cc
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919039"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602183"
 ---
 # <a name="build-resilience-with-device-states"></a>Erzielen von Resilienz mithilfe des Gerätestatus
 
@@ -44,7 +44,7 @@ Wenn ein primäres Aktualisierungstoken verwendet wird, um den Zugriff auf eine 
 
 * Stellen Sie für private oder unternehmenseigene iOS- und Android-Geräte die [Microsoft Authenticator-App](../user-help/user-help-auth-app-overview.md) bereit. Neben der mehrstufigen Authentifizierung (MFA) und den kennwortlosen Anmeldefunktionen ermöglicht die Microsoft Authenticator-App durch die [Brokerauthentifizierung](../develop/brokered-auth.md) (mit weniger Authentifizierungsaufforderungen für den Endbenutzer) das einmalige Anmelden, und zwar anwendungsübergreifend für native Anwendungen.
 
-* Verwenden Sie bei privaten oder unternehmenseigenen iOS- und Android-Geräten die [mobile Anwendungsverwaltung](https://docs.microsoft.com/mem/intune/apps/app-management.md) für den sicheren Zugriff auf Unternehmensressourcen mit weniger Authentifizierungsanforderungen. 
+* Verwenden Sie bei privaten oder unternehmenseigenen iOS- und Android-Geräten die [mobile Anwendungsverwaltung](https://docs.microsoft.com/mem/intune/apps/app-management) für den sicheren Zugriff auf Unternehmensressourcen mit weniger Authentifizierungsanforderungen. 
 
 * [Verwenden Sie das Microsoft Enterprise SSO-Plug-In für Apple-Geräte (Vorschau)](../develop/apple-sso-plugin.md). Dieses registriert das Gerät und stellt einmaliges Anmelden (browser- und anwendungsübergreifend) für native Azure AD-Anwendungen bereit. 
 

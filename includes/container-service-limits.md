@@ -2,22 +2,22 @@
 title: include file
 description: include file
 services: container-service
-author: dlepow
+author: mlearned
 ms.service: container-service
 ms.topic: include
 ms.date: 11/22/2019
-ms.author: danlep
+ms.author: mlearned
 ms.custom: include file
-ms.openlocfilehash: 32edd880e5e455393e60c87f4f963d71a3e59a20
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: a42bba1b6524825aa571e4c18319b61b97829792
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96027359"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96584465"
 ---
 | Resource | Begrenzung |
 | --- | :--- |
-| Maximale Anzahl Cluster pro Abonnement | 100 |
+| Maximale Anzahl Cluster pro Abonnement | 1000 |
 | Maximale Knoten pro Cluster mit VM-Verfügbarkeitsgruppen und der Load Balancer Basic-SKU  | 100 |
 | Maximale Knoten pro Cluster mit VM-Skalierungsgruppen und der [Load Balancer Standard-SKU][standard-load-balancer] | 1\.000 (100 Knoten pro [Knotenpool][node-pool]) |
 | Maximale Anzahl Pods pro Knoten: [Basisnetzwerke][basic-networking] mit Kubenet | 110 |
