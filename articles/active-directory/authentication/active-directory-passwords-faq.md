@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 07/20/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c154952d41db742c4d33899094a49a65fae72f26
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 0874f6aeb74b028e92e10d972757cc5971735e39
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840099"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744311"
 ---
 # <a name="self-service-password-reset-frequently-asked-questions"></a>Häufig gestellte Fragen zur Self-Service-Kennwortzurücksetzung
 
@@ -263,7 +263,7 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
   >
 * **F:  Für welche Arten von Konten funktioniert das Kennwortrückschreiben?**
 
-  > **A:** Das Kennwortrückschreiben kann für Benutzerkonten verwendet werden, die aus dem lokalen Active Directory mit Azure AD synchronisiert werden. Dies schließt Verbundbenutzer, Benutzer mit Kennworthashsynchronisierung und Benutzer mit Pass-Through-Authentifizierung ein.
+  > **A:** Das Kennwortrückschreiben kann für Benutzerkonten verwendet werden, die aus dem lokalen Active Directory mit Azure AD synchronisiert werden. Dies schließt Verbundbenutzer, Benutzer mit Kennworthashsynchronisierung und Benutzer mit Pass-Through-Authentifizierung ein.
   >
   >
 * **F:  Werden die Kennwortrichtlinien meiner Domäne durch die Kennwortrückschreibung durchgesetzt?**
@@ -289,4 +289,4 @@ Diese FAQ sind in folgende Abschnitte unterteilt:
 * [Übersicht über die Kennwortrückschreibung](./tutorial-enable-sspr-writeback.md)
 * [Berichterstellungsoptionen für die Kennwortverwaltung von Azure AD](howto-sspr-reporting.md)
 * [Welche Optionen sind für SSPR verfügbar, und was bedeuten sie?](concept-sspr-howitworks.md)
-* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](active-directory-passwords-troubleshoot.md)
+* [Anscheinend ist ein Fehler aufgetreten. Wie behebe ich Probleme mit SSPR?](./troubleshoot-sspr.md)

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: troubleshooting
 ms.date: 08/26/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9664518a7e8ec505a2823cdd5f17d6fa8a7db8b
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 6a3044127aacb5910a270d40d94d3255031a71a2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925797"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741302"
 ---
 # <a name="troubleshoot-self-service-password-reset-writeback-in-azure-active-directory"></a>Problembehandlung beim Rückschreiben der Self-Service-Kennwortzurücksetzung in Azure Active Directory
 
@@ -54,7 +54,7 @@ Führen Sie zum Beheben von Konnektivitätsproblemen oder anderen vorübergehend
 1. Wählen Sie als Administrator auf dem Server, auf dem Azure AD Connect ausgeführt wird, **Start** aus.
 1. Geben Sie *services.msc* in das Suchfeld ein, und drücken Sie die **EINGABETASTE**.
 1. Suchen Sie nach dem Eintrag *Microsoft Azure AD Sync*.
-1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten** , und warten Sie, bis der Vorgang abgeschlossen wurde.
+1. Klicken Sie mit der rechten Maustaste auf den Diensteintrag, klicken Sie auf **Neu starten**, und warten Sie, bis der Vorgang abgeschlossen wurde.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/service-restart.png" alt-text="Neustarten des Azure AD Sync-Diensts mit der grafischen Benutzeroberfläche" border="false":::
 
@@ -71,11 +71,11 @@ Um mit der Problembehandlung fortzufahren, führen Sie die folgenden Schritte au
 1. Geben Sie unter **Mit AD DS verbinden** Ihre Anmeldeinformationen für lokale Administratoren der Active Directory Domain Services ein.
 1. Klicken Sie unter **Eindeutige Identifizierung der Benutzer** auf die Schaltfläche **Weiter**.
 1. Deaktivieren Sie unter **Optionale Features** das Kontrollkästchen **Kennwortrückschreiben**.
-1. Klicken Sie auf den restlichen Seiten des Assistenten jeweils auf **Weiter** , ohne Änderungen vorzunehmen, bis Sie zur Seite **Bereit zur Konfiguration** gelangen.
+1. Klicken Sie auf den restlichen Seiten des Assistenten jeweils auf **Weiter**, ohne Änderungen vorzunehmen, bis Sie zur Seite **Bereit zur Konfiguration** gelangen.
 1. Überprüfen Sie, ob auf der Seite **Bereit für Konfiguration** die Option *Kennwortrückschreiben* als *deaktiviert* angezeigt wird. Wählen Sie die grüne Schaltfläche **Konfigurieren** aus, um die Änderungen zu committen.
-1. Deaktivieren Sie unter **Fertig** die Option **Jetzt synchronisieren** , und klicken Sie auf **Fertig stellen** , um den Assistenten zu schließen.
+1. Deaktivieren Sie unter **Fertig** die Option **Jetzt synchronisieren**, und klicken Sie auf **Fertig stellen**, um den Assistenten zu schließen.
 1. Öffnen Sie den **Konfigurations-Assistenten für Azure AD Connect** erneut.
-1. Wiederholen Sie die Schritte 2 bis 8, aktivieren Sie diesmal jedoch auf der Seite **Optionale Features** die Option *Kennwortrückschreiben* , um den Dienst wieder zu aktivieren.
+1. Wiederholen Sie die Schritte 2 bis 8, aktivieren Sie diesmal jedoch auf der Seite **Optionale Features** die Option *Kennwortrückschreiben*, um den Dienst wieder zu aktivieren.
 
 Mit diesen Schritten wird die Verbindung mit Azure AD wiederhergestellt, und die Konnektivitätsprobleme sollten behoben sein.
 
@@ -101,24 +101,24 @@ Wenn das Problem durch Installieren der aktuellen Version des Azure AD Connect-S
 
 Azure AD Connect benötigt für das Kennwortrückschreiben die AD DS-Berechtigung **Kennwort zurücksetzen**. Ob Azure AD Connect diese Berechtigung für ein bestimmtes lokales AD DS-Benutzerkonto besitzt, können Sie mithilfe des **Windows-Features „Effektive Berechtigung“** ermitteln:
 
-1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager** , indem Sie auf **Start** > **Synchronisierungsdienst** klicken.
+1. Melden Sie sich beim Azure AD Connect-Server an, und starten Sie den **Synchronization Service Manager**, indem Sie auf **Start** > **Synchronisierungsdienst** klicken.
 1. Wählen Sie auf der Registerkarte **Connectors** den lokalen Connector **Active Directory Domain Services** aus, und klicken Sie anschließend auf **Eigenschaften**.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager.png" alt-text="Synchronization Service Manager zeigt das Bearbeiten von Eigenschaften" border="false":::
   
-1. Klicken Sie im Popupfenster auf die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden** , und notieren Sie sich die Eigenschaft **Benutzername**. Bei dieser Eigenschaft handelt es sich um das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird.
+1. Klicken Sie im Popupfenster auf die Registerkarte **Mit Active Directory-Gesamtstruktur verbinden**, und notieren Sie sich die Eigenschaft **Benutzername**. Bei dieser Eigenschaft handelt es sich um das AD DS-Konto, das von Azure AD Connect für die Verzeichnissynchronisierung verwendet wird.
 
     Damit Azure AD Connect das Kennwortrückschreiben durchführen kann, muss das AD DS-Konto über die Berechtigung „Kennwort zurücksetzen“ verfügen. Mit den folgenden Schritten überprüfen Sie die Berechtigungen für dieses Benutzerkonto.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/synchronization-service-manager-properties.png" alt-text="Suchen des Active Directory-Benutzerkontos für den Synchronisierungsdienst" border="false":::
   
 1. Melden Sie sich bei einem lokalen Domänencontroller an, und starten Sie die Anwendung **Active Directory-Benutzer und -Computer**.
-1. Klicken Sie auf **Ansicht** , und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
+1. Klicken Sie auf **Ansicht**, und vergewissern Sie sich, dass die Option **Erweiterte Features** aktiviert ist.  
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-advanced-features.png" alt-text="Active Directory-Benutzer und -Computer zeigen erweiterte Features." border="false":::
   
 1. Suchen Sie nach dem AD DS-Benutzerkonto, das Sie überprüfen möchten. Klicken Sie mit der rechten Maustaste auf das Konto, und klicken Sie anschließend auf **Eigenschaften**.  
-1. Navigieren Sie im Popupfenster zur Registerkarte **Sicherheit** , und klicken Sie auf **Erweitert**.  
+1. Navigieren Sie im Popupfenster zur Registerkarte **Sicherheit**, und klicken Sie auf **Erweitert**.  
 1. Navigieren Sie im Popupfenster mit den erweiterten **Sicherheitseinstellungen für den Administratorzur** Registerkarte **Effektiver Zugriff**.
 1. Wählen Sie **Benutzer auswählen** aus, wählen Sie das von Azure AD Connect verwendete AD DS-Konto aus, und klicken Sie anschließend auf **Effektiven Zugriff anzeigen**.
 
@@ -135,7 +135,7 @@ Bei der Kennwortrückschreibung können die folgenden speziellen Probleme auftre
 | Fehler | Lösung |
 | --- | --- |
 | Der Dienst für die Kennwortzurücksetzung startet lokal nicht. Das Anwendungsereignisprotokoll des Azure AD Connect-Computers enthält den Fehler 6800. <br> <br> Nach der Integration können Verbundbenutzer oder Benutzer mit Pass-Through-Authentifizierung bzw. Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen. | Bei aktiviertem Kennwortrückschreiben ruft das Synchronisierungsmodul die Bibliothek für das Rückschreiben auf, um die Konfiguration (Integration) mittels Kommunikation mit dem Cloudintegrationsdienst durchzuführen. Fehler bei der Integration oder beim Start des WCF-Endpunkts ( Windows Communication Foundation) für das Kennwortrückschreiben führen zu Fehlern im Ereignisprotokoll auf Ihrem Azure AD Connect-Computer. <br> <br> Im Rahmen des Neustarts des ADSync-Diensts (Azure AD Sync) wird der WCF-Endpunkt gestartet, sofern das Kennwortrückschreiben konfiguriert wurde. Falls beim Starten des Endpunkts jedoch ein Fehler auftritt, wird der Fehler 6800 protokolliert, und der Synchronisierungsdienst wird gestartet. Dieses Ereignis bedeutet, dass der Endpunkt für das Kennwortrückschreiben nicht gestartet wurde. Die Ereignisprotokolldetails für dieses Ereignis (6800) geben – zusammen mit den von der PasswordResetService-Komponente generierten Ereignisprotokolleinträgen – an, warum der Endpunkt nicht gestartet werden kann. Überprüfen Sie diese Ereignisprotokollfehler, und versuchen Sie Azure AD Connect neu zu starten, wenn das Kennwortrückschreiben weiterhin nicht funktioniert. Sollte das Problem bestehen bleiben, versuchen Sie, das Kennwortrückschreiben zu deaktivieren und erneut zu aktivieren.
-| Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen oder ein Konto mit aktiviertem Kennwortrückschreiben zu entsperren, tritt dabei ein Fehler auf. <br> <br> Darüber hinaus wird nach dem Entsperren ein Ereignis im Azure AD Connect-Ereignisprotokoll mit folgendem Inhalt angezeigt: „Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long“ (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=800700CE, message=Der Dateiname oder die Dateierweiterung ist zu lang.). | Suchen Sie das Active Directory-Konto für Azure AD Connect, und setzen Sie das Kennwort zurück, sodass es maximal 256 Zeichen umfasst. Öffnen Sie dann über das **Startmenü** den **Synchronisierungsdienst**. Navigieren Sie zu **Connectors** , und suchen Sie **Active Directory Connector**. Wählen Sie diesen Connector aus, und klicken Sie anschließend auf **Eigenschaften**. Navigieren Sie zur Seite **Anmeldeinformationen** , und geben Sie das neue Kennwort ein. Wählen Sie **OK** , um die Seite zu schließen. |
+| Wenn ein Benutzer versucht, ein Kennwort zurückzusetzen oder ein Konto mit aktiviertem Kennwortrückschreiben zu entsperren, tritt dabei ein Fehler auf. <br> <br> Darüber hinaus wird nach dem Entsperren ein Ereignis im Azure AD Connect-Ereignisprotokoll mit folgendem Inhalt angezeigt: „Synchronization Engine returned an error hr=800700CE, message=The filename or extension is too long“ (Das Synchronisierungsmodul hat einen Fehler zurückgegeben: hr=800700CE, message=Der Dateiname oder die Dateierweiterung ist zu lang.). | Suchen Sie das Active Directory-Konto für Azure AD Connect, und setzen Sie das Kennwort zurück, sodass es maximal 256 Zeichen umfasst. Öffnen Sie dann über das **Startmenü** den **Synchronisierungsdienst**. Navigieren Sie zu **Connectors**, und suchen Sie **Active Directory Connector**. Wählen Sie diesen Connector aus, und klicken Sie anschließend auf **Eigenschaften**. Navigieren Sie zur Seite **Anmeldeinformationen**, und geben Sie das neue Kennwort ein. Wählen Sie **OK**, um die Seite zu schließen. |
 | Im letzten Schritt des Azure AD Connect-Installationsvorgangs wird ein Fehler mit dem Hinweis angezeigt, dass das Kennwortrückschreiben nicht konfiguriert werden konnte. <br> <br> Das Azure AD Connect-Anwendungsereignisprotokoll enthält den Fehler 32009 mit dem Text „Error getting auth token“ (Fehler beim Abrufen des Authentifizierungstokens). | Dieser Fehler tritt in den folgenden beiden Fällen auf: <br><ul><li>Sie haben zu Beginn der Azure AD Connect-Installation ein falsches Kennwort für das globale Administratorkonto angegeben.</li><li>Sie haben versucht, zu Beginn der Azure AD Connect-Installation einen Verbundbenutzer für das globale Administratorkonto zu verwenden.</li></ul> Stellen Sie zum Beheben dieses Problems sicher, dass Sie zu Beginn der Installation kein Verbundkonto für den globalen Administrator angegeben haben und dass das angegebene Kennwort richtig ist. |
 | Das Ereignisprotokoll für den Azure AD Connect-Computer enthält den Fehler 32002, der durch Ausführen von „PasswordResetService“ ausgelöst wurde. <br> <br> Der Fehler lautet: „Error Connecting to ServiceBus. The token provider was unable to provide a security token.“ (Fehler beim Herstellen einer Verbindung mit „ServiceBus“. Der Tokenanbieter konnte kein Sicherheitstoken bereitstellen.) | Ihre lokale Umgebung kann keine Verbindung mit dem Azure Service Bus-Endpunkt in der Cloud herstellen. Dieser Fehler wird durch eine Firewallregel verursacht, die eine ausgehende Verbindung mit einem bestimmten Port oder einer Webadresse blockiert. Weitere Informationen finden Sie unter [Voraussetzungen für Azure AD Connect](../hybrid/how-to-connect-install-prerequisites.md). Starten Sie nach dem Aktualisieren dieser Regeln den Azure AD Connect-Server neu. Anschließend sollte das Kennwortrückschreiben wieder funktionieren. |
 | Nachdem sie eine Weile gearbeitet haben, können Verbundbenutzer oder Benutzer mit Pass-Through-Authentifizierung bzw. Kennworthashsynchronisierung ihre Kennwörter nicht zurücksetzen. | In seltenen Fällen kann der Dienst für das Kennwortrückschreiben möglicherweise nicht neu gestartet werden, wenn Azure AD Connect neu gestartet wurde. Prüfen Sie in diesen Fällen zunächst, ob das Kennwortrückschreiben lokal aktiviert ist. Hierzu können Sie entweder den Azure AD Connect-Assistenten oder PowerShell verwenden. Wenn das Feature aktiviert ist, versuchen Sie erneut, es zu aktivieren oder zu deaktivieren. Sollte dieser Problembehandlungsschritt nicht funktionieren, deinstallieren Sie Azure AD Connect vollständig, und installieren Sie es neu. |
@@ -213,22 +213,22 @@ Wenn Sie keine Antwort auf ein Problem finden, stehen Ihnen unsere Supportteams 
 
 Damit wir Sie bestmöglich unterstützen können, geben Sie bitte so viele Details wie möglich an, wenn Sie eine Anfrage erstellen. Hierzu gehören die folgenden Angaben:
 
-* **Allgemeine Beschreibung des Fehlers** : Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
-* **Seite** : Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
-* **Unterstützungscode** : Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
-   * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode** , und senden Sie die generierte GUID an den Supportmitarbeiter.
+* **Allgemeine Beschreibung des Fehlers**: Welcher Fehler liegt vor? Welches Verhalten haben Sie festgestellt? Wie können wir den Fehler reproduzieren? Geben Sie bitte so viele Details wie möglich an.
+* **Seite**: Auf welcher Seite befanden Sie sich, als der Fehler aufgetreten ist? Geben Sie möglichst die URL an, und erstellen Sie einen Screenshot der Seite.
+* **Unterstützungscode**: Welcher Unterstützungscode wurde generiert, als der Fehler aufgetreten ist?
+   * Reproduzieren Sie zum Ermitteln des Unterstützungscodes den Fehler, klicken Sie im unteren Bildschirmbereich auf den Link **Unterstützungscode**, und senden Sie die generierte GUID an den Supportmitarbeiter.
 
     :::image type="content" source="./media/troubleshoot-sspr-writeback/view-support-code.png" alt-text="Der Unterstützungscode befindet sich unten rechts im Webbrowserfenster.":::
 
   * Wenn Sie sich auf einer Seite ohne Unterstützungscode befinden, drücken Sie F12, suchen Sie nach der SID und der CID, und senden Sie beide Ergebnisse an den Supportmitarbeiter.
-* **Datum, Uhrzeit und Zeitzone** : Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an ( *einschließlich der Zeitzone* ).
-* **Benutzer-ID** : Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com*.
+* **Datum, Uhrzeit und Zeitzone**: Geben Sie das genaue Datum und die exakte Uhrzeit des Fehlers an (*einschließlich der Zeitzone*).
+* **Benutzer-ID**: Bei welchem Benutzer ist der Fehler aufgetreten? Ein Beispiel hierfür ist *Benutzer\@contoso.com*.
    * Handelt es sich um einen Verbundbenutzer?
    * Ist dies ein Benutzer mit Pass-Through-Authentifizierung?
    * Handelt es sich um einen Benutzer mit Kennworthashsynchronisierung?
    * Handelt es sich um einen reinen Cloudbenutzer?
-* **Lizenzierung** : Ist dem Benutzer eine Azure AD-Lizenz zugewiesen?
-* **Anwendungsereignisprotokoll** : Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
+* **Lizenzierung**: Ist dem Benutzer eine Azure AD-Lizenz zugewiesen?
+* **Anwendungsereignisprotokoll**: Wenn Sie das Kennwortrückschreiben verwenden und der Fehler in Ihrer lokalen Infrastruktur auftritt, fügen Sie eine Kopie des Anwendungsereignisprotokolls von Ihrem Azure AD Connect-Server als ZIP-Datei bei.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

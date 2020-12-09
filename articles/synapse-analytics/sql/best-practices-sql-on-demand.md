@@ -1,6 +1,6 @@
 ---
-title: Bewährte Methoden für serverlose SQL-Pools (Vorschauversion)
-description: Empfehlungen und bewährte Methoden für die Arbeit mit serverlosen SQL-Pools (Vorschauversion).
+title: Best Practices für serverlose SQL-Pools
+description: Empfehlungen und bewährte Methoden für die Arbeit mit serverlosen SQL-Pools.
 services: synapse-analytics
 author: filippopovic
 manager: craigg
@@ -10,16 +10,16 @@ ms.subservice: sql
 ms.date: 05/01/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: ddf9d689316d3c95c322aa3a967af53621a2e00f
-ms.sourcegitcommit: 18046170f21fa1e569a3be75267e791ca9eb67d0
+ms.openlocfilehash: b8b93471b6d7f2555cfd71e524718ed0ea1ee191
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/16/2020
-ms.locfileid: "94638868"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457906"
 ---
-# <a name="best-practices-for-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Bewährte Methoden für serverlose SQL-Pools (Vorschauversion) in Azure Synapse Analytics
+# <a name="best-practices-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Best Practices für serverlose SQL-Pools in Azure Synapse Analytics
 
-In diesem Artikel finden Sie eine Sammlung von bewährten Methoden für die Verwendung des serverlosen SQL-Pools (Vorschauversion). Der serverlose SQL-Pool ist eine Ressource in Azure Synapse Analytics.
+In diesem Artikel finden Sie eine Sammlung von bewährten Methoden für die Verwendung serverloser SQL-Pools. Der serverlose SQL-Pool ist eine Ressource in Azure Synapse Analytics.
 
 ## <a name="general-considerations"></a>Allgemeine Hinweise
 
@@ -129,7 +129,7 @@ Beim Abfragen von CSV-Dateien können Sie einen leistungsoptimierten Parser verw
 
 ## <a name="manually-create-statistics-for-csv-files"></a>Manuelles Erstellen von Statistiken für CSV-Dateien
 
-Der serverlose SQL-Pool verwendet Statistiken, um optimale Abfrageausführungspläne zu generieren. Statistiken werden bei Bedarf automatisch für Spalten in den Parquet-Dateien erstellt. Zurzeit werden Statistiken nicht automatisch für Spalten in CSV-Dateien erstellt, und Sie sollten Statistiken manuell für Spalten erstellen, die Sie in Abfragen verwenden, insbesondere in DISTINCT, JOIN, WHERE, ORDER BY und GROUP BY. Weitere Informationen finden Sie unter [Statistiken im serverlosen SQL-Pool](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview).
+Der serverlose SQL-Pool verwendet Statistiken, um optimale Abfrageausführungspläne zu generieren. Statistiken werden bei Bedarf automatisch für Spalten in den Parquet-Dateien erstellt. Zurzeit werden Statistiken nicht automatisch für Spalten in CSV-Dateien erstellt, und Sie sollten Statistiken manuell für Spalten erstellen, die Sie in Abfragen verwenden, insbesondere in DISTINCT, JOIN, WHERE, ORDER BY und GROUP BY. Weitere Informationen finden Sie unter [Statistiken im serverlosen SQL-Pool](develop-tables-statistics.md#statistics-in-serverless-sql-pool).
 
 ## <a name="use-cetas-to-enhance-query-performance-and-joins"></a>Verwenden von CETAS zum Verbessern von Abfrageleistung und Verknüpfungen
 
