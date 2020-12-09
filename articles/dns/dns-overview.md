@@ -6,18 +6,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 3/21/2019
 ms.author: rohink
-ms.openlocfilehash: 5df2c2f686a1993dcd25d5391d5b553f2b42d937
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 7c3aa5505ca15238b2f9e84069de58ab6b700521
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965645"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608486"
 ---
 # <a name="what-is-azure-dns"></a>Was ist Azure DNS?
 
 Azure DNS ist ein Hostingdienst für DNS-Domänen, der eine Namensauflösung mittels Microsoft Azure-Infrastruktur bietet. Indem Sie Ihre Domänen in Azure hosten, können Sie Ihre DNS-Einträge unter Verwendung der gleichen Anmeldeinformationen, APIs, Tools und Abrechnungsabläufe wie bei Ihren anderen Azure-Diensten verwalten.
 
-Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [App Service-Domänen](../app-service/manage-custom-dns-buy-domain.md#buy-the-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
+Es ist nicht möglich, Azure DNS zum Erwerben eines Domänennamens zu verwenden. Ein Domänenname kann für eine Jahresgebühr über [App Service-Domänen](../app-service/manage-custom-dns-buy-domain.md#buy-an-app-service-domain) oder über die Domänennamen-Registrierungsstelle eines Drittanbieters erworben werden. Ihre Domänen können dann in Azure DNS für die Verwaltung von Einträgen gehostet werden. Weitere Informationen finden Sie unter [Delegieren einer Domäne an Azure DNS](dns-domain-delegation.md).
 
 Azure DNS bietet folgende Features.
 

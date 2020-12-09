@@ -3,12 +3,12 @@ title: Übersicht über Azure Service Bus-Messaging | Microsoft-Dokumentation
 description: Dieser Artikel enthält eine allgemeine Übersicht über Azure Service Bus (ein vollständig verwalteter Nachrichtenbroker für die Unternehmensintegration).
 ms.topic: overview
 ms.date: 11/20/2020
-ms.openlocfilehash: ca04b4a41489fba61e7c0ee2bb3f4f7f0b8b80f4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b795d0c5b429a812d90e0759fbcde3d348b86e22
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489478"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602715"
 ---
 # <a name="what-is-azure-service-bus"></a>Was ist Azure Service Bus?
 Bei Microsoft Azure Service Bus handelt es sich um einen vollständig verwalteten Nachrichtenbroker für Unternehmen mit Nachrichtenwarteschlange und öffentlich abonnierbaren Themen. Service Bus wird verwendet, um Anwendungen und Dienste voneinander zu entkoppeln und so die folgenden Vorteile zu erzielen:
@@ -32,7 +32,7 @@ Im Anschluss finden Sie einige gängige Messagingszenarien:
     2. Posten von Ergebnissen in einer oder mehreren anderen Warteschlangen
     3. Verschieben der Eingabenachricht aus der ursprünglichen Warteschlange 
     
-    Die Ergebnisse werden für nachgeschaltete Consumer erst im Erfolgsfall sichtbar, z. B. der erfolgreiche Abgleich der Eingabenachricht. Dies ermöglicht die Verwendung einer Semantik mit einmaliger Verarbeitung. Dieses Transaktionsmodell ist eine stabile Grundlage für das Muster für [Kompensierende Transaktionen](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction.md) im weiteren Lösungskontext. 
+    Die Ergebnisse werden für nachgeschaltete Consumer erst im Erfolgsfall sichtbar, z. B. der erfolgreiche Abgleich der Eingabenachricht. Dies ermöglicht die Verwendung einer Semantik mit einmaliger Verarbeitung. Dieses Transaktionsmodell ist eine stabile Grundlage für das Muster für [Kompensierende Transaktionen](https://docs.microsoft.com/azure/architecture/patterns/compensating-transaction) im weiteren Lösungskontext. 
 * *Nachrichtensitzungen*: Hiermit wird eine umfassende Koordinierung von Workflows und Multiplex-Übertragungen implementiert, für die eine strikte Nachrichtensortierung oder -verzögerung erforderlich ist.
 
 Wenn Sie bereits mit anderen Nachrichtenbrokern wie Apache ActiveMQ vertraut sind, werden Ihnen die Service Bus-Konzepte bekannt vorkommen, weil sie ähnlich sind. Da es sich bei Service Bus um ein PaaS-Angebot (Platform-as-a-Service) handelt, besteht ein wichtiger Unterschied darin, dass Sie sich nicht um die folgenden Aktionen kümmern müssen. Azure übernimmt die Durchführung dieser Aufgaben für Sie. 
