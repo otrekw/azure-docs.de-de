@@ -1,20 +1,20 @@
 ---
 title: Vorlagenstruktur und -syntax
-description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen mithilfe deklarativer JSON-Syntax.
+description: Beschreibt die Struktur und die Eigenschaften der Azure Resource Manager-Vorlagen (ARM-Vorlagen) mithilfe deklarativer JSON-Syntax.
 ms.topic: conceptual
-ms.date: 11/24/2020
-ms.openlocfilehash: b7cf30741cfd2b85046f64fddf01c414676a97e4
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.date: 12/01/2020
+ms.openlocfilehash: ce36d725b3844fcd4c8d43a9f044423611d44fbd
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95911497"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96497876"
 ---
 # <a name="understand-the-structure-and-syntax-of-arm-templates"></a>Verstehen der Struktur und Syntax von ARM-Vorlagen
 
-In diesem Artikel wird die Struktur einer ARM-Vorlage (Azure Resource Manager) beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind.
+In diesem Artikel wird die Struktur einer Azure Resource Manager-Vorlage (ARM-Vorlage) beschrieben. Er zeigt die verschiedenen Abschnitte einer Vorlage und die Eigenschaften, die in diesen Abschnitten verfügbar sind.
 
-Dieser Artikel richtet sich an Benutzer, die bereits Vorkenntnisse zu ARM-Vorlagen haben. Er bietet detaillierte Informationen zur Struktur der Vorlage. Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten Azure Resource Manager-Vorlage](template-tutorial-create-first-template.md).
+Dieser Artikel richtet sich an Benutzer, die bereits Vorkenntnisse zu ARM-Vorlagen haben. Er bietet detaillierte Informationen zur Struktur der Vorlage. Ein Schritt-für-Schritt-Tutorial mit Anleitungen zum Erstellen einer Vorlage finden Sie unter [Tutorial: Erstellen und Bereitstellen Ihrer ersten ARM-Vorlage](template-tutorial-create-first-template.md).
 
 ## <a name="template-format"></a>Vorlagenformat
 
@@ -137,7 +137,7 @@ Folgende Eigenschaften sind für einen Parameter verfügbar:
 | maxLength |Nein |Die Höchstlänge der Parameter „string“, „securestring“ und „array“, einschließlich des angegebenen Werts. |
 | description |Nein |Beschreibung des Parameters, der Benutzern im Portal angezeigt wird. Weitere Informationen finden Sie unter [Kommentare in Vorlagen](#comments). |
 
-Beispiele für die Verwendung von Parametern finden Sie unter [Parameter in Azure Resource Manager-Vorlagen](template-parameters.md).
+Beispiele für die Verwendung von Parametern finden Sie unter [Parameter in ARM-Vorlagen](template-parameters.md).
 
 ## <a name="variables"></a>Variables
 
@@ -172,7 +172,7 @@ Im folgenden Beispiel werden die verfügbaren Optionen zum Definieren einer Vari
 
 Informationen zur Verwendung von `copy` zum Erstellen mehrerer Werte für eine Variable finden Sie unter [Variableniteration](copy-variables.md).
 
-Beispiele für die Verwendung von Variablen finden Sie unter [Variablen in einer Azure Resource Manager-Vorlage](template-variables.md).
+Beispiele für die Verwendung von Variablen finden Sie unter [Variablen in einer ARM-Vorlage](template-variables.md).
 
 ## <a name="functions"></a>Functions
 
@@ -217,7 +217,7 @@ Beim Definieren einer benutzerdefinierten Funktion gelten einige Einschränkunge
 | output-type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie die Eingabeparameter der Funktion. |
 | output-value |Ja |Vorlagensprachausdruck, der ausgewertet und von der Funktion zurückgegeben wird |
 
-Beispiele für die Verwendung von benutzerdefinierten Funktionen finden Sie unter [Benutzerdefinierte Funktionen in einer Azure Resource Manager-Vorlage](template-user-defined-functions.md).
+Beispiele für die Verwendung von benutzerdefinierten Funktionen finden Sie unter [Benutzerdefinierte Funktionen in einer ARM-Vorlage](template-user-defined-functions.md).
 
 ## <a name="resources"></a>Ressourcen
 
@@ -283,11 +283,11 @@ Sie definieren Ressourcen mit der folgenden Struktur:
 |:--- |:--- |:--- |
 | condition | Nein | Boolescher Wert, der angibt, ob die Ressource während dieser Bereitstellung bereitgestellt wird. Wenn der Wert `true` lautet, wird die Ressource während der Bereitstellung erstellt. Wenn der Wert `false` lautet, wird die Ressource für diese Bereitstellung ausgelassen. Weitere Informationen finden Sie unter [Bedingung](conditional-resource-deployment.md). |
 | type |Ja |Der Typ der Ressource. Dieser Wert ist eine Kombination aus dem Namespace des Ressourcenanbieters und dem Ressourcentyp (z.B. **Microsoft.Storage/storageAccounts**). Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). Für eine untergeordnete Ressource hängt das Format des Typs davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
-| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
+| apiVersion |Ja |Version der REST-API zum Erstellen der Ressource. Wenn Sie eine neue Vorlage erstellen, legen Sie diesen Wert auf die neueste Version der Ressource fest, die Sie bereitstellen. Solange die Vorlage wie erforderlich funktioniert, verwenden Sie weiterhin dieselbe API-Version. Indem Sie weiterhin dieselbe API-Version verwenden, minimieren Sie das Risiko, dass eine neue API-Version die Funktionsweise Ihrer Vorlage verändert. Ziehen Sie eine Aktualisierung der API-Version nur dann in Betracht, wenn Sie ein neues Feature verwenden möchten, das in einer späteren Version eingeführt wird. Informationen zum Bestimmen verfügbarer Werte finden Sie in der [Vorlagenreferenz](/azure/templates/). |
 | name |Ja |Der Name der Ressource. Der Name muss die Einschränkungen für URI-Komponenten laut Definition in RFC3986 erfüllen. Azure-Dienste, die externen Parteien den Ressourcennamen verfügbar machen, überprüfen den Namen, um sicherzustellen, dass es sich nicht um einen Versuch handelt, eine andere Identität vorzutäuschen. Für eine untergeordnete Ressource hängt das Format des Namens davon ab, ob sie innerhalb der übergeordneten Ressource geschachtelt oder außerhalb der übergeordneten Ressource definiert ist. Weitere Informationen finden Sie unter [Festlegen von Name und Typ für untergeordnete Ressourcen](child-resource-name-type.md). |
 | comments |Nein |Ihre Notizen zur Dokumentierung der Ressourcen in Ihrer Vorlage. Weitere Informationen finden Sie unter [Kommentare in Vorlagen](template-syntax.md#comments). |
 | location |Varies |Unterstützte Standorte der angegebenen Ressource Wählen Sie einen der verfügbaren Standorte. In der Regel ist es jedoch sinnvoll, einen in der Nähe der Benutzer zu wählen. Normalerweise ist es auch sinnvoll, Ressourcen, die miteinander interagieren, in der gleichen Region zu platzieren. Die meisten Ressourcentypen benötigen einen Speicherort, andere Typen (z.B. eine Rollenzuordnung) jedoch nicht. Weitere Informationen finden Sie unter [Festlegen des Ressourcenspeicherorts](resource-location.md). |
-| dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Tipps für das Festlegen von Abhängigkeiten finden Sie unter [Definieren von Abhängigkeiten in Azure Resource Manager-Vorlagen](define-resource-dependency.md). |
+| dependsOn |Nein |Ressourcen, die bereitgestellt werden müssen, bevor diese Ressource bereitgestellt wird. Resource Manager wertet die Abhängigkeiten zwischen den Ressourcen aus und stellt sie in der richtigen Reihenfolge bereit. Wenn Ressourcen nicht voneinander abhängig sind, werden sie parallel bereitgestellt. Der Wert kann eine durch Trennzeichen getrennte Liste von Ressourcennamen oder eindeutigen Ressourcenbezeichnern sein. Es werden nur Ressourcen aufgelistet, die in dieser Vorlage bereitgestellt werden. Ressourcen, die nicht in dieser Vorlage definiert sind, müssen bereits vorhanden sein. Vermeiden Sie das Hinzufügen unnötiger Abhängigkeiten, da diese die Bereitstellung verlangsamen und Ringabhängigkeiten schaffen können. Anleitungen zum Festlegen von Abhängigkeiten finden Sie unter [Definieren der Reihenfolge für die Bereitstellung von Ressourcen in ARM-Vorlagen](define-resource-dependency.md). |
 | tags |Nein |Markierungen, die der Ressource zugeordnet sind Verwenden Sie Tags zum logischen Organisieren der Ressourcen in Ihrem Abonnement. |
 | sku | Nein | Einige Ressourcen lassen Werte zu, die die bereitzustellende SKU definieren. Beispielsweise können Sie den Typ der Redundanz für ein Speicherkonto angeben. |
 | kind | Nein | Einige Ressourcen lassen einen Wert zu, der den Typ der Ressource definiert, die Sie bereitstellen. Beispielsweise können Sie den Typ der zu erstellenden Cosmos DB angeben. |
@@ -322,9 +322,9 @@ Das folgende Beispiel zeigt die Struktur einer Ausgabedefinition:
 | condition |Nein | Boolescher Wert, der angibt, ob dieser Ausgabewert zurückgegeben wird. Wenn `true`, wird der Wert in die Ausgabe für die Bereitstellung einbezogen. Wenn `false`, wird der Ausgabewert für diese Bereitstellung ausgelassen. Wenn keine Angabe erfolgt, lautet der Standardwert `true`. |
 | type |Ja |Der Typ des Ausgabewerts. Ausgabewerte unterstützen dieselben Typen wie Vorlagen-Eingabeparameter. Bei Angabe von **securestring** für den Ausgabetyp wird der Wert nicht im Bereitstellungsverlauf angezeigt und kann nicht aus einer anderen Vorlage abgerufen werden. Um einen geheimen Wert in mehreren Vorlagen zu verwenden, speichern Sie das Geheimnis in einer Key Vault-Instanz, und verweisen Sie in der Parameterdatei auf das Geheimnis. Weitere Informationen finden Sie unter [Verwenden von Azure Key Vault zum Übergeben eines sicheren Parameterwerts während der Bereitstellung](key-vault-parameter.md). |
 | value |Nein |Vorlagensprachausdruck, der ausgewertet und als Ausgabewert zurückgegeben wird. Geben Sie **value** oder **copy** an. |
-| copy |Nein | Wird verwendet, um mehr als einen Wert für eine Ausgabe zurückzugeben. Geben Sie **value** oder **copy** an. Weitere Informationen finden Sie unter [Ausgabeniteration in Azure Resource Manager-Vorlagen](copy-outputs.md). |
+| copy |Nein | Wird verwendet, um mehr als einen Wert für eine Ausgabe zurückzugeben. Geben Sie **value** oder **copy** an. Weitere Informationen finden Sie unter [Ausgabeiteration in ARM-Vorlagen](copy-outputs.md). |
 
-Beispiele für die Verwendung von Ausgaben finden Sie unter [Ausgaben in einer Azure Resource Manager-Vorlage](template-outputs.md).
+Beispiele für die Verwendung von Ausgaben finden Sie unter [Ausgaben in ARM-Vorlagen](template-outputs.md).
 
 <a id="comments"></a>
 
@@ -351,7 +351,7 @@ Für Inlinekommentare können Sie entweder `//` oder `/* ... */` verwenden, aber
   ],
 ```
 
-In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](quickstart-create-templates-use-visual-studio-code.md) Resource Manager-Vorlage automatisch erkennen und den Sprachmodus entsprechend ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
+In Visual Studio Code kann die [Azure Resource Manager-Tools-Erweiterung](quickstart-create-templates-use-visual-studio-code.md) automatisch eine ARM-Vorlage erkennen und den Sprachmodus ändern. Wenn in der rechten unteren Ecke von VS Code **Azure Resource Manager-Vorlage** angezeigt wird, können Sie die Inline-Kommentare verwenden. Die Inlinekommentare werden nicht mehr als ungültig markiert.
 
 ![Azure Resource Manager-Vorlagenmodus in Visual Studio Code](./media/template-syntax/resource-manager-template-editor-mode.png)
 
@@ -453,7 +453,7 @@ Wenn Sie Vorlagen mit mehrzeiligen Zeichenfolgen mithilfe der Azure CLI, Version
 ## <a name="next-steps"></a>Nächste Schritte
 
 * Komplette Vorlagen für viele verschiedene Lösungstypen finden Sie unter [Azure-Schnellstartvorlagen](https://azure.microsoft.com/documentation/templates/).
-* Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von Azure Resource Manager-Vorlagen](template-functions.md).
-* Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften Vorlagen mit Azure Resource Manager](linked-templates.md).
-* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Azure Resource Manager template best practices (Bewährte Methoden für das Erstellen von Azure Resource Manager-Vorlagen)](template-best-practices.md).
+* Ausführliche Informationen zu den Funktionen, die Sie innerhalb einer Vorlage nutzen können, finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
+* Informationen zum Zusammenführen mehrerer Vorlagen während der Bereitstellung finden Sie unter [Verwenden von verknüpften und geschachtelten Vorlagen bei der Bereitstellung von Azure-Ressourcen](linked-templates.md).
+* Empfehlungen zum Erstellen von Vorlagen finden Sie unter [Bewährte Methoden für ARM-Vorlagen](template-best-practices.md).
 * Antworten auf gängige Fragen finden Sie unter [Häufig gestellte Fragen zu ARM-Vorlagen](frequently-asked-questions.md).
