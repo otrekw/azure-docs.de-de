@@ -9,12 +9,12 @@ ms.service: synapse-analytics
 ms.subservice: spark
 ms.topic: tutorial
 ms.date: 11/16/2020
-ms.openlocfilehash: ea8fcb602f49dec61187260e08d3ccd1b148cee8
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 791cab369dcbf9cab8d1256377cfee4a433c21b9
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95918938"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450891"
 ---
 # <a name="tutorial-create-a-power-bi-report-using-apache-spark-and-azure-synapse-analytics"></a>Tutorial: Erstellen eines Power BI-Berichts mit Apache Spark und Azure Synapse Analytics
 
@@ -69,9 +69,12 @@ In diesem Beispiel verwenden Sie Apache Spark, um ein paar Analysen zu Trinkgeld
                                     & (filtered_df.paymentType.isin({"1", "2"})))
     ```
 4. Schließlich wird der Datenrahmen mit der Apache Spark-Methode ```saveAsTable``` gespeichert. Dadurch wird es ermöglicht, dass Sie später über serverlose SQL-Pools Verbindungen mit derselben Tabelle herstellen und diese Tabelle abfragen können.
+  ```python
+     taxi_df.write.mode("overwrite").saveAsTable("NycTlcTutorial.nyctaxi")
+  ```
    
 ## <a name="query-data-using-serverless-sql-pools"></a>Abfragen von Daten mit serverlosen SQL-Pools
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools (Vorschauversion) und dem serverlosen SQL-Pool (Vorschauversion). Dies wird durch die Synapse-Funktionalität [Verwaltung von gemeinsam genutzten Metadaten](../metadata/overview.md) ermöglicht. Im Ergebnis werden die von Spark erstellten Datenbanken und ihre Parquet-basierten Tabellen im serverlosen SQL-Pool des Arbeitsbereichs sichtbar.
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools und dem serverlosen SQL-Pool. Dies wird durch die Synapse-Funktionalität [Verwaltung von gemeinsam genutzten Metadaten](../metadata/overview.md) ermöglicht. Im Ergebnis werden die von Spark erstellten Datenbanken und ihre Parquet-basierten Tabellen im serverlosen SQL-Pool des Arbeitsbereichs sichtbar.
 
 So fragen Sie Ihre Apache Spark-Tabelle über Ihren serverlosen SQL-Pool ab:
    1. Nachdem Sie Ihre Apache Spark-Tabelle gespeichert haben, wechseln Sie zur Registerkarte **Data**.

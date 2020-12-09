@@ -6,14 +6,14 @@ ms.author: thweiss
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
-ms.date: 01/21/2020
+ms.date: 11/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 936e98b3efa27f2d0a85c373ccae0ab223f4fd95
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 7d50185169b22a136ce81bd3aebae235cf49498b
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340905"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436622"
 ---
 # <a name="secure-access-to-data-in-azure-cosmos-db"></a>Sicherer Zugriff auf Daten in Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -123,9 +123,9 @@ Eine Berechtigungsressource ist einem Benutzer zugeordnet und sowohl auf der Con
 
 Wenn Sie die [Diagnoseprotokolle für Anforderungen auf Datenebene](cosmosdb-monitor-resource-logs.md) aktivieren, werden die beiden folgenden Eigenschaften entsprechend der Berechtigung protokolliert:
 
-* **resourceTokenPermissionId** : Diese Eigenschaft gibt die von Ihnen festgelegten Ressourcentokenberechtigungs-ID an. 
+* **resourceTokenPermissionId**: Diese Eigenschaft gibt die von Ihnen festgelegten Ressourcentokenberechtigungs-ID an. 
 
-* **resourceTokenPermissionMode** : Diese Eigenschaft gibt den Berechtigungsmodus an, den Sie beim Erstellen des Ressourcentokens festgelegt haben. Der Berechtigungsmodus kann Werte wie „Alle“ oder „Lesen“ aufweisen.
+* **resourceTokenPermissionMode**: Diese Eigenschaft gibt den Berechtigungsmodus an, den Sie beim Erstellen des Ressourcentokens festgelegt haben. Der Berechtigungsmodus kann Werte wie „Alle“ oder „Lesen“ aufweisen.
 
 ### <a name="code-sample-to-create-permission"></a>Codebeispiel für die Berechtigungserstellung
 
@@ -169,7 +169,7 @@ Die Entität kann jetzt Azure Cosmos DB-Ressourcen lesen.
 
 ## <a name="delete-or-export-user-data"></a>Löschen oder Exportieren von Benutzerdaten
 
-Mithilfe von Azure Cosmos DB können Sie alle personenbezogenen Daten, die sich in einer Datenbank oder in Sammlungen befinden, durchsuchen, auswählen, ändern und löschen. Azure Cosmos DB stellt APIs für das Auffinden und Löschen von personenbezogenen Daten bereit, die Nutzung der APIs und die Entwicklung der erforderlichen Logik zum Löschen der personenbezogenen Daten liegt jedoch in Ihrer Verantwortung. Jede API für mehrere Modelle (SQL, MongoDB, Gremlin, Cassandra, Tabelle) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von personenbezogenen Daten enthalten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.
+Mithilfe des Datenbankdiensts Azure Cosmos DB können Sie alle Daten, die sich in einer Datenbank oder Containern befinden, durchsuchen, auswählen, ändern und löschen. Es liegt jedoch in Ihrer Verantwortung, mithilfe der bereitgestellten APIs die Logik zu definieren, die erforderlich ist, um personenbezogene Daten zu finden und ggf. zu löschen. Jede API für mehrere Modelle (SQL, MongoDB, Gremlin, Cassandra, Tabelle) stellt SDKs für verschiedene Sprachen bereit, die Methoden zum Durchsuchen und Löschen von Daten basierend auf benutzerdefinierten Prädikaten bieten. Sie können darüber hinaus die [TTL-Funktion (time-to-live)](time-to-live.md) verwenden, um Daten nach einem festgelegten Zeitraum automatisch zu löschen, wodurch keine weiteren Kosten anfallen.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-dsr-and-stp-note.md)]
 

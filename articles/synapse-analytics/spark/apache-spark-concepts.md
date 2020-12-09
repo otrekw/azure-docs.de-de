@@ -9,12 +9,12 @@ ms.subservice: spark
 ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
-ms.openlocfilehash: d29fa6454839b0c34830374282b8abb5fa6e4c51
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 8df7a2ecd2a6732a011267eb0efe00e8eaf2bef4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313397"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458753"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Grundlegende Konzepte für Apache Spark in Azure Synapse Analytics
 
@@ -22,15 +22,15 @@ Apache Spark ist ein Framework für die Parallelverarbeitung, das In-Memory-Vera
 
 Azure Synapse vereinfacht das Erstellen und Konfigurieren von Spark-Funktionen in Azure. Azure Synapse bietet eine andere Implementierung der hier dokumentierten Spark-Funktionen.
 
-## <a name="spark-pools-preview"></a>Spark-Pools (Vorschauversion)
+## <a name="spark-pools"></a>Spark-Pools
 
-Ein serverloser Apache Spark-Pool (Vorschauversion) wird im Azure-Portal erstellt. Bei der Instanziierung eines Spark-Pools wird die Definition des Pools verwendet, um eine Spark-Instanz für die Datenverarbeitung zu erstellen. Wenn ein Spark-Pool erstellt wird, ist er nur in Form von Metadaten vorhanden. Es werden keine Ressourcen verbraucht, ausgeführt oder in Rechnung gestellt. Ein Spark-Pool verfügt über eine Reihe von Eigenschaften zur Steuerung der Merkmale einer Spark-Instanz. Zu diesen Merkmalen zählen unter anderem der Name, die Größe, das Skalierungsverhalten und die Gültigkeitsdauer.
+Ein serverloser Apache Spark-Pool wird im Azure-Portal erstellt. Bei der Instanziierung eines Spark-Pools wird die Definition des Pools verwendet, um eine Spark-Instanz für die Datenverarbeitung zu erstellen. Wenn ein Spark-Pool erstellt wird, ist er nur in Form von Metadaten vorhanden. Es werden keine Ressourcen verbraucht, ausgeführt oder in Rechnung gestellt. Ein Spark-Pool verfügt über eine Reihe von Eigenschaften zur Steuerung der Merkmale einer Spark-Instanz. Zu diesen Merkmalen zählen unter anderem der Name, die Größe, das Skalierungsverhalten und die Gültigkeitsdauer.
 
 Da im Zusammenhang mit der Erstellung von Spark-Pools keine Gebühren oder Ressourcenkosten entstehen, kann eine beliebige Anzahl mit beliebig vielen verschiedenen Konfigurationen erstellt werden. Auf Spark-Pools können auch Berechtigungen angewendet werden, um zu steuern, auf welche Pools Benutzer zugreifen können.
 
 Eine bewährte Methode besteht darin, kleinere Spark-Pools für die Entwicklung und das Debugging und anschließend größere Spark-Pools für die Ausführung von Produktionsworkloads zu erstellen.
 
-Informationen zum Erstellen eines Spark-Pools sowie alle verfügbaren Eigenschaften finden Sie unter [Erstellen eines Apache Spark-Pools](../quickstart-create-apache-spark-pool-portal.md).
+Informationen zum Erstellen eines Spark-Pools sowie zu allen verfügbaren Eigenschaften finden Sie unter [Schnellstart: Erstellen eines neuen serverlosen Apache Spark-Pools über das Azure-Portal](../quickstart-create-apache-spark-pool-portal.md).
 
 ## <a name="spark-instances"></a>Spark-Instanzen
 

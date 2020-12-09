@@ -1,6 +1,6 @@
 ---
-title: Verwenden von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion)
-description: In diesem Artikel wird die Syntax von „OPENROWSET“ im serverlosen SQL-Pool (Vorschauversion) beschrieben und die Verwendung von Argumenten erläutert.
+title: Verwenden von „OPENROWSET“ im serverlosen SQL-Pool
+description: In diesem Artikel wird die Syntax von „OPENROWSET“ im serverlosen SQL-Pool beschrieben und die Verwendung von Argumenten erläutert.
 services: synapse-analytics
 author: filippopovic
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/07/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 2458b5f3f0c0091bb6ec24e62a1d5614e4e1ecd8
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 97ee6c17d62a924686e3e4f4717d7bb7f4375988
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888588"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446672"
 ---
-# <a name="how-to-use-openrowset-using-serverless-sql-pool-preview-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics
+# <a name="how-to-use-openrowset-using-serverless-sql-pool-in-azure-synapse-analytics"></a>Verwenden von „OPENROWSET“ mit einem serverlosen SQL-Pool in Azure Synapse Analytics
 
-Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb des serverlosen SQL-Pools (Vorschauversion) wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
+Die `OPENROWSET(BULK...)`-Funktion ermöglicht den Zugriff auf Dateien in Azure Storage. Die `OPENROWSET`-Funktion liest den Inhalt einer Remotedatenquelle (z. B. einer Datei) und gibt den Inhalt als eine Reihe von Zeilen zurück. Innerhalb des serverlosen SQL-Pools wird die OPENROWSET-Funktion aufgerufen und die BULK-Option angegeben, um auf den OPENROWSET-Massenrowsetanbieter zuzugreifen.  
 
 Auf die `OPENROWSET`-Funktion kann in der `FROM`-Klausel einer Abfrage so verwiesen werden, als handele es sich um einen Tabellennamen vom Typ `OPENROWSET`. Sie unterstützt Massenvorgänge über einen integrierten BULK-Anbieter, mit dem Daten aus einer Datei gelesen und als Rowset zurückgegeben werden können.
 
@@ -147,7 +147,7 @@ Das folgende Beispiel zeigt: Bei Verwendung von „unstructured_data_path=`https
 
 Mit der WITH-Klausel können Sie Spalten angeben, die aus Dateien gelesen werden sollen.
 
-- Geben Sie bei CSV-Datendateien Spaltennamen und den jeweiligen Datentyp an, um alle Spalten zu lesen. Wenn Sie sich nur für eine Teilmenge der Spalten interessieren, verwenden Sie Ordinalzahlen, um die Spalten aus den Ursprungsdatendateien anhand der Ordinalzahl auszuwählen. Spalten werden auf der Grundlage der Ordinalangabe gebunden. 
+- Geben Sie bei CSV-Datendateien Spaltennamen und den jeweiligen Datentyp an, um alle Spalten zu lesen. Wenn Sie sich nur für eine Teilmenge der Spalten interessieren, verwenden Sie Ordinalzahlen, um die Spalten aus den Ursprungsdatendateien anhand der Ordinalzahl auszuwählen. Spalten werden auf der Grundlage der Ordinalangabe gebunden. Bei Verwendung von „HEADER_ROW = TRUE“ erfolgt die Spaltenbindung nach Spaltenname und nicht nach Ordinalposition.
     > [!TIP]
     > Die WITH-Klausel kann für CSV-Dateien auch weggelassen werden. Datentypen werden automatisch aus Dateiinhalten abgeleitet. Mit dem Argument „HEADER_ROW“ können Sie angeben, dass eine Kopfzeile vorhanden ist. In diesem Fall werden Spaltennamen aus der Kopfzeile gelesen. Ausführliche Informationen finden Sie unter [Automatische Schemaerkennung](#automatic-schema-discovery).
     
@@ -231,7 +231,7 @@ Einzelheiten zu CSV-Parserversion 2.0:
 
 HEADER_ROW = { TRUE | FALSE }
 
-Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument).
+Gibt an, ob die CSV-Datei eine Kopfzeile enthält. Standardwert: FALSE. Unterstützt in: PARSER_VERSION='2.0'. Bei „TRUE“ werden Spaltennamen aus der ersten Zeile gelesen (gemäß FIRSTROW-Argument). Bei „TRUE“ und Schemaangabe mit „WITH“ wird für die Bindung von Spaltennamen der Spaltenname und nicht die Ordinalposition herangezogen.
 
 DATAFILETYPE = { 'char' | 'widechar' }
 

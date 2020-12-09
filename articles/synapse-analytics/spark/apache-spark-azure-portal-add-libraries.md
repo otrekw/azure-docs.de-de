@@ -1,5 +1,5 @@
 ---
-title: Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
+title: Verwalten von Bibliotheken für Apache Spark
 description: Erfahren Sie, wie Sie Bibliotheken hinzufügen und verwalten, die von Apache Spark in Azure Synapse Analytics verwendet werden.
 services: synapse-analytics
 author: euangMS
@@ -9,16 +9,16 @@ ms.date: 10/16/2020
 ms.author: midesa
 ms.reviewer: jrasnick
 ms.subservice: spark
-ms.openlocfilehash: 8d478b35b702e02f303358972526c091ceb3657e
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 62610e1b86671021e66891ae232bacbd4b3e40ed
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95917124"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458810"
 ---
 # <a name="manage-libraries-for-apache-spark-in-azure-synapse-analytics"></a>Verwalten von Bibliotheken für Apache Spark in Azure Synapse Analytics
 
-Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie eine Bibliothek in einem Ihrer serverlosen Apache Spark-Pools (Vorschau) installieren. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
+Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme oder Projekte einschließen können. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie in einem Ihrer serverlosen Apache Spark-Pools eine Bibliothek installieren. Nachdem eine Bibliothek für einen Spark-Pool installiert wurde, ist sie für alle Sitzungen verfügbar, die denselben Pool verwenden. 
 
 ## <a name="before-you-begin"></a>Voraussetzungen
 - Um Bibliotheken zu installieren und zu aktualisieren, müssen Sie über die Berechtigung **Mitwirkender an Storage-Blobdaten** oder **Besitzer von Speicherblobdaten** für das primäre Gen2-Speicherkonto verfügen, das mit dem Azure Synapse Analytics-Arbeitsbereich verknüpft ist.
@@ -26,11 +26,11 @@ Bibliotheken stellen wiederverwendbaren Code bereit, den Sie in Ihre Programme o
 ## <a name="default-installation"></a>Standardinstallation
 Apache Spark in Azure Synapse Analytics verfügt über eine vollständige Anacondas-Installation und zusätzliche Bibliotheken. Die vollständige Liste der Bibliotheken finden Sie unter [Apache Spark-Versionsunterstützung](apache-spark-version-support.md). 
 
-Wenn eine Spark-Instanz gestartet wird, werden diese Bibliotheken automatisch eingeschlossen. Zusätzliche Python- und benutzerdefiniert erstellte Pakete können auf der Ebene des Spark-Pools (Vorschau) hinzugefügt werden.
+Wenn eine Spark-Instanz gestartet wird, werden diese Bibliotheken automatisch eingeschlossen. Zusätzliche Python- und benutzerdefinierte Pakete können auf der Ebene des Spark-Pools hinzugefügt werden.
 
 
 ## <a name="manage-python-packages"></a>Verwalten von Python-Paketen
-Nachdem Sie die Bibliotheken identifiziert haben, die Sie für Ihre Spark-Anwendung verwenden möchten, können Sie sie in einem Spark-Pool (Vorschau) installieren. 
+Nachdem Sie die Bibliotheken identifiziert haben, die Sie für Ihre Spark-Anwendung verwenden möchten, können Sie diese Bibliotheken in einem Spark-Pool installieren. 
 
  Sie können eine *requirements.txt*-Datei (Ausgabe des Befehls `pip freeze`) verwenden, um die virtuelle Umgebung zu aktualisieren. Die in dieser Datei für Installation oder Upgrade aufgeführten Pakete werden zum Zeitpunkt des Poolstarts von PyPi heruntergeladen. Diese Anforderungsdatei wird jedes Mal verwendet, wenn eine Spark-Instanz aus diesem Spark-Pool erstellt wird.
 
@@ -54,7 +54,7 @@ alabaster==0.7.10
 Während der Entwicklung Ihrer Spark-Anwendung stellen Sie möglicherweise fest, dass Sie vorhandene Bibliotheken aktualisieren oder neue installieren müssen. Bibliotheken können während oder nach der Erstellung des Pools aktualisiert werden.
 
 #### <a name="install-packages-during-pool-creation"></a>Installieren von Paketen während der Poolerstellung
-So installieren Sie Bibliotheken während der Erstellung eines Pools in einem Spark-Pool (Vorschau)
+Gehen Sie wie folgt vor, um Bibliotheken während der Poolerstellung in einem Spark-Pool zu installieren:
    
 1. Navigieren Sie im Azure-Portal zu Ihrem Azure Synapse Analytics-Arbeitsbereich.
    
@@ -66,7 +66,7 @@ So installieren Sie Bibliotheken während der Erstellung eines Pools in einem Sp
  
 
 #### <a name="install-packages-from-the-synapse-workspace"></a>Installieren von Paketen aus dem Synapse-Arbeitsbereich
-So aktualisieren Sie Bibliotheken oder fügen diese einem Spark-Pool (Vorschau) über das Azure Synapse Analytics-Portal hinzu
+Gehen Sie wie folgt vor, um im Azure Synapse Analytics-Portal Bibliotheken zu aktualisieren oder einem Spark-Pool weitere Bibliotheken hinzuzufügen:
 
 1.  Navigieren Sie im Azure-Portal zu Ihrem Azure Synapse Analytics-Arbeitsbereich.
    
@@ -79,7 +79,7 @@ So aktualisieren Sie Bibliotheken oder fügen diese einem Spark-Pool (Vorschau) 
     ![Hinzufügen von Python-Bibliotheken in Synapse](./media/apache-spark-azure-portal-add-libraries/apache-spark-azure-portal-update.png)
    
 #### <a name="install-packages-from-the-azure-portal"></a>Installieren von Paketen über das Azure-Portal
-So installieren Sie eine Bibliothek direkt aus dem Azure-Portal in einem Spark-Pool (Vorschau):
+Gehen Sie wie folgt vor, um eine Bibliothek direkt im Azure-Portal in einem Spark-Pool zu installieren:
    
  1. Navigieren Sie im Azure-Portal zu Ihrem Azure Synapse Analytics-Arbeitsbereich.
    

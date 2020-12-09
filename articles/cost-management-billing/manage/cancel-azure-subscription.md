@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/01/2020
 ms.author: banders
-ms.openlocfilehash: f90d1fe22ae2f46fdc6d764ce98db8e0f48b8b35
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 3182da0d04d61d5bad4ce3e41f213ecc3be7ecaf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408021"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444457"
 ---
 # <a name="cancel-your-azure-subscription"></a>Kündigen Ihres Azure-Abonnements
 
@@ -38,6 +38,9 @@ Wenn Sie einen kostenpflichtigen Azure-Supportplan kündigen, werden Ihnen die G
     ![Screenshot mit der Schaltfläche zum Kündigen](./media/cancel-azure-subscription/cancel_ibiza.png)
 1. Befolgen Sie die Anweisungen, und schließen Sie die Kündigung ab.
 
+> [!NOTE]
+> Partner können ein Abonnement aus folgenden Gründen aussetzen oder kündigen: Anforderung durch einen Kunden, bei Nichtbezahlung oder Betrug. Weitere Informationen finden Sie unter [Aussetzen oder Stornieren eines Abonnements](/partner-center/create-a-new-subscription#suspend-or-cancel-a-subscription).
+
 ## <a name="who-can-cancel-a-subscription"></a>Wer kann ein Abonnement kündigen?
 
 Die Tabelle unten beschreibt die Berechtigungen, die zum Kündigen eines Abonnements benötigt werden.
@@ -48,7 +51,7 @@ Die Tabelle unten beschreibt die Berechtigungen, die zum Kündigen eines Abonnem
 |[Microsoft Enterprise Agreement](https://azure.microsoft.com/pricing/enterprise-agreement/) und [Enterprise Dev/Test](https://azure.microsoft.com/offers/ms-azr-0148p/)     |  Kontobesitzer und Besitzer des Abonnements       |
 |[Azure-Plan](https://azure.microsoft.com/offers/ms-azr-0017g/) und [Azure-Plan für DevTest](https://azure.microsoft.com/offers/ms-azr-0148g/)     |  Besitzer des Abonnements      |
 
-## <a name="what-happens-after-i-cancel-my-subscription"></a>Was geschieht, nachdem ich mein Abonnement gekündigt habe?
+## <a name="what-happens-after-subscription-cancellation"></a>Was geschieht nach der Kündigung eines Abonnements?
 
 Nach Ihrer Kündigung wird die Abrechnung sofort beendet. Bis die Kündigung im Portal angezeigt wird, kann es allerdings bis zu zehn Minuten dauern. Wenn Sie das Abonnement mitten in einem Abrechnungszeitraum kündigen, senden wir Ihnen die Schlussrechnung zum üblichen Rechnungsdatum nach Ende des Abrechnungszeitraums zu.
 
@@ -65,7 +68,7 @@ Wenn Sie über ein kostenloses Testabonnement verfügen, müssen Sie nicht 30 T
 1. Wählen Sie das Abonnement aus, das Sie löschen möchten.
 1. Wählen Sie **Übersicht** und anschließend **Abonnement löschen** aus.
 
-## <a name="reactivate-subscription"></a>Erneutes Aktivieren von Abonnements
+## <a name="reactivate-a-subscription"></a>Reaktivieren eines Abonnements
 
 Wenn Sie Ihr Abonnement mit nutzungsbasierter Bezahlung versehentlich gekündigt haben, können Sie es [im Kontocenter reaktivieren](subscription-disabled.md).
 
@@ -73,7 +76,7 @@ Wenn es sich bei Ihrem Abonnement nicht um ein Abonnement mit nutzungsbasierter 
 
 ## <a name="why-dont-i-see-the-cancel-subscription-option-on-the-azure-portal"></a>Warum wird die Option „Abonnement kündigen“ im Azure-Portal nicht angezeigt? 
 
-Möglicherweise verfügen Sie nicht über die erforderlichen Berechtigungen, um ein Abonnement zu kündigen. Unter [Wer kann ein Abonnement kündigen?](https://docs.microsoft.com/azure/cost-management-billing/manage/cancel-azure-subscription#who-can-cancel-a-subscription) erfahren Sie, wer die verschiedenen Arten von Abonnements kündigen kann.
+Möglicherweise verfügen Sie nicht über die erforderlichen Berechtigungen, um ein Abonnement zu kündigen. Unter [Wer kann ein Abonnement kündigen?](#who-can-cancel-a-subscription) erfahren Sie, wer die verschiedenen Arten von Abonnements kündigen kann.
 
 ## <a name="how-do-i-delete-my-azure-account"></a>Wie lösche ich mein Azure-Konto?
 
@@ -85,7 +88,7 @@ Möglicherweise verfügen Sie nicht über die erforderlichen Berechtigungen, um 
 
 ## <a name="how-do-i-cancel-a-visual-studio-professional-account"></a>Wie kann ich ein Visual Studio Professional-Konto kündigen?
 
-Weitere Informationen finden Sie im Artikel [Verlängerung und Kündigung](https://docs.microsoft.com/visualstudio/subscriptions/faq/admin/renewal-cancellation). Wenn Sie über Visual Studio Azure-Abonnements verfügen, müssen diese ebenfalls gekündigt und gelöscht werden.
+Weitere Informationen finden Sie im Artikel [Verlängerung und Kündigung](/visualstudio/subscriptions/faq/admin/renewal-cancellation). Wenn Sie über Visual Studio Azure-Abonnements verfügen, müssen diese ebenfalls gekündigt und gelöscht werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

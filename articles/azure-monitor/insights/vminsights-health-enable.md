@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/16/2020
-ms.openlocfilehash: 647256949d1f8f13439a0a5db87f3b02d697d32b
-ms.sourcegitcommit: 5ae2f32951474ae9e46c0d46f104eda95f7c5a06
+ms.openlocfilehash: 20d38e5caee67ca8bb13877d3162401fa245dc2d
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95318132"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96444777"
 ---
 # <a name="enable-azure-monitor-for-vms-guest-health-preview"></a>Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)
 Mit dem Feature „Gastintegrität“ von Azure Monitor für VMs können Sie Informationen zur Integrität eines virtuellen Computers anzeigen. Dies wird anhand von verschiedenen Leistungsmessungen definiert, für die in regelmäßigen Abständen Stichproben genommen werden. In diesem Artikel wird beschrieben, wie Sie dieses Feature in Ihrem Abonnement aktivieren und die Gastüberwachung für die einzelnen virtuellen Computer aktivieren.
@@ -87,7 +87,7 @@ Es sind drei Schritte erforderlich, um virtuelle Computer per Azure Resource Man
 > [!NOTE]
 > Wenn Sie einen virtuellen Computer über das Azure-Portal aktivieren, wird die hier beschriebene Datensammlungsregel für Sie erstellt. In diesem Fall müssen Sie diesen Schritt nicht ausführen.
 
-Die Konfiguration für die Monitore des Features „Gastintegrität“ von Azure Monitor für VMs wird in [Datensammlungsregeln](../platform/data-collection-rule-overview.md) gespeichert. Installieren Sie die unten in der Resource Manager-Vorlage definierte Datensammlungsregel, um alle Monitore für die virtuellen Computer mit der Erweiterung für die Gastintegrität zu aktivieren. Für jeden virtuellen Computer mit der Erweiterung für die Gastintegrität wird eine Zuordnung dieser Regel benötigt.
+Die Konfiguration für die Monitore des Features „Gastintegrität“ von Azure Monitor für VMs wird in [Datensammlungsregeln](../platform/data-collection-rule-overview.md) gespeichert. Für jeden virtuellen Computer mit der Erweiterung für die Gastintegrität wird eine Zuordnung dieser Regel benötigt.
 
 > [!NOTE]
 > Sie können weitere Datensammlungsregeln erstellen, um die Standardkonfiguration von Monitoren zu ändern. Dies ist unter [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](vminsights-health-configure.md) beschrieben.
@@ -115,7 +115,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 ---
 
-
+Mit der in der Resource Manager-Vorlage unten definierten Datensammlungsregel werden alle Monitore für die virtuellen Computer mit der Erweiterung für die Gastintegrität aktiviert. Sie muss Datenquellen für jeden von den Monitoren verwendeten Leistungsindikator enthalten.
 
 ```json
 {
@@ -138,7 +138,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
     "dataCollectionRuleLocation": {
       "type": "string",
       "metadata": {
-        "description": "The location code in which the data colleciton rule should be deployed. Examples: eastus, westeurope, etc"
+        "description": "The location code in which the data collection rule should be deployed. Examples: eastus, westeurope, etc"
       }
     }
   },
@@ -151,6 +151,19 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
       "properties": {
         "description": "Data collection rule for VM Insights health.",
         "dataSources": {
+          "performanceCounters": [
+              {
+                  "name": "VMHealthPerfCounters",
+                  "streams": [ "Microsoft-Perf" ],
+                  "scheduledTransferPeriod": "PT1M",
+                  "samplingFrequencyInSeconds": 60,
+                  "counterSpecifiers": [
+                      "\\LogicalDisk(*)\\% Free Space",
+                      "\\Memory\\Available Bytes",
+                      "\\Processor(_Total)\\% Processor Time"
+                  ]
+              }
+          ],
           "extensions": [
             {
               "name": "Microsoft-VMInsights-Health",
@@ -170,7 +183,11 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
                     }
                   }
                 ]
-              }
+              },
+              "inputDataSources": [
+                  "VMHealthPerfCounters"
+              ]
+
             }
           ]
         },
@@ -181,7 +198,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
               "name": "Microsoft-HealthStateChange-Dest"
             }
           ]
-        },
+        },                  
         "dataFlows": [
           {
             "streams": [
@@ -205,7 +222,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-      "healthDataCollectionRuleResourceId": {
+      "destinationWorkspaceResourceId": {
         "value": "/subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourcegroups/my-resource-group/providers/microsoft.operationalinsights/workspaces/my-workspace"
       },
       "dataCollectionRuleLocation": {
@@ -217,7 +234,7 @@ az deployment group create --name GuestHealthDataCollectionRule --resource-group
 
 
 
-## <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Installieren der Erweiterung für die Gastintegrität und Zuordnen zur Datensammlungsregel
+### <a name="install-guest-health-extension-and-associate-with-data-collection-rule"></a>Installieren der Erweiterung für die Gastintegrität und Zuordnen zur Datensammlungsregel
 Verwenden Sie die folgende Resource Manager-Vorlage, um einen virtuellen Computer für die Gastintegrität zu aktivieren. Hiermit wird die Erweiterung für die Gastintegrität installiert und die Zuordnung zur Datensammlungsregel durchgeführt. Sie können diese Vorlage mit einer [beliebigen Bereitstellungsmethode für Resource Manager-Vorlagen](../../azure-resource-manager/templates/deploy-powershell.md) bereitstellen.
 
 
@@ -370,9 +387,6 @@ az deployment group create --name GuestHealthDeployment --resource-group my-reso
       },
       "healthDataCollectionRuleResourceId": {
         "value": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/my-resource-group/providers/Microsoft.Insights/dataCollectionRules/Microsoft-VMInsights-Health"
-      },
-      "healthExtensionVersion": {
-        "value": "private-preview"
       }
   }
 }

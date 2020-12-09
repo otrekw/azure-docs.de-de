@@ -1,6 +1,6 @@
 ---
-title: SQL-Skripts in Azure Synapse Studio (Vorschauversion)
-description: Einführung in SQL-Skripts in Azure Synapse Studio (Vorschauversion)
+title: SQL-Skripts in Synapse Studio
+description: Einführung in SQL-Skripts in Synapse Studio von Azure Synapse Analytics.
 services: synapse-analytics
 author: pimorano
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: pimorano
 ms.reviewer: omafnan
-ms.openlocfilehash: 3f3009799889bd6b118f586676e22338d821d37c
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: 077815d117af0328a3466346727e135caaf8ff21
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94635288"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458006"
 ---
-# <a name="using-sql-scripts-in-azure-synapse-studio-preview"></a>Verwenden von SQL-Skripts in Azure Synapse Studio (Vorschauversion)
+# <a name="synapse-studio-sql-scripts-in-azure-synapse-analytics"></a>SQL-Skripts in Synapse Studio von Azure Synapse Analytics 
 
-Azure Synapse Studio (Vorschauversion) stellt eine Webschnittstelle für SQL-Skripts zum Erstellen von SQL-Abfragen zur Verfügung. Sie können eine Verbindung mit dem SQL-Pool (Vorschauversion) herstellen. 
+Synapse Studio stellt eine Webschnittstelle für SQL-Skripts zum Erstellen von SQL-Abfragen zur Verfügung. 
 
 ## <a name="begin-authoring-in-sql-script"></a>Beginnen der Erstellung in SQL-Skripts 
 

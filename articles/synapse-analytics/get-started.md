@@ -10,16 +10,16 @@ ms.service: synapse-analytics
 ms.subservice: workspace
 ms.topic: tutorial
 ms.date: 11/17/2020
-ms.openlocfilehash: f55e266b548ea3b43a50d9500a427dfe1199b73f
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: b1339a0ab5be9004643cf2e9f86203eba9a2cc72
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94699762"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445060"
 ---
 # <a name="get-started-with-azure-synapse-analytics"></a>Erste Schritte mit Azure Synapse Analytics
 
-Dieses Tutorial ist eine schrittweise Anleitung durch die wichtigsten Featurebereiche von Azure Synapse Analytics. Das Tutorial ist der ideale Ausgangspunkt für Personen, die eine Führung durch die wichtigsten Szenarien von Azure Synapse Analytics wünschen. Nachdem Sie die Schritte im Tutorial befolgt haben, verfügen Sie über einen voll funktionsfähigen Synapse-Arbeitsbereich, in dem Sie mithilfe eines dedizierten SQL-Pool, eines serverlosen SQL-Pools oder von Apache Spark mit der Datenanalyse beginnen können.
+Dieses Tutorial ist eine schrittweise Anleitung durch die wichtigsten Featurebereiche von Azure Synapse Analytics. Das Tutorial ist der ideale Ausgangspunkt für Personen, die eine Führung durch die wichtigsten Szenarien von Azure Synapse Analytics wünschen. Nach dem Ausführen der Schritte in diesem Tutorial verfügen Sie über einen Synapse-Arbeitsbereich. Dieses Tutorial enthält außerdem Schritte zum [Aktivieren eines Arbeitsbereichs für Ihren dedizierten SQL-Pool (vormals SQL DW)](./sql-data-warehouse/workspace-connected-create.md). Nach der Erstellung des Arbeitsbereichs können Sie mit dem Analysieren von Daten mithilfe eines dedizierten SQL-Pools, eines serverlosen SQL-Pools oder eines serverlosen Apache Spark-Pools beginnen.
 
 Folgen Sie den unten aufgeführten Schritten *in dieser Reihenfolge*, und Sie werden eine Tour durch viele der Features unternehmen und lernen, wie Sie die Kernfeatures ausüben können.
 

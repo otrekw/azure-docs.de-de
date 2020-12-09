@@ -1,6 +1,6 @@
 ---
-title: Cheatsheet für Azure Synapse Analytics (früher SQL DW)
-description: Enthält Links und bewährte Methoden zur schnellen Erstellung Ihrer Azure Synapse Analytics-Lösungen (früher SQL DW).
+title: Cheatsheet für dedizierte SQL-Pools (ehemals SQL DW)
+description: Hier finden Sie Links und bewährte Methoden zur schnellen Erstellung Ihres dedizierten SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics.
 services: synapse-analytics
 author: mlee3gsd
 manager: craigg
@@ -10,18 +10,18 @@ ms.subservice: sql-dw
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 648f06ef1af5d6dce9fa3583c6358d3bd173f209
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: a236cf99d3131e83619cfab06e8ec028938a87ba
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93319675"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96454601"
 ---
-# <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheatsheet für Azure Synapse Analytics (früher SQL DW)
+# <a name="cheat-sheet-for-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytic"></a>Cheatsheet für dedizierte SQL-Pools (ehemals SQL DW) in Azure Synapse Analytics
 
-Dieses Cheatsheet enthält nützliche Tipps und bewährte Methoden zum Erstellen von Azure Synapse-Lösungen.
+Dieses Cheatsheet enthält praktische Tipps und bewährte Methoden zur Erstellung von Lösungen mit dediziertem SQL-Pool (ehemals SQL DW).
 
-In der folgenden Abbildung ist die Vorgehensweise zum Entwerfen einer Data Warehouse-Datenbank dargestellt:
+Die folgende Grafik zeigt den Entwurfsprozess für ein Data Warehouse mit dediziertem SQL-Pool (ehemals SQL DW):
 
 ![Skizzierung](./media/cheat-sheet/picture-flow.png)
 
@@ -121,13 +121,13 @@ Ressourcengruppen werden genutzt, um Arbeitsspeicher für Abfragen zuzuweisen. W
 
 Wenn Sie feststellen, dass Abfragen zu lange dauern, stellen Sie sicher, dass Ihre Benutzer keine Vorgänge in umfangreichen Ressourcenklassen ausführen. Umfangreiche Ressourcenklassen beanspruchen viele Parallelitätsslots. Dies kann dazu führen, dass sich andere Abfragen in der Warteschlange ansammeln.
 
-Bei Verwendung von Gen2 für den [SQL-Pool](sql-data-warehouse-overview-what-is.md#dedicated-sql-pool-in-azure-synapse) erhält jede Ressourcenklasse zudem 2,5-mal mehr Speicher als bei Gen1.
+Bei Verwendung von Gen2 des [dedizierten SQL-Pools (ehemals SQL DW)](sql-data-warehouse-overview-what-is.md) erhält jede Ressourcenklasse zudem 2,5-mal mehr Speicher als bei Gen1.
 
 Weitere Informationen finden Sie im Artikel zum Arbeiten mit [Ressourcenklassen und Parallelität](resource-classes-for-workload-management.md).
 
 ## <a name="lower-your-cost"></a>Senkung Ihrer Kosten
 
-Ein wichtiges Feature von Azure Synapse ist die Fähigkeit, [Computeressourcen zu verwalten](sql-data-warehouse-manage-compute-overview.md). Sie können den SQL-Pool anhalten, wenn Sie den Dienst nicht verwenden. Es werden dann keine Computeressourcen berechnet. Sie können Ressourcen anhand Ihrer Leistungsanforderungen skalieren. Verwenden Sie zum Anhalten das [Azure-Portal](pause-and-resume-compute-portal.md) oder [PowerShell](pause-and-resume-compute-powershell.md). Verwenden Sie zum Skalieren das [Azure-Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) oder eine [REST-API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
+Ein wichtiges Feature von Azure Synapse ist die Fähigkeit, [Computeressourcen zu verwalten](sql-data-warehouse-manage-compute-overview.md). Sie können Ihren dedizierten SQL-Pool (ehemals SQL DW) anhalten, wenn Sie ihn nicht verwenden. Es werden dann keine Computeressourcen berechnet. Sie können Ressourcen anhand Ihrer Leistungsanforderungen skalieren. Verwenden Sie zum Anhalten das [Azure-Portal](pause-and-resume-compute-portal.md) oder [PowerShell](pause-and-resume-compute-powershell.md). Verwenden Sie zum Skalieren das [Azure-Portal](quickstart-scale-compute-portal.md), [PowerShell](quickstart-scale-compute-powershell.md), [T-SQL](quickstart-scale-compute-tsql.md) oder eine [REST-API](sql-data-warehouse-manage-compute-rest-api.md#scale-compute).
 
 Mit Azure Functions können Sie nun jederzeit eine automatische Skalierung veranlassen:
 
@@ -137,8 +137,8 @@ Mit Azure Functions können Sie nun jederzeit eine automatische Skalierung veran
 
 Es empfiehlt sich, SQL-Datenbank und Azure Analysis Services in einer Hub-and-Spoke-Architektur (Nabe-Speiche-Architektur) zu implementieren. Diese Lösung kann Workloadisolation zwischen unterschiedlichen Benutzergruppen bereitstellen, während gleichzeitig erweiterte Sicherheitsfeatures von SQL-Datenbank sowie Azure Analysis Services verwendet werden. Darüber hinaus bietet eine derartige Lösung grenzenlose Parallelität für Ihre Benutzer.
 
-Erfahren Sie mehr über [typische Architekturen, in denen die Vorteile von Azure Synapse genutzt werden](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
+Weiter Informationen zu typischen Architekturen, die den dedizierten SQL-Pool (ehemals SQL DW) in Azure Synapse Analytics nutzen, finden Sie [hier](https://blogs.msdn.microsoft.com/sqlcat/20../../common-isv-application-patterns-using-azure-sql-data-warehouse/).
 
-Stellen Sie mit einem Klick Ihre Spokes in SQL-Datenbanken aus dem SQL-Pool bereit:
+Stellen Sie mit nur einem Klick Ihre Spokes in SQL-Datenbanken aus dem dedizierten SQL-Pool (ehemals SQL DW) bereit:
 
 [![Bild einer Schaltfläche mit der Bezeichnung „Bereitstellung in Azure“](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.png)](https://ms.portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FMicrosoft%2Fsql-data-warehouse-samples%2Fmaster%2Farm-templates%2FsqlDwSpokeDbTemplate%2Fazuredeploy.json)

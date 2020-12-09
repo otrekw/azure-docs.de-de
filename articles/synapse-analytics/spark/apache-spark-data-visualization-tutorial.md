@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.subservice: machine-learning
 ms.date: 10/20/2020
 ms.author: midesa
-ms.openlocfilehash: 820dd8b607f5ec2fdc44d25063e0a941f76237ad
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8735514b639cb0322a83ffb19d661027327c0f73
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95919205"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96458760"
 ---
 # <a name="analyze-data-with-apache-spark"></a>Analysieren von Daten mit Apache Spark
 
@@ -99,7 +99,7 @@ Zusätzlich zu den Diagrammoptionen im Notebook können Sie auch beliebte Open-S
 
 > [!Note]
 > 
-> Standardmäßig enthält jeder Apache Spark-Pool in Azure Synapse Analytics eine Reihe gängiger Bibliotheken und Standardbibliotheken. Eine vollständige Liste der Bibliotheken finden Sie in der [Azure Synapse-Runtime](../spark/apache-spark-version-support.md). Onlinedokumentation. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie auch in einem Ihrer Spark-Pools [eine Bibliothek installieren](../spark/apache-spark-azure-portal-add-libraries.md) (Vorschau).
+> Standardmäßig enthält jeder Apache Spark-Pool in Azure Synapse Analytics eine Reihe gängiger Bibliotheken und Standardbibliotheken. Eine vollständige Liste der Bibliotheken finden Sie in der [Azure Synapse-Runtime](../spark/apache-spark-version-support.md). Onlinedokumentation. Wenn Sie Code eines Drittanbieters oder lokal erstellten Code für Ihre Anwendungen verfügbar machen möchten, können Sie auch in einem Ihrer Spark-Pools [eine Bibliothek installieren](../spark/apache-spark-azure-portal-add-libraries.md).
 >
 
 1. Um die Entwicklung einfacher und kostengünstiger zu gestalten, führen wir ein Downsampling des Datasets aus. Wir verwenden die integrierte Samplingfunktion von Apache Spark. Darüber hinaus benötigen sowohl Seaborn als auch Matplotlib einen Pandas-Datenrahmen oder ein Numpy-Array. Um einen Pandas-Datenrahmens zu erhalten, verwenden wir den Befehl ```toPandas()``` zum Konvertieren des Datenrahmens.

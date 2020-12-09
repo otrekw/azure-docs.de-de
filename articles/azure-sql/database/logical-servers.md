@@ -12,12 +12,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
-ms.openlocfilehash: 38133a63d65e45a4d1c83e9752dcaa01a86da33e
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: e0736e58983d4c28b8f2f4a20241cd36ac84fdfa
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782891"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96445378"
 ---
 # <a name="what-is-a-logical-sql-server-in-azure-sql-database-and-azure-synapse"></a>Was ist ein logischer SQL-Server in Azure SQL-Datenbank und Azure Synapse?
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -26,7 +26,7 @@ In Azure SQL-Datenbank und Azure Synapse Analytics ist ein Server ein logisches 
 
 Dieser Server unterscheidet sich von einer SQL Server-Instanz, mit der Sie möglicherweise in der lokalen Umgebung vertraut sind. Es gibt keine Garantien für den Standort der Datenbanken oder Data Warehouse-Datenbanken im Zusammenhang mit dem Server, der diese verwaltet. Darüber hinaus stellen weder Azure SQL-Datenbank noch Azure Synapse Zugriff oder Features auf Instanzebene zur Verfügung. Im Gegensatz dazu werden die Instanzdatenbanken in einer verwalteten Instanz alle an einem gemeinsamen physischen Standort eingerichtet. Dies erfolgt auf dieselbe Weise wie bei SQL Server in lokalen Umgebungen oder bei virtuellen Computern.
 
-Beim Erstellen eines Servers geben Sie ein Serveranmeldekonto und ein dazugehöriges Kennwort an, das über Administratorrechte für die Masterdatenbank auf dem Server und für alle Datenbanken verfügt, die auf diesem Server erstellt werden. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank und Synapse Analytics unterstützen die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](logins-create-manage.md). Windows-Authentifizierung wird nicht unterstützt.
+Beim Erstellen eines Servers geben Sie ein Serveranmeldekonto und ein dazugehöriges Kennwort an, das über Administratorrechte für die Masterdatenbank auf dem Server und für alle Datenbanken verfügt, die auf diesem Server erstellt werden. Bei diesem anfänglichen Konto handelt es sich um ein SQL-Anmeldekonto. Azure SQL-Datenbank und Azure Synapse Analytics unterstützen die SQL-Authentifizierung und die Azure Active Directory-Authentifizierung. Weitere Informationen zu Anmeldungen und Authentifizierungen finden Sie unter [Verwalten von Datenbanken und Anmeldungen in der Azure SQL-Datenbank](logins-create-manage.md). Windows-Authentifizierung wird nicht unterstützt.
 
 Ein Server in SQL-Datenbank und Azure Synapse:
 
@@ -68,9 +68,9 @@ Informationen zum Erstellen einer verwalteten Instanz finden Sie unter [Erstelle
 
 ### <a name="manage-an-existing-server"></a>Verwalten eines vorhandenen Servers
 
-Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen** .
+Zum Verwalten eines vorhandenen Servers navigieren Sie mithilfe einer Reihe von Methoden zum Server, z. B. über eine bestimmte Datenbankseite, die Seite für die **SQL-Server** oder die Seite **Alle Ressourcen**.
 
-Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken** , und klicken Sie auf die Datenbank, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
+Um eine vorhandene Datenbank zu verwalten, navigieren Sie zu der Seite **SQL-Datenbanken**, und klicken Sie auf die Datenbank, die Sie verwalten möchten. Der folgende Screenshot zeigt, wie Sie beginnen, über die Seite **Übersicht** für eine Datenbank eine Firewall auf Serverebene für eine Datenbank festzulegen.
 
    ![Serverfirewallregel](./media/single-database-create-quickstart/server-firewall-rule.png)
 

@@ -1,6 +1,6 @@
 ---
 title: Einführung in Microsoft Spark-Hilfsprogramme
-description: Tutorial zur Verwendung von MSSparkutils in Azure Synapse Analytics-Notebooks.
+description: 'Tutorial: MSSparkutils in Azure Synapse Analytics-Notebooks'
 author: ruxu
 services: synapse-analytics
 ms.service: synapse-analytics
@@ -10,14 +10,14 @@ ms.date: 09/10/2020
 ms.author: ruxu
 ms.reviewer: ''
 zone_pivot_groups: programming-languages-spark-all-minus-sql
-ms.openlocfilehash: 3c4e062393f9d75d478720041436c2e0f54485a3
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: fee7e244e26a59a773a5d5c9c74e23acd4113ee6
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95795070"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96446704"
 ---
-# <a name="introduction-of-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
+# <a name="introduction-to-microsoft-spark-utilities"></a>Einführung in Microsoft Spark-Hilfsprogramme
 
 Microsoft Spark-Hilfsprogramme (MSSparkUtils) sind ein integriertes Paket, mit dem sich gängige Aufgaben leichter erledigen lassen. Sie können MSSparkUtils verwenden, um mit Dateisystemen zu arbeiten, um Umgebungsvariablen abzurufen und um mit Geheimnissen zu arbeiten. MSSparkUtils sind in `PySpark (Python)`-, `Scala`- und `.NET Spark (C#)`-Notebooks sowie in Synapse-Pipelines verfügbar.
 
@@ -879,6 +879,6 @@ Env.GetClusterId()
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Beispiele für Synapse-Notebooks](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks)
-- [Schnellstart: Erstellen eines Apache Spark-Pools (Vorschauversion) in Azure Synapse Analytics mithilfe von Webtools](../quickstart-apache-spark-notebook.md)
+- [Schnellstart: Erstellen eines Apache Spark-Pools in Azure Synapse Analytics mithilfe von Webtools](../quickstart-apache-spark-notebook.md)
 - [Was ist Apache Spark in Azure Synapse Analytics?](apache-spark-overview.md)
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)

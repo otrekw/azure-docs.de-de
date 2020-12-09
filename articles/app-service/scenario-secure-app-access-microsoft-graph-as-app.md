@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: a7b8ca309bf5710ddbd88413935bef5e97a1ed9f
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.custom: azureday1
+ms.openlocfilehash: facc6a4ab8344f9f72fc7abc27433c18ab435504
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95999670"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96436537"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-app"></a>Tutorial: Zugreifen auf Microsoft Graph über eine geschützte App als App
 
@@ -23,7 +24,7 @@ Es wird beschrieben, wie Sie über eine Web-App, die in Azure App Service ausgef
 
 :::image type="content" alt-text="Diagramm: Zugreifen auf Microsoft Graph" source="./media/scenario-secure-app-access-microsoft-graph/web-app-access-graph.svg" border="false":::
 
-Sie möchten Microsoft Graph für die Web-App aufrufen. Eine sichere Methode, um Ihrer Web-App den Zugriff auf Daten zu gewähren, ist die Verwendung einer [systemseitig zugewiesenen verwalteten Identität](/azure/active-directory/managed-identities-azure-resources/overview). Mit einer verwalteten Identität aus Azure Active Directory kann App Service mittels rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) auf Ressourcen zugreifen, ohne dass App-Anmeldeinformationen benötigt werden. Nachdem Sie Ihrer Web-App eine verwaltete Identität zugewiesen haben, kümmert sich Azure um die Erstellung und Verteilung eines Zertifikats. Sie müssen sich keine Gedanken über die Verwaltung von Geheimnissen oder App-Anmeldeinformationen machen.
+Sie möchten Microsoft Graph für die Web-App aufrufen. Eine sichere Methode, um Ihrer Web-App den Zugriff auf Daten zu gewähren, ist die Verwendung einer [systemseitig zugewiesenen verwalteten Identität](../active-directory/managed-identities-azure-resources/overview.md). Mit einer verwalteten Identität aus Azure Active Directory kann App Service mittels rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) auf Ressourcen zugreifen, ohne dass App-Anmeldeinformationen benötigt werden. Nachdem Sie Ihrer Web-App eine verwaltete Identität zugewiesen haben, kümmert sich Azure um die Erstellung und Verteilung eines Zertifikats. Sie müssen sich keine Gedanken über die Verwaltung von Geheimnissen oder App-Anmeldeinformationen machen.
 
 In diesem Tutorial lernen Sie Folgendes:
 
@@ -121,13 +122,15 @@ Wenn Sie unter **Übersicht** die Option **Berechtigungen** auswählen, werden d
 
 Die Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um an Microsoft Graph gerichtete Anforderungen zu autorisieren. Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese dem Dienstclient hinzu. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem die Benutzer der Gruppe abgerufen werden.
 
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/3-WebApp-graphapi-managed-identity) können Sie sich diesen Code in einer Beispielanwendung ansehen.
+
 ### <a name="install-the-microsoftgraph-client-library-package"></a>Installieren des Pakets mit der Microsoft.Graph-Clientbibliothek
 
 Installieren Sie das [Microsoft.Graph-NuGet-Paket](https://www.nuget.org/packages/Microsoft.Graph) in Ihrem Projekt mithilfe der .NET Core-Befehlszeilenschnittstelle oder mithilfe der Paket-Manager-Konsole in Visual Studio.
 
 # <a name="command-line"></a>[Befehlszeile](#tab/command-line)
 
-Öffnen Sie eine Befehlszeile, und wechseln Sie zum Verzeichnis mit Ihrer Projektdatei.
+Öffnen Sie eine Befehlszeile, und wechseln Sie zu dem Verzeichnis, in dem Ihre Projektdatei enthalten ist.
 
 Führen Sie die Installationsbefehle aus.
 
@@ -206,7 +209,7 @@ public async Task OnGetAsync()
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie dieses Tutorial abgeschlossen haben und die Web-App und die zugehörigen Ressourcen nicht mehr benötigen, [bereinigen Sie die von Ihnen erstellten Ressourcen](scenario-secure-app-clean-up-resources.md).
+Wenn Sie dieses Tutorial abgeschlossen haben und die Web-App und die zugehörigen Ressourcen nicht mehr benötigen, sollten Sie [die von Ihnen erstellten Ressourcen bereinigen](scenario-secure-app-clean-up-resources.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

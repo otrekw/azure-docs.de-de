@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: 250e95b33b985aedcc1b1537f57338d29e848451
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: 72b1d4fe864c23c0ac065e47d96ab0c78866defa
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96020210"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96435840"
 ---
 # <a name="tutorial-access-azure-storage-from-a-web-app"></a>Tutorial: Zugreifen auf Azure-Speicher über eine Web-App
 
@@ -23,7 +24,7 @@ Es wird beschrieben, wie Sie für eine Web-App (kein angemeldeter Benutzer), die
 
 :::image type="content" alt-text="Diagramm: Zugreifen auf Speicher" source="./media/scenario-secure-app-access-storage/web-app-access-storage.svg" border="false":::
 
-Sie möchten den Zugriff auf die Azure-Datenebene (Azure Storage, Azure SQL-Datenbank, Azure Key Vault oder andere Dienste) über Ihre Web-App hinzufügen. Sie können auch einen gemeinsam verwendeten Schlüssel nutzen. In diesem Fall müssen Sie sich aber Gedanken über den sicheren Betrieb machen – also darüber, wer das Geheimnis erstellen, bereitstellen und verwalten kann. Darüber hinaus kann es sein, dass der Schlüssel in GitHub eingecheckt wird – und Hacker wissen, wie man einen entsprechenden Scanvorgang zur Ermittlung durchführt. Eine sicherere Möglichkeit, wie Sie für Ihre Web-App den Zugriff auf Daten ermöglichen können, ist die Verwendung von [verwalteten Identitäten](/azure/active-directory/managed-identities-azure-resources/overview).
+Sie möchten den Zugriff auf die Azure-Datenebene (Azure Storage, Azure SQL-Datenbank, Azure Key Vault oder andere Dienste) über Ihre Web-App hinzufügen. Sie können auch einen gemeinsam verwendeten Schlüssel nutzen. In diesem Fall müssen Sie sich aber Gedanken über den sicheren Betrieb machen – also darüber, wer das Geheimnis erstellen, bereitstellen und verwalten kann. Darüber hinaus kann es sein, dass der Schlüssel in GitHub eingecheckt wird – und Hacker wissen, wie man einen entsprechenden Scanvorgang zur Ermittlung durchführt. Eine sicherere Möglichkeit, wie Sie für Ihre Web-App den Zugriff auf Daten ermöglichen können, ist die Verwendung von [verwalteten Identitäten](../active-directory/managed-identities-azure-resources/overview.md).
 
 Mit einer verwalteten Identität über Azure Active Directory (Azure AD) können App Services per rollenbasierter Zugriffssteuerung (Role-Based Access Control, RBAC) auf Ressourcen zugreifen, ohne dass die App-Anmeldeinformationen benötigt werden. Nachdem Sie Ihrer Web-App eine verwaltete Identität zugewiesen haben, kümmert sich Azure um die Erstellung und Verteilung eines Zertifikats. Die Benutzer müssen sich keine Gedanken über die Verwaltung von Geheimnissen oder App-Anmeldeinformationen machen.
 
@@ -210,6 +211,8 @@ az role assignment create --assignee $spID --role 'Storage Blob Data Contributor
 ## <a name="access-blob-storage-net"></a>Zugreifen auf Blob Storage (.NET)
 
 Die Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential) wird zum Abrufen von Tokenanmeldeinformationen für Ihren Code verwendet, um Anforderungen für Azure Storage zu autorisieren. Erstellen Sie eine Instanz der Klasse [DefaultAzureCredential](/dotnet/api/azure.identity.defaultazurecredential), bei der die verwaltete Identität zum Abrufen von Token verwendet wird, und fügen Sie diese dem Dienstclient hinzu. Im folgenden Codebeispiel werden die authentifizierten Tokenanmeldeinformationen abgerufen und zum Erstellen eines Dienstclientobjekts verwendet, mit dem ein neues Blob hochgeladen wird.
+
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/1-WebApp-storage-managed-identity) können Sie sich diesen Code in einer Beispielanwendung ansehen.
 
 ### <a name="install-client-library-packages"></a>Installieren von Clientbibliothekspaketen
 

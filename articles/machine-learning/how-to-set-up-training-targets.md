@@ -11,16 +11,16 @@ ms.subservice: core
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, contperfq1
-ms.openlocfilehash: cb10eb0f89ce37bc484c8570995ebaa098c696f1
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 492d1370a228fc4fc80880102899c9207a514f57
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541299"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96447183"
 ---
 # <a name="configure-and-submit-training-runs"></a>Konfigurieren und Übermitteln von Trainingsausführungen
 
-In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Ausführungen konfigurieren und übermitteln, um die Modelle zu trainieren.
+In diesem Artikel erfahren Sie, wie Sie Azure Machine Learning-Ausführungen konfigurieren und übermitteln, um die Modelle zu trainieren. Codeausschnitte erklären die wichtigsten Teile der Konfiguration und Übermittlung eines Trainingsskripts.  Verwenden Sie dann eines der [Beispielnotebooks](#notebooks), um die vollständigen End-to-End-Arbeitsbeispiele zu finden.
 
 Beim Training ist es üblich, auf dem lokalen Computer zu starten und später auf einen cloudbasierten Cluster horizontal hochzuskalieren. Mit Azure Machine Learning können Sie Ihr Skript auf unterschiedlichen Computezielen ausführen, ohne das Trainingsskript zu ändern.
 
@@ -164,7 +164,7 @@ run.wait_for_completion(show_output=True)
 
 Wenn Sie eine Trainingsausführung starten, bei der das Quellverzeichnis ein lokales Git-Repository ist, werden Informationen über das Repository im Ausführungsverlauf gespeichert. Weitere Informationen finden Sie unter [Git-Integration für Azure Machine Learning](concept-train-model-git-integration.md).
 
-## <a name="notebook-examples"></a>Notebook-Beispiele
+## <a name="notebook-examples"></a><a name="notebooks"></a>Notebook-Beispiele
 
 In diesen Notebooks finden Sie Beispiele für die Konfiguration von Ausführungen für verschiedene Trainingsszenarios:
 * [Training auf verschiedenen Computezielen](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training)

@@ -5,12 +5,12 @@ author: nicolela
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
-ms.openlocfilehash: 3cbca82ba88baf5ddda2a6d7a6cdd35b62f28b8e
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 8293ed1bfb53895b9631d9730fb75a2364457180
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94647935"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452376"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Einrichten eines Labs mit virtuellen GPU-Computern
 
@@ -37,7 +37,7 @@ Die *Visualisierungs*-GPU-Größen sind für grafikintensive Anwendungen vorgese
 | Size | Kerne | RAM | BESCHREIBUNG | 
 | ---- | ----- | --- | ----------- | 
 | Kleine GPU (Visualisierung) | -&nbsp;6&nbsp;Kerne<br>-&nbsp;56&nbsp;GB&nbsp;RAM  | [Standard_NV6](../virtual-machines/nv-series.md) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
-| Mittlere GPU (Visualisierung) | -&nbsp;12&nbsp;Kerne<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%252fazure%252fvirtual-machines%252flinux%252fbreadcrumb%252ftoc.json&toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
+| Mittlere GPU (Visualisierung) | -&nbsp;12&nbsp;Kerne<br>-&nbsp;112&nbsp;GB&nbsp;RAM  | [Standard_NV12](../virtual-machines/nv-series.md?bc=%2fazure%2fvirtual-machines%2flinux%2fbreadcrumb%2ftoc.json&toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) | Diese Größe eignet sich am besten für Remotevisualisierung, Streaming, Gaming und die Codierung mit Frameworks wie beispielsweise OpenGL und DirectX. |
 
 > [!NOTE]
 > Beim Erstellen eines Classroom-Labs werden möglicherweise einige dieser VM-Größen nicht in der Liste angezeigt. Die Liste wird basierend auf der aktuellen Kapazität des Standorts des Labs aufgefüllt. Wenn der Ersteller des Lab-Kontos [Lab-Erstellern das Auswählen eines Standorts für das Lab gestattet](allow-lab-creator-pick-lab-location.md), können Sie versuchen, einen anderen Ort für das Lab auszuwählen, und dann nachsehen, ob die VM-Größe verfügbar ist. Informationen zur Verfügbarkeit von VMs finden Sie unter [Verfügbare Produkte nach Region](https://azure.microsoft.com/regions/services/?products=virtual-machines).
@@ -76,7 +76,7 @@ Gehen Sie folgendermaßen vor, um Treiber für die Compute-GPU-Größe manuell z
 1. Nach der Installation der Treiber und anderer Software, die für den Kurs erforderlich ist, wählen Sie **Veröffentlichen** aus, um die VMs Ihrer Kursteilnehmer zu erstellen.
 
 > [!NOTE]
-> Wenn Sie ein Linux-Image verwenden, installieren Sie nach dem Herunterladen des Installers die Treiber, indem Sie die Anweisungen unter [Installieren von CUDA-Treibern unter Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#install-cuda-drivers-on-n-series-vms) befolgen.
+> Wenn Sie ein Linux-Image verwenden, installieren Sie nach dem Herunterladen des Installers die Treiber, indem Sie die Anweisungen unter [Installieren von CUDA-Treibern unter Linux](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#install-cuda-drivers-on-n-series-vms) befolgen.
 
 #### <a name="install-the-visualization-gpu-drivers"></a>Installieren der GPU-Treiber für die Visualisierung
 
@@ -86,7 +86,7 @@ Gehen Sie folgendermaßen vor, um Treiber für die Visualisierungs-GPU-Größe m
 1. Nachdem das Lab erstellt wurde, stellen Sie eine Verbindung mit der Vorlagen-VM her, um die entsprechenden Treiber zu installieren.
 1. Installieren Sie die von Microsoft bereitgestellten GRID-Treiber auf der Vorlagen-VM, indem Sie die Anweisungen für Ihr Betriebssystem befolgen:
    -  [Windows-NVIDIA GRID-Treiber](../virtual-machines/windows/n-series-driver-setup.md#nvidia-grid-drivers)
-   -  [Linux-NVIDIA GRID-Treiber](../virtual-machines/linux/n-series-driver-setup.md?toc=%252fazure%252fvirtual-machines%252flinux%252ftoc.json#nvidia-grid-drivers)
+   -  [Linux-NVIDIA GRID-Treiber](../virtual-machines/linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json#nvidia-grid-drivers)
   
 1. Starten Sie die Vorlagen-VM neu.
 1. Überprüfen Sie anhand der Anweisungen im Abschnitt [Überprüfen der installierten Treiber](how-to-setup-lab-gpu.md#validate-the-installed-drivers), ob die Treiber ordnungsgemäß installiert sind.
@@ -115,6 +115,6 @@ Befolgen Sie die Anweisungen im Abschnitt „Überprüfen der Treiberinstallatio
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen finden Sie in folgenden Artikeln:
 
-- [Erstellen und Verwalten von Classroom-Labs](how-to-manage-classroom-labs.md)
+- [Erstellen und Verwalten von Labs](how-to-manage-classroom-labs.md)
 - [Kurstyp „SOLIDWORKS CAD (Computer-Aided Design)](class-type-solidworks.md)
 - [MATLAB-Kurstyp (Matrixlabor)](class-type-matlab.md)

@@ -1,6 +1,6 @@
 ---
 title: Freigegebene Datenbank
-description: Azure Synapse Analytics bietet ein Modell mit gemeinsam genutzten Metadaten, das es ermöglicht, über die zugehörige Engine für serverlose SQL-Pools (Vorschauversion) und die SQL-Pool-Engine auf eine in einem serverlosen Apache Spark-Pool erstellte Datenbank zuzugreifen.
+description: Azure Synapse Analytics bietet ein Modell mit gemeinsam genutzten Metadaten, das es ermöglicht, über die zugehörige Engine für serverlose SQL-Pools und die SQL-Pool-Engine auf eine in einem serverlosen Apache Spark-Pool erstellte Datenbank zuzugreifen.
 services: synapse-analytics
 author: MikeRys
 ms.service: synapse-analytics
@@ -10,20 +10,18 @@ ms.date: 05/01/2020
 ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e17eb44a5f4f4aace9ce9d541b8218b35db0f5d3
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: 14ae8b8670db53761d085bc019711e829633601b
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93317845"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451822"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Gemeinsam genutzte Azure Synapse Analytics-Datenbank
 
-Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools (Vorschauversion) und der Engine für serverlose SQL-Pools (Vorschauversion).
+Azure Synapse Analytics ermöglicht den verschiedenen Berechnungsengines von Arbeitsbereichen die gemeinsame Nutzung von Datenbanken und Tabellen zwischen serverlosen Apache Spark-Pools und der Engine für serverlose SQL-Pools.
 
-[!INCLUDE [synapse-analytics-preview-terms](../../../includes/synapse-analytics-preview-terms.md)]
-
-Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools (Vorschauversion) im Arbeitsbereich, einschließlich der Engine für serverlose SQL-Pools sichtbar.
+Eine mit einem Spark-Auftrag erstellte Datenbank wird mit dem gleichen Namen für alle aktuellen und zukünftigen Spark-Pools im Arbeitsbereich sichtbar (einschließlich der Engine für serverlose SQL-Pools).
 
 Die Spark-Standarddatenbank `default` wird ebenfalls im Kontext des serverlosen SQL-Pools als Datenbank namens `default` angezeigt.
 

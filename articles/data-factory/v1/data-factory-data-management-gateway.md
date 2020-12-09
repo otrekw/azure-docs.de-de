@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: b362e1aecfa2cd4e5677230fcb94113b27a44ec6
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 94c1bed8d94f73bc7794037b307618f4c36c4518
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637461"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450606"
 ---
 # <a name="data-management-gateway"></a>Gateway zur Datenverwaltung
 > [!NOTE]
@@ -63,12 +63,12 @@ Im Anschluss finden Sie eine Darstellung des allgemeinen Datenflusses sowie eine
 ### <a name="considerations-for-using-gateway"></a>Überlegungen zur Verwendung des Gateways
 * Ein einzelne Instanz des Datenverwaltungsgateways kann für mehrere lokale Datenquellen verwendet werden. Allerdings ist **eine einzelne Gatewayinstanz nur an eine Azure Data Factory gebunden** und kann nicht mit einer anderen Data Factory gemeinsam genutzt werden.
 * Es darf **nur eine Instanz des Datenverwaltungsgateways** auf einem Computer installiert sein. Wenn Sie beispielsweise über zwei Data Factorys verfügen, die auf lokale Datenquellen zugreifen müssen, dann müssen Sie auf zwei lokalen Computern jeweils ein Gateway installieren. Anders gesagt: Jedes Gateway ist an eine spezifische Data Factory gebunden.
-* Das **Gateway muss sich nicht auf dem gleichen Computer befinden wie die Datenquelle** . Wenn Sie das Gateway jedoch in der Nähe der Datenquelle platzieren, verkürzen Sie die Zeit, die das Gateway benötigt, um eine Verbindung mit der Datenquelle herzustellen. Es wird empfohlen, das Gateway auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. Wenn sich Gateway und Datenquelle auf unterschiedlichen Computern befinden, konkurriert das Gateway nicht mit der Datenquelle um Ressourcen.
-* Sie können über **mehrere Gateways auf verschiedenen Computern verfügen, die eine Verbindung mit der gleichen lokalen Datenquelle herstellen** . Sie können z. B. über zwei Gateways verfügen, die zwei Data Factorys mit Daten versorgen, wobei jedoch die lokale Datenquelle für die beiden Data Factorys registriert ist.
-* Falls Sie auf Ihrem Computer bereits ein Gateway installiert haben, das für ein **Power BI** -Szenario verwendet wird, installieren Sie auf einem anderen Computer ein **separates Gateway für die Azure Data Factory** .
+* Das **Gateway muss sich nicht auf dem gleichen Computer befinden wie die Datenquelle**. Wenn Sie das Gateway jedoch in der Nähe der Datenquelle platzieren, verkürzen Sie die Zeit, die das Gateway benötigt, um eine Verbindung mit der Datenquelle herzustellen. Es wird empfohlen, das Gateway auf einem anderen Computer als dem Computer zu installieren, auf dem die lokale Datenquelle gehostet wird. Wenn sich Gateway und Datenquelle auf unterschiedlichen Computern befinden, konkurriert das Gateway nicht mit der Datenquelle um Ressourcen.
+* Sie können über **mehrere Gateways auf verschiedenen Computern verfügen, die eine Verbindung mit der gleichen lokalen Datenquelle herstellen**. Sie können z. B. über zwei Gateways verfügen, die zwei Data Factorys mit Daten versorgen, wobei jedoch die lokale Datenquelle für die beiden Data Factorys registriert ist.
+* Falls Sie auf Ihrem Computer bereits ein Gateway installiert haben, das für ein **Power BI**-Szenario verwendet wird, installieren Sie auf einem anderen Computer ein **separates Gateway für die Azure Data Factory**.
 * Sie müssen das Gateway selbst dann verwenden, wenn Sie **ExpressRoute** einsetzen.
 * Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie **ExpressRoute** verwenden. Verwenden Sie das Gateway, um eine Verbindung zwischen dem Dienst und der Datenquelle herzustellen.
-* Sie müssen auch dann **das Gateway verwenden** , wenn der Datenspeicher sich in der Cloud auf einer **Azure IaaS-VM** befindet.
+* Sie müssen auch dann **das Gateway verwenden**, wenn der Datenspeicher sich in der Cloud auf einer **Azure IaaS-VM** befindet.
 
 ## <a name="installation"></a>Installation
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -92,34 +92,34 @@ Das Datenverwaltungsgateway kann auf folgende Weise installiert werden:
 
 ### <a name="install-the-gateway-from-download-center"></a>Installieren des Gateways aus dem Download Center
 1. Navigieren Sie zur [Downloadseite des Microsoft-Datenverwaltungsgateways](https://www.microsoft.com/download/details.aspx?id=39717).
-2. Klicken Sie auf **Herunterladen** , wählen Sie die **64-Bit** -Version (32-Bit wird nicht unterstützt) aus, und wählen Sie **Weiter** aus.
+2. Klicken Sie auf **Herunterladen**, wählen Sie die **64-Bit**-Version (32-Bit wird nicht unterstützt) aus, und wählen Sie **Weiter** aus.
 3. Führen Sie **MSI** direkt aus, oder speichern Sie es zur späteren Ausführung auf Ihrer Festplatte.
-4. Wählen Sie auf der **Willkommensseite** eine **Sprache** aus, und klicken Sie auf **Weiter** .
-5. **Akzeptieren** Sie den Endbenutzer-Lizenzvertrag, und klicken Sie auf **Weiter** .
-6. Wählen Sie den **Ordner** zur Installation des Gateways aus, und klicken Sie auf **Weiter** .
-7. Klicken Sie auf der Seite **Bereit zur Installation** auf **Installieren** .
+4. Wählen Sie auf der **Willkommensseite** eine **Sprache** aus, und klicken Sie auf **Weiter**.
+5. **Akzeptieren** Sie den Endbenutzer-Lizenzvertrag, und klicken Sie auf **Weiter**.
+6. Wählen Sie den **Ordner** zur Installation des Gateways aus, und klicken Sie auf **Weiter**.
+7. Klicken Sie auf der Seite **Bereit zur Installation** auf **Installieren**.
 8. Klicken Sie auf **Fertig stellen** , um die Installation abzuschließen.
 9. Ermitteln Sie den Schlüssel im Azure-Portal. Im nächsten Abschnitt finden Sie schrittweise Anweisungen.
-10. Führen Sie im **Konfigurations-Manager des Datenverwaltungsgateways** , der auf Ihrem Computer ausgeführt wird, auf der Seite **Gateway registrieren** die folgenden Schritte aus:
+10. Führen Sie im **Konfigurations-Manager des Datenverwaltungsgateways**, der auf Ihrem Computer ausgeführt wird, auf der Seite **Gateway registrieren** die folgenden Schritte aus:
     1. Fügen Sie den Schlüssel in das Textfeld ein.
     2. Optional klicken Sie auf **Gatewayschlüssel anzeigen** , um den Schlüsseltext anzuzeigen.
-    3. Klicken Sie auf **Registrieren** .
+    3. Klicken Sie auf **Registrieren**.
 
 ### <a name="register-gateway-using-key"></a>Registrieren des Gateways mit dem Schlüssel
 #### <a name="if-you-havent-already-created-a-logical-gateway-in-the-portal"></a>Wenn Sie nicht bereits ein logisches Gateway im Portal erstellt haben
 Um im Portal ein Gateway zu erstellen und auf der Seite **Konfigurieren** den Schlüssel zu ermitteln, führen Sie die Schritte der exemplarischen Vorgehensweise aus dem Artikel [Verschieben von Daten zwischen lokalen Quellen und der Cloud](data-factory-move-data-between-onprem-and-cloud.md) aus.
 
 #### <a name="if-you-have-already-created-the-logical-gateway-in-the-portal"></a>Wenn Sie bereits ein logisches Gateway im Portal erstellt haben
-1. Wechseln Sie im Azure-Portal zur Seite **Data Factory** , und klicken Sie auf die Kachel **Verknüpfte Dienste** .
+1. Wechseln Sie im Azure-Portal zur Seite **Data Factory**, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
     ![Seite „Data Factory“](media/data-factory-data-management-gateway/data-factory-blade.png)
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** das logische **Gateway** aus, das Sie im Portal erstellt haben.
 
     ![Logisches Gateway](media/data-factory-data-management-gateway/data-factory-select-gateway.png)
-3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren** .
+3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren**.
 
     ![Link zum Herunterladen im Portal](media/data-factory-data-management-gateway/download-and-install-link-on-portal.png)
-4. Klicken Sie auf der Seite **Konfigurieren** auf **Schlüssel neu erstellen** . Klicken Sie in der Warnmeldung auf „Ja“, nachdem Sie sie sorgfältig gelesen haben.
+4. Klicken Sie auf der Seite **Konfigurieren** auf **Schlüssel neu erstellen**. Klicken Sie in der Warnmeldung auf „Ja“, nachdem Sie sie sorgfältig gelesen haben.
 
     ![Schaltfläche „Schlüssel neu erstellen“](media/data-factory-data-management-gateway/recreate-key-button.png)
 5. Klicken Sie neben dem Schlüssel auf die Schaltfläche „Kopieren“. Der Schlüssel wird in die Zwischenablage kopiert.
@@ -134,7 +134,7 @@ Die folgende Abbildung enthält einige Symbole, die auf der Taskleiste angezeigt
 Wenn Sie den Cursor auf der Taskleiste auf das Symbol oder die Benachrichtigung bewegen, werden in einem Popupfenster Details zum Zustand des Gateways bzw. des Aktualisierungsvorgangs angezeigt.
 
 ### <a name="ports-and-firewall"></a>Ports und Firewall
-Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall** , die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall** , die als Daemon auf dem lokalen Computer konfiguriert ist, auf dem das Gateway installiert ist.
+Zwei Firewalls müssen berücksichtigt werden: Die **Unternehmensfirewall**, die auf dem zentralen Router des Unternehmens ausgeführt wird, und die **Windows-Firewall**, die als Daemon auf dem lokalen Computer konfiguriert ist, auf dem das Gateway installiert ist.
 
 ![Firewalls](./media/data-factory-data-management-gateway/firewalls2.png)
 
@@ -158,9 +158,9 @@ Auf Ebene der Windows-Firewall sind diese ausgehenden Ports normalerweise aktivi
 #### <a name="copy-data-from-a-source-data-store-to-a-sink-data-store"></a>Kopieren von Daten aus einem Quelldatenspeicher in einen Senkendatenspeicher
 Stellen Sie sicher, dass die Firewallregeln für die Unternehmensfirewall, die Windows-Firewall auf dem Gatewaycomputer und den Datenspeicher selbst richtig aktiviert sind. Indem Sie diese Regeln aktivieren, kann das Gateway sowohl mit der Quelle als auch mit der Senke erfolgreich eine Verbindung herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure Synapse Analytics- (vormals Azure SQL Data Warehouse)-Senke** zu kopieren:
+Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus **einem lokalen Datenspeicher in eine Azure SQL-Datenbank-Senke oder eine Azure Synapse Analytics-Senke** zu kopieren:
 
-* Lassen Sie ausgehende **TCP** -Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
+* Lassen Sie ausgehende **TCP**-Kommunikation an Port **1433** sowohl für die Windows-Firewall als auch die Unternehmensfirewall zu.
 * Konfigurieren Sie die Firewalleinstellungen der logischen SQL Server-Instanz so, dass die IP-Adresse des Gatewaycomputers in die Liste der zulässigen IP-Adressen aufgenommen wird.
 
 > [!NOTE]
@@ -179,17 +179,17 @@ Das Gateway verwendet den Proxyserver, um eine Verbindung mit dem Clouddienst he
 
 Es gibt drei Konfigurationsoptionen:
 
-* **Proxy nicht verwenden** : Das Gateway verwendet nicht explizit einen Proxy, um eine Verbindung mit den Clouddiensten herzustellen.
-* **Systemproxy verwenden** : Das Gateway verwendet die in „diahost.exe.config“ und „diawp.exe.config“ konfigurierten Proxyeinstellungen. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy konfiguriert ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her.
-* **Benutzerdefinierten Proxy verwenden** : Konfigurieren Sie die für das Gateway zu verwendenden HTTP-Proxyeinstellungen hier, anstatt in den Dateien „diahost.exe.config“ und „diawp.exe.config“. Adresse und Port sind erforderlich. Benutzername und Kennwort sind je nach den Authentifizierungseinstellungen Ihres Proxys optional. Alle Einstellungen werden mit dem Zertifikat für Anmeldeinformationen des Gateways verschlüsselt und lokal auf dem Gatewayhostcomputer gespeichert.
+* **Proxy nicht verwenden**: Das Gateway verwendet nicht explizit einen Proxy, um eine Verbindung mit den Clouddiensten herzustellen.
+* **Systemproxy verwenden**: Das Gateway verwendet die in „diahost.exe.config“ und „diawp.exe.config“ konfigurierten Proxyeinstellungen. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy konfiguriert ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her.
+* **Benutzerdefinierten Proxy verwenden**: Konfigurieren Sie die für das Gateway zu verwendenden HTTP-Proxyeinstellungen hier, anstatt in den Dateien „diahost.exe.config“ und „diawp.exe.config“. Adresse und Port sind erforderlich. Benutzername und Kennwort sind je nach den Authentifizierungseinstellungen Ihres Proxys optional. Alle Einstellungen werden mit dem Zertifikat für Anmeldeinformationen des Gateways verschlüsselt und lokal auf dem Gatewayhostcomputer gespeichert.
 
 Der Datenverwaltungsgateway-Hostdienst wird automatisch neu gestartet, nachdem Sie die aktualisierten Proxyeinstellungen gespeichert haben.
 
 Wenn Sie die Proxyeinstellungen nach der erfolgreichen Registrierung des Gateways anzeigen oder aktualisieren möchten, verwenden Sie den Datenverwaltungsgateway-Konfigurations-Manager.
 
-1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager** .
-2. Wechseln Sie zur Registerkarte **Einstellungen** .
-3. Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern** , um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
+1. Starten Sie den **Datenverwaltungsgateway-Konfigurations-Manager**.
+2. Wechseln Sie zur Registerkarte **Einstellungen**.
+3. Klicken Sie im Abschnitt **HTTP-Proxy** auf den Link **Ändern**, um das Dialogfeld **HTTP-Proxy festlegen** zu öffnen.
 4. Nachdem Sie auf die Schaltfläche **Weiter** geklickt haben, wird ein Dialogfeld mit einer Warnung angezeigt, in dem Sie bestätigen müssen, dass die Proxyeinstellung gespeichert und der Gatewayhostdienst neu gestartet werden soll.
 
 Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
@@ -204,8 +204,8 @@ Sie können den HTTP-Proxy im Konfigurations-Manager anzeigen und aktualisieren.
 ### <a name="configure-proxy-server-settings"></a>Konfigurieren von Proxyservereinstellungen
 Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswählen, verwendet das Gateway die Proxyeinstellungen in „diahost.exe.config“ und „diawp.exe.config“. Wenn in „diahost.exe.config“ und „diawp.exe.config“ kein Proxy angegeben ist, stellt das Gateway die Verbindung mit den Clouddiensten nicht über einen Proxy, sondern direkt her. Das folgende Verfahren enthält Anweisungen für die Aktualisierung der Datei „diahost.exe.config“.
 
-1. Erstellen Sie im Datei-Explorer eine sichere Kopie von *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config* , um die Originaldatei zu sichern.
-2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config* . Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
+1. Erstellen Sie im Datei-Explorer eine sichere Kopie von *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*, um die Originaldatei zu sichern.
+2. Starten Sie „Notepad.exe“ als Administrator, und öffnen Sie die Textdatei *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared\\diahost.exe.config*. Sie finden das Standardtag für „system.net“, wie im folgenden Code gezeigt:
 
     ```
     <system.net>
@@ -228,7 +228,7 @@ Wenn Sie die Einstellung **Systemproxy verwenden** für den HTTP-Proxy auswähle
     ```
     <proxy autoDetect="true|false|unspecified" bypassonlocal="true|false|unspecified" proxyaddress="uriString" scriptLocation="uriString" usesystemdefault="true|false|unspecified "/>
     ```
-3. Speichern Sie die Konfigurationsdatei am ursprünglichen Speicherort, und starten Sie den Datenverwaltungsgateway-Dienst, der die Änderungen übernimmt. Um den Dienst neu zu starten, verwenden Sie das Applet „Dienste“ in der Systemsteuerung, oder klicken Sie im **Datenverwaltungsgateway-Konfigurations-Manager** auf die Schaltfläche **Dienst beenden** und anschließend auf **Dienst starten** . Wenn der Dienst nicht gestartet wird, wurde der bearbeiteten Anwendungskonfigurationsdatei wahrscheinlich eine falsche XML-Tagsyntax hinzugefügt.
+3. Speichern Sie die Konfigurationsdatei am ursprünglichen Speicherort, und starten Sie den Datenverwaltungsgateway-Dienst, der die Änderungen übernimmt. Um den Dienst neu zu starten, verwenden Sie das Applet „Dienste“ in der Systemsteuerung, oder klicken Sie im **Datenverwaltungsgateway-Konfigurations-Manager** auf die Schaltfläche **Dienst beenden** und anschließend auf **Dienst starten**. Wenn der Dienst nicht gestartet wird, wurde der bearbeiteten Anwendungskonfigurationsdatei wahrscheinlich eine falsche XML-Tagsyntax hinzugefügt.
 
 > [!IMPORTANT]
 > Vergessen Sie nicht, **beide** Dateien („diahost.exe.config“ und „diawp.exe.config“) zu konfigurieren.
@@ -243,7 +243,7 @@ Wenn Sie ähnliche Fehler wie die unten aufgeführten feststellen, liegt dies me
    `A component of Data Management Gateway has become unresponsive and restarts automatically. Component name: Gateway.`
 
 ### <a name="open-port-8050-for-credential-encryption"></a>Öffnen von Port 8050 für die Verschlüsselung der Anmeldeinformationen
-Die Anwendung **Anmeldeinformationen festlegen** verwendet den eingehenden Port **8050** , um die Anmeldeinformationen an das Gateway weiterzugeben, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten. Während der Einrichtung des Gateways wird es von der Gatewayinstallation standardmäßig auf dem Gatewaycomputer geöffnet.
+Die Anwendung **Anmeldeinformationen festlegen** verwendet den eingehenden Port **8050**, um die Anmeldeinformationen an das Gateway weiterzugeben, wenn Sie im Azure-Portal einen lokalen verknüpften Dienst einrichten. Während der Einrichtung des Gateways wird es von der Gatewayinstallation standardmäßig auf dem Gatewaycomputer geöffnet.
 
 Bei Verwendung einer Drittanbieterfirewall können Sie den Port 8050 manuell öffnen. Falls beim Einrichten des Gateways ein Firewallproblem auftritt, können Sie versuchen, den folgenden Befehl zu verwenden, um das Gateway ohne Konfiguration der Firewall zu installieren.
 
@@ -311,7 +311,7 @@ Sie können das Feature für die automatische Aktualisierung wie folgt deaktivie
 Nach der Installation des Gateways können Sie den Datenverwaltungsgateway-Konfigurations-Manager auf eine der folgenden Arten starten:
 
 1. Geben Sie im Fenster **Suchen** den Begriff **Datenverwaltungsgateway** ein, um auf dieses Hilfsprogramm zuzugreifen.
-2. Führen Sie die ausführbare Datei *ConfigManager.exe* im folgenden Ordner aus: *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared* .
+2. Führen Sie die ausführbare Datei *ConfigManager.exe* im folgenden Ordner aus: *C:\\\\Programme\\Microsoft-Datenverwaltungsgateway\\2.0\\Shared*.
 
 ### <a name="home-page"></a>Startseite
 Auf der Startseite können Sie die folgenden Aktionen ausführen:
@@ -325,7 +325,7 @@ Auf der Startseite können Sie die folgenden Aktionen ausführen:
 ### <a name="settings-page"></a>Seite "Einstellungen"
 Auf der Seite „Einstellungen“ können Sie die folgenden Aktionen ausführen:
 
-* Anzeigen, Ändern und Exportieren des **Zertifikats** , das vom Gateway verwendet wird Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
+* Anzeigen, Ändern und Exportieren des **Zertifikats**, das vom Gateway verwendet wird Dieses Zertifikat dient zum Verschlüsseln von Anmeldeinformationen für Datenquellen.
 * Ändern des **HTTPS-Ports** für den Endpunkt Das Gateway öffnet einen Port für die Festlegung der Datenquellen-Anmeldeinformationen.
 * **Status** des Endpunkts
 * Anzeigen des **SSL-Zertifikats** wird für die TLS/SSL-Kommunikation zwischen Portal und Gateway zum Festlegen von Anmeldeinformationen für Datenquellen verwendet.
@@ -336,7 +336,7 @@ Diese Funktion wird erst später aktiviert. Im Rahmen der nächsten Updates (v3.
 ### <a name="diagnostics-page"></a>Seite „Diagnose“
 Auf der Seite „Diagnose“ können Sie die folgenden Aktionen ausführen:
 
-* Aktivieren der ausführlichen **Protokollierung** , Anzeigen von Protokollen in der Ereignisanzeige und Senden von Protokollen an Microsoft, falls ein Fehler aufgetreten ist
+* Aktivieren der ausführlichen **Protokollierung**, Anzeigen von Protokollen in der Ereignisanzeige und Senden von Protokollen an Microsoft, falls ein Fehler aufgetreten ist
 * **Testen der Verbindung** mit einer Datenquelle
 
 ### <a name="help-page"></a>Hilfeseite
@@ -349,7 +349,7 @@ Auf der Seite „Hilfe“ werden die folgenden Informationen angezeigt:
 ## <a name="monitor-gateway-in-the-portal"></a>Überwachen des Gateways im Portal
 Im Azure-Portal können Sie auf einem Gatewaycomputer nahezu in Echtzeit Momentaufnahmen der Ressourcenverwendung (CPU, Arbeitsspeicher, Netzwerk (Eingang/Ausgang) usw.) anzeigen.
 
-1. Navigieren Sie im Azure-Portal zur Data Factory-Startseite, und klicken Sie auf die Kachel **Verknüpfte Dienste** .
+1. Navigieren Sie im Azure-Portal zur Data Factory-Startseite, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
     ![Data Factory-Startseite](./media/data-factory-data-management-gateway/monitor-data-factory-home-page.png)
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** das **Gateway** aus.
@@ -358,11 +358,11 @@ Im Azure-Portal können Sie auf einem Gatewaycomputer nahezu in Echtzeit Momenta
 3. Auf der Seite **Gateway** wird die Arbeitsspeicher- und CPU-Nutzung des Gateways angezeigt.
 
     ![CPU- und Arbeitsspeicherauslastung des Gateways](./media/data-factory-data-management-gateway/gateway-simple-monitoring.png)
-4. Aktivieren Sie die Option **Erweiterte Einstellungen** , um weitere Details anzuzeigen, z.B. die Netzwerkauslastung.
+4. Aktivieren Sie die Option **Erweiterte Einstellungen**, um weitere Details anzuzeigen, z.B. die Netzwerkauslastung.
     
     ![Erweiterte Überwachung des Gateways](./media/data-factory-data-management-gateway/gateway-advanced-monitoring.png)
 
-Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten** :
+Die folgende Tabelle enthält Beschreibungen von Spalten in der Liste **Gatewayknoten**:
 
 Überwachungseigenschaft | BESCHREIBUNG
 :------------------ | :----------
@@ -378,7 +378,7 @@ Role | Bei einem Gateway mit mehreren Knoten gibt es zwei Arten von Rollen: Disp
 Auf dieser Seite werden einige Einstellungen angezeigt, die mehr Sinn ergeben, wenn das Gateway mindestens zwei Knoten enthält (Szenario mit Aufskalieren). Ausführliche Informationen zum Einrichten eines Gateways mit mehreren Knoten finden Sie unter [Data Management Gateway – high availability and scalability (Preview)](data-factory-data-management-gateway-high-availability-scalability.md) (Datenverwaltungsgateway – Hochverfügbarkeit und Skalierbarkeit (Vorschauversion)).
 
 ### <a name="gateway-status"></a>Gatewaystatus
-Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens** :
+Die folgende Tabelle enthält die möglichen Status eines **Gatewayknotens**:
 
 Status  | Kommentare/Szenarien
 :------- | :------------------
@@ -388,7 +388,7 @@ Wird aktualisiert | Der Knoten wird automatisch aktualisiert.
 Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann ein Problem mit HTTP-Port 8050, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen sein.
 Inaktiv | Die Konfiguration des Knotens unterscheidet sich von der Konfiguration anderer Mehrheitsknoten.<br/><br/> Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten herstellen kann.
 
-Die folgende Tabelle enthält die möglichen Status eines **logischen Gateways** . Der Gatewaystatus hängt von den Status der Gatewayknoten ab.
+Die folgende Tabelle enthält die möglichen Status eines **logischen Gateways**. Der Gatewaystatus hängt von den Status der Gatewayknoten ab.
 
 Status | Kommentare
 :----- | :-------
@@ -408,44 +408,44 @@ Im Artikel [Behandeln von Problemen bei der Verwendung des Datenverwaltungsgatew
 ## <a name="move-gateway-from-one-machine-to-another"></a>Verschieben eines Gateways von einem Computer auf einen anderen
 Dieser Abschnitt enthält Anweisungen zum Verschieben des Gatewayclients von einem Computer auf einen anderen.
 
-1. Wechseln Sie im Portal zur **Data Factory-Startseite** , und klicken Sie auf die Kachel **Verknüpfte Dienste** .
+1. Wechseln Sie im Portal zur **Data Factory-Startseite**, und klicken Sie auf die Kachel **Verknüpfte Dienste**.
 
     ![Link „Datengateways“](./media/data-factory-data-management-gateway/DataGatewaysLink.png)
 2. Wählen Sie auf der Seite **Verknüpfte Dienste** im Abschnitt **DATENGATEWAYS** Ihr Gateway aus.
 
     ![Seite „Verknüpfte Dienste“ mit ausgewähltem Gateway](./media/data-factory-data-management-gateway/LinkedServiceBladeWithGateway.png)
-3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren** .
+3. Klicken Sie auf der Seite **Datengateway** auf **Datengateway herunterladen und installieren**.
 
     ![Link „Gateway herunterladen“](./media/data-factory-data-management-gateway/DownloadGatewayLink.png)
-4. Klicken Sie auf der Seite **Konfigurieren** auf **Datengateway herunterladen und installieren** , und befolgen Sie die Anweisungen, um das Datengateway auf dem Computer zu installieren.
+4. Klicken Sie auf der Seite **Konfigurieren** auf **Datengateway herunterladen und installieren**, und befolgen Sie die Anweisungen, um das Datengateway auf dem Computer zu installieren.
 
     ![Konfigurieren, Seite](./media/data-factory-data-management-gateway/ConfigureBlade.png)
 5. Lassen Sie den **Microsoft-Datenverwaltungsgateway-Konfigurations-Manager** geöffnet.
 
     ![Konfigurations-Manager](./media/data-factory-data-management-gateway/ConfigurationManager.png)
-6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja** . Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.
+6. Klicken Sie im Portal auf der Seite **Konfigurieren** in der Befehlsleiste auf **Schlüssel neu erstellen** und anschließend in der Warnmeldung auf **Ja**. Klicken Sie auf die Schaltfläche **Kopieren** neben dem Schlüsseltext, um den Schlüssel in die Zwischenablage zu kopieren. Sobald Sie den Schlüssel neu erstellen, funktioniert das Gateway auf dem alten Computer nicht mehr.
 
     ![Schlüssel neu erstellen 2](./media/data-factory-data-management-gateway/RecreateKey.png)
-7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen** , um den Schlüsseltext anzuzeigen.
+7. Fügen Sie auf Ihrem Computer im **Datenverwaltungsgateway-Konfigurations-Manager** auf der Seite **Gateway registrieren** den **Schlüssel** in das Textfeld ein. (Optional) Aktivieren Sie das Kontrollkästchen **Gatewayschlüssel anzeigen**, um den Schlüsseltext anzuzeigen.
 
     ![Schlüssel kopieren und registrieren](./media/data-factory-data-management-gateway/CopyKeyAndRegister.png)
 8. Klicken Sie auf **Registrieren** , um das Gateway beim Clouddienst zu registrieren.
-9. Klicken Sie auf der Registerkarte **Einstellungen** auf **Ändern** , um das gleiche Zertifikat auszuwählen, das mit dem alten Gateway verwendet wurde. Geben Sie dann das **Kennwort** ein, und klicken Sie auf **Fertig stellen** .
+9. Klicken Sie auf der Registerkarte **Einstellungen** auf **Ändern**, um das gleiche Zertifikat auszuwählen, das mit dem alten Gateway verwendet wurde. Geben Sie dann das **Kennwort** ein, und klicken Sie auf **Fertig stellen**.
 
    ![Zertifikat angeben](./media/data-factory-data-management-gateway/SpecifyCertificate.png)
 
-   Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Konfigurations-Manager des Datenverwaltungsgateways, wechseln Sie zur Registerkarte **Zertifikat** , klicken Sie auf **Exportieren** , und befolgen Sie die Anweisungen.
+   Ein Zertifikat des alten Gateways können Sie wie folgt exportieren: Starten Sie auf dem alten Computer den Konfigurations-Manager des Datenverwaltungsgateways, wechseln Sie zur Registerkarte **Zertifikat**, klicken Sie auf **Exportieren**, und befolgen Sie die Anweisungen.
 10. Nach erfolgreicher Registrierung des Gateways sollten auf der Startseite des Gateway-Konfigurations-Managers **Registrierung** auf **Registriert** und die Option **Status** auf **Gestartet** festgelegt sein.
 
 ## <a name="encrypting-credentials"></a>Verschlüsseln der Anmeldeinformationen
 Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie folgt vor:
 
-1. Starten Sie auf dem **Gatewaycomputer** einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Suchen Sie ggf. nach Ihrer Data Factory, und öffnen Sie die Data Factory auf der Seite **DATA FACTORY** . Klicken Sie anschließend auf **Erstellen und bereitstellen** , um den Data Factory-Editor zu starten.
-2. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst** , um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen verknüpften Dienst, für den ein Datenverwaltungsgateway erforderlich ist (z.B. SQL Server oder Oracle).
+1. Starten Sie auf dem **Gatewaycomputer** einen Webbrowser, und navigieren Sie zum [Azure-Portal](https://portal.azure.com). Suchen Sie ggf. nach Ihrer Data Factory, und öffnen Sie die Data Factory auf der Seite **DATA FACTORY**. Klicken Sie anschließend auf **Erstellen und bereitstellen**, um den Data Factory-Editor zu starten.
+2. Klicken Sie in der Strukturansicht auf einen vorhandenen **verknüpften Dienst**, um dessen JSON-Definition anzuzeigen, oder erstellen Sie einen verknüpften Dienst, für den ein Datenverwaltungsgateway erforderlich ist (z.B. SQL Server oder Oracle).
 3. Geben Sie im JSON-Editor für die **gatewayName** -Eigenschaft den Namen des Gateways ein.
-4. Geben Sie den Servernamen für die **Data Source** -Eigenschaft in **connectionString** ein.
-5. Geben Sie den Datenbanknamen für die **Initial Catalog** -Eigenschaft in **connectionString** ein.
-6. Klicken Sie auf der Befehlsleiste auf **Verschlüsseln** , um die ClickOnce-Anwendung **Anmeldeinformationsverwaltung** zu starten. Das Dialogfeld **Anmeldeinformationen festlegen** wird angezeigt.
+4. Geben Sie den Servernamen für die **Data Source**-Eigenschaft in **connectionString** ein.
+5. Geben Sie den Datenbanknamen für die **Initial Catalog**-Eigenschaft in **connectionString** ein.
+6. Klicken Sie auf der Befehlsleiste auf **Verschlüsseln**, um die ClickOnce-Anwendung **Anmeldeinformationsverwaltung** zu starten. Das Dialogfeld **Anmeldeinformationen festlegen** wird angezeigt.
 
     ![Dialogfeld „Anmeldeinformationen festlegen“](./media/data-factory-data-management-gateway/setting-credentials-dialog.png)
 7. Gehen Sie im Dialogfeld **Anmeldeinformationen festlegen** folgendermaßen vor:
@@ -453,7 +453,7 @@ Zum Verschlüsseln der Anmeldeinformationen im Data Factory-Editor gehen Sie wie
    2. Geben Sie für die Einstellung **BENUTZERNAME** den Namen des Benutzers ein, der auf die Datenbank zugreifen kann.
    3. Geben Sie für die Einstellung **KENNWORT** das Kennwort für den Benutzer ein.
    4. Klicken Sie auf **OK** , um Anmeldeinformationen zu verschlüsseln, und schließen Sie das Dialogfeld.
-8. Sie sollten nun in **connectionString** eine **encryptedCredential** -Eigenschaft sehen.
+8. Sie sollten nun in **connectionString** eine **encryptedCredential**-Eigenschaft sehen.
 
     ```JSON
     {
@@ -489,12 +489,12 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     ```powershell
     Connect-AzAccount
     ```
-3. Verwenden Sie das **New-AzDataFactoryGateway** -Cmdlet, um wie folgt ein logisches Gateway zu erstellen:
+3. Verwenden Sie das **New-AzDataFactoryGateway**-Cmdlet, um wie folgt ein logisches Gateway zu erstellen:
 
     ```powershell
     $MyDMG = New-AzDataFactoryGateway -Name <gatewayName> -DataFactoryName <dataFactoryName> -ResourceGroupName ADF –Description <desc>
     ```
-    **Beispiel für eine Befehlszeile und Ausgabe** :
+    **Beispiel für eine Befehlszeile und Ausgabe**:
 
     ```
     PS C:\> $MyDMG = New-AzDataFactoryGateway -Name MyGateway -DataFactoryName $df -ResourceGroupName ADF –Description "gateway for walkthrough"
@@ -525,12 +525,12 @@ Dieser Abschnitt beschreibt das Erstellen und Registrieren eines Gateways mit Az
     ```powershell
     .\RegisterGateway.ps1 $MyDMG.Key -IsRegisterOnRemoteMachine true
     ```
-2. Mit dem **Get-AzDataFactoryGateway** -Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online** angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
+2. Mit dem **Get-AzDataFactoryGateway**-Cmdlet können Sie die Liste mit Gateways in Ihrer Data Factory abrufen. Wenn der **Status** **online** angezeigt wird, bedeutet dies, dass Ihr Gateway einsatzbereit ist.
 
     ```powershell        
     Get-AzDataFactoryGateway -DataFactoryName <dataFactoryName> -ResourceGroupName ADF
     ```
-   Sie können ein Gateway mit dem **Remove-AzDataFactoryGateway** -Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzDataFactoryGateway** -Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
+   Sie können ein Gateway mit dem **Remove-AzDataFactoryGateway**-Cmdlet entfernen und die Beschreibung für das Gateway mithilfe der **Set-AzDataFactoryGateway**-Cmdlets aktualisieren. Syntax und andere Details zu diesen Cmdlets finden Sie in der Data Factory-Cmdlet-Referenz.  
 
 ### <a name="list-gateways-using-powershell"></a>Auflisten von Gateways mit PowerShell
 

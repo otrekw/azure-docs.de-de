@@ -1,6 +1,6 @@
 ---
-title: Selbsthilfe für den serverlosen SQL-Pool (Vorschauversion)
-description: Dieser Abschnitt enthält Informationen, die Sie bei der Behandlung von Problemen mit einem serverlosen SQL-Pool (Vorschauversion) unterstützen.
+title: Selbsthilfe für serverlose SQL-Pools
+description: Dieser Abschnitt enthält Informationen, die Sie bei der Behandlung von Problemen mit einem serverlosen SQL-Pool unterstützen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 05/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: aefdb90c3e6c8d3abc3924ecebb2aa46739e99ad
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 12ff369cb931eb36014b7c9598b036afdc158750
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682620"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96457184"
 ---
-# <a name="self-help-for-serverless-sql-pool-preview"></a>Selbsthilfe für den serverlosen SQL-Pool (Vorschauversion)
+# <a name="self-help-for-serverless-sql-pool"></a>Selbsthilfe für serverlose SQL-Pools
 
-In diesem Artikel erfahren Sie, wie Sie die häufigsten Probleme mit einem serverlosen SQL-Pool (Vorschauversion) in Azure Synapse Analytics behandeln.
+In diesem Artikel erfahren Sie, wie Sie die häufigsten Probleme mit einem serverlosen SQL-Pool in Azure Synapse Analytics behandeln.
 
 ## <a name="serverless-sql-pool-is-grayed-out-in-synapse-studio"></a>Serverloser SQL-Pool (Vorschauversion) in Synapse Studio abgeblendet
 
@@ -37,7 +37,7 @@ Wenn bei Ihrer Abfrage ein Fehler mit der Beschreibung auftritt, dass die Abfrag
 
 - Vergewissern Sie sich, dass Datentypen mit passener Größe verwendet werden. Geben Sie außerdem für Parquet-Dateien das Schema für Zeichenfolgenspalten an, da hierfür standardmäßig „VARCHAR(8000)“ verwendet wird. 
 
-- Bei Abfragen für CSV-Dateien empfiehlt sich ggf. das [Erstellen von Statistiken](develop-tables-statistics.md#statistics-in-serverless-sql-pool-preview). 
+- Bei Abfragen für CSV-Dateien empfiehlt sich ggf. das [Erstellen von Statistiken](develop-tables-statistics.md#statistics-in-serverless-sql-pool). 
 
 - Informationen zur Abfrageoptimierung finden Sie in den [bewährten Methoden zum Verbessern der Leistung von serverlosen SQL-Pools](best-practices-sql-on-demand.md).  
 

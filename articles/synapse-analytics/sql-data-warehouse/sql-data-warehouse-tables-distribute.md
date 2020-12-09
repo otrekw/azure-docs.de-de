@@ -11,12 +11,12 @@ ms.date: 04/17/2018
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: a3715abdebce319979d867d12764a22b4ed16c35
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: c452d51018ef3f204cd7281971c07fb6337d39bf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93323618"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96449707"
 ---
 # <a name="guidance-for-designing-distributed-tables-using-dedicated-sql-pool-in-azure-synapse-analytics"></a>Leitfaden zum Entwerfen von verteilten Tabellen mithilfe eines dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -44,7 +44,7 @@ Bei einer Tabelle mit Hashverteilung werden Tabellenzeilen mithilfe einer determ
 
 ![Verteilte Tabelle](./media/sql-data-warehouse-tables-distribute/hash-distributed-table.png "Verteilte Tabelle")  
 
-Da identische Werte per Hash immer der gleichen Verteilung zugewiesen werden, sind die Zeilenpositionen im Data Warehouse bekannt. Der dedizierte SQL-Pool nutzt dieses Wissen, um Datenverschiebungen während Abfragen zu minimieren, was die Abfrageleistung verbessert.
+Da identische Werte per Hash immer der gleichen Verteilung zugewiesen werden, sind die Zeilenpositionen in SQL Analytics bekannt. Der dedizierte SQL-Pool nutzt dieses Wissen, um Datenverschiebungen während Abfragen zu minimieren, was die Abfrageleistung verbessert.
 
 Tabellen mit Hashverteilung eignen sich gut für umfangreiche Faktentabellen in einem Sternschema. Sie können sehr viele Zeilen umfassen und trotzdem eine hohe Leistung bieten. Es gibt natürlich einige Entwurfsaspekte, die dazu beitragen, die Leistung zu erreichen, für die das verteilte System konzipiert ist. Einer dieser Aspekte, der auch in diesem Artikel beschrieben wird, ist die Wahl einer geeigneten Verteilungsspalte.
 

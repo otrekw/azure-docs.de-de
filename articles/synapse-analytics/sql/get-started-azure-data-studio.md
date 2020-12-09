@@ -1,6 +1,6 @@
 ---
-title: Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
-description: Verwenden Sie Azure Data Studio (Vorschau), um eine Verbindung mit Synapse SQL in Azure Synapse Analytics herzustellen und Abfragen auszuführen.
+title: Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio
+description: Verwenden Sie Azure Data Studio, um eine Verbindung mit Synapse SQL in Azure Synapse Analytics herzustellen und Abfragen auszuführen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 3af28ef575f770a5b8c3fb73ade1f9c53be66843
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 580dfe779ff0f550524781076d3e27805ffd6689
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685748"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451655"
 ---
-# <a name="connect-to-synapse-sql-with-azure-data-studio-preview"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio (Vorschau)
+# <a name="connect-to-synapse-sql-with-azure-data-studio"></a>Herstellen einer Verbindung mit Synapse SQL über Azure Data Studio
 
 > [!div class="op_single_selector"]
 >
@@ -26,7 +26,7 @@ ms.locfileid: "94685748"
 > * [sqlcmd](get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Sie können [Azure Data Studio (Vorschau)](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit Synapse SQL in Azure Synapse Analytics herzustellen und Abfragen auszuführen. 
+Sie können [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit Synapse SQL in Azure Synapse Analytics herzustellen und Abfragen auszuführen. 
 
 ## <a name="connect"></a>Verbinden
 
@@ -42,7 +42,7 @@ Die Verbindung erfordert die folgenden Parameter:
 * **Datenbank:** Datenbankname
 
 > [!NOTE]
-> Wenn Sie einen **serverlosen SQL-Pool (Vorschauversion)** verwenden möchten, sollte die URL wie folgt aussehen:
+> Wenn Sie einen **serverlosen SQL-Pool** verwenden möchten, sollte die URL wie folgt aussehen:
 >
 > - `<Azure Synapse workspace name>`-ondemand.sql.azuresynapse.net.
 >

@@ -1,6 +1,6 @@
 ---
-title: 'Tutorial: Untersuchen und Analysieren von Data Lakes mit einem serverlosen Synapse SQL-Pool'
-description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe eines serverlosen SQL-Pools (Vorschauversion) verschiedene Azure Open Datasets-Instanzen miteinander kombiniert und die Ergebnisse in Synapse Studio für Azure Synapse Analytics visualisiert.
+title: 'Tutorial: Analysieren von Azure Open Datasets in Azure Synapse Studio mithilfe eines serverlosen SQL-Pools'
+description: In diesem Tutorial wird gezeigt, wie Sie ganz einfach eine explorative Datenanalyse durchführen. Dabei werden mithilfe eines serverlosen SQL-Pools verschiedene Azure Open Datasets-Instanzen miteinander kombiniert und die Ergebnisse in Azure Synapse Studio visualisiert.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,14 +9,14 @@ ms.subservice: sql
 ms.date: 11/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: af6fc75b5de22fc77313932ca17ce695e889dad3
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 7b2d4953b3a42c5d66fca4a67b4a6d0f13700a35
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237962"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96459124"
 ---
-# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool-preview"></a>Tutorial: Untersuchen und Analysieren von Data Lakes mit einem serverlosen SQL-Pool (Vorschau)
+# <a name="tutorial-explore-and-analyze-data-lakes-with-serverless-sql-pool"></a>Tutorial: Untersuchen und Analysieren von Data Lakes mit einem serverlosen SQL-Pool
 
 In diesem Tutorial erfahren Sie, wie Sie eine explorative Datenanalyse durchführen. Sie kombinieren verschiedene Azure Open Datasets-Instanzen über einen serverlosen SQL-Pools. Anschließend visualisieren Sie die Ergebnisse in Synapse Studio für Synapse Analytics.
 

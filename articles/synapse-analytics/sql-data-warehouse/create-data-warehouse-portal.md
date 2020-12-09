@@ -1,6 +1,6 @@
 ---
-title: 'Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools (Azure-Portal)'
-description: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal
+title: 'Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools (Azure-Portal)'
+description: Erstellen und Abfragen eines dedizierten SQL-Pools über das Azure-Portal
 services: synapse-analytics
 author: kevinvngo
 manager: craigg
@@ -11,16 +11,16 @@ ms.date: 05/28/2019
 ms.author: pimorano
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
-ms.openlocfilehash: 470892aa46d3f75ce8e17200f7d0549ae14b0e86
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3d4884fd64c773647f78a98dc7aeb1063d539edf
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023785"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96456751"
 ---
-# <a name="quickstart-create-and-query-a-synapse-sql-pool-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines Synapse-SQL-Pools mit dem Azure-Portal
+# <a name="quickstart-create-and-query-a-dedicated-sql-pool-in-azure-synapse-analytics-using-the-azure-portal"></a>Schnellstart: Erstellen und Abfragen eines dedizierten SQL-Pools in Azure Synapse Analytics über das Azure-Portal
 
-Hier wird beschrieben, wie Sie schnell über das Azure-Portal einen Synapse-SQL-Pool (Data Warehouse) in Azure Synapse Analytics (vormals SQL DW) erstellen und abfragen.
+Hier wird beschrieben, wie Sie über das Azure-Portal schnell einen Synapse SQL-Pool (Data Warehouse) in Azure Synapse Analytics erstellen und abfragen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

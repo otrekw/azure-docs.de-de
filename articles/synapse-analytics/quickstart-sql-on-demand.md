@@ -1,6 +1,6 @@
 ---
 title: 'Schnellstart: Verwenden eines serverlosen SQL-Pools'
-description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools (Vorschauversion) ganz einfach verschiedene Dateitypen abfragen.
+description: In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools ganz einfach verschiedene Dateitypen abfragen.
 services: synapse-analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,16 +9,16 @@ ms.subservice: sql
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 270942392e028964c7e9b1c110e4d9f118bd4953
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: e75bab664bdd0d6a4ac898905226c9956f62b4ff
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94682977"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96450507"
 ---
 # <a name="quickstart-use-serverless-sql-pool"></a>Schnellstart: Verwenden eines serverlosen SQL-Pools
 
-Der serverlose SQL-Pool (Vorschauversion) von Synapse ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools verschiedene Dateitypen abfragen. Unterstützte Formate sind in [OPENROWSET](sql/develop-openrowset.md) aufgeführt.
+Der serverlose SQL-Pool von Synapse ist ein serverloser Abfragedienst zum Ausführen von SQL-Abfragen für Dateien in Azure Storage. In dieser Schnellstartanleitung erfahren Sie, wie Sie mithilfe eines serverlosen SQL-Pools verschiedene Dateitypen abfragen. Unterstützte Formate sind in [OPENROWSET](sql/develop-openrowset.md) aufgeführt.
 
 In dieser Schnellstartanleitung sehen Sie, wie Abfragen folgender Dateiformate ausgeführt werden: CSV-, Apache Parquet- und JSON-Dateien.
 

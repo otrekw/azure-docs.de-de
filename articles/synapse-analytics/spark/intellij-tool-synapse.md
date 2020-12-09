@@ -1,6 +1,6 @@
 ---
 title: 'Tutorial: Azure-Toolkit für IntelliJ (Spark-Anwendung)'
-description: 'Tutorial: Verwenden des Azure-Toolkits für IntelliJ, um in Scala geschriebene Spark-Anwendungen zu entwickeln und an einen serverlosen Apache Spark-Pool (Vorschauversion) zu übermitteln'
+description: 'Tutorial: Verwenden des Azure-Toolkits für IntelliJ, um in Scala geschriebene Spark-Anwendungen zu entwickeln und an einen serverlosen Apache Spark-Pool zu übermitteln'
 services: synapse-analytics
 author: hrasheed-msft
 ms.author: jejiang
@@ -9,16 +9,16 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.subservice: spark
 ms.date: 04/15/2020
-ms.openlocfilehash: 5a9fcf3e13c2f86a11e9626be486a585ec659044
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 75cc23df41741a95e87ad64d168aea4fa4f45733
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013767"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451047"
 ---
 # <a name="tutorial-create-an-apache-spark-application-with-intellij-using-a-synapse-workspace"></a>Tutorial: Erstellen einer Apache Spark-Anwendung mit IntelliJ mithilfe eines Synapse-Arbeitsbereichs
 
-In diesem Tutorial wird gezeigt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und anschließend direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen serverlosen Apache Spark-Pool (Vorschauversion) übermitteln. Sie können das Plug-In auf mehrere Arten verwenden:
+In diesem Tutorial wird gezeigt, wie Sie mit dem Plug-In „Azure-Toolkit für IntelliJ“ in [Scala](https://www.scala-lang.org/) geschriebene Apache Spark-Anwendungen entwickeln und anschließend direkt aus der IntelliJ-IDE (Integrated Development Environment, integrierte Entwicklungsumgebung) an einen serverlosen Apache Spark-Pool übermitteln. Sie können das Plug-In auf mehrere Arten verwenden:
 
 - Entwickeln einer Scala Spark-Anwendung und Übermitteln der Anwendung an einen Spark-Pool
 - Zugreifen auf die Ressourcen Ihres Spark-Pools

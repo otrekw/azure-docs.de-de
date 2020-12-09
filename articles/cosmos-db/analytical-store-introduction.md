@@ -1,24 +1,21 @@
 ---
-title: Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
+title: Was ist der Azure Cosmos DB-Analysespeicher?
 description: Erfahren Sie mehr über den Azure Cosmos DB-Transaktionsspeicher (zeilenbasiert) und -Analysespeicher (spaltenbasiert). Vorteile des Analysespeichers, Auswirkungen auf die Leistung bei umfangreichen Workloads und automatische Synchronisierung von Daten aus dem Transaktionsspeicher in den Analysespeicher
 author: Rodrigossz
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 09/22/2020
+ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: seo-nov-2020
-ms.openlocfilehash: 9cde9586d453632ceaa61de7c095a5f95d1ea2e4
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5dc233348188791404f826870b235d2bdfa4c202
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337405"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96452853"
 ---
-# <a name="what-is-azure-cosmos-db-analytical-store-preview"></a>Was ist der Azure Cosmos DB-Analysespeicher (Vorschau)?
+# <a name="what-is-azure-cosmos-db-analytical-store"></a>Was ist der Azure Cosmos DB-Analysespeicher?
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
-
-> [!IMPORTANT]
-> Der Azure Cosmos DB-Analysespeicher befindet sich derzeit in der Vorschauphase. Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauversionen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der Azure Cosmos DB-Analysespeicher ist ein vollständig isolierter Spaltenspeicher, der umfangreiche Analysen für operative Daten in Ihrem Azure Cosmos DB ermöglicht, ohne dass dies Auswirkungen auf Ihre Transaktionsworkloads hat. 
 
@@ -36,7 +33,7 @@ Die ETL-Pipelines weisen zudem bei der Verarbeitung von Aktualisierungen der ope
 
 Der Azure Cosmos DB-Analysespeicher ist auf die Bewältigung der Herausforderungen hinsichtlich Komplexität und Latenz ausgelegt, die sich bei herkömmlichen ETL-Pipelines ergeben. Der Azure Cosmos DB-Analysespeicher kann Ihre operativen Daten automatisch in einen separaten Spaltenspeicher synchronisieren. Das Spaltenspeicherformat eignet sich für umfangreiche analytische Abfragen, die auf optimierte Weise ausgeführt werden können. Dies führt zu einer Verbesserung bei der Latenz solcher Abfragen.
 
-Mithilfe von Azure Synapse Link können Sie jetzt HTAP-Lösungen ohne ETL erstellen, indem Sie eine direkte Verknüpfung von Synapse Analytics mit dem Azure Cosmos DB-Analysespeicher herstellen. Damit können Sie umfangreiche Analysen Ihrer operativen Daten nahezu in Echtzeit ausführen.
+Mithilfe von Azure Synapse Link können Sie jetzt HTAP-Lösungen ohne ETL erstellen, indem Sie eine direkte Verknüpfung von Azure Synapse Analytics mit dem Azure Cosmos DB-Analysespeicher herstellen. Damit können Sie umfangreiche Analysen Ihrer operativen Daten nahezu in Echtzeit ausführen.
 
 ## <a name="features-of-analytical-store"></a>Features des Analysespeichers 
 
@@ -181,10 +178,10 @@ Die Authentifizierung beim Analysespeicher erfolgt genauso wie beim Transaktions
 
 Der Analysespeicher ist optimiert, um Skalierbarkeit, Elastizität und Leistung für Analyseworkloads ohne jegliche Abhängigkeit von den Computelaufzeiten bereitzustellen. Die Speichertechnologie ist selbst verwaltet, um Ihre Analyseworkloads ohne manuellen Aufwand zu optimieren.
 
-Durch das Entkoppeln des Analysespeichersystems vom Analysecomputesystem können Daten im Analysespeicher von Azure Cosmos DB gleichzeitig aus den verschiedenen von Azure Synapse Analytics unterstützten Analyselaufzeiten abgefragt werden. Ab sofort werden Apache Spark und SQL serverlos mit Azure Cosmos DB-Analysespeicher von Synapse Analytics unterstützt.
+Durch das Entkoppeln des Analysespeichersystems vom Analysecomputesystem können Daten im Analysespeicher von Azure Cosmos DB gleichzeitig aus den verschiedenen von Azure Synapse Analytics unterstützten Analyselaufzeiten abgefragt werden. Ab sofort werden Apache Spark und serverlose SQL-Pools mit Azure Cosmos DB-Analysespeicher von Azure Synapse Analytics unterstützt.
 
 > [!NOTE]
-> Sie können nur mithilfe der Synapse Analytics-Laufzeit aus dem Analysespeicher lesen. Sie können die Daten als Bereitstellungsebene in den Transaktionsspeicher zurückschreiben.
+> Sie können nur mithilfe der Azure Synapse Analytics-Laufzeit aus dem Analysespeicher lesen. Sie können die Daten als Bereitstellungsebene in den Transaktionsspeicher zurückschreiben.
 
 ## <a name="pricing"></a><a id="analytical-store-pricing"></a> Preise
 
@@ -194,10 +191,7 @@ Der Analysespeicher folgt einem nutzungsbasierten Preismodell, bei dem Folgendes
 
 * Analyseschreibvorgänge: Die vollständig verwaltete Synchronisierung von Aktualisierungen operativer Daten aus dem Transaktionsspeicher in den Analysespeicher (automatische Synchronisierung).
 
-* Analyselesevorgänge: Die Lesevorgänge, die für den Analysespeicher in Synapse Analytics Spark- und serverlosen SQL-Laufzeiten ausgeführt werden.
-
-> [!NOTE]
-> Der Azure Cosmos DB-Analysespeicher ist derzeit in der öffentlichen Vorschau kostenlos verfügbar.
+* Analyselesevorgänge: Lesevorgänge, die für den Analysespeicher in Azure Synapse Analytics-Laufzeiten für Spark- und serverlose SQL-Pools ausgeführt werden.
 
 Die Preise für den Analysespeicher sind vom Preismodell für den Transaktionsspeicher getrennt. Es gibt kein Konzept für bereitgestellte RUs im Analysespeicher. Ausführliche Informationen zum Preismodell für den Analysespeicher finden Sie auf der Seite [Azure Cosmos DB – Preise](https://azure.microsoft.com/pricing/details/cosmos-db/).
 

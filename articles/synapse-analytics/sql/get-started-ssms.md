@@ -9,12 +9,12 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 4239b5400e919621dfff001ca7e6cb9de1626658
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: da698a1a8d91273321d4633abd683a06cb4cf403
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686207"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451619"
 ---
 # <a name="connect-to-synapse-sql-with-sql-server-management-studio-ssms"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von SQL Server Management Studio (SSMS)
 > [!div class="op_single_selector"]
@@ -26,9 +26,9 @@ ms.locfileid: "94686207"
 > 
 > 
 
-Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) entweder über Ressourcen im serverlosen SQL-Pool (Vorschauversion) oder Ressourcen im dedizierten SQL-Pool eine Verbindung mit Synapse SQL in Azure Synapse Analytics herstellen und Abfragen durchführen. 
+Sie können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) entweder über einen serverlosen SQL-Pool oder über einen dedizierten SQL-Pool eine Verbindung mit Synapse SQL in Azure Synapse Analytics herstellen und Abfragen durchführen. 
 
-### <a name="supported-tools-for-serverless-sql-pool-preview"></a>Unterstützte Tools für den serverlosen SQL-Pool (Vorschauversion)
+### <a name="supported-tools-for-serverless-sql-pool"></a>Unterstützte Tools für den serverlosen SQL-Pool
 
 [Azure Data Studio](/sql/azure-data-studio/download-azure-data-studio) wird ab Version 1.18.0 vollständig unterstützt. SSMS wird ab Version 18.5 teilweise unterstützt, kann aber nur zum Herstellen einer Verbindung und für Abfragen verwendet werden.
 
@@ -63,7 +63,7 @@ Führen Sie die folgenden Schritte aus, um mithilfe des dedizierten SQL-Pools ei
     ![AdventureWorksDW erkunden 1](../sql-data-warehouse/media/sql-data-warehouse-query-ssms/explore-tables.png)
 
 
-### <a name="serverless-sql-pool-preview"></a>Serverloser SQL-Pool (Vorschauversion)
+### <a name="serverless-sql-pool"></a>Serverloser SQL-Pool
 
 Führen Sie die folgenden Schritte aus, um mithilfe des serverlosen SQL-Pools eine Verbindung mit Synapse SQL herzustellen: 
 

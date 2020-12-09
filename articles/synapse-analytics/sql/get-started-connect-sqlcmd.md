@@ -1,6 +1,6 @@
 ---
 title: Herstellen einer Verbindung mit Synapse SQL mithilfe von sqlcmd
-description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einem serverlosen SQL-Pool (Vorschauversion) und einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.
+description: Verwenden Sie das Befehlszeilenprogramm sqlcmd, um eine Verbindung mit einem serverlosen SQL-Pool und einem dedizierten SQL-Pool herzustellen und Abfragen durchzuführen.
 services: synapse analytics
 author: azaricstefan
 ms.service: synapse-analytics
@@ -9,23 +9,23 @@ ms.subservice: ''
 ms.date: 04/15/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: 43fae026f91e4430fbce0d01141a86a913db089d
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 88ee95789bdc1c6ee9884a021067318caab203d4
+ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94686139"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96451650"
 ---
 # <a name="connect-to-synapse-sql-with-sqlcmd"></a>Herstellen einer Verbindung mit Synapse SQL mithilfe von sqlcmd
 
 > [!div class="op_single_selector"]
-> * [Azure Data Studio (Vorschauversion)](get-started-azure-data-studio.md)
+> * [Azure Data Studio](get-started-azure-data-studio.md)
 > * [Power BI](get-started-power-bi-professional.md)
 > * [Visual Studio](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json)
 > * [sqlcmd](../sql/get-started-connect-sqlcmd.md)
 > * [SSMS](get-started-ssms.md)
 
-Sie können das Befehlszeilenprogramm [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit einem serverlosen SQL-Pool (Vorschauversion) und einem dedizierten SQL-Pool in Synapse SQL herzustellen und Abfragen durchzuführen.  
+Sie können das Befehlszeilenprogramm [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) verwenden, um eine Verbindung mit einem serverlosen SQL-Pool und einem dedizierten SQL-Pool in Synapse SQL herzustellen und Abfragen durchzuführen.  
 
 ## <a name="1-connect"></a>1. Verbinden
 Öffnen Sie zur Verwendung von [sqlcmd](/sql/tools/sqlcmd-utility?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) die Eingabeaufforderung, und geben Sie **sqlcmd** gefolgt von der Verbindungszeichenfolge für Ihre Synapse SQL-Datenbank ein. Die Verbindungszeichenfolge muss die folgenden Parameter enthalten:
