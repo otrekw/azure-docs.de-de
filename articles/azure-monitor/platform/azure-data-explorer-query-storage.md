@@ -7,12 +7,12 @@ ms.author: bwren
 ms.reviewer: bwren
 ms.topic: conceptual
 ms.date: 10/13/2020
-ms.openlocfilehash: 8710e0cdd6c930338009fb2b7f3bd98fafcfad3e
-ms.sourcegitcommit: 1d366d72357db47feaea20c54004dc4467391364
+ms.openlocfilehash: 2735aec0f95f5e282bb1dffba6e4f42f966cf117
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95411562"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186540"
 ---
 # <a name="query-exported-data-from-azure-monitor-using-azure-data-explorer-preview"></a>Abfragen exportierter Daten aus Azure Monitor mit Azure Data Explorer (Vorschau)
 Das Exportieren von Daten aus Azure Monitor in ein Azure Storage-Konto ermöglicht eine kostengünstige Aufbewahrung und bietet die Möglichkeit, Protokolle verschiedenen Regionen neu zuzuordnen. Verwenden Sie Azure Data Explorer, um Daten abzufragen, die aus Ihrem Log Analytics-Arbeitsbereich exportiert wurden. Nach der Konfiguration stehen unterstützte Tabellen, die von Ihren Arbeitsbereichen an ein Azure Storage-Konto gesendet werden, als Datenquelle für Azure Data Explorer bereit.
@@ -122,7 +122,7 @@ Die folgende Abbildung zeigt ein Beispiel der Ausgabe.
 
 >[!TIP]
 >* Sie können die Ausgabe des Skripts kopieren, einfügen und dann in Ihrem Azure Data Explorer-Clienttool ausführen, um die Tabelle und die Zuordnung zu erstellen.
->* Wenn Sie alle Daten im Container verwenden möchten, können Sie das Skript anpassen und die URL in „https://your.blob.core.windows.net/containername;SecKey“ ändern.
+>* Wenn Sie alle Daten im Container verwenden möchten, passen Sie das Skript an, und ändern Sie die URL in „https://your.blob.core.windows.net/containername;SecKey“.
 
 ## <a name="query-the-exported-data-from-azure-data-explorer"></a>Abfragen der exportierten Daten aus Azure Data Explorer 
 
@@ -136,4 +136,4 @@ external_table("HBTest","map") | take 10000
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie mehr über das [Schreiben von Abfragen in Azure Data Explorer](https://docs.microsoft.com/azure/data-explorer/write-queries).
+- Erfahren Sie mehr über das [Schreiben von Abfragen in Azure Data Explorer](/azure/data-explorer/write-queries).

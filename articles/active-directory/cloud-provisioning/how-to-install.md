@@ -11,12 +11,12 @@ ms.date: 11/16/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5322e5ce1bb124387931eac666cf9e5510cb2463
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 4c4ba11dabc8e805f3604afc2fc4388840ac67cf
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95237634"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348533"
 ---
 # <a name="install-the-azure-ad-connect-cloud-provisioning-agent"></a>Installieren des Agents für die Azure AD Connect-Cloudbereitstellung
 In diesem Dokument erhalten Sie Informationen zum Installationsvorgang für den Azure AD Connect-Bereitstellungs-Agent (Azure Active Directory) und dessen Erstkonfiguration im Azure-Portal.
@@ -32,7 +32,7 @@ Unter den folgenden Links erhalten Sie Informationen zur Installation und Konfig
 
 
 ## <a name="group-managed-service-accounts"></a>Gruppenverwaltete Dienstkonten
-Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Azure AD Connect Cloud Sync unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents.  Weitere Informationen zu einem gruppenverwalteten Dienstkonto (Group Managed Service Account, GMSA) finden Sie unter [Gruppenverwaltete Dienstkonten](https://docs.microsoft.com/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
+Ein gruppenverwaltetes Dienstkonto ist ein verwaltetes Domänenkonto, das eine automatische Kennwortverwaltung, eine vereinfachte Verwaltung von Dienstprinzipalnamen (Service Principal Name, SPN) und die Möglichkeit bietet, die Verwaltung an andere Administratoren zu delegieren, wobei diese Funktionalität auch auf mehrere Server erweitert wird.  Azure AD Connect Cloud Sync unterstützt und empfiehlt die Verwendung eines gruppenverwalteten Dienstkontos für die Ausführung des Agents.  Weitere Informationen zu einem gruppenverwalteten Dienstkonto (Group Managed Service Account, GMSA) finden Sie unter [Gruppenverwaltete Dienstkonten](/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview). 
 
 
 ### <a name="upgrading-an-existing-agent-to-use-the-gmsa-account"></a>Aktualisieren eines vorhandenen Agents für die Verwendung des gruppenverwalteten Dienstkontos
@@ -58,11 +58,11 @@ Führen Sie die folgenden Schritte aus, um den Agent zu installieren.
    ![Gruppenverwaltetes Dienstkonto erstellen](media/how-to-install/install-12.png)</br>
  11. Wählen Sie auf dem Bildschirm **Active Directory verbinden** die Option **Verzeichnis hinzufügen** aus. Melden Sie sich dann mit Ihrem Active Directory-Administratorkonto an. Dadurch wird Ihr lokales Verzeichnis hinzugefügt. 
  12. Optional können Sie die Präferenz der vom Agent verwendeten Domänencontroller verwalten, indem Sie das Kontrollkästchen **Domänencontrollerpriorität auswählen** aktivieren und die Liste der Domänencontroller entsprechend sortieren.   Klicken Sie auf **OK**.
-  ![Reihenfolge der Domänencontroller festlegen](media/how-to-install/install-2a.png)</br>
+  ![Ändern der Reihenfolge von Domänencontrollern](media/how-to-install/install-2a.png)</br>
  13. Wählen Sie **Weiter** aus.
   ![Bildschirm „Active Directory verbinden“](media/how-to-install/install-3a.png)</br>
  14.  Überprüfen Sie auf dem Bildschirm **Agent-Installation** die Einstellungen und das zu erstellende Konto, und klicken Sie dann auf **Bestätigen**.
-  ![Einstellungen bestätigen](media/how-to-install/install-11.png)</br>
+  ![Bestätigen der Einstellungen](media/how-to-install/install-11.png)</br>
  15. Nach Abschluss dieses Vorgangs sollte die Meldung **Ihre Agent-Installation ist abgeschlossen** angezeigt werden. Wählen Sie **Beenden** aus.
   ![Bildschirm „Konfiguration abgeschlossen“](media/how-to-install/install-4a.png)</br>
 1. Wenn weiterhin der erste Bildschirm **Microsoft Azure AD Connect-Bereitstellungs-Agent-Paket** angezeigt wird, wählen Sie **Schließen** aus.
@@ -107,4 +107,3 @@ Führen Sie die folgenden Schritte aus, um zu überprüfen, ob der Agent ausgef�
 
 - [Was ist die Identitätsbereitstellung?](what-is-provisioning.md)
 - [Was ist die Azure AD Connect-Cloudbereitstellung?](what-is-cloud-provisioning.md)
- 

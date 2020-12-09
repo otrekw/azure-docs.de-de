@@ -1,22 +1,22 @@
 ---
-title: Verwalten von Daten mithilfe von Azure Cosmos DB Explorer
-description: Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten.
+title: Verwalten von Daten mithilfe von Azure Cosmos DB-Explorer
+description: Azure Cosmos DB-Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
-ms.openlocfilehash: 691a2e56230d312416aed3d68bffd361f1d63558
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: d4baa92fe4aa2ed402c394198684c4deec2bf9f1
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96008581"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348601"
 ---
-# <a name="work-with-data-using-azure-cosmos-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Cosmos-Explorer 
+# <a name="work-with-data-using-azure-cosmos-db-explorer"></a>Arbeiten mit Daten unter Verwendung von Azure Cosmos DB-Explorer 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
 
-Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten. Azure Cosmos DB Explorer entspricht der vorhandenen Registerkarte **Daten-Explorer**, die beim Erstellen eines Azure Cosmos DB-Kontos im Azure-Portal verfügbar ist. Die wichtigsten Vorteile von Azure Cosmos DB Explorer im Vergleich zum vorhandenen Daten-Explorer:
+Azure Cosmos DB-Explorer ist eine eigenständige webbasierte Schnittstelle, die Ihnen ermöglicht, in Azure Cosmos DB gespeicherte Daten anzuzeigen und zu verwalten. Azure Cosmos DB-Explorer entspricht der vorhandenen Registerkarte **Daten-Explorer**, die beim Erstellen eines Azure Cosmos DB-Kontos im Azure-Portal verfügbar ist. Die wichtigsten Vorteile von Azure Cosmos DB-Explorer im Vergleich zum vorhandenen Daten-Explorer:
 
 * Sie verfügen über einen vollständigen Bildschirm, um Ihre Daten anzuzeigen und Abfragen, gespeicherte Prozeduren und Trigger auszuführen und deren Ergebnisse anzuzeigen.  
 
@@ -24,13 +24,13 @@ Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die 
 
 * Sie können die Ergebnisse der Abfrage für andere Benutzer freigeben, die keinen Zugriff auf das Azure-Portal oder das Abonnement haben.  
 
-## <a name="access-azure-cosmos-db-explorer"></a>Zugreifen auf Azure Cosmos DB Explorer
+## <a name="access-azure-cosmos-db-explorer"></a>Zugreifen auf Azure Cosmos DB-Explorer
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/)an. 
 
 2. Suchen und navigieren Sie über **Alle Ressourcen** zu Ihrem Azure Cosmos DB-Konto, klicken Sie auf „Schlüssel“, und kopieren Sie den Wert von **Primäre Verbindungszeichenfolge**.  
 
-3. Wechseln Sie zu https://cosmos.azure.com/, fügen Sie die Verbindungszeichenfolge ein, und klicken Sie auf **Verbinden**. Durch Verwenden der Verbindungszeichenfolge können Sie ohne Zeitbeschränkung auf den Azure Cosmos DB Explorer zugreifen.  
+3. Wechseln Sie zu https://cosmos.azure.com/, fügen Sie die Verbindungszeichenfolge ein, und klicken Sie auf **Verbinden**. Durch Verwenden der Verbindungszeichenfolge können Sie ohne Zeitbeschränkung auf Azure Cosmos DB-Explorer zugreifen.  
 
    Wenn Sie anderen Benutzern temporären Zugriff auf Ihr Azure Cosmos DB-Konto erteilen möchten, können Sie dafür die Lese-/Schreibzugriff- und die Lesezugriff-URL verwenden. 
 
@@ -42,7 +42,7 @@ Azure Cosmos DB Explorer ist eine eigenständige webbasierte Schnittstelle, die 
 
    Wählen Sie den Typ des Zugriffs, mit dem Sie das Konto öffnen möchten, und klicken Sie auf **Öffnen**. Nachdem Sie den Explorer geöffnet haben, können Sie genauso vorgehen, wie auf der Registerkarte „Daten-Explorer“ im Azure-Portal.
 
-   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Öffnen von Azure Cosmos DB Explorer":::
+   :::image type="content" source="./media/data-explorer/open-data-explorer-with-access-url.png" alt-text="Öffnen von Azure Cosmos DB-Explorer":::
 
 ## <a name="known-issues"></a>Bekannte Probleme
 
@@ -54,6 +54,6 @@ Kunden, die HTTP 401-Fehler erhalten, verfügen möglicherweise nicht über aus
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nachdem Sie die ersten Schritte der Datenverwaltung in Azure Cosmos DB Explorer erlernt haben, haben Sie folgende Möglichkeiten:
+Nachdem Sie die ersten Schritte der Datenverwaltung in Azure Cosmos DB-Explorer erlernt haben, fahren Sie wie folgt fort:
 
 * Definieren Sie zuerst [Abfragen](./sql-query-getting-started.md) mithilfe von SQL-Syntax, und führen Sie [serverseitige Programmierung](stored-procedures-triggers-udfs.md) mit gespeicherten Prozeduren, UDFs und Triggern durch.

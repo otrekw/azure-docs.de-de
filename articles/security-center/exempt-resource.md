@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 347d5ac9de164f2e96340df71fd3b1b908e607c1
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b7780a0ef70a89a88070d5883cc840319a67fa3d
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372743"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122361"
 ---
 # <a name="exempt-a-resource-from-recommendations-and-secure-score"></a>Ausschließen einer Ressource aus Empfehlungen und der Sicherheitsbewertung
 
@@ -48,8 +48,8 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
     :::image type="content" source="./media/exempt-resource/exemption-rule-options.png" alt-text="Bereich „Ausnahme erstellen“":::
 
 1. Geben Sie Ihre Kriterien ein, und wählen Sie ein Kriterium als Grund aus, warum die Ressource ausgeschlossen werden soll:
-    - **Entschärft** : Dieses Problem ist für die Ressource nicht relevant, weil es mit einem anderen als dem vorgeschlagenen Tool oder Prozess verarbeitet wurde.
-    - **Verzicht** : Sie akzeptieren das Risiko für die Ressource.
+    - **Entschärft**: Dieses Problem ist für die Ressource nicht relevant, weil es mit einem anderen als dem vorgeschlagenen Tool oder Prozess verarbeitet wurde.
+    - **Verzicht**: Sie akzeptieren das Risiko für die Ressource.
 1. Wählen Sie **Speichern** aus.
 1. Nach Ablauf des Wartezeitraums (kann bis zu 24 Stunden dauern):
     - Die Ressource wirkt sich nicht mehr auf Ihre Sicherheitsbewertung aus.
@@ -58,7 +58,7 @@ Die Ressource wird als nicht zutreffend aufgeführt, und als Grund wird „Ausge
         
         :::image type="content" source="./media/exempt-resource/info-banner.png" alt-text="Anzahl von ausgeschlossenen Ressourcen":::
 
-1. Öffnen Sie die Registerkarte **Nicht anwendbar** , um Ihre ausgeschlossenen Ressourcen anzuzeigen.
+1. Öffnen Sie die Registerkarte **Nicht anwendbar**, um Ihre ausgeschlossenen Ressourcen anzuzeigen.
 
     :::image type="content" source="./media/exempt-resource/modifying-exemption.png" alt-text="Ändern einer Ausnahme":::
 

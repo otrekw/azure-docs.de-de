@@ -6,14 +6,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: conceptual
-ms.date: 08/20/2020
+ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 0049efda603532099cc9bf24dc9d9411b5aaa389
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92132124"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344333"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Abrechnungskonten und -bereiche im Azure-Portal
 
@@ -33,6 +33,12 @@ Informationen zur Ermittlung des Typs Ihres Abrechnungskontos finden Sie unter [
 
 ## <a name="scopes-for-billing-accounts"></a>Bereiche für Abrechnungskonten
 Ein Bereich ist ein Knoten in einem Abrechnungskonto, den Sie zum Anzeigen und Verwalten der Abrechnung verwenden. Dort verwalten Sie Abrechnungsdaten, Zahlungen und Rechnungen und führen allgemeine Kontoverwaltungsaufgaben aus.
+
+Wenn Sie keinen Zugriff zum Anzeigen oder Verwalten von Abrechnungskonten haben, haben Sie wahrscheinlich keine Zugriffsberechtigung. Sie können Ihren Abrechnungskontoadministrator bitten, Ihnen Zugriff zu gewähren. Weitere Informationen finden Sie in den folgenden Artikeln:
+
+- [Verwalten des Zugriffs auf Abrechnungsinformationen für Azure](manage-billing-access.md)
+- [Grundlegendes zu Verwaltungsrollen für Microsoft-Kundenvereinbarungen in Azure](understand-mca-roles.md)
+- [Verwalten von Azure Enterprise-Rollen](understand-ea-roles.md)
 
 ### <a name="microsoft-online-services-program"></a>Microsoft Online Services-Programm
 

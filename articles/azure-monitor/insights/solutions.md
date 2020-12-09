@@ -7,12 +7,12 @@ author: bwren
 ms.author: bwren
 ms.date: 10/16/2020
 ms.custom: devx-track-azurepowershell, devx-track-azurecli
-ms.openlocfilehash: c38fa77951aaeb5559dc2030f1401a896d7c238d
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f9ced3dfeccdbac5f0eb220cf0e104679f263aac
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841919"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96186863"
 ---
 # <a name="monitoring-solutions-in-azure-monitor"></a>Überwachungslösungen in Azure Monitor
 
@@ -29,7 +29,7 @@ Auf der **Übersichtsseite** der Lösung in Azure Monitor wird für jede in eine
 
 [![Screenshot des Menüs des Azure-Portals mit ausgewählter Option „Lösungen“ und im Bereich „Lösungen“ angezeigten Lösungen](media/solutions/overview.png)](media/solutions/overview.png#lightbox)
 
-Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). So werden z.B. alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/get-started-portal.md#load-queries) aufgelistet. Sie können diese Abfragen verwenden, wenn Sie mit [Protokollabfragen](../log-query/log-query-overview.md) eine Ad-hoc-Analyse durchführen.
+Überwachungslösungen können mehrere Arten von Azure-Ressourcen enthalten, und Sie können beliebige, in einer Lösung enthaltene Ressourcen anzeigen (genau wie bei anderen Ressourcen). Beispielsweise werden alle in der Lösung enthaltenen Protokollabfragen unter **Lösungsabfragen** im [Abfrage-Explorer](../log-query/log-analytics-tutorial.md) aufgeführt. Sie können diese Abfragen bei Ad-hoc-Analysen mit [Protokollabfragen](../log-query/log-query-overview.md) verwenden.
 
 ## <a name="list-installed-monitoring-solutions"></a>Auflisten installierter Überwachungslösungen
 

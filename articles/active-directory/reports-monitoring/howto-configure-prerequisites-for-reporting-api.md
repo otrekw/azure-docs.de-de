@@ -17,12 +17,12 @@ ms.date: 03/04/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: cabf5f40bc17828bc37b5c094de7b90de3ec8b26
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 4ca618dc234ff4383083ff5eb21299fb1e3e7128
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013053"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348737"
 ---
 # <a name="prerequisites-to-access-the-azure-active-directory-reporting-api"></a>Voraussetzungen für den Zugriff auf die Azure Active Directory-Berichterstellungs-API
 
@@ -50,7 +50,7 @@ Um mithilfe der API auf die Berichtsdaten zuzugreifen, müssen Ihnen eine der fo
 
 ## <a name="license-requirements"></a>Lizenzanforderungen
 
-Um auf die Anmeldungsberichte eines Mandanten zugreifen zu können, muss einem Azure AD-Mandanten eine Azure AD Premium-Lizenz zugeordnet sein. Eine Azure AD Premium-Lizenz ab P1 ist erforderlich, um auf die Anmeldeberichte beliebiger Azure AD-Mandanten zugreifen zu können. Alternativ, wenn der Verzeichnistyp Azure AD B2C ist, ist der Zugriff auf die Anmeldeberichte über die API ohne zusätzliche Lizenzanforderungen möglich. 
+Um auf die Anmeldungsberichte eines Mandanten zugreifen zu können, muss einem Azure AD-Mandanten eine Azure AD Premium-Lizenz zugeordnet sein. Eine Azure AD Premium-Lizenz ab P1 ist erforderlich, um auf die Anmeldeberichte beliebiger Azure AD-Mandanten zugreifen zu können. Alternativ dazu ist der Zugriff auf die Anmeldeberichte über die API ohne zusätzliche Lizenzanforderungen möglich, wenn der Verzeichnistyp „Azure AD B2C“ lautet. 
 
 
 ## <a name="register-an-application"></a>Registrieren einer Anwendung

@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: allensu
 ms.custom: references_regions
-ms.openlocfilehash: 8b2f8e82cac1d26689659286a5a0f81f06fb68ca
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f0630599c7c52f11a4cf3153bae38ad2d515b6bc
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695060"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96029760"
 ---
 # <a name="cross-region-load-balancer-preview"></a>Regionsübergreifender Lastenausgleich (Vorschau)
 
@@ -35,7 +35,7 @@ Azure Load Balancer Standard unterstützt regionsübergreifenden Lastenausgleich
 * [Aufbauen auf vorhandener Lastenausgleichslösung](#build-cross-region-solution-on-existing-azure-load-balancer) ohne Lernkurve
 
 > [!IMPORTANT]
-> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und ist nicht allgemein verfügbar.  Um auf die Vorschau für den regionsübergreifenden Lastenausgleich zuzugreifen, wenden Sie sich an: [crossregionlb@microsoft.com](mailto:crossregionlb@microsoft.com). </br> </br>
+> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und wird im Vorschauportal nicht angezeigt. Melden Sie sich bei **https://preview.portal.azure.com/?feature.globallb=true** an, um das Feature anzuzeigen und bereitzustellen. </br> </br>
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Der regionsübergreifende Lastenausgleich bietet die gleichen Vorteile wie Hochleistung und niedrige Latenz wie der regionale Standardlastenausgleich. 
@@ -149,6 +149,6 @@ Regionsübergreifender Lastenausgleich, verwendet die [SLA](https://azure.micros
  
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informationen zu den ersten Schritten mit einem Lastenausgleich finden Sie unter [Erstellen eines öffentlichen Standardlastenausgleichs](quickstart-load-balancer-standard-public-portal.md).
+- Siehe [Tutorial: Erstellen eines regionsübergreifenden Lastenausgleichs im Azure-Portal](tutorial-cross-region-portal.md), um einen regionsübergreifenden Lastenausgleich zu erstellen.
+- Informationen zum Erstellen einen standardmäßigen regionsbezogenen Lastenausgleichs finden Sie unter [Erstellen eines öffentlichen Standardlastenausgleichs](quickstart-load-balancer-standard-public-portal.md).
 - Weitere Informationen zu [Azure Load Balancer](load-balancer-overview.md).
-- Lastenausgleich: [Häufig gestellte Fragen (FAQs)](load-balancer-faqs.md)

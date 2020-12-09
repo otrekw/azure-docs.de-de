@@ -4,12 +4,12 @@ description: Benutzerdefinierte Imagepools sind eine effiziente Möglichkeit zum
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.custom: devx-track-python, devx-track-azurecli
-ms.openlocfilehash: c24da435540f62a793620fe6005d176ce10c7b05
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: eb21a9e0d355274142e34fbb5c90a4d293c88ef1
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917782"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96327303"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-image-pool"></a>Verwenden von Shared Image Gallery zum Erstellen eines benutzerdefinierten Imagepools
 
@@ -58,7 +58,7 @@ In Azure können Sie ein freigegebenes Image aus einem verwalteten Image vorbere
 - Eine generalisierte lokale VHD, die in die Cloud hochgeladen wurde
 
 > [!NOTE]
-> Batch unterstützt derzeit nur generalisierte freigegebene Images. Derzeit können Sie keinen benutzerdefinierten Imagepool aus einem spezialisierten freigegebenen Image erstellen.
+> Batch unterstützt nur universelle freigegebene Images. Ein freigegebenes Image für einen spezifischen Anwendungsfall kann nicht zum Erstellen eines Pools verwendet werden.
 
 In den folgenden Schritten wird gezeigt, wie Sie einen virtuellen Computer vorbereiten, eine Momentaufnahme erstellen und ein Image auf der Grundlage der Momentaufnahme erstellen.
 

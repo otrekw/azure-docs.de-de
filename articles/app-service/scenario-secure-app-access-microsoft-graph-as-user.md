@@ -7,15 +7,16 @@ manager: CelesteDG
 ms.service: app-service-web
 ms.topic: tutorial
 ms.workload: identity
-ms.date: 11/09/2020
+ms.date: 11/30/2020
 ms.author: ryanwi
 ms.reviewer: stsoneff
-ms.openlocfilehash: d3706c26d9b15e9ea607996ace222b29ccd84458
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.custom: azureday1
+ms.openlocfilehash: e07ec17a4e14f0099d82bd444f2ee8d37abe9908
+ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999653"
+ms.lasthandoff: 12/01/2020
+ms.locfileid: "96434990"
 ---
 # <a name="tutorial-access-microsoft-graph-from-a-secured-app-as-the-user"></a>Tutorial: Zugreifen auf Microsoft Graph über eine geschützte App als Benutzer
 
@@ -75,10 +76,12 @@ Speichern Sie Ihre Einstellungen, indem Sie **PUT** auswählen. Es kann mehrere 
 
 Ihre Web-App verfügt jetzt über die erforderlichen Berechtigungen, und den Anmeldeparametern wird die Client-ID von Microsoft Graph hinzugefügt. Mit der [Microsoft.Identity.Web-Bibliothek](https://github.com/AzureAD/microsoft-identity-web/) ruft die Web-App ein Zugriffstoken für die Authentifizierung bei Microsoft Graph ab. In Version 1.2.0 und höher ist die Microsoft.Identity.Web-Bibliothek mit dem App Service-Modul für die Authentifizierung/Autorisierung integriert und kann parallel dazu ausgeführt werden. Microsoft.Identity.Web erkennt, dass die Web-App in App Service gehostet wird, und ruft das Zugriffstoken über das App Service-Modul für die Authentifizierung/Autorisierung ab. Das Zugriffstoken wird dann mit der Microsoft Graph-API an authentifizierte Anforderungen weitergeleitet.
 
+Im [Beispiel auf GitHub](https://github.com/Azure-Samples/ms-identity-easyauth-dotnet-storage-graphapi/tree/main/2-WebApp-graphapi-on-behalf) können Sie sich diesen Code in einer Beispielanwendung ansehen.
+
 > [!NOTE]
 > Die Microsoft.Identity.Web-Bibliothek ist in Ihrer Web-App für die Standardauthentifizierung bzw. -autorisierung oder zum Authentifizieren von Anforderungen mit Microsoft Graph nicht erforderlich. Es ist möglich, [Downstream-APIs auf sichere Weise aufzurufen](tutorial-auth-aad.md#call-api-securely-from-server-code), wenn nur das App Service-Modul für die Authentifizierung/Autorisierung aktiviert ist.
 > 
-> Die Authentifizierung/Autorisierung von App Service ist für grundlegendere Authentifizierungsszenarios ausgelegt. Für komplexere Szenarien (z. B. die Verarbeitung von benutzerdefinierten Ansprüchen) benötigen Sie die Microsoft.Identity.Web-Bibliothek oder die [Microsoft Authentication Library](/azure/active-directory/develop/msal-overview). Anfänglich müssen einige zusätzliche Einrichtungs- und Konfigurationsschritte ausgeführt werden, aber die Microsoft.Identity.Web-Bibliothek kann parallel zum App Service-Modul für die Authentifizierung/Autorisierung ausgeführt werden. Wenn mit Ihrer Web-App später dann komplexere Szenarien verarbeitet werden sollen, können Sie das App Service-Modul für die Authentifizierung/Autorisierung deaktivieren, und Microsoft.Identity.Web ist bereits Teil Ihrer App.
+> Die Authentifizierung/Autorisierung von App Service ist für grundlegendere Authentifizierungsszenarios ausgelegt. Für komplexere Szenarien (z. B. die Verarbeitung von benutzerdefinierten Ansprüchen) benötigen Sie die Microsoft.Identity.Web-Bibliothek oder die [Microsoft Authentication Library](../active-directory/develop/msal-overview.md). Anfänglich müssen einige zusätzliche Einrichtungs- und Konfigurationsschritte ausgeführt werden, aber die Microsoft.Identity.Web-Bibliothek kann parallel zum App Service-Modul für die Authentifizierung/Autorisierung ausgeführt werden. Wenn mit Ihrer Web-App später dann komplexere Szenarien verarbeitet werden sollen, können Sie das App Service-Modul für die Authentifizierung/Autorisierung deaktivieren, und Microsoft.Identity.Web ist bereits Teil Ihrer App.
 
 ### <a name="install-client-library-packages"></a>Installieren von Clientbibliothekspaketen
 
@@ -98,7 +101,7 @@ dotnet add package Microsoft.Identity.Web
 
 # <a name="package-manager"></a>[Paket-Manager](#tab/package-manager)
 
-Öffnen Sie das Projekt bzw. die Projektmappe in Visual Studio und dann die Konsole mit dem Befehl **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**.
+Öffnen Sie das Projekt bzw. die Projektmappe in Visual Studio, und navigieren Sie zu **Extras** > **NuGet-Paket-Manager** > **Paket-Manager-Konsole**, um die Konsole zu öffnen.
 
 Führen Sie die Installationsbefehle aus.
 ```powershell

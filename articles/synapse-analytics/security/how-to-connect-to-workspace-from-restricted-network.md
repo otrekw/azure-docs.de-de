@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 10/25/2020
 ms.author: xujiang1
 ms.reviewer: jrasnick
-ms.openlocfilehash: 55ec8be176dc7274a3b9a1feca53726d57eeb422
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 2e96cbf0c1464e27b0a384e8a813118056103b91
+ms.sourcegitcommit: 192f9233ba42e3cdda2794f4307e6620adba3ff2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024464"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96296684"
 ---
 # <a name="connect-to-workspace-resources-from-a-restricted-network"></a>Herstellen einer Verbindung mit Arbeitsbereichsressourcen über ein eingeschränktes Netzwerk
 
@@ -46,14 +46,11 @@ Weitere Informationen finden Sie unter [Diensttags in virtuellen Netzwerken](/az
 
 Erstellen Sie als Nächstes Private Link-Hubs aus dem Azure-Portal. Um diese im Portal zu finden, suchen Sie nach *Azure Synapse Analytics (Private Link-Hubs)* , und geben Sie dann die erforderlichen Informationen ein, um sie zu erstellen. 
 
-> [!Note]
-> Stellen Sie sicher, dass der Wert **Region** der Region entspricht, wo sich Ihr Azure Synapse Analytics-Arbeitsbereich befindet.
-
 ![Screenshot vom Erstellen des Private Link-Hubs für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/private-links.png)
 
-## <a name="step-3-create-a-private-endpoint-for-your-gateway"></a>Schritt 3: Erstellen eines privaten Endpunkts für Ihr Gateway
+## <a name="step-3-create-a-private-endpoint-for-your-synapse-studio"></a>Schritt 3: Erstellen eines privaten Endpunkts für Synapse Studio
 
-Um auf das Azure Synapse Analytics Studio-Gateway zuzugreifen, müssen Sie einen privaten Endpunkt im Azure-Portal erstellen. Um diesen im Portal zu finden, suchen Sie nach *Private Link*. Wählen Sie **Privaten Endpunkt erstellen** in **Private Link Center** aus, und geben Sie dann die erforderlichen Informationen ein, um ihn zu erstellen. 
+Für den Zugriff auf Azure Synapse Analytics Studio müssen Sie im Azure-Portal einen privaten Endpunkt erstellen. Um diesen im Portal zu finden, suchen Sie nach *Private Link*. Wählen Sie **Privaten Endpunkt erstellen** in **Private Link Center** aus, und geben Sie dann die erforderlichen Informationen ein, um ihn zu erstellen. 
 
 > [!Note]
 > Stellen Sie sicher, dass der Wert **Region** der Region entspricht, wo sich Ihr Azure Synapse Analytics-Arbeitsbereich befindet.
@@ -118,6 +115,43 @@ Wenn Ihr Notebook unter einem bestimmten Speicherkonto auf die verknüpften Spei
 Nachdem Sie diesen Endpunkt erstellt haben, wird als Genehmigungsstatus **Ausstehend** angezeigt. Fordern Sie die Genehmigung vom Besitzer dieses Speicherkontos auf der Registerkarte **Private Endpunktverbindungen** dieses Speicherkontos im Azure-Portal an. Nach der Genehmigung kann Ihr Notebook auf die verknüpften Speicherressourcen unter diesem Speicherkonto zugreifen.
 
 Jetzt ist alles bereit. Sie können auf Ihre Azure Synapse Analytics Studio-Arbeitsbereichsressource zugreifen.
+
+## <a name="appendix-dns-registration-for-private-endpoint"></a>Anhang: DNS-Registrierung für private Endpunkte
+
+Wenn die „Integration in eine private DNS-Zone“ während der Erstellung des privaten Endpunkts wie im folgenden Screenshot nicht aktiviert ist, müssen Sie für jeden Ihrer privaten Endpunkte die „**private DNS-Zone**“ erstellen.
+![Screenshot 1 der Erstellung einer privaten DNS-Zone für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-1.png)
+
+Um im Portal nach der **privaten DNS-Zone** zu suchen, geben Sie den Suchbegriff *Private DNS-Zone* ein. Geben Sie für die **private DNS-Zone** die unten aufgeführten erforderlichen Informationen ein, um sie zu erstellen.
+
+* Geben Sie im Feld **Name** den dedizierten Namen der privaten DNS-Zone für einen bestimmten privaten Endpunkt wie folgt ein:
+  * **`privatelink.azuresynapse.net`** gilt für den privaten Endpunkt für den Zugriff auf das Azure Synapse Analytics Studio-Gateway. Informationen zum Erstellen dieses privaten Endpunkttyps finden Sie in Schritt 3.
+  * **`privatelink.sql.azuresynapse.net`** gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im SQL-Pool und im integrierten Pool. Informationen zum Erstellen dieses Endpunkttyps finden Sie in Schritt 4.
+  * **`privatelink.dev.azuresynapse.net`** gilt für den privaten Endpunkt für den Zugriff auf alles andere innerhalb der Azure Synapse Analytics Studio-Arbeitsbereiche. Informationen zum Erstellen dieses privaten Endpunkttyps finden Sie in Schritt 4.
+  * **`privatelink.dfs.core.windows.net`** gilt für den privaten Endpunkt für den Zugriff auf den mit Azure Data Lake Storage Gen2 verknüpften Arbeitsbereich. Informationen zum Erstellen dieses privaten Endpunkttyps finden Sie in Schritt 5.
+  * **`privatelink.blob.core.windows.net`** gilt für den privaten Endpunkt für den Zugriff auf den mit Azure Blob Storage verknüpften Arbeitsbereich. Informationen zum Erstellen dieses privaten Endpunkttyps finden Sie in Schritt 5.
+
+![Screenshot 2 der Erstellung einer privaten DNS-Zone für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-2.png)
+
+Geben Sie nach der Erstellung der **privaten DNS-Zone** die erstellte private DNS-Zone ein, und wählen Sie **Verknüpfungen virtueller Netzwerke** aus, um Ihrem virtuellen Netzwerk die Verknüpfung hinzuzufügen. 
+
+![Screenshot 3 der Erstellung einer privaten DNS-Zone für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-3.png)
+
+Füllen Sie die Pflichtfelder wie folgt aus:
+* Geben Sie im Feld **Verknüpfungsname** den Namen der Verknüpfung ein.
+* Wählen Sie im Feld **Virtuelles Netzwerk** Ihr virtuelles Netzwerk aus.
+
+![Screenshot 4 der Erstellung einer privaten DNS-Zone für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-4.png)
+
+Nachdem die Verknüpfung des virtuellen Netzwerks hinzugefügt wurde, müssen Sie den DNS-Ressourceneintragssatz in der zuvor erstellten **privaten DNS-Zone** hinzufügen.
+
+* Geben Sie im Feld **Name** die dedizierte Namenszeichenfolge für den jeweiligen privaten Endpunkt ein: 
+  * **web** gilt für den privaten Endpunkt für den Zugriff auf Azure Synapse Analytics Studio.
+  * „***YourWorkSpaceName**_“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im SQL-Pool sowie für den privaten Endpunkt für den Zugriff auf alles andere innerhalb der Azure Synapse Analytics Studio-Arbeitsbereiche. _ „*** YourWorkSpaceName*-ondemand**“ gilt für den privaten Endpunkt für die Ausführung von SQL-Abfragen im integrierten Pool.
+* Wählen Sie im Feld **Typ** nur den DNS-Eintragstyp **A** aus. 
+* Geben Sie im Feld **IP-Adresse** die entsprechende IP-Adresse jedes privaten Endpunkts ein. Sie können die IP-Adresse in der Übersicht über den privaten Endpunkt über die **Netzwerkschnittstelle** ermitteln.
+
+![Screenshot 5 der Erstellung einer privaten DNS-Zone für Synapse.](./media/how-to-connect-to-workspace-from-restricted-network/pdns-zone-5.png)
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

@@ -4,12 +4,12 @@ description: In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 74e2facfd9fd6073acc1f939c3d2ba922e3ac931
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 0f4f990654cc23fde7cf1ad2e37ba1ada76d94e3
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92925576"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324787"
 ---
 # <a name="frequently-asked-questions-back-up-azure-vms"></a>Häufig gestellte Fragen – Sicherung von Azure-VMs
 
@@ -83,15 +83,15 @@ Azure Backup erstellt eine separate Ressourcengruppe im Format `AzureBackupRG_<g
 
 ### <a name="does-azure-backup-support-standard-ssd-managed-disks"></a>Unterstützt Azure Backup verwaltete SSD Standard-Datenträger?
 
-Ja, Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](https://docs.microsoft.com/azure/virtual-machines/disks-types#standard-ssd).
+Ja, Azure Backup unterstützt [verwaltete SSD Standard-Datenträger](../virtual-machines/disks-types.md#standard-ssd).
 
 ### <a name="can-we-back-up-a-vm-with-a-write-accelerator-wa-enabled-disk"></a>Können ich eine VM mit einem Datenträger mit aktivierter Schreibbeschleunigung sichern?
 
-Momentaufnahmen können auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht erstellt werden. Der Azure Backup-Dienst kann den Datenträger mit aktivierter Schreibbeschleunigung jedoch von der Sicherung ausschließen.
+Momentaufnahmen können nur auf Datenträgern für Daten mit aktivierter Schreibbeschleunigung aktiviert werden, nicht auf Betriebssystemdatenträgern. Daher können nur Datenträger mit aktivierter Schreibbeschleunigung geschützt werden.
 
 ### <a name="i-have-a-vm-with-write-accelerator-wa-disks-and-sap-hana-installed-how-do-i-back-up"></a>Ich verfüge über eine VM mit Datenträgern mit Schreibbeschleunigung und installiertem SAP HANA. Wie kann ich diese sichern?
 
-Azure Backup kann den Datenträger mit aktivierter Schreibbeschleunigung nicht sichern, kann ihn aber von der Sicherung ausschließen. Die Sicherung bietet jedoch keine Datenbankkonsistenz, da die Informationen auf dem Datenträger mit aktivierter Schreibbeschleunigung nicht gesichert werden. Sie können Datenträger mit dieser Konfiguration sichern, wenn Sie eine Sicherung des Betriebssystemdatenträgers möchten, sowie Sicherungen von Datenträgern ohne aktivierte Schreibbeschleunigung durchführen.
+Azure Backup kann Datenträger mit aktivierter Schreibbeschleunigung sichern. Die Sicherung bietet jedoch keine Datenbankkonsistenz.
 
 Azure Backup bietet eine Streamingsicherungslösung für SAP HANA-Datenbanken mit einer RPO von 15 Minuten. Der Dienst ist Backint-zertifiziert durch SAP und bietet native Sicherungsunterstützung durch Verwendung der nativen APIs von SAP HANA. Erfahren Sie mehr über [das Sichern von SAP HANA-Datenbanken auf virtuellen Azure-Computern](./sap-hana-db-about.md).
 
@@ -213,4 +213,4 @@ Derzeit können Sie die Aufbewahrungseinstellungen auf der Ebene eines Sicherung
 
 Eine Möglichkeit, die Aufbewahrungseinstellungen für Ihre Sicherungen anzuzeigen, besteht darin, zum [Dashboard](./backup-azure-manage-vms.md#view-vms-on-the-dashboard) des Sicherungselements für Ihre VM im Azure-Portal zu navigieren. Wenn Sie den Link zu ihrer Sicherungsrichtlinie auswählen, können Sie die Aufbewahrungsdauer aller täglichen, wöchentlichen, monatlichen und jährlichen Aufbewahrungspunkte anzeigen, die mit der VM verbunden sind.
 
-Sie können auch den [Sicherungs-Explorer](./monitor-azure-backup-with-backup-explorer.md) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente** , und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.
+Sie können auch den [Sicherungs-Explorer](./monitor-azure-backup-with-backup-explorer.md) verwenden, um die Aufbewahrungseinstellungen für alle Ihre VMs in einer zentralisierten Benutzeroberfläche anzuzeigen. Navigieren Sie von einem beliebigen Recovery Services-Tresor aus zum Sicherungs-Explorer, wechseln Sie zur Registerkarte **Sicherungselemente**, und wählen Sie die erweiterte Ansicht aus, um detaillierte Aufbewahrungsinformationen für jede VM anzuzeigen.

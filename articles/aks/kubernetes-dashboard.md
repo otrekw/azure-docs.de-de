@@ -6,12 +6,12 @@ author: mlearned
 ms.topic: article
 ms.date: 06/03/2020
 ms.author: mlearned
-ms.openlocfilehash: a80082ac524a4777b3b5ee32d946e9db8ec6e7f5
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: 85f0a42cdfcbea2223d202a9dc35f58746580e85
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94681617"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96350125"
 ---
 # <a name="access-the-kubernetes-web-dashboard-in-azure-kubernetes-service-aks"></a>Zugreifen auf das Kubernetes-Webdashboard in Azure Kubernetes Service (AKS)
 
@@ -30,7 +30,7 @@ Weitere Informationen zum Kubernetes-Dashboard finden Sie unter [Web UI (Dashbo
 
 Bei den Schritten in diesem Dokument wird davon ausgegangen, dass Sie einen AKS-Cluster erstellt und eine `kubectl`-Verbindung mit dem Cluster hergestellt haben. Wenn Sie einen AKS-Cluster erstellen müssen, finden Sie weitere Informationen unter [Schnellstart: Bereitstellen eines Azure Kubernetes Service-Clusters über die Azure-Befehlszeilenschnittstelle][aks-quickstart].
 
-Außerdem muss mindestens die Version 2.6.0 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sei bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
+Außerdem muss mindestens die Version 2.6.0 der Azure-Befehlszeilenschnittstelle installiert und konfiguriert sein. Führen Sie `az --version` aus, um die Version zu ermitteln. Informationen zum Durchführen einer Installation oder eines Upgrades finden Sie bei Bedarf unter [Installieren der Azure CLI][install-azure-cli].
 
 ## <a name="disable-the-kubernetes-dashboard"></a>Deaktivieren des Kubernetes-Dashboards
 
@@ -41,6 +41,10 @@ az aks disable-addons -g myRG -n myAKScluster -a kube-dashboard
 ```
 
 ## <a name="start-the-kubernetes-dashboard"></a>Starten des Kubernetes-Dashboards
+
+> [!WARNING]
+> Das AKS-Dashboard-Add-On ist ab Version 1.19 zur Einstellung festgelegt. Verwenden Sie stattdessen die [Kubernetes-Ressourcenansicht im Azure-Portal (Vorschau)][kubernetes-portal]. 
+> * Der folgende Befehl öffnet für die Versionen 1.19 und höher nun die Ressourcenansicht im Azure-Portal anstelle des Kubernetes-Dashboards.
 
 Verwenden Sie den Befehl [az aks browse][az-aks-browse], um das Kubernetes-Dashboard auf einem Cluster zu starten. Dieser Befehl erfordert die Installation des Add-Ons „kube-dashboard“ auf dem Cluster, das bei Clustern mit einer Version älter als Kubernetes 1.18 standardmäßig enthalten ist.
 

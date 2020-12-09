@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 1826b66b0548b7567af59de64549c7eb700025c3
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 7e2826221bd9d15472467c4dd8676d3d0538e0d6
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130900"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96326572"
 ---
 # <a name="use-reference-data-from-a-sql-database-for-an-azure-stream-analytics-job"></a>Verwenden von Verweisdaten aus einer SQL-Datenbank für einen Azure Stream Analytics-Auftrag
 
@@ -32,21 +32,21 @@ Fügen Sie mit den folgenden Schritten die Azure SQL-Datenbank-Instanz als Verwe
 
 ### <a name="define-sql-database-reference-data-input"></a>Definieren der SQL-Datenbank-Verweisdateneingabe
 
-1. Wählen Sie in Ihrem Stream Analytics-Auftrag **Eingaben** unter **Auftragstopologie** aus. Klicken Sie auf **Referenzeingabe hinzufügen** , und wählen Sie **SQL-Datenbank** aus.
+1. Wählen Sie in Ihrem Stream Analytics-Auftrag **Eingaben** unter **Auftragstopologie** aus. Klicken Sie auf **Referenzeingabe hinzufügen**, und wählen Sie **SQL-Datenbank** aus.
 
-   ![Stream Analytics-Auftragseingabe](./media/sql-reference-data/stream-analytics-inputs.png)
+   ![Im linken Navigationsbereich ist die Option „Eingaben“ ausgewählt. Unter „Eingaben“ ist „+ Referenzeingabe hinzufügen“ ausgewählt. Es wird eine Dropdownliste mit den Werten „Blob Storage“ und „SQL-Datenbank“ angezeigt.](./media/sql-reference-data/stream-analytics-inputs.png)
 
 2. Füllen Sie die Stream Analytics-Eingabekonfiguration aus. Wählen Sie Datenbanknamen, Servernamen, Benutzernamen und Kennwort aus. Wenn Sie Ihre Verweisdateneingabe regelmäßig aktualisieren möchten, wählen Sie „Ein“, um die Aktualisierungsrate in TT:HH:MM anzugeben. Wenn Sie über große Datasets mit einer kurzen Aktualisierungsrate verfügen, können Sie eine [Deltaabfrage](sql-reference-data.md#delta-query) durchführen.
 
-   ![SQL-Datenbank-Verweiskonfiguration](./media/sql-reference-data/sql-input-config.png)
+   ![Wenn SQL-Datenbank ausgewählt ist, wird die Seite „Neue Eingabe“ für SQL-Datenbank angezeigt. Im linken Bereich finden Sie ein Konfigurationsformular und im rechten Bereich eine Momentaufnahmeabfrage.](./media/sql-reference-data/sql-input-config.png)
 
 3. Testen Sie die Momentaufnahmenabfrage im SQL-Abfrage-Editor. Weitere Informationen finden Sie unter [Verwenden des SQL-Abfrage-Editors im Azure-Portal zum Verbinden und Abfragen von Daten](../azure-sql/database/connect-query-portal.md).
 
 ### <a name="specify-storage-account-in-job-config"></a>Angeben des Speicherkontos in der Auftragskonfiguration
 
-Navigieren Sie zu **Speicherkontoeinstellungen** unter **Konfigurieren** , und wählen Sie **Speicherkonto hinzufügen** aus.
+Navigieren Sie zu **Speicherkontoeinstellungen** unter **Konfigurieren**, und wählen Sie **Speicherkonto hinzufügen** aus.
 
-   ![Stream Analytics-Speicherkontoeinstellungen](./media/sql-reference-data/storage-account-settings.png)
+   ![Im linken Bereich sind Einstellungen für das Speicherkonto ausgewählt. Im rechten Bereich befindet sich die Schaltfläche „Speicherkonto hinzufügen“.](./media/sql-reference-data/storage-account-settings.png)
 
 ### <a name="start-the-job"></a>Starten des Auftrags
 
@@ -81,7 +81,7 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 1. Wählen Sie in Visual Studio im Menü **Ansicht** den **Server-Explorer** aus.
 
-2. Klicken Sie mit der rechten Maustaste auf **Azure** , wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
+2. Klicken Sie mit der rechten Maustaste auf **Azure**, wählen Sie **Verbindung mit Microsoft Azure-Abonnement herstellen** aus, und melden Sie sich dann mit Ihrem Azure-Konto an.
 
 ### <a name="create-a-stream-analytics-project"></a>Erstellen eines Stream Analytics-Projekts
 
@@ -89,29 +89,29 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 2. Wählen Sie in der Vorlagenliste links **Stream Analytics** und dann **Azure Stream Analytics Application** (Azure Stream Analytics-Anwendung) aus. 
 
-3. Geben Sie **Name** , **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
+3. Geben Sie **Name**, **Speicherort** und **Projektmappenname** für Ihr Projekt ein, und klicken Sie auf **OK**.
 
-   ![Neues Stream Analytics-Projekt in Visual Studio](./media/sql-reference-data/stream-analytics-vs-new-project.png)
+   ![Die Stream Analytics-Vorlage und die Azure Stream Analytics-Anwendung sind ausgewählt, und die Felder „Name“, „Speicherort“ und „Lösungsname“ sind hervorgehoben.](./media/sql-reference-data/stream-analytics-vs-new-project.png)
 
 ### <a name="define-sql-database-reference-data-input"></a>Definieren der SQL-Datenbank-Verweisdateneingabe
 
 1. Erstellen Sie ein neues Element.
 
-   ![Neue Stream Analytics-Eingabe in Visual Studio](./media/sql-reference-data/stream-analytics-vs-input.png)
+   ![Unter „Neues Element hinzufügen“ ist „Eingabe“ ausgewählt.](./media/sql-reference-data/stream-analytics-vs-input.png)
 
 2. Doppelklicken Sie auf **Input.JSON** im **Projektmappen-Explorer**.
 
 3. Füllen Sie die **Stream Analytics-Eingabekonfiguration** aus. Wählen Sie den Datenbanknamen, den Servernamen, den Aktualisierungstyp und die Aktualisierungsrate. Geben Sie die Aktualisierungsrate im Format `DD:HH:MM` an.
 
-   ![Stream Analytics-Eingabekonfiguration in Visual Studio](./media/sql-reference-data/stream-analytics-vs-input-config.png)
+   ![Bei der Konfiguration von Stream Analytics-Eingaben werden Werte eingegeben oder in Dropdownlisten ausgewählt.](./media/sql-reference-data/stream-analytics-vs-input-config.png)
 
    Wenn Sie „Nur einmal ausführen“ oder „In regelmäßigen Abständen ausführen“ auswählen, wird eine SQL CodeBehind-Datei mit dem Namen **[Eingabealias].snapshot.sql** in dem Projekt unter dem Dateiknoten **Input.JSON** generiert.
 
-   ![CodeBehind-Eingabe in Visual Studio](./media/sql-reference-data/once-or-periodically-codebehind.png)
+   ![Die SQL-CodeBehind-Datei „Chemicals.snapshot.sql“ ist hervorgehoben.](./media/sql-reference-data/once-or-periodically-codebehind.png)
 
    Wenn Sie „In regelmäßigen Abständen mit Delta aktualisieren“ auswählen, werden zwei SQL-CodeBehind-Dateien generiert : **[Eingabealias].snapshot.sql** und **[Eingabealias].delta.sql**.
 
-   ![CodeBehind im Projektmappen-Explorer](./media/sql-reference-data/periodically-delta-codebehind.png)
+   ![Die SQL-CodeBehind-Dateien „Chemicals.delta.sql“ und „Chemicals.snapshot.sql“ sind hervorgehoben.](./media/sql-reference-data/periodically-delta-codebehind.png)
 
 4. Öffnen Sie die SQL-Datei im Editor, und schreiben Sie die SQL-Abfrage.
 
@@ -119,9 +119,9 @@ create table chemicals(Id Bigint,Name Nvarchar(max),FullName Nvarchar(max));
 
 ### <a name="specify-storage-account"></a>Festlegen eines Speicherkontos
 
-Öffnen Sie **JobConfig.json** , um das Speicherkonto zum Speichern von SQL-Referenzmomentaufnahmen festzulegen.
+Öffnen Sie **JobConfig.json**, um das Speicherkonto zum Speichern von SQL-Referenzmomentaufnahmen festzulegen.
 
-   ![Stream Analytics-Auftragskonfiguration in Visual Studio](./media/sql-reference-data/stream-analytics-job-config.png)
+   ![Die Konfiguration für den Stream Analytics-Auftrag wird mit Standardwerten angezeigt. Die globalen Speichereinstellungen sind hervorgehoben.](./media/sql-reference-data/stream-analytics-job-config.png)
 
 ### <a name="test-locally-and-deploy-to-azure"></a>Lokales Testen und Bereitstellen in Azure
 
@@ -147,7 +147,7 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
    ```
 2. Erstellen Sie die Momentaufnahmenabfrage. 
 
-   Weisen Sie mit dem **\@snapshotTime** -Parameter die Stream Analytics-Runtime an, das Referenzdataset aus der zur Systemzeit gültigen temporalen SQL-Datenbank-Tabelle abzurufen. Wenn Sie diesen Parameter nicht angeben, riskieren Sie, ein aufgrund von Zeitabweichungen ungenaues Verweisdataset zu erhalten. Ein Beispiel für die vollständige Momentaufnahmenabfrage sehen Sie unten:
+   Weisen Sie mit dem **\@snapshotTime**-Parameter die Stream Analytics-Runtime an, das Referenzdataset aus der zur Systemzeit gültigen temporalen SQL-Datenbank-Tabelle abzurufen. Wenn Sie diesen Parameter nicht angeben, riskieren Sie, ein aufgrund von Zeitabweichungen ungenaues Verweisdataset zu erhalten. Ein Beispiel für die vollständige Momentaufnahmenabfrage sehen Sie unten:
    ```SQL
       SELECT DeviceId, GroupDeviceId, [Description]
       FROM dbo.DeviceTemporal
@@ -156,7 +156,7 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
  
 2. Erstellen Sie die Deltaabfrage. 
    
-   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2** , wenn sie gelöscht wurden. Die Abfrage muss außerdem das **Wasserzeichen** von der SQL Server-Seite hinzufügen, um sicherzustellen, dass alle Aktualisierungen im Deltazeitraum ordnungsgemäß erfasst werden. Die Verwendung der Deltaabfrage ohne **Wasserzeichen** kann zu einem fehlerhaften Verweisdataset führen.  
+   Diese Abfrage ruft alle Zeilen in der SQL-Datenbank-Instanz ab, die zwischen der Startzeit **\@deltaStartTime** und der Endzeit **\@deltaEndTime** eingefügt oder gelöscht wurden. Die Deltaabfrage muss die gleichen Spalten wie die Momentaufnahmenabfrage zurückgeben, sowie die Spalte **_operation_**. Diese Spalte definiert, ob die Zeile zwischen **\@deltaStartTime** und **\@deltaEndTime** eingefügt oder gelöscht wird. Die sich ergebenden Zeilen werden mit **1** gekennzeichnet, wenn die Datensätze eingefügt wurden, oder **2**, wenn sie gelöscht wurden. Die Abfrage muss außerdem das **Wasserzeichen** von der SQL Server-Seite hinzufügen, um sicherzustellen, dass alle Aktualisierungen im Deltazeitraum ordnungsgemäß erfasst werden. Die Verwendung der Deltaabfrage ohne **Wasserzeichen** kann zu einem fehlerhaften Verweisdataset führen.  
 
    Für Datensätze, die aktualisiert wurden, übernimmt die temporale Tabelle die Buchführung durch Erfassen eines Einfüge- und Löschvorgangs. Die Stream Analytics-Runtime wendet dann die Ergebnisse auf die an die vorhergehende Momentaufnahme gerichtete Deltaabfrage an, um die Verweisdaten auf dem neuesten Stand zu halten. Ein Beispiel der Deltaabfrage wird unten gezeigt:
 
@@ -181,27 +181,27 @@ Wenn Sie die Deltaabfrage verwenden, werden [temporale Tabellen in der Azure SQL
 
 1. Konfigurieren Sie die SQL-Verweisdateneingabe:
    
-   ![Konfigurieren der SQL-Verweisdateneingabe](./media/sql-reference-data/configure-sql-reference-data-input.png)
+   ![Ein Visual Studio Code-Editor (Registerkarte) enthält die Datei „ReferenceSQLDatabase.json“.](./media/sql-reference-data/configure-sql-reference-data-input.png)
 
-2. Wählen Sie das Symbol „SQL Server“ aus, und klicken Sie auf **Verbindung hinzufügen** :
+2. Wählen Sie das Symbol „SQL Server“ aus, und klicken Sie auf **Verbindung hinzufügen**:
    
-   ![Klicken auf das Symbol „SQL Server“ und auf „Verbindung hinzufügen“](./media/sql-reference-data/add-sql-connection.png)
+   ![Im linken Bereich wird „+ Verbindung hinzufügen“ angezeigt und ist hervorgehoben.](./media/sql-reference-data/add-sql-connection.png)
 
 3. Füllen Sie die Verbindungsinformationen aus:
    
-   ![Stream Analytics-Eingabekonfiguration in Visual Studio](./media/sql-reference-data/fill-connection-information.png)
+   ![Die beiden Felder für Datenbank- und Serverinformationen sind hervorgehoben.](./media/sql-reference-data/fill-connection-information.png)
 
 4. Klicken Sie mit der rechten Maustaste in den Referenz-SQL-Bereich, und wählen Sie **Abfrage ausführen** aus.
    
-   ![Stream Analytics-Eingabekonfiguration in Visual Studio](./media/sql-reference-data/execute-query.png)
+   ![„Abfrage ausführen“ ist im Kontextmenü hervorgehoben.](./media/sql-reference-data/execute-query.png)
 
 5. Wählen Sie die Verbindung aus:
    
-   ![Stream Analytics-Eingabekonfiguration in Visual Studio](./media/sql-reference-data/choose-connection.png)
+   ![Im Dialogfeld wird „Create a connection profile from the list below“ (Verbindungsprofil aus der Liste unten erstellen) angezeigt, die einen hervorgehobenen Eintrag enthält.](./media/sql-reference-data/choose-connection.png)
 
 6. Überprüfen Sie das Abfrageergebnis:
    
-   ![Stream Analytics-Eingabekonfiguration in Visual Studio](./media/sql-reference-data/verify-result.png)
+   ![Sie finden die Suchergebnisse der Abfrage auf einer Registerkarte im VS Code-Editor.](./media/sql-reference-data/verify-result.png)
 
 
 ## <a name="faqs"></a>Häufig gestellte Fragen

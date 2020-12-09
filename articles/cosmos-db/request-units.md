@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/23/2020
 ms.custom: seo-nov-2020
-ms.openlocfilehash: f698c1ac7ab3ad2dbd86710bea9a48d962603d86
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 23401885580a3883dc49eccc97c17bbedd9080ab
+ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94334583"
+ms.lasthandoff: 11/26/2020
+ms.locfileid: "96187322"
 ---
 # <a name="request-units-in-azure-cosmos-db"></a>Anforderungseinheiten in Azure Cosmos DB
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -40,7 +40,7 @@ Die Art des Azure Cosmos-Kontos, das Sie verwenden, bestimmt die Art, auf die ve
 
 2. **Serverloser Modus**: In diesem Modus müssen Sie beim Erstellen von Ressourcen in Ihrem Azure Cosmos-Konto keinen Durchsatz bereitstellen. Am Ende des Abrechnungszeitraums wird Ihnen die Anzahl der Anforderungseinheiten in Rechnung gestellt, die von den Datenbankvorgängen genutzt wurden. Weitere Informationen finden Sie im Artikel [Serverloser Durchsatz](serverless.md). 
 
-3. **Autoskalierung:** In diesem Modus können Sie den Durchsatz (RU/s) Ihrer Datenbank oder Ihres Containers automatisch und sofort anhand der Nutzung skalieren, ohne die Verfügbarkeit, die Wartezeit, den Durchsatz oder die Leistung der Workload zu beeinträchtigen. Dieser Modus eignet sich gut für unternehmenskritische Workloads, die über variable oder unvorhersehbare Datenverkehrsmuster verfügen und SLAs für hohe Leistung und Skalierung erfordern. Weitere Informationen finden Sie im Artikel [Durchsatz mit Autoskalierung](provision-throughput-autoscale.md). 
+3. **Autoskalierung:** In diesem Modus können Sie den Durchsatz (RU/s) Ihrer Datenbank oder Ihres Containers automatisch und sofort anhand der Nutzung skalieren, ohne dass sich dies auf die Verfügbarkeit, die Wartezeit, den Durchsatz oder die Leistung der Workload auswirkt. Dieser Modus eignet sich gut für unternehmenskritische Workloads, die über variable oder unvorhersehbare Datenverkehrsmuster verfügen und SLAs für hohe Leistung und Skalierung erfordern. Weitere Informationen finden Sie im Artikel [Durchsatz mit Autoskalierung](provision-throughput-autoscale.md). 
 
 ## <a name="request-unit-considerations"></a>Aspekte zu Anforderungseinheiten
 

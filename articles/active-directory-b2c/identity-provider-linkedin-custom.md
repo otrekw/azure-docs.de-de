@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 07/25/2019
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 5cbedad360e5270238225503e7802d571820c871
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 084a8e247ab8bb3e6e6c75cf8cfe8e204384f549
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85388152"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96345149"
 ---
 # <a name="set-up-sign-in-with-a-linkedin-account-using-custom-policies-in-azure-active-directory-b2c"></a>Einrichten der Anmeldung mit einem LinkedIn-Konto mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -42,7 +42,7 @@ Um LinkedIn als Identitätsanbieter in Azure AD B2C zu nutzen, müssen Sie eine 
 1. Geben Sie einen **Firmennamen** ein, der dem Namen einer LinkedIn-Seite entspricht. Erstellen Sie eine LinkedIn-Seite, sofern Sie noch keine besitzen.
 1. (Optional) Geben Sie eine **Datenschutzrichtlinien-URL** ein. Dabei muss es sich um eine gültige URL, aber nicht unbedingt um einen erreichbaren Endpunkt handeln.
 1. Geben Sie eine **geschäftliche E-Mail-Adresse** ein.
-1. Laden Sie ein **App-Logo**bild hoch. Das Logobild muss quadratisch sein, und die Abmessungen müssen mindestens 100 x 100 Pixel betragen.
+1. Laden Sie ein **App-Logo** bild hoch. Das Logobild muss quadratisch sein, und die Abmessungen müssen mindestens 100 x 100 Pixel betragen.
 1. Übernehmen Sie die Standardeinstellungen im Abschnitt **Produkte**.
 1. Überprüfen Sie die unter **Rechtliche Bedingungen** bereitgestellten Informationen. Wenn Sie den Bedingungen zustimmen, aktivieren Sie das Kontrollkästchen.
 1. Wählen Sie **App erstellen** aus.
@@ -77,8 +77,8 @@ Wenn Sie möchten, dass sich Benutzer mit einem LinkedIn-Konto anmelden, müssen
 
 Definieren Sie ein LinkedIn-Konto als Anspruchsanbieter, indem Sie es in der Erweiterungsdatei Ihrer Richtlinie dem Element **ClaimsProviders** hinzufügen.
 
-1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/ **TrustFrameworkExtensions.xml*** . Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
-1. Suchen Sie nach dem Element **ClaimsProviders**. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
+1. Öffnen Sie im Editor die Datei *SocialAndLocalAccounts/**TrustFrameworkExtensions.xml** _. Diese Datei ist im [Starter Pack für benutzerdefinierte Richtlinien][starter-pack] enthalten, das Sie im Rahmen der Voraussetzungen heruntergeladen haben.
+1. Suchen Sie das _ *ClaimsProviders**-Element. Falls das Element nicht vorhanden sein sollte, fügen Sie es unter dem Stammelement hinzu.
 1. Fügen Sie ein neues **ClaimsProvider**-Element wie folgt hinzu:
 
     ```xml
@@ -99,7 +99,7 @@ Definieren Sie ein LinkedIn-Konto als Anspruchsanbieter, indem Sie es in der Erw
             <Item Key="external_user_identity_claim_id">id</Item>
             <Item Key="BearerTokenTransmissionMethod">AuthorizationHeader</Item>
             <Item Key="ResolveJsonPathsInJsonTokens">true</Item>
-            <Item Key="UsePolicyInRedirectUri">0</Item>
+            <Item Key="UsePolicyInRedirectUri">false</Item>
             <Item Key="client_id">Your LinkedIn application client ID</Item>
           </Metadata>
           <CryptographicKeys>

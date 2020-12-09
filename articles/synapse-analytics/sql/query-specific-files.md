@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 05/20/2020
 ms.author: stefanazaric
 ms.reviewer: jrasnick
-ms.openlocfilehash: e3f0a9f0b7fdef26cf1ef2b145ede1826fda6ebd
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: d24ae1f42c685589309506b2d5e0eab157b2bc42
+ms.sourcegitcommit: 5e2f5efba1957ba40bd951c3dcad42f4a00734ff
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94685595"
+ms.lasthandoff: 11/27/2020
+ms.locfileid: "96299614"
 ---
 # <a name="use-file-metadata-in-serverless-sql-pool-queries"></a>Verwenden von Dateimetadaten in Abfragen eines serverlosen SQL-Pools
 
@@ -76,7 +76,7 @@ ORDER BY
 
 Die Dateipfadfunktion (filepath) gibt einen vollständigen oder teilweisen Pfad zurück:
 
-- Beim Aufruf ohne Parameter wird der vollständige Pfad einer Datei zurückgegeben, aus der die Zeile stammt.
+- Beim Aufruf ohne Parameter wird der vollständige Pfad einer Datei zurückgegeben, aus der die Zeile stammt. Wenn DATA_SOURCE in OPENROWSET verwendet wird, wird der Pfad relativ zu DATA_SOURCE zurückgegeben. 
 - Beim Aufruf mit Parameter wird ein Teil eines Pfads zurückgegeben, der dem Platzhalterzeichen an der im Parameter angegebenen Position entspricht. Der Parameterwert 1 würde z. B. den Teil eines Pfads zurückgeben, der dem ersten Platzhalterzeichen entspricht.
 
 Das folgende Beispiel liest die Datendateien von „NYC Yellow Taxi“ für die letzten drei Monate des Jahres 2017. Es gibt die Anzahl der Fahrten pro Dateipfad zurück. Der OPENROWSET-Teil der Abfrage gibt an, welche Dateien gelesen werden sollen.

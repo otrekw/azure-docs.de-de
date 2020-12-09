@@ -10,14 +10,14 @@ ms.subservice: azure-sentinel
 ms.topic: conceptual
 ms.custom: mvc
 ms.date: 09/06/2020
-ms.openlocfilehash: ded332813a840892f640aa6f6e48debbfe381b4b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d5d182276cd77493be5184503a1afc47934bf8ea
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90889331"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344192"
 ---
-# <a name="use-jupyter-notebooks-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebooks
+# <a name="use-jupyter-notebook-to-hunt-for-security-threats"></a>Aufspüren von Sicherheitsrisiken mit Jupyter Notebook
 
 Grundlage für Azure Sentinel ist der Datenspeicher. Dieser zeichnet sich durch Hochleistungsabfragen, ein dynamisches Schema und die Skalierung auf große Datenvolumen aus. Das Azure-Portal und alle Azure Sentinel-Tools greifen über eine gemeinsame API auf diesen Datenspeicher zu. Die gleiche API ist auch für externe Tools wie [Jupyter Notebooks](https://jupyter.org/) und Python verfügbar. Viele gängige Aufgaben können im Portal durchgeführt werden, Jupyter erweitert jedoch den Rahmen der Verarbeitung dieser Daten. Jupyter bietet sowohl umfassende Programmierbarkeit als auch eine große Sammlung von Bibliotheken für Machine Learning, Visualisierung und Datenanalyse. Dies macht Jupyter zu einem überzeugenden Tool für Sicherheitsuntersuchungen und Aufspüren von Sicherheitsrisiken.
 
@@ -61,9 +61,9 @@ Sie müssen zuerst einen Azure Machine Learning-Arbeitsbereich (ML) erstellen, u
 
 1. Geben Sie auf der Seite **Machine Learning** die folgenden Informationen an, und klicken Sie anschließend auf **Überprüfen + erstellen**.
 
-    |Feld|Beschreibung|
+    |Feld|BESCHREIBUNG|
     |--|--|
-    |Abonnement|Wählen Sie das gewünschte Azure-Abonnement aus.|
+    |Subscription|Wählen Sie das gewünschte Azure-Abonnement aus.|
     |Resource group|Verwenden Sie eine vorhandene Ressourcengruppe in Ihrem Abonnement, oder geben Sie einen Namen ein, um eine neue Ressourcengruppe zu erstellen. Eine Ressourcengruppe enthält verwandte Ressourcen für eine Azure-Lösung. In diesem Beispiel wird **AzureMLRG** verwendet.|
     |Arbeitsbereichname|Geben Sie einen eindeutigen Namen ein, der Ihren Arbeitsbereich identifiziert. In diesem Beispiel wird **testworkspace1** verwendet. Namen müssen in der Ressourcengruppe eindeutig sein. Verwenden Sie einen Namen, der leicht zu merken ist und sich von den von anderen Benutzern erstellten Arbeitsbereichen unterscheidet.|
     |Region|Wählen Sie den Standort aus, der Ihren Benutzern und den Datenressourcen am nächsten ist, um Ihren Arbeitsbereich zu erstellen.|
@@ -140,7 +140,7 @@ Wir freuen uns über Feedback, egal ob es sich um Vorschläge, Empfehlungen für
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Artikel wurden die ersten Schritte beim Verwenden von Jupyter-Notebooks in Azure Sentinel erläutert. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
+In diesem Artikel wurden die ersten Schritte beim Verwenden von Jupyter Notebook in Azure Sentinel erläutert. Weitere Informationen zu Azure Sentinel finden Sie in den folgenden Artikeln:
 
 - [Proactively hunt for threats (Proaktive Ermittlung von Bedrohungen)](hunting.md)
 - [Behalten des Überblicks über Daten bei einer Bedrohungssuche](bookmarks.md)

@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: troubleshooting
 ms.date: 11/17/2020
 ms.author: lle
-ms.openlocfilehash: 93c35828444ec93a974769ed3a2f1981c0ec4368
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: 635178999398287649d8630fc5262a385afc48b2
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96013454"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96341783"
 ---
 # <a name="troubleshoot-self-hosted-integration-runtime"></a>Problembehandlung bei der selbstgehosteten Integration Runtime
 
@@ -459,6 +459,22 @@ Vor und nach der Konvertierung:
 
 ![Nach der Zertifikatänderung](media/self-hosted-integration-runtime-troubleshoot-guide/after-certificate-change.png)
 
+### <a name="self-hosted-integration-runtime-version-5x"></a>Selbstgehostete Integration Runtime, Version 5.x
+Für das Upgrade auf Version 5.x der selbstgehosteten Integration Runtime von Azure Data Factory wird mindestens **.NET Framework Runtime 4.7.2** benötigt. Auf der Downloadseite befinden sich Downloadlinks für die neueste 4.x-Version und die beiden neuesten 5.x-Versionen. 
+
+
+Für ADF V2-Kunden:
+- Wenn die automatische Aktualisierung aktiviert ist und Sie bereits ein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, erfolgt automatisch ein Upgrade der selbstgehosteten Integration Runtime auf die neueste 5.x-Version.
+- Wenn die automatische Aktualisierung aktiviert ist und Sie kein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, erfolgt kein automatisches Upgrade der selbstgehosteten Integration Runtime auf die neueste 5.x-Version. Die selbstgehostete Integration Runtime verbleibt in der aktuellen 4.x-Version. Es wird eine Warnung zum Upgrade von .NET Framework Runtime im Portal und im selbstgehosteten Integration Runtime-Client angezeigt.
+- Wenn die automatische Aktualisierung deaktiviert ist und Sie bereits ein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben, können Sie die neueste 5.x-Version manuell herunterladen und auf Ihrem Computer installieren.
+- Wenn die automatische Aktualisierung deaktiviert ist und Sie kein Upgrade auf .NET Framework Runtime 4.7.2 oder höher durchgeführt haben. Wenn Sie versuchen, Version 5.x der selbstgehosteten Integration Runtime manuell zu installieren und den Schlüssel zu registrieren, müssen Sie zuerst ein Upgrade für .NET Framework Runtime durchführen.
+
+
+Für ADF V1-Kunden:
+- Version 5.x der selbstgehosteten Integration Runtime bietet keine Unterstützung für ADF V1.
+- Es wird ein automatisches Upgrade der selbstgehosteten Integration Runtime auf die neueste 4.x-Version durchgeführt. Die letzte 4.x-Version läuft nicht ab. 
+- Wenn Sie versuchen, Version 5.x der selbstgehosteten Integration Runtime manuell zu installieren und den Schlüssel zu registrieren, werden Sie darüber informiert, dass Version 5.x der selbstgehosteten Integration Runtime V1 nicht unterstützt.
+
 
 ## <a name="self-hosted-ir-connectivity-issues"></a>Konnektivitätsprobleme bei der selbstgehosteten Integration Runtime
 
@@ -736,7 +752,7 @@ Es gibt zwei mögliche Gründe für dieses Problem:
 - Stellen Sie für Grund 1 sicher, dass das ADF-Serverzertifikat und die dazugehörige Zertifikatkette auf dem Computer, auf dem die selbstgehostete Integration Runtime installiert ist, als vertrauenswürdig gelten.
 - Stellen Sie für Grund 2 entweder auf dem Computer mit der selbstgehosteten Integration Runtime eine Vertrauensstellung zur ersetzten Stammzertifizierungsstelle her, oder konfigurieren Sie den Proxy so, dass das ADF-Serverzertifikat nicht ersetzt wird.
 
-Ausführliche Informationen zum Herstellen einer Vertrauensbeziehung zu einem Zertifikat unter Windows finden Sie [in diesem Artikel](https://docs.microsoft.com/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
+Ausführliche Informationen zum Herstellen einer Vertrauensbeziehung zu einem Zertifikat unter Windows finden Sie [in diesem Artikel](/skype-sdk/sdn/articles/installing-the-trusted-root-certificate).
 
 #### <a name="additional-info"></a>Zusätzliche Informationen
 Wir führen ein Rollout eines neuem SSL-Zertifikats aus, das von DigiCert signiert ist. Überprüfen Sie, ob „DigiCert Global Root G2“ in der vertrauenswürdigen Stammzertifizierungsstelle enthalten ist.
@@ -757,6 +773,7 @@ Beim Versuch, die selbstgehostete Integration Runtime über die Azure Data Facto
 #### <a name="cause"></a>Ursache
 
 Die selbstgehostete Integration Runtime kann nicht mandantenübergreifend freigegeben werden.
+
 
 
 ## <a name="next-steps"></a>Nächste Schritte

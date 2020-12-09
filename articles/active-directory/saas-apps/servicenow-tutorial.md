@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 3413e594179cdca0704cb5db7908276b7502e719
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 7a15248300150c9b79c4678701f81fac923d56a3
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004754"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96353606"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit ServiceNow
 
@@ -25,6 +25,8 @@ In diesem Tutorial erfahren Sie, wie Sie ServiceNow in Azure Active Directory (A
 * Sie können in Azure AD steuern, wer Zugriff auf ServiceNow hat.
 * Sie können es Ihren Benutzern ermöglichen, sich mit ihren Azure AD-Konten automatisch bei ServiceNow anzumelden.
 * Verwalten Sie Ihre Konten zentral im Azure-Portal.
+
+> [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4Jao6]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -104,7 +106,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
     d. Geben Sie unter **Abmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instancename>.service-now.com/navpage.do`
 
     > [!NOTE]
-    > Wenn „/ “ im Wert „Bezeichner“ hinzugefügt wird, entfernen Sie dies manuell.
+    > Sollte im Bezeichnerwert „/ “ hinzugefügt werden, entfernen Sie dies manuell.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, Antwort-URL, Abmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird im weiteren Verlauf des Tutorials erläutert. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -175,7 +177,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
     d. Geben Sie unter **Abmelde-URL** eine URL mit dem folgenden Muster ein: `https://<instancename>.service-now.com/navpage.do`
     
     > [!NOTE]
-    > Wenn „/ “ im Wert „Bezeichner“ hinzugefügt wird, entfernen Sie dies manuell.
+    > Sollte im Bezeichnerwert „/ “ hinzugefügt werden, entfernen Sie dies manuell.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Sie müssen diese Werte durch die tatsächliche Anmelde-URL, Antwort-URL, Abmelde-URL und den tatsächlichen Bezeichner ersetzen. Dies wird im weiteren Verlauf des Tutorials erläutert. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -478,5 +480,4 @@ Wenn Sie im Zugriffsbereich auf die Kachel „ServiceNow“ klicken, sollten Sie
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Nach dem Konfigurieren von ServiceNow können Sie Sitzungssteuerungen erzwingen. Dies schützt in Echtzeit vor der Exfiltration und Infiltration Ihrer vertraulichen Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.
-
+Nach dem Konfigurieren von ServiceNow können Sie Sitzungssteuerungen erzwingen. Dies schützt in Echtzeit vor der Exfiltration und Infiltration Ihrer vertraulichen Unternehmensdaten. Sitzungssteuerungen basieren auf bedingtem Zugriff. [Hier](/cloud-app-security/proxy-deployment-aad) erfahren Sie, wie Sie die Sitzungssteuerung mit Microsoft Cloud App Security erzwingen.

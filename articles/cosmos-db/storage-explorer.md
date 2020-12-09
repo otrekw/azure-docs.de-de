@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 10/23/2020
 ms.author: dech
 ms.custom: seodec18, has-adal-ref
-ms.openlocfilehash: 61ae446d180a86b42bc52ac3244b96b7b347b68f
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 5b09ce48226b3c31efce4966ec776c10931cc391
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96010570"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96348652"
 ---
 # <a name="manage-azure-cosmos-db-resources-by-using-azure-storage-explorer"></a>Verwalten von Azure Cosmos DB-Ressourcen mit Azure Storage-Explorer
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -22,7 +22,7 @@ Verwenden Sie Azure Storage-Explorer, um eine Verbindung mit Azure Cosmos DB he
 Sie können mit demselben Tool Ihre verschiedenen Azure-Entitäten an einem Ort verwalten. Sie können Azure Cosmos DB-Entitäten verwalten, Daten bearbeiten und gespeicherte Prozeduren und Trigger zusammen mit anderen Azure-Entitäten wie Speicherblobs und Warteschlangen aktualisieren. Azure Storage-Explorer unterstützt Cosmos-Konten, die für SQL-, MongoDB-, Graph- und Tabellen-APIs konfiguriert sind.
 
 > [!NOTE]
-> Die Azure Cosmos DB-Integration in Storage-Explorer ist veraltet. Vorhandene Funktionen werden für mindestens ein Jahr ab diesem Release nicht entfernt. Sie sollten stattdessen das [Azure-Portal](https://portal.azure.com/), die [Desktop-App für das Azure-Portal](https://portal.azure.com/App/Download) oder den eigenständigen [Azure Cosmos-Explorer](data-explorer.md) verwenden. Die alternativen Optionen enthalten viele neue Features, die derzeit in Storage-Explorer nicht unterstützt werden.
+> Die Azure Cosmos DB-Integration in Storage-Explorer ist veraltet. Vorhandene Funktionen werden für mindestens ein Jahr ab diesem Release nicht entfernt. Sie sollten stattdessen das [Azure-Portal](https://portal.azure.com/), die [Desktop-App für das Azure-Portal](https://portal.azure.com/App/Download) oder den eigenständigen [Azure Cosmos DB-Explorer](data-explorer.md) verwenden. Die alternativen Optionen enthalten viele neue Features, die derzeit in Storage-Explorer nicht unterstützt werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

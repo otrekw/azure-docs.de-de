@@ -3,12 +3,12 @@ title: Neuerungen in Azure Backup
 description: Erfahren Sie mehr über die neuen Features in Azure Backup.
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.openlocfilehash: e48a7df1e42591843c30b77026a4d8656773a57d
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: ba29ddea5d5f096640f2bfc012c44ab06bb3e131
+ms.sourcegitcommit: ac7029597b54419ca13238f36f48c053a4492cb6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95511377"
+ms.lasthandoff: 11/29/2020
+ms.locfileid: "96309663"
 ---
 # <a name="whats-new-in-azure-backup"></a>Neuerungen in Azure Backup
 
@@ -19,6 +19,7 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
 ## <a name="updates-summary"></a>Übersicht über Updates
 
 - November 2020
+  - [Azure Resource Manager-Vorlage für die Sicherung der Azure-Dateifreigabe](#azure-resource-manager-template-for-afs-backup)
   - [Inkrementelle Sicherungen für SAP HANA-Datenbanken auf Azure-VMs](#incremental-backups-for-sap-hana-databases)
 - September 2020
   - [Backup Center](#backup-center)
@@ -30,6 +31,12 @@ Weitere Informationen zu den neuen Releases erhalten Sie, indem Sie diese Seite 
   - [Sichern von SAP HANA in Azure Virtual Machines unter RHEL](#backup-sap-hana-in-rhel-azure-virtual-machines)
   - [Zonenredundanter Speicher (ZRS) für Sicherungsdaten](#zone-redundant-storage-zrs-for-backup-data)
   - [Vorläufiges Löschen für SQL Server- und SAP HANA-Workloads auf Azure-VMs](#soft-delete-for-sql-server-and-sap-hana-workloads)
+
+## <a name="azure-resource-manager-template-for-afs-backup"></a>Azure Resource Manager-Vorlage für die Sicherung der Azure-Dateifreigabe
+
+Azure Backup unterstützt jetzt das Konfigurieren von Sicherungen für bestehende Azure-Dateifreigaben mithilfe einer Azure Resource Manager-Vorlage (ARM-Vorlage). Mit der Vorlage wird der Schutz für eine vorhandene Azure-Dateifreigabe konfiguriert, indem entsprechende Details für den Recovery Services-Tresor und die Sicherungsrichtlinie angegeben werden. Optional erstellt sie einen neuen Recovery Services-Tresor und eine neue Sicherungsrichtlinie und registriert das Speicherkonto, das die Dateifreigabe enthält, im Recovery Services-Tresor.
+
+Weitere Informationen finden Sie unter [Azure Resource Manager-Vorlagen für Azure Backup](backup-rm-template-samples.md).
 
 ## <a name="incremental-backups-for-sap-hana-databases"></a>Inkrementelle Sicherungen für SAP HANA-Datenbanken
 

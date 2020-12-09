@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 02/05/2020
 ms.author: kenwith
 ms.custom: contperfq2
-ms.openlocfilehash: 4c37923b0955652a0627808b19762095c18bdedc
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: a1d83f91ad82bddacb7e806e31151b8e4a7ab612
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92737661"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96344928"
 ---
 # <a name="reference-for-writing-expressions-for-attribute-mappings-in-azure-ad"></a>Referenz zum Schreiben von Ausdrücken für Attributzuordnungen in Azure AD
 
@@ -444,19 +444,19 @@ Gibt „Joh“ zurück.
 
 **Beschreibung:** Hiermit werden Werte in einer Zeichenfolge unter Beachtung der Groß-/Kleinschreibung ersetzt. Die Funktion weist ein anderes Verhalten auf, je nachdem, welche Parameter angegeben werden:
 
-* Bei Angabe von **AlterWert** und **Ersatzwert** :
+* Bei Angabe von **AlterWert** und **Ersatzwert**:
   
   * Ersetzt alle Vorkommen von **AlterWert** in der **Quelle** durch **Ersatzwert**.
-* Bei Angabe von **AlterWert** und **Vorlage** :
+* Bei Angabe von **AlterWert** und **Vorlage**:
   
-  * Ersetzt alle Vorkommen von **AlterWert** in **Vorlage** durch den **Quellwert** ).
-* Bei Angabe von **RegexMuster** und **Ersatzwert** :
+  * Ersetzt alle Vorkommen von **AlterWert** in **Vorlage** durch den **Quellwert**).
+* Bei Angabe von **RegexMuster** und **Ersatzwert**:
 
   * Die Funktion wendet das **RegexMuster** auf die Zeichenfolge in **Quelle** an, und Sie können die RegexGruppennamen zum Erstellen der Zeichenfolgen für **Ersatzwert** verwenden.
-* Bei Angabe von **RegexMuster** , **RegexGruppenname** und **Ersatzwert** :
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzwert**:
   
   * Die Funktion wendet das **RegexMuster** auf die **Quellzeichenfolge** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch **Ersatzwert**.
-* Bei Angabe von **RegexMuster** , **RegexGruppenname** und **Ersatzattributname** :
+* Bei Angabe von **RegexMuster**, **RegexGruppenname** und **Ersatzattributname**:
   
   * Falls kein Wert für **Quelle** vorhanden ist, wird **Quelle** zurückgegeben.
   * Wenn **Quelle** einen Wert umfasst, wendet die Funktion das **RegexMuster** auf die Zeichenfolge in **Quelle** an und ersetzt alle mit **RegexGruppenname** übereinstimmenden Werte durch den Wert, der **Ersatzattributname** zugeordnet ist.
@@ -467,7 +467,7 @@ Gibt „Joh“ zurück.
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Objekt **Quelle**. |
 | **AlterWert** |Optional |String |Wert, der in **Quelle** oder **Vorlage** ersetzt werden soll. |
-| **RegexMuster** |Optional |String |Regex-Muster für den Wert, der in der **Quelle** ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname** , das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
+| **RegexMuster** |Optional |String |Regex-Muster für den Wert, der in der **Quelle** ersetzt wird. Oder, bei Verwendung von **Ersatzeigenschaftsname**, das Muster, das zum Extrahieren des Werts aus **Ersatzeigenschaftsname** verwendet wird. |
 | **RegexGruppenname** |Optional |String |Name der Gruppe im **RegexMuster**. Nur bei Verwendung von **Ersatzeigenschaftsname** wird der Wert dieser Gruppe als **Ersatzwert** aus **Ersatzeigenschaftsname** extrahiert. |
 | **Ersatzwert** |Optional |String |Neuer Wert, durch den der alte Wert ersetzt wird. |
 | **Ersatzattributname** |Optional |String |Name des Attributs, das als Ersatzwert verwendet werden soll. |
@@ -542,34 +542,34 @@ Gibt „Joh“ zurück.
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |**Source** , der aktualisiert werden soll. |
 | **defaultValue** |Optional |String |Der Standardwert, der verwendet werden soll, wenn die Quelle mit keinem Schlüssel übereinstimmt. Kann eine leere Zeichenfolge ("") sein. |
-| **key** |Erforderlich |String |**Schlüssel** , der mit dem **Quellwert** verglichen werden soll. |
+| **key** |Erforderlich |String |**Schlüssel**, der mit dem **Quellwert** verglichen werden soll. |
 | **value** |Erforderlich |String |Der Ersatzwert für die **Quelle** , die mit dem Schlüssel übereinstimmt. |
 
 ---
 ### <a name="tolower"></a>ToLower
 **Funktion:** ToLower(source, culture)
 
-**Beschreibung:** Konvertiert einen *source* -Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Kleinbuchstaben. Ohne Angabe der *culture* -Information wird die invariante Kultur verwendet.
+**Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Kleinbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
 **Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2* , wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 ### <a name="toupper"></a>ToUpper
 **Funktion:** ToUpper(source, culture)
 
-**Beschreibung:** Konvertiert einen *source* -Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture* -Information wird die invariante Kultur verwendet.
+**Beschreibung:** Konvertiert einen *source*-Zeichenfolgenwert mithilfe der angegebenen Kulturregeln in Großbuchstaben. Ohne Angabe der *culture*-Information wird die invariante Kultur verwendet.
 
 **Parameter:** 
 
 | Name | Erforderlich/wiederholt | type | Notizen |
 | --- | --- | --- | --- |
 | **Quelle** |Erforderlich |String |Normalerweise der Name des Attributs aus dem Quellobjekt |
-| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2* , wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
+| **culture** |Optional |String |Das Format für den Kulturnamen lautet basierend auf dem Standard RFC 4646 *languagecode2-country/regioncode2*, wobei *languagecode2* der aus zwei Buchstaben bestehende Sprachcode und *country/regioncode2* der aus zwei Buchstaben bestehende Subkulturcode ist. Beispiele sind „ja-JP“ für Japanisch (Japan) und „en-US“ für Englisch (USA). In Fällen, in denen kein aus zwei Buchstaben bestehender Sprachcode verfügbar ist, wird ein aus drei Buchstaben bestehender, von ISO 639-2 abgeleiteter Code verwendet.|
 
 ---
 ### <a name="word"></a>Wort
@@ -610,7 +610,7 @@ Sie müssen einen bekannten Domänennamen aus der E-Mail-Adresse eines Benutzers
 **Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (mail): "john.doe@contoso.com"
-* **AUSGABE** : "john.doe"
+* **AUSGABE**: "john.doe"
 
 ### <a name="append-constant-suffix-to-user-name"></a>Anfügen eines konstanten Suffixes an einen Benutzernamen
 Wenn Sie eine Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weiteres Suffix an alle Benutzernamen anfügen, bevor Sie diese synchronisieren.
@@ -620,8 +620,8 @@ Wenn Sie eine Salesforce Sandbox verwenden, müssen Sie möglicherweise ein weit
 
 **Beispieleingabe/-ausgabe:** 
 
-* **EINGABE** : (userPrincipalName): "John.Doe@contoso.com"
-* **AUSGABE** :  "John.Doe@contoso.com.test"
+* **EINGABE**: (userPrincipalName): "John.Doe@contoso.com"
+* **AUSGABE**:  "John.Doe@contoso.com.test"
 
 ### <a name="generate-user-alias-by-concatenating-parts-of-first-and-last-name"></a>Generieren eines Benutzeralias durch Verketten von Teilen des Vor- und Nachnamens
 Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben des Vornamens und die ersten fünf Buchstaben des Nachnamens des Benutzers verwenden.
@@ -633,7 +633,7 @@ Sie müssen einen Benutzeralias generieren, indem Sie die ersten drei Buchstaben
 
 * **EINGABE** (givenName): „John“
 * **EINGABE** (surname): „Doe“
-* **AUSGABE** :  „JohDoe“
+* **AUSGABE**:  „JohDoe“
 
 ### <a name="remove-diacritics-from-a-string"></a>Entfernen diakritischer Zeichen aus einer Zeichenfolge
 Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
@@ -643,7 +643,7 @@ Sie müssen Zeichen mit Akzent durch entsprechende Zeichen ohne Akzent ersetzen.
 **Beispieleingabe/-ausgabe:** 
 
 * **EINGABE** (givenName): „Zoë“
-* **AUSGABE** :  „Zoe“
+* **AUSGABE**:  „Zoe“
 
 ### <a name="split-a-string-into-a-multi-valued-array"></a>Unterteilen einer Zeichenfolge in ein mehrwertiges Array
 Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen in ein Array unterteilen, das in ein mehrwertiges Attribut wie das PermissionSets-Attribut von Salesforce eingegeben werden kann. In diesem Beispiel wurde eine Liste von Berechtigungssätzen in extensionAttribute5 in Azure AD eingegeben.
@@ -652,7 +652,7 @@ Sie müssen eine durch Trennzeichen getrennte Liste von Zeichenfolgen in ein Arr
 
 **Beispieleingabe/-ausgabe:** 
 
-* **EINGABE:** (extensionAttribute5): "PermissionSetOne, PermisionSetTwo"
+* **EINGABE:** (extensionAttribute5): "PermissionSetOne, PermissionSetTwo"
 * **AUSGABE:** ["PermissionSetOne", "PermissionSetTwo"]
 
 ### <a name="output-date-as-a-string-in-a-certain-format"></a>Ausgabedatum eines Datums als Zeichenfolge in einem bestimmten Format
@@ -665,7 +665,7 @@ Sie möchten Datumsangaben in einem bestimmten Format an eine SaaS-Anwendung sen
 **Beispieleingabe/-ausgabe:**
 
 * **EINGABE** (extensionAttribute1): 20150123105347.1Z
-* **AUSGABE** :  2015-01-23
+* **AUSGABE**:  2015-01-23
 
 ### <a name="replace-a-value-based-on-predefined-set-of-options"></a>Ersetzen eines Werts anhand eines vordefinierten Satzes von Optionen
 
@@ -677,7 +677,7 @@ Sie müssen die Zeitzone des Benutzers anhand des Bundesstaatscodes festlegen, d
 **Beispieleingabe/-ausgabe:**
 
 * **EINGABE** (state): „QLD“
-* **AUSGABE** : „Australien/Brisbane“
+* **AUSGABE**: „Australien/Brisbane“
 
 ### <a name="replace-characters-using-a-regular-expression"></a>Ersetzen von Zeichen mit einem regulären Ausdruck
 Sie müssen Zeichen suchen, die mit einem regulären Ausdruck übereinstimmen, und diese entfernen.
@@ -689,7 +689,7 @@ Replace([mailNickname], , "[a-zA-Z_]*", , "", , )
 **Beispieleingabe/-ausgabe:**
 
 * **EINGABE:** (mailNickname: "john_doe72"
-* **AUSGABE** : "72"
+* **AUSGABE**: "72"
 
 ### <a name="convert-generated-userprincipalname-upn-value-to-lower-case"></a>Konvertieren des generierten userPrincipalName-Werts (UPN) in Kleinbuchstaben
 Im folgenden Beispiel wird der UPN-Wert durch die Verkettung der Quellfelder PreferredFirstName und PreferredLastName generiert, und die ToLower-Funktion konvertiert alle Zeichen der generierten Zeichenfolge in Kleinbuchstaben. 
@@ -700,7 +700,7 @@ Im folgenden Beispiel wird der UPN-Wert durch die Verkettung der Quellfelder Pre
 
 * **EINGABE** (PreferredFirstName): „John“
 * **EINGABE** (PreferredLastName): „Smith“
-* **AUSGABE** : „john.smith@contoso.com“
+* **AUSGABE**: „john.smith@contoso.com“
 
 ### <a name="generate-unique-value-for-userprincipalname-upn-attribute"></a>Generieren eines eindeutigen Werts für das Attribut userPrincipalName (UPN)
 Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wert für das UPN-Attribut generieren und die Eindeutigkeit im AD-Zielverzeichnis überprüfen, bevor Sie den Wert dem UPN-Attribut zuweisen.
@@ -719,9 +719,9 @@ Basierend auf dem Vornamen, zweiten Vornamen und Nachnamen müssen Sie einen Wer
 
 * **EINGABE** (PreferredFirstName): „John“
 * **EINGABE** (PreferredLastName): „Smith“
-* **OUTPUT** : "John.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com nicht bereits im Verzeichnis vorhanden ist
-* **OUTPUT** : "J.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com bereits im Verzeichnis vorhanden ist
-* **OUTPUT** : "Jo.Smith@contoso.com", wenn die beiden obigen UPN-Werte bereits im Verzeichnis enthalten sind
+* **OUTPUT**: "John.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com nicht bereits im Verzeichnis vorhanden ist
+* **OUTPUT**: "J.Smith@contoso.com", wenn der UPN-Wert John.Smith@contoso.com bereits im Verzeichnis vorhanden ist
+* **OUTPUT**: "Jo.Smith@contoso.com", wenn die beiden obigen UPN-Werte bereits im Verzeichnis enthalten sind
 
 ### <a name="flow-mail-value-if-not-null-otherwise-flow-userprincipalname"></a>E-Mail-Wert übermitteln, wenn nicht NULL, andernfalls userPrincipalName-Wert übermitteln
 Sie möchten das E-Mail-Attribut übermitteln, wenn es vorhanden ist. Andernfalls möchten Sie stattdessen den Wert von „userPrincipalName“ übermitteln.
@@ -733,7 +733,7 @@ Sie möchten das E-Mail-Attribut übermitteln, wenn es vorhanden ist. Andernfall
 
 * **EINGABE** (mail): NULL
 * **EINGABE** (userPrincipalName): "John.Doe@contoso.com"
-* **AUSGABE** :  "John.Doe@contoso.com"
+* **AUSGABE**:  "John.Doe@contoso.com"
 
 ## <a name="related-articles"></a>Verwandte Artikel
 * [Automatisieren der Bereitstellung/Bereitstellungsaufhebung von Benutzern für SaaS-Apps](../app-provisioning/user-provisioning.md)

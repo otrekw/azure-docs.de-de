@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: how-to
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 6a40ffab652a6ae8671d6cd1c0dd9336764ce2c4
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 67c556e44f07240b1ad1bcde61f40042da46def8
+ms.sourcegitcommit: b8a175b6391cddd5a2c92575c311cc3e8c820018
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92791935"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96122196"
 ---
 # <a name="respond-to-azure-defender-for-key-vault-alerts"></a>Reagieren auf Warnungen zu Azure Defender für Key Vault
 Wenn Sie eine Warnung von Azure Defender für Key Vault erhalten, empfiehlt es sich, die Warnung wie unten beschrieben zu untersuchen und auf sie zu reagieren. Azure Defender für Key Vault schützt Anwendungen und Anmeldeinformationen. Selbst wenn Sie mit der Anwendung oder dem Benutzer, die bzw. der die Warnung ausgelöst hat, vertraut sind, sollten Sie bei jeder Warnung die Situation unbedingt überprüfen.  
@@ -32,7 +32,7 @@ Jede Warnung von Azure Defender für Key Vault schließt die folgenden Elemente 
 1. Wenn Sie die Quelle des Datenverkehrs in Ihrem Mandanten ermitteln können, wenden Sie sich an den Benutzer oder den Besitzer der Anwendung. 
 
 > [!CAUTION]
-> Azure Defender für Key Vault dient zur Erkennung verdächtiger Aktivitäten, die durch gestohlene Anmeldeinformationen verursacht werden. Verwerfen Sie die Warnung **nicht** , nur weil Sie den Benutzer oder die Anwendung kennen. Wenden Sie sich an den Besitzer der Anwendung oder den Benutzer, und vergewissern Sie sich, dass die Aktivität legitim war. Sie können ggf. eine Unterdrückungsregel erstellen, um Rauschen auszuschließen. Weitere Informationen finden Sie unter [Unterdrücken von Warnungen von Azure Defender](alerts-suppression-rules.md).
+> Azure Defender für Key Vault dient zur Erkennung verdächtiger Aktivitäten, die durch gestohlene Anmeldeinformationen verursacht werden. Verwerfen Sie die Warnung **nicht**, nur weil Sie den Benutzer oder die Anwendung kennen. Wenden Sie sich an den Besitzer der Anwendung oder den Benutzer, und vergewissern Sie sich, dass die Aktivität legitim war. Sie können ggf. eine Unterdrückungsregel erstellen, um Rauschen auszuschließen. Weitere Informationen finden Sie unter [Unterdrücken von Warnungen von Azure Defender](alerts-suppression-rules.md).
 
 
 ## <a name="step-2-immediate-mitigation"></a>Schritt 2: Sofortige Risikominderung 

@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: b138b3eb52a0bfb6dca2ec6fdf0b855223bab698
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1f4d0d5c2d5442d14d68922c4d0c27b45b2b841e
+ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94984446"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96324719"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Taggen von Bildern in einem Bezeichnungsprojekt 
 
@@ -119,7 +119,7 @@ Das Tag eines vorhandenen Begrenzungsrahmens kann nicht geändert werden. Sollte
 
 Vorhandene Begrenzungsrahmen können standardmäßig bearbeitet werden. Das Tool zum **Sperren/Entsperren von Bereichen** (![Tool zum Sperren/Entsperren von Bereichen](./media/how-to-label-images/lock-bounding-boxes-tool.png)) oder „L“ schaltet dieses Verhalten um. Wenn Bereiche gesperrt sind, können Sie nur die Form oder Position eines neuen Begrenzungsrahmens ändern.
 
-Verwenden Sie das Tool zum **Bearbeiten von Bereichen** (![Tool zum Bearbeiten von Bereichen](./media/how-to-label-images/regions-tool.png)) oder „M“, um ein vorhandenes Begrenzungsfeld anzupassen. Ziehen Sie die Ränder oder Ecken, um die Form anzupassen. Klicken Sie auf den Innenbereich, um den gesamten Begrenzungsrahmen verschieben zu können. Wenn Sie einen Bereich nicht bearbeiten können, haben Sie diese Funktionalität wahrscheinlich mit dem Tool zum **Sperren/Entsperren von Bereichen** umgeschaltet.
+Verwenden Sie das **Tool zum Bearbeiten von Bereichen** ![Symbol für das Tool zum Bearbeiten von Bereichen (vier nach außen gerichtete Pfeile, die nach oben, rechts, unten und links weisen)](./media/how-to-label-images/regions-tool.png) oder „M“, um einen vorhandenen Begrenzungsrahmen anzupassen. Ziehen Sie die Ränder oder Ecken, um die Form anzupassen. Klicken Sie auf den Innenbereich, um den gesamten Begrenzungsrahmen verschieben zu können. Wenn Sie einen Bereich nicht bearbeiten können, haben Sie diese Funktionalität wahrscheinlich mit dem Tool zum **Sperren/Entsperren von Bereichen** umgeschaltet.
 
 Verwenden Sie das Tool für **vorlagenbasierte Felder** (![Tool für vorlagenbasierte Felder](./media/how-to-label-images/template-box-tool.png)) oder „T“, um mehrere Begrenzungsrahmen derselben Größe zu erstellen. Wenn das Bild keinen Begrenzungsrahmen besitzt und Sie vorlagenbasierte Rahmen aktivieren, erzeugt das Tool Rahmen mit einer Größe von 50 × 50 Pixel. Wenn Sie einen Begrenzungsrahmen erstellt haben und anschließend vorlagenbasierte Rahmen aktivieren, haben neue Begrenzungsrahmen die Größe des zuletzt erstellten Rahmens. Die Größe von vorlagenbasierten Feldern kann nach der Platzierung angepasst werden. Beim Ändern der Größe eines vorlagenbasierten Rahmens wird nur die Größe dieses spezifischen Rahmens geändert.
 
@@ -143,7 +143,7 @@ Wenn Sie das Tag für ein Polygon ändern möchten, wählen Sie das Tool **Versc
 
 Sie können vorhandene Polygone bearbeiten. Das Tool zum **Sperren/Entsperren von Bereichen** ![Bearbeiten von Polygonen mit dem Tool zum Sperren/Entsperren von Bereichen](./media/how-to-label-images/lock-bounding-boxes-tool.png) oder „L“ schaltet dieses Verhalten um. Wenn Bereiche gesperrt sind, können Sie nur die Form oder Position eines neuen Polygons ändern.
 
-Verwenden Sie das Tool **Polygonpunkte hinzufügen oder entfernen** ![Tool „Polygonpunkte hinzufügen oder entfernen“](./media/how-to-label-images/add-remove-points-tool.png) oder „U“, um ein vorhandenes Polygon anzupassen. Klicken Sie auf das Polygon, um einen Punkt hinzuzufügen oder zu entfernen. Wenn Sie einen Bereich nicht bearbeiten können, haben Sie diese Funktionalität wahrscheinlich mit dem Tool zum **Sperren/Entsperren von Bereichen** umgeschaltet.
+Verwenden Sie das **Tool zum Hinzufügen oder Entfernen von Polygonpunkten** ![Symbol für das Tool zum Hinzufügen oder Entfernen von Polygonpunkten](./media/how-to-label-images/add-remove-points-tool.png) oder „U“, um ein vorhandenes Polygon anzupassen. Klicken Sie auf das Polygon, um einen Punkt hinzuzufügen oder zu entfernen. Wenn Sie einen Bereich nicht bearbeiten können, haben Sie diese Funktionalität wahrscheinlich mit dem Tool zum **Sperren/Entsperren von Bereichen** umgeschaltet.
 
 Wenn Sie *alle* Polygone im aktuellen Bild löschen möchten, wählen Sie das Tool **Alle Bereiche löschen** ![Tool „Alle Bereiche löschen“](./media/how-to-label-images/delete-regions-tool.png) aus.
 

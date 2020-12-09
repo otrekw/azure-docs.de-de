@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: ba5bca9b0d5907d9900741d0fe2c319f141f810b
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 520ad8f68e0f995ea05456ebcf6de4c1ba3f9418
+ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913635"
+ms.lasthandoff: 11/25/2020
+ms.locfileid: "96030304"
 ---
 # <a name="develop-azure-functions-with-media-services"></a>Entwickeln von Azure Functions mit Media Services
 
@@ -49,15 +49,15 @@ Beim Entwickeln von Media Services-Funktionen ist es nützlich, Umgebungsvariabl
 
 Bei der in diesem Artikel definierte Funktion wird davon ausgegangen, dass Sie die folgenden Umgebungsvariablen in den App-Einstellungen definiert haben:
 
-**AMSAADTenantDomain** : Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
+**AMSAADTenantDomain**: Endpunkt für Azure AD-Mandanten. Weitere Informationen zum Herstellen einer Verbindung mit der AMS-API finden Sie in [diesem](media-services-use-aad-auth-to-access-ams-api.md) Artikel.
 
-**AMSRESTAPIEndpoint** : URI, der den REST-API-Endpunkt darstellt. 
+**AMSRESTAPIEndpoint**: URI, der den REST-API-Endpunkt darstellt. 
 
-**AMSClientId** : Client-ID der Azure AD-Anwendung.
+**AMSClientId**: Client-ID der Azure AD-Anwendung.
 
 **AMSClientSecret** – geheimer Clientschlüssel der Azure AD-Anwendung
 
-**StorageConnection** : Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
+**StorageConnection**: Speicherverbindung des Kontos, das dem Media Services-Konto zugeordnet ist. Dieser Wert wird in den Dateien **function.json** und **run.csx** (unten beschrieben) verwendet.
 
 ## <a name="create-a-function"></a>Erstellen einer Funktion
 
@@ -65,7 +65,7 @@ Nachdem die Funktionen-App bereitgestellt wurde, wird sie unter den Azure Functi
 
 1. Wählen Sie Ihre Funktionen-App aus, und klicken Sie auf **Neue Funktion**.
 2. Wählen Sie die Sprache **C#** und das Szenario **Datenverarbeitung** aus.
-3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input** -Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
+3. Wählen Sie die Vorlage **BlobTrigger** aus. Diese Funktion wird ausgelöst, wenn ein Blob in den **input**-Container hochgeladen wird. Der Name **input** wird unter **Path** im nächsten Schritt festgelegt.
 
     ![Screenshot: Dialogfeld „Vorlage auswählen“ mit ausgewählter Option „BlobTrigger“](./media/media-services-azure-functions/media-services-azure-functions004.png)
 
@@ -86,7 +86,7 @@ Ihre Azure-Funktion ist Codedateien und anderen Dateien zugeordnet, die in diese
 Die Datei „function.json“ definiert die Funktionsbindungen und weitere Konfigurationseinstellungen. Die Laufzeit verwendet diese Datei, um zu ermitteln, welche Ereignisse überwacht werden sollen und wie Daten in die Funktionsausführung übergeben und aus dieser zurückgegeben werden. Weitere Informationen finden Sie unter [HTTP- und Webhookbindungen in Azure Functions](../../azure-functions/functions-reference.md#function-code).
 
 >[!NOTE]
->Legen Sie die **disabled** -Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern. 
+>Legen Sie die **disabled**-Eigenschaft auf **true** fest, um die Ausführung der Funktion zu verhindern. 
 
 Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folgenden Code:
 
@@ -107,7 +107,7 @@ Ersetzen Sie den Inhalt der vorhandenen Datei „function.json“ durch den folg
 
 ### <a name="projectjson"></a>project.json
 
-Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json** , das die erforderlichen .NET Azure Media Services-Pakete aus Nuget enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt. 
+Die Datei „project.json“ enthält die Abhängigkeiten. Hier sehen Sie ein Beispiel für die Datei **project.json**, das die erforderlichen .NET Azure Media Services-Pakete aus Nuget enthält. Beachten Sie, dass sich die Versionsnummern mit den aktuellen Updates für die Pakete ändert, daher sollten Sie überprüfen, ob die aktuellste Version vorliegt. 
 
 Fügen Sie die folgende Definition der Datei „project.json“ hinzu. 
 
@@ -333,7 +333,7 @@ public static async Task<IAsset> CreateAssetFromBlobAsync(CloudBlockBlob blob, s
 
 ## <a name="test-your-function"></a>Testen der Funktion
 
-Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input** -Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
+Um die Funktion zu testen, müssen Sie eine MP4-Datei in den **input**-Container des Speicherkontos hochladen, das Sie in der Verbindungszeichenfolge angegeben haben.  
 
 1. Wählen Sie das Speicherkonto, das Sie in der Umgebungsvariablen **StorageConnection** angegeben haben.
 2. Klicken Sie auf **Blobs**.

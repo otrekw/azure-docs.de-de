@@ -7,12 +7,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 11/03/2020
-ms.openlocfilehash: 9a2bda0a526c307ae17d8415f6f24423ddf51b63
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: c6bc5ca748a35b17c61d314e96f7284d30e7fc3b
+ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917765"
+ms.lasthandoff: 11/30/2020
+ms.locfileid: "96338128"
 ---
 # <a name="azure-hdinsight-id-broker-hib"></a>Azure HDInsight-Identitätsbroker (HIB)
 
@@ -140,13 +140,13 @@ Für die Verwendung von Beeline und Livy können Sie auch die [hier](https://git
 
 ## <a name="faq"></a>Häufig gestellte Fragen
 ### <a name="what-app-is-created-by-hdinsight-in-aad"></a>Welche App wird von HDInsight in AAD erstellt?
-Für jeden Cluster wird in AAD eine Drittanbieteranwendung mit dem Cluster-URI als identifierUri registriert (z. B. https://clustername.azurehdinsight.net ).
+Für jeden Cluster wird in AAD eine Drittanbieteranwendung mit dem Cluster-URI als identifierUri registriert (z. B. `https://clustername.azurehdinsight.net`).
 
 ### <a name="why-are-users-prompted-for-consent-before-using-hib-enabled-clusters"></a>Warum werden Benutzer vor der Verwendung von HIB-aktivierten Clustern zur Einwilligung aufgefordert?
 In AAD ist die Einwilligung für alle Drittanbieteranwendungen erforderlich, bevor Benutzer authentifiziert werden können oder auf Daten zugegriffen werden kann.
 
 ### <a name="can-the-consent-be-approved-programatically"></a>Kann die Einwilligung programmgesteuert gegeben werden?
-Mit der Microsoft Graph-API können Sie die Einwilligung automatisieren. Siehe dazu die [API-Dokumentation](https://docs.microsoft.com/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0). Zum Automatisieren der Einwilligung sind folgende Schritte erforderlich:
+Mit der Microsoft Graph-API können Sie die Einwilligung automatisieren. Siehe dazu die [API-Dokumentation](/graph/api/resources/oauth2permissiongrant?view=graph-rest-1.0). Zum Automatisieren der Einwilligung sind folgende Schritte erforderlich:
 
 * Registrieren Sie eine App, und erteilen Sie Application.ReadWrite.All-Berechtigungen für die App, um auf Microsoft Graph zuzugreifen.
 * Führen Sie nach dem Erstellen eines Clusters eine Abfrage der Cluster-App basierend auf dem Bezeichner-URI durch.
