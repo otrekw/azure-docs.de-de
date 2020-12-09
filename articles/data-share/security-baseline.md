@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/17/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: ef516e021b33c465139ecab621369223f61608f4
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 35b0ed8e8a7a8400388e7c31ef1a83a7ea6ece85
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96348550"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533614"
 ---
 # <a name="azure-security-baseline-for-azure-data-share"></a>Azure-Sicherheitsbaseline für Azure Data Share
 
@@ -46,7 +46,7 @@ Alternativ können Sie diese Daten in Azure Sentinel oder einer SIEM-Drittanbiet
 
 **Leitfaden**: Aktivitätsprotokolle, die automatisch verfügbar sind, enthalten alle Schreibvorgänge (PUT, POST, DELETE) für Ihre Azure Data Share-Ressourcen mit Ausnahme von Lesevorgängen (GET). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-Aktivieren Sie Diagnoseprotokolle für Azure Data Share, insbesondere die Diagnoseprotokolle für MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Mit diesen Protokollen können Sie wichtige Informationen wie die Startzeit der Synchronisierung, die Endzeit, den Status und andere Details erfassen. Diese Protokolle können für die spätere Untersuchung von Sicherheitsincidents und die Durchführung forensischer Maßnahmen von entscheidender Bedeutung sein.
+Aktivieren Sie Diagnoseprotokolle für Azure Data Share, insbesondere die Diagnoseprotokolle für MicrosoftDataShareSentShareSnapshotsLog &amp; MicrosoftDataShareReceivedShareSnapshotsLog. Mit diesen Protokollen können Sie wichtige Informationen wie die Startzeit der Synchronisierung, die Endzeit, den Status und andere Details erfassen. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
 
 - [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -330,7 +330,7 @@ Azure Data Share macht das Betriebssystem nicht verfügbar und erlaubt nicht die
 
 **Leitfaden**: Verwenden Sie Azure DevOps, um Ihren Code sicher zu speichern und zu verwalten. Dazu zählen z. B. benutzerdefinierte Azure Policy-Richtlinien, Azure Resource Manager-Vorlagen und Desired State Configuration-Skripts. Um auf die Ressourcen zuzugreifen, die Sie in Azure DevOps verwalten, können Sie bestimmten Benutzern, integrierten Sicherheitsgruppen oder in Azure Active Directory (Azure AD) definierte Gruppen (falls in Azure DevOps integriert) oder in Active Directory definierte Gruppen (falls in TFS integriert), Berechtigungen gewähren oder verweigern.
 
-- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
 - [Informationen über Berechtigungen und Gruppen in Azure DevOps](/azure/devops/organizations/security/about-permissions) 
 

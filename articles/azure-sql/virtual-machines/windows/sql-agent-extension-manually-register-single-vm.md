@@ -14,12 +14,12 @@ ms.date: 11/07/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: c82ea3328938b42a26df03c7e83776e1a1a69b20
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 48c996b6c7d0024b256908565c57032fe3e18514
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557371"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545637"
 ---
 # <a name="register-sql-server-vm-with-sql-iaas-agent-extension"></a>Registrieren einer SQL Server-VM mit der SQL-IaaS-Agent-Erweiterung
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -104,7 +104,7 @@ Registrieren einer SQL Server-VM im Modus „Lightweight“ mit der Azure CLI:
 
   ```azurecli-interactive
   # Register Enterprise or Standard self-installed VM in Lightweight mode
-  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type PAYG 
+  az sql vm create --name <vm_name> --resource-group <resource_group_name> --location <vm_location> --license-type <license_type> 
   ```
 
 
@@ -119,7 +119,7 @@ Registrieren einer SQL Server-VM im Modus „Lightweight“ mit Azure PowerShell
           
   # Register SQL VM with 'Lightweight' SQL IaaS agent
   New-AzSqlVM -Name $vm.Name -ResourceGroupName $vm.ResourceGroupName -Location $vm.Location `
-    -LicenseType PAYG -SqlManagementType LightWeight  
+    -LicenseType <license_type>  -SqlManagementType LightWeight  
   ```
 
 ---

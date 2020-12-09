@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/26/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: f6d17b007fcccd87aed17a9ec3ca039b9559ab6d
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 860bc9440547a4c62336ccc573859ec56b3400b5
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492232"
+ms.locfileid: "96533858"
 ---
 # <a name="azure-security-baseline-for-site-recovery"></a>Azure-Sicherheitsbaseline für Site Recovery
 
@@ -164,9 +164,9 @@ Visualisieren Sie Protokollergebnisse, fragen Sie diese ab, und konfigurieren Si
 
 **Leitfaden**: Standardmäßig werden keine Rollen zugewiesen. Sie müssen explizit nach geschäftlichen Bedarf zugewiesen werden. Alle Rollenzuweisungen können mit der PowerShell-Befehlszeilenschnittstelle oder mit Azure Active Directory (Azure AD) überprüft werden, um Konten zu ermitteln, die Mitglieder von administrativen Gruppen sind.
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?amp;preserve-view=true&view=azureadps-2.0)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?preserve-view=true&view=azureadps-2.0)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?amp;preserve-view=true&view=azureadps-2.0)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?preserve-view=true&view=azureadps-2.0)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -431,7 +431,7 @@ Obwohl klassische Azure-Ressourcen über das Resource Graph ermittelt werden kö
 
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?amp;preserve-view=true&view=azps-4.8.0)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?preserve-view=true&view=azps-4.8.0)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -530,7 +530,7 @@ Zur Einhaltung Ihrer Unternehmensstandards und Vereinbarungen zum Servicelevel m
 **Leitfaden**: Definieren und implementieren Sie Standardsicherheitskonfigurationen für Ihren Recovery Services-Tresor mit Azure Policy. 
 
 Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.RecoveryServices“, um benutzerdefinierte Richtlinien zum Überwachen oder Erzwingen der Konfiguration der Recovery Services-Tresorressourcen des Site Recovery-Diensts zu erstellen.
-- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?amp;preserve-view=true&view=azps-4.8.0)
+- [Anzeigen verfügbarer Azure Policy-Aliase](/powershell/module/az.resources/get-azpolicyalias?preserve-view=true&view=azps-4.8.0)
 
 - [Konfigurieren und Verwalten von Azure Policy](../governance/policy/tutorials/create-and-manage.md)
 
@@ -553,9 +553,9 @@ Verwenden Sie Azure Policy-Aliase im Namespace „Microsoft.RecoveryServices“,
 
 **Leitfaden**: Nutzen Sie Azure Repos, um Ihren Code sicher zu speichern und zu verwalten, wenn Sie benutzerdefinierte Azure Policy-Definitionen für Ihre Recovery Services-Tresore und verwandte Ressourcen verwenden.
 
-- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?amp;preserve-view=true&view=azure-devops)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?preserve-view=true&view=azure-devops)
 
-- [Dokumentation zu Azure Repos](/azure/devops/repos/?amp;preserve-view=true&view=azure-devops)
+- [Dokumentation zu Azure Repos](/azure/devops/repos/?preserve-view=true&view=azure-devops)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -656,7 +656,7 @@ Alle Speicherressourcen werden von den Metadaten von Site Recovery-Diensten mit 
 
 Hierfür ist das Site Recovery-Team zuständig. Kunden können Key Vault-Schlüssel in Azure sichern.
 
-- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Sichern von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -666,7 +666,7 @@ Hierfür ist das Site Recovery-Team zuständig. Kunden können Key Vault-Schlüs
 
 **Leitfaden**: Testen Sie Wiederherstellungen von gesicherten kundenseitig verwalteten Schlüsseln regelmäßig.
 
-- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-4.8.0)
+- [Wiederherstellen von Schlüsseltresorschlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-4.8.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

@@ -6,24 +6,25 @@ documentationcenter: ''
 author: curtand
 manager: daveba
 ms.service: active-directory
+ms.subservice: enterprise-users
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/15/2020
+ms.date: 12/02/2020
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2a1f970a97616fbc38a2f5d274998596992d4a45
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 7a25caa3b59d242b8dcc8a52e1a5d684815cf7bf
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95522072"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547779"
 ---
 # <a name="create-or-update-a-dynamic-group-in-azure-active-directory"></a>Erstellen oder Aktualisieren einer dynamischen Gruppe in Azure Active Directory
 
 In Azure Active Directory (Azure AD) können Sie mithilfe von Regeln die Gruppenmitgliedschaft auf der Grundlage von Benutzer- oder Geräteeigenschaften ermitteln. In diesem Artikel erfahren Sie, wie Sie im Azure-Portal eine Regel für eine dynamische Gruppe einrichten.
-Die dynamische Mitgliedschaft wird für Sicherheitsgruppen und Microsoft 365-Gruppen unterstützt. Wenn eine Regel für die Gruppenmitgliedschaft angewendet wird, werden Benutzer- und Geräteattribute auf Übereinstimmungen mit der Mitgliedschaftsregel geprüft. Wenn sich ein Attribut für einen Benutzer oder ein Gerät ändert, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um Mitgliedschaftsänderungen zu berücksichtigen. Benutzer und Geräte werden hinzugefügt oder entfernt, wenn sie die Bedingungen für eine Gruppe erfüllen. Sicherheitsgruppen können für Geräte oder Benutzer verwendet werden, Microsoft 365-Gruppen dagegen können nur Benutzergruppen sein. Für die Verwendung dynamischer Gruppen ist eine Azure AD Premium P1-Lizenz erforderlich. Weitere Details finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](https://docs.microsoft.com/azure/active-directory/enterprise-users/groups-dynamic-membership). 
+Die dynamische Mitgliedschaft wird für Sicherheitsgruppen und Microsoft 365-Gruppen unterstützt. Wenn eine Regel für die Gruppenmitgliedschaft angewendet wird, werden Benutzer- und Geräteattribute auf Übereinstimmungen mit der Mitgliedschaftsregel geprüft. Wenn sich ein Attribut für einen Benutzer oder ein Gerät ändert, werden alle dynamischen Gruppenregeln in der Organisation verarbeitet, um Mitgliedschaftsänderungen zu berücksichtigen. Benutzer und Geräte werden hinzugefügt oder entfernt, wenn sie die Bedingungen für eine Gruppe erfüllen. Sicherheitsgruppen können für Geräte oder Benutzer verwendet werden, Microsoft 365-Gruppen dagegen können nur Benutzergruppen sein. Für die Verwendung dynamischer Gruppen ist eine Azure AD Premium P1-Lizenz erforderlich. Weitere Details finden Sie unter [Regeln für eine dynamische Mitgliedschaft für Gruppen in Azure Active Directory](./groups-dynamic-membership.md). 
 
 ## <a name="rule-builder-in-the-azure-portal"></a>Regel-Generator im Azure-Portal
 

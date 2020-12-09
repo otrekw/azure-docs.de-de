@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 09/22/2020
 ms.author: mathapli
-ms.openlocfilehash: 1459c80c857a436c8369d3ebe89794e0b69c33b1
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: f4dce87533927eebef792987b87d148e6a5268b4
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980880"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96500613"
 ---
 # <a name="azure-hybrid-benefit--how-it-applies-for-linux-virtual-machines"></a>Azure-Hybridvorteil – Anwendung bei virtuelle Linux-Computern
 
@@ -155,9 +155,13 @@ A: Nein, das ist nicht möglich. Der Azure-Hybridvorteil unterstützt eine Konve
 
 A: Nein, das ist nicht möglich. Der Azure-Hybridvorteil unterstützt eine Konvertierung nur für Images mit nutzungsbasierter Bezahlung.
 
-*F: Ich habe ein eigenes RHEL-Image aus meinem lokalen System (über ASR oder eine andere Methode) in Azure hochgeladen. Kann ich die Abrechnung für diese Images von BYOS zur nutzungsbasierten Bezahlung ändern?*
+*F: Ich habe ein eigenes RHEL-Image aus meinem lokalen System (über Azure Migrate, ASR oder eine andere Methode) in Azure hochgeladen. Kann ich die Abrechnung für diese Images von BYOS zur nutzungsbasierten Bezahlung ändern?*
 
 A: Nein, das ist nicht möglich. Der Azure-Hybridvorteil ist heute nur für RHEL- und SLES-Images vom Marketplace verfügbar. 
+
+*F: Ich habe ein eigenes RHEL-Image aus meinem lokalen System (über Azure Migrate, ASR oder eine andere Methode) in Azure hochgeladen. Muss ich bestimmte Schritte ausführen, um vom Azure-Hybridvorteil profitieren zu können?*
+
+A: Nein, das ist nicht erforderlich. Die von Ihnen hochgeladenen RHEL-Images gelten bereits als BYOS, und Ihnen werden nur die Kosten für die Azure-Infrastruktur in Rechnung gestellt. Sie sind für die Kosten der RHEL-Abonnements genauso verantwortlich wie für Ihre lokalen Umgebungen. 
 
 *F: Kann ich den Azure-Hybridvorteil auf VMs verwenden, die mithilfe von RHEL- und SLES-SAP-Images vom Marketplace bereitgestellt wurden?*
 
@@ -184,4 +188,4 @@ In diesem Abschnitt finden Sie eine Liste häufiger Probleme, die auftreten kön
 | „Die Aktion konnte nicht durchgeführt werden, da Red Hat Cloud Access laut unseren Datensätzen nicht für Ihr Azure-Abonnement aktiviert wurde.“ | Um den Vorteil mit virtuellen RHEL-Computern zu nutzen, müssen Sie zunächst Ihre Azure-Abonnements bei Red Hat Cloud Access registrieren. Weitere Informationen zum Registrieren von Azure-Abonnements für Red Hat Cloud Access finden Sie unter diesem Link.
 
 ## <a name="next-steps"></a>Nächste Schritte
-* [Hier](https://docs.microsoft.com/cli/azure/vm?view=azure-cli-latest&preserve-view=true) erhalten Sie Informationen zum Erstellen und Aktualisieren von VMs und zum Hinzufügen von Lizenztypen (RHEL_BYOS, SLES_BYOS) für den Azure-Hybridvorteil mit der Azure CLI.
+* [Hier](/cli/azure/vm?preserve-view=true&view=azure-cli-latest) erhalten Sie Informationen zum Erstellen und Aktualisieren von VMs und zum Hinzufügen von Lizenztypen (RHEL_BYOS, SLES_BYOS) für den Azure-Hybridvorteil mit der Azure CLI.

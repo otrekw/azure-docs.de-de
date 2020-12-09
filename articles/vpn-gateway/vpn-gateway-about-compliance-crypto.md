@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: a77ee3c4301d278f98b571402514663dcfc9ca52
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 47d14c5ee7f6c4816bf15351e9cb28a2aaa72b4c
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657923"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546844"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>Kryptografische Anforderungen und Azure-VPN-Gateways
 
@@ -29,6 +29,8 @@ Wenn IKEv1- und IKEv2-Verbindungen für das gleiche VPN-Gateway verwendet werden
 ## <a name="about-ipsec-and-ike-policy-parameters-for-azure-vpn-gateways"></a>IPsec- und IKE-Richtlinienparameter für Azure-VPN-Gateways
 
 Der IPsec- und IKE-Protokollstandard unterstützt ein breites Spektrum von Kryptografiealgorithmen in verschiedenen Kombinationen. Wenn keine bestimmte Kombination aus Kryptografiealgorithmen und Parametern erforderlich ist, verwenden Azure-VPN-Gateways einen Satz von Standardvorschlägen. Die Standardrichtliniensätze wurden so gewählt, dass maximale Interoperabilität mit einer Vielzahl von VPN-Geräten von Drittanbietern in Standardkonfigurationen gewährleistet ist. Somit können die Richtlinien und zahlreichen Vorschläge nicht alle möglichen Kombinationen aus verfügbaren Kryptografiealgorithmen und Schlüsselstärken abdecken.
+
+### <a name="default-policy"></a>Standardrichtlinie
 
 Der Standardrichtliniensatz für Azure-VPN-Gateways ist im Artikel [Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten](vpn-gateway-about-vpn-devices.md) aufgeführt.
 

@@ -4,12 +4,12 @@ description: Enthält eine Zusammenfassung der Unterstützungseinstellungen und 
 ms.topic: conceptual
 ms.date: 02/17/2019
 ms.custom: references_regions
-ms.openlocfilehash: ae2eb97f214204b813564b6373c4e9dc176f483c
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.openlocfilehash: 70a81b42ad2fb417902a627afb1651d572844648
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94555435"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548510"
 ---
 # <a name="support-matrix-for-azure-backup"></a>Supportmatrix für Azure Backup
 
@@ -150,7 +150,7 @@ In Azure Backup wurde ein Feature zur regionsübergreifenden Wiederherstellung h
 
 | Sicherungsverwaltungstyp | Unterstützt                                                    | Unterstützte Regionen |
 | ---------------------- | ------------------------------------------------------------ | ----------------- |
-| Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen und souveränen Clouds.  |
+| Azure VM               | Ja.   Wird für verschlüsselte VMs und VMs mit Datenträgern mit weniger als 4 TB unterstützt | Alle öffentlichen Azure-Regionen  |
 | SQL/SAP HANA | Ja                                                          | Alle öffentlichen Regionen außer Frankreich |
 | MARS-Agent/lokal  | Nein                                                           | N/V               |
 | AFS (Azure-Dateifreigaben)                 | Nein                                                           | –               |

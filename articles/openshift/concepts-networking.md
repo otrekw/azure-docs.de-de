@@ -5,32 +5,28 @@ author: sakthi-vetrivel
 ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
-ms.date: 06/22/2020
-ms.openlocfilehash: 3417b59d0be9e285f8793ef598abb7f98bda7549
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.date: 11/23/2020
+ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95527988"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512363"
 ---
-# <a name="networking-in-azure-red-hat-on-openshift-4"></a>Netzwerk in Azure Red Hat OpenShift 4
+# <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Netzwerkkonzepte für Azure Red Hat OpenShift (ARO)
 
-Dieser Leitfaden enthält eine Übersicht über Netzwerke in Clustern mit Azure Red Hat OpenShift 4 sowie ein Diagramm und eine Liste wichtiger Endpunkte.
-
-Weitere ausführliche Informationen zu wichtigen OpenShift-Netzwerkkonzepten finden Sie in der [Netzwerkdokumentation für Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
-
-## <a name="networking-concepts-in-azure-red-hat-openshift"></a>Netzwerkkonzepte in Azure Red Hat OpenShift
+Dieser Leitfaden enthält eine Übersicht über Netzwerke in Azure Red Hat OpenShift für OpenShift 4-Cluster sowie ein Diagramm und eine Liste wichtiger Endpunkte. Weitere Informationen zu wichtigen OpenShift-Netzwerkkonzepten finden Sie in der [Netzwerkdokumentation für Azure Red Hat OpenShift 4](https://docs.openshift.com/aro/4/networking/understanding-networking.html).
 
 ![Azure Red Hat OpenShift 4: Netzwerkdiagramm](./media/concepts-networking/aro4-networking-diagram.png)
 
-Wenn Sie Azure Red Hat OpenShift 4 bereitstellen, befindet sich Ihr gesamter Cluster in einem virtuellen Netzwerk. Innerhalb dieses virtuellen Netzwerks befinden sich Ihre Master- und Workerknoten jeweils in einem eigenen Subnetz. Von den einzelnen Subnetzen wird jeweils ein öffentlicher und interner Lastenausgleich verwendet.
+Wenn Sie Azure Red Hat OpenShift 4 bereitstellen, befindet sich Ihr gesamter Cluster in einem virtuellen Netzwerk. Innerhalb dieses virtuellen Netzwerks befinden sich Ihre Master- und Workerknoten jeweils in einem eigenen Subnetz. Von den Subnetzen wird jeweils ein interner und ein öffentlicher Lastenausgleich verwendet.
 
-## <a name="explanation-of-endpoints"></a>Erläuterungen zu Endpunkten
+## <a name="networking-components"></a>Netzwerkkomponenten
 
-Die folgende Liste enthält wichtige Endpunkte in einem Azure Red Hat OpenShift-Cluster:
+Die folgende Liste enthält wichtige Netzwerkkomponenten in einem Azure Red Hat OpenShift-Cluster:
 
 * **aro-pls**
-    * Hierbei handelt es sich um einen Azure Private Link-Endpunkt, der von Websitezuverlässigkeits-Technikern (Site Reliability Engineers, SREs) von Microsoft und Red Hat genutzt wird, um die Clusterverwaltung zu erleichtern.
+    * Hierbei handelt es sich um einen Azure Private Link-Endpunkt, der von Websitezuverlässigkeits-Technikern (Site Reliability Engineers, SREs) von Microsoft und Red Hat genutzt wird, um den Cluster zu verwalten.
 * **aro-internal-lb**
     * Dieser Endpunkt gleicht den Datenverkehr für den API-Server aus. Für diesen Lastenausgleich sind die Masterknoten im Back-End-Pool.
 * **aro-public-lb**
@@ -38,50 +34,42 @@ Die folgende Liste enthält wichtige Endpunkte in einem Azure Red Hat OpenShift-
 * **aro-internal**
     * Dieser Endpunkt gleicht internen Dienstdatenverkehr aus. Für diesen Lastenausgleich sind die Workerknoten im Back-End-Pool.
     * Dieser Lastenausgleich wird nicht standardmäßig erstellt. Dieser Lastenausgleich wird erstellt, wenn Sie einen Dienst vom Typ „LoadBalancer“ mit den korrekten Anmerkungen erstellen. Beispiel: service.beta.kubernetes.io/azure-load-balancer-internal: "true".
-* **Netzwerkrichtlinien (eingehend)**
-    * Unterstützt im Rahmen von OpenShift SDN
-    * Standardmäßig aktiviert, kundenseitige Erzwingung
-    * Kompatibel mit V1-Netzwerkrichtlinie (NetworkPolicy); „Egress“ (Ausgehend) und „IPBlock“ (IP-Block) werden jedoch noch nicht unterstützt.
-    * **aro**
-    * Dieser Endpunkt gleicht den Datenverkehr für den API-Server aus. Für diesen Lastenausgleich sind die Masterknoten im Back-End-Pool.
-  * **aro-internal-lb**
+* **aro-internal-lb**
     * Dieser Endpunkt wird für öffentlichen Datenverkehr verwendet. Wenn Sie eine Anwendung und eine Route erstellen, ist dies der Pfad für eingehenden Datenverkehr.
     * Dieser Lastenausgleich deckt auch ausgehende Internetkonnektivität beliebiger Pods ab, die in den Workerknoten ausgeführt werden (über Azure Load Balancer-Ausgangsregeln).
         * Ausgangsregeln können aktuell nicht konfiguriert werden. Durch sie werden jedem Knoten 1.024 TCP-Ports zugewiesen.
         * Da „DisableOutboundSnat“ in den LB-Regeln nicht konfiguriert ist, können Pods als IP-Adresse für ausgehenden Datenverkehr eine beliebige öffentliche IP-Adresse erhalten, die in dieser ALB-Instanz konfiguriert ist.
         * Aufgrund der beiden vorherigen Punkte müssen ARO öffentliche Dienste vom Typ „LoadBalancer“ hinzugefügt werden, wenn Sie kurzlebige SNAT-Ports hinzufügen möchten.
-* **Netzwerkrichtlinien (ausgehend)**
-    * Richtlinien für ausgehenden Datenverkehr werden mithilfe der Firewall für ausgehenden Datenverkehr in OpenShift unterstützt.
-    * Pro Namespace/Projekt ist nur jeweils eine Instanz zulässig.
-    * Richtlinien für ausgehenden Datenverkehr werden im Standardnamespace nicht unterstützt.
-    * Regeln von Richtlinien für ausgehenden Datenverkehr werden von der ersten bis zur letzten Regel ausgewertet.
-    * **aro-outbound-pip**
-        * Dieser Endpunkt fungiert als öffentliche IP-Adresse (Public IP, PIP) für die Workerknoten.
-        * Dieser Endpunkt ermöglicht es Diensten, eine bestimmte IP-Adresse aus einem Azure Red Hat OpenShift-Cluster einer Zulassungsliste hinzuzufügen.
-* **aro-node-nsg**
-    * Wenn Sie einen Dienst verfügbar machen, wird von der API eine Regel in dieser Netzwerksicherheitsgruppe erstellt, damit Datenverkehr weitergeleitet wird und die Knoten erreichen kann.
+* **aro-outbound-pip**
+    * Dieser Endpunkt fungiert als öffentliche IP-Adresse (Public IP, PIP) für die Workerknoten.
+    * Dieser Endpunkt ermöglicht es Diensten, eine bestimmte IP-Adresse aus einem Azure Red Hat OpenShift-Cluster einer Zulassungsliste hinzuzufügen.
+* **aro-nsg**
+    * Wenn Sie einen Dienst verfügbar machen, wird von der API eine Regel in dieser Netzwerksicherheitsgruppe erstellt, damit Datenverkehr weitergeleitet werden und die Steuerungsebene sowie die Knoten erreichen kann.
     * Durch diese Netzwerksicherheitsgruppe wird standardmäßig der gesamte ausgehende Datenverkehr zugelassen. Ausgehender Datenverkehr kann aktuell nur auf die Azure Red Hat OpenShift-Steuerungsebene beschränkt werden.
 * **aro-controlplane-nsg**
-    * Durch diesen Endpunkt wird eingehender Datenverkehr nur über den Port 6443 für die Masterknoten zugelassen.
+  * Durch diesen Endpunkt wird eingehender Datenverkehr nur über den Port 6443 für die Masterknoten zugelassen.
 * **Azure Container Registry**
-    * Hierbei handelt es sich um eine von Microsoft intern bereitgestellte und verwendete Containerregistrierung.
+    * Hierbei handelt es sich um eine von Microsoft intern bereitgestellte und verwendete Containerregistrierung. Diese Registrierung ist schreibgeschützt und nicht für die Verwendung durch Azure Red Hat OpenShift-Benutzer vorgesehen.
         * Durch diese Registrierung werden Hostplattformimages und Clusterkomponenten bereitgestellt. Beispiele wären etwa Container für die Überwachung oder Protokollierung.
-        * Nicht für die Verwendung durch Azure Red Hat OpenShift-Kunden vorgesehen  
-        * Schreibgeschützt
         * Verbindungen mit dieser Registrierung werden über den Dienstendpunkt hergestellt (interne Konnektivität zwischen Azure-Diensten).
         * Diese interne Registrierung steht außerhalb des Clusters standardmäßig nicht zur Verfügung.
 * **Private Link**
-    * Ermöglicht die Clusterverwaltung über eine Netzwerkverbindung zwischen der Verwaltungsebene und einem Cluster.
-    * Websitezuverlässigkeits-Techniker (Site Reliability Engineers, SREs) von Microsoft und Red Hat zur Unterstützung bei der Clusterverwaltung
+    * Ermöglicht Netzwerkkonnektivität für Websitezuverlässigkeits-Techniker von Microsoft und Red Hat zwischen der Verwaltungsebene und einem Cluster, um die Verwaltung Ihres Clusters zu erleichtern.
+
+## <a name="networking-policies"></a>Netzwerkrichtlinien
+
+* **Eingehender Datenverkehr:** Die Netzwerkrichtlinie für eingehenden Datenverkehr wird im Rahmen von [OpenShift SDN](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) unterstützt. Diese Netzwerkrichtlinie ist standardmäßig aktiviert, und die Erzwingung wird von Benutzern durchgeführt. Die Netzwerkrichtlinie für eingehenden Datenverkehr ist zwar mit der V1-Netzwerkrichtlinie (V1 NetworkPolicy) kompatibel, die Typen „Egress“ (Ausgehend) und „IPBlock“ (IP-Block) werden jedoch noch nicht unterstützt.
+
+* **Ausgehender Datenverkehr:** Die Netzwerkrichtlinien für ausgehenden Datenverkehr werden mithilfe der [Firewall für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/configuring-egress-firewall.html) in OpenShift unterstützt. Pro Namespace/Projekt gibt es jeweils nur eine einzelne Richtlinie für ausgehenden Datenverkehr. Richtlinien für ausgehenden Datenverkehr werden im Standardnamespace nicht unterstützt und nacheinander von der ersten bis zur letzten Richtlinie ausgewertet.
 
 ## <a name="networking-basics-in-openshift"></a>Netzwerkgrundlagen in OpenShift
 
-OpenShift SDN (Software-Defined Networking) wird verwendet, um ein Overlaynetzwerk mithilfe von Open vSwitch (OVS) zu konfigurieren. Hierbei handelt es sich um eine OpenFlow-Implementierung, die auf der CNI-Spezifikation (Container Network Interface, Containernetzwerkschnittstelle) basiert. Von SDN werden verschiedene Plug-Ins unterstützt, und in Azure Red Hat OpenShift 4 wird das Plug-In „Network Policy“ (Netzwerkrichtlinie) verwendet. Da die gesamte Netzwerkkommunikation durch SDN verwaltet wird, sind für die Kommunikation zwischen Pods keine zusätzlichen Routen in Ihren virtuellen Netzwerken erforderlich.
+OpenShift Software Defined Networking [(SDN)](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/about-openshift-sdn.html) wird verwendet, um ein Overlaynetzwerk mithilfe von Open vSwitch ([OVS](https://www.openvswitch.org/)) zu konfigurieren. Hierbei handelt es sich um eine OpenFlow-Implementierung, die auf der CNI-Spezifikation (Container Network Interface, Containernetzwerkschnittstelle) basiert. Von SDN werden verschiedene Plug-Ins unterstützt. In Azure Red Hat OpenShift 4 wird das Plug-In „Network Policy“ (Netzwerkrichtlinie) verwendet. Da die gesamte Netzwerkkommunikation durch SDN verwaltet wird, sind für die Kommunikation zwischen Pods keine zusätzlichen Routen in Ihren virtuellen Netzwerken erforderlich.
 
-## <a name="azure-red-hat-openshift-networking-specifics"></a>Spezielle Netzwerkfeatures von Azure Red Hat OpenShift
+## <a name="networking--for-azure-red-hat-openshift"></a>Netzwerk für Azure Red Hat OpenShift
 
-Bei den folgenden Punkten handelt es sich um spezielle Features von Azure Red Hat OpenShift:
-* Die Verwendung eines eigenen virtuellen Netzwerks wird unterstützt.
+Bei den folgenden Punkten handelt es sich um spezifische Netzwerkfeatures für Azure Red Hat OpenShift:
+* Benutzer können Ihren ARO-Cluster in einem vorhandenen virtuellen Netzwerk erstellen oder im Rahmen der ARO-Clustererstellung ein virtuelles Netzwerk erstellen.
 * Pod- und Dienstnetzwerk-CIDRs sind konfigurierbar.
 * Knoten und Master befinden sich in unterschiedlichen Subnetzen.
 * Die VNET-Subnetze von Knoten und Mastern müssen eine Mindestgröße von /27 haben.
@@ -92,7 +80,7 @@ Bei den folgenden Punkten handelt es sich um spezielle Features von Azure Red Ha
 
 ## <a name="network-settings"></a>Netzwerkeinstellungen
 
-In Azure Red Hat OpenShift 4 stehen folgende Netzwerkeinstellungen zur Verfügung:
+Für Azure Red Hat OpenShift 4-Cluster stehen folgende Netzwerkeinstellungen zur Verfügung:
 
 * **API Visibility** (API-Sichtbarkeit): Legen Sie die API-Sichtbarkeit beim Ausführen des Befehls [az aro create](tutorial-create-cluster.md#create-the-cluster) fest.
     * „Public“ (Öffentlich): Auf den API-Server kann von externen Netzwerken zugegriffen werden.
@@ -102,14 +90,25 @@ In Azure Red Hat OpenShift 4 stehen folgende Netzwerkeinstellungen zur Verfügu
     * „Private“ (Privat): Für Routen wird standardmäßig der interne Lastenausgleich verwendet. (Kann geändert werden.)
 
 ## <a name="network-security-groups"></a>Netzwerksicherheitsgruppen
-Netzwerksicherheitsgruppen werden in der (gesperrten) Ressourcengruppe des Knotens erstellt. Die Netzwerksicherheitsgruppen werden direkt den Subnetzen zugewiesen und nicht den NICs des Knotens. Die Netzwerksicherheitsgruppen sind unveränderlich. Das bedeutet, dass Sie nicht berechtigt sind, sie zu ändern. 
+Netzwerksicherheitsgruppen werden in der (für Benutzer gesperrten) Ressourcengruppe des Knotens erstellt. Die Netzwerksicherheitsgruppen werden direkt den Subnetzen zugewiesen und nicht den NICs des Knotens. Die Netzwerksicherheitsgruppen sind unveränderlich, und Benutzer sind nicht berechtigt, sie zu ändern.
 
-Mit einem öffentlich sichtbaren API-Server können Sie jedoch keine Netzwerksicherheitsgruppen erstellen und sie den NICs zuweisen.
+Mit einem öffentlich sichtbaren API-Server können keine Netzwerksicherheitsgruppen erstellt und den NICs zugewiesen werden.
 
 ## <a name="domain-forwarding"></a>Domänenweiterleitung
-Von Azure Red Hat OpenShift wird CoreDNS verwendet. Die Domänenweiterleitung kann konfiguriert werden. (Weitere Informationen finden Sie in der [Dokumentation zur Verwendung der DNS-Weiterleitung](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator).)
+Von Azure Red Hat OpenShift wird CoreDNS verwendet. Die Domänenweiterleitung kann konfiguriert werden. In Ihren virtuellen Netzwerken kann kein eigenes DNS verwendet werden. Weitere Informationen finden Sie in der Dokumentation zur [Verwendung der DNS-Weiterleitung](https://docs.openshift.com/aro/4/networking/dns-operator.html#nw-dns-forward_dns-operator).
 
-Aktuell ist es nicht möglich, Ihr eigenes DNS in Ihren virtuellen Netzwerken zu verwenden.
+## <a name="whats-new-in-openshift-45"></a>Neues in OpenShift 4.5
 
+Mit der Unterstützung von OpenShift 4.5 hat Azure Red Hat OpenShift einige bedeutende Architekturänderungen eingeführt. Diese Änderungen gelten nur für neu erstellte Cluster mit OpenShift 4.5. Bei bereits vorhandenen Clustern, für die ein Upgrade auf OpenShift 4.5 durchgeführt wurde, wird die Netzwerkarchitektur durch den Upgradeprozess nicht geändert. Benutzer müssen ihre Cluster neu erstellen, um die neue Architektur verwenden zu können.
 
+![Azure Red Hat OpenShift 4.5: Netzwerkdiagramm](./media/concepts-networking/aro-4-5-networking-diagram.png)
+
+Wie Sie in der obigen Abbildung sehen, gibt es ein paar Änderungen:
+* Bislang wurden von ARO zwei öffentliche Lastenausgleichsmodule verwendet: eins für den API-Server und eins für den Workerknotenpool. Dies wurde im Zuge des Architekturupdates unter einem einzelnen Lastenausgleichsmodul zusammengefasst. 
+* Die dedizierten IP-Adressressourcen für ausgehenden Datenverkehr wurden entfernt, um die Komplexität zu verringern.
+* Von der ARO-Steuerungsebene wird nun die gleiche Netzwerksicherheitsgruppe verwendet wie von den ARO-Workerknoten.
+
+Weitere Informationen zu OpenShift 4.5 finden Sie in den [Versionshinweisen zu OpenShift 4.5](https://docs.openshift.com/container-platform/4.5/release_notes/ocp-4-5-release-notes.html).
+
+## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zu ausgehendem Datenverkehr und zur Unterstützung von Azure Red Hat OpenShift in diesem Zusammenhang finden Sie unter [Unterstützungsrichtlinien in Azure Red Hat OpenShift](support-policies-v4.md).

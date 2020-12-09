@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/01/2020
 ms.author: NanditaV
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7af49b31aed3794d204b653f0ebfd66283c26cd4
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 71210cdcc2b3758a59a1b41816e6468556e94808
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501316"
+ms.locfileid: "96518259"
 ---
 # <a name="data-exfiltration-protection-for-azure-synapse-analytics-workspaces"></a>Schutz vor Datenexfiltration für Azure Synapse Analytics-Arbeitsbereiche
 Dieser Artikel enthält eine Beschreibung des Schutzes vor Datenexfiltration in Azure Synapse Analytics.
@@ -25,7 +25,7 @@ Azure Synapse Analytics-Arbeitsbereiche unterstützen die Aktivierung des Schutz
 >Nachdem der Arbeitsbereich erstellt wurde, können Sie die Arbeitsbereichskonfiguration für das verwaltete virtuelle Netzwerk und den Schutz vor Datenexfiltration nicht mehr ändern.
 
 ## <a name="managing-synapse-workspace-data-egress-to-approved-targets"></a>Verwalten des ausgehenden Datenverkehrs des Synapse-Arbeitsbereichs für genehmigte Ziele
-Nachdem der Arbeitsbereich mit aktivierter Datenexfiltration erstellt wurde, können die Besitzer der Arbeitsbereichsressource die Liste mit den genehmigten Azure AD-Mandanten für den Arbeitsbereich verwalten. Benutzer mit den [richtigen Berechtigungen](./access-control.md) für den Arbeitsbereich können Synapse Studio verwenden, um Anforderungen für Verbindungen von verwalteten privaten Endpunkten für Ressourcen zu erstellen, die sich auf den genehmigten Azure AD-Mandanten des Arbeitsbereichs befinden. Die Erstellung von verwalteten privaten Endpunkten wird blockiert, wenn der Benutzer versucht, eine Verbindung von einem privaten Endpunkt mit einer Ressource auf einem nicht genehmigten Mandanten herzustellen.
+Nachdem der Arbeitsbereich mit aktivierter Datenexfiltration erstellt wurde, können die Besitzer der Arbeitsbereichsressource die Liste mit den genehmigten Azure AD-Mandanten für den Arbeitsbereich verwalten. Benutzer mit den [richtigen Berechtigungen](./synapse-workspace-access-control-overview.md) für den Arbeitsbereich können Synapse Studio verwenden, um Anforderungen für Verbindungen von verwalteten privaten Endpunkten für Ressourcen zu erstellen, die sich auf den genehmigten Azure AD-Mandanten des Arbeitsbereichs befinden. Die Erstellung von verwalteten privaten Endpunkten wird blockiert, wenn der Benutzer versucht, eine Verbindung von einem privaten Endpunkt mit einer Ressource auf einem nicht genehmigten Mandanten herzustellen.
 
 ## <a name="sample-workspace-with-data-exfiltration-protection-enabled"></a>Beispielarbeitsbereich mit aktiviertem Schutz vor Datenexfiltration
 Wir verwenden ein Beispiel, um den Schutz vor Datenexfiltration für Synapse-Arbeitsbereiche zu veranschaulichen. Contoso verfügt über Azure-Ressourcen auf Mandant A und Mandant B, und für diese Ressourcen müssen sichere Verbindungen hergestellt werden können. Ein Synapse-Arbeitsbereich wurde auf Mandant A erstellt, und Mandant B wurde als genehmigter Azure AD-Mandant hinzugefügt. Im Diagramm sind Verbindungen für private Endpunkte mit Azure Storage-Konten auf den Mandanten A und B dargestellt, die von den Speicherkontobesitzern genehmigt wurden. Darüber hinaus ist im Diagramm auch die Blockierung der Erstellung eines privaten Endpunkts dargestellt. Die Erstellung dieses privaten Endpunkts wurde blockiert, weil es um ein Azure Storage-Konto auf dem Fabrikam-Azure AD-Mandanten geht, bei dem es sich nicht um einen genehmigten Azure AD-Mandanten für den Arbeitsbereich von Contoso handelt. 

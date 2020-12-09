@@ -8,14 +8,14 @@ ms.subservice: security
 ms.date: 04/15/2020
 ms.author: ronytho
 ms.reviewer: jrasnick
-ms.openlocfilehash: 00920f30061832bd1d685f04113a63781df718b4
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: b605c2c9f3c7468d0fe1f2cccd8c3602c556714b
+ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93313681"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96501072"
 ---
-# <a name="azure-synapse-analytics-managed-virtual-network-preview"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk (Vorschauversion)
+# <a name="azure-synapse-analytics-managed-virtual-network"></a>Azure Synapse Analytics: verwaltetes virtuelles Netzwerk
 
 Dieser Artikel enthält Informationen zum verwalteten virtuellen Netzwerk in Azure Synapse Analytics.
 
@@ -52,8 +52,6 @@ Ist das Kontrollkästchen deaktiviert, wird Ihr Arbeitsbereich nicht mit einem v
 
 ![Aktivieren eines verwalteten virtuellen Arbeitsbereichsnetzwerks](./media/synapse-workspace-managed-vnet/enable-managed-vnet-1.png)
 
->[!NOTE]
->Der gesamte ausgehende Datenverkehr aus dem verwalteten virtuellen Arbeitsbereichsnetzwerk wird in Zukunft blockiert – mit Ausnahme von Datenverkehr über verwaltete private Endpunkte. Es wird empfohlen, verwaltete private Endpunkte zu erstellen, um eine Verbindung mit all Ihren Azure-Datenquellen herzustellen, die extern zu dem Arbeitsbereich sind. 
 
 Wenn Sie überprüfen möchten, ob Ihr Azure Synapse-Arbeitsbereich mit einem verwalteten virtuellen Arbeitsbereichsnetzwerk verknüpft ist, wählen Sie im Azure-Portal die Option **Übersicht** aus.
 

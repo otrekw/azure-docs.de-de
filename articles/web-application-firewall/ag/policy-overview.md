@@ -7,21 +7,16 @@ author: winthrop28
 ms.service: web-application-firewall
 ms.date: 11/20/2020
 ms.author: victorh
-ms.openlocfilehash: b546b043b856fd6ec69acd63fd69a01c48d0553b
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 59ca0b85ba2aff29bdb2ad3379c1054041d2b4cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94990124"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518735"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Übersicht über die Azure Web Application Firewall (WAF)-Richtlinien
 
 Web Application Firewall-Richtlinien enthalten alle WAF-Einstellungen und -Konfigurationen. Dies umfasst Ausschlüsse, benutzerdefinierte Regeln, verwaltete Regeln usw. Diese Richtlinien werden dann einer Anwendungsgateway- (global), einer Listener- (pro Website) oder einer pfadbasierten Regel (pro URI) zugeordnet, damit Sie wirksam werden.
-
-> [!NOTE]
-> URI-spezifische Azure WAF-Richtlinien (Web Application Firewall) sind als Public Preview verfügbar.
-> 
-> Diese öffentliche Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und sollte nicht für Produktionsworkloads verwendet werden. Unter Umständen werden bestimmte Features nicht unterstützt, verfügen über eingeschränkte Funktionen und sind nicht an allen Azure-Standorten verfügbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Die Anzahl der Richtlinien, die Sie erstellen können, ist nach oben hin nicht begrenzt. Wenn Sie eine Richtlinie erstellen, muss sie einem Anwendungsgateway zugeordnet werden, um wirksam zu werden. Sie kann einer beliebigen Kombination von Anwendungsgateways, Listenern und pfadbasierten Regeln zugeordnet werden.
 

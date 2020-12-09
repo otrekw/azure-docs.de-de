@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: e7f6cf905613866041e72433328ea742706a8c49
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 036cab033e5b70a8940a488c07374e9092d52b33
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96453875"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533654"
 ---
 # <a name="azure-security-baseline-for-azure-hpc-cache"></a>Azure-Sicherheitsbaseline für Azure HPC Cache
 
@@ -611,7 +611,7 @@ Implementieren Sie eine Drittanbieterlösung aus Azure Marketplace für die DNS-
 
 **Leitfaden**: Azure HPC Cache-Ressourcen erstellen automatisch Aktivitätsprotokolle. Diese Protokolle enthalten alle Schreibvorgänge (PUT, POST, DELETE), aber nicht die Lesevorgänge (GET). Mit Aktivitätsprotokollen können Fehler ermittelt werden, und es kann nachverfolgt werden, welche Änderungen an einer Ressource ein Benutzer in Ihrer Organisation vorgenommen hat.
 
-Sie können auch Azure Security Center und Azure Policy verwenden, um Azure-Ressourcenprotokolle für HPC Cache zu aktivieren und die Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsincidents und die Durchführung forensischer Maßnahmen von entscheidender Bedeutung sein.
+Sie können auch Azure Security Center und Azure Policy verwenden, um Azure-Ressourcenprotokolle für HPC Cache zu aktivieren und die Datenerfassung zu protokollieren. Diese Protokolle können für die spätere Untersuchung von Sicherheitsvorfällen und die Durchführung forensischer Übungen von entscheidender Bedeutung sein.
 
 - [Sammeln von Plattformprotokollen und -metriken mit Azure Monitor](../azure-monitor/platform/diagnostic-settings.md) 
 
@@ -751,7 +751,7 @@ Markieren Sie Ressourcen außerdem mithilfe von Tags, und erstellen Sie ein Bene
 
 ### <a name="pv-3-establish-secure-configurations-for-compute-resources"></a>PV-3: Einrichten sicherer Konfigurationen für Computeressourcen
 
-**Leitfaden**: Verwenden Sie Azure Security Center und Azure Policy, um sichere Konfigurationen auf allen Computeressourcen einzurichten, z. B. VMs und Container.
+**Leitfaden**: Verwenden Sie Azure Security Center und Azure Policy, um sichere Konfigurationen auf allen Computeressourcen wie beispielsweise VMs und Containern einzurichten.
 
 - [Überwachen von Empfehlungen in Azure Security Center](../security-center/security-center-recommendations.md) 
 
@@ -814,7 +814,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 - [Verschlüsselung von Sicherungsdaten mit von Kunden verwalteten Schlüsseln](../backup/encryption-at-rest-with-cmk.md)  
 
-- [Sichern von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
+- [Sichern von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/backup-azkeyvaultkey?preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center-Überwachung**: Zurzeit nicht verfügbar
 
@@ -824,7 +824,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung in Azure Backup, Azure Key Vault 
 
 **Leitfaden**: Stellen Sie regelmäßig sicher, dass gesicherte, kundenseitig verwaltete Schlüssel wiederhergestellt werden können.
 
-- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?amp;preserve-view=true&view=azps-5.1.0)
+- [Wiederherstellen von Key Vault-Schlüsseln in Azure](/powershell/module/az.keyvault/restore-azkeyvaultkey?preserve-view=true&view=azps-5.1.0)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -867,11 +867,11 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 -   Geeignete Verschlüsselungsstandards
 
 Weitere Informationen finden Sie in den folgenden Referenzen:
-- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Grundlegende Azure-Sicherheitsinformationen: Sicherheit, Verschlüsselung und Speicherung von Azure-Daten](../security/fundamentals/encryption-overview.md)
 
-- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](../security/fundamentals/data-encryption-best-practices.md?amp;bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
+- [Cloud Adoption Framework: Bewährte Methoden für Datensicherheit und Datenverschlüsselung in Azure](../security/fundamentals/data-encryption-best-practices.md?bc=%2fazure%2fcloud-adoption-framework%2f_bread%2ftoc.json&toc=%2fazure%2fcloud-adoption-framework%2ftoc.json)
 
 - [Azure-Sicherheitsvergleichstest: Ressorcenverwaltung](/azure/security/benchmarks/security-controls-v2-asset-management)
 

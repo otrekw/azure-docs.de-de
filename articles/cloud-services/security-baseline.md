@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 7deee88210acf700916961be7c4ccaf9477accf8
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 100871ab2188aa638c4c9f2b058021706c7741bb
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96353441"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531903"
 ---
 # <a name="azure-security-baseline-for-azure-cloud-services"></a>Azure-Sicherheitsbaseline für Azure Cloud Services
 
@@ -36,7 +36,7 @@ Microsoft Azure Cloud Services (klassisch) kann nicht in virtuelle Azure Resourc
 
 - [Netzwerksicherheitsgruppe – Übersicht](../virtual-network/network-security-groups-overview.md)
 
-- [Peering virtueller Netzwerke](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
+- [Peering virtueller Netzwerke](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-use-azure-resource-manager-virtual-networks-with-cloud-services)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -58,7 +58,7 @@ Aktivieren Sie Netzwerksicherheitsgruppen-Datenflussprotokolle, und senden Sie P
 
 - [Azure Cloud Services-Konfigurationsdatei](schema-cscfg-file.md)
 
-- [Liste der Dienste, die von Azure Policy unterstützt werden](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=)
+- [Liste der Dienste, die von Azure Policy unterstützt werden](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -89,9 +89,9 @@ Verhindern, dass Datenverkehr bei der Standard-URL dem Namen von Azure Cloud Ser
 
 Konfigurieren Sie eine Verweigern/Übernehmen-Regel für Zuweisungen für klassische Abonnementadministratoren. Standardmäßig ist der Kommunikationsfluss von beliebigen Rollen zum internen Endpunkt einer Rolle ohne Einschränkungen möglich, nachdem ein interner Endpunkt definiert wurde. Um die Kommunikation einzuschränken, müssen Sie in der Dienstdefinitionsdatei dem ServiceDefinition-Element ein NetworkTrafficRules-Element hinzufügen.
 
-- [Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren?](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
+- [Wie kann ich den bei der Standard-URL des Clouddiensts eingehenden Datenverkehr blockieren/deaktivieren?](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-can-i-blockdisable-incoming-traffic-to-the-default-url-of-my-cloud-service)
 
-- [Azure DDoS Protection](./cloud-services-connectivity-and-networking-faq.md?amp;preserve-view=#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
+- [Azure DDoS Protection](./cloud-services-connectivity-and-networking-faq.md?preserve-view=true#how-do-i-prevent-receiving-thousands-of-hits-from-unknown-ip-addresses-that-might-indicate-a-malicious-attack-to-the-cloud-service)
 
 - [Blockieren bestimmter IP-Adressen](cloud-services-startup-tasks-common.md#block-a-specific-ip-address)
 
@@ -107,7 +107,7 @@ Konfigurieren Sie die Datenflussprotokollierung für eine Netzwerksicherheitsgru
 
 - [Konfigurieren der Datenflussprotokollierung für eine Netzwerksicherheitsgruppe](../virtual-machines/extensions/network-watcher-linux.md)
 
-- [Weitere Informationen zum Konfigurieren von Datenflussprotokollen finden Sie unter ](/cli/azure/azure-services-the-azure-cli-can-manage?amp;preserve-view=).
+- [Weitere Informationen zum Konfigurieren von Datenflussprotokollen finden Sie unter ](/cli/azure/azure-services-the-azure-cli-can-manage?preserve-view=).
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -231,13 +231,13 @@ Zeigen Sie den Änderungsverlauf für bestimmte Ereignisse im Aktivitätsprotoko
 
 Azure Cloud Services kann von Application Insights auf Verfügbarkeit, Leistung, Fehler und Auslastung überwacht werden. Application Insights können benutzerdefinierte Diagramme hinzugefügt werden. So haben Sie immer die relevanten Daten im Blick. Rolleninstanzdaten können mithilfe des Application Insights SDKs in Ihrem Azure Cloud Services-Projekt erfasst werden. 
 
-- [Aktivieren der Diagnose in Visual Studio vor der Bereitstellung](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=#to-turn-on-diagnostics-in-visual-studio-before-deployment)
+- [Aktivieren der Diagnose in Visual Studio vor der Bereitstellung](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true#to-turn-on-diagnostics-in-visual-studio-before-deployment)
 
 - [Anzeigen des Änderungsverlaufs](../azure-monitor/platform/activity-log.md#view-change-history)
 
 - [Application Insights für Azure Cloud Services (klassisch)](../azure-monitor/app/cloudservices.md)
 
-- [Einrichten der Diagnose für Azure Cloud Services (klassisch) und virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?amp;preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
+- [Einrichten der Diagnose für Azure Cloud Services (klassisch) und virtuelle Azure-Computer](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines?preserve-view=true&toc=%2fazure%2fcloud-services%2ftoc.json)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -289,7 +289,7 @@ Die Azure-Diagnoseerweiterung sammelt und speichert Daten in einem Azure Storage
 
 **Leitfaden**: Microsoft Antimalware für Azure schützt Azure Cloud Services und virtuelle Computer. Darüber hinaus können Sie zusätzlich Sicherheitslösungen von Drittanbietern bereitstellen, z.B. Web Application Firewalls, Netzwerkfirewalls, Antischadsoftware, Angriffserkennungs- und Eindringschutzsysteme (IDS oder IPS) und weitere.
 
-- [Welche Features und Funktionen bieten grundlegende Azure-IPS/IDS und -DDoS?](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
+- [Welche Features und Funktionen bieten grundlegende Azure-IPS/IDS und -DDoS?](./cloud-services-configuration-and-management-faq.md?preserve-view=true#what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 
@@ -840,7 +840,7 @@ Aktivieren Sie die Antimalware-Erweiterung mit einem PowerShell-Skript im Startt
 
 Wählen Sie im Azure Security Center das Feature „Adaptive Anwendungssteuerung“ aus, eine intelligente, automatisierte End-to-End-Lösung. Mit diesem Feature können Sie Ihren Computer gegen Schadsoftware härten, die Ausführung schädlicher Anwendungen blockieren oder beim Versuch, eine schädliche Anwendung auszuführen, eine Warnung ausgeben (auch bei Anwendungen, die möglicherweise von Antischadsoftwarelösungen nicht erfasst werden).
 
-- [Wie kann ich in Azure Cloud Services automatisch eine Antischadsoftware-Erweiterung hinzufügen?](./cloud-services-configuration-and-management-faq.md?amp;preserve-view=#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
+- [Wie kann ich in Azure Cloud Services automatisch eine Antischadsoftware-Erweiterung hinzufügen?](./cloud-services-configuration-and-management-faq.md?preserve-view=true#how-can-i-add-an-antimalware-extension-for-my-cloud-services-in-an-automated-way)
 
 - [Antimalware-Bereitstellungsszenarien](../security/fundamentals/antimalware.md#antimalware-deployment-scenarios)
 

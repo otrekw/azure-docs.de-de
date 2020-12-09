@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: 2241049e5c3cb5039a73c0f7637f7e3553d2e227
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 878d59445dde839ca9e702ac0c49af676e48a42f
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326871"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531189"
 ---
 # <a name="migration-overview-sql-server-to-sql-managed-instance"></a>Migrationsübersicht: SQL Server zu SQL Managed Instance
 [!INCLUDE[appliesto--sqlmi](../../includes/appliesto-sqlmi.md)]
@@ -28,7 +28,7 @@ Sie können SQL Server-Instanzen migrieren, die lokal oder auf folgenden Plattfo
 - Amazon Web Services (AWS) EC2 
 - Amazon Relational Database Service (AWS RDS) 
 - Compute Engine (Google Cloud Platform – GCP)  
-- Cloud SQL für SQL Server (Google Cloud Platform – GCP) 
+- Cloud SQL für SQL Server (Google Cloud Platform – GCP) 
 
 Informationen zu anderen Szenarios finden Sie im [Leitfaden zur Datenbankmigration](https://datamigration.microsoft.com/). 
 
@@ -63,7 +63,7 @@ Im Folgenden finden Sie einige allgemeine Richtlinien, die Ihnen bei der Auswahl
 Während der Bereitstellung können Sie Compute- und Speicherressourcen auswählen und anschließend mithilfe des [Azure-Portals](../../database/scale-resources.md) ändern, ohne dass es zu Downtime Ihrer Anwendung kommt. 
 
 > [!IMPORTANT]
-> Jede Abweichung in den [Anforderungen an virtuelle Netzwerke für verwaltete Instanzen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kann Sie am Erstellen neuer Instanzen oder Verwenden vorhandener Instanzen hindern. Erfahren Sie mehr über das  [Erstellen neuer](../../managed-instance/virtual-network-subnet-create-arm-template.md?branch=release-ignite-arc-data) und [Konfigurieren vorhandener](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) Netzwerke. 
+> Jede Abweichung in den [Anforderungen an virtuelle Netzwerke für verwaltete Instanzen](../../managed-instance/connectivity-architecture-overview.md#network-requirements) kann Sie am Erstellen neuer Instanzen oder Verwenden vorhandener Instanzen hindern. Erfahren Sie mehr über das  [Erstellen neuer](../../managed-instance/virtual-network-subnet-create-arm-template.md) und [Konfigurieren vorhandener](../../managed-instance/vnet-existing-add-subnet.md?branch=release-ignite-arc-data) Netzwerke. 
 
 ### <a name="sql-server-vm-alternative"></a>Alternative für SQL Server-VMs
 
@@ -126,7 +126,7 @@ In der folgenden Tabelle werden die alternativen Migrationsoptionen verglichen:
 |---------|---------|---------|
 |[Transaktionsreplikation](../../managed-instance/replication-transactional-overview.md) | – Migrieren durch kontinuierliches Veröffentlichen von Änderungen an Quelldatenbanktabellen an die Zieldatenbanktabellen von SQL Managed Instance </br> – Vollständige oder teilweise Datenbankmigrationen ausgewählter Tabellen (Teilmenge der Datenbank)  </br> </br> Unterstützte Quellen: </br> – SQL Server (2012 – 2019) mit einigen Einschränkungen </br> – AWS EC2  </br> – GCP Compute mit SQL Server-VM | </br> – Das Setup ist im Vergleich zu anderen Migrationsoptionen relativ komplex.   </br> – Bietet eine kontinuierliche Replikationsoption zum Migrieren von Daten (ohne die Datenbanken offline zu schalten)</br> – Es gibt einige Einschränkungen bei der Transaktionsreplikation, die beim Einrichten des Verlegers für die SQL Server-Quellinstanz berücksichtigt werden müssen. Weitere Informationen finden Sie unter [Einschränkungen für das Veröffentlichen von Objekten](/sql/relational-databases/replication/publish/publish-data-and-database-objects#limitations-on-publishing-objects).  </br> – Eine Funktion zum [Überwachen der Replikationsaktivität](/sql/relational-databases/replication/monitor/monitoring-replication) ist verfügbar.    |
 |[Massenkopieren](/sql/relational-databases/import-export/import-and-export-bulk-data-by-using-the-bcp-utility-sql-server)| – Vollständige oder teilweise Datenmigrationen </br> – Downtime ist möglich </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM   | – Erfordert Downtime für das Exportieren von Daten aus der Quelle und das Importieren in das Ziel </br> – Die für Exports und Imports verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen. |
-|[Assistent zum Importieren/Exportieren von BACPAC-Dateien](../../database/database-import.md)| – Migrieren individueller Branchenanwendungsdatenbanken </br>– Für kleinere Datenbanken geeignet  </br>  – Erfordert keinen separaten Migrationsdienst oder ein Tool </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM  |   </br> – Erfordert Downtime, da Daten aus der Quelle exportiert und im Ziel importiert werden müssen   </br> – Die für Exports und Imports verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen, um Kürzungen oder Fehler durch nicht übereinstimmende Datentypen zu vermeiden. </br> – Die Zeit zum Exportieren einer Datenbank mit einer großen Anzahl von Objekten kann deutlich höher sein. |
+|[Assistent zum Importieren/Exportieren von BACPAC-Dateien](../../database/database-import.md)| – Migrieren individueller Branchenanwendungsdatenbanken </br>– Für kleinere Datenbanken geeignet  </br>  – Erfordert keinen separaten Migrationsdienst oder ein Tool </br> </br> Unterstützte Quellen: </br> – SQL Server (2005 – 2019) lokal oder Azure-VM </br> – AWS EC2 </br> – AWS RDS </br> – GCP Compute mit SQL Server-VM  |   </br> – Erfordert Downtime, da Daten aus der Quelle exportiert und im Ziel importiert werden müssen   </br> – Die für den Export/Import verwendeten Dateiformate und Datentypen müssen mit den Tabellenschemas übereinstimmen, um Kürzungen oder Fehler durch nicht übereinstimmende Datentypen zu vermeiden. </br> – Die Zeit zum Exportieren einer Datenbank mit einer großen Anzahl von Objekten kann deutlich höher sein. |
 |[Azure Data Factory (ADF)](../../../data-factory/connector-azure-sql-managed-instance.md)| – Migrieren und/oder Transformieren von Daten aus SQL Server-Datenbank-Quellinstanzen</br> – Zusammenführen von Daten aus mehreren Datenquellen in Azure SQL Managed Instance (wird in der Regel für Business Intelligence-Workloads verwendet)   </br> – Erfordert das Erstellen von Datenverschiebungspipelines in ADF zum Verschieben von Daten aus der Quelle zum Ziel   </br> - Die [Kosten](https://azure.microsoft.com/pricing/details/data-factory/data-pipeline/) sind ein wichtiger Aspekt, der auf den Pipelinetriggern, Aktivitätsausführungen, die Dauer der Datenverschiebung und mehr basiert. |
 | | | |
 
@@ -201,7 +201,7 @@ Einige Features sind nur verfügbar, wenn der [Datenbank-Kompatibilitätsgrad](/
 
 ## <a name="migration-assets"></a>Migrationsressourcen 
 
-Weitere Unterstützung erhalten Sie von den folgenden Ressourcen, die für reale Migrationsprojekte entwickelt wurden.
+Weitere Unterstützung finden Sie in den folgenden Ressourcen, die für reale Migrationsprojekte entwickelt wurden.
 
 |Asset  |BESCHREIBUNG  |
 |---------|---------|
