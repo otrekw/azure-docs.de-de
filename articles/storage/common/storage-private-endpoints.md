@@ -10,12 +10,12 @@ ms.date: 03/12/2020
 ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 96e6b7a672e2967403626cb9ba7db87fc4dd795c
-ms.sourcegitcommit: f311f112c9ca711d88a096bed43040fcdad24433
+ms.openlocfilehash: 0da970724a5d6f0ad42ba64939f316ec1ada855b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94980200"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905552"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Verwenden privater Endpunkte für Azure Storage
 
@@ -125,10 +125,6 @@ Ausführliche Preisinformationen finden Sie unter [Azure Private Link – Preise
 ## <a name="known-issues"></a>Bekannte Probleme
 
 Beachten Sie die folgenden bekannten Probleme im Zusammenhang mit privaten Endpunkten für Azure Storage:
-
-### <a name="copy-blob-support"></a>Unterstützung für „Copy Blob“
-
-Wenn das Speicherkonto durch eine Firewall geschützt ist und über private Endpunkte auf das Konto zugegriffen wird, kann dieses Konto nicht als Quelle für einen Blobkopiervorgang ([Copy Blob](/rest/api/storageservices/copy-blob)) verwendet werden.
 
 ### <a name="storage-access-constraints-for-clients-in-vnets-with-private-endpoints"></a>Einschränkungen beim Speicherzugriff für Clients in VNETs mit privaten Endpunkten
 
