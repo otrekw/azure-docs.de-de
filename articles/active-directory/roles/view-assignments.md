@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f9f7c6ec0917adbca5b44feee1ec285f4337ac4c
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8546c2b50c78c7a24d07c75d2d730fd2566e8ba0
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94579027"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862087"
 ---
 # <a name="view-custom-role-assignments-using-azure-active-directory"></a>Anzeigen der Zuweisungen benutzerdefinierter Rollen mit Azure Active Directory
 
@@ -39,7 +39,7 @@ In diesem Verfahren wird das Anzeigen von Zuweisungen einer Rolle mit einem orga
 
 ## <a name="view-role-assignments-using-azure-ad-powershell"></a>Anzeigen von Rollenzuweisungen mithilfe von Azure AD PowerShell
 
-In diesem Abschnitt wird das Anzeigen von Zuweisungen einer Rolle mit einem organisationsweiten Bereich beschrieben. Dieser Artikel verwendet das [Azure Active Directory PowerShell Version 2](/powershell/module/azuread/?view=azureadps-2.0#directory_roles)-Modul. Zum Anzeigen von Zuweisungen im Einzelanwendungsbereich mithilfe von PowerShell können Sie die Cmdlets in [Zuweisen benutzerdefinierter Rollen mit Ressourcengeltungsbereich unter Verwendung von PowerShell in Azure Active Directory](custom-assign-powershell.md) verwenden.
+In diesem Abschnitt wird das Anzeigen von Zuweisungen einer Rolle mit einem organisationsweiten Bereich beschrieben. Dieser Artikel verwendet das [Azure Active Directory PowerShell Version 2](/powershell/module/azuread/#directory_roles)-Modul. Zum Anzeigen von Zuweisungen im Einzelanwendungsbereich mithilfe von PowerShell können Sie die Cmdlets in [Zuweisen benutzerdefinierter Rollen mit Ressourcengeltungsbereich unter Verwendung von PowerShell in Azure Active Directory](custom-assign-powershell.md) verwenden.
 
 ### <a name="prepare-powershell"></a>Vorbereiten von PowerShell
 

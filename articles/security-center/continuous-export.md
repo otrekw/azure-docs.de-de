@@ -6,14 +6,14 @@ author: memildin
 manager: rkarlin
 ms.service: security-center
 ms.topic: how-to
-ms.date: 10/27/2020
+ms.date: 12/08/2020
 ms.author: memildin
-ms.openlocfilehash: 59cfe7b990523e5cb165d1037291b3c1b1301624
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: bdca5a753a49c26587db27892b54c2cb88910c83
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93289230"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862461"
 ---
 # <a name="continuously-export-security-center-data"></a>Fortlaufendes Exportieren von Security Center-Daten
 
@@ -61,13 +61,18 @@ Die folgenden Schritte sind unabhängig davon erforderlich, ob Sie einen fortlau
 1. Wählen Sie auf der Security Center-Randleiste **Preise & Einstellungen** aus.
 1. Wählen Sie das Abonnement aus, für das Sie den Datenexport konfigurieren möchten.
 1. Wählen Sie auf der Randleiste der Seite „Einstellungen“ für dieses Abonnement **Fortlaufender Export** aus.
-    [![Exportoptionen in Azure Security Center](media/continuous-export/continuous-export-options-page.png)](media/continuous-export/continuous-export-options-page.png#lightbox) Hier werden die Exportoptionen angezeigt. Es gibt eine Registerkarte für jedes verfügbare Exportziel. 
+
+    :::image type="content" source="./media/continuous-export/continuous-export-options-page.png" alt-text="Exportoptionen in Azure Security Center":::
+
+    Im Folgenden finden Sie die Exportoptionen. Es gibt eine Registerkarte für jedes verfügbare Exportziel. 
+
 1. Wählen Sie den Datentyp, den Sie exportieren möchten, und dann Filter für die einzelnen Typen aus (z. B. nur Warnungen mit hohem Schweregrad exportieren).
 1. Wenn Ihre Auswahl eine dieser vier Empfehlungen enthält, können Sie optional die Ergebnisse der Sicherheitsrisikobewertung mit aufnehmen:
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Datenbanken müssen beseitigt werden
     - Ergebnisse der Sicherheitsrisikobewertung in Ihren SQL Server-Instanzen auf Computern müssen beseitigt werden (Vorschau)
     - Sicherheitsrisiken in Azure Container Registry-Images müssen behoben werden (unterstützt von Qualys).
     - Sicherheitsrisiken für VMs müssen behoben werden
+    - Systemupdates sollten auf Ihren Computern installiert sein.
 
     Wenn Sie die Ergebnisse in diese Empfehlungen aufnehmen möchten, aktivieren Sie die Option **Include security findings** (Sicherheitsergebnisse einschließen).
 
@@ -92,7 +97,7 @@ Die API bietet zusätzliche Funktionen, die im Azure-Portal nicht verfügbar sin
 
 * **Zusätzliche Features** – Die API bietet zusätzliche Parameter, die nicht in der Benutzeroberfläche angezeigt werden. Beispielsweise können Sie Ihrer Automatisierungsressource Tags hinzufügen und Ihren Export auf der Grundlage einer breiteren Palette von Warn- und Empfehlungseigenschaften definieren, als sie auf der Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals angeboten werden.
 
-* **Stärker fokussierte Bereiche** : Die API bietet eine differenziertere Ebene für den Umfang ihrer Exportkonfigurationen. Wenn Sie einen Export mit der API definieren, können Sie dies auf der Ebene der Ressourcengruppe tun. Wenn Sie die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals verwenden, müssen Sie sie auf der Abonnementsebene definieren.
+* **Stärker fokussierte Bereiche**: Die API bietet eine differenziertere Ebene für den Umfang ihrer Exportkonfigurationen. Wenn Sie einen Export mit der API definieren, können Sie dies auf der Ebene der Ressourcengruppe tun. Wenn Sie die Seite **Fortlaufender Export** in der Benutzeroberfläche des Security Center-Portals verwenden, müssen Sie sie auf der Abonnementsebene definieren.
 
     > [!TIP]
     > Wenn Sie mehrere Exportkonfigurationen mit der API eingerichtet haben oder reine API-Parameter verwendet haben, werden diese zusätzlichen Features nicht auf der Security Center-Benutzeroberfläche angezeigt. Stattdessen erscheint ein Banner, das Sie darüber informiert, dass andere Konfigurationen existieren.
@@ -125,7 +130,7 @@ Verwenden Sie für die Bereitstellung Ihrer Konfigurationen für den fortlaufend
     > Sie können auch in Azure Policy nach diesen Richtlinien suchen:
     > 1. Öffnen Sie Azure Policy.
     > :::image type="content" source="./media/continuous-export/opening-azure-policy.png" alt-text="Zugreifen auf Azure Policy":::
-    > 2. Klicken Sie im Azure Policy-Menü auf **Definitionen** , und suchen Sie nach dem Namen der gewünschten Richtlinie. 
+    > 2. Klicken Sie im Azure Policy-Menü auf **Definitionen**, und suchen Sie nach dem Namen der gewünschten Richtlinie. 
 
 1. Klicken Sie auf der entsprechenden Azure Policy-Seite auf **Zuweisen**.
     :::image type="content" source="./media/continuous-export/export-policy-assign.png" alt-text="Zuweisen der Azure-Richtlinie":::
@@ -163,7 +168,7 @@ Die Ereignisschemas der exportierten Datentypen finden Sie bei den [Log Analytic
 
 ##  <a name="view-exported-alerts-and-recommendations-in-azure-monitor"></a>Anzeigen exportierter Warnungen und Empfehlungen in Azure Monitor
 
-In einigen Fällen können Sie die exportierten Sicherheitswarnungen und/oder Empfehlungen in [Azure Monitor](../azure-monitor/platform/alerts-overview.md) anzeigen. 
+Sie können die exportierten Sicherheitswarnungen und Empfehlungen auch in [Azure Monitor](../azure-monitor/platform/alerts-overview.md) anzeigen. 
 
 Azure Monitor bietet eine einheitliche Warnungsbenutzeroberfläche für eine Vielzahl von Azure-Warnungen, einschließlich Diagnoseprotokoll, Metrikwarnungen und benutzerdefinierte Warnungen, die auf Log Analytics-Arbeitsbereichsabfragen basieren.
 
@@ -186,7 +191,7 @@ Ihnen werden nun neue Azure Security Center-Warnungen oder -Empfehlungen (abhän
 
 ## <a name="manual-one-time-export-of-alerts-and-recommendations"></a>Manueller einmaliger Export von Warnungen und Empfehlungen
 
-Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen** , und wählen Sie **CSV-Bericht herunterladen** aus.
+Wenn Sie einen CSV-Bericht für Warnungen oder Empfehlungen herunterladen möchten, öffnen Sie die Seite **Sicherheitswarnungen** oder **Empfehlungen**, und wählen Sie **CSV-Bericht herunterladen** aus.
 
 [![Herunterladen von Warnungsdaten als CSV-Datei](media/continuous-export/download-alerts-csv.png)](media/continuous-export/download-alerts-csv.png#lightbox)
 
