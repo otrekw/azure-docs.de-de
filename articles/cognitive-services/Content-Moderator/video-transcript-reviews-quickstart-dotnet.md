@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e3f7b877818056fc73f10d54b94a6b6c26c605e8
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 326fc2cc162a2ab54b40888250fbeef55ad8800a
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92911272"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853457"
 ---
 # <a name="create-video-transcript-reviews-using-net"></a>Erstellen von Videotranskriptüberprüfungen per .NET
 
@@ -81,7 +81,7 @@ using Newtonsoft.Json;
 
 ### <a name="add-private-properties"></a>Hinzufügen von privaten Eigenschaften
 
-Fügen Sie die folgenden privaten Eigenschaften dem **VideoTranscriptReviews** -Namespace ( **Program** -Klasse) hinzu. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
+Fügen Sie die folgenden privaten Eigenschaften dem **VideoTranscriptReviews**-Namespace (**Program**-Klasse) hinzu. Aktualisieren Sie die Felder `AzureEndpoint` und `CMSubscriptionKey` mit den Werten Ihrer Endpunkt-URL und Ihres Abonnementschlüssels. Diese finden Sie auf der Registerkarte **Schnellstart** Ihrer Ressource im Azure-Portal.
 
 ```csharp
 namespace VideoReviews
@@ -145,15 +145,15 @@ Erstellen Sie mit **ContentModeratorClient.Reviews.CreateVideoReviews** eine Vid
 **CreateVideoReviews** verfügt über die folgenden erforderlichen Parameter:
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
-1. Ein **IList\<CreateVideoReviewsBodyItem>** -Objekt. Jedes **CreateVideoReviewsBodyItem** -Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
+1. Ein **IList\<CreateVideoReviewsBodyItem>**-Objekt. Jedes **CreateVideoReviewsBodyItem**-Objekt stellt eine Videoüberprüfung dar. In dieser Schnellstartanleitung wird jeweils nur eine Überprüfung erstellt.
 
 **CreateVideoReviewsBodyItem** verfügt über mehrere Eigenschaften. Sie legen mindestens die folgenden Eigenschaften fest:
-- **Content** : Die URL des zu überprüfenden Videos.
-- **ContentId** : Eine ID, die der Videoüberprüfung zugewiesen werden soll.
-- **Status** : Legen Sie den Wert auf „Unpublished“ (Veröffentlichung aufgehoben) fest. Wenn Sie nichts festlegen, wird standardmäßig „Pending“ (Ausstehend) verwendet. Dies bedeutet, dass die Videoüberprüfung veröffentlicht wird und dass die Prüfung durch den Menschen noch aussteht. Nachdem eine Videoüberprüfung veröffentlicht wurde, können Sie ihr keine Videoframes, kein Transkript und auch kein Transkriptmoderationsergebnis mehr hinzufügen.
+- **Content**: Die URL des zu überprüfenden Videos.
+- **ContentId**: Eine ID, die der Videoüberprüfung zugewiesen werden soll.
+- **Status**: Legen Sie den Wert auf „Unpublished“ (Veröffentlichung aufgehoben) fest. Wenn Sie nichts festlegen, wird standardmäßig „Pending“ (Ausstehend) verwendet. Dies bedeutet, dass die Videoüberprüfung veröffentlicht wird und dass die Prüfung durch den Menschen noch aussteht. Nachdem eine Videoüberprüfung veröffentlicht wurde, können Sie ihr keine Videoframes, kein Transkript und auch kein Transkriptmoderationsergebnis mehr hinzufügen.
 
 > [!NOTE]
-> **CreateVideoReviews** gibt „IList\<string>“ zurück. Jede dieser Zeichenfolgen enthält eine ID für eine Videoüberprüfung. Diese IDs sind GUIDs und nicht mit dem Wert der **ContentId** -Eigenschaft identisch.
+> **CreateVideoReviews** gibt „IList\<string>“ zurück. Jede dieser Zeichenfolgen enthält eine ID für eine Videoüberprüfung. Diese IDs sind GUIDs und nicht mit dem Wert der **ContentId**-Eigenschaft identisch.
 
 Fügen Sie dem VideoReviews-Namespace (Program-Klasse) die folgende Methodendefinition hinzu.
 
@@ -200,7 +200,7 @@ private static string CreateReview(ContentModeratorClient client, string id, str
 Sie fügen ein Transkript einer Videoüberprüfung mit **ContentModeratorClient.Reviews.AddVideoTranscript** hinzu. **AddVideoTranscript** verfügt über die folgenden erforderlichen Parameter:
 1. Ihre Content Moderator-Team-ID
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
-1. Ein **Stream** -Objekt mit dem Transkript
+1. Ein **Stream**-Objekt mit dem Transkript
 
 Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
@@ -235,15 +235,15 @@ Zusätzlich zum Hinzufügen eines Transkripts zu einer Videoüberprüfung fügen
 1. Eine Zeichenfolge, die einen MIME-Typ enthält. Dieser sollte „application/json“ lauten. 
 1. Ihr Content Moderator-Teamname.
 1. Die von **CreateVideoReviews** zurückgegebene ID für die Videoüberprüfung.
-1. Ein „IList\<TranscriptModerationBodyItem>“-Element: Ein **TranscriptModerationBodyItem** -Element verfügt über die folgenden Eigenschaften:
-1. **Terms** : Ein „IList\<TranscriptModerationBodyItemTermsItem>“-Element: Ein **TranscriptModerationBodyItemTermsItem** -Element verfügt über die folgenden Eigenschaften:
-1. **Index** : Der nullbasierte Index des Begriffs
-1. **Term** : Eine Zeichenfolge, die den Begriff enthält
-1. **Timestamp** : Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
+1. Ein „IList\<TranscriptModerationBodyItem>“-Element: Ein **TranscriptModerationBodyItem**-Element verfügt über die folgenden Eigenschaften:
+1. **Terms**: Ein „IList\<TranscriptModerationBodyItemTermsItem>“-Element: Ein **TranscriptModerationBodyItemTermsItem**-Element verfügt über die folgenden Eigenschaften:
+1. **Index**: Der nullbasierte Index des Begriffs
+1. **Term**: Eine Zeichenfolge, die den Begriff enthält
+1. **Timestamp**: Eine Zeichenfolge mit der Zeit (in Sekunden) im Transkript, nach der die Begriffe gefunden werden.
 
 Das Transkript muss im WebVTT-Format vorliegen. Weitere Informationen finden Sie unter [WebVTT: The Web Video Text Tracks Format](https://www.w3.org/TR/webvtt1/) (WebVTT: Webvideo-Texttitelformat).
 
-Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Mit dieser Methode wird ein Transkript an die **ContentModeratorClient.TextModeration.ScreenText** -Methode übermittelt. Außerdem wird das Ergebnis in ein „IList\<TranscriptModerationBodyItem>“-Element übersetzt und an **AddVideoTranscriptModerationResult** übermittelt.
+Fügen Sie die folgende Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Mit dieser Methode wird ein Transkript an die **ContentModeratorClient.TextModeration.ScreenText**-Methode übermittelt. Außerdem wird das Ergebnis in ein „IList\<TranscriptModerationBodyItem>“-Element übersetzt und an **AddVideoTranscriptModerationResult** übermittelt.
 
 ```csharp
 /// <summary>
@@ -315,7 +315,7 @@ private static void PublishReview(ContentModeratorClient client, string review_i
 
 ## <a name="putting-it-all-together"></a>Zusammenfügen des Gesamtbilds
 
-Fügen Sie die **Main** -Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Schließen Sie zuletzt die Program-Klasse und den VideoTranscriptReviews-Namespace.
+Fügen Sie die **Main**-Methodendefinition dem VideoTranscriptReviews-Namespace (Program-Klasse) hinzu. Schließen Sie zuletzt die Program-Klasse und den VideoTranscriptReviews-Namespace.
 
 > [!NOTE]
 > Im Programm wird ein Beispieltranskript im VTT-Format verwendet. In einer realen Lösung verwenden Sie den Azure Media Indexer-Dienst, um aus einem Video [ein Transkript zu generieren](../../media-services/previous/media-services-index-content.md).
@@ -381,5 +381,3 @@ Die folgenden Features werden angezeigt:
 Rufen Sie das [Content Moderator .NET SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) und die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) dafür sowie andere Content Moderator-Schnellstarts für .NET ab.
 
 Informieren Sie sich darüber, wie Sie im Prüfungstool [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) generieren.
-
-Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

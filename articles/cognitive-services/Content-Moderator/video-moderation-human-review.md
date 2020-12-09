@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: pafarley
-ms.openlocfilehash: 079d5ea0259a436100b81489043b71a81ec1a330
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 05ece4d8ea24fb9da106ec3daa2cc1a63706dab9
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96327218"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853497"
 ---
 # <a name="video-moderation-with-the-review-tool"></a>Videomoderation mit dem Überprüfungstool
 
@@ -103,4 +103,3 @@ Sobald die Videos im Limbo-Zustand ablaufen, werden ihre Überprüfungen als abg
 - Beginnen Sie mit dem [Schnellstart für die Videomoderation](video-moderation-api.md).
 - Erfahren Sie mehr über das Generieren von [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) für Ihre menschlichen Prüfer aus Ihrer moderierten Ausgabe.
 - Fügen Sie [Überprüfungen von Videotranskripten](video-transcript-reviews-quickstart-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
-- Sehen Sie sich das ausführliche Tutorial zur Entwicklung einer [vollständigen Lösung für die Videomoderation](video-transcript-moderation-review-tutorial-dotnet.md) an.

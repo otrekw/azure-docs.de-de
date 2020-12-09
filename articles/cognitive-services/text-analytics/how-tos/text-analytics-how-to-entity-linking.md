@@ -10,12 +10,12 @@ ms.subservice: text-analytics
 ms.topic: article
 ms.date: 11/19/2020
 ms.author: aahi
-ms.openlocfilehash: ef06faa17739153b2a04e777498e1de6e97c0646
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94957094"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558979"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -31,7 +31,7 @@ NER (Named Entity Recognition) ist die Möglichkeit, unterschiedliche Entitäten
 
 ## <a name="personally-identifiable-information-pii"></a>Personenbezogene Informationen (Personally Identifiable Information, PII)
 
-Das Feature PII ist ein Bestandteil von NER und kann vertrauliche Entitäten in Text identifizieren und bearbeiten, die einer einzelnen Person zugeordnet sind, wie z. B.: Telefonnummer, E-Mail-Adresse, Postanschrift, Reisepassnummer.  
+Das Feature PII ist ein Bestandteil von NER und kann vertrauliche Entitäten in Text identifizieren und bearbeiten, die einer einzelnen Person zugeordnet sind, wie z. B.: Telefonnummer, E-Mail-Adresse, Postanschrift, Reisepassnummer.
 
 ## <a name="named-entity-recognition-features-and-versions"></a>Features und Versionen der Erkennung benannter Entitäten
 

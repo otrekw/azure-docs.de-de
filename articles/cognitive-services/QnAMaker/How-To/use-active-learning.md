@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 8492e2722e456b689e23041726f6eaf94e284c3b
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: 1ac5e32b454cfc1adafb1f54b01d2a1a302908a4
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93028802"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600434"
 ---
 # <a name="use-active-learning-to-improve-your-knowledge-base"></a>Nutzen des aktiven Lernens zum Verbessern Ihrer Wissensdatenbank
 
@@ -24,6 +24,8 @@ Ihre Wissensdatenbank wird nicht automatisch geändert. Damit Änderungen wirksa
 Das Feature für aktives Lernen wird in der Runtimeversion 4.4.0 und höher unterstützt. Wenn Ihre Wissensdatenbank mit einer Vorgängerversion erstellt wurde, [führen Sie ein Upgrade Ihrer Runtime durch](set-up-qnamaker-service-azure.md#get-the-latest-runtime-updates), um dieses Feature zu nutzen.
 
 ## <a name="turn-on-active-learning-for-alternate-questions"></a>Aktivieren des aktiven Lernens für alternative Fragen
+
+# <a name="qna-maker-ga-stable-release"></a>[QnA Maker, allgemeine Verfügbarkeit (stabile Version)](#tab/v1)
 
 Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie das Feature, um die vorgeschlagenen Fragen anzuzeigen. Nachdem Sie aktives Lernen aktiviert haben, müssen Sie Informationen aus der Client-App an QnA Maker senden. Weitere Informationen finden Sie unter [Architekturfluss für die Verwendung der GenerateAnswer- und der Trainings-API über einen Bot](improve-knowledge-base.md#architectural-flow-for-using-generateanswer-and-train-apis-from-a-bot).
 
@@ -43,6 +45,12 @@ Das Feature für aktives Lernen ist standardmäßig deaktiviert. Aktivieren Sie 
     > Die genaue Version auf der vorherigen Abbildung ist nur als Beispiel dargestellt. Ihre Version kann abweichen.
 
     Nachdem Sie **Aktives Lernen** aktiviert haben, schlägt die Wissensdatenbank basierend auf den von Benutzern übermittelten Fragen in regelmäßigen Abständen neue Fragen vor. Sie können **Active Learning** deaktivieren, indem Sie die Einstellung wieder umschalten.
+    
+# <a name="qna-maker-managed-preview-release"></a>[QnA Maker verwaltet (Vorschauversion)](#tab/v2)
+
+Das Feature für aktives Lernen ist in QnA Maker verwaltet (Vorschau) standardmäßig **aktiviert**. Verwenden Sie zum Anzeigen der vorgeschlagenen alternativen Fragen die [Anzeigeoptionen](../How-To/improve-knowledge-base.md#view-suggested-questions) auf der Seite „Bearbeiten“.
+
+---
 
 ## <a name="review-suggested-alternate-questions"></a>Überprüfen von Vorschlägen für alternative Fragen
 

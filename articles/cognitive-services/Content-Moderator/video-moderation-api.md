@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 05/18/2020
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: cd813c6db9d03b0b7c84497e5b44f6ecdb591437
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 4f98eac4305333ec7225c90da2777b7e02f050a0
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92912853"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853531"
 ---
 # <a name="analyze-video-content-for-objectionable-material-in-c"></a>Analysieren von Videoinhalten auf anstößiges Material in C#
 
@@ -39,9 +39,9 @@ Befolgen Sie die Anweisungen in [Erstellen eines Azure Media Services-Kontos](..
 
 Navigieren Sie zu Ihrem neuen AMS-Abonnement im Azure-Portal, und wählen Sie **API-Zugriff** aus im seitlichen Menü. Wählen Sie **Verbindung mit Azure Media Services über Dienstprinzipal herstellen** aus. Notieren Sie den Wert im Feld **REST-API-Endpunkt**. Diesen benötigen Sie später.
 
-Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und benennen Sie Ihre neue Azure AD-Anwendungsregistrierung (z.B. „VideoModADApp“). Klicken Sie auf **Speichern** , und warten Sie einige Minuten, während die Anwendung konfiguriert wird. Ihre neue App-Registrierung sollte dann im Abschnitt **Azure AD-App** der Seite angezeigt werden.
+Wählen Sie im Abschnitt **Azure AD-App** die Option **Neue erstellen** und benennen Sie Ihre neue Azure AD-Anwendungsregistrierung (z.B. „VideoModADApp“). Klicken Sie auf **Speichern**, und warten Sie einige Minuten, während die Anwendung konfiguriert wird. Ihre neue App-Registrierung sollte dann im Abschnitt **Azure AD-App** der Seite angezeigt werden.
 
-Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern** , und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
+Wählen Sie Ihre App-Registrierung, und klicken Sie darunter auf **Anwendung verwalten**. Notieren Sie den Wert im Feld **Anwendungs-ID**. Diesen benötigen Sie später. Wählen Sie **Einstellungen** > **Schlüssel** aus, und geben Sie eine Beschreibung für einen neuen Schlüssel ein (z.B. „VideoModKey“). Klicken Sie auf **Speichern**, und notieren Sie den neuen Schlüsselwert. Kopieren Sie diese Zeichenfolge, und speichern Sie sie an einem sicheren Ort.
 
 Eine ausführlichere Erläuterung für das oben beschriebene Verfahren finden Sie unter [Erste Schritte mit Azure AD-Authentifizierung](../../media-services/previous/media-services-portal-get-started-with-aad.md).
 
@@ -131,7 +131,7 @@ Sie müssen auch die Datei _preset.json_ im aktuellen Verzeichnis erstellen und 
 
 ### <a name="load-the-input-videos"></a>Laden des/der Eingabevideos
 
-Die **Main** -Methode der **Program** -Klasse erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
+Die **Main**-Methode der **Program**-Klasse erstellt zunächst einen Azure-Medienkontext und anschließend einen Azure-Speicherkontext, falls Ihre Videos sich in Blob Storage befinden. Der restliche Code überprüft ein Video aus einem lokalen Ordner, einem Blob oder mehreren Blogs innerhalb eines Azure-Speichercontainers. Sie können alle Optionen testen, indem Sie die anderen Codezeilen auskommentieren.
 
 ```csharp
 // Create Azure Media Context
@@ -159,7 +159,7 @@ RunContentModeratorJob(asset);
 
 ### <a name="create-an-azure-media-context"></a>Erstellen eines Azure-Medienkontexts
 
-Fügen Sie der **Program** -Klasse die folgende Methode hinzu. Dabei werden Ihre AMS-Anmeldeinformationen zum Zulassen der Kommunikation mit AMS verwendet.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Dabei werden Ihre AMS-Anmeldeinformationen zum Zulassen der Kommunikation mit AMS verwendet.
 
 ```csharp
 // Creates a media context from azure credentials
@@ -180,7 +180,7 @@ static void CreateMediaContext()
 
 ### <a name="add-the-code-to-create-an-azure-storage-context"></a>Code zum Erstellen eines Azure-Speicherkontexts
 
-Fügen Sie der **Program** -Klasse die folgende Methode hinzu. Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Sie verwenden den Speicherkontext, der mithilfe Ihrer Storage-Anmeldeinformationen erstellt wurden, um auf Blob Storage zuzugreifen.
 
 ```csharp
 // Creates a storage context from the AMS associated storage name and key
@@ -365,9 +365,9 @@ static void StateChanged(object sender, JobStateChangedEventArgs e)
 Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSON-Antwort. Diese besteht aus folgenden Elementen:
 
 - Zusammenfassung der Videoinformationen
-- **Screenshots** als " **fragments** "
-- **Keyframes** als " **events** " mit dem Flag **reviewRecommended" (= true or false)"** , das auf **adultScore** und **racyScore** basiert.
-- **start** , **duration** , **totalDuration** und **timestamp** werden in „Takten“ angegeben. Teilen Sie diese Werte durch **timescale** , um die Anzahl in Sekunden zu erhalten.
+- **Screenshots** als "**fragments**"
+- **Keyframes** als "**events**" mit dem Flag **reviewRecommended" (= true or false)"** , das auf **adultScore** und **racyScore** basiert.
+- **start**, **duration**, **totalDuration** und **timestamp** werden in „Takten“ angegeben. Teilen Sie diese Werte durch **timescale**, um die Anzahl in Sekunden zu erhalten.
  
 > [!NOTE]
 > - `adultScore` gibt das mögliche Vorhandensein und die Vorhersage von Inhalten an, die in bestimmten Situationen als explizit sexuell oder nicht jugendfrei betrachtet werden können.
@@ -430,9 +430,5 @@ Nachdem der Content Moderator-Auftrag abgeschlossen ist, analysieren Sie die JSO
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie [Videoüberprüfungen](video-reviews-quickstart-dotnet.md) aus Ihrer Moderationsausgabe generieren.
-
-Fügen Sie die [Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md) zu Ihren Videoüberprüfungen hinzu.
-
-In diesem ausführlichen Tutorial erhalten Sie weitere Informationen zum Erstellen einer [vollständigen Projektmappe zur Video- und Transkriptmoderation](video-transcript-moderation-review-tutorial-dotnet.md).
 
 Laden Sie die [Visual Studio-Projektmappe](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/ContentModerator) für diesen und andere Content Moderator-Schnellstarts für .NET herunter.

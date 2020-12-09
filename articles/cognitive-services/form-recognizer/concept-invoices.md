@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: pafarley
-ms.openlocfilehash: eb1be4c78be0eb7fb943700b168fa82ede4d3861
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 9a3a6bd6489baea90ed4143b42a09e7d697bbc50
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458389"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602443"
 ---
 # <a name="form-recognizer-prebuilt-invoice-model"></a>Vordefiniertes Rechnungsmodell für die Formularerkennung
 
@@ -74,7 +74,7 @@ Die JSON-Ausgabe besteht aus drei Teilen:
 
 Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. Nachstehend sehen Sie die aus einer Rechnung extrahierten Felder in der JSON-Ausgabeantwort (die folgende Ausgabe verwendet diese [Beispielrechnung](./media/sample-invoice.jpg)).  
 
-|Name| type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
+|Name| Type | BESCHREIBUNG | Text | Wert (standardisierte Ausgabe) |
 |:-----|:----|:----|:----| :----|
 | CustomerName | Zeichenfolge | Kunde, dem die Rechnung gestellt wird | Microsoft Corp. |  |
 | CustomerId | Zeichenfolge | Referenz-ID für den Kunden | CID-12345 |  |
@@ -112,4 +112,4 @@ Der Rechnungsdienst extrahiert den Text, die Tabellen und 26 Rechnungsfelder. N
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Was ist die Formularerkennung?](./overview.md)
-* [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/AnalyzeInvoiceAsync)
+* [REST-API-Referenzdokumente](https://westcentralus.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2-1-preview-2/operations/5ed8c9843c2794cbb1a96291)

@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/15/2020
 ms.author: trbye
-ms.openlocfilehash: f3a3d897d5cc5a22340dccf3aeeac8d52158a3a0
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f87db54b43f0ece49b940521bea34737da676a31
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94425205"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96912325"
 ---
 Die Funktion zum Erkennen und Transkribieren von menschlicher Sprache (Spracherkennung) ist eines der zentralen Features des Speech-Diensts. In diesem Schnellstart erfahren Sie, wie Sie das Speech SDK in Ihren Apps und Produkten verwenden, um hochwertige Spracherkennungen durchzuführen.
 
@@ -30,6 +30,8 @@ Zuallererst muss das [Speech SDK für Go](../../../quickstarts/setup-platform.m
 Verwenden Sie das folgende Codebeispiel, um die Spracherkennung über Ihr standardmäßiges Gerätemikrofon durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel. Wenn Sie das Skript ausführen, wird eine Erkennungssitzung mit Ihrem Standardmikrofon gestartet und Text ausgegeben.
 
 ```go
+package main
+
 import (
     "bufio"
     "fmt"
@@ -104,6 +106,8 @@ Ausführliche Informationen zu den Klassen [`SpeechConfig`](https://pkg.go.dev/g
 Verwenden Sie das folgende Beispiel, um die Spracherkennung mit einer Audiodatei durchzuführen. Ersetzen Sie die Variablen `subscription` und `region` durch Ihr Abonnement und Ihren Regionsschlüssel. Ersetzen Sie außerdem die Variable `file` durch einen Pfad zu einer WAV-Datei. Wenn Sie das Skript ausführen, wird Sprache aus der Datei erkannt und das Textergebnis ausgegeben.
 
 ```go
+package main
+
 import (
     "fmt"
     "time"
