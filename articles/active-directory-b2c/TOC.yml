@@ -125,10 +125,12 @@
       items:
         - name: Erstellen eines Datenflusses
           items:
-            - name: Registrierung oder Anmeldung
-              href: tutorial-create-user-flows.md
+            - name: Erstellen von Benutzerflows
+              href: create-user-flow.md
             - name: Kennwortanmeldeinformationen des Ressourcenbesitzers
               href: configure-ropc.md
+            - name: Einrichten der Telefonauthentifizierung
+              href: phone-authentication-user-flows.md
             - name: Einrichten der Self-Service-Kennwortzurücksetzung
               href: user-flow-self-service-password-reset.md
         - name: Hinzufügen des bedingten Zugriffs

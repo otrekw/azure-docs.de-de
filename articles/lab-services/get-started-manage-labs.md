@@ -3,12 +3,12 @@ title: Erste Schritte mit Azure Lab Services
 description: Dieser Artikel enthält eine Einführung in die Verwendung von Azure Lab Services.
 ms.topic: article
 ms.date: 11/18/2020
-ms.openlocfilehash: bdc4f4af06d70a1798e7409b78f6b47530ddd7f4
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 44afe13fb6f555b12dfce939ce8e88e3af8dc7ef
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917102"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602664"
 ---
 # <a name="get-started-with-lab-services"></a>Erste Schritte mit Lab Services 
 
@@ -48,7 +48,7 @@ Der wichtigste Aspekt bei der Verwaltung der VMs ist, dass für eine **ausgefüh
 
 ### <a name="overview"></a>Übersicht
 
-Dashboards für Classroom-Labs in Azure Lab Services bieten eine Momentaufnahme der verschiedenen Aspekte eines bestimmten Labs, einschließlich der Informationen zu den VMs, der Anzahl zugewiesener und nicht zugewiesener VMs, der Anzahl registrierter und nicht registrierter Benutzer und der Informationen zu Lab-Zeitplänen. 
+Dashboards für Labs in Azure Lab Services bieten eine Momentaufnahme der verschiedenen Aspekte eines bestimmten Labs, einschließlich der Informationen zu den VMs, der Anzahl zugewiesener und nicht zugewiesener VMs, der Anzahl registrierter und nicht registrierter Benutzer und der Informationen zu Lab-Zeitplänen. 
 
 > [!NOTE]
 > Auch wenn die meisten verwaltungsbezogenen Aspekte des Dashboards und der [Azure Lab Services-Website](https://labs.azure.com/) für Kursleiter sichtbar sind, können sich die für Ihre Rolle spezifischen Berechtigungen auf Ihre Möglichkeiten auswirken, bestimmte Kriterien im Dashboard zu ändern. Wenn Sie ein Problem bei Ihrer speziellen Lab-Einrichtung feststellen, wenden Sie sich an Ihren CTE-Administrator.
@@ -115,12 +115,8 @@ Kursleiter können einem Lab Kursteilnehmer hinzufügen und ihre Stundenkontinge
 
 1. Klicken Sie auf der [Azure Lab Services-Website](https://labs.azure.com/) im linken Bereich des Fensters auf **Benutzer**.
 1. Klicken Sie oben im Fenster auf **Benutzer hinzufügen**, und wählen Sie **Per E-Mail-Adresse hinzufügen** aus. 
-
-    :::image type="content" source="./media/how-to-configure-student-usage/add-users-button.png" alt-text="Schaltfläche „Benutzer hinzufügen“":::
 1. Geben Sie im rechts angezeigten Bereich **Benutzer hinzufügen** die E-Mail-Adressen der Kursteilnehmer in separaten Zeilen oder durch Semikolons getrennt in einer einzelnen Zeile ein.
 1. Klicken Sie auf **Speichern**.
-
-    :::image type="content" source="./media/get-started-manage-labs/add-students.png" alt-text="Hinzufügen von Kursteilnehmern zum Lab":::
 1. Die Liste der Benutzer wird nun mit E-Mail-Adresse, Status, Einladung und Kontingentstunden aktualisiert.
 
     Nachdem Kursteilnehmer für ein Lab registriert wurden, werden ihre Namen mit den Vor- und Nachnamen aus Azure Active Directory aktualisiert.

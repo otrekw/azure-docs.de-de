@@ -51,6 +51,8 @@
           href: marketplace-co-sell.md
         - name: Co-Selling-Option im Partner Center
           href: commercial-marketplace-co-sell.md
+        - name: "Migrieren von Co-Selling-Lösungen von OCP\_GTM"
+          href: co-sell-solution-migration.md
         - name: Verkaufen über CSP-Partner
           href: cloud-solution-providers.md
         - name: Onboardingleitfaden zu Connect Program

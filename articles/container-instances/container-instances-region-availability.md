@@ -4,12 +4,12 @@ description: Verfügbarkeit von Compute- und Arbeitsspeicherressourcen für den 
 ms.topic: article
 ms.date: 04/27/2020
 ms.custom: references_regions
-ms.openlocfilehash: 2a833c93c80d932305f47b6e292e5e5df4d0cb95
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: 8651a1cc2c2ba41e2c28e9f63dc78c091a6af61d
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94576613"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763892"
 ---
 # <a name="resource-availability-for-azure-container-instances-in-azure-regions"></a>Ressourcenverfügbarkeit für Azure Container Instances in Azure-Regionen
 
@@ -81,9 +81,9 @@ Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unt
 
 | Region | 1B/2B: max. CPU | 1B/2B: max. Arbeitsspeicher (GB) |3B: max. CPU | 3B: max. Arbeitsspeicher (GB) | Speicher (GB) |
 | -------- | :---: | :---: | :----: | :-----: | :-------: |
-| Australien (Osten) | 2 | 8 | 2 | 3,5 | 20 |
+| Australien (Osten) | 2 | 8 | 2 | 8 | 20 |
 | Brasilien Süd | 4 | 16 | 4 | 16 | 20 |
-| Kanada, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
+| Kanada, Mitte | 2 | 8 | 2 | 3,5 | 20 |
 | Indien, Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
 | USA (Mitte) | 2 | 3,5 | 2 | 3,5 | 20 |
 | Asien, Osten | 2 | 3,5 | 2 | 3,5 | 20 |
@@ -92,15 +92,15 @@ Die folgenden Regionen und maximalen Ressourcen stehen Containergruppen mit [unt
 | Japan, Osten | 4 | 16 | 4 | 16 | 20 |
 | Korea, Mitte | 4 | 16 | 4 | 16 | 20 |
 | USA Nord Mitte | 4 | 16 | 4 | 16 | 20 |
-| Nordeuropa | 2 | 3,5 | 2 | 8 | 20 |
-| USA Süd Mitte | 2 | 3,5 | 2 | 3,5 | 20 |
+| Nordeuropa | 2 | 8 | 2 | 8 | 20 |
+| USA Süd Mitte | 2 | 3,5 | 2 | 8 | 20 |
 | Asien, Südosten | – | – | 2 | 3,5 | 20 |
 | Indien (Süden) | 2 | 3,5 | 2 | 3,5 | 20 |
 | UK, Süden | 2 | 8 | 2 | 3,5 | 20 |
-| USA, Westen-Mitte | 4 | 16 | 4 | 16 | 20 |
+| USA, Westen-Mitte | 4 | 16 | 2 | 8 | 20 |
 | Europa, Westen | 4 | 16 | 4 | 16 | 20 |
 | USA (Westen) | 4 | 16 | 2 | 8 | 20 |
-| USA, Westen 2 | 2 | 3,5 | 2 | 3,5 | 20 |
+| USA, Westen 2 | 2 | 8 | 2 | 3,5 | 20 |
 
 
 ### <a name="windows-server-2019-ltsc"></a>Windows Server 2019 LTSC

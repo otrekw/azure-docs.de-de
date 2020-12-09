@@ -1,14 +1,17 @@
 ---
 title: Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung
 description: In diesem Artikel wird das Einrichten der agentbasierten Abhängigkeitsanalyse in der Azure Migrate-Serverbewertung beschrieben.
+author: rashi-ms
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: how-to
 ms.date: 11/25/2020
-ms.openlocfilehash: 1ab5d639d68b5ce2298f907ef8346488e16b4020
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d4bf635c57bcef41cd0f3285d8a91bae4b3e0415
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483469"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96752021"
 ---
 # <a name="set-up-dependency-visualization"></a>Einrichten der Abhängigkeitsvisualisierung
 

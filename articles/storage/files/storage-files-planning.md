@@ -8,12 +8,12 @@ ms.date: 09/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
-ms.openlocfilehash: 650ee1fc9e0e1941a7a3655bca1c75950ab878dd
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 98cc72f85499481ba3841ce82fe307740d5e9fab
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492113"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96842704"
 ---
 # <a name="planning-for-an-azure-files-deployment"></a>Planung für eine Azure Files-Bereitstellung
 [Azure Files](storage-files-introduction.md) kann auf zwei Arten bereitgestellt werden: durch direktes Einbinden der serverlosen Azure-Dateifreigaben oder durch lokales Zwischenspeichern von Azure-Dateifreigaben mithilfe von Azure-Dateisynchronisierung. Welche Bereitstellungsoption Sie auswählen, ändert die Aspekte, die Sie beim Planen der Bereitstellung berücksichtigen müssen. 
@@ -114,23 +114,6 @@ Weitere Informationen finden Sie unter [Konfigurieren von Advanced Threat Protec
 
 ## <a name="storage-tiers"></a>Speicherebenen
 [!INCLUDE [storage-files-tiers-overview](../../../includes/storage-files-tiers-overview.md)]
-
-Im Allgemeinen sind Azure Files-Features und die Interoperabilität mit anderen Diensten für Premium-Dateifreigaben und Standarddateifreigaben (einschließlich heißer, kalter und für Transaktionen optimierter Dateifreigaben) identisch. Es gibt jedoch einige wichtige Unterschiede:
-- **Abrechnungsmodell**
-    - Premium-Dateifreigaben werden über ein bereitgestelltes Abrechnungsmodell abgerechnet. Dies bedeutet, dass Sie für den Speicherplatz einen festen Preis bezahlen, den Sie bereitstellen, und nicht für den tatsächlich verwendeten Speicherplatz. Es fallen keine zusätzlichen Kosten für Transaktionen und ruhende Metadaten an.
-    - Standard-Dateifreigaben werden mit einem Modell mit nutzungsbasierter Bezahlung abgerechnet, das die Grundkosten für den Speicherplatz für den tatsächlich genutzten Speicher und dann zusätzliche Transaktionskosten basierend auf der Nutzung der Freigabe umfasst. Mit Standard-Dateifreigaben erhöht sich Ihre Rechnung, wenn Sie die Azure-Dateifreigabe umfangreicher nutzen (Lesen/Schreiben/Einbinden).
-- **Redundanzoptionen**
-    - Premium-Dateifreigaben sind nur für lokal redundanten (LRS) und zonenredundanten Speicher (ZRS) verfügbar.
-    - Standard-Dateifreigaben sind für lokal redundanten, zonenredundanten, georedundanten (GRS) und georedundanten (GZRS) Speicher verfügbar.
-- **Maximale Größe einer Dateifreigabe**
-    - Premium-Dateifreigaben können ohne zusätzlichen Aufwand für bis zu 100 TiB bereitgestellt werden.
-    - Standardmäßig können Standard-Dateifreigaben nur bis zu 5 TiB umfassen. Das Freigabelimit kann jedoch auf 100 TiB erhöht werden, indem das Featureflag *large file share* (große Dateifreigabe) des Speicherkontos verwendet wird. Standard-Dateifreigaben dürfen nur bis zu 100 TiB für lokal redundante oder zonenredundante Speicherkonten umfassen. Weitere Informationen zum Vergrößern von Dateifreigaben finden Sie unter [Aktivieren und Erstellen großer Dateifreigaben](./storage-files-how-to-create-large-file-share.md).
-- **Regionale Verfügbarkeit**
-    - Premium-Dateifreigaben sind mit Ausnahme einiger weniger Regionen in den meisten Azure-Regionen verfügbar. Zonenredundante Unterstützung ist in einer Teilmenge von Regionen verfügbar. Um herauszufinden, ob Premium-Dateifreigaben derzeit in Ihrer Region verfügbar sind, lesen Sie die Seite [Verfügbare Produkte nach Region](https://azure.microsoft.com/global-infrastructure/services/?products=storage) für Azure. Informationen darüber, welche Regionen ZRS unterstützen, finden Sie unter [Zonenredundante Speicherung](../common/storage-redundancy.md#zone-redundant-storage). Damit wir neue Regionen und Premium-Tarif-Features priorisieren können, füllen Sie bitte das Formular dieser [Umfrage](https://aka.ms/pfsfeedback) aus.
-    - Standard-Dateifreigaben sind in allen Azure-Regionen verfügbar.
-- Azure Kubernetes Service (AKS) unterstützt Premium-Dateifreigaben ab Version 1.13.
-
-Wenn eine Dateifreigabe als Premium- oder als Standard-Dateifreigabe erstellt wurde, können Sie sie nicht automatisch in den anderen Tarif konvertieren. Wenn Sie zum anderen Tarif wechseln möchten, müssen Sie eine neue Dateifreigabe in diesem Tarif erstellen und die Daten von Ihrer ursprünglichen Freigabe manuell in die von Ihnen erstellte neue Freigabe kopieren. Es wird empfohlen, `robocopy` für Windows oder `rsync` für macOS und Linux zu verwenden, um diesen Kopiervorgang auszuführen.
 
 ### <a name="understanding-provisioning-for-premium-file-shares"></a>Grundlegendes zur Bereitstellung für Premium-Dateifreigaben
 Premium-Dateifreigaben werden basierend auf einem festen Verhältnis aus GiB/IOPS/Durchsatz bereitgestellt. Für alle Freigaben wird Mindestgrundwert/-durchsatz angeboten, und Burst ist zulässig. Für jedes bereitgestellte GiB erhält die Freigabe Mindest-IOPS/-durchsatz sowie ein IOPS und einen Durchsatz von 0,1 MiB/s bis zum maximalen Grenzwert pro Freigabe. Die kleinste zulässige Bereitstellung beträgt 100 GiB mit den minimalen Werten für Mindest-IOPS/-durchsatz. 

@@ -1,18 +1,17 @@
 ---
 title: Migrieren von virtuellen VMware-Computern zu Azure mit serverseitiger Verschlüsselung (Server-Side Encryption, SSE) und von Kunden verwalteten Schlüsseln (Customer-Managed Keys, CMK) mit Azure Migrate-Servermigration
 description: Erfahren Sie, wie Sie virtuelle VMware-Computer mit serverseitiger Verschlüsselung (Server-Side Encryption, SSE) und von Kunden verwalteten Schlüsseln (Customer-Managed Keys, CMK) mit Azure Migrate-Servermigration zu Azure migrieren.
-author: bsiva
-ms.service: azure-migrate
-ms.manager: carmonm
-ms.topic: article
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
+ms.topic: how-to
 ms.date: 03/12/2020
-ms.author: raynew
-ms.openlocfilehash: 89b795011460ee2803d07d14b9c2abe9c8ffca55
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8a174c3b2bfb390eb7d691ae1bdcb0e28dde9032
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483350"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751086"
 ---
 # <a name="migrate-vmware-vms-to-azure-vms-enabled-with-server-side-encryption-and-customer-managed-keys"></a>Migrieren von VMware-VMs zu Azure-VMS mit serverseitiger Verschlüsselung und von Kunden verwalteten Schlüsseln
 

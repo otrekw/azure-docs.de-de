@@ -797,6 +797,8 @@
               href: configure-existing-cluster-enable-managed-identity-token-service.md
             - name: Konfigurieren eines neuen Azure Service Fabric-Clusters mit verwalteter Identität
               href: configure-new-azure-service-fabric-enable-managed-identity.md
+            - name: "Konfigurieren eines verwalteten Service\_Fabric-Clusters mit verwalteter Identität"
+              href: how-to-managed-identity-managed-cluster-virtual-machine-scale-sets.md
         - name: Anwendungseinrichtung
           items:
             - name: Bereitstellen einer Anwendung mit verwalteter Identität

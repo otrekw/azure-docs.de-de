@@ -4,12 +4,12 @@ description: Fasst die Unterstützung für die Notfallwiederherstellung für vir
 ms.topic: article
 ms.date: 11/29/2020
 ms.author: raynew
-ms.openlocfilehash: f0aebd09c06677aeba7cddda246e3e37992e0d9e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8123dbc18ad2fc162b9b92ae40920417e6b874ce
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485279"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763280"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Unterstützungsmatrix für die Notfallwiederherstellung von Azure-VMs zwischen Azure-Regionen
 
@@ -102,7 +102,7 @@ Red Hat Enterprise Linux | 6.7, 6.8, 6.9, 6.10, 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.
 CentOS | 6.5, 6.6, 6.7, 6.8, 6.9, 6.10 </br> 7.0, 7.1, 7.2, 7.3, 7.4, 7.5, 7.6, 7.7, [7.8](https://support.microsoft.com/help/4564347/), [7.9 Vor-GA-Version](https://support.microsoft.com/help/4578241/), 7.9 GA-Version wird von 9.37 Hotfix-Patch unterstützt** </br> 8.0, 8.1, [8.2](https://support.microsoft.com/en-us/help/4570609), [8.3](https://support.microsoft.com/help/4597409/)
 Ubuntu 14.04 LTS Server | Schließt Unterstützung für alle 14.04.*x*-Versionen ein. [Unterstützte Kernelversionen](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) 
 Ubuntu 16.04 LTS Server | Schließt Unterstützung für alle 16.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
-Ubuntu 18.04 LTS Server | Schließt Unterstützung für alle 18.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines) |
+Ubuntu 18.04 LTS Server | Schließt Unterstützung für alle 18.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)<br/><br/> Bei Ubuntu-Servern mit kennwortbasierter Authentifizierung und Anmeldung und mit dem Paket „cloud-init“ zum Konfigurieren von Cloud-VMs kann bei einem Failover die kennwortbasierte Anmeldung deaktiviert sein (je nach cloud-init-Konfiguration). Die kennwortbasierte Anmeldung kann auf der VM wieder aktiviert werden, indem (für die VM, für die das Failover ausgeführt wurde) das Kennwort im Azure-Portal unter „Support“ > „Problembehandlung“ im Menü „Einstellungen“ zurückgesetzt wird.
 Ubuntu 20.04 LTS Server | Schließt Unterstützung für alle 20.04.*x*-Versionen ein. [Unterstützte Kernelversion](#supported-ubuntu-kernel-versions-for-azure-virtual-machines)
 Debian 7 | Schließt Unterstützung für alle 7er Versionen ein. *x*-Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)
 Debian 8 | Schließt Unterstützung für alle 8er Versionen ein. *x*-Versionen [Unterstützte Kernelversionen](#supported-debian-kernel-versions-for-azure-virtual-machines)

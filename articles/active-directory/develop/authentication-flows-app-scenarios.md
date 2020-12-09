@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 03/03/2020
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
-ms.openlocfilehash: 906adb5b9535ee66fd7bc4a22c5c30a86b561547
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 383bdaebaa8a1795a9bfddb7da23e172aea111a0
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92910252"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762933"
 ---
 # <a name="authentication-flows-and-application-scenarios"></a>Authentifizierungsflows und Anwendungsszenarien
 
@@ -168,7 +168,7 @@ Weitere Informationen finden Sie unter [Szenario: Geschützte Web-API](scenario-
 
 ### <a name="web-api-that-calls-another-web-api-on-behalf-of-a-user"></a>Web-API, die eine andere Web-API im Namen eines Benutzers aufruft
 
-Damit Ihre geschützte Web-API eine andere Web-API im Namen eines Benutzers aufrufen kann, muss Ihre App ein Token für die Downstream-Web-API abrufen. Solche Aufrufe werden manchmal auch als *Dienst-zu-Dienst* -Aufrufe bezeichnet. Web-APIs, die andere Web-APIs aufrufen, müssen auch eine benutzerdefinierte Cacheserialisierung bereitstellen.
+Damit Ihre geschützte Web-API eine andere Web-API im Namen eines Benutzers aufrufen kann, muss Ihre App ein Token für die Downstream-Web-API abrufen. Solche Aufrufe werden manchmal auch als *Dienst-zu-Dienst*-Aufrufe bezeichnet. Web-APIs, die andere Web-APIs aufrufen, müssen auch eine benutzerdefinierte Cacheserialisierung bereitstellen.
 
 ![Eine Web-API, die eine andere Web-API aufruft](media/scenarios/web-api.svg)
 
@@ -243,7 +243,7 @@ Szenarien mit Tokenabruf werden auch OAuth 2.0-Authentifizierungsflows zugeordne
   <tr>
    <td><a href="scenario-desktop-acquire-token.md#command-line-tool-without-a-web-browser"><img alt="Browserless application" src="media/scenarios/device-code-flow-app.svg"></a></td>
    <td><a href="v2-oauth2-device-code.md">Gerätecode</a></td>
-   <td>Geschäfts-, Schul- oder Unikonten</td>
+   <td>Geschäfts-, Schul- oder Unikonten, persönliche Konten und Azure AD B2C</td>
  </tr>
 
  <tr>

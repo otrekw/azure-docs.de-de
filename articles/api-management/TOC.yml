@@ -58,6 +58,8 @@
           href: api-management-howto-policies.md
         - name: Richtlinienreferenz – Index
           href: api-management-policies.md
+        - name: Fehlerbehandlung
+          href: api-management-error-handling-policies.md
     - name: Sicherheit
       items:
         - name: Sicherheitsbaseline
@@ -70,8 +72,6 @@
       href: api-management-revisions.md
     - name: Verwalten mithilfe von Automatisierung
       href: automation-manage-api-management.md
-    - name: Fehlerbehandlung
-      href: api-management-error-handling-policies.md
     - name: API-Importbeschränkungen
       href: api-management-api-import-restrictions.md
     - name: Übersicht über das selbstgehostete Gateway
@@ -240,6 +240,8 @@
           href: api-management-howto-create-groups.md
         - name: Abrufen von IP-Adressen
           href: api-management-howto-ip-addresses.md
+        - name: Abrufen von API-Analysen
+          href: howto-use-analytics.md
         - name: Protokollieren von Ereignissen in Azure Event Hubs
           href: api-management-howto-log-event-hubs.md
         - name: Protokollieren von Anforderungen mit Azure Application Insights
@@ -268,7 +270,7 @@
               href: ../service-fabric/service-fabric-tutorial-deploy-api-management.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/apim
     - name: Azure PowerShell
       href: /powershell/module/az.apimanagement/
@@ -305,5 +307,9 @@
       href: /azure/architecture/best-practices/api-design?toc=%2Fazure%2Fapi-management%2Ftoc.json
     - name: API-Implementierungsleitfaden
       href: /azure/architecture/best-practices/api-implementation?toc=%2Fazure%2Fapi-management%2Ftoc.json
-    - name: Behandeln eines Fehlers beim Aktualisieren von Hostnamen
-      href: api-management-troubleshoot-cannot-add-custom-domain.md
+    - name: Problembehandlung
+      items:
+        - name: Behandeln eines Fehlers beim Aktualisieren von Hostnamen
+          href: api-management-troubleshoot-cannot-add-custom-domain.md
+        - name: Problembehandlung bei Antworttimeouts und Fehlern
+          href: troubleshoot-response-timeout-and-errors.md

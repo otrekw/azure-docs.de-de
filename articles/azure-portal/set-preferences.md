@@ -1,20 +1,15 @@
 ---
-title: Verwalten von Einstellungen und Voreinstellungen im Azure-Portal | Microsoft-Dokumentation
+title: Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 description: Sie können die Standardeinstellungen des Azure-Portals ändern, um sie an Ihre eigenen Vorlieben anzupassen. Zu den Einstellungen gehören das Timeout inaktiver Sitzungen, die Standardansicht, der Menümodus, der Kontrast, das Design, Benachrichtigungen sowie Sprache und regionale Formate.
-services: azure-portal
 keywords: Einstellungen, Timeout, Sprache, regional
-author: mgblythe
-ms.author: mblythe
 ms.date: 08/05/2020
 ms.topic: how-to
-ms.service: azure-portal
-manager: mtillman
-ms.openlocfilehash: 0f94f694163ba836091e522a29f73cabd64e22b5
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: 07dd3eb5cb132adf87852f29d867be772294d189
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145938"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745637"
 ---
 # <a name="manage-azure-portal-settings-and-preferences"></a>Verwalten von Einstellungen und Voreinstellungen im Azure-Portal
 
@@ -136,7 +131,7 @@ Zum Exportieren Ihrer Portaleinstellungen wählen Sie **Alle Einstellungen expor
 
 ![Screenshot: Exportieren von Einstellungen](./media/set-preferences/useful-links-export-settings.png)
 
-Beim Exportieren von Einstellungen wird eine *JSON* -Datei erstellt, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards. Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON* -Datei importieren.
+Beim Exportieren von Einstellungen wird eine *JSON*-Datei erstellt, die Ihre Benutzereinstellungen enthält, z. B. Farbdesign, Favoriten und private Dashboards. Aufgrund der dynamischen Art der Benutzereinstellungen und des Risikos der Datenbeschädigung können Sie keine Einstellungen aus der *JSON*-Datei importieren.
 
 ## <a name="delete-user-settings-and-dashboards"></a>Löschen von Benutzereinstellungen und Dashboards
 
