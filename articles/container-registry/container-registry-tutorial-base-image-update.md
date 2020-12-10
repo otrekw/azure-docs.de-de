@@ -4,12 +4,12 @@ description: In diesem Tutorial erfahren Sie, wie Sie eine Azure Container Reg
 ms.topic: tutorial
 ms.date: 11/24/2020
 ms.custom: seodec18, mvc, devx-track-js, devx-track-azurecli
-ms.openlocfilehash: 32b4dbe2563731664030dbc32c2b570ccc3e1d12
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 342f7fc37edb3a1623b72c57e8766b1a484d0e8d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030644"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559149"
 ---
 # <a name="tutorial-automate-container-image-builds-when-a-base-image-is-updated-in-an-azure-container-registry"></a>Tutorial: Automatisieren von Buildvorgängen für Containerimages nach der Aktualisierung eines Basisimages in einer Azure-Containerregistrierung 
 
@@ -32,10 +32,10 @@ Dieses Tutorial umfasst folgende Punkte:
 
 In diesem Tutorial wird vorausgesetzt, dass Sie bereits Ihre Umgebung konfiguriert und die Schritte aus den ersten beiden Tutorials der Reihe ausgeführt haben:
 
-* Erstellen einer Azure-Containerregistrierung
-* Forken des Beispielrepositorys
-* Klonen des Beispielrepositorys
-* Erstellen eines persönlichen GitHub-Zugriffstokens
+- Erstellen einer Azure-Containerregistrierung
+- Forken des Beispielrepositorys
+- Klonen des Beispielrepositorys
+- Erstellen eines persönlichen GitHub-Zugriffstokens
 
 Absolvieren Sie bei Bedarf die folgenden Tutorials, bevor Sie mit diesem Tutorial fortfahren:
 
@@ -44,6 +44,9 @@ Absolvieren Sie bei Bedarf die folgenden Tutorials, bevor Sie mit diesem Tutoria
 [Automatisieren von Buildvorgängen für Containerimages mit Azure Container Registry Tasks](container-registry-tutorial-build-task.md)
 
 ### <a name="configure-the-environment"></a>Konfigurieren der Umgebung
+
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
+- Für diesen Artikel ist mindestens Version 2.0.46 der Azure CLI erforderlich. Bei Verwendung von Azure Cloud Shell ist die aktuelle Version bereits installiert.
 
 Geben Sie für die folgenden Shell-Umgebungsvariablen geeignete Werte für Ihre Umgebung an. Dieser Schritt ist zwar nicht zwingend erforderlich, vereinfacht aber das Ausführen der mehrzeiligen Azure CLI-Befehle in diesem Tutorial. Wenn Sie diese Umgebungsvariablen nicht angeben, müssen Sie sie später jedes Mal die einzelnen Werte manuell ersetzen, wenn sie in einem der Beispielbefehle vorkommen.
 

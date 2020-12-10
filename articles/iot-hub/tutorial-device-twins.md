@@ -15,12 +15,12 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 - devx-track-azurecli
-ms.openlocfilehash: 74d5e5395853bcba20b2012e54dd8f9fea03afe6
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.openlocfilehash: 9ec2c51f01d6b13f33bc2d537a8f73a6721967d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92748551"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572523"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -28,7 +28,7 @@ ms.locfileid: "92748551"
 
 Zusätzlich zum Empfangen von Telemetriedaten von Ihren Geräten müssen Sie die Geräte ggf. über Ihren Back-End-Dienst konfigurieren. Wenn Sie eine gewünschte Konfiguration an Ihre Geräte senden, kann es sein, dass Sie auch Status- und Konformitätsaktualisierungen von diesen Geräten erhalten möchten. Beispielsweise können Sie einen Zieltemperaturbereich für den Betrieb eines Geräts festlegen oder Informationen zur Firmwareversion von Ihren Geräten erfassen.
 
-Zum Synchronisieren von Zustandsinformationen zwischen einem Gerät und einem IoT Hub verwenden Sie _Gerätezwillinge_ . Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, das einem bestimmten Gerät zugeordnet ist und von IoT Hub in der Cloud gespeichert wird, wo es [abgefragt](iot-hub-devguide-query-language.md) werden kann. Ein Gerätezwilling enthält _gewünschte Eigenschaften_ , _gemeldete Eigenschaften_ und _Tags_ . Eine gewünschte Eigenschaft wird von einer Back-End-Anwendung festgelegt und von einem Gerät gelesen. Eine gemeldete Eigenschaft wird von einem Gerät festgelegt und von einer Back-End-Anwendung gelesen. Ein Tag wird von einer Back-End-Anwendung festgelegt und niemals an ein Gerät gesendet. Sie verwenden Tags, um Ihre Geräte zu organisieren. In diesem Tutorial wird veranschaulicht, wie Sie gewünschte und gemeldete Eigenschaften zum Synchronisieren von Statusinformationen verwenden:
+Zum Synchronisieren von Zustandsinformationen zwischen einem Gerät und einem IoT Hub verwenden Sie _Gerätezwillinge_. Ein [Gerätezwilling](iot-hub-devguide-device-twins.md) ist ein JSON-Dokument, das einem bestimmten Gerät zugeordnet ist und von IoT Hub in der Cloud gespeichert wird, wo es [abgefragt](iot-hub-devguide-query-language.md) werden kann. Ein Gerätezwilling enthält _gewünschte Eigenschaften_, _gemeldete Eigenschaften_ und _Tags_. Eine gewünschte Eigenschaft wird von einer Back-End-Anwendung festgelegt und von einem Gerät gelesen. Eine gemeldete Eigenschaft wird von einem Gerät festgelegt und von einer Back-End-Anwendung gelesen. Ein Tag wird von einer Back-End-Anwendung festgelegt und niemals an ein Gerät gesendet. Sie verwenden Tags, um Ihre Geräte zu organisieren. In diesem Tutorial wird veranschaulicht, wie Sie gewünschte und gemeldete Eigenschaften zum Synchronisieren von Statusinformationen verwenden:
 
 ![Zusammenfassung zu Zwillingen](media/tutorial-device-twins/DeviceTwins.png)
 
@@ -39,11 +39,9 @@ In diesem Tutorial führen Sie die folgenden Aufgaben aus:
 > * Verwenden von gewünschten Eigenschaften zum Senden von Statusinformationen an Ihr simuliertes Gerät
 > * Verwenden von gemeldeten Eigenschaften zum Empfangen von Statusinformationen von Ihrem simulierten Gerät
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
-
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
-## <a name="prerequisites"></a>Voraussetzungen
+[!INCLUDE [azure-cli-prepare-your-environment.md](../../includes/azure-cli-prepare-your-environment.md)]
 
 Die beiden in dieser Schnellstartanleitung ausgeführten Beispielanwendungen sind in Node.js geschrieben. Sie benötigen mindestens Node.js v10.x.x auf Ihrem Entwicklungscomputer.
 
@@ -104,7 +102,7 @@ Sie nutzen die gewünschten Eigenschaften, um Statusinformationen von einer Back
 * Empfangen und Verarbeiten von gewünschten Eigenschaften auf einem Gerät
 * Senden von gewünschten Eigenschaften von einer Back-End-Anwendung
 
-Navigieren Sie zum Anzeigen des Beispielcodes für das simulierte Gerät, über den die gewünschten Eigenschaften empfangen werden, im heruntergeladenen Node.js-Beispielprojekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Öffnen Sie anschließend die Datei „SimulatedDevice.js“ in einem Text-Editor.
+Navigieren Sie zum Anzeigen des Beispielcodes für das simulierte Gerät, über den die gewünschten Eigenschaften empfangen werden, im heruntergeladenen Node.js-Beispielprojekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Öffnen Sie anschließend die Datei „SimulatedDevice.js“ in einem Text-Editor.
 
 In den folgenden Abschnitten wird der Code beschrieben, der auf dem simulierten Gerät ausgeführt und mit dem auf die Änderungen der gewünschten Eigenschaften geantwortet wird, die von der Back-End-Anwendung gesendet werden:
 
@@ -136,19 +134,19 @@ Der folgende Handler reagiert nur auf Änderungen, die an der gewünschten Eigen
 
 ### <a name="handlers-for-multiple-properties"></a>Handler für mehrere Eigenschaften
 
-In den obigen Beispielen für den JSON-Code von gewünschten Eigenschaften enthält der Knoten **climate** unter **components** die beiden Eigenschaften **minTemperature** und **maxTemperature** .
+In den obigen Beispielen für den JSON-Code von gewünschten Eigenschaften enthält der Knoten **climate** unter **components** die beiden Eigenschaften **minTemperature** und **maxTemperature**.
 
-Im lokalen Zwillingsobjekt ( **twin** ) eines Geräts wird ein vollständiger Satz mit gewünschten und gemeldeten Eigenschaften gespeichert. Mit den vom Back-End gesendeten **delta** -Daten wird unter Umständen nur eine Teilmenge der gewünschten Eigenschaften aktualisiert. Im folgenden Codeausschnitt wird – wenn das simulierte Gerät nur eine Aktualisierung für eines der beiden Elemente **minTemperature** und **maxTemperature** erhält – der Wert im lokalen Zwilling für den anderen Wert verwendet, um das Gerät zu konfigurieren:
+Im lokalen Zwillingsobjekt (**twin**) eines Geräts wird ein vollständiger Satz mit gewünschten und gemeldeten Eigenschaften gespeichert. Mit den vom Back-End gesendeten **delta**-Daten wird unter Umständen nur eine Teilmenge der gewünschten Eigenschaften aktualisiert. Im folgenden Codeausschnitt wird – wenn das simulierte Gerät nur eine Aktualisierung für eines der beiden Elemente **minTemperature** und **maxTemperature** erhält – der Wert im lokalen Zwilling für den anderen Wert verwendet, um das Gerät zu konfigurieren:
 
 [!code-javascript[Handle climate component](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=climatecomponent&highlight=2 "Handle climate component")]
 
-Im lokalen Zwillingsobjekt ( **twin** ) wird ein vollständiger Satz mit gewünschten und gemeldeten Eigenschaften gespeichert. Mit den vom Back-End gesendeten **delta** -Daten wird unter Umständen nur eine Teilmenge der gewünschten Eigenschaften aktualisiert.
+Im lokalen Zwillingsobjekt (**twin**) wird ein vollständiger Satz mit gewünschten und gemeldeten Eigenschaften gespeichert. Mit den vom Back-End gesendeten **delta**-Daten wird unter Umständen nur eine Teilmenge der gewünschten Eigenschaften aktualisiert.
 
 ### <a name="handle-insert-update-and-delete-operations"></a>Verarbeiten von Einfüge-, Aktualisierungs- und Löschvorgängen
 
 Mit den vom Back-End gesendeten gewünschten Eigenschaften wird nicht angegeben, welcher Vorgang für eine bestimmte gewünschte Eigenschaft durchgeführt wird. In Ihrem Code muss der Vorgang aus dem aktuellen Satz mit den lokal gespeicherten gewünschten Eigenschaften und den vom Hub gesendeten Änderungen abgeleitet werden.
 
-Der folgende Codeausschnitt zeigt, wie das simulierte Gerät Einfüge-, Aktualisierungs- und Löschvorgänge in der Liste mit den **Komponenten** in den gewünschten Eigenschaften verarbeitet. Sie sehen, wie Sie **NULL** -Werte verwenden, um anzugeben, dass eine Komponente gelöscht werden sollte:
+Der folgende Codeausschnitt zeigt, wie das simulierte Gerät Einfüge-, Aktualisierungs- und Löschvorgänge in der Liste mit den **Komponenten** in den gewünschten Eigenschaften verarbeitet. Sie sehen, wie Sie **NULL**-Werte verwenden, um anzugeben, dass eine Komponente gelöscht werden sollte:
 
 [!code-javascript[Handle components](~/iot-samples-node/iot-hub/Tutorials/DeviceTwins/SimulatedDevice.js?name=components&highlight=2,6,13 "Handle components")]
 
@@ -156,7 +154,7 @@ Der folgende Codeausschnitt zeigt, wie das simulierte Gerät Einfüge-, Aktualis
 
 Sie haben gesehen, wie ein Gerät Handler für den Empfang von Aktualisierungen für gewünschte Eigenschaften implementiert. In diesem Abschnitt wird veranschaulicht, wie Sie Änderungen gewünschter Eigenschaften von einer Back-End-Anwendung an ein Gerät senden.
 
-Navigieren Sie zum Anzeigen des Beispielcodes für das simulierte Gerät, über den die gewünschten Eigenschaften empfangen werden, im heruntergeladenen Node.js-Beispielprojekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Öffnen Sie anschließend die Datei „ServiceClient.js“ in einem Text-Editor.
+Navigieren Sie zum Anzeigen des Beispielcodes für das simulierte Gerät, über den die gewünschten Eigenschaften empfangen werden, im heruntergeladenen Node.js-Beispielprojekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Öffnen Sie anschließend die Datei „ServiceClient.js“ in einem Text-Editor.
 
 Im folgenden Codeausschnitt wird gezeigt, wie Sie eine Verbindung mit der Geräteidentitätsregistrierung herstellen und auf den Zwilling für ein bestimmtes Gerät zugreifen:
 
@@ -176,14 +174,14 @@ In diesem Abschnitt führen Sie zwei Beispielanwendungen aus, um zu verfolgen, w
 
 Zum Ausführen der Anwendung zur Simulation eines Geräts und der Back-End-Anwendung benötigen Sie die Verbindungszeichenfolgen für das Gerät und den Dienst. Sie haben sich die Verbindungszeichenfolgen notiert, als Sie am Anfang dieses Tutorials die Ressourcen erstellt haben.
 
-Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
@@ -226,14 +224,14 @@ Sie führen dieselben beiden Beispielanwendungen wie bei dem Vorgang aus, mit de
 
 Zum Ausführen der Anwendung zur Simulation eines Geräts und der Back-End-Anwendung benötigen Sie die Verbindungszeichenfolgen für das Gerät und den Dienst. Sie haben sich die Verbindungszeichenfolgen notiert, als Sie am Anfang dieses Tutorials die Ressourcen erstellt haben.
 
-Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie zum Ausführen der Anwendung zur Simulation eines Geräts ein Shell- oder Befehlseingabefenster, und navigieren Sie im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
 node SimulatedDevice.js "{your device connection string}"
 ```
 
-Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins** . Führen Sie anschließend die folgenden Befehle aus:
+Öffnen Sie ein weiteres Shell- oder Befehlseingabefenster, um die Back-End-Anwendung auszuführen. Navigieren Sie anschließend im heruntergeladenen Node.js-Projekt zum Ordner **iot-hub/Tutorials/DeviceTwins**. Führen Sie anschließend die folgenden Befehle aus:
 
 ```cmd/sh
 npm install
@@ -252,7 +250,7 @@ Im folgenden Screenshot ist die Ausgabe der Back-End-Anwendung zu sehen, und es 
 
 Wenn Sie das nächste Tutorial ausführen möchten, können Sie die Ressourcengruppe und die IoT Hub-Instanz beibehalten und später erneut verwenden.
 
-Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen** .
+Falls Sie die IoT Hub-Instanz nicht mehr benötigen, löschen Sie die Ressourcengruppe über das Portal. Wählen Sie hierzu die Ressourcengruppe **tutorial-iot-hub-rg** aus, die Ihre IoT Hub-Instanz enthält, und klicken Sie auf **Löschen**.
 
 Verwenden Sie alternativ hierzu die CLI:
 
