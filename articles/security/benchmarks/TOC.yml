@@ -95,6 +95,8 @@
       href: ../../mysql/security-baseline.md
     - name: Azure Database for MariaDB-Sicherheitsbaseline
       href: ../../mariadb/security-baseline.md
+    - name: Sicherheitsbaseline für Azure Database Migration Service
+      href: ../../dms/security-baseline.md
     - name: 'Azure Database for PostgreSQL: Sicherheitsbaseline für Hyperscale'
       href: ../../postgresql/postgresql-hyperscale-security-baseline.md
     - name: 'Azure Database for PostgreSQL: Sicherheitsbaseline für Einzelserver'
