@@ -3,19 +3,19 @@ title: 'Azure CLI-Skriptbeispiel: Verwenden von Schlüssel-Wert-Paaren in einem
 titleSuffix: Azure App Configuration
 description: Hier erfahren Sie, wie Sie ein Azure CLI-Skript verwenden, um Schlüsselwerte im App Configuration-Speicher zu erstellen, anzuzeigen, zu aktualisieren und zu löschen.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.devlang: azurecli
 ms.topic: sample
 ms.date: 02/19/2020
-ms.author: lcozzens
+ms.author: alkemper
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2610d0ee448e274b9bdeb7396393ce47e27e65ef
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 54ad9f389070e1d5d280517a2f6c41e9a0f8f33e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94565754"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929989"
 ---
 # <a name="work-with-key-values-in-an-azure-app-configuration-store"></a>Verwenden von Schlüssel-Wert-Paaren in einem Azure App Configuration-Speicher
 
