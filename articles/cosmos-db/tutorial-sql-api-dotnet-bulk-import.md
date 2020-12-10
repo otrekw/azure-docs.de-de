@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/21/2020
 ms.reviewer: sngun
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6e50fe1f5b1658458a2d561f8157f04d1cbceb41
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 6cf0e77657175449b126eeca02a12c164478e568
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341237"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548068"
 ---
 # <a name="bulk-import-data-to-azure-cosmos-db-sql-api-account-by-using-the-net-sdk"></a>Ausführen eines Massenimports von Daten in ein Azure Cosmos DB-SQL-API-Konto mithilfe des .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -46,7 +46,7 @@ Vergewissern Sie sich zunächst, dass Sie über die folgenden Ressourcen verfüg
 
 ## <a name="step-2-set-up-your-net-project"></a>Schritt 2: Einrichten des .NET-Projekts
 
-Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus. Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen *bulk-import-demo* zu erstellen. Mit dem Parameter `--langVersion` wird die *LangVersion* -Eigenschaft in der erstellten Projektdatei festgelegt.
+Öffnen Sie auf Ihrem lokalen Computer die Windows-Eingabeaufforderung oder ein Terminalfenster. Sie führen alle Befehle in den nächsten Abschnitten über die Eingabeaufforderung oder das Terminal aus. Führen Sie den folgenden „dotnet new“-Befehl aus, um eine neue App mit dem Namen *bulk-import-demo* zu erstellen. Mit dem Parameter `--langVersion` wird die *LangVersion*-Eigenschaft in der erstellten Projektdatei festgelegt.
 
    ```bash
    dotnet new console –langVersion:8 -n bulk-import-demo
@@ -86,7 +86,7 @@ Die Beispielanwendung muss sich bei Ihrem Azure Cosmos-Konto authentifizieren. F
 
 1.  Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 1.  Navigieren Sie zu Ihrem Azure Cosmos-Konto.
-1.  Öffnen Sie den Bereich **Schlüssel** , und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos.
+1.  Öffnen Sie den Bereich **Schlüssel**, und kopieren Sie den **URI** und den **PRIMÄRSCHLÜSSEL** Ihres Kontos.
 
 Wenn Sie den Azure Cosmos DB-Emulator nutzen, können Sie die Anmeldeinformationen für den Emulator [in diesem Artikel](local-emulator.md#authenticate-requests) verwenden.
 
@@ -175,7 +175,7 @@ Zum Ausführen des Beispiels können Sie einfach den Befehl `dotnet` verwenden:
 
 Falls Sie die Schritte in diesem Tutorial aus Zeitmangel nicht durchführen konnten oder nur die Codebeispiele herunterladen möchten, können Sie sie über [GitHub](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer) beziehen.
 
-Stellen Sie nach dem Klonen des Projekts sicher, dass Sie in der Datei [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/master/src/Program.cs#L25) die gewünschten Anmeldeinformationen aktualisieren.
+Stellen Sie nach dem Klonen des Projekts sicher, dass Sie in der Datei [Program.cs](https://github.com/Azure-Samples/cosmos-dotnet-bulk-import-throughput-optimizer/blob/main/src/Program.cs#L25) die gewünschten Anmeldeinformationen aktualisieren.
 
 Sie können das Beispiel ausführen, indem Sie in das Repositoryverzeichnis wechseln und `dotnet` verwenden:
 
