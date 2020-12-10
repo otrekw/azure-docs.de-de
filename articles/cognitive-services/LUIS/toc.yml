@@ -21,14 +21,8 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Verwenden eines Browsers
       href: luis-get-started-get-intent-from-browser.md
-    - name: Verwenden eines SDK
-      href: azure-sdk-quickstart.md
-    - name: Verwenden von REST-APIs
-      items:
-        - name: Abrufen der Absicht
-          href: luis-get-started-rest-get-intent.md
-        - name: Ändern des Modells
-          href: luis-get-started-rest-get-model.md
+    - name: Verwenden der Clientbibliotheken und der REST-API
+      href: client-libraries-rest-api.md
 - name: Tutorials
   items:
     - name: Erstellen einer zerlegbaren App
@@ -422,7 +416,7 @@
       displayName: 'FAQ, import'
     - name: Preise und Einschränkungen
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: luis-encryption-of-data-at-rest.md

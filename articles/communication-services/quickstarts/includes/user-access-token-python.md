@@ -123,7 +123,7 @@ print("\nDeleted the identity with ID: " + identity.identifier)
 
 ## <a name="run-the-code"></a>Ausführen des Codes
 
-Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.py* , und führen Sie anschließend den folgenden Befehl vom Typ `python` aus, um die App auszuführen.
+Navigieren Sie an einer Konsoleneingabeaufforderung zum Verzeichnis mit der Datei *issue-access-token.py*, und führen Sie anschließend den folgenden Befehl vom Typ `python` aus, um die App auszuführen.
 
 ```console
 python ./issue-access-token.py

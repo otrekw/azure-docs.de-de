@@ -93,7 +93,7 @@ Für eine Organisationen, die bereits einen lokalen Identitätsanbieter verwende
 
 ![Azure AD-Entwicklung](media/cloud-governed-management-for-on-premises/image5.png)
 
-Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter „https://aka.ms/migrateapps“. Dort finden Sie Links zu folgenden Ressourcen:
+Informationen, wie Sie mit der Migration von Verbundanwendungen zu Azure AD als Identitätsanbieter beginnen können, erhalten Sie unter https://aka.ms/migrateapps. Dort finden Sie Links zu folgenden Ressourcen:
 
 * Das Whitepaper [Migrieren Ihrer Anwendungen zu Azure Active Directory](https://aka.ms/migrateapps/whitepaper), in dem die Vorteile der Migration vorgestellt und beschrieben wird, wie sich die Migration in vier klar dargestellten Phasen planen lässt: Ermittlung, Klassifizierung, Migration und laufende Verwaltung. Sie werden durch den Prozess geführt und erfahren, wie Sie das Projekt in einfach umzusetzende Teilschritte aufteilen. Im gesamten Dokument finden Sie Links zu wichtigen Ressourcen, die Ihnen im Verlauf des Prozesses helfen.
 
