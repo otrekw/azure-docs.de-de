@@ -563,10 +563,10 @@
             - name: 'OAuth 2.0: Gewährung für Kennwortanmeldeinformationen des Ressourcenbesitzers'
               displayName: ROPC
               href: v2-oauth-ropc.md
-            - name: OAuth 2.0-SAML-Bearerassertionsflow
-              href: v2-saml-bearer-assertion.md
             - name: Rollover von Signaturschlüsseln
               href: active-directory-signing-key-rollover.md
+            - name: Szenarien für den Tokenaustausch
+              href: scenario-token-exchange-saml-oauth.md
             - name: ID-Token
               href: id-tokens.md
             - name: Zugriffstoken

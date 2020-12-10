@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2c592a959dfb9d4e93f97488a9ac1b1f6683c23e
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94968269"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558758"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
-Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Aspekte (beispielsweise Attribute von Produkten oder Dienstleistungen).
+Das Standpunktanalysefeature der Textanalyse-API bietet zwei Möglichkeiten zur Erkennung von positiver und negativer Stimmung. Wenn Sie eine Standpunktanalyseanforderung senden, gibt die API Stimmungsbezeichnungen (z. B. „negativ“, „neutral“ und „positiv“) und Zuverlässigkeitsbewertungen auf Satz- und Dokumentebene zurück. Der Endpunkt der Standpunktanalyse kann auch zum Senden von Opinion Mining-Anforderungen verwendet werden. Dieses Feature liefert detaillierte Informationen zu den Meinungen in Bezug auf im Text enthaltene Aspekte (beispielsweise Attribute von Produkten oder Dienstleistungen). 
 
 Die von der API verwendeten KI-Modelle werden vom Dienst bereitgestellt. Sie müssen lediglich Inhalte für die Analyse senden.
 
@@ -51,13 +51,14 @@ Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 lie
 
 ## <a name="opinion-mining"></a>Opinion Mining
 
-Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1-preview.1. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
+Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1-preview.1. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten. 
 
 Wenn ein Kunde für ein Hotel beispielsweise Feedback wie „Das Zimmer war toll, aber das Personal war unfreundlich.“ hinterlässt, werden vom Opinion Mining Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. Von der Standpunktanalyse wird unter Umständen nur eine negative Stimmung gemeldet.
 
 :::image type="content" source="../media/how-tos/opinion-mining.png" alt-text="Diagramm: Opinion Mining-Beispiel" lightbox="../media/how-tos/opinion-mining.png":::
 
-Wenn Sie Opinion Mining in Ihre Ergebnisse einbeziehen möchten, müssen Sie das Flag `opinionMining=true` in eine Stimmungsanalyseanforderung einschließen. Die Opinion Mining-Ergebnisse werden in die Antwort der Stimmungsanalyse eingeschlossen.
+Wenn Sie Opinion Mining in Ihre Ergebnisse einbeziehen möchten, müssen Sie das Flag `opinionMining=true` in eine Stimmungsanalyseanforderung einschließen. Die Opinion Mining-Ergebnisse werden in die Antwort der Stimmungsanalyse eingeschlossen. Opinion Mining ist eine Standpunktanalyse-Erweiterung und in Ihrem aktuellen [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) enthalten.
+
 
 ## <a name="sending-a-rest-api-request"></a>Senden einer REST-API-Anforderung 
 

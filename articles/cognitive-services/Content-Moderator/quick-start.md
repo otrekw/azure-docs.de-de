@@ -12,12 +12,12 @@ ms.date: 09/29/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, Inhaltsmoderation
-ms.openlocfilehash: d1d9315986f7a6c57c1da012b9034e4f1a3730bc
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: c026c42fe3c7a7f3f0d6b80e3123904077c104cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93143690"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905212"
 ---
 # <a name="quickstart-try-content-moderator-on-the-web"></a>Schnellstart: Testen von Content Moderator im Web
 
@@ -34,7 +34,7 @@ Das Content Moderator-Prüfungstool ist ein webbasiertes Tool, mit dem menschlic
 
 ## <a name="create-a-review-team"></a>Erstellen eines Prüfungsteams
 
-Erstellen Sie als Nächstes ein Prüfungsteam. In einem Produktionsszenario umfasst dieses Team die Gruppe der Personen, die die Moderationsentscheidungen des Diensts manuell überprüfen. Wenn Sie ein Team erstellen möchten, müssen Sie eine **Region** auswählen und einen Teamnamen (unter **Teamname** ) sowie eine Team-ID (unter **Team-ID** ) angeben. Sie können Ihre Kollegen in das Team einladen, indem Sie ihre E-Mail-Adressen eingeben.
+Erstellen Sie als Nächstes ein Prüfungsteam. In einem Produktionsszenario umfasst dieses Team die Gruppe der Personen, die die Moderationsentscheidungen des Diensts manuell überprüfen. Wenn Sie ein Team erstellen möchten, müssen Sie eine **Region** auswählen und einen Teamnamen (unter **Teamname**) sowie eine Team-ID (unter **Team-ID**) angeben. Sie können Ihre Kollegen in das Team einladen, indem Sie ihre E-Mail-Adressen eingeben.
 
 > [!NOTE]
 > **Teamname** ist ein Anzeigename für Ihr Prüfungsteam. Dieser Name wird im Azure-Portal angezeigt. Die **Team-ID** dient zur programmgesteuerten Identifizierung Ihres Prüfungsteams.
@@ -49,7 +49,7 @@ Wenn Sie Daten mit einem kundenseitig verwalteten Schlüssel (Customer-Managed K
 
 ## <a name="upload-sample-content"></a>Hochladen von Beispielinhalten
 
-Sie können nun Beispielinhalte hochladen. Wählen Sie **Testen > Bild** , **Testen > Text** oder **Testen > Video** aus.
+Sie können nun Beispielinhalte hochladen. Wählen Sie **Testen > Bild**, **Testen > Text** oder **Testen > Video** aus.
 
 > [!div class="mx-imgBorder"]
 > ![Bild- oder Textmoderation](images/tryimagesortext.png)
@@ -88,6 +88,6 @@ Sie können auch mit den nächsten Schritten fortfahren, um sich über die Verwe
 ## <a name="next-steps"></a>Nächste Schritte
 
 Erfahren Sie, wie Sie die Moderations-APIs selbst in Ihrer App verwenden.
-- Implementieren Sie die Bildmoderation. Nutzen Sie die [API-Konsole](try-image-api.md) oder den [Schnellstart zum Verwenden der Content Moderator-Clientbibliothek](client-libraries.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
-- Implementieren Sie die Textmoderation. Nutzen Sie die [API-Konsole](try-text-api.md) oder den [Schnellstart zum Verwenden der Content Moderator-Clientbibliothek](client-libraries.md), um Textinhalte auf anstößige Ausdrücke, computergestützte Klassifizierung von unerwünschtem Text (Vorschau) und personenbezogene Daten zu überprüfen.
+- Implementieren Sie die Bildmoderation. Verwenden Sie die [API-Konsole](try-image-api.md) oder eine [Schnellstartanleitung für eine Clientbibliothek oder REST-API](client-libraries.md), um Bilder zu überprüfen und anzügliche sowie nur für Erwachsene geeignete Inhalte mithilfe von Tags, Zuverlässigkeitsbewertungen und anderen extrahierten Informationen zu erkennen.
+- Implementieren Sie die Textmoderation. Verwenden Sie die [API-Konsole](try-text-api.md) oder eine [Schnellstartanleitung für eine Clientbibliothek oder REST-API](client-libraries.md), um Textinhalte auf anstößige Ausdrücke, computergestützte Klassifizierung von unerwünschtem Text (Vorschau) und personenbezogene Daten zu überprüfen.
 - Implementieren Sie die Videomoderation. Befolgen Sie die [Anleitung zur Videomoderation für C#](video-moderation-api.md), um Videos zu scannen und potenziell jugendgefährdende und freizügige Inhalte zu erkennen. 

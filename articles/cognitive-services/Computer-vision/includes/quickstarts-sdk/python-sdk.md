@@ -9,14 +9,19 @@ ms.subservice: computer-vision
 ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 0fd094b7364263acb2abbe7bed2d65392155a930
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 91bc9def06b7b9844e32dbc0d2654d03c5b72389
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95096007"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912238"
 ---
 <a name="HOLTop"></a>
+
+Verwenden Sie die Clientbibliothek für maschinelles Sehen für Folgendes:
+
+* Analysieren eines Bilds auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte usw.
+* Lesen von gedrucktem und handschriftlichem Text mit der Lese-API
 
 [Referenzdokumentation](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-computervision) | [Paket (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-computervision/) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -29,7 +34,7 @@ ms.locfileid: "95096007"
     * Sie können den kostenlosen Tarif (`F0`) verwenden, um den Dienst zu testen, und später für die Produktion auf einen kostenpflichtigen Tarif upgraden.
 
 ## <a name="setting-up"></a>Einrichten
- 
+
 ### <a name="install-the-client-library"></a>Installieren der Clientbibliothek
 
 Sie können die Clientbibliothek wie folgt installieren:
@@ -56,6 +61,8 @@ Erstellen Sie dann Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Resso
 >
 > Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Beispielsweise [Azure Key Vault](../../../../key-vault/general/overview.md).
 
+> [!div class="nextstepaction"]
+> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -80,6 +87,9 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 Instanziieren Sie einen Client mit Ihrem Endpunkt und Schlüssel. Erstellen Sie ein [CognitiveServicesCredentials](/python/api/msrest/msrest.authentication.cognitiveservicescredentials?view=azure-python)-Objekt mit Ihrem Schlüssel, und verwenden Sie es mit Ihrem Endpunkt, um ein [ComputerVisionClient](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-python)-Objekt zu erstellen.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_client)]
+
+> [!div class="nextstepaction"]
+> [Ich habe den Client authentifiziert.](?success=authenticate-client#analyze-an-image) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
@@ -156,6 +166,9 @@ Der folgende Code gibt Informationen über den Typ des Bilds aus, und zwar unabh
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_type)]
 
+> [!div class="nextstepaction"]
+> [Ich habe ein Bild analysiert.](?success=analyze-image#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
 
 Maschinelles Sehen kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge konvertieren. Dies erfolgt in zwei Teilen.
@@ -175,6 +188,9 @@ Rufen Sie als Nächstes die Vorgangs-ID ab, die vom **read**-Aufruf zurückgegeb
 
 [!code-python[](~/cognitive-services-quickstart-code/python/ComputerVision/ComputerVisionQuickstart.py?name=snippet_read_response)]
 
+> [!div class="nextstepaction"]
+> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Führen Sie die Anwendung mit dem Befehl `python` für die Schnellstartdatei aus.
@@ -183,6 +199,9 @@ Führen Sie die Anwendung mit dem Befehl `python` für die Schnellstartdatei aus
 python quickstart-file.py
 ```
 
+> [!div class="nextstepaction"]
+> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
@@ -190,11 +209,12 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Bibliothek für maschinelles Sehen für Python für allgemeine Aufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
-
 
 > [!div class="nextstepaction"]
 >[Referenz zur Maschinelles Sehen-API (Python)](/python/api/azure-cognitiveservices-vision-computervision/azure.cognitiveservices.vision.computervision)

@@ -12,12 +12,12 @@ ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: Content Moderator, Azure Content Moderator, Onlinemoderator, Inhaltsfilterungssoftware, Inhaltsmoderationsdienst, Inhaltsmoderation
-ms.openlocfilehash: aa1f4c1fab9b3d8a1b5db0e965f1608e694646b2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c7c996ae49bdf7aa72873322f11af754843fd835
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91596858"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905246"
 ---
 # <a name="what-is-azure-content-moderator"></a>Was ist Azure Content Moderator?
 
@@ -81,4 +81,4 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Content Mo
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informationen zu den ersten Schritten mit Content Moderator im Webportal finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Alternativ können Sie eine [Schnellstartanleitung für die Clientbibliothek](client-libraries.md) durchlaufen, um die grundlegenden Szenarien im Code zu implementieren.
+Informationen zu den ersten Schritten mit Content Moderator im Webportal finden Sie unter [Schnellstart: Testen von Content Moderator im Web](quick-start.md). Alternativ können Sie eine [Schnellstartanleitung für eine Clientbibliothek oder REST-API](client-libraries.md) durchlaufen, um die grundlegenden Szenarien im Code zu implementieren.

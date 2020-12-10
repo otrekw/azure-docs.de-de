@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 10/26/2020
 ms.author: pafarley
 ms.custom: devx-track-js
-ms.openlocfilehash: 4f82665afbf3cd83041e59a8b10ef2a731566fc0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e0767e50ac6d88922281b10389b77c5cf0c481be
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95097647"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912281"
 ---
 <a name="HOLTop"></a>
+
+Verwenden Sie die Clientbibliothek für maschinelles Sehen für Folgendes:
+
+* Analysieren eines Bilds auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte usw.
+* Lesen von gedrucktem und handschriftlichem Text mit der Lese-API
 
 [Referenzdokumentation](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-computervision) | [Paket (npm)](https://www.npmjs.com/package/@azure/cognitiveservices-computervision) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -71,6 +76,9 @@ Erstellen Sie Variablen für den Azure-Endpunkt und -Schlüssel Ihrer Ressource.
 >
 > Denken Sie daran, den Schlüssel aus Ihrem Code zu entfernen, wenn Sie fertig sind, und ihn niemals zu veröffentlichen. In der Produktionsumgebung sollten Sie eine sichere Methode zum Speichern Ihrer Anmeldeinformationen sowie zum Zugriff darauf verwenden. Weitere Informationen finden Sie im Cognitive Services-Artikel zur [Sicherheit](../../../cognitive-services-security.md).
 
+> [!div class="nextstepaction"]
+> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+
 ## <a name="object-model"></a>Objektmodell
 
 Die folgenden Klassen und Schnittstellen dienen zum Verarbeiten einiger Hauptfunktionen des Node.js SDK für die Maschinelles Sehen-API.
@@ -100,6 +108,9 @@ Definieren Sie anschließend die Funktion `computerVision`, und deklarieren Sie 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_begin)]
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_functiondef_end)]
+
+> [!div class="nextstepaction"]
+> [Ich habe den Client authentifiziert.](?success=authenticate-client#analyze-an-image) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
@@ -214,6 +225,9 @@ Definieren Sie die Hilfsfunktion `describeType`:
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_imagetype_describe)]
 
+> [!div class="nextstepaction"]
+> [Ich habe ein Bild analysiert.](?success=analyze-image#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
 
 Maschinelles Sehen kann sichtbaren Text in einem Bild extrahieren und in eine Zeichenfolge konvertieren. In diesem Beispiel werden die Lesevorgänge verwendet.
@@ -233,7 +247,6 @@ Definieren Sie die folgenden Felder in Ihrer Funktion, um die Statuswerte der Re
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_statuses)]
 
-
 Fügen Sie den unten angegebenen Code hinzu, mit dem die Funktion `readTextFromURL` für die jeweiligen Bilder aufgerufen wird.
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_call)]
@@ -246,6 +259,9 @@ Definieren Sie als Nächstes die Hilfsfunktion `printRecText`, mit der die Ergeb
 
 [!code-javascript[](~/cognitive-services-quickstart-code/javascript/ComputerVision/ComputerVisionQuickstart.js?name=snippet_read_print)]
 
+> [!div class="nextstepaction"]
+> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Führen Sie die Anwendung mit dem Befehl `node` für die Schnellstartdatei aus.
@@ -254,6 +270,9 @@ Führen Sie die Anwendung mit dem Befehl `node` für die Schnellstartdatei aus.
 node index.js
 ```
 
+> [!div class="nextstepaction"]
+> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
@@ -261,10 +280,14 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 >[Referenz zur Maschinelles Sehen-API (Node.js)](/javascript/api/@azure/cognitiveservices-computervision/?view=azure-node-latest)
+
 
 * [Worum handelt es sich bei maschinellem Sehen?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/ComputerVision/ComputerVisionQuickstart.js).

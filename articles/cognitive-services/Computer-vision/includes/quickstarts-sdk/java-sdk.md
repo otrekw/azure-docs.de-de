@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 10/13/2019
 ms.custom: devx-track-java
 ms.author: pafarley
-ms.openlocfilehash: 4a82b5550c9105a81bdee9b0f0a5846f93938ab0
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5661e0e3a1978735ae9e4313ac9aa78a88e81f19
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95095794"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912312"
 ---
 <a name="HOLTop"></a>
+
+Verwenden Sie die Clientbibliothek für maschinelles Sehen für Folgendes:
+
+* Analysieren eines Bilds auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte usw.
+* Lesen von gedrucktem und handschriftlichem Text mit der Lese-API
 
 [Referenzdokumentation](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/cognitiveservices/ms-azure-cs-computervision) |[Artefakt (Maven)](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-computervision) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -99,6 +104,8 @@ Fügen Sie in der **main**-Methode der Anwendung Aufrufe für die Methoden hinzu
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_maincalls)]
 
+> [!div class="nextstepaction"]
+> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=set-up-client)
 
 ## <a name="object-model"></a>Objektmodell
 
@@ -120,11 +127,12 @@ Diese Codeausschnitte veranschaulichen, wie die folgenden Aufgaben mit der Clien
 
 ## <a name="authenticate-the-client"></a>Authentifizieren des Clients
 
-
 Instanziieren Sie in einer neuen Methode ein [ComputerVisionClient](/java/api/com.microsoft.azure.cognitiveservices.vision.computervision.computervisionclient?view=azure-java-stable)-Objekt mit Ihrem Endpunkt und Schlüssel.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_auth)]
 
+> [!div class="nextstepaction"]
+> [Ich habe den Client authentifiziert.](?success=authenticate-client#analyze-an-image) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
@@ -206,6 +214,9 @@ Der folgende Code gibt Informationen über den Typ des Bilds aus, und zwar unabh
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_imagetype)]
 
+> [!div class="nextstepaction"]
+> [Ich habe ein Bild analysiert.](?success=analyze-image#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
 
 Maschinelles Sehen kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge konvertieren. In diesem Abschnitt wird die Methode `ReadFromFile` definiert, die einen lokalen Pfad verwendet und den Text des Bilds in der Konsole ausgibt.
@@ -226,7 +237,6 @@ Fügen Sie dann die folgende Methodendefinition zu Ihrer **ComputerVisionQuickst
 Fügen Sie anschließend den folgenden Code hinzu, um die Methode **readInStreamWithServiceResponseAsync** für das angegebene Bild aufzurufen.
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_read_call)]
-
 
 Mit dem folgenden Codeblock wird die Vorgangs-ID aus der Antwort des Leseaufrufs extrahiert. Diese ID wird mit einer Hilfsmethode verwendet, um die Textleseergebnisse in der Konsole auszugeben. 
 
@@ -250,6 +260,9 @@ Fügen Sie abschließend die andere oben verwendete Hilfsmethode hinzu, die die 
 
 [!code-java[](~/cognitive-services-quickstart-code/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java?name=snippet_opid_extract)]
 
+> [!div class="nextstepaction"]
+> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 Sie können die App mit folgendem Befehl erstellen:
@@ -264,6 +277,9 @@ Führen Sie die Anwendung mit Befehl `gradle run` aus:
 gradle run
 ```
 
+> [!div class="nextstepaction"]
+> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=run-the-application)
+
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind.
@@ -271,12 +287,16 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=clean-up-resources)
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In dieser Schnellstartanleitung haben Sie gelernt, wie Sie die Clientbibliothek der Maschinelles Sehen-API für Java für allgemeine Aufgaben verwenden. In der Referenzdokumentation finden Sie weitere Informationen zur Bibliothek.
 
 > [!div class="nextstepaction"]
 >[Computer Vision](/java/api/overview/azure/cognitiveservices/client/computervision?view=azure-java-stable) (Maschinelles Sehen)
+
 
 * [Worum handelt es sich bei maschinellem Sehen?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/java/ComputerVision/src/main/java/ComputerVisionQuickstart.java).

@@ -55,6 +55,8 @@
               href: manage-vm-extensions-powershell.md
             - name: Bereitstellen von Erweiterungen mithilfe einer ARM-Vorlage
               href: manage-vm-extensions-template.md
+        - name: Verwenden von verwalteten Identitäten auf einem Server
+          href: managed-identity-authentication.md
         - name: Agent verwalten
           href: manage-agent.md
     - name: Szenarien

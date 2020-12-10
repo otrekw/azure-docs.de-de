@@ -10,16 +10,18 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: bead348e64fcee4cc5b790f975c9da5200ee796b
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422398"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96546902"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle
 
-In diesem Artikel lernen Sie die grundlegenden Verwendungsmuster der Speech-Befehlszeilenschnittstelle kennen, eines Befehlszeilentools zur Nutzung des Speech-Diensts ohne Programmierung. Sie können die Hauptfunktionen des Speech-Diensts schnell ausprobieren, ohne Entwicklungsumgebungen zu erstellen oder zu programmieren, um festzustellen, ob Sie Ihren Anwendungsfällen angemessen gerecht werden können. Außerdem ist die Speech-Befehlszeilenschnittstelle für den Produktionsbetrieb bereit und kann verwendet werden, um einfache Arbeitsabläufe im Speech-Dienst mithilfe von `.bat`- oder Shellskripts zu automatisieren.
+In diesem Artikel lernen Sie die grundlegenden Verwendungsmuster der Speech-Befehlszeilenschnittstelle kennen, eines Befehlszeilentools zur Nutzung des Speech-Diensts ohne Programmierung. Sie können die Hauptfunktionen des Speech-Diensts schnell ausprobieren, ohne Entwicklungsumgebungen zu erstellen oder zu programmieren, um festzustellen, ob Sie Ihren Anwendungsfällen angemessen gerecht werden können. Die Speech-Befehlszeilenschnittstelle ist für den Produktionsbetrieb bereit und kann verwendet werden, um einfache Arbeitsabläufe im Speech-Dienst mithilfe von `.bat`- oder Shellskripts zu automatisieren.
+
+In diesem Artikel wird davon ausgegangen, dass Sie mit der Eingabeaufforderung, mit dem Terminal oder mit PowerShell vertraut sind.
 
 [!INCLUDE [](includes/spx-setup.md)]
 
@@ -45,11 +47,24 @@ Geben Sie den folgenden Befehl ein, um die Optionen für den Befehl „recognize
 spx help recognize
 ```
 
-Nutzen Sie nun den Speech-Dienst für eine erste Spracherkennung mit Ihrem Standardmikrofon, indem Sie den unten angegebenen Befehl ausführen.
+Verwenden wir nun die Speech-Befehlszeilenschnittstelle, um eine Spracherkennung unter Verwendung des Standardmikrofons Ihres Systems durchzuführen. 
+
+>[!WARNING]
+> Bei Verwendung eines Docker-Containers funktioniert dieser Befehl nicht.
+
+Führen Sie den folgenden Befehl aus:
 
 ```shell
 spx recognize --microphone
 ```
+
+Mit der Speech-Befehlszeilenschnittstelle können Sie auch Sprache aus einer Audiodatei erkennen.
+
+```shell
+spx recognize --file /path/to/file.wav
+```
+> [!TIP]
+> Wenn Sie Sprache aus einer Audiodatei in einem Docker-Container erkennen möchten, vergewissern Sie sich, dass sich die Audiodatei in dem Verzeichnis befindet, das Sie im vorherigen Schritt eingebunden haben.
 
 Nachdem Sie den Befehl eingegeben haben, beginnt SPX mit dem aktiven Lauschen nach Audiodaten am aktuellen aktiven Eingabegerät und hält an, wenn Sie `ENTER` drücken. Die aufgezeichnete Sprache wird dann erkannt und in der Konsolenausgabe in Text konvertiert. Auch die Sprachsynthese lässt sich mithilfe der Speech-Befehlszeilenschnittstelle einfach verwenden. 
 
@@ -177,7 +192,7 @@ Dieser Befehl ist das Äquivalent zur Ausführung von `spx synthesize --text Sam
 * Wenn die Datei auf diese Weise formatiert wird, müssen keine zusätzlichen Argumente an `--foreach` übergeben werden.
 * Achten Sie darauf, jeden Wert in der `.tsv`-Datei mit einem **Tabstopp** zu trennen.
 
-Im Fall einer `.tsv`-Datei wie im folgenden Beispiel jedoch, deren Spaltenüberschriften mit den Befehlszeilenargumenten **nicht übereinstimmen** :
+Im Fall einer `.tsv`-Datei wie im folgenden Beispiel jedoch, deren Spaltenüberschriften mit den Befehlszeilenargumenten **nicht übereinstimmen**:
 
 ```output
 wav_path    str_text

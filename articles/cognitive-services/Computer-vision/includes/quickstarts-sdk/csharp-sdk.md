@@ -10,14 +10,19 @@ ms.topic: include
 ms.date: 12/05/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f4f922ccf4cd33c5e72c3ebd9182eb9868008d0f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 3821e0a38c2eefca2ad82731387487974748270b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95096831"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96912213"
 ---
 <a name="HOLTop"></a>
+
+Verwenden Sie die Clientbibliothek für maschinelles Sehen für Folgendes:
+
+* Analysieren eines Bilds auf Tags, Textbeschreibungen, Gesichter, nicht jugendfreie Inhalte usw.
+* Lesen von gedrucktem und handschriftlichem Text mit der Lese-API
 
 [Referenzdokumentation](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ComputerVision) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) | [Beispiele](https://azure.microsoft.com/resources/samples/?service=cognitive-services&term=vision&sort=0)
 
@@ -100,6 +105,9 @@ Fügen Sie in der `Main`-Methode der Anwendung Aufrufe für die Methoden hinzu, 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_extracttextinmain)]
 
+> [!div class="nextstepaction"]
+> [Ich habe den Client eingerichtet.](?success=set-up-client#object-model) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=set-up-client)
+
 ## <a name="object-model"></a>Objektmodell
 
 Die folgenden Klassen und Schnittstellen verarbeiten einige der Hauptfunktionen des Computer Vision .NET SDK.
@@ -127,7 +135,8 @@ Instanziieren Sie in einer neuen Methode einen Client mit Ihrem Endpunkt und Sch
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_auth)]
 
-
+> [!div class="nextstepaction"]
+> [Ich habe den Client authentifiziert.](?success=authenticate-client#analyze-an-image) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=authenticate-client)
 
 ## <a name="analyze-an-image"></a>Analysieren von Bildern
 
@@ -228,6 +237,9 @@ Die folgende Funktion gibt Informationen zur Art des Bilds (ClipArt oder Strichz
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_type)]
 
+> [!div class="nextstepaction"]
+> [Ich habe ein Bild analysiert.](?success=analyze-image#read-printed-and-handwritten-text) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=analyze-image)
+
 ## <a name="read-printed-and-handwritten-text"></a>Lesen von gedrucktem und handschriftlichem Text
 
 Maschinelles Sehen kann sichtbaren Text in einem Bild lesen und in eine Zeichenfolge konvertieren. Weitere Informationen zur Texterkennung finden Sie in der Konzeptdokumentation unter [Optische Zeichenerkennung (OCR)](../../concept-recognizing-text.md#read-api). Der Code in diesem Abschnitt nutzt das aktuelle [SDK-Release für maschinelles Sehen für Read 3.0](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/6.0.0-preview.1) und definiert die Methode `BatchReadFileUrl`. Hierbei wird das Clientobjekt verwendet, um Text im Bild zu erkennen und zu extrahieren.
@@ -259,6 +271,9 @@ Fügen Sie den folgenden Code hinzu, um die abgerufenen Textdaten zu analysieren
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ComputerVision/ComputerVisionQuickstart.cs?name=snippet_read_display)]
 
+> [!div class="nextstepaction"]
+> [Ich habe Text gelesen.](?success=read-printed-handwritten-text#run-the-application) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=read-printed-handwritten-text)
+
 ## <a name="run-the-application"></a>Ausführen der Anwendung
 
 #### <a name="visual-studio-ide"></a>[Visual Studio-IDE](#tab/visual-studio)
@@ -274,6 +289,8 @@ dotnet run
 ```
 
 ---
+> [!div class="nextstepaction"]
+> [Ich habe die Anwendung ausgeführt.](?success=run-the-application#clean-up-resources) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=run-the-application)
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
@@ -282,10 +299,14 @@ Wenn Sie ein Cognitive Services-Abonnement bereinigen und entfernen möchten, k�
 * [Portal](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure-Befehlszeilenschnittstelle](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
+> [!div class="nextstepaction"]
+> [Ich habe die Ressourcen bereinigt.](?success=clean-up-resources#next-steps) [Bei mir ist ein Problem aufgetreten.](https://www.research.net/r/7QYZKHL?issue=clean-up-resources) 
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
 >[Referenz zur Maschinelles Sehen-API (.NET)](/dotnet/api/overview/azure/cognitiveservices/client/computervision?view=azure-dotnet)
+
 
 * [Worum handelt es sich bei maschinellem Sehen?](../../overview.md)
 * Den Quellcode für dieses Beispiel finden Sie auf [GitHub](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/dotnet/ComputerVision/ComputerVisionQuickstart.cs).

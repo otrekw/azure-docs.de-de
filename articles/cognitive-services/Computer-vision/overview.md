@@ -13,13 +13,14 @@ ms.author: pafarley
 ms.custom:
 - seodec18
 - cog-serv-seo-aug-2020
+- contperfq2
 keywords: maschinelles Sehen, Anwendungen für maschinelles Sehen, Dienst für maschinelles Sehen
-ms.openlocfilehash: 1b4768781c45733590639b4a382fecfdb02adf48
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 09c3d10425e7688e84be7ddd845648def3e5cc39
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95532289"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852862"
 ---
 # <a name="what-is-computer-vision"></a>Worum handelt es sich bei maschinellem Sehen?
 
@@ -114,4 +115,4 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die den Maschinel
 
 Führen Sie anhand der Schnellstartanleitung in der bevorzugten Entwicklungssprache erste Schritte für maschinelles Sehen aus:
 
-- [Schnellstart: Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md)

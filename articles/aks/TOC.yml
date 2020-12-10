@@ -179,7 +179,7 @@
         - name: Bereitstellen von AKS mit Terraform
           href: /azure/developer/terraform/create-k8s-cluster-with-tf-and-aks
           maintainContext: true
-        - name: Verwenden der Kubernetes-Ressourcenanzeige (Vorschauversion)
+        - name: Kubernetes-Ressourcenansicht im Azure-Portal
           href: kubernetes-portal.md
         - name: Verwenden des Kubernetes-Dashboards
           href: kubernetes-dashboard.md
