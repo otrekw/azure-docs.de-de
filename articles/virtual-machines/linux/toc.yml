@@ -91,7 +91,7 @@
         - name: Verfügbarkeit
           href: ../availability.md
         - name: Zusammenstellung
-          href: co-location.md
+          href: ../co-location.md
         - name: Netzwerkleistung
           href: ../..//virtual-network/virtual-network-optimize-network-bandwidth.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
     - name: Arten und Größen von virtuellen Computern
