@@ -944,8 +944,6 @@
               href: ../disks-enable-ultra-ssd.md?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json
             - name: Durchführen von Vergleichstest für einen Datenträger
               href: disks-benchmarks.md
-            - name: Optimieren der Leistung
-              href: optimization.md
         - name: 'Ermitteln nicht angefügter Datenträger: CLI'
           href: find-unattached-disks.md
         - name: 'Ermitteln nicht angefügter Datenträger: Portal'
