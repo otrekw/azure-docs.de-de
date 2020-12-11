@@ -93,9 +93,6 @@ items:
               - name: "Azure\_SQL-Datenbank"
                 href: register-scan-azure-sql-database.md
                 displayName: Register and scan Azure SQL DB
-              - name: Azure SQL-Datenbank mit einer Firewall
-                href: scan-sqlresource-firewall.md
-                displayName: Register and scan Azure SQL DB with a firewall
               - name: Verwaltete Azure SQL-Datenbank-Instanz
                 href: register-scan-azure-sql-database-managed-instance.md
                 displayName: Register and scan Azure SQL DB Managed Instance

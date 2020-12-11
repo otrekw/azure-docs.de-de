@@ -90,6 +90,8 @@
               href: data-box-local-web-ui-admin.md
             - name: Verwenden des selbst verwalteten Versands
               href: data-box-portal-customer-managed-shipping.md
+            - name: Bereitstellen eigener Zertifikate
+              href: data-box-bring-your-own-certificates.md
             - name: Kundenseitig verwaltete Schlüssel aktivieren
               href: data-box-customer-managed-encryption-key-portal.md
             - name: Verwenden von Kunden-Lockbox
