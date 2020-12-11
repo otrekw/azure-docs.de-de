@@ -6,16 +6,16 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: tutorial
 ms.date: 07/13/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 03a5f355263b80ef2e5e1c829877dc96ca55787a
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 89abdcf4c76c92c2ed967594527d323b2cd8be32
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837888"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96741183"
 ---
 # <a name="tutorial-configure-custom-banned-passwords-for-azure-active-directory-password-protection"></a>Tutorial: Konfigurieren von benutzerdefinierten gesperrten Kennwörtern für den Azure Active Directory-Kennwortschutz
 
@@ -72,7 +72,7 @@ Führen Sie die folgenden Schritte aus, um die benutzerdefinierte Liste mit gesp
 
     * Die benutzerdefinierte Liste gesperrter Kennwörter kann bis zu 1.000 Ausdrücke umfassen.
     * Bei der benutzerdefinierten Liste gesperrter Kennwörter wird die Groß- und Kleinschreibung nicht beachtet.
-    * Bei der benutzerdefinierten Liste mit gesperrten Kennwörtern wird die gängige Ersetzung von Zeichen berücksichtigt, z. B. „o“ und „0“ oder „a“ und „@“.
+    * Bei der benutzerdefinierten Liste mit gesperrten Kennwörtern wird die gängige Ersetzung von Zeichen berücksichtigt, z. B. „o“ und „0“ oder „a“ und „\@“.
     * Die Zeichenfolgen müssen mindestens vier und dürfen höchstens 16 Zeichen lang sein.
 
     Geben Sie Ihre eigenen benutzerdefinierten Kennwörter an, die gesperrt werden sollen. Dies ist im folgenden Beispiel dargestellt.

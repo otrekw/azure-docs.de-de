@@ -440,7 +440,7 @@ $accessToken = $tokenResponse.access_token
 
 ### <a name="using-the-microsoftazureservicesappauthentication-library-for-net"></a><a name="asal"></a>Verwendung der Microsoft.Azure.Services.AppAuthentication-Bibliothek für .NET
 
-Bei .NET-Anwendungen und -Funktionen stellt das Microsoft.Azure.Services.AppAuthentication-Paket die einfachste Methode für das Arbeiten mit einer verwalteten Identität dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](/cli/azure) oder der integrierten Active Directory-Authentifizierung. Beim Hosting in der Cloud wird standardmäßig eine vom System zugewiesene Identität verwendet. Sie können dieses Verhalten jedoch mithilfe einer Umgebungsvariable für die Verbindungszeichenfolge anpassen, die auf die Client-ID einer vom Benutzer zugewiesenen Identität verweist. Weitere Informationen zu Entwicklungsoptionen mit dieser Bibliothek finden Sie in der [Referenz zu Microsoft.Azure.Services.AppAuthentication]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
+Bei .NET-Anwendungen und -Funktionen stellt das Microsoft.Azure.Services.AppAuthentication-Paket die einfachste Methode für das Arbeiten mit einer verwalteten Identität dar. Mithilfe dieser Bibliothek können Sie zudem Ihren Code lokal auf dem Entwicklungscomputer testen. Hierzu verwenden Sie Ihr Benutzerkonto aus Visual Studio, aus der [Azure CLI](/cli/azure) oder der integrierten Active Directory-Authentifizierung. Beim Hosting in der Cloud wird standardmäßig eine vom System zugewiesene Identität verwendet. Sie können dieses Verhalten jedoch mithilfe einer Umgebungsvariable für die Verbindungszeichenfolge anpassen, die auf die Client-ID einer vom Benutzer zugewiesenen Identität verweist. Weitere Informationen zu Entwicklungsoptionen mit dieser Bibliothek finden Sie in der [Microsoft.Azure.Services.AppAuthentication reference]. In diesem Abschnitt werden die ersten Schritte mit der Bibliothek in Ihrem Code erläutert.
 
 1. Fügen Sie Ihrer Anwendung Verweise auf [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) und alle weiteren erforderlichen NuGet-Pakete hinzu. Im folgenden Beispiel wird auch [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) verwendet.
 
@@ -466,7 +466,7 @@ Wenn Sie eine vom Benutzer zugewiesene verwaltete Identität verwenden möchten,
     var azureServiceTokenProvider2 = new AzureServiceTokenProvider(identityConnectionString2);
 ```
 
-Weitere Informationen zum Konfigurieren von AzureServiceTokenProvider und zu den dadurch bereitgestellten Vorgängen finden Sie in der [Referenz zu Microsoft.Azure.Services.AppAuthentication] und im [Beispiel zu App Service und KeyVault mit MSI .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
+Weitere Informationen zum Konfigurieren von AzureServiceTokenProvider und zu den dadurch bereitgestellten Vorgängen finden Sie in der [Microsoft.Azure.Services.AppAuthentication reference] und im [Beispiel zu App Service und KeyVault mit MSI .NET](https://github.com/Azure-Samples/app-service-msi-keyvault-dotnet).
 
 ### <a name="using-the-azure-sdk-for-java"></a>Verwenden des Azure SDK für Java
 

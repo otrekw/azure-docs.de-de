@@ -504,6 +504,8 @@
       href: how-to-use-logging.md
     - name: Nachverfolgen der Arbeitsspeicherauslastung
       href: how-to-track-speech-sdk-memory-usage.md
+    - name: Aktivieren eines privaten Endpunkts
+      href: speech-services-private-link.md
     - name: Konfigurieren von OpenSSL für Linux
       displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
       href: how-to-configure-openssl-linux.md
@@ -583,7 +585,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Kompatibilität
+    - name: Compliance
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

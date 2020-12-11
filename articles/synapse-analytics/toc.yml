@@ -1095,9 +1095,9 @@
         - name: Verwenden des Bewertungsassistenten für dedizierte SQL-Pools
           href: machine-learning/tutorial-sql-pool-model-scoring-wizard.md
           displayname: machine learning
-        - name: Trainieren eines Modells mit Azure AutoML ohne Code
+        - name: Trainieren eines Modells mit automatisiertem maschinellem Lernen ohne Code
           href: ./machine-learning/tutorial-automl.md
-        - name: Trainieren eines Modells in Python mit Azure AutoML
+        - name: Trainieren eines Modells in Python mit automatisiertem maschinellem Lernen
           href: ./spark/apache-spark-azure-machine-learning-tutorial.md
           displayname: machine learning
         - name: Erstellen eines Modells mit Apache Spark MLlib
