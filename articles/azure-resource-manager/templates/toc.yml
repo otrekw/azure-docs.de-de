@@ -515,6 +515,8 @@
       href: /python/api/overview/azure/resources?view=azure-python
 - name: Ressourcen
   items:
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/paths/deploy-manage-resource-manager-templates/
     - name: Azure-Schnellstartvorlagen
       href: 'https://azure.microsoft.com/resources/templates/'
     - name: Azure-Roadmap

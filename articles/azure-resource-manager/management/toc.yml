@@ -69,7 +69,7 @@
               href: ../../api-management/api-management-howto-migrate.md?toc=/azure/azure-resource-manager/management/toc.json
             - name: Azure App Service
               href: ../../app-service/manage-move-across-regions.md?toc=/azure/azure-resource-manager/management/toc.json
-            - name: Azure Automation
+            - name: Azure-Automatisierung
               href: ../../automation/automation-managing-data.md?toc=/azure/azure-resource-manager/management/toc.json#geo-replication-in-azure-automation
             - name: Azure Batch
               href: ../../batch/best-practices.md?toc=/azure/azure-resource-manager/management/toc.json#moving-batch-accounts-across-regions
@@ -180,6 +180,8 @@
       href: ./policy-reference.md
 - name: Ressourcen
   items:
+    - name: Erweitern Ihrer Fähigkeiten mit Microsoft Learn
+      href: /learn/browse/?products=azure-resource-manager
     - name: Azure-Roadmap
       href: 'https://azure.microsoft.com/roadmap/?category=monitoring-management'
     - name: Preisrechner
