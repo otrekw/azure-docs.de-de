@@ -1175,6 +1175,8 @@
               href: platform/workbooks-automate.md
             - name: Gruppen
               href: platform/workbooks-groups.md
+            - name: Bring Your Own Storage (BYOS)
+              href: platform/workbooks-bring-your-own-storage.md
             - name: Transformieren von JSON-Daten mit JSONPath
               href: platform/workbooks-jsonpath.md
             - name: Verschieben von Arbeitsmappen in eine andere Region

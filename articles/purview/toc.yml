@@ -54,6 +54,8 @@ items:
         href: concept-business-glossary.md
       - name: Datenerkenntnisse
         href: concept-insights.md
+      - name: Unterstützte Browser
+        href: supported-browsers.md
       - name: Häufig gestellte Fragen
         href: frequently-asked-questions.md
   - name: Anleitungen
@@ -110,6 +112,8 @@ items:
             href: how-to-create-import-export-glossary.md
           - name: Begriffsvorlagen verwalten
             href: how-to-manage-term-templates.md
+          - name: Massenbearbeitung von Ressourcen zum Zuweisen von Glossarbegriffen
+            href: how-to-bulk-edit-assets.md
       - name: Klassifizieren
         items:
           - name: Benutzerdefinierte Klassifizierungs und Klassifizierungsregel erstellen

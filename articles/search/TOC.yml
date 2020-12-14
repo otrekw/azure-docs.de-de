@@ -257,8 +257,10 @@
         - name: Abfragetypen und Komposition
           href: search-query-overview.md
         - name: Erstellen einer einfachen Abfrage
+          href: search-query-create.md
+        - name: Verwenden von einfacher Syntax (Beispiele)
           href: search-query-simple-examples.md
-        - name: Verwenden der vollständigen Lucene-Syntax
+        - name: Verwenden der vollständigen Lucene-Syntax (Beispiele)
           href: search-query-lucene-examples.md
         - name: Teilausdrücke und Sonderzeichen
           href: search-query-partial-matching.md
@@ -404,7 +406,7 @@
           href: cognitive-search-common-errors-warnings.md
 - name: Verweis
   items:
-    - name: Azure-Befehlszeilenschnittstelle
+    - name: Azure CLI
       href: /cli/azure/search
     - name: Azure PowerShell
       href: /powershell/module/az.search
@@ -536,6 +538,8 @@
           href: 'https://wolterskluwereap.azurewebsites.net/'
         - name: Demo zu JFK-Dateien
           href: 'https://www.microsoft.com/en-us/ai/ai-lab-jfk-files'
+        - name: Demo zu NYC-Aufträgen
+          href: 'https://azjobsdemo.azurewebsites.net/'
     - name: Training
       items:
         - name: Einführung (Microsoft Learn)
