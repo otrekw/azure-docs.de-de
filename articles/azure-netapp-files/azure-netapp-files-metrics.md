@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 11/12/2020
+ms.date: 12/04/2020
 ms.author: b-juche
-ms.openlocfilehash: d653916c9b50d552825fcb03a860a2a2008b204d
-ms.sourcegitcommit: 1d6ec4b6f60b7d9759269ce55b00c5ac5fb57d32
+ms.openlocfilehash: a17e6cc0479cf8ff2306736994a369d9e44dfdda
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94578517"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745943"
 ---
 # <a name="metrics-for-azure-netapp-files"></a>Metriken für Azure NetApp Files
 
@@ -42,10 +42,8 @@ Azure NetApp Files verfügt über Metriken für Folgendes: zugeteilter Speicher,
 
 ## <a name="usage-metrics-for-volumes"></a><a name="volumes"></a>Nutzungsmetriken für Volumes
 
-<!-- ANF-5023: fixed version: 2020.08, 2020.09
-- *Percentage Volume Consumed Size*    
-    The percentage of the volume consumed, including snapshots.  
--->
+- *Größe der verbrauchten Menge in Prozent*    
+    Der Prozentsatz des verbrauchten Volumes, einschließlich Momentaufnahmen.  
 - *Zugeordnete Größe des Volumes*   
     Die bereitgestellte Größe eines Volumes
 - *Größe des Volumekontingents*    

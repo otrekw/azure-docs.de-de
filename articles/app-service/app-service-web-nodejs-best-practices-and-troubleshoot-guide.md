@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
-ms.openlocfilehash: d826b80c11b700d753acc18f8d4c626a65510f93
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 370b84f451e22c20c798018951a7a801e0bba826
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833808"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763943"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Bewährte Methoden und Problembehandlungsschritte für Node-Anwendungen in Azure App Service unter Windows
 
@@ -140,7 +140,7 @@ let keepaliveAgent = new Agent({
 
 #### <a name="my-node-application-is-consuming-too-much-cpu"></a>Der CPU-Verbrauch meiner Node-Anwendung ist zu hoch.
 
-Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
+Möglicherweise erhalten Sie von Azure App Service in Ihrem Portal eine Empfehlung zum hohen CPU-Verbrauch. Sie können auch Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der CPU-Nutzung im [Azure-Portal-Dashboard](../azure-monitor/platform/metrics-charts.md)die MAX-Werte für die CPU an, damit Ihnen die Spitzenwerte nicht entgehen.
 Falls Sie der Meinung sind, dass der CPU-Verbrauch Ihrer Anwendung zu hoch ist, und den Grund dafür nicht kennen, können Sie zur Überprüfung ein Profil für Ihre Node-Anwendung erstellen.
 
 #### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>Profilerstellung für die Node-Anwendung in Azure App Service mit V8-Profiler
@@ -213,7 +213,7 @@ Sie sehen, dass 95% der Zeit von der WriteConsoleLog-Funktion verbraucht wurde. 
 
 ### <a name="my-node-application-is-consuming-too-much-memory"></a>Der Arbeitsspeicherverbrauch meiner Node-Anwendung ist zu hoch
 
-Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../azure-monitor/app/web-monitor-performance.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
+Wenn Ihre Anwendung zu viel Arbeitsspeicher verbraucht, wird für Azure App Service im Portal ein entsprechender Hinweis angezeigt. Sie können Monitore einrichten, mit denen bestimmte [Metriken](web-sites-monitor.md) überwacht werden. Sehen Sie sich beim Überprüfen der Arbeitsspeichernutzung im [Azure-Portal-Dashboard](../azure-monitor/platform/metrics-charts.md) die MAX-Werte für den Arbeitsspeicher an, damit Ihnen die Spitzenwerte nicht entgehen.
 
 #### <a name="leak-detection-and-heap-diff-for-nodejs"></a>Erkennung von Arbeitsspeicherverlusten und Heap-Diff für „node.js“
 

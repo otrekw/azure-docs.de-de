@@ -6,12 +6,12 @@ ms.assetid: e34d405e-c5d4-46ad-9b26-2a1eda86ce80
 ms.topic: article
 ms.date: 03/04/2016
 ms.custom: seodec18
-ms.openlocfilehash: b9e43cb9188df8274d5bafa7fd9bc90c24339237
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 81782f63199a9fe8f43f56aeefcd1c68951d57a4
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93286835"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852251"
 ---
 # <a name="azure-app-service-local-cache-overview"></a>Übersicht über den lokalen Cache von Azure App Service
 
@@ -93,7 +93,7 @@ Standardmäßig ist der lokale Cache **1 GB** groß. Dies schließt die Ordner 
 Es wird empfohlen, den lokalen Cache gemeinsam mit dem Feature [Stagingumgebungen](../app-service/deploy-staging-slots.md) zu verwenden.
 
 * Fügen Sie die *persistente* App-Einstellung `WEBSITE_LOCAL_CACHE_OPTION` mit dem Wert `Always` zu Ihrem **Produktionsslot** hinzu. Wenn Sie `WEBSITE_LOCAL_CACHE_SIZEINMB`verwenden, fügen Sie diese Einstellung ebenfalls als persistente Einstellung zu Ihrem Produktionsslot hinzu.
-* Erstellen Sie einen **Stagingslot** , und führen Sie eine Veröffentlichung in Ihrem Stagingslot durch. Für den Stagingslot wird üblicherweise nicht die Verwendung des lokalen Caches festgelegt. So wird ein nahtloser Lebenszyklus für das Erstellen/Bereitstellen/Testen für das Staging ermöglicht, während die Vorteile des lokalen Caches für den Produktionsslot genutzt werden.
+* Erstellen Sie einen **Stagingslot**, und führen Sie eine Veröffentlichung in Ihrem Stagingslot durch. Für den Stagingslot wird üblicherweise nicht die Verwendung des lokalen Caches festgelegt. So wird ein nahtloser Lebenszyklus für das Erstellen/Bereitstellen/Testen für das Staging ermöglicht, während die Vorteile des lokalen Caches für den Produktionsslot genutzt werden.
 * Testen Sie Ihre Site mit dem Stagingslot.  
 * Wenn Sie bereit dazu sind, wechseln Sie über einen [swap-Vorgang](../app-service/deploy-staging-slots.md#Swap) zwischen Ihrem Staging- und Ihrem Produktionsslot.  
 * Persistente Einstellungen umfassen einen Namen und gelten dauerhaft für einen Slot. Wenn also der Stagingslot auf den Produktionsslot umgeschaltet wird, erbt dieser die App-Einstellungen für den lokalen Cache. Der neue Produktionsslot wird nach ein paar Minuten mit dem lokalen Cache ausgeführt und im Rahmen der Slotaufwärmung nach dem Wechsel aufgewärmt. Wenn der Slotwechsel abgeschlossen ist, wird Ihr Produktionsslot mit dem lokalen Cache ausgeführt.
@@ -120,3 +120,6 @@ Der lokale Cache trägt dazu bei, speicherbezogene Neustarts von Apps zu vermeid
 
 ### <a name="does-local-cache-exclude-any-directories-from-being-copied-to-the-faster-local-drive"></a>Gibt es Verzeichnisse, die für den lokalen Cache nicht auf das schnellere lokale Laufwerk kopiert werden?
 Bei dem Schritt, in dem der Speicherinhalt kopiert wird, werden alle Ordner mit dem Namen „repository“ ausgeschlossen. Dies hilft bei Szenarien, in denen eine Website ein Quellcodeverwaltungs-Repository enthält, das für den täglichen Betrieb der App möglicherweise nicht benötigt wird. 
+
+### <a name="how-to-flush-the-local-cache-logs-after-a-site-management-operation"></a>Wie werden die Protokolle im lokalen Cache nach einem Standortverwaltungsvorgang geleert?
+Zum Leeren der Protokolle im lokalen Cache beenden Sie die App, und starten Sie sie erneut. Durch diese Aktion wird der alte Cache gelöscht. 

@@ -12,6 +12,10 @@
           href: concepts-certificate-rotation.md
 - name: Verfügbare Dokumentation
   items:
+    - name: Datenbankbereitstellung
+      items:
+        - name: Github Actions
+          href: how-to-deploy-github-action.md
     - name: Migration
       items:
         - name: Migrieren von Daten mit „pg_dump“ und „pg_restore“
@@ -202,6 +206,8 @@
               displayName: 'query store, performance, optimize, recommendations'
         - name: App-Entwicklung
           items:
+            - name: Bewährte Methoden
+              href: application-best-practices.md
             - name: Verbindungsbibliotheken
               href: concepts-connection-libraries.md
               displayName: 'libraries, drivers'
@@ -416,10 +422,16 @@
               href: flexible-server/connect-python.md
     - name: Tutorials
       items:
-        - name: Erstellen einer Web-App in einem virtuellen Netzwerk
-          href: flexible-server/tutorial-webapp-server-vnet.md
-        - name: Bereitstellen einer Django-App
-          href: flexible-server/tutorial-django-app-service-postgres.md
+        - name: Erstellen mit AKS
+          items:
+            - name: Bereitstellen einer Python-App in Kubernetes
+              href: flexible-server/tutorial-django-aks-database.md
+        - name: Erstellen mit App Services
+          items:
+            - name: Erstellen einer Web-App in einem virtuellen Netzwerk
+              href: flexible-server/tutorial-webapp-server-vnet.md
+            - name: Bereitstellen einer Django-App in App Service
+              href: flexible-server/tutorial-django-app-service-postgres.md
     - name: Konzepte
       items:
         - name: Server
@@ -466,6 +478,8 @@
               href: flexible-server/how-to-manage-server-portal.md
             - name: Azure CLI
               href: flexible-server/how-to-manage-server-cli.md
+            - name: Anleitung zur Verbindungsherstellung und zu Abfragen
+              href: flexible-server/how-to-connect-query-guide.md
         - name: Geplante Wartung
           items:
             - name: Azure-Portal

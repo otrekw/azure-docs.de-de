@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: 18f8df90cd59a1fb32024ec93674fed7eb49519a
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96451987"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534045"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedizierter SQL-Pool (früher SQL DW) in Azure Synapse Analytics – Versionshinweise
 
@@ -39,6 +39,13 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 >
 > SELECT SERVERPROPERTY('EngineEdition')
 > ```
+
+## <a name="dec-2020"></a>Dez 2020
+
+| Verbesserungen beim Dienst | Details |
+| --- | --- |
+|**Gespeicherte Prozedur „sp_rename“ für Spalten (Vorschau)**|Das Umbenennen einer Spalte ohne [CTAS](https://docs.microsoft.com/azure/synapse-analytics/sql-data-warehouse/sql-data-warehouse-develop-ctas) wurde soeben einfacher. Azure Synapse SQL besitzt jetzt zusätzliche Unterstützung für die gespeicherte Systemprozedur „sp_rename (Vorschau)“, um eine Nicht-Verteilungsspalte in einer Benutzertabelle umzubenennen. Dieses Feature befindet sich derzeit in der Vorschauphase und wird bei allgemeiner Verfügbarkeit in Tools unterstützt. Einzelheiten dazu finden Sie unter [sp_rename](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-rename-transact-sql?view=azure-sqldw-latest).|
+|**Zusätzlicher Parameter für die T-SQL PREDICT**|Mit dieser neuen Version wird ein erforderlicher zusätzlicher Parameter mit dem Namen „RUNTIME“ für die vorhandene T-SQL PREDICT-Anweisung hinzugefügt. Wie Sie Ihre Skripts aktualisieren können, sehen Sie in den Beispielen in [T-SQL PREDICT](https://docs.microsoft.com/sql/t-sql/queries/predict-transact-sql?view=azure-sqldw-latest).|
 
 ## <a name="oct-2020"></a>Oktober 2020
 

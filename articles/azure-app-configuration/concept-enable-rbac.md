@@ -6,12 +6,12 @@ ms.author: lcozzens
 ms.date: 02/13/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 7e7b524f125eda406adc9be2300c94e5944e1819
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c749dbb1cc78bf06dfe665875bc05f75152778b
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91715945"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862138"
 ---
 # <a name="authorize-access-to-azure-app-configuration-using-azure-active-directory"></a>Autorisieren des Zugriffs auf Azure App Configuration mittels Azure Active Directory
 Neben der Verwendung von Hash-based Message Authentication Code (HMAC) unterstützt Azure App Configuration die Verwendung von Azure Active Directory (Azure AD) zum Autorisieren von Anforderungen an App Configuration-Instanzen.  Azure AD gestattet Ihnen die Verwendung der rollenbasierten Zugriffssteuerung in Azure (Role-Based Access Control, Azure RBAC), um einem Sicherheitsprinzipal Berechtigungen zu erteilen.  Ein Sicherheitsprinzipal kann ein Benutzer, eine [verwaltete Identität](../active-directory/managed-identities-azure-resources/overview.md) oder ein [Anwendungsdienstprinzipal](../active-directory/develop/app-objects-and-service-principals.md) sein.  Weitere Informationen zu Rollen und Rollenzuweisungen finden Sie unter [Grundlegendes zu verschiedenen Rollen](../role-based-access-control/overview.md).
@@ -39,7 +39,7 @@ Azure stellt die folgenden integrierten Azure Rollen zum Autorisieren des Zugrif
 - **Leser:** Verwenden Sie diese Rolle, um Lesezugriff auf die App Configuration-Ressource zu gewähren. Dadurch wird weder Zugriff auf die Zugriffsschlüssel der Ressource noch auf die in App Configuration gespeicherten Daten gewährt.
 
 > [!NOTE]
-> Derzeit unterstützen Azure-Portal und CLI nur die HMAC-Authentifizierung, um auf App Configuration-Daten zuzugreifen. Azure AD-Authentifizierung wird nicht unterstützt. Daher benötigen Benutzer von Azure-Portal und CLI die Rolle *Mitwirkender*, um die Zugriffsschlüssel der App Configuration-Ressource abzurufen. Das Gewähren der Rollen *App Configuration-Datenleser* oder *App Configuration-Datenbesitzer* hat keine Auswirkung auf den Zugriff über Portal und CLI.
+> Derzeit unterstützt das Azure-Portal nur die HMAC-Authentifizierung, um auf App Configuration-Daten zuzugreifen. Azure AD-Authentifizierung wird nicht unterstützt. Daher benötigen Benutzer des Azure-Portals die Rolle *Mitwirkender*, um die Zugriffsschlüssel der App Configuration-Ressource abzurufen. Das Gewähren der Rollen *App Configuration-Datenleser* oder *App Configuration-Datenbesitzer* hat keine Auswirkung auf den Zugriff über das Portal.
 
 ## <a name="next-steps"></a>Nächste Schritte
 Weitere Informationen zur Verwendung [verwalteter Identitäten](howto-integrate-azure-managed-service-identity.md) zum Verwalten Ihres App Configuration-Diensts.

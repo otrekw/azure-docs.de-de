@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: 9e613331760a1715c3821bdc7dbbf0469e8bfd97
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: 5d160c46b235c6890426cab9de52ec7b827efe4a
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94337609"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750712"
 ---
 # <a name="prepare-an-application-for-deployment-in-azure-spring-cloud"></a>Vorbereiten einer Anwendung für die Bereitstellung in Azure Spring Cloud
 
@@ -149,6 +149,9 @@ Spring Boot-Version | Spring Cloud-Version
 2.1 | Greenwich.RELEASE
 2.2 | Hoxton.SR8
 2.3 | Hoxton.SR8
+
+> [!NOTE]
+> Wir haben ein Problem mit Spring Boot 2.4 bei der TLS-Authentifizierung zwischen Ihren Apps und Eureka identifiziert und arbeiten zurzeit gemeinsam mit der Spring-Community an dessen Behebung. Eine Problemumgehung finden Sie in unseren [Häufig gestellten Fragen (FAQ)](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-faq?pivots=programming-language-java#development).
 
 ### <a name="dependencies-for-spring-boot-version-21"></a>Abhängigkeiten für die Spring Boot-Version 2.1
 

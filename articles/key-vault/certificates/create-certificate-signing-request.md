@@ -127,7 +127,7 @@ Beispiel
 
 Weitere Informationen finden Sie unter den [Zertifikatvorgängen in der Referenz zur REST-API für Azure Key Vault](/rest/api/keyvault). Informationen zum Einrichten von Berechtigungen finden Sie unter [Tresore – Erstellen oder Aktualisieren](/rest/api/keyvault/vaults/createorupdate) und [Vaults – Aktualisieren der Zugriffsrichtlinie](/rest/api/keyvault/vaults/updateaccesspolicy).
 
-- **Fehlertyp „The subject name provided is not a valid X500 name“ (Beim angegebenen Antragstellernamen handelt es sich nicht um einen gültigen X500-Namen.)** : Dieser Fehler kann auftreten, wenn die Werte für „SubjectName“ Sonderzeichen enthalten. Weitere Informationen finden Sie jeweils in den Hinweisen in den Anweisungen zum Azure-Portal und zu PowerShell. 
+- **Fehlertyp „Beim angegebenen Antragstellernamen handelt es sich nicht um einen gültigen X.500-Namen“** : Dieser Fehler kann auftreten, wenn die Werte für „SubjectName“ Sonderzeichen enthalten. Weitere Informationen finden Sie jeweils in den Hinweisen in den Anweisungen zum Azure-Portal und zu PowerShell. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

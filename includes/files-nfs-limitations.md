@@ -5,24 +5,26 @@ services: storage
 author: roygara
 ms.service: storage
 ms.topic: include
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 10177dd949ac531027e13cf633b11c16674fd4ab
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: 372342611265640a2a64100f003880a430d61ca0
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94386523"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620941"
 ---
 In der Vorschau weist NFS die folgenden Einschränkungen auf:
 
-- NFS 4.1 unterstützt derzeit nur die obligatorischen Features aus der [Protokollspezifikation](https://tools.ietf.org/html/rfc5661). Optionale Features wie Delegierungen und Rückrufe aller Art, Upgrades und Downgrades von Sperren sowie Kerberos-Authentifizierung und -Verschlüsselung werden nicht unterstützt.
+- NFS 4.1 unterstützt derzeit nur die meisten Features aus der [Protokollspezifikation](https://tools.ietf.org/html/rfc5661). Einige Features wie Delegierungen und Rückrufe aller Art, Upgrades und Downgrades von Sperren, Kerberos-Authentifizierung und Verschlüsselung werden nicht unterstützt.
 - Wenn sich die meisten Ihrer Anforderungen schwerpunktmäßig auf Metadaten beziehen, ist die Wartezeit im Vergleich zu Lese-/Schreib-/Aktualisierungsvorgängen schlechter.
 - Es muss ein neues Speicherkonto erstellt werden, um eine NFS-Freigabe zu erstellen.
 - Nur die REST-APIs der Verwaltungsebene werden unterstützt. REST-APIs der Datenebene sind nicht verfügbar. Das bedeutet, dass Tools wie der Speicher-Explorer mit NFS-Freigaben nicht funktionieren und Sie keine NFS-Freigabedaten im Azure-Portal durchsuchen können.
+- AzCopy wird derzeit nicht unterstützt.
 - Nur für den Premium-Tarif verfügbar.
-- Derzeit nur mit lokal redundantem Speicher (LRS) verfügbar.
+- NFS-Freigaben akzeptieren nur numerische UID/GID. Um zu verhindern, dass Ihre Clients eine alphanumerische UID/GID senden, sollten Sie die ID-Zuordnung deaktivieren.
+- Freigaben können nur aus einem Speicherkonto auf einem einzelnen virtuellen Computer eingebunden werden, wenn private Verbindungen verwendet werden. Der Versuch, Freigaben aus anderen Speicherkonten einzubinden, schlägt fehl.
 
 ### <a name="azure-storage-features-not-yet-supported"></a>Noch nicht unterstützte Azure Storage-Funktionen
 

@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 10/15/2020
-ms.openlocfilehash: 0fda0b659dd2500e811fac1f53c99a9987276185
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: ef284661d44f700cf0b5282efcd2e6f7b94fa3b6
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92537472"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621517"
 ---
 # <a name="azure-cache-for-redis-network-isolation-options"></a>Azure Cache for Redis: Netzwerkisolationsoptionen 
 In diesem Artikel erfahren Sie, wie Sie die beste Lösung für die Netzwerkisolation gemäß Ihren Anforderungen ermitteln. Wir behandeln die Grundlagen von Azure Private Link, Azure Virtual Network-Einfügung (VNet) und Azure Firewall-Regeln mit ihren Vorteilen und Einschränkungen.  
@@ -22,7 +22,7 @@ Azure Private Link stellt eine private Verbindung zwischen einem virtuellen Netz
 ### <a name="advantages"></a>Vorteile
 * Unterstützt auf Basic-, Standard- und Premium-Instanzen von Azure Cache for Redis. 
 * Mithilfe von [Azure Private Link](../private-link/private-link-overview.md) können Sie aus Ihrem virtuellen Netzwerk über einen privaten Endpunkt, dem eine private IP-Adresse in einem Subnezt innerhalb des virtuellen Netzwerks zugewiesen ist, eine Verbindung mit einer Azure Cache-Instanz herstellen. Dadurch sind Cache-Instanzen sowohl innerhalb des VNet als auch öffentlich verfügbar.  
-* Nachdem ein privater Endpunkt erstellt wurde, kann der Zugriff auf das öffentliche Netzwerk über das `publicNetworkAccess`-Flag eingeschränkt werden. Dieses Flag ist standardmäßig auf `Enabled` festgelegt und bietet Ihnen die Möglichkeit, sowohl öffentlichen Zugriff als auch Zugriff über eine private Verbindung auf den Cache zuzulassen. Wenn es auf `Disabled` festgelegt ist, ist nur Zugriff über private Verbindungen zulässig. Sie können den Wert mit einer PATCH-Anforderung auf `Disabled` festlegen. Weitere Informationen finden Sie unter [Azure Cache for Redis mit Azure Private Link (Vorschau)](cache-private-link.md). 
+* Nachdem ein privater Endpunkt erstellt wurde, kann der Zugriff auf das öffentliche Netzwerk über das `publicNetworkAccess`-Flag eingeschränkt werden. Dieses Flag wird standardmäßig auf `Disabled` festgelegt, wodurch nur Zugriff über private Verbindungen zulässig ist. Sie können den Wert mit einer PATCH-Anforderung auf `Enabled` oder `Disabled` festlegen. Weitere Informationen finden Sie unter [Azure Cache for Redis mit Azure Private Link (Vorschau)](cache-private-link.md). 
 * Keine der externen Cacheabhängigkeiten haben Auswirkungen auf die Netzwerksicherheitsgruppen-Regeln des VNet.
 
 ### <a name="limitations"></a>Einschränkungen 

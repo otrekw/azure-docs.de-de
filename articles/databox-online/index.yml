@@ -1,8 +1,8 @@
 ### YamlMime:Landing
-title: 'Azure Stack Edge-Dokumentation: Onlineübertragung'
-summary: Nutzen Sie Azure Stack Edge-Geräte für Hochleistungsdatenübertragungen über das Netzwerk. Verwenden Sie Azure Stack Edge Pro-Geräte, die mit Hardware für die Computebeschleunigung ausgestattet sind, um Ihre Daten vor der Verschiebung in Azure zu filtern, zu analysieren und zu transformieren.
+title: Dokumentation zu Azure Stack Edge
+summary: Verwenden Sie Azure Stack Edge-Geräte, um Azure-Aspekte wie Compute, Speicher, Netzwerke und hardwarebeschleunigtes maschinelles Lernen an einem beliebigen Edgestandort bereitzustellen.
 metadata:
-  title: 'Azure Stack Edge-Dokumentation: Onlineübertragung'
+  title: Dokumentation zu Azure Stack Edge
   description: Azure Stack Edge-Dokumentation für Hochleistungsdatenübertragungen über das Netzwerk an Azure
   services: databox
   ms.service: databox
@@ -12,12 +12,12 @@ metadata:
   author: alkohli
   ms.author: alkohli
   ms.date: 10/27/2020
-  ms.openlocfilehash: 2ee9153bc500c7d5184e32712e0707d1c0f2507e
-  ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+  ms.openlocfilehash: e0b1c488635314a8583f216d966a75095ac5e279
+  ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/03/2020
-  ms.locfileid: "96574189"
+  ms.lasthandoff: 12/12/2020
+  ms.locfileid: "97356088"
 landingContent:
 - title: Über Azure Stack Edge
   linkLists:
@@ -29,7 +29,7 @@ landingContent:
       url: azure-stack-edge-overview.md
     - text: Was ist Azure Stack Edge R?
       url: azure-stack-edge-j-series-overview.md
-    - text: Was ist Azure Stack Edge Mini?
+    - text: Was ist Azure Stack Edge Mini R?
       url: azure-stack-edge-k-series-overview.md
   - linkListType: architecture
     links:
@@ -39,8 +39,8 @@ landingContent:
       url: ../storage/common/storage-solution-large-dataset-low-network.md#offline-transfer-or-network-transfer
   - linkListType: whats-new
     links:
-    - text: Versionshinweise zu 2011
-      url: azure-stack-edge-gpu-2011-release-notes.md
+    - text: Versionshinweise zu 2012
+      url: azure-stack-edge-gpu-2012-release-notes.md
 - title: Anforderungen und Einschränkungen
   linkLists:
   - linkListType: concept

@@ -3,12 +3,12 @@ title: Grenzwerte und Kontingente von Azure-Abonnements
 description: Stellt eine Liste allgemeiner Azure-Abonnements und Diensteinschränkungen, Kontingenten und Einschränkungen bereit. Dieser Artikel enthält Informationen zum Erhöhen von Grenzwerten und Höchstwerten.
 ms.topic: conceptual
 ms.date: 09/02/2020
-ms.openlocfilehash: 810d503f1abdc14ad2d255a89aebe7c10954a889
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4d56c5c3fd33d1cda05e23d5bc53e7540428671b
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186200"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96547847"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Einschränkungen für Azure-Abonnements und Dienste, Kontingente und Einschränkungen
 
@@ -311,6 +311,10 @@ Die folgende Tabelle gilt für v1, v2, Standard und WAF SKUs, sofern nichts ande
 ### <a name="private-link-limits"></a>Private Link-Grenzwerte
 
 [!INCLUDE [private-link-limits](../../../includes/private-link-limits.md)]
+
+## <a name="purview-limits"></a>Purview-Grenzwerte
+
+Die aktuellen Werte für Azure Purview-Kontingente finden Sie auf der [Seite „Azure Purview-Kontingent“](../../purview/how-to-manage-quotas.md)
 
 ### <a name="traffic-manager-limits"></a>Traffic Manager-Grenzwerte
 
