@@ -7,12 +7,12 @@ ms.author: alkarche
 ms.date: 11/18/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 3db475b5eb0c584f86c8810e9c993e4d5d7b497e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 7016abc9d52aa12b497d29f605fe351ee3f6a2dd
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452904"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519110"
 ---
 # <a name="manage-endpoints-and-routes-in-azure-digital-twins-apis-and-cli"></a>Verwalten von Endpunkten und Routen in Azure Digital Twins (APIs und CLI)
 
@@ -90,47 +90,59 @@ az dt endpoint create eventhub --endpoint-name <Event-Hub-endpoint-name> --event
 
 Wenn ein Endpunkt innerhalb eines bestimmten Zeitraums oder nach einer bestimmten Anzahl von Übermittlungsversuchen nicht übermittelt werden kann, kann Event Grid das nicht übermittelte Ereignis an ein Speicherkonto senden. Dieser Prozess wird als Speicherung **unzustellbarer Nachrichten** bezeichnet.
 
-Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md#dead-letter-events).
+Weitere Informationen zu unzustellbaren Nachrichten finden Sie unter [*Konzepte: Ereignisrouten*](concepts-route-events.md#dead-letter-events). Anweisungen zum Einrichten eines Endpunkts mit unzustellbaren Nachrichten finden Sie im Rest dieses Abschnitts.
 
 #### <a name="set-up-storage-resources"></a>Einrichten von Speicherressourcen
 
-Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein [Speicherkonto](../storage/common/storage-account-create.md?tabs=azure-portal) mit einem [Containersetup](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) in Ihrem Azure-Konto. Später geben Sie die URL für diesen Container an, wenn Sie den Endpunkt erstellen.
-Die unzustellbaren Nachrichten werden als Container-URL mit einem [SAS-Token](../storage/common/storage-sas-overview.md) bereitgestellt. Dieses Token benötigt nur die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`
+Wenn Sie den Speicherort für unzustellbare Nachrichten festlegen möchten, benötigen Sie ein [Speicherkonto](../storage/common/storage-account-create.md?tabs=azure-portal) mit einem [Containersetup](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) in Ihrem Azure-Konto. 
+
+Später geben Sie die URL für diesen Container an, wenn Sie den Endpunkt erstellen. Die Position der unzustellbaren Nachrichten wird dem Endpunkt als Container-URL mit einem [SAS-Token](../storage/common/storage-sas-overview.md) zur Verfügung gestellt. Dieses Token benötigt die `write`-Berechtigung für den Zielcontainer innerhalb des Speicherkontos. Die vollständig formatierte URL weist das folgende Format auf: `https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>`.
 
 Führen Sie die folgenden Schritte aus, um diese Speicherressourcen in Ihrem Azure-Konto einzurichten, um so die Einrichtung der Endpunktverbindung im nächsten Abschnitt vorzubereiten.
 
-1. Befolgen Sie [diesem Artikel](../storage/common/storage-account-create.md?tabs=azure-portal), um ein Speicherkonto zu erstellen und den Namen des Speicherkontos zu speichern, um ihn später zu verwenden.
-2. Erstellen Sie mithilfe von [diesem Artikel](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container) einen Container, und speichern Sie den Containernamen, um ihn später zu verwenden, wenn Sie die Verbindung zwischen dem Container und dem Endpunkt einrichten.
-3. Als Nächstes erstellen Sie ein SAS-Token für Ihr Speicherkonto. Navigieren Sie zunächst zu Ihrem Speicherkonto im [Azure-Portal](https://ms.portal.azure.com/#home) (Sie finden es über die Suchleiste im Portal).
-4. Wählen Sie auf der Seite „Speicherkonto“ den Link _Shared Access Signature_ in der linken Navigationsleiste aus, um die richtigen Berechtigungen zum Generieren des SAS-Tokens auszuwählen.
-5. Wählen Sie für _Zulässige Dienste_ und _Zulässige Ressourcentypen_ aus. Wählen Sie anschließend die gewünschten Einstellungen aus. Sie müssen mindestens ein Feld in jeder Kategorie auswählen. Wählen Sie für „Zulässige Berechtigungen“ die Option **Schreiben** aus (Sie können auch andere Berechtigungen auswählen).
-Legen Sie die restlichen Einstellungen fest, wie Sie möchten.
-6. Klicken Sie dann auf die Schaltfläche _SAS und Verbindungszeichenfolge generieren_, um das SAS-Token zu generieren. Hierdurch werden im unteren Bereich der gleichen Seite unter der Einstellungsauswahl mehrere Werte für die SAS und Verbindungszeichenfolgen generiert. Scrollen Sie nach unten, um die Werte anzuzeigen, und klicken Sie auf das Symbol „In Zwischenablage kopieren“, um den Wert des **SAS-Tokens** zu kopieren. Speichern Sie ihn zur späteren Verwendung.
+1. Befolgen Sie die Schritte in [*Erstellen eines Speicherkontos*](../storage/common/storage-account-create.md?tabs=azure-portal), um ein **Speicherkonto** in Ihrem Azure-Abonnement zu erstellen. Notieren Sie den Namen des Speicherkontos zur späteren Verwendung.
+2. Befolgen Sie die Schritte in [*Erstellen eines Containers*](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container), um einen **Container** innerhalb des neuen Speicherkontos zu erstellen. Notieren Sie sich den Containernamen, um ihn später zu verwenden.
+3. Erstellen Sie als nächstes ein **SAS-Token** für Ihr Speicherkonto, das der Endpunkt für den Zugriff darauf verwenden kann. Navigieren Sie zunächst zu Ihrem Speicherkonto im [Azure-Portal](https://ms.portal.azure.com/#home) (Sie finden es über die Suchleiste im Portal).
+4. Wählen Sie auf der Speicherkontoseite den Link _Shared Access Signature_ in der linken Navigationsleiste, um mit der Einrichtung des SAS-Tokens zu beginnen.
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token.png" alt-text="Die Seite „Speicherkonto“ im Azure-Portal mit der gesamten Einstellungsauswahl zum Generieren eines SAS-Tokens" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token.png":::
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png" alt-text="Speicherkontoseite im Azure-Portal" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-1.png":::
 
-:::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopieren des SAS-Tokens zum Verwenden des Geheimnisses für unzustellbare Nachrichten" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+1. Wählen Sie auf der Seite *Shared Access Signature* unter *Zulässige Dienste* und *Zulässige Ressourcentypen* die gewünschten Einstellungen aus. Sie müssen mindestens ein Feld in jeder Kategorie auswählen. Wählen Sie unter *Zulässige Berechtigungen* die Option **Schreiben** aus (Sie können auch andere Berechtigungen auswählen).
+1. Stellen Sie für die übrigen Einstellungen die gewünschten Werte ein.
+1. Wenn Sie fertig sind, klicken Sie auf die Schaltfläche _SAS und Verbindungszeichenfolge generieren_, um das SAS-Token zu generieren. 
 
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png" alt-text="Seite „Speicherkonto“ im Azure-Portal, die die gesamte Einstellungsauswahl zur Generierung eines SAS-Tokens zeigt und die Schaltfläche „SAS und Verbindungszeichenfolge generieren“ hervorhebt" lightbox="./media/how-to-manage-routes-apis-cli/generate-sas-token-2.png"::: 
+
+1. Hierdurch werden im unteren Bereich der gleichen Seite unter der Einstellungsauswahl mehrere Werte für die SAS und Verbindungszeichenfolgen generiert. Scrollen Sie nach unten, um die Werte anzuzeigen, und klicken Sie auf das Symbol *In Zwischenablage kopieren*, um den Wert des **SAS-Tokens** zu kopieren. Speichern Sie ihn zur späteren Verwendung.
+
+    :::image type="content" source="./media/how-to-manage-routes-apis-cli/copy-sas-token.png" alt-text="Kopieren des SAS-Tokens zum Verwenden des Geheimnisses für unzustellbare Nachrichten" lightbox="./media/how-to-manage-routes-apis-cli/copy-sas-token.png":::
+    
 #### <a name="configure-the-endpoint"></a>Konfigurieren des Endpunkts
 
-Endpunkte für unzustellbare Nachrichten werden mithilfe Azure Resource Manager-APIs erstellt. Wenn Sie einen Endpunkt erstellen, können Sie die [Dokumentation zu Azure Resource Manager-APIs](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate) verwenden, um die erforderlichen Anforderungsparameter aufzufüllen. Fügen Sie zusätzlich `deadLetterSecret` dem Eigenschaftsobjekt „properties“ im **Text** der Anforderung hinzu, das eine Container-URL und ein SAS-Token für Ihr Speicherkonto enthält.
+Um einen Endpunkt mit aktivierter Funktion für unzustellbare Nachrichten zu erstellen, müssen Sie den Endpunkt mithilfe der Azure Resource Manager-APIs erstellen. 
+
+1. Verwenden Sie zunächst die [Dokumentation zu den Azure Resource Manager-APIs](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate), um eine Anforderung zur Erstellung eines Endpunkts einzurichten, und geben Sie die erforderlichen Anforderungsparameter ein. 
+
+1. Fügen Sie als nächstes ein `deadLetterSecret`-Feld zum Eigenschaftsobjekt im **Textkörper** der Anforderung hinzu. Legen Sie diesen Wert entsprechend der nachfolgenden Vorlage fest, die eine URL aus dem Namen des Speicherkontos, dem Containernamen und dem Wert des SAS-Tokens erstellt, die Sie im [vorherigen Abschnitt](#set-up-storage-resources) gesammelt haben.
       
-```json
-{
-  "properties": {
-    "endpointType": "EventGrid",
-    "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
-    "accessKey1": "xxxxxxxxxxx",
-    "accessKey2": "xxxxxxxxxxx",
-    "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
-  }
-}
-```
+    ```json
+    {
+      "properties": {
+        "endpointType": "EventGrid",
+        "TopicEndpoint": "https://contosoGrid.westus2-1.eventgrid.azure.net/api/events",
+        "accessKey1": "xxxxxxxxxxx",
+        "accessKey2": "xxxxxxxxxxx",
+        "deadLetterSecret":"https://<storageAccountname>.blob.core.windows.net/<containerName>?<SASToken>"
+      }
+    }
+    ```
+1. Senden Sie die Anforderung zum Erstellen des Endpunkts.
+
 Weitere Informationen zur Strukturierung dieser Anforderung finden Sie in der Dokumentation zur Azure Digital Twins-REST-API: [Endpunkte: DigitalTwinsEndpoint und CreateOrUpdate](/rest/api/digital-twins/controlplane/endpoints/digitaltwinsendpoint_createorupdate).
 
 ### <a name="message-storage-schema"></a>Nachrichtenspeicherschema
 
-Unzustellbare Nachrichten werden im folgenden Format in Ihrem Speicherkonto gespeichert:
+Sobald der Endpunkt für unzustellbare Nachrichten eingerichtet ist, werden unzustellbare Nachrichten im folgenden Format in Ihrem Speicherkonto gespeichert:
 
 `{container}/{endpointName}/{year}/{month}/{day}/{hour}/{eventId}.json`
 
