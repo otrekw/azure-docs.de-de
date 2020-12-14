@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: df800938d568af0b94cfb1d368ef32e9b085b6eb
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92913108"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852522"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -100,6 +100,9 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
 > [!NOTE]
 > Beim Erstellen Ihrer Web-App können Sie auch die Autorisierung/Authentifizierung konfigurieren. Für die ersten Schritte ist dies jedoch nicht erforderlich. 
 
+> [!IMPORTANT]
+> Möglicherweise müssen Sie TLS für Ihre Web-App aktivieren, um sie unter ihrer `https`-Adresse anzuzeigen. Befolgen Sie die Anweisungen in [Aktivieren eines TLS-Endpunkts](https://docs.microsoft.com/azure/container-instances/container-instances-container-group-ssl), um einen Sidecar-Container einzurichten, und aktivieren Sie dann TLS/SSL für Ihre Web-App.
+
 ### <a name="azure-cli"></a>Azure CLI
 
 Als Alternative zum Azure-Portal können Sie die Azure-Befehlszeilenschnittstelle (Azure CLI) zum Erstellen einer Ressource verwenden. Bevor Sie fortfahren, müssen Sie die [Azure CLI](/cli/azure/install-azure-cli) installieren. Sie können diesen Schritt überspringen, falls Sie sie bereits verwenden. 
@@ -136,7 +139,7 @@ DNS_NAME_LABEL=aci-demo-$RANDOM
 az container create \
   --resource-group <resource_group_name> \
   --name <name> \
-  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview \
+  --image mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview \
   --ports 3000 \
   --dns-name-label $DNS_NAME_LABEL \
   --location <region name> \

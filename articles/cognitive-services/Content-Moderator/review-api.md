@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
-ms.openlocfilehash: e2d87d4322ac6b91a19a4775c23ceec75d528030
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 43c39c40af6e02861211a8666fefa57c34072f32
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325331"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905195"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Inhaltsmoderationsüberprüfungen, -workflows und -aufträge
 
@@ -42,7 +42,7 @@ Verwenden Sie die Symbolleiste für die **Suche**, um die Überprüfungen nach e
 > [!div class="mx-imgBorder"]
 > ![Die Suchsymbolleiste wird angezeigt. Darin enthalten: verschiedene Kombinationsfelder zum Eingeben von Suchkriterien wie Überprüfungsstatus und Tags](./Review-Tool-user-Guide/images/review-search.png)
 
-Informationen zum Erstellen von Überprüfungen finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/review-moderated-images.md), Informationen zur programmgesteuerten Erstellung finden Sie in der [Anleitung für die REST-API](./try-review-api-review.md).
+Informationen zum Erstellen von Überprüfungen finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/review-moderated-images.md), Informationen zur programmgesteuerten Erstellung finden Sie in der [Anleitung für die API-Konsole](./try-review-api-review.md).
 
 ## <a name="workflows"></a>Workflows
 
@@ -80,13 +80,13 @@ Workflows werden als JSON-Zeichenfolgen definiert, wodurch sie programmgesteuert
 }
 ```
 
-Informationen zum Erstellen und Verwenden von Workflows finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/workflows.md), Informationen zur programmgesteuerten Erstellung und Verwendung finden Sie in der [Anleitung für die REST-API](./try-review-api-workflow.md).
+Informationen zum Erstellen und Verwenden von Workflows finden Sie im [Leitfaden für das Prüfungstool](./review-tool-user-guide/workflows.md), Informationen zur programmgesteuerten Erstellung und Verwendung finden Sie in der [Anleitung für die API-Konsole](./try-review-api-workflow.md).
 
 ## <a name="jobs"></a>Aufträge
 
 Ein Moderationsauftrag dient als eine Art Wrapper für die Funktionen der Inhaltsmoderation und von Workflows und Überprüfungen. Der Auftrag durchsucht Ihre Inhalte mithilfe der Bildmoderations-API oder der Textmoderations-API in Content Moderator und vergleicht sie dann mit dem festgelegten Workflow. Basierend auf den Workflowergebnissen wird für die Inhalte im [Prüfungstool](./review-tool-user-guide/human-in-the-loop.md) eine Überprüfung erstellt oder nicht. Während Überprüfungen und Workflows über die jeweils zugehörige API erstellt und konfiguriert werden können, können Sie über die Auftrags-API einen detaillierten Bericht des gesamten Prozesses abrufen (der an einen angegebenen Rückrufendpunkt gesendet werden kann).
 
-Informationen zur Verwendung von Aufträgen finden Sie in der [Anleitung für die REST-API](./try-review-api-job.md).
+Informationen zu den ersten Schritten mit Aufträgen finden Sie im [Leitfaden für die API-Konsole](./try-review-api-job.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

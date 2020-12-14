@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: how-to
 ms.date: 11/10/2020
-ms.openlocfilehash: f9be9dd94aad8c206b562f2c984ec944f70d3957
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: fe79797aeef2b0c148aece0319d6b340b663b184
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96188051"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763722"
 ---
 # <a name="how-to-use-postman-to-send-requests-to-the-azure-digital-twins-apis"></a>Verwenden von Postman zum Senden von Anforderungen an die Azure Digital Twins-APIs
 
@@ -130,7 +130,7 @@ Sie benötigen die URL der API und die dafür erforderlichen Informationen, um e
 
 In diesem Artikel wird die Abfrage-API und die entsprechende [Referenzdokumentation](/rest/api/digital-twins/dataplane/query/querytwins) als Beispielabfrage verwendet, um alle digitalen Zwillinge in einer Instanz abzufragen.
 
-1. Die URL und den Typ der Anforderung erhalten Sie in der Referenzdokumentation. Bei der Abfrage-API ist dies *POST https://digitaltwins-name.digitaltwins.azure.net/query?api-version=2020-10-31* .
+1. Die URL und den Typ der Anforderung erhalten Sie in der Referenzdokumentation. Für die Abfrage-API ist dies derzeit *POST `https://digitaltwins-hostname/query?api-version=2020-10-31`* .
 1. Legen Sie in Postman den Typ für die Anforderung fest, und geben Sie die Anforderungs-URL ein. Füllen Sie dabei die Platzhalter in der URL nach Bedarf aus. Hier verwenden Sie den **Hostnamen** der Instanz aus dem Abschnitt [*Voraussetzungen*](#prerequisites).
     
    :::image type="content" source="media/how-to-use-postman/postman-request-url.png" alt-text="Bei den Informationen der neuen Anforderung wurde die Abfrage-URL aus der Referenzdokumentation in das Feld „Anforderungs-URL“ eingegeben." lightbox="media/how-to-use-postman/postman-request-url.png":::

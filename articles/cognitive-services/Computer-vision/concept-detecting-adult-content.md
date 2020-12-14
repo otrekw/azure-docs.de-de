@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 5cc8a4508ceeda245fbc10a81e16f3ecf05284c7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 5d5961ecae2fbc154ae6f1acd74df2bb74024fa1
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013615"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532617"
 ---
 # <a name="detect-adult-content"></a>Erkennen nicht jugendfreier Inhalte
 
@@ -27,15 +27,14 @@ Maschinelles Sehen kann nicht jugendfreie Inhalte in Bildern erkennen, damit Ent
 
 ## <a name="content-flag-definitions"></a>Definitionen für Inhaltsflags
 
-Innerhalb der Klassifizierung „Nicht jugendfrei“ gibt es mehrere verschiedene Kategorien:
+Die Klassifizierung „Nicht jugendfrei“ enthält mehrere verschiedene Kategorien:
 
-- Als **Adult** (erwachsen) gekennzeichnete Bilder sind explizit sexueller Natur und stellen oft Nacktheit und sexuelle Handlungen dar.
-- Als **Racy** (anzüglich) gekennzeichnete Bilder sind gemäß Definition sexuell suggestiv und enthalten häufig in sexueller Hinsicht weniger explizite Inhalte als Bilder, die als **Adult (erwachsen)** gekennzeichnet sind.
-- **Gewaltverherrlichende** Bilder sind als Bilder definiert, die blutrünstige Szenen darstellen.
+- **Nicht jugendfreie** Bilder sind explizit sexueller Natur und zeigen oft Nacktheit und sexuelle Handlungen.
+- **Anzügliche** Bilder sind gemäß Definition sexuell suggestiv und enthalten häufig in sexueller Hinsicht weniger explizite Inhalte als Bilder, die als **Nicht jugendfrei** gekennzeichnet sind.
+- **Gewaltverherrlichende** Bilder zeigen Blut bzw. blutrünstige Szenen.
 
 ## <a name="use-the-api"></a>Verwenden der API
 
 Mit der API [Bild analysieren](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/56f91f2e778daf14a499f21b) können Sie nicht jugendfreie Inhalte erkennen. Wenn Sie den Wert von `Adult` zum **visualFeatures**-Abfrageparameter hinzufügen, gibt die API in ihrer JSON-Antwort drei boolesche Eigenschaften (`isAdultContent`, `isRacyContent` und `isGoryContent`) zurück. Die Methode gibt auch die entsprechenden Eigenschaften (`adultScore`, `racyScore` und `goreScore`) zurück, die Zuverlässigkeitsbewertungen zwischen 0 und 1 für jede Kategorie darstellen.
 
-- [Schnellstart: Analysieren eines Bilds (.NET SDK)](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
-- [Schnellstart: Analysieren eines Bilds (REST-API)](./quickstarts/csharp-analyze.md)
+- [Schnellstart: Verwenden der Clientbibliothek für maschinelles Sehen](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)

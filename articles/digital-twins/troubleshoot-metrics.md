@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 46e053856b05f5a009eb1ae8bc6a7246dfb6167e
-ms.sourcegitcommit: 9706bee6962f673f14c2dc9366fde59012549649
+ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94616687"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763247"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -63,14 +63,13 @@ Metriken im Zusammenhang mit API-Anforderungen:
 
 Metriken im Zusammenhang mit Abrechnung:
 
->[!NOTE]
->Diese Metriken werden zwar weiterhin in der auswählbaren Liste angezeigt, bleiben aber auf Null, bis die neuen Preise für den Dienst verfügbar werden. Weitere Informationen finden Sie unter [*Azure Digital Twins-Preise*](https://azure.microsoft.com/pricing/details/digital-twins/).
-
 | Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | API-Abrechnungsvorgänge | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl aller API-Anforderungen, die für den Azure Digital Twins-Dienst durchgeführt wurden. | ID der Verbrauchseinheit |
 | BillingMessagesProcessed | Verarbeitete Abrechnungsnachrichten | Anzahl | Gesamt | Abrechnungsmetrik für die Anzahl von Nachrichten, die von Azure Digital Twins Zwillingen an externe Endpunkte gesendet werden.<br><br>Nutzdaten dürfen maximal 1 KB groß sein, da sie ansonsten nicht als einzelne Nachricht für die Abrechnung betrachtet wird. Umfangreichere Nutzdaten werden als zusätzliche Nachrichten in Schritten von 1 KB gezählt. (Eine Nachricht zwischen 1 und 2 KB wird also als zwei Nachrichten gezählt, eine Nachricht zwischen 2 und 3 KB als drei Nachrichten usw.)<br>Diese Einschränkung gilt auch für Antworten: Ein Aufruf, der 1,5 KB im Antworttext zurückgibt, wird beispielsweise als zwei Vorgänge in Rechnung gestellt. | ID der Verbrauchseinheit |
 | BillingQueryUnits | Abrechnungsabfrageeinheiten | Anzahl | Gesamt | Die Anzahl der Abfrageeinheiten (ein intern berechnetes Measure der Dienstressourcennutzung), die zum Ausführen von Abfragen genutzt werden. Es ist auch eine Hilfs-API zum Messen von Abfrageeinheiten verfügbar: [QueryChargeHelper-Klasse](/dotnet/api/azure.digitaltwins.core.querychargehelper?preserve-view=true&view=azure-dotnet-preview) | ID der Verbrauchseinheit |
+
+Weitere Informationen zur Art und Weise, wie Azure Digital Twins abgerechnet wird, finden Sie unter [*Azure Digital Twins-Preise*](https://azure.microsoft.com/pricing/details/digital-twins/).
 
 #### <a name="ingress-metrics"></a>Eingangsmetriken
 

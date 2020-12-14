@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.author: pafarley
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 73887515eea344e920455e3c24f3eae3d5ad515a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 37a989082b63dc101bb519fea1cc4ef16c76ae49
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95013750"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621534"
 ---
 # <a name="optical-character-recognition-ocr"></a>Optische Zeichenerkennung (OCR)
 
@@ -133,7 +133,7 @@ Eine erfolgreiche JSON-Antwort sieht in etwa wie folgendes Beispiel aus:
 ### <a name="read-32-preview-adds-text-line-style-latin-languages-only"></a>Die Vorschauversion von Read 3.2 fügt Textzeilenstil hinzu (nur Sprachen mit lateinischem Alphabet)
 Die [Read 3.2-API (Vorschauversion)](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) gibt ein **appearance**-Objekt aus, das klassifiziert, ob es sich bei den einzelnen Textzeilen um Drucktext oder eine Handschrift handelt. Außerdem wird eine Zuverlässigkeitsbewertung ausgegeben. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 
-Beginnen Sie mit den [Read-OCR-SDK-Schnellstartanleitungen für maschinelles Sehen](./quickstarts-sdk/client-library.md) und den [Schnellstartanleitungen für die Read REST-API](./QuickStarts/CSharp-hand-text.md), um OCR-Funktionen in Ihre Anwendungen zu integrieren.
+Beginnen Sie mit den [Schnellstartanleitungen für die REST-API für maschinelles Sehen oder für die Clientbibliothek](./quickstarts-sdk/client-library.md), um OCR-Funktionen in Ihre Anwendungen zu integrieren.
 
 ## <a name="supported-languages-for-print-text"></a>Unterstützte Sprachen für Drucktext
 Mit der [Lese-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) kann gedruckter Text in englischer, spanischer, deutscher, französischer, italienischer, portugiesischer und niederländischer Sprache extrahiert werden.
@@ -147,7 +147,7 @@ Die [öffentliche Vorschau der Read 3.2-API](https://westus.dev.cognitive.micro
 Der Read-Vorgang unterstützt zurzeit das Extrahieren von handschriftlichem Text ausschließlich in englischer Sprache.
 
 ## <a name="use-the-rest-api-and-sdk"></a>Verwenden von REST-API und SDK
-Die [Read 3.x-REST-API](./QuickStarts/CSharp-hand-text.md) ist die bevorzugte Option der meisten Kunden, da sie sich einfach integrieren und schnell vorgefertigt produktiv einsetzen lässt. Azure und der Dienst für maschinelles Sehen verarbeiten Skalierungs-, Leistungs-, Datensicherheits- und Complianceanforderungen, während Sie sich auf die Erfüllung der Anforderungen Ihrer Kunden konzentrieren.
+Die [Read 3.x-REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005) ist die bevorzugte Option der meisten Kunden, da sie sich einfach integrieren und schnell vorgefertigt produktiv einsetzen lässt. Azure und der Dienst für maschinelles Sehen verarbeiten Skalierungs-, Leistungs-, Datensicherheits- und Complianceanforderungen, während Sie sich auf die Erfüllung der Anforderungen Ihrer Kunden konzentrieren.
 
 ## <a name="deploy-on-premise-with-docker-containers"></a>Lokales Bereitstellen mit Docker-Containern
 Der [Read-Docker-Container (Vorschau)](./computer-vision-how-to-install-containers.md) ermöglicht Ihnen die Bereitstellung der neuen OCR-Funktionen in Ihrer eigenen lokalen Umgebung. Container eignen sich hervorragend für bestimmte Sicherheits- und Datengovernanceanforderungen.
@@ -197,7 +197,6 @@ Wie bei allen Cognitive Services-Diensten müssen Entwickler, die Read/OCR-Diens
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Beginnen Sie mit den [Schnellstartanleitungen zum Read SDK für maschinelles Sehen](./quickstarts-sdk/client-library.md) in C#, Java, JavaScript oder Python.
-- In den [Schnellstartanleitungen für die Read-REST-API](./QuickStarts/CSharp-hand-text.md) in C#, Java, JavaScript oder Python erfahren Sie, wie Sie die REST-APIs verwenden.
+- Beginnen Sie mit den [Schnellstartanleitungen für die REST-API für maschinelles Sehen oder für die Clientbibliothek](./quickstarts-sdk/client-library.md).
 - Erfahren Sie mehr über die [Read-REST-API](https://westcentralus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-1-ga/operations/5d986960601faab4bf452005).
 - Erfahren Sie mehr über die [öffentliche Vorschau der Read 3.2-REST-API](https://westus.dev.cognitive.microsoft.com/docs/services/computer-vision-v3-2-preview-1/operations/5d986960601faab4bf452005) mit Unterstützung für Chinesisch (vereinfacht) und Japanisch.

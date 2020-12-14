@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: conceptual
-ms.date: 11/19/2020
+ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 2977946b2e1f37aa356ee075d2caac237170df0f
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95993322"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602783"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
@@ -52,11 +52,11 @@ In der folgenden Tabelle wird gezeigt, welche Features asynchron verwendet werde
 
 
 > [!NOTE]
-> Sie benötigen eine Ressource der Textanalyse mit einem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) des Typs „Standard (S)“, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten.
+> * Sie benötigen eine Ressource der Textanalyse mit einem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) des Typs „Standard (S)“, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten.
 
-1.  Melden Sie sich zunächst im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) an, und erstellen Sie eine neue Ressource der Textanalyse, sofern Sie noch keine haben. Wählen Sie den Tarif „Standard (S)“ aus, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten.
+1.  Melden Sie sich zunächst im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) an, und erstellen Sie eine neue Ressource der Textanalyse, sofern Sie noch keine haben. Wählen Sie den **Tarif Standard (S)** aus, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten. Der `/analyze`-Endpunkt ist in Ihrem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) enthalten.
 
-2.  Wählen Sie die Region aus, die der gewünschte Endpunkt verwenden soll.
+2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
 
 3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
 
@@ -260,6 +260,8 @@ Wenn Sie die asynchronen Endpunkte `/analyze` oder `/health` aufgerufen haben, �
 3. Fügen Sie der Anforderung den Wert von `Operation-Location` hinzu.
 
 4. Die Antwort ist ein einzelnes JSON-Dokument, das für jede in der Anforderung angegebene Dokument-ID ein Element enthält.
+
+Beachten Sie, dass für beide asynchronen `/analyze`- oder `/health`-Vorgänge die Ergebnisse der GET-Anforderung in Schritt 2 oben für 24 Stunden ab dem Zeitpunkt der Erstellung des Auftrags zur Verfügung stehen.  Diese Zeit wird durch den `expirationDateTime`-Wert in der GET-Antwort angegeben.  Nach diesem Zeitraum werden die Ergebnisse endgültig gelöscht und stehen nicht mehr zum Abruf zur Verfügung.    
 
 ## <a name="example-api-responses"></a>Beispiel-API-Antworten
  

@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 11/04/2020
+ms.date: 12/07/2020
 ms.author: alexeyo
-ms.openlocfilehash: a304628e05054124fde6ffe5c2b63177991d8cfd
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 9b923ba208dd2a5111a59f67401b1e4f080b7187
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93345396"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754163"
 ---
 # <a name="speech-services-quotas-and-limits"></a>Kontingente und Grenzwerte für Speech-Dienste
 
@@ -104,7 +104,7 @@ Grenzwerte für gleichzeitige Anforderung in den Modellen **Basis** und **Benutz
 Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforderungen wird im Azure-Portal, in Befehlszeilentools und in API-Anforderungen **nicht** angezeigt. Erstellen Sie eine Azure-Supportanfrage, um den vorhandenen Wert zu überprüfen.
 
 >[!NOTE]
->Für [Speech-Container](speech-container-howto.md) muss der Grenzwert für gleichzeitige Anforderungen nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden.
+>Für [Speech-Container](speech-container-howto.md) muss der Grenzwert für gleichzeitige Anforderungen nicht erhöht werden, da Container einzig durch die CPUs der Hardware eingeschränkt sind, auf der sie gehostet werden. Speech-Container haben jedoch ihre eigenen Kapazitätsgrenzen, die berücksichtigt werden sollten. Weitere Informationen finden Sie unter der Frage *„Könnten Sie bei der Kapazitätsplanung und Kostenvorkalkulation von lokalen Spracherkennungscontainern helfen?“* in [Häufig gestellte Fragen zu Speech-Containern](speech-container-faq.md).
 
 #### <a name="have-the-required-information-ready"></a>Halten Sie die erforderlichen Informationen bereit:
 - **Basismodell:**
@@ -117,7 +117,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - **Abrufen der Informationen (Basismodell):**  
   - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
   - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen möchten.
-  - Wählen Sie *Eigenschaften* (Gruppe *Ressourcenverwaltung* ) aus. 
+  - Wählen Sie *Eigenschaften* (Gruppe *Ressourcenverwaltung*) aus. 
   - Kopieren und speichern Sie die Werte der folgenden Felder:
     - **Ressourcen-ID**
     - **Standort** (Ihre Endpunktregion)
@@ -139,7 +139,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - Vergewissern Sie sich, dass Sie über die [erforderlichen Informationen](#have-the-required-information-ready) verfügen.
 - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen (oder überprüfen) möchten.
-- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung* ) aus. 
+- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung*) aus. 
 - Daraufhin wird ein neues Fenster mit automatisch ausgefüllten Informationen zum Azure-Abonnement und zur Azure-Ressource angezeigt.
 - Geben Sie eine *Zusammenfassung* ein (beispielsweise „Increase STT Concurrency Request limit“ (Grenzwert für gleichzeitige STT-Anforderungen erhöhen)).
 - Wählen Sie unter *Problemtyp* die Option für Kontingent- oder Abonnementprobleme aus.
@@ -150,7 +150,7 @@ Der vorhandene Wert des Parameters für den Grenzwert für gleichzeitige Anforde
 - Fahren Sie mit der Anforderungserstellung fort.
 - Geben Sie auf der Registerkarte *Details* im Feld *Beschreibung* Folgendes ein:
   - Einen Hinweis darauf, dass es bei der Anfrage um ein Kontingent für die **Spracherkennung** geht
-  - Das Modell ( **Basis** oder **Benutzerdefiniert** )
+  - Das Modell (**Basis** oder **Benutzerdefiniert**)
   - [Zuvor ermittelte](#have-the-required-information-ready) Azure-Ressourceninformationen 
   - Geben Sie die übrigen erforderlichen Informationen ein, und klicken Sie auf der Registerkarte *Überprüfen + erstellen* auf die Schaltfläche *Erstellen*.
   - Notieren Sie sich die Nummer der Supportanfrage aus den Benachrichtigungen im Azure-Portal. Sie werden in Kürze zur weiteren Bearbeitung kontaktiert.
@@ -191,7 +191,7 @@ Wenn Sie eine Erhöhungsanforderung erstellen möchten, müssen Sie Ihre Bereits
 - Vergewissern Sie sich, dass Sie über die [erforderlichen Informationen](#prepare-the-required-information) verfügen.
 - Navigieren Sie zum [Azure-Portal](https://portal.azure.com/).
 - Wählen Sie die Speech-Ressource aus, für die Sie den Grenzwert für gleichzeitige Anforderungen erhöhen (oder überprüfen) möchten.
-- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung* ) aus. 
+- Wählen Sie *Neue Supportanfrage* (Gruppe *Support + Problembehandlung*) aus. 
 - Daraufhin wird ein neues Fenster mit automatisch ausgefüllten Informationen zum Azure-Abonnement und zur Azure-Ressource angezeigt.
 - Geben Sie eine *Zusammenfassung* ein (beispielsweise „Increase TTS Custom Endpoint Concurrency Request limit“ (Grenzwert für gleichzeitige TTS-Anforderungen für den benutzerdefinierten Endpunkt erhöhen)).
 - Wählen Sie unter *Problemtyp* die Option für Kontingent- oder Abonnementprobleme aus.
