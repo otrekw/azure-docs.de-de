@@ -104,8 +104,6 @@ items:
                 href: register-scan-on-premises-sql-server.md
               - name: 'Power BI-Mandant: Portal'
                 href: register-scan-power-bi-tenant.md
-              - name: 'Power BI-Mandant: PowerShell'
-                href: powershell-register-scan-power-bi.md
       - name: Unternehmensglossar
         items:
           - name: 'Glossarbegriffe erstellen, importieren und exportieren'
