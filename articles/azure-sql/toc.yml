@@ -69,6 +69,8 @@
                   href: database/sql-vulnerability-assessment.md
                 - name: Regeln für die Sicherheitsrisikobewertung
                   href: database/sql-database-vulnerability-assessment-rules.md
+                - name: Änderungsprotokoll der Regeln für die Sicherheitsrisikobewertung
+                  href: database/sql-database-vulnerability-assessment-rules-changelog.md
                 - name: Speichern von Sicherheitsrisikoüberprüfungen im Speicher
                   href: database/sql-database-vulnerability-assessment-storage.md
             - name: 'Anmeldungen, Benutzerkonten, Rollen und Berechtigungen'

@@ -1,20 +1,20 @@
 ### YamlMime:Landing
 title: Dokumentation zu Azure Functions
-summary: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen.
+summary: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Die Funktionen für bedarfsgesteuertes Computing (Compute On-Demand) ermöglichen eine einfache Integration und direkte Unterstützungsfunktionalität. Sie können damit auch Web-APIs bereitstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten und Nachrichtenwarteschlangen verwalten.
 metadata:
   title: Dokumentation zu Azure Functions
-  description: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen.
+  description: Azure Functions ist ein serverloser Computedienst, mit dem Sie ereignisgesteuerten Code ausführen können, ohne eine explizite Infrastruktur bereitstellen oder verwalten zu müssen. Die Funktionen für bedarfsgesteuertes Computing (Compute On-Demand) ermöglichen eine einfache Integration und direkte Unterstützungsfunktionalität. Sie können damit auch Web-APIs bereitstellen, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten und Nachrichtenwarteschlangen verwalten.
   ms.service: azure-functions
   ms.topic: landing-page
   author: ggailey777
   ms.author: azfundocs
   ms.date: 09/17/2019
-  ms.openlocfilehash: c2271970fb9a8b500e78687547030d39c5f241e3
-  ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+  ms.openlocfilehash: e6c3cb1a9d536ed898c48c45f57434dc4bf66970
+  ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
   ms.translationtype: HT
   ms.contentlocale: de-DE
-  ms.lasthandoff: 12/07/2020
-  ms.locfileid: "96751707"
+  ms.lasthandoff: 12/15/2020
+  ms.locfileid: "97505289"
 landingContent:
 - title: Informationen zu Azure Functions
   linkLists:

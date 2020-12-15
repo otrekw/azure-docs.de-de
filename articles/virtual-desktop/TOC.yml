@@ -92,8 +92,18 @@
           href: diagnostics-log-analytics.md
     - name: Veröffentlichen von integrierten Apps
       href: publish-apps.md
-    - name: Einrichten des MSIX-Features zum Anfügen von Apps
-      href: app-attach.md
+    - name: Verwenden des MSIX-Features zum Anfügen von Apps
+      items:
+        - name: Einrichten des MSIX-Features zum Anfügen von Apps mit dem Azure-Portal
+          href: app-attach-azure-portal.md
+        - name: Einrichten des MSIX-Features zum Anfügen von Apps mit PowerShell
+          href: app-attach-powershell.md
+        - name: Erstellen von PowerShell-Skripts
+          href: app-attach.md
+        - name: Vorbereiten eines MSIX-Images
+          href: app-attach-image-prep.md
+        - name: Einrichten einer Dateifreigabe
+          href: app-attach-file-share.md
     - name: Verwenden von Microsoft Teams
       href: teams-on-wvd.md
     - name: Einrichten von Azure AD Multi-Factor Authentication
