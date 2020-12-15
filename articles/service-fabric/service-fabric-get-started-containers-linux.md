@@ -4,12 +4,12 @@ description: Erstellen Sie Ihre erste Linux-Containeranwendung unter Azure Servi
 ms.topic: conceptual
 ms.date: 1/4/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: d085f8704850cdbb03e21b15b3cca7c8998b96fb
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0481cc2d36f7882bbd8eea9b984c3dc388de5dee
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96004227"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96534079"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric-Containeranwendung unter Linux
 > [!div class="op_single_selector"]
@@ -87,10 +87,17 @@ if __name__ == "__main__":
     app.run(host='0.0.0.0', port=80)
 ```
 
-## <a name="build-the-image"></a>Erstellen des Image
-Führen Sie den Befehl `docker build` aus, um das Image zu erstellen, mit dem Ihre Webanwendung ausgeführt wird. Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu *c:\temp\helloworldapp*. Führen Sie den folgenden Befehl aus:
+## <a name="login-to-docker-and-build-the-image"></a>Anmelden bei Docker und Erstellen des Images
 
-```bash
+Nun erstellen Sie das Image, mit dem Ihre Webanwendung ausgeführt wird. Beim Pullen von öffentlichen Images aus Docker (wie `python:2.7-slim` in unserer Dockerfile-Datei) besteht eine bewährte Methode darin, sich mit Ihrem Docker Hub-Konto zu authentifizieren, anstatt einen anonymen Pull Request zu erstellen.
+
+> [!NOTE]
+> Beim Ausführen von häufigen anonymen Pull Requests wird möglicherweise ein Docker-Fehler wie `ERROR: toomanyrequests: Too Many Requests.` oder `You have reached your pull rate limit.` angezeigt. Authentifizieren Sie sich bei Docker Hub, um diese Fehler zu verhindern. Weitere Informationen finden Sie unter [Verwalten öffentlicher Inhalte mit Azure Container Registry](../container-registry/buffer-gate-public-content.md).
+
+Öffnen Sie ein PowerShell-Fenster, und navigieren Sie zu dem Verzeichnis, das die Dockerfile-Datei enthält. Führen Sie anschließend die folgenden Befehle aus:
+
+```
+docker login
 docker build -t helloworldapp .
 ```
 
@@ -215,7 +222,7 @@ Ab dem neuesten Aktualisierungsrelease v6.4 können Sie festlegen, dass Docker-H
 
 Die Anweisung **HEALTHCHECK**, die auf die tatsächliche Prüfung zur Überwachung der Containerintegrität verweist, muss in der Dockerfile-Datei enthalten sein, die beim Generieren des Containerimages verwendet wurde.
 
-![Screenshot zeigt Details des bereitgestellten Dienstpakets NodeServicePackage.][1]
+![Screenshot mit Details des bereitgestellten Dienstpakets „NodeServicePackage“][1]
 
 ![HealthCheckUnhealthyApp][2]
 

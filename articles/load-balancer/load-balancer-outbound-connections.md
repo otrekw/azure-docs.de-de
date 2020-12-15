@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.custom: contperfq1
 ms.date: 10/13/2020
 ms.author: allensu
-ms.openlocfilehash: 3f4791c5cbcf731e118bac4bf692adcad7e9ff44
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d0fad3a257b6d1b3723cdf337179573b4667b054
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483588"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780109"
 ---
 # <a name="using-snat-for-outbound-connections"></a>Verwenden von SNAT für ausgehende Verbindungen
 
-Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Bei dieser Konfiguration kommt **SNAT (Source Network Address Translation, Quell-Netzwerkadressübersetzung)** zum Einsatz. Die IP-Adresse des Back-Ends wird von SNAT in die öffentliche IP-Adresse Ihrer Load Balancer-Instanz umgeschrieben. 
+Mithilfe der Front-End-IP-Adressen einer öffentlichen Azure Load Balancer-Instanz können ausgehende Verbindungen mit dem Internet für Back-End-Instanzen bereitgestellt werden. Diese Konfiguration verwendet **SNAT (Source Network Address Translation, Quell-Netzwerkadressenübersetzung)** . Die IP-Adresse des Back-Ends wird von SNAT in die öffentliche IP-Adresse Ihrer Load Balancer-Instanz umgeschrieben. 
 
 SNAT ermöglicht **IP-Maskierung** der Back-End-Instanz. Diese Maskierung verhindert, dass externe Quellen eine direkte Adresse für die Back-End-Instanzen abrufen können. Wenn Sie eine IP-Adresse zwischen Back-End-Instanzen freigeben, werden die Kosten für statische öffentliche IPs reduziert, und es werden Szenarien wie das Vereinfachen von IP-Zulassungslisten mit Datenverkehr von bekannten öffentlichen IP-Adressen unterstützt. 
 
