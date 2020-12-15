@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: ad40515475a10f41fd7ab1d8d44f89673877f054
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: df74a15a84ba04addb75b021d3b77b06cfe2ea48
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96488315"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781112"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-Szenarien auf virtuellen Windows-Computern
 
@@ -267,6 +267,7 @@ Die folgenden Szenarios, Features und Technologien werden von Azure Disk Encrypt
 - Anwenden von ADE auf eine VM, die mit [serverseitiger Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md) (SSE + CMK) verschlüsselte Datenträger aufweist. Das Anwenden von SSE + CMK auf einen Datenträger auf einer mit ADE verschlüsselten VM ist ebenfalls ein nicht unterstütztes Szenario.
 - Migrieren einer VM, die mit ADE verschlüsselt ist oder **jemals** mit ADE verschlüsselt war, zur [serverseitigen Verschlüsselung mit kundenseitig verwalteten Schlüsseln](../disk-encryption.md).
 - [Azure-VM-Größen ohne lokalen temporären Datenträger](../azure-vms-no-temp-disk.md), insbesondere Dv4, Dsv4, Ev4 und Esv4.
+- Verschlüsseln von VMs in Failoverclustern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

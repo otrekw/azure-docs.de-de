@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: oslake
 ms.author: moslake
 ms.reviewer: sstein
-ms.date: 9/17/2020
-ms.openlocfilehash: 1a51d2140528e3f6ed6da0ca699d7b71b91638ec
-ms.sourcegitcommit: 8c7f47cc301ca07e7901d95b5fb81f08e6577550
+ms.date: 12/8/2020
+ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92743167"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902509"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -64,7 +64,7 @@ Serverlos ist preis-/leistungsoptimiert für Einzeldatenbanken mit zeitweiligen,
 
 Die folgende Tabelle enthält eine Zusammenfassung der Unterschiede zwischen der serverlosen Computeebene und der bereitgestellten Computeebene:
 
-| | **Serverloses Computing** : | **Bereitgestelltes Computing** |
+| | **Serverloses Computing**: | **Bereitgestelltes Computing** |
 |:---|:---|:---|
 |**Datenbanknutzungsmuster**| Wechselnde, unvorhersehbare Nutzung mit niedrigerer durchschnittlicher Computenutzung im Zeitverlauf. | Regelmäßigere Nutzungsmuster mit höherer durchschnittlicher Computenutzung im Zeitverlauf oder mehrere Datenbanken, die Pools für elastische Datenbanken verwenden.|
 | **Aufwand bei der Leistungsverwaltung** |Geringer|Höher|
@@ -135,9 +135,10 @@ Das automatische Fortsetzen wird ausgelöst, wenn eine der folgenden Bedingungen
 |Datenermittlung und -klassifizierung|Hinzufügen, Ändern, Löschen oder Anzeigen von Vertraulichkeitsbezeichnungen|
 |Überwachung|Anzeigen von Überwachungsdatensätzen.<br>Aktualisieren oder Anzeigen von Überwachungsrichtlinien.|
 |Datenmaskierung|Hinzufügen, Ändern, Löschen oder Anzeigen von Datenmaskierungsregeln|
-|Transparent Data Encryption|Anzeigezustand oder Status der transparenten Datenverschlüsselung|
+|Transparent Data Encryption|Anzeigen des Status der transparenten Datenverschlüsselung|
 |Sicherheitsrisikobewertung|Ad-hoc-Scans und periodische Scans, falls aktiviert|
 |Abfragedatenspeicher (Leistung)|Ändern oder Anzeigen von Abfragespeichereinstellungen|
+|Empfehlungen zur Leistung|Anzeigen oder Anwenden von Empfehlungen zur Leistung|
 |Automatische Optimierung|Anwendung und Überprüfung von Empfehlungen für die automatische Optimierung, z.B. die automatische Indizierung|
 |Kopieren von Datenbanken|Erstellen von Datenbanken als Kopie.<br>Exportieren in eine BACPAC-Datei.|
 |SQL-Datensynchronisierung|Die Synchronisierung zwischen Hub- und Mitgliedsdatenbanken, die nach einem konfigurierbaren Zeitplan oder manuell ausgeführt werden|
@@ -314,17 +315,17 @@ Ressourceneinschränkungen werden unter [serverlose Computeebene](resource-limit
 
 Die abgerechnete Computeleistung basiert auf der maximal verwendeten CPU und dem verwendeten Arbeitsspeicher (pro Sekunde). Wenn die verwendete CPU und der verwendete Arbeitsspeicher kleiner als die bereitgestellte Mindestmenge sind, wird die bereitgestellte Menge abgerechnet. Der Arbeitsspeicher wird in Einheiten aus virtuellen Kernen normalisiert, indem der Arbeitsspeicher in GB nach 3 GB pro virtuellem Kern neu skaliert wird. So kann die CPU bei der Abrechnung mit dem Arbeitsspeicher verglichen werden.
 
-- **Berechnete Ressource** : CPU und Arbeitsspeicher
-- **Berechneter Betrag** : Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
-- **Fakturierungsintervall** : Pro Sekunde
+- **Berechnete Ressource**: CPU und Arbeitsspeicher
+- **Berechneter Betrag**: Einzelpreis virtueller Kern * Max. (Min. virtuelle Kerne, genutzte virtuelle Kerne, Min. Speicher GB * 1/3, genutzter Speicher GB * 1/3) 
+- **Fakturierungsintervall**: Pro Sekunde
 
 Der Einzelpreis für virtuelle Kerne ergibt sich aus den Kosten pro virtuellem Kern pro Sekunde. Informationen zu Einzelpreisen in einer bestimmten Region finden Sie auf der Seite [Azure SQL-Datenbank – Preise ](https://azure.microsoft.com/pricing/details/sql-database/single/).
 
 Die genutzte Computekapazität wird mit der folgenden Metrik angegeben:
 
-- **Metrik** : app_cpu_billed (virtueller Kern – Sekunden)
-- **Definition** : Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
-- **Berichtsfrequenz** : Pro Minute
+- **Metrik**: app_cpu_billed (virtueller Kern – Sekunden)
+- **Definition**: Max. (min. virtuelle Kerne, genutzte virtuelle Kerne, min. Speicher GB * 1/3, genutzter Speicher GB * 1/3)
+- **Berichtsfrequenz**: Pro Minute
 
 Diese Menge wird pro Sekunde berechnet und über eine Minute aggregiert.
 

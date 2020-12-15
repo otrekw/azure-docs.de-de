@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/21/2020
+ms.date: 12/07/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 6dacb1cd910c6569d94f365b34a15494dde70a4c
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 6d6a152096ce4e16849542c26d1c7a675a972b89
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92787685"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779072"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Abrufen eines Tokens von Azure AD zum Autorisieren von Anforderungen von einer Clientanwendung
 
@@ -46,7 +46,7 @@ Die folgende Abbildung zeigt die allgemeinen Einstellungen zum Registrieren eine
 
 Nachdem Sie Ihre Anwendung registriert haben, wird die Anwendungs-ID (oder Client-ID) unter **Einstellungen** angezeigt:
 
-:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
+:::image type="content" source="media/storage-auth-aad-app/app-registration-client-id.png" alt-text="Screenshot der Client-ID":::
 
 Ausführlichere Informationen zum Registrieren einer Anwendung bei Azure AD finden Sie unter [Integrieren von Anwendungen in Azure Active Directory](../../active-directory/develop/quickstart-register-app.md).
 
@@ -57,15 +57,15 @@ Erteilen Sie als Nächstes Ihrer Anwendung Berechtigungen zum Aufrufen von Azure
 1. Wählen Sie auf der Seite **API-Berechtigungen** für Ihre registrierte Anwendung **Berechtigung hinzufügen** aus.
 1. Wählen Sie auf der Registerkarte **Microsoft-APIs** die Option **Azure Storage** aus.
 1. Im Bereich **API-Berechtigungen anfordern** unter **Welche Art von Berechtigungen sind für Ihre Anwendung erforderlich?** wird als verfügbarer Berechtigungstyp **Delegierte Berechtigungen** angezeigt. Diese Option ist standardmäßig für Sie aktiviert.
-1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen neben **user_impersonation** , und klicken Sie auf die Schaltfläche **Berechtigungen hinzufügen** .
+1. Aktivieren Sie unter **Berechtigungen** das Kontrollkästchen neben **user_impersonation**, und klicken Sie auf die Schaltfläche **Berechtigungen hinzufügen**.
 
-    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
+    :::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-1.png" alt-text="Screenshot mit Berechtigungen für die Speicher-API":::
 
 1. Erteilen Sie als Nächstes die Administratoreinwilligung für diese Berechtigungen, indem Sie auf **Grant admin consent for Default Directory** (Administratoreinwilligung für Standardverzeichnis gewähren) klicken.
 
 Im Bereich **API-Berechtigungen** wird jetzt angezeigt, dass Ihre registrierte Azure AD-Anwendung Zugriff auf die Microsoft Graph- und auf die Azure Storage-API hat und dass die Einwilligung für das Standardverzeichnis erteilt wurde. Berechtigungen für Microsoft Graph werden automatisch gewährt, wenn Sie Ihre App zum ersten Mal bei Azure AD registrieren.
 
-:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
+:::image type="content" source="media/storage-auth-aad-app/registered-app-permissions-2.png" alt-text="Screenshot mit API-Berechtigungen für die registrierte Anwendung":::
 
 ### <a name="create-a-client-secret"></a>Erstellen eines Clientgeheimnisses
 
@@ -87,7 +87,7 @@ Konfigurieren Sie als Nächstes den Flow zur impliziten Genehmigung für Ihre An
 1. Wählen Sie im Abschnitt **Manage** (Verwalten) die Einstellung **Authentication** (Authentifizierung) aus.
 1. Aktivieren Sie im Abschnitt **Implicit grant** (Implizite Genehmigung) das Kontrollkästchen zum Aktivieren von ID-Token, wie in der folgenden Abbildung gezeigt:
 
-    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Screenshot, der das Registrieren Ihrer Speicheranwendung bei Azure AD zeigt":::
+    :::image type="content" source="media/storage-auth-aad-app/enable-implicit-grant-flow.png" alt-text="Screenshot: Aktivieren der Einstellungen für den Flow zur impliziten Genehmigung":::
 
 ## <a name="client-libraries-for-token-acquisition"></a>Clientbibliotheken für die Tokenbeschaffung
 
@@ -131,6 +131,8 @@ Weisen Sie anschließend die Rolle **Storage Blob Data Contributor** (Mitwirkend
 
 > [!NOTE]
 > Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+>
+> Bevor Sie sich eine Rolle für den Datenzugriff zuweisen, können Sie bereits über das Azure-Portal auf Daten in Ihrem Speicherkonto zugreifen, da das Azure-Portal auch den Kontoschlüssel für den Datenzugriff nutzen kann. Weitere Informationen finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal](../blobs/authorize-data-operations-portal.md).
 
 ### <a name="create-a-web-application-that-authorizes-access-to-blob-storage-with-azure-ad"></a>Erstellen einer Webanwendung, die Zugriff auf Blob Storage über Azure AD gewährt
 
@@ -140,7 +142,7 @@ Eine vollständige Beispielwebanwendung, die ein Token abruft und zum Erstellen 
 
 #### <a name="add-references-and-using-statements"></a>Hinzufügen von Verweisen und using-Anweisungen  
 
-Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole** . Geben Sie im Konsolenfenster die folgenden Befehle ein, um die erforderlichen Pakete aus der Azure Storage-Clientbibliothek für .NET zu installieren:
+Installieren Sie von Visual Studio aus die Azure Storage-Clientbibliothek. Wählen Sie im Menü **Extras** den Eintrag **NuGet-Paket-Manager** und danach **Paket-Manager-Konsole**. Geben Sie im Konsolenfenster die folgenden Befehle ein, um die erforderlichen Pakete aus der Azure Storage-Clientbibliothek für .NET zu installieren:
 
 # <a name="net-v12-sdk"></a>[.NET v12 SDK](#tab/dotnet)
 
@@ -220,7 +222,7 @@ private static async Task<string> CreateBlob(string accessToken)
 
 Im obigen Beispiel wickelt die .NET-Clientbibliothek die Autorisierung der Anforderung für die Erstellung des Blockblobs ab. Die Autorisierung der Anforderung wird auch von Azure Storage-Clientbibliotheken für andere Sprachen für Sie abgewickelt. Wenn Sie jedoch über die REST-API einen Azure Storage-Vorgang mit einem OAuth-Token aufrufen, müssen Sie den **Autorisierungsheader** mithilfe des OAuth-Tokens erstellen.
 
-Wenn Sie Blob- und Warteschlangendienstvorgänge mit OAuth-Zugriffstoken aufrufen möchten, übergeben Sie das Zugriffstoken im **Autorisierungsheader** unter Verwendung des Schemas **Bearer** , und geben Sie mindestens die Dienstversion 2017-11-09 an, wie im folgenden Beispiel zu sehen:
+Wenn Sie Blob- und Warteschlangendienstvorgänge mit OAuth-Zugriffstoken aufrufen möchten, übergeben Sie das Zugriffstoken im **Autorisierungsheader** unter Verwendung des Schemas **Bearer**, und geben Sie mindestens die Dienstversion 2017-11-09 an, wie im folgenden Beispiel zu sehen:
 
 ```https
 GET /container/file.txt HTTP/1.1

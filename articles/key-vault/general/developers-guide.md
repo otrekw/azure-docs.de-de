@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 6fa9f5d86d3640bf3ae0233e7d6d8a00752f5b6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 895b8441f340d085932cade513c9f8929491b374
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96460812"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904260"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Entwicklerhandbuch zu Azure-Schlüsseltresor
 
@@ -22,7 +22,7 @@ Mithilfe des Schlüsseltresors können Sie in Ihren Anwendungen sicher auf vertr
 - Schlüssel, Geheimnisse und Zertifikate werden geschützt, ohne dass Sie den Code selbst schreiben müssen, und können auf einfache Weise in Ihren Anwendungen verwendet werden.
 - Sie gestatten Kunden, dass sie ihre eigenen Schlüssel, Geheimnisse und Zertifikate verwalten, sodass Sie sich auf die Bereitstellung der Hauptfunktionen der Software konzentrieren können. Auf diese Weise müssen Ihre Anwendungen weder die Verantwortung noch die Haftung für die Mandantenschlüssel, Geheimnisse und Zertifikate Ihrer Kunden übernehmen.
 - Ihre Anwendung kann Signatur- und Verschlüsselungsschlüssel verwenden, wobei die Schlüssel außerhalb der Anwendung verwaltet werden. Weitere Informationen zu Schlüsseln finden Sie unter [Informationen zu Schlüsseln](../keys/about-keys.md).
-- Sie können Anmeldeinformationen wie Kennwörter, Zugriffsschlüssel und SAS-Token verwalten, die Sie in Key Vault als Geheimnisse speichern. Informationen dazu finden Sie unter [Informationen zu Schlüsseln](../secrets/about-secrets.md).
+- Sie können Anmeldeinformationen wie Kennwörter, Zugriffsschlüssel und SAS-Token verwalten, indem Sie die Informationen in Key Vault als Geheimnisse speichern. Näheres dazu erfahren Sie unter [Informationen zu Schlüsseln](../secrets/about-secrets.md).
 - Verwalten Sie Zertifikate. Weitere Informationen finden Sie unter [Informationen zu Zertifikaten](../certificates/about-certificates.md).
 
 Allgemeine Informationen zu Azure Key Vault finden Sie unter [Was ist der Schlüsseltresor?](overview.md).
@@ -86,21 +86,21 @@ Der Zugriff auf Schlüssel, Geheimnisse und Zertifikate wird durch die Dateneben
 
 | Azure CLI | PowerShell | REST-API | Ressourcen-Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Verweis](/cli/azure/keyvault/key)<br>[Schnellstart](../keys/quick-create-cli.md)|[Referenz](/powershell/module/az.keyvault/)<br>[Schnellstart](../keys/quick-create-powershell.md)|[Verweis](/rest/api/keyvault/#key-operations)|–|[Referenz](/dotnet/api/azure.security.keyvault.keys)|[Referenz](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Schnellstart](../keys/quick-create-python.md)|[Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Referenz](/javascript/api/@azure/keyvault-keys/)|
+|[Verweis](/cli/azure/keyvault/key)<br>[Schnellstart](../keys/quick-create-cli.md)|[Verweis](/powershell/module/az.keyvault/)<br>[Schnellstart](../keys/quick-create-powershell.md)|[Verweis](/rest/api/keyvault/#key-operations)|–|[Referenz](/dotnet/api/azure.security.keyvault.keys)|[Verweis](/python/api/azure-mgmt-keyvault/azure.mgmt.keyvault)<br>[Schnellstart](../keys/quick-create-python.md)|[Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-keys/4.2.0/index.html)|[Referenz](/javascript/api/@azure/keyvault-keys/)|
 
 **Zertifikat-APIs and SDKs**
 
 
 | Azure CLI | PowerShell | REST-API | Ressourcen-Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Verweis](/cli/azure/keyvault/certificate)<br>[Schnellstart](../certificates/quick-create-cli.md)|[Referenz](/powershell/module/az.keyvault)<br>[Schnellstart](../certificates/quick-create-powershell.md)|[Verweis](/rest/api/keyvault/#certificate-operations)|–|[Referenz](/dotnet/api/azure.security.keyvault.certificates)|[Referenz](/python/api/overview/azure/keyvault-certificates-readme)<br>[Schnellstart](../certificates/quick-create-python.md)|[Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Referenz](/javascript/api/@azure/keyvault-certificates/)|
+|[Verweis](/cli/azure/keyvault/certificate)<br>[Schnellstart](../certificates/quick-create-cli.md)|[Verweis](/powershell/module/az.keyvault)<br>[Schnellstart](../certificates/quick-create-powershell.md)|[Verweis](/rest/api/keyvault/#certificate-operations)|–|[Referenz](/dotnet/api/azure.security.keyvault.certificates)|[Verweis](/python/api/overview/azure/keyvault-certificates-readme)<br>[Schnellstart](../certificates/quick-create-python.md)|[Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-certificates/4.1.0/index.html)|[Referenz](/javascript/api/@azure/keyvault-certificates/)|
 
 **Geheimnis-APIs und SDKs**
 
 
 | Azure CLI | PowerShell | REST-API | Ressourcen-Manager | .NET | Python | Java | JavaScript |  
 |--|--|--|--|--|--|--|--|
-|[Verweis](/cli/azure/keyvault/secret)<br>[Schnellstart](../secrets/quick-create-cli.md)|[Referenz](/powershell/module/az.keyvault/)<br>[Schnellstart](../secrets/quick-create-powershell.md)|[Referenz](/rest/api/keyvault/#secret-operations)|[Verweis](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[Schnellstart](../secrets/quick-create-template.md)|[Referenz](/dotnet/api/azure.security.keyvault.secrets)<br>[Schnellstart](../secrets/quick-create-net.md)|[Referenz](/python/api/overview/azure/keyvault-secrets-readme)<br>[Schnellstart](../secrets/quick-create-python.md)|[Referenz](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[Schnellstart](../secrets/quick-create-java.md)|[Referenz](/javascript/api/@azure/keyvault-secrets/)<br>[Schnellstart](../secrets/quick-create-node.md)|
+|[Verweis](/cli/azure/keyvault/secret)<br>[Schnellstart](../secrets/quick-create-cli.md)|[Verweis](/powershell/module/az.keyvault/)<br>[Schnellstart](../secrets/quick-create-powershell.md)|[Referenz](/rest/api/keyvault/#secret-operations)|[Verweis](/azure/templates/microsoft.keyvault/vaults/secrets)<br>[Schnellstart](../secrets/quick-create-template.md)|[Verweis](/dotnet/api/azure.security.keyvault.secrets)<br>[Schnellstart](../secrets/quick-create-net.md)|[Verweis](/python/api/overview/azure/keyvault-secrets-readme)<br>[Schnellstart](../secrets/quick-create-python.md)|[Verweis](https://azuresdkdocs.blob.core.windows.net/$web/java/azure-security-keyvault-secrets/4.2.0/index.html)<br>[Schnellstart](../secrets/quick-create-java.md)|[Verweis](/javascript/api/@azure/keyvault-secrets/)<br>[Schnellstart](../secrets/quick-create-node.md)|
 
 Weitere Informationen zu Installationspaketen und Quellcode finden Sie unter [Clientbibliotheken](client-libraries.md).
 

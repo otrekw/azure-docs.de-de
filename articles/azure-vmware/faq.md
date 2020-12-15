@@ -4,12 +4,12 @@ description: Hier finden Sie Antworten auf einige der häufig gestellten Fragen 
 ms.topic: conceptual
 ms.date: 11/19/2020
 ms.author: dikamath
-ms.openlocfilehash: 0bc3e0ab5b3017c2d051113a57d79214ffce0836
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 3033df2021a8d1780caf9b0b7cd4dbe8de2a6050
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967345"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96861407"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Häufig gestellte Fragen zu Azure VMware Solution
 
@@ -188,7 +188,7 @@ Aktivieren Sie im Azure-Portal Internetkonnektivität für eine private Cloud. E
 
 #### <a name="do-i-need-to-restrict-access-from-the-internet-to-vms-on-logical-networks-in-a-private-cloud"></a>Muss ich den Zugriff aus dem Internet auf VMs in logischen Netzwerken in einer privaten Cloud einschränken?
 
-Nein. Eingehender Netzwerksdatenverkehr aus dem Internet direkt in private Clouds ist unzulässig.
+Nein. Eingehender Netzwerkdatenverkehr aus dem Internet direkt in private Clouds ist standardmäßig nicht zulässig.  Sie können Azure VMware Solution-VMs jedoch für den Empfang von Datenverkehr aus dem Internet konfigurieren, indem Sie die Option [Öffentliche IP-Adresse](public-ip-usage.md) im Azure-Portal für Ihre private Azure VMware Solution-Cloud verwenden.
 
 #### <a name="do-i-need-to-restrict-internet-access-from-vms-on-logical-networks-to-the-internet"></a>Muss ich Internetzugriff von VMs in logischen Netzwerken auf das Internet in einer privaten Cloud einschränken?
 

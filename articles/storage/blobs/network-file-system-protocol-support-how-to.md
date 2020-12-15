@@ -9,19 +9,16 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 7419e8667f07eec03e860634c7b3fddcac0e186b
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 97b52159684eca9be59ccc711f6d2f19b5eb8d49
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95901552"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906113"
 ---
 # <a name="mount-blob-storage-by-using-the-network-file-system-nfs-30-protocol-preview"></a>Einbinden von Azure Blob Storage mithilfe des NFS 3.0-Protokolls (Vorschau)
 
 Sie können einen Container über eine Windows- oder Linux-basierte Azure-VM oder ein lokal ausgeführtes Windows- oder Linux-System in Blob Storage mithilfe des NFS 3.0-Protokolls einbinden. Dieser Artikel bietet eine schrittweise Anleitung. Weitere Informationen zur Unterstützung des NFS 3.0-Protokolls in Blob-Speicher finden Sie unter [Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)](network-file-system-protocol-support.md).
-
-> [!NOTE]
-> Die NFS 3.0-Protokollunterstützung in Azure Blob Storage befindet sich in der öffentlichen Vorschau und ist in den folgenden Regionen verfügbar: USA, Osten; USA, Mitte; USA, Westen-Mitte; Australien, Südosten; Europa, Norden; Vereinigtes Königreich, Westen; Südkorea, Mitte; Südkorea, Süden; Kanada, Mitte.
 
 ## <a name="step-1-register-the-nfs-30-protocol-feature-with-your-subscription"></a>Schritt 1: Registrieren des NFS 3.0-Protokollfeatures in Ihrem Abonnement
 
@@ -48,13 +45,7 @@ Sie können einen Container über eine Windows- oder Linux-basierte Azure-VM ode
    Register-AzProviderFeature -FeatureName AllowNFSV3 -ProviderNamespace Microsoft.Storage 
    ```
 
-5. Registrieren Sie ebenfalls die `PremiumHns`-Funktion mit dem folgenden Befehl.
-
-   ```powershell
-   Register-AzProviderFeature -FeatureName PremiumHns -ProviderNamespace Microsoft.Storage  
-   ```
-
-6. Registrieren Sie den Ressourcenanbieter, indem Sie den folgenden Befehl verwenden.
+5. Registrieren Sie den Ressourcenanbieter, indem Sie den folgenden Befehl verwenden.
     
    ```powershell
    Register-AzResourceProvider -ProviderNamespace Microsoft.Storage   
@@ -66,7 +57,6 @@ Die Registrierungsgenehmigung kann bis zu einer Stunde dauern. Um zu überprüfe
 
 ```powershell
 Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNFSV3
-Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName PremiumHns  
 ```
 
 ## <a name="step-3-create-an-azure-virtual-network-vnet"></a>Schritt 3: Erstellen eines virtuellen Azure-Netzwerks (VNet)
@@ -86,20 +76,20 @@ Informationen zum Sichern der Daten in Ihrem Konto finden Sie in den folgenden E
 
 Um einen Container mithilfe von NFS 3.0 einzubinden, müssen Sie ein Speicherkonto erstellen, **nachdem** Sie die Funktion in Ihrem Abonnement registriert haben. Sie können keine Konten aktivieren, die vor der Registrierung der Funktion bereits vorhanden waren. 
 
-In der Vorschauversion dieser Funktion wird das NFS 3.0-Protokoll nur in [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md)-Konten unterstützt.
+In der Vorschauversion dieses Features wird das NFS 3.0-Protokoll in [BlockBlobStorage](../blobs/storage-blob-create-account-block-blob.md)-Konten und Konten vom Typ [Allgemein v2](../common/storage-account-overview.md#general-purpose-v2-accounts) unterstützt.
 
 Wenn Sie das Konto konfigurieren, wählen Sie die folgenden Werte aus:
 
-|Einstellung | Wert|
-|----|---|
-|Standort|Eine der folgenden Regionen: USA, Osten; USA, Mitte; USA, Westen-Mitte; Australien, Südosten; Europa, Norden; Vereinigtes Königreich, Westen; Südkorea, Mitte; Südkorea, Süden; Kanada, Mitte |
-|Leistung|Premium|
-|Kontoart|BlockBlobStorage|
-|Replikation|Lokal redundanter Speicher (LRS)|
-|Konnektivitätsmethode|Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt|
-|Sichere Übertragung erforderlich|Disabled|
-|Hierarchischer Namespace|Aktiviert|
-|NFS V3|Aktiviert|
+|Einstellung | Premium-Leistung | Standardleistung  
+|----|---|---|
+|Ort|Alle verfügbaren Regionen |Eine der folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“ und „USA, Süden-Mitte“   
+|Leistung|Premium| Standard
+|Kontoart|BlockBlobStorage| Allgemein v2
+|Replikation|Lokal redundanter Speicher (LRS)| Lokal redundanter Speicher (LRS)
+|Konnektivitätsmethode|Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt |Öffentlicher Endpunkt (ausgewählte Netzwerke) oder privater Endpunkt
+|Sichere Übertragung erforderlich|Disabled|Disabled
+|Hierarchischer Namespace|Aktiviert|Aktiviert
+|NFS V3|Aktiviert |Aktiviert 
 
 Sie können die Standardwerte für alle anderen Einstellungen übernehmen. 
 

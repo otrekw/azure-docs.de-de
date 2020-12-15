@@ -5,16 +5,16 @@ services: storage
 author: santoshc
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 2eed5a8ad783d325ef040b3a358e80a6517f08e8
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92783639"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905365"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -152,7 +152,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
 1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
 
-1. Wenn Sie mit einer neuen Netzwerkregel den Zugriff auf ein virtuelles Netzwerk zulassen möchten, klicken Sie unter **Virtuelle Netzwerke** auf **Vorhandenes virtuelles Netzwerk hinzufügen** , wählen Sie die Optionen **Virtuelle Netzwerke** und **Subnetze** aus, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie ein neues virtuelles Netzwerk erstellen und ihm Zugriff gewähren möchten, klicken Sie auf **Neues virtuelles Netzwerk hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen des neuen virtuellen Netzwerks an, und klicken Sie anschließend auf **Erstellen**.
+1. Wenn Sie mit einer neuen Netzwerkregel den Zugriff auf ein virtuelles Netzwerk zulassen möchten, klicken Sie unter **Virtuelle Netzwerke** auf **Vorhandenes virtuelles Netzwerk hinzufügen**, wählen Sie die Optionen **Virtuelle Netzwerke** und **Subnetze** aus, und klicken Sie anschließend auf **Hinzufügen**. Wenn Sie ein neues virtuelles Netzwerk erstellen und ihm Zugriff gewähren möchten, klicken Sie auf **Neues virtuelles Netzwerk hinzufügen**. Geben Sie die erforderlichen Informationen zum Erstellen des neuen virtuellen Netzwerks an, und klicken Sie anschließend auf **Erstellen**.
 
     > [!NOTE]
     > Wenn für das ausgewählte virtuelle Netzwerk und die Subnetze noch kein Dienstendpunkt für Azure Storage konfiguriert wurde, können Sie dies im Rahmen dieses Vorgangs nachholen.
@@ -187,7 +187,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
     ```
 
     > [!TIP]
-    > Wenn Sie eine Netzwerkregel für ein Subnetz in einem VNET hinzufügen möchten, das zu einem anderen Azure AD-Mandanten gehört, verwenden Sie einen voll qualifizierten **VirtualNetworkResourceId** -Parameter im Format „/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name“.
+    > Wenn Sie eine Netzwerkregel für ein Subnetz in einem VNET hinzufügen möchten, das zu einem anderen Azure AD-Mandanten gehört, verwenden Sie einen voll qualifizierten **VirtualNetworkResourceId**-Parameter im Format „/subscriptions/subscription-ID/resourceGroups/resourceGroup-Name/providers/Microsoft.Network/virtualNetworks/vNet-name/subnets/subnet-name“.
 
 1. Entfernen Sie eine Netzwerkregel für ein virtuelles Netzwerk und Subnetz.
 
@@ -241,12 +241,12 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
 Sie können Speicherkonten so konfigurieren, dass der Zugriff über bestimmte öffentliche Internet-IP-Adressbereichen zugelassen wird. Diese Konfiguration gewährt bestimmten internetbasierten Diensten und lokalen Netzwerken Zugriff und blockiert gleichzeitig den allgemeinen Internetdatenverkehr.
 
-Geben Sie zulässige Internetadressbereiche in [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19* ) an.
+Geben Sie zulässige Internetadressbereiche in [CIDR-Notation](https://tools.ietf.org/html/rfc4632) im Format *16.17.18.0/24* oder als einzelne IP-Adressen (beispielsweise *16.17.18.19*) an.
 
    > [!NOTE]
    > Kleine Adressbereiche mit der Präfixgröße „/ 31“ oder „/ 32“ werden nicht unterstützt. Diese Bereiche müssen mit einzelnen IP-Adressregeln konfiguriert werden.
 
-IP-Netzwerkregeln sind nur für **öffentliche Internet** -IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_ , _172.16.*_  - _172.31.*_ und _192.168.*_ beginnen.
+IP-Netzwerkregeln sind nur für **öffentliche Internet**-IP-Adressen zulässig. Für private Netzwerke reservierte IP-Adressbereiche (wie in [RFC 1918](https://tools.ietf.org/html/rfc1918#section-3) definiert) sind in IP-Adressregeln nicht zulässig. Private Netzwerke enthalten Adressen, die mit _10.*_ , _172.16.*_  - _172.31.*_ und _192.168.*_ beginnen.
 
    > [!NOTE]
    > IP-Netzwerkregeln haben keine Auswirkungen auf Anforderungen, die aus der Azure-Region stammen, in der sich auch das Speicherkonto befindet. Verwenden Sie [VNET-Regeln](#grant-access-from-a-virtual-network), um Anforderungen aus der gleichen Region zuzulassen.
@@ -390,16 +390,17 @@ Die Einstellung **Hiermit erlauben Sie vertrauenswürdigen Microsoft-Diensten .
 | :----------------------------- | :------------------------------------- | :----------------- |
 | Azure API Management           | Microsoft.ApiManagement/service        | Ermöglicht dem API Management-Dienst Zugriff auf Speicherkonten hinter der Firewall mithilfe von Richtlinien. [Weitere Informationen](../../api-management/api-management-authentication-policies.md#use-managed-identity-in-send-request-policy) |
 | Azure Cognitive Search         | Microsoft.Search/searchServices        | Ermöglicht Cognitive Search-Diensten den Zugriff auf Speicherkonten zur Indizierung, Verarbeitung und Abfrage. |
+| Azure Cognitive Services       | Microsoft.CognitiveService             | Ermöglicht Cognitive Services den Zugriff auf Speicherkonten. |
 | Azure Container Registry Tasks | Microsoft.ContainerRegistry/registries | ACR Tasks können beim Erstellen von Containerimages auf Speicherkonten zugreifen. |
 | Azure Data Factory             | Microsoft.DataFactory/factories        | Ermöglicht den Zugriff auf Speicherkonten über die ADF Runtime. |
 | Azure Data Share               | Microsoft.DataShare/accounts           | Ermöglicht den Zugriff auf Speicherkonten über Data Share. |
 | Azure IoT Hub                  | Microsoft.Devices/IotHubs              | Ermöglicht das Schreiben von Daten aus einem IoT-Hub in den Blobspeicher. [Weitere Informationen](../../iot-hub/virtual-network-support.md#egress-connectivity-to-storage-account-endpoints-for-routing) |
 | Azure Logic Apps               | Microsoft.Logic/workflows              | Ermöglicht Logik-Apps den Zugriff auf Speicherkonten. [Weitere Informationen](../../logic-apps/create-managed-service-identity.md#authenticate-access-with-managed-identity) |
 | Azure Machine Learning-Dienst | Microsoft.MachineLearningServices      | Autorisierte Azure Machine Learning-Arbeitsbereiche schreiben Experimentausgaben, Modelle und Protokolle in Blob Storage und lesen die Daten. [Weitere Informationen](../../machine-learning/how-to-network-security-overview.md#secure-the-workspace-and-associated-resources) | 
-| Azure Synapse Analytics (ehemals SQL Data Warehouse)       | Microsoft.Sql                          | Ermöglicht den Import und Export von Daten aus bestimmten SQL-Datenbanken unter Verwendung der COPY-Anweisung oder von PolyBase. [Weitere Informationen](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) |
+| Azure Synapse Analytics       | Microsoft.Sql                          | Ermöglicht den Import und Export von Daten aus bestimmten SQL-Datenbanken unter Verwendung der COPY-Anweisung oder von PolyBase. [Weitere Informationen](../../azure-sql/database/vnet-service-endpoint-rule-overview.md) |
 | Azure SQL-Datenbank       | Microsoft.Sql                          | Ermöglicht den [Import](/sql/t-sql/statements/bulk-insert-transact-sql#f-importing-data-from-a-file-in-azure-blob-storage) von Daten aus Speicherkonten sowie das [Schreiben](../../azure-sql/database/audit-write-storage-account-behind-vnet-firewall.md) von Überwachungsdaten in Speicherkonten hinter einer Firewall. |
 | Azure Stream Analytics         | Microsoft.StreamAnalytics             | Ermöglicht das Schreiben von Daten aus einem Streamingauftrag in den BLOB-Speicher. [Weitere Informationen](../../stream-analytics/blob-output-managed-identity.md) |
-| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Synapse Analytics. |
+| Azure Synapse Analytics        | Microsoft.Synapse/workspaces          | Dies ermöglicht in Azure Storage den Zugriff auf Daten von Azure Synapse Analytics. |
 
 
 ### <a name="storage-analytics-data-access"></a>Zugriff auf Storage Analytics-Daten

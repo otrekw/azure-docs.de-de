@@ -9,19 +9,19 @@ ms.date: 08/04/2020
 ms.author: normesta
 ms.reviewer: yzheng
 ms.custom: references_regions
-ms.openlocfilehash: 78455659d76d259c626745c93770428c25042b2d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b4146f11804dd11f7dd0f5536bc040cb30e25b03
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908811"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902730"
 ---
 # <a name="network-file-system-nfs-30-protocol-support-in-azure-blob-storage-preview"></a>Unterstützung für Network File System 3.0 (NFS) in Azure Blob Storage (Vorschau)
 
 Blob Storage unterstützt jetzt das NFS 3.0-Protokoll (Network File System). Diese Unterstützung ermöglicht es Windows- und Linux-Clients, einen Container in Blob Storage von einem virtuellen Azure-Computer (VM) oder einem lokalen Computer einzubinden. 
 
 > [!NOTE]
-> Die NFS 3.0-Protokollunterstützung in Azure Blob Storage befindet sich in der öffentlichen Vorschau und ist in den folgenden Regionen verfügbar: USA, Osten; USA, Mitte; USA, Westen-Mitte; Australien, Südosten; Europa, Norden; Vereinigtes Königreich, Westen; Südkorea, Mitte; Südkorea, Süden; Kanada, Mitte.
+> Die Unterstützung für das NFS 3.0-Protokoll in Azure Blob Storage befindet in der öffentlichen Vorschau. Das Protokoll unterstützt GPV2-Speicherkonten mit der Leistungsstufe „Standard“ in den folgenden Regionen: „Australien, Osten“, „Südkorea, Mitte“ und „USA, Süden-Mitte“. Die Vorschau unterstützt auch Blockblobs mit der Leistungsstufe „Premium“ in allen öffentlichen Regionen.
 
 ## <a name="general-workflow-mounting-a-storage-account-container"></a>Allgemeiner Workflow: Einbinden eines Speicherkontocontainers
 

@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
-ms.openlocfilehash: 3fdb3b2b23d07b79a8e9979450bee653d646196c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 552cac01cd492229a19bdbc297665eb7d3ccb401
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182800"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751290"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Konfigurieren von „VMs außerhalb der Geschäftszeiten starten/beenden“
 
@@ -48,7 +48,7 @@ Sie können die Aktion entweder für ein Abonnement und eine Ressourcengruppe od
 
 2. Fügen Sie eine durch Trennzeichen getrennte Liste mit virtuellen Computern (ohne Leerzeichen) im **VMList**-Parameterfeld hinzu. Eine Beispielliste ist `vm1,vm2,vm3`.
 
-3. Legen Sie für das **WHATIF**-Parameterfeld den Wert „True“ fest.
+3. Legen Sie das Parameterfeld **WHATIF** auf TRUE fest, um eine Vorschau der Änderungen anzuzeigen.
 
 4. Konfigurieren Sie die Variable `External_ExcludeVMNames` mit einer durch Kommas getrennten Liste von VMs (VM1,VM2,VM3) ohne Leerzeichen zwischen den durch Trennzeichen getrennten Werten.
 
@@ -79,7 +79,7 @@ In einer Umgebung mit mehreren Komponenten auf mehreren VMs, die eine verteilte 
 
 3. Fügen Sie eine durch Trennzeichen getrennte Liste mit virtuellen Computern (ohne Leerzeichen) im **VMList**-Parameterfeld hinzu. Eine Beispielliste ist `vm1,vm2,vm3`.
 
-4. Legen Sie für **WHATIF** den Wert „True“ fest. 
+4. Legen Sie **WHATIF** auf TRUE fest, um eine Vorschau der Änderungen anzuzeigen. 
 
 5. Konfigurieren Sie die Variable `External_ExcludeVMNames` mit einer durch Kommas getrennten Liste von VMs ohne Leerzeichen zwischen den durch Trennzeichen getrennten Werten.
 

@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: 23cf8a79c4978ccb3a65ad968b2ed5a01bb3d0ec
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: f9b9681b08f5864dc34bbf1c35dc6919129c24cb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242329"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518803"
 ---
 # <a name="azure-database-for-mysql-data-encryption-with-a-customer-managed-key"></a>Azure Database for MySQL-Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel
 
@@ -48,9 +48,9 @@ Die mit den KEKs verschlüsselten DEKs werden separat gespeichert. Nur eine Enti
 
 Damit ein MySQL-Server vom Kunden verwaltete Schlüssel, die in Key Vault gespeichert sind, für die Verschlüsselung des DEK verwenden kann, erteilt ein Key Vault-Administrator dem Server die folgenden Zugriffsrechte:
 
-* **get** : Zum Abrufen des öffentlichen Teils und der Eigenschaften des Schlüssels in Key Vault.
-* **wrapKey** : Zum Verschlüsseln des DEK erforderlich. Der verschlüsselte DEK wird in der Azure Database for MySQL gespeichert.
-* **unwrapKey** : Zum Entschlüsseln des DEK erforderlich. Azure Database for MySQL benötigt den entschlüsselten DEK zum Verschlüsseln/Entschlüsseln der Daten.
+* **get**: Zum Abrufen des öffentlichen Teils und der Eigenschaften des Schlüssels in Key Vault.
+* **wrapKey**: Zum Verschlüsseln des DEK erforderlich. Der verschlüsselte DEK wird in der Azure Database for MySQL gespeichert.
+* **unwrapKey**: Zum Entschlüsseln des DEK erforderlich. Azure Database for MySQL benötigt den entschlüsselten DEK zum Verschlüsseln/Entschlüsseln der Daten.
 
 Der Key Vault-Administrator kann auch die [Protokollierung von Key Vault-Überwachungsereignissen aktivieren](../azure-monitor/insights/key-vault-insights-overview.md), damit sie später überprüft werden können.
 
@@ -61,14 +61,17 @@ Wenn der Server für die Verwendung des in Key Vault gespeicherten vom Kunden ve
 Nachfolgend werden die Anforderungen für die Konfiguration von Key Vault aufgeführt:
 
 * Key Vault und Azure Database for MySQL müssen demselben Azure Active Directory-Mandanten (Azure AD) angehören. Mandantenübergreifende Interaktionen zwischen Key Vault und dem Server werden nicht unterstützt. Wenn Sie später Key Vault-Ressourcen verschieben möchten, müssen Sie die Datenverschlüsselung neu konfigurieren.
-* Aktivieren Sie das Feature zum vorläufigen Löschen in Key Vault, um bei einer versehentlichen Löschung des Schlüssels (oder Schlüsseltresors) Datenverluste zu vermeiden. Vorläufig gelöschte Ressourcen werden 90 Tage lang aufbewahrt, sofern sie der Benutzer nicht in der Zwischenzeit wiederherstellt oder bereinigt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
+* Aktivieren Sie das Feature [Vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) für die Key Vault-Instanz mit einem Aufbewahrungszeitraum von **90 Tagen**, um Schutz vor Datenverlust zu bieten, falls ein Schlüssel (oder Key Vault) versehentlich gelöscht wird. Vorläufig gelöschte Ressourcen werden standardmäßig 90 Tage lang aufbewahrt, es sei denn, der Aufbewahrungszeitraum wird explizit auf <=90 Tage festgelegt. Den Aktionen zum Wiederherstellen und endgültigen Löschen sind über Key Vault-Zugriffsrichtlinien eigene Berechtigungen zugewiesen. Die Funktion für vorläufiges Löschen ist standardmäßig deaktiviert. Sie können sie jedoch über PowerShell oder die Azure CLI aktivieren (beachten Sie, dass Sie sie nicht über das Azure-Portal aktivieren können).
+* Aktivieren Sie das Feature [Bereinigungsschutz](../key-vault/general/soft-delete-overview.md#purge-protection) für den Schlüsseltresor mit einem Aufbewahrungszeitraum von **90 Tagen**. Der Schutz vor dem endgültigen Löschen kann nur aktiviert werden, wenn das vorläufige Löschen aktiviert ist. Er kann über die Azure-Befehlszeilenschnittstelle oder PowerShell aktiviert werden. Bei aktiviertem Bereinigungsschutz kann ein Tresor oder ein Objekt im gelöschten Zustand erst nach Ablauf der Aufbewahrungsdauer endgültig gelöscht werden. Vorläufig gelöschte Tresore und Objekte können unter Einhaltung der Aufbewahrungsrichtlinie weiterhin wiederhergestellt werden. 
 * Gewähren Sie Azure Database for MySQL mit den Berechtigungen get, wrapKey, unwrapKey unter Verwendung der eindeutigen verwalteten Identität Zugriff auf Key Vault. Im Azure-Portal wird die eindeutige Identität „Service“ automatisch erstellt, wenn Datenverschlüsselung für MySQL aktiviert wird. Ausführliche schrittweise Anleitungen für die Verwendung des Azure-Portals finden Sie unter [Konfigurieren der Datenverschlüsselung für MySQL](howto-data-encryption-portal.md).
 
 Nachfolgend werden die Anforderungen für die Konfiguration des vom Kunden verwalteten Schlüssels aufgeführt:
 
 * Der vom kundenseitig verwaltete Schlüssel, der zum Verschlüsseln des DEK verwendet werden soll, muss ein asymmetrischer RSA 2048-Schlüssel sein.
-* Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Zukunft sein.
+* Das Schlüsselaktivierungsdatum (sofern festgelegt) muss ein Datum und eine Uhrzeit in der Vergangenheit sein. Das Ablaufdatum ist nicht festgelegt.
 * Der Schlüssel muss sich im Zustand *Aktiviert* befinden.
+* Für den Schlüssel muss das Feature [Vorläufiges Löschen](../key-vault/general/soft-delete-overview.md) mit einem Aufbewahrungszeitraum von **90 Tagen** festgelegt sein. Damit wird implizit die folgende erforderliche Wiederherstellungsstufe für das Schlüsselattribut festgelegt: „Recoverable“. Wenn ein Aufbewahrungszeitraum von weniger als 90 Tagen festgelegt wird, wird die Wiederherstellungsstufe „CustomizedRecoverable“ festgelegt. Diese Stufe erfüllt die Anforderung nicht, stellen Sie daher sicher, dass der Aufbewahrungszeitraum auf **90 Tage** festgelegt ist.
+* Für den Schlüssel muss der [Bereinigungsschutz aktiviert](../key-vault/general/soft-delete-overview.md#purge-protection) sein.
 * Wenn Sie [einen vorhandenen Schlüssel in Key Vault importieren](/rest/api/keyvault/ImportKey/ImportKey), müssen Sie ihn in einem der unterstützten Dateiformate (`.pfx`, `.byok`, `.backup`) bereitstellen.
 
 ## <a name="recommendations"></a>Empfehlungen
@@ -78,7 +81,7 @@ Wenn Sie Datenverschlüsselung durch einen vom Kunden verwalteten Schlüssel ver
 * Legen Sie eine Ressourcensperre für Key Vault fest, um zu steuern, wer diese wichtige Ressource löschen kann, und um ein versehentliches oder nicht autorisiertes Löschen zu verhindern.
 * Aktivieren Sie die Überwachung und Berichterstellung für alle Verschlüsselungsschlüssel. Key Vault stellt Protokolle bereit, die sich problemlos in andere SIEM-Tools (Security Information & Event Management) einfügen lassen. Log Analytics in Azure Monitor ist ein Beispiel für einen Dienst, der bereits integriert ist.
 * Stellen Sie sicher, dass sich Key Vault und Azure Database for MySQL in derselben Region befinden, um einen schnelleren Zugriff für wrap- und unwrap-Vorgänge bei DEKs sicherzustellen.
-* Schränken Sie Azure Key Vault auf den **privaten Endpunkt und die ausgewählten Netzwerke** ein, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten* , die Ressourcen zu schützen.
+* Schränken Sie Azure Key Vault auf den **privaten Endpunkt und die ausgewählten Netzwerke** ein, und erlauben Sie nur *vertrauenswürdigen Microsoft-Diensten*, die Ressourcen zu schützen.
 
     :::image type="content" source="media/concepts-data-access-and-security-data-encryption/keyvault-trusted-service.png" alt-text="Vertrauenswürdiger Dienst mit AKV":::
 
@@ -94,8 +97,8 @@ Wenn Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel in Az
 
 * Wenn Sie einen Server für die Point-in-Time-Wiederherstellung für Ihre Azure Database for MySQL-Instanz erstellen, auf dem die Datenverschlüsselung aktiviert ist, hat der neu erstellte Server den Status *Kein Zugriff*. Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
 * Wenn Sie ein Lesereplikat für Ihre Azure Database for MySQL-Instanz erstellen, für das die Datenverschlüsselung aktiviert ist, hat der neu erstellte Replikatserver den Status *Kein Zugriff*. Sie können den Fehler über das [Azure-Portal](howto-data-encryption-portal.md#using-data-encryption-for-restore-or-replica-servers) oder die [Azure CLI](howto-data-encryption-cli.md#using-data-encryption-for-restore-or-replica-servers) korrigieren.
-* Wenn Sie den Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüsseltresor](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
-* Wenn Sie den Schlüssel aus dem Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüssel](../key-vault/general/soft-delete-cli.md#deleting-and-purging-key-vault-objects) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
+* Wenn Sie den Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüsseltresor](../key-vault/general/key-vault-recovery.md) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
+* Wenn Sie den Schlüssel aus dem Schlüsseltresor löschen, kann die Azure Database for MySQL-Instanz nicht auf den Schlüssel zugreifen und wechselt daher in den Zustand *Kein Zugriff*. Stellen Sie den [Schlüssel](../key-vault/general/key-vault-recovery.md) wieder her, und überprüfen Sie die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
 * Wenn der in Azure Key Vault gespeicherte Schlüssel abläuft, wird er damit ungültig. Die Azure Database for MySQL-Instanz wechselt dann in den Zustand *Kein Zugriff*. Verlängern Sie das Ablaufdatum des Schlüssels mithilfe der [CLI](/cli/azure/keyvault/key#az-keyvault-key-set-attributes), und überprüfen Sie dann die Datenverschlüsselung erneut, damit der Server wieder den Zustand *Verfügbar* erreicht.
 
 ### <a name="accidental-key-access-revocation-from-key-vault"></a>Versehentliche Sperrung des Zugriffs auf den Schlüssel durch Key Vault
@@ -142,4 +145,4 @@ Bei Azure Database for MySQL gelten für die Unterstützung der Verschlüsselung
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Erfahren Sie, wie Sie [Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel für Azure Database for MySQL über das Azure-Portal einrichten](howto-data-encryption-portal.md).
+Erfahren Sie, wie Sie Datenverschlüsselung mit einem vom Kunden verwalteten Schlüssel für Azure Database for MySQL über das [Azure-Portal](howto-data-encryption-portal.md) und die [Azure-Befehlszeilenschnittstelle](howto-data-encryption-cli.md) einrichten.

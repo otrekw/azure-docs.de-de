@@ -3,24 +3,24 @@ title: Bereitstellen von Datenfeedback in Azure Maps | Microsoft Azure Maps
 description: Stellen Sie Datenfeedback mithilfe des Microsoft Azure Maps-Feedbacktools bereit.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 08/19/2019
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: b53ea7cf3ec29d7bad7e65a535cd140877bcea09
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 4be775d8a6a8c476bcc659a902c7f43c12a6d6d0
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895510"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905331"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Bereitstellen von Datenfeedback in Azure Maps
 
 Azure Maps ist seit Mai 2018 verfügbar. Azure Maps bietet aktuelle Kartendaten, einfach zu verwendende REST-APIs und leistungsstarke SDKs zur Unterstützung unserer Unternehmenskunden in einer Vielzahl von geschäftlichen Anwendungsfällen. Die reale Welt ändert sich jede Sekunde, und es ist entscheidend für uns, dass wir für unsere Kunden eine tatsachenbasierte digitale Repräsentation bereitstellen. Unsere Kunden, die planen, Standorte zu öffnen oder zu schließen, benötigen unsere Karten, um schnell auf dem neuesten Stand zu sein. So können sie effizient Lieferung, Wartung oder Kundendienst an den richtigen Standorten planen. Wir haben die Website für Datenfeedback zu Azure Maps erstellt, um unseren Kunden die Bereitstellung von direktem Datenfeedback zu ermöglichen. Das Datenfeedback der Kunden geht direkt an unsere Datenanbieter und ihre Karten-Editoren. Sie können Feedback schnell auswerten und in unsere Mapping-Produkte integrieren.  
 
-Die [Website für Datenfeedback zu Azure Maps](https://feedback.azuremaps.com) bietet unseren Kunden eine einfache Möglichkeit, Feedback zu Kartendaten zu geben, insbesondere für geschäftliche POIs (Point of Interest) und Wohnadressen. In diesem Artikel erhalten Sie Informationen dazu, wie Sie mit der Website für Feedback zu Azure Maps auf verschiedene Weisen Feedback bereitstellen können.
+Die [Feedback-Website für Azure Maps-Daten (Vorschau)](https://feedback.azuremaps.com) bietet unseren Kunden eine einfache Möglichkeit, Feedback zu Kartendaten zu geben, insbesondere für geschäftliche POIs (Point of Interest) und Privatadressen. In diesem Artikel erhalten Sie Informationen dazu, wie Sie mit der Website für Feedback zu Azure Maps auf verschiedene Weisen Feedback bereitstellen können.
 
 ## <a name="add-a-business-place-or-a-residential-address"></a>Hinzufügen eines Geschäftsorts oder einer Wohnadresse 
 

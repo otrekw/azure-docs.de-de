@@ -7,12 +7,12 @@ ms.date: 11/06/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: aeb1e5ee00bd52ebb4bd93dec2f4a1eacb002fb9
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: a517f7a796b6543c8d60f0d1ebdba16afa0bc4b7
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94986530"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96751426"
 ---
 # <a name="use-properties-in-an-azure-iot-central-solution"></a>Verwenden von Eigenschaften in einer Azure IoT Central-Lösung
 
@@ -79,7 +79,7 @@ In diesem Beispiel werden zwei Eigenschaften gezeigt. Diese Eigenschaften bezieh
 
 * `@type` gibt den Typ der Funktion an: `Property`. Im vorherigen Beispiel wird auch der semantische Typ `Temperature` für beide Eigenschaften angezeigt.
 * `name` der Eigenschaft.
-* `schema` gibt den Datentyp für die Eigenschaft an. Dieser Wert kann ein einfacher Typ sein, z. B. „double“, „integer“, „Boolean“ oder „string“. Komplexe Objekttypen, Arrays und Zuordnungen werden ebenfalls unterstützt.
+* `schema` gibt den Datentyp für die Eigenschaft an. Dieser Wert kann ein einfacher Typ sein, z. B. „double“, „integer“, „Boolean“ oder „string“. Komplexe Objekttypen und Zuordnungen werden ebenfalls unterstützt.
 * `writable` Eigenschaften sind standardmäßig schreibgeschützt. Mit diesem Feld können Sie eine Eigenschaft als „schreibbar“ kennzeichnen.
 
 Über optionale Felder, z. B. Anzeigename und Beschreibung, können Sie der Schnittstelle und den Funktionen weitere Details hinzufügen.
@@ -160,11 +160,7 @@ hubClient.getTwin((err, twin) => {
 });
 ```
 
-In diesem Artikel wird der Einfachheit halber „Node.js“ verwendet. Vollständige Informationen zu Beispielen für Geräteanwendungen finden Sie in den folgenden Tutorials:
-
-* [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device-nodejs.md)
-* [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Python)](tutorial-connect-device-python.md)
-* [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Java)](tutorial-connect-device-java.md)
+In diesem Artikel wird der Einfachheit halber „Node.js“ verwendet. Vollständige Informationen und Anwendungsbeispiele für Geräte finden Sie im Tutorial [Erstellen einer Clientanwendung und Verbinden dieser Anwendung mit Ihrer Azure IoT Central-Anwendung](tutorial-connect-device.md).
 
 Die folgende Ansicht in der Azure IoT Central-Anwendung zeigt die Eigenschaften, die Sie sehen können. In der Ansicht wird aus der Eigenschaft **Gerätemodell** automatisch eine _schreibgeschützte Geräteeigenschaft_.
 
@@ -236,4 +232,4 @@ In der folgenden Ansicht werden die schreibbaren Eigenschaften gezeigt. Wenn Sie
 Nachdem Sie erfahren haben, wie Sie Eigenschaften in Ihrer Azure IoT Central-Anwendung verwenden können, lesen Sie jetzt:
 
 * [Payloads](concepts-telemetry-properties-commands.md)
-* [Erstellen einer Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device-nodejs.md)
+* [Tutorial: Erstellen einer Node.js-Clientanwendung und Verbinden der Anwendung mit Ihrer Azure IoT Central-Anwendung (Node.js)](tutorial-connect-device.md)

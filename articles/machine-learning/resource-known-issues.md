@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: troubleshooting
 ms.custom: troubleshooting, contperfq4
 ms.date: 11/09/2020
-ms.openlocfilehash: 46763bddd0f173ccf73edc54e5f2688d3bf6efc0
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 55ac11b7888a8e351b52554f76fb44af35633c16
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445390"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780976"
 ---
 # <a name="known-issues-and-troubleshooting-in-azure-machine-learning"></a>Bekannte Probleme und Problembehandlung in Azure Machine Learning
 
@@ -211,7 +211,10 @@ Falls Sie eine Dateifreigabe für andere Workloads (beispielsweise die Datenübe
     Wenn Sie den vorangestellten Schrägstrich („/“) nicht einschließen, müssen Sie das Arbeitsverzeichnis auf dem Computeziel als Präfix hinzufügen, z. B. `/mnt/batch/.../tmp/dataset`, um anzugeben, wo das Dataset eingebunden werden soll.
 
 ### <a name="mount-dataset"></a>Einbinden eines Datasets
-* **Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): In `azureml-sdk >=1.12.0` wurde eine Wiederholungslogik hinzugefügt, um dieses Problem zu behandeln. Wenn Sie frühere Versionen des azureml-sdk verwenden, führen Sie ein Upgrade auf die aktuelle Version durch. Wenn Sie bereits `azureml-sdk>=1.12.0` verwenden, erstellen Sie Ihre Umgebung neu, damit Sie über den neuesten Patch mit dem Fix verfügen.
+* **Dataset initialization failed:  Waiting for mount point to be ready has timed out** (Fehler bei der Initialisierung des Datasets: Timeout beim Warten auf Verfügbarkeit des Bereitstellungpunkts): 
+  * Wenn Sie keine Ausgangsregeln für [Netzwerksicherheitsgruppen](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview) haben und `azureml-sdk>=1.12.0` verwenden, aktualisieren Sie `azureml-dataset-runtime` und die zugehörigen Abhängigkeiten auf die neueste Version für die jeweilige Nebenversion. Wenn Sie das SDK in einer Ausführung verwenden, erstellen Sie die Umgebung neu, damit sie über den neuesten Patch mit dem Fix verfügt. 
+  * Wenn Sie `azureml-sdk<1.12.0` verwenden, führen Sie ein Upgrade auf die neueste Version aus.
+  * Wenn Sie über Ausgangsregeln für Netzwerksicherheitsgruppen verfügen, stellen Sie sicher, dass eine Ausgangsregel vorhanden ist, die sämtlichen Datenverkehr für das Diensttag `AzureResourceMonitor` zulässt.
 
 ### <a name="data-labeling-projects"></a>Datenbezeichnungsprojekte
 
