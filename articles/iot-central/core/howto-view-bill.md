@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 8f46c402c8c25a144cd4c12137aeabfdfa31e096
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 50d0119b08d2c76a5f6111e485408ebcdace83c6
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463133"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549020"
 ---
 # <a name="manage-your-bill-in-an-iot-central-application"></a>Verwalten Ihrer Rechnung in einer IoT Central-Anwendung
 
@@ -34,11 +34,11 @@ Um diesen Self-Service-Prozess durchzuführen, gehen Sie folgendermaßen vor:
 
 1. Wechseln Sie zur Seite **Preise** im Abschnitt **Verwaltung**.
 
-    ![Status der Testversion](media/howto-view-bill/freetrialbilling.png)
+    :::image type="content" source="media/howto-view-bill/freetrialbilling.png" alt-text="Status der Testversion":::
 
 1. Wählen Sie **In kostenpflichtigen Plan konvertieren** aus.
 
-    ![Umwandeln der Testversion](media/howto-view-bill/convert.png)
+    :::image type="content" source="media/howto-view-bill/convert.png" alt-text="Umwandeln der Testversion":::
 
 1. Wählen Sie die entsprechende Azure Active Directory-Instanz und dann das Azure-Abonnement aus, das für Ihre Anwendung mit kostenpflichtigem Tarif verwendet werden soll.
 
@@ -55,7 +55,7 @@ Im Preisabschnitt können Sie jederzeit ein Upgrade oder Downgrade Ihres Azure 
 
 1. Wechseln Sie zur Seite **Preise** im Abschnitt **Verwaltung**.
 
-    ![Durchführen eines Upgrades für den Tarif](media/howto-view-bill/pricing.png)
+    :::image type="content" source="media/howto-view-bill/pricing.png" alt-text="Upgrade des Tarifs":::
 
 1. Wählen Sie für das Upgrade oder Downgrade den **Tarif** und dann **Speichern** aus.
 

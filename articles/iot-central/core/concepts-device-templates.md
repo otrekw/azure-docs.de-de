@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: e82a377d62184c8ae1d2e8f076b228e36005887a
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 1a352849cb5bb8563a7e09500f081139a24e97ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992674"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750695"
 ---
 # <a name="what-are-device-templates"></a>Was sind Gerätevorlagen?
 
@@ -225,7 +225,7 @@ Dieses Beispiel zeigt zwei Eigenschaften (eine schreibgeschützte und eine besch
 
 - `@type` zum Angeben des Typs der Funktion (`Telemetry`, `Property` oder `Command`).  In einigen Fällen enthält der Typ einen semantischen Typ, damit IoT Central einige Annahmen darüber treffen kann, wie der Wert zu behandeln ist.
 - `name` für den Telemetriewert.
-- `schema` zum Angeben des Datentyps der Telemetrie oder Eigenschaft. Dieser Wert kann ein primitiver Typ sein, z. B. „double“, „integer“, „boolean“ oder „string“. Komplexe Objekttypen, Arrays und Zuordnungen werden ebenfalls unterstützt.
+- `schema` zum Angeben des Datentyps der Telemetrie oder Eigenschaft. Dieser Wert kann ein primitiver Typ sein, z. B. „double“, „integer“, „boolean“ oder „string“. Komplexe Objekttypen und Zuordnungen werden ebenfalls unterstützt.
 
 Über optionale Felder, z. B. Anzeigename und Beschreibung, können Sie der Schnittstelle und den Funktionen weitere Details hinzufügen.
 

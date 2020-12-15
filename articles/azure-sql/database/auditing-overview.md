@@ -10,12 +10,12 @@ ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 11/08/2020
 ms.custom: azure-synapse, sqldbrb=1
-ms.openlocfilehash: 8cf0652148ad54eeacdec874823ea680f39f670c
-ms.sourcegitcommit: 65d518d1ccdbb7b7e1b1de1c387c382edf037850
+ms.openlocfilehash: b09eb03994098f8cb68033f3c42309a77e15f91c
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94372726"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620990"
 ---
 # <a name="auditing-for-azure-sql-database-and-azure-synapse-analytics"></a>Überwachen von Azure SQL-Datenbank und Azure Synapse Analytics
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -65,6 +65,18 @@ Eine Überwachungsrichtlinie kann für eine spezifische Datenbank oder als [Stan
     > - Sie möchten andere Ereignistypen oder Kategorien für eine bestimmte Datenbank überwachen als die, die für die restlichen Datenbanken auf dem Server überwacht werden. Beispielsweise sollen Tabelleneinfügungen nur für eine bestimmte Datenbank überwacht werden.
    >
    > Andernfalls wird empfohlen, die Überwachung nur auf Serverebene zu aktivieren und die Überwachung auf Datenbankebene für alle Datenbanken deaktiviert zu lassen.
+
+#### <a name="remarks"></a>Bemerkungen
+
+- Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
+- Überwachungsprotokolle liegen im XEL-Format vor und können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) geöffnet werden.
+- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
+- Sie können Überwachungsprotokolle in ein Azure Storage-Konto hinter einem VNET oder einer Firewall schreiben. Spezielle Anweisungen finden Sie unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](audit-write-storage-account-behind-vnet-firewall.md).
+- Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](./audit-log-format.md).
+- Die Überwachung von [schreibgeschützten Replikaten](read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
+- Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
+- Anmeldungen werden vom Gateway an die bestimmte Instanz weitergeleitet, in der sich die Datenbank befindet.  Im Fall von AAD-Anmeldungen erfolgt die Überprüfung der Anmeldeinformationen vor dem Versuch, den Benutzer für die Anmeldung bei der angeforderten Datenbank zu verwenden.  Bei einem Fehler wird nie auf die angeforderte Datenbank zugegriffen, sodass keine Überwachung erfolgt.  Bei SQL-Anmeldungen werden die Anmeldeinformationen für die angeforderten Daten überprüft, sodass sie in diesem Fall überwacht werden können.  Erfolgreiche Anmeldungen, die die Datenbank offensichtlich erreichen, werden in beiden Fällen überwacht.
+- Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](threat-detection-overview.md).
 
 ## <a name="set-up-auditing-for-your-server"></a><a id="setup-auditing"></a>Einrichten der Überwachung für Ihren Server
 
@@ -120,17 +132,6 @@ Um das Schreiben von Überwachungsprotokollen in ein Speicherkonto zu konfigurie
   - Wenn Sie die Beibehaltungsdauer von „0“ (unbegrenzte Aufbewahrung) in einen anderen Wert ändern, beachten Sie, dass die Beibehaltung nur auf Protokolle angewendet wird, die nach dem Ändern des Beibehaltungswerts geschrieben wurden (Protokolle, die in dem Zeitraum geschrieben wurden, in dem die Beibehaltung auf unbegrenzt festgelegt war, bleiben auch nach Aktivieren der Beibehaltung erhalten).
 
   ![Speicherkonto](./media/auditing-overview/auditing_select_storage.png)
-
-#### <a name="remarks"></a>Bemerkungen
-
-- Überwachungsprotokolle werden in Ihrem Azure-Abonnement als **Anfügeblobs** in Azure Blob Storage geschrieben.
-- Überwachungsprotokolle liegen im XEL-Format vor und können mithilfe von [SQL Server Management Studio (SSMS)](/sql/ssms/download-sql-server-management-studio-ssms) geöffnet werden.
-- Wenn Sie eine unveränderliche Protokollspeicherung für Überwachungsereignisse auf Server- oder Datenbankebene konfigurieren möchten, sollten Sie der [von Azure Storage bereitgestellten Anleitung](../../storage/blobs/storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes) folgen. Stellen Sie sicher, dass Sie beim Konfigurieren des unveränderlichen Blobspeichers **Weitere Anfügungen zulassen** ausgewählt haben.
-- Sie können Überwachungsprotokolle in ein Azure Storage-Konto hinter einem VNET oder einer Firewall schreiben. Spezielle Anweisungen finden Sie unter [Schreiben von Überwachungsprotokollen in ein Speicherkonto hinter einem VNET oder einer Firewall](audit-write-storage-account-behind-vnet-firewall.md).
-- Nachdem Sie Ihre Überwachungseinstellungen konfiguriert haben, können Sie das neue Feature der Bedrohungserkennung aktivieren und die E-Mail-Konten konfigurieren, an die Sicherheitswarnungen gesendet werden sollen. Mit der Bedrohungserkennung können Sie proaktive Warnungen bei anomalen Datenbankaktivitäten erhalten, die auf mögliche Sicherheitsbedrohungen hinweisen können. Weitere Informationen finden Sie unter [Erste Schritte mit der Bedrohungserkennung](threat-detection-overview.md).
-- Informationen zum Protokollformat, zur Hierarchie des Speicherordners und zu Namenskonventionen finden Sie in der [Formatreferenz für Blobüberwachungsprotokolle](./audit-log-format.md).
-- Wenn Sie die Azure AD-Authentifizierung verwenden, werden Datensätze zu Anmeldungsfehlern im SQL-Überwachungsprotokoll *nicht* angezeigt. Um Überwachungsdatensätze zu Fehlern bei der Anmeldung anzuzeigen, müssen Sie das [Azure Active Directory-Portal](../../active-directory/reports-monitoring/reference-sign-ins-error-codes.md) verwenden, in dem Details zu diesen Ereignissen protokolliert werden.
-- Die Überwachung von [schreibgeschützten Replikaten](read-scale-out.md) wird automatisch aktiviert. Weitere Informationen zur Hierarchie der Speicherordner, zu Namenskonventionen und zum Protokollformat finden Sie unter [Format für SQL-Datenbank-Überwachungsprotokolle](audit-log-format.md).
 
 ### <a name="audit-to-log-analytics-destination"></a><a id="audit-log-analytics-destination"></a>Überwachen in Log Analytics-Ziel
   

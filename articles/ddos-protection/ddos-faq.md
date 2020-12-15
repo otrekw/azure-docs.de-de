@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/28/2020
 ms.author: yitoh
-ms.openlocfilehash: 6c475971f604c951280d0351d593cd5d96879d31
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: c09f8c5ae4a742e6caa489ee29043f500617bb24
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992402"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746487"
 ---
 # <a name="azure-ddos-protection-standard-frequent-asked-questions"></a>Azure DDoS Protection Standard: häufig gestellte Fragen
 
@@ -29,7 +29,7 @@ Distributed Denial-of-Service oder DDoS ist eine Art von Angriff, bei dem ein An
 Azure DDoS Protection Standard, kombiniert mit bewährten Methoden des Anwendungsentwurfs, bietet erweiterte Features zur DDoS-Risikominderung, um vor DDoS-Angriffen zu schützen. Er wird automatisch optimiert, um Ihre spezifischen Azure-Ressourcen in einem virtuellen Netzwerk zu schützen. Der Schutz kann einfach in jedem neuen oder vorhandenen virtuellen Netzwerk aktiviert werden und erfordert keine Änderung von Anwendung oder Ressource. Er hat mehrere Vorteile gegenüber dem Basisdienst, z.B. Protokollierung, Warnungen und Telemetrie. Weitere Informationen finden Sie unter [Übersicht über Azure DDoS Protection Standard](ddos-protection-overview.md). 
 
 ## <a name="what-about-protection-at-the-service-layer-layer-7"></a>Was gilt für Schutz auf Dienstebene (Ebene 7)?
-Kunden können den Dienst Azure DDoS Protection in Kombination mit der [SKU Application Gateway WAF](../web-application-firewall/ag/ag-overview.md) für Schutz sowohl auf Netzwerkebene (Ebene 3 und 4, geboten vom Dienst Azure DDoS Protection) als auch auf Anwendungsebene (Ebene 7, geboten von der SKU Application Gateway WAF) nutzen.
+Kunden können den Dienst Azure DDoS Protection in Kombination mit einer Web Application Firewall (WAF) zum Schutz sowohl auf Netzwerkebene (Ebene 3 und 4, angeboten von Azure DDoS Protection Standard) als auch auf Anwendungsebene (Ebene 7, angeboten von einer WAF) verwenden. WAF-Angebote umfassen [Azure Application Gateway-WAF-SKU](../web-application-firewall/ag/ag-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) sowie Web Application Firewall-Angebote von Drittanbietern, die in [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps?page=1&search=web%20application%20firewall) verfügbar sind.
 
 ## <a name="are-services-unsafe-in-azure-without-the-service"></a>Sind Dienste in Azure ohne den Dienst unsicher?
 In Azure ausgeführte Dienste sind grundsätzlich durch den Dienst Azure DDoS Protection Basic geschützt, der zum Schutz der Infrastruktur von Azure eingesetzt wird. Der Schutz, der die Infrastruktur absichert, hat jedoch eine viel höhere Schwelle, als die meisten Anwendungen bewältigen können, und bietet keine Telemetrie oder Warnfunktionen. Während also ein Datenverkehrsaufkommen von der Plattform als harmlos eingestuft werden kann, kann es für die Anwendung, die es empfängt, verheerend sein. 
@@ -41,6 +41,9 @@ Durch die Integration in den Dienst Azure DDoS Protection Standard wird die Anwe
 
 ## <a name="are-classicrdfe-protected-resources-supported"></a>Werden klassische bzw. durch RDFE geschützte Ressourcen unterstützt?
 In der Vorschauphase werden nur ARM-basierte geschützte Ressourcen unterstützt. VMs in klassischen/RDFE-Bereitstellungen werden nicht unterstützt. Unterstützung für klassische/RDFE-Ressourcen ist zurzeit nicht geplant. Weitere Informationen finden Sie unter [Azure DDoS Protection Standard – Referenzarchitekturen](ddos-protection-reference-architectures.md).
+
+## <a name="can-i-protect-my-paas-resources-using-ddos-protection"></a>Kann ich meine PaaS-Ressourcen mit DDoS Protection schützen?
+Öffentliche IP-Adressen, die mehrinstanzenfähigen Einzel-VIP-PaaS-Diensten zugeordnet sind, werden derzeit nicht unterstützt. Beispiele für nicht unterstützte Ressourcen sind Speicher-VIPs, Event Hub-VIPs und App Services-/Cloud Services-Anwendungen. Weitere Informationen finden Sie unter [Azure DDoS Protection Standard – Referenzarchitekturen](ddos-protection-reference-architectures.md).
 
 ## <a name="can-i-protect-my-on-premise-resources-using-ddos-protection"></a>Kann ich meine lokalen Ressourcen mithilfe von DDoS Protection schützen?
 Die öffentlichen Endpunkte Ihres Diensts müssen mit einem VNET in Azure verbunden sein, damit sie für DDoS-Schutz aktiviert werden können. Beispiele hierfür sind:

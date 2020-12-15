@@ -12,12 +12,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
 - devx-track-azurecli
-ms.openlocfilehash: 8f7baca94d653d9851c506068ccf7ecf84063641
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 3218df4601ef7a5e1b1e04c20c89eefc367b720b
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832176"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746453"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Visualisieren von Echtzeit-Sensordaten aus Azure IoT Hub in einer Webanwendung
 
@@ -184,7 +184,7 @@ In diesem Abschnitt stellen Sie eine Web-App in App Service bereit und implement
 
 5. Um den Code für App Service bereitzustellen, verwenden Sie Ihre [Anmeldeinformationen für die Bereitstellung auf Benutzerebene](../app-service/deploy-configure-credentials.md). Ihre Anmeldeinformationen für die Bereitstellung auf Benutzerebene unterscheiden sich von Ihren Azure-Anmeldeinformationen und werden für lokale Git- und FTP-Bereitstellungen für eine Web-App verwendet. Nachdem sie festgelegt wurden, gelten sie für alle App Service-Apps in allen Abonnements unter Ihrem Azure-Konto. Wenn Sie zuvor bereits Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt haben, können Sie diese verwenden.
 
-   Wenn Sie zuvor noch keine Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt oder Ihr Kennwort vergessen haben, führen Sie den folgenden Befehl aus. Ihr Benutzername für die Bereitstellung muss in Azure eindeutig sein und darf bei lokalen Git-Pushes kein „@“-Symbol enthalten. Geben Sie Ihr neues Kennwort ein, und bestätigen Sie es, sobald Sie dazu aufgefordert werden. Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole.
+   Wenn Sie zuvor noch keine Anmeldeinformationen für die Bereitstellung auf Benutzerebene festgelegt oder Ihr Kennwort vergessen haben, führen Sie den folgenden Befehl aus. Ihr Benutzername für die Bereitstellung muss in Azure eindeutig sein und darf bei lokalen Git-Pushes kein „\@“-Symbol enthalten. Geben Sie Ihr neues Kennwort ein, und bestätigen Sie es, sobald Sie dazu aufgefordert werden. Das Kennwort muss mindestens acht Zeichen lang sein und zwei der folgenden drei Elemente enthalten: Buchstaben, Zahlen und Symbole.
 
    ```azurecli-interactive
    az webapp deployment user set --user-name <your deployment user name>
