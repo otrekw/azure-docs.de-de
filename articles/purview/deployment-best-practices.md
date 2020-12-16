@@ -1,18 +1,18 @@
 ---
 title: Best Practices für die Bereitstellung
 description: Dieser Artikel enthält bewährte Methoden für die Bereitstellung von Azure Purview. Azure Purview ermöglicht Benutzern das Registrieren, Ermitteln, Verstehen und Nutzen von Datenquellen.
-author: hophan
+author: hophanms
 ms.author: hophan
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/23/2020
-ms.openlocfilehash: cae4904d0b3dacc608c7b41b638dc507b3cda6b5
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b2841f69ebe91dac748a4b2e24dc0c33756b1da
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550446"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400691"
 ---
 # <a name="azure-purview-deployment-best-practices"></a>Bewährte Methoden zur Bereitstellung von Azure Purview
 
@@ -53,7 +53,7 @@ Im allgemeinen Ansatz werden diese übergeordneten Ziele in verschiedene Kategor
 |---------|---------|
 |Ermittlung|Administratorbenutzer sollten in der Lage sein, Azure- und Nicht-Azure-Datenquellen (einschließlich lokaler Quellen) zu scannen, um automatisch Informationen zu den Datenressourcen zu erfassen.|
 |Klassifizierung|Die Plattform sollte Daten auf Basis einer Stichprobe der Daten automatisch klassifizieren und eine manuelle Außerkraftsetzung mithilfe benutzerdefinierter Klassifizierungen ermöglichen.|
-|Verbrauch|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
+|Nutzung|Die geschäftlichen Benutzer sollten in der Lage sein, Informationen zu den einzelnen Ressourcen sowohl für geschäftliche als auch für technische Metadaten zu finden.|
 |Herkunft|Jede Ressource muss eine grafische Ansicht der zugrunde liegenden Datasets anzeigen, damit die Benutzer die ursprünglichen Quellen und die vorgenommenen Änderungen verstehen.|
 |Zusammenarbeit|Die Plattform muss Benutzern die Zusammenarbeit ermöglichen, indem zusätzliche Informationen zu den einzelnen Datenressourcen bereitgestellt werden.|
 |Berichterstellung|Die Benutzer müssen in der Lage sein, die Berichte über die Datenumgebung einschließlich vertraulicher Daten und Daten, die eine zusätzliche Anreicherung benötigen, anzuzeigen.|
@@ -88,7 +88,7 @@ Einige wichtige Projektbeteiligte, die Sie möglicherweise einbeziehen möchten:
 |---------|---------|
 |**Chief Data Officer**|Der CDO beaufsichtigt eine Reihe von Funktionen, die Datenverwaltung, Datenqualität, Masterdatenverwaltung, Data Science, Business Intelligence und das Erstellen einer Datenstrategie umfassen können. Er kann der Sponsor des Purview-Implementierungsprojekts sein.|
 |**Domänen-/unternehmensbesitzende Person**|Eine Geschäftsperson, die die Verwendung von Tools beeinflusst und die Kontrolle über das Budget hat.|
-|**Data Analyst**|Er kann ein Geschäftsproblem formulieren und Daten analysieren, um Führungskräfte bei Geschäftsentscheidungen zu unterstützen.|
+|**Datenanalyst**|Er kann ein Geschäftsproblem formulieren und Daten analysieren, um Führungskräfte bei Geschäftsentscheidungen zu unterstützen.|
 |**Datenarchitekt**|Er entwirft Datenbanken für unternehmenswichtige Branchen-Apps und entwirft und implementiert gleichzeitig die Datensicherheit.|
 |**Datentechniker**|Er betreibt und verwaltet den Datenstapel, pullt Daten aus verschiedenen Quellen, integriert Daten und bereitet sie vor und richtet Datenpipelines ein.|
 |**Data Scientist**|Er erstellt analytische Modelle und richtet Datenprodukte ein, auf die APIs zugreifen können.|

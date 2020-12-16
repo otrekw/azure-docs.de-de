@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 12/03/2020
-ms.openlocfilehash: 195ddfcc3c781c1866a7751f989c9460463edbb9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: c824e0abea7320a20441e51caa2a05d534ff61b3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558163"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092685"
 ---
 # <a name="automatically-label-your-data-in-azure-purview"></a>Automatisches Bezeichnen Ihrer Daten in Azure Purview
 
@@ -38,7 +38,7 @@ Purview verwendet die gleichen Klassifizierungen, auch als vertrauliche Informat
 
 Vertraulichkeitsbezeichnungen in Azure Purview können zum automatischen Anwenden von Bezeichnungen auf Dateien und Datenbankspalten verwendet werden.
 
-Weitere Informationen finden Sie unter
+   Weitere Informationen finden Sie unter
 
 - [Informationen zu Vertraulichkeitsbezeichnungen](/microsoft-365/compliance/sensitivity-labels) in der Microsoft 365-Dokumentation
 - [Was sind Regeln für die automatische Bezeichnung?](#what-are-autolabeling-rules)
@@ -68,7 +68,7 @@ Vertraulichkeitsbezeichnungen werden in Azure Purview für die folgenden Datenty
 
 Wenn Sie nicht bereits über Vertraulichkeitsbezeichnungen verfügen, müssen Sie sie erstellen und für Azure Purview verfügbar machen. Vorhandene Vertraulichkeitsbezeichnungen können auch geändert werden, um sie für Azure Purview verfügbar zu machen.
 
-Weitere Informationen finden Sie unter
+   Weitere Informationen finden Sie unter
 
 - [Lizenzanforderungen](#licensing-requirements)
 - [Erweitern von Vertraulichkeitsbezeichnungen auf Azure Purview](#extending-sensitivity-labels-to-azure-purview)
@@ -190,7 +190,6 @@ Weitere Informationen zum Einrichten von Scans für verschiedene Ressourcen in A
 |**Azure Blob Storage**     |[Registrieren und Überprüfen von Azure Blob Storage](register-scan-azure-blob-storage-source.md)         |
 |**Azure Data Lake-Speicher**     |[Registrieren und Überprüfen von Azure Data Lake Storage Gen1](register-scan-adls-gen1.md) </br>[Registrieren und Überprüfen von Azure Data Lake Storage Gen2](register-scan-adls-gen2.md)         |
 |**Azure SQL-Datenbank-Instanzen**|[Registrieren und Überprüfen von Azure SQL-Datenbank](register-scan-azure-sql-database.md) </br>[Registrieren und Überprüfen einer verwalteten Azure SQL-Datenbank-Instanz](register-scan-azure-sql-database-managed-instance.md)|
-|**Speicherkonten hinter Firewalls**     |[Überprüfen von Speicherkonten hinter einer Firewall in Azure Purview](scan-sqlresource-firewall.md)         |
 | | |
 
 ## <a name="view-labels-on-assets"></a>Anzeigen von Bezeichnungen für Ressourcen

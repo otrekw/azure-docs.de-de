@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 10/23/2020
+ms.date: 11/20/2020
 ms.author: jeedes
-ms.openlocfilehash: ccf945f8bfec85a18493d515dce48f4cb3e3b612
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4acc4c0cec530b8f83648042cd7a417992257543
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182351"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602018"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-software-ag-cloud"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit Software AG Cloud
 
@@ -77,9 +77,9 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
-    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`.
+    a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://*.softwareag.cloud/auth/realms/TENANT-NAME/broker/IDENTITY-PROVIDER-NAME/endpoint`.
 
-    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://<SUBDOMAIN>.softwareag.cloud/auth/realms/TENANT-NAME`.
+    b. Geben Sie im Textfeld **Bezeichner (Entitäts-ID)** eine URL im folgenden Format ein: `https://*.softwareag.cloud/auth/realms/TENANT-NAME`.
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächliche Anmelde-URL und den tatsächlichen Bezeichner. Diese Werte erhalten Sie vom [Supportteam für den Software AG Cloud-Client](mailto:support@softwareag.com). Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -121,19 +121,19 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1.  Klicken Sie auf **Administration** (Verwaltung).
 
-    ![Konfigurieren von Software AG Cloud 1](./media/software-ag-cloud-tutorial/admin.png)
+    ![Konfigurieren der Software AG Cloud: Administration](./media/software-ag-cloud-tutorial/admin.png)
 
 1. Navigieren Sie zu **Single-sign on > Add identity provider** (Einmaliges Anmelden > Identitätsanbieter hinzufügen).
 
-    ![Konfigurieren von Software AG Cloud 2](./media/software-ag-cloud-tutorial/add-identity-provider.png)
+    ![Konfigurieren von Software AG Cloud: Identitätsanbieter](./media/software-ag-cloud-tutorial/add-identity-provider.png)
 
 1. Führen Sie auf der folgenden Seite die folgenden Schritte aus:
 
-    ![Konfigurieren von Software AG Cloud 3](./media/software-ag-cloud-tutorial/saml-1.png)
+    ![Konfigurieren von Software AG Cloud: Folgeschritte](./media/software-ag-cloud-tutorial/saml-1.png)
 
     a. Geben Sie in das Textfeld **Identity provider display name** (Anzeigename des Identitätsanbieters) einen gültigen Namen ein, etwa `azure ad`.
 
-    b. Fügen Sie in das Textfeld **Identity provider unique identifier for use in Software AG Cloud redirect URI** (Eindeutiger Bezeichner des Identitätsanbieters zur Verwendung im Software AG Cloud-Umleitungs-URI) die **Entitäts-ID** ein, die Sie aus dem Azure-Portal kopiert haben.
+    b. Geben Sie im Textfeld **Identity provider unique identifier for use in Software AG Cloud redirect URI** (Eindeutiger Bezeichner des Identitätsanbieters zur Verwendung im Software AG Cloud-Umleitungs-URI) einen eindeutigen Namen für den Identitätsanbieter ein. Das Feld für den **Software AG Cloud-Umleitungs-URI** wird aktualisiert und mit dem URI aufgefüllt. Kopieren Sie diesen URI, und verwenden Sie ihn, um die **Entitäts-ID** und andere Informationen im Azure-Portal gemäß den definierten Mustern zu konfigurieren.
 
     c. Importieren Sie unter **Identity provider configuration** (Identitätsanbieterkonfiguration) die **Verbundmetadaten-XML-Datei**, und klicken Sie auf **Weiter**.
 
@@ -147,11 +147,12 @@ In diesem Abschnitt wird in Software AG Cloud ein Benutzer mit dem Namen Britta 
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für Software AG Cloud weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Wenn Microsoft Azure in Software AG Cloud als Anbieter konfiguriert ist, können Sie zu `www.softwareag.cloud` navigieren, auf die Anmeldeschaltfläche klicken und den Umgebungsnamen eingeben. Klicken Sie auf dem nächsten Bildschirm auf den Link „Mit <IDP NAME> anmelden“, und geben Sie die Anmeldeinformationen ein. Nachdem Sie sich authentifiziert haben, werden Sie angemeldet, und die Homepage von Software AG Cloud wird angezeigt.
 
-2. Rufen Sie direkt die Software AG Cloud-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die Software AG Cloud-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „Software AG Cloud“ klicken, werden Sie zur Anmelde-URL für Software AG Cloud umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie unter „Meine Apps“ auf die Kachel „Software AG Cloud“ klicken, werden Sie zur Anmelde-URL für Software AG Cloud umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+
 
 ## <a name="next-steps"></a>Nächste Schritte
 

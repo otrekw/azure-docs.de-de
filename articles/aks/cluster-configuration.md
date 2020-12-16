@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: jpalma
 author: palma21
-ms.openlocfilehash: dcd9ec52992da8037bb498dc09701879c4c94667
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: 439714f8fe4a6373f2ffce80e744802dd19b67f0
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96572574"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928782"
 ---
 # <a name="configure-an-aks-cluster"></a>Konfigurieren eines AKS-Clusters
 
@@ -46,13 +46,13 @@ Registrieren Sie das Feature `UseCustomizedUbuntuPreview`:
 az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-list) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -125,14 +125,14 @@ az feature register --name UseCustomizedUbuntuPreview --namespace Microsoft.Cont
 
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-list) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedContainerRuntime')].{Name:name,State:properties.state}"
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/UseCustomizedUbuntuPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -194,13 +194,13 @@ Registrieren Sie das Feature `Gen2VMPreview`:
 az feature register --name Gen2VMPreview --namespace Microsoft.ContainerService
 ```
 
-Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature?view=azure-cli-latest#az-feature-list&preserve-view=true) überprüfen:
+Es kann einige Minuten dauern, bis der Status als **Registriert** angezeigt wird. Sie können den Registrierungsstatus mithilfe des Befehls [az feature list](/cli/azure/feature#az-feature-list) überprüfen:
 
 ```azurecli
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/Gen2VMPreview')].{Name:name,State:properties.state}"
 ```
 
-Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider?view=azure-cli-latest#az-provider-register&preserve-view=true) aktualisieren:
+Wenn der Status als registriert angezeigt wird, können Sie die Registrierung des `Microsoft.ContainerService`-Ressourcenanbieters mit dem Befehl [az provider register](/cli/azure/provider#az-provider-register) aktualisieren:
 
 ```azurecli
 az provider register --namespace Microsoft.ContainerService
@@ -302,7 +302,7 @@ Denken Sie bei der Arbeit mit der Knotenressourcengruppe daran, dass Folgendes n
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Erfahren Sie, wie Sie [ein Upgrade der Knotenimages](node-image-upgrade.md) in Ihrem Cluster durchführen.
+- Erfahren Sie, wie Sie ein [Upgrade der Knotenimages](node-image-upgrade.md) in Ihrem Cluster durchführen.
 - Unter [Upgrade eines Azure Kubernetes Service-Clusters (AKS)](upgrade-cluster.md) erfahren Sie, wie Sie Ihren Cluster auf die neueste Version von Kubernetes aktualisieren können.
 - Weitere Informationen zu [`containerd` und Kubernetes](https://kubernetes.io/blog/2018/05/24/kubernetes-containerd-integration-goes-ga/)
 - In der Liste der [Häufig gestellten Fragen zu AKS](faq.md) finden Sie Antworten auf einige häufig gestellte Fragen zu AKS.
