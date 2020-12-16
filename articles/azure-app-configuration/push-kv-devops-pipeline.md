@@ -2,17 +2,17 @@
 title: Pushen von Einstellungen an App Configuration mit Azure Pipelines
 description: Hier erfahren Sie, wie Sie Schlüsselwerte mithilfe von Azure Pipelines in einen App Configuration-Speicher pushen.
 services: azure-app-configuration
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.topic: how-to
 ms.date: 07/27/2020
-ms.author: lcozzens
-ms.openlocfilehash: 936be917d5b494c9d71386440c711ef6c29ffb45
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: alkemper
+ms.openlocfilehash: fd3f7dbfd824360dcba9f8a166c579e3b55527ba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183497"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932114"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Pushen von Einstellungen an App Configuration mit Azure Pipelines
 
@@ -27,7 +27,7 @@ Mit der Aufgabe [Azure App Configuration Push](https://marketplace.visualstudio.
 
 ## <a name="create-a-service-connection"></a>Erstellen einer Dienstverbindung
 
-Über eine Dienstverbindung können Sie von Ihrem Azure DevOps-Projekt aus auf Ressourcen in Ihrem Azure-Abonnement zugreifen.
+Über eine [Dienstverbindung](/azure/devops/pipelines/library/service-endpoints) können Sie von Ihrem Azure DevOps-Projekt aus auf Ressourcen in Ihrem Azure-Abonnement zugreifen.
 
 1. Navigieren Sie in Azure DevOps zu dem Projekt mit Ihrer Zielpipeline, und öffnen Sie links unten die **Projekteinstellungen**.
 1. Wählen Sie unter **Pipelines** die Option **Dienstverbindungen** und anschließend rechts oben die Option **Neue Dienstverbindung** aus.

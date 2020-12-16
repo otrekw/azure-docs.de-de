@@ -3,12 +3,12 @@ title: Unterstützung des Verschiebevorgangs nach Ressourcentyp
 description: Eine Liste von Azure-Ressourcentypen, die in eine neue Ressourcengruppe oder ein neues Abonnement verschoben werden können.
 ms.topic: conceptual
 ms.date: 12/07/2020
-ms.openlocfilehash: 226686e51c8b59b6963609a95a2cb3c2cc03d621
-ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
+ms.openlocfilehash: 0b1304b273523d42ad62f4e392fb803e1c174b69
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96780993"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96937524"
 ---
 # <a name="move-operation-support-for-resources"></a>Unterstützung des Verschiebevorgangs für Ressourcen
 
@@ -1423,7 +1423,7 @@ Navigieren Sie direkt zu einem Ressourcenanbieter-Namespace:
 > | networkinterfaces | Ja | Ja |
 > | networkprofiles | Nein | Nein |
 > | networksecuritygroups | Ja | Ja |
-> | networkwatchers | Ja | Nein |
+> | networkwatchers | Nein | Nein |
 > | networkwatchers/connectionmonitors | Ja | Nein |
 > | networkwatchers/flowlogs | Ja | Nein |
 > | networkwatchers/pingmeshes | Ja | Nein |

@@ -4,12 +4,12 @@ description: Richten Sie Webtests in Application Insights ein. Erhalten Sie Bena
 ms.topic: conceptual
 ms.date: 09/16/2019
 ms.reviewer: sdash
-ms.openlocfilehash: 56644a4eb2f91dcce3bc2ee557542da75408ca83
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 82b433407906c09d38a46c842334153525fb3c17
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93075142"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007924"
 ---
 # <a name="monitor-the-availability-of-any-website"></a>Überwachen der Verfügbarkeit von Websites
 
@@ -31,13 +31,13 @@ Es gibt drei Arten von Verfügbarkeitstests:
 
 Damit Sie einen Verfügbarkeitstest erstellen können, müssen Sie zunächst eine Application Insights-Ressource erstellen. Wenn Sie bereits eine Ressource erstellt haben, gehen Sie zum nächsten Abschnitt, [und erstellen Sie einen URL-Pingtest](#create-a-url-ping-test).
 
-Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Entwicklertools** > **Application Insights** , und [erstellen Sie eine Application Insights-Ressource](create-new-resource.md).
+Klicken Sie im Azure-Portal auf **Ressource erstellen** > **Entwicklertools** > **Application Insights**, und [erstellen Sie eine Application Insights-Ressource](create-new-resource.md).
 
 ## <a name="create-a-url-ping-test"></a>Erstellen eines URL-Pingtests
 
 Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein ICMP (Internet Control Message Protocol) ein, um die Verfügbarkeit der jeweiligen Website zu prüfen. Stattdessen verwendet er erweiterte Funktionen von HTTP-Anforderungen, um zu überprüfen, ob ein Endpunkt reagiert. Außerdem wird die Leistung gemessen, die in Zusammenhang mit dieser Antwort steht, und es können benutzerdefinierte Erfolgskriterien festgelegt werden, die an erweiterte Features wie das Analysieren von abhängigen Anforderungen und das Zulassen von Wiederholungsversuchen gekoppelt sind.
 
-Öffnen Sie den Bereich „Verfügbarkeit“, und klicken Sie auf **Test erstellen** , um Ihre erste Verfügbarkeitsanforderung zu erstellen.
+Öffnen Sie den Bereich „Verfügbarkeit“, und klicken Sie auf **Test erstellen**, um Ihre erste Verfügbarkeitsanforderung zu erstellen.
 
 ![Mindestens die URL der Website eintragen](./media/monitor-web-app-availability/availability-create-test-001.png)
 
@@ -49,7 +49,7 @@ Der Begriff „URL-Pingtest“ ist irreführend. Der Test setzt nämlich kein IC
 |**Abhängige Anforderungen analysieren**| Der Test fordert Bilder, Skripts, Formatdateien und andere Dateien an, die Teil der zu testenden Webseite sind. Die aufgezeichnete Antwortzeit enthält auch die Zeit, die zum Abrufen dieser Dateien erforderlich ist. Der Test schlägt fehl, wenn eine dieser Ressourcen innerhalb des Zeitlimits für den gesamten Test nicht erfolgreich heruntergeladen werden kann. Wenn die Option nicht aktiviert ist, wird beim Test nur die Datei unter der von Ihnen angegebenen URL angefordert. Wenn diese Option aktiviert wird, wird strenger geprüft. Der Test könnte in Fällen fehlschlagen, die möglicherweise beim manuellen Durchsuchen der Website nicht auftreten würden.
 |**Enable retries** (Wiederholungen aktivieren)|Wenn der Test fehlschlägt, wird er nach kurzer Zeit wiederholt. Nur wenn drei aufeinander folgende Versuche scheitern, wird ein Fehler gemeldet. Nachfolgende Tests werden dann in der üblichen Häufigkeit ausgeführt. Die Wiederholung wird bis zum nächsten Erfolg vorübergehend eingestellt. Diese Regel wird an jedem Teststandort unabhängig angewendet. **Es wird empfohlen, diese Option zu verwenden.** Im Durchschnitt treten ca. 80% der Fehler bei einer Wiederholung nicht mehr auf.|
 |**Testhäufigkeit**| Legt fest, wie oft der Test von jedem Teststandort aus ausgeführt wird. Mit einer Standardfrequenz von fünf Minuten und fünf Teststandorten wird Ihre Website im Durchschnitt jede Minute getestet.|
-|**Teststandorte**| Die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. **Es wird empfohlen, mindestens fünf Teststandorte festzulegen** , um sicherzustellen, dass Sie Probleme mit Ihrer Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
+|**Teststandorte**| Die Orte, von denen aus unsere Server Webanforderungen an Ihre URL senden. **Es wird empfohlen, mindestens fünf Teststandorte festzulegen**, um sicherzustellen, dass Sie Probleme mit Ihrer Website von Netzwerkproblemen unterscheiden können. Sie können bis zu 16 Standorte auswählen.
 
 **Wenn Ihre URL im öffentlichen Internet nicht sichtbar ist, können auswählen, dass Ihre Firewall geöffnet werden soll, sodass nur die Testtransaktionen passieren können.** Weitere Informationen zu Firewallausnahmen für unsere Agents für Verfügbarkeitstests finden Sie im [Leitfaden für Verfügbarkeitstests](./ip-addresses.md#availability-tests).
 
@@ -86,20 +86,6 @@ Beim Bereitstellen eines URL-Pingtests für die Verfügbarkeit mithilfe von Azur
 | USDoD, Osten     | usgov-ddeast-azr    |
 | USDoD, Mitte  | usgov-ddcentral-azr |
 
-#### <a name="us-sec"></a>US Sec
-
-| Anzeigename | Auffüllungsname |
-|--------------|-----------------|
-| US Sec West   | ussec-west-azr  |
-| US Sec East   | ussec-east-azr  |
-
-#### <a name="us-nat"></a>US Nat
-
-| Anzeigename | Auffüllungsname |
-|--------------|-----------------|
-| US Nat East   | usnat-east-azr  |
-| US Nat West   | usnat-west-azr  |
-
 #### <a name="azure"></a>Azure
 
 | Anzeigename                           | Auffüllungsname   |
@@ -125,7 +111,7 @@ Beim Bereitstellen eines URL-Pingtests für die Verfügbarkeit mithilfe von Azur
 
 Verfügbarkeitstestergebnisse können sowohl in Zeilenansichten als auch in Punktdiagrammen visualisiert werden.
 
-Klicken Sie nach einigen Minuten auf **Aktualisieren** , um Ihre Testergebnisse anzuzeigen.
+Klicken Sie nach einigen Minuten auf **Aktualisieren**, um Ihre Testergebnisse anzuzeigen.
 
 ![Screenshot: Seite „Verfügbarkeit“, auf der die Schaltfläche „Aktualisieren“ hervorgehoben ist](./media/monitor-web-app-availability/availability-refresh-002.png)
 

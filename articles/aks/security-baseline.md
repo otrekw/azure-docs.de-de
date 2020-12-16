@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 6612e6982ae4826869134dfa46b35a3f202d4bbb
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 29bcf2fdd3e20b28b1f2cb014137cfba37ccaf2e
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183242"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931808"
 ---
 # <a name="azure-security-baseline-for-azure-kubernetes-service"></a>Azure-Sicherheitsbaseline für Azure Kubernetes Service
 
@@ -178,7 +178,7 @@ Verwenden Sie beliebige der integrierten tagbezogenen Azure Policy-Definitionen
 
 Mit Netzwerkrichtlinien können Sie den Zugriff auf bestimmte Netzwerkpfade im Cluster basierend auf Namespaces und Bezeichnungsselektoren zulassen oder verweigern. Verwenden Sie diese Namespaces und Bezeichnungen als Deskriptoren für Datenverkehrs-Konfigurationsregeln. Verwenden Sie Azure PowerShell oder die Azure CLI, um Ressourcen anhand ihrer Tags zu suchen oder Aktionen auszuführen.
 
-- [Azure Policy mit CLI](/cli/azure/policy?view=azure-cli-latest)
+- [Azure Policy mit CLI](/cli/azure/policy)
 
 - [Erstellen und Verwenden von Tags](../azure-resource-manager/management/tag-resources.md)
 
@@ -382,7 +382,7 @@ Verwenden Sie die Azure CLI für Vorgänge wie „Abrufen von Zugriffsanmeldeinf
 
 - [Integration von AKS in Azure AD](./azure-ad-integration-cli.md)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Überwachen der Identität und des Zugriffs](../security-center/security-center-identity-access.md)
 
@@ -735,7 +735,7 @@ Beachten Sie, dass sich der Prozess, mit dem Windows Server-Knoten auf dem neues
 
 Verwenden Sie das PowerShell-Cmdlet Get-AzSecurityTask, um den Abruf von Sicherheitstasks zu automatisieren, deren Durchführung Security Center empfiehlt, um den Sicherheitsstatus zu erhöhen und die Ergebnisse der Sicherheitsrisikoüberprüfung zu beheben.
 
-- [Verwenden von PowerShell zum Anzeigen von Sicherheitsrisiken, die von Azure Security Center erkannt werden](/powershell/module/az.security/get-azsecuritytask?view=azps-3.3.0)
+- [Verwenden von PowerShell zum Anzeigen von Sicherheitsrisiken, die von Azure Security Center erkannt werden](/powershell/module/az.security/get-azsecuritytask)
 
 **Azure Security Center-Überwachung**: Ja
 
@@ -763,7 +763,7 @@ Obwohl klassische Azure-Ressourcen über Resource Graph ermittelt werden können
 
 - [Erstellen von Abfragen mit Azure Graph](../governance/resource-graph/first-query-portal.md)
 
-- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription?view=azps-3.0.0)
+- [Anzeigen Ihrer Azure-Abonnements](/powershell/module/az.accounts/get-azsubscription)
 
 - [Grundlegendes zu Azure RBAC](../role-based-access-control/overview.md)
 
@@ -927,15 +927,15 @@ Gewähren Sie Benutzern oder Gruppen mit Azure AD-Integration Zugriff auf Kuber
 
 Verwenden Sie das Azure AD PowerShell-Modul, um Ad-hoc-Abfragen zum Ermitteln von Konten auszuführen, die Mitglieder administrativer AKS-Gruppen sind. Stimmen Sie damit den Zugriff in regelmäßigen Abständen ab. Verwenden Sie die Azure CLI für Vorgänge wie „Abrufen von Zugriffsanmeldeinformationen für einen verwalteten Kubernetes-Cluster“. Implementieren Sie Empfehlungen für die Identitäts- und Zugriffsverwaltung in Security Center.
 
-- [Verwalten von AKS mit der Azure CLI](/cli/azure/aks?view=azure-cli-latest)
+- [Verwalten von AKS mit der Azure CLI](/cli/azure/aks)
 
 - [Verstehen der AKS- und Azure AD-Integration](concepts-identity.md)
 
 - [Integration von AKS in Azure AD](./azure-ad-integration-cli.md)
 
-- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole?view=azureadps-2.0)
+- [Abrufen einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrole)
 
-- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember?view=azureadps-2.0)
+- [Abrufen von Mitgliedern einer Verzeichnisrolle in Azure AD mit PowerShell](/powershell/module/azuread/get-azureaddirectoryrolemember)
 
 - [Überwachen der Identität und des Zugriffs](../security-center/security-center-identity-access.md)
 
@@ -1055,7 +1055,7 @@ Sicherheitshärtung beim AKS-Hostbetriebssystem für Agent-Knoten
 
 security-hardened-vm-host-image.md
 
-- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow?view=azure-devops)
+- [Speichern von Code in Azure DevOps](/azure/devops/repos/git/gitworkflow)
 
 **Azure Security Center-Überwachung**: Nicht verfügbar
 

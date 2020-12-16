@@ -3,16 +3,16 @@ title: Aktivieren des gestaffelten Rollouts von Features für Zielgruppen
 titleSuffix: Azure App Configuration
 description: Erfahren Sie, wie Sie das gestaffelte Rollout von Features für Zielgruppen aktivieren.
 ms.service: azure-app-configuration
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.topic: conceptual
-ms.date: 8/7/2020
-ms.openlocfilehash: d1574b8a3f8cda3341c0aaf355911e2e93a7bcab
-ms.sourcegitcommit: dc342bef86e822358efe2d363958f6075bcfc22a
+ms.date: 11/20/2020
+ms.openlocfilehash: c415eaeab2edd0a1b324bba4266266201cb50cbf
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94557439"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929683"
 ---
 # <a name="enable-staged-rollout-of-features-for-targeted-audiences"></a>Aktivieren des gestaffelten Rollouts von Features für Zielgruppen
 

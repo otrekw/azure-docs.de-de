@@ -8,15 +8,15 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 09/03/2020
+ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 8273d4bbb0b58a256521cf11cacf6d1fed67e10d
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 2010f55a28d393086aad544cbec3f5c009801872
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96345115"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750491"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen OpenID Connect-Profils in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
@@ -80,6 +80,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | IdTokenAudience | Nein | Die Zielgruppe von id_token. Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob der Anspruch `aud` in einem Token, das vom Identitätsanbieter zurückgegeben wurde, mit dem in den Metadaten für „IdTokenAudience“ angegebenen Token identisch ist.  |
 | METADATA | Ja | Eine URL, die auf ein Konfigurationsdokument für den OpenID Connect-Identitätsanbieter verweist, das auch als bekannter OpenID-Konfigurationsendpunkt bezeichnet wird. Die URL kann den Ausdruck `{tenant}` enthalten, der durch den Mandantennamen ersetzt wird.  |
 | authorization_endpoint | Nein | Eine URL, die auf einen OpenID Connect-Autorisierungsendpunkt der Identitätsanbieterkonfiguration verweist. Der Wert der Metadaten für „authorization_endpoint“ hat Vorrang vor dem Wert für `authorization_endpoint`, der im bekannten OpenID-Konfigurationsendpunkt angegeben ist. Die URL kann den Ausdruck `{tenant}` enthalten, der durch den Mandantennamen ersetzt wird. |
+| end_session_endpoint | Nein | Die URL des Endpunkts zum Beenden der Sitzung. Der Wert der Metadaten für „authorization_endpoint“ hat Vorrang vor dem Wert für `end_session_endpoint`, der im bekannten OpenID-Konfigurationsendpunkt angegeben ist. |
 | Issuer (Aussteller) | Nein | Die eindeutige Bezeichnung eines OpenID Connect-Identitätsanbieters. Der Wert der Metadaten für „Issuer“ hat Vorrang vor dem Wert für `issuer`, der im bekannten OpenID-Konfigurationsendpunkt angegeben ist.  Wenn eine Angabe erfolgt, überprüft Azure AD B2C, ob der Anspruch `iss` in einem Token, das vom Identitätsanbieter zurückgegeben wird, mit dem in den Metadaten für „Issuer“ angegebenen Token identisch ist. |
 | ProviderName | Nein | Der Name des Identitätsanbieters.  |
 | response_types | Nein | Der Antworttyp gemäß der OpenId Connect Core 1.0-Spezifikation. Mögliche Werte: `id_token`, `code` oder `token`. |
@@ -92,7 +93,7 @@ Das technische Profil gibt auch Ansprüche zurück, die vom Identitätsanbieter 
 | DiscoverMetadataByTokenIssuer | Nein | Gibt an, ob die OIDC-Metadaten mithilfe des Ausstellers im JWT-Token ermittelt werden sollen. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
 |token_endpoint_auth_method| Nein| Gibt an, wie Azure AD B2C den Authentifizierungsheader an den Tokenendpunkt sendet. Mögliche Werte sind `client_secret_post` (Standardwert) und `client_secret_basic` (öffentliche Vorschau). Weitere Informationen finden Sie im Abschnitt [OpenID Connect-Clientauthentifizierung](https://openid.net/specs/openid-connect-core-1_0.html#ClientAuthentication). |
-
+|SingleLogoutEnabled| Nein| Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-overview.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`.|
 
 ```xml
 <Metadata>
@@ -121,7 +122,7 @@ Die folgenden Einstellungen können verwendet werden, um die Fehlermeldung zu ko
 
 Das **CryptographicKeys**-Element enthält das folgende Attribut:
 
-| attribute | Erforderlich | Beschreibung |
+| attribute | Erforderlich | BESCHREIBUNG |
 | --------- | -------- | ----------- |
 | client_secret | Ja | Der geheime Clientschlüssel der Anwendung des Identitätsanbieters. Der kryptografische Schlüssel ist nur erforderlich, wenn die **response_type**-Metadaten auf `code` festgelegt sind. Azure AD B2C führt in diesem Fall einen weiteren Aufruf zum Austauschen des Autorisierungscode gegen ein Zugriffstoken durch. Wenn die Metadaten auf `id_token` festgelegt wurden, können Sie den kryptografischen Schlüssel weglassen.  |
 

@@ -6,17 +6,17 @@ ms.service: active-directory
 ms.subservice: authentication
 ms.topic: how-to
 ms.date: 09/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: librown, aakapo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d9c4dff1e4a3ba7c7a2b11311e97eb5e66a1585
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 8ac8cf172a13e7198233170634ee4a3954793cd2
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994246"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96743427"
 ---
 # <a name="enable-passwordless-security-key-sign-in-preview"></a>Aktivieren der kennwortlosen Anmeldung mit Sicherheitsschlüsseln (Vorschauversion)
 
@@ -38,9 +38,9 @@ Um Sicherheitsschlüssel für die Anmeldung bei Web-Apps und-Diensten verwenden 
 
 ## <a name="prepare-devices-for-preview"></a>Vorbereiten von Geräten für die Vorschauversion
 
-Auf in Azure AD eingebundenen Geräten, die Sie für Pilotversuche verwenden, muss mindestens Windows 10, Version 1909, ausgeführt werden. Hierfür eignet sich besonders Windows 10 (Version 1903 oder höher).
+Für in Azure AD eingebundene Geräte eignet sich besonders Windows 10, Version 1903 oder höher.
 
-Auf in Azure AD Hybrid eingebundenen Geräte muss Windows 10, Version 2004 oder höher, ausgeführt werden.
+Auf hybrid in Azure AD eingebundenen Geräten muss Windows 10, Version 2004 oder höher, ausgeführt werden.
 
 ## <a name="enable-passwordless-authentication-method"></a>Aktivieren von Methoden zur kennwortlosen Authentifizierung
 

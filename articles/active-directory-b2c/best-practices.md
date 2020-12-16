@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 06/06/2020
 ms.author: vigunase
 ms.subservice: B2C
-ms.openlocfilehash: d8c0a5ce6f3befd41c0e1399363fd73726693837
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1c3c3d38ac0d8334f70f681d8ef86c0d6f86ecfa
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94949716"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750219"
 ---
 # <a name="recommendations-and-best-practices-for-azure-active-directory-b2c"></a>Empfehlungen und bewährte Methoden für Azure Active Directory B2C
 
@@ -28,7 +28,7 @@ Die folgenden bewährten Methoden und Empfehlungen decken einige der wichtigsten
 |--|--|
 | Auswählen von Benutzerflows für die meisten Szenarien | Identity Experience Framework von Azure AD B2C ist die Kernkompetenz des Diensts. Die Richtlinien beschreiben Benutzeroberflächen im Zusammenhang mit der Identität, z.B. Registrierung, Anmeldung oder Profilbearbeitung. Um Ihnen die Einrichtung der gängigsten Identitätsaufgaben zu erleichtern, enthält das Azure AD B2C-Portal vordefinierte und konfigurierbare Richtlinien, die als „Benutzerflows“ bezeichnet werden. Mit Benutzerflows können Sie mit nur wenigen Klicks innerhalb von Minuten tolle Benutzeroberflächen erstellen. [Erfahren Sie, wann Benutzerflows und wann benutzerdefinierte Richtlinien verwendet werden](custom-policy-overview.md#comparing-user-flows-and-custom-policies).|
 | App-Registrierungen | Jede Anwendung (Web- oder native Anwendung) und API, die gesichert ist, muss in Azure AD B2C registriert werden. Wenn eine App sowohl eine Web- als auch eine native Version von iOS und Android umfasst, können Sie sie als eine Anwendung in Azure AD B2C mit derselben Client-ID registrieren. Erfahren Sie, wie Sie [OIDC-, SAML-, Web- und native Apps registrieren](./tutorial-register-applications.md?tabs=applications). Weitere Informationen zu [in Azure Active Directory B2C verwendbaren Anwendungstypen](./application-types.md). |
-| Wechsel zum MAU-Abrechnungsmodell | Azure AD B2C ist beim Abrechnungsmodell von monatlich aktiven Authentifizierungen auf monatlich aktive Benutzer (Monthly Active User, MAU) umgestiegen. Die meisten Kunden finden dieses Modell kostengünstig. [Weitere Informationen zum MAU-Abrechnungsmodell](https://azure.microsoft.com/updates/mau-billing/). |
+| Wechsel zum MAU-Abrechnungsmodell | Azure AD B2C ist beim Abrechnungsmodell von monatlich aktiven Authentifizierungen auf monatlich aktive Benutzer (Monthly Active User, MAU) umgestiegen. Die meisten Kunden finden dieses Modell kostengünstig. [Weitere Informationen zum MAU-Abrechnungsmodell](https://azure.microsoft.com/updates/mau-billing/). [Diesen Link speichern](b2clogin.md) |
 
 ## <a name="planning-and-design"></a>Planung und Entwurf
 
@@ -84,7 +84,7 @@ Verwalten Sie Ihre Azure AD B2C-Umgebung.
 | Einrichten von aktiven Warnungen und Überwachung | [Verfolgen Sie das Benutzerverhalten](./analytics-with-application-insights.md) in Azure AD B2C mithilfe von Application Insights nach. |
 
 ## <a name="support-and-status-updates"></a>Support und Statusaktualisierungen
-
+## <a name="todays-support-and-status-updates"></a>Heutiger Support und Statusaktualisierungen
 Bleiben Sie auf dem neuesten Stand bezüglich des Zustands des Diensts, und informieren Sie sich über Supportoptionen.
 
 | Bewährte Methode | BESCHREIBUNG |

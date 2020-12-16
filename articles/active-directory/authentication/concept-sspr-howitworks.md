@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 07/14/2020
-ms.author: joflore
-author: MicrosoftGuyJFlo
+ms.date: 12/07/2020
+ms.author: justinha
+author: justinha
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fae9872593b48355d4ad3711e8e5092481b16213
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: e5bcc6503af5f5f685ee589ed7671b4715834fef
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96174529"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779361"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>So funktioniert's: Self-Service-Kennwortzurücksetzung in Azure AD
 
@@ -69,11 +69,8 @@ Nutzen Sie das folgende Tutorial, um sich mit SSPR vertraut zu machen:
 > [!div class="nextstepaction"]
 > [Tutorial: Aktivieren der Self-Service-Kennwortzurücksetzung (SSPR)](tutorial-enable-sspr.md)
 
-## <a name="registration-options"></a>Registrierungsoptionen
 
-Bevor Benutzer ihr Kennwort mit dem SSPR zurücksetzen oder ändern können, müssen sie sich selbst sowie die gewünschten Authentifizierungsmethoden registrieren. Wie im vorherigen Abschnitt erwähnt, müssen Benutzer für den SSPR registriert sein und über die richtige Lizenz verfügen.
-
-### <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
+## <a name="require-users-to-register-when-they-sign-in"></a>Erzwingen der Registrierung für Benutzer bei der Anmeldung
 
 Sie können diese Option aktivieren, damit Benutzer die Registrierung für den SSPR abschließen müssen, wenn sie sich mit Azure AD in einer Anwendung anmelden. Dieser Workflow schließt die folgenden Anwendungen ein:
 
@@ -92,7 +89,7 @@ Wenn die Registrierung nicht erzwungen wird, werden Benutzer nicht während der 
 >
 > Durch diese Aufforderung zur Registrierung für den SSPR wird die Verbindung eines Benutzers nicht unterbrochen, wenn er bereits angemeldet ist.
 
-### <a name="set-the-number-of-days-before-users-are-asked-to-reconfirm-their-authentication-information"></a>Festlegen der Anzahl von Tagen, bevor Benutzer aufgefordert werden, ihre Authentifizierungsinformationen erneut zu bestätigen
+## <a name="reconfirm-authentication-information"></a>Erneute Bestätigung der Authentifizierungsinformationen
 
 Sie können erzwingen, dass Benutzer ihre registrierten Informationen nach einem bestimmten Zeitraum bestätigen müssen, um sicherzustellen, dass die Authentifizierungsmethoden im Falle einer Kennwortzurücksetzung oder -änderung korrekt sind. Diese Option ist nur verfügbar, wenn Sie die Option **Registrierung von Benutzern bei der Anmeldung verlangen?** aktivieren.
 
