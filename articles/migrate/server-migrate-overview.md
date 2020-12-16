@@ -1,14 +1,17 @@
 ---
-title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigration | Microsoft-Dokumentation
+title: Auswählen einer VMware-Migrationsoption mit der Azure Migrate-Servermigration
 description: Bietet eine Übersicht über die Optionen zum Migrieren von VMware-VMs zu Azure mit der Azure Migrate-Servermigration
+author: anvar-ms
+ms.author: anvar
+ms.manager: bsiva
 ms.topic: conceptual
 ms.date: 06/08/2020
-ms.openlocfilehash: ac08075212d885a1aca755f94906b50754e23b9d
-ms.sourcegitcommit: d767156543e16e816fc8a0c3777f033d649ffd3c
+ms.openlocfilehash: 5e4aaea5b565e126f633b04215bbc3a24faf2cde
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/26/2020
-ms.locfileid: "92534106"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753602"
 ---
 # <a name="select-a-vmware-migration-option"></a>Auswählen einer VMware-Migrationsoption
 

@@ -8,12 +8,12 @@ ms.service: key-vault
 ms.subservice: certificates
 ms.topic: quickstart
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 49f244ea8e602f3b5e6499b8e14db2be15bfc8f7
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: b40a13b84a0191b5c454d7edac2226f8f06fadcd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317076"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780160"
 ---
 # <a name="quickstart-azure-key-vault-certificate-client-library-for-net-sdk-v4"></a>Schnellstart: Azure Key Vault-Zertifikatclientbibliothek für .NET (SDK v4)
 
@@ -54,6 +54,13 @@ In dieser Schnellstartanleitung wird die Azure Identity-Bibliothek mit der Azure
 
 2. Melden Sie sich im Browser mit Ihren Anmeldeinformationen an.
 
+#### <a name="grant-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor
+
+Erstellen Sie eine Zugriffsrichtlinie für Ihren Schlüsseltresor, die Ihrem Benutzerkonto Zertifikatberechtigungen erteilt:
+
+```console
+az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
+```
 
 ### <a name="create-new-net-console-app"></a>Erstellen einer neuen .NET-Konsolen-App
 
@@ -89,14 +96,6 @@ Für diese Schnellstartanleitung müssen Sie auch die Azure SDK-Clientbibliothek
 
 ```dotnetcli
 dotnet add package Azure.Identity
-```
-
-#### <a name="grant-access-to-your-key-vault"></a>Gewähren des Zugriffs auf Ihren Schlüsseltresor
-
-Erstellen einer Zugriffsrichtlinie für Ihren Schlüsseltresor, mit der Ihrem Benutzerkonto die Zertifikatberechtigung erteilt wird
-
-```console
-az keyvault set-policy --name <your-key-vault-name> --upn user@domain.com --certificate-permissions delete get list create purge
 ```
 
 #### <a name="set-environment-variables"></a>Festlegen von Umgebungsvariablen
@@ -137,7 +136,7 @@ using Azure.Security.KeyVault.Certificates;
 
 In dieser Schnellstartanleitung wird der angemeldete Benutzer zum Authentifizieren beim Schlüsseltresor verwendet. Dies ist die bevorzugte Methode für die lokale Entwicklung. Bei Anwendungen, die in Azure bereitgestellt werden, sollte die verwaltete Identität App Service oder einem virtuellen Computer zugewiesen werden. Weitere Informationen finden Sie in der [Übersicht zu verwalteten Identitäten](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview).
 
-Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) verwendet, mit der derselbe Code in verschiedenen Umgebungen mit verschiedenen Optionen zum Bereitstellen von Identitäten verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
+Im folgenden Beispiel wird der Name Ihres Schlüsseltresors in den Schlüsseltresor-URI mit dem Format „https://\<your-key-vault-name\>.vault.azure.net“ erweitert. In diesem Beispiel wird die Klasse [DefaultAzureCredential()](/dotnet/api/azure.identity.defaultazurecredential) aus der [Azure Identity-Bibliothek](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme) verwendet, wodurch der gleiche Code in verschiedenen Umgebungen mit verschiedenen Optionen für die Identitätsbereitstellung verwendet werden kann. Weitere Informationen zur Authentifizierung beim Schlüsseltresor finden Sie im [Entwicklerhandbuch](https://docs.microsoft.com/azure/key-vault/general/developers-guide#authenticate-to-key-vault-in-code).
 
 ```csharp
 string keyVaultName = Environment.GetEnvironmentVariable("KEY_VAULT_NAME");
@@ -228,61 +227,20 @@ Führen Sie die folgenden Schritte aus, um die .NET Core-Konsolen-App so zu änd
     ```
 ### <a name="test-and-verify"></a>Testen und Überprüfen
 
-1.  Ausführen des folgenden Befehls zum Erstellen des Projekts
+Ausführen des folgenden Befehls zum Erstellen des Projekts
 
-    ```dotnetcli
-    dotnet build
-    ```
-
-1. Führen Sie die App mit dem folgenden Befehl aus.
-
-    ```dotnetcli
-    dotnet run
-    ```
-
-1. Geben Sie bei entsprechender Aufforderung einen Geheimniswert ein, z. B. „mySecretPassword“.
-
-    Eine Variation der folgenden Ausgabe wird angezeigt:
-
-    ```console
-    Creating a certificate in mykeyvault called 'myCertificate' ... done.
-    Retrieving your certificate from mykeyvault.
-    Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
-    Deleting your certificate from jl-kv ... done
-    ```
-
-## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
-
-Wenn Sie die Ressourcen nicht mehr benötigen, können Sie die Azure CLI oder Azure PowerShell verwenden, um Ihren Schlüsseltresor und die zugehörige Ressourcengruppe zu entfernen.
-
-### <a name="delete-a-key-vault"></a>Löschen eines Schlüsseltresors
-
-```azurecli
-az keyvault delete --name <your-unique-keyvault-name>
+```dotnetcli
+dotnet build
 ```
 
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name>
-```
+Eine Variation der folgenden Ausgabe wird angezeigt:
 
-### <a name="purge-a-key-vault"></a>Bereinigen eines Schlüsseltresors
-
-```azurecli
-az keyvault purge --location eastus --name <your-unique-keyvault-name>
-```
-
-```azurepowershell
-Remove-AzKeyVault -VaultName <your-unique-keyvault-name> -InRemovedState -Location eastus
-```
-
-### <a name="delete-a-resource-group"></a>Löschen einer Ressourcengruppe
-
-```azurecli
-az group delete -g "myResourceGroup"
-```
-
-```azurepowershell
-Remove-AzResourceGroup -Name "myResourceGroup"
+```console
+Creating a certificate in mykeyvault called 'myCertificate' ... done.
+Retrieving your certificate from mykeyvault.
+Your certificate version is '8532359bced24e4bb2525f2d2050738a'.
+Deleting your certificate from mykeyvault ... done
+Purging your certificate from mykeyvault ... done
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

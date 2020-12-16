@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 9cf503f374cd2fd1ca04aad6650b2c07abebbc46
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: a52188dc5058dbc74d3b03fba860b98540cd4a41
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95519352"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608502"
 ---
 # <a name="communication-services-notifications"></a>Communication Services-Benachrichtigungen
 
@@ -48,13 +48,10 @@ Communication Services verwendet Azure Notification Hub als Passthroughdienst, u
 Zum Übermitteln von Pushbenachrichtigungen an Clientgeräte mithilfe von Notification Hubs [erstellen Sie einen Notification Hub](../../notification-hubs/create-notification-hub-portal.md) innerhalb desselben Abonnements wie Ihre Communication Services-Ressource. Azure Notification Hubs müssen für den Plattformbenachrichtigungsdienst konfiguriert sein, den Sie verwenden möchten. Informationen zum Empfang von Pushbenachrichtigungen von Notification Hubs in Ihrer Client-App finden Sie unter [Erste Schritte mit Notification Hubs](../../notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started.md). Wählen Sie dort in der Dropdownliste oben auf der Seite die Zielplattform für den Client aus.
 
 > [!NOTE]
-> Derzeit werden die APNs- und FCM-Plattformen unterstützt.
+> Derzeit werden die APNs- und FCM-Plattformen unterstützt.  
+Die APNs-Plattform muss mit dem Tokenauthentifizierungsmodus konfiguriert sein. Der Zertifikatauthentifizierungsmodus wird derzeit nicht unterstützt. 
 
 Nachdem Ihr Notification Hub konfiguriert wurde, können Sie ihn Ihrer Communication Services-Ressource zuweisen, indem Sie für den Hub mithilfe des Azure Resource Manager-Clients oder des Azure-Portals eine Verbindungszeichenfolge bereitstellen. Die Verbindungszeichenfolge muss Sendeberechtigungen enthalten. Es wird empfohlen, eine andere Zugriffsrichtlinie nur mit Sendeberechtigungen zu erstellen, die speziell für Ihren Hub gilt. Erfahren Sie mehr über die [Sicherheit von Notification Hubs und Zugriffsrichtlinien](../../notification-hubs/notification-hubs-push-notification-security.md).
-
-> [!IMPORTANT]
-> Dies gilt nur für den Tokenauthentifizierungsmodus. Der Zertifikatauthentifizierungsmodus wird derzeit nicht unterstützt.  
-Damit Sie APNS-VoIP-Benachrichtigungen aktivieren können, müssen Sie beim Konfigurieren des Notification Hub den Wert der Bündel-ID als Anwendungsbündel-ID mit dem Suffix „`.voip`“ festlegen. Ausführlichere Informationen finden Sie unter [Verwenden von APNS-VoIP über Notification Hubs](../../notification-hubs/voip-apns.md).
 
 #### <a name="using-the-azure-resource-manager-client-to-configure-the-notification-hub"></a>Konfigurieren des Notification Hubs mithilfe des Azure Resource Manager-Clients
 

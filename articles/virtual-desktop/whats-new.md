@@ -3,17 +3,17 @@ title: Neuheiten in Windows Virtual Desktop - Azure
 description: Neue Features und Produktupdates für Windows Virtual Desktop.
 author: Heidilohr
 ms.topic: overview
-ms.date: 11/11/2020
+ms.date: 12/02/2020
 ms.author: helohr
 ms.reviewer: thhickli; darank
 manager: lizross
 ms.custom: references_regions
-ms.openlocfilehash: c82312b40955b392243bf616ee991c0108a13fb5
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: e267de136271991446444a47a470dd52789b3613
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94537389"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533960"
 ---
 # <a name="whats-new-in-windows-virtual-desktop"></a>Neuheiten in Windows Virtual Desktop
 
@@ -25,6 +25,31 @@ Windows Virtual Desktop wird regelmäßig aktualisiert. In diesem Artikel werden
 - Behebung von Programmfehlern
 
 Dieser Artikel wird monatlich aktualisiert. Kehren Sie hier oft zurück, um mit neuen Updates auf dem Laufenden zu bleiben.
+
+## <a name="november-2020"></a>November 2020
+
+### <a name="azure-portal-experience"></a>Azure-Portal-Benutzeroberfläche
+
+Wir haben zwei Fehler im Azure-Portal behoben:
+
+- Der Anzeigename der Desktopanwendung wird im Workflow „VM hinzufügen“ nicht mehr überschrieben.
+- Die Sitzungshost-Registerkarte wird nun geladen, wenn Sitzungshosts Teil von Skalierungsgruppen sind.
+
+### <a name="fslogix-client-version-2009"></a>FSLogix-Client, Version 2009 
+
+Wir haben eine neue Version des FSLogix-Clients mit vielen Fixes und Verbesserungen veröffentlicht. Weitere Informationen finden Sie in [unserem Blogbeitrag](https://social.msdn.microsoft.com/Forums/en-US/defe5828-fba4-4715-a68c-0e4d83eefa6b/release-notes-for-fslogix-apps-release-2009-29762130127?forum=FSLogix).
+
+### <a name="rdp-shortpath-public-preview"></a>RDP Shortpath (Public Preview)
+
+RDP Shortpath führt direkte Konnektivität mit Ihrem Windows Virtual Desktop-Sitzungshost unter Verwendung von Point-to-Site-/Site-to-Site-VPNs und ExpressRoute ein. Außerdem wird das URCP-Transportprotokoll eingeführt. RDP Shortpath ist auf die Reduzierung von Wartezeit und Netzwerkhops ausgelegt, um die Benutzerfreundlichkeit zu verbessern. Weitere Informationen finden Sie unter [Windows Virtual Desktop – RDP Shortpath (Vorschau)](shortpath.md).
+
+### <a name="azdesktopvirtualization-version-201"></a>Az.DesktopVirtualization, Version 2.0.1
+
+Wir haben die Version 2.0.1 der Windows Virtual Desktop-Cmdlets veröffentlicht. Dieses Update enthält Cmdlets für die Verwaltung des MSIX-Features zum Anfügen von Apps. Sie können die neue Version aus dem [PowerShell-Katalog](https://www.powershellgallery.com/packages/Az.DesktopVirtualization/2.0.1) herunterladen.
+
+### <a name="azure-advisor-updates"></a>Azure Advisor-Updates
+
+Azure Advisor verfügt nun über eine neue Empfehlung für die Näherungsplatzierung in Windows Virtual Desktop. Weitere Informationen finden Sie auf der [Azure-Website](https://azure.microsoft.com/updates/new-recommendations-from-azure-advisor/).
 
 ## <a name="october-2020"></a>Oktober 2020
 
@@ -174,7 +199,6 @@ Diese Änderung umfasst Folgendes:
 - Überwachungsfunktionen, die über PowerShell oder die Diagnostics Service-Webapp erledigt wurden, wurden jetzt im Azure-Portal in Log Analytics verschoben. Außerdem stehen Ihnen jetzt zwei Optionen zum Visualisieren Ihrer Berichte zur Verfügung. Sie können Kusto-Abfragen ausführen und Arbeitsmappen zum Erstellen virtueller Berichte verwenden.
 
 - Sie müssen nicht mehr die Einwilligung für Azure Active Directory (Azure AD) ausfüllen, um Windows Virtual Desktop verwenden zu können. Bei diesem Update authentifiziert der Azure AD-Mandant in Ihrem Azure-Abonnement Ihre Benutzer und stellt Azure RBAC-Steuerelemente für Ihre Administratoren bereit.
-
 
 ### <a name="powershell-support"></a>PowerShell-Unterstützung
 

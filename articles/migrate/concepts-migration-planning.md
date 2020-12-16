@@ -1,17 +1,17 @@
 ---
-title: Erstellen eines Migrationsplans mit Azure Migrate | Microsoft-Dokumentation
+title: Erstellen eines Migrationsplans mit Azure Migrate
 description: Enthält Anleitungen zum Erstellen eines Migrationsplans mit Azure Migrate.
 author: rashi-ms
-ms.service: azure-migrate
+ms.author: rajosh
+ms.manager: abhemraj
 ms.topic: conceptual
 ms.date: 11/11/2020
-ms.author: rajosh
-ms.openlocfilehash: 8f37814e29ce0089c26e235123768296efc2c0b0
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: ef916e0e8b32c96382a731d4a307e2b2a98ba1ea
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504907"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753857"
 ---
 # <a name="build-migration-plan-with-azure-migrate"></a>Erstellen eines Migrationsplans mit Azure Migrate
 

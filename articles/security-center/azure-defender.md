@@ -7,12 +7,12 @@ ms.date: 9/30/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: 41d98750f3c869eff5abf7482a9bb04435407318
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 8bf3959651048a7a568df1d94aa07aa206663d50
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96436758"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96750984"
 ---
 # <a name="introduction-to-azure-defender"></a>Einführung in Azure Defender
 
@@ -39,6 +39,8 @@ Wenn Sie Azure Defender über den Bereich **Preise und Einstellungen** von Azure
 - [Azure Defender für Kubernetes](defender-for-kubernetes-introduction.md)
 - [Azure Defender für Containerregistrierungen](defender-for-container-registries-introduction.md)
 - [Azure Defender für Key Vault](defender-for-key-vault-introduction.md)
+- [Azure Defender für Resource Manager](defender-for-resource-manager-introduction.md)
+- [Azure Defender für DNS](defender-for-dns-introduction.md)
 
 Jeder dieser Pläne wird in der Security Center-Dokumentation einzeln erläutert.
 
@@ -61,9 +63,9 @@ Stellen Sie [Azure Arc](https://azure.microsoft.com/services/azure-arc/) bereit,
 
 
 
-## <a name="security-alerts"></a>Sicherheitswarnungen 
+## <a name="azure-defender-security-alerts"></a>Azure Defender-Sicherheitswarnungen 
 
-Wenn Azure Defender in einem der Bereiche Ihrer Umgebung eine Bedrohung erkennt, wird eine Warnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann.
+Wenn von Azure Defender in einem der Bereiche Ihrer Umgebung eine Bedrohung erkannt wird, wird eine Sicherheitswarnung generiert. Diese Warnungen beschreiben Details zu den betroffenen Ressourcen, empfohlene Problembehandlungsschritte sowie in einigen Fällen eine Option, mit der eine Logik-App als Reaktion ausgelöst werden kann.
 
 Sie können Warnungen exportieren, und zwar unabhängig davon, ob sie von Security Center generiert oder von Security Center über ein integriertes Sicherheitsprodukt empfangen wurden. Befolgen Sie die Anweisungen unter [Streamen von Warnungen an eine SIEM-, SOAR- oder IT-Dienstverwaltungslösung](export-to-siem.md), um die Warnungen zu Azure Sentinel (oder ein Drittanbieter-SIEM) bzw. ein beliebiges anderes externes Tool zu exportieren.
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: vladvino
 ms.author: apimpm
 ms.date: 11/27/2020
-ms.openlocfilehash: fca98414a87f3b8a4f3c0969a28ee95c7ed47dc3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 72e91715398b4920c62afae5f36aa09954a577f9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96501325"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092141"
 ---
 # <a name="api-management-soft-delete-preview"></a>Azure API Management – Vorläufiges Löschen (Vorschau)
 
@@ -48,7 +48,7 @@ Wenn Ihre APIM-Instanz nicht innerhalb von 48 Stunden wiederhergestellt wird, wi
 
 ## <a name="list-deleted-apim-instances"></a>Auflisten gelöschter APIM-Instanzen
 
-Sie können überprüfen, ob eine vorläufig gelöschte APIM-Instanz zum Wiederherstellen verfügbar ist, indem Sie entweder die Vorgänge [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Nach Name abrufen) oder [List By Subscription](/deletedservices/listbysubscription) (Nach Abonnement auflisten) für vorläufiges Löschen verwenden.
+Sie können überprüfen, ob eine vorläufig gelöschte APIM-Instanz zum Wiederherstellen verfügbar ist, indem Sie entweder die Vorgänge [Get By Name](/rest/api/apimanagement/2020-06-01-preview/deletedservices/getbyname) (Nach Name abrufen) oder [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten) für vorläufiges Löschen verwenden.
 
 ### <a name="get-a-soft-deleted-instance-by-name"></a>Abrufen einer vorläufig gelöschten Instanz über den Namen
 
@@ -76,7 +76,7 @@ Falls zum Aufheben des Löschvorgangs verfügbar, gibt Azure einen Datensatz der
 
 ### <a name="list-all-soft-deleted-instances-for-a-given-subscription"></a>Auflisten aller vorläufig gelöschten Instanzen für ein bestimmtes Abonnement
 
-Verwenden Sie den API Management-Vorgang [List By Subscription](/deletedservices/listbysubscription) (Nach Abonnement auflisten), wobei Sie `{subscriptionId}` durch Ihre Abonnement-ID ersetzen:
+Verwenden Sie den API Management-Vorgang [List By Subscription](/rest/api/apimanagement/2020-06-01-preview/deletedservices/listbysubscription) (Nach Abonnement auflisten), wobei Sie `{subscriptionId}` durch Ihre Abonnement-ID ersetzen:
 
 ```rest
 GET https://management.azure.com/subscriptions/{subscriptionId}/providers/Microsoft.ApiManagement/deletedservices?api-version=2020-06-01-preview

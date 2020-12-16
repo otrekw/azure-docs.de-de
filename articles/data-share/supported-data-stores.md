@@ -5,13 +5,13 @@ ms.service: data-share
 author: jifems
 ms.author: jife
 ms.topic: conceptual
-ms.date: 11/12/2020
-ms.openlocfilehash: 6289395b5d508de8da3e5c8c89caebb4b0e9b817
-ms.sourcegitcommit: 1cf157f9a57850739adef72219e79d76ed89e264
+ms.date: 12/7/2020
+ms.openlocfilehash: 566fd2c9c31933420769f7200a0434cc53f8c2f3
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/13/2020
-ms.locfileid: "94592429"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96853140"
 ---
 # <a name="supported-data-stores-in-azure-data-share"></a>Unterstützte Datenspeicher in Azure Data Share
 
@@ -30,7 +30,7 @@ In der folgenden Tabelle sind die unterstützten Datenquellen für Azure Data Sh
 | Azure Data Lake Storage Gen2 |✓ |✓ ||
 | Azure SQL-Datenbank |✓ | | |
 | Azure Synapse Analytics (ehemals Azure SQL DW) |✓ | | |
-| SQL-Pool für Azure Synapse Analytics (Arbeitsbereich) | Öffentliche Vorschau | | |
+| Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) |✓ | | |
 | Azure-Daten-Explorer | | |✓ |
 
 ## <a name="data-store-support-matrix"></a>Datenspeicher-Unterstützungsmatrix
@@ -39,14 +39,14 @@ Azure Data Share bietet Datenconsumern Flexibilität bei der Entscheidung für e
 
 In der folgenden Tabelle sind die verschiedenen Kombinationen und Auswahlmöglichkeiten aufgeführt, die Datenconsumern beim Akzeptieren und Konfigurieren ihrer Datenfreigabe zur Verfügung stehen. Weitere Informationen zum Konfigurieren von Datasetzuordnungen finden Sie unter [Konfigurieren von Datasetzuordnungen](how-to-configure-mapping.md).
 
-| Datenspeicher | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL-Datenbank | Azure Synapse Analytics (ehemals Azure SQL DW) | SQL-Pool für Azure Synapse Analytics (Arbeitsbereich) | Azure-Daten-Explorer
+| Datenspeicher | Azure Blob Storage | Azure Data Lake Storage Gen1 | Azure Data Lake Storage Gen2 | Azure SQL-Datenbank | Azure Synapse Analytics (ehemals Azure SQL DW) | Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) | Azure-Daten-Explorer
 |:--- |:--- |:--- |:--- |:--- |:--- |:--- | :--- |
 | Azure Blob Storage | ✓ || ✓ |||
 | Azure Data Lake Storage Gen1 | ✓ | | ✓ |||
 | Azure Data Lake Storage Gen2 | ✓ | | ✓ |||
 | Azure SQL-Datenbank | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure Synapse Analytics (ehemals Azure SQL DW) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
-| SQL-Pool für Azure Synapse Analytics (Arbeitsbereich) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
+| Dedizierter SQL-Pool von Azure Synapse Analytics (Arbeitsbereich) | ✓ | | ✓ | ✓ | ✓ | ✓ ||
 | Azure-Daten-Explorer ||||||| ✓ |
 
 ## <a name="share-from-a-storage-account"></a>Freigeben über ein Speicherkonto

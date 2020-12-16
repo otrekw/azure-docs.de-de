@@ -7,12 +7,12 @@ ms.reviewer: jonfan, deli, logicappspm
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 10/28/2020
-ms.openlocfilehash: 0b777fdef344ce1a60ed00ee46eeaa8cee23b8c0
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: c4d4c659fd1c33c9ffc1b833b92d0727b5c17bf7
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099187"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922896"
 ---
 # <a name="quickstart-create-and-manage-logic-app-workflow-definitions-by-using-visual-studio-code"></a>Schnellstart: Erstellen und Verwalten von Logik-App-Workflowdefinitionen mit Visual Studio Code
 
@@ -263,7 +263,7 @@ In Visual Studio Code können Sie die Workflowdefinition für eine bereits in Az
 
 1. Speichern Sie Ihre Änderungen, wenn Sie fertig sind. (Menü „Datei“ > „Speichern“, oder drücken Sie STRG+S)
 
-1. Wenn Sie aufgefordert werden, die Änderungen hochzuladen und Ihre vorhandene Logik-App im Azure-Portal zu *überschreiben* , wählen Sie **Hochladen** aus.
+1. Wenn Sie aufgefordert werden, die Änderungen hochzuladen und Ihre vorhandene Logik-App im Azure-Portal zu *überschreiben*, wählen Sie **Hochladen** aus.
 
    In diesem Schritt werden Ihre Updates der Logik-App im [Azure-Portal](https://portal.azure.com) veröffentlicht.
 
@@ -307,4 +307,4 @@ In Visual Studio Code können Sie die früheren Versionen der Logik-App öffnen 
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Erstellen zustandsbehafteter oder zustandsloser Logik-Apps in Visual Studio Code (Vorschau)](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)
+> [Erstellen zustandsbehafteter oder zustandsloser Workflows in Visual Studio Code mit der Azure Logic Apps (Vorschau)-Erweiterung](../logic-apps/create-stateful-stateless-workflows-visual-studio-code.md)

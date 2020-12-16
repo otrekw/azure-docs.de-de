@@ -3,12 +3,12 @@ title: Ändern von Azure Service Fabric-Clustereinstellungen
 description: Dieser Artikel beschreibt die Fabric-Einstellungen und Fabric-Upgraderichtlinien, die Sie anpassen können.
 ms.topic: reference
 ms.date: 08/30/2019
-ms.openlocfilehash: 1f16e89dd1131f6aea64e5e72a342b3b737f3728
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: c055ad1dad8b9574c8d811284a34619ee3648a10
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96187220"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095269"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Anpassen von Service Fabric-Clustereinstellungen
 Dieser Artikel beschreibt die verschiedenen Fabric-Einstellungen, die Sie für Ihren Service Fabric-Cluster anpassen können. Für in Azure gehostete Cluster können Sie Einstellungen über das [Azure-Portal](https://portal.azure.com) oder mithilfe einer Azure Resource Manager-Vorlage anpassen. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines Azure-Clusters](service-fabric-cluster-config-upgrade-azure.md). Für eigenständige Cluster passen Sie die Einstellungen durch Aktualisieren der Datei *ClusterConfig.json* und ein Konfigurationsupgrade in Ihrem Cluster an. Weitere Informationen finden Sie unter [Aktualisieren der Konfiguration eines eigenständigen Clusters](service-fabric-cluster-config-upgrade-windows-server.md).
@@ -877,7 +877,7 @@ In der folgenden Liste sind, zusammengestellt nach Abschnitt, die Fabric-Einstel
 | --- | --- | --- | --- |
 |ConnectionOpenTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(60)|statischen|Geben Sie die Zeitspanne in Sekunden an. Timeout für das Einrichten der Verbindung auf der eingehenden und annehmenden Seite (einschließlich der Sicherheitsaushandlung im sicheren Modus). |
 |FrameHeaderErrorCheckingEnabled|Boolesch, Standardwert TRUE|statischen|Standardeinstellung für die Fehlerüberprüfung im Frameheader im ungesicherten Modus; die Komponenteneinstellung überschreibt dies. |
-|MessageErrorCheckingEnabled|Boolesch, Standardwert FALSE|statischen|Standardeinstellung für die Fehlerüberprüfung im Nachrichtenkopf und -text im ungesicherten Modus; die Komponenteneinstellung überschreibt dies. |
+|MessageErrorCheckingEnabled|Boolesch, Standardwert „true“|statischen|Standardeinstellung für die Fehlerüberprüfung im Nachrichtenkopf und -text im ungesicherten Modus; die Komponenteneinstellung überschreibt dies. |
 |ResolveOption|Zeichenfolge, Standardwert „unspecified“|statischen|Bestimmt, wie der FQDN aufgelöst wird.  Gültige Werte sind „unspecified/ipv4/ipv6“. |
 |SendTimeout|TimeSpan, Standardwert Common::TimeSpan::FromSeconds(300)|Dynamisch|Geben Sie die Zeitspanne in Sekunden an. Zeitüberschreitung beim Senden wegen unterbrochener Verbindung. TCP-Fehlerberichte sind in manchen Umgebungen nicht zuverlässig. Dies muss ggf. entsprechend der verfügbaren Netzwerkbandbreite und Größe der ausgehenden Daten angepasst werden (\*MaxMessageSize\/\*SendQueueSizeLimit). |
 

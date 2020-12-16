@@ -5,17 +5,81 @@ ms.subservice: ''
 ms.topic: overview
 author: bwren
 ms.author: bwren
-ms.date: 11/11/2020
-ms.openlocfilehash: bf15e380eb1a88acc39ca63165d18d04a260b35d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.date: 12/04/2020
+ms.openlocfilehash: 91aa76fd3d9dbb54316f32fdb319e92ca2283b1d
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96185894"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96745773"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Neues in der Azure Monitor-Dokumentation
 
 Dieser Artikel enthält Listen mit neuen oder signifikant aktualisierten Azure Monitor-Artikeln. Er wird jeweils in der ersten Monatswoche mit Artikelaktualisierungen aus dem Vormonat aktualisiert.
+
+## <a name="november-2020"></a>November 2020
+
+### <a name="general"></a>Allgemein
+- [Azure Monitor-Diensteinschränkungen](service-limits.md): Für Azure Arc-Unterstützung aktualisiert.
+
+### <a name="agents"></a>Agents
+- [Übersicht über die Azure-Überwachungs-Agents](platform/agents-overview.md): Für Azure Arc-Unterstützung aktualisiert.
+- [Installieren des Azure Monitor-Agents (Vorschau)](platform/azure-monitor-agent-install.md): Neuer Artikel.
+- [Übersicht über den Azure Monitor-Agent (Vorschauversion)](platform/azure-monitor-agent-overview.md): Für Azure Arc-Unterstützung aktualisiert.
+- [Beispiele für Resource Manager-Vorlagen für Agents in Azure Monitor](samples/resource-manager-agent.md): Für Azure Arc-Unterstützung aktualisiert.
+
+### <a name="alerts"></a>Benachrichtigungen
+- [Erstellen und Verwalten von Aktionsgruppen im Azure-Portal](platform/action-groups.md): Quell-IP-Adressen für Webhooks hinzugefügt.
+
+### <a name="application-insights"></a>Application Insights
+- [Java-Anwendungsüberwachung ohne Code mit Azure Monitor Application Insights](app/java-in-process-agent.md): Konfigurationsbeispiel hinzugefügt.
+- [React-Plug-In für das Application Insights-JavaScript-SDK](app/javascript-react-plugin.md): Abschnitt zur Verwendung von React-Hooks hinzugefügt.
+- [Upgraden von Application Insights Java SDK 2.x](app/java-standalone-upgrade-from-2x.md): Neuer Artikel.
+- [Versionshinweise zu „Microsoft.ApplicationInsights.SnapshotCollector“](app/snapshot-collector-release-notes.md): Neuer Artikel.
+
+### <a name="autoscale"></a>Autoscale
+- [Erste Schritte mit der Autoskalierung in Azure](platform/autoscale-get-started.md): Abschnitt zum Verschieben der Autoskalierung in eine andere Region hinzugefügt.
+
+### <a name="data-collection"></a>Datensammlung
+- [Konfigurieren der Datensammlung für den Azure Monitor-Agent (Vorschau)](platform/data-collection-rule-azure-monitor-agent.md): Für Azure Arc-Unterstützung aktualisiert.
+- [Datensammlungsregeln in Azure Monitor (Vorschau)](platform/data-collection-rule-overview.md): Für Azure Arc-Unterstützung aktualisiert.
+- [Resource Manager-Beispielvorlagen für Datensammlungsregeln](samples/resource-manager-data-collection-rules.md): Neuer Artikel.
+
+### <a name="insights-and-solutions"></a>Erkenntnisse und Lösungen
+- [Verbinden von Azure mit ITSM-Tools unter Verwendung von Secure Export](platform/it-service-management-connector-secure-webhook-connections.md): Abschnitt zur Verbindungsherstellung mit ServiceNow hinzugefügt.
+
+### <a name="logs"></a>Protokolle
+- [Integrieren von Log Analytics und Excel](log-query/log-excel.md): Neuer Artikel.
+- [Log Analytics-Datensicherheit](platform/data-security.md): Abschnitt zu zusätzlichen Sicherheitsfeatures hinzugefügt.
+- [Log Analytics-Integration in Power BI](log-query/log-powerbi.md): Neuer Artikel.
+- [Standardspalten in Azure Monitor-Protokollen](platform/log-standard-columns.md): Spalte „_SubscriptionId“ hinzugefügt.
+
+Neue und aktualisierte Artikel infolge der Umstrukturierung von Protokollabfrageinhalten.
+
+- [Log Analytics-Tutorial](log-query/log-analytics-tutorial.md)
+- [Protokollabfragen in Azure Monitor](log-query/log-query-overview.md)
+- [Übersicht über Log Analytics in Azure Monitor](log-query/log-analytics-overview.md)
+- [Beispiele für Abfragen für Azure Data Explorer und Azure Monitor](/azure/data-explorer/kusto/query/samples?pivots=azuremonitor)
+- [Tutorial: Verwenden von Kusto-Abfragen in Azure Data Explorer und Azure Monitor](/azure/data-explorer/kusto/query/tutorial?pivots=azuremonitor)
+
+
+
+### <a name="virtual-machines"></a>Virtuelle Computer
+
+- [Aktivieren von Azure Monitor für VMs: Übersicht](insights/vminsights-enable-overview.md): Unterstützte Regionen hinzugefügt.
+
+Neue Artikel zur Gastintegrität von Azure Monitor für VMs (Vorschau)
+
+- [Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](insights/vminsights-health-overview.md)
+- [Warnungen beim Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](insights/vminsights-health-alerts.md)
+- [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](insights/vminsights-health-configure.md)
+- [Konfigurieren der Überwachung für das Feature „Gastintegrität“ von Azure Monitor für VMs mit Datensammlungsregeln (Vorschau)](insights/vminsights-health-configure-dcr.md)
+- [Aktivieren des Features „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](insights/vminsights-health-enable.md)
+- [Problembehandlung für das Feature „Gastintegrität“ von Azure Monitor für VMs (Vorschau)](insights/vminsights-health-troubleshoot.md)
+
+
+
+
 
 ## <a name="october-2020"></a>Oktober 2020
 

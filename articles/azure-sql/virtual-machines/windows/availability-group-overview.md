@@ -14,12 +14,12 @@ ms.workload: iaas-sql-server
 ms.date: 10/07/2020
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d04f689dec3a3c182c0da23007247c20c4f8063d
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 8573e45270dfd1ff984eae3dc5fbf1dc5f2fc6da
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94504389"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600862"
 ---
 # <a name="always-on-availability-group-on-sql-server-on-azure-vms"></a>Always On-Verfügbarkeitsgruppe für SQL Server auf Azure-VMs
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -37,9 +37,11 @@ Das folgende Diagramm veranschaulicht eine Verfügbarkeitsgruppe für SQL Server
 
 ## <a name="vm-redundancy"></a>VM-Redundanz 
 
-Um für noch mehr Redundanz und Verfügbarkeit zu sorgen, sollten sich die SQL Server-VMS entweder in derselben [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in verschiedenen [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) befinden.
+Zur Verbesserung der Redundanz und Verfügbarkeit sollten sich die virtuellen SQL Server-Computer entweder in der gleichen [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#availability-set-overview) oder in unterschiedlichen [Verfügbarkeitszonen](../../../availability-zones/az-overview.md) befinden.
 
-Bei einer Verfügbarkeitsgruppe handelt es sich um eine Gruppe von Ressourcen, die so konfiguriert sind, dass sich keine zwei Ressourcen in derselben Verfügbarkeitszone befinden. Dadurch wird verhindert, dass bei Bereitstellungsrollouts mehrere Ressourcen in der Gruppe betroffen sind. 
+Die Platzierung mehrerer virtueller Computer in der gleichen Verfügbarkeitsgruppe dient zum Schutz vor Ausfällen in einem Rechenzentrum infolge von Hardwarefehlern, da virtuelle Computer in einer Verfügbarkeitsgruppe nicht die gleichen Ressourcen verwenden, sowie vor Ausfällen infolge von Updates, da virtuelle Computer innerhalb einer Verfügbarkeitsgruppe nicht gleichzeitig aktualisiert werden. Verfügbarkeitszonen schützen vor dem Ausfall eines gesamten Rechenzentrums. Die einzelnen Zonen stellen jeweils eine Gruppe von Rechenzentren innerhalb einer Region dar.  Durch die Platzierung von Ressourcen in unterschiedlichen Verfügbarkeitszonen wird sichergestellt, dass durch einen Ausfall auf Rechenzentrumsebene nicht alle Ihre virtuellen Computer offline geschaltet werden.
+
+Bei der VM-Erstellung müssen Sie sich entscheiden, ob Sie Verfügbarkeitsgruppen oder Verfügbarkeitszonen konfigurieren möchten.  Ein virtueller Azure-Computer kann nicht mit beidem konfiguriert werden.
 
 
 ## <a name="connectivity"></a>Konnektivität 

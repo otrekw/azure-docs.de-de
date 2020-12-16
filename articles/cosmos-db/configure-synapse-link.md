@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 11/30/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 32b64cd0d83c51a77b7bc58bde80e00e1980c233
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6f9d8603467ac62d443a181fa45615501023a78b
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463318"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093569"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db"></a>Konfigurieren und Verwenden von Azure Synapse Link für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-mongodb-api](includes/appliesto-sql-mongodb-api.md)]
@@ -227,7 +227,7 @@ Mit der [Azure Resource Manager-Vorlage](./manage-with-templates.md#azure-cosmos
 
 ## <a name="getting-started-with-azure-synpase-link---samples"></a><a id="cosmosdb-synapse-link-samples"></a> Erste Schritte mit Azure Synpase Link – Beispiele
 
-Beispiele für die ersten Schritte mit Azure Synapse Link finden Sie auf [GitHub](https://aka.ms/cosmosdb-synapselink-samples). Sie zeigen End-to-End-Lösungen für IoT- und Einzelhandelsszenarien. Sie können die Beispiele zur Azure Cosmos DB-API für MongoDB auch in demselben Repository unter dem Ordner [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples/MongoDB) finden. 
+Beispiele für die ersten Schritte mit Azure Synapse Link finden Sie auf [GitHub](https://aka.ms/cosmosdb-synapselink-samples). Sie zeigen End-to-End-Lösungen für IoT- und Einzelhandelsszenarien. Sie können die Beispiele zur Azure Cosmos DB-API für MongoDB auch in demselben Repository unter dem Ordner [MongoDB](https://github.com/Azure-Samples/Synapse/tree/master/Notebooks/PySpark/Synapse%20Link%20for%20Cosmos%20DB%20samples) finden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
 

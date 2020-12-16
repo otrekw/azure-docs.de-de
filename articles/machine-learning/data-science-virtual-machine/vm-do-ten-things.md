@@ -10,12 +10,12 @@ author: lobrien
 ms.author: laobri
 ms.topic: conceptual
 ms.date: 05/08/2020
-ms.openlocfilehash: 766da55f2589e2a8eb09e0f1b1c9a0a5027c8c3c
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 09a4dc8467b9b3c11c8daeb5ca8c62a0e26e79de
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96002764"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575005"
 ---
 # <a name="data-science-with-a-windows-data-science-virtual-machine"></a>Data Science mit einer Windows Data Science Virtual Machine
 
@@ -25,7 +25,7 @@ Die DSVM arbeitet eng mit Azure-Diensten zusammen. Sie kann Daten lesen und vera
 
 In diesem Artikel ist beschrieben, wie Sie Ihre DSVM nutzen können, um Data Science-Aufgaben auszuführen und mit anderen Azure-Diensten zu interagieren. Sie können z.B. die folgenden Aufgaben auf der DSVM ausführen:
 
-- Verwenden eines Jupyter-Notebooks, um in einem Browser mit Ihren Daten durch Verwenden von Python 2, Python 3 und Microsoft R zu experimentieren (Microsoft R ist eine einsatzfähige Version von R, die auf Leistung ausgelegt ist.)
+- Verwenden eines Jupyter Notebook, um in einem Browser mit Ihren Daten durch Verwenden von Python 2, Python 3 und Microsoft R zu experimentieren (Microsoft R ist eine einsatzfähige Version von R, die auf Leistung ausgelegt ist.)
 - Lokales Auswerten von Daten und Entwickeln von Modellen auf der DSVM mit Microsoft Machine Learning Server und Python
 - Verwalten Ihrer Azure-Ressourcen über PowerShell oder das Azure-Portal
 - Erweitern Ihres Speicherplatzes und Freigeben von umfangreichen Datasets/Codes für Ihr gesamtes Team durch Erstellen einer Azure Files-Freigabe als bereitstellbares Laufwerk auf Ihrer DSVM
@@ -50,7 +50,7 @@ In diesem Artikel ist beschrieben, wie Sie Ihre DSVM nutzen können, um Data Sci
 
 
 ## <a name="use-jupyter-notebooks"></a>Verwenden von Jupyter-Notebooks
-Jupyter Notebook stellt eine browserbasierte integrierte Entwicklungsumgebung für Datenauswertung und -modellierung bereit. Sie können Python 2, Python 3 oder R (sowohl Open Source als auch Microsoft R Server) in einem Jupyter-Notebook verwenden.
+Jupyter Notebook stellt eine browserbasierte integrierte Entwicklungsumgebung für Datenauswertung und -modellierung bereit. Sie können Python 2, Python 3 oder R (sowohl Open Source als auch Microsoft R Server) in einem Jupyter Notebook verwenden.
 
 Um das Jupyter-Notebook zu starten, wählen Sie das **Jupyter Notebook**-Symbol im **Startmenü** oder auf dem Desktop aus. An der DSVM-Eingabeaufforderung können Sie auch den Befehl ```jupyter notebook``` in dem Verzeichnis ausführen, in dem Notebooks vorhanden sind oder in dem Sie neue Notebooks erstellen möchten.  
 
@@ -201,7 +201,7 @@ Außerdem können Sie Daten aus der lokalen Datei mit Azure Storage-Explorer auf
 
 #### <a name="read-data-from-an-azure-blob-python-odbc"></a>Lesen von Daten aus einem Azure-Blob: Python ODBC
 
-Sie können die BlobService-Bibliothek verwenden, um Daten direkt aus einem Blob in ein Jupyter-Notebook oder in ein Python-Programm zu lesen.
+Sie können die BlobService-Bibliothek verwenden, um Daten direkt aus einem Blob in ein Jupyter Notebook oder in ein Python-Programm zu lesen.
 
 Importieren Sie zunächst die erforderlichen Pakete:
 
@@ -252,8 +252,8 @@ Die Daten werden als Datenrahmen gelesen:
 ![Screenshot der ersten 10 Datenzeilen](./media/vm-do-ten-things/IPNB_data_readin.png)
 
 
-### <a name="azure-synapse-analytics-formerly-sql-dw-and-databases"></a>Azure Synapse Analytics (früher SQL DW) und Datenbanken
-Azure Synapse Analytics (früher SQL DW) ist ein elastisches Data Warehouse-as-a-Service-Angebot mit einer SQL Server-Umgebung der Unternehmensklasse.
+### <a name="azure-synapse-analytics-and-databases"></a>Azure Synapse Analytics und Datenbanken
+Azure Synapse Analytics ist ein elastisches Data Warehouse-as-a-Service-Angebot mit einer SQL Server-Umgebung auf Unternehmensniveau.
 
 Sie können Azure Synapse Analytics anhand der Anweisungen in [diesem Artikel](../../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) bereitstellen. Nachdem Sie Azure Synapse Analytics bereitgestellt haben, können Sie [diese exemplarische Vorgehensweise](../team-data-science-process/sqldw-walkthrough.md) befolgen, um Daten hochzuladen, zu erkunden und zu modellieren, indem Sie Daten innerhalb von Azure Synapse Analytics verwenden.
 

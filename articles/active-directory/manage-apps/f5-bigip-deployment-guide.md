@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 10/12/2020
 ms.author: gasinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7555a0b9d7b3336b1020e8f1d9c3445e09afc6f0
-ms.sourcegitcommit: e5f9126c1b04ffe55a2e0eb04b043e2c9e895e48
+ms.openlocfilehash: 6c03009b08dcf33bf4b84bc91232af96e7ba2c71
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96317679"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095184"
 ---
 # <a name="tutorial-to-deploy-f5-big-ip-virtual-edition-vm-in-azure-iaas-for-secure-hybrid-access"></a>Tutorial zum Bereitstellen von VMs mit F5 BIG-IP Virtual Edition in Azure IaaS für sicheren Hybridzugriff
 
@@ -44,7 +44,7 @@ Kenntnisse über F5 BIG-IP sind nicht erforderlich. Es wird jedoch empfohlen, s
 
 - Ein Platzhalter- oder SAN-Zertifikat (Subject Alternative Name, alternativer Antragstellername) zum Veröffentlichen von Webanwendungen über SSL (Secure Socket Layer). [Let’s Encrypt](https://letsencrypt.org/) bietet ein kostenloses Testzertifikat für 90 Tage an.
 
-- Ein SSL-Zertifikat zum Schützen der Verwaltungsschnittstelle von BIG-IP. Sie können ein zum Veröffentlichen von Web-Apps verwendetes Zertifikat verwenden, wenn der Antragsteller dem vollqualifizierten Domänennamen (FQDN) von BIG-IP entspricht. So wäre beispielsweise ein Platzhalterzertifikat für den Antragsteller „*.contoso.com“ für https://big-ip-vm.contoso.com:8443 geeignet.
+- Ein SSL-Zertifikat zum Schützen der Verwaltungsschnittstelle von BIG-IP. Sie können ein zum Veröffentlichen von Web-Apps verwendetes Zertifikat verwenden, wenn der Antragsteller dem vollqualifizierten Domänennamen (FQDN) von BIG-IP entspricht. So wäre beispielsweise ein Platzhalterzertifikat für den Antragsteller „*.contoso.com“ für `https://big-ip-vm.contoso.com:8443` geeignet.
 
 Die VM-Bereitstellung und die grundlegende Systemkonfigurationen dauern ca. 30 Minuten. Zu diesem Zeitpunkt ist Ihre BIG-IP-Plattform für die Implementierung der [hier](f5-aad-integration.md) aufgeführten Szenarien für den sicheren Hybridzugriff (SHA) bereit.
 

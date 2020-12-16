@@ -1,22 +1,22 @@
 ---
 title: Mandantenübergreifendes Freigeben von Katalogimages in Azure
-description: Erfahren Sie anhand von Windows-Beispielen, wie Sie VM-Images mithilfe von Shared Image Gallerys über Azure-Mandanten hinweg freigeben.
+description: Erfahren Sie, wie Sie VM-Images mithilfe von Katalogen mit freigegebenen Images und PowerShell über Azure-Mandanten hinweg freigeben.
 author: axayjo
-ms.service: virtual-machines-windows
+ms.service: virtual-machines
 ms.subservice: imaging
 ms.workload: infrastructure-services
 ms.topic: how-to
 ms.date: 07/15/2019
 ms.author: akjosh
 ms.reviewer: cynthn
-ms.openlocfilehash: 89987ccc975f5d473a493c48be61094de1177c1b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 84998182081c6a681668fbd9bc05446357beb959
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832414"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781044"
 ---
-# <a name="share-gallery-vm-images-across-azure-tenants"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg
+# <a name="share-gallery-vm-images-across-azure-tenants-using-powershell"></a>Freigeben von Katalog-VM-Images über Azure-Mandanten hinweg mithilfe von PowerShell
 
 Mithilfe von Katalogen mit freigegebenen Images können Sie Images über Azure RBAC freigeben. Sie können Azure RBAC verwenden, um Images innerhalb Ihres Mandanten und sogar für Personen außerhalb Ihres Mandanten freizugeben. Weitere Informationen zu dieser einfachen Freigabeoption finden Sie unter [Freigeben des Katalogs](./shared-images-portal.md#share-the-gallery).
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 06/25/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 6f62675d27310a15c434baba8e3451a3cd81f058
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 68617d86fda940c5d3752f2389088a8c729aebec
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953524"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108347"
 ---
 # <a name="tutorial-for-configuring-typingdna-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von TypingDNA mit Azure Active Directory B2C
 
@@ -36,7 +36,7 @@ In dieser exemplarischen Vorgehensweise erfahren Sie, wie Sie eine Beispiel-App 
 
 2. Wenn der Benutzer die Seite übermittelt, berechnet die TypingDNA-Bibliothek das Eingabemuster des Benutzers. Anschließend werden die Informationen in ein ausgeblendetes Textfeld eingefügt, das Azure AD B2C gerendert hat. Dieses Feld ist mit CSS ausgeblendet.  
 
-    Das [Beispiel enthält HTML-Dateien](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) mit den JavaScript- und CSS-Änderungen. Darauf wird in den Inhaltsdefinitionen `api.selfasserted.tdnasignin` und `api.selfasserted.tdnasignup` verwiesen. Informationen zum Hosten Ihrer HTML-Dateien finden Sie unter [Hosten des Seiteninhalts](./custom-policy-ui-customization.md#hosting-the-page-content).
+    Das [Beispiel enthält HTML-Dateien](https://github.com/azure-ad-b2c/partner-integrations/blob/master/samples/TypingDNA/source-code/selfAssertedSignUp.cshtml) mit den JavaScript- und CSS-Änderungen. Darauf wird in den Inhaltsdefinitionen `api.selfasserted.tdnasignin` und `api.selfasserted.tdnasignup` verwiesen. Informationen zum Hosten Ihrer HTML-Dateien finden Sie unter [Hosten des Seiteninhalts](./customize-ui-with-html.md#hosting-the-page-content).
 
 3. Azure AD B2C verfügt jetzt über das Eingabemuster im Anspruchsbehälter, wenn der Benutzer seine Anmeldeinformationen übermittelt. Es muss eine API (Ihre API) zum Übergeben dieser Daten an den TypingDNA-REST-API-Endpunkt aufgerufen werden. Diese API ist im [Beispiel (TypingDNA-API-Interface)](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) enthalten.
 4. Die API der mittleren Ebene übergibt dann die Daten des Eingabemusters an die TypingDNA-REST-API. Bei der Registrierung wird der [Endpunkt zur Benutzerüberprüfung](https://api.typingdna.com/index.html#api-API_Services-GetUser) aufgerufen, um zu bestätigen, dass der Benutzer noch nicht vorhanden war, und dann wird der Endpunkt zum [Speichern des Eingabemusters](https://api.typingdna.com/index.html#api-API_Services-saveUserPattern) aufgerufen, um das erste Eingabemuster des Benutzers zu speichern.
@@ -160,7 +160,7 @@ Diese Schwellenwerte sollten auf Ihren Anwendungsfall angepasst werden.
 
 1. Hosten Sie [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface) beim Hostinganbieter Ihrer Wahl.
 2. Ersetzen Sie in der [TypingDNA-API-Interface](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/TypingDNA/source-code/TypingDNA-API-Interface)-Lösung alle Instanzen von `apiKey` und `apiSecret` durch die Anmeldeinformationen aus Ihrem TypingDNA-Dashboard.
-3. Hosten Sie die HTML-Dateien beim Anbieter Ihrer Wahl, und befolgen Sie dabei die [hier](./custom-policy-ui-customization.md#3-configure-cors) beschriebenen CORS-Anforderungen.
+3. Hosten Sie die HTML-Dateien beim Anbieter Ihrer Wahl, und befolgen Sie dabei die [hier](./customize-ui-with-html.md#3-configure-cors) beschriebenen CORS-Anforderungen.
 4. Ersetzen Sie in der Datei `TrustFrameworkExtensions.xml` die LoadURI-Elemente für die Inhaltsdefinitionen `api.selfasserted.tdnasignup` und `api.selfasserted.tdnasignin` jeweils durch den URI Ihrer gehosteten HTML-Dateien.
 5. Erstellen Sie im **Azure-Portal** auf dem Blatt „Azure AD“ unter „Identity Experience Framework“ einen B2C-Richtlinienschlüssel. Verwenden Sie die Option `Generate`, und weisen Sie diesem Schlüssel den Namen `tdnaHashedId` zu.
 6. Ersetzen Sie in den Richtliniendateien die Mandanten-ID (TenantId).

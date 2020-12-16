@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 12/04/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 129534727248ff05b5d38da60dead7903d9a5815
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 22103ad580fa474f44eaf42c696d19bbbd137c8e
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744464"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095099"
 ---
 # <a name="query-azure-cosmos-db-data-with-a-serverless-sql-pool-in-azure-synapse-link-preview"></a>Abfragen von Azure Cosmos DB-Daten mithilfe eines serverlosen SQL-Pools in Azure Synapse Link (Vorschau)
 
@@ -222,7 +222,7 @@ FROM OPENROWSET(
     ) with ( date_rep varchar(20), cases bigint, geo_id varchar(6) ) as rows
 ```
 
-Verwenden Sie `OPENROWSET` nicht ohne explizit definiertes Schema, da sich dies auf Ihre Leistung auswirken könnte. Stellen Sie sicher, dass Sie die kleinsten möglichen Größen für ihre Spalten (z. B. VARCHAR(100) anstelle des Standards VARCHAR(8000)) verwenden. Sie sollten eine UTF-8-Sortierung als standardmäßige Datenbanksortierung verwenden oder sie als explizite Spaltensortierung festlegen, um [UTF-8-Konvertierungsprobleme](/troubleshoot/reading-utf8-text) zu vermeiden. Die Sortierung `Latin1_General_100_BIN2_UTF8` bietet die beste Leistung, wenn Sie Daten mithilfe von Zeichenfolgenspalten filtern.
+Verwenden Sie `OPENROWSET` nicht ohne explizit definiertes Schema, da sich dies auf Ihre Leistung auswirken könnte. Stellen Sie sicher, dass Sie die kleinsten möglichen Größen für ihre Spalten (z. B. VARCHAR(100) anstelle des Standards VARCHAR(8000)) verwenden. Sie sollten eine UTF-8-Sortierung als standardmäßige Datenbanksortierung verwenden oder sie als explizite Spaltensortierung festlegen, um [UTF-8-Konvertierungsprobleme](/azure/synapse-analytics/troubleshoot/reading-utf8-text) zu vermeiden. Die Sortierung `Latin1_General_100_BIN2_UTF8` bietet die beste Leistung, wenn Sie Daten mithilfe von Zeichenfolgenspalten filtern.
 
 ## <a name="query-nested-objects-and-arrays"></a>Abfragen von geschachtelten Objekten und Arrays
 

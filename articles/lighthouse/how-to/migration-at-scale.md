@@ -3,12 +3,12 @@ title: Verwalten von Migrationsprojekten im großen Maßstab mit Azure Migrate
 description: Erfahren Sie, wie Sie Azure Migrate für delegierte Kundenressourcen effektiv verwenden können.
 ms.date: 12/4/2020
 ms.topic: how-to
-ms.openlocfilehash: d1a01149c80b30f279f7d68551946c3ffe404d5e
-ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
+ms.openlocfilehash: 16b92f3aa4dc3bfcb71eb232170c4df30348f8db
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/05/2020
-ms.locfileid: "96621568"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095388"
 ---
 # <a name="manage-migration-projects-at-scale-with-azure-migrate"></a>Verwalten von Migrationsprojekten im großen Maßstab mit Azure Migrate
 
@@ -39,7 +39,7 @@ Dieser Ansatz minimiert den Kontextwechsel für Dienstanbieter, die kundenüberg
 Der Workflow für dieses Modell ähnelt dem folgenden Workflow:
 
 1. Für den Kunden wird das [Onboarding in Azure Lighthouse durchgeführt](onboard-customer.md). Für die mit Azure Migrate verwendete Identität ist die integrierte Rolle „Mitwirkender“ erforderlich. Die Beispielvorlage [delegated-resource-management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) bietet ein Beispiel für die Verwendung dieser Rolle.
-1. Der angegebene Benutzer meldet sich im Azure-Portal beim Verwaltungsmandanten an und wechselt dann zu Azure Migrate. Dieser Benutzer [erstellt ein Azure Migrate-Projekt](/migrate/create-manage-projects.md) und wählt dabei das entsprechende delegierte Kundenabonnement aus.
+1. Der angegebene Benutzer meldet sich im Azure-Portal beim Verwaltungsmandanten an und wechselt dann zu Azure Migrate. Dieser Benutzer [erstellt ein Azure Migrate-Projekt](/azure/migrate/create-manage-projects) und wählt dabei das entsprechende delegierte Kundenabonnement aus.
 1. Anschließend [führt der Benutzer Schritte zur Ermittlung und Bewertung aus](../../migrate/tutorial-discover-vmware.md).
 
    Bei VMware-VMs können Sie vor dem Konfigurieren der Appliance die Ermittlung auf vCenter Server-Rechenzentren, Cluster, einen Clusterordner, Hosts, einen Hostordner oder einzelne VMs beschränken. Um den Bereich festzulegen, weisen Sie dem Konto Berechtigungen zu, das die Appliance für den Zugriff auf die vCenter Server-Instanz verwendet. Dies ist nützlich, wenn die VMs mehrerer Kunden auf dem Hypervisor gehostet werden. Der Ermittlungsbereich von Hyper-V kann nicht eingeschränkt werden.
@@ -61,7 +61,7 @@ Bei diesem Ansatz können Dienstanbieter Migrationsermittlungs- und-bewertungspr
 Der Workflow für dieses Modell ähnelt dem folgenden Workflow:
 
 1. Für den Kunden wird das [Onboarding in Azure Lighthouse durchgeführt](onboard-customer.md). Für die mit Azure Migrate verwendete Identität ist die integrierte Rolle „Mitwirkender“ erforderlich. Die Beispielvorlage [delegated-resource-management-azmigrate](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/delegated-resource-management-azmigrate) bietet ein Beispiel für die Verwendung dieser Rolle.
-1. Der angegebene Benutzer meldet sich im Azure-Portal beim Verwaltungsmandanten an und wechselt dann zu Azure Migrate. Dieser Benutzer [erstellt ein Azure Migrate-Projekt](/migrate/create-manage-projects.md) in einem Abonnement, das zum Verwaltungsmandanten gehört.
+1. Der angegebene Benutzer meldet sich im Azure-Portal beim Verwaltungsmandanten an und wechselt dann zu Azure Migrate. Dieser Benutzer [erstellt ein Azure Migrate-Projekt](/azure/migrate/create-manage-projects) in einem Abonnement, das zum Verwaltungsmandanten gehört.
 1. Anschließend [führt der Benutzer Schritte zur Ermittlung und Bewertung aus](../../migrate/tutorial-discover-vmware.md). Die lokalen VMs werden innerhalb des im Verwaltungsmandanten erstellten Migrationsprojekts ermittelt und bewertet und dann von dort migriert.
 
    Wenn Sie mehrere Kunden auf demselben Hyper-V-Host verwalten, können Sie alle Workloads gleichzeitig ermitteln. Kundenspezifische VMs können in derselben Gruppe ausgewählt werden. Dann kann eine Bewertung erstellt werden, und die Migration kann durchgeführt werden, indem das entsprechende Kundenabonnement als Ziel ausgewählt wird. Der Ermittlungsbereich muss nicht eingeschränkt werden, und Sie können einen vollständigen Überblick über alle Kundenworkloads in einem Migrationsprojekt erhalten.

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 11/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 0aaad18ba5bf98ca2ad53bd86605dfc6cce3e52c
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: cf70b24dae70ad2e64f3443e4c4d959d46fb4ea4
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96465429"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095031"
 ---
 # <a name="use-compute-acceleration-on-azure-stack-edge-pro-gpu-for-kubernetes-deployment"></a>Verwenden der Computebeschleunigung für Azure Stack Edge Pro GPU in Kubernetes-Bereitstellungen
 
@@ -28,8 +28,8 @@ Computebeschleunigung ist ein Begriff, der insbesondere für Azure Stack Edge-Ge
 
 In diesem Artikel wird nur die GPU- oder VPU-Computebeschleunigung für die folgenden Geräte erörtert:
 
-- **Azure Stack Edge Pro GPU**: Diese Geräte unterstützen 1 oder 2 Nvidia T4 Tensor Core GPUs. Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
-- **Azure Stack Edge Pro R**: Diese Geräte unterstützen 1 Nvidia T4 Tensor Core GPU. Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/data-center/tesla-t4/).
+- **Azure Stack Edge Pro GPU**: Diese Geräte unterstützen 1 oder 2 Nvidia T4 Tensor Core GPUs. Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
+- **Azure Stack Edge Pro R**: Diese Geräte unterstützen 1 Nvidia T4 Tensor Core GPU. Weitere Informationen finden Sie unter [NVIDIA T4](https://www.nvidia.com/en-us/data-center/tesla-t4/).
 - **Azure Stack Edge Mini R**: Diese Geräte unterstützen 1 Intel Movidius Myriad X VPU. Weitere Informationen finden Sie unter [Intel Movidius Myriad X VPU](https://www.movidius.com/MyriadX).
 
 

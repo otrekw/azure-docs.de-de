@@ -7,13 +7,13 @@ ms.topic: how-to
 author: trkeya
 ms.author: trkeya
 ms.date: 10/27/2020
-ms.custom: contperfq2
-ms.openlocfilehash: 3d96973d4d1e37ae3fee21eb70e3e32a45867f0c
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.custom: contperf-fy21q2
+ms.openlocfilehash: 26ceee828bae7ea3fe2d78ec1393f308556b8401
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491952"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033356"
 ---
 # <a name="update-existing-offers-in-the-commercial-marketplace"></a>Aktualisieren bestehender Angebote im kommerziellen Marketplace
 
@@ -23,13 +23,13 @@ In diesem Artikel erfahren Sie, wie Sie bestehende Angebote und Pläne aktualisi
 
 Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zustand „Vorschau“ oder „Live“ veröffentlicht wurde.
 
-1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau** , **Live** , **Veröffentlichung in Bearbeitung** , **Entwurf** , **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
-1. Wählen Sie die Angebotsseite aus, die Sie aktualisieren möchten (beispielsweise **Eigenschaften** , **Angebotsliste** oder **Vorschau** ), oder wählen Sie auf der entsprechenden Karte der Seite **Angebotsübersicht** die Option **Aktualisieren** aus.
+1. Wählen Sie den Namen des Angebots aus, das Sie aktualisieren möchten. Der Status des Angebots kann folgendermaßen gelistet sein: **Vorschau**, **Live**, **Veröffentlichung in Bearbeitung**, **Entwurf**, **Eingreifen erforderlich** oder **Nicht verfügbar** (falls Sie zuvor beschlossen habe, den Verkauf des Angebots zu beenden). Nach Treffen einer Wahl wird die Seite **Offer overview** (Angebotsübersicht) für dieses Angebot geöffnet.
+1. Wählen Sie die Angebotsseite aus, die Sie aktualisieren möchten (beispielsweise **Eigenschaften**, **Angebotsliste** oder **Vorschau**), oder wählen Sie auf der entsprechenden Karte der Seite **Angebotsübersicht** die Option **Aktualisieren** aus.
 1. Nehmen Sie die gewünschten Änderungen vor, und klicken Sie dann auf **Entwurf speichern**. Wiederholen Sie diesen Vorgang, bis alle gewünschten Änderungen erfolgt sind.
 1. Überprüfen Sie Ihre Änderungen auf der Seite **[Vergleichen](#compare-changes-to-your-offer)** .
 1. Wenn Sie Ihr aktualisiertes Angebot veröffentlichen möchten, klicken Sie auf einer beliebigen Seite auf **Überprüfen und veröffentlichen**. Die Seite **Review and publish** (Überprüfen und veröffentlichen) wird geöffnet. Auf dieser Seite wird der Fertigstellungsstatus für die Abschnitte des Angebots angezeigt, die Sie aktualisiert haben: 
-    - **Nicht veröffentlichte Änderungen** : Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
-    - **Unvollständige Informationen** : Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
+    - **Nicht veröffentlichte Änderungen**: Der Abschnitt wurde aktualisiert und ist fertig. Alle erforderlichen Daten wurden bereitgestellt, und es sind keine Fehler in den Aktualisierungen zu verzeichnen.
+    - **Unvollständige Informationen**: Die im Abschnitt erfolgten Aktualisierungen haben zu Fehlern geführt, die behoben werden müssen, oder erfordern eine Ergänzung der Informationen.
 2. Wählen Sie **Veröffentlichen** aus, um das aktualisierte Angebot zur Veröffentlichung zu übermitteln. Das Angebot durchläuft dann die üblichen [Schritte für die Validierung und Veröffentlichung](../review-publish-offer.md#validation-and-publishing-steps).
 
 > [!IMPORTANT]
@@ -39,18 +39,18 @@ Gehen Sie wie folgt vor, um ein Angebot zu aktualisieren, das erfolgreich im Zus
 
 Führen Sie die folgenden Schritte aus, um einem bereits veröffentlichten Angebot einen neuen Plan hinzuzufügen:
 
-1. Öffnen Sie die Seite **Angebotsübersicht** für Ihr bestehendes Angebot, navigieren Sie zur Seite **Planübersicht** , und klicken Sie dann auf **Neuen Plan erstellen**.
+1. Öffnen Sie die Seite **Angebotsübersicht** für Ihr bestehendes Angebot, navigieren Sie zur Seite **Planübersicht**, und klicken Sie dann auf **Neuen Plan erstellen**.
 1. Erstellen Sie mithilfe des **Preismodells für bestehende Pläne** einen neuen Plan, der den [Richtlinien](../plans-pricing.md) entspricht.
 1. Nachdem Sie den Plannamen geändert haben, klicken Sie auf **Entwurf speichern**.
-1. Klicken Sie auf **Veröffentlichen** , sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](../review-publish-offer.md)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
+1. Klicken Sie auf **Veröffentlichen**, sobald Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen. Dann wird die Seite **[Überprüfen und veröffentlichen](../review-publish-offer.md)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 
 ## <a name="update-a-plan-for-an-existing-offer"></a>Aktualisieren eines Plans für ein bestehendes Angebot
 
 Führen Sie die folgenden Schritte aus, um einen Plan für ein bereits veröffentlichtes Angebot zu ändern:
 
 1. Wenn die Seite **Angebotsübersicht** für Ihr bestehendes Angebot geöffnet ist, wählen Sie den Plan aus, den Sie ändern möchten. Wenn über die Liste **Planübersicht** nicht auf den Plan zugegriffen werden kann, klicken Sie auf **Alle Pläne anzeigen**.
-1. Wählen Sie den **Namen** , das **Preismodell** oder die **Verfügbarkeit** des Plans aus. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung.*
-1. Klicken Sie auf **Entwurf speichern** , nachdem Sie alle gewünschten Änderungen am Namen, an der Beschreibung oder der Zielgruppenverfügbarkeit des Plans vorgenommen haben.
+1. Wählen Sie den **Namen**, das **Preismodell** oder die **Verfügbarkeit** des Plans aus. *Pläne stehen derzeit nur auf Englisch (USA) zur Verfügung.*
+1. Klicken Sie auf **Entwurf speichern**, nachdem Sie alle gewünschten Änderungen am Namen, an der Beschreibung oder der Zielgruppenverfügbarkeit des Plans vorgenommen haben.
 1. Wenn Sie bereit sind, Ihre Aktualisierungen zu veröffentlichen, wählen Sie **Überprüfen und veröffentlichen** aus. Dann wird die Seite **[Überprüfen und veröffentlichen](../review-publish-offer.md)** mit dem Fertigstellungsstatus Ihrer Aktualisierungen geöffnet.
 1. Wählen Sie **Veröffentlichen** aus, um den aktualisierten Plan zur Veröffentlichung zu übermitteln. Wir senden Ihnen eine E-Mail, wenn eine Vorschauversion des aktualisierten Angebots zur Überprüfung und Freigabe verfügbar ist.
 
@@ -85,7 +85,7 @@ So aktualisieren und synchronisieren Sie die Zielgruppe Ihrer privaten Pläne
 
 ## <a name="compare-changes-to-your-offer"></a>Vergleichen von Änderungen an Ihrem Angebot
 
-Bevor Sie Aktualisierungen für Ihr Live- oder [Vorschau](#compare-changes-to-a-preview-offer)-Angebot veröffentlichen, können Sie die gespeicherten Änderungen auf der Seite **Vergleichen** überprüfen. Die Seite **Vergleichen** können Sie in der rechten oberen Ecke jeder Angebotsseite aufrufen (also beispielsweise auf der Seite **Eigenschaften** oder **Angebotsliste** ). Auf der Seite **Vergleichen** werden die Version dieses Angebots mit den gespeicherten Änderungen und die Version des veröffentlichten Marketplace-Angebots nebeneinander angezeigt.
+Bevor Sie Aktualisierungen für Ihr Live- oder [Vorschau](#compare-changes-to-a-preview-offer)-Angebot veröffentlichen, können Sie die gespeicherten Änderungen auf der Seite **Vergleichen** überprüfen. Die Seite **Vergleichen** können Sie in der rechten oberen Ecke jeder Angebotsseite aufrufen (also beispielsweise auf der Seite **Eigenschaften** oder **Angebotsliste**). Auf der Seite **Vergleichen** werden die Version dieses Angebots mit den gespeicherten Änderungen und die Version des veröffentlichten Marketplace-Angebots nebeneinander angezeigt.
 
 - Sie können **Vergleichen** jederzeit während des Bearbeitungsvorgangs verwenden.
 - Wählen Sie auf der Seite **Vergleichen** ein Feld aus, um zu dem Wert zu navigieren, den Sie ändern möchten.

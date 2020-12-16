@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 333bb42643539cedec04d37680749c749a003536
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: cf0437b985865248393e9f68da264fcae5af7f12
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95994059"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108551"
 ---
 # <a name="tutorial-for-configuring-arkose-labs-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von Arkose Labs mit Azure Active Directory B2C
 
@@ -147,7 +147,7 @@ Laden Sie Git Bash herunter, und führen Sie die unten angegebenen Schritte aus:
 
 1. Erstellen Sie basierend auf [diesen Informationen](tutorial-create-user-flows.md) einen Benutzerflow. Halten Sie beim Abschnitt **Testen des Benutzerflows** an.
 
-2. Aktivieren Sie JavaScript in Ihrem [Benutzerflow](user-flow-javascript-overview.md).
+2. Aktivieren Sie JavaScript in Ihrem [Benutzerflow](javascript-and-page-layout.md).
 
 3. Aktivieren Sie auf derselben Seite des Benutzerflows die benutzerdefinierte Seiten-URL: Navigieren Sie zu **Benutzerflow** > **Seitenlayout** > **Benutzerdefinierten Seiteninhalt verwenden** = **Ja** > **Benutzerdefinierte Seiten-URL einfügen**.
 Diese benutzerdefinierte Seiten-URL finden Sie am Speicherort der Datei „index.html“ im Blobspeicher.  

@@ -1,24 +1,30 @@
 ---
 title: Übersicht zu Azure Functions
-description: Es wird beschrieben, wie Ihnen Azure Functions beim Entwickeln von skalierbaren serverlosen Apps als Hilfe dient.
+description: Hier erfahren Sie, wie Azure Functions Sie beim Entwickeln robuster serverloser Apps unterstützen kann.
 author: craigshoemaker
 ms.assetid: 01d6ca9f-ca3f-44fa-b0b9-7ffee115acd4
 ms.topic: overview
 ms.date: 11/20/2020
 ms.author: cshoe
 ms.custom: contperfq2
-ms.openlocfilehash: 514f2e9a82a50f95f9c054c6a54e7b5af3c0af15
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 269d911c13cbc59a054c5548e106780d630c8e2b
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96167776"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620867"
 ---
 # <a name="introduction-to-azure-functions"></a>Einführung in Azure Functions
 
+Azure Functions ist eine serverlose Lösung, die es Ihnen ermöglicht, weniger Code zu schreiben, weniger Infrastruktur zu verwalten und Kosten zu sparen. Da durch die Cloudinfrastruktur alle aktuellen Server bereitgestellt werden, die zum Ausführen Ihrer Anwendungen benötigt werden, müssen Sie sich nicht mit der Bereitstellung und Wartung von Servern befassen.
+
+Stattdessen können Sie sich ganz auf die Codeelemente konzentrieren, die für Sie am wichtigsten sind, und Azure Functions kümmert sich um den Rest.<br /><br />
+
+> [!VIDEO https://www.youtube.com/embed/8-jz5f_JyEQ]
+
 Systeme werden häufig entwickelt, um auf eine Reihe von kritischen Ereignissen zu reagieren. Unabhängig davon, ob Sie eine Web-API entwickeln, auf Datenbankänderungen reagieren, IoT-Datenströme verarbeiten oder auch Nachrichtenwarteschlangen verwalten, gilt Folgendes: Für jede Anwendung muss es eine Möglichkeit zum Ausführen von Code geben, wenn diese Ereignisse eintreten.
 
-Zur Erfüllung dieser Anforderung verfügt Azure Functions über zwei Optionen für bedarfsgesteuertes Computing (Compute On-Demand).
+Zur Erfüllung dieser Anforderung verfügt Azure Functions über zwei Optionen für bedarfsgesteuertes Computing (Compute On-Demand):
 
 Erstens können Sie mit Azure Functions die Logik Ihres Systems in schnell verfügbaren Codeblöcken implementieren. Diese Codeblöcke werden als „Funktionen“ bezeichnet. Die verschiedenen Funktionen können jederzeit ausgeführt werden, wenn Sie auf kritische Ereignisse reagieren müssen.
 
@@ -43,7 +49,7 @@ Unten sind einige häufige Szenarien für Azure Functions aufgeführt (_keine um
 | **Ausführen von geplanten Aufgaben** | Ausführen von Code zu [festen Zeiten](./functions-bindings-timer.md) |
 | **Erstellen zuverlässiger Systeme für Nachrichtenwarteschlangen** | Verarbeiten von Nachrichtenwarteschlangen mit [Queue Storage](./functions-bindings-storage-queue.md), [Service Bus](./functions-bindings-service-bus.md) oder [Event Hubs](./functions-bindings-event-hubs.md) |
 | **Analysieren von IoT-Datenströmen** | Sammeln und Verarbeiten der [Daten von IoT-Geräten](./functions-bindings-event-iot.md) |
-| **Verarbeiten von Daten in Echtzeit** | Verwenden von [Functions und Signal R](./functions-bindings-signalr-service.md) zum schnellen Reagieren auf Datenvorgänge |
+| **Verarbeiten von Daten in Echtzeit** | Verwenden von [Functions und SignalR](./functions-bindings-signalr-service.md) zum schnellen Reagieren auf Datenvorgänge |
 
 Beim Entwickeln Ihrer Funktionen stehen Ihnen die folgenden Optionen und Ressourcen zur Verfügung:
 

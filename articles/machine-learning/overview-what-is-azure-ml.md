@@ -9,12 +9,12 @@ author: j-martens
 ms.author: jmartens
 ms.date: 11/04/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: af38f68a9709b21989ba787fb5b2c623e07dc440
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: 85080c018749f9aab716eff0a4527363da987007
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541282"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620476"
 ---
 # <a name="what-is-azure-machine-learning"></a>Was ist Azure Machine Learning?
 
@@ -49,7 +49,7 @@ Azure Machine Learning verfügt über alle Tools, die Entwickler und Data Scient
 
 + + Der [Many Models Solution Accelerator](https://aka.ms/many-models) (Preview) (Projektmappenbeschleuniger für viele Modelle (Vorschau)) baut auf Azure Machine Learning auf und ermöglicht Ihnen Training, Betrieb und Verwaltung von hunderten oder sogar tausenden von Machine Learning-Modellen.
 
-+ [Visual Studio Code-Erweiterung](tutorial-setup-vscode-extension.md)
++ [Erweiterung für maschinelles Lernen für Visual Studio Code-Benutzer](tutorial-setup-vscode-extension.md)
 
 + [Machine Learning-CLI](reference-azure-machine-learning-cli.md)
 

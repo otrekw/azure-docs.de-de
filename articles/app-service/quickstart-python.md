@@ -6,12 +6,12 @@ ms.date: 11/10/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 adobe-target: true
-ms.openlocfilehash: b32977ac1c8cfe0c461bcd1628c08a0ca215ba93
-ms.sourcegitcommit: 4bee52a3601b226cfc4e6eac71c1cb3b4b0eafe2
+ms.openlocfilehash: 7eebbe5605c0b4d70ea15c1605cff5416965e535
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94506191"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780772"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
@@ -74,23 +74,11 @@ Klonen Sie das Beispielrepository mit dem folgenden Befehl, und navigieren Sie z
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-world
 ```
-
-Navigieren Sie anschließend in diesen Ordner:
-
-```terminal
-cd python-docs-hello-world
-```
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
 ```terminal
 git clone https://github.com/Azure-Samples/python-docs-hello-django
-```
-
-Navigieren Sie anschließend in diesen Ordner:
-
-```terminal
-cd python-docs-hello-django
 ```
 ::: zone-end
 
@@ -101,7 +89,11 @@ Treten Probleme auf? [Informieren Sie uns darüber](https://aka.ms/FlaskCLIQuick
 ## <a name="run-the-sample"></a>Ausführen des Beispiels
 
 ::: zone pivot="python-framework-flask"
-1. Stellen Sie sicher, dass Sie sich im Ordner *python-docs-hello-world* befinden. 
+1. Navigieren Sie zum Ordner *python-docs-hello-world*:
+
+    ```terminal
+    cd python-docs-hello-world
+    ```
 
 1. Erstellen Sie eine virtuelle Umgebung, und installieren Sie Abhängigkeiten:
 
@@ -115,7 +107,11 @@ Treten Probleme auf? [Informieren Sie uns darüber](https://aka.ms/FlaskCLIQuick
     flask run
     ```
     
-    Standardmäßig wird vom Server angenommen, dass sich das Eingabemodul der App in *app.py* befindet (wie im Beispiel). (Wenn Sie einen anderen Modulnamen verwenden, müssen Sie die Umgebungsvariable `FLASK_APP` auf diesen Namen festlegen.)
+    Standardmäßig wird vom Server angenommen, dass sich das Eingabemodul der App in *app.py* befindet (wie im Beispiel).
+
+    Wenn Sie einen anderen Modulnamen verwenden, müssen Sie die Umgebungsvariable `FLASK_APP` auf diesen Namen festlegen.
+
+    Sollte der Fehler „Could not locate a Flask application. You did not provide the 'FLASK_APP' environment variable, and a 'wsgi.py' or 'app.py' module was not found in the current directory.“ (Es wurde keine Flask-Anwendung gefunden. Sie haben die Umgebungsvariable „FLASK_APP“ nicht angegeben, und im aktuellen Verzeichnis wurde kein Modul vom Typ „wsgi.py“ oder „app.py“ gefunden.) auftreten, vergewissern Sie sich, dass Sie sich im Ordner `python-docs-hello-world` mit dem Beispiel befinden.
 
 1. Öffnen Sie einen Webbrowser, und navigieren Sie zur Beispiel-App unter `http://localhost:5000/`. Die App zeigt die Meldung **Hello, World!** an.
 
@@ -125,7 +121,11 @@ Treten Probleme auf? [Informieren Sie uns darüber](https://aka.ms/FlaskCLIQuick
 ::: zone-end
 
 ::: zone pivot="python-framework-django"
-1. Stellen Sie sicher, dass Sie sich im Ordner *python-docs-hello-django* befinden. 
+1. Navigieren Sie zum Ordner *python-docs-hello-django*:
+
+    ```terminal
+    cd python-docs-hello-django
+    ```
 
 1. Erstellen Sie eine virtuelle Umgebung, und installieren Sie Abhängigkeiten:
 
@@ -275,7 +275,7 @@ Der Befehl verwendet den Ressourcengruppennamen, der in der Datei *.azure/config
 
 Mit dem Argument `--no-wait` kann für den Befehl die Rückgabe erfolgen, bevor der Vorgang abgeschlossen ist.
 
-Treten Probleme auf? [Informieren Sie uns darüber](https://aka.ms/FlaskCLIQuickstartHelp).
+Treten Probleme auf? [Informieren Sie uns darüber.](https://aka.ms/FlaskCLIQuickstartHelp)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

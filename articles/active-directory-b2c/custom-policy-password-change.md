@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/16/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 1c942d52bbcdad711115d81a78395979c507784b
-ms.sourcegitcommit: 33368ca1684106cb0e215e3280b828b54f7e73e8
+ms.openlocfilehash: a471f510f60eeb6428c5c4e8ec7cccd1e0804d10
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/16/2020
-ms.locfileid: "92131750"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108857"
 ---
 # <a name="configure-password-change-using-custom-policies-in-azure-active-directory-b2c"></a>Konfigurieren der Kennwortänderung mithilfe benutzerdefinierter Richtlinien in Azure Active Directory B2C
 
@@ -30,7 +30,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
 ## <a name="add-the-elements"></a>Hinzufügen der Elemente
 
-1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml* , und fügen Sie das folgende **ClaimType** -Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu:
+1. Öffnen Sie Ihre Datei *TrustframeworkExtensions.xml*, und fügen Sie das folgende **ClaimType**-Element mit dem Bezeichner `oldPassword` zum [ClaimsSchema](claimsschema.md)-Element hinzu:
 
     ```xml
     <BuildingBlocks>
@@ -45,7 +45,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
     </BuildingBlocks>
     ```
 
-2. Ein [ClaimsProvider](claimsproviders.md)-Element enthält das technische Profil, das den Benutzer authentifiziert. Fügen Sie dem **ClaimsProviders** -Element die folgenden Anspruchsanbieter hinzu:
+2. Ein [ClaimsProvider](claimsproviders.md)-Element enthält das technische Profil, das den Benutzer authentifiziert. Fügen Sie dem **ClaimsProviders**-Element die folgenden Anspruchsanbieter hinzu:
 
     ```xml
     <ClaimsProviders>
@@ -124,7 +124,7 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
 
     Ersetzen Sie `IdentityExperienceFrameworkAppId` durch die Anwendungs-ID der IdentityExperienceFramework-Anwendung, die Sie im entsprechenden Tutorial erstellt haben. Ersetzen Sie `ProxyIdentityExperienceFrameworkAppId` durch die Anwendungs-ID der ProxyIdentityExperienceFramework-Anwendung, die Sie ebenfalls zuvor erstellt haben.
 
-3. Das [UserJourney](userjourneys.md)-Element definiert den Pfad, den der Benutzer beim Interagieren mit Ihrer Anwendung durchläuft. Fügen Sie das **UserJourneys** -Element hinzu (sofern es noch nicht vorhanden ist), und identifizieren Sie dabei die **UserJourney** als `PasswordChange`:
+3. Das [UserJourney](userjourneys.md)-Element definiert den Pfad, den der Benutzer beim Interagieren mit Ihrer Anwendung durchläuft. Fügen Sie das **UserJourneys**-Element hinzu (sofern es noch nicht vorhanden ist), und identifizieren Sie dabei die **UserJourney** als `PasswordChange`:
 
     ```xml
     <UserJourneys>
@@ -152,10 +152,10 @@ Führen Sie die unter [Erste Schritte für benutzerdefinierte Richtlinien in Azu
     </UserJourneys>
     ```
 
-4. Speichern Sie die Richtliniendatei *TrustFrameworkExtensions.xml* .
-5. Kopieren Sie die Datei *ProfileEdit.xml* , die Sie mit dem Starter Pack heruntergeladen haben, und weisen Sie ihr den Namen *ProfileEditPasswordChange.xml* zu.
-6. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie. Beispiel: *B2C_1A_profile_edit_password_change* .
-7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht. Beispiel: *PasswordChange* .
+4. Speichern Sie die Richtliniendatei *TrustFrameworkExtensions.xml*.
+5. Kopieren Sie die Datei *ProfileEdit.xml*, die Sie mit dem Starter Pack heruntergeladen haben, und weisen Sie ihr den Namen *ProfileEditPasswordChange.xml* zu.
+6. Öffnen Sie die neue Datei, und aktualisieren Sie das Attribut **PolicyId** mit einem eindeutigen Wert. Dieser Wert ist der Name Ihrer Richtlinie. Beispiel: *B2C_1A_profile_edit_password_change*.
+7. Ändern Sie das Attribut **ReferenceId** in `<DefaultUserJourney>`, sodass es der ID der neuen von Ihnen erstellten User Journey entspricht. Beispiel: *PasswordChange*.
 8. Speichern Sie die Änderungen.
 
 Die Beispielrichtlinie finden Sie [hier](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/password-change).
@@ -168,19 +168,19 @@ Wenn Sie Ihre Anwendungen in Azure AD B2C testen, kann es nützlich sein, das Az
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü auf den **Verzeichnis- und Abonnementfilter** klicken und das entsprechende Verzeichnis auswählen.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C** , und wählen Sie dann diese Option aus.
+3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
 4. Wählen Sie **Framework für die Identitätsfunktion** aus.
-5. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **Richtlinie hochladen** .
-6. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden** , suchen Sie nach der Datei *TrustframeworkExtensions.xml* , und wählen Sie die Datei aus.
-7. Klicken Sie auf **Hochladen** .
-8. Wiederholen Sie die Schritte 5 bis 7 für die Datei der vertrauenden Seite, z. B. *ProfileEditPasswordChange.xml* .
+5. Klicken Sie auf der Seite „Benutzerdefinierte Richtlinien“ auf **Richtlinie hochladen**.
+6. Aktivieren Sie **Richtlinie überschreiben, sofern vorhanden**, suchen Sie nach der Datei *TrustframeworkExtensions.xml*, und wählen Sie die Datei aus.
+7. Klicken Sie auf **Hochladen**.
+8. Wiederholen Sie die Schritte 5 bis 7 für die Datei der vertrauenden Seite, z. B. *ProfileEditPasswordChange.xml*.
 
 ### <a name="run-the-policy"></a>Ausführen der Richtlinie
 
-1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_profile_edit_password_change* .
+1. Öffnen Sie die Richtlinie, die Sie geändert haben. Beispiel: *B2C_1A_profile_edit_password_change*.
 2. Wählen Sie für **Anwendung** Ihre Anwendung aus, die Sie zuvor registriert haben. Um das Token anzuzeigen, muss als **Antwort-URL** der Wert `https://jwt.ms` angegeben werden.
-3. Klicken Sie auf **Jetzt ausführen** . Melden Sie sich mit dem Konto an, das Sie zuvor erstellt haben. Jetzt sollten Sie die Möglichkeit haben, das Kennwort zu ändern.
+3. Klicken Sie auf **Jetzt ausführen**. Melden Sie sich mit dem Konto an, das Sie zuvor erstellt haben. Jetzt sollten Sie die Möglichkeit haben, das Kennwort zu ändern.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Informieren Sie sich über das [Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](custom-policy-password-complexity.md).
+- Informieren Sie sich über das [Konfigurieren der Kennwortkomplexität mithilfe von benutzerdefinierten Richtlinien in Azure Active Directory B2C](password-complexity.md).

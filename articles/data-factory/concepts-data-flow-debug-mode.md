@@ -7,13 +7,13 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 09/11/2020
-ms.openlocfilehash: 2cfd498f73646b0021d5fbb3e982dc82871ef35c
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.date: 12/04/2020
+ms.openlocfilehash: 87465ff381c62343a11c54130378b48580ca40e2
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93026988"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621642"
 ---
 # <a name="mapping-data-flow-debug-mode"></a>Mapping Data Flow – Debugmodus
 
@@ -25,9 +25,9 @@ Mit dem Debugmodus von Azure Data Factory Mapping Data Flow können Sie die Tran
 
 ![Schieberegler für Debugmodus](media/data-flow/debugbutton.png "Schieberegler für Debugmodus")
 
-Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Dauer von 60 Minuten gestartet. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#ir).
+Nachdem Sie den Schieberegler aktiviert haben, werden Sie aufgefordert, die Integration Runtime-Konfiguration auszuwählen, die Sie verwenden möchten. Wird „AutoResolveIntegrationRuntime“ ausgewählt, wird ein Cluster mit acht allgemeinen Compute-Kernen und einer Standarddauer von 60 Minuten gestartet. Wenn Sie vor dem Timeout Ihrer Sitzung eine längere Leerlaufzeit zulassen möchten, können Sie eine höhere TTL-Einstellung wählen. Weitere Informationen zu Datenfluss-Integration Runtimes finden Sie unter [Datenflussleistung](concepts-data-flow-performance.md#ir).
 
-![Auswahl der Integration Runtime zum Debuggen](media/data-flow/debugbutton2.png "Auswahl der Integration Runtime zum Debuggen")
+![Auswahl der Integration Runtime zum Debuggen](media/data-flow/debug-new-1.png "Auswahl der Integration Runtime zum Debuggen")
 
 Wenn der Debugmodus eingeschaltet ist, erstellen Sie Ihren Datenfluss mit einem aktiven Spark-Cluster. Die Sitzung wird beendet, sobald Sie das Debuggen in Azure Data Factory deaktivieren. Beachten Sie, dass stündlich Gebühren durch Azure Databricks anfallen, solange die Debugsitzung aktiviert ist.
 
@@ -36,7 +36,7 @@ In den meisten Fällen ist es eine gute Vorgehensweise, Ihre Datenflüsse im Deb
 ![Anzeigen von Debugsitzungen für einen Datenfluss](media/iterative-development-debugging/view-dataflow-debug-sessions.png)
 
 > [!NOTE]
-> Jede Debugsitzung, die ein Benutzer über die ADF-Browserbenutzeroberfläche startet, stellt eine neue Sitzung mit einem eigenen Spark-Cluster dar. Mithilfe der Überwachungsansicht für Debugsitzungen oben können Sie Debugsitzungen factoryweise anzeigen und verwalten.
+> Jede Debugsitzung, die ein Benutzer über die ADF-Browserbenutzeroberfläche startet, stellt eine neue Sitzung mit einem eigenen Spark-Cluster dar. Mithilfe der Überwachungsansicht für Debugsitzungen oben können Sie Debugsitzungen factoryweise anzeigen und verwalten. Ihnen wird jede Stunde in Rechnung gestellt, in der die einzelnen Debugsitzungen ausgeführt werden, einschließlich der Gültigkeitsdauer (TTL).
 
 ## <a name="cluster-status"></a>Clusterstatus
 
@@ -58,7 +58,7 @@ Die standardmäßig für den Debugmodus in ADF-Datenflüssen verwendete Integrat
 
 ## <a name="data-preview"></a>Datenvorschau
 
-Wenn das Debuggen aktiviert ist, wird im unteren Bereich die Registerkarte „Datenvorschau“ angezeigt. Wenn der Debugmodus deaktiviert ist, werden im Datenfluss auf der Registerkarte „Überprüfen“ nur die für Ihre Transformationen eingehenden und ausgehenden Metadaten angezeigt. Die Datenvorschau fragt nur die Anzahl der Zeilen ab, die Sie in Ihren Debugeinstellungen als Grenzwert festgelegt haben. Klicken Sie auf **Aktualisieren** , um die Datenvorschau abzurufen.
+Wenn das Debuggen aktiviert ist, wird im unteren Bereich die Registerkarte „Datenvorschau“ angezeigt. Wenn der Debugmodus deaktiviert ist, werden im Datenfluss auf der Registerkarte „Überprüfen“ nur die für Ihre Transformationen eingehenden und ausgehenden Metadaten angezeigt. Die Datenvorschau fragt nur die Anzahl der Zeilen ab, die Sie in Ihren Debugeinstellungen als Grenzwert festgelegt haben. Klicken Sie auf **Aktualisieren**, um die Datenvorschau abzurufen.
 
 ![Datenvorschau](media/data-flow/datapreview.png "Datenvorschau")
 
@@ -79,7 +79,7 @@ Sobald die Datenvorschau angezeigt wird, können Sie eine schnelle Transformatio
 
 ![Screenshot: Symbolleiste für die Datenvorschau mit folgenden Optionen: „Typisieren“, „Ändern“, „Statistik“ und „Entfernen“](media/data-flow/quick-actions1.png "Schnelle Aktionen")
 
-Nach Auswahl einer Änderung wird die Datenvorschau sofort aktualisiert. Klicken Sie in der oberen rechten Ecke auf **Bestätigen** , um eine neue Transformation zu generieren.
+Nach Auswahl einer Änderung wird die Datenvorschau sofort aktualisiert. Klicken Sie in der oberen rechten Ecke auf **Bestätigen**, um eine neue Transformation zu generieren.
 
 ![Screenshot: Schaltfläche „Bestätigen“](media/data-flow/quick-actions2.png "Schnelle Aktionen")
 

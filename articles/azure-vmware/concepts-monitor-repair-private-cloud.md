@@ -2,14 +2,14 @@
 title: 'Konzepte: Überwachen und Reparieren von privaten Azure VMware Solution-Clouds'
 description: Es wird beschrieben, wie VMware ESXi-Server in Azure VMware Solution in einer privaten Azure VMware Solution-Cloud überwacht und repariert werden.
 ms.topic: conceptual
-ms.custom: contperfq2
+ms.custom: contperf-fy21q2
 ms.date: 11/20/2020
-ms.openlocfilehash: 6c37ff6cc0715182453669f67306094af2f00cdf
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 7f367a6ef9b86f235a16a698735cfb58a11f6862
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024346"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033594"
 ---
 # <a name="monitor-and-repair-azure-vmware-solution-private-clouds"></a>Überwachen und Reparieren von privaten Azure VMware Solution-Clouds
 

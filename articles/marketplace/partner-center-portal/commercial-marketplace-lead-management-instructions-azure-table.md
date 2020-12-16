@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: trkeya
 ms.author: trkeya
 ms.date: 08/25/2020
-ms.openlocfilehash: 70ce1807ea6080e3efc0cf3266a9940c9ddb9cd3
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 71b9c96c1855180106f7dfa9a31f0ee8b06ceb67
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94489351"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347862"
 ---
 # <a name="use-azure-table-storage-to-manage-commercial-marketplace-leads"></a>Verwenden von Azure-Tabellenspeicher zum Verwalten von Leads im kommerziellen Marketplace
 
@@ -55,7 +55,7 @@ Wenn Ihr CRM-System (Customer Relationship Management) in Partner Center nicht e
 
     ![Azure-Tabellen](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-tables.png)
 
-    Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](https://archive.codeplex.com/?p=azurestorageexplorer) oder einem anderen Tool anzeigen. Sie können die Daten auch in die Azure-Tabelle exportieren.
+    Sie können die Daten in Ihrer Speichertabelle im [Azure Storage-Explorer](https://www.storageexplorer.com) oder einem anderen Tool anzeigen. Sie können die Daten auch in die Azure-Tabelle exportieren.
 
 ## <a name="optional-use-power-automate-to-get-lead-notifications"></a>(Optional) Verwenden von Power Automate zum Abrufen von Leadbenachrichtigungen
 
@@ -100,7 +100,7 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 1. Wählen Sie unter **Aktionen** die Option **Get entities (Azure Table Storage)** (Entitäten abrufen (Azure-Tabellenspeicher)) aus.
 1. Geben Sie im Fenster **Azure Table Storage** Informationen für die folgenden Felder an, und wählen Sie **Erstellen** aus:
 
-    * **Verbindungsname** : Geben Sie einen aussagekräftigen Namen für die Verbindung ein, die Sie zwischen diesem Flow und der Tabelle einrichten.
+    * **Verbindungsname**: Geben Sie einen aussagekräftigen Namen für die Verbindung ein, die Sie zwischen diesem Flow und der Tabelle einrichten.
     * **Speicherkontoname:** Geben Sie den Namen des Speicherkontos für die Tabelle ein. Sie finden diesen Namen auf der Seite **Zugriffsschlüssel** des Speicherkontos.
     * **Freigegebener Speicherschlüssel:** Geben Sie den Schlüsselwert des Speicherkontos für die Tabelle an. Sie finden diesen Wert auf der Seite **Zugriffsschlüssel** des Speicherkontos.
 
@@ -108,11 +108,11 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
    Nachdem Sie **Erstellen** ausgewählt haben, wird das Fenster **Entitäten abrufen** angezeigt. Wählen Sie **Erweiterte Optionen anzeigen** aus, und geben Sie Informationen für die folgenden Felder an:
 
-   * **Tabelle** : Wählen Sie den Namen der Tabelle aus (aus [Tabelle erstellen](#create-a-table-in-your-storage-account)). Die nächste Abbildung zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle `marketplaceleads` ausgewählt wurde.
+   * **Tabelle**: Wählen Sie den Namen der Tabelle aus (aus [Tabelle erstellen](#create-a-table-in-your-storage-account)). Die nächste Abbildung zeigt die Eingabeaufforderung, wenn für dieses Beispiel die Tabelle `marketplaceleads` ausgewählt wurde.
 
      ![Fenster „Entitäten abrufen“](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities.png)
 
-   * **Abfrage filtern** : Aktivieren Sie dieses Kontrollkästchen, und fügen Sie diese Funktion in das Feld ein: `Timestamp gt datetime'@{body('Get_past_time')}'`
+   * **Abfrage filtern**: Aktivieren Sie dieses Kontrollkästchen, und fügen Sie diese Funktion in das Feld ein: `Timestamp gt datetime'@{body('Get_past_time')}'`
 
      ![Feld „Filterabfrage“ unter „Entitäten abrufen“](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-get-entities-filter-query.png)
 
@@ -134,8 +134,8 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
    In den nächsten Schritten richten Sie die Aktion ein, die entsprechend dem Ergebnis der Bedingung ausgeführt werden soll:
 
-   * Hat die Bedingung das Ergebnis **Wenn nein** , soll keine Aktion ausgeführt werden.
-   * Hat die Bedingung das Ergebnis **Wenn ja** , soll eine Aktion ausgelöst werden, durch die eine Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto hergestellt wird, um eine E-Mail zu senden. 
+   * Hat die Bedingung das Ergebnis **Wenn nein**, soll keine Aktion ausgeführt werden.
+   * Hat die Bedingung das Ergebnis **Wenn ja**, soll eine Aktion ausgelöst werden, durch die eine Verbindung mit Ihrem Geschäfts-, Schul- oder Unikonto hergestellt wird, um eine E-Mail zu senden. 
 
 1. Wählen Sie unter **Wenn ja** die Option **Aktion hinzufügen** aus.
 
@@ -150,9 +150,9 @@ In diesem Beispiel wird ein Flow erstellt, in dem automatisch eine E-Mail-Benach
 
 1. Geben Sie im Fenster „Office 365 Outlook“ Informationen in den folgenden Feldern ein:
 
-    1. **An** : Geben Sie für jede Person, die diese Benachrichtigung erhalten soll, eine E-Mail-Adresse ein.
+    1. **An**: Geben Sie für jede Person, die diese Benachrichtigung erhalten soll, eine E-Mail-Adresse ein.
     1. **Antragsteller:** Geben Sie ein Thema für die E-Mail ein. Beispiel: **Neue Leads!**
-    1. **Text** : Fügen Sie den Text hinzu, der in jede E-Mail einbezogen werden soll (optional), und fügen Sie dann `body('Get_entities')?['value']` ein.
+    1. **Text**: Fügen Sie den Text hinzu, der in jede E-Mail einbezogen werden soll (optional), und fügen Sie dann `body('Get_entities')?['value']` ein.
 
     >[!NOTE]
     >Sie können weitere statische oder dynamische-Datenpunkte in den Text dieser E-Mail einfügen.
@@ -193,7 +193,7 @@ Führen Sie die folgenden Schritte aus, um die Leadverwaltungsinformationen für
 1. Fügen Sie die Verbindungszeichenfolge aus dem Azure Storage-Konto, das Sie anhand der vorherigen Schritte erstellt haben, im Feld **Verbindungszeichenfolge für Speicherkonto** ein.
      ![„Verbindungsdetails für Speicherkonto“ unter „Leadverwaltung“](./media/commercial-marketplace-lead-management-instructions-azure-table/azure-table-connection-details.png)
 
-1. **Kontakt-E-Mail** : Geben Sie die E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolons getrennte E-Mail-Adressen angeben.
+1. **Kontakt-E-Mail**: Geben Sie die E-Mail-Adressen der Personen in Ihrem Unternehmen an, die E-Mail-Benachrichtigungen erhalten sollen, wenn ein neuer Lead empfangen wird. Sie können mehrere durch Semikolons getrennte E-Mail-Adressen angeben.
 
 1. Klicken Sie auf **OK**.
 

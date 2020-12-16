@@ -5,15 +5,15 @@ description: Dieser Artikel enthält eine Übersicht über Web Application Firew
 services: web-application-firewall
 author: vhorne
 ms.service: web-application-firewall
-ms.date: 09/16/2020
+ms.date: 12/04/2020
 ms.author: victorh
 ms.topic: conceptual
-ms.openlocfilehash: d3e38de191557f0602d1b544c6590018f98405b0
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 36f04b02774a01814811ea131388629de27e9f07
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94560790"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621024"
 ---
 # <a name="what-is-azure-web-application-firewall-on-azure-application-gateway"></a>Was ist Azure Web Application Firewall in Azure Application Gateway?
 
@@ -22,9 +22,6 @@ Die Azure Web Application Firewall (WAF) für Application Gateway bietet zentral
 Die WAF für Application Gateway basiert auf der Version 3.1, 3.0 oder 2.2.9 des [Kernregelsatzes (Core Rule Set, CRS)](https://owasp.org/www-project-modsecurity-core-rule-set/) aus dem Open Web Application Security Project (OWASP). Die WAF wird automatisch aktualisiert und bietet Schutz vor neuen Sicherheitsrisiken, ohne dass zusätzliche Konfiguration erforderlich ist. 
 
 Alle unten aufgeführten WAF-Features befinden sich innerhalb einer WAF-Richtlinie. Sie können mehrere Richtlinien erstellen, und diese können einer Application Gateway-Instanz, einzelnen Listenern oder pfadbasierten Routingregeln für eine Application Gateway-Instanz zugeordnet werden. Dadurch können Sie bei Bedarf separate Richtlinien für jede Website hinter Ihrer Application Gateway-Instanz verwenden. Weitere Informationen zu WAF-Richtlinien finden Sie unter [Erstellen von Web Application Firewall-Richtlinien für Application Gateway](create-waf-policy-ag.md).
-
-   > [!NOTE]
-   > WAF-Richtlinien für einzelne URIs sind als Public Preview verfügbar. Das bedeutet, dass diese Funktion den zusätzlichen Nutzungsbedingungen von Microsoft unterliegt. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ![Application Gateway-WAF-Diagramm](../media/ag-overview/waf1.png)
 
@@ -146,7 +143,7 @@ Im Anomaliebewertungsmodus wird Datenverkehr, der einer beliebigen Regel entspri
 Ab einem Schwellenwert von 5 blockiert die Anomaliebewertung den Datenverkehr. Eine Übereinstimmung mit einer einzelnen *kritischen* Regel reicht also aus, damit die Application Gateway-WAF auch im Schutzmodus eine Anforderung blockiert. Aber eine Übereinstimmung mit einer *Warnungsregel* setzt die Anomaliebewertung nur um 3 herauf, was allein nicht ausreicht, um den Datenverkehr zu blockieren.
 
 > [!NOTE]
-> Die Meldung, die protokolliert wird, wenn eine WAF-Regel dem Datenverkehr entspricht, enthält den Aktionswert „Blockiert“. Aber der Datenverkehr ist tatsächlich nur bei einer Anomaliebewertung von 5 oder höher blockiert.  
+> Die Meldung, die protokolliert wird, wenn eine WAF-Regel dem Datenverkehr entspricht, enthält den Aktionswert „Blockiert“. Aber der Datenverkehr ist tatsächlich nur bei einer Anomaliebewertung von 5 oder höher blockiert. Weitere Informationen finden Sie unter [Problembehandlung für die Web Application Firewall (WAF) für Azure Application Gateway](web-application-firewall-troubleshoot.md#understanding-waf-logs). 
 
 ### <a name="waf-monitoring"></a>WAF-Überwachung
 

@@ -10,12 +10,12 @@ ms.date: 08/11/2020
 author: dcstwh
 ms.author: weetok
 manager: anandsub
-ms.openlocfilehash: 4eb9b0077d1d0591953a40d98a220d7aa0683de7
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fa71dc1e6b3a09827f2ad3d9f714622da5a36222
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96497944"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862444"
 ---
 # <a name="monitor-an-integration-runtime-in-azure-data-factory"></a>Überwachen einer Integrationslaufzeit in Azure Data Factory
 
@@ -104,7 +104,7 @@ Die folgende Tabelle enthält die möglichen Statuswerte eines Knotens einer sel
 | Online | Der Knoten ist mit dem Data Factory-Dienst verbunden. |
 | Offline | Knoten ist offline. |
 | Wird aktualisiert | Der Knoten wird automatisch aktualisiert. |
-| Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann ein Problem mit HTTP-Port 8050, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen sein. |
+| Eingeschränkt | Es besteht ein Konnektivitätsproblem. Dies kann auf ein Problem mit HTTP-Port 8060, mit der Service Bus-Konnektivität oder mit der Synchronisierung von Anmeldeinformationen zurückzuführen sein. |
 | Inaktiv | Die Konfiguration des Knotens unterscheidet sich von der Konfiguration anderer Mehrheitsknoten. |
 
 Ein Knoten kann inaktiv sein, wenn er keine Verbindungen mit anderen Knoten herstellen kann.

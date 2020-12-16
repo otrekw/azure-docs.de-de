@@ -3,13 +3,13 @@ title: Streamen von Ausführungsprotokollen in Azure Functions
 description: 115 bis 145 Zeichen, einschließlich Leerzeichen. Diese Zusammenfassung wird in den Suchergebnissen angezeigt.
 ms.date: 9/1/2020
 ms.topic: how-to
-ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 68b9d567fe0f2959c809a25c3669b9529cf093b8
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 085849386fce929ceaec4536844cf31b94fe7539
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832878"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033050"
 ---
 # <a name="enable-streaming-execution-logs-in-azure-functions"></a>Aktivieren des Streamings von Ausführungsprotokollen in Azure Functions
 

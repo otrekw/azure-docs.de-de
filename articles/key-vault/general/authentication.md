@@ -7,12 +7,12 @@ ms.date: 08/27/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: 7423114d2da23207dfcc1a329675b8c902b1f320
-ms.sourcegitcommit: 6109f1d9f0acd8e5d1c1775bc9aa7c61ca076c45
+ms.openlocfilehash: 455caf0b80d82b03f8d00929addeab15a1af6d7e
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94445539"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96754214"
 ---
 # <a name="authenticate-to-azure-key-vault"></a>Authentifizieren bei Azure Key Vault
 
@@ -102,6 +102,9 @@ Weitere Informationen finden Sie unter [Zugreifen auf Azure Key Vault hinter ein
 Das folgende Diagramm veranschaulicht den Prozess für eine Anwendung, die eine „Geheimnis abrufen“-API von Key Vault aufruft:
 
 ![Der Azure Key Vault-Authentifizierungsfluss](../media/authentication/authentication-flow.png)
+
+> [!NOTE]
+> Von Key Vault SDK-Clients für Geheimnisse, Zertifikate und Schlüssel wird ein zusätzlicher Aufruf ohne Zugriffstoken an Key Vault gesendet. Dies hat eine 401-Antwort zum Abrufen von Mandanteninformationen zur Folge. Weitere Informationen finden Sie unter [Authentifizierung, Anforderungen und Antworten](authentication-requests-and-responses.md).
 
 ## <a name="code-examples"></a>Codebeispiele
 

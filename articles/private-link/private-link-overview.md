@@ -8,12 +8,12 @@ ms.topic: overview
 ms.date: 09/03/2020
 ms.author: allensu
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: f4803cc9871b71e65e4d94ed37d3f9771be1cae0
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: adc08e978be699ea6ea3dd00beae1762d48644c0
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96454960"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96781061"
 ---
 # <a name="what-is-azure-private-link"></a>Was ist Azure Private Link? 
 Mit Azure Private Link können Sie über einen [privaten Endpunkt](private-endpoint-overview.md) in Ihrem virtuellen Netzwerk auf Azure-PaaS-Dienste (beispielsweise Azure Storage und SQL Database) sowie auf in Azure gehostete kundeneigene Dienste/Partnerdienste zugreifen.
@@ -70,6 +70,7 @@ Azure Private Link bietet folgende Vorteile:
 | Azure Monitor <br/>(Log Analytics und Application Insights) | Alle öffentlichen Regionen      |  | Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Monitor erstellen.](../azure-monitor/platform/private-link-security.md)   | 
 | Azure Batch | Alle öffentlichen Regionen, außer: Deutschland, MITTE, Deutschland, NORDOSTEN <br/> Alle Government-Regionen  | | Allgemein verfügbar <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Batch erstellen.](../batch/private-connectivity.md) |
 |Azure Data Factory | Alle öffentlichen Regionen<br/> Alle Government-Regionen<br/>Alle China-Regionen    | Anmeldeinformationen müssen in einem Azure-Schlüsseltresor gespeichert werden.| Allgemein verfügbar   <br/> [Erfahren Sie, wie Sie einen privaten Endpunkt für Azure Data Factory erstellen.](../data-factory/data-factory-private-link.md)   |
+|Azure Managed Disks | Alle öffentlichen Regionen<br/> Alle Government-Regionen<br/>Alle China-Regionen    | Informationen zu bekannten Einschränkungen finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal#limitations). | Allgemein verfügbar   <br/> Informationen zum Erstellen eines privaten Endpunkts für Azure Managed Disks finden Sie [hier](https://docs.microsoft.com/azure/virtual-machines/disks-enable-private-links-for-import-export-portal).   |
 
 
 

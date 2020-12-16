@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/26/2020
-ms.openlocfilehash: 7669b49735843bf941c52aee5cc3b71d1644c01a
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 9e34ce05d055e6933ecfbacf672bb8b1eba544bd
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635812"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512289"
 ---
 #  <a name="security-considerations-for-data-movement-in-azure-data-factory"></a>Sicherheitsüberlegungen für Datenverschiebung in Azure Data Factory
 > [!div class="op_single_selector" title1="Wählen Sie die von Ihnen verwendete Version des Data Factory-Diensts aus:"]
@@ -32,7 +32,7 @@ In einer Data Factory-Lösung erstellen Sie mindestens eine [Pipeline](concepts-
 
 Obwohl Data Factory nur in einigen Regionen verfügbar ist, ist der Datenverschiebungsdienst [weltweit verfügbar](concepts-integration-runtime.md#integration-runtime-location), um Datenkonformität, Effizienz und niedrigere Kosten für ausgehenden Netzwerkdatenverkehr sicherzustellen. 
 
-Azure Data Factory speichert keine Daten mit Ausnahme für verknüpfte Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
+Azure Data Factory einschließlich Integration Runtime speichert keine Daten außer verknüpften Dienstanmeldeinformationen für Clouddatenspeicher, die mit Zertifikaten verschlüsselt sind. Mit Data Factory können Sie datengesteuerte Workflows erstellen, um die Verschiebung von Daten zwischen [unterstützten Datenspeichern](copy-activity-overview.md#supported-data-stores-and-formats) und die Verarbeitung von Daten mithilfe von [Computediensten](compute-linked-services.md) in anderen Regionen oder in einer lokalen Umgebung zu orchestrieren. Außerdem haben Sie die Möglichkeit, mithilfe von SDKs und Azure Monitor Workflows zu überwachen und zu verwalten.
 
 Data Factory ist zertifiziert für:
 
@@ -51,8 +51,8 @@ Informationen zur Konformität von Azure und zur eigenständigen Sicherung der A
 
 In diesem Artikel werden Sicherheitsüberlegungen zu den beiden folgenden Datenverschiebungsszenarien erläutert: 
 
-- **Cloudszenario** : In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure Synapse Analytics (ehemals SQL Data Warehouse), Azure SQL-Datenbank, Azure Data Lake Store, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
-- **Hybridszenario** : In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
+- **Cloudszenario**: In diesem Szenario sind sowohl Ihre Quelle als auch das Ziel über das Internet öffentlich zugänglich. Dazu gehören verwaltete Cloudspeicherdienste wie Azure Storage, Azure Synapse Analytics, Azure SQL-Datenbank, Azure Data Lake Storage, Amazon S3, Amazon Redshift, SaaS-Dienste wie Salesforce und Webprotokolle wie FTP und OData. Eine vollständige Liste unterstützter Datenquellen finden Sie unter [Unterstützte Datenspeicher und Formate](copy-activity-overview.md#supported-data-stores-and-formats).
+- **Hybridszenario**: In diesem Szenario befindet sich entweder Ihre Quelle oder Ihr Ziel hinter einer Firewall oder in einem lokalen Unternehmensnetzwerk. Oder der Datenspeicher befindet sich in einem privaten oder virtuellen Netzwerk (meist die Quelle) und ist nicht öffentlich zugänglich. Zu diesem Szenario zählen auch Datenbankserver, die auf virtuellen Computern gehostet werden.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -115,9 +115,9 @@ Die Anmeldeinformationen können in Data Factory gespeichert oder während der L
 
 - **Speichern von Anmeldeinformationen in Azure Key Vault.** Eine weitere Möglichkeit ist das Speichern der Anmeldeinformationen für den Datenspeicher in [Azure Key Vault](https://azure.microsoft.com/services/key-vault/). Die Anmeldeinformationen werden dann von Data Factory beim Ausführen einer Aktivität abgerufen. Weitere Informationen finden Sie unter [Speichern von Anmeldeinformationen in Azure Key Vault](store-credentials-in-key-vault.md).
 
-- **Speichern Sie Anmeldeinformationen lokal, ohne sie über den Azure-Back-End an die selbstgehostete Integration Runtime zu übermitteln** . Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integration Runtime verschlüsseln und speichern möchten, ohne die Anmeldeinformationen über den Data Factory-Back-End zu leiten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](/previous-versions/ms995355(v=msdn.10)) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen. 
+- **Speichern Sie Anmeldeinformationen lokal, ohne sie über den Azure-Back-End an die selbstgehostete Integration Runtime zu übermitteln**. Wenn Sie Anmeldeinformationen lokal auf der selbstgehosteten Integration Runtime verschlüsseln und speichern möchten, ohne die Anmeldeinformationen über den Data Factory-Back-End zu leiten, führen Sie die Schritte in [Verschlüsseln von Anmeldeinformationen für lokale Datenspeicher in Azure Data Factory](encrypt-credentials-self-hosted-integration-runtime.md) aus. Diese Option wird von allen Connectors unterstützt. Die selbstgehostete Integration Runtime verwendet Windows-[DPAPI](/previous-versions/ms995355(v=msdn.10)) zum Verschlüsseln der vertraulichen Daten und Anmeldeinformationen. 
 
-   Verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** , um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential** -Element in der Verbindungszeichenfolge) verwenden, um mit dem Cmdlet **Set-AzDataFactoryV2LinkedService** einen verknüpften Dienst zu erstellen.  
+   Verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential**, um Anmeldeinformationen des verknüpften Diensts bzw. vertrauliche Details im verknüpften Dienst zu verschlüsseln. Anschließend können Sie das zurückgegebene JSON (mit dem **EncryptedCredential**-Element in der Verbindungszeichenfolge) verwenden, um mit dem Cmdlet **Set-AzDataFactoryV2LinkedService** einen verknüpften Dienst zu erstellen.  
 
 
 #### <a name="ports-used-when-encrypting-linked-service-on-self-hosted-integration-runtime"></a>Beim Verschlüsseln des verknüpften Diensts auf der selbstgehosteten Integration Runtime verwendete Ports

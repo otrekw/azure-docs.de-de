@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/07/2020
+ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 0c248149694c2bf66b8c94e9c0a29a8f7da9f4e4
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94843739"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905790"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Ausführen eines Upgrades für öffentliche IP-Adressen
 
@@ -159,6 +159,7 @@ China, Norden 2
 
 * Damit ein Upgrade der öffentlichen IP-Adresse mit Basic-SKU durchgeführt werden kann, darf diese keiner Azure-Ressource zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von öffentlichen IP-Adressen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address).  Ebenso darf eine reservierte IP, die migriert werden soll, keinem Clouddienst zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von reservierten IPs finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm).  
 * Öffentliche IP-Adressen, für die ein Upgrade von der Basic-SKU auf die Standard-SKU durchgeführt wird, haben weiterhin keine [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) und können daher keinen Azure-Ressourcen zugeordnet werden, die zonenredundant oder zonal sind.  Beachten Sie, dass dies nur für Regionen gilt, in denen Verfügbarkeitszonen angeboten werden.
+* Sie können keine Herabstufung von „Standard“ auf „Basic“ durchführen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

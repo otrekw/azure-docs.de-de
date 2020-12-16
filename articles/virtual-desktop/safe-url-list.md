@@ -1,21 +1,24 @@
 ---
-title: Liste der sicheren URLs für Windows Virtual Desktop – Azure
-description: Eine Liste der URLs, die Sie freigeben sollten, um sicherzustellen, dass Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert
+title: Liste der erforderlichen URLs für Windows Virtual Desktop – Azure
+description: Eine Liste der URLs, die Sie freigeben müssen, um sicherzustellen, dass Ihre Windows Virtual Desktop-Bereitstellung wie vorgesehen funktioniert.
 author: Heidilohr
 ms.topic: conceptual
-ms.date: 08/12/2020
+ms.date: 12/04/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3d19a60fd6a22eb9245722c6ff69d3b39c05d29e
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 70b7042e4006cc59419d0ea6798fe7626a82c086
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95023172"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621075"
 ---
-# <a name="safe-url-list"></a>Liste der sicheren URLs
+# <a name="required-url-list"></a>Erforderliche URL-Liste
 
-Sie müssen bestimmte URLs freigeben,damit Ihre Windows Virtual Desktop-Bereitstellung ordnungsgemäß funktioniert. Diese URLs sind in diesem Artikel aufgeführt, damit Sie wissen, welche URLs sicher sind.
+Damit Sie Windows Virtual Desktop bereitstellen und verwenden können, müssen Sie bestimmte URLs freigeben, sodass Ihre virtuellen Computer (VMs) jederzeit auf diese zugreifen können. In diesem Artikel werden die erforderlichen URLs aufgelistet, die Sie für die ordnungsgemäße Funktion von Windows Virtual Desktop freigeben müssen. 
+
+>[!IMPORTANT]
+>Windows Virtual Desktop unterstützt keine Bereitstellungen, die die in diesem Artikel aufgeführten URLs blockieren.
 
 ## <a name="virtual-machines"></a>Virtuelle Computer
 
@@ -53,7 +56,7 @@ Die virtuellen Azure-Computer, die Sie für Windows Virtual Desktop erstellen, m
 |*.servicebus.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |*xt.table.core.usgovcloudapi.net|443|Agent-Datenverkehr|AzureCloud|
 |Kms.core.usgovcloudapi.net|1688|Aktivierung von Windows|Internet|
-|mrsglobalstugviffx.core.usgovcloudapi.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
+|mrsglobalstugviffx.blob.core.usgovcloudapi.net|443|Agent- und SXS-Stapelupdates|AzureCloud|
 |wvdportalstorageblob.blob.core.usgovcloudapi.net|443|Unterstützung des Azure-Portals|AzureCloud|
 | 169.254.169.254 | 80 | [Azure-Instanzmetadatendienst-Endpunkt](../virtual-machines/windows/instance-metadata-service.md) | – |
 | 168.63.129.16 | 80 | [Sitzungshost-Systemüberwachung](../virtual-network/network-security-groups-overview.md#azure-platform-considerations) | – |
@@ -69,9 +72,13 @@ In der folgenden Tabelle sind optionale URLs aufgeführt, auf die Ihre virtuelle
 |login.windows.net|443|Anmelden bei Microsoft Online Services, Microsoft 365|login.microsoftonline.us|
 |*.sfx.ms|443|Updates für die OneDrive-Clientsoftware|oneclient.sfx.ms|
 |*.digicert.com|443|Überprüfung der Zertifikatsperre|Keine|
+|*.azure-dns.com|443|Azure DNS-Auflösung|Keine|
+|*.azure-dns.net|443|Azure DNS-Auflösung|Keine|
 
 >[!NOTE]
 >Windows Virtual Desktop verfügt derzeit über keine Liste mit IP-Adressbereichen, die Sie freigeben können, um Netzwerkdatenverkehr zuzulassen. Momentan wird nur das Freigeben von spezifischen URLs unterstützt.
+>
+>Wenn Sie eine Firewall der nächsten Generation (Next Generation Firewall, NGFW) verwenden, müssen Sie eine dynamische Liste verwenden, die speziell für Azure-IP-Adressen erstellt wurde, um sicherzustellen, dass Sie eine Verbindung herstellen können.
 >
 >Eine Liste der sicheren URLs für Office, einschließlich der erforderlichen URLs für Azure Active Directory, finden Sie unter [Office 365-URLs und -IP-Adressbereiche](/office365/enterprise/urls-and-ip-address-ranges).
 >

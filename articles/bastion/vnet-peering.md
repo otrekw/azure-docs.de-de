@@ -5,14 +5,14 @@ services: bastion
 author: cherylmc
 ms.service: bastion
 ms.topic: conceptual
-ms.date: 11/05/2020
+ms.date: 12/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: ad3cf33dacffc8bcda9376857206784afedf7139
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 472261666c86b666efd09c7217d12e5a795a50d9
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94361960"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094885"
 ---
 # <a name="vnet-peering-and-azure-bastion-preview"></a>VNET-Peering und Azure Bastion (Vorschau)
 
@@ -44,7 +44,7 @@ In dieser Abbildung ist die Architektur einer Azure Bastion-Bereitstellung in ei
 1. Azure Bastion wird nahtlos über das Peering-VNET erkannt.
 1. Mit nur einem Klick wird die RDP- oder SSH-Sitzung im Browser geöffnet. Informationen zu den Grenzwerten für gleichzeitige RDP- und SSH-Sitzungen finden Sie unter [RDP- und SSH-Sitzungen](bastion-faq.md#limits).
 
-   :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Herstellen einer Verbindung":::
+  :::image type="content" source="../../includes/media/bastion-vm-rdp/connect-vm.png" alt-text="Herstellen einer Verbindung":::
 
    Weitere Informationen zur Verbindung mit einer VM über Azure Bastion finden Sie unter:
 

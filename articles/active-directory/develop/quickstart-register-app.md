@@ -12,12 +12,12 @@ ms.date: 09/03/2020
 ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1, contentperfq2
 ms.reviewer: aragra, lenalepa, sureshja
-ms.openlocfilehash: ed4e3c54bd4aa6be314fe7ec12d6ba6e7cf949d9
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 860cd24c623cb6db407c82aa81e2c3662da289ed
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93083319"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762974"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Schnellstart: Registrieren einer Anwendung bei Microsoft Identity Platform
 
@@ -37,9 +37,9 @@ Beim Registrieren Ihrer Anwendung wird eine Vertrauensstellung zwischen Ihrer Ap
 Führen Sie die folgenden Schritte aus, um die App-Registrierung zu erstellen:
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement**  :::image type="icon" source="./media/quickstart-register-app/portal-01-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
-1. Suchen Sie nach **Azure Active Directory** , und wählen Sie diese Option aus.
-1. Wählen Sie unter **Verwalten** die Option **App-Registrierungen** und dann **Neue Registrierung** aus.
+1. Wenn Sie Zugriff auf mehrere Mandanten haben, verwenden Sie im Menü am oberen Rand den Filter **Verzeichnis + Abonnement** :::image type="icon" source="./media/common/portal-directory-subscription-filter.png" border="false":::, um den Mandanten auszuwählen, für den Sie eine Anwendung registrieren möchten.
+1. Suchen Sie nach **Azure Active Directory**, und wählen Sie diese Option aus.
+1. Wählen Sie unter **Verwalten** Folgendes aus: **App-Registrierungen** > **Neue Registrierung**.
 1. Geben Sie einen **Namen** für Ihre Anwendung ein. Benutzern Ihrer App wird wahrscheinlich dieser Namen angezeigt. Sie können ihn später ändern.
 1. Geben Sie an, wer die Anwendung verwenden kann (wird manchmal auch als *Zielgruppe für die Anmeldung* bezeichnet).
 
@@ -71,7 +71,7 @@ Durch Konfigurieren Ihrer [Plattformeinstellungen](#configure-platform-settings)
 
 ### <a name="configure-platform-settings"></a>Konfigurieren von Plattformeinstellungen
 
-Die Einstellungen für jeden Anwendungstyp (einschließlich Umleitungs-URIs) werden unter **Plattformkonfigurationen** im Azure-Portal konfiguriert. Bei einigen Plattformen (z. B. **Web** - und **Single-Page-Webanwendungen** ) müssen Sie manuell einen Umleitungs-URI angeben. Bei anderen Plattformen (z. B. mobile Anwendungen und Desktopanwendungen) stehen Umleitungs-URIs zur Auswahl, die beim Konfigurieren anderer Einstellungen für Sie generiert wurden.
+Die Einstellungen für jeden Anwendungstyp (einschließlich Umleitungs-URIs) werden unter **Plattformkonfigurationen** im Azure-Portal konfiguriert. Bei einigen Plattformen (z. B. **Web**- und **Single-Page-Webanwendungen**) müssen Sie manuell einen Umleitungs-URI angeben. Bei anderen Plattformen (z. B. mobile Anwendungen und Desktopanwendungen) stehen Umleitungs-URIs zur Auswahl, die beim Konfigurieren anderer Einstellungen für Sie generiert wurden.
 
 So konfigurieren Sie Anwendungseinstellungen auf Basis der Zielplattform oder des Zielgeräts
 
@@ -87,7 +87,7 @@ So konfigurieren Sie Anwendungseinstellungen auf Basis der Zielplattform oder de
     | **Web** | Geben Sie einen **Umleitungs-URI** für Ihre App ein. Dabei handelt es sich um die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.<br/><br/>Wählen Sie diese Plattform für Standardwebanwendungen aus, die auf einem Server ausgeführt werden. |
     | **Einzelseitenanwendung** | Geben Sie einen **Umleitungs-URI** für Ihre App ein. Dabei handelt es sich um die Adresse, an die Microsoft Identity Platform den Client eines Benutzers umleitet und nach der Authentifizierung die Sicherheitstoken sendet.<br/><br/>Wählen Sie diese Plattform aus, wenn Sie eine clientseitige Web-App in JavaScript oder mit einem Framework wie Angular, Vue.js, React.js oder Blazor WebAssembly erstellen. |
     | **iOS/macOS** | Geben Sie die **Bundle-ID** der App ein, die sich in XCode in der Datei *Info.plist* oder in den Buildeinstellungen befindet.<br/><br/>Bei der Angabe einer Bundle-ID wird ein Umleitungs-URI für Sie generiert. |
-    | **Android** | Geben Sie den **Paketnamen** der App ein, der sich in der Datei *AndroidManifest.xml* befindet. Generieren Sie den **Signaturhash** , und geben Sie ihn ein.<br/><br/>Bei der Angabe dieser Einstellungen wird ein Umleitungs-URI für Sie generiert. |
+    | **Android** | Geben Sie den **Paketnamen** der App ein, der sich in der Datei *AndroidManifest.xml* befindet. Generieren Sie den **Signaturhash**, und geben Sie ihn ein.<br/><br/>Bei der Angabe dieser Einstellungen wird ein Umleitungs-URI für Sie generiert. |
     | **Mobile Anwendungen und Desktopanwendungen** | Wählen Sie einen der **vorgeschlagenen Umleitungs-URIs** aus, oder geben Sie einen **benutzerdefinierten Umleitungs-URI an**.<br/>Für Desktopanwendungen empfehlen wir Folgendes:<br/>`https://login.microsoftonline.com/common/oauth2/nativeclient`<br/><br/>Wählen Sie diese Plattform für mobile Anwendungen aus, die weder die aktuelle Microsoft-Authentifizierungsbibliothek (Microsoft Authentication Library, MSAL) noch einen Broker verwenden. Wählen Sie diese Plattform auch für Desktopanwendungen aus. |
 1. Wählen Sie **Konfigurieren** aus, um die Plattformkonfiguration abzuschließen.
 
@@ -121,7 +121,7 @@ Der geheime Clientschlüssel (auch als *Anwendungskennwort* bezeichnet) ist ein 
 1. Fügen Sie eine Beschreibung für Ihren geheimen Clientschlüssel hinzu.
 1. Wählen Sie eine Dauer aus.
 1. Wählen Sie **Hinzufügen**.
-1. **Notieren Sie den Wert des geheimen Schlüssels** , der in Ihrem Clientanwendungscode verwendet werden soll. Er wird *nie wieder angezeigt* , nachdem Sie diese Seite verlassen haben.
+1. **Notieren Sie den Wert des geheimen Schlüssels**, der in Ihrem Clientanwendungscode verwendet werden soll. Er wird *nie wieder angezeigt*, nachdem Sie diese Seite verlassen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

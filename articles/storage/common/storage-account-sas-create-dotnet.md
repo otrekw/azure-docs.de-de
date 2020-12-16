@@ -11,12 +11,12 @@ ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a439ce5cd56bde5f9a60a1d99f5299bd16c81f8b
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 2918b845430a6fc6dc59eca7041c114fc9d06515
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519075"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97092209"
 ---
 # <a name="create-an-account-sas-with-net"></a>Erstellen einer Konto-SAS mit .NET
 
@@ -30,7 +30,7 @@ In diesem Artikel wird beschrieben, wie Sie den Speicherkontoschlüssel zum Erst
 
 Eine Konto-SAS wird mit dem Kontozugriffsschlüssel signiert. Verwenden Sie die [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential)-Klasse, um die Informationen zu erstellen, die zum Signieren der SAS verwendet werden. Erstellen Sie als Nächstes ein neues [AccountSasBuilder](/dotnet/api/azure.storage.sas.accountsasbuilder)-Objekt, und rufen Sie [ToSasQueryParameters](/dotnet/api/azure.storage.sas.accountsasbuilder.tosasqueryparameters) auf, um die SAS-Tokenzeichenfolge abzurufen.
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_GetAccountSASToken":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_GetAccountSASToken":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 
@@ -68,7 +68,7 @@ Um die Konto-SAS zum Zugreifen auf APIs auf Dienstebene für den Blob-Dienst zu 
 
 ### <a name="net-v12"></a>[\.NET v12](#tab/dotnet)
 
-:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Security.cs" id="Snippet_UseAccountSAS":::
+:::code language="csharp" source="~/azure-storage-snippets/blobs/howto/dotnet/dotnet-v12/Sas.cs" id="Snippet_UseAccountSAS":::
 
 ### <a name="net-v11"></a>[\.NET v11](#tab/dotnetv11)
 

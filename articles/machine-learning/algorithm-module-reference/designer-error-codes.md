@@ -9,13 +9,13 @@ ms.topic: reference
 ms.custom: troubleshooting
 author: likebupt
 ms.author: keli19
-ms.date: 04/16/2020
-ms.openlocfilehash: 569cf130b464d97e0ac10904ffd86365b57610a5
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 11/25/2020
+ms.openlocfilehash: 846c5519dced06ed16f5a0d12b0bb25443961f93
+ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93420834"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96753908"
 ---
 # <a name="exceptions-and-error-codes-for-the-designer"></a>Ausnahmen und Fehlercodes für den Designer
 
@@ -279,13 +279,22 @@ Wenn das Modell mit einem der speziellen Trainingsmodule trainiert wurde, verbin
 ## <a name="error-0014"></a>Fehler 0014  
  Eine Ausnahme tritt auf, wenn die Anzahl der in der Spalte eindeutigen Werte größer als der zulässige Wert ist.  
 
- Dieser Fehler tritt auf, wenn eine Spalte zu viele eindeutige Werte enthält.  Dieser Fehler kann z. B. auftreten, wenn Sie angeben, dass eine Spalte als kategorische Daten behandelt wird, aber es zu viele eindeutige Werte in der Spalte gibt, als dass die Verarbeitung abgeschlossen werden kann. Dieser Fehler kann auch auftreten, wenn die Anzahl der eindeutigen Werte bei zwei Eingaben nicht übereinstimmt.   
+ Dieser Fehler tritt auf, wenn eine Spalte zu viele eindeutige Werte enthält, z. B. eine ID-Spalte oder eine Textspalte. Dieser Fehler kann auftreten, wenn Sie angeben, dass eine Spalte als kategorische Daten behandelt wird, aber es zu viele eindeutige Werte in der Spalte gibt, als dass die Verarbeitung abgeschlossen werden kann. Dieser Fehler kann auch auftreten, wenn die Anzahl der eindeutigen Werte bei zwei Eingaben nicht übereinstimmt.   
+
+Der Fehler einer zu hohen Anzahl von eindeutigen Werten tritt auf, wenn für eine Besprechung die **beiden** folgenden Bedingungen zutreffen:
+
+- Mehr als 97 % der Instanzen einer Spalte sind eindeutige Werte. Dies bedeutet, dass sich fast alle Kategorien voneinander unterscheiden.
+- Eine Spalte enthält mehr als 1.000 eindeutige Werte.
 
 **Lösung:**
 
 Öffnen Sie das Modul, das den Fehler generiert hat, und identifizieren Sie die als Eingaben verwendeten Spalten. Bei einigen Modulen können Sie mit der rechten Maustaste auf die Dataseteingabe klicken und **Visualize** (Visualisieren) auswählen, um Statistiken zu einzelnen Spalten zu erhalten, einschließlich der Anzahl der eindeutigen Werte und deren Verteilung.
 
 Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möchten, führen Sie entsprechende Schritte durch, um die Anzahl der eindeutigen Werte in den Spalten zu reduzieren. Je nach Datentyp der Spalte kann die Reduzierung auf unterschiedliche Weise erfolgen. 
+
+Für ID-Spalten, die beim Training eines Modells keine sinnvollen Features darstellen, können Sie [Metadaten bearbeiten](../algorithm-module-reference/edit-metadata.md) verwenden, um diese Spalte als **Feature löschen** zu markieren, damit sie beim Training eines Modells nicht verwendet wird. 
+
+Für Textspalten können Sie [Feature Hashing](../algorithm-module-reference/feature-hashing.md) oder [Extract N-Gram Features from Text module](../algorithm-module-reference/extract-n-gram-features-from-text.md) verwenden, um Textspalten vorzuverarbeiten.
 <!--
 + For text data, you might be able to use [Preprocess Text](preprocess-text.md) to collapse similar entries. 
 + For numeric data, you can create a smaller number of bins using [Group Data into Bins](group-data-into-bins.md), remove or truncate values using [Clip Values](clip-values.md), or use machine learning methods such as [Principal Component Analysis](principal-component-analysis.md) or [Learning with Counts](data-transformation-learning-with-counts.md) to reduce the dimensionality of the data.  
@@ -372,7 +381,7 @@ Für Spalten, die Sie für die Gruppierung oder Kategorisierung verwenden möcht
 
  Lesen Sie das Hilfethema zum Modul, das das Dataset als Eingabe verwenden soll, um die Anforderungen zu ermitteln.  
 
- <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->erforderlich.  
+ <!--We also recommend that you use [Summarize Data](summarize-data.md) or [Compute Elementary Statistics](compute-elementary-statistics.md) to profile your data, and use these modules to fix metadata and clean values: [Edit Metadata](edit-metadata.md) and [Clean Missing Data](clean-missing-data.md), [Clip Values](clip-values.md)-->.  
 
 |Ausnahmemeldungen|
 |------------------------|

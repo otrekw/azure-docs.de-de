@@ -9,12 +9,12 @@ ms.subservice: overview
 ms.date: 10/25/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
-ms.openlocfilehash: 838276c47085a3c7ad0f7c0a35a2578b13eb5026
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a427c77ec23bb933f96d8aec54ca33169aee84d4
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511266"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96576025"
 ---
 # <a name="azure-synapse-analytics-frequently-asked-questions"></a>Azure Synapse Analytics: Häufig gestellte Fragen
 
@@ -22,7 +22,7 @@ In diesem Leitfaden finden Sie die am häufigsten gestellten Fragen zu Azure Syn
 
 ## <a name="general"></a>Allgemein
 
-### <a name="q-what-rbac-roles-exist-and-how-do-i-use-them-to-secure-a-synapse-workspace"></a>F: Welche RBAC-Rollen sind vorhanden, und wie kann ich sie zum Schützen eines Synapse-Arbeitsbereichs verwenden?
+### <a name="q-how-can-i-use-rbac-roles-to-secure-my-workspace"></a>F: Wie kann ich RBAC-Rollen verwenden, um meinen Arbeitsbereich zu schützen?
 
 A: Mit Azure Synapse werden verschiedene Rollen sowie Bereiche für deren Zuweisung eingeführt, um das Schützen Ihres Arbeitsbereichs zu vereinfachen.
 
@@ -36,16 +36,16 @@ RBAC-Rollen von Synapse:
 * Synapse-Compute-Operator (Vorschau)
 * Synapse-Anmeldeinformationen-Benutzer (Vorschau)
 
-RBAC-Bereiche von Synapse:
-* Arbeitsbereich 
-* Spark-Pool
-* Integrationslaufzeit
-* Verknüpfter Dienst
+Weisen Sie die RBAC-Rollen den folgenden RBAC-Bereichen zu, um Ihren Synapse-Arbeitsbereich zu schützen:
+* Arbeitsbereiche
+* Spark-Pools
+* Integration Runtimes
+* Verknüpfte Dienste
 * Anmeldeinformationen
 
 Darüber hinaus verfügen Sie bei dedizierten SQL-Pools über alle Sicherheitsfunktionen, mit denen Sie bereits vertraut sind.
 
-### <a name="q-how-can-i-cost-control-for-the-capabilities-inside-a-synapse-workspace-such-as-dedicated-sql-pools-serverless-spark-pools-and-serverless-sql-pools"></a>F: Wie kann ich die Kostenkontrolle für die Funktionen in einem Synapse-Arbeitsbereich durchführen, z. B. dedizierte SQL-Pools, serverlose Spark-Pools und serverlose SQL-Pools?
+### <a name="q-how-do-i-control-cont-dedicated-sql-pools-serverless-sql-pools-and-serverless-spark-pools"></a>F: Wie kann ich dedizierte SQL-Pools, serverlose SQL-Pools und serverlose Spark-Pools steuern?
 
 A: Der Ausgangspunkt ist, dass von Azure Synapse die integrierte Kostenanalyse und die Kostenwarnungen auf Azure-Abonnementebene genutzt werden.
 
@@ -79,11 +79,11 @@ A: Jede Aktivität in einer Synapse-Pipeline wird mit den Anmeldeinformationen a
 
 ### <a name="q-are-ssis-irs-supported-in-synapse-integrate"></a>F: Werden SSIS IRs in Synapse Integrate unterstützt?
 
-A: Derzeit nicht. 
+Antwort: Derzeit nicht. 
 
 ### <a name="q-how-do-i-migrate-existing-pipelines-from-azure-data-factory-to-an-azure-synapse-workspace"></a>F: Wie kann ich vorhandene Pipelines aus Azure Data Factory zu einem Azure Synapse-Arbeitsbereich migrieren?
 
-A: Derzeit müssen Sie Ihre Azure Data Factory-Pipelines und die zugehörigen Artefakte manuell neu erstellen. 
+A: Aktuell müssen Sie Ihre Azure Data Factory-Pipelines und die zugehörigen Artefakte manuell neu erstellen, indem Sie den JSON-Code aus der ursprünglichen Pipeline exportieren und in Ihren Synapse-Arbeitsbereich importieren.
 
 ## <a name="apache-spark"></a>Apache Spark
 
@@ -99,7 +99,7 @@ A: Azure Synapse Apache Spark verfügt über umfassende Unterstützung von Spark
 
 ### <a name="q-is-there-an-equivalent-of-dbutils-in-azure-synapse-spark"></a>F: Gibt es in Azure Synapse Spark eine Option, die DBUtils entspricht?
 
-A: Ja. Azure Synapse Apache Spark verfügt über die Bibliothek **mssparkutils**.Die vollständige Dokumentation zum Hilfsprogramm finden Sie unter **Einführung in Microsoft Spark-Hilfsprogramme**. For full documentation of the utility see <bpt id="p1">[</bpt>Introduction to Microsoft Spark utilities<ept id="p1">](./spark/microsoft-spark-utilities.md)</ept>.
+A: Ja. Azure Synapse Apache Spark verfügt über die Bibliothek **mssparkutils**. Die vollständige Dokumentation zum Hilfsprogramm finden Sie unter [Einführung in Microsoft Spark-Hilfsprogramme](./spark/microsoft-spark-utilities.md).
 
 ### <a name="q-how-do-i-set-session-parameters-in-apache-spark"></a>F: Wie lege ich Sitzungsparameter in Apache Spark fest?
 

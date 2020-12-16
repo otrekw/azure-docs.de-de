@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: noakup
 ms.author: noakuper
 ms.date: 09/03/2020
-ms.openlocfilehash: f424a2c3102f7b270a64c612a91d645ab71461fc
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: f221237bee441ec78d726dabf476d1085a27071d
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96184092"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97095303"
 ---
 # <a name="using-customer-managed-storage-accounts-in-azure-monitor-log-analytics"></a>Verwenden von kundenseitig verwalteten Speicherkonten in Azure Monitor Log Analytics
 
@@ -22,7 +22,7 @@ Log Analytics verwendet Azure Storage für eine Vielzahl von Szenarios. Dies wir
 
 ## <a name="ingesting-azure-diagnostics-extension-logs-wadlad"></a>Erfassen von Azure-Diagnose-Erweiterungsprotokollen (WAD/LAD)
 Die Erweiterungs-Agents für die Azure-Diagnose (auch WAD für Windows-Agents und LAD für Linux-Agents) erfassen verschiedene Betriebssystemprotokolle und speichern sie in einem kundenseitig verwalteten Speicherkonto. Anschließend können Sie diese Protokolle in Log Analytics importieren, um sie zu überprüfen und zu analysieren.
-So erfassen Sie Azure-Diagnose-Erweiterungsprotokolle in Ihrem Speicherkonto: Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/connectedsources/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
+So erfassen Sie Azure-Diagnose-Erweiterungsprotokolle in Ihrem Speicherkonto: Verbinden Sie das Speicherkonto als Speicherdatenquelle über das [Azure-Portal](./diagnostics-extension-logs.md#collect-logs-from-azure-storage) oder durch Aufrufen der [Storage Insights-API](/rest/api/loganalytics/storage%20insights/createorupdate) mit Ihrem Log Analytics-Arbeitsbereich.
 
 Unterstützte Datentypen:
 * syslog

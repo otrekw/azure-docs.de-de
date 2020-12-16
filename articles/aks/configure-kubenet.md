@@ -5,12 +5,12 @@ services: container-service
 ms.topic: article
 ms.date: 06/02/2020
 ms.reviewer: nieberts, jomore
-ms.openlocfilehash: 82745d4f86a440c671e73ac3c74702a4a0c56b2d
-ms.sourcegitcommit: 99955130348f9d2db7d4fb5032fad89dad3185e7
+ms.openlocfilehash: 6cb083e823583105f04aaa59a99357b2b2b2426b
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93348201"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034053"
 ---
 # <a name="use-kubenet-networking-with-your-own-ip-address-ranges-in-azure-kubernetes-service-aks"></a>Verwenden von kubenet-Netzwerken mit Ihren eigenen IP-Adressbereichen in Azure Kubernetes Service (AKS)
 
@@ -18,7 +18,7 @@ Standardmäßig verwenden AKS-Cluster [kubenet][kubenet]. Ein virtuelles Azure-N
 
 Mit [Azure Container Networking Interface (CNI)][cni-networking] erhält jeder Pod eine IP-Adresse aus dem Subnetz, mit der direkt darauf zugegriffen werden kann. Diese IP-Adressen müssen in Ihrem Netzwerkadressraum eindeutig sein und im Voraus geplant werden. Jeder Knoten verfügt über einen Konfigurationsparameter für die maximale Anzahl von Pods, die er unterstützt. Die entsprechende Anzahl von IP-Adressen pro Knoten wird dann im Voraus für diesen Knoten reserviert. Dieser Ansatz erfordert mehr Planung und führt oft zu einer Erschöpfung der IP-Adresse oder der Notwendigkeit, Cluster in einem größeren Subnetz neu zu erstellen, wenn die Anforderungen Ihrer Anwendung wachsen. Sie können die maximale Anzahl von Pods, die auf einem Knoten bereitgestellt werden können, zum Zeitpunkt der Clustererstellung oder beim Erstellen neuer Knotenpools konfigurieren. Wenn Sie die maximale Anzahl von Pods beim Erstellen neuer Knotenpools nicht angeben, wird der Standardwert 110 für Kubenet verwendet.
 
-Dieser Artikel veranschaulicht die Verwendung von *kubenet* -Netzwerken zum Erstellen und Verwenden eines virtuellen Netzwerksubnetzes für einen AKS-Cluster. Weitere Informationen zu Netzwerkoptionen und -überlegungen finden Sie unter [Netzwerkkonzepte für Kubernetes und AKS][aks-network-concepts].
+Dieser Artikel veranschaulicht die Verwendung von *kubenet*-Netzwerken zum Erstellen und Verwenden eines virtuellen Netzwerksubnetzes für einen AKS-Cluster. Weitere Informationen zu Netzwerkoptionen und -überlegungen finden Sie unter [Netzwerkkonzepte für Kubernetes und AKS][aks-network-concepts].
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -38,7 +38,7 @@ Azure CLI-Version 2.0.65 oder höher muss installiert und konfiguriert sein. Fü
 
 ## <a name="overview-of-kubenet-networking-with-your-own-subnet"></a>Übersicht über kubenet-Netzwerke mit eigenem Subnetz
 
-In vielen Umgebungen gibt es definierte virtuelle Netzwerke und Subnetze mit zugeordneten IP-Adressbereichen. Diese Ressourcen des virtuellen Netzwerks werden verwendet, um mehrere Dienste und Anwendungen zu unterstützen. Um Netzwerkkonnektivität zu gewährleisten, können AKS-Cluster *kubenet* (grundlegender Netzwerkbetrieb) oder Azure CNI ( *erweiterter Netzwerkbetrieb* ) verwenden.
+In vielen Umgebungen gibt es definierte virtuelle Netzwerke und Subnetze mit zugeordneten IP-Adressbereichen. Diese Ressourcen des virtuellen Netzwerks werden verwendet, um mehrere Dienste und Anwendungen zu unterstützen. Um Netzwerkkonnektivität zu gewährleisten, können AKS-Cluster *kubenet* (grundlegender Netzwerkbetrieb) oder Azure CNI (*erweiterter Netzwerkbetrieb*) verwenden.
 
 Mit *kubenet* erhalten nur die Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks. Pods können nicht direkt miteinander kommunizieren. Stattdessen werden benutzerdefiniertes Routing (User Defined Routing, UDR) und IP-Weiterleitung für die Konnektivität zwischen Pods über Knoten verwendet. Standardmäßig werden UDRs und die IP-Weiterleitungskonfiguration vom AKS-Dienst erstellt und verwaltet, Sie haben jedoch die Möglichkeit, eine [eigene Routingtabelle für benutzerdefinierte Routenverwaltung zu verwenden][byo-subnet-route-table]. Sie können auch Pods hinter einem Dienst bereitstellen, der eine zugewiesene IP-Adresse empfängt und einen Lastenausgleich des Datenverkehrs für die Anwendung durchführt. Das folgende Diagramm zeigt, wie die AKS-Knoten eine IP-Adresse im Subnetz des virtuellen Netzwerks empfangen, aber nicht die Pods:
 
@@ -65,21 +65,21 @@ Ein häufiges Problem bei *Azure CNI* ist, dass der zugewiesene IP-Adressbereich
 
 Als Kompromiss können Sie einen AKS-Cluster erstellen, der *kubenet* verwendet und eine Verbindung mit einem vorhandenen Subnetz eines virtuellen Netzwerks herstellt. Mit diesem Ansatz können die Knoten definierte IP-Adressen empfangen, ohne dass vorab eine große Anzahl von IP-Adressen für alle möglichen Pods reserviert werden muss, die im Cluster ausgeführt werden könnten.
 
-Mit *kubenet* können Sie einen viel kleineren IP-Adressbereich verwenden und große Cluster und Anwendungsanforderungen unterstützen. Sie könnten beispielsweise noch mit einem */27* -IP-Adressbereich in Ihrem Subnetz einen Cluster mit 20-25 Knoten mit genügend Platz zum Skalieren oder Aktualisieren ausführen. Diese Clustergröße unterstützt bis zu *2.200-2.750* Pods (mit standardmäßig maximal 110 Pods pro Knoten). Die maximale Anzahl von Pods pro Knoten, die Sie mit *Kubenet* in AKS konfigurieren können, ist 110.
+Mit *kubenet* können Sie einen viel kleineren IP-Adressbereich verwenden und große Cluster und Anwendungsanforderungen unterstützen. Sie könnten beispielsweise noch mit einem */27*-IP-Adressbereich in Ihrem Subnetz einen Cluster mit 20-25 Knoten mit genügend Platz zum Skalieren oder Aktualisieren ausführen. Diese Clustergröße unterstützt bis zu *2.200-2.750* Pods (mit standardmäßig maximal 110 Pods pro Knoten). Die maximale Anzahl von Pods pro Knoten, die Sie mit *Kubenet* in AKS konfigurieren können, ist 110.
 
 Die folgenden grundlegenden Berechnungen zeigen den Unterschied zwischen Netzwerkmodellen im Vergleich:
 
-- **kubenet** – ein einfacher */24* -IP-Adressbereich kann bis zu *251* Knoten im Cluster unterstützen (jedes Subnetz eines virtuellen Azure-Netzwerks reserviert die ersten drei IP-Adressen für Verwaltungsvorgänge).
-  - Diese Knotenanzahl könnte bis zu *27.610* Pods unterstützen (mit standardmäßig maximal 110 Pods pro Knoten mit *kubenet* ).
-- **Azure CNI** – derselbe grundlegende */24* -Subnetzadressbereich könnte nur maximal *8* Knoten im Cluster unterstützen.
-  - Diese Knotenanzahl könnte nur bis zu *240* Pods unterstützen (mit standardmäßig maximal 30 Pods pro Knoten mit *Azure CNI* ).
+- **kubenet** – ein einfacher */24*-IP-Adressbereich kann bis zu *251* Knoten im Cluster unterstützen (jedes Subnetz eines virtuellen Azure-Netzwerks reserviert die ersten drei IP-Adressen für Verwaltungsvorgänge).
+  - Diese Knotenanzahl könnte bis zu *27.610* Pods unterstützen (mit standardmäßig maximal 110 Pods pro Knoten mit *kubenet*).
+- **Azure CNI** – derselbe grundlegende */24*-Subnetzadressbereich könnte nur maximal *8* Knoten im Cluster unterstützen.
+  - Diese Knotenanzahl könnte nur bis zu *240* Pods unterstützen (mit standardmäßig maximal 30 Pods pro Knoten mit *Azure CNI*).
 
 > [!NOTE]
 > Bei diesen Maximalwerten werden keine Upgrade- oder Skalierungsvorgänge berücksichtigt. In der Praxis können Sie die maximale Anzahl von Knoten, die der Subnetz-IP-Adressbereich unterstützt, nicht ausführen. Sie müssen einige IP-Adressen zur Verwendung während der Skalierungs- oder Upgradevorgänge verfügbar lassen.
 
 ### <a name="virtual-network-peering-and-expressroute-connections"></a>Peering virtueller Netzwerke und ExpressRoute-Verbindungen
 
-Um lokale Konnektivität zu bieten, kann sowohl der *kubenet* - als auch der *Azure CNI* -Netzwerkansatz [Peering in virtuellen Netzwerken][vnet-peering] oder [ExpressRoute-Verbindungen][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8* -Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z. B. *172.16.0.0/16*.
+Um lokale Konnektivität zu bieten, kann sowohl der *kubenet*- als auch der *Azure CNI*-Netzwerkansatz [Peering in virtuellen Netzwerken][vnet-peering] oder [ExpressRoute-Verbindungen][express-route] verwenden. Planen Sie Ihre IP-Adressbereiche sorgfältig, um Überschneidungen und falsches Datenverkehrsrouting zu verhindern. In vielen lokalen Netzwerken wird z.B. ein *10.0.0.0/8*-Adressbereich verwendet, der über die ExpressRoute-Verbindung angekündigt wird. Sie sollten Ihre AKS-Cluster in Subnetzen virtueller Azure-Netzwerke außerhalb dieses Adressbereichs erstellen, z. B. *172.16.0.0/16*.
 
 ### <a name="choose-a-network-model-to-use"></a>Auswählen eines zu verwendenden Netzwerkmodells
 
@@ -164,11 +164,11 @@ Die folgenden IP-Adressbereiche sind auch als Teil des Clustererstellungsprozess
 
 * Mit *--service-cidr* werden interne Dienste im AKS-Cluster einer IP-Adresse zugewiesen. Dieser IP-Adressbereich sollte ein Adressraum sein, der ansonsten in Ihrer Netzwerkumgebung nicht verwendet wird. Dies schließt auch lokale Netzwerkbereiche ein, wenn Sie Ihre virtuellen Azure-Netzwerke mithilfe von ExpressRoute oder einer Site-to-Site-VPN-Verbindung verbinden (oder dies in Zukunft planen).
 
-* Die *--dns-service-ip* -Adresse muss die *10.* Adresse Ihres Dienst-IP-Adressbereichs sein.
+* Die *--dns-service-ip*-Adresse muss die *10.* Adresse Ihres Dienst-IP-Adressbereichs sein.
 
 * *--pod-cidr* muss ein großer Adressraum sein, der nicht an anderer Stelle in Ihrer Netzwerkumgebung verwendet wird. Dieser Bereich schließt alle lokalen Netzwerkbereiche ein, wenn Sie mit ExpressRoute oder Site-to-Site-VPN-Verbindungen eine Verbindung Ihrer virtuellen Azure-Netzwerke herstellen möchten oder dies planen.
     * Dieser Adressbereich muss groß genug sein für die Anzahl der Knoten, auf die Sie erwartungsgemäß hochskalieren werden. Sie können diesen Adressbereich nicht ändern, nachdem der Cluster bereitgestellt wurde, wenn Sie mehrere Adressen für zusätzliche Knoten benötigen.
-    * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24* -Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *10.244.0.0/16* dem ersten Knoten *10.244.0.0/24* zu, dem zweiten Knoten *10.244.1.0/24* und dem dritten Knoten *10.244.2.0/24*.
+    * Mit dem Pod-IP-Adressbereich wird jedem Knoten im Cluster ein */24*-Adressraum zugewiesen. Im folgenden Beispiel weist *--pod-cidr* von *10.244.0.0/16* dem ersten Knoten *10.244.0.0/24* zu, dem zweiten Knoten *10.244.1.0/24* und dem dritten Knoten *10.244.2.0/24*.
     * Beim Skalieren oder Upgraden des Clusters weist die Azure-Plattform weiterhin jedem neuen Knoten einen Pod-IP-Adressbereich zu.
     
 * Über *--docker-bridge-address* können AKS-Knoten mit der zugrunde liegenden Verwaltungsplattform kommunizieren. Diese IP-Adresse darf nicht innerhalb des IP-Adressbereichs des virtuellen Netzwerk Ihres Clusters liegen und sollte sich nicht mit anderen in Ihrem Netzwerk verwendeten Adressbereichen überschneiden.
@@ -224,7 +224,6 @@ Für die erfolgreiche Weiterleitung von Anforderungen in einem Kubenet-Netzwerk 
 Einschränkungen:
 
 * Vor der Erstellung des Clusters müssen Berechtigungen zugewiesen werden. Stellen Sie sicher, dass Sie einen Dienstprinzipal mit Schreibberechtigungen für das benutzerdefinierte Subnetz und die benutzerdefinierte Routingtabelle verwenden.
-* Verwaltete Identitäten werden derzeit nicht mit benutzerdefinierten Routentabellen in kubenet unterstützt.
 * Vor dem Erstellen des AKS-Clusters muss dem Subnetz eine benutzerdefinierte Routingtabelle zugeordnet werden.
 * Die zugeordnete Routingtabellenressource kann nach der Clustererstellung nicht mehr aktualisiert werden. Benutzerdefinierte Regeln in der Routingtabelle können jedoch geändert werden.
 * Von jedem AKS-Cluster muss eine einzelne, eindeutige Routingtabelle für alle Subnetze verwendet werden, die dem Cluster zugeordnet sind. Eine Routingtabelle kann nicht von mehreren Clustern genutzt werden, da dies zu Überschneidungen bei Pod-CIDRs sowie zu Konflikten bei Routingregeln führen kann.

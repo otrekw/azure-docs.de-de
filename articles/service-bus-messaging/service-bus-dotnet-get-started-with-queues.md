@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.tgt_pltfrm: dotnet
 ms.date: 11/13/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 15e5d257259bb4dfc98528cb726dbd2cc1f9a903
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: f55af61a061bf3a3897569058aace728f7465b64
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498726"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862121"
 ---
 # <a name="send-messages-to-and-receive-messages-from-azure-service-bus-queues-net"></a>Senden und Empfangen von Nachrichten für Azure Service Bus-Warteschlangen (.NET)
 In diesem Tutorial erstellen Sie eine .NET Core-Konsolenanwendung, um Nachrichten für eine Service Bus-Warteschlange zu senden und zu empfangen, indem Sie das Paket **Azure.Messaging.ServiceBus** verwenden. 
@@ -55,26 +55,9 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
         static string queueName = "<QUEUE NAME>";
     ```
 
-    Geben Sie die Verbindungszeichenfolge für den Namespace als `ServiceBusConnectionString`-Variable ein. Geben Sie den Warteschlangennamen ein.
+    Geben Sie die Verbindungszeichenfolge für den Namespace als `connectionString`-Variable ein. Geben Sie den Warteschlangennamen ein.
 
-1. Ersetzen Sie die `Main()`-Methode durch die folgende **asynchrone** `Main`-Methode. Sie ruft die `SendMessagesAsync()`-Methode auf, die Sie im nächsten Schritt hinzufügen, um Nachrichten an die Warteschlange zu senden. 
-
-    ```csharp
-    public static async Task Main(string[] args)
-    {    
-        const int numberOfMessages = 10;
-        
-        Console.WriteLine("======================================================");
-        Console.WriteLine("Press ENTER key to exit after sending all the messages.");
-        Console.WriteLine("======================================================");
-
-        // Send messages.
-        await SendMessagesAsync(numberOfMessages);
-
-        Console.ReadKey();
-    }
-    ```
-1. Fügen Sie direkt nach der `Main()`-Methode die folgende `SendMessagesAsync()`-Methode hinzu. Diese Methode dient zum Senden der durch `numberOfMessagesToSend` angegebenen Anzahl von Nachrichten. Die Anzahl ist aktuell auf 10 festgelegt:
+1. Fügen Sie direkt nach der Methode `Main()` die folgende Methode vom Typ `SendMessagesAsync()` hinzu, um eine Nachricht zu senden:
 
     ```csharp
         static async Task SendMessageAsync()
@@ -101,9 +84,9 @@ Starten Sie Visual Studio, und erstellen Sie ein neues Projekt vom Typ **Konsole
         {
             // create a queue containing the messages and return it to the caller
             Queue<ServiceBusMessage> messages = new Queue<ServiceBusMessage>();
-            messages.Enqueue(new ServiceBusMessage("First message"));
-            messages.Enqueue(new ServiceBusMessage("Second message"));
-            messages.Enqueue(new ServiceBusMessage("Third message"));
+            messages.Enqueue(new ServiceBusMessage("First message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Second message in the batch"));
+            messages.Enqueue(new ServiceBusMessage("Third message in the batch"));
             return messages;
         }
     ```

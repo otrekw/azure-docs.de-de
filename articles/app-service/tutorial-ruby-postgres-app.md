@@ -5,12 +5,12 @@ ms.devlang: ruby
 ms.topic: tutorial
 ms.date: 06/18/2020
 ms.custom: mvc, cli-validate, seodec18, devx-track-azurecli
-ms.openlocfilehash: 7d6c0d13e440beb9a934adba3908cc9a08f396f1
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b3c172584c42e1ed1d7ca94b6cd51bedd4e49dae
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95997915"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862291"
 ---
 # <a name="build-a-ruby-and-postgres-app-in-azure-app-service-on-linux"></a>Erstellen einer Ruby- und Postgres-App in Azure App Service für Linux
 
@@ -34,10 +34,11 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Für dieses Tutorial benötigen Sie Folgendes:
 
-* [Installation von Git](https://git-scm.com/)
-* [Installieren von Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
-* [Installieren von Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
-* [Laden Sie PostgreSQL herunter, und führen Sie es aus.](https://www.postgresql.org/download/)
+- [Installation von Git](https://git-scm.com/)
+- [Installieren von Ruby 2.6](https://www.ruby-lang.org/en/documentation/installation/)
+- [Installieren von Ruby on Rails 5.1](https://guides.rubyonrails.org/v5.1/getting_started.html)
+- [Installieren und Ausführen von PostgreSQL](https://www.postgresql.org/download/)
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="prepare-local-postgres"></a>Vorbereiten der lokalen Postgres-Instanz
 
@@ -103,8 +104,6 @@ Navigieren Sie in einem Browser zu `http://localhost:3000`. Fügen Sie auf der S
 ![Erfolgreiche Verbindung zwischen Ruby on Rails und Postgres](./media/tutorial-ruby-postgres-app/postgres-connect-success.png)
 
 Um den Rails-Server zu beenden, geben Sie `Ctrl + C` im Terminal ein.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-postgres-in-azure"></a>Erstellen einer Postgres-Instanz in Azure
 
@@ -292,7 +291,7 @@ git remote add azure <paste-copied-url-here>
 Führen Sie einen Pushvorgang an die Azure-Remoteinstanz durch, um die Ruby on Rails-Anwendung bereitzustellen. Sie werden zur Angabe des Kennworts aufgefordert, das Sie zuvor bei der Erstellung des Bereitstellungsbenutzers angegeben haben.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Während der Bereitstellung meldet Azure App Service seinen Status mit Git.
@@ -303,7 +302,7 @@ Delta compression using up to 8 threads.
 Compressing objects: 100% (3/3), done.
 Writing objects: 100% (3/3), 291 bytes | 0 bytes/s, done.
 Total 3 (delta 2), reused 0 (delta 0)
-remote: Updating branch 'master'.
+remote: Updating branch 'main'.
 remote: Updating submodules.
 remote: Preparing deployment for commit id 'a5e076db9c'.
 remote: Running custom deployment command...
@@ -422,7 +421,7 @@ Führen Sie für alle Änderungen in Git einen Commit aus, und übertragen Sie d
 ```bash
 git add .
 git commit -m "added complete checkbox"
-git push azure master
+git push azure main
 ```
 
 Wechseln Sie nach Abschluss des `git push`-Vorgangs zur Azure-App, und testen Sie die neuen Funktionen.

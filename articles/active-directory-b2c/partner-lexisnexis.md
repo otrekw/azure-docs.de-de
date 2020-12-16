@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.date: 07/22/2020
 ms.author: gasinh
 ms.subservice: B2C
-ms.openlocfilehash: 9bec7ffe28fbcdafd365f9867ebecaee5d2647e5
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 5f408699cae9580188a3780fc8f8654eaa97c26b
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94953683"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97108432"
 ---
 # <a name="tutorial-for-configuring-lexisnexis-with-azure-active-directory-b2c"></a>Tutorial zum Konfigurieren von LexisNexis mit Azure Active Directory B2C
 
@@ -73,7 +73,7 @@ Nachdem das Konto erstellt wurde, erhalten Sie die Informationen, die Sie für d
 
 ### <a name="part-1---deploy-the-api"></a>Teil 1: Bereitstellen der API
 
-Stellen Sie den angegebenen [API-Code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](/visualstudio/deployment/quickstart-deploy-to-azure?view=vs-2019) aus Visual Studio veröffentlicht werden.
+Stellen Sie den angegebenen [API-Code](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/Api) für einen Azure-Dienst bereit. Der Code kann mit [dieser Anleitung](/visualstudio/deployment/quickstart-deploy-to-azure) aus Visual Studio veröffentlicht werden.
 
 >[!NOTE]
 >Sie benötigen die URL des bereitgestellten Diensts, um Azure AD mit den erforderlichen Einstellungen zu konfigurieren.
@@ -95,7 +95,7 @@ Anwendungseinstellungen können [per App Service in Azure konfiguriert werden](.
 
 Diese Lösung verwendet benutzerdefinierte Benutzeroberflächenvorlagen, die von Azure AD B2C geladen werden. Diese Benutzeroberflächenvorlagen führen die Profilerstellung aus. Die Profile werden dann direkt an den ThreatMetrix-Dienst gesendet.
 
-Lesen Sie diese [Anweisungen](./custom-policy-ui-customization.md#custom-page-content-walkthrough) zum Bereitstellen der enthaltenen [Benutzeroberflächendateien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) in einem Blob Storage-Konto. Die Anweisungen umfassen das Einrichten eines Blob Storage-Kontos, das Konfigurieren von CORS und das Aktivieren des öffentlichen Zugriffs.
+Lesen Sie diese [Anweisungen](./customize-ui-with-html.md#custom-page-content-walkthrough) zum Bereitstellen der enthaltenen [Benutzeroberflächendateien](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template) in einem Blob Storage-Konto. Die Anweisungen umfassen das Einrichten eines Blob Storage-Kontos, das Konfigurieren von CORS und das Aktivieren des öffentlichen Zugriffs.
 
 Die Benutzeroberfläche basiert auf der [Vorlage „Ozeanblau“](https://github.com/azure-ad-b2c/partner-integrations/tree/master/samples/ThreatMetrix/ui-template/ocean_blue). Alle Links auf der Benutzeroberfläche sollten aktualisiert werden, sodass sie auf den bereitgestellten Speicherort verweisen. Suchen Sie im Benutzeroberflächenordner https://yourblobstorage/blobcontainer, und ersetzen Sie die Angabe durch den bereitgestellten Speicherort.
 

@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: how-to
 ms.date: 10/28/2020
-ms.custom: contperfq1, contperfq2
-ms.openlocfilehash: 756c87299db85e426b4793d51bea833aa694a830
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.custom: contperf-fy21q1, contperf-fy21q2
+ms.openlocfilehash: 70fbbdfc5d8f1bac5fa27175ea25be1503a77594
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93145955"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97031894"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Verwenden des Apache Beeline-Clients mit Apache Hive
 
@@ -163,7 +163,7 @@ Dieses Beispiel ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die
     nano query.hql
     ```
 
-1. Verwenden Sie als Inhalt der Datei den folgenden Text. Diese Abfrage erstellt eine neue „interne“ Tabelle mit dem Namen **errorLogs** :
+1. Verwenden Sie als Inhalt der Datei den folgenden Text. Diese Abfrage erstellt eine neue „interne“ Tabelle mit dem Namen **errorLogs**:
 
     ```hiveql
     CREATE TABLE IF NOT EXISTS errorLogs (t1 string, t2 string, t3 string, t4 string, t5 string, t6 string, t7 string) STORED AS ORC;
@@ -174,14 +174,14 @@ Dieses Beispiel ist eine Fortsetzung des vorherigen Beispiels. Verwenden Sie die
 
     |-Anweisung. |BESCHREIBUNG |
     |---|---|
-    |CREATE TABLE IF NOT EXISTS|Wenn die Tabelle noch nicht vorhanden ist, wird sie erstellt. Da das **EXTERNAL** -Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Interne Tabellen werden im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet.|
+    |CREATE TABLE IF NOT EXISTS|Wenn die Tabelle noch nicht vorhanden ist, wird sie erstellt. Da das **EXTERNAL**-Schlüsselwort nicht verwendet wird, erstellt diese Anweisung eine interne Tabelle. Interne Tabellen werden im Hive-Data Warehouse gespeichert und vollständig von Hive verwaltet.|
     |STORED AS ORC|Speichert die Daten im ORC-Format (Optimized Row Columnar). ORC ist ein stark optimiertes und effizientes Format zum Speichern von Hive-Daten.|
     |INSERT OVERWRITE ... SELECT|Wählt die Zeilen aus der Tabelle **log4jLogs** aus, die den Wert **[ERROR]** enthalten. Dann werden die Daten in die Tabelle **errorLogs** eingefügt.|
 
     > [!NOTE]  
     > Anders als bei externen Tabellen werden beim Löschen von internen Tabellen auch die zugrunde liegenden Daten gelöscht.
 
-1. Verwenden Sie **STRG**+**X** , um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die **EINGABETASTE**.
+1. Verwenden Sie **STRG**+**X**, um die Datei zu speichern. Geben Sie dann **Y** ein, und drücken Sie die **EINGABETASTE**.
 
 1. Verwenden Sie Folgendes, um die Datei mit Beeline auszuführen:
 

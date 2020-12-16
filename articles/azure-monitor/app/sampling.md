@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 01/17/2020
 ms.reviewer: vitalyg
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 87e33940d927fc9116c03345011e21398384d484
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e9334d222d443679362514481ecd83b90bbda0ac
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95024414"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96855072"
 ---
 # <a name="sampling-in-application-insights"></a>Erstellen von Stichproben in Application Insights
 
@@ -54,7 +54,7 @@ Es gibt drei verschiedene Methoden der Stichprobenerstellung:
 * Die **Erfassungs-Stichprobenerstellung** erfolgt auf dem Application Insights-Dienstendpunkt. Bei dieser Methode werden einige Telemetriedaten, die von Ihrer App eingehen, mit der von Ihnen angegebenen Stichprobenerstellungsrate verworfen. Die Methode verringert zwar nicht den von Ihrer App gesendeten Telemetriedatenverkehr, trägt aber zur Einhaltung Ihres monatlichen Kontingents bei. Der Hauptvorteil der Erfassungs-Stichprobenerstellung ist, dass die Stichprobenrate ohne erneute Bereitstellung Ihrer App festgelegt werden kann. Die Erfassungs-Stichprobenerstellung funktioniert für alle Server und Clients gleich, trifft jedoch nicht zu, wenn andere Arten der Stichprobenerstellung ausgeführt werden.
 
 > [!IMPORTANT]
-> Während die Methode der adaptiven Stichprobenerstellung oder der Stichprobenerstellung mit festem Prozentsatz aktiv ist, wird die Erfassungs-Stichprobenerstellung deaktiviert.
+> Während die Methode der adaptiven Stichprobenerstellung oder der Stichprobenerstellung mit festem Prozentsatz für einen Telemetrietyp aktiviert ist, wird die Erfassungs-Stichprobenerstellung für diesen Telemetrietyp deaktiviert. Telemetrietypen, die von der Stichprobenerstellung auf SDK-Ebene ausgeschlossen sind, unterliegen jedoch weiterhin der Erfassungs-Stichprobenerstellung mit dem im Portal festgelegten Satz.
 
 ## <a name="adaptive-sampling"></a>Adaptive Stichprobenerstellung
 
@@ -315,18 +315,12 @@ Standardmäßig ist im Java-Agent und im Java SDK keine Stichprobenerstellung a
 
 1. Herunterladen von [applicationinsights-agent-3.0.0-PREVIEW.5.jar](https://github.com/microsoft/ApplicationInsights-Java/releases/download/3.0.0-PREVIEW.5/applicationinsights-agent-3.0.0-PREVIEW.5.jar)
 
-1. Fügen Sie der Datei `ApplicationInsights.json` Folgendes hinzu, um die Stichprobenerstellung zu aktivieren:
+1. Fügen Sie der Datei `applicationinsights.json` Folgendes hinzu, um die Stichprobenerstellung zu aktivieren:
 
 ```json
 {
-  "instrumentationSettings": {
-    "preview": {
-      "sampling": {
-        "fixedRate": {
-          "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
-        }
-      }
-    }
+  "sampling": {
+    "percentage": 10 //this is just an example that shows you how to enable only only 10% of transaction 
   }
 }
 ```
@@ -559,7 +553,7 @@ Die Genauigkeit der Annäherung hängt weitgehend vom konfigurierten Prozentsatz
 
 * Die Erfassungs-Stichprobenerstellung kann automatisch für alle Telemetriedaten oberhalb eines bestimmten Volumens auftreten, wenn das SDK keine Stichprobenerstellung ausführt. Diese Konfiguration würde z. B. funktionieren, wenn Sie eine ältere Version des ASP.NET SDK oder Java SDK verwenden.
 * Bei Verwendung des aktuellen ASP.NET SDK oder ASP.NET Core SDK (gehostet in Azure oder auf Ihrem eigenen Server) erhalten Sie standardmäßig adaptive Stichprobenerstellung, aber Sie können, wie oben beschrieben, zu festem Prozentsatz wechseln. Bei Stichprobenerstellung mit festem Prozentsatz wird das Browser-SDK automatisch mit stichprobenbezogenen Ereignissen synchronisiert. 
-* Bei Verwendung des aktuellen Java-Agents können Sie `ApplicationInsights.json` konfigurieren, um die Stichprobenerstellung mit festem Prozentsatz zu aktivieren. (Für das Java SDK muss `ApplicationInsights.xml` konfiguriert werden.) Stichprobenerstellung ist standardmäßig deaktiviert. Bei Stichprobenerstellung mit festem Prozentsatz werden das Browser-SDK und der Server automatisch mit stichprobenbezogenen Ereignissen synchronisiert.
+* Bei Verwendung des aktuellen Java-Agents können Sie `applicationinsights.json` konfigurieren, um die Stichprobenerstellung mit festem Prozentsatz zu aktivieren. (Für das Java SDK muss `ApplicationInsights.xml` konfiguriert werden.) Stichprobenerstellung ist standardmäßig deaktiviert. Bei Stichprobenerstellung mit festem Prozentsatz werden das Browser-SDK und der Server automatisch mit stichprobenbezogenen Ereignissen synchronisiert.
 
 *Es gibt einige seltene Ereignisse, die ich immer untersuchen möchte. Wie bekomme ich sie durch das Stichprobenmodul?*
 

@@ -8,12 +8,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 10/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 031b3bfd30e0272589c5c7ee2c546b9459767b33
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 5e5c59d611cb7f4b5333b9919488e6fc083611cd
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96183191"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96779242"
 ---
 # <a name="tutorial-monitor-published-apis"></a>Tutorial: Überwachen von veröffentlichten APIs
 
@@ -26,6 +26,8 @@ In diesem Tutorial lernen Sie Folgendes:
 > * Einrichten einer Warnungsregel 
 > * Anzeigen von Aktivitätsprotokollen
 > * Aktivieren und Anzeigen von Ressourcenprotokollen
+
+Sie können auch die integrierte [Analyse](howto-use-analytics.md) von API Management verwenden, um die Nutzung und Leistung Ihrer APIs zu überwachen.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

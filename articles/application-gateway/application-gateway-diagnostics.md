@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: victorh
-ms.openlocfilehash: d7bd56ea22561d9463bc8430058e692f1c566c38
-ms.sourcegitcommit: 0ce1ccdb34ad60321a647c691b0cff3b9d7a39c8
+ms.openlocfilehash: 9d2fba48762e11a92f6f3925c969b01aebbe3630
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/05/2020
-ms.locfileid: "93397823"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347590"
 ---
 # <a name="back-end-health-and-diagnostic-logs-for-application-gateway"></a>Back-End-Integrität und Diagnoseprotokolle für Application Gateway
 
@@ -41,7 +41,7 @@ Der Back-End-Integritätsbericht spiegelt die Ausgabe des Application Gateway-In
 
 Im Portal wird die Back-End-Integrität automatisch bereitgestellt. Wählen Sie in einem vorhandenen Anwendungsgateway die Option **Überwachung** > **Back-End-Integrität**.
 
-Jedes Mitglied im Back-End-Pool (ob NIC, IP-Adresse oder FQDN) ist auf dieser Seite aufgeführt. Der Name des Back-End-Pools, der Port, der Name der Back-End-HTTP-Einstellungen und der Integritätsstatus werden angezeigt. Gültige Werte für den Integritätsstatus sind **Fehlerfrei** , **Fehlerhaft** und **Unbekannt**.
+Jedes Mitglied im Back-End-Pool (ob NIC, IP-Adresse oder FQDN) ist auf dieser Seite aufgeführt. Der Name des Back-End-Pools, der Port, der Name der Back-End-HTTP-Einstellungen und der Integritätsstatus werden angezeigt. Gültige Werte für den Integritätsstatus sind **Fehlerfrei**, **Fehlerhaft** und **Unbekannt**.
 
 > [!NOTE]
 > Stellen Sie beim Back-End-Integritätsstatus **Unbekannt** sicher, dass der Zugriff auf das Back-End nicht durch eine NSG-Regel, eine benutzerdefinierte Route (UDR) oder ein benutzerdefiniertes DNS im virtuellen Netzwerk blockiert ist.
@@ -105,7 +105,7 @@ Sie können in Azure verschiedene Protokolltypen verwenden, um Anwendungsgateway
 
 Sie haben drei Möglichkeiten, um Ihre Protokolle zu speichern:
 
-* **Speicherkonto** : Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
+* **Speicherkonto**: Speicherkonten eignen sich am besten für Protokolle, die eine längere Zeit gespeichert und bei Bedarf überprüft werden.
 * **Event Hubs:** Event Hubs-Instanzen sind eine hervorragende Möglichkeit für die Integration in andere SIEM-Tools (Security Information and Event Management), um Warnungen für Ihre Ressourcen zu erhalten.
 * **Azure Monitor-Protokolle:** Azure Monitor-Protokolle eignen sich am besten für eine allgemeine Echtzeitüberwachung Ihrer Anwendung oder zum Beobachten von Trends.
 
@@ -208,7 +208,6 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |---------|---------|
 |instanceId     | Application Gateway-Instanz, von der die Anforderung bereitgestellt wurde        |
 |clientIP     | Ursprungs-IP für die Anforderung        |
-|clientPort     | Ursprungsport für die Anforderung       |
 |httpMethod     | Von der Anforderung verwendete HTTP-Methode       |
 |requestUri     | URI der empfangenen Anforderung        |
 |UserAgent     | Benutzer-Agent aus dem HTTP-Anforderungsheader        |
@@ -216,7 +215,7 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
 |httpVersion     | HTTP-Version der Anforderung        |
 |receivedBytes     | Größe des empfangenen Pakets in Byte        |
 |sentBytes| Größe des gesendeten Pakets in Byte|
-|timeTaken| Dauer (in **Sekunden** ), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
+|timeTaken| Dauer (in **Sekunden**), bis eine Anforderung verarbeitet und die dazugehörige Antwort gesendet wurde. Dies wird als Intervall zwischen dem Zeitpunkt, zu dem Application Gateway das erste Byte einer HTTP-Anforderung empfängt, bis zu dem Zeitpunkt berechnet, zu dem der Vorgang zum Senden der Antwort abgeschlossen ist. Hierbei ist der Hinweis wichtig, dass das Feld „Time-Taken“ normalerweise die Zeitdauer enthält, die von den Anforderungs- und Antwortpaketen für die Übermittlung über das Netzwerk benötigt wird. |
 |sslEnabled| Gibt an, ob für die Kommunikation mit den Back-End-Pools TLS verwendet wurde. Gültige Werte sind „on“ und „off“.|
 |sslCipher| Verschlüsselungssammlung, die für die TLS-Kommunikation verwendet wird (sofern TLS aktiviert ist).|
 |sslProtocol| Das verwendete SSL-/TLS-Protokoll (sofern TLS aktiviert ist)|
@@ -236,7 +235,6 @@ Das Zugriffsprotokoll wird nur generiert, wenn Sie es auf jeder Application Gate
     "properties": {
         "instanceId": "appgw_1",
         "clientIP": "191.96.249.97",
-        "clientPort": 46886,
         "httpMethod": "GET",
         "requestUri": "/phpmyadmin/scripts/setup.php",
         "userAgent": "-",
@@ -353,7 +351,7 @@ Das Firewallprotokoll wird nur generiert, wenn Sie es für jedes Anwendungsgatew
 Mit einer der folgenden Methoden können Sie die Aktivitätsprotokolldaten anzeigen und analysieren:
 
 * **Azure-Tools:** Rufen Sie Informationen aus dem Aktivitätsprotokoll über Azure PowerShell, über die Azure-Befehlszeilenschnittstelle, mithilfe der Azure-REST-API oder über das Azure-Portal ab. Detaillierte Anleitungen für die einzelnen Methoden finden Sie im Artikel [Überwachen von Vorgängen mit dem Ressourcen-Manager](../azure-resource-manager/management/view-activity-logs.md) .
-* **Power BI** : Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe der [Power BI-Vorlagen-Apps](/power-bi/service-template-apps-overview) können Sie Ihre Daten analysieren.
+* **Power BI**: Falls Sie noch kein [Power BI](https://powerbi.microsoft.com/pricing)-Konto besitzen, können Sie es kostenlos testen. Mithilfe der [Power BI-Vorlagen-Apps](/power-bi/service-template-apps-overview) können Sie Ihre Daten analysieren.
 
 ### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Anzeigen und Analysieren der Zugriffs-, Leistungs- und Firewallprotokolle
 

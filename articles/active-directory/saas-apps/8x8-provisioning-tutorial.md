@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/15/2020
 ms.author: Zhchia
-ms.openlocfilehash: 90e3464ac9ddf1e839c3a731f79ac2c0771c37ea
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: a6aa4ad009d037e6ea0d1ade3cc9735351bd634a
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96532703"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558860"
 ---
 # <a name="tutorial-configure-8x8-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von 8x8 für automatische Benutzerbereitstellung
 
-In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in 8x8 Configuration Manager als auch in Azure Active Directory (Azure AD) ausführen müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [8x8 ](https://www.8x8.com) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
+In diesem Tutorial werden die Schritte beschrieben, die sowohl in der 8x8-Verwaltungskonsole als auch in Azure Active Directory (Azure AD) ausgeführt werden müssen, um die automatische Benutzerbereitstellung zu konfigurieren. Bei der Konfiguration stellt Azure AD automatisch mithilfe des Azure AD-Bereitstellungsdiensts Benutzer und Gruppen für [8x8 ](https://www.8x8.com) bereit bzw. hebt deren Bereitstellung auf. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md). 
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
 > [!div class="checklist"]
@@ -36,7 +36,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator).
 * Ein Abonnement der 8x8 X-Serie einer beliebigen Ebene.
-* Ein 8x8-Benutzerkonto mit Administratorberechtigung in [Configuration Manager](https://vo-cm.8x8.com).
+* Ein 8x8-Benutzerkonto mit Administratorberechtigung in der [Verwaltungskonsole](https://vo-cm.8x8.com).
 * [Einmaliges Anmelden mit Azure AD](./8x8virtualoffice-tutorial.md) wurde bereits konfiguriert.
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
@@ -48,7 +48,7 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren von 8x8 für die Unterstützung einer Bereitstellung mit Azure AD.
 
-### <a name="to-configure-a-user-provisioning-access-token-in-8x8-configuration-manager"></a>So konfigurieren Sie ein Zugriffstoken für die Benutzerbereitstellung in 8x8 Configuration Manager:
+### <a name="to-configure-a-user-provisioning-access-token-in-8x8-admin-console"></a>So konfigurieren Sie ein Zugriffstoken für die Benutzerbereitstellung in der 8x8-Verwaltungskonsole:
 
 1. Melden Sie sich bei der [Verwaltungskonsole](https://admin.8x8.com) an. Wählen Sie **Identitätsverwaltung** aus.
 
@@ -64,7 +64,7 @@ Dieser Abschnitt führt Sie durch die Schritte zum Konfigurieren von 8x8 für di
 
 ## <a name="step-3-add-8x8-from-the-azure-ad-application-gallery"></a>Schritt 3: Hinzufügen von 8x8 aus dem Azure AD-Anwendungskatalog
 
-Fügen Sie 8x8 aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in 8x8 zu beginnen. Wenn Sie 8x8 zuvor für einmaliges Anmelden (SSO) eingerichtet haben, können Sie dieselbe Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog.
+Fügen Sie 8x8 aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Verwalten der Bereitstellung in 8x8 zu beginnen. Wenn Sie 8x8 bereits für einmaliges Anmelden (Single Sign-On, SSO) eingerichtet haben, können Sie die gleiche Anwendung verwenden. Es ist jedoch empfehlenswert, beim erstmaligen Testen der Integration eine separate App zu erstellen. [Hier](../manage-apps/add-application-portal.md) erfahren Sie mehr über das Hinzufügen einer Anwendung aus dem Katalog.
 
 ## <a name="step-4-define-who-will-be-in-scope-for-provisioning"></a>Schritt 4. Definieren der Benutzer für den Bereitstellungsbereich
 
@@ -102,7 +102,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
     ![Screenshot der Dropdownliste „Bereitstellungsmodus“ mit aufgerufener Option „Automatisch“](common/provisioning-automatic.png)
 
-5. Kopieren Sie im Abschnitt **Administratoranmeldeinformationen** die **8x8-URL** aus Configuration Manager in das Feld **Mandanten-URL**. Kopieren Sie das **8x8-API-Token** aus Configuration Manager in das Feld **Geheimes Token**. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit 8x8 herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 8x8-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+5. Kopieren Sie im Abschnitt **Administratoranmeldeinformationen** die **8x8-URL** aus der Verwaltungskonsole in das Feld **Mandanten-URL**. Kopieren Sie das **8x8-API-Token** aus der Verwaltungskonsole in das Feld **Geheimes Token**. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit 8x8 herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr 8x8-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Screenshot des Dialogfelds „Administratoranmeldeinformationen“, in dem Sie Ihre Mandanten-URL und das geheime Token eingeben können.](./media/8x8-provisioning-tutorial/provisioning.png)
 

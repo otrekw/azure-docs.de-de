@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: twooley
-ms.openlocfilehash: d889c82142cda60b920f7b29bd91755cbc34f525
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 48ff32655b107958a3e8e42dbd7de0f405a6fffa
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701448"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094861"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Zugriffssteuerung in Azure Data Lake Storage Gen1
 
@@ -33,8 +33,6 @@ Es gibt zwei Arten von Zugriffssteuerungslisten (Access Control Lists, ACLs): **
 
 
 Zugriffs- und Standard-ACLs besitzen die gleiche Struktur.
-
-
 
 > [!NOTE]
 > Änderungen an der Standard-ACL für ein übergeordnetes Element haben keine Auswirkungen auf die Zugriffs- oder Standard-ACL bereits vorhandener untergeordneter Elemente.
@@ -74,7 +72,7 @@ Im Folgenden sind einige allgemeine Szenarien aufgeführt, die veranschaulichen,
 | Vorgang | Object              |    /      | Seattle/   | Portland/   | Data.txt       |
 |-----------|---------------------|-----------|------------|-------------|----------------|
 | Lesen      | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
-| Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Anfügen an | Data.txt            |   `--X`   |   `--X`    |  `--X`      | `-W-`          |
 | Löschen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | Erstellen    | Data.txt            |   `--X`   |   `--X`    |  `-WX`      | `---`          |
 | List      | /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
