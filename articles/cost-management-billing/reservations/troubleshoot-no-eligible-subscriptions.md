@@ -7,13 +7,13 @@ ms.subservice: reservations
 ms.author: banders
 ms.reviewer: yashar
 ms.topic: troubleshooting
-ms.date: 11/16/2020
-ms.openlocfilehash: 1b36577c3c0940687f98394f8ea4faae83f371be
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.date: 12/15/2020
+ms.openlocfilehash: ad85bd278b5dff1532f218acc0b8e88515d96070
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887194"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561204"
 ---
 # <a name="troubleshoot-no-eligible-subscriptions"></a>Problembehandlung bei der Meldung „Keine berechtigten Abonnements“
 
@@ -94,8 +94,8 @@ Der aktuelle Besitzer des Reservierungsauftrags oder der Reservierung kann den Z
 1. Geben Sie die E-Mail-Adresse des Benutzers ein, den Sie als Besitzer hinzufügen möchten.
 1. Wählen Sie den Benutzer und dann **Speichern** aus.
 
-Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+Weitere Informationen finden Sie unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Ihnen der Zugriff von einem Reservierungsbesitzer gewährt werden muss, informieren Sie sich unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#add-or-change-users-who-can-manage-a-reservation).
+- Wenn Ihnen der Zugriff von einem Reservierungsbesitzer gewährt werden muss, informieren Sie sich unter [Hinzufügen oder Ändern von Benutzern, die eine Reservierung verwalten können](manage-reserved-vm-instance.md#who-can-manage-a-reservation-by-default).
