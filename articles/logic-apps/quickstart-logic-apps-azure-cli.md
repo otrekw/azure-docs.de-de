@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewer: estfan, logicappspm
 ms.topic: quickstart
-ms.custom: mvc, devx-track-azurecli, contperfq2
+ms.custom: mvc, devx-track-azurecli, contperf-fy21q2
 ms.date: 11/23/2020
-ms.openlocfilehash: f5b8497772a14e9613977c9cdc22025e8e58b92c
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: bc172fd1702addf8f4e34094452a779b09320a4d
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95509471"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97033373"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Schnellstart: Erstellen und Verwalten von Logik-Apps mithilfe der Azure-Befehlszeilenschnittstelle
 
@@ -148,7 +148,7 @@ Der Workflow einer Logik-App kann über die Azure-Befehlszeilenschnittstelle mit
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-delete-required-parameters) enthalten:
 
-| Parameter | Wert | Beschreibung |
+| Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `-resource-group -g` | Die Ressourcengruppe, in der sich Ihre Logik-App befindet. |
@@ -198,7 +198,7 @@ az logic workflow show --name
 
 Der Befehl muss die folgenden [erforderlichen Parameter](/cli/azure/ext/logic/logic/workflow#ext-logic-az-logic-workflow-show-required-parameters) enthalten:
 
-| Parameter | Wert | Beschreibung |
+| Parameter | Wert | BESCHREIBUNG |
 | --------- | ----- | ----------- |
 | Name | `--name -n` | Der Name Ihrer Logik-App. |
 | Ressourcengruppenname | `--resource-group -g` | Der Name der Ressourcengruppe, in der sich Ihre Logik-App befindet. |

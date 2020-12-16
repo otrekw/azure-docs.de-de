@@ -4,14 +4,14 @@ description: Hier erfahren Sie, wie Sie Web-Apps in Azure App Service ausführen
 ms.assetid: b1e6bd58-48d1-4007-9d6c-53fd6db061e3
 ms.topic: quickstart
 ms.date: 11/23/2020
-ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperfq1
+ms.custom: devx-track-csharp, mvc, devcenter, vs-azure, seodec18, contperf-fy21q1
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: bf7d911c6f9d90e400e589828c093877875e7d97
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: d7b7d8845eda87132cbfa7981c20c39bb210aa5c
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96015631"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032693"
 ---
 # <a name="quickstart-create-an-aspnet-core-web-app-in-azure"></a>Schnellstart: Erstellen von ASP.NET Core-Web-Apps in Azure
 
@@ -322,7 +322,7 @@ await context.Response.WriteAsync("Hello Azure!");
 Speichern Sie Ihre Änderungen, und stellen Sie die App dann mit dem Befehl `az webapp up` erneut bereit:
 
 ```azurecli
-az webapp up
+az webapp up --os-type linux
 ```
 
 In diesem Befehl werden lokal zwischengespeicherte Werte aus der Datei *.azure/config* verwendet (einschließlich App-Name, Ressourcengruppe und App Service-Plan).

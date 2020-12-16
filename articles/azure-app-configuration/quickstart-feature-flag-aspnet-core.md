@@ -1,18 +1,18 @@
 ---
 title: Schnellstartanleitung zum Hinzufügen von Featureflags zu ASP.NET Core
 description: Hier wird erläutert, wie Sie ASP.NET Core-Apps Featureflags hinzufügen und diese in Azure App Configuration verwalten.
-author: lisaguthrie
+author: AlexandraKemperMS
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
-ms.author: lcozzens
-ms.openlocfilehash: 5179a619b1adba432910605c75fae0789efd3397
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.author: alkemper
+ms.openlocfilehash: d465f3c44ede8b4df56ef0da08c5bbbcd477d93f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182695"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932138"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Schnellstart: Hinzufügen von Featureflags zu einer ASP.NET Core-App
 

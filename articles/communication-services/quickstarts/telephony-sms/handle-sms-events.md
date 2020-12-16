@@ -9,16 +9,17 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: e8decbe22f869573bf7a2221099d2bc30c00fc8a
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: d6409c005e006372f55e77aeb4d977e6b1c45832
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94888843"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936273"
 ---
 # <a name="quickstart-handle-sms-events"></a>Schnellstart: Behandeln von SMS-Ereignissen
 
 [!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
+[!INCLUDE [Regional Availability Notice](../../includes/regional-availability-include.md)]
 
 Machen Sie Ihre ersten Schritte mit Azure Communication Services, indem Sie Azure Event Grid zum Behandeln von SMS-Ereignissen von Communication Services verwenden. 
 
@@ -104,7 +105,7 @@ Erfahren Sie mehr über [Ereignisschemas und andere Ereigniskonzepte](../../conc
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
-Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Erfahren Sie mehr über das [Bereinigen von Ressourcen](../create-communication-resource.md#clean-up-resources).
+Wenn Sie ein Communication Services-Abonnement bereinigen und entfernen möchten, können Sie die Ressource oder die Ressourcengruppe löschen. Wenn Sie die Ressourcengruppe löschen, werden auch alle anderen Ressourcen gelöscht, die ihr zugeordnet sind. Weitere Informationen zum Bereinigen von Ressourcen finden Sie [hier](../create-communication-resource.md#clean-up-resources).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
