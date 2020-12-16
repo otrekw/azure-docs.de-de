@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 09/17/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 5a23cf031b5d7cf40e2077f2e5287e10de563207
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 757dfa119649e21c6e1787671afa61ee18184300
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96903002"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561901"
 ---
 # <a name="frequently-asked-questions-about-arm-templates"></a>Häufig gestellte Fragen zu Resource Manager-Vorlagen
 
@@ -154,7 +154,7 @@ In diesem Artikel finden Sie Antworten auf häufig gestellte Fragen zu Azure Res
 
 * **Wenn ich den Was-wäre-wenn-Vorgang verwende, werden Änderungen bei Eigenschaften angezeigt, die nicht in meiner Vorlage enthalten sind. Muss mit solchen Fehlern gerechnet werden?**
 
-  Der Was-wäre-wenn-Vorgang befindet sich in der Vorschauversion. Wir arbeiten daran, die Fehlerrate zu verringern. Sie können uns bei der Verbesserung helfen, indem Sie Probleme über unser GitHub-Repository melden: https://aka.ms/WhatIfIssues
+  Wir arbeiten daran, die Fehlerrate zu verringern. Sie können uns bei der Verbesserung helfen, indem Sie Probleme über unser GitHub-Repository melden: https://aka.ms/WhatIfIssues
 
 ## <a name="template-visualizer"></a>Schnellansicht für Vorlagen
 

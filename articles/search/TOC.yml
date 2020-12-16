@@ -306,10 +306,12 @@
       items:
         - name: 'Wählen Sie eine Ebene aus:'
           href: search-sku-tier.md
-        - name: Diensteinschränkungen
-          href: search-limits-quotas-capacity.md
+        - name: Schätzen von Kapazität und Kosten
+          href: search-sku-manage-costs.md
         - name: Anpassen der Kapazität
           href: search-capacity-planning.md
+        - name: Diensteinschränkungen
+          href: search-limits-quotas-capacity.md
         - name: Skalieren zur Verbesserung der Leistung
           href: search-performance-optimization.md
         - name: Mehrinstanzenfähige Architektur
@@ -362,12 +364,6 @@
               href: service-configure-firewall.md
             - name: Erstellen eines privaten Endpunkts
               href: service-create-private-endpoint.md
-        - name: Identitätsbasierter Zugriff
-          items:
-            - name: Sicherheitsfilter
-              href: search-security-trimming-for-azure-search.md
-            - name: Filtern nach Benutzeridentitäten
-              href: search-security-trimming-for-azure-search-with-aad.md
         - name: Ausgangssicherheit (Indexer)
           items:
             - name: Zugreifen über einen IP-Adressbereich
@@ -376,6 +372,12 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Zugreifen über private Endpunkte
               href: search-indexer-howto-access-private.md
+        - name: Identitätsbasierter Zugriff
+          items:
+            - name: Sicherheitsfilter
+              href: search-security-trimming-for-azure-search.md
+            - name: Filtern nach Benutzeridentitäten
+              href: search-security-trimming-for-azure-search-with-aad.md
     - name: Verwalten
       items:
         - name: Portal

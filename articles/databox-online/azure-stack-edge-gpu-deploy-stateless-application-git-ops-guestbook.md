@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 8637b33ebc4b697ee6f498acb84ee33718c53f6d
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 82b786f3c90a7ef482ccbcd6e66fb9abfc4eea5f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96448854"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561935"
 ---
 # <a name="deploy-a-php-guestbook-stateless-application-with-redis-on-arc-enabled-kubernetes-cluster-on-azure-stack-edge-pro-gpu"></a>Bereitstellen einer zustandslosen PHP-Gästebuchanwendung mit Redis in einem für Arc aktivierten Kubernetes-Cluster auf einem Azure Stack Edge Pro-GPU-Gerät
 
@@ -32,11 +32,14 @@ Dieses Verfahren ist für Benutzer gedacht, die den Artikel [Kubernetes-Workload
 
 Stellen Sie vor der Bereitstellung der zustandslosen Anwendung sicher, dass die folgenden Voraussetzungen auf Ihrem Gerät und auf dem Client erfüllt sind, den Sie für den Zugriff auf das Gerät verwenden:
 
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
 ### <a name="for-device"></a>Für das Gerät
 
 1. Sie verfügen über Anmeldeinformationen für ein Azure Stack Edge Pro-Gerät mit einem Knoten.
     1. Das Gerät ist aktiviert. Siehe [Aktivieren des Geräts](azure-stack-edge-gpu-deploy-activate.md).
-    1. Das Gerät verfügt über die Computerolle (über das Azure-Portal konfiguriert) und umfasst einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
+    1. Das Gerät verfügt über die über das Azure-Portal konfigurierte Computerolle und umfasst einen Kubernetes-Cluster. Siehe [Konfigurieren der Computeumgebung](azure-stack-edge-gpu-deploy-configure-compute.md).
 
 1. Sie haben Azure Arc im vorhandenen Kubernetes-Cluster auf Ihrem Gerät aktiviert und verfügen im Azure-Portal über eine entsprechende Azure Arc-Ressource. Die ausführlichen Schritte sind unter [Aktivieren von Azure Arc auf einem Azure Stack Edge Pro-Gerät](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md) beschrieben.
 

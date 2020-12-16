@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: 8d982d06bd100313d643033294b6d14e6383d5df
-ms.sourcegitcommit: 6906980890a8321dec78dd174e6a7eb5f5fcc029
+ms.openlocfilehash: 7a2b2344bbb110cd4b35cc1f6428f61e48552b01
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92424707"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563006"
 ---
 # <a name="configure-dns-for-name-resolution-for-private-cloud-vcenter-access-from-on-premises-workstations"></a>Konfigurieren von DNS für die Namensauflösung für den vCenter-Zugriff in der privaten Cloud über lokale Arbeitsstationen
 
@@ -23,7 +23,7 @@ Für den Zugriff auf den vCenter-Server in einer privaten CloudSimple-Cloud übe
 
 1. Melden Sie sich am [CloudSimple-Portal](access-cloudsimple-portal.md) an.
 
-2. Navigieren Sie zu **Resources (Ressourcen)**  > **Private Clouds** , und wählen Sie die private Cloud aus, mit der Sie eine Verbindung herstellen möchten.
+2. Navigieren Sie zu **Resources (Ressourcen)**  > **Private Clouds**, und wählen Sie die private Cloud aus, mit der Sie eine Verbindung herstellen möchten.
 
 3. Kopieren Sie auf der Seite **Summary** (Zusammenfassung) der privaten Cloud unter **Basic Info** (Grundlegende Informationen) die IP-Adresse des DNS-Servers für die private Cloud.
 
@@ -44,6 +44,9 @@ Sie können eine Zone als Stubzone einrichten und auf die DNS-Server in der priv
 Welche Datei und welche Parameter konfiguriert werden müssen, hängt vom jeweiligen DNS-Setup ab.
 
 Bearbeiten Sie z. B für die BIND-Standardserverkonfiguration die Datei „/etc/named.conf“ auf Ihrem DNS-Server, und fügen Sie die folgenden Zoneninformationen hinzu.
+
+> [!NOTE]
+>Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
 
 ```
 zone "az.cloudsimple.io"

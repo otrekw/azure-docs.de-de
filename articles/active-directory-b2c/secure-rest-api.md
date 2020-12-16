@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 10/15/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 3e3245053fcc9943814268835fa5ac0f40a6f94c
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: f6907db7f6e53247a8f2fc0042e8c8e6b081dbd3
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750508"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516375"
 ---
 # <a name="secure-your-restful-services"></a>Schützen Ihrer RESTful-Dienste 
 
@@ -230,7 +230,7 @@ Ein Anspruch ermöglicht die temporäre Speicherung von Daten während der Ausf�
 
 ### <a name="acquiring-an-access-token"></a>Abrufen eines Zugriffstokens 
 
-Sie können ein Zugriffstoken auf eine von mehreren Arten abrufen: durch Abrufen des Tokens [von einem Verbundidentitätsanbieter](idp-pass-through-custom.md), durch Aufrufen einer REST-API, die ein Zugriffstoken zurückgibt, mithilfe eines [ROPC-Flows](../active-directory/develop/v2-oauth-ropc.md) oder mithilfe des [Clientanmeldeinformationsflows](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
+Sie können ein Zugriffstoken auf eine von mehreren Arten abrufen: durch Abrufen des Tokens [von einem Verbundidentitätsanbieter](idp-pass-through-user-flow.md), durch Aufrufen einer REST-API, die ein Zugriffstoken zurückgibt, mithilfe eines [ROPC-Flows](../active-directory/develop/v2-oauth-ropc.md) oder mithilfe des [Clientanmeldeinformationsflows](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md).  
 
 Im folgenden Beispiel wird ein technisches REST-API-Profil verwendet, um eine Anforderung an den Azure AD-Tokenendpunkt zu senden, wobei die Clientanmeldeinformationen als HTTP-Standardauthentifizierung verwendet werden. Informationen zur entsprechenden Konfiguration in Azure AD finden Sie unter [Microsoft Identity Platform und der Fluss von OAuth 2.0-Clientanmeldeinformationen](../active-directory/develop/v2-oauth2-client-creds-grant-flow.md). Möglicherweise müssen Sie Änderungen daran vornehmen, um die Interaktion mit Ihrem Identitätsanbieter zu ermöglichen. 
 
