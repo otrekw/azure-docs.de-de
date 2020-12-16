@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: b7faec5023abe37802d8b08980f216934d70a6ac
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: c8d07e53e259fff28e662f0c1ca3934eabf015e8
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96005543"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357448"
 ---
 # <a name="create-a-storage-account"></a>Speicherkonto erstellen
 
@@ -286,3 +286,4 @@ Alternativ können Sie die Ressourcengruppe löschen, wodurch das Speicherkonto 
 - [Speicherkontoübersicht](storage-account-overview.md)
 - [Durchführen eines Upgrades auf ein Speicherkonto vom Typ „Allgemein v2“](storage-account-upgrade.md)
 - [Verschieben eines Azure Storage-Kontos in eine andere Region](storage-account-move.md)
+- [Wiederherstellen eines gelöschten Speicherkontos](storage-account-recover.md)

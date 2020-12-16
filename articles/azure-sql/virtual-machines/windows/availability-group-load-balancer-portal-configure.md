@@ -7,18 +7,19 @@ author: MashaMSFT
 editor: monicar
 ms.assetid: d1f291e9-9af2-41ba-9d29-9541e3adcfcf
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4af7e10b573743602fea609264c73d58a1e6a7d1
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 9fa23ca2ae655a11d7aaa4be67e08a6b3fa44394
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92789997"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359386"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Konfigurieren eines Load Balancers für eine SQL Server-AlwaysOn-Verfügbarkeitsgruppe auf virtuellen Azure-Computern
 
@@ -61,17 +62,17 @@ Erstellen Sie zuerst den Load Balancer.
 
 2. Wählen Sie in der Ressourcengruppe **Hinzufügen** aus.
 
-3. Suchen Sie nach **Load Balancer** . Wählen Sie in den Suchergebnissen den (von **Microsoft** veröffentlichten) **Load Balancer** aus.
+3. Suchen Sie nach **Load Balancer**. Wählen Sie in den Suchergebnissen den (von **Microsoft** veröffentlichten) **Load Balancer** aus.
 
-4. Klicken Sie auf dem Blatt **Load Balancer** auf **Erstellen** .
+4. Klicken Sie auf dem Blatt **Load Balancer** auf **Erstellen**.
 
 5. Konfigurieren Sie den Load Balancer unter **Lastenausgleich erstellen** wie folgt:
 
    | Einstellung | Wert |
    | --- | --- |
-   | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB** . |
+   | **Name** |Namenstext für den Load Balancer. Beispiel: **sqlLB**. |
    | **Typ** |**Intern:** Die meisten Implementierungen verwenden einen internen Lastenausgleich, wodurch Anwendungen innerhalb des gleichen virtuellen Netzwerks eine Verbindung mit der Verfügbarkeitsgruppe herstellen können.  </br> **Extern:** Dieser Typ ermöglicht es Anwendungen, über eine öffentliche Internetverbindung eine Verbindung mit der Verfügbarkeitsgruppe herzustellen. |
-   | **SKU** |**Basic** : Die Standardoption. Nur gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. </br> **Standard** : Bevorzugt. Gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. Erforderlich, wenn sich Ihre SQL Server Instanzen in unterschiedlichen Verfügbarkeitszonen befinden. |
+   | **SKU** |**Basic**: Die Standardoption. Nur gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. </br> **Standard**: Bevorzugt. Gültig, wenn sich SQL Server-Instanzen in derselben Verfügbarkeitsgruppe befinden. Erforderlich, wenn sich Ihre SQL Server Instanzen in unterschiedlichen Verfügbarkeitszonen befinden. |
    | **Virtuelles Netzwerk** |Wählen Sie das virtuelle Netzwerk aus, in dem sich die SQL Server-Instanzen befinden. |
    | **Subnetz** |Wählen Sie das Subnetz aus, in dem sich die SQL Server-Instanzen befinden. |
    | **IP-Adresszuweisung** |**Statisch** |
@@ -80,7 +81,7 @@ Erstellen Sie zuerst den Load Balancer.
    | **Ressourcengruppe** |Wählen Sie die Ressourcengruppe aus, in der sich die SQL Server-Instanzen befinden. |
    | **Location** |Wählen Sie die Azure-Region aus, in der sich die SQL Server-Instanzen befinden. |
 
-6. Klicken Sie auf **Erstellen** . 
+6. Klicken Sie auf **Erstellen**. 
 
 Azure erstellt den Load Balancer. Der Load Balancer gehört zu einem bestimmten Netzwerk, Subnetz, einer bestimmten Ressourcengruppe und einem bestimmten Standort. Überprüfen Sie nach Abschluss des Vorgangs die Einstellungen für den Load Balancer in Azure. 
 
@@ -90,7 +91,7 @@ Im Kontext von Azure wird der Back-End-Adresspool als *Back-End-Pool* bezeichnet
 
 1. Wählen Sie in Ihrer Ressourcengruppe den zuvor erstellten Load Balancer aus. 
 
-2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools** .
+2. Wählen Sie unter **Einstellungen** die Option **Back-End-Pools**.
 
 3. Wählen Sie im Bereich **Back-End-Pools** die Option **Hinzufügen** aus, um einen Back-End-Adresspool zu erstellen. 
 
@@ -98,11 +99,11 @@ Im Kontext von Azure wird der Back-End-Adresspool als *Back-End-Pool* bezeichnet
 
 5. Wählen Sie unter **Virtuelle Computer** die Option **Virtuellen Computer hinzufügen** aus. 
 
-6. Wählen Sie unter **Virtuelle Computer auswählen** die Option **Verfügbarkeitsgruppe auswählen** , und geben Sie die Verfügbarkeitsgruppe an, der die virtuellen SQL Server-Computer angehören.
+6. Wählen Sie unter **Virtuelle Computer auswählen** die Option **Verfügbarkeitsgruppe auswählen**, und geben Sie die Verfügbarkeitsgruppe an, der die virtuellen SQL Server-Computer angehören.
 
 7. Nachdem Sie die Verfügbarkeitsgruppe ausgewählt haben, wählen Sie **Wählen Sie die virtuellen Computer aus** aus, wählen Sie die beiden virtuellen Computer aus, auf denen die SQL Server-Instanzen in der Verfügbarkeitsgruppe gehostet werden, und wählen Sie dann **Auswählen** aus. 
 
-8. Wählen Sie **OK** , um die Blätter zum **Auswählen der virtuellen Computer** bzw. zum **Hinzufügen des Back-End-Pools** zu schließen. 
+8. Wählen Sie **OK**, um die Blätter zum **Auswählen der virtuellen Computer** bzw. zum **Hinzufügen des Back-End-Pools** zu schließen. 
 
 Azure aktualisiert die Einstellungen für den Back-End-Adresspool. Die Verfügbarkeitsgruppe verfügt nun über einen Pool mit zwei SQL Server-Instanzen.
 
@@ -118,13 +119,13 @@ Mit dem Test wird definiert, wie Azure überprüft, welche SQL Server-Instanz ge
 
    | Einstellung | Wert |
    | --- | --- |
-   | **Name** |Namenstext für den Test. Beispiel: **SQLAlwaysOnEndPointProbe** . |
+   | **Name** |Namenstext für den Test. Beispiel: **SQLAlwaysOnEndPointProbe**. |
    | **Protokoll** |**TCP** |
-   | **Port** |Sie können jeden verfügbaren Port verwenden. Beispiel: *59999* . |
+   | **Port** |Sie können jeden verfügbaren Port verwenden. Beispiel: *59999*. |
    | **Intervall** |*5* |
    | **Fehlerhafter Schwellenwert** |*2* |
 
-4.  Klicken Sie auf **OK** . 
+4.  Klicken Sie auf **OK**. 
 
 > [!NOTE]
 > Vergewissern Sie sich, dass der angegebene Port in der Firewall beider SQL Server-Instanzen geöffnet ist. Beide Instanzen benötigen eine eingehende Regel für den verwendeten TCP-Port. Weitere Informationen finden Sie unter [Hinzufügen oder Bearbeiten einer Firewallregel](/previous-versions/orphan-topics/ws.11/cc753558(v=ws.11)). 
@@ -140,14 +141,14 @@ Mit den Lastenausgleichsregeln wird konfiguriert, wie der Load Balancer Datenver
 
 2. Wählen Sie auf dem Blatt **Lastenausgleichsregeln** die Option **Hinzufügen** aus.
 
-3. Konfigurieren Sie die Lastenausgleichsregel auf dem Blatt **Lastenausgleichsregeln hinzufügen** . Verwenden Sie folgende Einstellungen: 
+3. Konfigurieren Sie die Lastenausgleichsregel auf dem Blatt **Lastenausgleichsregeln hinzufügen**. Verwenden Sie folgende Einstellungen: 
 
    | Einstellung | Wert |
    | --- | --- |
-   | **Name** |Namenstext für die Lastenausgleichsregeln. Beispiel: **SQLAlwaysOnEndPointListener** . |
+   | **Name** |Namenstext für die Lastenausgleichsregeln. Beispiel: **SQLAlwaysOnEndPointListener**. |
    | **Protokoll** |**TCP** |
    | **Port** |*1433* |
-   | **Back-End-Port** |*1433* . Dieser Wert wird ignoriert, da diese Regel **Floating IP (Direct Server Return)** verwendet. |
+   | **Back-End-Port** |*1433*. Dieser Wert wird ignoriert, da diese Regel **Floating IP (Direct Server Return)** verwendet. |
    | **Test** |Verwenden Sie den Namen des Tests, den Sie für diesen Load Balancer erstellt haben. |
    | **Sitzungspersistenz** |**None** |
    | **Leerlaufzeitüberschreitung (Minuten)** |*4* |
@@ -157,7 +158,7 @@ Mit den Lastenausgleichsregeln wird konfiguriert, wie der Load Balancer Datenver
    > Möglicherweise müssen Sie auf dem Blatt nach unten scrollen, um alle Einstellungen anzuzeigen.
    > 
 
-4. Klicken Sie auf **OK** . 
+4. Klicken Sie auf **OK**. 
 
 5. Azure konfiguriert die Lastenausgleichsregel. Damit ist der Load Balancer dafür konfiguriert, Datenverkehr an die SQL Server-Instanz weiterzuleiten, die den Listener für die Verfügbarkeitsgruppe hostet. 
 
@@ -187,13 +188,13 @@ Wenn die Clusterressourcen und Abhängigkeiten ordnungsgemäß konfiguriert sind
 
 1. Starten Sie SQL Server Management Studio, und stellen Sie dann eine Verbindung mit dem primären Replikat her.
 
-2. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener** .  
+2. Navigieren Sie zu **Hochverfügbarkeit mit AlwaysOn** > **Verfügbarkeitsgruppen** > **Verfügbarkeitsgruppenlistener**.  
 
     Jetzt sollte der Listenername angezeigt werden, den Sie im Failovercluster-Manager erstellt haben. 
 
 3. Klicken Sie mit der rechten Maustaste auf den Listenernamen, und wählen Sie **Eigenschaften** aus.
 
-4. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für $EndpointPort (Standardwert: 1433). Wählen Sie anschließend **OK** .
+4. Geben Sie im Feld **Port** die Portnummer für den Verfügbarkeitsgruppenlistener an. Verwenden Sie dabei den zuvor verwendeten Wert für $EndpointPort (Standardwert: 1433). Wählen Sie anschließend **OK**.
 
 Sie verfügen nun über eine Verfügbarkeitsgruppe auf virtuellen Azure-Computern im Resource Manager-Modus. 
 
@@ -242,7 +243,7 @@ Um mit dem Azure-Portal eine IP-Adresse einem Lastenausgleichsmodul hinzufügen,
    |**Intervall** |Der Zeitraum zwischen Testversuchen. Verwenden Sie den Standardwert (5).
    |**Fehlerhafter Schwellenwert** |Die Anzahl der aufeinanderfolgenden Vorgänge, bei denen Schwellenwerte fehlschlagen sollten, bevor eine virtuelle Maschine als fehlerhaft eingestuft wird.
 
-8. Wählen Sie **OK** , um das Skript zu speichern. 
+8. Wählen Sie **OK**, um das Skript zu speichern. 
 
 9. Erstellen Sie eine Lastenausgleichsregel. Wählen Sie **Lastenausgleichsregeln** und dann **Hinzufügen** aus.
 
@@ -254,7 +255,7 @@ Um mit dem Azure-Portal eine IP-Adresse einem Lastenausgleichsmodul hinzufügen,
     |**Frontend IP address** (Front-End-IP-Adresse) |Wählen Sie die erstellte IP-Adresse aus. 
     |**Protokoll** |TCP
     |**Port** |Verwenden Sie den Port, den die SQL Server-Instanzen verwenden. Eine Standardinstanz verwendet Port 1433, wenn Sie dies dahingehend geändert haben. 
-    |**Back-End-Port** |Verwenden Sie denselben Wert wie **Port** .
+    |**Back-End-Port** |Verwenden Sie denselben Wert wie **Port**.
     |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
     |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
     |**Sitzungspersistenz** |Keine
@@ -303,7 +304,7 @@ Wenn eine Verfügbarkeitsgruppe an einer verteilten Verfügbarkeitsgruppe beteil
    |**Frontend IP address** (Front-End-IP-Adresse) |Verwenden Sie dieselbe Front-End-IP-Adresse wie die Verfügbarkeitsgruppe.
    |**Protokoll** |TCP
    |**Port** |5022 – der Port für den [Endpunktlistener der verteilten Verfügbarkeitsgruppe](/sql/database-engine/availability-groups/windows/configure-distributed-availability-groups).</br> Es kann sich um einen beliebigen verfügbaren Port handeln.  
-   |**Back-End-Port** | 5022 – verwenden Sie denselben Wert wie bei **Port** .
+   |**Back-End-Port** | 5022 – verwenden Sie denselben Wert wie bei **Port**.
    |**Back-End-Pool** |Der Pool, der die virtuellen Computer mit den SQL Server-Instanzen enthält. 
    |**Integritätstest** |Wählen Sie den Test aus, den Sie erstellt haben.
    |**Sitzungspersistenz** |Keine

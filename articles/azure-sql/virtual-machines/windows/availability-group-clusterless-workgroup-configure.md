@@ -8,17 +8,18 @@ editor: ''
 tags: azure-service-management
 ms.assetid: 53981f7e-8370-4979-b26a-93a5988d905f
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 01/29/2020
 ms.author: mathoma
-ms.openlocfilehash: 5714a2fd79d01f4cbc445c1ec1a726209ab6d427
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 0f194101720481f71434709c467d0e3130a0f1f9
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124933"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359454"
 ---
 # <a name="configure-a-workgroup-availability-group"></a>Konfigurieren einer Verfügbarkeitsgruppe für eine Arbeitsgruppe 
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -79,7 +80,7 @@ Gehen Sie folgendermaßen vor, um die Hostdatei zu bearbeiten:
 
 1. Melden Sie sich per RDP beim virtuellen Computer an. 
 1. Wechseln Sie im **Datei-Explorer** zu `c:\windows\system32\drivers\etc`. 
-1. Klicken Sie mit der rechten Maustaste auf die Datei **hosts** , und öffnen Sie die Datei mit **Windows-Editor** (oder einem anderen Text-Editor).
+1. Klicken Sie mit der rechten Maustaste auf die Datei **hosts**, und öffnen Sie die Datei mit **Windows-Editor** (oder einem anderen Text-Editor).
 1. Fügen Sie am Ende der Datei einen Eintrag für jeden Knoten, die Verfügbarkeitsgruppe und den Listener in der Form `IP Address, DNS Suffix #comment` wie folgt hinzu: 
 
    ```
@@ -115,7 +116,7 @@ Wichtige Unterschiede zwischen dem Tutorial und den Aktionen, die für einen Arb
 
 Weisen Sie nach dem Erstellen des Clusters eine statische Cluster-IP-Adresse zu. Gehen Sie dazu folgendermaßen vor:
 
-1. Öffnen Sie in einem der Knoten **Failovercluster-Manager** , wählen Sie den Cluster aus, und klicken Sie unter **Hauptressourcen des Clusters** mit der rechten Maustaste auf **Name: \<ClusterNam>** . Wählen Sie anschließend **Eigenschaften** aus. 
+1. Öffnen Sie in einem der Knoten **Failovercluster-Manager**, wählen Sie den Cluster aus, und klicken Sie unter **Hauptressourcen des Clusters** mit der rechten Maustaste auf **Name: \<ClusterNam>** . Wählen Sie anschließend **Eigenschaften** aus. 
 
    ![Öffnen von „Eigenschaften“ für den Clusternamen](./media/availability-group-clusterless-workgroup-configure/5-launch-cluster-name-properties.png)
 
@@ -142,8 +143,8 @@ In diesem Schritt erstellen Sie Zertifikate, die in einer SQL-Anmeldung beim ver
 
 Führen Sie zum Konfigurieren des ersten Knotens folgende Schritte durch: 
 
-1. Öffnen Sie **SQL Server Management Studio** , und stellen Sie eine Verbindung mit Ihrem ersten Knoten her, z. B. `AGNode1`. 
-1. Öffnen Sie ein **neues Abfragefenster** , und führen Sie die folgende T-SQL-Anweisung (Transact-SQL) aus, nachdem Sie das Kennwort komplexer und sicherer gestaltet haben:
+1. Öffnen Sie **SQL Server Management Studio**, und stellen Sie eine Verbindung mit Ihrem ersten Knoten her, z. B. `AGNode1`. 
+1. Öffnen Sie ein **neues Abfragefenster**, und führen Sie die folgende T-SQL-Anweisung (Transact-SQL) aus, nachdem Sie das Kennwort komplexer und sicherer gestaltet haben:
 
    ```sql
    USE master;  
@@ -179,7 +180,7 @@ Führen Sie zum Konfigurieren des ersten Knotens folgende Schritte durch:
    GO  
    ```
 
-1. Verwenden Sie den **Datei-Explorer** , um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
+1. Verwenden Sie den **Datei-Explorer**, um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
 1. Erstellen Sie manuell eine Kopie des Zertifikats (z. B. `AGNode1Cert.crt`) für den ersten Knoten, und übertragen Sie es an den gleichen Speicherort auf dem zweiten Knoten. 
 
 Führen Sie zum Konfigurieren des zweiten Knotens folgende Schritte durch: 
@@ -220,7 +221,7 @@ Führen Sie zum Konfigurieren des zweiten Knotens folgende Schritte durch:
    GO  
    ```
 
-1. Verwenden Sie den **Datei-Explorer** , um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
+1. Verwenden Sie den **Datei-Explorer**, um zu dem Dateispeicherort zu wechseln, an dem sich das Zertifikat befindet, z. B. `c:\certs`. 
 1. Erstellen Sie manuell eine Kopie des Zertifikats (z. B. `AGNode2Cert.crt`) für den zweiten Knoten, und übertragen Sie es an den gleichen Speicherort auf dem ersten Knoten. 
 
 Wenn weitere Knoten im Cluster vorhanden sind, wiederholen Sie diese Schritte auch dort, und ändern Sie dabei die jeweiligen Zertifikatnamen. 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 12/08/2020
 ms.author: blehr
 ms.custom: references_regions , devx-track-azurecli
-ms.openlocfilehash: 9ea29c47349fd7ccee469188f8929a864cf7bbef
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 6cabc340c0be347165a3e506703a6277f7eb1cea
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905790"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503932"
 ---
 # <a name="upgrade-public-ip-addresses"></a>Ausführen eines Upgrades für öffentliche IP-Adressen
 
@@ -32,9 +32,6 @@ Folgende Szenarien werden in diesem Artikel behandelt:
 * Migrieren eines klassischen reservierten IP in Azure zu einer öffentlichen IP-Adresse in Azure Resource Manager mit Basic-SKU
 
 ## <a name="upgrade-public-ip-address-from-basic-to-standard-sku"></a>Upgraden einer öffentlichen IP-Adresse von der Basic-SKU auf die Standard-SKU
-
->[!NOTE]
->Ein Upgrade öffentlicher IP-Adressen von Basic auf Standard ist nicht in allen Regionen möglich.  Weitere Informationen finden Sie unter [**Einschränkungen**](#limitations).
 
 Damit für eine öffentliche IP-Adresse ein Upgrade durchgeführt werden kann, darf sie keiner Ressource zugeordnet sein. (Weitere Informationen zum Aufheben der Zuordnung öffentlicher IP-Adressen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address).)
 
@@ -147,15 +144,6 @@ Es wird eine neue Ressourcengruppe in Azure Resource Manager mit dem Namen der m
 ---
 
 ## <a name="limitations"></a>Einschränkungen
-
-* Diese Funktionalität ist aktuell in den folgenden Regionen nicht verfügbar:<br>
-US Government, Virginia<br>
-US DoD, Osten<br>
-US DoD, Mitte<br>
-China, Osten<br>
-China, Osten 2<br>
-China, Norden<br>
-China, Norden 2
 
 * Damit ein Upgrade der öffentlichen IP-Adresse mit Basic-SKU durchgeführt werden kann, darf diese keiner Azure-Ressource zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von öffentlichen IP-Adressen finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/virtual-network-public-ip-address#view-modify-settings-for-or-delete-a-public-ip-address).  Ebenso darf eine reservierte IP, die migriert werden soll, keinem Clouddienst zugeordnet sein.  Weitere Informationen zum Aufheben der Zuordnung von reservierten IPs finden Sie auf [dieser Seite](https://docs.microsoft.com/azure/virtual-network/remove-public-ip-address-vm).  
 * Öffentliche IP-Adressen, für die ein Upgrade von der Basic-SKU auf die Standard-SKU durchgeführt wird, haben weiterhin keine [Verfügbarkeitszonen](https://docs.microsoft.com/azure/availability-zones/az-overview?toc=/azure/virtual-network/toc.json#availability-zones) und können daher keinen Azure-Ressourcen zugeordnet werden, die zonenredundant oder zonal sind.  Beachten Sie, dass dies nur für Regionen gilt, in denen Verfügbarkeitszonen angeboten werden.

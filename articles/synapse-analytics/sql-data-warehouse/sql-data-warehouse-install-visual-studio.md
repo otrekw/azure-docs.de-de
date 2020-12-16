@@ -12,12 +12,12 @@ ms.subservice: sql-dw
 ms.date: 05/11/2020
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: 3ab0188fa44eeb09e3981b8e1809832948963d47
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 456d7eb0cabd7ebede6415e3ce92d7403ecef7ef
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96511640"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368753"
 ---
 # <a name="getting-started-with-visual-studio-2019"></a>Erste Schritte mit Visual Studio 2019
 
@@ -45,7 +45,7 @@ Gelegentlich bieten für Synapse SQL veröffentliche Featurereleases keine Unter
   - [Übermitteln Sie ein Supportticket, oder geben Sie Feedback](https://feedback.azure.com/forums/307516-sql-data-warehouse/suggestions/39040048-ssdt-support-dynamic-data-masking), damit die Funktion unterstützt wird.
 - Tabellen mit einer [Identitätsspalte](https://docs.microsoft.com/sql/t-sql/statements/create-table-transact-sql-identity-property?view=sql-server-ver15)
 - Bestimmte T-SQL-Features wie:
-   - *WITHIN GROUP*-Klausel in der [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql?view=sqlallproducts-allversions)-Zeichenfolgenfunktion.
+   - *WITHIN GROUP*-Klausel in der [STRING_AGG](/sql/t-sql/functions/string-agg-transact-sql)-Zeichenfolgenfunktion.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

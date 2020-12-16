@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 07/23/2020
 ms.author: cynthn
 ms.subservice: disks
-ms.openlocfilehash: f915652110524aac06d641d636155bc6a5fcd256
-ms.sourcegitcommit: dd45ae4fc54f8267cda2ddf4a92ccd123464d411
+ms.openlocfilehash: 52071b964412071d820745b173e8835c6f9e7d0e
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92927922"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510990"
 ---
 # <a name="ephemeral-os-disks-for-azure-vms"></a>Kurzlebige Betriebssystemdatenträger für virtuelle Azure-Computer
 
@@ -86,7 +86,7 @@ az vm create \
 
 Für Skalierungsgruppen verwenden Sie denselben Parameter `--ephemeral-os-disk true` für [az-vmss-create](/cli/azure/vmss#az-vmss-create) und legen den Parameter `--os-disk-caching` auf `ReadOnly` fest.
 
-## <a name="portal"></a>Portal   
+## <a name="portal"></a>Portal
 
 Im Azure-Portal können Sie die Verwendung kurzlebiger Datenträger beim Bereitstellen einer VM auswählen. Dazu öffnen Sie auf der Registerkarte **Datenträger** den Abschnitt **Erweitert**. Wählen Sie für **Kurzlebigen Betriebssystemdatenträger verwenden** die Option **Ja** aus.
 
@@ -120,7 +120,7 @@ Der Prozess zum Erstellen einer Skalierungsgruppe, die einen kurzlebigen Betrieb
        "storageProfile": { 
         "osDisk": { 
           "diffDiskSettings": { 
-                "option": "Local" 
+            "option": "Local" 
           }, 
           "caching": "ReadOnly", 
           "createOption": "FromImage" 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/06/2020
 ms.author: Zhchia
-ms.openlocfilehash: 2ce5ac43af57b82f912b10eeacf285a688888e9d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 4851dfb4a96ab2ca19ba6ea67139772f9c091a69
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180879"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504575"
 ---
 # <a name="tutorial-configure-g-suite-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von G Suite für die automatische Benutzerbereitstellung
 
@@ -31,6 +31,9 @@ In diesem Tutorial werden die Schritte beschrieben, die Sie sowohl in G Suite a
 > * Unterstützung für zusätzliche G Suite-Benutzer- und -Gruppenattribute hinzugefügt.
 > * Die Namen der G Suite-Zielattribute wurden so aktualisiert, dass dem entsprechen, was [hier](https://developers.google.com/admin-sdk/directory)definiert ist.
 > * Aktualisierte Standardattributzuordnungen.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Whitelist*, den Microsoft nicht länger verwendet. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="capabilities-supported"></a>Unterstützte Funktionen
 > [!div class="checklist"]

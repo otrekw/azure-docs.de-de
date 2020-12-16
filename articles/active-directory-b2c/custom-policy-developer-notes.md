@@ -12,12 +12,12 @@ ms.date: 05/19/2020
 ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 04852e3081807930ced9fdacc75c956d9a15ff23
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 68e282f192b87b9f2217e0727753e7d37ff1aeb1
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94840728"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516093"
 ---
 # <a name="developer-notes-for-custom-policies-in-azure-active-directory-b2c"></a>Entwicklerhinweise zu benutzerdefinierten Richtlinien in Azure Active Directory B2C
 
@@ -116,7 +116,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | Abfragezeichenfolgenparameter `login_hint` |  |  | X | als Anspruch verfügbar, kann an IDP übergeben werden |
 | Einfügen von JSON in User Journey über `client_assertion` | X |  |  | wird eingestellt |
 | Einfügen von JSON in User Journey als `id_token_hint` |  | X |  | Go-Forward-Ansatz zum Übergeben von JSON |
-| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-custom.md) |  | X |  | z.B. von Facebook in eine App |
+| [Übergeben des Tokens eines Identitätsanbieters an die Anwendung](idp-pass-through-user-flow.md) |  | X |  | z.B. von Facebook in eine App |
 
 
 ### <a name="session-management"></a>Sitzungsverwaltung
@@ -127,7 +127,7 @@ Funktionen für benutzerdefinierte Richtlinien und das Identity Experience Frame
 | [Sitzungsanbieter mit externer Anmeldung](custom-policy-reference-sso.md#externalloginssosessionprovider) |  |  | X |  |
 | [SAML SSO-Sitzungsanbieter](custom-policy-reference-sso.md#samlssosessionprovider) |  |  | X |  |
 | [OAuthSSOSessionProvider](custom-policy-reference-sso.md#oauthssosessionprovider)  |  | X |  |  |
-| [Einmaliges Abmelden](session-overview.md#sign-out)  |  | X |  |  |
+| [Einmaliges Abmelden](session-behavior.md#sign-out)  |  | X |  |  |
 
 ### <a name="security"></a>Sicherheit
 

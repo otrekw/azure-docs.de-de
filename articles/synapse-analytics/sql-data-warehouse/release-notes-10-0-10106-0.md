@@ -12,12 +12,12 @@ ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
 tags: azure-synapse
-ms.openlocfilehash: baf2734c2f3c4de86b75a20239ecf7440c61a632
-ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
+ms.openlocfilehash: 0cad8fcdf58f4827f28b40550ae93e607e0c0858
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96534045"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369003"
 ---
 # <a name="dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics-release-notes"></a>Dedizierter SQL-Pool (früher SQL DW) in Azure Synapse Analytics – Versionshinweise
 
@@ -59,7 +59,7 @@ Vergewissern Sie sich für die Tooloptimierungen, dass die richtige Version inst
 | Verbesserungen beim Dienst | Details |
 | --- | --- |
 |**Workloadverwaltung – Portalbenutzeroberfläche**|Benutzer können ihre Workloadverwaltungseinstellungen über das Azure-Portal konfigurieren und verwalten. Außerdem können [Arbeitsauslastungsgruppen](/azure/synapse-analytics/sql-data-warehouse/quickstart-configure-workload-isolation-portal) und [Workloadklassifizierer](/azure/synapse-analytics/sql-data-warehouse/quickstart-create-a-workload-classifier-portal) mit Wichtigkeit konfiguriert werden.|
-|**Verbesserte Ansicht für den Tabellenzuordnungskatalog**|Die neue Katalogansicht [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql?view=sqlallproducts-allversions) ordnet **object_ids** von permanenten Benutzertabellen zu ihren physischen Tabellennamen zu.|
+|**Verbesserte Ansicht für den Tabellenzuordnungskatalog**|Die neue Katalogansicht [sys.pdw_permanent_table_mappings](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-pdw-permanent-table-mappings-transact-sql) ordnet **object_ids** von permanenten Benutzertabellen zu ihren physischen Tabellennamen zu.|
 
 ## <a name="july-2020"></a>Juli 2020
 

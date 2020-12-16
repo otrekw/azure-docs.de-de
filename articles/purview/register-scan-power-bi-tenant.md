@@ -7,19 +7,19 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/19/2020
-ms.openlocfilehash: ce23119e568347fff2ad270cfea7f8b563cae529
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 1f08bfd6b7c0439dd08a3091b5ea927781af9b84
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96904991"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387580"
 ---
 # <a name="register-and-scan-a-power-bi-tenant-preview"></a>Registrieren und Überprüfen eines Power BI-Mandanten (Vorschau)
 
 In diesem Artikel wird gezeigt, wie Sie das Azure Purview-Portal zum Registrieren und Überprüfen eines Power BI-Mandanten verwenden.
 
 > [!Note]
-> Wenn sich die Purview-Instanz und der Power BI-Mandant im selben Azure-Mandanten befinden, können Sie nur die Authentifizierung mit verwalteten Identitäten (MSI) verwenden, um eine Überprüfung eines Power BI-Mandanten einzurichten. Wenn sich die Purview-Instanz und der Power BI-Mandant in verschiedenen Azure-Mandanten befinden, müssen Sie sich mit delegierter Authentifizierung authentifizieren und PowerShell verwenden, um Ihre Überprüfungen einzurichten. Weitere Informationen finden Sie unter [Verwenden von PowerShell, um Power BI zu registrieren und zu überprüfen](powershell-register-scan-power-bi.md).
+> Wenn sich die Purview-Instanz und der Power BI-Mandant im selben Azure-Mandanten befinden, können Sie nur die Authentifizierung mit verwalteten Identitäten (MSI) verwenden, um eine Überprüfung eines Power BI-Mandanten einzurichten. 
 
 ## <a name="create-a-security-group-for-permissions"></a>Erstellen einer Sicherheitsgruppe für Berechtigungen
 

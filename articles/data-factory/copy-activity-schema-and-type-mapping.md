@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
-ms.openlocfilehash: 96667dcdd43eb801542a4be8fa4f21ff8d1317b7
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: 2b54ee29b1b03bab5af8410a3fae06438180299d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92637257"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507522"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Schema- und Datentypzuordnung in Kopieraktivität
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -66,7 +66,7 @@ Die folgenden Eigenschaften werden unter `translator` und unter `mappings` unter
 
 Beispielsweise zum Kopieren von Daten aus Salesforce in Azure SQL-Datenbank und zum expliziten Zuordnen von drei Spalten:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren** , um das Quell- und das Senkenschema zu importieren.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren.
 
 2. Ordnen Sie die erforderlichen Felder zu, und schließen Sie die restlichen Felder aus bzw. löschen Sie sie.
 
@@ -180,7 +180,7 @@ Wenn Sie es in eine Textdatei im folgenden Format mit Kopfzeile kopieren möchte
 
 Sie können eine Zuordnung dieser Art über die Data Factory-Benutzeroberfläche für die Erstellung definieren:
 
-1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren** , um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
+1. Klicken Sie in der Kopieraktivität auf der Registerkarte „Zuordnung“ auf die Schaltfläche **Schema importieren**, um das Quell- und das Senkenschema zu importieren. Da Data Factory beim Importieren eines Schemas die obersten Objekte abfragt, können Sie, falls ein Feld nicht angezeigt wird, das Feld der entsprechenden Ebene in der Hierarchie hinzufügen. Zeigen Sie hierzu auf einen vorhandenen Feldnamen, und geben Sie an, dass Sie einen Knoten, ein Objekt oder ein Array hinzufügen möchten.
 
 2. Wählen Sie das Array aus, in dem Sie Daten durchlaufen und aus dem Sie Daten extrahieren möchten. Das Feld wird automatisch als **Auflistungsverweis** ausgefüllt. Bei diesem Vorgang wird nur ein einzelnes Array unterstützt.
 
@@ -356,7 +356,7 @@ Die folgenden Eigenschaften werden in der Kopieraktivität für die Datentypkonv
 
 ### <a name="alternative-column-mapping-legacy-model"></a>Alternative Spaltenzuordnung (Legacy-Modell)
 
-Sie können die Kopieraktivität > `translator` -> `columnMappings` angeben, um tabellarische Daten zuzuordnen. In diesem Fall ist der Abschnitt „structure“ für Eingabe- und Ausgabedatasets erforderlich. Die Spaltenzuordnung unterstützt die **Zuordnung aller oder einer Teilmenge der Spalten in „structure“ des Quelldatasets zu allen Spalten in „structure“ des Senkendatasets** . Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
+Sie können die Kopieraktivität > `translator` -> `columnMappings` angeben, um tabellarische Daten zuzuordnen. In diesem Fall ist der Abschnitt „structure“ für Eingabe- und Ausgabedatasets erforderlich. Die Spaltenzuordnung unterstützt die **Zuordnung aller oder einer Teilmenge der Spalten in „structure“ des Quelldatasets zu allen Spalten in „structure“ des Senkendatasets**. Im Folgenden sind Fehlerbedingungen angegeben, die zu einer Ausnahme führen:
 
 - Das Ergebnis der Abfrage des Quelldatenspeichers enthält keinen Spaltennamen, der im Abschnitt „structure“ des Eingabedatasets angegeben wird.
 - Der Senkendatenspeicher (sofern mit vordefiniertem Schema) enthält keinen Spaltennamen, der im Abschnitt „structure“ des Ausgabedatasets angegeben wird.
@@ -411,7 +411,7 @@ In diesem Beispiel verfügt das Ausgabedataset über eine Struktur, und diese ve
 }
 ```
 
-Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Spalten der Quelle werden mithilfe der **translator** -> **columnMappings** -Eigenschaft den Spalten der Senke zugeordnet.
+Der folgende JSON-Code definiert eine Kopieraktivität in einer Pipeline. Die Spalten der Quelle werden mithilfe der **translator** -> **columnMappings**-Eigenschaft den Spalten der Senke zugeordnet.
 
 ```json
 {

@@ -7,13 +7,13 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/13/2020
 ms.author: sngun
-ms.custom: devx-track-dotnet, contperfq2
-ms.openlocfilehash: f2da2047469f342814ff349cfa059ed61e3adc25
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.custom: devx-track-dotnet, contperf-fy21q2
+ms.openlocfilehash: 47e20e89c8eaef59b9acd6cf7e31244afd4bcf60
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339681"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359046"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Leistungstipps für Azure Cosmos DB und .NET SDK v2
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -50,7 +50,7 @@ Für eine bessere Leistung wird die Windows-64-Bit-Hostverarbeitung empfohlen. D
 
 - Bei lokal bereitgestellten ASP.NET-Webanwendungen ändern Sie die Hostverarbeitung, indem Sie unter **Extras** > **Optionen** > **Projekte und Projektmappen** > **Webprojekte** die Option **64-Bit-Version von IIS Express für Websites und Projekte verwenden** aktivieren.
 
-- Für ASP.NET-Webanwendungen, die in Azure bereitgestellt werden, können Sie die Hostverarbeitung ändern, indem Sie im Azure-Portal unter **Anwendungseinstellungen** die **64-Bit** -Plattform auswählen.
+- Für ASP.NET-Webanwendungen, die in Azure bereitgestellt werden, können Sie die Hostverarbeitung ändern, indem Sie im Azure-Portal unter **Anwendungseinstellungen** die **64-Bit**-Plattform auswählen.
 
 > [!NOTE] 
 > Standardmäßig ist bei neuen Visual Studio-Projekten **Beliebige CPU** festgelegt. Es wird empfohlen, Ihr Projekt auf **x64** festzulegen, damit es nicht zu **x86** wechselt. Ein Projekt mit der Einstellung **Beliebige CPU** kann schnell zu **x86** wechseln, wenn eine Abhängigkeit hinzugefügt wird, die nur bei x86 verfügbar ist.<br/>
@@ -133,7 +133,7 @@ Azure Cosmos DB-Anforderungen erfolgen im Gatewaymodus über HTTPS/REST. Sie un
 
 **Optimieren von parallelen Abfragen für partitionierte Sammlungen**
 
-Ab Version 1.9.0 des SQL .NET SDK werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. Weitere Informationen finden Sie in den [Codebeispielen](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/Queries/Program.cs) für die Arbeit mit den SDKs. Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich zu seriellen Abfragen zu verbessern. Parallele Abfragen bieten zwei Parameter, die Sie an Ihre Anforderungen anpassen können: 
+Ab Version 1.9.0 des SQL .NET SDK werden parallele Abfragen unterstützt, mit denen Sie eine partitionierte Sammlung parallel abfragen können. Weitere Informationen finden Sie in den [Codebeispielen](https://github.com/Azure/azure-cosmos-dotnet-v2/blob/master/samples/code-samples/Queries/Program.cs) für die Arbeit mit den SDKs. Parallele Abfragen sind darauf ausgelegt, Latenz und Durchsatz im Vergleich zu seriellen Abfragen zu verbessern. Parallele Abfragen bieten zwei Parameter, die Sie an Ihre Anforderungen anpassen können: 
 - `MaxDegreeOfParallelism` steuert die maximale Anzahl von Partitionen, die parallel abgefragt werden können. 
 - `MaxBufferedItemCount` steuert die Anzahl der vorab abgerufenen Ergebnisse.
 

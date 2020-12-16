@@ -6,12 +6,12 @@ ms.author: abpai
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/19/2020
-ms.openlocfilehash: f591a9781cb81ec735d22f4f687f8d413923dc93
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 9d351bc945c08c82e96791059b00dc94eb94b918
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96349128"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368737"
 ---
 # <a name="azure-cosmos-db-service-quotas"></a>Kontingente im Azure Cosmos DB-Dienst
 
@@ -70,7 +70,7 @@ Um den Mindestdurchsatz zu schätzen, der für eine Datenbank mit gemeinsam genu
 * Höchstwert bereitgestellter RU/s für die Datenbank / 100
 * 400 + MAX(Containeranzahl - 25, 0) * 100 RU/s
 
-Beispiel: Angenommen, Sie verfügen über eine Datenbank, für die 400 RU/s, 15 GB Speicher und 10 Container bereitgestellt werden. Die minimale Anzahl von RU/s beträgt `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s. Wenn in der Datenbank 30 Container vorhanden sind, beträgt die minimale Anzahl von RU/s `400 + MAX(30 - 5, 0) * 100 RU/s` = 900 RU/s. 
+Beispiel: Angenommen, Sie verfügen über eine Datenbank, für die 400 RU/s, 15 GB Speicher und 10 Container bereitgestellt werden. Die minimale Anzahl von RU/s beträgt `MAX(400, 15 * 10 RU/s per GB, 400 / 100, 400 + 0 )` = 400 RU/s. Wenn in der Datenbank 30 Container vorhanden sind, beträgt die minimale Anzahl von RU/s `400 + MAX(30 - 25, 0) * 100 RU/s` = 900 RU/s. 
 
 **Hinweis:** Wenn Ihr Container oder Ihre Datenbank mehr als 1 TB an Daten enthält, ist Ihr Konto möglicherweise für das Programm [High Storage/Low Throughput](set-throughput.md#high-storage-low-throughput-program) (Hohe Speicherkapazität/geringer Durchsatz) qualifiziert.
 

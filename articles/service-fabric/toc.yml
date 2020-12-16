@@ -663,6 +663,8 @@
                   href: service-fabric-cluster-creation-via-portal.md
                 - name: Bereitstellen eines Azure Service Fabric-Clusters über Verfügbarkeitszonen hinweg
                   href: service-fabric-cross-availability-zones.md
+                - name: Bereitstellen eines Azure Service Fabric-Clusters mit zustandslosen Knotentypen
+                  href: service-fabric-stateless-node-types.md
                 - name: Einrichten der Azure Active Directory-Authentifizierung
                   href: service-fabric-cluster-creation-setup-aad.md
                 - name: Erstellen einer benutzerdefinierten Clustervorlage

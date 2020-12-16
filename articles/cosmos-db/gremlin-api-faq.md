@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-graph
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.author: sngun
-ms.openlocfilehash: 6840b2188f3d7e7524c4c98d7e1b6d32440e6812
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 0374886482b43eefe6df5e107fd4da371633099d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93339358"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359777"
 ---
 # <a name="frequently-asked-questions-about-the-gremlin-api-in-azure-cosmos-db"></a>Häufig gestellte Fragen zur Gremlin-API in Azure Cosmos DB
 [!INCLUDE[appliesto-gremlin-api](includes/appliesto-gremlin-api.md)]
@@ -109,7 +109,7 @@ Die Azure Cosmos DB-Gremlin-API nutzt die Open-Source-Treiber als Hauptconnector
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Wie kann ich mithilfe von Gremlin-Treibern vor Einschleusungsangriffen schützen?
 
-Die meisten nativen Gremlin-Treiber von Apache TinkerPop lassen die Bereitstellung eines Wörterbuchs von Parametern für die Abfrageausführung zu. Hier finden Sie Beispiele für die Bereitstellung in [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) und in [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Die meisten nativen Gremlin-Treiber von Apache TinkerPop lassen die Bereitstellung eines Wörterbuchs von Parametern für die Abfrageausführung zu. Hier finden Sie Beispiele für die Bereitstellung in [Gremlin.Net](https://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet) und in [Gremlin-Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/main/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Warum erhalte ich die Fehlermeldung „Gremlin Query Compilation Error: Unable to find any method“ (Fehler bei der Kompilierung von Gremlin-Abfragen: Methoden konnten nicht gefunden werden)?
 

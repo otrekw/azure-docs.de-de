@@ -8,12 +8,12 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 6c5ef4f0ee0d68e2eae755f000423db4620b834d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: a9bea0664f99a21ac734de666c802e9875ff00b5
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93341381"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359320"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Sichern von Azure Cosmos-Schlüsseln mit Azure Key Vault 
 [!INCLUDE[appliesto-all-apis](includes/appliesto-all-apis.md)]
@@ -38,7 +38,7 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 3. Geben Sie im Abschnitt **Schlüsseltresor erstellen** folgende Informationen ein:  
    * **Name:** Geben Sie einen eindeutigen Namen für Ihren Schlüsseltresor an.  
    * **Abonnement:** Wählen Sie das zu verwendende Abonnement aus.  
-   * Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen** , und geben Sie einen Ressourcengruppennamen ein.  
+   * Klicken Sie unter **Ressourcengruppe** auf **Neu erstellen**, und geben Sie einen Ressourcengruppennamen ein.  
    * Wählen Sie im Pulldownmenü „Standort“ einen Standort aus.  
    * Behalten Sie bei den anderen Optionen die Standardeinstellungen bei.  
 4. Klicken Sie nach der Angabe der obigen Informationen auf **Erstellen**.  
@@ -59,7 +59,7 @@ Die folgenden Schritte sind erforderlich, Azure Cosmos DB-Zugriffsschlüssel in 
 
 ## <a name="create-an-azure-web-application"></a>Erstellen einer Azure-Webanwendung
 
-1. Erstellen Sie eine Azure-Webanwendung, oder laden Sie die Anwendung aus dem [GitHub-Repository](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/Demo/keyvaultdemo) herunter. Es ist eine einfache MVC-Anwendung.  
+1. Erstellen Sie eine Azure-Webanwendung, oder laden Sie die Anwendung aus dem [GitHub-Repository](https://github.com/Azure/azure-cosmos-dotnet-v2/tree/master/Demo/keyvaultdemo) herunter. Es ist eine einfache MVC-Anwendung.  
 
 2. Entzippen Sie die heruntergeladene Anwendung, und öffnen Sie die Datei **HomeController.cs**. Aktualisieren Sie die Geheimnisse-ID in der folgenden Zeile:
 
@@ -80,9 +80,9 @@ Wenn Sie die Anwendung jetzt ausführen, sehen Sie den folgenden Fehler, da Sie 
 
 In diesem Abschnitt registrieren Sie die Anwendung im Azure Active Directory und gewähren der Anwendung die Berechtigung, den Key Vault auszulesen. 
 
-1. Navigieren Sie zum Azure-Portal, und öffnen Sie den **Key Vault** , den Sie im vorherigen Abschnitt erstellt haben.  
+1. Navigieren Sie zum Azure-Portal, und öffnen Sie den **Key Vault**, den Sie im vorherigen Abschnitt erstellt haben.  
 
-2. Öffnen Sie **Zugriffsrichtlinien** , wählen Sie **+Neue hinzufügen** , suchen Sie die von Ihnen bereitgestellte Webanwendung, wählen Sie die Berechtigungen aus, und wählen Sie **OK**.  
+2. Öffnen Sie **Zugriffsrichtlinien**, wählen Sie **+Neue hinzufügen**, suchen Sie die von Ihnen bereitgestellte Webanwendung, wählen Sie die Berechtigungen aus, und wählen Sie **OK**.  
 
    :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Zugriffsrichtlinie hinzufügen":::
 

@@ -11,18 +11,18 @@ ms.topic: reference
 ms.date: 12/01/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 30f110c3955315f560eef9972b1e3e4a956bdd8a
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 3f8ba563345f5aa4f35bcf07546abdad05c3b6ed
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96750525"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509783"
 ---
 # <a name="define-a-saml-identity-provider-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definieren eines technischen Profils für einen SAML-Identitätsanbieter in einer benutzerdefinierten Richtlinie in Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
-Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](identity-provider-adfs2016-custom.md) oder [Salesforce](identity-provider-salesforce-custom.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
+Azure Active Directory B2C (Azure AD B2C) bietet Unterstützung für den SAML 2.0-Identitätsanbieter. In diesem Artikel werden die Einzelheiten eines technischen Profils für die Interaktion mit einem Anspruchsanbieter thematisiert, der dieses standardisierte Protokoll unterstützt. Mit einem technischen SAML-Profil können Sie einen Verbund mit einem SAML-basierten Identitätsanbieter wie [AD FS](identity-provider-adfs2016-custom.md) oder [Salesforce](identity-provider-salesforce.md) erstellen. Über diesen Verbund können sich Ihre Benutzer mit ihren vorhandenen Identitäten aus sozialen Netzwerken oder Ihrem Unternehmen anmelden.
 
 ## <a name="metadata-exchange"></a>Metadatenaustausch
 
@@ -168,7 +168,7 @@ Das **OutputClaimsTransformations**-Element darf eine Sammlung von **OutputClaim
 | IncludeAuthnContextClassReferences | Nein | Gibt einen oder mehrere URI-Verweise an, die Kontextklassen für die Authentifizierung angeben. Damit sich ein Benutzer beispielsweise nur mit Benutzername und Kennwort anmelden kann, legen Sie den Wert auf `urn:oasis:names:tc:SAML:2.0:ac:classes:Password` fest. Wenn Sie die Anmeldung mit Benutzername und Kennwort über eine geschützte Sitzung (SSL/TLS) erlauben möchten, geben Sie `PasswordProtectedTransport` an. Suchen Sie in der Dokumentation Ihres Identitätsanbieters nach Anweisungen dazu, welche **AuthnContextClassRef**-URIs unterstützt werden. Geben Sie mehrere URIs als eine durch Kommas getrennte Liste an. |
 | IncludeKeyInfo | Nein | Gibt an, ob die SAML-Authentifizierungsanforderung den öffentlichen Schlüssel des Zertifikats enthält, wenn die Bindung auf `HTTP-POST` festgelegt ist. Mögliche Werte: `true` oder `false`. |
 | IncludeClaimResolvingInClaimsHandling  | Nein | Gibt bei Eingabe- und Ausgabeansprüchen an, ob die [Anspruchsauflösung](claim-resolver-overview.md) im technischen Profil enthalten ist. Mögliche Werte sind `true` oder `false` (Standardwert). Wenn Sie im technischen Profil eine Anspruchsauflösung verwenden möchten, legen Sie für diese Einstellung den Wert `true` fest. |
-|SingleLogoutEnabled| Nein| Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-overview.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`.|
+|SingleLogoutEnabled| Nein| Gibt an, ob das technische Profil bei der Anmeldung versucht, sich beim Verbundidentitätsanbieter abzumelden. Weitere Informationen finden Sie unter [Abmelden von der Azure AD B2C-Sitzung](session-behavior.md#sign-out).  Mögliche Werte: `true` (Standard) oder `false`.|
 
 ## <a name="cryptographic-keys"></a>Kryptografische Schlüssel
 
@@ -216,5 +216,5 @@ Beispiel:
 
 Beispiele für die Arbeit mit SAML-Identitätsanbietern in Azure AD B2C finden Sie in den folgenden Artikeln:
 
-- [Add ADFS as a SAML identity provider using custom policies (Hinzufügen von ADFS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien)](identity-provider-adfs2016-custom.md)
-- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](identity-provider-salesforce-custom.md)
+- [Add ADFS as a SAML identity provider using custom policies (Hinzufügen von ADFS als SAML-Identitätsanbieter mithilfe benutzerdefinierter Richtlinien)](identity-provider-adfs.md)
+- [Sign in by using Salesforce accounts via SAML (Anmelden mit Salesforce-Konten per SAML)](identity-provider-salesforce.md)
