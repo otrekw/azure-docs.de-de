@@ -3,12 +3,12 @@ title: 'Erste Schritte mit Live Video Analytics in IoT Edge: Azure'
 description: In dieser Schnellstartanleitung wird veranschaulicht, wie Sie in die Nutzung von Live Video Analytics in IoT Edge einsteigen. Es wird beschrieben, wie Sie in einem Livevideostream Bewegung erkennen.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: e67c717a4476ab9191471483d9aa8e8f222cd750
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: db48183e918fcb1096734f912f02c091ddac1d74
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498267"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511874"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Schnellstart: Erste Schritte: Live Video Analytics in IoT Edge
 
@@ -115,7 +115,7 @@ Gehen Sie wie folgt vor, um alle [Graphtopologien](media-graph-concept.md#media-
 
     ```
     {
-        "@apiVersion" : "1.0"
+        "@apiVersion" : "2.0"
     }
     ```
 
@@ -141,7 +141,7 @@ Mit den Schritten zum Aufrufen von `GraphTopologyList` können Sie `GraphTopolog
 
 ```
 {
-    "@apiVersion": "1.0",
+    "@apiVersion": "2.0",
     "name": "MotionDetection",
     "properties": {
         "description": "Analyzing live video to detect motion and emit events",
@@ -304,7 +304,7 @@ Rufen Sie `GraphTopologyGet` auf, indem Sie die folgende Nutzlast verwenden.
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
@@ -402,7 +402,7 @@ Rufen Sie die direkte Methode `GraphInstanceSet` auf, indem Sie die folgende Nut
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1",
     "properties" : {
         "topologyName" : "MotionDetection",
@@ -462,7 +462,7 @@ Aktivieren Sie nun die Graphinstanz, um den Fluss von Livevideos über das Modul
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -486,7 +486,7 @@ Rufen Sie nun die direkte Methode `GraphInstanceGet` auf, indem Sie die folgende
 
 ```
  {
-     "@apiVersion" : "1.0",
+     "@apiVersion" : "2.0",
      "name" : "Sample-Graph-1"
  }
  ```
@@ -619,7 +619,7 @@ Rufen Sie die direkte Methode `GraphInstanceDeactivate` auf, indem Sie die folge
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -645,7 +645,7 @@ Rufen Sie die direkte Methode `GraphInstanceDelete` auf, indem Sie die folgende 
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "Sample-Graph-1"
 }
 ```
@@ -669,7 +669,7 @@ Rufen Sie die direkte Methode `GraphTopologyDelete` auf, indem Sie die folgende 
 
 ```
 {
-    "@apiVersion" : "1.0",
+    "@apiVersion" : "2.0",
     "name" : "MotionDetection"
 }
 ```
