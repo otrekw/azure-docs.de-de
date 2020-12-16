@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 11/06/2020
-ms.openlocfilehash: 61ee0b769664d1f574177e27b5b1fb10e9845035
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a67a721b8d94112347282e1cd9be4d43f4ac85da
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96463104"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96744634"
 ---
 # <a name="configure-a-managed-application-plan"></a>Konfigurieren eines Plans für verwaltete Anwendungen
 
@@ -188,4 +188,4 @@ Die Aktionen, die in der Spalte **Aktion** der Registerkarte **Planübersicht** 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Testen und Veröffentlichen eines Azure-Anwendungsangebots](create-new-azure-apps-offer-test-publish.md)
-- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für die [Vermarktung Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.
+- Erfahren Sie, wie Sie die Programme „Co-Selling mit Microsoft“ und „Verkaufen über CSPs“ für das [Vermarkten Ihres Azure-Anwendungsangebots](create-new-azure-apps-offer-marketing.md) nutzen.

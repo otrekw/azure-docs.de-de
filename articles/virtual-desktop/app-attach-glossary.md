@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 6107ffea4fe4d615a42973ab1b231ca9f6b5241f
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 7132eae073f3d53a104536076ae801ec9ff93e5f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92674952"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518667"
 ---
 # <a name="msix-app-attach-glossary"></a>Glossar des MSIX-Features zum Anfügen von Apps
 
@@ -109,6 +109,18 @@ Das Aufheben des Stagings benachrichtigt das Betriebssystem, dass die Einbindung
 ## <a name="cim"></a>CIM
 
 .CIM ist eine neue Dateierweiterung, die mit dem CimFS (Composite Image Files System) verknüpft ist. Das Einbinden und Aufheben der Einbindung von CIM-Dateien erfolgt schneller als bei VHD-Dateien. CIM verbraucht außerdem weniger CPU und Arbeitsspeicher als VHD.
+
+Eine CIM-Datei ist eine Datei mit der Endung „.cim“, die Metadaten und mindestens sechs weitere Dateien mit den eigentlichen Daten enthält. Die Dateien in der CIM-Datei haben keine Dateiendungen. In der folgenden Tabelle finden Sie eine Liste mit Beispielen für Dateien, die Sie in einer CIM-Datei finden:
+
+| Dateiname | Erweiterung | Size |
+|-----------|-----------|------|
+| VSC | CIM | 1 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Nicht verfügbar | 27 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Nicht verfügbar | 20 KB |
+| objectid_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Nicht verfügbar | 42 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_0 | Nicht verfügbar | 428 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_1 | Nicht verfügbar | 217 KB |
+| region_b5742e0b-1b98-40b3-94a6-9cb96f497e56_2 | Nicht verfügbar | 264.132 KB |
 
 In der folgenden Tabelle finden Sie einen Leistungsvergleich zwischen VHD und CimFS. Diese Zahlen waren das Ergebnis eines Testlaufs mit fünfhundert 300-MB-Dateien in jedem der Formate, die auf einem DSv4-Computer ausgeführt wurden.
 

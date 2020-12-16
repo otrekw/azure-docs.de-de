@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 11/05/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js, devx-track-azurecli, contperfq2
-ms.openlocfilehash: ca8a36584c09d850ed1daab8cba301b244f76526
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a9bf03fd59e6088ce1c1b09a41b2bf55d1f45455
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447020"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532957"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Einrichten der Authentifizierung für Azure Machine Learning-Ressourcen und -Workflows
 
@@ -27,7 +27,7 @@ Erfahren Sie, wie Sie die Authentifizierung für Ihren Azure Machine Learning-Ar
 
 * __Dienstprinzipal__: Sie erstellen ein Dienstprinzipalkonto in Azure Active Directory und verwenden es, um sich zu authentifizieren oder ein Token zu erhalten. Ein Dienstprinzipal wird verwendet, wenn ein _automatisierter Prozess sich beim Dienst authentifizieren_ soll, ohne dass eine Benutzerinteraktion erforderlich ist. Ein Beispiel hierfür wäre ein Continuous-Integration- und Bereitstellungsskript, das ein Modell bei jeder Änderung des Trainingscodes trainiert und testet.
 
-* __Verwaltete Identität__: Wenn Sie das Azure Machine Learning SDK _auf einem virtuellen Azure-Computer_ verwenden, können Sie eine verwaltete Identität für Azure erstellen. Dieser Workflow ermöglicht es der VM, mithilfe der verwalteten Identität eine Verbindung mit dem Arbeitsbereich herzustellen, ohne Anmeldeinformationen im Python-Code zu speichern oder den Benutzer zur Authentifizierung aufzufordern. Azure Machine Learning-Computecluster können auch so konfiguriert werden, dass sie _beim Trainieren von Modellen_ mithilfe einer verwalteten Identität auf den Arbeitsbereich zugreifen.
+* __Verwaltete Identität__: Wenn Sie das Azure Machine Learning SDK _auf einem virtuellen Azure-Computer_ nutzen, können Sie eine verwaltete Identität für Azure verwenden. Dieser Workflow ermöglicht es der VM, mithilfe der verwalteten Identität eine Verbindung mit dem Arbeitsbereich herzustellen, ohne Anmeldeinformationen im Python-Code zu speichern oder den Benutzer zur Authentifizierung aufzufordern. Azure Machine Learning-Computecluster können auch so konfiguriert werden, dass sie _beim Trainieren von Modellen_ mithilfe einer verwalteten Identität auf den Arbeitsbereich zugreifen.
 
 > [!IMPORTANT]
 > Unabhängig vom verwendeten Authentifizierungsworkflow wird die rollenbasierte Zugriffssteuerung von Azure (Role-Based Access Control, RBAC) verwendet, um die zulässige Zugriffsebene (Autorisierung) für die Ressourcen zu beschränken. Beispielsweise könnte ein Administrator oder ein Automatisierungsprozess Zugriff haben, um eine Compute-Instanz zu erstellen, sie aber nicht verwenden, während eine wissenschaftliche Fachkraft für Daten sie verwenden, aber nicht löschen oder erstellen könnte. Weitere Informationen finden Sie unter [Verwalten des Zugriffs auf einen Azure Machine Learning-Arbeitsbereich](how-to-assign-roles.md).

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: d2b90db18a31fff4190be4f84625ad52fcaae578
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: cd3ca4d3ddf73469cd1f1fc065eccb369cf765af
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94657311"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905675"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Erste Schritte mit Azure Cost Management für Partner
 
@@ -262,7 +262,7 @@ Sie können auch nach der **PartnerEarnedCreditApplied**-Eigenschaft gruppieren 
 
 ## <a name="export-cost-data-to-azure-storage"></a>Exportieren von Kostendaten in Azure Storage
 
-Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können ihre Kosten- und Nutzungsdaten in ein Blob in Azure Storage exportieren. Das Blob muss sich in einem Abonnement im Mandant des Partners befinden, bei dem es sich nicht um ein gemeinsames Abonnement für einen Dienst oder das Abonnement eines Kunden handelt. Wenn Sie Kostendaten exportieren möchten, sollten Sie im Partnermandanten ein unabhängiges Abonnement mit nutzungsbasierter Bezahlung einrichten, um die exportierten Kostendaten zu hosten. Das Speicherkonto für die Exporte wird im Azure Storage-Blob erstellt, das im Abonnement mit nutzungsbasierter Bezahlung gehostet wird. Je nach Bereich, in dem der Partner den Export ausführt, werden die dazugehörigen Daten in regelmäßigen Abständen automatisch in das Speicherkonto exportiert.
+Partner mit Zugriff auf Abrechnungsbereiche in einem Partnermandanten können ihre Kosten- und Nutzungsdaten in ein Blob in Azure Storage exportieren. Das Blob muss sich in einem Abonnement im Mandanten des Partners befinden, bei dem es sich nicht um ein [gemeinsames Abonnement für einen Dienst](/partner-center/shared-services) oder das Abonnement eines Kunden handelt. Wenn Sie Kostendaten exportieren möchten, sollten Sie im Partnermandanten ein unabhängiges Abonnement mit nutzungsbasierter Bezahlung einrichten, um die exportierten Kostendaten zu hosten. Das Speicherkonto für die Exporte wird im Azure Storage-Blob erstellt, das im Abonnement mit nutzungsbasierter Bezahlung gehostet wird. Je nach Bereich, in dem der Partner den Export ausführt, werden die dazugehörigen Daten in regelmäßigen Abständen automatisch in das Speicherkonto exportiert.
 
 Benutzer mit Azure RBAC-Zugriff auf das Abonnement können die Kostendaten auch in ein Azure Storage-Blob exportieren, das in einem beliebigen Abonnement im Kundenmandanten gehostet wird.
 

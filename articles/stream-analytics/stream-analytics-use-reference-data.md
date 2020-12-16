@@ -6,13 +6,13 @@ ms.author: jeanb
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 5/11/2020
-ms.openlocfilehash: 3a08b73a74d30a99ba3c360f012d5917f1d0c8bf
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.date: 12/2/2020
+ms.openlocfilehash: 2cfd391daa13a100a56bb10b79b27eda80902374
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93129727"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533605"
 ---
 # <a name="using-reference-data-for-lookups-in-stream-analytics"></a>Verwenden von Referenzdaten für Suchvorgänge in Stream Analytics
 
@@ -111,13 +111,13 @@ Sie können eine [verwaltete Azure SQL-Instanz](../azure-sql/managed-instance/sq
 
 ## <a name="size-limitation"></a>Größenbeschränkung
 
-Es wird empfohlen, Verweisdatasets zu verwenden, die kleiner als 300 MB sind, um eine optimale Leistung zu erzielen. Die Verwendung von Verweisdatasets, die größer als 300 MB sind, wird in Aufträgen mit 6 oder mehr SUs unterstützt. Diese Funktion befindet sich in der Vorschauphase und darf nicht in der Produktion verwendet werden. Die Verwendung von sehr großen Verweisdatasets kann die Leistung Ihres Auftrags beeinflussen. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
+Es wird empfohlen, Verweisdatasets zu verwenden, die kleiner als 300 MB sind, um eine optimale Leistung zu erzielen. Verweisdatasets mit bis zu 5 GB werden in Aufträgen mit mindestens sechs SUs unterstützt. Die Verwendung von sehr großen Verweisdaten kann sich auf die End-to-End-Wartezeit Ihres Auftrags auswirken. Angesichts der zunehmenden Abfragekomplexität durch Einbeziehung der zustandsbehafteten Verarbeitung (beispielsweise in Form von Aggregaten im Fenstermodus, temporalen Joins oder temporalen Analysefunktionen) ist davon auszugehen, dass die unterstützte Maximalgröße für Verweisdaten abnimmt. Wenn Azure Stream Analytics die Verweisdaten nicht laden und keine komplexen Vorgänge ausführen kann, steht für den Auftrag nicht genügend Arbeitsspeicher zur Verfügung, und der Auftrag ist nicht erfolgreich. In solchen Fällen erreicht die Metrik „Nutzung der Speichereinheit in %“ den Wert „100 %“.    
 
 |**Anzahl von Streamingeinheiten**  |**Empfohlene Größe**  |
 |---------|---------|
 |1   |50 MB oder weniger   |
 |3   |150 MB oder weniger   |
-|6 und mehr   |300 MB oder weniger Die Verwendung von Verweisdatasets, die größer als 300 MB sind, wird in der Vorschauphase unterstützt und kann die Leistung Ihres Auftrags beeinflussen.    |
+|6 und mehr   |5 GB oder weniger    |
 
 Die Unterstützung der Komprimierung steht für Referenzdaten nicht zur Verfügung.
 

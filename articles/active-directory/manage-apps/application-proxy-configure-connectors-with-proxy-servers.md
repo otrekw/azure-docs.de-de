@@ -12,12 +12,12 @@ ms.date: 04/07/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.custom: contperfq2
-ms.openlocfilehash: 2d041782e8df795acb120ba1357cec5ef204dc28
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 9032e4c04279d87bf4422d3a87d19fdbecec1a64
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94656326"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571792"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Verwenden von vorhandenen lokalen Proxyservern
 
@@ -167,6 +167,9 @@ Sie sollten jetzt verfolgen können, dass der gesamte Datenverkehr über den Pro
 Die beste Möglichkeit zur Identifizierung und Behebung von Problemen mit der Connectorkonnektivität ist die Erstellung einer Netzwerkerfassung beim Starten des Connectordiensts. Im Folgenden finden Sie einige Tipps zum Erfassen und Filtern von Netzwerkablaufverfolgungen.
 
 Sie können ein Überwachungstool Ihrer Wahl verwenden. Für diesen Artikel haben wir Microsoft Message Analyzer genutzt.
+
+> [!NOTE]
+> [Microsoft Message Analyzer (MMA) wurde eingestellt](https://docs.microsoft.com/openspecs/blog/ms-winintbloglp/dd98b93c-0a75-4eb0-b92e-e760c502394f), und die zugehörigen Downloadpakete wurden am 25. November 2019 aus den Microsoft.com-Sites entfernt.  Zurzeit entwickelt Microsoft keinen Ersatz für Microsoft Message Analyzer.  Wenn Sie eine ähnliche Funktionalität benötigen, verwenden Sie ein Drittanbieter-Tool wie Wireshark für die Netzwerkprotokollanalyse.
 
 Die folgenden Beispiele beziehen sich speziell auf Message Analyzer. Die Prinzipien können aber auf alle Analysetools angewendet werden.
 

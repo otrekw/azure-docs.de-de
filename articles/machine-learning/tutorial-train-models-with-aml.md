@@ -1,7 +1,7 @@
 ---
 title: 'Tutorial zur Bildklassifizierung: Trainieren von Modellen'
 titleSuffix: Azure Machine Learning
-description: Verwenden Sie Azure Machine Learning, um ein Bildklassifizierungsmodell mit scikit-learn in einem Python Jupyter Notebook zu trainieren. Dieses Tutorial ist das erste einer zweiteiligen Reihe.
+description: Verwenden Sie Azure Machine Learning, um ein Bildklassifizierungsmodell mit scikit-learn in einer Python Jupyter Notebook-Instanz zu trainieren. Dieses Tutorial ist das erste einer zweiteiligen Reihe.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,17 +10,17 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 09/28/2020
 ms.custom: seodec18, devx-track-python
-ms.openlocfilehash: 003056ae9d3f236d37ddc10764812c15a3c6c695
-ms.sourcegitcommit: 96918333d87f4029d4d6af7ac44635c833abb3da
+ms.openlocfilehash: d1dbe51dd095290c296699bbb4bc6bd3a8caf7bf
+ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93321296"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96862427"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn"></a>Tutorial: Trainieren von Bildklassifizierungsmodellen mit MNIST-Daten und scikit-learn 
 
 
-In diesem Tutorial wird ein Modell für maschinelles Lernen auf Remotecomputeressourcen trainiert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning in einem Python Jupyter Notebook verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
+In diesem Tutorial wird ein Modell für maschinelles Lernen auf Remotecomputeressourcen trainiert. Hierbei wird der Trainings- und Bereitstellungsworkflow für Azure Machine Learning in einer Python Jupyter Notebook-Instanz verwendet.  Anschließend können Sie das Notebook als Vorlage verwenden, um Ihr eigenes Machine Learning-Modell mit Ihren eigenen Daten zu trainieren. Dieses Tutorial ist der **erste Teil einer zweiteiligen Reihe**.  
 
 In diesem Tutorial wird eine einfache logistische Regression anhand des [MNIST](http://yann.lecun.com/exdb/mnist/)-Datasets und [scikit-learn](https://scikit-learn.org) mit Azure Machine Learning trainiert. MNIST ist ein populäres Dataset, das aus 70.000 Graustufenbildern besteht. Jedes Bild ist eine handgeschriebene Ziffer von null bis neun im Format von 28 × 28 Pixeln. Das Ziel besteht darin, einen Multiklassen-Klassifizierer zu erstellen, um die in einem bestimmten Bild dargestellte Ziffer zu erkennen.
 
@@ -368,15 +368,15 @@ Insgesamt dauert die erste Ausführung **ungefähr 10 Minuten**. Solange sich di
 
 Was geschieht, während Sie warten:
 
-- **Erstellen von Images** : Ein Docker-Image wird erstellt, das der von der Azure ML-Umgebung angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch.
+- **Erstellen von Images**: Ein Docker-Image wird erstellt, das der von der Azure ML-Umgebung angegebenen Python-Umgebung entspricht. Das Image wird in den Arbeitsbereich hochgeladen. Das Erstellen und Hochladen des Images nimmt **etwa fünf Minuten** in Anspruch.
 
   Diese Phase erfolgt für jede Python-Umgebung einmal, weil der Container für nachfolgende Ausführungen zwischengespeichert wird. Während der Imageerstellung werden Protokolle in den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Imageerstellung überwachen.
 
-- **Skalierung** : Wenn der Remotecluster zum Ausführen mehr Knoten benötigt, als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
+- **Skalierung**: Wenn der Remotecluster zum Ausführen mehr Knoten benötigt, als derzeit verfügbar sind, werden weitere Knoten automatisch hinzugefügt. Die Skalierung dauert normalerweise **etwa fünf Minuten**.
 
 - **Wird ausgeführt:** In dieser Phase werden die erforderlichen Skripts und Dateien an das Computeziel gesendet. Anschließend werden Datenspeicher eingebunden oder kopiert. Dann wird das **entry_script** ausgeführt. Während der Auftrag ausgeführt wird, werden **stdout** und das Verzeichnis **./logs** an den Ausführungsverlauf gestreamt. Anhand dieser Protokolle können Sie den Fortschritt der Ausführung überwachen.
 
-- **Nachbearbeitung** : Das Verzeichnis **./outputs** der Ausführung wird über den Ausführungsverlauf in Ihrem Arbeitsbereich kopiert, sodass Sie auf diese Ergebnisse zugreifen können.
+- **Nachbearbeitung**: Das Verzeichnis **./outputs** der Ausführung wird über den Ausführungsverlauf in Ihrem Arbeitsbereich kopiert, sodass Sie auf diese Ergebnisse zugreifen können.
 
 Sie können den Verlauf eines Auftrags während seiner Ausführung auf mehrere Arten überprüfen. In diesem Tutorial werden ein Jupyter-Widget und eine `wait_for_completion`-Methode verwendet.
 

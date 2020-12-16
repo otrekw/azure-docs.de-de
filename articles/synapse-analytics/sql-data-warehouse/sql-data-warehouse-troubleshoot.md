@@ -11,12 +11,12 @@ ms.date: 11/13/2020
 ms.author: kevin
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
-ms.openlocfilehash: 6da80ec4c9c3c4e6c95eb1c9001596ffe3dd5711
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c69df88828a179cf1dce7bd35ac19c518b07903d
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96447856"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96530713"
 ---
 # <a name="troubleshooting-dedicated-sql-pool-formerly-sql-dw-in-azure-synapse-analytics"></a>Problembehandlung bei einem dedizierten SQL-Pool (früher SQL DW) in Azure Synapse Analytics
 
@@ -45,6 +45,7 @@ Dieser Artikel enthält allgemeine Informationen zur Problembehandlung bei einem
 | Problem                                                        | Lösung                                                   |
 | :----------------------------------------------------------- | :----------------------------------------------------------- |
 | Das Exportieren leerer Zeichenfolgen mithilfe von CETAS führt in Parquet- und ORC-Dateien zu NULL-Werten. Beachten Sie: Wenn Sie leere Zeichenfolgen aus Spalten mit NOT NULL-Einschränkungen exportieren, führt CETAS zu abgelehnten Datensätzen, und möglicherweise ist der Export nicht möglich. | Entfernen Sie leere Zeichenfolgen oder die problematische Spalte aus der SELECT-Anweisung Ihres CETAS-Befehls. |
+| Das Laden eines Werts außerhalb des Bereichs zwischen 0 und 127 in eine tinyint-Spalte für die Dateiformate Parquet und ORC wird nicht unterstützt. | Geben Sie einen größeren Datentyp für die Zielspalte an.           |
 
 ## <a name="performance"></a>Leistung
 

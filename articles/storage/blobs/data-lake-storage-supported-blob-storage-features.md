@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/12/2020
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: 900021e258bb96c0d0c83ef182262515449ad5df
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 58a907a2ae17966f50a037f49a807ac0a3ad6867
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95912585"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545826"
 ---
 # <a name="blob-storage-features-available-in-azure-data-lake-storage-gen2"></a>Verfügbare Blob Storage-Features in Azure Data Lake Storage Gen2
 
@@ -40,14 +40,15 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Lebenszyklusverwaltung (Tiering)|Allgemein verfügbar|Noch nicht unterstützt|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
 |Richtlinien für die Lebenszyklusverwaltung (Blob löschen)|Allgemein verfügbar|Allgemein verfügbar|[Verwalten des Azure Blob Storage-Lebenszyklus](storage-lifecycle-management-concepts.md)|
 |Protokollierung in Azure Monitor|Vorschau |Vorschau|[Überwachen von Azure Storage](./monitor-blob-storage.md)|
-|Momentaufnahmen|Vorschau|Vorschau|[Blobmomentaufnahmen](snapshots-overview.md)|
-|Statische Websites|Vorschau|Vorschau|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
-|Unveränderlicher Speicher|Vorschau|Vorschau|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
+|Momentaufnahmen|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Blobmomentaufnahmen](snapshots-overview.md)|
+|Statische Websites|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Hosten von statischen Websites in Azure Storage](storage-blob-static-website.md)|
+|Unveränderlicher Speicher|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|Vorschau<div role="complementary" aria-labelledby="preview-form"><sup>1</sup></div>|[Speichern unternehmenskritischer Blobdaten mit unveränderlichem Speicher](storage-blob-immutable-storage.md)|
 |Vorläufiges Löschen von Containern|Vorschau|Vorschau|[Vorläufiges Löschen für Container (Vorschau)](soft-delete-container-overview.md)|
-|Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](./soft-delete-blob-overview.md)|
+|Azure Storage-Inventar|Vorschau|Vorschau|[Verwalten von Blobdaten mit dem Azure Storage-Inventar (Vorschau)](blob-inventory.md)|
+|Vorläufiges Löschen von Blobs|Noch nicht unterstützt|Noch nicht unterstützt|[Vorläufiges Löschen für Blobs](storage-blob-soft-delete.md)|
 |blobfuse|Allgemein verfügbar|Allgemein verfügbar|[Einbinden von Blob Storage als Dateisystem mit blobfuse](storage-how-to-mount-container-linux.md)|
-|Failover des Kontos|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
-|Blobcontainer-ACL|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>1</sup></div>|Nicht unterstützt<div role="complementary" aria-labelledby="blob-container-ACL"><sup>2</sup></div>|Siehe entsprechende Anmerkung unter dieser Tabelle.|
+|Anonymer öffentlicher Zugriff |Allgemein verfügbar|Allgemein verfügbar| Siehe [Konfigurieren des anonymen, öffentlichen Lesezugriffs auf Container und Blobs](anonymous-read-access-configure.md).|
+|Failover für kundenseitig verwaltetes Konto|Noch nicht unterstützt|Noch nicht unterstützt|[Notfallwiederherstellung und Kontofailover](../common/storage-disaster-recovery-guidance.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)|
 |Vom Kunden bereitgestellte Schlüssel|Noch nicht unterstützt|Noch nicht unterstützt|[Angeben eines Verschlüsselungsschlüssels bei Richten einer Anforderung an Blob Storage](encryption-customer-provided-keys.md)|
 |Benutzerdefinierte Domänen|Noch nicht unterstützt|Noch nicht unterstützt|[Zuordnen einer benutzerdefinierten Domäne zu einem Azure Blob Storage-Endpunkt](storage-custom-domain-name.md)|
 |Verschlüsselungsbereiche|Noch nicht unterstützt|Noch nicht unterstützt|[Erstellen und Verwalten von Verschlüsselungsbereichen (Vorschauversion)](encryption-scope-manage.md)|
@@ -55,9 +56,7 @@ Die folgende Tabelle zeigt, wie jedes Blob Storage-Feature mit Data Lake Storage
 |Objektreplikation|Noch nicht unterstützt|Noch nicht unterstützt|[Konfigurieren der Objektreplikation für Blockblobs](object-replication-configure.md)|
 |Blobversionsverwaltung|Noch nicht unterstützt|Noch nicht unterstützt|[Aktivieren und Verwalten der Blobversionsverwaltung](versioning-enable.md)|
 
-<div id="blob-container-ACL"><sup>1</sup> Sie können ACLs für den Stammordner des Containers, jedoch nicht für den Container selbst festlegen.</div><br>
-
-<div id="preview-form"><sup>2</sup> Für die Verwendung von Momentaufnahmen, unveränderlichem Speicher oder statischen Websites mit Data Lake Storage Gen2 müssen Sie sich für die Vorschau registrieren. Füllen Sie dazu dieses <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>Formular</a> aus.  </div>
+<div id="preview-form"><sup>1</sup> Für die Verwendung von Momentaufnahmen, unveränderlichem Speicher oder statischen Websites mit Data Lake Storage Gen2 müssen Sie sich für die Vorschau registrieren. Füllen Sie dazu dieses <a href=https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR2EUNXd_ZNJCq_eDwZGaF5VUOUc3NTNQSUdOTjgzVUlVT1pDTzU4WlRKRy4u>Formular</a> aus.  </div>
 
 ## <a name="see-also"></a>Weitere Informationen
 

@@ -9,12 +9,12 @@ ms.author: marobert
 ms.date: 07/24/2020
 ms.topic: conceptual
 ms.service: azure-communication-services
-ms.openlocfilehash: 96e10bc19d59b60824a908c67816a21ca80326d0
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d6e02852dcd2d30a764417a4b5e0e012a1d2ab5
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94832805"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571095"
 ---
 # <a name="authenticate-to-azure-communication-services"></a>Authentifizieren bei Azure Communication Services
 
@@ -58,9 +58,9 @@ Wenn Sie keine Clientbibliothek verwenden, um HTTP-Anforderungen an die REST-API
     URLPathAndQuery + "\n"
     DateHeaderValue + ";" + HostHeaderValue + ";" + ContentHashHeaderValue
     ```
-1. Generieren Sie eine HMAC-256-Signatur der UTF-8-codierten Zeichenfolge, die Sie im vorherigen Schritt erstellt haben. Codieren Sie als Nächstes die Ergebnisse als Base64. Beachten Sie, dass Sie Ihren Speicherkontoschlüssel auch mit Base64 decodieren müssen. Verwenden Sie folgendes Format (das als Pseudocode gezeigt wird):
+1. Generieren Sie eine HMAC-256-Signatur der UTF-8-codierten Zeichenfolge, die Sie im vorherigen Schritt erstellt haben. Codieren Sie als Nächstes die Ergebnisse als Base64. Beachten Sie, dass Sie Ihren Zugriffsschlüssel auch mit Base64 decodieren müssen. Verwenden Sie folgendes Format (das als Pseudocode gezeigt wird):
     ```
-    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_azure_storage_account_shared_key>)))
+    Signature=Base64(HMAC-SHA256(UTF8(StringToSign), Base64.decode(<your_access_key>)))
     ```
 1. Geben Sie den Autorisierungsheader wie folgt an:
     ```

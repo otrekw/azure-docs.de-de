@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 9db4328ce6519bef05017ba697d8f0f029f2096a
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 26615b82bb9dcbc1247bec9b7a06b579dfa1eb2b
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94967413"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571639"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Verwenden benutzerdefinierter Zuweisungsrichtlinien
 
@@ -44,11 +44,11 @@ In diesem Artikel führen Sie die folgenden Schritte aus:
 
 Die folgenden Voraussetzungen gelten für eine Windows-Entwicklungsumgebung. Informationen zu Linux oder macOS finden Sie in der SDK-Dokumentation im entsprechenden Abschnitt unter [Vorbereiten Ihrer Entwicklungsumgebung](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/devbox_setup.md).
 
-* [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
+- [Visual Studio](https://visualstudio.microsoft.com/vs/) 2019 mit der aktivierten Workload [„Desktopentwicklung mit C++“](/cpp/ide/using-the-visual-studio-ide-for-cpp-desktop-development). Visual Studio 2015 und Visual Studio 2017 werden ebenfalls unterstützt.
 
-* Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
+- Die neueste Version von [Git](https://git-scm.com/download/) ist installiert.
 
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
+[!INCLUDE [azure-cli-prepare-your-environment-no-header.md](../../includes/azure-cli-prepare-your-environment-no-header.md)]
 
 ## <a name="create-the-provisioning-service-and-two-divisional-iot-hubs"></a>Erstellen des Bereitstellungsdiensts und zweier Abteilungs-IoT-Hubs
 

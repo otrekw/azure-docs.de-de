@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 199da0586a061bccdf8a6ff8a1f53df2f703512f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 25db7104e565a987f3be9e2d6f3b239cf1884ae4
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959440"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932335"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Tutorial: Erstellen und Bereitstellen von benutzerdefinierten IoT Edge-Modulen
 
@@ -51,6 +51,15 @@ Das folgende Diagramm zeigt die Module, Eingaben, Ausgaben und die IoT Edge Hu
 ![IoT Edge-Architekturdiagramm mit drei Modulen](media/tutorial-machine-learning-edge-06-custom-modules/modules-diagram.png)
 
 Die Schritte in diesem Artikel werden normalerweise von einem Cloudentwickler ausgeführt.
+
+In diesem Abschnitt des Tutorials lernen Sie Folgendes:
+
+> [!div class="checklist"]
+>
+> * Erstellen eines IoT Edge-Modulangebots auf der Grundlage von benutzerdefiniertem Code
+> * Generieren eines Docker-Images über das benutzerdefinierte Modul
+> * Neukonfigurieren des IoT Hub-Routings zur Unterstützung der benutzerdefinierten Module
+> * Erstellen, Veröffentlichen und Bereitstellen der benutzerdefinierten Module
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -804,6 +813,10 @@ Durch die Anmeldung bei dem IoT Edge-Gerät (in unserem Fall: der virtuelle Lin
    ```bash
    sudo docker exec -it avroFileWriter bash
    ```
+
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Dieses Tutorial ist Teil einer Reihe, in der jeder Artikel auf den Schritten aufbaut, die jeweils im vorherigen Artikel ausgeführt wurden. Warten Sie mit dem Bereinigen von Ressourcen, bis Sie das letzte Tutorial abgeschlossen haben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

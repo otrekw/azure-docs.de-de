@@ -6,16 +6,16 @@ ms.author: cherylmc
 ms.service: vpn-gateway
 ms.topic: tutorial
 ms.date: 12/01/2020
-ms.openlocfilehash: e2df34b7897ee2543d967d147317859ab26971e9
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 933b71d75eacdca015a38524870f25a345e76d22
+ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96510477"
+ms.lasthandoff: 12/06/2020
+ms.locfileid: "96746164"
 ---
 # <a name="tutorial-create-and-manage-a-vpn-gateway-using-azure-portal"></a>Tutorial: Erstellen und Verwalten eines VPN-Gateways über das Azure-Portal
 
-Azure VPN-Gateways ermöglichen standortübergreifende Konnektivität zwischen lokalen Kundenumgebungen und Azure. In diesem Tutorial werden grundlegende Aufgaben der Azure VPN-Gatewaybereitstellung beschrieben, z.B. Erstellen und Verwalten eines VPN-Gateways.
+Azure VPN-Gateways ermöglichen standortübergreifende Konnektivität zwischen lokalen Kundenumgebungen und Azure. In diesem Tutorial werden grundlegende Aufgaben der Azure VPN-Gatewaybereitstellung beschrieben, z.B. Erstellen und Verwalten eines VPN-Gateways. Sie können ein Gateway auch mit der [Azure CLI](create-routebased-vpn-gateway-cli.md) oder mit [Azure PowerShell](create-routebased-vpn-gateway-powershell.md) erstellen.
 
 In diesem Tutorial lernen Sie Folgendes:
 

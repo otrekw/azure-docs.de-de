@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: c77001707eda7c208ad19a014a1f0cff2b85b25d
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.openlocfilehash: b23b5a81fdff8a05742092f517128e08723103fc
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95736475"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531138"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Was ist die SQL-Datensynchronisierung für Azure?
 
@@ -63,10 +63,8 @@ Die Datensynchronisierung ist für folgende Szenarios nicht die beste Lösung:
 | Notfallwiederherstellung | [Georedundante Sicherungen in Azure](automated-backups-overview.md) |
 | Leseskalierung | [Verwenden von schreibgeschützten Replikaten für den Lastenausgleich schreibgeschützter Abfrageworkloads (Vorschau)](read-scale-out.md) |
 | ETL (OLTP zu OLAP) | [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) oder [SQL Server Integration Services](/sql/integration-services/sql-server-integration-services) |
-| Migration von SQL Server zu Azure SQL-Datenbank | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
+| Migration von SQL Server zu Azure SQL-Datenbank. Mit der SQL-Datensynchronisierung kann jedoch nach Abschluss der Migration sichergestellt werden, dass Quelle und Ziel synchron bleiben.  | [Azure Database Migration Service](https://azure.microsoft.com/services/database-migration/) |
 |||
-
-
 
 ## <a name="how-it-works"></a>Funktionsweise
 

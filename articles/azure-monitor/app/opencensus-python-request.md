@@ -6,18 +6,21 @@ author: lzchen
 ms.author: lechen
 ms.date: 10/15/2019
 ms.custom: devx-track-python
-ms.openlocfilehash: 6cf0998eb4d769f2d1a7891892a5a462cd907e32
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 4b88550ad489607bb66eb737067190d45a466a43
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422500"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607074"
 ---
 # <a name="track-incoming-requests-with-opencensus-python"></a>Nachverfolgen eingehender Anforderungen mit OpenCensus Python
 
 Eingehende Anforderungsdaten werden mithilfe von OpenCensus Python und dessen verschiedenen Integrationen erfasst. Verfolgen Sie eingehende Anforderungsdaten, die an Ihre auf den gängigen Webframeworks `django`, `flask` und `pyramid` basierenden Webanwendungen gesendet werden. Die Daten werden dann als `requests`-Telemetriedaten an Application Insights unter Azure Monitor gesendet.
 
 Instrumentieren Sie zunächst Ihre Python-Anwendung mit dem aktuellen [OpenCensus Python SDK](./opencensus-python.md).
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 ## <a name="tracking-django-applications"></a>Verfolgen von Django-Anwendungen
 

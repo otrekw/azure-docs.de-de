@@ -8,12 +8,12 @@ ms.topic: tutorial
 author: KishorIoT
 ms.author: nandab
 ms.date: 10/06/2020
-ms.openlocfilehash: af967c58cdeb2c750178141193a711a66af7477c
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: fbe1e84525eed47127a08abc9fb7ec5d1144d02f
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426722"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763609"
 ---
 # <a name="tutorial-create-a-video-analytics---object-and-motion-detection-application-in-azure-iot-central-openvinotrade"></a>Tutorial: Erstellen einer Anwendung vom Typ „Videoanalyse: Objekt- und Bewegungserkennung“ in Azure IoT Central (OpenVINO&trade;)
 
@@ -24,10 +24,10 @@ Informieren Sie sich als Lösungsentwickler darüber, wie Sie mit der IoT Centr
 
 [!INCLUDE [iot-central-video-analytics-part1](../../../includes/iot-central-video-analytics-part1.md)]
 
-- [scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt)
+- [Scratchpad.txt](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/Scratchpad.txt): Diese Datei hilft Ihnen dabei, die verschiedenen Konfigurationsoptionen zu erfassen, die Sie im Rahmen dieser Tutorials benötigen.
 - [deployment.openvino.amd64.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/deployment.openvino.amd64.json)
 - [LvaEdgeGatewayDcm.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/LvaEdgeGatewayDcm.json)
-- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json)
+- [state.json](https://raw.githubusercontent.com/Azure/live-video-analytics/master/ref-apps/lva-edge-iot-central-gateway/setup/state.json): Diese Datei muss nur heruntergeladen werden, wenn Sie das Intel NUC-Gerät im zweiten Tutorial verwenden möchten.
 
 [!INCLUDE [iot-central-video-analytics-part2](../../../includes/iot-central-video-analytics-part2.md)]
 
@@ -39,7 +39,7 @@ Bereiten Sie das Bereitstellungsmanifest wie folgt vor:
 
 1. Öffnen Sie die Datei *deployment.openvino.amd64.json*, die Sie im Ordner *lva-configuration* gespeichert haben, in einem Text-Editor.
 
-1. Suchen Sie nach den Einstellungen für `LvaEdgeGatewayModule`, und ändern Sie den Bildnamen wie im folgenden Codeausschnitt:
+1. Suchen Sie nach den Einstellungen vom Typ `LvaEdgeGatewayModule`, und vergewissern Sie sich, dass der Imagename wie im folgenden Codeausschnitt lautet:
 
     ```json
     "LvaEdgeGatewayModule": {
@@ -47,7 +47,7 @@ Bereiten Sie das Bereitstellungsmanifest wie folgt vor:
             "image": "mcr.microsoft.com/lva-utilities/lva-edge-iotc-gateway:1.0-amd64",
     ```
 
-1. Fügen Sie den Namen Ihres Media Services-Kontos im Abschnitt `LvaEdgeGatewayModule` dem Knoten `env` hinzu. Sie haben sich diesen Kontonamen in der Datei *scratchpad.txt* notiert:
+1. Fügen Sie den Namen Ihres Media Services-Kontos im Abschnitt `LvaEdgeGatewayModule` dem Knoten `env` hinzu. Den Namen Ihres Media Services-Kontos haben Sie sich in der Datei *scratchpad.txt* notiert:
 
     ```json
     "env": {
@@ -55,7 +55,7 @@ Bereiten Sie das Bereitstellungsmanifest wie folgt vor:
             "value": "lvaEdge"
         },
         "amsAccountName": {
-            "value": "<YOUR_AZURE_MEDIA_ACCOUNT_NAME>"
+            "value": "<YOUR_AZURE_MEDIA_SERVICES_ACCOUNT_NAME>"
         }
     }
     ```
@@ -64,7 +64,16 @@ Bereiten Sie das Bereitstellungsmanifest wie folgt vor:
 
     `azureMediaServicesArmId` ist die **Ressourcen-ID**, die Sie sich beim Erstellen des Media Services-Kontos in der Datei *scratchpad.txt* notiert haben.
 
-    Sie haben sich die Angaben für `aadTenantId`, `aadServicePrincipalAppId` und `aadServicePrincipalSecret` in der Datei *scratchpad.txt* notiert, als Sie den Dienstprinzipal für Ihr Media Services-Konto erstellt haben:
+    Die folgende Tabelle enthält die Werte der **Verbindungsherstellung mit der Media Services-API (JSON)** in der Datei *scratchpad.txt*, die im Bereitstellungsmanifest verwendet werden sollten:
+
+    | Bereitstellungsmanifest       | Scratchpad  |
+    | ------------------------- | ----------- |
+    | aadTenantId               | AadTenantId |
+    | aadServicePrincipalAppId  | AadClientId |
+    | aadServicePrincipalSecret | AadSecret   |
+
+    > [!CAUTION]
+    > Stellen Sie mithilfe der obigen Tabelle sicher, dass Sie die richtigen Werte im Bereitstellungsmanifest hinzufügen. Andernfalls funktioniert das Gerät nicht.
 
     ```json
     {

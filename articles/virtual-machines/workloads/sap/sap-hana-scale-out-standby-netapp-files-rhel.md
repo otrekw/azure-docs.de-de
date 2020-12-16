@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 06/15/2020
 ms.author: radeltch
-ms.openlocfilehash: f4693af9c29a36aad60b7b525fec024509a4d586
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: d2cc8487f9864a27c1a2b02ef6e846bc43727e27
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958744"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608536"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-red-hat-enterprise-linux"></a>Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf Red Hat Enterprise Linux 
 
@@ -59,6 +59,10 @@ ms.locfileid: "94958744"
 Dieser Artikel beschreibt die Bereitstellung eines hochverfügbaren SAP HANA-Systems in einer Konfiguration mit horizontaler Skalierung mit Standby auf virtuellen Azure Red Hat Enterprise Linux-Computern (VMs) mithilfe von [Azure NetApp Files](../../../azure-netapp-files/azure-netapp-files-introduction.md) für die freigegebenen Speichervolumes.  
 
 In den Beispielkonfigurationen, Installationsbefehlen usw. werden die HANA-Instanz **03** und HANA-System-ID **HN1** verwendet. Die Beispiele basieren auf HANA 2.0 SP4 und Red Hat Enterprise Linux für SAP 7.6. 
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
+
 
 Bevor Sie beginnen, lesen Sie die folgenden SAP-Hinweise und Dokumente:
 

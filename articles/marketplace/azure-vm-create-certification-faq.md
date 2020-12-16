@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 10/19/2020
-ms.openlocfilehash: eb290b8c154c40388bfb3e7f9cbac7b645aa9609
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: bc1ae4bc2cf64c3e2f996709c086eb23cb8b8385
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452680"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602596"
 ---
 # <a name="troubleshoot-virtual-machine-certification"></a>Problembehandlung bei der Zertifizierung von virtuellen Computern
 
@@ -203,7 +203,7 @@ In den folgenden Regeln finden Sie Einschränkungen hinsichtlich der Betriebssys
 
 |OS|Empfohlene VHD-Größe|
 |---|---|
-|Linux|30 GB bis 1023 GB|
+|Linux|1 GB bis 1.023 GB|
 |Windows|30 GB bis 250 GB|
 
 Da VMs den Zugriff auf das zugrunde liegende Betriebssystem zulassen, sollten Sie sich vergewissern, dass die Größe der VHD ausreicht. Datenträger können erweitert werden, ohne dass es zu Ausfallzeiten kommt. Verwenden Sie eine Datenträgergröße zwischen 30 und 50 GB.

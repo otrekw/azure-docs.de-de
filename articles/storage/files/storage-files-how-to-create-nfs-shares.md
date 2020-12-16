@@ -4,16 +4,16 @@ description: In diesem Artikel erfahren Sie, wie Sie eine Azure-Dateifreigabe er
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 09/15/2020
+ms.date: 12/04/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions, devx-track-azurecli
-ms.openlocfilehash: 7680e251d8411ce154e1f7dfb8af1d66514dd579
-ms.sourcegitcommit: 9826fb9575dcc1d49f16dd8c7794c7b471bd3109
+ms.openlocfilehash: 3cf22ee22c35b850aff33290a59a7043bb57c984
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/14/2020
-ms.locfileid: "94629460"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620942"
 ---
 # <a name="how-to-create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 
@@ -64,7 +64,7 @@ az feature register --name AllowNfsFileShares \
 az provider register --namespace Microsoft.Storage
 ```
 
-## <a name="verify-that-the-feature-is-registered"></a>Überprüfen, ob das Feature registriert ist
+## <a name="verify-feature-registration"></a>Überprüfen der Featureregistrierung
 
 Die Registrierungsgenehmigung kann bis zu einer Stunde dauern. Verwenden Sie die folgenden Befehle, um zu überprüfen, ob die Registrierung abgeschlossen wurde:
 
@@ -80,6 +80,34 @@ Get-AzProviderFeature -ProviderNamespace Microsoft.Storage -FeatureName AllowNfs
 az feature show --name AllowNfsFileShares --namespace Microsoft.Storage --subscription <yourSubscriptionIDHere>
 ```
 
+## <a name="verify-storage-account-kind"></a>Überprüfen des Speicherkontotyps
+
+Derzeit können nur File Storage-Konten NFS-Freigaben erstellen. 
+
+# <a name="portal"></a>[Portal](#tab/azure-portal)
+
+Um den Typ Ihres Speicherkontos zu überprüfen, navigieren Sie im Azure-Portal zu ihm. Wählen Sie dann für Ihr Speicherkonto die Option **Eigenschaften** aus. Überprüfen Sie auf dem Blatt „Eigenschaften“ den Wert unter **Kontoart**. Der Wert sollte **FileStorage** lauten.
+
+# <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
+Mit dem folgenden Befehl können Sie überprüfen, ob Sie über ein File Storage-Konto verfügen:
+
+```azurepowershell
+$accountKind=Get-AzStorageAccount -ResourceGroupName "yourResourceGroup" -Name "yourStorageAccountName"
+$accountKind.Kind
+```
+
+Die Ausgabe sollte **FileStorage** lauten. Andernfalls weist Ihr Speicherkonto den falschen Typ auf. Informationen zum Erstellen eines **File Storage**-Kontos finden Sie unter [Erstellen einer Azure-Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
+
+# <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
+Mit dem folgenden Befehl können Sie überprüfen, ob Sie über ein File Storage-Konto verfügen:
+
+```azurecli
+az storage account show -g yourResourceGroup -n yourStorageAccountName
+```
+
+Die Ausgabe sollte **"kind": "File Storage"** enthalten. Wenn dies nicht der Fall ist, weist Ihr Speicherkonto den falschen Typ auf. Informationen zum Erstellen eines **File Storage**-Kontos finden Sie unter [Erstellen einer Azure-Premium-Dateifreigabe](storage-how-to-create-premium-fileshare.md).
+
+---
 ## <a name="create-an-nfs-share"></a>Erstellen einer NFS-Freigabe
 
 # <a name="portal"></a>[Portal](#tab/azure-portal)

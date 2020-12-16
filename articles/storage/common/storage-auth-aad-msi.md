@@ -6,17 +6,17 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/04/2019
+ms.date: 12/07/2020
 ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 8e9013db93f5cd67448b5af8c415db0862e5d332
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: ccc545b15f16879582c671b082cab40f6b11aa08
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842718"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96778970"
 ---
 # <a name="authorize-access-to-blob-and-queue-data-with-managed-identities-for-azure-resources"></a>Autorisieren des Zugriffs auf Blob- und Warteschlangendaten mit verwalteten Identitäten für Azure-Ressourcen
 
@@ -50,6 +50,11 @@ Weitere Informationen zur Azure Identity-Clientbibliothek für .NET finden Sie u
 
 Wenn ein Azure AD-Sicherheitsprinzipal versucht, auf Blob- oder Warteschlangendaten zuzugreifen, muss dieser Sicherheitsprinzipal über Berechtigungen für die Ressource verfügen. Dem Sicherheitsprinzipal muss eine Azure-Rolle zugewiesen werden, die den Zugriff auf Blob- oder Warteschlangendaten in Azure Storage ermöglicht. Dabei spielt es keine Rolle, ob es sich beim Sicherheitsprinzipal um eine verwaltete Identität in Azure oder um ein Azure AD-Benutzerkonto handelt, mit der bzw. dem Code in der Entwicklungsumgebung ausgeführt wird. Informationen zur Zuweisung von Berechtigungen per Azure RBAC finden Sie unter **Autorisieren des Zugriffs auf Azure-Blobs und -Warteschlangen mit Azure Active Directory** im Abschnitt [Zuweisen von Azure-Rollen für Zugriffsrechte](../common/storage-auth-aad.md#assign-azure-roles-for-access-rights).
 
+> [!NOTE]
+> Wenn Sie ein Azure Storage-Konto erstellen, erhalten Sie nicht automatisch Berechtigungen für den Zugriff auf Daten über Azure AD. Sie müssen sich selbst explizit eine Azure-Rolle für Azure Storage zuweisen. Sie können sie auf Ebene Ihres Abonnements, einer Ressourcengruppe, eines Speicherkontos oder eines Containers oder einer Warteschlange zuordnen.
+>
+> Bevor Sie sich eine Rolle für den Datenzugriff zuweisen, können Sie bereits über das Azure-Portal auf Daten in Ihrem Speicherkonto zugreifen, da das Azure-Portal auch den Kontoschlüssel für den Datenzugriff nutzen kann. Weitere Informationen finden Sie unter [Auswählen der Autorisierung des Zugriffs auf Blobdaten im Azure-Portal](../blobs/authorize-data-operations-portal.md).
+
 ### <a name="authenticate-the-user-in-the-development-environment"></a>Authentifizieren des Benutzers in der Entwicklungsumgebung
 
 Wenn Ihr Code in der Entwicklungsumgebung ausgeführt wird, erfolgt die Authentifizierung ggf. automatisch. Abhängig von den verwendeten Tools kann aber auch eine Browseranmeldung erforderlich sein. Microsoft Visual Studio unterstützt beispielsweise einmaliges Anmelden (SSO), sodass automatisch das aktive Azure AD-Benutzerkonto für die Authentifizierung verwendet wird. Weitere Informationen zu SSO finden Sie unter [Einmaliges Anmelden bei Anwendungen in Azure Active Directory](../../active-directory/manage-apps/what-is-single-sign-on.md).
@@ -71,7 +76,7 @@ Im folgenden Beispiel wird ein neuer Dienstprinzipal über die Azure-Befehlszeil
 ```azurecli-interactive
 az ad sp create-for-rbac \
     --name <service-principal> \
-    --role "Storage Blob Data Reader" \
+    --role "Storage Blob Data Contributor" \
     --scopes /subscriptions/<subscription>/resourceGroups/<resource-group>/providers/Microsoft.Storage/storageAccounts/<storage-account>
 ```
 

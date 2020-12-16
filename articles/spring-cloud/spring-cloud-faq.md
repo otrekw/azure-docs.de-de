@@ -8,12 +8,12 @@ ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
-ms.openlocfilehash: a8180088e5a0db613d5f04106fe102f58594bf72
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 99246ecee27f7ded693e2a797f8e98480e350983
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94655050"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96854528"
 ---
 # <a name="azure-spring-cloud-faq"></a>Häufig gestellte Fragen zu Azure Spring Cloud
 
@@ -37,7 +37,7 @@ Sicherheit und Datenschutz gehören zu den wichtigsten Prioritäten für Azure- 
 
 ### <a name="in-which-regions-is-azure-spring-cloud-available"></a>In welchen Regionen ist Azure Spring Cloud verfügbar?
 
-„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“ und „Australien, Osten“.
+„USA, Osten“, „USA, Osten 2“, „USA, Mitte“, „USA, Süden-Mitte“, „USA, Norden-Mitte“, „USA, Westen“, „USA, Westen 2“, „Europa, Westen“, „Europa, Norden“, „Vereinigtes Königreich, Süden“, „Asien, Südosten“, „Australien, Osten“, „Kanada, Mitte“ und „VAE, Norden“.
 
 ### <a name="is-any-customer-data-stored-outside-of-the-specified-region"></a>Werden Kundendaten außerhalb der angegebenen Region gespeichert?
 
@@ -69,6 +69,23 @@ Für den schnellsten Einstieg mit Azure Spring Cloud führen Sie die Anweisungen
 ### <a name="what-java-runtime-does-azure-spring-cloud-support"></a>Welche Java-Runtime unterstützt Azure Spring Cloud?
 
 Azure Spring Cloud unterstützt Java 8 und 11. Weitere Informationen finden Sie unter [Java-Runtime und Betriebssystemversionen](#java-runtime-and-os-versions).
+
+### <a name="is-spring-boot-24x-supported"></a>Wird Spring Boot 2.4.x unterstützt?
+Wir haben ein Problem mit Spring Boot 2.4 identifiziert und arbeiten zurzeit gemeinsam mit der Spring-Community an dessen Behebung. Fügen Sie in der Zwischenzeit diese beiden Abhängigkeiten ein, um die TLS-Authentifizierung zwischen Ihren Apps und Eureka zu aktivieren.
+
+```xml
+<dependency> 
+    <groupId>com.sun.jersey</groupId>
+    <artifactId>jersey-client</artifactId>
+    <version>1.19.4</version>
+</dependency>
+<dependency>
+    <groupId>com.sun.jersey.contribs</groupId>
+    <artifactId>jersey-apache-client4</artifactId>
+    <version>1.19.4</version>
+</dependency>
+```
+
 ::: zone-end
 
 ### <a name="where-can-i-view-my-spring-cloud-application-logs-and-metrics"></a>Wo kann ich meine Spring Cloud-Anwendungsprotokolle und -metriken einsehen?

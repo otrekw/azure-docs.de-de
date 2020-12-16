@@ -1,24 +1,28 @@
 ---
-title: Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten
-description: Es wird beschrieben, wie Sie Echtzeitwetterdaten (aktuell) und prognostizierte Wetterdaten (minütlich, stündlich oder täglich) über die Wetterinfodienste von Microsoft Azure Maps anfordern.
+title: Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten (Vorschau)
+description: Erfahren Sie, wie Sie Echtzeitwetterdaten (aktuell) und prognostizierte Wetterdaten (minütlich, stündlich oder täglich) über die Wetterinfodienste von Microsoft Azure Maps (Vorschau) anfordern.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 10/27/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: c11f20286c514056d14b8faa941315345fea71f2
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a5ae262d2882bd76e31666f058fa9a7a703a9e1e
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186336"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906011"
 ---
-# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services"></a>Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten
+# <a name="request-real-time-and-forecasted-weather-data-using-azure-maps-weather-services-preview"></a>Anfordern von Echtzeit- und prognostizierten Wetterdaten mit Azure Maps-Wetterinfodiensten (Vorschau) 
 
-Beim [Wetterinfodienst](/rest/api/maps/weather) von Azure Maps handelt es sich um eine Reihe von RESTful-APIs, mit denen Entwickler hoch dynamische Verlaufs-, Echtzeit- und Vorhersagewetterdaten und die zugehörigen Visualisierungen in ihre Lösungen integrieren können. In diesem Artikel wird veranschaulicht, wie Sie Echtzeit- und prognostizierte Wetterdaten anfordern.
+> [!IMPORTANT]
+> Die Wetterinfodienste in Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Bei den [Wetterinfodiensten](/rest/api/maps/weather) von Azure Maps handelt es sich um eine Reihe von RESTful-APIs, mit denen Entwickler extrem dynamische Verlaufs-, Echtzeit- und Vorhersagewetterdaten und die zugehörigen Visualisierungen in ihre Lösungen integrieren können. In diesem Artikel wird veranschaulicht, wie Sie Echtzeit- und prognostizierte Wetterdaten anfordern.
 
 Folgendes wird beschrieben:
 
@@ -28,7 +32,7 @@ Folgendes wird beschrieben:
 * Anfordern von stündlichen Vorhersagen mit der [Get Hourly Forecast-API](/rest/api/maps/weather/gethourlyforecastpreview)
 * Anfordern von minütlichen Vorhersagen mit der [Get Minute Forecast-API](/rest/api/maps/weather/getminuteforecastpreview)
 
-Dieses Video bietet eine Übersicht über Wetterinfodienste in Azure Maps mit Beispielen für REST-Aufrufe.
+Dieses Video enthält Beispiele dafür, wie REST-Aufrufe für die Wetterinfodienste von Azure Maps ausgeführt werden.
 
 <br/>
 
@@ -751,8 +755,7 @@ In diesem Beispiel verwenden Sie die [Get Minute Forecast-API](/rest/api/maps/we
 ## <a name="next-steps"></a>Nächste Schritte
 
 > [!div class="nextstepaction"]
-> [Wetterdienste in Azure Maps](./weather-services-concepts.md)
+> [Konzepte für Wetterinfodienste in Azure Maps (Vorschau)](./weather-services-concepts.md)
 
 > [!div class="nextstepaction"]
-> [Azure Maps-Wetterinfodienst: REST-API](/rest/api/maps/weather
-)
+> [REST-API für Wetterinfodienste in Azure Maps (Vorschau)](/rest/api/maps/weather)

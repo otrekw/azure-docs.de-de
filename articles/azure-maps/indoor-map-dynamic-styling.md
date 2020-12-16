@@ -1,29 +1,33 @@
 ---
-title: Implementieren von dynamischen Stilen für Gebäudepläne von Azure Maps-Ersteller
-description: Erfahren Sie, wie Sie dynamische Stile für Gebäudepläne von Ersteller implementieren.
+title: Implementieren dynamischer Stile für Azure Maps Creator-Gebäudepläne (Vorschau)
+description: Erfahren Sie, wie Sie dynamische Stile für Creator-Gebäudepläne (Vorschau) implementieren.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: how-to
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: b9ce0d0770c7e6c4579469cc16d8c76c309a33d1
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 266dc5d62f6224495075546528ad71d806d415ac
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895374"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903444"
 ---
-# <a name="implement-dynamic-styling-for-creator-indoor-maps"></a>Implementieren dynamischer Stile für Gebäudepläne von Ersteller
+# <a name="implement-dynamic-styling-for-creator-preview-indoor-maps"></a>Implementieren dynamischer Stile für Creator-Gebäudepläne (Vorschau)
+
+> [!IMPORTANT]
+> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit dem [Featurezustandsdienst](/rest/api/maps/featurestate) von Azure Maps-Ersteller können Sie Stile basierend auf den dynamischen Eigenschaften der Features von Gebäudeplandaten anwenden.  Beispielsweise können Sie Besprechungsräume der Einrichtung mit einer bestimmten Farbe rendern, um den Belegungsstatus anzuzeigen. In diesem Artikel erfahren Sie, wie Sie Features von Gebäudeplänen mithilfe des [Featurezustandsdiensts](/rest/api/maps/featurestate) und des [Indoor-Webmoduls](how-to-use-indoor-module.md) rendern.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account), auch bezeichnet als primärer Schlüssel oder Abonnementschlüssel.
-3. [Erstellen einer Erstellerressource](how-to-manage-creator.md)
+2. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account) (auch primärer Schlüssel oder Abonnementschlüssel genannt)
+3. [Erstellen einer Creator-Ressource (Vorschau)](how-to-manage-creator.md)
 4. Laden Sie das [Beispielzeichenpaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples) herunter.
 5. [Erstellen Sie einen Gebäudeplan](tutorial-creator-indoor-maps.md), um eine `tilesetId` und `statesetId` zu erhalten.
 6. Erstellen Sie eine Webanwendung, indem Sie die Schritte in [Verwenden des Moduls für Gebäudepläne](how-to-use-indoor-module.md) ausführen.
@@ -66,15 +70,15 @@ Im nächsten Abschnitt legen wir den *Zustand* von „occupancy“ (Belegung) vo
 
  Wir aktualisieren jetzt den Zustand der beiden Büros `UNIT26` und `UNIT27`:
 
-1. Wählen Sie in der Postman-Anwendung **Neu** aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern** .
+1. Wählen Sie in der Postman-Anwendung **Neu** aus. Wählen Sie im Fenster **Create New** (Neu erstellen) die Option **Request** (Anforderung) aus. Geben Sie einen **Anforderungsnamen** ein, und wählen Sie eine Sammlung aus. Klicken Sie unten auf der Seite auf **Speichern**.
 
-2. Verwenden Sie die [Featureupdatezustände-API](/rest/api/maps/featurestate/updatestatespreview), um den Zustand zu aktualisieren. Übergeben Sie die Zustandsset-ID und `UNIT26` für eine der beiden Einheiten. Fügen Sie Ihren Azure Maps-Abonnementschlüssel an. Hier sehen Sie die URL einer **POST** -Anforderung zum Aktualisieren des Zustands:
+2. Verwenden Sie die [Featureupdatezustände-API](/rest/api/maps/featurestate/updatestatespreview), um den Zustand zu aktualisieren. Übergeben Sie die Zustandsset-ID und `UNIT26` für eine der beiden Einheiten. Fügen Sie Ihren Azure Maps-Abonnementschlüssel an. Hier sehen Sie die URL einer **POST**-Anforderung zum Aktualisieren des Zustands:
 
     ```http
     https://atlas.microsoft.com/featureState/state?api-version=1.0&statesetID={statesetId}&featureID=UNIT26&subscription-key={Azure-Maps-Primary-Subscription-key}
     ```
 
-3. Legen Sie in den **Headern** der **POST** -Anforderung `Content-Type` auf `application/json` fest. Schreiben Sie im **TEXT** der **POST** -Anforderung den folgenden JSON-Code mit den Featureupdates. Das Update wird nur gespeichert, wenn der gepostete Zeitstempel nach dem Zeitstempel liegt, der in früheren Featurezustandsaktualisierungs-Anforderungen für dieselbe `ID` des Features verwendet wurde. Übergeben Sie den `keyName` „occupied“ (ausgelastet), um seinen Wert zu aktualisieren.
+3. Legen Sie in den **Headern** der **POST**-Anforderung `Content-Type` auf `application/json` fest. Schreiben Sie im **TEXT** der **POST**-Anforderung den folgenden JSON-Code mit den Featureupdates. Das Update wird nur gespeichert, wenn der gepostete Zeitstempel nach dem Zeitstempel liegt, der in früheren Featurezustandsaktualisierungs-Anforderungen für dieselbe `ID` des Features verwendet wurde. Übergeben Sie den `keyName` „occupied“ (ausgelastet), um seinen Wert zu aktualisieren.
 
     ```json
     {
@@ -113,7 +117,7 @@ Die Webanwendung, die Sie zuvor in einem Browser geöffnet haben, sollte jetzt d
 Weitere Informationen finden Sie unter:
 
 > [!div class="nextstepaction"]
-> [Ersteller für Gebäudepläne](creator-indoor-maps.md)
+> [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
 
 Informationen finden Sie in den API-Referenzen, die in diesem Artikel erwähnt werden:
 

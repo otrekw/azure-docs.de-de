@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 11/17/2020
-ms.openlocfilehash: 63be912986542741359cd5e88227f06905d42647
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: da89d4fbc3f9e03e76d901c2215e4f16c5273013
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350873"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621109"
 ---
 # <a name="sink-transformation-in-mapping-data-flow"></a>Senkentransformation in einem Zuordnungsdatenfluss
 
@@ -103,6 +103,10 @@ Standardmäßig werden Daten ohne festgeschriebene Reihenfolge in mehrere Senken
 > Bei Verwendung von [zwischengespeicherten Suchen](./concepts-data-flow-expression-builder.md#cached-lookup) müssen Sie sicherstellen, dass die zwischengespeicherten Senken in der Senkenreihenfolge auf 1 festgelegt sind, wobei es sich um den niedrigsten (oder ersten) Rang handelt.
 
 ![Benutzerdefinierte Senkenreihenfolge](media/data-flow/cache-2.png "Benutzerdefinierte Senkenreihenfolge")
+
+### <a name="sink-groups"></a>Senkengruppen
+
+Sie können Senken gruppieren, indem Sie für eine Reihe von Senken die gleiche Auftragsnummer anwenden. ADF behandelt diese Senken als Gruppen, die parallel ausgeführt werden können. Optionen für die parallele Ausführung werden in der Pipeline-Datenflussaktivität angezeigt.
 
 ## <a name="error-row-handling"></a>Fehlerzeilenbehandlung
 

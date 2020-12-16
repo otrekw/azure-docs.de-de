@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.topic: tutorial
-ms.date: 11/03/2020
+ms.date: 11/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 557d2eb636e51f4259bc525fe39f8c95303774cd
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 9a2c52674bafeb170efd41afa9c395aeecda9df8
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96181030"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96602120"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-aws-clientvpn"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AWS ClientVPN
 
@@ -80,7 +80,13 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     a. Geben Sie im Textfeld **Anmelde-URL** eine URL im folgenden Format ein: `https://<LOCALHOST>`.
 
-    b. Geben Sie im Textfeld **Antwort-URL** eine URL im folgenden Format ein: `https://<LOCALHOST>`
+    b. Geben Sie im Textfeld **Antwort-URL** eine URL in einem der folgenden Formate ein:
+
+    | Antwort-URL |
+    |------------|
+    | `https://<LOCALHOST>` |
+    | `https://self-service.clientvpn.amazonaws.com/api/auth/sso/saml` |
+    |
 
     > [!NOTE]
     > Hierbei handelt es sich um Beispielwerte. Ersetzen Sie diese Werte durch die tatsächlichen Werte für Anmelde-URL und Antwort-URL. Wenden Sie sich an das [Clientsupportteam von AWS ClientVPN](https://aws.amazon.com/contact-us/), um diese Werte zu erhalten. Sie können sich auch die Muster im Abschnitt **Grundlegende SAML-Konfiguration** im Azure-Portal ansehen.
@@ -146,11 +152,11 @@ In diesem Abschnitt wird ein Benutzer mit dem Namen Britta Simon in AWS ClientVP
 
 In diesem Abschnitt testen Sie die Azure AD-Konfiguration für einmaliges Anmelden mit den folgenden Optionen: 
 
-1. Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für AWS ClientVPN weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
+* Klicken Sie im Azure-Portal auf **Diese Anwendung testen**. Dadurch werden Sie zur Anmelde-URL für AWS ClientVPN weitergeleitet, wo Sie den Anmeldeflow initiieren können. 
 
-2. Rufen Sie direkt die AWS ClientVPN-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
+* Rufen Sie direkt die AWS ClientVPN-Anmelde-URL auf, und initiieren Sie den Anmeldeflow.
 
-3. Sie können den Microsoft-Zugriffsbereich verwenden. Wenn Sie im Zugriffsbereich auf die Kachel „AWS ClientVPN“ klicken, werden Sie zur Anmelde-URL für AWS ClientVPN umgeleitet. Weitere Informationen zum Zugriffsbereich finden Sie unter [Einführung in den Zugriffsbereich](../user-help/my-apps-portal-end-user-access.md).
+* Sie können „Meine Apps“ von Microsoft verwenden. Wenn Sie in „Meine Apps“ auf die Kachel „AWS ClientVPN“ klicken, werden Sie zur Anmelde-URL für AWS ClientVPN umgeleitet. Weitere Informationen zu „Meine Apps“ finden Sie in [dieser Einführung](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
 ## <a name="next-steps"></a>Nächste Schritte

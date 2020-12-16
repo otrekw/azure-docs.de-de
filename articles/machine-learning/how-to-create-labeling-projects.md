@@ -8,12 +8,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
-ms.openlocfilehash: 450d471beebbcc554a6d534fb2d5361778f158bc
-ms.sourcegitcommit: 9889a3983b88222c30275fd0cfe60807976fd65b
+ms.openlocfilehash: 74e9224b30ccee274eaf52ba47a0ec05573c2e9d
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94992317"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558724"
 ---
 # <a name="create-a-data-labeling-project-and-export-labels"></a>Erstellen eines Datenbeschriftungsprojekts und Exportieren der Beschriftungen 
 
@@ -109,7 +109,7 @@ Wenn Sie dem Dataset neue Bilder hinzufügen möchten, verwenden Sie die inkreme
 
 Wenn Sie Ihrem Projekt weitere Bilder hinzufügen möchten, verwenden Sie [Azure Storage-Explorer](https://azure.microsoft.com/features/storage-explorer/), um sie in den entsprechenden Ordner im Blobspeicher hochzuladen. 
 
-Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll.
+Aktivieren Sie das Kontrollkästchen **Enable incremental refresh** (Inkrementelle Aktualisierung aktivieren), wenn das Projekt den Datenspeicher kontinuierlich auf neue Daten überwachen soll. Ist die Option aktiviert, werden diese Daten werden einmal pro Tag in Ihr Projekt gepullt.
 
 Deaktivieren Sie dieses Kontrollkästchen, wenn neue Bilder, die im Datenspeicher angezeigt werden, nicht dem Projekt hinzugefügt werden sollen.
 

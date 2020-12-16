@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: 981697211cf8ee0aff1ac0e3d0db6000c1089c00
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 398e964ad773e4c015129c6dd3d4784f1300e16b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896848"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905773"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Tutorial: Erstellen einer Shopsuche mit Azure Maps
 
@@ -76,18 +76,18 @@ Sie können die [Excel-Arbeitsmappe herunterladen](https://github.com/Azure-Samp
 
 Wenn Sie sich den Screenshot mit den Daten ansehen, fällt Ihnen Folgendes auf:
 
-* Die Informationen zum Standort sind in den Spalten **AddressLine** , **City** , **Municipality** (Verwaltungsbezirk), **AdminDivision** (Bundesland/Kanton), **PostCode** (Postleitzahl) und **Country** enthalten.  
+* Die Informationen zum Standort sind in den Spalten **AddressLine**, **City**, **Municipality** (Verwaltungsbezirk), **AdminDivision** (Bundesland/Kanton), **PostCode** (Postleitzahl) und **Country** enthalten.  
 * Die Spalten **Latitude** und **Longitude** enthalten die Koordinaten für die einzelnen Coffee-Shop-Standorte von Contoso Coffee. Falls Sie keine Informationen zu Koordinaten besitzen, können Sie die Suchdienste in Azure Maps nutzen, um die Standortkoordinaten zu ermitteln.
 * Einige zusätzliche Spalten enthalten Metadaten zu den Coffee-Shops: eine Telefonnummer, boolesche Spalten sowie die Öffnungszeiten im 24-Stunden-Format. Die booleschen Spalten dienen zur Angabe von WLAN-Verfügbarkeit sowie von Barrierefreiheit für Rollstuhlfahrer. Sie können auch eigene Spalten mit Metadaten erstellen, die für Ihre Standortdaten eine höhere Relevanz haben.
 
 > [!NOTE]
-> Azure Maps rendert Daten in der sphärischen Mercator-Projektion „EPSG:3857“, liest Daten jedoch in „EPSG:4325“ mit WGS84-Bezug.
+> Azure Maps rendert Daten in der sphärischen Mercator-Projektion „EPSG:3857“, liest Daten jedoch in „EPSG:4326“ mit WGS84-Bezug.
 
 Es gibt viele Möglichkeiten, um das Dataset für die Anwendung verfügbar zu machen. Eine Möglichkeit besteht darin, die Daten in eine Datenbank zu laden und einen Webdienst verfügbar zu machen, der die Daten abfragt. Die Ergebnisse können dann an den Browser des Benutzers gesendet werden. Diese Option ist ideal für große oder häufig aktualisierte Datasets geeignet. Für diese Option fallen aber mehr Entwicklungsaufwand und höhere Kosten an.
 
 Ein anderer Ansatz besteht darin, dieses Dataset in eine Textflatfile zu konvertieren, die vom Browser leicht analysiert werden kann. Die Datei selbst kann mit dem Rest der Anwendung gehostet werden. Diese Option sorgt für eine Vereinfachung, aber sie eignet sich gut für kleinere Datasets, weil der Benutzer alle Daten herunterlädt. Wir verwenden die Textflatfile für dieses Dataset, weil die Größe der Datendatei unter 1 MB liegt.  
 
-Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter** , um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)** . Geben Sie der Datei den Namen *ContosoCoffee.txt* .
+Speichern Sie die Arbeitsmappe als Datei mit Tabstopp-Trennzeichen, um sie in eine Textflatfile zu konvertieren. Die einzelnen Spalten sind durch ein Tabstoppzeichen getrennt, damit sie in unserem Code leicht analysiert werden können. Sie können auch das CSV-Format mit Kommas als Trennzeichen verwenden, aber für diese Option ist ein höherer Anteil an Logik für die Analyse erforderlich. Jedes Feld, das über ein Komma verfügt, wird mit Fragezeichen umschlossen. Wählen Sie **Speichern unter**, um diese Daten als Datei mit Tabstopps als Trennzeichen nach Excel zu exportieren. Wählen Sie in der Dropdownliste **Dateityp** die Option **Text (durch Tabstopps getrennt) (*.txt)** . Geben Sie der Datei den Namen *ContosoCoffee.txt*.
 
 ![Screenshot: Dialogfeld „Dateityp“](./media/tutorial-create-store-locator/SaveStoreDataAsTab.png)
 
@@ -97,7 +97,7 @@ Wenn Sie die Textdatei im Editor öffnen, erhalten Sie eine ähnliche Anzeige wi
 
 ## <a name="set-up-the-project"></a>Einrichten des Projekts
 
-Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html* , *index.css* und *index.js* . Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data* , und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images* . In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker auf der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
+Zum Erstellen des Projekts können Sie [Visual Studio](https://visualstudio.microsoft.com) oder den Code-Editor Ihrer Wahl verwenden. Erstellen Sie in Ihrem Projektordner drei Dateien: *index.html*, *index.css* und *index.js*. Mit diesen Dateien werden das Layout, das Format und die Logik für die Anwendung definiert. Erstellen Sie einen Ordner mit dem Namen *data*, und fügen Sie dem Ordner die Datei *ContosoCoffee.txt* hinzu. Erstellen Sie einen weiteren Ordner mit dem Namen *images*. In dieser Anwendung nutzen wir zehn Bilder für Symbole, Schaltflächen und Marker auf der Karte. Sie können diese [Bilder herunterladen](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/data). Ihr Projektordner sollte jetzt wie in der folgenden Abbildung aussehen:
 
 ![Screenshot: Projektordner für die einfache Shopsuche](./media/tutorial-create-store-locator/StoreLocatorVSProject.png)
 
@@ -160,7 +160,7 @@ Fügen Sie zum Erstellen der Benutzeroberfläche der Datei *index.html* Code hin
 
 Wenn Sie fertig sind, sollte *index.html* wie in [dieser index.html-Beispieldatei](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator/index.html) aussehen.
 
-Im nächsten Schritt werden die CSS-Stile definiert. Mit CSS-Stilen wird definiert, welches Layout die Anwendungskomponenten haben und wie die Anwendung aussieht. Öffnen Sie die Datei *index.css* , und fügen Sie ihr den folgenden Code hinzu. Mit dem Stil `@media` werden alternative Stiloptionen definiert, die verwendet werden können, wenn die Bildschirmbreite weniger als 700 Pixel beträgt.  
+Im nächsten Schritt werden die CSS-Stile definiert. Mit CSS-Stilen wird definiert, welches Layout die Anwendungskomponenten haben und wie die Anwendung aussieht. Öffnen Sie die Datei *index.css*, und fügen Sie ihr den folgenden Code hinzu. Mit dem Stil `@media` werden alternative Stiloptionen definiert, die verwendet werden können, wenn die Bildschirmbreite weniger als 700 Pixel beträgt.  
 
    ```CSS
     html, body {
@@ -369,7 +369,7 @@ Wenn Sie die Anwendung jetzt ausführen, werden die Kopfzeile, das Suchfeld und 
 
 ## <a name="wire-the-application-with-javascript"></a>Hinzufügen von JavaScript-Code zur Anwendung
 
-Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js* , und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
+Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings noch den JavaScript-Code zum Laden und Analysieren der Daten sowie zum anschließenden Rendern der Daten auf der Karte hinzufügen. Öffnen Sie *index.js*, und fügen Sie Code hinzu, um zu beginnen. Dies ist in den folgenden Schritten beschrieben.
 
 1. Fügen Sie globale Optionen hinzu, um das Aktualisieren der Einstellungen zu vereinfachen. Definieren Sie die Variablen für die Karte, das Popupfenster, die Datenquelle, die Symbolebene und den HTML-Marker. Legen Sie den HTML-Marker fest, um den Mittelpunkt eines Suchbereichs anzugeben. Definieren Sie eine Instanz des Azure Maps-Suchdienstclients.
 
@@ -432,7 +432,7 @@ Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings n
             }
         };
 
-        //If the user selects the My Location button, use the Geolocation API to get the user's location. Center and zoom the map on that location.
+        //If the user selects the My Location button, use the Geolocation API (Preview) to get the user's location. Center and zoom the map on that location.
         document.getElementById('myLocationBtn').onclick = setMapToUserLocation;
 
         //Wait until the map resources are ready.
@@ -472,7 +472,7 @@ Auf der Benutzeroberfläche ist nun alles eingerichtet. Wir müssen allerdings n
     function setMapToUserLocation() {
         //Request the user's location.
         navigator.geolocation.getCurrentPosition(function(position) {
-            //Convert the Geolocation API position to a longitude and latitude position value that the map can interpret and center the map over it.
+            //Convert the Geolocation API (Preview) position to a longitude and latitude position value that the map can interpret and center the map over it.
             map.setCamera({
                 center: [position.coords.longitude, position.coords.latitude],
                 zoom: maxClusterZoomLevel + 1

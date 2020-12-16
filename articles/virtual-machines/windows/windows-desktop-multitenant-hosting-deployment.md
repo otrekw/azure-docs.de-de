@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
-ms.openlocfilehash: 5bd41396cf075f83fd37a4276f7a30223ec8c1f3
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 101f2cfe57624502764d145351a6343cfdd2a334
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96482942"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96572863"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Informationen zum Bereitstellen von Windows 10 unter Azure mit mehrinstanzenfähigen Hostingrechten 
 Für Kunden mit Windows 10 Enterprise E3/E5 pro Benutzer oder Windows Virtual Desktop Access pro Benutzer (Benutzerabonnementlizenzen oder Add-On-Benutzerabonnementlizenzen) können Sie Ihre Windows 10-Lizenzen mittels mehrinstanzenfähiger Hostingrechte für Windows 10 in der Cloud verwenden und virtuelle Windows 10-Computer in Azure ausführen, ohne eine weitere Lizenz erwerben zu müssen. Weitere Informationen finden Sie unter [Mehrinstanzenfähiges Hosting für Windows 10](https://www.microsoft.com/en-us/CloudandHosting/licensing_sca.aspx).
@@ -112,7 +112,7 @@ LicenseType              :
 
 ## <a name="additional-information-about-joining-azure-ad"></a>Weitere Informationen für den Beitritt zu Azure AD
 >[!NOTE]
->Azure stellt alle Windows-VMs mit integriertem Administratorkonto bereit, das nicht für den Beitritt zu AAD verwendet werden kann. Beispielsweise funktioniert der Pfad *Einstellungen > Konto > Auf Arbeits- oder Schulkonto zugreifen > +Verbinden* nicht. Sie müssen ein zweites Administratorkonto erstellen und sich darüber anmelden, um manuell Azure AD beizutreten. Sie können Azure AD auch mithilfe eines Bereitstellungspakets konfigurieren. Weitere Informationen finden Sie unter den Links im Abschnitt *Nächste Schritte*.
+>Azure stellt alle Windows-VMs mit integriertem Administratorkonto bereit, das nicht für den Beitritt zu AAD verwendet werden kann. Beispielsweise funktioniert der Pfad *Einstellungen > Konto > Auf Arbeits- oder Schulkonto zugreifen > +Verbinden* nicht. Sie müssen ein zweites Administratorkonto erstellen und sich darüber anmelden, um manuell Azure AD beizutreten. Sie können Azure AD auch mithilfe eines Bereitstellungspakets konfigurieren. Weitere Informationen finden Sie unter dem Link im Abschnitt *Nächste Schritte*.
 >
 >
 

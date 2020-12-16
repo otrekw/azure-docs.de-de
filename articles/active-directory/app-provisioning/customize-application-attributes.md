@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/10/2020
 ms.author: kenwith
-ms.openlocfilehash: 5f6e5de61c9f43d5958e68c545105c4373996f7c
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 012038399796a0f2dc87acfb350043542268379a
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175065"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936980"
 ---
 # <a name="tutorial---customize-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>Tutorial: Anpassen von Attributzuordnungen für die Benutzerbereitstellung für SaaS-Anwendungen in Azure Active Directory
 
@@ -115,7 +115,7 @@ Folgende Anwendungen und Systeme unterstützen die Anpassung der Attributliste:
 
 
 > [!NOTE]
-> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools.
+> Das Bearbeiten der Liste unterstützter Attribute wird nur für Administratoren empfohlen, die das Schema ihrer Anwendungen und Systeme angepasst haben und aus erster Hand wissen, wie ihre benutzerdefinierten Attribute definiert wurden. Dies erfordert mitunter Kenntnisse der von einer Anwendung oder einem System bereitgestellten APIs und Entwicklertools. Die Möglichkeit zum Bearbeiten der Liste unterstützter Attribute ist standardmäßig gesperrt, aber Kunden können die Funktion aktivieren, indem sie zur folgenden URL navigieren: https://portal.azure.com/?Microsoft_AAD_IAM_forceSchemaEditorEnabled=true. Anschließend können Sie zu Ihrer Anwendung navigieren, um die Attributliste wie [oben](https://docs.microsoft.com/azure/active-directory/app-provisioning/customize-application-attributes#editing-the-list-of-supported-attributes) beschrieben anzuzeigen. 
 
 Beim Bearbeiten der Liste unterstützter Attribute sind die folgenden Eigenschaften verfügbar:
 

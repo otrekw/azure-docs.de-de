@@ -1,7 +1,7 @@
 ---
 title: Lokale Ausführung und Bereitstellung
 titleSuffix: Azure Machine Learning
-description: Informationen zum Ausführen von trainierten Modellen auf dem lokalen Computer.
+description: In diesem Artikel wird beschrieben, wie Sie Ihren lokalen Computer als Ziel für das Trainieren, Debuggen oder Bereitstellen von Modellen verwenden, die in Azure Machine Learning erstellt wurden.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,16 +10,16 @@ author: lobrien
 ms.date: 11/20/2020
 ms.topic: conceptual
 ms.custom: how-to, deploy
-ms.openlocfilehash: fcea7c162e5c978a7c8ff1b42e09ffe0afb98f3c
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 71f393897dff266f1b0922a19eefd70cffea133d
+ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95547937"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96600352"
 ---
-# <a name="deploy-on-your-local-machines-models-trained-with-azure-machine-learning"></a>Bereitstellen von mit Azure Machine Learning trainierten Modellen auf lokalen Computern
+# <a name="deploy-models-trained-with-azure-machine-learning-on-your-local-machines"></a>Bereitstellen von mit Azure Machine Learning trainierten Modellen auf lokalen Computern 
 
-In diesem Artikel erfahren Sie, wie Sie Ihren lokalen Computer als Ziel für das Trainieren oder Bereitstellen von Modellen verwenden, die in Azure Machine Learning erstellt wurden. Die Flexibilität von Azure Machine Learning ermöglicht die Verwendung der meisten Python-Frameworks für maschinelles Lernen. Lösungen für maschinelles Lernen umfassen im Allgemeinen komplexe Abhängigkeiten, die schwer zu duplizieren sein können. In diesem Artikel wird gezeigt, wie Sie einen Kompromiss zwischen vollständiger Kontrolle und Benutzerfreundlichkeit finden.
+In diesem Artikel wird beschrieben, wie Sie Ihren lokalen Computer als Ziel für das Trainieren oder Bereitstellen von Modellen verwenden, die in Azure Machine Learning erstellt wurden. Die Flexibilität von Azure Machine Learning ermöglicht die Verwendung der meisten Python-Frameworks für maschinelles Lernen. Lösungen für maschinelles Lernen umfassen im Allgemeinen komplexe Abhängigkeiten, die schwer zu duplizieren sein können. In diesem Artikel wird gezeigt, wie Sie einen Kompromiss zwischen vollständiger Kontrolle und Benutzerfreundlichkeit finden.
 
 Beispiele für Szenarien für die lokale Bereitstellung:
 
@@ -30,16 +30,16 @@ Beispiele für Szenarien für die lokale Bereitstellung:
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure Machine Learning-Arbeitsbereich. Weitere Informationen finden Sie unter [Erstellen eines Azure Machine Learning-Arbeitsbereichs](how-to-manage-workspace.md).
-- Ein Modell und eine Umgebung. Wenn Sie nicht über ein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](tutorial-train-models-with-aml.md) bereitgestellt werden.
-- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py)
-- Ein conda-Manager, z. B. Anaconda oder Miniconda, wenn Sie die Paketabhängigkeiten von Azure Machine Learning spiegeln möchten
+- Ein Modell und eine Umgebung. Wenn Sie über kein trainiertes Modell verfügen, können Sie die Modell- und Abhängigkeitsdateien verwenden, die in [diesem Tutorial](tutorial-train-models-with-aml.md) bereitgestellt werden.
+- Das [Azure Machine Learning SDK für Python](/python/api/overview/azure/ml/intro?preserve-view=true&view=azure-ml-py).
+- Ein conda-Manager wie Anaconda oder Miniconda, wenn Sie die Paketabhängigkeiten von Azure Machine Learning spiegeln möchten
 - Docker, wenn Sie eine Containerversion der Azure Machine Learning-Umgebung verwenden möchten
 
 ## <a name="prepare-your-local-machine"></a>Vorbereiten Ihres lokalen Computers
 
 Die zuverlässigste Möglichkeit, ein Azure Machine Learning-Modell lokal auszuführen, ist durch Verwendung eines Docker-Images. Ein Docker-Image bietet eine isolierte Containerumgebung, die die Azure-Ausführungsumgebung mit Ausnahme von Hardwareproblemen dupliziert. Weitere Informationen zum Installieren und Konfigurieren von Docker für Entwicklungsszenarien finden Sie unter [Übersicht über die Remoteentwicklung mit Docker unter Windows](/windows/dev-environment/docker/overview).
 
-Obwohl es möglich ist, einen Debugger an einen in Docker ausgeführten Prozess anzufügen (siehe [Attach to a running container](https://code.visualstudio.com/docs/remote/attach-container), Anfügen an einen ausgeführten Container), können Sie den Python-Code auch ohne Einbeziehung von Docker debuggen und durchlaufen. In diesem Szenario ist es wichtig, dass auf dem lokalen Computer dieselben Bibliotheken verwendet werden, die beim Ausführen des Experiments in Azure Machine Learning verwendet werden. Zum Verwalten von Python-Abhängigkeiten wird in Azure [conda](https://docs.conda.io/) verwendet. Auch wenn Sie die Umgebung mithilfe anderer Paket-Manager neu erstellen können, ist die Installation und Konfiguration von conda auf dem lokalen Computer die einfachste Möglichkeit zur Synchronisierung. 
+Es ist möglich, einen Debugger an einen Prozess anzufügen, der in Docker ausgeführt wird. (Weitere Informationen finden Sie unter [Anfügen an einen ausgeführten Container](https://code.visualstudio.com/docs/remote/attach-container).) Es empfiehlt sich jedoch, Python-Code ohne Docker zu debuggen und zu durchlaufen. In diesem Szenario ist es wichtig, dass auf dem lokalen Computer dieselben Bibliotheken verwendet werden, die beim Ausführen des Experiments in Azure Machine Learning verwendet werden. Zum Verwalten von Python-Abhängigkeiten wird in Azure [conda](https://docs.conda.io/) verwendet. Auch wenn Sie die Umgebung mithilfe anderer Paket-Manager neu erstellen können, ist die Installation und Konfiguration von conda auf dem lokalen Computer die einfachste Möglichkeit zur Synchronisierung. 
 
 ## <a name="prepare-your-entry-script"></a>Vorbereiten des Einstiegsskripts
 
@@ -48,7 +48,7 @@ Auch wenn Sie Docker zum Verwalten des Modells und der Abhängigkeiten verwenden
 - Eine `init()`-Methode, die keine Argumente aufweist und keine Rückgabe erzeugt 
 - Eine `run()`-Methode, die eine Zeichenfolge im JSON-Format unterstützt und ein JSON-serialisierbares Objekt zurückgibt
 
-Das Argument für die `run()`-Methode hat folgendes Format: 
+Das Argument für die `run()`-Methode weist folgendes Format auf: 
 
 ```json
 {
@@ -58,7 +58,7 @@ Das Argument für die `run()`-Methode hat folgendes Format:
 
 Das Objekt, das von der `run()`-Methode zurückgegeben wird, muss `toJSON() -> string` implementieren.
 
-Das folgende Beispiel veranschaulicht, wie ein registriertes scikit-learn-Modell geladen und mit numpy-Daten bewertet wird. Dieses Beispiel basiert auf dem Modell und den Abhängigkeiten aus [diesem Tutorial](tutorial-train-models-with-aml.md):
+Das folgende Beispiel veranschaulicht, wie ein registriertes scikit-learn-Modell geladen und mit NumPy-Daten bewertet wird. Dieses Beispiel basiert auf dem Modell und den Abhängigkeiten aus [diesem Tutorial](tutorial-train-models-with-aml.md).
 
 ```python
 import json
@@ -70,32 +70,32 @@ import joblib
 def init():
     global model
     # AZUREML_MODEL_DIR is an environment variable created during deployment.
-    # It is the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION)
-    # For multiple models, it points to the folder containing all deployed models (./azureml-models)
+    # It's the path to the model folder (./azureml-models/$MODEL_NAME/$VERSION).
+    # For multiple models, it points to the folder containing all deployed models (./azureml-models).
     model_path = os.path.join(os.getenv('AZUREML_MODEL_DIR'), 'sklearn_mnist_model.pkl')
     model = joblib.load(model_path)
 
 def run(raw_data):
     data = np.array(json.loads(raw_data)['data'])
-    # make prediction
+    # Make prediction.
     y_hat = model.predict(data)
-    # you can return any data type as long as it is JSON-serializable
+    # You can return any data type as long as it's JSON-serializable.
     return y_hat.tolist()
 ```
 
 Weiterführende Beispiele, einschließlich der automatischen Swagger-Schemagenerierung und der Bewertung von Binärdaten (z. B. Bilder), finden Sie unter [Erweiterte Einstiegsskripterstellung](how-to-deploy-advanced-entry-script.md). 
 
-## <a name="deploy-as-a-local-web-service-using-docker"></a>Bereitstellung als lokaler Webdienst mithilfe von Docker
+## <a name="deploy-as-a-local-web-service-by-using-docker"></a>Bereitstellung als lokaler Webdienst mithilfe von Docker
 
 Die einfachste Möglichkeit, die in Azure Machine Learning verwendete Umgebung zu replizieren, ist die Bereitstellung eines Webdiensts mithilfe von Docker. Wenn Docker auf dem lokalen Computer ausgeführt wird, gehen Sie wie folgt vor:
 
 1. Stellen Sie eine Verbindung mit dem Azure Machine Learning-Arbeitsbereich her, in dem Ihr Modell registriert ist.
 1. Erstellen Sie ein `Model`-Objekt, das das Modell darstellt.
-1. Erstellen Sie ein `Environment`-Objekt, das die Abhängigkeiten enthält und die Softwareumgebung definiert, in der der Code ausgeführt wird.
-1. Erstellen Sie ein `InferenceConfig`-Objekt, das das Einstiegsskript und `Environment` verknüpft.
+1. Erstellen Sie ein `Environment`-Objekt, das die Abhängigkeiten enthält und die Softwareumgebung definiert, in der Ihr Code ausgeführt wird.
+1. Erstellen Sie ein `InferenceConfig`-Objekt, das das Einstiegsskript mit `Environment` verknüpft.
 1. Erstellen Sie ein `DeploymentConfiguration`-Objekt der Unterklasse `LocalWebserviceDeploymentConfiguration`.
 1. Verwenden Sie `Model.deploy()`, um ein `Webservice`-Objekt zu erstellen. Mit dieser Methode wird das Docker-Image heruntergeladen und `Model`, `InferenceConfig` und `DeploymentConfiguration` zugeordnet.
-1. Aktivieren Sie `Webservice` mit `Webservice.wait_for_deployment()`.
+1. Aktivieren Sie den `Webservice` mit `Webservice.wait_for_deployment()`.
 
 Diese Schritte sind im folgenden Code dargestellt:
 
@@ -125,7 +125,7 @@ local_service.wait_for_deployment(show_output=True)
 print(f"Scoring URI is : {local_service.scoring_uri}")
 ```
 
-Der Aufruf von `Model.deploy()` kann einige Minuten dauern. Nach der anfänglichen Bereitstellung ist es effizienter, die `update()`-Methode zu verwenden, anstatt von Grund auf neu zu beginnen. Weitere Informationen finden Sie unter [Aktualisieren eines bereitgestellten Webdiensts](how-to-deploy-update-web-service.md).
+Der Aufruf von `Model.deploy()` kann einige Minuten dauern. Nach der anfänglichen Bereitstellung des Webdiensts ist es effizienter, die `update()`-Methode zu verwenden, anstatt von Grund auf neu zu beginnen. Weitere Informationen finden Sie unter [Aktualisieren eines bereitgestellten Webdiensts](how-to-deploy-update-web-service.md).
 
 ### <a name="test-your-local-deployment"></a>Testen der lokalen Bereitstellung
 
@@ -177,18 +177,18 @@ print("prediction:", resp.text)
 
 ## <a name="download-and-run-your-model-directly"></a>Herunterladen und direktes Ausführen des Modells
 
-Auch wenn die Bereitstellung des Modells mithilfe von Docker die gängigste Option ist, gibt es auch die Möglichkeit, den Code mit lokalen Python-Skripts direkt auszuführen. Dazu benötigen Sie zwei wichtige Elemente: 
+Die Verwendung von Docker zum Bereitstellen des Modells als Webdienst ist die gängigste Option. Sie können den Code jedoch auch direkt mithilfe von lokalen Python-Skripts ausführen. Sie benötigen zwei wichtige Komponenten: 
 
 - das Modell
 - die Abhängigkeiten, auf die sich das Modell stützt 
 
-Das Modell kann wie folgt heruntergeladen werden:  
+Sie können das Modell herunterladen:  
 
-- Im Portal: Wählen Sie die Registerkarte **Modelle**, anschließend das gewünschte Modell und dann auf der Seite **Details** die Option **Herunterladen** aus.
-- Über die Befehlszeile: Verwenden Sie den Befehl `az ml model download` (siehe [Referenz zum Herunterladen von Modellen](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false)).
-- Mit dem Python SDK: Verwenden Sie die `Model.download()`-Methode (siehe [Referenz zur Modell-API](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false)).
+- Im Portal durch Auswählen der Registerkarte **Modelle**, des gewünschten Modells und dann auf der Seite **Details** der Option **Herunterladen**.
+- Über die Befehlszeile mit `az ml model download`. (Weitere Informationen finden Sie unter [Herunterladen des Modells](/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext_azure_cli_ml_az_ml_model_download&preserve-view=false).)
+- Mithilfe der `Model.download()`-Methode aus dem Python SDK. (Weitere Informationen finden Sie unter [Modellklasse](/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#download-target-dir------exist-ok-false--exists-ok-none-&preserve-view=false).)
 
-Bei einem Azure-Modell handelt es sich um ein oder mehrere serialisierte Python-Objekte, die als Python-Pickle-Datei (Erweiterung **.pkl**) gepackt sind. Der Inhalt der Pickle-Datei hängt von der ML-Bibliothek oder Technik ab, die zum Trainieren des Modells verwendet wird. Beispielsweise können Sie bei dem Modell aus dem Tutorial das Modell wie folgt laden:
+Bei einem Azure-Modell handelt es sich um ein oder mehrere serialisierte Python-Objekte, die als Python-Pickle-Datei (Erweiterung .pkl) gepackt sind. Der Inhalt der Pickle-Datei hängt von der Bibliothek für maschinelles Lernen oder der Technik ab, die zum Trainieren des Modells verwendet wird. Beispielsweise können Sie bei dem Modell aus dem Tutorial das Modell wie folgt laden:
 
 ```python
 import pickle
@@ -197,17 +197,17 @@ with open('sklearn_mnist_model.pkl', 'rb') as f :
     logistic_model = pickle.load(f, encoding='latin1')
 ```
 
-Abhängigkeiten sind immer knifflig, insbesondere beim maschinellen Lernen, wo es häufig verwirrende spezifische Versionsanforderungen geben kann. Sie können eine Azure Machine Learning-Umgebung auf Ihrem lokalen Computer entweder als vollständige conda-Umgebung oder als Docker-Image neu erstellen, indem Sie die `build_local()`-Methode der `Environment`-Klasse verwenden. 
+Abhängigkeiten sind immer knifflig, insbesondere beim maschinellen Lernen, wo es häufig verwirrende spezifische Versionsanforderungen geben kann. Sie können eine Azure Machine Learning-Umgebung auf Ihrem lokalen Computer entweder als vollständige conda-Umgebung oder als Docker-Image neu erstellen, indem Sie die `build_local()`-Methode der `Environment`-Klasse verwenden: 
 
 ```python
 ws = Workspace.from_config()
 myenv = Environment.get(workspace=ws, name="tutorial-env", version="1")
-myenv.build_local(workspace=ws, useDocker=False) #Creates conda env
+myenv.build_local(workspace=ws, useDocker=False) #Creates conda environment.
 ```
 
-Wenn Sie das Argument `useDocker` von `build_local()` auf `True` festlegen, wird mit der Funktion ein Docker-Image und keine conda-Umgebung erstellt. Wenn Sie mehr Kontrolle benötigen, können Sie die `save_to_directory()`-Methode von `Environment` verwenden, mit der Definitionsdateien vom Typ **conda_dependencies.yml** und **azureml_environment.json** geschrieben werden, die Sie optimieren und als Erweiterungsgrundlage verwenden können. 
+Wenn Sie das Argument `useDocker` von `build_local()` auf `True` festlegen, wird mit der Funktion ein Docker-Image und keine conda-Umgebung erstellt. Wenn Sie mehr Kontrolle benötigen, können Sie die `save_to_directory()`-Methode von `Environment` verwenden, mit der Definitionsdateien vom Typ „conda_dependencies.yml“ und „azureml_environment.json“ geschrieben werden, die Sie optimieren und als Erweiterungsgrundlage verwenden können. 
 
-Die `Environment`-Klasse enthält eine Reihe weiterer Methoden für die Synchronisierung von Umgebungen in Ihrer Computehardware, Ihrem Azure-Arbeitsbereich und Ihren Docker-Images. Weitere Informationen finden Sie in der [Referenz zur `Environment`-API](/python/api/azureml-core/azureml.core.environment(class)).
+Die `Environment`-Klasse enthält eine Reihe weiterer Methoden für die Synchronisierung von Umgebungen in Ihrer Computehardware, Ihrem Azure-Arbeitsbereich und Ihren Docker-Images. Weitere Informationen finden Sie unter [Umgebungsklasse](/python/api/azureml-core/azureml.core.environment(class)).
 
 Nachdem Sie das Modell heruntergeladen und seine Abhängigkeiten gelöst haben, gibt es keine von Azure definierten Einschränkungen hinsichtlich der Durchführung der Bewertung, der Optimierung des Modells, der Verwendung des Lerntransfers usw. 
 
@@ -215,7 +215,7 @@ Nachdem Sie das Modell heruntergeladen und seine Abhängigkeiten gelöst haben, 
 
 Ein lokal trainiertes oder neu trainiertes Modell können Sie bei Azure registrieren. Nach der Registrierung können Sie es mit Azure Compute optimieren oder mithilfe von Azure-Features wie [Azure Kubernetes Service](how-to-deploy-azure-kubernetes-service.md) oder [Triton Inference Server (Vorschau)](how-to-deploy-with-triton.md) bereitstellen.
 
-Zur Verwendung mit dem Python SDK von Azure Machine Learning muss ein Modell als serialisiertes Python-Objekt im Pickle-Format (**PKL**-Datei) gespeichert werden und eine `predict(data)`-Methode implementieren, die ein JSON-serialisierbares Objekt zurückgibt. Beispielsweise können Sie ein lokal trainiertes scikit-learn-Diabetes-Modell wie folgt speichern : 
+Zur Verwendung mit dem Python SDK von Azure Machine Learning muss ein Modell als serialisiertes Python-Objekt im Pickle-Format (PKL-Datei) gespeichert werden. Außerdem muss es eine `predict(data)`-Methode implementieren, die ein als JSON-Code serialisierbares Objekt zurückgibt. Beispielsweise können Sie ein lokal trainiertes scikit-learn-Diabetes-Modell wie folgt speichern: 
 
 ```python
 import joblib
@@ -242,9 +242,9 @@ model = Model.register(model_path="sklearn_regression_model.pkl",
                        workspace=ws)
 ```
 
-Das neu registrierte Modell finden Sie dann auf der Registerkarte **Modell** in Azure Machine Learning:
+Das neu registrierte Modell finden Sie dann in Azure Machine Learning auf der Registerkarte **Modell**:
 
-:::image type="content" source="media/how-to-deploy-local/registered-model.png" alt-text="Screenshot der Registerkarte „Modell“ in Azure Machine Learning mit hochgeladenem Modell":::
+:::image type="content" source="media/how-to-deploy-local/registered-model.png" alt-text="Screenshot der Registerkarte „Modell“ in Azure Machine Learning mit einem hochgeladenen Modell":::
 
 Weitere Informationen zum Hochladen und Aktualisieren von Modellen und Umgebungen finden Sie unter [Register model and deploy locally with advanced usages](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/deployment/deploy-to-local/register-model-deploy-local-advanced.ipynb) (Registrieren des Modells und lokales Bereitstellen mit erweiterten Verwendungsmöglichkeiten).
 

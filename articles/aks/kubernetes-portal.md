@@ -4,21 +4,18 @@ description: Erfahren Sie, wie Sie mit Kubernetes-Ressourcen interagieren, um ei
 services: container-service
 ms.topic: article
 ms.date: 09/21/2020
-ms.openlocfilehash: ae617615a8ba83e311a416581fb41d3cb6ca1b05
-ms.sourcegitcommit: fb3c846de147cc2e3515cd8219d8c84790e3a442
+ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92635608"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571622"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal (Vorschau)
 
 Das Azure-Portal umfasst eine Kubernetes-Ressourcenanzeige (Vorschau) für den einfachen Zugriff auf die Kubernetes-Ressourcen in Ihrem Azure Kubernetes Service-Cluster (AKS). Durch das Anzeigen von Kubernetes-Ressourcen aus dem Azure-Portal wird das Wechseln des Kontexts zwischen dem Azure-Portal und dem `kubectl`-Befehlszeilentool verringert, wodurch die Erfahrung des Anzeigens und Bearbeitens Ihrer Kubernetes-Ressourcen optimiert wird. Die Ressourcenanzeige enthält derzeit mehrere Ressourcentypen, z. B. Bereitstellungen, Pods und Replikatgruppen.
 
-Die Kubernetes-Ressourcenansicht im Azure-Portal ersetzt das [AKS-Dashboard-Add-On][kubernetes-dashboard], das als veraltet festgelegt wird.
-
->[!NOTE]
->Diese Funktion wird zurzeit in [privaten Azure Kubernetes Service-Clustern](./private-clusters.md) nicht unterstützt.
+Die Kubernetes-Ressourcenansicht im Azure-Portal ersetzt das veraltete [AKS-Dashboard-Add-On][kubernetes-dashboard].
 
 [!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
@@ -46,19 +43,19 @@ In diesem Beispiel verwenden wir unseren AKS-Beispielcluster zum Bereitstellen d
 
 Nachdem die YAML-Datei hinzugefügt wurde, zeigt die Ressourcenanzeige sowohl die Kubernetes-Dienste an, die erstellt wurden, den internen Dienst (azure-vote-back), als auch den externen Dienst (azure-vote-front), um auf die Azure Vote-Anwendung zuzugreifen. Der externe Dienst umfasst eine verknüpfte externe IP-Adresse, sodass Sie die Anwendung bequem in Ihrem Browser anzeigen können.
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Im Azure-Portal angezeigte Kubernetes-Podinformationen." lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Im Azure-Portal angezeigte Azure Vote-Anwendungsinformationen." lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>Überwachen von Bereitstellungserkenntnissen
 
 AKS-Cluster mit aktiviertem [Azure Monitor für Container][enable-monitor] können Bereitstellungserkenntnisse schnell anzeigen. In der Kubernetes-Ressourcenansicht können Benutzer den Livestatus von einzelnen Bereitstellungen anzeigen, einschließlich CPU- und Speicherauslastung, sowie zu Azure Monitor wechseln, um ausführlichere Informationen zu erhalten. Im Folgenden finden Sie ein Beispiel für Bereitstellungserkenntnisse aus einem AKS-Beispielcluster:
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Im Azure-Portal angezeigte Kubernetes-Podinformationen." lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="Im Azure-Portal angezeigte Bereitstellungserkenntnisse." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>Bearbeiten von YAML
 
 Die Kubernetes-Ressourcenansicht enthält auch einen YAML-Editor. Ein integrierter YAML-Editor bedeutet, dass Sie Dienste und Bereitstellungen im Portal aktualisieren oder erstellen und die Änderungen sofort anwenden können.
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Im Azure-Portal angezeigte Kubernetes-Podinformationen.":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="Im Azure-Portal angezeigter YAML-Editor für einen Kubernetes-Dienst.":::
 
 Nachdem Sie die YAML-Datei bearbeitet haben, werden Änderungen angewendet, indem Sie **Überprüfen und speichern** auswählen, die Änderungen bestätigen und dann erneut speichern.
 
@@ -80,7 +77,7 @@ Für den Zugriff auf die Kubernetes-Ressourcen müssen Sie Zugriff auf den AKS-C
 
 Bei vorhandenen Clustern müssen Sie möglicherweise die Kubernetes-Ressourcenansicht aktivieren. Um die Ressourcenansicht zu aktivieren, befolgen Sie die Anweisungen im Portal für Ihren Cluster.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Im Azure-Portal angezeigte Kubernetes-Podinformationen." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure-Portalmeldung für die Aktivierung der Kubernetes-Ressourcenansicht." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > Das AKS-Feature für [**vom API-Server autorisierte IP-Adressbereiche**](api-server-authorized-ip-ranges.md) kann hinzugefügt werden, um den Zugriff des API-Servers auf den öffentlichen Endpunkt der Firewall zu beschränken. Eine weitere Option für solche Cluster stellt das Aktualisieren von `--api-server-authorized-ip-ranges` dar, um den Zugriff für einen lokalen Clientcomputer oder einen IP-Adressbereich (aus dem das Portal aufgerufen wird) einzubeziehen. Um diesen Zugriff zuzulassen, benötigen Sie die öffentliche IPv4-Adresse des Computers. Sie finden diese Adresse mithilfe des Befehls unten, oder indem Sie in einem Internetbrowser nach „Wie lautet meine IP-Adresse“ suchen.

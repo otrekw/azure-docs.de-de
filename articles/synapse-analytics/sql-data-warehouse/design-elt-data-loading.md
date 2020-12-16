@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 8b75345743bb398458752d03f853738df713b4f9
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 64ba24eb0eab581310122908fc05d1d671ac1d40
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456433"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96531572"
 ---
 # <a name="data-loading-strategies-for-dedicated-sql-pool-in-azure-synapse-analytics"></a>Strategien zum Laden von Daten für einen dedizierten SQL-Pool in Azure Synapse Analytics
 
@@ -119,8 +119,9 @@ Verwenden Sie beim Laden von Parquet-Dateien die folgende SQL-Datentypzuordnung:
 | [Komplexer Typ](https://nam06.safelinks.protection.outlook.com/?url=https%3A%2F%2Fgithub.com%2Fapache%2Fparquet-format%2Fblob%2Fmaster%2FLogicalTypes.md%23maps&data=02\|01\|kevin%40microsoft.com\|19f74d93f5ca45a6b73c08d7d7f5f111\|72f988bf86f141af91ab2d7cd011db47\|1\|0\|637215323617803168&sdata=FiThqXxjgmZBVRyigHzfh5V7Z%2BPZHjud2IkUUM43I7o%3D&reserved=0) |                  MAP                  |   varchar(max)   |
 
 >[!IMPORTANT] 
-> - Dedizierte SQL-Pools unterstützen derzeit keine Parquet-Datentypen mit einer Genauigkeit von MICROS oder NANOS. 
-> - Wenn die Typen zwischen Parquet und SQL nicht übereinstimmen oder wenn Sie nicht unterstützte Parquet-Datentypen verwenden, tritt eventuell der folgende Fehler auf:  **„HdfsBridge::recordReaderFillBuffer – unerwarteter Fehler beim Ausfüllen des Datensatz-Lesepuffers: ClassCastException: ...“**
+>- Dedizierte SQL-Pools unterstützen derzeit keine Parquet-Datentypen mit einer Genauigkeit von MICROS oder NANOS. 
+>- Wenn die Typen zwischen Parquet und SQL nicht übereinstimmen oder wenn Sie nicht unterstützte Parquet-Datentypen verwenden, tritt eventuell der folgende Fehler auf: **„HdfsBridge::recordReaderFillBuffer – unerwarteter Fehler beim Ausfüllen des Datensatz-Lesepuffers: ClassCastException: ...“**
+>- Das Laden eines Werts außerhalb des Bereichs von 0 bis 127 in eine tinyint-Spalte wird für Parquet und das ORC-Dateiformat nicht unterstützt.
 
 Ein Beispiel für die Erstellung externer Objekte finden Sie unter [Erstellen externer Tabellen](https://docs.microsoft.com/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=sql-pool).
 

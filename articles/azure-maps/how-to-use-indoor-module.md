@@ -1,5 +1,5 @@
 ---
-title: Verwenden des Moduls „Gebäudepläne“ von Azure Maps
+title: Verwenden des Moduls „Gebäudepläne“ von Azure Maps mit Microsoft Creator-Diensten (Vorschau)
 description: Erfahren Sie, wie Sie das Modul „Gebäudepläne“ von Microsoft Azure Maps verwenden, um Karten durch Einbetten der JavaScript-Bibliotheken des Moduls zu rendern.
 author: anastasia-ms
 ms.author: v-stharr
@@ -9,21 +9,25 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: d852d17bdf11ea45f833e3d59cacb435166827fe
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: bc80b7dfd433911ef13906db38f59a76827db258
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895459"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905280"
 ---
 # <a name="use-the-azure-maps-indoor-maps-module"></a>Verwenden des Moduls „Gebäudepläne“ von Azure Maps
 
-Das Azure Maps Web-SDK umfasst das Modul *Azure Maps Indoor* . Mit dem Modul *Azure Maps Indoor* können Sie im Azure Maps-Ersteller erstellte Gebäudepläne rendern.
+> [!IMPORTANT]
+> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+Das Azure Maps Web-SDK umfasst das Modul *Azure Maps Indoor*. Mit dem Modul *Azure Maps Indoor* können Sie in Azure Maps Creator-Diensten (Vorschau) erstellte Gebäudepläne rendern. 
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
-2. [Erstellen einer Erstellerressource](how-to-manage-creator.md)
+1. [Erstellen eines Azure Maps-Kontos](quick-demo-map-app.md#create-an-azure-maps-account)
+2. [Erstellen einer Creator-Ressource (Vorschau)](how-to-manage-creator.md)
 3. [Abrufen eines Primärschlüssels](quick-demo-map-app.md#get-the-primary-key-for-your-account), auch bezeichnet als primärer Schlüssel oder Abonnementschlüssel.
 4. Rufen Sie eine `tilesetId` und eine `statesetId` ab, indem Sie das [Tutorial zum Erstellen von Gebäudeplänen](tutorial-creator-indoor-maps.md) absolvieren.
  Sie müssen diese Bezeichner verwenden, Gebäudepläne mit dem Azure Maps-Modul „Gebäudepläne“ zu rendern.
@@ -56,7 +60,7 @@ Um die global gehostete Azure Content Delivery Network-Version des Moduls *Azure
 
 ## <a name="instantiate-the-map-object"></a>Instanziieren des Kartenobjekts
 
-Erstellen Sie zunächst ein *Karten* -Objekt. Das *Kartenobjekt* wird im nächsten Schritt verwendet, um das *Indoor-Manager* -Objekt zu instanziieren.  Der folgende Code zeigt, wie Sie das *Kartenobjekt* instanziieren:
+Erstellen Sie zunächst ein *Karten*-Objekt. Das *Kartenobjekt* wird im nächsten Schritt verwendet, um das *Indoor-Manager*-Objekt zu instanziieren.  Der folgende Code zeigt, wie Sie das *Kartenobjekt* instanziieren:
 
 ```javascript
 const subscriptionKey = "<Your Azure Maps Primary Subscription Key>";
@@ -77,7 +81,7 @@ const map = new atlas.Map("map-id", {
 
 ## <a name="instantiate-the-indoor-manager"></a>Instanziieren des Indoor-Managers
 
-Um die Indoor-Kachelsets sowie den Kartenstil für die Kacheln zu laden, müssen Sie den *Indoor-Manager* instanziieren. Instanziieren Sie den *Indoor-Manager* , indem Sie das *Kartenobjekt* und die entsprechende `tilesetId` bereitstellen. Wenn Sie [dynamische Kartenstile](indoor-map-dynamic-styling.md) unterstützen möchten, müssen Sie die `statesetId` übergeben. Beim Namen der `statesetId`-Variablen wird die Groß- und Kleinschreibung beachtet. Ihr Code sollte dem folgenden JavaScript-Code ähneln.
+Um die Indoor-Kachelsets sowie den Kartenstil für die Kacheln zu laden, müssen Sie den *Indoor-Manager* instanziieren. Instanziieren Sie den *Indoor-Manager*, indem Sie das *Kartenobjekt* und die entsprechende `tilesetId` bereitstellen. Wenn Sie [dynamische Kartenstile](indoor-map-dynamic-styling.md) unterstützen möchten, müssen Sie die `statesetId` übergeben. Beim Namen der `statesetId`-Variablen wird die Groß- und Kleinschreibung beachtet. Ihr Code sollte dem folgenden JavaScript-Code ähneln.
 
 ```javascript
 const tilesetId = "";
@@ -89,7 +93,7 @@ const indoorManager = new atlas.indoor.IndoorManager(map, {
 });
 ```
 
-Um das Abrufen von Zustandsdaten zu ermöglichen, die Sie bereitstellen, müssen Sie die `statesetId` bereitstellen und `indoorManager.setDynamicStyling(true)` aufrufen. Durch das Abrufen von Zustandsdaten können Sie den Status dynamischer Eigenschaften oder *Zustände* dynamisch aktualisieren. Beispielsweise kann ein Feature wie z. B. ein Raum eine dynamische Eigenschaft ( *Zustand* (state)) namens `occupancy` besitzen. Ihre Anwendung könnte ggf. alle *Zustand* sänderungen abfragen, um die jeweilige Änderung in der visuellen Karte anzuzeigen. Der folgende Code zeigt, wie Sie das Abrufen von Zuständen instanziieren:
+Um das Abrufen von Zustandsdaten zu ermöglichen, die Sie bereitstellen, müssen Sie die `statesetId` bereitstellen und `indoorManager.setDynamicStyling(true)` aufrufen. Durch das Abrufen von Zustandsdaten können Sie den Status dynamischer Eigenschaften oder *Zustände* dynamisch aktualisieren. Beispielsweise kann ein Feature wie z. B. ein Raum eine dynamische Eigenschaft (*Zustand* (state)) namens `occupancy` besitzen. Ihre Anwendung könnte ggf. alle *Zustand* sänderungen abfragen, um die jeweilige Änderung in der visuellen Karte anzuzeigen. Der folgende Code zeigt, wie Sie das Abrufen von Zuständen instanziieren:
 
 ```javascript
 const tilesetId = "";
@@ -138,22 +142,22 @@ Die `eventData`-Variable enthält Informationen über die Ebene oder Einrichtung
 
 In diesem Beispiel wird gezeigt, wie Sie das Modul *Azure Maps Indoor* in Ihrer Webanwendung verwenden. Obwohl das Beispiel in seinem Umfang beschränkt ist, deckt es die Grundlagen ab, die Sie für die ersten Schritte mit dem Modul *Azure Maps Indoor* benötigen. Den vollständigen HTML-Code finden Sie unter diesen Schritten.
 
-1. Verwenden Sie die Azure Content Delivery Network- [Option](#embed-the-indoor-maps-module), um das Modul *Azure Maps Indoor* zu installieren.
+1. Verwenden Sie die Azure Content Delivery Network-[Option](#embed-the-indoor-maps-module), um das Modul *Azure Maps Indoor* zu installieren.
 
 2. Erstellen einer neuen HTML-Datei
 
-3. Verweisen Sie im HTML-Header auf die JavaScript- und Stylesheet-Stile des Moduls *Azure Maps Indoor* .
+3. Verweisen Sie im HTML-Header auf die JavaScript- und Stylesheet-Stile des Moduls *Azure Maps Indoor*.
 
-4. Initialisieren Sie ein *Kartenobjekt* . Das *Kartenobjekt* unterstützt die folgenden Optionen:
+4. Initialisieren Sie ein *Kartenobjekt*. Das *Kartenobjekt* unterstützt die folgenden Optionen:
     - `Subscription key` ist Ihr primärer Abonnementschlüssel für Azure Maps.
     - `center` definiert einen Breiten- und Längengrad für den Mittelpunkt Ihres Gebäudeplans. Geben Sie einen Wert für `center` an, wenn Sie keinen Wert für `bounds` angeben möchten. Das Format sollte als „`center`: [-122.13315, 47.63637]“ angezeigt werden.
     - `bounds` ist die kleinste rechteckige Form, die die Kachelset-Kartendaten umschließt. Legen Sie einen Wert für `bounds` fest, wenn Sie keinen Wert für `center` festlegen möchten. Sie können Ihre Kartenbegrenzungen ermitteln, indem Sie die [Kachelsetlisten-API](/rest/api/maps/tileset/listpreview) aufrufen. Die Kachelsetlisten-API gibt `bbox` zurück, das Sie analysieren und `bounds` zuweisen können. Das Format sollte als „`bounds`: [# west, # south, # east, # north]“ angezeigt werden.
     - `style` gestattet Ihnen, die Farbe des Hintergrunds festzulegen. Um einen weißen Hintergrund anzuzeigen, definieren Sie `style` als „blank“ (leer).
     - `zoom` ermöglicht es Ihnen, die minimalen und maximalen Zoomfaktoren für Ihre Karte anzugeben.
 
-5. Erstellen Sie als Nächstes das Modul *Indoor-Manager* . Weisen Sie *Azure Maps* `tilesetId` zu, und fügen Sie optional die `statesetId` hinzu.
+5. Erstellen Sie als Nächstes das Modul *Indoor-Manager*. Weisen Sie *Azure Maps* `tilesetId` zu, und fügen Sie optional die `statesetId` hinzu.
 
-6. Instanziieren Sie das Steuerelement *Indoor-Ebenenauswahl* .
+6. Instanziieren Sie das Steuerelement *Indoor-Ebenenauswahl*.
 
 7. Fügen Sie Ereignislistener des *Kartenobjekts* hinzu.  
 
@@ -249,7 +253,7 @@ Informieren Sie sich über die APIs, die mit dem Modul *Azure Maps Indoor* in Zu
 > [Anforderungen an Zeichenpakete](drawing-requirements.md)
 
 >[!div class="nextstepaction"]
-> [Ersteller für Gebäudepläne](creator-indoor-maps.md)
+> [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
 
 Weitere Informationen zum Hinzufügen weiterer Daten zu Ihrer Karte:
 

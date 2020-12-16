@@ -9,18 +9,26 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp, devx-track-azurecli
-ms.openlocfilehash: f57e809373a8bd06c4b4afbb9b193464315e788f
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: bc62590b9517b2c6d16fdf2637990b845248d2ec
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959576"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932352"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Tutorial: Konfigurieren eines IoT Edge-Geräts
 
 In diesem Artikel wird ein virtueller Azure-Computer unter Linux als IoT Edge-Gerät konfiguriert, das als transparentes Gateway fungiert. Die Konfiguration eines transparenten Gateways ermöglicht es Geräten, eine Verbindung mit Azure IoT Hub über das Gateway herzustellen, ohne zu wissen, dass das Gateway vorhanden ist. Auch Benutzer, die mit den Geräten in Azure IoT Hub interagieren, bemerken das zwischengeschaltete Gatewaygerät nicht. Am Ende fügen wir unserem System eine Edgeanalyse hinzu, indem wir dem transparenten Gateway IoT Edge-Module hinzufügen.
 
 Die Schritte in diesem Artikel werden normalerweise von einem Cloudentwickler ausgeführt.
+
+In diesem Abschnitt des Tutorials lernen Sie Folgendes:
+
+> [!div class="checklist"]
+>
+> * Erstellen von Zertifikaten, um Ihrem Gatewaygerät das Herstellen einer sicheren Verbindung mit den nachgeschalteten Geräten zu ermöglichen
+> * Erstellen eines IoT Edge-Geräts
+> * Erstellen eines virtuellen Azure-Computers zum Simulieren des IoT Edge-Geräts
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -295,6 +303,10 @@ Als Nächstes aktualisieren wir die Zertifikate und den Hostnamen, indem wir die
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Dieses Tutorial ist Teil einer Reihe, in der jeder Artikel auf den Schritten aufbaut, die jeweils im vorherigen Artikel ausgeführt wurden. Warten Sie mit dem Bereinigen von Ressourcen, bis Sie das letzte Tutorial abgeschlossen haben.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 Wir haben die Konfiguration einer Azure-VM als transparentes Azure IoT Edge-Gateway durchgeführt. Zunächst haben wir Testzertifikate generiert, die wir in Azure Key Vault hochgeladen haben. Anschließend haben Sie ein Skript und eine Resource Manager-Vorlage verwendet, um den virtuellen Computer mit dem Image „Ubuntu Server 16.04 LTS + Azure IoT Edge-Runtime“ aus dem Azure Marketplace bereitzustellen. Als der virtuelle Computer bereit war, haben wir eine SSH-Verbindung hergestellt, uns bei Azure angemeldet und Zertifikate aus Key Vault heruntergeladen. Wir haben die Datei „config.yaml“ aktualisiert, um verschiedene Aspekte der IoT Edge-Runtimekonfiguration zu aktualisieren.

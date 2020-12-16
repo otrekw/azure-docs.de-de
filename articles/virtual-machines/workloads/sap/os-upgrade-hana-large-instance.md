@@ -14,18 +14,21 @@ ms.workload: infrastructure
 ms.date: 07/04/2019
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7c1b09cdcf987c7ed0e489a8a67f77a4099e39a9
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: cdc6dd49fe98085edf3c6fb16606b9f540b5a3a0
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94955462"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608689"
 ---
 # <a name="operating-system-upgrade"></a>Betriebssystemupgrade
 In diesem Dokument werden die Details zu Betriebssystemupgrades für SAP HANA (große Instanzen) beschrieben.
 
 >[!NOTE]
 >Das Betriebssystemupgrade liegt in der Zuständigkeit des Kunden. Der Microsoft Operations-Support kann Sie dabei auf wichtige Punkte hinweisen, die beim Upgrade zu beachten sind. Bevor Sie Planungen für ein Upgrade treffen, sollten Sie auch den Hersteller Ihres Betriebssystems zurate ziehen.
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff *Blacklist*, der von Microsoft nicht mehr verwendet wird. Sobald der Begriff aus der Software entfernt wurde, wird er auch aus diesem Artikel entfernt.
 
 Das Microsoft Operations-Team installiert das Betriebssystem während der Bereitstellung der HLI-Einheiten.
 Im Lauf der Zeit müssen Sie Wartungsvorgänge für das Betriebssystem für die HLI-Einheit vornehmen (z.B. Patches erstellen, optimieren, Upgrades durchführen).

@@ -7,12 +7,12 @@ ms.topic: troubleshooting
 ms.date: 11/16/2020
 ms.author: gunjanj
 ms.subservice: files
-ms.openlocfilehash: 5a35d939c12639770e25c3096c77f13d31310f85
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 90942e4deebdc65fe26ce94f04a15fe2b8c0684c
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96492011"
+ms.locfileid: "96512068"
 ---
 # <a name="troubleshoot-azure-file-shares-performance-issues"></a>Problembehandlung bei Leistungsproblemen mit Azure-Dateifreigaben
 
@@ -74,11 +74,12 @@ Wenn die von Ihnen verwendete Anwendung eine Singlethread-Anwendung ist, kann di
 
 ### <a name="cause"></a>Ursache
 
-Der virtuelle Clientcomputer (Virtual Machine, VM) könnte sich in einer anderen Region als die Dateifreigabe befinden.
+Der virtuelle Clientcomputer (Virtual Machine, VM) könnte sich in einer anderen Region als die Dateifreigabe befinden. Eine andere mögliche Ursache für hohe Wartezeit kann die client- oder netzwerkbedingte Wartezeit sein.
 
 ### <a name="solution"></a>Lösung
 
 - Führen Sie die Anwendung auf einem virtuellen Computer aus, der sich in derselben Region wie die Dateifreigabe befindet.
+- Überprüfen Sie für Ihr Speicherkonto die Transaktionsmetriken **SuccessE2ELatency** und **SuccessServerLatency** über **Azure Monitor** im Azure-Portal. Eine große Differenz zwischen den Metriken „SuccessE2ELatency“ und „SuccessServerLatency“ deutet auf Wartezeit hin, die wahrscheinlich durch das Netzwerk oder den Client verursacht wird. Weitere Informationen finden Sie in der Referenz zur Überwachung von Daten in Azure Files unter [Transaktionsmetriken](storage-files-monitoring-reference.md#transaction-metrics).
 
 ## <a name="client-unable-to-achieve-maximum-throughput-supported-by-the-network"></a>Client kann den maximalen Durchsatz des Netzwerks nicht erreichen
 

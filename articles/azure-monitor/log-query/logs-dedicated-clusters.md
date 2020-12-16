@@ -6,24 +6,23 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 09/16/2020
-ms.openlocfilehash: d261640dfdb59b2b06cfe3066fca26640a0bed54
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: d2446e866c0e12d50a0759373682f4f62bc4bba0
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94874643"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512221"
 ---
 # <a name="azure-monitor-logs-dedicated-clusters"></a>Dedizierte Azure Monitor-Protokollcluster
 
-Dedizierte Azure Monitor-Protokollcluster sind eine Bereitstellungsoption, die für Kunden mit hohem Volumen zur Verfügung steht. Kunden, die mehr als 4 TB an Daten pro Tag erfassen, verwenden dedizierte Cluster. Kunden mit dedizierten Clustern können die Arbeitsbereiche auswählen, die auf diesen Clustern gehostet werden sollen.
+Dedizierte Azure Monitor-Protokollcluster sind eine Bereitstellungsoption, die erweiterte Funktionen für Kunden von Azure Monitor-Protokollen bietet. Kunden mit dedizierten Clustern können die Arbeitsbereiche auswählen, die auf diesen Clustern gehostet werden sollen.
 
-Neben der Unterstützung für ein hohes Volumen bietet die Verwendung dedizierter Cluster noch weitere Vorteile:
+Folgende Funktionen erfordern dedizierte Cluster:
 
-- **Ratenbegrenzung**: Höhere [Erfassungsratenbegrenzungen](../service-limits.md#data-ingestion-volume-rate) sind für Kunden nur auf dedizierten Clustern möglich.
-- **Funktionen**: Bestimmte Unternehmensfunktionen sind nur in dedizierten Clustern verfügbar – insbesondere die Unterstützung von kundenseitig verwalteten Schlüsseln (Customer-managed keys, CMK) und von LockBox. 
-- **Konsistenz**: Kunden verfügen über eigene dedizierte Ressourcen, sodass es keinen Einfluss von anderen Kunden gibt, die in derselben gemeinsam genutzten Infrastruktur ausgeführt werden.
-- **Kosteneffizienz**: Möglicherweise ist die Verwendung eines dedizierten Clusters kostengünstiger, da die zugewiesenen Tarife für die Kapazitätsreservierung die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Kapazitätsreservierungsrabatt berechtigt sind.
-- **Arbeitsbereichsübergreifende** Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden.
+- **[Kundenseitig verwaltete Schlüssel](../platform/customer-managed-keys.md)** : Die Clusterdaten werden mithilfe von Schlüsseln verschlüsselt, die vom Kunden bereitgestellt und gesteuert werden.
+- **[Lockbox](../platform/customer-managed-keys.md#customer-lockbox-preview)** : Kunden können Zugriffsanforderungen von Mitarbeitern des Microsoft-Supports für Daten steuern.
+- **[Doppelte Verschlüsselung](../../storage/common/storage-service-encryption.md#doubly-encrypt-data-with-infrastructure-encryption)** schützt vor dem Szenario, dass einer der Verschlüsselungsalgorithmen oder Schlüssel kompromittiert wurde. In diesem Fall werden die Daten weiterhin durch die zusätzliche Verschlüsselungsebene geschützt.
+- **[Mehrere Arbeitsbereiche](../log-query/cross-workspace-query.md)** : Wenn ein Kunde mehr als einen Arbeitsbereich für die Produktion verwendet, ist es möglicherweise sinnvoll, einen dedizierten Cluster zu verwenden. Arbeitsbereichsübergreifende Abfragen werden schneller ausgeführt, wenn sich alle Arbeitsbereiche im selben Cluster befinden. Möglicherweise ist die Verwendung eines dedizierten Clusters auch kostengünstiger, da die zugewiesenen Tarife für die Kapazitätsreservierung die gesamte Clustererfassung berücksichtigen und auf alle Arbeitsbereiche angewendet werden, auch wenn einige davon klein sind und nicht für den Kapazitätsreservierungsrabatt berechtigt sind.
 
 Dedizierte Cluster erfordern es, dass sich Kunden zur Verwendung einer Datenerfassung von mindestens 1 TB pro Tag verpflichten. Die Migration zu einem dedizierten Cluster ist einfach. Es gibt keinen Datenverlust und keine Dienstunterbrechung. 
 
@@ -53,7 +52,7 @@ Für die Abrechnung des Verbrauchs in einem Cluster stehen zwei Modi zur Verfüg
 
 2. **Arbeitsbereiche**: Die Kapazitätsreservierungskosten für Ihren Cluster werden proportional den Arbeitsbereichen im Cluster zugeordnet (nach Berücksichtigung der knotenspezifischen Zuordnungen von [Azure Security Center](../../security-center/index.yml) für den jeweiligen Arbeitsbereich).
 
-Beachten Sie Folgendes: Wenn Ihr Arbeitsbereich den Legacy-Tarif pro Knoten verwendet, wird er, wenn er mit einem Cluster verknüpft ist, basierend auf den in Bezug auf die Kapazitätsreservierung des Clusters erfassten Daten und nicht mehr pro Knoten abgerechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
+Wenn Ihr Arbeitsbereich den Legacytarif pro Knoten verwendet, wird er, wenn er mit einem Cluster verknüpft ist, basierend auf den in Bezug auf die Kapazitätsreservierung des Clusters erfassten Daten und nicht mehr pro Knoten abgerechnet. Datenzuweisungen pro Knoten von Azure Security Center werden weiterhin angewendet.
 
 Weitere Informationen zur Abrechnung für dedizierte Log Analytics-Cluster finden Sie [hier]( https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#log-analytics-dedicated-clusters).
 

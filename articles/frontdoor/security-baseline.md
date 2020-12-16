@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 11/18/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
-ms.openlocfilehash: 2a4d4df1e9387f78c5140a3beac6767faafc4853
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 53324709e2d3dd11160ee0b7837d86d9e9594571
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96351740"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763926"
 ---
 # <a name="azure-security-baseline-for-azure-front-door"></a>Azure-Sicherheitsbaseline für Azure Front Door
 
@@ -206,7 +206,7 @@ Es wird empfohlen, dass der Kunde einen Prozess erstellt, um die Attribut- und N
 
 ### <a name="lt-3-enable-logging-for-azure-network-activities"></a>LT-3: Aktivieren der Protokollierung für Azure-Netzwerkaktivitäten
 
-**Leitfaden**: Azure Frond Door ist nicht für die Bereitstellung in virtuellen Netzwerken vorgesehen. Aus diesem Grund sind Kunden nicht in der Lage, Protokollierung des Netzwerksicherheitsgruppen-Datenflusses zu aktivieren, Datenverkehr durch eine Firewall zu leiten oder Paketerfassungen durchzuführen.
+**Leitfaden**: Azure Front Door ist nicht für die Bereitstellung in virtuellen Netzwerken vorgesehen. Aus diesem Grund sind Kunden nicht in der Lage, die Protokollierung des Netzwerksicherheitsgruppen-Datenflusses zu aktivieren, Datenverkehr über eine Firewall zu leiten oder Paketerfassungen durchzuführen.
 
 Azure Front Door protokolliert den gesamten Netzwerkdatenverkehr, der für Kundenzugriff verarbeitet wird. Aktivieren Sie die Funktion „Netzwerk-Datenflussprotokolle“, und konfigurieren Sie diese Protokolle so, dass sie für die langfristige Aufbewahrung und Überwachung an ein Speicherkonto gesendet werden.
 
@@ -405,7 +405,7 @@ Diese Strategie sollte dokumentierte Anleitungen, Richtlinien und Standards für
 
 Weitere Informationen finden Sie unter den aufgeführten Links.
 
-- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?amp;bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
+- [Empfehlung für eine Azure-Sicherheitsarchitektur: Speicher, Daten, Verschlüsselung](/azure/architecture/framework/security/storage-data-encryption?bc=%2fsecurity%2fcompass%2fbreadcrumb%2ftoc.json&toc=%2fsecurity%2fcompass%2ftoc.json)
 
 - [Grundlegende Azure-Sicherheitsinformationen: Sicherheit, Verschlüsselung und Speicherung von Azure-Daten](../security/fundamentals/encryption-overview.md)
 

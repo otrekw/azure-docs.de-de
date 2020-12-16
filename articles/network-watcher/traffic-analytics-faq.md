@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: damendo
-ms.openlocfilehash: 25f4ae0dbfd7827a36dede6a889c342ea490e273
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: f27f2a6319bf2648546a62c2566d938db657738f
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94948475"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518463"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Häufig gestellte Fragen zu Traffic Analytics
 
@@ -401,3 +401,6 @@ Die Seite mit der Topologie der Subnetze hat zwei Hauptabschnitte:
 - Um zu anderen hervorgehobenen Knoten in der Topologieansicht zu gelangen, drücken Sie für die Vorwärtsbewegung `Shift+Right arrow`. 
 - Bei hervorgehobenen Knoten wird der Fokus zur **Infotoolbox** des Knotens verschoben. Standardmäßig wird der Fokus zur Schaltfläche **Weitere Details** in der **Infotoolbox** verschoben. Zur weiteren Navigation in der Ansicht **Box** drücken Sie die Taste `Right arrow` und `Left arrow`, um vorwärts bzw. rückwärts zu navigieren. Das Drücken von `Enter` hat die gleiche Wirkung wie die Auswahl der fokussierten Schaltfläche in der **Infotoolbox**.
 - Wenn Sie einen solchen Knoten auswählen, können Sie alle seine Verbindungen nacheinander aufrufen, indem Sie `Shift+Left arrow` drücken. Der Fokus wird zur **Infotoolbox** dieser Verbindung verschoben. Jederzeit kann der Fokus durch erneutes Drücken von `Shift+Right arrow` zurück zum Knoten verschoben werden.
+
+## <a name="are-classic-nsgs-supported"></a>Werden klassische Netzwerksicherheitsgruppen unterstützt?
+Nein, Traffic Analytics unterstützt keine klassischen Netzwerksicherheitsgruppen (NSGs). Es wird empfohlen, IaaS-Ressourcen vom klassischen Schema zu Azure Resource Manager zu migrieren, da klassische Ressourcen als [veraltet](https://docs.microsoft.com/azure/virtual-machines/classic-vm-deprecation) markiert werden. [Lesen Sie diesen Artikel](https://docs.microsoft.com/azure/virtual-machines/migration-classic-resource-manager-overview), um zu erfahren, wie Sie die Migration ausführen.

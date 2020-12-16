@@ -7,14 +7,14 @@ tags: billing
 ms.service: cost-management-billing
 ms.subservice: reservations
 ms.topic: conceptual
-ms.date: 02/13/2020
+ms.date: 12/02/2020
 ms.author: banders
-ms.openlocfilehash: 070d105785ee3ab9811188406bda56dbe6ceb558
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 874d5cb022a38b172bb37009bd86b5e6988f3204
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350890"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96545603"
 ---
 # <a name="get-enterprise-agreement-reservation-costs-and-usage"></a>Abrufen von Reservierungskosten und Nutzung laut Enterprise Agreement
 
@@ -139,6 +139,8 @@ Rufen Sie die amortisierten Kostendaten ab, und filtern Sie die Daten nach einer
 1. Abrufen der geschätzten Kosten der nutzungsbasierten Bezahlung. Multiplizieren Sie den _UnitPrice_-Wert mit _Quantity_-Werten (Menge), um die geschätzten Kosten der nutzungsbasierten Bezahlung zu erhalten, falls kein Reservierungsrabatt auf die Nutzung angewendet wurde.
 2. Abrufen der Reservierungskosten. Addieren Sie die _Cost_-Werte (Kosten), um den finanziellen Gegenwert dessen zu erhalten, was Sie für die reservierte Instanz bezahlt haben. Dieser enthält die verwendeten und nicht verwendeten Kosten der Reservierung.
 3. Subtrahieren Sie die Reservierungskosten von den geschätzten Kosten der nutzungsbasierten Bezahlung, um die geschätzten Einsparungen zu erhalten.
+
+Beachten Sie Folgendes: Wenn Sie über eine nicht ausgelastete Reservierung verfügen, wird der Eintrag _UnusedReservation_ für _ChargeType_ zu einem Faktor, der berücksichtigt werden muss. Wenn Sie über eine vollständig ausgelastete Reservierung verfügen, erhalten Sie die maximal möglichen Einsparungen. Jegliche ungenutzte Reservierung (_UnusedReservation_) führt dazu, dass weniger Einsparungen erzielt werden.
 
 ## <a name="reservation-purchases-and-amortization-in-cost-analysis"></a>Reservierungseinkäufe und Amortisierung in der Kostenanalyse
 

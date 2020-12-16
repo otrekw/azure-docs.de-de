@@ -1,20 +1,20 @@
 ---
 title: Behandeln von Bereitstellungsproblemen
-description: Hier erfahren Sie, wie Azure Ressource Manager-Vorlagenbereitstellungen überwacht und Probleme damit behandelt werden. Sie finden hier Aktivitätsprotokolle und den Bereitstellungsverlauf.
+description: Hier erfahren Sie, wie Azure Ressource Manager-Vorlagenbereitstellungen (ARM-Vorlagen) überwacht und Probleme damit behandelt werden. Sie finden hier Aktivitätsprotokolle und den Bereitstellungsverlauf.
 author: mumian
 ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 0da6c614572e73a00db1087621eaca3bd790aad6
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 7a44edc7cd09709f14415fa0a92e63558001d46d
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92891804"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928527"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Tutorial: Problembehandlung bei Bereitstellungen von ARM-Vorlagen
 
-Hier erfahren Sie, wie Probleme bei der Bereitstellung von ARM-Vorlagen (Azure Resource Manager) behandelt werden. In diesem Tutorial erzeugen Sie zwei Fehler in einer Vorlage und lernen dann, wie die Probleme mithilfe der Aktivitätsprotokolle und des Bereitstellungsverlaufs behoben werden.
+Hier erfahren Sie, wie Probleme bei der Bereitstellung von ARM-Vorlagen (Azure Resource Manager-Vorlagen) behandelt werden. In diesem Tutorial erzeugen Sie zwei Fehler in einer Vorlage und lernen dann, wie die Probleme mithilfe der Aktivitätsprotokolle und des Bereitstellungsverlaufs behoben werden.
 
 Im Zusammenhang mit der Vorlagenbereitstellung gibt es zwei Fehlertypen:
 
@@ -37,7 +37,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Damit Sie die Anweisungen in diesem Artikel ausführen können, benötigen Sie Folgendes:
 
-- Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von Azure Resource Manager-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
+- Visual Studio Code mit der Erweiterung „Azure Resource Manager-Tools“. Weitere Informationen finden Sie unter [Schnellstart: Erstellen von ARM-Vorlagen mit Visual Studio Code](quickstart-create-templates-use-visual-studio-code.md).
 
 ## <a name="create-a-problematic-template"></a>Erstellen einer problematischen Vorlage
 

@@ -6,13 +6,13 @@ ms.author: weetok
 ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
-ms.date: 01/08/2020
-ms.openlocfilehash: 0a578f1edb51efd5f0905e663d42bf5a6fbfc783
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.date: 12/09/2020
+ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96489036"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921031"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -34,7 +34,7 @@ Bei den in diesem Lab verwendeten Daten handelt es sich um New York City-Taxidat
 
 * **Azure Data Lake Storage Gen2-Speicherkonto**: Falls Sie nicht über ein ADLS Gen2-Speicherkonto verfügen, können Sie sich über das [Erstellen eines ADLS Gen2-Speicherkontos](../storage/common/storage-account-create.md) informieren.
 
-* **Azure Synapse Analytics (vormals SQL DW)** : Wenn Sie nicht über eine Azure Synapse Analytics-Instanz (vormals SQL DW) verfügen, können Sie sich über das [Erstellen einer Azure Synapse Analytics-Instanz](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) informieren.
+* **Azure Synapse Analytics**: Wenn Sie nicht über eine Azure Synapse Analytics-Instanz verfügen, können Sie sich über das [Erstellen einer Azure Synapse Analytics-Instanz](../synapse-analytics/sql-data-warehouse/create-data-warehouse-portal.md) informieren.
 
 * **Azure Data Factory**: Informieren Sie sich über das [Erstellen einer Data Factory](./quickstart-create-data-factory-portal.md), falls Sie noch keine Data Factory erstellt haben.
 
@@ -79,7 +79,7 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
 
 ### <a name="create-an-azure-synapse-analytics-linked-service"></a>Erstellen eines verknüpften Azure Synapse Analytics-Diensts
 
-1. Wiederholen Sie den Vorgang, um einen verknüpften Azure Synapse Analytics-Dienst hinzuzufügen. Klicken Sie auf der Registerkarte „Verbindungen“ auf **Neu**. Wählen Sie die Kachel **Azure Synapse Analytics (vormals SQL DW)** aus, und klicken Sie auf „Weiter“.
+1. Wiederholen Sie den Vorgang, um einen verknüpften Azure Synapse Analytics-Dienst hinzuzufügen. Klicken Sie auf der Registerkarte „Verbindungen“ auf **Neu**. Wählen Sie die Kachel **Azure Synapse Analytics** aus, und klicken Sie auf „Weiter“.
 
     ![Portal: Konfigurieren 6](media/lab-data-flow-data-share/configure6.png)
 1. Geben Sie im Konfigurationsbereich für verknüpfte Dienste „SQLDW“ als Namen für den verknüpften Dienst ein. Geben Sie Ihre Anmeldeinformationen ein, damit Data Factory eine Verbindung mit Ihrer Datenbank herstellen kann. Geben Sie bei Verwendung der SQL-Authentifizierung den Servernamen, die Datenbank, Ihren Benutzernamen und das Kennwort ein. Sie können die Korrektheit Ihrer Verbindungsinformationen überprüfen, indem Sie auf **Verbindung testen** klicken. Klicken Sie auf **Erstellen**, nachdem der Vorgang abgeschlossen wurde.
@@ -155,7 +155,7 @@ Sie haben Ihr Quelldataset erfolgreich erstellt. Stellen Sie in den Quelleinstel
 1. Klicken Sie zum Überprüfen, ob Ihre Kopieraktivität richtig funktioniert, oben in der Pipelinecanvas auf **Debuggen**, um eine Debugausführung durchzuführen. Mit einer Debugausführung können Sie Ihre Pipeline entweder von Anfang bis Ende oder bis zu einem Breakpoint testen, bevor Sie sie im Data Factory-Dienst veröffentlichen.
 
     ![Portal: Kopieren 11](media/lab-data-flow-data-share/copy11.png)
-1. Navigieren Sie in der Pipelinecanvas zur Registerkarte **Ausgabe**, um Ihre Debugausführung zu überwachen. Der Überwachungsbildschirm wird alle 20 Sekunden automatisch aktualisiert (oder wenn Sie auf die Schaltfläche „Aktualisieren“ klicken). Die Kopieraktivität verfügt über eine spezielle Überwachungsansicht, auf die Sie zugreifen können, indem Sie in der Spalte **Aktionen** auf das Brillensymbol klicken.
+1. Navigieren Sie in der Pipelinecanvas zur Registerkarte **Ausgabe**, um Ihre Debugausführung zu überwachen. Der Überwachungsbildschirm wird alle 20 Sekunden automatisch aktualisiert (oder wenn Sie auf die Schaltfläche „Aktualisieren“ klicken). Die Copy-Aktivität verfügt über eine spezielle Überwachungsansicht, auf die Sie zugreifen können, indem Sie in der Spalte **Aktionen** auf das Brillensymbol klicken.
 
     ![Portal: Kopieren 12](media/lab-data-flow-data-share/copy12.png)
 1. Die Überwachungsansicht für den Kopiervorgang enthält die Ausführungsdetails und Leistungsmerkmale zur Aktivität. Sie können Informationen zu „gelesene/geschriebene Daten“, „gelesene/geschriebene Zeilen“, „gelesene/geschriebene Dateien“ und „Durchsatz“ anzeigen. Wenn Sie alles richtig konfiguriert haben, sollten Sie verfolgen können, dass 49.999 Zeilen in eine Datei in Ihrer ADLS-Senke geschrieben werden.
@@ -226,7 +226,7 @@ Mit dem in diesem Schritt erstellten Datenfluss wird für das Dataset „TripDat
     ![Portal: Join 1](media/lab-data-flow-data-share/join1.png)
 1. Geben Sie Ihrer Join-Transformation den Namen „InnerJoinWithTripFares“. Wählen Sie in der Dropdownliste des rechten Streams „TripFaresSQL“ aus. Wählen Sie **Innerer** als Join-Typ aus. Weitere Informationen zu den unterschiedlichen Join-Typen im Zuordnungsdatenfluss finden Sie unter [Join-Typen](./data-flow-join.md#join-types).
 
-    Wählen Sie über die Dropdownliste mit den **Verknüpfungsbedingungen** aus, welche Spalten für jeden Stream abgeglichen werden sollen. Klicken Sie zum Hinzufügen einer weiteren Verknüpfungsbedingung neben einer vorhandenen Bedingung auf das Pluszeichen. Standardmäßig werden alle Verknüpfungsbedingungen mit einem AND-Operator kombiniert. Dies bedeutet, dass alle Bedingungen erfüllt sein müssen, damit sich eine Übereinstimmung ergibt. In diesem Lab möchten wir die Spalten `medallion`, `hack_license`, `vendor_id` und `pickup_datetime` verwenden.
+    Wählen Sie über die Dropdownliste mit den **Verknüpfungsbedingungen** aus, welche Spalten für jeden Stream abgeglichen werden sollen. Klicken Sie zum Hinzufügen einer weiteren Verknüpfungsbedingung neben einer vorhandenen Bedingung auf das Pluszeichen. Standardmäßig werden alle Verknüpfungsbedingungen mit einem AND-Operator kombiniert. Das bedeutet, dass alle Bedingungen erfüllt sein müssen, damit sich eine Übereinstimmung ergibt. In diesem Lab möchten wir die Spalten `medallion`, `hack_license`, `vendor_id` und `pickup_datetime` verwenden.
 
     ![Portal: Join 2](media/lab-data-flow-data-share/join2.png)
 1. Vergewissern Sie sich anhand einer Datenvorschau, dass Sie 25 Spalten erfolgreich verknüpft haben.
@@ -274,7 +274,7 @@ Mit dem in diesem Schritt erstellten Datenfluss wird für das Dataset „TripDat
 
     ![Portal: Senke 2](media/lab-data-flow-data-share/sink2.png)
 
-1. Wählen Sie die Kachel **Azure Synapse Analytics (vormals SQL DW)** aus, und klicken Sie auf „Weiter“.
+1. Wählen Sie die Kachel **Azure Synapse Analytics** aus, und klicken Sie auf „Weiter“.
 
     ![Portal: Senke 3](media/lab-data-flow-data-share/sink3.png)
 1. Geben Sie Ihrem Dataset den Namen „AggregatedTaxiData“. Wählen Sie „SQLDW“ als verknüpften Dienst aus. Wählen Sie **Neue Tabelle erstellen** aus, und geben Sie der neuen Tabelle den Namen „dbo.AggregateTaxiData“. Klicken Sie anschließend auf „OK“.

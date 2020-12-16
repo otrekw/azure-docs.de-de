@@ -6,12 +6,12 @@ ms.author: ambhatna
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 9/23/2020
-ms.openlocfilehash: eaccd0559439ce228325205f5845151f0e76bcae
-ms.sourcegitcommit: 3bcce2e26935f523226ea269f034e0d75aa6693a
+ms.openlocfilehash: a8e2d77ff3c7cb2e4352b21cd87d630331e28660
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/23/2020
-ms.locfileid: "92484524"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906147"
 ---
 # <a name="connectivity-and-networking-concepts-for-azure-database-for-mysql---flexible-server-preview"></a>Konnektivitäts- und Netzwerkkonzepte für Azure Database for MySQL – Flexible Server (Vorschau)
 
@@ -60,7 +60,7 @@ Nachstehend werden einige Konzepte erläutert, die Sie kennen sollten, wenn Sie 
 
 * **Delegiertes Subnetz:** Ein virtuelles Netzwerk enthält Subnetze. Subnetze bieten Ihnen die Möglichkeit, Ihr virtuelles Netzwerk in kleinere Adressräume einzuteilen. Azure-Ressourcen werden in bestimmten Subnetzen innerhalb eines virtuellen Netzwerks bereitgestellt. 
 
-   Ihre MySQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für MySQL Flexible Server-Instanzen eingeteilt ( **delegiert** ) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for MySQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforMySQL/flexibleServers“ als Delegierungseigenschaft festlegen.
+   Ihre MySQL Flexible Server-Instanz muss sich in einem Subnetz befinden, das eigens für MySQL Flexible Server-Instanzen eingeteilt (**delegiert**) wurde. Diese Delegierung bedeutet, dass dieses Subnetz nur von Azure Database for MySQL Flexible Server-Instanzen genutzt werden kann. Im delegierten Subnetz können sich keine anderen Azure-Ressourcentypen befinden. Sie können ein Subnetz delegieren, indem Sie „Microsoft.DBforMySQL/flexibleServers“ als Delegierungseigenschaft festlegen.
 
 * **Netzwerksicherheitsgruppen (NSG):** Mit Sicherheitsregeln in Netzwerksicherheitsgruppen können Sie den Typ des ein- und ausgehenden Netzwerkdatenverkehrs von Subnetzen virtueller Netzwerke und Netzwerkschnittstellen filtern. Weitere Informationen finden Sie unter [Netzwerksicherheitsgruppen](../../virtual-network/network-security-groups-overview.md).
 
@@ -99,7 +99,7 @@ Unter den folgenden Links erfahren Sie, wie Sie den öffentlichen Zugriff (zugel
 ### <a name="troubleshooting-public-access-issues"></a>Behandeln von Problemen mit dem öffentlichen Zugriff
 Wenn der Zugriff auf den Serverdienst „Microsoft Azure Database for MySQL“ nicht das erwartete Verhalten aufweist, sind folgende Punkte zu beachten:
 
-* **Änderungen an der Zulassungsliste sind noch nicht wirksam** : Änderungen der Firewallkonfiguration für den Azure Database for MySQL-Server werden möglicherweise erst nach fünf Minuten wirksam.
+* **Änderungen an der Zulassungsliste sind noch nicht wirksam**: Änderungen der Firewallkonfiguration für den Azure Database for MySQL-Server werden möglicherweise erst nach fünf Minuten wirksam.
 
 * **Fehler bei der Authentifizierung:** Wenn ein Benutzer nicht über die Berechtigungen für den Azure Database for MySQL-Server verfügt oder das verwendete Kennwort falsch ist, wird die Verbindung mit dem Azure Database for MySQL-Server verweigert. Durch das Erstellen einer Firewalleinstellung wird Clients lediglich die Möglichkeit gegeben, einen Verbindungsversuch zum Server zu unternehmen. Jeder Client muss weiterhin die erforderlichen Sicherheitsanmeldeinformationen bereitstellen.
 
@@ -107,6 +107,8 @@ Wenn der Zugriff auf den Serverdienst „Microsoft Azure Database for MySQL“ n
 
    * Fragen Sie Ihren Internetdienstanbieter nach dem IP-Adressbereich, der Ihren Clientcomputern zugewiesen ist, die auf den Azure Database for MySQL-Server zugreifen, und fügen Sie dann den IP-Adressbereich als Firewallregel hinzu.
    * Verwenden Sie stattdessen die statische IP-Adressierung für die Clientcomputer, und fügen Sie dann die statische IP-Adresse als Firewallregel hinzu.
+  
+* **Die Firewallregel ist für das IPv6-Format nicht verfügbar:** Firewallregeln müssen das IPv4-Format aufweisen. Wenn Sie Firewallregeln im IPv6-Format angeben, wird ein Validierungsfehler angezeigt.
 
 
 ## <a name="hostname"></a>Hostname

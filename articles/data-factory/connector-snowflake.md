@@ -10,13 +10,13 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
-ms.date: 11/24/2020
-ms.openlocfilehash: c0d0e3154360d787bfc2072c5ae1fe878fa1d138
-ms.sourcegitcommit: 1bf144dc5d7c496c4abeb95fc2f473cfa0bbed43
+ms.date: 12/08/2020
+ms.openlocfilehash: 49e4a6f7f8c268669a94796257d5740ec6f4e6ff
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96003655"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96902084"
 ---
 # <a name="copy-and-transform-data-in-snowflake-by-using-azure-data-factory"></a>Kopieren und Transformieren von Daten in Snowflake mithilfe von Azure Data Factory
 
@@ -159,7 +159,7 @@ Beim Kopieren von Daten aus Snowflake werden die folgenden Eigenschaften im Absc
 
 Wenn der Senkendatenspeicher und das Format die in diesem Abschnitt beschriebenen Kriterien erfüllen, können Sie mit der Kopieraktivität Kopiervorgänge direkt aus Snowflake in die Senke durchführen. Data Factory überprüft die Einstellungen und gibt bei der Ausführung der Kopieraktivität einen Fehler aus, wenn die folgenden Kriterien nicht erfüllt werden:
 
-- Der **verknüpfte Senkendienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung.
+- Der **verknüpfte Senkendienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung. Wenn Sie Daten direkt im folgenden unterstützten Format in Azure Data Lake Storage Gen2 kopieren möchten, können Sie einen verknüpften Azure Blob-Dienst mit SAS-Authentifizierung für Ihr ADLS Gen2-Konto erstellen. Damit vermeiden Sie [gestaffelte Kopiervorgänge aus Snowflake](#staged-copy-from-snowflake).
 
 - Das **Senkendatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **JSON** mit den folgenden Konfigurationen:
 
@@ -173,7 +173,6 @@ Wenn der Senkendatenspeicher und das Format die in diesem Abschnitt beschriebene
         - `compression` kann auf **keine Komprimierung** oder auf **gzip**, **bzip2** oder **deflate** festgelegt sein.
         - `encodingName` wird als Standardwert übernommen oder ist auf **utf-8** festgelegt.
         - `filePattern` in der Senke der Kopieraktivität wird auf dem Standardwert belassen oder auf **setOfObjects** festgelegt.
-
 - In der Quelle der Kopieraktivität ist `additionalColumns` nicht angegeben.
 - Die Spaltenzuordnung ist nicht angegeben.
 
@@ -276,7 +275,7 @@ Wenn der Quelldatenspeicher und das Format vom Snowflake-Befehl „COPY“ nativ
 
 Beim Kopieren von Daten in Snowflake werden die folgenden Eigenschaften im Abschnitt **sink** der Kopieraktivität unterstützt.
 
-| Eigenschaft          | Beschreibung                                                  | Erforderlich                                      |
+| Eigenschaft          | BESCHREIBUNG                                                  | Erforderlich                                      |
 | :---------------- | :----------------------------------------------------------- | :-------------------------------------------- |
 | type              | Die „type“-Eigenschaft der Senke der Kopieraktivität, festgelegt auf **SnowflakeSink**. | Ja                                           |
 | preCopyScript     | Geben Sie eine SQL-Abfrage an, die bei jeder Ausführung von der Kopieraktivität ausgeführt werden soll, bevor Daten in Snowflake geschrieben werden. Sie können diese Eigenschaft nutzen, um vorab geladene Daten zu bereinigen. | Nein                                            |
@@ -290,7 +289,7 @@ Beim Kopieren von Daten in Snowflake werden die folgenden Eigenschaften im Absch
 
 Wenn der Quelldatenspeicher und das Format die in diesem Abschnitt beschriebenen Kriterien erfüllen, können Sie mit der Kopieraktivität Kopiervorgänge direkt aus der Quelle in Snowflake durchführen. Azure Data Factory überprüft die Einstellungen und gibt bei der Ausführung der Kopieraktivität einen Fehler aus, wenn die folgenden Kriterien nicht erfüllt werden:
 
-- Der **verknüpfte Quelldienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung.
+- Der **verknüpfte Quelldienst** ist [**Azure Blob Storage**](connector-azure-blob-storage.md) mit **SAS**-Authentifizierung. Wenn Sie Daten direkt im folgenden unterstützten Format aus Azure Data Lake Storage Gen2 kopieren möchten, können Sie einen verknüpften Azure Blob-Dienst mit SAS-Authentifizierung für Ihr ADLS Gen2-Konto erstellen. Damit vermeiden Sie [gestaffelte Kopiervorgänge nach Snowflake](#staged-copy-to-snowflake).
 
 - Das **Quelldatenformat** lautet **Parquet**, **Durch Trennzeichen getrennter Text** oder **JSON** mit den folgenden Konfigurationen:
 
@@ -409,7 +408,7 @@ Beim Transformieren von Daten im Zuordnungsdatenfluss können Sie in Snowflake T
 
 In der folgenden Tabelle sind die von einer Snowflake-Quelle unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Quelloptionen** bearbeiten. Der Connector verwendet die [interne Datenübertragung](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer) von Snowflake.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Tabelle | Wenn Sie „Tabelle“ als Eingabe auswählen, ruft der Datenfluss alle Daten aus der Tabelle ab, die im Snowflake-Dataset oder bei Verwendung des Inlinedatasets in den Quelloptionen angegeben ist. | Nein | String | *(nur für Inlinedataset)*<br>tableName<br>schemaName |
 | Abfrage | Wenn Sie „Abfrage“ als Eingabe auswählen, geben Sie eine Abfrage zum Abrufen von Daten aus Snowflake ein. Diese Einstellung überschreibt jede Tabelle, die Sie im Dataset ausgewählt haben.<br>Wenn der Name des Schemas, der Tabelle und Spalten Kleinbuchstaben enthält, geben Sie den Objektbezeichner in der Abfrage an, z. B. `select * from "schema"."myTable"`. | Nein | String | Abfrage |
@@ -439,7 +438,7 @@ source(allowSchemaDrift: true,
 
 In der folgenden Tabelle sind die von einer Snowflake-Senke unterstützten Eigenschaften aufgeführt. Sie können diese Eigenschaften auf der Registerkarte **Einstellungen** bearbeiten. Bei Verwendung eines Inlinedatasets werden zusätzliche Einstellungen angezeigt. Diese entsprechen den Eigenschaften, die im Abschnitt zu den [Dataseteigenschaften](#dataset-properties) beschrieben sind. Der Connector verwendet die [interne Datenübertragung](https://docs.snowflake.com/en/user-guide/spark-connector-overview.html#internal-data-transfer) von Snowflake.
 
-| Name | Beschreibung | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
+| Name | BESCHREIBUNG | Erforderlich | Zulässige Werte | Datenflussskript-Eigenschaft |
 | ---- | ----------- | -------- | -------------- | ---------------- |
 | Updatemethode | Geben Sie an, welche Vorgänge für das Snowflake-Ziel zulässig sind.<br>Um Aktualisierungs-, Upsert- oder Löschaktionen auf Zeilen anzuwenden, muss eine [Zeilenänderungstransformation](data-flow-alter-row.md) zum Kennzeichnen von Zeilen für diese Aktionen erfolgen. | Ja | `true` oder `false` | deletable <br/>insertable <br/>updateable <br/>upsertable |
 | Schlüsselspalten | Für Update-, Upsert- und Löschvorgänge muss mindestens eine Schlüsselspalte festgelegt werden, um die Zeile zu bestimmen, die geändert werden soll. | Nein | Array | keys |

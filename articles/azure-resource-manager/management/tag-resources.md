@@ -2,14 +2,14 @@
 title: Markieren von Ressourcen, Ressourcengruppen und Abonnements für die logische Organisation
 description: Zeigt, wie Sie Tags zum Organisieren von Azure-Ressourcen für die Abrechnung und Verwaltung anwenden können.
 ms.topic: conceptual
-ms.date: 11/20/2020
+ms.date: 12/03/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 9e9ef96a712e5ac2ba483170fb8ef9c89115b4f8
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: e47d3acf15ce5e4f5cb70444419b76beb21ae98b
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95972560"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558146"
 ---
 # <a name="use-tags-to-organize-your-azure-resources-and-management-hierarchy"></a>Verwenden von Tags zum Organisieren von Azure-Ressourcen und Verwaltungshierarchie
 
@@ -26,9 +26,11 @@ Empfehlungen zum Implementieren einer Tagstrategie finden Sie unter [Leitfaden z
 
 ## <a name="required-access"></a>Erforderlicher Zugriff
 
-Zum Anwenden von Tags auf eine Ressource müssen Sie über Schreibzugriff für den Ressourcentyp **Microsoft.Resources/tags** verfügen. Mit der Rolle [Tagmitwirkender](../../role-based-access-control/built-in-roles.md#tag-contributor) können Sie Tags auf eine Entität anwenden, ohne auf die Entität selbst zugreifen zu müssen. Derzeit kann die Rolle „Tagmitwirkender“ keine Tags über das Portal auf Ressourcen oder Ressourcengruppen anwenden. Sie kann über das Portal Tags auf Abonnements anwenden. Sie unterstützt alle Tagvorgänge über PowerShell und die REST-API.  
+Es gibt zwei Möglichkeiten, den erforderlichen Zugriff auf Tagressourcen zu erhalten.
 
-Außerdem gewährt die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) den erforderlichen Zugriff zum Anwenden von Tags auf Entitäten. Zum Anwenden von Tags auf nur einen Ressourcentyp verwenden Sie die Rolle „Mitwirkender“ für die jeweilige Ressource. Zum Anwenden von Tags auf virtuelle Computer beispielsweise verwenden Sie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
+- Sie können Schreibzugriff auf den Ressourcentyp **Microsoft.Resources/tags** haben. Mit diesem Zugriff können Sie alle Ressourcen markieren, auch wenn Sie keinen Zugriff auf die Ressource selbst haben. Die Rolle [Tagmitwirkender](../../role-based-access-control/built-in-roles.md#tag-contributor) gewährt diesen Zugriff. Derzeit kann die Rolle „Tagmitwirkender“ keine Tags über das Portal auf Ressourcen oder Ressourcengruppen anwenden. Sie kann über das Portal Tags auf Abonnements anwenden. Sie unterstützt alle Tagvorgänge über PowerShell und die REST-API.  
+
+- Sie können Schreibzugriff auf die Ressource selbst haben. Die Rolle [Mitwirkender](../../role-based-access-control/built-in-roles.md#contributor) gewährt den erforderlichen Zugriff zum Anwenden von Tags auf Entitäten. Zum Anwenden von Tags auf nur einen Ressourcentyp verwenden Sie die Rolle „Mitwirkender“ für die jeweilige Ressource. Zum Anwenden von Tags auf virtuelle Computer beispielsweise verwenden Sie [Mitwirkender von virtuellen Computern](../../role-based-access-control/built-in-roles.md#virtual-machine-contributor).
 
 ## <a name="powershell"></a>PowerShell
 
@@ -277,7 +279,7 @@ az tag create --resource-id $resource --tags Team=Compliance Environment=Product
 },
 ```
 
-Um einer Ressource, die bereits Tags enthält, Tags hinzuzufügen, verwenden Sie **az tag update**. Legen Sie den Parameter **--operation** auf **Merge** fest.
+Um einer Ressource, die bereits Tags enthält, Tags hinzuzufügen, verwenden Sie `az tag update`. Setzen Sie den `--operation`-Parameter auf `Merge`.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Merge --tags Dept=Finance Status=Normal
@@ -313,7 +315,7 @@ az tag update --resource-id $resource --operation Merge --tags Status=Green
 },
 ```
 
-Wenn Sie den Parameter **--operation** auf **Replace** festlegen, werden die vorhandenen Tags durch die neue Gruppe von Tags ersetzt.
+Wenn Sie den Parameter `--operation` auf `Replace` festlegen, werden die vorhandenen Tags durch die neue Gruppe von Tags ersetzt.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Replace --tags Project=ECommerce CostCenter=00123 Team=Web
@@ -406,7 +408,7 @@ az group list --tag Dept=Finance
 
 ### <a name="remove-tags"></a>Entfernen von Tags
 
-Um bestimmte Tags zu entfernen, verwenden Sie den Befehl **az tag update**, und legen Sie **--operation** auf **Delete** fest. Übergeben Sie die Tags, die gelöscht werden sollen.
+Um bestimmte Tags zu entfernen, verwenden Sie den Befehl `az tag update`, und legen Sie `--operation` auf `Delete` fest. Übergeben Sie die Tags, die gelöscht werden sollen.
 
 ```azurecli-interactive
 az tag update --resource-id $resource --operation Delete --tags Project=ECommerce Team=Web

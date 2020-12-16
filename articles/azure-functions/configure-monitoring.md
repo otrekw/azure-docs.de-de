@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mi
 ms.date: 8/31/2020
 ms.topic: how-to
 ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 0b8aae707f0fb055677af111f1e88c0a2e19b227
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96175745"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96607125"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
@@ -38,6 +38,9 @@ Die Azure Functions-Protokollierung enthält eine *Kategorie* für jedes Protoko
 | **`Host.Results`** | **requests** | Diese von der Runtime generierten Protokolle enthalten einen Hinweis zum Erfolg bzw. Misserfolg einer Funktion. Alle diese Protokolle werden auf der Stufe `Information` geschrieben. Wenn Sie nach `Warning` oder höheren Stufen filtern, finden Sie keine dieser Daten. |
 | **`Microsoft`** | **traces** | Vollständig qualifizierte Protokollkategorie, die eine vom Host aufgerufene .NET-Runtimekomponente widerspiegelt.  |
 | **`Worker`** | **traces** | Protokolle, die vom Sprachworkerprozess für nicht zu .NET gehörende Sprachen generiert werden. Sprachworkerprotokolle können auch in einer Kategorie vom Typ `Microsoft.*` protokolliert werden, z. B. `Microsoft.Azure.WebJobs.Script.Workers.Rpc.RpcFunctionInvocationDispatcher`. Diese Protokolle werden auf der Stufe `Information` geschrieben.|
+
+> [!NOTE]
+> Für .NET-Klassenbibliotheksfunktionen wird bei diesen Kategorien davon ausgegangen, dass Sie `ILogger` verwenden und nicht `ILogger<T>`. Weitere Informationen finden Sie in der [ILogger-Dokumentation von Functions](functions-dotnet-class-library.md#ilogger). 
 
 # <a name="v1x"></a>[v1.x](#tab/v1)
 

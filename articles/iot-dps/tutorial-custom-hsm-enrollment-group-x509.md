@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
-ms.openlocfilehash: f6026680dd566bf7a13c83b37883341bff8b4570
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 6845923d65b5fbe5a9f010474330ce2bbed948e1
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96354795"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780092"
 ---
 # <a name="tutorial-provision-multiple-x509-devices-using-enrollment-groups"></a>Tutorial: Bereitstellen mehrerer X.509-Geräte mit Registrierungsgruppen
 
@@ -26,7 +26,7 @@ In Azure IoT Device Provisioning Service werden zwei Registrierungsarten unterst
 
 Dieses Tutorial ähnelt den vorherigen Tutorials, indem demonstriert wird, wie Sie Registrierungsgruppen zum Bereitstellen von Gruppen mit Geräten verwenden. Allerdings werden in diesem Tutorial anstelle von symmetrischen Schlüsseln X.509-Zertifikate verwendet. Sehen Sie in den vorherigen Tutorials dieses Abschnitts nach, falls Sie einen einfachen Ansatz mit [symmetrischen Schlüsseln](./concepts-symmetric-key-attestation.md) benötigen.
 
-In diesem Tutorial wird das [Beispiel mit einem benutzerdefinierten HSM](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) verwendet, bei dem es um eine Stubimplementierung für die Einrichtung von Schnittstellen mit hardwarebasiertem sicheren Speicher geht. Ein [Hardwaresicherheitsmodul (HSM)](./concepts-service.md#hardware-security-module) wird für die sichere, hardwarebasierte Speicherung von Gerätegeheimnissen verwendet. Ein HSM kann mit einem symmetrischen Schlüssel, X.509-Zertifikat oder TPM-Nachweis verwendet werden, um die sichere Speicherung für Geheimnisse zu ermöglichen. Die hardwarebasierte Speicherung von Gerätegeheimnissen wird dringend empfohlen.
+In diesem Tutorial wird das [Beispiel mit einem benutzerdefinierten HSM](https://github.com/Azure/azure-iot-sdk-c/tree/master/provisioning_client/samples/custom_hsm_example) verwendet, bei dem es um eine Stubimplementierung für die Einrichtung von Schnittstellen mit hardwarebasiertem sicheren Speicher geht. Ein [Hardwaresicherheitsmodul (HSM)](./concepts-service.md#hardware-security-module) wird für die sichere, hardwarebasierte Speicherung von Gerätegeheimnissen verwendet. Ein HSM kann mit einem symmetrischen Schlüssel, X.509-Zertifikat oder TPM-Nachweis verwendet werden, um die sichere Speicherung für Geheimnisse zu ermöglichen. Die hardwarebasierte Speicherung von Gerätegeheimnissen ist nicht erforderlich, wird jedoch dringend empfohlen, um zum Schutz vertraulicher Informationen (etwa des privaten Schlüssels Ihres Gerätezertifikats) beizutragen.
 
 Wenn Sie mit der automatischen Bereitstellung nicht vertraut sind, lesen Sie die Übersicht zur [Bereitstellung](about-iot-dps.md#provisioning-process). Vergewissern Sie sich außerdem, dass Sie die Schritte unter [Einrichten des IoT Hub Device Provisioning-Diensts über das Azure-Portal](quick-setup-auto-provision.md) ausgeführt haben, bevor Sie mit diesem Tutorial fortfahren. 
 
@@ -225,7 +225,9 @@ Erstellen Sie die Zertifikatkette wie folgt:
 
 ## <a name="configure-the-custom-hsm-stub-code"></a>Konfigurieren des Stubcodes für das benutzerdefinierte HSM
 
-Die Details der Interaktion mit sicherem hardwarebasiertem Speicher in der Praxis variieren je nach Hardware. Daher ist die Zertifikatkette, die in diesem Tutorial vom Gerät genutzt wird, im Stubcode für das benutzerdefinierte HSM hartcodiert. In einem realen Fall wird die Zertifikatkette auf der eigentlichen HSM-Hardware gespeichert, um eine höhere Sicherheit für vertrauliche Informationen zu erzielen. Es werden dann Methoden implementiert, die den Stubmethoden dieses Beispiels ähneln, um die Geheimnisse aus dem hardwarebasierten Speicher auszulesen.
+Die Details der Interaktion mit sicherem hardwarebasiertem Speicher in der Praxis variieren je nach Hardware. Daher ist die Zertifikatkette, die in diesem Tutorial vom Gerät genutzt wird, im Stubcode für das benutzerdefinierte HSM hartcodiert. In einem realen Fall wird die Zertifikatkette auf der eigentlichen HSM-Hardware gespeichert, um eine höhere Sicherheit für vertrauliche Informationen zu erzielen. Es werden dann Methoden implementiert, die den Stubmethoden dieses Beispiels ähneln, um die Geheimnisse aus dem hardwarebasierten Speicher auszulesen. 
+
+HSM-Hardware ist zwar nicht erforderlich, es wird jedoch nicht empfohlen, vertrauliche Informationen wie etwa den privaten Schlüssel des Zertifikats in den Quellcode einzuchecken. Dadurch wird der Schlüssel für jeden Benutzer verfügbar gemacht, der den Code anzeigen kann. Dieser Schritt wird in diesem Artikel nur zu Lernzwecken ausgeführt.
 
 Aktualisieren Sie den Stubcode für das benutzerdefinierte HSM für dieses Tutorial wie folgt:
 
@@ -287,7 +289,7 @@ Aktualisieren Sie den Stubcode für das benutzerdefinierte HSM für dieses Tutor
 
 ## <a name="verify-ownership-of-the-root-certificate"></a>Überprüfen der Eigentümerschaft des Stammzertifikats
 
-1. Verwenden Sie die Anleitung unter [Registrieren des öffentlichen Teils eines X.509-Zertifikats und Abrufen eines Prüfcodes](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code), um das Stammzertifikat hochzuladen und einen Prüfcode aus DPS abzurufen.
+1. Verwenden Sie die Anleitung unter [Registrieren des öffentlichen Teils eines X.509-Zertifikats und Abrufen eines Prüfcodes](how-to-verify-certificates.md#register-the-public-part-of-an-x509-certificate-and-get-a-verification-code), um das Stammzertifikat (`./certs/azure-iot-test-only.root.ca.cert.pem`) hochzuladen und einen Prüfcode aus DPS abzurufen.
 
 2. Führen Sie nach dem Erhalt eines Prüfcodes von DPS für das Stammzertifikat den folgenden Befehl aus dem Arbeitsverzeichnis Ihres Zertifikatskripts aus, um ein Verifizierungszertifikat zu generieren.
  
@@ -297,7 +299,7 @@ Aktualisieren Sie den Stubcode für das benutzerdefinierte HSM für dieses Tutor
     ./certGen.sh create_verification_certificate 1B1F84DE79B9BD5F16D71E92709917C2A1CA19D5A156CB9F    
     ```    
 
-    Mit diesem Skript wird ein Zertifikat erstellt, das vom Stammzertifikat signiert wird und für das der Antragstellername auf den Prüfcode festgelegt ist. Anhand dieses Zertifikats kann DPS sicherstellen, dass Sie über Zugriff auf den privaten Schlüssel des Stammzertifikats verfügen. Achten Sie in der Ausgabe des Skripts auf den Speicherort des Verifizierungszertifikats.
+    Mit diesem Skript wird ein Zertifikat erstellt, das vom Stammzertifikat signiert wird und für das der Antragstellername auf den Prüfcode festgelegt ist. Anhand dieses Zertifikats kann DPS sicherstellen, dass Sie über Zugriff auf den privaten Schlüssel des Stammzertifikats verfügen. Achten Sie in der Ausgabe des Skripts auf den Speicherort des Verifizierungszertifikats. Dieses Zertifikat wird im Format `.pfx` generiert.
 
     ```output
     Leaf Device PFX Certificate Generated At:

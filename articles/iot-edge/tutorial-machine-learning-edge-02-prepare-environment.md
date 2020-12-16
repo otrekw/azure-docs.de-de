@@ -8,16 +8,23 @@ ms.date: 3/12/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f261db8d40e1a1cc1737ff6a3f5c50da661b73e6
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: d86a273a69203a92a9b437f021486feb3bcb31da
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96433474"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932369"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Tutorial: Einrichten einer Umgebung für maschinelles Lernen in IoT Edge
 
 Dieser Artikel enthält Informationen dazu, wie Sie Ihre Umgebung für die Entwicklung und Bereitstellung vorbereiten. Richten Sie zuerst einen Entwicklungscomputer mit allen benötigten Tools ein. Erstellen Sie anschließend die erforderlichen Cloudressourcen in Azure.
+
+In diesem Abschnitt des Tutorials lernen Sie Folgendes:
+
+> [!div class="checklist"]
+>
+> * Einrichten eines virtuellen Computers für die Entwicklung
+> * Einrichten einer IoT Hub-Instanz und eines Cloudspeichers für Ihre Entwicklungsumgebung
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -210,15 +217,13 @@ Bei der Erstellung des IoT-Hubs wurden mit dem Skript, das wir im vorherigen Abs
 
 1. Da keine Änderungen vorgenommen wurden, können Sie die Seite einfach schließen.
 
+## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
+
+Dieses Tutorial ist Teil einer Reihe, in der jeder Artikel auf den Schritten aufbaut, die jeweils im vorherigen Artikel ausgeführt wurden. Warten Sie mit dem Bereinigen von Ressourcen, bis Sie das letzte Tutorial abgeschlossen haben.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
 In diesem Artikel haben wir eine IoT Hub-Instanz erstellt und eine Route zu einem Azure Storage-Konto konfiguriert. Als Nächstes senden wir Daten von einer Gruppe simulierter Geräte über die IoT Hub-Instanz an das Speicherkonto. Später in diesem Tutorial nach der Konfiguration unseres IoT Edge-Geräts und der Module gehen wir noch einmal auf Routen und die Routingabfrage ein.
-
-Weitere Informationen zu den Schritten, die in diesem Teil des Tutorials zu Machine Learning in IoT Edge behandelt werden, finden Sie unter:
-
-* [Azure IoT-Grundlagen](../iot-fundamentals/index.yml)
-* [Konfigurieren der Nachrichtenweiterleitung mit IoT Hub](../iot-hub/tutorial-routing.md)
-* [Erstellen eines IoT Hubs über das Portal](../iot-hub/iot-hub-create-through-portal.md)
 
 Fahren Sie mit dem nächsten Artikel fort, um ein zu überwachendes simuliertes Gerät zu erstellen.
 

@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: troubleshooting
 description: Beheben und Lösen häufiger Probleme beim Aktivieren und Verwenden von Azure Dev Spaces
 keywords: 'Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, Container, Helm, Service Mesh, Service Mesh-Routing, kubectl, k8s '
-ms.openlocfilehash: a30ae2d78d682427cf53c8f98b0ca70b441d72e1
-ms.sourcegitcommit: 295db318df10f20ae4aa71b5b03f7fb6cba15fc3
+ms.openlocfilehash: bf8c4d2040445fa3417fce02fb4b66216b21f3b5
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/15/2020
-ms.locfileid: "94636808"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96548867"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Problembehandlung für Azure Dev Spaces
 
@@ -378,6 +378,17 @@ spec:
     spec:
       [...]
 ```
+
+### <a name="error-cannot-get-connection-details-for-azure-dev-spaces-controller-abc-because-it-is-in-the-failed-state-something-wrong-might-have-happened-with-your-controller"></a>Fehler „Cannot get connection details for Azure Dev Spaces Controller 'ABC' because it is in the 'Failed' state. Something wrong might have happened with your controller.“ (Für den Azure Dev Spaces-Controller „ABC“ konnten keine Verbindungsdetails abgerufen werden, da er sich in einem Fehlerzustand befindet. Möglicherweise liegt ein Fehler mit Ihrem Controller vor.)
+
+Löschen Sie zur Behebung dieses Problems den Azure Dev Spaces-Controller aus dem Cluster, und installieren Sie ihn neu:
+
+```bash
+azds remove -g <resource group name> -n <cluster name>
+azds controller create --name <cluster name> -g <resource group name> -tn <cluster name>
+```
+
+Azure Dev Spaces wird außerdem eingestellt. Daher empfehlen wir die [Migration zu Bridge to Kubernetes](migrate-to-bridge-to-kubernetes.md), was diverse Vorteile bietet.
 
 ## <a name="common-issues-using-visual-studio-and-visual-studio-code-with-azure-dev-spaces"></a>Häufige Probleme bei der Verwendung von Visual Studio und Visual Studio Code mit Azure Dev Spaces
 

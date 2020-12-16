@@ -3,12 +3,12 @@ title: Planen der Azure VMware Solution-Bereitstellung
 description: In diesem Artikel wird der Workflow für die Bereitstellung einer Azure VMware Solution-Instanz beschrieben.  Das Endergebnis ist eine Umgebung, die für die Erstellung und Migration von virtuellen Computern (VMs) vorbereitet ist.
 ms.topic: tutorial
 ms.date: 10/16/2020
-ms.openlocfilehash: 1ef83a568e41fe99f1e8e385a599de9c5ab7c0ca
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 1d1deebd56717c63a745500198eb8df9e3687b49
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "95529728"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558690"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Planen der Azure VMware Solution-Bereitstellung
 
@@ -25,7 +25,7 @@ Die Prozesse dieser Schnellstartanleitung führen zu einer für die Produktion v
 Identifizieren Sie das Abonnement, das Sie zum Bereitstellen von Azure VMware Solution verwenden möchten.  Sie können entweder ein neues Abonnement erstellen oder ein vorhandenes wiederverwenden.
 
 >[!NOTE]
->Das Abonnement muss einem Microsoft Enterprise Agreement zugeordnet sein.
+>Das Abonnement muss einem Microsoft Enterprise Agreement oder einem Azure-Plan für Cloud Solution Provider zugeordnet sein. Weitere Informationen finden Sie unter [Aktivieren einer Azure VMware Solution-Ressource](enable-azure-vmware-solution.md).
 
 ## <a name="resource-group"></a>Resource group
 

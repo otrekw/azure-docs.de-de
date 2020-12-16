@@ -3,12 +3,12 @@ title: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen
 description: In diesem Artikel erfahren Sie, wie Sie eine Vorlagenspezifikation mit verknüpften Vorlagen erstellen.
 ms.topic: conceptual
 ms.date: 11/17/2020
-ms.openlocfilehash: d86b46a88dde7ebffea81cdeb8dc184dd275c0da
-ms.sourcegitcommit: c2dd51aeaec24cd18f2e4e77d268de5bcc89e4a7
+ms.openlocfilehash: 038fb3e6bbb6086535b83a69de7a3fe49a8e60bb
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94747433"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518888"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Tutorial: Erstellen einer Vorlagenspezifikation mit verknüpften Vorlagen (Vorschau)
 
@@ -19,7 +19,7 @@ Erfahren Sie, wie Sie eine [Vorlagenspezifikation](template-specs.md) mit einer 
 Ein Azure-Konto mit einem aktiven Abonnement. Sie können [kostenlos ein Konto erstellen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
 > [!NOTE]
-> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zu ihrer Verwendung müssen Sie die aktuelle Version von PowerShell oder der Azure CLI installieren. Verwenden Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) von Azure PowerShell. Verwenden Sie [mindestens Version 2.14.2](/cli/azure/install-azure-cli) der Azure CLI.
+> Vorlagenspezifikationen befinden sich derzeit in der Vorschauphase. Zur Verwendung mit Azure PowerShell müssen Sie [mindestens Version 5.0.0](/powershell/azure/install-az-ps) installieren. Zur Nutzung mit der Azure-Befehlszeilenschnittstelle muss [mindestens Version 2.14.2](/cli/azure/install-azure-cli) verwendet werden.
 
 ## <a name="create-linked-templates"></a>Erstellen verknüpfter Vorlagen
 
@@ -212,7 +212,7 @@ az ts show --name webSpec --resource-group templateSpecRG --version "1.0.0.0"
 
 ---
 
-## <a name="deploy-template-spec"></a>Bereitstellen der Vorlagenspezifikationen
+## <a name="deploy-template-spec"></a>Bereitstellen von Vorlagenspezifikationen
 
 Jetzt können Sie die Vorlagenspezifikation bereitstellen. Das Bereitstellen der Vorlagenspezifikation gestaltet sich genauso wie die Bereitstellung der enthaltenen Vorlage, mit der Ausnahme, dass Sie die Ressourcen-ID der Vorlagenspezifikation übergeben. Sie verwenden dieselben Bereitstellungsbefehle und übergeben bei Bedarf Parameterwerte für die Vorlagenspezifikation.
 

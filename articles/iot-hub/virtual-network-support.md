@@ -5,14 +5,14 @@ services: iot-hub
 author: jlian
 ms.service: iot-fundamentals
 ms.topic: conceptual
-ms.date: 11/09/2020
+ms.date: 12/02/2020
 ms.author: jlian
-ms.openlocfilehash: fdc106a1a446f51d309ac4317062c8fd20204bae
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: f79b03884109ffbd856ff4f60909565daeb0e792
+ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94413393"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96549111"
 ---
 # <a name="iot-hub-support-for-virtual-networks-with-private-link-and-managed-identity"></a>IoT Hub-Unterstützung für virtuelle Netzwerke mit Private Link und verwalteter Identität
 
@@ -36,7 +36,7 @@ In diesem Artikel wird beschrieben, wie Sie diese Ziele erreichen, indem Sie [Az
 
 ## <a name="ingress-connectivity-to-iot-hub-using-azure-private-link"></a>Eingehende Konnektivität mit IoT Hub mithilfe von Azure Private Link
 
-Ein privater Endpunkt ist eine private IP-Adresse, die in einem kundeneigenen VNET zugeordnet ist, über das eine Azure-Ressource erreichbar ist. Mit Azure Private Link können Sie einen privaten Endpunkt für Ihren IoT-Hub einrichten und damit den Diensten in Ihrem VNET erlauben, IoT Hub zu erreichen, ohne dass Datenverkehr an den öffentlichen IoT Hub-Endpunkt gesendet werden muss. Ebenso können Ihre lokalen Geräte ein [virtuelles privates Netzwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Peering verwenden, um eine Verbindung mit Ihrem VNET und Ihrer IoT Hub-Instanz (über den privaten Endpunkt) herzustellen. So können Sie die Konnektivität mit den öffentlichen Endpunkten Ihres IoT-Hubs einschränken oder komplett blockieren, indem Sie [IoT Hub-IP-Filter](./iot-hub-ip-filtering.md) verwenden und [das Routing so konfigurieren, dass keine Daten an den integrierten Endpunkt gesendet werden](#built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint). Auf diese Weise erfolgen Verbindungen mit Ihrem Hub ausschließlich über den privaten Endpunkt für Geräte. Der Schwerpunkt dieses Setups liegt auf Geräten, die sich in einem lokalen Netzwerk befinden. Dieses Setup wird nicht für Geräte empfohlen, die in einem WAN bereitgestellt werden.
+Ein privater Endpunkt ist eine private IP-Adresse, die in einem kundeneigenen VNET zugeordnet ist, über das eine Azure-Ressource erreichbar ist. Mit Azure Private Link können Sie einen privaten Endpunkt für Ihren IoT-Hub einrichten und damit den Diensten in Ihrem VNET erlauben, IoT Hub zu erreichen, ohne dass Datenverkehr an den öffentlichen IoT Hub-Endpunkt gesendet werden muss. Ebenso können Ihre lokalen Geräte ein [virtuelles privates Netzwerk (VPN)](../vpn-gateway/vpn-gateway-about-vpngateways.md) oder [ExpressRoute](https://azure.microsoft.com/services/expressroute/)-Peering verwenden, um eine Verbindung mit Ihrem VNET und Ihrer IoT Hub-Instanz (über den privaten Endpunkt) herzustellen. So können Sie die Konnektivität mit den öffentlichen Endpunkten Ihres IoT-Hubs einschränken oder vollständig blockieren, indem Sie [IoT Hub-IP-Filter](./iot-hub-ip-filtering.md) oder [die Funktion zum Umschalten des Zugriffs über öffentliche Netzwerke](iot-hub-public-network-access.md) verwenden. Auf diese Weise erfolgen Verbindungen mit Ihrem Hub ausschließlich über den privaten Endpunkt für Geräte. Der Schwerpunkt dieses Setups liegt auf Geräten, die sich in einem lokalen Netzwerk befinden. Dieses Setup wird nicht für Geräte empfohlen, die in einem WAN bereitgestellt werden.
 
 ![IoT Hub des virtuellen Netzwerks – Eingang](./media/virtual-network-support/virtual-network-ingress.png)
 
@@ -64,17 +64,12 @@ Ein privater Endpunkt kann für IoT Hub-Geräte-APIs (z. B. D2C-Nachrichten) so
 
 1. Klicken Sie auf **Überprüfen und erstellen**, um die Private Link-Ressource zu erstellen.
 
-### <a name="built-in-event-hub-compatible-endpoint-doesnt-support-access-over-private-endpoint"></a>Integrierter Event Hub-kompatibler Endpunkt unterstützt Zugriff über privaten Endpunkt nicht
+### <a name="built-in-event-hub-compatible-endpoint"></a>Integrierter, mit Event Hub kompatibler Endpunkt 
 
-Der [integrierte Event Hub-kompatible Endpunkt](iot-hub-devguide-messages-read-builtin.md) unterstützt den Zugriff über den privaten Endpunkt nicht. Wenn ein privater Endpunkt für einen IoT-Hub konfiguriert ist, kann dieser nur für eingehende Verbindungen verwendet werden. Daten aus einem integrierten Event Hub-kompatiblen Endpunkt können nur über das öffentliche Internet genutzt werden. 
+Auf den [integrierten, mit Event Hub kompatiblen Endpunkt](iot-hub-devguide-messages-read-builtin.md) kann auch über den privaten Endpunkt zugegriffen werden. Bei konfigurierter privater Verbindung sollte für den integrierten Endpunkt eine zusätzliche Verbindung für private Endpunkte angezeigt werden. Dabei handelt es sich um das Element mit `servicebus.windows.net` im vollqualifizierten Domänennamen.
 
-Der [IP-Filter](iot-hub-ip-filtering.md) von IoT Hub steuert auch nicht den öffentlichen Zugriff auf den integrierten Endpunkt. Um den Zugriff aus öffentlichen Netzwerken auf Ihren IoT-Hub vollständig zu blockieren, müssen Sie folgendermaßen vorgehen: 
+:::image type="content" source="media/virtual-network-support/private-built-in-endpoint.png" alt-text="Abbildung: Zwei private Endpunkte mit jeweils angegebener privater IoT Hub-Verbindung":::
 
-1. Konfigurieren Sie den Zugriff durch private Endpunkte auf IoT Hub.
-1. [Deaktivieren Sie den Zugriff über öffentliche Netzwerke](iot-hub-public-network-access.md) oder verwenden Sie IP-Filter, um alle IP-Adressen zu blockieren.
-1. Beenden Sie die Verwendung des integrierten Event Hub-Endpunkts, indem Sie [das Routing so einrichten, dass keine Daten an ihn gesendet werden](iot-hub-devguide-messages-d2c.md).
-1. Deaktivieren Sie die [Fallbackroute](iot-hub-devguide-messages-d2c.md#fallback-route).
-1. Konfigurieren Sie den ausgehenden Datenverkehr an andere Azure-Ressourcen mit der Option [Vertrauenswürdige Microsoft-Dienste](#egress-connectivity-from-iot-hub-to-other-azure-resources).
 
 ### <a name="pricing-for-private-link"></a>Preise für Private Link
 

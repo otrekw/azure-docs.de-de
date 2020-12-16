@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 8/07/2020
-ms.openlocfilehash: 4179b06759802025f97bd32a355b788c96c9eddb
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: a32491453812d74d4bd93f3f97b7e6a32036f65f
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123319"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96573373"
 ---
 # <a name="azure-stream-analytics-preview-features"></a>Azure Stream Analytics – Vorschaufeatures
 
@@ -22,7 +22,7 @@ Dieser Artikel fasst alle Features zusammen, die sich derzeit in der Vorschau f�
 
 Die folgenden Features befinden sich in der öffentlichen Vorschau. Sie können diese Features heute nutzen, sollten sie aber nicht in Ihrer Produktionsumgebung einsetzen.
 
-### <a name="authenticate-to-sql-database-output-with-managed-identities"></a>Authentifizieren bei der SQL-Datenbank-Ausgabe mit verwalteten Identitäten
+### <a name="authenticate-to-sql-database-output-with-managed-identities-preview"></a>Authentifizieren bei der SQL-Datenbank-Ausgabe mit verwalteten Identitäten (Vorschau)
 
 Azure Stream Analytics unterstützt die [Authentifizierung über verwaltete Identitäten](../active-directory/managed-identities-azure-resources/overview.md) für Azure SQL-Datenbank-Ausgabesenken. Verwaltete Identitäten heben die Einschränkungen benutzerbasierter Authentifizierungsmethoden auf, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen. 
 

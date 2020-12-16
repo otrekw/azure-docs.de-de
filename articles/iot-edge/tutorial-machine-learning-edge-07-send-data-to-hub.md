@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f0695af6922182aa8be7acfb4b0a931bed35ef7d
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 50df3424892594a6817d481aa4a3d540a342854f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94959304"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932318"
 ---
 # <a name="tutorial-send-data-via-transparent-gateway"></a>Tutorial: Senden von Daten per transparentem Gateway
 
@@ -23,6 +23,14 @@ In diesem Artikel verwenden wir wieder die Entwicklungs-VM als simuliertes Gerä
 Wir überwachen den Vorgang auf dem IoT Edge-Gerät, während das simulierte Gerät Daten sendet. Nachdem die Ausführung des Geräts abgeschlossen ist, sehen wir uns die Daten in unserem Speicherkonto an, um sicherzustellen, dass alles wie erwartet funktioniert hat.
 
 Dieser Schritt wird normalerweise von einem Cloud- oder Geräteentwickler ausgeführt.
+
+In diesem Abschnitt des Tutorials lernen Sie Folgendes:
+
+> [!div class="checklist"]
+>
+> * Erstellen und Ausführen eines Blattgeräts
+> * Überprüfen, ob generierte Daten in Azure Blob Storage gespeichert werden
+> * Überprüfen, ob die Gerätedaten vom Machine Learning-Modell klassifiziert wurden
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -237,10 +245,7 @@ Falls Sie die in diesem umfassenden Tutorial verwendeten Ressourcen weiter erkun
 
 In diesem Artikel haben wir unsere Entwicklungs-VM verwendet, um ein Blattgerät zu simulieren, das Sensor- und Betriebsdaten an unser IoT Edge-Gerät sendet. Wir haben überprüft, ob die Module auf dem Gerät die Daten weitergeleitet, klassifiziert, gespeichert und hochgeladen haben, indem wir uns den Echtzeitbetrieb des Edge-Geräts und die Dateien angesehen haben, die in das Speicherkonto hochgeladen wurden.
 
-Weitere Informationen finden Sie auf den folgenden Seiten:
+Wenn Sie mehr über IoT Edge-Funktionen erfahren möchten, fahren Sie mit dem folgenden Tutorial fort:
 
 > [!div class="nextstepaction"]
-> [Verbinden eines nachgeschalteten Geräts mit einem Azure IoT Edge-Gateway](how-to-connect-downstream-device.md)
-
-> [!div class="nextstepaction"]
-> [Speichern von Daten am Edge mit Azure Blob Storage in IoT Edge (Vorschau)](how-to-store-data-blob.md)
+> [Erstellen einer Hierarchie für IoT Edge-Geräte (Vorschauversion)](tutorial-nested-iot-edge.md?view=iotedge-2020-11&preserve-view=true)

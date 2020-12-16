@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
-ms.openlocfilehash: aac85fdab157d581285af91c4c818258a5f1790b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 092e07ed01fb870cdcd9a3fd63d46d30cef96007
+ms.sourcegitcommit: 8b4b4e060c109a97d58e8f8df6f5d759f1ef12cf
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93124780"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96780840"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Benutzerdefinierte JavaScript-Funktionen in Azure Stream Analytics
  
-Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String** -, **RegExp** -, **Math** -, **Array** - und **Date** -Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
+Azure Stream Analytics unterstützt benutzerdefinierte Funktionen, die in JavaScript geschrieben sind. Die umfassenden **String**-, **RegExp**-, **Math**-, **Array**- und **Date**-Methoden von JavaScript vereinfachen die Erstellung von komplexen Datentransformationen mit Stream Analytics-Aufträgen.
 
 ## <a name="overview"></a>Übersicht
 
@@ -184,6 +184,35 @@ INTO
     output
 FROM
     input A
+```
+
+### <a name="tolocalestring"></a>toLocaleString()
+Mit der Methode **toLocaleString** in JavaScript kann eine sprachabhängige Zeichenfolge zurückgegeben werden, die die Datums-/Uhrzeitdaten des Orts darstellt, von dem aus diese Methode aufgerufen wird.
+Obwohl Azure Stream Analtyics als Systemzeitstempel nur Datums- und Uhrzeitangaben im UTC-Format akzeptiert, kann mithilfe dieser Methode der Systemzeitstempel in ein anderes Gebietsschema und eine andere Zeitzone konvertiert werden.
+Diese Methode verhält sich bei der Implementierung genau so wie die in Internet Explorer verfügbare Methode.
+
+**Definition von benutzerdefinierten JavaScript-Funktionen:**
+
+```javascript
+function main(datetime){
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    return event.toLocaleDateString('de-DE', options);
+}
+```
+
+**Beispielabfrage: Übergeben eines datetime-Werts als Eingabewert**
+```SQL
+SELECT
+    udf.toLocaleString(input.datetime) as localeString
+INTO
+    output
+FROM
+    input
+```
+
+Bei der Ausgabe dieser Abfrage handelt es sich um den datetime-Eingabewert in **de-DE** mit den bereitgestellten Optionen.
+```
+Samstag, 28. Dezember 2019
 ```
 
 ## <a name="next-steps"></a>Nächste Schritte

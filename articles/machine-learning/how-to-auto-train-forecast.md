@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, contperfq1, automl
 ms.date: 08/20/2020
-ms.openlocfilehash: 0bbb18a82de508f79cd2fd5dde58c1cf33520950
-ms.sourcegitcommit: 230d5656b525a2c6a6717525b68a10135c568d67
+ms.openlocfilehash: 605e8cd57ab5863c1011082f0f2dbd93d078980b
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94887398"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96518939"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Automatisches Trainieren eines Modells für die Zeitreihenprognose
 
@@ -146,6 +146,7 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 |`forecast_horizon`|Definiert die Anzahl der Zeiträume, die Sie vorhersagen möchten. Der Horizont wird in Einheiten der Zeitreihenhäufigkeit angegeben. Die Einheiten basieren auf dem Zeitintervall Ihrer Trainingsdaten, z. B. monatlich oder wöchentlich, die vorhergesagt werden sollen.|✓|
 |`enable_dnn`|[Aktivieren Sie Vorhersage-DNNs]().||
 |`time_series_id_column_names`|Die verwendeten Spaltennamen dienen zum eindeutigen Identifizieren der Zeitreihe in Daten, die mehrere Zeilen mit demselben Zeitstempel aufweisen. Ohne definierte Zeitreihenbezeichner wird bei dem Dataset von einer einzelnen Zeitreihe ausgegangen. Weitere Informationen zu einzelnen Zeitreihen finden Sie unter [energy_demand_notebook](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/automated-machine-learning/forecasting-energy-demand).||
+|`freq`| Die Häufigkeit der Zeitreihendatasets. Dieser Parameter stellt den Zeitraum dar, in dem Ereignisse zu erwarten sind, z. B. täglich, wöchentlich, jährlich usw. Die Häufigkeit muss ein [Pandas-Offset-Alias](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) sein.||
 |`target_lags`|Anzahl der Zeilen, um die die Zielwerte basierend auf der Häufigkeit der Daten verzögert werden sollen. Diese Verzögerung wird als Liste oder als einzelner Integer dargestellt. Die Verzögerung sollte verwendet werden, wenn die Beziehung zwischen den unabhängigen Variablen und der abhängigen Variable standardmäßig nicht übereinstimmt oder korreliert. ||
 |`feature_lags`| Welche Features verzögert werden, wird automatisch durch automatisiertes ML festgelegt, wenn `target_lags` festgelegt und `feature_lags` auf `auto` festgelegt ist. Das Aktivieren von Featureverzögerungen kann zur Verbesserung der Genauigkeit beitragen. Featureverzögerungen sind standardmäßig deaktiviert. ||
 |`target_rolling_window_size`|*n* Historische Zeiträume zum Generieren der vorhergesagten Werte, < = Größe Trainingsmenge. Wenn nicht angegeben, ist *n* die vollständige Trainingsmenge. Geben Sie diesen Parameter an, wenn Sie beim Trainieren des Modells nur eine bestimmte Menge des Verlaufs beachten möchten. Erfahren Sie mehr über [rollierende Zeitfensteraggregationen als Ziel](#target-rolling-window-aggregation).||
@@ -153,7 +154,7 @@ Eine Übersicht über zusätzliche Parameter finden in der folgenden Tabelle. Sy
 
 
 Für den folgenden Code gilt: 
-* Er nutzt die [`ForecastingParameters`](https://docs.microsoft.com/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)-Klasse, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
+* Er nutzt die [`ForecastingParameters`](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py)-Klasse, um die Vorhersageparameter für Ihr Experimenttraining zu definieren.
 * Er legt `time_column_name` auf das Feld `day_datetime` im Dataset fest. 
 * Er definiert den Parameter `time_series_id_column_names` als `"store"`. Dadurch wird sichergestellt, dass **zwei separate Zeitreihengruppen** für die Daten erstellt werden: eine für Geschäft A und eine für B.
 * Er legt `forecast_horizon` auf 50 fest, um die Prognose für den gesamten Testsatz durchzuführen. 
@@ -285,19 +286,19 @@ Sehen Sie sich ein Python-Codebeispiel an, in dem das [Feature für rollierende 
 
 ### <a name="short-series-handling"></a>Verarbeitung kurzer Reihen
 
-Beim automatisierten maschinellen Lernen gilt eine Zeitreihe als **kurze Reihe**, wenn nicht genügend Datenpunkte vorhanden sind, um die Trainings- und Validierungsphasen der Modellentwicklung durchzuführen. Die Anzahl von Datenpunkten variiert je nach Experiment und hängt vom „max_horizon“-Wert, der Anzahl von Kreuzvalidierungsteilungen und der Länge des Rückblickzeitraums des Modells ab, d. h. dem maximalen Verlauf, der zum Erstellen der Zeitreihenfeatures erforderlich ist. Die genaue Berechnung finden Sie in der [Referenzdokumentation zu „short_series_handling_config“](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
+Beim automatisierten maschinellen Lernen gilt eine Zeitreihe als **kurze Reihe**, wenn nicht genügend Datenpunkte vorhanden sind, um die Trainings- und Validierungsphasen der Modellentwicklung durchzuführen. Die Anzahl von Datenpunkten variiert je nach Experiment und hängt vom „max_horizon“-Wert, der Anzahl von Kreuzvalidierungsteilungen und der Länge des Rückblickzeitraums des Modells ab, d. h. dem maximalen Verlauf, der zum Erstellen der Zeitreihenfeatures erforderlich ist. Die genaue Berechnung finden Sie in der [Referenzdokumentation zu „short_series_handling_configuration“](/python/api/azureml-automl-core/azureml.automl.core.forecasting_parameters.forecastingparameters?preserve-view=true&view=azure-ml-py#short-series-handling-configuration).
 
-Automatisiertes maschinelles Lernen bietet mit dem `short_series_handling_config`-Parameter im `ForecastingParameters`-Objekt standardmäßig eine Verarbeitung kurzer Reihen. 
+Automatisiertes maschinelles Lernen bietet mit dem `short_series_handling_configuration`-Parameter im `ForecastingParameters`-Objekt standardmäßig eine Verarbeitung kurzer Reihen. 
 
-Zum Aktivieren der Verarbeitung kurzer Reihen muss auch der `freq`-Parameter definiert werden. Wenn Sie das Standardverhalten (`short_series_handling_config = auto`) ändern möchten, aktualisieren Sie den `short_series_handling_config`-Parameter in Ihrem `ForecastingParameter`-Objekt.  
+Zum Aktivieren der Verarbeitung kurzer Reihen muss auch der `freq`-Parameter definiert werden. Zum Definieren einer stündlichen Häufigkeit legen Sie `freq='H'` fest. [Hier](https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#dateoffset-objects) finden Sie die Optionen für Häufigkeitszeichenfolgen. Wenn Sie das Standardverhalten (`short_series_handling_configuration = 'auto'`) ändern möchten, aktualisieren Sie den `short_series_handling_configuration`-Parameter in Ihrem `ForecastingParameter`-Objekt.  
 
 ```python
 from azureml.automl.core.forecasting_parameters import ForecastingParameters
 
 forecast_parameters = ForecastingParameters(time_column_name='day_datetime', 
                                             forecast_horizon=50,
-                                            short_series_handling_config='auto',
-                                            freq = 50
+                                            short_series_handling_configuration='auto',
+                                            freq = 'H',
                                             target_lags='auto')
 ```
 In der folgenden Tabelle finden Sie eine Zusammenfassung der verfügbaren Einstellungen für `short_series_handling_config`.
@@ -305,7 +306,7 @@ In der folgenden Tabelle finden Sie eine Zusammenfassung der verfügbaren Einste
 |Einstellung|Beschreibung
 |---|---
 |`auto`| Folgendes ist das Standardverhalten für die Verarbeitung kurzer Reihen: <li> *Wenn alle Reihen kurz sind*, werden die Daten aufgefüllt. <br> <li> *Wenn nicht alle Reihen kurz sind*, werden die kurzen Reihen gelöscht. 
-|`pad`| Wenn `short_series_handling_config = pad` festgelegt ist, fügt das automatisierte maschinelle Lernen allen gefundenen kurzen Reihen Platzhalterwerte hinzu. Im Folgenden sind die Spaltentypen und die Werte aufgeführt, mit denen sie aufgefüllt werden: <li>Objektspalten mit NaN-Werten (Not a Number, keine Zahl) <li> Numerische Spalten mit 0 <li> Boolesche/logische Spalten mit „False“ <li> Die Zielspalte wird mit Zufallswerten mit dem Mittelwert 0 und der Standardabweichung 1 aufgefüllt. 
+|`pad`| Wenn `short_series_handling_config = pad` festgelegt ist, fügt das automatisierte maschinelle Lernen allen gefundenen kurzen Reihen Zufallswerte hinzu. Im Folgenden sind die Spaltentypen und die Werte aufgeführt, mit denen sie aufgefüllt werden: <li>Objektspalten mit NaN-Werten (Not a Number, keine Zahl) <li> Numerische Spalten mit 0 <li> Boolesche/logische Spalten mit „False“ <li> Die Zielspalte wird mit Zufallswerten mit dem Mittelwert 0 und der Standardabweichung 1 aufgefüllt. 
 |`drop`| Wenn `short_series_handling_config = drop` festgelegt ist, werden die kurzen Reihen vom automatisierten maschinellen Lernen gelöscht und nicht für Trainings- oder Vorhersagezwecke verwendet. Bei Vorhersagen für diese Reihen werden NaN-Werte zurückgegeben.
 |`None`| Es werden keine Reihen aufgefüllt oder gelöscht.
 

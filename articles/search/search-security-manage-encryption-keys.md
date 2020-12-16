@@ -9,18 +9,18 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/02/2020
 ms.custom: references_regions
-ms.openlocfilehash: 4fb20b221858c4717d67e0777afbe5c067c00a69
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8295e619cfda0d4b83a7356d5fd21d4b80f83849
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/02/2020
-ms.locfileid: "96499610"
+ms.locfileid: "96530883"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Konfigurieren von kundenseitig verwalteten Schlüsseln für die Datenverschlüsselung in Azure Cognitive Search
 
-In Azure Cognitive Search werden ruhende indizierte Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. Dieser Artikel führt Sie durch die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln (Customer Managed Key, CMK).
+In Azure Cognitive Search werden ruhende indizierte Inhalte automatisch mit [dienstseitig verwalteten Schlüsseln](../security/fundamentals/encryption-atrest.md#azure-encryption-at-rest-components) verschlüsselt. Wenn ein weiterer Schutz erforderlich ist, können Sie die Standardverschlüsselung durch eine zusätzliche Verschlüsselungsebene ergänzen, indem Sie Schlüssel verwenden, die Sie in Azure Key Vault erstellen und verwalten. In diesem Artikel finden Sie die Schritte zum Einrichten der Verschlüsselung mit kundenseitig verwalteten Schlüsseln.
 
-Die CMK-Verschlüsselung ist von [Azure Key Vault](../key-vault/general/overview.md) abhängig. Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen, wenn Sie die [Protokollierung aktivieren](../key-vault/general/logging.md).  
+Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln erfordert [Azure Key Vault](../key-vault/general/overview.md). Sie können Ihre eigenen Verschlüsselungsschlüssel erstellen und in einem Schlüsseltresor speichern oder mit Azure Key Vault-APIs Verschlüsselungsschlüssel generieren. Mit Azure Key Vault können Sie auch die Schlüsselverwendung überwachen, wenn Sie die [Protokollierung aktivieren](../key-vault/general/logging.md).  
 
 Die Verschlüsselung mit kundenseitig verwalteten Schlüsseln wird auf der Ebene einzelner Indizes oder Synonymzuordnungen angewandt, wenn diese Objekte erstellt werden, und nicht auf der Ebene des Suchdiensts selbst angegeben. Nur neue Objekte können verschlüsselt werden. Bereits vorhandene Inhalte können nicht verschlüsselt werden.
 
@@ -31,7 +31,7 @@ Die Schlüssel müssen sich nicht alle im selben Schlüsseltresor befinden. Ein 
 
 ## <a name="double-encryption"></a>Doppelte Verschlüsselung
 
-Für Dienste, die nach dem 1. August 2020 und in bestimmten Regionen erstellt werden, umfasst die CMK-Verschlüsselung auch temporäre Datenträger, sodass eine [vollständig doppelte Verschlüsselung](search-security-overview.md#double-encryption) erreicht wird. Dies ist derzeit in den folgenden Regionen verfügbar: 
+Für Dienste, die nach dem 1. August 2020 und in bestimmten Regionen erstellt werden, umfasst die Verschlüsselung mit kundenseitig verwalteten Schlüsseln auch temporäre Datenträger, sodass eine [vollständige Mehrfachverschlüsselung](search-security-overview.md#double-encryption) erreicht wird. Dies ist derzeit in den folgenden Regionen verfügbar: 
 
 + USA, Westen 2
 + East US
@@ -39,13 +39,13 @@ Für Dienste, die nach dem 1. August 2020 und in bestimmten Regionen erstellt w
 + US Government, Virginia
 + US Gov Arizona
 
-Wenn Sie eine andere Region oder einen Dienst verwenden, der vor dem 1. August erstellt wurde, ist die CMK-Verschlüsselung auf den Datenträger für Ihre Daten beschränkt und umfasst nicht die vom Dienst verwendeten temporären Datenträger.
+Wenn Sie eine andere Region oder einen Dienst verwenden, der vor dem 1. August erstellt wurde, ist die Verschlüsselung mit verwalteten Schlüsseln auf Datenträger für Ihre Daten beschränkt und umfasst nicht die vom Dienst verwendeten temporären Datenträger.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
 In diesem Szenario werden die folgenden Tools und Dienste verwendet.
 
-+ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tiers) (mindestens Basic in einer beliebigen Region)
++ [Azure Cognitive Search](search-create-service-portal.md) in einem [abrechenbaren Tarif](search-sku-tier.md#tier-descriptions) (mindestens Basic in einer beliebigen Region)
 + [Azure Key Vault](../key-vault/general/overview.md) Sie können einen Schlüsseltresor im [Azure-Portal](../key-vault//general/quick-create-portal.md), mit der [Azure-Befehlszeilenschnittstelle](../key-vault//general/quick-create-cli.md) oder mit [Azure PowerShell](../key-vault//general/quick-create-powershell.md) erstellen. im selben Abonnement wie Azure Cognitive Search. **Vorläufiges Löschen** und **Löschschutz** müssen für den Schlüsseltresor aktiviert sein.
 + [Azure Active Directory:](../active-directory/fundamentals/active-directory-whatis.md) Falls Sie nicht über eine solche Instanz verfügen, [richten Sie einen neuen Mandanten ein](../active-directory/develop/quickstart-create-new-tenant.md).
 
@@ -56,7 +56,7 @@ Sie sollten über eine Suchanwendung verfügen, mit der das verschlüsselte Obje
 
 ## <a name="1---enable-key-recovery"></a>1: Aktivieren der Schlüsselwiederherstellung
 
-Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die CMK-Verschlüsselung in Azure Cognitive Search erforderlich. Weitere Informationen finden Sie in den Übersichten zum [vorläufigen Löschen](../key-vault/general/soft-delete-overview.md) und zum [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection).
+Aufgrund der Art der Verschlüsselung mit kundenseitig verwalteten Schlüsseln können Ihre Daten nicht abgerufen werden, wenn der Azure Key Vault-Schlüssel gelöscht wird. Um Datenverluste aufgrund versehentlich gelöschter Key Vault-Schlüssel zu vermeiden, müssen im Schlüsseltresor die Optionen „Vorläufiges Löschen“ und „Löschschutz“ aktiviert werden. Vorläufiges Löschen ist standardmäßig aktiviert, sodass nur dann Probleme auftreten, wenn Sie das Feature absichtlich deaktiviert haben. Der Löschschutz ist standardmäßig nicht aktiviert, er ist aber für die Verschlüsselung mit kundenseitig verwalteten Schlüsseln in Cognitive Search erforderlich. Weitere Informationen finden Sie in den Übersichten zum [vorläufigen Löschen](../key-vault/general/soft-delete-overview.md) und zum [Löschschutz](../key-vault/general/soft-delete-overview.md#purge-protection).
 
 Sie können beide Eigenschaften mithilfe von Azure-Portal-, PowerShell- oder Azure CLI-Befehlen festlegen.
 
@@ -377,7 +377,7 @@ Folgende Bedingungen verhindern, dass Sie diesen vereinfachten Ansatz anwenden:
 
 ## <a name="work-with-encrypted-content"></a>Arbeiten mit verschlüsselten Inhalten
 
-Bei der CMK-Verschlüsselung treten Wartezeiten bei der Indizierung und bei Abfragen aufgrund des zusätzlichen Aufwands für Verschlüsselung und Entschlüsselung auf. Die Verschlüsselungsaktivität wird von Azure Cognitive Search nicht protokolliert, Sie können jedoch den Schlüsselzugriff über die Key Vault-Protokollierung überwachen. Es wird empfohlen, die [Protokollierung](../key-vault/general/logging.md) schon bei der Konfiguration des Schlüsseltresors zu aktivieren.
+Bei der Verschlüsselung mit kundenseitig verwalteten Schlüsseln treten Wartezeiten bei der Indizierung und bei Abfragen aufgrund des zusätzlichen Aufwands für Verschlüsselung und Entschlüsselung auf. Die Verschlüsselungsaktivität wird von Azure Cognitive Search nicht protokolliert, Sie können jedoch den Schlüsselzugriff über die Key Vault-Protokollierung überwachen. Es wird empfohlen, die [Protokollierung](../key-vault/general/logging.md) schon bei der Konfiguration des Schlüsseltresors zu aktivieren.
 
 Es wird erwartet, dass im Lauf der Zeit eine Schlüsselrotation erfolgt. Wenn Sie Schlüssel rotieren, ist es wichtig, dabei die folgende Sequenz einzuhalten:
 

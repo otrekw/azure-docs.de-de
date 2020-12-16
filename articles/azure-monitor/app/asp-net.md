@@ -4,12 +4,12 @@ description: In diesem Artikel erfahren Sie mehr über die Leistung, die Verfüg
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 970971082e684ebcb6efce07bb707ffbb20ed228
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91838941"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904175"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Konfigurieren von Application Insights für Ihre ASP.NET-Website
 
@@ -25,6 +25,10 @@ Sie benötigen Folgendes, um Application Insights Ihrer ASP.NET-Website hinzuzuf
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/) erstellen, bevor Sie beginnen.
 
 - Erstellen Sie eine [arbeitsbereichsbasierte Ressource für Application Insights](create-workspace-resource.md).
+
+> [!IMPORTANT]
+> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=net) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
+
 
 ## <a name="create-a-basic-aspnet-web-app"></a>Erstellen einer einfachen ASP.NET-Web-App
 

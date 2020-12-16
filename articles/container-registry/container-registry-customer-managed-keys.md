@@ -2,14 +2,14 @@
 title: Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 description: Erfahren Sie mehr über die Verschlüsselung ruhender Daten Ihrer Azure Container Registry und wie Sie Ihre Premium-Registrierung mit einem kundenseitig verwalteten Schlüssel verschlüsseln, der in Azure Key Vault gespeichert ist.
 ms.topic: article
-ms.date: 11/17/2020
+ms.date: 12/03/2020
 ms.custom: ''
-ms.openlocfilehash: 6dac2239f223b5dee6ec728833caa01562873210
-ms.sourcegitcommit: 30906a33111621bc7b9b245a9a2ab2e33310f33f
+ms.openlocfilehash: 708a42a4f965f484060d42d89ea4f535c4365a10
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/22/2020
-ms.locfileid: "95255019"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96620439"
 ---
 # <a name="encrypt-registry-using-a-customer-managed-key"></a>Verschlüsseln der Registrierung mithilfe eines kundenseitig verwalteten Schlüssels
 
@@ -45,9 +45,6 @@ Wenn Sie die Registrierungsverschlüsselung mit einem kundenseitig verwalteten S
 * **Automatisches Aktualisieren der Schlüsselversion:** Um einen kundenseitig verwalteten Schlüssel automatisch zu aktualisieren, wenn eine neue Version in Azure Key Vault verfügbar ist, lassen Sie die Schlüsselversion weg, wenn Sie die Registrierungsverschlüsselung mit einem kundenseitig verwalteten Schlüssel konfigurieren. Wenn eine Registrierung mit einem nicht versionierten Schlüssel verschlüsselt ist, wird in Azure Container Registry regelmäßig der Schlüsseltresor auf eine neue Schlüsselversion überprüft und der kundenseitig verwaltete Schlüssel innerhalb von einer Stunde aktualisiert. In Azure Container Registry wird automatisch die neueste Version des Schlüssels verwendet.
 
 * **Manuelles Aktualisieren der Schlüsselversion:** Zur Verwendung einer bestimmten Version eines Schlüssels zur Registrierungsverschlüsselung geben Sie die entsprechende Schlüsselversion an, wenn Sie die Registrierungsverschlüsselung mit einem kundenseitig verwalteten Schlüssel aktivieren. Wenn eine Registrierung mit einer bestimmten Schlüsselversion verschlüsselt ist, wird diese Version in Azure Container Registry zur Verschlüsselung verwendet, bis Sie den kundenseitig verwalteten Schlüssel manuell rotieren.
-
-> [!NOTE]
-> Aktuell können Sie nur die Azure-Befehlszeilenschnittstelle verwenden, um die Registrierung so zu konfigurieren, dass die Version des kundenseitig verwalteten Schlüssels automatisch aktualisiert wird. Wenn Sie die Verschlüsselung im Portal aktivieren, müssen Sie die Schlüsselversion manuell aktualisieren.
 
 Weitere Informationen finden Sie unter [Auswählen der Schlüssel-ID mit oder ohne Schlüsselversion](#choose-key-id-with-or-without-key-version) und [Aktualisieren der Schlüsselversion](#update-key-version) weiter unten in diesem Artikel.
 
@@ -252,7 +249,7 @@ Sie verwenden den Namen der Identität in späteren Schritten.
 
 ### <a name="create-a-key-vault"></a>Erstellen eines Schlüsseltresors
 
-Schritte zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Erstellen einer Azure Key Vault-Instanz über das Azure-Portal](../key-vault/general/quick-create-portal.md).
+Schritte zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal](../key-vault/general/quick-create-portal.md).
 
 Wenn Sie einen Schlüsseltresor für einen kundenseitig verwalteten Schlüssel erstellen, aktivieren Sie auf der Registerkarte **Grundlagen** die Einstellung **Löschschutz**. Diese Einstellung hilft bei der Verhinderung von Datenverlusten aufgrund versehentlich gelöschter Schlüssel oder Schlüsseltresore.
 
@@ -279,13 +276,15 @@ Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-gui
     1. Weisen Sie der **benutzerseitig zugewiesenen verwalteten Identität** Zugriff zu.
     1. Wählen Sie den Ressourcennamen Ihrer benutzerseitig zugewiesenen verwalteten Identität aus, und klicken Sie auf **Speichern**.
 
-### <a name="create-key"></a>Erstellen eines Schlüssels
+### <a name="create-key-optional"></a>Erstellen eines Schlüssels (optional)
+
+Erstellen Sie optional einen Schlüssel im Schlüsseltresor für das Verschlüsseln der Registrierung. Führen Sie die folgenden Schritte aus, wenn Sie eine bestimmte Schlüsselversion als kundenseitig verwalteten Schlüssel auswählen möchten. 
 
 1. Navigieren Sie zu Ihrem Schlüsseltresor.
 1. Wählen Sie **Einstellungen** > **Schlüssel** aus.
 1. Wählen Sie **+Generieren/Importieren** aus, und geben Sie einen eindeutigen Namen für den Schlüssel ein.
 1. Akzeptieren Sie die verbleibenden Standardwerte, und wählen Sie **Erstellen** aus.
-1. Wählen Sie nach der Erstellung den Schlüssel aus, und notieren Sie sich die aktuelle Schlüsselversion.
+1. Wählen Sie nach der Erstellung den Schlüssel aus, und wählen Sie dann die aktuelle Version aus. Kopieren Sie den **Schlüsselbezeichner** für die Schlüsselversion.
 
 ### <a name="create-azure-container-registry"></a>Erstellen einer Azure-Containerregistrierung
 
@@ -293,10 +292,11 @@ Alternativ können Sie [Azure RBAC für Key Vault](../key-vault/general/rbac-gui
 1. Wählen Sie auf der Registerkarte **Grundlagen** eine Ressourcengruppe aus, oder erstellen Sie eine, und geben Sie einen Registrierungsnamen ein. Wählen Sie unter **SKU** die Option **Premium** aus.
 1. Wählen Sie auf der Registerkarte **Verschlüsselung** unter **Kundenseitig verwalteter Schlüssel** die Option **Aktiviert** aus.
 1. Wählen Sie unter **Identität** die verwaltete Identität aus, die Sie erstellt haben.
-1. Wählen Sie unter **Verschlüsselung** die Option **Aus Schlüsseltresor auswählen** aus.
-1. Wählen Sie im Fenster **Schlüssel aus Azure Key Vault auswählen** den Schlüsseltresor, Schlüssel und die Version aus, die Sie im vorherigen Abschnitt erstellt haben.
+1. Wählen Sie unter **Verschlüsselung** eine der folgenden Optionen aus:
+    * Wählen Sie **Aus Schlüsseltresor auswählen** und dann einen vorhandenen Schlüsseltresor und Schlüssel aus, oder wählen Sie **Neu erstellen** aus. Der ausgewählte Schlüssel ist nicht versioniert und ermöglicht automatische Schlüsselrotation.
+    * Wählen Sie **Schlüssel-URI eingeben** aus, und geben Sie direkt einen Schlüsselbezeichner an. Sie können den URI eines versionierten Schlüssels (der Schlüssel muss manuell rotiert werden) oder eines Schlüssels ohne Versionsangabe (aktiviert die automatische Schlüsselrotation) angeben. 
 1. Wählen Sie auf der Registerkarte **Verschlüsselung** die Option **Überprüfen + erstellen** aus.
-1. Wählen Sie **Erstellen** aus, um die Registrierungsinstanz zu erstellen.
+1. Wählen Sie **Erstellen**, um die Registrierungsinstanz bereitzustellen.
 
 :::image type="content" source="media/container-registry-customer-managed-keys/create-encrypted-registry.png" alt-text="Erstellen einer verschlüsselten Registrierung im Azure-Portal":::
 
@@ -498,11 +498,11 @@ Gehen Sie zum Konfigurieren eines neuen Schlüssels z. B. wie folgt vor:
 
 1. Navigieren Sie im Portal zu Ihrer Registrierung.
 1. Wählen Sie unter **Einstellungen** die Option **Verschlüsselung** > **Schlüssel ändern** aus.
-1. Wählen Sie **Schlüssel auswählen** aus.
 
     :::image type="content" source="media/container-registry-customer-managed-keys/rotate-key.png" alt-text="Rotieren des Schlüssels im Azure-Portal":::
-1. Wählen Sie im Fenster **Schlüssel aus Azure Key Vault auswählen** den Schlüsseltresor und Schlüssel aus, die Sie zuvor konfiguriert haben, und wählen Sie in **Version** die Option **Neu erstellen** aus.
-1. Wählen Sie im Fenster **Schlüssel erstellen** den Befehl **Generieren** und dann **Erstellen** aus.
+1. Wählen Sie in **Verschlüsselung** eine der folgenden Optionen aus:
+    * Wählen Sie **Aus Schlüsseltresor auswählen** und dann einen vorhandenen Schlüsseltresor und Schlüssel aus, oder wählen Sie **Neu erstellen** aus. Der ausgewählte Schlüssel ist nicht versioniert und ermöglicht automatische Schlüsselrotation.
+    * Wählen Sie **Schlüssel-URI eingeben** aus, und geben Sie direkt einen Schlüsselbezeichner an. Sie können den URI eines versionierten Schlüssels (der Schlüssel muss manuell rotiert werden) oder eines Schlüssels ohne Versionsangabe (aktiviert die automatische Schlüsselrotation) angeben.
 1. Vervollständigen Sie die Schlüsselauswahl, und wählen Sie **Speichern** aus.
 
 ## <a name="revoke-key"></a>Widerrufen eines Schlüssels

@@ -11,12 +11,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto, genemi
 ms.date: 11/14/2019
-ms.openlocfilehash: 2ff8f6134f74e0eda355342a7282e8be81a3d8df
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c5839589c35ea5a9c52303801a8767fc598434fc
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96450228"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96905875"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-servers-in-azure-sql-database"></a>Verwenden von Virtual Network-Dienstendpunkten und -Regeln für Server in Azure SQL-Datenbank
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -95,7 +95,7 @@ Stellen Sie bei der Verwendung von Dienstendpunkten für die Azure SQL-Datenbank
 ### <a name="expressroute"></a>ExpressRoute
 
 Wenn Sie [ExpressRoute](../../expressroute/expressroute-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lokal für öffentliches Peering oder für Microsoft-Peering verwenden, müssen Sie die verwendeten NAT-IP-Adressen identifizieren. Beim öffentlichen Peering werden für jede ExpressRoute-Verbindung standardmäßig zwei NAT-IP-Adressen verwendet. Diese werden auf den Datenverkehr der Azure-Dienste angewendet, wenn der Datenverkehr im Microsoft Azure-Netzwerk-Backbone eintrifft. Beim Microsoft-Peering werden die verwendeten NAT-IP-Adressen entweder vom Kunden oder vom Dienstanbieter bereitgestellt. Um den Zugriff auf Ihre Dienstressourcen zuzulassen, müssen Sie diese öffentlichen IP-Adressen in der Ressourceneinstellung der IP-Firewall zulassen. [Öffnen Sie über das Azure-Portal ein Supportticket für ExpressRoute](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview), um die IP-Adressen Ihrer ExpressRoute-Verbindung für öffentliches Peering zu ermitteln. Erfahren Sie mehr über [NAT für öffentliches ExpressRoute-Peering und Microsoft-Peering](../../expressroute/expressroute-nat.md?toc=%2fazure%2fvirtual-network%2ftoc.json#nat-requirements-for-azure-public-peering).
-  
+
 Um die Kommunikation von Ihrer Verbindung mit Azure SQL-Datenbank zu ermöglichen, müssen Sie IP-Netzwerkregeln für die öffentlichen IP-Adressen Ihrer Netzwerkadressenübersetzung erstellen.
 
 <!--
@@ -122,7 +122,7 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
 
 #### <a name="steps"></a>Schritte
 
-1. **Registrieren Sie Ihren Server**, der Azure Synapse hostet, in PowerShell bei Azure Active Directory (AAD):
+1. Wenn Sie über einen eigenständigen dedizierten SQL-Pool verfügen, registrieren Sie Ihren SQL-Server mithilfe von PowerShell bei Azure Active Directory (AAD): 
 
    ```powershell
    Connect-AzAccount
@@ -130,6 +130,14 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
    Set-AzSqlServer -ResourceGroupName your-database-server-resourceGroup -ServerName your-SQL-servername -AssignIdentity
    ```
 
+   Dieser Schritt ist für dedizierte SQL-Pools in einem Synapse-Arbeitsbereich nicht erforderlich.
+
+1. Wenn Sie über einen Synapse-Arbeitsbereich verfügen, registrieren Sie die vom System verwaltete Identität Ihres Arbeitsbereichs:
+
+   1. Wechseln Sie im Azure-Portal zu Ihrem Synapse-Arbeitsbereich.
+   2. Wechseln Sie zum Blatt „Verwaltete Identitäten“. 
+   3. Vergewissern Sie sich, dass die Option „Pipelines zulassen“ aktiviert ist.
+   
 1. Erstellen Sie ein **Speicherkonto vom Typ „Universell v2“** , indem Sie [diesen Leitfaden](../../storage/common/storage-account-create.md) verwenden.
 
    > [!NOTE]
@@ -137,7 +145,7 @@ Polybase und die COPY-Anweisung werden häufig verwendet, um Daten aus Azure Sto
    > - Falls Sie über ein universelles Speicherkonto (v1) oder ein Blobspeicherkonto verfügen, müssen Sie zuerst das **Upgrade auf Version 2** durchführen, indem Sie [diesen Leitfaden](../../storage/common/storage-account-upgrade.md) verwenden.
    > - Informationen zu bekannten Problemen mit Azure Data Lake Storage Gen2 finden Sie in [diesem Leitfaden](../../storage/blobs/data-lake-storage-known-issues.md).
 
-1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server, auf dem Ihre bei Azure Active Directory (AAD) (wie in Schritt 1) registrierte Azure Synapse Analytics-Instanz gehostet wird, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
+1. Navigieren Sie unter Ihrem Speicherkonto zu **Zugriffssteuerung (IAM)** , und wählen Sie **Rollenzuweisung hinzufügen** aus. Weisen Sie dem Server oder Arbeitsbereich, auf bzw. in dem Ihr bei Azure Active Directory (AAD) registrierter dedizierter SQL-Pool gehostet wird, die Azure-Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
    > [!NOTE]
    > Nur Mitglieder mit der Berechtigung „Besitzer“ für das Speicherkonto können diesen Schritt ausführen. Verschiedene integrierte Azure-Rollen finden Sie in diesem [Leitfaden](../../role-based-access-control/built-in-roles.md).

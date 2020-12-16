@@ -11,12 +11,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 10/23/2020
 ms.custom: contperfq4, tracking-python, contperfq1, devx-track-azurecli
-ms.openlocfilehash: 3bd4d328c6b0b73a51f325adde988c8f0988ea8a
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: fcaf8f62dcdc43a48ff2ae7ff790ac14ab42e8b6
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873810"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96532889"
 ---
 # <a name="secure-an-azure-machine-learning-inferencing-environment-with-virtual-networks"></a>Schützen einer Azure Machine Learning-Rückschlussumgebung mit virtuellen Netzwerken
 
@@ -252,7 +252,9 @@ aks_target.wait_for_completion(show_output = True)
 Azure Container Instances werden beim Bereitstellen eines Modells dynamisch erstellt. Damit Azure Machine Learning ACIs innerhalb des virtuellen Netzwerks erstellen kann, müssen Sie __Subnetzdelegierung__ für das von der Bereitstellung verwendete Subnetz aktivieren.
 
 > [!WARNING]
-> Wenn Sie Azure Container Instances in einem virtuellen Netzwerk verwenden, muss sich das virtuelle Netzwerk in derselben Ressourcengruppe wie der Azure Machine Learning-Arbeitsbereich befinden.
+> Wenn Sie Azure Container Instances in einem virtuellen Netzwerk verwenden, muss das virtuelle Netzwerk folgende Anforderungen erfüllen:
+> * Es muss sich in der gleichen Ressourcengruppe befinden wie Ihr Azure Machine Learning-Arbeitsbereich.
+> * Wenn Ihr Arbeitsbereich über einen __privaten Endpunkt__ verfügt, muss für Azure Container Instances das gleiche virtuelle Netzwerk verwendet werden wie von dem privaten Endpunkt des Arbeitsbereichs.
 >
 > Wenn Sie Azure Container Instances innerhalb des virtuellen Netzwerks verwenden, darf sich die Azure Container Registry (ACR) für Ihren Arbeitsbereich nicht ebenfalls im virtuellen Netzwerk befinden.
 

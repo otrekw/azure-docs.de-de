@@ -10,15 +10,15 @@ ms.service: virtual-machines-windows
 ms.topic: troubleshooting
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
-ms.date: 11/16/2020
+ms.date: 11/20/2020
 ms.author: genli
 ms.custom: has-adal-ref
-ms.openlocfilehash: 4891d01c59289afddb244879e042e45b7b7a1aa6
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: f69d81656358b8ee9a5fa51cb8261e3115729714
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94695723"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96511558"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker-Startfehler auf einer Azure-VM
 
@@ -55,7 +55,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
     ```Powershell
     $rgName = "myResourceGroup"
     $osDiskName = "ProblemOsDisk"
-
+    # Set the EncryptionSettingsEnabled property to false, so you can attach the disk to the recovery VM.
     New-AzDiskUpdateConfig -EncryptionSettingsEnabled $false |Update-AzDisk -diskName $osDiskName -ResourceGroupName $rgName
 
     $recoveryVMName = "myRecoveryVM" 
@@ -87,21 +87,18 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
             | Sort-Object -Property Created `
             | ft  Created, `
                 @{Label="Content Type";Expression={$_.ContentType}}, `
+                @{Label ="MachineName"; Expression = {$_.Tags.MachineName}}, `
                 @{Label ="Volume"; Expression = {$_.Tags.VolumeLetter}}, `
                 @{Label ="DiskEncryptionKeyFileName"; Expression = {$_.Tags.DiskEncryptionKeyFileName}}
     ```
 
-    Nachfolgend sehen Sie ein Beispiel für die Ausgabe: Suchen Sie den Namen der BEK-Datei für den angefügten Datenträger. In diesem Fall wird davon ausgegangen, dass der Laufwerkbuchstabe des angefügten Datenträgers F und der Name der BEK-Datei „EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK“ lautet.
+    Nachfolgend sehen Sie ein Beispiel für die Ausgabe: In diesem Fall wird „EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK“ als Dateiname verwendet.
 
     ```
-    Created             Content Type Volume DiskEncryptionKeyFileName               
-    -------             ------------ ------ -------------------------               
-    4/5/2018 7:14:59 PM Wrapped BEK  C:\    B4B3E070-836C-4AF5-AC5B-66F6FDE6A971.BEK
-    4/7/2018 7:21:16 PM Wrapped BEK  F:\    EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
-    4/7/2018 7:26:23 PM Wrapped BEK  G:\    70148178-6FAE-41EC-A05B-3431E6252539.BEK
-    4/7/2018 7:26:26 PM Wrapped BEK  H:\    5745719F-4886-4940-9B51-C98AFABE5305.BEK
+    Created               Content Type Volume MachineName DiskEncryptionKeyFileName
+    -------               ------------ ------ ----------- -------------------------
+    11/20/2020 7:41:56 AM BEK          C:\    myVM   EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK
     ```
-
     Wenn zwei doppelte Volumes angezeigt werden, ist das Volume mit dem neueren Zeitstempel die aktuelle BEK-Datei, die von der Wiederherstellungs-VM verwendet wird.
 
     Wenn **Inhaltstyp** den Wert **Wrapped BEK** (Umschlossene BEK-Datei) aufweist, wechseln Sie zu den [Schlüsselverschlüsselungsschlüssel-Szenarien (KEK)](#key-encryption-key-scenario).
@@ -112,9 +109,10 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 
     ```powershell
     $vault = "myKeyVault"
-    $bek = " EF7B2F5A-50C6-4637-9F13-7F599C12F85C"
+    $bek = "EF7B2F5A-50C6-4637-0001-7F599C12F85C"
     $keyVaultSecret = Get-AzKeyVaultSecret -VaultName $vault -Name $bek
-    $bekSecretBase64 = $keyVaultSecret.SecretValueText
+    $bstr = [Runtime.InteropServices.Marshal]::SecureStringToBSTR($keyVaultSecret.SecretValue)
+    $bekSecretBase64 = [Runtime.InteropServices.Marshal]::PtrToStringAuto($bstr)
     $bekFileBytes = [Convert]::FromBase64String($bekSecretbase64)
     $path = "C:\BEK\DiskEncryptionKeyFileName.BEK"
     [System.IO.File]::WriteAllBytes($path,$bekFileBytes)
@@ -123,7 +121,7 @@ Wenn das Problem mit dieser Methode nicht behoben wird, gehen Sie folgendermaße
 7.  Führen Sie den folgenden Befehl aus, um den angefügten Datenträger mithilfe der BEK-Datei zu entsperren.
 
     ```powershell
-    manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-9F13-7F599C12F85C.BEK
+    manage-bde -unlock F: -RecoveryKey "C:\BEK\EF7B2F5A-50C6-4637-0001-7F599C12F85C.BEK
     ```
     In diesem Beispiel ist der angefügte Betriebssystemdatenträger das Laufwerk F. Achten Sie darauf, den richtigen Laufwerkbuchstaben zu verwenden. 
 

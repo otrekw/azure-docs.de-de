@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 9034757539a3dfd8b5e43e97ec518479da396456
-ms.sourcegitcommit: f6236e0fa28343cf0e478ab630d43e3fd78b9596
+ms.openlocfilehash: 5f7278a688147842b7dbfab79a20afea2b4a9288
+ms.sourcegitcommit: 8192034867ee1fd3925c4a48d890f140ca3918ce
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/19/2020
-ms.locfileid: "94917544"
+ms.lasthandoff: 12/05/2020
+ms.locfileid: "96621602"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>Planen eines SaaS-Angebots im kommerziellen Marketplace
 
@@ -250,15 +250,15 @@ Das folgende Beispiel zeigt eine exemplarische Aufschlüsselung der Kosten und A
 | Microsoft zahlt Ihnen 80% Ihrer Lizenzkosten<br>`*` Für qualifizierte SaaS-Apps zahlt Microsoft 90 % Ihrer Lizenzkosten| 80,00 USD pro Monat<br>``*`` 90,00 USD pro Monat |
 |||
 
-**`*` Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Die reduzierte Marketplace-Dienstgebühr gilt auch für VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Angebote im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden.
+**`*` Reduzierte Marketplace-Dienstgebühr:** Für bestimmte SaaS-Angebote, die Sie im kommerziellen Marketplace veröffentlicht haben, reduziert Microsoft die Marketplace-Dienstgebühr von 20 Prozent (wie im Microsoft-Herausgebervertrag angegeben) auf 10 Prozent. Damit Ihre Angebote qualifiziert sind, müssen sie von Microsoft als gefördert für Azure IP-Co-Selling gekennzeichnet worden sein. Die Anforderungen für die Berechtigung müssen mindestens fünf (5) Arbeitstage vor dem Ende eines jeden Kalendermonats erfüllt sein, damit die reduzierte Marketplace-Dienstgebühr für den Monat in Anspruch genommen werden kann. Einzelheiten zur Berechtigung für das IP-Co-Selling finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Die reduzierte Marketplace-Dienstgebühr gilt auch für VMs, verwaltete Apps und andere berechtigte transaktionsfähige IaaS-Angebote im Rahmen der Azure IP-Co-Selling-Incentives, die über den kommerziellen Marketplace bereitgestellt werden.
 
 ## <a name="additional-sales-opportunities"></a>Zusätzliche Verkaufschancen
 
 Sie haben die Möglichkeit, sich für von Microsoft unterstützte Marketing- und Vertriebskanäle zu entscheiden. Wenn Sie Ihr Angebot im Partner Center erstellen, werden gegen Ende des Prozesses zwei Registerkarten angezeigt:
 
-- **Verkauf über CSPs**: Verwenden Sie diese Option, um Microsoft CSP-Partnern (Cloud Solution Providers) zu ermöglichen, Ihre Lösung als Teil eines Bundleangebots weiterzuverkaufen. Weitere Informationen finden Sie unter [Cloud-Lösungsanbieter-Programm](cloud-solution-providers.md).
+- **Verkauf über CSPs**: Verwenden Sie diese Option, um Microsoft CSP-Partnern (Cloud Solution Providers) zu ermöglichen, Ihre Lösung als Teil eines Bundleangebots weiterzuverkaufen. Weitere Informationen zu diesem Programm finden Sie unter [Cloud Solution Provider-Programm](cloud-solution-providers.md).
 
-- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Evaluierung vorbereiten können, finden Sie unter [Co-Selling-Features im Partner Center](./partner-center-portal/commercial-marketplace-co-sell.md).
+- **Co-Selling mit Microsoft**: Mit dieser Option können die Microsoft-Verkaufsteams Ihre für IP-Co-Selling in Frage kommende Lösung in Betracht ziehen, wenn sie Kundenanforderungen evaluieren. Einzelheiten zur Berechtigung für das Co-Selling finden Sie unter [Requirements for Co-sell Status](https://aka.ms/CertificationPolicies#3000-requirements-for-co-sell-status) (Anforderungen für den Co-Selling-Status). Ausführliche Informationen dazu, wie Sie Ihr Angebot auf die Auswertung vorbereiten, finden Sie unter [Co-Selling-Option im Partner Center](commercial-marketplace-co-sell.md).
 
 ## <a name="next-steps"></a>Nächste Schritte
 

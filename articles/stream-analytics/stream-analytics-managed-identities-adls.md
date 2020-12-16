@@ -7,14 +7,14 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/08/2019
 ms.custom: seodec18
-ms.openlocfilehash: b20391c4d856a5c52b6017ae892ec0b86873dbca
-ms.sourcegitcommit: b4880683d23f5c91e9901eac22ea31f50a0f116f
+ms.openlocfilehash: 82c5a246dca69c0723394e41058c4fc123bbb84e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/11/2020
-ms.locfileid: "94491884"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571945"
 ---
-# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten
+# <a name="authenticate-stream-analytics-to-azure-data-lake-storage-gen1-using-managed-identities-preview"></a>Authentifizieren von Stream Analytics bei Azure Data Lake Storage Gen1 mithilfe verwalteter Identitäten (Vorschau)
 
 Azure Stream Analytics unterstützt die Authentifizierung über verwaltete Identitäten für die Azure Data Lake Storage Gen1-Ausgabe. Bei einer Identität handelt es sich um eine in Azure Active Directory registrierte verwaltete Anwendung, die einen bestimmten Stream Analytics-Auftrag repräsentiert und für die Authentifizierung bei einer Zielressource verwendet werden kann. Verwaltete Identitäten beseitigen die Einschränkungen benutzerbasierter Authentifizierungsmethoden, wie etwa die Notwendigkeit einer erneuten Authentifizierung aufgrund von Kennwortänderungen oder Token, die alle 90 Tage ablaufen. Darüber hinaus helfen verwaltete Identitäten bei der Automatisierung von Stream Analytics-Auftragsbereitstellungen, deren Ausgabe in Azure Data Lake Storage Gen1 erfolgt.
 

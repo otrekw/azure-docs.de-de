@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
-ms.openlocfilehash: 1383db44922a044f5e51075b6e1feafa70c78009
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: 13644872fca06ad8fc5806326736aea23e504520
+ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94958755"
+ms.lasthandoff: 12/04/2020
+ms.locfileid: "96608655"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>Bereitstellen eines Systems für horizontale SAP HANA-Skalierung mit Standbyknoten auf Azure-VMs mithilfe von Azure NetApp Files auf SUSE Linux Enterprise Server 
 
@@ -655,6 +655,9 @@ In diesem Beispiel für die Bereitstellung von SAP HANA in einer Konfiguration m
    > Beachten Sie den SAP-Hinweis [2631285](https://launchpad.support.sap.com/#/notes/2631285). 
 
 ## <a name="test-sap-hana-failover"></a>Testen des SAP HANA-Failovers 
+
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf die Begriffe *Master* und *Slave*, die von Microsoft nicht mehr verwendet werden. Sobald diese Begriffe aus der Software entfernt wurden, werden sie auch aus diesem Artikel gelöscht.
 
 1. Simulieren Sie einen Knotenabsturz auf einem SAP HANA-Workerknoten. Gehen Sie folgendermaßen vor: 
 

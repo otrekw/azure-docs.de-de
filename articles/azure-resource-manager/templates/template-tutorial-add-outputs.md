@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Hinzufügen von Ausgaben zur Vorlage'
-description: Fügen Sie Ihrer Azure Resource Manager-Vorlage Ausgaben hinzu, um die Syntax zu vereinfachen.
+description: Fügen Sie Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) Ausgaben hinzu, um die Syntax zu vereinfachen.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: abd5fbed4ab19135fb30ec5adda387d839df3ab6
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613865"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96931740"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Tutorial: Hinzufügen von Ausgaben zu Ihrer ARM-Vorlage
 
-In diesem Tutorial wird beschrieben, wie Sie einen Wert aus Ihrer ARM-Vorlage (Azure Resource Manager) zurückgeben. Sie verwenden Ausgaben, wenn Sie einen Wert von einer bereitgestellten Ressource benötigen. Dieses Tutorial dauert ungefähr **7 Minuten**.
+In diesem Tutorial wird beschrieben, wie Sie einen Wert aus Ihrer ARM-Vorlage (Azure Resource Manager-Vorlage) zurückgeben. Sie verwenden Ausgaben, wenn Sie einen Wert von einer bereitgestellten Ressource benötigen. Dieses Tutorial dauert ungefähr **7 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

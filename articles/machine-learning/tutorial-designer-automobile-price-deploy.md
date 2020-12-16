@@ -10,12 +10,12 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/25/2020
 ms.custom: designer
-ms.openlocfilehash: 28358db2e538867957fcc8d4984cf1c028f9ab2c
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 14be695f2f58b9738af11a3d2ca3f06592a1cc6e
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030362"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96575957"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Tutorial: Bereitstellen eines Machine Learning-Modells mit dem Designer
 
@@ -123,7 +123,7 @@ Weitere Informationen zur Nutzung Ihres Webdiensts finden Sie unter [Nutzen eine
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-In diesem Tutorial wurden die wichtigsten Schritte zum Erstellen, Bereitstellen und Verwenden eines Machine Learning-Modells im Designer vermittelt. Weitere Informationen zur Verwendung des Designers für andere Arten von Aufgaben finden Sie in unseren anderen Beispielpipelines.
+In diesem Tutorial wurden die wichtigsten Schritte zum Erstellen, Bereitstellen und Verwenden eines Machine Learning-Modells im Designer vermittelt. Weitere Informationen zur Verwendung des Designers finden Sie unter den folgenden Links:
 
-> [!div class="nextstepaction"]
-> [Designer-Beispiele](samples-designer.md)
++ [Designer-Beispiele](samples-designer.md): Erfahren Sie, wie Sie den Designer für andere Arten von Aufgaben verwenden.
++ [Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk](how-to-enable-studio-virtual-network.md)

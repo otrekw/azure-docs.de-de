@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ba22745923f1b157c477dce0b5704c7e278e748e
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 6eb63a4a0b7b7fdefd636d3460b182f8d907dd36
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96176000"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96558928"
 ---
 # <a name="frequently-asked-questions-identity-protection-in-azure-active-directory"></a>Häufig gestellte Fragen zu Identity Protection in Azure Active Directory
 
@@ -82,9 +82,11 @@ Alle Risikoerkennungen sind im Artikel [Was bedeutet Risiko?](concept-identity-p
 
 - Nach Erhalt dieses Feedbacks wird der Anmelde- und Benutzerrisikostatus auf **Als sicher bestätigt** und die Risikostufe auf **-** festgelegt.
 
-- Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern.
+- Darüber hinaus geben wir die Informationen an unsere Machine Learning-Systeme weiter, um die künftige Risikobewertung zu verbessern. 
 
     > [!NOTE]
+    >Derzeit reicht die Auswahl von „Sicherheit bestätigen“ bei einer Anmeldung nicht aus, zu verhindern, dass zukünftige Anmeldungen mit denselben Eigenschaften als riskant gekennzeichnet werden. Die beste Möglichkeit, das System zu trainieren, die Eigenschaften eines Benutzers zu erlernen, ist die Verwendung der Richtlinie für riskante Anmeldungen mit MFA. Wenn eine riskante Anmeldung für MFA angefordert wird und der Benutzer erfolgreich auf die Anforderung antwortet, kann die Anmeldung erfolgreich durchgeführt werden und dazu beitragen, das System mit dem Verhalten des legitimen Benutzers zu trainieren.
+    >
     > Wenn Sie davon ausgehen, dass der Benutzer nicht gefährdet ist, verwenden Sie anstelle von **Als sicher bestätigt** auf Anmeldeebene die Option **Benutzerrisiko ignorieren** auf Benutzerebene. Durch **Benutzerrisiko verwerfen** auf Benutzerebene werden das Benutzerrisiko und alle vergangenen riskanten Anmeldungen und Risikoerkennungen geschlossen.
 
 ### <a name="why-am-i-seeing-a-user-with-a-low-or-above-risk-score-even-if-no-risky-sign-ins-or-risk-detections-are-shown-in-identity-protection"></a>Warum sehe ich einen Benutzer mit einer niedrigen (oder höheren) Risikobewertung, auch wenn in Identity Protection keine riskanten Anmeldungen oder Risikoerkennungen angezeigt werden?

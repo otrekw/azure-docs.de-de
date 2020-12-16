@@ -3,18 +3,18 @@ title: 'Tutorial: Migrieren von Webdiensten aus Bing Karten | Microsoft Azure Ma
 description: Tutorial zum Migrieren von Webdiensten aus Bing Karten zu Microsoft Azure Maps
 author: rbrundritt
 ms.author: richbrun
-ms.date: 9/10/2020
+ms.date: 12/07/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: c6e63f67aca279b64829e67e1aa06a69d312fd58
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: d257c66de8fb62fb57c573d91966f3e7d8d1b123
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92897023"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904957"
 ---
 # <a name="tutorial---migrate-web-service-from-bing-maps"></a>Tutorial: Migrieren von Webdiensten aus Bing Karten
 
@@ -37,21 +37,21 @@ In der folgenden Tabelle finden Sie die Azure Maps-Dienst-APIs, die ähnliche Fu
 | Spatial Data Services (SDS)           | [Suche](/rest/api/maps/search) + [Route](/rest/api/maps/route) + weitere Azure-Dienste |
 | Zeitzone                             | [Zeitzone](/rest/api/maps/timezone)  |
 | Verkehrsmeldungen                     | [Verkehrsinfodetails](/rest/api/maps/traffic/gettrafficincidentdetail)                     |
+| Elevation                             | [Höhe (Vorschauversion)](/rest/api/maps/elevation)
 
 Die folgenden Dienst-APIs sind derzeit noch nicht in Azure Maps verfügbar:
 
--   Höhe – in Planung
 -   Optimierte Reiserouten – in Planung. Azure Maps Route-API unterstützt die Traveling Salesman-Optimierung für ein einzelnes Fahrzeug.
 -   Metadaten für Bilder – In Bing Karten hauptsächlich für das Abrufen der Kachel-URLs verwendet. Azure Maps verfügt über einen eigenständigen Dienst für den direkten Zugriff auf Kartenkacheln.
 
 Azure Maps verfügt über mehrere zusätzliche REST-Webdienste, die möglicherweise von Interesse sind:
 
--   [Azure Maps Creator](./creator-indoor-maps.md): Erstellen Sie einen benutzerdefinierten privaten digitalen Zwilling von Gebäuden und Räumen.
+-   [Azure Maps Creator (Vorschau)](./creator-indoor-maps.md): Erstellen Sie einen benutzerdefinierten privaten digitalen Zwilling von Gebäuden und Räumen.
 -   [Räumliche Operationen](/rest/api/maps/spatial): Lagern Sie komplexe räumliche Berechnungen und Operationen wie etwa Geofencing an einen Dienst aus.
 -   [Kartenkacheln](/rest/api/maps/render/getmaptile): Greifen Sie auf Straßen- und Bildkacheln aus Azure Maps als Raster- und Vektorkacheln zu.
 -   [Batchrouting](/rest/api/maps/route/postroutedirectionsbatchpreview): Ermöglicht die Ausführung von bis zu 1.000 Routenanforderungen in einem einzelnen Batch über einen bestimmten Zeitraum. Die Routen werden zwecks schnellerer Verarbeitung parallel auf dem Server berechnet.
 -   [Verkehrsfluss](/rest/api/maps/traffic): Greifen Sie in Echtzeit auf Daten zum Verkehrsfluss in Form von Raster- und Vektorkacheln zu.
--   [Geolocation-API](/rest/api/maps/geolocation/getiptolocationpreview): Rufen Sie den Standort zu einer IP-Adresse ab.
+-   [Geolocation-API (Vorschau)](/rest/api/maps/geolocation/getiptolocationpreview): Rufen Sie den Standort zu einer IP-Adresse ab.
 -   [Wetterdienste](/rest/api/maps/weather): Erhalten Sie Zugriff auf Echtzeit- und prognostizierte Wetterdaten.
 
 Lesen Sie unbedingt auch die folgenden Anleitungen zu bewährten Methoden:
@@ -186,7 +186,7 @@ Der Routenplanungsdienst von Azure Maps stellt die folgenden APIs zum Berechnen 
 
 -   [Berechnen der Route:](/rest/api/maps/route/getroutedirections)  Berechnen Sie die Route, und lassen Sie die Anforderung sofort verarbeiten. Diese API unterstützt sowohl GET- als auch POST-Anforderungen. POST-Anforderungen werden empfohlen, wenn eine große Anzahl von Wegpunkten angegeben wird oder wenn viele der Routenoptionen verwendet werden, um sicherzustellen, dass die URL-Anforderung nicht zu lang wird und Probleme verursacht.
 -   [Batchroute:](/rest/api/maps/route/postroutedirectionsbatchpreview)  Erstellen Sie eine Anforderung mit bis zu 1.000 Routenanforderungen, und lassen Sie sie über einen bestimmten Zeitraum verarbeiten. Alle Daten werden auf dem Server parallel verarbeitet. Nach Abschluss des Vorgangs kann das vollständige Resultset heruntergeladen werden.
--   [Mobilitätsdienste:](/rest/api/maps/mobility)  Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
+-   [Mobilitätsdienste (Vorschauversion)](/rest/api/maps/mobility): Berechnen Sie Routen und Wegbeschreibungen mit dem öffentlichen Nahverkehr.
 
 In der folgenden Tabelle werden die Parameter der Bing Karten-API den vergleichbaren API-Parametern in Azure Maps gegenübergestellt.
 

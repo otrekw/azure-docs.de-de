@@ -1,21 +1,26 @@
 ---
-title: Anforderungen für Zeichnungspakete in Azure Maps Creator
+title: Anforderungen für Zeichnungspakete in Microsoft Azure Maps Creator (Vorschau)
 description: Erfahren Sie, welche Anforderungen für Zeichnungspakete erfüllt sein müssen, um Ihre Plandateien für Einrichtungen in Kartendaten zu konvertieren
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 6/12/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 2c3e46bf386e70cbe35d96728ede896d6bf0dc7d
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 26b6273b4dd2371790025515e35b71d1fc863ebe
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96013121"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96903461"
 ---
 # <a name="drawing-package-requirements"></a>Anforderungen für Zeichnungspakete
+
+
+> [!IMPORTANT]
+> Azure Maps Creator-Dienste befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Mit dem [Azure Maps-Konvertierungsdienst](/rest/api/maps/conversion) können Sie hochgeladene Zeichnungspakete in Kartendaten konvertieren. In diesem Artikel werden die Anforderungen für Zeichnungspakete für die Konvertierungs-API beschrieben. Wenn Sie sich ein Beispielpaket ansehen möchten, können Sie das exemplarische [Zeichnungspaket](https://github.com/Azure-Samples/am-creator-indoor-data-examples) herunterladen.
 
@@ -188,7 +193,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 ### `directoryInfo`
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 | `name`      | Zeichenfolge | true   |  Name des Gebäudes. |
 | `streetAddress`|    Zeichenfolge |    false    | Adresse des Gebäudes. |
@@ -209,7 +214,7 @@ In den nächsten Abschnitten werden die Anforderungen für die einzelnen Objekte
 
 Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`levelName`    |Zeichenfolge    |true |    Beschreibender Ebenenname. Beispiel: 1. Stock, Eingangsbereich, blaue Parkebene oder Keller.|
 |`ordinal` | integer |    true | Bestimmt die vertikale Reihenfolge der Ebenen. Jede Einrichtung muss über eine Ebene mit der Ordnungszahl 0 verfügen. |
@@ -219,7 +224,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 ### `georeference`
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`lat`    | NUMERIC |    true |    Dezimaldarstellung des Breitengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen.|
 |`lon`    |NUMERIC|    true|    Dezimaldarstellung des Längengrads am Ursprung der Anlagenzeichnung. Die Ursprungskoordinaten müssen als WGS 84-Web-Mercator-Koordinaten (`EPSG:3857`) vorliegen. |
@@ -227,7 +232,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 ### `dwgLayers`
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | Beschreibung |
 |-----------|------|----------|-------------|
 |`exterior`    |array of strings|    true|    Namen von Schichten zum Definieren des äußeren Gebäudeprofils.|
 |`unit`|    array of strings|    true|    Namen von Schichten zum Definieren von Einheiten.|
@@ -241,7 +246,7 @@ Das Objekt `buildingLevels` enthält ein JSON-Array mit Gebäudeebenen.
 
 Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |`unitName`    |Zeichenfolge    |true    |Name der Einheit, die diesem Datensatz vom Typ `unitProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schichten vom Typ `unitLabel` eine Bezeichnung vom Typ `unitName` enthalten. |
 |`categoryName`|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -261,7 +266,7 @@ Das Objekt `unitProperties` enthält ein JSON-Array mit Einheiteneigenschaften.
 
 Das Objekt `zoneProperties` enthält ein JSON-Array mit Zoneneigenschaften.
 
-| Eigenschaft  | Typ | Erforderlich | Beschreibung |
+| Eigenschaft  | type | Erforderlich | BESCHREIBUNG |
 |-----------|------|----------|-------------|
 |zoneName        |Zeichenfolge    |true    |Name der Zone, der dem Datensatz `zoneProperty` zugeordnet werden soll. Dieser Datensatz ist nur gültig, wenn die Schicht `zoneLabel` der Zone eine Bezeichnung vom Typ `zoneName` enthält.  |
 |categoryName|    Zeichenfolge|    false    |Kategoriename. Eine vollständige Kategorienliste finden Sie [hier](https://aka.ms/pa-indoor-spacecategories). |
@@ -407,10 +412,10 @@ Nachfolgend finden Sie eine exemplarische Manifestdatei für das Beispielzeichnu
 Wenn Ihr Zeichnungspaket den Anforderungen entspricht, können Sie es mithilfe des [Azure Maps-Konvertierungsdiensts](/rest/api/maps/conversion) in ein Kartendataset konvertieren. Anschließend können Sie mit dem Dataset und dem Modul für Gebäudepläne einen Gebäudeplan generieren.
 
 > [!div class="nextstepaction"]
->[Creator für Gebäudepläne](creator-indoor-maps.md)
+>[Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
-> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator](tutorial-creator-indoor-maps.md)
+> [Tutorial: Erstellen von Gebäudeplänen mithilfe von Creator (Vorschau)](tutorial-creator-indoor-maps.md)
 
 > [!div class="nextstepaction"]
 > [Implementieren dynamischer Stile für Gebäudepläne](indoor-map-dynamic-styling.md)

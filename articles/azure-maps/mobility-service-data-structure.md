@@ -1,27 +1,33 @@
 ---
-title: Mobility Service-Datenstrukturen in Azure Maps | Microsoft Azure Maps
-description: Grundlegendes dazu, wie Daten in Azure Maps-Mobilitätsdiensten in Stadtbereiche organisiert werden. Sehen Sie, in welchen Feldern Informationen zu Haltestellen und Linien öffentlicher Verkehrsmittel gespeichert werden.
+title: Datenstrukturen von Mobilitätsdiensten in Microsoft Azure Maps (Vorschau)
+description: Grundlegende Informationen dazu, wie Daten in Mobilitätsdiensten von Azure Maps (Vorschau) in Stadtbereiche unterteilt werden. Sehen Sie, in welchen Feldern Informationen zu Haltestellen und Linien öffentlicher Verkehrsmittel gespeichert werden.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 06/05/2019
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 60d45febced2f2d678d41682f7f27bf668943de2
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 8ffedc18ba331733723a6293756b60b733cc32cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896309"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904719"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Datenstrukturen in Azure Maps Mobility Service
+# <a name="data-structures-in-azure-maps-mobility-services-preview"></a>Datenstrukturen in Mobilitätsdiensten von Azure Maps (Vorschau) 
 
-In diesem Artikel wird das Konzept des Stadtbereichs in [Azure Maps Mobility Service](/rest/api/maps/mobility) vorgestellt. Es werden einige der üblichen Felder diskutiert, die bei der Abfrage dieses Diensts nach Haltestellen und Linien des öffentlichen Verkehrs zurückgegeben werden. Es wird empfohlen, diesen Artikel vor der Entwicklung mit den Mobility Service-APIs zu lesen.
+> [!IMPORTANT]
+> Mobilitätsdienste von Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+
+
+In diesem Artikel wird das Konzept von Stadtbereichen in [Mobilitätsdiensten von Azure Maps](/rest/api/maps/mobility) vorgestellt. Es werden einige der üblichen Felder diskutiert, die bei der Abfrage dieses Diensts nach Haltestellen und Linien des öffentlichen Verkehrs zurückgegeben werden. Es wird empfohlen, diesen Artikel vor der Entwicklung mit den APIs für Mobilitätsdienste zu lesen.
 
 ## <a name="metro-area"></a>Stadtbereich
 
-Mobility Service-Daten werden nach unterstützten Stadtbereichen gruppiert. Stadtbereiche folgen nicht den Stadtgrenzen. Ein Stadtbereich kann mehrere Städte, eine dicht besiedelte Stadt und umliegende Städte umfassen. Tatsächlich kann ein Land/eine Region ein einzelner Stadtbereich sein. 
+Daten von Mobilitätsdiensten (Vorschau) werden nach unterstützten Stadtbereichen gruppiert. Stadtbereiche folgen nicht den Stadtgrenzen. Ein Stadtbereich kann mehrere Städte, eine dicht besiedelte Stadt und umliegende Städte umfassen. Tatsächlich kann ein Land/eine Region ein einzelner Stadtbereich sein. 
 
 Die `metroID` ist die ID eines Stadtbereichs, die zum Aufrufen der [API „Get Metro Area Info“](/rest/api/maps/mobility/getmetroareainfopreview) (Stadtbereichsinformationen abrufen) verwendet werden kann. Verwenden Sie die API „Get Metro“ von Azure Maps, um Typen von öffentlichen Verkehrsmitteln, entsprechende Anbieter, aktive Warnungen und zusätzliche Details für den gewählten Stadtbereich anzufordern. Sie können auch die unterstützten Stadtbereiche und zugehörigen IDs (metroID) anfordern. IDs für den Stadtbereichs können sich ändern.
 
@@ -37,7 +43,7 @@ Zum Einstieg können Sie mithilfe der [API zum Abrufen nahegelegener öffentlich
 
 ## <a name="line-groups-and-lines"></a>Liniengruppen und Linien
 
-Mobility Service verwendet ein paralleles Datenmodell für Linien und Liniengruppen. Dieses Modell wird verwendet, um Änderungen, die von [GTFS](http://gtfs.org/)-Routen und den Fahrtdaten geerbt werden, besser verarbeiten zu können.
+Für Mobilitätsdienste (Vorschau) wird ein paralleles Datenmodell für Linien und Liniengruppen verwendet. Dieses Modell wird verwendet, um Änderungen, die von [GTFS](http://gtfs.org/)-Routen und den Fahrtdaten geerbt werden, besser verarbeiten zu können.
 
 
 ### <a name="line-groups"></a>Liniengruppen
@@ -54,17 +60,17 @@ Zum Einstieg können Sie mithilfe der [API zum Abrufen von Linien öffentlicher 
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Informieren Sie sich, wie Sie mithilfe von Mobility Service Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern:
+Erfahren Sie, wie Sie mithilfe von Mobilitätsdiensten (Vorschau) Daten zu öffentlichen Verkehrsmitteln bzw. Routen anfordern:
 
 > [!div class="nextstepaction"]
 > [Anfordern von Daten zu öffentlichen Verkehrsmitteln bzw. Routen](how-to-request-transit-data.md)
 
-Informieren Sie sich, wie Sie mithilfe des Mobility Service Echtzeitdaten anfordern:
+Erfahren Sie, wie Sie mithilfe von Mobilitätsdiensten (Vorschau) Echtzeitdaten anfordern:
 
 > [!div class="nextstepaction"]
 > [Anfordern von Echtzeitdaten](how-to-request-real-time-data.md)
 
-Machen Sie sich mit der API-Dokumentation zum Mobility Service von Azure Maps vertraut:
+Machen Sie sich mit der API-Dokumentation für Azure Maps-Mobilitätsdienste (Vorschau) vertraut
 
 > [!div class="nextstepaction"]
-> [API-Dokumentation für Mobility Service](/rest/api/maps/mobility)
+> [API-Dokumentation zu Mobilitätsdiensten](/rest/api/maps/mobility)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/06/2020
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: de916fcbe0623185821e2f5da15a8f9cf71dfd4e
-ms.sourcegitcommit: 0dcafc8436a0fe3ba12cb82384d6b69c9a6b9536
+ms.openlocfilehash: 0b3ccc31c9159b5d7b1615add89e8fdc308bf8df
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94426776"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96763457"
 ---
 ### <a name="publish-the-device-template"></a>Veröffentlichen der Gerätevorlage
 
@@ -40,6 +40,12 @@ So migrieren Sie das Gerät **gateway-001**:
 1. Wählen Sie im Dialogfeld **Migrieren** in der Liste die Option **LVA-Edgegateway v2** und anschließend **Migrieren** aus.
 
 Nach einigen Sekunden ist die Migration abgeschlossen. Ihr Gerät verwendet jetzt die Gerätevorlage **LVA-Edgegateway v2** mit Ihrem angepassten Bereitstellungsmanifest.
+
+Kein Gerät verwendet nun die ursprüngliche Gerätevorlage **LVA-Edgegateway**. Löschen Sie diese Gerätevorlage:
+
+1. Navigieren Sie zur Seite **Gerätevorlagen**, und wählen Sie die Gerätevorlage **LVA-Edgegateway** aus.
+
+1. Wählen Sie **Löschen** aus, um die Gerätevorlage zu löschen.
 
 ### <a name="get-the-device-credentials"></a>Abrufen der Geräteanmeldeinformationen
 

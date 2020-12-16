@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: Zhchia
-ms.openlocfilehash: 70b60d340e3af8d726915db513e30eaff26ed217
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 203af02841e6d17546d254ed83868c859ba3ac0d
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96347592"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938935"
 ---
 # <a name="tutorial-configure-oracle-cloud-infrastructure-console-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren der Oracle Cloud Infrastructure-Konsole für die automatische Benutzerbereitstellung
 
@@ -37,8 +37,8 @@ Das diesem Tutorial zu Grunde liegende Szenario setzt voraus, dass Sie bereits �
 
 * [Azure AD-Mandant](../develop/quickstart-create-new-tenant.md) 
 * Ein Benutzerkonto in Azure AD mit der [Berechtigung](../roles/permissions-reference.md) für die Konfiguration von Bereitstellungen (z.B. Anwendungsadministrator, Cloudanwendungsadministrator, Anwendungsbesitzer oder Globaler Administrator). 
-* Einen Oracle Cloud Infrastructure-[Mandanten](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton).
-* Ein Benutzerkonto in der Oracle Cloud Infrastructure-Konsole mit Administratorberechtigungen.
+* Ein Oracle Cloud Infrastructure Console-[Mandant](https://www.oracle.com/cloud/sign-in.html?intcmp=OcomFreeTier&source=:ow:o:p:nav:0916BCButton)
+* Ein Benutzerkonto in Oracle Cloud Infrastructure Console mit Administratorberechtigungen
 
 ## <a name="step-1-plan-your-provisioning-deployment"></a>Schritt 1: Planen der Bereitstellung
 1. Erfahren Sie, [wie der Bereitstellungsdienst funktioniert](../app-provisioning/user-provisioning.md).

@@ -1,21 +1,21 @@
 ---
 title: 'Tutorial: Hinzufügen von Tags zu Ressourcen in einer Vorlage'
-description: Fügen Sie den Ressourcen, die Sie in Ihrer Azure Resource Manager-Vorlage bereitstellen, Tags hinzu. Mithilfe von Tags können Sie Ressourcen logisch organisieren.
+description: Fügen Sie den Ressourcen, die Sie in Ihrer Azure Resource Manager-Vorlage (ARM-Vorlage) bereitstellen, Tags hinzu. Mithilfe von Tags können Sie Ressourcen logisch organisieren.
 author: mumian
 ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 16fc294784d9d6ff3c2fdd920d053eae5cd4b56d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613202"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96930941"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Tutorial: Hinzufügen von Tags in Ihrer ARM-Vorlage
 
-In diesem Tutorial wird beschrieben, wie Sie den Ressourcen in Ihrer ARM-Vorlage (Azure Resource Manager) Tags hinzufügen. [Tags](../management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt. Dieses Tutorial dauert ungefähr **8 Minuten**.
+In diesem Tutorial wird beschrieben, wie Sie den Ressourcen in Ihrer ARM-Vorlage (Azure Resource Manager-Vorlage) Tags hinzufügen. [Tags](../management/tag-resources.md) helfen Ihnen dabei, Ihre Ressourcen logisch zu organisieren. Die Tagwerte werden in Kostenberichten angezeigt. Dieses Tutorial dauert ungefähr **8 Minuten**.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

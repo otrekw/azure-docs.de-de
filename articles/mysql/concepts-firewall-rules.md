@@ -6,12 +6,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 07/17/2020
-ms.openlocfilehash: 4efd9fd814165755d27de1d269b6319890f7190d
-ms.sourcegitcommit: 6ab718e1be2767db2605eeebe974ee9e2c07022b
+ms.openlocfilehash: eb178e38001e54ac39a269c8b8cdef12c77d74cf
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94541605"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96901948"
 ---
 # <a name="azure-database-for-mysql-server-firewall-rules"></a>Firewallregeln für Azure-Datenbank für MySQL-Server
 Firewalls verhindern jeglichen Zugriff auf Ihren Datenbankserver, bis Sie angeben, welche Computer zugriffsberechtigt sind. Die Firewall gewährt den Serverzugriff auf der Grundlage der Ursprungs-IP-Adresse der jeweiligen Anforderung.
@@ -69,6 +69,8 @@ Wenn der Zugriff auf den Microsoft Azure Database for MySQL-Serverdienst nicht d
 * **Verbindungsherstellung von Azure-Ressource mit zulässiger IP-Adresse nicht möglich:** Überprüfen Sie, ob der Dienstendpunkt **Microsoft.Sql** für das Subnetz aktiviert ist, von dem aus Sie die Verbindung herstellen möchten. Wenn **Microsoft.Sql** aktiviert ist, ist dies ein Hinweis darauf, dass Sie in diesem Subnetz nur [VNET-Dienstendpunkt-Regeln](concepts-data-access-and-security-vnet.md) nutzen möchten.
 
    Beispielsweise wird ggf. der folgende Fehler angezeigt, wenn Sie eine Verbindung von einer Azure-VM in einem Subnetz herstellen, für das **Microsoft.Sql** aktiviert, aber keine entsprechende VNET-Regel vorhanden ist: `FATAL: Client from Azure Virtual Networks is not allowed to access the server`
+
+* **Die Firewallregel ist für das IPv6-Format nicht verfügbar:** Firewallregeln müssen das IPv4-Format aufweisen. Wenn Sie Firewallregeln im IPv6-Format angeben, wird ein Validierungsfehler angezeigt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

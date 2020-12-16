@@ -1,6 +1,6 @@
 ---
-title: Konzepte für Wetterdienste in Microsoft Azure Maps
-description: Hier finden Sie Informationen zu den Konzepten für Wetterdienste in Microsoft Azure Maps.
+title: Konzepte für Wetterinfodienste in Microsoft Azure Maps (Vorschau)
+description: Erfahren Sie mehr über die Konzepte für Wetterinfodienste in Microsoft Azure Maps (Vorschau).
 author: anastasia-ms
 ms.author: v-stharr
 ms.date: 09/10/2020
@@ -8,20 +8,24 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: ea8698b7bf402850e506ec126cd2a7bb6ce05823
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 657cb6a86122d267b86e82b6f02eb58e968cddd3
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896726"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96904736"
 ---
-# <a name="weather-services-in-azure-maps"></a>Wetterdienste in Azure Maps
+# <a name="weather-services-preview-in-azure-maps"></a>Wetterinfodienste in Azure Maps (Vorschau)
 
-In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterdienste von Azure Maps](/rest/api/maps/weather) gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden.
+> [!IMPORTANT]
+> Die Wetterinfodienste in Azure Maps befinden sich derzeit in der öffentlichen Vorschau.
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+In diesem Artikel werden Konzepte vorgestellt, die für die [Wetterinfodienste](/rest/api/maps/weather) von Azure Maps gelten. Es empfiehlt sich, diesen Artikel zu lesen, bevor Sie die Wetter-APIs verwenden.
 
 ## <a name="unit-types"></a>Einheitstypen
 
-Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Daten entweder in metrischen oder in Zolleinheiten zurückgegeben werden. Die zurückgegebene Antwort für diese APIs enthält den unitType und einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
+Bei einigen Wetterinfodienst-APIs (Vorschau) kann der Benutzer angeben, ob die Daten in metrischen oder in Zolleinheiten zurückgegeben werden sollen. Die zurückgegebene Antwort für diese APIs enthält den unitType und einen numerischen Wert, der für die Übersetzung von Einheiten verwendet werden kann. Weitere Informationen zum Interpretieren dieser Werte finden Sie in der Tabelle unten.
 
 |unitType|BESCHREIBUNG         |
 |--------|--------------------|
@@ -52,7 +56,7 @@ Einige der Wetterdienst-APIs ermöglichen es dem Benutzer, anzugeben, ob die Dat
 
 ## <a name="weather-icons"></a>Wettersymbole
 
-Einige der Wetterinfodienst-APIs geben den `iconCode` in der Antwort zurück. Der `iconCode` ist ein numerischer Wert, der zum Definieren des Symbols verwendet wird. Stellen Sie aus Ihren Anwendungen keine direkten Verknüpfungen mit diesen Bildern her, da sich die URLs ändern können und werden.
+Von einigen Wetterinfodienst-APIs (Vorschau) wird `iconCode` in der Antwort zurückgegeben. Der `iconCode` ist ein numerischer Wert, der zum Definieren des Symbols verwendet wird. Stellen Sie aus Ihren Anwendungen keine direkten Verknüpfungen mit diesen Bildern her, da sich die URLs ändern können und werden.
 
 | Symbolnummer |Symbol| Day (Tag) | Nacht | Text |
 |-------------|:----:|-----|-------|------|

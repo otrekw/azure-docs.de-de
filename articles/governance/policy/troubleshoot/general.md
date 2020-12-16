@@ -1,14 +1,14 @@
 ---
 title: Problembehandlung für häufige Fehler
 description: Erfahren Sie, wie Sie Probleme beim Erstellen von Richtliniendefinitionen, mit dem jeweiligen SDK und dem Add-On für Kubernetes beheben.
-ms.date: 10/30/2020
+ms.date: 12/01/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: 74b622dd41fb28e845a35780e5d06588189ec029
-ms.sourcegitcommit: 4b76c284eb3d2b81b103430371a10abb912a83f4
+ms.openlocfilehash: f3667988d527100507d308887338278e1200d454
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/01/2020
-ms.locfileid: "93146278"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96510997"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Problembehandlung mit Azure Policy
 
@@ -56,7 +56,7 @@ Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlos
 
 #### <a name="issue"></a>Problem
 
-Eine Ressource weist nicht den Auswertungszustand ( _Konform_ oder _Nicht konform_ ) auf, der für diese Ressource erwartet wird.
+Eine Ressource weist nicht den Auswertungszustand (_Konform_ oder _Nicht konform_) auf, der für diese Ressource erwartet wird.
 
 #### <a name="cause"></a>Ursache
 
@@ -78,7 +78,7 @@ Befolgen Sie diese Schritte zur Problembehandlung bei der Definition Ihrer Richt
    - Wenn der **aktuelle Wert** falsch ist, überprüfen Sie die Ressourcennutzlast mit `resources.azure.com`.
 1. Überprüfen Sie [Problembehandlung: Erzwingung nicht wie erwartet](#scenario-enforcement-not-as-expected) auf andere häufige Probleme und Lösungen.
 
-Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie** , um das Problem ordnungsgemäß weiterzuleiten.
+Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie**, um das Problem ordnungsgemäß weiterzuleiten.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Szenario: Erzwingung nicht wie erwartet
 
@@ -95,7 +95,7 @@ Für die Richtlinienzuweisung ist [enforcementMode](../concepts/assignment-struc
 Befolgen Sie diese Schritte zur Problembehandlung bei der Erzwingung Ihrer Richtlinienzuweisung:
 
 1. Warten Sie zuerst den entsprechenden Zeitraum ab, bis eine Auswertung abgeschlossen ist und die Konformitätsergebnisse im Azure-Portal oder SDK zur Verfügung stehen. Informationen zum Starten einer neuen Konformitätsprüfung mit Azure PowerShell oder der REST-API finden Sie unter [Bedarfsgesteuerter Auswertungsscan](../how-to/get-compliance-data.md#on-demand-evaluation-scan).
-1. Prüfen Sie, ob die Zuweisungsparameter und der Zuweisungsbereich ordnungsgemäß festgelegt und **enforcementMode** auf _Enabled_ eingestellt ist. 
+1. Prüfen Sie, ob die Zuweisungsparameter und der Zuweisungsbereich ordnungsgemäß festgelegt und **enforcementMode** auf _Enabled_ eingestellt ist.
 1. Überprüfen Sie den [Modus der Richtliniendefinition](../concepts/definition-structure.md#mode):
    - Modus „all“ für alle Ressourcentypen
    - Modus „indexed“, wenn bei der Richtliniendefinition eine Überprüfung auf Tags oder den Ort durchgeführt wird
@@ -103,7 +103,7 @@ Befolgen Sie diese Schritte zur Problembehandlung bei der Erzwingung Ihrer Richt
 1. Stellen Sie sicher, dass die Ressourcennutzlast mit der Richtlinienlogik übereinstimmt. Dies ist möglich, indem Sie eine [HAR-Ablaufverfolgung](../../../azure-portal/capture-browser-trace.md) erfassen oder die Eigenschaften der ARM-Vorlage überprüfen.
 1. Überprüfen Sie [Problembehandlung: Compliance nicht wie erwartet](#scenario-compliance-not-as-expected) auf andere häufige Probleme und Lösungen.
 
-Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie** , um das Problem ordnungsgemäß weiterzuleiten.
+Wenn Sie immer noch ein Problem mit Ihrer duplizierten und angepassten integrierten Richtliniendefinition oder benutzerdefinierten Definition haben, erstellen Sie ein Supportticket unter **Erstellen einer Richtlinie**, um das Problem ordnungsgemäß weiterzuleiten.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Szenario: Von Azure Policy abgelehnt
 
@@ -190,24 +190,6 @@ Eine ausführliche Beschreibung finden Sie im folgenden Blogbeitrag:
 
 ## <a name="add-on-for-kubernetes-general-errors"></a>Add-On für allgemeine Kubernetes-Fehler
 
-### <a name="scenario-add-on-doesnt-work-with-aks-clusters-on-version-119-preview"></a>Szenario: Add-On funktioniert nicht mit AKS-Clustern in Version 1.19 (Vorschau).
-
-#### <a name="issue"></a>Problem
-
-Cluster der Version 1.19 geben diesen Fehler über den Gatekeeper-Controller und die Webhook-Pods der Richtlinie zurück:
-
-```
-2020/09/22 20:06:55 http: TLS handshake error from 10.244.1.14:44282: remote error: tls: bad certificate
-```
-
-#### <a name="cause"></a>Ursache
-
-AKS-Cluster der Version 1.19 (Vorschauversion) sind mit dem Add-On Azure Policy noch nicht kompatibel.
-
-#### <a name="resolution"></a>Lösung
-
-Vermeiden Sie die Verwendung von Kubernetes 1.19 (Vorschau) mit dem Add-On Azure Policy. Das Add-On kann mit allen unterstützten allgemein verfügbaren Versionen wie 1.16, 1.17 oder 1.18 verwendet werden.
-
 ### <a name="scenario-add-on-is-unable-to-reach-the-azure-policy-service-endpoint-due-to-egress-restrictions"></a>Szenario: Das Add-On kann den Dienstendpunkt von Azure Policy aufgrund von Einschränkungen beim Ausgang nicht erreichen
 
 #### <a name="issue"></a>Problem
@@ -277,10 +259,19 @@ spec:
 
 #### <a name="issue"></a>Problem
 
-Das Add-On kann den Dienstendpunkt von Azure Policy erreichen, gibt aber den folgenden Fehler zurück:
+Das Add-On kann den Dienstendpunkt von Azure Policy erreichen, gibt aber einen der folgenden Fehler in Add-On-Protokollen zurück:
 
 ```
-The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See https://aka.ms/policy-register-subscription for how to register subscriptions.
+The resource provider 'Microsoft.PolicyInsights' is not registered in subscription '{subId}'. See
+https://aka.ms/policy-register-subscription for how to register subscriptions.
+```
+
+oder
+
+```
+policyinsightsdataplane.BaseClient#CheckDataPolicyCompliance: Failure responding to request:
+StatusCode=500 -- Original Error: autorest/azure: Service returned an error. Status=500
+Code="InternalServerError" Message="Encountered an internal server error."
 ```
 
 #### <a name="cause"></a>Ursache
@@ -289,9 +280,9 @@ Der Ressourcenanbieter `Microsoft.PolicyInsights` ist nicht registriert und muss
 
 #### <a name="resolution"></a>Lösung
 
-Registrierung des `Microsoft.PolicyInsights`-Ressourcenanbieters. Eine Anleitung finden Sie unter [Registrieren eines Ressourcenanbieters](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
+Registrieren Sie den Ressourcenanbieter `Microsoft.PolicyInsights` in Ihrem Clusterabonnement. Eine Anleitung finden Sie unter [Registrieren eines Ressourcenanbieters](../../../azure-resource-manager/management/resource-providers-and-types.md#register-resource-provider).
 
-### <a name="scenario-the-subscript-is-disabled"></a>Szenario: Das Abonnement ist deaktiviert
+### <a name="scenario-the-subscription-is-disabled"></a>Szenario: Das Abonnement ist deaktiviert
 
 #### <a name="issue"></a>Problem
 
@@ -307,7 +298,7 @@ Dieser Fehler bedeutet, dass das Abonnement als problematisch eingestuft wurde u
 
 #### <a name="resolution"></a>Lösung
 
-Wenden Sie sich an das für das Feature zuständige Team `azuredg@microsoft.com`, um dieses Problem zu untersuchen und zu beheben. 
+Wenden Sie sich an das für das Feature zuständige Team `azuredg@microsoft.com`, um dieses Problem zu untersuchen und zu beheben.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

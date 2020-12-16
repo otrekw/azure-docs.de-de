@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 10/22/2020
 ms.author: bwren
-ms.openlocfilehash: 3c3a20d8401affc519e118c7f2295339990e7dee
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 69fda41249ced8518e430af8305c0cb10822b214
+ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96186506"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96559064"
 ---
 # <a name="azure-monitor-logs-overview"></a>Übersicht über Azure Monitor-Protokolle
 Azure Monitor-Protokolle sind ein Feature von Azure Monitor, mit dem Protokoll- und Leistungsdaten von [überwachten Ressourcen](../monitor-reference.md) gesammelt und organisiert werden. Daten aus unterschiedlichen Quellen, z. B. [Plattformprotokolle](platform-logs-overview.md) von Azure-Diensten, Protokoll- und Leistungsdaten von [Agenten für virtuelle Computer](agents-overview.md) sowie Nutzungs- und Leistungsdaten von [Anwendungen](../app/app-insights-overview.md), können in einem einzigen Arbeitsbereich konsolidiert werden, sodass sie mithilfe einer ausgereiften Abfragesprache, die eine schnelle Analyse von Millionen von Datensätzen ermöglicht, gemeinsam analysiert werden können. Sie können eine einfache Abfrage ausführen, bei der nur eine bestimmte Gruppe von Datensätzen abgerufen wird, oder eine anspruchsvolle Datenanalyse durchführen, um kritische Muster in den Überwachungsdaten zu erkennen. Arbeiten Sie mithilfe von Log Analytics interaktiv mit Protokollabfragen und deren Ergebnissen, verwenden Sie diese in einer Warnungsregel, um proaktiv über Probleme informiert zu werden, oder visualisieren Sie die Ergebnisse in einer Arbeitsmappe oder einem Dashboard.

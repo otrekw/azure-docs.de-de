@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 7bbf9b199b15815127f0ecb26ae027ef7bfa52d2
-ms.sourcegitcommit: 0b9fe9e23dfebf60faa9b451498951b970758103
+ms.openlocfilehash: 04d17e17ef11696efd52f04ea83639f2a9b81fea
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/07/2020
-ms.locfileid: "94355429"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938748"
 ---
 # <a name="tutorial-configure-dropbox-for-business-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Dropbox für Unternehmen für die automatische Benutzerbereitstellung
 
 In diesem Tutorial werden die Schritte erläutert, die in Dropbox für Unternehmen und Azure Active Directory (Azure AD) ausgeführt werden müssen, um Azure AD zum automatischen Bereitstellen und Aufheben der Bereitstellung von Benutzern und/oder Gruppen in Dropbox für Unternehmen zu konfigurieren.
 
 > [!IMPORTANT]
-> Microsoft und Dropbox nehmen die alte Dropbox-Integration ab 1.4.2021 außer Betrieb. Um Dienstunterbrechungen zu vermeiden, empfehlen wir, zur neuen Dropbox-Integration zu migrieren, die Gruppen unterstützt. Zur Migration zur neuen Dropbox-Integration führen Sie die folgenden Schritte aus, um eine neue Dropbox-Instanz zur Bereitstellung in Ihrem Azure AD-Mandanten hinzuzufügen und zu konfigurieren. Sobald Sie die neue Dropbox-Integration konfiguriert haben, deaktivieren Sie die Bereitstellung der alten Integration, um Bereitstellungskonflikte zu vermeiden.
+> Microsoft und Dropbox nehmen die alte Dropbox-Integration ab 1.4.2021 außer Betrieb. Um Dienstunterbrechungen zu vermeiden, empfehlen wir, zur neuen Dropbox-Integration zu migrieren, die Gruppen unterstützt. Zur Migration zur neuen Dropbox-Integration führen Sie die folgenden Schritte aus, um eine neue Dropbox-Instanz zur Bereitstellung in Ihrem Azure AD-Mandanten hinzuzufügen und zu konfigurieren. Sobald Sie die neue Dropbox-Integration konfiguriert haben, deaktivieren Sie die Bereitstellung der alten Integration, um Bereitstellungskonflikte zu vermeiden. Ausführlichere Schritte zum Migrieren zur neuen Dropbox-Integration finden Sie unter [Aktualisieren auf die neueste Dropbox-Version für Geschäftsanwendungen mithilfe von Azure AD](https://help.dropbox.com/installs-integrations/third-party/update-dropbox-azure-ad-connector).
 
 > [!NOTE]
 > In diesem Tutorial wird ein Connector beschrieben, der auf dem Benutzerbereitstellungsdienst von Azure AD basiert. Wichtige Details zum Zweck und zur Funktionsweise dieses Diensts sowie häufig gestellte Fragen finden Sie unter [Automatisieren der Bereitstellung und Bereitstellungsaufhebung von Benutzern für SaaS-Anwendungen mit Azure Active Directory](../app-provisioning/user-provisioning.md).
@@ -46,21 +46,21 @@ Bevor Sie Dropbox für Unternehmen für die automatische Benutzerbereitstellung 
 
     ![Schaltfläche „Azure Active Directory“](common/select-azuread.png)
 
-2. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie die Option **Alle Anwendungen**.
+2. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie die Option **Alle Anwendungen**.
 
     ![Blatt „Unternehmensanwendungen“](common/enterprise-applications.png)
 
-3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung** , um eine neue Anwendung hinzuzufügen.
+3. Klicken Sie oben im Bereich auf die Schaltfläche **Neue Anwendung**, um eine neue Anwendung hinzuzufügen.
 
     ![Schaltfläche „Neue Anwendung“](common/add-new-app.png)
 
-4. Geben Sie im Suchfeld **Dropbox für Unternehmen** ein, wählen Sie im Ergebnisbereich **Dropbox für Unternehmen** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen** , um die Anwendung hinzuzufügen.
+4. Geben Sie im Suchfeld **Dropbox für Unternehmen** ein, wählen Sie im Ergebnisbereich **Dropbox für Unternehmen** aus, und klicken Sie dann auf die Schaltfläche **Hinzufügen**, um die Anwendung hinzuzufügen.
 
     ![Dropbox für Unternehmen in der Ergebnisliste](common/search-new-app.png)
 
 ## <a name="assigning-users-to-dropbox-for-business"></a>Zuweisen von Benutzern zu Dropbox für Unternehmen
 
-Azure Active Directory ermittelt anhand von *Zuweisungen* , welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
+Azure Active Directory ermittelt anhand von *Zuweisungen*, welche Benutzer Zugriff auf bestimmte Apps erhalten sollen. Im Kontext der automatischen Benutzerbereitstellung werden nur die Benutzer und/oder Gruppen synchronisiert, die einer Anwendung in Azure AD zugewiesen wurden.
 
 Vor dem Konfigurieren und Aktivieren der automatischen Benutzerbereitstellung müssen Sie entscheiden, welche Benutzer und/oder Gruppen in Azure AD Zugriff auf Dropbox für Unternehmen benötigen. Anschließend können Sie diese Benutzer bzw. Gruppen Dropbox für Unternehmen wie folgt zuweisen:
 
@@ -105,7 +105,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Dropbox für Unternehmen-Anmeldung](media/dropboxforbusiness-provisioning-tutorial/dropbox01.png)
 
-7. Klicken Sie nach Abschluss der Schritte 5 und 6 auf **Verbindung testen** , um sicherzustellen, dass Azure AD eine Verbindung mit Dropbox für Unternehmen herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Dropbox für Unternehmen-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
+7. Klicken Sie nach Abschluss der Schritte 5 und 6 auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Dropbox für Unternehmen herstellen kann. Vergewissern Sie sich im Falle eines Verbindungsfehlers, dass Ihr Dropbox für Unternehmen-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
     ![Token](common/provisioning-testconnection-oauth.png)
 
@@ -119,7 +119,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Benutzerzuordnungen in Dropbox](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-mapping.png)
 
-11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Dropbox synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Dropbox für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+11. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Benutzerattribute, die von Azure AD mit Dropbox synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Benutzerkonten in Dropbox für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Dropbox-Benutzerattribute](media/dropboxforbusiness-provisioning-tutorial/dropbox-user-attributes.png)
 
@@ -127,7 +127,7 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
     ![Gruppenzuordnungen in Dropbox](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-mapping.png)
 
-13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Dropbox synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Gruppen in Dropbox für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern** , um alle Änderungen zu übernehmen.
+13. Überprüfen Sie im Abschnitt **Attributzuordnungen** die Gruppenattribute, die von Azure AD mit Dropbox synchronisiert werden. Die als **Übereinstimmend** ausgewählten Attribute werden verwendet, um die Gruppen in Dropbox für Updatevorgänge abzugleichen. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
     ![Dropbox-Gruppenattribute](media/dropboxforbusiness-provisioning-tutorial/dropbox-group-attributes.png)
 

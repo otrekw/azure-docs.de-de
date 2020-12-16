@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 11/30/2020
 ms.author: banders
-ms.openlocfilehash: 3df6b694f3a40cef17c6e0114464ad4aa2fa30ce
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: a9e3297ad055157d552424ecc48db6801f43b220
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96344333"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929954"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Abrechnungskonten und -bereiche im Azure-Portal
 
@@ -25,7 +25,7 @@ Für das Azure-Portal werden die folgenden Arten von Abrechnungskonten unterstü
 
 - **Enterprise Agreement**: Ein Abrechnungskonto für ein Enterprise Agreement wird erstellt, wenn Ihre Organisation ein [Enterprise Agreement (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/) für die Nutzung von Azure unterzeichnet. Ein Enterprise Agreement unterstützt maximal 2.000 Abonnements.
 
-- **Microsoft-Kundenvereinbarung**: Ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird erstellt, wenn Ihre Organisation eine Microsoft-Kundenvereinbarung über einen Microsoft-Vertreter unterzeichnet. Einige Kunden in ausgewählten Regionen, die sich über die Azure-Website für ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder ein [kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/) registrieren, verfügen möglicherweise auch über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. Eine Microsoft-Kundenvereinbarung unterstützt maximal 20 Abonnements. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](../understand/mca-overview.md).
+- **Microsoft-Kundenvereinbarung**: Ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung wird erstellt, wenn Ihre Organisation eine Microsoft-Kundenvereinbarung über einen Microsoft-Vertreter unterzeichnet. Einige Kunden in ausgewählten Regionen, die sich über die Azure-Website für ein [Angebot mit nutzungsbasierter Bezahlung](https://azure.microsoft.com/offers/ms-azr-0003p/) oder ein [kostenloses Azure-Konto](https://azure.microsoft.com/offers/ms-azr-0044p/) registrieren, verfügen möglicherweise auch über ein Abrechnungskonto für eine Microsoft-Kundenvereinbarung. Eine Microsoft-Kundenvereinbarung für eine Einzelperson unterstützt maximal 20 Abonnements. Bei einer Microsoft-Kundenvereinbarung für ein Unternehmen gilt keine Beschränkung für die Anzahl von Abonnements. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Kundenvereinbarung](../understand/mca-overview.md).
 
 - **Microsoft-Partnervereinbarung**: Ein Abrechnungskonto für eine Microsoft-Partnervereinbarung wird für CSP-Partner (Cloud Solution Provider) erstellt, mit dem sie ihre Kunden in der neuen Handelsumgebung verwalten können. Partner benötigen mindestens einen Kunden mit einem [Azure-Plan](/partner-center/purchase-azure-plan), damit sie das Abrechnungskonto im Azure-Portal verwalten können. Weitere Informationen finden Sie unter [Erste Schritte mit Ihrem Abrechnungskonto für eine Microsoft-Partnervereinbarung](../understand/mpa-overview.md).
 

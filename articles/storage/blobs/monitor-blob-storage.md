@@ -9,19 +9,19 @@ ms.date: 10/26/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp, devx-track-azurecli
-ms.openlocfilehash: 7918361826eac10822b8b155d6b47dd89011f683
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: b73146302c740dfd8d97d275bad003a6d8a9a23c
+ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95908930"
+ms.lasthandoff: 12/08/2020
+ms.locfileid: "96852777"
 ---
 # <a name="monitoring-azure-blob-storage"></a>Überwachen von Azure Blob Storage
 
 Wenn Sie über unternehmenskritische Anwendungen und Geschäftsprozesse verfügen, die auf Azure-Ressourcen basieren, sollten Sie diese Ressourcen auf Verfügbarkeit, Leistung und Betrieb überwachen. In diesem Artikel wird das Überwachen von Daten beschrieben, die von Azure Blob Storage generiert wurden. Außerdem wird erläutert, wie Sie die Funktionen von Azure Monitor verwenden können, um Warnungen für diese Daten zu analysieren.
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Informationen zum Registrieren für die Vorschauversion finden Sie auf [dieser Seite](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 ## <a name="monitor-overview"></a>Azure Monitor: Übersicht
 
@@ -69,10 +69,10 @@ Damit Sie Ressourcenprotokolle erfassen können, müssen Sie eine Diagnoseeinste
 
 Sie können eine Diagnoseeinstellung über das Azure-Portal, PowerShell, die Azure-Befehlszeilenschnittstelle oder eine Azure Resource Manager-Vorlage erstellen. 
 
-Eine allgemeine Anleitung finden Sie unter [Erstellen von Diagnoseeinstellungen zum Senden von Plattformprotokollen und Metriken an verschiedene Ziele](../../azure-monitor/platform/diagnostic-settings.md).
+Eine allgemeine Anleitung finden Sie unter [Erstellen einer Diagnoseeinstellung zum Erfassen von Plattformprotokollen und Metriken in Azure](../../azure-monitor/platform/diagnostic-settings.md).
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Informationen zum Registrieren für die Vorschauversion finden Sie auf [dieser Seite](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschau unterstützt Protokolle für Blobdateien (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen und Tabellen. Dieses Feature ist für alle Speicherkonten verfügbar, die mit dem Azure Resource Manager-Bereitstellungsmodell erstellt wurden. Weitere Informationen finden Sie in der [Speicherkontoübersicht](../common/storage-account-overview.md).
 
 ### <a name="azure-portal"></a>[Azure portal](#tab/azure-portal)
 
@@ -92,42 +92,46 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen von Diagnoseeinstellungen 
    > [!div class="mx-imgBorder"]
    > ![Portal: Ressourcenprotokolle – „Diagnoseeinstellung hinzufügen“](media/monitor-blob-storage/diagnostic-logs-settings-pane-2.png)
 
-   Die Seite **Diagnoseeinstellung** wird angezeigt.
+   Die Seite **Diagnoseeinstellungen** wird angezeigt.
 
    > [!div class="mx-imgBorder"]
-   > ![Seite „Diagnoseeinstellung“](media/monitor-blob-storage/diagnostic-logs-page.png)
+   > ![Seite „Ressourcenprotokolle“](media/monitor-blob-storage/diagnostic-logs-page.png)
 
-6. Geben Sie im **Namensfeld** auf der Seite einen Namen für diese Ressourcenprotokolleinstellung ein. Wählen Sie dann aus, welche Vorgänge (Lese-, Schreib- und Löschvorgänge) protokolliert und wohin die Protokolle gesendet werden sollen.
+6. Geben Sie im Feld **Name** auf der Seite einen Namen für diese Ressourcenprotokolleinstellung ein. Wählen Sie dann aus, welche Vorgänge (Lese-, Schreib- und Löschvorgänge) protokolliert und wohin die Protokolle gesendet werden sollen.
 
-#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in ein Speicherkonto
+#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
 
-1. Aktivieren Sie das Kontrollkästchen bei **In ein Speicherkonto archivieren**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+Wenn Sie Ihre Protokolle in einem Speicherkonto archivieren, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
+
+1. Aktivieren Sie das Kontrollkästchen **In ein Speicherkonto archivieren**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
 
    > [!div class="mx-imgBorder"]   
-   > ![Seite „Diagnoseeinstellung“ beim Archivieren in ein Speicherkonto](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
+   > ![Seite „Diagnoseeinstellungen“: „In ein Speicherkonto archivieren“](media/monitor-blob-storage/diagnostic-logs-settings-pane-archive-storage.png)
 
-2. Wählen Sie in der Dropdownliste für **Speicherkonto** das Speicherkonto aus, in das Ihre Protokolle archiviert werden sollen. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
+2. Wählen Sie in der Dropdownliste **Speicherkonto** das Speicherkonto aus, in dem Sie Ihre Protokolle archivieren möchten. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
 
    > [!NOTE]
-   > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Senden an Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
+   > Bevor Sie ein Speicherkonto als Exportziel auswählen, informieren Sie sich unter [Archivieren von Azure-Ressourcenprotokollen](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage) über die Voraussetzungen für das Speicherkonto.
 
 #### <a name="stream-logs-to-azure-event-hubs"></a>Streamen von Protokollen an Azure Event Hubs
 
-1. Aktivieren Sie das Kontrollkästchen bei **An einen Event Hub streamen**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
+Wenn Sie Ihre Protokolle an einen Event Hub streamen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
+
+1. Aktivieren Sie das Kontrollkästchen **An einen Event Hub streamen**, und klicken Sie dann auf die Schaltfläche **Konfigurieren**.
 
 2. Wählen Sie im Bereich **Event Hub auswählen** den Namespace, den Namen und den Richtliniennamen der Event Hub-Instanz aus, an die Sie Ihre Protokolle streamen möchten. 
 
    > [!div class="mx-imgBorder"]
-   > ![Seite „Diagnoseeinstellung“ für Event Hub](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
+   > ![Seite „Diagnoseeinstellungen“ mit Event Hub](media/monitor-blob-storage/diagnostic-logs-settings-pane-event-hub.png)
 
 3. Klicken Sie auf die Schaltfläche **OK** und dann auf die Schaltfläche **Speichern**.
 
 #### <a name="send-logs-to-azure-log-analytics"></a>Senden von Protokollen an Azure Log Analytics
 
-1. Aktivieren Sie das Kontrollkästchen bei **An Log Analytics senden**, wählen Sie einen Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
+1. Aktivieren Sie das Kontrollkästchen **An Log Analytics senden**, wählen Sie einen Log Analytics-Arbeitsbereich aus, und klicken Sie dann auf die Schaltfläche **Speichern**.
 
    > [!div class="mx-imgBorder"]   
-   > ![Seite „Diagnoseeinstellung“ für Log Analytics](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
+   > ![Seite „Diagnoseeinstellungen“ für Log Analytics](media/monitor-blob-storage/diagnostic-logs-settings-pane-log-analytics.png)
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -137,13 +141,15 @@ Eine allgemeine Anleitung finden Sie unter [Erstellen von Diagnoseeinstellungen 
    Connect-AzAccount
    ```
 
-2. Legen Sie als aktives Abonnement das Abonnement des Speicherkontos fest, für das Sie die Protokollierung aktivieren möchten.
+2. Legen Sie Ihr aktives Abonnement auf das Abonnement des Speicherkontos fest, für das Sie die Protokollierung aktivieren möchten.
 
    ```powershell
    Set-AzContext -SubscriptionId <subscription-id>
    ```
 
-#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in ein Speicherkonto
+#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
+
+Wenn Sie Ihre Protokolle in einem Speicherkonto archivieren, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
 Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) unter Angabe des Parameters `StorageAccountId`.
 
@@ -159,11 +165,13 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -StorageAccountId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount -Enabled $true -Category StorageWrite,StorageDelete`
 
-Eine Beschreibung der einzelnen Parameter finden Sie unter [Senden an Azure Storage](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
+Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Azure-Ressourcenprotokollen mithilfe von Azure PowerShell](../../azure-monitor/platform/resource-logs.md#send-to-azure-storage).
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
-Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `EventHubAuthorizationRuleId`.
+Wenn Sie Ihre Protokolle an einen Event Hub streamen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
+
+Aktivieren Sie Protokollen mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `EventHubAuthorizationRuleId`.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -EventHubAuthorizationRuleId <event-hub-namespace-and-key-name> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -173,11 +181,11 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -EventHubAuthorizationRuleId /subscriptions/20884142-a14v3-4234-5450-08b10c09f4/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey -Enabled $true -Category StorageDelete`
 
-Eine Beschreibung der einzelnen Parameter finden Sie unter [Senden an Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Eine Beschreibung der einzelnen Parameter finden Sie unter [Streamen von Daten an Event Hubs mithilfe von PowerShell-Cmdlets](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 
-Aktivieren Sie Protokolle mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `WorkspaceId`.
+Aktivieren Sie Protokollen mit dem PowerShell-Cmdlet [Set-AzDiagnosticSetting](/powershell/module/az.monitor/set-azdiagnosticsetting) und dem Parameter `WorkspaceId`.
 
 ```powershell
 Set-AzDiagnosticSetting -ResourceId <storage-service-resource-id> -WorkspaceId <log-analytics-workspace-resource-id> -Enabled $true -Category <operatons-to-log> -RetentionEnabled <retention-bool> -RetentionInDays <number-of-days>
@@ -187,13 +195,13 @@ Hier sehen Sie ein Beispiel:
 
 `Set-AzDiagnosticSetting -ResourceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/mystorageaccount/blobServices/default -WorkspaceId /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace -Enabled $true -Category StorageDelete`
 
-Weitere Informationen finden Sie unter [Senden an den Log Analytics-Arbeitsbereich](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="azure-cli"></a>[Azure-Befehlszeilenschnittstelle](#tab/azure-cli)
 
 1. Öffnen Sie zunächst [Azure Cloud Shell](../../cloud-shell/overview.md), oder falls Sie die Azure-CLI lokal [installiert](/cli/azure/install-azure-cli) haben, öffnen Sie eine Befehlskonsolenanwendung wie Windows PowerShell.
 
-2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie als aktives Abonnement das Abonnement des Speicherkontos fest, für das Sie Protokolle aktivieren möchten.
+2. Wenn Ihre Identität mehreren Abonnements zugeordnet ist, legen Sie das aktive Abonnement auf das Abonnement des Speicherkontos fest, für das Sie Protokolle aktivieren möchten.
 
    ```azurecli-interactive
    az account set --subscription <subscription-id>
@@ -201,7 +209,9 @@ Weitere Informationen finden Sie unter [Senden an den Log Analytics-Arbeitsberei
 
    Ersetzen Sie den Platzhalterwert `<subscription-id>` durch die ID Ihres Abonnements.
 
-#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in ein Speicherkonto
+#### <a name="archive-logs-to-a-storage-account"></a>Archivieren von Protokollen in einem Speicherkonto
+
+Wenn Sie Ihre Protokolle in einem Speicherkonto archivieren, bezahlen Sie für die Menge an Protokolldaten, die an das Speicherkonto gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
 
 Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
@@ -221,6 +231,8 @@ Eine Beschreibung der einzelnen Parameter finden Sie unter [Archivieren von Ress
 
 #### <a name="stream-logs-to-an-event-hub"></a>Streamen von Protokollen an einen Event Hub
 
+Wenn Sie Ihre Protokolle an einen Event Hub streamen, bezahlen Sie für die Menge an Protokolldaten, die an den Event Hub gesendet werden. Die genauen Preise finden Sie im Abschnitt **Plattformprotokolle** auf der Seite [Azure Monitor – Preise](https://azure.microsoft.com/pricing/details/monitor/#platform-logs).
+
 Aktivieren Sie Protokolle mit dem Befehl [az monitor diagnostic-settings create](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create).
 
 ```azurecli-interactive
@@ -231,7 +243,7 @@ Hier sehen Sie ein Beispiel:
 
 `az monitor diagnostic-settings create --name setting1 --event-hub myeventhub --event-hub-rule /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.EventHub/namespaces/myeventhubnamespace/authorizationrules/RootManageSharedAccessKey --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true }]'`
 
-Eine Beschreibung der einzelnen Parameter finden Sie unter [Senden an Azure Event Hubs](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
+Eine Beschreibung der einzelnen Parameter finden Sie unter [Streamen von Daten an Event Hubs mithilfe der Azure-Befehlszeilenschnittstelle](../../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs).
 
 #### <a name="send-logs-to-log-analytics"></a>Senden von Protokollen an Log Analytics
 
@@ -245,7 +257,7 @@ Hier sehen Sie ein Beispiel:
 
 `az monitor diagnostic-settings create --name setting1 --workspace /subscriptions/208841be-a4v3-4234-9450-08b90c09f4/resourceGroups/myresourcegroup/providers/Microsoft.OperationalInsights/workspaces/my-analytic-workspace --resource /subscriptions/938841be-a40c-4bf4-9210-08bcf06c09f9/resourceGroups/myresourcegroup/providers/Microsoft.Storage/storageAccounts/myloggingstorageaccount/blobServices/default --logs '[{"category": StorageDelete, "enabled": true ]'`
 
- Weitere Informationen finden Sie unter [Senden an den Log Analytics-Arbeitsbereich](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
+ Weitere Informationen finden Sie unter [Streamen von Azure-Ressourcenprotokollen an einen Log Analytics-Arbeitsbereich in Azure Monitor](../../azure-monitor/platform/resource-logs.md#send-to-log-analytics-workspace).
 
 ### <a name="template"></a>[Vorlage](#tab/template)
 
@@ -474,7 +486,7 @@ Sie können auf Ressourcenprotokolle entweder als Blob in einem Speicherkonto, a
 Eine ausführliche Referenz zu den in diesen Protokollen angezeigten Feldern finden Sie in der [Überwachungsdatenreferenz zu Azure Blob Storage](monitor-blob-storage-reference.md).
 
 > [!NOTE]
-> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Informationen zum Registrieren für die Vorschauversion finden Sie auf [dieser Seite](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
+> Azure Storage-Protokolle in Azure Monitor befinden sich in der öffentlichen Vorschauphase und stehen in allen Regionen für die öffentliche Cloud für Vorschautests zur Verfügung. Diese Vorschauversion ermöglicht Protokolle für Blobs (einschließlich Azure Data Lake Storage Gen2), Dateien, Warteschlangen, Tabellen, Universell V1-Premium-Speicherkonten und Universell V2-Speicherkonten. Klassische Speicherkonten werden nicht unterstützt.
 
 Protokolleinträge werden nur erstellt, wenn Anforderungen für den Dienstendpunkt gestellt wurden. Wenn beispielsweise ein Speicherkonto Aktivität im Blob-Endpunkt, jedoch nicht im Tabellen- oder Warteschlangenendpunkt aufweist, werden nur Protokolle für den Blobdienst erstellt. Azure Storage-Protokolle enthalten ausführliche Informationen über erfolgreiche und fehlgeschlagene Anforderungen an einen Speicherdienst. Anhand dieser Informationen können einzelne Anforderungen überwacht und Probleme mit einem Speicherdienst untersucht werden. Anforderungen werden auf Grundlage der besten Leistung protokolliert.
 

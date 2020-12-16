@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 10/20/2020
+ms.date: 12/01/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: 65bd5a89d132a575817480d0609109a3f379e969
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
+ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94833961"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96512204"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -32,6 +32,14 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 **F:** Bedeutet die Registrierung eines Geräts die Zustimmung für den Zugriff auf das Gerät durch das Unternehmen oder den Dienst?
 
 **A:** Durch das Registrieren eines Geräts erhält Ihr Gerät Zugriff auf die Dienste Ihrer Organisation, ohne dass Sie Ihrer Organisation erlauben, auf Ihr Gerät zuzugreifen.
+
+## <a name="too-many-app-permissions"></a>Zu viele App-Berechtigungen
+
+**F:** Warum fordert die App so viele Berechtigungen an?
+
+**A:** Hier ist die vollständige Liste der Berechtigungen, die möglicherweise erforderlich sind, sowie Hinweise zu deren Verwendung in der App. Die jeweils angezeigten Berechtigungen hängen vom Typ Ihres Telefons ab.
+
+- **Speicherort:** Manchmal möchte Ihre Organisation Ihren Standort kennen, bevor sie Ihnen Zugriff auf bestimmte Ressourcen gewährt. Diese Berechtigung wird von der App nur angefordert, wenn Ihre Organisation über eine Richtlinie verfügt, die einen Standort erfordert. 
 
 ### <a name="legacy-apns-support-deprecated"></a>Unterstützung für ältere APNs als veraltet markiert
 

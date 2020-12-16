@@ -10,12 +10,12 @@ ms.author: lazzeri
 author: FrancescaLazzeri
 ms.date: 09/22/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 43b03abb2aac13358a2187a0a5dc570c1e45934e
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
+ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96458501"
+ms.lasthandoff: 12/03/2020
+ms.locfileid: "96571384"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -93,8 +93,6 @@ Die auf Deep Learning-Methoden basierende Textanalyse umfasst das Analysieren gr
 
 Unternehmen führen mit Deep Learning Textanalysen durch, um Insidergeschäfte zu erkennen und die Einhaltung gesetzlicher Vorschriften zu gewährleisten. Ein weiteres gängiges Beispiel ist Versicherungsbetrug: Mithilfe von Textanalysen wurden häufig große Mengen von Dokumenten analysiert, um zu ermitteln, mit welcher Wahrscheinlichkeit es sich bei einem Versicherungsanspruch um Betrug handelte. 
 
-Informieren Sie sich über die Verwendung eines TensorFlow-Modells in Azure Machine Learning: [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri)
-
 ## <a name="artificial-neural-networks"></a>Künstliche neuronale Netze
 
 Künstliche neuronale Netze setzen sich aus Ebenen verbundener Knoten zusammen. Deep Learning-Modelle verwenden neuronale Netze mit einer sehr großen Anzahl von Schichten. 
@@ -118,6 +116,9 @@ Convolutional Neural Networks wurden bereits in Bereichen wie Videoerkennung, Bi
 ## <a name="next-steps"></a>Nächste Schritte
 
 Die folgenden Artikel enthalten weitere Optionen zur Verwendung von Open-Source-Deep Learning-Modellen in [Azure Machine Learning](./index.yml?WT.mc_id=docs-article-lazzeri):
+
+
+- [Klassifizieren handschriftlicher Ziffern mit einem TensorFlow-Modell](./how-to-train-tensorflow.md?WT.mc_id=docs-article-lazzeri) 
 
 - [Klassifizieren von handschriftlichen Ziffern mithilfe einer TensorFlow-Schätzung und Keras](./how-to-train-keras.md?WT.mc_id=docs-article-lazzeri)
 

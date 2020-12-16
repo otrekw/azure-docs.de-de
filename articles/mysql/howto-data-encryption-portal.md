@@ -7,12 +7,12 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 01/13/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 8dfc34699bb973dc1f5b74807043e9f208d64f4c
-ms.sourcegitcommit: 80034a1819072f45c1772940953fef06d92fefc8
+ms.openlocfilehash: 00670746c1686bca354adc989ddce6c9dd336491
+ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93242146"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96519058"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-portal"></a>Datenverschlüsselung für Azure Database for MySQL über das Azure-Portal
 
@@ -34,11 +34,24 @@ Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azur
     ```azurecli-interactive
     az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
     ```
+  * Auf 90 Tage festgelegte Datenaufbewahrung
+  
+    ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --retention-days 90
+    ```
 
 * Der Schlüssel muss die folgenden Attribute aufweisen, damit er als vom Kunden verwalteter Schlüssel verwendet werden kann:
   * Kein Ablaufdatum
   * Nicht deaktiviert
-  * Fähigkeit zum Ausführen der Vorgänge zum Abrufen, Packen und Entpacken von Schlüsseln
+  * Ausführen der Vorgänge **get**, **wrap** und **unwrap**
+  * Das recoverylevel-Attribut ist auf **Recoverable** festgelegt. (Dafür muss vorläufiges Löschen mit einer Beibehaltungsdauer von 90 Tagen aktiviert sein.)
+  * Bereinigungsschutz aktiviert
+
+Sie können die oben genannten Attribute des Schlüssels mit dem folgenden Befehl überprüfen:
+
+```azurecli-interactive
+az keyvault key show --vault-name <key_vault_name> -n <key_name>
+```
 
 ## <a name="set-the-right-permissions-for-key-operations"></a>Festlegen der richtigen Berechtigungen für Schlüsselvorgänge
 
@@ -46,7 +59,7 @@ Erfahren Sie, wie Sie über das Azure-Portal die Datenverschlüsselung für Azur
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png" alt-text="Screenshot von Key Vault mit hervorgehobenen Optionen „Zugriffsrichtlinien“ und „Zugriffsrichtlinie hinzufügen“":::
 
-2. Wählen Sie **Schlüsselberechtigungen** und anschließend **Abrufen** , **Packen** und **Entpacken** aus. Wählen Sie dann den **Prinzipal** aus (der Name des MySQL-Servers). Wenn Ihr Serverprinzipal nicht in der Liste der vorhandenen Prinzipale enthalten ist, müssen Sie ihn registrieren. Wenn Sie erstmalig versuchen, die Datenverschlüsselung einzurichten, und der Vorgang mit einem Fehler abgebrochen wird, werden Sie aufgefordert, Ihren Serverprinzipal zu registrieren.
+2. Wählen Sie **Schlüsselberechtigungen** und anschließend **Abrufen**, **Packen** und **Entpacken** aus. Wählen Sie dann den **Prinzipal** aus (der Name des MySQL-Servers). Wenn Ihr Serverprinzipal nicht in der Liste der vorhandenen Prinzipale enthalten ist, müssen Sie ihn registrieren. Wenn Sie erstmalig versuchen, die Datenverschlüsselung einzurichten, und der Vorgang mit einem Fehler abgebrochen wird, werden Sie aufgefordert, Ihren Serverprinzipal zu registrieren.
 
    :::image type="content" source="media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png" alt-text="Zugriffsrichtlinienübersicht":::
 

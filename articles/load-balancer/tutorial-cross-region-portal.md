@@ -7,12 +7,12 @@ ms.author: allensu
 ms.service: load-balancer
 ms.topic: tutorial
 ms.date: 11/24/2020
-ms.openlocfilehash: fe335b00df23ff132ad61b27efd733d195ee3bfb
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 7ee203595a796529ae0aefe8b0c52a689ac29968
+ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96030957"
+ms.lasthandoff: 12/07/2020
+ms.locfileid: "96762328"
 ---
 # <a name="tutorial-create-a-cross-region-azure-load-balancer-using-the-azure-portal"></a>Tutorial: Erstellen einer regionsübergreifenden Azure Load Balancer-Instanz mithilfe des Azure-Portals
 
@@ -28,6 +28,10 @@ In diesem Tutorial lernen Sie Folgendes:
 
 Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) erstellen, bevor Sie beginnen.
 
+> [!IMPORTANT]
+> Die regionsübergreifende Azure Load Balancer-Instanz befindet sich derzeit in der öffentlichen Vorschauphase (Public Preview).
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ## <a name="prerequisites"></a>Voraussetzungen
 
 - Ein Azure-Abonnement.
@@ -37,8 +41,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 ## <a name="sign-in-to-azure-portal"></a>Anmelden beim Azure-Portal
 
-> [!IMPORTANT]
-> Der regionsübergreifende Lastenausgleich befindet sich derzeit in der Vorschauphase und wird im Vorschauportal nicht angezeigt.  Melden Sie sich bei **https://preview.portal.azure.com/?feature.globallb=true** an, um das Feature anzuzeigen und bereitzustellen.
+Sie müssen sich beim Azure-Vorschauportal [anmelden](https://preview.portal.azure.com).
 
 ## <a name="create-cross-region-load-balancer"></a>Erstellen eines regionsübergreifenden Lastenausgleichs
 

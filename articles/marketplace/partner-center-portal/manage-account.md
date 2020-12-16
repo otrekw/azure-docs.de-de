@@ -7,12 +7,12 @@ ms.topic: article
 author: parthpandyaMSFT
 ms.author: parthp
 ms.date: 11/02/2020
-ms.openlocfilehash: 8b372cc0fc19c6bf163d9d4e61cde6ce74cb3f28
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: cc853285e193dd3ac4e348525b8bf0db9f8cb023
+ms.sourcegitcommit: 5b93010b69895f146b5afd637a42f17d780c165b
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95538381"
+ms.lasthandoff: 12/02/2020
+ms.locfileid: "96533943"
 ---
 # <a name="manage-your-commercial-marketplace-account-in-partner-center"></a>Verwalten Ihres Kontos im kommerziellen Marketplace in Partner Center
 
@@ -293,7 +293,7 @@ Wenn Ihre Azure AD-Anwendung Daten in Microsoft Azure AD liest und schreibt, ben
 Im Programm für den kommerziellen Marketplace in Partner Center können den Benutzern Ihres Unternehmens die folgenden Rollen und Berechtigungen zugewiesen werden:
 
 - **Besitzer**
-  - Dies ist die Person, die das Konto ursprünglich erstellt hat und die über vollständigen Zugriff darauf verfügt, einschließlich der Möglichkeit, alle Kontobenutzer zu erstellen und zu bearbeiten und alle Finanz- und Kontoeinstellungen zu ändern. Ein Konto weist in der Regel nur einen Besitzer auf.
+  - Die Person, die das Konto ursprünglich erstellt hat und über vollständigen Zugriff darauf verfügt – einschließlich der Möglichkeit, alle Kontobenutzer zu erstellen und zu bearbeiten und alle Finanz- und Kontoeinstellungen zu ändern. Ein Konto hat in der Regel nur einen einzelnen Besitzer.
 - **Manager**
   - Kann auf alle Microsoft-Kontofeatures mit Ausnahme von Steuer- und Auszahlungseinstellungen zugreifen
   - Kann Benutzer, Rollen und Geschäftskonten (Mandanten) verwalten

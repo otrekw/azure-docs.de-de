@@ -3,17 +3,17 @@ title: 'Azure Maps: Fehler und Warnungen bei der Zeichnungskonvertierung'
 description: Hier finden Sie Informationen zu Konvertierungsfehlern und -warnungen, die bei der Verwendung des Azure Maps-Konvertierungsdiensts auftreten können. Die Informationen enthalten Empfehlungen zur Behebung der Fehler/Warnungen sowie einige Beispiele.
 author: anastasia-ms
 ms.author: v-stharr
-ms.date: 05/18/2020
+ms.date: 12/07/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philMea
-ms.openlocfilehash: 04a43e3e2fa9ad77e11f82ff38a144a1de3add78
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: cecc19f0984ce1801d50e5cbda73e98a01e2825b
+ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92895935"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96906215"
 ---
 # <a name="drawing-conversion-errors-and-warnings"></a>Fehler und Warnungen bei der Zeichnungskonvertierung
 
@@ -61,7 +61,7 @@ Das folgende Bild zeigt eine nicht geschlossene Polylinie: Gehen Sie davon aus, 
 
 #### <a name="how-to-fix-unexpectedgeometryinlayer"></a>*Beheben von „unexpectedGeometryInLayer“*
 
-Überprüfen Sie jede Warnung vom Typ **unexpectedGeometryInLayer** , und verschieben Sie die inkompatible Geometrie in eine kompatible Schicht. Sollte sie mit keiner der anderen Schichten kompatibel sein, entfernen Sie sie.
+Überprüfen Sie jede Warnung vom Typ **unexpectedGeometryInLayer**, und verschieben Sie die inkompatible Geometrie in eine kompatible Schicht. Sollte sie mit keiner der anderen Schichten kompatibel sein, entfernen Sie sie.
 
 ### <a name="unsupportedfeaturerepresentation"></a>**unsupportedFeatureRepresentation**
 
@@ -311,7 +311,7 @@ Wenn das ZIP-Archiv leer ist, tritt ebenfalls ein Fehler vom Typ **invalidArchiv
 
 Stellen Sie zum Beheben eines Fehlers vom Typ **invalidArchiveFormat** sicher, dass Folgendes erfüllt ist:
 
-* Der Name Ihrer Archivdatei endet mit _.zip_ .
+* Der Name Ihrer Archivdatei endet mit _.zip_.
 * Ihr ZIP-Archiv enthält Daten.
 * Sie können Ihr ZIP-Archiv öffnen.
 
@@ -330,7 +330,7 @@ Sie haben versucht, ein Zeichnungspaket mit einem falschen Parameter vom Typ `ud
 Stellen Sie zum Beheben eines Fehlers vom Typ **invalidUserData** sicher, dass Folgendes erfüllt ist:
 
 * Sie haben für das hochgeladene Paket einen korrekten Parameter vom Typ `udid` angegeben.
-* Azure Maps Creator wurde für das Azure Maps-Konto aktiviert, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
+* Azure Maps Creator (Vorschau) wurde für das Azure Maps-Konto aktiviert, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
 * Die an den Konvertierungsdienst gesendete API-Anforderung enthält den Abonnementschlüssel für das Azure Maps-Konto, das Sie zum Hochladen des Zeichnungspakets verwendet haben.
 
 ### <a name="dwgerror"></a>**dwgError**
@@ -347,7 +347,7 @@ Der Fehler **dwgError** tritt auf, wenn das Zeichnungspaket eine ungültige oder
 
 #### <a name="how-to-fix-dwgerror"></a>*Beheben von „dwgError“*
 
-Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **dwgError** anhand der Datei _manifest.json_ , dass Folgendes erfüllt ist:
+Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **dwgError** anhand der Datei _manifest.json_, dass Folgendes erfüllt ist:
 
 * Alle DWG-Dateien in Ihrem ZIP-Archiv sind gültige Zeichnungen im DWG-Format von AutoCAD, die sich jeweils in AutoCAD öffnen lassen. Entfernen oder korrigieren Sie alle ungültigen Zeichnungen.
 * Die Liste der DWG-Dateien in _manifest.json_ entspricht den DWG-Dateien im ZIP-Archiv.
@@ -390,7 +390,7 @@ Der Fehler **missingManifest** tritt aus folgenden Gründen auf:
 
 #### <a name="how-to-fix-missingmanifest"></a>*Beheben von „missingManifest“*
 
-Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **missingManifest** , dass auf der Stammebene des ZIP-Archivs eine Datei namens _manifest.json_ vorhanden ist.
+Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **missingManifest**, dass auf der Stammebene des ZIP-Archivs eine Datei namens _manifest.json_ vorhanden ist.
 
 ### <a name="conflict"></a>**conflict**
 
@@ -422,7 +422,7 @@ Vom Konvertierungsdienst wird ein Fehler vom Typ **conflict** zurückgegeben, we
 
 #### <a name="how-to-fix-conflict"></a>*Beheben von „conflict“*
 
-Untersuchen Sie zum Beheben eines Fehlers vom Typ **conflict** die Datei _manifest.json_ , und entfernen Sie alle widersprüchlichen Informationen.
+Untersuchen Sie zum Beheben eines Fehlers vom Typ **conflict** die Datei _manifest.json_, und entfernen Sie alle widersprüchlichen Informationen.
 
 ### <a name="invalidgeoreference"></a>**invalidGeoreference**
 
@@ -450,7 +450,7 @@ Im folgenden JSON-Codeausschnitt liegt der Breitengrad über der Obergrenze:
 
 #### <a name="how-to-fix-invalidgeoreference"></a>*Beheben von „invalidGeoreference“*
 
-Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **invalidGeoreference** , dass die georeferenzierten Werte innerhalb des gültigen Bereichs liegen.
+Vergewissern Sie sich zum Beheben eines Fehlers vom Typ **invalidGeoreference**, dass die georeferenzierten Werte innerhalb des gültigen Bereichs liegen.
 
 >[!IMPORTANT]
 >In GeoJSON wird bei Koordinaten zuerst der Längengrad und dann der Breitengrad angegeben. Bei Verwendung der falschen Reihenfolge wird möglicherweise versehentlich auf einen Breiten- oder Längengradwert verwiesen, der außerhalb des gültigen Bereichs liegt.
@@ -506,4 +506,4 @@ Informieren Sie sich zum Beheben eines Fehlers vom Typ **verticalPenetrationErro
 > [Verwenden der Azure Maps-Schnellansicht für Zeichnungsfehler](drawing-error-visualizer.md)
 
 > [!div class="nextstepaction"]
-> [Creator für Gebäudepläne](creator-indoor-maps.md)
+> [Creator (Vorschau) für Gebäudepläne](creator-indoor-maps.md)
