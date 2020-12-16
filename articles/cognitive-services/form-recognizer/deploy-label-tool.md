@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.author: pafarley
-ms.openlocfilehash: abc8cffa3d5b9dffb55beabc90cdaecb3adc647f
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 985f9e741a1491a812c1d2b20de96381f8af3fa4
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852522"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359845"
 ---
 # <a name="deploy-the-sample-labeling-tool"></a>Bereitstellen des Samplebezeichnungstools
 
@@ -86,7 +86,7 @@ Führen Sie die folgenden Schritte aus, um eine neue Ressource im Azure-Portal z
    * Server-URL: Legen Sie die URL auf `https://mcr.microsoft.com` fest.
    * Benutzername (optional): Erstellen Sie einen Benutzernamen. 
    * Kennwort (optional): Erstellen Sie ein sicheres Kennwort, das Sie sich gut merken können.
-   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:2.1.012970002-amd64-preview` fest.
+   * Image und Tag: Legen Sie diese Einstellung auf `mcr.microsoft.com/azure-cognitive-services/custom-form/labeltool:latest-preview` fest.
    * Continuous Deployment: Legen Sie diesen Wert auf **On** fest, wenn Sie automatische Aktualisierungen erhalten möchten, sobald das Entwicklungsteam Änderungen am Beschriftungstool für Stichproben vornimmt.
    * Startbefehl: Legen Sie diese Einstellung auf `./run.sh eula=accept` fest.
     

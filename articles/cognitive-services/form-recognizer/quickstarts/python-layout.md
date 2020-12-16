@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
-ms.openlocfilehash: 5ea5e352084e379632b88194fd13011879041fd3
-ms.sourcegitcommit: 693df7d78dfd5393a28bf1508e3e7487e2132293
+ms.openlocfilehash: e9368b5c6c90fe7ce65fc066e0b19523e07ece51
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92899445"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504337"
 ---
 # <a name="quickstart-extract-text-and-layout-information-using-the-form-recognizer-rest-api-with-python"></a>Schnellstart: Extrahieren von Text und Layoutinformationen mit der Formularerkennungs-REST-API und Python
 
@@ -27,7 +27,7 @@ Wenn Sie kein Azure-Abonnement besitzen, können Sie ein [kostenloses Konto](htt
 
 Für diesen Schnellstart benötigen Sie Folgendes:
 - Wenn Sie das Beispiel lokal ausführen möchten, muss [Python](https://www.python.org/downloads/) installiert sein.
-- Ein Formulardokument. Sie können ein Bild aus dem [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) für diese Schnellstartanleitung herunterladen ( *sample_data.zip* herunterladen und extrahieren).
+- Ein Formulardokument. Sie können ein Bild aus dem [Beispieldataset](https://go.microsoft.com/fwlink/?linkid=2090451) für diese Schnellstartanleitung herunterladen (*sample_data.zip* herunterladen und extrahieren).
 
 > [!NOTE]
 > In dieser Schnellstartanleitung wird ein lokal gespeichertes Dokument verwendet. Informationen zum Verwenden von Remotedateien, auf die über URLs zugegriffen wird, finden Sie in der [Referenzdokumentation](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/AnalyzeLayoutAsync).
@@ -90,7 +90,7 @@ Um mit der Analyse des Layouts zu beginnen, rufen Sie die **[Analyze Layout](htt
     # Endpoint URL
     endpoint = r"<Endpoint>"
     apim_key = "<Subscription Key>"
-    post_url = endpoint + "/formrecognizer/v2.1-preview.1/Layout/analyze"
+    post_url = endpoint + "/formrecognizer/v2.1-preview.2/Layout/analyze"
     source = r"<path to your form>"
     
     headers = {
@@ -122,7 +122,7 @@ Um mit der Analyse des Layouts zu beginnen, rufen Sie die **[Analyze Layout](htt
 1. Öffnen Sie ein Eingabeaufforderungsfenster.
 1. Verwenden Sie an der Eingabeaufforderung den Befehl `python`, um das Beispiel auszuführen. Beispiel: `python form-recognizer-layout.py`.
 
-Sie erhalten eine `202 (Success)`-Antwort, die einen **Operation-Location** -Header umfasst, den das Skript an der Konsole ausgibt. Dieser Header enthält eine Vorgangs-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können. Im folgenden Beispielwert ist die Zeichenfolge nach `operations/` die Vorgangs-ID.
+Sie erhalten eine `202 (Success)`-Antwort, die einen **Operation-Location**-Header umfasst, den das Skript an der Konsole ausgibt. Dieser Header enthält eine Vorgangs-ID, mit der Sie den Status des asynchronen Vorgangs abfragen und die Ergebnisse abrufen können. Im folgenden Beispielwert ist die Zeichenfolge nach `operations/` die Vorgangs-ID.
 
 # <a name="v20"></a>[v2.0](#tab/v2-0)   
 ```console
@@ -130,7 +130,7 @@ https://cognitiveservice/formrecognizer/v2.0/layout/operations/54f0b076-4e38-43e
 ``` 
 # <a name="v21-preview"></a>[Vorschauversion v2.1](#tab/v2-1)  
 ```console
-https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
+https://cognitiveservice/formrecognizer/v2.1-preview.2/layout/operations/54f0b076-4e38-43e5-81bd-b85b8835fdfb
 ```  
 
 ---
@@ -140,7 +140,7 @@ https://cognitiveservice/formrecognizer/v2.1-preview.1/layout/operations/54f0b07
 
 ## <a name="get-the-layout-results"></a>Abrufen der Layoutergebnisse
 
-Nachdem Sie die **Analyze Layout** -API aufgerufen haben, rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Dieser Code verwendet den Vorgangs-ID-Wert in einem neuen API-Aufruf. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
+Nachdem Sie die **Analyze Layout**-API aufgerufen haben, rufen Sie die **[Get Analyze Layout Result](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/GetAnalyzeLayoutResult)** -API auf, um den Status des Vorgangs und die extrahierten Daten abzurufen. Fügen Sie am Ende des Python-Skripts den folgenden Code hinzu. Dieser Code verwendet den Vorgangs-ID-Wert in einem neuen API-Aufruf. Dieses Skript ruft die API in regelmäßigen Abständen auf, bis die Ergebnisse vorliegen. Ein Intervall von mindestens einer Sekunde wird empfohlen.
 
 ```python
 n_tries = 10
@@ -174,7 +174,7 @@ while n_try < n_tries:
 
 ### <a name="examine-the-response"></a>Untersuchen der Antwort
 
-Das Skript gibt Antworten an der Konsole aus, bis der **Analyze Layout** -Vorgang abgeschlossen ist. Anschließend werden die extrahierten Daten im JSON-Format ausgegeben. Der Knoten `"readResults"` enthält jede Textzeile mit der Platzierung des zugehörigen Begrenzungsrahmens auf der Seite. Der Knoten `"selectionMarks"` (in der Vorschauversion v2.1) zeigt jede Auswahlmarkierung (Kontrollkästchen, Optionsfeld) und ihren Status („ausgewählt“ oder „nicht ausgewählt“). Das Feld `"pageResults"` zeigt jedes Textelement in Tabellen, jeweils mit zugehöriger Spalten-/Zeilenkoordinate.
+Das Skript gibt Antworten an der Konsole aus, bis der **Analyze Layout**-Vorgang abgeschlossen ist. Anschließend werden die extrahierten Daten im JSON-Format ausgegeben. Der Knoten `"readResults"` enthält jede Textzeile mit der Platzierung des zugehörigen Begrenzungsrahmens auf der Seite. Der Knoten `"selectionMarks"` (in der Vorschauversion v2.1) zeigt jede Auswahlmarkierung (Kontrollkästchen, Optionsfeld) und ihren Status („ausgewählt“ oder „nicht ausgewählt“). Das Feld `"pageResults"` zeigt jedes Textelement in Tabellen, jeweils mit zugehöriger Spalten-/Zeilenkoordinate.
 
 Vergleichen Sie das folgende Bild einer Rechnung mit der entsprechenden JSON-Ausgabe. Die Ausgabe wurde zur Vereinfachung gekürzt.
 

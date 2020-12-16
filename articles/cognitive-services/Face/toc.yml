@@ -5,6 +5,8 @@
   items:
     - name: Was ist der Gesichtserkennungsdienst?
       href: Overview.md
+    - name: Neues
+      href: releasenotes.md
 - name: Schnellstarts
   items:
     - name: Verwenden der Clientbibliothek oder REST-API
@@ -97,5 +99,3 @@
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: face-encryption-of-data-at-rest.md
-    - name: Versionshinweise
-      href: ReleaseNotes.md

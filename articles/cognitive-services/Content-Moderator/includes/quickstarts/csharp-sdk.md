@@ -11,12 +11,12 @@ ms.topic: include
 ms.date: 09/15/2020
 ms.author: pafarley
 ms.custom: devx-track-dotnet, cog-serv-seo-aug-2020
-ms.openlocfilehash: 793dc6d210751d0605ab756cd1c72b1dc5dd308f
-ms.sourcegitcommit: d76108b476259fe3f5f20a91ed2c237c1577df14
+ms.openlocfilehash: 8a715c23900ac0d5a16ff4a0a8ade5ea9458cfed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "92918704"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561493"
 ---
 Hier erhalten Sie Informationen zu den ersten Schritten mit der Azure Content Moderator-Clientbibliothek für .NET. Führen Sie die nachfolgenden Schritte zum Installieren des NuGet-Pakets aus, und testen Sie den Beispielcode für grundlegende Aufgaben. 
 
@@ -24,9 +24,9 @@ Content Moderator ist ein KI-Dienst für die Behandlung potenziell anstößiger,
 
 Führen Sie mit der Content Moderator-Clientbibliothek für .NET die folgenden Aktionen aus:
 
-* [Moderieren von Text](#moderate-text)
-* [Moderieren von Bildern](#moderate-images)
-* [Erstellen einer Überprüfung](#create-a-review)
+* Moderieren von Text
+* Moderieren von Bildern
+* Erstellen einer Überprüfung
 
 [Referenzdokumentation](/dotnet/api/overview/azure/cognitiveservices/client/contentmoderator?view=azure-dotnet) | [Quellcode der Bibliothek](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.ContentModerator) | [Paket (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.ContentModerator/) | [Beispiele](../../samples-dotnet.md)
 
@@ -48,7 +48,7 @@ Erstellen Sie mit Visual Studio eine neue .NET Core-Anwendung.
 
 ### <a name="install-the-client-library"></a>Installieren der Clientbibliothek 
 
-Installieren Sie nach der Erstellung eines neuen Projekts die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen** , und suchen Sie nach `Microsoft.Azure.CognitiveServices.ContentModerator`. Wählen Sie die Version `2.0.0` und anschließend **Installieren** aus. 
+Installieren Sie nach der Erstellung eines neuen Projekts die Clientbibliothek, indem Sie im **Projektmappen-Explorer** mit der rechten Maustaste auf die Projektmappe klicken und **NuGet-Pakete verwalten** auswählen. Wählen Sie im daraufhin geöffneten Paket-Manager die Option **Durchsuchen** aus, aktivieren Sie das Kontrollkästchen **Vorabversion einbeziehen**, und suchen Sie nach `Microsoft.Azure.CognitiveServices.ContentModerator`. Wählen Sie die Version `2.0.0` und anschließend **Installieren** aus. 
 
 #### <a name="cli"></a>[BEFEHLSZEILENSCHNITTSTELLE (CLI)](#tab/cli)
 
@@ -91,7 +91,7 @@ dotnet add package Microsoft.Azure.CognitiveServices.ContentModerator --version 
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_using)]
 
-Erstellen Sie in der **Program** -Klasse Variablen für den Schlüssel und Endpunkt Ihrer Ressource.
+Erstellen Sie in der **Program**-Klasse Variablen für den Schlüssel und Endpunkt Ihrer Ressource.
 
 > [!IMPORTANT]
 > Öffnen Sie das Azure-Portal. Wenn die im Abschnitt **Voraussetzungen** erstellte Content Moderator-Ressource erfolgreich bereitgestellt wurde, klicken Sie unter **Nächste Schritte** auf die Schaltfläche **Zu Ressource wechseln**. Schlüssel und Endpunkt finden Sie auf der Seite mit dem **Schlüssel und dem Endpunkt** der Ressource unter **Ressourcenverwaltung**. 
@@ -140,7 +140,7 @@ Instanziieren Sie in einer neuen Methode Clientobjekte mit Ihrem Endpunkt und Sc
 
 ## <a name="moderate-text"></a>Moderieren von Text
 
-Der folgende Code verwendet einen Content Moderator-Client zum Analysieren von Text und Ausgeben der Ergebnisse in der Konsole. Definieren Sie im Stammverzeichnis Ihrer **Program** -Klasse die Eingabe- und Ausgabedateien:
+Der folgende Code verwendet einen Content Moderator-Client zum Analysieren von Text und Ausgeben der Ergebnisse in der Konsole. Definieren Sie im Stammverzeichnis Ihrer **Program**-Klasse die Eingabe- und Ausgabedateien:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_text_vars)]
 
@@ -152,7 +152,7 @@ Crap is the profanity here. Is this information PII? phone 4255550111
 ```
 
 
-Definieren Sie anschließend in Ihrer **Program** -Klasse die Methode für die Textmoderation:
+Definieren Sie anschließend in Ihrer **Program**-Klasse die Methode für die Textmoderation:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_textmod)]
 
@@ -165,7 +165,7 @@ Im folgenden Code werden ein Content Moderator-Client und ein [ImageModeration]
 
 ### <a name="get-sample-images"></a>Abrufen von Beispielbildern
 
-Definieren Sie im Stammverzeichnis Ihrer **Program** -Klasse Ihre Eingabe- und Ausgabedateien:
+Definieren Sie im Stammverzeichnis Ihrer **Program**-Klasse Ihre Eingabe- und Ausgabedateien:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_image_vars)]
 
@@ -178,13 +178,13 @@ https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png
 
 ### <a name="define-helper-class"></a>Definieren der Hilfsklasse
 
-Fügen Sie die folgende Klassendefinition in der **Program** -Klasse hinzu. Mit dieser inneren Klasse werden Ergebnisse der Bildmoderation verarbeitet.
+Fügen Sie die folgende Klassendefinition in der **Program**-Klasse hinzu. Mit dieser inneren Klasse werden Ergebnisse der Bildmoderation verarbeitet.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_dataclass)]
 
 ### <a name="define-the-image-moderation-method"></a>Definieren der Methode für die Bildmoderation
 
-Mit der folgenden Methode werden die Bild-URLs in einer Textdatei durchlaufen, es wird eine **EvaluationData** -Instanz erstellt, und das Bild wird auf nicht jugendfreie bzw. freizügige Inhalte, Texte und Gesichter untersucht. Anschließend wird die endgültige **EvaluationData** -Instanz einer Liste hinzugefügt, und die vollständige Liste mit zurückgegebenen Daten wird in die Konsole geschrieben.
+Mit der folgenden Methode werden die Bild-URLs in einer Textdatei durchlaufen, es wird eine **EvaluationData**-Instanz erstellt, und das Bild wird auf nicht jugendfreie bzw. freizügige Inhalte, Texte und Gesichter untersucht. Anschließend wird die endgültige **EvaluationData**-Instanz einer Liste hinzugefügt, und die vollständige Liste mit zurückgegebenen Daten wird in die Konsole geschrieben.
 
 #### <a name="iterate-through-images"></a>Durchlaufen von Bildern
 
@@ -208,31 +208,31 @@ In der Methode in diesem Abschnitt wird nach dem Eingang menschlicher Eingaben �
 
 ### <a name="get-sample-images"></a>Abrufen von Beispielbildern
 
-Deklarieren Sie das folgende Array im Stammverzeichnis Ihrer **Program** -Klasse. Diese Variable verweist auf ein Beispielbild für die Erstellung der Überprüfung.
+Deklarieren Sie das folgende Array im Stammverzeichnis Ihrer **Program**-Klasse. Diese Variable verweist auf ein Beispielbild für die Erstellung der Überprüfung.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_urls)]
 
 ### <a name="get-review-credentials"></a>Abrufen von Anmeldeinformationen für die Überprüfung
 
-Melden Sie sich beim [Überprüfungstool](https://contentmoderator.cognitive.microsoft.com) an, und rufen Sie den Teamnamen ab. Weisen Sie ihn dann der entsprechenden Variablen in der **Program** -Klasse zu. Optional können Sie einen Rückrufendpunkt einrichten, um Aktualisierungen für die Aktivität der Überprüfung zu empfangen.
+Melden Sie sich beim [Überprüfungstool](https://contentmoderator.cognitive.microsoft.com) an, und rufen Sie den Teamnamen ab. Weisen Sie ihn dann der entsprechenden Variablen in der **Program**-Klasse zu. Optional können Sie einen Rückrufendpunkt einrichten, um Aktualisierungen für die Aktivität der Überprüfung zu empfangen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_vars)]
 
 ### <a name="define-helper-class"></a>Definieren der Hilfsklasse
 
-Fügen Sie die folgende Klassendefinition in Ihrer **Program** -Klasse hinzu. Diese Klasse wird verwendet, um eine einzelne Überprüfungsinstanz darzustellen, die an das Überprüfungstool übermittelt wird.
+Fügen Sie die folgende Klassendefinition in Ihrer **Program**-Klasse hinzu. Diese Klasse wird verwendet, um eine einzelne Überprüfungsinstanz darzustellen, die an das Überprüfungstool übermittelt wird.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_review_item)]
 
 ### <a name="define-helper-method"></a>Definieren der Hilfsmethode
 
-Fügen Sie der **Program** -Klasse die folgende Methode hinzu. Mit dieser Methode werden die Ergebnisse von Überprüfungsabfragen in die Ausgabetextdatei geschrieben.
+Fügen Sie der **Program**-Klasse die folgende Methode hinzu. Mit dieser Methode werden die Ergebnisse von Überprüfungsabfragen in die Ausgabetextdatei geschrieben.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_writeline)]
 
 ### <a name="define-the-review-creation-method"></a>Definieren der Methode für die Überprüfungserstellung
 
-Nun können Sie die Methode definieren, mit der die Überprüfung erstellt wird und die Abfragen durchgeführt werden. Fügen Sie die neue **CreateReviews** -Methode hinzu, und definieren Sie die folgenden lokalen Variablen.
+Nun können Sie die Methode definieren, mit der die Überprüfung erstellt wird und die Abfragen durchgeführt werden. Fügen Sie die neue **CreateReviews**-Methode hinzu, und definieren Sie die folgenden lokalen Variablen.
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/ContentModerator/Program.cs?name=snippet_createreview_fields)]
 

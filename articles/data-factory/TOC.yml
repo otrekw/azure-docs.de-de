@@ -758,6 +758,8 @@
           href: data-factory-troubleshoot-guide.md
         - name: Connectors
           href: connector-troubleshoot-guide.md
+        - name: Trigger für Pipelines
+          href: pipeline-trigger-troubleshoot-guide.md
         - name: Datenflüsse
           href: data-flow-troubleshoot-guide.md
         - name: Continuous Integration und Continuous Deployment

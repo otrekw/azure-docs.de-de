@@ -122,6 +122,8 @@
       href: disaster-recovery.md
 - name: Konzepte
   items:
+    - name: Integrierte Rollen
+      href: rbac.md
     - name: Authentifizierung
       href: authentication.md
     - name: Windows Virtual Desktop-Umgebung

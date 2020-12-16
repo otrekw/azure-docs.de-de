@@ -8,14 +8,16 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.date: 10/30/2020
 ms.topic: include
-ms.openlocfilehash: e592c11062e81d48014a90895a0e42b460d4b77c
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: e006f804b8ab6411f4949424147acf567dc2ed24
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93128170"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97371309"
 ---
 ## <a name="sign-in-to-luis-portal"></a>Anmelden beim LUIS-Portal
+
+[!INCLUDE [Note about portal deprecation](luis-portal-note.md)]
 
 Als neuer LUIS-Benutzer müssen Sie wie folgt vorgehen:
 
@@ -30,10 +32,10 @@ Als neuer LUIS-Benutzer müssen Sie wie folgt vorgehen:
     :::image type="content" source="../media/luis-how-to-azure-subscription/choose-authoring-resource.png" alt-text="Typ der Language Understanding-Erstellungsressource auswählen":::
     
     Geben Sie beim Erstellen einer neuen Erstellungsressource die folgenden Informationen an:
-    * **Mandantenname** : Der Mandant, dem Ihr Azure-Abonnement zugeordnet ist.
-    * **Azure-Abonnementname** : Das Abonnement, unter dem die Ressource abgerechnet wird.
-    * **Name der Azure-Ressourcengruppe** : Ein benutzerdefinierter Ressourcengruppenname, den Sie auswählen oder erstellen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren.
-    * **Azure-Ressourcenname** : Ein von Ihnen gewählter benutzerdefinierter Name, der als Teil der URL für Ihre Abfragen für Erstellungs- und Vorhersageendpunkte verwendet wird.
-    * **Tarif** : Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.
+    * **Mandantenname**: Der Mandant, dem Ihr Azure-Abonnement zugeordnet ist.
+    * **Azure-Abonnementname**: Das Abonnement, unter dem die Ressource abgerechnet wird.
+    * **Name der Azure-Ressourcengruppe**: Ein benutzerdefinierter Ressourcengruppenname, den Sie auswählen oder erstellen. Mit Ressourcengruppen können Sie Azure-Ressourcen für den Zugriff und die Verwaltung gruppieren.
+    * **Azure-Ressourcenname**: Ein von Ihnen gewählter benutzerdefinierter Name, der als Teil der URL für Ihre Abfragen für Erstellungs- und Vorhersageendpunkte verwendet wird.
+    * **Tarif**: Der Tarif bestimmt die maximale Anzahl von Transaktionen pro Sekunde und Monat.
 
 
