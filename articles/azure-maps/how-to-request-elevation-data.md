@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: af3653d9e4509b1aa31a377dfc22cb6b6b2ff34e
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 76232a917e8856a06645fabc0ab4716195c5c0e1
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906062"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97094198"
 ---
 # <a name="request-elevation-data-using-the-azure-maps-elevation-service-preview"></a>Anfordern von Höhendaten mithilfe des Azure Maps-Höhenangabendiensts (Vorschau)
 
@@ -56,8 +56,8 @@ Verwenden Sie die [Render V2-API zum Abrufen von Kartenkacheln](https://docs.mi
 
 Verwenden Sie die APIs des Höhenangabendiensts (Vorschau), um Höhendaten im GeoJSON-Format anzufordern. In diesem Abschnitt werden alle drei APIs beschrieben:
 
-* [Abrufen von Daten für Punkte](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
-* [Veröffentlichen von Daten für Punkte](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates)
+* [Abrufen von Daten für Punkte](/rest/api/maps/elevation/getdataforpoints)
+* [Veröffentlichen von Daten für Punkte](/rest/api/maps/elevation/postdataforpoints)
 * [Abrufen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/getdataforpolyline)
 * [Veröffentlichen von Daten für Polylinie](https://docs.microsoft.com/rest/api/maps/elevation/postdataforpolyline)
 * [Abrufen von Daten für Begrenzungsrahmen](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)
@@ -67,7 +67,7 @@ Verwenden Sie die APIs des Höhenangabendiensts (Vorschau), um Höhendaten im Ge
 
 ### <a name="request-elevation-data-for-points"></a>Anfordern von Höhendaten für Punkte
 
-In diesem Beispiel werden über die [API zum Abrufen von Daten für Punkte](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates) Höhendaten für den Mount Everest und den Chamlang angefordert. Anschließend werden über die [API zum Veröffentlichen von Daten für Punkte](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) Höhendaten anhand der gleichen beiden Punkte angefordert. Es wird davon ausgegangen, dass die Längen- und Breitenangaben in der URL in WGS84-Dezimalgrad (World Geodetic System) angegeben werden.
+In diesem Beispiel werden über die [API zum Abrufen von Daten für Punkte](/rest/api/maps/elevation/getdataforpoints) Höhendaten für den Mount Everest und den Chamlang angefordert. Anschließend werden über die [API zum Veröffentlichen von Daten für Punkte](/rest/api/maps/elevation/postdataforpoints) Höhendaten anhand der gleichen beiden Punkte angefordert. Es wird davon ausgegangen, dass die Längen- und Breitenangaben in der URL in WGS84-Dezimalgrad (World Geodetic System) angegeben werden.
 
  >[!IMPORTANT]
  >Da die Länge von URLs auf 2.048 Zeichen beschränkt ist, können nicht mehr als 100 Koordinaten als eine durch senkrechte Striche getrennte Zeichenfolge in der GET-Anforderung einer URL übergeben werden. Wenn Sie mehr als 100 Koordinaten als eine durch senkrechte Striche getrennte Zeichenfolge übergeben möchten, verwenden Sie die API zum Veröffentlichen von Daten für Punkte.
@@ -103,7 +103,7 @@ In diesem Beispiel werden über die [API zum Abrufen von Daten für Punkte](http
     }
     ```
 
-4. Nun wird die [API zum Veröffentlichen von Daten für Punkte](https://docs.microsoft.com/rest/api/maps/elevation/postdataforlatlongcoordinates) aufgerufen, um die Höhendaten für die beiden gleichen Punkte abzurufen. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
+4. Nun wird die [API zum Veröffentlichen von Daten für Punkte](/rest/api/maps/elevation/postdataforpoints) aufgerufen, um die Höhendaten für die beiden gleichen Punkte abzurufen. Wählen Sie auf der Registerkarte „Builder“ (Generator) die HTTP-Methode **POST** aus, und geben Sie die folgende URL ein. Ersetzen Sie bei dieser Anforderung sowie bei den anderen in diesem Artikel angegebenen Anforderungen jeweils `{Azure-Maps-Primary-Subscription-key}` durch Ihren primären Abonnementschlüssel.
 
     ```http
     https://atlas.microsoft.com/elevation/point/json?subscription-key={Azure-Maps-Primary-Subscription-key}&api-version=1.0
@@ -485,7 +485,7 @@ Weitere Informationen finden Sie unter dem Stift <a href='https://codepen.io/azu
 Weitere Informationen zu den APIs des Azure Maps-Höhenangabendiensts (Vorschau) finden Sie in den folgenden Artikeln:
 
 > [!div class="nextstepaction"]
-> [Höhenangabendienst (Vorschau): Abrufen von Daten für Längen- und Breitenkoordinaten](https://docs.microsoft.com/rest/api/maps/elevation/getdataforlatlongcoordinates)
+> [Höhenangabendienst (Vorschau): Abrufen von Daten für Längen- und Breitenkoordinaten](/rest/api/maps/elevation/getdataforpoints)
 
 > [!div class="nextstepaction"]
 > [Höhenangabendienst (Vorschau): Abrufen von Daten für Begrenzungsrahmen](https://docs.microsoft.com/rest/api/maps/elevation/getdataforboundingbox)

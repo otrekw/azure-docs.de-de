@@ -3,13 +3,13 @@ title: Konfigurieren der Überwachung für Azure Functions
 description: Es wird beschrieben, wie Sie Ihre Funktions-App zur Überwachung mit Application Insights verbinden und die Datensammlung konfigurieren.
 ms.date: 8/31/2020
 ms.topic: how-to
-ms.custom: contperfq2, devx-track-azurecli
-ms.openlocfilehash: 02d5ad2e9697c14818a985325267d7caea80f65e
-ms.sourcegitcommit: 4c89d9ea4b834d1963c4818a965eaaaa288194eb
+ms.custom: contperf-fy21q2, devx-track-azurecli
+ms.openlocfilehash: 5c4e9795109a9b4b5a6e9ceeec6b22e0168eb28f
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96607125"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97027627"
 ---
 # <a name="how-to-configure-monitoring-for-azure-functions"></a>Konfigurieren der Überwachung für Azure Functions
 
