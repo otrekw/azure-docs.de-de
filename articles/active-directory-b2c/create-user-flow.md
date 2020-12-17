@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.date: 07/30/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: fbb55d71c2ed56bac14380960f9a0777be549566
-ms.sourcegitcommit: ea551dad8d870ddcc0fee4423026f51bf4532e19
+ms.openlocfilehash: 418446e0d465b606b8d580297cebd73c466d4841
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96754426"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109011"
 ---
 # <a name="create-a-user-flow-in-azure-active-directory-b2c"></a>Erstellen eines Benutzerflows in Azure Active Directory B2C
 
@@ -91,4 +91,4 @@ Sie können [Benutzerflows](user-flow-overview.md) verschiedener Typen in Ihrem 
 ## <a name="next-steps"></a>Nächste Schritte
 
 - [Hinzufügen von bedingtem Zugriff zu Azure AD B2C-Benutzerflows](conditional-access-user-flow.md)
-- [Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-overview.md)
+- [Anpassen der Benutzeroberfläche in Azure Active Directory B2C](customize-ui-with-html.md)
