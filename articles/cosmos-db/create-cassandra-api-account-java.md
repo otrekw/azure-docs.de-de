@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: tutorial
 ms.date: 12/06/2018
 ms.custom: seodec18, devx-track-java
-ms.openlocfilehash: eb057637ff546356cde6e0ef107fe784fed2e610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: fe452f61d17f0b2014957e3b458ef1ad1b3c539d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93099877"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97357627"
 ---
 # <a name="tutorial-create-a-cassandra-api-account-in-azure-cosmos-db-by-using-a-java-application-to-store-keyvalue-data"></a>Tutorial: Erstellen eines Cassandra-API-Kontos in Azure Cosmos DB durch die Verwendung einer Java-Anwendung zum Speichern von Schlüssel/Wert-Daten
 [!INCLUDE[appliesto-cassandra-api](includes/appliesto-cassandra-api.md)]
@@ -67,7 +67,7 @@ Rufen Sie die Informationen der Verbindungszeichenfolge über das Azure-Portal a
 
 2. Öffnen Sie den Bereich **Verbindungszeichenfolge**.  
 
-3. Kopieren Sie die Werte von **KONTAKTPUNKT** , **PORT** , **BENUTZERNAME** , und **PRIMÄRES KENNWORT**. Diese werden Sie in den nächsten Schritten benötigen.
+3. Kopieren Sie die Werte von **KONTAKTPUNKT**, **PORT**, **BENUTZERNAME**, und **PRIMÄRES KENNWORT**. Diese werden Sie in den nächsten Schritten benötigen.
 
 ## <a name="create-the-project-and-the-dependencies"></a>Erstellen des Projekts und der Abhängigkeiten 
 
@@ -92,21 +92,21 @@ Verwenden Sie die folgenden Schritte, um das Beispiel von Grund auf neu zu erste
  
 2. Suchen Sie den Ordner `cassandra-demo`. Öffnen Sie in einem Text-Editor die generierte Datei `pom.xml`. 
 
-   Fügen Sie die Cassandra-Abhängigkeiten hinzu, und erstellen Sie die für Ihr Projekt erforderlichen Plug-Ins, die in der Datei [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/pom.xml) gezeigt werden.  
+   Fügen Sie die Cassandra-Abhängigkeiten hinzu, und erstellen Sie die für Ihr Projekt erforderlichen Plug-Ins, die in der Datei [pom.xml](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/pom.xml) gezeigt werden.  
 
 3. Erstellen Sie im Ordner `cassandra-demo\src\main` einen neuen Ordner namens `resources`.  Fügen Sie im Ressourcenordner die Dateien „config.properties“ und „log4j.properties“ hinzu:
 
-   - Die Datei [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/config.properties) speichert den Verbindungsendpunkt und die Schlüsselwerte des Cassandra-API-Kontos. 
+   - Die Datei [config.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/config.properties) speichert den Verbindungsendpunkt und die Schlüsselwerte des Cassandra-API-Kontos. 
    
-   - Die Datei [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/resources/log4j.properties) definiert die Ebene der Protokollierung, die für die Interaktion mit der Cassandra-API erforderlich ist.  
+   - Die Datei [log4j.properties](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/resources/log4j.properties) definiert die Ebene der Protokollierung, die für die Interaktion mit der Cassandra-API erforderlich ist.  
 
 4. Navigieren Sie zum Ordner `src/main/java/com/azure/cosmosdb/cassandra/`. Erstellen Sie im Cassandra-Ordner einen weiteren Ordner mit dem Namen `utils`. Der neue Ordner speichert die Hilfsprogrammklassen, die zum Herstellen einer Verbindung mit der Cassandra-API-Konto erforderlich sind. 
 
-   Fügen Sie die Klasse [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) hinzu, um den Cluster zu erstellen und Cassandra-Sitzungen zu öffnen und zu schließen. Der Cluster stellt eine Verbindung mit dem Cassandra-API-Konto in Azure Cosmos DB her und gibt eine Sitzung für den Zugriff zurück. Lesen Sie mithilfe der Klasse [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) Informationen zur Verbindungszeichenfolge aus der Datei „config.properties“. 
+   Fügen Sie die Klasse [CassandraUtils](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/CassandraUtils.java) hinzu, um den Cluster zu erstellen und Cassandra-Sitzungen zu öffnen und zu schließen. Der Cluster stellt eine Verbindung mit dem Cassandra-API-Konto in Azure Cosmos DB her und gibt eine Sitzung für den Zugriff zurück. Lesen Sie mithilfe der Klasse [Configurations](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/util/Configurations.java) Informationen zur Verbindungszeichenfolge aus der Datei „config.properties“. 
 
 5. Das Java-Beispiel erstellt eine Datenbank mit Benutzerinformationen wie Benutzernamen, Benutzer-ID und Stadt des Benutzers. Sie müssen GET- und SET-Methoden definieren, um auf die Benutzerdetails in der main-Funktion zuzugreifen.
  
-   Erstellen Sie eine [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/master/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java)-Klasse im Ordner `src/main/java/com/azure/cosmosdb/cassandra/` mit GET- und SET-Methoden. 
+   Erstellen Sie eine [User.java](https://github.com/Azure-Samples/azure-cosmos-db-cassandra-java-getting-started/blob/main/src/main/java/com/azure/cosmosdb/cassandra/examples/UserProfile.java)-Klasse im Ordner `src/main/java/com/azure/cosmosdb/cassandra/` mit GET- und SET-Methoden. 
 
 ## <a name="add-a-database-and-a-table"></a>Hinzufügen einer Datenbank und Tabelle  
 
@@ -220,7 +220,7 @@ In diesem Abschnitt wird beschrieben, wie Sie eine Datenbank (Keyspace) und eine
 
    Im Terminalfenster werden Benachrichtigungen angezeigt, dass der Keyspace und die Tabelle erstellt wurden. 
    
-2. Öffnen Sie im Azure-Portal nun den **Daten-Explorer** , um sicherzustellen, dass der Keyspace und die Tabelle erstellt wurden.
+2. Öffnen Sie im Azure-Portal nun den **Daten-Explorer**, um sicherzustellen, dass der Keyspace und die Tabelle erstellt wurden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

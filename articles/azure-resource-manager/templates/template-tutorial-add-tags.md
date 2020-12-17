@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: 4084508202fc7db5280d34c157552fe723b1dfba
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 625a88c0ee946b1ca67737d9cc67b638699d12f0
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96930941"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107004"
 ---
 # <a name="tutorial-add-tags-in-your-arm-template"></a>Tutorial: Hinzufügen von Tags in Ihrer ARM-Vorlage
 
@@ -43,7 +43,7 @@ Im folgenden Beispiel sind die Änderungen hervorgehoben, die Sie an der Vorlage
 
 Jetzt können Sie die Vorlage bereitstellen und sich die Ergebnisse ansehen.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -72,7 +72,7 @@ az deployment group create \
 ---
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="verify-deployment"></a>Überprüfen der Bereitstellung
 

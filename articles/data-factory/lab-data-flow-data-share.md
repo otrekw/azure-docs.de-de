@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 12/09/2020
-ms.openlocfilehash: bdf9cbfef7dfdcf80976641b527ddeb61368d50b
-ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
+ms.openlocfilehash: fa424f7e1f5e1f885dd433b8abc8aae1dc1bc206
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96921031"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97006156"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Datenintegration mit Azure Data Factory und Azure Data Share
 
@@ -72,7 +72,7 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
     ![Portal: Konfigurieren 3](media/lab-data-flow-data-share/configure3.png)
 1. Der erste verknüpfte Dienst, den Sie konfigurieren, ist eine Azure SQL-Datenbank. Sie können die Suchleiste verwenden, um die Datenspeicherliste zu filtern. Klicken Sie auf die Kachel **Azure SQL-Datenbank** und dann auf „Weiter“.
 
-    ![Portal: Konfigurieren 4](media/lab-data-flow-data-share/configure4.png)
+    ![Portal: Konfigurieren 4](media/lab-data-flow-data-share/configure-4.png)
 1. Geben Sie im Bereich für die SQL DB-Konfiguration „SQLDB“ als Namen für Ihren verknüpften Dienst ein. Geben Sie Ihre Anmeldeinformationen ein, damit Data Factory eine Verbindung mit Ihrer Datenbank herstellen kann. Geben Sie bei Verwendung der SQL-Authentifizierung den Servernamen, die Datenbank, Ihren Benutzernamen und das Kennwort ein. Sie können die Korrektheit Ihrer Verbindungsinformationen überprüfen, indem Sie auf **Verbindung testen** klicken. Klicken Sie auf **Erstellen**, nachdem der Vorgang abgeschlossen wurde.
 
     ![Portal: Konfigurieren 5](media/lab-data-flow-data-share/configure5.png)
@@ -81,10 +81,10 @@ Unter den verknüpften Azure Data Factory-Diensten definieren Sie die Informatio
 
 1. Wiederholen Sie den Vorgang, um einen verknüpften Azure Synapse Analytics-Dienst hinzuzufügen. Klicken Sie auf der Registerkarte „Verbindungen“ auf **Neu**. Wählen Sie die Kachel **Azure Synapse Analytics** aus, und klicken Sie auf „Weiter“.
 
-    ![Portal: Konfigurieren 6](media/lab-data-flow-data-share/configure6.png)
+    ![Portal: Konfigurieren 6](media/lab-data-flow-data-share/configure-6.png)
 1. Geben Sie im Konfigurationsbereich für verknüpfte Dienste „SQLDW“ als Namen für den verknüpften Dienst ein. Geben Sie Ihre Anmeldeinformationen ein, damit Data Factory eine Verbindung mit Ihrer Datenbank herstellen kann. Geben Sie bei Verwendung der SQL-Authentifizierung den Servernamen, die Datenbank, Ihren Benutzernamen und das Kennwort ein. Sie können die Korrektheit Ihrer Verbindungsinformationen überprüfen, indem Sie auf **Verbindung testen** klicken. Klicken Sie auf **Erstellen**, nachdem der Vorgang abgeschlossen wurde.
 
-    ![Portal: Konfigurieren 7](media/lab-data-flow-data-share/configure7.png)
+    ![Portal: Konfigurieren 7](media/lab-data-flow-data-share/configure-7.png)
 
 ### <a name="create-an-azure-data-lake-storage-gen2-linked-service"></a>Erstellen eines verknüpften Azure Data Lake Storage Gen2-Diensts
 
@@ -128,7 +128,7 @@ In Azure Data Factory ist eine Pipeline eine logische Gruppierung von Aktivität
     ![Portal: Kopieren 4](media/lab-data-flow-data-share/copy4.png)
 1. Suchen Sie nach **Azure SQL-Datenbank**, und klicken Sie auf „Weiter“.
 
-    ![Portal: Kopieren 5](media/lab-data-flow-data-share/copy5.png)
+    ![Portal: Kopieren 5](media/lab-data-flow-data-share/copy-5.png)
 1. Geben Sie Ihrem Dataset den Namen „TripData“. Wählen Sie „SQLDB“ als verknüpften Dienst aus. Wählen Sie in der Dropdownliste mit den Tabellennamen den Eintrag „dbo.TripData“ aus. Importieren Sie das Schema **Aus Verbindung/Speicher**. Klicken Sie auf „OK“, wenn der Vorgang abgeschlossen ist.
 
     ![Portal: Kopieren 6](media/lab-data-flow-data-share/copy6.png)
@@ -211,7 +211,7 @@ Mit dem in diesem Schritt erstellten Datenfluss wird für das Dataset „TripDat
     ![Portal: Datenfluss 9](media/lab-data-flow-data-share/dataflow9.png)
 1. Wählen Sie die Kachel **Azure SQL-Datenbank** aus, und klicken Sie anschließend auf „Weiter“. *Hinweis: Unter Umständen stellen Sie fest, dass viele Connectors in Data Factory für Zuordnungsdatenflüsse nicht unterstützt werden. Erfassen Sie Daten per Kopieraktivität in einer unterstützten Quelle, um diese aus einer dieser Quellen zu transformieren*.
 
-    ![Portal: Datenfluss 10](media/lab-data-flow-data-share/dataflow10.png)
+    ![Portal: Datenfluss 10](media/lab-data-flow-data-share/dataflow-10.png)
 1. Geben Sie Ihrem Dataset den Namen „TripFares“. Wählen Sie „SQLDB“ als verknüpften Dienst aus. Wählen Sie in der Dropdownliste mit den Tabellennamen den Eintrag „dbo.TripFares“ aus. Importieren Sie das Schema **Aus Verbindung/Speicher**. Klicken Sie auf „OK“, wenn der Vorgang abgeschlossen ist.
 
     ![Portal: Datenfluss 11](media/lab-data-flow-data-share/dataflow11.png)
@@ -276,7 +276,7 @@ Mit dem in diesem Schritt erstellten Datenfluss wird für das Dataset „TripDat
 
 1. Wählen Sie die Kachel **Azure Synapse Analytics** aus, und klicken Sie auf „Weiter“.
 
-    ![Portal: Senke 3](media/lab-data-flow-data-share/sink3.png)
+    ![Portal: Senke 3](media/lab-data-flow-data-share/sink-3.png)
 1. Geben Sie Ihrem Dataset den Namen „AggregatedTaxiData“. Wählen Sie „SQLDW“ als verknüpften Dienst aus. Wählen Sie **Neue Tabelle erstellen** aus, und geben Sie der neuen Tabelle den Namen „dbo.AggregateTaxiData“. Klicken Sie anschließend auf „OK“.
 
     ![Portal: Senke 4](media/lab-data-flow-data-share/sink4.png)

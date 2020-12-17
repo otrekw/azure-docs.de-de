@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 05/14/2018
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 0abe13c7c6a9f26746278aeede199a0860a54c0d
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3f1dacb57931913edfb181f023bdf98717777d50
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92779543"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562241"
 ---
 # <a name="tutorial-add-azure-cdn-to-an-azure-app-service-web-app"></a>Tutorial: Hinzufügen von Azure CDN zu einer Azure App Service-Web-App
 
@@ -49,7 +49,7 @@ Für dieses Tutorial benötigen Sie Folgendes:
 
 ## <a name="create-the-web-app"></a>Erstellen der Web-App
 
-Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) bis zum Schritt **Navigieren zur App** .
+Befolgen Sie zum Erstellen der Web-App, die Sie verwenden werden, die Anleitung unter [Erstellen einer statischen HTML-Web-App in Azure in fünf Minuten](../app-service/quickstart-html.md) bis zum Schritt **Navigieren zur App**.
 
 ## <a name="log-in-to-the-azure-portal"></a>Anmelden beim Azure-Portal
 
@@ -64,7 +64,7 @@ Wählen Sie im Navigationsbereich auf der linken Seite die Option **App Services
 
 ![Auswählen der App Service-App im Portal](media/cdn-add-to-web-app/portal-select-app-services.png)
 
-Wählen Sie auf der Seite **App Service** im Abschnitt **Einstellungen** die Option **Netzwerk > Azure CDN für Ihre App konfigurieren** .
+Wählen Sie auf der Seite **App Service** im Abschnitt **Einstellungen** die Option **Netzwerk > Azure CDN für Ihre App konfigurieren**.
 
 ![Auswählen des CDN im Portal](media/cdn-add-to-web-app/portal-select-cdn.png)
 
@@ -80,7 +80,7 @@ Geben Sie auf der Seite **Azure Content Delivery Network** die Einstellungen fü
 
 Wählen Sie **Erstellen** aus, um ein CDN-Profil zu erstellen.
 
-Azure erstellt das Profil und den Endpunkt. Der neue Endpunkt wird in der Liste **Endpunkte** angezeigt. Nach seiner Bereitstellung lautet der Status **Wird ausgeführt** .
+Azure erstellt das Profil und den Endpunkt. Der neue Endpunkt wird in der Liste **Endpunkte** angezeigt. Nach seiner Bereitstellung lautet der Status **Wird ausgeführt**.
 
 ![Neuer Endpunkt in der Liste](media/cdn-add-to-web-app/portal-new-endpoint-in-list.png)
 
@@ -88,10 +88,10 @@ Azure erstellt das Profil und den Endpunkt. Der neue Endpunkt wird in der Liste 
 
  Der Endpunkt kann nicht sofort verwendet werden, da die Verteilung der Registrierung über das CDN eine Weile dauern kann: 
    - Bei Profilen vom Typ **Azure CDN Standard von Microsoft** ist die Weitergabe in der Regel in zehn Minuten abgeschlossen. 
-   - Bei **Azure CDN Standard von Akamai** -Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
+   - Bei **Azure CDN Standard von Akamai**-Profilen ist die Weitergabe in der Regel in einer Minute abgeschlossen. 
    - Bei Profilen vom Typ **Azure CDN Standard von Verizon** und **Azure CDN Premium von Verizon** ist die Weitergabe in der Regel in 90 Minuten abgeschlossen. 
 
-Die Beispiel-App enthält die Datei *index.html* und die Ordner *css* , *img* und *js* mit anderen statischen Objekten. Die Inhaltspfade für alle diese Dateien sind auf dem CDN-Endpunkt gleich. Beispielsweise wird mit beiden folgenden URLs auf die Datei *bootstrap.css* im Ordner *css* zugegriffen:
+Die Beispiel-App enthält die Datei *index.html* und die Ordner *css*, *img* und *js* mit anderen statischen Objekten. Die Inhaltspfade für alle diese Dateien sind auf dem CDN-Endpunkt gleich. Beispielsweise wird mit beiden folgenden URLs auf die Datei *bootstrap.css* im Ordner *css* zugegriffen:
 
 ```
 http://<appname>.azurewebsites.net/css/bootstrap.css
@@ -125,7 +125,7 @@ In diesem Abschnitt des Tutorials stellen Sie eine Änderung für die Web-App be
 
 ### <a name="deploy-a-change-to-the-web-app"></a>Bereitstellen einer Änderung für die Web-App
 
-Öffnen Sie die Datei *index.html* , und fügen Sie der Überschrift H1 den Zusatz *- V2* hinzu. Dies ist im folgenden Beispiel dargestellt: 
+Öffnen Sie die Datei *index.html*, und fügen Sie der Überschrift H1 den Zusatz *- V2* hinzu. Dies ist im folgenden Beispiel dargestellt: 
 
 ```
 <h1>Azure App Service - Sample Static HTML Site - V2</h1>
@@ -135,7 +135,7 @@ In diesem Abschnitt des Tutorials stellen Sie eine Änderung für die Web-App be
 
 ```bash
 git commit -am "version 2"
-git push azure master
+git push azure main
 ```
 
 Navigieren Sie nach Abschluss der Bereitstellung zur Web-App-URL. Die Änderung wird angezeigt.
@@ -172,7 +172,7 @@ Wählen Sie oben auf der Seite **Endpunkt** die Option **Bereinigen** aus.
 
 Geben Sie die Inhaltspfade ein, die Sie bereinigen möchten. Sie können einen vollständigen Dateipfad übergeben, um eine einzelne Datei zu bereinigen, oder ein Pfadsegment, um den gesamten Inhalt eines Ordners zu bereinigen und zu aktualisieren. Da Sie *index.html* geändert haben, stellen Sie sicher, dass sich die Datei unter einem der Pfade befindet.
 
-Wählen Sie am unteren Rand der Seite die Option **Bereinigen** .
+Wählen Sie am unteren Rand der Seite die Option **Bereinigen**.
 
 ![Seite „Bereinigen“](media/cdn-add-to-web-app/app-service-web-purge-cdn.png)
 
@@ -206,9 +206,9 @@ In diesem Abschnitt des Tutorials ändern Sie das Zwischenspeicherverhalten, sod
 
 ### <a name="change-the-cache-behavior"></a>Ändern des Cacheverhaltens
 
-Wählen Sie im Azure-Portal auf der Seite **CDN-Endpunkt** die Option **Cache** .
+Wählen Sie im Azure-Portal auf der Seite **CDN-Endpunkt** die Option **Cache**.
 
-Wählen Sie in der Dropdownliste **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** die Option **Jede eindeutige URL zwischenspeichern** .
+Wählen Sie in der Dropdownliste **Verhalten für das Zwischenspeichern von Abfragezeichenfolgen** die Option **Jede eindeutige URL zwischenspeichern**.
 
 Wählen Sie **Speichern** aus.
 
@@ -226,11 +226,11 @@ Azure CDN gibt den aktuellen Inhalt der Web-App zurück, der in der Überschrift
 
 Aktualisieren Sie die Seite, um sicherzustellen, dass diese Seite im CDN zwischengespeichert ist. 
 
-Öffnen Sie *index.html* , ändern Sie *V2* in *V3* , und stellen Sie dann die Änderung bereit. 
+Öffnen Sie *index.html*, ändern Sie *V2* in *V3*, und stellen Sie dann die Änderung bereit. 
 
 ```bash
 git commit -am "version 3"
-git push azure master
+git push azure main
 ```
 
 Navigieren Sie in einem Browser mit einer neuen Abfragezeichenfolge, z.B. `q=2`, zur CDN-Endpunkt-URL. Azure CDN ruft die aktuelle Datei *index.html* ab und zeigt *V3* an. Wenn Sie dagegen mit der Abfragezeichenfolge `q=1` zum CDN-Endpunkt navigieren, wird *V2* angezeigt.

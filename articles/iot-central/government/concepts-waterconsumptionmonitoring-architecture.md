@@ -3,20 +3,18 @@ title: Referenzarchitektur für eine mit Azure IoT Central erstellte Lösung zur
 description: Enthält eine Beschreibung der Konzepte einer Lösung zur Überwachung des Wasserverbrauchs, die mit Azure IoT Central erstellt wurde.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: df402064f2aa26e29ef72c0f73f8f5aa761506e2
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: a291a32c8fd635c9124a7e1f997b6c676c8c0bd4
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873558"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586787"
 ---
 # <a name="water-consumption-monitoring-reference-architecture"></a>Überwachung des Wasserverbrauchs: Referenzarchitektur 
-
-
 
 Die Lösung für die Überwachung des Wasserverbrauchs kann mit der **Azure IoT Central-App-Vorlage** als Einstieg in IoT-Anwendungen erstellt werden. Dieser Artikel enthält einen Leitfaden mit einer allgemeinen Referenzarchitektur für die Entwicklung einer Komplettlösung. 
 
@@ -26,8 +24,8 @@ Konzepte:
 
 1. Geräte und Konnektivität  
 1. IoT Central 
-2. Erweiterbarkeit und Integrationen
-3. Geschäftsanwendungen
+1. Erweiterbarkeit und Integrationen
+1. Geschäftsanwendungen
 
 Wir werfen nun einen Blick auf Schlüsselkomponenten, die bei einer Lösung zur Überwachung des Wasserverbrauchs in der Regel eine Rolle spielen.
 

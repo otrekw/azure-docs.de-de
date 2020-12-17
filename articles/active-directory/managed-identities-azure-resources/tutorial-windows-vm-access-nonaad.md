@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/03/2020
+ms.date: 12/10/2020
 ms.author: barclayn
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa17a18de8e71b099d6ed717974486203c4379f4
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 668d3cb044512220ff7afbc165c77da704a9a5d7
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96180505"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107514"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Tutorial: Verwenden der systemseitig zugewiesenen verwalteten Identität eines virtuellen Windows-Computers für den Zugriff auf Azure Key Vault 
 
@@ -61,6 +61,20 @@ Zunächst müssen Sie eine Key Vault-Instanz erstellen und der systemseitig zuge
 1. Wählen Sie **Überprüfen + erstellen** aus.
 1. Klicken Sie auf **Erstellen**
 
+### <a name="create-a-secret"></a>Erstellen eines Geheimnisses
+
+Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
+
+1. Navigieren Sie zur neu erstellten Key Vault-Instanz.
+1. Wählen Sie **Geheimnisse** aus, und klicken Sie auf **Hinzufügen**.
+1. Wählen Sie die Option **Generieren/importieren** aus.
+1. Lassen Sie auf dem Bildschirm **Geheimnis erstellen** unter **Uploadoptionen** die Option **Manuell** ausgewählt.
+1. Geben Sie einen Namen und einen Wert für das Geheimnis ein.  Dabei kann es sich um einen beliebigen Wert handeln. 
+1. Lassen Sie das Aktivierungs- und das Ablaufdatum leer, und übernehmen Sie für **Aktiviert** die ausgewählte Option **Ja**. 
+1. Klicken Sie auf **Erstellen**, um das Geheimnis zu erstellen.
+
+   ![Erstellen eines Geheimnisses](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
+
 ## <a name="grant-access"></a>Gewähren von Zugriff
 
 Der vom virtuellen Computer verwalteten Identität muss Zugriff gewährt werden, damit sie das in Key Vault gespeicherte Geheimnis lesen kann.
@@ -76,19 +90,6 @@ Der vom virtuellen Computer verwalteten Identität muss Zugriff gewährt werden,
 1. Wählen Sie **Hinzufügen** aus.
 1. Wählen Sie **Speichern** aus.
 
-## <a name="create-a-secret"></a>Erstellen eines Geheimnisses
-
-Fügen Sie als Nächstes der Key Vault-Instanz ein Geheimnis hinzu, das Sie später mithilfe von Code abrufen können, der auf dem virtuellen Computer ausgeführt wird. Im Rahmen dieses Tutorials wird PowerShell verwendet. Die gleichen Konzepte gelten jedoch für jeden Code, der auf diesem virtuellen Computer ausgeführt wird.
-
-1. Navigieren Sie zur neu erstellten Key Vault-Instanz.
-1. Wählen Sie **Geheimnisse** aus, und klicken Sie auf **Hinzufügen**.
-1. Wählen Sie die Option **Generieren/importieren** aus.
-1. Lassen Sie auf dem Bildschirm **Geheimnis erstellen** unter **Uploadoptionen** die Option **Manuell** ausgewählt.
-1. Geben Sie einen Namen und einen Wert für das Geheimnis ein.  Dabei kann es sich um einen beliebigen Wert handeln. 
-1. Lassen Sie das Aktivierungs- und das Ablaufdatum leer, und übernehmen Sie für **Aktiviert** die ausgewählte Option **Ja**. 
-1. Klicken Sie auf **Erstellen**, um das Geheimnis zu erstellen.
-
-   ![Erstellen eines Geheimnisses](./media/msi-tutorial-windows-vm-access-nonaad/create-secret.png)
 
 ## <a name="access-data"></a>Zugreifen auf Daten  
 

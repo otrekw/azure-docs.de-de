@@ -7,12 +7,12 @@ services: azure-monitor
 ms.topic: sample
 ms.date: 05/18/2020
 ms.subservice: alerts
-ms.openlocfilehash: 4340bd0ffc4a060b1eb8884efa8078aaf18e1e28
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: c05f9a326fcbe75a3348e58987d57e106094cf56
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92893980"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97510565"
 ---
 # <a name="resource-manager-template-samples-for-metric-alert-rules-in-azure-monitor"></a>Beispiele für Resource Manager-Vorlagen für Metrikwarnungsregeln in Azure Monitor
 
@@ -343,7 +343,7 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.json“ für d
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "type": "string",
             "defaultValue": "",
             "metadata": {
@@ -480,7 +480,7 @@ Speichern Sie den JSON-Code unten als „simpledynamicmetricalert.json“ für d
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
-    "ignoreDataBefore": {
+        "ignoreDataBefore": {
             "value": ""
         },
         "timeAggregation": {
@@ -502,7 +502,7 @@ Für das Verwenden von Dimensionen in einer Warnungsregel, die mehrere Kriterien
 - Innerhalb jedes Kriteriums können Sie nur einen Wert pro Dimension auswählen.
 - Sie können „\*“ nicht als Dimensionswert verwenden.
 - Wenn Metriken, die in verschiedenen Kriterien konfiguriert sind, dieselbe Dimension unterstützen, dann muss auf gleiche Weise ein konfigurierter Dimensionswert explizit für alle diese Metriken in den relevanten Kriterien festgelegt werden.
-    - Im untenstehenden Beispiel muss *criterion2* für die Dimension *ApiName* auch einen **„GetBlob“** -Wert festlegen, da die Metriken **Transactions** und **SuccessE2ELatency** beide eine  **ApiName** -Dimension haben, und *criterion1* den *„GetBlob“* -Wert für die Dimension **ApiName** angibt.
+    - Im untenstehenden Beispiel muss *criterion2* für die Dimension *ApiName* auch einen **„GetBlob“** -Wert festlegen, da die Metriken **Transactions** und **SuccessE2ELatency** beide eine  **ApiName**-Dimension haben, und *criterion1* den *„GetBlob“* -Wert für die Dimension **ApiName** angibt.
 
 ### <a name="template-file"></a>Vorlagendatei
 
@@ -708,14 +708,14 @@ Für das Verwenden von Dimensionen in einer Warnungsregel, die mehrere Kriterien
 Mit einer einzelnen Warnungsregel können mehrere metrische Zeitreihen gleichzeitig überwacht werden, sodass weniger Warnungsregeln zu verwalten sind. Im folgenden Beispiel wird eine statische Metrikwarnungsregel für dimensionale Metriken erstellt.
 
 In diesem Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType** : Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **ResponseType** , einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
-2. **ApiName** : Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+1. **ResponseType**: Die Verwendung des Platzhalters „\*“ bedeutet, dass für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, eine andere Zeitreihe einzeln überwacht wird.
+2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
-- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
-- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 ### <a name="template-file"></a>Vorlagendatei
 
@@ -875,7 +875,7 @@ Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser 
                             "values": ["*"]
                         },
                         {
-                "name":"ApiName",
+                            "name":"ApiName",
                             "operator": "Include",
                             "values": ["GetBlob", "PutBlob"]    
                         }
@@ -899,14 +899,14 @@ Eine einzige Warnungsregel mit dynamischem Schwellenwert kann angepasste Schwell
 
 
 In diesem Beispiel werden mit der Warnungsregel die Wertekombinationen der Dimensionen **ResponseType** und **ApiName** für die Metrik **Transactions** überwacht:
-1. **ResponseType** : Für jeden Wert der Dimension **ResponseType** , einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
-2. **ApiName** : Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
+1. **ResponseType**: Für jeden Wert der Dimension **ResponseType**, einschließlich zukünftiger Werte, wird eine andere Zeitreihe einzeln überwacht.
+2. **ApiName**: Eine andere Zeitreihe wird nur für die Dimensionswerte **GetBlob** und **PutBlob** überwacht.
 
 Nachfolgend sind einige der potenziellen Zeitreihen aufgeführt, die von dieser Warnungsregel überwacht werden:
-- Metric = *Transactions* , ResponseType = *Success* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Success* , ApiName = *PutBlob*
-- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *GetBlob*
-- Metric = *Transactions* , ResponseType = *Server Timeout* , ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Success*, ApiName = *PutBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *GetBlob*
+- Metric = *Transactions*, ResponseType = *Server Timeout*, ApiName = *PutBlob*
 
 >[!NOTE]
 > Für Metrikwarnungsregeln mit dynamischem Schwellenwert werden derzeit mehrere Kriterien nicht unterstützt.

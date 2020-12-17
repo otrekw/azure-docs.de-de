@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 11/05/2019
 ms.author: sngun
 ms.custom: devx-track-js
-ms.openlocfilehash: f7b7b8c7b1106bd3c0a6732867946c42df8438c1
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 49cf54bda985f7d97b2db6a3ada7859aee829cff
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93097276"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359539"
 ---
 # <a name="tutorial-build-a-nodejs-web-app-using-the-javascript-sdk-to-manage-a-sql-api-account-in-azure-cosmos-db"></a>Tutorial: Erstellen einer Node.js-Web-App mit dem JavaScript SDK zum Verwalten eines SQL API-Kontos in Azure Cosmos DB 
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -71,7 +71,7 @@ Nun erfahren Sie, wie Sie ein einfaches „Hallo Welt“-Node.js-Projekt mithilf
    express todo
    ```
 
-1. Öffnen Sie das Verzeichnis **todo** , und installieren Sie die Abhängigkeiten.
+1. Öffnen Sie das Verzeichnis **todo**, und installieren Sie die Abhängigkeiten.
 
    ```bash
    cd todo
@@ -108,7 +108,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 2. Erstellen Sie im Verzeichnis **models** eine neue Datei namens **taskDao.js**. Diese Datei enthält den erforderlichen Code zum Erstellen der Datenbank und des Containers. Sie definiert auch Methoden zum Lesen, Aktualisieren, Erstellen und Finden von Aufgaben in Azure Cosmos DB. 
 
-3. Kopieren Sie den folgenden Code in die Datei **taskDao.js** :
+3. Kopieren Sie den folgenden Code in die Datei **taskDao.js**:
 
    ```javascript
     // @ts-check
@@ -191,7 +191,7 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 1. Erstellen Sie im Verzeichnis **routes** des Projekts eine neue Datei namens **tasklist.js**.  
 
-2. Fügen Sie **tasklist.js** den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList** , die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
+2. Fügen Sie **tasklist.js** den folgenden Code hinzu. Dieser Code lädt die Module „CosmosClient“ und „async“, die von **tasklist.js** verwendet werden. Des Weiteren definiert er die Klasse **TaskList**, die als Instanz des zuvor definierten Objekts **TaskDao** übergeben wird:
    
    ```javascript
     const TaskDao = require("../models/TaskDao");
@@ -362,9 +362,9 @@ Sie haben die Ersteinrichtung und -konfiguration abgeschlossen und schreiben als
 
 Als Nächstes erstellen wir die Benutzeroberfläche, damit Benutzer mit der Anwendung interagieren können. Die im vorherigen Abschnitt erstellte Express-Anwendung verwendet **Jade** als Anzeige-Engine.
 
-1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade** -Dateien. Sie wird in diesem Schritt bearbeitet, um Twitter Bootstrap zu verwenden – ein Toolkit für die Websitegestaltung.  
+1. Die Datei **layout.jade** im Verzeichnis **views** dient als globale Vorlage für andere **.jade**-Dateien. Sie wird in diesem Schritt bearbeitet, um Twitter Bootstrap zu verwenden – ein Toolkit für die Websitegestaltung.  
 
-2. Öffnen Sie die Datei **layout.jade** (im Ordner **views** ), und ersetzen Sie die Inhalte durch folgenden Code:
+2. Öffnen Sie die Datei **layout.jade** (im Ordner **views**), und ersetzen Sie die Inhalte durch folgenden Code:
 
    ```html
    doctype html
@@ -382,7 +382,7 @@ Als Nächstes erstellen wir die Benutzeroberfläche, damit Benutzer mit der Anwe
        script(src='//ajax.aspnetcdn.com/ajax/bootstrap/3.3.2/bootstrap.min.js')
    ```
 
-    Dieser Code weist die **Jade-Engine** an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content** , in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade**.
+    Dieser Code weist die **Jade-Engine** an, einige HTML-Elemente für unsere Anwendung darzustellen, und erstellt einen **Block** mit der Bezeichnung **content**, in dem wir das Layout für unsere Inhaltsseiten angeben können. Speichern und schließen Sie die Datei **layout.jade**.
 
 3. Öffnen Sie nun die Datei **index.jade** (die Ansicht, die von der Anwendung verwendet wird), und ersetzen Sie den Inhalt der Datei durch den folgenden Code:
 
@@ -470,7 +470,7 @@ Nachdem Ihre Anwendung lokal erfolgreich ausgeführt wurde, können Sie sie mit 
 3. Pushen Sie die Anwendung an die Remoteinstanz, um sie bereitzustellen.
    
    ```bash
-   git push azure master
+   git push azure main
    ```
 
 4. Wenige Sekunden später wird Ihre Webanwendung veröffentlicht und in einem Browser gestartet.

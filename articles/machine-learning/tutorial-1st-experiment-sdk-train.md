@@ -11,12 +11,12 @@ ms.author: amsaied
 ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
-ms.openlocfilehash: 17bf7b3f457ff6046d92012ffd679ed4b9315530
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.openlocfilehash: a2f76df05878151405d56b1bff5e588f426d9d92
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96574121"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093552"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Tutorial: Trainieren Ihres ersten Machine Learning-Modells (Teil 3 von 4)
 
@@ -133,7 +133,7 @@ Erstellen Sie eine neue Python-Datei im Verzeichnis `tutorial` mit dem Namen `04
 :::row-end:::
 
 > [!div class="nextstepaction"]
-> [Ich habe das Steuerungsskript erstellt.](?success=control-script#submit) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQ?issue=control-script)
+> [Ich habe das Steuerungsskript erstellt.](?success=control-script#submit) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=control-script)
 
 
 ## <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit"></a> Senden der Ausführung an Azure Machine Learning
@@ -186,7 +186,7 @@ Azure Machine Learning bietet auch eine Sammlung zusammengestellter Umgebungen. 
 Kurz gesagt: Mit registrierten Umgebungen können Sie Zeit sparen. Weitere Informationen finden Sie unter [Verwenden von Umgebungen](./how-to-use-environments.md).
 
 > [!div class="nextstepaction"]
-> [Ich habe die Ausführung übermittelt.](?success=test-w-environment#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQ?issue=test-w-environment)
+> [Ich habe die Ausführung übermittelt.](?success=test-w-environment#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=test-w-environment)
 
 ## <a name="log-training-metrics"></a><a name="log"></a> Protokollieren von Trainingsmetriken
 
@@ -221,7 +221,7 @@ Vorteile der Metriken in Azure Machine Learning:
 - Sie sind skalierbar konzipiert, sodass Sie auch bei Hunderten von Experimenten von diesen Vorteilen profitieren.
 
 > [!div class="nextstepaction"]
-> [Ich habe „train.py“ geändert. ](?success=modify-train#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQ?issue=modify-train)
+> [Ich habe „train.py“ geändert. ](?success=modify-train#log) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=modify-train)
 
 ### <a name="update-the-conda-environment-file"></a>Aktualisieren der Conda-Umgebungsdatei
 
@@ -230,7 +230,7 @@ Das `train.py`-Skript weist eine neue Abhängigkeit von `azureml.core` auf. Aktu
 :::code language="python" source="~/MachineLearningNotebooks/tutorials/get-started-day1/configuration/pytorch-aml-env.yml":::
 
 > [!div class="nextstepaction"]
-> [Ich habe die Umgebungsdatei aktualisiert.](?success=update-environment#submit-again) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQ?issue=update-environment)
+> [Ich habe die Umgebungsdatei aktualisiert.](?success=update-environment#submit-again) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=update-environment)
 
 ### <a name="submit-the-run-to-azure-machine-learning"></a><a name="submit-again"></a> Senden der Ausführung an Azure Machine Learning
 Übermitteln Sie dieses Skript noch einmal:
@@ -244,7 +244,7 @@ Bei diesem Zugriff auf Studio öffnen Sie die Registerkarte **Metriken**, auf de
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="Diagramm: Trainingsverlust auf der Registerkarte „Metriken“":::
 
 > [!div class="nextstepaction"]
-> [Ich habe die Ausführung erneut übermittelt.](?success=resubmit-with-logging#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQ?issue=resubmit-with-logging)
+> [Ich habe die Ausführung erneut übermittelt.](?success=resubmit-with-logging#next-steps) [Es ist ein Problem aufgetreten.](https://www.research.net/r/7CTJQQN?issue=resubmit-with-logging)
 
 ## <a name="next-steps"></a>Nächste Schritte
 

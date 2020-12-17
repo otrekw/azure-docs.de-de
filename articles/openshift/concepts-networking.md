@@ -6,12 +6,12 @@ ms.author: suvetriv
 ms.topic: tutorial
 ms.service: container-service
 ms.date: 11/23/2020
-ms.openlocfilehash: 2d9169e836b5819756e716c64ed9d41094f08c5e
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 9cfe8c7e7d2484649bf458524032365b692c9243
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512363"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093518"
 ---
 # <a name="network-concepts-for-azure-red-hat-openshift-aro"></a>Netzwerkkonzepte für Azure Red Hat OpenShift (ARO)
 
@@ -76,7 +76,7 @@ Bei den folgenden Punkten handelt es sich um spezifische Netzwerkfeatures für A
 * Pod-CIDR muss eine Mindestgröße von /18 haben. (Beim Podnetzwerk handelt es sich um nicht routingfähige IP-Adressen, und es wird ausschließlich innerhalb von OpenShift SDN verwendet.)
 * Jedem Knoten wird ein Subnetz vom Typ „/23“ (512 IP-Adressen) für die zugehörigen Pods zugewiesen. Dieser Wert kann nicht geändert werden.
 * Ein Pod kann nicht an mehrere Netzwerke angefügt werden.
-* Es kann keine statische IP-Adresse für ausgehenden Datenverkehr konfiguriert werden. (Hierbei handelt es sich um ein OpenShift-Feature. Weitere Informationen finden Sie unter [Konfigurieren von IP-Adressen für ausgehenden Datenverkehr](https://docs.openshift.com/aro/4/networking/openshift_sdn/assigning-egress-ips.html).)
+* Es kann keine statische IP-Adresse für ausgehenden Datenverkehr konfiguriert werden. (Hierbei handelt es sich um ein OpenShift-Feature. Weitere Informationen finden Sie unter [Konfigurieren von IP-Adressen für ausgehenden Datenverkehr](https://docs.openshift.com/container-platform/4.5/networking/openshift_sdn/assigning-egress-ips.html).)
 
 ## <a name="network-settings"></a>Netzwerkeinstellungen
 

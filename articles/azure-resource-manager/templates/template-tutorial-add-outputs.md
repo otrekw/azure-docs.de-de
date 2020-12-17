@@ -6,12 +6,12 @@ ms.date: 03/27/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.custom: ''
-ms.openlocfilehash: e55638e20bceb6df4b8e74375d67836123167162
-ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
+ms.openlocfilehash: 7acfb168462354017168ee333ea0b1ecaea434c1
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96931740"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107123"
 ---
 # <a name="tutorial-add-outputs-to-your-arm-template"></a>Tutorial: Hinzufügen von Ausgaben zu Ihrer ARM-Vorlage
 
@@ -41,17 +41,17 @@ Im folgenden Beispiel ist die Änderung hervorgehoben, die Sie vornehmen, um Ihr
 
 Beachten Sie bezüglich des von Ihnen hinzugefügten Ausgabewerts folgende wichtige Punkte.
 
-Der Typ des Rückgabewerts ist auf **object** festgelegt, d. h. es wird ein JSON-Objekt zurückgegeben.
+Der Typ des Rückgabewerts ist auf `object` festgelegt, d. h. es wird ein JSON-Objekt zurückgegeben.
 
 Der Laufzeitstatus des Speicherkontos wird mithilfe der Funktion [reference](template-functions-resource.md#reference) abgerufen. Um den Laufzeitstatus einer Ressource abzurufen, übergeben Sie den Namen oder die ID der Ressource. In diesem Fall verwenden Sie die Variable, die Sie zum Erstellen des Speicherkontonamens verwendet haben.
 
-Am Ende wird die Eigenschaft **primaryEndpoints** des Speicherkontos zurückgegeben.
+Am Ende wird die Eigenschaft `primaryEndpoints` des Speicherkontos zurückgegeben.
 
 ## <a name="deploy-template"></a>Bereitstellen der Vorlage
 
 Jetzt können Sie die Vorlage bereitstellen und sich den zurückgegebenen Wert ansehen.
 
-Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable **templateFile** wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
+Falls Sie die Ressourcengruppe noch nicht erstellt haben, folgen Sie den Anweisungen unter [Erstellen einer Ressourcengruppe](template-tutorial-create-first-template.md#create-resource-group). Dieses Beispiel setzt voraus, dass Sie die Variable `templateFile` wie im [ersten Tutorial](template-tutorial-create-first-template.md#deploy-template) beschrieben auf den Pfad zur Vorlagendatei festgelegt haben.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -92,7 +92,7 @@ Die Ausgabe für den Bereitstellungsbefehl enthält ein ähnliches Objekt wie im
 ```
 
 > [!NOTE]
-> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter **verbose**, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter **debug**, um weitere Informationen zum Debuggen zu erhalten.
+> Wenn bei der Bereitstellung ein Fehler aufgetreten ist, verwenden Sie den Schalter `verbose`, um Informationen zu den erstellten Ressourcen abzurufen. Verwenden Sie den Schalter `debug`, um weitere Informationen zum Debuggen zu erhalten.
 
 ## <a name="review-your-work"></a>Überprüfen Ihrer Arbeit
 

@@ -3,20 +3,18 @@ title: Referenzarchitektur für die mit Azure IoT Central erstellte Lösung für
 description: Lernen Sie Konzepte der mit Azure IoT Central erstellten Lösung für vernetzte Abfallwirtschaft kennen.
 author: miriambrus
 ms.author: miriamb
-ms.date: 10/23/2019
+ms.date: 12/11/2020
 ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 93a5d17ce5ea5ec60c67604efe5081d2b3425a84
-ms.sourcegitcommit: 642988f1ac17cfd7a72ad38ce38ed7a5c2926b6c
+ms.openlocfilehash: 94098a1a2a9ac1b4889ad165a65c8b9d50d734dd
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94873691"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97586804"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Überwachung für vernetzte Abfallwirtschaft: Referenzarchitektur 
-
-
 
 Eine Lösung für vernetzte Abfallwirtschaft kann mit der **App-Vorlage „Azure IoT Central“** als Ausgangspunkt für IoT-Anwendungen entwickelt werden. Dieser Artikel enthält einen Leitfaden mit einer allgemeinen Referenzarchitektur für die Entwicklung einer Komplettlösung. 
 
@@ -27,8 +25,8 @@ Konzepte:
 
 1. Geräte und Konnektivität  
 1. IoT Central 
-2. Erweiterbarkeit und Integrationen
-3. Geschäftsanwendungen
+1. Erweiterbarkeit und Integrationen
+1. Geschäftsanwendungen
 
 Wir werfen nun einen Blick auf Schlüsselkomponenten, die bei einer Lösung zur Überwachung des Wasserverbrauchs in der Regel eine Rolle spielen.
 
