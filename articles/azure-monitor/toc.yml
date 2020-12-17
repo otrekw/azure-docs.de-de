@@ -546,6 +546,8 @@
           items:
             - name: IT Service Management Connector
               href: platform/itsmc-overview.md
+            - name: 'ITSM-Connector: Definition'
+              href: platform/itsmc-definition.md
             - name: IT Service Management-Verbindungen
               href: platform/itsmc-connections.md
             - name: Erstellen von Service Manager-Web-Apps

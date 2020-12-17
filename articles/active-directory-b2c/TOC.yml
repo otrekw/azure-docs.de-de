@@ -119,6 +119,22 @@
           href: signin-appauth-ios.md
         - name: Android mit App-Authentifizierung
           href: signin-appauth-android.md
+    - name: Erstellen eines Datenflusses
+      items:
+        - name: Registrierungs- oder Anmelderichtlinie
+          href: add-sign-up-and-sign-in-policy.md
+        - name: Kennwortrücksetzungsrichtlinie
+          href: add-password-reset-policy.md
+        - name: Kennwortänderungsrichtlinie
+          href: add-password-change-policy.md
+        - name: Richtlinie zur Profilbearbeitung
+          href: add-profile-editing-policy.md
+        - name: Richtlinie für Kennwortanmeldeinformationen des Ressourcenbesitzers
+          href: add-ropc-policy.md
+        - name: Einrichten der Richtlinie für die Self-Service-Kennwortzurücksetzung (veraltet)
+          href: user-flow-self-service-password-reset.md
+        - name: Registrieren und Anmelden per Telefon
+          href: phone-authentication-user-flows.md
     - name: Identitätsanbieter
       items:
         - name: Hinzufügen eines Identitätsanbieters
@@ -192,38 +208,18 @@
           href: conditional-access-user-flow.md
     - name: Konfigurieren einer Altersbeschränkung
       href: basic-age-gating.md
-    - name: Benutzerflow
+    - name: API-Connectors (Vorschau)
       items:
-        - name: Erstellen eines Datenflusses
-          items:
-            - name: Registrierung oder Anmeldung
-              href: tutorial-create-user-flows.md
-            - name: Kennwortanmeldeinformationen des Ressourcenbesitzers
-              href: configure-ropc.md
-            - name: Einrichten der Self-Service-Kennwortzurücksetzung
-              href: user-flow-self-service-password-reset.md
-        - name: API-Connectors (Vorschau)
-          items:
-            - name: Übersicht
-              href: api-connectors-overview.md
-            - name: Hinzufügen eines API-Connectors
-              href: add-api-connector.md
+        - name: Übersicht
+          href: api-connectors-overview.md
+        - name: Hinzufügen eines API-Connectors
+          href: add-api-connector.md
     - name: Benutzerdefinierte Richtlinie
       items:
         - name: Übersicht über benutzerdefinierte Richtlinien
           href: custom-policy-trust-frameworks.md
         - name: Erste Schritte mit benutzerdefinierten Richtlinien
           href: custom-policy-get-started.md
-        - name: Erstellen einer Richtlinie
-          items:
-            - name: Kennwortanmeldeinformationen des Ressourcenbesitzers
-              href: ropc-custom.md
-              displayName: ropc
-            - name: Kennwortänderung
-              href: custom-policy-password-change.md
-            - name: Registrieren und Anmelden per Telefon
-              href: phone-authentication.md
-              displayName: 'otp, passwordless, phone number'
         - name: Benutzerdefinierte E-Mail-Überprüfung
           items:
             - name: Mailjet

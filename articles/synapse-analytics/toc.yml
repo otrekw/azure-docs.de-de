@@ -86,8 +86,8 @@
                 - name: SQL-Skript
                   href: ./sql/author-sql-script.md
                   displayname: author
-                - name: Zuordnungsdatenfluss
-                  href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+                - name: Datenfluss
+                  href: concepts-data-flow-overview.md
         - name: Wartungszeitplan
           href: ./sql-data-warehouse/maintenance-scheduling.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Quellcodeverwaltung
@@ -660,8 +660,8 @@
           href: ../data-factory/concepts-integration-runtime.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
         - name: Datenflüsse
           items:
-            - name: Übersicht über die Zuordnung von Datenflüssen
-              href: ../data-factory/concepts-data-flow-overview.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
+            - name: Übersicht über Datenflüsse
+              href: concepts-data-flow-overview.md
             - name: Debugmodus
               href: ../data-factory/concepts-data-flow-debug-mode.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json
             - name: Schemaabweichung
