@@ -53,7 +53,7 @@ In den Beispielen zu Wingtip Tickets SaaS wird der Katalog mithilfe der Shardver
 Eine Shardzuordnung enthält eine Liste mit Shards (Datenbanken) und die Zuordnung zwischen Schlüsseln (Mandanten) und Shards. EDCL-Funktionen werden im Rahmen der Mandantenbereitstellung verwendet, um Einträge in der Shardzuordnung zu erstellen. Sie werden zur Laufzeit von Anwendungen genutzt, um eine Verbindung mit der richtigen Datenbank herzustellen. EDCL speichert Verbindungsinformationen zwischen, um den Datenverkehr für die Katalogdatenbank zu minimieren und die Anwendung zu beschleunigen.
 
 > [!IMPORTANT]
-> Sie können auf die Zuordnungsdaten in der Katalogdatenbank zugreifen, *allerdings sollten Sie sie nicht bearbeiten* . Bearbeiten Sie Zuordnungsdaten nur über EDCL-APIs. Ein direktes Bearbeiten der Zuordnungsdaten birgt das Risiko, den Katalog zu beschädigen, und wird daher nicht unterstützt.
+> Sie können auf die Zuordnungsdaten in der Katalogdatenbank zugreifen, *allerdings sollten Sie sie nicht bearbeiten*. Bearbeiten Sie Zuordnungsdaten nur über EDCL-APIs. Ein direktes Bearbeiten der Zuordnungsdaten birgt das Risiko, den Katalog zu beschädigen, und wird daher nicht unterstützt.
 
 
 ## <a name="introduction-to-the-saas-provisioning-pattern"></a>Einführung in das SaaS-Bereitstellungsmuster
@@ -66,7 +66,7 @@ Die Datenbankbereitstellung muss Teil Ihrer Schemaverwaltungsstrategie sein. Sie
 
 Die Wingtip Tickets-App mit einer Datenbank pro Mandant stellt neue Mandanten bereit, indem sie eine auf dem Katalogserver bereitgestellte Vorlagendatenbank namens _basetenantdb_ kopiert. Die Bereitstellung kann im Rahmen der Registrierung in die Anwendung integriert werden. Sie kann auch offline mithilfe von Skripts unterstützt werden. In diesem Tutorial wird die Bereitstellung mithilfe von PowerShell durchgeführt.
 
-Bereitstellungsskripts kopieren die Datenbank _basetenantdb_ , um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Die Mandantendatenbank wird in dem Mandantenserver erstellt, der dem _newtenant_ -DNS-Alias zugeordnet ist. In diesem Alias wird ein Verweis auf den Server verwaltet, mit dem neue Mandanten bereitgestellt werden, und dieser Alias wird aktualisiert, um auf einen Wiederherstellungsmandantenserver in den Tutorials zur Notfallwiederherstellung zu verweisen ([Notfallwiederherstellung mithilfe von Geowiederherstellung](./saas-dbpertenant-dr-geo-restore.md), [Notfallwiederherstellung mithilfe von Georeplikation](./saas-dbpertenant-dr-geo-replication.md)). Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden.
+Bereitstellungsskripts kopieren die Datenbank _basetenantdb_, um eine neue Mandantendatenbank in einem Pool für elastische Datenbanken zu erstellen. Die Mandantendatenbank wird in dem Mandantenserver erstellt, der dem _newtenant_-DNS-Alias zugeordnet ist. In diesem Alias wird ein Verweis auf den Server verwaltet, mit dem neue Mandanten bereitgestellt werden, und dieser Alias wird aktualisiert, um auf einen Wiederherstellungsmandantenserver in den Tutorials zur Notfallwiederherstellung zu verweisen ([Notfallwiederherstellung mithilfe von Geowiederherstellung](./saas-dbpertenant-dr-geo-restore.md), [Notfallwiederherstellung mithilfe von Georeplikation](./saas-dbpertenant-dr-geo-replication.md)). Anschließend wird die Datenbank von den Skripts mit mandantenspezifischen Informationen initialisiert und in der Katalogshardzuordnung registriert. Mandantendatenbanken erhalten ihre Namen auf Grundlage des Mandantennamens. Dieses Benennungsschema ist kein wichtiger Bestandteil des Musters. Da der Katalog den Mandantenschlüssel dem Datenbanknamen zuordnet, kann jede Benennungskonvention verwendet werden.
 
 
 ## <a name="get-the-wingtip-tickets-saas-database-per-tenant-application-scripts"></a>Abrufen der Skripts zur SaaS-Anwendung Wingtip Tickets mit einer Datenbank pro Mandant
@@ -78,11 +78,11 @@ Die Wingtip Tickets SaaS-Skripts und der Quellcode der Anwendung stehen im GitHu
 
 Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer Mandanten implementiert, fügen Sie einen Haltepunkt hinzu, und folgen Sie während der Bereitstellung eines Mandanten dem Workflow.
 
-1. Öffnen Sie in der PowerShell ISE ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_ , und legen Sie die folgenden Parameter fest:
+1. Öffnen Sie in der PowerShell ISE ...\\Learning Modules\\ProvisionAndCatalog\\_Demo-ProvisionAndCatalog.ps1_, und legen Sie die folgenden Parameter fest:
 
-   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues* ).
+   * **$TenantName** = Name des neuen Veranstaltungsorts (z.B., *Bushwillow Blues*).
    * **$VenueType** = einer der vordefinierten Veranstaltungsorttypen: _blues, classicalmusic, dance, jazz, judo, motor racing, multipurpose, opera, rockmusic, soccer_
-   * **$DemoScenario** = **1** , *Bereitstellen eines einzelnen Mandanten*
+   * **$DemoScenario** = **1**, *Bereitstellen eines einzelnen Mandanten*
 
 2. Zum Hinzufügen eines Haltepunkts bewegen Sie den Cursor an eine beliebige Stelle in der Zeile mit *New-Tenant `* . Drücken Sie dann F9.
 
@@ -96,7 +96,7 @@ Um nachzuvollziehen, wie die Wingtip Tickets-Anwendung die Bereitstellung neuer 
 
 
 
-Verfolgen Sie die Ausführung des Skripts mithilfe der Menüoptionen unter **Debug** . Drücken Sie F10 und F11, um die aufgerufenen Funktionen zu überspringen oder schrittweise auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
+Verfolgen Sie die Ausführung des Skripts mithilfe der Menüoptionen unter **Debug**. Drücken Sie F10 und F11, um die aufgerufenen Funktionen zu überspringen oder schrittweise auszuführen. Weitere Informationen zum Debuggen von PowerShell-Skripts finden Sie unter [Tipps zum Arbeiten mit und Debuggen von PowerShell-Skripts](/powershell/scripting/components/ise/how-to-debug-scripts-in-windows-powershell-ise).
 
 
 Sie müssen diesen Workflow nicht genau befolgen. Er erläutert, wie Sie das Skript debuggen.
@@ -106,15 +106,15 @@ Sie müssen diesen Workflow nicht genau befolgen. Er erläutert, wie Sie das Skr
 * **Rufen Sie Konfigurationsinformationen ab.** Wechseln Sie mit F11 zu „Get-Configuration“, und sehen Sie sich an, wie die App-Konfiguration angegeben ist. Hier sind Ressourcennamen und andere App-spezifische Werte definiert. Ändern Sie diese Werte nicht, es sei denn, sie kennen sich gut mit Skripts aus.
 * **Rufen Sie das Katalogobjekt ab.** Wechseln Sie zu „Get-Catalog“. Hierdurch wird ein im übergeordneten Skript verwendetes Katalogobjekt erstellt und zurückgegeben. Diese Funktion verwendet aus **AzureShardManagement.psm1** importierte Shardverwaltungsfunktionen. Das Katalogobjekt besteht aus den folgenden Elementen:
 
-   * „$catalogServerFullyQualifiedName“ wird aus dem Standardstamm plus Ihrem Benutzernamen gebildet: _catalog-\<user\>.database.windows.net_ .
-   * „$catalogDatabaseName“ wird aus der Konfigurationsdatei abgerufen: *tenantcatalog* .
+   * „$catalogServerFullyQualifiedName“ wird aus dem Standardstamm plus Ihrem Benutzernamen gebildet: _catalog-\<user\>.database.windows.net_.
+   * „$catalogDatabaseName“ wird aus der Konfigurationsdatei abgerufen: *tenantcatalog*.
    * Das Objekt „$shardMapManager“ wird aus der Katalogdatenbank initialisiert.
    * Das Objekt „$shardMap“ wird aus der Shardzuordnung _tenantcatalog_ in der Katalogdatenbank initialisiert. Ein Katalogobjekt wird erstellt und zurückgegeben. Es wird im Skript der höheren Ebene verwendet.
 * **Berechnen Sie den neuen Mandantenschlüssel.** Eine Hashfunktion wird verwendet, um den Mandantenschlüssel aus dem Mandantennamen zu erstellen.
 * **Überprüfen Sie, ob der Mandantenschlüssel bereits vorhanden ist.** Der Katalog wird überprüft, um sicherzustellen, dass der Schlüssel verfügbar ist.
 * **Die Mandantendatenbank wird mit „New-TenantDatabase“ bereitgestellt.** Drücken Sie F11, um zu sehen, wie die Datenbank mithilfe einer [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) bereitgestellt wird.
 
-    Der Datenbankname wird aus dem Mandantennamen gebildet, um zu verdeutlichen, welcher Shard zu welchem Mandanten gehört. Sie können auch andere Benennungskonventionen für Datenbanken verwenden. Mit einer Resource Manager-Vorlage wird eine Mandantendatenbank erstellt, indem eine Vorlagendatenbank ( _baseTenantDB_ ) auf dem Katalogserver kopiert wird. Alternativ können Sie eine Datenbank erstellen und sie durch Importieren einer BACPAC-Datei initialisieren. Sie können auch ein Initialisierungsskript von einem bekannten Speicherort ausführen.
+    Der Datenbankname wird aus dem Mandantennamen gebildet, um zu verdeutlichen, welcher Shard zu welchem Mandanten gehört. Sie können auch andere Benennungskonventionen für Datenbanken verwenden. Mit einer Resource Manager-Vorlage wird eine Mandantendatenbank erstellt, indem eine Vorlagendatenbank (_baseTenantDB_) auf dem Katalogserver kopiert wird. Alternativ können Sie eine Datenbank erstellen und sie durch Importieren einer BACPAC-Datei initialisieren. Sie können auch ein Initialisierungsskript von einem bekannten Speicherort ausführen.
 
     Die Resource Manager-Vorlage befindet sich im Ordner „……\Learning Modules\Common\“: *tenantdatabasecopytemplate.json*
 
@@ -127,7 +127,7 @@ Sie müssen diesen Workflow nicht genau befolgen. Er erläutert, wie Sie das Skr
     * Zusätzliche Metadaten für den Mandanten (Name des Veranstaltungsorts) werden der Mandantentabelle im Katalog hinzugefügt. Die Mandantentabelle ist nicht Teil des Schemas „ShardManagement“ und wird nicht durch die EDCL installiert. Diese Tabelle veranschaulicht, wie die Katalogdatenbank erweitert werden kann, um zusätzliche anwendungsspezifische Daten zu unterstützen.
 
 
-Nach Abschluss der Bereitstellung kehrt die Ausführung zum ursprünglichen *Demo-ProvisionAndCatalog* -Skript zurück. Die Seite **Ereignisse** für den neuen Mandanten wird im Browser geöffnet.
+Nach Abschluss der Bereitstellung kehrt die Ausführung zum ursprünglichen *Demo-ProvisionAndCatalog*-Skript zurück. Die Seite **Ereignisse** für den neuen Mandanten wird im Browser geöffnet.
 
    ![Seite „Ereignisse“](./media/saas-dbpertenant-provision-and-catalog/new-tenant.png)
 
@@ -136,16 +136,16 @@ Nach Abschluss der Bereitstellung kehrt die Ausführung zum ursprünglichen *Dem
 
 In dieser Übung wird ein Batch mit 17 Mandanten bereitgestellt. Wir empfehlen, diesen Mandantenbatch bereitzustellen, bevor Sie mit anderen Tutorials zu Wingtip Tickets SaaS mit einer Datenbank pro Mandant beginnen. Es stehen Ihnen mehrere Datenbanken zur Verfügung.
 
-1. Öffnen Sie in der PowerShell ISE ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1* . Ändern Sie den Parameter *$DemoScenario* in „3“:
+1. Öffnen Sie in der PowerShell ISE ...\\Learning Modules\\ProvisionAndCatalog\\*Demo-ProvisionAndCatalog.ps1*. Ändern Sie den Parameter *$DemoScenario* in „3“:
 
-   * **$DemoScenario** = **3** , *Bereitstellen eines Batches von Mandanten*
+   * **$DemoScenario** = **3**, *Bereitstellen eines Batches von Mandanten*
 2. Drücken Sie F5, um das Skript auszuführen.
 
 Das Skript stellt einen Batch von zusätzlichen Mandanten bereit. Es verwendet eine [Azure Resource Manager-Vorlage](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md), die den Batch steuert und die Bereitstellung der einzelnen Datenbanken an eine verknüpfte Vorlage delegiert. Indem Sie Vorlagen auf diese Weise verwenden, können Sie mit Azure Resource Manager den Bereitstellungsprozess für das Skript vermitteln. Die Vorlagen stellen Datenbanken parallel bereit und verarbeiten nötigenfalls Wiederholungen. Das Skript ist idempotent. Wenn also ein Fehler auftritt oder das Skript aus irgendeinem Grund angehalten wird, führen Sie es erneut aus.
 
 ### <a name="verify-the-batch-of-tenants-that-successfully-deployed"></a>Überprüfen des erfolgreich bereitgestellten Mandantenbatches
 
-* Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Serverliste, und öffnen Sie den Server *tenants1* . Wählen Sie **SQL-Datenbanken** aus, und überprüfen Sie, ob der Batch von 17 zusätzlichen Datenbanken jetzt in der Liste aufgeführt ist.
+* Navigieren Sie im [Azure-Portal](https://portal.azure.com) zur Serverliste, und öffnen Sie den Server *tenants1*. Wählen Sie **SQL-Datenbanken** aus, und überprüfen Sie, ob der Batch von 17 zusätzlichen Datenbanken jetzt in der Liste aufgeführt ist.
 
    ![Datenbankliste](./media/saas-dbpertenant-provision-and-catalog/database-list.png)
 
@@ -155,9 +155,9 @@ Das Skript stellt einen Batch von zusätzlichen Mandanten bereit. Es verwendet e
 
 Weitere Bereitstellungsmuster, die in diesem Tutorial nicht behandelt werden:
 
-**Vorabbereitstellung von Datenbanken** : Die Vorabbereitstellung profitiert von der Tatsache, dass Datenbanken in einem Pool für elastische Datenbanken keine zusätzlichen Kosten hervorrufen. Die Abrechnung erfolgt für den Pool für elastische Datenbanken und nicht für die Datenbanken. Datenbanken im Leerlauf verbrauchen keine Ressourcen. Indem Sie Datenbanken vorab in einem Pool bereitstellen und später bei Bedarf zuordnen, können Sie den Zeitaufwand für das Hinzufügen von Mandanten verringern. Die Anzahl der vorab bereitgestellten Datenbanken kann bedarfsorientiert angepasst werden, um einen für die erwartete Bereitstellungsrate geeigneten Puffer bereitzuhalten.
+**Vorabbereitstellung von Datenbanken**: Die Vorabbereitstellung profitiert von der Tatsache, dass Datenbanken in einem Pool für elastische Datenbanken keine zusätzlichen Kosten hervorrufen. Die Abrechnung erfolgt für den Pool für elastische Datenbanken und nicht für die Datenbanken. Datenbanken im Leerlauf verbrauchen keine Ressourcen. Indem Sie Datenbanken vorab in einem Pool bereitstellen und später bei Bedarf zuordnen, können Sie den Zeitaufwand für das Hinzufügen von Mandanten verringern. Die Anzahl der vorab bereitgestellten Datenbanken kann bedarfsorientiert angepasst werden, um einen für die erwartete Bereitstellungsrate geeigneten Puffer bereitzuhalten.
 
-**Automatische Bereitstellung** : Beim Muster der automatischen Bereitstellung stellt ein Bereitstellungsdienst Server, Pools und Datenbanken bei Bedarf automatisch bereit. Auf Wunsch können Sie die Vorabbereitstellung von Datenbanken in Pools für elastische Datenbanken einbinden. Wenn Datenbanken außer Betrieb genommen und gelöscht werden, können Lücken in den Pools für elastische Datenbanken durch den Bereitstellungsdienst gefüllt werden. Ein solcher Dienst kann einfach oder komplex sein. Die Bereitstellung kann beispielsweise über mehrere geografische Regionen erfolgen und die Georeplikation zur Notfallwiederherstellung eingerichtet werden.
+**Automatische Bereitstellung**: Beim Muster der automatischen Bereitstellung stellt ein Bereitstellungsdienst Server, Pools und Datenbanken bei Bedarf automatisch bereit. Auf Wunsch können Sie die Vorabbereitstellung von Datenbanken in Pools für elastische Datenbanken einbinden. Wenn Datenbanken außer Betrieb genommen und gelöscht werden, können Lücken in den Pools für elastische Datenbanken durch den Bereitstellungsdienst gefüllt werden. Ein solcher Dienst kann einfach oder komplex sein. Die Bereitstellung kann beispielsweise über mehrere geografische Regionen erfolgen und die Georeplikation zur Notfallwiederherstellung eingerichtet werden.
 
 Beim Muster der automatischen Bereitstellung sendet eine Clientanwendung oder ein Skript eine Bereitstellungsanforderung an eine Warteschlange, damit diese vom Bereitstellungsdienst verarbeitet wird. Anschließend wird vom Dienst der Abschluss des Vorgangs abgefragt. Bei Verwendung der Vorabbereitstellung werden Anforderungen schnell verarbeitet. Der Dienst stellt eine Ersatzdatenbank im Hintergrund bereit.
 

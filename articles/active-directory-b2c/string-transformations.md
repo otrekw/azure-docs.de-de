@@ -573,7 +573,7 @@ Mithilfe dieser Anspruchstransformation können Sie unnötige Daten aus der Eige
 ```
 
 - Eingabeansprüche:
-    - **outputClaim:** Willkommen bei der Contoso-App. If you continue to browse and use this website, you are agreeing to comply with and be bound by the following terms and conditions...
+    - **outputClaim:** Willkommen bei der Contoso-App. Wenn Sie diese Website weiterhin aufrufen und nutzen, erklären Sie sich mit den folgenden Bedingungen einverstanden...
 - Ausgabeansprüche:
     - **outputClaim:** NULL
 

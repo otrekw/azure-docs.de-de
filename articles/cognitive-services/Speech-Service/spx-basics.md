@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: quickstart
 ms.date: 04/04/2020
 ms.author: trbye
-ms.openlocfilehash: acc19d9a04909dcf0e79c93e0c8a3fb8225ee1b4
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 1b92d1b5853d6b794ebdcf0e2052b8f15081d608
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546902"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97507573"
 ---
 # <a name="learn-the-basics-of-the-speech-cli"></a>Erlernen der Grundlagen der Speech-Befehlszeilenschnittstelle
 
@@ -87,7 +87,7 @@ In diesem Befehl geben Sie sowohl die Quellsprache (Sprache, **aus** der überse
 
 ### <a name="configuration-files-in-the-datastore"></a>Konfigurationsdateien im Datenspeicher
 
-Das Verhalten der Speech-Befehlszeilenschnittstelle (Speech CLI) kann auf Einstellungen in Konfigurationsdateien basieren, auf die Sie in Speech CLI-Aufrufen mit dem Symbol „@“ verweisen können.
+Das Verhalten der Speech-Befehlszeilenschnittstelle (Speech CLI) kann auf Einstellungen in Konfigurationsdateien basieren, auf die Sie in Speech CLI-Aufrufen mit dem Symbol \@ verweisen können.
 Von der Speech CLI wird eine neue Einstellung im neuen Unterverzeichnis `./spx/data` gespeichert, das im aktuellen Arbeitsverzeichnis erstellt wird.
 Beim Suchen nach einem Konfigurationswert sieht die Speech CLI zuerst in Ihrem aktuellen Arbeitsverzeichnis, anschließend im Datenspeicher unter `./spx/data` und dann in anderen Datenspeichern nach, z. B. in einem schreibgeschützten endgültigen Datenspeicher in der `spx`-Binärdatei.
 Bisher haben Sie den Datenspeicher zum Speichern Ihrer Werte `@key` und `@region` verwendet und mussten sie daher nicht in jedem Befehlszeilenaufruf angeben.

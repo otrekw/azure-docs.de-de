@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: sample
-ms.date: 12/02/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: 0437704709e863cdbc62321c8a4b79015564e362
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4f5c47000355a004f8d76d8b740b705618748380
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558758"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505221"
 ---
 # <a name="how-to-sentiment-analysis-and-opinion-mining"></a>Vorgehensweise: Stimmungsanalyse und Opinion Mining
 
@@ -51,7 +51,7 @@ Zuverlässigkeitsbewertungen liegen zwischen 1 und 0. Werte, die näher an 1 lie
 
 ## <a name="opinion-mining"></a>Opinion Mining
 
-Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1-preview.1. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten. 
+Opinion Mining ist ein Feature der Standpunktanalyse ab Version 3.1 Preview. Dieses Feature wird in der Verarbeitung natürlicher Sprache (Natural Language Processing, NLP) auch als aspektbasierte Standpunktanalyse bezeichnet und bietet feiner abgestufte Informationen zu den Meinungen in Bezug auf Aspekte (z. B. Attribute von Produkten oder Dienstleistungen) in Texten.
 
 Wenn ein Kunde für ein Hotel beispielsweise Feedback wie „Das Zimmer war toll, aber das Personal war unfreundlich.“ hinterlässt, werden vom Opinion Mining Aspekte im Text sowie die zugehörigen Meinungen und Stimmungen ermittelt. Von der Standpunktanalyse wird unter Umständen nur eine negative Stimmung gemeldet.
 
@@ -74,7 +74,7 @@ Ein Dokument darf maximal 5.120 Zeichen enthalten. Die maximal zulässige Anzahl
 
 Erstellen Sie eine POST-Anforderung. Um eine Anforderung schnell zu strukturieren und zu senden, können Sie in den folgenden Verweislinks [Postman](text-analytics-how-to-call-api.md) oder die **API-Testkonsole** verwenden. 
 
-#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 [Referenz zu Standpunktanalyse v3.1](https://westcentralus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-preview-3/operations/Sentiment)
 
@@ -91,17 +91,17 @@ Legen Sie den HTTPS-Endpunkt für die Standpunktanalyse entweder mithilfe einer 
 > [!NOTE]
 > Den Schlüssel und den Endpunkt für Ihre Textanalyseressource finden Sie im Azure-Portal. Sie befinden sich auf der Seite **Schnellstart** der Ressource unter **Ressourcenverwaltung**. 
 
-#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 **Standpunktanalyse**
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment`
 
 **Opinion Mining**
 
 Um Opinion Mining-Ergebnisse zu erhalten, muss der Parameter `opinionMining=true` eingeschlossen werden. Beispiel:
 
-`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.2/sentiment?opinionMining=true`
+`https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/sentiment?opinionMining=true`
 
 Dieser Parameter ist standardmäßig auf `false` festgelegt. 
 
@@ -144,7 +144,7 @@ Die Textanalyse-API ist zustandslos. Auf Ihrem Konto werden keine Daten gespeich
 
 Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anwendung streamen, die JSON akzeptiert, oder die Ausgabe in einer Datei im lokalen System speichern. Importieren Sie dann die Ausgabe in eine Anwendung, mit der Sie die Daten sortieren, durchsuchen und bearbeiten können. Aufgrund der Unterstützung von Emojis und mehreren Sprachen enthält der Antworttext unter Umständen Textversätze. Weitere Informationen finden Sie unter [Textversätze in der Ausgabe der Textanalyse-API](../concepts/text-offsets.md).
 
-#### <a name="version-31-preview2"></a>[Version 3.1-preview.2](#tab/version-3-1)
+#### <a name="version-31-preview3"></a>[Version 3.1-preview.3](#tab/version-3-1)
 
 ### <a name="sentiment-analysis-and-opinion-mining-example-response"></a>Beispielantwort für Standpunktanalyse und Opinion Mining
 
@@ -302,5 +302,5 @@ In diesem Artikel haben Sie sich mit Konzepten und dem Workflow für die Standpu
 ## <a name="see-also"></a>Weitere Informationen
 
 * [Übersicht über die Textanalyse](../overview.md)
-* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/text-analytics-sdk.md)
+* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
 * [Neuigkeiten](../whats-new.md)

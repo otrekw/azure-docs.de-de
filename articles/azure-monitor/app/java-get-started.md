@@ -6,12 +6,12 @@ ms.date: 11/22/2020
 author: MS-jgol
 ms.custom: devx-track-java
 ms.author: jgol
-ms.openlocfilehash: 25d0d409c8112292afd20f052e82494dd8e656ea
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.openlocfilehash: 6bdad71f0b36995abdeb3b1edb87cbef32df8b67
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96601304"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96919429"
 ---
 # <a name="quickstart-get-started-with-application-insights-in-a-java-web-project"></a>Schnellstart: Erste Schritte mit Application Insights in einem Java-Webprojekt
 
@@ -30,6 +30,8 @@ Application Insights ist ein erweiterbarer Analysedienst für Webentwickler, der
 
 ## <a name="get-an-application-insights-instrumentation-key"></a>Abrufen eines Application Insights-Instrumentationsschlüssels
 
+> [!IMPORTANT]
+> Neue Azure-Regionen **erfordern** die Verwendung von Verbindungszeichenfolgen anstelle von Instrumentierungsschlüsseln. Die [Verbindungszeichenfolge](./sdk-connection-string.md?tabs=java) identifiziert die Ressource, der Sie Ihre Telemetriedaten zuordnen möchten. Hier können Sie die Endpunkte ändern, die Ihre Ressource als Ziel für die Telemetrie verwendet. Sie müssen die Verbindungszeichenfolge kopieren und dem Code Ihrer Anwendung oder einer Umgebungsvariable hinzufügen.
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com/) an.
 2. Erstellen Sie im Azure-Portal eine Application Insights-Ressource. Legen Sie den Anwendungstyp auf "Java-Webanwendung" fest.
 

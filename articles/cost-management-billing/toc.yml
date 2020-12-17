@@ -188,15 +188,15 @@
               href: manage/pay-by-invoice.md
             - name: Erstellen zusätzlicher Abonnements
               href: manage/create-subscription.md
-            - name: 'Erstellen von EA-Abonnements: REST'
+            - name: Programmgesteuertes Erstellen von EA-Abonnements
               href: manage/programmatically-create-subscription-enterprise-agreement.md
-            - name: 'Erstellen von MCA-Abonnements: REST'
+            - name: Programmgesteuertes Erstellen von MCA-Abonnements
               href: manage/programmatically-create-subscription-microsoft-customer-agreement.md
-            - name: 'Erstellen von MPA-Abonnements: REST'
+            - name: Programmgesteuertes Erstellen von MPA-Abonnements
               href: manage/programmatically-create-subscription-microsoft-partner-agreement.md
             - name: 'Erstellen von Abonnements: ARM-Vorlage'
               href: manage/create-subscription-template.md
-            - name: 'Erstellen von Abonnements: REST-Vorschauversion'
+            - name: 'Programmgesteuerte Erstellung von Abonnements: Vorschau'
               href: manage/programmatically-create-subscription-preview.md
             - name: Gewähren des Zugriffs zur Erstellung von EA-Abonnements
               href: manage/grant-access-to-create-subscription.md
