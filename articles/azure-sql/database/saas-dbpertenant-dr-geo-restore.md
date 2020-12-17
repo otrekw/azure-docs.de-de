@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/14/2019
-ms.openlocfilehash: daccbd9dfb3ed628d8a3e604cbb9af4045f1ebe6
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: 3fe6095595f5270b18536e6ef46afe4a0a5b3268
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92780885"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607710"
 ---
 # <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Verwenden der Geowiederherstellung zum Wiederherstellen einer mehrinstanzenfähigen SaaS-Anwendung aus Datenbanksicherungen
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -163,7 +163,7 @@ Im Wiederherstellungsprozess wird wie folgt vorgegangen:
 
     * Die Anwendung kann auf die Mandantendatenbanken zugreifen, sobald diese im Katalog als online markiert sind.
 
-    * Eine Summe der „rowversion“-Werte in der Mandantendatenbank wird im Katalog gespeichert. Diese Summe fungiert als Fingerabdruck, über den der Rückführungsprozess bestimmen kann, ob die Datenbank in der Wiederherstellungsregion aktualisiert wurde.       
+    * Eine Summe der „rowversion“-Werte in der Mandantendatenbank wird im Katalog gespeichert. Diese Summe fungiert als Fingerabdruck, über den der Rückführungsprozess bestimmen kann, ob die Datenbank in der Wiederherstellungsregion aktualisiert wurde.
 
 ## <a name="run-the-recovery-script"></a>Ausführen des Wiederherstellungsskripts
 

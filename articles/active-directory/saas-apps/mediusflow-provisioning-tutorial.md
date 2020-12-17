@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: 4d3ee6df90424788c6f9b6bb4e2055023a5d56a6
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 881309c040f6c1bdff758d17ab7f51e935437192
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96182061"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97607880"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von MediusFlow für die automatische Benutzerbereitstellung
 
@@ -172,11 +172,11 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 11. Überprüfen Sie im Abschnitt **Gruppenattribute** die Benutzerattribute, die von Azure AD mit MediusFlow synchronisiert werden. Die als **übereinstimmende** Eigenschaften ausgewählten Attribute werden für den Abgleich der Gruppen in MediusFlow für Updatevorgänge verwendet. Wählen Sie die Schaltfläche **Speichern**, um alle Änderungen zu übernehmen.
 
-      |attribute|type|
-      |---|---|
-      |displayName|String|
-      |externalID|String|
-      |members|Verweis|
+    | attribute | type |
+    |--|--|
+    | displayName | String |
+    | externalID | String |
+    | members | Verweis |
 
 12. Wenn Sie Bereichsfilter konfigurieren möchten, lesen Sie die Anweisungen unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
 

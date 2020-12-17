@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fd9a04c2324af2ec36d8fa1d43a079e9f2c32dd8
-ms.sourcegitcommit: 59f506857abb1ed3328fda34d37800b55159c91d
+ms.openlocfilehash: 0205617198ec8e57cb891d2415d2b5413a945f1b
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/24/2020
-ms.locfileid: "92520301"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97608934"
 ---
 # <a name="tutorial-integrate-way-we-do-with-azure-active-directory"></a>Tutorial: Integrieren von Way We Do in Azure Active Directory
 
@@ -40,7 +40,7 @@ Für die ersten Schritte benötigen Sie Folgendes:
 In diesem Tutorial konfigurieren und testen Sie das einmalige Anmelden von Azure AD in einer Testumgebung.
 
 * Way We Do unterstützt **SP-initiiertes** einmaliges Anmelden.
-* Way We Do unterstützt die **Just-in-Time** -Benutzerbereitstellung.
+* Way We Do unterstützt die **Just-in-Time**-Benutzerbereitstellung.
 
 ## <a name="adding-way-we-do-from-the-gallery"></a>Hinzufügen von Way We Do aus dem Katalog
 
@@ -48,14 +48,14 @@ Zum Konfigurieren der Integration von Way We Do in Azure AD müssen Sie Way We D
 
 1. Melden Sie sich mit einem Geschäfts-, Schul- oder Unikonto oder mit einem persönlichen Microsoft-Konto beim [Azure-Portal](https://portal.azure.com) an.
 1. Wählen Sie im linken Navigationsbereich den Dienst **Azure Active Directory** aus.
-1. Navigieren Sie zu **Unternehmensanwendungen** , und wählen Sie dann **Alle Anwendungen** aus.
+1. Navigieren Sie zu **Unternehmensanwendungen**, und wählen Sie dann **Alle Anwendungen** aus.
 1. Wählen Sie zum Hinzufügen einer neuen Anwendung **Neue Anwendung** aus.
 1. Geben Sie im Abschnitt **Aus Katalog hinzufügen** den Suchbegriff **Way We Do** in das Suchfeld ein.
 1. Wählen Sie **Way We Do** im Ergebnisbereich aus, und fügen Sie dann die App hinzu. Warten Sie einige Sekunden, während die App Ihrem Mandanten hinzugefügt wird.
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfigurieren und Testen des einmaligen Anmeldens in Azure AD
 
-Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Way We Do mithilfe eines Testbenutzers mit dem Namen **B. Simon** . Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Way We Do eingerichtet werden.
+Konfigurieren und testen Sie das einmalige Anmelden von Azure AD mit Way We Do mithilfe eines Testbenutzers mit dem Namen **B. Simon**. Damit einmaliges Anmelden funktioniert, muss eine Linkbeziehung zwischen einem Azure AD-Benutzer und dem entsprechenden Benutzer in Way We Do eingerichtet werden.
 
 Sie müssen die folgenden Aufgaben ausführen, um das einmalige Anmelden von Azure AD bei Way We Do zu konfigurieren und zu testen:
 
@@ -70,9 +70,9 @@ Sie müssen die folgenden Aufgaben ausführen, um das einmalige Anmelden von Azu
 
 Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal zu aktivieren.
 
-1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Way We Do** zum Abschnitt **Verwalten** , und wählen Sie **Einmaliges Anmelden** aus.
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com/) auf der Anwendungsintegrationsseite für **Way We Do** zum Abschnitt **Verwalten**, und wählen Sie **Einmaliges Anmelden** aus.
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
-1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration** , um die Einstellungen zu bearbeiten.
+1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
@@ -99,7 +99,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Erweiterung „Meine Apps“](common/install-myappssecure-extension.png)
 
-1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Way We Do einrichten** , um zur Anwendung Way We Do weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Way We Do anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
+1. Klicken Sie nach dem Hinzufügen der Erweiterung zum Browser auf **Way We Do einrichten**, um zur Anwendung Way We Do weitergeleitet zu werden. Geben Sie dort die Administratoranmeldeinformationen ein, um sich bei Way We Do anzumelden. Die Browsererweiterung konfiguriert die Anwendung automatisch für Sie und automatisiert die Schritte 3 bis 6.
 
     ![Einrichtungskonfiguration](common/setup-sso.png)
 
@@ -109,7 +109,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Way We Do-Konto](./media/waywedo-tutorial/tutorial_waywedo_account.png)
 
-1. Klicken Sie auf das **Menüsymbol** , um das Push-Navigationsmenü zu öffnen, und dann auf **Single Sign On (Einmaliges Anmelden)** .
+1. Klicken Sie auf das **Menüsymbol**, um das Push-Navigationsmenü zu öffnen, und dann auf **Single Sign On (Einmaliges Anmelden)** .
 
     ![Way We Do: Einmaliges Anmelden](./media/waywedo-tutorial/tutorial_waywedo_single.png)
 
@@ -117,26 +117,26 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 
     ![Way We Do: Speichern](./media/waywedo-tutorial/tutorial_waywedo_save.png)
 
-    a. Klicken Sie auf die Schaltfläche **Turn on single sign-on (Einmaliges Anmelden aktivieren)** , um zu **Ja** zu wechseln und damit das einmalige Anmelden zu aktivieren.
+    1. Klicken Sie auf die Schaltfläche **Turn on single sign-on (Einmaliges Anmelden aktivieren)**, um zu **Ja** zu wechseln und damit das einmalige Anmelden zu aktivieren.
 
-    b. Geben Sie im Textfeld **Single sign-on name (Name für einmaliges Anmelden)** Ihren Namen ein.
+    1. Geben Sie im Textfeld **Single sign-on name (Name für einmaliges Anmelden)** Ihren Namen ein.
 
-    c. Fügen Sie in das Textfeld **Entity ID** (Entitäts-ID) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
+    1. Fügen Sie in das Textfeld **Entity ID** (Entitäts-ID) den Wert von **Azure AD-Bezeichner** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    d. Fügen Sie in das Textfeld **SAML SSO URL** (SSO-Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
+    1. Fügen Sie in das Textfeld **SAML SSO URL** (SSO-Anmelde-URL) den Wert der **Anmelde-URL** ein, den Sie aus dem Azure-Portal kopiert haben.
 
-    e. Laden Sie das Zertifikat hoch, indem Sie auf die **Auswahlschaltfläche** neben **Certificate (Zertifikat)** klicken.
+    1. Laden Sie das Zertifikat hoch, indem Sie auf die **Auswahlschaltfläche** neben **Certificate (Zertifikat)** klicken.
 
-    f. **Optionale Einstellungen** -
-    
-    * „Enable Passwords“ (Kennwörter aktivieren): Wenn diese Option deaktiviert ist, ist das reguläre Kennwort für Way We Do nicht nutzbar, sodass Benutzer nur einmaliges Anmelden verwenden können.
+    1. **Optionale Einstellungen** -
 
-    * „Enable Auto-provisioning“ (Automatische Bereitstellung aktivieren): Wenn diese Option aktiviert ist, wird die zum Anmelden verwendete E-Mail-Adresse automatisch mit der Liste der Benutzer in Way We Do verglichen. Wenn die E-Mail-Adresse nicht mit einem aktiven Benutzer in Way We Do übereinstimmt, wird automatisch ein neues Benutzerkonto für die Person hinzugefügt, die sich anmeldet, und alle fehlenden Informationen werden angefordert.
+        * „Enable Passwords“ (Kennwörter aktivieren): Wenn diese Option deaktiviert ist, ist das reguläre Kennwort für Way We Do nicht nutzbar, sodass Benutzer nur einmaliges Anmelden verwenden können.
 
-      > [!NOTE]
-      > Über einmaliges Anmelden hinzugefügte Benutzer werden als allgemeine Benutzer hinzugefügt, und ihnen wird keine Rolle im System zugewiesen. Ein Administrator kann ihre Sicherheitsrolle als Editor oder Administrator ändern und auch eine oder mehrere Organigrammrollen zuweisen.
+        * „Enable Auto-provisioning“ (Automatische Bereitstellung aktivieren): Wenn diese Option aktiviert ist, wird die zum Anmelden verwendete E-Mail-Adresse automatisch mit der Liste der Benutzer in Way We Do verglichen. Wenn die E-Mail-Adresse nicht mit einem aktiven Benutzer in Way We Do übereinstimmt, wird automatisch ein neues Benutzerkonto für die Person hinzugefügt, die sich anmeldet, und alle fehlenden Informationen werden angefordert.
 
-    g. Klicken Sie auf **Save (Speichern)** , um Ihre Einstellungen beizubehalten.
+          > [!NOTE]
+          > Über einmaliges Anmelden hinzugefügte Benutzer werden als allgemeine Benutzer hinzugefügt, und ihnen wird keine Rolle im System zugewiesen. Ein Administrator kann ihre Sicherheitsrolle als Editor oder Administrator ändern und auch eine oder mehrere Organigrammrollen zuweisen.
+
+    1. Klicken Sie auf **Save (Speichern)**, um Ihre Einstellungen beizubehalten.
 
 ### <a name="create-an-azure-ad-test-user"></a>Erstellen eines Azure AD-Testbenutzers
 
@@ -147,16 +147,16 @@ In diesem Abschnitt erstellen Sie im Azure-Portal einen Testbenutzer mit dem Nam
 1. Führen Sie unter den Eigenschaften für **Benutzer** die folgenden Schritte aus:
    1. Geben Sie im Feld **Name** die Zeichenfolge `B.Simon` ein.  
    1. Geben Sie im Feld **Benutzername** die Zeichenfolge username@companydomain.extension ein. Beispiel: `B.Simon@contoso.com`.
-   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen** , und notieren Sie sich den Wert aus dem Feld **Kennwort** .
-   1. Klicken Sie auf **Erstellen** .
+   1. Aktivieren Sie das Kontrollkästchen **Kennwort anzeigen**, und notieren Sie sich den Wert aus dem Feld **Kennwort**.
+   1. Klicken Sie auf **Erstellen**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Zuweisen des Azure AD-Testbenutzers
 
 In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anmeldens von Azure, indem Sie ihm Zugriff auf Way We Do gewähren.
 
-1. Wählen Sie im Azure-Portal **Unternehmensanwendungen**  > **Alle Anwendungen** aus.
+1. Wählen Sie im Azure-Portal **Unternehmensanwendungen** > **Alle Anwendungen** aus.
 1. Wählen Sie in der Anwendungsliste **Way We Do** aus.
-1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten** , und wählen Sie **Benutzer und Gruppen** aus.
+1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
@@ -164,9 +164,9 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
     ![Link „Benutzer hinzufügen“](common/add-assign-user.png)
 
-1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen** .
-1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen** .
-1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen** .
+1. Wählen Sie im Dialogfeld **Benutzer und Gruppen** in der Liste „Benutzer“ den Eintrag **B. Simon** aus, und klicken Sie dann unten auf dem Bildschirm auf die Schaltfläche **Auswählen**.
+1. Wenn Sie einen beliebigen Rollenwert in der SAML-Assertion erwarten, wählen Sie im Dialogfeld **Rolle auswählen** die entsprechende Rolle für den Benutzer in der Liste aus, und klicken Sie dann im unteren Bildschirmbereich auf die Schaltfläche **Auswählen**.
+1. Klicken Sie im Dialogfeld **Zuweisung hinzufügen** auf die Schaltfläche **Zuweisen**.
 
 ### <a name="create-way-we-do-test-user"></a>Erstellen eines Way We Do-Testbenutzers
 
