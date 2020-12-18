@@ -367,21 +367,9 @@
                   href: quickstart-custom-commands-application.md
             - name: Anleitungen
               items:
-                - name: Entwickeln
-                  items:
-                    - name: Erstellen einer Anwendung mit einfachen Befehlen
-                      href: how-to-custom-commands-create-application-with-simple-commands.md
-                    - name: Hinzufügen von Parametern zu Befehlen
-                      href: how-to-custom-commands-add-parameters-to-commands.md
-                    - name: Hinzufügen von Konfigurationen zu Befehlsparametern
-                      href: how-to-custom-commands-add-parameter-configuration.md
-                    - name: Hinzufügen von Interaktionsregeln
-                      href: how-to-custom-commands-add-interaction-rules.md
-                    - name: Hinzufügen von Sprachgenerierungsvorlagen für Sprachantworten
-                      href: how-to-custom-commands-add-language-generation-templates.md
-                    - name: Verwenden von Custom Voice
-                      href: how-to-custom-commands-use-custom-voice.md
-                - name: Integrieren
+                - name: Entwickeln und Anpassen von Apps für benutzerdefinierte Befehle
+                  href: how-to-develop-custom-commands-application.md
+                - name: Integrieren in Clientanwendungen
                   items:
                     - name: Integrieren in eine Client-App mithilfe des Sprach-SDK
                       href: how-to-custom-commands-setup-speech-sdk.md
@@ -395,26 +383,18 @@
                       href: how-to-custom-commands-update-command-from-client.md
                     - name: Aktualisieren eines Befehls über einen Webendpunkt
                       href: how-to-custom-commands-update-command-from-web-endpoint.md
-                - name: Bereitstellen
-                  items:
-                    - name: Continuous Deployment mit Azure DevOps
-                      href: how-to-custom-commands-deploy-cicd.md
-                - name: Test
-                  items:
-                    - name: Testen Ihrer App für benutzerdefinierte Befehle
-                      href: how-to-custom-commands-developer-flow-test.md
-                - name: Debuggen
-                  items:
-                    - name: Debuggen von Fehlern beim Erstellen der App
-                      href: how-to-custom-commands-debug-build-time.md
-                    - name: Debuggen von Fehlern beim Ausführen der App
-                      href: how-to-custom-commands-debug-runtime.md
-                - name: References
-                  items:
-                    - name: Konzepte benutzerdefinierter Befehle
-                      href: custom-commands-references.md
+                - name: Continuous Deployment mit Azure DevOps
+                  href: how-to-custom-commands-deploy-cicd.md
+                - name: Testen von Anwendungen für benutzerdefinierte Befehle
+                  href: how-to-custom-commands-developer-flow-test.md
+                - name: Debuggen von Fehlern beim Erstellen der App
+                  href: how-to-custom-commands-debug-build-time.md
+                - name: Debuggen von Fehlern beim Ausführen der App
+                  href: how-to-custom-commands-debug-runtime.md
             - name: Ressourcen
               items:
+                - name: Konzepte benutzerdefinierter Befehle
+                  href: custom-commands-references.md
                 - name: Beispiele für benutzerdefinierte Befehle (GitHub)
                   href: 'https://aka.ms/speech/cc-samples'
                 - name: Beispiele für Sprachassistenten (GitHub)
@@ -585,7 +565,7 @@
       href: sovereign-clouds.md
     - name: Preisrechner
       href: 'https://azure.microsoft.com/pricing/calculator/#cognitive-services'
-    - name: Compliance
+    - name: Kompatibilität
       href: 'https://azure.microsoft.com/support/legal/cognitive-services-compliance-and-privacy/'
     - name: Verschlüsselung
       href: speech-encryption-of-data-at-rest.md

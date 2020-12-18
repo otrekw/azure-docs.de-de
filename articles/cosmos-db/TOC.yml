@@ -271,7 +271,7 @@
                 - name: Aggregatfunktionen
                   displayName: 'functions, aggregate, count, sum, min, minimum, max, maximum, avg, average'
                   href: sql-query-aggregate-functions.md
-                - name: Durchschnitt
+                - name: Avg
                   displayName: 'functions, aggregate, avg, average'
                   href: sql-query-aggregate-avg.md
                 - name: Anzahl
@@ -1002,6 +1002,8 @@
               href: cassandra-spark-aggregation-ops.md
             - name: Kopieren von Tabellendaten
               href: cassandra-spark-table-copy-ops.md
+        - name: Cassandra und Kafka
+          href: cassandra-kafka-connect.md
         - name: Verwalten mithilfe von Resource Manager-Vorlagen
           href: templates-samples-cassandra.md
           displayName: ARM

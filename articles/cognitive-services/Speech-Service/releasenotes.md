@@ -11,14 +11,57 @@ ms.topic: conceptual
 ms.date: 08/17/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: c6cc033e4814553020957310224a8ed4cdacbc8e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 2db93ec6806d4b9cc8c8ac17cfb2c15458bf4dc9
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483953"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401150"
 ---
 # <a name="speech-service-release-notes"></a>Versionshinweise zum Speech-Dienst
+
+## <a name="text-to-speech-2020-december-release"></a>Sprachsyntheserelease von Dezember 2020
+
+**Neue neuronale Stimmen in der allgemeinen Verfügbarkeit und in der Vorschau**
+
+51 neue Stimmen wurden veröffentlicht, sodass nun insgesamt 129 neuronale Stimmen in 54 Sprachen/Gebietsschemas vorhanden sind:
+
+- **46 neue Stimmen in allgemein verfügbaren Gebietsschemas:** Shakir in `ar-EG` Arabisch (Ägypten), Hamed in `ar-SA` Arabisch (Saudi-Arabien), Borislav in `bg-BG` Bulgarisch (Bulgarien), Joana in `ca-ES` Katalanisch (Spanien), Antonin in `cs-CZ` Tschechisch (Tschechische Republik), Jeppe in `da-DK` Dänisch (Dänemark), Jonas in `de-AT` Deutsch (Österreich), Jan in `de-CH` Deutsch (Schweiz), Nestoras in `el-GR` Griechisch (Griechenland), Liam in `en-CA` Englisch (Kanada), Connor in `en-IE` Englisch (Irland), Madhur in `en-IN` Hindi (Indien), Mohan in `en-IN` Telugu (Indien), Prabhat in `en-IN` Englisch (Indien), Valluvar in `en-IN` Tamil (Indien), Enric in `es-ES` Katalanisch (Spanien), Kert in `et-EE` Estnisch (Estland), Harri in `fi-FI` Finnisch (Finnland), Selma in `fi-FI` Finnisch (Finnland), Fabrice in `fr-CH` Französisch (Schweiz), Colm in `ga-IE` Irisch (Irland), Avri in `he-IL` Hebräisch (Israel), Srecko in `hr-HR` Kroatisch (Kroatien), Tamas in `hu-HU` Ungarisch (Ungarn), Gadis in `id-ID` Indonesisch (Indonesien), Leonas in `lt-LT` Litauisch (Litauen), Nils in `lv-LV` Lettisch (Lettland), Osman in `ms-MY` Malaysisch (Malaysia), Joseph in `mt-MT` Maltesisch (Malta), Finn in `nb-NO` Norwegisch, Bokmål (Norwegen), Pernille in `nb-NO` Norwegisch, Bokmål (Norwegen), Fenna in `nl-NL` Niederländisch (Niederlande), Maarten in `nl-NL` Niederländisch (Niederlande), Agnieszka in `pl-PL` Polnisch (Polen), Marek in `pl-PL` Polnisch (Polen), Duarte in `pt-BR` Portugiesisch (Brasilien), Raquel in `pt-PT` Portugiesisch (Portugal), Emil in `ro-RO` Rumänisch (Rumänien), Dmitry in `ru-RU` Russisch (Russland), Svetlana in `ru-RU` Russisch (Russland), Lukas in `sk-SK` Slowakisch (Slowakei), Rok in `sl-SI` Slowenisch (Slowenien), Mattias in `sv-SE` Schwedisch (Schweden), Sofie in `sv-SE` Schwedisch (Schweden), Niwat in `th-TH` Thai (Thailand), Ahmet in `tr-TR` Türkisch (Türkei), NamMinh in `vi-VN` Vietnamesisch (Vietnam), HsiaoChen in `zh-TW` Taiwanesisches Mandarin (Taiwan), YunJhe in `zh-TW` Taiwanesisches Mandarin (Taiwan), HiuMaan in `zh-HK` Chinesisch Kantonesisch (Hongkong), WanLung in `zh-HK` Chinesisch Kantonesisch (Hongkong).
+
+- **5 neue Stimmen in Gebietsschemas in der Vorschau:** Kert in `et-EE` Estnisch (Estland), Colm in `ga-IE` Irisch (Irland), Nils in `lv-LV` Lettisch (Lettland), Leonas in `lt-LT` Litauisch (Litauen), Joseph in `mt-MT` Maltesisch (Malta).
+
+Mit diesem Release werden nun insgesamt 129 neuronale Stimmen in 54 Sprachen/Gebietsschemas unterstützt. Darüber hinaus sind mehr als 70 Standardstimmen in 49 Sprachen/Gebietsschemas verfügbar. Eine vollständige Liste finden Sie unter [Sprachunterstützung](language-support.md#text-to-speech).
+
+**Updates für die Audioinhaltserstellung**
+- Die Benutzeroberfläche für die Stimmenauswahl mit Stimmenkategorien und ausführlichen Beschreibungen wurde verbessert. 
+- Die Intonation für alle neuronalen Stimmen wurde für verschiedene Sprachen optimiert.
+- Die Benutzeroberflächenlokalisierung basierend auf der Sprache des Browsers wurde automatisiert.
+- `StyleDegree`-Steuerelemente für alle neuronalen Stimmen für `zh-CN`.
+Sie können die neuen Features im [Audioinhaltserstellungs-Tool](https://speech.microsoft.com/audiocontentcreation) testen. 
+
+**Updates für zh-CN-Stimmen**
+- Alle neuronalen Stimmen für `zh-CN` wurden mit Unterstützung von Englisch aktualisiert.
+- Alle neuronalen Stimmen für `zh-CN` unterstützen nun Anpassung der Intonation. SSML oder das Audioinhaltserstellungs-Tool können zum Anpassen der Intonation verwendet werden.
+- Alle neuronalen Stimmen für `zh-CN` mit mehreren Stilen wurden zur Unterstützung des `StyleDegree`-Steuerelements aktualisiert. Die Intensität der Emotionen (weich oder stark) ist anpassbar.
+- `zh-CN-YunyeNeural` wurde zur Unterstützung mehrerer Stile aktualisiert, die verschiedene Emotionen widerspiegeln können.
+
+## <a name="text-to-speech-2020-november-release"></a>Sprachsyntheserelease von November 2020
+
+**Neue Gebietsschemas und Stimmen in der Vorschau**
+- **Fünf neue Stimmen und Sprachen** wurden zum Portfolio der neuronalen Sprachsynthese hinzugefügt. Sie lauten wie folgt: Grace in Maltesisch (Malta), Ona in Litauisch (Litauen), Anu in Estnisch (Estland), Orla in Irisch (Irland) und Everita in Lettisch (Lettland).
+- **Fünf neue `zh-CN`-Stimmen mit Unterstützung mehrerer Stile und Rollen:** Xiaohan, Xiaomo, Xiaorui, Xiaoxuan und Yunxi.
+
+> Diese Stimmen sind in drei Azure-Regionen in der öffentlichen Vorschau verfügbar: „USA, Osten“, „Asien, Südosten“ und „Europa, Westen“.
+
+**Der neuronale Sprachsynthesecontainer ist allgemein Verfügbar**
+- Mit dem neuronalen Sprachsynthesecontainer können Entwickler die Sprachsynthese mit den natürlichsten digitalen Stimmen für spezifische Sicherheits- und Datengovernanceanforderungen in ihren eigenen Umgebungen ausführen. Erfahren Sie, [wie Sie Sprachsynthesecontainer installieren](speech-container-howto.md). 
+
+**Neue Features**
+- **Custom Voice:** ermöglicht Benutzern das Kopieren eines Stimmmodells aus einer Region in eine andere (das Anhalten und Fortsetzen des Endpunkts wird unterstützt). Rufen Sie das [Portal](https://speech.microsoft.com/customvoice) auf.
+- Unterstützung des [SSML-Tags „silence“](speech-synthesis-markup.md#add-silence) 
+- Allgemeine Verbesserungen bei der Stimmenqualität der Sprachsynthese: Die Genauigkeit der Aussprache auf Wortebene in nb-NO wurde verbessert. Aussprachefehler wurden um 53 % verringert.
+
+> Weitere Informationen finden Sie in [diesem Techblog](https://techcommunity.microsoft.com/t5/azure-ai/neural-text-to-speech-previews-five-new-languages-with/ba-p/1907604).
 
 ## <a name="text-to-speech-2020-october-release"></a>Sprachsynthese: Release Oktober 2020
 

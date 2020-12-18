@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 79cf0ef059d96ac66f5918605e999d3936d589d2
-ms.sourcegitcommit: b8eba4e733ace4eb6d33cc2c59456f550218b234
+ms.openlocfilehash: 168dcf994d00ba1cb2070665ada5a55cf86cfa4a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/23/2020
-ms.locfileid: "95486516"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359811"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Sichern und Wiederherstellen Ihrer Modelle für die Formularerkennung
 
@@ -69,7 +69,7 @@ POST https://{SOURCE_FORM_RECOGNIZER_RESOURCE_ENDPOINT}/formrecognizer/v2.0/cust
 Ocp-Apim-Subscription-Key: {SOURCE_FORM_RECOGNIZER_RESOURCE_API_KEY}
 ```
 
-Der Textkörper Ihrer Anforderung muss das folgende Format aufweisen. Sie müssen die Ressourcen-ID und den Regionsnamen für Ihre Zielressource eingeben. Außerdem benötigen Sie die Modell-ID, das Zugriffstoken und Ablaufwert aus dem vorherigen Schritt.
+Der Textkörper Ihrer Anforderung muss das folgende Format aufweisen. Sie müssen die Ressourcen-ID und den Regionsnamen für Ihre Zielressource eingeben. Sie finden Ihre Ressourcen-ID auf der Registerkarte **Eigenschaften** Ihrer Ressource im Azure-Portal. Den Namen der Region finden Sie auf der Registerkarte **Keys and endpoint** (Schlüssel und Endpunkt). Außerdem benötigen Sie die Modell-ID, das Zugriffstoken und Ablaufwert aus dem vorherigen Schritt.
 
 ```json
 {

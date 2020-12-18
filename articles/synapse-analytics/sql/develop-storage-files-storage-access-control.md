@@ -9,18 +9,18 @@ ms.subservice: sql
 ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
-ms.openlocfilehash: 631aaf3c6a99e093f6ed59089f7ce99803f3f054
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6eff662ac0140e7a64cc3bab28856178708cb9b2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96446631"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400674"
 ---
 # <a name="control-storage-account-access-for-serverless-sql-pool-in-azure-synapse-analytics"></a>Steuern des Speicherkontozugriffs für einen serverlosen SQL-Pool in Azure Synapse Analytics
 
 Eine Abfrage eines serverlosen SQL-Pools liest Dateien direkt aus Azure Storage. Berechtigungen für den Zugriff auf Dateien in Azure Storage werden auf zwei Ebenen gesteuert:
 - **Speicherebene**: Der Benutzer sollte über die Berechtigung für den Zugriff auf zugrunde liegende Speicherdateien verfügen. Der Speicheradministrator sollte dem Azure AD-Prinzipal das Lesen/Schreiben von Dateien gestatten oder einen SAS-Schlüssel generieren, der für den Speicherzugriff verwendet wird.
-- **SQL-Dienstebene**: Der Benutzer sollte über die `SELECT`-Berechtigung zum Lesen von Daten aus [externen Tabellen](develop-tables-external-tables.md) oder die Berechtigung `ADMINISTER BULK ADMIN` zum Ausführen von `OPENROWSET` und außerdem über die Berechtigung zur Verwendung der Anmeldeinformationen für den Speicherzugriff verfügen.
+- **SQL-Dienstebene**: Benutzern müssen die Berechtigung zum Lesen von Daten mithilfe einer [externen Tabelle](develop-tables-external-tables.md) oder zum Ausführen der Funktion `OPENROWSET` erteilt haben. Informationen zu den erforderlichen Berechtigungen finden Sie in [diesem Abschnitt](develop-storage-files-overview.md#permissions).
 
 In diesem Artikel wird beschrieben, welche Arten von Anmeldeinformationen Sie verwenden können und wie die Suche nach Anmeldeinformationen für SQL- und Azure AD-Benutzer funktioniert.
 

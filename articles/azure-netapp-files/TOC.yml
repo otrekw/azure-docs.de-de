@@ -59,6 +59,8 @@
               href: solutions-windows-virtual-desktop.md
     - name: Häufig gestellte Fragen zu Azure NetApp Files
       href: azure-netapp-files-faqs.md
+    - name: Worum handelt es sich beim Tool für konsistente Momentaufnahmen in Azure-Anwendungen?
+      href: azacsnap-introduction.md
 - name: Anleitungen
   items:
     - name: Registrieren für Azure NetApp Files
@@ -131,6 +133,32 @@
       href: /rest/api/netapp/
     - name: Resource Manager-Vorlage
       href: /azure/templates/microsoft.netapp/allversions
+    - name: Tool für konsistente Momentaufnahmen in Azure-Anwendungen (AzAcSnap)
+      items:
+        - name: Erste Schritte mit AzAcSnap
+          href: azacsnap-get-started.md
+        - name: Installieren von AzAcSnap
+          href: azacsnap-installation.md
+        - name: Notfallwiederherstellung mithilfe von AzAcSnap
+          href: azacsnap-disaster-recovery.md
+        - name: Tipps und Tricks für die Verwendung von AzAcSnap
+          href: azacsnap-tips.md
+        - name: Problembehandlung für AzAcSnap
+          href: azacsnap-troubleshoot.md
+        - name: AzAcSnap-Befehlsreferenz
+          items:
+            - name: Konfigurieren von AzAcSnap
+              href: azacsnap-cmd-ref-configure.md
+            - name: Testen von AzAcSnap
+              href: azacsnap-cmd-ref-test.md
+            - name: Sichern mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-backup.md
+            - name: Abrufen von Details mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-details.md
+            - name: Löschen mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-delete.md
+            - name: Wiederherstellen mithilfe von AzAcSnap
+              href: azacsnap-cmd-ref-restore.md
 - name: Ressourcen
   items:
     - name: Preise

@@ -4,12 +4,12 @@ description: In diesem Tutorial wird ein von Intel bereitgestellter KI-Modellser
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: a15984917b854a9f3e2dbc80dd0775989c80bf81
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 82906111e64bd278d4371d1c3497fefc4510bbbd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96483677"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401207"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Tutorial: Analysieren von Livevideos mithilfe der KI-Erweiterung für OpenVINO™ Model Server von Intel 
 
@@ -45,9 +45,9 @@ In dieser Schnellstartanleitung werden Live Video Analytics in IoT Edge und die
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/use-intel-openvino-tutorial/http-extension-with-vino.svg" alt-text="Übersicht":::
 
-In diesem Diagramm ist der Fluss der Signale in diesem Schnellstart dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht. 
+In diesem Diagramm ist der Fluss der Signale in diesem Schnellstart dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor). 
 
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet er das Bild per REST an ein anderes Edge-Modul weiter, das KI-Modelle hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel wird als Edge-Modul die KI-Erweiterung für OpenVINO™ Model Server von Intel verwendet. Der Knoten des HTTP-Erweiterungsprozessors erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Dabei werden die eingehenden Videoframes, die durch das Feld `samplingOptions` festgelegt wurden, abgetastet und darüber hinaus in den angegebenen Bildtyp umgewandelt. Anschließend leitet er das Bild per REST an ein anderes Edge-Modul weiter, das KI-Modelle hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel wird als Edge-Modul die KI-Erweiterung für OpenVINO™ Model Server von Intel verwendet. Der Knoten des HTTP-Erweiterungsprozessors erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse im Knoten der [IoT Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Der Knoten sendet diese Ereignisse dann an den [IoT Edge Hub-](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 In diesem Lernprogramm lernen Sie Folgendes:
 

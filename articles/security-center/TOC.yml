@@ -3,14 +3,14 @@
 - name: Übersicht
   expanded: true
   items:
-    - name: Informationen zu Security Center
+    - name: Was ist Azure Security Center?
+      href: security-center-introduction.md
+    - name: Verfügbarkeit
       items:
-        - name: Was ist Azure Security Center?
-          href: security-center-introduction.md
         - name: Unterstützte Plattformen
           displayName: coverage
           href: security-center-os-coverage.md
-        - name: Funktionsabdeckung für virtuelle Computer
+        - name: 'Abdeckung nach Betriebssystem, Computertyp und Cloud'
           href: security-center-services.md
         - name: Funktionsabdeckung für Azure PaaS-Ressourcen
           href: features-paas.md

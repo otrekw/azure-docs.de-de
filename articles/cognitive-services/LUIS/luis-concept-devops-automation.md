@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/5/2020
-ms.openlocfilehash: 370dade1b74634649c9de44864a0fd9f5cac988f
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 1ce78e02c652777b524964559b579530f3e022fa
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025975"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561306"
 ---
 # <a name="continuous-integration-and-continuous-delivery-workflows-for-luis-devops"></a>Continuous Integration- und Continuous Delivery-Workflows für LUIS DevOps
 
@@ -22,8 +22,8 @@ Softwareentwickler, die eine Language Understanding-App (LUIS) entwickeln, könn
 
 Konfigurieren Sie in Ihrem Quellcodeverwaltungssystem (SCM) automatisierte Buildpipelines, die bei folgenden Ereignissen ausgeführt werden:
 
-1. Ein **PR-Workflow**, der ausgelöst wird, wenn ein [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) ausgelöst wird. Dieser Workflow überprüft den Inhalt des PR, *bevor* die Updates im Masterbranch zusammengeführt werden.
-1. Ein **CI/CD-Workflow**, der ausgelöst wird, wenn Aktualisierungen an den Masterbranch gepusht werden, z. B. nach dem Zusammenführen der Änderungen aus einem PR. Dieser Workflow stellt die Qualität aller Aktualisierungen für den Masterbranch sicher.
+1. Ein **PR-Workflow**, der ausgelöst wird, wenn ein [Pull Request](https://help.github.com/github/collaborating-with-issues-and-pull-requests/about-pull-requests) (PR) ausgelöst wird. Dieser Workflow überprüft den Inhalt des PR, *bevor* die Updates im Mainbranch zusammengeführt werden.
+1. Ein **CI/CD-Workflow**, der ausgelöst wird, wenn Aktualisierungen an den Mainbranch gepusht werden, z. B. nach dem Zusammenführen der Änderungen aus einem PR: Dieser Workflow stellt die Qualität aller Aktualisierungen für den Mainbranch sicher.
 
 Im **CI/CD-Workflow** werden zwei komplementäre Entwicklungsprozesse vereinigt:
 
@@ -31,7 +31,7 @@ Im **CI/CD-Workflow** werden zwei komplementäre Entwicklungsprozesse vereinigt:
 
 * [Continuous Delivery](/azure/devops/learn/what-is-continuous-delivery) (CD) führt das Konzept der Continuous Integration weiter: Die Anwendung wird automatisch in einer Umgebung bereitgestellt, in der Sie umfassendere Tests durchführen können. Anhand von CD werden wir frühzeitig und schnellstmöglich auf unvorhergesehene Probleme aufmerksam gemacht, die im Zusammenhang mit den Änderungen entstehen können. Außerdem werden wir über Lücken in unserer Testabdeckung benachrichtigt.
 
-Continuous Integration und Continuous Delivery sollen sicherstellen, dass der „Master zu jedem Zeitpunkt bereitstellbar ist“. Für eine LUIS-App bedeutet dies, dass wir bei Bedarf eine beliebige Version aus der Masterbranch-LUIS-App in die Produktionsumgebung überführen können.
+Continuous Integration und Continuous Delivery sollen sicherstellen, dass der „Mainbranch zu jedem Zeitpunkt bereitstellbar ist“. Für eine LUIS-App bedeutet dies, dass bei Bedarf eine beliebige Version aus der Mainbranch-LUIS-App in die Produktionsumgebung überführt werden kann.
 
 ### <a name="tools-for-building-automation-workflows-for-luis"></a>Tools zum Entwickeln von Automatisierungs-Workflows für LUIS
 
@@ -47,7 +47,7 @@ Verwenden Sie die folgenden Tools, um Automatisierungs-Workflows für LUIS zu er
 
 ### <a name="the-pr-workflow"></a>Der PR-Workflow
 
-Wie bereits erwähnt, konfigurieren Sie diesen Workflow so, dass er ausgeführt wird, wenn ein Entwickler einen PR auslöst, um die Zusammenführung von Änderungen aus einem Featurebranch im Masterbranch vorzuschlagen. Sein Zweck besteht darin, die Qualität der Änderungen im PR zu überprüfen, bevor diese mit dem Masterbranch zusammengeführt werden.
+Wie bereits erwähnt, konfigurieren Sie diesen Workflow so, dass er ausgeführt wird, wenn ein Entwickler einen PR auslöst, um die Zusammenführung von Änderungen aus einem Featurebranch im Mainbranch vorzuschlagen. Sein Zweck besteht darin, die Qualität der Änderungen im PR zu überprüfen, bevor diese mit dem Mainbranch zusammengeführt werden.
 
 Mit diesem Workflow sollen folgende Aktionen ausgeführt werden:
 
@@ -59,13 +59,13 @@ Mit diesem Workflow sollen folgende Aktionen ausgeführt werden:
 
 Sofern von Ihrem SCM unterstützt, konfigurieren Sie Schutzregeln für Branches so, dass dieser Workflow erfolgreich abgeschlossen werden muss, bevor der PR abgeschlossen werden kann.
 
-### <a name="the-master-branch-cicd-workflow"></a>Der CI/CD-Workflow für den Masterbranch
+### <a name="the-main-branch-cicd-workflow"></a>Der CI/CD-Workflow für den Mainbranch
 
-Konfigurieren Sie diesen Workflow so, dass er ausgeführt wird, nachdem die Aktualisierungen im PR im Masterbranch zusammengeführt wurden. Damit soll die Masterbranch-Qualität auf hohem Niveau gehalten werden, indem die Aktualisierungen getestet werden. Wenn die Updates dem Qualitätsniveau gerecht werden, stellt dieser Workflow die neue LUIS-App-Version in einer Umgebung bereit, in der Sie umfassendere Tests durchführen können.
+Konfigurieren Sie diesen Workflow so, dass er ausgeführt wird, nachdem die Aktualisierungen im PR im Mainbranch zusammengeführt wurden. Damit soll die Mainbranchqualität auf hohem Niveau gehalten werden, indem die Aktualisierungen getestet werden. Wenn die Updates dem Qualitätsniveau gerecht werden, stellt dieser Workflow die neue LUIS-App-Version in einer Umgebung bereit, in der Sie umfassendere Tests durchführen können.
 
 Mit diesem Workflow sollen folgende Aktionen ausgeführt werden:
 
-* Erstellen einer neuen Version in der primären LUIS-App (d. h. der App, die Sie für den Masterbranch verwalten) mit dem aktualisierten Quellcode.
+* Erstellen einer neuen Version in der primären LUIS-App (d. h. der App, die Sie für den Mainbranch verwalten) mit dem aktualisierten Quellcode
 
 * Trainieren und Veröffentlichen der LUIS-App-Version.
 

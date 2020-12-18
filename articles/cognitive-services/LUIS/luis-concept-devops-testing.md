@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 06/3/2020
-ms.openlocfilehash: 3017d0dec5acd3494600c42bef410ed346fead1a
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f002bfdd5aeb784b5b10b549389e663216fa0361
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95025941"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561221"
 ---
 # <a name="testing-for-luis-devops"></a>Testen für LUIS DevOps
 
@@ -18,7 +18,7 @@ Softwareentwickler, die eine Language Understanding-App (LUIS) entwickeln, könn
 
 Bei den Methoden der agilen Softwareentwicklung spielt Testen eine zentrale Rolle beim Erstellen von Qualitätssoftware. Jede bedeutende Änderung an einer LUIS-App sollte mit Tests einhergehen, die für das Testen der neuen Funktionalität ausgelegt wurden, die der Entwickler in die App integriert. Diese Tests werden zusammen mit dem `.lu`-Quellcode Ihrer LUIS-App in Ihr Quellcoderepository eingecheckt. Die Implementierung der Änderung ist abgeschlossen, wenn die App die Tests zufriedenstellend absolviert hat.
 
-Tests sind ein kritischer Bestandteil von [CI/CD-Workflows](luis-concept-devops-automation.md). Wenn in einem Pull Request (PR) Änderungen an einer LUIS-App vorgeschlagen werden oder Änderungen in Ihren Masterbranch gemergt wurden, sollten CI-Workflow die Tests ausführen, um zu überprüfen, ob durch die Änderungen irgendwelche Regressionen ausgelöst wurden.
+Tests sind ein kritischer Bestandteil von [CI/CD-Workflows](luis-concept-devops-automation.md). Wenn in einem Pull Request (PR) Änderungen an einer LUIS-App vorgeschlagen werden oder Änderungen in Ihrem Mainbranch zusammengeführt wurden, sollten CI-Workflow die Tests ausführen, um zu überprüfen, ob durch die Änderungen Regressionen ausgelöst wurden.
 
 ## <a name="how-to-do-unit-testing-and-batch-testing"></a>Ausführen von Komponententests und Testen in Batches
 
@@ -123,7 +123,7 @@ Sie können das [NLU.DevOps](https://github.com/microsoft/NLU.DevOps)-Paket verw
 Sie können das NLU.DevOps-Paket außerdem verwenden, um Batchtests an der Befehlszeile auszuführen.
 
 * Verwenden Sie den NLU.DevOps-[Testbefehl](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Test.md), um Tests aus einer Testdatei an einen Endpunkt zu senden und die tatsächlichen Vorhersageergebnisse in einer Datei zu erfassen, genau wie bei Komponententests.
-* Verwenden Sie den [Vergleichsbefehl](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) von NLU.DevOps im [Leistungstestmodus](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode), um die Leistung Ihrer App zu messen. Sie können außerdem die Leistung Ihrer App mit einem Baseline-Leistungsbenchmark vergleichen, beispielsweise die Ergebnisse des letzten Commits mit einem Master oder der aktuellen Version. Im Leistungstestmodus generiert der `compare`-Befehl eine NUnit-Testausgabe und [Batchtestergebnisse](./luis-glossary.md#batch-test) im JSON-Format.
+* Verwenden Sie den [Vergleichsbefehl](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md) von NLU.DevOps im [Leistungstestmodus](https://github.com/microsoft/NLU.DevOps/blob/master/docs/Analyze.md#performance-test-mode), um die Leistung Ihrer App zu messen. Sie können außerdem die Leistung Ihrer App mit einem Baselineleistungsbenchmark vergleichen, beispielsweise die Ergebnisse des letzten Commits mit einem Mainbranch oder dem aktuellen Release. Im Leistungstestmodus generiert der `compare`-Befehl eine NUnit-Testausgabe und [Batchtestergebnisse](./luis-glossary.md#batch-test) im JSON-Format.
 
 ## <a name="luis-non-deterministic-training-and-the-effect-on-testing"></a>Nicht deterministisches Training in LUIS und die Auswirkungen auf Tests
 

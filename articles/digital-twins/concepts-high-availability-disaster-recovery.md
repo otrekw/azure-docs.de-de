@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 10/14/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: ac75a5b0b59a06855b7ee88d971c269ca915e429
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 35f4aae246f105d832aaf92c5c5797c8a65b44f1
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763163"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938545"
 ---
 # <a name="azure-digital-twins-high-availability-and-disaster-recovery"></a>Hochverfügbarkeit und Notfallwiederherstellung: Azure Digital Twins
 
@@ -38,6 +38,29 @@ Das **von Microsoft initiierte Failover** wendet Microsoft in seltenen Fällen a
 
 >[!NOTE]
 > Einige Azure-Dienste bieten außerdem eine zusätzliche Option namens **vom Kunden initiiertes Failover**, die es Kunden ermöglicht, ein Failover nur für Ihre Instanz zu initiieren, z. B. zum Ausführen eines Notfallwiederherstellungsdrills. Dieser Mechanismus wird zurzeit von Azure Digital Twins **nicht unterstützt**. 
+
+## <a name="monitor-service-health"></a>Überwachen der Dienstintegrität
+
+Da für Azure Digital Twins-Instanzen Failovers und Wiederherstellungen durchgeführt werden, können Sie den Prozess mithilfe des Tools [Azure Service Health](https://docs.microsoft.com/azure/service-health/service-health-overview) überwachen. Service Health überwacht die Integrität Ihrer Azure-Dienste in verschiedenen Regionen und Abonnement und meldet wichtige Informationen zu Ausfällen und Downtime.
+
+Während eines Failoverereignisses kann Service Health angeben, ob Ihr Dienst ausgefallen ist und wann er wieder verfügbar ist.
+
+So zeigen Sie Service Health-Ereignisse an:
+1. Navigieren Sie im Azure-Portal zu [Service Health](https://portal.azure.com/?feature.customportal=false#blade/Microsoft_Azure_Health/AzureHealthBrowseBlade/serviceIssues) (hierzu können Sie den Link hier verwenden oder mithilfe der Suchleiste im Portal suchen).
+1. Verwenden Sie das linke Menü, um zur Seite *Integritätsverlauf* zu wechseln.
+1. Suchen Sie nach einem *Issue Name* (Problemnamen), der mit **Azure Digital Twins** beginnt, und klicken Sie auf diesen.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/navigate.png" alt-text="Screenshot: Azure-Portal mit der Seite „Integritätsverlauf“ und einer Liste mehrerer Probleme aus den letzten Tagen. Ein Problem mit dem Namen „Azure Digital Twins – West Europe – Mitigated“ wird hervorgehoben." lightbox="media/concepts-high-availability-disaster-recovery/navigate.png":::
+
+1. Allgemeine Informationen zum Ausfall finden Sie auf der Registerkarte *Zusammenfassung*.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/summary.png" alt-text="Auf der Seite „Integritätsverlauf“ wird die Registerkarte „Zusammenfassung“ hervorgehoben. Diese Registerkarte enthält allgemeine Informationen, z. B. den Namen der betroffenen Ressource, die Region und das Abonnement." lightbox="media/concepts-high-availability-disaster-recovery/summary.png":::
+1. Weitere Informationen und Updates zum Problem im Zeitverlauf finden Sie auf der Registerkarte *Problemupdates*.
+
+    :::image type="content" source="media/concepts-high-availability-disaster-recovery/issue-updates.png" alt-text="Auf der Seite „Integritätsverlauf“ wird die Registerkarte „Problemupdates“ hervorgehoben. Die Registerkarte enthält mehrere Einträge mit dem aktuellen Status von vor einem Tag." lightbox="media/concepts-high-availability-disaster-recovery/issue-updates.png":::
+
+
+Beachten Sie, dass die in diesem Tool angezeigten Informationen nicht für eine spezifische Azure Digital Twins-Instanz sind. Nachdem Sie Service Health verwenden haben, um die aktuelle Situation eines Azure Digital Twins-Diensts in einer bestimmten Region oder einem bestimmten Abonnement zu untersuchen, können Sie die Überwachung ausweiten, indem Sie das [Resource Health-Tool](troubleshoot-resource-health.md) verwenden, um spezifische Instanzen zu analysieren und zu sehen, ob diese betroffen sind.
 
 ## <a name="best-practices"></a>Bewährte Methoden
 

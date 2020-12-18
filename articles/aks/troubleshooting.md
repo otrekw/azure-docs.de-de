@@ -27,7 +27,7 @@ Es gibt auch einen [Leitfaden zur Problembehandlung](https://github.com/feiskyer
 ## <a name="im-getting-an-insufficientsubnetsize-error-while-deploying-an-aks-cluster-with-advanced-networking-what-should-i-do"></a>Bei der Bereitstellung eines AKS-Clusters mit erweitertem Netzwerk erhalte ich einen insufficientSubnetSize-Fehler. Wie sollte ich vorgehen?
 
 Dieser Fehler gibt an, dass ein für einen Cluster verwendetes Subnetz im CIDR-Bereich keine weiteren verfügbaren IP-Adressen für eine erfolgreiche Ressourcenzuweisung umfasst. Bei Kubenet-Clustern ist ein ausreichender IP-Adressraum für jeden Knoten im Cluster erforderlich. Bei Azure CNI-Clustern ist ein ausreichender IP-Adressraum für jeden Knoten und Pod im Cluster erforderlich.
-Weitere Informationen zum Design von Azure CNI für die Zuweisung von IP-Adressen zu Pods finden Sie [hier](configure-azure-cni.md#plan-ip-addressing-for-your-cluster).
+Weitere Informationen zum [Design von Azure CNI für die Zuweisung von IP-Adressen zu Pods](configure-azure-cni.md#plan-ip-addressing-for-your-cluster) finden Sie hier.
 
 Diese Fehler werden auch in der [AKS-Diagnose](concepts-diagnostics.md) ausgegeben, die Probleme wie z. B. eine unzureichende Subnetzgröße proaktiv ermittelt.
 
@@ -89,7 +89,7 @@ Eine Aktivierung der rollenbasierten Zugriffssteuerung in Kubernetes (Kubernetes
 
 Stellen Sie sicher, dass die Ports 22, 9000 und 1194 für die Verbindung mit dem API-Server offen sind. Überprüfen Sie mit dem `kubectl get pods --namespace kube-system`-Befehl, ob der `tunnelfront`- oder `aks-link`-Pod im *kube-system*-Namespace ausgeführt wird. Falls nicht, erzwingen Sie das Löschen des Pods. Er wird anschließend neu gestartet.
 
-## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`. Wie sollte ich vorgehen?
+## <a name="im-getting-tls-client-offered-only-unsupported-versions-from-my-client-when-connecting-to-aks-api-what-should-i-do"></a>Beim Herstellen einer Verbindung mit der AKS-API erhalte ich von meinem Client die Meldung `"tls: client offered only unsupported versions"`.   Wie sollte ich vorgehen?
 
 Die unterstützte TLS-Mindestversion in AKS ist TLS 1.2.
 

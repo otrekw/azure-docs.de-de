@@ -8,28 +8,24 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: how-to
-ms.date: 11/19/2019
-ms.openlocfilehash: 60b100e1100b8a4925a967f8b7265f1612e5beb7
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.date: 12/08/2020
+ms.openlocfilehash: d4bde21dd13b562ffbb51b27ef083ee53685397a
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95018904"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007964"
 ---
 # <a name="add-contributors-to-your-app"></a>Hinzufügen von Mitwirkenden zu Ihrer App
 
-Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Projektmitarbeiter können das Modell ändern und die App trainieren und veröffentlichen.
-
-[!INCLUDE [Manage collaborators and contributors based on migrated or not-migrated apps](./includes/manage-contributor-collaborator-migration.md)]
+Ein App-Besitzer kann Mitwirkende zu Apps hinzufügen. Diese Mitwirkenden können das Modell ändern und die App trainieren und veröffentlichen. Sobald Sie Ihr Konto [migriert](luis-migration-authoring.md) haben, werden _Mitwirkende_ für die Erstellungsressource im Azure-Portal verwaltet. Verwenden Sie dazu die Seite **Zugriffssteuerung (IAM)** . Fügen Sie einen Benutzer mit der E-Mail-Adresse des Mitarbeiters und der Rolle _Mitwirkender_ hinzu.
 
 ## <a name="add-contributor-to-azure-authoring-resource"></a>Hinzufügen von Mitwirkenden zu einer Azure-Erstellungsressource
-
-Das folgende Verfahren gilt für alle Benutzer, die **migriert** haben, um die Azure-Erstellungsressource zu verwenden.
 
 Sie haben migriert, wenn Ihre LUIS-Erstellungsumgebung im LUIS-Portal auf der Seite **Verwalten -> Azure-Ressourcen** an eine Erstellungsressource gebunden ist.
 
 1. Suchen Sie im Azure-Portal nach der Language Understanding-Erstellungsressource (LUIS-Ressource). Sie hat den Typ `LUIS.Authoring`.
-1. Wählen Sie auf der **Zugriffssteuerung (IAM)** -Seite der Ressource die Option **+Hinzufügen** aus, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
+1. Wählen Sie auf der **Zugriffssteuerung (IAM)**-Seite der Ressource die Option **+Hinzufügen** aus, und wählen Sie dann **Rollenzuweisung hinzufügen** aus.
 
     ![Im Azure-Portal eine Rollenzuweisung für die Erstellungsressource hinzufügen.](./media/luis-how-to-collaborate/authoring-resource-access-control-add-role.png)
 
@@ -41,26 +37,15 @@ Sie haben migriert, wenn Ihre LUIS-Erstellungsumgebung im LUIS-Portal auf der Se
 
     Wenn Sie Probleme mit dieser Rollenzuweisung haben, lesen Sie [Azure-Rollenzuweisungen ](../../role-based-access-control/role-assignments-portal.md) und [Probleme mit RBAC-Rollenzuweisungen](../../role-based-access-control/troubleshooting.md#problems-with-azure-role-assignments).
 
-## <a name="add-collaborator-to-luis-app"></a>Hinzufügen eines Projektmitarbeiters zu einer LUIS-App
+## <a name="view-the-app-as-a-contributor"></a>Anzeigen der App als Mitwirkender
 
-Das folgende Verfahren gilt für alle Benutzer, die **nicht migriert** haben, um die Azure-Erstellungsressource zu verwenden.
+Nachdem Sie als Mitwirkender hinzugefügt wurden, [melden Sie sich im LUIS-Portal an](sign-in-luis-portal.md).
 
-Sie haben nicht migriert, wenn Ihre LUIS-Erstellungsumgebung im LUIS-Portal auf der Seite **Verwalten -> Azure-Ressourcen** nicht an eine Erstellungsressource gebunden ist.
-
-Eine App hat einen einzelnen Autor, den Besitzer, sie kann aber viele Mitarbeiter aufweisen. Um Projektmitarbeitern das Bearbeiten Ihrer LUIS-App zu ermöglichen, müssen Sie ihre E-Mail-Adresse, die sie für den Zugriff auf das LUIS-Portal verwenden, zur Liste der Mitwirkenden hinzufügen. Nach dem Hinzufügen wird die App in ihrem LUIS-Portal angezeigt.
-
-1. Wählen Sie im Menü rechts oben **Verwalten** und dann im linken Menü **Projektmitarbeiter** aus.
-
-1. Wählen Sie auf der Symbolleiste **Projektmitarbeiter hinzufügen** aus.
-
-1. Geben Sie die E-Mail-Adresse ein, die der Projektmitarbeiter für die Anmeldung beim LUIS-Portal verwendet.
-
-    ![Hinzufügen der E-Mail-Adresse des Projektmitarbeiters](./media/luis-how-to-collaborate/add-collaborator-pop-up.png)
-
+[!INCLUDE [switch azure directories](includes/switch-azure-directories.md)]
 
 ### <a name="users-with-multiple-emails"></a>Benutzer mit mehreren E-Mail-Adressen
 
-Wenn Sie Mitwirkende/Projektmitarbeiter zu einer LUIS-App hinzufügen, geben Sie die genauen E-Mail-Adressen an. Während ein Einzelbenutzer in Azure Active Directory (Azure AD) mehrere E-Mail-Konten haben kann, die austauschbar verwendet werden, erfordert LUIS, dass sich der Benutzer mit der E-Mail-Adresse anmeldet, die beim Hinzufügen des Mitwirkenden/Projektmitarbeiters angegeben wurde.
+Wenn Sie Mitwirkende zu einer LUIS-App hinzufügen, geben Sie die genauen E-Mail-Adressen an. Während ein Einzelbenutzer in Azure Active Directory (Azure AD) mehrere E-Mail-Konten haben kann, die austauschbar verwendet werden, erfordert LUIS, dass sich der Benutzer mit der E-Mail-Adresse anmeldet, die beim Hinzufügen des Mitwirkenden angegeben wurde.
 
 <a name="owner-and-collaborators"></a>
 

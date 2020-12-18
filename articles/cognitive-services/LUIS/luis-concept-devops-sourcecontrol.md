@@ -5,12 +5,12 @@ ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: cf5c88df4e2ac6b95e99a3a78b1bf1e45bf534ed
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 1f5c0c7a877964eeb480fa958c7e76eb5706122f
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95535553"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97561272"
 ---
 # <a name="devops-practices-for-luis"></a>DevOps-Methoden für LUIS
 
@@ -98,7 +98,7 @@ Unabhängig von Ihrer Verzweigungsstrategie besteht das Hauptprinzip darin, dass
 
 So unterstützen Sie das unabhängige Arbeiten in Branches bei einem LUIS-Projekt
 
-- **Der Masterbranch verfügt über eine eigene LUIS-App.** Diese App stellt den aktuellen Zustand der Projektmappe für Ihr Projekt dar. Die aktuelle aktive Version sollte dabei immer der `.lu`-Quelle im Masterbranch zugeordnet sein. Alle Updates an der `.lu`-Quelle für diese App sollten überprüft und getestet werden, damit diese App jederzeit in Buildumgebungen (z. B. in der Produktion) bereitgestellt werden kann. Wenn Updates an der `.lu`-Quelle aus einem Featurebranch im Master zusammengeführt werden, sollten Sie eine neue Version in der LUIS-App erstellen und [die Versionsnummer aktualisieren](#versioning).
+- **Der Mainbranch verfügt über eine eigene LUIS-App:** Diese App stellt den aktuellen Zustand der Projektmappe für Ihr Projekt dar. Die aktuell aktive Version sollte dabei immer der `.lu`-Quelle im Mainbranch zugeordnet sein. Alle Updates an der `.lu`-Quelle für diese App sollten überprüft und getestet werden, damit diese App jederzeit in Buildumgebungen (z. B. in der Produktion) bereitgestellt werden kann. Wenn Updates an der `.lu`-Quelle aus einem Featurebranch im Mainbranch zusammengeführt werden, sollten Sie eine neue Version in der LUIS-App erstellen und [die Versionsnummer aktualisieren](#versioning).
 
 - **Jeder Featurebranch muss eine eigene Instanz einer LUIS-App verwenden**. Die Entwickler arbeiten mit dieser App in einem Featurebranch ohne Auswirkung auf Entwickler, die in anderen Branches arbeiten. Eine App in einem solchen Entwicklungsbranch ist eine Arbeitskopie, die gelöscht werden sollte, wenn der Featurebranch gelöscht wird.
 
@@ -108,13 +108,13 @@ So unterstützen Sie das unabhängige Arbeiten in Branches bei einem LUIS-Projek
 
 Entwickler können wie folgt unabhängig von anderen Branches an Updates für eine LUIS-App arbeiten:
 
-1. Erstellen Sie einen Featurebranch aus dem Hauptbranch (abhängig von der Verzweigungsstrategie, in der Regel Master- oder Entwicklungsbranch).
+1. Erstellen Sie einen Featurebranch aus dem Mainbranch (abhängig von der Branchstrategie, in der Regel Main- oder Entwicklungsbranch).
 
 1. [Erstellen Sie eine neue LUIS-App im LUIS-Portal](./luis-how-to-start-new-app.md) (die *„Entwicklungsbranch-App“* ), die ausschließlich der Unterstützung der Arbeit in diesem Featurebranch dient.
 
    * Wenn die `.lu`-Quelle für die Projektmappe bereits in Ihrem Branch vorhanden ist, da sie nach der Arbeit in einem anderen Branch zuvor im Projekt gespeichert wurde, erstellen Sie Ihren eigenen Entwicklungsbranch der LUIS-App, indem Sie die `.lu`-Datei importieren.
 
-   * Wenn Sie mit der Arbeit an einem neuen Projekt beginnen, verfügen Sie noch nicht über die `.lu`-Quelle für die LUIS-Master-App im Repository. Sie erstellen die `.lu`-Datei, indem Sie Ihre Entwicklungsbranch-App im Portal exportieren, nachdem Sie die Arbeit am Featurebranch abgeschlossen haben, und sie als Teil Ihres PR einreichen.
+   * Wenn Sie mit der Arbeit an einem neuen Projekt beginnen, verfügen Sie noch nicht über die `.lu`-Quelle für den Mainbranch der LUIS-App im Repository. Sie erstellen die `.lu`-Datei, indem Sie Ihre Entwicklungsbranch-App im Portal exportieren, nachdem Sie die Arbeit am Featurebranch abgeschlossen haben, und sie als Teil Ihres PR einreichen.
 
 1. Arbeiten Sie an der aktiven Version Ihrer Entwicklungsbranch-App, um die erforderlichen Änderungen zu implementieren. Es wird empfohlen, sämtliche Arbeiten am Featurebranch in einer einzigen Version Ihrer Entwicklungsbranch-App auszuführen. Wenn Sie in Ihrer Entwicklungsbranch-App mehrere Version erstellen, achten Sie beim Auslösen Ihres PR genau darauf, welche Version die Änderungen enthält, die Sie einchecken möchten.
 
@@ -124,7 +124,7 @@ Entwickler können wie folgt unabhängig von anderen Branches an Updates für ei
 
 1. Checken Sie Ihre Updates ein, und laden Sie zum Peer Review Ihrer Updates ein. Wenn Sie GitHub verwenden, lösen Sie einen [Pull Request](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/about-pull-requests) aus.
 
-1. Wenn die Änderungen genehmigt werden, führen Sie die Updates im Masterbranch zusammen. An diesem Punkt erstellen Sie eine neue [Version](./luis-how-to-manage-versions.md) der LUIS-*Master*-App, für die Sie die aktualisierte `.lu` im Masterbranch verwenden. Überlegungen zum Festlegen von Versionsnamen finden Sie unter [Versionsverwaltung](#versioning).
+1. Wenn die Änderungen genehmigt werden, führen Sie die Updates im Mainbranch zusammen. An diesem Punkt erstellen Sie eine neue [Version](./luis-how-to-manage-versions.md) des *Mainbranch* der LUIS-App, für die Sie die aktualisierte `.lu`-Quelle im Mainbranch verwenden. Überlegungen zum Festlegen von Versionsnamen finden Sie unter [Versionsverwaltung](#versioning).
 
 1. Wenn der Featurebranch gelöscht wird, empfiehlt es sich, auch den Entwicklungsbranch der LUIS-App zu löschen, den Sie für die Arbeit am Featurebranch erstellt haben.
 
@@ -150,7 +150,7 @@ Sie können es mehreren Entwicklern ermöglichen, gleichzeitig am selben Feature
 
 ### <a name="incorporating-changes-from-one-branch-to-another-with-rebase-or-merge"></a>Integrieren von Änderungen aus einem Branch in einen anderen per Rebase oder Merge
 
-Andere Entwickler in Ihrem Team, die in einem anderen Branch arbeiten, haben möglicherweise Updates an der `.lu`-Quelle vorgenommen und mit dem Masterbranch zusammengeführt, nachdem Sie Ihren Featurebranch erstellt hatten. Möglicherweise möchten Sie deren Änderungen in Ihre Arbeitsversion einbinden, bevor Sie weitere eigene Änderungen an Ihrem Featurebranch vornehmen. Dazu können Sie ein [Rebase oder Merge im Masterbranch ausführen](https://git-scm.com/book/en/v2/Git-Branching-Rebasing), genau wie bei anderen Coderessourcen. Da die LUIS-App im LUDown-Format für Menschen lesbar ist, unterstützt sie die Zusammenführung mit Standardmergetools.
+Andere Entwickler in Ihrem Team, die in einem anderen Branch arbeiten, haben möglicherweise Updates an der `.lu`-Quelle vorgenommen und mit dem Mainbranch zusammengeführt, nachdem Sie Ihren Featurebranch erstellt hatten. Möglicherweise möchten Sie deren Änderungen in Ihre Arbeitsversion einbinden, bevor Sie weitere eigene Änderungen an Ihrem Featurebranch vornehmen. Dazu können Sie ein [Rebase oder Merge im Mainbranch ausführen](https://git-scm.com/book/en/v2/Git-Branching-Rebasing), genau wie bei anderen Coderessourcen. Da die LUIS-App im LUDown-Format für Menschen lesbar ist, unterstützt sie die Zusammenführung mit Standardmergetools.
 
 Wenn Sie ein Rebase für Ihre LUIS-App in einem Featurebranch ausführen, befolgen Sie diese Tipps:
 
@@ -162,7 +162,7 @@ Wenn Sie ein Rebase für Ihre LUIS-App in einem Featurebranch ausführen, befolg
 
 ### <a name="merge-prs"></a>Zusammenführen von Pull Requests
 
-Nachdem Ihr Pull Request (PR) genehmigt wurde, können Sie Ihre Änderungen mit dem Masterbranch zusammenführen. Für die LUDown-Quelle einer LUIS-App gelten keine besonderen Überlegungen: Sie ist für Menschen lesbar und unterstützt damit das Zusammenführen mit Standardmergetools. Sämtliche Mergekonflikte können auf die gleiche Weise wie bei anderen Quelldateien behandelt werden.
+Nachdem Ihr Pull Request (PR) genehmigt wurde, können Sie Ihre Änderungen mit dem Mainbranch zusammenführen. Für die LUDown-Quelle einer LUIS-App gelten keine besonderen Überlegungen: Sie ist für Menschen lesbar und unterstützt damit das Zusammenführen mit Standardmergetools. Sämtliche Mergekonflikte können auf die gleiche Weise wie bei anderen Quelldateien behandelt werden.
 
 Nachdem Ihr PR zusammengeführt wurde, empfiehlt es sich, eine Bereinigung durchzuführen:
 
@@ -173,7 +173,7 @@ Nachdem Ihr PR zusammengeführt wurde, empfiehlt es sich, eine Bereinigung durch
 Sie sollten wie auch bei anderen Anwendungscoderessourcen Komponententests für LUIS-App-Updates schreiben. Verwenden Sie Continuous Integration-Workflows, um Folgendes zu testen:
 
 - Updates in einem PR – bevor der PR zusammengeführt wird
-- Den Masterbranch der LUIS-App – nachdem ein PR genehmigt wurde und die Änderungen im Master zusammengeführt wurden
+- Der Mainbranch der LUIS-App wurde nach einem PR genehmigt, und die Änderungen wurden im Mainbranch zusammengeführt.
 
 Weitere Informationen finden Sie unter [Testen für LUIS DevOps](luis-concept-devops-testing.md). Weitere Informationen zum Implementieren von Workflows finden Sie unter [Automatisierungsworkflows für LUIS DevOps](luis-concept-devops-automation.md).
 
@@ -185,9 +185,9 @@ Eine LUIS-App im LUDown-Format ist für Menschen lesbar. Damit unterstützt sie 
 
 Eine Anwendung besteht aus mehreren Komponenten. Dies kann z. B. ein Bot sein, der in [Azure Bot Service](/azure/bot-service/bot-service-overview-introduction?view=azure-bot-service-4.0), [QnA Maker](https://www.qnamaker.ai/), [Azure Speech Service](../speech-service/overview.md) usw. ausgeführt wird. Um das Ziel von lose gekoppelten Anwendungen zu erreichen, verwenden Sie eine [Versionskontrolle](/azure/devops/learn/git/what-is-version-control), damit jede Komponente einer Anwendung unabhängig versioniert wird. Auf diese Weise können Entwickler Breaking Changes oder Updates erkennen, indem sie einfach die Versionsnummer überprüfen. Es ist einfacher, die LUIS-App unabhängig von anderen Komponenten zu versionieren, wenn Sie sie in einem eigenen Repository verwalten.
 
-Auf die LUIS-App im Masterbranch sollte ein Versionsverwaltungsschema angewandt werden. Wenn Sie Updates an der `.lu`-Datei für eine LUIS-App im Masterbranch zusammenführen, importieren Sie dann diese aktualisierte Quelle in eine neue Version der LUIS-App für den Masterbranch.
+Auf die LUIS-App im Mainbranch sollte ein Versionsverwaltungsschema angewendet werden. Wenn Sie Updates an der `.lu`-Datei für eine LUIS-App im Mainbranch zusammenführen, importieren Sie dann diese aktualisierte Quelle in eine neue Version der LUIS-App für den Mainbranch.
 
-Es wird die Verwendung eines numerischen Versionsverwaltungsschemas für die Masterversion der LUIS-App empfohlen, z. B.:
+Es wird die Verwendung eines numerischen Versionsverwaltungsschemas für die Hauptversion der LUIS-App empfohlen, zum Beispiel:
 
 `major.minor[.build[.revision]]`
 
@@ -199,7 +199,7 @@ Bei jedem Update wird die letzte Ziffer der Versionsnummer erhöht.
 * Nebenversion: Eine kleinere, abwärtskompatible Änderung, z. B. nach einem bedeutenden neuen Training
 * Build: Keine Funktionsänderung, sondern nur ein anderer Build
 
-Nachdem Sie die Versionsnummer für die aktuelle Revision Ihrer LUIS-Master-App festgelegt haben, müssen Sie die neue App-Version erstellen und testen und sie an einem Endpunkt veröffentlichen, von dem aus sie in unterschiedlichen Buildumgebungen verwendet werden kann, z. B. bei der Qualitätssicherung oder in der Produktion. Es wird dringend empfohlen, alle diese Schritte in einem Continuous Integration-Workflow (CI) zu automatisieren.
+Nachdem Sie die Versionsnummer für die aktuelle Revision des Mainbranch Ihrer LUIS-App festgelegt haben, müssen Sie die neue App-Version erstellen, testen und an einem Endpunkt veröffentlichen, von dem aus sie in unterschiedlichen Buildumgebungen verwendet werden kann, z. B. bei der Qualitätssicherung oder in der Produktion. Es wird dringend empfohlen, alle diese Schritte in einem Continuous Integration-Workflow (CI) zu automatisieren.
 
 Siehe:
 - Unter den [Automatisierungsworkflows](luis-concept-devops-automation.md) finden Sie ausführliche Informationen zum Implementieren eines CI-Workflows zum Testen und Veröffentlichen einer LUIS-App.
@@ -207,9 +207,9 @@ Siehe:
 
 ### <a name="versioning-the-feature-branch-luis-app"></a>Versionsverwaltung der LUIS-App im Featurebranch
 
-Wenn Sie in einem Entwicklungsbranch der LUIS-App arbeiten, den Sie erstellt haben, um die Arbeit in einem Featurebranch zu unterstützen, exportieren Sie Ihre App nach Abschluss Ihrer Arbeit und fügen die aktualisierte `'lu`-Datei in Ihren PR ein. Der Branch in Ihrem Repository und der Entwicklungsbranch der LUIS-App sollten gelöscht werden, nachdem der PR mit dem Master zusammengeführt wurde. Da diese App ausschließlich zur Unterstützung der Arbeit im Featurebranch dient, gibt es kein spezifisches Versionsverwaltungsschema, das Sie auf diese App anwenden müssen.
+Wenn Sie in einem Entwicklungsbranch der LUIS-App arbeiten, den Sie erstellt haben, um die Arbeit in einem Featurebranch zu unterstützen, exportieren Sie Ihre App nach Abschluss Ihrer Arbeit und fügen die aktualisierte `'lu`-Datei in Ihren PR ein. Der Branch in Ihrem Repository und der Entwicklungsbranch der LUIS-App sollten gelöscht werden, nachdem der PR mit dem Mainbranch zusammengeführt wurde. Da diese App ausschließlich zur Unterstützung der Arbeit im Featurebranch dient, gibt es kein spezifisches Versionsverwaltungsschema, das Sie auf diese App anwenden müssen.
 
-Erst wenn die Änderungen in Ihrem PR mit dem Master zusammengeführt werden, sollte die Versionsverwaltung angewandt werden, damit alle Updates am Master unabhängig voneinander versioniert werden.
+Erst wenn die Änderungen in Ihrem PR mit dem Mainbranch zusammengeführt werden, sollte die Versionsverwaltung angewandt werden, damit alle Updates am Mainbranch unabhängig voneinander versioniert werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

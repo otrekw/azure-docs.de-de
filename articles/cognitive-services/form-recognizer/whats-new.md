@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 05/19/2020
 ms.author: pafarley
-ms.openlocfilehash: 03f2109a32cd8a8c2643f3c2aa74900f4edd1cee
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 3f71cef19d25a7f987af4147ae0a889280e49bd1
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852845"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563159"
 ---
 # <a name="whats-new-in-form-recognizer"></a>Neuerungen in der Formularerkennung
 
@@ -23,6 +23,8 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
 ## <a name="november-2020"></a>November 2020
 
 ### <a name="new-features"></a>Neue Funktionen
+
+**Die öffentliche Vorschauversion 2 der Formularerkennung v2.1 ist jetzt verfügbar.** V2.1-preview.2 wurde veröffentlicht, einschließlich der folgenden Features: 
 
 - **Neues vordefiniertes Rechnungsmodell** – Mit dem neuen vordefinierten Rechnungsmodell können Kunden Rechnungen in verschiedenen Formaten erstellen und strukturierte Daten zurückgeben, um die Rechnungsverarbeitung zu automatisieren. Es kombiniert unsere leistungsstarken Funktionen zur optischen Zeichenerkennung (Optical Character Recognition, OCR) mit Deep Learning-Modellen zum Rechnungsverständnis, um wichtige Informationen aus Rechnungen in englischer Sprache zu extrahieren. Es extrahiert den Text, Tabellen und Informationen wie Kunde, Anbieter, Rechnungs-ID, Fälligkeitsdatum für die Rechnung, Summe, fälliger Betrag, Steuerbetrag, Lieferadresse, Rechnungsadresse und mehr.
 
@@ -37,7 +39,7 @@ Der Formularerkennungsdienst wird fortlaufend aktualisiert. In diesem Artikel fi
  
   > [Weitere Informationen zur Layoutextraktion](concept-layout.md)
 
-- **Update der Clientbibliothek** – Die neueste Version der [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
+- **Update der Clientbibliothek:** Die aktuelle Version der [Clientbibliotheken](quickstarts/client-library.md) für .NET, Python, Java und JavaScript unterstützt die Formularerkennung 2.1-API.
 - **Neue unterstützte Sprache: Japanisch** – Die folgenden neuen Sprachen werden jetzt unterstützt: für `AnalyzeLayout` und `AnalyzeCustomForm`: Japanisch (`ja`). [Sprachunterstützung](language-support.md)
 - **Textzeilenstilanzeige (handschriftlich/anders) (nur lateinische Sprachen)**  – Die Formularerkennung gibt jetzt ein `appearance`-Objekt aus, das – zusammen mit einer Zuverlässigkeitsbewertung – klassifiziert, ob jede Textzeile von Hand geschrieben wurde oder nicht. Dieses Feature wird nur für lateinische Sprachen unterstützt.
 - **Qualitätsverbesserungen** – Extraktionsverbesserungen, einschließlich Verbesserungen der einstelligen Extraktion.
