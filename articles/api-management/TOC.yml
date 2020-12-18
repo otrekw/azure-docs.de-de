@@ -110,6 +110,8 @@
       items:
         - name: Kapazitätsmetrik
           href: api-management-capacity.md
+        - name: Planen und Verwalten von Kosten
+          href: plan-manage-costs.md
         - name: Aktualisieren und Skalieren
           href: upgrade-and-scale.md
         - name: Konfigurieren der automatischen Skalierung

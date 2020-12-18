@@ -133,7 +133,7 @@
           href: time-series-insights-environment-mitigate-latency.md
         - name: Diagnostizieren und Behandeln von Problemen
           href: time-series-insights-diagnose-and-solve-problems.md
-- name: Verweis
+- name: Referenz
   items:
     - name: Time Series Insights
       items:
