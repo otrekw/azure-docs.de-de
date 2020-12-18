@@ -7,12 +7,12 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 09/07/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: a71c1a0df1a72e3831fa54a041539f62b38a0aca
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: 19c27dc80f9af013c458663c9c7afb0033683acd
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "95999908"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97348066"
 ---
 # <a name="create-luis-resources"></a>Erstellen von LUIS-Ressourcen
 
@@ -51,16 +51,13 @@ Um den Besitzer einer Ressource zu ändern, können Sie eine der folgenden Aktio
 * Übertragen Sie das [Eigentum](../../cost-management-billing/manage/billing-subscription-transfer.md) Ihres Abonnements.
 * Exportieren Sie die LUIS-App als Datei, und importieren Sie die App anschließend in einem anderen Abonnement. Die Exportfunktion finden Sie im LUIS-Portal auf der Seite **Meine Apps**.
 
-
 ## <a name="resource-limits"></a>Ressourceneinschränkungen
 
 ### <a name="authoring-key-creation-limits"></a>Grenzwerte für die Erstellung von Erstellungsschlüsseln
 
-Sie können bis zu 10 Erstellungsschlüssel pro Region und Abonnement erstellen.
+Sie können bis zu 10 Erstellungsschlüssel pro Region und Abonnement erstellen. Veröffentlichungsregionen unterscheiden sich von Erstellungsregionen. Stellen Sie sicher, dass Sie eine App in der Erstellungsregion erstellen, die der Veröffentlichungsregion entspricht, in der sich Ihre Clientanwendung befinden soll. Weitere Informationen wie Erstellungsregionen Veröffentlichungsregionen zugeordnet werden können, finden Sie unter [Erstellungs- und Veröffentlichungsregionen und die dazugehörigen Schlüssel](luis-reference-regions.md). 
 
-Weitere Informationen finden Sie unter [Schlüsselgrenzwerte](luis-limits.md#key-limits) und [Azure-Regionen](luis-reference-regions.md).
-
-Veröffentlichungsregionen unterscheiden sich von Erstellungsregionen. Stellen Sie sicher, dass Sie eine App in der Erstellungsregion erstellen, die der Veröffentlichungsregion entspricht, in der sich Ihre Clientanwendung befinden soll.
+Weitere Informationen finden Sie unter [Erstellungsressourcenlimits](luis-limits.md#key-limits).
 
 ### <a name="errors-for-key-usage-limits"></a>Fehler für Grenzwerte bei der Schlüsselnutzung
 

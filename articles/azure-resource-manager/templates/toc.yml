@@ -290,6 +290,8 @@
         - name: Verwenden der Integritätsprüfung im Bereitstellungs-Manager
           displayName: adm
           href: deployment-manager-tutorial-health-check.md
+    - name: Microsoft Learn-Pfad zu Vorlagen
+      href: /learn/paths/deploy-manage-resource-manager-templates/
 - name: Konzepte
   items:
     - name: Bewährte Methoden für Vorlagen
@@ -325,7 +327,7 @@
           href: template-expressions.md
         - name: Parameter
           href: template-parameters.md
-        - name: Variablen
+        - name: Variables
           href: template-variables.md
         - name: Benutzerdefinierte Funktionen
           href: template-user-defined-functions.md

@@ -372,7 +372,7 @@
               href: search-indexer-howto-access-trusted-service-exception.md
             - name: Zugreifen über private Endpunkte
               href: search-indexer-howto-access-private.md
-        - name: Identitätsbasierter Zugriff
+        - name: Sicherheit auf Dokumentebene
           items:
             - name: Sicherheitsfilter
               href: search-security-trimming-for-azure-search.md
@@ -550,6 +550,8 @@
           href: 'https://www.pluralsight.com/courses/azure-adding-search-abilities-apps'
         - name: Developer-Kurs (Pluralsight)
           href: 'https://www.pluralsight.com/courses/microsoft-azure-textual-content-search-enabling'
+    - name: Partnerlösungen
+      href: resource-partners-knowledge-mining.md
     - name: Häufig gestellte Fragen
       href: search-faq-frequently-asked-questions.md
     - name: Preise

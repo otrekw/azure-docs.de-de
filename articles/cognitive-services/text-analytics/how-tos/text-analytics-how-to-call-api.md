@@ -10,16 +10,34 @@ ms.subservice: text-analytics
 ms.topic: conceptual
 ms.date: 12/02/2020
 ms.author: aahi
-ms.openlocfilehash: 3d3c452dd883316520e0c28f01c241af74d597c8
-ms.sourcegitcommit: c4246c2b986c6f53b20b94d4e75ccc49ec768a9a
+ms.custom: references_regions
+ms.openlocfilehash: bf53ce5ed3f9505572538533263f0d17c5dcbf45
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/04/2020
-ms.locfileid: "96602783"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562564"
 ---
 # <a name="how-to-call-the-text-analytics-rest-api"></a>Aufrufen der Textanalyse-REST-API
 
 In diesem Artikel werden mithilfe der Textanalyse-REST-API und [Postman](https://www.postman.com/downloads/) wichtige Konzepte veranschaulicht. Die API bietet mehrere synchrone und asynchrone Endpunkte für die Verwendung der Dienstfeatures. 
+
+## <a name="create-a-text-analytics-resource"></a>Erstellen einer Textanalyseressource
+
+> [!NOTE]
+> * Sie benötigen eine Ressource der Textanalyse mit einem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) des Typs „Standard (S)“, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten. Der `/analyze`-Endpunkt ist in Ihrem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) enthalten.
+
+Bevor Sie die Textanalyse-API verwenden, müssen Sie eine Azure-Ressource mit einem Schlüssel und Endpunkt für Ihre Anwendungen erstellen. 
+
+1.  Melden Sie sich zunächst im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) an, und erstellen Sie eine neue Ressource der Textanalyse, sofern Sie noch keine haben. Wählen Sie einen [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) aus.
+
+2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
+
+3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
+
+## <a name="using-the-api-synchronously"></a>Synchrones Verwenden der API
+
+Sie können die Textanalyse-API synchron aufrufen (Szenarios mit geringer Latenz). Sie müssen jede API (Feature) einzeln aufrufen, wenn Sie die API synchron verwenden. Wenn Sie mehrere Features aufrufen müssen, sehen Sie sich den Abschnitt unten an, wie Sie die Textanalyse-API asynchron aufrufen. 
 
 ## <a name="using-the-api-asynchronously"></a>Asynchrones Verwenden der API
 
@@ -48,24 +66,16 @@ In der folgenden Tabelle wird gezeigt, welche Features asynchron verwendet werde
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-## <a name="prerequisites"></a>Voraussetzungen
-
-
-> [!NOTE]
-> * Sie benötigen eine Ressource der Textanalyse mit einem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) des Typs „Standard (S)“, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten.
-
-1.  Melden Sie sich zunächst im [Azure-Portal](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics) an, und erstellen Sie eine neue Ressource der Textanalyse, sofern Sie noch keine haben. Wählen Sie den **Tarif Standard (S)** aus, wenn Sie die Endpunkte `/analyze` oder `/health` verwenden möchten. Der `/analyze`-Endpunkt ist in Ihrem [Tarif](https://azure.microsoft.com/pricing/details/cognitive-services/text-analytics/) enthalten.
-
-2.  Wählen Sie die Region aus, die Sie für Ihren Endpunkt verwenden möchten.  Beachten Sie, dass die Endpunkte `/analyze` und `/health` nur in den folgenden Regionen verfügbar sind: USA, Westen 2; USA, Osten 2; USA, Mitte; Europa, Norden; Europa, Westen.
-
-3.  Erstellen Sie die Ressource der Textanalyse, und wechseln Sie links auf der Seite zum Blatt mit den Schlüsseln und Endpunkten. Kopieren Sie den Schlüssel, mit dem Sie später die APIs aufrufen werden. Sie werden ihn später als Wert für den Header `Ocp-Apim-Subscription-Key` hinzufügen.
-
 
 <a name="json-schema"></a>
 
-## <a name="api-request-format"></a>API-Anforderungsformat
+## <a name="api-request-formats"></a>API-Anforderungsformate
+
+Sie können sowohl synchrone als auch asynchrone Aufrufe an die Textanalyse-API senden.
 
 #### <a name="synchronous"></a>[Synchron](#tab/synchronous)
+
+### <a name="synchronous-requests"></a>Synchrone Anforderungen
 
 Das Format für API-Anforderungen ist für alle synchronen Vorgänge identisch. Dokumente werden als unformatierter, unstrukturierter Text in einem JSON-Objekt übermittelt. XML wird nicht unterstützt. Das JSON-Schema besteht aus den folgenden Elementen.
 
@@ -89,7 +99,9 @@ Der folgende Code ist ein Beispiel einer API-Anforderung für die synchronen End
 }
 ```
 
-#### <a name="analyze"></a>[Analyse](#tab/analyze)
+#### <a name="asynchronous"></a>[Asynchron](#tab/asynchronous)
+
+### <a name="asynchronous-requests-to-the-analyze-endpoint"></a>Asynchrone Anforderungen an den `/analyze`-Endpunkt
 
 > [!NOTE]
 > Das neueste Vorabrelease der Textanalyse-Clientbibliothek ermöglicht es Ihnen, asynchrone Analyze-Vorgänge mithilfe eines Clientobjekts aufzurufen. Beispiele dazu finden Sie auf GitHub:
@@ -154,7 +166,7 @@ Mit dem Endpunkt `/analyze` können Sie auswählen, welche der unterstützten Fe
 
 ```
 
-#### <a name="text-analytics-for-health"></a>[Textanalyse für Gesundheit](#tab/health)
+### <a name="asynchronous-requests-to-the-health-endpoint"></a>Asynchrone Anforderungen an den `/health`-Endpunkt
 
 Das Format für API-Anforderungen an die von der Textanalyse für das Gesundheitssystem gehosteten API ist identisch mit dem für den Container. Dokumente werden als unformatierter, unstrukturierter Text in einem JSON-Objekt übermittelt. XML wird nicht unterstützt. Das JSON-Schema besteht aus den folgenden Elementen.  Füllen Sie das [Anforderungsformular für Cognitive Services](https://aka.ms/csgate) aus, und reichen Sie es ein, um Zugriff auf die öffentliche Vorschauversion der Textanalyse für das Gesundheitssystem anzufordern. Für die Verwendung von Text Analytics for Health fallen keine Gebühren an. 
 
@@ -194,6 +206,8 @@ Fügen Sie in Postman (oder einem anderen Web-API-Testtool) den Endpunkt für da
 
 #### <a name="synchronous"></a>[Synchron](#tab/synchronous)
 
+### <a name="endpoints-for-sending-synchronous-requests"></a>Endpunkte für das Senden synchroner Anforderungen
+
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
 | Spracherkennung | POST | `<your-text-analytics-resource>/text/analytics/v3.0/languages` |
@@ -204,14 +218,16 @@ Fügen Sie in Postman (oder einem anderen Web-API-Testtool) den Endpunkt für da
 | Erkennung benannter Entitäten – personenbezogene Informationen | POST | `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii` |
 | Erkennung benannter Entitäten – geschützte Gesundheitsdaten | POST |  `<your-text-analytics-resource>/text/analytics/v3.0/entities/recognition/pii?domain=phi` |
 
-#### <a name="analyze"></a>[Analyse](#tab/analyze)
+#### <a name="asynchronous"></a>[Asynchron](#tab/asynchronous)
+
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-analyze-endpoint"></a>Endpunkte für das Senden asynchroner Anforderungen an den `/analyze`-Endpunkt
 
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
 | Analyseauftrag übermitteln | POST | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze` |
 | Analysestatus und -ergebnisse abrufen | GET | `https://<your-text-analytics-resource>/text/analytics/v3.1-preview.3/analyze/jobs/<Operation-Location>` |
 
-#### <a name="text-analytics-for-health"></a>[Textanalyse für Gesundheit](#tab/health)
+### <a name="endpoints-for-sending-asynchronous-requests-to-the-health-endpoint"></a>Endpunkte für das Senden asynchroner Anforderungen an den `/health`-Endpunkt
 
 | Funktion | Anforderungstyp | Ressourcenendpunkte |
 |--|--|--|
@@ -267,6 +283,8 @@ Beachten Sie, dass für beide asynchronen `/analyze`- oder `/health`-Vorgänge d
  
 # <a name="synchronous"></a>[Synchron](#tab/synchronous)
 
+### <a name="example-responses-for-synchronous-operation"></a>Beispielantworten für synchrone Vorgänge
+
 Die Antworten der synchronen Endpunkte variieren je nach verwendetem Endpunkt. In den folgenden Artikeln finden Sie einige Antwortbeispiele.
 
 + [Sprachenerkennung](text-analytics-how-to-language-detection.md#step-3-view-the-results)
@@ -274,70 +292,15 @@ Die Antworten der synchronen Endpunkte variieren je nach verwendetem Endpunkt. I
 + [Standpunktanalyse](text-analytics-how-to-sentiment-analysis.md#view-the-results)
 + [Entitätserkennung](text-analytics-how-to-entity-linking.md#view-results)
 
-# <a name="analyze"></a>[Analyse](#tab/analyze)
+# <a name="asynchronous"></a>[Asynchron](#tab/asynchronous)
+
+### <a name="example-responses-for-asynchronous-operations"></a>Beispielantworten für asynchrone Vorgänge
 
 Bei erfolgreicher Ausführung gibt die an den Endpunkt `/analyze` gesendete GET-Anforderung ein Objekt zurück, das die zugewiesenen Tasks enthält. Beispiel: `keyPhraseExtractionTasks`. Diese Tasks enthalten das Antwortobjekt aus dem entsprechenden Textanalyse-Feature. Weitere Informationen finden Sie in den folgenden Artikeln.
 
 + [Schlüsselbegriffserkennung](text-analytics-how-to-keyword-extraction.md#step-3-view-results)
 + [Entitätserkennung](text-analytics-how-to-entity-linking.md#view-results)
-
-
-```json
-{
-  "displayName": "My Analyze Job",
-  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
-  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
-  "createdDateTime": "2020-11-13T04:01:13Z",
-  "expirationDateTime": "2020-11-14T04:01:13Z",
-  "status": "running",
-  "errors": [],
-  "tasks": {
-      "details": {
-          "name": "My Analyze Job",
-          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
-      },
-      "completed": 1,
-      "failed": 0,
-      "inProgress": 2,
-      "total": 3,
-      "keyPhraseExtractionTasks": [
-          {
-              "name": "My Analyze Job",
-              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
-              "results": {
-                  "inTerminalState": true,
-                  "documents": [
-                      {
-                          "id": "doc1",
-                          "keyPhrases": [
-                              "sunny outside"
-                          ],
-                          "warnings": []
-                      },
-                      {
-                          "id": "doc2",
-                          "keyPhrases": [
-                              "favorite Seattle attraction",
-                              "Pike place market"
-                          ],
-                          "warnings": []
-                      }
-                  ],
-                  "errors": [],
-                  "modelVersion": "2020-07-01"
-              }
-          }
-      ]
-  }
-}
-```
-
-# <a name="text-analytics-for-health"></a>[Textanalyse für Gesundheit](#tab/health)
-
-Im folgenden Artikel finden Sie weitere Informationen zur asynchronen API-Antwort der Textanalyse für das Gesundheitssystem:
-
 + [Textanalyse für Gesundheit](text-analytics-for-health.md#hosted-asynchronous-web-api-response)
-
 
 --- 
 
@@ -346,5 +309,5 @@ Im folgenden Artikel finden Sie weitere Informationen zur asynchronen API-Antwor
 * [Übersicht über die Textanalyse](../overview.md)
 * [Häufig gestellte Fragen (FAQ)](../text-analytics-resource-faq.md)</br>
 * [Textanalysen (Produktseite)](//go.microsoft.com/fwlink/?LinkID=759712)
-* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/text-analytics-sdk.md)
+* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
 * [Neuigkeiten](../whats-new.md)

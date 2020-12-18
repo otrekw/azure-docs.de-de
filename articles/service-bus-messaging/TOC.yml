@@ -19,7 +19,7 @@
               href: service-bus-quickstart-portal.md
             - name: Azure PowerShell
               href: service-bus-quickstart-powershell.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: service-bus-quickstart-cli.md
             - name: ARM-Vorlage
               displayName: Resource Manager
@@ -50,7 +50,7 @@
           items:
             - name: Azure-Portal
               href: service-bus-quickstart-topics-subscriptions-portal.md
-            - name: Azure-Befehlszeilenschnittstelle
+            - name: Azure CLI
               href: service-bus-tutorial-topics-subscriptions-cli.md
             - name: ARM-Vorlage
               href: service-bus-resource-manager-namespace-topic.md
@@ -96,6 +96,22 @@
       href: service-bus-azure-and-service-bus-queues-compared-contrasted.md
     - name: Optimieren der Leistung
       href: service-bus-performance-improvements.md
+    - name: Verbund
+      items:
+        - name: Nachrichtenreplikation und regionsübergreifender Verbund
+          href: service-bus-federation-overview.md
+        - name: Tasks und Anwendungen für die Nachrichtenreplikation
+          href: service-bus-federation-replicator-functions.md
+        - name: Muster für Nachrichtenreplikationstasks
+          href: service-bus-federation-patterns.md
+        - name: Konfigurierte Replikationstasks
+          href: service-bus-federation-configuration.md
+        - name: "Replizieren von Ereignissen zwischen Service\_Bus-Entitäten"
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopy'
+        - name: Replizieren von Nachrichten in Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
+        - name: Erfassen von Nachrichten von Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
     - name: Georedundante Notfallwiederherstellung und Georeplikation
       href: service-bus-geo-dr.md
     - name: Asynchrones Messaging und Hochverfügbarkeit

@@ -89,6 +89,22 @@
       href: event-hubs-availability-and-consistency.md
     - name: Skalierbarkeit
       href: event-hubs-scalability.md
+    - name: Verbund
+      items:
+        - name: 'Verbund: mehrere Standorte und mehrere Regionen'
+          href: event-hubs-federation-overview.md
+        - name: Tasks und Anwendungen für die Ereignisreplikation
+          href: event-hubs-federation-replicator-functions.md
+        - name: Muster für Ereignisreplikationstasks
+          href: event-hubs-federation-patterns.md
+        - name: Konfigurierte Replikationstasks
+          href: event-hubs-federation-configuration.md
+        - name: Replizieren von Ereignissen zwischen Event Hubs
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopy'
+        - name: Senden von Ereignissen an Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/EventHubCopyToServiceBus'
+        - name: Erfassen von Ereignissen aus Azure Service Bus
+          href: 'https://github.com/Azure-Samples/azure-messaging-replication-dotnet/tree/main/functions/config/ServiceBusCopyToEventHub'
     - name: Georedundante Notfallwiederherstellung
       items:
         - name: Georedundante Notfallwiederherstellung und Georeplikation

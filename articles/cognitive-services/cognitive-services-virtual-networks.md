@@ -7,14 +7,14 @@ author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 10/07/2020
+ms.date: 12/04/2020
 ms.author: aahi
-ms.openlocfilehash: f79cfce514b81c5829ee7791c18e24d3bc6563b5
-ms.sourcegitcommit: 22da82c32accf97a82919bf50b9901668dc55c97
+ms.openlocfilehash: 3b6c2a5a50cedadd8818eae735df55b661e794ef
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/08/2020
-ms.locfileid: "94369374"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97034019"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Konfigurieren von virtuellen Netzwerken für Azure Cognitive Services
 
@@ -49,19 +49,22 @@ Virtuelle Netzwerke (VNETs) werden unterstützt in [Regionen, in denen Cognitive
 > * Custom Vision
 > * Gesicht
 > * Formularerkennung
+> * Plastischer Reader
 > * Language Understanding (LUIS)
 > * Personalisierung
+> * Spracherkennungsdienste
 > * Textanalyse
 > * QnA Maker
 > * Textübersetzung
-> * Plastischer Reader
+
 
 > [!NOTE]
 > Wenn Sie den LUIS verwenden, ermöglicht es Ihnen der **CognitiveServicesManagement**-Tag nur, dass Sie den Dienst mithilfe des SDK oder der REST-API verwenden. Für den Zugriff auf das LUIS-Portal und seine Verwendung in einem virtuellen Netzwerk müssen Sie die folgenden Tags verwenden:  
-> * **AzureResourceManager** 
-> * **CognitiveServicesManagement**
 > * **AzureActiveDirectory**
 > * **AzureFrontDoor.Frontend**
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+
 
 
 ## <a name="change-the-default-network-access-rule"></a>Ändern der Standard-Netzwerkzugriffsregel
@@ -491,7 +494,7 @@ Private Endpunkte für Cognitive Services Ressourcen ermöglichen Folgendes:
 
 Ein privater Endpunkt ist eine spezielle Netzwerkschnittstelle für eine Azure-Ressource in Ihrem [VNET](../virtual-network/virtual-networks-overview.md). Wenn Sie einen privaten Endpunkt für Ihre Cognitive Services-Ressource erstellen, wird eine sichere Verbindung zwischen Clients in Ihrem VNET und Ihrer Ressource bereitgestellt. Dem privaten Endpunkt wird eine IP-Adresse aus dem IP-Adressbereich Ihres VNET zugewiesen. Für die Verbindung zwischen dem privaten Endpunkt und Cognitive Services wird eine sichere private Verbindung verwendet.
 
-Anwendungen im VNET können eine nahtlose Verbindung mit dem Dienst über den privaten Endpunkt herstellen, indem die gleichen Verbindungszeichenfolgen und Autorisierungsmechanismen wie üblich verwendet werden. Der Speech-Dienst stellt eine Ausnahme dar, denn er benötigt einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte im Speech-Dienst](#private-endpoints-with-the-speech-service). Private Endpunkte können mit allen von der Cognitive Services-Ressource unterstützten Protokollen verwendet werden, auch mit REST.
+Anwendungen im VNET können eine nahtlose Verbindung mit dem Dienst über den privaten Endpunkt herstellen, indem die gleichen Verbindungszeichenfolgen und Autorisierungsmechanismen wie üblich verwendet werden. Die Speech-Dienste stellen eine Ausnahme dar, denn sie benötigen einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte in den Speech-Diensten](#private-endpoints-with-the-speech-services). Private Endpunkte können mit allen von der Cognitive Services-Ressource unterstützten Protokollen verwendet werden, auch mit REST.
 
 Private Endpunkte können in Subnetzen erstellt werden, die [Dienstendpunkte](../virtual-network/virtual-network-service-endpoints-overview.md) verwenden. Clients in einem Subnetz können eine Verbindung mit einer Cognitive Services-Ressource über einen privaten Endpunkt herstellen, während für den Zugriff auf andere Ressourcen Dienstendpunkte verwendet werden.
 
@@ -509,13 +512,13 @@ Während Sie den privaten Endpunkt erstellen, müssen Sie die Cognitive Services
 
 ### <a name="connecting-to-private-endpoints"></a>Herstellen einer Verbindung mit privaten Endpunkten
 
-Clients in einem VNET, die den privaten Endpunkt verwenden, sollten dieselbe Verbindungszeichenfolge für die Cognitive Services-Ressource verwenden wie Clients, die eine Verbindung mit dem öffentlichen Endpunkt herstellen. Der Speech-Dienst stellt eine Ausnahme dar, denn er benötigt einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte im Speech-Dienst](#private-endpoints-with-the-speech-service). Das automatische Weiterleiten der Verbindungen vom VNET zur Cognitive Services-Ressource über eine private Verbindung basiert auf der DNS-Auflösung. Der Speech-Dienst 
+Clients in einem VNET, die den privaten Endpunkt verwenden, sollten dieselbe Verbindungszeichenfolge für die Cognitive Services-Ressource verwenden wie Clients, die eine Verbindung mit dem öffentlichen Endpunkt herstellen. Die Speech-Dienste stellen eine Ausnahme dar, denn sie benötigen einen separaten Endpunkt. Weitere Informationen finden Sie im Abschnitt [Private Endpunkte in den Speech-Diensten](#private-endpoints-with-the-speech-services). Das automatische Weiterleiten der Verbindungen vom VNET zur Cognitive Services-Ressource über eine private Verbindung basiert auf der DNS-Auflösung. 
 
 Wir erstellen standardmäßig eine [private DNS-Zone](../dns/private-dns-overview.md), die an das VNET angehängt ist, mit den erforderlichen Updates für die privaten Endpunkte. Wenn Sie jedoch einen eigenen DNS-Server verwenden, müssen Sie möglicherweise zusätzliche Änderungen an Ihrer DNS-Konfiguration vornehmen. Im folgenden Abschnitt zu [DNS-Änderungen](#dns-changes-for-private-endpoints) werden die für private Endpunkte erforderlichen Updates beschrieben.
 
-### <a name="private-endpoints-with-the-speech-service"></a>Private Endpunkte im Speech-Dienst
+### <a name="private-endpoints-with-the-speech-services"></a>Private Endpunkte in den Speech-Diensten
 
-Wenn Sie private Endpunkte mit dem Speech-Dienst verwenden, müssen Sie den Speech-Dienst über einen benutzerdefinierten Endpunkt aufrufen. Der globale Endpunkt kann nicht verwendet werden. Der Endpunkt muss dieses Muster aufweisen: `{account}.{stt|tts|voice|dls}.speech.microsoft.com`.
+Informationen erhalten Sie unter [Verwenden der Speech-Dienste mit von Azure Private Link bereitgestellten privaten Endpunkten](Speech-Service/speech-services-private-link.md).
 
 ### <a name="dns-changes-for-private-endpoints"></a>DNS-Änderungen für private Endpunkte
 

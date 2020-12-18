@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 8/4/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 5b689ef15c247cea1887948ae271802294bbd0fc
-ms.sourcegitcommit: d6e92295e1f161a547da33999ad66c94cf334563
+ms.openlocfilehash: 4b72bb8bac8f9949c83d0bbc85a0995f790c437d
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/07/2020
-ms.locfileid: "96763247"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347896"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Problembehandlung von Azure Digital Twins: Metriken
 
@@ -48,6 +48,17 @@ Metriken sind standardmäßig aktiviert. Azure Digital Twins-Metriken können ü
 Azure Digital Twins bietet mehrere Metriken, um Ihnen einen Überblick über die Integrität Ihrer Instanz und der zugehörigen Ressourcen zu ermöglichen. Sie können auch Informationen aus mehreren Metriken kombinieren, um sich ein umfassenderes Bild des Zustands Ihrer Instanz zu machen. 
 
 In den folgenden Tabellen werden die Metriken beschrieben, die von jeder Azure Digital Twins-Instanz nachverfolgt werden, und es wird erläutert, wie sich jede Metrik auf den Gesamtstatus Ihrer Instanz bezieht.
+
+#### <a name="metrics-for-tracking-service-limits"></a>Metriken zum Überwachen von Diensteinschränkungen
+
+Sie können diese Metriken so konfigurieren, dass überwacht wird, wann Sie sich einem [veröffentlichten Dienstlimit](reference-service-limits.md#functional-limits) für einen bestimmten Aspekt Ihrer Lösung nähern. 
+
+Verwenden Sie das Feature [Warnungen](troubleshoot-alerts.md) in Azure Monitor, um dies einzurichten. Sie können Schwellenwerte für diese Metriken definieren, sodass Sie eine Warnung erhalten, wenn eine Metrik einen bestimmten Prozentsatz dieses veröffentlichten Limits erreicht.
+
+| Metrik | Anzeigename der Metrik | Einheit | Aggregationstyp| BESCHREIBUNG | Dimensionen |
+| --- | --- | --- | --- | --- | --- |
+| TwinCount | Twin Count (Vorschau) | Anzahl | Gesamt | Hierbei handelt es sich um die Gesamtanzahl von Zwillingen in einer Azure Digital Twins-Instanz. Verwenden Sie diese Metrik, um zu bestimmen, ob Sie sich dem [Dienstlimit](reference-service-limits.md#functional-limits) für die maximal pro Instanz zulässige Anzahl an Zwillingen nähern. |  Keine |
+| ModelCount | Model Count (Vorschau) | Anzahl | Gesamt | Hierbei handelt es sich um die Gesamtanzahl von Modellen in einer Azure Digital Twins-Instanz. Verwenden Sie diese Metrik, um zu bestimmen, ob Sie sich dem [Dienstlimit](reference-service-limits.md#functional-limits) für die maximal pro Instanz zulässige Anzahl an Modellen nähern. | Keine |
 
 #### <a name="api-request-metrics"></a>API-Anforderungsmetriken
 

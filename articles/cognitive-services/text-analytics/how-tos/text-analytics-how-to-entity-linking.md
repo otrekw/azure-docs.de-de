@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 11/19/2020
+ms.date: 12/15/2020
 ms.author: aahi
-ms.openlocfilehash: 804d739efa5ac96c0b2d7228573f031f324e590e
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 9b90f177432de11f8281d03021b38bae647dadf2
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558979"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562530"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Verwenden der Erkennung benannter Entitäten in der Textanalyse
 
@@ -99,6 +99,14 @@ Ab `v3.1-preview.3` enthält die JSON-Antwort eine Eigenschaft `redactedText` mi
 
 [Referenz zur Version 3.1-preview der Erkennung benannter Entitäten für `PII`](https://westus2.dev.cognitive.microsoft.com/docs/services/TextAnalytics-v3-1-Preview-3/operations/EntitiesRecognitionPii)
 
+**Asynchroner Vorgang**
+
+Ab `v3.1-preview.3` können Sie NER-Anforderungen mithilfe des `/analyze`-Endpunkts asynchron senden.
+
+* Asynchroner Vorgang – `https://<your-custom-subdomain>.cognitiveservices.azure.com/text/analytics/v3.1-preview.3/analyze`
+
+Informationen zum Senden von asynchronen Anforderungen finden Sie unter [Aufrufen der Textanalyse-API](text-analytics-how-to-call-api.md).
+
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
 Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen und Entitätsverknüpfungsanforderungen. Verwenden Sie basierend auf Ihrer Anforderung ein URL-Format unten:
@@ -117,7 +125,11 @@ Named Entity Recognition v3 verwendet separate Endpunkte für NER-Anforderungen 
 
 Legen Sie einen Anforderungsheader fest, um Ihren Textanalyse-API-Schlüssel einzubeziehen. Geben Sie im Anforderungstext die von Ihnen vorbereiteten JSON-Dokumente an.
 
-### <a name="example-ner-request"></a>Beispiel für eine NER-Anforderung 
+## <a name="example-requests"></a>Beispielanforderungen
+
+#### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
+
+### <a name="example-synchronous-ner-request"></a>Beispiel einer synchronen NER-Anforderung 
 
 Das folgende JSON-Beispiel zeigt Inhalte, die Sie ggf. an die API senden können. Das Anforderungsformat ist für beide Versionen der API identisch.
 
@@ -131,8 +143,64 @@ Das folgende JSON-Beispiel zeigt Inhalte, die Sie ggf. an die API senden können
     }
   ]
 }
-
 ```
+
+### <a name="example-asynchronous-ner-request"></a>Beispiel einer asynchronen NER-Anforderung
+
+Wenn Sie den `/analyze`-Endpunkt für [asynchrone Vorgänge](text-analytics-how-to-call-api.md) verwenden, erhalten Sie eine Antwort, die die Aufgaben enthält, die Sie an die API gesendet haben.
+
+```json
+{
+    "displayName": "My Job",
+    "analysisInput": {
+        "documents": [
+            {
+                "id": "doc1",
+                "text": "It's incredibly sunny outside! I'm so happy"
+            },
+            {
+                "id": "doc2",
+                "text": "Pike place market is my favorite Seattle attraction."
+            }
+        ]
+    },
+    "tasks": {
+        "entityRecognitionTasks": [
+            {
+                "parameters": {
+                    "model-version": "latest",
+                    "stringIndexType": "TextElements_v8"
+                }
+            }
+        ],
+        "entityRecognitionPiiTasks": [{
+            "parameters": {
+                "model-version": "latest"
+            }
+        }]
+    }
+}
+```
+
+#### <a name="version-30"></a>[Version 3.0](#tab/version-3)
+
+### <a name="example-synchronous-ner-request"></a>Beispiel einer synchronen NER-Anforderung 
+
+Version 3.0 enthält nur den synchronen Vorgang. Das folgende JSON-Beispiel zeigt Inhalte, die Sie ggf. an die API senden können. Das Anforderungsformat ist für beide Versionen der API identisch.
+
+```json
+{
+  "documents": [
+    {
+        "id": "1",
+        "language": "en",
+        "text": "Our tour guide took us up the Space Needle during our trip to Seattle last week."
+    }
+  ]
+}
+```
+
+---
 
 ## <a name="post-the-request"></a>Übermitteln der Anforderung
 
@@ -148,11 +216,68 @@ Die Ausgabe wird umgehend zurückgegeben. Sie können die Ergebnisse an eine Anw
 
 ### <a name="example-responses"></a>Beispielantworten
 
-Version 3 stellt separate Endpunkte für die allgemeine Erkennung benannter Entitäten (NER), personenbezogene Informationen und Entitätsverknüpfung bereit. Die Antworten für beide Vorgänge sind unten aufgeführt. 
+Version 3 stellt separate Endpunkte für die allgemeine Erkennung benannter Entitäten (NER), personenbezogene Informationen und Entitätsverknüpfung bereit. Version 3.1-preview enthält einen asynchronen Analysemodus. Die Antworten für diese Vorgänge finden Sie unten. 
 
 #### <a name="version-31-preview"></a>[Version 3.1-preview](#tab/version-3-preview)
 
+### <a name="synchronous-example-results"></a>Ergebnisse des Beispiels für einen synchronen Vorgang
+
+Beispiel für eine Antwort mit allgemeiner Erkennung benannter Entitäten:
+
+```json
+{
+  "documents": [
+    {
+      "id": "1",
+      "entities": [
+        {
+          "text": "tour guide",
+          "category": "PersonType",
+          "offset": 4,
+          "length": 10,
+          "confidenceScore": 0.45
+        },
+        {
+          "text": "Space Needle",
+          "category": "Location",
+          "offset": 30,
+          "length": 12,
+          "confidenceScore": 0.38
+        },
+        {
+          "text": "trip",
+          "category": "Event",
+          "offset": 54,
+          "length": 4,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "Seattle",
+          "category": "Location",
+          "subcategory": "GPE",
+          "offset": 62,
+          "length": 7,
+          "confidenceScore": 0.78
+        },
+        {
+          "text": "last week",
+          "category": "DateTime",
+          "subcategory": "DateRange",
+          "offset": 70,
+          "length": 9,
+          "confidenceScore": 0.8
+        }
+      ],
+      "warnings": []
+    }
+  ],
+  "errors": [],
+  "modelVersion": "2020-04-01"
+}
+```
+
 Beispiel für eine Antwort mit personenbezogenen Informationen:
+
 ```json
 {
   "documents": [
@@ -239,6 +364,58 @@ Beispiel für eine Antwort mit Entitätsverknüpfung:
 }
 ```
 
+### <a name="example-asynchronous-result"></a>Ergebnis des Beispiels für einen asynchronen Vorgang
+
+```json
+{
+  "displayName": "My Analyze Job",
+  "jobId": "dbec96a8-ea22-4ad1-8c99-280b211eb59e_637408224000000000",
+  "lastUpdateDateTime": "2020-11-13T04:01:14Z",
+  "createdDateTime": "2020-11-13T04:01:13Z",
+  "expirationDateTime": "2020-11-14T04:01:13Z",
+  "status": "running",
+  "errors": [],
+  "tasks": {
+      "details": {
+          "name": "My Analyze Job",
+          "lastUpdateDateTime": "2020-11-13T04:01:14Z"
+      },
+      "completed": 1,
+      "failed": 0,
+      "inProgress": 2,
+      "total": 3,
+      "keyPhraseExtractionTasks": [
+          {
+              "name": "My Analyze Job",
+              "lastUpdateDateTime": "2020-11-13T04:01:14.3763516Z",
+              "results": {
+                  "inTerminalState": true,
+                  "documents": [
+                      {
+                          "id": "doc1",
+                          "keyPhrases": [
+                              "sunny outside"
+                          ],
+                          "warnings": []
+                      },
+                      {
+                          "id": "doc2",
+                          "keyPhrases": [
+                              "favorite Seattle attraction",
+                              "Pike place market"
+                          ],
+                          "warnings": []
+                      }
+                  ],
+                  "errors": [],
+                  "modelVersion": "2020-07-01"
+              }
+          }
+      ]
+  }
+}
+```
+
 
 #### <a name="version-30"></a>[Version 3.0](#tab/version-3)
 
@@ -309,5 +486,5 @@ In diesem Artikel haben Sie sich mit Konzepten und mit dem Workflow für die Ent
 ## <a name="next-steps"></a>Nächste Schritte
 
 * [Übersicht über die Textanalyse](../overview.md)
-* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/text-analytics-sdk.md)
+* [Verwenden der Textanalyse-Clientbibliothek](../quickstarts/client-libraries-rest-api.md)
 * [Neuigkeiten](../whats-new.md)
