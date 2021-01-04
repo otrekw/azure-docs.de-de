@@ -2,13 +2,14 @@
 title: Verwalten von DHCP in Azure VMware Solution
 description: Erfahren Sie, wie Sie DHCP für Ihre private Azure VMware Solution-Cloud einrichten und verwalten.
 ms.topic: how-to
+ms.custom: contperf-fy21q2
 ms.date: 11/09/2020
-ms.openlocfilehash: 9143a8544fe1b98262c3e990ccdf56f5d5f65957
-ms.sourcegitcommit: 2a8a53e5438596f99537f7279619258e9ecb357a
+ms.openlocfilehash: bcaba4274b0e6b423e9fa490c80fc57204d4e153
+ms.sourcegitcommit: d488a97dc11038d9cef77a0235d034677212c8b3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "94335952"
+ms.lasthandoff: 12/21/2020
+ms.locfileid: "97708550"
 ---
 # <a name="manage-dhcp-for-azure-vmware-solution"></a>Verwalten von DHCP in Azure VMware Solution
 

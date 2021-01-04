@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
-ms.openlocfilehash: 12b7c86e528af6c174f456add4d29a92239cd01e
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: e53a5c4840cee0651090bec0b68cc53e13102299
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92678011"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97705488"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-arm-template"></a>Schnellstart: Erstellen einer automatischen Reaktion auf eine bestimmte Sicherheitswarnung mithilfe einer ARM-Vorlage
 
@@ -21,7 +21,7 @@ In dieser Schnellstartanleitung wird beschrieben, wie Sie mithilfe einer ARM-Vor
 
 [!INCLUDE [About Azure Resource Manager](../../includes/resource-manager-quickstart-introduction.md)]
 
-Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen** . Die Vorlage wird im Azure-Portal geöffnet.
+Wenn Ihre Umgebung die Voraussetzungen erfüllt und Sie mit der Verwendung von ARM-Vorlagen vertraut sind, klicken Sie auf die Schaltfläche **In Azure bereitstellen**. Die Vorlage wird im Azure-Portal geöffnet.
 
 [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
@@ -46,21 +46,21 @@ Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen 
 
 ## <a name="deploy-the-template"></a>Bereitstellen der Vorlage
 
-- **PowerShell** :
+- **PowerShell**:
 
   ```azurepowershell-interactive
   New-AzResourceGroup -Name <resource-group-name> -Location <resource-group-location> #use this command when you need to create a new resource group for your deployment
   New-AzResourceGroupDeployment -ResourceGroupName <resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- **CLI** :
+- **CLI**:
 
   ```azurecli-interactive
   az group create --name <resource-group-name> --location <resource-group-location> #use this command when you need to create a new resource group for your deployment
-  az group deployment create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
+  az deployment group create --resource-group <my-resource-group> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-securitycenter-create-automation-for-alertnamecontains/azuredeploy.json
   ```
 
-- **Portal** :
+- **Portal**:
 
   [![In Azure bereitstellen](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3a%2f%2fraw.githubusercontent.com%2fAzure%2fazure-quickstart-templates%2fmaster%2f101-securitycenter-create-automation-for-alertnamecontains%2fazuredeploy.json)
 
@@ -70,21 +70,21 @@ Weitere von der Community bereitgestellte Security Center-Schnellstartvorlagen 
 
 Überprüfen Sie mithilfe des Azure-Portals, ob die Workflowautomatisierung bereitgestellt wurde.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center** .
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center**.
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
-1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung** , und suchen Sie nach der neuen Automatisierung.
+1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der neuen Automatisierung.
     :::image type="content" source="./media/quickstart-automation-alert/validating-template-run.png" alt-text="Liste konfigurierter Automatisierungen" lightbox="./media/quickstart-automation-alert/validating-template-run.png":::
     >[!TIP]
-    > Wenn Ihr Abonnement viele Workflowautomatisierungen enthält, verwenden Sie die Option **Nach Name filtern** .
+    > Wenn Ihr Abonnement viele Workflowautomatisierungen enthält, verwenden Sie die Option **Nach Name filtern**.
 
 ## <a name="clean-up-resources"></a>Bereinigen von Ressourcen
 
 Löschen Sie die Workflowautomatisierung mithilfe des Azure-Portals, wenn Sie sie nicht mehr benötigen.
 
-1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center** .
+1. Öffnen Sie im [Azure-Portal](https://portal.azure.com) das **Security Center**.
 1. Wählen Sie auf der oberen Menüleiste das Filtersymbol aus, und wählen Sie das Abonnement aus, in dem Sie die neue Workflowautomatisierung bereitgestellt haben.
-1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung** , und suchen Sie nach der zu löschenden Automatisierung.
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Liste konfigurierter Automatisierungen" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+1. Öffnen Sie auf der Seitenleiste von Security Center **Workflowautomatisierung**, und suchen Sie nach der zu löschenden Automatisierung.
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Schritte zum Entfernen einer Workflowautomatisierung" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Aktivieren Sie das Kontrollkästchen für das zu löschende Element.
 1. Wählen Sie auf der Symbolleiste die Option **Löschen** aus.
 

@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/04/2020
-ms.openlocfilehash: b41677d1e4f3ba3889472a3fb9bd6c6a9db4c0a8
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 326af3bc38ce70cc7cb205384bb4302c5ff73d28
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93123369"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97704179"
 ---
 # <a name="leverage-query-parallelization-in-azure-stream-analytics"></a>Nutzen der Parallelisierung von Abfragen in Azure Stream Analytics
 Dieser Artikel veranschaulicht das Nutzen der Parallelisierung in Azure Stream Analytics. Erfahren Sie, wie Sie Stream Analytics-Aufträge durch Konfigurieren der Eingabe in Partitionen und Optimieren der Analysenabfragedefinition skalieren.
@@ -89,7 +89,7 @@ Abfrage:
     WHERE TollBoothId > 100
 ```
 
-Diese Abfrage stellt einen einfachen Filter dar. Daher ist keine Partitionierung der Eingabe erforderlich, die an den Event Hub gesendet wird. Beachten Sie, dass Aufträge mit einem niedrigeren Kompatibilitätsgrad als 1.2 die **PARTITION BY PartitionId** -Klausel enthalten müssen, damit die zweite, weiter oben genannte Anforderung erfüllt ist. Für die Ausgabe muss die Event Hub-Ausgabe im Auftrag so konfiguriert werden, dass der Partitionsschlüssel auf **PartitionId** festgelegt ist. Eine letzte Prüfung besteht darin, sicherzustellen, dass die Anzahl der Eingabepartitionen mit der Anzahl der Ausgabepartitionen identisch ist.
+Diese Abfrage stellt einen einfachen Filter dar. Daher ist keine Partitionierung der Eingabe erforderlich, die an den Event Hub gesendet wird. Beachten Sie, dass Aufträge mit einem niedrigeren Kompatibilitätsgrad als 1.2 die **PARTITION BY PartitionId**-Klausel enthalten müssen, damit die zweite, weiter oben genannte Anforderung erfüllt ist. Für die Ausgabe muss die Event Hub-Ausgabe im Auftrag so konfiguriert werden, dass der Partitionsschlüssel auf **PartitionId** festgelegt ist. Eine letzte Prüfung besteht darin, sicherzustellen, dass die Anzahl der Eingabepartitionen mit der Anzahl der Ausgabepartitionen identisch ist.
 
 ### <a name="query-with-a-grouping-key"></a>Abfrage mit einem Gruppierungsschlüssel
 
@@ -174,7 +174,7 @@ Kompatibilitätsgrad 1,2 oder höher ermöglicht standardmäßig die parallele 
 Die Gesamtzahl der von einem Stream Analytics-Auftrag verwendbaren Streaming-Einheiten hängt von der Anzahl an Schritten in der für den Auftrag definierten Abfrage und der Anzahl an Partitionen für die einzelnen Schritte ab.
 
 ### <a name="steps-in-a-query"></a>Schritte einer Abfrage
-Eine Abfrage kann einen oder mehrere Schritte umfassen. Jeder Schritt besteht aus einer Unterabfrage, die mit dem Schlüsselwort **WITH** definiert wird. Die Abfrage, die sich außerhalb des Schlüsselworts **WITH** befindet (nur eine Abfrage), wird ebenfalls als Schritt gezählt, beispielsweise die **SELECT** -Anweisung in der folgenden Abfrage:
+Eine Abfrage kann einen oder mehrere Schritte umfassen. Jeder Schritt besteht aus einer Unterabfrage, die mit dem Schlüsselwort **WITH** definiert wird. Die Abfrage, die sich außerhalb des Schlüsselworts **WITH** befindet (nur eine Abfrage), wird ebenfalls als Schritt gezählt, beispielsweise die **SELECT**-Anweisung in der folgenden Abfrage:
 
 Abfrage:
 
@@ -270,7 +270,7 @@ Die folgenden Beobachtungen verwenden einen Stream Analytics-Auftrag mit zustand
 | 5 K     |    6    |  6 TU   |
 | 10 K    |    12   |  10 TU  |
 
-Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-eventhubs)-Lösung lässt sich hinsichtlich der Streamingeinheitein (SU) und des Durchsatzes linear skalieren, was sie zur effizientesten und leistungsstärksten Methode zum Analysieren und Streamen von Daten aus Stream Analytics macht. Aufträge lassen sich auf bis zu 192 SU skalieren, was grob einem Verarbeitungsdurchsatz von bis zu 200 MB/s oder 19 Billionen Ereignissen pro Tag entspricht.
+Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-eventhubs)-Lösung lässt sich hinsichtlich der Streamingeinheitein (SU) und des Durchsatzes linear skalieren, was sie zur effizientesten und leistungsstärksten Methode zum Analysieren und Streamen von Daten aus Stream Analytics macht. Aufträge lassen sich auf bis zu 192 SU skalieren, was grob einem Verarbeitungsdurchsatz von bis zu 200 MB/s oder 19 Billionen Ereignissen pro Tag entspricht.
 
 #### <a name="azure-sql"></a>Azure SQL
 |Datenerfassungsrate (Ereignisse pro Sekunde) | Streaming-Einheiten | Ausgaberessourcen  |
@@ -279,7 +279,7 @@ Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/
 |    5 K   |   18 |  P4   |
 |    10 K  |   36 |  P6   |
 
-[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-azuresql) unterstützt paralleles Schreiben, auch Partitionierungsvererbung genannt, was aber nicht standardmäßig aktiviert ist. Allerdings ist das Aktivieren der Partitionierungsvererbung zusammen mit einer vollständig parallelen Abfrage möglicherweise nicht ausreichend, um höhere Durchsätze zu erreichen. Die Schreibdurchsätze von SQL sind signifikant von Ihrer Datenbankkonfiguration und dem Tabellenschema abhängig. Der Artikel [SQL-Ausgabeleistung](./stream-analytics-sql-output-perf.md) enthält weitere Details zu den Parametern, mit denen sich Ihr Schreibdurchsatz maximieren lässt. Wie im Artikel [Azure Stream Analytics-Ausgabe in Azure SQL-Datenbank](./stream-analytics-sql-output-perf.md#azure-stream-analytics) erwähnt, lässt sich diese Lösung nicht als vollständig parallele Pipeline linear über 8 Partitionen hinaus skalieren, und sie erfordert möglicherweise vor der SQL-Ausgabe eine Neupartitionierung (siehe unter [ INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium-SKUs sind erforderlich, um hohe E/A-Raten zusammen mit dem Mehraufwand durch Protokollsicherungen, die alle paar Minuten erfolgen, aufrechtzuerhalten.
+[Azure SQL](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-azuresql) unterstützt paralleles Schreiben, auch Partitionierungsvererbung genannt, was aber nicht standardmäßig aktiviert ist. Allerdings ist das Aktivieren der Partitionierungsvererbung zusammen mit einer vollständig parallelen Abfrage möglicherweise nicht ausreichend, um höhere Durchsätze zu erreichen. Die Schreibdurchsätze von SQL sind signifikant von Ihrer Datenbankkonfiguration und dem Tabellenschema abhängig. Der Artikel [SQL-Ausgabeleistung](./stream-analytics-sql-output-perf.md) enthält weitere Details zu den Parametern, mit denen sich Ihr Schreibdurchsatz maximieren lässt. Wie im Artikel [Azure Stream Analytics-Ausgabe in Azure SQL-Datenbank](./stream-analytics-sql-output-perf.md#azure-stream-analytics) erwähnt, lässt sich diese Lösung nicht als vollständig parallele Pipeline linear über 8 Partitionen hinaus skalieren, und sie erfordert möglicherweise vor der SQL-Ausgabe eine Neupartitionierung (siehe unter [ INTO](/stream-analytics-query/into-azure-stream-analytics#into-shard-count)). Premium-SKUs sind erforderlich, um hohe E/A-Raten zusammen mit dem Mehraufwand durch Protokollsicherungen, die alle paar Minuten erfolgen, aufrechtzuerhalten.
 
 #### <a name="cosmos-db"></a>Cosmos DB
 |Datenerfassungsrate (Ereignisse pro Sekunde) | Streaming-Einheiten | Ausgaberessourcen  |
@@ -288,7 +288,7 @@ Die [Event Hub](https://github.com/Azure-Samples/streaming-at-scale/tree/master/
 |  5 K   |  24   | 60 K RU  |
 |  10 K  |  48   | 120 K RU |
 
-Die [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb)-Ausgabe von Stream Analytics wurde so aktualisiert, dass unterhalb des [Kompatibilitätsgrad 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) native Integration verwendet wird. Kompatibilitätsgrad 1.2 ermöglicht einen wesentlich höheren Durchsatz und verringert den RU-Verbrauch im Vergleich zu 1.1, bei dem es sich um den Standardkompatibilitätsgrad für neue Aufträge handelt. Die Lösung verwendet unter „/deviceId“ partitionierte CosmosDB-Container, und der Rest der Lösung ist identisch konfiguriert.
+Die [Cosmos DB](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb)-Ausgabe von Stream Analytics wurde so aktualisiert, dass unterhalb des [Kompatibilitätsgrad 1.2](./stream-analytics-documentdb-output.md#improved-throughput-with-compatibility-level-12) native Integration verwendet wird. Kompatibilitätsgrad 1.2 ermöglicht einen wesentlich höheren Durchsatz und verringert den RU-Verbrauch im Vergleich zu 1.1, bei dem es sich um den Standardkompatibilitätsgrad für neue Aufträge handelt. Die Lösung verwendet unter „/deviceId“ partitionierte CosmosDB-Container, und der Rest der Lösung ist identisch konfiguriert.
 
 Alle [Azure-Beispiele zum bedarfsorientierten Streaming](https://github.com/Azure-Samples/streaming-at-scale) verwenden einen Event Hub als Eingabe, der von Last simulierenden Testclients Eingaben erhält. Jedes Eingabeereignis ist ein 1-KB-JSON-Dokument, das problemlos konfigurierte Datenerfassungsraten in Durchsatzraten (1 MB/s, 5 MB/s und 10 MB/s) umsetzt. Ereignisse simulieren ein IoT-Gerät, das die folgenden JSON-Daten (in einer Kurzform) sendet für bis zu 1-K-Geräte:
 
@@ -311,7 +311,7 @@ Alle [Azure-Beispiele zum bedarfsorientierten Streaming](https://github.com/Azur
 
 ### <a name="identifying-bottlenecks"></a>Identifizieren von Engpässen
 
-Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag, um Engpässe in Ihrer Pipeline zu identifizieren. Überprüfen Sie **Eingabe-/Ausgabeereignisse** hinsichtlich des Durchsatzes sowie ["Wasserzeichenverzögerung"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) oder **Ereignisse im Rückstand** , um festzustellen, ob der Auftrag mit der Eingangsrate Schritt halten kann. Suchen Sie für Event Hub-Metriken nach **Gedrosselte Anforderungen** , und passen Sie die Schwellenwerteinheiten (TU) entsprechend an. Überprüfen Sie für Cosmos DB-Metriken **Max. genutzte RU/Sek. pro Partitionsschlüsselbereich** unter „Durchsatz“, um sicherzustellen, dass Ihre Partitionsschlüsselbereiche gleichmäßig genutzt werden. Überwachen Sie für Azure SQL-DB **Protokoll-E/A** und **CPU**.
+Verwenden Sie den Bereich „Metriken“ in ihrem Azure Stream Analytics-Auftrag, um Engpässe in Ihrer Pipeline zu identifizieren. Überprüfen Sie **Eingabe-/Ausgabeereignisse** hinsichtlich des Durchsatzes sowie ["Wasserzeichenverzögerung"](https://azure.microsoft.com/blog/new-metric-in-azure-stream-analytics-tracks-latency-of-your-streaming-pipeline/) oder **Ereignisse im Rückstand**, um festzustellen, ob der Auftrag mit der Eingangsrate Schritt halten kann. Suchen Sie für Event Hub-Metriken nach **Gedrosselte Anforderungen**, und passen Sie die Schwellenwerteinheiten (TU) entsprechend an. Überprüfen Sie für Cosmos DB-Metriken **Max. genutzte RU/Sek. pro Partitionsschlüsselbereich** unter „Durchsatz“, um sicherzustellen, dass Ihre Partitionsschlüsselbereiche gleichmäßig genutzt werden. Überwachen Sie für Azure SQL-DB **Protokoll-E/A** und **CPU**.
 
 ## <a name="get-help"></a>Hier erhalten Sie Hilfe
 

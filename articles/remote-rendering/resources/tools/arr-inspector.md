@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 03/09/2020
 ms.topic: article
-ms.openlocfilehash: 5ee9d39db130c76f683ca1f4d1ff64f9ed86d97e
-ms.sourcegitcommit: 957c916118f87ea3d67a60e1d72a30f48bad0db6
+ms.openlocfilehash: 300e0ff26d643ae0263d21e604cb26da37a18841
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/19/2020
-ms.locfileid: "92204740"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97723824"
 ---
 # <a name="the-arrinspector-inspection-tool"></a>Das Überprüfungstool „ArrInspector“
 
@@ -25,15 +25,15 @@ Stellen Sie nach dem Abrufen des Hostnamens Ihres ARR-Servers (der auf `mixedrea
 Wenn die App, die `ConnectToArrInspectorAsync` aufruft, bereits auf einem PC ausgeführt wird:
 
 * Wenn Sie die Unity-Integration verwenden, erfolgt der Start möglicherweise automatisch.
-* Andernfalls finden Sie die Datei in *User Folders\\LocalAppData\\[Ihre_App]\\AC\\Temp* .
+* Andernfalls finden Sie die Datei in *User Folders\\LocalAppData\\[Ihre_App]\\AC\\Temp*.
 
 Wenn die App auf einer HoloLens ausgeführt wird:
 
 1. Greifen Sie über das [Windows Device Portal](/windows/mixed-reality/using-the-windows-device-portal) auf die HoloLens zu.
-1. Wechseln Sie zu *System > Datei-Explorer* .
-1. Navigieren Sie zu *User Folders\\LocalAppData\\[Ihre_App]\\AC\\Temp* .
+1. Wechseln Sie zu *System > Datei-Explorer*.
+1. Navigieren Sie zu *User Folders\\LocalAppData\\[Ihre_App]\\AC\\Temp*.
 1. Speichern Sie *StartArrInspector.html* auf dem PC.
-1. Öffnen Sie *StartArrInspector.html* , um den ArrInspector für die Sitzung zu laden.
+1. Öffnen Sie *StartArrInspector.html*, um den ArrInspector für die Sitzung zu laden.
 
 ## <a name="the-performance-panel"></a>Leistungsbereich
 
@@ -41,7 +41,7 @@ Wenn die App auf einer HoloLens ausgeführt wird:
 
 In diesem Bereich werden Diagramme aller Pro-Frame-Leistungswerte angezeigt, die vom Server bereitgestellt werden. Die Werte umfassen derzeit Framedauer, FPS, CPU- und Speicherauslastung sowie Arbeitsspeicherstatistiken wie die RAM-Gesamtauslastung, Objektanzahlen usw.
 
-Um einen dieser Parameter zu visualisieren, klicken Sie auf die Schaltfläche **Neu hinzufügen** , und wählen Sie einen der im Dialogfeld verfügbaren Werte aus. Durch diese Aktion wird dem Bereich ein neues fortlaufendes Diagramm hinzugefügt, in dem die Werte in Echtzeit verfolgt werden. Rechts sehen Sie den *minimalen* , *maximalen* und *aktuellen* Wert.
+Um einen dieser Parameter zu visualisieren, klicken Sie auf die Schaltfläche **Neu hinzufügen**, und wählen Sie einen der im Dialogfeld verfügbaren Werte aus. Durch diese Aktion wird dem Bereich ein neues fortlaufendes Diagramm hinzugefügt, in dem die Werte in Echtzeit verfolgt werden. Rechts sehen Sie den *minimalen*, *maximalen* und *aktuellen* Wert.
 
 Sie können das Diagramm schwenken, indem Sie seinen Inhalt mit der Maus ziehen; das horizontale Schwenken ist jedoch nur möglich, wenn sich ArrInspector im angehaltenen Zustand befindet.
 
@@ -108,17 +108,3 @@ In der oberen rechten Ecke können Sie mithilfe eines Schalters das Liveupdate d
 ![Angehaltener Modus](./media/pause-mode.png)
 
 Beim erneuten Aktivieren des Liveupdates werden alle Bereiche zurückgesetzt.
-
-## <a name="host-configuration"></a>Hostkonfiguration
-
-Standardmäßig stellt das Tool eine Verbindung mit dem ARR-Server her, der auf demselben Host ausgeführt wird, der den ArrInspector unterstützt. Sie können es jedoch so konfigurieren, dass ein anderer Server überprüft wird, vorausgesetzt, es wird eine ARR-Instanz ausgeführt, auf welcher der Toolport geöffnet ist.
-
-Rufen Sie hierfür das Hauptmenü links von der Headerleiste auf, und wählen Sie *Hostkonfiguration* aus. Klicken Sie auf **Neuen Host hinzufügen** , und geben Sie den Namen und den Hostnamen ein. Geben Sie für *Hostname* nur den Hostnamen ein, der auf `.mixedreality.azure.com` endet; schließen Sie weder `http://` noch einen Port ein.
-
-![Hostkonfiguration](./media/host-configuration.png)
-
-Über das Dropdownmenü oben rechts können Sie schnell von einem Host zu einem anderen wechseln.
-
-![Kombinationsfeld für Hosts](./media/host-switch-combo.png)
-
-Die Hostliste wird im lokalen Browserspeicher gespeichert, sodass Sie beim erneuten Öffnen des Browsers zur Verfügung steht.

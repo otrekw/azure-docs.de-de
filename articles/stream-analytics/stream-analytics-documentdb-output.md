@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 02/2/2020
 ms.custom: seodec18
-ms.openlocfilehash: e8b8c89b94b2fbb191eee0ea57e957802a54204e
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 35231eda43e766b5febd8ba90c4d92a44537e0ef
+ms.sourcegitcommit: e7152996ee917505c7aba707d214b2b520348302
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93126973"
+ms.lasthandoff: 12/20/2020
+ms.locfileid: "97703754"
 ---
 # <a name="azure-stream-analytics-output-to-azure-cosmos-db"></a>Azure Stream Analytics-Ausgabe an Azure Cosmos DB  
 Azure Stream Analytics kann für die JSON-Ausgabe auf [Azure Cosmos DB](https://azure.microsoft.com/services/documentdb/) ausgerichtet werden, was eine Datenarchivierung und Abfragen unstrukturierter JSON-Daten mit geringer Latenz ermöglicht. In diesem Dokument werden einige bewährte Implementierungsmethoden für diese Konfiguration behandelt. Wenn Sie Azure Cosmos DB als Ausgabe verwenden, empfiehlt es sich, den Auftrag auf den Kompatibilitätsgrad 1.2 festzulegen.
@@ -44,7 +44,7 @@ Außerdem aktiviert Azure Cosmos DB für jeden CRUD-Vorgang in Ihrem Container d
 Weitere Informationen finden Sie im Artikel [Ändern der Datenbank- und Abfragekonsistenzebenen](../cosmos-db/consistency-levels.md).
 
 ## <a name="upserts-from-stream-analytics"></a>Einfügen/Aktualisieren über Stream Analytics
-Die Stream Analytics-Integration mit Azure Cosmos DB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrem Container auf der Grundlage einer angegebenen **Dokument-ID** -Spalte. Dies wird auch als *Upsert* bezeichnet.
+Die Stream Analytics-Integration mit Azure Cosmos DB ermöglicht das Einfügen oder Aktualisieren von Datensätzen in Ihrem Container auf der Grundlage einer angegebenen **Dokument-ID**-Spalte. Dies wird auch als *Upsert* bezeichnet.
 
 Stream Analytics verwendet einen optimistischen Upsertansatz. Updates werden nur ausgeführt, wenn bei einer Einfügung ein Fehler aufgrund eines Dokument-ID-Konflikts auftritt. 
 
@@ -58,7 +58,7 @@ Wenn im eingehenden JSON-Dokument ein ID-Feld vorhanden ist, wird dieses Feld au
 - Doppelte IDs und die Angabe **ID** für **Dokument-ID** lösen einen Upsertvorgang aus
 - Doppelte IDs und eine nicht angegebene **Dokument-ID** lösen nach dem ersten Dokument einen Fehler aus.
 
-Wenn Sie *alle* Dokumente speichern möchten, einschließlich derjenigen mit einer doppelten ID, benennen Sie das ID-Feld in der Abfrage um (mit dem Schlüsselwort **AS** ). Lassen Sie Azure Cosmos DB das ID-Feld erstellen, oder ersetzen Sie die ID durch den Wert einer anderen Spalte (mithilfe des Schlüsselworts **AS** oder der Einstellung **Dokument-ID** ).
+Wenn Sie *alle* Dokumente speichern möchten, einschließlich derjenigen mit einer doppelten ID, benennen Sie das ID-Feld in der Abfrage um (mit dem Schlüsselwort **AS**). Lassen Sie Azure Cosmos DB das ID-Feld erstellen, oder ersetzen Sie die ID durch den Wert einer anderen Spalte (mithilfe des Schlüsselworts **AS** oder der Einstellung **Dokument-ID**).
 
 ## <a name="data-partitioning-in-azure-cosmos-db"></a>Partitionierung von Daten in Azure Cosmos DB
 Azure Cosmos DB skaliert Partitionen automatisch auf der Grundlage Ihrer Workload. Daher empfiehlt es sich, für die Partitionierung Ihrer Daten [unbegrenzte](../cosmos-db/partitioning-overview.md) Container zu wählen. Beim Schreiben in unbegrenzte Container verwendet Stream Analytics so viele parallele Writer wie im vorherigen Abfrageschritt oder im eingegebenen Partitionierungsschema.
@@ -97,9 +97,9 @@ Die Rate der in Event Hubs eingehenden Ereignisse ist zweimal höher als die der
 
 ![Vergleich von Azure Cosmos DB-Metriken](media/stream-analytics-documentdb-output/stream-analytics-documentdb-output-2.png)
 
-Mit Kompatibilitätsgrad 1.2 ist Stream Analytics in der Lage, 100 Prozent des verfügbaren Durchsatzes in Azure Cosmos DB intelligenter zu nutzen, mit sehr wenigen erneuten Übermittlungen aufgrund von Drosselung oder Ratenbegrenzung. Dies ermöglicht eine bessere Erfahrung für andere Workloads, wie z.B. Abfragen, die gleichzeitig auf den Container angewendet werden. Wenn Sie sehen möchten, wie Stream Analytics mit Azure Cosmos DB als Senke für 1.000 bis 10.000 Nachrichten pro Sekunde horizontal hochskaliert, probieren Sie dieses [Azure-Beispielprojekt](https://github.com/Azure-Samples/streaming-at-scale/tree/master/eventhubs-streamanalytics-cosmosdb) aus.
+Mit Kompatibilitätsgrad 1.2 ist Stream Analytics in der Lage, 100 Prozent des verfügbaren Durchsatzes in Azure Cosmos DB intelligenter zu nutzen, mit sehr wenigen erneuten Übermittlungen aufgrund von Drosselung oder Ratenbegrenzung. Dies ermöglicht eine bessere Erfahrung für andere Workloads, wie z.B. Abfragen, die gleichzeitig auf den Container angewendet werden. Wenn Sie sehen möchten, wie Stream Analytics mit Azure Cosmos DB als Senke für 1.000 bis 10.000 Nachrichten pro Sekunde horizontal hochskaliert, probieren Sie dieses [Azure-Beispielprojekt](https://github.com/Azure-Samples/streaming-at-scale/tree/main/eventhubs-streamanalytics-cosmosdb) aus.
 
-Der Durchsatz der Azure Cosmos DB-Ausgabe ist bei Kompatibilitätsgrad 1.0 und 1.1 identisch. Es wird *dringend empfohlen* , in Stream Analytics Azure Cosmos DB Kompatibilitätsgrad 1.2 zu verwenden.
+Der Durchsatz der Azure Cosmos DB-Ausgabe ist bei Kompatibilitätsgrad 1.0 und 1.1 identisch. Es wird *dringend empfohlen*, in Stream Analytics Azure Cosmos DB Kompatibilitätsgrad 1.2 zu verwenden.
 
 ## <a name="azure-cosmos-db-settings-for-json-output"></a>Azure Cosmos DB-Einstellungen für die JSON-Ausgabe
 
