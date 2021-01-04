@@ -1,14 +1,14 @@
 ---
 title: Überwachen von delegierten Ressourcen in beliebigem Umfang
 description: Erfahren Sie, wie Sie Azure Monitor-Protokolle für alle von Ihnen verwalteten Mandanten auf skalierbare Weise verwenden.
-ms.date: 10/26/2020
+ms.date: 12/14/2020
 ms.topic: how-to
-ms.openlocfilehash: 96ca05faf2b3da8f214c14ae57eb186c7b71e1b3
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 6c1cbde696ccf9131797a05db33553b8505216a4
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96461521"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509273"
 ---
 # <a name="monitor-delegated-resources-at-scale"></a>Überwachen von delegierten Ressourcen in beliebigem Umfang
 
@@ -40,7 +40,25 @@ Wenn Sie festgelegt haben, welche Richtlinien Sie bereitstellen möchten, könne
 
 ## <a name="analyze-the-gathered-data"></a>Analysieren der gesammelten Daten
 
-Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analytics-Arbeitsbereiche protokolliert, die Sie in den jeweiligen Kundenmandanten erstellt haben. Um Einblicke in alle verwalteten Kunden zu erhalten, können Sie mithilfe von Tools wie [Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) Informationen aus mehreren Datenquellen erfassen und analysieren. 
+Nachdem Sie Ihre Richtlinien bereitgestellt haben, werden Daten in die Log Analytics-Arbeitsbereiche protokolliert, die Sie in den jeweiligen Kundenmandanten erstellt haben. Um Einblicke in alle verwalteten Kunden zu erhalten, können Sie mithilfe von Tools wie [Azure Monitor-Arbeitsmappen](../../azure-monitor/platform/workbooks-overview.md) Informationen aus mehreren Datenquellen erfassen und analysieren.
+
+## <a name="view-alerts-across-customers"></a>Anzeigen von Warnungen für mehrere Kunden
+
+Sie können [Warnungen](../../azure-monitor/platform/alerts-overview.md) für die delegierten Abonnements in den von Ihnen verwalteten Kundenmandanten anzeigen.
+
+Filtern Sie die Warnungen mit einer [Azure Resource Graph](../../governance/resource-graph/overview.md)-Abfrage, um die Warnungen für mehrere Kunden zu aktualisieren. Sie können die Abfrage an Ihr Dashboard anheften und alle zugehörigen Kunden und Abonnements auswählen.
+
+Mit der folgenden Beispielabfrage werden Warnungen mit den Schweregraden 0 und 1 angezeigt, die alle 60 Minuten aktualisiert werden.
+
+```kusto
+alertsmanagementresources
+| where type == "microsoft.alertsmanagement/alerts"
+| where properties.essentials.severity =~ "Sev0" or properties.essentials.severity =~ "Sev1"
+| where properties.essentials.monitorCondition == "Fired"
+| where properties.essentials.startDateTime > ago(60m)
+| project StartTime=properties.essentials.startDateTime,name,Description=properties.essentials.description, Severity=properties.essentials.severity, subscriptionId
+| sort by tostring(StartTime)
+```
 
 ## <a name="next-steps"></a>Nächste Schritte
 

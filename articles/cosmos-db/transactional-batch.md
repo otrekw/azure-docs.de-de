@@ -7,17 +7,17 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: conceptual
 ms.date: 10/27/2020
-ms.openlocfilehash: 1f541b947c04619892291e47002ea9b0dbb6d38d
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 9f6692db2da3722507136a468d1dcbdc2985e73f
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93340560"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347556"
 ---
 # <a name="transactional-batch-operations-in-azure-cosmos-db-using-the-net-sdk"></a>Transaktionale Batchvorgänge in Azure Cosmos DB mit dem .NET SDK
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
 
-Ein transaktionaler Batch bezeichnet eine Gruppe von Punktvorgängen, die zusammen mit dem gleichen Partitionsschlüssel in einem Container entweder erfolgreich oder fehlerhaft ausgeführt werden müssen. Im .NET SDK wird die `TranscationalBatch`-Klasse verwendet, um diesen Batch von Vorgängen zu definieren. Wenn alle Vorgänge in der Reihenfolge, in der sie im transaktionalen Batchvorgang beschrieben sind, erfolgreich ausgeführt werden, wird für die Transaktion ein Commit ausgeführt. Wenn jedoch ein Vorgang fehlschlägt, wird für die gesamte Transaktion ein Rollback ausgeführt.
+Ein transaktionaler Batch bezeichnet eine Gruppe von Punktvorgängen, die zusammen mit dem gleichen Partitionsschlüssel in einem Container entweder erfolgreich oder fehlerhaft ausgeführt werden müssen. Im .NET SDK wird die `TransactionalBatch`-Klasse verwendet, um diesen Batch von Vorgängen zu definieren. Wenn alle Vorgänge in der Reihenfolge, in der sie im transaktionalen Batchvorgang beschrieben sind, erfolgreich ausgeführt werden, wird für die Transaktion ein Commit ausgeführt. Wenn jedoch ein Vorgang fehlschlägt, wird für die gesamte Transaktion ein Rollback ausgeführt.
 
 ## <a name="whats-a-transaction-in-azure-cosmos-db"></a>Was ist eine Transaktion in Azure Cosmos DB?
 
@@ -33,10 +33,10 @@ Azure Cosmos DB unterstützt [vollständige ACID-konforme Transaktionen mit Mom
 
 Azure Cosmos DB unterstützt derzeit gespeicherte Prozeduren, die auch den Transaktionsbereich für Vorgänge bereitstellen. Transaktionale Batchvorgänge bieten jedoch die folgenden Vorteile:
 
-* **Sprachoption** : Transaktionale Batches werden im SDK und in der Sprache unterstützt, mit der Sie bereits arbeiten, während gespeicherte Prozeduren in JavaScript geschrieben werden müssen.
-* **Codeversionsverwaltung** : Die Versionsverwaltung von Anwendungscode und dessen Integration in die CI/CD-Pipeline ist wesentlich natürlicher als die Aktualisierung einer gespeicherten Prozedur zu orchestrieren und sicherzustellen, dass der Rollover zum richtigen Zeitpunkt erfolgt. Außerdem wird das Rollback von Änderungen vereinfacht.
-* **Leistung** : Verringerte Latenz bei entsprechenden Vorgängen um bis zu 30 % im Vergleich zur Ausführung gespeicherter Prozeduren.
-* **Serialisierung von Inhalten** : Jeder Vorgang in einem Transaktionsbatch kann benutzerdefinierte Serialisierungsoptionen für seine Nutzlast verwenden.
+* **Sprachoption**: Transaktionale Batches werden im SDK und in der Sprache unterstützt, mit der Sie bereits arbeiten, während gespeicherte Prozeduren in JavaScript geschrieben werden müssen.
+* **Codeversionsverwaltung**: Die Versionsverwaltung von Anwendungscode und dessen Integration in die CI/CD-Pipeline ist wesentlich natürlicher als die Aktualisierung einer gespeicherten Prozedur zu orchestrieren und sicherzustellen, dass der Rollover zum richtigen Zeitpunkt erfolgt. Außerdem wird das Rollback von Änderungen vereinfacht.
+* **Leistung:** verringerte Latenz bei entsprechenden Vorgängen um bis zu 30 % im Vergleich zur Ausführung gespeicherter Prozeduren
+* **Serialisierung von Inhalten**: Jeder Vorgang in einem Transaktionsbatch kann benutzerdefinierte Serialisierungsoptionen für seine Nutzlast verwenden.
 
 ## <a name="how-to-create-a-transactional-batch-operation"></a>Erstellen eines transaktionalen Batchvorgangs
 
@@ -51,13 +51,13 @@ TransactionalBatch batch = container.CreateTransactionalBatch(new PartitionKey(p
   .CreateItem<ChildClass>(child);
 ```
 
-Als Nächstes müssen Sie `ExecuteAsync` aufrufen:
+Als Nächstes müssen Sie `ExecuteAsync` im Batch aufrufen:
 
 ```csharp
 TransactionalBatchResponse batchResponse = await batch.ExecuteAsync();
 ```
 
-Nachdem die Antwort empfangen wurde, müssen Sie überprüfen, ob die Ausführung erfolgreich war oder nicht, und die Ergebnisse extrahieren:
+Nachdem die Antwort empfangen wurde, überprüfen Sie, ob die Ausführung erfolgreich war, und extrahieren die Ergebnisse:
 
 ```csharp
 using (batchResponse)
@@ -72,7 +72,7 @@ using (batchResponse)
 }
 ```
 
-Wenn ein Fehler auftritt, weist der fehlerhafte Vorgang einen Statuscode für den jeweiligen Fehler auf. Alle anderen Vorgänge weisen hingegen Statuscode 424 auf (fehlerhafte Abhängigkeit). Im folgenden Beispiel schlägt der Vorgang fehl, weil versucht wird, ein bereits vorhandenes Element zu erstellen (409 HttpStatusCode.Conflict). Durch Statuscodes können Sie die Ursache eines Transaktionsfehlers leichter erkennen.
+Wenn ein Fehler auftritt, weist der fehlerhafte Vorgang einen Statuscode für den jeweiligen Fehler auf. Alle anderen Vorgänge weisen Statuscode 424 auf (Abhängigkeit mit Fehlern). Im folgenden Beispiel schlägt der Vorgang fehl, weil versucht wird, ein bereits vorhandenes Element zu erstellen (409 HttpStatusCode.Conflict). Über die Statuscodes können Sie die Ursache eines Transaktionsfehlers ermitteln.
 
 ```csharp
 // Parent's birthday!
@@ -100,7 +100,7 @@ using (failedBatchResponse)
 
 Wenn die `ExecuteAsync`-Methode aufgerufen wird, werden alle Vorgänge im `TransactionalBatch`-Objekt gruppiert, in eine einzige Nutzlast serialisiert und als einzelne Anforderung an den Azure Cosmos DB-Dienst gesendet.
 
-Der Dienst empfängt die Anforderung, führt alle Vorgänge innerhalb eines Transaktionsbereichs aus und gibt eine Antwort mit dem gleichen Serialisierungsprotokoll zurück. Diese Antwort ist entweder eine erfolgreiche oder fehlerhafte Ausführung und enthält intern alle einzelnen Vorgangsantworten.
+Der Dienst empfängt die Anforderung, führt alle Vorgänge innerhalb eines Transaktionsbereichs aus und gibt eine Antwort mit dem gleichen Serialisierungsprotokoll zurück. Diese Antwort ist entweder eine erfolgreiche oder fehlerhafte Ausführung und enthält alle einzelnen Vorgangsantworten.
 
 Das SDK stellt Ihnen die Antwort bereit, damit Sie das Ergebnis überprüfen und optional die einzelnen internen Vorgangsergebnisse extrahieren können.
 
@@ -108,8 +108,8 @@ Das SDK stellt Ihnen die Antwort bereit, damit Sie das Ergebnis überprüfen und
 
 Derzeit bestehen zwei bekannte Einschränkungen:
 
-* Die Größenbeschränkung für Anforderungen in Azure Cosmos DB legt fest, dass die Größe der `TransactionalBatch`-Nutzlast 2 MB nicht überschreiten darf, und die maximale Ausführungszeit beträgt 5 Sekunden.
-* Es besteht derzeit eine Begrenzung auf 100 Vorgänge pro `TransactionalBatch`, um sicherzustellen, dass die Leistung wie erwartet ist und innerhalb der SLAs liegt.
+* Die Größenbeschränkung für Anforderungen in Azure Cosmos DB legt fest, dass die Größe der `TransactionalBatch`-Payload 2 MB nicht überschreiten darf und die maximale Ausführungszeit 5 Sekunden beträgt.
+* Es besteht derzeit eine Begrenzung auf 100 Vorgänge pro `TransactionalBatch`. Damit soll sichergestellt werden, dass die Leistung den Erwartungen entspricht und innerhalb der SLAs liegt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

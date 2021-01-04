@@ -11,12 +11,12 @@ ms.author: jovanpop
 ms.reviewer: sstein, bonova, danil
 ms.date: 11/10/2020
 ms.custom: seoapril2019, sqldbrb=1
-ms.openlocfilehash: 610ab649d64351b0897ef7358cdaf9280fe3ba55
-ms.sourcegitcommit: c157b830430f9937a7fa7a3a6666dcb66caa338b
+ms.openlocfilehash: c18ee43eefe9c6cf9cba7f4e8f6c3fd3f55bba5a
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94684917"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368697"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>Unterschiede bei T-SQL zwischen SQL Server und Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -396,9 +396,9 @@ Die [semantische Suche](/sql/relational-databases/search/semantic-search-sql-ser
 
 Verbindungsserver in SQL Managed Instance unterstützen eine begrenzte Anzahl von Zielen:
 
-- Unterstützte Ziele sind Instanzen von SQL Managed Instance, SQL-Datenbank, Azure Synapse SQL und SQL Server. 
+- Unterstützte Ziele sind Instanzen von SQL Managed Instance, SQL-Datenbank, [serverlosen](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) und dedizierten Azure Synapse SQL-Pools und SQL Server. 
 - Verbindungsserver unterstützen keine verteilten beschreibbaren Transaktionen (MS DTC).
-- Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS. Verwenden Sie einen nativen CSV-Import aus Azure Blob Storage mithilfe von `BULK INSERT` oder `OPENROWSET` als Alternative zum Dateiimport.
+- Nicht unterstützte Ziele sind Dateien, Analysis Services und andere RDBMS. Verwenden Sie den nativen CSV-Import von Azure Blob Storage mit `BULK INSERT` oder `OPENROWSET` als Alternative zum Dateiimport, oder laden Sie Dateien mithilfe eines [serverlosen SQL-Pools in Azure Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/).
 
 Vorgänge: 
 
@@ -406,11 +406,12 @@ Vorgänge:
 - `sp_dropserver` wird zum Löschen eines Verbindungsservers unterstützt. Siehe [sp_dropserver](/sql/relational-databases/system-stored-procedures/sp-dropserver-transact-sql).
 - Die `OPENROWSET`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Siehe [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql).
 - Die `OPENDATASOURCE`-Funktion kann verwendet werden, um Abfragen nur auf SQL Server-Instanzen auszuführen. Diese Instanzen können verwaltet sein oder sich auf lokalen oder virtuellen Computern befinden. Als Anbieter werden nur die Werte `SQLNCLI`, `SQLNCLI11` und `SQLOLEDB` unterstützt. z. B. `SELECT * FROM OPENDATASOURCE('SQLNCLI', '...').AdventureWorks2012.HumanResources.Employee`. Siehe [OPENDATASOURCE](/sql/t-sql/functions/opendatasource-transact-sql).
-- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie es mit [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) oder [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file), welche CSV-Dateien aus Azure Blob Storage lesen. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
+- Verbindungsserver können nicht zum Lesen von Dateien (Excel, CSV) aus den Netzwerkfreigaben verwendet werden. Versuchen Sie, [BULK INSERT](/sql/t-sql/statements/bulk-insert-transact-sql#e-importing-data-from-a-csv-file) und [OPENROWSET](/sql/t-sql/functions/openrowset-transact-sql#g-accessing-data-from-a-csv-file-with-a-format-file) für das Lesen von CSV-Dateien aus Azure Blob Storage oder einen [Verbindungsserver, der auf einen serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) verweist, zu verwenden. Verfolgen Sie diese Anforderungen im [Feedback zu SQL Managed Instance](https://feedback.azure.com/forums/915676-sql-managed-instance/suggestions/35657887-linked-server-to-non-sql-sources)|.
 
 ### <a name="polybase"></a>PolyBase
 
-Der einzige unterstützte Typ externer Quellen für Azure SQL-Datenbank und andere Azure SQL Managed Instance-Instanzen ist RDBMS. Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
+Die einzigen verfügbaren Typen externer Quellen sind RDBMS (in der öffentlichen Vorschau) für Azure SQL-Datenbank, Azure SQL Managed Instance und Azure Synapse-Pool. Sie können zur Umgehung des Problems für externe PolyBase-Tabellen [eine externe Tabelle verwenden, die auf einen serverlosen SQL-Pool in Synapse Analytics verweist](https://devblogs.microsoft.com/azure-sql/read-azure-storage-files-using-synapse-sql-external-tables/) und direkt aus Azure Storage liest. In Azure SQL Managed Instance können Sie Verbindungsserver für einen [serverlosen SQL-Pool in Synapse Analytics](https://devblogs.microsoft.com/azure-sql/linked-server-to-synapse-sql-to-implement-polybase-like-scenarios-in-managed-instance/) oder SQL Server verwenden, um Azure Storage-Daten zu lesen.
+Informationen zu PolyBase finden Sie unter [PolyBase](/sql/relational-databases/polybase/polybase-guide).
 
 ### <a name="replication"></a>Replikation
 

@@ -1,22 +1,25 @@
 ---
-title: Herstellen einer Verbindung mit Common Data Service
-description: Erstellen und Verwalten von Common Data Service-Datensätzen mithilfe von Azure Logic Apps
+title: Herstellen einer Verbindung mit Common Data Service (Microsoft Dataverse)
+description: Erstellen und Verwalten von Common Data Service-Datensätzen (Microsoft Dataverse) mithilfe von Azure Logic Apps
 services: logic-apps
 ms.suite: integration
 ms.reviewer: jdaly, logicappspm
 ms.topic: conceptual
-ms.date: 05/08/2020
+ms.date: 12/11/2020
 tags: connectors
-ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b17c3d54b7065a18e015363a0362766f844e4e10
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91334581"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355119"
 ---
-# <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service mithilfe von Azure Logic Apps
+# <a name="create-and-manage-records-in-common-data-service-microsoft-dataverse-by-using-azure-logic-apps"></a>Erstellen und Verwalten von Datensätzen in Common Data Service (Microsoft Dataverse) mithilfe von Azure Logic Apps
 
-Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer [Common Data Service](/powerapps/maker/common-data-service/data-platform-intro)-Datenbank verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Common Data Service-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Common Data Service-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
+> [!NOTE]
+> Im November 2020 wurde Common Data Service in Microsoft Dataverse umbenannt.
+
+Mit [Azure Logic Apps](../logic-apps/logic-apps-overview.md) und dem [Common Data Service-Connector](/connectors/commondataservice/) können Sie automatisierte Workflows erstellen, die Datensätze in Ihrer Datenbank in [Common Data Service (nun Microsoft Dataverse)](/powerapps/maker/common-data-service/data-platform-intro) verwalten. Diese Workflows können Datensätze erstellen und aktualisieren sowie andere Vorgänge ausführen. Sie können auch Informationen aus Ihrer Common Data Service-Datenbank abrufen und die Ausgabe für andere Aktionen zur Verwendung in Ihrer Logik-App bereitstellen. Wenn ein Datensatz z. B. in der Common Data Service-Datenbank aktualisiert wird, können Sie mithilfe des Outlook-Connectors von Office 365 eine E-Mail senden.
 
 In diesem Artikel erfahren Sie, wie Sie eine Logik-App erstellen, die einen Aufgabendatensatz erstellt, sobald ein neuer Leaddatensatz erstellt wird.
 

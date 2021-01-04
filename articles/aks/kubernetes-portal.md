@@ -1,23 +1,21 @@
 ---
-title: Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal (Vorschau)
+title: Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal
 description: Erfahren Sie, wie Sie mit Kubernetes-Ressourcen interagieren, um einen Azure Kubernetes Service-Cluster (AKS) über das Azure-Portal zu verwalten.
 services: container-service
 ms.topic: article
-ms.date: 09/21/2020
-ms.openlocfilehash: cfd09e469de68a1eee7440773347e9fe58bf8619
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/09/2020
+ms.openlocfilehash: 8e31c41573ced403a034999de71a5595a54281df
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571622"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96921592"
 ---
-# <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal (Vorschau)
+# <a name="access-kubernetes-resources-from-the-azure-portal"></a>Zugreifen auf Kubernetes-Ressourcen über das Azure-Portal
 
-Das Azure-Portal umfasst eine Kubernetes-Ressourcenanzeige (Vorschau) für den einfachen Zugriff auf die Kubernetes-Ressourcen in Ihrem Azure Kubernetes Service-Cluster (AKS). Durch das Anzeigen von Kubernetes-Ressourcen aus dem Azure-Portal wird das Wechseln des Kontexts zwischen dem Azure-Portal und dem `kubectl`-Befehlszeilentool verringert, wodurch die Erfahrung des Anzeigens und Bearbeitens Ihrer Kubernetes-Ressourcen optimiert wird. Die Ressourcenanzeige enthält derzeit mehrere Ressourcentypen, z. B. Bereitstellungen, Pods und Replikatgruppen.
+Das Azure-Portal umfasst eine Kubernetes-Ressourcenansicht für den einfachen Zugriff auf die Kubernetes-Ressourcen in Ihrem Azure Kubernetes Service-Cluster (AKS). Durch das Anzeigen von Kubernetes-Ressourcen aus dem Azure-Portal wird das Wechseln des Kontexts zwischen dem Azure-Portal und dem `kubectl`-Befehlszeilentool verringert, wodurch die Erfahrung des Anzeigens und Bearbeitens Ihrer Kubernetes-Ressourcen optimiert wird. Die Ressourcenanzeige enthält derzeit mehrere Ressourcentypen, z. B. Bereitstellungen, Pods und Replikatgruppen.
 
 Die Kubernetes-Ressourcenansicht im Azure-Portal ersetzt das veraltete [AKS-Dashboard-Add-On][kubernetes-dashboard].
-
-[!INCLUDE [preview features callout](./includes/preview/preview-callout.md)]
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

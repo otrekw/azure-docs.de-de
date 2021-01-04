@@ -9,13 +9,13 @@ ms.author: peterlu
 author: peterclu
 ms.date: 05/05/2020
 ms.topic: conceptual
-ms.custom: how-to, devx-track-python
-ms.openlocfilehash: a7fdb370847e72657829d53df019203b0a5b211b
-ms.sourcegitcommit: ab94795f9b8443eef47abae5bc6848bb9d8d8d01
+ms.custom: how-to, devx-track-python, contperf-fy21q2
+ms.openlocfilehash: 7144d576694b6694f426533451717cef58c2da87
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/27/2020
-ms.locfileid: "96302569"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562445"
 ---
 # <a name="reinforcement-learning-preview-with-azure-machine-learning"></a>Lernen durch Bestärkung (Vorschau) mit Azure Machine Learning
 
@@ -26,7 +26,7 @@ ms.locfileid: "96302569"
 
 In diesem Artikel erfahren Sie, wie Sie einen RL-Agent (Reinforcement Learning, Lernen durch Bestärkung) trainieren, damit er das Videospiel Pong spielen kann. Sie verwenden dabei die Open-Source-Python-Bibliothek [Ray RLlib](https://ray.readthedocs.io/en/master/rllib.html) mit Azure Machine Learning, um komplexe verteilte RL-Aufträge zu verwalten.
 
-In diesem Artikel lernen Sie Folgendes:
+In diesem Artikel wird Folgendes behandelt:
 > [!div class="checklist"]
 > * Einrichten eines Experiments
 > * Definieren von Haupt- und Workerknoten
@@ -38,7 +38,7 @@ Dieser Artikel basiert auf dem [RLlib Pong-Beispiel](https://aka.ms/azureml-rl-p
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-Führen Sie diesen Code in einer der folgenden Umgebungen aus. Wir empfehlen Ihnen, die Azure Machine Learning-Computeinstanz zu testen, die einen schnellen Start ermöglicht. Die Beispielnotebooks für Lernen durch Bestärkung sind für schnelles Klonen und Ausführen auf einer Azure Machine Learning-Computeinstanz verfügbar.
+Führen Sie diesen Code in einer dieser Umgebungen aus. Wir empfehlen Ihnen, die Azure Machine Learning-Compute-Instanz zu testen, die den schnellsten Start ermöglicht. Sie können die Beispielnotebooks für vertiefendes Lernen schnell auf einer Azure Machine Learning-Compute-Instanz klonen und ausführen.
 
  - Azure Machine Learning-Computeinstanz
 
@@ -61,9 +61,7 @@ Das Lernen durch Bestärkung ist eine Methode des maschinellen Lernens, die durc
 
 Ihre Trainings-Agents lernen in einer **simulierten Umgebung**, Pong zu spielen. Trainings-Agents treffen mit jedem Frame des Spiels eine Entscheidung, um das Paddle nach oben oder unten zu verschieben oder die Position beizubehalten. Sie treffen anhand des Zustands des Spiels (ein RGB-Bild des Bildschirms) eine Entscheidung.
 
-RL setzt **Belohnungen** ein, um dem Agent mitzuteilen, ob seine Entscheidungen erfolgreich sind. In dieser Umgebung erhält der Agent eine positive Belohnung, wenn er einen Punkt erhält, und eine negative Belohnung, wenn ein Punkt gegen ihn erzielt wird. Über viele Iterationen hinweg lernt der Trainings-Agent, eine Aktion ausgehend vom aktuellen Zustand auszuführen, die die Summe der erwarteten zukünftigen Belohnungen optimiert.
-
-Für eine solche Optimierung in RL wird in der Regel ein Modell eines **Deep Neural Network** (DNN) verwendet. Zu Beginn ist die Leistung des Agents eher schlecht, aber mit jedem Spiel werden zusätzliche Beispiele generiert, die das Modell weiter optimieren.
+RL setzt **Belohnungen** ein, um dem Agent mitzuteilen, ob seine Entscheidungen erfolgreich sind. In diesem Beispiel erhält der Agent eine positive Belohnung, wenn er einen Punkt erhält, und eine negative Belohnung, wenn ein Punkt gegen ihn erzielt wird. Über viele Iterationen hinweg lernt der Trainings-Agent, eine Aktion ausgehend vom aktuellen Zustand auszuführen, die die Summe der erwarteten zukünftigen Belohnungen optimiert. Für eine solche Optimierung in RL werden in der Regel **Deep Neural Networks** (DNN) verwendet. 
 
 Das Training ist beendet, wenn der Agent im Durchschnitt 18 Belohnungen pro Trainingsepoche erhält. Das heißt, dass der Agent seinen Gegner in Spielen mit bis zu 21 Punkten um durchschnittlich mindestens 18 Punkte geschlagen hat.
 
@@ -73,7 +71,11 @@ Azure Machine Learning stellt das Framework bereit, um das komplexe Hochskaliere
 
 ## <a name="set-up-the-environment"></a>Einrichten der Umgebung
 
-Richten Sie die lokale RL-Umgebung ein, indem Sie die erforderlichen Python-Pakete laden, Ihren Arbeitsbereich initialisieren, ein Experiment erstellen und ein konfiguriertes virtuelles Netzwerk angeben.
+Richten Sie die lokale RL-Umgebung wie folgt ein:
+1. Laden der erforderlichen Python-Pakete
+1. Initialisieren des Arbeitsbereichs
+1. Erstellen von Experimenten
+1. Angeben eines konfigurierten virtuellen Netzwerks
 
 ### <a name="import-libraries"></a>Importieren von Bibliotheken
 
@@ -97,9 +99,7 @@ from azureml.contrib.train.rl import WorkerConfiguration
 
 ### <a name="initialize-a-workspace"></a>Initialisieren eines Arbeitsbereichs
 
-Der [Azure Machine Learning-Arbeitsbereich](concept-workspace.md) ist die Ressource der obersten Ebene für Azure Machine Learning. Er stellt den zentralen Ort für die Arbeit mit allen erstellten Artefakten dar.
-
-Initialisieren Sie ein Arbeitsbereichsobjekt aus der Datei `config.json`, die im [Abschnitt „Voraussetzungen“](#prerequisites) erstellt wurde. Wenn Sie diesen Code in einer Azure Machine Learning-Computeinstanz ausführen, wurde die Konfigurationsdatei bereits für Sie erstellt.
+Initialisieren Sie ein [Arbeitsbereichsobjekt](concept-workspace.md) aus der Datei `config.json`, die im Abschnitt [Voraussetzungen](#prerequisites) erstellt wurde. Wenn Sie diesen Code in einer Azure Machine Learning-Computeinstanz ausführen, wurde die Konfigurationsdatei bereits für Sie erstellt.
 
 ```Python
 ws = Workspace.from_config()
@@ -117,7 +117,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="specify-a-virtual-network"></a>Festlegen eines virtuellen Netzwerks
 
-Für RL-Aufträge, die mehrere Computeziele verwenden, müssen Sie ein virtuelles Netzwerk mit geöffneten Ports festlegen, mithilfe derer Worker- und Hauptknoten miteinander kommunizieren können. Das virtuelle Netzwerk kann sich in einer beliebigen Ressourcengruppe befinden. Es sollte sich jedoch in derselben Region wie Ihr Arbeitsbereich befinden. Weitere Informationen zum Einrichten des virtuellen Netzwerks finden Sie im Notebook zum Einrichten eines Arbeitsbereichs, das Sie im Abschnitt „Voraussetzungen“ finden. Hier geben Sie den Namen des virtuellen Netzwerks in der Ressourcengruppe an.
+Für RL-Aufträge, die mehrere Computeziele verwenden, müssen Sie ein virtuelles Netzwerk mit geöffneten Ports festlegen, mithilfe derer Worker- und Hauptknoten miteinander kommunizieren können.
+
+Das virtuelle Netzwerk kann sich in einer beliebigen Ressourcengruppe befinden. Es sollte sich jedoch in derselben Region wie Ihr Arbeitsbereich befinden. Weitere Informationen zum Einrichten des virtuellen Netzwerks finden Sie im Notebook zum Einrichten eines Arbeitsbereichs im Abschnitt „Voraussetzungen“. Hier geben Sie den Namen des virtuellen Netzwerks in der Ressourcengruppe an.
 
 ```python
 vnet = 'your_vnet'
@@ -125,13 +127,13 @@ vnet = 'your_vnet'
 
 ## <a name="define-head-and-worker-compute-targets"></a>Definieren von Haupt- und Workercomputezielen
 
-In diesem Beispiel werden separate Computeziele für die Ray-Haupt- und Workerknoten verwendet. Mit diesen Einstellungen können Sie Ihre Computeressourcen abhängig von der erwarteten Workload zentral hoch- oder herunterskalieren. Legen Sie die Anzahl der Knoten und die Größe der einzelnen Knoten basierend auf den Anforderungen Ihres Experiments fest.
+In diesem Beispiel werden separate Computeziele für die Ray-Haupt- und Workerknoten verwendet. Mit diesen Einstellungen können Sie Ihre Computeressourcen abhängig von der erwarteten Workload auf- oder abskalieren. Legen Sie die Anzahl der Knoten und die Größe der einzelnen Knoten basierend auf Ihren Anforderungen fest.
 
 ### <a name="head-computing-target"></a>Hauptcomputingziele
 
-In diesem Beispiel wird ein mit GPU ausgestatteter Hauptcluster verwendet, um die Deep Learning-Leistung zu optimieren. Der Hauptknoten trainiert das neuronale Netz, das der Agent verwendet, um Entscheidungen zu treffen. Der Hauptknoten sammelt auch Datenpunkte von den Workerknoten, um das neuronale Netz weiter zu trainieren.
+Sie können einen mit GPU ausgestatteten Hauptcluster verwenden, um die Deep Learning-Leistung zu verbessern. Der Hauptknoten trainiert das neuronale Netz, das der Agent verwendet, um Entscheidungen zu treffen. Der Hauptknoten sammelt auch Datenpunkte von den Workerknoten, um das neuronale Netz zu trainieren.
 
-Der Hauptcompute verwendet einen einzelnen virtuellen [`STANDARD_NC6`-Computer](../virtual-machines/nc-series.md) (VM). Er verfügt über sechs virtuelle CPUs, was bedeutet, dass die Arbeit über sechs Arbeits-CPUs verteilt werden kann.
+Der Hauptcompute verwendet einen einzelnen virtuellen [`STANDARD_NC6`-Computer](../virtual-machines/nc-series.md) (VM). Er verfügt über sechs virtuelle CPUs, auf die die Arbeit verteilt wird.
 
 
 ```python
@@ -173,7 +175,7 @@ else:
 
 ### <a name="worker-computing-cluster"></a>Workercomputingcluster
 
-In diesem Beispiel werden vier [`STANDARD_D2_V2`-VMs](../virtual-machines/nc-series.md) für das Workercomputeziel verwendet. Jeder Workerknoten hat zwei verfügbare CPUs für insgesamt acht verfügbare CPUs, um die Arbeit zu parallelisieren.
+In diesem Beispiel werden vier [`STANDARD_D2_V2`-VMs](../virtual-machines/nc-series.md) für das Workercomputeziel verwendet. Jeder Workerknoten hat zwei verfügbare CPUs für insgesamt acht verfügbare CPUs.
 
 GPUs sind für die Workerknoten nicht erforderlich, da sie kein Deep Learning ausführen. Die Worker führen die Spielsimulationen aus und sammeln Daten.
 
@@ -212,10 +214,9 @@ else:
 ```
 
 ## <a name="create-a-reinforcement-learning-estimator"></a>Erstellen eines Estimators für Lernen durch Bestärkung
+Übermitteln Sie mit dem [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) einen Trainingsauftrag an Azure Machine Learning.
 
-In diesem Abschnitt erfahren Sie, wie Sie mit dem [ReinforcementLearningEstimator](/python/api/azureml-contrib-reinforcementlearning/azureml.contrib.train.rl.reinforcementlearningestimator?preserve-view=true&view=azure-ml-py) einen Trainingsauftrag an Azure Machine Learning übermitteln.
-
-Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie auf einfache Weise festlegen, wie eine Skriptausführung konfiguriert werden soll. 
+Azure Machine Learning verwendet Schätzklassen, um Informationen zur Ausführungskonfiguration zu kapseln. So können Sie festlegen, wie eine Skriptausführung konfiguriert werden soll. 
 
 ### <a name="define-a-worker-configuration"></a>Definieren einer Workerkonfiguration
 
@@ -246,9 +247,11 @@ worker_conf = WorkerConfiguration(
 
 Das Einstiegsskript `pong_rllib.py` akzeptiert eine Liste von Parametern, die definieren, wie der Trainingsauftrag ausgeführt wird. Wenn diese Parameter über den Estimator als Kapselungsebene übergeben werden, ist es einfach, Skriptparameter zu ändern und Konfigurationen unabhängig voneinander auszuführen.
 
-Wenn Sie den richtigen Wert für `num_workers` festlegen, nutzen Sie die Parallelisierung optimal. Legen Sie die Anzahl der Worker auf denselben Wert wie die Anzahl der verfügbaren CPUs fest. In diesem Beispiel können Sie dies wie folgt berechnen:
+Wenn Sie den richtigen Wert für `num_workers` festlegen, nutzen Sie die Parallelisierung optimal. Legen Sie die Anzahl der Worker auf denselben Wert wie die Anzahl der verfügbaren CPUs fest. Wenden Sie für dieses Beispiel die folgende Berechnung an:
 
-Der Hauptknoten ist ein [Standard_NC6](../virtual-machines/nc-series.md) mit sechs vCPUs. Der Workercluster besteht aus vier [Standard_D2_V2-VMs](../cloud-services/cloud-services-sizes-specs.md#dv2-series) mit jeweils zwei CPUs für insgesamt acht CPUs. Allerdings müssen Sie eine CPU von der Workeranzahl subtrahieren, da eine für die Hauptknotenrolle reserviert werden muss. 6 CPUs + 8 CPUs - 1 Haupt-CPU = 13 gleichzeitige Worker. Azure Machine Learning verwendet Haupt- und Workercluster, um Computeressourcen zu unterscheiden. Allerdings unterscheidet Ray nicht zwischen Haupt und Worker, und alle CPUs sind verfügbare CPUs für die Workerthreadausführung.
+Der Hauptknoten ist ein [Standard_NC6](../virtual-machines/nc-series.md) mit sechs vCPUs. Der Workercluster besteht aus vier [Standard_D2_V2-VMs](../cloud-services/cloud-services-sizes-specs.md#dv2-series) mit jeweils zwei CPUs für insgesamt acht CPUs. Allerdings müssen Sie eine CPU von der Workeranzahl subtrahieren, da eine für die Hauptknotenrolle reserviert werden muss.
+
+6 CPUs + 8 CPUs - 1 Haupt-CPU = 13 gleichzeitige Worker. Azure Machine Learning verwendet Haupt- und Workercluster, um Computeressourcen zu unterscheiden. Allerdings unterscheidet Ray nicht zwischen Haupt- und Workerrolle, und alle CPUs sind als Workerthreads verfügbar.
 
 
 ```python
@@ -409,7 +412,7 @@ run = exp.submit(config=rl_estimator)
 
 ## <a name="monitor-and-view-results"></a>Überwachen und Anzeigen von Ergebnissen
 
-Verwenden Sie das Azure Machine Learning Jupyter-Widget, um den Status Ihrer Ausführungen in Echtzeit anzuzeigen. In diesem Beispiel zeigt das Widget zwei untergeordnete Ausführungen an: eine für Haupt- und eine für Workerausführungen. 
+Verwenden Sie das Azure Machine Learning Jupyter-Widget, um den Status Ihrer Ausführungen in Echtzeit anzuzeigen. Das Widget zeigt zwei untergeordnete Ausführungen an: eine für Haupt- und eine für Workerrollen. 
 
 ```python
 from azureml.widgets import RunDetails
@@ -421,7 +424,7 @@ run.wait_for_completion()
 1. Warten Sie, bis das Widget geladen ist.
 1. Wählen Sie in der Liste der Ausführungen die Hauptausführung aus.
 
-Wählen Sie **Click here to see the run in Azure Machine Learning studio** (Klicken Sie hier, um die Ausführung in Azure Machine Learning Studio anzuzeigen), um im Studio weitere Ausführungsinformationen anzuzeigen. Sie können auf diese Informationen zugreifen, während die Ausführung ausgeführt wird oder nachdem sie abgeschlossen wurde.
+Wählen Sie **Click here to see the run in Azure Machine Learning studio** (Klicken Sie hier, um die Ausführung in Azure Machine Learning Studio anzuzeigen), um im Studio weitere Ausführungsinformationen anzuzeigen. Sie können auf diese Informationen während der Ausführung oder nach ihrem Abschluss zugreifen.
 
 ![Liniendiagramm, das Ausführungsdetails des Widgets anzeigt](./media/how-to-use-reinforcement-learning/pong-run-details-widget.png)
 
@@ -429,7 +432,7 @@ Der Plot **episode_reward_mean** zeigt die durchschnittliche Anzahl der Punkte a
 
 Wenn Sie Protokolle der untergeordneten Ausführung durchsuchen, sehen Sie die Auswertungsergebnisse, die in der Datei driver_log.txt erfasst wurden. Möglicherweise müssen Sie einige Minuten warten, bis diese Metriken auf der Ausführungsseite verfügbar werden.
 
-In kurzer Zeit haben Sie gelernt, mehrere Computeressourcen zu konfigurieren, um einen Agent für Lernen durch Bestärkung so zu trainieren, dass er sehr gut Pong spielt.
+In kurzer Zeit haben Sie gelernt, mehrere Computeressourcen zu konfigurieren, um einen Agent für vertiefendes Lernen so zu trainieren, dass er sehr gut Pong gegen einen Computergegner spielt.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

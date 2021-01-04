@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/05/2019
-ms.openlocfilehash: ab77c8cf563c315768ad1c16089d8d939c085322
-ms.sourcegitcommit: 400f473e8aa6301539179d4b320ffbe7dfae42fe
+ms.openlocfilehash: bc345509db1c2a14afb0ae781eccad8f77395c18
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92782653"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347063"
 ---
 # <a name="what-is-an-azure-sql-managed-instance-pool-preview"></a>Was ist ein Azure SQL Managed Instance-Pool (Vorschauversion)?
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -59,7 +59,7 @@ Die folgende Liste enthält die wichtigsten Anwendungsfälle, in denen Instanzen
 
 ## <a name="architecture"></a>Aufbau
 
-Instanzenpools haben eine ähnliche Architektur wie reguläre verwaltete Instanzen ( *Einzelinstanzen* ). Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-network-for-azure-services.md) und zur Gewährleistung der Isolation und Sicherheit für Kunden basieren Instanzenpools außerdem auf [virtuellen Clustern](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuelle Cluster stellen eine dedizierte Gruppe isolierter virtueller Computer dar, die im Subnetz des virtuellen Netzwerks des Kunden bereitgestellt werden.
+Instanzenpools haben eine ähnliche Architektur wie reguläre verwaltete Instanzen (*Einzelinstanzen*). Zur Unterstützung von [Bereitstellungen in virtuellen Azure-Netzwerken](../../virtual-network/virtual-network-for-azure-services.md) und zur Gewährleistung der Isolation und Sicherheit für Kunden basieren Instanzenpools außerdem auf [virtuellen Clustern](connectivity-architecture-overview.md#high-level-connectivity-architecture). Virtuelle Cluster stellen eine dedizierte Gruppe isolierter virtueller Computer dar, die im Subnetz des virtuellen Netzwerks des Kunden bereitgestellt werden.
 
 Der Hauptunterschied zwischen den beiden Bereitstellungsmodellen besteht darin, dass Instanzenpools Bereitstellungen mehrerer SQL Server-Prozesse auf dem gleichen VM-Knoten ermöglichen, die über [Windows-Auftragsobjekte](/windows/desktop/ProcThread/job-objects) ressourcengesteuert werden, während Einzelinstanzen sich immer allein auf einem VM-Knoten befinden.
 
@@ -76,9 +76,12 @@ In Bezug auf Instanzenpools und Instanzen innerhalb von Pools bestehen verschied
 - Instanzenpools sind nur für Gen5-Hardware verfügbar.
 - Verwaltete Instanzen innerhalb eines Pools verfügen über dedizierte CPU- und RAM-Werte, sodass die aggregierte Anzahl von virtuellen Kernen in allen Instanzen kleiner oder gleich der Anzahl von virtuellen Kernen sein muss, die dem Pool zugeordnet sind.
 - Alle [Limits auf Instanzebene](resource-limits.md#service-tier-characteristics) gelten für die innerhalb eines Pools erstellten Instanzen.
-- Neben den Limits auf Instanzebene gelten auch zwei Limits auf *Ebene des Instanzenpools* :
+- Neben den Limits auf Instanzebene gelten auch zwei Limits auf *Ebene des Instanzenpools*:
   - Gesamtspeichergröße pro Pool (8 TB)
-  - Gesamtanzahl der Datenbanken pro Pool (100)
+  - Gesamtanzahl von Benutzerdatenbanken pro Pool. Dieser Grenzwert hängt vom Wert der virtuellen Kerne im Pool ab:
+    - 8 virtuelle Kerne unterstützen bis zu 200 Datenbanken.
+    - 16 virtuelle Kerne unterstützen bis zu 400 Datenbanken.
+    - Pools mit 24 oder mehr virtuellen Kernen unterstützen bis zu 500 Datenbanken.
 - Der AAD-Administrator kann nicht für die im Instanzpool bereitgestellten Instanzen festgelegt werden, weshalb die AAD-Authentifizierung nicht verwendet werden kann.
 
 Die Gesamtspeicherzuordnung und die Gesamtanzahl der Datenbanken in allen Instanzen muss kleiner oder gleich der über Instanzenpools verfügbar gemachten Limits sein.
@@ -86,8 +89,9 @@ Die Gesamtspeicherzuordnung und die Gesamtanzahl der Datenbanken in allen Instan
 - Instanzenpools unterstützen 8, 16, 24, 32, 40, 64 und 80 virtuelle Kerne.
 - Verwaltete Instanzen in Pools unterstützen 2, 4, 8, 16, 24, 32, 40, 64 und 80 virtuelle Kerne.
 - Verwaltete Instanzen in Pools unterstützen Speichergrößen zwischen 32 GB und 8 TB, mit folgenden Ausnahmen:
-  - 2-V-Kern-Instanzen unterstützen Größen zwischen 32 GB und 640 GB.
-  - 4-V-Kern-Instanzen unterstützen Größen zwischen 32 GB und 2 TB.
+  - Instanzen mit 2 virtuellen Kernen unterstützen Größen zwischen 32 GB und 640 GB.
+  - Instanzen mit 4 virtuellen Kernen unterstützen Größen zwischen 32 GB und 2 TB.
+- Verwaltete Instanzen innerhalb von Pools sind auf 100 Benutzerdatenbanken pro Instanz beschränkt. Dies gilt jedoch nicht für Instanzen mit zwei virtuellen Kernen, die bis zu 50 Benutzerdatenbanken pro Instanz unterstützen.
 
 Die [Dienstebeneneigenschaft](resource-limits.md#service-tier-characteristics) ist der Instanzenpoolressource zugeordnet, sodass die Dienstebene aller Instanzen in einem Pool mit der Dienstebene des Pools identisch sein muss. Derzeit ist nur die Dienstebene „Universell“ verfügbar (siehe dazu den folgenden Abschnitt zu den Einschränkungen in der aktuellen Vorschauversion).
 
@@ -111,7 +115,7 @@ Optionale Funktionen oder Funktionen, für die spezifische Werte ausgewählt wer
 
 ## <a name="performance-considerations"></a>Überlegungen zur Leistung
 
-Obwohl verwaltete Instanzen innerhalb von Pools dedizierte V-Kern- und RAM-Werte aufweisen, nutzen sie den lokalen Datenträger (für die tempdb-Auslastung) und Netzwerkressourcen gemeinsam. Es ist nicht wahrscheinlich, jedoch möglich, dass der *Noisy Neighbor* -Effekt eintritt, wenn mehrere Instanzen zur gleichen Zeit einen hohen Ressourcenverbrauch haben. Wenn dieses Problem auftritt, können Sie die betreffenden Instanzen in einem größeren Pool oder als Einzelinstanzen bereitstellen.
+Obwohl verwaltete Instanzen innerhalb von Pools dedizierte V-Kern- und RAM-Werte aufweisen, nutzen sie den lokalen Datenträger (für die tempdb-Auslastung) und Netzwerkressourcen gemeinsam. Es ist nicht wahrscheinlich, jedoch möglich, dass der *Noisy Neighbor*-Effekt eintritt, wenn mehrere Instanzen zur gleichen Zeit einen hohen Ressourcenverbrauch haben. Wenn dieses Problem auftritt, können Sie die betreffenden Instanzen in einem größeren Pool oder als Einzelinstanzen bereitstellen.
 
 ## <a name="security-considerations"></a>Sicherheitshinweise
 

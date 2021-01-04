@@ -5,18 +5,18 @@ services: multi-factor-authentication
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/24/2020
+ms.date: 12/11/2020
 ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: inbarc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 40751b7864cc62d17836ab6d57cd106f6904f64a
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 788512db242bf1a1c6f18ffc0ee773bd3372aa42
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96744107"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355866"
 ---
 # <a name="data-residency-and-customer-data-for-azure-ad-multi-factor-authentication"></a>Datenresidenz und Kundendaten für Azure AD Multi-Factor Authentication
 
@@ -57,7 +57,7 @@ Für öffentliche Azure-Clouds (mit Ausnahme von Azure B2C-Authentifizierung, N
 | Microsoft Authenticator-Benachrichtigung | In Multi-Factor Authentication-Protokollen<br />Datenspeicher für Multi-Factor Authentication-Aktivitätsberichte<br />Blockierte Benutzer bei Betrugsmeldungen<br />Änderungsanforderungen bei Änderung des Microsoft Authenticator-Gerätetokens |
 
 > [!NOTE]
-> Der Datenspeicher für Multi-Factor Authentication-Aktivitätsberichte befindet sich für alle Clouds in den USA, unabhängig von der Region, in der die Authentifizierungsanforderung verarbeitet wird. Microsoft Azure Deutschland, Microsoft Azure Operated, betrieben von 21Vianet, und Microsoft Government Cloud verfügen über eigene Datenspeicher, die von den Datenspeichern der Public Cloud-Regionen getrennt sind. Diese Daten werden jedoch immer in den USA gespeichert.
+> Der Datenspeicher für Multi-Factor Authentication-Aktivitätsberichte befindet sich für alle Clouds in den USA, unabhängig von der Region, in der die Authentifizierungsanforderung verarbeitet wird. Microsoft Azure Deutschland, Microsoft Azure Operated, betrieben von 21Vianet, und Microsoft Government Cloud verfügen über eigene Datenspeicher, die von den Datenspeichern der Public Cloud-Regionen getrennt sind. Diese Daten werden jedoch immer in den USA gespeichert. Diese Datenspeicher enthalten personenbezogene Informationen (Personally Identifiable Information, PII) wie z. B. den Benutzerprinzipalnamen (User Principal Name, UPN) und die vollständige Telefonnummer. 
 
 Für Microsoft Azure Government, Microsoft Azure Deutschland Microsoft Azure, betrieben von 21ViaNet, Azure B2C-Authentifizierung, NPS-Erweiterung und Windows Server 2016- oder 2019-AD FS-Adapter werden die folgenden personenbezogenen Daten gespeichert:
 

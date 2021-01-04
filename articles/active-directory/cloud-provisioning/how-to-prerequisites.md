@@ -7,16 +7,16 @@ manager: daveba
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 11/16/2020
+ms.date: 12/11/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8eb8de2424012d12f216f154eb077028a8f82d76
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: a89a456b5d9ee36909d5d742a7880d72e5ed86fd
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96173701"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355856"
 ---
 # <a name="prerequisites-for-azure-ad-connect-cloud-provisioning"></a>Voraussetzungen für die Azure AD Connect-Cloudbereitstellung
 Dieser Artikel enthält Anleitungen zur Auswahl und Verwendung der Azure Active Directory (Azure AD) Connect-Cloudbereitstellung als Identitätslösung.
@@ -51,11 +51,23 @@ Führen Sie das [IdFix-Tool](/office365/enterprise/prepare-directory-attributes-
 
 ### <a name="in-your-on-premises-environment"></a>In Ihrer lokalen Umgebung
 
-1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
+ 1. Geben Sie einen in die Domäne eingebundenen Hostserver unter Windows Server 2012 R2 oder höher mit mindestens 4 GB RAM und .NET 4.7.1 + Runtime an.
 
-1. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
+ >[!NOTE]
+ > Beachten Sie, dass die Definition eines Bereichsfilters auf dem Hostserver Kosten für Arbeitsspeicher verursacht.  Wenn kein Bereichsfilter verwendet wird, fallen keine zusätzlichen Arbeitsspeicherkosten an. Die Mindestgröße von 4 GB unterstützt die Synchronisierung für bis zu 12 Organisationseinheiten, die im Bereichsfilter definiert sind. Wenn Sie zusätzliche Organisationseinheiten synchronisieren möchten, müssen Sie die Mindestmenge an Arbeitsspeicher erhöhen. Verwenden Sie die folgende Tabelle als Richtlinie:
+ >
+ >  
+ >  | Anzahl der Organisationseinheiten im Bereichsfilter| Mindestens erforderlicher Arbeitsspeicher|
+ >  | --- | --- |
+ >  | 12| 4 GB|
+ >  | 18|5,5 GB|
+ >  | 28|> 10 GB|
+ >
+ > 
 
-1. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
+ 2. Die PowerShell-Ausführungsrichtlinie auf dem lokalen Server muss auf „Nicht definiert“ oder „RemoteSigned“ festgelegt werden.
+
+ 3. Wenn zwischen Ihren Servern und Azure AD eine Firewall eingerichtet wurde, konfigurieren Sie die folgenden Elemente:
    - Stellen Sie sicher, dass Agents über die folgenden Ports *ausgehende* Anforderungen an Azure AD senden können:
 
         | Portnummer | Wie diese verwendet wird |
@@ -100,7 +112,20 @@ Führen Sie diese Schritte aus, um TLS 1.2 zu aktivieren.
 
 1. Starten Sie den Server neu.
 
+## <a name="known-limitations"></a>Bekannte Einschränkungen
+Es gelten die folgenden bekannten Einschränkungen:
 
+### <a name="delta-synchronization"></a>Deltasynchronisierung
+
+- Bei der Gruppenbereichsfilterung für die Deltasynchronisierung werden nicht mehr als 1.500 Mitglieder unterstützt.
+- Wenn Sie eine Gruppe löschen, die für einen Gruppenbereichsfilter verwendet wird, werden Benutzer, die Mitglieder der Gruppe sind, nicht gelöscht. 
+- Wenn Sie die im Bereich befindliche Organisationseinheit oder Gruppe umbenennen, werden die Benutzer bei der Deltasynchronisierung nicht entfernt.
+
+### <a name="provisioning-logs"></a>Bereitstellungsprotokolle
+- In den Bereitstellungsprotokollen wird nicht eindeutig zwischen Erstellungs- und Aktualisierungsvorgängen unterschieden.  Es kann sein, dass ein Erstellungsvorgang für eine Aktualisierung und ein Aktualisierungsvorgang für eine Erstellung angezeigt wird.
+
+### <a name="group-re-naming-or-ou-re-naming"></a>Umbenennen von Gruppen oder Organisationseinheiten
+- Wenn Sie eine Gruppe oder Organisationseinheit in AD umbenennen, die sich im Bereich einer bestimmten Konfiguration befindet, wird die Namensänderung in AD vom Cloudbereitstellungsauftrag nicht erkannt. Der Auftrag wird nicht unter Quarantäne gestellt und bleibt im fehlerfreien Zustand.
 
 
 ## <a name="next-steps"></a>Nächste Schritte 

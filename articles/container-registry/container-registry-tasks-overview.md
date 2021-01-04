@@ -3,12 +3,12 @@ title: Übersicht über ACR Tasks
 description: 'Einführung in ACR Tasks: eine Suite mit Features in Azure Container Registry für sichere, automatisierte Build- und Patchvorgänge für Containerimages und Verwaltung in der Cloud.'
 ms.topic: article
 ms.date: 08/12/2020
-ms.openlocfilehash: 14758e363e74450a10f1a2cbfc889f3e24782771
-ms.sourcegitcommit: daab0491bbc05c43035a3693a96a451845ff193b
+ms.openlocfilehash: b6df415bd55979ef00f6921321dbc254ef7a7e59
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/29/2020
-ms.locfileid: "93027665"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562853"
 ---
 # <a name="automate-container-image-builds-and-maintenance-with-acr-tasks"></a>Automatisieren von Containerimage-Builds und Wartung mit ACR Tasks
 
@@ -23,7 +23,7 @@ Container bieten neue Virtualisierungsmöglichkeiten und trennen Anwendungs- und
 ACR Tasks unterstützt verschiedene Szenarien zum Erstellen und Verwalten von Containerimages und anderen Artefakten. Weitere Informationen finden Sie in den folgenden Abschnitten dieses Artikels.
 
 * **[Schnelltask](#quick-task)** : Bedarfsgesteuertes Erstellen und Pushen eines einzelnen Containerimages in eine Containerregistrierung in Azure ohne lokale Docker Engine-Installation. Kurz: `docker build`, `docker push` in die Cloud.
-* **Automatisch ausgelöste Tasks** : Aktivieren Sie einen oder mehrere *Trigger* , um ein Image zu erstellen:
+* **Automatisch ausgelöste Tasks**: Aktivieren Sie einen oder mehrere *Trigger*, um ein Image zu erstellen:
   * **[Auslösen des Tasks beim Update des Quellcodes](#trigger-task-on-source-code-update)** 
   * **[Auslösen beim Basisimageupdate](#automate-os-and-framework-patching)** 
   * **[Auslösen nach Zeitplan](#schedule-a-task)** 
@@ -105,7 +105,7 @@ Die folgende Tabelle zeigt Beispiele von unterstützten Kontextspeicherorten fü
 | Kontextspeicherort | BESCHREIBUNG | Beispiel |
 | ---------------- | ----------- | ------- |
 | Lokales Dateisystem | Dateien in einem Verzeichnis auf dem lokalen Dateisystem. | `/home/user/projects/myapp` |
-| GitHub-Masterbranch | Dateien im Masterbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |
+| GitHub-Mainbranch | Dateien im Mainbranch (oder einem anderen Standardbranch) eines öffentlichen oder privaten GitHub-Repositorys  | `https://github.com/gituser/myapp-repo.git` |
 | GitHub-Branch | Bestimmter Branch eines öffentlichen oder privaten GitHub-Repositorys| `https://github.com/gituser/myapp-repo.git#mybranch` |
 | GitHub-Unterordner | Dateien in einem Unterordner in einem öffentlichen oder privaten GitHub-Repository. Das Beispiel zeigt die Kombination der Branch- und Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#mybranch:myfolder` |
 | GitHub-Commit | Spezifischer Commit in ein öffentliches oder privates GitHub-Repository. Das Beispiel zeigt die Kombination aus einem Commit-Hash (SHA) und einer Unterordnerspezifikation. | `https://github.com/gituser/myapp-repo.git#git-commit-hash:myfolder` |

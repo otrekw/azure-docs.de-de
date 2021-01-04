@@ -3,12 +3,12 @@ title: 'Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe
 description: In diesem Tutorial erfahren Sie, wie Sie Azure Live Video Analytics in Azure IoT Edge verwenden, um eine ereignisbasierte Videoaufzeichnung in der Cloud durchzuführen und sie aus der Cloud wiederzugeben.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 84f6ef813fb1b2cc425e096212010717d0561aef
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 8f3ecdf7e4260d700f31663852abbb39474cd474
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498301"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401667"
 ---
 # <a name="tutorial-event-based-video-recording-to-the-cloud-and-playback-from-the-cloud"></a>Tutorial: Ereignisbasierte Videoaufzeichnung in der Cloud und Wiedergabe aus der Cloud
 
@@ -74,7 +74,7 @@ Das Diagramm ist die bildliche Darstellung eines [Mediengraphs](media-graph-conc
     
 Wie das Diagramm zeigt, verwenden Sie einen [RTSP-Quellknoten](media-graph-concept.md#rtsp-source) im Mediengraph zum Erfassen des simulierten Live-Videos von Verkehr auf einer Schnellstraße und senden dieses Video an zwei Pfade:
 
-* Der erste Pfad geht zu einem [Filterprozessorknoten für die Bildfrequenz](media-graph-concept.md#frame-rate-filter-processor), der Videobilder mit der angegebenen (herabgesetzten) Bildfrequenz ausgibt. Diese Video-Einzelbilder werden an einen HTTP-Erweiterungsknoten gesendet. Der Knoten leitet diese Einzelbilder dann als Bilder an das KI-Modul YOLO v3 weiter, einen Objekterkenner. Der Knoten empfängt die Ergebnisse, nämlich die vom Modell erkannten Objekte (Fahrzeuge im Verkehrsfluss). Der HTTP-Erweiterungsknoten veröffentlicht anschließend die Ergebnisse über den Knoten der IoT Hub-Nachrichtensenke auf dem IoT Edge Hub.
+* Der erste Pfad führt zu einem HTTP-Erweiterungsknoten. Der Knoten erfasst die Videoframes in einem von Ihnen mithilfe des Felds `samplingOptions` festgelegten Wert und leitet die Frames dann als Bilder an das KI-Modul YOLOv3 weiter, das eine Objekterkennung darstellt. Der Knoten empfängt die Ergebnisse, nämlich die vom Modell erkannten Objekte (Fahrzeuge im Verkehrsfluss). Der HTTP-Erweiterungsknoten veröffentlicht anschließend die Ergebnisse über den Knoten der IoT Hub-Nachrichtensenke auf dem IoT Edge Hub.
 * Das Objektzählermodul ist so eingerichtet, dass es Nachrichten vom IoT Edge Hub empfängt – welche die Ergebnisse der Objekterkennung (Fahrzeuge im Verkehrsfluss) beinhalten. Das Modul überprüft diese Nachrichten und sucht dabei nach Objekten eines bestimmten Typs, der mithilfe einer Einstellung konfiguriert wurde. Wenn ein solches Objekt gefunden wird, sendet dieses Modul eine Nachricht an den IoT Edge Hub. Diese „Objekt gefunden“-Meldungen werden dann an den IoT Hub-Quellknoten des Mediengraphen weitergeleitet. Beim Empfang einer solchen Nachricht löst der IoT Hub-Quellknoten im Mediengraph den [Signalgateprozessor](media-graph-concept.md#signal-gate-processor)-Knoten aus. Der Signalgate-Prozessorknoten wird dann für eine konfigurierte Zeitspanne geöffnet. Das Videosignal fließt für diese Zeitspanne durch das Gate zum Knoten der Medienobjektsenke. Dieser Anteil des Livestreams wird dann über den Knoten der [Medienobjektsenke](media-graph-concept.md#asset-sink) in einem [Medienobjekt](terminology.md#asset) in Ihrem Azure Media Services-Konto aufgezeichnet.
 
 ## <a name="set-up-your-development-environment"></a>Einrichten der Entwicklungsumgebung
@@ -189,7 +189,7 @@ Führen Sie die folgenden Schritte aus, um die Ereignisse vom Objektzählermodul
     
 ## <a name="run-the-program"></a>Ausführen des Programms
 
-1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG+UMSCHALT+X), und suchen Sie nach Azure IoT Hub.
+1. Öffnen Sie in Visual Studio Code die Registerkarte **Erweiterungen** (oder drücken Sie STRG + UMSCHALT + X), und suchen Sie nach Azure IoT Hub.
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]

@@ -3,25 +3,29 @@ title: gRPC-Erweiterungsprotokoll – Azure
 description: Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 288dcd1a11c7c42d8796d3b17f2bfd56f562aaf1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7f21ff358b8dd5ac540de8c39c37c52e98977e59
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89448069"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401626"
 ---
 # <a name="grpc-extension-protocol"></a>gRPC-Erweiterungsprotokoll
 
+Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update) erweitern. Wenn Sie den gRPC-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über ein gRPC-basiertes, sehr leistungsfähiges strukturiertes Protokoll.
+
 Dieser Artikel enthält Informationen zur Verwendung des gRPC-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrer benutzerdefinierten KI- oder CV-Erweiterung.
 
-gRPC ist ein modernes, Open-Source-basiertes, hochleistungsfähiges RPC-Framework, das in einer beliebigen Umgebung ausgeführt werden kann. Der gRPC-Transportdienst verwendet bidirektionales HTTP/2-Streaming zwischen folgenden Komponenten:
+gRPC ist ein modernes, hochleistungsfähiges Open Source-RPC-Framework, das in jeder Umgebung ausgeführt werden kann und plattformübergreifende und sprachübergreifende Kommunikation unterstützt. Der gRPC-Transportdienst verwendet bidirektionales HTTP/2-Streaming zwischen folgenden Komponenten:
 
 * gRPC-Client (Modul „Live Video Analytics in IoT Edge“) und 
 * gRPC-Server (Ihre benutzerdefinierte Erweiterung)
 
 Eine gRPC-Sitzung ist eine einzelne Verbindung zwischen gRPC-Client und gRPC-Server über den TCP/TLS-Port. 
 
-In einer einzelnen Sitzung geschieht Folgendes: Der Client sendet einen Mediendatenstrom-Deskriptor sowie Videoframes als Nachricht vom Typ [Protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) über die gRPC-Streamsitzung an den Server. Der Server überprüft den Datenstromdeskriptor, analysiert den Videoframe und gibt Rückschlussergebnisse als Protobuf-Nachricht zurück.
+In einer einzelnen Sitzung geschieht Folgendes: Der Client sendet einen Mediendatenstrom-Deskriptor sowie Videoframes als Nachricht vom Typ [Protobuf](https://github.com/Azure/live-video-analytics/tree/master/contracts/grpc) über die gRPC-Streamsitzung an den Server. Der Server überprüft den Datenstromdeskriptor, analysiert den Videoframe und gibt Rückschlussergebnisse als Protobuf-Nachricht zurück. 
+
+Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
 
 ![Vertrag für die gRPC-Erweiterung](./media/grpc-extension-protocol/grpc.png)
 
@@ -32,9 +36,10 @@ In einer einzelnen Sitzung geschieht Folgendes: Der Client sendet einen Medienda
 Von der benutzerdefinierten Erweiterung muss der folgende gRPC-Dienst implementiert werden:
 
 ```
-service MediaGraphExtension {
-  rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
-}
+service MediaGraphExtension
+    {
+        rpc ProcessMediaStream(stream MediaStreamMessage) returns (stream MediaStreamMessage);
+    }
 ```
 
 Dadurch wird bei einem Aufruf ein bidirektionaler Datenstrom geöffnet, sodass Nachrichten zwischen der gRPC-Erweiterung und dem Live Video Analytics-Graphen ausgetauscht werden können. Die erste Nachricht, die in diesem Datenstrom von jeder Partei gesendet wird, enthält einen Mediendatenstrom-Deskriptor (MediaStreamDescriptor), um die Informationen zu definieren, die in den folgenden Medienstichproben (MediaSamples) gesendet werden.
@@ -45,18 +50,23 @@ So kann beispielsweise die Grapherweiterung eine (hier in JSON ausgedrückte) Na
  {
     "sequence_number": 1,
     "ack_sequence_number": 0,
-    "media_stream_descriptor": {
-        "graph_identifier": {
+    "media_stream_descriptor": 
+    {
+        "graph_identifier": 
+        {
             "media_services_arm_id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/resourceGroupName/providers/microsoft.media/mediaservices/mediaAccountName",
             "graph_instance_name": "mediaGraphName",
             "graph_node_name": "grpcExtension"
         },
-        "media_descriptor": {
+        "media_descriptor": 
+        {
             "timescale": 90000,
-            "video_frame_sample_format": {
+            "video_frame_sample_format": 
+            {
                 "encoding": "RAW",
                 "pixel_format": "RGB24",
-                "dimensions": {
+                "dimensions": 
+                {
                     "width": 416,
                     "height": 416
                 },
@@ -73,13 +83,17 @@ Die benutzerdefinierte Erweiterung würde daraufhin mit folgender Nachricht antw
 {
     "sequence_number": 1,
     "ack_sequence_number": 1,
-    "media_stream_descriptor": {
-        "extension_identifier": "customExtensionName"    }
+    "media_stream_descriptor": 
+    {
+        "extension_identifier": "customExtensionName"    
+    }
 }
 ```
 
 Nachdem beide Seiten Mediendeskriptoren ausgetauscht haben, beginnt Live Video Analytics damit, Frames an die Erweiterung zu übertragen.
 
+> [!NOTE]
+> Die serverseitige gRPC-Implementierung kann in der Programmiersprache ihrer Wahl erfolgen.
 ### <a name="sequence-numbers"></a>Sequenznummern
 
 Der gRPC-Erweiterungsknoten und die benutzerdefinierte Erweiterung verfügen jeweils über eigene Sequenznummern, die ihren Nachrichten zugewiesen werden. Diese Sequenznummern sollten mit „1“ beginnen und monoton ansteigen. `ack_sequence_number` kann ignoriert werden, wenn keine Nachricht bestätigt wird. Dies kann beim Senden der ersten Nachricht vorkommen.
@@ -106,7 +120,8 @@ Der Empfänger öffnet daraufhin die Datei `/dev/shm/inference_client_share_memo
 ```
 {
     "timestamp": 143598615750000,
-    "content_reference": {
+    "content_reference": 
+    {
         "address_offset": 519168,
         "length_bytes": 173056
     }
@@ -123,25 +138,27 @@ Damit der Live Video Analytics-Container über gemeinsam genutzten Arbeitsspei
 Das folgende Beispiel zeigt, wie dies bei Verwendung der ersten Option im Gerätezwilling aussehen kann:
 
 ```
-"liveVideoAnalytics": {
+"liveVideoAnalytics": 
+{
   "version": "1.0",
   "type": "docker",
   "status": "running",
   "restartPolicy": "always",
-  "settings": {
+  "settings": 
+  {
     "image": "mcr.microsoft.com/media/live-video-analytics:1",
     "createOptions": 
-      "HostConfig": {
+      "HostConfig": 
+      {
         "IpcMode": "host"
       }
-    }
   }
 }
 ```
 
 Weitere Informationen zu IPC-Modi finden Sie unter https://docs.docker.com/engine/reference/run/#ipc-settings---ipc.
 
-## <a name="media-graph-grpc-extension-contract-definitions"></a>Definitionen von gRPC-Erweiterungsverträgen für Mediengraphen
+## <a name="mediagraph-grpc-extension-contract-definitions"></a>Definitionen von gRPC-Erweiterungsverträgen für Mediengraphen
 
 In diesem Abschnitt wird der gRPC-Vertrag definiert, der den Datenfluss definiert.
 
@@ -159,10 +176,12 @@ Hierzu können Anmeldeinformationen (Benutzername/Kennwort) verwendet werden. Di
 {
   "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
   "name": "{moduleIdentifier}",
-  "endpoint": {
+  "endpoint": 
+  {
     "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
     "url": "tcp://customExtension:8081",
-    "credentials": {
+    "credentials": 
+    {
       "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
       "username": "username",
       "password": "password"
@@ -175,6 +194,35 @@ Hierzu können Anmeldeinformationen (Benutzername/Kennwort) verwendet werden. Di
 Wenn die gRPC-Anforderung gesendet wird, wird der folgende Header in die Anforderungsmetadaten eingeschlossen, um eine HTTP-Standardauthentifizierung zu imitieren:
 
 `x-ms-authentication: Basic (Base64 Encoded username:password)`
+
+
+## <a name="configuring-inference-server-for-each-mediagraph-over-grpc-extension"></a>Konfigurieren des Rückschlussservers für jeden MediaGraph mithilfe der gRPC-Erweiterung
+Beim Konfigurieren Ihres Rückschlussservers brauchen Sie nicht für jedes KI-Modell, das innerhalb des Rückschlussservers verpackt ist, einen Knoten verfügbar zu machen. Stattdessen können Sie für eine Graph-Instanz die `extensionConfiguration`-Eigenschaft des `MediaGraphGrpcExtension`-Knotens verwenden und definieren, wie die KI-Modelle ausgewählt werden sollen. Während der Ausführung übergibt LVA diese Zeichenfolge an den Rückschlussserver, der sie zum Aufrufen des gewünschten KI-Modells verwenden kann. Bei dieser `extensionConfiguration`-Eigenschaft handelt es sich um eine optionale, serverspezifische Eigenschaft. Die Eigenschaft kann wie unten dargestellt verwendet werden:
+```
+{
+  "@type": "#Microsoft.Media.MediaGraphGrpcExtension",
+  "name": "{moduleIdentifier}",
+  "endpoint": 
+  {
+    "@type": "#Microsoft.Media.MediaGraphUnsecuredEndpoint",
+    "url": "${grpcExtensionAddress}",
+    "credentials": 
+    {
+      "@type": "#Microsoft.Media.MediaGraphUsernamePasswordCredentials",
+      "username": "${grpcExtensionUserName}",
+      "password": "${grpcExtensionPassword}"
+    }
+  },
+    // Optional server configuration string. This is server specific 
+  "extensionConfiguration": "{Optional extension specific string}",
+  "dataTransfer": 
+  {
+    "mode": "sharedMemory",
+    "SharedMemorySizeMiB": "5"
+  }
+    //Other fields omitted
+}
+```
 
 ## <a name="using-grpc-over-tls"></a>Verwenden von gRPC über TLS
 

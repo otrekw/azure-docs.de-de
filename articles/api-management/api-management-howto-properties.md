@@ -1,80 +1,121 @@
 ---
 title: Verwenden von benannten Werten in Azure API Management-Richtlinien
-description: Erfahren Sie, wie benannte Werte in Azure API Management-Richtlinien verwendet werden. Benannte Werte können Literalzeichenfolgen und Richtlinienausdrücke enthalten.
+description: Erfahren Sie, wie benannte Werte in Azure API Management-Richtlinien verwendet werden. Benannte Werte können Literalzeichenfolgen, Richtlinienausdrücke und Geheimnisse enthalten, die in Azure Key Vault gespeichert sind.
 services: api-management
 documentationcenter: ''
 author: vladvino
-manager: erikre
-editor: ''
 ms.service: api-management
-ms.workload: mobile
-ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 01/08/2020
+ms.date: 12/14/2020
 ms.author: apimpm
-ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4cde4dadee33ec1c3f91ab4770dbfe697289cef3
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87852190"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504731"
 ---
-# <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
+# <a name="use-named-values-in-azure-api-management-policies"></a>Verwenden von benannten Werten in Azure API Management-Richtlinien
 
-API Management-Richtlinien sind eine leistungsfähige Funktion des Systems, mit der das Azure-Portal das Verhalten der API über eine Konfiguration ändern kann. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und benannten Werten erstellt werden.
+[API Management-Richtlinien](api-management-howto-policies.md) sind eine leistungsfähige Funktion des Systems, mit der Herausgeber das Verhalten der API über eine Konfiguration ändern können. Richtlinien sind eine Sammlung von Anweisungen, die sequenziell bei Anfragen oder Antworten einer API ausgeführt werden. Richtlinienanweisungen können mithilfe von literalen Textwerten, Richtlinienausdrücken und benannten Werten erstellt werden.
 
-Jede API Management-Dienstinstanz weist eine Sammlung von Schlüssel-Wert-Paaren auf, die als benannte Werte bezeichnet werden und die für die gesamte Dienstinstanz gelten. Es gibt keine Beschränkung für die Anzahl der Elemente in der Sammlung. Benannte Werte können zum Verwalten konstanter Zeichenfolgenwerte für alle API-Konfigurationen und -Richtlinien verwendet werden. Jeder benannte Wert kann die folgenden Attribute aufweisen:
+*Benannte Werte* sind eine globale Sammlung von Name-Wert-Paaren in jeder API Management-Instanz. Es gibt keine Beschränkung für die Anzahl der Elemente in der Sammlung. Benannte Werte können zum Verwalten konstanter Zeichenfolgenwerte und Geheimnisse für alle API-Konfigurationen und -Richtlinien verwendet werden. 
 
-| attribute      | type            | BESCHREIBUNG                                                                                                                            |
-| -------------- | --------------- | -------------------------------------------------------------------------------------------------------------------------------------- |
-| `Display name` | Zeichenfolge          | Wird zum Verweisen auf den benannten Wert in Richtlinien verwendet. Eine Zeichenfolge von einem bis 256 Zeichen. Nur Buchstaben, Ziffern, Punkt und Leerzeichen sind zulässig. |
-| `Value`        | Zeichenfolge          | Tatsächlicher Wert. Darf nicht leer sein oder nur aus Leerzeichen bestehen. Maximal 4.096 Zeichen lang.                                        |
-| `Secret`       | boolean         | Bestimmt, ob der Wert ein geheimer Schlüssel ist und ob er verschlüsselt werden sollte.                                                               |
-| `Tags`         | Array von Zeichenfolgen | Wird zum Filtern der Liste der benannten Werte verwendet. Bis zu 32 Tags.                                                                                    |
+:::image type="content" source="media/api-management-howto-properties/named-values.png" alt-text="Benannte Werte im Azure-Portal":::
 
-![Benannte Werte](./media/api-management-howto-properties/named-values.png)
+## <a name="value-types"></a>Werttypen
 
-Benannte Werte können Literalzeichenfolgen und [Richtlinienausdrücke](./api-management-policy-expressions.md) enthalten. Der Wert von `Expression` ist beispielsweise ein Richtlinienausdruck, der eine Zeichenfolge zurückgibt, die das aktuelle Datum und die Uhrzeit enthält. Der benannte Wert `Credential` ist als Geheimnis markiert, sodass er standardmäßig nicht angezeigt wird.
+|type  |BESCHREIBUNG  |
+|---------|---------|
+|Plain     |  Literalzeichenfolge oder Richtlinienausdruck     |
+|`Secret`     |   Literalzeichenfolge oder Richtlinienausdruck (durch API Management verschlüsselt)      |
+|[Key vault](#key-vault-secrets)     |  Bezeichner eines Geheimnisses, das in Azure Key Vault gespeichert ist.      |
 
-| Name       | Wert                      | `Secret` | `Tags`          |
-| ---------- | -------------------------- | ------ | ------------- |
-| Wert      | 42                         | False  | vital-numbers |
-| Anmeldeinformationen | ••••••••••••••••••••••     | True   | security      |
-| Ausdruck | @(DateTime.Now.ToString()) | False  |               |
+Plain-Werte oder -Geheimnisse können [Richtlinienausdrücke](./api-management-policy-expressions.md) enthalten. Der Ausdruck `@(DateTime.Now.ToString())` gibt z. B. eine Zeichenfolge zurück, die das aktuelle Datum und die Uhrzeit enthält.
 
-> [!NOTE]
-> Anstelle von benannten Werten, die in einem API Management-Dienst gespeichert sind, können Sie Werte verwenden, die im [Azure Key Vault](https://azure.microsoft.com/services/key-vault/)-Dienst gespeichert sind, wie in diesem [Beispiel](https://github.com/Azure/api-management-policy-snippets/blob/master/examples/Look%20up%20Key%20Vault%20secret%20using%20Managed%20Service%20Identity.policy.xml) veranschaulicht.
+Ausführliche Informationen zu den Attributen benannter Werte finden Sie in der [REST-API-Referenz](/rest/api/apimanagement/2020-06-01-preview/namedvalue/createorupdate) von API Management.
 
-## <a name="to-add-and-edit-a-named-value"></a>So fügen Sie einen benannten Wert hinzu und bearbeiten ihn
+## <a name="key-vault-secrets"></a>Key Vault-Geheimnisse
 
-![Hinzufügen eines benannten Werts](./media/api-management-howto-properties/add-property.png)
+Geheimniswerte können entweder als verschlüsselte Zeichenfolgen in API Management (benutzerdefinierte Geheimnisse) oder durch Verweisen auf Geheimnisse in [Azure Key Vault](../key-vault/general/overview.md) gespeichert werden. 
 
-1. Wählen Sie unter **API MANAGEMENT** die Option **APIs** aus.
-2. Klicken Sie auf **Benannte Werte**.
-3. Klicken Sie auf **+ Hinzufügen**.
+Die Verwendung von Schlüsseltresorgeheimnissen wird empfohlen, da dadurch die Sicherheit von API Management verbessert wird:
 
-    „Name“ und „Wert“ sind erforderliche Werte. Wenn der Wert ein Geheimnis ist, aktivieren Sie das Kontrollkästchen _Dies ist ein Geheimnis_. Geben Sie einen oder mehrere optionale Tags ein, um Ihre benannten Werte besser organisieren zu können, und klicken Sie auf „Speichern“.
+* In Schlüsseltresoren gespeicherte Geheimnisse können für mehrere Dienste verwendet werden.
+* Auf die Geheimnisse können präzise [Zugriffsrichtlinien](../key-vault/general/secure-your-key-vault.md#data-plane-and-access-policies) angewandt werden.
+* Wenn Geheimnisse im Schlüsseltresor aktualisiert werden, erfolgt in API Management automatisch eine Schlüsselrotation. Nach der Aktualisierung im Schlüsseltresor wird ein benannter Wert innerhalb von 4 Stunden in API Management aktualisiert. 
 
-4. Klicken Sie auf **Erstellen**.
+### <a name="prerequisites-for-key-vault-integration"></a>Voraussetzungen für die Key Vault-Integration
 
-Sobald der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie darauf klicken. Wenn Sie den Namen des benannten Werts ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Namen verwenden.
+1. Schritte zum Erstellen eines Schlüsseltresors finden Sie unter [Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal](../key-vault/general/quick-create-portal.md).
+1. Aktivieren Sie eine system- oder benutzerseitig zugewiesene [verwaltete Identität](api-management-howto-use-managed-service-identity.md) in der API Management-Instanz.
+1. Weisen Sie der verwalteten Identität [Key Vault-Zugriffsrichtlinien](../key-vault/general/assign-access-policy-portal.md) mit Berechtigungen zum Abrufen und Auflisten von Geheimnissen im Tresor zu. So fügen Sie die Richtlinie hinzu
+    1. Navigieren Sie im Portal zu Ihrem Schlüsseltresor.
+    1. Wählen Sie **Einstellungen > Zugriffsrichtlinien > + Zugriffsrichtlinie hinzufügen** aus.
+    1. Wählen Sie **Geheimnisberechtigungen** und dann **Abrufen** und **Auflisten** aus.
+    1. Wählen Sie unter **Prinzipal auswählen** den Ressourcennamen der verwalteten Identität aus. Wenn Sie eine systemseitig zugewiesene Identität verwenden, ist der Prinzipal der Name der API Management-Instanz.
+1. Erstellen Sie ein Geheimnis im Schlüsseltresor, oder importieren Sie es. Weitere Informationen finden Sie unter [Schnellstart: Festlegen eines Geheimnisses und Abrufen des Geheimnisses aus Azure Key Vault mithilfe des Azure-Portals](../key-vault/secrets/quick-create-portal.md).
 
-## <a name="to-delete-a-named-value"></a>So löschen Sie einen benannten Wert
+Um das Schlüsseltresorgeheimnis zu verwenden, müssen Sie [einen benannten Wert hinzufügen oder bearbeiten](#add-or-edit-a-named-value) und einen Typ von **Schlüsseltresor** angeben. Wählen Sie das Geheimnis im Schlüsseltresor aus.
 
-Wenn Sie einen benannten Wert löschen möchten, klicken Sie neben dem zu löschenden benannten Wert auf **Löschen**.
+> [!CAUTION]
+> Wenn Sie in API Management ein Geheimnis aus einem Schlüsseltresor verwenden, dürfen Sie auf keinen Fall das Geheimnis, den Schlüsseltresor oder die verwaltete Identität löschen, die für den Zugriff auf den Schlüsseltresor verwendet wird.
 
-> [!IMPORTANT]
-> Wenn Richtlinien auf den benannten Wert verweisen, können Sie ihn erst erfolgreich löschen, nachdem Sie den benannten Wert aus allen Richtlinien entfernt haben, die ihn verwenden.
+Wenn die [Key Vault-Firewall](../key-vault/general/network-security.md) in Ihrem Schlüsseltresor aktiviert ist, gelten für die Verwendung von Schlüsseltresorgeheimnissen die folgenden zusätzlichen Anforderungen:
 
-## <a name="to-search-and-filter-named-values"></a>So suchen und filtern Sie benannte Werte
+* Sie müssen die **systemseitig zugewiesene** verwaltete Identität der API Management-Instanz verwenden, um auf den Schlüsseltresor zuzugreifen.
+* Aktivieren Sie in der Key Vault-Firewall die Option **Vertrauenswürdigen Microsoft-Diensten die Umgehung dieser Firewall erlauben?** .
 
-Die Registerkarte **Benannte Werte** umfasst Such- und Filterfunktionen, die Ihnen beim Verwalten Ihrer benannten Werte helfen. Geben Sie zum Filtern der Liste der benannten Werte nach einem Namen einen Suchbegriff in das Textfeld **Eigenschaft suchen** ein. Wenn Sie alle benannten Werte anzeigen möchten, löschen Sie den Inhalt des Textfelds **Eigenschaft suchen**, und drücken Sie die Eingabetaste.
+Wenn die API Management-Instanz in einem virtuellen Netzwerk bereitgestellt wird, müssen Sie darüber hinaus die folgenden Netzwerkeinstellungen konfigurieren:
+* Aktivieren Sie im API Management-Subnetz einen [Dienstendpunkt](../key-vault/general/overview-vnet-service-endpoints.md) für Azure Key Vault.
+* Konfigurieren Sie eine Netzwerksicherheitsgruppen-Regel (NSG), um ausgehenden Datenverkehr an die [Diensttags](../virtual-network/service-tags-overview.md) AzureKeyVault und AzureActiveDirectory zuzulassen. 
 
-Geben Sie zum Filtern der Liste nach Tags mindestens ein Tag in das Textfeld **Nach Tags filtern** ein. Wenn Sie alle benannten Werte anzeigen möchten, löschen Sie den Inhalt des Textfelds **Nach Tags filtern**, und drücken Sie die Eingabetaste.
+Weitere Informationen zur Netzwerkkonfiguration finden Sie unter [Herstellen einer Verbindung mit einem virtuellen Netzwerk](api-management-using-with-vnet.md#-common-network-configuration-issues).
 
-## <a name="to-use-a-named-value"></a>So verwenden Sie einen benannten Wert
+## <a name="add-or-edit-a-named-value"></a>Hinzufügen oder Bearbeiten benannter Werte
 
-Um einen benannten Wert in einer Richtlinie zu verwenden, setzen Sie seinen Namen in ein doppeltes Paar geschweifter Klammern (z. B. `{{ContosoHeader}}`), wie im folgenden Beispiel gezeigt:
+### <a name="add-a-key-vault-secret"></a>Hinzufügen von Schlüsseltresorgeheimnissen
+
+Weitere Informationen finden Sie unter [Voraussetzungen für die Key Vault-Integration](#prerequisites-for-key-vault-integration).
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
+1. Wählen Sie unter **APIs** die Optionen **Benannte Werte** >  **+ Hinzufügen** aus.
+1. Geben Sie als Bezeichner einen **Namen** sowie einen **Anzeigenamen** ein, der zum Verweisen auf die Eigenschaft in Richtlinien verwendet wird.
+1. Wählen Sie unter **Werttyp** die Option **Key Vault** aus.
+1. Geben Sie den Bezeichner eines Schlüsseltresorgeheimnisses (ohne Version) ein, oder wählen Sie **Auswählen** aus, um ein Geheimnis aus einem Schlüsseltresor auszuwählen.
+    > [!IMPORTANT]
+    > Wenn Sie selbst einen Bezeichner für ein Schlüsseltresorgeheimnis eingeben, stellen Sie sicher, dass dieser keine Versionsinformationen enthält. Andernfalls wird das Geheimnis nach einer Aktualisierung im Schlüsseltresor nicht automatisch in API Management rotiert.
+1. Wählen Sie unter **Clientidentität** eine systemseitig zugewiesene oder eine vorhandene benutzerseitig zugewiesene verwaltete Identität aus. Erfahren Sie, wie Sie [verwaltete Identitäten in Ihrem API Management-Dienst hinzufügen oder bearbeiten](api-management-howto-use-managed-service-identity.md).
+    > [!NOTE]
+    > Die Identität benötigt Berechtigungen zum Abrufen und Auflisten von Geheimnissen im Schlüsseltresor. Wenn Sie den Zugriff auf den Schlüsseltresor noch nicht konfiguriert haben, werden Sie von API Management dazu aufgefordert. Der Dienst kann die Identität dann automatisch mit den erforderlichen Berechtigungen konfigurieren.
+1. Fügen Sie ein (oder mehrere) optionales Tag hinzu, um die benannten Werte zu organisieren, und wählen Sie dann **Speichern** aus.
+1. Klicken Sie auf **Erstellen**.
+
+    :::image type="content" source="media/api-management-howto-properties/add-property.png" alt-text="Hinzufügen eines Schlüsseltresorgeheimnisses":::
+
+### <a name="add-a-plain-or-secret-value"></a>Hinzufügen eines Plain- oder Geheimniswerts
+
+1. Navigieren Sie im [Azure-Portal](https://portal.azure.com) zu Ihrer API Management-Instanz.
+1. Wählen Sie unter **APIs** die Optionen **Benannte Werte** >  **+ Hinzufügen** aus.
+1. Geben Sie als Bezeichner einen **Namen** sowie einen **Anzeigenamen** ein, der zum Verweisen auf die Eigenschaft in Richtlinien verwendet wird.
+1. Wählen Sie unter **Werttyp** entweder **Plain** oder **Geheimnis** aus.
+1. Geben Sie unter **Wert** eine Zeichenfolge oder einen Richtlinienausdruck ein.
+1. Fügen Sie ein (oder mehrere) optionales Tag hinzu, um die benannten Werte zu organisieren, und wählen Sie dann **Speichern** aus.
+1. Klicken Sie auf **Erstellen**.
+
+Nachdem der benannte Wert erstellt wurde, können Sie ihn bearbeiten, indem Sie den Namen auswählen. Wenn Sie den Anzeigenamen ändern, werden alle Richtlinien, die auf diesen benannten Wert verweisen, automatisch aktualisiert, sodass sie den neuen Anzeigenamen verwenden.
+
+## <a name="use-a-named-value"></a>Verwenden benannter Werte
+
+In den Beispielen in diesem Abschnitt werden benannte Werte aus der folgenden Tabelle verwendet.
+
+| Name               | Wert                      | `Secret` | 
+|--------------------|----------------------------|--------|---------|
+| ContosoHeader      | `TrackingId`                 | Falsch  | 
+| ContosoHeaderValue | ••••••••••••••••••••••     | True   | 
+| ExpressionProperty | `@(DateTime.Now.ToString())` | Falsch  | 
+
+Um einen benannten Wert in einer Richtlinie zu verwenden, setzen Sie seinen Anzeigenamen in ein doppeltes Paar geschweifter Klammern (z. B. `{{ContosoHeader}}`), wie im folgenden Beispiel gezeigt:
 
 ```xml
 <set-header name="{{ContosoHeader}}" exists-action="override">
@@ -84,9 +125,13 @@ Um einen benannten Wert in einer Richtlinie zu verwenden, setzen Sie seinen Name
 
 In diesem Beispiel dient `ContosoHeader` als Name eines Headers in einer `set-header`-Richtlinie und `ContosoHeaderValue` als Wert dieses Headers. Wenn diese Richtlinie in einer Anforderung oder Antwort an das API Management-Gateway ausgewertet wird, werden `{{ContosoHeader}}` und `{{ContosoHeaderValue}}` durch ihre jeweiligen Werte ersetzt.
 
-Benannte Werte können als vollständige Attribut- oder Elementwerte verwendet werden, wie im vorherigen Beispiel gezeigt, sie können aber auch in einen literalen Textausdruck eingefügt oder mit einem Teil davon kombiniert werden, wie im folgenden Beispiel gezeigt wird: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Benannte Werte können als vollständige Attribut- oder Elementwerte verwendet werden, wie im vorherigen Beispiel gezeigt, sie können aber auch in einen literalen Textausdruck eingefügt oder mit einem Teil davon kombiniert werden, wie im folgenden Beispiel gezeigt wird:  
 
-Benannte Werte können auch Richtlinienausdrücke enthalten. Im folgenden Beispiel wird `ExpressionProperty` verwendet.
+```xml
+<set-header name = "CustomHeader{{ContosoHeader}}" ...>
+```
+
+Benannte Werte können auch Richtlinienausdrücke enthalten. Im folgenden Beispiel wird der Ausdruck `ExpressionProperty` verwendet.
 
 ```xml
 <set-header name="CustomHeader" exists-action="override">
@@ -94,17 +139,27 @@ Benannte Werte können auch Richtlinienausdrücke enthalten. Im folgenden Beispi
 </set-header>
 ```
 
-Wenn diese Richtlinie ausgewertet wird, wird `{{ExpressionProperty}}` durch ihren Wert ersetzt: `@(DateTime.Now.ToString())`. Da der Wert ein Richtlinienausdruck ist, wird der Ausdruck ausgewertet, und die Ausführung der Richtlinie wird fortgesetzt.
+Beim Auswerten dieser Richtlinie wird `{{ExpressionProperty}}` durch ihren Wert ersetzt: `@(DateTime.Now.ToString())`. Da der Wert ein Richtlinienausdruck ist, wird der Ausdruck ausgewertet, und die Ausführung der Richtlinie wird fortgesetzt.
 
-Sie können dies im Entwicklerportal durch Aufrufen eines Vorgangs testen, der eine Richtlinie mit entsprechenden benannten Werten aufweist. Im folgenden Beispiel wird ein Vorgang mit den beiden vorherigen `set-header`-Beispielrichtlinien mit benannten Werten aufgerufen. Beachten Sie, dass die Antwort zwei benutzerdefinierte Header enthält, die mithilfe von Richtlinien mit benannten Werten konfiguriert wurden.
+Sie können dies im Azure-Portal oder im [Entwicklerportal](api-management-howto-developer-portal.md) durch Aufrufen eines Vorgangs testen, der eine Richtlinie mit entsprechenden benannten Werten aufweist. Im folgenden Beispiel wird ein Vorgang mit den beiden vorherigen `set-header`-Beispielrichtlinien mit benannten Werten aufgerufen. Beachten Sie, dass die Antwort zwei benutzerdefinierte Header enthält, die mithilfe von Richtlinien mit benannten Werten konfiguriert wurden.
 
-![Entwicklerportal][api-management-send-results]
+:::image type="content" source="media/api-management-howto-properties/api-management-send-results.png" alt-text="API-Antwort auf den Test":::
 
-Beim Betrachten der [Verfolgung mit dem API-Inspektor](api-management-howto-api-inspector.md) für einen Aufruf, der die beiden vorherigen Beispielrichtlinien mit benannten Werten enthält, sehen Sie beide `set-header`-Richtlinien mit den eingefügten benannten Werten und die Auswertung des Richtlinienausdrucks für den benannten Wert, der den Richtlinienausdruck enthält.
+Beim Anzeigen der [API-Ablaufverfolgung](api-management-howto-api-inspector.md) für einen Aufruf, der die beiden vorherigen Beispielrichtlinien mit benannten Werten enthält, sehen Sie beide `set-header`-Richtlinien mit den eingefügten benannten Werten und die Auswertung des Richtlinienausdrucks für den benannten Wert, der den Richtlinienausdruck enthält.
 
-![Verfolgung mit dem API-Inspektor][api-management-api-inspector-trace]
+:::image type="content" source="media/api-management-howto-properties/api-management-api-inspector-trace.png" alt-text="Verfolgung mit dem API-Inspektor":::
+
+> [!CAUTION]
+> Wenn eine Richtlinie auf ein Geheimnis in Azure Key Vault verweist, wird der Wert aus dem Schlüsseltresor Benutzern angezeigt, die Zugriff auf Abonnements haben, in denen die [API-Ablaufverfolgung für Anforderungen](api-management-howto-api-inspector.md) aktiviert ist.
 
 Benannte Werte können zwar Richtlinienausdrücke, aber keine anderen benannten Werte enthalten. Wenn für einen Wert, z. B. `Text: {{MyProperty}}`, Text verwendet wird, der einen Verweis auf einen benannten Wert enthält, wird dieser Verweis nicht aufgelöst und ersetzt.
+
+## <a name="delete-a-named-value"></a>Löschen benannter Werte
+
+Wenn Sie einen benannten Wert löschen möchten, wählen Sie den Namen und dann im Kontextmenü ( **...** ) die Option **Löschen** aus.
+
+> [!IMPORTANT]
+> Wenn Richtlinien in API Management auf den benannten Wert verweisen, können Sie ihn erst löschen, nachdem Sie den benannten Wert aus allen Richtlinien entfernt haben, die ihn verwenden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
@@ -114,5 +169,4 @@ Benannte Werte können zwar Richtlinienausdrücke, aber keine anderen benannten 
     -   [Richtlinienausdrücke](./api-management-policy-expressions.md)
 
 [api-management-send-results]: ./media/api-management-howto-properties/api-management-send-results.png
-[api-management-properties-filter]: ./media/api-management-howto-properties/api-management-properties-filter.png
-[api-management-api-inspector-trace]: ./media/api-management-howto-properties/api-management-api-inspector-trace.png
+

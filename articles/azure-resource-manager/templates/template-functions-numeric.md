@@ -1,18 +1,18 @@
 ---
 title: Vorlagenfunktionen – numerisch
-description: Hier werden die Funktionen beschrieben, die in einer Azure Resource Manager-Vorlage zum Arbeiten mit Zahlen verwendet werden können.
+description: Informationen zu den Funktionen, die in einer ARM-Vorlage (Azure Resource Manager) zum Arbeiten mit Zahlen verwendet werden können.
 ms.topic: conceptual
 ms.date: 11/18/2020
-ms.openlocfilehash: 26f4b846c67ee7b926ea984ceefd84bf9ea56952
-ms.sourcegitcommit: 10d00006fec1f4b69289ce18fdd0452c3458eca5
+ms.openlocfilehash: f3687581d94f80cc923614a0655da1813bd5c97b
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/21/2020
-ms.locfileid: "96004533"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359709"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>Numerische Funktionen für ARM-Vorlagen
 
-Resource Manager stellt die folgenden Funktionen für das Arbeiten mit ganzen Zahlen in Ihrer ARM-Vorlage (Azure Resource Manager) bereit:
+Resource Manager stellt die folgenden Funktionen für das Arbeiten mit Zahlen in Ihren ARM-Vorlagen (Azure Resource Manager) bereit:
 
 * [add](#add)
 * [copyIndex](#copyindex)
@@ -700,5 +700,5 @@ Die Ausgabe aus dem vorherigen Beispiel mit den Standardwerten lautet:
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Eine Beschreibung der Abschnitte in einer Azure Resource Manager-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
-* Informationen dazu, wie Sie beim Erstellen eines Ressourcentyps eine bestimmte Anzahl von Durchläufen ausführen, finden Sie unter [Erstellen mehrerer Instanzen von Ressourcen im Azure-Ressourcen-Manager](copy-resources.md).
+* Eine Beschreibung der Abschnitte in einer ARM-Vorlage finden Sie unter [Grundlegendes zur Struktur und Syntax von ARM-Vorlagen](template-syntax.md).
+* Wenn Sie beim Erstellen eines Ressourcentyps eine angegebene Anzahl von Wiederholungen durchlaufen möchten, finden Sie weitere Informationen unter [Ressourceniteration in ARM-Vorlagen](copy-resources.md).

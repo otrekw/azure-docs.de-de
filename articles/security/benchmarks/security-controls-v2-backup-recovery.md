@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 1ed477c6cf069dbb402e5bda9c1f48f7bc208f18
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 089cf521a7c5428833be340001c88b870c568a8f
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94698800"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368884"
 ---
 # <a name="security-control-v2-backup-and-recovery"></a>Sicherheitskontrolle V2: Sicherung und Wiederherstellung
 
@@ -20,7 +20,7 @@ Sicherung und Wiederherstellung umfasst Kontrollelemente, die sicherstellen, das
 
 ## <a name="br-1-ensure-regular-automated-backups"></a>BR-1: Sicherstellen regelmäßiger automatisierter Sicherungen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | BR-1 | 10.1 | CP-2, CP4, CP-6, CP-9 |
 
@@ -50,7 +50,7 @@ Für ein höheres Maß an Schutz können Sie die Option für georedundante Speic
 
 ## <a name="br-2-encrypt-backup-data"></a>BR-2: Verschlüsseln von Sicherungsdaten
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | BR-2 | 10.2 | CP-9 |
 
@@ -80,7 +80,7 @@ Verwenden Sie rollenbasierte Zugriffssteuerung von Azure in Azure Backup, Azure 
 
 ## <a name="br-3-validate-all-backups-including-customer-managed-keys"></a>BR-3: Überprüfen aller Sicherungen einschließlich kundenseitig verwalteter Schlüssel
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | BR-3 | 10.3 | CP-4, CP-9 |
 
@@ -100,7 +100,7 @@ Führen Sie regelmäßige Datenwiederherstellungen Ihrer Sicherung aus. Stellen 
 
 ## <a name="br-4-mitigate-risk-of-lost-keys"></a>BR-4: Minimieren der Auswirkungen verlorener Schlüssel
 
-| Azure-ID | ID(s) von CIS-Steuerelementen v7.1 | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | BR-4 | 10,4 | CP-9 |
 

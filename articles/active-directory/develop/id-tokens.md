@@ -14,16 +14,16 @@ ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
-ms.openlocfilehash: 2059c473c8429e7498992e26c0a2c90ea835c537
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 784f1cc7b7e063166dc1f24851ab217cef8d831a
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89646596"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97355646"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity Platform – ID-Token
 
-`id_tokens` werden als Teil eines [OpenID Connect](v2-protocols-oidc.md) (OIDC)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle eines Zugriffstokens gesendet werden und werden vom Client zur Authentifizierung des Benutzers verwendet.
+`id_tokens` werden als Teil eines [OpenID Connect](v2-protocols-oidc.md) (OIDC)-Flows an die Clientanwendung gesendet. Sie können zusammen mit einem Zugriffstoken oder anstelle dessen gesendet werden und werden dann vom Client zur Authentifizierung des Benutzers verwendet.
 
 ## <a name="using-the-id_token"></a>Verwenden des ID-Tokens
 
@@ -96,7 +96,7 @@ Diese Liste zeigt die JWT-Ansprüche, die (sofern nicht anders angegeben) standa
 
 ### <a name="using-claims-to-reliably-identify-a-user-subject-and-object-id"></a>Verwenden von Ansprüchen zur zuverlässigen Identifizierung von Benutzern (Betreff und Objekt-ID)
 
-Wenn Sie einen Benutzer identifizieren (wenn Sie ihn z. B. in einer Datenbank suchen oder entscheiden, welche Berechtigungen er erhält), ist es wichtig, Informationen zu verwenden, die im Lauf der Zeit unverändert und eindeutig bleiben.  Ältere Anwendungen verwenden manchmal ein Feld wie die E-Mail-Adresse, eine Telefonnummer oder den UPN.  Alle diese Informationen können sich im Lauf der Zeit ändern und auch wiederverwendet werden (z. B. wenn ein Mitarbeiter seinen Namen ändert oder wenn ein Mitarbeiter die E-Mail-Adresse eines früheren Mitarbeiters erhält, der nicht mehr im Unternehmen arbeitet). Daher ist es **enorm wichtig**, dass Ihre Anwendung keine für Menschen lesbaren Daten verwendet, um Benutzer zu identifizieren. Für Menschen lesbar bedeutet ganz allgemein, dass jemand diese Informationen lesen und ändern könnte.  Verwenden Sie stattdessen die Ansprüche, die vom OIDC-Standard bereitgestellt werden, oder die von Microsoft bereitgestellten Erweiterungsansprüche `sub` und `oid`.
+Wenn Sie einen Benutzer identifizieren (wenn Sie ihn z. B. in einer Datenbank suchen oder entscheiden, welche Berechtigungen er erhält), ist es wichtig, Informationen zu verwenden, die im Lauf der Zeit unverändert und eindeutig bleiben. Ältere Anwendungen verwenden manchmal Felder wie die E-Mail-Adresse, eine Telefonnummer oder den UPN.  Alle diese Informationen können sich im Lauf der Zeit ändern und auch wiederverwendet werden (z. B. wenn ein Mitarbeiter seinen Namen ändert oder wenn ein Mitarbeiter die E-Mail-Adresse eines früheren Mitarbeiters erhält, der nicht mehr im Unternehmen arbeitet). Daher ist es **enorm wichtig**, dass Ihre Anwendung keine für Menschen lesbaren Daten verwendet, um Benutzer zu identifizieren. Für Menschen lesbar bedeutet ganz allgemein, dass jemand diese Informationen lesen und ändern könnte. Verwenden Sie stattdessen die Ansprüche, die vom OIDC-Standard bereitgestellt werden, oder die von Microsoft bereitgestellten Erweiterungsansprüche `sub` und `oid`.
 
 Verwenden Sie zum ordnungsgemäßen Speichern von Informationen pro Benutzer nur `sub` oder `oid` (die als GUIDs eindeutig sind) und bei Bedarf `tid` für das Routing oder Sharding.  Wenn Sie Daten dienstübergreifend freigeben müssen, eignet sich `oid`+`tid` am besten, da alle Apps dieselben Ansprüche `oid` und `tid` für einen bestimmten Benutzer erhalten.  Der `sub`-Anspruch in der Microsoft Identity-Plattform wird „paarweise“ festgelegt, d. h., er basiert auf einer Kombination aus dem Tokenempfänger, dem Mandanten und dem Benutzer und ist damit eindeutig.  Daher erhalten zwei Apps, die ID-Token für einen bestimmten Benutzer anfordern, unterschiedliche `sub`-Ansprüche, aber dieselben `oid`-Ansprüche für diesen Benutzer.
 

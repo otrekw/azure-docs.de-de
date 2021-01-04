@@ -7,17 +7,18 @@ author: MashaMSFT
 editor: monicar
 tags: azure-service-management
 ms.service: virtual-machines-sql
+ms.subservice: hadr
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
-ms.openlocfilehash: a9289fad6f7ae1030628bedcf1a62cacc0b1e23a
-ms.sourcegitcommit: 04fb3a2b272d4bbc43de5b4dbceda9d4c9701310
+ms.openlocfilehash: 52d6bc97245423a4add392ab05634d21bcf83a0d
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/12/2020
-ms.locfileid: "94564470"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358009"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Vorbereiten virtueller Computer für eine FCI (SQL Server auf Azure-VMs)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
@@ -47,19 +48,22 @@ Für das Feature „Failovercluster“ müssen virtuelle Computer in einer [Verf
 
 Wählen Sie die VM-Verfügbarkeitsoption sorgfältig aus, die Ihrer beabsichtigten Clusterkonfiguration entspricht: 
 
- - **Freigegebene Azure-Datenträger**: [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set), die mit auf 1 festgelegter Fehlerdomäne und Aktualisierungsdomäne konfiguriert ist und sich innerhalb einer [Näherungsplatzierungsgruppe](../../../virtual-machines/windows/proximity-placement-groups-portal.md) befindet.
- - **Premium-Dateifreigaben:** [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) oder [Verfügbarkeitszone](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address). Premium-Dateifreigaben sind die einzige freigegebene Speicheroption, wenn Sie für Ihre VMs Verfügbarkeitszonen als Verfügbarkeitskonfiguration wählen. 
- - **Direkte Speicherplätze**: [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
+- **Freigegebene Azure-Datenträger:** Die Verfügbarkeitsoption variiert je nachdem, ob Sie SSD Premium- oder Ultra-Datenträger verwenden:
+   - SSD Premium: [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) in unterschiedlichen Fehler-/Updatedomänen für SSD Premium-Datenträger in einer [Näherungsplatzierungsgruppe](../../../virtual-machines/windows/proximity-placement-groups-portal.md).
+   - Ultra-Datenträger: [Verfügbarkeitszone](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address), aber die VMs müssen sich in derselben Verfügbarkeitszone befinden. Dadurch verringert sich die Verfügbarkeit des Clusters auf 99,9 %. 
+- **Premium-Dateifreigaben:** [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set) oder [Verfügbarkeitszone](../../../virtual-machines/windows/create-portal-availability-zone.md#confirm-zone-for-managed-disk-and-ip-address).
+- **Direkte Speicherplätze**: [Verfügbarkeitsgruppe](../../../virtual-machines/windows/tutorial-availability-sets.md#create-an-availability-set).
 
->[!IMPORTANT]
->Sie können die Verfügbarkeitsgruppe nicht mehr festlegen oder ändern, nachdem Sie einen virtuellen Computer erstellt haben.
+> [!IMPORTANT]
+> Sie können die Verfügbarkeitsgruppe nicht mehr festlegen oder ändern, nachdem Sie einen virtuellen Computer erstellt haben.
 
 ## <a name="create-the-virtual-machines"></a>Erstellen der virtuellen Computer
 
 Nachdem Sie die VM-Verfügbarkeit konfiguriert haben, können Sie Ihre virtuellen Computer erstellen. Sie können wählen, ob Sie ein Azure Marketplace-Image einsetzen möchten, bei dem SQL Server bereits installiert ist oder nicht. Wenn Sie jedoch ein Image für SQL Server auf Azure-VMs wählen, müssen Sie SQL Server vom virtuellen Computer deinstallieren, ehe Sie die Failoverclusterinstanz konfigurieren können. 
 
 ### <a name="considerations"></a>Überlegungen
-In einem Azure IaaS-VM-Gast-Failovercluster werden eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden.
+
+In einem Azure-VM-Gast-Failovercluster werden eine einzelne Netzwerkkarte pro Server (Clusterknoten) und ein einzelnes Subnetz empfohlen. Azure-Netzwerktechnologie bietet physische Redundanz, die zusätzliche Netzwerkkarten und Subnetze in einem Azure IaaS-VM-Gastcluster überflüssig macht. Obwohl im Clustervalidierungsbericht eine Warnung ausgegeben wird, dass die Knoten nur in einem einzigen Netzwerk erreichbar sind, kann diese Warnung für Azure IaaS-VM-Gast-Failovercluster einfach ignoriert werden.
 
 Platzieren Sie beide virtuellen Computer wie folgt:
 
@@ -135,4 +139,4 @@ Weitere Informationen finden Sie in der Übersicht zu [FCI mit SQL Server auf A
 
 Weitere Informationen finden Sie hier: 
 - [Windows-Clustertechnologie](/windows-server/failover-clustering/failover-clustering-overview)   
-- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)
+- [SQL Server-Failoverclusterinstanzen](/sql/sql-server/failover-clusters/windows/always-on-failover-cluster-instances-sql-server)

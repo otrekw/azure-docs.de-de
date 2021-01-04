@@ -9,12 +9,12 @@ ms.subservice: security
 ms.date: 12/03/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: 7243d24204c8e15ae4246718cafb24d31f804d02
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 62c30356017b5ea5d93351e6f22b8b7b0c22718c
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96519177"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109265"
 ---
 # <a name="how-to-set-up-access-control-for-your-synapse-workspace"></a>Einrichten der Zugriffssteuerung für Ihren Synapse-Arbeitsbereich 
 
@@ -54,7 +54,7 @@ In diesem Dokument werden Standardnamen verwendet, um die Anweisungen zu vereinf
 ## <a name="step-1-set-up-security-groups"></a>SCHRITT 1: Einrichten von Sicherheitsgruppen
 
 >[!Note] 
->Während der Vorschauphase wurde empfohlen, Sicherheitsgruppen zu erstellen, die den Synapse-Rollen **Synapse SQL-Administrator** und **Synapse-Apache Spark-Administrator** zugeordnet sind.  Aufgrund der Einführung neuer, differenzierterer Synapse RBAC-Rollen und -Bereiche wird jetzt empfohlen, den Zugriff auf Ihren Arbeitsbereich über diese neuen Funktionen zu steuern.  Diese neuen Rollen und Bereiche bieten mehr Flexibilität bei der Konfiguration. Außerdem berücksichtigen sie, dass Entwickler häufig SQL und Spark zusammen nutzen, um Analyseanwendungen zu erstellen, und daher möglicherweise Zugriff auf bestimmte Ressourcen innerhalb des Arbeitsbereichs benötigen. [Weitere Informationen](./synapse-workspace-synapse-rbac.md)
+>Während der Vorschauphase wurde empfohlen, Sicherheitsgruppen zu erstellen, die den Synapse-Rollen **Synapse SQL-Administrator** und **Synapse-Apache Spark-Administrator** zugeordnet sind.  Aufgrund der Einführung neuer, differenzierterer Synapse RBAC-Rollen und -Bereiche wird jetzt empfohlen, den Zugriff auf Ihren Arbeitsbereich über diese neuen Funktionen zu steuern.  Diese neuen Rollen und Bereiche bieten mehr Flexibilität bei der Konfiguration. Außerdem berücksichtigen sie, dass Entwickler häufig SQL und Spark zusammen nutzen, um Analyseanwendungen zu erstellen, und möglicherweise eher Zugriff auf bestimmte Ressourcen anstatt auf den gesamten Arbeitsbereich benötigen. Erfahren Sie mehr über [Synapse RBAC](./synapse-workspace-synapse-rbac.md).
 
 Erstellen Sie die folgenden Sicherheitsgruppen für Ihren Arbeitsbereich:
 
@@ -66,9 +66,9 @@ Erstellen Sie die folgenden Sicherheitsgruppen für Ihren Arbeitsbereich:
 Sie weisen diesen Gruppen in Kürze Synapse-Rollen auf Arbeitsbereichsebene zu.  
 
 Erstellen Sie außerdem diese Sicherheitsgruppe: 
-- **`workspace1_SQLAdministrators`** für Benutzer, die Active Directory-Administratorrechte innerhalb von SQL-Pools im Arbeitsbereich benötigen 
+- **`workspace1_SQLAdmins`** für Benutzer, die SQL Active Directory-Administratorrechte innerhalb von SQL-Pools im Arbeitsbereich benötigen. 
 
-Sie verwenden die Gruppe `workspace1_SynapseSQLAdministrators`, wenn Sie SQL-Berechtigungen in SQL-Pools konfigurieren, während Sie diese erstellen. 
+Sie verwenden die Gruppe `workspace1_SQLAdmins`, wenn Sie SQL-Berechtigungen in SQL-Pools konfigurieren, während Sie diese erstellen. 
 
 Für eine grundlegende Einrichtung sind diese fünf Gruppen bereits ausreichend. Später können Sie weitere Sicherheitsgruppen hinzufügen, falls einige Benutzer einen genaueren Zugriff benötigen oder nur Zugriff auf bestimmte Ressourcen erhalten sollen.
 
@@ -84,6 +84,7 @@ Für eine grundlegende Einrichtung sind diese fünf Gruppen bereits ausreichend.
 Synapse-Arbeitsbereiche verwenden Standardspeichercontainer für Folgendes:
   - Speichern der Unterstützungsdatendateien für Spark-Tabellen
   - Ausführungsprotokolle für Spark-Aufträge
+  - Verwalten von Bibliotheken, die Sie für die Installation auswählen
 
 Ermitteln Sie diese Informationen zu Ihrem Speicher:
 
@@ -94,7 +95,7 @@ Ermitteln Sie diese Informationen zu Ihrem Speicher:
 
   - Weisen Sie `workspace1_SynapseAdmins` die Rolle **Mitwirkender an Storage-Blobdaten** zu. 
   - Weisen Sie `workspace1_SynapseContributors` die Rolle **Mitwirkender an Storage-Blobdaten** zu.
-  - Weisen Sie `workspace1_SynapseComputeOperators` die Rolle **Mitwirkender an Storage-Blobdaten** zu. **< ÜBERPRÜFEN**
+  - Weisen Sie `workspace1_SynapseComputeOperators` die Rolle **Mitwirkender an Storage-Blobdaten** zu.
 
 ## <a name="step-3-create-and-configure-your-synapse-workspace"></a>SCHRITT 3: Erstellen und Konfigurieren Ihres Synapse-Arbeitsbereichs
 
@@ -106,7 +107,7 @@ Erstellen Sie im Azure-Portal einen Synapse-Arbeitsbereich:
 - Wählen Sie `storage1` als Speicherkonto aus.
 - Wählen Sie `container1` als den Container aus, der als „Dateisystem“ verwendet wird.
 - Öffnen Sie WS1 in Synapse Studio.
-- Wählen Sie **Verwalten** > **Zugriffssteuerung** aus, und weisen Sie den Sicherheitsgruppen die folgenden Synapse-Rollen im *Gültigkeitsbereich des Arbeitsbereichs* zu.
+- Wählen Sie **Verwalten** > **Zugriffssteuerung** aus, und weisen Sie den Sicherheitsgruppen die folgenden Synapse-Rollen auf *Arbeitsbereichsebene* zu:
   - Weisen Sie `workspace1_SynapseAdministrators` die Rolle **Synapse-Administrator** zu. 
   - Weisen Sie `workspace1_SynapseContributors` die Rolle **Synapse-Mitwirkender** zu. 
   - Weisen Sie `workspace1_SynapseComputeOperators` die Rolle **Operator von Synapse-Computeressourcen** zu.
@@ -121,7 +122,7 @@ Zum Ausführen von Pipelines und Systemaufgaben in Synapse muss eine vom Arbeits
   - Wenn sie nicht zugewiesen ist, weisen Sie sie zu.
   - Der MSI trägt denselben Namen wie der Arbeitsbereich. In diesem Artikel ist dies `workspace1`.
 
-## <a name="step-5-grant-the-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>SCHRITT 5: Gewähren der Azure-Rolle „Mitwirkender“ im Arbeitsbereich für Synapse-Administratoren 
+## <a name="step-5-grant-synapse-administrators-the-azure-contributor-role-on-the-workspace"></a>SCHRITT 5: Gewähren der Azure-Rolle „Mitwirkender“ im Arbeitsbereich für Synapse-Administratoren 
 
 Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes benötigen Benutzer mindestens die Azure-Zugriffsberechtigung „Mitwirkender“ für den Arbeitsbereich. Die Rolle „Mitwirkender“ ermöglicht es diesen Benutzern auch, die Ressourcen zu verwalten (einschließlich anhalten und skalieren).
 
@@ -131,44 +132,44 @@ Für das Erstellen von SQL-Pools, Apache Spark-Pools und Integration Runtimes be
 
 ## <a name="step-6-assign-sql-active-directory-admin-role"></a>SCHRITT 6: Zuweisen der Rolle „SQL-Active Directory-Administrator“
 
-Der Ersteller der Arbeitsstation wird automatisch als Active Directory-Administrator für den Arbeitsbereich eingerichtet.  Diese Rolle kann nur einem einzigen Benutzer oder einer einzigen Gruppe gewährt werden. In diesem Schritt weisen Sie der Sicherheitsgruppe `workspace1_SynapseSQLAdministrators` die Rolle „Active Directory-Administrator“ für den Arbeitsbereich zu.  Durch das Zuweisen dieser Rolle erhält diese Gruppe Administratorzugriff auf alle SQL-Pools.   
+Der Ersteller der Arbeitsstation wird automatisch als SQL Active Directory-Administrator für den Arbeitsbereich eingerichtet.  Diese Rolle kann nur einem einzigen Benutzer oder einer einzigen Gruppe gewährt werden. In diesem Schritt weisen Sie der Sicherheitsgruppe `workspace1_SQLAdmins` die Rolle „SQL Active Directory-Administrator“ für den Arbeitsbereich zu.  Durch das Zuweisen dieser Rolle erhält diese Gruppe Administratorzugriff auf alle SQL-Pools und -Datenbanken im Arbeitsbereich.   
 
 - Öffnen Sie das Azure-Portal.
 - Navigieren Sie zu `workspace1`.
 - Wählen Sie unter **Einstellungen** die Option **SQL Active Directory-Administrator** aus.
-- Wählen Sie **Administrator festlegen** und dann **`workspace1_SynapseSQLAdministrators`** aus.
+- Wählen Sie **Administrator festlegen** und dann **`workspace1_SQLAdmins`** aus.
 
 >[!Note]
->Dieser Schritt ist optional.  Sie können der Gruppe „SQL-Administratoren“ auch eine weniger privilegierte Rolle zuweisen. Wenn Sie `db_owner` oder andere SQL-Rollen zuweisen möchten, müssen Sie Skripts für jede SQL-Datenbank ausführen. 
+>Schritt 6 ist optional.  Sie können der Gruppe `workspace1_SQLAdmins` eine weniger privilegierte Rolle gewähren. Wenn Sie `db_owner` oder andere SQL-Rollen zuweisen möchten, müssen Sie Skripts für jede SQL-Datenbank ausführen. 
 
 ## <a name="step-7-grant-access-to-sql-pools"></a>SCHRITT 7: Gewähren des Zugriffs auf SQL-Pools
 
-Standardmäßig wird allen Benutzern mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für den „integrierten“ serverlosen SQL-Pool zugewiesen.
+Standardmäßig wird allen Benutzern mit der Rolle „Synapse-Administrator“ auch die SQL-Rolle `db_owner` für den serverlosen SQL-Pool „Built-in“ und alle zugehörigen Datenbanken zugewiesen.
 
-Der Zugriff auf SQL-Pools für andere Benutzer und die Arbeitsbereichs-MSI wird mithilfe von SQL-Berechtigungen gesteuert.  Für das Zuweisen von SQL-Berechtigungen müssen nach der Erstellung SQL-Skripts in jedem SQL-Pool ausgeführt werden.  Sie müssen diese Skripts in den folgenden drei Fällen ausführen:
-1. Gewähren des Zugriffs auf den „integrierten“ serverlosen SQL-Pool für andere Benutzer
-2. Gewähren des Zugriffs für beliebige Benutzer auf dedizierte Pools
-3. Gewähren des Zugriffs für die Arbeitsbereichs-MSI auf einen SQL-Pool, damit Pipelines, die Zugriff auf den SQL-Pool benötigen, erfolgreich ausgeführt werden können
+Der Zugriff auf SQL-Pools für andere Benutzer und die Arbeitsbereichs-MSI wird mithilfe von SQL-Berechtigungen gesteuert.  Für das Zuweisen von SQL-Berechtigungen müssen nach der Erstellung SQL-Skripts für jede SQL-Datenbank ausgeführt werden.  Sie müssen diese Skripts in den folgenden drei Fällen ausführen:
+1. Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ und die zugehören Datenbanken für andere Benutzer
+2. Gewähren des Zugriffs für beliebige Benutzer auf Datenbanken in dedizierten Pools
+3. Gewähren des Zugriffs für die Arbeitsbereichs-MSI auf eine Datenbank im SQL-Pool, damit Pipelines, die Zugriff auf den SQL-Pool benötigen, erfolgreich ausgeführt werden können
 
 Weiter unten finden Sie SQL-Beispielskripts.
 
-Um Zugriff auf einen dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SynapseSQL Administrators` ausgeführt werden.  
+Um Zugriff auf eine Datenbank im dedizierten SQL-Pool zu gewähren, können die Skripts vom Ersteller des Arbeitsbereichs oder von einem beliebigen Mitglied der Gruppe `workspace1_SQLAdmins` ausgeführt werden.  
 
-Zum Gewähren des Zugriffs auf den „integrierten“ serverlosen SQL-Pool können die Skripts zusätzlich von jedem Mitglied der Gruppe `workspace1_SynapseAdministrators` ausgeführt werden. 
+Zum Gewähren des Zugriffs auf den serverlosen SQL-Pool „Built-in“ können die Skripts von jedem Mitglied der Gruppen `workspace1_SQLAdmins` oder `workspace1_SynapseAdministrators` ausgeführt werden. 
 
 > [!TIP]
-> Die folgenden Schritte müssen für **jeden** SQL-Pool ausgeführt werden, um Benutzern Zugriff auf alle SQL-Datenbanken zu gewähren, außer im Abschnitt [Berechtigung auf Arbeitsbereichsebene](#workspace-scoped-permission), wo Sie dem Benutzer eine Systemadministratorrolle zuweisen können.
+> Die folgenden Schritte müssen für **jeden** SQL-Pool ausgeführt werden, um Benutzern Zugriff auf alle SQL-Datenbanken zu gewähren, außer im Abschnitt [Berechtigung auf Arbeitsbereichsebene](#workspace-scoped-permission), wo Sie einem Benutzer eine Systemadministratorrolle auf Arbeitsbereichsebene zuweisen können.
 
-### <a name="step-71-serverless-sql-pools"></a>SCHRITT 7.1: Serverlose SQL-Pools
+### <a name="step-71-serverless-sql-pool-built-in"></a>SCHRITT 7.1: Serverloser SQL-Pool „Built-in“
 
-In diesem Abschnitt finden Sie Beispiele dafür, wie Sie Benutzern eine Berechtigung für eine bestimmte Datenbank oder uneingeschränkte Berechtigungen für einen Server erteilen können.
+In diesem Abschnitt finden Sie Skriptbeispiele, die zeigen, wie Sie Benutzern die Berechtigung zum Zugreifen auf eine bestimmte Datenbank oder auf alle Datenbanken im serverlosen SQL-Pool „Built-in“ gewähren.
 
 > [!NOTE]
 > Ersetzen Sie in den Beispielskripts *alias* durch den Alias des Benutzers oder der Gruppe, dem bzw. der Zugriff gewährt wird, und *domain* durch die von Ihnen verwendete Unternehmensdomäne.
 
-#### <a name="pool-scoped-permission"></a>Berechtigung auf Poolebene
+#### <a name="database-scoped-permission"></a>Berechtigung auf Datenbankebene
 
-Führen Sie die Schritte im folgenden Beispiel aus, um einem Benutzer Zugriff auf einen **einzelnen** serverlosen SQL-Pool zu gewähren:
+Führen Sie die Schritte im folgenden Beispiel aus, um einem Benutzer Zugriff auf eine **einzelne** serverlose SQL-Datenbank zu gewähren:
 
 1. Erstellen Sie eine Anmeldung:
 
@@ -182,7 +183,7 @@ Führen Sie die Schritte im folgenden Beispiel aus, um einem Benutzer Zugriff au
 2. Erstellen Sie einen Benutzer:
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     CREATE USER alias FROM LOGIN [alias@domain.com];
     ```
@@ -190,7 +191,7 @@ Führen Sie die Schritte im folgenden Beispiel aus, um einem Benutzer Zugriff au
 3. Fügen Sie den Benutzer den Mitgliedern der angegebenen Rolle hinzu:
 
     ```sql
-    use yourdb -- Use your DB name
+    use yourdb -- Use your database name
     go
     alter role db_owner Add member alias -- Type USER name from step 2
     ```
@@ -200,25 +201,27 @@ Führen Sie die Schritte im folgenden Beispiel aus, um einem Benutzer Zugriff au
 Um Vollzugriff auf **alle** serverlosen SQL-Pools im Arbeitsbereich zu gewähren, verwenden Sie das Skript in diesem Beispiel:
 
 ```sql
+use master
+go
 CREATE LOGIN [alias@domain.com] FROM EXTERNAL PROVIDER;
-ALTER SERVER ROLE  sysadmin  ADD MEMBER [alias@domain.com];
+ALTER SERVER ROLE sysadmin ADD MEMBER [alias@domain.com];
 ```
 
 ### <a name="step-72-dedicated-sql-pools"></a>SCHRITT 7.2: Dedizierte SQL-Pools
 
-Um Zugriff auf einen **einzelnen** dedizierten SQL-Pool zu gewähren, führen Sie die folgenden Schritte im Synapse SQL-Skript-Editor aus:
+Um Zugriff auf eine **einzelne** Datenbank im dedizierten SQL-Pool zu gewähren, führen Sie die folgenden Schritte im Synapse SQL-Skript-Editor aus:
 
 1. Erstellen Sie den Benutzer in der-Datenbank, indem Sie den folgenden Befehl für die Zieldatenbank ausführen, die Sie mithilfe der Dropdownliste *Verbinden mit*  ausgewählt haben:
 
     ```sql
-    --Create user in SQL DB
+    --Create user in the database
     CREATE USER [<alias@domain.com>] FROM EXTERNAL PROVIDER;
     ```
 
 2. Weisen Sie dem Benutzer eine Rolle für den Zugriff auf die Datenbank zu:
 
     ```sql
-    --Create user in SQL DB
+    --Grant role to the user in the database
     EXEC sp_addrolemember 'db_owner', '<alias@domain.com>';
     ```
 
@@ -226,32 +229,35 @@ Um Zugriff auf einen **einzelnen** dedizierten SQL-Pool zu gewähren, führen Si
 > Wenn Sie die Berechtigung *db_owner* nicht zuweisen möchten, können Sie *db_datareader* und *db_datawriter* für Lese-/Schreibberechtigungen verwenden.
 > Damit ein Spark-Benutzer Daten direkt über Spark aus einem SQL-Pool lesen bzw. in einen SQL-Pool schreiben kann, benötigt er die Berechtigung *db_owner*.
 
-Vergewissern Sie sich im Anschluss an die Benutzererstellung, dass das Speicherkonto von einem serverlosen SQL-Pool abgefragt werden kann.
+Führen Sie im Anschluss an die Benutzererstellung Abfragen aus, um zu überprüfen, ob das Speicherkonto von einem serverlosen SQL-Pool abgefragt werden kann.
 
-### <a name="step-73-sl-access-control-for-workspace-pipeline-runs"></a>SCHRITT 7.3: SQL-Zugriffssteuerung für Pipelineausführungen im Arbeitsbereich
+### <a name="step-73-sql-access-control-for-synapse-pipeline-runs"></a>SCHRITT 7.3: SQL-Zugriffssteuerung für Synapse-Pipelineausführungen
 
 ### <a name="workspace-managed-identity"></a>Vom Arbeitsbereich verwaltete Identität
 
 > [!IMPORTANT]
 > Zur erfolgreichen Ausführung von Pipelines mit Datasets oder Aktivitäten, die auf einen SQL-Pool verweisen, muss der Arbeitsbereichsidentität Zugriff auf den SQL-Pool gewährt werden.
 
-Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Identität das Ausführen von Pipelines für die SQL-Pooldatenbank zu ermöglichen:
+Führen Sie die folgenden Befehle für jeden SQL-Pool aus, um der vom Arbeitsbereich verwalteten Systemidentität das Ausführen von Pipelines für die SQL-Pooldatenbanken zu ermöglichen:  
+
+>[!note]
+>In den folgenden Skripts ist der Datenbankname für die Datenbank im dedizierten SQL-Pool mit dem Poolnamen identisch.  Für eine Datenbank im serverlosen SQL-Pool „Built-in“ lautet der Name der Datenbank „databasename“.
 
 ```sql
---Create user in DB
+--Create a SQL user for the workspace MSI in database
 CREATE USER [<workspacename>] FROM EXTERNAL PROVIDER;
 
 --Granting permission to the identity
-GRANT CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+GRANT CONTROL ON DATABASE::<databasename> TO <workspacename>;
 ```
 
 Wenn Sie diese Berechtigung wieder entfernen möchten, führen Sie das folgende Skript für den gleichen SQL-Pool aus:
 
 ```sql
---Revoking permission to the identity
-REVOKE CONTROL ON DATABASE::<SQLpoolname> TO <workspacename>;
+--Revoke permission granted to the workspace MSI
+REVOKE CONTROL ON DATABASE::<databasename> TO <workspacename>;
 
---Deleting the user in the DB
+--Delete the workspace MSI user in the database
 DROP USER [<workspacename>];
 ```
 

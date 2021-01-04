@@ -1,19 +1,19 @@
 ---
 title: Speicherort der Vorlagenressource
-description: Beschreibt, wie Sie den Speicherort von Ressourcen in einer Azure Resource Manager-Vorlage festlegen.
+description: Erfahren Sie, wie Sie den Speicherort von Ressourcen in einer ARM-Vorlage (Azure Resource Manager) festlegen.
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.custom: ''
-ms.openlocfilehash: e1310c81d7b726e9be2fe9f38a0bb8d701035ba4
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 84a818109e6681b8d0e18de4d2d7969310582818
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91613695"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96922397"
 ---
 # <a name="set-resource-location-in-arm-template"></a>Festlegen der Ressourceniteration in ARM-Vorlagen
 
-Beim Bereitstellen einer Azure Resource Manager-Vorlage (ARM) müssen Sie einen Speicherort für jede Ressource angeben. Der Speicherort muss nicht mit dem Speicherort für die Ressourcengruppe identisch sein.
+Beim Bereitstellen einer ARM-Vorlage (Azure Resource Manager) müssen Sie einen Speicherort für jede Ressource angeben. Der Speicherort muss nicht mit dem Speicherort für die Ressourcengruppe identisch sein.
 
 ## <a name="get-available-locations"></a>Abrufen der verfügbaren Speicherorte
 
@@ -96,5 +96,5 @@ Das folgende Beispiel zeigt ein Speicherkonto, das an einem als Parameter angege
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-* Unter [Funktionen von Azure-Ressourcen-Manager-Vorlagen](template-functions.md)finden Sie eine vollständige Liste der Vorlagenfunktionen.
+* Eine vollständige Liste der Funktionen in einer Vorlage finden Sie unter [Funktionen von ARM-Vorlagen](template-functions.md).
 * Weitere Informationen zu Vorlagendateien finden Sie unter [Verstehen der Struktur und Syntax von ARM-Vorlagen](template-syntax.md).

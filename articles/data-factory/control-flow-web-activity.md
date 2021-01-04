@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/19/2018
-ms.openlocfilehash: 8ee23adf569a6afafc57dac786cd907a3481abde
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: fbe37152f4ff1ce24754bc2d7b968c8e1c76ca10
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96485790"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387716"
 ---
 # <a name="web-activity-in-azure-data-factory"></a>Webaktivität in Azure Data Factory
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
@@ -26,6 +26,9 @@ Die Webaktivität kann verwendet werden, um einen benutzerdefinierten REST-Endpu
 
 > [!NOTE]
 > Webaktivitäten werden zum Aufrufen von URLs unterstützt, die in einem privaten virtuellen Netzwerk gehostet sind, sowie zum Nutzen selbstgehosteter Integration Runtimes. Die Integration Runtime sollte den URL-Endpunkt erreichen können. 
+
+> [!NOTE]
+> Die maximal unterstützte Payloadgröße für die Ausgabe von Antworten beträgt 4 MB.  
 
 ## <a name="syntax"></a>Syntax
 

@@ -3,12 +3,12 @@ title: Kontingente und Einschränkungen von Live Video Analytics in IoT Edge | 
 description: In diesem Artikel werden die Kontingente und Einschränkungen von Live Video Analytics in IoT Edge beschrieben.
 ms.topic: conceptual
 ms.date: 05/22/2020
-ms.openlocfilehash: df1978de4ee1bbbe15d0df3b02a70fb51491e9d2
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 68c7b91bb1051348b5a8e52f841d443894f0a632
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90529229"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400523"
 ---
 # <a name="quotas-and-limitations"></a>Kontingente und Einschränkungen
 
@@ -16,17 +16,17 @@ In diesem Artikel werden die Kontingente und Einschränkungen im Modul Live Vide
 
 ## <a name="maximum-period-of-disconnected-use"></a>Maximaler Verwendungszeitraum bei getrennter Verbindung
 
-Das Edgemodul kann bei einem zeitlich begrenzten Verlust der Netzwerkverbindung fortgesetzt werden. Wenn das Modul länger als 36 Stunden getrennt bleibt, deaktiviert es alle ausgeführten Diagramminstanzen und blockiert alle weiteren direkten Methodenaufrufe.
+Das Edgemodul kann bei einem zeitlich begrenzten Verlust der Internetverbindung fortgesetzt werden. Wenn das Modul länger als 36 Stunden getrennt bleibt, deaktiviert es alle ausgeführten Graphinstanzen. Alle weiteren direkten Methodenaufrufe werden blockiert.
 
-Wenn Sie das Edgemodul wieder in den Betriebsstatus versetzen möchten, müssen Sie die Netzwerkkonnektivität wiederherstellen. Außerdem muss das Modul erfolgreich mit dem Azure Media Services-Konto kommunizieren können.
+Wenn Sie das Edgemodul wieder in den Betriebsstatus versetzen möchten, müssen Sie die Internetverbindung wiederherstellen, damit das Modul erfolgreich mit dem Azure Media Services-Konto kommunizieren kann.
 
 ## <a name="maximum-number-of-graph-instances"></a>Maximale Anzahl von Diagramminstanzen
 
-Sie können pro Modul über maximal 1.000 Diagramminstanzen verfügen (erstellt mit GraphInstanceSet).
+Pro Modul werden maximal 1.000 Graphinstanzen unterstützt (erstellt mit GraphInstanceSet).
 
 ## <a name="maximum-number-of-graph-topologies"></a>Maximale Anzahl von Diagrammtopologien
 
-Sie können pro Modul über maximal 50 Diagrammtopologien verfügen (erstellt mit GraphTopologySet).
+Pro Modul werden maximal 50 Graphtopologien unterstützt (erstellt mit GraphTopologySet).
 
 ## <a name="limitations-on-graph-topologies-at-preview"></a>Einschränkungen bei Diagrammtopologien in der Vorschauversion
 
@@ -34,17 +34,8 @@ Für die Vorschauversion gelten Einschränkungen für die unterschiedlichen Knot
 
 * RTSP-Quelle
    * Pro Diagrammtopologie ist nur eine RTSP-Quelle zulässig.
-* Verarbeitungsknoten für Frameratenfilter
-   * Muss direkt hinter dem RTSP-Quellknoten oder dem Verarbeitungsknoten für die Bewegungserkennung angeordnet sein.
-   * Darf nicht hinter einem HTTP- oder gRPC-Erweiterungsprozessor angeordnet sein.
-   * Darf nicht vor einem Verarbeitungsknoten für die Bewegungserkennung angeordnet sein.
-* Verarbeitungsknoten für die HTTP-Erweiterung
-   * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
-* gRPC-Erweiterungsprozessor
-   * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
 * Verarbeitungsknoten für die Bewegungserkennung
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
-   * Pro Diagrammtopologie ist maximal ein solcher Verarbeitungsknoten zulässig.
    * Darf nicht hinter einem HTTP- oder gRPC-Erweiterungsprozessor angeordnet sein.
 * Signalgateprozessor
    * Muss direkt hinter dem RTSP-Quellknoten angeordnet sein.
@@ -52,11 +43,9 @@ Für die Vorschauversion gelten Einschränkungen für die unterschiedlichen Knot
    * Muss direkt hinter dem RTSP-Quellknoten oder Signalgateprozessor angeordnet sein.
 * Dateisenke
    * Muss direkt hinter dem Signalgateprozessor angeordnet sein.
-   * Darf nicht direkt hinter einem HTTP- oder gRPC-Erweiterungs- oder Bewegungserkennungsprozessor angeordnet sein.
+   * Darf nicht direkt hinter einem HTTP- oder gRPC-Erweiterungs- oder -Bewegungserkennungsprozessor angeordnet sein.
 * IoT Hub-Senke
    * Darf nicht direkt hinter einer IoT Hub-Quelle angeordnet sein.
-
-Wenn Verarbeitungsknoten sowohl für die Bewegungserkennung als auch die Frameratenfilterung verwendet werden, sollten diese sich in derselben Knotenkette befinden, die zum RTSP-Quellknoten führt.
 
 ## <a name="limitations-on-media-service-operations-at-preview"></a>Einschränkungen bei Media Service-Vorgängen in der Vorschauversion
 

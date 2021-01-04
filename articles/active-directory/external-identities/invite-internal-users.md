@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c03c2c55988df04cc45ef4a1d66d959513c1626d
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 75839893d0048841440f2c790df7d23ad825d962
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87907451"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093467"
 ---
 # <a name="invite-internal-users-to-b2b-collaboration"></a>Einladen von internen Benutzern zur B2B-Zusammenarbeit
 
@@ -32,7 +32,7 @@ Das Senden einer Einladung an ein vorhandenes internes Konto ermöglicht es Ihne
 
 Während der öffentlichen Vorschauphase kann das Verfahren, das in diesem Artikel zum Einladen von internen Benutzern zur B2B-Zusammenarbeit beschrieben ist, in den folgenden Fällen nicht genutzt werden:
 
-- Dem internen Benutzer ist bereits eine Exchange-Lizenz zugewiesen.
+- Dem internen Benutzer ist eine Exchange-Lizenz zugewiesen.
 - Der Benutzer stammt aus einer Domäne, für die der direkte Verbund in Ihrem Verzeichnis eingerichtet ist.
 - Der interne Benutzer verfügt über ein reines Cloudkonto, und sein Hauptkonto befindet sich nicht in Azure AD.
 

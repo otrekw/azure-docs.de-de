@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.subservice: fundamentals
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/06/2018
+ms.date: 12/14/2020
 ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 50e0fe1cf3bb628c40e774423e45ea88d6ab78a5
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: b6900647acf7182529f34c8cc065dbb039de38be
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92359712"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97504405"
 ---
 # <a name="assign-or-remove-licenses-in-the-azure-active-directory-portal"></a>Zuweisen oder Entfernen von Lizenzen im Azure Active Directory-Portal
 
@@ -49,11 +49,18 @@ Sie können Ihre verfügbaren Dienstpläne einschließlich der einzelnen Lizenze
 
 1. Wählen Sie **Azure Active Directory** und dann **Lizenzen** aus.
 
-    ![Seite „Lizenzen“ mit der Anzahl der erworbenen Dienste und zugewiesenen Lizenzen](media/license-users-groups/license-details-blade.png)
+    :::image type="content" source="media/license-users-groups/license-details-blade.png" alt-text="Seite „Lizenzen“ mit der Anzahl der erworbenen Dienste und zugewiesenen Lizenzen":::
 
-1. Wählen Sie den Link **Erworben** aus, um die Seite **Produkte** und die Angaben **Zugewiesen** , **Verfügbar** und **Läuft bald ab** für Ihre Lizenzpläne anzuzeigen.
+1. Wählen Sie **Alle Produkte** aus, um die Seite „Alle Produkte“ und die Angaben **Gesamt**, **Zugewiesen**, **Verfügbar** und **Läuft bald ab** für Ihre Lizenzpläne anzuzeigen.
 
-    ![Dienstseite mit Dienstlizenzplänen und den zugehörigen Lizenzinformationen](media/license-users-groups/license-products-blade-with-products.png)
+    :::image type="content" source="media/license-users-groups/license-products-blade-with-products.png" alt-text="Dienstseite mit Dienstlizenzplänen und den zugehörigen Lizenzinformationen":::
+
+    > [!NOTE]
+    > Die Zahlen sind wie folgt definiert: 
+    > - Gesamt: Gesamtanzahl erworbener Lizenzen
+    > - Zugewiesen: Anzahl von Lizenzen, die Benutzern zugewiesen sind
+    > - Verfügbar: Anzahl von Lizenzen, die für die Zuweisung verfügbar sind (einschließlich demnächst ablaufender Lizenzen)
+    > - Läuft bald ab: Anzahl bald ablaufender Lizenzen
 
 1. Wählen Sie den Namen eines Plans aus, um die dafür lizenzierten Benutzer und Gruppen anzuzeigen.
 
@@ -71,11 +78,11 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 
     ![Dienstseite mit hervorgehobener Option „Zuweisen“](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen** , und suchen und wählen Sie dann den Benutzer, dem Sie die Lizenz zuweisen.
+1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen**, und suchen und wählen Sie dann den Benutzer, dem Sie die Lizenz zuweisen.
 
     ![Seite „Lizenz hinzufügen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“](media/license-users-groups/assign-license-blade-with-highlight.png)
 
-1. Wählen Sie **Zuordnungsoptionen** , stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK** .
+1. Wählen Sie **Zuordnungsoptionen**, stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK**.
 
     ![Seite „Lizenzoptionen“ mit allen im Lizenzplan verfügbaren Optionen](media/license-users-groups/license-option-blade-assignments.png)
 
@@ -96,15 +103,15 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 
     ![Blatt „Produkte“ mit hervorgehobenem Produktlizenzplan](media/license-users-groups/license-products-blade-with-product-highlight.png)
 
-1. Wählen Sie auf der Seite **Azure Active Directory Premium Plan 2** die Option **Zuweisen** .
+1. Wählen Sie auf der Seite **Azure Active Directory Premium Plan 2** die Option **Zuweisen**.
 
     ![Seite „Produkte“ mit hervorgehobener Option „Zuweisen“](media/license-users-groups/license-products-blade-with-assign-option-highlight.png)
 
-1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen** , und suchen und wählen Sie dann die Gruppe, der Sie die Lizenz zuweisen.
+1. Wählen Sie auf der Seite **Zuweisen****Benutzer und Gruppen**, und suchen und wählen Sie dann die Gruppe, der Sie die Lizenz zuweisen.
 
     ![Seite „Lizenz zuweisen“ mit den hervorgehobenen Optionen „Suchen“ und „Auswählen“ – 2](media/license-users-groups/assign-group-license-blade-with-highlight.png)
 
-1. Wählen Sie **Zuordnungsoptionen** , stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK** .
+1. Wählen Sie **Zuordnungsoptionen**, stellen Sie sicher, dass die entsprechenden Lizenzoptionen aktiviert sind, und wählen Sie dann **OK**.
 
     ![Seite „Lizenzoptionen“ mit allen im Lizenzplan verfügbaren Optionen – 2](media/license-users-groups/license-option-blade-group-assignments.png)
 
@@ -116,11 +123,11 @@ Stellen Sie sicher, dass jeder, der einen lizenzierten Azure AD-Dienst nutzen mu
 
 ## <a name="remove-a-license"></a>Entfernen einer Lizenz
 
-Sie können eine Lizenz auf der Azure AD-Benutzerseite eines Benutzers und auf der Gruppenübersichtsseite für eine Gruppenzuweisung entfernen. Oder Sie beginnen auf der Azure AD-Seite **Lizenzen** , um die Benutzer und Gruppen für eine Lizenz anzuzeigen.
+Sie können eine Lizenz auf der Azure AD-Benutzerseite eines Benutzers und auf der Gruppenübersichtsseite für eine Gruppenzuweisung entfernen. Oder Sie beginnen auf der Azure AD-Seite **Lizenzen**, um die Benutzer und Gruppen für eine Lizenz anzuzeigen.
 
 ### <a name="to-remove-a-license-from-a-user"></a>So entfernen Sie eine Lizenz von einem Benutzer
 
-1. Wählen Sie auf der Seite **Lizenzierte Benutzer** für den Dienstplan den Benutzer aus, der nicht mehr über die Lizenz verfügen soll. Beispielsweise _Alain Charon_ .
+1. Wählen Sie auf der Seite **Lizenzierte Benutzer** für den Dienstplan den Benutzer aus, der nicht mehr über die Lizenz verfügen soll. Beispielsweise _Alain Charon_.
 
 1. Wählen Sie **Lizenz entfernen** aus.
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: a0ad14481673f0061fb0170e60869109c87a6829
-ms.sourcegitcommit: 8a1ba1ebc76635b643b6634cc64e137f74a1e4da
+ms.openlocfilehash: b4e268d35a2e31db0ce92ff61e66fd23bce68e38
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/09/2020
-ms.locfileid: "94379785"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516353"
 ---
 # <a name="overview-of-tokens-in-azure-active-directory-b2c"></a>Übersicht über Token in Azure Active Directory B2C
 
@@ -97,7 +97,7 @@ Die folgenden Eigenschaften werden zum [Verwalten der Tokenkompatibilität](conf
 
 ## <a name="pass-through"></a>Pass-Through
 
-Zu Beginn einer User Journey erhält Azure AD B2C ein Zugriffstoken von einem Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie [aktivieren einen Anspruch in Ihrem Benutzerflow](idp-pass-through-user-flow.md) oder [definieren einen Anspruch in Ihrer benutzerdefinierten Richtlinie](idp-pass-through-custom.md), um das Token an die Anwendungen zu übergeben, die Sie in Azure AD B2C registrieren. Ihre Anwendung muss einen [empfohlenen Benutzerflow](user-flow-versions.md) verwenden, um von der Übergabe des Tokens als Anspruch profitieren zu können.
+Zu Beginn einer User Journey erhält Azure AD B2C ein Zugriffstoken von einem Identitätsanbieter. Azure AD B2C verwendet dieses Token, um Informationen zum Benutzer abzurufen. Sie aktivieren einen Anspruch in Ihrem Benutzerflow, um das [Token an die Anwendungen zu übergeben](idp-pass-through-user-flow.md), die Sie in Azure AD B2C registrieren. Ihre Anwendung muss einen [empfohlenen Benutzerflow](user-flow-versions.md) verwenden, um von der Übergabe des Tokens als Anspruch profitieren zu können.
 
 Azure AD B2C unterstützt derzeit nur die Übergabe des Zugriffstokens für OAuth 2.0-Identitätsanbieter. Hierzu zählen unter anderem Facebook und Google. Für alle weiteren Identitätsanbieter wird ein leerer Anspruch zurückgegeben.
 

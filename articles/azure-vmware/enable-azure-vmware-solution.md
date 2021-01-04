@@ -3,12 +3,12 @@ title: Aktivieren einer Azure VMware Solution-Ressource
 description: Erfahren Sie, wie Sie eine Supportanfrage einreichen, um Ihre Azure VMware Solution-Ressource zu aktivieren. Sie können auch weitere Hosts in Ihrer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
 ms.topic: how-to
 ms.date: 11/12/2020
-ms.openlocfilehash: 526d6b38f4b4e3f6c4806b71b4728dee90cf558a
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: 8bcb61c07a3f0310754cd50931f4576e836deffb
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96325076"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346536"
 ---
 # <a name="how-to-enable-azure-vmware-solution-resource"></a>Aktivieren einer Azure VMware Solution-Ressource
 Hier erfahren Sie, wie Sie eine Supportanfrage einreichen, um Ihre Ressource vom Typ [Azure VMware Solution](introduction.md) zu aktivieren. Sie können auch weitere Hosts in Ihrer vorhandenen privaten Azure VMware Solution-Cloud anfordern.
@@ -18,7 +18,7 @@ Hier erfahren Sie, wie Sie eine Supportanfrage einreichen, um Ihre Ressource vom
 Sie benötigen ein Azure-Konto in einem Azure-Abonnement. Das Azure-Abonnement muss eines der folgenden Kriterien erfüllen:
 
 * Abonnement unter einem [Azure Konzernvertrag (Enterprise Agreement, EA)](../cost-management-billing/manage/ea-portal-agreements.md) mit Microsoft
-* Von einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) verwaltetes Abonnement unter einem Azure-Plan
+* Von einem Cloudlösungsanbieter (Cloud Solution Provider, CSP) verwaltetes Abonnement unter einem CSP-Angebotsvertrag in Azure oder einem Azure-Plan
 
 
 ## <a name="enable-azure-vmware-solution-for-ea-customers"></a>Aktivieren einer Azure VMware Solution-Ressource für EA-Kunden
@@ -61,7 +61,7 @@ Bevor Sie Ihre Azure VMware Solution-Ressource erstellen, müssen Sie ein Suppor
 
 ## <a name="enable-azure-vmware-solution-for-csp-customers"></a>Aktivieren einer Azure VMware Solution-Ressource für CSP-Kunden 
 
-CSPs müssen [Microsoft Partner Center](https://partner.microsoft.com) verwenden, um Azure VMware Solution für ihre Kunden zu aktivieren. 
+CSPs müssen [Microsoft Partner Center](https://partner.microsoft.com) verwenden, um Azure VMware Solution für ihre Kunden zu aktivieren. In diesem Artikel wird der [CSP-Azure-Plan](/partner-center/azure-plan-lp.md) als Beispiel verwendet, um die Kaufabwicklung für Partner zu veranschaulichen.
 
    >[!IMPORTANT] 
    >Der Azure VMware Solution-Dienst bietet keine Mehrinstanzenfähigkeit. Hostingpartner, die dies erfordern, werden nicht unterstützt. 
@@ -76,9 +76,9 @@ CSPs müssen [Microsoft Partner Center](https://partner.microsoft.com) verwenden
 
 1. Wählen Sie **Azure-Plan** und anschließend **Zu Warenkorb hinzufügen** aus. 
 
-1. Überprüfen Sie die allgemeine Einrichtung des Azure-Planabonnements für Ihren Kunden, und schließen Sie sie ab. Weitere Informationen finden Sie in der [Dokumentation zu Microsoft Partner Center](/partner-center/azure-plan-manage).
+1. Überprüfen Sie die allgemeine Einrichtung des Azure-Planabonnements für Ihren Kunden, und schließen Sie sie ab. Weitere Informationen finden Sie in der [Dokumentation zu Microsoft Partner Center](/partner-center/azure-plan-manage.md).
 
-Nachdem Sie den Azure-Plan konfiguriert und die erforderlichen vSphere-RBAC-Berechtigungen als CSP eingerichtet haben, wenden Sie sich an Microsoft, um das Kontingent für ein Azure-Planabonnement zu aktivieren. Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin on Behalf Of, AOBO) von Partner Center aus auf das Azure-Portal zu.
+Nachdem Sie den Azure-Plan konfiguriert und die erforderlichen [Azure RBAC-Berechtigungen](/partner-center/azure-plan-manage.md) für das Abonnement eingerichtet haben, wenden Sie sich an Microsoft, um das Kontingent für ein Abonnement mit Azure-Plan zu aktivieren. Greifen Sie unter Verwendung der Prozedur **Administrator im Namen von** (Admin on Behalf Of, AOBO) von [Microsoft Partner Center](https://partner.microsoft.com) aus auf das Azure-Portal zu.
 
 1. Melden Sie sich bei [Partner Center](https://partner.microsoft.com) an.
 

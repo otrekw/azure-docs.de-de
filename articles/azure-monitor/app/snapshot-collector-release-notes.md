@@ -5,12 +5,12 @@ ms.topic: conceptual
 author: pharring
 ms.author: pharring
 ms.date: 11/10/2020
-ms.openlocfilehash: 73fea1e1928cf4e1bd5342aa0a4c885ccb5cf137
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 4a787c6e2a9b59874f965a2bbcebea9ce02d8082
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96548170"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093259"
 ---
 # <a name="release-notes-for-microsoftapplicationinsightssnapshotcollector"></a>Versionshinweise zu „Microsoft.ApplicationInsights.SnapshotCollector“
 
@@ -18,9 +18,14 @@ Dieser Artikel enthält Versionshinweise für das NuGet-Paket „Microsoft.Appli
 
 [Erfahren Sie mehr](./snapshot-debugger.md) über den Application Insights-Momentaufnahmedebugger für .NET-Anwendungen.
 
-Zum Einreichen von Fehlerberichten und Feedback können Sie unter https://github.com/microsoft/ApplicationInsights-dotnet ein Issue auf GitHub erstellen.
+Zum Einreichen von Fehlerberichten und Feedback können Sie unter https://github.com/microsoft/ApplicationInsights-SnapshotCollector ein Issue auf GitHub erstellen.
 
 ## <a name="release-notes"></a>Versionshinweise
+
+## <a name="1375"></a>[1.3.7.5](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.5)
+Ein Nebenversionsrelease zum Rückportieren eines Hotfix in 1.4.0-pre.
+### <a name="bug-fixes"></a>Behebung von Programmfehlern
+- Fix für [ObjectDisposedException beim Herunterfahren](https://github.com/microsoft/ApplicationInsights-dotnet/issues/2097).
 
 ## <a name="1374"></a>[1.3.7.4](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector/1.3.7.4)
 Ein Release einer Nebenversion zur Behandlung eines Problems, das beim Testen des Azure App Service-Szenarios zum Anfügen ohne Code erkannt wurde.

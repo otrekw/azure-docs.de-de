@@ -1,14 +1,14 @@
 ---
 title: Übersicht über den Connected Machine-Agent für Windows
 description: Dieser Artikel bietet eine ausführliche Übersicht über den Agent für Azure Arc-fähige Server, der die Überwachung von VMs unterstützt, die in Hybridumgebungen gehostet werden.
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 1bc9546e6db35153424ba670f8157adb86d19b71
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 531041b7d7439dd2a48fa9e06eb82796f470e9ed
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96452953"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563023"
 ---
 # <a name="overview-of-azure-arc-enabled-servers-agent"></a>Übersicht über den Agent für Azure Arc-fähige Server
 
@@ -56,6 +56,9 @@ Für den Azure Connected Machine-Agent werden offiziell folgende Windows- und 
 - Red Hat Enterprise Linux (RHEL) 7 (x64)
 - Amazon Linux 2 (x64)
 
+> [!WARNING]
+> Der Linux-Hostname oder Windows-Computername darf keines der reservierten Wörter bzw. keine Marken im Namen verwenden. Andernfalls führt der Versuch, den verbundenen Computer bei Azure zu registrieren, zu einem Fehler. Eine Liste der reservierten Wörter finden Sie unter [Beheben von Fehlern bei reservierten Ressourcennamen](../../azure-resource-manager/templates/error-reserved-resource-name.md).
+
 ### <a name="required-permissions"></a>Erforderliche Berechtigungen
 
 * Zum Durchführen des Onboardings von Computern müssen Sie der Rolle **Onboarding verbundener Azure-Computer** angehören.
@@ -77,7 +80,7 @@ Um die Sicherheit von Daten bei der Übertragung an Azure zu gewährleisten, wir
 
 ### <a name="networking-configuration"></a>Netzwerkkonfiguration
 
-Der Connected Machine-Agent für Linux und Windows kommuniziert ausgehend auf sichere Weise über den TCP-Port 443 mit Azure Arc. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich die weiter unten angegebenen Anforderungen an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen.
+Der Connected Machine-Agent für Linux und Windows kommuniziert ausgehend auf sichere Weise über den TCP-Port 443 mit Azure Arc. Wenn der Computer für die Kommunikation über das Internet eine Firewall oder einen Proxyserver durchlaufen muss, sehen Sie sich Folgendes an, um sich mit der erforderlichen Netzwerkkonfiguration vertraut zu machen.
 
 Sollte die ausgehende Konnektivität durch Ihre Firewall oder Ihren Proxyserver eingeschränkt sein, stellen Sie sicher, dass die unten aufgeführten URLs nicht blockiert werden. Wenn Sie nur die IP-Adressbereiche oder Domänennamen zulassen, die der Agent für die Kommunikation mit dem Dienst benötigt, müssen Sie auch den Zugriff auf die folgenden Diensttags und URLs zulassen.
 
@@ -178,8 +181,9 @@ Nach der Installation des Connected Machine-Agents für Windows werden die folge
 
     |Dienstname |`Display name` |Prozessname |BESCHREIBUNG |
     |-------------|-------------|-------------|------------|
-    |himds |Azure Hybrid Instance Metadata Service |himds.exe |Dieser Dienst implementiert Azure Instance Metadata Service (IMDS) für die Verwaltung der Verbindung mit Azure und der Azure-Identität des verbundenen Computers.|
-    |DscService |Gastkonfigurationsdienst |dsc_service.exe |Die DSC v2-Codebasis (Desired State Configuration), die in Azure zum Implementieren von Gastrichtlinien verwendet wird.|
+    |himds |Azure Hybrid Instance Metadata Service |himds |Dieser Dienst implementiert Azure Instance Metadata Service (IMDS) für die Verwaltung der Verbindung mit Azure und der Azure-Identität des verbundenen Computers.|
+    |GCArcService |Gastkonfiguration des Arc-Diensts |gc_service |Überwacht die Konfiguration des gewünschten Zustands des Computers|
+    |ExtensionService |Gastkonfiguration des Erweiterungsdiensts | gc_service |Installiert die erforderlichen Erweiterungen für den Computer.|
 
 * Die folgenden Umgebungsvariablen werden während der Installation des Agents erstellt.
 
@@ -197,7 +201,7 @@ Nach der Installation des Connected Machine-Agents für Windows werden die folge
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent.log |Dieses Protokoll erfasst Informationen zur DSC-Dienstaktivität,<br> insbesondere zur Konnektivität zwischen HIMDS und Azure Policy.|
     |%ProgramData%\GuestConfig\gc_agent_logs\gc_agent_telemetry.txt |Dieses Protokoll erfasst Informationen über die DSC-Diensttelemetrie und die ausführliche Protokollierung.|
     |%ProgramData%\GuestConfig\ext_mgr_logs|Dieses Protokoll erfasst Informationen zur Erweiterungs-Agent-Komponente.|
-    |%ProgramData%\GuestConfig\extension_logs<ph id="ph1">\&lt;Extension&gt;</ph>|Dieses Protokoll erfasst Informationen aus der installierten Erweiterung.|
+    |%ProgramData%\GuestConfig\extension_logs\<Extension>|Dieses Protokoll erfasst Informationen aus der installierten Erweiterung.|
 
 * Die lokale Sicherheitsgruppe **Hybrid agent extension applications** wird erstellt.
 
@@ -229,8 +233,9 @@ Nach der Installation des Connected Machine-Agents für Linux werden die folgend
 
     |Dienstname |`Display name` |Prozessname |BESCHREIBUNG |
     |-------------|-------------|-------------|------------|
-    |himdsd.service |Azure Hybrid Instance Metadata Service |/opt/azcmagent/bin/himds |Dieser Dienst implementiert Azure Instance Metadata Service (IMDS) für die Verwaltung der Verbindung mit Azure und der Azure-Identität des verbundenen Computers.|
-    |dscd.service |Gastkonfigurationsdienst |/opt/DSC/dsc_linux_service |Hierbei handelt es sich um die DSC v2-Codebasis (Desired State Configuration), die in Azure zum Implementieren von Gastrichtlinien verwendet wird.|
+    |himdsd.service |Azure Connected Machine-Agent-Dienst |himds |Dieser Dienst implementiert Azure Instance Metadata Service (IMDS) für die Verwaltung der Verbindung mit Azure und der Azure-Identität des verbundenen Computers.|
+    |gcad.servce |Gastkonfiguration des Arc-Diensts |gc_linux_service |Überwacht die Konfiguration des gewünschten Zustands des Computers |
+    |extd.service |Erweiterungsdienst |gc_linux_service | Installiert die erforderlichen Erweiterungen für den Computer.|
 
 * Für die Problembehandlung stehen mehrere Protokolldateien zur Verfügung. Diese werden in der folgenden Tabelle beschrieben.
 

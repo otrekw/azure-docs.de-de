@@ -3,14 +3,14 @@ title: Konfigurieren der gegenseitigen TLS-Authentifizierung
 description: Erfahren Sie, wie Clientzertifikate mit TLS authentifiziert werden. Azure App Service kann das Clientzertifikat für den App-Code zur Überprüfung verfügbar machen.
 ms.assetid: cd1d15d3-2d9e-4502-9f11-a306dac4453a
 ms.topic: article
-ms.date: 10/01/2019
+ms.date: 12/11/2020
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 145b999d7bf8597c06d6e3d4a36d01b182c8ae68
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 6ceeb3d31652c04eb9a69c1c8bb4b114e6f38d52
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88213643"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347722"
 ---
 # <a name="configure-tls-mutual-authentication-for-azure-app-service"></a>Konfigurieren der gegenseitigen TLS-Authentifizierung für Azure App Service
 
@@ -24,20 +24,33 @@ Sie können den Zugriff auf Ihre Azure App Service-App einschränken, indem Sie 
 
 ## <a name="enable-client-certificates"></a>Aktivieren von Clientzertifikaten
 
-Um Ihre App so einzurichten, dass Clientzertifikate erforderlich sind, können Sie „Eingehende Zertifikate anfordern“ auf **Ein** festlegen, indem Sie im Azure-Portal **Konfiguration** > **Allgemeine Einstellungen** auswählen, oder die müssen die Einstellung `clientCertEnabled` für Ihre App auf `true` festlegen. Führen Sie zum Festlegen der Einstellung den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus.
+So richten Sie Ihre App für das Erzwingen von Clientzertifikaten ein
+
+1. Wählen Sie auf der Verwaltungsseite Ihrer App im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
+
+1. Legen Sie **Client certificate mode** (Clientzertifikatmodus) auf **Erforderlich** fest. Klicken Sie oben auf der Seite auf **Speichern**.
+
+Wenn Sie den Vorgang an der Azure-Befehlszeilenschnittstelle ausführen möchten, führen Sie den folgenden Befehl in der [Cloud Shell](https://shell.azure.com) aus:
 
 ```azurecli-interactive
-az webapp update --set clientCertEnabled=true --name <app_name> --resource-group <group_name>
+az webapp update --set clientCertEnabled=true --name <app-name> --resource-group <group-name>
 ```
 
 ## <a name="exclude-paths-from-requiring-authentication"></a>Ausschließen von Pfaden von der Anforderung der Authentifizierung
 
-Wenn Sie die gegenseitige Authentifizierung für Ihre Anwendung aktivieren, erfordern alle Pfade unter dem Stammverzeichnis Ihrer App ein Clientzertifikat für den Zugriff. Wenn Sie zulassen möchten, dass bestimmte Pfade für den anonymen Zugriff geöffnet bleiben, können Sie Ausschlusspfade als Teil ihrer Anwendungskonfiguration definieren.
+Wenn Sie die gegenseitige Authentifizierung für Ihre Anwendung aktivieren, erfordern alle Pfade unter dem Stammverzeichnis Ihrer App ein Clientzertifikat für den Zugriff. Um diese Anforderung für bestimmte Pfade aufzuheben, definieren Sie in Ihrer Anwendungskonfiguration Ausschlusspfade.
 
-Ausschlusspfade lassen sich konfigurieren, indem Sie **Konfiguration** > **Allgemeine Einstellungen** auswählen und einen Ausschlusspfad definieren. In diesem Beispiel würde alles unterhalb des `/public`-Pfads kein Clientzertifikat für Ihre Anwendung anfordern.
+1. Wählen Sie auf der Verwaltungsseite Ihrer App im linken Navigationsbereich **Konfiguration** > **Allgemeine Einstellungen** aus.
+
+1. Klicken Sie neben **Client exclusion paths** (Clientausschlusspfade) auf das Bearbeitungssymbol.
+
+1. Klicken Sie auf **Neuer Pfad**, geben Sie einen Pfad an, und klicken Sie auf **OK**.
+
+1. Klicken Sie oben auf der Seite auf **Speichern**.
+
+Im folgenden Screenshot wird für alle Verzeichnisse unter dem Pfad `/public` für Ihre App kein Clientzertifikat angefordert.
 
 ![Zertifikatausschlusspfade][exclusion-paths]
-
 
 ## <a name="access-client-certificate"></a>Zugreifen auf das Clientzertifikat
 

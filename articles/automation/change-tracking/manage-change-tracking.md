@@ -3,14 +3,14 @@ title: Verwalten von Änderungsnachverfolgung und Bestand in Azure Automation
 description: In diesem Artikel wird beschrieben, wie Sie Änderungsnachverfolgung und Bestand verwenden, um Änderungen an Software und Microsoft-Diensten in Ihrer Umgebung nachzuverfolgen.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 11/02/2020
+ms.date: 12/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: 99cdc4191320efb37b37e4ec38e808f3961a1207
-ms.sourcegitcommit: 7863fcea618b0342b7c91ae345aa099114205b03
+ms.openlocfilehash: 636dbf95567f761aee19bd567b0835173ce36ccc
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/03/2020
-ms.locfileid: "93288740"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093620"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>Verwalten der Änderungsnachverfolgung und des Bestands
 
@@ -45,11 +45,11 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
 
 5. Währen Sie **Einstellungen bearbeiten** (das Zahnradsymbol) aus.
 
-6. Wählen Sie auf der Seite „Arbeitsbereichskonfiguration“ die Option **Windows-Dateien** aus, und klicken Sie dann auf **+ Hinzufügen** , um eine neue nachzuverfolgende Datei hinzuzufügen.
+6. Wählen Sie auf der Seite „Arbeitsbereichskonfiguration“ die Option **Windows-Dateien** aus, und klicken Sie dann auf **+ Hinzufügen**, um eine neue nachzuverfolgende Datei hinzuzufügen.
 
 7. Geben Sie im Bereich „Windows-Datei für Änderungsnachverfolgung hinzufügen“ die Informationen zu der nachzuverfolgenden Datei bzw. dem Ordner ein, und klicken Sie auf **Speichern**. Die folgende Tabelle definiert die Eigenschaften, die Sie für die Informationen verwenden können.
 
-    |Eigenschaft  |BESCHREIBUNG  |
+    |Eigenschaft  |Beschreibung  |
     |---------|---------|
     |Aktiviert     | TRUE, wenn die Einstellung angewendet wird, andernfalls FALSE.        |
     |Item Name     | Anzeigename der nachzuverfolgenden Datei        |
@@ -62,7 +62,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Windows-Computern die 
     Wenn Sie die Überwachung von Dateien und Ordnern mithilfe von Platzhaltern konfigurieren möchten, berücksichtigen Sie Folgendes:
 
     - Platzhalter werden zum Nachverfolgen mehrerer Dateien benötigt.
-    - Platzhalter können nur im letzten Segment eines Pfads verwendet werden, z. B. „ *C:\Ordner\Datei* “ oder „ */etc/* .conf*“.
+    - Platzhalter können nur im letzten Segment eines Pfads verwendet werden, z. B. „*C:\Ordner\Datei*“ oder „ */etc/* .conf*“.
     - Wenn eine Umgebungsvariable einen ungültigen Pfad enthält, ist die Überprüfung zwar erfolgreich, bei der Ausführung der Inventur tritt jedoch ein Fehler für den Pfad auf.
     - Vermeiden Sie beim Festlegen des Pfads die Verwendung allgemeiner Pfade wie *c:* .**, da in diesem Fall zu viele Ordner durchlaufen werden müssen.
 
@@ -99,6 +99,7 @@ Führen Sie zum Konfigurieren der Dateinachverfolgung auf Linux-Computern die fo
 Die Nachverfolgung von Dateiinhalten ermöglicht Ihnen, den Inhalt einer Datei vor und nach einer verfolgten Änderung einzusehen. Die Funktion speichert den Dateiinhalt nach jeder Änderung in einem [Speicherkonto](../../storage/common/storage-account-overview.md). Im Folgenden finden Sie einige Regeln, die beim Nachverfolgen von Dateiinhalten einzuhalten sind:
 
 * Für die Speicherung von Dateiinhalten ist ein Standardspeicherkonto unter Verwendung des Ressourcen-Manager-Bereitstellungsmodells erforderlich.
+* Standardmäßig akzeptieren Speicherkonten Verbindungen von Clients in jedem Netzwerk. Wenn Sie Ihr Speicherkonto so geschützt haben, dass nur bestimmter Datenverkehr zugelassen wird, müssen Sie Ihre Konfigurationsregeln anpassen, damit Ihr Automation-Konto eine Verbindung mit dem Konto herstellen kann. Weitere Informationen finden Sie unter [Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken](../../storage/common/storage-network-security.md).
 * Verwenden Sie keine Speicherkonten mit Premium- oder klassischem Bereitstellungsmodell. Weitere Informationen finden Sie unter [Informationen zu Azure-Speicherkonten](../../storage/common/storage-account-create.md).
 * Sie können das Speicherkonto nur mit einem einzigen Automation-Konto verbinden.
 * Änderungsnachverfolgung und Bestand muss in Ihrem Automation-Konto aktiviert sein.
@@ -156,7 +157,7 @@ Führen Sie zum Konfigurieren der Nachverfolgung von Registrierungsschlüsseln a
 
 ## <a name="search-logs-for-change-records"></a>Protokolle nach Änderungsdatensätzen durchsuchen
 
-Sie können verschiedene Suchvorgänge in den Azure Monitor-Protokollen für Änderungsdatensätze durchführen. Klicken Sie bei geöffneter Seite „Änderungsnachverfolgung“ auf **Log Analytics** , um die Seite „Protokolle“ zu öffnen. Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Änderungsdatensätzen.
+Sie können verschiedene Suchvorgänge in den Azure Monitor-Protokollen für Änderungsdatensätze durchführen. Klicken Sie bei geöffneter Seite „Änderungsnachverfolgung“ auf **Log Analytics**, um die Seite „Protokolle“ zu öffnen. Die folgende Tabelle enthält Beispiele für Protokollsuchen nach Änderungsdatensätzen.
 
 |Abfrage  |BESCHREIBUNG  |
 |---------|---------|

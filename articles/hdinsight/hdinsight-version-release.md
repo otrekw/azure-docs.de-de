@@ -7,12 +7,12 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 08/21/2020
-ms.openlocfilehash: 2fd7a3e512b79651fdcf6a6ac0c14822361fc263
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: b8f9759d19089f74d62def41b205d862ce9a7d43
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96350193"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359726"
 ---
 # <a name="azure-hdinsight-40-overview"></a>Übersicht über Azure HDInsight 4.0
 
@@ -38,7 +38,12 @@ Hive unterstützt jetzt dynamisch materialisierte Sichten bzw. die Vorberechnung
 
 ### <a name="hive-transactional-tables"></a>Transaktionale Hive-Tabellen
 
-HDI 4.0 enthält Apache Hive 3. Hive 3 erfordert ACID-Konformität (Atomicity, Consistency, Isolation, Durability – Unteilbarkeit, Konsistenz, Isolation, Dauerhaftigkeit) für Transaktionstabellen, die im Hive-Warehouse gespeichert sind. ACID-konforme Tabellen und Tabellendaten werden von Hive abgerufen und verwaltet. Daten in CRUD-Tabellen (Create, Retrieve, Update, Delete – Erstellen, Abrufen, Aktualisieren, Löschen) müssen das ORC-Dateiformat (Optimized Row Column) aufweisen. Tabellen, in denen nur Einfügungen erfolgen, unterstützen jedoch alle Dateiformate.
+HDI 4.0 enthält Apache Hive 3. Hive 3 erfordert ACID-Konformität (Atomicity, Consistency, Isolation, Durability – Unteilbarkeit, Konsistenz, Isolation, Dauerhaftigkeit) für Transaktionstabellen, die im Hive-Warehouse gespeichert sind. ACID-konforme Tabellen und Tabellendaten werden von Hive abgerufen und verwaltet. Daten in CRUD-Tabellen (Create, Retrieve, Update, Delete – Erstellen, Abrufen, Aktualisieren, Löschen) müssen das ORC-Dateiformat (Optimized Row Column) aufweisen. Tabellen, in denen nur Einfügungen erfolgen, unterstützen jedoch alle Dateiformate. 
+
+> [!Note]
+> Die Unterstützung für ACID/Transaktionen funktioniert nur für verwaltete Tabellen und nicht für externe Tabellen. Externe Hive-Tabellen sind so konzipiert, dass externe Parteien Tabellendaten lesen und schreiben können, ohne dass Hive Änderungen an den zugrunde liegenden Daten durchführt. Bei ACID-Tabellen ändert Hive eventuell die zugrunde liegenden Daten durch Komprimierungen und Transaktionen.
+
+Zu den Vorteilen von ACID-Tabellen gehören:
 
 * ACID v2 weist Leistungsverbesserungen beim Speicherformat und der Ausführungsengine auf.
 

@@ -4,12 +4,12 @@ description: In diesem Artikel werden häufig gestellte allgemeine Fragen zu Azu
 ms.topic: conceptual
 ms.date: 7/14/2020
 ms.author: raynew
-ms.openlocfilehash: 3da86eead5b927a2a71d7b1a28bc5966bf5f8840
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: add5874dc828f05c7c51f0f378988c94cbd42486
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92369436"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109554"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Allgemeine Fragen zu Azure Site Recovery
 
@@ -117,7 +117,7 @@ Auf den replizierten Elementen installierte Mobility-Agents kommunizieren aussch
 Die gesamte Kommunikation zwischen den Microservices von Azure Site Recovery erfolgt über das TLS 1.2-Protokoll. Site Recovery verwendet Sicherheitsanbieter, die im System (BS) konfiguriert sind, und verwendet das neueste verfügbare TLS-Protokoll. Sie müssen TLS 1.2 explizit in der Registrierung aktivieren, und dann wird Site Recovery mit der Verwendung von TLS 1.2 zur Kommunikation mit Diensten beginnen. 
 
 ### <a name="how-can-i-enforce-restricted-access-on-my-storage-accounts-which-are-accessed-by-site-recovery-service-for-readingwriting-replication-data"></a>Wie erzwinge ich eingeschränkten Zugriff auf meine Speicherkonten, auf die der Site Recovery-Dienst zum Lesen/Schreiben von Replikationsdaten zugreift?
-Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, indem Sie zur *Identity* -Einstellung (Identität) wechseln. Nachdem der Tresor bei Azure Active Directory registriert wurde, können Sie zu Ihren Speicherkonten wechseln und den Tresor die folgenden Rollenzuweisungen zuweisen:
+Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, indem Sie zur *Identity*-Einstellung (Identität) wechseln. Nachdem der Tresor bei Azure Active Directory registriert wurde, können Sie zu Ihren Speicherkonten wechseln und den Tresor die folgenden Rollenzuweisungen zuweisen:
 
 - Resource Manager-basierte Speicherkonten (Standard):
   - [Mitwirkender](../role-based-access-control/built-in-roles.md#contributor)
@@ -132,10 +132,10 @@ Sie können die verwaltete Identität des Recovery Services-Tresors aktivieren, 
 ## <a name="disaster-recovery"></a>Notfallwiederherstellung
 
 ### <a name="what-can-site-recovery-protect"></a>Was kann mit Site Recovery geschützt werden?
-* **Virtuelle Azure-Computer** : Mit Site Recovery können alle Workloads repliziert werden, die auf einem unterstützten virtuellen Azure-Computer ausgeführt werden.
-* **Virtuelle Hyper-V-Computer** : Mit Site Recovery kann jede Workload, die auf einer Hyper-V-VM ausgeführt wird, geschützt werden.
-* **Physische Server** : Mit Site Recovery können physische Server unter Windows oder Linux geschützt werden.
-* **Virtuelle VMware-Computer** : Mit Site Recovery kann jede Workload, die auf einer VMware-VM ausgeführt wird, geschützt werden.
+* **Virtuelle Azure-Computer**: Mit Site Recovery können alle Workloads repliziert werden, die auf einem unterstützten virtuellen Azure-Computer ausgeführt werden.
+* **Virtuelle Hyper-V-Computer**: Mit Site Recovery kann jede Workload, die auf einer Hyper-V-VM ausgeführt wird, geschützt werden.
+* **Physische Server**: Mit Site Recovery können physische Server unter Windows oder Linux geschützt werden.
+* **Virtuelle VMware-Computer**: Mit Site Recovery kann jede Workload, die auf einer VMware-VM ausgeführt wird, geschützt werden.
 
 ### <a name="what-workloads-can-i-protect-with-site-recovery"></a>Welche Workloads können mit Site Recovery geschützt werden?
 Mit Site Recovery können die meisten Workloads geschützt werden, die auf einer unterstützten VM oder einem physischen Server ausgeführt werden. Site Recovery bietet Unterstützung für die anwendungsorientierte Replikation, sodass für Apps ein „intelligenter Zustand“ wiederhergestellt werden kann. Eine Integration in Microsoft-Anwendungen wie SharePoint, Exchange, Dynamics, SQL Server und Active Directory ist möglich. Zudem kann Site Recovery eng in die Produkte führender Anbieter, z.B. Oracle, SAP, IBM und Red Hat, eingebunden werden. [Erfahren Sie mehr](site-recovery-workload.md) über den Schutz von Workloads.
@@ -273,6 +273,9 @@ Anwendungskonsistente Wiederherstellungspunkte werden aus anwendungskonsistenten
 
 Durch diesen zusätzlichen Inhalt sind anwendungskonsistente Momentaufnahmen am stärksten involviert, und ihre Ausführung dauert am längsten. Anwendungskonsistente Wiederherstellungspunkte werden für Betriebssysteme mit Datenbank und Anwendungen wie SQL Server empfohlen.
 
+>[!Note]
+>Das Erstellen von anwendungskonsistenten Wiederherstellungspunkten führt auf einem Windows-Computer zu einem Fehler, wenn er mehr als 64 Volumes enthält.
+
 ### <a name="what-is-the-impact-of-application-consistent-recovery-points-on-application-performance"></a>Welche Auswirkungen haben anwendungskonsistente Wiederherstellungspunkte auf die Anwendungsleistung?
 
 Anwendungskonsistente Wiederherstellungspunkte erfassen alle Daten im Arbeitsspeicher und in Prozessen. Da Wiederherstellungspunkte diese Daten erfassen, benötigen Sie ein Framework wie den Volumeschattenkopie-Dienst unter Windows, um die Anwendung in einen inaktiven Status zu versetzen. Wird der Erfassungsprozess häufig ausgeführt, kann sich dies auf die Leistung auswirken, wenn die Workload bereits hoch ist. Wir raten davon ab, für anwendungskonsistente Wiederherstellungspunkte bei Nicht-Datenbankworkloads ein kleines Intervall zu verwenden. Auch für die Datenbankworkloads reicht eine Stunde aus.
@@ -304,7 +307,7 @@ Nein. Site Recovery bewahrt alle Ihre vorherigen Wiederherstellungspunkte auf. A
 
 ### <a name="after-replication-is-enabled-on-a-vm-how-do-i-change-the-replication-policy"></a>Wie ändere ich die Replikationsrichtlinie, nachdem die Replikation auf einer VM aktiviert wurde?
 
-Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien** . Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
+Navigieren Sie zu **Site Recovery-Tresor** > **Site Recovery-Infrastruktur** > **Replikationsrichtlinien**. Wählen Sie die Richtlinie aus, die Sie bearbeiten möchten, und speichern Sie die Änderungen. Alle Änderungen werden auch auf alle vorhandenen Replikationen angewendet.
 
 ### <a name="are-all-the-recovery-points-a-complete-copy-of-the-vm-or-a-differential"></a>Sind alle Wiederherstellungspunkte vollständige Kopien des virtuellen Computers oder gibt es Unterschiede?
 

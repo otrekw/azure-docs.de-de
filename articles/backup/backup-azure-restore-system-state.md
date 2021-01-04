@@ -3,12 +3,12 @@ title: Wiederherstellen des Systemstatus auf einem Windows Server-Computer
 description: Ausführliche Anleitung zum Wiederherstellen des Windows Server-Systemstatus aus einer Sicherung in Azure.
 ms.topic: conceptual
 ms.date: 06/30/2020
-ms.openlocfilehash: 824ed5e71934af370211bfa8b4c266fe4323b4ad
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4ef23d6ff16c263e310304cc240c2090751640b1
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89377436"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008468"
 ---
 # <a name="restore-system-state-to-windows-server"></a>Wiederherstellen des Systemstatus von Windows Server
 
@@ -83,7 +83,7 @@ In diesen Schritten wird folgende Terminologie verwendet:
 
     ![Anderer Server](./media/backup-azure-restore-system-state/anotherserver.png)
 
-5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor*entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor zugeordnet ist.
+5. Geben Sie die Datei mit den Tresoranmeldeinformationen an, die dem *Beispieltresor* entspricht. Wenn die Datei mit den Tresoranmeldeinformationen ungültig (oder abgelaufen) ist, laden Sie eine neue Anmeldeinformationsdatei für den Tresor aus dem *Beispieltresor* im Azure-Portal herunter. Sobald die Anmeldeinformationsdatei für den Tresor bereitgestellt wurde, wird der Recovery Services-Tresor angezeigt, der der Anmeldeinformationsdatei für den Tresor zugeordnet ist.
 
 6. Wählen Sie im Bereich „Sicherungsserver auswählen“ in der Liste mit den angezeigten Computern den *Quellcomputer* aus.
 7. Wählen Sie im Bereich „Wiederherstellungsmodus auswählen“ die Option **Systemstatus** aus, und wählen Sie dann **Weiter** aus.
@@ -201,6 +201,8 @@ In diesem Artikel wird nur das erste Szenario beschrieben, bei dem eine nicht au
 
 1. Nachdem Sie eine Wiederherstellung erfolgreich abgeschlossen haben, sollten Sie den Server im normalen Modus neu starten. Öffnen Sie eine Eingabeaufforderung, und geben Sie Folgendes ein: `bcdedit /deletevalue safeboot`
 1. Starten Sie den Server neu.
+
+Weitere Informationen finden Sie unter [Sichern und Wiederherstellen von Active Directory-Domänencontrollern](active-directory-backup-restore.md).
 
 ## <a name="troubleshoot-failed-system-state-restore"></a>Wiederherstellen nach einer nicht erfolgreichen Problembehandlung des Systemstatus
 

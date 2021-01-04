@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 6c9e5b6466d3da675975dbf2c532602561e820c9
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 417306e09a9424b302bb226aea5dd2c1debe96f5
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96495071"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97508423"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Aufrufen von Spark-Programmen aus Azure Data Factory-Pipelines
 
@@ -118,13 +118,13 @@ In diesem Schritt erstellen Sie einen verknüpften HDInsight-Dienst, um Ihren HD
 
 1. Kopieren Sie den folgenden Codeausschnitt, und fügen Sie ihn in das Fenster „Draft-1“ ein. Gehen Sie im JSON-Editor folgendermaßen vor:
 
-    a. Geben Sie den URI für den HDInsight Spark-Cluster an. Beispiel: `https://<sparkclustername>.azurehdinsight.net/`.
+    1. Geben Sie den URI für den HDInsight Spark-Cluster an. Beispiel: `https://<sparkclustername>.azurehdinsight.net/`.
 
-    b. Geben Sie den Namen des Benutzers an, der auf den Spark-Cluster zugreifen darf.
+    1. Geben Sie den Namen des Benutzers an, der auf den Spark-Cluster zugreifen darf.
 
-    c. Geben Sie das Kennwort für den Benutzer an.
+    1. Geben Sie das Kennwort für den Benutzer an.
 
-    d. Geben Sie den mit Storage verknüpften Dienst an, der dem HDInsight Spark-Cluster zugeordnet ist. In diesem Beispiel ist dies „AzureStorageLinkedService“.
+    1. Geben Sie den mit Storage verknüpften Dienst an, der dem HDInsight Spark-Cluster zugeordnet ist. In diesem Beispiel ist dies „AzureStorageLinkedService“.
 
     ```json
     {
@@ -213,20 +213,21 @@ In diesem Schritt erstellen Sie eine Pipeline mit einer HDInsightSpark-Aktivitä
         }
     }
     ```
+
     Beachten Sie folgende Punkte:
 
-    a. Die **type**-Eigenschaft ist auf **HDInsightSpark** festgelegt.
+    1. Die **type**-Eigenschaft ist auf **HDInsightSpark** festgelegt.
 
-    b. Die Eigenschaft **rootPath** ist auf **adfspark\\pyFiles** festgelegt, wobei „adfspark“ den Blobcontainer und „pyFiles“ einen Dateiordner in diesem Container darstellt. In diesem Beispiel ist Blob Storage der dem Spark-Cluster zugeordnete Speicher. Sie können die Datei in ein anderes Speicherkonto hochladen. Erstellen Sie in diesem Fall einen mit Storage verknüpften Dienst, um dieses Speicherkonto mit der Data Factory zu verknüpfen. Geben Sie dann den Namen des verknüpften Diensts als Wert für die Eigenschaft **sparkJobLinkedService** an. Weitere Informationen zu dieser und anderen von der Spark-Aktivität unterstützten Eigenschaften finden Sie unter [Eigenschaften von Spark-Aktivitäten](#spark-activity-properties).
+    1. Die Eigenschaft **rootPath** ist auf **adfspark\\pyFiles** festgelegt, wobei „adfspark“ den Blobcontainer und „pyFiles“ einen Dateiordner in diesem Container darstellt. In diesem Beispiel ist Blob Storage der dem Spark-Cluster zugeordnete Speicher. Sie können die Datei in ein anderes Speicherkonto hochladen. Erstellen Sie in diesem Fall einen mit Storage verknüpften Dienst, um dieses Speicherkonto mit der Data Factory zu verknüpfen. Geben Sie dann den Namen des verknüpften Diensts als Wert für die Eigenschaft **sparkJobLinkedService** an. Weitere Informationen zu dieser und anderen von der Spark-Aktivität unterstützten Eigenschaften finden Sie unter [Eigenschaften von Spark-Aktivitäten](#spark-activity-properties).
 
-    c. Die Eigenschaft **entryFilePath** ist auf **test.py** festgelegt. Dies ist die Python-Datei.
+    1. Die Eigenschaft **entryFilePath** ist auf **test.py** festgelegt. Dies ist die Python-Datei.
 
-    d. Die **getDebugInfo**-Eigenschaft ist auf **Always** festgelegt, das heißt, Protokolldateien werden in jedem Fall (Erfolg oder Fehler) erstellt.
+    1. Die **getDebugInfo**-Eigenschaft ist auf **Always** festgelegt, das heißt, Protokolldateien werden in jedem Fall (Erfolg oder Fehler) erstellt.
 
-    > [!IMPORTANT]
-    > Es wird empfohlen, dass Sie diese Eigenschaft in einer Produktionsumgebung nicht auf `Always` festlegen, es sei denn, Sie möchten ein Problem behandeln.
+       > [!IMPORTANT]
+       > Es wird empfohlen, diese Eigenschaft in einer Produktionsumgebung nicht auf `Always` festzulegen, es sei denn, dies dient der Problembehandlung.
 
-    e. Der Abschnitt **outputs** weist ein Ausgabedataset auf. Sie müssen in jedem Fall ein Ausgabedataset angeben, selbst wenn das Spark-Programm keine Ausgabe generiert. Das Ausgabedataset bestimmt den Zeitplan für die Pipeline (stündlich, täglich).
+    1. Der Abschnitt **outputs** weist ein Ausgabedataset auf. Sie müssen in jedem Fall ein Ausgabedataset angeben, selbst wenn das Spark-Programm keine Ausgabe generiert. Das Ausgabedataset bestimmt den Zeitplan für die Pipeline (stündlich, täglich).
 
     Weitere Informationen zu den von der Spark-Aktivität unterstützten Eigenschaften finden Sie unter [Eigenschaften von Spark-Aktivitäten](#spark-activity-properties).
 
@@ -324,7 +325,7 @@ Dies ist eine JSON-Beispieldefinition einer Pipeline mit einer Spark-Aktivität:
 
 Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definition verwendet werden.
 
-| Eigenschaft | BESCHREIBUNG | Erforderlich |
+| Eigenschaft | Beschreibung | Erforderlich |
 | -------- | ----------- | -------- |
 | name | Der Name der Aktivität in der Pipeline. | Ja |
 | description | Text, der beschreibt, welche Aktion die Aktivität ausführt. | Nein  |
@@ -333,7 +334,7 @@ Die folgende Tabelle beschreibt die JSON-Eigenschaften, die in der JSON-Definiti
 | rootPath | Der Blobcontainer und -ordner mit der Spark-Datei. Für den Dateinamen wird zwischen Groß- und Kleinschreibung unterschieden. | Ja |
 | entryFilePath | Der relative Pfad zum Stammordner des Spark-Codes bzw. -Pakets. | Ja |
 | className | Die Java-/Spark-Hauptklasse der Anwendung. | Nein  |
-| Argumente | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein  |
+| Argumente | Eine Liste der Befehlszeilenargumente für das Spark-Programm. | Nein |
 | proxyUser | Das Benutzerkonto, dessen Identität angenommen werden soll, um das Spark-Programm auszuführen. | Nein  |
 | sparkConfig | Geben Sie Werte für die Spark-Konfigurationseigenschaften an, die unter [Spark-Konfiguration: Anwendungseigenschaften](https://spark.apache.org/docs/latest/configuration.html#available-properties) aufgeführt sind. | Nein  |
 | getDebugInfo | Gibt an, ob die Spark-Protokolldateien in den Speicher kopiert werden, der vom HDInsight-Cluster verwendet oder von „sparkJobLinkedService“ angegeben wird. Zulässige Werte sind “Keine“, „Immer“ oder „Fehler“. Der Standardwert lautet „Keine“. | Nein  |
@@ -344,9 +345,9 @@ Die Spark-Aktivität unterstützt im Gegensatz zu Pig- und Hive-Aktivitäten kei
 
 Erstellen Sie folgende Ordnerstruktur in dem Blobspeicher, auf den der verknüpfte HDInsight-Dienst verweist. Laden Sie dann abhängige Dateien in die entsprechenden Unterordner in dem Stammordner hoch, der durch **entryFilePath** dargestellt wird. Python-Dateien werden beispielsweise in den Unterordner „pyFiles“ und JAR-Dateien in den Unterordner „jars“ des Stammordners hochgeladen. Zur Laufzeit erwartet der Data Factory-Dienst die folgende Ordnerstruktur im Blobspeicher:
 
-| `Path` | BESCHREIBUNG | Erforderlich | type |
+| `Path` | Beschreibung | Erforderlich | type |
 | ---- | ----------- | -------- | ---- |
-| erforderlich. | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
+| . | Der Stammpfad des Spark-Auftrags im verknüpften Speicherdienst. | Ja | Ordner |
 | &lt;benutzerdefiniert&gt; | Der Pfad, der auf die Eingabedatei des Spark-Auftrags zeigt. | Ja | Datei |
 | ./jars | Alle Dateien in diesem Ordner werden hochgeladen und im Java-CLASSPATH des Clusters platziert. | Nein  | Ordner |
 | ./pyFiles | Alle Dateien in diesem Ordner werden hochgeladen und im PYTHONPATH des Clusters platziert. | Nein  | Ordner |

@@ -3,12 +3,12 @@ title: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs | Microsoft
 description: Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs über das Azure-Portal oder PowerShell
 ms.topic: article
 ms.date: 06/26/2020
-ms.openlocfilehash: 6d6af68cd663e88af90d690375a4d45c538aad1d
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.openlocfilehash: 2ca6a1ffa66ab294e34a1b4866953a393aba4d6d
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92330188"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511976"
 ---
 # <a name="add-owners-and-users-in-azure-devtest-labs"></a>Hinzufügen von Besitzern und Benutzern in Azure DevTest Labs
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/How-to-set-security-in-your-DevTest-Lab/player]
@@ -34,7 +34,7 @@ Die folgende Tabelle zeigt die Aktionen, die von Benutzern in jeder dieser Rolle
 | **Grundlegende Aufgaben für virtuelle Computer** | | | |
 | Benutzerdefinierte Images hinzufügen und entfernen |Nein |Ja |Ja |
 | Formeln hinzufügen, aktualisieren und löschen |Ja |Ja |Ja |
-| Azure Marketplace-Images in eine Positivliste aufnehmen |Nein |Ja |Ja |
+| Aktivieren von Marketplace-Images |Nein |Ja |Ja |
 | **Aufgaben für virtuelle Computer** | | | |
 | Virtuelle Computer erstellen |Ja |Ja |Ja |
 | Virtuelle Computer starten, beenden und löschen |Nur vom Benutzer erstellte virtuelle Computer |Ja |Ja |

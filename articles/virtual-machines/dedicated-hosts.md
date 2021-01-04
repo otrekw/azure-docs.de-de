@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.topic: conceptual
 ms.workload: infrastructure
-ms.date: 07/28/2020
+ms.date: 12/07/2020
 ms.author: cynthn
 ms.reviewer: zivr
-ms.openlocfilehash: a42b07254deaf19d253f7523631018bfe7166a57
-ms.sourcegitcommit: 9eda79ea41c60d58a4ceab63d424d6866b38b82d
+ms.openlocfilehash: 4e29bb0fee496af6a8c0fd30d5559bf865123c39
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96339590"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007890"
 ---
 # <a name="azure-dedicated-hosts"></a>Dedizierte Azure-Hosts
 
@@ -67,11 +67,6 @@ Sie können beide Funktionen kombinieren, um eine noch höhere Fehlerisolation z
 
 ## <a name="manual-vs-automatic-placement"></a>Manuelle und automatische Platzierung 
 
-> [!IMPORTANT]
-> Automatische Platzierung befindet sich zurzeit in der öffentlichen Vorschau.
-> Um an der Vorschau teilzunehmen, füllen Sie die Onboardingumfrage für die Vorschau unter [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) aus.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Wenn Sie eine VM in Azure erstellen, können Sie den dedizierten Host auswählen, der verwendet werden soll. Sie können darüber hinaus die Option zum automatischen Platzieren von VMs auf vorhandenen Hosts innerhalb einer Hostgruppe verwenden. 
 
 Achten Sie beim Erstellen einer neuen Hostgruppe darauf, dass die Einstellung für automatische VM-Platzierung ausgewählt ist. Wählen Sie beim Erstellen Ihrer VM die Hostgruppe aus, und lassen Sie Azure den besten Host für Ihre VM wählen. 
@@ -91,11 +86,6 @@ Bekannte Probleme und Einschränkungen bei der Verwendung der automatischen VM-P
 
 Mithilfe von VM-Skalierungsgruppen können Sie eine Gruppe von virtuellen Computern als einzelne Ressource behandeln und Verfügbarkeits-, Verwaltungs-, Skalierungs- und Orchestrierungsrichtlinien als Gruppe anwenden. Ihre vorhandenen dedizierten Hosts können ebenfalls für VM-Skalierungsgruppen verwendet werden. 
 
-> [!IMPORTANT]
-> Virtual Machine Scale Sets auf Dedicated Hosts befindet sich derzeit in der öffentlichen Vorschau.
-> Um an der Vorschau teilzunehmen, füllen Sie die Onboardingumfrage für die Vorschau unter [https://aka.ms/vmss-adh-preview](https://aka.ms/vmss-adh-preview) aus.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
 Beim Erstellen einer VM-Skalierungsgruppe können Sie eine vorhandene Hostgruppe angeben, die alle VM-Instanzen aufnimmt, die auf dedizierten Hosts erstellt werden.
 
 Die folgenden Anforderungen gelten für das Erstellen einer VM-Skalierungsgruppe in einer dedizierten Hostgruppe:
@@ -109,7 +99,7 @@ Die folgenden Anforderungen gelten für das Erstellen einer VM-Skalierungsgruppe
 - Die unterstützten VM-Größen für Ihre dedizierten Hosts sollten mit der für Ihre Skalierungsgruppe verwendeten übereinstimmen.
 
 Nicht alle Orchestrierungs- und Optimierungseinstellungen für Skalierungsgruppen werden von dedizierten Hosts unterstützt. Wenden Sie die folgenden Einstellungen auf Ihre Skalierungsgruppe an: 
-- Deaktivieren Sie Überbereitstellung
+- Überbereitstellung wird nicht empfohlen und ist standardmäßig deaktiviert. Sie können Überbereitstellung aktivieren, aber die Zuteilung der Skalierungsgruppe wird einen Fehler verursachen, wenn die Hostgruppe nicht über ausreichende Kapazität für alle VMs – einschließlich der Instanzen aus der Überbereitstellung – verfügt. 
 - Verwenden Sie den Orchestrierungsmodus „ScaleSetVM“ 
 - Verwenden Sie keine Näherungsplatzierungsgruppen für die gemeinsame Anordnung
 

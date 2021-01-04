@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8e12a74ee689ba7b013b1c4a6881deac78680be0
-ms.sourcegitcommit: e2dc549424fb2c10fcbb92b499b960677d67a8dd
+ms.openlocfilehash: 687c344aefc70729c85fb37d615ec0a272ff4fde
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94701047"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368867"
 ---
 # <a name="security-control-v2-data-protection"></a>Sicherheitskontrolle V2: Datenschutz
 
@@ -20,7 +20,7 @@ Datenschutz deckt die Steuerung des Schutzes von Daten im Ruhezustand, während 
 
 ## <a name="dp-1-discovery-classify-and-label-sensitive-data"></a>DP-1: Ermitteln, Klassifizieren und Bezeichnen von vertraulichen Daten
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | DP-1 | 13.1, 14.5, 14.7 | SC-28 |
 
@@ -46,7 +46,7 @@ Sie können Azure SQL Information Protection verwenden, um die Klassifizierung u
 
 ## <a name="dp-2-protect-sensitive-data"></a>DP-2: Schützen von vertraulichen Daten
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | DP-2 | 13.2, 2.10 | SC-7, AC-4 |
 
@@ -72,7 +72,7 @@ Für die zugrunde liegende Plattform, die von Microsoft verwaltet wird, behandel
 
 ## <a name="dp-3-monitor-for-unauthorized-transfer-of-sensitive-data"></a>DP-3: Überwachung auf nicht autorisierte Übertragung vertraulicher Daten
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | DP-3 | 13.3 | AC-4, SI-4 |
 
@@ -100,7 +100,7 @@ Wenn Compliance hinsichtlich Datenverlust (Data Loss Prevention, DLP) erforderli
 
 ## <a name="dp-4-encrypt-sensitive-information-in-transit"></a>DP-4: Verschlüsseln vertraulicher Informationen während der Übertragung
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | DP-4 | 14.4 | SC-8 |
 
@@ -130,7 +130,7 @@ Azure ermöglicht standardmäßig die Verschlüsselung von Daten während der Ü
 
 ## <a name="dp-5-encrypt-sensitive-data-at-rest"></a>DP-5: Verschlüsseln vertraulicher ruhender Daten
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | DP-5 | 14.8 | SC-28, SC-12 |
 

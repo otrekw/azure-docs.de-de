@@ -8,12 +8,12 @@ ms.subservice: security
 ms.date: 12/1/2020
 ms.author: billgib
 ms.reviewer: jrasnick
-ms.openlocfilehash: aadc8e817eb2b5de856ac73cfd010b48d0531bfc
-ms.sourcegitcommit: 84e3db454ad2bccf529dabba518558bd28e2a4e6
+ms.openlocfilehash: 9735293c182e7fe67a498529425459c13a199101
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96523281"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97109792"
 ---
 # <a name="understand-the-roles-required-to-perform-common-tasks-in-synapse"></a>Grundlegendes zu den erforderlichen Rollen zum Ausführen allgemeiner Aufgaben in Synapse
 
@@ -58,6 +58,7 @@ In der folgenden Tabelle sind allgemeine Aufgaben und die jeweils erforderlichen
 
 >[!Note]
 >- Die Rolle „Synapse-Administrator“ ist nur bei den Aufgaben aufgeführt, bei denen nur diese Rolle die erforderliche Berechtigung bereitstellt.  Ein Synapse-Administrator kann alle Aufgaben ausführen, die von anderen Synapse RBAC-Rollen gewährt werden.</br>
+>- Die mindestens erforderliche Synapse RBAC-Rolle wird angezeigt.
 >- Alle Synapse RBAC-Rollen gewähren in jedem Bereich die Berechtigungen der Rolle „Synapse-Benutzer“ im Arbeitsbereich.
 >- Alle in der Tabelle gezeigten Synapse RBAC-Berechtigungen/-Aktionen weisen ein entsprechendes Präfix für Microsoft/Synapse/Arbeitsbereiche usw. auf. </br>
 
@@ -65,55 +66,54 @@ In der folgenden Tabelle sind allgemeine Aufgaben und die jeweils erforderlichen
 Aufgabe |Erforderliche Rolle|Synapse RBAC-Berechtigung/-Aktion
 --|--|--
 |Öffnen von Synapse Studio in einem Arbeitsbereich|Synapse-Benutzer oder|Lesen
-| |Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich|Keine
+| |Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich|none
 |Auflisten von SQL-Pools, Apache Spark-Pools, Integration Runtimes und Zugreifen auf die zugehörigen Konfigurationsdetails|Synapse-Benutzer oder|Lesen|
-||Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich|Keine
+||Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich|none
 |Auflisten von verknüpften Diensten, Anmeldeinformationen, verwalteten privaten Endpunkten|Synapse-Benutzer|Lesen
-**SQL-Pools**||
-Erstellen eines dedizierten SQL-Pools oder eines serverlosen SQL-Pools|Azure-Besitzer oder Mitwirkender im Arbeitsbereich|Keine
-Verwalten (Anhalten, Skalieren oder Löschen) eines dedizierten SQL-Pools|Azure-Besitzer oder Mitwirkender im SQL-Pool oder Arbeitsbereich|Keine
-Erstellen eines SQL-Skripts</br>|Synapse-Benutzer oder </br>Azure-Besitzer oder Mitwirkender im Arbeitsbereich. </br>*Zum Ausführen eines SQL-Skripts sind zusätzliche SQL-Berechtigungen erforderlich.*|
+SQL-POOLS|
+Erstellen eines dedizierten SQL-Pools oder eines serverlosen SQL-Pools|Azure-Besitzer oder Mitwirkender im Arbeitsbereich|none
+Verwalten (Anhalten, Skalieren oder Löschen) eines dedizierten SQL-Pools|Azure-Besitzer oder Mitwirkender im SQL-Pool oder Arbeitsbereich|none
+Erstellen eines SQL-Skripts</br>|Synapse-Benutzer oder </br>Azure-Besitzer oder Mitwirkender im Arbeitsbereich. </br>*Zum Ausführen eines SQL-Skripts und zum Veröffentlichen oder Committen von Änderungen sind zusätzliche SQL-Berechtigungen erforderlich.*|
 Auflisten und Öffnen veröffentlichter SQL-Skripts| Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|artifacts/read
-Ausführen eines SQL-Skripts in einem serverlosen SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|Keine
-Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|Erfordert SQL-Berechtigungen für den Pool|Keine
+Ausführen eines SQL-Skripts in einem serverlosen SQL-Pool|SQL-Berechtigungen für den Pool (werden Synapse-Administratoren automatisch gewährt)|none
+Ausführen eines SQL-Skripts in einem dedizierten SQL-Pool|SQL-Berechtigungen für den Pool|none
 Veröffentlichen neuer, aktualisierter oder gelöschter SQL-Skripts|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|sqlScripts/write, delete
-Committen von Änderungen an einem SQL-Skript in ein Git-Repository|Erfordert Git-Berechtigungen für das Repository|
+Committen von Änderungen an einem SQL-Skript im Git-Repository|Erfordert Git-Berechtigungen für das Repository|
 Zuweisen eines Active Directory-Administrators für den Arbeitsbereich (über die Arbeitsbereichseigenschaften im Azure-Portal)|Azure-Besitzer oder Mitwirkender im Arbeitsbereich |
-**Apache Spark-Pools**||
+APACHE SPARK-POOLS|
 Erstellen eines Apache Spark-Pools|Azure-Besitzer oder Mitwirkender im Arbeitsbereich|
 Überwachen von Apache Spark-Anwendungen| Synapse-Benutzer|Lesen
 Anzeigen der Protokolle für Notebook- und Auftragsausführungen |Operator von Synapse-Computeressourcen|
 Abbrechen der Ausführung von Notebooks oder Spark-Aufträgen in einem Apache Spark-Pool|Operator von Synapse-Computeressourcen für den Apache Spark-Pool|bigDataPools/useCompute
-Erstellen einer Notebook- oder Auftragsdefinition|Synapse-Benutzer oder Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich</br> *Zum Ausführen, Veröffentlichen oder Speichern sind zusätzliche Berechtigungen erforderlich.*|Lesen
+Erstellen einer Notebook- oder Auftragsdefinition|Synapse-Benutzer oder </br>Azure-Besitzer, Mitwirkender oder Leser im Arbeitsbereich</br> *Zum Ausführen, Veröffentlichen oder Committen von Änderungen sind zusätzliche Berechtigungen erforderlich.*|Lesen</br></br></br></br></br> 
 Auflisten und Öffnen einer veröffentlichten Notebook- oder Auftragsdefinition, einschließlich der Überprüfung gespeicherter Ausgaben|Benutzer von Synapse-Artefakten, Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender für den Arbeitsbereich|artifacts/read
 Ausführen eines Notebooks und Überprüfen der Ausgabe|Synapse-Apache Spark-Administrator, Operator von Synapse-Computeressourcen für den ausgewählten Apache Spark-Pool|bigDataPools/useCompute 
 Veröffentlichen oder Löschen einer Notebook- oder Auftragsdefinition (einschließlich Ausgabe) für den Dienst|Herausgeber von Synapse-Artefakten für den Arbeitsbereich, Synapse-Apache Spark-Administrator|notebooks/write, delete
-Committen von Änderungen an einer Notebook- oder Auftragsdefinition im Git-Arbeitsbranch|Git-Berechtigungen|Keine
-**Pipelines, Integration Runtimes, Datenflüsse, Datasets und Trigger**||
+Committen von Änderungen an einer Notebook- oder Auftragsdefinition im Git-Repository|Git-Berechtigungen|none
+PIPELINES, INTEGRATION RUNTIMES, DATENFLÜSSE, DATASETS UND TRIGGER|
 Erstellen, Aktualisieren oder Löschen einer Integration Runtime|Azure-Besitzer oder Mitwirkender im Arbeitsbereich|
 Überwachen des Integration Runtime-Status|Synapse-Benutzer|read, pipelines/viewOutputs
 Überprüfen von Pipelineausführungen|Herausgeber von Synapse-Artefakten, Synapse-Mitwirkender|read, pipelines/viewOutputs 
-Erstellen einer Pipeline |Synapse-Benutzer </br>[**_wird geprüft; Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity_* _]</br>_Zum Veröffentlichen oder Speichern sind zusätzliche Berechtigungen erforderlich.*|read, credentials/useSecret/action
-Erstellen von Datenflüssen, Datasets oder Triggern |Synapse-Benutzer</br>*Zum Veröffentlichen oder Speichern sind zusätzliche Berechtigungen erforderlich.*|Lesen
+Erstellen einer Pipeline |Synapse-Benutzer</br>*Zum Debuggen, Hinzufügen von Triggern und Veröffentlichen oder Committen von Änderungen sind zusätzliche Synapse-Berechtigungen erforderlich.*|Lesen
+Erstellen von Datenflüssen oder Datasets |Synapse-Benutzer</br>*Zum Veröffentlichen oder Committen von Änderungen sind zusätzliche Synapse-Berechtigungen erforderlich.*|Lesen
 Auflisten und Öffnen veröffentlichter Pipelines |Benutzer von Synapse-Artefakten | artifacts/read
 Anzeigen einer Datenvorschau für Datasets|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity| 
 Debuggen von Pipelines mit der Standard-Integration Runtime|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity-Anmeldeinformationen|read, </br>credentials/useSecret
-Erstellen von Triggern, einschließlich sofortiger Auslösung|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity|read, credentials/useSecret/action
+Erstellen von Triggern, einschließlich sofortiger Auslösung (erfordert die Berechtigung zum Ausführen der Pipeline)|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity|read, credentials/useSecret/action
+Ausführen von Pipelines|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für WorkspaceSystemIdentity|read, credentials/useSecret/action
 Kopieren von Daten mithilfe des Tools zum Kopieren von Daten|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer für die Systemidentität im Arbeitsbereich|read, credentials/useSecret/action
 Erfassen von Daten (mit einem Zeitplan)|Synapse-Ersteller und Synapse-Anmeldeinformationsbenutzer für die Systemidentität im Arbeitsbereich|read, credentials/useSecret/action
 Veröffentlichen neuer, aktualisierter oder gelöschter Pipelines, Datenflüsse oder Trigger für den Dienst|Herausgeber von Synapse-Artefakten für den Arbeitsbereich|pipelines/write, delete</br>dataflows/write, delete</br>triggers/write, delete
-Veröffentlichen neuer, aktualisierter oder gelöschter Datenflüsse, Datasets oder Trigger für den Dienst|Herausgeber von Synapse-Artefakten für den Arbeitsbereich|triggers/write, delete
-Speichern (Committen) von Änderungen an Pipelines, Datenflüssen, Datasets, Triggern im Git-Repository |Git-Berechtigungen|Keine 
-**Verknüpfte Dienste**||
-Erstellen verknüpfter Dienste (einschließlich Zuweisung von Anmeldeinformationen)|Synapse-Benutzer</br>*Zum Ausführen, Veröffentlichen oder Speichern sind zusätzliche Berechtigungen erforderlich.*|Lesen
+Committen von Änderungen an Pipelines, Datenflüssen, Datasets oder Triggern im Git-Repository |Git-Berechtigungen|none 
+VERKNÜPFTE DIENSTE|
+Erstellen verknüpfter Dienste (einschließlich Zuweisung von Anmeldeinformationen)|Synapse-Benutzer</br>*Zum Verwenden eines verknüpften Diensts mit Anmeldeinformationen oder zum Veröffentlichen oder Committen von Änderungen sind zusätzliche Berechtigungen erforderlich.*|Lesen
 Auflisten und Öffnen veröffentlichter verknüpfter Dienste|Benutzer von Synapse-Artefakten|linkedServices/write, delete  
 Testen der Verbindung für einen verknüpften Dienst, der durch Anmeldeinformationen geschützt ist|Synapse-Benutzer und Synapse-Anmeldeinformationsbenutzer|credentials/useSecret/action|
-Veröffentlichen verknüpfter Dienste|Herausgeber von Synapse-Artefakten|linkedServices/write, delete
-Speichern (Committen) von Definitionen verknüpfter Dienste im Git-Repository|Git-Berechtigungen|Keine
-**Zugriffsverwaltung**||
+Veröffentlichen verknüpfter Dienste|Herausgeber von Synapse-Artefakten, Synapse-Manager für verknüpfte Daten|linkedServices/write, delete
+Committen von Definitionen verknüpfter Dienste im Git-Repository|Git-Berechtigungen|none
+ZUGRIFFSVERWALTUNG|
 Überprüfen der Synapse RBAC-Rollenzuweisungen in einem beliebigen Bereich|Synapse-Benutzer|Lesen
-Zuweisen und Entfernen von Synapse RBAC-Rollenzuweisungen für Benutzer, Gruppen und Dienstprinzipale| Synapse-Administrator für den Arbeitsbereich oder einen bestimmten Bereich für Arbeitsbereichselemente|roleAssignments/write, delete
-Erstellen oder Entfernen des Synapse RBAC-Zugriffs auf Codeartefakte|Synapse-Administrator auf Arbeitsbereichsebene|roleAssignments/write, delete   
+Zuweisen und Entfernen von Synapse RBAC-Rollenzuweisungen für Benutzer, Gruppen und Dienstprinzipale| Synapse-Administrator für den Arbeitsbereich oder einen bestimmten Bereich für Arbeitsbereichselemente|roleAssignments/write, delete 
 
 >[!Note]
 >Gastbenutzer aus einem anderen Mandanten können unabhängig von der ihnen zugewiesenen Rolle Rollenzuweisungen nicht überprüfen, hinzufügen oder ändern. 

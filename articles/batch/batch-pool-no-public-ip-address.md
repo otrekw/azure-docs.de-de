@@ -3,15 +3,15 @@ title: Erstellen eines Azure Batch-Pools ohne öffentliche IP-Adressen
 description: Erfahren Sie mehr zum Erstellen eines Pools ohne öffentliche IP-Adressen.
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/08/2020
+ms.date: 12/9/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 09a5632f969117e69e68bbe0df2bfbab9a8a102b
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 806e85fca0a509d56e248fc7779fba0f0a59a61d
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94842134"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97007669"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Erstellen eines Azure Batch-Pools ohne öffentliche IP-Adressen
 
@@ -25,7 +25,8 @@ Um den Zugriff auf diese Knoten einzuschränken und die Auffindbarkeit dieser Kn
 
 > [!IMPORTANT]
 > Die Unterstützung von Pools ohne öffentliche IP-Adressen in Azure Batch befindet sich derzeit für die folgenden Regionen in der öffentlichen Vorschau: „Frankreich, Mitte“, „Asien, Osten“, „USA, Westen-Mitte“, „USA, Süden-Mitte“, „USA, Westen 2“, „USA, Osten“, „Europa, Norden“, „USA, Osten 2“, „USA, Mitte“, „Europa, Westen“, „USA, Norden-Mitte“, „USA, Westen“, „Australien, Osten“, „Japan, Osten“, „Japan, Westen“.
-> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar. Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+> Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
+> Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Voraussetzungen
 

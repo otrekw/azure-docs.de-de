@@ -5,22 +5,22 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: compliance
 ms.topic: how-to
-ms.date: 10/16/2020
+ms.date: 12/02/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jocastel
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9c1b07534c702e509b2b664fbee585aa2cff69f6
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: b1829c69510568b0f9a8cec7fb7d2d57be8515d3
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94837599"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97509987"
 ---
 # <a name="azure-active-directory-terms-of-use"></a>Nutzungsbedingungen für Azure Active Directory
 
-Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung der Nutzungsbedingungen.
+Mit den Azure AD-Nutzungsbedingungen können Organisationen komfortabel Informationen für Endbenutzer anzeigen. Dadurch wird sichergestellt, dass Benutzern relevante Haftungsausschlüsse angezeigt werden, um rechtliche oder compliancebezogene Anforderungen zu erfüllen. Dieser Artikel enthält eine Einführung in die Verwendung von Nutzungsbedingungen.
 
 [!INCLUDE [GDPR-related guidance](../../../includes/gdpr-intro-sentence.md)]
 
@@ -219,15 +219,55 @@ Sie können einige Details der Nutzungsbedingungen bearbeiten, aber kein vorhand
 1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
 1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
 1. Klicken Sie auf **Bedingungen bearbeiten**.
-1. Ändern Sie im Bereich „Bedingungen bearbeiten“ den Namen und Anzeigenamen, oder fordern Sie von Benutzern, Werte zu erweitern.
+1. Sie können im Bereich „Nutzungsbedingungen bearbeiten“ Folgendes ändern:
+     - **Name:** der interne Name der Nutzungsbedingungen, der nicht für Endbenutzer freigegeben wird
+     - **Anzeigename:** der Name, den Endbenutzer beim Anzeigen der Nutzungsbedingungen sehen
+     - **Benutzer müssen die Nutzungsbedingungen erweitern:** Durch Festlegen dieser Option auf **Ein** erzwingen Sie, dass der Endbenutzer das Dokument mit den Nutzungsbedingungen erweitert muss, bevor er es akzeptieren kann.
+     - (Vorschau:) Sie können ein vorhandenes Dokument mit **Nutzungsbedingungen aktualisieren**.
+     - Sie können vorhandenen Nutzungsbedingungen eine Sprache hinzufügen.
 
    Wenn Sie andere Einstellungen ändern möchten, z. B. das PDF-Dokument, die Optionen „Zustimmung der Benutzer auf jedem Gerät erforderlich“, „Ablauf für Einwilligungen“ und „Zeitraum bis erneute Zustimmung erforderlich ist (Tage)“ oder die Richtlinie für bedingten Zugriff, müssen Sie neue Nutzungsbedingungen erstellen.
 
-   ![Bereich „Nutzungsbedingungen bearbeiten“ mit Optionen für den Namen und zum Erweitern der Nutzungsbedingungen](./media/terms-of-use/edit-tou.png)
+    ![Bearbeiten der Anzeige unterschiedlicher Sprachoptionen ](./media/terms-of-use/edit-terms-use.png)
 
-1. Klicken Sie zum Speichern der Änderungen auf **Speichern**.
+1. Wenn Sie fertig sind, klicken Sie auf **Speichern**, um die Änderungen zu speichern.
 
-   Nachdem Sie die Änderungen gespeichert haben, müssen die Benutzer diesen Änderungen nicht erneut zustimmen.
+## <a name="update-the-version-or-pdf-of-an-existing-terms-of-use"></a>Aktualisieren der Version oder der PDF-Datei vorhandener Nutzungsbedingungen
+
+1.  Melden Sie sich bei Azure an, und navigieren Sie zu [Nutzungsbedingungen](https://aka.ms/catou).
+2.  Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
+3.  Klicken Sie auf **Bedingungen bearbeiten**.
+4.  Klicken Sie bei der Sprache, für die Sie die Version aktualisieren möchten, in der Spalte „Aktion“ auf **Aktualisieren**.
+ 
+     ![Bereich „Nutzungsbedingungen bearbeiten“ mit Optionen für den Namen und zum Erweitern der Nutzungsbedingungen](./media/terms-of-use/edit-terms-use.png)
+
+5.  Laden Sie im rechten Bereich die PDF-Datei für die neue Version hoch.
+6.  Dort ist auch die Umschaltoption **Erneute Annahme erforderlich** verfügbar, mit der Sie erzwingen können, dass Benutzer diese neue Version bei der nächsten Anmeldung akzeptieren müssen. Wenn Sie die erneute Annahme durch Ihre Benutzer erzwingen, müssen diese beim nächsten Versuch, auf die in der Richtlinie für den bedingten Zugriff definierte Ressource zuzugreifen, die neue Version akzeptieren. Wenn die erneute Annahme durch die Benutzer nicht erzwingen, gilt die vorherige Einwilligung weiter. Die neue Version wird nur neuen Benutzern angezeigt, die noch nicht zugestimmt haben, oder Benutzern, deren Zustimmung abläuft.
+
+    ![„Nutzungsbedingungen bearbeiten“: Option zum erneuten Annehmen hervorgehoben](./media/terms-of-use/re-accept.png)
+
+7.  Nachdem Sie Ihre neue PDF-Datei hochgeladen und die Option für die erneute Annahme festgelegt haben, klicken Sie unten im Bereich auf „Hinzufügen“.
+8.  Die neueste Version wird nun in der Spalte „Dokument“ angezeigt.
+
+## <a name="view-previous-versions-of-a-terms-of-use"></a>Anzeigen früherer Versionen von Nutzungsbedingungen
+
+1.  Melden Sie sich unter https://aka.ms/catou bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
+2.  Wählen Sie die Nutzungsbedingungen aus, für die Sie den Versionsverlauf anzeigen möchten.
+3.  Klicken Sie auf **Languages and version history** (Sprachen und Versionsverlauf).
+4.  Klicken Sie auf **See previous versions** (Frühere Versionen anzeigen).
+
+    ![Dokumentdetails einschließlich Sprachversionen](./media/terms-of-use/document-details.png)
+
+5.  Sie können auf den Namen des Dokuments klicken, um die entsprechende Version herunterzuladen.
+
+## <a name="see-who-has-accepted-each-version"></a>Anzeigen der Benutzer, die die jeweilige Version akzeptiert haben
+
+1.  Melden Sie sich unter https://aka.ms/catou bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
+2.  Um festzustellen, wer die Nutzungsbedingungen aktuell akzeptiert hat, klicken Sie auf die Zahl in der Spalte **Akzeptiert** für die gewünschten Nutzungsbedingungen.
+3.  Auf der nächsten Seite wird standardmäßig der aktuelle Status aller Benutzer angezeigt, die den Nutzungsbedingungen zugestimmt haben.
+4.  Wenn Sie auch frühere Einwilligungen anzeigen möchten, wählen Sie in der Dropdownliste **Aktueller Status** die Option **Alle** aus. Damit zeigen Sie Details für sämtliche Benutzerereignisse zu jeder Version mit der entsprechenden Aktion an.
+5.  Alternativ können Sie eine bestimmte Version in der Dropdownliste **Version** auswählen, um festzustellen, wer diese spezielle Version akzeptiert hat.
+
 
 ## <a name="add-a-terms-of-use-language"></a>Hinzufügen einer Sprache der Nutzungsbedingungen
 
@@ -235,14 +275,14 @@ Im Folgenden wird das Verfahren zum Hinzufügen einer Sprache der Nutzungsbeding
 
 1. Melden Sie sich unter [https://aka.ms/catou](https://aka.ms/catou) bei Azure an, und navigieren Sie zu **Nutzungsbedingungen**.
 1. Wählen Sie die Nutzungsbedingungen aus, die Sie bearbeiten möchten.
-1. Klicken Sie im Detailbereich auf die Registerkarte **Sprachen**.
-
-   ![Ausgewählte Nutzungsbedingungen und hervorgehobene Registerkarte „Sprachen“ im Detailbereich](./media/terms-of-use/languages-tou.png)
-
-1. Klicken Sie auf **Sprache hinzufügen**.
+1. Klicken Sie auf **Bedingungen bearbeiten**.
+1. Klicken Sie unten auf der Seite auf **Sprache hinzufügen**.
 1. Laden Sie in den Bereich „Sprache der Nutzungsbedingungen hinzufügen“ Ihre lokalisierte PDF-Datei hoch, und wählen Sie die Sprache aus.
 
-   ![Bereich „Sprache der Nutzungsbedingungen hinzufügen“ mit Optionen zum Hochladen lokalisierter PDF-Dateien](./media/terms-of-use/language-add-tou.png)
+   ![Ausgewählte Nutzungsbedingungen und hervorgehobene Registerkarte „Sprachen“ im Detailbereich](./media/terms-of-use/select-language.png)
+
+1. Klicken Sie auf **Sprache hinzufügen**.
+1. Klicken Sie unten auf der Seite auf **Speichern**.
 
 1. Klicken Sie auf **Hinzufügen**, um die Sprache hinzuzufügen.
 
@@ -318,7 +358,7 @@ Richtlinien für bedingten Zugriff werden sofort wirksam. In diesem Fall werden 
 > - Für eine Nutzungsbedingung ist eine Richtlinie für bedingten Zugriff aktiviert
 > - Eine zweite Nutzungsbedingung wird erstellt.
 
-## <a name="b2b-guests-preview"></a>B2B-Gäste (Vorschau)
+## <a name="b2b-guests"></a>B2B-Gäste
 
 Die meisten Organisationen haben für ihre Mitarbeiter einen Prozess zur Zustimmung zu den Nutzungsbedingungen und Datenschutzbestimmungen ihrer Organisation eingerichtet. Aber wie können Sie die gleichen Zustimmungen für Azure AD B2B-Gäste erzwingen, wenn sie über SharePoint oder Teams hinzugefügt werden? Mithilfe von bedingtem Zugriff und Nutzungsbedingungen können Sie eine Richtlinie direkt für B2B-Gastbenutzer erzwingen. Beim Vorgang zum Einlösen der Einladung werden dem Benutzer die Nutzungsbedingungen angezeigt. Diese Unterstützung befindet sich derzeit in der Vorschauphase.
 
@@ -326,7 +366,7 @@ Die Nutzungsbedingungen werden nur angezeigt, wenn der Benutzer über ein Gastko
 
 ![Bereich „Benutzer und Gruppen“ – Registerkarte „Einschließen“, auf der die Option „Sämtliche Gastbenutzer (Vorschau)“ aktiviert ist](./media/terms-of-use/b2b-guests.png)
 
-## <a name="support-for-cloud-apps-preview"></a>Unterstützung für Cloud-Apps (Vorschau)
+## <a name="support-for-cloud-apps"></a>Unterstützung für Cloud-Apps
 
 Nutzungsbedingungen können für verschiedene Cloud-Apps wie Azure Information Protection und Microsoft Intune verwendet werden. Diese Unterstützung befindet sich derzeit in der Vorschauphase.
 
@@ -387,7 +427,7 @@ A: Sie können [zuvor akzeptierte Nutzungsbedingungen überprüfen](#how-users-c
 A: Wenn Sie sowohl Azure AD-Nutzungsbedingungen als auch [Intune-Nutzungsbedingungen](/intune/terms-and-conditions-create) konfiguriert haben, muss der Benutzer beide akzeptieren. Weitere Informationen finden Sie im Blogbeitrag [Choosing the right Terms solution for your organization](https://go.microsoft.com/fwlink/?linkid=2010506&clcid=0x409) (Auswählen der richtigen Lösung für Bestimmungen für Ihre Organisation).
 
 **F: Welche Endpunkte werden vom Dienst für die Nutzungsbedingungen zur Authentifizierung verwendet?**<br />
-A: Der Dienst für die Nutzungsbedingungen verwendet die folgenden Endpunkte zur Authentifizierung: https://tokenprovider.termsofuse.identitygovernance.azure.com und https://account.activedirectory.windowsazure.com. Wenn Ihre Organisation über eine Liste zulässiger Registrierungs-URLs verfügt, müssen Sie die Endpunkte zusammen mit den Azure AD-Endpunkten für die Anmeldung dieser Liste hinzufügen.
+A: Der Dienst für die Nutzungsbedingungen verwendet die folgenden Endpunkte zur Authentifizierung: https://tokenprovider.termsofuse.identitygovernance.azure.com und https://account.activedirectory.windowsazure.com. Wenn Ihre Organisation über eine Liste zulässiger Registrierungs-URLs verfügt, müssen Sie dieser Liste die Endpunkte zusammen mit den Azure AD-Endpunkten für die Anmeldung hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

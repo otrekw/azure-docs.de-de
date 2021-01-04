@@ -7,19 +7,22 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 04/01/2020
-ms.openlocfilehash: e583cedc04113615c50cc9906cbd11a99ff48683
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.date: 12/09/2020
+ms.openlocfilehash: 182ec758a8764a959b39296163e63e800cf5108c
+ms.sourcegitcommit: 273c04022b0145aeab68eb6695b99944ac923465
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93421718"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97008483"
 ---
 # <a name="how-to-work-with-search-results-in-azure-cognitive-search"></a>Arbeiten mit Suchergebnissen in der kognitiven Azure-Suche
 
-In diesem Artikel wird erläutert, wie Sie eine Abfrageantwort abrufen können, die eine Gesamtanzahl übereinstimmender Dokumente, paginierter Ergebnisse, sortierter Ergebnisse sowie von Begriffen mit markierten Treffern enthält.
+In diesem Artikel wird das Formulieren einer Abfrageantwort in Azure Cognitive Search erläutert. Die Struktur einer Antwort wird durch Parameter in der Abfrage bestimmt: [Suchdokument](/rest/api/searchservice/Search-Documents) in der REST-API oder [SearchResults-Klasse](/dotnet/api/azure.search.documents.models.searchresults-1) im .NET SDK. Die Parameter der Abfrage können verwendet werden, um das Resultset wie folgt zu strukturieren:
 
-Die Struktur einer Antwort wird durch Parameter in der Abfrage bestimmt: [Suchdokument](/rest/api/searchservice/Search-Documents) in der REST-API oder [SearchResults-Klasse](/dotnet/api/azure.search.documents.models.searchresults-1) im .NET SDK.
++ Begrenzen der Anzahl von Dokumenten in den Ergebnissen (standardmäßig 50) bzw. Zusammenfassen zu Batches
++ Auswählen der Felder, die in den Ergebnissen enthalten sein sollen
++ Sortieren der Ergebnisse
++ Hervorheben eines übereinstimmenden vollständigen Begriffs oder Teilbegriffs in den Suchergebnissen
 
 ## <a name="result-composition"></a>Ergebniszusammensetzung
 
@@ -38,6 +41,14 @@ POST /indexes/hotels-sample-index/docs/search?api-version=2020-06-30
 
 > [!NOTE]
 > Wenn Sie in ein Ergebnis Bilddateien wie etwa ein Produktfoto oder ein Logo einbeziehen möchten, speichern Sie diese außerhalb von Azure Cognitive Search. Fügen Sie jedoch in Ihren Index ein Feld ein, das auf die Bild-URL im Suchdokument verweist. Beispielindizes, die in Ergebnissen Bilder unterstützen, enthalten die Demo **realestate-sample-us**, die in dieser [Schnellstartanleitung](search-create-app-portal.md) vorgestellt wird, sowie die Demo-App [New York City Jobs](https://aka.ms/azjobsdemo).
+
+### <a name="tips-for-unexpected-results"></a>Tipps zu unerwarteten Ergebnissen
+
+Es kann vorkommen, dass der Inhalt und nicht die Struktur der Ergebnisse unerwartet ist. Wenn die Abfrageergebnisse nicht wie erwartet ausfallen, können Sie es mit diesen Änderungen der Abfragen versuchen, um zu ermitteln, ob sich die Ergebnisqualität verbessert:
+
++ Ändern Sie **`searchMode=any`** (Standard) in **`searchMode=all`** , damit Übereinstimmungen mit allen Kriterien erforderlich sind, nicht nur mit einem oder mehreren Kriterien. Dies gilt besonders, wenn die Abfrage boolesche Operatoren enthält.
+
++ Experimentieren Sie mit verschiedenen lexikalischen oder benutzerdefinierten Analysetools, um festzustellen, ob sich das Abfrageergebnis ändert. Das Standardanalysetool unterbricht Wörter mit Bindestrichen und reduziert die Wörter auf ihre Stammformen. Dadurch wird die Stabilität einer Abfrageantwort in der Regel verbessert. Wenn Sie jedoch Bindestriche beibehalten müssen oder wenn die Zeichenfolgen Sonderzeichen enthalten, müssen Sie eventuell benutzerdefinierte Analysetools konfigurieren, um sicherzustellen, dass der Index Token im richtigen Format enthält. Weitere Informationen finden Sie unter [Suche nach Teilausdrücken und Mustern mit Sonderzeichen (Bindestriche, Platzhalter, reguläre Ausdrücke, Muster)](search-query-partial-matching.md).
 
 ## <a name="paging-results"></a>Auslagerungsergebnisse
 
@@ -80,9 +91,9 @@ Wie Sie sehen, wurde Dokument 2 zweimal abgerufen. Der Grund dafür ist, dass d
 
 ## <a name="ordering-results"></a>Sortieren von Ergebnissen
 
-Bei Volltextsuchabfragen werden Ergebnisse automatisch nach einer Suchbewertung geordnet, die basierend auf Begriffshäufigkeit und -nähe berechnet wird, wobei Dokumente mit mehr oder stärkeren Übereinstimmungen bei einem Suchbegriff höher bewertet werden. 
+Bei Volltextsuchabfragen werden Ergebnisse automatisch nach einer Suchbewertung geordnet, die basierend auf Begriffshäufigkeit und -nähe berechnet wird (abgeleitet von [TF-IDF](https://en.wikipedia.org/wiki/Tf%E2%80%93idf)), wobei Dokumente mit mehr oder stärkeren Übereinstimmungen bei einem Suchbegriff höher bewertet werden. 
 
-Suchergebnisse vermitteln einen allgemeinen Eindruck von Relevanz, der die Stärke der Übereinstimmung im Vergleich zu anderen Dokumenten im selben Resultset widerspiegelt. Bewertungen sind von einer Abfrage zur nächsten nicht immer konsistent, sodass Sie möglicherweise geringfügige Abweichungen in der Reihenfolge der Suchdokumente feststellen werden. Hierfür kann es verschiedene Ursachen geben.
+Suchergebnisse vermitteln einen allgemeinen Eindruck von Relevanz, der die Stärke der Übereinstimmung im Vergleich zu anderen Dokumenten im selben Resultset widerspiegelt. Bewertungen sind jedoch von einer Abfrage zur nächsten nicht immer konsistent, sodass Sie möglicherweise geringfügige Abweichungen in der Reihenfolge der Suchdokumente feststellen werden. Hierfür kann es verschiedene Ursachen geben.
 
 | Ursache | BESCHREIBUNG |
 |-----------|-------------|
@@ -90,11 +101,11 @@ Suchergebnisse vermitteln einen allgemeinen Eindruck von Relevanz, der die Stär
 | Mehrere Replikate | Bei Diensten, die mehrere Replikate verwenden, werden Abfragen parallel für jedes Replikat ausgegeben. Die zum Berechnen einer Suchbewertung verwendete Indexstatistik wird pro Replikat berechnet, wobei die Ergebnisse zusammengeführt und in der Abfrageantwort sortiert werden. Replikate sind größtenteils Spiegelungen. Statistiken können sich jedoch aufgrund geringfügiger Zustandsabweichungen voneinander unterscheiden. So könnten beispielsweise in einem Replikat Dokumente gelöscht worden sein, die aus anderen Replikaten zusammengeführt wurden, was zur jeweiligen Statistik beiträgt. Unterschiede in Statistiken, die pro Replikat berechnet werden, fallen in kleineren Indizes deutlicher auf. |
 | Identische Bewertungen | Wenn mehrere Dokumente dieselbe Bewertung aufweisen, wird eine davon zuerst angezeigt.  |
 
-### <a name="consistent-ordering"></a>Konsistente Reihenfolge
+### <a name="how-to-get-consistent-ordering"></a>Sicherstellen einer konsistenten Reihenfolge
 
-Angesichts der flexiblen Ergebnissortierung sollten Sie andere Optionen in Erwägung ziehen, wenn Konsistenz eine Anwendungsanforderung ist. Der einfachste Ansatz ist die Sortierung nach einem Feldwert wie etwa nach Bewertung oder nach Datum. In Szenarios, in denen nach einem bestimmten Feld wie etwa Bewertung oder Datum sortiert werden soll, können Sie einen [`$orderby`-Ausdruck](query-odata-filter-orderby-syntax.md) definieren, der auf alle als **sortierbar** indizierten Felder angewendet werden kann.
+Wenn eine konsistente Reihenfolge eine wichtige Anforderung der Anwendung ist, können Sie explizit einen [ **`$orderby`** ]-Ausdruck(query-odata-filter-orderby-syntax.md) in einem Feld definieren. Nur Felder, die als **`sortable`** indiziert sind, können zum Sortieren von Ergebnissen verwendet werden. Felder, die häufig in **`$orderby`** verwendet werden, sind „rating“, „date“ und „location“, wenn Sie den Wert des **`orderby`** -Parameters angeben, um Feldnamen und Aufrufe der [ **`geo.distance()`-Funktion**](query-odata-filter-orderby-syntax.md) für räumliche Daten einzuschließen.
 
-Eine weitere Möglichkeit ist die Verwendung eines [benutzerdefinierten Bewertungsprofils](index-add-scoring-profiles.md). Mit Bewertungsprofilen haben Sie mehr Kontrolle über die Bewertung von Elementen in Suchergebnissen und können in bestimmten Feldern gefundene Übereinstimmungen aufwerten. Mithilfe der zusätzlichen Bewertungslogik können geringfügige Unterschiede zwischen Replikaten außer Kraft gesetzt werden, da die Suchbewertungen für die einzelnen Dokumente weiter auseinander liegen. Für diesen Ansatz wird der [Rangfolgenalgorithmus](index-ranking-similarity.md) empfohlen.
+Einen weiteren Ansatz für mehr Konsistenz stellt die Verwendung eines [benutzerdefinierten Bewertungsprofils](index-add-scoring-profiles.md) dar. Mit Bewertungsprofilen haben Sie mehr Kontrolle über die Bewertung von Elementen in Suchergebnissen und können in bestimmten Feldern gefundene Übereinstimmungen aufwerten. Mithilfe der zusätzlichen Bewertungslogik können geringfügige Unterschiede zwischen Replikaten außer Kraft gesetzt werden, da die Suchbewertungen für die einzelnen Dokumente weiter auseinander liegen. Für diesen Ansatz wird der [Rangfolgenalgorithmus](index-ranking-similarity.md) empfohlen.
 
 ## <a name="hit-highlighting"></a>Treffermarkierung
 

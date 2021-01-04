@@ -3,12 +3,12 @@ title: 'Versionshinweise zu Live Video Analytics in IoT Edge: Azure'
 description: Dieses Thema enthält Versionshinweise zu Releases, Verbesserungen, Fehlerbehebungen und bekannten Problemen von Video Analytics in IoT Edge.
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 18da50fe763ef7c5fc3c06ac00052679c488cae7
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 2800d41340e45867ea4126733cdb5968cf8b91c5
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015633"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400844"
 ---
 # <a name="live-video-analytics-on-iot-edge-release-notes"></a>Versionshinweise zu Live Video Analytics in IoT Edge
 
@@ -23,9 +23,23 @@ Dieser Artikel bietet Folgendes:
 
 <hr width=100%>
 
+## <a name="december-14-2020"></a>14. Dezember 2020
+Dieses Release ist eine Aktualisierung der öffentlichen Vorschauversion von Live Video Analytics in IoT Edge. Das Releasetag ist
+
+```
+     mcr.microsoft.com/media/live-video-analytics:2.0.0
+```
+### <a name="module-updates"></a>Modulupdates
+* Unterstützung für die Verwendung von mehr als einem HTTP-Erweiterungsprozessor und einem gRPC-Erweiterungsprozessor pro Graphtopologie hinzugefügt.
+* Unterstützung für die Speicherplatzverwaltung für Senkenknoten hinzugefügt.
+* Der `MediaGraphGrpcExtension`-Knoten unterstützt jetzt die [extensionConfiguration](grpc-extension-protocol.md)-Eigenschaft für die Verwendung mehrerer KI-Modelle auf einem einzelnen gRPC-Server.
+* Unterstützung für das Sammeln von Metriken für das Live Video Analytics-Modul im [Prometheus-Format](https://prometheus.io/docs/practices/naming/) hinzugefügt 
+* Der Verarbeitungsknoten für Bildfrequenzfilter wurde als **veraltet** gekennzeichnet.  
+    * Die Verwaltung der Bildfrequenz ist jetzt auf den Knoten des Graph-Erweiterungsprozessors selbst verfügbar.
+
 ## <a name="september-22-2020"></a>22. September 2020
 
-Dieses Releasetag für die Aktualisierung des Moduls vom September 2020 lautet:
+Dieses Releasetag gilt für die Aktualisierung des Moduls vom September 2020 und lautet:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.4
@@ -48,7 +62,7 @@ mcr.microsoft.com/media/live-video-analytics:1.0.4
 
 ## <a name="august-19-2020"></a>19. August 2020
 
-Dieses Releasetag für die Aktualisierung des Moduls vom August 2020 lautet:
+Dieses Releasetag gilt für die Aktualisierung des Moduls vom August 2020 und lautet:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.3
@@ -67,13 +81,13 @@ mcr.microsoft.com/media/live-video-analytics:1.0.3
 
 ### <a name="bug-fixes"></a>Behebung von Programmfehlern 
 
-* Veraltete Azure-Erweiterung im Einrichtungsskript muss nicht mehr verwendet werden.
+* Veraltete Azure-Erweiterung wird im Einrichtungsskript nicht mehr verwendet.
 
 <hr width=100%>
 
 ## <a name="july-13-2020"></a>13. July 2020
 
-Dieses Releasetag für die Aktualisierung des Moduls im Juli 2020 lautet:
+Dieses Releasetag gilt für die Aktualisierung des Moduls vom Juli 2020 und lautet:
 
 ```
 mcr.microsoft.com/media/live-video-analytics:1.0.2

@@ -9,12 +9,12 @@ ms.subservice: keys
 ms.topic: conceptual
 ms.date: 10/22/2020
 ms.author: ambapat
-ms.openlocfilehash: 76eedaabf52cf2d56b2feaa6dc2748c25bf7696c
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: b483ffc480f9ad750f8d9901d6bec382db2378c2
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93423754"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368918"
 ---
 # <a name="key-types-algorithms-and-operations"></a>Schlüsseltypen, Algorithmen und Vorgänge
 
@@ -67,8 +67,8 @@ Die folgende Tabelle fasst die Schlüsseltypen und unterstützten Algorithmen zu
 
 ##  <a name="symmetric-key-algorithms"></a>Algorithmen für symmetrische Schlüssel
 - **AES-KW**: AES-Schlüsselverpackung ([RFC3394](https://tools.ietf.org/html/rfc3394))
-- **AES-GCM**: AES-Verschlüsselung im Galois-Zählermodus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
-- **AES-CBC**: AES-Verschlüsselung im Verschlüsselungsblockverkettungs-Modus ([NIST SP800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-GCM:** AES-Verschlüsselung im Galois-Zählermodus ([NIST SP 800-38d](https://csrc.nist.gov/publications/sp800))
+- **AES-CBC:** AES-Verschlüsselung im Verschlüsselungsblockverkettungs-Modus ([NIST SP 800-38a](https://csrc.nist.gov/publications/sp800))
 
 > [!NOTE] 
 > Die aktuelle AES-GCM-Implementierung und die entsprechenden APIs sind experimentell. Die Implementierung und die APIs können sich in zukünftigen Iterationen noch erheblich ändern. 

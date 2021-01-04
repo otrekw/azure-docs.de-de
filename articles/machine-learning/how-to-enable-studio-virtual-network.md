@@ -10,13 +10,13 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 10/21/2020
-ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: a90b98e8be976da9ee2669ab3b5fed4a890f0fb2
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.custom: contperf-fy20q4, tracking-python
+ms.openlocfilehash: 3f128b7ee7fa8f690c2097a5d27e274ec1eb2a8a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96576615"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559538"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Verwenden von Azure Machine Learning Studio in einem virtuellen Netzwerk
 
@@ -89,17 +89,23 @@ Mit diesen Schritten wird die vom Arbeitsbereich verwaltete Identität mithilfe 
 
 ### <a name="enable-managed-identity-authentication-for-default-storage-accounts"></a>Aktivieren der Authentifizierung mit verwalteten Identitäten für Standardspeicherkonten
 
-Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicherkonten, die beim Erstellen des Arbeitsbereichs definiert werden. Studio verwendet die Standardspeicherkonten zum Speichern von Experiment- und Modellartefakten, die für bestimmte Funktionen in Studio wichtig sind.
+Jeder Azure Machine Learning-Arbeitsbereich verfügt über zwei Standardspeicherkonten: ein Blob Storage-Standardkonto und ein Standardkonto für den Dateispeicher, die beim Erstellen des Arbeitsbereichs definiert werden. Sie können auch auf der Verwaltungsseite neue Standardeinstellungen für den **Datenspeicher** festlegen.
+
+![Screenshot der Speicherorte von Standarddatenspeichern](./media/how-to-enable-studio-virtual-network/default-datastores.png)
 
 In der folgenden Tabelle wird beschrieben, warum Sie die Authentifizierung mit verwalteten Identitäten für die Standardspeicherkonten Ihres Arbeitsbereichs aktivieren müssen.
 
-|Speicherkonto  | Hinweise  |
+|Speicherkonto  | Notizen  |
 |---------|---------|
 |Standardblobspeicher für den Arbeitsbereich| Speichert Modellressourcen vom Designer. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Modelle im Designer bereitzustellen. <br> <br> Sie können eine Designer-Pipeline visualisieren und ausführen, wenn sie nicht den Standarddatenspeicher verwendet, sondern einen, der für die Verwendung der verwalteten Identität konfiguriert wurde. Wenn Sie jedoch versuchen, ein trainiertes Modell ohne aktivierte verwaltete Identität im Standarddatenspeicher bereitzustellen, tritt dabei ein Fehler auf, unabhängig davon, welche anderen Datenspeicher verwendet werden.|
 |Standarddateispeicher für den Arbeitsbereich| Speichert Experimentressourcen für automatisiertes maschinelles Lernen. Sie müssen die Authentifizierung mit verwalteten Identitäten für dieses Speicherkonto aktivieren, um Experimente für automatisiertes maschinelles Lernen zu übermitteln. |
 
-
-![Screenshot der Speicherorte von Standarddatenspeichern](./media/how-to-enable-studio-virtual-network/default-datastores.png)
+> [!WARNING]
+> Es gibt ein bekanntes Problem, bei dem der Standarddateispeicher nicht automatisch den Ordner `azureml-filestore` erstellt, der zum Übermitteln von Experimenten für automatisiertes maschinelles Lernen erforderlich ist. Dieser Fehler tritt auf, wenn Benutzer einen vorhandenen Dateispeicher während der Erstellung des Arbeitsbereichs als Standarddateispeicher festlegen.
+> 
+> Sie haben zwei Möglichkeiten, dieses Problem zu vermeiden: 1.) Verwenden Sie den Standarddateispeicher, der bei der Erstellung des Arbeitsbereichs automatisch erstellt wird. 2.) Wenn Sie einen eigenen Dateispeicher verwenden möchten, stellen Sie sicher, dass sich dieser während der Erstellung des Arbeitsbereichs außerhalb des VNet befindet. Nachdem der Arbeitsbereich erstellt wurde, fügen Sie das Speicherkonto dem virtuellen Netzwerk hinzu.
+>
+> Um dieses Problem zu beheben, entfernen Sie das Dateispeicherkonto aus dem virtuellen Netzwerk und fügen es dann dem virtuellen Netzwerk wieder hinzu.
 
 
 ### <a name="grant-workspace-managed-identity-__reader__-access-to-storage-private-link"></a>Gewähren von __Lesezugriff__ auf die private Speicherverbindung für die vom Arbeitsbereich verwaltete Identität

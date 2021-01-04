@@ -8,12 +8,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 3b0a413db304b4f9d2c50a3d221c480f1e9dc37a
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 57cb1c405e00acb346421d64190a71e9211d21ff
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550372"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938833"
 ---
 # <a name="manage-and-increase-quotas-for-resources-with-azure-purview"></a>Verwalten und Erhöhen der Kontingente für Ressourcen mit Azure Purview
  
@@ -23,7 +23,7 @@ Azure Purview ist ein Clouddienst, der von Datenbenutzern verwendet werden kann.
  
 |**Ressource**|  **Standardlimit**  |**Maximales Limit**|
 |---|---|---|
-|Purview-Konten pro Mandant (alle Abonnements kombiniert)|3|Kontaktieren des Supports|
+|Purview-Konten pro Region und Mandant (alle Abonnements kombiniert)|3|Kontaktieren des Supports|
 |Zum Scannen verfügbare virtuelle Kerne pro Konto*|160|160|
 |Gleichzeitige Scans pro Konto an einem bestimmten Punkt. Der Grenzwert basiert auf dem Typ der überprüften Datenquellen*|5 | 10 |
 |Maximale Zeit, für die eine Überprüfung ausgeführt werden kann|7 Tage|7 Tage|

@@ -3,12 +3,12 @@ title: Analysieren von Livevideos mit maschinellem Sehen für die räumliche Ana
 description: In diesem Tutorial wird gezeigt, wie Sie Live Video Analytics zusammen mit dem KI-Feature Maschinelles Sehen für die räumliche Analyse aus Azure Cognitive Services verwenden, um einen Livevideofeed von einer (simulierten) IP-Kamera zu analysieren.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0dc89eaddf5cabc3063744dfe2c9f0236c70438c
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 5cebedec11b91f5b0b94df25a860da3d517bb997
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92015684"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400510"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Analysieren von Livevideos mit maschinellem Sehen für die räumliche Analyse (Vorschau)
 
@@ -51,7 +51,7 @@ Die folgenden Voraussetzungen müssen erfüllt sein, um das Modul „spatial-ana
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Übersicht über die räumliche Analyse":::
  
-In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Verarbeitungsknoten „MediaGraphCognitiveServicesVisionExtension“ erreicht.
+In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den `MediaGraphCognitiveServicesVisionExtension`-Prozessorknoten.
 
 Der Knoten „MediaGraphCognitiveServicesVisionExtension“ fungiert als Proxy. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet er das Bild über **gemeinsam genutzten Speicher** an ein anderes Edge-Modul weiter, das KI-Vorgänge hinter einem gRPC-Endpunkt ausführt. In diesem Beispiel ist das Edge-Modul das Modul „spatial-analysis“. Der Verarbeitungsknoten „MediaGraphCognitiveServicesVisionExtension“ erfüllt zwei Aufgaben:
 
@@ -71,7 +71,7 @@ Es gibt drei primäre Parameter, die für alle Cognitive Services-Container, ein
 Ein Schlüssel wird zum Starten des Containers „spatial-analysis“ verwendet. Er ist im Azure-Portal auf der Seite `Keys and Endpoint` der entsprechenden Cognitive Services-Ressource verfügbar. Navigieren Sie zu dieser Seite, und suchen Sie die Schlüssel und den Endpunkt-URI.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Übersicht über die räumliche Analyse":::
+> :::image type="content" source="./media/spatial-analysis-tutorial/keys-endpoint.png" alt-text="Endpunkt-URI":::
 
 ## <a name="set-up-azure-stack-edge"></a>Einrichten von Azure Stack Edge
 
@@ -169,17 +169,17 @@ Führen Sie die folgenden Schritte aus, um das Manifest auf der Grundlage der Vo
 1. Wählen Sie neben dem Bereich AZURE IOT HUB das Symbol Weitere Aktionen aus, um die IoT Hub-Verbindungszeichenfolge festzulegen. Sie können die Zeichenfolge aus der Datei „src/cloud-to-device-console-app/appsettings.json“ kopieren.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Übersicht über die räumliche Analyse":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/connection-string.png" alt-text="Räumliche Analyse: Verbindungszeichenfolge":::
 1. Klicken Sie mit der rechten Maustaste auf `src/edge/deployment.spatialAnalysis.template.json`, und wählen Sie „IoT Edge-Bereitstellungsmanifest generieren“ aus.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Übersicht über die räumliche Analyse":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-template-json.png" alt-text="Räumliche Analyse: Datei „deployment.amd64.json“":::
     
     Mit dieser Aktion sollte eine Manifestdatei mit dem Namen deployment.amd64.json im Ordner src/edge/config erstellt werden.
 1. Klicken Sie mit der rechten Maustaste auf `src/edge/config/deployment.spatialAnalysis.amd64.json`, wählen Sie „Create Deployment for Single Device“ (Bereitstellung für einzelnes Gerät erstellen) und dann den Namen des Edgegeräts aus.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Übersicht über die räumliche Analyse":::   
+    > :::image type="content" source="./media/spatial-analysis-tutorial/deployment-amd64-json.png" alt-text="Räumliche Analyse: JSON-Datei für Bereitstellungsvorlage":::   
 1. Wählen Sie bei Anzeige der Aufforderung zum Auswählen eines IoT Hub-Geräts im Dropdownmenü den Azure Stack Edge-Namen aus.
 1. Aktualisieren Sie nach ungefähr 30 Sekunden unten links im Fenster den Dienst „Azure IoT Hub“. Das Edge-Gerät zeigt nun die folgenden bereitgestellten Module an:
     
@@ -204,17 +204,17 @@ Führen Sie zum Anzeigen dieser Ereignisse die folgenden Schritte aus:
 1. Klicken Sie mit der rechten Maustaste, um das Kontextmenü zu öffnen, und wählen Sie **Erweiterungseinstellungen** aus.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Übersicht über die räumliche Analyse":::
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Erweiterungseinstellungen":::
 1. Suchen Sie nach dem Kontrollkästchen „Show Verbose Message“ (Ausführliche Meldung anzeigen), und aktivieren Sie es.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Übersicht über die räumliche Analyse":::
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Show Verbose Message (Ausführliche Meldung anzeigen)":::
 1. Öffnen Sie den Explorer-Bereich, und suchen Sie links unten nach „Azure IoT Hub“.
 1. Erweitern Sie den Knoten „Geräte“.
 1. Klicken Sie in Azure Stack Edge mit der rechten Maustaste, und wählen Sie „Überwachung des integrierten Ereignisendpunkts starten“ aus.
     
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Übersicht über die räumliche Analyse":::
+    > :::image type="content" source="./media/spatial-analysis-tutorial/start-monitoring.png" alt-text="Räumliche Analyse: Starten der Überwachung":::
      
 ## <a name="run-the-program"></a>Ausführen des Programms
 

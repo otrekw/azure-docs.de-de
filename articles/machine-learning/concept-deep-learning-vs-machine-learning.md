@@ -8,14 +8,14 @@ ms.subservice: core
 ms.topic: conceptual
 ms.author: lazzeri
 author: FrancescaLazzeri
-ms.date: 09/22/2020
-ms.custom: contperfq1
-ms.openlocfilehash: c612e2a95e2596b2732ed8282037c8ded908a0a0
-ms.sourcegitcommit: 16c7fd8fe944ece07b6cf42a9c0e82b057900662
+ms.date: 12/15/2020
+ms.custom: contperf-fy21q1,contperfq1
+ms.openlocfilehash: f7c4529c68f79c6ad19f22054fd0b7d2ba5116db
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96571384"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97562836"
 ---
 # <a name="deep-learning-vs-machine-learning-in-azure-machine-learning"></a>Vergleich von Deep Learning und Machine Learning in Azure Machine Learning
 
@@ -57,6 +57,16 @@ In der folgenden Tabelle werden die beiden Verfahren ausführlicher verglichen:
 |  **Ausführungszeit** | Das Training nimmt im Vergleich weniger Zeit in Anspruch: von wenigen Sekunden bis hin zu einigen Stunden. | Das Training dauert meist lange, da ein Deep Learning-Algorithmus viele Schichten aufweist. |
 |  **Ausgabe** | Die Ausgabe ist normalerweise ein numerischer Wert, z.B. eine Bewertung oder Klassifizierung. | Die Ausgabe kann mehrere Formate aufweisen, z. B. einen Text, eine Bewertung oder eine Tonausgabe. |
 
+## <a name="transfer-learning"></a>Lerntransfer
+
+Das Training von Deep Learning-Modellen erfordert häufig große Mengen an Trainingsdaten, High-End-Computeressourcen (GPU, TPU) und eine längere Trainingszeit. Wenn diese Voraussetzungen in Ihren Szenarien nicht erfüllt sind, können Sie den Trainingsprozess mithilfe eines als „Lerntransfer“ (Transfer Learning) bezeichneten Verfahrens verkürzen.
+
+Lerntransfer ist ein Verfahren, bei dem das bei der Lösung eines Problems gewonnene Wissen auf ein anderes, aber verwandtes Problem angewandt wird.
+
+Aufgrund der Struktur neuronaler Netze enthalten die ersten Ebenen in der Regel allgemeinere Features, während die letzten Ebenen spezifischere Features enthalten, die der gewünschten Domäne ähnlicher sind. Wenn Sie die letzten Ebenen für die Verwendung in einer neuen Domäne oder einem neuen Problem umwidmen, können Sie die Zeit, die Daten und die Computeressourcen zum Trainieren des neuen Modells deutlich reduzieren. Wenn Sie z. B. bereits über ein Modell verfügen, mit dem Autos erkannt werden, können Sie dieses Modell durch einen Lerntransfer auch für die Erkennung von Lkw, Motorrädern und andere Fahrzeugtypen verwenden.
+
+Informieren Sie sich über die Anwendung eines Lerntransfers auf die Bildklassifizierung mithilfe eines Open-Source-Frameworks in Azure Machine Learning: [Klassifizieren von Bildern mit einem Pytorch-Modell](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri).
+
 ## <a name="deep-learning-use-cases"></a>Anwendungsfälle für Deep Learning
 
 Aufgrund der Struktur des künstlichen neuronalen Netzes zeichnet sich Deep Learning dadurch aus, dass Muster in unstrukturierten Daten identifiziert werden, z.B. Bilder, Sound, Video und Text. Aus diesem Grund verändert Deep Learning schnell viele Branchen, darunter Gesundheitswesen, Energie, Finanzwesen und Transportwesen. Diese Branchen überdenken jetzt traditionelle Geschäftsprozesse. 
@@ -72,8 +82,6 @@ Named-entity recognition (Erkennung benannter Entitäten) ist eine Deep Learning
 Deep Learning wird in vielen Anwendungsfällen zur Objekterkennung angewandt. Die Objekterkennung erfolgt in zwei Schritten: Bildklassifizierung und anschließende Bildlokalisierung. Die Bild _klassifizierung_ identifiziert die Objekte des Bilds, z.B. Autos oder Personen. Die Bild _lokalisierung_ stellt die spezifische Position dieser Objekte bereit. 
 
 Objekterkennung wird bereits in Branchen wie Gaming, Einzelhandel, Tourismus und selbstfahrenden Autos eingesetzt.
-
-Informieren Sie sich über die Verwendung eines Bildklassifizierungsmodells aus einem Open-Source-Framework in Azure Machine Learning: [Klassifizieren von Bildern mit einem Pytorch-Modell](./how-to-train-pytorch.md?WT.mc_id=docs-article-lazzeri)
 
 ### <a name="image-caption-generation"></a>Generierung der Bildbeschriftung
 
@@ -107,7 +115,7 @@ Das neuronale Feedforward-Netz ist die einfachste Art von künstlichen neuronale
 
 Recurrent Neural Networks sind häufig verwendete künstliche neuronale Netze. Diese Netze speichern die Ausgabe einer Schicht und geben Sie zurück in die Eingabeschicht, um das Ergebnis der Schicht vorherzusagen. Recurrent Neural Networks weisen großartige Lernmöglichkeiten auf. Sie werden häufig für komplexe Aufgaben wie Zeitreihenvorhersagen, das Erlernen von Handschrift und die Spracherkennung verwendet.
 
-### <a name="convolutional-neural-networks"></a>Convolutional Neural Networks
+### <a name="convolutional-neural-network"></a>Convolutional Neural Network
 
 Ein Convolutional Neural Network (faltendes neuronales Netz, CNN) ist ein besonders effektives künstliches neuronales Netz und stellt eine einzigartige Architektur dar. Die Schichten sind in drei Dimensionen organisiert: Breite, Höhe und Tiefe. Die Neuronen in einer Schicht sind nicht mit allen Neuronen in der nächsten Schicht, sondern nur mit einem kleinen Bereich der Neuronen der Schicht verbunden. Die endgültige Ausgabe wird auf einen einzelnen Vektor mit Wahrscheinlichkeitsbewertungen reduziert, der entlang der Tiefendimension organisiert ist. 
 

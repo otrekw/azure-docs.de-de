@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/24/2020
-ms.openlocfilehash: 553c33b3d5ea2e3f1ee81503cb69fe15db387af6
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: bb3c7cc3f51eae90c5b712d224407e639b232fbc
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96745025"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96938884"
 ---
 # <a name="classification-insights-about-your-data-from-azure-purview"></a>Klassifizierungserkenntnisse zu Ihren Daten aus Azure Purview
 
@@ -44,7 +44,7 @@ In Azure Purview ähneln Klassifizierungen Betrefftags und werden zum Kennzeichn
 Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Microsoft 365 verwendet. Hiermit können Sie Ihre vorhandenen Sicherheitsrichtlinien und den Schutz auf Ihre gesamten Datenbestände erweitern.
 
 > [!NOTE]
-> Nachdem Sie Ihre Quelltypen überprüft haben, geben Sie den Erkenntnissen zur **Klassifizierungsbezeichnung** ein paar Stunden Zeit, um die neuen Ressourcen zu berücksichtigen.
+> Nachdem Sie Ihre Quelltypen überprüft haben, geben Sie den Erkenntnissen zur **Klassifizierung** ein paar Stunden Zeit, um die neuen Ressourcen zu berücksichtigen.
 
 **So zeigen Sie Klassifizierungserkenntnisse an**
 
@@ -60,7 +60,7 @@ Für Purview werden die gleichen Arten von vertraulichen Informationen wie in Mi
 
    Die Hauptseite für **Klassifizierungserkenntnisse** zeigt die folgenden Bereiche an:
 
-   |Bereich  |BESCHREIBUNG  |
+   |Bereich  |Beschreibung  |
    |---------|---------|
    |**Übersicht über Quellen mit Klassifizierungen**     |Zeigt Kacheln mit folgenden Informationen an: <br>- Die Anzahl der in Ihren Daten gefundenen Abonnements <br>- Die Anzahl der in Ihren Daten gefundenen eindeutigen Klassifizierungen <br>- Die Anzahl der gefundenen klassifizierten Quellen <br>- Die Anzahl der gefundenen klassifizierten Dateien <br>- Die Anzahl der gefundenen klassifizierten Tabellen         |
    |**Hauptquellen mit klassifizierten Daten (letzte 30 Tage)**     |Zeigt den Trend über die letzten 30 Tage für die Anzahl der gefundenen Quellen mit klassifizierten Daten.            |
@@ -85,7 +85,7 @@ Beispiel:
 
 Führen Sie einen der folgenden Schritte aus, um weitere Informationen zu erhalten:
 
-|Option  |BESCHREIBUNG  |
+|Option  |Beschreibung  |
 |---------|---------|
 |**Filtern der Daten**     |  Verwenden Sie die Filter oberhalb des Rasters, um die angezeigten Daten zu filtern, einschließlich des Klassifizierungsnamens, des Abonnementnamens oder des Quellentyps. <br><br>Wenn Sie sich bezüglich des genauen Klassifizierungsnamens nicht sicher sind, können Sie einen Teil oder den ganzen Namen in das Feld **Nach Schlüsselwort filtern** eingeben.       |
 |**Sortieren des Rasters** |Wählen Sie einen Spaltenheader aus, um das Raster nach dieser Spalte zu sortieren. | 

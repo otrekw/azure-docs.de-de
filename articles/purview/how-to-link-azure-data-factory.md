@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/22/2020
-ms.openlocfilehash: 55651b3201676ee5cddb5412e950791afaa4e87a
-ms.sourcegitcommit: 48cb2b7d4022a85175309cf3573e72c4e67288f5
+ms.openlocfilehash: 01af7b251c9ce3bfebb87016c85ea3efd9c0e8ac
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96852131"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928765"
 ---
 # <a name="how-to-connect-azure-data-factory-and-azure-purview"></a>Verbinden von Azure Data Factory und Azure Purview
 
@@ -42,6 +42,13 @@ Mehrere Azure Data Factorys können eine Verbindung mit einem einzelnen Azure Pu
 
 ## <a name="create-new-data-factory-connection"></a>Erstellen einer neuen Data Factory-Verbindung
 
+>[!Note]
+>Um die Data Factory-Verbindungen hinzuzufügen oder entfernen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein:
+>- Besitzer
+>- Benutzerzugriffsadministrator
+>
+> Außerdem müssen die Benutzer „Besitzer“ oder „Mitwirkender“ der Data Factory sein. 
+
 Führen Sie die folgenden Schritte aus, um vorhandene Data Factory-Konten mit Ihrem Purview Data Catalog zu verbinden.
 
 1. Wählen Sie im linken Navigationsbereich **Verwaltungscenter** aus.
@@ -70,11 +77,6 @@ Um eine Data Factory-Verbindung zu entfernen, gehen Sie folgendermaßen vor:
 1. Klicken Sie in der angezeigten Popupmeldung auf **Bestätigen**, um die ausgewählten Data Factory-Verbindungen zu löschen.
 
     :::image type="content" source="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png" alt-text="Screenshot: Auswählen der Data Factorys, deren Verbindung entfernt werden soll" lightbox="./media/how-to-link-azure-data-factory/remove-data-factory-connection.png":::
-
->[!Note]
->Um die Data Factory-Verbindungen hinzuzufügen oder entfernen zu können, muss Ihnen eine der Purview-Rollen zugewiesen sein:
->- Besitzer
->- Benutzerzugriffsadministrator. Darüber hinaus müssen Benutzer eine der Rollen „Besitzer“, „Mitwirkender“ oder „Data Factory-Mitwirkender“ der Data Factory innehaben. 
 
 ## <a name="configure-a-self-hosted-ir-to-collect-lineage-from-on-prem-sql"></a>Konfigurieren einer selbstgehosteten IR für die Erfassung der Herkunft aus einer lokalen SQL-Datenbank
 

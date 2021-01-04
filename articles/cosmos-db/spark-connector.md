@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 05/21/2019
 ms.author: ramkris
-ms.openlocfilehash: eae5c38c80c43ffed5138733d9425e2055dc0b76
-ms.sourcegitcommit: fa90cd55e341c8201e3789df4cd8bd6fe7c809a3
+ms.openlocfilehash: 06498a27b95a72148497efd2d1e600d802414359
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/04/2020
-ms.locfileid: "93334003"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359556"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Beschleunigen von Big Data-Analysen mit dem Apache Spark-Connector für Azure Cosmos DB
 [!INCLUDE[appliesto-sql-api](includes/appliesto-sql-api.md)]
@@ -31,7 +31,9 @@ Sie können den Connector mit [Azure Databricks](https://azure.microsoft.com/ser
 > Dieser Connector unterstützt die Haupt-(SQL)-API von Azure Cosmos DB.
 > Verwenden Sie für die Cosmos DB für MongoDB-API den [MongoDB-Spark-Connector](https://docs.mongodb.com/spark-connector/master/).
 > Verwenden Sie für die Cosmos DB-Cassandra-API den [Cassandra-Spark-Connector](https://github.com/datastax/spark-cassandra-connector).
->
+
+> [!IMPORTANT]
+> Der Azure Cosmos DB-Spark-Connector wird derzeit in [serverlosen](serverless.md) Konten nicht unterstützt. Dies wird geändert, wenn das serverlose Angebot allgemein verfügbar wird.
 
 ## <a name="quickstart"></a>Schnellstart
 

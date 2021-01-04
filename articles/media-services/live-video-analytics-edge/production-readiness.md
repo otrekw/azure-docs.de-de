@@ -3,12 +3,12 @@ title: 'Produktionsbereitschaft und Best Practices: Azure'
 description: Dieser Artikel enthält eine Anleitung zum Konfigurieren und Bereitstellen des Moduls Live Video Analytics in IoT Edge in Produktionsumgebungen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: 215427e3524861a842349b197668d92167960e5c
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: 56982d84b7ffac718072683076657d56a2691d6c
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96906334"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400555"
 ---
 # <a name="production-readiness-and-best-practices"></a>Produktionsbereitschaft und Best Practices
 
@@ -109,7 +109,11 @@ Wenn Sie sich die Beispiele für Mediendiagramme für den Schnellstart und die T
 
 ### <a name="naming-video-assets-or-files"></a>Benennen von Videoressourcen oder -dateien
 
-Mediendiagramme ermöglichen die Erstellung von Medienobjekten in der Cloud oder von MP4-Dateien am Edge. Medienobjekte können durch [fortlaufende Videoaufzeichnungen](continuous-video-recording-tutorial.md) oder [ereignisbasierter Videoaufzeichnungen](event-based-video-recording-tutorial.md) generiert werden. Obwohl diese Medienobjekte und Dateien beliebig benannt werden können, wird als Benennungsstruktur für Medienobjekte bei der fortlaufenden Videoaufzeichnung Folgendes empfohlen: „&lt;beliebigerText&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}“. Beispielsweise können Sie assetNamePattern in der Medienobjektsenke wie folgt festlegen:
+Mediendiagramme ermöglichen die Erstellung von Medienobjekten in der Cloud oder von MP4-Dateien am Edge. Medienobjekte können durch [fortlaufende Videoaufzeichnungen](continuous-video-recording-tutorial.md) oder [ereignisbasierter Videoaufzeichnungen](event-based-video-recording-tutorial.md) generiert werden. Obwohl diese Medienobjekte und Dateien beliebig benannt werden können, wird als Benennungsstruktur für Medienobjekte bei der fortlaufenden Videoaufzeichnung Folgendes empfohlen: „&lt;beliebigerText&gt;-${System.GraphTopologyName}-${System.GraphInstanceName}“.   
+
+Das Ersetzungsmuster wird durch das Dollarzeichen ($) gefolgt von geschweiften Klammern definiert: **${Variablenname}** .  
+
+Beispielsweise können Sie assetNamePattern in der Medienobjektsenke wie folgt festlegen:
 
 ```
 "assetNamePattern": "sampleAsset-${System.GraphTopologyName}-${System.GraphInstanceName}
@@ -130,15 +134,29 @@ Wenn Sie mehrere Instanzen desselben Diagramms ausführen, können Sie den Namen
 Bei MP4-Videoclips, die mit der ereignisbasierten Videoaufzeichnung am Edge generiert werden, wird empfohlen, in das Benennungsmuster den DateTime-Wert einzufügen. Bei mehreren Instanzen desselben Diagramms wird darüber hinaus empfohlen, die Systemvariablen GraphTopologyName und GraphInstanceName zu verwenden. Sie können beispielsweise filePathPattern bei einer Dateisenke wie folgt festlegen: 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}-${System.DateTime}"
 ```
 
 oder 
 
 ```
-"filePathPattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
+"fileNamePattern": "/var/media/sampleFilesFromEVR-${fileSinkOutputName}--${System.GraphTopologyName}-${System.GraphInstanceName} ${System.DateTime}"
 ```
+>[!NOTE]
+> Im Beispiel oben ist **fileSinkOutputName** der Name einer Beispielvariable, den Sie in der Graphtopologie definieren. Dies ist **keine** Systemvariable. 
 
+#### <a name="system-variables"></a>Systemvariablen
+Folgende systemseitig definierte Variablen können Sie u. a. verwenden:
+
+|Systemvariable|Beschreibung|Beispiel|
+|-----------|-----------|-----------|
+|System.DateTime|UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format (Basisdarstellung YYYYMMDDThhmmss).|20200222T173200Z|
+|System.PreciseDateTime|UTC-Datum/-Uhrzeit im dateikonformen ISO8601-Format mit Millisekunden (Basisdarstellung YYYYMMDDThhmmss.sss).|20200222T173200.123Z|
+|System.GraphTopologyName|Vom Benutzer angegebener Name der ausgeführten Graphtopologie.|IngestAndRecord|
+|System.GraphInstanceName|Vom Benutzer angegebener Name der ausgeführten Graphinstanz.|camera001|
+
+>[!TIP]
+> System.PreciseDateTime kann nicht zum Benennen von Ressourcen verwendet werden. Der Grund ist der Punkt („.“) im Namen.
 ### <a name="keeping-your-vm-clean"></a>Bereinigen des virtuellen Computers
 
 Es kann passieren, dass die Linux-VM, die Sie als Edgegerät verwenden, nicht mehr reagiert, wenn sie nicht regelmäßig gewartet wird. Es ist sehr wichtig, die Caches zu bereinigen und unnötige Pakete sowie nicht verwendete Container von der VM zu entfernen. Zu diesem Zweck finden Sie im Folgenden eine Reihe empfohlener Befehle, die Sie auf Ihrer Edge-VM verwenden können.
@@ -153,7 +171,7 @@ Es kann passieren, dass die Linux-VM, die Sie als Edgegerät verwenden, nicht me
 
     Mit der Option „autoremove“ werden Pakete entfernt, die automatisch installiert wurden, da sie von einem anderen Paket benötigt wurden. Wenn aber diese anderen Pakete entfernt wurden, werden sie nicht mehr benötigt.
 1. `sudo docker image ls` zeigt eine Liste der Docker-Images auf Ihrem Edgesystem an.
-1. `sudo docker system prune `
+1. `sudo docker system prune`
 
     Docker nutzt zum Bereinigen nicht verwendeter Objekte einen konservativen Ansatz (häufig als „Garbage Collection“ bezeichnet), der z. B. Images, Container, Volumes und Netzwerke umfasst: Diese Objekte werden in der Regel nur dann entfernt, wenn Sie Docker explizit dazu auffordern. Dies kann dazu führen, dass Docker zusätzlichen Speicherplatz verwendet. Für jeden Objekttyp bietet Docker einen Befehl zum Löschen („prune“). Darüber hinaus können Sie „docker system prune“ verwenden, um mehrere Typen von Objekten gleichzeitig zu bereinigen. Weitere Informationen finden Sie unter [Prune unused Docker objects](https://docs.docker.com/config/pruning/) (Löschen nicht verwendeter Docker-Objekte).
 1. `sudo docker rmi REPOSITORY:TAG`

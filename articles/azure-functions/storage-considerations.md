@@ -3,12 +3,12 @@ title: Speicheraspekte für Azure Functions
 description: Erfahren Sie über die Speicheranforderungen von Azure Functions und über das Verschlüsseln gespeicherter Daten.
 ms.topic: conceptual
 ms.date: 07/27/2020
-ms.openlocfilehash: aefd9a35235a09d94973f383603349f6862bbdd9
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 67ff822208f065041e479fc484173d9f06a773ba
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318180"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107242"
 ---
 # <a name="storage-considerations-for-azure-functions"></a>Speicheraspekte für Azure Functions
 
@@ -27,15 +27,19 @@ Azure Functions erfordert ein Azure Storage-Konto, wenn Sie eine Funktions-App-I
 
 ## <a name="storage-account-requirements"></a>Anforderungen an das Speicherkonto
 
-Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Der Grund hierfür ist, dass Functions für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage basiert. Einige Speicherkonten unterstützen keine Warteschlangen und Tabellen. Diese Konten umfassen reine Blobspeicherkonten, Azure Storage Premium und allgemeine Speicherkonten mit Replikation von ZRS. Diese nicht unterstützten Konten werden aus dem Blatt „Speicherkonto“ herausgefiltert, wenn eine Funktions-App erstellt wird.
+Beim Erstellen einer Funktions-App müssen Sie ein allgemeines Azure Storage-Konto erstellen oder verknüpfen, das Blob-, Warteschlangen- und Tabellenspeicher unterstützt. Der Grund hierfür ist, dass Functions für Vorgänge wie das Verwalten von Triggern und das Ausführen von Protokollierfunktionen auf Azure Storage basiert. Einige Speicherkonten unterstützen keine Warteschlangen und Tabellen. Diese Konten umfassen reine Blobspeicherkonten, Azure Storage Premium und allgemeine Speicherkonten mit Replikation von ZRS.
 
 Weitere Informationen zu Speicherkontotypen finden Sie unter [Einführung in die Azure Storage-Dienste](../storage/common/storage-introduction.md#core-storage-services). 
 
-Sie können zwar ein vorhandenes Speicherkonto mit ihrer Funktions-App verwenden, aber Sie müssen sicherstellen, dass diese Anforderungen erfüllt werden. Für Speicherkonten, die im Rahmen der Erstellung der Funktions-App erstellt werden, ist garantiert, dass sie diese Speicherkontenanforderungen erfüllen.  
+Sie können zwar ein vorhandenes Speicherkonto mit ihrer Funktions-App verwenden, aber Sie müssen sicherstellen, dass diese Anforderungen erfüllt werden. Für Speicherkonten, die im Rahmen der Erstellung der Funktions-App im Azure-Portal erstellt werden, ist garantiert, dass sie diese Speicherkontenanforderungen erfüllen. Im Portal werden nicht unterstützte Konten herausgefiltert, wenn Sie beim Erstellen einer Funktions-App ein vorhandenes Speicherkonto auswählen. In diesem Flow dürfen Sie nur vorhandene Speicherkonten in derselben Region wie die von Ihnen erstellte Funktions-App auswählen. Weitere Informationen finden Sie unter [Standort des Speicherkontos](#storage-account-location).
 
 ## <a name="storage-account-guidance"></a>Speicherkontoanleitung
 
 Jede Funktions-App benötigt für den Betrieb ein Speicherkonto. Wenn dieses Konto gelöscht wird, läuft Ihre Funktions-App nicht. Informationen zur Behandlung speicherbezogener Probleme finden Sie unter [Behandeln speicherbezogener Probleme](functions-recover-storage-account.md). Die folgenden zusätzlichen Überlegungen gelten für das von Funktions-Apps verwendete Speicherkonto.
+
+### <a name="storage-account-location"></a>Standort des Speicherkontos
+
+Für eine optimale Leistung sollte Ihre Funktions-App ein Speicherkonto in derselben Region verwenden, um die Latenz zu verringern. Im Azure-Portal wird diese bewährte Methode erzwungen. Wenn Sie aus irgendeinem Grund ein Speicherkonto in einer anderen Region als Ihre Funktions-App verwenden möchten, müssen Sie Ihre Funktions-App außerhalb des Portals erstellen. 
 
 ### <a name="storage-account-connection-setting"></a>Verbindungszeichenfolge für das Speicherkonto
 

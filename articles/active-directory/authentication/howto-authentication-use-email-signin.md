@@ -10,12 +10,12 @@ ms.author: justinha
 author: justinha
 manager: daveba
 ms.reviewer: calui
-ms.openlocfilehash: ff6ae6ea6812397e737deb4b97bf1cd15e022c03
-ms.sourcegitcommit: ad83be10e9e910fd4853965661c5edc7bb7b1f7c
+ms.openlocfilehash: 0ca5f6a853852acbb4ef97adfce2364592bae270
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/06/2020
-ms.locfileid: "96743172"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559839"
 ---
 # <a name="sign-in-to-azure-active-directory-using-email-as-an-alternate-login-id-preview"></a>Anmelden bei Azure Active Directory per E-Mail-Adresse als alternative Anmelde-ID (Vorschauversion)
 
@@ -36,6 +36,9 @@ In diesem Artikel erfahren Sie, wie Sie die E-Mail-Adresse als alternative Anmel
 
 > [!NOTE]
 > Diese Funktion ist nur für Azure AD-Benutzer mit Cloudauthentifizierung verfügbar.
+
+> [!NOTE]
+> Diese Funktion wird derzeit nicht auf Windows 10-Geräten, die in Azure AD eingebunden sind, für Mandanten mit Cloudauthentifizierung unterstützt. Diese Funktion gilt nicht für in Azure AD Hybrid eingebundene Geräte.
 
 ## <a name="overview-of-azure-ad-sign-in-approaches"></a>Übersicht über Ansätze für die Anmeldung bei Azure AD
 

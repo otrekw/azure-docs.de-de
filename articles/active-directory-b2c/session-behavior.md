@@ -7,51 +7,290 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 10/12/2020
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: 091704fabb7b50a0c83625c6ae46d9a807f01ffc
-ms.sourcegitcommit: d103a93e7ef2dde1298f04e307920378a87e982a
+zone_pivot_groups: b2c-policy-type
+ms.openlocfilehash: de0f4824cb23a37f37d3834dce67eb0b7edf0b15
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/13/2020
-ms.locfileid: "91961033"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503228"
 ---
 # <a name="configure-session-behavior-in-azure-active-directory-b2c"></a>Konfigurieren des Sitzungsverhaltens in Azure Active Directory B2C
 
-Mithilfe der [Sitzungsverwaltung für einmaliges Anmelden](session-overview.md) (Single Sign-On, SSO) in Azure Active Directory B2C (Azure AD B2C) kann ein Administrator die Interaktion mit einem Benutzer steuern, nachdem dieser bereits authentifiziert wurde. Der Administrator kann z. B. steuern, ob die Auswahl von Identitätsanbietern angezeigt wird oder ob Kontodetails erneut eingegeben werden müssen. In diesem Artikel wird das Konfigurieren der Einstellungen für einmaliges Anmelden für Azure AD B2C beschrieben.
+[!INCLUDE [active-directory-b2c-choose-user-flow-or-custom-policy](../../includes/active-directory-b2c-choose-user-flow-or-custom-policy.md)]
 
-## <a name="session-behavior-properties"></a>Eigenschaften des Sitzungsverhaltens
+Mit dem einmaligen Anmelden (Single Sign-On, SSO) ist für Sicherheit und Komfort gesorgt, wenn sich Benutzer anwendungsübergreifend in Azure Active Directory B2C (Azure AD B2C) anmelden. In diesem Artikel werden die Methoden für das einmalige Anmelden beschrieben, die in Azure AD B2C verwendet werden. Sie erhalten zudem Hilfestellung beim Auswählen der am besten geeigneten SSO-Methode zum Konfigurieren Ihrer Anwendungen.
 
-Sie können die folgenden Eigenschaften zum Verwalten von Webanwendungssitzungen verwenden:
+Mit der einmaligen Anmeldung melden sich Benutzer einmal mit einem einzigen Konto an und erhalten Zugriff auf mehrere Anwendungen. Dabei kann es sich unabhängig von Plattform oder Domänennamen um eine mobile Anwendung bzw. eine Web- oder Single-Page-Anwendung handeln.
 
-- **Lebensdauer der Web-App-Sitzung (Minuten)** : Die Gültigkeitsdauer von Azure AD B2C-Sitzungscookies, die nach erfolgreicher Authentifizierung des Benutzers im Browser gespeichert werden
-    - Standardwert: 1.440 Minuten.
-    - Minimum (inklusive): 15 Minuten.
-    - Maximum (inklusive): 1.440 Minuten.
-- **Timeout für Web-App-Sitzung**: [Sitzungsablauftyp](session-overview.md#session-expiry-type), *Parallel* oder *Absolut*. 
-- **SSO-Konfiguration**: [Sitzungsbereich](session-overview.md#session-scope) des SSO-Verhaltens über verschiedene Apps und Benutzerflows in Ihrem Azure AD B2C-Mandanten hinweg.
+Wenn sich der Benutzer anfänglich bei einer Anwendung anmeldet, speichert Azure AD B2C eine cookiebasierte Sitzung. Bei nachfolgenden Authentifizierungsanforderungen liest und überprüft Azure AD B2C die cookiebasierte Sitzung und gibt ein Zugriffstoken aus, ohne den Benutzer zur erneuten Anmeldung aufzufordern. Wenn die cookiebasierte Sitzung abläuft oder ungültig wird, wird der Benutzer zur erneuten Anmeldung aufgefordert.  
 
+## <a name="prerequisites"></a>Voraussetzungen
 
-## <a name="configure-the-properties"></a>Konfigurieren der Eigenschaften
+[!INCLUDE [active-directory-b2c-customization-prerequisites](../../includes/active-directory-b2c-customization-prerequisites.md)]
+
+## <a name="azure-ad-b2c-session-overview"></a>Übersicht über Azure AD B2C-Sitzungen
+
+Die Integration mit Azure AD B2C beinhaltet drei SSO-Sitzungstypen:
+
+- **Azure AD B2C**: Sitzung wird von Azure AD B2C verwaltet
+- **Verbundidentitätsanbieter**: Sitzung wird vom Identitätsanbieter (z. B. Facebook, Salesforce oder Microsoft-Konto) verwaltet
+- **Anwendung**: Sitzung wird von der mobilen Anwendung bzw. der Web- oder Single-Page-Anwendung verwaltet
+
+![SSO-Sitzung](media/session-behavior/sso-session-types.png)
+
+### <a name="azure-ad-b2c-session"></a>Azure AD B2C-Sitzung 
+
+Wenn sich ein Benutzer erfolgreich mit einem lokalen oder Social Media-Konto authentifiziert, speichert Azure AD B2C eine cookiebasierte Sitzung im Browser des Benutzers. Das Cookie wird unter dem Domänennamen des Azure AD B2C-Mandanten gespeichert, z. B. `https://contoso.b2clogin.com`.
+
+Wenn ein Benutzer sich anfänglich mit einem Verbundkonto anmeldet und sich während des Sitzungszeitfensters (Gültigkeitsdauer) bei derselben oder einer anderen App anmeldet, versucht Azure AD B2C, ein neues Zugriffstoken vom Verbundidentitätsanbieter abzurufen. Wenn die Verbundidentitätsanbieter-Sitzung abgelaufen ist oder ungültig wird, fordert der Verbundidentitätsanbieter den Benutzer zur Eingabe seiner Anmeldeinformationen auf. Wenn die Sitzung noch aktiv ist (oder wenn sich der Benutzer mit einem lokalen statt einem Verbundkonto angemeldet hat), autorisiert Azure AD B2C den Benutzer und eliminiert weitere Eingabeaufforderungen.
+
+Sie können das Sitzungsverhalten konfigurieren. Dazu zählen auch die Gültigkeitsdauer der Sitzung und die Art, wie Azure AD B2C die Sitzung über Richtlinien und Anwendungen freigibt.
+
+### <a name="federated-identity-provider-session"></a>Sitzung eines Verbundidentitätsanbieters
+
+Ein Social Media- oder Unternehmensidentitätsanbieter verwaltet seine eigene Sitzung. Das Cookie wird unter dem Domänennamen des Identitätsanbieters gespeichert, z. B. `https://login.salesforce.com`. Die Verbundidentitätsanbieter-Sitzung wird nicht von Azure AD B2C gesteuert. Das Sitzungsverhalten wird stattdessen vom Verbundidentitätsanbieter bestimmt. 
+
+Nehmen Sie das folgende Szenario als Beispiel:
+
+1. Ein Benutzer meldet sich bei Facebook an, um seinen Feed zu überprüfen.
+2. Zu einem späteren Zeitpunkt öffnet der Benutzer Ihre Anwendung und startet den Anmeldevorgang. Die Anwendung leitet den Benutzer zu Azure AD B2C um, um den Anmeldevorgang abzuschließen.
+3. Auf der Registrierungs- oder Anmeldeseite von Azure AD B2C wählt der Benutzer die Anmeldung mit seinem Facebook-Konto aus. Der Benutzer wird zu Facebook umgeleitet. Wenn auf Facebook eine aktive Sitzung vorhanden ist, wird der Benutzer nicht aufgefordert, seine Anmeldeinformationen einzugeben, sondern wird sofort mit einem Facebook-Token zu Azure AD B2C umgeleitet.
+
+### <a name="application-session"></a>Anwendungssitzung
+
+Eine mobile Anwendung bzw. eine Web- oder Single-Page-Anwendung kann durch OAuth-Zugriff, ID-Token oder SAML-Token geschützt werden. Wenn ein Benutzer versucht, auf eine geschützte Ressource in der App zuzugreifen, prüft die App, ob seitens der Anwendung eine aktive Sitzung vorhanden ist. Wenn keine App-Sitzung vorhanden oder die Sitzung abgelaufen ist, leitet die App den Benutzer zur Azure AD B2C-Anmeldeseite.
+
+Die Anwendungssitzung kann eine cookiebasierte Sitzung sein, die unter dem Domänennamen der Anwendung gespeichert wird, z. B. `https://contoso.com`. Mobile Anwendungen speichern die Sitzung möglicherweise anders, verwenden aber einen ähnlichen Ansatz.
+
+## <a name="configure-azure-ad-b2c-session-behavior"></a>Konfigurieren des Verhaltens von Azure AD B2C-Sitzungen
+
+Sie können das Verhalten der Azure AD B2C-Sitzung konfigurieren, einschließlich:
+
+- **Lebensdauer der Web-App-Sitzung (Minuten):** die Zeitspanne, in der das Azure AD B2C-Sitzungscookie nach erfolgreicher Authentifizierung im Browser des Benutzers gespeichert wird. Für die Gültigkeitsdauer der Sitzung können Sie einen Wert zwischen 15 und 720 Minuten festlegen.
+
+- **Timeout für Web-App-Sitzung:** gibt an, wie eine Sitzung durch die Einstellung der Lebensdauer der Sitzung oder die Festlegung der Funktion „Angemeldet bleiben“ verlängert wird.
+  - **Rollierend**: Gibt an, dass die Sitzung jedes Mal verlängert wird, wenn der Benutzer eine cookiebasierte Authentifizierung ausführt (Standardeinstellung).
+  - **Absolut**: Gibt an, dass sich der Benutzer nach dem angegebenen Zeitraum erneut authentifizieren muss.
+
+- **SSO-Konfiguration:** Die Azure AD B2C-Sitzung kann mit den folgenden Bereichen konfiguriert werden:
+  - **Mandant**: Dies ist die Standardeinstellung. Mit dieser Einstellung können mehrere Anwendungen und Benutzerflows in Ihrem B2C-Mandanten die gleiche Benutzersitzung gemeinsam nutzen. Beispiel: Sobald sich ein Benutzer bei einer Anwendung angemeldet hat, kann er sich auch beim Zugriff auf eine andere Anwendung nahtlos anmelden.
+  - **Anwendung**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für eine Anwendung beibehalten, unabhängig von anderen Anwendungen. Beispiel: Diese Einstellung können Sie verwenden, wenn sich der Benutzer bei Contoso Pharmacy anmelden soll, auch wenn er sich bereits bei Contoso Groceries angemeldet hat.
+  - **Richtlinie**: Mit dieser Einstellung können Sie eine Benutzersitzung ausschließlich für einen Benutzerflow beibehalten, unabhängig von den Anwendungen, die diesen verwenden. Beispiel: Wenn sich der Benutzer bereits angemeldet und einen Multi-Factor Authentication-Schritt (MFA) abgeschlossen hat, kann er Zugriff auf Bestandteile mit höherer Sicherheitsstufe von mehreren Anwendungen erhalten, solange die an den Benutzerflow gebundene Sitzung nicht abläuft.
+  - **Deaktiviert**: Diese Einstellung zwingt den Benutzer, bei jeder Ausführung der Richtlinie den gesamten Benutzerflow zu durchlaufen.
+::: zone pivot="b2c-custom-policy"
+- **Angemeldet bleiben:** verlängert die Lebensdauer der Sitzung durch die Verwendung eines permanenten Cookies. Die Sitzung bleibt auch nach Schließen und erneutem Öffnen des Browsers aktiv. Die Sitzung wird nur widerrufen, wenn sich der Benutzer abmeldet. Die Funktion „Angemeldet bleiben“ gilt nur für die Anmeldung mit lokalen Konten. Die Funktion „Angemeldet bleiben“ hat Vorrang vor der Gültigkeitsdauer der Sitzung. Wenn die Funktion „Angemeldet bleiben“ aktiviert ist und der Benutzer sie auswählt, gibt diese Funktion vor, wann die Sitzung abläuft. 
+::: zone-end
+
+::: zone pivot="b2c-user-flow"
+
+So konfigurieren Sie das Sitzungsverhalten
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
-2. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
-3. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
-4. Wählen Sie **Benutzerflows** aus.
-5. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
-6. Wählen Sie **Eigenschaften** aus.
-7. Konfigurieren Sie **Lebensdauer der Web-App-Sitzung (Minuten)** , **Timeout für Web-App-Sitzung**, **Konfiguration des einmaligen Anmeldens** und **ID-Token in Abmeldeanforderungen erforderlich** nach Bedarf.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **Benutzerflows** aus.
+1. Öffnen Sie den Benutzerflow, den Sie zuvor erstellt haben.
+1. Wählen Sie **Eigenschaften** aus.
+1. Konfigurieren Sie **Lebensdauer der Web-App-Sitzung (Minuten)** , **Timeout für Web-App-Sitzung**, **Konfiguration des einmaligen Anmeldens** und **ID-Token in Abmeldeanforderungen erforderlich** nach Bedarf.
+1. Klicken Sie auf **Speichern**.
 
-    ![Eigenschafteneinstellungen für das Sitzungsverhalten im Azure-Portal](./media/session-behavior/session-behavior.png)
+::: zone-end
 
-8. Klicken Sie auf **Speichern**.
+::: zone pivot="b2c-custom-policy"
 
-## <a name="configure-sign-out-behavior"></a>Konfigurieren des Abmeldeverhaltens
+Zum Ändern Ihres Sitzungsverhaltens und der SSO-Konfigurationen ist es erforderlich, dass Sie im [RelyingParty](relyingparty.md)-Element ein **UserJourneyBehaviors**-Element hinzufügen.  Das **UserJourneyBehaviors**-Element muss unmittelbar nach **DefaultUserJourney** eingefügt werden. Das **UserJourneyBehavors**-Element sollte wie in folgendem Beispiel aussehen:
+
+```xml
+<UserJourneyBehaviors>
+   <SingleSignOn Scope="Application" />
+   <SessionExpiryType>Absolute</SessionExpiryType>
+   <SessionExpiryInSeconds>86400</SessionExpiryInSeconds>
+</UserJourneyBehaviors>
+```
+
+## <a name="enable-keep-me-signed-in-kmsi"></a>Aktivieren von „Angemeldet bleiben“
+
+Sie können die Funktion „Angemeldet bleiben“ (Keep Me Signed In, KMSI) für Benutzer Ihrer webbasierten und nativen Anwendungen aktivieren, die über lokale Konten in Ihrem Azure AD B2C-Verzeichnis (Azure Active Directory B2C) verfügen. Dieses Feature gewährt wiederkehrenden Benutzern Zugriff auf Ihre Anwendung, ohne dass sie zur erneuten Eingabe von Benutzername und Kennwort aufgefordert werden. Dieser Zugriff wird widerrufen, wenn sich der Benutzer abmeldet.
+
+![Beispiel für eine Seite zur Registrierung/Anmeldung mit dem Kontrollkästchen „Angemeldet bleiben“](./media/session-behavior/keep-me-signed-in.png)
+
+Benutzer sollten diese Option nicht auf öffentlichen Computern aktivieren.
+
+### <a name="configure-the-page-identifier"></a>Konfigurieren des Seitenbezeichners
+
+Legen Sie zum Aktivieren von KMSI das ContentDefinitions-Element `DataUri` auf [Seitenbezeichner](contentdefinitions.md#datauri) `unifiedssp` und die [Seitenversion](page-layout.md) auf *1.1.0* oder höher fest.
+
+1. Öffnen Sie die Erweiterungsdatei Ihrer Richtlinie. Beispiel: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em>. Die Erweiterungsdatei ist eine der Richtliniendateien im Starter Pack für benutzerdefinierte Richtlinien, das Sie im unter „Voraussetzungen“ genannten Artikel [Erste Schritte mit benutzerdefinierten Richtlinien](custom-policy-get-started.md) abgerufen haben sollten.
+1. Suchen Sie nach dem Element **BuildingBlocks**. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+1. Fügen Sie das **ContentDefinitions**-Element dem Element **BuildingBlocks** der Richtlinie hinzu.
+
+    Ihre benutzerdefinierte Richtlinie sollte wie der folgende Codeausschnitt aussehen:
+
+    ```xml
+    <BuildingBlocks>
+      <ContentDefinitions>
+        <ContentDefinition Id="api.signuporsignin">
+          <DataUri>urn:com:microsoft:aad:b2c:elements:unifiedssp:1.1.0</DataUri>
+        </ContentDefinition>
+      </ContentDefinitions>
+    </BuildingBlocks>
+    ```
+
+### <a name="add-the-metadata-to-the-self-asserted-technical-profile"></a>Hinzufügen der Metadaten zum selbstbestätigten technischen Profil
+
+Um das Kontrollkästchen KMSI zur Registrierungs-und Anmeldeseite hinzuzufügen, legen Sie die `setting.enableRememberMe`-Metadaten auf TRUE fest. Überschreiben Sie in der Erweiterungsdatei die technischen Profile in SelfAsserted-LocalAccountSignin-Email.
+
+1. Suchen Sie das ClaimsProviders-Element. Wenn das Element nicht vorhanden ist, fügen Sie es hinzu.
+1. Fügen Sie dem ClaimsProviders-Element die folgenden Anspruchsanbieter hinzu:
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Local Account</DisplayName>
+  <TechnicalProfiles>
+    <TechnicalProfile Id="SelfAsserted-LocalAccountSignin-Email">
+      <Metadata>
+        <Item Key="setting.enableRememberMe">True</Item>
+      </Metadata>
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+1. Speichern Sie die Erweiterungsdatei.
+
+### <a name="configure-a-relying-party-file"></a>Konfigurieren einer Datei der vertrauenden Seite
+
+Aktualisieren Sie als Nächstes die Datei der vertrauenden Seite, mit der die erstellte User Journey initiiert wird.
+
+1. Öffnen Sie Ihre benutzerdefinierte Richtliniendatei. Beispiel: *SignUpOrSignin.xml*.
+1. Fügen Sie dem Knoten `<RelyingParty>` einen untergeordneten Knoten `<UserJourneyBehaviors>` hinzu, falls dieser noch nicht vorhanden ist. Er muss direkt nach `<DefaultUserJourney ReferenceId="User journey Id" />` angeordnet werden. Beispiel: `<DefaultUserJourney ReferenceId="SignUpOrSignIn" />`.
+1. Fügen Sie den folgenden Knoten als untergeordnetes Element des `<UserJourneyBehaviors>`-Elements hinzu.
+
+    ```xml
+    <UserJourneyBehaviors>
+      <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
+      <SessionExpiryType>Absolute</SessionExpiryType>
+      <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
+    </UserJourneyBehaviors>
+    ```
+
+Es wird empfohlen, den Wert von „SessionExpiryInSeconds“ auf einen kurzen Zeitraum (1200 Sekunden) und den Wert von „KeepAliveInDays“ auf einen relativ langen Zeitraum (30 Tage) festzulegen. Dies ist im folgenden Beispiel dargestellt:
+
+```xml
+<RelyingParty>
+  <DefaultUserJourney ReferenceId="SignUpOrSignIn" />
+  <UserJourneyBehaviors>
+    <SingleSignOn Scope="Tenant" KeepAliveInDays="30" />
+    <SessionExpiryType>Absolute</SessionExpiryType>
+    <SessionExpiryInSeconds>1200</SessionExpiryInSeconds>
+  </UserJourneyBehaviors>
+  <TechnicalProfile Id="PolicyProfile">
+    <DisplayName>PolicyProfile</DisplayName>
+    <Protocol Name="OpenIdConnect" />
+    <OutputClaims>
+      <OutputClaim ClaimTypeReferenceId="displayName" />
+      <OutputClaim ClaimTypeReferenceId="givenName" />
+      <OutputClaim ClaimTypeReferenceId="surname" />
+      <OutputClaim ClaimTypeReferenceId="email" />
+      <OutputClaim ClaimTypeReferenceId="objectId" PartnerClaimType="sub"/>
+      <OutputClaim ClaimTypeReferenceId="identityProvider" />
+      <OutputClaim ClaimTypeReferenceId="tenantId" AlwaysUseDefaultValue="true" DefaultValue="{Policy:TenantObjectId}" />
+    </OutputClaims>
+    <SubjectNamingInfo ClaimType="sub" />
+  </TechnicalProfile>
+</RelyingParty>
+```
+
+::: zone-end
+
+## <a name="sign-out"></a>Abmeldung
+
+Wenn Sie den Benutzer bei der Anwendung abmelden möchten, reicht es nicht aus, die Cookies der Anwendung zu löschen oder die Sitzung mit dem Benutzer auf andere Weise zu beenden. Sie müssen den Benutzer für die Abmeldung zu Azure AD B2C umleiten. Ansonsten kann sich der Benutzer möglicherweise erneut bei Ihrer Anwendung authentifizieren, ohne seine Anmeldeinformationen erneut einzugeben.
+
+Auf die Abmeldeanforderung reagiert Azure AD B2C wie folgt:
+
+1. Die cookiebasierte Azure AD B2C-Sitzung wird für ungültig erklärt.
+::: zone pivot="b2c-user-flow"
+2. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden
+::: zone-end
+::: zone pivot="b2c-custom-policy"
+3. Azure AD B2C versucht, den Benutzer vom Verbundidentitätsanbieter abzumelden:
+   - OpenId Connect, wenn der bekannte Konfigurationsendpunkt des Identitätsanbieters eine `end_session_endpoint`-Adresse angibt.
+   - OAuth2, wenn die [Metadaten des Identitätsanbieters](oauth2-technical-profile.md#metadata) die `end_session_endpoint`-Adresse enthalten.
+   - SAML, wenn die [Metadaten des Identitätsanbieters](saml-identity-provider-technical-profile.md#metadata) die `SingleLogoutService`-Adresse enthalten.
+4. Optional nimmt Azure AD B2C die Abmeldung bei anderen Anwendungen vor. Weitere Informationen finden Sie im Abschnitt [Einmaliges Abmelden](#single-sign-out).
+
+> [!NOTE]
+> Sie können das Abmelden vom Verbundidentitätsanbieter deaktivieren, indem Sie die Metadaten `SingleLogoutEnabled` im technischen Profil des Identitätsanbieters auf `false` festlegen.
+::: zone-end
+
+Bei der Abmeldung wird zwar der SSO-Status des Benutzers bei Azure AD B2C gelöscht, der Benutzer wird möglicherweise jedoch nicht von seiner Sitzung beim Social Media-Identitätsanbieter abgemeldet. Wenn der Benutzer bei einer nachfolgenden Anmeldung den gleichen Identitätsanbieter auswählt, kann er sich möglicherweise ohne Eingabe seiner Anmeldeinformationen erneut authentifizieren. Wenn sich ein Benutzer von der Anwendung abmelden möchte, bedeutet dies nicht unbedingt, dass er sich auch vollständig von seinem Facebook-Konto abmelden möchte. Wenn jedoch lokale Konten verwendet werden, wird die Sitzung des Benutzers ordnungsgemäß beendet.
+
+::: zone pivot="b2c-custom-policy"
+
+### <a name="single-sign-out"></a>Einmaliges Abmelden 
+
+Wenn Sie den Benutzer zum Azure AD B2C-Abmeldeendpunkt (für OAuth2- und SAML-Protokolle) umleiten, löscht Azure AD B2C die Sitzung des Benutzers im Browser. Allerdings kann der Benutzer weiterhin bei anderen Anwendungen angemeldet sein, die Azure AD B2C für die Authentifizierung verwenden. Damit der Benutzer gleichzeitig auch bei diesen Anwendungen abgemeldet werden kann, sendet Azure AD B2C eine HTTP GET-Anforderung an die registrierte `LogoutUrl` aller Anwendungen, bei denen der Benutzer aktuell angemeldet ist.
+
+Anwendungen müssen auf diese Anforderung antworten, indem sie alle Sitzungen löschen, mit denen der Benutzer identifiziert wird, und eine `200`-Antwort zurückgeben. Wenn Sie das einmalige Abmelden in Ihrer Anwendung unterstützen möchten, müssen Sie eine `LogoutUrl` im Code Ihrer Anwendung implementieren. 
+
+Um das einmalige Abmelden zu unterstützen, müssen die technischen Profile des Tokenausstellers für JWT und SAML Folgendes angeben:
+
+- Protokollname, z. B. `<Protocol Name="OpenIdConnect" />`
+- Verweis auf das technische Profil für die Sitzung, z. B. `UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />`.
+
+Das folgende Beispiel veranschaulicht die JWT- und SAML-Tokenaussteller mit einmaligem Abmelden:
+
+```xml
+<ClaimsProvider>
+  <DisplayName>Local Account SignIn</DisplayName>
+  <TechnicalProfiles>
+    <!-- JWT Token Issuer -->
+    <TechnicalProfile Id="JwtIssuer">
+      <DisplayName>JWT token Issuer</DisplayName>
+      <Protocol Name="OpenIdConnect" />
+      <OutputTokenFormat>JWT</OutputTokenFormat>
+      ...    
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-OAuth-issuer" />
+    </TechnicalProfile>
+
+    <!-- Session management technical profile for OIDC based tokens -->
+    <TechnicalProfile Id="SM-OAuth-issuer">
+      <DisplayName>Session Management Provider</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.OAuthSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </TechnicalProfile>
+
+    <!--SAML token issuer-->
+    <TechnicalProfile Id="Saml2AssertionIssuer">
+      <DisplayName>SAML token issuer</DisplayName>
+      <Protocol Name="SAML2" />
+      <OutputTokenFormat>SAML2</OutputTokenFormat>
+      ...
+      <UseTechnicalProfileForSessionManagement ReferenceId="SM-Saml-issuer" />
+    </TechnicalProfile>
+
+    <!-- Session management technical profile for SAML based tokens -->
+    <TechnicalProfile Id="SM-Saml-issuer">
+      <DisplayName>Session Management Provider</DisplayName>
+      <Protocol Name="Proprietary" Handler="Web.TPEngine.SSO.SamlSSOSessionProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    </TechnicalProfile>
+  </TechnicalProfiles>
+</ClaimsProvider>
+```
+
+::: zone-end
 
 ### <a name="secure-your-logout-redirect"></a>Sichern der Umleitung beim Abmelden
 
-Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parameter angegebenen URI umgeleitet, ungeachtet der Antwort-URLs, die für die Anwendung angegeben wurden. Wenn jedoch ein gültiger `id_token_hint`-Wert übergeben wird und die Option **ID-Token in Abmeldeanforderungen erforderlich** aktiviert ist, überprüft Azure AD B2C, ob der Wert von `post_logout_redirect_uri` einem der für die Anwendung konfigurierten Umleitungs-URIs entspricht, bevor die Umleitung ausgeführt wird. Wenn keine entsprechende Antwort-URL für die Anwendung konfiguriert ist, wird eine Fehlermeldung angezeigt, und der Benutzer wird nicht umgeleitet. Gehen Sie wie folgt vor, um festzulegen, dass ein ID-Token in Abmeldeanforderungen erforderlich ist:
+Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parameter angegebenen URI umgeleitet, ungeachtet der Antwort-URLs, die für die Anwendung angegeben wurden. Wenn jedoch ein gültiger `id_token_hint`-Wert übergeben wird und die Option **ID-Token in Abmeldeanforderungen erforderlich** aktiviert ist, überprüft Azure AD B2C, ob der Wert von `post_logout_redirect_uri` einem der für die Anwendung konfigurierten Umleitungs-URIs entspricht, bevor die Umleitung ausgeführt wird. Wenn keine entsprechende Antwort-URL für die Anwendung konfiguriert ist, wird eine Fehlermeldung angezeigt, und der Benutzer wird nicht umgeleitet. 
+
+::: zone pivot="b2c-user-flow"
+
+So erzwingen Sie ein ID-Token in Abmeldeanforderungen
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
 1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
@@ -65,6 +304,29 @@ Nach der Abmeldung wird der Benutzer an den im `post_logout_redirect_uri`-Parame
 1. Siehe **Authentifizierung**.
 1. Geben Sie im Textfeld **Abmelde-URL** den Umleitungs-URI nach der Abmeldung ein, und wählen Sie dann **Speichern** aus.
 
+::: zone-end
+
+::: zone pivot="b2c-custom-policy"
+
+Um festzulegen, dass ein ID-Token in Abmeldeanforderungen erforderlich ist, fügen Sie innerhalb des [RelyingParty](relyingparty.md)-Elements ein **UserJourneyBehaviors**-Element hinzu. Legen Sie dann den **EnforceIdTokenHintOnLogout**-Wert des **SingleSignOn**-Elements auf `true` fest. Das **UserJourneyBehaviors**-Element sollte wie im folgenden Beispiel aussehen:
+
+```xml
+<UserJourneyBehaviors>
+  <SingleSignOn Scope="Tenant" EnforceIdTokenHintOnLogout="true"/>
+</UserJourneyBehaviors>
+```
+
+::: zone-end
+
+Gehen Sie wie folgt vor, um die Abmelde-URL Ihrer Anwendung zu konfigurieren:
+
+1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an.
+1. Stellen Sie sicher, dass Sie das Verzeichnis verwenden, das Ihren Azure AD B2C-Mandanten enthält, indem Sie im oberen Menü den Filter **Verzeichnis und Abonnement** und dann das Verzeichnis auswählen, das Ihren Azure AD B2C-Mandanten enthält.
+1. Wählen Sie links oben im Azure-Portal die Option **Alle Dienste** aus, suchen Sie nach **Azure AD B2C**, und wählen Sie dann diese Option aus.
+1. Wählen Sie **App-Registrierungen** aus, und wählen Sie dann Ihre Anwendung aus.
+1. Siehe **Authentifizierung**.
+1. Geben Sie im Textfeld **Abmelde-URL** den Umleitungs-URI nach der Abmeldung ein, und wählen Sie dann **Speichern** aus.
+
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Weitere Informationen zur [Azure AD B2C-Sitzung](session-overview.md).
+- Erfahren Sie mehr zum [Konfigurieren von Token in Azure AD B2C](configure-tokens.md).

@@ -7,12 +7,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: cynthn
-ms.openlocfilehash: 4dd15df0e745a5c6e3130233e693bbdb22655775
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: b2f50ba910e3e47c55a63f58bc9f5e978e80e95a
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96500443"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401184"
 ---
 # <a name="manage-the-availability-of-linux-virtual-machines"></a>Verwalten der Verfügbarkeit virtueller Linux-Computer
 
@@ -70,7 +70,7 @@ Mit Fehlerdomänen wird die Gruppe der virtuellen Computer definiert, die eine S
    ![Schematische Darstellung der Konfiguration mit Updatedomäne und Fehlerdomäne](./media/virtual-machines-common-manage-availability/ud-fd-configuration.png)
 
 ## <a name="use-managed-disks-for-vms-in-an-availability-set"></a>Verwenden von verwalteten Datenträgern für virtuelle Computer in einer Verfügbarkeitsgruppe
-Es wird empfohlen, dass Sie für [Linux](./linux/convert-unmanaged-to-managed-disks.md) und [Windows](./windows/convert-unmanaged-to-managed-disks.md) von nicht verwalteten zu verwalteten Datenträgern wechseln, wenn Sie derzeit virtuelle Computer mit nicht verwalteten Datenträgern verwenden.
+Es wird empfohlen, dass Sie für [Linux](./linux/convert-unmanaged-to-managed-disks.md) und [Windows](./windows/convert-unmanaged-to-managed-disks.md) von nicht verwalteten zu verwalteten Datenträgern wechseln, wenn Sie derzeit VMs mit nicht verwalteten Datenträgern verwenden.
 
 [Managed Disks](./managed-disks-overview.md) ermöglicht eine bessere Zuverlässigkeit für Verfügbarkeitsgruppen, indem sichergestellt wird, dass die Datenträger virtueller Computer in einer Verfügbarkeitsgruppe ausreichend voneinander isoliert sind, um einzelne Fehlerquellen zu vermeiden. Dies wird automatisch durch Platzieren der Datenträger in verschiedenen Speicherfehlerdomänen (Speicherclustern) und Anpassen an die VM-Fehlerdomäne sichergestellt. Wenn eine Speicherfehlerdomäne aufgrund eines Hardware- oder Softwarefehlers ausfällt, tritt der Fehler nur bei der VM-Instanz mit Datenträgern in dieser Speicherfehlerdomäne auf.
 ![Fehlerdomänen für verwaltete Datenträger](./media/virtual-machines-common-manage-availability/md-fd-updated.png)

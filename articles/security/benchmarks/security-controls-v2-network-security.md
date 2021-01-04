@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 38ab16fbadee245810a4486170dd54922c0c38f9
-ms.sourcegitcommit: 65a4f2a297639811426a4f27c918ac8b10750d81
+ms.openlocfilehash: 4c87dd905ae842647e7ec2e365abf450caf352b0
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96558911"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97369326"
 ---
 # <a name="security-control-v2-network-security"></a>Sicherheitskontrolle V2: Netzwerksicherheit
 
@@ -20,7 +20,7 @@ Netzwerksicherheit deckt Steuerelemente zum Sichern und Schützen von Azure-Netz
 
 ## <a name="ns-1-implement-security-for-internal-traffic"></a>NS-1: Implementieren der Sicherheit für internen Datenverkehr
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-1 | 9.2, 9.4, 14.1, 14.2, 14.3 | AC-4, CA-3, SC-7 |
 
@@ -52,7 +52,7 @@ Verwenden Sie Azure Sentinel, um die Verwendung von unsicheren Legacyprotokollen
 
 ## <a name="ns-2-connect-private-networks-together"></a>NS-2: Verbinden privater Netzwerke
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-2 | – | CA-3, AC-17, MA-4 |
 
@@ -80,7 +80,7 @@ Stellen Sie eine Verbindung von zwei oder mehr virtuellen Netzwerken in Azure mi
 
 ## <a name="ns-3-establish-private-network-access-to-azure-services"></a>NS-3: Einrichten des Zugriffs über das private Netzwerk auf Azure-Dienste
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-3 | 14,1 | AC-4, CA-3, SC-7 |
 
@@ -104,7 +104,7 @@ Der private Zugriff ist neben der Authentifizierung und der von Azure-Diensten g
 
 ## <a name="ns-4-protect-applications-and-services-from-external-network-attacks"></a>NS-4: Schützen von Anwendungen und Diensten vor externen Netzwerkangriffen.
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-4 | 9.5, 12.3, 12.9 | SC-5, SC-7 |
 
@@ -134,7 +134,7 @@ Schützen Sie Azure-Ressourcen vor Angriffen aus externen Netzwerken einschließ
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: Bereitstellen von Angriffserkennungs-/Eindringschutzsystemen (Intrusion Detection/Intrusion Prevention Systems, IDS/IPS)
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-5 | 12.6, 12.7 | SI-4 |
 
@@ -160,7 +160,7 @@ Hinweis: Bei einer gesetzlichen oder sonstigen Anforderung der Verwendung von ID
 
 ## <a name="ns-6-simplify-network-security-rules"></a>NS-6: Vereinfachen von Netzwerksicherheitsregeln
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-6 | 1.5 | IA-4 |
 
@@ -186,7 +186,7 @@ Sie können auch Anwendungssicherheitsgruppen verwenden, um eine komplexe Sicher
 
 ## <a name="ns-7-secure-domain-name-service-dns"></a>NS-7: Secure Domain Name Service (DNS)
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | NS-7 | – | SC-20, SC-21 |
 

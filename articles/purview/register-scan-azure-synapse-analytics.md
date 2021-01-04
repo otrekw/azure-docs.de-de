@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 10/22/2020
-ms.openlocfilehash: a0b0dc8c29bcdb51f7b348dd62e3d27796819a7d
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: e0a1d8dba9ea284322584de3b4be2ae390d15fdf
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550500"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96920265"
 ---
 # <a name="register-and-scan-azure-synapse-analytics"></a>Registrieren und Überprüfen von Azure Synapse Analytics
 
@@ -21,6 +21,10 @@ In diesem Artikel wird beschrieben, wie Sie eine Instanz von Azure Synapse Analy
 ## <a name="supported-capabilities"></a>Unterstützte Funktionen
 
 Für Azure Synapse Analytics (vormals SQL DW) werden vollständige und inkrementelle Überprüfungen zur Erfassung der Metadaten und Schemas unterstützt. Darüber hinaus werden die Daten bei Überprüfungen basierend auf den System- und benutzerdefinierten Klassifizierungsregeln automatisch klassifiziert.
+
+### <a name="known-limitations"></a>Bekannte Einschränkungen
+
+Azure Purview unterstützt nicht die Überprüfung von [Sichten](https://docs.microsoft.com/sql/relational-databases/views/views?view=sql-server-ver15) in Azure Synapse Analytics.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -118,7 +122,7 @@ Gehen Sie wie folgt vor, um einen neuen Azure Synapse Analytics-Server für Ihre
 1. Wählen Sie im linken Navigationsbereich die Option **Quellen** aus.
 1. Wählen Sie **Registrieren** aus.
 1. Wählen Sie unter **Register sources** (Quellen registrieren) die Option **Azure Synapse Analytics (vormals SQL DW)** aus.
-1. Wählen Sie **Weiter**.
+1. Wählen Sie **Weiter** aus.
 
 Gehen Sie unter **Register sources (Azure Synapse Analytics)** (Quellen registrieren (Azure Synapse Analytics)) wie folgt vor:
 

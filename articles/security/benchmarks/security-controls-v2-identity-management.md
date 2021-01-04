@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 2b21bea924ee8eaed37246ce55feaf8243e3e7d4
-ms.sourcegitcommit: 17b36b13857f573639d19d2afb6f2aca74ae56c1
+ms.openlocfilehash: 33f5dff65fa7ad8274051f784f2e61dc8366d389
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/10/2020
-ms.locfileid: "94408736"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368850"
 ---
 # <a name="security-control-v2-identity-management"></a>Sicherheitskontrolle V2: Identitätsverwaltung
 
@@ -20,7 +20,7 @@ Identitätsverwaltung umfasst Kontrollelemente zur Einrichtung einer sicheren Id
 
 ## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: Standardisieren von Azure Active Directory als zentrales Identitäts- und Authentifizierungssystem
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-1 | 16.1, 16.2, 16.4, 16.5 | IA-2, IA-8, AC-2, AC-3 |
 
@@ -43,9 +43,9 @@ Hinweis: Azure AD unterstützt externe Identitätsanbieter, die es Benutzern ohn
 
 - [Was ist die Identitätssicherheitsbewertung in Azure AD?](../../active-directory/fundamentals/identity-secure-score.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys) 
 
@@ -57,7 +57,7 @@ Hinweis: Azure AD unterstützt externe Identitätsanbieter, die es Benutzern ohn
 
 ## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: Sicheres und automatisches Verwalten von Anwendungsidentitäten
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-2 | – | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
@@ -75,9 +75,9 @@ Für Dienste, die keine verwalteten Identitäten unterstützen, können Sie stat
 
 Verwenden Sie Azure Key Vault für die Registrierung von Sicherheitsprinzipalen: authentication#authorize-a-security-principal-to-access-key-vault
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -85,7 +85,7 @@ Verwenden Sie Azure Key Vault für die Registrierung von Sicherheitsprinzipalen:
 
 ## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: Verwenden von Azure AD Single Sign-on (SSO) für den Anwendungszugriff
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-3 | 4.4 | IA-2, IA-4 |
 
@@ -95,9 +95,9 @@ Verwenden Sie Azure AD Single Sign-On (SSO), um den Zugriff auf die Daten und Re
 
 - [Grundlegendes zu Anwendungs-SSO mit Azure AD](../../active-directory/manage-apps/what-is-single-sign-on.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -107,7 +107,7 @@ Verwenden Sie Azure AD Single Sign-On (SSO), um den Zugriff auf die Daten und Re
 
 ## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: Verwenden stärkerer Authentifizierungssteuerungen für den gesamten Azure Active Directory-basierten Zugriff
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-4 | 4.2, 4.4 4.5, 11.5, 12.11, 16.3 | AC-2, AC-3, IA-2, IA-4 |
 
@@ -130,9 +130,9 @@ Hinweis: Die Authentifizierung allein auf der Grundlage von Kennwortanmeldeinfor
 
 - [Ausschließen von ungeeigneten Kennwörtern mit dem Azure AD-Kennwortschutz](../../active-directory/authentication/concept-password-ban-bad.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
@@ -142,7 +142,7 @@ Hinweis: Die Authentifizierung allein auf der Grundlage von Kennwortanmeldeinfor
 
 ## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: Überwachen und Warnen bei Kontoanomalien
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-5 | 4.8, 4.9, 16.12, 16.13 | AC-2, AC-3, AC-7, AU-6 |
 
@@ -177,9 +177,9 @@ Azure Advanced Threat Protection (ATP) ist eine Sicherheitslösung, die lokale A
 
 - [Azure Advanced Threat Protection](/azure-advanced-threat-protection/what-is-atp)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -187,7 +187,7 @@ Azure Advanced Threat Protection (ATP) ist eine Sicherheitslösung, die lokale A
 
 ## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: Einschränken des Zugriffs auf Azure-Ressourcen basierend auf Bedingungen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-6 | – | AC-2, AC-3 |
 
@@ -199,9 +199,9 @@ Verwenden Sie die Azure AD-Zugriffsberechtigung für eine präzisere Zugriffsste
 
 - [Konfigurieren der Verwaltung von Authentifizierungssitzungen mit bedingtem Zugriff](../../active-directory/conditional-access/howto-conditional-access-session-lifetime.md)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Funktion von Identitäts- und Schlüsselverwaltung in der Cloud](/azure/cloud-adoption-framework/organize/cloud-security-identity-keys)
 
@@ -213,7 +213,7 @@ Verwenden Sie die Azure AD-Zugriffsberechtigung für eine präzisere Zugriffsste
 
 ## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: Beheben der unbeabsichtigten Offenlegung von Anmeldeinformationen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-7 | 18.1, 18.7 | IA-5 |
 
@@ -225,9 +225,9 @@ Für GitHub können Sie das native Feature zur geheimen Überprüfung verwenden,
 
 - [Geheime Überprüfung in GitHub](https://docs.github.com/github/administering-a-repository/about-secret-scanning)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Anwendungssicherheit und DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
@@ -235,7 +235,7 @@ Für GitHub können Sie das native Feature zur geheimen Überprüfung verwenden,
 
 ## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8: Sicheren Benutzerzugriff auf ältere Anwendungen
 
-| Azure-ID | CIS Controls v7.1 ID(s) | NIST SP800-53 r4 ID(s) |
+| Azure-ID | CIS Controls v7.1 ID(s) | ID(s) von NIST SP 800-53 r4 |
 |--|--|--|--|
 | IM-8 | 14.6 | AC-2, AC-3, SC-11 |
 
@@ -249,9 +249,9 @@ Alternativ dazu ist Microsoft Cloud App Security ein CASB-Service (Cloud Access 
 
 - [Bewährte Methoden für Microsoft Cloud App Security](/cloud-app-security/best-practices)
 
-**Verantwortlichkeit** : Kunde
+**Verantwortlichkeit**: Kunde
 
-**Sicherheitsverantwortliche beim Kunden** ( [weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
+**Sicherheitsverantwortliche beim Kunden** ([weitere Informationen](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
 - [Sicherheitsarchitektur](/azure/cloud-adoption-framework/organize/cloud-security-architecture) 
 

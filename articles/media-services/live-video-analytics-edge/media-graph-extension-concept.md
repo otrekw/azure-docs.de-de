@@ -3,25 +3,27 @@ title: 'Informationen zur Mediengrapherweiterung: Azure'
 description: Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: 74929cc51a868d20952f1e25432f5343e4821d08
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6735148bf453cfe0afb58d51451dea65f06705d6
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89569327"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401116"
 ---
 # <a name="media-graph-extension"></a>Mediengrapherweiterung
 
-Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern. Ihr Analyseerweiterungs-Plug-In kann herkömmliche Bildverarbeitungstechniken oder KI-Modelle des maschinellen Sehens nutzen. Zur Aktivierung von Grapherweiterungen wird ein Erweiterungsprozessorknoten in einen Mediengraphen eingeschlossen. Der Erweiterungsprozessorknoten leitet Videoframes an den konfigurierten Endpunkt weiter und fungiert als Schnittstelle für Ihre Erweiterung. Die Verbindung kann zu einem lokalen oder entfernten Endpunkt hergestellt und bei Bedarf durch Authentifizierung und TLS-Verschlüsselung gesichert werden. Außerdem ermöglicht der Graph-Erweiterungsprozessorknoten optional die Skalierung und Codierung der Videoframes, bevor sie an Ihre benutzerdefinierte Erweiterung übermittelt werden.
+Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen Grapherweiterungsknoten erweitern. Ihr Analyseerweiterungs-Plug-In kann herkömmliche Bildverarbeitungstechniken oder KI-Modelle des maschinellen Sehens nutzen. Zur Aktivierung von Grapherweiterungen wird ein Erweiterungsprozessorknoten in einen Mediengraphen eingeschlossen. Der Erweiterungsprozessorknoten leitet Videoframes an den konfigurierten Endpunkt weiter und fungiert als Schnittstelle für Ihre Erweiterung. Die Verbindung kann zu einem lokalen oder entfernten Endpunkt hergestellt und bei Bedarf durch Authentifizierung und TLS-Verschlüsselung gesichert werden. Außerdem ermöglicht der Graph-Erweiterungsprozessorknoten optional die Skalierung und Codierung der Videoframes, bevor sie an Ihre benutzerdefinierte Erweiterung übermittelt werden. 
 
 Live Video Analytics unterstützt zwei Arten von Mediengraph-Erweiterungsprozessoren:
 
 * [Verarbeitungsknoten für die HTTP-Erweiterung](media-graph-concept.md#http-extension-processor)
 * [gRPC-Erweiterungsprozessor](media-graph-concept.md#grpc-extension-processor)
 
+Der Graph-Erweiterungsknoten erwartet, dass das Analyse-Erweiterungs-Plug-In die Ergebnisse im JSON-Format zurückgibt. Idealerweise sollten die Ergebnisse dem [Schemaobjektmodell für Rückschlussmetadaten](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update) entsprechen.
+
 ## <a name="http-extension-processor"></a>Verarbeitungsknoten für die HTTP-Erweiterung
 
-Der HTTP-Erweiterungsprozessor ermöglicht Erweiterungsszenarien mit dem HTTP-Protokoll, bei denen es nicht in erster Linie auf Leistung und/oder optimale Ressourcenverwendung ankommt. Sie können Ihre eigene KI für einen Mediengraphen über einen HTTP-REST-Endpunkt verfügbar machen. 
+Der HTTP-Erweiterungsprozessor ermöglicht Erweiterungsszenarien mit dem [HTTP-Protokoll](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/http-extension-protocol?branch=release-lva-dec-update), bei denen es nicht in erster Linie auf Leistung und/oder optimale Ressourcenverwendung ankommt. Sie können Ihre eigene KI für einen Mediengraphen über einen HTTP-REST-Endpunkt verfügbar machen. 
 
 Der HTTP-Erweiterungsprozessorknoten kann in folgenden Fällen verwendet werden:
 
@@ -31,7 +33,7 @@ Der HTTP-Erweiterungsprozessorknoten kann in folgenden Fällen verwendet werden:
 
 ## <a name="grpc-extension-processor"></a>gRPC-Erweiterungsprozessor
 
-Der gRPC-Erweiterungsprozessor ermöglicht Erweiterungsszenarien mit einem gRPC-basierten, strukturierten Hochleistungsprotokoll. Er eignet sich perfekt für Szenarien, in denen Leistung und/oder optimale Ressourcennutzung Priorität haben bzw. hat. Mit dem gRPC-Erweiterungsprozessor können Sie in vollem Umfang von den strukturierten Datendefinitionen profitieren. gRPC bietet eine hohe Inhaltsübertragungsleistung. Hierzu wird Folgendes genutzt:
+Der gRPC-Erweiterungsprozessor ermöglicht Erweiterungsszenarien mit einem gRPC-basierten, hochleistungsfähigen [strukturierten Protokoll](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/grpc-extension-protocol?branch=release-lva-dec-update). Er eignet sich perfekt für Szenarien, in denen Leistung und/oder optimale Ressourcennutzung Priorität haben bzw. hat. Mit dem gRPC-Erweiterungsprozessor können Sie in vollem Umfang von den strukturierten Datendefinitionen profitieren. gRPC bietet eine hohe Inhaltsübertragungsleistung. Hierzu wird Folgendes genutzt:
 
 * [Integrierter, gemeinsam genutzter Arbeitsspeicher](https://en.wikipedia.org/wiki/Shared_memory) oder 
 * Direktes Einbetten des Inhalts in den Text von gRPC-Nachrichten 
@@ -46,7 +48,7 @@ Verwenden Sie einen gRPC-Erweiterungsprozessorknoten daher in folgenden Fällen:
 
 ## <a name="use-your-inferencing-model-with-live-video-analytics"></a>Verwenden Ihres Rückschlussmodells mit Live Video Analytics
 
-Mithilfe von Mediengrapherweiterungen können Sie Rückschlussmodelle Ihrer Wahl für jede verfügbare Rückschlussruntime ausführen. Hierzu zählen etwa ONNX, TensorFlow, PyTorch und andere in Ihrem eigenen Docker-Container. Die benutzerdefinierte Rückschlusserweiterung sollte zusammen mit dem Live Video Analytics-Edgemodul bereitgestellt werden, um eine optimale Leistung zu erzielen, und wird dann über den in Ihrer Graphtopologie enthaltenen HTTP- oder gRPC-Erweiterungsprozessor aufgerufen. Darüber hinaus kann die Häufigkeit der Aufrufe für Ihre benutzerdefinierte Erweiterung gedrosselt werden, indem optional ein [Bewegungsmelderprozessor](media-graph-concept.md#motion-detection-processor) und ein [Bildfrequenzfilterprozessor](media-graph-concept.md#frame-rate-filter-processor) dem Medienerweiterungsprozessor vorgeschaltet werden.
+Mithilfe von Mediengrapherweiterungen können Sie Rückschlussmodelle Ihrer Wahl für jede verfügbare Rückschlussruntime ausführen. Hierzu zählen etwa ONNX, TensorFlow, PyTorch und andere in Ihrem eigenen Docker-Container. Die benutzerdefinierte Rückschlusserweiterung sollte zusammen mit dem Live Video Analytics-Edgemodul bereitgestellt werden, um eine optimale Leistung zu erzielen, und wird dann über den in Ihrer Graphtopologie enthaltenen HTTP- oder gRPC-Erweiterungsprozessor aufgerufen. Darüber hinaus kann die Häufigkeit der Aufrufe für Ihre benutzerdefinierte Erweiterung gedrosselt werden, indem optional dem Medienerweiterungsprozessor ein [Bewegungsmelderprozessor](media-graph-concept.md#motion-detection-processor) vorgeschaltet wird.
 
 Das folgende Diagramm zeigt den Datenfluss im Überblick:
 
@@ -55,7 +57,9 @@ Das folgende Diagramm zeigt den Datenfluss im Überblick:
 
 ## <a name="samples"></a>Proben
 
-Sehen Sie sich einige unserer [Jupyter Notebook-Beispiele](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) für Live Video Analytics an. In diesen Notebooks finden Sie schrittweise Anleitungen für **die Mediengrapherweiterungen**:
+Sie können mithilfe eines unserer Schnellstarts einsteigen, der Live Video Analytics mit dem vordefinierten Erweiterungsdienst mit [HTTP-Erweiterungsprozessor](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/use-your-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) oder bei hohen Bildfrequenzen mit dem [gRPC-Erweiterungsprozessor](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/analyze-live-video-use-your-grpc-model-quickstart?branch=release-lva-dec-update&pivots=programming-language-csharp) veranschaulicht.
+
+Fortgeschrittene Benutzer können sich einige unserer [Jupyter Notebook-Beispiele](https://github.com/Azure/live-video-analytics/blob/master/utilities/video-analysis/notebooks/readme.md) für Live Video Analytics ansehen. In diesen Notebooks finden Sie schrittweise Anleitungen für **die Mediengrapherweiterungen**:
 
 * Erstellen eines Docker-Containerimages eines Erweiterungsdiensts
 * Bereitstellen des Erweiterungsdiensts als Container zusammen mit dem Live Video Analytics-Container

@@ -2,14 +2,14 @@
 title: Wiederherstellen von Dateien und Ordnern aus einer Azure-VM-Sicherung
 description: In diesem Artikel erfahren Sie, wie Sie Dateien und Ordner aus einem Wiederherstellungspunkt für virtuelle Azure-Computer wiederherstellen.
 ms.topic: conceptual
-ms.date: 03/01/2019
+ms.date: 03/12/2020
 ms.custom: references_regions
-ms.openlocfilehash: b9d5c90634dac3229e756ad93c10db91b268080c
-ms.sourcegitcommit: 0a9df8ec14ab332d939b49f7b72dea217c8b3e1e
+ms.openlocfilehash: 4d34fc48e5d16275d0225a1cef4b5fa63f0b66d6
+ms.sourcegitcommit: 63d0621404375d4ac64055f1df4177dfad3d6de6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/18/2020
-ms.locfileid: "94841160"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97511653"
 ---
 # <a name="recover-files-from-azure-virtual-machine-backup"></a>Wiederherstellen von Dateien aus einer Sicherung von virtuellen Azure-Computern
 
@@ -156,7 +156,7 @@ Wenn Sie die ausführbare Datei ausführen, stellt das Betriebssystem neue Volum
 
    ![Angefügte Wiederherstellungsvolumes](./media/backup-azure-restore-files-from-vm/volumes-attached.png)
 
-**Für gesicherte VMs mit großen Datenträgern (Windows)**
+#### <a name="for-backed-up-vms-with-large-disks-windows"></a>Für gesicherte VMs mit großen Datenträgern (Windows)
 
 Wenn die Dateiwiederherstellung nicht mehr reagiert, nachdem Sie das Skript zur Dateiwiederherstellung ausgeführt haben (wenn z. B. die Datenträger nicht eingebunden werden, oder sie werden eingebunden, aber die Volumes werden nicht angezeigt), führen Sie die folgenden Schritte aus:
   
@@ -182,7 +182,7 @@ Unter Linux werden die Volumes des Wiederherstellungspunkts im Ordner bereitgest
   ![Menü „Linux-Dateiwiederherstellung“](./media/backup-azure-restore-files-from-vm/linux-mount-paths.png)
 
 
-**Für gesicherte VMs mit großen Datenträgern (Linux)**
+#### <a name="for-backed-up-vms-with-large-disks-linux"></a>Für gesicherte VMs mit großen Datenträgern (Linux)**
 
 Wenn die Dateiwiederherstellung nicht mehr reagiert, nachdem Sie das Skript zur Dateiwiederherstellung ausgeführt haben (wenn z. B. die Datenträger nicht eingebunden werden, oder sie werden eingebunden, aber die Volumes werden nicht angezeigt), führen Sie die folgenden Schritte aus:
 

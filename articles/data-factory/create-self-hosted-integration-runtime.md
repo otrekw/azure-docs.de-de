@@ -11,12 +11,12 @@ ms.author: abnarain
 manager: anandsub
 ms.custom: seo-lt-2019
 ms.date: 11/25/2020
-ms.openlocfilehash: 22155083a71a9cbf615293a4f86a179aaefce2a9
-ms.sourcegitcommit: 6a770fc07237f02bea8cc463f3d8cc5c246d7c65
+ms.openlocfilehash: 04efb7bcae11ef6cf377d821b49f9b07d41d347f
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96023351"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96932590"
 ---
 # <a name="create-and-configure-a-self-hosted-integration-runtime"></a>Erstellen und Konfigurieren einer selbstgehosteten Integration Runtime
 
@@ -102,29 +102,28 @@ Die Datei „dmgcmd.exe“ ist im selbstgehosteten Installationsprogramm enthalt
 Nutzen Sie die Anwendung wie folgt:
 
 ```powershell
-dmgcmd [ -RegisterNewNode "<AuthenticationKey>" -EnableRemoteAccess "<port>" ["<thumbprint>"] -EnableRemoteAccessInContainer "<port>" ["<thumbprint>"] -DisableRemoteAccess -Key "<AuthenticationKey>" -GenerateBackupFile "<filePath>" "<password>" -ImportBackupFile "<filePath>" "<password>" -Restart -Start -Stop -StartUpgradeService -StopUpgradeService -TurnOnAutoUpdate -TurnOffAutoUpdate -SwitchServiceAccount "<domain\user>" ["<password>"] -Loglevel <logLevel> ]
+dmgcmd ACTION args...
 ```
 
-Hier sind die Details zu den Parametern und Eigenschaften der Anwendung angegeben: 
+Hier finden Sie Details zu den Aktionen und Argumenten der Anwendung: 
 
-| Eigenschaft                                                    | BESCHREIBUNG                                                  | Erforderlich |
-| ----------------------------------------------------------- | ------------------------------------------------------------ | -------- |
-| **RegisterNewNode** "`<AuthenticationKey>`"                     | Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel registrieren | Nein       |
-| **RegisterNewNode** "`<AuthenticationKey>`" "`<NodeName>`"      | Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel und Knotennamen registrieren | Nein       |
-| **EnableRemoteAccess** "`<port>`" ["`<thumbprint>`"]            | Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters aktivieren. Oder Aktivierung des direkten Festlegens von Anmeldeinformationen für die selbstgehostete IR ohne Umweg über Azure Data Factory. Für Letzteres verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** auf einem Remotecomputer in demselben Netzwerk. | Nein       |
-| **EnableRemoteAccessInContainer** "`<port>`" ["`<thumbprint>`"] | Remotezugriff auf den aktuellen Knoten aktivieren, wenn der Knoten in einem Container ausgeführt wird | Nein       |
-| **DisableRemoteAccess**                                         | Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch, wenn der Remotezugriff deaktiviert ist. Dies ist der Fall, sofern das Cmdlet auf demselben Computer ausgeführt wird, auf dem sich auch der Knoten für die selbstgehostete IR befindet. | Nein       |
-| **Key** "`<AuthenticationKey>`"                                 | Vorherigen Authentifizierungsschlüssel überschreiben oder aktualisieren. Verwenden Sie diese Aktion mit Bedacht. Ihr Knoten der selbstgehostete IR wird ggf. in den Offlinezustand versetzt, wenn der Schlüssel von einer neuen Integration Runtime stammt. | Nein       |
-| **GenerateBackupFile** "`<filePath>`" "`<password>`"            | Generiert eine Sicherungsdatei für den aktuellen Knoten. Die Sicherungsdatei enthält den Knotenschlüssel und die Anmeldeinformationen für den Datenspeicher. | Nein       |
-| **ImportBackupFile** "`<filePath>`" "`<password>`"              | Knoten aus einer Sicherungsdatei wiederherstellen                          | Nein       |
-| **Neu starten**                                                     | Hostdienst der selbstgehosteten Integration Runtime neu starten   | Nein       |
-| **Starten**                                                       | Hostdienst der selbstgehosteten Integration Runtime starten     | Nein       |
-| **Beenden**                                                        | Hostdienst der selbstgehosteten Integration Runtime beenden        | Nein       |
-| **StartUpgradeService**                                         | Upgradedienst der selbstgehosteten Integration Runtime starten       | Nein       |
-| **StopUpgradeService**                                          | Upgradedienst der selbstgehosteten Integration Runtime beenden        | Nein       |
-| **TurnOnAutoUpdate**                                            | Automatische Aktualisierung der selbstgehosteten Integration Runtime aktivieren        | Nein       |
-| **TurnOffAutoUpdate**                                           | Automatische Aktualisierung der selbstgehosteten Integration Runtime deaktivieren       | Nein       |
-| **SwitchServiceAccount** "`<domain\user>`" ["`<password>`"]           | Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie ein leeres Kennwort („“) für Systemkonten und virtuelle Konten. | Nein       |
+|ACTION|args|Beschreibung|
+|------|----|-----------|
+|-rn,<br/>-RegisterNewNode|"`<AuthenticationKey>`" ["`<NodeName>`"]|Knoten einer selbstgehosteten Integration Runtime mit dem angegebenen Authentifizierungsschlüssel und Knotennamen registrieren|
+|-era,<br/>-EnableRemoteAccess|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten zum Einrichten eines Hochverfügbarkeitsclusters aktivieren. Oder Aktivierung des direkten Festlegens von Anmeldeinformationen für die selbstgehostete IR ohne Umweg über Azure Data Factory. Für Letzteres verwenden Sie das Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** auf einem Remotecomputer in demselben Netzwerk.|
+|-erac,<br/>-EnableRemoteAccessInContainer|"`<port>`" ["`<thumbprint>`"]|Remotezugriff auf den aktuellen Knoten aktivieren, wenn der Knoten in einem Container ausgeführt wird|
+|-dra,<br/>-DisableRemoteAccess||Remotezugriff auf den aktuellen Knoten deaktivieren. Der Remotezugriff ist zum Einrichten von mehreren Knoten erforderlich. Das PowerShell-Cmdlet **New-AzDataFactoryV2LinkedServiceEncryptedCredential** funktioniert auch, wenn der Remotezugriff deaktiviert ist. Dies ist der Fall, sofern das Cmdlet auf demselben Computer ausgeführt wird, auf dem sich auch der Knoten für die selbstgehostete IR befindet.|
+|-k,<br/>-Key|"`<AuthenticationKey>`"|Vorherigen Authentifizierungsschlüssel überschreiben oder aktualisieren. Verwenden Sie diese Aktion mit Bedacht. Ihr Knoten der selbstgehostete IR wird ggf. in den Offlinezustand versetzt, wenn der Schlüssel von einer neuen Integration Runtime stammt.|
+|-gbf,<br/>-GenerateBackupFile|"`<filePath>`" "`<password>`"|Generiert eine Sicherungsdatei für den aktuellen Knoten. Die Sicherungsdatei enthält den Knotenschlüssel und die Anmeldeinformationen für den Datenspeicher.|
+|-ibf,<br/>-ImportBackupFile|"`<filePath>`" "`<password>`"|Knoten aus einer Sicherungsdatei wiederherstellen|
+|-r,<br/>-Restart||Hostdienst der selbstgehosteten Integration Runtime neu starten|
+|-s,<br/>-Start||Hostdienst der selbstgehosteten Integration Runtime starten|
+|-t,<br/>-Stop||Hostdienst der selbstgehosteten Integration Runtime beenden|
+|-sus,<br/>-StartUpgradeService||Upgradedienst der selbstgehosteten Integration Runtime starten|
+|-tus,<br/>-StopUpgradeService||Upgradedienst der selbstgehosteten Integration Runtime beenden|
+|-tonau,<br/>-TurnOnAutoUpdate||Automatische Aktualisierung der selbstgehosteten Integration Runtime aktivieren|
+|-toffau,<br/>-TurnOffAutoUpdate||Automatische Aktualisierung der selbstgehosteten Integration Runtime deaktivieren|
+|-ssa,<br/>-SwitchServiceAccount|"`<domain\user>`" ["`<password>`"]|Legen Sie fest, dass DIAHostService als neues Konto ausgeführt wird. Verwenden Sie ein leeres Kennwort („“) für Systemkonten und virtuelle Konten.|
 
 
 ## <a name="command-flow-and-data-flow"></a>Befehls- und Datenfluss
@@ -150,7 +149,7 @@ Hier ist eine allgemeine Zusammenfassung der Datenflussschritte zum Kopieren per
 - Verwenden Sie eine selbstgehostete Integration Runtime, um die Datenintegration in einem virtuellen Azure-Netzwerk zu unterstützen.
 - Behandeln Sie Ihre Datenquelle wie eine lokale Datenquelle (die sich hinter einer Firewall befindet), selbst wenn Sie Azure ExpressRoute verwenden. Verwenden Sie die selbstgehostete Integration Runtime, um den Dienst mit der Datenquelle zu verbinden.
 - Verwenden Sie die selbstgehostete Integration Runtime auch, wenn sich der Datenspeicher in der Cloud auf einem virtuellen Azure IaaS-Computer (Infrastructure-as-a-Service) befindet.
-- Bei einer selbstgehosteten Integration Runtime-Instanz, die Sie auf einem Windows Server-Computer mit aktivierter FIPS-konformer Verschlüsselung installiert haben, treten für Aufgaben unter Umständen Fehler auf. Um dieses Problem zu umgehen, stehen Ihnen zwei Möglichkeiten zur Verfügung: Speichern von Anmeldeinformationen oder Geheimnissen in einer Azure Key Vault-Instanz oder Deaktivieren der FIPS-konformen Verschlüsselung auf dem Server. Zum Deaktivieren der FIPS-konformen Verschlüsselung ändern Sie den folgenden Wert des Registrierungsschlüssels „1“ (aktiviert) in „0“ (deaktiviert): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`. Wenn Sie die [selbstgehostete Integration Runtime als Proxy für die SSIS Integration Runtime](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis) verwenden, kann die FIPS-konforme Verschlüsselung aktiviert werden. Dies wird dann verwendet, wenn Daten von einem lokalen Speicherort in Azure Blob Storage als Stagingbereich verschoben werden.
+- Bei einer selbstgehosteten Integration Runtime-Instanz, die Sie auf einem Windows Server-Computer mit aktivierter FIPS-konformer Verschlüsselung installiert haben, treten für Aufgaben unter Umständen Fehler auf. Um dieses Problem zu umgehen, stehen Ihnen zwei Möglichkeiten zur Verfügung: Speichern von Anmeldeinformationen oder Geheimnissen in einer Azure Key Vault-Instanz oder Deaktivieren der FIPS-konformen Verschlüsselung auf dem Server. Zum Deaktivieren der FIPS-konformen Verschlüsselung ändern Sie den folgenden Wert des Registrierungsschlüssels „1“ (aktiviert) in „0“ (deaktiviert): `HKLM\System\CurrentControlSet\Control\Lsa\FIPSAlgorithmPolicy\Enabled`. Wenn Sie die [selbstgehostete Integration Runtime als Proxy für die SSIS Integration Runtime](./self-hosted-integration-runtime-proxy-ssis.md) verwenden, kann die FIPS-konforme Verschlüsselung aktiviert werden. Dies wird dann verwendet, wenn Daten von einem lokalen Speicherort in Azure Blob Storage als Stagingbereich verschoben werden.
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
@@ -331,7 +330,7 @@ Auf Ebene der Windows-Firewall bzw. auf Computerebene sind diese ausgehenden Por
 
 Stellen Sie sicher, dass Sie die Firewallregeln der Unternehmensfirewall, der Windows-Firewall auf dem Computer mit der selbstgehosteten Integration Runtime und des Datenspeichers selbst richtig aktivieren. Bei Aktivierung dieser Regeln kann die selbstgehostete Integration Runtime erfolgreich eine Verbindung mit der Quelle und der Senke herstellen. Aktivieren Sie die Regeln für jeden Datenspeicher, der am Kopiervorgang beteiligt ist.
 
-Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus einem lokalen Datenspeicher in eine SQL-Datenbank-Senke oder eine Azure Synapse Analytics-Senke (ehemals SQL Data Warehouse) zu kopieren:
+Führen Sie beispielsweise die folgenden Schritte aus, um Daten aus einem lokalen Datenspeicher in eine SQL-Datenbank-Senke oder eine Azure Synapse Analytics-Senke zu kopieren:
 
 1. Lassen Sie ausgehende TCP-Kommunikation an Port 1433 sowohl für die Windows-Firewall als auch für die Unternehmensfirewall zu.
 1. Konfigurieren Sie die Firewalleinstellungen der SQL-Datenbank-Instanz, um die IP-Adresse des Computers mit der selbstgehosteten Integration Runtime der Liste mit den zulässigen IP-Adressen hinzuzufügen.

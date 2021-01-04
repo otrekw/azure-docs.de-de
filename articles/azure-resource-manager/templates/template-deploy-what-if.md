@@ -1,23 +1,20 @@
 ---
-title: Was-wäre-wenn für Vorlagenbereitstellung (Preview)
+title: Was-wäre-wenn für die Vorlagenbereitstellung
 description: Legen Sie vor der Bereitstellung einer Azure Resource Manager-Vorlage fest, welche Änderungen an Ihren Ressourcen vorgenommen werden.
 author: tfitzmac
 ms.topic: conceptual
-ms.date: 08/05/2020
+ms.date: 12/15/2020
 ms.author: tomfitz
-ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: a1ce7f8f718b364dc4b47593cf9ea37e8baf1e72
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87810070"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563091"
 ---
-# <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang (Vorschau)
+# <a name="arm-template-deployment-what-if-operation"></a>ARM-Vorlagenbereitstellung: Was-wäre-wenn-Vorgang
 
 Vor dem Bereitstellen einer ARM-Vorlage (Azure Resource Manager-Vorlage) können Sie eine Vorschau der Änderungen anzeigen, die vorgenommen werden. Azure Resource Manager stellt den Was-wäre-wenn-Vorgang bereit, damit Sie sehen können, wie sich Ressourcen ändern, wenn Sie die Vorlage bereitstellen. Der Was-wäre-wenn-Vorgang nimmt keine Änderungen an vorhandenen Ressourcen vor. Stattdessen sagt er die Änderungen vorher, wenn die angegebene Vorlage bereitgestellt wird.
-
-> [!NOTE]
-> Der Was-wäre-wenn-Vorgang befindet sich zurzeit in der Preview-Phase. Als Previewrelease können die Ergebnisse mitunter anzeigen, dass sich eine Ressource ändert, wenn tatsächlich gar keine Änderung stattfindet. Wir arbeiten daran, diese Probleme zu verringern, aber hierzu benötigen wir Ihre Hilfe. Melden Sie diese Probleme bitte unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 
 Sie können den Was-wäre-wenn-Vorgang mit Azure PowerShell-, Azure CLI- oder REST-API-Vorgängen verwenden. Der Was-wäre-wenn-Vorgang wird für Bereitstellungen auf Ressourcengruppen-, Abonnements-, Verwaltungsgruppen- und Mandantenebene unterstützt.
 
@@ -36,31 +33,6 @@ Install-Module -Name Az -Force
 ```
 
 Weitere Informationen zum Installieren von Modulen finden Sie unter [Installieren von Azure PowerShell](/powershell/azure/install-az-ps).
-
-### <a name="uninstall-alpha-version"></a>Deinstallieren einer Alphaversion
-
-Wenn Sie zuvor eine Alphaversion des Was-wäre-wenn-Moduls installiert hatten, deinstallieren Sie dieses Modul. Die Alphaversion war nur für Benutzer verfügbar, die sich für eine frühe Vorschau registriert hatten. Wenn Sie diese Vorschau nicht installiert haben, können Sie diesen Abschnitt überspringen.
-
-1. Ausführen von PowerShell als Administrator
-1. Überprüfen Sie Ihre installierten Versionen des Az.Resources-Moduls.
-
-   ```powershell
-   Get-InstalledModule -Name Az.Resources -AllVersions | select Name,Version
-   ```
-
-1. Wenn Sie über eine installierte Version mit einer Versionsnummer im Format **2.x.x-alpha** verfügen, deinstallieren Sie diese Version.
-
-   ```powershell
-   Uninstall-Module Az.Resources -RequiredVersion 2.0.1-alpha5 -AllowPrerelease
-   ```
-
-1. Heben Sie die Registrierung des Was-wäre-wenn-Repositorys auf, das Sie für die Installation der Vorschau verwendet haben.
-
-   ```powershell
-   Unregister-PSRepository -Name WhatIfRepository
-   ```
-
-Sie sind für die Verwendung von Was-wäre-wenn bereit.
 
 ## <a name="install-azure-cli-module"></a>Installieren des Azure CLI-Moduls
 
@@ -129,8 +101,8 @@ Wenn Sie vor der Bereitstellung einer Vorlage eine Vorschau der Änderungen anze
 
 * [az deployment group what-if](/cli/azure/deployment/group#az-deployment-group-what-if) für Bereitstellungen von Ressourcengruppen
 * [az deployment sub what-if](/cli/azure/deployment/sub#az-deployment-sub-what-if) für Bereitstellungen auf Abonnementebene
-* [az deployment mg what-if](/cli/azure/deployment/mg?view=azure-cli-latest#az-deployment-mg-what-if) für Bereitstellungen von Verwaltungsgruppen
-* [az deployment tenant what-if](/cli/azure/deployment/tenant?view=azure-cli-latest#az-deployment-tenant-what-if) für Bereitstellungen von Mandanten
+* [az deployment mg what-if](/cli/azure/deployment/mg#az-deployment-mg-what-if) für Bereitstellungen von Verwaltungsgruppen
+* [az deployment tenant what-if](/cli/azure/deployment/tenant#az-deployment-tenant-what-if) für Bereitstellungen von Mandanten
 
 Sie können den Parameterschalter `--confirm-with-what-if` (oder seine Kurzform `-c`) verwenden, um eine Vorschau der Änderungen anzuzeigen und dann zum Fortsetzen der Bereitstellung aufgefordert zu werden. Fügen Sie diesen Schalter zu folgenden Befehlen hinzu:
 
@@ -415,15 +387,15 @@ Die erwarteten Änderungen werden angezeigt, und Sie können bestätigen, dass d
 
 Sie können den Was-wäre-wenn-Vorgang über die Azure-SDKs verwenden.
 
-* Verwenden Sie für Python [Was-wäre-wenn-](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations?view=azure-python#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
+* Verwenden Sie für Python [Was-wäre-wenn-](/python/api/azure-mgmt-resource/azure.mgmt.resource.resources.v2019_10_01.operations.deploymentsoperations#what-if-resource-group-name--deployment-name--properties--location-none--custom-headers-none--raw-false--polling-true----operation-config-).
 
-* Verwenden Sie für Java die [DeploymentWhatIf-Klasse](/java/api/com.microsoft.azure.management.resources.deploymentwhatif?view=azure-java-stable).
+* Verwenden Sie für Java die [DeploymentWhatIf-Klasse](/java/api/com.microsoft.azure.management.resources.deploymentwhatif).
 
-* Verwenden Sie für .NET die [DeploymentWhatIf-Klasse](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
+* Verwenden Sie für .NET die [DeploymentWhatIf-Klasse](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif).
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-- Wenn Sie falsche Ergebnisse von Was-wäre-wenn aus der Previewversion bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
+- Wenn Sie falsche Ergebnisse von Was-wäre-wenn-Vorgängen bemerken, melden Sie die Probleme unter [https://aka.ms/whatifissues](https://aka.ms/whatifissues).
 - Informationen zum Bereitstellen von Vorlagen mit Azure PowerShell finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure PowerShell](deploy-powershell.md).
 - Informationen zum Bereitstellen von Vorlagen mit Azure CLI finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und Azure CLI](deploy-cli.md).
 - Informationen zum Bereitstellen von Vorlagen mit REST finden Sie unter [Bereitstellen von Ressourcen mit ARM-Vorlagen und der Resource Manager-REST-API](deploy-rest.md).

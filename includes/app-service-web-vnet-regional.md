@@ -4,12 +4,12 @@ ms.service: app-service-web
 ms.topic: include
 ms.date: 10/21/2020
 ms.author: ccompy
-ms.openlocfilehash: 963f0698b921caa413c61059ad69284c41b4f265
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 57b2955f8cec059cd20d353eba31dc39ad992d50
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95999433"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97506297"
 ---
 Die Verwendung der regionalen VNET-Integration ermöglicht der App Zugriff auf Folgendes:
 
@@ -96,7 +96,17 @@ BGP-Routen (Border Gateway Protocol) wirken sich ebenfalls auf den App-Datenverk
 
 ### <a name="azure-dns-private-zones"></a>Azure DNS Private Zones 
 
-Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit dem Ihr VNET konfiguriert ist. Sie können dieses Verhalten in Ihrer App außer Kraft setzen, indem Sie die App-Einstellung WEBSITE_DNS_SERVER mit der Adresse Ihres gewünschten DNS-Servers konfigurieren. Wenn Sie einen benutzerdefinierten DNS-Server mit Ihrem VNet konfiguriert haben, aber eigentlich wollten, dass Ihre App private Azure DNS-Zonen verwendet, sollten Sie WEBSITE_DNS_SERVER auf den Wert 168.63.129.16 festlegen. 
+Nachdem Ihre App in Ihr VNET integriert wurde, verwendet sie den DNS-Server, mit dem Ihr VNET konfiguriert ist. Standardmäßig funktioniert Ihre App nicht mit Azure DNS Private Zones. Um mit Azure DNS Private Zones zu arbeiten, müssen Sie die folgenden App-Einstellungen hinzufügen:
+
+
+1. WEBSITE_DNS_SERVER mit dem Wert „168.63.129.16“
+1. WEBSITE_VNET_ROUTE_ALL mit dem Wert „1“
+
+
+Mit diesen Einstellungen werden alle ausgehenden Aufrufe von Ihrer App an das VNET gesendet, und Ihre App kann Azure DNS Private Zones verwenden.   Mit diesen Einstellungen werden alle ausgehenden Aufrufe von Ihrer App an das VNet gesendet. Außerdem ermöglicht sie der App, Azure DNS zu verwenden, indem die Privates DNS-Zone auf Workerebene abgefragt wird. Diese Funktion wird verwendet, wenn eine laufende App auf eine Privates DNS-Zone zugreift.
+
+> [!NOTE]
+>Das Hinzufügen einer benutzerdefinierten Domäne zu einer Web-App mit einer Privates DNS-Zone ist mit der VNET-Integration nicht möglich. Die Überprüfung von benutzerdefinierten Domänen erfolgt auf Controllerebene, nicht auf Workerebene. Damit wird verhindert, dass die DNS-Einträge sichtbar gemacht werden. Um eine benutzerdefinierte Domäne aus einer Privates DNS-Zone zu verwenden, muss die Überprüfung mithilfe einer Application Gateway- oder ILB-App Service-Umgebung umgangen werden.
 
 ### <a name="private-endpoints"></a>Private Endpunkte
 

@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 00b5d220cdbc511a309d55cfca2049508049fa30
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 0895e84363d40bdbf30408f2b2a0d95f951eb303
+ms.sourcegitcommit: 3ea45bbda81be0a869274353e7f6a99e4b83afe2
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96549003"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97032557"
 ---
 # <a name="azure-hdinsight-release-notes"></a>Versionshinweise zu Azure HDInsight
 
@@ -64,3 +64,18 @@ HDInsight sorgt weiterhin für Verbesserungen bei der Clusterzuverlässigkeit un
 
 ## <a name="component-version-change"></a>Änderung der Komponentenversion
 Für dieses Release gibt es keine Änderung der Komponentenversion. Die aktuellen Komponentenversionen für HDInsight 4.0 und HDInsight 3.6 finden Sie in [dieser Dokumentation](./hdinsight-component-versioning.md).
+
+## <a name="known-issues"></a>Bekannte Probleme
+### <a name="prevent-hdinsight-cluster-vms-from-rebooting-periodically"></a>Verhindern, dass HDInsight-Cluster-VMs regelmäßig neu gestartet werden
+
+Seit Mitte November 2020 ist Ihnen möglicherweise aufgefallen, dass HDInsight-Cluster-VMs in regelmäßigen Abständen neu gestartet werden. Dies könnte folgende Ursachen haben:
+
+1.  ClamAV ist in Ihrem Cluster aktiviert. Das neue azsec-clamav-Paket beansprucht sehr viel Arbeitsspeicher, wodurch ein Neustart des Knotens ausgelöst wird. 
+2.  Es wurde ein täglicher Cronjob geplant, der Änderungen an der von Azure-Diensten verwendeten Liste der Zertifizierungsstellen überwacht. Wenn ein neues Zertifizierungsstellenzertifikat verfügbar ist, fügt das Skript das Zertifikat dem JDK-Vertrauensspeicher hinzu und plant einen Neustart.
+
+HDInsight stellt für beide Probleme Fixes bereit und wendet Patches auf alle laufenden Cluster an. Wenn Sie den Fix sofort anwenden und unerwartete VM-Neustarts vermeiden möchten, können Sie die Skriptaktionen unten auf allen Clusterknoten als persistente Skriptaktion ausführen. HDInsight sendet einen weiteren Hinweis, nachdem der Fix und der Patch angewandt wurden.
+```
+https://hdiconfigactions.blob.core.windows.net/linuxospatchingrebootconfigv02/replace_cacert_script.sh
+https://healingscriptssa.blob.core.windows.net/healingscripts/ChangeOOMPolicyAndApplyLatestConfigForClamav.sh
+```
+

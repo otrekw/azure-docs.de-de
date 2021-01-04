@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 12/01/2020
+ms.date: 12/09/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: f0cb7d4ebe428da4a370433b3e90a829f30489db
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: a1307aa19c66e3f6fcb71f677e6c67551d2a01f9
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512204"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928323"
 ---
 # <a name="frequently-asked-questions-faq-about-the-microsoft-authenticator-app"></a>Häufig gestellte Fragen zur Microsoft Authenticator-App
 
@@ -116,7 +116,7 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 
 **F:** Funktionieren Benachrichtigungen auch für Nicht-Microsoft-Konten?
 
-**A:** Nein, Benachrichtigungen funktionieren nur bei Microsoft-Konten und Azure Active Directory-Konten. Wenn Ihre Organisation oder Schule Azure AD-Konten verwendet, kann sie dieses Feature deaktivieren.
+**A:** Nein, Benachrichtigungen funktionieren nur bei Microsoft-Konten und Azure Active Directory-Konten. Wenn Ihre Organisation oder Bildungseinrichtung Azure AD-Konten verwendet, kann sie dieses Feature deaktivieren.
 
 ### <a name="backup-and-recovery"></a>Sicherung und Wiederherstellung
 
@@ -207,6 +207,74 @@ Die Microsoft Authenticator-App ersetzt die Azure Authenticator-App und ist die 
 **F:** Meine Apple Watch-Begleit-App ist abgestürzt. Kann ich Ihnen meine Absturzprotokolle zur Untersuchung senden?
 
 **A:** Sie müssen zuerst sicherstellen, dass Sie sich entschieden haben, Ihre Analysen für uns freizugeben. Als TestFlight-Benutzer sind Sie bereits registriert. Andernfalls wechseln Sie zu **Einstellungen > Datenschutz > Analyse**, und wählen Sie sowohl die Option **iPhone- und Watch-Analyse freigeben** als auch **Für App-Entwickler freigeben** aus.<br>Nachdem Sie sich angemeldet haben, können Sie versuchen, den Absturz zu reproduzieren, damit Ihre Absturzprotokolle automatisch zur Untersuchung an uns gesendet werden. Wenn Sie den Absturz jedoch nicht reproduzieren können, können Sie die Protokolldateien manuell kopieren und an uns senden.<ol><li>Öffnen die Watch-App auf Ihrem Telefon, wechseln Sie zu **Einstellungen > Allgemein**, und klicken Sie dann auf **Watch-Analyse kopieren**.</li><li>Suchen Sie den entsprechenden Absturz unter **Einstellungen > Datenschutz > Analyse > Analysedaten**, und kopieren Sie dann den gesamten Text manuell.</li><li>Öffnen Sie Authenticator auf Ihrem Telefon, und fügen Sie den kopierten Text auf der Seite **Protokolle senden** in das Textfeld **Share with App Developers** (Mit App-Entwicklern teilen) ein.</li></ol>
+
+## <a name="autofill-for-consumers"></a>AutoAusfüllen für Benutzer
+
+**F:** Was ist AutoAusfüllen in Authenticator?
+
+**A:** Die Authenticator-App speichert Kennwörter für Apps und Websites, die Sie auf Ihrem Smartphone besuchen, nun sicher und füllt sie automatisch aus. Sie können AutoAusfüllen verwenden, um Ihre Kennwörter auf Ihren iOS- und Android-Geräten zu synchronisieren und automatisch auszufüllen. Nachdem Sie die Authenticator-App auf Ihrem Smartphone als Anbieter für AutoAusfüllen eingerichtet haben, bietet sie die Speicherung Ihrer Kennwörter an, wenn Sie diese auf der Anmeldeseite einer Website oder App eingeben. Die Kennwörter werden in [Ihrem Microsoft-Konto](https://account.microsoft.com/account) gespeichert und sind auch verfügbar, wenn Sie sich mit Ihrem Microsoft-Konto bei Microsoft Edge anmelden.
+
+**F:** Welche Informationen kann die Funktion AutoAusfüllen von Authenticator für mich ausfüllen?
+
+**A:** Authenticator kann automatisch Benutzernamen und Kennwörter auf Websites und in Apps ausfüllen, die Sie auf Ihrem Smartphone bereits besucht haben.
+
+**F:** Wie deaktiviere ich das automatische Ausfüllen von Kennwörtern in Authenticator auf meinem Smartphone?
+
+**A:** Folgen Sie diesen Schritten:
+
+1. Öffnen Sie die Authenticator-App.
+1. Aktivieren Sie in **Einstellungen** unter **Beta** die Option **AutoAusfüllen**.
+1. Wählen Sie in Authenticator auf der Registerkarte **Kennwörter** die Option **Bei Microsoft anmelden** aus, und melden Sie sich mit [Ihrem Microsoft-Konto](https://account.microsoft.com/account) an. Derzeit unterstützt diese Funktion nur Microsoft-Konten und auch noch keine Geschäfts-, Schul- oder Unikonten.
+
+**F:** Wie lege ich Authenticator als Standardanbieter für AutoAusfüllen auf meinem Smartphone fest?
+
+**A:** Folgen Sie diesen Schritten:
+
+1. Öffnen Sie in Authenticator **Einstellungen**, und aktivieren Sie unter **Beta** die Option **AutoAusfüllen**.
+1. Melden Sie sich in der App auf der Registerkarte **Kennwörter** mit [Ihrem Microsoft-Konto](https://account.microsoft.com/account) an.
+1. Führen Sie eines der folgenden Verfahren aus:
+
+   - Wählen Sie bei iOS unter **Einstellungen** im Abschnitt „AutoAusfüllen-Einstellungen“ die Option **Aktivieren von AutoAusfüllen** aus, um zu erfahren, wie Sie Authenticator als Standardanbieter für AutoAusfüllen festlegen.
+   - Wählen Sie bei Android unter **Einstellungen** im Abschnitt „AutoAusfüllen-Einstellungen“ die Option **Als AutoAusfüllen-Anbieter festlegen** aus, um Authenticator als Standardanbieter für AutoAusfüllen festzulegen.
+
+**F:** Warum ist der Schalter für **AutoAusfüllen** in den Einstellungen ausgegraut?
+
+**A:** AutoAusfüllen befindet sich zurzeit in der Betaphase und wurde noch nicht für alle Organisationen oder Kontotypen aktiviert. Wenn der Schalter **AutoAusfüllen** in **Einstellungen** ausgegraut ist, verwenden Sie die Authenticator-App sehr wahrscheinlich mit Ihrem Geschäftskonto. Sie können diese Funktion auf einem Gerät verwenden, auf dem Ihr Geschäftskonto nicht hinzugefügt wurde. Wenn Ihre Organisation mit Microsoft arbeitet, wird der Schalter **AutoAusfüllen** aktiviert, wenn Authenticator ein Geschäftskonto hinzugefügt wurde.
+
+**F:** Wie beende ich die Synchronisierung von Kennwörtern?
+
+**A:** Um die Synchronisierung von Kennwörtern in der Authenticator-App zu deaktivieren, öffnen Sie **Einstellungen** > **AutoAusfüllen-Einstellungen** > **Konto synchronisieren**. Auf dem nächsten Bildschirm können Sie **Synchronisierung beenden und AutoAusfüllen-Daten entfernen** auswählen. Damit werden die Kennwörter und alle anderen AutoAusfüllen-Daten vom Gerät entfernt. Das Entfernen der AutoAusfüllen-Daten hat keine Auswirkungen auf die mehrstufige Authentifizierung.
+
+**F:** Wie werden meine Kennwörter durch die Authenticator-App geschützt?
+
+**A:** Die Authenticator-App bietet bereits einen hohen Grad an Sicherheit für die mehrstufige Authentifizierung und die Kontoverwaltung, und dieselben hohen Sicherheitsstandards werden auch auf die Verwaltung Ihrer Kennwörter angewandt.
+
+- **Die Authenticator-App erfordert eine strenge Authentifizierung:** Für die Anmeldung bei Authenticator ist ein zweiter Faktor erforderlich. Dies bedeutet, dass auf Ihre Kennwörter in der Authenticator-App auch dann nicht zugegriffen werden kann, wenn jemand das Kennwort Ihres Microsoft-Kontos kennt.
+- **AutoAusfüllen-Daten werden durch Biometriedaten und einen Passcode geschützt:** Bevor Sie das Kennwort für eine App oder Website automatisch ausfüllen können, erfordert Authenticator eine biometrische Kennung oder einen Gerätepasscode. Damit wird sichergestellt, dass selbst dann, wenn eine andere Person Zugriff auf Ihr Gerät hat, Ihr Kennwort nicht ausgefüllt oder angezeigt werden kann, da die biometrischen Daten oder die Geräte-PIN fehlen. Außerdem können Benutzer die Seite „Kennwörter“ nur öffnen, wenn sie die biometrischen Daten oder die PIN bereitstellen. Dies gilt selbst dann, wenn sie die App-Sperre in den App-Einstellungen deaktivieren.
+- **Verschlüsselte Kennwörter auf dem Gerät:** Die Kennwörter werden auf dem Gerät verschlüsselt, und die Ver-/Entschlüsselungsschlüssel werden niemals gespeichert, sondern immer dynamisch generiert. Kennwörter werden nur entschlüsselt, wenn der Benutzer dies möchte, also während des automatischen Ausfüllens oder wenn der Benutzer das Kennwort anzeigen möchte. Für beide Aktionen sind jedoch die biometrischen Daten oder die PIN erforderlich.
+- **Cloud- und Netzwerksicherheit:** Ihre Kennwörter in der Cloud werden nur ver- und entschlüsselt, wenn sie auf Ihrem Gerät eintreffen. Die Kennwörter werden über eine per SSL geschützte HTTPS-Verbindung synchronisiert, sodass vertrauliche Daten bei der Synchronisierung nicht von Angreifern abgehört werden können. Außerdem wird die Integrität der über das Netzwerk synchronisierten Daten mithilfe kryptografischer Hashfunktionen (insbesondere durch hashbasierte Nachrichtenauthentifizierungscodes) überprüft.
+
+## <a name="autofill-for-it-admins"></a>AutoAusfüllen für IT-Administratoren
+
+**F:** Können meine Mitarbeiter oder Schüler/Studierende AutoAusfüllen für Kennwörter in der Authenticator-App ebenfalls nutzen?
+
+**A:** Nein. Das Feature AutoAusfüllen befindet sich zurzeit in der Betaphase und wurde noch nicht für alle Organisationen oder Kontotypen aktiviert. Wenn Ihre Mitarbeiter oder Schüler/Studierenden ihre Geschäfts-, Schul- oder Unikonten in der Microsoft Authenticator-App hinzugefügt haben, steht ihnen AutoAusfüllen nicht zur Verfügung. Eine Ausnahme von dieser Einschränkung bildet der Fall, dass Mitarbeiter oder Schüler/Studierende ihre Geschäfts-, Schul- oder Unikonten in der cloudbasierten Microsoft Multi-Factor Authentication als [externe Konten oder Konten eines Drittanbieters](user-help-auth-app-add-non-ms-account.md) hinzufügen.
+
+**F:** Kann ich die Funktion AutoAusfüllen für meine Mitarbeiter (oder Schüler/Studierende) verfügbar machen?
+
+**A:** Ja. Um die Funktion für Ihre Mitarbeiter oder Schüler/Studierende zu aktivieren, kann Ihr Unternehmen oder Ihre Bildungseinrichtung einer Positivliste hinzugefügt werden. Wenden Sie sich an einen Support- oder Microsoft-Mitarbeiter, um der Positivliste hinzugefügt zu werden. Wenn Sie ein IT-Administrator für Ihre Organisation sind, können Sie auch ein Formular ausfüllen, um Ihr Interesse an der Aufnahme in die [Allow-List Enterprise for Autofill in Authenticator](https://aka.ms/RequestAutofillInAuthenticator) (Positivliste von Unternehmen für AutoAusfüllen in Authenticator) auszudrücken.
+
+**F:** Werden die Kennwörter für Geschäfts-, Schul- oder Unikonten meiner Benutzer automatisch synchronisiert?
+
+**A:** Nein. Für das automatische Auffüllen von Kennwörtern werden keine Kennwörter der Geschäfts-, Schul- oder Unikonten von Benutzern synchronisiert. Wenn Benutzer eine Website oder eine App besuchen, bietet Authenticator die Speicherung des Kennworts für diese Website oder App an. Das Kennwort wird nur gespeichert, wenn der Benutzer sich dazu entscheidet.
+  
+**F:** Kann ich nur bestimmte Benutzer meiner Organisation in die Positivliste für AutoAusfüllen aufnehmen?
+
+**A:** Nein. Unternehmen können derzeit AutoAusfüllen für Kennwörter nur für alle oder keine Ihrer Mitarbeiter aktivieren. Diese Steuerungsmöglichkeiten werden schrittweise erweitert.
+
+**F:** Was geschieht, wenn meine Mitarbeiter oder Schüler/Studierenden mehrere Geschäfts-, Schul- oder Unikonten haben? Einer meiner Mitarbeiter hat z. B. Konten mehrerer Unternehmen oder Bildungseinrichtungen in Microsoft Authenticator.
+
+**A:** Alle Unternehmen oder Bildungseinrichtungen, die in der Authenticator-App hinzugefügt werden, müssen auch in die Positivliste für das automatische Ausfüllen von Kennwörtern in Authenticator aufgenommen werden, damit der App-Besitzer sie verwenden kann. Eine Ausnahme von dieser Einschränkung bildet der Fall, dass Mitarbeiter oder Schüler/Studierende ihre Geschäfts-, Schul- oder Unikonten in der cloudbasierten Microsoft Multi-Factor Authentication als [externe Konten oder Konten eines Drittanbieters](user-help-auth-app-add-non-ms-account.md) hinzufügen.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

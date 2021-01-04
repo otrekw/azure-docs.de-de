@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: how-to
 ms.date: 11/23/2020
-ms.openlocfilehash: c991559d550b351ce70bcc5834f96f313f856a82
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: 30004306d9ff44df04a26640a2bd7a09256fce25
+ms.sourcegitcommit: 66479d7e55449b78ee587df14babb6321f7d1757
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550328"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97516685"
 ---
 # <a name="credentials-for-source-authentication-in-azure-purview"></a>Anmeldeinformationen für die Quellenauthentifizierung in Azure Purview
 
@@ -20,7 +20,7 @@ In diesem Artikel wird beschrieben, wie Sie Anmeldeinformationen in Azure Purvie
 
 ## <a name="prerequisites"></a>Voraussetzungen
 
-* Azure Key Vault-Instanz. Falls Sie noch nicht über eine Instanz verfügen, können Sie diesen Link (Link zum Artikel zur Key Vault-Erstellung einfügen) verwenden, um Informationen zur Erstellung zu erhalten.
+* Ein Azure-Schlüsseltresor. Informationen zur Erstellung finden Sie unter [Schnellstart: Erstellen eines Schlüsseltresors über das Azure-Portal](../key-vault/general/quick-create-portal.md).
 
 ## <a name="introduction"></a>Einführung
 Bei Anmeldeinformationen handelt es sich um Informationen für die Authentifizierung, die von Azure Purview für die Authentifizierung bei Ihren registrierten Datenquellen genutzt werden können. Ein Objekt für Anmeldeinformationen kann für verschiedene Arten von Authentifizierungsszenarien (z. B. Standardauthentifizierung mit Benutzername/Kennwort) erstellt werden. Hierfür werden basierend auf der ausgewählten Authentifizierungsmethode die erforderlichen spezifischen Informationen erfasst. Für die Anmeldeinformationen werden Ihre vorhandenen Azure Key Vault-Geheimnisse verwendet, um bei der Erstellung der Anmeldeinformationen vertrauliche Authentifizierungsinformationen abzurufen.

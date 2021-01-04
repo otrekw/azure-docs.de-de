@@ -9,12 +9,12 @@ ms.date: 12/08/2020
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 07ad0714d0294ad90150acb9df14f17bfc1f5f0d
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: c2074402225c8134329e00003e4fbdfd95b5dba6
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
 ms.lasthandoff: 12/09/2020
-ms.locfileid: "96905365"
+ms.locfileid: "96938408"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurieren von Azure Storage-Firewalls und virtuellen Netzwerken
 
@@ -64,7 +64,7 @@ Standardmäßige Netzwerkzugriffsregeln für Speicherkonten können über das Az
 
 1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
 
-1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+1. Klicken Sie auf das Einstellungsmenü namens **Netzwerk**.
 
 1. Wenn der Zugriff standardmäßig verweigert werden soll, wählen Sie aus, dass Zugriff über **Ausgewählte Netzwerke** gewährt werden soll. Wenn Sie Datenverkehr aus allen Netzwerken zulassen möchten, wählen Sie aus, dass der Zugriff über **Alle Netzwerke** gewährt werden soll.
 
@@ -148,7 +148,7 @@ VNET-Regeln für Speicherkonten können über das Azure-Portal, über PowerShell
 
 1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
 
-1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+1. Klicken Sie auf das Einstellungsmenü namens **Netzwerk**.
 
 1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
 
@@ -272,7 +272,7 @@ IP-Netzwerkregeln für Speicherkonten können über das Azure-Portal, über Powe
 
 1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
 
-1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+1. Klicken Sie auf das Einstellungsmenü namens **Netzwerk**.
 
 1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
 
@@ -415,7 +415,7 @@ Netzwerkregelausnahmen können über das Azure-Portal, über PowerShell oder per
 
 1. Navigieren Sie zu dem Speicherkonto, das Sie schützen möchten.
 
-1. Klicken Sie auf das Einstellungsmenü mit dem Namen **Firewalls und virtuelle Netzwerke**.
+1. Klicken Sie auf das Einstellungsmenü namens **Netzwerk**.
 
 1. Vergewissern Sie sich, dass Sie den Zugriff über **Ausgewählte Netzwerke** ausgewählt haben.
 

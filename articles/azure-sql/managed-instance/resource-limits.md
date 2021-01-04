@@ -12,12 +12,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
-ms.openlocfilehash: 11c3de703a4b37318b7b99f60d74190fe8ec8610
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 47c837e7a2ee859c7805d6b2e11058bcc02e6c22
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93077369"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400572"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Übersicht über Ressourcenlimits für Azure SQL Managed Instance
 [!INCLUDE[appliesto-sqlmi](../includes/appliesto-sqlmi.md)]
@@ -108,7 +108,7 @@ In der Dienstebene „Universell“ erhält jede Datenbankdatei in Abhängigkeit
 
 Wenn Sie für bestimmte Datenbankdateien eine hohe E/A-Latenz bemerken oder feststellen, dass der Grenzwert für IOPS/Durchsatz erreicht wird, können Sie die Leistung möglicherweise durch [Vergrößern der Dateigröße](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Increase-data-file-size-to-improve-HammerDB-workload-performance/ba-p/823337) verbessern.
 
-Es gibt auch eine Beschränkung auf Instanzebene für den maximalen Protokollschreibdurchsatz (der 22 MB/s beträgt), sodass Sie den maximalen Dateidurchsatz für die Protokolldatei möglicherweise nicht erreichen, weil der Grenzwert für den Durchsatz auf Instanzebene erreicht wurde.
+Es gibt auch eine Beschränkung auf Instanzebene für den maximalen Protokollschreibdurchsatz (die Werte finden Sie weiter oben, z. B. 22 MB/s), sodass Sie den maximalen Dateidurchsatz für die Protokolldatei möglicherweise nicht erreichen, da der Grenzwert für den Durchsatz auf Instanzebene erreicht wurde.
 
 ## <a name="supported-regions"></a>Unterstützte Regionen
 
@@ -132,8 +132,8 @@ SQL Managed Instance unterstützt aktuell nur die Bereitstellung für folgende A
 
 Unterstützte Abonnementtypen können eine begrenzte Anzahl von Ressourcen pro Region umfassen. Abhängig vom Abonnementtyp gelten für SQL Managed Instance zwei Standardgrenzwerte pro Azure-Region (die bei Bedarf durch das Erstellen einer speziellen [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erhöht werden können):
 
-- **Subnetzlimit** : Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
-- **Grenzwert für virtuelle Kerneinheiten** : Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
+- **Subnetzlimit**: Die maximale Anzahl von Subnetzen, wenn Instanzen von SQL Managed Instance in einer einzelnen Region bereitgestellt werden.
+- **Grenzwert für virtuelle Kerneinheiten**: Die maximale Anzahl von virtuellen Kerneinheiten, die in einer einzelnen Region über alle Instanzen hinweg bereitgestellt werden können. Ein virtueller Kern „Universell“ verwendet eine einzige virtuelle Kerneinheit, und ein virtueller Kern „Unternehmenskritisch“ verwendet 4 virtuelle Kerneinheiten. Die Gesamtanzahl der Instanzen ist nicht begrenzt, solange sie innerhalb des Limits der virtuellen Kerneinheiten liegt.
 
 > [!Note]
 > Diese Limits sind Standardeinstellungen und keine technischen Einschränkungen. Die Limits können bei Bedarf erhöht werden, indem Sie eine spezielle [Supportanfrage im Azure-Portal](../database/quota-increase-request.md) erstellen, falls Sie mehr Instanzen in der aktuellen Region benötigen. Alternativ können Sie auch neue Instanzen von SQL Managed Instance in einer anderen Azure-Region erstellen, ohne Supportanfragen zu senden.

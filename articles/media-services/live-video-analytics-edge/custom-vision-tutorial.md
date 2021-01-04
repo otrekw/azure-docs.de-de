@@ -4,12 +4,12 @@ description: Erfahren Sie, wie Sie mit Azure Custom Vision ein Containermodell e
 ms.topic: tutorial
 ms.date: 09/08/2020
 zone_pivot_groups: ams-lva-edge-programming-languages
-ms.openlocfilehash: b4d9f82d99542bde216f0eaa1459d0f6c1a52659
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: 614c4e401579eda68d8030dc2d2a42b2c4736031
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498335"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401694"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Tutorial: Analysieren von Livevideo mit Live Video Analytics in IoT Edge and Azure Custom Vision
 
@@ -69,9 +69,9 @@ In diesem Tutorial wird mit einer [Spielzeugauto-Rückschlussvideodatei](https:/
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/custom-vision-tutorial/topology-custom-vision.svg" alt-text="Diagramm, das eine Übersicht zu Custom Vision zeigt.":::
 
-In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Video-Einzelbilder an den Knoten des [Bildfrequenzfilterprozessors](media-graph-concept.md#frame-rate-filter-processor). Dieser Prozessor begrenzt die Bildfrequenz des Videostreams, der den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor) erreicht.
+In diesem Diagramm ist der Fluss der Signale in diesem Tutorial dargestellt. Ein [Edge-Modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) simuliert eine IP-Kamera, die einen RTSP-Server (Real-Time Streaming Protocol) hostet. Der Knoten einer [RTSP-Quelle](media-graph-concept.md#rtsp-source) ruft den Videofeed von diesem Server ab und sendet Videoframes an den Knoten des [HTTP-Erweiterungsprozessors](media-graph-concept.md#http-extension-processor).
 
-Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys. Er wandelt die Video-Einzelbilder in den angegebenen Bildtyp um. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Prozessorknoten der HTTP-Erweiterung erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse auf dem Knoten der [Azure IoT-Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Anschließend sendet der Knoten diese Ereignisse an den [IoT Edge-Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
+Der HTTP-Erweiterungsknoten übernimmt dabei die Rolle eines Proxys.  Dabei werden die eingehenden Videoframes, die durch das Feld `samplingOptions` festgelegt wurden, abgetastet und darüber hinaus in den angegebenen Bildtyp umgewandelt. Anschließend leitet der das Bild über REST an ein anderes Edge-Modul weiter, das ein KI-Modell hinter einem HTTP-Endpunkt ausführt. In diesem Beispiel handelt es sich bei dem Edge-Modul um das mithilfe von Custom Vision erstellte Spielzeug-LKW-Erkennungsmodell. Der Prozessorknoten der HTTP-Erweiterung erfasst die Erkennungsergebnisse und veröffentlicht Ereignisse auf dem Knoten der [Azure IoT-Hub-Senke](media-graph-concept.md#iot-hub-message-sink). Anschließend sendet der Knoten diese Ereignisse an den [IoT Edge-Hub](../../iot-edge/iot-edge-glossary.md#iot-edge-hub).
 
 ## <a name="build-and-deploy-a-custom-vision-toy-detection-model"></a>Erstellen und Bereitstellen eines Custom Vision-Spielzeugerkennungsmodells 
 

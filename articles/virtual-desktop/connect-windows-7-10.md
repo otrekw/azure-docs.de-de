@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: c9da2acac0957d7fe06d0249775fbed73b5f458d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 59379dd9c3a41729466de269b52dfd3fb206eea9
+ms.sourcegitcommit: 1bdcaca5978c3a4929cccbc8dc42fc0c93ca7b30
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287337"
+ms.lasthandoff: 12/13/2020
+ms.locfileid: "97368714"
 ---
 # <a name="connect-with-the-windows-desktop-client"></a>Herstellen einer Verbindung mit dem Windows-Desktopclient
 
@@ -69,3 +69,5 @@ Es gibt zwei Möglichkeiten zum Abonnieren eines Arbeitsbereichs. Der Client kan
 ## <a name="next-steps"></a>Nächste Schritte
 
 Weitere Informationen zur Verwendung des Windows Desktop-Clients finden Sie unter [Erste Schritte mit dem Windows Desktop-Client](/windows-server/remote/remote-desktop-services/clients/windowsdesktop/).
+
+Wenn Sie ein Administrator sind, der ausführlichere Kenntnisse zur Verwendung von Windows Desktop erwerben möchte, sehen Sie sich [Windows Desktop-Client für Administratoren](/windows-server/remote/remote-desktop-services/clients/windowsdesktop-admin) an.

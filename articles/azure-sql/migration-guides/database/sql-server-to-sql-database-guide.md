@@ -1,5 +1,5 @@
 ---
-title: 'Migrationsleitfaden: SQL Server zu SQL-Datenbank'
+title: 'SQL Server zu SQL-Datenbank: Migrationsleitfaden'
 description: Befolgen Sie diese Anleitung, um Ihre SQL Server-Datenbanken zu Azure SQL-Datenbank zu migrieren.
 ms.service: sql-database
 ms.subservice: migration-guide
@@ -10,12 +10,12 @@ author: mokabiru
 ms.author: mokabiru
 ms.reviewer: MashaMSFT
 ms.date: 11/06/2020
-ms.openlocfilehash: ee4abaf3c9f6aa70ba14920711c8917994254649
-ms.sourcegitcommit: 4295037553d1e407edeb719a3699f0567ebf4293
+ms.openlocfilehash: f4f54aa02fb56ba5bf5ae9fcec2dae07c7dc0a27
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/30/2020
-ms.locfileid: "96326980"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97358978"
 ---
 # <a name="migration-guide-sql-server-to-sql-database"></a>Migrationsleitfaden: SQL Server zu SQL-Datenbank
 [!INCLUDE[appliesto--sqldb](../../includes/appliesto-sqldb.md)]
@@ -73,7 +73,7 @@ Befolgen Sie diese Schritte, um Ihre Umgebung mit dem Datenmigrations-Assistente
 1. Wählen Sie einen Projektnamen, SQL Server als Quellserver und Azure SQL-Datenbank als Zielserver aus. 
 1. Legen Sie fest, welche Bewertungsberichte generiert werden sollen – zum Beispiel für die Datenbankkompatibilität oder die Featureparität. Die Berechtigungen für den SQL Server-Quellserver unterscheiden sich je nach Art der Bewertung möglicherweise.  DMA zeigt vor der Bewertung an, welche Berechtigungen für den ausgewählten Advisor benötigt werden.
     - Die Kategorie **Featureparität** enthält ausführliche Empfehlungen, in Azure verfügbare Alternativen und Schritte zur Risikominimierung, die bei der Planung Ihres Migrationsprojekts nützlich sind. Hierfür sind sysadmin-Berechtigungen erforderlich.
-    - In der Kategorie **Kompatibilitätsprobleme** werden teilweise oder nicht unterstützte Features aufgeführt, die die Migration möglicherweise verhindern, sowie Empfehlungen, um diese zu beheben. Die Berechtigungen `CONNECT SQL`, `VIEW SERVER STATE` und `VIEW ANY DEFINITION` sind erforderlich.
+    - In der Kategorie **Kompatibilitätsprobleme** werden teilweise oder nicht unterstützte Features aufgeführt, die die Migration möglicherweise verhindern, sowie Empfehlungen, um diese Probleme zu beheben. Die Berechtigungen `CONNECT SQL`, `VIEW SERVER STATE` und `VIEW ANY DEFINITION` sind erforderlich.
 1. Geben Sie die Quellverbindungsdetails für Ihre SQL Server-Instanz an, und stellen Sie eine Verbindung mit der Quelldatenbank her.
 1. Klicken Sie auf **Bewertung starten**. 
 1. Lesen Sie sich nach Abschluss des Vorgangs die Bewertungsberichte durch, um beispielsweise Probleme mit der Featureparität zu ermitteln, die die Migration verhindern könnten. Der Bewertungsbericht kann auch in eine Datei exportiert und für andere Teams und Mitarbeiter in Ihrer Organisation freigegeben werden. 

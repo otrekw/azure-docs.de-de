@@ -2,18 +2,18 @@
 title: Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 titleSuffix: Azure App Configuration
 description: Authentifizieren bei Azure App Configuration mit verwalteten Identitäten
-author: lisaguthrie
-ms.author: lcozzens
+author: AlexandraKemperMS
+ms.author: alkemper
 ms.service: azure-app-configuration
 ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.date: 2/25/2020
-ms.openlocfilehash: f2d8c6e94638c01fb21e070a756c0c97c330fb26
-ms.sourcegitcommit: 4cb89d880be26a2a4531fedcc59317471fe729cd
+ms.openlocfilehash: 8ef3ff20c67eefa2091ffb1732ced813b169e596
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/27/2020
-ms.locfileid: "92671610"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96929751"
 ---
 # <a name="use-managed-identities-to-access-app-configuration"></a>Verwenden verwalteter Identitäten für den Zugriff auf App Configuration
 
@@ -22,6 +22,9 @@ Mit [verwalteten Identitäten](../active-directory/managed-identities-azure-reso
 Azure App Configuration und die zugehörigen .NET Core-, .NET Framework- und Java Spring-Clientbibliotheken verfügen über integrierte Unterstützung für die verwaltete Dienstidentität. Zwar müssen Sie die verwaltete Identität nicht verwenden, jedoch entfällt durch deren Verwendung die Notwendigkeit für ein Zugriffstoken mit Geheimnissen. Ihr Code kann nur mithilfe des Dienstendpunkts auf den App Configuration-Speicher zuzugreifen. Sie können diese URL direkt in Ihren Code einbetten, ohne Geheimnisse offenzulegen.
 
 In diesem Artikel wird veranschaulicht, wie Sie die verwaltete Identität für den Zugriff auf App Configuration nutzen können. Dies baut auf der Web-App auf, die in den Schnellstartanleitungen vorgestellt wurde. Bevor Sie fortfahren, [erstellen Sie eine ASP.NET Core-App mit App Configuration](./quickstart-aspnet-core-app.md).
+
+> [!NOTE]
+> In diesem Artikel wird Azure App Service als Beispiel verwendet. Das Konzept gilt aber ebenso für alle anderen Azure-Dienste, die verwaltete Identitäten unterstützen, z. B. [Azure Kubernetes Service](../aks/use-azure-ad-pod-identity.md), [Azure Virtual Machine](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md) und [Azure Container Instances](../container-instances/container-instances-managed-identity.md). Wenn Ihre Workload in einem dieser Dienste gehostet wird, können Sie auch die Unterstützung dieses Diensts für verwaltete Identitäten nutzen.
 
 In diesem Artikel wird außerdem gezeigt, wie Sie die verwaltete Identität in Verbindung mit den Key Vault-Verweisen von App Configuration verwenden können. Mit einer einzelnen verwalteten Identität können Sie nahtlos aus Key Vault auf beide Geheimnisse und aus App Configuration auf Konfigurationswertezugreifen. Wenn Sie diese Funktion erkunden möchten, stellen Sie zuerst [Verwenden von Key Vault-Verweisen mit ASP.NET Core](./use-key-vault-references-dotnet-core.md) fertig.
 
@@ -49,17 +52,17 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
 1. Erstellen Sie im [Azure-Portal](https://portal.azure.com) wie gewohnt eine App Services-Instanz. Wechseln Sie im Portal zu dieser App.
 
-1. Scrollen Sie im linken Bereich nach unten zur Gruppe **Einstellungen** , und wählen Sie **Identität** .
+1. Scrollen Sie im linken Bereich nach unten zur Gruppe **Einstellungen**, und wählen Sie **Identität**.
 
-1. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein** , und wählen Sie **Speichern** aus.
+1. Ändern Sie auf der Registerkarte **Systemseitig zugewiesen** den **Status** in **Ein**, und wählen Sie **Speichern** aus.
 
-1. Antworten Sie mit **Ja** , wenn Sie gefragt werden, ob Sie die systemseitig zugewiesene verwaltete Identität aktivieren möchten.
+1. Antworten Sie mit **Ja**, wenn Sie gefragt werden, ob Sie die systemseitig zugewiesene verwaltete Identität aktivieren möchten.
 
     ![Festlegen der verwalteten Identität in App Service](./media/set-managed-identity-app-service.png)
 
 ## <a name="grant-access-to-app-configuration"></a>Gewähren des Zugriffs auf App Configuration
 
-1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Alle Ressourcen** , und wählen Sie dann den App Configuration-Speicher aus, den Sie in der Schnellstartanleitung erstellt haben.
+1. Klicken Sie im [Azure-Portal](https://portal.azure.com) auf **Alle Ressourcen**, und wählen Sie dann den App Configuration-Speicher aus, den Sie in der Schnellstartanleitung erstellt haben.
 
 1. Wählen Sie die Option **Zugriffssteuerung (IAM)** aus.
 
@@ -85,7 +88,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
 
 1. Suchen Sie den Endpunkt Ihres App Configuration-Speichers. Diese URL wird auf der Registerkarte **Zugriffsschlüssel** für den Speicher im Azure-Portal aufgelistet.
 
-1. Öffnen Sie die Datei *appsettings.json* , und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App Configuration-Speicher.
+1. Öffnen Sie die Datei *appsettings.json*, und fügen Sie das folgende Skript hinzu. Ersetzen Sie *\<service_endpoint>* (einschließlich der spitzen Klammern) durch die URL für Ihren App Configuration-Speicher.
 
     ```json
     "AppConfig": {
@@ -93,7 +96,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     }
     ```
 
-1. Öffnen Sie *Program.cs* , und fügen Sie einen Verweis auf die Namespaces `Azure.Identity` und `Microsoft.Azure.Services.AppAuthentication` hinzu:
+1. Öffnen Sie *Program.cs*, und fügen Sie einen Verweis auf die Namespaces `Azure.Identity` und `Microsoft.Azure.Services.AppAuthentication` hinzu:
 
     ```csharp-interactive
     using Azure.Identity;
@@ -136,7 +139,7 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     ```
     ---
 
-1. Um sowohl App Configuration-Werte als auch Key Vault-Verweise zu verwenden, aktualisieren Sie *Program.cs* , wie unten gezeigt. Dieser Code erstellt einen neuen `KeyVaultClient`, der einen `AzureServiceTokenProvider` verwendet und diesen Verweis an einen Aufruf der `UseAzureKeyVault`-Methode übergibt.
+1. Um sowohl App Configuration-Werte als auch Key Vault-Verweise zu verwenden, aktualisieren Sie *Program.cs*, wie unten gezeigt. Mit diesem Code wird `SetCredential` als Teil von `ConfigureKeyVault` aufgerufen, um dem Konfigurationsanbieter mitzuteilen, welche Anmeldeinformationen für die Authentifizierung bei Key Vault verwendet werden sollen.
 
     ### <a name="net-core-2x"></a>[.NET Core 2.x](#tab/core2x)
 
@@ -151,10 +154,10 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
                    config.AddAzureAppConfiguration(options =>
                    {
                        options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                           .ConfigureKeyVault(kv =>
-                           {
-                              kv.SetCredential(credentials);
-                           });
+                              .ConfigureKeyVault(kv =>
+                              {
+                                 kv.SetCredential(credentials);
+                              });
                    });
                })
                .UseStartup<Startup>();
@@ -175,10 +178,10 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
                     config.AddAzureAppConfiguration(options =>
                     {
                         options.Connect(new Uri(settings["AppConfig:Endpoint"]), credentials)
-                            .ConfigureKeyVault(kv =>
-                            {
-                                kv.SetCredential(credentials);
-                            });
+                               .ConfigureKeyVault(kv =>
+                               {
+                                   kv.SetCredential(credentials);
+                               });
                     });
                 });
             })
@@ -186,10 +189,10 @@ Um eine verwaltete Entität im Portal einzurichten, erstellen Sie zuerst eine An
     ```
     ---
 
-    Sie können jetzt auf Key Vault-Verweise zugreifen wie auf jeden anderen App Configuration-Schlüssel. Der Konfigurationsanbieter verwendet den `KeyVaultClient`, den Sie für die Authentifizierung bei Key Vault konfiguriert haben, und ruft den Wert ab.
+    Sie können jetzt auf Key Vault-Verweise zugreifen wie auf jeden anderen App Configuration-Schlüssel. Der Konfigurationsanbieter verwendet die `ManagedIdentityCredential` für die Authentifizierung bei Key Vault und ruft den Wert ab.
 
-> [!NOTE]
-> `ManagedIdentityCredential` unterstützt nur die Authentifizierung der verwalteten Identität. Dies funktioniert nicht in lokalen Umgebungen. Wenn Sie den Code lokal ausführen möchten, sollten Sie `DefaultAzureCredential` verwenden, wodurch auch die Dienstprinzipalauthentifizierung unterstützt wird. Nähere Informationen finden Sie unter diesem [Link](/dotnet/api/azure.identity.defaultazurecredential).
+    > [!NOTE]
+    > Die `ManagedIdentityCredential` funktionieren nur in Azure-Umgebungen von Diensten, die die Authentifizierung mit verwalteten Identitäten unterstützen. Sie funktionieren nicht in lokalen Umgebungen. Verwenden Sie [`DefaultAzureCredential`](/dotnet/api/azure.identity.defaultazurecredential), damit der Code sowohl in lokalen als auch in Azure-Umgebungen funktioniert, da sie einen Fallback auf Authentifizierungsoptionen (einschließlich der verwalteten Identität) ermöglichen.
 
 [!INCLUDE [Prepare repository](../../includes/app-service-deploy-prepare-repo.md)]
 
@@ -235,7 +238,7 @@ git remote add azure <url>
 Führen Sie einen Pushvorgang zum Azure-Remotespeicherort durch, um Ihre App mit dem folgenden Befehl bereitzustellen. Geben Sie bei Aufforderung zur Eingabe eines Kennworts das Kennwort ein, das Sie in [Konfigurieren eines Bereitstellungsbenutzers](#configure-a-deployment-user) erstellt haben. Verwenden Sie nicht das Kennwort, mit dem Sie sich beim Azure-Portal anmelden.
 
 ```bash
-git push azure master
+git push azure main
 ```
 
 Die Ausgabe enthält u. U. laufzeitspezifische Automatisierungen wie MSBuild für ASP.NET, `npm install` für Node.js und `pip install` für Python.

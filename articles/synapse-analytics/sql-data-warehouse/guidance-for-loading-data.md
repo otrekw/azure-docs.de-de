@@ -11,12 +11,12 @@ ms.date: 11/20/2020
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
-ms.openlocfilehash: 39625914f179dfc8d5511b9a3d386cc8332b7efa
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: a96d49a029eb83e24c1fb86954406693aa9c33a3
+ms.sourcegitcommit: 5db975ced62cd095be587d99da01949222fc69a3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96456303"
+ms.lasthandoff: 12/10/2020
+ms.locfileid: "97093960"
 ---
 # <a name="best-practices-for-loading-data-using-dedicated-sql-pools-in-azure-synapse-analytics"></a>Bewährte Methoden für das Laden von Daten mithilfe von dedizierten SQL-Pools in Azure Synapse Analytics
 
@@ -71,6 +71,9 @@ Stellen Sie eine Verbindung mit dem dedizierten SQL-Pool her, und erstellen Sie 
        ,MEMBERNAME = 'loader'
    );
 ```
+<br><br>
+>[!IMPORTANT] 
+>Dies ist ein extremes Beispiel für die Zuweisung von 100 % der Ressourcen des SQL-Pools zu einem einzelnen Ladevorgang. Dadurch erzielen Sie die maximale Parallelität von 1. Beachten Sie, dass dies nur für den anfänglichen Ladevorgang verwendet werden sollte, bei dem Sie zusätzliche Workloadgruppen mit eigenen Konfigurationen erstellen müssen, um Ressourcen für Ihre Workloads auszugleichen. 
 
 Um einen Ladevorgang mit Ressourcen für die Arbeitsauslastungsgruppe auszuführen, melden Sie sich als „loader“ an, und führen Sie den Ladevorgang aus.
 

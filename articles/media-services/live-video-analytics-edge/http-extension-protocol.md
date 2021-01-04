@@ -3,16 +3,18 @@ title: HTTP-Erweiterungsprotokoll – Azure
 description: In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
 ms.topic: overview
 ms.date: 09/14/2020
-ms.openlocfilehash: f1e1fb0e8fe63b3a83c59a4ec48abdac7f22096a
-ms.sourcegitcommit: 2c586a0fbec6968205f3dc2af20e89e01f1b74b5
+ms.openlocfilehash: 52c98231780a2776f4ff67992f29b247eccb8bc2
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/14/2020
-ms.locfileid: "92016653"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97399144"
 ---
 # <a name="http-extension-protocol"></a>HTTP-Erweiterungsprotokoll
 
-In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul.
+Mit Live Video Analytics in IoT Edge können Sie die Mediengraph-Verarbeitungsfunktionen über einen [Grapherweiterungsknoten](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/media-graph-extension-concept?branch=release-lva-dec-update) erweitern. Wenn Sie den HTTP-Erweiterungsprozessor als Erweiterungsknoten verwenden, erfolgt die Kommunikation zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul über HTTP.
+
+In diesem Artikel erfahren Sie mehr über die Verwendung des HTTP-Erweiterungsprotokolls zum Senden von Nachrichten zwischen dem Live Video Analytics-Modul und Ihrem KI- oder CV-Modul. 
 
 Der HTTP-Vertrag wird zwischen den folgenden beiden Komponenten definiert:
 
@@ -85,19 +87,16 @@ Date: Fri, 17 Apr 2020 04:44:01 GMT
 }
 ```
 
-Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem im Folgenden definierten vorab festgelegten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
+Es wird dringend empfohlen, dass Antworten mithilfe gültiger JSON-Dokumente zurückgegeben werden, die dem gemäß dem [Schemaobjektmodell für Rückschlussmetadaten](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update) vorab definierten Schema entsprechen. Dies gewährleistet eine bessere Interoperabilität mit anderen Komponenten und möglichen zukünftigen Funktionen, die dem Live Video Analytics-Modul hinzugefügt werden.
 
 Wenn Ihr Modul eine Antwort zurückgibt, bei der der Inhaltstyp nicht „application/json“ lautet, codiert Live Video Analytics die Nachricht als Base64-Inhalt und serialisiert sie als transparente JSON-Nutzlast.
 
-Wenn Ihr Modul eine Antwort mit dem Inhaltstyp „application/json“ zurückgibt, das JSON-Schema jedoch nicht dem unten beschriebenen Rückschlussmetadatenschema folgt, wird die Nachrichtennutzlast über die Pipeline weitergeleitet, aber die Interoperabilität wird verringert.
+Wenn Ihr Modul eine Antwort mit dem Inhaltstyp „application/json“ zurückgibt, das JSON-Schema jedoch nicht dem unten beschriebenen Rückschlussmetadatenschema folgt, wird die Nachrichtennutzlast über die Pipeline weitergeleitet, aber die Interoperabilität wird verringert. Ausführliche und aktuelle Informationen zum Rückschlussmetadatenschema finden Sie [hier](https://review.docs.microsoft.com/en-us/azure/media-services/live-video-analytics-edge/inference-metadata-schema?branch=release-lva-dec-update).
 
 > [!NOTE]
 > Wenn Ihr Modul kein Ergebnis liefert, sollte es den HTTP-204-Statuscode (kein Inhalt) mit einem leeren Antworttext zurückgeben. Live Video Analytics wird dies als leeres Ergebnis verstehen und das Ereignis nicht über die gesamte Pipeline weiterleiten.
 
-## <a name="data-contracts---class-hierarchy"></a>Datenverträge – Klassenhierarchie
-
-![Klassenhierarchie](./media/http-extension-protocol/class-hierarchy.png)
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-[gRPC-Datenvertrag](./grpc-extension-protocol.md)
+[gRPC-Erweiterungsprotokoll](./grpc-extension-protocol.md)

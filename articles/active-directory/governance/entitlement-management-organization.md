@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: how-to
 ms.subservice: compliance
-ms.date: 09/28/2020
+ms.date: 12/11/2020
 ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a1cdf983dc8fed64c7d283ac216eb803746add95
-ms.sourcegitcommit: 2e9643d74eb9e1357bc7c6b2bca14dbdd9faa436
+ms.openlocfilehash: 6299f9ad660252ae39903401672d493b1c1ad52c
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96029369"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97347488"
 ---
 # <a name="add-a-connected-organization-in-azure-ad-entitlement-management"></a>Hinzufügen einer verbundenen Organisation in der Azure AD-Berechtigungsverwaltung
 
@@ -29,7 +29,13 @@ Dank der Berechtigungsverwaltung von Azure Active Directory (Azure AD) ist es m
 
 ## <a name="what-is-a-connected-organization"></a>Was ist eine verbundene Organisation?
 
-Eine verbundene Organisation ist ein externes Azure AD-Verzeichnis bzw. eine externe Domäne, mit der eine Beziehung besteht.
+Eine verbundene Organisation ist eine andere Organisation, mit der eine Beziehung besteht.  Damit Benutzer aus dieser Organisation auf Ihre Ressourcen zugreifen können (z. B. Ihre SharePoint Online-Websites oder Apps), benötigen Sie eine Darstellung der Benutzer dieser Organisation in diesem Verzeichnis.  Da die Benutzer dieser Organisation in den meisten Fällen noch nicht in Ihrem Azure AD-Verzeichnis enthalten sind, können Sie die Berechtigungsverwaltung nutzen, um sie bei Bedarf in Ihr Azure AD-Verzeichnis zu übertragen.  
+
+Es gibt drei Möglichkeiten, wie Sie mit der Berechtigungsverwaltung die Benutzer angeben können, die eine verbundene Organisation bilden.  Möglich sind:
+
+* Benutzer in einem anderen Azure AD-Verzeichnis
+* Benutzer in einem anderen Verzeichnis außerhalb von Azure AD, das für den direkten Verbund konfiguriert wurde
+* Benutzer in einem anderen Verzeichnis außerhalb von Azure AD, deren E-Mail-Adressen alle denselben Domänennamen aufweisen
 
 Angenommen, Sie arbeiten bei der Woodgrove Bank und möchten mit zwei externen Organisationen zusammenarbeiten. Diese beiden Organisationen verfügen über unterschiedliche Konfigurationen:
 

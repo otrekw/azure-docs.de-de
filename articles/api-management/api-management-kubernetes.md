@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 12/14/2019
 ms.author: apimpm
-ms.openlocfilehash: 5e995d008b441e122f9e93e5f7c29f0bb9bf9c53
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: f8c6fce5b22d67dd1022fbaac763ea5df3b0930f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86254689"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505374"
 ---
 # <a name="use-azure-api-management-with-microservices-deployed-in-azure-kubernetes-service"></a>Verwenden von API Management mit in Azure Kubernetes Service bereitgestellten Microservices
 
@@ -39,7 +39,7 @@ In einem Kubernetes-Cluster werden Container in [Pods](https://kubernetes.io/doc
 
 Um dieses Problem zu lösen, wurde mit Kubernetes das Konzept der [Dienste](https://kubernetes.io/docs/concepts/services-networking/service/) eingeführt. Kubernetes Service ist eine Abstraktionsschicht, die eine logische Gruppe von Pods definiert und es ermöglicht, externen Datenverkehr verfügbar zu machen sowie Lastenausgleich und Dienstermittlung für diese Pods durchzuführen. 
 
-Wenn Sie bereit sind, Ihre Microservices als APIs über das API Management zu veröffentlichen, müssen Sie bedenken, wie Sie Ihre Services in Kubernetes den APIs in API Management zuordnen können. Es gibt dafür keine festen Regeln. Es hängt davon ab, wie Sie Ihre Geschäftsfunktionen und -domänen am Anfang entworfen und in Microservices partitioniert haben. Wenn beispielsweise die Pods hinter einem Dienst für alle Vorgänge auf einer bestimmten Ressource (z. B. Kunde) verantwortlich sind, kann der Dienst einer einzigen API zugeordnet werden. Wenn Vorgänge auf einer Ressource in mehrere Microservices partitioniert werden (z. B. GetOrder, PlaceOrder), dann können mehrere Dienste in logisch zu einer einzigen API in API Management zusammengefasst werden (siehe Abbildung 1). 
+Wenn Sie bereit sind, Ihre Microservices als APIs über das API Management zu veröffentlichen, müssen Sie bedenken, wie Sie Ihre Services in Kubernetes den APIs in API Management zuordnen können. Es gibt dafür keine festen Regeln. Es hängt davon ab, wie Sie Ihre Geschäftsfunktionen und -domänen am Anfang entworfen und in Microservices partitioniert haben. Wenn beispielsweise die Pods hinter einem Dienst für alle Vorgänge einer bestimmten Ressource (z. B. Kunde) verantwortlich sind, kann der Dienst einer einzigen API zugeordnet werden. Wenn Vorgänge auf einer Ressource in mehrere Microservices partitioniert werden (z. B. GetOrder, PlaceOrder), dann können mehrere Dienste in logisch zu einer einzigen API in API Management zusammengefasst werden (siehe Abbildung 1). 
 
 Die Zuordnungen können auch weiterentwickelt werden. Da API Management eine „Fassade“ vor den Microservices erstellt, können wir unsere Microservices im Laufe der Zeit umgestalten und auf die richtige Größe anpassen. 
 

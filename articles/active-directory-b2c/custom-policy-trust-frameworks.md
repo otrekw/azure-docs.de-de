@@ -1,5 +1,5 @@
 ---
-title: 'Referenz: Vertrauensframeworks in Azure Active Directory B2C | Microsoft-Dokumentation'
+title: Übersicht über benutzerdefinierte Richtlinien in Azure AD B2C | Microsoft-Dokumentation
 description: Ein Thema zu benutzerdefinierten Azure Active Directory B2C-Richtlinien und zum Identity Experience Framework
 services: active-directory-b2c
 author: msmimart
@@ -7,121 +7,170 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: reference
-ms.date: 08/04/2017
+ms.date: 12/14/2020
 ms.author: mimart
 ms.subservice: B2C
-ms.openlocfilehash: d3d29bd05f67d00047499dc256e5e1a82f98693a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: ed477a931ed63c0db378ff84f85544072492ef96
+ms.sourcegitcommit: ea17e3a6219f0f01330cf7610e54f033a394b459
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "95990982"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97387036"
 ---
-# <a name="define-trust-frameworks-with-azure-ad-b2c-identity-experience-framework"></a>Definieren von Vertrauens-Frameworks mit Azure AD B2C Identity Experience Framework
+# <a name="azure-ad-b2c-custom-policy-overview"></a>Übersicht über Benutzerdefinierte Azure AD B2C-Richtlinien
 
-Benutzerdefinierte Azure Active Directory B2C-Richtlinien (Azure AD B2C), die das Identity Experience Framework nutzen, bieten ihrem Unternehmen einen zentralisierten Dienst. Dieser Dienst reduziert die Komplexität des Identitätsverbunds in einer großen Interessengemeinschaft. Die Komplexität wird auf eine einzelne Vertrauensstellung und einen einzelnen Metadatenaustausch reduziert.
+Benutzerdefinierte Richtlinien sind Konfigurationsdateien, die das Verhalten Ihres Azure Active Directory B2C-Mandanten (Azure AD B2C-Mandanten) definieren. Im Azure AD B2C-Portal sind [Benutzerflows](user-flow-overview.md) für die häufigsten Identitätsaufgaben vordefiniert. Benutzerdefinierte Richtlinien können von einem Identitätsentwickler vollständig bearbeitet werden, um viele verschiedene Aufgaben auszuführen.
 
-Hierfür ist erforderlich, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework verwenden, Ihnen die Beantwortung der folgenden Fragen ermöglichen:
+Eine benutzerdefinierte Richtlinie ist vollständig konfigurierbar und richtliniengesteuert. Sie koordiniert die Vertrauensstellungen zwischen Entitäten in Standardprotokollformaten wie OpenID Connect, OAuth, SAML sowie einigen nicht standardmäßigen Formaten (z. B. REST-API-basierter Austausch von Systemansprüchen). Das Framework erstellt benutzerfreundliche Umgebungen mit Positivlisten.
 
-- Welche sind die Richtlinien, die sich auf rechtliche Fragen, die Sicherheit, den Datenschutz und den Schutz von Daten beziehen und eingehalten werden müssen?
-- Wer sind die Kontakte, und wie werden Benutzer zu anerkannten Teilnehmern?
-- Wer sind die anerkannten Anbieter von Identitätsinformationen (auch „Anspruchsanbieter“), und was bieten sie an?
-- Wer sind die anerkannten vertrauenden Seiten (und was benötigen sie)? (optional)
-- Was sind die technischen „On the Wire“-Interoperabilitätsanforderungen für Teilnehmer?
-- Wie lauten die betriebsbezogenen Runtimeregeln, die zum Austausch von Informationen zur digitalen Identität durchgesetzt werden müssen?
+Eine benutzerdefinierte Richtlinie wird als eine oder mehrere XML-formatierte Dateien dargestellt, die aufeinander in einer hierarchischen Kette verweisen. Die XML-Elemente definieren die Bausteine, die Interaktion mit dem Benutzer und anderen Parteien sowie die Geschäftslogik. 
 
-Zur Beantwortung all dieser Fragen wird für die benutzerdefinierten Azure AD B2C-Richtlinien, für die das Identity Experience Framework eingesetzt wird, das Vertrauens-Framework-Konstrukt (Trust Framework, TF) genutzt. Wir sehen uns dieses Konstrukt und den damit erzielten Beitrag nun näher an.
+## <a name="custom-policy-starter-pack"></a>Starter Pack für benutzerdefinierte Richtlinien
 
-## <a name="understand-the-trust-framework-and-federation-management-foundation"></a>Grundlegendes zum Vertrauens-Framework und zur zugrundeliegenden Verbundverwaltung
+Das [Starter Pack](custom-policy-get-started.md#get-the-starter-pack) mit benutzerdefinierten Richtlinien für Azure AD B2C enthält mehrere vordefinierte Richtlinien, damit Sie schnell loslegen können. Jedes dieser Starter Packs enthält die kleinste Anzahl von technischen Profilen sowie die zum Erreichen der beschriebenen Szenarien benötigten User Journeys:
 
-Das Vertrauens-Framework sollte als geschriebene Spezifikation der Richtlinien für Identität, Sicherheit, Datenschutz und Schutz von Daten verstanden werden, die von Teilnehmern einer Interessengemeinschaft eingehalten werden müssen.
+- **LocalAccounts** ermöglicht die ausschließliche Nutzung von lokalen Konten.
+- **SocialAccounts** ermöglicht die ausschließliche Nutzung von Konten sozialer Netzwerke (oder Verbundkonten).
+- **SocialAndLocalAccounts** ermöglicht sowohl die Verwendung von lokalen Konten als auch von Konten für soziale Netzwerke. Die meisten unserer Beispiele verweisen auf diese Richtlinie.
+- **SocialAndLocalAccountsWithMFA** ermöglicht lokale Optionen und Optionen für soziale Netzwerke sowie zur Multi-Factor Authentication.
 
-Die Verbundidentität ist eine Basis zur Erzielung von Endbenutzer-Identitätszusicherung auf Internetniveau. Indem die Identitätsverwaltung an Drittanbieter delegiert wird, kann eine einzelne digitale Identität für einen Endbenutzer mit mehreren vertrauenden Seiten wiederverwendet werden.
+## <a name="understanding-the-basics"></a>Verstehen der Grundlagen 
 
-Für die Sicherstellung der Identität ist es erforderlich, dass Identitätsanbieter (IdPs) und Attributanbieter (AtPs) bestimmte Richtlinien und Methoden in Bezug auf die Sicherheit, den Datenschutz und den Betrieb einhalten.  Da keine direkten Untersuchungen durchgeführt werden können, müssen vertrauende Seiten (Relying Parties, RPs) Vertrauensstellungen mit den IdPs und AtPs entwickeln, die jeweils ausgewählt werden.
+### <a name="claims"></a>Ansprüche
 
-Da die Zahl von Konsumenten und Anbietern von Informationen zur digitalen Identität ständig steigt, ist es nicht mehr haltbar, für diese Vertrauensstellungen die Verwaltung als Paare fortzusetzen. Dies gilt auch für den paarweisen Austausch der technischen Metadaten, die für die Netzwerkverbindung benötigt werden.  Mit Verbund-Hubs konnten diese Probleme nur in eingeschränktem Maße gelöst werden.
+Ein Anspruch bietet eine temporäre Speicherung von Daten während der Ausführung einer Azure AD B2C-Richtlinie. Er kann Informationen zum Benutzer, wie z. B. Vorname oder Nachname, oder andere Ansprüche speichern, die vom Benutzer oder anderen Systemen (Anspruchsaustausch) erhalten wurden. Im [Anspruchsschema](claimsschema.md) deklarieren Sie Ihre Ansprüche. 
 
-### <a name="what-a-trust-framework-specification-defines"></a>Was eine Framework Trust-Spezifikation definiert:
-Vertrauensframeworks (TFs) sind der Dreh- und Angelpunkt des OIX-Vertrauensframework-Modells (Open Identity Exchange), bei dem jede Interessengemeinschaft mit einer bestimmten Vertrauensframework-Spezifikation gesteuert wird. Mit einer TF-Spezifikation dieser Art wird Folgendes definiert:
+Beim Ausführen der Richtlinie sendet Azure AD B2C Ansprüche an interne und externe Parteien und empfängt Ansprüche von diesen. Anschließend wird eine Teilmenge dieser Ansprüche als Teil des Tokens an die Anwendung der vertrauenden Seite gesendet. Ansprüche werden auf folgende Weise verwendet: 
 
-- **Die Sicherheits- und Datenschutzmetriken für die Interessengemeinschaft mit der folgenden Definition**:
-    - Die von Teilnehmern angebotenen bzw. benötigten Zusicherungsebenen (Levels of Assurance, LOA), also eine sortierte Gruppe mit Vertrauensbewertungen für die Authentizität der Informationen zur digitalen Identität.
-    - Die von Teilnehmern angebotenen bzw. benötigten Schutzebenen (Levels of Protection, LOP), also eine sortierte Gruppe mit Vertrauensbewertungen für den Schutz der Informationen zur digitalen Identität, die von Teilnehmern der Interessengemeinschaft verwaltet wird.
+- Ein Anspruch wird für das Verzeichnisbenutzerobjekt gespeichert, gelesen oder aktualisiert.
+- Ein Anspruch wird von einem externen Identitätsanbieter empfangen.
+- Ansprüche werden über einen benutzerdefinierten REST-API-Dienst gesendet oder empfangen.
+- Daten werden während der Flows zur Registrierung oder Bearbeitung des Profils als Ansprüche vom Benutzer gesammelt.
 
-- **Die Beschreibung der Informationen zur digitalen Identität, die von Teilnehmern angeboten bzw. benötigt werden**.
+### <a name="manipulating-your-claims"></a>Bearbeiten von Ansprüchen
 
-- **Die technischen Richtlinien für die Erzeugung und Nutzung von Informationen zur digitalen Identität und somit zum Messen von LOA und LOP. Diese schriftlichen Richtlinien umfassen normalerweise die folgenden Kategorien von Richtlinien:**
-    - Richtlinien zur Identitätsüberprüfung, z.B.: *Wie streng werden die Identitätsinformationen einer Person überprüft?*
-    - Sicherheitsrichtlinien, z.B.: *Wie gut ist die Integrität und Vertraulichkeit der Informationen geschützt?*
-    - Datenschutzrichtlinien, z.B.: *Welches Maß an Kontrolle hat ein Benutzer über seine personenbezogenen Informationen (Personally Identifiable Information, PII)* ?
-    - Richtlinien zur „Überlebensfähigkeit“ (Survivability), z.B.: *Kontinuität und Schutz von personenbezogenen Informationen, wenn ein Anbieter den Betrieb einstellt.*
+[Anspruchstransformationen](claimstransformations.md) sind vordefinierte Funktionen, mit denen Sie einen bestimmten Anspruch in einen anderen konvertieren, einen Anspruch evaluieren oder einen Anspruchswert festlegen können. Beispiele sind das Hinzufügen eines Elements zu einer Zeichenfolgensammlung, das Ändern der Groß-/Kleinschreibung einer Zeichenfolge oder das Auswerten eines Anspruchs mit Datums- und Zeitangaben. Die Anspruchstransformation gibt dabei die Transformationsmethode an. 
 
-- **Die technischen Profile für die Erzeugung und Nutzung von Informationen zur digitalen Identität. Die Profile enthalten:**
-    - Festlegen des Umfangs von Schnittstellen, für die Informationen zur digitalen Identität auf der angegebenen Zusicherungsebene (LOA) verfügbar sind.
-    - Beschreiben der technischen Anforderungen für die „On the Wire“-Interoperabilität.
+### <a name="customize-and-localize-your-ui"></a>Anpassen und Lokalisieren Ihrer Benutzeroberfläche
 
-- **Die Beschreibung der verschiedenen Rollen, die Teilnehmer in der Gemeinschaft ausüben können, zusammen mit den Qualifikationen, die zum Ausüben dieser Rollen erforderlich sind.**
+Wenn Sie Informationen von Ihren Benutzern sammeln möchten, indem Sie eine Seite in ihrem Webbrowser anzeigen, verwenden Sie das [selbstbestätigte technische Profil](self-asserted-technical-profile.md). Sie können Ihr selbstbestätigtes technisches Profil bearbeiten, indem Sie [Ansprüche hinzufügen und Benutzereingaben anpassen](custom-policy-configure-user-input.md).
 
-Daher wird mit einer TF-Spezifikation gesteuert, wie Identitätsinformationen zwischen den Teilnehmern der Interessengemeinschaft ausgetauscht werden: vertrauende Seiten, Identitäts- und Attributanbieter und Attributverifizierer.
+Zum [Anpassen der Benutzeroberfläche](customize-ui-with-html.md) für Ihr selbstbestätigtes technisches Profil geben Sie im [ContentDefinition](contentdefinitions.md)-Element eine URL mit benutzerdefiniertem HTML-Inhalt an. Verweisen Sie im selbstbestätigten technischen Profil auf die ID dieser Inhaltsdefinition.
 
-Eine TF-Spezifikation umfasst ein oder mehrere Dokumente, die als Referenz für die Steuerung der Interessengemeinschaft dienen und die Durchsetzung und Nutzung von Informationen zur digitalen Identität innerhalb der Gemeinschaft regeln. Es handelt sich also um eine Reihe von Richtlinien und Verfahren, die für das Herstellen von Vertrauen in die digitalen Identitäten für Onlinetransaktionen zwischen Mitgliedern einer Interessengemeinschaft ausgelegt sind.
+Wenn Sie sprachspezifische Zeichenfolgen anpassen möchten, verwenden Sie das [Localization](localization.md)-Element. Eine Inhaltsdefinition kann einen Verweis auf ein [Localization](localization.md)-Element mit einer Liste der lokalisierten Ressourcen enthalten, die geladen werden sollen. Azure AD B2C führt die Benutzeroberflächenelemente mit dem HTML-Inhalt, der über Ihre URL geladen wird, zusammen und zeigt anschließend die Seite für den Benutzer an. 
 
-Mit anderen Worten werden in einer TF-Spezifikation die Regeln zum Erstellen eines wettbewerbsfähigen Verbundökosystems für die Identität einer Gemeinschaft definiert.
+## <a name="relying-party-policy-overview"></a>Übersicht über die Richtlinie für die vertrauende Seite
 
-Derzeit herrscht ein breiter Konsens über die Vorteile eines derartigen Ansatz. Es besteht kein Zweifel, dass Vertrauens-Framework-Spezifikationen die Entwicklung von digitalen Identitätsökosystemen mit Merkmalen der überprüfbaren Sicherheit, der Sicherheit und des Datenschutzes begünstigen, was bedeutet, dass sie von verschiedenen Interessensgemeinschaften wiederverwendet werden können.
+Die [Richtlinie der vertrauenden Seite](relyingparty.md) wird durch die Anwendung der vertrauenden Seite oder im SAML-Protokoll aufgerufen, das als Dienstanbieter bezeichnet wird, um eine bestimmte User Journey auszuführen. Die Richtlinie der vertrauenden Seite gibt die auszuführende User Journey sowie eine Liste der Ansprüche an, die das Token enthält. 
 
-Aus diesem Grund nutzen benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, die Spezifikation als Basis für ihre Datendarstellung für ein TF, um die Interoperabilität zu vereinfachen.
+![Diagramm mit dem Flow der Richtlinienausführung](./media/custom-policy-trust-frameworks/custom-policy-execution.png)
 
-Azure AD B2C benutzerdefinierte Richtlinien, welche das Identity Experience Framework nutzen, stellen eine TF-Spezifikation als eine Mischung von Menschen und maschinenlesbaren Daten dar. Einige Abschnitte dieses Modells (üblicherweise Abschnitte, die mehr auf Governance ausgerichtet sind) werden als Verweise auf die veröffentlichten Dokumentationen zu Sicherheit und Datenschutz sowie die damit verbundenen Prozeduren (sofern vorhanden) dargestellt. Andere Abschnitte beschreiben ausführlich die Regeln bezüglich Konfiguration, Metadaten und Laufzeit, die betriebliche Automatisierung erleichtern.
+Alle Anwendungen der vertrauenden Seite, die dieselbe Richtlinie verwenden, erhalten dieselben Tokenansprüche, und der Benutzer durchläuft die gleiche User Journey.
 
-## <a name="understand-trust-framework-policies"></a>Grundlegendes zu Vertrauens-Framework-Richtlinien
+### <a name="user-journeys"></a>User Journeys
 
-Im Hinblick auf die Implementierung besteht die TF-Spezifikation aus einer Reihe von Richtlinien, welche die vollständige Kontrolle über das Verhalten von Identitäten und Erfahrungen ermöglichen.  Mit benutzerdefinierten Azure AD B2C-Richtlinien in Verbindung mit dem Identity Experience Framework können Sie Ihr eigenes Vertrauens-Framework erstellen, indem Sie deklarative Richtlinien nutzen, mit denen Folgendes definiert und konfiguriert werden kann:
+Mithilfe von [User Journeys](userjourneys.md) können Sie die Geschäftslogik durch den Pfad definieren, den Benutzer befolgen müssen, um Zugriff auf Ihre Anwendung zu erhalten. Die Benutzer werden durch diese User Journey geleitet, um die Ansprüche abzurufen, die an Ihre Anwendung übermittelt werden sollen. Eine User Journey besteht aus einer Sequenz von [Orchestrierungsschritten](userjourneys.md#orchestrationsteps). Benutzer müssen den letzten Schritt erreichen, um ein Token zu erhalten. 
 
-- Die Dokumentverweise, mit denen das Verbundökosystem für die Identität einer Gemeinschaft für das Vertrauens-Framework definiert wird. Dies sind Links zur Dokumentation zu Vertrauensframeworks. Die (vordefinierten) betriebsbezogenen Runtimeregeln oder die User Journeys, mit denen der Austausch und die Nutzung von Ansprüchen automatisiert bzw. gesteuert wird. Diese User Journeys sind einer Zusicherungsebene (LOA) und einer Schutzebene (LOP) zugeordnet. Eine Richtlinie kann daher über User Journeys mit unterschiedlichen LOAs (und LOPs) verfügen.
+Im Folgenden wird beschrieben, wie Sie der Richtlinie im [Starter Pack für Social Media- und lokale Konten](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/SocialAndLocalAccounts) Orchestrierungsschritte hinzufügen können. Dies ist ein Beispiel für einen REST-API-Aufruf, der hinzugefügt wurde.
 
-- Die Identitäts- und Attributanbieter oder die Anspruchsanbieter in der Interessengemeinschaft und die unterstützten technischen Profile zusammen mit der LOA/LOP-Akkreditierung („Out of Band“), die sich darauf bezieht.
+![Angepasste User Journey](media/custom-policy-trust-frameworks/user-journey-flow.png)
 
-- Die Integration mit Attributverifizierern oder Anspruchsanbietern.
 
-- Die vertrauenden Seiten in der Gemeinschaft (nach Rückschluss).
+### <a name="orchestration-steps"></a>Orchestrierungsschritte
 
-- Die Metadaten zum Einrichten der Netzwerkkommunikation zwischen Teilnehmern. Diese Metadaten werden zusammen mit den technischen Profilen im Verlauf einer Transaktion verwendet, um die „On the Wire“-Interoperabilität zwischen der vertrauenden Seite und anderen Teilnehmern der Gemeinschaft herzustellen.
+Der Orchestrierungsschritt verweist auf eine Methode, die den beabsichtigten Zweck oder die gewünschte Funktionalität implementiert. Diese Methode wird als ein [technisches Profil](technicalprofiles.md) bezeichnet. Wenn die User Journey Verzweigungen erfordert, damit die Geschäftslogik besser dargestellt werden kann, verweist der Orchestrierungsschritt auf die [untergeordnete Journey](subjourneys.md). Eine untergeordnete Journey enthält eigene Orchestrierungsschritte.
 
-- Die Protokollkonvertierung, falls vorhanden (z.B. SAML 2.0, OAuth2, WS-Verbund und OpenID Connect).
+Benutzer müssen den letzten Orchestrierungsschritt der User Journey erreichen, um ein Token zu erhalten. Möglicherweise müssen die Benutzer dabei allerdings nicht alle Orchestrierungsschritte durchlaufen. Orchestrierungsschritte können anhand von [Voraussetzungen](userjourneys.md#preconditions), die im Orchestrierungsschritt definiert werden, bedingungsabhängig ausgeführt werden. 
 
-- Die Authentifizierungsanforderungen.
+Nachdem ein Orchestrierungsschritt abgeschlossen wurde, speichert Azure AD B2C die ausgegebenen Ansprüche im **Anspruchsbehälter**. Die Ansprüche im Anspruchsbehälter können von allen nachfolgenden Orchestrierungsschritten der User Journey verwendet werden.
 
-- Die Multi-Factor-Orchestrierung, falls vorhanden.
+Das folgende Diagramm zeigt, wie die Orchestrierungsschritte der User Journey auf den Anspruchsbehälter zugreifen können.
 
-- Ein gemeinsames Schema für alle verfügbaren Ansprüche und Zuordnungen zu Teilnehmern einer Interessengemeinschaft.
+![Azure AD B2C-User Journey](media/custom-policy-trust-frameworks/user-journey-diagram.png)
 
-- Alle Anspruchstransformationen, zusammen mit der möglichen Datenminimierung in diesem Kontext, zur Bewältigung des Austauschs und der Nutzung von Ansprüchen.
+### <a name="technical-profile"></a>Technisches Profil
 
-- Die Bindung und die Verschlüsselung.
+Ein technisches Profil bietet eine Schnittstelle für die Kommunikation mit verschiedenen Typen von Parteien. Eine User Journey kombiniert Aufrufe von technischen Profilen mithilfe von Orchestrierungsschritten, um so Ihre Geschäftslogik zu definieren.
 
-- Der Anspruchsspeicher.
+Allen Typen von technischen Profilen liegt das gleiche Konzept zugrunde. Sie senden Eingabeansprüche, führen Anspruchstransformation aus und kommunizieren mit der konfigurierten Partei. Nach Abschluss des Prozesses gibt das technische Profil die Ausgabeansprüche an den Anspruchsbehälter zurück. Weitere Informationen finden Sie unter [Übersicht über technische Profile](technicalprofiles.md).
 
-### <a name="understand-claims"></a>Verstehen von Ansprüchen
+### <a name="validation-technical-profile"></a>Technisches Validierungsprofil
 
-> [!NOTE]
-> Wir bezeichnen alle möglichen Typen von Identitätsinformationen, die ausgetauscht werden können, als Ansprüche: Ansprüche in Bezug auf die Anmeldeinformationen eines Endbenutzers für die Authentifizierung, Identitätsüberprüfung, Kommunikationsgerät, physischer Standort, personenbezogene Attribute usw.
->
-> Wir verwenden den Begriff „Ansprüche“ statt „Attribute“, da es sich in Onlinetransaktionen bei diesen Datenartefakten nicht um Fakten handelt, die direkt durch die vertrauende Seite überprüft werden können. Stattdessen handelt es sich um Assertionen oder Ansprüche zu Fakten für die die vertrauende Seite ein ausreichendes Maß an Vertrauen haben muss, um die angeforderte Transaktion für den Endbenutzer zu gewähren.
->
-> Ein weiterer Grund ist die Tatsache, dass benutzerdefinierte Azure AD B2C-Richtlinien, die das Identity Experience Framework nutzen, für die Vereinfachung des Austauschs aller Arten von Informationen zur digitalen Identität auf einheitliche Weise ausgelegt sind. Dies gilt unabhängig davon, ob das zugrunde liegende Protokoll für die Benutzerauthentifizierung oder den Attributabruf definiert ist.  Ebenso verwenden wir den Ausdruck „Anspruchsanbieter“ zur allgemeinen Bezeichnung von Identitätsanbietern, Attributanbietern und Attributverifizierern, wenn nicht zwischen den jeweiligen spezifischen Funktionen unterschieden werden soll.
+Wenn Benutzer mit der Benutzeroberfläche interagieren, können Sie die dabei gesammelten Daten überprüfen. Für die Interaktion mit Benutzern muss ein [selbstbestätigtes technisches Profil](self-asserted-technical-profile.md) verwendet werden.
 
-Mit diesen Anbietern wird gesteuert, wie Identitätsinformationen zwischen einer vertrauenden Seite, Identitäts- und Attributanbietern und Attributverifizierern ausgetauscht werden. Sie steuern, welche Identitäts- und Attributanbieter für die Authentifizierung einer vertrauenden Seite erforderlich sind. Dies kann als domänenspezifische Sprache (DSL) angesehen werden. Hierbei handelt es sich um eine Computersprache, die für eine bestimmte Anwendungsdomäne mit Vererbung, *if*-Anweisungen und Polymorphie spezialisiert ist.
+Um die Benutzereingaben zu überprüfen, wird ein [technisches Validierungsprofil](validation-technical-profile.md) vom selbstbestätigten technischen Profil aufgerufen. 
 
-Diese Richtlinien stellen den maschinenlesbaren Teil des TF-Konstrukts von benutzerdefinierten Richtlinien in Azure AD B2C dar, für die das Identity Experience Framework genutzt wird. Sie enthalten alle betriebsbezogenen Details, einschließlich Anspruchsanbietern Metadaten und technischen Profilen, Anspruchsschemadefinitionen, Anspruchstransformationsfunktionen und User Journeys, die zur Vereinfachung der Orchestrierung und der Automatisierung eingefügt werden.
+Ein technisches Validierungsprofil stellt eine Methode dar, beliebige nicht interaktive technische Profile aufzurufen. In diesem Fall kann das technische Profil Ausgabeansprüche oder eine Fehlermeldung zurückgeben. Die Fehlermeldung wird für Benutzer auf dem Bildschirm gerendert, sodass sie den Vorgang wiederholen können.
 
-Sie werden als *lebende Dokumente* betrachtet, da sich der Inhalt mit hoher Wahrscheinlichkeit im Laufe der Zeit, in Bezug auf die aktiven Teilnehmer, ändert, die in den Richtlinien deklariert werden. Zudem besteht die Möglichkeit, dass eine Änderung der allgemeinen Geschäftsbedingungen für Teilnehmer eintritt.
+Im folgenden Diagramm wird veranschaulicht, wie Azure AD B2C die Benutzeranmeldeinformationen mit einem technischen Validierungsprofil überprüft.
 
-Das Einrichten und Verwalten des Verbunds wird erheblich vereinfacht, indem vertrauende Seiten gegenüber laufenden Neukonfigurationen von Vertrauensstellungen und der Konnektivität abgeschirmt werden, wenn unterschiedliche Anspruchsanbieter/-verifizierer dem Richtliniensatz (der die Gemeinschaft repräsentiert) beitreten oder diesen verlassen.
+![Diagramm mit technischem Validierungsprofil](media/custom-policy-trust-frameworks/validation-technical-profile.png)
 
-Interoperabilität ist eine andere wesentliche Herausforderung. Zusätzliche Anspruchsanbieter/Prüfer müssen einbezogen werden, da es unwahrscheinlich ist, dass vertrauende Seiten alle erforderlichen Protokolle unterstützen. Mit benutzerdefinierten Azure AD B2C-Richtlinien wird dieses Problem gelöst, indem Branchenstandardprotokolle unterstützt und bestimmte User Journeys angewendet werden. Sie werden zum Umstellen von Anforderungen verwendet, wenn vertrauende Seiten und Attributanbieter nicht das gleiche Protokoll unterstützen.
+## <a name="inheritance-model"></a>Vererbungsmodell
 
-User Journeys enthalten Protokollprofile und Metadaten, um die „On the Wire“-Interoperabilität zwischen der vertrauenden Seite und anderen Teilnehmern zu installieren. Außerdem sind Regeln für die betriebsbezogene Runtime vorhanden, die auf Anforderung/Antwort-Nachrichten für den Austausch von Identitätsinformationen angewendet werden, um die Konformität mit veröffentlichten Richtlinien im Rahmen der TF-Spezifikation durchzusetzen. Das Konzept der Benutzer Journeys ist von entscheidender Bedeutung für die Anpassung der Kundenerfahrung. Es verdeutlicht auch, wie das System auf Protokollebene funktioniert.
+Jedes Starter Pack enthält die folgenden Dateien:
 
-Auf dieser Basis können Anwendungen und Portale der vertrauenden Seite je nach Kontext benutzerdefinierte Azure AD B2C Richtlinien mit Nutzung des Identity Experience Framework aufrufen, indem der Name einer bestimmten Richtlinie übergeben wird. So können genau das gewünschte Verhalten und der gewünschte Informationsaustausch erzielt werden, ohne dass hoher Aufwand anfällt oder ein Risiko besteht.
+- Eine **Basisdatei** enthält die meisten Definitionen. Um die Problembehandlung und langfristige Wartung Ihrer Richtlinien zu vereinfachen, empfiehlt es sich, an dieser Datei nur eine minimale Anzahl von Änderungen vorzunehmen.
+- Eine **Erweiterungendatei** enthält die eindeutigen Konfigurationsänderungen für Ihren Mandanten. Diese Richtliniendatei wird von der Basisdatei abgeleitet. Verwenden Sie diese Datei, um neue Funktionalität hinzufügen oder vorhandene Funktionen zu überschreiben. Sie verwenden diese Datei z.B. für einen Verbund mit neuen Identitätsanbietern.
+- Eine **Datei der vertrauenden Seite** stellt die einzige aufgabenorientierte Datei dar, die direkt von der Anwendung der vertrauenden Seite aufgerufen wird, z.B. Ihren Web-, mobilen oder Desktopanwendungen. Jede eindeutige Aufgabe wie das Registrieren oder Anmelden, das Zurücksetzen des Kennworts oder die Profilbearbeitung erfordert eine eigene Richtliniendatei der vertrauenden Seite. Diese Richtliniendatei wird von der Erweiterungsdatei abgeleitet.
+
+Das Vererbungsmodell lautet wie folgt:
+
+- Die untergeordnete Richtlinie kann auf jeder Ebene von der übergeordneten Richtlinie erben und diese durch Hinzufügen neuer Elemente erweitern.
+- Für komplexere Szenarien können Sie weitere Vererbungsebenen (max. fünf) hinzufügen.
+- Sie können auch zusätzliche Richtlinien der vertrauenden Seite hinzufügen. Dies können z. B. Richtlinien für das Löschen des eigenen Kontos, das Ändern einer Telefonnummer, eine SAML-Richtlinie der vertrauenden Seite usw. sein.
+
+Das folgende Diagramm zeigt die Beziehung zwischen den Richtliniendateien und den Anwendungen der vertrauenden Seite.
+
+![Diagramm mit dem Richtlinien-Vererbungsmodell des Vertrauensframeworks](media/custom-policy-trust-frameworks/policies.png)
+
+
+## <a name="guidance-and-best-practices"></a>Leitfaden und bewährte Methoden
+
+### <a name="best-practices"></a>Bewährte Methoden
+
+Sie können eigene Geschäftslogik in eine benutzerdefinierte Azure AD B2C-Richtlinie integrieren, um die gewünschte Benutzerumgebung zu gestalten und die Funktionalität des Diensts zu erweitern. Dazu stehen Ihnen verschiedene bewährte Methoden und Empfehlungen für den Einstieg zur Verfügung.
+
+- Erstellen Sie Ihre Logik innerhalb der **Erweiterungsrichtlinie** oder der **Richtlinie der vertrauenden Seite**. Sie können neue Elemente hinzufügen, die die Basisrichtlinie überschreiben, indem Sie auf dieselbe ID verweisen. Auf diese Weise können Sie Ihr Projekt aufskalieren und gleichzeitig spätere Upgrades der Basisrichtlinie vereinfachen, wenn Microsoft neue Starter Packs veröffentlicht.
+- Es wird dringend davon abgeraten, Änderungen an der **Basisrichtlinie** vorzunehmen.  Falls dennoch Änderungen vorgenommen werden müssen, fügen Sie an den entsprechenden Stellen Kommentare ein.
+- Falls Sie ein Element überschreiben (z. B. die Metadaten eines technischen Profils), vermeiden Sie das Kopieren des gesamten technischen Profils aus der Basisrichtlinie. Kopieren Sie stattdessen nur den benötigten Abschnitt des Elements. Ein Beispiel für diese Änderung finden Sie unter [Deaktivieren der E-Mail-Überprüfung während der Kundenregistrierung in Azure Active Directory B2C](custom-policy-disable-email-verification.md).
+- Um doppelte technische Profile mit identischer Kernfunktionalität zu minimieren, nutzen Sie die [Inklusion technischer Profile](technicalprofiles.md#include-technical-profile).
+- Vermeiden Sie es, während der Anmeldung in das Azure AD-Verzeichnis zu schreiben, da dies zu Drosselungsproblemen führen kann.
+- Wenn Ihre Richtlinie externe Abhängigkeiten aufweist (z. B. zur REST-API), stellen Sie sicher, dass sie hochverfügbar sind.
+- Für mehr Benutzerfreundlichkeit stellen Sie durch [Online-Content Delivery](https://docs.microsoft.com/azure/cdn/) sicher, dass Ihre benutzerdefinierten HTML-Vorlagen global bereitgestellt werden. Mit Azure Content Delivery Network (CDN) können Sie die Ladezeiten reduzieren, Bandbreite sparen und die Reaktionsgeschwindigkeit erhöhen.
+- Wenn Sie eine Änderung an einer User Journey vornehmen möchten, gehen Sie wie folgt vor: Kopieren Sie die gesamte User Journey aus der Basisrichtlinie in die Erweiterungsrichtlinie. Weisen Sie der kopierten User Journey eine eindeutige User Journey-ID zu. Ändern Sie dann in der [Richtlinien der vertrauenden Seite](relyingparty.md) das [DefaultUserJourney](relyingparty.md#defaultuserjourney)-Element so, dass es auf die neue User Journey verweist.
+
+## <a name="troubleshooting"></a>Problembehandlung
+
+Beim Entwickeln mit Azure AD B2C-Richtlinien können beim Ausführen Ihrer User Journey Fehler oder Ausnahmen auftreten. Diese können mithilfe von Application Insights untersucht werden.
+
+- Integrieren Sie Application Insights mit Azure AD B2C, um [Ausnahmen zu diagnostizieren](troubleshoot-with-application-insights.md).
+- Die [Azure AD B2C-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) vereinfacht das Zugreifen auf und das [Visualisieren von Protokollen](https://github.com/azure-ad-b2c/vscode-extension/blob/master/src/help/app-insights.md) basierend auf einem Richtliniennamen und der Uhrzeit.
+- Der häufigste Fehler beim Einrichten von benutzerdefinierten Richtlinien ist falsch formatierter XML-Code. Mit der [XML-Schemavalidierung](troubleshoot-custom-policies.md) können Sie Fehler identifizieren, bevor Sie Ihre XML-Datei hochladen.
+
+## <a name="continuous-integration"></a>Continuous Integration
+
+Mithilfe einer CI/CD-Pipeline (Continuous Integration/Continuous Delivery), die Sie in Azure Pipelines einrichten, können Sie [benutzerdefinierte Azure AD B2C-Richtlinien in Ihre Softwarebereitstellung](deploy-custom-policies-devops.md) und die Codesteuerungsautomatisierung einbeziehen. Bei der Bereitstellung in unterschiedlichen Azure AD B2C-Umgebungen (z. B. Entwicklung, Test und Produktion) empfiehlt es sich, manuelle Prozesse zu entfernen und automatisierte Tests mithilfe von Azure Pipelines auszuführen.
+
+## <a name="prepare-your-environment"></a>Vorbereiten der Umgebung
+
+Erste Schritte mit benutzerdefinierten Richtlinien in Azure AD B2C:
+
+1. [Erstellen eines Azure AD B2C-Mandanten](tutorial-create-tenant.md)
+1. [Registrieren Sie eine Webanwendung](tutorial-register-applications.md) über das Azure-Portal. Auf diese Weise können Sie Ihre Richtlinie testen.
+1. Fügen Sie die erforderlichen [Richtlinienschlüssel](custom-policy-get-started.md#add-signing-and-encryption-keys) hinzu, und [registrieren Sie Identity Experience Framework-Anwendungen](custom-policy-get-started.md#register-identity-experience-framework-applications).
+1. [Laden Sie das Starter Pack für Azure AD B2C-Richtlinien herunter](custom-policy-get-started.md#get-the-starter-pack) und in Ihren Mandanten hoch. 
+1. Nachdem Sie das Starter Pack hochgeladen haben, [testen Sie Ihre Registrierungs- oder Anmelderichtlinie](custom-policy-get-started.md#test-the-custom-policy).
+1. Es wird empfohlen, [Visual Studio Code](https://code.visualstudio.com/) (VS Code) herunterzuladen und zu installieren. Visual Studio Code ist ein schlanker, aber dennoch leistungsfähiger Quellcode-Editor, der auf Ihrem Desktop ausgeführt wird und für Windows, macOS und Linux verfügbar ist. Mit VS Code können Sie die XML-Dateien Ihrer benutzerdefinierten Azure AD B2C-Richtlinien bearbeiten.
+1. Für die schnelle Navigation in den benutzerdefinierten Azure AD B2C-Richtlinien empfiehlt es sich, die [Azure AD B2C-Erweiterung für VS Code](https://marketplace.visualstudio.com/items?itemName=AzureADB2CTools.aadb2c) zu installieren.
+ 
+## <a name="next-steps"></a>Nächste Schritte
+
+Nachdem Sie Ihre Azure AD B2C-Richtlinie eingerichtet und getestet haben, können Sie mit der Anpassung Ihrer Richtlinie beginnen. Die Vorgehensweise erfahren Sie in den folgenden Artikeln:
+
+- [Hinzufügen von Ansprüchen und Anpassen von Benutzereingaben mit benutzerdefinierten Richtlinien](custom-policy-configure-user-input.md). Erfahren Sie, wie Sie einen Anspruch definieren und der Benutzeroberfläche hinzufügen, indem Sie einige der technischen Profile des Starter Packs anpassen.
+- [Anpassen der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](customize-ui-with-html.md). Erfahren Sie, wie Sie eigene HTML-Inhalte erstellen und die Inhaltsdefinition anpassen.
+- [Lokalisieren der Benutzeroberfläche Ihrer Anwendung mit einer benutzerdefinierten Richtlinie](custom-policy-localization.md). Erfahren Sie, wie Sie eine Liste mit unterstützten Sprachen einrichten und sprachspezifische Bezeichnungen bereitstellen, indem Sie das Element mit lokalisierten Ressourcen hinzufügen.
+- Sie können die [E-Mail-Verifizierung deaktivieren](custom-policy-disable-email-verification.md), während Sie Ihre Richtlinie entwickeln und testen. Erfahren Sie, wie Sie die Metadaten eines technischen Profils überschreiben.
+- [Einrichten der Anmeldung mit einem Google-Konto mithilfe benutzerdefinierter Richtlinien](identity-provider-google-custom.md). Erfahren Sie, wie Sie einen neuen Anspruchsanbieter mit einem technischen OAuth2-Profil erstellen. Passen Sie dann die User Journey so an, dass sie eine Option zur Anmeldung mit Google bietet.
+- Um Probleme mit Ihren benutzerdefinierten Richtlinien zu diagnostizieren, können Sie [Azure Active Directory B2C-Protokolle mit Application Insights sammeln](troubleshoot-with-application-insights.md). Erfahren Sie, wie Sie neue technische Profile hinzufügen und die Richtlinie für die vertrauende Seite konfigurieren.

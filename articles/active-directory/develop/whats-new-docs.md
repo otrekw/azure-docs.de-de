@@ -5,22 +5,43 @@ description: Neue und aktualisierte Dokumentation für die Microsoft Identity Pl
 services: active-directory
 author: mmacy
 manager: CelesteDG
-ms.date: 12/01/2020
+ms.date: 12/15/2020
 ms.service: active-directory
 ms.subservice: develop
 ms.topic: reference
 ms.workload: identity
 ms.author: marsma
-ms.openlocfilehash: 108cd5f74b7b560534baf8f55f7d07ebb6557e7f
-ms.sourcegitcommit: 6a350f39e2f04500ecb7235f5d88682eb4910ae8
+ms.openlocfilehash: 4813a71a0bdd14e747aa4cfe51ab5a4191df62a4
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96457147"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97563040"
 ---
 # <a name="microsoft-identity-platform-docs-whats-new"></a>Dokumentation zur Microsoft Identity Platform: Neues
 
 Willkommen bei den Neuigkeiten in der Dokumentation zur Microsoft Identity Platform. In diesem Artikel werden neu hinzugefügte Dokumente aufgelistet sowie Dokumente, die in den letzten drei Monaten grundlegend überarbeitet wurden.
+
+## <a name="december-2020"></a>Dezember 2020
+
+### <a name="new-articles"></a>Neue Artikel
+
+- [Schnellstart: ASP.NET Core-Web-App, die Benutzer anmeldet und Microsoft Graph in deren Namen aufruft](quickstart-v2-aspnet-core-webapp-calls-graph.md)
+- [Behandeln von Fehlern und Ausnahmen in MSAL.NET](msal-error-handling-dotnet.md)
+- [Behandeln von Fehlern und Ausnahmen in MSAL für iOS/macOS](msal-error-handling-ios.md)
+- [Behandeln von Fehlern und Ausnahmen in MSAL für Java](msal-error-handling-java.md)
+- [Behandeln von Fehlern und Ausnahmen in MSAL.js](msal-error-handling-js.md)
+- [Behandeln von Fehlern und Ausnahmen in MSAL für Python](msal-error-handling-python.md)
+- [Microsoft Identity Platform-Tokenaustauschszenarien mit SAML und OIDC/OAuth](scenario-token-exchange-saml-oauth.md)
+
+### <a name="updated-articles"></a>Aktualisierte Artikel
+
+- [Tutorial: Erstellen eines mehrinstanzenfähigen Daemons, der Microsoft Identity Platform verwendet](tutorial-v2-aspnet-daemon-web-app.md)
+- [Web-App für Benutzeranmeldungen: App-Registrierung](scenario-web-app-sign-user-app-registration.md)
+- [Microsoft Identity Platform und der Flow für die implizite Genehmigung](v2-oauth2-implicit-grant-flow.md)
+- [Microsoft Identity Platform-Zugriffstoken](access-tokens.md)
+- [Web-API, die Web-APIs aufruft: Abrufen eines Tokens für die App](scenario-web-api-call-api-acquire-token.md)
+
 
 ## <a name="november-2020"></a>November 2020
 

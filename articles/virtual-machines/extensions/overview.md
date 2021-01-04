@@ -9,17 +9,17 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 08/03/2020
 ms.author: amjads
-ms.openlocfilehash: b1dd26fce2e0a761ceed211933cb79ce518905e2
-ms.sourcegitcommit: cd9754373576d6767c06baccfd500ae88ea733e4
+ms.openlocfilehash: dd3b713a027df80908e1a8a3ae53e8dc526d7d6e
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/20/2020
-ms.locfileid: "94965883"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936946"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Erweiterungen und Features für virtuelle Azure-Computer
 Erweiterungen sind kleine Anwendungen, die Konfiguration und Automatisierung für virtuelle Azure-Computer nach der Bereitstellung bereitstellen. Auf der Azure-Plattform werden Erweiterungen für viele Zwecke gehostet, z. B. VM-Konfiguration, Überwachung, Sicherheit und Hilfsprogramme. Herausgeber nehmen eine Anwendung, umschließen diese in einer Erweiterung und vereinfachen die Installation. Sie müssen lediglich noch die obligatorischen Parameter angeben. 
 
-## <a name="how-can-i-find-what-extensions-are-available"></a>Wie kann ich ermitteln, welche Erweiterungen verfügbar sind?
+## <a name="how-can-i-find-what-extensions-are-available"></a>Wie finde ich heraus, welche Erweiterungen verfügbar sind?
 Sie können die verfügbaren Erweiterungen anzeigen, indem Sie einen virtuellen Computer auswählen, indem Sie im linken Menü **Erweiterungen** auswählen. Informationen zum Abrufen einer vollständigen Liste der Erweiterungen finden Sie unter [Ermitteln von VM-Erweiterungen für Linux](features-linux.md) und [Ermitteln von VM-Erweiterungen für Windows](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Wie kann ich eine Erweiterung installieren?

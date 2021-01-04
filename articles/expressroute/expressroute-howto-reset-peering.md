@@ -1,26 +1,26 @@
 ---
 title: 'Azure ExpressRoute: Zurücksetzen des Verbindungspeerings'
-description: Erfahren Sie, wie Peerings einer Azure ExpressRoute-Verbindung mithilfe von Azure PowerShell deaktiviert und aktiviert werden. Wenn Sie Peerings konfigurieren, sind sie standardmäßig aktiviert.
+description: Erfahren Sie, wie Peerings einer Azure ExpressRoute-Verbindung mithilfe von Azure PowerShell deaktiviert und aktiviert werden.
 services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: how-to
-ms.date: 01/13/2018
+ms.date: 12/15/2020
 ms.author: duau
-ms.openlocfilehash: f3b34966aa46ca8d663f83ab2aceafa4b0dda2eb
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 0bde96ae5f4a9aff6f4a16a4f1544d9b39e5cb66
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89395739"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97559572"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>Zurücksetzen von ExpressRoute-Verbindungspeerings
 
-In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung mithilfe von PowerShell deaktiviert und aktiviert werden. Wenn Sie ein Peering deaktivieren, wird die BGP-Sitzung Ihrer primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung heruntergefahren. Durch das Peering zu Microsoft geht Konnektivität verloren. Wenn Sie das Peering aktivieren, wird die BGP-Sitzung jeweils auf der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung gestartet. Sie erhalten über dieses Peering zu Microsoft die Konnektivität zurück. Sie können das Microsoft-Peering und das private Azure-Peering unabhängig voneinander auf einer ExpressRoute-Verbindung aktivieren und deaktivieren. Wenn Sie die Peerings zum ersten Mal auf Ihrer ExpressRoute-Verbindung konfigurieren, werden diese standardmäßig aktiviert.
+In diesem Artikel wird beschrieben, wie Peerings einer ExpressRoute-Verbindung mithilfe von PowerShell deaktiviert und aktiviert werden. Wenn Sie ein Peering erstellen, wird dieses standardmäßig aktiviert. Wenn Sie ein Peering deaktivieren, wird die BGP-Sitzung der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung heruntergefahren. Die Konnektivität des Peerings mit Microsoft geht verloren. Wenn Sie das Peering aktivieren, wird die BGP-Sitzung jeweils in der primären und sekundären Verbindung Ihrer ExpressRoute-Verbindung erneut gestartet. Die Konnektivität mit Microsoft wird für dieses Peering wiederhergestellt. Sie können das Microsoft-Peering und das private Azure-Peering unabhängig voneinander in einer ExpressRoute-Verbindung aktivieren und deaktivieren.
 
-Es gibt einige Szenarios, in denen das Zurücksetzen Ihrer ExpressRoute-Peerings hilfreich sein kann.
-* Testen Sie Ihren Entwurf und die Implementierung der Notfallwiederherstellung. Wenn Sie z.B. über zwei ExpressRoute-Verbindungen verfügen, können Sie die Peerings von einer Verbindung deaktivieren und erzwingen, dass Ihr Netzwerkdatenverkehr ein Failover auf die andere Verbindung ausführt.
-* Aktivieren Sie die bidirektionale Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD) für das private Azure-Peering oder Microsoft-Peering Ihrer ExpressRoute-Verbindung. BFD ist standardmäßig im privaten Azure-Peering aktiviert, wenn Ihre ExpressRoute-Verbindung nach dem 1. August 2018 erstellt wurde, und im Microsoft-Peering, wenn Ihre ExpressRoute-Verbindung nach dem 10. Januar 2020 erstellt wurde. Wenn Ihre Verbindung vor diesem Datum erstellt wurde, wurde BFD nicht aktiviert. Sie können BFD aktivieren, indem Sie das Peering deaktivieren und anschließend erneut aktivieren. 
+Es gibt zwei Szenarien, in denen das Zurücksetzen Ihrer ExpressRoute-Peerings hilfreich sein kann.
+* Sie möchten Ihren Entwurf und die Implementierung der Notfallwiederherstellung testen. Wenn Sie z.B. über zwei ExpressRoute-Verbindungen verfügen, können Sie die Peerings in einer Verbindung deaktivieren und erzwingen, dass Ihr Netzwerkdatenverkehr ein Failover auf die andere Verbindung ausführt.
+* Aktivieren Sie die bidirektionale Weiterleitungserkennung (Bidirectional Forwarding Detection, BFD) für das private Azure-Peering oder Microsoft-Peering Ihrer ExpressRoute-Verbindung. BFD ist standardmäßig im privaten Azure-Peering aktiviert, wenn Ihre ExpressRoute-Verbindung nach dem 1. August 2018 erstellt wurde, und im Microsoft-Peering nach dem 10. Januar 2020. Wenn Ihre Verbindung vor dem aufgeführten Datum erstellt wurde, müssen Sie das Peering zurücksetzen, um BFD zu aktivieren. 
 
 ### <a name="working-with-azure-powershell"></a>Arbeiten mit Azure PowerShell
 
@@ -142,6 +142,6 @@ Es gibt einige Szenarios, in denen das Zurücksetzen Ihrer ExpressRoute-Peerings
    Das Peering muss sich in dem von Ihnen festgelegten Zustand befinden. 
 
 ## <a name="next-steps"></a>Nächste Schritte
-Wenn Sie für die Problembehandlung eines ExpressRoute-Problems Hilfe benötigen, sehen Sie sich folgende Artikel an:
+Wenn Sie Hilfe beim Behandeln eines ExpressRoute-Problems benötigen, sehen Sie sich folgende Artikel an:
 * [Überprüfen der ExpressRoute-Konnektivität](expressroute-troubleshooting-expressroute-overview.md)
 * [Beheben von Problemen bei der Netzwerkleistung](expressroute-troubleshooting-network-performance.md)

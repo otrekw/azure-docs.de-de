@@ -4,16 +4,16 @@ description: Hier finden Sie Informationen zur nachhaltigen Softwareentwicklung 
 services: container-service
 ms.topic: conceptual
 ms.date: 08/26/2020
-ms.openlocfilehash: 2457de7bdaa94a6e2269515fafe6689d44960625
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 700723041855fdae4f994480d180292fdfd12e15
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90984983"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346893"
 ---
 # <a name="sustainable-software-engineering-principles-in-azure-kubernetes-service-aks"></a>Prinzipien für eine nachhaltige Softwareentwicklung in Azure Kubernetes Service (AKS)
 
-Bei den Prinzipien für eine nachhaltige Softwareentwicklung handelt es sich um eine Reihe von Kompetenzen, die Ihnen dabei helfen, nachhaltige Anwendungen zu definieren, zu erstellen und auszuführen. Das Ziel besteht darin, die CO2-Bilanz jedes Aspekts Ihrer Anwendung zu verbessern. Das Projekt [Principles.Green][principles-green] enthält eine Übersicht über die Prinzipien für eine nachhaltige Softwareentwicklung.
+Bei den Prinzipien für eine nachhaltige Softwareentwicklung handelt es sich um eine Reihe von Kompetenzen, die Ihnen dabei helfen, nachhaltige Anwendungen zu definieren, zu erstellen und auszuführen. Das Ziel besteht darin, die CO2-Bilanz jedes Aspekts Ihrer Anwendung zu verbessern. Das Projekt [The Principles of Sustainable Software Engineering][principles-sse] enthält eine Übersicht über Prinzipien für eine nachhaltige Softwareentwicklung.
 
 Ein wichtiges Konzept der nachhaltigen Softwareentwicklung ist die Verlagerung der Prioritäten und des Schwerpunkts. Bei der Entwicklung und Ausführung von Software stehen zumeist hohe Geschwindigkeit und kurze Wartezeiten im Vordergrund. Bei der nachhaltigen Softwareentwicklung geht es dagegen darum, die CO2-Emissionen so weit wie möglich zu senken. In einigen Fällen kann die Anwendung von Prinzipien für eine nachhaltige Softwareentwicklung zur Beschleunigung oder zur Verringerung von Wartezeiten beitragen – etwa durch die Verkürzung der zurückzulegenden Netzwerkstrecke. In anderen Fällen führt die Senkung der CO2-Emissionen ggf. zu weniger Leistung oder zu längeren Wartezeiten – etwa aufgrund der Zurückstellung von Workloads mit niedriger Priorität. Überprüfen Sie die Prioritäten, Anforderungen und Kompromisse Ihrer Anwendung, bevor Sie sich dafür entscheiden, Prinzipien für eine nachhaltige Softwareentwicklung auf Ihre Anwendung anzuwenden.
 
@@ -74,4 +74,4 @@ Weitere Informationen zu den AKS-Features aus diesem Artikel finden Sie hier:
 [node-sizing]: use-multiple-node-pools.md#specify-a-vm-size-for-a-node-pool
 [sustainability-calculator]: https://azure.microsoft.com/blog/microsoft-sustainability-calculator-helps-enterprises-analyze-the-carbon-emissions-of-their-it-infrastructure/
 [system-pools]: use-system-pools.md
-[principles-green]: https://principles.green/
+[principles-sse]: https://docs.microsoft.com/learn/modules/sustainable-software-engineering-overview/

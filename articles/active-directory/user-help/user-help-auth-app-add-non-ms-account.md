@@ -8,19 +8,19 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: end-user-help
-ms.date: 01/24/2019
+ms.date: 11/02/2020
 ms.author: curtand
 ms.reviewer: olhaun
-ms.openlocfilehash: cba8837fc738884fc187b13083487c2ab62d25f0
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 21c8e75ac81a443b1dd9d4a0f43263bbf40bee88
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96020091"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97359199"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Hinzufügen von Nicht-Microsoft-Konten zur Microsoft Authenticator-App
 
-Fügen Sie Ihre nicht von Microsoft stammenden Konten (z. B. für Google, Facebook oder GitHub) zur Microsoft Authenticator-App für die zweistufige Überprüfung hinzu. Die Microsoft Authenticator-App funktioniert mit jeder App, für die die zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (TOTP) unterstützt.
+Wenn Sie nicht von Microsoft stammende Konten haben (z. B. von Google, Facebook oder GitHub), können Sie diese in der Microsoft Authenticator-App für die zweistufige Überprüfung hinzufügen. Die Microsoft Authenticator-App funktioniert mit jeder App, für die eine zweistufige Überprüfung verwendet wird, und mit jedem Konto, das die Standards für zeitbasierte Einmalkennwörter (Time-based One-time Password, TOTP) unterstützt.
 
 >[!Important]
 >Bevor Sie Ihr Konto hinzufügen können, müssen Sie die Microsoft Authenticator-App herunterladen und installieren. Wenn Sie dies noch nicht getan haben, führen Sie die im Artikel [Herunterladen und Installieren der App](user-help-auth-app-download-install.md) aufgeführten Schritte aus.
@@ -130,7 +130,7 @@ Fügen Sie Ihr GitHub-Konto hinzu, indem Sie die zweistufige Überprüfung aktiv
 
 1. Wählen Sie auf Ihrem Computer auf der Seite **Zweistufige Authentifizierung** die Option **Set up using an app** (Mit einer App einrichten) aus.
 
-2. Speichern Sie Ihre Wiederherstellungscodes, damit Sie wieder auf Ihr Konto zugreifen können, falls Sie den Zugriff verlieren, und wählen Sie dann **Next** (Weiter) aus. 
+2. Speichern Sie Ihre Wiederherstellungscodes, damit Sie wieder auf Ihr Konto zugreifen können, falls Sie den Zugriff verlieren, und wählen Sie dann **Next** (Weiter) aus.
 
     Sie können Ihre Codes speichern, indem Sie die Codes auf Ihr Gerät herunterladen, sie ausdrucken oder in ein Kennwort-Manager-Tool kopieren.
 

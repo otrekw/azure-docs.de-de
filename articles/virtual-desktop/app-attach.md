@@ -1,200 +1,33 @@
 ---
-title: 'Windows Virtual Desktop: MSIX-Feature zum Anfügen von Apps – Azure'
-description: Einrichten des MSIX-Features zum Anfügen von Apps für Windows Virtual Desktop.
+title: 'Konfigurieren von MSIX App Attach für Windows Virtual Desktop mit PowerShell-Skripts: Azure'
+description: Erfahren Sie, wie Sie PowerShell-Skripts für MSIX App Attach für Windows Virtual Desktop erstellen.
 author: Heidilohr
 ms.topic: how-to
-ms.date: 06/16/2020
+ms.date: 12/14/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f625b7dd68d4b5a5e1af68aeb53dac453ff8cbfd
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91816325"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97400827"
 ---
-# <a name="set-up-msix-app-attach"></a>Einrichten des MSIX-Features zum Anfügen von Apps
+# <a name="create-powershell-scripts-for-msix-app-attach-preview"></a>Erstellen von PowerShell-Skripts für MSIX App Attach (Vorschau)
 
 > [!IMPORTANT]
 > Das MSIX-Features zum Anfügen von Apps befindet sich zurzeit in der öffentlichen Vorschauphase.
 > Diese Vorschauversion wird ohne Vereinbarung zum Servicelevel bereitgestellt und ist nicht für Produktionsworkloads vorgesehen. Manche Features werden möglicherweise nicht unterstützt oder sind nur eingeschränkt verwendbar.
 > Weitere Informationen finden Sie unter [Zusätzliche Nutzungsbestimmungen für Microsoft Azure-Vorschauen](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-In diesem Thema wird erläutert, wie Sie das MSIX-Feature zum Anfügen von Apps in einer Windows Virtual Desktop-Umgebung einrichten.
+In diesem Thema erfahren Sie, wie Sie PowerShell-Skripts für MSIX App Attach einrichten.
 
-## <a name="requirements"></a>Requirements (Anforderungen)
-
-Bevor Sie beginnen, müssen Sie Folgendes für das MSIX-Feature zum Anfügen von Apps konfigurieren:
-
-- Zugriff auf das Windows-Insider-Portal, um die Version von Windows 10 mit Unterstützung für die APIs für das MSIX-Feature zum Anfügen von Apps abzurufen.
-- Eine funktionierende Windows Virtual Desktop-Bereitstellung. Informationen zur Bereitstellung von Windows Virtual Desktop (klassisch) finden Sie unter [Erstellen eines Mandanten in Windows Virtual Desktop](./virtual-desktop-fall-2019/tenant-setup-azure-active-directory.md). Informationen zum Bereitstellen von Windows Virtual Desktop mit Azure Resource Manager-Integration finden Sie unter [Erstellen eines Hostpools mit dem Azure-Portal](./create-host-pools-azure-marketplace.md).
-- Das MSIX-Pakettool.
-- Eine Netzwerkfreigabe in der Windows Virtual Desktop-Bereitstellung, in der das MSIX-Paket gespeichert wird.
-
-## <a name="get-the-os-image"></a>Abrufen des Betriebssystemimages
-
-Zuerst müssen Sie das Betriebssystemimage abrufen. Sie können das Betriebssystemimage über das Azure-Portal abrufen. Wenn Sie jedoch Mitglied des Windows Insider-Programms sind, haben Sie die Möglichkeit, stattdessen das Windows Insider-Portal zu verwenden.
-
-### <a name="get-the-os-image-from-the-azure-portal"></a>Abrufen des Betriebssystemimages aus dem Azure-Portal
-
-So rufen Sie das Betriebssystemimage aus dem Azure-Portal ab:
-
-1. Öffnen Sie das [Azure-Portal](https://portal.azure.com), und melden Sie sich an.
-
-2. Wechseln Sie zu **Erstellen eines virtuellen Computers**.
-
-3. Wählen Sie auf der Registerkarte **Grundlegend** die Option **Windows 10 Enterprise (mehrere Sitzungen), Version 2004**aus.
-
-4. Befolgen Sie die weiteren Anweisungen, um die Erstellung des virtuellen Computers durchzuführen.
-
-     >[!NOTE]
-     >Mit dieser VM können Sie das Anfügen der MSIX-App direkt testen. Weitere Informationen finden Sie weiter unten unter [Generieren eines VHD- oder VHDX-Pakets für MSIX](#generate-a-vhd-or-vhdx-package-for-msix). Lesen Sie andernfalls diesen Abschnitt.
-
-### <a name="get-the-os-image-from-the-windows-insider-portal"></a>Abrufen des Betriebssystemimages aus dem Windows Insider-Portal
-
-So rufen Sie das Betriebssystemimage aus dem Windows Insider-Portal ab:
-
-1. Öffnen Sie das [Windows-Insider-Portal](https://www.microsoft.com/software-download/windowsinsiderpreviewadvanced?wa=wsignin1.0), und melden Sie sich an.
-
-     >[!NOTE]
-     >Sie müssen Mitglied des Windows-Insider-Programms sein, um auf das Windows-Insider-Portal zugreifen zu können. Weitere Informationen zum Windows-Insider-Programm finden Sie in unserer [Dokumentation zu Windows-Insider](/windows-insider/at-home/).
-
-2. Scrollen Sie nach unten zum Abschnitt **Edition auswählen**, und wählen Sie **Windows 10 Insider Preview Enterprise (FAST) – Build 19041** oder höher aus.
-
-3. Wählen Sie **Bestätigen** aus, und wählen Sie dann die gewünschte Sprache aus. Wählen Sie anschließend **Bestätigen** erneut aus.
-
-     >[!NOTE]
-     >Zurzeit ist Englisch die einzige Sprache, die mit dem Feature getestet wurde. Sie können andere Sprachen auswählen, aber sie werden möglicherweise nicht wie vorgesehen angezeigt.
-
-4. Wenn der Downloadlink generiert wird, wählen Sie den **64-Bit-Download** aus, und speichern Sie ihn auf der lokalen Festplatte.
-
-## <a name="prepare-the-vhd-image-for-azure"></a>Vorbereiten des VHD-Images für Azure
-
-Als nächstes müssen Sie ein VHD-Masterimage erstellen. Wenn Sie das VHD-Masterimage noch nicht erstellt haben, navigieren Sie zu [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md), und befolgen Sie die dort beschriebenen Anweisungen.
-
-Nachdem Sie das VHD-Masterimage erstellt haben, müssen Sie automatische Updates für das MSIX-Feature zum Anfügen von Apps deaktivieren. Um automatische Updates zu deaktivieren, müssen Sie an einer Eingabeaufforderung mit erhöhten Rechten die folgenden Befehle ausführen:
-
-```cmd
-rem Disable Store auto update:
-
-reg add HKLM\Software\Policies\Microsoft\WindowsStore /v AutoDownload /t REG_DWORD /d 0 /f
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Automatic app update" /Disable
-Schtasks /Change /Tn "\Microsoft\Windows\WindowsUpdate\Scheduled Start" /Disable
-
-rem Disable Content Delivery auto download apps that they want to promote to users:
-
-reg add HKCU\Software\Microsoft\Windows\CurrentVersion\ContentDeliveryManager /v PreInstalledAppsEnabled /t REG_DWORD /d 0 /f
-
-reg add HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\ContentDeliveryManager\Debug /v ContentDeliveryAllowedOverride /t REG_DWORD /d 0x2 /f
-
-rem Disable Windows Update:
-
-sc config wuauserv start=disabled
-```
-
-Nachdem Sie die automatischen Updates deaktiviert haben, müssen Sie Hyper-V aktivieren, da Sie den „Mount-VHD“-Befehl zum Stagen und „Dismount-VHD“ zum Aufheben des Stagings verwenden.
-
-```powershell
-Enable-WindowsOptionalFeature -Online -FeatureName Microsoft-Hyper-V -All
-```
->[!NOTE]
->Diese Änderung erfordert, dass Sie den virtuellen Computer neu starten.
-
-Bereiten Sie im nächsten Schritt die VM-VHD für Azure vor, und laden Sie den sich ergebenden VHD-Datenträger in Azure hoch. Weitere Informationen finden Sie unter [Vorbereiten und Anpassen eines VHD-Masterimages](set-up-customize-master-image.md).
-
-Nachdem Sie die VHD in Azure hochgeladen haben, erstellen Sie einen Hostpool, der auf diesem neuen Image basiert, indem Sie die Anweisungen im Tutorial [Erstellen eines Hostpools mithilfe von Azure Marketplace](create-host-pools-azure-marketplace.md) befolgen.
-
-## <a name="prepare-the-application-for-msix-app-attach"></a>Vorbereiten der Anwendung für das MSIX-Feature zum Anfügen von Apps
-
-Wenn Sie bereits über ein MSIX-Paket verfügen, fahren Sie mit [Konfigurieren der Windows Virtual Desktop-Infrastruktur](#configure-windows-virtual-desktop-infrastructure) fort. Wenn Sie Legacyanwendungen testen möchten, befolgen Sie die Anweisungen unter [Erstellen eines MSIX-Pakets aus einem Desktopinstaller auf einem virtuellen Computer](/windows/msix/packaging-tool/create-app-package-msi-vm/), um die Legacyanwendung in ein MSIX-Paket zu konvertieren.
-
-## <a name="generate-a-vhd-or-vhdx-package-for-msix"></a>Generieren eines VHD- oder VHDX-Pakets für MSIX
-
-Pakete liegen im VHD- oder VHDX-Format vor, um die Leistung zu optimieren. MSIX benötigt VHD- oder VHDX-Pakete, um ordnungsgemäß zu funktionieren.
-
-So generieren Sie ein VHD- oder VHDX-Paket für MSIX:
-
-1. [Laden Sie das msixmgr-Tool herunter](https://aka.ms/msixmgr), und speichern Sie den ZIP-Ordner in einem Ordner auf der Sitzungshost-VM.
-
-2. Entpacken Sie den ZIP-Ordner des msixmgr-Tools.
-
-3. Speichern Sie das MSIX-Quellpaket im gleichen Ordner, in dem Sie das msixmgr-Tool entpackt haben.
-
-4. Führen Sie das folgende Cmdlet in PowerShell aus, um eine VHD zu erstellen:
-
-    ```powershell
-    New-VHD -SizeBytes <size>MB -Path c:\temp\<name>.vhd -Dynamic -Confirm:$false
-    ```
-
-    >[!NOTE]
-    >Stellen Sie sicher, dass die VHD groß genug ist, um das erweiterte MSIX-Paket zu speichern.*
-
-5. Führen Sie das folgende Cmdlet aus, um die neu erstellte VHD-Datei einzubinden:
-
-    ```powershell
-    $vhdObject = Mount-VHD c:\temp\<name>.vhd -Passthru
-    ```
-
-6. Führen Sie dieses Cmdlet aus, um die VHD zu initialisieren:
-
-    ```powershell
-    $disk = Initialize-Disk -Passthru -Number $vhdObject.Number
-    ```
-
-7. Führen Sie dieses Cmdlet aus, um eine neue Partition zu erstellen:
-
-    ```powershell
-    $partition = New-Partition -AssignDriveLetter -UseMaximumSize -DiskNumber $disk.Number
-    ```
-
-8. Führen Sie dieses Cmdlet aus, um die Partition zu formatieren:
-
-    ```powershell
-    Format-Volume -FileSystem NTFS -Confirm:$false -DriveLetter $partition.DriveLetter -Force
-    ```
-
-9. Erstellen Sie einen übergeordneten Ordner auf der eingebundenen VHD. Dieser Schritt ist obligatorisch, da für das MSIX-Feature zum Anfügen von Apps ein übergeordneter Ordner erforderlich ist. Sie können dem übergeordneten Ordner einen beliebigen Namen geben.
-
-### <a name="expand-msix"></a>Erweitern von MSIX
-
-Danach müssen Sie das MSIX-Image durch Entpacken „erweitern“. So entpacken Sie das MSIX-Image:
-
-1. Öffnen Sie eine Eingabeaufforderung als Administrator, und navigieren Sie zu dem Ordner, den Sie zum Herunterladen und Entzippen des msixmgr-Tools verwendet haben.
-
-2. Führen Sie das folgende Cmdlet aus, um das MSIX-Paket in die VHD zu entpacken, die Sie im vorherigen Abschnitt erstellt und eingebunden haben.
-
-    ```powershell
-    msixmgr.exe -Unpack -packagePath <package>.msix -destination "f:\<name of folder you created earlier>" -applyacls
-    ```
-
-    Nachdem das Entpacken abgeschlossen ist, sollte die folgende Meldung angezeigt werden:
-
-    `Successfully unpacked and applied ACLs for package: <package name>.msix`
-
-    >[!NOTE]
-    > Bei der Verwendung von Paketen aus Microsoft Store for Business (oder Education) in Ihrem Netzwerk oder auf Geräten, die nicht mit dem Internet verbunden sind, müssen Sie die Paketlizenzen aus dem Store abrufen und installieren, um die App erfolgreich ausführen zu können. Weitere Informationen finden Sie unter [Offlineverwendung von Paketen](#use-packages-offline).
-
-3. Navigieren Sie zur eingebundenen VHD, öffnen Sie den App-Ordner, und vergewissern Sie sich, dass Paketinhalt vorhanden ist.
-
-4. Heben Sie die Einbindung der VHD auf.
-
-## <a name="configure-windows-virtual-desktop-infrastructure"></a>Konfigurieren der Windows Virtual Desktop-Infrastruktur
-
-Entwurfsbedingt kann ein einzelnes erweitertes MSIX-Paket (die VHD, die Sie im vorherigen Abschnitt erstellt haben) von mehreren Sitzungshost-VMs gemeinsam genutzt werden, da die VHDs im schreibgeschützten Modus angefügt werden.
-
-Bevor Sie beginnen, stellen Sie sicher, dass Ihre Netzwerkfreigabe die folgenden Anforderungen erfüllt:
-
-- Die Freigabe ist SMB-kompatibel.
-- Die VMs, die Teil des Sitzungshostpools sind, verfügen über NTFS-Berechtigungen für die Freigabe.
-
-### <a name="set-up-an-msix-app-attach-share"></a>Einrichten einer Freigabe für das Feature zum Anfügen von Apps
-
-Erstellen Sie in Ihrer Windows Virtual Desktop-Umgebung eine Netzwerkfreigabe, und verschieben Sie das Paket dorthin.
-
->[!NOTE]
-> Die bewährte Methode zum Erstellen von MSIX-Netzwerkfreigaben besteht darin, die Netzwerkfreigabe mit schreibgeschützten NTFS-Berechtigungen einzurichten.
+>[!IMPORTANT]
+>Bevor Sie beginnen, sollten Sie [dieses Formular](https://aka.ms/enablemsixappattach) ausfüllen und übermitteln, um MSIX App Attach in Ihrem Abonnement zu aktivieren. Wenn Ihre Anforderung noch nicht genehmigt wurde, funktioniert MSIX App Attach nicht. Die Genehmigung von Anforderungen kann an Werktagen bis zu 24 Stunden dauern. Sie erhalten eine E-Mail, wenn Ihre Anforderung akzeptiert und abgeschlossen wurde.
 
 ## <a name="install-certificates"></a>Installieren von Zertifikaten
+
+Sie müssen Zertifikate auf allen Sitzungshosts im Hostpool installieren, auf denen die Apps aus Ihren MSIX App Attach-Paketen gehostet werden.
 
 Wenn Ihre App ein Zertifikat verwendet, das nicht öffentlich vertrauenswürdig ist oder selbst signiert wurde, wird dieses wie folgt installiert:
 
@@ -243,7 +76,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     Possible values for VolumeName along with current mount points are:
 
     \\?\Volume{a12b3456-0000-0000-0000-10000000000}\
-    *** NO MOUNT POINTS ***
+    **_ NO MOUNT POINTS _*_
 
     \\?\Volume{c78d9012-0000-0000-0000-20000000000}\
         E:\
@@ -254,7 +87,7 @@ Bevor Sie die PowerShell-Skripts aktualisieren, stellen Sie sicher, dass Sie üb
     ```
 
 
-6.  Aktualisieren Sie die Variable **$volumeGuid** mit der soeben kopierten Volume-GUID.
+6.  Aktualisieren Sie die Variable _ *$volumeGuid** mit der soeben kopierten Volume-GUID.
 
 7. Öffnen Sie eine PowerShell-Eingabeaufforderung mit Administratorrechten, und aktualisieren Sie das folgende PowerShell-Skript mit den Variablen, die für Ihre Umgebung gelten.
 

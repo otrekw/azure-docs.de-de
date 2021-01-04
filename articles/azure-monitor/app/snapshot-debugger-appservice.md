@@ -6,27 +6,32 @@ author: brahmnes
 ms.author: bfung
 ms.date: 03/26/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6d111379cbeb0ea4eeac9ea0868b6d263a0a540c
-ms.sourcegitcommit: 5e5a0abe60803704cf8afd407784a1c9469e545f
+ms.openlocfilehash: 35653840c5ddd6f5ae2d5dc078513f0fa35ab34a
+ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/01/2020
-ms.locfileid: "96435721"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97560932"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-app-service"></a>Aktivieren des Momentaufnahmedebuggers für .NET-Apps in Azure App Service
 
 Der Momentaufnahmedebugger kann derzeit für ASP.NET- und ASP.NET Core-Apps verwendet werden, die unter Azure App Service in Windows-Dienstplänen ausgeführt werden. Wenn Sie den Debugger für Momentaufnahmen verwenden, empfehlen wir, Ihre Anwendung auf der Dienstebene „Basic“ oder höher auszuführen. Bei den meisten Anwendungen haben die Dienstebenen „Free“ und „Shared“ nicht genügend Arbeitsspeicher zum Speichern von Momentaufnahmen.
 
 ## <a name="enable-snapshot-debugger"></a><a id="installation"></a> Aktivieren des Momentaufnahmedebuggers
-Befolgen Sie die unten angegebenen Anweisungen, um den Momentaufnahmedebugger für eine App zu aktivieren. Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anweisungen zum Aktivieren des Momentaufnahmedebuggers auf anderen unterstützten Plattformen weiter:
+Befolgen Sie die unten angegebenen Anweisungen, um den Momentaufnahmedebugger für eine App zu aktivieren.
+
+Wenn Sie eine andere Art von Azure-Dienst ausführen, helfen Ihnen diese Anweisungen beim Aktivieren des Momentaufnahmedebuggers auf anderen unterstützten Plattformen weiter:
 * [Azure Cloud Services](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Service Fabric-Dienste](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Azure Virtual Machines und VM-Skalierungsgruppen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 * [Lokale virtuelle oder physische Computer](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json)
 
-Wenn Sie eine Vorschauversion von .NET Core verwenden, führen Sie zuerst die Anweisungen unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) aus, um das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung zu integrieren, und führen Sie dann die übrigen nachstehenden Anweisungen aus. 
+> [!NOTE]
+> Wenn Sie eine Vorschauversion von .NET Core verwenden oder Ihre Anwendung direkt oder indirekt (über eine abhängige Assembly) auf das Application Insights SDK verweist, führen Sie zuerst die Anweisungen unter [Aktivieren des Momentaufnahmedebuggers für andere Umgebungen](snapshot-debugger-vm.md?toc=/azure/azure-monitor/toc.json) aus, um das NuGet-Paket [Microsoft.ApplicationInsights.SnapshotCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in die Anwendung zu integrieren, und führen Sie dann die übrigen nachstehenden Anweisungen aus. 
 
-Der Application Insights-Momentaufnahmedebugger ist als Teil der App Services-Runtime zwar bereits vorinstalliert, muss aber noch aktiviert werden, um Momentaufnahmen für Ihre App Service-Apps zu erhalten. Führen Sie die unten angegebenen Schritte zum Aktivieren des Momentaufnahmedebuggers aus, nachdem Sie eine App bereitgestellt haben (auch wenn Sie das Application Insights SDK in den Quellcode eingefügt haben).
+Der Momentaufnahmedebugger ist als Teil der App Services-Runtime zwar bereits vorinstalliert, muss aber noch aktiviert werden, um Momentaufnahmen für Ihre App Service-Apps zu erhalten.
+
+Nachdem Sie eine App bereitgestellt haben, führen Sie die folgenden Schritte aus, um den Momentaufnahmedebugger zu aktivieren:
 
 1. Navigieren Sie zur Azure-Systemsteuerung für Ihre App Service-Instanz.
 2. Wechseln Sie zur Seite **Einstellungen > Application Insights**.
@@ -44,11 +49,12 @@ Der Application Insights-Momentaufnahmedebugger ist als Teil der App Services-Ru
 ## <a name="disable-snapshot-debugger"></a>Deaktivieren des Momentaufnahmedebuggers
 
 Führen Sie die gleichen Schritte wie zum **Aktivieren des Momentaufnahmedebuggers** aus, legen Sie jedoch beide Schalter für den Momentaufnahmedebugger auf **Aus** fest.
+
 Es wird empfohlen, den Momentaufnahmedebugger für alle Ihre Apps zu aktivieren, um die Diagnose von Anwendungsausnahmen zu erleichtern.
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-Vorlage
 
-Bei einer Azure App Service-App können Sie App-Einstellungen in einer Azure Resource Manager-Vorlage festlegen, um den Momentaufnahmedebugger und Profiler zu aktivieren. Sie fügen eine Konfigurationsressource hinzu, die die App-Einstellungen als untergeordnete Ressource der Website enthält:
+Bei einer Azure App Service-App können Sie App-Einstellungen in einer Azure Resource Manager-Vorlage festlegen, um Momentaufnahmedebugger und Profiler zu aktivieren. Sehen Sie sich dazu den Vorlagenausschnitt unten an:
 
 ```json
 {

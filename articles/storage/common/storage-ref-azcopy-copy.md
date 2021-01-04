@@ -4,16 +4,16 @@ description: Dieser Artikel enthält Referenzinformationen zum Befehl „azcopy 
 author: normesta
 ms.service: storage
 ms.topic: reference
-ms.date: 07/24/2020
+ms.date: 12/11/2020
 ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
-ms.openlocfilehash: fd71f4eb56974b93637c23eddc81e5f33ce788b8
-ms.sourcegitcommit: df66dff4e34a0b7780cba503bb141d6b72335a96
+ms.openlocfilehash: 6390aafca4937a480e4d92ff04003a294b9c0e20
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96512153"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356173"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
 
@@ -276,13 +276,15 @@ Kopieren einer Teilmenge der Buckets unter Verwendung eines Platzhaltersymbols (
 
 **--include-after** string: schließt nur die Dateien ein, die ab dem angegebenen Datum bzw. der angegebenen Uhrzeit geändert wurden. Der Wert sollte das ISO 8601-Format aufweisen. Wenn keine Zeitzone angegeben ist, wird davon ausgegangen, dass der Wert in der lokalen Zeitzone des Computers angegeben ist, auf dem AzCopy ausgeführt wird, z. B. `2020-08-19T15:04:00Z` für eine UTC-Zeit oder `2020-08-19` für Mitternacht (00:00 Uhr) in der lokalen Zeitzone. Ab AzCopy 10.5 gilt dieses Flag nur für Dateien, nicht für Ordner, sodass Ordnereigenschaften nicht kopiert werden, wenn dieses Flag mit `--preserve-smb-info` oder `--preserve-smb-permissions` verwendet wird.
 
+ **--include-before** string: schließt nur die Dateien ein, die bis zum angegebenen Datum bzw. der angegebenen Uhrzeit geändert wurden. Der Wert sollte das ISO 8601-Format aufweisen. Wenn keine Zeitzone angegeben ist, wird davon ausgegangen, dass der Wert in der lokalen Zeitzone des Computers angegeben ist, auf dem AzCopy ausgeführt wird, Beispiel: `2020-08-19T15:04:00Z` für eine UTC-Zeit oder `2020-08-19` für Mitternacht (00:00 Uhr) in der lokalen Zeitzone. Ab AzCopy 10.7 gilt dieses Flag nur für Dateien, nicht für Ordner, sodass Ordnereigenschaften nicht kopiert werden, wenn dieses Flag mit `--preserve-smb-info` oder `--preserve-smb-permissions` verwendet wird.
+
 **--include-attributes** string (nur Windows): schließt Dateien ein, deren Attribute mit der Attributliste übereinstimmen. Beispiel: A;S;R
 
 **--include-path** string: schließt nur diese Pfade beim Kopieren ein. Diese Option unterstützt keine Platzhalterzeichen (*). Überprüft das Präfix des relativen Pfads (z. B. `myFolder;myFolder/subDirName/file.pdf`).
 
 **--include-pattern** string: schließt nur diese Dateien beim Kopieren ein. Diese Option unterstützt Platzhalterzeichen (*). Trennen Sie Dateien durch `;` voneinander ab.
 
-**--list-of-versions** string  Gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Stellen Sie sicher, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
+**--list-of-versions** string: gibt eine Datei an, bei der jede Versions-ID in einer separaten Zeile steht. Beachten Sie, dass die Quelle auf ein einzelnes Blob verweisen muss und dass alle in der Datei mit diesem Flag angegebenen Versions-IDs nur zum Quellblob gehören dürfen. AzCopy lädt die angegebenen Versionen in den bereitgestellten Zielordner herunter. Weitere Informationen finden Sie unter [Herunterladen früherer Versionen eines Blobs](storage-use-azcopy-blobs.md#download-previous-versions-of-a-blob).
 
 **--log-level** string: definiert, wie ausführlich die Protokolldatei sein soll. Verfügbare Stufen: INFO (alle Anforderungen/Antworten), WARNING (langsame Antworten), ERROR (nur fehlgeschlagene Anforderungen) und NONE (keine Ausgabeprotokolle). (Standardwert: `INFO`) 
 

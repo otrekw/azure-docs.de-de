@@ -1,20 +1,20 @@
 ---
 title: Resource Manager-Vorlagen-Testtoolkit
-description: Hier wird beschrieben, wie Sie das Resource Manager-Vorlagen-Testtoolkit für Ihre Vorlage ausführen. Mit dem Toolkit können Sie festzustellen, ob Sie die empfohlenen Vorgehensweisen implementiert haben.
+description: Erfahren Sie, wie Sie das ARM-Vorlagen-Testtoolkit (Azure Resource Manager) für Ihre Vorlage ausführen. Mit dem Toolkit können Sie festzustellen, ob Sie die empfohlenen Vorgehensweisen implementiert haben.
 ms.topic: conceptual
 ms.date: 09/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 73f6db8cbd5e4d7a0670c394f6af338aae8e9e79
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 29ebe2f0ec4d4c39154272bbbdf4d0c9ede9fd95
+ms.sourcegitcommit: 1756a8a1485c290c46cc40bc869702b8c8454016
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89439559"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96928187"
 ---
 # <a name="use-arm-template-test-toolkit"></a>Verwenden des Resource Manager-Vorlagen-Testtoolkits
 
-Das [ARM-Vorlagen-Testtoolkit](https://aka.ms/arm-ttk) (Azure Resource Manager) überprüft, ob Ihre Vorlage die empfohlenen Vorgehensweisen verwendet. Wenn Ihre Vorlage nicht mit den empfohlenen Vorgehensweisen kompatibel ist, wird eine Liste mit Warnungen ausgegeben, die vorgeschlagene Änderungen enthält. Mit dem Testtoolkit erfahren Sie, wie Sie häufige Probleme bei der Vorlagenentwicklung vermeiden.
+Das [ARM-Vorlagen-Testtoolkit](https://aka.ms/arm-ttk) (Azure Resource Manager) überprüft, ob Ihre Vorlage die empfohlenen Vorgehensweisen umsetzt. Wenn Ihre Vorlage nicht mit den empfohlenen Vorgehensweisen kompatibel ist, wird eine Liste mit Warnungen ausgegeben, die vorgeschlagene Änderungen enthält. Mit dem Testtoolkit erfahren Sie, wie Sie häufige Probleme bei der Vorlagenentwicklung vermeiden.
 
 Das Testtoolkit stellt einen [Satz von Standardtests](test-cases.md) bereit. Diese Tests werden empfohlen, sind aber nicht erforderlich. Sie können entscheiden, welche Tests für Ihre Ziele relevant sind, und anpassen, welche Tests ausgeführt werden.
 
@@ -282,4 +282,4 @@ Im nächsten Beispiel sehen Sie, wie die Tests ausgeführt werden.
 
 ## <a name="next-steps"></a>Nächste Schritte
 
-Weitere Informationen zu den Standardtests finden Sie unter [Testfälle für das Toolkit](test-cases.md).
+Weitere Informationen zu den Standardtests finden Sie unter [Standardtestfälle für das Resource Manager-Vorlagen-Testtoolkit](test-cases.md).

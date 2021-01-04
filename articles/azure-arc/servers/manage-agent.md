@@ -3,12 +3,12 @@ title: Verwalten des Agents für Azure Arc-fähige Server
 description: In diesem Artikel werden die verschiedenen Verwaltungsaufgaben beschrieben, die Sie typischerweise während des Lebenszyklus des Connected Machine-Agents für Azure Arc-fähige Server ausführen.
 ms.date: 10/30/2020
 ms.topic: conceptual
-ms.openlocfilehash: 63db1177b193cad66208964ec377fab0779f23ba
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: 9e17bf58d1e94b64d1cdc6ff0b57b1b6a81be180
+ms.sourcegitcommit: 6172a6ae13d7062a0a5e00ff411fd363b5c38597
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93130968"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97107191"
 ---
 # <a name="managing-and-maintaining-the-connected-machine-agent"></a>Verwalten des Connected Machine-Agent
 
@@ -94,7 +94,7 @@ Mit zwei Befehlen wird der Agent auf einem Linux-Computer auf die neueste Versio
 Das aktuelle Agent-Paket können Sie über das [Microsoft-Paketrepository](https://packages.microsoft.com/) herunterladen.
 
 > [!NOTE]
-> Um ein Upgrade des Agents vorzunehmen, benötigen Sie *root* -Zugriffsberechtigungen oder ein Konto mit erhöhten Rechten, das Sudo verwendet.
+> Um ein Upgrade des Agents vorzunehmen, benötigen Sie *root*-Zugriffsberechtigungen oder ein Konto mit erhöhten Rechten, das Sudo verwendet.
 
 #### <a name="upgrade-ubuntu"></a>Ubuntu-Upgrade
 
@@ -148,23 +148,23 @@ Aktionen des Befehls [zypper](https://en.opensuse.org/Portal:Zypper) wie Install
 
 Das Azcmagent-Tool (Azcmagent.exe) wird verwendet, um den Connected Machine-Agent für Azure Arc-fähige Server während der Installation zu konfigurieren oder die Erstkonfiguration des Agents nach der Installation zu ändern. Azcmagent.exe bietet Befehlszeilenparameter zum Anpassen des Agents und zum Anzeigen seines Status:
 
-* **Connect** : Verbindet den Computer mit Azure Arc.
+* **Connect**: Verbindet den Computer mit Azure Arc.
 
-* **Disconnect** : Trennt den Computer von Azure Arc.
+* **Disconnect**: Trennt den Computer von Azure Arc.
 
-* **Show** : Zeigt den Agent-Status und seine Konfigurationseigenschaften an (Name der Ressourcengruppe, Abonnement-ID, Version usw.), die bei der Behandlung eines Problems mit dem Agent helfen können. Verwenden Sie den Parameter `-j`, um die Ergebnisse im JSON-Format auszugeben.
+* **Show**: Zeigt den Agent-Status und seine Konfigurationseigenschaften an (Name der Ressourcengruppe, Abonnement-ID, Version usw.), die bei der Behandlung eines Problems mit dem Agent helfen können. Verwenden Sie den Parameter `-j`, um die Ergebnisse im JSON-Format auszugeben.
 
 * **Logs:** Hiermit wird eine ZIP-Datei im aktuellen Verzeichnis erstellt, die Protokolle enthält, die Sie bei der Problembehandlung unterstützen.
 
 * **Version:** Hiermit wird die Version des Connected Machine-Agents angezeigt.
 
-* **-h oder -help** : Zeigt verfügbare Befehlszeilenparameter an.
+* **-h oder -help**: Zeigt verfügbare Befehlszeilenparameter an.
 
-    Um beispielsweise ausführliche Hilfeinformationen für den Parameter **Reconnect** anzuzeigen, geben Sie `azcmagent reconnect -h` ein. 
+    Um beispielsweise ausführliche Hilfeinformationen für den Parameter **Connect** anzuzeigen, geben Sie `azcmagent connect -h` ein. 
 
-* **-v oder -verbose** : Aktiviert die ausführliche Protokollierung.
+* **-v oder -verbose**: Aktiviert die ausführliche Protokollierung.
 
-Sie können einen **Connect** - und **Disconnect** -Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
+Sie können einen **Connect**- und **Disconnect**-Vorgang manuell ausführen, während Sie interaktiv angemeldet sind, oder Sie können mithilfe desselben Dienstprinzipals automatisieren, den Sie für das Onboarding mehrerer Agents verwendet haben, oder mithilfe eines [Zugriffstokens](../../active-directory/develop/access-tokens.md) der Microsoft Identity-Plattform. Wenn Sie keinen Dienstprinzipal zum Registrieren des Computers bei Azure Arc-fähigen Servern verwendet haben, finden Sie im folgenden [Artikel](onboard-service-principal.md#create-a-service-principal-for-onboarding-at-scale) Informationen zum Erstellen eines Dienstprinzipals.
 
 >[!NOTE]
 >Sie müssen auf Linux-Computern über *Stamm* zugriffsberechtigungen verfügen, um **azcmagent** ausführen zu können.
@@ -220,7 +220,7 @@ Beider der folgenden Methoden entfernen den Agent, aber sie entfernen nicht den 
 
     a. Melden Sie sich bei dem Computer mit einem Konto an, das über Administratorberechtigungen verfügt.  
     b. Wählen Sie in der **Systemsteuerung** die Option **Programme und Features** aus.  
-    c. Wählen Sie unter **Programme und Features** Folgendes aus: **Azure Connected Machine-Agent**  > **Deinstallieren**  > **Ja**.  
+    c. Wählen Sie unter **Programme und Features** Folgendes aus: **Azure Connected Machine-Agent** >**Deinstallieren** > **Ja**.  
 
     >[!NOTE]
     > Sie können auch auf das Installer-Paket **AzureConnectedMachineAgent.msi** doppelklicken, um den Setup-Assistenten für den Agent auszuführen.
@@ -253,7 +253,7 @@ Um den Agent manuell über die Eingabeaufforderung zu deinstallieren oder eine a
 ### <a name="linux-agent"></a>Linux-Agent
 
 > [!NOTE]
-> Um den Agent zu deinstallieren, benötigen Sie *root* -Zugriffsberechtigungen oder ein Konto mit erhöhten Rechten, das Sudo verwendet.
+> Um den Agent zu deinstallieren, benötigen Sie *root*-Zugriffsberechtigungen oder ein Konto mit erhöhten Rechten, das Sudo verwendet.
 
 Beim Deinstallieren des Linux-Agents ist der zu verwendende Befehl vom Linux-Betriebssystem abhängig.
 

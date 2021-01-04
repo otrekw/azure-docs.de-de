@@ -1,14 +1,14 @@
 ---
 title: Anzeigen der Dienstanbieteraktivität
 description: Kunden können anhand von protokollierten Aktivitäten überprüfen, welche Aktionen Dienstanbieter im Rahmen der delegierten Azure-Ressourcenverwaltung ausgeführt haben.
-ms.date: 10/12/2020
+ms.date: 12/11/2020
 ms.topic: how-to
-ms.openlocfilehash: 56c8b88274909aa55e19a4b364aaa3ace2a0c26d
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: dcf177cc41dac846d096607445ff4c3d433620ca
+ms.sourcegitcommit: dfc4e6b57b2cb87dbcce5562945678e76d3ac7b6
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92371085"
+ms.lasthandoff: 12/12/2020
+ms.locfileid: "97356377"
 ---
 # <a name="view-service-provider-activity"></a>Anzeigen der Dienstanbieteraktivität
 
@@ -42,6 +42,12 @@ Weitere Informationen finden Sie unter [Erstellen, Anzeigen und Verwalten von Ak
 Sie können Abfragen erstellen, um Ihre protokollierten Aktivitäten zu analysieren oder sich auf bestimmte Elemente zu konzentrieren. Beispielsweise kann es vorkommen, dass im Rahmen einer Überprüfung ein Bericht mit sämtlichen Aktionen auf Administratorebene benötigt wird, die für ein Abonnement ausgeführt wurden. Sie können eine Abfrage erstellen, um nur nach diesen Aktionen zu filtern und die Ergebnisse nach Benutzer, Datum oder nach einem anderen Wert zu sortieren.
 
 Weitere Informationen finden Sie in der [Übersicht über Protokollabfragen in Azure Monitor](../../azure-monitor/log-query/log-query-overview.md).
+
+## <a name="view-user-activity-across-domains"></a>Anzeigen von Benutzeraktivitäten in mehreren Domänen
+
+Mithilfe der Beispielarbeitsmappe [Aktivitätsprotokolle nach Domäne](https://github.com/Azure/Azure-Lighthouse-samples/tree/master/templates/workbook-activitylogs-by-domain) können Sie die Aktivität einzelner Benutzer über mehrere Domänen hinweg anzeigen.
+
+Die Ergebnisse können nach dem Domänennamen gefiltert werden. Sie können auch zusätzliche Filter anwenden, z. B. Kategorie, Ebene oder Ressourcengruppe.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

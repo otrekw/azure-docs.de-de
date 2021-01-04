@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
-ms.openlocfilehash: b685f716688cfbe732fa7d3566e1af97cc81272a
-ms.sourcegitcommit: 8e7316bd4c4991de62ea485adca30065e5b86c67
+ms.openlocfilehash: 390d2c8488fd2b35c775eabe43677b9349b547a1
+ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/17/2020
-ms.locfileid: "94652109"
+ms.lasthandoff: 12/14/2020
+ms.locfileid: "97401643"
 ---
 # <a name="tutorial-create-custom-analytics-rules-to-detect-threats"></a>Tutorial: Erstellen benutzerdefinierter Analyseregeln zum Erkennen von Bedrohungen
 
@@ -145,7 +145,13 @@ Für die Suche nach verdächtigen Typen von Bedrohungen und Anomalien in Ihrer U
 
 ## <a name="troubleshooting"></a>Problembehandlung
 
-### <a name="a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Fehler bei der Ausführung einer geplanten Regel oder beim Hinzufügen von „AUTO DISABLED“ zum Namen
+### <a name="issue-no-events-appear-in-query-results"></a>Problem: Keine Ereignisse in den Abfrageergebnissen
+
+Wenn **Ereignisgruppierung** auf **Warnung für jedes Ereignis auslösen** festgelegt ist, kann es in bestimmten Szenarien vorkommen, dass bei einem späteren Anzeigen der Abfrageergebnisse (z. B. bei der Pivotierung von Warnungen eines Incidents) keine Abfrageergebnisse angezeigt werden. Dies liegt daran, dass die Verknüpfung zwischen Ereignis und Warnung durch Hashing der Informationen des jeweiligen Ereignisses und das Einfügen des Hash in die Abfrage erreicht wird. Wenn die Abfrageergebnisse seit der Generierung der Warnung geändert wurden, ist der Hash nicht mehr gültig, und es werden keine Ergebnisse angezeigt. 
+
+Um die Ereignisse anzuzeigen, entfernen Sie die Zeile mit dem Hash aus der Abfrage der Regel und führen die Abfrage aus.
+
+### <a name="issue-a-scheduled-rule-failed-to-execute-or-appears-with-auto-disabled-added-to-the-name"></a>Problem: Fehler bei der Ausführung einer geplanten Regel oder beim Hinzufügen von „AUTO DISABLED“ zum Namen
 
 Ein Fehler bei der Ausführung einer geplanten Abfrage ist zwar selten, aber nicht ausgeschlossen. Azure Sentinel klassifiziert Fehler auf der Grundlage des spezifischen Fehlertyps und der Umstände, die dazu geführt haben, als vorübergehende oder dauerhafte Fehler.
 

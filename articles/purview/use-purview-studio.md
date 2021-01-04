@@ -7,12 +7,12 @@ ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: conceptual
 ms.date: 11/12/2020
-ms.openlocfilehash: 1b2d371153d6612f454e1bf51b78c6b6189a08b2
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: d8e6c4b2addf9745b2ddabe8f6fdad9d82dce59f
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550396"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97503949"
 ---
 # <a name="use-purview-studio"></a>Verwenden von Purview Studio
 
@@ -50,15 +50,16 @@ In der folgenden Liste sind die Hauptfunktionen der **Startseite** zusammengefas
 
 4. Über die Schaltflächen für den Schnellzugriff können Sie auf die häufig verwendeten Funktionen der Anwendung zugreifen. Die jeweils vorhandenen Schaltflächen richten sich danach, welche Rolle Ihrem Benutzerkonto zugewiesen ist.
 
-    - Für einen *Datenquellenadministrator* sind die folgenden Schaltflächen für den Schnellzugriff vorhanden: **Register Data Sources** (Datenquellen registrieren) und **Knowledge Center**.
     - Für einen *Datenkurator* sind die Schaltflächen **Knowledge Center**, **Browse Assets** (Ressourcen durchsuchen), **Manage Glossary** (Glossar verwalten) und **Einblicke anzeigen** vorhanden.
     - Für einen *Datenleseberechtigten* sind die Schaltflächen **Knowledge Center**, **Browse Assets** (Ressourcen durchsuchen), **View Glossary** (Glossar anzeigen) und **Einblicke anzeigen** vorhanden.
+    - Für einen *Datenquellenadministrator* + *Datenkurator* werden die Schaltflächen **Knowledge Center**, **Datenquellen registrieren**, **Ressourcen durchsuchen** und **Glossar verwalten** angezeigt.
+    - Für einen *Datenquellenadministrator* + *Datenleser* werden die Schaltflächen **Knowledge Center**, **Datenquellen registrieren**, **Ressourcen durchsuchen** und **Glossar anzeigen** angezeigt.
 
 5. Über die Navigationsleiste auf der linken Seite können Sie auf die Hauptseiten der Anwendung zugreifen. Die jeweils vorhandenen Schaltflächen richten sich danach, welche Rolle Ihrem Benutzerkonto zugewiesen ist.
 
-    - Für einen *Datenquellenadministrator* sind die Schaltflächen **Startseite**, **Quellen** und **Verwaltungscenter** vorhanden.
     - Für einen *Datenkurator* sind die Schaltflächen **Startseite**, **Glossar**, **Erkenntnisse** und **Verwaltungscenter** vorhanden.
     - Für einen *Datenleseberechtigten* sind die Schaltflächen **Startseite**, **Glossar**, **Erkenntnisse** und **Verwaltungscenter** vorhanden.
+    - Für einen *Datenquellenadministrator* + *Datenkurator/-leser* werden die Schaltflächen **Startseite**, **Quellen**, **Glossar**, **Erkenntnisse** und **Verwaltungscenter** angezeigt.
   
 6. Auf der Registerkarte **Zuletzt verwendet** wird eine Liste mit den Datenressourcen angezeigt, auf die zuletzt zugegriffen wurde. Weitere Informationen zum Zugreifen auf Ressourcen finden Sie unter [Suchen im Azure Purview-Datenkatalog](how-to-search-catalog.md) und [Durchsuchen des Datenkatalogs anhand des Ressourcentyps](how-to-browse-catalog.md#browse-experience).  Die Registerkarte **Meine Elemente** enthält eine Liste mit Datenressourcen, die sich im Besitz des angemeldeten Benutzers befinden.
 7. Unter **Nützliche Links** finden Sie Links zu Regionsstatus, Dokumentation, Preise, Übersicht und Purview-Status.
@@ -73,6 +74,9 @@ Im Knowledge Center finden Sie alle Videos und Tutorials zu Purview.
 Auf jeder Benutzeroberfläche in Azure Purview Studio finden Sie Einführungen, mit denen Sie sich einen Überblick über die jeweilige Seite verschaffen können. Wählen Sie zum Starten der Einführung in der oberen Leiste die Option **Hilfe** und dann **Guided Tours** (Führungen) aus.
 
 :::image type="content" source="./media/use-purview-studio/guided-tour.png" alt-text="Screenshot: Einführung":::
+
+> [!Important]
+   > Die Rolle „Datenquellenadministrator“ allein hat keinen Zugriff auf Purview Studio.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

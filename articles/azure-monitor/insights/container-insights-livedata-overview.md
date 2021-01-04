@@ -2,14 +2,14 @@
 title: Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 12/07/2020
 ms.custom: references_regions
-ms.openlocfilehash: 9c431cebddb210add496dcca20a0334cc5b12bd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
+ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "85337950"
+ms.lasthandoff: 12/11/2020
+ms.locfileid: "97346841"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
@@ -22,25 +22,20 @@ Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwend
 
 Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vorschau) finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md). Informationen zum Direktzugriff auf die Kubernetes-API über diese Funktion sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 
-## <a name="live-data-preview-functionality-overview"></a>Übersicht über die Funktionalität von Livedaten (Vorschau)
+## <a name="view-deployment-live-logs-preview"></a>Anzeigen von Liveprotokollen zur Bereitstellung (Vorschau)
+Mithilfe des folgenden Verfahrens können Sie die Liveprotokolle für Bereitstellungen anzeigen, die Teil von AKS-Clustern sind, die nicht von Azure Monitor für Container überwacht werden. Wenn für Ihren Cluster Azure Monitor für Container verwendet wird, können Sie mit der unten aufgeführten Vorgehensweise Livedaten zu Knoten, Controllern, Containern und Bereitstellungen anzeigen.
 
-### <a name="search"></a>Suchen,
+1. Navigieren Sie im Azure-Portal zur Ressourcengruppe des AKS-Clusters, und wählen Sie die AKS-Ressource aus.
 
-![Filterbeispiel für den Livedaten-Konsolenbereich](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+2. Wählen Sie im Abschnitt **Kubernetes-Ressourcen** das Menüelement **Workloads** aus.
 
-Die Funktion für Livedaten (Vorschau) bietet Suchfunktionalität. Im Feld **Suchen** können Sie Ergebnisse filtern, indem Sie ein Schlüsselwort oder einen Begriff eingeben, und alle übereinstimmenden Ergebnisse werden zur schnellen Überprüfung hervorgehoben. Beim Anzeigen von Ereignissen können Sie außerdem mit dem **Filter** rechts neben der Suchleiste die Ergebnisse einschränken. Je nachdem, welche Ressource Sie ausgewählt haben, stehen im Filterfeld Pods, Namespaces oder Cluster zur Auswahl.
+3. Wählen Sie auf der Registerkarte **Bereitstellungen** eine Bereitstellung aus.
 
-### <a name="scroll-lock-and-pause"></a>Scrollsperre und Anhalten
+4. Wählen Sie im Menü der Bereitstellung **Liveprotokolle (Vorschau)** aus.
 
-Mithilfe der Option **Scrollen** können Sie den automatischen Bildlauf unterbrechen und das Verhalten des Bereichs steuern, sodass Sie manuell durch die gelesenen neuen Daten scrollen können. Wählen Sie einfach erneut die Option **Scrollen** aus, um den automatischen Bildlauf wieder zu aktivieren. Sie können den Abruf von Protokoll- oder Ereignisdaten auch anhalten, indem Sie die Option **Anhalten** auswählen. Wenn Sie bereit sind, den Vorgang fortzusetzen, wählen Sie einfach **Wiedergeben** aus.
+5. Wählen Sie einen Pod aus, um die Sammlung der Livedaten zu starten.
 
-![Anhalten der Liveansicht im Livedaten-Konsolenbereich](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
-
->[!IMPORTANT]
->Es wird empfohlen, den automatischen Bildlauf bei der Problembehandlung nur für kurze Zeit anzuhalten. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken.
-
->[!IMPORTANT]
->Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten (Vorschau) puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung.
+    [![Liveprotokolle zu Bereitstellungen](./media/container-insights-livedata-overview/live-data-deployment.png)](./media/container-insights-livedata-overview/live-data-deployment.png#lightbox)
 
 ## <a name="view-logs"></a>Anzeigen von Protokollen
 
@@ -108,6 +103,32 @@ Sie können Echtzeitmetrikdaten anzeigen, da diese von der Container-Engine bei 
 Nach erfolgreicher Authentifizierung wird der Konsolenbereich für Livedaten (Vorschau) unterhalb des Rasters mit Leistungsdaten angezeigt. Metrikdaten werden abgerufen und zur Darstellung in den beiden Diagrammen an Ihre Konsole gestreamt. Der Titel des Bereichs zeigt den Namen des Pods an, mit dem der Container gruppiert ist.
 
 ![Beispiel für das Anzeigen von Podmetriken](./media/container-insights-livedata-overview/pod-properties-live-metrics.png)
+
+## <a name="using-live-data-views"></a>Verwenden der Ansichten von Livedaten
+In den folgenden Abschnitten werden Funktionen beschrieben, die Sie in den verschiedenen Livedatenansichten verwenden können.
+
+### <a name="search"></a>Suchen,
+Die Funktion für Livedaten (Vorschau) bietet Suchfunktionalität. Im Feld **Suchen** können Sie Ergebnisse filtern, indem Sie ein Schlüsselwort oder einen Begriff eingeben, und alle übereinstimmenden Ergebnisse werden zur schnellen Überprüfung hervorgehoben. Beim Anzeigen von Ereignissen können Sie außerdem mit dem **Filter** rechts neben der Suchleiste die Ergebnisse einschränken. Je nachdem, welche Ressource Sie ausgewählt haben, stehen im Filterfeld Pods, Namespaces oder Cluster zur Auswahl.
+
+![Filterbeispiel für den Livedaten-Konsolenbereich](./media/container-insights-livedata-overview/livedata-pane-filter-example.png)
+
+![Filterbeispiel für den Livedaten-Konsolenbereich einer Bereitstellung](./media/container-insights-livedata-overview/live-data-deployment-search.png)
+
+### <a name="scroll-lock-and-pause"></a>Scrollsperre und Anhalten
+
+Mithilfe der Option **Scrollen** können Sie den automatischen Bildlauf unterbrechen und das Verhalten des Bereichs steuern, sodass Sie manuell durch die gelesenen neuen Daten scrollen können. Wählen Sie einfach erneut die Option **Scrollen** aus, um den automatischen Bildlauf wieder zu aktivieren. Sie können den Abruf von Protokoll- oder Ereignisdaten auch anhalten, indem Sie die Option **Anhalten** auswählen. Wenn Sie bereit sind, den Vorgang fortzusetzen, wählen Sie einfach **Wiedergeben** aus.
+
+![Anhalten der Liveansicht im Livedaten-Konsolenbereich](./media/container-insights-livedata-overview/livedata-pane-scroll-pause-example.png)
+
+![Anhalten der Liveansicht im Livedaten-Konsolenbereich einer Bereitstellung](./media/container-insights-livedata-overview/live-data-deployment-pause.png)
+
+
+
+>[!IMPORTANT]
+>Es wird empfohlen, den automatischen Bildlauf bei der Problembehandlung nur für kurze Zeit anzuhalten. Diese Anforderungen können sich auf die Verfügbarkeit und Drosselung der Kubernetes-API in Ihrem Cluster auswirken.
+
+>[!IMPORTANT]
+>Während der Ausführung dieser Funktion werden keine Daten dauerhaft gespeichert. Alle während der Sitzung erfassten Informationen werden gelöscht, wenn Sie den Browser schließen oder verlassen. Daten stehen nur innerhalb des Fünf-Minuten-Zeitfensters der Metrikfunktion zur Visualisierung bereit. Alle Metriken, die älter als fünf Minuten sind, werden ebenfalls gelöscht. Die Funktion für Livedaten (Vorschau) puffert Abfragen innerhalb angemessener Grenzwerte für die Arbeitsspeichernutzung.
 
 ## <a name="next-steps"></a>Nächste Schritte
 

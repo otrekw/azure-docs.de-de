@@ -10,12 +10,12 @@ ms.date: 11/20/2020
 ms.author: tamram
 ms.reviewer: dineshm
 ms.subservice: common
-ms.openlocfilehash: 118aaa368f48838a33d130d8dddc89bb8dce3f3e
-ms.sourcegitcommit: d60976768dec91724d94430fb6fc9498fdc1db37
+ms.openlocfilehash: d435ced4c8ec56fae5081ede367b593d2b66ef0f
+ms.sourcegitcommit: dea56e0dd919ad4250dde03c11d5406530c21c28
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/02/2020
-ms.locfileid: "96498182"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96936538"
 ---
 # <a name="grant-limited-access-to-azure-storage-resources-using-shared-access-signatures-sas"></a>Gewähren von eingeschränktem Zugriff auf Azure Storage-Ressourcen mithilfe von SAS (Shared Access Signature)
 
@@ -76,6 +76,9 @@ Eine Shared Access Signature kann eine von zwei Formen haben:
 ## <a name="how-a-shared-access-signature-works"></a>Funktionsweise von Shared Access Signatures
 
 Eine Shared Access Signature ist ein signierter URI, der auf eine oder mehrere Speicherressourcen zeigt. Der URI enthält ein Token mit einem speziellen Satz von Abfrageparametern. Das Token gibt an, wie der Client auf die Ressourcen zugreifen kann. Einer der Abfrageparameter ist die Signatur. Sie besteht aus den SAS-Parametern und wird mit dem Schlüssel signiert, der zum Erstellen der SAS verwendet wurde. Diese Signatur wird von Azure Storage verwendet, um den Zugriff auf die Speicherressource zu autorisieren.
+
+> [!NOTE]
+> Es ist nicht möglich, die Generierung von SAS-Token zu überwachen. Jeder Benutzer mit Berechtigungen zum Generieren eines SAS-Tokens (entweder über den Kontoschlüssel oder eine Azure RBAC-Rollenzuweisung), kann diesen Vorgang ohne Kenntnis des Speicherkontobesitzers durchführen. Schränken Sie die Berechtigungen ein, die Benutzern das Generieren von SAS-Token ermöglichen. Um zu verhindern, dass Benutzer eine SAS erstellen, die mit dem Kontoschlüssel für Blob- und Warteschlangenworkloads signiert ist, können Sie den Zugriff auf das Speicherkonto mit dem gemeinsam verwendeten Schlüssel sperren. Weitere Informationen finden Sie unter [Verhindern der Autorisierung mit gemeinsam verwendetem Schlüssel](shared-key-authorization-prevent.md).
 
 ### <a name="sas-signature-and-authorization"></a>SAS-Signatur und Autorisierung
 

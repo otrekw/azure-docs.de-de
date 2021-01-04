@@ -3,17 +3,17 @@ title: 'Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „A
 description: In diesem Artikel erhalten Sie Informationen zu den Zugriffsebenen „Heiß“, „Kalt“ und „Archiv“ für Azure Blob Storage. Außerdem erhalten Sie Informationen zu Speicherkonten, die Ebenen unterstützen. Zudem vergleichen Sie Blockblobspeicheroptionen.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 10/29/2020
+ms.date: 12/08/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
-ms.openlocfilehash: 87106cce018a2b2663de2a9abbb43b31ab58c125
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 51998c159018b614ab519766c54fdddf7437e95b
+ms.sourcegitcommit: fec60094b829270387c104cc6c21257826fccc54
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "96007323"
+ms.lasthandoff: 12/09/2020
+ms.locfileid: "96923982"
 ---
 # <a name="access-tiers-for-azure-blob-storage---hot-cool-and-archive"></a>Zugriffsebenen für Azure Blob Storage: „Heiß“, „Kalt“ und „Archiv“
 
@@ -112,6 +112,11 @@ Wenn ein Blob in eine „wärmere“ Ebene verschoben wird (von „Archiv“ zu 
 
 Alle Blobs, die auf die Ebene „Kalt“ verschoben werden (nur GPv2-Konten), unterliegen für einen Zeitraum von 30 Tagen einer Gebühr für kaltes vorzeitiges Löschen. Alle Blobs, die auf die Archivspeicherebene verschoben werden, unterliegen für einen Zeitraum von 180 Tagen einer Gebühr für frühes Löschen des Archivs. Diese Gebühr fällt anteilig an. Wenn ein Blob beispielsweise auf die Archivspeicherebene verschoben und dann nach 45 Tagen gelöscht oder auf die heiße Ebene verschoben wird, wird Ihnen eine Gebühr für frühes Löschen berechnet, die den 135 Speichertagen (180 - 45) dieses Blobs im Archiv entspricht.
 
+Beim Wechseln zwischen der kalten Speicherebene und der Archivspeicherebene sind einige Details zu beachten:
+
+1. Wenn ein Blob aufgrund der Standardspeicherebene des Speicherkontos als „kalt“ eingestuft und auf die Archivspeicherebene verschoben wird, fallen keine Gebühren für das frühzeitige Löschen an.
+1. Wenn ein Blob explizit in die kalte Speicherebene verschoben wurde und dann auf die Archivspeicherebene verschoben wird, werden Gebühren für das frühzeitige Löschen berechnet.
+
 Sie können das frühe Löschen mithilfe der Blobeigenschaft **Last-Modified** berechnen, sofern keine Änderungen an der Zugriffsebene vorgenommen wurden. Andernfalls können Sie den Zeitpunkt der letzten Änderung der Zugriffsebene auf „Kalt“ oder „Archiv“ verwenden, indem Sie die Blobeigenschaft **access-tier-change-time** anzeigen. Weitere Informationen zu Blobeigenschaften finden Sie unter [Abrufen von Blobeigenschaften](/rest/api/storageservices/get-blob-properties).
 
 ## <a name="comparing-block-blob-storage-options"></a>Vergleichen von Blockblobspeicher-Optionen
@@ -123,7 +128,7 @@ Die folgende Tabelle enthält eine Gegenüberstellung des Premium-Leistungsblock
 | **Verfügbarkeit**                          | 99,9 %                     | 99,9 %        | 99 %                 | Offline           |
 | **Verfügbarkeit** <br> **(RA-GRS-Lesevorgänge)**  | –                       | 99,99 %       | 99,9 %               | Offline           |
 | **Nutzungsgebühren**                         | Höhere Speicherkosten, niedrigere Zugriffs- und Transaktionskosten | Höhere Speicherkosten, geringere Zugriffs- und Transaktionskosten | Geringere Speicherkosten, höhere Zugriffs- und Transaktionskosten | Niedrigste Speicherkosten, höchste Zugriffs- und Transaktionskosten |
-| **Mindestobjektgröße**                   | –                       | Nicht zutreffend          | –                 | –               |
+| **Mindestobjektgröße**                   | –                       | –          | –                 | –               |
 | **Mindestspeicherdauer**              | –                       | –          | 30 Tage<sup>1</sup> | 180 Tage
 | **Latenz** <br> **(Zeit bis zum ersten Byte)** | Einstellige Millisekunden | Millisekunden | Millisekunden        | Stunden<sup>2</sup> |
 

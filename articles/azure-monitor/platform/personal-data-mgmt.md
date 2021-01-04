@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
-ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 2bb1e667758a1430e34d222b9a5c537381c07624
+ms.sourcegitcommit: 2ba6303e1ac24287762caea9cd1603848331dd7a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87318316"
+ms.lasthandoff: 12/15/2020
+ms.locfileid: "97505272"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Leitfaden für personenbezogene Daten, die in Log Analytics und Application Insights gespeichert sind
 
@@ -81,7 +81,7 @@ Wie bereits weiter oben im Abschnitt [Strategie für den Umgang mit personenbezo
 Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen sollte die [Log Analytics-Abfrage-API](https://dev.loganalytics.io/) oder die [Application Insights-Abfrage-API](https://dev.applicationinsights.io/quickstart) verwendet werden. Die Logik, mit der die Daten in eine geeignete Form konvertiert werden, um sie für Ihre Benutzer bereitzustellen, muss von Ihnen selbst implementiert werden. [Azure Functions](https://azure.microsoft.com/services/functions/) eignet sich hervorragend zum Hosten einer solchen Logik.
 
 > [!IMPORTANT]
->  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Dies ist ein automatisierter Prozess; es gibt keine Möglichkeit anzufordern, dass ein Vorgang schneller verarbeitet werden soll.
+>  Obwohl die Mehrzahl der Bereinigungsvorgänge wesentlich schneller als die SLA ausgeführt werden kann, ist – aufgrund der starken Auswirkung auf die verwendete Datenplattform – **die formelle SLA für die Ausführung von Bereinigungsvorgängen auf 30 Tage festgelegt**. Diese SLA erfüllt die DSGVO-Anforderungen. Dies ist ein automatisierter Prozess. Es gibt daher keine Möglichkeit, eine schnellere Verarbeitung eines Vorgangs anzufordern. 
 
 ### <a name="delete"></a>Löschen
 
@@ -89,6 +89,9 @@ Sowohl für das Anzeigen als auch für das Exportieren von Datenanforderungen so
 > Löschvorgänge in Log Analytics sind destruktiv und unumkehrbar. Seien Sie bei der Ausführung äußerst vorsichtig.
 
 Im Rahmen der Vorgehensweisen für den Datenschutz haben wir einen API-Pfad für die *Bereinigung* verfügbar gemacht. Dieser Pfad sollte aufgrund der Risiken im Zusammenhang mit seiner Verwendung, möglichen Leistungseinbußen sowie einer möglichen Verzerrung von Aggregationen, Messungen und anderen Aspekten Ihrer Log Analytics-Daten möglichst selten verwendet werden. Alternative Methoden für den Umgang mit personenbezogenen Daten finden Sie im Abschnitt [Strategie für den Umgang mit personenbezogenen Daten](#strategy-for-personal-data-handling).
+
+> [!NOTE]
+> Nachdem der Löschvorgang durchgeführt wurde, kann nicht auf die Daten zugegriffen werden, solange der [Status des Löschvorgangs](https://docs.microsoft.com/rest/api/loganalytics/workspacepurge/getpurgestatus) *ausstehend* lautet. 
 
 Das Bereinigen ist ein Vorgang, der hohe Berechtigungen erfordert, und weder eine App noch ein Benutzer in Azure (einschließlich des Ressourcenbesitzers) ist zur Ausführung berechtigt, sofern nicht in Azure Resource Manager explizit eine entsprechende Rolle zugewiesen wurde. Dies ist die Rolle _Datenpurger_, die aufgrund des möglichen Datenverlusts sehr zurückhaltend vergeben werden sollte. 
 
