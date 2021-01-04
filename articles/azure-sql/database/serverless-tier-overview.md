@@ -11,12 +11,12 @@ author: oslake
 ms.author: moslake
 ms.reviewer: sstein
 ms.date: 12/8/2020
-ms.openlocfilehash: bd8f5a28b709a45e99e846fb4e242f774aca80c5
-ms.sourcegitcommit: 80c1056113a9d65b6db69c06ca79fa531b9e3a00
+ms.openlocfilehash: b0d599b7d52d8a0e93f16761d1983ad25fa45c61
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/09/2020
-ms.locfileid: "96902509"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97687398"
 ---
 # <a name="azure-sql-database-serverless"></a>Azure SQL-Datenbank – Serverlos
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]

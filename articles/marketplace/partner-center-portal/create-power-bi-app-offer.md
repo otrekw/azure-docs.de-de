@@ -7,12 +7,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 07/22/2020
-ms.openlocfilehash: 99c60cf541b3997f2aeca2ccef5a5af6b9c88e08
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: bff20468e8185073f5c192c1e115bc405dd089eb
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93131495"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693605"
 ---
 # <a name="create-a-power-bi-app-offer"></a>Erstellen eines Power BI-App-Angebots
 
@@ -109,9 +109,7 @@ Eine vollständige Liste der Kategorien und Unterkategorien finden Sie unter [Be
 
 #### <a name="terms-and-conditions"></a>Geschäftsbedingungen
 
-Um eigene Geschäftsbedingungen anzugeben, geben Sie bis zu 10.000 Zeichen im Feld **Terms and Conditions** (Geschäftsbedingungen) ein. Wenn Ihre Geschäftsbedingungen eine längere Beschreibung erfordern, geben Sie einen einzelnen Weblink zu diesen ein. Er wird für Kunden als aktiver Link angezeigt.
-
-Kunden müssen diesen Bestimmungen zustimmen, bevor sie Ihr Angebot testen können.
+Um eigene Geschäftsbedingungen anzugeben, geben Sie bis zu 10.000 Zeichen im Feld **Terms and Conditions** (Geschäftsbedingungen) ein. Kunden müssen diesen Bestimmungen zustimmen, bevor sie Ihr Angebot testen können.
 
 Wählen Sie **Entwurf speichern** aus, bevor Sie mit dem nächsten Abschnitt fortfahren, Angebotsliste.
 
@@ -253,9 +251,9 @@ Wählen Sie in der oberen rechten Ecke des Portals **Überprüfen und veröffent
 Auf der Überprüfungsseite haben Sie folgende Möglichkeiten:
 
 - Anzeigen des Abschlussstatus für die einzelnen Abschnitte des Angebots. Sie können erst veröffentlichen, wenn alle Abschnitte des Angebots als abgeschlossen gekennzeichnet sind.
-  - **Nicht gestartet** : Die Überprüfung des Abschnitts wurde nicht gestartet und muss abgeschlossen werden.
-  - **Unvollständig** : Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Anweisungen dazu finden Sie in den Abschnitten weiter oben in diesem Dokument.
-  - **Abgeschlossen** : Der Abschnitt enthält alle erforderlichen Daten, und es sind keine Fehler aufgetreten. Sie können das Angebot erst einreichen, wenn alle Abschnitte des Angebots abgeschlossen sind.
+  - **Nicht gestartet**: Die Überprüfung des Abschnitts wurde nicht gestartet und muss abgeschlossen werden.
+  - **Unvollständig**: Der Abschnitt enthält Fehler, die behoben werden müssen, oder erfordert eine Ergänzung der Informationen. Anweisungen dazu finden Sie in den Abschnitten weiter oben in diesem Dokument.
+  - **Abgeschlossen**: Der Abschnitt enthält alle erforderlichen Daten, und es sind keine Fehler aufgetreten. Sie können das Angebot erst einreichen, wenn alle Abschnitte des Angebots abgeschlossen sind.
 - Stellen Sie dem Zertifizierungsteam Testanweisungen zur Verfügung, um sicherzustellen, dass Ihre App ordnungsgemäß getestet wird. Stellen Sie außerdem alle ergänzenden Anmerkungen bereit, die das Verständnis Ihres Angebots unterstützen.
 
 Um das Angebot zur Veröffentlichung einzureichen, wählen Sie **Veröffentlichen** aus.

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.service: mysql
 ms.topic: troubleshooting
 ms.date: 10/25/2020
-ms.openlocfilehash: a6ada3557350cd3f2f67dad54152eafded6639ec
-ms.sourcegitcommit: 3bdeb546890a740384a8ef383cf915e84bd7e91e
+ms.openlocfilehash: 30ac28ef996c42e99ebece27ec156777f0d033d2
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93087025"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97587875"
 ---
 # <a name="troubleshoot-replication-latency-in-azure-database-for-mysql"></a>Behandeln von Problemen mit der Replikationswartezeit in Azure Database for MySQL
 
@@ -31,9 +31,12 @@ Die Replikationsverzögerung der sekundären Lesereplikate hängt von mehreren F
 
 In diesem Artikel erfahren Sie, wie Sie Probleme mit der Replikationswartezeit in Azure Database for MySQL behandeln. Außerdem werden einige häufige Gründe für eine größere Replikationswartezeit auf Replikatservern erläutert.
 
+> [!NOTE]
+> Dieser Artikel enthält Verweise auf den Begriff Slave, einen Begriff, den Microsoft nicht mehr verwendet. Sobald der Begriff aus der Software entfernt wird, wird er auch aus diesem Artikel entfernt.
+
 ## <a name="replication-concepts"></a>Replikationskonzepte
 
-Wenn binäre Protokollierung aktiviert ist, schreibt der Quellserver Transaktionen mit Commit in das binäre Protokoll. Das binäre Protokoll wird für die Replikation verwendet. Es ist standardmäßig für alle neu bereitgestellten Server aktiviert, die bis zu 16 TB Speicher unterstützen. Auf Replikatservern werden jeweils zwei Threads ausgeführt. Ein Thread ist der *E/A-Thread* , der andere ist der *SQL-Thread* :
+Wenn binäre Protokollierung aktiviert ist, schreibt der Quellserver Transaktionen mit Commit in das binäre Protokoll. Das binäre Protokoll wird für die Replikation verwendet. Es ist standardmäßig für alle neu bereitgestellten Server aktiviert, die bis zu 16 TB Speicher unterstützen. Auf Replikatservern werden jeweils zwei Threads ausgeführt. Ein Thread ist der *E/A-Thread*, der andere ist der *SQL-Thread*:
 
 - Der E/A-Thread stellt eine Verbindung mit dem Quellserver her und fordert aktualisierte binäre Protokolle (Transaktionsprotokolle) an. Dieser Thread empfängt die Binärprotokollaktualisierungen. Diese Updates werden auf einem Replikatserver in einem lokalen Protokoll namens *Relaisprotokoll* gespeichert.
 - Der SQL-Thread liest das Relaisprotokoll und wendet dann die Datenänderungen auf Replikatservern an.

@@ -13,12 +13,12 @@ ms.date: 05/07/2020
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
-ms.openlocfilehash: 8be41f3fcf4d32ee81d1290c6a50a27f2cd45ee7
-ms.sourcegitcommit: 21c3363797fb4d008fbd54f25ea0d6b24f88af9c
+ms.openlocfilehash: 15f65da83f14f43a7892d52c6a2ed4e08580d367
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/08/2020
-ms.locfileid: "96860965"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614913"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>Verwenden von MSAL.NET zur Anmeldung von Benutzern mit Identitäten sozialer Netzwerke
 
@@ -134,7 +134,7 @@ Durch die Verwendung von Benutzername/Kennwort in einem ROPC-Flow setzen Sie vie
 
 ### <a name="configure-the-ropc-flow-in-azure-ad-b2c"></a>Konfigurieren des ROPC-Flows in Azure AD B2C
 
-Erstellen Sie in Ihrem Azure AD B2C-Mandanten einen neuen Benutzerflow, und wählen Sie **Mit ROPC anmelden** aus, um ROPC für den Benutzerflow zu aktivieren. Weitere Informationen finden Sie unter [Konfigurieren des ROPC-Flows](../../active-directory-b2c/configure-ropc.md).
+Erstellen Sie in Ihrem Azure AD B2C-Mandanten einen neuen Benutzerflow, und wählen Sie **Mit ROPC anmelden** aus, um ROPC für den Benutzerflow zu aktivieren. Weitere Informationen finden Sie unter [Konfigurieren des ROPC-Flows](../../active-directory-b2c/add-ropc-policy.md).
 
 `IPublicClientApplication` enthält die Methode `AcquireTokenByUsernamePassword`:
 

@@ -1,17 +1,17 @@
 ---
 title: Data Lake Storage Gen1 – Leistungsoptimierung
 description: Erfahren Sie, wie wichtig die Verwendung des gesamten verfügbaren Durchsatzes in Azure Data Lake Storage Gen1 ist, um eine optimale Leistung zu erzielen, indem so viele Lese- und Schreibvorgänge wie möglich parallel ausgeführt werden.
-author: stewu
+author: twooley
 ms.service: data-lake-store
 ms.topic: conceptual
 ms.date: 06/30/2017
-ms.author: stewu
-ms.openlocfilehash: e9a589b43490613834a810a68636c426e45c2656
-ms.sourcegitcommit: 03713bf705301e7f567010714beb236e7c8cee6f
+ms.author: twooley
+ms.openlocfilehash: c7f16dd9ea450185893164e10928c7022d6ab5a6
+ms.sourcegitcommit: a4533b9d3d4cd6bb6faf92dd91c2c3e1f98ab86a
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92332517"
+ms.lasthandoff: 12/22/2020
+ms.locfileid: "97724679"
 ---
 # <a name="tune-azure-data-lake-storage-gen1-for-performance"></a>Optimieren der Leistung von Azure Data Lake Storage Gen1
 
@@ -65,11 +65,11 @@ Manchmal können Datenpipelines Rohdaten mit vielen kleinen Dateien nur begrenzt
 
 Bei Hive- und ADLA-Workloads kann durch Partitionsbereinigung von Zeitreihendaten bewirkt werden, dass einige Abfragen nur eine Teilmenge der Daten lesen. Dies führt zu einer Leistungsverbesserung.
 
-Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Dieses gängige Beispiel zeigt Daten, die nach Datum strukturiert sind: *\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv* .
+Diese Pipelines, die Zeitreihendaten erfassen, versehen ihre Dateien oftmals mit einer strukturierten Benennung für Dateien und Ordner. Dieses gängige Beispiel zeigt Daten, die nach Datum strukturiert sind: *\DataSet\JJJJ\MM\TT\datafile_JJJJ_MM_TT.tsv*.
 
 Beachten Sie, dass Informationen zu Datum/Uhrzeit sowohl im Ordnernamen als auch im Dateinamen angegeben werden.
 
-Für Datums- und Zeitangaben ist folgendes Muster üblich: *\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv* .
+Für Datums- und Zeitangaben ist folgendes Muster üblich: *\DataSet\JJJJ\MM\TT\HH\mm\datafile_JJJJ_MM_TT_HH_mm.tsv*.
 
 Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen, für größere Dateien und eine angemessene Anzahl von Dateien in den einzelnen Ordnern optimiert sein.
 
@@ -77,16 +77,16 @@ Auch hier sollte die Wahl, die Sie bei der Ordner- und Dateiorganisation treffen
 
 Aufträge lassen sich in einer der folgenden drei Kategorien unterteilen:
 
-* **CPU-intensive Aufträge** : Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf. Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.
-* **Speicherintensive Aufträge** : Solche Aufträge belegen viel Speicher, z.B. PageRank- und Echtzeitanalyseaufträge.
-* **E/A-intensive Aufträge** : Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht. Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nur Lese- und Schreibvorgänge durchgeführt werden. Ein weiteres Beispiel ist ein Datenvorbereitungsauftrag, der viele Daten liest, einige Datentransformationen durchführt und die Daten dann wieder in den Speicher schreibt.
+* **CPU-intensive Aufträge**: Diese Aufträge weisen lange Computezeiten mit minimalen E/A-Zeiten auf. Hierzu zählen beispielsweise Machine Learning-Aufträge und Aufträge für die Verarbeitung natürlicher Sprache.
+* **Speicherintensive Aufträge**: Solche Aufträge belegen viel Speicher, z.B. PageRank- und Echtzeitanalyseaufträge.
+* **E/A-intensive Aufträge**: Bei diesen Aufträgen wird der Großteil der Zeit für E/A-Vorgänge beansprucht. Ein gängiges Beispiel ist ein Kopierauftrag, bei dem nur Lese- und Schreibvorgänge durchgeführt werden. Ein weiteres Beispiel ist ein Datenvorbereitungsauftrag, der viele Daten liest, einige Datentransformationen durchführt und die Daten dann wieder in den Speicher schreibt.
 
 Die folgende Anleitung gilt nur für E/A-intensive Aufträge.
 
 ### <a name="general-considerations-for-an-hdinsight-cluster"></a>Allgemeine Überlegungen zu HDInsight-Clustern
 
-* **HDInsight-Versionen** : Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
-* **Regionen** : Platzieren Sie das Data Lake Storage Gen1-Konto in der gleichen Region wie den HDInsight-Cluster.
+* **HDInsight-Versionen**: Um eine optimale Leistung zu erzielen, verwenden Sie die neueste Version von HDInsight.
+* **Regionen**: Platzieren Sie das Data Lake Storage Gen1-Konto in der gleichen Region wie den HDInsight-Cluster.
 
 Ein HDInsight-Cluster besteht aus zwei Hauptknoten und einigen Workerknoten. Jeder Workerknoten stellt eine bestimmte Anzahl von Kernen und eine bestimmte Menge an Speicher bereit, die durch den VM-Typ festgelegt wird. Bei der Ausführung eines Auftrags ist YARN der Verhandlungspartner für Ressourcen, der den verfügbaren Speicher und die Kerne zur Erstellung von Containern zuordnet. Jeder Container führt die für den Auftrag erforderlichen Aufgaben durch. Zur schnellen Verarbeitung von Aufgaben werden Container parallel ausgeführt. Aus diesem Grund wird eine bessere Leistung erzielt, indem Sie so viele Container wie möglich parallel ausführen.
 

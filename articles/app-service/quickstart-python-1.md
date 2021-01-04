@@ -1,21 +1,23 @@
 ---
-title: 'Schnellstart: Erstellen einer Python-App für Linux'
+title: 'Schnellstart: Erstellen einer Python-App unter Linux'
 description: Führen Sie erste Schritte mit Azure App Service aus, indem Sie eine Python-App in einem Linux-Container in App Service bereitstellen.
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python, devx-track-azurecli
 zone_pivot_groups: python-frameworks-01
 robots: noindex
-ms.openlocfilehash: e068de77760752070117644c269e80a52c8c1707
-ms.sourcegitcommit: 77ab078e255034bd1a8db499eec6fe9b093a8e4f
+ms.openlocfilehash: 9f9805c25955384e7ca5b3f1d560581a7ca4a638
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/16/2020
-ms.locfileid: "97561544"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614658"
 ---
-# <a name="quickstart-create-a-python-app-in-azure-app-service-for-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
+# <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Schnellstart: Erstellen einer Python-App in Azure App Service für Linux
 
 In diesem Schnellstart stellen Sie eine Python-Web-App für [App Service für Linux](overview.md#app-service-on-linux) bereit. Dies ist der überaus skalierbare Webhostingdienst von Azure mit automatisiertem Patchen. Sie verwenden die lokale [Azure-Befehlszeilenschnittstelle (CLI)](/cli/azure/install-azure-cli) auf einem Macintosh-, Linux- oder Windows-Computer, um ein Beispiel mit dem Flask- oder Django-Framework bereitzustellen. Die Web-App, die Sie konfigurieren, nutzt einen kostenlosen App-Service-Tarif, sodass Ihnen im Laufe dieses Artikels keine Kosten entstehen.
+
+**Definitionen allgemeiner Begriffe** finden Sie unter [Azure-Terminologie kurzgefasst](/azure/developer/python/cloud-azure-terminology?toc=/azure/app-service/toc.json).
 
 > [!TIP]
 > Wenn Sie Apps lieber über eine IDE bereitstellen möchten, lesen Sie **[Bereitstellen von Python-Apps in App Service aus Visual Studio Code](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** .

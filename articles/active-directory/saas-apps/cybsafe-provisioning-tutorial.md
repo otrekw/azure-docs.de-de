@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/12/2020
 ms.author: Zhchia
-ms.openlocfilehash: 92329a3fa04d3cc685ba5068e9e5ae9932d1eb4d
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 932a94c348c38902c68a6cf8108d8246cdc434ac
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96178941"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673375"
 ---
 # <a name="tutorial-configure-cybsafe-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von CybSafe für die automatische Benutzerbereitstellung
 
@@ -135,15 +135,15 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitste
 
 13. Um den Azure AD-Bereitstellungsdienst für CybSafe zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-    ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
+      ![Aktivierter Bereitstellungsstatus](common/provisioning-toggle-on.png)
 
 14. Legen Sie die Benutzer und/oder Gruppen fest, die in CybSafe bereitgestellt werden sollen, indem Sie im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte auswählen.
 
-    ![Bereitstellungsbereich](common/provisioning-scope.png)
+      ![Bereitstellungsbereich](common/provisioning-scope.png)
 
 15. Wenn Sie fertig sind, klicken Sie auf **Speichern**.
 
-    ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
+      ![Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
 Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird. 
 

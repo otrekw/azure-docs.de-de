@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: f016fd37efa2bd821b5ad2286a921bf29bbedfbd
-ms.sourcegitcommit: 8d8deb9a406165de5050522681b782fb2917762d
+ms.openlocfilehash: a921e51a3c63828602e7e21bfc96f507649236a5
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/20/2020
-ms.locfileid: "92221263"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682829"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>Lokales Testen von Stream Analytics-Abfragen mit Visual Studio
 
@@ -22,7 +22,7 @@ In diesem [Schnellstarttutorial](stream-analytics-quick-create-vs.md) erfahren S
 
 ## <a name="test-your-query"></a>Testen Ihrer Abfrage
 
-Doppelklicken Sie in Ihrem Azure Stream Analytics-Projekt auf **Script.asaql** , um das Skript im Editor zu öffnen. Sie können die Abfrage kompilieren, um festzustellen, ob ein Syntaxfehler aufgetreten ist. Der Abfrage-Editor unterstützt IntelliSense, farbige Syntaxmarkierung und einen Fehlermarker.
+Doppelklicken Sie in Ihrem Azure Stream Analytics-Projekt auf **Script.asaql**, um das Skript im Editor zu öffnen. Sie können die Abfrage kompilieren, um festzustellen, ob ein Syntaxfehler aufgetreten ist. Der Abfrage-Editor unterstützt IntelliSense, farbige Syntaxmarkierung und einen Fehlermarker.
 
 ![Abfrage-Editor](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
@@ -32,7 +32,7 @@ Um Ihre Abfrage anhand der lokalen statischen Daten zu überprüfen, klicken Sie
    
 ![Screenshot: Hervorgehobene Menüoption „Lokale Eingabe hinzufügen“](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-01.png)
    
-Wählen Sie im Popupfenster die Beispieldaten von Ihrem lokalen Pfad aus, und klicken Sie auf **Speichern** .
+Wählen Sie im Popupfenster die Beispieldaten von Ihrem lokalen Pfad aus, und klicken Sie auf **Speichern**.
    
 ![Lokale Eingabe hinzufügen](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-add-local-input-02.png)
    
@@ -62,7 +62,7 @@ Sie können auch Stichproben von Eingabedaten aus Ihren Eingabequellen entnehmen
 
 ![Beispieldaten](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)
 
-Sie können lediglich Stichproben von Datenstreaming von Event Hubs oder IoT Hubs entnehmen. Andere Eingabequellen werden nicht unterstützt. Geben Sie im Popupdialogfeld den lokalen Pfad ein, der zum Speichern von Beispieldaten verwendet wird, und klicken Sie auf **Beispiel** .
+Sie können lediglich Stichproben von Datenstreaming von Event Hubs oder IoT Hubs entnehmen. Andere Eingabequellen werden nicht unterstützt. Geben Sie im Popupdialogfeld den lokalen Pfad ein, der zum Speichern von Beispieldaten verwendet wird, und klicken Sie auf **Beispiel**.
 
 ![Beispieldatenkonfiguration](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-02.png)
  
@@ -75,5 +75,4 @@ Sie können den Status im Fenster **Ausgabe** anzeigen.
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
 * [Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio](stream-analytics-vs-tools.md)
 * [Lokales Testen von Livedaten mithilfe von Azure Stream Analytics-Tools für Visual Studio (Vorschauversion)](stream-analytics-live-data-local-testing.md)
-* [Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure DevOps](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Kontinuierliche Integration und Entwicklung mit Stream Analytics-Tools](stream-analytics-tools-for-visual-studio-cicd.md)

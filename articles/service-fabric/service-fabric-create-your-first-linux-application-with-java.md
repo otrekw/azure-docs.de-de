@@ -4,12 +4,12 @@ description: Es wird beschrieben, wie Sie in fünf Minuten eine Service Fabric R
 ms.topic: conceptual
 ms.date: 06/18/2018
 ms.custom: devx-track-java
-ms.openlocfilehash: 28ddc4f0e47d853df6b026cf2495d710bebfa980
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 7d87b72437f86d7dc1ca4e3cf9f3d67609691c70
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87368930"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97655950"
 ---
 # <a name="create-your-first-java-service-fabric-reliable-actors-application-on-linux"></a>Erstellen Ihrer ersten Service Fabric Reliable Actors-Java-Anwendung unter Linux
 > [!div class="op_single_selector"]
@@ -39,7 +39,7 @@ Für den Einstieg in Reliable Actors müssen Sie sich nur mit einigen grundlegen
 * **Actor-Registrierung**. Wie bei Reliable Services muss ein Reliable Actor-Dienst bei der Service Fabric-Laufzeit registriert werden. Außerdem muss der Actor-Typ bei der Actor-Laufzeit registriert werden.
 * **Actor-Schnittstelle**. Die Actor-Schnittstelle wird zum Definieren einer stark typisierten öffentlichen Schnittstelle eines Actors verwendet. In der Terminologie von Reliable Actor-Modellen definiert die Actor-Schnittstelle die Nachrichtentypen, die der Actor verstehen und verarbeiten kann. Die Actor-Schnittstelle wird von anderen Actors oder von Clientanwendungen zum (asynchronen) „Senden“ von Nachrichten an den Actor verwendet. Reliable Actors können mehrere Schnittstellen implementieren.
 * **ActorProxy-Klasse**. Die ActorProxy-Klasse dient Clientanwendungen zum Aufrufen der Methoden, die über die Actor-Schnittstelle verfügbar gemacht werden. Die ActorProxy-Klasse bietet zwei wichtige Funktionen:
-  
+
   * Namensauflösung: Kann zum Lokalisieren des Actors im Cluster verwendet werden (den Knoten des Clusters suchen, auf dem er gehostet wird).
   * Fehlerbehandlung: Kann Methodenaufrufe erneut versuchen und den Actor-Speicherort erneut auflösen, z.B. nach einem Fehler, der erfordert, dass der Actor auf einen anderen Knoten im Cluster verschoben wird.
 
@@ -160,9 +160,9 @@ Der Actordienst muss mit einem Diensttyp in der Service Fabric-Laufzeit registri
 public class HelloWorldActorHost {
 
 private static final Logger logger = Logger.getLogger(HelloWorldActorHost.class.getName());
-    
+
 public static void main(String[] args) throws Exception {
-        
+
         try {
 
             ActorRuntime.registerActorAsync(HelloWorldActorImpl.class, (context, actorType) -> new FabricActorService(context, actorType, (a,b)-> new HelloWorldActorImpl(a,b)), Duration.ofSeconds(10));
@@ -221,7 +221,7 @@ Akteure führen selbst keine Aktionen durch. Sie benötigen einen anderen Dienst
 1. Führen Sie das Skript mithilfe des watch-Hilfsprogramms aus, um die Ausgabe des Actor-Diensts zu erhalten.  Das Testskript ruft die `setCountAsync()`-Methode für den Akteur auf, um einen Zähler zu erhöhen, und die `getCountAsync()`-Methode für den Akteur, um den neuen Zählerwert abzurufen. Anschließend wird der Wert an der Konsole angezeigt.
 
    Im Falle von MAC OS X müssen zusätzlich folgende Befehle ausgeführt werden, um den Ordner „HelloWorldTestClient“ an einen Speicherort innerhalb des Containers zu kopieren.    
-    
+
     ```bash
      docker cp HelloWorldTestClient [first-four-digits-of-container-ID]:/home
      docker exec -it [first-four-digits-of-container-ID] /bin/bash

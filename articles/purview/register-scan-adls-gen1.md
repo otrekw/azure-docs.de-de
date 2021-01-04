@@ -1,18 +1,18 @@
 ---
 title: Registrieren und Überprüfen von Azure Data Lake Storage (ADLS) Gen1
 description: In diesem Tutorial wird beschrieben, wie Sie Daten aus Azure Data Lake Storage Gen1 in Azure Purview überprüfen.
-author: kchandra
-ms.author: kchandra
+author: shsandeep123
+ms.author: sandeepshah
 ms.service: data-catalog
 ms.subservice: data-catalog-gen2
 ms.topic: how-to
 ms.date: 11/30/2020
-ms.openlocfilehash: ee0b9238deb7805113f0cbfa28d0b60a114820a9
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: a831681f892de9f6aae50fa9a2fcf71e883fe6ba
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96550971"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693712"
 ---
 # <a name="register-and-scan-azure-data-lake-storage-gen1"></a>Registrieren und Überprüfen von Azure Data Lake Storage Gen1
 

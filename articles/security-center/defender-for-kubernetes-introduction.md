@@ -7,12 +7,12 @@ ms.date: 9/12/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: a0dd00709dbe8a1b0e037fe22750adea7e071162
-ms.sourcegitcommit: 287c20509c4cf21d20eea4619bbef0746a5cd46e
+ms.openlocfilehash: 04427a1eb2760e44086003a06ed4eb0d5cb473bf
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97372001"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673323"
 ---
 # <a name="introduction-to-azure-defender-for-kubernetes"></a>Einführung in Azure Defender für Kubernetes
 
@@ -31,7 +31,7 @@ Die Bedrohungserkennung auf Hostebene für Ihre Linux-AKS-Knoten ist verfügbar,
 |Status des Release:|Allgemein verfügbar (Generally Available, GA)|
 |Preise:|**Azure Defender für Kubernetes** wird gemäß den Angaben in der [Preisübersicht](security-center-pricing.md) abgerechnet.|
 |Erforderliche Rollen und Berechtigungen:|**Sicherheitsadministrator** kann Warnungen verwerfen.<br>Der **Sicherheitsleseberechtigte** kann Ergebnisse anzeigen.|
-|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) China Gov<br>![Nein](./media/icons/no-icon.png) US Gov, andere Gov|
+|Clouds:|![Ja](./media/icons/yes-icon.png) Kommerzielle Clouds<br>![Ja](./media/icons/yes-icon.png) National/Sovereign (US Gov, China Gov, andere Gov)|
 |||
 
 ## <a name="what-are-the-benefits-of-azure-defender-for-kubernetes"></a>Welche Vorteile bietet Azure Defender für Kubernetes?

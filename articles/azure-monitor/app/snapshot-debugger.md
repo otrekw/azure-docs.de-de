@@ -4,13 +4,15 @@ description: Debugmomentaufnahmen werden automatisch beim Auslösen von Ausnahme
 ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 10/23/2019
+author: cweining
+ms.author: cweining
 ms.reviewer: cweining
-ms.openlocfilehash: cbbec71ff8ab762ea0da764a7db9459123850271
-ms.sourcegitcommit: c95e2d89a5a3cf5e2983ffcc206f056a7992df7d
+ms.openlocfilehash: 5913f5fa8d45e6bf92d6132468e0e3bf7a121c65
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/24/2020
-ms.locfileid: "95530232"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673517"
 ---
 # <a name="debug-snapshots-on-exceptions-in-net-apps"></a>Debugmomentaufnahmen von Ausnahmen in .NET-Apps
 Wenn eine Ausnahme auftritt, können Sie automatisch eine Debugmomentaufnahme von Ihrer aktiven Webanwendung erfassen. Die Momentaufnahme zeigt den Status des Quellcodes und der Variablen in dem Moment, in dem die Ausnahme ausgelöst wurde. Der Momentaufnahmedebugger in [Azure Application Insights](./app-insights-overview.md) überwacht Ausnahmetelemetriedaten aus Ihrer Web-App. Er erfasst Momentaufnahmen Ihrer am häufigsten ausgelösten Ausnahmen, damit Sie die erforderlichen Informationen zur Diagnose von Problemen in der Produktion erhalten. Binden Sie das [NuGet-Paket des Momentaufnahmesammlers](https://www.nuget.org/packages/Microsoft.ApplicationInsights.SnapshotCollector) in Ihre Anwendung ein, und konfigurieren Sie optional Parameter für die Datensammlung in [ApplicationInsights.config](./configuration-with-applicationinsights-config.md). Momentaufnahmen finden Sie im Application Insights-Portal unter [Ausnahmen](./asp-net-exceptions.md).

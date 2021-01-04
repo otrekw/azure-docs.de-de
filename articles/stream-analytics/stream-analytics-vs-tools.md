@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
-ms.openlocfilehash: 95abf403dfd4abd4c0533b6e8b4a2f83b33fa18b
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 43b145f5a37ea4209947e54cb276e16ff55c1da1
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "86045551"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97682825"
 ---
 # <a name="use-visual-studio-to-view-azure-stream-analytics-jobs"></a>Anzeigen von Azure Stream Analytics-Aufträgen mit Visual Studio
 
@@ -82,5 +82,4 @@ Die Ergebnisse für den Vorgang **Verbindung testen** werden im Fenster **Ausgab
 
 * [Überwachen und Verwalten von Azure Stream Analytics-Aufträgen mithilfe von Visual Studio](stream-analytics-monitor-jobs-use-vs.md)
 * [Schnellstart: Erstellen eines Stream Analytics-Auftrags mithilfe von Visual Studio](stream-analytics-quick-create-vs.md)
-* [Tutorial: Bereitstellen eines Azure Stream Analytics-Auftrags mit CI/CD mithilfe von Azure Pipelines](stream-analytics-tools-visual-studio-cicd-vsts.md)
 * [Kontinuierliche Integration und Entwicklung mit Stream Analytics-Tools](stream-analytics-tools-for-visual-studio-cicd.md)

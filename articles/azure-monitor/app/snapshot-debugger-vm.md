@@ -2,23 +2,23 @@
 title: Aktivieren des Momentaufnahmedebuggers für.NET-Anwendungen in Azure Service Fabric, Cloud Service und Virtual Machines | Microsoft-Dokumentation
 description: Aktivieren des Momentaufnahmedebuggers für.NET-Anwendungen in Azure Service Fabric, Cloud Service und Virtual Machines
 ms.topic: conceptual
-author: brahmnes
-ms.author: bfung
+author: cweining
+ms.author: cweining
 ms.date: 03/07/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: c1cc9893a309dcdf7ac575494d164052bb0c617c
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 4bccc2922cf20262149ef54fbe2a1a821d9551ab
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87325677"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673500"
 ---
 # <a name="enable-snapshot-debugger-for-net-apps-in-azure-service-fabric-cloud-service-and-virtual-machines"></a>Aktivieren des Momentaufnahmedebuggers für.NET-Anwendungen in Azure Service Fabric, Cloud Service und Virtual Machines
 
 Wenn Sie Ihre ASP.NET- oder ASP.NET Core-Anwendung in Azure App Service ausführen, wird dringend empfohlen, [den Momentaufnahmedebugger über die Application Insights-Portalseite zu aktivieren](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json). Wenn Ihre Anwendung jedoch eine benutzerdefinierte Konfiguration für den Momentaufnahmedebugger oder eine Vorschauversion von .NET Core erfordert, sollte diese Anweisung ***zusätzlich*** zu den Anweisungen zum [Aktivieren über die Application Insights-Portalseite](snapshot-debugger-appservice.md?toc=/azure/azure-monitor/toc.json) befolgt werden.
 
 Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines oder auf lokalen Computern ausgeführt wird, sollten die folgenden Anweisungen verwendet werden. 
-    
+
 ## <a name="configure-snapshot-collection-for-aspnet-applications"></a>Konfigurieren der Momentaufnahmesammlung für ASP.NET-Anwendungen
 
 1. Falls noch nicht geschehen, [aktivieren Sie Application Insights für Ihre Web-App](./asp-net.md).
@@ -91,19 +91,19 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
        using Microsoft.ApplicationInsights.AspNetCore;
        using Microsoft.ApplicationInsights.Extensibility;
        ```
-    
+
        Fügen Sie der `Startup`-Klasse die folgende `SnapshotCollectorTelemetryProcessorFactory`-Klasse hinzu.
-    
+
        ```csharp
        class Startup
        {
            private class SnapshotCollectorTelemetryProcessorFactory : ITelemetryProcessorFactory
            {
                private readonly IServiceProvider _serviceProvider;
-    
+
                public SnapshotCollectorTelemetryProcessorFactory(IServiceProvider serviceProvider) =>
                    _serviceProvider = serviceProvider;
-    
+
                public ITelemetryProcessor Create(ITelemetryProcessor next)
                {
                    var snapshotConfigurationOptions = _serviceProvider.GetService<IOptions<SnapshotCollectorConfiguration>>();
@@ -113,17 +113,17 @@ Wenn Ihre Anwendung in Azure Service Fabric, Cloud Service, Virtual Machines ode
            ...
         ```
         Fügen Sie der Startpipeline die Dienste `SnapshotCollectorConfiguration` und `SnapshotCollectorTelemetryProcessorFactory` hinzu:
-    
+
         ```csharp
            // This method gets called by the runtime. Use this method to add services to the container.
            public void ConfigureServices(IServiceCollection services)
            {
                // Configure SnapshotCollector from application settings
                services.Configure<SnapshotCollectorConfiguration>(Configuration.GetSection(nameof(SnapshotCollectorConfiguration)));
-    
+
                // Add SnapshotCollector telemetry processor.
                services.AddSingleton<ITelemetryProcessorFactory>(sp => new SnapshotCollectorTelemetryProcessorFactory(sp));
-    
+
                // TODO: Add other services your application needs here.
            }
        }

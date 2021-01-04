@@ -9,12 +9,12 @@ ms.author: vinsonyu
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 810a08d2f72359b385d2a7567b796aa222c6ab14
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 9c42acb69e13cc1eb0fbba3fcafaec1451bc4d77
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "90931797"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97589218"
 ---
 # <a name="features-and-capabilities-of-azure-arc-enabled-sql-managed-instance"></a>Features und Funktionen von Azure Arc-fähigen SQL Managed Instance-Instanzen
 
@@ -59,78 +59,78 @@ Azure Arc-fähige SQL Managed Instance-Instanzen nutzen eine gemeinsame Codebasi
 
 ###  <a name="rdbms-scalability-and-performance"></a><a name="RDBMSSP"></a> RDBMS Scalability and Performance  
 
-|Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
-|-------------|----------------|
-|columnstore|   Ja|
-|Große Objektbinärdateien in gruppierten Columnstore-Indizes|    Ja|
-|Onlineneuerstellung für nicht gruppierten Columnstore-Index| Ja|
-|In-Memory-OLTP|    Ja|
-|Persistenter Hauptspeicher|    Ja|
-|Tabellen- und Indexpartitionierung|  Ja
-|Datenkomprimierung|  Ja|
-|Resource Governor| Ja|
-|Parallelverarbeitung für partitionierte Tabellen| Ja|
-|NUMA-basierter und großer Arbeitsspeicher für umfangreiche Seiten und Zuordnung von Pufferarrays|  Ja|
-|Ressourcenkontrolle für E/A-Vorgänge|    Ja|
-|Verzögerte Dauerhaftigkeit|    Ja|
-|Automatische Optimierung|  Ja|
-|Adaptive Joins im Batchmodus| Ja|
-|Feedback zur Speicherzuweisung im Batchmodus|  Ja|
-|Verschachtelte Ausführung mit Tabellenwertfunktionen mit mehreren Anweisungen|  Ja|
-|Verbesserungen beim massenhaften Einfügen   |Ja|
+| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+|--|--|
+| columnstore | Ja |
+| Große Objektbinärdateien in gruppierten Columnstore-Indizes | Ja |
+| Onlineneuerstellung für nicht gruppierten Columnstore-Index | Ja |
+| In-Memory-OLTP | Ja |
+| Persistenter Hauptspeicher | Ja |
+| Tabellen- und Indexpartitionierung | Ja |
+| Datenkomprimierung | Ja |
+| Resource Governor | Ja |
+| Parallelverarbeitung für partitionierte Tabellen | Ja |
+| NUMA-basierter und großer Arbeitsspeicher für umfangreiche Seiten und Zuordnung von Pufferarrays | Ja |
+| Ressourcenkontrolle für E/A-Vorgänge | Ja |
+| Verzögerte Dauerhaftigkeit | Ja |
+| Automatische Optimierung | Ja |
+| Adaptive Joins im Batchmodus | Ja |
+| Feedback zur Speicherzuweisung im Batchmodus | Ja |
+| Verschachtelte Ausführung mit Tabellenwertfunktionen mit mehreren Anweisungen | Ja |
+| Verbesserungen beim massenhaften Einfügen | Ja |
 
-###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security  
-|Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
-|-------------|----------------|
-|Sicherheit auf Zeilenebene|    Ja|
-|Always Encrypted|  Ja|
-|Always Encrypted mit Secure Enclaves| Nein|
-|Dynamische Datenmaskierung|  Ja|
-|Allgemeine Überwachung|    Ja|
-|Feine Überwachung| Ja|
-|Transparente Datenbankverschlüsselung|   Ja|
-|Benutzerdefinierte Rollen|    Ja|
-|Eigenständige Datenbanken|   Ja|
-|Verschlüsselung von Sicherungen|    Ja|
+###  <a name="rdbms-security"></a><a name="RDBMSS"></a> RDBMS Security
+
+| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+|--|--|
+| Sicherheit auf Zeilenebene | Ja |
+| Always Encrypted | Ja |
+| Always Encrypted mit Secure Enclaves | Nein |
+| Dynamische Datenmaskierung | Ja |
+| Allgemeine Überwachung | Ja |
+| Feine Überwachung | Ja |
+| Transparente Datenbankverschlüsselung | Ja |
+| Benutzerdefinierte Rollen | Ja |
+| Eigenständige Datenbanken | Ja |
+| Verschlüsselung von Sicherungen | Ja |
 
 ###  <a name="rdbms-manageability"></a><a name="RDBMSM"></a> RDBMS Manageability  
 
-|Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
-|-------------|----------------|
-|Dedizierte Administratorverbindung|    Ja|
-|PowerShell-Skriptunterstützung|  Ja|
-|Unterstützung für Komponentenvorgänge der Datenschichtanwendung: Extrahieren, Bereitstellen, Aktualisieren, Löschen| Ja
-|Richtlinienautomatisierung (Überprüfung nach Zeitplan und Änderungen)   |Ja|
-|Sammler von Leistungsdaten|    Ja|
-|Standardleistungsberichte   |Ja|
-|Planhinweislisten und Planeinfrierung für Planhinweislisten| Ja|
-|Direkte Abfrage von indizierten Sichten (mittels NOEXPAND-Hinweis)|   Ja|
-|Automatische Wartung für indizierte Sichten    |Ja|
-|Verteilte partitionierte Sichten| Ja|
-|Parallele Indexvorgänge    |Ja|
-|Automatische Verwendung indizierter Sichten mittels Abfrageoptimierer|  Ja|
-|Parallele Konsistenzprüfung |Ja|
-
+| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+|--|--|
+| Dedizierte Administratorverbindung | Ja |
+| PowerShell-Skriptunterstützung | Ja |
+| Unterstützung für Komponentenvorgänge der Datenschichtanwendung: Extrahieren, Bereitstellen, Aktualisieren, Löschen | Ja |
+| Richtlinienautomatisierung (Überprüfung nach Zeitplan und Änderungen) | Ja |
+| Sammler von Leistungsdaten | Ja |
+| Standardleistungsberichte | Ja |
+| Planhinweislisten und Planeinfrierung für Planhinweislisten | Ja |
+| Direkte Abfrage von indizierten Sichten (mittels NOEXPAND-Hinweis) | Ja |
+| Automatische Wartung für indizierte Sichten | Ja |
+| Verteilte partitionierte Sichten | Ja |
+| Parallele Indexvorgänge | Ja |
+| Automatische Verwendung indizierter Sichten mittels Abfrageoptimierer | Ja |
+| Parallele Konsistenzprüfung | Ja |
 
 ### <a name="programmability"></a><a name="Programmability"></a> Programmability  
 
-|Funktion|Azure Arc-fähige SQL Managed Instance-Instanz|
-|-------------|----------------|
-|JSON|  Ja |       |
-|Abfragespeicher    |Ja    |       
-|Temporal|  Ja |       
-|Systemeigene XML-Unterstützung|    Ja |       
-|XML-Indizierung   |Ja    |       
-|MERGE- und UPSERT-Funktionen|   Ja |       
-|Datums- und Uhrzeitdatentypen    |Ja    |       
-|Internationalisierungsunterstützung|  Ja |       
-|Volltextsuche und semantische Suche |    Nein      |
-|Angabe der Sprache in einer Abfrage |Ja        |   
-|Service Broker (Messaging)|    Ja     |   
-|Transact-SQL-Endpunkte|    Ja |       
-|Graph| Ja |   
-|Machine Learning Services| Nein  |   
-|PolyBase| Nein   |
+| Funktion | Azure Arc-fähige SQL Managed Instance-Instanz |
+|--|--|
+| JSON | Ja |
+| Abfragespeicher | Ja |  |
+| Temporal | Ja |  |
+| Systemeigene XML-Unterstützung | Ja |  |
+| XML-Indizierung | Ja |  |
+| MERGE- und UPSERT-Funktionen | Ja |  |
+| Datums- und Uhrzeitdatentypen | Ja |  |
+| Internationalisierungsunterstützung | Ja |  |
+| Volltextsuche und semantische Suche | Nein |
+| Angabe der Sprache in einer Abfrage | Ja |  |
+| Service Broker (Messaging) | Ja |  |
+| Transact-SQL-Endpunkte | Ja |  |
+| Graph | Ja |  |
+| Machine Learning Services | Nein |  |
+| PolyBase | Nein |
 
 
 ### <a name="tools"></a>Tools

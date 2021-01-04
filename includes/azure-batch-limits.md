@@ -5,15 +5,15 @@ services: batch
 author: JnHs
 ms.service: batch
 ms.topic: include
-ms.date: 06/03/2020
+ms.date: 12/16/2020
 ms.author: jenhayes
 ms.custom: include file
-ms.openlocfilehash: 54a789aba793d9a6b44d5fe9a1e0f42023002b5a
-ms.sourcegitcommit: a43a59e44c14d349d597c3d2fd2bc779989c71d7
+ms.openlocfilehash: 0a94b122f1cdd598eeac553c8cc784d2a0a5369f
+ms.sourcegitcommit: 86acfdc2020e44d121d498f0b1013c4c3903d3f3
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/25/2020
-ms.locfileid: "96025856"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97614511"
 ---
 | **Ressource** | **Standardlimit** | **Maximales Limit** |
 | --- | --- | --- |
@@ -24,9 +24,6 @@ ms.locfileid: "96025856"
 | Pools pro Batch-Konto | 20-100 | 500<sup>1</sup> |
 
 <sup>1</sup>Wenden Sie sich an den Azure-Support, wenn Sie eine Heraufsetzung dieses Grenzwerts wünschen.
-
-> [!IMPORTANT]
-> Wir ändern die Art und Weise, in der Sie dedizierte Kontingente anfordern und verwalten.  Der Gesamtwert für dedizierte vCPUs ist der aktuell gültige Wert, in Kürze werden wir jedoch dedizierte Kontingente pro VM-Serie einrichten. Kontingente mit niedriger Priorität werden weiterhin basierend auf dem Gesamtgrenzwert erzwungen, nicht pro VM-Serie.
 
 > [!NOTE]
 > Die Standardgrenzwerte variieren abhängig vom Abonnementtyp, den Sie zum Erstellen eines Batch-Kontos verwenden. Die angezeigten Kontingente für Kerne gelten für Batch-Konten im Batch-Dienstmodus. [Zeigen Sie die Kontingente in Ihrem Batch-Konto an](../articles/batch/batch-quota-limit.md#view-batch-quotas).

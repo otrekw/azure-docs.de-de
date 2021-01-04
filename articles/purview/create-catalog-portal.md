@@ -1,18 +1,18 @@
 ---
 title: 'Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal (Vorschauversion)'
 description: In dieser Schnellstartanleitung erfahren Sie, wie Sie ein Azure Purview-Konto erstellen und Berechtigungen für dessen Verwendung konfigurieren.
-author: hophanms
-ms.author: hophan
+author: nayenama
+ms.author: nayenama
 ms.service: purview
 ms.subservice: purview-data-catalog
 ms.topic: quickstart
 ms.date: 10/23/2020
-ms.openlocfilehash: 3119152e4a7d0dc799dfe273722101c95c11c0c9
-ms.sourcegitcommit: cc13f3fc9b8d309986409276b48ffb77953f4458
+ms.openlocfilehash: fe83425230a157be245e3aa1ad088c32596ea5ed
+ms.sourcegitcommit: b6267bc931ef1a4bd33d67ba76895e14b9d0c661
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/14/2020
-ms.locfileid: "97400385"
+ms.lasthandoff: 12/19/2020
+ms.locfileid: "97693375"
 ---
 # <a name="quickstart-create-an-azure-purview-account-in-the-azure-portal"></a>Schnellstart: Erstellen eines Azure Purview-Kontos im Azure-Portal
 

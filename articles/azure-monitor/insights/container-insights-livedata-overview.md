@@ -2,23 +2,20 @@
 title: Anzeigen von Livedaten (Vorschau) mit Azure Monitor für Container | Microsoft-Dokumentation
 description: In diesem Artikel wird die Echtzeitansicht von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Azure Monitor für Container ohne Verwendung von kubectl beschrieben.
 ms.topic: conceptual
-ms.date: 12/07/2020
+ms.date: 12/17/2020
 ms.custom: references_regions
-ms.openlocfilehash: 3bfc9aa0f0238d99d9336abe592fa721459f4220
-ms.sourcegitcommit: fa807e40d729bf066b9b81c76a0e8c5b1c03b536
+ms.openlocfilehash: 3655ff8e5879aa4113753b5529c1e484fb079401
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/11/2020
-ms.locfileid: "97346841"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97672867"
 ---
 # <a name="how-to-view-kubernetes-logs-events-and-pod-metrics-in-real-time"></a>Anzeigen von Kubernetes-Protokollen, -Ereignissen und -Podmetriken in Echtzeit
 
 Azure Monitor für Container enthält die Funktion für Livedaten (Vorschau), bei der es sich um eine erweiterte Diagnosefunktion handelt, die Ihnen direkten Zugriff auf Ihre Azure Kubernetes Service-Containerprotokolle (stdout/stderror), -Ereignisse und -Podmetriken ermöglicht. Sie bietet direkten Zugriff auf `kubectl logs -c`, `kubectl get`-Ereignisse und `kubectl top pods`. In einem Konsolenbereich werden die von der Container-Engine generierten Protokolle, Ereignisse und Metriken angezeigt, die weitere Unterstützung bei der Behandlung von Problemen in Echtzeit bieten.
 
 Dieser Artikel bietet eine ausführliche Übersicht und hilft Ihnen, die Verwendung dieser Funktion zu verstehen.
-
->[!NOTE]
->Als [private Cluster](https://azure.microsoft.com/updates/aks-private-cluster/) aktivierte AKS-Cluster werden mit dieser Funktion nicht unterstützt. Diese Funktion basiert auf dem direkten Zugriff auf die Kubernetes-API über einen Proxyserver im Browser. Durch die Aktivierung der Netzwerksicherheit zum Blockieren der Kubernetes-API über den Proxy wird der Datenverkehr blockiert.
 
 Hilfe bei der Einrichtung oder Problembehandlung der Funktion für Livedaten (Vorschau) finden Sie in unserem [Einrichtungsleitfaden](container-insights-livedata-setup.md). Informationen zum Direktzugriff auf die Kubernetes-API über diese Funktion sowie weitere Informationen zum Authentifizierungsmodell finden Sie [hier](https://kubernetes.io/docs/concepts/overview/kubernetes-api/).
 

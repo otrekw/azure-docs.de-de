@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 10/28/2020
-ms.openlocfilehash: 649abf6d07a95c7f20f6416f7d3155f8d115782b
-ms.sourcegitcommit: 857859267e0820d0c555f5438dc415fc861d9a6b
+ms.openlocfilehash: d2fb2ac40dfbe6e48fef5c98e21896575b298a94
+ms.sourcegitcommit: e0ec3c06206ebd79195d12009fd21349de4a995d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/30/2020
-ms.locfileid: "93127568"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97683464"
 ---
 # <a name="stream-data-as-input-into-stream-analytics"></a>Streamen von Daten als Eingabe in Stream Analytics
 
@@ -31,7 +31,7 @@ Stream Analytics unterstützt die Komprimierung für alle Datenstrom-Eingabequel
 
 ## <a name="create-edit-or-test-inputs"></a>Erstellen, Bearbeiten oder Testen von Eingaben
 
-Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-visual-studio-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und [Abfragen](stream-analytics-manage-job.md#test-your-query) anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](visual-studio-code-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
+Mit dem [Azure-Portal](stream-analytics-quick-create-portal.md), [Visual Studio](stream-analytics-quick-create-vs.md) und [Visual Studio Code](quick-create-visual-studio-code.md) können Sie Eingaben hinzufügen und anzeigen oder vorhandene Eingaben für Ihren Streamingauftrag bearbeiten. Sie können auch Tests für Eingabeverbindungen und Abfragen anhand von Beispieldaten über das Azure-Portal, [Visual Studio](stream-analytics-vs-tools-local-run.md) und [Visual Studio Code](visual-studio-code-local-run.md) ausführen. Beim Schreiben einer Abfrage listen Sie die Eingabe in der FROM-Klausel auf. Sie erhalten die Liste mit den verfügbaren Eingaben im Portal über die Seite **Abfrage**. Wenn Sie mehrere Eingaben verwenden möchten, können Sie sie per `JOIN` verknüpfen oder mehrere `SELECT`-Abfragen schreiben.
 
 
 ## <a name="stream-data-from-event-hubs"></a>Streamen von Daten aus Event Hubs

@@ -5,21 +5,21 @@ author: sr-msft
 ms.author: srranga
 ms.service: postgresql
 ms.topic: how-to
-ms.date: 11/05/2020
+ms.date: 12/17/2020
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 2fa8794066739302d2f32acb13c936c524dc89a8
-ms.sourcegitcommit: 7cc10b9c3c12c97a2903d01293e42e442f8ac751
+ms.openlocfilehash: 7e74a58a14bdcc2a6fe1e9f86305aae415c6abf7
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/06/2020
-ms.locfileid: "93422347"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674513"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Erstellen und Verwalten von Lesereplikaten über die Azure CLI und die REST-API
 
 In diesem Artikel erfahren Sie, wie Sie Lesereplikate in Azure Database for PostgreSQL über die Azure CLI und die REST-API erstellen und verwalten. Weitere Informationen zu Lesereplikaten finden Sie in der [Übersicht](concepts-read-replicas.md).
 
 ## <a name="azure-replication-support"></a>Azure-Replikationsunterstützung
-[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Ebenen der Protokollierung durch Postgres. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
+[Lesereplikate](concepts-read-replicas.md) und [logische Decodierung](concepts-logical.md) sind beide vom Write-Ahead-Protokoll (WAL) von Postgres abhängig. Diese beiden Features erfordern unterschiedliche Postgres-Protokolliergrade. Die logische Decodierung erfordert einen höheren Protokolliergrad als Lesereplikate.
 
 Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter für die Unterstützung der Azure-Replikation. Für die Unterstützung der Azure-Replikation gibt es drei Einstellungsoptionen:
 
@@ -29,9 +29,9 @@ Um den richtigen Protokolliergrad zu konfigurieren, verwenden Sie den Parameter 
 
 
 > [!NOTE]
-> Beim Bereitstellen von Lesereplikaten für persistente, sehr schreibintensive primäre Workloads kann die Verzögerung der Replikation immer weiter anwachsen und erreicht möglicherweise den Stand des primären Servers gar nicht mehr. Damit kann auch die Speicherauslastung auf dem primären Server ansteigen, da die WAL-Dateien erst gelöscht werden, wenn sie im Replikat empfangen wurden.
+> Beim Bereitstellen von Lesereplikaten für persistente, sehr schreibintensive primäre Workloads kann sich die Replikation immer weiter verzögern, sodass der Stand des primären Servers möglicherweise gar nicht mehr erreicht wird. Damit kann auch die Speicherauslastung auf dem primären Server ansteigen, da die WAL-Dateien erst gelöscht werden, wenn sie im Replikat empfangen wurden.
 
-## <a name="azure-cli"></a>Azure-Befehlszeilenschnittstelle
+## <a name="azure-cli"></a>Azure CLI
 Sie können Lesereplikate mithilfe der Azure CLI erstellen und verwalten.
 
 ### <a name="prerequisites"></a>Voraussetzungen
@@ -189,7 +189,7 @@ Sie können die Replikation zwischen einem primären Server und einem Lesereplik
 Das Beenden der Replikation zwischen einem primären Server und einem Lesereplikat kann nicht mehr rückgängig gemacht werden. Das Lesereplikat wird zu einem eigenständigen Server, der sowohl Lese- als auch Schreibvorgänge unterstützt. Der eigenständige Server kann nicht wieder in ein Replikat umgewandelt werden.
 
 ```http
-PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{masterServerName}?api-version=2017-12-01
+PATCH https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.DBforPostgreSQL/servers/{replicaServerName}?api-version=2017-12-01
 ```
 
 ```json

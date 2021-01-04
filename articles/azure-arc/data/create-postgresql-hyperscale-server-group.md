@@ -9,12 +9,12 @@ ms.author: jeanyd
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: d2eef20b4c5648b1b11f16d8e46b956fc1497181
-ms.sourcegitcommit: 28c5fdc3828316f45f7c20fc4de4b2c05a1c5548
+ms.openlocfilehash: d432f29e91097491fc4719ec59a11cb96948f431
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/22/2020
-ms.locfileid: "92364421"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609053"
 ---
 # <a name="create-an-azure-arc-enabled-postgresql-hyperscale-server-group"></a>Erstellen einer Azure Arc-fähigen PostgreSQL Hyperscale-Servergruppe
 
@@ -32,7 +32,7 @@ Dabei handelt es sich um wichtige Themen, die Sie lesen sollten, bevor Sie mit d
 - [Speicherkonfiguration und Kubernetes-Speicherkonzepte](storage-configuration.md)
 - [Kubernetes-Ressourcenmodell](https://github.com/kubernetes/community/blob/master/contributors/design-proposals/scheduling/resources.md#resource-quantities)
 
-Wenn Sie es vorziehen, dies auszuprobieren, ohne selbst eine vollständige Umgebung bereitzustellen, können Sie mit dem [Azure Arc-Schnelleinstieg](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) in Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM einsteigen.
+Wenn Sie es vorziehen, dies auszuprobieren, ohne selbst eine vollständige Umgebung bereitzustellen, können Sie mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) in Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM einsteigen.
 
 
 ## <a name="login-to-the-azure-arc-data-controller"></a>Anmelden beim Azure Arc-Datencontroller
@@ -80,7 +80,7 @@ azdata arc postgres server create -n <name> --workers <# worker nodes with #>=2>
 
 > [!NOTE]
 > - **Es stehen auch andere Befehlszeilenparameter zur Verfügung.  Sie können eine vollständige Liste der Optionen anzeigen, indem Sie `azdata arc postgres server create --help` ausführen.**
-> - Ohne Angabe wird die für Sicherungen verwendete Speicherklasse ( _--storage-class-backups -scb_ ) standardmäßig auf die Datenspeicherklasse des Datencontrollers festgelegt.
+> - Ohne Angabe wird die für Sicherungen verwendete Speicherklasse ( _--storage-class-backups -scb_) standardmäßig auf die Datenspeicherklasse des Datencontrollers festgelegt.
 > - Die von den Parametern „--volume-size-*“ akzeptierte Einheit ist eine Kubernetes-Ressourcenmenge (ein Integer gefolgt von einem SI-Suffix (T, G, M, K, m) oder einem Äquivalent mit Zweierpotenz (Ti, Gi, Mi, Ki)).
 > - Namen dürfen maximal 12 Zeichen lang sein und müssen den DNS-Benennungskonventionen entsprechen.
 > - Sie werden dazu aufgefordert, das Kennwort für den Standardadministrator für _Postgre_ einzugeben.  Sie können die interaktive Eingabeaufforderung überspringen, indem Sie die Sitzungsumgebungsvariable `AZDATA_PASSWORD` festlegen, bevor Sie den Befehl zum Erstellen ausführen.

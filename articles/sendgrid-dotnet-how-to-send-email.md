@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 02/15/2017
 ms.reviewer: dx@sendgrid.com
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: c8ac20378cbae9334cedb59878311f2541b40bd3
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e605e162e4639a876cc5b6d763e81fdd7ff93aa8
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "89020591"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97674547"
 ---
 # <a name="how-to-send-email-using-sendgrid-with-azure"></a>Senden von E-Mails in Azure mit SendGrid
 ## <a name="overview"></a>Übersicht
@@ -107,7 +107,7 @@ Beim Senden von E-Mails müssen Sie Ihren SendGrid-API-Schlüssel angeben. Ausf�
 
 Sie können diese Anmeldeinformationen im Azure-Portal speichern, indem Sie auf „Anwendungseinstellungen“ klicken und die Schlüssel-Wert-Paare unter „App-Einstellungen“ hinzufügen.
 
- ![App-Einstellungen in Azure][azure_app_settings]
+![App-Einstellungen in Azure][azure_app_settings]
 
 Anschließend können Sie wie folgt darauf zugreifen:
 
@@ -159,17 +159,17 @@ In diesem Beispiel wurde der API-Schlüssel in der Datei `appsettings.json` gesp
 
 Die Inhalte der Datei `appsettings.json` sollten in etwa wie folgt aussehen:
 
-```csharp
+```json
 {
-   "Logging": {
-   "IncludeScopes": false,
-   "LogLevel": {
-   "Default": "Debug",
-   "System": "Information",
-   "Microsoft": "Information"
-     }
-   },
- "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
+  "Logging": {
+    "IncludeScopes": false,
+    "LogLevel": {
+      "Default": "Debug",
+      "System": "Information",
+      "Microsoft": "Information"
+    }
+  },
+  "SENDGRID_API_KEY": "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 }
 ```
 
@@ -208,8 +208,8 @@ namespace SendgridMailApp.Controllers
        public NotificationController(IConfiguration configuration)
        {
          _configuration = configuration;
-       }      
-    
+       }
+
        [Route("SendNotification")]
        public async Task PostMessage()
        {
@@ -222,7 +222,7 @@ namespace SendgridMailApp.Controllers
               new EmailAddress("test3@example.com", "Example User 3"),
               new EmailAddress("test4@example.com","Example User 4")
           };
-        
+
           var subject = "Hello world email from Sendgrid ";
           var htmlContent = "<strong>Hello world with HTML content</strong>";
           var displayRecipients = false; // set this to true if you want recipients to see each others mail id 
@@ -258,10 +258,10 @@ Die folgenden Beispiele veranschaulichen die Filter für die Fußzeile und die K
 ### <a name="footer-settings"></a>Einstellungen für die Fußzeile
 
 ```csharp
-msg.SetFooterSetting(
-                     true,
-                     "Some Footer HTML",
-                     "<strong>Some Footer Text</strong>");
+    msg.SetFooterSetting(
+        true,
+        "Some Footer HTML",
+        "<strong>Some Footer Text</strong>");
 ```
 
 ### <a name="click-tracking"></a>Klickprotokollierung

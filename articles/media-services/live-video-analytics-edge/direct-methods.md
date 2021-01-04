@@ -3,12 +3,12 @@ title: 'Verwenden von direkten Methoden in Live Video Analytics in IoT Edge: Azu
 description: Live Video Analytics in IoT Edge stellt verschiedene direkte Methoden zur Verfügung. Die direkten Methoden basieren auf den in diesem Thema beschriebenen Konventionen.
 ms.topic: conceptual
 ms.date: 04/27/2020
-ms.openlocfilehash: ed7cec7b8513044c2bf9b24600b8d9f42a485aae
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 8b5c16dc72beed4ec757e48461a2fc194c113f8d
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87091826"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656239"
 ---
 # <a name="direct-methods"></a>Direkte Methoden
 
@@ -140,12 +140,12 @@ Diese direkte Methode ruft eine einzelne Graphtopologie ab.
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Entität gefunden|  200 |–
-|Allgemeine Benutzerfehler    |400er Bereich  ||
-|Entität nicht gefunden   |404        ||
-|Allgemeine Serverfehler| 500er Bereich       ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Entität gefunden | 200 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Entität nicht gefunden | 404 |  |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphtopologyset"></a>GraphTopologySet
 
@@ -227,13 +227,13 @@ Löscht eine einzelne Graphtopologie.
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Entität gelöscht|    200|    –|
-|Entität nicht gefunden|  204|    –|
-|Allgemeine Benutzerfehler|   400er Bereich   ||
-|Auf die Graphtopologie wird von mindestens einer Graphinstanz verwiesen.| 409 |GraphTopologyInUse|
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Entität gelöscht | 200 | – |
+| Entität nicht gefunden | 204 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Auf die Graphtopologie wird von mindestens einer Graphinstanz verwiesen. | 409 | GraphTopologyInUse |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphtopologylist"></a>GraphTopologyList
 
@@ -278,18 +278,18 @@ Ruft eine Liste aller Graphtopologien ab, die den Filterkriterien entsprechen.
 
 #### <a name="filter-support"></a>Filterunterstützung
 
-|Vorgang      |Feld(er)   |Operatoren|
+|Vorgang |Feld(er)    |Operatoren|
 |---|---|---|
 |$orderby|name  |asc|
 
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Erfolg|   200 |–|
-|Allgemeine Benutzerfehler|   400er Bereich   ||
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Erfolg | 200 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphinstanceget"></a>GraphInstanceGet
 
@@ -323,12 +323,12 @@ Ruft eine einzelne Graphinstanz ab:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Entität gefunden   |200|   –|
-|Allgemeine Benutzerfehler|   400er Bereich   ||
-|Entität nicht gefunden|  404 ||
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Entität gefunden | 200 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Entität nicht gefunden | 404 |  |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphinstanceset"></a>GraphInstanceSet
 
@@ -373,15 +373,15 @@ Schlüsselaspekte:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Vorhandene Entität aktualisiert    |200    |–|
-|Neue Entität erstellt|    201 |–|
-|Allgemeine Benutzerfehler|   400er Bereich   ||
-|Graphüberprüfungsfehler    |400|   GraphValidationError|
-|Modulüberprüfungsfehler|  400 |ModuleValidationError|
-|Ressourcenüberprüfungsfehler |409    |ResourceValidationError|
-|Allgemeine Serverfehler  |500er Bereich||    
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Vorhandene Entität aktualisiert | 200 | – |
+| Neue Entität erstellt | 201 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Graphüberprüfungsfehler | 400 | GraphValidationError |
+| Modulüberprüfungsfehler | 400 | ModuleValidationError |
+| Ressourcenüberprüfungsfehler | 409 | ResourceValidationError |
+| Allgemeine Serverfehler | 500er Bereich |  |  |
 
 ### <a name="graphinstancedelete"></a>GraphInstanceDelete
 
@@ -414,13 +414,13 @@ Schlüsselaspekte:
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Graph erfolgreich gelöscht|    200|    –|
-|Graph nicht gefunden|   204|    –|
-|Allgemeine Benutzerfehler    |400er Bereich  ||
-|Der Graph befindet sich nicht im Zustand „Beendet“    |409    |OperationNotAllowedInState|
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Graph erfolgreich gelöscht | 200 | – |
+| Graph nicht gefunden | 204 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Der Graph befindet sich nicht im Zustand „Beendet“ | 409 | OperationNotAllowedInState |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphinstancelist"></a>GraphInstanceList
 
@@ -472,11 +472,11 @@ Ruft eine Liste aller Graphinstanzen ab, die den Filterkriterien entsprechen.
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Erfolg    |200    |–|
-|Allgemeine Benutzerfehler|   400er Bereich   ||
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Erfolg | 200 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphinstanceactivate"></a>GraphInstanceActivate
 
@@ -516,15 +516,15 @@ Schlüsselaspekte
 
 #### <a name="status-codes"></a>Statuscodes
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Graph erfolgreich aktiviert   |200    |–|
-|Neue Entität erstellt |201|   –|
-|Allgemeine Benutzerfehler    |400er Bereich  ||
-|Modulüberprüfungsfehler   |400|   ModuleValidationError|
-|Ressourcenüberprüfungsfehler|    409|    ResourceValidationError|
-|Der Graph befindet sich im Zustand „Wird deaktiviert“. |409    |OperationNotAllowedInState|
-|Allgemeine Serverfehler| 500er Bereich   ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Graph erfolgreich aktiviert | 200 | – |
+| Neue Entität erstellt | 201 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Modulüberprüfungsfehler | 400 | ModuleValidationError |
+| Ressourcenüberprüfungsfehler | 409 | ResourceValidationError |
+| Der Graph befindet sich im Zustand „Wird deaktiviert“. | 409 | OperationNotAllowedInState |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ### <a name="graphinstancedeactivate"></a>GraphInstanceDeactivate
 
@@ -565,13 +565,13 @@ Schlüsselaspekte:
 }
 ```
 
-|Bedingung  |Statuscode    |Detaillierter Fehlercode|
-|---|---|---|
-|Graph erfolgreich aktiviert   |200|   –|
-|Neue Entität erstellt |201|   –|
-|Allgemeine Benutzerfehler    |400er Bereich  ||
-|Der Graph befindet sich im Zustand „Wird aktiviert“.   |409|   OperationNotAllowedInState|
-|Allgemeine Serverfehler  |500er Bereich  ||
+| Bedingung | Statuscode | Detaillierter Fehlercode |
+|--|--|--|
+| Graph erfolgreich aktiviert | 200 | – |
+| Neue Entität erstellt | 201 | – |
+| Allgemeine Benutzerfehler | 400er Bereich |  |
+| Der Graph befindet sich im Zustand „Wird aktiviert“. | 409 | OperationNotAllowedInState |
+| Allgemeine Serverfehler | 500er Bereich |  |
 
 ## <a name="next-steps"></a>Nächste Schritte
 

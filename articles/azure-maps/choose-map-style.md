@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
-ms.openlocfilehash: f2d7c9e39cb3eb14a2c2c6a7b13e37f3a526184b
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: 556e265cc0d1aae33823185ec98d23f191ed1694
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92889798"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680025"
 ---
 # <a name="change-the-style-of-the-map"></a>Ändern des Kartenstils
 
@@ -29,9 +29,9 @@ Stiloptionen können während der Initialisierung des Websteuerelements festgele
 var map = new atlas.Map('map', {
     renderWorldCopies: false,
     showBuildingModels: false,
-    showLogo = true,
-    showFeedbackLink = true,
-    style='road'
+    showLogo: true,
+    showFeedbackLink: true,
+    style: 'road'
 
     //Additional map options.
 };
@@ -40,8 +40,8 @@ var map = new atlas.Map('map', {
 map.setStyle({
     renderWorldCopies: true,
     showBuildingModels: true,
-    showLogo = false,
-    showFeedbackLink = false
+    showLogo: false,
+    showFeedbackLink: false
 });
 ```
 
@@ -101,7 +101,7 @@ Das folgende Bild zeigt das im `icon`-Layout angezeigte Stilauswahl-Steuerelemen
 
 Das folgende Bild zeigt das im `list`-Layout angezeigte Stilauswahl-Steuerelement.
 
-:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Symbollayout in der Stilauswahl":::
+:::image type="content" source="./media/choose-map-style/style-picker-list-layout.png" alt-text="Listenlayout in der Stilauswahl":::
 
 > [!IMPORTANT]
 > Standardmäßig listet das Stilauswahl-Steuerelement alle im S0-Tarif von Azure Maps verfügbaren Stile auf. Soll die Liste weniger Stile enthalten, können Sie an die Option `mapStyle` der Stilauswahl ein Array mit den Stilen übergeben, die in der Liste angezeigt werden sollen. Wenn Sie S1 verwenden und alle verfügbaren Stile anzeigen möchten, legen Sie die Option `mapStyles` der Stilauswahl auf `"all"` fest.
@@ -129,10 +129,13 @@ Weitere Informationen zu den in diesem Artikel verwendeten Klassen und Methoden:
 > [!div class="nextstepaction"]
 > [StyleControlOptions](/javascript/api/azure-maps-control/atlas.stylecontroloptions)
 
-Fügen Sie Ihren Karten Steuerelemente hinzu:
+In den folgenden Artikeln finden Sie weitere Codebeispiele, die Sie Ihren Karten hinzufügen können:
 
 > [!div class="nextstepaction"]
 > [Hinzufügen von Kartensteuerelementen](map-add-controls.md)
 
 > [!div class="nextstepaction"]
-> [Hinzufügen von Stecknadeln zur Karte](map-add-pin.md)
+> [Hinzufügen einer Symbolebene](map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Hinzufügen einer Blasenebene](map-add-bubble-layer.md)

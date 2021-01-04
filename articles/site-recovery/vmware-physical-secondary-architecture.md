@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: 7c884ce839523706e67e4278f43e237e1a2b0580
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: d400e6bcda0a2114d798a3289f01f52b677a6f94
+ms.sourcegitcommit: ad677fdb81f1a2a83ce72fa4f8a3a871f712599f
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87496966"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97656494"
 ---
 # <a name="architecture-for-vmwarephysical-server-replication-to-a-secondary-on-premises-site"></a>Architektur für die Replikation von VMware- oder physischen Servern an einem sekundären lokalen Standort
 
@@ -44,7 +44,7 @@ Lassen Sie den Zugriff auf die folgenden URLs zu, wenn Sie einen URL-basierten F
 
 | **Name**                  | **Kommerziell**                               | **Behörden**                                 | **Beschreibung** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
-| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
+| Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net` | Ermöglicht das Schreiben von Daten aus der VM in das Cachespeicherkonto in der Quellregion |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Stellt die Autorisierung und Authentifizierung für Site Recovery-Dienst-URLs bereit. |
 | Replikation               | `*.hypervrecoverymanager.windowsazure.com` | `*.hypervrecoverymanager.windowsazure.com`   | Ermöglicht die Kommunikation der VM mit Site Recovery |
 | Service Bus               | `*.servicebus.windows.net`                 | `*.servicebus.usgovcloudapi.net`             | Ermöglicht es der VM, die Site Recovery-Überwachung und -Diagnosedaten zu schreiben |

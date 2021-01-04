@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 12/02/2020
 ms.author: yushwang
-ms.openlocfilehash: ae498b39a421db19f0d4e0a8daca58730321b58c
-ms.sourcegitcommit: 65db02799b1f685e7eaa7e0ecf38f03866c33ad1
+ms.openlocfilehash: fdb7b1964bf4b8e2dbf6afd541e4415c0345347c
+ms.sourcegitcommit: 8c3a656f82aa6f9c2792a27b02bbaa634786f42d
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 12/03/2020
-ms.locfileid: "96546810"
+ms.lasthandoff: 12/17/2020
+ms.locfileid: "97631464"
 ---
 # <a name="about-vpn-devices-and-ipsecike-parameters-for-site-to-site-vpn-gateway-connections"></a>Informationen zu VPN-Geräten und IPsec-/IKE-Parametern für VPN-Gatewayverbindungen zwischen Standorten.
 
@@ -61,7 +61,7 @@ Hilfreiche Informationen zur Konfiguration des VPN-Geräts finden Sie unter den 
 | Microsoft |Routing- und RAS-Dienst |Windows Server 2012 |Nicht kompatibel |Unterstützt |
 | Open Systems AG |Mission Control Security Gateway |– |[Konfigurationshandbuch](https://open-systems.com/wp-content/uploads/2019/12/OpenSystems-AzureVPNSetup-Installation-Guide.pdf) |Nicht kompatibel |
 | Palo Alto Networks |Alle Geräte mit PAN-OS 5.0 |PAN-OS<br>PolicyBased: 6.1.5 oder höher<br>RouteBased: 7.1.4 |Unterstützt |[Konfigurationshandbuch](https://knowledgebase.paloaltonetworks.com/KCSArticleDetail?id=kA10g000000Cm6WCAS) |
-| Sentrium (Entwickler) | VyOS | VyOS 1.2.2 | (nicht getestet) | [Konfigurationshandbuch](https://vyos.readthedocs.io/en/latest/appendix/examples/azure-vpn-bgp.html)|
+| Sentrium (Entwickler) | VyOS | VyOS 1.2.2 | (nicht getestet) | [Konfigurationshandbuch](https://docs.vyos.io/en/latest/configexamples/azure-vpn-bgp.html)|
 | ShareTech | UTM der nächsten Generation (NU-Serie) | 9.0.1.3 | Nicht kompatibel | [Konfigurationshandbuch](http://www.sharetech.com.tw/images/file/Solution/NU_UTM/S2S_VPN_with_Azure_Route_Based_en.pdf) |
 | SonicWall |TZ-Serie, NSA-Serie<br>SuperMassive-Serie<br>E-Class-NSA-Serie |SonicOS 5.8.x<br>SonicOS 5.9.x<br>SonicOS 6.x |Nicht kompatibel |[Konfigurationshandbuch](https://www.sonicwall.com/support/knowledge-base/170505320011694) |
 | Sophos | XG-Firewall der nächsten Generation | XG v17 | (nicht getestet) | [Konfigurationshandbuch](https://community.sophos.com/kb/127546)<br><br>[Configuration guide - Multiple SAs](https://community.sophos.com/kb/en-us/133154) (Konfigurationshandbuch: Mehrere SAs) |

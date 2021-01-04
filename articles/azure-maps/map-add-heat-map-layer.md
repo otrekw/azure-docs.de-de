@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen, devx-track-js
-ms.openlocfilehash: 51df9683152d97b899150e240dee98896f8c40ee
-ms.sourcegitcommit: 4064234b1b4be79c411ef677569f29ae73e78731
+ms.openlocfilehash: b15ee7091a68f7fcc79c71877c4af28b511b84de
+ms.sourcegitcommit: 66b0caafd915544f1c658c131eaf4695daba74c8
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/28/2020
-ms.locfileid: "92896377"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97680150"
 ---
 # <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 
@@ -31,9 +31,9 @@ Sie können Wärmebilder in vielen verschiedenen Szenarien verwenden, z. B.:
 > [!TIP]
 > Wärmebildebenen rendern in der Standardeinstellung die Koordinaten aller Geometrien in einer Datenquelle. Legen Sie die `filter`-Eigenschaft der Ebene auf `['==', ['geometry-type'], 'Point']` fest, um die Ebene dahin gehend zu beschränken, dass nur Punktgeometriefunktionen gerendert werden. Wenn Sie auch MultiPoint-Funktionen einschließen möchten, legen Sie die `filter`-Eigenschaft der Ebene auf `['any', ['==', ['geometry-type'], 'Point'], ['==', ['geometry-type'], 'MultiPoint']]` fest.
 
-<br/>
+</br>
 
-<iframe src="https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player" width="960" height="540" allowFullScreen frameBorder="0"></iframe>
+>[!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Heat-Maps-and-Image-Overlays-in-Azure-Maps/player?format=ny]
 
 ## <a name="add-a-heat-map-layer"></a>Hinzufügen einer Wärmebildebene
 

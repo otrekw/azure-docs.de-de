@@ -9,12 +9,12 @@ ms.service: azure-arc
 ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
-ms.openlocfilehash: e8a28415bf9448133102e92a658e7d200ac2772c
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: ef16a4c0b6ea40fb4934307916f1fe79ccea72f9
+ms.sourcegitcommit: e15c0bc8c63ab3b696e9e32999ef0abc694c7c41
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92316973"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97609138"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Was sind Azure Arc-fähige Datendienste (Vorschauversion)?
 
@@ -50,7 +50,7 @@ Viele Dienste wie die Self-Service-Bereitstellung, automatisierte Sicherungen/Wi
 ## <a name="next-steps"></a>Nächste Schritte
 
 > **Möchten Sie es selbst ausprobieren?**  
-> Mit dem [Azure Arc-Schnelleinstieg](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
+> Mit dem [Azure Arc-Schnelleinstieg](https://azurearcjumpstart.io/azure_arc_jumpstart/azure_arc_data/) für Azure Kubernetes Service (AKS), AWS Elastic Kubernetes Service (EKS), Google Cloud Kubernetes Engine (GKE) oder auf einer Azure-VM können Sie schnell die ersten Schritte unternehmen.
 
 [Installieren der Clienttools](install-client-tools.md)
 

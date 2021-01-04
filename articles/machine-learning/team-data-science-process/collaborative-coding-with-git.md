@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ca24a781f4f3ad5c210813dabbb896de35056ed6
+ms.sourcegitcommit: d2d1c90ec5218b93abb80b8f3ed49dcf4327f7f4
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "87090211"
+ms.lasthandoff: 12/16/2020
+ms.locfileid: "97588708"
 ---
 # <a name="collaborative-coding-with-git"></a>Gemeinsames Schreiben von Code mit Git
 
@@ -39,7 +39,7 @@ Sie können auch einen neuen Branch erstellen, indem Sie den folgenden Git Bash
 git checkout -b <new branch name> <base branch name>
 
 ```
-Wenn Sie keinen \<base branch name> angeben, basiert der neue Branch auf `master`. 
+Wenn Sie keinen \<base branch name> angeben, basiert der neue Branch auf `main`. 
 
 Führen Sie den folgenden Befehl aus, um zu Ihrem Arbeitsbranch zu wechseln: 
 
@@ -47,7 +47,7 @@ Führen Sie den folgenden Befehl aus, um zu Ihrem Arbeitsbranch zu wechseln:
 git checkout <working branch name>
 ```
 
-Nach dem Wechsel zum Arbeitsbranch können Sie mit dem Entwickeln von Code- oder Dokumentationsartefakten beginnen, um das Arbeitselement fertigzustellen. Wenn Sie `git checkout master` ausführen, gelangen Sie zurück zum `master`-Branch.
+Nach dem Wechsel zum Arbeitsbranch können Sie mit dem Entwickeln von Code- oder Dokumentationsartefakten beginnen, um das Arbeitselement fertigzustellen. Wenn Sie `git checkout main` ausführen, gelangen Sie zurück zum `main`-Branch.
 
 Eine bewährte Methode besteht darin, für jedes User Story-Arbeitselement einen Git-Branch zu erstellen. Anschließend erstellen Sie für jedes Arbeitselement basierend auf dem User Story-Branch einen Branch. Organisieren Sie die Branches in einer Hierarchie, die der Beziehung zwischen User Story und Aufgabe entspricht, wenn mehrere Personen an verschiedenen User Storys für dasselbe Projekt bzw. an verschiedenen Aufgaben für dieselbe User Story arbeiten. Sie können Konflikte verringern, indem jedes Teammitglied in einem anderen Branch oder bei gemeinsamer Branchnutzung an anderem Code oder anderen Artefakten arbeitet. 
 
@@ -105,7 +105,7 @@ Wenn Sie im Navigationsbereich auf der linken Seite zurück zu **Repos** wechsel
 Sie können auch die folgenden Git Bash-Befehle verwenden, um Ihren Arbeitsbranch `script` mit seinem Basisbranch zusammenführen und anschließend den Arbeitsbranch löschen:
 
 ```bash
-git checkout master
+git checkout main
 git merge script
 git branch -d script
 ```
