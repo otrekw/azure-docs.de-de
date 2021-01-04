@@ -42,7 +42,7 @@ Im Oktober 2011 ging die Entwicklungsarbeit an einen technischen Ausschuss der O
 * **Technologieanbieter:** Axway Software, Huawei Technologies, IIT Software, INETCO Systems, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, Progress Software, Red Hat, SITA, Software AG, Solace Systems, VMware, WSO2, Zenika.
 * **Abnehmerfirmen:** Bank of America, Credit Suisse, Deutsche Börse, Goldman Sachs, JPMorgan Chase.
 
-Die derzeitigen Vorsitzenden des [OASIS AMQP Technical Committee] (https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) repräsentieren Red Hat und Microsoft.
+Die derzeitigen Vorsitzenden des [OASIS AMQP Technical Committee](https://www.oasis-open.org/committees/tc_home.php?wg_abbrev=amqp) repräsentieren Red Hat und Microsoft.
 
 Zu den am häufigsten genannten Vorteilen offener Standards gehören:
 
