@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: tutorial
 ms.date: 10/01/2020
 ms.author: Zhchia
-ms.openlocfilehash: 1658e6adf0c9de0cbd7412b963fb9a134f633430
-ms.sourcegitcommit: d22a86a1329be8fd1913ce4d1bfbd2a125b2bcae
+ms.openlocfilehash: 3754a56d1520118937a9d4aad406ae657b4dd23b
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 11/26/2020
-ms.locfileid: "96179694"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673663"
 ---
 # <a name="tutorial-configure-clarizen-one-for-automatic-user-provisioning"></a>Tutorial: Konfigurieren von Clarizen One für die automatische Benutzerbereitstellung
 
@@ -68,7 +68,7 @@ Fügen Sie Clarizen One aus dem Azure AD-Anwendungskatalog hinzu, um mit dem Ve
 Mit dem Azure AD-Bereitstellungsdienst können Sie anhand der Zuweisung zur Anwendung oder anhand von Attributen für den Benutzer/die Gruppe festlegen, wer in die Bereitstellung einbezogen werden soll. Wenn Sie sich dafür entscheiden, anhand der Zuweisung festzulegen, wer für Ihre App bereitgestellt werden soll, führen Sie die Schritte unter [Verwalten von Benutzerzuweisungen für eine App in Azure Active Directory](../manage-apps/assign-user-or-group-access-portal.md) aus, um der Anwendung Benutzer und Gruppen zuzuweisen. Wenn Sie allein anhand der Attribute des Benutzers oder der Gruppe auswählen möchten, wer bereitgestellt wird, können Sie einen der unter [Attributbasierte Anwendungsbereitstellung mit Bereichsfiltern](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) beschriebenen Bereichsfilter verwenden.
 
 * Beim Zuweisen von Benutzern und Gruppen zu Clarizen One müssen Sie eine andere Rolle als **Standardzugriff** auswählen. Benutzer mit der Rolle „Standardzugriff“ werden von der Bereitstellung ausgeschlossen und in den Bereitstellungsprotokollen als „nicht wirklich berechtigt“ gekennzeichnet. Wenn für die Anwendung nur die Rolle „Standardzugriff“ verfügbar ist, können Sie das [Anwendungsmanifest aktualisieren](../develop/howto-add-app-roles-in-azure-ad-apps.md) und weitere Rollen hinzufügen.
-* Fangen Sie klein an. Testen Sie die Bereitstellung mit einer kleinen Gruppe von Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben.
+* Fangen Sie klein an. Testen Sie die Bereitstellung mit wenigen Benutzern und Gruppen, bevor Sie sie für alle freigeben. Wenn der Bereitstellungsbereich auf zugewiesene Benutzer und Gruppen festgelegt ist, können Sie dies durch Zuweisen von einem oder zwei Benutzern oder Gruppen zur App kontrollieren. Ist der Bereich auf alle Benutzer und Gruppen festgelegt, können Sie einen [attributbasierten Bereichsfilter](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) angeben.
 
 ## <a name="step-5-configure-automatic-user-provisioning-to-clarizen-one"></a>Schritt 5: Konfigurieren der automatischen Benutzerbereitstellung für Clarizen One
 
@@ -78,19 +78,19 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Melden Sie sich beim [Azure-Portal](https://portal.azure.com) an. Wählen Sie **Unternehmensanwendungen** > **Alle Anwendungen**.
 
-    ![Screenshot: Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
+      ![Screenshot: Bereich „Unternehmensanwendungen“](common/enterprise-applications.png)
 
 1. Wählen Sie in der Anwendungsliste **Clarizen One** aus.
 
-    ![Screenshot: Clarizen One-Link in der Anwendungsliste](common/all-applications.png)
+      ![Screenshot: Clarizen One-Link in der Anwendungsliste](common/all-applications.png)
 
 1. Wählen Sie die Registerkarte **Bereitstellung**.
 
-    ![Screenshot: Registerkarte „Bereitstellung“](common/provisioning.png)
+      ![Screenshot: Registerkarte „Bereitstellung“](common/provisioning.png)
 
 1. Legen Sie **Bereitstellungsmodus** auf **Automatisch** fest.
 
-    ![Screenshot: Registerkarte „Bereitstellung“ mit der Option „Automatisch“](common/provisioning-automatic.png)
+      ![Screenshot: Registerkarte „Bereitstellung“ mit der Option „Automatisch“](common/provisioning-automatic.png)
 
 1. Geben Sie im Abschnitt **Administratoranmeldeinformationen** unter **Mandanten-URL** und **Geheimes Token** die Werte für Clarizen One ein. Klicken Sie auf **Verbindung testen**, um sicherzustellen, dass Azure AD eine Verbindung mit Clarizen One herstellen kann. Wenn die Verbindung nicht möglich ist, stellen Sie sicher, dass Ihr Clarizen One-Konto über Administratorberechtigungen verfügt, und wiederholen Sie den Vorgang.
 
@@ -162,15 +162,15 @@ In diesem Abschnitt werden die Schritte zum Konfigurieren des Azure AD-Bereitst
 
 1. Um den Azure AD-Bereitstellungsdienst für Clarizen One zu aktivieren, ändern Sie im Abschnitt **Einstellungen** den **Bereitstellungsstatus** in **Ein**.
 
-    ![Screenshot: Bereitstellungsstatus „Ein“](common/provisioning-toggle-on.png)
+      ![Screenshot: Bereitstellungsstatus „Ein“](common/provisioning-toggle-on.png)
 
 1. Definieren Sie die Benutzer oder Gruppen, die in Clarizen One bereitgestellt werden sollen. Wählen Sie dazu im Abschnitt **Einstellungen** unter **Bereich** die gewünschten Werte aus.
 
-    ![Screenshot: Bereitstellungsbereich](common/provisioning-scope.png)
+      ![Screenshot: Bereitstellungsbereich](common/provisioning-scope.png)
 
 1. Wählen Sie **Speichern** aus, wenn die Bereitstellung erfolgen kann.
 
-    ![Screenshot: Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
+      ![Screenshot: Speichern der Bereitstellungskonfiguration](common/provisioning-configuration-save.png)
 
 Durch diesen Vorgang wird der erstmalige Synchronisierungszyklus für alle Benutzer und Gruppen gestartet, die im Abschnitt **Einstellungen** unter **Bereich** definiert wurden. Der erste Zyklus dauert länger als nachfolgende Zyklen, die ungefähr alle 40 Minuten erfolgen, solange der Azure AD-Bereitstellungsdienst ausgeführt wird.
 

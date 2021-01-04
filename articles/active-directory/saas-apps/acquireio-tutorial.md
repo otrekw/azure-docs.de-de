@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 78f473a7c4b10475c6c206764ce526c70fa056fe
-ms.sourcegitcommit: ce8eecb3e966c08ae368fafb69eaeb00e76da57e
+ms.openlocfilehash: 5fe070bc1abe0592b3082c597c1812781335448a
+ms.sourcegitcommit: d79513b2589a62c52bddd9c7bd0b4d6498805dbe
 ms.translationtype: HT
 ms.contentlocale: de-DE
-ms.lasthandoff: 10/21/2020
-ms.locfileid: "92313350"
+ms.lasthandoff: 12/18/2020
+ms.locfileid: "97673183"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Tutorial: Integration des einmaligen Anmeldens (Single Sign-On, SSO) von Azure Active Directory mit AcquireIO
 
@@ -73,7 +73,7 @@ Gehen Sie wie folgt vor, um das einmalige Anmelden von Azure AD im Azure-Portal 
 1. Wählen Sie auf der Seite **SSO-Methode auswählen** die Methode **SAML** aus.
 1. Klicken Sie auf der Seite **Einmaliges Anmelden (SSO) mit SAML einrichten** auf das Bearbeitungs- bzw. Stiftsymbol für **Grundlegende SAML-Konfiguration**, um die Einstellungen zu bearbeiten.
 
-   ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
+    ![Bearbeiten der SAML-Basiskonfiguration](common/edit-urls.png)
 
 1. Geben Sie im Abschnitt **Grundlegende SAML-Konfiguration** die Werte für die folgenden Felder ein:
 
@@ -110,7 +110,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 1. Wählen Sie in der Anwendungsliste den Eintrag **AcquireIO** aus.
 1. Navigieren Sie auf der Übersichtsseite der App zum Abschnitt **Verwalten**, und wählen Sie **Benutzer und Gruppen** aus.
 
-   ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
+    ![Link „Benutzer und Gruppen“](common/users-groups-blade.png)
 
 1. Wählen Sie **Benutzer hinzufügen** und anschließend im Dialogfeld **Zuweisung hinzufügen** die Option **Benutzer und Gruppen** aus.
 
@@ -134,7 +134,7 @@ In diesem Abschnitt ermöglichen Sie B. Simon die Verwendung des einmaligen Anm
 
 1. Klicken Sie im linken Bereich des Menüs auf **App Store**.
 
-     ![Screenshot, in dem der App Store hervorgehoben ist](./media/acquireio-tutorial/config01.png)
+    ![Screenshot, in dem der App Store hervorgehoben ist](./media/acquireio-tutorial/config01.png)
 
 1. Scrollen Sie nach unten zu **Active Directory**, und klicken Sie auf **Installieren**.
 
@@ -162,7 +162,7 @@ Damit sich Azure AD-Benutzer bei AcquireIO anmelden können, müssen sie in Acq
 
 1. Klicken Sie im linken Bereich des Menüs auf **Profiles** (Profile), und navigieren Sie zu **Add Profile** (Profil hinzufügen).
 
-     ![Screenshot, in dem im Menü auf der linken Seite des Bildschirms „Profile“ sowie die Option „Profil hinzufügen“ hervorgehoben sind](./media/acquireio-tutorial/config04.png)
+    ![Screenshot, in dem im Menü auf der linken Seite des Bildschirms „Profile“ sowie die Option „Profil hinzufügen“ hervorgehoben sind](./media/acquireio-tutorial/config04.png)
 
 1. Führen Sie auf der Registerkarte **Add customer** (Kunden hinzufügen) die folgenden Schritte aus:
 
@@ -182,7 +182,7 @@ Wenn Sie im Zugriffsbereich auf die Kachel „AcquireIO“ klicken, sollten Sie 
 
 ## <a name="additional-resources"></a>Zusätzliche Ressourcen
 
-- [Liste mit den Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
+- [Liste der Tutorials zur Integration von SaaS-Apps in Azure Active Directory](./tutorial-list.md)
 
 - [Was bedeuten Anwendungszugriff und einmaliges Anmelden mit Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
