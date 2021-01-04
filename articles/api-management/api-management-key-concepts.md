@@ -41,7 +41,7 @@ Das System setzt sich aus den folgenden Komponenten zusammen:
 * Das **API-Gateway** ist der Endpunkt, der folgende Aufgaben übernimmt:
   
   * Akzeptieren von API-Aufrufen und Weiterleiten dieser Aufrufe an Ihre Back-Ends
-  * Überprüfen von API-Schlüsseln, JWT-Token, Zertifikaten und anderen Anmeldeinformationen
+  * Überprüfen von API-Schlüsseln, JWT-Tokens, Zertifikaten und anderen Anmeldeinformationen
   * Erzwingen von Nutzungskontingenten und Übertragungsratenlimits
   * Dynamisches Transformieren Ihrer API ohne Codeänderungen
   * Zwischenspeichern von Back-End-Antworten, falls eingerichtet
@@ -93,7 +93,7 @@ Zusätzlich zu diesen Systemgruppen können Administratoren benutzerdefinierte G
 Weitere Informationen finden Sie unter [Erstellen und Verwenden von Gruppen][How to create and use groups].
 
 ## <a name="developers"></a><a name="developers"> </a> Entwickler
-Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][Developer portal]anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
+Entwickler stellen die Benutzerkonten in einer API Management-Dienstinstanz dar. Entwickler können von Administratoren erstellt oder eingeladen werden, oder sie können sich im [Entwicklerportal][Developer portal] anmelden. Jeder Entwickler ist Mitglied in einer oder mehreren Gruppen und kann die Produkte abonnieren, die für die entsprechenden Gruppen sichtbar sind.
 
 Wenn Entwickler ein Produkt abonnieren, erhalten sie den primären und den sekundären Schlüssel für das Produkt. Diese Schlüssel kommen bei den Aufrufen an die APIs des Produkts zum Einsatz.
 
